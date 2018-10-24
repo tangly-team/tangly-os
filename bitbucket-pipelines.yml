@@ -1,7 +1,7 @@
 image: openjdk:11
 
-pipelines:
-  default:
-  - step:
-      script:
-      - bash ./gradlew build
+  pipelines:
+    default:
+    - step:
+        script:
+        - bash ./gradlew build
