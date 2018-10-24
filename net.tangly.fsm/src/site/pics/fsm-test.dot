@@ -20,14 +20,14 @@ digraph G {
     }
   }
   C [style="bold"];
-  AB -> C [ltail=cluster1, label="A_C/"];
+  AA -> C [ltail=cluster1, label="A_C/"];
   AA -> AB [label="AA_AB/"];
   AA -> BB [lhead=cluster4, label="AA_B/"];
   AA -> BB [label="AA_BB/"];
   AB -> AA [label="AB_AA/"];
   AB -> AB [label="AB_AB/"];
   BB -> C [ltail=cluster4, label="B_C/"];
-  BA -> AB [lhead=cluster1, label="BA_A/"];
+  BA -> AA [lhead=cluster1, label="BA_A/"];
   BA -> BB [label="BA_BB/"];
   BB -> BA [label="BB_BA/VV -> BA when BB_BA"];
   BB -> C [label="BB_C/"];
