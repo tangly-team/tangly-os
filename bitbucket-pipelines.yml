@@ -1,0 +1,7 @@
+image: openjdk:11
+
+pipelines:
+  default:
+  - step:
+      script:
+      - ./gradlew build

@@ -1,0 +1,43 @@
+@startuml
+
+class Event<E extends Enum<E>> {
+    - E type;
+    - List<Object> parameters;
+    + Event(@Nonnull E id);
+    + Event(@Nonnull E type, final List<Object> parameters);
+    + E type();
+    + List<Object> parameters();
+}
+
+interface State<O, S extends Enum<S>, E extends Enum<E>> {
+    S getId();
+    boolean hasHistory()
+    String name();
+    O context();
+    boolean isFinal();
+
+    void executeEntryAction(@Nonnull O owner, @Nonnull Event<E> event);
+    void executeExitAction(@Nonnull O owner, @Nonnull Event<E> event);
+}
+
+interface Transition<O, S extends Enum<S>, E extends Enum<E>> {
+    State<O, S, E> target();
+    State<O, S, E> source();
+    E eventId();
+    BiPredicate<O, Event<E>> guard();
+}
+
+interface StateMachine<O, S extends Enum<S>, E extends Enum<E>> {
+    void fire(@Nonnull Event<E> event);
+    void reset();
+    String name();
+    O context();
+}
+
+StateMachine *-- "1" State : root
+State *-- Transition : transitions
+State "1" *-- "0..n" State : substates
+
+
+
+@enduml

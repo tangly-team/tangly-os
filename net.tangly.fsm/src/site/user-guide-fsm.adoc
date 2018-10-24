@@ -1,0 +1,216 @@
+= User Guide Finite State Machine
+
+== Scenarios
+
+Applications are a good candidate to use state machine if:
+* Application or part of its structure can be represented as states.
+* You want to split complex logic into smaller manageable tasks.
+* Application is already suffering concurrency issues with i.e. something happening asynchronously.
+
+You are already trying to implement a state machine if:
+* Use of boolean flags or enums to model situations.
+* Having variables which only have meaning for some part of your application lifecycle.
+* Looping through if/else structure and checking if particular flag or enum is set and then making further exceptions
+  what to do when certain combination of your flags and enums exists or doesn’t exist together.
+
+== Get Starting
+
+**FSM finite state machine** module supports both a fluent API and a more declarative manner to define a state machine,
+and also enable a user to define the action methods in a straightforward manner. Lambda constructs support a compact
+and legible notation.
+
+Actions and guards declarations use the lambda feature of Java 8. Guard is a boolean function, and an action is a 
+method without return value. Once a finite state machine is declared you can execute multiple instances of the 
+declaration in your application.
+
+* **StateMachine** interface takes four generic type parameters.
+	* **E** stands for the type of implemented event. The event values must be a Java enumeration type. The enumeration
+	  type defines all the different event types
+	* **S** stands for the type of implemented state. The state values must be a Java enumeration type. The enumeration
+	  type defines the possible states
+	* **C** stands for the class owning the state machine and defining the *context* in which the machine is executed.
+* **States** represent a stable status of the system existing for a time duration.
+    * Simple state is as state without children
+    * Composite state is a hierarchical state. It may contain nested simple or composite states. The composite children
+     states may themselves have nested children. This may proceed to any depth. When a hierarchical state is active, one
+     and only one of its child states is active
+    * Initial state is the state selected when entering a composite state no having active history states
+    * Final state is a state with only inferent transitions and no afferent transitions
+    * State with history allows a a composite state to remember its configuration. A transition taking the history
+      composite state as its target will return the child state stored in the history as the last active state last time
+      the target composite state was exited
+* **Transitions** represent a possible change from a start state to a destination state
+    * Normal transition moving from a source state to a destination state
+    * Internal transition means after transition complete, no state is exited or entered. Therefore no entry or exit
+      actions are executed
+* **Guards** is implemented as an extension of a standard Java *BiPrediction* functional interface
+    * boolean expression lambda expression deciding if the transition shall be fired or not
+* **Actions** is implemented as an extension of a standard Java *BiFunction* functional interface
+    * Entry actions are executed upon activation of the state, when the fired transition enters the state
+    * Exit actions are executed upon deactivation of the state, when the fired transition leaves the state
+    * Transition actions are executed when a transition is fired
+    
+Below the UML diagram of the public interface of the finite state machine component.
+
+![Finite State Machine UML](./pics/fsm-uml.svg "Finite State Machine UML Diagram")
+
+
+== Fluent Example
+
+=== How to create the state machine builder
+
+In order to create a state machine, user need to create state machine builder first. For example:
+
+```java
+	DefinitionBuilder<Owner, States, Events> builder = new DefinitionBuilder<>(States.Root);
+```
+
+After a state machine builder was created, we can use fluent API to define states, transitions and actions of the state
+machine declaration. The internal state is implicitly built during object creation.
+
+=== How to create states
+
+Below how to create a state.
+
+```java
+    builder.root().add(States.Off)
+```
+
+Below two variants how to create an initial state with an entry and an exit action.
+
+```java
+    builder.root().add(States.Off).isInitial().onEntry(Fsm::logOffEntry).onExit(Fsm::logOffExit);
+
+    builder.addToRoot(States.Off).isInitial().onEntry(Fsm::logOffEntry).onExit(Fsm::logOffExit);
+```
+
+
+Below how to create a nested initial state with an entry and an exit action.
+
+```java
+    builder.in(States.On).add(States.DAB).isInitial().onEntry(Fsm::logDabEntry).onExit(Fsm::logDabExit);
+```
+
+=== How to create transitions
+
+Below how to create a transition between two states with an event and an action - without a guard -.
+
+```java
+    builder.in(States.Maintenance).on(Events.TogglePower).to(States.Off).execute(Fsm::logTransitionFromMaintenanceToOff);
+```
+
+Below how to create a transition between two states with an event, a guard and an action. The first statement uses
+a lambda expression calling a method of the owner object, the second statement uses a lambda expression with a code
+block.
+
+```java
+    builder.in(States.Off).on(Events.TogglePower).to(States.Maintenance).onlyIf(Fsm::isMaintenanceMode)
+            .execute(Fsm::logTransitionFromOffToMaintenance);
+    builder.in(States.Off).on(Events.TogglePower).to(States.On).onlyIf((o) -> !o.isMaintenanceMode()).execute
+                         (Fsm::logTransitionFromOffToOn);
+```
+
+Below how to create a local transition in the state. A local transition does not trigger the exit and entry action of
+the state.
+
+```java
+    builder.in(States.On).onLocal(Events.StoreStation).execute(Fsm::logIgnoreStoreOperation);
+```
+
+=== An example of a complete finite state machine definition
+
+The example below declares a complete state machine. The enumeration ```States``` defines the states, the enumeration
+```Events``` defines the events processed.
+
+```java
+    enum States {
+        Root, Off, Maintenance, On, FM, DAB, Play, AutoTune,
+    }
+
+    enum Events {
+        TogglePower, ToggleMode, StationLost, StationFound, StoreStation
+    }
+
+    builder.addToRoot(States.Off).isInitial().onEntry(Fsm::logOffEntry).onExit(Fsm::logOffExit);
+    builder.addToRoot(States.Maintenance).onEntry(Fsm::logMaintenanceEntry).onExit
+            (Fsm::logMaintenanceExit);
+
+    builder.addToRoot(States.On).hasHistory().onEntry(Fsm::logOnEntry).onExit(Fsm::logOnExit);
+    builder.in(States.On).add(States.DAB).isInitial().onEntry(Fsm::logDabEntry).onExit(Fsm::logDabExit);
+    builder.in(States.DAB).onLocal(Events.StoreStation).execute((o, e) -> o.appendToLog("DABToDAB"));
+    builder.in(States.On).add(States.FM).hasHistory().onEntry(Fsm::logFmEntry).onExit(Fsm::logFmExit);
+
+    builder.in(States.FM).add(States.Play).isInitial().hasHistory().onEntry(Fsm::logPlayEntry)
+            .onExit(Fsm::logPlayExit);
+    builder.in(States.Play).onLocal(Events.StoreStation).execute((o, e) -> o.appendToLog("PlayToPlay"));
+    builder.in(States.FM).add(States.AutoTune).onEntry(Fsm::logAutoTuneEntry).onExit(Fsm::logAutoTuneExit);
+
+    builder.in(States.Off).on(Events.TogglePower).to(States.Maintenance).onlyIf(Fsm::isMaintenanceMode)
+            .execute(Fsm::logTransitionFromOffToMaintenance);
+    builder.in(States.Maintenance).on(Events.TogglePower).to(States.Off).execute(Fsm::logTransitionFromMaintenanceToOff);
+    builder.in(States.Off).on(Events.TogglePower).to(States.On).onlyIf((o) -> !o.isMaintenanceMode()).execute
+                        (Fsm::logTransitionFromOffToOn);
+    builder.in(States.On).on(Events.TogglePower).to(States.Off).execute(Fsm::logTransitionFromOnToOff);
+    builder.in(States.DAB).on(Events.ToggleMode).to(States.FM).execute(Fsm::logTransitionFromDabToFm);
+    builder.in(States.FM).on(Events.ToggleMode).to(States.DAB).execute(Fsm::logTransitionFromFmToDab);
+    builder.in(States.Play).on(Events.StationLost).to(States.AutoTune).execute(Fsm::logTransitionFromPlayToAutoTune);
+    builder.in(States.AutoTune).on(Events.StationFound).to(States.Play).execute(Fsm::logTransitionFromAutoTuneToPlay);
+```
+The above finite state machine description will generate the following machine. Greyed states have history. Dashed
+states are initial ones.
+
+![bbv Finite State Machine](pics/fsm-bbv.svg "bbv Finite State Machine")
+
+=== How to create an instance of a finite state machine and fire events
+
+After you have defined the state machine behaviour in the description, you create a new state machine instance. The
+initial state of the machine is inferred from the definition of the state machine.
+
+```
+    StateMachine<Fsm, States, Events> fsm = builder.machine("name-of-fsm", ownerInstance);
+
+```
+
+You can fire events as follow
+
+```
+    fsm.fire(new Event<Events>(Events.TogglePower));
+```
+
+= Advanced User Guide
+
+== Static Validation
+
+The static validator verifies the syntax of finite state machine declaration. The implemented checks are
+
+* Each value of the state identifier enumeration is used exactly once in the declaration
+* A state has at most one initial substate.
+* A state with a inferrent transition has an initial substate.
+* The hierarchy of initial states allows a clean identification of the first state when the machine is reset to default.
+* A final state cannot have efferent transitions.
+
+== Dynamic Validation
+
+The static validator verifies the semantic of a finite state machine during execution. The implemented checks are
+
+* To be written
+
+
+== Log a state machine instance
+
+To be written
+
+== Documentation of State Machines
+
+You can document your state machine declaration by
+
+* Generate a diagram in the dot language and visualize your state machine as a hierarchical graph.
+* Add description to states, actions and guards directly in the builder. These descriptions are used to enrich the
+  hierarchical graph.
+
+As examples we provide the finite state machines diagrams of the builder FSM and the Washer FSM as proviced in the unit 
+tests.
+
+![Builder Finite State Machine](pics/fsm-builder.svg "Builder Finite State Machine")
+
+![Washer Finite State Machine](pics/fsm-washer.svg "Washer Finite State Machine")

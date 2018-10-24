@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--
+  ~
+  ~ Copyright 2006-2017 Marcel Baumann
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+  ~ the License. You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS"
+  ~ BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific
+  ~ language governing permissions and limitations under the License.
+  ~
+  -->
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     contentScriptType="application/ecmascript" contentStyleType="text/css" height="535px"
+     preserveAspectRatio="none"
+     style="width:837px;height:535px;" version="1.1" viewBox="0 0 837 535" width="837px"
+     zoomAndPan="magnify">
+    <defs>
+        <filter height="300%" id="f9io7e3" width="300%" x="-1" y="-1">
+            <feGaussianBlur result="blurOut" stdDeviation="2.0"/>
+            <feColorMatrix in="blurOut" result="blurOut2" type="matrix"
+                           values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/>
+            <feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/>
+            <feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/>
+        </filter>
+    </defs>
+    <g><!--class Event-->
+        <rect fill="#FEFECE" filter="url(#f9io7e3)" height="125.7305"
+              style="stroke: #A80036; stroke-width: 1.5;"
+              width="320" x="6" y="8"/>
+        <ellipse cx="84.25" cy="24" fill="#ADD1B2" rx="11" ry="11"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path
+                d="M87.2231,29.6431 Q86.6421,29.9419 86.0029,30.0913 Q85.3638,30.2407 84.6582,30.2407 Q82.1514,30.2407 80.8315,28.5889 Q79.5117,26.937 79.5117,23.8159 Q79.5117,20.6865 80.8315,19.0347 Q82.1514,17.3828 84.6582,17.3828 Q85.3638,17.3828 86.0112,17.5322 Q86.6587,17.6816 87.2231,17.9805 L87.2231,20.7031 Q86.5923,20.1221 85.9988,19.8523 Q85.4053,19.5825 84.7744,19.5825 Q83.4297,19.5825 82.7449,20.6492 Q82.0601,21.7158 82.0601,23.8159 Q82.0601,25.9077 82.7449,26.9744 Q83.4297,28.041 84.7744,28.041 Q85.4053,28.041 85.9988,27.7712 Q86.5923,27.5015 87.2231,26.9204 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs"
+              textLength="31"
+              x="104.75" y="28.5352">Event
+        </text>
+        <rect fill="#FFFFFF" height="16.1328"
+              style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;"
+              width="122" x="207" y="5"/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic"
+              lengthAdjust="spacingAndGlyphs"
+              textLength="120" x="208" y="17.6016">E extends Enum&lt;E&gt;
+        </text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="325" y1="40" y2="40"/>
+        <rect fill="none" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="14"
+              y="48.9775"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="35"
+              x="26" y="54.6348">E type;
+        </text>
+        <rect fill="none" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="14"
+              y="61.9326"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="139"
+              x="26" y="67.5898">List&lt;Object&gt; parameters;
+        </text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="325" y1="73.9102" y2="73.9102"/>
+        <ellipse cx="17" cy="85.8877" fill="#84BE84" rx="3" ry="3"
+                 style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="113"
+              x="26" y="88.5449">Event(@Nonnull E id);
+        </text>
+        <ellipse cx="17" cy="98.8428" fill="#84BE84" rx="3" ry="3"
+                 style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="294"
+              x="26" y="101.5">Event(@Nonnull E type, final List&lt;Object&gt; parameters);
+        </text>
+        <ellipse cx="17" cy="111.7979" fill="#84BE84" rx="3" ry="3"
+                 style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="43"
+              x="26" y="114.4551">E type();
+        </text>
+        <ellipse cx="17" cy="124.7529" fill="#84BE84" rx="3" ry="3"
+                 style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="147"
+              x="26" y="127.4102">List&lt;Object&gt; parameters();
+        </text><!--class State-->
+        <rect fill="#FEFECE" filter="url(#f9io7e3)" height="138.6855"
+              style="stroke: #A80036; stroke-width: 1.5;"
+              width="398" x="336" y="211"/>
+        <ellipse cx="396.25" cy="227" fill="#B4A7E5" rx="11" ry="11"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path
+                d="M392.1777,222.7651 L392.1777,220.6069 L399.5571,220.6069 L399.5571,222.7651 L397.0918,222.7651 L397.0918,230.8418 L399.5571,230.8418 L399.5571,233 L392.1777,233 L392.1777,230.8418 L394.6431,230.8418 L394.6431,222.7651 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic"
+              lengthAdjust="spacingAndGlyphs"
+              textLength="28" x="416.75" y="231.5352">State
+        </text>
+        <rect fill="#FFFFFF" height="16.1328"
+              style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;"
+              width="239" x="498" y="208"/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic"
+              lengthAdjust="spacingAndGlyphs"
+              textLength="109" x="499" y="220.6016">O, S extends Enum
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic"
+              lengthAdjust="spacingAndGlyphs"
+              text-decoration="line-through" textLength="128" x="608" y="220.6016">, E extends Enum&lt;E&gt;
+        </text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="337" x2="733" y1="243" y2="243"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="337" x2="733" y1="251" y2="251"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="47"
+              x="342" y="265.6348">S getId();
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="112"
+              x="342" y="278.5898">boolean hasHistory()
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="75"
+              x="342" y="291.5449">String name();
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="64"
+              x="342" y="304.5">O context();
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="91"
+              x="342" y="317.4551">boolean isFinal();
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="386"
+              x="342" y="330.4102">void executeEntryAction(@Nonnull O owner, @Nonnull Event&lt;E&gt; event);
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="378"
+              x="342" y="343.3652">void executeExitAction(@Nonnull O owner, @Nonnull Event&lt;E&gt; event);
+        </text><!--class Transition-->
+        <rect fill="#FEFECE" filter="url(#f9io7e3)" height="99.8203"
+              style="stroke: #A80036; stroke-width: 1.5;"
+              width="330" x="370" y="427"/>
+        <ellipse cx="385" cy="443" fill="#B4A7E5" rx="11" ry="11"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path
+                d="M380.9277,438.7651 L380.9277,436.6069 L388.3071,436.6069 L388.3071,438.7651 L385.8418,438.7651 L385.8418,446.8418 L388.3071,446.8418 L388.3071,449 L380.9277,449 L380.9277,446.8418 L383.3931,446.8418 L383.3931,438.7651 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic"
+              lengthAdjust="spacingAndGlyphs"
+              textLength="57" x="399" y="447.5352">Transition
+        </text>
+        <rect fill="#FFFFFF" height="16.1328"
+              style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;"
+              width="239" x="464" y="424"/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic"
+              lengthAdjust="spacingAndGlyphs"
+              textLength="109" x="465" y="436.6016">O, S extends Enum
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic"
+              lengthAdjust="spacingAndGlyphs"
+              text-decoration="line-through" textLength="128" x="574" y="436.6016">, E extends Enum&lt;E&gt;
+        </text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="371" x2="699" y1="459" y2="459"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="371" x2="699" y1="467" y2="467"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="123"
+              x="376" y="481.6348">State&lt;O, S, E&gt; target();
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="128"
+              x="376" y="494.5898">State&lt;O, S, E&gt; source();
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="59"
+              x="376" y="507.5449">E eventId();
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="190"
+              x="376" y="520.5">BiPredicate&lt;O, Event&lt;E&gt;&gt; guard();
+        </text><!--class StateMachine-->
+        <rect fill="#FEFECE" filter="url(#f9io7e3)" height="99.8203"
+              style="stroke: #A80036; stroke-width: 1.5;"
+              width="348" x="361" y="21"/>
+        <ellipse cx="376" cy="37" fill="#B4A7E5" rx="11" ry="11"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path
+                d="M371.9277,32.7651 L371.9277,30.6069 L379.3071,30.6069 L379.3071,32.7651 L376.8418,32.7651 L376.8418,40.8418 L379.3071,40.8418 L379.3071,43 L371.9277,43 L371.9277,40.8418 L374.3931,40.8418 L374.3931,32.7651 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic"
+              lengthAdjust="spacingAndGlyphs"
+              textLength="75" x="390" y="41.5352">StateMachine
+        </text>
+        <rect fill="#FFFFFF" height="16.1328"
+              style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;"
+              width="239" x="473" y="18"/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic"
+              lengthAdjust="spacingAndGlyphs"
+              textLength="109" x="474" y="30.6016">O, S extends Enum
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic"
+              lengthAdjust="spacingAndGlyphs"
+              text-decoration="line-through" textLength="128" x="583" y="30.6016">, E extends Enum&lt;E&gt;
+        </text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="362" x2="708" y1="53" y2="53"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="362" x2="708" y1="61" y2="61"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="194"
+              x="367" y="75.6348">void fire(@Nonnull Event&lt;E&gt; event);
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="64"
+              x="367" y="88.5898">void reset();
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="75"
+              x="367" y="101.5449">String name();
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+              textLength="64"
+              x="367" y="114.5">O context();
+        </text>
+        <path d="M535,134.2231 C535,158.4278 535,186.1622 535,210.9283 " fill="none"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036"
+                 points="535,121.1805,531,127.1805,535,133.1805,539,127.1805,535,121.1805"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs"
+              textLength="26"
+              x="536" y="177.5684">root
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs"
+              textLength="8"
+              x="526.5625" y="200.1011">1
+        </text>
+        <path d="M535,363.2994 C535,384.843 535,407.4032 535,426.6959 " fill="none"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036"
+                 points="535,350.0551,531,356.0551,535,362.0551,539,356.0551,535,350.0551"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs"
+              textLength="68"
+              x="536" y="393.5684">transitions
+        </text>
+        <path
+                d="M747.4266,266.2381 C760.8831,269.5872 769,274.3412 769,280.5 C769,288.4629 755.4313,294.0774 734.2964,297.3434 "
+                fill="none" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036"
+                 points="734.2964,263.6566,739.412,268.739,746.071,265.9717,740.9554,260.8893,734.2964,263.6566"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs"
+              textLength="61"
+              x="775" y="285.5684">substates
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs"
+              textLength="8"
+              x="742.2377" y="260.2863">1
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs"
+              textLength="24"
+              x="741.8899" y="295.2588">0..n
+        </text>
+    </g>
+</svg>
