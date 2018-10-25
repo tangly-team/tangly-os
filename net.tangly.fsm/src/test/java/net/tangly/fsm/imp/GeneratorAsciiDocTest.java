@@ -1,6 +1,7 @@
 package net.tangly.fsm.imp;
 
 import net.tangly.fsm.utilities.GeneratorAsciiDoc;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
@@ -9,6 +10,10 @@ import java.nio.file.Paths;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * Test set for the generation of asciidoc descriptions of finite state machines.
+ */
+@Disabled
 public class GeneratorAsciiDocTest {
     private final String dir = "/Users/Shared/Projects/tangly-os/net.tangly.fsm/src/site";
 
