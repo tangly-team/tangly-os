@@ -124,7 +124,7 @@ class TransitionImp<O, S extends Enum<S>, E extends Enum<E>> implements Transiti
      * @param guard guard of the transition
      * @see #guard()
      */
-    public void setGuard(BiPredicate<O, Event<E>> guard) {
+    public void guard(BiPredicate<O, Event<E>> guard) {
         this.guard = guard;
     }
 
@@ -139,7 +139,7 @@ class TransitionImp<O, S extends Enum<S>, E extends Enum<E>> implements Transiti
      * @param action action executed when the transition is fired
      * @see #action()
      */
-    public void setAction(BiConsumer<O, Event<E>> action) {
+    public void action(BiConsumer<O, Event<E>> action) {
         this.action = action;
     }
 
@@ -169,7 +169,7 @@ class TransitionImp<O, S extends Enum<S>, E extends Enum<E>> implements Transiti
      * @param description new description of the action
      * @see #description()
      */
-    public void setDescription(String description) {
+    public void description(String description) {
         this.description = description;
     }
 
@@ -184,7 +184,7 @@ class TransitionImp<O, S extends Enum<S>, E extends Enum<E>> implements Transiti
      * @param description new description of the guard
      * @see #guardDescription()
      */
-    public void setGuardDescription(String description) {
+    public void guardDescription(String description) {
         this.guardDescription = description;
     }
 

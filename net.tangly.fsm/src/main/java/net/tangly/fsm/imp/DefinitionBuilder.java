@@ -91,7 +91,7 @@ public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>> implemen
     public TransitionBuilder<O, S, E> to(S stateId, String description) {
         checkArgument(states.containsKey(stateId) && (eventId != null));
         transition = new TransitionImp<>(context, states.get(stateId), eventId);
-        transition.setDescription(description);
+        transition.description(description);
         context.addTransition(transition);
         return this;
     }
@@ -109,7 +109,7 @@ public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>> implemen
     public TransitionBuilder<O, S, E> onLocal(E eventId, String description) {
         this.eventId = eventId;
         transition = new TransitionImp<>(context, context, eventId);
-        transition.setDescription(description);
+        transition.description(description);
         context.addLocalTransition(transition);
         return this;
     }
@@ -118,14 +118,14 @@ public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>> implemen
 
     @Override
     public TransitionBuilder<O, S, E> onlyIf(BiPredicate<O, Event<E>> guard, String description) {
-        transition.setGuard(guard);
-        transition.setGuardDescription(description);
+        transition.guard(guard);
+        transition.guardDescription(description);
         return this;
     }
 
     @Override
     public TransitionBuilder<O, S, E> execute(BiConsumer<O, Event<E>> action, String description) {
-        transition.setAction(action);
+        transition.action(action);
         transition.setActionDescription(description);
         return this;
     }
