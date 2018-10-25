@@ -13,29 +13,50 @@
 
 package net.tangly.commons.models;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
+import java.util.stream.Collectors;
+
+/**
+ * Registry of tag type and their associated tag values.
+ */
 
 public class TagTypeRegistry {
+    /**
+     * registered tag types in the registry.
+     */
     private Set<TagType> types;
 
     public TagTypeRegistry() {
         types = new HashSet<>();
     }
 
-    public void register(TagType type) {
+    /**
+     * Register a tag type.
+     *
+     * @param type tag type to register
+     */
+    public void register(@NotNull TagType type) {
         types.add(type);
     }
 
+    /**
+     * Returns all the namespaces registered.
+     *
+     * @return List of namespaces
+     */
     public List<String> namespaces() {
-        return Collections.emptyList();
+        return types.stream().map(o -> o.namespace()).distinct().collect(Collectors.toUnmodifiableList());
     }
 
-    public List<String> tagsForNamespace(String namespace) {
-        return Collections.emptyList();
+    public List<String> tagsForNamespace(@NotNull String namespace) {
+        return types.stream().filter(o -> Objects.equals(o.namespace(), namespace)).map(TagType::namespace).distinct()
+                .collect(Collectors.toUnmodifiableList());
     }
 
-    public Optional<TagType> find(String namespace, String name) {
-        return Optional.empty();
+    public Optional<TagType> find(String namespace, @NotNull String name) {
+        return types.stream().filter(o -> Objects.equals(o.namespace(), namespace) && Objects.equals(o.name(), name)).findAny();
     }
 }
 

@@ -42,15 +42,15 @@ public class TagType<T> {
         this.clazz = clazz;
     }
 
-    public ValueKinds getKind() {
+    public ValueKinds kind() {
         return kind;
     }
 
-    public String getNamespace() {
+    public String namespace() {
         return namespace;
     }
 
-    public String getName() {
+    public String name() {
         return name;
     }
 
