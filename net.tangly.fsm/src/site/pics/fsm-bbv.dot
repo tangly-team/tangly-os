@@ -24,8 +24,4 @@ digraph G {
   Off -> DAB [lhead=cluster3, label="TogglePower[Maintenance Off]/OfftoOn"];
   Maintenance -> Off [label="TogglePower/MaintainedtoOff"];
   DAB -> Off [ltail=cluster3, label="TogglePower/OntoOff"];
-  AutoTune -> DAB [ltail=cluster4, label="ToggleMode/FMtoDAB"];
-  Play -> AutoTune [label="StationLost/PlaytoAutoTune"];
-  AutoTune -> Play [label="StationFound/AutoTunetoPlay"];
-  DAB -> AutoTune [lhead=cluster4, label="ToggleMode/DABtoFM"];
 }

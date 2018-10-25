@@ -111,7 +111,6 @@ public class GeneratorGraphDot<O, S extends Enum<S>, E extends Enum<E>> extends 
             }
             writer.println("\"];");
         });
-        state.substates().stream().sorted().forEach(o -> writeTransitions(o, writer));
     }
 
 

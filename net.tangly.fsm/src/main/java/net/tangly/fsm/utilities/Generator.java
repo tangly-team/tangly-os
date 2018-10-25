@@ -39,8 +39,7 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
         this.builder = builder;
         this.name = name;
         this.comparator = Comparator.comparing(Transition<O, S, E>::source).thenComparing(Transition::target).thenComparing(Transition::eventId)
-                .thenComparing(Comparator.nullsLast(Comparator.comparing(Transition::guardDescription)))
-                .thenComparing(Comparator.nullsLast(Comparator.comparing(Transition::actionDescription)));
+                .thenComparing(Comparator.nullsLast(Comparator.comparing(Transition::guardDescription)));
     }
 
     /**

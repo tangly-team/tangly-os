@@ -16,6 +16,7 @@
 package net.tangly.fsm.imp;
 
 import net.tangly.fsm.utilities.GeneratorGraphDot;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
@@ -34,6 +35,7 @@ class GeneratorGraphDotTest {
     private final String dir = "/Users/Shared/Projects/tangly-os/net.tangly.fsm/src/site/pics";
 
     @Test
+    @Disabled
     void generateGraphFsmTest() {
         var generator = new GeneratorGraphDot<>(FsmBbv.build(), "fsm-bbv");
         var stream = new StringWriter();
@@ -50,6 +52,7 @@ class GeneratorGraphDotTest {
      * @throws FileNotFoundException if file could not be created and updated
      */
     @Test
+    @Disabled
     void generateGraphFsm1Test() throws IOException {
         var generator = new GeneratorGraphDot<>(FsmBbv.build(), "fsm-bbv");
         assertThat(generator.generateFileIfChanged(Paths.get(dir))).isFalse();
@@ -61,6 +64,7 @@ class GeneratorGraphDotTest {
      * @throws FileNotFoundException if file could not be created and updated
      */
     @Test
+    @Disabled
     void generateGraphFsmBuilderTest() throws IOException {
         var generator = new GeneratorGraphDot<>(FsmTest.build(), "fsm-test");
         assertThat(generator.generateFileIfChanged(Paths.get(dir))).isFalse();
@@ -72,6 +76,7 @@ class GeneratorGraphDotTest {
      * @throws FileNotFoundException if file could not be created and updated
      */
     @Test
+    @Disabled
     void generateGraphFsmWasherTest() throws IOException {
         var generator = new GeneratorGraphDot<>(FsmWasherTest.build(), "fsm-washer");
         assertThat(generator.generateFileIfChanged(Paths.get(dir))).isFalse();
