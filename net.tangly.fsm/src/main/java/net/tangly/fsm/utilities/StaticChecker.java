@@ -62,13 +62,13 @@ public class StaticChecker<O, S extends Enum<S>, E extends Enum<E>> implements C
     public List<String> checkStateIdUsedOnce(State<O, S, E> root) {
         List<String> messages = new ArrayList<>();
         Set<State<O, S, E>> states = collectAllSubstates(root);
-        EnumSet<S> allValues = EnumSet.allOf(root.getId().getDeclaringClass());
-        EnumSet<S> values = EnumSet.noneOf(root.getId().getDeclaringClass());
+        EnumSet<S> allValues = EnumSet.allOf(root.id().getDeclaringClass());
+        EnumSet<S> values = EnumSet.noneOf(root.id().getDeclaringClass());
         for (State<O, S, E> state : states) {
-            if (values.contains(state.getId())) {
-                messages.add(createError(bundle, "FSM-STAT-001", state.getId()));
+            if (values.contains(state.id())) {
+                messages.add(createError(bundle, "FSM-STAT-001", state.id()));
             } else {
-                values.add(state.getId());
+                values.add(state.id());
             }
         }
         allValues.stream().filter(state -> !values.contains(state)).forEach(state -> messages.add(createError(bundle, "FSM-STAT-002", state)));
@@ -86,7 +86,7 @@ public class StaticChecker<O, S extends Enum<S>, E extends Enum<E>> implements C
         List<String> messages = new ArrayList<>();
         Set<State<O, S, E>> states = collectAllSubstates(root);
         states.stream().filter(State::isComposite).filter(state -> getInitialSubstates(state).size() > 1)
-                .forEach(state -> messages.add(createError(bundle, "FSM-STAT-003", state.getId(), getInitialSubstates(state).size())));
+                .forEach(state -> messages.add(createError(bundle, "FSM-STAT-003", state.id(), getInitialSubstates(state).size())));
         return messages;
     }
 
@@ -104,7 +104,7 @@ public class StaticChecker<O, S extends Enum<S>, E extends Enum<E>> implements C
         while ((state != null) && !state.substates().isEmpty()) {
             Set<State<O, S, E>> initialStates = getInitialSubstates(state);
             if (initialStates.size() != 1) {
-                messages.add(createError(bundle, "FSM-STAT-005", state.getId(), initialStates.size()));
+                messages.add(createError(bundle, "FSM-STAT-005", state.id(), initialStates.size()));
                 state = null;
             } else {
                 state = initialStates.iterator().next();
@@ -123,7 +123,7 @@ public class StaticChecker<O, S extends Enum<S>, E extends Enum<E>> implements C
     public List<String> checkStateWithAfferentTransitionHasInitialState(State<O, S, E> state) {
         return collectAllSubstates(state).stream().flatMap(o -> o.transitions().stream()).map(Transition::target).distinct()
                 .filter(State::isComposite).filter(o -> getInitialSubstates(o).size() != 1)
-                .map(o -> createError(bundle, "FSM-STAT-004", o.getId(), getInitialSubstates(o).size())).collect(Collectors.toList());
+                .map(o -> createError(bundle, "FSM-STAT-004", o.id(), getInitialSubstates(o).size())).collect(Collectors.toList());
     }
 
 

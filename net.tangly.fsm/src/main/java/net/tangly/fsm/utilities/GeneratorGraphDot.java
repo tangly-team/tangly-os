@@ -71,20 +71,20 @@ public class GeneratorGraphDot<O, S extends Enum<S>, E extends Enum<E>> extends 
         int spaces = INDENTATION * depth;
         indent(writer, spaces);
         if (state.isComposite()) {
-            writer.append("subgraph cluster").append(Integer.toString(MAX_NR_STATES + state.getId().ordinal())).println(" {");
+            writer.append("subgraph cluster").append(Integer.toString(MAX_NR_STATES + state.id().ordinal())).println(" {");
             indent(writer, spaces + INDENTATION).println("style=invis;");
             spaces += INDENTATION;
             indent(writer, spaces).append("subgraph cluster").append(getStateId(state)).println(" {");
             spaces += INDENTATION;
             indent(writer, spaces).append(getStyle(state)).println(";");
-            indent(writer, spaces).append("label = \"").append(state.getId().name()).println("\"");
+            indent(writer, spaces).append("label = \"").append(state.id().name()).println("\"");
             state.substates().stream().sorted().forEach(o -> writeState(o, depth + 2, writer));
             spaces -= INDENTATION;
             indent(writer, spaces).println("}");
             spaces -= INDENTATION;
             indent(writer, spaces).println("}");
         } else {
-            writer.append(state.getId().name()).append(" [").append(getStyle(state)).println("];");
+            writer.append(state.id().name()).append(" [").append(getStyle(state)).println("];");
         }
     }
 

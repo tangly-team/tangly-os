@@ -29,7 +29,7 @@ import java.util.function.BiConsumer;
 public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparable<State<O, S, E>> {
     @Override
     default int compareTo(@NotNull State<O, S, E> other) {
-        return getId().compareTo(other.getId());
+        return id().compareTo(other.id());
     }
 
     /**
@@ -37,7 +37,7 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
      *
      * @return the id of this state.
      */
-    S getId();
+    S id();
 
     /**
      * Returns true if the state has history active.

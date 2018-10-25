@@ -108,12 +108,12 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
     }
 
     protected @NotNull String getStateId(@NotNull State<O, S, E> state) {
-        return Integer.toString(state.getId().ordinal());
+        return Integer.toString(state.id().ordinal());
     }
 
 
     protected @NotNull String getStateName(@NotNull State<O, S, E> state) {
-        return state.getId().name();
+        return state.id().name();
     }
 
     protected @NotNull String toString(String value) {

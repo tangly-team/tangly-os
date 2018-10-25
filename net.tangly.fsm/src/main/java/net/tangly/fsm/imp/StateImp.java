@@ -55,7 +55,7 @@ class StateImp<O, S extends Enum<S>, E extends Enum<E>> implements State<O, S, E
     }
 
     @Override
-    public S getId() {
+    public S id() {
         return id;
     }
 

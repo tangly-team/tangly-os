@@ -164,11 +164,11 @@ class FsmTest {
         var initialStates = root.initialStates();
         assertThat(initialStates.size()).isEqualTo(3);
         var state = Objects.requireNonNull(initialStates.pollFirst());
-        assertThat(state.isInitial() && (state.getId() == States.Root)).isTrue();
+        assertThat(state.isInitial() && (state.id() == States.Root)).isTrue();
         state = Objects.requireNonNull(initialStates.pollFirst());
-        assertThat(state.isInitial() && (state.getId() == States.A)).isTrue();
+        assertThat(state.isInitial() && (state.id() == States.A)).isTrue();
         state = Objects.requireNonNull(initialStates.pollFirst());
-        assertThat(state.isInitial() && (state.getId() == States.AA)).isTrue();
+        assertThat(state.isInitial() && (state.id() == States.AA)).isTrue();
     }
 
     /**

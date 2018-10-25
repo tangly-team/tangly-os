@@ -205,7 +205,7 @@ class TransitionImp<O, S extends Enum<S>, E extends Enum<E>> implements Transiti
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", this.getClass().getSimpleName() + "[", "]").add("source=" + source.getId()).add("target=" + target.getId())
+        return new StringJoiner(", ", this.getClass().getSimpleName() + "[", "]").add("source=" + source.id()).add("target=" + target.id())
                 .add("eventId=" + eventId).add("description=" + description).add("guardDescription=" + guardDescription)
                 .add("actionDescription=" + actionDescription).toString();
     }
