@@ -14,11 +14,14 @@
 package net.tangly.fsm.imp;
 
 import net.tangly.fsm.utilities.GeneratorAsciiDoc;
+import net.tangly.fsm.utilities.GeneratorGraphDot;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.nio.file.Paths;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,9 +29,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Test set for the generation of asciidoc descriptions of finite state machines.
  */
-@Disabled
 public class GeneratorAsciiDocTest {
     private final String dir = "/Users/Shared/Projects/tangly-os/net.tangly.fsm/src/site";
+
+    @Test
+    void generateGraphFsmLocalTest() {
+        var generator = new GeneratorAsciiDoc<>(FsmBbv.build(), "fsm-bbv");
+        var stream = new StringWriter();
+        var writer = new PrintWriter(stream);
+        generator.generate(new PrintWriter(stream));
+        writer.flush();
+        writer.close();
+        assertThat(stream.toString().length()).isGreaterThan(0);
+    }
 
     /**
      * Tests the generation of the bbv finite state machine.
@@ -36,6 +49,7 @@ public class GeneratorAsciiDocTest {
      * @throws FileNotFoundException if file could not be created and updated
      */
     @Test
+    @Disabled
     void generateGraphFsmTest() throws IOException {
         var generator = new GeneratorAsciiDoc<>(FsmBbv.build(), "fsm-bbv");
         assertThat(generator.generateFileIfChanged(Paths.get(dir))).isFalse();
@@ -47,6 +61,7 @@ public class GeneratorAsciiDocTest {
      * @throws FileNotFoundException if file could not be created and updated
      */
     @Test
+    @Disabled
     void generateGraphFsmBuilderTest() throws IOException {
         var generator = new GeneratorAsciiDoc<>(FsmTest.build(), "fsm-builder");
         assertThat(generator.generateFileIfChanged(Paths.get(dir))).isFalse();
@@ -58,6 +73,7 @@ public class GeneratorAsciiDocTest {
      * @throws FileNotFoundException if file could not be created and updated
      */
     @Test
+    @Disabled
     void generateGraphFsmWasherTest() throws IOException {
         var generator = new GeneratorAsciiDoc<>(FsmWasherTest.build(), "fsm-washer");
         assertThat(generator.generateFileIfChanged(Paths.get(dir))).isFalse();
