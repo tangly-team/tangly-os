@@ -163,7 +163,7 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
 
     @Override
     public boolean isAlive() {
-        return activeStates.stream().noneMatch(State::isFinal);
+        return activeStates.stream().filter(o -> o != root).noneMatch(State::isFinal);
     }
 
     @Override

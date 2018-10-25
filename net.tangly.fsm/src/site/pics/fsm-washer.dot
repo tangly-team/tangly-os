@@ -13,9 +13,9 @@ digraph G {
   }
   End [style="bold"];
   PowerOff [];
-  Rinsing -> End [ltail=cluster1, label="Stop"];
-  Rinsing -> PowerOff [ltail=cluster1, label="CutPower"];
+  Washing -> End [ltail=cluster1, label="Stop"];
+  Washing -> PowerOff [ltail=cluster1, label="CutPower"];
   Washing -> Rinsing [label="Rinse"];
   Rinsing -> Drying [label="Dry"];
-  PowerOff -> Rinsing [lhead=cluster1, label="RestorePower"];
+  PowerOff -> Washing [lhead=cluster1, label="RestorePower"];
 }

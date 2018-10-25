@@ -107,7 +107,6 @@ class Client extends LocalActor<Client, ClientStates, Events> implements Actor<E
  */
 @SuppressWarnings("unchecked")
 class ActorTest {
-
     /**
      * Sends a request from a client to the server and waits for the answer.
      */

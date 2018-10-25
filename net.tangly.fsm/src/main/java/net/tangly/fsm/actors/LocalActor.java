@@ -18,16 +18,16 @@ package net.tangly.fsm.actors;
 import net.tangly.fsm.Event;
 import net.tangly.fsm.StateMachine;
 import net.tangly.fsm.dsl.FsmBuilder;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
- * A local actor implements the actor contract as a local thread running in the virtual machine. An
- * actor completes when its finite state machine reaches a final state and the associated thread is
- * returned to the pool of available threads.
+ * A local actor implements the actor contract as a local thread running in the virtual machine. An actor completes when its finite state machine
+ * reaches a final state and the associated thread is returned to the pool of available threads.
  */
-public class LocalActor<O, S extends Enum<S>, E extends Enum<E>> implements Actor<E>, Runnable {
+public class LocalActor<O extends LocalActor, S extends Enum<S>, E extends Enum<E>> implements Actor<E>, Runnable {
 
     /**
      * Logger of the instances of the class.
@@ -51,7 +51,7 @@ public class LocalActor<O, S extends Enum<S>, E extends Enum<E>> implements Acto
      * @param name    name of the local actor
      */
     @SuppressWarnings("unchecked")
-    public LocalActor(FsmBuilder<O, S, E> builder, String name) {
+    public LocalActor(@NotNull FsmBuilder<O, S, E> builder, @NotNull String name) {
         this.fsm = builder.machine(name, (O) this);
         events = new LinkedBlockingQueue<>();
         LocalActors.instance().register(this);
@@ -64,6 +64,7 @@ public class LocalActor<O, S extends Enum<S>, E extends Enum<E>> implements Acto
 
     @Override
     public boolean isAlive() {
+        System.out.println(fsm.name() + " " + fsm.isAlive() + " ");
         return fsm.isAlive();
     }
 

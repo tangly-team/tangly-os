@@ -16,12 +16,12 @@
 package net.tangly.fsm.actors;
 
 import net.tangly.fsm.Event;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
 /**
- * The actor infrastructure enabler is responsible to provide parallel execution for all
- * instantiated and alive actors he is in charge.
+ * The actor infrastructure enabler is responsible to provide parallel execution for all instantiated and alive actors he is in charge.
  */
 public interface Actors<E extends Enum<E>> {
 
@@ -31,7 +31,7 @@ public interface Actors<E extends Enum<E>> {
      * @param event event to send
      * @param name  name of the actor whom the event will be sent
      */
-    void sendEventTo(Event<E> event, String name);
+    void sendEventTo(@NotNull Event<E> event, @NotNull String name);
 
     /**
      * Returns an actor with the given name.
@@ -43,30 +43,28 @@ public interface Actors<E extends Enum<E>> {
     <T extends Actor<E>> T getNamedActor(String name);
 
     /**
-     * Registers the actor in the pool of known actors
+     * Registers the actor in the pool of known actors.
      *
      * @param actor actor to register
      * @param <T>   type of the actor extending actor class
      */
-    <T extends Actor<E>> void register(T actor);
+    <T extends Actor<E>> void register(@NotNull T actor);
 
     /**
-     * Awaits the completion of the given actor. An actor has completed his work when it is no more
-     * alive.
+     * Awaits the completion of the given actor. An actor has completed his work when it is no more alive.
      *
      * @param actor                  actor to wait upon
      * @param intervalInMilliseconds interval in milliseconds between checking if the actor is alive
      * @param <T>                    type of the actor extending actor class
      */
-    <T extends Actor<E>> void awaitCompletion(T actor, int intervalInMilliseconds);
+    <T extends Actor<E>> void awaitCompletion(@NotNull T actor, int intervalInMilliseconds);
 
     /**
-     * Awaits the completion of a set of actors. An actor has completed his work when it is no more
-     * alive.
+     * Awaits the completion of a set of actors. An actor has completed his work when it is no more alive.
      *
      * @param actors                 set of actors to wait upon
      * @param intervalInMilliseconds interval in milliseconds between checking if the actor is alive
      * @param <T>                    type of the actor extending actor class
      */
-    <T extends Actor<E>> void awaitCompletion(Set<T> actors, int intervalInMilliseconds);
+    <T extends Actor<E>> void awaitCompletion(@NotNull Set<T> actors, int intervalInMilliseconds);
 }

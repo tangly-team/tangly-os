@@ -25,14 +25,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * The actor infrastructure enabler is responsible to provide parallel execution for all instantiated and alive
- * actors he is in charge.
+ * The actor infrastructure enabler is responsible to provide parallel execution for all instantiated and alive actors he is in charge.
  */
 public class LocalActors<E extends Enum<E>> implements Actors<E> {
 
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(LocalActors.class);
     private static final LocalActors<?> instance = new LocalActors<>();
-
     private final Map<String, Actor<E>> actors;
     private final ExecutorService executor;
 
@@ -76,7 +74,7 @@ public class LocalActors<E extends Enum<E>> implements Actors<E> {
 
     @Override
     public <T extends Actor<E>> void awaitCompletion(Set<T> actors, int intervalInMilliseconds) {
-        while (actors.stream().unordered().anyMatch(Actor::isAlive)) {
+        while (actors.stream().anyMatch(Actor::isAlive)) {
             try {
                 Thread.sleep(intervalInMilliseconds);
             } catch (InterruptedException e) {

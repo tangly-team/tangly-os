@@ -16,15 +16,15 @@
 package net.tangly.fsm.actors;
 
 import net.tangly.fsm.Event;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * The actor abstraction provides an active actor object to process events through a finite state
- * machine.
+ * The actor abstraction provides an active actor object to process events through a finite state machine.
  */
 public interface Actor<E extends Enum<E>> {
 
     /**
-     * The unique name of the actor
+     * The unique name of the actor.
      */
     String name();
 
@@ -40,5 +40,5 @@ public interface Actor<E extends Enum<E>> {
      *
      * @param event event to process asynchronously later
      */
-    void receive(Event<E> event);
+    void receive(@NotNull Event<E> event);
 }
