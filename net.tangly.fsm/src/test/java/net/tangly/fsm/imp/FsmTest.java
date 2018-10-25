@@ -1,16 +1,14 @@
 /*
- *
  * Copyright 2006-2018 Marcel Baumann
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *        http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
- * specific language governing permissions and limitations under the License.
- *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
+ * under the License.
  */
 
 package net.tangly.fsm.imp;
@@ -142,8 +140,8 @@ class FsmTest {
         assertThat(root.getStateFor(States.C).substates().size()).isEqualTo(0);
         assertThat(root.getStateFor(States.C).isFinal()).isTrue();
         assertThat(root.getStateFor(States.A).transitions().isEmpty()).isFalse();
-        assertThat(root.getStateFor(States.A).transitions().stream().findAny().get().toString()).contains("source=A");
-        assertThat(root.getStateFor(States.A).transitions().stream().findAny().get().toString()).contains("target=C");
+        assertThat(root.getStateFor(States.A).transitions().stream().findAny().orElseThrow().toString()).contains("source=A");
+        assertThat(root.getStateFor(States.A).transitions().stream().findAny().orElseThrow().toString()).contains("target=C");
         assertThat(root.getStateFor(States.A).getStateFor(States.AA)).isNotNull();
         assertThat(root.getStateFor(States.A).getStateFor(States.AB)).isNotNull();
         assertThat(root.getStateFor(States.A).getStateFor(States.BA)).isNull();

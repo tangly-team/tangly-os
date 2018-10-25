@@ -1,16 +1,14 @@
 /*
- *
  * Copyright 2006-2018 Marcel Baumann
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *        http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
- * specific language governing permissions and limitations under the License.
- *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
+ * under the License.
  */
 
 package net.tangly.fsm.imp;
@@ -38,12 +36,12 @@ class FsmWasherTest {
     static FsmBuilder<FsmWasherTest, States, Events> build() {
         FsmBuilder<FsmWasherTest, States, Events> builder = FsmBuilder.of(States.Root);
         builder.addToRoot(States.Running, "Running State").isInitial().hasHistory();
-        builder.in(States.Running).add(States.Washing, "Wahsing State").isInitial();
+        builder.in(States.Running).add(States.Washing, "Washing State").isInitial();
         builder.in(States.Running).add(States.Rinsing, "Rising State");
         builder.in(States.Running).add(States.Drying, "Drying State");
         builder.addToRoot(States.PowerOff, "PowerOff State");
         builder.addToRoot(States.End, "State End");
-        builder.in(States.Washing).on(Events.Rinse).to(States.Rinsing, "Wahsing -> Rinsing");
+        builder.in(States.Washing).on(Events.Rinse).to(States.Rinsing, "Washing -> Rinsing");
         builder.in(States.Rinsing).on(Events.Dry).to(States.Drying, "Rinsing -> Drying");
         builder.in(States.Running).on(Events.CutPower).to(States.PowerOff, "Running -> PowerOff");
         builder.in(States.PowerOff).on(Events.RestorePower).to(States.Running, "PowerOff -> Running");

@@ -1,21 +1,20 @@
 /*
- *
  * Copyright 2006-2018 Marcel Baumann
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *        http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
- * specific language governing permissions and limitations under the License.
- *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
+ * under the License.
  */
 
 package net.tangly.fsm.actors;
 
 import net.tangly.fsm.Event;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.Map;
@@ -47,8 +46,8 @@ public class LocalActors<E extends Enum<E>> implements Actors<E> {
     }
 
     @Override
-    public void sendEventTo(Event<E> event, String name) {
-        Actor<E> actor = getNamedActor(name);
+    public void sendEventTo(@NotNull Event<E> event, @NotNull String name) {
+        Actor<E> actor = getActorNamed(name);
         if (actor != null) {
             actor.receive(event);
         }
@@ -56,24 +55,24 @@ public class LocalActors<E extends Enum<E>> implements Actors<E> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public <T extends Actor<E>> T getNamedActor(String name) {
+    public <T extends Actor<E>> T getActorNamed(@NotNull String name) {
         return (T) actors.get(name);
 
     }
 
     @Override
-    public <T extends Actor<E>> void register(T actor) {
+    public <T extends Actor<E>> void register(@NotNull T actor) {
         actors.put(actor.name(), actor);
         executor.submit((LocalActor) actor);
     }
 
     @Override
-    public <T extends Actor<E>> void awaitCompletion(T actor, int intervalInMilliseconds) {
+    public <T extends Actor<E>> void awaitCompletion(@NotNull T actor, int intervalInMilliseconds) {
         awaitCompletion(Collections.singleton(actor), intervalInMilliseconds);
     }
 
     @Override
-    public <T extends Actor<E>> void awaitCompletion(Set<T> actors, int intervalInMilliseconds) {
+    public <T extends Actor<E>> void awaitCompletion(@NotNull Set<T> actors, int intervalInMilliseconds) {
         while (actors.stream().anyMatch(Actor::isAlive)) {
             try {
                 Thread.sleep(intervalInMilliseconds);

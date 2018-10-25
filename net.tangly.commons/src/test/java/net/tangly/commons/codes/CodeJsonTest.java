@@ -1,6 +1,20 @@
+/*
+ * Copyright 2006-2018 Marcel Baumann
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
 package net.tangly.commons.codes;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import net.tangly.commons.codes.imp.CodeImp;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -25,8 +39,7 @@ class CodeJsonTest {
     @Test
     void testJsonCodeTest() throws IOException {
         CodeType<JsonCode> type = CodeType.of(JsonCode.class,
-                List.of(new JsonCode(1, "one", true), new JsonCode(2, "two", true), new JsonCode(3, "three", true), new JsonCode(4, "four", true),
-                        new JsonCode(5, "five", true)));
+                List.of(new JsonCode(1, "one", true), new JsonCode(2, "two", true), new JsonCode(3, "three", true), new JsonCode(4, "four", true), new JsonCode(5, "five", true)));
         asserts(type);
         String json = CodeJsonHdl.writeCodeToJson(type);
 
