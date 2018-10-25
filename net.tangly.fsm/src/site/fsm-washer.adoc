@@ -8,8 +8,18 @@ image::pics/fsm-washer.svg[fsm-washer]
 |===
 |Name |Context |Description |Final |Initial |Composite |Entry Action |Exit Action
 
+|[[fsm-washer-Root]]Root
+|-
+|
+|true
+|true
+|true
+|-
+|-
+
 |[[fsm-washer-Running]]Running
-||Running State
+|Root
+|Running State
 |false
 |true
 |true
@@ -17,7 +27,35 @@ image::pics/fsm-washer.svg[fsm-washer]
 |-
 
 |[[fsm-washer-End]]End
-||State End
+|Root
+|State End
+|true
+|false
+|false
+|-
+|-
+
+|[[fsm-washer-Washing]]Washing
+|Running
+|Washing State
+|false
+|true
+|false
+|-
+|-
+
+|[[fsm-washer-Rinsing]]Rinsing
+|Running
+|Rising State
+|false
+|false
+|false
+|-
+|-
+
+|[[fsm-washer-Drying]]Drying
+|Running
+|Drying State
 |true
 |false
 |false
@@ -25,7 +63,8 @@ image::pics/fsm-washer.svg[fsm-washer]
 |-
 
 |[[fsm-washer-PowerOff]]PowerOff
-||PowerOff State
+|Root
+|PowerOff State
 |false
 |false
 |false
@@ -50,6 +89,20 @@ image::pics/fsm-washer.svg[fsm-washer]
 |<<fsm-washer-Running,Running>>
 |<<fsm-washer-PowerOff,PowerOff>>
 |Running -> PowerOff
+|false
+|
+|
+
+|<<fsm-washer-Washing,Washing>>
+|<<fsm-washer-Rinsing,Rinsing>>
+|Washing -> Rinsing
+|false
+|
+|
+
+|<<fsm-washer-Rinsing,Rinsing>>
+|<<fsm-washer-Drying,Drying>>
+|Rinsing -> Drying
 |false
 |
 |

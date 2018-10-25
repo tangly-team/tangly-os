@@ -44,8 +44,8 @@ public class GeneratorGraphDot<O, S extends Enum<S>, E extends Enum<E>> extends 
     @Override
     public void generate(@NotNull PrintWriter writer) {
         writePreamble(writer);
-        builder.definition().substates().stream().sorted().forEach(state -> writeState(state, 1, writer));
-        builder.definition().substates().stream().sorted().forEach(state -> writeTransitions(state, writer));
+        states.stream().sorted().forEach(state -> writeState(state, 1, writer));
+        states.stream().sorted().forEach(state -> writeTransitions(state, writer));
         writePostamble(writer);
         writer.flush();
         writer.close();

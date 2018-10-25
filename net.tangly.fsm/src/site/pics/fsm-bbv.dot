@@ -1,6 +1,32 @@
 digraph G {
   compound=true;
 
+  subgraph cluster1000 {
+    style=invis;
+    subgraph cluster0 {
+      style="visible, dashed, bold";
+      label = "Root"
+      Off [style="dashed"];
+      Maintenance [];
+      subgraph cluster1003 {
+        style=invis;
+        subgraph cluster3 {
+          style="visible, filled";
+          label = "On"
+          subgraph cluster1004 {
+            style=invis;
+            subgraph cluster4 {
+              style="visible, filled";
+              label = "FM"
+              Play [style="dashed, filled"];
+              AutoTune [];
+            }
+          }
+          DAB [style="dashed"];
+        }
+      }
+    }
+  }
   Off [style="dashed"];
   Maintenance [];
   subgraph cluster1003 {
@@ -20,8 +46,24 @@ digraph G {
       DAB [style="dashed"];
     }
   }
+  subgraph cluster1004 {
+    style=invis;
+    subgraph cluster4 {
+      style="visible, filled";
+      label = "FM"
+      Play [style="dashed, filled"];
+      AutoTune [];
+    }
+  }
+  DAB [style="dashed"];
+  Play [style="dashed, filled"];
+  AutoTune [];
   Off -> Maintenance [label="TogglePower[Maintenance is On]/log transition Off to Maintenance"];
-  Off -> DAB [lhead=cluster3, label="TogglePower[Maintenance Off]/OfftoOn"];
+  Off -> Play [lhead=cluster3, label="TogglePower[Maintenance Off]/OfftoOn"];
   Maintenance -> Off [label="TogglePower/MaintainedtoOff"];
-  DAB -> Off [ltail=cluster3, label="TogglePower/OntoOff"];
+  Play -> Off [ltail=cluster3, label="TogglePower/OntoOff"];
+  Play -> DAB [ltail=cluster4, label="ToggleMode/FMtoDAB"];
+  DAB -> Play [lhead=cluster4, label="ToggleMode/DABtoFM"];
+  Play -> AutoTune [label="StationLost/PlaytoAutoTune"];
+  AutoTune -> Play [label="StationFound/AutoTunetoPlay"];
 }

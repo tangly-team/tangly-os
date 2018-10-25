@@ -27,6 +27,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 /**
  * Abstract generator to create a human-readable description of a finite state machine description.
@@ -40,7 +43,8 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
     protected static final int INDENTATION = 2;
     protected final FsmBuilder<O, S, E> builder;
     protected final String name;
-    private final Comparator<Transition<O, S, E>> comparator;
+    protected final Comparator<Transition<O, S, E>> comparator;
+    protected final Set<State<O, S, E>> states;
 
     /**
      * Constructor of the class.
@@ -52,6 +56,8 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
         this.builder = builder;
         this.name = name;
         this.comparator = Comparator.comparing(Transition<O, S, E>::source).thenComparing(Transition::target).thenComparing(Transition::eventId).thenComparing(Comparator.nullsLast(Comparator.comparing(Transition::guardDescription)));
+        this.states = new HashSet<>();
+        getAllStates(this.states, builder.definition());
     }
 
     /**
@@ -116,5 +122,14 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
 
     protected @NotNull Comparator<Transition<O, S, E>> transitionComparator() {
         return comparator;
+    }
+
+    protected Optional<State<O, S, E>> findOwner(State<O, S, E> state) {
+        return states.stream().filter(o -> o.substates().contains(state)).findAny();
+    }
+
+    private void getAllStates(Set<State<O, S, E>> states, State<O, S, E> state) {
+        states.add(state);
+        state.substates().forEach(o -> getAllStates(states, o));
     }
 }

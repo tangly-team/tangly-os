@@ -47,10 +47,10 @@ public class GeneratorAsciiDoc<O, S extends Enum<S>, E extends Enum<E>> extends 
     public void generate(@NotNull PrintWriter writer) {
         generateImageXRef(writer);
         writeStateTablePreamble(writer);
-        builder.definition().substates().stream().sorted().forEach(state -> writeState(state, writer));
+        states.stream().sorted().forEach(state -> writeState(state, writer));
         writeTablePostamble(writer);
         writeTransitionTablePreamble(writer);
-        builder.definition().substates().stream().sorted().forEach(state -> writeTransitions(state, writer));
+        states.stream().sorted().forEach(state -> writeTransitions(state, writer));
         writeTablePostamble(writer);
         writer.flush();
         writer.close();
@@ -94,9 +94,7 @@ public class GeneratorAsciiDoc<O, S extends Enum<S>, E extends Enum<E>> extends 
     private void writeState(@NotNull State<O, S, E> state, @NotNull PrintWriter writer) {
         writer.append("|");
         appendInlineAnchor(writer, state).append(getStateName(state)).println();
-
-        writer.append("|");
-        // TODO retrieve owning state
+        writer.append("|").println(findOwner(state).map(o -> getStateName(o)).orElse("-"));
         writer.append("|").println(toString(state.description()));
         writer.append("|").println(state.isFinal());
         writer.append("|").println(state.isInitial());

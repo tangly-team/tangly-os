@@ -8,8 +8,18 @@ image::pics/fsm-bbv.svg[fsm-bbv]
 |===
 |Name |Context |Description |Final |Initial |Composite |Entry Action |Exit Action
 
+|[[fsm-bbv-Root]]Root
+|-
+|
+|true
+|true
+|true
+|-
+|-
+
 |[[fsm-bbv-Off]]Off
-||
+|Root
+|
 |false
 |true
 |false
@@ -17,7 +27,8 @@ image::pics/fsm-bbv.svg[fsm-bbv]
 |ExitOffstate
 
 |[[fsm-bbv-Maintenance]]Maintenance
-||
+|Root
+|
 |false
 |false
 |false
@@ -25,10 +36,47 @@ image::pics/fsm-bbv.svg[fsm-bbv]
 |
 
 |[[fsm-bbv-On]]On
-||
+|Root
+|
 |false
 |false
 |true
+|
+|
+
+|[[fsm-bbv-FM]]FM
+|On
+|
+|false
+|false
+|true
+|entryFM
+|exitFM
+
+|[[fsm-bbv-DAB]]DAB
+|On
+|
+|false
+|true
+|false
+|
+|
+
+|[[fsm-bbv-Play]]Play
+|FM
+|
+|false
+|true
+|false
+|entryPlay
+|exitPlay
+
+|[[fsm-bbv-AutoTune]]AutoTune
+|FM
+|
+|false
+|false
+|false
 |
 |
 
@@ -67,6 +115,48 @@ image::pics/fsm-bbv.svg[fsm-bbv]
 |false
 |
 |OntoOff
+
+|<<fsm-bbv-FM,FM>>
+|<<fsm-bbv-DAB,DAB>>
+|FM -> DAB
+|false
+|
+|FMtoDAB
+
+|<<fsm-bbv-DAB,DAB>>
+|<<fsm-bbv-DAB,DAB>>
+|DAB -> DAB
+|true
+|
+|
+
+|<<fsm-bbv-DAB,DAB>>
+|<<fsm-bbv-FM,FM>>
+|DAB -> FM
+|false
+|
+|DABtoFM
+
+|<<fsm-bbv-Play,Play>>
+|<<fsm-bbv-Play,Play>>
+|Play -> Play
+|true
+|
+|
+
+|<<fsm-bbv-Play,Play>>
+|<<fsm-bbv-AutoTune,AutoTune>>
+|Play -> AutoTune
+|false
+|
+|PlaytoAutoTune
+
+|<<fsm-bbv-AutoTune,AutoTune>>
+|<<fsm-bbv-Play,Play>>
+|AutoTune -> Play
+|false
+|
+|AutoTunetoPlay
 
 |===
 
