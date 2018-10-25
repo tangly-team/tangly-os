@@ -4,6 +4,10 @@ pipelines:
   - step:
       caches:
       - gradle
+      - gradlewrapper
       script:
-        - bash ./gradlew build
-        - bash ./gradlew sonarqube -Dsonar.projectKey=tangly-os-at-tangly.net -Dsonar.organization=tangly-os -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+      - ./gradlew build
+      - ./gradlew sonarqube -Dsonar.projectKey=tangly-os-at-tangly.net -Dsonar.organization=tangly-os -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+definitions:
+  caches:
+    gradlewrapper: ~/.gradle/wrapper
