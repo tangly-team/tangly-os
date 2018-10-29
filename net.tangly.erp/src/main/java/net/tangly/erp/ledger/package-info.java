@@ -11,17 +11,4 @@
  * under the License.
  */
 
-version = "0.1.0"
-description = "ERP models (tangly llc)"
-
-dependencies {
-    compile project (':net.tangly.commons')
-
-    compile 'org.apache.commons:commons-csv:1.5'
-}
-
-jar {
-    manifest {
-        attributes('Implementation-Title': project.name, 'Implementation-Version': project.version)
-    }
-}
+package net.tangly.erp.ledger;
