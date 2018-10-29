@@ -47,7 +47,7 @@ public class TagTypeRegistry {
      * @return List of namespaces
      */
     public List<String> namespaces() {
-        return types.stream().map(o -> o.namespace()).distinct().collect(Collectors.toUnmodifiableList());
+        return types.stream().map(TagType::namespace).distinct().collect(Collectors.toUnmodifiableList());
     }
 
     public List<String> tagsForNamespace(@NotNull String namespace) {
