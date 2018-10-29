@@ -30,14 +30,14 @@ class CommentsAndTagsTest {
         // When
         item.add(tag);
         // Then
-        assertThat(item.getTags().size()).isEqualTo(1);
-        assertThat(item.getTags().contains(tag)).isTrue();
+        assertThat(item.tags().size()).isEqualTo(1);
+        assertThat(item.tags().contains(tag)).isTrue();
         assertThat(item.findByNamespace("namespace").size()).isEqualTo(1);
         assertThat(item.findBy("namespace", "tag").isPresent()).isTrue();
         // When
         item.remove(tag);
         // Then
-        assertThat(item.getTags().size()).isEqualTo(0);
+        assertThat(item.tags().size()).isEqualTo(0);
         assertThat(item.findByNamespace("namespace").isEmpty()).isTrue();
         assertThat(item.findBy("namespace", "tag").isPresent()).isFalse();
     }
@@ -49,12 +49,12 @@ class CommentsAndTagsTest {
         item.add(Tag.of("gis", "longitude", "0.0"));
         item.add(Tag.of("gis", "latitude", "0.0"));
         String rawTags = item.getRawTags();
-        Set<Tag> tags = item.getTags();
+        Set<Tag> tags = item.tags();
         item.clear();
-        assertThat(item.getTags().isEmpty()).isTrue();
+        assertThat(item.tags().isEmpty()).isTrue();
         item.addRawTags(rawTags);
-        assertThat(item.getTags().isEmpty()).isFalse();
-        assertThat(item.getTags().size()).isEqualTo(3);
+        assertThat(item.tags().isEmpty()).isFalse();
+        assertThat(item.tags().size()).isEqualTo(3);
         assertThat(item.findByNamespace("gis").size()).isEqualTo(2);
     }
 

@@ -112,7 +112,7 @@ public class Comment implements HasOwner, HasTags, Serializable {
     // region tags
 
     @Override
-    public Set<Tag> getTags() {
+    public Set<Tag> tags() {
         return Collections.unmodifiableSet(tags);
     }
 

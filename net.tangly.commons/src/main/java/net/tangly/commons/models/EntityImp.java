@@ -127,7 +127,7 @@ public class EntityImp implements Entity {
     // region Tags
 
     @Override
-    public Set<Tag> getTags() {
+    public Set<Tag> tags() {
         return Collections.unmodifiableSet(tags);
     }
 

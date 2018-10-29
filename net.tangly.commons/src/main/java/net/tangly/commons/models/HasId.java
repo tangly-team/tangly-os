@@ -40,7 +40,9 @@ public interface HasId extends Serializable {
      *
      * @return unique external identifier
      */
-    String id();
+    default String id() {
+        return Long.toString(oid());
+    }
 
     /**
      * Returns the human readable name of the instance. Per default it returns the external identifier.

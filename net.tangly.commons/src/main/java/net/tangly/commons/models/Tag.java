@@ -67,11 +67,11 @@ public class Tag implements Serializable {
         return new Tag(getNamespace(tag), getName(tag), null);
     }
 
-    public static Tag of(String tag, Object value) {
+    public static Tag of(String tag, Serializable value) {
         return new Tag(getNamespace(tag), getName(tag), value);
     }
 
-    public static Tag of(String namespace, String name, Object value) {
+    public static Tag of(String namespace, String name, Serializable value) {
         return new Tag(namespace, name, value);
     }
 
@@ -88,7 +88,7 @@ public class Tag implements Serializable {
     /**
      * The value of this tag instance.
      */
-    private final Object value;
+    private final Serializable value;
 
     /**
      * Constructor of the class.
@@ -97,7 +97,7 @@ public class Tag implements Serializable {
      * @param name      name of the tag
      * @param value     optional value of the tag
      */
-    public Tag(String namespace, String name, Object value) {
+    public Tag(String namespace, String name, Serializable value) {
         this.namespace = namespace;
         this.name = Objects.requireNonNull(name);
         this.value = value;

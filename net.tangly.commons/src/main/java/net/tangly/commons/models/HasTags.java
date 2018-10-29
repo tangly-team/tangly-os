@@ -27,7 +27,7 @@ public interface HasTags {
      *
      * @return set of tags
      */
-    Set<Tag> getTags();
+    Set<Tag> tags();
 
     /**
      * Adds the tag to the set of tags.
@@ -64,7 +64,7 @@ public interface HasTags {
      */
     default Optional<Tag> findBy(String namespace, String name) {
         Objects.requireNonNull(name);
-        return getTags().stream().filter(o -> Objects.equals(namespace, o.getNamespace()) && name.equals(o.getName())).findAny();
+        return tags().stream().filter(o -> Objects.equals(namespace, o.getNamespace()) && name.equals(o.getName())).findAny();
     }
 
     default boolean contains(String namespace, String name) {
@@ -73,7 +73,7 @@ public interface HasTags {
 
     default Set<Tag> findByNamespace(String namespace) {
         Objects.requireNonNull(namespace);
-        return getTags().stream().filter(o -> Objects.equals(namespace, o.getNamespace())).collect(Collectors.toSet());
+        return tags().stream().filter(o -> Objects.equals(namespace, o.getNamespace())).collect(Collectors.toSet());
     }
 
     /**
@@ -82,7 +82,7 @@ public interface HasTags {
      * @return text representation of the tag set
      */
     default String getRawTags() {
-        return Tag.toString(getTags());
+        return Tag.toString(tags());
     }
 
     default void addRawTags(String rawTags) {

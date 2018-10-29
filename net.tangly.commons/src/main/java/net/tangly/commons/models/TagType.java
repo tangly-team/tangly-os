@@ -13,11 +13,12 @@
 
 package net.tangly.commons.models;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-public class TagType<T> {
+public class TagType<T extends Serializable> {
     public enum ValueKinds {NONE, OPTIONAL, MANDATORY}
 
     private String namespace;
@@ -27,11 +28,11 @@ public class TagType<T> {
     private Function<String, T> convertToObject;
     private BiFunction<TagType<T>, T, Boolean> validate;
 
-    public static <T> TagType<T> ofMandatory(String namespace, String name, Class<T> clazz) {
+    public static <T extends Serializable> TagType<T> ofMandatory(String namespace, String name, Class<T> clazz) {
         return new TagType<>(namespace, name, ValueKinds.MANDATORY, clazz);
     }
 
-    public static <T> TagType<T> ofOptional(String namespace, String name, Class<T> clazz) {
+    public static <T extends Serializable> TagType<T> ofOptional(String namespace, String name, Class<T> clazz) {
         return new TagType<>(namespace, name, ValueKinds.OPTIONAL, clazz);
     }
 
