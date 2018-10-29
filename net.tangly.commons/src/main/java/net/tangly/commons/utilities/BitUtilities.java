@@ -15,8 +15,6 @@ package net.tangly.commons.utilities;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
-
 import static com.google.common.base.Preconditions.*;
 
 /**
@@ -211,9 +209,9 @@ public class BitUtilities {
         checkNotNull(stream);
         StringBuilder buffer = new StringBuilder();
         if (stream.length > 0) {
-            buffer.append("%02X").append(Integer.toHexString(stream[0] & 0xFF));
+            buffer.append(String.format("0x%02X", stream[0]));
             for (int i = 1; i < stream.length; i++) {
-                buffer.append(", %02X").append(Integer.toHexString(stream[i] & 0xFF));
+                buffer.append(", ").append(String.format("0x%02X", stream[i]));
             }
         }
         return buffer.toString();
