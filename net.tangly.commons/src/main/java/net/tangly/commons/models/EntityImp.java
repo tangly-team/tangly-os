@@ -28,8 +28,8 @@ public class EntityImp implements Entity {
     private String text;
     private LocalDate fromDate;
     private LocalDate toDate;
-    private List<Comment> comments;
-    private Set<Tag> tags;
+    private final List<Comment> comments;
+    private final Set<Tag> tags;
 
     /**
      * Default constructor.

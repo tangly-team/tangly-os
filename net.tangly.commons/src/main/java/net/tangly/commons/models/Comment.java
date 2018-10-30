@@ -48,7 +48,7 @@ public class Comment implements HasOwner, HasTags, Serializable {
     /**
      * The tags of the comment.
      */
-    private Set<Tag> tags;
+    private final Set<Tag> tags;
 
     /**
      * Factory method to create a new comment. The current date and time are set a creation date.

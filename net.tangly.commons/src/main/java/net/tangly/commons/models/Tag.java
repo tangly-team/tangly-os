@@ -46,29 +46,29 @@ public class Tag implements Serializable {
         return Arrays.stream(rawTags.split(",")).map(Tag::parse).collect(Collectors.toSet());
     }
 
-    public static String getNamespace(String tag) {
+    public static String namespace(String tag) {
         return tag.contains(":") ? tag.substring(0, tag.indexOf(':')) : null;
     }
 
-    public static String getName(String tag) {
+    public static String name(String tag) {
         return tag.substring((tag.contains(":") ? tag.indexOf(':') + 1 : 0), (tag.contains("=")) ? tag.indexOf('=') : tag.length());
     }
 
-    public static String getValue(String tag) {
+    public static String value(String tag) {
         return tag.contains("=") ? tag.substring(tag.indexOf('=') + 1) : null;
     }
 
     public static Tag parse(String tag) {
         Objects.requireNonNull(tag);
-        return new Tag(getNamespace(tag), getName(tag), getValue(tag));
+        return new Tag(namespace(tag), name(tag), value(tag));
     }
 
     public static Tag of(String tag) {
-        return new Tag(getNamespace(tag), getName(tag), null);
+        return new Tag(namespace(tag), name(tag), null);
     }
 
     public static Tag of(String tag, Serializable value) {
-        return new Tag(getNamespace(tag), getName(tag), value);
+        return new Tag(namespace(tag), name(tag), value);
     }
 
     public static Tag of(String namespace, String name, Serializable value) {
@@ -117,7 +117,7 @@ public class Tag implements Serializable {
      *
      * @return namespace of the tag
      */
-    public String getNamespace() {
+    public String namespace() {
         return namespace;
     }
 
@@ -127,7 +127,7 @@ public class Tag implements Serializable {
      * @return name of the tag
      */
 
-    public String getName() {
+    public String name() {
         return name;
     }
 
@@ -136,7 +136,7 @@ public class Tag implements Serializable {
      *
      * @return string representation of the tag
      */
-    public String getStringValue() {
+    public String stringValue() {
         return (value != null ? value.toString() : null);
     }
 
@@ -145,7 +145,7 @@ public class Tag implements Serializable {
      *
      * @return the value of the tag
      */
-    public Object getValue() {
+    public Object value() {
         return value;
     }
 
@@ -168,6 +168,6 @@ public class Tag implements Serializable {
 
     @Override
     public String toString() {
-        return ((getNamespace() != null ? getNamespace() + ":" : "") + getName() + (getValue() != null ? "=" + getStringValue() : ""));
+        return ((namespace() != null ? namespace() + ":" : "") + name() + (value() != null ? "=" + stringValue() : ""));
     }
 }

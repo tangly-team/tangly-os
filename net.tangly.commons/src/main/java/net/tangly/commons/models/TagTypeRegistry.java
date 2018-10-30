@@ -26,7 +26,7 @@ public class TagTypeRegistry {
     /**
      * registered tag types in the registry.
      */
-    private Set<TagType> types;
+    private final Set<TagType> types;
 
     public TagTypeRegistry() {
         types = new HashSet<>();

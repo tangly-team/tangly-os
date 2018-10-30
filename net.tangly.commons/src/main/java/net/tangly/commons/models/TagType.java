@@ -21,10 +21,10 @@ import java.util.function.Function;
 public class TagType<T extends Serializable> {
     public enum ValueKinds {NONE, OPTIONAL, MANDATORY}
 
-    private String namespace;
-    private String name;
-    private ValueKinds kind;
-    private Class<T> clazz;
+    private final String namespace;
+    private final String name;
+    private final ValueKinds kind;
+    private final Class<T> clazz;
     private Function<String, T> convertToObject;
     private BiFunction<TagType<T>, T, Boolean> validate;
 
@@ -56,7 +56,7 @@ public class TagType<T extends Serializable> {
     }
 
     public <V> V getValue(Tag tag) {
-        return (V) clazz.cast(Objects.requireNonNull(tag).getValue());
+        return (V) clazz.cast(Objects.requireNonNull(tag).value());
     }
 
     public Tag of(T value) {

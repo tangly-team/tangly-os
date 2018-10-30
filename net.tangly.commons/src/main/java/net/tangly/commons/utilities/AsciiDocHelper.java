@@ -19,7 +19,7 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 
 public class AsciiDocHelper {
-    private PrintWriter writer;
+    private final PrintWriter writer;
 
     public AsciiDocHelper(@NotNull PrintWriter writer) {
         this.writer = writer;
@@ -32,7 +32,6 @@ public class AsciiDocHelper {
     }
 
     public AsciiDocHelper tableHeader(String tableName, String cols, String... headerCells) {
-        //TODO replace String cols with int[] cols and use concat with ,; issur cols.length == headerCells length
         writer.append(".").println(tableName);
         if (cols != null) {
             writer.println("[cols=\"" + cols + "\"]");
@@ -70,5 +69,4 @@ public class AsciiDocHelper {
         writer.append("<<").append(xref).append(",").append(text).append(">>");
         return this;
     }
-
 }

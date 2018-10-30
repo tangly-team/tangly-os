@@ -47,12 +47,12 @@ public interface HasTags {
 
     default void replace(Tag tag) {
         Objects.requireNonNull(tag);
-        findBy(tag.getNamespace(), tag.getName()).ifPresent(this::remove);
+        findBy(tag.namespace(), tag.name()).ifPresent(this::remove);
         add(tag);
     }
 
     default Optional<Tag> findBy(String tag) {
-        return findBy(Tag.getNamespace(tag), Tag.getName(tag));
+        return findBy(Tag.namespace(tag), Tag.name(tag));
     }
 
     /**
@@ -64,7 +64,7 @@ public interface HasTags {
      */
     default Optional<Tag> findBy(String namespace, String name) {
         Objects.requireNonNull(name);
-        return tags().stream().filter(o -> Objects.equals(namespace, o.getNamespace()) && name.equals(o.getName())).findAny();
+        return tags().stream().filter(o -> Objects.equals(namespace, o.namespace()) && name.equals(o.name())).findAny();
     }
 
     default boolean contains(String namespace, String name) {
@@ -73,7 +73,7 @@ public interface HasTags {
 
     default Set<Tag> findByNamespace(String namespace) {
         Objects.requireNonNull(namespace);
-        return tags().stream().filter(o -> Objects.equals(namespace, o.getNamespace())).collect(Collectors.toSet());
+        return tags().stream().filter(o -> Objects.equals(namespace, o.namespace())).collect(Collectors.toSet());
     }
 
     /**
