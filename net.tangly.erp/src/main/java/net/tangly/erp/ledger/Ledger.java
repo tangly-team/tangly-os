@@ -13,6 +13,7 @@
 
 package net.tangly.erp.ledger;
 
+import net.tangly.commons.models.Tag;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,8 +21,8 @@ import org.slf4j.LoggerFactory;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -33,24 +34,22 @@ public class Ledger {
     private static final Logger log = LoggerFactory.getLogger(Ledger.class);
     private final List<Account> accounts;
     private final List<Transaction> journal;
-    private final List<AccountEntry> vatEntries;
 
     public Ledger() {
         accounts = new ArrayList<>();
         journal = new ArrayList<>();
-        vatEntries = new ArrayList<>();
     }
 
     public List<Account> assets() {
-        return accounts.stream().filter(o -> Account.AccountGroup.ASSETS.equals(o.group())).collect(Collectors.toList());
+        return accounts.stream().filter(o -> Account.AccountGroup.ASSETS.equals(o.group())).collect(Collectors.toUnmodifiableList());
     }
 
     public List<Account> liabilities() {
-        return accounts.stream().filter(o -> Account.AccountGroup.LIABILITIES.equals(o.group())).collect(Collectors.toList());
+        return accounts.stream().filter(o -> Account.AccountGroup.LIABILITIES.equals(o.group())).collect(Collectors.toUnmodifiableList());
     }
 
     public List<Account> profitAndLoss() {
-        return accounts.stream().filter(o -> Account.AccountGroup.PROFITS_AND_LOSSES.equals(o.group())).collect(Collectors.toList());
+        return accounts.stream().filter(o -> Account.AccountGroup.PROFITS_AND_LOSSES.equals(o.group())).collect(Collectors.toUnmodifiableList());
     }
 
     public List<Transaction> transactions(LocalDate from, LocalDate to) {
@@ -58,12 +57,16 @@ public class Ledger {
                 .collect(Collectors.toList());
     }
 
+    public List<Account> accounts() {
+        return Collections.unmodifiableList(accounts);
+    }
+
     public Optional<Account> getAccountBy(String id) {
         return accounts.stream().filter(o -> id.equals(o.id())).findAny();
     }
 
     public List<Account> getAccountsOwnedBy(String id) {
-        return accounts.stream().filter(o -> id.equals(o.ownedBy())).collect(Collectors.toList());
+        return accounts.stream().filter(o -> id.equals(o.ownedBy())).collect(Collectors.toUnmodifiableList());
     }
 
     public void add(@NotNull Account account) {
@@ -80,17 +83,12 @@ public class Ledger {
         journal.add(transaction);
         transaction.debitSplits().forEach(this::bookEntry);
         transaction.creditSplits().forEach(this::bookEntry);
-        if (Objects.nonNull(transaction.vatCode())) {
-            switch (transaction.vatCode()) {
-                case "F1":
-                    BigDecimal vatAmount = transaction.amount().multiply(new BigDecimal("0.061"));
-                    bookEntry(new AccountEntry("2201", transaction.date(), vatAmount, transaction.reference(), true));
-                    break;
-            }
-        }
     }
 
-    public void validate() {
+    /**
+     * Build the account tree structure and perform basic validation.
+     */
+    public void build() {
         accounts.stream().filter(Account::isAggregate)
                 .forEach(o -> o.updateAggregatedAccounts(accounts.stream().filter(sub -> o.id().equals(sub.ownedBy())).collect(Collectors.toList())));
         accounts.stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty())
@@ -103,13 +101,23 @@ public class Ledger {
             log.error("account {} for entry with amount {} booked {} is undefined", entry.account(), entry.amount(), entry.date());
         }
         account.ifPresent(o -> o.addEntry(entry));
+        // handle VAT for credit entries
+        if (entry.isCredit()) {
+            Optional<Tag> vatDue = entry.findBy(AccountEntry.FINANCE, AccountEntry.VAT_DUE);
+            if (vatDue.isPresent()) {
+                BigDecimal vatAmount = entry.amount().multiply((BigDecimal) vatDue.get().value());
+                bookEntry(new AccountEntry("2201", entry.date(), vatAmount, entry.text(), true));
+            }
+        }
     }
 
     // region VAT-computations
 
     public BigDecimal computeVatSales(LocalDate from, LocalDate to) {
-        return transactions(from, to).stream().filter(o -> "F1".equals(o.vatCode())).map(Transaction::amount).reduce(BigDecimal::add)
-                .orElse(BigDecimal.ZERO);
+        return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).map(o -> {
+            Optional<Tag> tag = o.findBy(AccountEntry.FINANCE, AccountEntry.VAT);
+            return tag.isPresent() ? o.amount().multiply((BigDecimal) tag.get().value()) : BigDecimal.ZERO;
+        }).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
     }
 
     public BigDecimal computeDueVat(LocalDate from, LocalDate to) {

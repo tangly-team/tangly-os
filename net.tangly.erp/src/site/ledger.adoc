@@ -9,7 +9,7 @@
 * Select the destination file
 * If necessary change the extension to _csv_
 
-The generated file is a CSV file containing the whole ledger account plan. The seperator is TAB.
+The generated file is a CSV file containing the whole ledger account plan. The separator is TAB.
 
 === Importing Transactions
 
@@ -18,4 +18,4 @@ The generated file is a CSV file containing the whole ledger account plan. The s
 * Select the destination file
 * If necessary change the extension to _csv_
 
-The generated file is a CSV file containing the transaction details. The seperator is TAB.
+The generated file is a CSV file containing the transaction details. The separator is TAB.

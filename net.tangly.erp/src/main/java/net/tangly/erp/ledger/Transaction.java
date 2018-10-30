@@ -15,76 +15,56 @@ package net.tangly.erp.ledger;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
- * A transaction is a money transfer between a set of debit and a set of credit accounts, the left ones being the debit account,
- * the right ones being the credit account. The majority of transactions have one debit and one credit account. The class is
- * immutable.
+ * A simple transaction is a money transfer between a debit and a credit accounts. A split transaction is a money transfer between a debit account
+ * and a set of credit acoounts or a credit account and a set of debit accounts. The total debit and the total credit of a transaction must be the
+ * same value. The majority of transactions have one debit and one credit account. The class is immutable.
  */
 public class Transaction {
-    public static Transaction of(String date, int debitAccount, int creditAccount, String amount, String description) {
-        return new Transaction(LocalDate.parse(date), String.valueOf(debitAccount), String.valueOf(creditAccount), new BigDecimal(amount),
-                description, null, null);
-    }
-
-    public static Transaction of(String date, int debitAccount, int creditAccount, String amount, String text, String reference, String vatCode) {
+    public static Transaction of(String date, int debitAccount, int creditAccount, String amount, String text) {
         return new Transaction(LocalDate.parse(date), String.valueOf(debitAccount), String.valueOf(creditAccount), new BigDecimal(amount), text,
-                reference, vatCode);
+                null);
     }
 
     public static Transaction of(String date, int debitAccount, int creditAccount, String amount, String text, String reference) {
         return new Transaction(LocalDate.parse(date), String.valueOf(debitAccount), String.valueOf(creditAccount), new BigDecimal(amount), text,
-                reference, null);
+                reference);
     }
 
-    public static Transaction of(String date, List<Integer> splitDebitAccounts, List<String> splitDebitAmounts, List<Integer> splitCreditAccounts, List<String> splitCreditAmounts, String text, String reference) {
-        LocalDate localDate = LocalDate.parse(date);
-        return new Transaction(localDate, of(splitDebitAccounts, splitDebitAmounts, localDate, reference, true),
-                of(splitCreditAccounts, splitDebitAmounts, localDate, reference, true), text, reference);
-    }
-
-    public static List<AccountEntry> of(List<Integer> accounts, List<String> amounts, LocalDate date, String text, boolean debit) {
-        List<AccountEntry> splits = new ArrayList<>(accounts.size());
-        for (int i = 0; i < accounts.size(); i++) {
-            splits.add(new AccountEntry(String.valueOf(accounts.get(i)), date, new BigDecimal(amounts.get(i)), text, debit));
-        }
-        return splits;
-    }
-
-    private final List<AccountEntry> debitSplits;
-    private final List<AccountEntry> creditSplits;
+    private final AccountEntry debit;
+    private final AccountEntry credit;
+    private final List<AccountEntry> splits;
     private final String reference;
     private final String description;
     private final LocalDate date;
-    private final String vatCode;
 
-    public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, String description, String reference, String vatCode) {
+    public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, String description, String reference) {
         this.date = date;
         this.description = description;
         this.reference = reference;
-        this.debitSplits = List.of(new AccountEntry(debitAccount, date, amount, reference, true));
-        this.creditSplits = List.of(new AccountEntry(creditAccount, date, amount, reference, false));
-        this.vatCode = vatCode;
+        this.debit = new AccountEntry(debitAccount, date, amount, reference, true);
+        this.credit = new AccountEntry(creditAccount, date, amount, reference, false);
+        this.splits = Collections.emptyList();
     }
 
-    public Transaction(LocalDate date, List<AccountEntry> debitSplits, List<AccountEntry> creditSplits, String description, String reference) {
+    public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, List<AccountEntry> splits, String description, String reference) {
         this.date = date;
         this.description = description;
         this.reference = reference;
-        this.debitSplits = Collections.unmodifiableList(debitSplits);
-        this.creditSplits = Collections.unmodifiableList(creditSplits);
-        this.vatCode = null;
+        this.debit = (debitAccount != null) ? new AccountEntry(debitAccount, date, amount, reference, true) : null;
+        this.credit = (creditAccount != null) ? new AccountEntry(creditAccount, date, amount, reference, false) : null;
+        this.splits = List.copyOf(splits);
     }
 
     public List<AccountEntry> debitSplits() {
-        return debitSplits;
+        return (debit != null) ? List.of(debit) : splits;
     }
 
     public List<AccountEntry> creditSplits() {
-        return creditSplits;
+        return (credit != null) ? List.of(credit) : splits;
     }
 
     /**
@@ -102,7 +82,7 @@ public class Transaction {
      * @return credit account of the transaction
      */
     public String creditAccount() {
-        return creditSplits.get(0).account();
+        return (credit != null) ? credit.account() : null;
     }
 
     /**
@@ -111,7 +91,7 @@ public class Transaction {
      * @return debit account of the transaction
      */
     public String debitAccount() {
-        return debitSplits.get(0).account();
+        return (debit != null) ? debit.account() : null;
     }
 
     /**
@@ -120,7 +100,7 @@ public class Transaction {
      * @return amount of the transaction
      */
     public BigDecimal amount() {
-        return debitSplits.stream().map(AccountEntry::amount).reduce(BigDecimal::add).get();
+        return (debit != null) ? debit.amount() : credit.amount();
     }
 
     /**
@@ -147,11 +127,7 @@ public class Transaction {
      * @return true if the transaction is split
      */
     public boolean isSplit() {
-        return !(debitSplits.isEmpty() && creditSplits.isEmpty());
-    }
-
-    public String vatCode() {
-        return vatCode;
+        return (debit == null) || (credit == null);
     }
 }
 

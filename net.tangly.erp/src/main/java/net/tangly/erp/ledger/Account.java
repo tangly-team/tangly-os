@@ -13,6 +13,8 @@
 
 package net.tangly.erp.ledger;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.*;
@@ -69,18 +71,18 @@ public class Account {
     /**
      * Set of accounts the account owns.
      */
-    private Set<Account> aggregatedAccounts;
+    private final Set<Account> aggregatedAccounts;
 
     /**
      * Entries describing the bookings on the account.
      */
-    private List<AccountEntry> entries;
+    private final List<AccountEntry> entries;
 
     public Account(String id, AccountKind kind, Currency currency, String description, String ownedBy) {
         this(id, kind, null, currency, description, ownedBy);
     }
 
-    public Account(String id, AccountKind kind, AccountGroup group, Currency currency, String description, String ownedBy) {
+    public Account(@NotNull String id, @NotNull AccountKind kind, AccountGroup group, @NotNull Currency currency, String description, String ownedBy) {
         this.id = id;
         this.kind = kind;
         this.group = group;
@@ -131,17 +133,7 @@ public class Account {
     }
 
     /**
-     * Returns the current balance of the account.
-     *
-     * @return balance of the account
-     * @see #balance(LocalDate)
-     */
-    public BigDecimal balance() {
-        return balance(LocalDate.now());
-    }
-
-    /**
-     * Returns true if the acount is an aggregate account, meaning the balance is the aggregation of a the balance of a set of accounts.
+     * Returns true if the account is an aggregate account, meaning the balance is the aggregation of a the balance of a set of accounts.
      *
      * @return flag indicating if the account is an aggregate account
      */
@@ -150,7 +142,7 @@ public class Account {
     }
 
     /**
-     * Returns true if the acount is a debit account.
+     * Returns true if the account is a debit account.
      *
      * @return flag indicating if the account is a debit account
      */
@@ -159,7 +151,7 @@ public class Account {
     }
 
     /**
-     * Returns true if the acount is a credit account.
+     * Returns true if the account is a credit account.
      *
      * @return flag indicating if the account is a credit account
      */
@@ -208,10 +200,10 @@ public class Account {
     private BigDecimal booking(AccountEntry entry) {
         if (entry.isCredit()) {
             // debit account: asset, expense -> means increase; credit account: liability, income -> means decrease
-            return entry.amount();
+            return entry.amount().negate();
         } else if (entry.isDebit()) {
             // debit account: asset, expense -> means decrease; credit account: liability, income -> means increase
-            return entry.amount().negate();
+            return entry.amount();
         } else {
             return BigDecimal.ZERO;
         }

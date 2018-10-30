@@ -20,41 +20,42 @@ import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 /**
  * The account entry class models one booking in an account of a double entry accounting system. The class is immutable.
  */
 public class AccountEntry implements HasTags {
+    public static final String FINANCE = "fin";
+    public static final String VAT = "vat";
+    public static final String VAT_DUE = "vat-due";
+    public static final String PROJECT = "project";
     /**
      * Account on which the entry is booked.
      */
-    private String account;
+    private final String account;
 
     /**
      * Date of the booking entry.
      */
-    private LocalDate date;
+    private final LocalDate date;
 
     /**
      * Amount of the entry.
      */
-    private BigDecimal amount;
+    private final BigDecimal amount;
 
     /**
      * Text describing the entry, often a reference to a document such as an invoice
      */
-    private String text;
+    private final String text;
 
     /**
      * Is the entry on the debit side or not (meaning credit side).
      */
-    private boolean debit;
+    private final boolean debit;
 
-    private Set<Tag> tags = new HashSet<>();
+    private final Set<Tag> tags;
 
     @NotNull
     @Contract("_, _, _, _ -> new")
@@ -74,6 +75,7 @@ public class AccountEntry implements HasTags {
         this.amount = amount;
         this.text = text;
         this.debit = debit;
+        this.tags = new HashSet<>();
     }
 
     public String account() {
@@ -129,5 +131,9 @@ public class AccountEntry implements HasTags {
     public String toString() {
         return "{account=" + Objects.toString(account) + ", date=" + Objects.toString(date) + ", amount=" + Objects
                 .toString(amount) + ", isDebit=" + Objects.toString(debit) + ", text=" + Objects.toString(text) + "}";
+    }
+
+    public Optional<BigDecimal> getVat() {
+        return findBy(FINANCE, VAT).map(tag1 -> (BigDecimal) tag1.value());
     }
 }
