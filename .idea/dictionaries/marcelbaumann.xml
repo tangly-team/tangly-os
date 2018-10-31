@@ -8,6 +8,7 @@
       <w>dword</w>
       <w>ebit</w>
       <w>ebitda</w>
+      <w>firstname</w>
       <w>foid</w>
       <w>functors</w>
       <w>haben</w>
@@ -15,6 +16,7 @@
       <w>homomorphic</w>
       <w>iban</w>
       <w>iter</w>
+      <w>lastname</w>
       <w>postamble</w>
       <w>quaterly</w>
       <w>sellee</w>
