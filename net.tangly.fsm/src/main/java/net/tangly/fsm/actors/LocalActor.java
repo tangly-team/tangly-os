@@ -62,7 +62,6 @@ public class LocalActor<O extends LocalActor, S extends Enum<S>, E extends Enum<
 
     @Override
     public boolean isAlive() {
-        System.out.println(fsm.name() + " " + fsm.isAlive() + " ");
         return fsm.isAlive();
     }
 

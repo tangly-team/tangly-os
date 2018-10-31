@@ -26,7 +26,7 @@
  * The guards must have either a unique parameter of type Event or no parameters.</li>
  * <li>hierarchical states with history behavior to initialize state always to same state or last
  * active state</li> <li>fluent definition syntax</li> <li>extensible thorough event handlers
- * simplify logging, auditing and debugging</li> <li>state machine reports as text, csv or yEd
+ * simplify logging, auditing and debugging</li> <li>state machine ports as text, csv or yEd
  * diagram</li> </ul>
  */
 

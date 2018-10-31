@@ -14,8 +14,7 @@
 package net.tangly.fsm.imp;
 
 import net.tangly.fsm.utilities.GeneratorAsciiDoc;
-import net.tangly.fsm.utilities.GeneratorGraphDot;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
@@ -49,7 +48,7 @@ public class GeneratorAsciiDocTest {
      * @throws FileNotFoundException if file could not be created and updated
      */
     @Test
-    @Disabled
+    @Tag("localTest")
     void generateGraphFsmTest() throws IOException {
         var generator = new GeneratorAsciiDoc<>(FsmBbv.build(), "fsm-bbv");
         assertThat(generator.generateFileIfChanged(Paths.get(dir))).isFalse();
@@ -61,7 +60,7 @@ public class GeneratorAsciiDocTest {
      * @throws FileNotFoundException if file could not be created and updated
      */
     @Test
-    @Disabled
+    @Tag("localTest")
     void generateGraphFsmBuilderTest() throws IOException {
         var generator = new GeneratorAsciiDoc<>(FsmTest.build(), "fsm-builder");
         assertThat(generator.generateFileIfChanged(Paths.get(dir))).isFalse();
@@ -73,7 +72,7 @@ public class GeneratorAsciiDocTest {
      * @throws FileNotFoundException if file could not be created and updated
      */
     @Test
-    @Disabled
+    @Tag("localTest")
     void generateGraphFsmWasherTest() throws IOException {
         var generator = new GeneratorAsciiDoc<>(FsmWasherTest.build(), "fsm-washer");
         assertThat(generator.generateFileIfChanged(Paths.get(dir))).isFalse();

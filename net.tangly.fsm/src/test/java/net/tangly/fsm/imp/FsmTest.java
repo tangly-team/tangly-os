@@ -254,10 +254,6 @@ class FsmTest {
         assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
     }
 
-    @Test
-    void fireTransitionToStateWithHistoryTest() {
-    }
-
     /**
      * Tests the hooking of an event handler into a finite state machine.
      */

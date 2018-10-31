@@ -17,7 +17,6 @@ import net.tangly.fsm.State;
 import net.tangly.fsm.Transition;
 import net.tangly.fsm.dsl.FsmBuilder;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -39,7 +38,6 @@ import java.util.Set;
  * @param <E> enumeration type for the identifiers of events
  */
 public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
-    private static final Logger log = org.slf4j.LoggerFactory.getLogger(Generator.class);
     protected static final int INDENTATION = 2;
     protected final FsmBuilder<O, S, E> builder;
     protected final String name;
@@ -55,7 +53,8 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
     public Generator(@NotNull FsmBuilder<O, S, E> builder, String name) {
         this.builder = builder;
         this.name = name;
-        this.comparator = Comparator.comparing(Transition<O, S, E>::source).thenComparing(Transition::target).thenComparing(Transition::eventId).thenComparing(Comparator.nullsLast(Comparator.comparing(Transition::guardDescription)));
+        this.comparator = Comparator.comparing(Transition<O, S, E>::source).thenComparing(Transition::target).thenComparing(Transition::eventId)
+                .thenComparing(Comparator.nullsLast(Comparator.comparing(Transition::guardDescription)));
         this.states = new HashSet<>();
         getAllStates(this.states, builder.definition());
     }

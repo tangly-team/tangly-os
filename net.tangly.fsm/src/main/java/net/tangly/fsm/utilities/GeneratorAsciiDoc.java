@@ -30,8 +30,6 @@ import java.io.PrintWriter;
  * @param <E> enumeration type for the identifiers of events
  */
 public class GeneratorAsciiDoc<O, S extends Enum<S>, E extends Enum<E>> extends Generator<O, S, E> {
-    private static final int MAX_NR_STATES = 1000;
-
     /**
      * Constructor of the class.
      *
@@ -94,7 +92,7 @@ public class GeneratorAsciiDoc<O, S extends Enum<S>, E extends Enum<E>> extends 
     private void writeState(@NotNull State<O, S, E> state, @NotNull PrintWriter writer) {
         writer.append("|");
         appendInlineAnchor(writer, state).append(getStateName(state)).println();
-        writer.append("|").println(findOwner(state).map(o -> getStateName(o)).orElse("-"));
+        writer.append("|").println(findOwner(state).map(this::getStateName).orElse("-"));
         writer.append("|").println(toString(state.description()));
         writer.append("|").println(state.isFinal());
         writer.append("|").println(state.isInitial());

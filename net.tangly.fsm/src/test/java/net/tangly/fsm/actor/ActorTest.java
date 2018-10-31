@@ -18,7 +18,6 @@ import net.tangly.fsm.actors.Actor;
 import net.tangly.fsm.actors.LocalActor;
 import net.tangly.fsm.actors.LocalActors;
 import net.tangly.fsm.dsl.FsmBuilder;
-import net.tangly.fsm.imp.DefinitionBuilder;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -52,7 +51,7 @@ class Server extends LocalActor<Server, ServerStates, Events> implements Actor<E
     int nrRequests;
 
     private static FsmBuilder<Server, ServerStates, Events> buildFsm() {
-        FsmBuilder<Server, ServerStates, Events> builder = new DefinitionBuilder<>(ServerStates.Root);
+        FsmBuilder<Server, ServerStates, Events> builder = FsmBuilder.of(ServerStates.Root);
         builder.root().add(ServerStates.WaitingForRequest).isInitial();
         builder.in(ServerStates.WaitingForRequest).onLocal(Events.Request).execute(Server::processRequest);
         return builder;
@@ -75,7 +74,7 @@ class Client extends LocalActor<Client, ClientStates, Events> implements Actor<E
     int nrAnswers;
 
     private static FsmBuilder<Client, ClientStates, Events> buildFsm() {
-        FsmBuilder<Client, ClientStates, Events> builder = new DefinitionBuilder<>(ClientStates.Root);
+        FsmBuilder<Client, ClientStates, Events> builder = FsmBuilder.of(ClientStates.Root);
         builder.root().add(ClientStates.Idle).isInitial();
         builder.root().add(ClientStates.WaitingForResponse);
         builder.root().add(ClientStates.Finished);
