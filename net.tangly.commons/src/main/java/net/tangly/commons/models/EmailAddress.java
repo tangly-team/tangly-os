@@ -20,6 +20,11 @@ public class EmailAddress implements Serializable {
     private final String recipient;
     private final String domain;
 
+    public static EmailAddress of(String email) {
+        String[] parts = email.split("@");
+        return new EmailAddress(parts[0], parts[1]);
+    }
+
     public EmailAddress(String recipient, String domain) {
         this.recipient = Objects.requireNonNull(recipient);
         this.domain = Objects.requireNonNull(domain);

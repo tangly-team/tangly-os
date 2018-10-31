@@ -51,6 +51,10 @@ public interface HasTags {
         add(tag);
     }
 
+    default void removeTagNamed(String tag) {
+        findBy(Tag.namespace(tag), Tag.name(tag)).ifPresent(this::remove);
+    }
+
     default Optional<Tag> findBy(String tag) {
         return findBy(Tag.namespace(tag), Tag.name(tag));
     }

@@ -55,8 +55,8 @@ public class TagType<T extends Serializable> {
         return name;
     }
 
-    public <V> V getValue(Tag tag) {
-        return (V) clazz.cast(Objects.requireNonNull(tag).value());
+    public <T> T getValue(Tag tag) {
+        return (T) clazz.cast(Objects.requireNonNull(tag).value());
     }
 
     public Tag of(T value) {

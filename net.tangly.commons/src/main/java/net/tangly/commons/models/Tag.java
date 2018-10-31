@@ -75,7 +75,6 @@ public class Tag implements Serializable {
         return new Tag(namespace, name, value);
     }
 
-
     /**
      * The namespace of the tag identifying the domain
      */

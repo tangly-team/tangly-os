@@ -38,4 +38,7 @@ public class CodeJsonHdl {
         mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
         return mapper.writer(new DefaultPrettyPrinter()).writeValueAsString(type.codes());
     }
+
+    private CodeJsonHdl() {
+    }
 }

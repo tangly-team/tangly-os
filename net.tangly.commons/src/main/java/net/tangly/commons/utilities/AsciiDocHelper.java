@@ -19,6 +19,10 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 
 public class AsciiDocHelper {
+    public static String bold(String text) {
+        return "*" + text + "*";
+    }
+
     private final PrintWriter writer;
 
     public AsciiDocHelper(@NotNull PrintWriter writer) {
@@ -44,7 +48,7 @@ public class AsciiDocHelper {
     }
 
     public AsciiDocHelper tableRow(String... cells) {
-        Arrays.asList(cells).forEach(o -> writer.append("|").println(o));
+        Arrays.asList(cells).forEach(o -> writer.append("|").append(o));
         writer.println();
         return this;
     }

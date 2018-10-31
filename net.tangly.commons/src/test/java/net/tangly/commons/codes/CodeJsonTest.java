@@ -39,7 +39,8 @@ class CodeJsonTest {
     @Test
     void testJsonCodeTest() throws IOException {
         CodeType<JsonCode> type = CodeType.of(JsonCode.class,
-                List.of(new JsonCode(1, "one", true), new JsonCode(2, "two", true), new JsonCode(3, "three", true), new JsonCode(4, "four", true), new JsonCode(5, "five", true)));
+                List.of(new JsonCode(1, "one", true), new JsonCode(2, "two", true), new JsonCode(3, "three", true), new JsonCode(4, "four", true),
+                        new JsonCode(5, "five", true), new JsonCode(6, "six", false)));
         asserts(type);
         String json = CodeJsonHdl.writeCodeToJson(type);
 
@@ -50,9 +51,9 @@ class CodeJsonTest {
 
     private void asserts(CodeType<JsonCode> type) {
         assertThat(type.codes()).isNotEmpty();
-        assertThat(type.codes().size()).isEqualTo(5);
+        assertThat(type.codes().size()).isEqualTo(6);
         assertThat(type.activeCodes().size()).isEqualTo(5);
-        assertThat(type.inactiveCodes().size()).isEqualTo(0);
+        assertThat(type.inactiveCodes().size()).isEqualTo(1);
         assertThat(type.findCode(1).isPresent()).isTrue();
         assertThat(type.findCode("one").isPresent()).isTrue();
     }
