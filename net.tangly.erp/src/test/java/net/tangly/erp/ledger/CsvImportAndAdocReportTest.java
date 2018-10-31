@@ -59,7 +59,7 @@ public class CsvImportAndAdocReportTest {
     }
 
     @Test
-    @Tag("LocalTest")
+    @Tag("localTest")
     void testCsvImportAndAdocReport() throws IOException {
         LedgerCsvHdl handler = new LedgerCsvHdl(new Ledger());
         handler.importStructureLedgerFromBanana8(Paths.get("/Users/Shared/tmp/swiss-ledger.csv"));

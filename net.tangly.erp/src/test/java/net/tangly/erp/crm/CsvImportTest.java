@@ -44,7 +44,7 @@ public class CsvImportTest {
     }
 
     @Test
-    @Tag("LocalTest")
+    @Tag("localTest")
     void testCsvNaturalEntityImport() throws IOException {
         CrmCsvHdl handler = new CrmCsvHdl();
 
