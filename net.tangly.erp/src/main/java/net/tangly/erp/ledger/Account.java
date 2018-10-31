@@ -21,7 +21,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * Defines an account as seen for double entry booking ledger and legal accounting for tax reports.
+ * Defines an account as seen for double entry booking ledger and legal accounting for tax ports.
  * { id = 1, kind = ASSET, description = "Assets"}
  */
 public class Account {

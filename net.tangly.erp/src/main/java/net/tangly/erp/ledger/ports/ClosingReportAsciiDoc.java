@@ -11,7 +11,7 @@
  * under the License.
  */
 
-package net.tangly.erp.ledger.reports;
+package net.tangly.erp.ledger.ports;
 
 
 import net.tangly.commons.utilities.AsciiDocHelper;
@@ -22,7 +22,6 @@ import net.tangly.erp.ledger.Transaction;
 
 import java.io.PrintWriter;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.text.DecimalFormat;
@@ -30,19 +29,18 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * A complete accounting report for a specific time interval. We suggest you use year, half-year and quarter reports. The output format is AsciiDoc.
+ * A complete accounting report for a specific time interval. We suggest you use year, half-year and quarter ports. The output format is AsciiDoc.
  */
 public class ClosingReportAsciiDoc {
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ClosingReportAsciiDoc.class);
     private final Ledger ledger;
-    private final BigDecimal retainedVatFactor = new BigDecimal("0.01307");
     private final DecimalFormat df = new DecimalFormat("#,##0.00");
 
     /**
-     * Constructor of the closing report. Multiple reports with variable reporting period length can be generated with
+     * Constructor of the closing report. Multiple ports with variable reporting period length can be generated with
      * the same instance.
      *
-     * @param ledger ledger containing all the accounting information for the reports
+     * @param ledger ledger containing all the accounting information for the ports
      */
     public ClosingReportAsciiDoc(Ledger ledger) {
         this.ledger = ledger;
@@ -56,15 +54,7 @@ public class ClosingReportAsciiDoc {
             generateResultTableFor(helper, ledger.liabilities(), from, to, "Liabilities");
             generateResultTableFor(helper, ledger.profitAndLoss(), from, to, "Profits and Losses");
 
-            helper.header("VAT Contributions", 1);
-            helper.tableHeader("VAT", "120, >20, >20 , >20", "Period", "Turnover", "Due VAT", "Retained VAT");
-            BigDecimal turnover = ledger.computeVatSales(from, to);
-            BigDecimal dueVat = ledger.computeDueVat(from, to);
-            BigDecimal retainedVat = turnover.multiply(new BigDecimal("0.01307"));
-            createVatRow(helper, "Period from " + from + " to " + to, turnover, dueVat, retainedVat);
-            helper.tableEnd();
-
-            helper.tableHeader("VAT", "120, >20, >20 , >20", "Period", "Turnover", "Due VAT", "Retained VAT");
+            helper.tableHeader("VAT", "100, >25, >25 , >25", "Period", "Turnover", "Due VAT", "Owned VAT");
             addVatRows(helper, from.getYear());
             if (from.getYear() != to.getYear()) {
                 addVatRows(helper, to.getYear());
@@ -72,7 +62,7 @@ public class ClosingReportAsciiDoc {
             helper.tableEnd();
 
             helper.header("Transactions", 1);
-            helper.tableHeader("VAT", "20, 20, 70 , 15, 15, >20, 15", "Date", "Voucher", "Description", "Debit", "Credit", "Amount", "VAT");
+            helper.tableHeader("Transactions", "20, 20, 70 , 15, 15, >20, >10", "Date", "Voucher", "Description", "Debit", "Credit", "Amount", "VAT");
             ledger.transactions(from, to).forEach(o -> createTransactionRow(helper, o));
             helper.tableEnd();
         } catch (Exception e) {
@@ -91,47 +81,47 @@ public class ClosingReportAsciiDoc {
         LocalDate periodStart = LocalDate.of(year, 1, 1);
         LocalDate periodEnd = LocalDate.of(year, 6, 30);
         BigDecimal earningH1 = ledger.computeVatSales(periodStart, periodEnd);
-        BigDecimal vatH1 = ledger.computeDueVat(periodStart, periodEnd);
-
+        BigDecimal vatDueH1 = ledger.computeDueVat(periodStart, periodEnd);
+        BigDecimal vatOwnedH1 = ledger.computeVat(periodStart, periodEnd).subtract(vatDueH1);
         periodStart = LocalDate.of(year, 7, 1);
         periodEnd = LocalDate.of(year, 12, 31);
         BigDecimal earningH2 = ledger.computeVatSales(periodStart, periodEnd);
-        BigDecimal vatH2 = ledger.computeDueVat(periodStart, periodEnd);
+        BigDecimal vatDueH2 = ledger.computeDueVat(periodStart, periodEnd);
+        BigDecimal vatOwnedH2 = ledger.computeVat(periodStart, periodEnd).subtract(vatDueH2);
 
         // TODO compute the correct retained VAT Factor F1 -> 0.01307, F3 -> ?
-        createVatRow(helper, "First Half Year " + year, earningH1, vatH1, earningH1.multiply(retainedVatFactor));
-        createVatRow(helper, "Second Half Year " + year, earningH2, vatH2, earningH2.multiply(retainedVatFactor));
-        createVatRow(helper, "Totals Year " + year, earningH1.add(earningH2), vatH1.add(vatH2),
-                earningH1.multiply(retainedVatFactor).add(earningH2.multiply(retainedVatFactor)));
+        createVatRow(helper, "First Half Year " + year, earningH1, vatDueH1, vatOwnedH1);
+        createVatRow(helper, "Second Half Year " + year, earningH2, vatDueH2, vatOwnedH1);
+        createVatRow(helper, "Totals Year " + year, earningH1.add(earningH2), vatDueH1.add(vatDueH2), vatOwnedH1.add(vatOwnedH2));
     }
 
     private void createVatRow(AsciiDocHelper helper, String text, BigDecimal turnover, BigDecimal dueVat, BigDecimal difference) {
-        helper.tableRow(text, valueToText(turnover), valueToText(dueVat), valueToText(difference));
+        helper.tableRow(text, format(turnover), format(dueVat), format(difference));
     }
 
     private void createTransactionRow(AsciiDocHelper helper, Transaction transaction) {
         if (transaction.isSplit()) {
             if (transaction.debitSplits().size() > 1) {
                 helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.description(), "", transaction.creditAccount(),
-                        transaction.amount().toString(), "-");
+                        format(transaction.amount()), "-");
                 for (AccountEntry entry : transaction.debitSplits()) {
-                    helper.tableRow("", "", "", entry.account(), "", entry.amount().toString(), "-");
+                    helper.tableRow("", "", "", entry.account(), "", format(transaction.amount()), "-");
                 }
             } else {
                 helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.description(), transaction.debitAccount(), "",
-                        transaction.amount().toString(), "-");
+                        format(transaction.amount()), "-");
                 for (AccountEntry entry : transaction.debitSplits()) {
-                    helper.tableRow("", "", "", "", entry.account(), entry.amount().toString(), "-");
+                    helper.tableRow("", "", "", "", entry.account(), format(transaction.amount()), "-");
                 }
             }
         } else {
             helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.description(), transaction.debitAccount(),
-                    transaction.creditAccount(), transaction.amount().toString(), vat(transaction.creditSplits().get(0)));
+                    transaction.creditAccount(), format(transaction.amount()), vat(transaction.creditSplits().get(0)));
         }
     }
 
     private String vat(AccountEntry entry) {
-        return entry.getVat().map(o -> o.multiply(new BigDecimal(100)).setScale(2, RoundingMode.CEILING).toString() + "%").orElse("");
+        return entry.getVat().map(o -> format(o.multiply(new BigDecimal(100))) + "%").orElse("");
     }
 
     private void createBalanceRow(AsciiDocHelper helper, Account account, LocalDate from, LocalDate to) {
@@ -141,15 +131,19 @@ public class ClosingReportAsciiDoc {
         if (BigDecimal.ZERO.equals(fromBalance) && BigDecimal.ZERO.equals(toBalance)) {
             return;
         }
-        helper.tableRow(account.id(), account.description(), account.isAggregate() ? "" : account.kind().name().toLowerCase(), valueToText(toBalance),
-                valueToText(fromBalance));
+        String accountId = account.id().startsWith("E") ? AsciiDocHelper.bold(account.id()) : account.id();
+        String description = account.id().startsWith("E") ? AsciiDocHelper.bold(account.description()) : account.description();
+        helper.tableRow(accountId, description, account.isAggregate() ? "" : account.kind().name().toLowerCase(), format(toBalance),
+                format(fromBalance));
     }
 
-    private String valueToText(BigDecimal value) {
+    private String format(BigDecimal value) {
         if (value.compareTo(BigDecimal.ZERO) >= 0) {
-            return value.toString();
+
+            return df.format(value);
         } else {
-            return "[red]#" + value.toString() + "#";
+            return "[red]#" + df.format(value) + "#";
         }
     }
+
 }

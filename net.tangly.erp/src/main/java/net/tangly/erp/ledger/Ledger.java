@@ -114,6 +114,12 @@ public class Ledger {
     // region VAT-computations
 
     public BigDecimal computeVatSales(LocalDate from, LocalDate to) {
+        return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream())
+                .filter(o -> o.findBy(AccountEntry.FINANCE, AccountEntry.VAT).isPresent()).map(AccountEntry::amount).reduce(BigDecimal::add)
+                .orElse(BigDecimal.ZERO);
+    }
+
+    public BigDecimal computeVat(LocalDate from, LocalDate to) {
         return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).map(o -> {
             Optional<Tag> tag = o.findBy(AccountEntry.FINANCE, AccountEntry.VAT);
             return tag.isPresent() ? o.amount().multiply((BigDecimal) tag.get().value()) : BigDecimal.ZERO;

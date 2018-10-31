@@ -13,8 +13,8 @@
 
 package net.tangly.erp.ledger;
 
-import net.tangly.erp.ledger.reports.ClosingReportAsciiDoc;
-import net.tangly.erp.ledger.reports.LedgerCsvHdl;
+import net.tangly.erp.ledger.ports.ClosingReportAsciiDoc;
+import net.tangly.erp.ledger.ports.LedgerCsvHdl;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 

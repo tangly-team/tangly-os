@@ -11,7 +11,7 @@
  * under the License.
  */
 
-package net.tangly.erp.ledger.reports;
+package net.tangly.erp.ledger.ports;
 
 import com.google.common.base.Strings;
 import net.tangly.commons.models.Tag;
@@ -150,7 +150,6 @@ public class LedgerCsvHdl {
 
     private CSVRecord importSplits(@NotNull Iterator<CSVRecord> records, List<AccountEntry> splits) {
         CSVRecord record = records.hasNext() ? records.next() : null;
-        ;
         while (isPartOfSplitTransaction(record)) {
             String date = record.get(DATE);
             String text = record.get(DESCRIPTION);
@@ -205,6 +204,9 @@ public class LedgerCsvHdl {
                         o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT, VAT_F3_VALUE));
                         o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT_DUE, VAT_F3_DUE_VALUE));
                     });
+                    break;
+                default:
+                    log.info("Unknown VAT code in CSV file {}", code);
                     break;
             }
         }
