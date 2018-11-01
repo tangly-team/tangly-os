@@ -43,6 +43,7 @@ public class CrmCsvHdl {
     private static final String FROM_DATE = "fromDate";
     private static final String TO_DATE = "toDate";
     private static final String LINKEDIN = "linkedIn";
+    private static final String VAT_NR = "vatNr";
 
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(CrmCsvHdl.class);
 
@@ -74,6 +75,7 @@ public class CrmCsvHdl {
             NaturalEntity entity = NaturalEntity.of(Long.valueOf(oid), id, lastname, firstname);
             entity.fromDate((fromDate != null) ? LocalDate.parse(fromDate) : null);
             entity.toDate((toDate != null) ? LocalDate.parse(toDate) : null);
+            entity.setAddress(CrmTags.HOME, importAddress(record));
             entity.setEmail(CrmTags.HOME, emailHome);
             entity.setPhoneNr(CrmTags.MOBILE, phoneMobile);
             entity.setIm("linkedin", linkedIn);
@@ -99,11 +101,14 @@ public class CrmCsvHdl {
             String phoneMain = get(record, "phone-main");
             String siteWork = get(record, "site-work");
             String linkedIn = get(record, LINKEDIN);
+            String vatNr = get(record, VAT_NR);
             LegalEntity entity = LegalEntity.of(Long.valueOf(oid), id, name);
             entity.fromDate((fromDate != null) ? LocalDate.parse(fromDate) : null);
             entity.toDate((toDate != null) ? LocalDate.parse(toDate) : null);
+            entity.setAddress(CrmTags.HOME, importAddress(record));
             entity.setEmail(CrmTags.WORK, emailWork);
             entity.setPhoneNr(CrmTags.WORK, phoneMain);
+            entity.vatNr(vatNr);
             try {
                 entity.setSite(CrmTags.WORK, (siteWork != null) ? new URI(siteWork) : null);
             } catch (URISyntaxException e) {

@@ -35,12 +35,4 @@ public class LegalEntity extends EntityImp implements Entity, CrmEntity {
     public void vatNr(String vatNr) {
         replace(Tag.of(CrmTags.CRM_VAT_NUMBER, vatNr));
     }
-
-    public String companyNr() {
-        return id();
-    }
-
-    public void companyNr(String companyNr) {
-        setId(companyNr);
-    }
 }
