@@ -78,6 +78,6 @@ public abstract class CodeImp implements Code {
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this.getClass()).add("code", getClass().getName()).add("id", id).toString();
+        return MoreObjects.toStringHelper(this).add("id", id).add("code", code).add("enabled", enabled).toString();
     }
 }

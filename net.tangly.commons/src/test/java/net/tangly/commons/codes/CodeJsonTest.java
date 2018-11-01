@@ -19,6 +19,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -38,9 +39,7 @@ class CodeJsonTest {
 
     @Test
     void testJsonCodeTest() throws IOException {
-        CodeType<JsonCode> type = CodeType.of(JsonCode.class,
-                List.of(new JsonCode(1, "one", true), new JsonCode(2, "two", true), new JsonCode(3, "three", true), new JsonCode(4, "four", true),
-                        new JsonCode(5, "five", true), new JsonCode(6, "six", false)));
+        CodeType<JsonCode> type = build();
         asserts(type);
         String json = CodeJsonHdl.writeCodeToJson(type);
 
@@ -56,5 +55,24 @@ class CodeJsonTest {
         assertThat(type.inactiveCodes().size()).isEqualTo(1);
         assertThat(type.findCode(1).isPresent()).isTrue();
         assertThat(type.findCode("one").isPresent()).isTrue();
+    }
+
+    @Test
+    void testFindAndEquivalence() {
+        CodeType<JsonCode> type = build();
+        Optional<JsonCode> code1 = type.findCode(1);
+        Optional<JsonCode> code2 = type.findCode("one");
+        if (code1.isPresent() && code2.isPresent()) {
+            assertThat(code1.get() == code2.get()).isTrue();
+            assertThat(code1.get().equals(code2.get())).isTrue();
+            assertThat(code1.get().toString()).isEqualTo("JsonCode{id=1, code=one, enabled=true}");
+        }
+    }
+
+    private CodeType<JsonCode> build() {
+        return CodeType.of(JsonCode.class,
+                List.of(new JsonCode(1, "one", true), new JsonCode(2, "two", true), new JsonCode(3, "three", true), new JsonCode(4, "four", true),
+                        new JsonCode(5, "five", true), new JsonCode(6, "six", false)));
+
     }
 }

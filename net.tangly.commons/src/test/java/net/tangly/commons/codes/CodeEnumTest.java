@@ -15,13 +15,17 @@ package net.tangly.commons.codes;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
 class CodeEnumTest {
+    /**
+     * Enumeration type extended to support the code interface.
+     */
     private enum EnumCode implements Code {
         CODE_TEST_1, CODE_TEST_2, CODE_TEST_3, CODE_TEST_4, CODE_TEST_5;
-
 
         @Override
         public int id() {
@@ -48,5 +52,17 @@ class CodeEnumTest {
         assertThat(type.inactiveCodes().size()).isEqualTo(0);
         assertThat(type.findCode(1).isPresent()).isTrue();
         assertThat(type.findCode(EnumCode.CODE_TEST_1.code()).isPresent()).isTrue();
+    }
+
+    @Test
+    void testFindAndEquivalence() {
+        final CodeType<EnumCode> type = CodeType.of(EnumCode.class);
+        Optional<EnumCode> code1 = type.findCode(EnumCode.CODE_TEST_2.id());
+        Optional<EnumCode> code2 = type.findCode(EnumCode.CODE_TEST_2.code());
+        if (code1.isPresent() && code2.isPresent()) {
+            assertThat(code1.get() == code2.get()).isTrue();
+            assertThat(code1.get().equals(code2.get())).isTrue();
+            assertThat(code1.get().toString()).isEqualTo("CODE_TEST_2");
+        }
     }
 }
