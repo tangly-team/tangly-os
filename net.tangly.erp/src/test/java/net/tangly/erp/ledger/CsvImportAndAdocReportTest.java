@@ -19,6 +19,8 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -56,6 +58,11 @@ public class CsvImportAndAdocReportTest {
         handler.importTransactionsLedgerFromBanana8(path);
         assertThat(handler.ledger().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31)).isEmpty()).isFalse();
         // TODO assert transactions
+        ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(handler.ledger());
+        StringWriter writer = new StringWriter();
+        report.create(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31), new PrintWriter(writer));
+        assertThat(writer.toString().isEmpty()).isFalse();
+        // TODO assert contains in writer
     }
 
     @Test

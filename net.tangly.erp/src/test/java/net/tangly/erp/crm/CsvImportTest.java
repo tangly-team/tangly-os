@@ -33,6 +33,15 @@ public class CsvImportTest {
         List<NaturalEntity> naturalEntities = handler.importNaturalEntities(path);
         assertThat(naturalEntities.size()).isEqualTo(5);
 
+        assertThat(naturalEntities.get(0).oid()).isEqualTo(1);
+        assertThat(naturalEntities.get(0).id()).isNull();
+        assertThat(naturalEntities.get(0).findAddress(CrmTags.HOME)).isNotNull();
+        assertThat(naturalEntities.get(0).findAddress(CrmTags.HOME)).isNotNull();
+        assertThat(naturalEntities.get(0).findEmail(CrmTags.HOME)).isNotNull();
+        assertThat(naturalEntities.get(0).findPhoneNr(CrmTags.HOME)).isNotNull();
+        assertThat(naturalEntities.get(0).findSite(CrmTags.HOME)).isNotNull();
+
+
         path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/crm/legalEntities.csv").toURI());
         List<LegalEntity> legalEntities = handler.importLegalEntities(path);
         assertThat(legalEntities.size()).isEqualTo(2);

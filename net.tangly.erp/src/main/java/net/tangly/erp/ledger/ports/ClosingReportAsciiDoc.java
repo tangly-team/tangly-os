@@ -47,27 +47,31 @@ public class ClosingReportAsciiDoc {
     }
 
     public void create(LocalDate from, LocalDate to, Path reportPath) {
-        try (PrintWriter out = new PrintWriter(reportPath.toFile(), StandardCharsets.UTF_8)) {
-            final AsciiDocHelper helper = new AsciiDocHelper(out);
-            helper.header("Balance Sheet", 1);
-            generateResultTableFor(helper, ledger.assets(), from, to, "Assets");
-            generateResultTableFor(helper, ledger.liabilities(), from, to, "Liabilities");
-            generateResultTableFor(helper, ledger.profitAndLoss(), from, to, "Profits and Losses");
-
-            helper.tableHeader("VAT", "100, >25, >25 , >25", "Period", "Turnover", "Due VAT", "Owned VAT");
-            addVatRows(helper, from.getYear());
-            if (from.getYear() != to.getYear()) {
-                addVatRows(helper, to.getYear());
-            }
-            helper.tableEnd();
-
-            helper.header("Transactions", 1);
-            helper.tableHeader("Transactions", "20, 20, 70 , 15, 15, >20, >10", "Date", "Voucher", "Description", "Debit", "Credit", "Amount", "VAT");
-            ledger.transactions(from, to).forEach(o -> createTransactionRow(helper, o));
-            helper.tableEnd();
+        try (PrintWriter writer = new PrintWriter(reportPath.toFile(), StandardCharsets.UTF_8)) {
+            create(from, to, writer);
         } catch (Exception e) {
             log.error("Error during reporting", e);
         }
+    }
+
+    public void create(LocalDate from, LocalDate to, PrintWriter writer) {
+        final AsciiDocHelper helper = new AsciiDocHelper(writer);
+        helper.header("Balance Sheet", 1);
+        generateResultTableFor(helper, ledger.assets(), from, to, "Assets");
+        generateResultTableFor(helper, ledger.liabilities(), from, to, "Liabilities");
+        generateResultTableFor(helper, ledger.profitAndLoss(), from, to, "Profits and Losses");
+
+        helper.tableHeader("VAT", "100, >25, >25 , >25", "Period", "Turnover", "Due VAT", "Owned VAT");
+        addVatRows(helper, from.getYear());
+        if (from.getYear() != to.getYear()) {
+            addVatRows(helper, to.getYear());
+        }
+        helper.tableEnd();
+
+        helper.header("Transactions", 1);
+        helper.tableHeader("Transactions", "20, 20, 70 , 15, 15, >20, >10", "Date", "Voucher", "Description", "Debit", "Credit", "Amount", "VAT");
+        ledger.transactions(from, to).forEach(o -> createTransactionRow(helper, o));
+        helper.tableEnd();
     }
 
     private void generateResultTableFor(AsciiDocHelper helper, List<Account> accounts, LocalDate from, LocalDate to, String category) {
