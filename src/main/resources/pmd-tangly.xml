@@ -50,5 +50,4 @@
             <property name="maxLineLength" value="180"/>
         </properties>
     </rule>
-
 </ruleset>
