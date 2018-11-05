@@ -30,15 +30,11 @@ import java.time.LocalDate;
  */
 public interface Entity extends HasId, HasTags, HasComments, Serializable {
     static Entity of() {
-        return new EntityImp(UNDEFINED_OID, Long.toString(UNDEFINED_OID), Long.toString(UNDEFINED_OID));
+        return new EntityImp(UNDEFINED_OID, Long.toString(UNDEFINED_OID));
     }
 
-    static Entity of(long oid) {
-        return new EntityImp(oid, Long.toString(oid), Long.toString(oid));
-    }
-
-    static Entity of(String id) {
-        return new EntityImp(UNDEFINED_OID, id, id);
+    static Entity of(long oid, String id) {
+        return new EntityImp(oid, id);
     }
 
     /**

@@ -23,39 +23,104 @@ import java.util.StringJoiner;
  */
 public class Address implements Serializable {
     /**
+     * Returns a builder instance for an address.
+     *
+     * @return builder instance
+     */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    /**
+     * Builder for the address class. Upon building the class you should discsard the builder instance. Any additional call on the builder will
+     * create a runtime exception.
+     */
+    public static class Builder {
+        /**
+         * address instance under construction.
+         */
+        private Address address;
+
+        public Builder() {
+            address = new Address();
+        }
+
+        public Builder street(String street) {
+            address.street = street;
+            return this;
+        }
+
+        public Builder extended(String extended) {
+            address.extended = extended;
+            return this;
+        }
+
+        public Builder poB0x(String poBox) {
+            address.poBox = poBox;
+            return this;
+        }
+
+        public Builder postcode(String postcode) {
+            address.postcode = postcode;
+            return this;
+        }
+
+        public Builder locality(String locality) {
+            address.locality = locality;
+            return this;
+        }
+
+        public Builder region(String region) {
+            address.region = region;
+            return this;
+        }
+
+        public Builder country(String country) {
+            address.country = country;
+            return this;
+        }
+
+        public Address build() {
+            Address address = this.address;
+            address = null;
+            return address;
+        }
+    }
+
+    /**
      * Street information of the address including house number.
      */
-    private final String street;
+    private String street;
 
     /**
      * Extended information of the address such as floor and suite information.
      */
-    private final String extended;
+    private String extended;
 
     /**
      * PO Box of the address.
      */
-    private final String poBox;
+    private String poBox;
 
     /**
      * Postal number of the address.
      */
-    private final String postcode;
+    private String postcode;
 
     /**
      * City information of the address.
      */
-    private final String locality;
+    private String locality;
 
     /**
      * Region information of the address such as state, department.
      */
-    private final String region;
+    private String region;
 
     /**
      * Country information of the address.
      */
-    private final String country;
+    private String country;
 
     public static Address of(String text) {
         var items = text.split("(,)");
@@ -63,20 +128,7 @@ public class Address implements Serializable {
     }
 
     /**
-     * Constructor of the class.
-     *
-     * @param street   street of the address with the street number
-     * @param postcode postal code of the address, country specific
-     * @param locality locality of the address
-     * @param region   region as department, state, canton
-     * @param country  country as a string
-     */
-    public Address(String street, String postcode, String locality, String region, String country) {
-        this(street, null, null, postcode, locality, region, country);
-    }
-
-    /**
-     * Constructor of the class. It creates an immutable instance.
+     * Constructor of the class. It creates an immutable instance. Consider using the {@link Address#builder()} pattern to create an address.
      *
      * @param street   street of the address with the street number
      * @param extended extended address line if defined
@@ -94,6 +146,12 @@ public class Address implements Serializable {
         this.locality = locality;
         this.region = region;
         this.country = country;
+    }
+
+    /**
+     * Constructor reserved for the builder pattern.
+     */
+    private Address() {
     }
 
     /**

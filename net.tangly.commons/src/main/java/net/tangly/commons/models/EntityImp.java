@@ -37,10 +37,9 @@ public class EntityImp implements Entity {
      * @param oid unique internal object identifier
      * @param id  external object identifier
      */
-    public EntityImp(long oid, String id, String name) {
+    public EntityImp(long oid, String id) {
         this.oid = oid;
         this.id = id;
-        this.name = name;
         comments = new ArrayList<>();
         tags = new HashSet<>();
     }

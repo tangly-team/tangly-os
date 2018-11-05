@@ -24,15 +24,15 @@ public class NaturalEntity extends EntityImp implements Entity, CrmEntity {
     private String lastname;
 
     public static NaturalEntity of(long oid, String socialNumber, String lastname, String firstname) {
-        var entity = new NaturalEntity(oid);
+        var entity = new NaturalEntity(oid, socialNumber);
         entity.lastname(lastname);
         entity.firstname(firstname);
         entity.socialNr(socialNumber);
         return entity;
     }
 
-    public NaturalEntity(long oid) {
-        super(oid, "", "");
+    public NaturalEntity(long oid, String id) {
+        super(oid, id);
     }
 
     public String firstname() {

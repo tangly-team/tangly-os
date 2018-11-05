@@ -19,12 +19,12 @@ import net.tangly.commons.models.Tag;
 
 public class LegalEntity extends EntityImp implements Entity, CrmEntity {
 
-    public static LegalEntity of(long oid, String id, String name) {
-        return new LegalEntity(oid, id, name);
+    public static LegalEntity of(long oid, String id) {
+        return new LegalEntity(oid, id);
     }
 
-    public LegalEntity(long oid, String id, String name) {
-        super(oid, id, name);
+    public LegalEntity(long oid, String id) {
+        super(oid, id);
     }
 
     public String vatNr() {

@@ -13,6 +13,7 @@
 
 package net.tangly.erp.crm;
 
+import net.tangly.erp.crm.apps.Crm;
 import net.tangly.erp.crm.ports.CrmCsvHdl;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -28,38 +29,41 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CsvImportTest {
     @Test
     void testCsvCrm() throws IOException, URISyntaxException {
-        CrmCsvHdl handler = new CrmCsvHdl();
+        Crm crm = new Crm();
+        CrmTags.registerTags(crm.tagTypeRegistry());
+        CrmCsvHdl handler = new CrmCsvHdl(crm);
+
         Path path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/crm/naturalEntities.csv").toURI());
-        List<NaturalEntity> naturalEntities = handler.importNaturalEntities(path);
-        assertThat(naturalEntities.size()).isEqualTo(5);
+        handler.importNaturalEntities(path);
+        assertThat(crm.naturalEntities().size()).isEqualTo(5);
 
-        assertThat(naturalEntities.get(0).oid()).isEqualTo(1);
-        assertThat(naturalEntities.get(0).id()).isNull();
-        assertThat(naturalEntities.get(0).findAddress(CrmTags.HOME)).isNotNull();
-        assertThat(naturalEntities.get(0).findAddress(CrmTags.HOME)).isNotNull();
-        assertThat(naturalEntities.get(0).findEmail(CrmTags.HOME)).isNotNull();
-        assertThat(naturalEntities.get(0).findPhoneNr(CrmTags.HOME)).isNotNull();
-        assertThat(naturalEntities.get(0).findSite(CrmTags.HOME)).isNotNull();
-
+        assertThat(crm.naturalEntities().get(0).oid()).isEqualTo(1);
+        assertThat(crm.naturalEntities().get(0).id()).isNull();
+        assertThat(crm.naturalEntities().get(0).findAddress(CrmTags.HOME)).isNotNull();
+        assertThat(crm.naturalEntities().get(0).findAddress(CrmTags.HOME)).isNotNull();
+        assertThat(crm.naturalEntities().get(0).findEmail(CrmTags.HOME)).isNotNull();
+        assertThat(crm.naturalEntities().get(0).findPhoneNr(CrmTags.HOME)).isNotNull();
+        assertThat(crm.naturalEntities().get(0).findSite(CrmTags.HOME)).isNotNull();
 
         path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/crm/legalEntities.csv").toURI());
-        List<LegalEntity> legalEntities = handler.importLegalEntities(path);
-        assertThat(legalEntities.size()).isEqualTo(2);
+        handler.importLegalEntities(path);
+        assertThat(crm.legalEntities().size()).isEqualTo(2);
 
         path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/crm/employees.csv").toURI());
-        List<Employee> employees = handler.importEmployees(path);
-        assertThat(employees.size()).isEqualTo(4);
-
+        handler.importEmployees(path);
+        assertThat(crm.employees().size()).isEqualTo(4);
     }
 
     @Test
     @Tag("localTest")
     void testCsvNaturalEntityImport() throws IOException {
-        CrmCsvHdl handler = new CrmCsvHdl();
+        Crm crm = new Crm();
+        CrmTags.registerTags(crm.tagTypeRegistry());
+        CrmCsvHdl handler = new CrmCsvHdl(crm);
 
-        List<NaturalEntity> naturalEntities = handler.importNaturalEntities(Paths.get("/Users/Shared/tmp/naturalEntities.csv"));
-        List<LegalEntity> legalEntities = handler.importLegalEntities(Paths.get("/Users/Shared/tmp/legalEntities.csv"));
-        List<Employee> employees = handler.importEmployees(Paths.get("/Users/Shared/tmp/employees.csv"));
+        handler.importNaturalEntities(Paths.get("/Users/Shared/tmp/naturalEntities.csv"));
+        handler.importLegalEntities(Paths.get("/Users/Shared/tmp/legalEntities.csv"));
+        handler.importEmployees(Paths.get("/Users/Shared/tmp/employees.csv"));
 
     }
 }

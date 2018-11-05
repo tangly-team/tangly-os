@@ -182,7 +182,7 @@ public class LedgerCsvHdl {
     }
 
 
-    // TODO implement strategy pattern
+    // potential strategy pattern
     private static final String F1 = "F1";
     private static final String F3 = "F3";
     private static final BigDecimal VAT_F1_VALUE = new BigDecimal("0.08");

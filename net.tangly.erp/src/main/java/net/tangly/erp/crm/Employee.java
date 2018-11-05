@@ -22,7 +22,7 @@ public class Employee extends EntityImp implements Entity, CrmEntity {
     private transient LegalEntity organization;
 
     public Employee(long oid, String id) {
-        super(oid, id, "");
+        super(oid, id);
     }
 
     public NaturalEntity person() {

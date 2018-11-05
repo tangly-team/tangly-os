@@ -20,23 +20,23 @@ import java.util.Objects;
 
 public final class CrmTags {
 
-    static void registerTags(TagTypeRegistry types) {
-        types.register(TagType.ofMandatory("crm", "email-home", EmailAddress.class));
-        types.register(TagType.ofMandatory("crm", "email-work", EmailAddress.class));
-        types.register(TagType.ofMandatory("crm", "phone-mobile", PhoneNr.class));
-        types.register(TagType.ofMandatory("crm", "phone-home", PhoneNr.class));
-        types.register(TagType.ofMandatory("crm", "address-home", Address.class));
-        types.register(TagType.ofMandatory("crm", "address-work", Address.class));
-        types.register(TagType.ofMandatory("crm", "site-home", URL.class));
-        types.register(TagType.ofMandatory("crm", "site-work", URL.class));
-        types.register(TagType.ofMandatory("crm", "title", String.class));
-        types.register(TagType.ofMandatory("crm", "im-linkedin", String.class));
-        types.register(TagType.ofMandatory("crm", "im-skype", String.class));
-        types.register(TagType.ofMandatory("crm", "im-google", String.class));
-        types.register(TagType.ofMandatory("crm", "company-id", String.class));
-        types.register(TagType.ofMandatory("crm", "vat-number", String.class));
-        types.register(TagType.ofMandatory("crm", "bank-connection", BankConnection.class));
-        types.register(TagType.ofMandatory("crm", "activity", String.class));
+    static void registerTags(TagTypeRegistry registry) {
+        registry.register(TagType.ofMandatory("crm", "email-home", EmailAddress.class));
+        registry.register(TagType.ofMandatory("crm", "email-work", EmailAddress.class));
+        registry.register(TagType.ofMandatory("crm", "phone-mobile", PhoneNr.class));
+        registry.register(TagType.ofMandatory("crm", "phone-home", PhoneNr.class));
+        registry.register(TagType.ofMandatory("crm", "address-home", Address.class));
+        registry.register(TagType.ofMandatory("crm", "address-work", Address.class));
+        registry.register(TagType.ofMandatory("crm", "site-home", URL.class));
+        registry.register(TagType.ofMandatory("crm", "site-work", URL.class));
+        registry.register(TagType.ofMandatory("crm", "title", String.class));
+        registry.register(TagType.ofMandatory("crm", "im-linkedin", String.class));
+        registry.register(TagType.ofMandatory("crm", "im-skype", String.class));
+        registry.register(TagType.ofMandatory("crm", "im-google", String.class));
+        registry.register(TagType.ofMandatory("crm", "company-id", String.class));
+        registry.register(TagType.ofMandatory("crm", "vat-number", String.class));
+        registry.register(TagType.ofMandatory("crm", "bank-connection", BankConnection.class));
+        registry.register(TagType.ofMandatory("crm", "activity", String.class));
     }
 
     public static final String CRM = "crm";

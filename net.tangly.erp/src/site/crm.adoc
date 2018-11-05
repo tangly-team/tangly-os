@@ -1,0 +1,85 @@
+= CRM Module
+
+== Model
+The domain driven model of the CRM module.
+
+[plantuml, crm-model, svg]
+....
+@startuml
+
+title CRM Model
+
+Class Contract {
+ + BigDecimal amount()
+}
+
+Class NaturalEntity
+CLass LegalEntity {
+  String lastname()
+  String lastname()
+}
+
+Class Employee {
+ + String title()
+}
+
+Interface CrmEntity{
+ + long oid()
+ + String id()
+ + String name()
+ + String text()
+ + LocalDate fromDate()
+ + LocalDate toDate()
+}
+
+Interface HasTags {
+ + List<Tag> tags()
+}
+
+Interface HasComments {
+ + List<Comment> comments()
+}
+
+CrmEntity o-- HasTags
+CrmEntity o-- HasComments
+
+NaturalEntity o-- CrmEntity
+LegalEntity <|-- CrmEntity
+Employee <|-- CrmEntity
+
+Employee "*"  o-- "1" LegalEntity : employer
+Employee "*" o--  "1" NaturalEntity : employee
+
+Contract "*" o-- "1" LegalEntity : seller
+Contract "*" o-- "1" LegalEntity : sellee
+
+@enduml
+....
+
+== Entity
+
+An entity and all subclasses have a set of attributes present in any CSV file.
+
+oid::
+  object identifier of the entity instance as the string representation of a 64 bits long. The value is mandatory.
+id::
+  identifier of the entity instance as a string. The value is optional.
+name::
+  human readable name of the entity instance as a string. The value is optional.
+text::
+  human readable description of the entity instance as a long string. The value is optional.
+fromDate::
+  start date when the entity instance is active. The value is optional.
+toDate::
+  end date when the entity instance is active. Upon end date, the entity should be read-only and no more editied in the system. The value is optional.
+
+== Ports
+
+[plantuml, crm-ports, svg]
+....
+@startuml
+Class CrmCsvHdl
+@enduml
+....
+
+== CSV Import
