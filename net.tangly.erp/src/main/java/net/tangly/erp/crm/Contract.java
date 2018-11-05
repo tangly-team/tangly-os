@@ -14,7 +14,6 @@
 package net.tangly.erp.crm;
 
 import net.tangly.commons.models.Address;
-import net.tangly.commons.models.Entity;
 import net.tangly.commons.models.EntityImp;
 
 import java.math.BigDecimal;
