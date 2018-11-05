@@ -24,6 +24,8 @@ import java.util.stream.Collectors;
  * for multi-dimensional classifications of values.
  */
 public class Tag implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     /**
      * Transforms a collection of tags into their textual representation.
      *

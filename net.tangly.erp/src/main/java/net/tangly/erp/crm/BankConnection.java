@@ -19,6 +19,7 @@ import java.io.Serializable;
  * Describes a bank connection with IBAN account number, BIC identification and name of the institute. The class is mmutable.
  */
 public class BankConnection implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     private final String iban;
     private final String bic;

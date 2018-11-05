@@ -17,6 +17,7 @@ package net.tangly.erp.crm;
 import net.tangly.commons.models.EntityImp;
 
 public class NaturalEntity extends EntityImp implements CrmEntity {
+    private static final long serialVersionUID = 1L;
 
     private String firstname;
 

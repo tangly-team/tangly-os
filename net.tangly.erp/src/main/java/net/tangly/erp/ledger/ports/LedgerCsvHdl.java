@@ -114,7 +114,7 @@ public class LedgerCsvHdl {
      * @throws IOException if file operations encountered a problem - no file or no privileges -
      */
     public void importTransactionsLedgerFromBanana8(@NotNull Path path) throws IOException {
-        Reader in = new BufferedReader(new FileReader(path.toFile()));
+        Reader in = new BufferedReader(new FileReader(path.toFile(), StandardCharsets.UTF_8));
         Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
         CSVRecord record = records.hasNext() ? records.next() : null;
         while (record != null) {

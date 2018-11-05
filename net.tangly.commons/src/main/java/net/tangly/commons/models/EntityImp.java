@@ -21,7 +21,7 @@ import java.util.*;
  *
  * @see Entity
  */
-public class EntityImp implements Entity {
+public abstract class EntityImp implements Entity {
     private final long oid;
     private String id;
     private String name;

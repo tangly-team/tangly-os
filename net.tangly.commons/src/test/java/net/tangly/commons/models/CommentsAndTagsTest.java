@@ -22,6 +22,16 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CommentsAndTagsTest {
+    static class Entity extends EntityImp {
+        static Entity of() {
+            return new Entity();
+        }
+
+        Entity() {
+            super(0, "");
+        }
+    }
+
     @Test
     void testModifyTags() {
         // Given

@@ -87,6 +87,9 @@ public class Address implements Serializable {
         }
     }
 
+    private static final long serialVersionUID = 1L;
+
+
     /**
      * Street information of the address including house number.
      */

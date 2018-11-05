@@ -26,6 +26,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * phone numbers (http://code.google.com/p/libphonenumber). A phone number is an immutable object.
  */
 public class PhoneNr implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     /**
      * pattern used to normalize the phone numbers.
