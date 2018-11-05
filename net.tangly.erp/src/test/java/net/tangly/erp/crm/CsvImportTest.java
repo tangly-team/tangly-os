@@ -52,6 +52,10 @@ public class CsvImportTest {
         path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/crm/employees.csv").toURI());
         handler.importEmployees(path);
         assertThat(crm.employees().size()).isEqualTo(4);
+
+        path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/crm/contracts.csv").toURI());
+        handler.importContracts(path);
+        assertThat(crm.contracts().size()).isEqualTo(5);
     }
 
     @Test

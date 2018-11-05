@@ -128,12 +128,13 @@ public class CrmCsvHdl {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             CSVRecord record = records.hasNext() ? records.next() : null;
             while (record != null) {
-                record = records.hasNext() ? records.next() : null;
                 Contract entity = new Contract(Long.valueOf(get(record, OID)), get(record, ID));
                 updateEntity(record, entity);
                 findLegalEntityByOid(get(record, "sellerOid")).ifPresent(entity::seller);
                 findLegalEntityByOid(get(record, "selleeOid")).ifPresent(entity::sellee);
                 entity.bankConnection(new BankConnection(get(record, "iban"), get(record, "bic"), get(record, "institute")));
+                entities.add(entity);
+                record = records.hasNext() ? records.next() : null;
             }
             crm.addContracts(entities);
         }

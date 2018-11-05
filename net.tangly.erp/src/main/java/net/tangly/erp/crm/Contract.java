@@ -19,6 +19,9 @@ import net.tangly.commons.models.EntityImp;
 
 import java.math.BigDecimal;
 
+/**
+ * A legal contract between two parties, a seller and a sellee.
+ */
 public class Contract extends EntityImp implements Entity {
 
     private Address address;
