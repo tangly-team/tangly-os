@@ -77,70 +77,73 @@ public class CrmCsvHdl {
 
     public List<LegalEntity> importLegalEntities(@NotNull Path path) throws IOException {
         List<LegalEntity> entities = new ArrayList<>();
-        Reader in = new BufferedReader(new FileReader(path.toFile()));
-        Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
-        CSVRecord record = records.hasNext() ? records.next() : null;
-        while (record != null) {
-            String emailWork = get(record, "email-work");
-            String phoneMain = get(record, "phone-main");
-            String siteWork = get(record, "site-work");
-            String linkedIn = get(record, LINKEDIN);
-            String vatNr = get(record, VAT_NR);
-            LegalEntity entity = LegalEntity.of(Long.valueOf(get(record, OID)), get(record, ID));
-            updateEntity(record, entity);
-            entity.setAddress(CrmTags.HOME, importAddress(record));
-            entity.setEmail(CrmTags.WORK, emailWork);
-            entity.setPhoneNr(CrmTags.WORK, phoneMain);
-            entity.vatNr(vatNr);
-            try {
-                entity.setSite(CrmTags.WORK, (siteWork != null) ? new URI(siteWork) : null);
-            } catch (URISyntaxException e) {
-                log.error("Erroneous URI syntax {}", siteWork, e);
+        try (Reader in = new BufferedReader(new FileReader(path.toFile()))) {
+            Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
+            CSVRecord record = records.hasNext() ? records.next() : null;
+            while (record != null) {
+                String emailWork = get(record, "email-work");
+                String phoneMain = get(record, "phone-main");
+                String siteWork = get(record, "site-work");
+                String linkedIn = get(record, LINKEDIN);
+                String vatNr = get(record, VAT_NR);
+                LegalEntity entity = LegalEntity.of(Long.valueOf(get(record, OID)), get(record, ID));
+                updateEntity(record, entity);
+                entity.setAddress(CrmTags.HOME, importAddress(record));
+                entity.setEmail(CrmTags.WORK, emailWork);
+                entity.setPhoneNr(CrmTags.WORK, phoneMain);
+                entity.vatNr(vatNr);
+                try {
+                    entity.setSite(CrmTags.WORK, (siteWork != null) ? new URI(siteWork) : null);
+                } catch (URISyntaxException e) {
+                    log.error("Erroneous URI syntax {}", siteWork, e);
+                }
+                entity.setIm("linkedin", linkedIn);
+                if (siteWork != null) {
+                    entity.replace(Tag.of(CrmTags.CRM_SITE_WORK, siteWork));
+                }
+                entities.add(entity);
+                record = records.hasNext() ? records.next() : null;
             }
-            entity.setIm("linkedin", linkedIn);
-            if (siteWork != null) {
-                entity.replace(Tag.of(CrmTags.CRM_SITE_WORK, siteWork));
-            }
-            entities.add(entity);
-            record = records.hasNext() ? records.next() : null;
+            crm.addLegalEntities(entities);
         }
-        crm.addLegalEntities(entities);
         return entities;
     }
 
     public List<Employee> importEmployees(@NotNull Path path) throws IOException {
         List<Employee> entities = new ArrayList<>();
-        Reader in = new BufferedReader(new FileReader(path.toFile()));
-        Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
-        CSVRecord record = records.hasNext() ? records.next() : null;
-        while (record != null) {
-            Employee entity = new Employee(Long.valueOf(get(record, OID)), get(record, ID));
-            updateEntity(record, entity);
-            findNaturalEntityByOid(get(record, "personOid")).ifPresent(entity::person);
-            findLegalEntityByOid(get(record, "organizationOid")).ifPresent(entity::organization);
-            entity.setEmail(CrmTags.WORK, get(record, "email-work"));
-            entity.setPhoneNr(CrmTags.WORK, get(record, "phone-work"));
-            entity.setTag("title", get(record, "title"));
-            entities.add(entity);
-            record = records.hasNext() ? records.next() : null;
+        try (Reader in = new BufferedReader(new FileReader(path.toFile()))) {
+            Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
+            CSVRecord record = records.hasNext() ? records.next() : null;
+            while (record != null) {
+                Employee entity = new Employee(Long.valueOf(get(record, OID)), get(record, ID));
+                updateEntity(record, entity);
+                findNaturalEntityByOid(get(record, "personOid")).ifPresent(entity::person);
+                findLegalEntityByOid(get(record, "organizationOid")).ifPresent(entity::organization);
+                entity.setEmail(CrmTags.WORK, get(record, "email-work"));
+                entity.setPhoneNr(CrmTags.WORK, get(record, "phone-work"));
+                entity.setTag("title", get(record, "title"));
+                entities.add(entity);
+                record = records.hasNext() ? records.next() : null;
+            }
+            crm.addEmployees(entities);
         }
-        crm.addEmployees(entities);
         return entities;
     }
 
     public List<Contract> importContracts(@NotNull Path path) throws IOException {
         List<Contract> entities = new ArrayList<>();
-        Reader in = new BufferedReader(new FileReader(path.toFile()));
-        Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
-        CSVRecord record = records.hasNext() ? records.next() : null;
-        while (record != null) {
-            record = records.hasNext() ? records.next() : null;
-            Contract entity = new Contract(Long.valueOf(get(record, OID)), get(record, ID));
-            updateEntity(record, entity);
-            findLegalEntityByOid(get(record, "sellerOid")).ifPresent(entity::seller);
-            findLegalEntityByOid(get(record, "selleeOid")).ifPresent(entity::sellee);
+        try (Reader in = new BufferedReader(new FileReader(path.toFile()))) {
+            Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
+            CSVRecord record = records.hasNext() ? records.next() : null;
+            while (record != null) {
+                record = records.hasNext() ? records.next() : null;
+                Contract entity = new Contract(Long.valueOf(get(record, OID)), get(record, ID));
+                updateEntity(record, entity);
+                findLegalEntityByOid(get(record, "sellerOid")).ifPresent(entity::seller);
+                findLegalEntityByOid(get(record, "selleeOid")).ifPresent(entity::sellee);
+            }
+            crm.addContracts(entities);
         }
-        crm.addContracts(entities);
         return entities;
     }
 
