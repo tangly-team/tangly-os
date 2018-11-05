@@ -16,6 +16,10 @@ package net.tangly.erp.crm;
 import net.tangly.commons.models.EntityImp;
 import net.tangly.commons.models.Tag;
 
+/**
+ * A legal entity is legally recognized organization able to underwrite contracts and hire employees. A legal entity has a name, an identity
+ * defined as the legal number of an organization (e.g. zefix number in Switzerland), aduration of its existence, a text describing it.
+ */
 public class LegalEntity extends EntityImp implements CrmEntity {
     private static final long serialVersionUID = 1L;
 

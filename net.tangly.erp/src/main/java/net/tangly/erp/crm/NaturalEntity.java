@@ -16,6 +16,10 @@ package net.tangly.erp.crm;
 
 import net.tangly.commons.models.EntityImp;
 
+/**
+ * A natural entity is a person. A natural entity has an identity defined as the legal number of a person (e.g. the social security number0,
+ * a name defined as the last name and the first name seperated by a comma, a life duration and a text describing it.
+ */
 public class NaturalEntity extends EntityImp implements CrmEntity {
     private static final long serialVersionUID = 1L;
 

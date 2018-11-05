@@ -61,7 +61,7 @@ public class CrmCsvHdl {
             CSVRecord record = records.hasNext() ? records.next() : null;
             while (record != null) {
                 NaturalEntity entity = NaturalEntity
-                        .of(Long.valueOf(get(record, OID)), get(record, ID), get(record, "lastname"), get(record, "firstname"));
+                        .of(Long.parseLong(get(record, OID)), get(record, ID), get(record, "lastname"), get(record, "firstname"));
                 updateEntity(record, entity);
                 entity.setAddress(CrmTags.HOME, importAddress(record));
                 entity.setEmail(CrmTags.HOME, get(record, "email-home"));
@@ -81,7 +81,7 @@ public class CrmCsvHdl {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             CSVRecord record = records.hasNext() ? records.next() : null;
             while (record != null) {
-                LegalEntity entity = LegalEntity.of(Long.valueOf(get(record, OID)), get(record, ID));
+                LegalEntity entity = LegalEntity.of(Long.parseLong(get(record, OID)), get(record, ID));
                 updateEntity(record, entity);
                 entity.setAddress(CrmTags.HOME, importAddress(record));
                 entity.setEmail(CrmTags.WORK, get(record, "email-work"));
@@ -108,7 +108,7 @@ public class CrmCsvHdl {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             CSVRecord record = records.hasNext() ? records.next() : null;
             while (record != null) {
-                Employee entity = new Employee(Long.valueOf(get(record, OID)), get(record, ID));
+                Employee entity = new Employee(Long.parseLong(get(record, OID)), get(record, ID));
                 updateEntity(record, entity);
                 findNaturalEntityByOid(get(record, "personOid")).ifPresent(entity::person);
                 findLegalEntityByOid(get(record, "organizationOid")).ifPresent(entity::organization);
@@ -129,7 +129,7 @@ public class CrmCsvHdl {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             CSVRecord record = records.hasNext() ? records.next() : null;
             while (record != null) {
-                Contract entity = new Contract(Long.valueOf(get(record, OID)), get(record, ID));
+                Contract entity = new Contract(Long.parseLong(get(record, OID)), get(record, ID));
                 updateEntity(record, entity);
                 findLegalEntityByOid(get(record, "sellerOid")).ifPresent(entity::seller);
                 findLegalEntityByOid(get(record, "selleeOid")).ifPresent(entity::sellee);
