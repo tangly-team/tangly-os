@@ -16,7 +16,12 @@ package net.tangly.fsm.utilities;
 import net.tangly.fsm.State;
 import net.tangly.fsm.Transition;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**

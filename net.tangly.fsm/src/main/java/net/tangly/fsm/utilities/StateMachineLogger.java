@@ -13,7 +13,11 @@
 
 package net.tangly.fsm.utilities;
 
-import net.tangly.fsm.*;
+import net.tangly.fsm.Event;
+import net.tangly.fsm.State;
+import net.tangly.fsm.StateMachine;
+import net.tangly.fsm.StateMachineEventHandler;
+import net.tangly.fsm.Transition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

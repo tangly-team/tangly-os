@@ -15,7 +15,9 @@ package net.tangly.commons.utilities;
 
 import org.jetbrains.annotations.NotNull;
 
-import static com.google.common.base.Preconditions.*;
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkPositionIndex;
 
 /**
  * <p> _The bit utility_ class provides utility functions to manipulate bit streams as used on older communication

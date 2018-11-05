@@ -16,7 +16,11 @@ package net.tangly.fsm.imp;
 import net.tangly.fsm.Event;
 import net.tangly.fsm.State;
 import net.tangly.fsm.StateMachine;
-import net.tangly.fsm.dsl.*;
+import net.tangly.fsm.dsl.FsmBuilder;
+import net.tangly.fsm.dsl.StateBuilder;
+import net.tangly.fsm.dsl.SubStateBuilder;
+import net.tangly.fsm.dsl.ToTransitionBuilder;
+import net.tangly.fsm.dsl.TransitionBuilder;
 
 import java.util.HashMap;
 import java.util.Map;

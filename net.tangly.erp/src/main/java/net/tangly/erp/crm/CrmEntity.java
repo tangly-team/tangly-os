@@ -13,7 +13,11 @@
 
 package net.tangly.erp.crm;
 
-import net.tangly.commons.models.*;
+import net.tangly.commons.models.Address;
+import net.tangly.commons.models.EmailAddress;
+import net.tangly.commons.models.HasTags;
+import net.tangly.commons.models.PhoneNr;
+import net.tangly.commons.models.Tag;
 
 import java.net.URI;
 import java.net.URL;

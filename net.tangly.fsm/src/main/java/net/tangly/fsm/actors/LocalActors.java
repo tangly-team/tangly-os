@@ -33,6 +33,11 @@ public class LocalActors<E extends Enum<E>> implements Actors<E> {
     private final Map<String, Actor<E>> actors;
     private final ExecutorService executor;
 
+    /**
+     * Returns the local actors instance.
+     *
+     * @return the local actors instance
+     */
     public static LocalActors instance() {
         return instance;
     }
