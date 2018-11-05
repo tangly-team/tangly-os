@@ -16,7 +16,6 @@ package net.tangly.erp.crm.ports;
 import com.google.common.base.Strings;
 import net.tangly.commons.models.Address;
 import net.tangly.commons.models.EntityImp;
-import net.tangly.commons.models.Tag;
 import net.tangly.erp.crm.*;
 import net.tangly.erp.crm.apps.Crm;
 import org.apache.commons.csv.CSVFormat;
@@ -81,26 +80,19 @@ public class CrmCsvHdl {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             CSVRecord record = records.hasNext() ? records.next() : null;
             while (record != null) {
-                String emailWork = get(record, "email-work");
-                String phoneMain = get(record, "phone-main");
-                String siteWork = get(record, "site-work");
-                String linkedIn = get(record, LINKEDIN);
-                String vatNr = get(record, VAT_NR);
                 LegalEntity entity = LegalEntity.of(Long.valueOf(get(record, OID)), get(record, ID));
                 updateEntity(record, entity);
                 entity.setAddress(CrmTags.HOME, importAddress(record));
-                entity.setEmail(CrmTags.WORK, emailWork);
-                entity.setPhoneNr(CrmTags.WORK, phoneMain);
-                entity.vatNr(vatNr);
+                entity.setEmail(CrmTags.WORK, get(record, "email-work"));
+                entity.setPhoneNr(CrmTags.WORK, get(record, "phone-work"));
+                entity.vatNr(get(record, VAT_NR));
+                String siteWork = get(record, "site-work");
                 try {
-                    entity.setSite(CrmTags.WORK, (siteWork != null) ? new URI(siteWork) : null);
+                    entity.setSite(CrmTags.CRM_SITE_WORK, (siteWork != null) ? new URI(siteWork) : null);
                 } catch (URISyntaxException e) {
                     log.error("Erroneous URI syntax {}", siteWork, e);
                 }
-                entity.setIm("linkedin", linkedIn);
-                if (siteWork != null) {
-                    entity.replace(Tag.of(CrmTags.CRM_SITE_WORK, siteWork));
-                }
+                entity.setIm("linkedin", get(record, LINKEDIN));
                 entities.add(entity);
                 record = records.hasNext() ? records.next() : null;
             }
@@ -141,17 +133,11 @@ public class CrmCsvHdl {
                 updateEntity(record, entity);
                 findLegalEntityByOid(get(record, "sellerOid")).ifPresent(entity::seller);
                 findLegalEntityByOid(get(record, "selleeOid")).ifPresent(entity::sellee);
+                entity.bankConnection(new BankConnection(get(record, "iban"), get(record, "bic"), get(record, "institute")));
             }
             crm.addContracts(entities);
         }
         return entities;
-    }
-
-    public BankConnection importBankConnection(@NotNull CSVRecord record) {
-        String iban = get(record, "iban");
-        String bic = get(record, "bic");
-        String institute = get(record, "institute");
-        return new BankConnection(iban, bic, institute);
     }
 
     public Address importAddress(@NotNull CSVRecord record) {
