@@ -16,7 +16,7 @@ package net.tangly.erp.crm;
 import net.tangly.commons.models.Entity;
 import net.tangly.commons.models.EntityImp;
 
-public class Employee extends EntityImp implements Entity, CrmEntity {
+public class Employee extends EntityImp implements CrmEntity {
 
     private NaturalEntity person;
     private transient LegalEntity organization;

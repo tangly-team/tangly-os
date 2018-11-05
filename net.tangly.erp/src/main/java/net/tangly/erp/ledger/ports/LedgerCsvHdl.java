@@ -30,6 +30,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -81,7 +82,7 @@ public class LedgerCsvHdl {
     }
 
     public void importStructureLedgerFromBanana8(@NotNull Path path) throws IOException {
-        Reader in = new BufferedReader(new FileReader(path.toFile()));
+        Reader in = new BufferedReader(new FileReader(path.toFile(), StandardCharsets.UTF_8));
         Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
         Account.AccountGroup currentSection = null;
         CSVRecord record = records.hasNext() ? records.next() : null;

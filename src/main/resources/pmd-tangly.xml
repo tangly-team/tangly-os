@@ -27,7 +27,17 @@
     <rule ref="category/java/performance.xml"/>
     <rule ref="category/java/security.xml"/>
 
+    <rule ref="category/java/errorprone.xml">
+        <exclude name="AvoidFieldNameMatchingTypeName"/>
+        <exclude name="AvoidFieldNameMatchingMethodName"/>
+    </rule>
+
     <rule ref="category/java/codestyle.xml/ShortMethodName">
+        <properties>
+            <property name="minimum" value="2"/>
+        </properties>
+    </rule>
+    <rule ref="category/java/codestyle.xml/ShortVariable">
         <properties>
             <property name="minimum" value="2"/>
         </properties>

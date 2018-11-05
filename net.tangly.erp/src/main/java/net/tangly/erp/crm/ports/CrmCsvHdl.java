@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -55,7 +56,7 @@ public class CrmCsvHdl {
 
     public List<NaturalEntity> importNaturalEntities(@NotNull Path path) throws IOException {
         List<NaturalEntity> entities = new ArrayList<>();
-        try (Reader in = new BufferedReader(new FileReader(path.toFile()))) {
+        try (Reader in = new BufferedReader(new FileReader(path.toFile(), StandardCharsets.UTF_8))) {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             CSVRecord record = records.hasNext() ? records.next() : null;
             while (record != null) {
@@ -76,7 +77,7 @@ public class CrmCsvHdl {
 
     public List<LegalEntity> importLegalEntities(@NotNull Path path) throws IOException {
         List<LegalEntity> entities = new ArrayList<>();
-        try (Reader in = new BufferedReader(new FileReader(path.toFile()))) {
+        try (Reader in = new BufferedReader(new FileReader(path.toFile(), StandardCharsets.UTF_8))) {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             CSVRecord record = records.hasNext() ? records.next() : null;
             while (record != null) {
@@ -103,7 +104,7 @@ public class CrmCsvHdl {
 
     public List<Employee> importEmployees(@NotNull Path path) throws IOException {
         List<Employee> entities = new ArrayList<>();
-        try (Reader in = new BufferedReader(new FileReader(path.toFile()))) {
+        try (Reader in = new BufferedReader(new FileReader(path.toFile(), StandardCharsets.UTF_8))) {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             CSVRecord record = records.hasNext() ? records.next() : null;
             while (record != null) {
@@ -124,7 +125,7 @@ public class CrmCsvHdl {
 
     public List<Contract> importContracts(@NotNull Path path) throws IOException {
         List<Contract> entities = new ArrayList<>();
-        try (Reader in = new BufferedReader(new FileReader(path.toFile()))) {
+        try (Reader in = new BufferedReader(new FileReader(path.toFile(), StandardCharsets.UTF_8))) {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             CSVRecord record = records.hasNext() ? records.next() : null;
             while (record != null) {

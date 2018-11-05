@@ -23,7 +23,7 @@ import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import java.io.IOException;
 import java.util.List;
 
-public class CodeJsonHdl {
+public final class CodeJsonHdl {
     public static <T extends Code> CodeType<T> readCodesFromJson(Class<T> clazz, String json) throws IOException {
         var mapper = new ObjectMapper();
         mapper.registerModule(new ParameterNamesModule());

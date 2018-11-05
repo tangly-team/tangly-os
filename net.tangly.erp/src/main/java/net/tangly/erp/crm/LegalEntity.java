@@ -17,7 +17,7 @@ import net.tangly.commons.models.Entity;
 import net.tangly.commons.models.EntityImp;
 import net.tangly.commons.models.Tag;
 
-public class LegalEntity extends EntityImp implements Entity, CrmEntity {
+public class LegalEntity extends EntityImp implements CrmEntity {
 
     public static LegalEntity of(long oid, String id) {
         return new LegalEntity(oid, id);

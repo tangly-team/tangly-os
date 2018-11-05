@@ -22,7 +22,7 @@ import java.math.BigDecimal;
 /**
  * A legal contract between two parties, a seller and a sellee.
  */
-public class Contract extends EntityImp implements Entity {
+public class Contract extends EntityImp {
 
     private Address address;
 
