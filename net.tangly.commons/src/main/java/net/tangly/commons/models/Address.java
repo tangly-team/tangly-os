@@ -81,9 +81,9 @@ public class Address implements Serializable {
         }
 
         public Address build() {
-            Address address = this.address;
-            address = null;
-            return address;
+            Address copy = this.address;
+            this.address = null;
+            return copy;
         }
     }
 
