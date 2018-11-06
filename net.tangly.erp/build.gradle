@@ -18,6 +18,8 @@ dependencies {
     compile project (':net.tangly.commons')
 
     compile 'org.apache.commons:commons-csv:1.5'
+    compile "org.hsqldb:hsqldb:2.4.1"
+
 }
 
 jar {

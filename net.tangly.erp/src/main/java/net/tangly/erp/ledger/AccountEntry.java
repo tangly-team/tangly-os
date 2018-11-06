@@ -20,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -82,6 +83,11 @@ public class AccountEntry implements HasTags {
         this.tags = new HashSet<>();
     }
 
+    public AccountEntry(String account, LocalDate date, BigDecimal amount, String text, boolean debit, Collection<Tag> tags) {
+        this(account, date, amount, text, debit);
+        this.tags.addAll(tags);
+    }
+
     public String account() {
         return account;
     }
@@ -127,7 +133,6 @@ public class AccountEntry implements HasTags {
     public void clear() {
         tags.clear();
     }
-
 
     // endregion
 

@@ -61,7 +61,7 @@ public class ClosingReportAsciiDoc {
         generateResultTableFor(helper, ledger.liabilities(), from, to, "Liabilities");
         generateResultTableFor(helper, ledger.profitAndLoss(), from, to, "Profits and Losses");
 
-        helper.tableHeader("VAT", "100, >25, >25 , >25", "Period", "Turnover", "Due VAT", "Owned VAT");
+        helper.tableHeader("VAT", "100, >25, >25 , >25", "Period", "Turnover", "VAT", "Due VAT");
         addVatRows(helper, from.getYear());
         if (from.getYear() != to.getYear()) {
             addVatRows(helper, to.getYear());
@@ -81,26 +81,28 @@ public class ClosingReportAsciiDoc {
         helper.tableEnd();
     }
 
+    /**
+     * Creates the VAT results table rows. For each half year - the period used by the Swiss government as VAT payment period for small companies
+     * using the net tax rate VAT variant - and full year we provide the turnover, the invoiced VAT and the VAT tax to pay to the government.
+     *
+     * @param helper asciidoc helper to write the report
+     * @param year   the year to raws shall be computed
+     */
     private void addVatRows(AsciiDocHelper helper, int year) {
         LocalDate periodStart = LocalDate.of(year, 1, 1);
         LocalDate periodEnd = LocalDate.of(year, 6, 30);
         BigDecimal earningH1 = ledger.computeVatSales(periodStart, periodEnd);
+        BigDecimal vatH1 = ledger.computeVat(periodStart, periodEnd);
         BigDecimal vatDueH1 = ledger.computeDueVat(periodStart, periodEnd);
-        BigDecimal vatOwnedH1 = ledger.computeVat(periodStart, periodEnd).subtract(vatDueH1);
         periodStart = LocalDate.of(year, 7, 1);
         periodEnd = LocalDate.of(year, 12, 31);
         BigDecimal earningH2 = ledger.computeVatSales(periodStart, periodEnd);
+        BigDecimal vatH2 = ledger.computeVat(periodStart, periodEnd);
         BigDecimal vatDueH2 = ledger.computeDueVat(periodStart, periodEnd);
-        BigDecimal vatOwnedH2 = ledger.computeVat(periodStart, periodEnd).subtract(vatDueH2);
 
-        // TODO compute the correct retained VAT Factor F1 -> 0.01307, F3 -> ?
-        createVatRow(helper, "First Half Year " + year, earningH1, vatDueH1, vatOwnedH1);
-        createVatRow(helper, "Second Half Year " + year, earningH2, vatDueH2, vatOwnedH1);
-        createVatRow(helper, "Totals Year " + year, earningH1.add(earningH2), vatDueH1.add(vatDueH2), vatOwnedH1.add(vatOwnedH2));
-    }
-
-    private void createVatRow(AsciiDocHelper helper, String text, BigDecimal turnover, BigDecimal dueVat, BigDecimal difference) {
-        helper.tableRow(text, format(turnover), format(dueVat), format(difference));
+        helper.tableRow("First Half Year " + year, format(earningH1), format(vatH1), format(vatDueH1));
+        helper.tableRow("Second Half Year " + year, format(earningH2), format(vatH2), format(vatDueH2));
+        helper.tableRow("Totals Year " + year, format(earningH1.add(earningH2)), format(vatH1.add(vatH2)), format(vatDueH1.add(vatDueH2)));
     }
 
     private void createTransactionRow(AsciiDocHelper helper, Transaction transaction) {

@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -80,9 +81,21 @@ public class Ledger {
      * @param transaction transaction to add to the ledger
      */
     public void add(@NotNull Transaction transaction) {
-        journal.add(transaction);
-        transaction.debitSplits().forEach(this::bookEntry);
-        transaction.creditSplits().forEach(this::bookEntry);
+        Transaction booked = transaction;
+        // handle VAT for credit entries in a non split-transaction, the payment is split between amount for the company, and due vat to governement
+        if (!transaction.isSplit() && transaction.creditSplits().get(0).findBy(AccountEntry.FINANCE, AccountEntry.VAT_DUE).isPresent()) {
+            Optional<Tag> vatDueTag = transaction.creditSplits().get(0).findBy(AccountEntry.FINANCE, AccountEntry.VAT_DUE);
+            AccountEntry credit = transaction.creditSplits().get(0);
+            BigDecimal vatDue = credit.amount().multiply((BigDecimal) vatDueTag.get().value());
+            List<AccountEntry> splits = new ArrayList<>();
+            splits.add(new AccountEntry(credit.account(), credit.date(), credit.amount().subtract(vatDue), credit.text(), false, credit.tags()));
+            splits.add(new AccountEntry("2201", credit.date(), vatDue, null, false));
+            booked = new Transaction(transaction.date(), transaction.debitAccount(), null, transaction.amount(), splits, transaction.description(),
+                    transaction.reference());
+        }
+        journal.add(booked);
+        booked.debitSplits().forEach(this::bookEntry);
+        booked.creditSplits().forEach(this::bookEntry);
     }
 
     /**
@@ -101,14 +114,6 @@ public class Ledger {
             log.error("account {} for entry with amount {} booked {} is undefined", entry.account(), entry.amount(), entry.date());
         }
         account.ifPresent(o -> o.addEntry(entry));
-        // handle VAT for credit entries
-        if (entry.isCredit()) {
-            Optional<Tag> vatDue = entry.findBy(AccountEntry.FINANCE, AccountEntry.VAT_DUE);
-            if (vatDue.isPresent()) {
-                BigDecimal vatAmount = entry.amount().multiply((BigDecimal) vatDue.get().value());
-                bookEntry(new AccountEntry("2201", entry.date(), vatAmount, entry.text(), true));
-            }
-        }
     }
 
     // region VAT-computations
@@ -122,13 +127,14 @@ public class Ledger {
     public BigDecimal computeVat(LocalDate from, LocalDate to) {
         return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).map(o -> {
             Optional<Tag> tag = o.findBy(AccountEntry.FINANCE, AccountEntry.VAT);
-            return tag.isPresent() ? o.amount().multiply((BigDecimal) tag.get().value()) : BigDecimal.ZERO;
+            return tag.isPresent() ? o.amount()
+                    .subtract(o.amount().divide(BigDecimal.ONE.add((BigDecimal) tag.get().value()), 2, RoundingMode.HALF_UP)) : BigDecimal.ZERO;
         }).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
     }
 
     public BigDecimal computeDueVat(LocalDate from, LocalDate to) {
         Optional<Account> account = getAccountBy("2201");
-        return account.isPresent() ? account.get().getEntriesFor(from, to).stream().filter(AccountEntry::isDebit).map(AccountEntry::amount)
+        return account.isPresent() ? account.get().getEntriesFor(from, to).stream().filter(AccountEntry::isCredit).map(AccountEntry::amount)
                 .reduce(BigDecimal::add).orElse(BigDecimal.ZERO) : BigDecimal.ZERO;
     }
 
