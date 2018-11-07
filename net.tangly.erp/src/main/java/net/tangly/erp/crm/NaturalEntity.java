@@ -28,15 +28,15 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
     private String lastname;
 
     public static NaturalEntity of(long oid, String socialNumber, String lastname, String firstname) {
-        var entity = new NaturalEntity(oid, socialNumber);
+        var entity = new NaturalEntity();
+        entity.id(socialNumber);
         entity.lastname(lastname);
         entity.firstname(firstname);
         entity.socialNr(socialNumber);
         return entity;
     }
 
-    public NaturalEntity(long oid, String id) {
-        super(oid, id);
+    public NaturalEntity() {
     }
 
     public String firstname() {
@@ -62,7 +62,7 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
     }
 
     public void socialNr(String socialNr) {
-        setId(socialNr);
+        id(socialNr);
     }
 
     private void updateName() {

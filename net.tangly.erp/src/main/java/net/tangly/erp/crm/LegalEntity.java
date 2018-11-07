@@ -23,12 +23,11 @@ import net.tangly.commons.models.Tag;
 public class LegalEntity extends EntityImp implements CrmEntity {
     private static final long serialVersionUID = 1L;
 
-    public static LegalEntity of(long oid, String id) {
-        return new LegalEntity(oid, id);
+    public static LegalEntity of() {
+        return new LegalEntity();
     }
 
-    public LegalEntity(long oid, String id) {
-        super(oid, id);
+    public LegalEntity() {
     }
 
     public String vatNr() {

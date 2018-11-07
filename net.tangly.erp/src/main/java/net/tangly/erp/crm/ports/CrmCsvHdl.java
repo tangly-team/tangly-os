@@ -86,7 +86,7 @@ public class CrmCsvHdl {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             CSVRecord record = records.hasNext() ? records.next() : null;
             while (record != null) {
-                LegalEntity entity = LegalEntity.of(Long.parseLong(get(record, OID)), get(record, ID));
+                LegalEntity entity = new LegalEntity();
                 updateEntity(record, entity);
                 entity.setAddress(CrmTags.HOME, importAddress(record));
                 entity.setEmail(CrmTags.WORK, get(record, "email-work"));
@@ -113,7 +113,7 @@ public class CrmCsvHdl {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             CSVRecord record = records.hasNext() ? records.next() : null;
             while (record != null) {
-                Employee entity = new Employee(Long.parseLong(get(record, OID)), get(record, ID));
+                Employee entity = new Employee();
                 updateEntity(record, entity);
                 findNaturalEntityByOid(get(record, "personOid")).ifPresent(entity::person);
                 findLegalEntityByOid(get(record, "organizationOid")).ifPresent(entity::organization);
@@ -134,7 +134,7 @@ public class CrmCsvHdl {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             CSVRecord record = records.hasNext() ? records.next() : null;
             while (record != null) {
-                Contract entity = new Contract(Long.parseLong(get(record, OID)), get(record, ID));
+                Contract entity = new Contract();
                 updateEntity(record, entity);
                 findLegalEntityByOid(get(record, "sellerOid")).ifPresent(entity::seller);
                 findLegalEntityByOid(get(record, "selleeOid")).ifPresent(entity::sellee);
@@ -157,6 +157,8 @@ public class CrmCsvHdl {
     }
 
     private void updateEntity(@NotNull CSVRecord record, EntityImp entity) {
+        EntityImp.setOid(entity, Long.parseLong(get(record, OID)));
+        entity.id(get(record, ID));
         entity.name(get(record, NAME));
         String fromDate = get(record, FROM_DATE);
         entity.fromDate((fromDate != null) ? LocalDate.parse(fromDate) : null);

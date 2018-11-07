@@ -41,7 +41,7 @@ import java.util.List;
  * The ledger CSV handler can import ledger plans and transactions journal as exported by the banana 8 ledger application. The import assumes that
  * the program language and ledger template use English.
  * The ledger structure CSV file has the columns id, account kind, account group, description, owned by group id. The handler reads a ledger
- * structure description from a CSV file and create a full ledger structure.
+ * structure description from a CSV file and update a full ledger structure.
  * The transaction CSV file has the columns date, doc, description, account debit, account credit, amount, defineVat code.
  */
 public class LedgerCsvHdl {

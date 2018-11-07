@@ -19,7 +19,6 @@ import net.tangly.commons.models.EntityImp;
 public class Project extends EntityImp implements Entity {
     private static final long serialVersionUID = 1L;
 
-    public Project(long oid, String id) {
-        super(oid, id);
+    public Project() {
     }
 }

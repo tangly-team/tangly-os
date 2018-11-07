@@ -82,7 +82,7 @@ public class Ledger {
      */
     public void add(@NotNull Transaction transaction) {
         Transaction booked = transaction;
-        // handle VAT for credit entries in a non split-transaction, the payment is split between amount for the company, and due vat to governement
+        // handle VAT for credit entries in a non split-transaction, the payment is split between amount for the company, and due vat to government
         if (!transaction.isSplit() && transaction.creditSplits().get(0).findBy(AccountEntry.FINANCE, AccountEntry.VAT_DUE).isPresent()) {
             Optional<Tag> vatDueTag = transaction.creditSplits().get(0).findBy(AccountEntry.FINANCE, AccountEntry.VAT_DUE);
             AccountEntry credit = transaction.creditSplits().get(0);

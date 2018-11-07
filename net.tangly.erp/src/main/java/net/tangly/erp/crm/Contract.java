@@ -34,8 +34,7 @@ public class Contract extends EntityImp {
 
     private LegalEntity sellee;
 
-    public Contract(long oid, String id) {
-        super(oid, id);
+    public Contract() {
     }
 
     public Address address() {

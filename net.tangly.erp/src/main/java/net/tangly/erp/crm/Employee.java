@@ -21,8 +21,7 @@ public class Employee extends EntityImp implements CrmEntity {
     private NaturalEntity person;
     private transient LegalEntity organization;
 
-    public Employee(long oid, String id) {
-        super(oid, id);
+    public Employee() {
     }
 
     public NaturalEntity person() {

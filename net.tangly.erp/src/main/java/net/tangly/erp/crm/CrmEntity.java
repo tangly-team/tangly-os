@@ -38,7 +38,7 @@ public interface CrmEntity extends HasTags {
 
     default void setPhoneNr(String kind, String phoneNr) {
         if (phoneNr != null) {
-            replace(Tag.of(CrmTags.getPhoneTag(kind), PhoneNr.of(phoneNr)));
+            replace(Tag.parse(CrmTags.getPhoneTag(kind), PhoneNr.of(phoneNr)));
         } else {
             removeTagNamed(CrmTags.getPhoneTag(kind));
         }
@@ -50,7 +50,7 @@ public interface CrmEntity extends HasTags {
 
     default void setEmail(String kind, String email) {
         if (email != null) {
-            replace(Tag.of(CrmTags.getEmailTag(kind), EmailAddress.of(email)));
+            replace(Tag.parse(CrmTags.getEmailTag(kind), EmailAddress.of(email)));
         } else {
             removeTagNamed(CrmTags.getEmailTag(kind));
         }
@@ -62,7 +62,7 @@ public interface CrmEntity extends HasTags {
 
     default void setAddress(String kind, Address address) {
         if (address != null) {
-            replace(Tag.of(CrmTags.getEmailTag(kind), address));
+            replace(Tag.parse(CrmTags.getEmailTag(kind), address));
         } else {
             removeTagNamed(CrmTags.getEmailTag(kind));
         }
@@ -82,7 +82,7 @@ public interface CrmEntity extends HasTags {
 
     default void setSite(String kind, URI site) {
         if (site != null) {
-            replace(Tag.of(CrmTags.getSiteTag(kind), site));
+            replace(Tag.parse(CrmTags.getSiteTag(kind), site));
         } else {
             removeTagNamed(CrmTags.getSiteTag(kind));
         }
