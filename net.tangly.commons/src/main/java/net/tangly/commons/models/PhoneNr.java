@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * Immutable class representing a phone number. We use the google library to parse and validate
+ * Immutable class representing a phone number. We use the google library to of and validate
  * phone numbers (http://code.google.com/p/libphonenumber). A phone number is an immutable object.
  */
 public class PhoneNr implements Serializable {

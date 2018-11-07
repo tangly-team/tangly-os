@@ -20,21 +20,7 @@ import java.io.Serializable;
  * supports only querying the external identifier. It is the responsibility of the application to decide if the
  * external identifier can be modified or not.
  */
-public interface HasId extends Serializable {
-    /**
-     * Place holder to identify an illegal or undefined internal identifier.
-     */
-    int UNDEFINED_OID = 0;
-
-    /**
-     * Returns the unique internal identifier of the instance.
-     *
-     * @return unique internal identifier
-     */
-    default long oid() {
-        return UNDEFINED_OID;
-    }
-
+public interface HasId extends HasOid {
     /**
      * Returns the unique external and visible identifier of the instance.
      *
@@ -42,6 +28,14 @@ public interface HasId extends Serializable {
      */
     default String id() {
         return Long.toString(oid());
+    }
+
+    /**
+     * Sets the unique external identifier of the instance
+     *
+     * @param id external identifier
+     */
+    default void id(String id) {
     }
 
     /**

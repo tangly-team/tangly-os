@@ -13,22 +13,21 @@
 
 package net.tangly.commons.models;
 
+import java.io.Serializable;
+
 /**
- * The interface marks an entity owned by another object.
+ * Marks a class with the capability to be uniquely identified through an object identifier.
  */
-public interface HasOwner extends HasOid {
+public interface HasOid extends Serializable {
     /**
-     * Returns the unique object identifier of the owning object.
-     *
-     * @return owning object identifier if defined otherwise {@link HasId#UNDEFINED_OID}
+     * Place holder to identify an illegal or undefined internal identifier.
      */
-    long foid();
-
+    int UNDEFINED_OID = 0;
 
     /**
-     * Sets the unique object identifier of the owning object.
+     * Returns the unique internal identifier of the instance.
      *
-     * @param foid object identifier of the owing object if defined otherwise {@link HasId#UNDEFINED_OID}
+     * @return unique internal identifier
      */
-    void foid(long foid);
+    long oid();
 }

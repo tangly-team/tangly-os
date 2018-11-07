@@ -13,9 +13,12 @@
 
 package net.tangly.commons.models;
 
+import com.google.common.base.Strings;
+
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -35,7 +38,7 @@ public class Tag implements Serializable {
      * @see Tag#toTags(String)
      */
     public static String toString(Collection<Tag> tags) {
-        return tags.stream().map(Tag::toString).collect(Collectors.joining(","));
+        return tags.isEmpty() ? null : tags.stream().map(Tag::toString).collect(Collectors.joining(","));
     }
 
     /**
@@ -46,7 +49,7 @@ public class Tag implements Serializable {
      * @see Tag#toString(Collection)
      */
     public static Set<Tag> toTags(String rawTags) {
-        return Arrays.stream(rawTags.split(",")).map(Tag::parse).collect(Collectors.toSet());
+        return Strings.isNullOrEmpty(rawTags) ? new HashSet<>() : Arrays.stream(rawTags.split(",")).map(Tag::parse).collect(Collectors.toSet());
     }
 
     public static String namespace(String tag) {
@@ -66,12 +69,12 @@ public class Tag implements Serializable {
         return new Tag(namespace(tag), name(tag), value(tag));
     }
 
-    public static Tag of(String tag) {
-        return new Tag(namespace(tag), name(tag), null);
+    public static Tag parse(String tag, Serializable value) {
+        return new Tag(namespace(tag), name(tag), value);
     }
 
-    public static Tag of(String tag, Serializable value) {
-        return new Tag(namespace(tag), name(tag), value);
+    public static Tag of(String namespace, String name) {
+        return new Tag(namespace, name, null);
     }
 
     public static Tag of(String namespace, String name, Serializable value) {

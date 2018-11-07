@@ -30,20 +30,7 @@ import java.util.Set;
 public class Comment implements HasOwner, HasTags, Serializable {
     private static final long serialVersionUID = 1L;
 
-    /**
-     * The creation date and time of the comment.
-     */
-    private final LocalDateTime date;
-
-    /**
-     * The author of the comment, the system should insures that the author is an unique external identifier.
-     */
-    private final String author;
-
-    /**
-     * The comment as a markdown text.
-     */
-    private final String text;
+    private long oid;
 
     /**
      * The internal identifier of the entity owning the comment.
@@ -51,12 +38,27 @@ public class Comment implements HasOwner, HasTags, Serializable {
     private long foid;
 
     /**
-     * The tags of the comment.
+     * The creation date and time of the comment.
      */
-    private final Set<Tag> tags;
+    private LocalDateTime created;
 
     /**
-     * Factory method to create a new comment. The current date and time are set a creation date.
+     * The author of the comment, the system should insures that the author is an unique external identifier.
+     */
+    private String author;
+
+    /**
+     * The comment as a markdown text.
+     */
+    private String text;
+
+    /**
+     * The tags of the comment.
+     */
+    private Set<Tag> tags;
+
+    /**
+     * Factory method to update a new comment. The current date and time are set a creation date.
      *
      * @param author author of the comment
      * @param text   content of the comment
@@ -68,7 +70,7 @@ public class Comment implements HasOwner, HasTags, Serializable {
     }
 
     /**
-     * Factory method to create a new comment. The current date and time are set a creation date.
+     * Factory method to update a new comment. The current date and time are set a creation date.
      *
      * @param date   creation date of the comment
      * @param author author of the comment
@@ -82,26 +84,35 @@ public class Comment implements HasOwner, HasTags, Serializable {
         return comment;
     }
 
+    public Comment() {
+
+    }
+
     Comment(@NotNull LocalDateTime date, @NotNull String author, @NotNull String text) {
-        this.date = Objects.requireNonNull(date);
+        this.created = Objects.requireNonNull(date);
         this.author = Objects.requireNonNull(author);
         this.text = Objects.requireNonNull(text);
         tags = new HashSet<>();
     }
 
-    public @NotNull LocalDateTime getDate() {
-        return date;
+    public @NotNull LocalDateTime created() {
+        return created;
     }
 
-    public @NotNull String getAuthor() {
+    public @NotNull String author() {
         return author;
     }
 
-    public @NotNull String getText() {
+    public @NotNull String text() {
         return text;
     }
 
     // region HasOwner
+
+    @Override
+    public long oid() {
+        return oid;
+    }
 
     @Override
     public long foid() {
@@ -139,6 +150,7 @@ public class Comment implements HasOwner, HasTags, Serializable {
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this).add("date", date).add("author", author).add("text", text).add("tags", Tag.toString(tags)).toString();
+        return MoreObjects.toStringHelper(this).add("created", created).add("author", author).add("text", text).add("tags", Tag.toString(tags))
+                .toString();
     }
 }

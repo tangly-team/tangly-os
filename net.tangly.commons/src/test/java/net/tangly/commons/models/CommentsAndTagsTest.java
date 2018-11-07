@@ -26,10 +26,6 @@ class CommentsAndTagsTest {
         static Entity of() {
             return new Entity();
         }
-
-        Entity() {
-            super(0, "");
-        }
     }
 
     @Test

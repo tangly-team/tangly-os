@@ -13,6 +13,9 @@
 
 package net.tangly.commons.models;
 
+import org.checkerframework.checker.nullness.compatqual.NullableType;
+import org.jetbrains.annotations.NotNull;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -34,14 +37,14 @@ public interface HasComments {
      *
      * @param comment comment to be added, cannot be null
      */
-    void add(Comment comment);
+    void add(@NotNull Comment comment);
 
     /**
      * Removes the given comment from the list of comments.
      *
      * @param comment comment to be removed, cannot be null
      */
-    void remove(Comment comment);
+    void remove(@NotNull Comment comment);
 
     /**
      * Returns the comments authored by the given author.
@@ -51,7 +54,7 @@ public interface HasComments {
      */
     default List<Comment> findByAuthor(String author) {
         Objects.requireNonNull(author);
-        return getComments().stream().filter(o -> Objects.equals(author, o.getAuthor())).collect(Collectors.toList());
+        return getComments().stream().filter(o -> Objects.equals(author, o.author())).collect(Collectors.toList());
     }
 
     /**
@@ -77,7 +80,7 @@ public interface HasComments {
         Objects.requireNonNull(from);
         Objects.requireNonNull(to);
         return getComments().stream()
-                .filter(o -> (o.getDate().equals(from) || o.getDate().isAfter(from)) && (o.getDate().equals(to) || o.getDate().isBefore(to)))
+                .filter(o -> (o.created().equals(from) || o.created().isAfter(from)) && (o.created().equals(to) || o.created().isBefore(to)))
                 .collect(Collectors.toList());
     }
 }

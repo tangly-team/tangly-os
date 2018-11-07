@@ -32,8 +32,8 @@ public class Address implements Serializable {
     }
 
     /**
-     * Builder for the address class. Upon building the class you should discsard the builder instance. Any additional call on the builder will
-     * create a runtime exception.
+     * Builder for the address class. Upon building the class you should discard the builder instance. Any additional call on the builder will
+     * update a runtime exception.
      */
     public static class Builder {
         /**
@@ -131,7 +131,7 @@ public class Address implements Serializable {
     }
 
     /**
-     * Constructor of the class. It creates an immutable instance. Consider using the {@link Address#builder()} pattern to create an address.
+     * Constructor of the class. It creates an immutable instance. Consider using the {@link Address#builder()} pattern to update an address.
      *
      * @param street   street of the address with the street number
      * @param extended extended address line if defined

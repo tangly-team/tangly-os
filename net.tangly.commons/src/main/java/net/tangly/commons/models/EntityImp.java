@@ -26,7 +26,11 @@ import java.util.Set;
  * @see Entity
  */
 public abstract class EntityImp implements Entity {
-    private final long oid;
+    public static void setOid(EntityImp entity, long oid) {
+        entity.oid = oid;
+    }
+
+    private long oid;
     private String id;
     private String name;
     private String text;
@@ -37,13 +41,9 @@ public abstract class EntityImp implements Entity {
 
     /**
      * Default constructor.
-     *
-     * @param oid unique internal object identifier
-     * @param id  external object identifier
      */
-    public EntityImp(long oid, String id) {
-        this.oid = oid;
-        this.id = id;
+    public EntityImp() {
+        this.oid = HasOid.UNDEFINED_OID;
         comments = new ArrayList<>();
         tags = new HashSet<>();
     }
@@ -55,13 +55,15 @@ public abstract class EntityImp implements Entity {
     }
 
     // endregion
+
     // region HasId
     @Override
     public String id() {
         return id;
     }
 
-    protected void setId(String id) {
+    @Override
+    public void id(String id) {
         this.id = id;
     }
 
@@ -69,13 +71,15 @@ public abstract class EntityImp implements Entity {
     public String name() {
         return name;
     }
-    // endregion
-    // region Entity
 
     @Override
     public void name(String name) {
         this.name = name;
     }
+
+    // endregion
+
+    // region Entity
 
     @Override
     public String text() {
@@ -108,6 +112,7 @@ public abstract class EntityImp implements Entity {
     }
 
     // endregion
+
     // region Comments
 
     @Override
@@ -127,6 +132,7 @@ public abstract class EntityImp implements Entity {
         comment.foid(HasId.UNDEFINED_OID);
     }
     // endregion
+
     // region Tags
 
     @Override
