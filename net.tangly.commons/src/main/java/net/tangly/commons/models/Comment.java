@@ -27,15 +27,8 @@ import java.util.Set;
 /**
  * Comment defines a human-readable annotation to an entity. A comment is an immutable object. Comments can be tagged to provide classification.
  */
-public class Comment implements HasOwner, HasTags, Serializable {
+public class Comment implements HasTags, Serializable {
     private static final long serialVersionUID = 1L;
-
-    private long oid;
-
-    /**
-     * The internal identifier of the entity owning the comment.
-     */
-    private long foid;
 
     /**
      * The creation date and time of the comment.
@@ -84,8 +77,7 @@ public class Comment implements HasOwner, HasTags, Serializable {
         return comment;
     }
 
-    public Comment() {
-
+    private Comment() {
     }
 
     Comment(@NotNull LocalDateTime date, @NotNull String author, @NotNull String text) {
@@ -106,24 +98,6 @@ public class Comment implements HasOwner, HasTags, Serializable {
     public @NotNull String text() {
         return text;
     }
-
-    // region HasOwner
-
-    @Override
-    public long oid() {
-        return oid;
-    }
-
-    @Override
-    public long foid() {
-        return foid;
-    }
-
-    @Override
-    public void foid(long foid) {
-        this.foid = foid;
-    }
-    // endregion
 
     // region tags
 
