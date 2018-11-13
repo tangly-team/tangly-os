@@ -24,8 +24,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * The immutable class tag models a tag with a name and a value. Tags provide a powerful approach
- * for multi-dimensional classifications of values.
+ * The immutable class tag models a tag with a name and a value. Tags provide a powerful approach for multi-dimensional classifications of values.
+ * All fields of a tag are strings. We provide the tag type to support conversions from string values to Java objects.
  */
 public class Tag implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -69,15 +69,19 @@ public class Tag implements Serializable {
         return new Tag(namespace(tag), name(tag), value(tag));
     }
 
-    public static Tag parse(String tag, Serializable value) {
-        return new Tag(namespace(tag), name(tag), value);
-    }
-
-    public static Tag of(String namespace, String name) {
+    public static Tag ofEmpty(String namespace, String name) {
         return new Tag(namespace, name, null);
     }
 
-    public static Tag of(String namespace, String name, Serializable value) {
+    public static Tag ofEmpty(String name) {
+        return new Tag(null, name, null);
+    }
+
+    public static Tag of(String tag, String value) {
+        return new Tag(namespace(tag), name(tag), value);
+    }
+
+    public static Tag of(String namespace, String name, String value) {
         return new Tag(namespace, name, value);
     }
 
@@ -93,7 +97,7 @@ public class Tag implements Serializable {
     /**
      * The value of this tag instance.
      */
-    private final Serializable value;
+    private final String value;
 
     /**
      * Constructor of the class.
@@ -102,7 +106,7 @@ public class Tag implements Serializable {
      * @param name      name of the tag
      * @param value     optional value of the tag
      */
-    public Tag(String namespace, String name, Serializable value) {
+    public Tag(String namespace, String name, String value) {
         this.namespace = namespace;
         this.name = Objects.requireNonNull(name);
         this.value = value;
@@ -141,16 +145,7 @@ public class Tag implements Serializable {
      *
      * @return string representation of the tag
      */
-    public String stringValue() {
-        return (value != null ? value.toString() : null);
-    }
-
-    /**
-     * Returns the value of the tag.
-     *
-     * @return the value of the tag
-     */
-    public Object value() {
+    public String value() {
         return value;
     }
 
@@ -173,6 +168,6 @@ public class Tag implements Serializable {
 
     @Override
     public String toString() {
-        return ((namespace() != null ? namespace() + ":" : "") + name() + (value() != null ? "=" + stringValue() : ""));
+        return ((namespace() != null ? namespace() + ":" : "") + name() + (value != null ? "=" + value() : ""));
     }
 }

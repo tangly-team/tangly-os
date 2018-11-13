@@ -43,7 +43,7 @@ public interface HasTags {
      */
     void remove(Tag tag);
 
-    void clear();
+    void clearTags();
 
     default void replace(Tag tag) {
         Objects.requireNonNull(tag);

@@ -56,7 +56,7 @@ class CommentsAndTagsTest {
         item.add(Tag.of("gis", "latitude", "0.0"));
         String rawTags = item.getRawTags();
         Set<Tag> tags = item.tags();
-        item.clear();
+        item.clearTags();
         assertThat(item.tags().isEmpty()).isTrue();
         item.addRawTags(rawTags);
         assertThat(item.tags().isEmpty()).isFalse();
@@ -72,11 +72,11 @@ class CommentsAndTagsTest {
         // When
         item.add(comment);
         // Then
-        assertThat(item.getComments().size()).isEqualTo(1);
-        assertThat(item.getComments().contains(comment)).isTrue();
+        assertThat(item.comments().size()).isEqualTo(1);
+        assertThat(item.comments().contains(comment)).isTrue();
         // When
         item.remove(comment);
-        assertThat(item.getComments().isEmpty()).isTrue();
+        assertThat(item.comments().isEmpty()).isTrue();
     }
 
     @Test

@@ -13,8 +13,6 @@
 
 package net.tangly.commons.models;
 
-import java.io.Serializable;
-
 /**
  * Mixin states that the class has an external unique object identifier and a human readable name. The interface
  * supports only querying the external identifier. It is the responsibility of the application to decide if the

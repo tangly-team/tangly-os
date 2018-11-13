@@ -77,24 +77,49 @@ public class Comment implements HasTags, Serializable {
         return comment;
     }
 
+    /**
+     * Private constructor to support JSON serialization.
+     */
     private Comment() {
     }
 
-    Comment(@NotNull LocalDateTime date, @NotNull String author, @NotNull String text) {
-        this.created = Objects.requireNonNull(date);
+    /**
+     * Default constructor to create an immutable instance.
+     *
+     * @param timestamp when the comment instance was created
+     * @param author    of the comment instance as human readable field
+     * @param text      text of the comment, we recommend using asciidoc format
+     */
+    Comment(@NotNull LocalDateTime timestamp, @NotNull String author, @NotNull String text) {
+        this.created = Objects.requireNonNull(timestamp);
         this.author = Objects.requireNonNull(author);
         this.text = Objects.requireNonNull(text);
         tags = new HashSet<>();
     }
 
+    /**
+     * Returns the timestamp when the comment was created.
+     *
+     * @return timestamp of the creation of the comment
+     */
     public @NotNull LocalDateTime created() {
         return created;
     }
 
+    /**
+     * Returns the author of the comment as human-readable information.
+     *
+     * @return author of the comment
+     */
     public @NotNull String author() {
         return author;
     }
 
+    /**
+     * Returns the text of the comment. Asciidoc is a preferred format
+     *
+     * @return text of the comment
+     */
     public @NotNull String text() {
         return text;
     }
@@ -102,22 +127,22 @@ public class Comment implements HasTags, Serializable {
     // region tags
 
     @Override
-    public Set<Tag> tags() {
+    public @NotNull Set<Tag> tags() {
         return Collections.unmodifiableSet(tags);
     }
 
     @Override
-    public void add(Tag tag) {
+    public void add(@NotNull Tag tag) {
         tags.add(tag);
     }
 
     @Override
-    public void remove(Tag tag) {
+    public void remove(@NotNull Tag tag) {
         tags.remove(tag);
     }
 
     @Override
-    public void clear() {
+    public void clearTags() {
         tags.clear();
     }
     // endregion

@@ -13,7 +13,6 @@
 
 package net.tangly.commons.models;
 
-import org.checkerframework.checker.nullness.compatqual.NullableType;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDateTime;
@@ -30,7 +29,7 @@ public interface HasComments {
      *
      * @return list of comments
      */
-    List<Comment> getComments();
+    List<Comment> comments();
 
     /**
      * Adds a comment to the list of comments.
@@ -54,7 +53,7 @@ public interface HasComments {
      */
     default List<Comment> findByAuthor(String author) {
         Objects.requireNonNull(author);
-        return getComments().stream().filter(o -> Objects.equals(author, o.author())).collect(Collectors.toList());
+        return comments().stream().filter(o -> Objects.equals(author, o.author())).collect(Collectors.toList());
     }
 
     /**
@@ -66,7 +65,7 @@ public interface HasComments {
      */
     default List<Comment> findByTag(String namespace, String name) {
         Objects.requireNonNull(name);
-        return getComments().stream().filter(o -> o.contains(namespace, name)).collect(Collectors.toList());
+        return comments().stream().filter(o -> o.contains(namespace, name)).collect(Collectors.toList());
     }
 
     /**
@@ -79,7 +78,7 @@ public interface HasComments {
     default List<Comment> findByTime(LocalDateTime from, LocalDateTime to) {
         Objects.requireNonNull(from);
         Objects.requireNonNull(to);
-        return getComments().stream()
+        return comments().stream()
                 .filter(o -> (o.created().equals(from) || o.created().isAfter(from)) && (o.created().equals(to) || o.created().isBefore(to)))
                 .collect(Collectors.toList());
     }

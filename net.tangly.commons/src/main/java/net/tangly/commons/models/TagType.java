@@ -28,6 +28,16 @@ public class TagType<T extends Serializable> {
     private Function<String, T> convertToObject;
     private BiFunction<TagType<T>, T, Boolean> validate;
 
+    public static <T extends Serializable> TagType<T> ofMandatory(String namespace, String name, Class<T> clazz,
+                                                                  Function<String, T> convertToObject, BiFunction<TagType<T>, T, Boolean> validate) {
+        return new TagType<>(namespace, name, ValueKinds.MANDATORY, clazz, convertToObject, validate);
+    }
+
+    public static <T extends Serializable> TagType<T> ofMandatory(String namespace, String name, Class<T> clazz,
+                                                                  Function<String, T> convertToObject) {
+        return new TagType<>(namespace, name, ValueKinds.MANDATORY, clazz, convertToObject, null);
+    }
+
     public static <T extends Serializable> TagType<T> ofMandatory(String namespace, String name, Class<T> clazz) {
         return new TagType<>(namespace, name, ValueKinds.MANDATORY, clazz);
     }
@@ -43,6 +53,16 @@ public class TagType<T extends Serializable> {
         this.clazz = clazz;
     }
 
+    public TagType(String namespace, String name, ValueKinds kind, Class<T> clazz, Function<String, T> convertToObject, BiFunction<TagType<T>, T,
+            Boolean> validate) {
+        this.namespace = Objects.requireNonNull(namespace);
+        this.name = Objects.requireNonNull(name);
+        this.kind = Objects.requireNonNull(kind);
+        this.clazz = clazz;
+        this.convertToObject = convertToObject;
+        this.validate = validate;
+    }
+
     public ValueKinds kind() {
         return kind;
     }
@@ -55,19 +75,19 @@ public class TagType<T extends Serializable> {
         return name;
     }
 
-    public <T> T getValue(Tag tag) {
-        return (T) clazz.cast(Objects.requireNonNull(tag).value());
+    public T getValue(Tag tag) {
+        return (convertToObject == null) ? null : convertToObject.apply(tag.value());
     }
 
     public Tag of(T value) {
-        return new Tag(namespace, name, value);
+        return new Tag(namespace, name, value.toString());
     }
 
     public Tag of(String value) {
-        return new Tag(namespace, name, convertToObject.apply(value));
+        return new Tag(namespace, name, value);
     }
 
     public boolean validate(String value) {
-        return validate.apply(this, convertToObject.apply(value));
+        return (validate == null) || validate.apply(this, convertToObject.apply(value));
     }
 }

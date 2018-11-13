@@ -32,8 +32,11 @@ class CodeJsonTest {
          * @param code    human readable code text of the instance
          * @param enabled flag indicating if the code is enabled
          */
-        JsonCode(@JsonProperty("id") int id, @JsonProperty("code") String code, @JsonProperty("enabled") boolean enabled) {
+        JsonCode(int id, String code, boolean enabled) {
             super(id, code, enabled);
+        }
+
+        private JsonCode() {
         }
     }
 

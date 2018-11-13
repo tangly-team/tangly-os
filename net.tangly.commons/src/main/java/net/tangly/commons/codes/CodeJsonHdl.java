@@ -42,3 +42,4 @@ public final class CodeJsonHdl {
     private CodeJsonHdl() {
     }
 }
+

@@ -116,20 +116,18 @@ public abstract class EntityImp implements Entity {
     // region Comments
 
     @Override
-    public List<Comment> getComments() {
+    public List<Comment> comments() {
         return Collections.unmodifiableList(comments);
     }
 
     @Override
     public void add(Comment comment) {
-        comment.foid(oid);
         comments.add(comment);
     }
 
     @Override
     public void remove(Comment comment) {
         comments.remove(comment);
-        comment.foid(HasId.UNDEFINED_OID);
     }
     // endregion
 
@@ -151,7 +149,7 @@ public abstract class EntityImp implements Entity {
     }
 
     @Override
-    public void clear() {
+    public void clearTags() {
         tags.clear();
     }
     // endregion

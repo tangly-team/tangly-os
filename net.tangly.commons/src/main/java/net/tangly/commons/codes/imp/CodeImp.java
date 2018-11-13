@@ -19,24 +19,24 @@ import net.tangly.commons.codes.Code;
 import java.util.Objects;
 
 /**
- * The class represents an immutable code describing one value of a set of related codes aggregated in the same code
- * table.
+ * The class represents an immutable code describing one value of a set of related codes aggregated in the same code table. The protected default
+ * constructor is necessary for JSON parsing of subclasses if no annotations are used to select a non-default constructor.
  */
 public abstract class CodeImp implements Code {
     /**
      * Identifier of the code in the context of the code table.
      */
-    private final int id;
+    private int id;
 
     /**
      * Human readable value of the code.
      */
-    private final String code;
+    private String code;
 
     /**
      * Flag indicating if the code is enabled or not.
      */
-    private final boolean enabled;
+    private boolean enabled;
 
     /**
      * Constructor of the immutable class.
@@ -49,6 +49,9 @@ public abstract class CodeImp implements Code {
         this.id = id;
         this.code = code;
         this.enabled = enabled;
+    }
+
+    protected CodeImp() {
     }
 
     @Override
