@@ -13,6 +13,8 @@
 
 package net.tangly.commons.activerecords;
 
+import net.tangly.commons.codes.Code;
+import net.tangly.commons.codes.CodeType;
 import net.tangly.commons.models.Comment;
 import net.tangly.commons.models.EntityImp;
 import net.tangly.commons.models.HasOid;
@@ -27,24 +29,69 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TableTest {
+    /**
+     * Enumeration type extended to support the code interface.
+     */
+    private enum EntityCode implements Code {
+        CODE_TEST_0, CODE_TEST_1, CODE_TEST_2;
+
+        @Override
+        public int id() {
+            return this.ordinal();
+        }
+
+        @Override
+        public String code() {
+            return this.toString();
+        }
+
+        @Override
+        public boolean isEnabled() {
+            return true;
+        }
+    }
+
     static class Entity extends EntityImp {
-        private Entity reference;
+        private Entity owner;
+
+        private EntityCode code;
+        private List<Entity> owned;
+        private Long ownedBy;
 
         public Entity() {
+            owned = new ArrayList<>();
         }
 
-        public Entity reference() {
-            return reference;
+        public EntityCode code() {
+            return code;
         }
 
-        public void reference(Entity reference) {
-            this.reference = reference;
+        public void code(EntityCode code) {
+            this.code = code;
+        }
+
+        public Entity owner() {
+            return owner;
+        }
+
+        public void owner(Entity owner) {
+            this.owner = owner;
+        }
+
+        public List<Entity> owned() {
+            return owned;
+        }
+
+        public void addOwned(Entity entity) {
+            owned.add(entity);
         }
     }
 
@@ -72,32 +119,11 @@ public class TableTest {
     }
 
     @Test
-    void testTable() throws NoSuchFieldException, NoSuchMethodException, IllegalAccessException {
-        Table<Entity> entities = new Table.Builder<>("tangly", "entities", Entity.class, dataSource).ofOid().ofString("id").ofString("name")
-                .ofDate("fromDate").ofDate("toDate").ofString("text").ofTags("tags").ofOne2One("reference").build();
+    void testCreateUpdateDeleteEntity() throws NoSuchFieldException, NoSuchMethodException {
+        Table<Entity> entities = createTable();
 
-        Table<Comment> comments = new Table.Builder<>("tangly", "comments", Comment.class, dataSource).ofOid().ofFid("foid").ofDateTime("created")
-                .ofString("text").ofTags("tags").build();
+        Entity entity = create(1, "2000-01-01", "2020-12-31");
 
-        Entity reference = new Entity();
-        reference.id("Test Entity 2");
-        reference.name("Test Entity Name 2");
-        reference.fromDate(LocalDate.parse("2000-01-01"));
-        reference.toDate(LocalDate.parse("2020-12-31"));
-        reference.add(Tag.of("Test", "reference-1"));
-        assertThat(reference.oid()).isEqualTo(HasOid.UNDEFINED_OID);
-        entities.update(reference);
-        assertThat(reference.oid()).isNotEqualTo(HasOid.UNDEFINED_OID);
-        long referenceOid = reference.oid();
-
-        Entity entity = new Entity();
-        entity.id("Test Entity 1");
-        entity.name("Test Entity Name 1");
-        entity.fromDate(LocalDate.parse("2000-01-01"));
-        entity.toDate(LocalDate.parse("2020-12-31"));
-        entity.add(Tag.of("Test", "test-1", "value"));
-        entity.add(Tag.of("Test", "test-2"));
-        entity.reference(reference);
         assertThat(entity.oid()).isEqualTo(HasOid.UNDEFINED_OID);
         entities.update(entity);
         assertThat(entity.oid()).isNotEqualTo(HasOid.UNDEFINED_OID);
@@ -120,6 +146,7 @@ public class TableTest {
         entities.clearCache();
         retrievedEntity = entities.find(oid);
         testEntity(retrievedEntity);
+        assertThat(retrievedEntity.get().text()).isEqualTo("Text Entity 1 updated");
 
         entities.delete(oid);
         retrievedEntity = entities.find(oid);
@@ -127,9 +154,141 @@ public class TableTest {
 
         entities.clearCache();
         assertThat(retrievedEntity.isEmpty()).isTrue();
-        retrievedEntity = entities.find(referenceOid);
+    }
+
+    @Test
+    public void testTags() throws NoSuchFieldException, NoSuchMethodException {
+        Table<Entity> entities = createTable();
+
+        Entity entity = create(10, "2020-01-01", "2020-12-31");
+        entities.update(entity);
+        long oid = entity.oid();
+        entities.clearCache();
+        Optional<Entity> retrieved = entities.find(oid);
+        assertThat(retrieved.isPresent()).isTrue();
+        assertThat(retrieved.get().tags().size()).isEqualTo(3);
+
+        entity = retrieved.get();
+        entity.removeTagNamed("test-C");
+        entities.update(entity);
+        entities.clearCache();
+        retrieved = entities.find(oid);
+
+        assertThat(retrieved.isPresent()).isTrue();
+        assertThat(retrieved.get().tags().size()).isEqualTo(2);
+
+        entity = retrieved.get();
+        entity.remove(entity.tags().stream().findAny().orElse(null));
+        entities.update(entity);
+        entities.clearCache();
+        retrieved = entities.find(oid);
+
+        assertThat(retrieved.isPresent()).isTrue();
+        assertThat(retrieved.get().tags().size()).isEqualTo(1);
+
+
+        entity.clearTags();
+        entities.update(entity);
+        entities.clearCache();
+        retrieved = entities.find(oid);
+
+        assertThat(retrieved.isPresent()).isTrue();
+        assertThat(retrieved.get().tags().isEmpty()).isTrue();
+    }
+
+    @Test
+    public void testJsonProperty() throws NoSuchFieldException, NoSuchMethodException {
+        Table<Entity> entities = createTable();
+
+        Entity entity = create(10, "2020-01-01", "2020-12-31");
+        entity.add(Comment.of("John Doe", "This is text of comment 1"));
+        entity.add(Comment.of("John Doe", "This is text of comment 2"));
+        entity.add(Comment.of("John Doe", "This is text of comment 3"));
+        entities.update(entity);
+        assertThat(entity.oid()).isNotEqualTo(HasOid.UNDEFINED_OID);
+        long oid = entity.oid();
+        entities.clearCache();
+        Optional<Entity> retrieved = entities.find(oid);
+        assertThat(retrieved.isPresent()).isTrue();
+        assertThat(retrieved.get().comments().size()).isEqualTo(3);
+    }
+
+    @Test
+    public void testOne2OneProperty() throws NoSuchFieldException, NoSuchMethodException {
+        Table<Entity> entities = createTable();
+
+        Entity owner = create(2, "2000-01-01", "2020-12-31");
+        Entity entity = create(1, "2000-01-01", "2020-12-31");
+        entity.owner(owner);
+
+        assertThat(entity.oid()).isEqualTo(HasOid.UNDEFINED_OID);
+        entities.update(entity);
+        assertThat(entity.oid()).isNotEqualTo(HasOid.UNDEFINED_OID);
+        assertThat(owner.oid()).isNotEqualTo(HasOid.UNDEFINED_OID);
+        long ownerOid = owner.oid();
+        long oid = entity.oid();
+
+        Optional<Entity> retrievedEntity = entities.find(oid);
+        testEntity(retrievedEntity);
+        assertThat(entity.owner()).isNotNull();
+        entities.clearCache();
+
+        retrievedEntity = entities.find(oid);
+        testEntity(retrievedEntity);
+        assertThat(entity.owner()).isNotNull();
+
+        entities.delete(oid);
+        retrievedEntity = entities.find(oid);
+        assertThat(retrievedEntity.isEmpty()).isTrue();
+        retrievedEntity = entities.find(ownerOid);
         assertThat(retrievedEntity.isPresent()).isTrue();
     }
+
+    @Test
+    public void testOne2ManyProperty() throws NoSuchFieldException, NoSuchMethodException {
+        Table<Entity> entities = createTable();
+
+        Entity entity = create(100, "2000-01-01", "2020-12-31");
+        for (int i = 0; i < 5; i++) {
+            entity.addOwned(create(i, "2000-01-01", "2020-12-31"));
+        }
+
+        assertThat(entity.oid()).isEqualTo(HasOid.UNDEFINED_OID);
+        entities.update(entity);
+        assertThat(entity.oid()).isNotEqualTo(HasOid.UNDEFINED_OID);
+        assertThat(entity.owned.stream().filter(o -> o.oid() == HasOid.UNDEFINED_OID).findAny().isEmpty()).isTrue();
+        long oid = entity.oid();
+
+        entities.clearCache();
+        Optional<Entity> retrieved = entities.find(oid);
+        assertThat(retrieved.isPresent()).isTrue();
+        assertThat(retrieved.get().owned().size()).isEqualTo(5);
+    }
+
+    @Test
+    public void testCodeProperty() throws NoSuchFieldException, NoSuchMethodException {
+        Table<Entity> entities = createTable();
+
+        Entity entity = create(20, "2000-01-01", "2020-12-31");
+        entity.code(EntityCode.CODE_TEST_1);
+        entities.update(entity);
+        assertThat(entity.oid()).isNotEqualTo(HasOid.UNDEFINED_OID);
+        assertThat(entity.code()).isEqualTo(EntityCode.CODE_TEST_1);
+        long oid = entity.oid();
+
+        entities.clearCache();
+        Optional<Entity> retrieved = entities.find(oid);
+        assertThat(retrieved.isPresent()).isTrue();
+        assertThat(retrieved.get().code()).isEqualTo(EntityCode.CODE_TEST_1);
+    }
+
+    private Table<Entity> createTable() throws NoSuchFieldException, NoSuchMethodException {
+        return new Table.Builder<>("tangly", "entities", Entity.class, dataSource).ofOid().ofString("id").ofString("name").ofDate("fromDate")
+                .ofDate("toDate").ofString("text").ofTags("tags").ofJson("comments", Comment.class, true)
+                .ofCode("code", CodeType.of(EntityCode.class, Arrays.asList(EntityCode.values()))).ofOne2One("owner").ofFid("ownedBy")
+                .ofOne2Many("owned", "ownedBy").build();
+    }
+
 
     private void testEntity(Optional<Entity> entity) {
         assertThat(entity.isPresent()).isTrue();
@@ -137,9 +296,23 @@ public class TableTest {
         assertThat(entity.get().name()).isEqualTo("Test Entity Name 1");
         assertThat(entity.get().fromDate()).isEqualTo(LocalDate.parse("2000-01-01"));
         assertThat(entity.get().toDate()).isEqualTo(LocalDate.parse("2020-12-31"));
-        assertThat(entity.get().tags().size()).isEqualTo(2);
-        assertThat(entity.get().findBy("Test", "test-1").isPresent()).isTrue();
-        assertThat(entity.get().findBy("Test", "test-2").isPresent()).isTrue();
-        assertThat(entity.get().reference()).isNotNull();
+        assertThat(entity.get().tags().size()).isEqualTo(3);
+        assertThat(entity.get().findBy("test", "test-A").isPresent()).isTrue();
+        assertThat(entity.get().findBy("test", "test-B").isPresent()).isTrue();
+        assertThat(entity.get().findBy(null, "test-C").isPresent()).isTrue();
+    }
+
+    private Entity create(int number, String fromDate, String toDate) {
+        Entity entity = new Entity();
+        entity.id("Test Entity " + number);
+        entity.name("Test Entity Name " + number);
+        entity.fromDate(LocalDate.parse(fromDate));
+        entity.toDate(LocalDate.parse(toDate));
+        entity.add(Tag.of("test", "test-A", Integer.toString(number)));
+        entity.add(Tag.ofEmpty("test", "test-B"));
+        entity.add(Tag.ofEmpty("test-C"));
+        assertThat(entity.oid()).isEqualTo(HasOid.UNDEFINED_OID);
+        return entity;
+
     }
 }

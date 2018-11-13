@@ -14,64 +14,53 @@
 package net.tangly.commons.activerecords;
 
 import net.tangly.commons.models.HasOid;
-import net.tangly.commons.models.Tag;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Optional;
-import java.util.Set;
 
 /**
- * Models a property of a class which is persisted in a relational database.
- *
- * @param <T> class owning the property
+ * Models the common attributes of an entity property.
+ * @param <T>
  */
-public abstract class Property<T extends HasOid> {
-    static Object tags_java2jdbc(Object object) {
-        return Tag.toString((Set<Tag>) object);
-    }
-
-    static Object tags_jdbc2java(Object object) {
-        return Tag.toTags((String) object);
-    }
+public interface Property<T extends HasOid> {
+    /**
+     * Returns the name of the property.
+     *
+     * @return name of the property
+     */
+    String name();
 
     /**
-     * Name of the property.
+     * Returns the type of the entity owning the property.
+     *
+     * @return type of the declaring entity
      */
-    protected String name;
-    protected Class<T> clazz;
-    protected Field field;
+    Class<T> entity();
 
-    public Property(String name, Class<T> clazz) throws NoSuchFieldException {
-        this.name = name;
-        this.clazz = clazz;
-        field = findField(name);
-        field.setAccessible(true);
-    }
+    /**
+     * Returns true if the type of the value of the property is a managed persisted type, otherwise false.
+     * @return true if type of the property is managed
+     */
+    boolean hasManagedType();
 
-    public String name() {
-        return name;
-    }
+    /**
+     * Returns true if the property contains multiple instances as in a collection, otherwise false.
+     *
+     * @return true if the property has multiple values
+     */
+    boolean hasMultipleValues();
 
-    public boolean hasPersistedType() {
-        return false;
-    }
-
-    public abstract void setParameter(@NotNull PreparedStatement statement, int index, @NotNull T entity) throws SQLException, IllegalAccessException;
-
-    public abstract void setField(@NotNull ResultSet set, int index, @NotNull T entity) throws SQLException, IllegalAccessException;
-
-    public void setField(@NotNull T entity, Object value) throws IllegalAccessException {
-        field.set(entity, value);
-    }
-
-    private Field findField(@NotNull String name) {
+    /**
+     * Finds the field with the given name.
+     *
+     * @param name of the field to be found
+     * @return the requested field if found otherwise null
+     */
+    default Field findField(@NotNull String name) {
         Field field = null;
-        Class<?> pointer = clazz;
+        Class<?> pointer = entity();
         while ((pointer != null) && (field == null)) {
             Field[] fields = pointer.getDeclaredFields();
             Optional<Field> result = Arrays.stream(fields).filter(o -> name.equals(o.getName())).findAny();

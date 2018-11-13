@@ -13,23 +13,27 @@
 
 package net.tangly.commons.activerecords;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import net.tangly.commons.activerecords.imp.AbstractProperty;
+import net.tangly.commons.activerecords.imp.PropertyCode;
+import net.tangly.commons.activerecords.imp.PropertyJson;
 import net.tangly.commons.activerecords.imp.PropertyOne2Many;
 import net.tangly.commons.activerecords.imp.PropertyOne2One;
 import net.tangly.commons.activerecords.imp.PropertySimple;
+import net.tangly.commons.codes.Code;
+import net.tangly.commons.codes.CodeType;
 import net.tangly.commons.models.HasOid;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 import javax.sql.DataSource;
+import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Types;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -54,13 +58,13 @@ public class Table<T extends HasOid> {
      */
     public static class Builder<V extends HasOid> {
         private Table<V> table;
-        private List<Property<V>> properties;
-        private DataSource dataSource;
+        private List<AbstractProperty<V>> properties;
+        private List<PropertyOne2Many<V, ?>> relations;
 
         public Builder(String schema, String entity, Class<V> clazz, DataSource dataSource) {
-            this.table = new Table<V>(schema, entity, clazz);
-            this.dataSource = dataSource;
+            this.table = new Table<>(schema, entity, clazz, dataSource);
             this.properties = new ArrayList<>();
+            this.relations = new ArrayList<>();
         }
 
         public Builder ofInt(String name) throws NoSuchFieldException {
@@ -109,8 +113,18 @@ public class Table<T extends HasOid> {
         }
 
         public Builder ofTags(String name) throws NoSuchFieldException {
-            properties.add(new PropertySimple<V>(name, table.getType(), String.class, Types.VARCHAR, Property::tags_java2jdbc,
-                    Property::tags_jdbc2java));
+            properties.add(new PropertySimple<V>(name, table.getType(), String.class, Types.VARCHAR, AbstractProperty::tags4java2jdbc,
+                    AbstractProperty::tags4jdbc2java));
+            return this;
+        }
+
+        public Builder ofJson(String name, Class<V> type, boolean hasMultipleValues) throws NoSuchFieldException {
+            properties.add(new PropertyJson<>(name, table.getType(), type, hasMultipleValues));
+            return this;
+        }
+
+        public <U extends Code> Builder ofCode(String name, CodeType<U> codeType) throws NoSuchFieldException {
+            properties.add(new PropertyCode<V, U>(name, table.getType(), codeType));
             return this;
         }
 
@@ -124,13 +138,18 @@ public class Table<T extends HasOid> {
             return this;
         }
 
-        public <R extends HasOid> Builder ofOne2Many(String name, Table<R> type) throws NoSuchFieldException {
-            properties.add(new PropertyOne2Many<V, R>(name, table.getType(), type));
+        public Builder ofOne2Many(String name, String property) {
+            relations.add(new PropertyOne2Many<V, V>(name, table.getType(), property, table));
+            return this;
+        }
+
+        public <R extends HasOid> Builder ofOne2Many(String name, String property, Table<R> type) {
+            relations.add(new PropertyOne2Many<V, R>(name, table.getType(), property, type));
             return this;
         }
 
         public Table<V> build() throws NoSuchMethodException {
-            table.configure(dataSource, properties);
+            table.configure(properties, relations);
             Table<V> copy = this.table;
             table = null;
             return copy;
@@ -141,14 +160,15 @@ public class Table<T extends HasOid> {
     private static final String PRIMARY_KEY = "oid";
     private static final int PRIMARY_KEY_SQL_TYPE = Types.BIGINT;
     private static Logger log = org.slf4j.LoggerFactory.getLogger(Table.class);
-    private static AtomicLong oidGenerator = new AtomicLong(1);
+    private static AtomicLong oidGenerator = new AtomicLong(0);
 
     private String schema;
     private String entityName;
     private Class<T> type;
     private Constructor<T> constructor;
     private DataSource dataSource;
-    private List<Property<T>> properties;
+    private List<AbstractProperty<T>> properties;
+    private List<PropertyOne2Many<T, ?>> relations;
     private String findSql;
     private String replaceSql;
     private String deleteSql;
@@ -159,21 +179,17 @@ public class Table<T extends HasOid> {
      */
     private Map<Long, WeakReference<T>> cache;
 
-    public Table(String schema, String entity, Class<T> type, List<Property<T>> properties, DataSource dataSource) throws NoSuchMethodException {
-        this(schema, entity, type);
-        configure(dataSource, properties);
-    }
-
-    public Table(String schema, String entity, Class<T> type) {
+    public Table(String schema, String entity, Class<T> type, DataSource dataSource) {
         this.schema = schema;
         this.entityName = entity;
         this.type = type;
+        this.dataSource = dataSource;
         this.cache = new HashMap<>();
     }
 
-    public void configure(DataSource dataSource, List<Property<T>> properties) throws NoSuchMethodException {
-        this.dataSource = dataSource;
+    public void configure(List<AbstractProperty<T>> properties, List<PropertyOne2Many<T, ?>> relations) throws NoSuchMethodException {
         this.properties = List.copyOf(properties);
+        this.relations = List.copyOf(relations);
         constructor = type.getConstructor();
         findSql = generateFindSql();
         replaceSql = generateReplaceSql();
@@ -189,46 +205,47 @@ public class Table<T extends HasOid> {
         cache.clear();
     }
 
-    public Optional<Property<T>> getPropertyBy(String name) {
-        return properties.stream().filter(o -> o.name.equals(name)).findAny();
+    public Optional<AbstractProperty<T>> getPropertyBy(String name) {
+        return properties.stream().filter(o -> o.name().equals(name)).findAny();
     }
 
     // region of-CRUD
 
     /**
      * Updates the persistent data associated with the entity.If the entity is new a row is inserted into the table otherwise the columns are updated.
+     * The update is transitive and all referenced entities are also updated.
      *
      * @param entity entity to update
      */
-    public void update(@NotNull T entity) throws IllegalAccessException {
-        if (entity.oid() == HasOid.UNDEFINED_OID) {
-            properties.get(0).setField(entity, oidGenerator.incrementAndGet());
-        }
-        try (Connection connection = dataSource.getConnection(); PreparedStatement stmt = connection.prepareStatement(replaceSql)) {
+    public void update(@NotNull T entity) {
+        try (var connection = dataSource.getConnection(); var stmt = connection.prepareStatement(replaceSql)) {
+            if (entity.oid() == HasOid.UNDEFINED_OID) {
+                properties.get(0).setField(entity, oidGenerator.incrementAndGet());
+            }
             for (int i = 0; i < properties.size(); i++) {
                 properties.get(i).setParameter(stmt, i + 1, entity);
             }
-            int rows = stmt.executeUpdate();
-            addToCache(entity.oid(), entity);
-        } catch (SQLException | IllegalAccessException e) {
+            stmt.executeUpdate();
+            for (var relation : relations) {
+                relation.update(entity);
+            }
+            addToCache(entity);
+        } catch (SQLException | IllegalAccessException | JsonProcessingException e) {
             log.error("Esception creating {} id {}", entityName, entity.oid(), e);
         }
     }
 
-    // TODO cascade update
-    // TODO cascade delete
-
     public Optional<T> find(long oid) {
         Optional<T> entity = retrieveFromCache(oid);
         if (entity.isEmpty()) {
-            try (Connection connection = dataSource.getConnection(); PreparedStatement stmt = connection.prepareStatement(findSql)) {
+            try (var connection = dataSource.getConnection(); var stmt = connection.prepareStatement(findSql)) {
                 stmt.setObject(1, oid, PRIMARY_KEY_SQL_TYPE);
-                ResultSet set = stmt.executeQuery();
-                if (set.next()) {
-                    entity = Optional.of(fillFind(set));
-                    addToCache(oid, entity.get());
+                try (ResultSet set = stmt.executeQuery()) {
+                    if (set.next()) {
+                        entity = Optional.of(materializeEntity(set));
+                    }
                 }
-            } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+            } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException | IOException e) {
                 log.error("Exception occured when retrieving entity {} id {}", entityName, oid, e);
             }
         }
@@ -237,13 +254,13 @@ public class Table<T extends HasOid> {
 
     public List<T> find(String where) {
         List<T> entities = new ArrayList<>();
-        try (Connection connection = dataSource.getConnection(); Statement stmt = connection.createStatement(); ResultSet set = stmt
+        try (var connection = dataSource.getConnection(); var stmt = connection.createStatement(); var set = stmt
                 .executeQuery(findWhereSql + where)) {
             while (set.next()) {
                 Optional<T> instance = retrieveFromCache((Long) set.getObject(1));
-                entities.add(instance.orElse(fillFind(set)));
+                entities.add(instance.orElse(materializeEntity(set)));
             }
-        } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+        } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException | IOException e) {
             log.error("Exception occured when retrieving entity with id {}", entityName, e);
         }
         return entities;
@@ -256,21 +273,23 @@ public class Table<T extends HasOid> {
      * @return the new instance with filled properties and relations
      * @throws SQLException if a problem was encountered when retrieving the field values from the result set
      */
-    protected T fillFind(ResultSet set) throws SQLException, IllegalAccessException, InstantiationException, InvocationTargetException {
-        // TODO add support for immutable objects
-        long oid = set.getLong(1);
+    private T materializeEntity(ResultSet set) throws SQLException, IllegalAccessException, InstantiationException, InvocationTargetException,
+            IOException {
         T entity = constructor.newInstance();
         for (int i = 0; i < properties.size(); i++) {
             properties.get(i).setField(set, i + 1, entity);
         }
-        // TODO relationships
+        for (var relation : relations) {
+            relation.retrieve(entity);
+        }
+        addToCache(entity);
         return entity;
     }
 
     public void delete(long oid) {
-        try (Connection connection = dataSource.getConnection(); PreparedStatement stmt = connection.prepareStatement(deleteSql)) {
+        try (var connection = dataSource.getConnection(); var stmt = connection.prepareStatement(deleteSql)) {
             stmt.setObject(1, oid, PRIMARY_KEY_SQL_TYPE);
-            int rows = stmt.executeUpdate();
+            stmt.executeUpdate();
             removeFromCache(oid);
         } catch (SQLException e) {
             log.error("SQL error when deleting instance {} id {}", entityName, oid, e);
@@ -292,13 +311,13 @@ public class Table<T extends HasOid> {
         return Optional.empty();
     }
 
-    private void addToCache(long id, T entity) {
-        if (cache.containsKey(id)) {
-            log.debug("Invalidate cache {} for id {}", getClass().getSimpleName(), id);
+    private void addToCache(T entity) {
+        if (cache.containsKey(entity.oid())) {
+            log.debug("Invalidate cache {} for id {}", getClass().getSimpleName(), entity.oid());
         } else {
-            log.debug("Add to cache {} id {}", getClass().getSimpleName(), id);
+            log.debug("Add to cache {} id {}", getClass().getSimpleName(), entity.oid());
         }
-        cache.put(id, new WeakReference<>(entity));
+        cache.put(entity.oid(), new WeakReference<>(entity));
     }
 
     private void removeFromCache(long id) {
@@ -309,7 +328,7 @@ public class Table<T extends HasOid> {
     }
 
     private String generateReplaceSql() {
-        return "REPLACE INTO " + ((schema != null) ? schema + "." + entityName : entityName) + " (" + properties.stream().map(Property::name)
+        return "REPLACE INTO " + ((schema != null) ? schema + "." + entityName : entityName) + " (" + properties.stream().map(AbstractProperty::name)
                 .collect(Collectors.joining(", ")) + ") VALUES (" + "?" + String.join("", Collections.nCopies(properties.size() - 1, ", ?")) + ")";
     }
 
@@ -318,12 +337,13 @@ public class Table<T extends HasOid> {
     }
 
     private String generateFindSql() {
-        return "SELECT " + properties.stream().map(Property::name).collect(
+        return "SELECT " + properties.stream().map(AbstractProperty::name).collect(
                 Collectors.joining(", ")) + " FROM " + ((schema != null) ? schema + "." + entityName : entityName) + " WHERE " + PRIMARY_KEY + " = ?";
     }
 
     private String generateFindWhereSql() {
-        return "SELECT " + properties.stream().map(Property::name).collect(Collectors.joining(", ")) + " FROM " + entityName + " WHERE ";
+        return "SELECT " + properties.stream().map(AbstractProperty::name)
+                .collect(Collectors.joining(", ")) + " FROM " + ((schema != null) ? schema + "." + entityName : entityName) + " WHERE ";
     }
 
 }

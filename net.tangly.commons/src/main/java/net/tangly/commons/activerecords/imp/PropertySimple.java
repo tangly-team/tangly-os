@@ -13,7 +13,6 @@
 
 package net.tangly.commons.activerecords.imp;
 
-import net.tangly.commons.activerecords.Property;
 import net.tangly.commons.models.HasOid;
 import org.jetbrains.annotations.NotNull;
 
@@ -27,7 +26,7 @@ import java.util.function.Function;
  *
  * @param <T> class owning the property
  */
-public class PropertySimple<T extends HasOid> extends Property<T> {
+public class PropertySimple<T extends HasOid> extends AbstractProperty<T> {
     private Class<?> sqlClass;
     private int sqlType;
     private Function<Object, Object> java2jdbc;
@@ -37,7 +36,8 @@ public class PropertySimple<T extends HasOid> extends Property<T> {
         this(name, clazz, sqlClass, sqlType, Function.identity(), Function.identity());
     }
 
-    public PropertySimple(String name, Class<T> clazz, Class<?> sqlClass, int sqlType, Function<Object, Object> java2jdbc, Function<Object, Object> jdbc2Java) throws NoSuchFieldException {
+    public PropertySimple(String name, Class<T> clazz, Class<?> sqlClass, int sqlType, Function<Object, Object> java2jdbc,
+                          Function<Object, Object> jdbc2Java) {
         super(name, clazz);
         this.sqlClass = sqlClass;
         this.sqlType = sqlType;

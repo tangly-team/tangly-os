@@ -18,8 +18,7 @@ import net.tangly.commons.activerecords.Table;
 import net.tangly.commons.models.HasOid;
 import org.jetbrains.annotations.NotNull;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.lang.reflect.Field;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,13 +31,20 @@ import java.util.List;
  * @param <T> class owning the property
  * @param <R> Class referenced by the property
  */
-public class PropertyOne2Many<T extends HasOid, R extends HasOid> extends Property<T> {
-    private Table<R> type;
+public class PropertyOne2Many<T extends HasOid, R extends HasOid> implements Property<T> {
+    private String name;
+    private Class<T> entity;
     private String property;
+    private Table<R> type;
+    private Field field;
 
-    public PropertyOne2Many(String name, Class<T> clazz, Table<R> type) throws NoSuchFieldException {
-        super(name, clazz);
+    public PropertyOne2Many(String name, Class<T> entity, String property, Table<R> type) {
+        this.name = name;
+        this.entity = entity;
+        this.property = property;
         this.type = type;
+        field = findField(name);
+        field.setAccessible(true);
     }
 
     public Table<R> type() {
@@ -46,25 +52,36 @@ public class PropertyOne2Many<T extends HasOid, R extends HasOid> extends Proper
     }
 
     @Override
-    public boolean hasPersistedType() {
+    public String name() {
+        return name;
+    }
+
+    @Override
+    public Class<T> entity() {
+        return entity;
+    }
+
+    @Override
+    public boolean hasManagedType() {
         return true;
     }
 
     @Override
-    public void setParameter(@NotNull PreparedStatement statement, int index, @NotNull T entity) throws SQLException, IllegalAccessException {
+    public boolean hasMultipleValues() {
+        return true;
+    }
+
+    public void update(@NotNull T entity) throws IllegalAccessException {
         List<R> references = (List<R>) field.get(entity);
-        Property foreignProperty = type.getPropertyBy(property).orElse(null);
+        AbstractProperty foreignProperty = type.getPropertyBy(property).orElseThrow();
         for (R reference : references) {
             foreignProperty.setField(reference, entity.oid());
             type.update(reference);
         }
-
     }
 
-    @Override
-    public void setField(@NotNull ResultSet set, int index, @NotNull T entity) throws SQLException, IllegalAccessException {
+    public void retrieve(@NotNull T entity) throws IllegalAccessException {
         List<R> references = new ArrayList<>(type.find(property + "=" + entity.oid()));
         field.set(entity, references);
-
     }
 }
