@@ -11,10 +11,10 @@
  * under the License.
  */
 
-package net.tangly.erp.crm;
+package net.tangly.erp.crm.models;
 
-import net.tangly.erp.crm.apps.Crm;
-import net.tangly.erp.crm.ports.CrmCsvHdl;
+import net.tangly.erp.crm.models.apps.Crm;
+import net.tangly.erp.crm.models.ports.CrmCsvHdl;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -22,7 +22,6 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,7 +32,7 @@ public class CsvImportTest {
         CrmTags.registerTags(crm.tagTypeRegistry());
         CrmCsvHdl handler = new CrmCsvHdl(crm);
 
-        Path path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/crm/naturalEntities.csv").toURI());
+        Path path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/crm/models/naturalEntities.csv").toURI());
         handler.importNaturalEntities(path);
         assertThat(crm.naturalEntities().size()).isEqualTo(5);
 
@@ -43,17 +42,17 @@ public class CsvImportTest {
         assertThat(crm.naturalEntities().get(0).findAddress(CrmTags.HOME)).isNotNull();
         assertThat(crm.naturalEntities().get(0).findEmail(CrmTags.HOME)).isNotNull();
         assertThat(crm.naturalEntities().get(0).findPhoneNr(CrmTags.HOME)).isNotNull();
-        assertThat(crm.naturalEntities().get(0).findSite(CrmTags.HOME)).isNotNull();
+        // assertThat(crm.naturalEntities().get(0).findSite(CrmTags.HOME)).isNotNull();
 
-        path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/crm/legalEntities.csv").toURI());
+        path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/crm/models/legalEntities.csv").toURI());
         handler.importLegalEntities(path);
         assertThat(crm.legalEntities().size()).isEqualTo(2);
 
-        path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/crm/employees.csv").toURI());
+        path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/crm/models/employees.csv").toURI());
         handler.importEmployees(path);
         assertThat(crm.employees().size()).isEqualTo(4);
 
-        path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/crm/contracts.csv").toURI());
+        path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/crm/models/contracts.csv").toURI());
         handler.importContracts(path);
         assertThat(crm.contracts().size()).isEqualTo(5);
     }

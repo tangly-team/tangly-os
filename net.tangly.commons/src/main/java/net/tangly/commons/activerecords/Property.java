@@ -14,14 +14,10 @@
 package net.tangly.commons.activerecords;
 
 import net.tangly.commons.models.HasOid;
-import org.jetbrains.annotations.NotNull;
-
-import java.lang.reflect.Field;
-import java.util.Arrays;
-import java.util.Optional;
 
 /**
  * Models the common attributes of an entity property.
+ *
  * @param <T>
  */
 public interface Property<T extends HasOid> {
@@ -41,6 +37,7 @@ public interface Property<T extends HasOid> {
 
     /**
      * Returns true if the type of the value of the property is a managed persisted type, otherwise false.
+     *
      * @return true if type of the property is managed
      */
     boolean hasManagedType();
@@ -52,23 +49,4 @@ public interface Property<T extends HasOid> {
      */
     boolean hasMultipleValues();
 
-    /**
-     * Finds the field with the given name.
-     *
-     * @param name of the field to be found
-     * @return the requested field if found otherwise null
-     */
-    default Field findField(@NotNull String name) {
-        Field field = null;
-        Class<?> pointer = entity();
-        while ((pointer != null) && (field == null)) {
-            Field[] fields = pointer.getDeclaredFields();
-            Optional<Field> result = Arrays.stream(fields).filter(o -> name.equals(o.getName())).findAny();
-            if (result.isPresent()) {
-                field = result.get();
-            }
-            pointer = pointer.getSuperclass();
-        }
-        return field;
-    }
 }

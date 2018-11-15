@@ -11,7 +11,7 @@
  * under the License.
  */
 
-package net.tangly.erp.crm;
+package net.tangly.erp.crm.models;
 
 import net.tangly.commons.models.Address;
 import net.tangly.commons.models.EmailAddress;
@@ -25,12 +25,12 @@ import java.util.Objects;
 public final class CrmTags {
 
     static void registerTags(TagTypeRegistry registry) {
-        registry.register(TagType.ofMandatory("crm", "email-home", EmailAddress.class));
-        registry.register(TagType.ofMandatory("crm", "email-work", EmailAddress.class));
-        registry.register(TagType.ofMandatory("crm", "phone-mobile", PhoneNr.class));
-        registry.register(TagType.ofMandatory("crm", "phone-home", PhoneNr.class));
-        registry.register(TagType.ofMandatory("crm", "address-home", Address.class));
-        registry.register(TagType.ofMandatory("crm", "address-work", Address.class));
+        registry.register(TagType.ofMandatory("crm", "email-home", EmailAddress.class, EmailAddress::of));
+        registry.register(TagType.ofMandatory("crm", "email-work", EmailAddress.class, EmailAddress::of));
+        registry.register(TagType.ofMandatory("crm", "phone-mobile", PhoneNr.class, PhoneNr::of));
+        registry.register(TagType.ofMandatory("crm", "phone-home", PhoneNr.class, PhoneNr::of));
+        registry.register(TagType.ofMandatory("crm", "address-home", Address.class, Address::of));
+        registry.register(TagType.ofMandatory("crm", "address-work", Address.class, Address::of));
         registry.register(TagType.ofMandatory("crm", "site-home", URL.class));
         registry.register(TagType.ofMandatory("crm", "site-work", URL.class));
         registry.register(TagType.ofMandatory("crm", "title", String.class));

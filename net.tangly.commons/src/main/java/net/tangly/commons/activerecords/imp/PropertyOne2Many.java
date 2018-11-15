@@ -16,12 +16,15 @@ package net.tangly.commons.activerecords.imp;
 import net.tangly.commons.activerecords.Property;
 import net.tangly.commons.activerecords.Table;
 import net.tangly.commons.models.HasOid;
+import net.tangly.commons.utilities.ReflectionUtilities;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
-import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Models a property with managed objects as values and supporting multiple objects. When the property is read we retrieve all instances which
@@ -43,7 +46,7 @@ public class PropertyOne2Many<T extends HasOid, R extends HasOid> implements Pro
         this.entity = entity;
         this.property = property;
         this.type = type;
-        field = findField(name);
+        field = ReflectionUtilities.findField(entity, name).orElseThrow();
         field.setAccessible(true);
     }
 
@@ -72,16 +75,26 @@ public class PropertyOne2Many<T extends HasOid, R extends HasOid> implements Pro
     }
 
     public void update(@NotNull T entity) throws IllegalAccessException {
-        List<R> references = (List<R>) field.get(entity);
         AbstractProperty foreignProperty = type.getPropertyBy(property).orElseThrow();
-        for (R reference : references) {
+        List<R> oldReferences = new ArrayList<>(type.find(property + "=" + entity.oid()));
+        for (R reference : oldReferences) {
+            foreignProperty.setField(reference, null);
+        }
+        List<R> newReferences = (List<R>) field.get(entity);
+        for (R reference : newReferences) {
             foreignProperty.setField(reference, entity.oid());
+        }
+        Set<R> references = new HashSet<>(oldReferences);
+        references.addAll(newReferences);
+        for (R reference : references) {
             type.update(reference);
         }
     }
 
     public void retrieve(@NotNull T entity) throws IllegalAccessException {
         List<R> references = new ArrayList<>(type.find(property + "=" + entity.oid()));
-        field.set(entity, references);
+        Collection<R> collection = (Collection<R>) field.get(entity);
+        collection.clear();
+        collection.addAll(references);
     }
 }

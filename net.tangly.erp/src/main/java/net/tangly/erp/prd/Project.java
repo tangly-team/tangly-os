@@ -20,5 +20,6 @@ public class Project extends EntityImp implements Entity {
     private static final long serialVersionUID = 1L;
 
     public Project() {
+        // default constructor
     }
 }

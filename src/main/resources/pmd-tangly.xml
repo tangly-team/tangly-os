@@ -21,6 +21,7 @@
     <rule ref="category/java/bestpractices.xml"/>
     <rule ref="category/java/codestyle.xml"/>
     <rule ref="category/java/design.xml"/>
+    <rule ref="category/java/documentation.xml"/>
     <rule ref="category/java/errorprone.xml"/>
     <rule ref="category/java/multithreading.xml"/>
     <rule ref="category/java/performance.xml"/>
@@ -42,6 +43,14 @@
     <rule ref="category/java/codestyle.xml/ShortVariable">
         <properties>
             <property name="minimum" value="2"/>
+        </properties>
+    </rule>
+    <rule ref="category/java/design.xml">
+        <exclude name="ExcessiveImports"/>
+    </rule>
+    <rule ref="category/java/design.xml/TooManyMethods">
+        <properties>
+            <property name="maxmethods" value="20"/>
         </properties>
     </rule>
     <rule ref="category/java/documentation.xml/CommentSize">

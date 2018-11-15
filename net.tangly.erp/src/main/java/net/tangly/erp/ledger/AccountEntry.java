@@ -130,7 +130,7 @@ public class AccountEntry implements HasTags {
     }
 
     @Override
-    public void clear() {
+    public void clearTags() {
         tags.clear();
     }
 
@@ -143,6 +143,10 @@ public class AccountEntry implements HasTags {
     }
 
     public Optional<BigDecimal> getVat() {
-        return findBy(FINANCE, VAT).map(tag1 -> (BigDecimal) tag1.value());
+        return findBy(FINANCE, VAT).map(tag1 -> new BigDecimal(tag1.value()));
+    }
+
+    public Optional<BigDecimal> getVatDue() {
+        return findBy(FINANCE, VAT_DUE).map(tag1 -> new BigDecimal(tag1.value()));
     }
 }

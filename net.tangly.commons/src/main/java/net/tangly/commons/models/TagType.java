@@ -15,9 +15,15 @@ package net.tangly.commons.models;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.function.BiFunction;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
 
+/**
+ * Implements the conceptual type of a set of related tags, all of the same class. The tag type also provides support to convert the text value
+ * of a tag into a Java object and to validate acceptable tag values.
+ *
+ * @param <T> type of the tags
+ */
 public class TagType<T extends Serializable> {
     public enum ValueKinds {NONE, OPTIONAL, MANDATORY}
 
@@ -25,17 +31,16 @@ public class TagType<T extends Serializable> {
     private final String name;
     private final ValueKinds kind;
     private final Class<T> clazz;
-    private Function<String, T> convertToObject;
-    private BiFunction<TagType<T>, T, Boolean> validate;
+    private Function<String, T> convert;
+    private BiPredicate<TagType<T>, T> validate;
 
-    public static <T extends Serializable> TagType<T> ofMandatory(String namespace, String name, Class<T> clazz,
-                                                                  Function<String, T> convertToObject, BiFunction<TagType<T>, T, Boolean> validate) {
-        return new TagType<>(namespace, name, ValueKinds.MANDATORY, clazz, convertToObject, validate);
+    public static <T extends Serializable> TagType<T> ofMandatory(String namespace, String name, Class<T> clazz, Function<String, T> convert,
+                                                                  BiPredicate<TagType<T>, T> validate) {
+        return new TagType<>(namespace, name, ValueKinds.MANDATORY, clazz, convert, validate);
     }
 
-    public static <T extends Serializable> TagType<T> ofMandatory(String namespace, String name, Class<T> clazz,
-                                                                  Function<String, T> convertToObject) {
-        return new TagType<>(namespace, name, ValueKinds.MANDATORY, clazz, convertToObject, null);
+    public static <T extends Serializable> TagType<T> ofMandatory(String namespace, String name, Class<T> clazz, Function<String, T> convert) {
+        return new TagType<>(namespace, name, ValueKinds.MANDATORY, clazz, convert, null);
     }
 
     public static <T extends Serializable> TagType<T> ofMandatory(String namespace, String name, Class<T> clazz) {
@@ -53,13 +58,12 @@ public class TagType<T extends Serializable> {
         this.clazz = clazz;
     }
 
-    public TagType(String namespace, String name, ValueKinds kind, Class<T> clazz, Function<String, T> convertToObject, BiFunction<TagType<T>, T,
-            Boolean> validate) {
+    public TagType(String namespace, String name, ValueKinds kind, Class<T> clazz, Function<String, T> convert, BiPredicate<TagType<T>, T> validate) {
         this.namespace = Objects.requireNonNull(namespace);
         this.name = Objects.requireNonNull(name);
         this.kind = Objects.requireNonNull(kind);
         this.clazz = clazz;
-        this.convertToObject = convertToObject;
+        this.convert = convert;
         this.validate = validate;
     }
 
@@ -76,7 +80,7 @@ public class TagType<T extends Serializable> {
     }
 
     public T getValue(Tag tag) {
-        return (convertToObject == null) ? null : convertToObject.apply(tag.value());
+        return (convert == null) ? null : convert.apply(tag.value());
     }
 
     public Tag of(T value) {
@@ -88,6 +92,6 @@ public class TagType<T extends Serializable> {
     }
 
     public boolean validate(String value) {
-        return (validate == null) || validate.apply(this, convertToObject.apply(value));
+        return (validate == null) || validate.test(this, convert.apply(value));
     }
 }

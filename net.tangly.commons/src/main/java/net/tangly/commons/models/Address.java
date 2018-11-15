@@ -13,6 +13,8 @@
 
 package net.tangly.commons.models;
 
+import com.google.common.base.Strings;
+
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.StringJoiner;
@@ -126,7 +128,7 @@ public class Address implements Serializable {
     private String country;
 
     public static Address of(String text) {
-        var items = text.split("(,)");
+        var items = text.split(",");
         return new Address(items[0], items[1], items[2], items[3], items[4], items[5], items[6]);
     }
 
@@ -142,13 +144,13 @@ public class Address implements Serializable {
      * @param country  country as a string
      */
     public Address(String street, String extended, String poBox, String postcode, String locality, String region, String country) {
-        this.street = street;
-        this.extended = extended;
-        this.poBox = poBox;
-        this.postcode = postcode;
-        this.locality = locality;
-        this.region = region;
-        this.country = country;
+        this.street = Strings.emptyToNull(street);
+        this.extended = Strings.emptyToNull(extended);
+        this.poBox = Strings.emptyToNull(poBox);
+        this.postcode = Strings.emptyToNull(postcode);
+        this.locality = Strings.emptyToNull(locality);
+        this.region = Strings.emptyToNull(region);
+        this.country = Strings.emptyToNull(country);
     }
 
     /**
@@ -160,21 +162,21 @@ public class Address implements Serializable {
     /**
      * @return the PO box
      */
-    public String getPoBox() {
+    public String poBox() {
         return poBox;
     }
 
     /**
      * @return the street
      */
-    public String getStreet() {
+    public String street() {
         return street;
     }
 
     /**
      * @return the extendedAddress
      */
-    public String getExtended() {
+    public String extended() {
         return extended;
     }
 
@@ -182,7 +184,7 @@ public class Address implements Serializable {
      * @return the locality
      */
 
-    public String getLocality() {
+    public String locality() {
         return locality;
     }
 
@@ -190,14 +192,14 @@ public class Address implements Serializable {
      * @return the postal code
      */
 
-    public String getPostcode() {
+    public String postcode() {
         return postcode;
     }
 
     /**
      * @return the region
      */
-    public String getRegion() {
+    public String region() {
         return region;
     }
 
@@ -205,7 +207,7 @@ public class Address implements Serializable {
      * @return the country
      */
 
-    public String getCountry() {
+    public String country() {
         return country;
     }
 
@@ -213,10 +215,9 @@ public class Address implements Serializable {
     public boolean equals(Object right) {
         if (right instanceof Address) {
             Address address = (Address) right;
-            return Objects.equals(country, address.getCountry()) && Objects.equals(region, address.getRegion()) && Objects
-                    .equals(locality, address.getLocality()) && Objects.equals(postcode, address.getPostcode()) && Objects
-                    .equals(street, address.getStreet()) && Objects.equals(poBox, address.getPoBox()) && Objects
-                    .equals(extended, address.getExtended());
+            return Objects.equals(country, address.country()) && Objects.equals(region, address.region()) && Objects
+                    .equals(locality, address.locality()) && Objects.equals(postcode, address.postcode()) && Objects
+                    .equals(street, address.street()) && Objects.equals(poBox, address.poBox()) && Objects.equals(extended, address.extended());
         }
         return false;
     }
@@ -228,8 +229,8 @@ public class Address implements Serializable {
 
     @Override
     public String toString() {
-        return new StringJoiner("; ", this.getClass().getSimpleName() + "(", ")").add(Objects.toString(street, ""))
-                .add(Objects.toString(extended, "")).add(Objects.toString(poBox, "")).add(Objects.toString(postcode, ""))
-                .add(Objects.toString(locality, "")).add(Objects.toString(region, "")).add(Objects.toString(country, "")).toString();
+        return new StringJoiner(",").add(Objects.toString(street, "")).add(Objects.toString(extended, "")).add(Objects.toString(poBox, ""))
+                .add(Objects.toString(postcode, "")).add(Objects.toString(locality, "")).add(Objects.toString(region, ""))
+                .add(Objects.toString(country, "")).toString();
     }
 }

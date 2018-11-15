@@ -11,7 +11,7 @@
  * under the License.
  */
 
-package net.tangly.erp.crm;
+package net.tangly.erp.crm.models;
 
 import java.io.Serializable;
 
@@ -19,6 +19,10 @@ import java.io.Serializable;
  * Describes a bank connection with IBAN account number, BIC identification and name of the institute. The class is mmutable.
  */
 public class BankConnection implements Serializable {
+    public static BankConnection of(String iban, String bic, String institute) {
+        return new BankConnection(iban, bic, institute);
+    }
+
     private static final long serialVersionUID = 1L;
 
     private final String iban;

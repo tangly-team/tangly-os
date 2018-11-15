@@ -11,7 +11,7 @@
  * under the License.
  */
 
-package net.tangly.erp.crm;
+package net.tangly.erp.crm.models;
 
 import net.tangly.commons.models.EntityImp;
 import net.tangly.commons.models.Tag;
@@ -23,16 +23,19 @@ import net.tangly.commons.models.Tag;
 public class LegalEntity extends EntityImp implements CrmEntity {
     private static final long serialVersionUID = 1L;
 
-    public static LegalEntity of() {
-        return new LegalEntity();
+    public static LegalEntity of(long oid) {
+        LegalEntity entity = new LegalEntity();
+        entity.oid(oid);
+        return entity;
     }
 
     public LegalEntity() {
+        // default constructor
     }
 
     public String vatNr() {
         var value = findBy(CrmTags.CRM_VAT_NUMBER);
-        return value.map(Tag::stringValue).orElse(null);
+        return value.map(Tag::value).orElse(null);
     }
 
     public void vatNr(String vatNr) {

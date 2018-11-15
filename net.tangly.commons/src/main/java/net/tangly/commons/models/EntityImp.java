@@ -26,10 +26,6 @@ import java.util.Set;
  * @see Entity
  */
 public abstract class EntityImp implements Entity {
-    public static void setOid(EntityImp entity, long oid) {
-        entity.oid = oid;
-    }
-
     private long oid;
     private String id;
     private String name;
@@ -52,6 +48,10 @@ public abstract class EntityImp implements Entity {
     @Override
     public long oid() {
         return oid;
+    }
+
+    protected void oid(long oid) {
+        this.oid = oid;
     }
 
     // endregion

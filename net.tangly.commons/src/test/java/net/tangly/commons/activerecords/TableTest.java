@@ -93,6 +93,10 @@ public class TableTest {
         public void addOwned(Entity entity) {
             owned.add(entity);
         }
+
+        public void removeOwned(Entity entity) {
+            owned.remove(entity);
+        }
     }
 
     private static String dbUrl = "jdbc:hsqldb:mem:commons;sql.syntax_mys=true";
@@ -246,10 +250,11 @@ public class TableTest {
 
     @Test
     public void testOne2ManyProperty() throws NoSuchFieldException, NoSuchMethodException {
+        final int OWNED_NR = 5;
         Table<Entity> entities = createTable();
 
         Entity entity = create(100, "2000-01-01", "2020-12-31");
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < OWNED_NR; i++) {
             entity.addOwned(create(i, "2000-01-01", "2020-12-31"));
         }
 
@@ -262,7 +267,17 @@ public class TableTest {
         entities.clearCache();
         Optional<Entity> retrieved = entities.find(oid);
         assertThat(retrieved.isPresent()).isTrue();
-        assertThat(retrieved.get().owned().size()).isEqualTo(5);
+        assertThat(retrieved.get().owned().size()).isEqualTo(OWNED_NR);
+
+        entity.removeOwned(entity.owned().get(0));
+        entity.removeOwned((entity.owned().get(0)));
+        entity.removeOwned((entity.owned().get(0)));
+        entity.addOwned(create(OWNED_NR + 1, "2000-01-01", "2020-12-31"));
+        entities.update(entity);
+        entities.clearCache();
+        retrieved = entities.find(oid);
+        assertThat(retrieved.isPresent()).isTrue();
+        assertThat(retrieved.get().owned().size()).isEqualTo(OWNED_NR - 3 + 1);
     }
 
     @Test

@@ -11,7 +11,7 @@
  * under the License.
  */
 
-package net.tangly.erp.crm;
+package net.tangly.erp.crm.models;
 
 
 import net.tangly.commons.models.EntityImp;
@@ -29,6 +29,7 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
 
     public static NaturalEntity of(long oid, String socialNumber, String lastname, String firstname) {
         var entity = new NaturalEntity();
+        entity.oid(oid);
         entity.id(socialNumber);
         entity.lastname(lastname);
         entity.firstname(firstname);
@@ -37,6 +38,7 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
     }
 
     public NaturalEntity() {
+        // default constructor
     }
 
     public String firstname() {

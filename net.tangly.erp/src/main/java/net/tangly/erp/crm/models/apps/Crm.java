@@ -11,13 +11,13 @@
  * under the License.
  */
 
-package net.tangly.erp.crm.apps;
+package net.tangly.erp.crm.models.apps;
 
 import net.tangly.commons.models.TagTypeRegistry;
-import net.tangly.erp.crm.Contract;
-import net.tangly.erp.crm.Employee;
-import net.tangly.erp.crm.LegalEntity;
-import net.tangly.erp.crm.NaturalEntity;
+import net.tangly.erp.crm.models.Contract;
+import net.tangly.erp.crm.models.Employee;
+import net.tangly.erp.crm.models.LegalEntity;
+import net.tangly.erp.crm.models.NaturalEntity;
 
 import java.util.ArrayList;
 import java.util.Collection;

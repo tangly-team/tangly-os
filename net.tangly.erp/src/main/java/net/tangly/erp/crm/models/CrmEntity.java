@@ -11,16 +11,14 @@
  * under the License.
  */
 
-package net.tangly.erp.crm;
+package net.tangly.erp.crm.models;
 
 import net.tangly.commons.models.Address;
-import net.tangly.commons.models.EmailAddress;
 import net.tangly.commons.models.HasTags;
 import net.tangly.commons.models.PhoneNr;
 import net.tangly.commons.models.Tag;
 
 import java.net.URI;
-import java.net.URL;
 import java.util.Optional;
 
 public interface CrmEntity extends HasTags {
@@ -33,36 +31,36 @@ public interface CrmEntity extends HasTags {
     }
 
     default Optional<PhoneNr> findPhoneNr(String kind) {
-        return findBy(CrmTags.getPhoneTag(kind)).map(o -> PhoneNr.of(o.stringValue()));
+        return findBy(CrmTags.getPhoneTag(kind)).map(o -> PhoneNr.of(o.value()));
     }
 
     default void setPhoneNr(String kind, String phoneNr) {
         if (phoneNr != null) {
-            replace(Tag.parse(CrmTags.getPhoneTag(kind), PhoneNr.of(phoneNr)));
+            replace(Tag.of(CrmTags.getPhoneTag(kind), phoneNr));
         } else {
             removeTagNamed(CrmTags.getPhoneTag(kind));
         }
     }
 
     default Optional<String> findEmail(String kind) {
-        return findBy(CrmTags.getEmailTag(kind)).map(Tag::stringValue);
+        return findBy(CrmTags.getEmailTag(kind)).map(Tag::value);
     }
 
     default void setEmail(String kind, String email) {
         if (email != null) {
-            replace(Tag.parse(CrmTags.getEmailTag(kind), EmailAddress.of(email)));
+            replace(Tag.of(CrmTags.getEmailTag(kind), email));
         } else {
             removeTagNamed(CrmTags.getEmailTag(kind));
         }
     }
 
     default Optional<Address> findAddress(String kind) {
-        return findBy(CrmTags.getAddressTag(kind)).map(o -> (Address) o.value());
+        return findBy(CrmTags.getAddressTag(kind)).map(o -> Address.of(o.value()));
     }
 
     default void setAddress(String kind, Address address) {
         if (address != null) {
-            replace(Tag.parse(CrmTags.getEmailTag(kind), address));
+            replace(Tag.of(CrmTags.getEmailTag(kind), address.toString()));
         } else {
             removeTagNamed(CrmTags.getEmailTag(kind));
         }
@@ -76,13 +74,9 @@ public interface CrmEntity extends HasTags {
         }
     }
 
-    default Optional<URL> findSite(String kind) {
-        return findBy(CrmTags.getSiteTag(kind)).map(o -> (URL) o.value());
-    }
-
     default void setSite(String kind, URI site) {
         if (site != null) {
-            replace(Tag.parse(CrmTags.getSiteTag(kind), site));
+            replace(Tag.of(CrmTags.getSiteTag(kind), site.toString()));
         } else {
             removeTagNamed(CrmTags.getSiteTag(kind));
         }

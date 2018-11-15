@@ -21,11 +21,53 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class CommentsAndTagsTest {
+class EntityTest {
     static class Entity extends EntityImp {
+        private Address address;
+        private EmailAddress email;
+        private PhoneNr phoneNr;
+
         static Entity of() {
             return new Entity();
         }
+
+        public Address address() {
+            return address;
+        }
+
+        public void address(Address address) {
+            this.address = address;
+        }
+
+        public PhoneNr phoneNr() {
+            return phoneNr;
+        }
+
+        public void phoneNr(PhoneNr phoneNr) {
+            this.phoneNr = phoneNr;
+        }
+    }
+
+    @Test
+    void testAddress() {
+        final String COUNTRY = "Switzerland";
+        final String LOCALITY = "Zug";
+        final String POBOX = "Postfach 101";
+        final String STREET = "Rigistrasse 1";
+        var entity = Entity.of();
+        entity.address(new Address.Builder().country(COUNTRY).region("ZG").locality(LOCALITY).postcode("6300").street(STREET).poB0x(POBOX).build());
+        assertThat(entity.address().country()).isEqualTo(COUNTRY);
+        assertThat(entity.address().poBox()).isEqualTo(POBOX);
+        assertThat(entity.address().street()).isEqualTo(STREET);
+        assertThat(entity.address().locality()).isEqualTo(LOCALITY);
+        assertThat(Address.of(entity.address().toString())).isEqualTo(entity.address());
+    }
+
+    @Test
+    void testPhoneNr() {
+        var entity = Entity.of();
+        entity.phoneNr(PhoneNr.of("+41 79 123 45 78"));
+        assertThat(PhoneNr.of(entity.phoneNr().toString())).isEqualTo(entity.phoneNr());
     }
 
     @Test

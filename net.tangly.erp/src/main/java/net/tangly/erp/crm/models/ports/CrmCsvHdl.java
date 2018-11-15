@@ -11,18 +11,18 @@
  * under the License.
  */
 
-package net.tangly.erp.crm.ports;
+package net.tangly.erp.crm.models.ports;
 
 import com.google.common.base.Strings;
 import net.tangly.commons.models.Address;
 import net.tangly.commons.models.EntityImp;
-import net.tangly.erp.crm.BankConnection;
-import net.tangly.erp.crm.Contract;
-import net.tangly.erp.crm.CrmTags;
-import net.tangly.erp.crm.Employee;
-import net.tangly.erp.crm.LegalEntity;
-import net.tangly.erp.crm.NaturalEntity;
-import net.tangly.erp.crm.apps.Crm;
+import net.tangly.erp.crm.models.BankConnection;
+import net.tangly.erp.crm.models.Contract;
+import net.tangly.erp.crm.models.CrmTags;
+import net.tangly.erp.crm.models.Employee;
+import net.tangly.erp.crm.models.LegalEntity;
+import net.tangly.erp.crm.models.NaturalEntity;
+import net.tangly.erp.crm.models.apps.Crm;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
@@ -86,7 +86,7 @@ public class CrmCsvHdl {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             CSVRecord record = records.hasNext() ? records.next() : null;
             while (record != null) {
-                LegalEntity entity = new LegalEntity();
+                LegalEntity entity = LegalEntity.of(Long.parseLong(get(record, OID)));
                 updateEntity(record, entity);
                 entity.setAddress(CrmTags.HOME, importAddress(record));
                 entity.setEmail(CrmTags.WORK, get(record, "email-work"));
@@ -113,7 +113,7 @@ public class CrmCsvHdl {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             CSVRecord record = records.hasNext() ? records.next() : null;
             while (record != null) {
-                Employee entity = new Employee();
+                Employee entity = Employee.of(Long.parseLong(get(record, OID)));
                 updateEntity(record, entity);
                 findNaturalEntityByOid(get(record, "personOid")).ifPresent(entity::person);
                 findLegalEntityByOid(get(record, "organizationOid")).ifPresent(entity::organization);
@@ -134,7 +134,7 @@ public class CrmCsvHdl {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             CSVRecord record = records.hasNext() ? records.next() : null;
             while (record != null) {
-                Contract entity = new Contract();
+                Contract entity = Contract.of(Long.parseLong(get(record, OID)));
                 updateEntity(record, entity);
                 findLegalEntityByOid(get(record, "sellerOid")).ifPresent(entity::seller);
                 findLegalEntityByOid(get(record, "selleeOid")).ifPresent(entity::sellee);
@@ -157,7 +157,6 @@ public class CrmCsvHdl {
     }
 
     private void updateEntity(@NotNull CSVRecord record, EntityImp entity) {
-        EntityImp.setOid(entity, Long.parseLong(get(record, OID)));
         entity.id(get(record, ID));
         entity.name(get(record, NAME));
         String fromDate = get(record, FROM_DATE);

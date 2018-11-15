@@ -14,8 +14,8 @@
 package net.tangly.erp.prd;
 
 import net.tangly.commons.models.HasId;
-import net.tangly.erp.crm.Contract;
-import net.tangly.erp.crm.Employee;
+import net.tangly.erp.crm.models.Contract;
+import net.tangly.erp.crm.models.Employee;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

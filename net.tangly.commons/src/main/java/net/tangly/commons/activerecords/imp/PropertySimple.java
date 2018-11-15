@@ -20,6 +20,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 /**
  * Models a property with simple objects. The cardinality can be one or multiple
@@ -32,12 +33,12 @@ public class PropertySimple<T extends HasOid> extends AbstractProperty<T> {
     private Function<Object, Object> java2jdbc;
     private Function<Object, Object> jdbc2java;
 
-    public PropertySimple(String name, Class<T> clazz, Class<?> sqlClass, int sqlType) throws NoSuchFieldException {
-        this(name, clazz, sqlClass, sqlType, Function.identity(), Function.identity());
+    public PropertySimple(String name, Class<T> clazz, Class<?> sqlClass, int sqlType) {
+        this(name, clazz, sqlClass, sqlType, UnaryOperator.identity(), UnaryOperator.identity());
     }
 
-    public PropertySimple(String name, Class<T> clazz, Class<?> sqlClass, int sqlType, Function<Object, Object> java2jdbc,
-                          Function<Object, Object> jdbc2Java) {
+    public PropertySimple(String name, Class<T> clazz, Class<?> sqlClass, int sqlType, UnaryOperator<Object> java2jdbc,
+                          UnaryOperator<Object> jdbc2Java) {
         super(name, clazz);
         this.sqlClass = sqlClass;
         this.sqlType = sqlType;

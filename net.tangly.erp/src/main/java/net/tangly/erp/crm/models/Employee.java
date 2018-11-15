@@ -11,7 +11,7 @@
  * under the License.
  */
 
-package net.tangly.erp.crm;
+package net.tangly.erp.crm.models;
 
 import net.tangly.commons.models.EntityImp;
 
@@ -21,7 +21,14 @@ public class Employee extends EntityImp implements CrmEntity {
     private NaturalEntity person;
     private transient LegalEntity organization;
 
+    public static Employee of(long oid) {
+        Employee entity = new Employee();
+        entity.oid(oid);
+        return entity;
+    }
+
     public Employee() {
+        // default constructor
     }
 
     public NaturalEntity person() {

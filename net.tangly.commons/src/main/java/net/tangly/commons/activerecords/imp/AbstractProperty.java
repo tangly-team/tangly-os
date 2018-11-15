@@ -17,6 +17,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import net.tangly.commons.activerecords.Property;
 import net.tangly.commons.models.HasOid;
 import net.tangly.commons.models.Tag;
+import net.tangly.commons.utilities.ReflectionUtilities;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -43,22 +44,22 @@ public abstract class AbstractProperty<T extends HasOid> implements Property<T> 
     /**
      * Name of the property.
      */
-    protected String name;
+    protected final String name;
 
     /**
      * Class of the owning entity of the property.
      */
-    protected Class<T> entity;
+    protected final Class<T> entity;
 
     /**
      * Field associated with the property and used to get and set values of the property.
      */
-    protected Field field;
+    protected final Field field;
 
     public AbstractProperty(String name, Class<T> entity) {
         this.name = name;
         this.entity = entity;
-        field = findField(name);
+        field = ReflectionUtilities.findField(entity, name).orElseThrow();
         field.setAccessible(true);
     }
 
@@ -83,8 +84,8 @@ public abstract class AbstractProperty<T extends HasOid> implements Property<T> 
     }
 
 
-    public abstract void setParameter(@NotNull PreparedStatement statement, int index, @NotNull T entity) throws SQLException,
-            IllegalAccessException, JsonProcessingException;
+    public abstract void setParameter(@NotNull PreparedStatement statement, int index, @NotNull T entity) throws SQLException, IllegalAccessException,
+            JsonProcessingException;
 
     public abstract void setField(@NotNull ResultSet set, int index, @NotNull T entity) throws SQLException, IllegalAccessException, IOException;
 

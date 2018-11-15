@@ -47,7 +47,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 /**
- * Represents the mapping between a Java class and a relational database table containing the values of the instances of the class.
+ * Represents the mapping between a Java class and a relational database table containing the values of the instances of the class. The design
+ * promotes convention over configuration. The primary key for an entity is always the first field with the name oid and of type long.
  *
  * @param <T> the class being mapped. The table takes care of the handling of the unique object identifier.
  */
@@ -67,73 +68,73 @@ public class Table<T extends HasOid> {
             this.relations = new ArrayList<>();
         }
 
-        public Builder ofInt(String name) throws NoSuchFieldException {
+        public Builder ofInt(String name) {
             properties.add(new PropertySimple<V>(name, table.getType(), Integer.class, Types.INTEGER));
             return this;
         }
 
-        public Builder ofOid() throws NoSuchFieldException {
+        public Builder ofOid() {
             properties.add(new PropertySimple<V>("oid", table.getType(), Long.TYPE, Types.BIGINT));
             return this;
         }
 
-        public Builder ofFid(String name) throws NoSuchFieldException {
+        public Builder ofFid(String name) {
             properties.add(new PropertySimple<V>(name, table.getType(), Long.TYPE, Types.BIGINT));
             return this;
         }
 
-        public Builder ofLong(String name) throws NoSuchFieldException {
+        public Builder ofLong(String name) {
             properties.add(new PropertySimple<V>(name, table.getType(), Long.class, Types.BIGINT));
             return this;
         }
 
-        public Builder ofString(String name) throws NoSuchFieldException {
+        public Builder ofString(String name) {
             properties.add(new PropertySimple<V>(name, table.getType(), String.class, Types.VARCHAR));
             return this;
         }
 
-        public Builder ofText(String name) throws NoSuchFieldException {
+        public Builder ofText(String name) {
             properties.add(new PropertySimple<V>(name, table.getType(), String.class, Types.VARCHAR));
             return this;
         }
 
-        public Builder ofDate(String name) throws NoSuchFieldException {
+        public Builder ofDate(String name) {
             properties.add(new PropertySimple<V>(name, table.getType(), LocalDate.class, Types.DATE));
             return this;
         }
 
-        public Builder ofDateTime(String name) throws NoSuchFieldException {
+        public Builder ofDateTime(String name) {
             properties.add(new PropertySimple<V>(name, table.getType(), LocalDateTime.class, Types.TIMESTAMP));
             return this;
         }
 
-        public Builder ofBigDecimal(String name) throws NoSuchFieldException {
+        public Builder ofBigDecimal(String name) {
             properties.add(new PropertySimple<V>(name, table.getType(), BigDecimal.class, Types.DECIMAL));
             return this;
         }
 
-        public Builder ofTags(String name) throws NoSuchFieldException {
+        public Builder ofTags(String name) {
             properties.add(new PropertySimple<V>(name, table.getType(), String.class, Types.VARCHAR, AbstractProperty::tags4java2jdbc,
                     AbstractProperty::tags4jdbc2java));
             return this;
         }
 
-        public Builder ofJson(String name, Class<V> type, boolean hasMultipleValues) throws NoSuchFieldException {
+        public Builder ofJson(String name, Class<V> type, boolean hasMultipleValues) {
             properties.add(new PropertyJson<>(name, table.getType(), type, hasMultipleValues));
             return this;
         }
 
-        public <U extends Code> Builder ofCode(String name, CodeType<U> codeType) throws NoSuchFieldException {
+        public <U extends Code> Builder ofCode(String name, CodeType<U> codeType) {
             properties.add(new PropertyCode<V, U>(name, table.getType(), codeType));
             return this;
         }
 
-        public Builder ofOne2One(String name) throws NoSuchFieldException {
+        public Builder ofOne2One(String name) {
             properties.add(new PropertyOne2One<V, V>(name, table.getType(), table));
             return this;
         }
 
-        public <R extends HasOid> Builder ofOne2One(String name, Table<R> type) throws NoSuchFieldException {
+        public <R extends HasOid> Builder ofOne2One(String name, Table<R> type) {
             properties.add(new PropertyOne2One<V, R>(name, table.getType(), type));
             return this;
         }
@@ -205,7 +206,13 @@ public class Table<T extends HasOid> {
         cache.clear();
     }
 
-    public Optional<AbstractProperty<T>> getPropertyBy(String name) {
+    /**
+     * Returns the property with the given name.
+     *
+     * @param name name of the property to be found
+     * @return optional found property
+     */
+    public Optional<AbstractProperty<T>> getPropertyBy(@NotNull String name) {
         return properties.stream().filter(o -> o.name().equals(name)).findAny();
     }
 
@@ -235,6 +242,12 @@ public class Table<T extends HasOid> {
         }
     }
 
+    /**
+     * Finds the entity instance with the given unique object identifier.
+     *
+     * @param oid object identifier of the instance to find
+     * @return optional of the requested entity
+     */
     public Optional<T> find(long oid) {
         Optional<T> entity = retrieveFromCache(oid);
         if (entity.isEmpty()) {
@@ -254,8 +267,8 @@ public class Table<T extends HasOid> {
 
     public List<T> find(String where) {
         List<T> entities = new ArrayList<>();
-        try (var connection = dataSource.getConnection(); var stmt = connection.createStatement(); var set = stmt
-                .executeQuery(findWhereSql + where)) {
+        try (var connection = dataSource.getConnection(); var stmt = connection.createStatement();
+             var set = stmt.executeQuery(findWhereSql + where)) {
             while (set.next()) {
                 Optional<T> instance = retrieveFromCache((Long) set.getObject(1));
                 entities.add(instance.orElse(materializeEntity(set)));
@@ -337,13 +350,13 @@ public class Table<T extends HasOid> {
     }
 
     private String generateFindSql() {
-        return "SELECT " + properties.stream().map(AbstractProperty::name).collect(
-                Collectors.joining(", ")) + " FROM " + ((schema != null) ? schema + "." + entityName : entityName) + " WHERE " + PRIMARY_KEY + " = ?";
+        return "SELECT " + properties.stream().map(AbstractProperty::name).collect(Collectors.joining(", ")) + " FROM " + ((schema != null) ?
+                schema + "." + entityName : entityName) + " WHERE " + PRIMARY_KEY + " = ?";
     }
 
     private String generateFindWhereSql() {
-        return "SELECT " + properties.stream().map(AbstractProperty::name)
-                .collect(Collectors.joining(", ")) + " FROM " + ((schema != null) ? schema + "." + entityName : entityName) + " WHERE ";
+        return "SELECT " + properties.stream().map(AbstractProperty::name).collect(Collectors.joining(", ")) + " FROM " + ((schema != null) ?
+                schema + "." + entityName : entityName) + " WHERE ";
     }
 
 }

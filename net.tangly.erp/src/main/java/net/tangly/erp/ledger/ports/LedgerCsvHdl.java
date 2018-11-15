@@ -196,14 +196,14 @@ public class LedgerCsvHdl {
             switch (code) {
                 case F1:
                     entries.forEach(o -> {
-                        o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT, VAT_F1_VALUE));
-                        o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT_DUE, VAT_F1_DUE_VALUE));
+                        o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT, VAT_F1_VALUE.toString()));
+                        o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT_DUE, VAT_F1_DUE_VALUE.toString()));
                     });
                     break;
                 case F3:
                     entries.forEach(o -> {
-                        o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT, VAT_F3_VALUE));
-                        o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT_DUE, VAT_F3_DUE_VALUE));
+                        o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT, VAT_F3_VALUE.toString()));
+                        o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT_DUE, VAT_F3_DUE_VALUE.toString()));
                     });
                     break;
                 default:

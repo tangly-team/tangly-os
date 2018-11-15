@@ -34,7 +34,8 @@ import static com.google.common.base.Preconditions.checkArgument;
  * @param <S> enumeration type for the identifiers of states
  * @param <E> enumeration type for the identifiers of events
  */
-public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>> implements FsmBuilder<O, S, E>, StateBuilder<O, S, E>, SubStateBuilder<O, S, E>, ToTransitionBuilder<O, S, E>, TransitionBuilder<O, S, E> {
+public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>> implements FsmBuilder<O, S, E>, StateBuilder<O, S, E>,
+        SubStateBuilder<O, S, E>, ToTransitionBuilder<O, S, E>, TransitionBuilder<O, S, E> {
 
     private final Map<S, StateImp<O, S, E>> states;
     private final StateImp<O, S, E> root;

@@ -57,12 +57,10 @@ public class CsvImportAndAdocReportTest {
         path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/ledger/transactions-2015-2016.csv").toURI());
         handler.importTransactionsLedgerFromBanana8(path);
         assertThat(handler.ledger().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31)).isEmpty()).isFalse();
-        // TODO assert transactions
         ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(handler.ledger());
         StringWriter writer = new StringWriter();
         report.create(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31), new PrintWriter(writer));
         assertThat(writer.toString().isEmpty()).isFalse();
-        // TODO assert contains in writer
     }
 
     @Test
