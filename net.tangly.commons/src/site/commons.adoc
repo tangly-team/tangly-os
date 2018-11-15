@@ -1,0 +1,19 @@
+== Commons Models
+
+== Reference Codes
+
+==  Active Records
+
+=== Design Considerations
+
+* The application is sole and exclusive owner of the database instance. Therefore instances can never be changed from another system when the
+applicationis running.
+* The domain model shall not be tainted with active records interfaces or forced inheritance structure. This decision reflect the hexagon
+architecture.
+* Unique object identifiers are necessary to identify instances outside the Java virtual machine, such as databases, CSV files or JSON files.
+Object identifiers shall be managed and allocated through the active records library. The domain model
+shall not be burden to manage internal identity tokens.
+* Extensions shall be provided to support common models concepts. Currently extensions supporting reference codes, tags and comments are provided.
+* We are enthusiast to follow functional programming paradigm and object immutability. Therefore the
+active record library should provide support for classes enforcing immutability.
+
