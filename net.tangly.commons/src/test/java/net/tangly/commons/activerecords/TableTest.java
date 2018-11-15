@@ -269,6 +269,7 @@ public class TableTest {
         assertThat(retrieved.isPresent()).isTrue();
         assertThat(retrieved.get().owned().size()).isEqualTo(OWNED_NR);
 
+        entity = retrieved.get();
         entity.removeOwned(entity.owned().get(0));
         entity.removeOwned((entity.owned().get(0)));
         entity.removeOwned((entity.owned().get(0)));
