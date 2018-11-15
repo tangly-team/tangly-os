@@ -13,10 +13,9 @@
 
 package net.tangly.erp.prd;
 
-import net.tangly.commons.models.Entity;
 import net.tangly.commons.models.EntityImp;
 
-public class Project extends EntityImp implements Entity {
+public class Project extends EntityImp {
     private static final long serialVersionUID = 1L;
 
     public Project() {

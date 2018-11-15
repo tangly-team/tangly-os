@@ -19,7 +19,7 @@ public class Employee extends EntityImp implements CrmEntity {
     private static final long serialVersionUID = 1L;
 
     private NaturalEntity person;
-    private transient LegalEntity organization;
+    private LegalEntity organization;
 
     public static Employee of(long oid) {
         Employee entity = new Employee();

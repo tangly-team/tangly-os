@@ -139,8 +139,7 @@ public class ClosingReportAsciiDoc {
         }
         String accountId = account.id().startsWith("E") ? AsciiDocHelper.bold(account.id()) : account.id();
         String description = account.id().startsWith("E") ? AsciiDocHelper.bold(account.description()) : account.description();
-        helper.tableRow(accountId, description, account.isAggregate() ? "" : account.kind().name().toLowerCase(), format(toBalance),
-                format(fromBalance));
+        helper.tableRow(accountId, description, account.isAggregate() ? "" : account.kind().name(), format(toBalance), format(fromBalance));
     }
 
     private String format(BigDecimal value) {
