@@ -27,15 +27,13 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 
-import static com.google.common.base.Preconditions.checkArgument;
-
 /**
  * @param <O> the class of the instance owning the finite state machine instance
  * @param <S> enumeration type for the identifiers of states
  * @param <E> enumeration type for the identifiers of events
  */
-public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>> implements FsmBuilder<O, S, E>, StateBuilder<O, S, E>,
-        SubStateBuilder<O, S, E>, ToTransitionBuilder<O, S, E>, TransitionBuilder<O, S, E> {
+public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>>
+        implements FsmBuilder<O, S, E>, StateBuilder<O, S, E>, SubStateBuilder<O, S, E>, ToTransitionBuilder<O, S, E>, TransitionBuilder<O, S, E> {
 
     private final Map<S, StateImp<O, S, E>> states;
     private final StateImp<O, S, E> root;
@@ -67,7 +65,9 @@ public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>> implemen
 
     @Override
     public StateBuilder<O, S, E> in(S stateId) {
-        checkArgument(states.containsKey(stateId));
+        if (!states.containsKey(stateId)) {
+            throw new IllegalArgumentException();
+        }
         resetContext();
         context = states.get(stateId);
         return this;
@@ -82,7 +82,9 @@ public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>> implemen
 
     @Override
     public SubStateBuilder<O, S, E> add(S stateId, String description) {
-        checkArgument(!states.containsKey(stateId));
+        if (states.containsKey(stateId)) {
+            throw new IllegalArgumentException();
+        }
         StateImp<O, S, E> state = new StateImp<>(stateId);
         state.setDescription(description);
         states.put(stateId, state);
@@ -94,7 +96,9 @@ public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>> implemen
     // region ToTransitionBuilder
     @Override
     public TransitionBuilder<O, S, E> to(S stateId, String description) {
-        checkArgument(states.containsKey(stateId) && (eventId != null));
+        if (!states.containsKey(stateId) || (eventId == null)) {
+            throw new IllegalArgumentException();
+        }
         transition = new TransitionImp<>(context, states.get(stateId), eventId);
         transition.description(description);
         context.addTransition(transition);

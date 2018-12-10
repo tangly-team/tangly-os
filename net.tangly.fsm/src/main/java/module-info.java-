@@ -18,4 +18,6 @@ module net.tangly.fsm {
     exports net.tangly.fsm.utilities;
 
     requires slf4j.api;
+    requires slf4j.simple;
+    requires org.jetbrains.annotations;
 }

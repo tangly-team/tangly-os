@@ -13,7 +13,6 @@
 
 package net.tangly.fsm.imp;
 
-import com.google.common.collect.Sets;
 import net.tangly.fsm.Event;
 import net.tangly.fsm.State;
 import net.tangly.fsm.StateMachine;
@@ -215,8 +214,8 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
     }
 
     /**
-     * Walks up the hierarchy to the common ancestor. The exit action of the left state is executed.
-     * If the left state has history when the previously active child must be added to the history.
+     * Walks up the hierarchy to the common ancestor. The exit action of the left state is executed. If the left state has history when the previously
+     * active child must be added to the history.
      *
      * @param event    event triggering the state machine change
      * @param ancestor the common ancestor of the source and target states of the fired transition
@@ -243,12 +242,10 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
     }
 
     /**
-     * Walks down the node hierarchy from the common ancestor down to the target state of the fired
-     * transition.
+     * Walks down the node hierarchy from the common ancestor down to the target state of the fired transition.
      *
      * @param event     event triggering the state machine change
-     * @param hierarchy list of states defining the containing hierarchy from the ancestor to the leaf
-     *                  node
+     * @param hierarchy list of states defining the containing hierarchy from the ancestor to the leaf node
      */
     private void enterStatesFromCommonAncestor(Event<E> event, Deque<State<O, S, E>> hierarchy) {
         hierarchy.removeFirst();
@@ -269,7 +266,8 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
         var node = state;
         while ((node != null) && node.isComposite()) {
             if (node.hasHistory()) {
-                Set<State<O, S, E>> historyStates = Sets.intersection(node.substates(), history);
+                Set<State<O, S, E>> historyStates = new HashSet<>(node.substates());
+                historyStates.retainAll(history);
                 if (historyStates.isEmpty()) {
                     node = node.initialState();
                 } else {
@@ -287,8 +285,8 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
     }
 
     /**
-     * Returns the common ancestor of the current active object from the root down to the common
-     * ancestor. The current hierarchy is stored in active states field.
+     * Returns the common ancestor of the current active object from the root down to the common ancestor. The current hierarchy is stored in active
+     * states field.
      *
      * @param state state which ancestor is searched in the list of active states
      * @return the common ancestor
