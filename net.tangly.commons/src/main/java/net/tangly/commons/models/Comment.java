@@ -13,7 +13,6 @@
 
 package net.tangly.commons.models;
 
-import com.google.common.base.MoreObjects;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
@@ -149,7 +148,6 @@ public class Comment implements HasTags, Serializable {
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this).add("created", created).add("author", author).add("text", text).add("tags", Tag.toString(tags))
-                .toString();
+        return String.format("created=%1$%tF-%1$%tT, author=%s, text=%s, tags=%s", created, author, text, Tag.toString(tags));
     }
 }

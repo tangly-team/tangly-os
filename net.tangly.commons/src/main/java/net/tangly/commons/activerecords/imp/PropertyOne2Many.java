@@ -28,7 +28,7 @@ import java.util.Set;
 
 /**
  * Models a property with managed objects as values and supporting multiple objects. When the property is read we retrieve all instances which
- * foreign key value is equal to the unique object identifier oid of the owner of the property. When writing the foreign key property with the
+ * foreign key format is equal to the unique object identifier oid of the owner of the property. When writing the foreign key property with the
  * unique object identifier oid of the owner of the property and when persist all the objects.
  *
  * @param <T> class owning the property

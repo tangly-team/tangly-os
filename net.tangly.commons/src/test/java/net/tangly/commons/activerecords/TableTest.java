@@ -298,7 +298,7 @@ public class TableTest {
         assertThat(retrieved.get().code()).isEqualTo(EntityCode.CODE_TEST_1);
     }
 
-    private Table<Entity> createTable() throws NoSuchFieldException, NoSuchMethodException {
+    private Table<Entity> createTable() throws NoSuchMethodException {
         return new Table.Builder<>("tangly", "entities", Entity.class, dataSource).ofOid().ofString("id").ofString("name").ofDate("fromDate")
                 .ofDate("toDate").ofString("text").ofTags("tags").ofJson("comments", Comment.class, true)
                 .ofCode("code", CodeType.of(EntityCode.class, Arrays.asList(EntityCode.values()))).ofOne2One("owner").ofFid("ownedBy")

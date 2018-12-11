@@ -13,17 +13,16 @@
 
 package net.tangly.commons.models;
 
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Strings;
+import net.tangly.commons.utilities.Strings;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
-import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * Immutable class representing a phone number. We use the google library to of and validate
- * phone numbers (http://code.google.com/p/libphonenumber). A phone number is an immutable object.
+ * Immutable class representing a phone number. We use the google library to of and validate phone numbers (http://code.google.com/p/libphonenumber).
+ * A phone number is an immutable object.
  */
 public class PhoneNr implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -57,7 +56,7 @@ public class PhoneNr implements Serializable {
      * @param number textual representation of a phone number
      */
     public PhoneNr(String number) {
-        checkNotNull(number);
+        Objects.requireNonNull(number);
         this.number = PATTERN.matcher(number).replaceAll("");
     }
 
@@ -82,6 +81,6 @@ public class PhoneNr implements Serializable {
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this).add("number", number).toString();
+        return String.format("number=%s", number);
     }
 }

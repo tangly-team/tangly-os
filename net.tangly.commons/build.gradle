@@ -11,10 +11,12 @@
  * under the License.
  */
 
-version = "0.1.0"
+version = "0.2.0"
 description = "Commons data structures using Java 10 or higher (tangly llc)"
 
 dependencies {
+    // implementation "com.google.guava:guava:$guavaVersion"
+
     compile "org.hsqldb:hsqldb:2.4.1"
 
     compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
@@ -25,8 +27,3 @@ dependencies {
     testCompile "org.flywaydb:flyway-core:5.2.1"
 }
 
-jar {
-    manifest {
-        attributes('Implementation-Title': project.name, 'Implementation-Version': project.version)
-    }
-}

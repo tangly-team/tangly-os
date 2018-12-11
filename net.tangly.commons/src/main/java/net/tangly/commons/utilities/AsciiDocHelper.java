@@ -16,14 +16,36 @@ package net.tangly.commons.utilities;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public class AsciiDocHelper {
+    public static final String NEWLINE = " +" + System.lineSeparator();
+    private final static DecimalFormat df = new DecimalFormat("#,##0.00");
+
+    private final PrintWriter writer;
+
     public static String bold(String text) {
         return "*" + text + "*";
     }
 
-    private final PrintWriter writer;
+    /**
+     * Formats a decimal value into an accounting representation with two digits after the separator, colored in read if negative, and discarded if
+     * the value is zero.
+     *
+     * @param value decimal value to format
+     * @return the formatted string
+     */
+    public static String format(@NotNull BigDecimal value) {
+        if (value.compareTo(BigDecimal.ZERO) > 0) {
+            return df.format(value);
+        } else if (value.compareTo(BigDecimal.ZERO) < 0) {
+            return "[red]#" + df.format(value) + "#";
+        } else {
+            return "";
+        }
+    }
 
     public AsciiDocHelper(@NotNull PrintWriter writer) {
         this.writer = writer;
@@ -35,15 +57,18 @@ public class AsciiDocHelper {
         return this;
     }
 
-    public AsciiDocHelper tableHeader(String tableName, String cols, String... headerCells) {
-        writer.append(".").println(tableName);
-        if (cols != null) {
-            writer.println("[cols=\"" + cols + "\"]");
+    public AsciiDocHelper tableHeader(String tableName, String attributes, String... headerCells) {
+        if (Strings.emptyToNull(tableName) != null) {
+            writer.append(".").println(tableName);
+        }
+        if (attributes != null) {
+            writer.println("[" + attributes + "]");
         }
         writer.println("|===");
-        Arrays.asList(headerCells).forEach(o -> writer.append("^|").append(o).append(" "));
-        writer.println();
-        writer.println();
+        if (headerCells.length != 0) {
+            Arrays.asList(headerCells).forEach(o -> writer.append("^|").append(o).append(" "));
+            writer.println();
+        }
         return this;
     }
 
@@ -71,6 +96,11 @@ public class AsciiDocHelper {
 
     public AsciiDocHelper internalXRef(String xref, String text) {
         writer.append("<<").append(xref).append(",").append(text).append(">>");
+        return this;
+    }
+
+    public AsciiDocHelper image(String path, String config) {
+        writer.append("image::").append(path).append("[").append(Strings.nullToEmpty(config)).println("]");
         return this;
     }
 }

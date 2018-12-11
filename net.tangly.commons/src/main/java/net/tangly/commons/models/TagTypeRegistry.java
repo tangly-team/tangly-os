@@ -55,12 +55,30 @@ public class TagTypeRegistry {
     }
 
     public List<String> tagsForNamespace(@NotNull String namespace) {
-        return types.stream().filter(o -> Objects.equals(o.namespace(), namespace)).map(TagType::namespace).distinct()
+        return types.stream().filter(o -> Objects.equals(o.namespace(), namespace)).map(TagType::name).distinct()
                 .collect(Collectors.toUnmodifiableList());
     }
 
+    /**
+     * Returns the tag type describing the requested namespace and name.
+     *
+     * @param namespace optional namespace of the tag type
+     * @param name      mandatory name of the tag type
+     * @return requested tag type
+     */
     public Optional<TagType> find(String namespace, @NotNull String name) {
         return types.stream().filter(o -> Objects.equals(o.namespace(), namespace) && Objects.equals(o.name(), name)).findAny();
+    }
+
+    /**
+     * Returns the tag type describing the tag.
+     *
+     * @param tag tag which type is requested
+     * @return requested tag type
+     * @see #find(String, String)
+     */
+    public Optional<TagType> find(@NotNull Tag tag) {
+        return find(tag.namespace(), tag.name());
     }
 }
 

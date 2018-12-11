@@ -19,12 +19,48 @@ import java.util.function.BiPredicate;
 import java.util.function.Function;
 
 /**
- * Implements the conceptual type of a set of related tags, all of the same class. The tag type also provides support to convert the text value
- * of a tag into a Java object and to validate acceptable tag values.
+ * Implements the conceptual type of a set of related tags, all of the same class. The tag type also provides support to convert the text format of a
+ * tag into a Java object and to validate acceptable tag values.
  *
  * @param <T> type of the tags
  */
 public class TagType<T extends Serializable> {
+    /**
+     * Defines the official geo tag for latitude.
+     *
+     * @return the tag type for a geographical latitude
+     */
+    public static TagType<Double> createGeoLatitude() {
+        return ofMandatory("geo", "lat", Double.TYPE);
+    }
+
+    /**
+     * Defines the official geo tag for longitude.
+     *
+     * @return the tag type for a geographical longitude
+     */
+    public static TagType<Double> createGeoLongitude() {
+        return ofMandatory("geo", "long", Double.TYPE);
+    }
+
+    /**
+     * Defines the official geo tag for altitude.
+     *
+     * @return the tag type for a geographical altitude
+     */
+    public static TagType<Double> createGeoAltitude() {
+        return ofMandatory("geo", "alt", Double.TYPE);
+    }
+
+    /**
+     * Defines the official geo tag for region.
+     *
+     * @return the tag type for a geographical region
+     */
+    public static TagType<String> createGeoRegion() {
+        return ofMandatory("geo", "region", String.class);
+    }
+
     public enum ValueKinds {NONE, OPTIONAL, MANDATORY}
 
     private final String namespace;
@@ -77,6 +113,10 @@ public class TagType<T extends Serializable> {
 
     public String name() {
         return name;
+    }
+
+    public boolean canHaveValue() {
+        return kind != ValueKinds.NONE;
     }
 
     public T getValue(Tag tag) {

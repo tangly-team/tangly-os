@@ -55,8 +55,9 @@ class EntityTest {
         final String POBOX = "Postfach 101";
         final String STREET = "Rigistrasse 1";
         var entity = Entity.of();
-        entity.address(new Address.Builder().country(COUNTRY).region("ZG").locality(LOCALITY).postcode("6300").street(STREET).poB0x(POBOX).build());
-        assertThat(entity.address().country()).isEqualTo(COUNTRY);
+        entity.address(
+                new Address.Builder().countryCode(COUNTRY).region("ZG").locality(LOCALITY).postcode("6300").street(STREET).poB0x(POBOX).build());
+        assertThat(entity.address().countryCode()).isEqualTo(COUNTRY);
         assertThat(entity.address().poBox()).isEqualTo(POBOX);
         assertThat(entity.address().street()).isEqualTo(STREET);
         assertThat(entity.address().locality()).isEqualTo(LOCALITY);
@@ -74,7 +75,7 @@ class EntityTest {
     void testModifyTags() {
         // Given
         var item = Entity.of();
-        var tag = new Tag("namespace", "tag", "value");
+        var tag = new Tag("namespace", "tag", "format");
         // When
         item.add(tag);
         // Then
@@ -93,7 +94,7 @@ class EntityTest {
     @Test
     void testSerializeTags() {
         var item = Entity.of();
-        item.add(Tag.of("namespace", "tag", "value"));
+        item.add(Tag.of("namespace", "tag", "format"));
         item.add(Tag.of("gis", "longitude", "0.0"));
         item.add(Tag.of("gis", "latitude", "0.0"));
         String rawTags = item.getRawTags();

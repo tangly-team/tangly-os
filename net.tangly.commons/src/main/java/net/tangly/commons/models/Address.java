@@ -13,15 +13,16 @@
 
 package net.tangly.commons.models;
 
-import com.google.common.base.Strings;
+import net.tangly.commons.utilities.Strings;
 
 import java.io.Serializable;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.StringJoiner;
 
 /**
- * The abstraction of a postal address without the recipient. The structure should model all existing postal address. An
- * address is an immutable object.
+ * The abstraction of a postal address without the recipient. The structure should model all existing postal address. An address is an immutable
+ * object.
  */
 public class Address implements Serializable {
     /**
@@ -34,8 +35,8 @@ public class Address implements Serializable {
     }
 
     /**
-     * Builder for the address class. Upon building the class you should discard the builder instance. Any additional call on the builder will
-     * update a runtime exception.
+     * Builder for the address class. Upon building the class you should discard the builder instance. Any additional call on the builder will update
+     * a runtime exception.
      */
     public static class Builder {
         /**
@@ -77,8 +78,8 @@ public class Address implements Serializable {
             return this;
         }
 
-        public Builder country(String country) {
-            address.country = country;
+        public Builder countryCode(String country) {
+            address.countryCode = country;
             return this;
         }
 
@@ -125,7 +126,7 @@ public class Address implements Serializable {
     /**
      * Country information of the address.
      */
-    private String country;
+    private String countryCode;
 
     public static Address of(String text) {
         var items = text.split(",");
@@ -135,22 +136,22 @@ public class Address implements Serializable {
     /**
      * Constructor of the class. It creates an immutable instance. Consider using the {@link Address#builder()} pattern to update an address.
      *
-     * @param street   street of the address with the street number
-     * @param extended extended address line if defined
-     * @param poBox    postal box of the address if defined
-     * @param postcode postal code of the address, country specific
-     * @param locality locality of the address
-     * @param region   region as department, state, canton
-     * @param country  country as a string
+     * @param street      street of the address with the street number
+     * @param extended    extended address line if defined
+     * @param poBox       postal box of the address if defined
+     * @param postcode    postal code of the address, countryCode specific
+     * @param locality    locality of the address
+     * @param region      region as department, state, canton
+     * @param countryCode countryCode as a string
      */
-    public Address(String street, String extended, String poBox, String postcode, String locality, String region, String country) {
+    public Address(String street, String extended, String poBox, String postcode, String locality, String region, String countryCode) {
         this.street = Strings.emptyToNull(street);
         this.extended = Strings.emptyToNull(extended);
         this.poBox = Strings.emptyToNull(poBox);
         this.postcode = Strings.emptyToNull(postcode);
         this.locality = Strings.emptyToNull(locality);
         this.region = Strings.emptyToNull(region);
-        this.country = Strings.emptyToNull(country);
+        this.countryCode = Strings.emptyToNull(countryCode);
     }
 
     /**
@@ -204,33 +205,44 @@ public class Address implements Serializable {
     }
 
     /**
-     * @return the country
+     * Returns the ISO 3166-1 alpha-2 country code.
+     *
+     * @return country code of the address
      */
+    public String countryCode() {
+        return countryCode;
+    }
 
-    public String country() {
-        return country;
+    /**
+     * Returns the country name as a human readable description of the country.
+     *
+     * @return name of the country in which the address is,
+     */
+    public String countryName() {
+        return (countryCode != null) ? new Locale("", countryCode).getDisplayCountry() : null;
     }
 
     @Override
     public boolean equals(Object right) {
         if (right instanceof Address) {
             Address address = (Address) right;
-            return Objects.equals(country, address.country()) && Objects.equals(region, address.region()) && Objects
-                    .equals(locality, address.locality()) && Objects.equals(postcode, address.postcode()) && Objects
-                    .equals(street, address.street()) && Objects.equals(poBox, address.poBox()) && Objects.equals(extended, address.extended());
+            return Objects.equals(countryCode, address.countryCode()) && Objects.equals(region, address.region()) &&
+                    Objects.equals(locality, address.locality()) && Objects.equals(postcode, address.postcode()) &&
+                    Objects.equals(street, address.street()) && Objects.equals(poBox, address.poBox()) &&
+                    Objects.equals(extended, address.extended());
         }
         return false;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(street, extended, poBox, postcode, locality, region, country);
+        return Objects.hash(street, extended, poBox, postcode, locality, region, countryCode);
     }
 
     @Override
     public String toString() {
         return new StringJoiner(",").add(Objects.toString(street, "")).add(Objects.toString(extended, "")).add(Objects.toString(poBox, ""))
                 .add(Objects.toString(postcode, "")).add(Objects.toString(locality, "")).add(Objects.toString(region, ""))
-                .add(Objects.toString(country, "")).toString();
+                .add(Objects.toString(countryCode, "")).toString();
     }
 }

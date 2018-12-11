@@ -16,8 +16,8 @@ package net.tangly.commons.codes;
 import java.io.Serializable;
 
 /**
- * The abstraction of a code table value. A code table is an extensible and temporal enumeration. New values can be added without recompiling the
- * application. A code can have a validity period. To guaranty consistency a code value shall never be deleted, only be disabled.
+ * The abstraction of a code table format. A code table is an extensible and temporal enumeration. New values can be added without recompiling the
+ * application. A code can have a validity period. To guaranty consistency a code format shall never be deleted, only be disabled.
  */
 public interface Code extends Serializable {
     /**

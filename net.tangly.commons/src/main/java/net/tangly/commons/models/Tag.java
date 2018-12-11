@@ -13,7 +13,7 @@
 
 package net.tangly.commons.models;
 
-import com.google.common.base.Strings;
+import net.tangly.commons.utilities.Strings;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -24,7 +24,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * The immutable class tag models a tag with a name and a value. Tags provide a powerful approach for multi-dimensional classifications of values.
+ * The immutable class tag models a tag with a name and a format. Tags provide a powerful approach for multi-dimensional classifications of values.
  * All fields of a tag are strings. We provide the tag type to support conversions from string values to Java objects.
  */
 public class Tag implements Serializable {
@@ -95,7 +95,7 @@ public class Tag implements Serializable {
      */
     private final String name;
     /**
-     * The value of this tag instance.
+     * The format of this tag instance.
      */
     private final String value;
 
@@ -104,7 +104,7 @@ public class Tag implements Serializable {
      *
      * @param namespace optional namespace of the tag
      * @param name      name of the tag
-     * @param value     optional value of the tag
+     * @param value     optional format of the tag
      */
     public Tag(String namespace, String name, String value) {
         this.namespace = namespace;
@@ -113,9 +113,9 @@ public class Tag implements Serializable {
     }
 
     /**
-     * Returns true if the tag has a value otherwise false.
+     * Returns true if the tag has a format otherwise false.
      *
-     * @return flag indicating if the tag has a value field
+     * @return flag indicating if the tag has a format field
      */
     public boolean hasValue() {
         return value != null;
@@ -135,13 +135,12 @@ public class Tag implements Serializable {
      *
      * @return name of the tag
      */
-
     public String name() {
         return name;
     }
 
     /**
-     * Returns the string representation of the tag value.
+     * Returns the string representation of the tag format.
      *
      * @return string representation of the tag
      */

@@ -13,13 +13,12 @@
 
 package net.tangly.commons.codes.imp;
 
-import com.google.common.base.MoreObjects;
 import net.tangly.commons.codes.Code;
 
 import java.util.Objects;
 
 /**
- * The class represents an immutable code describing one value of a set of related codes aggregated in the same code table. The protected default
+ * The class represents an immutable code describing one format of a set of related codes aggregated in the same code table. The protected default
  * constructor is necessary for JSON parsing of subclasses if no annotations are used to select a non-default constructor.
  */
 public abstract class CodeImp implements Code {
@@ -29,7 +28,7 @@ public abstract class CodeImp implements Code {
     private int id;
 
     /**
-     * Human readable value of the code.
+     * Human readable format of the code.
      */
     private String code;
 
@@ -81,6 +80,6 @@ public abstract class CodeImp implements Code {
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this).add("id", id).add("code", code).add("enabled", enabled).toString();
+        return String.format("i=%d, code=%s, enabled=%b", id, code, enabled);
     }
 }

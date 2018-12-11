@@ -23,8 +23,8 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
-import com.google.common.base.Strings;
 import net.tangly.commons.models.HasOid;
+import net.tangly.commons.utilities.Strings;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -36,10 +36,10 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * A property which stores its values as as JSON representation in one column in the database table. Multi-value properties are supported.
+ * A property which stores its values as as JSON representation in one column in the database table. Multi-format properties are supported.
  *
  * @param <T> type of the owner of the property
- * @param <V> type of the value of the single or multiple values property
+ * @param <V> type of the format of the single or multiple values property
  */
 public class PropertyJson<T extends HasOid, V> extends AbstractProperty<T> {
     private static ObjectMapper mapper = createObjectMapper();

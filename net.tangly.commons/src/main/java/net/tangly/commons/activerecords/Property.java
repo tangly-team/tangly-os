@@ -36,7 +36,7 @@ public interface Property<T extends HasOid> {
     Class<T> entity();
 
     /**
-     * Returns true if the type of the value of the property is a managed persisted type, otherwise false.
+     * Returns true if the type of the format of the property is a managed persisted type, otherwise false.
      *
      * @return true if type of the property is managed
      */
