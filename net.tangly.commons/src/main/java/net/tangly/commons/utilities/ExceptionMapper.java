@@ -34,6 +34,12 @@ public class ExceptionMapper<H> {
         });
     }
 
+    /**
+     * Register the class exception with the associated consumer.
+     *
+     * @param clazz   class of the exception top register
+     * @param functor consumer used to process the exception
+     */
     public void register(@NotNull Class<? extends Exception> clazz, @NotNull BiConsumer<H, Exception> functor) {
         functors.put(clazz, functor);
     }
@@ -41,6 +47,7 @@ public class ExceptionMapper<H> {
     /**
      * The class exception cannot be unregister to insure we are always handling any exception. If specific behavior
      * is requested you can overwrite it using register method.
+     * @param clazz class instance to unregister
      */
     public void unregister(Class<? extends Exception> clazz) {
         if (clazz != Exception.class) {
@@ -66,7 +73,7 @@ public class ExceptionMapper<H> {
      * @param handler   handler used to process the exception
      * @param exception exception to be processed
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("of")
     public void process(@NotNull H handler, @NotNull Exception exception) {
         Class<? extends Exception> clazz = exception.getClass();
         while (!functors.containsKey(clazz) && (clazz != Exception.class)) {

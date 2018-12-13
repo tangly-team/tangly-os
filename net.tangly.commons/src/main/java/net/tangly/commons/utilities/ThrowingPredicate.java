@@ -13,23 +13,22 @@
 
 package net.tangly.commons.utilities;
 
-import java.util.function.Function;
+import java.util.function.Predicate;
 
 /**
- * Wrapper for a function throwing a checked exception to enable use in streams. ThrowingFunction.of(urlToCrawl -> new URL(urlToCrawl))
+ * Wrapper for a predicate throwing a checked exception to enable use in streams.
  *
  * @param <T> parameter of the function
- * @param <R> return type of the function
  * @param <E> checked exception thrown by the function
  */
 @FunctionalInterface
-public interface ThrowingFunction<T, R, E extends Exception> {
-    R apply(T t) throws E;
+public interface ThrowingPredicate<T, E extends Exception> {
+    boolean test(T t) throws E;
 
-    static <T, R, E extends Exception> Function<T, R> of(ThrowingFunction<T, R, E> f) {
+    static <T, R, E extends Exception> Predicate<T> of(ThrowingPredicate<T, E> f) {
         return t -> {
             try {
-                return f.apply(t);
+                return f.test(t);
             } catch (Throwable e) {
                 throw new RuntimeException(e);
             }

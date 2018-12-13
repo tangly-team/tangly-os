@@ -15,11 +15,17 @@ package net.tangly.commons.utilities;
 
 import java.util.function.Consumer;
 
+/**
+ * Wrapper for a consumer throwing a checked exception to enable use in streams.
+ *
+ * @param <T> parameter of the function
+ * @param <E> checked exception thrown by the function
+ */
 @FunctionalInterface
 interface ThrowingConsumer<T, E extends Exception> {
     void accept(T t) throws E;
 
-    static <T, E extends Exception> Consumer<T> unchecked(ThrowingConsumer<T, E> consumer) {
+    static <T, E extends Exception> Consumer<T> of(ThrowingConsumer<T, E> consumer) {
         return (t) -> {
             try {
                 consumer.accept(t);
