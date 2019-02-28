@@ -1,0 +1,118 @@
+== fsm-bbv Finite State Machine
+
+image::pics/fsm-bbv.svg[fsm-bbv]
+
+=== fsm-bbv States
+
+[cols="2,2,3,1,1,1,3,3"]
+|===
+|Name |Context |Description |Final |Initial |Composite |Entry Action |Exit Action
+
+|[[fsm-bbv-Root]]Root
+|-
+|
+|true
+|true
+|true
+|-
+|-
+
+|[[fsm-bbv-Running]]Running
+|Root
+|Running State
+|false
+|true
+|true
+|-
+|-
+
+|[[fsm-bbv-End]]End
+|Root
+|State End
+|true
+|false
+|false
+|-
+|-
+
+|[[fsm-bbv-Washing]]Washing
+|Running
+|Washing State
+|false
+|true
+|false
+|-
+|-
+
+|[[fsm-bbv-Rinsing]]Rinsing
+|Running
+|Rising State
+|false
+|false
+|false
+|-
+|-
+
+|[[fsm-bbv-Drying]]Drying
+|Running
+|Drying State
+|true
+|false
+|false
+|-
+|-
+
+|[[fsm-bbv-PowerOff]]PowerOff
+|Root
+|PowerOff State
+|false
+|false
+|false
+|-
+|-
+
+|===
+
+=== fsm-bbv Transitions
+
+[cols="2,2,3,1,3,3"]
+|===
+|Start State |End State |Description |Local |Guard |Action
+
+|<<fsm-bbv-Running,Running>>
+|<<fsm-bbv-End,End>>
+|Running -> End
+|false
+|
+|
+
+|<<fsm-bbv-Running,Running>>
+|<<fsm-bbv-PowerOff,PowerOff>>
+|Running -> PowerOff
+|false
+|
+|
+
+|<<fsm-bbv-Washing,Washing>>
+|<<fsm-bbv-Rinsing,Rinsing>>
+|Washing -> Rinsing
+|false
+|
+|
+
+|<<fsm-bbv-Rinsing,Rinsing>>
+|<<fsm-bbv-Drying,Drying>>
+|Rinsing -> Drying
+|false
+|
+|
+
+|<<fsm-bbv-PowerOff,PowerOff>>
+|<<fsm-bbv-Running,Running>>
+|PowerOff -> Running
+|false
+|
+|
+
+|===
+

@@ -38,10 +38,10 @@ import java.util.Set;
  * @param <E> enumeration type for the identifiers of events
  */
 public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
-    protected static final int INDENTATION = 2;
+    private static final int INDENTATION = 4;
+    final Comparator<Transition<O, S, E>> comparator;
     protected final FsmBuilder<O, S, E> builder;
     protected final String name;
-    protected final Comparator<Transition<O, S, E>> comparator;
     protected final Set<State<O, S, E>> states;
 
     /**
@@ -50,7 +50,7 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
      * @param builder the finite state machine builder containing the machine to draw
      * @param name    name of the finite state machine description
      */
-    public Generator(@NotNull FsmBuilder<O, S, E> builder, String name) {
+    public Generator(@NotNull FsmBuilder<O, S, E> builder, @NotNull String name) {
         this.builder = builder;
         this.name = name;
         this.comparator = Comparator.comparing(Transition<O, S, E>::source).thenComparing(Transition::target).thenComparing(Transition::eventId)
@@ -60,8 +60,8 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
     }
 
     /**
-     * Generates the content of the file identified through the path if the file does not exist or the new creation of the output is different to
-     * the one in the file. This feature is for example helpful if the file is under version control to avoid spurious changes.
+     * Generates the content of the file identified through the path if the file does not exist or the new creation of the output is different to the
+     * one in the file. This feature is for example helpful if the file is under version control to avoid spurious changes.
      *
      * @param path path to the file to updated.
      * @return flag indicating if the file was updated or not
@@ -102,8 +102,8 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
      */
     public abstract String extension();
 
-    protected @NotNull PrintWriter indent(@NotNull PrintWriter writer, int spaces) {
-        return writer.append(" ".repeat(spaces));
+    protected @NotNull PrintWriter indent(@NotNull PrintWriter writer, int depth) {
+        return writer.append(" ".repeat(INDENTATION * depth));
     }
 
     protected @NotNull String getStateId(@NotNull State<O, S, E> state) {

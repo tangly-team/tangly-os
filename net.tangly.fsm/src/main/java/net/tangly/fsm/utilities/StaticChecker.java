@@ -25,12 +25,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * The finite state machine static checker verifies the correctness of a state machine description.
- * The following rules are verified. <ul> <li>Each enumeration value is used exactly once in the
- * state machine description.</li> <li>A state has at most one initial substate.</li> <li>Each
- * composite state with a transition ending on it has an initial state.</li> <li>The state machine
- * has a clear set of initial states so that it can be initialized properly.</li> <li>A final state
- * has no outgoing transition.</li> </ul>
+ * The finite state machine static checker verifies the correctness of a state machine description. The following rules are verified. <ul> <li>Each
+ * enumeration value is used exactly once in the state machine description.</li> <li>A state has at most one initial substate.</li> <li>Each composite
+ * state with a transition ending on it has an initial state.</li> <li>The state machine has a clear set of initial states so that it can be
+ * initialized properly.</li> <li>A final state has no outgoing transition.</li> </ul>
  *
  * @param <O> the class of the instance owning the finite state machine instance
  * @param <S> the state enumeration type uniquely identifying a state in the state machine
@@ -76,7 +74,8 @@ public class StaticChecker<O, S extends Enum<S>, E extends Enum<E>> implements C
                 values.add(state.id());
             }
         }
-        allValues.stream().filter(state -> !values.contains(state)).forEach(state -> messages.add(createError(bundle, "FSM-STAT-002", state)));
+        messages.addAll(allValues.stream().filter(state -> !values.contains(state)).map(state -> createError(bundle, "FSM-STAT-002", state))
+                .collect(Collectors.toList()));
         return messages;
     }
 
@@ -86,23 +85,18 @@ public class StaticChecker<O, S extends Enum<S>, E extends Enum<E>> implements C
      * @param root the final state machine description to check
      * @return the list of detected error messages
      */
-
     public List<String> checkStateHasAtMostOneInitialState(State<O, S, E> root) {
-        List<String> messages = new ArrayList<>();
-        Set<State<O, S, E>> states = collectAllSubstates(root);
-        states.stream().filter(State::isComposite).filter(state -> getInitialSubstates(state).size() > 1)
-                .forEach(state -> messages.add(createError(bundle, "FSM-STAT-003", state.id(), getInitialSubstates(state).size())));
-        return messages;
+        return collectAllSubstates(root).stream().filter(State::isComposite).filter(state -> getInitialSubstates(state).size() > 1)
+                .map(state -> createError(bundle, "FSM-STAT-003", state.id(), getInitialSubstates(state).size()))
+                .collect(Collectors.toUnmodifiableList());
     }
 
     /**
-     * Checks that the finite state machine can be initialized at startup by selecting one unique
-     * initial state.
+     * Checks that the finite state machine can be initialized at startup by selecting one unique initial state.
      *
      * @param root the final state machine description to check
      * @return the list of detected error messages
      */
-
     List<String> checkDefinedInitialStates(State<O, S, E> root) {
         List<String> messages = new ArrayList<>();
         State<O, S, E> state = root;

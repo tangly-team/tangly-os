@@ -22,7 +22,7 @@ import net.tangly.fsm.dsl.SubStateBuilder;
 import net.tangly.fsm.dsl.ToTransitionBuilder;
 import net.tangly.fsm.dsl.TransitionBuilder;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
@@ -49,7 +49,7 @@ public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>>
     public DefinitionBuilder(S rootId) {
         root = new StateImp<>(rootId);
         root.setInitial(true);
-        states = new HashMap<>();
+        states = new EnumMap(rootId.getClass());
     }
 
     @Override

@@ -75,7 +75,7 @@ public class GeneratorAsciiDoc<O, S extends Enum<S>, E extends Enum<E>> extends 
         writer.println();
     }
 
-    private void writeTablePostamble(@NotNull PrintWriter writer) {
+    private static void writeTablePostamble(@NotNull PrintWriter writer) {
         writer.println("|===");
         writer.println();
     }
