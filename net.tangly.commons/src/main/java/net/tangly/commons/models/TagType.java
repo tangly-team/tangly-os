@@ -115,6 +115,10 @@ public class TagType<T extends Serializable> {
         return name;
     }
 
+    public Class<T> clazz() {
+        return clazz;
+    }
+
     public boolean canHaveValue() {
         return kind != ValueKinds.NONE;
     }

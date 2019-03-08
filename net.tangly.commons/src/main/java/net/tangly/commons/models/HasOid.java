@@ -22,7 +22,7 @@ public interface HasOid extends Serializable {
     /**
      * Place holder to identify an illegal or undefined internal identifier.
      */
-    int UNDEFINED_OID = 0;
+    int UNDEFINED_OID = -1;
 
     /**
      * Returns the unique internal identifier of the instance.

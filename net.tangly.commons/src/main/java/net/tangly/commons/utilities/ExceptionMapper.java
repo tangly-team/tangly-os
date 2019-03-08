@@ -37,7 +37,7 @@ public class ExceptionMapper<H> {
     /**
      * Register the class exception with the associated consumer.
      *
-     * @param clazz   class of the exception top register
+     * @param clazz   class of the exception top bind
      * @param functor consumer used to process the exception
      */
     public void register(@NotNull Class<? extends Exception> clazz, @NotNull BiConsumer<H, Exception> functor) {
@@ -46,7 +46,7 @@ public class ExceptionMapper<H> {
 
     /**
      * The class exception cannot be unregister to insure we are always handling any exception. If specific behavior
-     * is requested you can overwrite it using register method.
+     * is requested you can overwrite it using bind method.
      * @param clazz class instance to unregister
      */
     public void unregister(Class<? extends Exception> clazz) {

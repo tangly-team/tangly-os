@@ -13,6 +13,7 @@
 
 package net.tangly.commons.utilities;
 
+import java.util.concurrent.CompletionException;
 import java.util.function.Function;
 
 /**
@@ -30,8 +31,8 @@ public interface ThrowingFunction<T, R, E extends Exception> {
         return t -> {
             try {
                 return f.apply(t);
-            } catch (Throwable e) {
-                throw new RuntimeException(e);
+            } catch (Exception e) {
+                throw new CompletionException(e);
             }
         };
     }

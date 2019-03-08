@@ -13,6 +13,7 @@
 
 package net.tangly.commons.utilities;
 
+import java.util.concurrent.CompletionException;
 import java.util.function.Predicate;
 
 /**
@@ -25,12 +26,12 @@ import java.util.function.Predicate;
 public interface ThrowingPredicate<T, E extends Exception> {
     boolean test(T t) throws E;
 
-    static <T, R, E extends Exception> Predicate<T> of(ThrowingPredicate<T, E> f) {
+    static <T, E extends Exception> Predicate<T> of(ThrowingPredicate<T, E> f) {
         return t -> {
             try {
                 return f.test(t);
-            } catch (Throwable e) {
-                throw new RuntimeException(e);
+            } catch (Exception e) {
+                throw new CompletionException(e);
             }
         };
     }

@@ -94,8 +94,7 @@ public class Table<T extends HasOid> {
         }
 
         public Builder ofText(String name) {
-            properties.add(new PropertySimple<V>(name, table.getType(), String.class, Types.VARCHAR));
-            return this;
+            return ofString(name);
         }
 
         public Builder ofDate(String name) {

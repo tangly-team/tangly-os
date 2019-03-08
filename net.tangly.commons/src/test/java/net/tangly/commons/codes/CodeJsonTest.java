@@ -68,7 +68,7 @@ class CodeJsonTest {
         if (code1.isPresent() && code2.isPresent()) {
             assertThat(code1.get() == code2.get()).isTrue();
             assertThat(code1.get().equals(code2.get())).isTrue();
-            assertThat(code1.get().toString()).isEqualTo("JsonCode{id=1, code=one, enabled=true}");
+            assertThat(code1.get().toString()).isEqualTo("{id=1, code=one, enabled=true}");
         }
     }
 

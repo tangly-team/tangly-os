@@ -13,6 +13,7 @@
 
 package net.tangly.commons.utilities;
 
+import java.util.concurrent.CompletionException;
 import java.util.function.Consumer;
 
 /**
@@ -26,11 +27,11 @@ interface ThrowingConsumer<T, E extends Exception> {
     void accept(T t) throws E;
 
     static <T, E extends Exception> Consumer<T> of(ThrowingConsumer<T, E> consumer) {
-        return (t) -> {
+        return t -> {
             try {
                 consumer.accept(t);
-            } catch (Throwable e) {
-                throw new RuntimeException(e);
+            } catch (Exception e) {
+                throw new CompletionException(e);
             }
         };
     }

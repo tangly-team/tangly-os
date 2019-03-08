@@ -80,6 +80,6 @@ public abstract class CodeImp implements Code {
 
     @Override
     public String toString() {
-        return String.format("i=%d, code=%s, enabled=%b", id, code, enabled);
+        return String.format("{id=%d, code=%s, enabled=%b}", id, code, enabled);
     }
 }

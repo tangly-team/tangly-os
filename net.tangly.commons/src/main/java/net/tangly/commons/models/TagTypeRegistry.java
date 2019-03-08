@@ -39,7 +39,7 @@ public class TagTypeRegistry {
     /**
      * Register a tag type.
      *
-     * @param type tag type to register
+     * @param type tag type to bind
      */
     public void register(@NotNull TagType type) {
         types.add(type);

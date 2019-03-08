@@ -13,11 +13,14 @@
 
 version = "0.2.0"
 description = "Commons data structures using Java 10 or higher (tangly llc)"
+ext.moduleName = 'net.tangly.commons'
+
 
 dependencies {
     // implementation "com.google.guava:guava:$guavaVersion"
 
     compile "org.hsqldb:hsqldb:2.4.1"
+    compile "javax.inject:javax.inject:1"
 
     compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
     compile "com.fasterxml.jackson.module:jackson-module-parameter-names:$jacksonVersion"

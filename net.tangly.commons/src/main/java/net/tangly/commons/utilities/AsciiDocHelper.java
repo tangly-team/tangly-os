@@ -22,7 +22,7 @@ import java.util.Arrays;
 
 public class AsciiDocHelper {
     public static final String NEWLINE = " +" + System.lineSeparator();
-    private final static DecimalFormat df = new DecimalFormat("#,##0.00");
+    private static final DecimalFormat df = new DecimalFormat("#,##0.00");
 
     private final PrintWriter writer;
 
