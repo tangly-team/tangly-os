@@ -35,7 +35,7 @@ class TransitionImp<O, S extends Enum<S>, E extends Enum<E>> implements Transiti
     private final State<O, S, E> source;
 
     /**
-     * The target or destination state of the transition,
+     * The target or destination state of the transition.
      */
     private final State<O, S, E> target;
 
