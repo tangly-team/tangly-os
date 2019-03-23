@@ -130,21 +130,15 @@ public class TagsView extends GridFormView<Tag> {
 
     @Override
     protected void selectItemDetails(Tag item) {
-        if (item == null) {
-            namespace.setValue(null);
-        } else {
-            Optional<TagType> type = registry.find(item);
-            namespace.setValue((item == null) ? "" : item.namespace());
+        namespace.setValue((item == null) ? "" : item.namespace());
+        name.setValue((item == null) ? "" : item.name());
+        value.setValue((item == null) ? "" : item.value());
+        if (item != null) {
             namespace.setEnabled(false);
             name.setItems(registry.tagsForNamespace(item.namespace()));
-            name.setValue((item == null) ? "" : item.name());
             name.setEnabled(false);
-            if (type.isPresent() && type.get().canHaveValue()) {
-                value.setEnabled(true);
-                value.setValue((item == null) ? "" : item.value());
-            } else {
-                value.setEnabled(false);
-            }
+            Optional<TagType> type = registry.find(item);
+            value.setEnabled(type.isPresent() && type.get().canHaveValue());
         }
     }
 }

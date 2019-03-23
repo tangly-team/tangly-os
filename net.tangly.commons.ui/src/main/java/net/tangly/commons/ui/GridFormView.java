@@ -52,7 +52,7 @@ public abstract class GridFormView<E> extends Composite<Div> {
     private Button details = new Button("Details");
     private Button add = new Button("Add");
     private Button delete = new Button("Delete");
-    protected E selectedItem;
+    protected transient E selectedItem;
 
 
     protected GridFormView(boolean hasDetails, String filterPlaceholder) {
@@ -84,9 +84,7 @@ public abstract class GridFormView<E> extends Composite<Div> {
             cancelItem();
             selectItemDetails(selectedItem);
         });
-        details.addClickListener(event -> {
-            detailItem();
-        });
+        details.addClickListener(event -> detailItem());
         add.addClickListener(event -> {
             addedItem();
             addItem();

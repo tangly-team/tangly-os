@@ -46,7 +46,7 @@ public class CommentsView extends GridFormView<Comment> {
 
     @Override
     protected BiPredicate<Comment, String> filter() {
-        return (o, text) -> o.text().contains(text);
+        return (o, pattern) -> o.text().contains(pattern);
     }
 
     @Override
