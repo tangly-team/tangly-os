@@ -29,6 +29,7 @@ import net.tangly.erp.crm.models.LegalEntity;
 import net.tangly.erp.invoices.ports.InvoiceAsciiDoc;
 import org.asciidoctor.Asciidoctor;
 import org.asciidoctor.Attributes;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -49,6 +50,7 @@ import static org.asciidoctor.OptionsBuilder.options;
 public class InvoiceTests {
 
     @Test
+    @Disabled
     void writeAsciiDocReport() {
         Invoice invoice = newInvoice();
         InvoiceAsciiDoc report = new InvoiceAsciiDoc(invoice);
