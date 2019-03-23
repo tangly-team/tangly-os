@@ -13,8 +13,8 @@
 
 package net.tangly.erp.ledger.ports;
 
-import com.google.common.base.Strings;
 import net.tangly.commons.models.Tag;
+import net.tangly.commons.utilities.Strings;
 import net.tangly.erp.ledger.Account;
 import net.tangly.erp.ledger.AccountEntry;
 import net.tangly.erp.ledger.Ledger;
@@ -38,11 +38,10 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * The ledger CSV handler can import ledger plans and transactions journal as exported by the banana 8 ledger application. The import assumes that
- * the program language and ledger template use English.
- * The ledger structure CSV file has the columns id, account kind, account group, description, owned by group id. The handler reads a ledger
- * structure description from a CSV file and update a full ledger structure.
- * The transaction CSV file has the columns date, doc, description, account debit, account credit, amount, defineVat code.
+ * The ledger CSV handler can import ledger plans and transactions journal as exported by the banana 8 ledger application. The import assumes that the
+ * program language and ledger template use English. The ledger structure CSV file has the columns id, account kind, account group, description, owned
+ * by group id. The handler reads a ledger structure description from a CSV file and update a full ledger structure. The transaction CSV file has the
+ * columns date, doc, description, account debit, account credit, amount, defineVat code.
  */
 public class LedgerCsvHdl {
     private static final String AMOUNT = "Amount";
@@ -149,7 +148,7 @@ public class LedgerCsvHdl {
         }
     }
 
-    private CSVRecord importSplits(@NotNull Iterator<CSVRecord> records, List<AccountEntry> splits) {
+    private static CSVRecord importSplits(@NotNull Iterator<CSVRecord> records, List<AccountEntry> splits) {
         CSVRecord record = records.hasNext() ? records.next() : null;
         while (isPartOfSplitTransaction(record)) {
             String date = record.get(DATE);
@@ -172,14 +171,14 @@ public class LedgerCsvHdl {
     }
 
     /**
-     * Returns true if the record is relevant for the ledger plan, meaning it has a description and either an account identifier not starting with
-     * an semicolon or a group with an identifier different from 0.
+     * Returns true if the record is relevant for the ledger plan, meaning it has a description and either an account identifier not starting with an
+     * semicolon or a group with an identifier different from 0.
      *
      * @return flag indicating if hte record is relevant for the ledger plan or not
      */
-    private boolean isRecordPlanRelevant(String description, String accountId, String groupId) {
-        return !Strings.isNullOrEmpty(description) && ((!Strings.isNullOrEmpty(accountId) && !accountId.startsWith(":")) || (!Strings
-                .isNullOrEmpty(groupId) && !groupId.equalsIgnoreCase("0")));
+    private static boolean isRecordPlanRelevant(String description, String accountId, String groupId) {
+        return !Strings.isNullOrEmpty(description) && ((!Strings.isNullOrEmpty(accountId) && !accountId.startsWith(":")) ||
+                (!Strings.isNullOrEmpty(groupId) && !groupId.equalsIgnoreCase("0")));
     }
 
 
@@ -191,7 +190,7 @@ public class LedgerCsvHdl {
     private static final BigDecimal VAT_F1_DUE_VALUE = new BigDecimal("0.061");
     private static final BigDecimal VAT_F3_DUE_VALUE = new BigDecimal("0.065");
 
-    private void defineVat(@NotNull List<AccountEntry> entries, String code) {
+    private static void defineVat(@NotNull List<AccountEntry> entries, String code) {
         if (!Strings.isNullOrEmpty(code)) {
             switch (code) {
                 case F1:
@@ -213,7 +212,7 @@ public class LedgerCsvHdl {
         }
     }
 
-    private void defineProject(@NotNull List<AccountEntry> entries, String code) {
+    private static void defineProject(@NotNull List<AccountEntry> entries, String code) {
         if (!Strings.isNullOrEmpty(code)) {
             String[] values = code.split("-");
             if (values.length > 1) {
@@ -222,7 +221,7 @@ public class LedgerCsvHdl {
         }
     }
 
-    private Account.AccountGroup ofGroup(String accountGroup) {
+    private static Account.AccountGroup ofGroup(String accountGroup) {
         Account.AccountGroup group;
         try {
             switch (Integer.parseInt(accountGroup)) {
@@ -247,7 +246,7 @@ public class LedgerCsvHdl {
         return group;
     }
 
-    private Account.AccountKind ofKInd(String accountKind) {
+    private static Account.AccountKind ofKInd(String accountKind) {
         Account.AccountKind kind;
         try {
             switch (Integer.parseInt(accountKind)) {
@@ -272,7 +271,7 @@ public class LedgerCsvHdl {
         return kind;
     }
 
-    private boolean isPartOfSplitTransaction(CSVRecord record) {
+    private static boolean isPartOfSplitTransaction(CSVRecord record) {
         return (record != null) && (Strings.isNullOrEmpty(record.get(ACCOUNT_DEBIT)) || Strings.isNullOrEmpty(record.get(ACCOUNT_CREDIT)));
     }
 }

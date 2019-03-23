@@ -13,6 +13,7 @@
 
 package net.tangly.commons.di;
 
+import net.tangly.commons.annotations.Feature;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -26,6 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * This test is used to verify the behaviour of Injector dealing with interfaces.
  */
+@Feature("DI-001")
 @DisplayName("Given an injector")
 class BindInterfaceTest {
 
@@ -89,6 +91,9 @@ class BindInterfaceTest {
         @DisplayName("Then registration succeeds with a provider")
         void testAbstractClassWithProvider() {
             injector.bindProvider(A.class, ExampleA::new);
+            final A instance = injector.instance(A.class);
+            assertThat(instance).isNotNull().isInstanceOf(A.class);
+            assertThat(instance).isNotNull().isInstanceOf(ExampleA.class);
         }
 
         @Test

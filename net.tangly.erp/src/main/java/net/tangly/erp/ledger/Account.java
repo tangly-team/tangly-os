@@ -144,7 +144,7 @@ public class Account {
      * @return flag indicating if the account is an aggregate account
      */
     public boolean isAggregate() {
-        return AccountKind.AGGREGATE.equals(kind());
+        return AccountKind.AGGREGATE == kind();
     }
 
     /**
@@ -153,7 +153,7 @@ public class Account {
      * @return flag indicating if the account is a debit account
      */
     public boolean isDebit() {
-        return (AccountKind.ASSET.equals(kind()) || AccountKind.EXPENSE.equals(kind()));
+        return (AccountKind.ASSET == kind()) || (AccountKind.EXPENSE == kind());
     }
 
     /**
@@ -162,7 +162,7 @@ public class Account {
      * @return flag indicating if the account is a credit account
      */
     public boolean isCredit() {
-        return (AccountKind.LIABILITY.equals(kind()) || AccountKind.INCOME.equals(kind()));
+        return (AccountKind.LIABILITY == kind()) || (AccountKind.INCOME == kind());
     }
 
     /**
@@ -170,13 +170,13 @@ public class Account {
      * involved. Debits - meaning assets and expenses - have a positive balance and Credits - meaning liabilities and income -
      * have a negative balance.
      * <p>
-     * If I Debit (add to) a Debit account it gets more positive and has a larger value (Debit -> Soll)
+     * If I Debit (add to) a Debit account it gets more positive and has a larger format (Debit -> Soll)
      * <p>
-     * If I Credit (subtract from) a Debit account, it gets less positive and has a smaller value (Credit -> Haben)
+     * If I Credit (subtract from) a Debit account, it gets less positive and has a smaller format (Credit -> Haben)
      * <p>
-     * If I Debit (add to) a Credit account, it gets less negative and has a smaller value
+     * If I Debit (add to) a Credit account, it gets less negative and has a smaller format
      * <p>
-     * If I Credit (subtract from) a Credit account, it gets more negative and has a larger value
+     * If I Credit (subtract from) a Credit account, it gets more negative and has a larger format
      *
      * @param date date at which the balance is computed
      */
@@ -184,7 +184,7 @@ public class Account {
         if (isAggregate()) {
             return aggregatedAccounts.stream().map(o -> o.balance(date)).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
         } else {
-            return entries.stream().filter(o -> date.compareTo(o.date()) >= 0).map(this::booking).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
+            return entries.stream().filter(o -> date.compareTo(o.date()) >= 0).map(Account::booking).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
         }
     }
 
@@ -203,7 +203,7 @@ public class Account {
         this.aggregatedAccounts.addAll(aggregatedAccounts);
     }
 
-    private BigDecimal booking(AccountEntry entry) {
+    private static BigDecimal booking(AccountEntry entry) {
         if (entry.isCredit()) {
             // debit account: asset, expense -> means increase; credit account: liability, income -> means decrease
             return entry.amount().negate();

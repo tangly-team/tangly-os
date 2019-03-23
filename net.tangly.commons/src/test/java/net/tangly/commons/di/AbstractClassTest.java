@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DisplayName("Given an injector")
 class AbstractClassTest {
-    static abstract class AbstractExample {
+    public static abstract class AbstractExample {
     }
 
     public static class Example extends AbstractExample {
@@ -50,6 +50,9 @@ class AbstractClassTest {
         @DisplayName("Then registration succeeds with a provider")
         void testAbstractClassWithProvider() {
             injector.bindProvider(AbstractExample.class, Example::new);
+            final AbstractExample instance = injector.instance(AbstractExample.class);
+            assertThat(instance).isNotNull().isInstanceOf(AbstractExample.class);
+            assertThat(instance).isNotNull().isInstanceOf(Example.class);
         }
 
         @Test
@@ -57,6 +60,7 @@ class AbstractClassTest {
         void testAbstractClassConcreteSubclassBinding() {
             injector.bind(AbstractExample.class, Example.class);
             final AbstractExample instance = injector.instance(AbstractExample.class);
+            assertThat(instance).isNotNull().isInstanceOf(AbstractExample.class);
             assertThat(instance).isNotNull().isInstanceOf(Example.class);
         }
     }
@@ -73,7 +77,10 @@ class AbstractClassTest {
         @Test
         @DisplayName("Then registration succeeds with a provider")
         void testAbstractClassWithProvider() {
-            Injector.create((o) -> o.bindProvider(AbstractExample.class, Example::new));
+            Injector injector = Injector.create((o) -> o.bindProvider(AbstractExample.class, Example::new));
+            final AbstractExample instance = injector.instance(AbstractExample.class);
+            assertThat(instance).isNotNull().isInstanceOf(AbstractExample.class);
+            assertThat(instance).isNotNull().isInstanceOf(Example.class);
         }
 
         @Test

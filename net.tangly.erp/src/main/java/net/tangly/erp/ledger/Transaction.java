@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * A simple transaction is a money transfer between a debit and a credit accounts. A split transaction is a money transfer between a debit account
  * and a set of credit acoounts or a credit account and a set of debit accounts. The total debit and the total credit of a transaction must be the
- * same value. The majority of transactions have one debit and one credit account. The class is immutable.
+ * same format. The majority of transactions have one debit and one credit account. The class is immutable.
  */
 public class Transaction {
     public static Transaction of(String date, int debitAccount, int creditAccount, String amount, String text) {

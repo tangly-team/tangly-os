@@ -54,15 +54,16 @@ public interface CrmEntity extends HasTags {
         }
     }
 
-    default Optional<Address> findAddress(String kind) {
-        return findBy(CrmTags.getAddressTag(kind)).map(o -> Address.of(o.value()));
+    default Address address(String kind) {
+        var value = findBy(kind);
+        return value.map(Tag::value).map(Address::of).orElse(null);
     }
 
-    default void setAddress(String kind, Address address) {
+    default void address(String kind, Address address) {
         if (address != null) {
-            replace(Tag.of(CrmTags.getEmailTag(kind), address.toString()));
+            replace(Tag.of(kind, address.toString()));
         } else {
-            removeTagNamed(CrmTags.getEmailTag(kind));
+            removeTagNamed(kind);
         }
     }
 

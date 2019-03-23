@@ -17,8 +17,8 @@ import net.tangly.commons.models.EntityImp;
 import net.tangly.commons.models.Tag;
 
 /**
- * A legal entity is legally recognized organization able to underwrite contracts and hire employees. A legal entity has a name, an identity
- * defined as the legal number of an organization (e.g. zefix number in Switzerland), aduration of its existence, a text describing it.
+ * A legal entity is legally recognized organization able to underwrite contracts and hire employees. A legal entity has a name, an identity defined
+ * as the legal number of an organization (e.g. zefix number in Switzerland), aduration of its existence, a text describing it.
  */
 public class LegalEntity extends EntityImp implements CrmEntity {
     private static final long serialVersionUID = 1L;
@@ -33,11 +33,21 @@ public class LegalEntity extends EntityImp implements CrmEntity {
         // default constructor
     }
 
+    /**
+     * Returns the VAT identifying number of the legal entity.
+     *
+     * @return the VAT identifying number
+     */
     public String vatNr() {
         var value = findBy(CrmTags.CRM_VAT_NUMBER);
         return value.map(Tag::value).orElse(null);
     }
 
+    /**
+     * Sets the VAT identifying number of the legal entity.
+     *
+     * @param vatNr new VAT identifying number
+     */
     public void vatNr(String vatNr) {
         replace(Tag.of(CrmTags.CRM_VAT_NUMBER, vatNr));
     }

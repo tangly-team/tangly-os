@@ -13,7 +13,7 @@
 
 package net.tangly.erp.crm.models.ports;
 
-import com.google.common.base.Strings;
+import net.tangly.commons.utilities.Strings;
 import net.tangly.commons.models.Address;
 import net.tangly.commons.models.EntityImp;
 import net.tangly.erp.crm.models.BankConnection;
@@ -68,7 +68,7 @@ public class CrmCsvHdl {
                 NaturalEntity entity = NaturalEntity
                         .of(Long.parseLong(get(record, OID)), get(record, ID), get(record, "lastname"), get(record, "firstname"));
                 updateEntity(record, entity);
-                entity.setAddress(CrmTags.HOME, importAddress(record));
+                entity.address(CrmTags.CRM_ADDRESS_HOME, importAddress(record));
                 entity.setEmail(CrmTags.HOME, get(record, "email-home"));
                 entity.setPhoneNr(CrmTags.MOBILE, get(record, "phone-mobile"));
                 entity.setIm("linkedin", get(record, LINKEDIN));
@@ -88,7 +88,7 @@ public class CrmCsvHdl {
             while (record != null) {
                 LegalEntity entity = LegalEntity.of(Long.parseLong(get(record, OID)));
                 updateEntity(record, entity);
-                entity.setAddress(CrmTags.HOME, importAddress(record));
+                entity.address(CrmTags.CRM_ADDRESS_HOME, importAddress(record));
                 entity.setEmail(CrmTags.WORK, get(record, "email-work"));
                 entity.setPhoneNr(CrmTags.WORK, get(record, "phone-work"));
                 entity.vatNr(get(record, VAT_NR));
@@ -147,16 +147,16 @@ public class CrmCsvHdl {
         return entities;
     }
 
-    public Address importAddress(@NotNull CSVRecord record) {
+    public static Address importAddress(@NotNull CSVRecord record) {
         String street = get(record, "street");
         String postcode = get(record, "postcode");
         String locality = get(record, "locality");
         String region = get(record, "region");
         String country = get(record, "country");
-        return Address.builder().street(street).postcode(postcode).locality(locality).region(region).country(country).build();
+        return Address.builder().street(street).postcode(postcode).locality(locality).region(region).countryCode(country).build();
     }
 
-    private void updateEntity(@NotNull CSVRecord record, EntityImp entity) {
+    private static void updateEntity(@NotNull CSVRecord record, EntityImp entity) {
         entity.id(get(record, ID));
         entity.name(get(record, NAME));
         String fromDate = get(record, FROM_DATE);
@@ -166,7 +166,7 @@ public class CrmCsvHdl {
         entity.text(get(record, TEXT));
     }
 
-    private String get(CSVRecord record, String column) {
+    private static String get(CSVRecord record, String column) {
         return Strings.emptyToNull(record.get(column));
     }
 

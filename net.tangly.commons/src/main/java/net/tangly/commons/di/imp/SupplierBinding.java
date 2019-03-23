@@ -32,6 +32,15 @@ class SupplierBinding<R, T extends R> implements Supplier<R> {
     }
 
     /**
+     * Returns the interface of the instantiated objects.
+     *
+     * @return class of the instantiated objects
+     */
+    public Class<R> interfaces() {
+        return interfaces;
+    }
+
+    /**
      * Returns the class of the instantiated objects.
      *
      * @return class of the instantiated objects

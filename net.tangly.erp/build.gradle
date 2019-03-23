@@ -11,18 +11,24 @@
  * under the License.
  */
 
-version = "0.1.0"
+version = "0.2.0"
 description = "ERP models (tangly llc)"
+ext.moduleName = 'net.tangly.erp'
+
+
+repositories {
+    maven {
+        url "https://raw.github.com/ZUGFeRD/mustangproject/mvn-repo/"
+    }
+}
 
 dependencies {
     compile project (':net.tangly.commons')
 
     compile 'org.apache.commons:commons-csv:1.5'
-    compile "org.hsqldb:hsqldb:2.4.1"
-}
-
-jar {
-    manifest {
-        attributes('Implementation-Title': project.name, 'Implementation-Version': project.version)
-    }
+    compile 'org.hsqldb:hsqldb:2.4.1'
+    compile 'net.codecrete.qrbill:qrbill-generator:1.0.0'
+    compile 'org.mustangproject.ZUGFeRD:mustang:1.5.5'
+    compile 'org.asciidoctor:asciidoctorj:1.5.8.1'
+    compile 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.16'
 }

@@ -54,8 +54,8 @@ import java.util.stream.Collectors;
  */
 public class Table<T extends HasOid> {
     /**
-     * Builder for the table class. Upon building the class you should discard the builder instance. Any additional call on the builder will
-     * update a runtime exception.
+     * Builder for the table class. Upon building the class you should discard the builder instance. Any additional call on the builder will update a
+     * runtime exception.
      */
     public static class Builder<V extends HasOid> {
         private Table<V> table;
@@ -340,8 +340,9 @@ public class Table<T extends HasOid> {
     }
 
     private String generateReplaceSql() {
-        return "REPLACE INTO " + ((schema != null) ? schema + "." + entityName : entityName) + " (" + properties.stream().map(AbstractProperty::name)
-                .collect(Collectors.joining(", ")) + ") VALUES (" + "?" + String.join("", Collections.nCopies(properties.size() - 1, ", ?")) + ")";
+        return "REPLACE INTO " + ((schema != null) ? schema + "." + entityName : entityName) + " (" +
+                properties.stream().map(AbstractProperty::name).collect(Collectors.joining(", ")) + ") VALUES (" + "?" +
+                String.join("", Collections.nCopies(properties.size() - 1, ", ?")) + ")";
     }
 
     private String generateDeleteSql() {
@@ -349,13 +350,13 @@ public class Table<T extends HasOid> {
     }
 
     private String generateFindSql() {
-        return "SELECT " + properties.stream().map(AbstractProperty::name).collect(Collectors.joining(", ")) + " FROM " + ((schema != null) ?
-                schema + "." + entityName : entityName) + " WHERE " + PRIMARY_KEY + " = ?";
+        return "SELECT " + properties.stream().map(AbstractProperty::name).collect(Collectors.joining(", ")) + " FROM " +
+                ((schema != null) ? schema + "." + entityName : entityName) + " WHERE " + PRIMARY_KEY + " = ?";
     }
 
     private String generateFindWhereSql() {
-        return "SELECT " + properties.stream().map(AbstractProperty::name).collect(Collectors.joining(", ")) + " FROM " + ((schema != null) ?
-                schema + "." + entityName : entityName) + " WHERE ";
+        return "SELECT " + properties.stream().map(AbstractProperty::name).collect(Collectors.joining(", ")) + " FROM " +
+                ((schema != null) ? schema + "." + entityName : entityName) + " WHERE ";
     }
 
 }

@@ -94,7 +94,7 @@ public final class CrmTags {
     }
 
     /**
-     * Private constructor of an utility class
+     * Private constructor of an utility class.
      */
     private CrmTags() {
     }

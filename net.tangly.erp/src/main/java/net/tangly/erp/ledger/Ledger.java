@@ -41,15 +41,15 @@ public class Ledger {
     }
 
     public List<Account> assets() {
-        return accounts.stream().filter(o -> Account.AccountGroup.ASSETS.equals(o.group())).collect(Collectors.toUnmodifiableList());
+        return accounts.stream().filter(o -> Account.AccountGroup.ASSETS == o.group()).collect(Collectors.toUnmodifiableList());
     }
 
     public List<Account> liabilities() {
-        return accounts.stream().filter(o -> Account.AccountGroup.LIABILITIES.equals(o.group())).collect(Collectors.toUnmodifiableList());
+        return accounts.stream().filter(o -> Account.AccountGroup.LIABILITIES == o.group()).collect(Collectors.toUnmodifiableList());
     }
 
     public List<Account> profitAndLoss() {
-        return accounts.stream().filter(o -> Account.AccountGroup.PROFITS_AND_LOSSES.equals(o.group())).collect(Collectors.toUnmodifiableList());
+        return accounts.stream().filter(o -> Account.AccountGroup.PROFITS_AND_LOSSES == o.group()).collect(Collectors.toUnmodifiableList());
     }
 
     public List<Transaction> transactions(LocalDate from, LocalDate to) {

@@ -38,11 +38,10 @@ public class CsvImportTest {
 
         assertThat(crm.naturalEntities().get(0).oid()).isEqualTo(1);
         assertThat(crm.naturalEntities().get(0).id()).isNull();
-        assertThat(crm.naturalEntities().get(0).findAddress(CrmTags.HOME)).isNotNull();
-        assertThat(crm.naturalEntities().get(0).findAddress(CrmTags.HOME)).isNotNull();
+        assertThat(crm.naturalEntities().get(0).address(CrmTags.CRM_ADDRESS_HOME)).isNotNull();
         assertThat(crm.naturalEntities().get(0).findEmail(CrmTags.HOME)).isNotNull();
         assertThat(crm.naturalEntities().get(0).findPhoneNr(CrmTags.HOME)).isNotNull();
-        // assertThat(crm.naturalEntities().get(0).findSite(CrmTags.HOME)).isNotNull();
+        // assertThat(crm.naturalEntities().getAt(0).findSite(CrmTags.HOME)).isNotNull();
 
         path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/crm/models/legalEntities.csv").toURI());
         handler.importLegalEntities(path);

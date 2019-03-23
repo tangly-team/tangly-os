@@ -11,5 +11,5 @@
  * under the License.
  */
 
-include 'net.tangly.commons', 'net.tangly.fsm', 'net.tangly.erp'
+include 'net.tangly.commons', 'net.tangly.fsm', 'net.tangly.erp', 'net.tangly.commons.ui'
 
