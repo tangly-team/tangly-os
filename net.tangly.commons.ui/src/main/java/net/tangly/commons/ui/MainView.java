@@ -34,9 +34,9 @@ import java.time.LocalDate;
 @Route("")
 @Theme(value = Material.class, variant = Material.LIGHT)
 public class MainView extends VerticalLayout {
+    private transient TagTypeRegistry registry;
     private TagsView tagsView;
     private CommentsView commentsView;
-    private TagTypeRegistry registry;
 
     public MainView() {
         registry = new TagTypeRegistry();

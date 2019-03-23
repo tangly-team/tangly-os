@@ -44,6 +44,7 @@ import java.util.stream.Collectors;
  * @param <E> entity to display in the list and the details form
  */
 public abstract class GridFormView<E> extends Composite<Div> {
+    protected transient E selectedItem;
     private boolean hasDetails;
     private TextField filterText;
     private Grid<E> grid;
@@ -52,7 +53,6 @@ public abstract class GridFormView<E> extends Composite<Div> {
     private Button details = new Button("Details");
     private Button add = new Button("Add");
     private Button delete = new Button("Delete");
-    protected transient E selectedItem;
 
 
     protected GridFormView(boolean hasDetails, String filterPlaceholder) {
