@@ -2,16 +2,6 @@
 <project version="4">
   <component name="SonarLintProjectSettings">
     <option name="bindingEnabled" value="true" />
-    <option name="fileExclusions">
-      <list>
-        <option value="FILE:net.tangly.commons.ui/build.gradle" />
-        <option value="DIRECTORY:net.tangly.commons.ui/.gradle" />
-        <option value="DIRECTORY:net.tangly.commons/build" />
-        <option value="DIRECTORY:net.tangly.commons.ui/build" />
-        <option value="DIRECTORY:net.tangly.erp/build" />
-        <option value="DIRECTORY:net.tangly.fsm/build" />
-      </list>
-    </option>
     <option name="projectKey" value="tangly-os-at-tangly.net" />
     <option name="serverId" value="tangly-os" />
   </component>

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/net.tangly.erp/src/main/resources/db/migration/V1_0_00__ADD_CRM.sql" dialect="HSQLDB" />
-  </component>
-</project>

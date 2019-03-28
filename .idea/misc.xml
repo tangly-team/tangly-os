@@ -4,18 +4,7 @@
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
   </component>
-  <component name="PDMPlugin">
-    <option name="options">
-      <map>
-        <entry key="Encoding" value="" />
-        <entry key="Target JDK" value="1.11" />
-      </map>
-    </option>
-  </component>
-  <component name="ProjectResources">
-    <resource url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" location="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_12" default="false" project-jdk-name="12" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_12_PREVIEW" default="false" project-jdk-name="12" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

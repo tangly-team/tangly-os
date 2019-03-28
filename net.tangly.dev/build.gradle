@@ -11,5 +11,6 @@
  * under the License.
  */
 
-include 'net.tangly.commons', 'net.tangly.fsm', 'net.tangly.erp', 'net.tangly.dev', 'net.tangly.commons.ui'
-
+version = "0.2.0"
+description = "Development Utilities(tangly llc)"
+ext.moduleName = 'net.tangly.dev'
