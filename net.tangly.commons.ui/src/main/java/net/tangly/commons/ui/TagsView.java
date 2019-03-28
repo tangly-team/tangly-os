@@ -31,8 +31,8 @@ import java.util.function.BiPredicate;
  * can only view the selectedItem values.
  */
 public class TagsView extends GridFormView<Tag> {
-    private TagTypeRegistry registry;
-    private HasTags entity;
+    private transient TagTypeRegistry registry;
+    private transient HasTags entity;
     private ComboBox<String> namespace;
     private ComboBox<String> name;
     private TextField value;

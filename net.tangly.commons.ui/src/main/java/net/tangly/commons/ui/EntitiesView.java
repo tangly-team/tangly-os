@@ -29,7 +29,7 @@ import java.util.Map;
  * relations or specific details groups.
  */
 public class EntitiesView extends Composite<Div> {
-    private Entity entity;
+    private transient Entity entity;
     private Map<Tab, Component> tabsToPages = new HashMap<>();
     private Component selectedPage;
     private CommentsView commentsView;

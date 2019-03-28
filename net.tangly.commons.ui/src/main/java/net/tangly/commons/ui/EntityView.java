@@ -24,7 +24,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.commons.models.Entity;
 
 public class EntityView extends Composite<Div> {
-    private Entity entity;
+    private transient Entity entity;
     private TextField oid;
     private TextField id;
     private TextField name;
