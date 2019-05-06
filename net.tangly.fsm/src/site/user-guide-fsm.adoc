@@ -1,6 +1,24 @@
-= User Guide Finite State Machine
+== User Guide Finite State Machine
 
-== Scenarios
+=== Features
+
+The FSM library aims to provide following features:
+* Easy to use flat one level state machine for simple use cases,
+* Hierarchical state machine structure to ease complex state configuration,
+* Usage of events, transitions, guards and actions,
+* Builder pattern for easy instantiation for use outside of Spring Application context,
+* Recipes for usual use cases,
+* State machine event listeners,
+* Diagrams generators for dot and plantUml.
+
+State machines are powerful because behaviour is always guaranteed to be consistent, making it relatively easy to debug. This is because
+operational rules are written in stone when the machine is started. The idea is that your application may exist in a finite number of states and
+certain predefined events can take your application from one state to the next. Such triggers can be based on either events or timers.
+
+It is much easier to define high level logic outside of your application and then rely on the state machine to manage state. You can interact with
+the state machine by sending an event, listening for changes or simply request a current state.
+
+=== Scenarios
 
 Applications are a good candidate to use state machine if:
 * Application or part of its structure can be represented as states.
@@ -13,21 +31,21 @@ You are already trying to implement a state machine if:
 * Looping through if/else structure and checking if particular flag or enum is set and then making further exceptions
   what to do when certain combination of your flags and enums exists or doesn’t exist together.
 
-== Get Starting
+Finite state machines provide a clear and well-documented approach for complex logic with states.
 
-**FSM finite state machine** module supports both a fluent API and a more declarative manner to define a state machine,
-and also enable a user to define the action methods in a straightforward manner. Lambda constructs support a compact
-and legible notation.
+=== Get Starting
 
-Actions and guards declarations use the lambda feature of Java 8. Guard is a boolean function, and an action is a 
-method without return value. Once a finite state machine is declared you can execute multiple instances of the 
-declaration in your application.
+**FSM finite state machine** module supports both a fluent API and a more declarative manner to define a state machine, and also enable a user to
+define the action methods in a straightforward manner. Lambda constructs support a compact and legible notation.
+
+Actions and guards declarations use the lambda feature of Java 8. Guard is a boolean function, and an action is a  method without return value.
+Once a finite state machine is declared you can execute multiple instances of the declaration in your application.
 
 * **StateMachine** interface takes four generic type parameters.
 	* **E** stands for the type of implemented event. The event values must be a Java enumeration type. The enumeration
-	  type defines all the different event types
+	  type defines all the different event values
 	* **S** stands for the type of implemented state. The state values must be a Java enumeration type. The enumeration
-	  type defines the possible states
+	  type defines the possible states of the finite state machine
 	* **C** stands for the class owning the state machine and defining the *context* in which the machine is executed.
 * **States** represent a stable status of the system existing for a time duration.
     * Simple state is as state without children
@@ -39,13 +57,15 @@ declaration in your application.
     * State with history allows a a composite state to remember its configuration. A transition taking the history
       composite state as its target will return the child state stored in the history as the last active state last time
       the target composite state was exited
-* **Transitions** represent a possible change from a start state to a destination state
+* **Transitions** represent a possible change from a start state to a destination state.
     * Normal transition moving from a source state to a destination state
     * Internal transition means after transition complete, no state is exited or entered. Therefore no entry or exit
       actions are executed
-* **Guards** is implemented as an extension of a standard Java *BiPrediction* functional interface
-    * boolean expression lambda expression deciding if the transition shall be fired or not
-* **Actions** is implemented as an extension of a standard Java *BiFunction* functional interface
+* **Guards** is implemented as an extension of a standard Java *BiPrediction* functional interface. The paramenters are the event triggering the
+  guard and the context.
+    * boolean expression lambda expression deciding if the transition shall be fired or not.
+* **Actions** is implemented as an extension of a standard Java *BiFunction* functional interface. The parameters are the event triggering the
+  guard and the context.
     * Entry actions are executed upon activation of the state, when the fired transition enters the state
     * Exit actions are executed upon deactivation of the state, when the fired transition leaves the state
     * Transition actions are executed when a transition is fired
@@ -54,29 +74,29 @@ Below the UML diagram of the public interface of the finite state machine compon
 
 ![Finite State Machine UML](./pics/fsm-uml.svg "Finite State Machine UML Diagram")
 
+=== Fluent Examples
 
-== Fluent Example
+==== How to create the state machine builder
 
-=== How to create the state machine builder
-
-In order to create a state machine, user need to create state machine builder first. For example:
+In order to create a state machine, you need to create state machine builder first. For example:
 
 ```java
 	DefinitionBuilder<Owner, States, Events> builder = new DefinitionBuilder<>(States.Root);
 ```
 
-After a state machine builder was created, we can use fluent API to define states, transitions and actions of the state
-machine declaration. The internal state is implicitly built during object creation.
+After a state machine builder was created, we can use the fluent API to define states, transitions and actions of the state machine declaration. The
+internal objects are implicitly built during creation.
 
-=== How to create states
+==== How to create states
 
-Below how to create a state.
+Below how to create a state __Off__ as substrate of the root state.
 
 ```java
     builder.root().add(States.Off)
 ```
 
-Below two variants how to create an initial state with an entry and an exit action.
+Below two variants how to create an initial state with an entry and an exit action. The __isInitial__ marker specifies that the state __Off__ is an
+ initial state.
 
 ```java
     builder.root().add(States.Off).isInitial().onEntry(Fsm::logOffEntry).onExit(Fsm::logOffExit);
@@ -85,27 +105,30 @@ Below two variants how to create an initial state with an entry and an exit acti
 ```
 
 
-Below how to create a nested initial state with an entry and an exit action.
+Below how to create a nested initial state with an entry and an exit action. The state __DAB__ is a substate of state __On__. The __isInitial__ marker
+specifies that the state __DAB__ is an initial state.
 
 ```java
     builder.in(States.On).add(States.DAB).isInitial().onEntry(Fsm::logDabEntry).onExit(Fsm::logDabExit);
 ```
 
-=== How to create transitions
+==== How to create transitions
 
-Below how to create a transition between two states with an event and an action - without a guard -.
+Below how to create a transition between two states with an event and an action - without a guard -. The transition starts on state __Maintenance__
+ when the event __TogglePower__ is received and finishes in state __Off_. The action __logTransitionFromMaintenanceToOff__ is executed when the
+ transition is traversed.
 
 ```java
     builder.in(States.Maintenance).on(Events.TogglePower).to(States.Off).execute(Fsm::logTransitionFromMaintenanceToOff);
 ```
 
-Below how to create a transition between two states with an event, a guard and an action. The first statement uses
-a lambda expression calling a method of the owner object, the second statement uses a lambda expression with a code
-block.
+Below how to create a transition between two states with an event, a guard and an action. The first statement uses a lambda expression calling a
+method of the owner object, the second statement uses a lambda expression with a code block.
 
 ```java
     builder.in(States.Off).on(Events.TogglePower).to(States.Maintenance).onlyIf(Fsm::isMaintenanceMode)
             .execute(Fsm::logTransitionFromOffToMaintenance);
+
     builder.in(States.Off).on(Events.TogglePower).to(States.On).onlyIf((o) -> !o.isMaintenanceMode()).execute
                          (Fsm::logTransitionFromOffToOn);
 ```
@@ -117,7 +140,7 @@ the state.
     builder.in(States.On).onLocal(Events.StoreStation).execute(Fsm::logIgnoreStoreOperation);
 ```
 
-=== An example of a complete finite state machine definition
+==== An example of a complete finite state machine definition
 
 The example below declares a complete state machine. The enumeration ```States``` defines the states, the enumeration
 ```Events``` defines the events processed.
@@ -156,15 +179,14 @@ The example below declares a complete state machine. The enumeration ```States``
     builder.in(States.Play).on(Events.StationLost).to(States.AutoTune).execute(Fsm::logTransitionFromPlayToAutoTune);
     builder.in(States.AutoTune).on(Events.StationFound).to(States.Play).execute(Fsm::logTransitionFromAutoTuneToPlay);
 ```
-The above finite state machine description will generate the following machine. Greyed states have history. Dashed
-states are initial ones.
+The above finite state machine description will generate the following machine. Greyed states have history. Dashed states are initial ones.
 
 ![bbv Finite State Machine](pics/fsm-bbv.svg "bbv Finite State Machine")
 
-=== How to create an instance of a finite state machine and fire events
+==== How to create an instance of a finite state machine and fire events
 
-After you have defined the state machine behaviour in the description, you create a new state machine instance. The
-initial state of the machine is inferred from the definition of the state machine.
+After you have defined the state machine behaviour in the description, you create a new state machine instance. The initial state of the machine is
+ inferred from the definition of the state machine.
 
 ```
     StateMachine<Fsm, States, Events> fsm = builder.machine("name-of-fsm", ownerInstance);
@@ -177,34 +199,34 @@ You can fire events as follow
     fsm.fire(new Event<Events>(Events.TogglePower));
 ```
 
-= Advanced User Guide
+== Advanced User Guide
 
-== Static Validation
+=== Static Validation
 
 The static validator verifies the syntax of finite state machine declaration. The implemented checks are
 
-* Each value of the state identifier enumeration is used exactly once in the declaration
-* A state has at most one initial substate.
-* A state with a inferrent transition has an initial substate.
-* The hierarchy of initial states allows a clean identification of the first state when the machine is reset to default.
+* Each value of the state identifier enumeration is used exactly once in the declaration,
+* A state has at most one initial substate,
+* A state with a inferrent transition has an initial substate,
+* The hierarchy of initial states allows a clean identification of the first state when the machine is reset to default,
 * A final state cannot have efferent transitions.
 
-== Dynamic Validation
+=== Dynamic Validation
 
 The static validator verifies the semantic of a finite state machine during execution. The implemented checks are
 
 * To be written
 
 
-== Log a state machine instance
+=== Log a state machine instance
 
 To be written
 
-== Documentation of State Machines
+=== Documentation of State Machines
 
 You can document your state machine declaration by
 
-* Generate a diagram in the dot language and visualize your state machine as a hierarchical graph.
+* Generate a diagram in the dot language and visualize your state machine as a hierarchical graph,
 * Add description to states, actions and guards directly in the builder. These descriptions are used to enrich the
   hierarchical graph.
 

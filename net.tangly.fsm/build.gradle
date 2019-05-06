@@ -11,9 +11,15 @@
  * under the License.
  */
 
-version = "0.2.0"
-description = "Hierarchical finite state machine library using Java 8 or higher (tangly llc)"
-ext.moduleName = 'net.tangly.fsm'
+plugins {
+    id 'java-library'
+}
+
+project.group = 'net.tangly'
+project.ext.artifactId ='fsm'
+project.version = "0.2.0"
+project.description = "Hierarchical finite state machine library using Java 11 or higher (tangly llc)"
+project.ext.moduleName = 'net.tangly.fsm'
 
 /*
 compileJava {

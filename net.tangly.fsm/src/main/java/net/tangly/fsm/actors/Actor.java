@@ -22,7 +22,8 @@ import org.jetbrains.annotations.NotNull;
 public interface Actor<E extends Enum<E>> {
 
     /**
-     * The unique name of the actor.
+     * Returns the unique name of the actor.
+     * @return unique name of the actor
      */
     String name();
 
