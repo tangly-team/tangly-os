@@ -1,0 +1,5 @@
+#!/bin/bash
+/usr/local/Cellar/asciidoctor/2.0.9/bin/asciidoctor_brew -r asciidoctor-diagram "$@"
+
+# mv asciidoctor asciidoctor_brw
+# chmod +x asciidoctor

@@ -1,0 +1,80 @@
+## Purpose
+
+Agile development teams shall manage and diminish their technical debt. We provide instruments to increase the pay-off of refactoring measures. The
+most relevant source code parts should be refactored first. But how can we identify them?
+
+Git is the de facto standard for version management systems. Git contains the whole evolution story of our source code. We use this data to identify
+areas under repetitive change or often needing fixing. In parallel the evolution of the source code hints us for complexity hotspots.
+
+The three area of statistical data are combined to identify the most promising area for refactoring.
+* History of commits reflecting the behavior and priorities of team members over time
+* Evolution of source code artifacts reflecting changes in complexity and legibility
+* Corrections of identified defects and their location identify non-quality hotspots
+
+The provided tools extract the requested indicators and presents them graphically. The findings are used to support refactoring priorzsation.
+
+## Requirements
+
+1. Gather changes in the repository artifacts over a specified time interval
+  a. the gathered data are date of change, author of change, number of added lines and of removed lines
+  a. each file change is gathered
+  a. only the version management system __git__ is supported
+1. Gather complexity metrics over source code artifacts - classes and packages - over a specified time interval
+1. Gather location and time when identified defects were fixed in the source code repository
+  a. use the official conventions to identify a closed ticket in a commit comment
+
+
+## Modules, Packages, Classes and Files
+
+[plantuml, dev-model, svg]
+....
+@startuml
+
+class Commit {
+  String comment
+}
+
+Class CommitItem
+class Committer {
+  String name
+}
+
+class RepositoryFile {
+  String filename
+  boolean test
+}
+
+class Project {
+  String name
+}
+
+class Module {
+  String qualifiedName
+}
+
+class Package {
+  String qualifiedName
+}
+
+class Clazz {
+  String qualifiedName
+}
+
+Commit "1" *-- "*" CommitItem
+Commit o-- "1" Committer
+RepositoryFile "1" o-- "*" CommitItem
+
+Project o-- Module
+Module "1" *--  "*" Package
+Package "1" *-- "*" Clazz
+Clazz o-- RepositoryFile
+
+Project *-- "*" Committer
+Project *-- "*" Commit
+
+@enduml
+....
+
+
+
+## History
