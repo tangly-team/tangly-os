@@ -2,27 +2,36 @@
 hide empty description
 
 state Root {
-    [*] --> Running
-    state Running {
-        [*] --> Washing
-        state Washing
-        Washing -> Rinsing : Rinse
+    [*] --> A
+    state A {
+        [*] --> AA
+        state AA
+        AA -> AB : AA_AB
+        AA -> B : AA_B
+        AA -> BB : AA_BB
 
-        state Rinsing
-        Rinsing -> Drying : Dry
+        state AB
+        AB -> AA : AB_AA
+        AB -> AB : AB_AB
 
-        state Drying
-        Drying --> [*]
-
-        Running -> End : Stop
-        Running -> PowerOff : CutPower
+        A -> C : A_C
 }
 
-    state End
-    End --> [*]
+    state B {
+        state BA
+        BA -> A : BA_A
+        BA -> BB : BA_BB
 
-    state PowerOff
-    PowerOff -> Running : RestorePower
+        [*] --> BB
+        state BB
+        BB -> BA : BB_BA / VV -> BA when BB_BA
+        BB -> C : BB_C
+
+        B -> C : B_C
+}
+
+    state C
+    C --> [*]
 
 }
 

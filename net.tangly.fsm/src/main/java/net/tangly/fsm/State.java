@@ -20,7 +20,7 @@ import java.util.Set;
 import java.util.function.BiConsumer;
 
 /**
- * The state part of a hierarchical finite state machine.
+ * The state abstraction of a hierarchical finite state machine.
  *
  * @param <O> the class of the instance owning the finite state machine instance
  * @param <S> the state enumeration type uniquely identifying a state in the state machine

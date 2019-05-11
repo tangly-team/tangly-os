@@ -1,0 +1,30 @@
+---
+title: "FSM 002"
+date: 2019-05-01
+draft: false
+---
+
+=== 002. Publish Artifacts on Public Java Components Repository
+
+Date: 2019-05-01
+
+==== Status
+
+Implemented
+
+==== Context
+
+The library is enough mature to be used in public commercial and academic projects.
+
+==== Decision
+
+The library shall be published on maven central and be accessible to a wide range of developers and organizations. A web site shall be set up to
+provide adequate documentation for users.
+
+The ADR FSM-001 supports this evaluation.
+
+==== Consequences
+
+* We have to establish a publishing process at the company level to deploy signed artifacts to maven central repository.
+* We have to establish a public web site to host the documentation of public published libraries
+* We have to support semantic versioning for all future releases of public published libraries

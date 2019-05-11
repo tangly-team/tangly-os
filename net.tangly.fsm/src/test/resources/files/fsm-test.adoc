@@ -17,55 +17,64 @@ image::pics/fsm-test.svg[fsm-test]
 |-
 |-
 
-|[[fsm-test-Running]]Running
+|[[fsm-test-A]]A
 |Root
-|Running State
+|State A
 |false
 |true
 |true
 |-
 |-
 
-|[[fsm-test-End]]End
+|[[fsm-test-AA]]AA
+|A
+|State AA
+|false
+|true
+|false
+|-
+|-
+
+|[[fsm-test-AB]]AB
+|A
+|State AB
+|false
+|false
+|false
+|-
+|-
+
+|[[fsm-test-B]]B
 |Root
-|State End
-|true
+|
 |false
-|false
-|-
-|-
-
-|[[fsm-test-Washing]]Washing
-|Running
-|Washing State
 |false
 |true
+|-
+|-
+
+|[[fsm-test-BA]]BA
+|B
+|State BA
+|false
+|false
 |false
 |-
 |-
 
-|[[fsm-test-Rinsing]]Rinsing
-|Running
-|Rising State
+|[[fsm-test-BB]]BB
+|B
+|State BB
 |false
-|false
-|false
-|-
-|-
-
-|[[fsm-test-Drying]]Drying
-|Running
-|Drying State
 |true
 |false
-|false
 |-
 |-
 
-|[[fsm-test-PowerOff]]PowerOff
+|[[fsm-test-C]]C
 |Root
-|PowerOff State
-|false
+|
+|true
 |false
 |false
 |-
@@ -79,37 +88,93 @@ image::pics/fsm-test.svg[fsm-test]
 |===
 |Start State |End State |Description |Local |Guard |Action
 
-|<<fsm-test-Running,Running>>
-|<<fsm-test-End,End>>
-|Running -> End
+|<<fsm-test-A,A>>
+|<<fsm-test-C,C>>
+|A -> C when A_C
 |false
 |
 |
 
-|<<fsm-test-Running,Running>>
-|<<fsm-test-PowerOff,PowerOff>>
-|Running -> PowerOff
+|<<fsm-test-AA,AA>>
+|<<fsm-test-AA,AA>>
+|Local transition AA -> AA when (AA_AA)
+|true
+|
+|
+
+|<<fsm-test-AA,AA>>
+|<<fsm-test-AB,AB>>
+|AA -> AB when AA_AB
 |false
 |
 |
 
-|<<fsm-test-Washing,Washing>>
-|<<fsm-test-Rinsing,Rinsing>>
-|Washing -> Rinsing
+|<<fsm-test-AA,AA>>
+|<<fsm-test-B,B>>
+|AA -> B when AA_B
 |false
 |
 |
 
-|<<fsm-test-Rinsing,Rinsing>>
-|<<fsm-test-Drying,Drying>>
-|Rinsing -> Drying
+|<<fsm-test-AA,AA>>
+|<<fsm-test-BB,BB>>
+|AA -> BB when (AA_BB)
 |false
 |
 |
 
-|<<fsm-test-PowerOff,PowerOff>>
-|<<fsm-test-Running,Running>>
-|PowerOff -> Running
+|<<fsm-test-AB,AB>>
+|<<fsm-test-AA,AA>>
+|AB -> AA when AB_AA
+|false
+|
+|
+
+|<<fsm-test-AB,AB>>
+|<<fsm-test-AB,AB>>
+|AB -> AB when AB_AB
+|false
+|
+|
+
+|<<fsm-test-B,B>>
+|<<fsm-test-C,C>>
+|B -> C when B_C
+|false
+|
+|
+
+|<<fsm-test-BA,BA>>
+|<<fsm-test-A,A>>
+|BA -> A when BA_C
+|false
+|
+|
+
+|<<fsm-test-BA,BA>>
+|<<fsm-test-BB,BB>>
+|BA -> BB when BA_BB
+|false
+|
+|
+
+|<<fsm-test-BB,BB>>
+|<<fsm-test-BB,BB>>
+|Local transition BB -> BB when BB_BB
+|true
+|
+|
+
+|<<fsm-test-BB,BB>>
+|<<fsm-test-BA,BA>>
+|
+|false
+|
+|VV -> BA when BB_BA
+
+|<<fsm-test-BB,BB>>
+|<<fsm-test-C,C>>
+|BB -> C when BB_C
 |false
 |
 |

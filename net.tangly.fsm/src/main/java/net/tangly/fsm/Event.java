@@ -18,9 +18,8 @@ import java.util.List;
 import java.util.StringJoiner;
 
 /**
- * The event is an immutable class containing the event with payload sent to the finite state
- * machine. The event contains all the context information necessary to process the system change
- * with the machine and the context of the machine.
+ * The event is an immutable class containing the event with payload sent to the finite state machine. The event contains all the context information
+ * necessary to process the system change with the machine and the context of the machine.
  *
  * @param <E> the event enumeration type uniquely identifying the event sent to the state machine
  */

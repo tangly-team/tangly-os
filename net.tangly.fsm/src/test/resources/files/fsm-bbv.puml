@@ -2,27 +2,32 @@
 hide empty description
 
 state Root {
-    [*] --> Running
-    state Running {
-        [*] --> Washing
-        state Washing
-        Washing -> Rinsing : Rinse
+    [*] --> Off
+    state Off
+    Off -> Maintenance : TogglePower [Maintenance is On] / log transition Off to Maintenance
+    Off -> On : TogglePower [Maintenance Off] / OfftoOn
 
-        state Rinsing
-        Rinsing -> Drying : Dry
+    state Maintenance
+    Maintenance -> Off : TogglePower / MaintainedtoOff
 
-        state Drying
-        Drying --> [*]
+    state On {
+        state FM {
+            [*] --> Play
+            state Play
+            Play -> AutoTune : StationLost / PlaytoAutoTune
 
-        Running -> End : Stop
-        Running -> PowerOff : CutPower
+            state AutoTune
+            AutoTune -> Play : StationFound / AutoTunetoPlay
+
+            FM -> DAB : ToggleMode / FMtoDAB
 }
 
-    state End
-    End --> [*]
+        [*] --> DAB
+        state DAB
+        DAB -> FM : ToggleMode / DABtoFM
 
-    state PowerOff
-    PowerOff -> Running : RestorePower
+        On -> Off : TogglePower / OntoOff
+}
 
 }
 

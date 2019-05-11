@@ -6,24 +6,34 @@ digraph G {
         subgraph cluster0 {
             style="visible, dashed, bold";
             label = "Root"
-                subgraph cluster1001 {
+                Off [style="dashed"];
+                Maintenance [];
+                subgraph cluster1003 {
                     style=invis;
-                    subgraph cluster1 {
-                        style="visible, dashed, filled";
-                        label = "Running"
-                            Washing [style="dashed"];
-                            Rinsing [];
-                            Drying [style="bold"];
+                    subgraph cluster3 {
+                        style="visible, filled";
+                        label = "On"
+                            subgraph cluster1004 {
+                                style=invis;
+                                subgraph cluster4 {
+                                    style="visible, filled";
+                                    label = "FM"
+                                        Play [style="dashed, filled"];
+                                        AutoTune [];
+                                }
+                            }
+                            DAB [style="dashed"];
                     }
                 }
-                End [style="bold"];
-                PowerOff [];
         }
     }
 
-    Running -> End [ltail=cluster1, label="Stop"];
-    Running -> PowerOff [ltail=cluster1, label="CutPower"];
-    Washing -> Rinsing [label="Rinse"];
-    Rinsing -> Drying [label="Dry"];
-    PowerOff -> Running [lhead=cluster1, label="RestorePower"];
+    Off -> Maintenance [label="TogglePower[Maintenance is On]/log transition Off to Maintenance"];
+    Off -> On [lhead=cluster3, label="TogglePower[Maintenance Off]/OfftoOn"];
+    Maintenance -> Off [label="TogglePower/MaintainedtoOff"];
+    On -> Off [ltail=cluster3, label="TogglePower/OntoOff"];
+    FM -> DAB [ltail=cluster4, label="ToggleMode/FMtoDAB"];
+    DAB -> FM [lhead=cluster4, label="ToggleMode/DABtoFM"];
+    Play -> AutoTune [label="StationLost/PlaytoAutoTune"];
+    AutoTune -> Play [label="StationFound/AutoTunetoPlay"];
 }

@@ -1,3 +1,10 @@
+---
+title: "User Guide Finite State Machine"
+date: 2019-05-01
+weight: 20
+draft: false
+---
+
 == User Guide Finite State Machine
 
 === Features
@@ -33,7 +40,7 @@ You are already trying to implement a state machine if:
 
 Finite state machines provide a clear and well-documented approach for complex logic with states.
 
-=== Get Starting
+=== Get Started
 
 **FSM finite state machine** module supports both a fluent API and a more declarative manner to define a state machine, and also enable a user to
 define the action methods in a straightforward manner. Lambda constructs support a compact and legible notation.
@@ -227,12 +234,9 @@ To be written
 You can document your state machine declaration by
 
 * Generate a diagram in the dot language and visualize your state machine as a hierarchical graph,
+* Generate a plantUML state machine diagram following UML notation,
 * Add description to states, actions and guards directly in the builder. These descriptions are used to enrich the
   hierarchical graph.
 
 As examples we provide the finite state machines diagrams of the builder FSM and the Washer FSM as proviced in the unit 
 tests.
-
-![Builder Finite State Machine](pics/fsm-builder.svg "Builder Finite State Machine")
-
-![Washer Finite State Machine](pics/fsm-washer.svg "Washer Finite State Machine")

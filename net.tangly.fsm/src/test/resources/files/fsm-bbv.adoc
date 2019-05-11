@@ -17,59 +17,68 @@ image::pics/fsm-bbv.svg[fsm-bbv]
 |-
 |-
 
-|[[fsm-bbv-Running]]Running
+|[[fsm-bbv-Off]]Off
 |Root
-|Running State
+|
 |false
 |true
-|true
-|-
-|-
+|false
+|Entry action of Off state
+|ExitOffstate
 
-|[[fsm-bbv-End]]End
+|[[fsm-bbv-Maintenance]]Maintenance
 |Root
-|State End
-|true
+|
 |false
 |false
-|-
-|-
+|false
+|
+|
 
-|[[fsm-bbv-Washing]]Washing
-|Running
-|Washing State
-|false
-|true
-|false
-|-
-|-
-
-|[[fsm-bbv-Rinsing]]Rinsing
-|Running
-|Rising State
-|false
-|false
-|false
-|-
-|-
-
-|[[fsm-bbv-Drying]]Drying
-|Running
-|Drying State
-|true
-|false
-|false
-|-
-|-
-
-|[[fsm-bbv-PowerOff]]PowerOff
+|[[fsm-bbv-On]]On
 |Root
-|PowerOff State
+|
+|false
+|false
+|true
+|
+|
+
+|[[fsm-bbv-FM]]FM
+|On
+|
+|false
+|false
+|true
+|entryFM
+|exitFM
+
+|[[fsm-bbv-DAB]]DAB
+|On
+|
+|false
+|true
+|false
+|
+|
+
+|[[fsm-bbv-Play]]Play
+|FM
+|
+|false
+|true
+|false
+|entryPlay
+|exitPlay
+
+|[[fsm-bbv-AutoTune]]AutoTune
+|FM
+|
 |false
 |false
 |false
-|-
-|-
+|
+|
 
 |===
 
@@ -79,40 +88,75 @@ image::pics/fsm-bbv.svg[fsm-bbv]
 |===
 |Start State |End State |Description |Local |Guard |Action
 
-|<<fsm-bbv-Running,Running>>
-|<<fsm-bbv-End,End>>
-|Running -> End
+|<<fsm-bbv-Off,Off>>
+|<<fsm-bbv-Maintenance,Maintenance>>
+|Off -> TogglePower
 |false
+|Maintenance is On
+|log transition Off to Maintenance
+
+|<<fsm-bbv-Off,Off>>
+|<<fsm-bbv-On,On>>
+|Off -> On
+|false
+|Maintenance Off
+|OfftoOn
+
+|<<fsm-bbv-Maintenance,Maintenance>>
+|<<fsm-bbv-Off,Off>>
+|Maintenance -> Off
+|false
+|
+|MaintainedtoOff
+
+|<<fsm-bbv-On,On>>
+|<<fsm-bbv-Off,Off>>
+|TogglePower -> On
+|false
+|
+|OntoOff
+
+|<<fsm-bbv-FM,FM>>
+|<<fsm-bbv-DAB,DAB>>
+|FM -> DAB
+|false
+|
+|FMtoDAB
+
+|<<fsm-bbv-DAB,DAB>>
+|<<fsm-bbv-DAB,DAB>>
+|DAB -> DAB
+|true
 |
 |
 
-|<<fsm-bbv-Running,Running>>
-|<<fsm-bbv-PowerOff,PowerOff>>
-|Running -> PowerOff
+|<<fsm-bbv-DAB,DAB>>
+|<<fsm-bbv-FM,FM>>
+|DAB -> FM
 |false
+|
+|DABtoFM
+
+|<<fsm-bbv-Play,Play>>
+|<<fsm-bbv-Play,Play>>
+|Play -> Play
+|true
 |
 |
 
-|<<fsm-bbv-Washing,Washing>>
-|<<fsm-bbv-Rinsing,Rinsing>>
-|Washing -> Rinsing
+|<<fsm-bbv-Play,Play>>
+|<<fsm-bbv-AutoTune,AutoTune>>
+|Play -> AutoTune
 |false
 |
-|
+|PlaytoAutoTune
 
-|<<fsm-bbv-Rinsing,Rinsing>>
-|<<fsm-bbv-Drying,Drying>>
-|Rinsing -> Drying
+|<<fsm-bbv-AutoTune,AutoTune>>
+|<<fsm-bbv-Play,Play>>
+|AutoTune -> Play
 |false
 |
-|
-
-|<<fsm-bbv-PowerOff,PowerOff>>
-|<<fsm-bbv-Running,Running>>
-|PowerOff -> Running
-|false
-|
-|
+|AutoTunetoPlay
 
 |===
 

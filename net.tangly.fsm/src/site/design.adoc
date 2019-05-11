@@ -1,0 +1,87 @@
+---
+title: "Design Considerations"
+date: 2019-05-01
+weight: 40
+draft: false
+---
+
+== Design Finite State Machine
+
+=== Finite State Machine Model
+
+The event class triggering transitions in the finite state machine must be an enumeration type.
+
+The state class defining the set of possible states in the finite state machine must be an enumeration type. By convention the root state enclosing
+ the whole machine is called __Root__.
+
+[plantuml, fsm-design-machine_model, svg]
+....
+
+class Event<E extends Enum<E>> {
+    - E type;
+    - List<Object> parameters;
+    + Event(@Nonnull E id);
+    + Event(@Nonnull E type, final List<Object> parameters);
+    + E type();
+    + List<Object> parameters();
+}
+
+interface State<O, S extends Enum<S>, E extends Enum<E>> {
+    S getId();
+    boolean hasHistory()
+    String name();
+    O context();
+    boolean isFinal();
+
+    void executeEntryAction(@Nonnull O owner, @Nonnull Event<E> event);
+    void executeExitAction(@Nonnull O owner, @Nonnull Event<E> event);
+}
+
+interface Transition<O, S extends Enum<S>, E extends Enum<E>> {
+    State<O, S, E> target();
+    State<O, S, E> source();
+    E eventId();
+    BiPredicate<O, Event<E>> guard();
+}
+
+interface StateMachine<O, S extends Enum<S>, E extends Enum<E>> {
+    void fire(@Nonnull Event<E> event);
+    void reset();
+    String name();
+    O context();
+}
+
+StateMachine *-- "1" State : root
+State *-- Transition : transitions
+State "1" *-- "0..n" State : substates
+
+....
+
+=== Finite State Machine Builder Model
+
+The builder interfaces provide the implementation of the builder pattern to construct a finite state machine description using a fluent API.
+
+[plantuml, fsm-design-builder_model, svg]
+....
+
+interface StateBuilder<O, S extends Enum<?>, E extends Enum<E>> {
+}
+
+interface SubStateBuilder<O, S extends Enum<?>, E extends Enum<E>> {
+}
+
+interface ToTransitionBuilder<O, S extends Enum<?>, E extends Enum<E>> {
+}
+
+interface TransitionBuilder<O, S extends Enum<?>, E extends Enum<E>> {
+}
+
+class FsmBuilder<O, S extends Enum<?>, E extends Enum<E>> {
+}
+
+FsmBuilder <|-- StateBuilder
+FsmBuilder <|-- SubStateBuilder
+FsmBuilder <|-- ToTransitionBuilder
+FsmBuilder <|-- TransitionBuilder
+
+....
