@@ -11,7 +11,7 @@
  * under the License.
  */
 
-package net.tangly.commons.activerecords.imp;
+package net.tangly.commons.orm.imp;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;

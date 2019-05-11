@@ -29,10 +29,8 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 /**
- * Injector main class.
- *
- * @implNote For each class with a supplier responsible to create instances of the class. A supplier can provides singleton, JSR330 Provider, or a
- * constructor.
+ * Implements the @link{Injector} interface. For each class with a supplier the supplier is responsible to create instances of the class. A supplier
+ * can provides singleton, JSR330 Provider, or a constructor.
  */
 public class InjectorImp implements Injector {
     private Map<Class<?>, Supplier<?>> creators;

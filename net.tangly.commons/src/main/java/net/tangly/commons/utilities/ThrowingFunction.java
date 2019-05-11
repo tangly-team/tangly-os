@@ -17,7 +17,7 @@ import java.util.concurrent.CompletionException;
 import java.util.function.Function;
 
 /**
- * Wrapper for a function throwing a checked exception to enable use in streams. ThrowingFunction.of(urlToCrawl -> new URL(urlToCrawl))
+ * Wrapper for a function throwing a checked exception to enable use in streams. ThrowingFunction.of(urlToCrawl -&gt; new URL(urlToCrawl))
  *
  * @param <T> parameter of the function
  * @param <R> return type of the function

@@ -11,15 +11,15 @@
  * under the License.
  */
 
-package net.tangly.commons.activerecords;
+package net.tangly.commons.orm;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import net.tangly.commons.activerecords.imp.AbstractProperty;
-import net.tangly.commons.activerecords.imp.PropertyCode;
-import net.tangly.commons.activerecords.imp.PropertyJson;
-import net.tangly.commons.activerecords.imp.PropertyOne2Many;
-import net.tangly.commons.activerecords.imp.PropertyOne2One;
-import net.tangly.commons.activerecords.imp.PropertySimple;
+import net.tangly.commons.orm.imp.AbstractProperty;
+import net.tangly.commons.orm.imp.PropertyCode;
+import net.tangly.commons.orm.imp.PropertyJson;
+import net.tangly.commons.orm.imp.PropertyOne2Many;
+import net.tangly.commons.orm.imp.PropertyOne2One;
+import net.tangly.commons.orm.imp.PropertySimple;
 import net.tangly.commons.codes.Code;
 import net.tangly.commons.codes.CodeType;
 import net.tangly.commons.models.HasOid;
@@ -52,121 +52,134 @@ import java.util.stream.Collectors;
  *
  * @param <T> the class being mapped. The table takes care of the handling of the unique object identifier.
  */
-public class Table<T extends HasOid> {
+public class Dao<T extends HasOid> {
     /**
      * Builder for the table class. Upon building the class you should discard the builder instance. Any additional call on the builder will update a
      * runtime exception.
      */
     public static class Builder<V extends HasOid> {
-        private Table<V> table;
+        private Dao<V> table;
         private List<AbstractProperty<V>> properties;
         private List<PropertyOne2Many<V, ?>> relations;
 
-        public Builder(String schema, String entity, Class<V> clazz, DataSource dataSource) {
-            this.table = new Table<>(schema, entity, clazz, dataSource);
+        /**
+         * Builder class to create a DAO for an entity and a table in the database.
+         *
+         * @param schema     optional name of the schema containing the entity
+         * @param entity     name of the entity
+         * @param clazz      class of the entity
+         * @param dataSource data source used to acces the database
+         */
+        public Builder(String schema, @NotNull String entity, @NotNull Class<V> clazz, @NotNull DataSource dataSource) {
+            this.table = new Dao<>(schema, entity, clazz, dataSource);
             this.properties = new ArrayList<>();
             this.relations = new ArrayList<>();
         }
 
-        public Builder ofInt(String name) {
-            properties.add(new PropertySimple<V>(name, table.getType(), Integer.class, Types.INTEGER));
-            return this;
-        }
-
-        public Builder ofOid() {
+        public Builder withOid() {
             properties.add(new PropertySimple<V>("oid", table.getType(), Long.TYPE, Types.BIGINT));
             return this;
         }
 
-        public Builder ofFid(String name) {
+        public Builder withFid(String name) {
             properties.add(new PropertySimple<V>(name, table.getType(), Long.TYPE, Types.BIGINT));
             return this;
         }
 
-        public Builder ofLong(String name) {
+        /**
+         * Add an integer property and column.
+         *
+         * @param name name of the property and associated column in the table
+         * @return builder as fluent interface
+         */
+        public Builder withInt(@NotNull String name) {
+            properties.add(new PropertySimple<V>(name, table.getType(), Integer.class, Types.INTEGER));
+            return this;
+        }
+
+        public Builder withLong(String name) {
             properties.add(new PropertySimple<V>(name, table.getType(), Long.class, Types.BIGINT));
             return this;
         }
 
-        public Builder ofString(String name) {
+        public Builder withString(String name) {
             properties.add(new PropertySimple<V>(name, table.getType(), String.class, Types.VARCHAR));
             return this;
         }
 
-        public Builder ofText(String name) {
-            return ofString(name);
+        public Builder withText(String name) {
+            return withString(name);
         }
 
-        public Builder ofDate(String name) {
+        public Builder withDate(String name) {
             properties.add(new PropertySimple<V>(name, table.getType(), LocalDate.class, Types.DATE));
             return this;
         }
 
-        public Builder ofDateTime(String name) {
+        public Builder withDateTime(String name) {
             properties.add(new PropertySimple<V>(name, table.getType(), LocalDateTime.class, Types.TIMESTAMP));
             return this;
         }
 
-        public Builder ofBigDecimal(String name) {
+        public Builder withBigDecimal(String name) {
             properties.add(new PropertySimple<V>(name, table.getType(), BigDecimal.class, Types.DECIMAL));
             return this;
         }
 
-        public Builder ofTags(String name) {
+        public Builder withTags(String name) {
             properties.add(new PropertySimple<V>(name, table.getType(), String.class, Types.VARCHAR, AbstractProperty::tags4java2jdbc,
                     AbstractProperty::tags4jdbc2java));
             return this;
         }
 
-        public Builder ofJson(String name, Class<V> type, boolean hasMultipleValues) {
+        public Builder withJson(String name, Class<V> type, boolean hasMultipleValues) {
             properties.add(new PropertyJson<>(name, table.getType(), type, hasMultipleValues));
             return this;
         }
 
-        public <U extends Code> Builder ofCode(String name, CodeType<U> codeType) {
+        public <U extends Code> Builder withCode(String name, CodeType<U> codeType) {
             properties.add(new PropertyCode<V, U>(name, table.getType(), codeType));
             return this;
         }
 
-        public Builder ofOne2One(String name) {
+        public Builder withOne2One(String name) {
             properties.add(new PropertyOne2One<V, V>(name, table.getType(), table));
             return this;
         }
 
-        public <R extends HasOid> Builder ofOne2One(String name, Table<R> type) {
+        public <R extends HasOid> Builder withOne2One(String name, Dao<R> type) {
             properties.add(new PropertyOne2One<V, R>(name, table.getType(), type));
             return this;
         }
 
-        public Builder ofOne2Many(String name, String property) {
+        public Builder withOne2Many(String name, String property) {
             relations.add(new PropertyOne2Many<V, V>(name, table.getType(), property, table));
             return this;
         }
 
-        public <R extends HasOid> Builder ofOne2Many(String name, String property, Table<R> type) {
+        public <R extends HasOid> Builder withOne2Many(String name, String property, Dao<R> type) {
             relations.add(new PropertyOne2Many<V, R>(name, table.getType(), property, type));
             return this;
         }
 
-        public Table<V> build() throws NoSuchMethodException {
+        public Dao<V> build() throws NoSuchMethodException {
             table.configure(properties, relations);
-            Table<V> copy = this.table;
+            Dao<V> copy = this.table;
             table = null;
             return copy;
         }
-
     }
 
     private static final String PRIMARY_KEY = "oid";
-    private static final int PRIMARY_KEY_SQL_TYPE = Types.BIGINT;
-    private static Logger log = org.slf4j.LoggerFactory.getLogger(Table.class);
+    private static final int KEY_SQL_TYPE = Types.BIGINT;
+    private static Logger log = org.slf4j.LoggerFactory.getLogger(Dao.class);
     private static AtomicLong oidGenerator = new AtomicLong(0);
 
-    private String schema;
-    private String entityName;
-    private Class<T> type;
+    private final String schema;
+    private final String entityName;
+    private final Class<T> type;
+    private final DataSource dataSource;
     private Constructor<T> constructor;
-    private DataSource dataSource;
     private List<AbstractProperty<T>> properties;
     private List<PropertyOne2Many<T, ?>> relations;
     private String findSql;
@@ -179,7 +192,7 @@ public class Table<T extends HasOid> {
      */
     private Map<Long, WeakReference<T>> cache;
 
-    public Table(String schema, String entity, Class<T> type, DataSource dataSource) {
+    public Dao(String schema, String entity, Class<T> type, DataSource dataSource) {
         this.schema = schema;
         this.entityName = entity;
         this.type = type;
@@ -187,7 +200,7 @@ public class Table<T extends HasOid> {
         this.cache = new HashMap<>();
     }
 
-    public void configure(List<AbstractProperty<T>> properties, List<PropertyOne2Many<T, ?>> relations) throws NoSuchMethodException {
+    private void configure(List<AbstractProperty<T>> properties, List<PropertyOne2Many<T, ?>> relations) throws NoSuchMethodException {
         this.properties = List.copyOf(properties);
         this.relations = List.copyOf(relations);
         constructor = type.getConstructor();
@@ -251,7 +264,7 @@ public class Table<T extends HasOid> {
         Optional<T> entity = retrieveFromCache(oid);
         if (entity.isEmpty()) {
             try (var connection = dataSource.getConnection(); var stmt = connection.prepareStatement(findSql)) {
-                stmt.setObject(1, oid, PRIMARY_KEY_SQL_TYPE);
+                stmt.setObject(1, oid, KEY_SQL_TYPE);
                 try (ResultSet set = stmt.executeQuery()) {
                     if (set.next()) {
                         entity = Optional.of(materializeEntity(set));
@@ -300,7 +313,7 @@ public class Table<T extends HasOid> {
 
     public void delete(long oid) {
         try (var connection = dataSource.getConnection(); var stmt = connection.prepareStatement(deleteSql)) {
-            stmt.setObject(1, oid, PRIMARY_KEY_SQL_TYPE);
+            stmt.setObject(1, oid, KEY_SQL_TYPE);
             stmt.executeUpdate();
             removeFromCache(oid);
         } catch (SQLException e) {
@@ -309,6 +322,8 @@ public class Table<T extends HasOid> {
     }
 
     // endregion
+
+    // region cache operations
 
     private Optional<T> retrieveFromCache(long id) {
         if (cache.containsKey(id)) {
@@ -338,6 +353,8 @@ public class Table<T extends HasOid> {
             cache.remove(id);
         }
     }
+
+    // endregion
 
     private String generateReplaceSql() {
         return "REPLACE INTO " + ((schema != null) ? schema + "." + entityName : entityName) + " (" +

@@ -1,0 +1,16 @@
+=== Maven Central Publication
+
+. Publish artifacts of component with __gradle publishAllPublicationsToMavenRepository__
+. Log into [Sonatype Maven Central Repository]()https://oss.sonatype.org/#welcome)
+.. Go to [Staging Repositories](https://oss.sonatype.org/#stagingRepositories)
+.. Find your temporary repository at the end of list
+.. Review the content of the repository
+.. Close the repository
+.. Close stage is initiated and checks are performed. If everything was fine the content is published
+
+==== Findings
+. We needed to manually publish the public key on []keys.gnupg.net](http://keys.gnupg.net)
+
+=== Web Site Publication
+
+__To be written__

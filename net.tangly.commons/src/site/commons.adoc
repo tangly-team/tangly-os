@@ -2,8 +2,6 @@
 
 == Reference Codes
 
-==  Active Records
-
 === Design Considerations
 
 * The application is sole and exclusive owner of the database instance. Therefore instances can never be changed from another system when the

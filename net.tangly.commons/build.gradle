@@ -11,14 +11,18 @@
  * under the License.
  */
 
-version = "0.2.0"
-description = "Commons data structures using Java 10 or higher (tangly llc)"
-ext.moduleName = 'net.tangly.commons'
+plugins {
+    id 'java-library'
+}
+
+project.ext.groupId = 'net.tangly'
+project.ext.artifactId ='commons'
+project.version = "0.2.0"
+project.description = "Commons data structures using Java 11 or higher (tangly llc)"
+project.ext.moduleName = 'net.tangly.commons'
 
 
 dependencies {
-    // implementation "com.google.guava:guava:$guavaVersion"
-
     compile "org.hsqldb:hsqldb:2.4.1"
     compile "javax.inject:javax.inject:1"
 

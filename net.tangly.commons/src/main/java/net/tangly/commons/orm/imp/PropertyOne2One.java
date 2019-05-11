@@ -11,10 +11,9 @@
  * under the License.
  */
 
-package net.tangly.commons.activerecords.imp;
+package net.tangly.commons.orm.imp;
 
-import net.tangly.commons.codes.Code;
-import net.tangly.commons.codes.CodeType;
+import net.tangly.commons.orm.Dao;
 import net.tangly.commons.models.HasOid;
 import org.jetbrains.annotations.NotNull;
 
@@ -23,28 +22,47 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 
-public class PropertyCode<T extends HasOid, V extends Code> extends AbstractProperty<T> {
-    private CodeType<V> codeType;
 
-    public PropertyCode(String name, Class<T> entity, CodeType<V> codeType) {
-        super(name, entity);
-        this.codeType = codeType;
+/**
+ * Models a property with managed objects as values and supporting one object.
+ *
+ * @param <T> class owning the property
+ * @param <R> Class referenced by the property
+ */
+public class PropertyOne2One<T extends HasOid, R extends HasOid> extends AbstractProperty<T> {
+    private Dao<R> type;
+
+    public PropertyOne2One(String name, Class<T> clazz, Dao<R> type) {
+        super(name, clazz);
+        this.type = type;
+    }
+
+    public Dao<R> type() {
+        return type;
+    }
+
+    @Override
+    public boolean hasManagedType() {
+        return true;
     }
 
     @Override
     public void setParameter(@NotNull PreparedStatement statement, int index, @NotNull T entity) throws SQLException, IllegalAccessException {
-        Code code = (Code) field.get(entity);
-        if (code != null) {
-            statement.setObject(index, code.id(), Types.INTEGER);
+        R reference = (R) field.get(entity);
+        if (reference != null) {
+            type.update(reference);
+            statement.setObject(index, reference.oid(), Types.BIGINT);
         } else {
-            statement.setNull(index, Types.INTEGER);
+            statement.setNull(index, Types.BIGINT);
         }
     }
 
     @Override
     public void setField(@NotNull ResultSet set, int index, @NotNull T entity) throws SQLException, IllegalAccessException {
-        Integer codeId = set.getObject(index, Integer.class);
-        V code = (codeId == null) ? null : codeType.findCode(codeId).orElse(null);
-        field.set(entity, code);
+        Long referenceOid = set.getObject(index, Long.TYPE);
+        Object reference = (referenceOid == null) ? null : type.find(referenceOid).orElse(null);
+        field.set(entity, reference);
     }
+
+
 }

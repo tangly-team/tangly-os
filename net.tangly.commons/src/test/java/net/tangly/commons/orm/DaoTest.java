@@ -11,7 +11,7 @@
  * under the License.
  */
 
-package net.tangly.commons.activerecords;
+package net.tangly.commons.orm;
 
 import net.tangly.commons.codes.Code;
 import net.tangly.commons.codes.CodeType;
@@ -36,7 +36,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TableTest {
+public class DaoTest {
     /**
      * Enumeration type extended to support the code interface.
      */
@@ -124,7 +124,7 @@ public class TableTest {
 
     @Test
     void testCreateUpdateDeleteEntity() throws NoSuchFieldException, NoSuchMethodException {
-        Table<Entity> entities = createTable();
+        Dao<Entity> entities = createTable();
 
         Entity entity = create(1, "2000-01-01", "2020-12-31");
 
@@ -162,7 +162,7 @@ public class TableTest {
 
     @Test
     public void testTags() throws NoSuchFieldException, NoSuchMethodException {
-        Table<Entity> entities = createTable();
+        Dao<Entity> entities = createTable();
 
         Entity entity = create(10, "2020-01-01", "2020-12-31");
         entities.update(entity);
@@ -202,7 +202,7 @@ public class TableTest {
 
     @Test
     public void testJsonProperty() throws NoSuchFieldException, NoSuchMethodException {
-        Table<Entity> entities = createTable();
+        Dao<Entity> entities = createTable();
 
         Entity entity = create(10, "2020-01-01", "2020-12-31");
         entity.add(Comment.of("John Doe", "This is text of comment 1"));
@@ -219,7 +219,7 @@ public class TableTest {
 
     @Test
     public void testOne2OneProperty() throws NoSuchFieldException, NoSuchMethodException {
-        Table<Entity> entities = createTable();
+        Dao<Entity> entities = createTable();
 
         Entity owner = create(2, "2000-01-01", "2020-12-31");
         Entity entity = create(1, "2000-01-01", "2020-12-31");
@@ -251,7 +251,7 @@ public class TableTest {
     @Test
     public void testOne2ManyProperty() throws NoSuchFieldException, NoSuchMethodException {
         final int OWNED_NR = 5;
-        Table<Entity> entities = createTable();
+        Dao<Entity> entities = createTable();
 
         Entity entity = create(100, "2000-01-01", "2020-12-31");
         for (int i = 0; i < OWNED_NR; i++) {
@@ -283,7 +283,7 @@ public class TableTest {
 
     @Test
     public void testCodeProperty() throws NoSuchFieldException, NoSuchMethodException {
-        Table<Entity> entities = createTable();
+        Dao<Entity> entities = createTable();
 
         Entity entity = create(20, "2000-01-01", "2020-12-31");
         entity.code(EntityCode.CODE_TEST_1);
@@ -298,11 +298,11 @@ public class TableTest {
         assertThat(retrieved.get().code()).isEqualTo(EntityCode.CODE_TEST_1);
     }
 
-    private Table<Entity> createTable() throws NoSuchMethodException {
-        return new Table.Builder<>("tangly", "entities", Entity.class, dataSource).ofOid().ofString("id").ofString("name").ofDate("fromDate")
-                .ofDate("toDate").ofString("text").ofTags("tags").ofJson("comments", Comment.class, true)
-                .ofCode("code", CodeType.of(EntityCode.class, Arrays.asList(EntityCode.values()))).ofOne2One("owner").ofFid("ownedBy")
-                .ofOne2Many("owned", "ownedBy").build();
+    private Dao<Entity> createTable() throws NoSuchMethodException {
+        return new Dao.Builder<>("tangly", "entities", Entity.class, dataSource).withOid().withString("id").withString("name").withDate("fromDate")
+                .withDate("toDate").withString("text").withTags("tags").withJson("comments", Comment.class, true)
+                .withCode("code", CodeType.of(EntityCode.class, Arrays.asList(EntityCode.values()))).withOne2One("owner").withFid("ownedBy")
+                .withOne2Many("owned", "ownedBy").build();
     }
 
 

@@ -170,15 +170,16 @@ public class Account {
      * involved. Debits - meaning assets and expenses - have a positive balance and Credits - meaning liabilities and income -
      * have a negative balance.
      * <p>
-     * If I Debit (add to) a Debit account it gets more positive and has a larger format (Debit -> Soll)
+     * If I Debit (add to) a Debit account it gets more positive and has a larger format (Debit -&gt; Soll)
      * <p>
-     * If I Credit (subtract from) a Debit account, it gets less positive and has a smaller format (Credit -> Haben)
+     * If I Credit (subtract from) a Debit account, it gets less positive and has a smaller format (Credit -&gt; Haben)
      * <p>
      * If I Debit (add to) a Credit account, it gets less negative and has a smaller format
      * <p>
      * If I Credit (subtract from) a Credit account, it gets more negative and has a larger format
      *
      * @param date date at which the balance is computed
+     * @return the balance of the account at the requested date
      */
     public BigDecimal balance(LocalDate date) {
         if (isAggregate()) {

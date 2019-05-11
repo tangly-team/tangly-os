@@ -11,6 +11,12 @@
  * under the License.
  */
 
-version = "0.2.0"
-description = "Development Utilities(tangly llc)"
-ext.moduleName = 'net.tangly.dev'
+project.ext.groupId = 'net.tangly'
+project.ext.artifactId ='dev'
+project.version = "0.2.0"
+project.description = "Development Utilities(tangly llc)"
+project.ext.moduleName = 'net.tangly.dev'
+
+dependencies {
+    compile project (':net.tangly.commons')
+}

@@ -17,23 +17,18 @@ public class CommitGitTest {
 
     @Test
     void testCommitOf() {
-        Commit item = ParserGitCommits.of(List.of(COMMIT));
-        assertThat(item).isNotNull();
-    }
+        ParserGitCommits parser = new ParserGitCommits();
+        Commit item = parser.of(List.of(COMMIT, COMMIT_ITEM_1, COMMIT_ITEM_2));
 
-    @Test
-    void testCommitOf2() {
-        Commit item = ParserGitCommits.of(List.of(COMMIT, COMMIT_ITEM_1, COMMIT_ITEM_2));
         assertThat(item).isNotNull();
+        assertThat(item.items().size()).isEqualTo(2);
 
-    }
+        assertThat(item.items().get(0).addedLines()).isEqualTo(127);
+        assertThat(item.items().get(0).removedLines()).isEqualTo(11);
+        assertThat(item.items().get(0).commit()).isEqualTo(item);
 
-    @Test
-    void testCommitItemOf() {
-        CommitItem item = ParserGitCommits.of(COMMIT_ITEM_1);
-        assertThat(item).isNotNull();
-        assertThat(item.filename()).isNotBlank();
-        assertThat(item.addedLines()).isEqualTo(127);
-        assertThat(item.removedLines()).isEqualTo(11);
+        assertThat(item.items().get(1).addedLines()).isEqualTo(100);
+        assertThat(item.items().get(1).removedLines()).isEqualTo(200);
+        assertThat(item.items().get(1).commit()).isEqualTo(item);
     }
 }

@@ -11,10 +11,10 @@
  * under the License.
  */
 
-package net.tangly.commons.activerecords.imp;
+package net.tangly.commons.orm.imp;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import net.tangly.commons.activerecords.Property;
+import net.tangly.commons.orm.Property;
 import net.tangly.commons.models.HasOid;
 import net.tangly.commons.models.Tag;
 import net.tangly.commons.utilities.ReflectionUtilities;

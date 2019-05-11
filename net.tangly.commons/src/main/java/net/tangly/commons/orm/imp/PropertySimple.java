@@ -11,7 +11,7 @@
  * under the License.
  */
 
-package net.tangly.commons.activerecords.imp;
+package net.tangly.commons.orm.imp;
 
 import net.tangly.commons.models.HasOid;
 import org.jetbrains.annotations.NotNull;

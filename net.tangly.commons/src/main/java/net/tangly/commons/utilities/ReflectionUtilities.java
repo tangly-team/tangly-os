@@ -35,8 +35,10 @@ public class ReflectionUtilities {
     /**
      * Finds the field with the given name.
      *
+     * @param clazz class owning the field to retrieve
      * @param name of the field to be found
      * @return the requested field if found otherwise null
+     * @param <T> type of the class owning the field
      */
     public static <T> Optional<Field> findField(@NotNull Class<T> clazz, @NotNull String name) {
         Field field = null;

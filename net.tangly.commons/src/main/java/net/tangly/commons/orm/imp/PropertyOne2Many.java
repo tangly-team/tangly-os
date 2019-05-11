@@ -11,10 +11,10 @@
  * under the License.
  */
 
-package net.tangly.commons.activerecords.imp;
+package net.tangly.commons.orm.imp;
 
-import net.tangly.commons.activerecords.Property;
-import net.tangly.commons.activerecords.Table;
+import net.tangly.commons.orm.Property;
+import net.tangly.commons.orm.Dao;
 import net.tangly.commons.models.HasOid;
 import net.tangly.commons.utilities.ReflectionUtilities;
 import org.jetbrains.annotations.NotNull;
@@ -38,10 +38,10 @@ public class PropertyOne2Many<T extends HasOid, R extends HasOid> implements Pro
     private String name;
     private Class<T> entity;
     private String property;
-    private Table<R> type;
+    private Dao<R> type;
     private Field field;
 
-    public PropertyOne2Many(String name, Class<T> entity, String property, Table<R> type) {
+    public PropertyOne2Many(String name, Class<T> entity, String property, Dao<R> type) {
         this.name = name;
         this.entity = entity;
         this.property = property;
@@ -50,7 +50,7 @@ public class PropertyOne2Many<T extends HasOid, R extends HasOid> implements Pro
         field.setAccessible(true);
     }
 
-    public Table<R> type() {
+    public Dao<R> type() {
         return type;
     }
 

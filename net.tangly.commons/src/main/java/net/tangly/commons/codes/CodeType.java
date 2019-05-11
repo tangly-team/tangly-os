@@ -41,8 +41,9 @@ public class CodeType<T extends Code> {
      * Builder for a reference code implemented as a Java class.
      *
      * @param clazz class of the reference code table
-     * @param <E>   reference code type
+     * @param codes the set of code instances associated with the code class
      * @return code type of the reference code
+     * @param <E>   reference code type
      */
     public static <E extends Code> CodeType<E> of(Class<E> clazz, List<E> codes) {
         return new CodeType<>(clazz, codes);

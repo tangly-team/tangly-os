@@ -13,20 +13,23 @@
 
 plugins {
     id 'org.gretty' version '2.3.1'
-    id 'com.devsoap.vaadin-flow' version '1.0.1'
+    id 'com.devsoap.vaadin-flow' version '1.1.1'
 }
 
 vaadin {
-    version '13.0.1'
+    version '13.0.4'
 }
 
 repositories {
     vaadin.repositories()
 }
 
-version = "0.1.0"
-description = "User Interface Components for commons data structures using Java 10 or higher (tangly llc)"
-ext.moduleName = 'net.tangly.commons.ui'
+project.ext.groupId = 'net.tangly'
+project.ext.artifactId ='commons.ui'
+project.version = "0.1.0"
+project.description = "User Interface Components for commons data structures using Java 11 or higher (tangly llc)"
+project.ext.moduleName = 'net.tangly.commons.ui'
+
 
 ext {
     vaadin.submitStatistics=true

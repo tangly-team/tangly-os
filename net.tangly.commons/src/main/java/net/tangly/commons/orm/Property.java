@@ -11,14 +11,20 @@
  * under the License.
  */
 
-package net.tangly.commons.activerecords;
+package net.tangly.commons.orm;
 
 import net.tangly.commons.models.HasOid;
 
 /**
- * Models the common attributes of an entity property.
+ * Models the common attributes of an entity property. Conceptually three kinds of properties exist:
+ * <ul>
+ * <li>A property referencing a Java object or a Java primitive type. The object can be a single value or a collection. Single value object can
+ * either be persisted through standard JDBC mechanisms or through provided Function[S,T] transformers.</li>
+ * <li>A single value property referencing another persisted entity persisted through a DAO.</li>
+ * <li>A multiple value property referencing another persisted entity through a DAO</li>
+ * </ul>
  *
- * @param <T>
+ * @param <T> type of the entity owning the  property.
  */
 public interface Property<T extends HasOid> {
     /**

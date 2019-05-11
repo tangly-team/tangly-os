@@ -3,18 +3,24 @@ package net.tangly.dev.model;
 import org.jetbrains.annotations.NotNull;
 
 public class CommitItem {
-    private String filename;
+    private final Commit commit;
+    private final RepositoryFile file;
     private int addedLines;
     private int removedLines;
 
-    public CommitItem(@NotNull String filename, int addedLines, int removedLines) {
-        this.filename = filename;
+    public CommitItem(Commit commit, @NotNull RepositoryFile file, int addedLines, int removedLines) {
+        this.commit = commit;
+        this.file = file;
         this.addedLines = addedLines;
         this.removedLines = removedLines;
     }
 
-    public String filename() {
-        return filename;
+    public RepositoryFile filename() {
+        return file;
+    }
+
+    public Commit commit() {
+        return commit;
     }
 
     public int addedLines() {

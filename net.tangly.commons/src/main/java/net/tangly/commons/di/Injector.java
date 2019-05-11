@@ -45,7 +45,8 @@ public interface Injector {
      *
      * @param interfaces class type of the interface
      * @param clazz      class type of the implementing class
-     * @param <T>        generic type of the interface
+     * @param <R>        type of the interface to bind
+     * @param <T>        type of the class bind to the interface
      */
     <R, T extends R> void bind(@NotNull Class<R> interfaces, @NotNull Class<T> clazz);
 

@@ -14,6 +14,10 @@
 package net.tangly.erp.invoices.ports;
 
 import net.codecrete.qrbill.generator.Bill;
+import net.codecrete.qrbill.generator.BillFormat;
+import net.codecrete.qrbill.generator.GraphicsFormat;
+import net.codecrete.qrbill.generator.Language;
+import net.codecrete.qrbill.generator.OutputSize;
 import net.codecrete.qrbill.generator.QRBill;
 import net.tangly.commons.models.Address;
 import net.tangly.commons.utilities.AsciiDocHelper;
@@ -92,19 +96,25 @@ public class InvoiceAsciiDoc {
 
     public void generateQCode(@NotNull Path path) {
         Bill bill = new Bill();
+        BillFormat format = new BillFormat();
+        format.setLanguage(Language.EN);
+        format.setOutputSize(OutputSize.A4_PORTRAIT_SHEET);
+        format.setGraphicsFormat(GraphicsFormat.SVG);
+        bill.setFormat(format);
+        bill.setVersion(Bill.Version.V2_0);
 
         bill.setCreditor(create(invoice.invoicingEntity()));
         bill.setDebtor(create(invoice.invoicedEntity()));
 
         bill.setAccount(invoice.invoicingConnection().iban());
-        bill.setLanguage(Bill.Language.EN);
-        bill.setAmount(invoice.amountWithVat().doubleValue());
+        bill.setAmount(invoice.amountWithVat());
         bill.setCurrency(invoice.currency().getCurrencyCode());
-        bill.setDueDate(invoice.dueDate());
-        bill.setReferenceNo(null);
-        bill.setAdditionalInfo(invoice.id());
 
-        byte[] svg = QRBill.generate(bill, QRBill.BillFormat.A6_LANDSCAPE_SHEET, QRBill.GraphicsFormat.SVG);
+
+        bill.setReference(null);
+        bill.setUnstructuredMessage(invoice.id());
+
+        byte[] svg = QRBill.generate(bill);
 
         try {
             Files.write(path, svg);
