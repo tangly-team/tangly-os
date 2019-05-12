@@ -1,0 +1,41 @@
+=== Purpose
+
+=== Entities
+
+Using the library means accepting some restrictions on how your entities both the Java classes and the SQL schema are designed. Some of these
+restrictions are good practices regardless of how database and object models are built.
+
+==== Java Objects
+Every entity class should have a *Long* identifier field named *oid* that will be used as a primary key. The library will populate this field. The
+primary key will be used when the library performs updates. The library expects to work with entities with public getters and setters or
+with entities with public getters for fields and related builder objects or constructors with setters for the individual fields.
+
+==== SQL Schema
+The library expects every table to have a numeric primary key. The library will populate the primary keys on inserts with value.
+
+=== Relations
+One point of usign a relational databs as opposed to a document store or other mechanism is to preserve the structure of relations between
+entities. The library supports three kinds of relationships: owner - ownees relation where an owner owns a set of objects, entity - entities relation
+where an entity has a relation with a set of objects, and entities - entities where multiple entities have a relation with multiple other entities
+meaning a n-m relationship.
+
+==== Owner - Ownees
+The owner entity owns the ownee objects, so that the ownee existence depends on the existence of the owner.
+
+One tricky thing about these relationships is the reversal in how ownership is expressed between the database schema and the object model. In the
+object model the owner has ownees, in the database the ownee has a foreign key reference to the owner.
+
+==== Entity - Entities
+These are relations betweent wo objects where one objrect refers in a dependent but not controlling way.
+
+
+==== Entities - Entities
+
+==== Data Access Objects DAO
+
+=== Decisions
+
+=== History
+
+* The initial implementation is tested against hsqldb. No effort was invested to test compatibility with other databases. The port should be
+straight forward because we are using plain JDBC statements.

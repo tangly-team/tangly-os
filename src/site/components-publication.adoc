@@ -5,12 +5,13 @@
 .. Go to [Staging Repositories](https://oss.sonatype.org/#stagingRepositories)
 .. Find your temporary repository at the end of list
 .. Review the content of the repository
-.. Close the repository
+.. Close the repository __button on tool list__
 .. Close stage is initiated and checks are performed. If everything was fine the content is published
+.. Release the artifact __button on tool list__
 
 ==== Findings
 . We needed to manually publish the public key on []keys.gnupg.net](http://keys.gnupg.net)
 
 === Web Site Publication
 
-__To be written__
+. Update Hugo pipeline to run planUML with asciidoctor. Read the instructions in the asciidoctor script file under the scripts folder.
