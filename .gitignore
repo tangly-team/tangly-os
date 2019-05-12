@@ -12,5 +12,5 @@ hs_err_pid*
 # Covers JetBrains IDE IntelliJ using gradle, include dictionaries and copyrights
 out/
 build/
-.idea/**
-.gradle/**
+/.gradle/
+/.idea/

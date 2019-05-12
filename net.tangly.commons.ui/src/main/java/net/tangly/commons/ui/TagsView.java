@@ -125,7 +125,7 @@ public class TagsView extends GridFormView<Tag> {
     @Override
     protected boolean isEditable(Tag item) {
         Optional<TagType> type = registry.find(item.namespace(), item.name());
-        return type.isPresent() ? type.get().canHaveValue() : true;
+        return type.isEmpty() || type.get().canHaveValue();
     }
 
     @Override

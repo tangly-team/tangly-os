@@ -110,22 +110,19 @@ public class InjectorImp implements Injector {
     private <T> Constructor<T> findConstructor(Class<T> type) {
         final Constructor<?>[] constructors = type.getConstructors();
         if (constructors.length == 0) {
-            throw new IllegalArgumentException(
-                    "Injector can't create an instance of the class [" + type + "]. " + "The class has no public constructor.");
+            throw new IllegalArgumentException(exceptionMessage(type, "The class has no public constructor."));
         } else if (constructors.length > 1) {
             List<Constructor<?>> constructorsWithInject =
                     Arrays.stream(constructors).filter(c -> c.isAnnotationPresent(Inject.class)).collect(Collectors.toList());
             if (constructorsWithInject.isEmpty()) {
-                throw new IllegalArgumentException("Injector can't create an instance of the class [" + type + "]. " +
-                        "There is more than one public constructor defined so I don't know which one to use. " +
-                        "Fix this by either make only one constructor public " +
-                        "or annotate exactly one constructor with the javax.inject.Inject annotation.");
+                throw new IllegalArgumentException(exceptionMessage(type,
+                        "There is more than one public constructor defined so I don't know which one to use. Fix this by either make only one " +
+                                "constructor public or annotate exactly one constructor with the javax.inject.Inject annotation."));
             }
             if (constructorsWithInject.size() != 1) {
-                throw new IllegalArgumentException("Injector can't create an instance of the class [" + type + "]. " +
-                        "There is more than one public constructor marked with @Inject so I don't know which one to use. " +
-                        "Fix this by either make only one constructor public " +
-                        "or annotate exactly one constructor with the javax.inject.Inject annotation.");
+                throw new IllegalArgumentException(exceptionMessage(type,
+                        "There is more than one public constructor marked with @Inject so I don't know which one to use. Fix this by either " +
+                                "make only one constructor public or annotate exactly one constructor with the javax.inject.Inject annotation."));
             }
             return (Constructor<T>) constructorsWithInject.get(0);
         } else {
@@ -142,6 +139,10 @@ public class InjectorImp implements Injector {
 
     private boolean isAbstract(Class<?> clazz) {
         return clazz.isInterface() || (Modifier.isAbstract(clazz.getModifiers()));
+    }
+
+    private <T> String exceptionMessage(Class<T> type, String explanation) {
+        return "Injector can't create an instance of the class [" + type + "]. " + explanation;
     }
 
 }
