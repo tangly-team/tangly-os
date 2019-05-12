@@ -9,31 +9,8 @@
 *.rar
 hs_err_pid*
 
-# Covers JetBrains IDE IntelliJ, include dictionaries and copyrights
-
+# Covers JetBrains IDE IntelliJ using gradle, include dictionaries and copyrights
 out/
 build/
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/sonarlint
-.idea/**/shelf
-
-.idea_modules/
-.idea/**/contentModel.xml
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
-
-# Gradle with auto-import
-.gradle/
-.idea/**/gradle.xml
-.idea/**/libraries
-.idea/modules.xml
-.idea/*.iml
-.idea/modules
-.gradle
+.idea/**
+.gradle/**
