@@ -13,9 +13,10 @@
 
 project.ext.groupId = 'net.tangly'
 project.ext.artifactId ='erp'
-project.version = "0.2.0"
-project.description = "ERP models (tangly llc)"
 project.ext.moduleName = 'net.tangly.erp'
+project.version = "0.2.0"
+project.ext.inceptionYear = '1996'
+project.description = "ERP models (tangly llc)"
 
 repositories {
     maven {

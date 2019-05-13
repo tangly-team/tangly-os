@@ -26,9 +26,10 @@ repositories {
 
 project.ext.groupId = 'net.tangly'
 project.ext.artifactId ='commons.ui'
-project.version = "0.1.0"
-project.description = "User Interface Components for commons data structures using Java 11 or higher (tangly llc)"
 project.ext.moduleName = 'net.tangly.commons.ui'
+project.version = "0.1.0"
+project.ext.inceptionYear = '1996'
+project.description = "User Interface Components for commons data structures using Java 11 or higher (tangly llc)"
 
 
 ext {
