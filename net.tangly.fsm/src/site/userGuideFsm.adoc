@@ -10,6 +10,7 @@ draft: false
 === Features
 
 The FSM library aims to provide following features:
+
 * Easy to use flat one level state machine for simple use cases,
 * Hierarchical state machine structure to ease complex state configuration,
 * Usage of events, transitions, guards and actions,
@@ -28,11 +29,13 @@ the state machine by sending an event, listening for changes or simply request a
 === Scenarios
 
 Applications are a good candidate to use state machine if:
+
 * Application or part of its structure can be represented as states.
 * You want to split complex logic into smaller manageable tasks.
 * Application is already suffering concurrency issues with i.e. something happening asynchronously.
 
 You are already trying to implement a state machine if:
+
 * Use of boolean flags or enums to model situations.
 * Having variables which only have meaning for some part of your application lifecycle.
 * Looping through if/else structure and checking if particular flag or enum is set and then making further exceptions
@@ -149,8 +152,8 @@ the state.
 
 ==== An example of a complete finite state machine definition
 
-The example below declares a complete state machine. The enumeration ```States``` defines the states, the enumeration
-```Events``` defines the events processed.
+The example below declares a complete state machine. The enumeration __States__ defines the states, the enumeration __Events__ defines the
+events recognized and processed through the finite state machine.
 
 ```java
     enum States {
@@ -162,8 +165,7 @@ The example below declares a complete state machine. The enumeration ```States``
     }
 
     builder.addToRoot(States.Off).isInitial().onEntry(Fsm::logOffEntry).onExit(Fsm::logOffExit);
-    builder.addToRoot(States.Maintenance).onEntry(Fsm::logMaintenanceEntry).onExit
-            (Fsm::logMaintenanceExit);
+    builder.addToRoot(States.Maintenance).onEntry(Fsm::logMaintenanceEntry).onExit(Fsm::logMaintenanceExit);
 
     builder.addToRoot(States.On).hasHistory().onEntry(Fsm::logOnEntry).onExit(Fsm::logOnExit);
     builder.in(States.On).add(States.DAB).isInitial().onEntry(Fsm::logDabEntry).onExit(Fsm::logDabExit);
@@ -197,32 +199,32 @@ hide empty description
 
 state Root {
     [*] --> Off
+    state Maintenance
+    Maintenance -> Off : TogglePower / MaintainedToOff
+
     state Off
     Off -> Maintenance : TogglePower [Maintenance is On] / log transition Off to Maintenance
-    Off -> On : TogglePower [Maintenance Off] / OfftoOn
+    Off -> On : TogglePower [Maintenance Off] / OffToOn
 
-    state Maintenance
-    Maintenance -> Off : TogglePower / MaintainedtoOff
 
     state On {
+        [*] --> DAB
+        state DAB
+        DAB -> FM : ToggleMode / DABToFM
+
         state FM {
             [*] --> Play
             state Play
-            Play -> AutoTune : StationLost / PlaytoAutoTune
+            Play -> AutoTune : StationLost / PlayToAutoTune
 
             state AutoTune
-            AutoTune -> Play : StationFound / AutoTunetoPlay
+            AutoTune -> Play : StationFound / AutoTuneToPlay
 
-            FM -> DAB : ToggleMode / FMtoDAB
-}
+            FM -> DAB : ToggleMode / FMToDAB
+        }
 
-        [*] --> DAB
-        state DAB
-        DAB -> FM : ToggleMode / DABtoFM
-
-        On -> Off : TogglePower / OntoOff
-}
-
+        On -> Off : TogglePower / OnToOff
+    }
 }
 
 ....

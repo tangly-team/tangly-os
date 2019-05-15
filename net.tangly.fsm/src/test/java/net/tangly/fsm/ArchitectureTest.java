@@ -20,7 +20,7 @@ import com.tngtech.archunit.lang.ArchRule;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 
 @AnalyzeClasses(packages = "net.tangly.fsm")
-public class ArchitectureTest {
+class ArchitectureTest {
     @ArchTest
     public static final ArchRule ruleIf = classes().that().resideInAPackage("net.tangly.fsm.imp").should().onlyBeAccessed()
             .byAnyPackage("net.tangly.fsm", "net.tangly.fsm.dsl", "net.tangly.fsm.imp");

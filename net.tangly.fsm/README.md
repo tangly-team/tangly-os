@@ -40,14 +40,14 @@ The library can be included in Maven as
     <dependency>
       <groupId>net.tangly</groupId>
       <artifactId>fsm</artifactId>
-      <version>0.2.0</version>
+      <version>0.2.1</version>
     </dependency>
 ```    
 
 The library can be included in Gradle as
 
 ```xml
-    implementation "net.tangly:fsm:0.2.0"
+    implementation "net.tangly:fsm:0.2.1"
 ```
  
 The documentation can be found under [FSM documentation](https://tangly-team.bitbucket.io)

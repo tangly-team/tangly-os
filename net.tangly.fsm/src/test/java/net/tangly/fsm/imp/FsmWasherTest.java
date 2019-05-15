@@ -25,14 +25,25 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 class FsmWasherTest {
 
+    /**
+     * States of the finite state machine washer.
+     */
     enum States {
         Root, Running, End, Washing, Rinsing, Drying, PowerOff
     }
 
+    /**
+     * Events of the finite state machine washer.
+     */
     enum Events {
         Rinse, Dry, Stop, RestorePower, CutPower
     }
 
+    /**
+     * Returns the builder for the finite state machine with all states, transitions, guards and actions.
+     *
+     * @return builder instance for the finite state machine
+     */
     static FsmBuilder<FsmWasherTest, States, Events> build() {
         FsmBuilder<FsmWasherTest, States, Events> builder = FsmBuilder.of(States.Root);
         builder.addToRoot(States.Running, "Running State").isInitial().hasHistory();

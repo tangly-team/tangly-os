@@ -30,7 +30,7 @@ dependencies {
     compile 'org.apache.commons:commons-csv:1.6'
     compile 'org.hsqldb:hsqldb:2.4.1'
     compile 'net.codecrete.qrbill:qrbill-generator:2.0.1'
-    compile 'org.mustangproject.ZUGFeRD:mustang:1.6.0'
-    compile 'org.asciidoctor:asciidoctorj:1.5.8.1'
-    compile 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.16'
+    compile 'org.mustangproject.ZUGFeRD:mustang:1.7.0'
+    compile 'org.asciidoctor:asciidoctorj:2.0.0'
+    compile 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.17'
 }

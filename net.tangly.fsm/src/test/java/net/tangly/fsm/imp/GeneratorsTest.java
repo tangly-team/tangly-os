@@ -43,7 +43,7 @@ class GeneratorsTest {
     }
 
     /**
-     * Tests the generation of plant UML FSM representation ofthe bbv, test and washer finite state machines.
+     * Tests the generation of plant UML FSM representation of the bbv, test and washer finite state machines.
      *
      * @throws FileNotFoundException if file could not be created and updated
      */
@@ -55,7 +55,7 @@ class GeneratorsTest {
     }
 
     /**
-     * Tests the generation of dot FSM representation ofthe bbv, test and washer finite state machines.
+     * Tests the generation of dot FSM representation of the bbv, test and washer finite state machines.
      *
      * @throws FileNotFoundException if file could not be created and updated
      */
@@ -67,7 +67,7 @@ class GeneratorsTest {
     }
 
     /**
-     * Tests the generation of asciidoc FSM representation ofthe bbv, test and washer finite state machines.
+     * Tests the generation of asciidoc FSM representation of the bbv, test and washer finite state machines.
      *
      * @throws FileNotFoundException if file could not be created and updated
      */

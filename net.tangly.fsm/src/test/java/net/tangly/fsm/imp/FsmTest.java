@@ -201,7 +201,7 @@ class FsmTest {
 
     @Test
     void fireLocalTransitionTest() {
-        @SuppressWarnings("unchecked") var action = mock(BiConsumer.class);
+        var action = mock(BiConsumer.class);
         var root = build(action).definition();
         var fsm = new StateMachineImp<>("test-fsm", root, this);
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isTrue();
@@ -220,7 +220,7 @@ class FsmTest {
      */
     @Test
     void fireFatherTransitionTest() {
-        @SuppressWarnings("unchecked") var action = mock(BiConsumer.class);
+        var action = mock(BiConsumer.class);
         var root = build(action).definition();
         var fsm = new StateMachineImp<>("test-fsm", root, this);
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isTrue();
@@ -240,7 +240,7 @@ class FsmTest {
      */
     @Test
     void fireTransitionToStateWithInitialStatesTest() {
-        @SuppressWarnings("unchecked") var action = mock(BiConsumer.class);
+        var action = mock(BiConsumer.class);
         var root = build(action).definition();
         var fsm = new StateMachineImp<>("test-fsm", root, this);
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isTrue();

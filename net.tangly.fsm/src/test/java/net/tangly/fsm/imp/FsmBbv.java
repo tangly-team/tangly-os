@@ -37,26 +37,26 @@ class FsmBbv {
     private StringBuilder log = new StringBuilder();
     private boolean maintenance;
 
+    /**
+     * Returns the builder for the finite state machine with all states, transitions, guards and actions.
+     *
+     * @return builder instance for the finite state machine
+     */
     static FsmBuilder<FsmBbv, States, Events> build() {
         FsmBuilder<FsmBbv, States, Events> builder = FsmBuilder.of(States.Root);
-        builder.addToRoot(States.Off).isInitial().onEntry(FsmBbv::logOffEntry, "Entry action of Off state")
-                .onExit(FsmBbv::logOffExit, "ExitOffstate");
+        builder.addToRoot(States.Off).isInitial().onEntry(FsmBbv::logOffEntry, "Entry action of Off state").onExit(FsmBbv::logOffExit, "ExitOffstate");
         builder.addToRoot(States.Maintenance).onEntry(FsmBbv::logMaintenanceEntry).onExit(FsmBbv::logMaintenanceExit);
         builder.addToRoot(States.On).hasHistory().onEntry(FsmBbv::logOnEntry).onExit(FsmBbv::logOnExit);
         builder.in(States.On).add(States.DAB).isInitial().onEntry(FsmBbv::logDabEntry).onExit(FsmBbv::logDabExit);
         builder.in(States.DAB).onLocal(Events.StoreStation, "DAB -> DAB").execute((o, e) -> o.appendToLog("DABToDAB"));
         builder.in(States.On).add(States.FM).hasHistory().onEntry(FsmBbv::logFmEntry, "entryFM").onExit(FsmBbv::logFmExit, "exitFM");
-        builder.in(States.FM).add(States.Play).isInitial().hasHistory().onEntry(FsmBbv::logPlayEntry, "entryPlay")
-                .onExit(FsmBbv::logPlayExit, "exitPlay");
+        builder.in(States.FM).add(States.Play).isInitial().hasHistory().onEntry(FsmBbv::logPlayEntry, "entryPlay").onExit(FsmBbv::logPlayExit, "exitPlay");
         builder.in(States.Play).onLocal(Events.StoreStation, "Play -> Play").execute((o, e) -> o.appendToLog("PlayToPlay"));
         builder.in(States.FM).add(States.AutoTune).onEntry(FsmBbv::logAutoTuneEntry).onExit(FsmBbv::logAutoTuneExit);
-        builder.in(States.Off).on(Events.TogglePower).to(States.Maintenance, "Off -> TogglePower")
-                .onlyIf(FsmBbv::isMaintenanceMode, "Maintenance is On")
+        builder.in(States.Off).on(Events.TogglePower).to(States.Maintenance, "Off -> TogglePower").onlyIf(FsmBbv::isMaintenanceMode, "Maintenance is On")
                 .execute(FsmBbv::logTransitionFromOffToMaintenance, "log transition Off to Maintenance");
-        builder.in(States.Maintenance).on(Events.TogglePower).to(States.Off, "Maintenance -> Off")
-                .execute(FsmBbv::logTransitionFromMaintenanceToOff, "MaintainedtoOff");
-        builder.in(States.Off).on(Events.TogglePower).to(States.On, "Off -> On").onlyIf((o) -> !o.isMaintenanceMode(), "Maintenance Off")
-                .execute(FsmBbv::logTransitionFromOffToOn, "OfftoOn");
+        builder.in(States.Maintenance).on(Events.TogglePower).to(States.Off, "Maintenance -> Off").execute(FsmBbv::logTransitionFromMaintenanceToOff, "MaintainedtoOff");
+        builder.in(States.Off).on(Events.TogglePower).to(States.On, "Off -> On").onlyIf((o) -> !o.isMaintenanceMode(), "Maintenance Off").execute(FsmBbv::logTransitionFromOffToOn, "OfftoOn");
         builder.in(States.On).on(Events.TogglePower).to(States.Off, "TogglePower -> On").execute(FsmBbv::logTransitionFromOnToOff, "OntoOff");
         builder.in(States.DAB).on(Events.ToggleMode).to(States.FM, "DAB -> FM").execute(FsmBbv::logTransitionFromDabToFm, "DABtoFM");
         builder.in(States.FM).on(Events.ToggleMode).to(States.DAB, "FM -> DAB").execute(FsmBbv::logTransitionFromFmToDab, "FMtoDAB");
@@ -67,7 +67,7 @@ class FsmBbv {
         return builder;
     }
 
-    void setMaintenance(final boolean maintenance) {
+    void setMaintenance(boolean maintenance) {
         this.maintenance = maintenance;
     }
 
