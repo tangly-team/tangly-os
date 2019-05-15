@@ -74,7 +74,7 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
         Path filePath = Paths.get(path.toString(), name + "." + extension());
         boolean shouldBeUpdated;
         if (Files.exists(filePath)) {
-            String oldText = new String(Files.readAllBytes(filePath), StandardCharsets.UTF_8);
+            String oldText = Files.readString(filePath, StandardCharsets.UTF_8);
             shouldBeUpdated = !oldText.contentEquals(newText);
         } else {
             shouldBeUpdated = true;

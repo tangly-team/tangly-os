@@ -65,7 +65,7 @@ class TransitionImp<O, S extends Enum<S>, E extends Enum<E>> implements Transiti
      * @param target  target or end node of the transition
      * @param eventId identifier of the event triggering the transition
      */
-    public TransitionImp(State<O, S, E> source, State<O, S, E> target, E eventId) {
+    TransitionImp(State<O, S, E> source, State<O, S, E> target, E eventId) {
         this(source, target, eventId, null, null);
     }
 
@@ -77,7 +77,7 @@ class TransitionImp<O, S extends Enum<S>, E extends Enum<E>> implements Transiti
      * @param eventId identifier of the event triggering the transition
      * @param action  action executed when the transition is fired
      */
-    public TransitionImp(State<O, S, E> source, State<O, S, E> target, E eventId, BiConsumer<O, Event<E>> action) {
+    TransitionImp(State<O, S, E> source, State<O, S, E> target, E eventId, BiConsumer<O, Event<E>> action) {
         this(source, target, eventId, null, action);
     }
 
@@ -90,7 +90,7 @@ class TransitionImp<O, S extends Enum<S>, E extends Enum<E>> implements Transiti
      * @param guard   guard controlling the firing of the transition
      * @param action  action executed when the transition is fired
      */
-    public TransitionImp(State<O, S, E> source, State<O, S, E> target, E eventId, BiPredicate<O, Event<E>> guard, BiConsumer<O, Event<E>> action) {
+    TransitionImp(State<O, S, E> source, State<O, S, E> target, E eventId, BiPredicate<O, Event<E>> guard, BiConsumer<O, Event<E>> action) {
         this.source = source;
         this.target = target;
         this.eventId = eventId;

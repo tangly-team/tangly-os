@@ -21,7 +21,7 @@ The library provides
 * Definition of hierarchical state machine descriptions. The machine states and transitions are generic classes. You provide an enumeration for the
   set of states, and an enumeration for the set of events triggering the machine. The builder pattern is used to create complex state machine 
   definition declaratively,
-* Builder approach to construct finite state machine declaration - either classical state machines or hierarchical state maschines -
+* Builder approach to construct finite state machine declaration - either classical state machines or hierarchical state machines -
 * Lambda expressions based on standard API functional interfaces are used for guards and actions
   * Guard are bi-predicate lambda expressions with the context and event as parameters
   * Actions are bi-function lambda expressions with the context and event as parameters 
@@ -46,7 +46,7 @@ The library can be included in Maven as
 
 The library can be included in Gradle as
 
-```xml
+```
     implementation "net.tangly:fsm:0.2.1"
 ```
  

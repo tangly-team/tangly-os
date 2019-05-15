@@ -44,7 +44,7 @@ __The set of possible events are defined as an enumeration type in our library._
 
 ==== Transitions
 
-A transition defines a potential change from one state to another one. A transition has a mandatory event trigerring the firing of transition and a
+A transition defines a potential change from one state to another one. A transition has a mandatory event triggering the firing of transition and a
 optional guard evaluation as a boolean condition.
 
 A local transition is a transition starting and ending in the same state. When fired the exit and entry actions of the state are not executed.
@@ -56,7 +56,7 @@ An external transition between two states or the same state. When fired the exit
 An operation executed when the state machine processes an event. An action can be executed
 * when a transition is fired and the action is associated with the transition
 * when a state is entered through the firing of a transition
-* when a state is exited throught the firing of a transition
+* when a state is exited through the firing of a transition
 
 __An action has two parameters. The first is the context object owning the instance of the finite state machine. The second is the event being
 processed.__

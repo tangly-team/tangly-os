@@ -93,15 +93,15 @@ public class StateMachineLogger<O, S extends Enum<S>, E extends Enum<E>> impleme
 
     @Override
     public void throwException(Transition<O, S, E> transition, Event<E> event, Exception exception) {
-        logger.error("machine [{}] {} : event->{}, transition->{}, exception->{}", machine, event, transition, exception);
+        logger.error("machine [{}]: event->{}, transition->{}, exception->{}", machine, event, transition, exception);
     }
 
     @Override
     public void throwException(State<O, S, E> state, BiConsumer<O, Event<E>> action, Event<E> event, Exception exception) {
         if (Objects.equals(action, state.entryAction())) {
-            logger.error("machine [{}] {} : event->{}, state->{}, entry action exception->{}", machine, event, state, exception);
+            logger.error("machine [{}]: event->{}, state->{}, entry action exception->{}", machine, event, state, exception);
         } else if (Objects.equals(action, state.exitAction())) {
-            logger.error("machine [{}] {} : event->{}, state->{}, exit action exception->{}", machine, event, state, exception);
+            logger.error("machine [{}]: event->{}, state->{}, exit action exception->{}", machine, event, state, exception);
         }
     }
 }

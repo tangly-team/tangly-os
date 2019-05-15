@@ -82,7 +82,7 @@ public class LocalActors<E extends Enum<E>> implements Actors<E> {
             try {
                 Thread.sleep(intervalInMilliseconds);
             } catch (InterruptedException e) {
-                log.error("LocalActors encountered interrupted exception {}", e);
+                log.error("LocalActors encountered interrupted exception", e);
                 Thread.currentThread().interrupt();
             }
         }
