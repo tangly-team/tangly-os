@@ -3,7 +3,7 @@
 . Publish artifacts of component with __gradle publishAllPublicationsToMavenRepository__
 .. Pre activity on bitbucket to check the project compile through the continuous integration pipeline
 .. Post activity on git to tag the published package. The tag is of the form __AcronymComponent-MajorVerion-MinorVersion-PatchVersion__ as
- ``git tag label``
+ ``git tag label`` and ``git push origin --tags``
 . Log into https://oss.sonatype.org/#welcome[Sonatype Maven Central Repository]
 .. Go to https://oss.sonatype.org/#stagingRepositories[Staging Repositories]
 .. Find your temporary repository at the end of list
