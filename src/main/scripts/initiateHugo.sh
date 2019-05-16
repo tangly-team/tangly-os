@@ -12,7 +12,7 @@ cd themes
 git clone https://github.com/thingsym/hugo-theme-techdoc.git
 
 cp -R $tanglyDir/src/site/website/ $siteDir/
-cp $tanglyDir/net.tangly.fsm/README.* $siteDir/content/fsm/
+cp $tanglyDir/net.tangly.fsm/readme.* $siteDir/content/fsm/
 cp $tanglyDir/net.tangly.fsm/src/site/* $siteDir/content/fsm/
-cp $tanglyDir/net.tangly.fsm/src/site/ADR/* $siteDir/content/fsm/adr/
+cp $tanglyDir/net.tangly.fsm/src/site/adr/* $siteDir/content/fsm/adr
 echo "start server with hugo server -D"

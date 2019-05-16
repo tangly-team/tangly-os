@@ -4,6 +4,7 @@ date: 2019-05-01
 weight: 40
 draft: false
 ---
+:source-highlighter: pygments
 
 == Design Finite State Machine
 
