@@ -12,7 +12,8 @@ draft: false
 A finite state machine actor class is provided to easily create an active class which behavior is defined through a
 finite state machine
 
-```java
+[source,java]
+----
 class FsmActor<O extends FsmActor<O, S, E>, S extends Enum<S>, E extends Enum<E>> extends Actor<Event<?>, Void> {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -43,7 +44,7 @@ class FsmActor<O extends FsmActor<O, S, E>, S extends Enum<S>, E extends Enum<E>
         }
     }
 }
-```
+----
 
 You can find example how to create FSM actor derived classes in the tests in package **net.tangly.fsm.actor**.
 
@@ -55,15 +56,16 @@ enumeration of all event kinds the machine should process.
 You send a message to an quasar actor with the following snippet such as. The run method of the FSM actor will retrieve
 the event from the message queue of the quasar actor instance and dispatch it to the finite state machine instance
 
-```java
+[source,java]
+----
 ActorRef<Object> clientRef = ActorRegistry.getActor(clientName);
 clientRef.send(new Event<Events>(Events.Response, List.of(clientName, self())));
-```
+----
 
 If you have reference to the FSM actor instance use the convenience method ```process``` such as
 
-```java
+[source,java]
+----
 client.process(new Event<>(Events.Inquiry));
-```
-
+----
 

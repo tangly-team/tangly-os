@@ -36,7 +36,6 @@ public interface TransitionBuilder<O, S extends Enum<?>, E extends Enum<E>> {
      * @param guard guard to addToRoot to the transition
      * @return the transition builder to complete the configuration of a transition
      */
-
     default TransitionBuilder<O, S, E> onlyIf(BiPredicate<O, Event<E>> guard) {
         return onlyIf(guard, null);
     }
@@ -48,7 +47,6 @@ public interface TransitionBuilder<O, S extends Enum<?>, E extends Enum<E>> {
      * @param description description of the action
      * @return the transition builder to complete the configuration of a transition
      */
-
     TransitionBuilder<O, S, E> onlyIf(BiPredicate<O, Event<E>> guard, String description);
 
     /**
@@ -57,7 +55,6 @@ public interface TransitionBuilder<O, S extends Enum<?>, E extends Enum<E>> {
      * @param guardWithoutEvent guard to addToRoot to the transition
      * @return the transition builder to complete the configuration of a transition
      */
-
     default TransitionBuilder<O, S, E> onlyIf(Predicate<O> guardWithoutEvent) {
         return onlyIf((o, e) -> guardWithoutEvent.test(o));
     }
@@ -69,7 +66,6 @@ public interface TransitionBuilder<O, S extends Enum<?>, E extends Enum<E>> {
      * @param description       description of the action
      * @return the transition builder to complete the configuration of a transition
      */
-
     default TransitionBuilder<O, S, E> onlyIf(Predicate<O> guardWithoutEvent, String description) {
         return onlyIf((o, e) -> guardWithoutEvent.test(o), description);
     }
@@ -80,7 +76,6 @@ public interface TransitionBuilder<O, S extends Enum<?>, E extends Enum<E>> {
      * @param action action to addToRoot to the transition
      * @return the transition builder to complete the configuration of a transition
      */
-
     default TransitionBuilder<O, S, E> execute(BiConsumer<O, Event<E>> action) {
         return execute(action, null);
     }
@@ -92,7 +87,6 @@ public interface TransitionBuilder<O, S extends Enum<?>, E extends Enum<E>> {
      * @param description description of the action
      * @return the transition builder to complete the configuration of a transition
      */
-
     TransitionBuilder<O, S, E> execute(BiConsumer<O, Event<E>> action, String description);
 
     /**
@@ -101,7 +95,6 @@ public interface TransitionBuilder<O, S extends Enum<?>, E extends Enum<E>> {
      * @param actionWithoutEvent action to addToRoot to the transition
      * @return the transition builder to complete the configuration of a transition
      */
-
     default TransitionBuilder<O, S, E> execute(Consumer<O> actionWithoutEvent) {
         return execute((o, e) -> actionWithoutEvent.accept(o));
     }
@@ -113,7 +106,6 @@ public interface TransitionBuilder<O, S extends Enum<?>, E extends Enum<E>> {
      * @param description        description of the action
      * @return the transition builder to complete the configuration of a transition
      */
-
     default TransitionBuilder<O, S, E> execute(Consumer<O> actionWithoutEvent, String description) {
         return execute((o, e) -> actionWithoutEvent.accept(o), description);
     }

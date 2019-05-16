@@ -14,12 +14,17 @@ Implemented
 
 ==== Context
 
-The library is enough mature to be used in public commercial and academic projects.
+The library is mature enough to be used in public commercial and academic projects. The library was used in internal projects and refined to
+fulfill these requirements. More customers will validate the usefulness of the library and identify extensions for further releases.
 
 ==== Decision
 
 The library shall be published on maven central and be accessible to a wide range of developers and organizations. A web site shall be set up to
 provide adequate documentation for users.
+
+The web site will use a static web approach to minimize costs and provide good legibility.
+
+The library will be published on Maven Central to maximize usage potential.
 
 The ADR FSM-001 supports this evaluation.
 

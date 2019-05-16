@@ -50,6 +50,9 @@ public abstract class CodeImp implements Code {
         this.enabled = enabled;
     }
 
+    /**
+     * Default protected constructor for injection specializations such as JSON framework.
+     */
     protected CodeImp() {
     }
 

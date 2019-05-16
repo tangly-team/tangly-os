@@ -1,8 +1,11 @@
 === Maven Central Publication
 
 . Publish artifacts of component with __gradle publishAllPublicationsToMavenRepository__
-. Log into [Sonatype Maven Central Repository]()https://oss.sonatype.org/#welcome)
-.. Go to [Staging Repositories](https://oss.sonatype.org/#stagingRepositories)
+.. Pre activity on bitbucket to check the project compile through the continuous integration pipeline
+.. Post activity on git to tag the published package. The tag is of the form __AcronymComponent-MajorVerion-MinorVersion-PatchVersion__ as
+ ``git tag label``
+. Log into https://oss.sonatype.org/#welcome[Sonatype Maven Central Repository]
+.. Go to https://oss.sonatype.org/#stagingRepositories[Staging Repositories]
 .. Find your temporary repository at the end of list
 .. Review the content of the repository
 .. Close the repository __button on tool list__
@@ -10,7 +13,11 @@
 .. Release the artifact __button on tool list__
 
 ==== Findings
-. We needed to manually publish the public key on []keys.gnupg.net](http://keys.gnupg.net)
+. We needed to manually publish the public key on http://keys.gnupg.net[keys.gnupg.net]
+. Gradle build file has a condition include to disable the signing plugin on the CI pipeline because keys and associated authentication are not
+available. See the documentation at the beginning of the Gradle build file for details.
+
+IMPORTANT: Set the property if you want to sign the component artifacts and publish to Maven Central
 
 === Web Site Publication
 

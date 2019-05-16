@@ -9,6 +9,9 @@ draft: false
 
 === Definitions
 
+[quote, Albert Einstein]
+A person who never made a mistake never tried anything new.
+
 What is a finite state machine? __A Finite State Machine__ or __FSM__ is an abstract model of computation, which can be in only one finite state at a
 specific moment. Finite State Machines are used to model problems in different domains such as AI, games, or application flows. It describes how a
 program should behave by specifying states and routes between them.
@@ -80,7 +83,6 @@ The state class defining the set of possible states in the finite state machine 
 
 [plantuml, fsm-design-machine_model, svg]
 ....
-
 class Event<E extends Enum<E>> {
     - E type;
     - List<Object> parameters;
@@ -118,7 +120,6 @@ interface StateMachine<O, S extends Enum<S>, E extends Enum<E>> {
 StateMachine *-- "1" State : root
 State *-- Transition : transitions
 State "1" *-- "0..n" State : substates
-
 ....
 
 === Finite State Machine Builder Model
@@ -127,7 +128,6 @@ The builder interfaces provide the implementation of the builder pattern to cons
 
 [plantuml, fsm-design-builder_model, svg]
 ....
-
 interface StateBuilder<O, S extends Enum<?>, E extends Enum<E>> {
 }
 
@@ -147,5 +147,4 @@ FsmBuilder <|-- StateBuilder
 FsmBuilder <|-- SubStateBuilder
 FsmBuilder <|-- ToTransitionBuilder
 FsmBuilder <|-- TransitionBuilder
-
 ....

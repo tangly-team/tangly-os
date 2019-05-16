@@ -28,7 +28,6 @@ public interface StateBuilder<O, S extends Enum<?>, E extends Enum<E>> {
      * @param stateId the identifier of the substate to addToRoot
      * @return the substate builder to complete the creation and configuration of a substate
      */
-
     default SubStateBuilder<O, S, E> add(S stateId) {
         return add(stateId, null);
     }
@@ -40,7 +39,6 @@ public interface StateBuilder<O, S extends Enum<?>, E extends Enum<E>> {
      * @param description description of the substate
      * @return the substate builder to complete the creation and configuration of a substate
      */
-
     SubStateBuilder<O, S, E> add(S stateId, String description);
 
     /**
@@ -49,7 +47,6 @@ public interface StateBuilder<O, S extends Enum<?>, E extends Enum<E>> {
      * @param eventId the identifier of the event firing the transition leaving the state
      * @return the transition builder to complete the creation and configuration of a transition
      */
-
     ToTransitionBuilder<O, S, E> on(E eventId);
 
     /**
@@ -58,7 +55,6 @@ public interface StateBuilder<O, S extends Enum<?>, E extends Enum<E>> {
      * @param eventId the identifier of the event firing the local transition on the state
      * @return the transition builder to complete the creation and configuration of a transition
      */
-
     default TransitionBuilder<O, S, E> onLocal(E eventId) {
         return onLocal(eventId, null);
     }
@@ -70,6 +66,5 @@ public interface StateBuilder<O, S extends Enum<?>, E extends Enum<E>> {
      * @param description description of the substate
      * @return the transition builder to complete the creation and configuration of a transition
      */
-
     TransitionBuilder<O, S, E> onLocal(E eventId, String description);
 }

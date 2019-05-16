@@ -1,4 +1,13 @@
 === Purpose
+Orm provides a mapper between Java objects and relational databases. Major design constraints were
+
+* The persisted Java classes do not need to be edited. The framework does not rely on inheritance or annotations to perform its duty,
+* No byte code manipulation. The POJO are not modified by the ORM library,
+* No external configuation based on XML or JSON,
+* Only a basic set of operations and abstractions are supported, no advanced capabilities are provided.
+
+Interactions with ORM have two parts. You build a DAO using a DAO builder. The DAO defines the mapping between a Java class with all its properties
+and relations to other classes.
 
 === Entities
 

@@ -19,6 +19,7 @@ import com.vaadin.flow.component.UI;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 public class UiTests {
     @BeforeEach
     public void setupVaadin() {
@@ -28,6 +29,6 @@ public class UiTests {
     @Test
     void test() {
         final MainView main = (MainView) UI.getCurrent().getChildren().findFirst().get();
-        System.out.println(main.getChildren().count());
+        assertThat(main.getChildren().count()).isGreaterThan(0);
     }
 }

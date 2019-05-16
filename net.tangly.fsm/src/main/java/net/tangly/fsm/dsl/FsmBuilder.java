@@ -44,37 +44,31 @@ public interface FsmBuilder<O, S extends Enum<S>, E extends Enum<E>> {
      * Selects the state with the given identifier and returns a state builder.
      *
      * @param stateId identifier of the requested existing state
-     * @return the requested state
+     * @return the requested state builder
      */
-
     StateBuilder<O, S, E> in(S stateId);
 
     /**
      * Selects the root state of the machine and returns a state builder.
      *
-     * @return the requested root state
+     * @return the requested root state builder
      */
-
     StateBuilder<O, S, E> root();
 
     /**
-     * Returns the root state of the finite state machine definition and terminate the building
-     * process.
+     * Returns the root state of the finite state machine definition and terminate the building process.
      *
      * @return the root state of the definition
      */
-
     State<O, S, E> definition();
 
     /**
-     * Creates an instance of the state machine based on the definition of the state machine available
-     * to the builder.
+     * Creates an instance of the state machine based on the definition of the state machine available to the builder.
      *
      * @param name  human readable name of the finite state machine instance
      * @param owner instance owning the finite state machine
      * @return the state machine instance
      */
-
     StateMachine<O, S, E> machine(String name, O owner);
 
     /**
@@ -84,10 +78,23 @@ public interface FsmBuilder<O, S extends Enum<S>, E extends Enum<E>> {
      * @return the substate builder to complete the creation and configuration of a substate
      */
 
+    /**
+     * Adds a new state to the root state.
+     *
+     * @param stateId identifier of the new state
+     * @return the requested state builder
+     */
     default SubStateBuilder<O, S, E> addToRoot(S stateId) {
         return root().add(stateId);
     }
 
+    /**
+     * Adds a new state to the root state.
+     *
+     * @param stateId     identifier of the new state
+     * @param description human readable description of the state
+     * @return the requested state builder
+     */
     default SubStateBuilder<O, S, E> addToRoot(S stateId, String description) {
         return root().add(stateId, description);
     }

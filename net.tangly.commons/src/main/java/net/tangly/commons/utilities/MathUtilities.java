@@ -27,9 +27,9 @@ public class MathUtilities {
         return median;
     }
 
-    public static Interval<Integer> confidence(int[] values, double confidence) {
-        int lower = (int) Math.round(values.length / 2 - confidence * Math.pow(values.length * 0.25, 0.5));
-        int upper = (int) Math.round(values.length / 2 + confidence * Math.pow(values.length * 0.25, 0.5));
+    public static Interval<Integer> confidence(int[] values, double confidence) throws ArrayIndexOutOfBoundsException {
+        int lower = (int) Math.round(((double) (values.length) / 2) - (confidence * Math.pow(values.length * 0.25, 0.5)));
+        int upper = (int) Math.round(((double) (values.length) / 2) + (confidence * Math.pow(values.length * 0.25, 0.5)));
         return new Interval(values[lower], values[upper]);
     }
 }
