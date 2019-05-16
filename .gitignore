@@ -9,8 +9,8 @@
 *.rar
 hs_err_pid*
 
-# Covers JetBrains IDE IntelliJ using gradle, include dictionaries and copyrights
-out/
-build/
+# Covers JetBrains IDE IntelliJ using gradle, include copyrights
+/out/
+/build/
 /.gradle/
 /.idea/

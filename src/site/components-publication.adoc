@@ -15,3 +15,7 @@
 === Web Site Publication
 
 . Update Hugo pipeline to run planUML with asciidoctor. Read the instructions in the asciidoctor script file under the scripts folder.
+. Two scripts are provided to generate the Hugo static site with associated structure and theme.
+.. the script __initiateHugo.sh__ creates and populates the site. Upon completion you can start a local Hugo server and look at the site if desired.
+.. the script __completeHugo.sh__ generates the static pictures and copy them to the static folder and publish the whole site on bitbucket. Upon
+completion the site is published on the web for all.
