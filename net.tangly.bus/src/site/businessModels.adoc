@@ -1,0 +1,16 @@
+---
+title: "Business Models" date: 2019-05-01 weight: 50 draft: false
+---
+:source-highlighter: pygments
+
+== Codes
+
+== Core
+
+== Customer Relationship Model
+
+== Invoices
+
+== Ledger
+
+== Products

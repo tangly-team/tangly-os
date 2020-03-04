@@ -1,0 +1,27 @@
+[
+  {
+    "id": "0",
+    "code": "CODE_TEST_0",
+    "enabled": "true"
+  },
+  {
+    "id": "1",
+    "code": "CODE_TEST_1",
+    "enabled": "true"
+  },
+  {
+    "id": "2",
+    "code": "CODE_TEST_2",
+    "enabled": "true"
+  },
+  {
+    "id": "3",
+    "code": "CODE_TEST_3",
+    "enabled": "true"
+  },
+  {
+    "id": "4",
+    "code": "CODE_TEST_4",
+    "enabled": "true"
+  }
+]

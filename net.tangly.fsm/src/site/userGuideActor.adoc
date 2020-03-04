@@ -1,8 +1,5 @@
 ---
-title: "User Guide Actors"
-date: 2019-05-01
-weight: 30
-draft: false
+title: "User Guide Actors" date: 2019-05-01 weight: 40 draft: false
 ---
 :source-highlighter: pygments
 
@@ -10,8 +7,7 @@ draft: false
 
 === Get Starting
 
-A finite state machine actor class is provided to easily create an active class which behavior is defined through a
-finite state machine
+A finite state machine actor class is provided to easily create an active class which behavior is defined through a finite state machine
 
 [source,java]
 ----

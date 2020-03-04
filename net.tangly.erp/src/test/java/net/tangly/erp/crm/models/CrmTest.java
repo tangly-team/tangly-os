@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -13,7 +13,8 @@
 
 package net.tangly.erp.crm.models;
 
-import net.tangly.commons.models.TagTypeRegistry;
+import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.bus.crm.CrmTags;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

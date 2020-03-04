@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2019 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -18,7 +18,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.DisabledIf;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -13,6 +13,7 @@
 
 package net.tangly.commons.utilities;
 
+import net.tangly.commons.lang.Strings;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.PrintWriter;
@@ -53,6 +54,17 @@ public class AsciiDocHelper {
 
     public AsciiDocHelper header(String text, int level) {
         writer.append("=".repeat(level)).append(" ").append(text).println();
+        writer.println();
+        return this;
+    }
+
+    public AsciiDocHelper text(String text) {
+        writer.append(text);
+        return this;
+    }
+
+    public AsciiDocHelper paragraph(String text) {
+        writer.append(text).println();
         writer.println();
         return this;
     }

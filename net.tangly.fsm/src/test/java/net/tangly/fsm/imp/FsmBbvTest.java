@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -14,6 +14,7 @@
 package net.tangly.fsm.imp;
 
 import net.tangly.fsm.Event;
+import net.tangly.fsm.StateMachine;
 import net.tangly.fsm.StateMachineEventHandler;
 import net.tangly.fsm.dsl.FsmBuilder;
 import net.tangly.fsm.utilities.StaticChecker;
@@ -27,9 +28,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class FsmBbvTest {
     @Test
     void simplyTurnOnAndOffTest() {
-        var fsm = FsmBbv.build().machine("test-fsm", new FsmBbv());
-        fsm.addEventHandler(new StateMachineEventHandler<>() {
-        });
+        var fsm = createFsm();
         fsm.fire(new Event<>(FsmBbv.Events.TogglePower));
         fsm.fire(new Event<>(FsmBbv.Events.TogglePower));
         assertThat(fsm.context().consumeLog()).isEqualTo("entryOff.exitOff.OffToOn.entryOn.entryDAB.exitDAB.exitOn.OnToOff.entryOff");
@@ -37,7 +36,7 @@ class FsmBbvTest {
 
     @Test
     void turnOnToggleModeTurnOffTurnOnTest() {
-        var fsm = FsmBbv.build().machine("test-fsm", new FsmBbv());
+        var fsm = createFsm();
         fsm.fire(new Event<>(FsmBbv.Events.TogglePower));
         assertThat(fsm.context().consumeLog()).isEqualTo("entryOff.exitOff.OffToOn.entryOn.entryDAB");
         fsm.fire(new Event<>(FsmBbv.Events.ToggleMode));
@@ -50,7 +49,7 @@ class FsmBbvTest {
 
     @Test
     void turnOnToggleModeStationLostTurnOffTurnOnTest() {
-        var fsm = FsmBbv.build().machine("test-fsm", new FsmBbv());
+        var fsm = createFsm();
         fsm.fire(new Event<>(FsmBbv.Events.TogglePower));
         assertThat(fsm.context().consumeLog()).isEqualTo("entryOff.exitOff.OffToOn.entryOn.entryDAB");
         fsm.fire(new Event<>(FsmBbv.Events.ToggleMode));
@@ -65,7 +64,7 @@ class FsmBbvTest {
 
     @Test
     void whenMaintenanceTurnOnTurnOffTest() {
-        var fsm = FsmBbv.build().machine("test-fm", new FsmBbv());
+        var fsm = createFsm();
         fsm.context().setMaintenance(true);
         fsm.fire(new Event<>(FsmBbv.Events.TogglePower));
         assertThat(fsm.context().consumeLog()).isEqualTo("entryOff.exitOff.OffToMaintenance.entryMaintenance");
@@ -75,7 +74,7 @@ class FsmBbvTest {
 
     @Test
     void whenDabStoreStationTest() {
-        var fsm = FsmBbv.build().machine("test-fm", new FsmBbv());
+        var fsm = createFsm();
         fsm.fire(new Event<>(FsmBbv.Events.TogglePower));
         fsm.fire(new Event<>(FsmBbv.Events.StoreStation));
         assertThat(fsm.context().consumeLog()).isEqualTo("entryOff.exitOff.OffToOn.entryOn.entryDAB.DABToDAB");
@@ -83,12 +82,19 @@ class FsmBbvTest {
 
     @Test
     void whenPlayStoreStationTest() {
-        var fsm = FsmBbv.build().machine("test-fm", new FsmBbv());
+        var fsm = createFsm();
         fsm.fire(new Event<>(FsmBbv.Events.TogglePower));
         assertThat(fsm.context().consumeLog()).isEqualTo("entryOff.exitOff.OffToOn.entryOn.entryDAB");
         fsm.fire(new Event<>(FsmBbv.Events.ToggleMode));
         fsm.fire(new Event<>(FsmBbv.Events.StoreStation));
         assertThat(fsm.context().consumeLog()).isEqualTo("exitDAB.DABtoFM.entryFM.entryPlay.PlayToPlay");
+    }
+
+    @Test
+    void whenReset() {
+        var fsm = createFsm();
+        fsm.reset();
+        assertThat((fsm.isAlive())).isTrue();
     }
 
     @Test
@@ -111,5 +117,12 @@ class FsmBbvTest {
         assertThat(checker.checkStateHasAtMostOneInitialState(builder.definition()).size()).isEqualTo(0);
         assertThat(checker.checkStateIdUsedOnce(builder.definition()).size()).isEqualTo(0);
         assertThat(checker.checkStateWithAfferentTransitionHasInitialState(builder.definition()).size()).isEqualTo(0);
+    }
+
+    private StateMachine<FsmBbv, FsmBbv.States, FsmBbv.Events> createFsm() {
+        StateMachine<FsmBbv, FsmBbv.States, FsmBbv.Events> fsm = FsmBbv.build().machine("test-fsm", new FsmBbv());
+        fsm.addEventHandler(new StateMachineEventHandler<>() {
+        });
+        return fsm;
     }
 }

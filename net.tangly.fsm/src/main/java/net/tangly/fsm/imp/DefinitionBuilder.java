@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -23,34 +23,37 @@ import net.tangly.fsm.dsl.ToTransitionBuilder;
 import net.tangly.fsm.dsl.TransitionBuilder;
 
 import java.util.EnumMap;
-import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 
 /**
+ * The class implements the interfaces to build a complete finite state machine definition using a fluent DSL - Domain Specific Language -. Care was
+ * taken to balance expression power, compact syntax, and syntax sugar.
+ *
  * @param <O> the class of the instance owning the finite state machine instance
  * @param <S> enumeration type for the identifiers of states
  * @param <E> enumeration type for the identifiers of events
  */
 public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>>
         implements FsmBuilder<O, S, E>, StateBuilder<O, S, E>, SubStateBuilder<O, S, E>, ToTransitionBuilder<O, S, E>, TransitionBuilder<O, S, E> {
-
-    private final Map<S, StateImp<O, S, E>> states;
+    private final EnumMap<S, StateImp<O, S, E>> states;
     private final StateImp<O, S, E> root;
     private StateImp<O, S, E> context;
     private E eventId;
     private TransitionImp<O, S, E> transition;
 
     /**
-     * Constructor of the class.
+     * Constructor of the class. Creates a finite state machine builder with the given root state identifier.
      *
      * @param rootId identifier of the root state of the state machine definition under construction
      */
     public DefinitionBuilder(S rootId) {
         root = new StateImp<>(rootId);
         root.setInitial(true);
-        states = new EnumMap(rootId.getClass());
+        states = new EnumMap<>(rootId.getClass());
     }
+
+    // region StateBuilder
 
     @Override
     public State<O, S, E> definition() {
@@ -93,7 +96,10 @@ public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>>
         return this;
     }
 
-    // region ToTransitionBuilder
+    // endregion
+
+    // region TransitionBuilder
+
     @Override
     public TransitionBuilder<O, S, E> to(S stateId, String description) {
         if (!states.containsKey(stateId) || (eventId == null)) {
@@ -105,15 +111,6 @@ public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>>
         return this;
     }
 
-    // endregion
-
-
-    @Override
-    public ToTransitionBuilder<O, S, E> on(E eventId) {
-        this.eventId = eventId;
-        return this;
-    }
-
     @Override
     public TransitionBuilder<O, S, E> onLocal(E eventId, String description) {
         this.eventId = eventId;
@@ -122,8 +119,6 @@ public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>>
         context.addLocalTransition(transition);
         return this;
     }
-
-    // region TransitionBuilder
 
     @Override
     public TransitionBuilder<O, S, E> onlyIf(BiPredicate<O, Event<E>> guard, String description) {
@@ -140,6 +135,18 @@ public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>>
     }
 
     // endregion
+
+    // region ToTransition builder
+
+    @Override
+    public ToTransitionBuilder<O, S, E> on(E eventId) {
+        this.eventId = eventId;
+        return this;
+    }
+
+    // endregion
+
+    // region SubStateBuilder
 
     @Override
     public SubStateBuilder<O, S, E> hasHistory(boolean hasHistory) {
@@ -171,6 +178,8 @@ public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>>
         context.setExitActionDescription(description);
         return this;
     }
+
+    // endregion
 
     /**
      * Resets the builder context to clean.

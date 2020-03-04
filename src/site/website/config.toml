@@ -5,12 +5,13 @@ defaultContentLanguage = "en"
 title = "tangly llc Open Source Components"
 theme = "hugo-theme-techdoc"
 
-pygmetsUseClasses = true
-pygmentCodefences = true
+pygmentsCodeFences = true
+pygmentsUseClasses = true
 
 [params]
     google_analytics_id = "UA-90395055-5"
     date-format = "2000-01-01"
+    menu_style = "open-menu"
 
 [[menu.main]]
     name = "Components"

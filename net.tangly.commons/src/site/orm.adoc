@@ -1,50 +1,119 @@
 === Purpose
-Orm provides a mapper between Java objects and relational databases. Major design constraints were
 
-* The persisted Java classes do not need to be edited. The framework does not rely on inheritance or annotations to perform its duty,
-* No byte code manipulation. The POJO are not modified by the ORM library,
+[quote,Theodore Roosevelt]
+In any moment of decision, the best thing you can do is the right thing, the next best thing you can do is the wrong thing, the worst thing you can do is nothing.”
+
+Orm provides a mapper between Java objects and relational databases.
+Major design constraints were
+
+* The persisted Java classes do not need to be edited.
+The framework does not rely on inheritance or annotations to perform its duty,
+* No byte code manipulation.
+The POJO are not modified by the ORM library,
 * No external configuation based on XML or JSON,
 * Only a basic set of operations and abstractions are supported, no advanced capabilities are provided.
 
-Interactions with ORM have two parts. You build a DAO using a DAO builder. The DAO defines the mapping between a Java class with all its properties
-and relations to other classes.
+Interactions with ORM have two parts.
+You build a DAO using a DAO builder.
+The DAO defines the mapping between a Java class with all its properties and relations to other classes.
 
 === Entities
 
-Using the library means accepting some restrictions on how your entities both the Java classes and the SQL schema are designed. Some of these
-restrictions are good practices regardless of how database and object models are built.
+Using the library means accepting some restrictions on how your entities both the Java classes and the SQL schema are designed.
+Some of these restrictions are good practices regardless of how database and object models are built.
 
 ==== Java Objects
-Every entity class should have a *Long* identifier field named *oid* that will be used as a primary key. The library will populate this field. The
-primary key will be used when the library performs updates. The library expects to work with entities with public getters and setters or
-with entities with public getters for fields and related builder objects or constructors with setters for the individual fields.
+
+Every entity class should have a *Long* identifier field named *oid* that will be used as a primary key.
+The library will populate this field.
+The primary key will be used when the library performs updates.
+The library expects to work with entities with public getters and setters or with entities with public getters for fields and related builder objects or constructors with setters for the individual fields.
+
+The __update__ operation is transitive and updates all referenced objects.
 
 ==== SQL Schema
-The library expects every table to have a numeric primary key. The library will populate the primary keys on inserts with value.
+
+The library expects every table to have a numeric primary key.
+The library will populate the primary keys on inserts with an unique key value.
+The key value is unique through all objects implicitely supporting polymorphic references in relations.
 
 === Relations
-One point of usign a relational databs as opposed to a document store or other mechanism is to preserve the structure of relations between
-entities. The library supports three kinds of relationships: owner - ownees relation where an owner owns a set of objects, entity - entities relation
-where an entity has a relation with a set of objects, and entities - entities where multiple entities have a relation with multiple other entities
-meaning a n-m relationship.
 
-==== Owner - Ownees
-The owner entity owns the ownee objects, so that the ownee existence depends on the existence of the owner.
+One point of using a relational database as opposed to a document store or other mechanism is to preserve the structure of relations between entities.
+The impedence mismatach is delegated to the developer who shall declare a private property for each foreign key; no access methods need to be created.
 
-One tricky thing about these relationships is the reversal in how ownership is expressed between the database schema and the object model. In the
-object model the owner has ownees, in the database the ownee has a foreign key reference to the owner.
+All relations are directional in the programming language.
+Three kinds of relations are identified
 
-==== Entity - Entities
-These are relations betweent wo objects where one objrect refers in a dependent but not controlling way.
+N -> 1::
+most efficient mapping of a relation in the programming language.
+The property contains an optional ownee object.
+The relation is modeled with a foreign key in the owner table.
+A foreign constraint rule can be defined.
 
+1 -> N::
+The property is a list of ownee objects.
+The relation is modeled with a foreign key in the ownee table.
+A foreign constraint rule can be defined.
 
-==== Entities - Entities
+N -> M::
+The property is a list of ownee objects.
+The relation is modeled with a correlation table in the database.
+Two foreign contraint rules can be defined.
+
+==== Relation N -> 1 and 1 -> 1
+
+The owner object has an optional reference to the owned object.
+Multiple owners can reference the same owned objects.
+If an owned object is referenced by at most one owner object the relation is of type one 2 one
+
+Because the unique identifier of the owned object is stored as foreign key in the owner we must first persist the owned object, and then the owner object.
+
+This rule is only relevant if the owned object as a new object, meaning the __oid__ is __UNDEFINED_ID__.
+Otherwise the integrity rules are already fulfilled in the database.
+
+==== Relation 1 -> N
+
+The owner object has reference to multiple owned objects.
+An owned object can have at most one owner.
+
+Because the unique identifier of the owner object is stored as foreign key in the owned object we must first persist the owner object, and then the owned object.
+One tricky thing about these relationships is the reversal in how ownership is expressed between the database schema and the object model.
+In the object model the owner has ownees, in the database the ownee has a foreign key reference to the owner.
+
+This rule is only relevant if the owned object as a new object, meaning the __oid__ is __UNDEFINED_ID__.
+Otherwise the integrity rules are already fulfilled in the database.
+
+==== Relation N -> M
+
+The owner object has reference to multiple owned objects.
+An owned object can have multiple owner.
+
+The relation is implemented with a correlation table having a foreign key identifier for the owner __owner_oid__ and a foreign key identifier for the owned object __ownee_oid__.
+The name of the table is __owner_ownee_property_X__.
+
+==== Extensions
+
+Comments are handled as a regular entity and the object having comments has a 1 -- N relation with the comment entity.
+
+Tags are handled as a JSON field and are stored as emdedded list in the object having the tags.
+Support for tag type is provided.
+
+Reference code are handled as a local property and the code key is stored in the database.
+Sopport for code type is provided.
 
 ==== Data Access Objects DAO
 
+__To be written__
+
 === Decisions
+
+__To be written__
 
 === History
 
-* The initial implementation is tested against hsqldb. No effort was invested to test compatibility with other databases. The port should be
-straight forward because we are using plain JDBC statements.
+* The initial implementation is tested against hsqldb.
+No effort was invested to test compatibility with other databases.
+The port should be straight forward because we are using plain JDBC statements.
+* A major drive to create the library is the ease of support for reference code, tags and comments.
+We are still looking for open source libraries providing hooks to support such extensions.

@@ -1,0 +1,29 @@
+---
+title: "Release Notes" date: 2019-05-01 weight: 20 draft: false
+---
+:source-highlighter: pygments
+
+== FSM Library Change Logs
+
+This document provides a high-level view of the changes introduced in BDD library by release.
+For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] commits.
+
+=== 0.2.3 (2020-03-06)
+
+Improvements::
+
+* Dependencies were updated to current versions
+* Unit test examples and documentation improvements
+
+=== 0.2.2 (2019-05-17)
+
+Improvements::
+
+* Unit tests were extended to provide better code coverage
+* Typos in the https://tangly-team.bitbucket.io/[static site documentation] were corrected
+
+=== 0.2.1 (2019-05-16)
+
+Improvements::
+
+* Initial release of the library

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -20,29 +20,26 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
-import net.tangly.commons.models.Address;
-import net.tangly.commons.models.HasOid;
-import net.tangly.commons.models.PhoneNr;
-import net.tangly.erp.crm.models.BankConnection;
-import net.tangly.erp.crm.models.CrmTags;
-import net.tangly.erp.crm.models.LegalEntity;
+import net.tangly.bus.core.Address;
+import net.tangly.bus.core.HasOid;
+import net.tangly.bus.core.PhoneNr;
+import net.tangly.bus.crm.BankConnection;
+import net.tangly.bus.crm.CrmTags;
+import net.tangly.bus.crm.LegalEntity;
+import net.tangly.bus.invoices.Invoice;
+import net.tangly.bus.invoices.InvoiceItem;
+import net.tangly.bus.invoices.Product;
+import net.tangly.bus.invoices.Subtotal;
 import net.tangly.erp.invoices.ports.InvoiceAsciiDoc;
-import org.asciidoctor.Asciidoctor;
-import org.asciidoctor.Attributes;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.Currency;
 import java.util.List;
-import java.util.Map;
-
-import static org.asciidoctor.Asciidoctor.Factory.create;
-import static org.asciidoctor.OptionsBuilder.options;
 
 /**
  * Created by marcelbaumann on 01.05.17.

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -13,12 +13,12 @@
 
 package net.tangly.erp.ledger.ports;
 
-import net.tangly.commons.models.Tag;
-import net.tangly.commons.utilities.Strings;
-import net.tangly.erp.ledger.Account;
-import net.tangly.erp.ledger.AccountEntry;
-import net.tangly.erp.ledger.Ledger;
-import net.tangly.erp.ledger.Transaction;
+import net.tangly.bus.core.Tag;
+import net.tangly.bus.ledger.Account;
+import net.tangly.bus.ledger.AccountEntry;
+import net.tangly.bus.ledger.Ledger;
+import net.tangly.bus.ledger.Transaction;
+import net.tangly.commons.lang.Strings;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;

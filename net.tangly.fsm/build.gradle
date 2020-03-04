@@ -1,64 +1,27 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
  *
  *        http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
  * under the License.
  */
 
 plugins {
     id 'java-library'
+    // id "org.javamodularity.moduleplugin" version "1.6.0"
 }
 
 project.ext.groupId= 'net.tangly'
 project.ext.artifactId ='fsm'
 project.ext.moduleName = 'net.tangly.fsm'
 project.ext.inceptionYear = '1996'
-project.version = "0.2.1"
+project.version = "0.2.3"
 project.description = "Hierarchical finite state machine library - FSM - using Java 11 or higher (tangly llc)"
-
-/*
-compileJava {
-    inputs.property("moduleName", moduleName)
-    doFirst {
-        options.compilerArgs = [
-                '--module-path', classpath.asPath,
-        ]
-        classpath = files()
-    }
-}
-
-compileTestJava {
-    inputs.property("moduleName", moduleName)
-    doFirst {
-        options.compilerArgs = [
-                '--module-path', classpath.asPath,
-                '--add-modules', 'junit',
-                '--add-reads', "$moduleName=junit",
-                '--patch-module', "$moduleName=" + files(sourceSets.test.java.srcDirs).asPath,
-        ]
-        classpath = files()
-    }
-}
-
-test {
-    inputs.property("moduleName", moduleName)
-    doFirst {
-        jvmArgs = [
-                '--module-path', classpath.asPath,
-                '--add-modules', 'ALL-MODULE-PATH',
-                '--add-reads', "$moduleName=junit",
-                '--patch-module', "$moduleName=" + files(sourceSets.test.java.outputDir).asPath,
-        ]
-        classpath = files()
-    }
-}
-*/
 
 
 

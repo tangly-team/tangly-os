@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -17,10 +17,10 @@ import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextField;
-import net.tangly.commons.models.HasTags;
-import net.tangly.commons.models.Tag;
-import net.tangly.commons.models.TagType;
-import net.tangly.commons.models.TagTypeRegistry;
+import net.tangly.bus.core.HasTags;
+import net.tangly.bus.core.Tag;
+import net.tangly.bus.core.TagType;
+import net.tangly.bus.core.TagTypeRegistry;
 
 import java.util.Collection;
 import java.util.Optional;

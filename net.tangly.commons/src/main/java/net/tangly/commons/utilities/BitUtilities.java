@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-import static net.tangly.commons.utilities.Preconditions.checkArgument;
+import static net.tangly.commons.lang.Preconditions.checkArgument;
 
 /**
  * <p> _The bit utility_ class provides utility functions to manipulate bit streams as used on older communication

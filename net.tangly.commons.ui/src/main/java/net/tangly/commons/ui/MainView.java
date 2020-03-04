@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -18,12 +18,12 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.material.Material;
-import net.tangly.commons.models.Comment;
-import net.tangly.commons.models.Entity;
-import net.tangly.commons.models.EntityImp;
-import net.tangly.commons.models.Tag;
-import net.tangly.commons.models.TagType;
-import net.tangly.commons.models.TagTypeRegistry;
+import net.tangly.bus.core.Comment;
+import net.tangly.bus.core.Entity;
+import net.tangly.bus.core.EntityImp;
+import net.tangly.bus.core.Tag;
+import net.tangly.bus.core.TagType;
+import net.tangly.bus.core.TagTypeRegistry;
 
 import java.time.LocalDate;
 

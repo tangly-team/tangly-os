@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -22,7 +22,6 @@ import java.util.Collections;
 import java.util.Deque;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.StringJoiner;
 import java.util.function.BiConsumer;
 
 /**
@@ -270,9 +269,8 @@ class StateImp<O, S extends Enum<S>, E extends Enum<E>> implements State<O, S, E
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", this.getClass().getSimpleName() + "[", "]").add("id=" + id).add("hasHistory=" + hasHistory)
-                .add("initial=" + initial).add("description=" + description).add("entryActionDescription=" + entryActionDescription)
-                .add("exitActionDescription=" + exitActionDescription).toString();
+        return String.format("id=%s, hasHistory=%s, initial=%s, description=%s, entryAction=%s, exitAction=%s", id, hasHistory, initial, description,
+                entryActionDescription, exitActionDescription);
     }
 
     private Deque<State<O, S, E>> getHierarchyFor(Deque<State<O, S, E>> substates, State<O, S, E> compositeState, State<O, S, E> substate) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2019 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -13,7 +13,6 @@
 
 package net.tangly.commons.di;
 
-import net.tangly.commons.annotations.Feature;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -27,7 +26,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * This test is used to verify the behaviour of Injector dealing with interfaces.
  */
-@Feature("DI-001")
 @DisplayName("Given an injector")
 class BindInterfaceTest {
 

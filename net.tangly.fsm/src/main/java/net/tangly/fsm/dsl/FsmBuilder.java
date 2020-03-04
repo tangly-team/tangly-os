@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -18,7 +18,8 @@ import net.tangly.fsm.StateMachine;
 import net.tangly.fsm.imp.DefinitionBuilder;
 
 /**
- * Domain specific language fluent interface to select an existing state.
+ * Domain specific language fluent interface to build a state machine declaration starting with a state. This interface provides the entry point to
+ * select a state or add a substate to a selected state.
  *
  * @param <O> the class of the instance owning the finite state machine instance
  * @param <S> enumeration type for the identifiers of states

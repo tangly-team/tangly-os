@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -13,52 +13,84 @@
 
 package net.tangly.commons.orm.imp;
 
-import net.tangly.commons.models.HasOid;
+import net.tangly.bus.core.HasOid;
+import net.tangly.commons.lang.ReflectionUtilities;
+import net.tangly.commons.orm.Property;
 import org.jetbrains.annotations.NotNull;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.lang.reflect.Field;
+import java.util.EnumMap;
+import java.util.Map;
 import java.util.function.Function;
-import java.util.function.UnaryOperator;
 
 /**
- * Models a property with simple objects. The cardinality can be one or multiple
+ * Models a property with simple Java objects or primitive. The type of the property is not defined through a DAO.
  *
  * @param <T> class owning the property
  */
-public class PropertySimple<T extends HasOid> extends AbstractProperty<T> {
-    private Class<?> sqlClass;
+public class PropertySimple<T extends HasOid> implements Property<T> {
+    /**
+     * Name of the property.
+     */
+    protected final String name;
+
+    /**
+     * Class of the owning entity of the property.
+     */
+    protected final Class<T> entity;
+
+    /**
+     * Field associated with the property and used to get and set values of the property.
+     */
+    protected final Field field;
+
+    private Class<?> jdbcType;
     private int sqlType;
-    private Function<Object, Object> java2jdbc;
-    private Function<Object, Object> jdbc2java;
 
-    public PropertySimple(String name, Class<T> clazz, Class<?> sqlClass, int sqlType) {
-        this(name, clazz, sqlClass, sqlType, UnaryOperator.identity(), UnaryOperator.identity());
-    }
+    protected EnumMap<ConverterType, Function<?, ?>> converters;
 
-    public PropertySimple(String name, Class<T> clazz, Class<?> sqlClass, int sqlType, UnaryOperator<Object> java2jdbc,
-                          UnaryOperator<Object> jdbc2Java) {
-        super(name, clazz);
-        this.sqlClass = sqlClass;
+
+    public PropertySimple(@NotNull String name, @NotNull Class<T> entity, @NotNull Class<?> jdbcType, int sqlType,
+                          @NotNull Map<ConverterType, Function<?, ?>> converters) {
+        this.name = name;
+        this.entity = entity;
+        this.jdbcType = jdbcType;
         this.sqlType = sqlType;
-        this.java2jdbc = java2jdbc;
-        this.jdbc2java = jdbc2Java;
+        this.converters = new EnumMap<>(converters);
+        field = ReflectionUtilities.findField(entity, name).orElseThrow();
+        field.setAccessible(true);
     }
 
     @Override
-    public void setParameter(@NotNull PreparedStatement statement, int index, @NotNull T entity) throws SQLException, IllegalAccessException {
-        Object value = java2jdbc.apply(field.get(entity));
-        if (value != null) {
-            statement.setObject(index, value, sqlType);
-        } else {
-            statement.setNull(index, sqlType);
-        }
+    public Class<T> entity() {
+        return entity;
     }
 
     @Override
-    public void setField(@NotNull ResultSet set, int index, @NotNull T entity) throws SQLException, IllegalAccessException {
-        Object value = jdbc2java.apply(set.getObject(index, sqlClass));
-        field.set(entity, value);
+    public String name() {
+        return name;
+    }
+
+    @Override
+    public Field field() {
+        return field;
+    }
+
+    @Override
+    public int sqlType() {
+        return sqlType;
+    }
+
+    @Override
+    public Class<?> jdbcType() {
+        return jdbcType;
+    }
+
+
+    @Override
+    public <T, R> Function<T, R> getConverter(@NotNull ConverterType type) {
+        return (Function<T, R>) converters.get(type);
     }
 }
+
+

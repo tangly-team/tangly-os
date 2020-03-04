@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -15,7 +15,6 @@ package net.tangly.fsm;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.StringJoiner;
 
 /**
  * The event is an immutable class containing the event with payload sent to the finite state machine. The event contains all the context information
@@ -86,6 +85,6 @@ public class Event<E extends Enum<E>> {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", this.getClass().getSimpleName() + "[", "]").add("type=" + type).add("parameters=" + parameters).toString();
+        return String.format("{type=%s, paramters=%s}", type, parameters.toString());
     }
 }

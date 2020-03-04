@@ -1,5 +1,3 @@
-baseDir=/Users/Shared/Projects
-tanglyDir=/Users/Shared/Projects/tangly-os
 siteRootDir=/Users/Shared/Projects/
 siteName=tangly-os-site
 siteDir=$siteRootDir$siteName
@@ -11,8 +9,5 @@ cd $siteDir
 cd themes
 git clone https://github.com/thingsym/hugo-theme-techdoc.git
 
-cp -R $tanglyDir/src/site/website/ $siteDir/
-cp $tanglyDir/net.tangly.fsm/readme.* $siteDir/content/fsm/
-cp $tanglyDir/net.tangly.fsm/src/site/* $siteDir/content/fsm/
-cp $tanglyDir/net.tangly.fsm/src/site/adr/* $siteDir/content/fsm/adr
-echo "start server with hugo server -D"
+
+echo "start server with hugo server -D -> site is accessible under localhost:1313"

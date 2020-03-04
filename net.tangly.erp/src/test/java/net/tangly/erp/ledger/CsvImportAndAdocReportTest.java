@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -13,6 +13,8 @@
 
 package net.tangly.erp.ledger;
 
+import net.tangly.bus.ledger.Account;
+import net.tangly.bus.ledger.Ledger;
 import net.tangly.erp.ledger.ports.ClosingReportAsciiDoc;
 import net.tangly.erp.ledger.ports.LedgerCsvHdl;
 import org.junit.jupiter.api.Tag;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -19,13 +19,13 @@ import net.codecrete.qrbill.generator.GraphicsFormat;
 import net.codecrete.qrbill.generator.Language;
 import net.codecrete.qrbill.generator.OutputSize;
 import net.codecrete.qrbill.generator.QRBill;
-import net.tangly.commons.models.Address;
+import net.codecrete.qrbill.generator.Strings;
+import net.tangly.bus.core.Address;
+import net.tangly.bus.crm.CrmTags;
+import net.tangly.bus.crm.LegalEntity;
+import net.tangly.bus.invoices.Invoice;
+import net.tangly.bus.invoices.InvoiceLine;
 import net.tangly.commons.utilities.AsciiDocHelper;
-import net.tangly.commons.utilities.Strings;
-import net.tangly.erp.crm.models.CrmTags;
-import net.tangly.erp.crm.models.LegalEntity;
-import net.tangly.erp.invoices.Invoice;
-import net.tangly.erp.invoices.InvoiceLine;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;

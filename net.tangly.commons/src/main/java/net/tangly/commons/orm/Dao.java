@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -13,30 +13,18 @@
 
 package net.tangly.commons.orm;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import net.tangly.commons.orm.imp.AbstractProperty;
-import net.tangly.commons.orm.imp.PropertyCode;
-import net.tangly.commons.orm.imp.PropertyJson;
+import net.tangly.bus.core.HasOid;
 import net.tangly.commons.orm.imp.PropertyOne2Many;
-import net.tangly.commons.orm.imp.PropertyOne2One;
-import net.tangly.commons.orm.imp.PropertySimple;
-import net.tangly.commons.codes.Code;
-import net.tangly.commons.codes.CodeType;
-import net.tangly.commons.models.HasOid;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 import javax.sql.DataSource;
-import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -53,123 +41,6 @@ import java.util.stream.Collectors;
  * @param <T> the class being mapped. The table takes care of the handling of the unique object identifier.
  */
 public class Dao<T extends HasOid> {
-    /**
-     * Builder for the table class. Upon building the class you should discard the builder instance. Any additional call on the builder will update a
-     * runtime exception.
-     */
-    public static class Builder<V extends HasOid> {
-        private Dao<V> table;
-        private List<AbstractProperty<V>> properties;
-        private List<PropertyOne2Many<V, ?>> relations;
-
-        /**
-         * Builder class to create a DAO for an entity and a table in the database.
-         *
-         * @param schema     optional name of the schema containing the entity
-         * @param entity     name of the entity
-         * @param clazz      class of the entity
-         * @param dataSource data source used to acces the database
-         */
-        public Builder(String schema, @NotNull String entity, @NotNull Class<V> clazz, @NotNull DataSource dataSource) {
-            this.table = new Dao<>(schema, entity, clazz, dataSource);
-            this.properties = new ArrayList<>();
-            this.relations = new ArrayList<>();
-        }
-
-        public Builder withOid() {
-            properties.add(new PropertySimple<V>("oid", table.getType(), Long.TYPE, Types.BIGINT));
-            return this;
-        }
-
-        public Builder withFid(String name) {
-            properties.add(new PropertySimple<V>(name, table.getType(), Long.TYPE, Types.BIGINT));
-            return this;
-        }
-
-        /**
-         * Add an integer property and column.
-         *
-         * @param name name of the property and associated column in the table
-         * @return builder as fluent interface
-         */
-        public Builder withInt(@NotNull String name) {
-            properties.add(new PropertySimple<V>(name, table.getType(), Integer.class, Types.INTEGER));
-            return this;
-        }
-
-        public Builder withLong(String name) {
-            properties.add(new PropertySimple<V>(name, table.getType(), Long.class, Types.BIGINT));
-            return this;
-        }
-
-        public Builder withString(String name) {
-            properties.add(new PropertySimple<V>(name, table.getType(), String.class, Types.VARCHAR));
-            return this;
-        }
-
-        public Builder withText(String name) {
-            return withString(name);
-        }
-
-        public Builder withDate(String name) {
-            properties.add(new PropertySimple<V>(name, table.getType(), LocalDate.class, Types.DATE));
-            return this;
-        }
-
-        public Builder withDateTime(String name) {
-            properties.add(new PropertySimple<V>(name, table.getType(), LocalDateTime.class, Types.TIMESTAMP));
-            return this;
-        }
-
-        public Builder withBigDecimal(String name) {
-            properties.add(new PropertySimple<V>(name, table.getType(), BigDecimal.class, Types.DECIMAL));
-            return this;
-        }
-
-        public Builder withTags(String name) {
-            properties.add(new PropertySimple<V>(name, table.getType(), String.class, Types.VARCHAR, AbstractProperty::tags4java2jdbc,
-                    AbstractProperty::tags4jdbc2java));
-            return this;
-        }
-
-        public Builder withJson(String name, Class<V> type, boolean hasMultipleValues) {
-            properties.add(new PropertyJson<>(name, table.getType(), type, hasMultipleValues));
-            return this;
-        }
-
-        public <U extends Code> Builder withCode(String name, CodeType<U> codeType) {
-            properties.add(new PropertyCode<V, U>(name, table.getType(), codeType));
-            return this;
-        }
-
-        public Builder withOne2One(String name) {
-            properties.add(new PropertyOne2One<V, V>(name, table.getType(), table));
-            return this;
-        }
-
-        public <R extends HasOid> Builder withOne2One(String name, Dao<R> type) {
-            properties.add(new PropertyOne2One<V, R>(name, table.getType(), type));
-            return this;
-        }
-
-        public Builder withOne2Many(String name, String property) {
-            relations.add(new PropertyOne2Many<V, V>(name, table.getType(), property, table));
-            return this;
-        }
-
-        public <R extends HasOid> Builder withOne2Many(String name, String property, Dao<R> type) {
-            relations.add(new PropertyOne2Many<V, R>(name, table.getType(), property, type));
-            return this;
-        }
-
-        public Dao<V> build() throws NoSuchMethodException {
-            table.configure(properties, relations);
-            Dao<V> copy = this.table;
-            table = null;
-            return copy;
-        }
-    }
-
     private static final String PRIMARY_KEY = "oid";
     private static final int KEY_SQL_TYPE = Types.BIGINT;
     private static Logger log = org.slf4j.LoggerFactory.getLogger(Dao.class);
@@ -180,7 +51,7 @@ public class Dao<T extends HasOid> {
     private final Class<T> type;
     private final DataSource dataSource;
     private Constructor<T> constructor;
-    private List<AbstractProperty<T>> properties;
+    private List<Property<T>> properties;
     private List<PropertyOne2Many<T, ?>> relations;
     private String findSql;
     private String replaceSql;
@@ -192,15 +63,13 @@ public class Dao<T extends HasOid> {
      */
     private Map<Long, WeakReference<T>> cache;
 
-    public Dao(String schema, String entity, Class<T> type, DataSource dataSource) {
+    public Dao(String schema, @NotNull String entity, @NotNull Class<T> type, @NotNull DataSource dataSource, @NotNull List<Property<T>> properties,
+               @NotNull List<PropertyOne2Many<T, ?>> relations) throws NoSuchMethodException {
         this.schema = schema;
         this.entityName = entity;
         this.type = type;
         this.dataSource = dataSource;
         this.cache = new HashMap<>();
-    }
-
-    private void configure(List<AbstractProperty<T>> properties, List<PropertyOne2Many<T, ?>> relations) throws NoSuchMethodException {
         this.properties = List.copyOf(properties);
         this.relations = List.copyOf(relations);
         constructor = type.getConstructor();
@@ -224,7 +93,7 @@ public class Dao<T extends HasOid> {
      * @param name name of the property to be found
      * @return optional found property
      */
-    public Optional<AbstractProperty<T>> getPropertyBy(@NotNull String name) {
+    public Optional<Property<T>> getPropertyBy(@NotNull String name) {
         return properties.stream().filter(o -> o.name().equals(name)).findAny();
     }
 
@@ -239,7 +108,7 @@ public class Dao<T extends HasOid> {
     public void update(@NotNull T entity) {
         try (var connection = dataSource.getConnection(); var stmt = connection.prepareStatement(replaceSql)) {
             if (entity.oid() == HasOid.UNDEFINED_OID) {
-                properties.get(0).setField(entity, oidGenerator.incrementAndGet());
+                properties.get(0).field().set(entity, oidGenerator.incrementAndGet());
             }
             for (int i = 0; i < properties.size(); i++) {
                 properties.get(i).setParameter(stmt, i + 1, entity);
@@ -249,7 +118,7 @@ public class Dao<T extends HasOid> {
                 relation.update(entity);
             }
             addToCache(entity);
-        } catch (SQLException | IllegalAccessException | JsonProcessingException e) {
+        } catch (SQLException | IllegalAccessException e) {
             log.error("Esception creating {} id {}", entityName, entity.oid(), e);
         }
     }
@@ -270,7 +139,7 @@ public class Dao<T extends HasOid> {
                         entity = Optional.of(materializeEntity(set));
                     }
                 }
-            } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException | IOException e) {
+            } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
                 log.error("Exception occured when retrieving entity {} id {}", entityName, oid, e);
             }
         }
@@ -285,7 +154,7 @@ public class Dao<T extends HasOid> {
                 Optional<T> instance = retrieveFromCache((Long) set.getObject(1));
                 entities.add(instance.orElse(materializeEntity(set)));
             }
-        } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException | IOException e) {
+        } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             log.error("Exception occured when retrieving entity with id {}", entityName, e);
         }
         return entities;
@@ -298,11 +167,11 @@ public class Dao<T extends HasOid> {
      * @return the new instance with filled properties and relations
      * @throws SQLException if a problem was encountered when retrieving the field values from the result set
      */
-    private T materializeEntity(ResultSet set) throws SQLException, IllegalAccessException, InstantiationException, InvocationTargetException,
-            IOException {
+    private T materializeEntity(@NotNull ResultSet set) throws SQLException, IllegalAccessException, InstantiationException,
+            InvocationTargetException {
         T entity = constructor.newInstance();
         for (int i = 0; i < properties.size(); i++) {
-            properties.get(i).setField(set, i + 1, entity);
+            properties.get(i).getParameter(set, i + 1, entity);
         }
         for (var relation : relations) {
             relation.retrieve(entity);
@@ -338,7 +207,7 @@ public class Dao<T extends HasOid> {
         return Optional.empty();
     }
 
-    private void addToCache(T entity) {
+    private void addToCache(@NotNull T entity) {
         if (cache.containsKey(entity.oid())) {
             log.debug("Invalidate cache {} for id {}", getClass().getSimpleName(), entity.oid());
         } else {
@@ -358,7 +227,7 @@ public class Dao<T extends HasOid> {
 
     private String generateReplaceSql() {
         return "REPLACE INTO " + ((schema != null) ? schema + "." + entityName : entityName) + " (" +
-                properties.stream().map(AbstractProperty::name).collect(Collectors.joining(", ")) + ") VALUES (" + "?" +
+                properties.stream().map(Property::name).collect(Collectors.joining(", ")) + ") VALUES (" + "?" +
                 String.join("", Collections.nCopies(properties.size() - 1, ", ?")) + ")";
     }
 
@@ -367,12 +236,12 @@ public class Dao<T extends HasOid> {
     }
 
     private String generateFindSql() {
-        return "SELECT " + properties.stream().map(AbstractProperty::name).collect(Collectors.joining(", ")) + " FROM " +
+        return "SELECT " + properties.stream().map(Property::name).collect(Collectors.joining(", ")) + " FROM " +
                 ((schema != null) ? schema + "." + entityName : entityName) + " WHERE " + PRIMARY_KEY + " = ?";
     }
 
     private String generateFindWhereSql() {
-        return "SELECT " + properties.stream().map(AbstractProperty::name).collect(Collectors.joining(", ")) + " FROM " +
+        return "SELECT " + properties.stream().map(Property::name).collect(Collectors.joining(", ")) + " FROM " +
                 ((schema != null) ? schema + "." + entityName : entityName) + " WHERE ";
     }
 

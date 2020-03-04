@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -13,14 +13,18 @@
 
 package net.tangly.commons.orm.imp;
 
+import net.tangly.bus.core.HasOid;
+import net.tangly.commons.lang.Reference;
 import net.tangly.commons.orm.Dao;
-import net.tangly.commons.models.HasOid;
+import net.tangly.commons.orm.Property;
+import net.tangly.commons.orm.Relation;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.Map;
+import java.util.Objects;
 
 
 /**
@@ -29,40 +33,38 @@ import java.sql.Types;
  * @param <T> class owning the property
  * @param <R> Class referenced by the property
  */
-public class PropertyOne2One<T extends HasOid, R extends HasOid> extends AbstractProperty<T> {
-    private Dao<R> type;
+public class PropertyOne2One<T extends HasOid, R extends HasOid> extends PropertySimple<T> implements Relation<T, R> {
+    /**
+     * The DAO responsible for the owned object in the 1 - 1 relation.
+     */
+    private Reference<Dao<R>> type;
 
-    public PropertyOne2One(String name, Class<T> clazz, Dao<R> type) {
-        super(name, clazz);
+    public PropertyOne2One(@NotNull String name, @NotNull Class<T> entity, @NotNull Reference<Dao<R>> type) {
+        super(name, entity, Long.class, Types.BIGINT,
+                Map.of(Property.ConverterType.java2jdbc, (HasOid o) -> Objects.nonNull(o) ? o.oid() : null, Property.ConverterType.jdbc2java,
+                        (Long o) -> Objects.nonNull(o) ? type.reference().find(o).orElse(null) : null, Property.ConverterType.java2text,
+                        (HasOid o) -> Objects.nonNull(o) ? Long.toString(o.oid()) : null, Property.ConverterType.text2java,
+                        (String o) -> Objects.nonNull(o) ? type.reference().find(Long.parseLong(o)).orElse(null) : null));
         this.type = type;
     }
 
-    public Dao<R> type() {
-        return type;
-    }
-
     @Override
-    public boolean hasManagedType() {
-        return true;
+    public Dao<R> type() {
+        return type.reference();
     }
 
     @Override
     public void setParameter(@NotNull PreparedStatement statement, int index, @NotNull T entity) throws SQLException, IllegalAccessException {
-        R reference = (R) field.get(entity);
-        if (reference != null) {
-            type.update(reference);
-            statement.setObject(index, reference.oid(), Types.BIGINT);
+        R ownee = (R) field().get(entity);
+        if (Objects.nonNull(ownee)) {
+            type().update(ownee);
+        }
+        Object value = get(entity, ConverterType.java2jdbc);
+        if (value != null) {
+            statement.setObject(index, value, sqlType());
         } else {
-            statement.setNull(index, Types.BIGINT);
+            statement.setNull(index, sqlType());
         }
     }
-
-    @Override
-    public void setField(@NotNull ResultSet set, int index, @NotNull T entity) throws SQLException, IllegalAccessException {
-        Long referenceOid = set.getObject(index, Long.TYPE);
-        Object reference = (referenceOid == null) ? null : type.find(referenceOid).orElse(null);
-        field.set(entity, reference);
-    }
-
 
 }

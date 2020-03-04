@@ -1,19 +1,19 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
  *
  *        http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
  * under the License.
  */
 
 project.ext.groupId = 'net.tangly'
-project.ext.artifactId ='erp'
-project.ext.moduleName = 'net.tangly.erp'
+project.ext.artifactId = 'crm'
+project.ext.moduleName = 'net.tangly.crm'
 project.version = "0.2.0"
 project.ext.inceptionYear = '1996'
 project.description = "ERP models (tangly llc)"
@@ -25,12 +25,12 @@ repositories {
 }
 
 dependencies {
-    compile project (':net.tangly.commons')
+    compile project(':net.tangly.commons')
 
-    compile 'org.apache.commons:commons-csv:1.6'
-    compile 'org.hsqldb:hsqldb:2.4.1'
-    compile 'net.codecrete.qrbill:qrbill-generator:2.0.1'
-    compile 'org.mustangproject.ZUGFeRD:mustang:1.7.0'
-    compile 'org.asciidoctor:asciidoctorj:2.0.0'
-    compile 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.17'
+    implementation 'org.apache.commons:commons-csv:1.8'
+    implementation 'org.hsqldb:hsqldb:2.5.0'
+    implementation 'net.codecrete.qrbill:qrbill-generator:2.1.1'
+    implementation 'org.mustangproject.ZUGFeRD:mustang:1.7.5'
+    implementation 'org.asciidoctor:asciidoctorj:2.2.0'
+    implementation 'org.asciidoctor:asciidoctorj-pdf:1.5.0'
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -26,7 +26,9 @@ import java.util.function.BiConsumer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 /**
  * The test class verifies the expected behavior of hierarchical machine declaration, instantiation
@@ -140,8 +142,8 @@ class FsmTest {
         assertThat(root.getStateFor(States.C).substates().size()).isEqualTo(0);
         assertThat(root.getStateFor(States.C).isFinal()).isTrue();
         assertThat(root.getStateFor(States.A).transitions().isEmpty()).isFalse();
-        assertThat(root.getStateFor(States.A).transitions().stream().findAny().orElseThrow().toString()).contains("source=A");
-        assertThat(root.getStateFor(States.A).transitions().stream().findAny().orElseThrow().toString()).contains("target=C");
+        assertThat(root.getStateFor(States.A).transitions().stream().findAny().orElseThrow().toString()).contains("A ->");
+        assertThat(root.getStateFor(States.A).transitions().stream().findAny().orElseThrow().toString()).contains("-> C");
         assertThat(root.getStateFor(States.A).getStateFor(States.AA)).isNotNull();
         assertThat(root.getStateFor(States.A).getStateFor(States.AB)).isNotNull();
         assertThat(root.getStateFor(States.A).getStateFor(States.BA)).isNull();

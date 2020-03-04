@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -17,7 +17,6 @@ import net.tangly.fsm.Event;
 import net.tangly.fsm.State;
 import net.tangly.fsm.Transition;
 
-import java.util.StringJoiner;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 
@@ -205,8 +204,7 @@ class TransitionImp<O, S extends Enum<S>, E extends Enum<E>> implements Transiti
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", this.getClass().getSimpleName() + "[", "]").add("source=" + source.id()).add("target=" + target.id())
-                .add("eventId=" + eventId).add("description=" + description).add("guardDescription=" + guardDescription)
-                .add("actionDescription=" + actionDescription).toString();
+        return String.format("Transition(%s -> %s : %s [%s] %s : %s)", source.id(), target.id(), eventId, guardDescription, actionDescription,
+                description);
     }
 }

@@ -1,8 +1,5 @@
 ---
-title: "Design Considerations"
-date: 2019-05-01
-weight: 40
-draft: false
+title: "Design Considerations" date: 2019-05-01 weight: 50 draft: false
 ---
 :source-highlighter: pygments
 
@@ -10,7 +7,7 @@ draft: false
 
 === Definitions
 
-[quote, Albert Einstein]
+[quote,Albert Einstein]
 A person who never made a mistake never tried anything new.
 
 What is a finite state machine? __A Finite State Machine__ or __FSM__ is an abstract model of computation, which can be in only one finite state at a

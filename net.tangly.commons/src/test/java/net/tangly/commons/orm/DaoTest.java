@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -13,16 +13,18 @@
 
 package net.tangly.commons.orm;
 
-import net.tangly.commons.codes.Code;
-import net.tangly.commons.codes.CodeType;
-import net.tangly.commons.models.Comment;
-import net.tangly.commons.models.EntityImp;
-import net.tangly.commons.models.HasOid;
-import net.tangly.commons.models.Tag;
+import net.tangly.bus.codes.Code;
+import net.tangly.bus.codes.CodeType;
+import net.tangly.bus.core.Comment;
+import net.tangly.bus.core.EntityImp;
+import net.tangly.bus.core.HasOid;
+import net.tangly.bus.core.Tag;
+import net.tangly.commons.lang.Reference;
 import org.flywaydb.core.Flyway;
 import org.hsqldb.jdbc.JDBCDataSource;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.jetbrains.annotations.NotNull;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -31,12 +33,15 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class DaoTest {
+class DaoTest {
     /**
      * Enumeration type extended to support the code interface.
      */
@@ -59,73 +64,110 @@ public class DaoTest {
         }
     }
 
+    static class Value {
+        private int intValue;
+        private String stringValue;
+
+        public Value() {
+        }
+
+        public Value(int intValue, String stringValue) {
+            this.intValue = intValue;
+            this.stringValue = stringValue;
+        }
+
+        int intValue() {
+            return intValue;
+        }
+
+        String stringValue() {
+            return stringValue;
+        }
+    }
+
     static class Entity extends EntityImp {
         private Entity owner;
-
         private EntityCode code;
         private List<Entity> owned;
         private Long ownedBy;
+        private Set<Value> valuess;
 
         public Entity() {
             owned = new ArrayList<>();
+            valuess = new HashSet<>();
         }
 
-        public EntityCode code() {
+        EntityCode code() {
             return code;
         }
 
-        public void code(EntityCode code) {
+        void code(EntityCode code) {
             this.code = code;
         }
 
-        public Entity owner() {
+        Entity owner() {
             return owner;
         }
 
-        public void owner(Entity owner) {
+        void owner(Entity owner) {
             this.owner = owner;
         }
 
-        public List<Entity> owned() {
+        List<Entity> owned() {
             return owned;
         }
 
-        public void addOwned(Entity entity) {
+        void addOwned(Entity entity) {
             owned.add(entity);
         }
 
-        public void removeOwned(Entity entity) {
+        void removeOwned(Entity entity) {
             owned.remove(entity);
+        }
+
+        void addValue(int intValue, String stringValue) {
+            valuess.add(new Value(intValue, stringValue));
+        }
+
+        Set<Value> values() {
+            return Collections.unmodifiableSet(valuess);
         }
     }
 
-    private static String dbUrl = "jdbc:hsqldb:mem:commons;sql.syntax_mys=true";
+    private static String dbUrl = "jdbc:hsqldb:mem:tangly;sql.syntax_mys=true";
     private static String username = "SA";
     private static String password = "";
 
-    private static JDBCDataSource dataSource;
+    private static JDBCDataSource datasource;
+    private Dao<Entity> entities;
+    private Dao<Comment> comments;
 
-    @BeforeAll
-    static void tearUp() {
-        dataSource = new JDBCDataSource();
-        dataSource.setDatabase(dbUrl);
-        dataSource.setUser(username);
-        dataSource.setPassword(password);
-        var flyway = Flyway.configure().dataSource(dataSource).load();
+    @BeforeEach
+    void setup() throws NoSuchMethodException {
+        datasource = new JDBCDataSource();
+        datasource.setDatabase(dbUrl);
+        datasource.setUser(username);
+        datasource.setPassword(password);
+        var flyway = Flyway.configure().dataSource(datasource).load();
         flyway.migrate();
+        comments = new DaoBuilder<Comment>(Comment.class).withOid().withDateTime("created").withText("author").withText("text").withTags("tags")
+                .withFid("ownedBy").build("tangly", "comments", datasource);
+        entities = new DaoBuilder<Entity>(Entity.class).withOid().withString("id").withString("name").withDate("fromDate").withDate("toDate")
+                .withString("text").withTags("tags").withCode("code", CodeType.of(EntityCode.class, Arrays.asList(EntityCode.values())))
+                .withOne2One("owner").withFid("ownedBy").withOne2Many("owned", "ownedBy")
+                .withOne2Many("comments", "ownedBy", new Reference<>(comments)).withJson("valuess", Value.class)
+                .build("tangly", "entities", datasource);
     }
 
-    @AfterAll
-    static void tearDown() throws SQLException {
-        try (Connection connection = dataSource.getConnection(); Statement stmt = connection.createStatement()) {
+    @AfterEach
+    void tearDown() throws SQLException {
+        try (Connection connection = datasource.getConnection(); Statement stmt = connection.createStatement()) {
             stmt.execute("shutdown");
         }
     }
 
     @Test
-    void testCreateUpdateDeleteEntity() throws NoSuchFieldException, NoSuchMethodException {
-        Dao<Entity> entities = createTable();
-
+    void testCreateUpdateDeleteEntity() throws NoSuchMethodException {
         Entity entity = create(1, "2000-01-01", "2020-12-31");
 
         assertThat(entity.oid()).isEqualTo(HasOid.UNDEFINED_OID);
@@ -134,22 +176,22 @@ public class DaoTest {
         long oid = entity.oid();
 
         Optional<Entity> retrievedEntity = entities.find(oid);
-        testEntity(retrievedEntity);
+        testEntity(retrievedEntity.orElseThrow());
 
         entities.clearCache();
         retrievedEntity = entities.find(oid);
-        testEntity(retrievedEntity);
+        testEntity(retrievedEntity.orElseThrow());
 
         final String updatedText = "Text Entity 1 updated";
         entity.text(updatedText);
         entities.update(entity);
         retrievedEntity = entities.find(oid);
-        testEntity(retrievedEntity);
+        testEntity(retrievedEntity.orElse(null));
         assertThat(retrievedEntity.get().text()).isEqualTo("Text Entity 1 updated");
 
         entities.clearCache();
         retrievedEntity = entities.find(oid);
-        testEntity(retrievedEntity);
+        testEntity(retrievedEntity.orElseThrow());
         assertThat(retrievedEntity.get().text()).isEqualTo("Text Entity 1 updated");
 
         entities.delete(oid);
@@ -161,9 +203,7 @@ public class DaoTest {
     }
 
     @Test
-    public void testTags() throws NoSuchFieldException, NoSuchMethodException {
-        Dao<Entity> entities = createTable();
-
+    void testTags() throws NoSuchFieldException, NoSuchMethodException {
         Entity entity = create(10, "2020-01-01", "2020-12-31");
         entities.update(entity);
         long oid = entity.oid();
@@ -201,45 +241,81 @@ public class DaoTest {
     }
 
     @Test
-    public void testJsonProperty() throws NoSuchFieldException, NoSuchMethodException {
-        Dao<Entity> entities = createTable();
+    void testJson() {
+        // Given
+        Entity entity = create(10, "2020-01-01", "2020-12-31");
+        entity.addValue(101, "Value 101");
+        entity.addValue(102, "Value 102");
+        entity.addValue(103, "Value 103");
 
+        // when
+        entities.update(entity);
+
+        // then
+        assertThat(entity.oid()).isNotEqualTo(HasOid.UNDEFINED_OID);
+
+        // when
+        long oid = entity.oid();
+        entities.clearCache();
+        Optional<Entity> retrieved = entities.find(oid);
+
+        // then
+        assertThat(retrieved.isPresent()).isTrue();
+        assertThat(retrieved.get().values().size()).isEqualTo(3);
+        assertThat(retrieved.get().values().stream().anyMatch(o -> o.intValue() == 101)).isTrue();
+        assertThat(retrieved.get().values().stream().anyMatch(o -> o.intValue() == 102)).isTrue();
+        assertThat(retrieved.get().values().stream().anyMatch(o -> o.intValue() == 103)).isTrue();
+        assertThat(retrieved.get().values().stream().anyMatch(o -> o.stringValue().equals("Value 101"))).isTrue();
+        assertThat(retrieved.get().values().stream().anyMatch(o -> o.stringValue().equals("Value 102"))).isTrue();
+        assertThat(retrieved.get().values().stream().anyMatch(o -> o.stringValue().equals("Value 103"))).isTrue();
+    }
+
+    @Test
+    void testComments() throws NoSuchFieldException, NoSuchMethodException {
+        // Given
         Entity entity = create(10, "2020-01-01", "2020-12-31");
         entity.add(Comment.of("John Doe", "This is text of comment 1"));
         entity.add(Comment.of("John Doe", "This is text of comment 2"));
         entity.add(Comment.of("John Doe", "This is text of comment 3"));
+
+        // when
         entities.update(entity);
+
+        // then
         assertThat(entity.oid()).isNotEqualTo(HasOid.UNDEFINED_OID);
+
+        // when
         long oid = entity.oid();
         entities.clearCache();
         Optional<Entity> retrieved = entities.find(oid);
+
+        // then
         assertThat(retrieved.isPresent()).isTrue();
         assertThat(retrieved.get().comments().size()).isEqualTo(3);
+        assertThat(retrieved.get().comments().stream().anyMatch(o -> o.oid() == HasOid.UNDEFINED_OID)).isFalse();
     }
 
     @Test
-    public void testOne2OneProperty() throws NoSuchFieldException, NoSuchMethodException {
-        Dao<Entity> entities = createTable();
-
+    void testOne2OneProperty() throws NoSuchFieldException, NoSuchMethodException {
         Entity owner = create(2, "2000-01-01", "2020-12-31");
-        Entity entity = create(1, "2000-01-01", "2020-12-31");
-        entity.owner(owner);
+        Entity ownee = create(1, "2000-01-01", "2020-12-31");
+        ownee.owner(owner);
 
-        assertThat(entity.oid()).isEqualTo(HasOid.UNDEFINED_OID);
-        entities.update(entity);
-        assertThat(entity.oid()).isNotEqualTo(HasOid.UNDEFINED_OID);
+        assertThat(ownee.oid()).isEqualTo(HasOid.UNDEFINED_OID);
+        entities.update(ownee);
+        assertThat(ownee.oid()).isNotEqualTo(HasOid.UNDEFINED_OID);
         assertThat(owner.oid()).isNotEqualTo(HasOid.UNDEFINED_OID);
         long ownerOid = owner.oid();
-        long oid = entity.oid();
+        long oid = ownee.oid();
 
         Optional<Entity> retrievedEntity = entities.find(oid);
-        testEntity(retrievedEntity);
-        assertThat(entity.owner()).isNotNull();
+        testEntity(retrievedEntity.orElseThrow());
+        assertThat(ownee.owner()).isNotNull();
         entities.clearCache();
 
         retrievedEntity = entities.find(oid);
-        testEntity(retrievedEntity);
-        assertThat(entity.owner()).isNotNull();
+        testEntity(retrievedEntity.orElseThrow());
+        assertThat(ownee.owner()).isNotNull();
 
         entities.delete(oid);
         retrievedEntity = entities.find(oid);
@@ -249,10 +325,8 @@ public class DaoTest {
     }
 
     @Test
-    public void testOne2ManyProperty() throws NoSuchFieldException, NoSuchMethodException {
+    void testOne2ManyProperty() throws NoSuchFieldException, NoSuchMethodException {
         final int OWNED_NR = 5;
-        Dao<Entity> entities = createTable();
-
         Entity entity = create(100, "2000-01-01", "2020-12-31");
         for (int i = 0; i < OWNED_NR; i++) {
             entity.addOwned(create(i, "2000-01-01", "2020-12-31"));
@@ -282,9 +356,7 @@ public class DaoTest {
     }
 
     @Test
-    public void testCodeProperty() throws NoSuchFieldException, NoSuchMethodException {
-        Dao<Entity> entities = createTable();
-
+    void testCodeProperty() throws NoSuchFieldException, NoSuchMethodException {
         Entity entity = create(20, "2000-01-01", "2020-12-31");
         entity.code(EntityCode.CODE_TEST_1);
         entities.update(entity);
@@ -298,27 +370,18 @@ public class DaoTest {
         assertThat(retrieved.get().code()).isEqualTo(EntityCode.CODE_TEST_1);
     }
 
-    private Dao<Entity> createTable() throws NoSuchMethodException {
-        return new Dao.Builder<>("tangly", "entities", Entity.class, dataSource).withOid().withString("id").withString("name").withDate("fromDate")
-                .withDate("toDate").withString("text").withTags("tags").withJson("comments", Comment.class, true)
-                .withCode("code", CodeType.of(EntityCode.class, Arrays.asList(EntityCode.values()))).withOne2One("owner").withFid("ownedBy")
-                .withOne2Many("owned", "ownedBy").build();
+    private void testEntity(Entity entity) {
+        assertThat(entity.id()).isEqualTo("Test Entity 1");
+        assertThat(entity.name()).isEqualTo("Test Entity Name 1");
+        assertThat(entity.fromDate()).isEqualTo(LocalDate.parse("2000-01-01"));
+        assertThat(entity.toDate()).isEqualTo(LocalDate.parse("2020-12-31"));
+        assertThat(entity.tags().size()).isEqualTo(3);
+        assertThat(entity.findBy("test", "test-A").isPresent()).isTrue();
+        assertThat(entity.findBy("test", "test-B").isPresent()).isTrue();
+        assertThat(entity.findBy(null, "test-C").isPresent()).isTrue();
     }
 
-
-    private void testEntity(Optional<Entity> entity) {
-        assertThat(entity.isPresent()).isTrue();
-        assertThat(entity.get().id()).isEqualTo("Test Entity 1");
-        assertThat(entity.get().name()).isEqualTo("Test Entity Name 1");
-        assertThat(entity.get().fromDate()).isEqualTo(LocalDate.parse("2000-01-01"));
-        assertThat(entity.get().toDate()).isEqualTo(LocalDate.parse("2020-12-31"));
-        assertThat(entity.get().tags().size()).isEqualTo(3);
-        assertThat(entity.get().findBy("test", "test-A").isPresent()).isTrue();
-        assertThat(entity.get().findBy("test", "test-B").isPresent()).isTrue();
-        assertThat(entity.get().findBy(null, "test-C").isPresent()).isTrue();
-    }
-
-    private Entity create(int number, String fromDate, String toDate) {
+    private Entity create(int number, @NotNull String fromDate, @NotNull String toDate) {
         Entity entity = new Entity();
         entity.id("Test Entity " + number);
         entity.name("Test Entity Name " + number);
@@ -329,6 +392,5 @@ public class DaoTest {
         entity.add(Tag.ofEmpty("test-C"));
         assertThat(entity.oid()).isEqualTo(HasOid.UNDEFINED_OID);
         return entity;
-
     }
 }

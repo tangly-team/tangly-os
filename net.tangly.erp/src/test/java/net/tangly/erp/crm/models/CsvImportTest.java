@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -13,6 +13,7 @@
 
 package net.tangly.erp.crm.models;
 
+import net.tangly.bus.crm.CrmTags;
 import net.tangly.erp.crm.models.apps.Crm;
 import net.tangly.erp.crm.models.ports.CrmCsvHdl;
 import org.junit.jupiter.api.Tag;
@@ -32,9 +33,8 @@ public class CsvImportTest {
         CrmTags.registerTags(crm.tagTypeRegistry());
         CrmCsvHdl handler = new CrmCsvHdl(crm);
 
-        Path path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/crm/models/naturalEntities.csv").toURI());
-        handler.importNaturalEntities(path);
-        assertThat(crm.naturalEntities().size()).isEqualTo(5);
+        handler.importNaturalEntities(fromResource("net/tangly/erp/crm/models/naturalEntities.tsv"));
+        assertThat(crm.naturalEntities().size()).isEqualTo(6);
 
         assertThat(crm.naturalEntities().get(0).oid()).isEqualTo(1);
         assertThat(crm.naturalEntities().get(0).id()).isNull();
@@ -43,16 +43,13 @@ public class CsvImportTest {
         assertThat(crm.naturalEntities().get(0).findPhoneNr(CrmTags.HOME)).isNotNull();
         // assertThat(crm.naturalEntities().getAt(0).findSite(CrmTags.HOME)).isNotNull();
 
-        path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/crm/models/legalEntities.csv").toURI());
-        handler.importLegalEntities(path);
-        assertThat(crm.legalEntities().size()).isEqualTo(2);
+        handler.importLegalEntities(fromResource("net/tangly/erp/crm/models/legalEntities.tsv"));
+        assertThat(crm.legalEntities().size()).isEqualTo(3);
 
-        path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/crm/models/employees.csv").toURI());
-        handler.importEmployees(path);
-        assertThat(crm.employees().size()).isEqualTo(4);
+        handler.importEmployees(fromResource("net/tangly/erp/crm/models/employees.tsv"));
+        assertThat(crm.employees().size()).isEqualTo(5);
 
-        path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/crm/models/contracts.csv").toURI());
-        handler.importContracts(path);
+        handler.importContracts(fromResource("net/tangly/erp/crm/models/contracts.tsv"));
         assertThat(crm.contracts().size()).isEqualTo(5);
     }
 
@@ -63,9 +60,13 @@ public class CsvImportTest {
         CrmTags.registerTags(crm.tagTypeRegistry());
         CrmCsvHdl handler = new CrmCsvHdl(crm);
 
-        handler.importNaturalEntities(Paths.get("/Users/Shared/tmp/naturalEntities.csv"));
-        handler.importLegalEntities(Paths.get("/Users/Shared/tmp/legalEntities.csv"));
-        handler.importEmployees(Paths.get("/Users/Shared/tmp/employees.csv"));
+        handler.importNaturalEntities(fromResource("net/tangly/erp/crm/models/naturalEntities.tsv"));
+        handler.importLegalEntities(fromResource("net/tangly/erp/crm/models/legalEntities.tsv"));
+        handler.importEmployees(fromResource("net/tangly/erp/crm/models/employees.tsv"));
 
+    }
+
+    private Path fromResource(String resource) {
+        return Paths.get(getClass().getClassLoader().getResource(resource).getPath());
     }
 }

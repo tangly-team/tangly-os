@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -95,7 +95,7 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
     }
 
     @Override
-    public boolean fire(Event<E> event) {
+    public boolean fire(@NotNull Event<E> event) {
         helper.processEvent(event);
         boolean fired = fireLocalTransition(event);
         if (!fired) {
@@ -220,7 +220,7 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
      * @param event    event triggering the state machine change
      * @param ancestor the common ancestor of the source and target states of the fired transition
      */
-    private void exitStatesToCommonAncestor(Event<E> event, State<O, S, E> ancestor) {
+    private void exitStatesToCommonAncestor(@NotNull Event<E> event, @NotNull State<O, S, E> ancestor) {
         State<O, S, E> leaf = null;
         var state = activeStates.getLast();
         while (state != ancestor) {
@@ -247,7 +247,7 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
      * @param event     event triggering the state machine change
      * @param hierarchy list of states defining the containing hierarchy from the ancestor to the leaf node
      */
-    private void enterStatesFromCommonAncestor(Event<E> event, Deque<State<O, S, E>> hierarchy) {
+    private void enterStatesFromCommonAncestor(Event<E> event, @NotNull Deque<State<O, S, E>> hierarchy) {
         hierarchy.removeFirst();
         for (var state : hierarchy) {
             helper.enterState(state);

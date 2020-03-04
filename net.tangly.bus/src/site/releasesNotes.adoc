@@ -1,0 +1,15 @@
+---
+title: "Release Notes" date: 2019-05-01 weight: 20 draft: false
+---
+:source-highlighter: pygments
+
+== BUS Library Change Logs
+
+This document provides a high-level view of the changes introduced in BUS library by release.
+For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] commits.
+
+=== 0.2.3 (2020-03-06)
+
+Improvements::
+
+* Initial release of the library

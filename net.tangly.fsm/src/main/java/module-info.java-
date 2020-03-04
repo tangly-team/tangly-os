@@ -19,4 +19,6 @@ module net.tangly.fsm {
 
     requires slf4j.api;
     requires org.jetbrains.annotations;
+
+    requires org.assertj.core;
 }

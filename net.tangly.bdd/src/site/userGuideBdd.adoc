@@ -1,0 +1,61 @@
+---
+title: "User Guide Behavior Driven Design Library" date: 2019-05-01 weight: 30 draft: false
+---
+:source-highlighter: pygments
+
+== User Guide Behavior Driven Design BDD
+
+=== Features
+
+A behavior driven development __BDD__ library that provides a custom extension based on JUnit 5 Jupiter Extension Model.
+This library can be used to create and run features, stories and behaviors as BDD specification tests.
+
+The library promotes a test engineer approach.
+The test cases are programmed against the system under development.
+Upon execution the living documentation of all features and their associated stories are generated.
+This document describes the behavior of the system as it is tested.
+
+The library is implemented as an extension to the de facto standard JUnit5 for unit testing in the Java ecosystem.
+
+Tags and identifiers are supported for regulatory aspects and traceability.
+
+=== Scenarios
+
+[source,java]
+----
+@ExtendWith(StoryExtension.class)
+@Story(value = "Returns go back to the stockpile", description = "As a store owner, in order to keep track of stock, I want to add items back to stock when they're returned.")
+public class StoreTestStoryOne {
+    @Scenario("Refunded items from the customer should be returned to stock")
+    public void refundAndRestock(Scene scene) {
+        scene.given("that a customer previously bought a black sweater from me", t -> t.put("store", new Store(0, 4).buyBlack(1))).
+            and("I have three black sweaters in stock", t -> assertEquals(3, t.<Store>get("store").blacks(), "Store should carry 3 black sweaters")).
+
+            when("the customer returns the black sweater for a refund", t -> t.<Store>get("store").refundBlack(1)).
+
+            then("I should have four black sweaters in stock", t -> assertEquals(4, t.<Store>get("store").blacks(), "Store should carry 4 black sweaters")).
+            run();
+    }
+
+    @Scenario("Replaced items should be returned to stock")
+    public void replaceAndRestock(Scene scene) {
+        scene.given("that a customer previously bought a blue garment from me", t -> t.put("store", new Store(3, 3).buyBlue(1))).
+                and("I have two blue garments in stock", t -> assertEquals(2, t.<Store>get("store").blues(), "Store should carry 2 blue garments")).
+                and("three black garments in stock", t -> assertEquals(3, t.<Store>get("store").blacks(), "Store should carry 3 black garments")).
+
+                when("she returns the blue garment for a replacement in black", t -> t.<Store>get("store").refundBlue(1).buyBlack(1)).
+
+                then("I should have three blue garments in stock", t -> assertEquals(3, t.<Store>get("store").blues(), "Store should carry 3 blue garments")).
+                and("two black garments in stock", t -> assertEquals(2, t.<Store>get("store").blacks(), "Store should carry 2 black garments")).
+                run();
+    }
+}
+----
+
+=== Get Started
+
+. Add the library to your gradle or maven build
+. Write your scenarios as test methods as shown in the above examples
+. Run your JUnit 5 tests
+
+The provided utilities generates JSON and AsciiDoc reports as living documentation.

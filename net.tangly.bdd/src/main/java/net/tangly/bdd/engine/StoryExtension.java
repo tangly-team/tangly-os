@@ -1,0 +1,98 @@
+/*
+ * Copyright 2006-2020 Marcel Baumann
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
+package net.tangly.bdd.engine;
+
+import net.tangly.bdd.Scenario;
+import net.tangly.bdd.Scene;
+import net.tangly.bdd.Story;
+import org.junit.jupiter.api.extension.AfterAllCallback;
+import org.junit.jupiter.api.extension.BeforeAllCallback;
+import org.junit.jupiter.api.extension.BeforeEachCallback;
+import org.junit.jupiter.api.extension.ExtensionContext;
+import org.junit.jupiter.api.extension.ExtensionContext.Namespace;
+import org.junit.jupiter.api.extension.ParameterContext;
+import org.junit.jupiter.api.extension.ParameterResolver;
+
+import java.lang.reflect.Parameter;
+
+import static org.junit.platform.commons.support.AnnotationSupport.isAnnotated;
+
+/**
+ * A custom extension that allow test authors to create and run behaviors and stories i.e. BDD specification tests. Jupiter engine will provide an
+ * execution context instance under which an extension is to operate. A store is a holder that can be used by custom extensions to save and retrieve
+ * arbitrary data––basically a super charged in-memory map. In order to avoid accidental key collisions between multiple extensions, the good folk at
+ * JUnit introduced the concept of a namespace. A namespace is a way to scope the data saved by extensions.
+ */
+public class StoryExtension implements BeforeAllCallback, AfterAllCallback, BeforeEachCallback, ParameterResolver {
+
+    private static final Namespace NAMESPACE = Namespace.create(StoryExtension.class);
+
+    @Override
+    public void beforeAll(ExtensionContext context) {
+        if (!isStory(context)) {
+            throw new RuntimeException("Use @Story annotation to use Story Extension. Class: " + context.getRequiredTestClass());
+        }
+        Class<?> clazz = context.getRequiredTestClass();
+        StoryRun storyRun = new StoryRun(clazz);
+        context.getStore(NAMESPACE).put(clazz.getName(), storyRun);
+    }
+
+    @Override
+    public void afterAll(ExtensionContext context) {
+        if (isStory(context)) {
+            new StoryWriter(storyDetails(context)).write();
+        }
+    }
+
+    @Override
+    public void beforeEach(ExtensionContext context) {
+        if (!isScenario(context)) {
+            throw new RuntimeException("Use @Scenario annotation to use the StoryExtension service. Method: " + context.getRequiredTestMethod());
+        }
+        // Prepare a scene instance corresponding to the given test method.
+        Scene scene = new Scene(context.getRequiredTestMethod());
+        storyDetails(context).addScene(scene);
+    }
+
+    @Override
+    public boolean supportsParameter(ParameterContext parameterContext, ExtensionContext extensionContext) {
+        Parameter parameter = parameterContext.getParameter();
+        return Scene.class.equals(parameter.getType());
+    }
+
+    /**
+     * Inject the previously created scene object into the test method.
+     *
+     * @param parameterContext parameter context injected by JUnit5 lifecycle
+     * @param context          context injected by JUnit5 lifecycle
+     * @return story run object associated with the story under execution
+     */
+    @Override
+    public Object resolveParameter(ParameterContext parameterContext, ExtensionContext context) {
+        return storyDetails(context).findSceneByMethodName(context.getRequiredTestMethod().getName());
+    }
+
+    private static StoryRun storyDetails(ExtensionContext context) {
+        Class<?> clazz = context.getRequiredTestClass();
+        return context.getStore(NAMESPACE).get(clazz.getName(), StoryRun.class);
+    }
+
+    private static boolean isStory(ExtensionContext context) {
+        return isAnnotated(context.getRequiredTestClass(), Story.class);
+    }
+
+    private static boolean isScenario(ExtensionContext context) {
+        return isAnnotated(context.getRequiredTestMethod(), Scenario.class);
+    }
+}

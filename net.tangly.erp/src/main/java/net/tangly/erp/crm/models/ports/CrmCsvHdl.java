@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -13,15 +13,15 @@
 
 package net.tangly.erp.crm.models.ports;
 
-import net.tangly.commons.utilities.Strings;
-import net.tangly.commons.models.Address;
-import net.tangly.commons.models.EntityImp;
-import net.tangly.erp.crm.models.BankConnection;
-import net.tangly.erp.crm.models.Contract;
-import net.tangly.erp.crm.models.CrmTags;
-import net.tangly.erp.crm.models.Employee;
-import net.tangly.erp.crm.models.LegalEntity;
-import net.tangly.erp.crm.models.NaturalEntity;
+import net.tangly.bus.core.Address;
+import net.tangly.bus.core.EntityImp;
+import net.tangly.bus.crm.BankConnection;
+import net.tangly.bus.crm.Contract;
+import net.tangly.bus.crm.CrmTags;
+import net.tangly.bus.crm.Employee;
+import net.tangly.bus.crm.LegalEntity;
+import net.tangly.bus.crm.NaturalEntity;
+import net.tangly.commons.lang.Strings;
 import net.tangly.erp.crm.models.apps.Crm;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
@@ -65,8 +65,8 @@ public class CrmCsvHdl {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             CSVRecord record = records.hasNext() ? records.next() : null;
             while (record != null) {
-                NaturalEntity entity = NaturalEntity
-                        .of(Long.parseLong(get(record, OID)), get(record, ID), get(record, "lastname"), get(record, "firstname"));
+                NaturalEntity entity =
+                        NaturalEntity.of(Long.parseLong(get(record, OID)), get(record, ID), get(record, "lastname"), get(record, "firstname"));
                 updateEntity(record, entity);
                 entity.address(CrmTags.CRM_ADDRESS_HOME, importAddress(record));
                 entity.setEmail(CrmTags.HOME, get(record, "email-home"));

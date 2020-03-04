@@ -31,7 +31,7 @@ The library provides
 * Documentation helper can generate a graphical representation of a state machine using the graph dot language. Various output formats are supported
   * Table representation
   * Dot graph representation
-  * PlantUML UML final state machine representation
+  * PlantUML UML finite hierarchical state machine representation
 
 ## Download and Documentation
 The library can be included in Maven as
@@ -40,14 +40,14 @@ The library can be included in Maven as
     <dependency>
       <groupId>net.tangly</groupId>
       <artifactId>fsm</artifactId>
-      <version>0.2.1</version>
+      <version>0.2.3</version>
     </dependency>
 ```    
 
 The library can be included in Gradle as
 
 ```
-    implementation "net.tangly:fsm:0.2.1"
+    implementation "net.tangly:fsm:0.2.3"
 ```
  
 The documentation can be found under [FSM documentation](https://tangly-team.bitbucket.io)
