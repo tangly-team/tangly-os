@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2019 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -31,7 +31,7 @@ public interface Injector {
      * @param modules describe the configuration instructions. Often a module is defined for each subsystem of the application
      * @return injector instance
      */
-    public static Injector create(Module... modules) {
+    static Injector create(Module... modules) {
         Injector injector = new InjectorImp();
         Arrays.stream(modules).forEachOrdered(o -> o.configure(injector));
         return injector;
