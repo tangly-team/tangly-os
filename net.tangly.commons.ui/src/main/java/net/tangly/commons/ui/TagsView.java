@@ -112,7 +112,7 @@ public class TagsView extends GridFormView<Tag> {
                 value.setValue(value.getEmptyValue());
                 value.setEnabled(false);
             } else {
-                Optional<TagType> type = registry.find(namespace.getValue(), name.getValue());
+                Optional<TagType<?>> type = registry.find(namespace.getValue(), name.getValue());
                 type.ifPresent(o -> value.setEnabled(o.canHaveValue()));
             }
         });
@@ -124,7 +124,7 @@ public class TagsView extends GridFormView<Tag> {
 
     @Override
     protected boolean isEditable(Tag item) {
-        Optional<TagType> type = registry.find(item.namespace(), item.name());
+        Optional<TagType<?>> type = registry.find(item.namespace(), item.name());
         return type.isEmpty() || type.get().canHaveValue();
     }
 
@@ -137,7 +137,7 @@ public class TagsView extends GridFormView<Tag> {
             namespace.setEnabled(false);
             name.setItems(registry.tagsForNamespace(item.namespace()));
             name.setEnabled(false);
-            Optional<TagType> type = registry.find(item);
+            Optional<TagType<?>> type = registry.find(item);
             value.setEnabled(type.isPresent() && type.get().canHaveValue());
         }
     }
