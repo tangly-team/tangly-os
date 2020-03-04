@@ -1,5 +1,8 @@
 ---
-title: "User Guide Finite State Machine" date: 2019-05-01 weight: 30 draft: false
+title: "User Guide Finite State Machine"
+date: 2019-05-01
+weight: 30
+draft: false
 ---
 :source-highlighter: pygments
 

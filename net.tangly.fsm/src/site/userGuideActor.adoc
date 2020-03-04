@@ -1,5 +1,8 @@
 ---
-title: "User Guide Actors" date: 2019-05-01 weight: 40 draft: false
+title: "User Guide Actors"
+date: 2019-05-01
+weight: 40
+draft: false
 ---
 :source-highlighter: pygments
 

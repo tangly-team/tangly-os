@@ -1,5 +1,8 @@
 ---
-title: "Business Models" date: 2019-05-01 weight: 50 draft: false
+title: "Business Models"
+date: 2019-05-01
+weight: 50
+draft: false
 ---
 :source-highlighter: pygments
 
