@@ -19,7 +19,7 @@ project.ext.groupId= 'net.tangly'
 project.ext.artifactId ='bus'
 project.ext.moduleName = 'net.tangly.bus'
 project.ext.inceptionYear = '2016'
-project.version = "0.2.1"
+project.version = "0.2.3"
 project.description = "Business Abstractions - BUS - using Java 11 or higher (tangly llc)"
 
 dependencies {
