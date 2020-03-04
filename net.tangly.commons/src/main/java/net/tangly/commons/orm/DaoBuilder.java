@@ -64,8 +64,8 @@ public class DaoBuilder<T extends HasOid> {
                     Property.ConverterType.java2text, Object::toString, Property.ConverterType.text2java,
                     (Function<String, Object>) LocalDateTime::parse);
     private static Map<Property.ConverterType, Function<?, ?>> TAGS_CONVERTER =
-            Map.of(Property.ConverterType.java2jdbc, (Set<Tag> o) -> Tag.toString(o), Property.ConverterType.jdbc2java,
-                    (Function<String, Object>) Tag::toTags, Property.ConverterType.java2text, (Set<Tag> o) -> Tag.toString(o),
+            Map.of(Property.ConverterType.java2jdbc, (Function<Set<Tag>, Object>) Tag::toString, Property.ConverterType.jdbc2java,
+                    (Function<String, Object>) Tag::toTags, Property.ConverterType.java2text, (Function<Set<Tag>, Object>) Tag::toString,
                     Property.ConverterType.text2java, (Function<String, Object>) Tag::toTags);
 
     private Class<T> type;
@@ -80,13 +80,13 @@ public class DaoBuilder<T extends HasOid> {
         this.relations = new ArrayList<>();
     }
 
-    public DaoBuilder withOid() {
-        properties.add(new PropertySimple<T>("oid", type, Long.TYPE, Types.BIGINT, ID_CONVERTER));
+    public DaoBuilder<T> withOid() {
+        properties.add(new PropertySimple<>("oid", type, Long.TYPE, Types.BIGINT, ID_CONVERTER));
         return this;
     }
 
-    public DaoBuilder withFid(@NotNull String name) {
-        properties.add(new PropertySimple<T>(name, type, Long.TYPE, Types.BIGINT, ID_CONVERTER));
+    public DaoBuilder<T> withFid(@NotNull String name) {
+        properties.add(new PropertySimple<>(name, type, Long.TYPE, Types.BIGINT, ID_CONVERTER));
         return this;
     }
 
@@ -96,77 +96,77 @@ public class DaoBuilder<T extends HasOid> {
      * @param name name of the property and associated column in the table
      * @return builder as fluent interface
      */
-    public DaoBuilder withInt(@NotNull String name) {
-        properties.add(new PropertySimple<T>(name, type, Integer.class, Types.INTEGER, INTEGER_CONVERTER));
+    public DaoBuilder<T> withInt(@NotNull String name) {
+        properties.add(new PropertySimple<>(name, type, Integer.class, Types.INTEGER, INTEGER_CONVERTER));
         return this;
     }
 
-    public DaoBuilder withLong(@NotNull String name) {
-        properties.add(new PropertySimple<T>(name, type, Long.class, Types.BIGINT, ID_CONVERTER));
+    public DaoBuilder<T> withLong(@NotNull String name) {
+        properties.add(new PropertySimple<>(name, type, Long.class, Types.BIGINT, ID_CONVERTER));
         return this;
     }
 
-    public DaoBuilder withString(@NotNull String name) {
-        properties.add(new PropertySimple<T>(name, type, String.class, Types.VARCHAR, TEXT_CONVERTER));
+    public DaoBuilder<T> withString(@NotNull String name) {
+        properties.add(new PropertySimple<>(name, type, String.class, Types.VARCHAR, TEXT_CONVERTER));
         return this;
     }
 
-    public DaoBuilder withText(@NotNull String name) {
+    public DaoBuilder<T> withText(@NotNull String name) {
         return (withString(name));
     }
 
-    public DaoBuilder withDate(@NotNull String name) {
-        properties.add(new PropertySimple<T>(name, type, LocalDate.class, Types.DATE, LOCALDATE_CONVERTER));
+    public DaoBuilder<T> withDate(@NotNull String name) {
+        properties.add(new PropertySimple<>(name, type, LocalDate.class, Types.DATE, LOCALDATE_CONVERTER));
         return this;
     }
 
-    public DaoBuilder withDateTime(@NotNull String name) {
-        properties.add(new PropertySimple<T>(name, type, LocalDateTime.class, Types.TIMESTAMP, LOCALDATETIME_CONVERTER));
+    public DaoBuilder<T> withDateTime(@NotNull String name) {
+        properties.add(new PropertySimple<>(name, type, LocalDateTime.class, Types.TIMESTAMP, LOCALDATETIME_CONVERTER));
         return this;
     }
 
-    public DaoBuilder withBigDecimal(@NotNull String name) {
-        properties.add(new PropertySimple<T>(name, type, BigDecimal.class, Types.DECIMAL, BIGDECIMAL_CONVERTER));
+    public DaoBuilder<T> withBigDecimal(@NotNull String name) {
+        properties.add(new PropertySimple<>(name, type, BigDecimal.class, Types.DECIMAL, BIGDECIMAL_CONVERTER));
         return this;
     }
 
-    public DaoBuilder withTags(@NotNull String name) {
-        properties.add(new PropertySimple<T>(name, type, String.class, Types.VARCHAR, TAGS_CONVERTER));
+    public DaoBuilder<T> withTags(@NotNull String name) {
+        properties.add(new PropertySimple<>(name, type, String.class, Types.VARCHAR, TAGS_CONVERTER));
         return this;
     }
 
-    public <U> DaoBuilder withJson(@NotNull String name, @NotNull Class<U> referenceType) {
-        properties.add(new PropertyJson<T, U>(name, type, referenceType));
+    public <U> DaoBuilder<T> withJson(@NotNull String name, @NotNull Class<U> referenceType) {
+        properties.add(new PropertyJson<>(name, type, referenceType));
         return this;
     }
 
-    public <U extends Code> DaoBuilder withCode(@NotNull String name, @NotNull CodeType<U> codeType) {
-        properties.add(new PropertyCode<T, U>(name, type, codeType));
+    public <U extends Code> DaoBuilder<T> withCode(@NotNull String name, @NotNull CodeType<U> codeType) {
+        properties.add(new PropertyCode<>(name, type, codeType));
         return this;
     }
 
-    public DaoBuilder withOne2One(@NotNull String name) {
-        properties.add(new PropertyOne2One<T, T>(name, type, self));
+    public DaoBuilder<T> withOne2One(@NotNull String name) {
+        properties.add(new PropertyOne2One<>(name, type, self));
         return this;
     }
 
-    public <R extends HasOid> DaoBuilder withOne2One(@NotNull String name, @NotNull Reference<Dao<R>> reference) {
-        properties.add(new PropertyOne2One<T, R>(name, type, reference));
+    public <R extends HasOid> DaoBuilder<T> withOne2One(@NotNull String name, @NotNull Reference<Dao<R>> reference) {
+        properties.add(new PropertyOne2One<>(name, type, reference));
         return this;
     }
 
-    public DaoBuilder withOne2Many(@NotNull String name, @NotNull String property) {
-        relations.add(new PropertyOne2Many<T, T>(name, type, property, self));
+    public DaoBuilder<T> withOne2Many(@NotNull String name, @NotNull String property) {
+        relations.add(new PropertyOne2Many<>(name, type, property, self));
         return this;
     }
 
-    public <R extends HasOid> DaoBuilder withOne2Many(String name, String property, Reference<Dao<R>> reference) {
-        relations.add(new PropertyOne2Many<T, R>(name, type, property, reference));
+    public <R extends HasOid> DaoBuilder<T> withOne2Many(String name, String property, Reference<Dao<R>> reference) {
+        relations.add(new PropertyOne2Many<>(name, type, property, reference));
         return this;
     }
 
     public Dao<T> build(String schema, String entity, DataSource dataSource) throws NoSuchMethodException {
-        self.reference(new Dao<T>(schema, entity, type, dataSource, properties, relations));
+        self.reference(new Dao<>(schema, entity, type, dataSource, properties, relations));
         return self.reference();
     }
 }
