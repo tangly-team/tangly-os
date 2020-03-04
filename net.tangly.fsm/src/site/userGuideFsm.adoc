@@ -3,9 +3,7 @@ title: "User Guide Finite State Machine" date: 2019-05-01 weight: 30 draft: fals
 ---
 :source-highlighter: pygments
 
-== User Guide Finite State Machine
-
-=== Features
+== Features
 
 The FSM library aims to provide following features:
 
@@ -199,7 +197,6 @@ The above finite state machine description will generate the following machine.
 
 [plantuml, fsm-userGuideFsm-DabFsm, svg]
 ....
-
 hide empty description
 
 state Root {
@@ -231,7 +228,6 @@ state Root {
         On -> Off : TogglePower / OnToOff
     }
 }
-
 ....
 
 ==== How to create an instance of a finite state machine and fire events

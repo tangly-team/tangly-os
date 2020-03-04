@@ -5,7 +5,7 @@ cp $siteDir/fsm-userGuideFsm-* $siteDir/static/fsm/userguidefsm/
 
 cd $siteDir
 git clone --no-checkout https://marcel-baumann@bitbucket.org/tangly-team/tangly-team.bitbucket.io.git public
-asciidoctor
+hugo
 
 cd public
 git add --all

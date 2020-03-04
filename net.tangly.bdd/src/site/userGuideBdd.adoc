@@ -3,9 +3,7 @@ title: "User Guide Behavior Driven Design Library" date: 2019-05-01 weight: 30 d
 ---
 :source-highlighter: pygments
 
-== User Guide Behavior Driven Design BDD
-
-=== Features
+== Features
 
 A behavior driven development __BDD__ library that provides a custom extension based on JUnit 5 Jupiter Extension Model.
 This library can be used to create and run features, stories and behaviors as BDD specification tests.
