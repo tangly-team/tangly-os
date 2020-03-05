@@ -79,7 +79,7 @@ public class Dao<T extends HasOid> {
         findWhereSql = generateFindWhereSql();
     }
 
-    public Class<T> getType() {
+    public Class<T> type() {
         return type;
     }
 

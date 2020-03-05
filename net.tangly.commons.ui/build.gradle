@@ -12,16 +12,9 @@
  */
 
 plugins {
+    id 'war'
     id 'org.gretty' version '3.0.1'
-    id 'com.devsoap.vaadin-flow' version '1.3.5'
-}
-
-vaadin {
-    version '14.1.17'
-}
-
-repositories {
-    vaadin.repositories()
+    id "com.vaadin" version "0.6.0"
 }
 
 project.ext.groupId = 'net.tangly'
@@ -31,19 +24,16 @@ project.version = "0.1.0"
 project.ext.inceptionYear = '1996'
 project.description = "User Interface Components for commons data structures using Java 11 or higher (tangly llc)"
 
-
-ext {
-    vaadin.submitStatistics=true
-    vaadin.compatibilityMode=true
+vaadin {
+    productionMode = false
 }
 
 dependencies {
     compile project (':net.tangly.commons')
 
-    implementation vaadin.bom()
-    implementation vaadin.platform()
-    implementation vaadin.materialTheme()
+    implementation enforcedPlatform('com.vaadin:vaadin-bom:15.0.0')
+    implementation("com.vaadin:vaadin-core")
+    providedCompile "javax.servlet:javax.servlet-api:3.1.0"
 
-    testCompile 'com.github.mvysny.kaributesting:karibu-testing-v10:1.1.19'
-
+    testCompile 'com.github.mvysny.kaributesting:karibu-testing-v10:1.2.0'
 }

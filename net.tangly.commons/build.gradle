@@ -20,13 +20,11 @@ project.ext.artifactId ='commons'
 project.ext.moduleName = 'net.tangly.commons'
 project.version = "0.2.3"
 project.ext.inceptionYear = '1996'
-project.description = "Commons data structures using Java 11 or higher (tangly llc)"
+project.description = "Commons data structures - using Java 11 or higher (tangly llc)"
 
 
 dependencies {
     compile project (':net.tangly.bus')
-
-
     compile "org.hsqldb:hsqldb:2.5.0"
     compile "javax.inject:javax.inject:1"
 

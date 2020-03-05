@@ -29,8 +29,8 @@ dependencies {
 
     implementation 'org.apache.commons:commons-csv:1.8'
     implementation 'org.hsqldb:hsqldb:2.5.0'
-    implementation 'net.codecrete.qrbill:qrbill-generator:2.1.1'
-    implementation 'org.mustangproject.ZUGFeRD:mustang:1.7.5'
+    implementation 'net.codecrete.qrbill:qrbill-generator:2.2.0'
+    implementation 'org.mustangproject.ZUGFeRD:mustang:1.7.6'
     implementation 'org.asciidoctor:asciidoctorj:2.2.0'
     implementation 'org.asciidoctor:asciidoctorj-pdf:1.5.0'
 }
