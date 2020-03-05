@@ -119,7 +119,7 @@ public class Dao<T extends HasOid> {
             }
             addToCache(entity);
         } catch (SQLException | IllegalAccessException e) {
-            log.error("Esception creating {} id {}", entityName, entity.oid(), e);
+            log.atError().log("Esception creating {} id {}", entityName, entity.oid(), e);
         }
     }
 
@@ -140,7 +140,7 @@ public class Dao<T extends HasOid> {
                     }
                 }
             } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
-                log.error("Exception occured when retrieving entity {} id {}", entityName, oid, e);
+                log.atError().log("Exception occured when retrieving entity {} id {}", entityName, oid, e);
             }
         }
         return entity;
@@ -155,7 +155,7 @@ public class Dao<T extends HasOid> {
                 entities.add(instance.orElse(materializeEntity(set)));
             }
         } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
-            log.error("Exception occured when retrieving entity with id {}", entityName, e);
+            log.atError().log("Exception occured when retrieving entity with id {}", entityName, e);
         }
         return entities;
     }
@@ -186,7 +186,7 @@ public class Dao<T extends HasOid> {
             stmt.executeUpdate();
             removeFromCache(oid);
         } catch (SQLException e) {
-            log.error("SQL error when deleting instance {} id {}", entityName, oid, e);
+            log.atError().log("SQL error when deleting instance {} id {}", entityName, oid, e);
         }
     }
 
@@ -209,16 +209,16 @@ public class Dao<T extends HasOid> {
 
     private void addToCache(@NotNull T entity) {
         if (cache.containsKey(entity.oid())) {
-            log.debug("Invalidate cache {} for id {}", getClass().getSimpleName(), entity.oid());
+            log.atDebug().log("Invalidate cache {} for id {}", getClass().getSimpleName(), entity.oid());
         } else {
-            log.debug("Add to cache {} id {}", getClass().getSimpleName(), entity.oid());
+            log.atDebug().log("Add to cache {} id {}", getClass().getSimpleName(), entity.oid());
         }
         cache.put(entity.oid(), new WeakReference<>(entity));
     }
 
     private void removeFromCache(long id) {
         if (cache.containsKey(id)) {
-            log.debug("Invalidate cache {} for id {}", getClass().getSimpleName(), id);
+            log.atDebug().log("Invalidate cache {} for id {}", getClass().getSimpleName(), id);
             cache.remove(id);
         }
     }

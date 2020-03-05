@@ -69,9 +69,9 @@ public class LocalActor<O extends LocalActor, S extends Enum<S>, E extends Enum<
     public void receive(@NotNull Event<E> event) {
         try {
             events.put(event);
-            log.info("Actor {} received event {}", name(), event);
+            log.atInfo().log("Actor {} received event {}", name(), event);
         } catch (InterruptedException e) {
-            log.error("Actor {} encountered interrupted exception {}", name(), e);
+            log.atError().log("Actor {} encountered interrupted exception {}", name(), e);
             Thread.currentThread().interrupt();
         }
     }
@@ -83,7 +83,7 @@ public class LocalActor<O extends LocalActor, S extends Enum<S>, E extends Enum<
                 Event<E> event = events.take();
                 fsm.fire(event);
             } catch (InterruptedException e) {
-                log.error("Actor {} encountered interrupted exception {}", name(), e);
+                log.atError().log("Actor {} encountered interrupted exception {}", name(), e);
                 Thread.currentThread().interrupt();
             }
         }
