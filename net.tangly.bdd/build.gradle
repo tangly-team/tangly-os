@@ -16,7 +16,7 @@ project.ext.artifactId ='bdd'
 project.ext.moduleName = 'net.tangly.bdd'
 project.ext.inceptionYear = '2016'
 project.version = "0.2.3"
-project.description = "JUnit 5 BDD(tangly llc)"
+project.description = "JUnit 5 BDD - (using Java 11 or higher (tangly llc)"
 
 dependencies {
     implementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"

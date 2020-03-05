@@ -28,8 +28,9 @@ IMPORTANT: Set the property if you want to sign the component artifacts and publ
 
 . Update Hugo pipeline to run planUML with asciidoctor.
 Read the instructions in the asciidoctor script file under the scripts folder.
-. Two scripts are provided to generate the Hugo static site with associated structure and theme.
-.. the script __initiateHugo.sh__ creates and populates the site.
+. Three scripts are provided to generate the Hugo static site with associated structure and theme.
+.. the script __initiateHugo.sh__ creates.
+.. the script __populateHugo.sh__ and populates the site.
 Upon completion you can start a local Hugo server and look at the site if desired.
 .. the script __completeHugo.sh__ generates the static pictures and copy them to the static folder and publish the whole site on bitbucket.
 Upon completion the site is published on the web for all.
@@ -37,5 +38,6 @@ Upon completion the site is published on the web for all.
 The support of __asciidoc__ files and the __asciidoctor__ generator in Hugo is suboptimal.
 We had to create a specific __asciidoc__ shell script to mitigate the problemes.
 The shell script provides support for the loadable modules:
+
 * asciidoc-diagram -__to draw plantuml diagrams__-
 * pygments -__to display legible source code__-
