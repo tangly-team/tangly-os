@@ -16,6 +16,7 @@ package net.tangly.bus.core;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * The abstraction of a postal address without the recipient. The structure should model all existing postal address. An address is an immutable
@@ -75,7 +76,6 @@ public record Address(String street, String extended, String poBox, String postc
 
         public Builder street(String street) {
             street = Strings.emptyToNull(street);
-            ;
             return this;
         }
 
@@ -84,7 +84,7 @@ public record Address(String street, String extended, String poBox, String postc
             return this;
         }
 
-        public Builder poB0x(String poBox) {
+        public Builder poBox(String poBox) {
             poBox = Strings.emptyToNull(poBox);
             return this;
         }
@@ -115,8 +115,9 @@ public record Address(String street, String extended, String poBox, String postc
     }
 
     public static Address of(@NotNull String text) {
-        var items = text.split(",");
-        return new Address(Strings.emptyToNull(items[0]), Strings.emptyToNull(items[1]), Strings.emptyToNull(items[2]), Strings.emptyToNull(items[3]),
-                Strings.emptyToNull(items[4]), Strings.emptyToNull(items[5]), Strings.emptyToNull(items[6]));
+        var parts = text.split(",");
+        Objects.checkFromIndexSize(0, parts.length, 7);
+        return builder().street(parts[0]).extended(parts[1]).poBox(parts[2]).postcode(parts[3]).locality(parts[4]).region(parts[5])
+                .countryCode(parts[6]).build();
     }
 }

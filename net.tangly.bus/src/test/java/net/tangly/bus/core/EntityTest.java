@@ -56,7 +56,7 @@ class EntityTest {
         final String STREET = "Rigistrasse 1";
         var entity = Entity.of();
         entity.address(
-                new Address.Builder().countryCode(COUNTRY).region("ZG").locality(LOCALITY).postcode("6300").street(STREET).poB0x(POBOX).build());
+                new Address.Builder().countryCode(COUNTRY).region("ZG").locality(LOCALITY).postcode("6300").street(STREET).poBox(POBOX).build());
         assertThat(entity.address().countryCode()).isEqualTo(COUNTRY);
         assertThat(entity.address().poBox()).isEqualTo(POBOX);
         assertThat(entity.address().street()).isEqualTo(STREET);

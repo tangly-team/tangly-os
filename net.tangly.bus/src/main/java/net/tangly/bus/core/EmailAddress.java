@@ -19,6 +19,7 @@ import java.util.Objects;
 public record EmailAddress(String recipient, String domain) implements Serializable {
     public static EmailAddress of(String email) {
         String[] parts = email.split("@");
+        Objects.checkFromIndexSize(0, parts.length, 2);
         return new EmailAddress(parts[0], parts[1]);
     }
 }

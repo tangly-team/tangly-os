@@ -25,3 +25,6 @@ cp $prjDir/net.tangly.bus/readme.* $siteDir/content/bus/
 cp -R $prjDir/net.tangly.bus/src/site/* $siteDir/content/bus/
 cp -R $prjDir/net.tangly.bus/build/docs/javadoc/* $siteDir/static/bus/api-bus
 
+cp $prjDir/net.tangly.commons/readme.* $siteDir/content/commons/
+cp -R $prjDir/net.tangly.commons/src/site/* $siteDir/content/commons/
+cp -R $prjDir/net.tangly.commons/build/docs/javadoc/* $siteDir/static/commons/api-bus
