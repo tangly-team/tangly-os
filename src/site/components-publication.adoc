@@ -28,9 +28,10 @@ IMPORTANT: Set the property if you want to sign the component artifacts and publ
 
 . Update Hugo pipeline to run planUML with asciidoctor.
 Read the instructions in the asciidoctor script file under the scripts folder.
-. Three scripts are provided to generate the Hugo static site with associated structure and theme.
+. Four scripts are provided to generate the Hugo static site with associated structure and theme.
 .. the script __initiateHugo.sh__ creates.
-.. the script __populateHugo.sh__ and populates the site.
+.. the script __populateHugo.sh__ populates the site.
+.. the script __populateHugoImages.sh__ copies generated images at the expected location for hugo to service them.
 Upon completion you can start a local Hugo server and look at the site if desired.
 .. the script __completeHugo.sh__ generates the static pictures and copy them to the static folder and publish the whole site on bitbucket.
 Upon completion the site is published on the web for all.

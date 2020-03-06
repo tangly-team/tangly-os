@@ -1,6 +1,7 @@
 #!/bin/bash
 /usr/local/Cellar/asciidoctor/2.0.10/bin/asciidoctor_hugo -r asciidoctor-diagram -r pygments "$@"
 
+# both lines MUST be part of the shell script file to work correctly.
 # we manipulate the asciidoctor executable to always load a set of extensions. We must retrieve the used gem(s) used by asciidoctor for asciidoctor
 # sudo gem install asciidoctor-diagram
 # sudo gem install pygments.rb
