@@ -13,6 +13,8 @@
 
 package net.tangly.bdd;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -38,7 +40,7 @@ public class Phase {
      */
     private final List<String> ands;
 
-    public Phase(String text, Consumer<Scene> lambda) {
+    public Phase(String text, @NotNull Consumer<Scene> lambda) {
         this.text = text;
         this.lambda = lambda;
         this.ands = new ArrayList<>();
@@ -52,7 +54,7 @@ public class Phase {
         return text;
     }
 
-    public void and(String text, Consumer<Scene> lambda) {
+    public void and(String text, @NotNull Consumer<Scene> lambda) {
         this.lambda = this.lambda.andThen(lambda);
         ands.add(text);
     }

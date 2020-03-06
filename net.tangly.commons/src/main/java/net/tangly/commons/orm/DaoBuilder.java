@@ -71,7 +71,7 @@ public class DaoBuilder<T extends HasOid> {
     private Class<T> type;
     private List<Property<T>> properties;
     private List<PropertyOne2Many<T, ?>> relations;
-    private Reference<Dao<T>> self = new Reference<>();
+    private Reference<Dao<T>> self = Reference.empty();
 
 
     public DaoBuilder(@NotNull Class<T> type) {
@@ -166,7 +166,7 @@ public class DaoBuilder<T extends HasOid> {
     }
 
     public Dao<T> build(String schema, String entity, DataSource dataSource) throws NoSuchMethodException {
-        self.reference(new Dao<>(schema, entity, type, dataSource, properties, relations));
+        self = Reference.of(new Dao<>(schema, entity, type, dataSource, properties, relations));
         return self.reference();
     }
 }

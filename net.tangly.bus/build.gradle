@@ -19,13 +19,11 @@ project.ext.groupId= 'net.tangly'
 project.ext.artifactId ='bus'
 project.ext.moduleName = 'net.tangly.bus'
 project.ext.inceptionYear = '2016'
-project.version = "0.2.3"
-project.description = "Business Abstractions - BUS - using Java 11 or higher (tangly llc)"
+project.version = "0.2.4"
+project.description = "Business Abstractions - BUS - using Java 14 or higher (tangly llc)"
 
 dependencies {
     testCompile "org.hsqldb:hsqldb:2.5.0"
     testCompile "org.flywaydb:flyway-core:6.2.4"
     testCompile "org.json:json:20190722"
-
-
 }

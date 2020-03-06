@@ -18,9 +18,9 @@ plugins {
 project.ext.groupId = 'net.tangly'
 project.ext.artifactId ='commons'
 project.ext.moduleName = 'net.tangly.commons'
-project.version = "0.2.3"
+project.version = "0.2.4"
 project.ext.inceptionYear = '1996'
-project.description = "Commons data structures - using Java 11 or higher (tangly llc)"
+project.description = "Commons data structures - using Java 14 or higher (tangly llc)"
 
 
 dependencies {

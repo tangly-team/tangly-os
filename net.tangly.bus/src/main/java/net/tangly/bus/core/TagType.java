@@ -14,7 +14,6 @@
 package net.tangly.bus.core;
 
 import java.io.Serializable;
-import java.util.Objects;
 import java.util.function.BiPredicate;
 import java.util.function.Function;
 
@@ -24,7 +23,10 @@ import java.util.function.Function;
  *
  * @param <T> type of the tags
  */
-public class TagType<T extends Serializable> {
+public record TagType<T extends Serializable>(String namespace, String name, ValueKinds kind, Class<T>clazz, Function<String, T>convert,
+                                              BiPredicate<TagType<T>, T>validate) {
+    public enum ValueKinds {NONE, OPTIONAL, MANDATORY}
+
     /**
      * Defines the official geo tag for latitude.
      *
@@ -61,14 +63,6 @@ public class TagType<T extends Serializable> {
         return ofMandatory("geo", "region", String.class);
     }
 
-    public enum ValueKinds {NONE, OPTIONAL, MANDATORY}
-
-    private final String namespace;
-    private final String name;
-    private final ValueKinds kind;
-    private final Class<T> clazz;
-    private Function<String, T> convert;
-    private BiPredicate<TagType<T>, T> validate;
 
     public static <T extends Serializable> TagType<T> ofMandatory(String namespace, String name, Class<T> clazz, Function<String, T> convert,
                                                                   BiPredicate<TagType<T>, T> validate) {
@@ -80,43 +74,16 @@ public class TagType<T extends Serializable> {
     }
 
     public static <T extends Serializable> TagType<T> ofMandatory(String namespace, String name, Class<T> clazz) {
-        return new TagType<>(namespace, name, ValueKinds.MANDATORY, clazz);
+        return new TagType<>(namespace, name, ValueKinds.MANDATORY, clazz, null, null);
+    }
+
+    public static <T extends Serializable> TagType<T> ofOptional(String namespace, String name, Class<T> clazz, Function<String, T> convert,
+                                                                 BiPredicate<TagType<T>, T> validate) {
+        return new TagType<>(namespace, name, ValueKinds.OPTIONAL, clazz, convert, validate);
     }
 
     public static <T extends Serializable> TagType<T> ofOptional(String namespace, String name, Class<T> clazz) {
-        return new TagType<>(namespace, name, ValueKinds.OPTIONAL, clazz);
-    }
-
-    public TagType(String namespace, String name, ValueKinds kind, Class<T> clazz) {
-        this.namespace = Objects.requireNonNull(namespace);
-        this.name = Objects.requireNonNull(name);
-        this.kind = Objects.requireNonNull(kind);
-        this.clazz = clazz;
-    }
-
-    public TagType(String namespace, String name, ValueKinds kind, Class<T> clazz, Function<String, T> convert, BiPredicate<TagType<T>, T> validate) {
-        this.namespace = Objects.requireNonNull(namespace);
-        this.name = Objects.requireNonNull(name);
-        this.kind = Objects.requireNonNull(kind);
-        this.clazz = clazz;
-        this.convert = convert;
-        this.validate = validate;
-    }
-
-    public ValueKinds kind() {
-        return kind;
-    }
-
-    public String namespace() {
-        return namespace;
-    }
-
-    public String name() {
-        return name;
-    }
-
-    public Class<T> clazz() {
-        return clazz;
+        return new TagType<>(namespace, name, ValueKinds.OPTIONAL, clazz, null, null);
     }
 
     public boolean canHaveValue() {

@@ -24,7 +24,6 @@ public interface HasOwner extends HasOid {
      */
     long foid();
 
-
     /**
      * Sets the unique object identifier of the owning object.
      *

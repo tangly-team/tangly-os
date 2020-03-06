@@ -18,40 +18,12 @@ package net.tangly.commons.lang;
  *
  * @param <T> type of the reference
  */
-public class Reference<T> {
-    private T reference;
-
-    /**
-     * Constructor of the class.
-     *
-     * @param reference reference object
-     */
-    public Reference(T reference) {
-        this.reference = reference;
+public record Reference<T>(T reference) {
+    public static <T> Reference<T> empty() {
+        return new Reference<>(null);
     }
 
-    /**
-     * Constructor of the class to build an empty reference.
-     */
-    public Reference() {
-    }
-
-    /**
-     * Sets the referencec object.
-     *
-     * @param reference referenced object
-     */
-    public void reference(T reference) {
-        this.reference = reference;
-    }
-
-    /**
-     * Returns the reference object.
-     *
-     * @return referenced object
-     */
-
-    public T reference() {
-        return reference;
+    public static <T> Reference<T> of(T reference) {
+        return new Reference<>(reference);
     }
 }

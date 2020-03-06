@@ -18,32 +18,8 @@ import java.io.Serializable;
 /**
  * Describes a bank connection with IBAN account number, BIC identification and name of the institute. The class is immutable.
  */
-public class BankConnection implements Serializable {
+public record BankConnection(String iban, String bic, String institute) implements Serializable {
     public static BankConnection of(String iban, String bic, String institute) {
         return new BankConnection(iban, bic, institute);
-    }
-
-    private static final long serialVersionUID = 1L;
-
-    private final String iban;
-    private final String bic;
-    private final String institute;
-
-    public BankConnection(String iban, String bic, String institute) {
-        this.iban = iban;
-        this.bic = bic;
-        this.institute = institute;
-    }
-
-    public String iban() {
-        return iban;
-    }
-
-    public String bic() {
-        return bic;
-    }
-
-    public String institute() {
-        return institute;
     }
 }

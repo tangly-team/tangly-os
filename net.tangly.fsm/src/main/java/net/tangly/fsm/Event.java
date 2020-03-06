@@ -22,69 +22,13 @@ import java.util.List;
  *
  * @param <E> the event enumeration type uniquely identifying the event sent to the state machine
  */
-public class Event<E extends Enum<E>> {
+public record Event<E extends Enum<E>>(E type, List<Object> parameters) {
 
-    /**
-     * The identifier of the type of the event.
-     */
-    private final E type;
-
-    /**
-     * The parameters of this instance of event.
-     */
-    private final List<Object> parameters;
-
-    /**
-     * Constructor of the class.
-     *
-     * @param type       identifier of the type of the event
-     * @param parameters parameters of the event
-     */
-    public Event(E type, final List<Object> parameters) {
-        this.type = type;
-        this.parameters = (parameters != null) ? List.copyOf(parameters) : Collections.emptyList();
+    public static <E extends Enum<E>> Event<E> of(E type, Object... parameters) {
+        return new Event<>(type, List.of(parameters));
     }
 
-    /**
-     * Constructor of the class.
-     *
-     * @param type       identifier of the type of the event
-     * @param parameters parameters of the event
-     */
-    public Event(E type, Object... parameters) {
-        this(type, List.of(parameters));
-    }
-
-    /**
-     * Constructor of the class for an instance without parameters.
-     *
-     * @param type identifier of the type of the event
-     */
-    public Event(E type) {
-        this.type = type;
-        this.parameters = Collections.emptyList();
-    }
-
-    /**
-     * Returns the identifier of the event.
-     *
-     * @return the identifier of the event
-     */
-    public E type() {
-        return type;
-    }
-
-    /**
-     * Returns the parameters of the event.
-     *
-     * @return parameters of the event
-     */
-    public List<Object> parameters() {
-        return parameters;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("{type=%s, paramters=%s}", type, parameters.toString());
+    public static <E extends Enum<E>> Event<E> of(E type) {
+        return new Event<>(type, Collections.emptyList());
     }
 }

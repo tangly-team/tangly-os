@@ -11,8 +11,4 @@
  * under the License.
  */
 
-/**
- * The package provides core abstractions used in nay commercial application. The cornerstone of the entities is the comment and tags classes
- * providing a simple and powerful extension mechanisms for regular abstractions.
- */
-package net.tangly.bus.core;
+package net.tangly.commons.orm.imp;

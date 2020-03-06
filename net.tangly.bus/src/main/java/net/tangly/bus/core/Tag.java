@@ -14,6 +14,8 @@
 package net.tangly.bus.core;
 
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
@@ -26,8 +28,10 @@ import java.util.stream.Collectors;
  * The immutable class tag models a tag with a name and a format. Tags provide a powerful approach for multi-dimensional classifications of values.
  * All fields of a tag are strings. We provide the tag type to support conversions from string values to Java objects.
  */
-public class Tag implements Serializable {
-    private static final long serialVersionUID = 1L;
+public record Tag(String namespace, @NotNull String name, String value) implements Serializable {
+    public Tag() {
+        Objects.requireNonNull(name);
+    }
 
     /**
      * Transforms a collection of tags into their textual representation.
@@ -51,11 +55,11 @@ public class Tag implements Serializable {
         return Strings.isNullOrEmpty(rawTags) ? new HashSet<>() : Arrays.stream(rawTags.split(",")).map(Tag::parse).collect(Collectors.toSet());
     }
 
-    public static String namespace(String tag) {
+    public static String namespace(@NotNull String tag) {
         return tag.contains(":") ? tag.substring(0, tag.indexOf(':')) : null;
     }
 
-    public static String name(String tag) {
+    public static String name(@NotNull String tag) {
         return tag.substring((tag.contains(":") ? tag.indexOf(':') + 1 : 0), (tag.contains("=")) ? tag.indexOf('=') : tag.length());
     }
 
@@ -85,87 +89,11 @@ public class Tag implements Serializable {
     }
 
     /**
-     * The namespace of the tag identifying the domain
-     */
-    private final String namespace;
-
-    /**
-     * The name of the tag identifying the tag type and purpose.
-     */
-    private final String name;
-    /**
-     * The format of this tag instance.
-     */
-    private final String value;
-
-    /**
-     * Constructor of the class.
-     *
-     * @param namespace optional namespace of the tag
-     * @param name      name of the tag
-     * @param value     optional format of the tag
-     */
-    public Tag(String namespace, String name, String value) {
-        this.namespace = namespace;
-        this.name = Objects.requireNonNull(name);
-        this.value = value;
-    }
-
-    /**
      * Returns true if the tag has a format otherwise false.
      *
      * @return flag indicating if the tag has a format field
      */
     public boolean hasValue() {
         return value != null;
-    }
-
-    /**
-     * Returns the namespace of the tag.
-     *
-     * @return namespace of the tag
-     */
-    public String namespace() {
-        return namespace;
-    }
-
-    /**
-     * Returns the name of the tag.
-     *
-     * @return name of the tag
-     */
-    public String name() {
-        return name;
-    }
-
-    /**
-     * Returns the string representation of the tag format.
-     *
-     * @return string representation of the tag
-     */
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(namespace, name);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        final Tag other = (Tag) obj;
-        return Objects.equals(this.namespace, other.namespace) && Objects.equals(this.name, other.name) && Objects.equals(this.value, other.value);
-    }
-
-    @Override
-    public String toString() {
-        return ((namespace() != null ? namespace() + ":" : "") + name() + (value != null ? "=" + value() : ""));
     }
 }

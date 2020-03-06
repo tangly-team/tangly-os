@@ -124,18 +124,13 @@ public class Account {
     }
 
     public AccountGroup group() {
-        switch (kind()) {
-            case ASSET:
-                return AccountGroup.ASSETS;
-            case LIABILITY:
-                return AccountGroup.LIABILITIES;
-            case EXPENSE:
-            case INCOME:
-                return AccountGroup.PROFITS_AND_LOSSES;
-            case AGGREGATE:
-                return group;
-        }
-        return null;
+        return switch (kind()) {
+            case ASSET -> AccountGroup.ASSETS;
+            case LIABILITY -> AccountGroup.LIABILITIES;
+            case EXPENSE, INCOME -> AccountGroup.PROFITS_AND_LOSSES;
+            case AGGREGATE -> group;
+            default -> null;
+        };
     }
 
     /**
@@ -197,7 +192,6 @@ public class Account {
         entries.add(entry);
     }
 
-
     void updateAggregatedAccounts(Collection<Account> aggregatedAccounts) {
         this.aggregatedAccounts.clear();
         this.aggregatedAccounts.addAll(aggregatedAccounts);
@@ -213,6 +207,5 @@ public class Account {
         } else {
             return BigDecimal.ZERO;
         }
-
     }
 }

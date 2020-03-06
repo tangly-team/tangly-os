@@ -13,6 +13,8 @@
 
 package net.tangly.bdd;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +36,7 @@ public class Scene {
     private Phase when;
     private Phase then;
 
-    public Scene(Method method) {
+    public Scene(@NotNull Method method) {
         this.method = method;
         this.values = new HashMap<>();
     }

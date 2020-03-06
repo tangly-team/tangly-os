@@ -5,20 +5,5 @@ package net.tangly.commons.lang;
  *
  * @param <T> type of the interval, shall provide an ordering function
  */
-public class Interval<T extends Number> {
-    private final T lower;
-    private final T upper;
-
-    public Interval(T lower, T upper) {
-        this.lower = lower;
-        this.upper = upper;
-    }
-
-    public T lower() {
-        return lower;
-    }
-
-    public T upper() {
-        return upper;
-    }
+public record Interval<T extends Number>(T lower, T upper) {
 }

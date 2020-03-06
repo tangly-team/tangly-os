@@ -20,8 +20,8 @@ project.ext.groupId= 'net.tangly'
 project.ext.artifactId ='fsm'
 project.ext.moduleName = 'net.tangly.fsm'
 project.ext.inceptionYear = '1996'
-project.version = "0.2.3"
-project.description = "Hierarchical finite state machine library - FSM - using Java 11 or higher (tangly llc)"
+project.version = "0.2.4"
+project.description = "Hierarchical finite state machine library - FSM - using Java 14 or higher (tangly llc)"
 
 
 
