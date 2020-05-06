@@ -59,16 +59,16 @@ public class FsmEasyTest {
         State<FsmEasyTest, FsmEasyTest.States, FsmEasyTest.Events> root = build().definition();
         StateMachineImp<FsmEasyTest, FsmEasyTest.States, FsmEasyTest.Events> fsm = new StateMachineImp<>("easy-rules", root, this);
         assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.Locked)));
-        fsm.fire(new Event<Events>(Events.Push));
+        fsm.fire(Event.of(Events.Push));
         assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.Locked)));
         assertTrue(fsm.getActiveStates().size() == 2);
-        fsm.fire(new Event<Events>(Events.Coin));
+        fsm.fire(Event.of(Events.Coin));
         assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.Unlocked)));
         assertTrue(fsm.getActiveStates().size() == 2);
-        fsm.fire(new Event<Events>(Events.Coin));
+        fsm.fire(Event.of(Events.Coin));
         assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.Unlocked)));
         assertTrue(fsm.getActiveStates().size() == 2);
-        fsm.fire(new Event<Events>(Events.Push));
+        fsm.fire(Event.of(Events.Push));
         assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.Locked)));
         assertTrue(fsm.getActiveStates().size() == 2);
     }

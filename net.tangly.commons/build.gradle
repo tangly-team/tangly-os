@@ -33,6 +33,6 @@ dependencies {
     compile "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion"
     compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
 
-    testCompile "org.flywaydb:flyway-core:6.1.4"
+    testCompile "org.flywaydb:flyway-core:6.4.1"
 }
 

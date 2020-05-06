@@ -153,7 +153,7 @@ public class CrmCsvHdl {
         String locality = get(record, "locality");
         String region = get(record, "region");
         String country = get(record, "country");
-        return Address.builder().street(street).postcode(postcode).locality(locality).region(region).countryCode(country).build();
+        return Address.builder().street(street).postcode(postcode).locality(locality).region(region).country(country).build();
     }
 
     private static void updateEntity(@NotNull CSVRecord record, EntityImp entity) {

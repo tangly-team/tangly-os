@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
  * All fields of a tag are strings. We provide the tag type to support conversions from string values to Java objects.
  */
 public record Tag(String namespace, @NotNull String name, String value) implements Serializable {
-    public Tag() {
+    public Tag {
         Objects.requireNonNull(name);
     }
 
@@ -40,8 +40,8 @@ public record Tag(String namespace, @NotNull String name, String value) implemen
      * @return textual representation of the tags
      * @see Tag#toTags(String)
      */
-    public static String toString(Collection<Tag> tags) {
-        return tags.isEmpty() ? null : tags.stream().map(Tag::toString).collect(Collectors.joining(","));
+    public static String text(Collection<Tag> tags) {
+        return tags.isEmpty() ? null : tags.stream().map(Tag::text).collect(Collectors.joining(","));
     }
 
     /**
@@ -49,7 +49,7 @@ public record Tag(String namespace, @NotNull String name, String value) implemen
      *
      * @param rawTags textual representation of tags
      * @return set of the tag instances
-     * @see Tag#toString(Collection)
+     * @see Tag#text(Collection)
      */
     public static Set<Tag> toTags(String rawTags) {
         return Strings.isNullOrEmpty(rawTags) ? new HashSet<>() : Arrays.stream(rawTags.split(",")).map(Tag::parse).collect(Collectors.toSet());
@@ -95,5 +95,9 @@ public record Tag(String namespace, @NotNull String name, String value) implemen
      */
     public boolean hasValue() {
         return value != null;
+    }
+
+    public String text() {
+        return ((namespace() != null ? namespace() + ":" : "") + name() + (value != null ? "=" + value() : ""));
     }
 }

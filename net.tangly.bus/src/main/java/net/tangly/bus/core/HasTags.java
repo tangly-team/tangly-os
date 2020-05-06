@@ -86,11 +86,10 @@ public interface HasTags {
      * @return text representation of the tag set
      */
     default String getRawTags() {
-        return Tag.toString(tags());
+        return Tag.text(tags());
     }
 
     default void addRawTags(String rawTags) {
         Tag.toTags(rawTags).forEach(this::replace);
-
     }
 }

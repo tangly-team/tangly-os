@@ -25,11 +25,13 @@ You are welcome to contribute to the project with pull requests on Bitbucket. Yo
 If you find a bug or want to request a feature, please use the [issue tracker](https://bitbucket.org/tangly-team/tangly-os/issues).
 
 ## License
+
 The source code is licensed under [Apache license 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
 The documentation and examples are licensed under [Creative Common (CC Attribution 4.0 International)](https://creativecommons.org/licenses/by/4.0/).
 
 ## Awesome Sponsors and Developers
+
 Corporate sponsors are
 
 * [tangly llc](https://www.tangly.net)

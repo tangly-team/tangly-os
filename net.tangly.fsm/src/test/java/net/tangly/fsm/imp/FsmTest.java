@@ -186,7 +186,7 @@ class FsmTest {
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isTrue();
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.AA))).isTrue();
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.AB))).isFalse();
-        var event = new Event<>(Events.AA_AB);
+        var event = Event.of(Events.AA_AB);
         fsm.fire(event);
         assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isTrue();
@@ -209,7 +209,7 @@ class FsmTest {
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isTrue();
         assertThat(root.initialStates().contains(root.getStateFor(States.AA))).isTrue();
         assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
-        var event = new Event<>(Events.AA_AA);
+        var event = Event.of(Events.AA_AA);
         fsm.fire(event);
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isTrue();
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.AA))).isTrue();
@@ -228,7 +228,7 @@ class FsmTest {
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isTrue();
         assertThat(root.initialStates().contains(root.getStateFor(States.AA))).isTrue();
         assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
-        var event = new Event<>(Events.A_C);
+        var event = Event.of(Events.A_C);
         fsm.fire(event);
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isFalse();
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.AA))).isFalse();
@@ -248,7 +248,7 @@ class FsmTest {
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isTrue();
         assertThat(root.initialStates().contains(root.getStateFor(States.AA))).isTrue();
         assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
-        fsm.fire(new Event<>(Events.AA_B));
+        fsm.fire(Event.of(Events.AA_B));
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isFalse();
         assertThat(fsm.getActiveStates()).doesNotContain(root.getStateFor(States.AA));
         assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.B));
@@ -274,13 +274,13 @@ class FsmTest {
         assertThat(fsm.isRegistered(checker)).isTrue();
         fsm.reset();
         verify(handler, times(1)).wasReset();
-        fsm.fire(new Event<>(Events.AA_AB));
-        fsm.fire(new Event<>(Events.AB_AB));
-        fsm.fire(new Event<>(Events.AB_AA));
-        fsm.fire(new Event<>(Events.AA_AA));
-        fsm.fire(new Event<>(Events.AA_B));
-        fsm.fire(new Event<>(Events.BA_BB));
-        fsm.fire(new Event<>(Events.B_C));
+        fsm.fire(Event.of(Events.AA_AB));
+        fsm.fire(Event.of(Events.AB_AB));
+        fsm.fire(Event.of(Events.AB_AA));
+        fsm.fire(Event.of(Events.AA_AA));
+        fsm.fire(Event.of(Events.AA_B));
+        fsm.fire(Event.of(Events.BA_BB));
+        fsm.fire(Event.of(Events.B_C));
         fsm.removeEventHandler(handler);
         fsm.removeEventHandler(checker);
         assertThat(fsm.isRegistered(handler)).isFalse();
@@ -301,9 +301,9 @@ class FsmTest {
         assertThat(fsm.isRegistered(logger)).isTrue();
         fsm.reset();
         verify(handler, times(1)).wasReset();
-        fsm.fire(new Event<>(Events.AA_AA));
-        fsm.fire(new Event<>(Events.A_C));
-        fsm.fire(new Event<>(Events.C_C));
+        fsm.fire(Event.of(Events.AA_AA));
+        fsm.fire(Event.of(Events.A_C));
+        fsm.fire(Event.of(Events.C_C));
     }
 
     @Test
@@ -315,8 +315,8 @@ class FsmTest {
         fsm.addEventHandler(checker);
         assertThat(fsm.isRegistered(checker)).isTrue();
         fsm.reset();
-        assertThrows(IllegalStateException.class, () -> fsm.fire(new Event<>(Events.AA_AA)));
-        assertThrows(IllegalStateException.class, () -> fsm.fire(new Event<>(Events.A_C)));
+        assertThrows(IllegalStateException.class, () -> fsm.fire(Event.of(Events.AA_AA)));
+        assertThrows(IllegalStateException.class, () -> fsm.fire(Event.of(Events.A_C)));
     }
 
     /**

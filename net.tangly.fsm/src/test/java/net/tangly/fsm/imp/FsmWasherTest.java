@@ -67,13 +67,13 @@ class FsmWasherTest {
         assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.Running)));
         assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.Washing)));
         assertTrue(fsm.getHistoryStates().isEmpty());
-        fsm.fire(new Event<>(Events.Rinse));
+        fsm.fire(Event.of(Events.Rinse));
         assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.Rinsing)));
-        fsm.fire(new Event<>(Events.CutPower));
+        fsm.fire(Event.of(Events.CutPower));
         assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.PowerOff)));
         assertTrue(fsm.getHistoryStates().contains(root.getStateFor(States.Rinsing)));
         assertTrue(fsm.getHistoryStates().contains(root.getStateFor(States.Running)));
-        fsm.fire(new Event<>(Events.RestorePower));
+        fsm.fire(Event.of(Events.RestorePower));
         assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.Running)));
         assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.Rinsing)));
         assertTrue(fsm.getHistoryStates().isEmpty());

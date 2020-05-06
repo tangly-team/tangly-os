@@ -77,7 +77,7 @@ public class InvoiceTests {
         Product project = new Product("0002", "Technical project management", new BigDecimal("1400"));
 
         Address sellerAddress =
-                new Address.Builder().street("Bahnhofstrasse 1").postcode("6300").locality("Zug").region("ZG").countryCode("CH").build();
+                new Address.Builder().street("Bahnhofstrasse 1").postcode("6300").locality("Zug").region("ZG").country("CH").build();
         PhoneNr sellerPhoneNr = new PhoneNr("+41 79 778 8689");
 
         LegalEntity seller = LegalEntity.of(HasOid.UNDEFINED_OID);

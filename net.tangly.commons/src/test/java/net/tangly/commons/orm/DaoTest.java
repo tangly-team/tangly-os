@@ -155,7 +155,7 @@ class DaoTest {
         entities = new DaoBuilder<Entity>(Entity.class).withOid().withString("id").withString("name").withDate("fromDate").withDate("toDate")
                 .withString("text").withTags("tags").withCode("code", CodeType.of(EntityCode.class, Arrays.asList(EntityCode.values())))
                 .withOne2One("owner").withFid("ownedBy").withOne2Many("owned", "ownedBy")
-                .withOne2Many("comments", "ownedBy", new Reference<>(comments)).withJson("valuess", Value.class)
+                .withOne2Many("comments", "ownedBy", Reference.of(comments)).withJson("valuess", Value.class)
                 .build("tangly", "entities", datasource);
     }
 

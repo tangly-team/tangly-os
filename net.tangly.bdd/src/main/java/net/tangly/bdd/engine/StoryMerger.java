@@ -47,7 +47,7 @@ public class StoryMerger {
                     JSONObject feature = (JSONObject) report.get(0);
                     merge(feature);
                 } catch (IOException e) {
-                    throw new RuntimeException(e);
+                    throw new UncheckedIOException(e);
                 }
             });
         }

@@ -13,13 +13,15 @@
 
 package net.tangly.bus.crm;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 
 /**
  * Describes a bank connection with IBAN account number, BIC identification and name of the institute. The class is immutable.
  */
 public record BankConnection(String iban, String bic, String institute) implements Serializable {
-    public static BankConnection of(String iban, String bic, String institute) {
+    public static BankConnection of(@NotNull String iban, String bic, String institute) {
         return new BankConnection(iban, bic, institute);
     }
 }

@@ -1,6 +1,7 @@
 ---
 title: "Readme"
 date: 2019-05-01
+lastmod: 2020-05-01
 weight: 10
 draft: false
 ---
@@ -14,7 +15,9 @@ draft: false
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues-raw/tangly/tangly-os.svg)
 
 ## Purpose
-The **tangly fsm** is a finite state machine library written in Java 11 or higher. You can use it in productive projects and academic assignments.
+
+The **tangly fsm** is a finite state machine library. You can use it in productive projects and academic assignments.
+The component is using records and requires **Java 14 or higher**.
 
 The library provides
 
@@ -34,20 +37,21 @@ The library provides
   * PlantUML UML finite hierarchical state machine representation
 
 ## Download and Documentation
+
 The library can be included in Maven as
 
 ```xml
     <dependency>
       <groupId>net.tangly</groupId>
       <artifactId>fsm</artifactId>
-      <version>0.2.3</version>
+      <version>0.2.4</version>
     </dependency>
 ```    
 
 The library can be included in Gradle as
 
 ```
-    implementation "net.tangly:fsm:0.2.3"
+    implementation "net.tangly:fsm:0.2.4"
 ```
  
 The documentation can be found under [FSM documentation](https://tangly-team.bitbucket.io)
@@ -62,11 +66,13 @@ You are welcome to contribute to the project with pull requests on Bitbucket. Yo
 If you find a bug or want to request a feature, please use the [issue tracker](https://bitbucket.org/tangly-team/tangly-os/issues).
 
 ## License
+
 The source code is licensed under [Apache license 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
 The documentation and examples are licensed under [Creative Common (CC Attribution 4.0 International)](https://creativecommons.org/licenses/by/4.0/).
 
 ## Awesome Sponsors and Developers
+
 Corporate sponsors are
 
 * [tangly llc](https://www.tangly.net)

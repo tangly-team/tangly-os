@@ -13,7 +13,7 @@
 
 plugins {
     id 'war'
-    id 'org.gretty' version '3.0.1'
+    id 'org.gretty' version '3.0.2'
     id "com.vaadin" version "0.6.0"
 }
 
@@ -31,7 +31,7 @@ vaadin {
 dependencies {
     compile project (':net.tangly.commons')
 
-    implementation enforcedPlatform('com.vaadin:vaadin-bom:15.0.0')
+    implementation enforcedPlatform('com.vaadin:vaadin-bom:15.0.5')
     implementation("com.vaadin:vaadin-core")
     providedCompile "javax.servlet:javax.servlet-api:3.1.0"
 

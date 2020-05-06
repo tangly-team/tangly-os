@@ -168,6 +168,6 @@ public class Comment implements HasOid, HasTags, Serializable {
 
     @Override
     public String toString() {
-        return String.format("created=%1$%tF-%1$%tT, author=%2$s, text=%3$s, tags=%4$s", created, author, text, Tag.toString(tags));
+        return String.format("created=%1$%tF-%1$%tT, author=%2$s, text=%3$s, tags=%4$s", created, author, text, Tag.text(tags));
     }
 }

@@ -25,9 +25,8 @@ import java.util.Objects;
 import java.util.function.BiConsumer;
 
 /**
- * The state machine logger documents all activities performed during the firing of events for a
- * specific finite state machine instance. All logs have the following structure:
- * machine_name[machine_oid] operation operation parameters
+ * The state machine logger documents all activities performed during the firing of events for a specific finite state machine instance. All logs have
+ * the following structure: machine_name[machine_oid] operation operation parameters
  */
 public class StateMachineLogger<O, S extends Enum<S>, E extends Enum<E>> implements StateMachineEventHandler<O, S, E> {
     /**
@@ -40,7 +39,6 @@ public class StateMachineLogger<O, S extends Enum<S>, E extends Enum<E>> impleme
      */
     private final StateMachine<O, S, E> machine;
 
-
     /**
      * Constructor of the class
      *
@@ -52,56 +50,56 @@ public class StateMachineLogger<O, S extends Enum<S>, E extends Enum<E>> impleme
 
     @Override
     public void processEvent(Event<E> event) {
-        logger.debug("machine [{}] Process Event : event->{}", machine, event);
+        logger.atDebug().log("machine [{}] Process Event : event->{}", machine, event);
     }
 
     @Override
     public void wasReset() {
-        logger.debug("machine [{}] reset machine : <none>", machine);
+        logger.atDebug().log("machine [{}] reset machine : <none>", machine);
     }
 
     @Override
     public void fireLocalTransition(Transition<O, S, E> transition, Event<E> event) {
-        logger.debug("machine [{}]: event->{}, fire local transition {} ", machine, event, transition);
+        logger.atDebug().log("machine [{}]: event->{}, fire local transition {} ", machine, event, transition);
     }
 
     @Override
     public void fireTransition(Transition<O, S, E> transition, Event<E> event) {
-        logger.debug("machine [{}]: event->{}, fire transition->{}", machine, event, transition);
+        logger.atDebug().log("machine [{}]: event->{}, fire transition->{}", machine, event, transition);
     }
 
     @Override
     public void executeEntryAction(State<O, S, E> state, Event<E> event) {
-        logger.debug("machine [{}] : event->{}, execute entry action for state->{}", machine, event, state);
+        logger.atDebug().log("machine [{}] : event->{}, execute entry action for state->{}", machine, event, state);
     }
 
     @Override
     public void executeExitAction(State<O, S, E> state, Event<E> event) {
-        logger.debug("machine [{}] : event->{}, execute exit action for state->{}", machine, event, state);
+        logger.atDebug().log("machine [{}] : event->{}, execute exit action for state->{}", machine, event, state);
     }
 
     @Override
     public void enterState(State<O, S, E> state) {
-        logger.debug("machine [{}] : enter state {}", machine, state);
+        logger.atDebug().log("machine [{}] : enter state {}", machine, state);
     }
 
     @Override
     public void exitState(State<O, S, E> state) {
-        logger.debug("machine [{}] : exit state {}", machine, state);
+        logger.atDebug().log("machine [{}] : exit state {}", machine, state);
     }
 
 
     @Override
     public void throwException(Transition<O, S, E> transition, Event<E> event, Exception exception) {
-        logger.error("machine [{}]: event->{}, transition->{}, exception->{}", machine, event, transition, exception);
+        logger.atError().log("machine [{}]: event->{}, transition->{}, exception->{}", machine, event, transition, exception);
     }
 
     @Override
     public void throwException(State<O, S, E> state, BiConsumer<O, Event<E>> action, Event<E> event, Exception exception) {
         if (Objects.equals(action, state.entryAction())) {
-            logger.error("machine [{}]: event->{}, state->{}, entry action exception->{}", machine, event, state, exception);
+            logger.atError().log("machine [{}]: event->{}, state->{}, entry action exception->{}", machine, event, state, exception);
         } else if (Objects.equals(action, state.exitAction())) {
-            logger.error("machine [{}]: event->{}, state->{}, exit action exception->{}", machine, event, state, exception);
+            logger.atError().log("machine [{}]: event->{}, state->{}, exit action exception->{}", machine, event, state, exception);
         }
     }
 }

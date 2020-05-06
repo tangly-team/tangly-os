@@ -15,11 +15,15 @@ package net.tangly.bus.core;
 
 public final class Strings {
     public static boolean isNullOrEmpty(String string) {
-        return string == null || string.isEmpty();
+        return string == null || string.isBlank();
     }
 
     public static boolean isNullOrBlank(String string) {
         return string == null || string.isBlank();
+    }
+
+    public static String blankToNull(String string) {
+        return isNullOrBlank(string) ? null : string;
     }
 
     public static String emptyToNull(String string) {

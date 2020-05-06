@@ -1,6 +1,7 @@
 ---
 title: "Readme"
 date: 2019-05-01
+lastmod: 2020-05-01
 weight: 10
 draft: false
 ---
@@ -34,22 +35,24 @@ The library can be included in Maven as
     <dependency>
       <groupId>net.tangly</groupId>
       <artifactId>bdd</artifactId>
-      <version>0.2.3</version>
+      <version>0.2.4</version>
     </dependency>
 ```    
 
 The library can be included in Gradle as
 
 ```
-    testImplementation "net.tangly:bdd:0.2.3"
+    testImplementation "net.tangly:bdd:0.2.4"
 ```
 
 ## License
+
 The source code is licensed under [Apache license 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
 The documentation and examples are licensed under [Creative Common (CC Attribution 4.0 International)](https://creativecommons.org/licenses/by/4.0/).
 
 ## Awesome Sponsors and Developers
+
 Corporate sponsors are
 
 * [tangly llc](https://www.tangly.net)

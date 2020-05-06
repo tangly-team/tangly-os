@@ -29,36 +29,36 @@ class FsmBbvTest {
     @Test
     void simplyTurnOnAndOffTest() {
         var fsm = createFsm();
-        fsm.fire(new Event<>(FsmBbv.Events.TogglePower));
-        fsm.fire(new Event<>(FsmBbv.Events.TogglePower));
+        fsm.fire(Event.of(FsmBbv.Events.TogglePower));
+        fsm.fire(Event.of(FsmBbv.Events.TogglePower));
         assertThat(fsm.context().consumeLog()).isEqualTo("entryOff.exitOff.OffToOn.entryOn.entryDAB.exitDAB.exitOn.OnToOff.entryOff");
     }
 
     @Test
     void turnOnToggleModeTurnOffTurnOnTest() {
         var fsm = createFsm();
-        fsm.fire(new Event<>(FsmBbv.Events.TogglePower));
+        fsm.fire(Event.of(FsmBbv.Events.TogglePower));
         assertThat(fsm.context().consumeLog()).isEqualTo("entryOff.exitOff.OffToOn.entryOn.entryDAB");
-        fsm.fire(new Event<>(FsmBbv.Events.ToggleMode));
+        fsm.fire(Event.of(FsmBbv.Events.ToggleMode));
         assertThat(fsm.context().consumeLog()).isEqualTo("exitDAB.DABtoFM.entryFM.entryPlay");
-        fsm.fire(new Event<>(FsmBbv.Events.TogglePower));
+        fsm.fire(Event.of(FsmBbv.Events.TogglePower));
         assertThat(fsm.context().consumeLog()).isEqualTo("exitPlay.exitFM.exitOn.OnToOff.entryOff");
-        fsm.fire(new Event<>(FsmBbv.Events.TogglePower));
+        fsm.fire(Event.of(FsmBbv.Events.TogglePower));
         assertThat(fsm.context().consumeLog()).isEqualTo("exitOff.OffToOn.entryOn.entryFM.entryPlay");
     }
 
     @Test
     void turnOnToggleModeStationLostTurnOffTurnOnTest() {
         var fsm = createFsm();
-        fsm.fire(new Event<>(FsmBbv.Events.TogglePower));
+        fsm.fire(Event.of(FsmBbv.Events.TogglePower));
         assertThat(fsm.context().consumeLog()).isEqualTo("entryOff.exitOff.OffToOn.entryOn.entryDAB");
-        fsm.fire(new Event<>(FsmBbv.Events.ToggleMode));
+        fsm.fire(Event.of(FsmBbv.Events.ToggleMode));
         assertThat(fsm.context().consumeLog()).isEqualTo("exitDAB.DABtoFM.entryFM.entryPlay");
-        fsm.fire(new Event<>(FsmBbv.Events.StationLost));
+        fsm.fire(Event.of(FsmBbv.Events.StationLost));
         assertThat(fsm.context().consumeLog()).isEqualTo("exitPlay.PlayToAutoTune.entryAutoTune");
-        fsm.fire(new Event<>(FsmBbv.Events.TogglePower));
+        fsm.fire(Event.of(FsmBbv.Events.TogglePower));
         assertThat(fsm.context().consumeLog()).isEqualTo("exitAutoTune.exitFM.exitOn.OnToOff.entryOff");
-        fsm.fire(new Event<>(FsmBbv.Events.TogglePower));
+        fsm.fire(Event.of(FsmBbv.Events.TogglePower));
         assertThat(fsm.context().consumeLog()).isEqualTo("exitOff.OffToOn.entryOn.entryFM.entryAutoTune");
     }
 
@@ -66,27 +66,27 @@ class FsmBbvTest {
     void whenMaintenanceTurnOnTurnOffTest() {
         var fsm = createFsm();
         fsm.context().setMaintenance(true);
-        fsm.fire(new Event<>(FsmBbv.Events.TogglePower));
+        fsm.fire(Event.of(FsmBbv.Events.TogglePower));
         assertThat(fsm.context().consumeLog()).isEqualTo("entryOff.exitOff.OffToMaintenance.entryMaintenance");
-        fsm.fire(new Event<>(FsmBbv.Events.TogglePower));
+        fsm.fire(Event.of(FsmBbv.Events.TogglePower));
         assertThat(fsm.context().consumeLog()).isEqualTo("exitMaintenance.MaintenanceToOff.entryOff");
     }
 
     @Test
     void whenDabStoreStationTest() {
         var fsm = createFsm();
-        fsm.fire(new Event<>(FsmBbv.Events.TogglePower));
-        fsm.fire(new Event<>(FsmBbv.Events.StoreStation));
+        fsm.fire(Event.of(FsmBbv.Events.TogglePower));
+        fsm.fire(Event.of(FsmBbv.Events.StoreStation));
         assertThat(fsm.context().consumeLog()).isEqualTo("entryOff.exitOff.OffToOn.entryOn.entryDAB.DABToDAB");
     }
 
     @Test
     void whenPlayStoreStationTest() {
         var fsm = createFsm();
-        fsm.fire(new Event<>(FsmBbv.Events.TogglePower));
+        fsm.fire(Event.of(FsmBbv.Events.TogglePower));
         assertThat(fsm.context().consumeLog()).isEqualTo("entryOff.exitOff.OffToOn.entryOn.entryDAB");
-        fsm.fire(new Event<>(FsmBbv.Events.ToggleMode));
-        fsm.fire(new Event<>(FsmBbv.Events.StoreStation));
+        fsm.fire(Event.of(FsmBbv.Events.ToggleMode));
+        fsm.fire(Event.of(FsmBbv.Events.StoreStation));
         assertThat(fsm.context().consumeLog()).isEqualTo("exitDAB.DABtoFM.entryFM.entryPlay.PlayToPlay");
     }
 
@@ -103,8 +103,8 @@ class FsmBbvTest {
         var fsm1 = builder.machine("test-fsm1", new FsmBbv());
         var fsm2 = builder.machine("test-fsm2", new FsmBbv());
         fsm1.context().setMaintenance(true);
-        fsm1.fire(new Event<>(FsmBbv.Events.TogglePower));
-        fsm2.fire(new Event<>(FsmBbv.Events.TogglePower));
+        fsm1.fire(Event.of(FsmBbv.Events.TogglePower));
+        fsm2.fire(Event.of(FsmBbv.Events.TogglePower));
         assertThat(fsm1.context().consumeLog()).isEqualTo("entryOff.exitOff.OffToMaintenance.entryMaintenance");
         assertThat(fsm2.context().consumeLog()).isEqualTo("entryOff.exitOff.OffToOn.entryOn.entryDAB");
     }

@@ -139,7 +139,7 @@ public class InvoiceAsciiDoc {
         qrAddress.setHouseNo(null);
         qrAddress.setPostalCode(address.postcode());
         qrAddress.setTown(address.locality());
-        qrAddress.setCountryCode(address.countryCode());
+        qrAddress.setCountryCode(address.country());
         return qrAddress;
     }
 }

@@ -64,7 +64,7 @@ class Server extends LocalActor<Server, ServerStates, Events> implements Actor<E
     private void processRequest(Event<Events> event) {
         nrRequests++;
         var clientName = (String) (event.parameters().get(0));
-        LocalActors.instance().sendEventTo(new Event<>(Events.Response, name(), clientName), clientName);
+        LocalActors.instance().sendEventTo(Event.of(Events.Response, name(), clientName), clientName);
     }
 }
 
@@ -89,7 +89,7 @@ class Client extends LocalActor<Client, ClientStates, Events> implements Actor<E
 
     private void sendRequestToServer(Event<Events> event) {
         var serverName = (String) (event.parameters().get(1));
-        LocalActors.instance().sendEventTo(new Event<>(Events.Request, name(), serverName), serverName);
+        LocalActors.instance().sendEventTo(Event.of(Events.Request, name(), serverName), serverName);
         nrRequests++;
     }
 

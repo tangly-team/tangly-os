@@ -1,12 +1,13 @@
 #!/bin/bash
-/usr/local/Cellar/asciidoctor/2.0.10/bin/asciidoctor_hugo -r asciidoctor-diagram -r pygments "$@"
+/usr/local/Cellar/asciidoctor/2.0.10_1/bin/asciidoctor_hugo -a stem -r asciidoctor-diagram -r pygments "$@"
 
 # both lines MUST be part of the shell script file to work correctly.
 # we manipulate the asciidoctor executable to always load a set of extensions. We must retrieve the used gem(s) used by asciidoctor for asciidoctor
 # sudo gem install asciidoctor-diagram
 # sudo gem install pygments.rb
+# sudo gem install asciimath
 
 # change asciidoctor to load the gem into asciidoctor when called from ruby and support diagrams and pygments. This operation is needed each time
-# sciidoctor is upgraded through homebrew
+# asciidoctor is upgraded through homebrew
 # mv asciidoctor asciidoctor_hugo
 # sudo chmod +x ./asciidoctor

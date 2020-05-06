@@ -64,8 +64,8 @@ public class DaoBuilder<T extends HasOid> {
                     Property.ConverterType.java2text, Object::toString, Property.ConverterType.text2java,
                     (Function<String, Object>) LocalDateTime::parse);
     private static Map<Property.ConverterType, Function<?, ?>> TAGS_CONVERTER =
-            Map.of(Property.ConverterType.java2jdbc, (Function<Set<Tag>, Object>) Tag::toString, Property.ConverterType.jdbc2java,
-                    (Function<String, Object>) Tag::toTags, Property.ConverterType.java2text, (Function<Set<Tag>, Object>) Tag::toString,
+            Map.of(Property.ConverterType.java2jdbc, (Function<Set<Tag>, Object>) Tag::text, Property.ConverterType.jdbc2java,
+                    (Function<String, Object>) Tag::toTags, Property.ConverterType.java2text, (Function<Set<Tag>, Object>) Tag::text,
                     Property.ConverterType.text2java, (Function<String, Object>) Tag::toTags);
 
     private Class<T> type;
@@ -166,7 +166,7 @@ public class DaoBuilder<T extends HasOid> {
     }
 
     public Dao<T> build(String schema, String entity, DataSource dataSource) throws NoSuchMethodException {
-        self = Reference.of(new Dao<>(schema, entity, type, dataSource, properties, relations));
+        self.reference(new Dao<>(schema, entity, type, dataSource, properties, relations));
         return self.reference();
     }
 }

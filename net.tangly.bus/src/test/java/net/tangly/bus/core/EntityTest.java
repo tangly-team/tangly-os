@@ -55,13 +55,12 @@ class EntityTest {
         final String POBOX = "Postfach 101";
         final String STREET = "Rigistrasse 1";
         var entity = Entity.of();
-        entity.address(
-                new Address.Builder().countryCode(COUNTRY).region("ZG").locality(LOCALITY).postcode("6300").street(STREET).poBox(POBOX).build());
-        assertThat(entity.address().countryCode()).isEqualTo(COUNTRY);
+        entity.address(Address.builder().country(COUNTRY).region("ZG").locality(LOCALITY).postcode("6300").street(STREET).poBox(POBOX).build());
+        assertThat(entity.address().country()).isEqualTo(COUNTRY);
         assertThat(entity.address().poBox()).isEqualTo(POBOX);
         assertThat(entity.address().street()).isEqualTo(STREET);
         assertThat(entity.address().locality()).isEqualTo(LOCALITY);
-        assertThat(Address.of(entity.address().toString())).isEqualTo(entity.address());
+        assertThat(Address.of(entity.address().text())).isEqualTo(entity.address());
     }
 
     @Test
