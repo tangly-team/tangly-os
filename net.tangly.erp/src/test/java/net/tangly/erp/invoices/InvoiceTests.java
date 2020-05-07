@@ -41,9 +41,6 @@ import java.time.LocalDate;
 import java.util.Currency;
 import java.util.List;
 
-/**
- * Created by marcelbaumann on 01.05.17.
- */
 public class InvoiceTests {
 
     @Test

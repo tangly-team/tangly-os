@@ -14,7 +14,7 @@
 project.ext.groupId = 'net.tangly'
 project.ext.artifactId = 'crm'
 project.ext.moduleName = 'net.tangly.crm'
-project.version = "0.2.0"
+project.version = "0.2.4"
 project.ext.inceptionYear = '1996'
 project.description = "ERP models (tangly llc)"
 
@@ -25,7 +25,8 @@ repositories {
 }
 
 dependencies {
-    compile project(':net.tangly.commons')
+    implementation project(':net.tangly.commons')
+    implementation project(':net.tangly.bus')
 
     implementation 'org.apache.commons:commons-csv:1.8'
     implementation 'org.hsqldb:hsqldb:2.5.0'
@@ -33,4 +34,10 @@ dependencies {
     implementation 'org.mustangproject.ZUGFeRD:mustang:1.7.6'
     implementation 'org.asciidoctor:asciidoctorj:2.3.0'
     implementation 'org.asciidoctor:asciidoctorj-pdf:1.5.3'
+
+    testImplementation "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
+    testImplementation "com.fasterxml.jackson.module:jackson-module-parameter-names:$jacksonVersion"
+    testImplementation "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion"
+    testImplementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
+
 }

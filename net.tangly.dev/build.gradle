@@ -14,10 +14,10 @@
 project.ext.groupId = 'net.tangly'
 project.ext.artifactId ='dev'
 project.ext.moduleName = 'net.tangly.dev'
-project.version = "0.2.0"
+project.version = "0.2.4"
 project.ext.inceptionYear = '1996'
 project.description = "Development Utilities(tangly llc)"
 
 dependencies {
-    compile project (':net.tangly.commons')
+    implementation project (':net.tangly.commons')
 }

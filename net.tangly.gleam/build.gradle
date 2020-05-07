@@ -15,5 +15,5 @@ project.ext.groupId= 'net.tangly'
 project.ext.artifactId ='gleam'
 project.ext.moduleName = 'net.tangly.gleam'
 project.ext.inceptionYear = '1996'
-project.version = "0.2.3"
+project.version = "0.2.4"
 project.description = "Model Driven Design library (tangly llc)"

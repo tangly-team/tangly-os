@@ -24,15 +24,15 @@ project.description = "Commons data structures - using Java 14 or higher (tangly
 
 
 dependencies {
-    compile project (':net.tangly.bus')
-    compile "org.hsqldb:hsqldb:2.5.0"
-    compile "javax.inject:javax.inject:1"
+    implementation project(':net.tangly.bus')
+    implementation "org.hsqldb:hsqldb:2.5.0"
+    implementation "javax.inject:javax.inject:1"
 
-    compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
-    compile "com.fasterxml.jackson.module:jackson-module-parameter-names:$jacksonVersion"
-    compile "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion"
-    compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
+    implementation "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
+    implementation "com.fasterxml.jackson.module:jackson-module-parameter-names:$jacksonVersion"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
 
-    testCompile "org.flywaydb:flyway-core:6.4.1"
+    testImplementation "org.flywaydb:flyway-core:6.4.1"
 }
 

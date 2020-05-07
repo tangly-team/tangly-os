@@ -16,6 +16,9 @@ package net.tangly.bdd.engine;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.json.JSONException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -33,6 +36,11 @@ import java.util.stream.Stream;
  * one method.
  */
 public class StoryMerger {
+    /**
+     * /** The logger of the instance.
+     */
+    private static final Logger logger = LoggerFactory.getLogger(StoryMerger.class);
+
     private final JSONArray features;
 
     public StoryMerger() {
@@ -48,6 +56,8 @@ public class StoryMerger {
                     merge(feature);
                 } catch (IOException e) {
                     throw new UncheckedIOException(e);
+                } catch (JSONException e) {
+                    logger.atInfo().log("File {} is incorrect due to parallel writing", t);
                 }
             });
         }

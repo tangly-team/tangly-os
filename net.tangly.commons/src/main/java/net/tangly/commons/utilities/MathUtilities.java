@@ -43,6 +43,6 @@ public class MathUtilities {
     public static Interval<Integer> confidence(int[] values, double confidence) {
         int lower = (int) Math.round(((double) (values.length) / 2) - (confidence * Math.pow(values.length * 0.25, 0.5)));
         int upper = (int) Math.round(((double) (values.length) / 2) + (confidence * Math.pow(values.length * 0.25, 0.5)));
-        return new Interval(values[lower], values[upper]);
+        return new Interval<>(values[lower], values[upper]);
     }
 }
