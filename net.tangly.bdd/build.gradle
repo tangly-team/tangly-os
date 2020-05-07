@@ -11,6 +11,10 @@
  * under the License.
  */
 
+plugins {
+    id 'java-library'
+}
+
 project.ext.groupId= 'net.tangly'
 project.ext.artifactId ='bdd'
 project.ext.moduleName = 'net.tangly.bdd'
@@ -21,4 +25,8 @@ project.description = "JUnit 5 BDD - (using Java 14 or higher (tangly llc)"
 dependencies {
     implementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
     implementation "org.json:json:20190722"
+}
+
+java {
+    modularity.inferModulePath.set(true)
 }
