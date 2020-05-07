@@ -27,7 +27,7 @@ import java.util.List;
  * to generate reports. A simple POJO is used for this purpose. We name this class “StoryDetails”. The following code snippet demonstrates the process
  * of creating an instance of this class and save the elements of the annotation into the instance.
  */
-class StoryRun {
+public class StoryRun {
     private final Class<?> clazz;
     private final List<Scene> scenes;
 

@@ -79,11 +79,11 @@ public class StoryAsciiDocPublisher {
 
     private void clause(JSONObject scenario, String clause) {
         JSONObject segment = (JSONObject) scenario.get(clause);
-        writer.append("*" + clause + "* " + segment.getString(Constants.TEXT));
+        writer.append("*").append(clause).append("* ").append(segment.getString(Constants.TEXT));
         JSONArray ands = segment.optJSONArray(Constants.AND);
         if (ands != null) {
             for (var item : ands) {
-                writer.append(" *and* " + (String) item);
+                writer.append(" *and* ").append((String) item);
             }
         }
         writer.println();
