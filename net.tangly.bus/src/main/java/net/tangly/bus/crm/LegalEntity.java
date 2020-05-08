@@ -24,14 +24,14 @@ import net.tangly.bus.core.Tag;
 public class LegalEntity extends EntityImp implements CrmEntity {
     private static final long serialVersionUID = 1L;
 
+    public LegalEntity() {
+        // default constructor
+    }
+
     public static LegalEntity of(long oid) {
         LegalEntity entity = new LegalEntity();
         entity.oid(oid);
         return entity;
-    }
-
-    public LegalEntity() {
-        // default constructor
     }
 
     /**

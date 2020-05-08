@@ -16,6 +16,7 @@ package net.tangly.bus.codes;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -26,6 +27,9 @@ import java.util.stream.Collectors;
  * @param <T> reference code type
  */
 public class CodeType<T extends Code> {
+    private final Class<T> clazz;
+    private final List<T> codes;
+
     /**
      * Builder for a reference code implemented as an enumeration. Provides a simple approach to map any enumeration type into a reference code.
      *
@@ -49,9 +53,6 @@ public class CodeType<T extends Code> {
     public static <E extends Code> CodeType<E> of(Class<E> clazz, List<E> codes) {
         return new CodeType<>(clazz, codes);
     }
-
-    private final Class<T> clazz;
-    private final List<T> codes;
 
     /**
      * Constructor of the class representing the type of the reference code and all existing instances.
@@ -79,7 +80,7 @@ public class CodeType<T extends Code> {
      * @return list of codes of the code table
      */
     public List<T> codes() {
-        return codes;
+        return Collections.unmodifiableList(codes);
     }
 
     /**

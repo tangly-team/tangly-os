@@ -13,7 +13,7 @@
 
 plugins {
     id 'war'
-    id 'org.gretty' version '3.0.2'
+    id 'org.gretty' version "3.0.3"
     id "com.vaadin" version "0.6.0"
 }
 

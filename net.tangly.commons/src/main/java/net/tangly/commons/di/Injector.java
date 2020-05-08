@@ -101,5 +101,5 @@ public interface Injector {
      * @param <T>   generic type of the class
      * @return instance compatible with the given clsass
      */
-    public <T> T instance(@NotNull Class<T> clazz);
+    <T> T instance(@NotNull Class<T> clazz);
 }

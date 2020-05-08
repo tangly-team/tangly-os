@@ -19,8 +19,8 @@ import net.tangly.bus.crm.Employee;
 import java.time.LocalDate;
 
 /**
- * An assignment defines connection of an employee to a project for a duration. The start date shall be equal or greater to the
- * start date of project. The end date is optional, if defined it shall smaller or equal to the end date of the project.
+ * An assignment defines connection of an employee to a project for a duration. The start date shall be equal or greater to the start date of project.
+ * The end date is optional, if defined it shall smaller or equal to the end date of the project.
  */
 public class Assignment implements HasId {
     private static final long serialVersionUID = 1L;

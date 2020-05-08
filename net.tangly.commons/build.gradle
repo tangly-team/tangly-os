@@ -33,6 +33,6 @@ dependencies {
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion"
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
 
-    testImplementation "org.flywaydb:flyway-core:6.4.1"
+    testImplementation "org.flywaydb:flyway-core:$flyWayVersion"
 }
 

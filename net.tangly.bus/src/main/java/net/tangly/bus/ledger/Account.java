@@ -35,14 +35,6 @@ public class Account {
 
     public enum AccountGroup {ASSETS, LIABILITIES, EXPENSES, PROFITS_AND_LOSSES}
 
-    public static Account of(int id, AccountKind kind, String description, String ownedByGroupId) {
-        return new Account(Integer.toString(id), kind, Currency.getInstance("CHF"), description, ownedByGroupId);
-    }
-
-    public static Account of(String id, AccountGroup group, String description, String ownedByGroupId) {
-        return new Account(id, AccountKind.AGGREGATE, group, Currency.getInstance("CHF"), description, ownedByGroupId);
-    }
-
     /**
      * Unique identifier of the account in the ledger context.
      */
@@ -82,6 +74,14 @@ public class Account {
      * Entries describing the bookings on the account.
      */
     private final List<AccountEntry> entries;
+
+    public static Account of(int id, AccountKind kind, String description, String ownedByGroupId) {
+        return new Account(Integer.toString(id), kind, Currency.getInstance("CHF"), description, ownedByGroupId);
+    }
+
+    public static Account of(String id, AccountGroup group, String description, String ownedByGroupId) {
+        return new Account(id, AccountKind.AGGREGATE, group, Currency.getInstance("CHF"), description, ownedByGroupId);
+    }
 
     public Account(String id, AccountKind kind, Currency currency, String description, String ownedBy) {
         this(id, kind, null, currency, description, ownedBy);

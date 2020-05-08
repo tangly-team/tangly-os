@@ -18,7 +18,7 @@ import net.tangly.fsm.State;
 import net.tangly.fsm.dsl.FsmBuilder;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * The test implements the final state machine modeling a washing machine.
@@ -64,18 +64,18 @@ class FsmWasherTest {
     void testTransitions() {
         State<FsmWasherTest, States, Events> root = build().definition();
         StateMachineImp<FsmWasherTest, States, Events> fsm = new StateMachineImp<>("Washer", root, this);
-        assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.Running)));
-        assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.Washing)));
-        assertTrue(fsm.getHistoryStates().isEmpty());
+        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.Running))).isTrue();
+        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.Washing))).isTrue();
+        assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
         fsm.fire(Event.of(Events.Rinse));
-        assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.Rinsing)));
+        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.Rinsing))).isTrue();
         fsm.fire(Event.of(Events.CutPower));
-        assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.PowerOff)));
-        assertTrue(fsm.getHistoryStates().contains(root.getStateFor(States.Rinsing)));
-        assertTrue(fsm.getHistoryStates().contains(root.getStateFor(States.Running)));
+        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.PowerOff))).isTrue();
+        assertThat(fsm.getHistoryStates().contains(root.getStateFor(States.Rinsing))).isTrue();
+        assertThat(fsm.getHistoryStates().contains(root.getStateFor(States.Running))).isTrue();
         fsm.fire(Event.of(Events.RestorePower));
-        assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.Running)));
-        assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.Rinsing)));
-        assertTrue(fsm.getHistoryStates().isEmpty());
+        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.Running))).isTrue();
+        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.Rinsing))).isTrue();
+        assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
     }
 }

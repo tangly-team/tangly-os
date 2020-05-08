@@ -181,7 +181,6 @@ public class LedgerCsvHdl {
                 (!Strings.isNullOrEmpty(groupId) && !groupId.equalsIgnoreCase("0")));
     }
 
-
     // potential strategy pattern
     private static final String F1 = "F1";
     private static final String F3 = "F3";

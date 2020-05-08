@@ -44,7 +44,7 @@ import static net.tangly.commons.utilities.AsciiDocHelper.format;
  * the VAT invoice constraint, the Swiss invoice QR barcode, and the European Zugferd invoice machine readable invoice standard.
  */
 public class InvoiceAsciiDoc {
-    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(InvoiceAsciiDoc.class);
+    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(InvoiceAsciiDoc.class);
     private Invoice invoice;
 
     public InvoiceAsciiDoc(Invoice invoice) {
@@ -90,7 +90,7 @@ public class InvoiceAsciiDoc {
                 writer.append("Zahlungsbedingung").append(" ").append(invoice.paymentConditions()).println();
             }
         } catch (Exception e) {
-            log.error("Error during reporting", e);
+            logger.error("Error during reporting", e);
         }
     }
 

@@ -133,16 +133,15 @@ public class InjectorImp implements Injector {
     /**
      * Check if the given class type is marked as singleton.
      */
-    private boolean isSingleton(Class<?> clazz) {
+    private static boolean isSingleton(Class<?> clazz) {
         return clazz.isAnnotationPresent(Singleton.class);
     }
 
-    private boolean isAbstract(Class<?> clazz) {
+    private static boolean isAbstract(Class<?> clazz) {
         return clazz.isInterface() || (Modifier.isAbstract(clazz.getModifiers()));
     }
 
-    private <T> String exceptionMessage(Class<T> type, String explanation) {
+    private static <T> String exceptionMessage(Class<T> type, String explanation) {
         return "Injector can't create an instance of the class [" + type + "]. " + explanation;
     }
-
 }

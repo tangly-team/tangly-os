@@ -34,20 +34,20 @@ public class LocalActors<E extends Enum<E>> implements Actors<E> {
     private final ExecutorService executor;
 
     /**
+     * Default constructor.
+     */
+    private LocalActors() {
+        actors = new ConcurrentHashMap<>();
+        executor = Executors.newCachedThreadPool();
+    }
+
+    /**
      * Returns the local actors instance.
      *
      * @return the local actors instance
      */
     public static LocalActors instance() {
         return instance;
-    }
-
-    /**
-     * Default constructor.
-     */
-    public LocalActors() {
-        actors = new ConcurrentHashMap<>();
-        executor = Executors.newCachedThreadPool();
     }
 
     @Override

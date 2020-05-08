@@ -3,6 +3,6 @@ package net.tangly.dev.model;
 import java.util.List;
 
 public class Module {
-    String name;
+    private String name;
     private List<Packages> packages;
 }

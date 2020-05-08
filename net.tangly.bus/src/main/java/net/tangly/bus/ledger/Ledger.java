@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
  * automatic processing of VAT amounts and related bookings to the VAT related accounts.
  */
 public class Ledger {
-    private static final Logger log = LoggerFactory.getLogger(Ledger.class);
+    private static final Logger logger = LoggerFactory.getLogger(Ledger.class);
     private final List<Account> accounts;
     private final List<Transaction> journal;
 
@@ -104,13 +104,13 @@ public class Ledger {
         accounts.stream().filter(Account::isAggregate)
                 .forEach(o -> o.updateAggregatedAccounts(accounts.stream().filter(sub -> o.id().equals(sub.ownedBy())).collect(Collectors.toList())));
         accounts.stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty())
-                .forEach(o -> log.atError().log("Aggregate account wrongly defined {}", o.id()));
+                .forEach(o -> logger.atError().log("Aggregate account wrongly defined {}", o.id()));
     }
 
     private void bookEntry(@NotNull AccountEntry entry) {
         Optional<Account> account = getAccountBy(entry.account());
         if (account.isEmpty()) {
-            log.atError().log("account {} for entry with amount {} booked {} is undefined", entry.account(), entry.amount(), entry.date());
+            logger.atError().log("account {} for entry with amount {} booked {} is undefined", entry.account(), entry.amount(), entry.date());
         }
         account.ifPresent(o -> o.addEntry(entry));
     }

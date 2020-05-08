@@ -24,6 +24,6 @@ project.description = "Business Abstractions - BUS - using Java 14 or higher (ta
 
 dependencies {
     testImplementation "org.hsqldb:hsqldb:2.5.0"
-    testImplementation "org.flywaydb:flyway-core:6.3.3"
+    testImplementation "org.flywaydb:flyway-core:$flyWayVersion"
     testImplementation "org.json:json:20190722"
 }
