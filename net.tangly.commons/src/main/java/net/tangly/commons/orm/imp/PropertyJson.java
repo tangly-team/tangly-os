@@ -78,6 +78,7 @@ public class PropertyJson<T extends HasOid, V> extends PropertySimple<T> {
      *
      * @param name   name of the property
      * @param entity class owning the mapped property
+     * @param referenceType class of the reference type to map
      */
     public PropertyJson(String name, Class<T> entity, final Class<V> referenceType) {
         super(name, entity, String.class, Types.VARCHAR,

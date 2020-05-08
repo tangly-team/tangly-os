@@ -28,20 +28,19 @@ The library can be included in Maven as
     <dependency>
       <groupId>net.tangly</groupId>
       <artifactId>bus</artifactId>
-      <version>0.2.3</version>
+      <version>0.2.4</version>
     </dependency>
 ```    
 
 The library can be included in Gradle as
 
-```
-    implementation "net.tangly:bus:0.2.3"
+```groovy
+    implementation "net.tangly:bus:0.2.4"
 ```
  
-The documentation can be found under [FSM documentation](https://tangly-team.bitbucket.io)
+The documentation can be found under [Business documentation](https://tangly-team.bitbucket.io)
 
 For any further question and discussion you can use the forum [tangly-OS-Components](https://groups.google.com/d/forum/tangly-os-components)
-
 
 ## Contribution
 

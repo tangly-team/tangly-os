@@ -20,7 +20,7 @@ import java.util.Objects;
 import static net.tangly.commons.lang.Preconditions.checkArgument;
 
 /**
- * <p> _The bit utility_ class provides utility functions to manipulate bit streams as used on older communication
+ * <p> The bit utility class provides utility functions to manipulate bit streams as used on older communication
  * protocols. The functions manipulate byte (8 bits), short (16 bits) and long (32 bits) bit streams and append them into the bit stream at location.
  * Mirror functions support the extraction of bits from a bit stream.</p>
  * <p>Any legacy bit oriented communication protocols can efficiently be handled with the provided functions.</p>

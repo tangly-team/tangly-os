@@ -134,7 +134,6 @@ class ActorTest {
         LocalActors.instance().awaitCompletion(clients, 1);
         for (int i = 0; i < nrClients; i++) {
             Client client = (Client) LocalActors.instance().getActorNamed("client" + i);
-            System.out.println(i + " : " + client.nrRequests + " -> " + client.nrAnswers);
             assertThat(client.nrRequests).isEqualTo(1);
             assertThat(client.nrAnswers).isEqualTo(1);
         }

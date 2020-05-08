@@ -91,7 +91,7 @@ public class TagsView extends GridFormView<Tag> {
     @Override
     protected FormLayout createForm() {
         FormLayout form = new FormLayout();
-        namespace = new ComboBox("Namespace");
+        namespace = new ComboBox<>("Namespace");
         namespace.setEnabled(false);
         namespace.addValueChangeListener(event -> {
             if (event.getSource().isEmpty()) {

@@ -11,4 +11,7 @@
  * under the License.
  */
 
+/**
+ * The package provides core abstractions used in any commercial application in need product and project handling.
+ */
 package net.tangly.bus.products;

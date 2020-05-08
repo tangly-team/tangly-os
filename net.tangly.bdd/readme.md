@@ -41,9 +41,20 @@ The library can be included in Maven as
 
 The library can be included in Gradle as
 
-```
+```groovy
     testImplementation "net.tangly:bdd:0.2.4"
 ```
+
+The documentation can be found under [BDD documentation](https://tangly-team.bitbucket.io)
+
+For any further question and discussion you can use the forum [tangly-OS-Components](https://groups.google.com/d/forum/tangly-os-components)
+
+## Contribution
+
+You are welcome to contribute to the project with pull requests on Bitbucket. You can download the source files from the 
+[bitbucket git repository](https://bitbucket.org/tangly-team/tangly-os.git) and build  the library with the provided gradle configuration file.
+
+If you find a bug or want to request a feature, please use the [issue tracker](https://bitbucket.org/tangly-team/tangly-os/issues).
 
 ## License
 

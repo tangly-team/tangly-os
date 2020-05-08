@@ -50,7 +50,7 @@ The library can be included in Maven as
 
 The library can be included in Gradle as
 
-```
+```groovy
     implementation "net.tangly:fsm:0.2.4"
 ```
  

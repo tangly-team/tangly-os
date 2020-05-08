@@ -1,6 +1,7 @@
 ---
 title: "Readme"
 date: 2019-05-01
+lastmod: 2020-05-01
 weight: 10
 draft: false
 ---
@@ -16,6 +17,26 @@ draft: false
 ## Purpose
 
 ## Download and Documentation
+
+The library can be included in Maven as
+
+```xml
+    <dependency>
+      <groupId>net.tangly</groupId>
+      <artifactId>commons</artifactId>
+      <version>0.2.4</version>
+    </dependency>
+```    
+
+The library can be included in Gradle as
+
+```groovy
+    implementation "net.tangly:commons:0.2.4"
+```
+ 
+The documentation can be found under [Commons documentation](https://tangly-team.bitbucket.io)
+
+For any further question and discussion you can use the forum [tangly-OS-Components](https://groups.google.com/d/forum/tangly-os-components)
 
 ## Contribution
 

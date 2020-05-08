@@ -11,4 +11,7 @@
  * under the License.
  */
 
+/**
+ * The package provides core abstractions used in any commercial application in need of invoice handling.
+ */
 package net.tangly.bus.invoices;

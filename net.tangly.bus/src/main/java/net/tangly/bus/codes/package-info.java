@@ -16,4 +16,9 @@
  * instances are immutable.
  */
 
+/**
+ * Codes are a Java abstraction to represent code tables. Code tables are dynamic enumeration values which can be stored in an external resource
+ * file in a database. Mechanisms are provided to extend Java enumeration types to emulate code tables. Therefore you can start developing using
+ * enumeration values and later migrate to extensible typed value sets.
+ */
 package net.tangly.bus.codes;

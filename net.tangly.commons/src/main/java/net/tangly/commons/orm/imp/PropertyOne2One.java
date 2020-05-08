@@ -66,5 +66,4 @@ public class PropertyOne2One<T extends HasOid, R extends HasOid> extends Propert
             statement.setNull(index, sqlType());
         }
     }
-
 }

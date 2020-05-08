@@ -17,7 +17,6 @@ cp -R $prjDir/net.tangly.fsm/build/docs/javadoc/* $siteDir/static/fsm/api-fsm
 
 cp $prjDir/net.tangly.bdd/readme.* $siteDir/content/bdd/
 cp -R $prjDir/net.tangly.bdd/src/site/* $siteDir/content/bdd/
-# find out why buld is not working with gradle
 cp $prjDir/net.tangly.bdd/out/bdd-reports/bdd-report.adoc $siteDir/content/bdd/
 cp -R $prjDir/net.tangly.bdd/build/docs/javadoc/* $siteDir/static/bdd/api-bdd
 
@@ -27,4 +26,4 @@ cp -R $prjDir/net.tangly.bus/build/docs/javadoc/* $siteDir/static/bus/api-bus
 
 cp $prjDir/net.tangly.commons/readme.* $siteDir/content/commons/
 cp -R $prjDir/net.tangly.commons/src/site/* $siteDir/content/commons/
-cp -R $prjDir/net.tangly.commons/build/docs/javadoc/* $siteDir/static/commons/api-bus
+cp -R $prjDir/net.tangly.commons/build/docs/javadoc/* $siteDir/static/commons/api-commons
