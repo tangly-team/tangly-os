@@ -14,4 +14,7 @@ out/
 build/
 /.gradle/
 /.idea/
-/net.tangly.commons.ui/.gradle/
+
+/net.tangly.commons.ui/webpack.generated.js
+/net.tangly.commons.ui/webpack.config.js
+/net.tangly.commons.ui/package.json
