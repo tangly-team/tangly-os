@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
  * associated database table.
  */
 public class DaoValidator {
-    private static Logger logger = LoggerFactory.getLogger(DaoValidator.class);
+    private static final Logger logger = LoggerFactory.getLogger(DaoValidator.class);
 
     public <T extends HasOid> boolean validate(@NotNull Dao<T> dao) {
         return true;

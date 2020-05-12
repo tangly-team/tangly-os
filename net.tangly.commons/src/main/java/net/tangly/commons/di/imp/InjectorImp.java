@@ -107,7 +107,7 @@ public class InjectorImp implements Injector {
      * @throws java.lang.IllegalStateException when no constructor can be found.
      */
     @SuppressWarnings("unchecked")
-    private <T> Constructor<T> findConstructor(Class<T> type) {
+    private static <T> Constructor<T> findConstructor(Class<T> type) {
         final Constructor<?>[] constructors = type.getConstructors();
         if (constructors.length == 0) {
             throw new IllegalArgumentException(exceptionMessage(type, "The class has no public constructor."));

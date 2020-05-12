@@ -17,11 +17,11 @@ package net.tangly.bus.invoices;
 import java.math.BigDecimal;
 
 public class Product {
-    final String productId;
+    private final String productId;
 
-    final String description;
+    private final String description;
 
-    final BigDecimal unitPrice;
+    private final BigDecimal unitPrice;
 
     public Product(String productId, String description, BigDecimal unitPrice) {
         this.productId = productId;

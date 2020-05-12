@@ -75,14 +75,6 @@ public class Account {
      */
     private final List<AccountEntry> entries;
 
-    public static Account of(int id, AccountKind kind, String description, String ownedByGroupId) {
-        return new Account(Integer.toString(id), kind, Currency.getInstance("CHF"), description, ownedByGroupId);
-    }
-
-    public static Account of(String id, AccountGroup group, String description, String ownedByGroupId) {
-        return new Account(id, AccountKind.AGGREGATE, group, Currency.getInstance("CHF"), description, ownedByGroupId);
-    }
-
     public Account(String id, AccountKind kind, Currency currency, String description, String ownedBy) {
         this(id, kind, null, currency, description, ownedBy);
     }
@@ -97,6 +89,14 @@ public class Account {
         this.ownedBy = ownedBy;
         this.aggregatedAccounts = new HashSet<>();
         this.entries = new ArrayList<>();
+    }
+
+    public static Account of(int id, AccountKind kind, String description, String ownedByGroupId) {
+        return new Account(Integer.toString(id), kind, Currency.getInstance("CHF"), description, ownedByGroupId);
+    }
+
+    public static Account of(String id, AccountGroup group, String description, String ownedByGroupId) {
+        return new Account(id, AccountKind.AGGREGATE, group, Currency.getInstance("CHF"), description, ownedByGroupId);
     }
 
     public String id() {

@@ -23,7 +23,7 @@ import javax.inject.Inject;
 import java.util.concurrent.CompletionException;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @DisplayName("Given an injector")
 public class ConstructorsTest {
@@ -117,13 +117,13 @@ public class ConstructorsTest {
         @Test
         @DisplayName("Then binding a class with multiple non-annotated constructors fails")
         void testMultipleConstructorsNotAnnotatedFail() {
-            assertThrows(IllegalArgumentException.class, () -> injector.instance(ExampleTwo.class));
+            assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> injector.instance(ExampleTwo.class));
         }
 
         @Test
         @DisplayName("Then binding a class with multiple annotated constructors fails")
         void testMultipleConstructorsTwoWithAnnotationFail() {
-            assertThrows(IllegalArgumentException.class, () -> injector.instance(ExampleFour.class));
+            assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> injector.instance(ExampleFour.class));
         }
 
         @Test
@@ -143,7 +143,7 @@ public class ConstructorsTest {
         @Test
         @DisplayName("Then binding a class with a single private constructor fails")
         void testOnlyPrivateDeclaredConstructorFail() {
-            assertThrows(IllegalArgumentException.class, () -> injector.instance(ExampleSix.class));
+            assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> injector.instance(ExampleSix.class));
         }
 
         @Test
@@ -157,13 +157,13 @@ public class ConstructorsTest {
         @Test
         @DisplayName("Then binding a class with cyclic dependency fails")
         void testRecursiveConstructorArgumentsFail() {
-            assertThrows(StackOverflowError.class, () -> injector.instance(ExampleEight.class));
+            assertThatExceptionOfType(StackOverflowError.class).isThrownBy(() -> injector.instance(ExampleEight.class));
         }
 
         @Test
         @DisplayName("Then binding a class which constructor throws an exception fails at instantiation")
         void testExceptionInConstructorFail() {
-            assertThrows(CompletionException.class, () -> injector.instance(ExampleSeven.class));
+            assertThatExceptionOfType(CompletionException.class).isThrownBy(() -> injector.instance(ExampleSeven.class));
         }
     }
 }

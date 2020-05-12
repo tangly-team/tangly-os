@@ -21,14 +21,14 @@ public class Employee extends EntityImp implements CrmEntity {
     private NaturalEntity person;
     private LegalEntity organization;
 
+    public Employee() {
+        // default constructor
+    }
+
     public static Employee of(long oid) {
         Employee entity = new Employee();
         entity.oid(oid);
         return entity;
-    }
-
-    public Employee() {
-        // default constructor
     }
 
     public NaturalEntity person() {

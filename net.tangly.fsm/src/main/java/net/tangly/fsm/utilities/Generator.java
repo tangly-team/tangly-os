@@ -39,7 +39,7 @@ import java.util.Set;
  */
 public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
     private static final int INDENTATION = 4;
-    final Comparator<Transition<O, S, E>> comparator;
+    private final Comparator<Transition<O, S, E>> comparator;
     protected final FsmBuilder<O, S, E> builder;
     protected final String name;
     protected final Set<State<O, S, E>> states;

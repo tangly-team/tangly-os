@@ -121,5 +121,4 @@ public interface Transition<O, S extends Enum<S>, E extends Enum<E>> {
      * @return the description of the action of the transition if defined otherwise null
      */
     String actionDescription();
-
 }

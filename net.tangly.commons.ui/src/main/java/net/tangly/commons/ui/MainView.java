@@ -26,6 +26,7 @@ import net.tangly.bus.core.TagType;
 import net.tangly.bus.core.TagTypeRegistry;
 
 import java.time.LocalDate;
+import java.time.Month;
 
 /**
  * The main tagsView contains a button and a click listener.
@@ -48,8 +49,8 @@ public class MainView extends VerticalLayout {
         };
         entity.id("identifier-001");
         entity.name("name-001");
-        entity.fromDate(LocalDate.of(2018, 1, 1));
-        entity.toDate(LocalDate.of(2018, 12, 31));
+        entity.fromDate(LocalDate.of(2018, Month.JANUARY, 1));
+        entity.toDate(LocalDate.of(2018, Month.DECEMBER, 31));
         entity.text("this is a text for entity description");
         entity.add(Tag.of("geo", "region", "CH"));
         entity.add(Comment.of("John Doe", "This is comment 1 written by John Doe"));

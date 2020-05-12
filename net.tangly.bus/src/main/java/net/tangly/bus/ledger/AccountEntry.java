@@ -62,18 +62,6 @@ public class AccountEntry implements HasTags {
 
     private final Set<Tag> tags;
 
-    @NotNull
-    @Contract("_, _, _, _ -> new")
-    public static AccountEntry debit(String account, String date, String amount, String text) {
-        return new AccountEntry(account, LocalDate.parse(date), new BigDecimal(amount), text, true);
-    }
-
-    @NotNull
-    @Contract("_, _, _, _ -> new")
-    public static AccountEntry credit(String account, String date, String amount, String text) {
-        return new AccountEntry(account, LocalDate.parse(date), new BigDecimal(amount), text, false);
-    }
-
     public AccountEntry(String account, LocalDate date, BigDecimal amount, String text, boolean debit) {
         this.account = account;
         this.date = date;
@@ -86,6 +74,18 @@ public class AccountEntry implements HasTags {
     public AccountEntry(String account, LocalDate date, BigDecimal amount, String text, boolean debit, Collection<Tag> tags) {
         this(account, date, amount, text, debit);
         this.tags.addAll(tags);
+    }
+
+    @NotNull
+    @Contract("_, _, _, _ -> new")
+    public static AccountEntry credit(String account, String date, String amount, String text) {
+        return new AccountEntry(account, LocalDate.parse(date), new BigDecimal(amount), text, false);
+    }
+
+    @NotNull
+    @Contract("_, _, _, _ -> new")
+    public static AccountEntry debit(String account, String date, String amount, String text) {
+        return new AccountEntry(account, LocalDate.parse(date), new BigDecimal(amount), text, true);
     }
 
     public String account() {

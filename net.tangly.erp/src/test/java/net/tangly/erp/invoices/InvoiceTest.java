@@ -41,7 +41,7 @@ import java.time.LocalDate;
 import java.util.Currency;
 import java.util.List;
 
-public class InvoiceTests {
+public class InvoiceTest {
 
     @Test
     @Disabled

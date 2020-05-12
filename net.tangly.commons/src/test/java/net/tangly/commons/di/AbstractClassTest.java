@@ -20,7 +20,8 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+
 
 @DisplayName("Given an injector")
 class AbstractClassTest {
@@ -43,7 +44,7 @@ class AbstractClassTest {
         @Test
         @DisplayName("Then registration the interface without explicit binding fails")
         void testAbstractClassWithoutProviderFail() {
-            assertThrows(IllegalArgumentException.class, () -> injector.instance(AbstractExample.class));
+            assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> injector.instance(AbstractExample.class));
         }
 
         @Test
@@ -71,7 +72,7 @@ class AbstractClassTest {
         @Test
         @DisplayName("Then registration the interface without explicit binding fails")
         void testAbstractClassWithoutProviderFail() {
-            assertThrows(IllegalArgumentException.class, () -> Injector.create((o) -> o.bind(AbstractExample.class)));
+            assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> Injector.create((o) -> o.bind(AbstractExample.class)));
         }
 
         @Test

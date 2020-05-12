@@ -22,7 +22,7 @@ import org.junit.jupiter.api.Test;
 import javax.inject.Singleton;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @DisplayName("Given an injector")
 public class SingletonTest {
@@ -157,7 +157,7 @@ public class SingletonTest {
         @Test
         @DisplayName("Then injecting a singleton interface fails")
         void testSingletonNoAnnotationButMarkedAndParamIsAnInterface() {
-            assertThrows(IllegalArgumentException.class, () -> injector.bindSingleton(BindProviderTest.MyInterface.class));
+            assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> injector.bindSingleton(BindProviderTest.MyInterface.class));
         }
     }
 }

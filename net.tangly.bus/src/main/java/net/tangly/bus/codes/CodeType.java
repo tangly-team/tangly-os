@@ -31,6 +31,17 @@ public class CodeType<T extends Code> {
     private final List<T> codes;
 
     /**
+     * Constructor of the class representing the type of the reference code and all existing instances.
+     *
+     * @param clazz class of the reference code table
+     * @param codes list of all reference code table values
+     */
+    public CodeType(@NotNull Class<T> clazz, @NotNull List<T> codes) {
+        this.clazz = clazz;
+        this.codes = List.copyOf(codes);
+    }
+
+    /**
      * Builder for a reference code implemented as an enumeration. Provides a simple approach to map any enumeration type into a reference code.
      *
      * @param clazz class of the reference code table enumeration
@@ -52,17 +63,6 @@ public class CodeType<T extends Code> {
      */
     public static <E extends Code> CodeType<E> of(Class<E> clazz, List<E> codes) {
         return new CodeType<>(clazz, codes);
-    }
-
-    /**
-     * Constructor of the class representing the type of the reference code and all existing instances.
-     *
-     * @param clazz class of the reference code table
-     * @param codes list of all reference code table values
-     */
-    public CodeType(@NotNull Class<T> clazz, @NotNull List<T> codes) {
-        this.clazz = clazz;
-        this.codes = List.copyOf(codes);
     }
 
     /**

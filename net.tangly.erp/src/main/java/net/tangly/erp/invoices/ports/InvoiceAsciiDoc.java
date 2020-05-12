@@ -126,8 +126,8 @@ public class InvoiceAsciiDoc {
     private static String text(@NotNull LegalEntity entity) {
         StringBuilder text = new StringBuilder();
         Address address = entity.address(CrmTags.CRM_ADDRESS_WORK);
-        text.append(entity.name()).append(NEWLINE).append(Strings.isNullOrEmpty(address.street()) ? "" : address.street() + NEWLINE)
-                .append(Strings.isNullOrEmpty(address.poBox()) ? "" : address.poBox() + NEWLINE).append(address.locality());
+        text.append(entity.name()).append(NEWLINE).append(Strings.isNullOrEmpty(address.street()) ? "" : (address.street() + NEWLINE))
+                .append(Strings.isNullOrEmpty(address.poBox()) ? "" : (address.poBox() + NEWLINE)).append(address.locality());
         return text.toString();
     }
 

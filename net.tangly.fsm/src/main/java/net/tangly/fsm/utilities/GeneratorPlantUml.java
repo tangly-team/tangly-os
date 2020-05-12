@@ -54,7 +54,7 @@ public class GeneratorPlantUml<O, S extends Enum<S>, E extends Enum<E>> extends 
     }
 
 
-    private void writePreamble(@NotNull PrintWriter writer) {
+    private static void writePreamble(@NotNull PrintWriter writer) {
         writer.append("@startuml").println();
         writer.append("hide empty description").println();
         writer.println();

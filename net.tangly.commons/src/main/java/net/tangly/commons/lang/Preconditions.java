@@ -14,12 +14,12 @@
 package net.tangly.commons.lang;
 
 public final class Preconditions {
+    private Preconditions() {
+    }
+
     public static void checkArgument(boolean expression) {
         if (!expression) {
             throw new IllegalArgumentException();
         }
-    }
-
-    private Preconditions() {
     }
 }

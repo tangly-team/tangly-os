@@ -35,14 +35,14 @@ public class Contract extends EntityImp {
 
     private LegalEntity sellee;
 
+    public Contract() {
+        // default constructor
+    }
+
     public static Contract of(long oid) {
         Contract entity = new Contract();
         entity.oid(oid);
         return entity;
-    }
-
-    public Contract() {
-        // default constructor
     }
 
     public Address address() {

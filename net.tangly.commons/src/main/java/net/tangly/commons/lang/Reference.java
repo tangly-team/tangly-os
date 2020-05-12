@@ -14,33 +14,34 @@
 package net.tangly.commons.lang;
 
 /**
- * A reference to an object, emulating the concept of typed pointer to typed variable. The indirection can be updated to emulate indirection such
- * as pointer to pointer in other languages.
+ * A reference to an object, emulating the concept of typed pointer to typed variable. The indirection can be updated to emulate indirection such as
+ * pointer to pointer in other languages.
  *
  * @param <T> type of the reference
  */
 public class Reference<T> {
+    private T reference;
 
     /**
      * Returns a new reference to the given object.
+     *
      * @param reference referenced object
-     * @param <T> type of the reference
+     * @param <T>       type of the reference
      * @return new reference
      */
     public static <T> Reference<T> of(T reference) {
-        return new Reference<T>(reference);
+        return new Reference<>(reference);
     }
 
     /**
      * Returns a new empty reference to the given object.
+     *
      * @param <T> type of the reference
      * @return new empty reference
      */
     public static <T> Reference<T> empty() {
-        return new Reference<T>();
+        return new Reference<>();
     }
-
-    private T reference;
 
     /**
      * Constructor of the class.

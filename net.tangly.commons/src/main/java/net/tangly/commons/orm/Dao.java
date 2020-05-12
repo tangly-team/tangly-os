@@ -43,7 +43,7 @@ import java.util.stream.Collectors;
 public class Dao<T extends HasOid> {
     private static final String PRIMARY_KEY = "oid";
     private static final int KEY_SQL_TYPE = Types.BIGINT;
-    private static Logger log = org.slf4j.LoggerFactory.getLogger(Dao.class);
+    private static final Logger logger = org.slf4j.LoggerFactory.getLogger(Dao.class);
     private static AtomicLong oidGenerator = new AtomicLong(0);
 
     private final String schema;
@@ -119,7 +119,7 @@ public class Dao<T extends HasOid> {
             }
             addToCache(entity);
         } catch (SQLException | IllegalAccessException e) {
-            log.atError().log("Esception creating {} id {}", entityName, entity.oid(), e);
+            logger.atError().log("Esception creating {} id {}", entityName, entity.oid(), e);
         }
     }
 
@@ -140,7 +140,7 @@ public class Dao<T extends HasOid> {
                     }
                 }
             } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
-                log.atError().log("Exception occured when retrieving entity {} id {}", entityName, oid, e);
+                logger.atError().log("Exception occured when retrieving entity {} id {}", entityName, oid, e);
             }
         }
         return entity;
@@ -155,7 +155,7 @@ public class Dao<T extends HasOid> {
                 entities.add(instance.orElse(materializeEntity(set)));
             }
         } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
-            log.atError().log("Exception occured when retrieving entity with id {}", entityName, e);
+            logger.atError().log("Exception occured when retrieving entity with id {}", entityName, e);
         }
         return entities;
     }
@@ -186,7 +186,7 @@ public class Dao<T extends HasOid> {
             stmt.executeUpdate();
             removeFromCache(oid);
         } catch (SQLException e) {
-            log.atError().log("SQL error when deleting instance {} id {}", entityName, oid, e);
+            logger.atError().log("SQL error when deleting instance {} id {}", entityName, oid, e);
         }
     }
 
@@ -209,16 +209,16 @@ public class Dao<T extends HasOid> {
 
     private void addToCache(@NotNull T entity) {
         if (cache.containsKey(entity.oid())) {
-            log.atDebug().log("Invalidate cache {} for id {}", getClass().getSimpleName(), entity.oid());
+            logger.atDebug().log("Invalidate cache {} for id {}", getClass().getSimpleName(), entity.oid());
         } else {
-            log.atDebug().log("Add to cache {} id {}", getClass().getSimpleName(), entity.oid());
+            logger.atDebug().log("Add to cache {} id {}", getClass().getSimpleName(), entity.oid());
         }
         cache.put(entity.oid(), new WeakReference<>(entity));
     }
 
     private void removeFromCache(long id) {
         if (cache.containsKey(id)) {
-            log.atDebug().log("Invalidate cache {} for id {}", getClass().getSimpleName(), id);
+            logger.atDebug().log("Invalidate cache {} for id {}", getClass().getSimpleName(), id);
             cache.remove(id);
         }
     }
@@ -226,23 +226,23 @@ public class Dao<T extends HasOid> {
     // endregion
 
     private String generateReplaceSql() {
-        return "REPLACE INTO " + ((schema != null) ? schema + "." + entityName : entityName) + " (" +
+        return "REPLACE INTO " + ((schema != null) ? (schema + "." + entityName) : entityName) + " (" +
                 properties.stream().map(Property::name).collect(Collectors.joining(", ")) + ") VALUES (" + "?" +
                 String.join("", Collections.nCopies(properties.size() - 1, ", ?")) + ")";
     }
 
     private String generateDeleteSql() {
-        return "DELETE FROM " + ((schema != null) ? schema + "." + entityName : entityName) + " WHERE " + PRIMARY_KEY + "=?";
+        return "DELETE FROM " + ((schema != null) ? (schema + "." + entityName) : entityName) + " WHERE " + PRIMARY_KEY + "=?";
     }
 
     private String generateFindSql() {
         return "SELECT " + properties.stream().map(Property::name).collect(Collectors.joining(", ")) + " FROM " +
-                ((schema != null) ? schema + "." + entityName : entityName) + " WHERE " + PRIMARY_KEY + " = ?";
+                ((schema != null) ? (schema + "." + entityName) : entityName) + " WHERE " + PRIMARY_KEY + " = ?";
     }
 
     private String generateFindWhereSql() {
         return "SELECT " + properties.stream().map(Property::name).collect(Collectors.joining(", ")) + " FROM " +
-                ((schema != null) ? schema + "." + entityName : entityName) + " WHERE ";
+                ((schema != null) ? (schema + "." + entityName) : entityName) + " WHERE ";
     }
 
 }

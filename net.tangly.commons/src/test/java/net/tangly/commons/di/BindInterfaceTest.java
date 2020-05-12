@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 import javax.inject.Singleton;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 /**
  * This test is used to verify the behaviour of Injector dealing with interfaces.
@@ -74,8 +74,8 @@ class BindInterfaceTest {
         @Test
         @DisplayName("Then registration the interface without explicit binding fails")
         void testImplicitBindingInterfaceFail() {
-            assertThrows(IllegalArgumentException.class, () -> injector.instance(A.class));
-            assertThrows(IllegalArgumentException.class, () -> injector.instance(B.class));
+            assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> injector.instance(A.class));
+            assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> injector.instance(B.class));
         }
 
         @Test
@@ -114,13 +114,13 @@ class BindInterfaceTest {
         @Test
         @DisplayName("Then binding an interface to another interface fails")
         void testBindInterfaceToInterfaceFail() {
-            assertThrows(IllegalArgumentException.class, () -> injector.bind(SuperInterface.class, SubInterface.class));
+            assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> injector.bind(SuperInterface.class, SubInterface.class));
         }
 
         @Test
         @DisplayName("Then binding an interface to an abstract class fails")
         void testBindInterfaceToAbstractClassFail() {
-            assertThrows(IllegalArgumentException.class, () -> injector.bind(A.class, AbstractA.class));
+            assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> injector.bind(A.class, AbstractA.class));
         }
     }
 }

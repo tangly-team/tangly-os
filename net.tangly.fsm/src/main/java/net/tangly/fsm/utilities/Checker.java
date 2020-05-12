@@ -17,12 +17,14 @@ import java.text.MessageFormat;
 import java.util.ResourceBundle;
 
 /**
- * The checker interface defines the contract for all finite state machine syntactic and semantic
- * checkers.
+ * The checker interface defines the contract for all finite state machine syntactic and semantic checkers.
  */
 public interface Checker {
     enum Level {
+
         FATAL("FATAL"), ERROR("ERROR"), WARNING("WARN "), INFO("INFO"), DEBUG("DEBUG"), TRACE("TRACE");
+
+        private final String text;
 
         Level(String text) {
             this.text = text;
@@ -31,8 +33,6 @@ public interface Checker {
         String getText() {
             return text;
         }
-
-        private final String text;
     }
 
     /**

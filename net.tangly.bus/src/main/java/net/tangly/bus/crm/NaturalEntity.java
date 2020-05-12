@@ -27,6 +27,10 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
 
     private String lastname;
 
+    public NaturalEntity() {
+        // default constructor
+    }
+
     public static NaturalEntity of(long oid, String socialNumber, String lastname, String firstname) {
         var entity = new NaturalEntity();
         entity.oid(oid);
@@ -35,10 +39,6 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
         entity.firstname(firstname);
         entity.socialNr(socialNumber);
         return entity;
-    }
-
-    public NaturalEntity() {
-        // default constructor
     }
 
     public String firstname() {

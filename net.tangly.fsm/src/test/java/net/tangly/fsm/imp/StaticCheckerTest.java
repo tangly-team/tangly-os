@@ -17,7 +17,7 @@ import net.tangly.fsm.utilities.StaticChecker;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 /**
  * Tests the static checkers for finite state machines.
@@ -45,7 +45,7 @@ class StaticCheckerTest {
         builder.in(States.A).add(States.AA).isInitial(true);
         builder.in(States.A).add(States.AB);
         builder.root().add(States.B);
-        assertThrows(IllegalArgumentException.class, () -> builder.in(States.B).add(States.AB));
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(()-> builder.in(States.B).add(States.AB));
     }
 
     @Test

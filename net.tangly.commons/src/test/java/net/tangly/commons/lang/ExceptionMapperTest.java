@@ -20,8 +20,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -46,14 +45,14 @@ class ExceptionMapperTest {
         // Given
         var mapper = create();
         // Then
-        assertTrue(mapper.isRegistered(URISyntaxException.class));
-        assertTrue(mapper.isRegistered(Exception.class));
+        assertThat(mapper.isRegistered(URISyntaxException.class)).isTrue();
+        assertThat(mapper.isRegistered(Exception.class)).isTrue();
         // When
         mapper.unregister(URISyntaxException.class);
         mapper.unregister(Exception.class);
         // Then
-        assertFalse(mapper.isRegistered(URISyntaxException.class));
-        assertTrue(mapper.isRegistered(Exception.class));
+        assertThat(mapper.isRegistered(URISyntaxException.class)).isFalse();
+        assertThat(mapper.isRegistered(Exception.class)).isTrue();
     }
 
     @Test

@@ -42,28 +42,28 @@ import java.util.function.UnaryOperator;
  * runtime exception.
  */
 public class DaoBuilder<T extends HasOid> {
-    private static Map<Property.ConverterType, Function<?, ?>> ID_CONVERTER =
+    private static final Map<Property.ConverterType, Function<?, ?>> ID_CONVERTER =
             Map.of(Property.ConverterType.java2jdbc, UnaryOperator.identity(), Property.ConverterType.jdbc2java, UnaryOperator.identity(),
                     Property.ConverterType.java2text, Object::toString, Property.ConverterType.text2java, (Function<String, Object>) Long::valueOf);
-    private static Map<Property.ConverterType, Function<?, ?>> TEXT_CONVERTER =
+    private static final Map<Property.ConverterType, Function<?, ?>> TEXT_CONVERTER =
             Map.of(Property.ConverterType.java2jdbc, UnaryOperator.identity(), Property.ConverterType.jdbc2java, UnaryOperator.identity(),
                     Property.ConverterType.java2text, UnaryOperator.identity(), Property.ConverterType.text2java, UnaryOperator.identity());
-    private static Map<Property.ConverterType, Function<?, ?>> INTEGER_CONVERTER =
+    private static final Map<Property.ConverterType, Function<?, ?>> INTEGER_CONVERTER =
             Map.of(Property.ConverterType.java2jdbc, UnaryOperator.identity(), Property.ConverterType.jdbc2java, UnaryOperator.identity(),
                     Property.ConverterType.java2text, Object::toString, Property.ConverterType.text2java,
                     (Function<String, Object>) Integer::valueOf);
-    private static Map<Property.ConverterType, Function<?, ?>> BIGDECIMAL_CONVERTER =
+    private static final Map<Property.ConverterType, Function<?, ?>> BIGDECIMAL_CONVERTER =
             Map.of(Property.ConverterType.java2jdbc, UnaryOperator.identity(), Property.ConverterType.jdbc2java, UnaryOperator.identity(),
                     Property.ConverterType.java2text, Object::toString, Property.ConverterType.text2java, (Function<String, Object>) BigDecimal::new);
-    private static Map<Property.ConverterType, Function<?, ?>> LOCALDATE_CONVERTER =
+    private static final Map<Property.ConverterType, Function<?, ?>> LOCALDATE_CONVERTER =
             Map.of(Property.ConverterType.java2jdbc, UnaryOperator.identity(), Property.ConverterType.jdbc2java, UnaryOperator.identity(),
                     Property.ConverterType.java2text, Object::toString, Property.ConverterType.text2java,
                     (Function<String, Object>) LocalDate::parse);
-    private static Map<Property.ConverterType, Function<?, ?>> LOCALDATETIME_CONVERTER =
+    private static final Map<Property.ConverterType, Function<?, ?>> LOCALDATETIME_CONVERTER =
             Map.of(Property.ConverterType.java2jdbc, UnaryOperator.identity(), Property.ConverterType.jdbc2java, UnaryOperator.identity(),
                     Property.ConverterType.java2text, Object::toString, Property.ConverterType.text2java,
                     (Function<String, Object>) LocalDateTime::parse);
-    private static Map<Property.ConverterType, Function<?, ?>> TAGS_CONVERTER =
+    private static final Map<Property.ConverterType, Function<?, ?>> TAGS_CONVERTER =
             Map.of(Property.ConverterType.java2jdbc, (Function<Set<Tag>, Object>) Tag::text, Property.ConverterType.jdbc2java,
                     (Function<String, Object>) Tag::toTags, Property.ConverterType.java2text, (Function<Set<Tag>, Object>) Tag::text,
                     Property.ConverterType.text2java, (Function<String, Object>) Tag::toTags);

@@ -41,7 +41,6 @@ public class TagsView extends GridFormView<Tag> {
         super(false, "Filter by name...");
         this.registry = registry;
         this.entity = entity;
-        this.namespace = new ComboBox<>();
         namespace.setItems(registry.namespaces());
         updateFilteredItems(null);
     }

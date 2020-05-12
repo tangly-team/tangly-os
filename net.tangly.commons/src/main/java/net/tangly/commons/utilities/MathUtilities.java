@@ -17,7 +17,7 @@ import net.tangly.commons.lang.Interval;
 
 import java.util.Arrays;
 
-public class MathUtilities {
+public final class MathUtilities {
     public static final double Z_VALUE_PERCENTILE_99 = 2.576;
     public static final double Z_VALUE_PERCENTILE_95 = 1.96;
     public static final double Z_VALUE_PERCENTILE_90 = 1.647;

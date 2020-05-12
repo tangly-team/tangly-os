@@ -25,6 +25,7 @@ import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 import static net.tangly.commons.utilities.AsciiDocHelper.format;
@@ -90,13 +91,13 @@ public class ClosingReportAsciiDoc {
      * @param year   the year to raws shall be computed
      */
     private void addVatRows(AsciiDocHelper helper, int year) {
-        LocalDate periodStart = LocalDate.of(year, 1, 1);
-        LocalDate periodEnd = LocalDate.of(year, 6, 30);
+        LocalDate periodStart = LocalDate.of(year, Month.JANUARY, 1);
+        LocalDate periodEnd = LocalDate.of(year, Month.JUNE, 30);
         BigDecimal earningH1 = ledger.computeVatSales(periodStart, periodEnd);
         BigDecimal vatH1 = ledger.computeVat(periodStart, periodEnd);
         BigDecimal vatDueH1 = ledger.computeDueVat(periodStart, periodEnd);
-        periodStart = LocalDate.of(year, 7, 1);
-        periodEnd = LocalDate.of(year, 12, 31);
+        periodStart = LocalDate.of(year, Month.JULY, 1);
+        periodEnd = LocalDate.of(year, Month.DECEMBER, 31);
         BigDecimal earningH2 = ledger.computeVatSales(periodStart, periodEnd);
         BigDecimal vatH2 = ledger.computeVat(periodStart, periodEnd);
         BigDecimal vatDueH2 = ledger.computeDueVat(periodStart, periodEnd);

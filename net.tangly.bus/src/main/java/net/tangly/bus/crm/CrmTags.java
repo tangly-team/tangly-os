@@ -53,6 +53,12 @@ public final class CrmTags {
 
     public static final String CRM_ACTIVITY = "crm:activity";
 
+    /**
+     * Private constructor of an utility class.
+     */
+    private CrmTags() {
+    }
+
     public static void registerTags(TagTypeRegistry registry) {
         registry.register(TagType.ofMandatory("crm", "email-home", EmailAddress.class, EmailAddress::of));
         registry.register(TagType.ofMandatory("crm", "email-work", EmailAddress.class, EmailAddress::of));
@@ -90,11 +96,5 @@ public final class CrmTags {
 
     public static String getImTag(String im) {
         return "crm:im-" + Objects.requireNonNull(im);
-    }
-
-    /**
-     * Private constructor of an utility class.
-     */
-    private CrmTags() {
     }
 }

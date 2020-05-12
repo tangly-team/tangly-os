@@ -30,6 +30,16 @@ public class ParserGitCommits {
      */
     private static final Logger logger = LoggerFactory.getLogger(ParserGitCommits.class);
 
+    private Set<Committer> committers;
+    private List<RepositoryFile> files;
+    private List<Commit> commits;
+
+    public ParserGitCommits() {
+        committers = new HashSet<>();
+        files = new ArrayList<>();
+        commits = new ArrayList<>();
+    }
+
     public CommitItem of(Commit commit, String line) {
         String[] tokens = line.split("(\\s+)", 3);
         RepositoryFile file = findOrCreateRepositoryFile(tokens[2]);
@@ -52,15 +62,6 @@ public class ParserGitCommits {
         return commit;
     }
 
-    private Set<Committer> committers;
-    private List<RepositoryFile> files;
-    private List<Commit> commits;
-
-    public ParserGitCommits() {
-        committers = new HashSet<>();
-        files = new ArrayList<>();
-        commits = new ArrayList<>();
-    }
 
     public Set<Committer> committers() {
         return Collections.unmodifiableSet(committers);

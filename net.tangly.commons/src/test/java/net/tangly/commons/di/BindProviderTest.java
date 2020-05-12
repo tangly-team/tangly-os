@@ -24,7 +24,7 @@ import javax.inject.Singleton;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @DisplayName("Given an injector")
 class BindProviderTest {
@@ -110,7 +110,7 @@ class BindProviderTest {
             injector.bindProvider(ThirdParty.class, () -> {
                 throw new NullPointerException("Too bad :-(");
             });
-            assertThrows(NullPointerException.class, () -> injector.instance(ThirdParty.class));
+            assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> injector.instance(ThirdParty.class));
         }
     }
 }

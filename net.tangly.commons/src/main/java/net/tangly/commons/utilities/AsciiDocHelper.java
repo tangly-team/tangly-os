@@ -27,6 +27,10 @@ public class AsciiDocHelper {
 
     private final PrintWriter writer;
 
+    public AsciiDocHelper(@NotNull PrintWriter writer) {
+        this.writer = writer;
+    }
+
     public static String bold(String text) {
         return "*" + text + "*";
     }
@@ -46,10 +50,6 @@ public class AsciiDocHelper {
         } else {
             return "";
         }
-    }
-
-    public AsciiDocHelper(@NotNull PrintWriter writer) {
-        this.writer = writer;
     }
 
     public AsciiDocHelper header(String text, int level) {

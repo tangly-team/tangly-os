@@ -18,7 +18,7 @@ import net.tangly.fsm.State;
 import net.tangly.fsm.dsl.FsmBuilder;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Test implements the turnstile example of easy states library see <a href="https://github.com/j-easy/easy-states">easy-states</a>.
@@ -58,18 +58,18 @@ public class FsmEasyTest {
     void testTransitions() {
         State<FsmEasyTest, FsmEasyTest.States, FsmEasyTest.Events> root = build().definition();
         StateMachineImp<FsmEasyTest, FsmEasyTest.States, FsmEasyTest.Events> fsm = new StateMachineImp<>("easy-rules", root, this);
-        assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.Locked)));
+        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.Locked))).isTrue();
         fsm.fire(Event.of(Events.Push));
-        assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.Locked)));
-        assertTrue(fsm.getActiveStates().size() == 2);
+        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.Locked))).isTrue();
+        assertThat(fsm.getActiveStates().size() == 2).isTrue();
         fsm.fire(Event.of(Events.Coin));
-        assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.Unlocked)));
-        assertTrue(fsm.getActiveStates().size() == 2);
+        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.Unlocked))).isTrue();
+        assertThat(fsm.getActiveStates().size() == 2).isTrue();
         fsm.fire(Event.of(Events.Coin));
-        assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.Unlocked)));
-        assertTrue(fsm.getActiveStates().size() == 2);
+        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.Unlocked))).isTrue();
+        assertThat(fsm.getActiveStates().size() == 2).isTrue();
         fsm.fire(Event.of(Events.Push));
-        assertTrue(fsm.getActiveStates().contains(root.getStateFor(States.Locked)));
-        assertTrue(fsm.getActiveStates().size() == 2);
+        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.Locked))).isTrue();
+        assertThat(fsm.getActiveStates().size() == 2).isTrue();
     }
 }

@@ -60,6 +60,27 @@ public class Comment implements HasOid, HasTags, Serializable {
     private Set<Tag> tags;
 
     /**
+     * Private constructor to support JSON serialization.
+     */
+    public Comment() {
+    }
+
+    /**
+     * Default constructor to create an immutable instance.
+     *
+     * @param timestamp when the comment instance was created
+     * @param author    of the comment instance as human readable field
+     * @param text      text of the comment, we recommend using asciidoc format
+     */
+    public Comment(@NotNull LocalDateTime timestamp, @NotNull String author, @NotNull String text) {
+        this.oid = HasOid.UNDEFINED_OID;
+        this.created = Objects.requireNonNull(timestamp);
+        this.author = Objects.requireNonNull(author);
+        this.text = Objects.requireNonNull(text);
+        tags = new HashSet<>();
+    }
+
+    /**
      * Factory method to update a new comment. The current date and time are set a creation date.
      *
      * @param author author of the comment
@@ -84,27 +105,6 @@ public class Comment implements HasOid, HasTags, Serializable {
         var comment = new Comment(date, author, text);
         Arrays.stream(tags).forEach(comment::add);
         return comment;
-    }
-
-    /**
-     * Private constructor to support JSON serialization.
-     */
-    public Comment() {
-    }
-
-    /**
-     * Default constructor to create an immutable instance.
-     *
-     * @param timestamp when the comment instance was created
-     * @param author    of the comment instance as human readable field
-     * @param text      text of the comment, we recommend using asciidoc format
-     */
-    public Comment(@NotNull LocalDateTime timestamp, @NotNull String author, @NotNull String text) {
-        this.oid = HasOid.UNDEFINED_OID;
-        this.created = Objects.requireNonNull(timestamp);
-        this.author = Objects.requireNonNull(author);
-        this.text = Objects.requireNonNull(text);
-        tags = new HashSet<>();
     }
 
     /**

@@ -25,7 +25,7 @@ import java.util.Objects;
 import java.util.function.BiConsumer;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -315,8 +315,8 @@ class FsmTest {
         fsm.addEventHandler(checker);
         assertThat(fsm.isRegistered(checker)).isTrue();
         fsm.reset();
-        assertThrows(IllegalStateException.class, () -> fsm.fire(Event.of(Events.AA_AA)));
-        assertThrows(IllegalStateException.class, () -> fsm.fire(Event.of(Events.A_C)));
+        assertThatExceptionOfType(IllegalStateException.class).isThrownBy(()-> fsm.fire(Event.of(Events.AA_AA)));
+        assertThatExceptionOfType(IllegalStateException.class).isThrownBy(()-> fsm.fire(Event.of(Events.A_C)));
     }
 
     /**

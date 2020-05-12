@@ -24,16 +24,6 @@ import java.util.List;
  * format. The majority of transactions have one debit and one credit account. The class is immutable.
  */
 public class Transaction {
-    public static Transaction of(String date, int debitAccount, int creditAccount, String amount, String text) {
-        return new Transaction(LocalDate.parse(date), String.valueOf(debitAccount), String.valueOf(creditAccount), new BigDecimal(amount), text,
-                null);
-    }
-
-    public static Transaction of(String date, int debitAccount, int creditAccount, String amount, String text, String reference) {
-        return new Transaction(LocalDate.parse(date), String.valueOf(debitAccount), String.valueOf(creditAccount), new BigDecimal(amount), text,
-                reference);
-    }
-
     private final AccountEntry debit;
     private final AccountEntry credit;
     private final List<AccountEntry> splits;
@@ -50,13 +40,24 @@ public class Transaction {
         this.splits = Collections.emptyList();
     }
 
-    public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, List<AccountEntry> splits, String description, String reference) {
+    public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, List<AccountEntry> splits, String description,
+                       String reference) {
         this.date = date;
         this.description = description;
         this.reference = reference;
         this.debit = (debitAccount != null) ? new AccountEntry(debitAccount, date, amount, reference, true) : null;
         this.credit = (creditAccount != null) ? new AccountEntry(creditAccount, date, amount, reference, false) : null;
         this.splits = List.copyOf(splits);
+    }
+
+    public static Transaction of(String date, int debitAccount, int creditAccount, String amount, String text) {
+        return new Transaction(LocalDate.parse(date), String.valueOf(debitAccount), String.valueOf(creditAccount), new BigDecimal(amount), text,
+                null);
+    }
+
+    public static Transaction of(String date, int debitAccount, int creditAccount, String amount, String text, String reference) {
+        return new Transaction(LocalDate.parse(date), String.valueOf(debitAccount), String.valueOf(creditAccount), new BigDecimal(amount), text,
+                reference);
     }
 
     public List<AccountEntry> debitSplits() {
