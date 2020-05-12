@@ -32,7 +32,7 @@ public class PropertyCode<T extends HasOid, V extends Code> extends PropertySimp
     /**
      * The code type describing the set of codes in this property.
      */
-    private CodeType<V> codeType;
+    private final CodeType<V> codeType;
 
     public PropertyCode(@NotNull String name, @NotNull Class<T> entity, @NotNull CodeType<V> codeType) {
         super(name, entity, Integer.class, Types.INTEGER,

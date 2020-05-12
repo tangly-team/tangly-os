@@ -26,10 +26,10 @@ import java.util.List;
 
 public class Crm {
     private TagTypeRegistry tagTypeRegistry;
-    private List<NaturalEntity> naturalEntities;
-    private List<LegalEntity> legalEntities;
-    private List<Employee> employees;
-    private List<Contract> contracts;
+    private final List<NaturalEntity> naturalEntities;
+    private final List<LegalEntity> legalEntities;
+    private final List<Employee> employees;
+    private final List<Contract> contracts;
 
     public Crm() {
         tagTypeRegistry = new TagTypeRegistry();

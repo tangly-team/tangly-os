@@ -22,7 +22,13 @@ import java.util.Optional;
 /**
  * Utility cass to manipulate objects through reflection.
  */
-public class ReflectionUtilities {
+public final class ReflectionUtilities {
+    /**
+     * Private constructor for a utility class.
+     */
+    private ReflectionUtilities() {
+    }
+
     public static <T> void setField(@NotNull T entity, @NotNull String name, @NotNull Object value) throws IllegalAccessException {
         Optional<Field> field = findField(entity.getClass(), name);
         if (field.isPresent()) {
@@ -52,8 +58,5 @@ public class ReflectionUtilities {
             pointer = pointer.getSuperclass();
         }
         return Optional.ofNullable(field);
-    }
-
-    private ReflectionUtilities() {
     }
 }

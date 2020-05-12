@@ -33,7 +33,7 @@ class CodeDatabaseTest {
 
 
     @BeforeEach
-    void setup() throws NoSuchMethodException {
+    void setUp() throws NoSuchMethodException {
         datasource = new JDBCDataSource();
         datasource.setDatabase(dbUrl);
         datasource.setUser(username);

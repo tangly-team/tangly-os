@@ -68,10 +68,10 @@ public class DaoBuilder<T extends HasOid> {
                     (Function<String, Object>) Tag::toTags, Property.ConverterType.java2text, (Function<Set<Tag>, Object>) Tag::text,
                     Property.ConverterType.text2java, (Function<String, Object>) Tag::toTags);
 
-    private Class<T> type;
-    private List<Property<T>> properties;
-    private List<PropertyOne2Many<T, ?>> relations;
-    private Reference<Dao<T>> self = Reference.empty();
+    private final Class<T> type;
+    private final List<Property<T>> properties;
+    private final List<PropertyOne2Many<T, ?>> relations;
+    private final Reference<Dao<T>> self = Reference.empty();
 
 
     public DaoBuilder(@NotNull Class<T> type) {

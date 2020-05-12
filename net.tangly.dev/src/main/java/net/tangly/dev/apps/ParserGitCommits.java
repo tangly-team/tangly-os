@@ -4,6 +4,8 @@ import net.tangly.dev.model.Commit;
 import net.tangly.dev.model.CommitItem;
 import net.tangly.dev.model.Committer;
 import net.tangly.dev.model.RepositoryFile;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,6 +25,11 @@ import java.util.Set;
  * THe parser builds the structure of repository files, committers, commits and individual file changes over a period of time.
  */
 public class ParserGitCommits {
+    /**
+     * /** The logger of the instance.
+     */
+    private static final Logger logger = LoggerFactory.getLogger(ParserGitCommits.class);
+
     public CommitItem of(Commit commit, String line) {
         String[] tokens = line.split("(\\s+)", 3);
         RepositoryFile file = findOrCreateRepositoryFile(tokens[2]);
@@ -82,7 +89,7 @@ public class ParserGitCommits {
                 commits.add(commit);
             }
         } catch (IOException e) {
-            System.err.println(e);
+            logger.atError().setCause(e).log("Error when reading file");
         }
     }
 

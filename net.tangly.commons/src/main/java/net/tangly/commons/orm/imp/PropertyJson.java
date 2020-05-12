@@ -54,8 +54,7 @@ public class PropertyJson<T extends HasOid, V> extends PropertySimple<T> {
     private static <V> List<V> fromJson(String text, Class<V> referenceType) {
         JavaType itemType = mapper.getTypeFactory().constructCollectionType(List.class, referenceType);
         try {
-            List<V> items = mapper.readValue(text, itemType);
-            return items;
+            return mapper.readValue(text, itemType);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -71,7 +70,7 @@ public class PropertyJson<T extends HasOid, V> extends PropertySimple<T> {
         return mapper;
     }
 
-    private Class<V> referenceType;
+    private final Class<V> referenceType;
 
     /**
      * Constructor of the JSON property.

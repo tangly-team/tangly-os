@@ -26,7 +26,7 @@ import java.util.Collection;
 import java.util.function.BiPredicate;
 
 public class CommentsView extends GridFormView<Comment> {
-    private transient HasComments entity;
+    private final transient HasComments entity;
     private LocalDateTime createdDateTime;
     private DatePicker createdDate;
     private TextField createdTime;

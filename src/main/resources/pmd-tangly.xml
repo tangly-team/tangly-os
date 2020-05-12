@@ -13,16 +13,13 @@
   ~ under the License.
   -->
 
-<ruleset name="All Java Rules"
+<ruleset name="tangly-os"
          xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
-    <description>Every Java Rule in PMD</description>
+    <description>tangly open source products PMD java ruleset</description>
     <rule ref="category/java/bestpractices.xml"/>
-    <rule ref="category/java/codestyle.xml"/>
-    <rule ref="category/java/design.xml"/>
     <rule ref="category/java/documentation.xml"/>
-    <rule ref="category/java/errorprone.xml"/>
     <rule ref="category/java/multithreading.xml"/>
     <rule ref="category/java/performance.xml"/>
     <rule ref="category/java/security.xml"/>
@@ -31,10 +28,20 @@
         <exclude name="AvoidFieldNameMatchingTypeName"/>
         <exclude name="AvoidFieldNameMatchingMethodName"/>
         <exclude name="BeanMembersShouldSerialize"/>
+        <exclude name="AvoidFieldNameMatchingMethodName"/>
+        <exclude name="BeanMembersShouldSerialize"/>
     </rule>
     <rule ref="category/java/codestyle.xml">
         <exclude name="LocalVariableCouldBeFinal"/>
+        <exclude name="UselessParentheses"/>
+        <exclude name="MethodArgumentCouldBeFinal"/>
+        <exclude name="OnlyOneReturn"/>
+        <exclude name="DefaultPackage" />
     </rule>
+    <rule ref="category/java/design.xml">
+        <exclude name="ExcessiveImports"/>
+    </rule>
+
     <rule ref="category/java/codestyle.xml/ShortMethodName">
         <properties>
             <property name="minimum" value="2"/>
@@ -45,8 +52,10 @@
             <property name="minimum" value="2"/>
         </properties>
     </rule>
-    <rule ref="category/java/design.xml">
-        <exclude name="ExcessiveImports"/>
+    <rule ref="category/java/codestyle.xml/LongVariable">
+        <properties>
+            <property name="minimum" value="24" />
+        </properties>
     </rule>
     <rule ref="category/java/design.xml/TooManyMethods">
         <properties>
@@ -55,7 +64,7 @@
     </rule>
     <rule ref="category/java/documentation.xml/CommentSize">
         <properties>
-            <property name="maxLines" value="10"/>
+            <property name="maxLines" value="40"/>
             <property name="maxLineLength" value="180"/>
         </properties>
     </rule>

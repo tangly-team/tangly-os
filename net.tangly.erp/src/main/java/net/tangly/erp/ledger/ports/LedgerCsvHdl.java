@@ -81,28 +81,29 @@ public class LedgerCsvHdl {
     }
 
     public void importStructureLedgerFromBanana8(@NotNull Path path) throws IOException {
-        Reader in = new BufferedReader(new FileReader(path.toFile(), StandardCharsets.UTF_8));
-        Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
-        Account.AccountGroup currentSection = null;
-        CSVRecord record = records.hasNext() ? records.next() : null;
-        while (record != null) {
-            String section = record.get(SECTION);
-            if ((section != null) && !section.isEmpty()) {
-                currentSection = ofGroup(section);
-            }
-            String accountGroup = record.get(GROUP);
-            String id = record.get(ACCOUNT);
-            String text = record.get(DESCRIPTION);
-            String accountKind = record.get(BCLASS);
-            String ownedByGroupId = record.get(GR);
-            if (isRecordPlanRelevant(text, id, accountGroup)) {
-                if (Strings.isNullOrEmpty(accountGroup)) {
-                    ledger.add(Account.of(Integer.parseInt(id), ofKInd(accountKind), text, ownedByGroupId));
-                } else {
-                    ledger.add(Account.of(accountGroup, currentSection, text, ownedByGroupId));
+        try (Reader in = new BufferedReader(new FileReader(path.toFile(), StandardCharsets.UTF_8));) {
+            Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
+            Account.AccountGroup currentSection = null;
+            CSVRecord record = records.hasNext() ? records.next() : null;
+            while (record != null) {
+                String section = record.get(SECTION);
+                if ((section != null) && !section.isEmpty()) {
+                    currentSection = ofGroup(section);
                 }
+                String accountGroup = record.get(GROUP);
+                String id = record.get(ACCOUNT);
+                String text = record.get(DESCRIPTION);
+                String accountKind = record.get(BCLASS);
+                String ownedByGroupId = record.get(GR);
+                if (isRecordPlanRelevant(text, id, accountGroup)) {
+                    if (Strings.isNullOrEmpty(accountGroup)) {
+                        ledger.add(Account.of(Integer.parseInt(id), ofKInd(accountKind), text, ownedByGroupId));
+                    } else {
+                        ledger.add(Account.of(accountGroup, currentSection, text, ownedByGroupId));
+                    }
+                }
+                record = records.hasNext() ? records.next() : null;
             }
-            record = records.hasNext() ? records.next() : null;
         }
     }
 
@@ -113,37 +114,40 @@ public class LedgerCsvHdl {
      * @throws IOException if file operations encountered a problem - no file or no privileges -
      */
     public void importTransactionsLedgerFromBanana8(@NotNull Path path) throws IOException {
-        Reader in = new BufferedReader(new FileReader(path.toFile(), StandardCharsets.UTF_8));
-        Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
-        CSVRecord record = records.hasNext() ? records.next() : null;
-        while (record != null) {
-            String date = record.get(DATE);
-            String reference = record.get(DOC);
-            String text = record.get(DESCRIPTION);
-            String debitAccount = record.get(ACCOUNT_DEBIT);
-            String creditAccount = record.get(ACCOUNT_CREDIT);
-            String[] debitValues = debitAccount.split("-");
-            String[] creditValues = creditAccount.split("-");
-            String amount = record.get(AMOUNT);
-            String vatCode = record.get(VAT_CODE);
-            try {
-                Transaction transaction;
-                if (isPartOfSplitTransaction(record)) {
-                    List<AccountEntry> splits = new ArrayList<>();
-                    record = importSplits(records, splits);
-                    transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
-                            new BigDecimal(amount), splits, text, reference);
-                } else {
-                    transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
-                            new BigDecimal(amount), text, reference);
-                    record = records.hasNext() ? records.next() : null;
+        try (Reader in = new BufferedReader(new FileReader(path.toFile(), StandardCharsets.UTF_8));) {
+            Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
+            CSVRecord record = records.hasNext() ? records.next() : null;
+            while (record != null) {
+                String date = record.get(DATE);
+                String reference = record.get(DOC);
+                String text = record.get(DESCRIPTION);
+                String debitAccount = record.get(ACCOUNT_DEBIT);
+                String creditAccount = record.get(ACCOUNT_CREDIT);
+                String[] debitValues = debitAccount.split("-");
+                String[] creditValues = creditAccount.split("-");
+                String amount = record.get(AMOUNT);
+                String vatCode = record.get(VAT_CODE);
+                try {
+                    Transaction transaction;
+                    if (isPartOfSplitTransaction(record)) {
+                        List<AccountEntry> splits = new ArrayList<>();
+                        record = importSplits(records, splits);
+                        transaction =
+                                new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
+                                        new BigDecimal(amount), splits, text, reference);
+                    } else {
+                        transaction =
+                                new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
+                                        new BigDecimal(amount), text, reference);
+                        record = records.hasNext() ? records.next() : null;
+                    }
+                    defineProject(transaction.debitSplits(), debitAccount);
+                    defineProject(transaction.creditSplits(), creditAccount);
+                    defineVat(transaction.creditSplits(), vatCode);
+                    ledger.add(transaction);
+                } catch (NumberFormatException e) {
+                    log.error("not a legal amount {}", amount, e);
                 }
-                defineProject(transaction.debitSplits(), debitAccount);
-                defineProject(transaction.creditSplits(), creditAccount);
-                defineVat(transaction.creditSplits(), vatCode);
-                ledger.add(transaction);
-            } catch (NumberFormatException e) {
-                log.error("not a legal amount {}", amount, e);
             }
         }
     }

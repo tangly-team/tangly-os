@@ -144,7 +144,7 @@ class DaoTest {
     private Dao<Comment> comments;
 
     @BeforeEach
-    void setup() throws NoSuchMethodException {
+    void setUp() throws NoSuchMethodException {
         datasource = new JDBCDataSource();
         datasource.setDatabase(dbUrl);
         datasource.setUser(username);

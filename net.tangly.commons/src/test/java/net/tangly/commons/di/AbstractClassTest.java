@@ -33,7 +33,7 @@ class AbstractClassTest {
     private Injector injector;
 
     @BeforeEach
-    void setup() throws Exception {
+    void setUp() throws Exception {
         injector = Injector.create();
     }
 

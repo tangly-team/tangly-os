@@ -24,26 +24,6 @@ import java.net.URL;
 import java.util.Objects;
 
 public final class CrmTags {
-
-    public static void registerTags(TagTypeRegistry registry) {
-        registry.register(TagType.ofMandatory("crm", "email-home", EmailAddress.class, EmailAddress::of));
-        registry.register(TagType.ofMandatory("crm", "email-work", EmailAddress.class, EmailAddress::of));
-        registry.register(TagType.ofMandatory("crm", "phone-mobile", PhoneNr.class, PhoneNr::of));
-        registry.register(TagType.ofMandatory("crm", "phone-home", PhoneNr.class, PhoneNr::of));
-        registry.register(TagType.ofMandatory("crm", "address-home", Address.class, Address::of));
-        registry.register(TagType.ofMandatory("crm", "address-work", Address.class, Address::of));
-        registry.register(TagType.ofMandatory("crm", "site-home", URL.class));
-        registry.register(TagType.ofMandatory("crm", "site-work", URL.class));
-        registry.register(TagType.ofMandatory("crm", "title", String.class));
-        registry.register(TagType.ofMandatory("crm", "im-linkedin", String.class));
-        registry.register(TagType.ofMandatory("crm", "im-skype", String.class));
-        registry.register(TagType.ofMandatory("crm", "im-google", String.class));
-        registry.register(TagType.ofMandatory("crm", "company-id", String.class));
-        registry.register(TagType.ofMandatory("crm", "vat-number", String.class));
-        registry.register(TagType.ofMandatory("crm", "bank-connection", BankConnection.class));
-        registry.register(TagType.ofMandatory("crm", "activity", String.class));
-    }
-
     public static final String CRM = "crm";
 
     public static final String HOME = "home";
@@ -71,8 +51,26 @@ public final class CrmTags {
     public static final String CRM_VAT_NUMBER = "crm:vat-number";
     public static final String CRM_BANK_CONNECTION = "crm:bank-connection";
 
-
     public static final String CRM_ACTIVITY = "crm:activity";
+
+    public static void registerTags(TagTypeRegistry registry) {
+        registry.register(TagType.ofMandatory("crm", "email-home", EmailAddress.class, EmailAddress::of));
+        registry.register(TagType.ofMandatory("crm", "email-work", EmailAddress.class, EmailAddress::of));
+        registry.register(TagType.ofMandatory("crm", "phone-mobile", PhoneNr.class, PhoneNr::of));
+        registry.register(TagType.ofMandatory("crm", "phone-home", PhoneNr.class, PhoneNr::of));
+        registry.register(TagType.ofMandatory("crm", "address-home", Address.class, Address::of));
+        registry.register(TagType.ofMandatory("crm", "address-work", Address.class, Address::of));
+        registry.register(TagType.ofMandatory("crm", "site-home", URL.class));
+        registry.register(TagType.ofMandatory("crm", "site-work", URL.class));
+        registry.register(TagType.ofMandatory("crm", "title", String.class));
+        registry.register(TagType.ofMandatory("crm", "im-linkedin", String.class));
+        registry.register(TagType.ofMandatory("crm", "im-skype", String.class));
+        registry.register(TagType.ofMandatory("crm", "im-google", String.class));
+        registry.register(TagType.ofMandatory("crm", "company-id", String.class));
+        registry.register(TagType.ofMandatory("crm", "vat-number", String.class));
+        registry.register(TagType.ofMandatory("crm", "bank-connection", BankConnection.class));
+        registry.register(TagType.ofMandatory("crm", "activity", String.class));
+    }
 
     public static String getPhoneTag(String kind) {
         return "crm:phone-" + Objects.requireNonNull(kind);

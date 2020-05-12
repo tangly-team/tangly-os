@@ -25,7 +25,7 @@ import static net.tangly.commons.lang.Preconditions.checkArgument;
  * Mirror functions support the extraction of bits from a bit stream.</p>
  * <p>Any legacy bit oriented communication protocols can efficiently be handled with the provided functions.</p>
  */
-public class BitUtilities {
+public final class BitUtilities {
 
     /**
      * Size of a byte in bits.
@@ -47,6 +47,12 @@ public class BitUtilities {
      */
     private static final byte[] MASKS =
             {0b0000_0000, 0b0000_0001, 0b0000_0011, 0b0000_0111, 0b0000_1111, 0b0001_1111, 0b0011_1111, 0b0111_1111, (byte) 0b1111_1111};
+
+    /**
+     * Private constructor for a utility class.
+     */
+    private BitUtilities() {
+    }
 
     /**
      * Writes length number of bits from data into the byte stream at the bit position. The assumption is that bits are appended and the stream is
@@ -217,11 +223,5 @@ public class BitUtilities {
             }
         }
         return buffer.toString();
-    }
-
-    /**
-     * Private constructor to prohibit instantiation
-     */
-    private BitUtilities() {
     }
 }

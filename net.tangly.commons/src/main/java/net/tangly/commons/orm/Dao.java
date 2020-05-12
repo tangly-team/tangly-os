@@ -53,10 +53,10 @@ public class Dao<T extends HasOid> {
     private Constructor<T> constructor;
     private List<Property<T>> properties;
     private List<PropertyOne2Many<T, ?>> relations;
-    private String findSql;
-    private String replaceSql;
-    private String deleteSql;
-    private String findWhereSql;
+    private final String findSql;
+    private final String replaceSql;
+    private final String deleteSql;
+    private final String findWhereSql;
 
     /**
      * Cache holding all loaded instances handled through the record.

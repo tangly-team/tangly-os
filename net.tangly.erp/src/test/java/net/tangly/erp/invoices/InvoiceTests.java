@@ -66,7 +66,6 @@ public class InvoiceTests {
         ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
         Invoice invoice = newInvoice();
         String json = writer.writeValueAsString(invoice);
-        System.out.println(json);
     }
 
     private Invoice newInvoice() {

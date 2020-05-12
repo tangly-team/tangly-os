@@ -32,6 +32,12 @@ import java.util.Iterator;
 import java.util.List;
 
 class CodeHelper {
+    /**
+     * Private constructor for a utility class.
+     */
+    private CodeHelper() {
+    }
+
     @FunctionalInterface
     /**
      * Defines the signature of a code class constructor.

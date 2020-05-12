@@ -38,11 +38,11 @@ import java.util.function.Function;
  * @param <R> Class referenced by the propertyBy
  */
 public class PropertyOne2Many<T extends HasOid, R extends HasOid> implements Property<T>, Relation<T, R> {
-    private String name;
-    private Class<T> entity;
-    private String propertyBy;
-    private Reference<Dao<R>> type;
-    private Field field;
+    private final String name;
+    private final Class<T> entity;
+    private final String propertyBy;
+    private final Reference<Dao<R>> type;
+    private final Field field;
 
     public PropertyOne2Many(@NotNull String name, @NotNull Class<T> entity, @NotNull String property, @NotNull Reference<Dao<R>> type) {
         this.name = name;

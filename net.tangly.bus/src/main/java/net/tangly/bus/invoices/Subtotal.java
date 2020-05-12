@@ -23,11 +23,11 @@ import java.util.List;
  */
 public class Subtotal implements InvoiceLine {
 
-    private int position;
+    private final int position;
 
-    private String text;
+    private final String text;
 
-    private List<InvoiceLine> items;
+    private final List<InvoiceLine> items;
 
     public Subtotal(int position, String text, List<InvoiceLine> items) {
         this.position = position;

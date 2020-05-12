@@ -91,7 +91,7 @@ public class SingletonTest {
     private Injector injector;
 
     @BeforeEach
-    void setup() {
+    void setUp() {
         injector = Injector.create();
     }
 
