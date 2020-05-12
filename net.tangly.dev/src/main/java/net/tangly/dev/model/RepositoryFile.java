@@ -1,5 +1,6 @@
 package net.tangly.dev.model;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -7,6 +8,9 @@ public class RepositoryFile {
     private String name;
     private List<CommitItem> changes;
 
+    public RepositoryFile() {
+        changes = new ArrayList<>();
+    }
     public RepositoryFile(String name) {
         this.name = name;
     }

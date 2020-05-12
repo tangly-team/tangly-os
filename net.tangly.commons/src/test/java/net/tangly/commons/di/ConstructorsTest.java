@@ -117,13 +117,13 @@ public class ConstructorsTest {
         @Test
         @DisplayName("Then binding a class with multiple non-annotated constructors fails")
         void testMultipleConstructorsNotAnnotatedFail() {
-            IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> injector.instance(ExampleTwo.class));
+            assertThrows(IllegalArgumentException.class, () -> injector.instance(ExampleTwo.class));
         }
 
         @Test
         @DisplayName("Then binding a class with multiple annotated constructors fails")
         void testMultipleConstructorsTwoWithAnnotationFail() {
-            IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> injector.instance(ExampleFour.class));
+            assertThrows(IllegalArgumentException.class, () -> injector.instance(ExampleFour.class));
         }
 
         @Test

@@ -10,7 +10,7 @@ public class ParseJavaApplication {
      * test source files are located in the module under [module]/src/test/java. The package name is identified as
      * [module]/src/main/java/[package]/[class].java
      */
-    public void ParseModules() {
+    public void arseModules() {
 
     }
 

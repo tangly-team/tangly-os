@@ -18,5 +18,6 @@ module net.tangly.bdd {
 
     requires org.junit.jupiter.api;
     requires org.slf4j;
+    requires static org.json;
     requires static org.jetbrains.annotations;
 }

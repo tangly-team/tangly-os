@@ -34,7 +34,7 @@ public abstract class StoreTest {
         merger.write(bddReports);
 
         Path bddPublished = bddReportsFolder.resolve(Path.of("bdd-report.adoc"));
-        StoryAsciiDocPublisher publisher = new StoryAsciiDocPublisher(bddReports, bddPublished);
+        new StoryAsciiDocPublisher(bddReports, bddPublished);
     }
 
     public Store create(Scene scene, int blackSweaters, int blueSweaters) {

@@ -32,7 +32,7 @@ public class StoryAsciiDocPublisher {
     public StoryAsciiDocPublisher(Path bddReport, Path report) throws IOException {
         try (Reader reader = Files.newBufferedReader(bddReport, StandardCharsets.UTF_8)) {
             JSONArray features = new JSONArray(new JSONTokener(reader));
-            writer = new PrintWriter(report.toFile());
+            writer = new PrintWriter(report.toFile(), StandardCharsets.UTF_8);
             header();
             for (var item : features) {
                 publishFeature((JSONObject) item);

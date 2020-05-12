@@ -29,7 +29,7 @@ class CodeDatabaseTest {
     private static final String dbUrl = "jdbc:hsqldb:mem:tangly;sql.syntax_mys=true";
     private static final String username = "SA";
     private static final String password = "";
-    private static JDBCDataSource datasource;
+    private JDBCDataSource datasource;
 
 
     @BeforeEach
