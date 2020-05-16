@@ -20,8 +20,8 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 
 /**
- * The exception mapper processes an exception and executes associated instructions with the helper. For example
- * a HTTP error code and answer can be generated based on the kind of the exception.
+ * The exception mapper processes an exception and executes associated instructions with the helper. For example a HTTP error code and answer can be
+ * generated based on the kind of the exception.
  *
  * @param <H> handler used to process the exception
  */
@@ -45,8 +45,9 @@ public class ExceptionMapper<H> {
     }
 
     /**
-     * The class exception cannot be unregister to insure we are always handling any exception. If specific behavior
-     * is requested you can overwrite it using bind method.
+     * The class exception cannot be unregister to insure we are always handling any exception. If specific behavior is requested you can overwrite it
+     * using bind method.
+     *
      * @param clazz class instance to unregister
      */
     public void unregister(Class<? extends Exception> clazz) {
@@ -66,14 +67,12 @@ public class ExceptionMapper<H> {
     }
 
     /**
-     * Processes the exception by executing the associated functor. The functor is associated with the class of the
-     * exception. Generalization of the exception class for handling is similar to the rules of the try catch
-     * instruction.
+     * Processes the exception by executing the associated functor. The functor is associated with the class of the exception. Generalization of the
+     * exception class for handling is similar to the rules of the try catch instruction.
      *
      * @param handler   handler used to process the exception
      * @param exception exception to be processed
      */
-    @SuppressWarnings("of")
     public void process(@NotNull H handler, @NotNull Exception exception) {
         Class<? extends Exception> clazz = exception.getClass();
         while (!functors.containsKey(clazz) && (clazz != Exception.class)) {

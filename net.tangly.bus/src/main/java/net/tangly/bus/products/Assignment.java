@@ -23,7 +23,6 @@ import java.time.LocalDate;
  * The end date is optional, if defined it shall smaller or equal to the end date of the project.
  */
 public class Assignment implements HasId {
-    private static final long serialVersionUID = 1L;
     private long oid;
     private Employee employee;
     private Project project;

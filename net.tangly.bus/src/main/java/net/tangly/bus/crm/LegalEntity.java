@@ -22,8 +22,6 @@ import net.tangly.bus.core.Tag;
  * as the legal number of an organization (e.g. zefix number in Switzerland), a text describing it.
  */
 public class LegalEntity extends EntityImp implements CrmEntity {
-    private static final long serialVersionUID = 1L;
-
     public LegalEntity() {
         // default constructor
     }

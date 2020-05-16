@@ -23,8 +23,6 @@ import java.math.BigDecimal;
  * A legal contract between two parties, a seller and a sellee.
  */
 public class Contract extends EntityImp {
-    private static final long serialVersionUID = 1L;
-
     private Address address;
 
     private BankConnection bankConnection;

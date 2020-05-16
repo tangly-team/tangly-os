@@ -27,7 +27,6 @@ import java.time.LocalDate;
  * time on a contract or a project.
  */
 public class Effort implements HasId {
-    private static final long serialVersionUID = 1L;
     private long oid;
 
     private BigDecimal duration;

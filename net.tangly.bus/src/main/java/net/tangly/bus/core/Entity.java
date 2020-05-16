@@ -13,7 +13,6 @@
 
 package net.tangly.bus.core;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -30,7 +29,7 @@ import java.time.LocalDate;
  * Orthogonal information can therefore be attached to instances.</li>
  * </ul>
  */
-public interface Entity extends HasId, HasTags, HasComments, Serializable {
+public interface Entity extends HasId, HasTags, HasComments {
     /**
      * Returns the text describing the entity.
      *

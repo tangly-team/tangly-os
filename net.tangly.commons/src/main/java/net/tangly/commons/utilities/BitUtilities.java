@@ -160,7 +160,7 @@ public final class BitUtilities {
         checkArgument((length >= 1) && (length <= WORD));
         int bits = extractBitsToByte(stream, position, Math.min(length, BYTE)) & 0xFF;
         if (length > BYTE) {
-            bits = bits | extractBitsToByte(stream, position + BYTE, length - BYTE) << BYTE;
+            bits = bits | (extractBitsToByte(stream, position + BYTE, length - BYTE) << BYTE);
         }
         return (short) (bits & 0xFFFF);
     }

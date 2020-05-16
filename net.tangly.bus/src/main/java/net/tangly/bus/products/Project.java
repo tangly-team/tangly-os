@@ -17,8 +17,6 @@ package net.tangly.bus.products;
 import net.tangly.bus.core.EntityImp;
 
 public class Project extends EntityImp {
-    private static final long serialVersionUID = 1L;
-
     public Project() {
         // default constructor
     }

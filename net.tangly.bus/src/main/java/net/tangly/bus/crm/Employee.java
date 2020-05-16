@@ -16,8 +16,6 @@ package net.tangly.bus.crm;
 import net.tangly.bus.core.EntityImp;
 
 public class Employee extends EntityImp implements CrmEntity {
-    private static final long serialVersionUID = 1L;
-
     private NaturalEntity person;
     private LegalEntity organization;
 
