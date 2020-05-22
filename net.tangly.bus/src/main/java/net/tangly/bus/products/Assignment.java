@@ -13,10 +13,10 @@
 
 package net.tangly.bus.products;
 
+import java.time.LocalDate;
+
 import net.tangly.bus.core.HasId;
 import net.tangly.bus.crm.Employee;
-
-import java.time.LocalDate;
 
 /**
  * An assignment defines connection of an employee to a project for a duration. The start date shall be equal or greater to the start date of project.

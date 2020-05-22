@@ -13,11 +13,11 @@
 
 package net.tangly.bus.core;
 
-import org.junit.jupiter.api.Test;
-
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Set;
+
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

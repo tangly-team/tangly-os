@@ -17,7 +17,7 @@ For a detailed view of what has changed, refer to the https://bitbucket.org/tang
 Improvements::
 
 * FSM library is now a Java module (thanks to the new module support in Gradle 6.4)
-* Dependencies were updated to current versions
+* Dependencies were updated to current version
 
 === 0.2.3 (2020-03-06)
 

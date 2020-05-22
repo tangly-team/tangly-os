@@ -13,6 +13,11 @@
 
 package net.tangly.commons.ui;
 
+import java.util.Collection;
+import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.stream.Collectors;
+
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -24,11 +29,6 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
-
-import java.util.Collection;
-import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.stream.Collectors;
 
 /**
  * The view provides the abstraction of a list of entities and a detailed form view of a selected entity. The view provides a view on the tags defined

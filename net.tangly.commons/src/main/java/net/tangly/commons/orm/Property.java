@@ -13,14 +13,14 @@
 
 package net.tangly.commons.orm;
 
-import net.tangly.bus.core.HasOid;
-import org.jetbrains.annotations.NotNull;
-
 import java.lang.reflect.Field;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.function.Function;
+
+import net.tangly.bus.core.HasOid;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Models the common attributes of an entity property. Conceptually three kinds of properties exist:

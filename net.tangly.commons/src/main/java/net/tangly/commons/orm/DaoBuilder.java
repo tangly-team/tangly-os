@@ -13,6 +13,18 @@
 
 package net.tangly.commons.orm;
 
+import java.math.BigDecimal;
+import java.sql.Types;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+import javax.sql.DataSource;
+
 import net.tangly.bus.codes.Code;
 import net.tangly.bus.codes.CodeType;
 import net.tangly.bus.core.HasOid;
@@ -24,18 +36,6 @@ import net.tangly.commons.orm.imp.PropertyOne2Many;
 import net.tangly.commons.orm.imp.PropertyOne2One;
 import net.tangly.commons.orm.imp.PropertySimple;
 import org.jetbrains.annotations.NotNull;
-
-import javax.sql.DataSource;
-import java.math.BigDecimal;
-import java.sql.Types;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
 
 /**
  * Builder for the table class. Upon building the class you should discard the builder instance. Any additional call on the builder will update a

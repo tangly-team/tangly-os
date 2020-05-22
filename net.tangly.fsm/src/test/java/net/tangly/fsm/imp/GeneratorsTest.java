@@ -13,12 +13,6 @@
 
 package net.tangly.fsm.imp;
 
-import net.tangly.fsm.utilities.Generator;
-import net.tangly.fsm.utilities.GeneratorAsciiDoc;
-import net.tangly.fsm.utilities.GeneratorGraphDot;
-import net.tangly.fsm.utilities.GeneratorPlantUml;
-import org.junit.jupiter.api.Test;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,6 +21,12 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import net.tangly.fsm.utilities.Generator;
+import net.tangly.fsm.utilities.GeneratorAsciiDoc;
+import net.tangly.fsm.utilities.GeneratorGraphDot;
+import net.tangly.fsm.utilities.GeneratorPlantUml;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -13,6 +13,9 @@
 
 package net.tangly.commons.ui;
 
+import java.time.LocalDate;
+import java.time.Month;
+
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.PWA;
@@ -24,9 +27,6 @@ import net.tangly.bus.core.EntityImp;
 import net.tangly.bus.core.Tag;
 import net.tangly.bus.core.TagType;
 import net.tangly.bus.core.TagTypeRegistry;
-
-import java.time.LocalDate;
-import java.time.Month;
 
 /**
  * The main tagsView contains a button and a click listener.

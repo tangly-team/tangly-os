@@ -13,16 +13,16 @@
 
 package net.tangly.fsm.imp;
 
-import net.tangly.fsm.Event;
-import net.tangly.fsm.State;
-import net.tangly.fsm.Transition;
-
 import java.util.ArrayDeque;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.BiConsumer;
+
+import net.tangly.fsm.Event;
+import net.tangly.fsm.State;
+import net.tangly.fsm.Transition;
 
 /**
  * Default implementation of an mutable class providing the state immutable interface.

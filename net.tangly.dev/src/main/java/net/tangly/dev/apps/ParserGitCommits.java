@@ -1,12 +1,5 @@
 package net.tangly.dev.apps;
 
-import net.tangly.dev.model.Commit;
-import net.tangly.dev.model.CommitItem;
-import net.tangly.dev.model.Committer;
-import net.tangly.dev.model.RepositoryFile;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -18,6 +11,13 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import net.tangly.dev.model.Commit;
+import net.tangly.dev.model.CommitItem;
+import net.tangly.dev.model.Committer;
+import net.tangly.dev.model.RepositoryFile;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p><code>git log --numstat --pretty=format:'[%h] %an %ad %s' --date=short</code></p>

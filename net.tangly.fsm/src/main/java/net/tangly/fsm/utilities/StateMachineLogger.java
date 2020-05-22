@@ -13,6 +13,9 @@
 
 package net.tangly.fsm.utilities;
 
+import java.util.Objects;
+import java.util.function.BiConsumer;
+
 import net.tangly.fsm.Event;
 import net.tangly.fsm.State;
 import net.tangly.fsm.StateMachine;
@@ -20,9 +23,6 @@ import net.tangly.fsm.StateMachineEventHandler;
 import net.tangly.fsm.Transition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Objects;
-import java.util.function.BiConsumer;
 
 /**
  * The state machine logger documents all activities performed during the firing of events for a specific finite state machine instance. All logs have

@@ -13,15 +13,15 @@
 
 package net.tangly.bus.invoices;
 
-import net.tangly.bus.crm.BankConnection;
-import net.tangly.bus.crm.LegalEntity;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Currency;
 import java.util.List;
+
+import net.tangly.bus.crm.BankConnection;
+import net.tangly.bus.crm.LegalEntity;
 
 /**
  * The abstraction of an invoice with a set of positions, subtotals, one VAT rate and a total. The items and the subtotals have a position to order

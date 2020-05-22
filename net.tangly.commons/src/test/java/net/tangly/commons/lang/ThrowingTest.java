@@ -13,11 +13,11 @@
 
 package net.tangly.commons.lang;
 
-import org.junit.jupiter.api.Test;
-
 import java.net.URISyntaxException;
 import java.util.concurrent.TimeoutException;
 import java.util.stream.IntStream;
+
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 

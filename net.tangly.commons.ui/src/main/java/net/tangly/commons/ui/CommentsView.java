@@ -13,6 +13,10 @@
 
 package net.tangly.commons.ui;
 
+import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.function.BiPredicate;
+
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
@@ -20,10 +24,6 @@ import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.bus.core.Comment;
 import net.tangly.bus.core.HasComments;
-
-import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.function.BiPredicate;
 
 public class CommentsView extends GridFormView<Comment> {
     private final transient HasComments entity;

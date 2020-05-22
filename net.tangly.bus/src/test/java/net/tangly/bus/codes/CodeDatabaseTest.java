@@ -13,15 +13,15 @@
 
 package net.tangly.bus.codes;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import org.flywaydb.core.Flyway;
 import org.hsqldb.jdbc.JDBCDataSource;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -14,13 +14,13 @@
 package net.tangly.bus.crm;
 
 
+import java.net.URI;
+import java.util.Optional;
+
 import net.tangly.bus.core.Address;
 import net.tangly.bus.core.HasTags;
 import net.tangly.bus.core.PhoneNr;
 import net.tangly.bus.core.Tag;
-
-import java.net.URI;
-import java.util.Optional;
 
 public interface CrmEntity extends HasTags {
     default void setTag(String kind, String value) {

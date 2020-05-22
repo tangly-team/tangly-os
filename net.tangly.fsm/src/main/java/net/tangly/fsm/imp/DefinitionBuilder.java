@@ -13,6 +13,10 @@
 
 package net.tangly.fsm.imp;
 
+import java.util.EnumMap;
+import java.util.function.BiConsumer;
+import java.util.function.BiPredicate;
+
 import net.tangly.fsm.Event;
 import net.tangly.fsm.State;
 import net.tangly.fsm.StateMachine;
@@ -21,10 +25,6 @@ import net.tangly.fsm.dsl.StateBuilder;
 import net.tangly.fsm.dsl.SubStateBuilder;
 import net.tangly.fsm.dsl.ToTransitionBuilder;
 import net.tangly.fsm.dsl.TransitionBuilder;
-
-import java.util.EnumMap;
-import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
 
 /**
  * The class implements the interfaces to build a complete finite state machine definition using a fluent DSL - Domain Specific Language -. Care was

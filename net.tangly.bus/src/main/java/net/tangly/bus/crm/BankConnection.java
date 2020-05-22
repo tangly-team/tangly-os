@@ -13,9 +13,9 @@
 
 package net.tangly.bus.crm;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.Serializable;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Describes a bank connection with IBAN account number, BIC identification and name of the institute. The class is immutable.

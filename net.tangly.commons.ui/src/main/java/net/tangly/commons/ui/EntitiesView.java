@@ -13,6 +13,9 @@
 
 package net.tangly.commons.ui;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.html.Div;
@@ -20,9 +23,6 @@ import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import net.tangly.bus.core.Entity;
 import net.tangly.bus.core.TagTypeRegistry;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * The entity view is a tabbed view with tabs for details of the entity, comments pane, and tags pane. Additional panes can be provided for 1..n

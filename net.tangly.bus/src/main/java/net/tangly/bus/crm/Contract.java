@@ -14,10 +14,10 @@
 package net.tangly.bus.crm;
 
 
+import java.math.BigDecimal;
+
 import net.tangly.bus.core.Address;
 import net.tangly.bus.core.EntityImp;
-
-import java.math.BigDecimal;
 
 /**
  * A legal contract between two parties, a seller and a sellee.

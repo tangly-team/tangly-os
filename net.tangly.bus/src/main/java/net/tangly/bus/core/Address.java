@@ -13,10 +13,10 @@
 
 package net.tangly.bus.core;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.Serializable;
 import java.util.Objects;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Defines the abstraction of a postal address without the recipient. The structure should model all existing postal address. An address is an

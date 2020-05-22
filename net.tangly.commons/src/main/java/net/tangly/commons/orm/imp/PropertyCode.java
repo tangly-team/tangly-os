@@ -13,14 +13,14 @@
 
 package net.tangly.commons.orm.imp;
 
+import java.sql.Types;
+import java.util.Map;
+
 import net.tangly.bus.codes.Code;
 import net.tangly.bus.codes.CodeType;
 import net.tangly.bus.core.HasOid;
 import net.tangly.commons.orm.Property;
 import org.jetbrains.annotations.NotNull;
-
-import java.sql.Types;
-import java.util.Map;
 
 /**
  * Defines a property type used to store a reference code as type. The mapping to the persistence layer is predifined.

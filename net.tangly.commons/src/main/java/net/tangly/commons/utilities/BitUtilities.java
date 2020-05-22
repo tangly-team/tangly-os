@@ -13,9 +13,9 @@
 
 package net.tangly.commons.utilities;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Objects;
+
+import org.jetbrains.annotations.NotNull;
 
 import static net.tangly.commons.lang.Preconditions.checkArgument;
 

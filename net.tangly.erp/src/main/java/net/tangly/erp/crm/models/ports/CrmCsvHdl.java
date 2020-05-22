@@ -13,20 +13,6 @@
 
 package net.tangly.erp.crm.models.ports;
 
-import net.tangly.bus.core.Address;
-import net.tangly.bus.core.EntityImp;
-import net.tangly.bus.crm.BankConnection;
-import net.tangly.bus.crm.Contract;
-import net.tangly.bus.crm.CrmTags;
-import net.tangly.bus.crm.Employee;
-import net.tangly.bus.crm.LegalEntity;
-import net.tangly.bus.crm.NaturalEntity;
-import net.tangly.commons.lang.Strings;
-import net.tangly.erp.crm.models.apps.Crm;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVRecord;
-import org.jetbrains.annotations.NotNull;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -40,6 +26,20 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+
+import net.tangly.bus.core.Address;
+import net.tangly.bus.core.EntityImp;
+import net.tangly.bus.crm.BankConnection;
+import net.tangly.bus.crm.Contract;
+import net.tangly.bus.crm.CrmTags;
+import net.tangly.bus.crm.Employee;
+import net.tangly.bus.crm.LegalEntity;
+import net.tangly.bus.crm.NaturalEntity;
+import net.tangly.commons.lang.Strings;
+import net.tangly.erp.crm.models.apps.Crm;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
+import org.jetbrains.annotations.NotNull;
 
 public class CrmCsvHdl {
     private static final String OID = "oid";

@@ -13,6 +13,14 @@
 
 package net.tangly.erp.invoices.ports;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Comparator;
+
 import net.codecrete.qrbill.generator.Bill;
 import net.codecrete.qrbill.generator.BillFormat;
 import net.codecrete.qrbill.generator.GraphicsFormat;
@@ -27,14 +35,6 @@ import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceLine;
 import net.tangly.commons.utilities.AsciiDocHelper;
 import org.jetbrains.annotations.NotNull;
-
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.math.BigDecimal;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Comparator;
 
 import static net.tangly.commons.utilities.AsciiDocHelper.NEWLINE;
 import static net.tangly.commons.utilities.AsciiDocHelper.format;

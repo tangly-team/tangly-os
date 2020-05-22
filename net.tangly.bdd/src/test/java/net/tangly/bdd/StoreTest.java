@@ -13,14 +13,14 @@
 
 package net.tangly.bdd;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 import net.tangly.bdd.engine.StoryAsciiDocPublisher;
 import net.tangly.bdd.engine.StoryMerger;
 import net.tangly.bdd.engine.StoryWriter;
 import org.junit.jupiter.api.AfterAll;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 public abstract class StoreTest {
     @AfterAll

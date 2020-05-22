@@ -13,6 +13,10 @@
 
 package net.tangly.commons.ui;
 
+import java.util.Collection;
+import java.util.Optional;
+import java.util.function.BiPredicate;
+
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
@@ -21,10 +25,6 @@ import net.tangly.bus.core.HasTags;
 import net.tangly.bus.core.Tag;
 import net.tangly.bus.core.TagType;
 import net.tangly.bus.core.TagTypeRegistry;
-
-import java.util.Collection;
-import java.util.Optional;
-import java.util.function.BiPredicate;
 
 /**
  * The view provides a view on the tags defined in the entity with tags. The following operations are provided - if the view is in read-only mode you

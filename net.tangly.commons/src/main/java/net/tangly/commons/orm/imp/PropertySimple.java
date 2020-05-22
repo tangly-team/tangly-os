@@ -13,15 +13,15 @@
 
 package net.tangly.commons.orm.imp;
 
-import net.tangly.bus.core.HasOid;
-import net.tangly.commons.lang.ReflectionUtilities;
-import net.tangly.commons.orm.Property;
-import org.jetbrains.annotations.NotNull;
-
 import java.lang.reflect.Field;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.function.Function;
+
+import net.tangly.bus.core.HasOid;
+import net.tangly.commons.lang.ReflectionUtilities;
+import net.tangly.commons.orm.Property;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Models a property with simple Java objects or primitive. The type of the property is not defined through a DAO.

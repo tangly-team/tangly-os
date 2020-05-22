@@ -14,12 +14,12 @@
 package net.tangly.dev.model;
 
 
-import net.tangly.commons.lang.Preconditions;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import net.tangly.commons.lang.Preconditions;
 
 public class Commit {
     private final String id;

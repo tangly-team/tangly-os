@@ -13,15 +13,15 @@
 
 package net.tangly.fsm.actors;
 
-import net.tangly.fsm.Event;
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import net.tangly.fsm.Event;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * The actor infrastructure enabler is responsible to provide parallel execution for all instantiated and alive actors he is in charge.

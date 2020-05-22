@@ -13,11 +13,11 @@
 
 package net.tangly.commons.di;
 
+import java.util.Arrays;
+import javax.inject.Provider;
+
 import net.tangly.commons.di.imp.InjectorImp;
 import org.jetbrains.annotations.NotNull;
-
-import javax.inject.Provider;
-import java.util.Arrays;
 
 /**
  * Defines the interface for the dependency injector. The injector supports solely constructors based dependency injection. Annotations based on JSR

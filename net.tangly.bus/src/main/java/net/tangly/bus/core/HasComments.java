@@ -13,12 +13,12 @@
 
 package net.tangly.bus.core;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * The interface defines a mixin and abstracts an entity with comments.

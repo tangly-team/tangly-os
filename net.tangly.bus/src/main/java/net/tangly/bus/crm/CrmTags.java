@@ -14,14 +14,14 @@
 package net.tangly.bus.crm;
 
 
+import java.net.URL;
+import java.util.Objects;
+
 import net.tangly.bus.core.Address;
 import net.tangly.bus.core.EmailAddress;
 import net.tangly.bus.core.PhoneNr;
 import net.tangly.bus.core.TagType;
 import net.tangly.bus.core.TagTypeRegistry;
-
-import java.net.URL;
-import java.util.Objects;
 
 public final class CrmTags {
     public static final String CRM = "crm";

@@ -13,12 +13,12 @@
 
 package net.tangly.bus.products;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 import net.tangly.bus.core.HasId;
 import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.Employee;
-
-import java.math.BigDecimal;
-import java.time.LocalDate;
 
 /**
  * An duration defines work performed on a project. It is possible to specify an additional contract to identify the financial

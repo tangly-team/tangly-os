@@ -13,18 +13,18 @@
 
 package net.tangly.commons.orm.imp;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Types;
+import java.util.Map;
+import java.util.Objects;
+
 import net.tangly.bus.core.HasOid;
 import net.tangly.commons.lang.Reference;
 import net.tangly.commons.orm.Dao;
 import net.tangly.commons.orm.Property;
 import net.tangly.commons.orm.Relation;
 import org.jetbrains.annotations.NotNull;
-
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Types;
-import java.util.Map;
-import java.util.Objects;
 
 
 /**

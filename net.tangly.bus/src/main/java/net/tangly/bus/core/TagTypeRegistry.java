@@ -13,14 +13,14 @@
 
 package net.tangly.bus.core;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Registry of tag type and their associated tag values.

@@ -13,13 +13,6 @@
 
 package net.tangly.fsm.imp;
 
-import net.tangly.fsm.Event;
-import net.tangly.fsm.State;
-import net.tangly.fsm.StateMachine;
-import net.tangly.fsm.StateMachineEventHandler;
-import net.tangly.fsm.Transition;
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Collections;
@@ -28,6 +21,13 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.StringJoiner;
+
+import net.tangly.fsm.Event;
+import net.tangly.fsm.State;
+import net.tangly.fsm.StateMachine;
+import net.tangly.fsm.StateMachineEventHandler;
+import net.tangly.fsm.Transition;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * The implementation of the state machine abstraction.

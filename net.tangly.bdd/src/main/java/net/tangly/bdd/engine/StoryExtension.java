@@ -13,6 +13,8 @@
 
 package net.tangly.bdd.engine;
 
+import java.lang.reflect.Parameter;
+
 import net.tangly.bdd.Scenario;
 import net.tangly.bdd.Scene;
 import net.tangly.bdd.Story;
@@ -23,8 +25,6 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ExtensionContext.Namespace;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.api.extension.ParameterResolver;
-
-import java.lang.reflect.Parameter;
 
 import static org.junit.platform.commons.support.AnnotationSupport.isAnnotated;
 

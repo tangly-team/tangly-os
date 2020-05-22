@@ -13,16 +13,16 @@
 
 package net.tangly.erp.crm.models.apps;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 import net.tangly.bus.core.TagTypeRegistry;
 import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 public class Crm {
     private TagTypeRegistry tagTypeRegistry;

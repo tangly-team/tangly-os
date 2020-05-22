@@ -13,12 +13,12 @@
 
 package net.tangly.fsm.imp;
 
+import java.util.function.BiConsumer;
+import java.util.function.BiPredicate;
+
 import net.tangly.fsm.Event;
 import net.tangly.fsm.State;
 import net.tangly.fsm.Transition;
-
-import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
 
 /**
  * Default implementation of an mutable class providing the transition immutable interface.

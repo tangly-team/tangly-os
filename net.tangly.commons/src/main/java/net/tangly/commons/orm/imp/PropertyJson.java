@@ -13,6 +13,13 @@
 
 package net.tangly.commons.orm.imp;
 
+import java.io.IOException;
+import java.sql.Types;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -25,13 +32,6 @@ import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import net.tangly.bus.core.HasOid;
 import net.tangly.commons.orm.Property;
 import org.jetbrains.annotations.NotNull;
-
-import java.io.IOException;
-import java.sql.Types;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
 
 /**
  * A property which stores its values as as JSON representation in one column in the database table. Multi-format properties are supported.

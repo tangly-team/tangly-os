@@ -13,13 +13,13 @@
 
 package net.tangly.bus.codes;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * The code type describes a reference code table entity and all the existing code values

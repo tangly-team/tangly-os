@@ -13,12 +13,6 @@
 
 package net.tangly.commons.orm;
 
-import net.tangly.bus.core.HasOid;
-import net.tangly.commons.orm.imp.PropertyOne2Many;
-import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-
-import javax.sql.DataSource;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -33,6 +27,12 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
+import javax.sql.DataSource;
+
+import net.tangly.bus.core.HasOid;
+import net.tangly.commons.orm.imp.PropertyOne2Many;
+import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
 
 /**
  * Represents the mapping between a Java class and a relational database table containing the values of the instances of the class. The design

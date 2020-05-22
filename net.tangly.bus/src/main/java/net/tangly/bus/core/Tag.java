@@ -14,8 +14,6 @@
 package net.tangly.bus.core;
 
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
@@ -23,6 +21,8 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * The immutable class tag models a tag with a name and a format. Tags provide a powerful approach for multi-dimensional classifications of values.

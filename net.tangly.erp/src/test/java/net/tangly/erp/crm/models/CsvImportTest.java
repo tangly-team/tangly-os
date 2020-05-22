@@ -13,16 +13,16 @@
 
 package net.tangly.erp.crm.models;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.erp.crm.models.apps.Crm;
 import net.tangly.erp.crm.models.ports.CrmCsvHdl;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

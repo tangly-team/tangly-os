@@ -13,11 +13,6 @@
 
 package net.tangly.commons.di.imp;
 
-import net.tangly.commons.di.Injector;
-
-import javax.inject.Inject;
-import javax.inject.Provider;
-import javax.inject.Singleton;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
@@ -27,6 +22,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import javax.inject.Inject;
+import javax.inject.Provider;
+import javax.inject.Singleton;
+
+import net.tangly.commons.di.Injector;
 
 /**
  * Implements the @link{Injector} interface. For each class with a supplier the supplier is responsible to create instances of the class. A supplier

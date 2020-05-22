@@ -13,8 +13,8 @@
 
 package net.tangly.commons.di.imp;
 
-import javax.inject.Provider;
 import java.util.function.Supplier;
+import javax.inject.Provider;
 
 class SupplierProvider<T> implements Supplier<T> {
     private final Class<T> clazz;

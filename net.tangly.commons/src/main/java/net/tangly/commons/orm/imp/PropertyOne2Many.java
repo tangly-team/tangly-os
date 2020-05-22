@@ -13,14 +13,6 @@
 
 package net.tangly.commons.orm.imp;
 
-import net.tangly.bus.core.HasOid;
-import net.tangly.commons.lang.Reference;
-import net.tangly.commons.lang.ReflectionUtilities;
-import net.tangly.commons.orm.Dao;
-import net.tangly.commons.orm.Property;
-import net.tangly.commons.orm.Relation;
-import org.jetbrains.annotations.NotNull;
-
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,6 +20,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
+
+import net.tangly.bus.core.HasOid;
+import net.tangly.commons.lang.Reference;
+import net.tangly.commons.lang.ReflectionUtilities;
+import net.tangly.commons.orm.Dao;
+import net.tangly.commons.orm.Property;
+import net.tangly.commons.orm.Relation;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Models a propertyBy with managed objects as values and supporting multiple objects. When the propertyBy is read we retrieve all instances which

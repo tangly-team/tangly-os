@@ -13,15 +13,15 @@
 
 package net.tangly.fsm.actor;
 
+import java.util.HashSet;
+import java.util.List;
+
 import net.tangly.fsm.Event;
 import net.tangly.fsm.actors.Actor;
 import net.tangly.fsm.actors.LocalActor;
 import net.tangly.fsm.actors.LocalActors;
 import net.tangly.fsm.dsl.FsmBuilder;
 import org.junit.jupiter.api.Test;
-
-import java.util.HashSet;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

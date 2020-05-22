@@ -13,13 +13,13 @@
 
 package net.tangly.fsm.actors;
 
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
 import net.tangly.fsm.Event;
 import net.tangly.fsm.StateMachine;
 import net.tangly.fsm.dsl.FsmBuilder;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * A local actor implements the actor contract as a local thread running in the virtual machine. An actor completes when its finite state machine

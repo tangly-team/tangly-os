@@ -13,8 +13,6 @@
 
 package net.tangly.bus.core;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -22,6 +20,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Comment defines a human-readable annotation to an entity. A comment is an immutable object. Comments can be tagged to provide classification.
