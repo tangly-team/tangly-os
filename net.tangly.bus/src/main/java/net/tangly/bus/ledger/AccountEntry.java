@@ -51,7 +51,7 @@ public class AccountEntry implements HasTags {
     private final BigDecimal amount;
 
     /**
-     * Text describing the entry, often a reference to a document such as an invoice
+     * Text describing the entry, often a reference to a document such as an invoice.
      */
     private final String text;
 

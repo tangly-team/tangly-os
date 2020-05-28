@@ -27,12 +27,12 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @DisplayName("Given an injector")
 public class ConstructorsTest {
-    class ExampleOne {
+    public static class ExampleOne {
         public ExampleOne() {
         }
     }
 
-    class ExampleTwo {
+    public static class ExampleTwo {
         public ExampleTwo() {
         }
 

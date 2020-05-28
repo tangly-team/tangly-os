@@ -41,7 +41,6 @@ public class TagsView extends GridFormView<Tag> {
         super(false, "Filter by name...");
         this.registry = registry;
         this.entity = entity;
-        namespace.setItems(registry.namespaces());
         updateFilteredItems(null);
     }
 
@@ -130,6 +129,7 @@ public class TagsView extends GridFormView<Tag> {
 
     @Override
     protected void selectItemDetails(Tag item) {
+        namespace.setItems(registry.namespaces());
         namespace.setValue((item == null) ? "" : item.namespace());
         name.setValue((item == null) ? "" : item.name());
         value.setValue((item == null) ? "" : item.value());

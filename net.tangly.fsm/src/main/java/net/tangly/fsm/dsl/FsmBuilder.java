@@ -73,13 +73,6 @@ public interface FsmBuilder<O, S extends Enum<S>, E extends Enum<E>> {
     StateMachine<O, S, E> machine(String name, O owner);
 
     /**
-     * Adds a new substate to the root state.
-     *
-     * @param stateId the identifier of the substate to addToRoot
-     * @return the substate builder to complete the creation and configuration of a substate
-     */
-
-    /**
      * Adds a new state to the root state.
      *
      * @param stateId identifier of the new state

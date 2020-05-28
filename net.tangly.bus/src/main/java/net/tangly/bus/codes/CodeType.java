@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The code type describes a reference code table entity and all the existing code values
+ * The code type describes a reference code table entity and all the existing code values.
  *
  * @param <T> reference code type
  */

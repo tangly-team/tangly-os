@@ -38,10 +38,11 @@ class CodeHelper {
     private CodeHelper() {
     }
 
-    @FunctionalInterface
     /**
      * Defines the signature of a code class constructor.
-     */ public static interface CodeFactory<T extends Code> {
+     */
+    @FunctionalInterface
+    public static interface CodeFactory<T extends Code> {
         public T create(int id, String code, boolean enabled);
     }
 

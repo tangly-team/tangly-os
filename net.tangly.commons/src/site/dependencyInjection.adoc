@@ -1,4 +1,4 @@
-## Simple Dependency Injection for Java
+== Simple Dependency Injection for Java
 
 
 thre denpendcy injection package is a small dependency injection _DI_ library for java projects.
@@ -10,16 +10,16 @@ To be as simple as possible the library has less features compared to other DI f
 - Uses some JSR-330 annotations (`javax.inject.*`) but is **not** a compliant implementation of JSR-330
 - Java 8 or higher
 
-## User Manual
+== User Manual
 
-### 1. Add the library to your project
+=== 1. Add the library to your project
 
 There are two ways of using the library in your project:
 
 1. Use a Build-System like Gradle or Maven.
 
 
-### 2. Create your classes
+=== 2. Create your classes
 
 Write your Java classes. When your class needs an instance of another class, simply add this dependency as a constructor parameter.
 
@@ -50,7 +50,7 @@ public class Engine {
 }
 ```
 
-### 3. How to get instances of your classes
+=== 3. How to get instances of your classes
 
 ```java
 import net.tangly.commons.di.Injector;
@@ -69,9 +69,9 @@ public class CarApp {
 
 For this simple use case you do not need any annotations or configuration.
 
-## Optional Features
+== Optional Features
 
-### Multiple Constructors
+=== Multiple Constructors
 
 When a class has more then one public constructor, you need to define which one it should use. This is done with the annotation `javax.inject.Inject`:
 
@@ -90,7 +90,7 @@ public class Car {
 }
 ```
 
-### Interfaces and Implementing classes
+=== Interfaces and Implementing classes
 
 The library doesn't know which implementing class it should use when an interface type is requested as a dependency.
 You have to tell it with the `injector.bindInterface(interfaceType, implementingType)` method.
@@ -112,12 +112,12 @@ final Engine engine = injector.getInstance(Engine.class);
 assertThat(engine).isInstanceOf(ElectricMotor.class);
 ```
 
-### Singletons
+=== Singletons
 
 By default the library will create new instances every time a dependency is requested. If there should only be a single instance of a specific class
 you have to tell. There are two ways of doing this:
 
-#### 1. @Singleton
+==== 1. @Singleton
 
 The recommended way is to use the `javax.inject.Singleton` annotation on the class that should be a singleton:
 
@@ -128,7 +128,7 @@ public class Car {
 }
 ```
 
-#### 2. Injector.bindSingleton()
+==== 2. Injector.bindSingleton()
 
 You can mark a class as singleton with the method `markAsSingleton`. This is useful when you for some reason can't
 modify the source code of the class (i.e. when it is part of a third-party library).
@@ -140,7 +140,7 @@ injector.markAsSingleton(ThirdParty.class);
 ...
 ```
 
-### Providers
+=== Providers
 
 If you like to inject instances of a class that doesn't meet the requirements you can add a `javax.inject.Provider`
 for this class. There are many use cases where this can be useful:
@@ -176,8 +176,7 @@ injector.bindProvider(Engine.class, ()-> {
 });
 ```
 
-
-### Abstract classes
+=== Abstract classes
 
 If an instance of an abstract class is requested, you can't know out of the box which implementing class it should use.
 
@@ -186,8 +185,7 @@ The reason is that there are far more possibilities for (miss-)configuration whe
 
 When you like to use abstract classes as dependencies you will have to [create a provider](#providers) for this class.
 
-
-### Bind instances
+=== Bind instances
 
 In some use cases you like to define that one specific instance is injected every time the given type is requested. This is like a singleton
 configuration only that you define the exact instance on your own instead of only defining that the given type is a singleton and let create
@@ -247,10 +245,6 @@ This approach has some advantages over the previous one:
 - No way to mess up the singleton scope anymore.
 If you forget the `bindProvider` configuration in the example you will now get an expressive error message that there is no provider for the interface `InstanceProvider` found.
 
-
-
-
-
 ---
 
 ## Note on Circular Dependencies
@@ -282,4 +276,3 @@ injector.getInstance(A.class); // IllegalStateException
 ```
 
 Creating circular dependencies is generally a bad idea because it leads to tight coupling.
-
