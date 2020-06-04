@@ -25,7 +25,7 @@ project.description = "JUnit 5 BDD - using Java 14 or higher (tangly llc)"
 dependencies {
     implementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
     implementation 'com.guicedee.services:json:1.0.9.1'
-    implementation "org.json:json:20190722"
+    implementation "org.json:json:20200518"
 }
 
 java {
