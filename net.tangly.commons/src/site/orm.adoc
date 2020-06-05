@@ -104,6 +104,49 @@ Sopport for code type is provided.
 
 ==== Data Access Objects DAO
 
+[plantuml, orm-classes, svg]
+----
+@startuml
+
+class Dao <T extends HasOid> {
+}
+
+Dao *-- Property
+Dao *-- PropertyOne2Many
+
+class PropertyOne2One<T extends HasOid, R extends HasOid>  {}
+
+
+class DaoBuilder <T extends HasOid> {
+    + Dao<T> build(String schema, String entity, DataSource dataSource)
+}
+
+
+class DaoValidator <T extends HasOid> {}
+
+interface Property <T extends HasOid> {}
+
+interface Relation <T extends HasOid, R extends HasOid> {}
+
+class PropertySimple <T extends HasOid>
+
+Property <|.. PropertySimple
+
+class PropertyOne2One<T extends HasOid, R extends HasOid> {}
+
+PropertySimple <|-- PropertyOne2One
+Relation <|-- PropertyOne2One
+
+class PropertyOne2Many<T extends HasOid, R extends HasOid> {}
+
+Property <|.. PropertyOne2Many
+Relation <|.. PropertyOne2Many
+
+class PropertyJson<T extends HasOid, V> {}
+PropertySimple <|-- PropertyJson
+
+@enduml
+----
 __To be written__
 
 === Decisions

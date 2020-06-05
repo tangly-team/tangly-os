@@ -11,7 +11,7 @@
  * under the License.
  */
 
-package net.tangly.commons.ui;
+package net.tangly.commons.vaadin;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;

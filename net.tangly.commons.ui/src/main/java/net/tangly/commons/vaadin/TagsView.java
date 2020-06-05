@@ -11,7 +11,7 @@
  * under the License.
  */
 
-package net.tangly.commons.ui;
+package net.tangly.commons.vaadin;
 
 import java.util.Collection;
 import java.util.Optional;

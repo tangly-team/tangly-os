@@ -11,7 +11,7 @@
  * under the License.
  */
 
-package net.tangly.commons.ui;
+package net.tangly.commons.vaadin;
 
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import com.github.mvysny.kaributesting.v10.Routes;

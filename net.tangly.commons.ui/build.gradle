@@ -24,6 +24,10 @@ project.version = "0.2.4"
 project.ext.inceptionYear = '1996'
 project.description = "User Interface Components for commons data structures using Java 14 or higher (tangly llc)"
 
+apply plugin: 'war'
+apply plugin: 'com.vaadin'
+apply plugin: 'org.gretty'
+
 vaadin {
     productionMode = false
 }
@@ -32,7 +36,7 @@ dependencies {
     implementation project (':net.tangly.commons')
     implementation project(':net.tangly.bus')
 
-    implementation enforcedPlatform('com.vaadin:vaadin-bom:15.0.6')
+    implementation enforcedPlatform('com.vaadin:vaadin-bom:16.0.0')
     implementation("com.vaadin:vaadin-core")
 
     providedCompile "javax.servlet:javax.servlet-api:3.1.0"

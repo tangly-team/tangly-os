@@ -8,7 +8,88 @@ draft: false
 
 == Codes
 
+The abstraction of a reference table or reference codes.
+A code table is an extensible and you can add values when needed or and temporal activation.
+New values can be added without recompiling the application.
+A code can have an optional validity period or simply a flag stating it is active or not.
+To guaranty consistency with exported datasets, a code format shall never be deleted, only be disabled.
+Code instances are immutable objects.
+
+[plantuml,codes-uml,svg]
+....
+@startuml
+
+interface Code {
+    int id();
+    String code();
+    boolean isEnabled()
+}
+
+class CodeType <T extends Code> {
+    Class<T> clazz()
+    List<T> codes()
+    List<T> activeCodes()
+    List<T> inactiveCodes()
+    Optional<T> findCode(int id)
+    Optional<T> findCode(String code)
+}
+
+class CodeImp {}
+
+CodeImp <|-- Code
+
+@enduml
+....
+
 == Core
+
+[plantuml,core-uml,svg]
+....
+@startuml
+
+interface HasId {
+    String id()
+    String name()
+}
+
+interface HasOid {
+    long oid()
+}
+
+interface HasTags {}
+
+interface HasComments {}
+
+interface HasOwner {}
+
+HasOid <|-- HasOwner
+
+interface Entity {
+    String text()
+    LocalDate fromDate()
+    LocalDate toDate()
+}
+
+HasId <|-- Entity
+HasTags <|-- Entity
+HasComments <|-- Entity
+
+abstract class EntityImp {}
+
+EntityImp *-- Tag
+EntityImp *-- Comment
+
+Entity <|-- EntityImp
+
+class Address <<record>>
+class Tag <<record>>
+class Comment
+Comment *-- Tag
+
+class EmailAddress <<record>>
+
+@enduml
+....
 
 == Customer Relationship Model
 

@@ -264,6 +264,8 @@ Practice consolidates changes in behavior of your development organization.
 Once good practices are established you can move to more sophisticated tools, such as git history code analysis - to uncover weaknesses in your development department.
 
 Teams ready to learn from the like of Google could evaluate https://trunkbaseddevelopment.com/[Trunk Based Development] and consider long-lived branches as waste.
+A extensive description of the advantages can be found in the articlehttps://martinfowler.com/articles/branching-patterns.html[branching patterns]
+from Martin Fowler.
 
 ==== Code Review
 
@@ -720,8 +722,7 @@ I recommend for any Java developer
 For example you should consider a Java Programmer certification for the current JDK you are working daily with,
 * Learn the new features in Java e.g. Streams, Lambdas, Reactive Programming, LocalDate, Modules, packaging with jlink,
 * Read and understand _Effective Java_ <<effective-java>> from Joshua Bloch,
-* Read and understand _Clean Code_ <<clean-code>>, _Clean Coder_ <<clean-coder>>, _Clean Architecture_ <<clean-architecture>>, and _Clean
-Agile_<<clean-agile>> from Robert C. Martin,
+* Read and understand _Clean Code_ <<clean-code>>, _Clean Coder_ <<clean-coder>>, _Clean Architecture_ <<clean-architecture>>, and _Clean Agile_<<clean-agile>> from Robert C. Martin,
 * Read and understand _Refactoring_ <<refactoring>> from Martin Fowler, And read Refactoring not on the backlog post from Ron Jeffries
 * Learn modern practices such as logging with slf4j, TDD with JUnit5, Mockito and AssertJ, ATDD with Cucumber, Lean DevOps, continuous integration, continuous delivery, continuous deployment, monitoring,
 * Be aware of famous Java libraries such as Guava, Apache Commons, Use SonarQube - and the SonarLint plugin for your preferred IDE - to catch well-known weaknesses in your source code and improve your coding skills,

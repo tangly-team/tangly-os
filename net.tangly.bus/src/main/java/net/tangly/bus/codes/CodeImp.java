@@ -51,6 +51,7 @@ public abstract class CodeImp implements Code {
     /**
      * Default protected constructor for injection specializations such as JSON framework.
      */
+    @Deprecated
     protected CodeImp() {
     }
 
