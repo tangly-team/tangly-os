@@ -10,6 +10,7 @@ draft: false
 
 ![Apache License 2.0](https://img.shields.io/badge/license-Apache%202-blue.svg)
 ![Maven Central](https://img.shields.io/maven-central/v/net.tangly/bdd.svg)
+[![javadoc](https://javadoc.io/badge2/net.tangly/bdd/javadoc.svg)](https://javadoc.io/doc/net.tangly/bdd)
 ![Bitbucket Pipelines](https://img.shields.io/bitbucket/pipelines/tangly-team/tangly-os.svg)
 ![Sonar Coverage](https://img.shields.io/sonar/https/sonarcloud.io/tangly-os-at-tangly.net/coverage.svg)
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues-raw/tangly/tangly-os.svg)
