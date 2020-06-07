@@ -1,3 +1,10 @@
+---
+title: "Agile Architecture"
+date: 2019-05-01
+weight: 50
+draft: false
+---
+
 = Agile Architecture
 :author: Marcel Baumann 
 :email: <marcel.baumann@tangly.net>
@@ -6,7 +13,7 @@
 :homepage: https://www.tangly.net/
 :description: An introduction to software architecture in agile product development
 :keywords: agile, architecture, Scrum, LeSS
-:company: tangly llc
+:company: https://www.tangly.net/[tangly llc]
 :sectnums:
 :imagesdir: ./agile-architecture-images
 :icons: font
@@ -363,6 +370,11 @@ The architect shall
 * Be a master programmer and writes code in the application technological stack.
 He writes actual source code as current good practices are,
 * Have rich knowledge of architecture and design.
+
+[quote, Dave Farley]
+____
+Engineering is the application of an empirical scientific approach to finding efficient solutions to practical problems.
+____
 
 We have mentioned refactoring, which is how we evolve an ever-improving design and architecture while building the product incrementally.
 To do that, we need to know the difference between good architecture and design and not-so-good.
@@ -729,6 +741,8 @@ For example you should consider a Java Programmer certification for the current 
 
 A software developer not knowing the above items is almost certainly not a professional person, just a more or less talented amateur.
 See the blog of Mike Cohn the difference between a professional and an amateur for a similar point of view.
+
+You can find find a more extensive https://www.tangly.net/insights/books[list of books] on {company} website
 
 === Improve Continuously
 

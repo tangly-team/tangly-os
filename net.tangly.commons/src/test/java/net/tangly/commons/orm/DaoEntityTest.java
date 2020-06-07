@@ -42,7 +42,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class DaoTest {
+class DaoEntityTest {
     /**
      * Enumeration type extended to support the code interface.
      */
@@ -155,9 +155,10 @@ class DaoTest {
                 .withFid("ownedBy").build("tangly", "comments", datasource);
         entities = new DaoBuilder<Entity>(Entity.class).withOid().withString("id").withString("name").withDate("fromDate").withDate("toDate")
                 .withString("text").withTags("tags").withCode("code", CodeType.of(EntityCode.class, Arrays.asList(EntityCode.values())))
-                .withOne2One("owner").withFid("ownedBy").withOne2Many("owned", "ownedBy")
-                .withOne2Many("comments", "ownedBy", Reference.of(comments)).withJson("valuess", Value.class)
-                .build("tangly", "entities", datasource);
+                .withOne2One("owner").withFid("ownedBy").withOne2Many("owned", "ownedBy").withOne2Many("comments", "ownedBy", Reference.of(comments))
+                .withJson("valuess", Value.class).build("tangly", "entities", datasource);
+
+        // add valuess fields
     }
 
     @AfterEach
@@ -174,8 +175,8 @@ class DaoTest {
         assertThat(entity.oid()).isEqualTo(HasOid.UNDEFINED_OID);
         entities.update(entity);
         assertThat(entity.oid()).isNotEqualTo(HasOid.UNDEFINED_OID);
-        long oid = entity.oid();
 
+        long oid = entity.oid();
         Optional<Entity> retrievedEntity = entities.find(oid);
         testEntity(retrievedEntity.orElseThrow());
 
@@ -200,50 +201,62 @@ class DaoTest {
         assertThat(retrievedEntity.isEmpty()).isTrue();
 
         entities.clearCache();
+        retrievedEntity = entities.find(oid);
         assertThat(retrievedEntity.isEmpty()).isTrue();
     }
 
     @Test
     void testTags() throws NoSuchFieldException, NoSuchMethodException {
+        // given
         Entity entity = create(10, "2020-01-01", "2020-12-31");
+
+        // when
         entities.update(entity);
         long oid = entity.oid();
         entities.clearCache();
         Optional<Entity> retrieved = entities.find(oid);
+
+        // then
         assertThat(retrieved.isPresent()).isTrue();
         assertThat(retrieved.get().tags().size()).isEqualTo(3);
 
+        // when
         entity = retrieved.get();
         entity.removeTagNamed("test-C");
         entities.update(entity);
         entities.clearCache();
         retrieved = entities.find(oid);
 
+        // then
         assertThat(retrieved.isPresent()).isTrue();
         assertThat(retrieved.get().tags().size()).isEqualTo(2);
 
+        // when
         entity = retrieved.get();
         entity.remove(entity.tags().stream().findAny().orElse(null));
         entities.update(entity);
         entities.clearCache();
         retrieved = entities.find(oid);
 
+        // then
         assertThat(retrieved.isPresent()).isTrue();
         assertThat(retrieved.get().tags().size()).isEqualTo(1);
 
 
+        // when
         entity.clearTags();
         entities.update(entity);
         entities.clearCache();
         retrieved = entities.find(oid);
 
+        // then
         assertThat(retrieved.isPresent()).isTrue();
         assertThat(retrieved.get().tags().isEmpty()).isTrue();
     }
 
     @Test
     void testJson() {
-        // Given
+        // given
         Entity entity = create(10, "2020-01-01", "2020-12-31");
         entity.addValue(101, "Value 101");
         entity.addValue(102, "Value 102");
@@ -273,7 +286,7 @@ class DaoTest {
 
     @Test
     void testComments() throws NoSuchFieldException, NoSuchMethodException {
-        // Given
+        // given
         Entity entity = create(10, "2020-01-01", "2020-12-31");
         entity.add(Comment.of("John Doe", "This is text of comment 1"));
         entity.add(Comment.of("John Doe", "This is text of comment 2"));
@@ -358,17 +371,30 @@ class DaoTest {
 
     @Test
     void testCodeProperty() throws NoSuchFieldException, NoSuchMethodException {
+        // given
         Entity entity = create(20, "2000-01-01", "2020-12-31");
+
+        // when
         entity.code(EntityCode.CODE_TEST_1);
         entities.update(entity);
+
+        // then
         assertThat(entity.oid()).isNotEqualTo(HasOid.UNDEFINED_OID);
         assertThat(entity.code()).isEqualTo(EntityCode.CODE_TEST_1);
-        long oid = entity.oid();
 
+        // when
+        long oid = entity.oid();
         entities.clearCache();
         Optional<Entity> retrieved = entities.find(oid);
+
+        // then
         assertThat(retrieved.isPresent()).isTrue();
         assertThat(retrieved.get().code()).isEqualTo(EntityCode.CODE_TEST_1);
+    }
+
+    @Test
+    void testJsonProperty() throws NoSuchFieldException, NoSuchMethodException {
+        // TODO
     }
 
     private void testEntity(Entity entity) {

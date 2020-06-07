@@ -15,7 +15,7 @@ A code can have an optional validity period or simply a flag stating it is activ
 To guaranty consistency with exported datasets, a code format shall never be deleted, only be disabled.
 Code instances are immutable objects.
 
-[plantuml,codes-uml,svg]
+[plantuml,bus-codes-uml,svg]
 ....
 @startuml
 
@@ -43,7 +43,7 @@ CodeImp <|-- Code
 
 == Core
 
-[plantuml,core-uml,svg]
+[plantuml,bus-core-uml,svg]
 ....
 @startuml
 
@@ -65,9 +65,9 @@ interface HasOwner {}
 HasOid <|-- HasOwner
 
 interface Entity {
-    String text()
-    LocalDate fromDate()
-    LocalDate toDate()
+    + String text()
+    + LocalDate fromDate()
+    + LocalDate toDate()
 }
 
 HasId <|-- Entity
@@ -76,15 +76,18 @@ HasComments <|-- Entity
 
 abstract class EntityImp {}
 
-EntityImp *-- Tag
-EntityImp *-- Comment
+EntityImp *-- Tag : tags
+EntityImp *-- Comment : comments
 
 Entity <|-- EntityImp
 
 class Address <<record>>
+
 class Tag <<record>>
-class Comment
-Comment *-- Tag
+
+class Comment {}
+
+Comment *-- Tag : tags
 
 class EmailAddress <<record>>
 

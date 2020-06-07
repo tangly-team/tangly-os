@@ -1,3 +1,13 @@
+---
+title: "Architecture Code Scene"
+date: 2019-05-01
+weight: 80
+draft: false
+---
+:imagesdir: ./architecture-code-scene-images
+:icons: font
+:source-highlighter: pygments
+
 == Purpose
 
 Agile development teams shall manage and diminish their technical debt. We provide instruments to increase the pay-off of refactoring measures. The
@@ -15,18 +25,18 @@ The provided tools extract the requested indicators and presents them graphicall
 
 == Requirements
 
-1. Gather changes in the repository artifacts over a specified time interval
-  a. the gathered data are date of change, author of change, number of added lines and of removed lines
-  a. each file change is gathered
-  a. only the version management system __git__ is supported
-1. Gather complexity metrics over source code artifacts - classes and packages - over a specified time interval
-1. Gather location and time when identified defects were fixed in the source code repository
-  a. use the official conventions to identify a closed ticket in a commit comment
+. Gather changes in the repository artifacts over a specified time interval
+  .. the gathered data are date of change, author of change, number of added lines and of removed lines
+  .. each file change is gathered
+  .. only the version management system __git__ is supported
+. Gather complexity metrics over source code artifacts - classes and packages - over a specified time interval
+. Gather location and time when identified defects were fixed in the source code repository
+  .. use the official conventions to identify a closed ticket in a commit comment
 
 
 == Modules, Packages, Classes and Files
 
-[plantuml, dev-model, svg]
+[plantuml, architecture-code-scene-model, svg]
 ....
 @startuml
 

@@ -5,6 +5,7 @@ lastmod: 2020-05-31
 weight: 20
 draft: false
 ---
+:icons: font
 :source-highlighter: pygments
 
 == FSM Library Change Logs
