@@ -53,7 +53,7 @@ public class StoryAsciiDocPublisher {
     }
 
     private void publishFeature(JSONObject feature) {
-        header(feature.getString(Constants.NAME), 2);
+        header("Feature: " + feature.getString(Constants.NAME), 2);
         paragraph(feature.getString(Constants.DESCRIPTION));
         for (var item : feature.getJSONArray(Constants.STORIES)) {
             publishStory((JSONObject) item);
@@ -61,7 +61,7 @@ public class StoryAsciiDocPublisher {
     }
 
     private void publishStory(JSONObject story) {
-        header(story.getString(Constants.NAME), 3);
+        header("Story: " + story.getString(Constants.NAME), 3);
         paragraph(story.getString(Constants.DESCRIPTION));
         for (var item : story.getJSONArray(Constants.SCENARIOS)) {
             publishScenario((JSONObject) item);
@@ -69,7 +69,8 @@ public class StoryAsciiDocPublisher {
     }
 
     private void publishScenario(JSONObject scenario) {
-        header(scenario.getString(Constants.NAME), 4);
+        writer.append(".Scenario: ").append(scenario.getString(Constants.NAME));
+        writer.println();
         writer.println("[%hardbreaks]");
         clause(scenario, Constants.GIVEN);
         clause(scenario, Constants.WHEN);
