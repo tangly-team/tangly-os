@@ -47,6 +47,12 @@ public class StoryMerger {
         features = new JSONArray();
     }
 
+    /**
+     * Merges all BDD reports in the given directory into one file.
+     *
+     * @param directory directory containing all feature reports to merge
+     * @throws IOException if access to the file system encountered a problem
+     */
     public void merge(Path directory) throws IOException {
         try (Stream<Path> results = Files.walk(directory)) {
             results.filter(t -> t.toString().endsWith(".json")).forEach(t -> {
@@ -63,6 +69,11 @@ public class StoryMerger {
         }
     }
 
+    /**
+     * Writes the features to the provided file.
+     *
+     * @param path path of the file where the features will be written to
+     */
     public void write(Path path) {
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
             writer.write(features.toString(4));
@@ -71,7 +82,7 @@ public class StoryMerger {
         }
     }
 
-    public void merge(JSONObject feature) {
+    private void merge(JSONObject feature) {
         Optional<JSONObject> mergedFeature = contains(features, Constants.PACKAGE_NAME, feature.getString(Constants.PACKAGE_NAME));
         if (mergedFeature.isEmpty()) {
             features.put(feature);
@@ -85,10 +96,6 @@ public class StoryMerger {
                 }
             }
         }
-    }
-
-    public JSONArray features() {
-        return features;
     }
 
     private Optional<JSONObject> contains(JSONArray list, String key, String value) {

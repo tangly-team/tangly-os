@@ -15,5 +15,4 @@
  * <p>The package provides the abstractions to write behaviour driven design tests based on JUnit 5. The approach is to write acceptance tests as
  * regular JUnit 5 tests and generate a living documentation of the acceptance criteria and therefore the associated functional requirements.</p>
  */
-
 package net.tangly.bdd;
