@@ -28,20 +28,17 @@
         <exclude name="AvoidFieldNameMatchingTypeName"/>
         <exclude name="AvoidFieldNameMatchingMethodName"/>
         <exclude name="BeanMembersShouldSerialize"/>
-        <exclude name="AvoidFieldNameMatchingMethodName"/>
-        <exclude name="BeanMembersShouldSerialize"/>
     </rule>
     <rule ref="category/java/codestyle.xml">
         <exclude name="LocalVariableCouldBeFinal"/>
         <exclude name="UselessParentheses"/>
         <exclude name="MethodArgumentCouldBeFinal"/>
         <exclude name="OnlyOneReturn"/>
-        <exclude name="DefaultPackage" />
+        <exclude name="DefaultPackage"/>
     </rule>
     <rule ref="category/java/design.xml">
         <exclude name="ExcessiveImports"/>
     </rule>
-
     <rule ref="category/java/codestyle.xml/ShortMethodName">
         <properties>
             <property name="minimum" value="2"/>
@@ -49,12 +46,12 @@
     </rule>
     <rule ref="category/java/codestyle.xml/ShortVariable">
         <properties>
-            <property name="minimum" value="2"/>
+            <property name="minimum" value="1"/>
         </properties>
     </rule>
     <rule ref="category/java/codestyle.xml/LongVariable">
         <properties>
-            <property name="minimum" value="24" />
+            <property name="minimum" value="24"/>
         </properties>
     </rule>
     <rule ref="category/java/design.xml/TooManyMethods">
@@ -66,6 +63,19 @@
         <properties>
             <property name="maxLines" value="40"/>
             <property name="maxLineLength" value="180"/>
+        </properties>
+    </rule>
+    <rule ref="category/java/documentation.xml/CommentRequired">
+        <properties>
+            <property name="methodWithOverrideCommentRequirement" value="Ignored" />
+            <property name="accessorCommentRequirement" value="Ignored" />
+            <property name="classCommentRequirement" value="Required" />
+            <property name="fieldCommentRequirement" value="Ignored" />
+            <property name="publicMethodCommentRequirement" value="Ignored" />
+            <property name="protectedMethodCommentRequirement" value="Ignored" />
+            <property name="enumCommentRequirement" value="Required" />
+            <property name="serialVersionUIDCommentRequired" value="Ignored" />
+            <property name="serialPersistentFieldsCommentRequired" value="Ignored" />
         </properties>
     </rule>
 </ruleset>
