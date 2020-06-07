@@ -5,6 +5,7 @@ weight: 30
 draft: false
 ---
 :source-highlighter: pygments
+:pygments-style: manni
 
 === Features
 

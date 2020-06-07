@@ -1,7 +1,13 @@
+---
+title: "Dependency Injection"
+date: 2019-05-01
+weight: 50
+draft: false
+---
+
 == Simple Dependency Injection for Java
 
-
-thre denpendcy injection package is a small dependency injection _DI_ library for java projects.
+the dependency injection package is a small dependency injection _DI_ library for java projects.
 
 It's designed for small projects that don't need a full-blown dependency injection framework.
 To be as simple as possible the library has less features compared to other DI frameworks and some limitations:

@@ -226,23 +226,24 @@ public class Dao<T extends HasOid> {
     // endregion
 
     private String generateReplaceSql() {
-        return "REPLACE INTO " + ((schema != null) ? (schema + "." + entityName) : entityName) + " (" +
-                properties.stream().map(Property::name).collect(Collectors.joining(", ")) + ") VALUES (" + "?" +
+        return "REPLACE INTO " + tableName() + " (" + properties.stream().map(Property::name).collect(Collectors.joining(", ")) + ") VALUES (" + "?" +
                 String.join("", Collections.nCopies(properties.size() - 1, ", ?")) + ")";
     }
 
     private String generateDeleteSql() {
-        return "DELETE FROM " + ((schema != null) ? (schema + "." + entityName) : entityName) + " WHERE " + PRIMARY_KEY + "=?";
+        return "DELETE FROM " + tableName() + " WHERE " + PRIMARY_KEY + "=?";
     }
 
     private String generateFindSql() {
-        return "SELECT " + properties.stream().map(Property::name).collect(Collectors.joining(", ")) + " FROM " +
-                ((schema != null) ? (schema + "." + entityName) : entityName) + " WHERE " + PRIMARY_KEY + " = ?";
+        return "SELECT " + properties.stream().map(Property::name).collect(Collectors.joining(", ")) + " FROM " + tableName() + " WHERE " +
+                PRIMARY_KEY + " = ?";
     }
 
     private String generateFindWhereSql() {
-        return "SELECT " + properties.stream().map(Property::name).collect(Collectors.joining(", ")) + " FROM " +
-                ((schema != null) ? (schema + "." + entityName) : entityName) + " WHERE ";
+        return "SELECT " + properties.stream().map(Property::name).collect(Collectors.joining(", ")) + " FROM " + tableName() + " WHERE ";
     }
 
+    private String tableName() {
+        return ((schema != null) ? (schema + "." + entityName) : entityName);
+    }
 }

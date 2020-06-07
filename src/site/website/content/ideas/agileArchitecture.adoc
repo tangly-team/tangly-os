@@ -14,10 +14,12 @@ draft: false
 :description: An introduction to software architecture in agile product development
 :keywords: agile, architecture, Scrum, LeSS
 :company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
 :sectnums:
 :imagesdir: ./agile-architecture-images
 :icons: font
 :source-highlighter: pygments
+:pygments-style: manni
 :toc:
 
 == Agile Architecture Principles

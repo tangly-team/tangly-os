@@ -1,3 +1,13 @@
+---
+title: "ORM"
+date: 2019-05-01
+weight: 20
+draft: false
+---
+
+:source-highlighter: pygments
+:pygments-style: manni
+
 === Purpose
 
 [quote,Theodore Roosevelt]

@@ -11,7 +11,7 @@
  * under the License.
  */
 
-@Feature(value = "Feature - Sell items to customers", id = "sell-items", description = "The customer can buy various items from the store. Upon " +
+@Feature(value = "Sell items to customers", id = "sell-items", description = "The customer can buy various items from the store. Upon " +
         "completion the stock of the store reflects the purchasing action.")
 package net.tangly.bdd.one;
 

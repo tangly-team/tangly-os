@@ -11,7 +11,7 @@
  * under the License.
  */
 
-@Feature(value = "Feature - Refund items to customers", id = "refund-items", description =
+@Feature(value = "Refund items to customers", id = "refund-items", description =
         "The customer can return items to the store and be refunded. Upon completion the stock of the store reflects the purchasing " + "action.")
 package net.tangly.bdd.two;
 
