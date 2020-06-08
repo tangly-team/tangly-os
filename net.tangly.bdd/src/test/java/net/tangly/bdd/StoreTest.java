@@ -20,6 +20,7 @@ import java.nio.file.Path;
 import net.tangly.bdd.engine.StoryAsciiDocPublisher;
 import net.tangly.bdd.engine.StoryMerger;
 import net.tangly.bdd.engine.StoryWriter;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.AfterAll;
 
 public abstract class StoreTest {
@@ -37,14 +38,14 @@ public abstract class StoreTest {
         new StoryAsciiDocPublisher(bddReports, bddPublished);
     }
 
-    public Store create(Scene scene, int blackSweaters, int blueSweaters) {
+    public Store create(@NotNull Scene scene, int blackSweaters, int blueSweaters) {
         Store store = new Store(blackSweaters, blueSweaters);
         scene.put("store", store);
         return store;
     }
 
-    public Store store(Scene scene) {
-        return scene.<Store>get("store");
+    public Store store(@NotNull Scene scene) {
+        return (Store) scene.get("store");
     }
 
 }

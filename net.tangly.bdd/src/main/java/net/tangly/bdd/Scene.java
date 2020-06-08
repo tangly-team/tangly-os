@@ -41,12 +41,12 @@ public class Scene {
         this.values = new HashMap<>();
     }
 
-    public <T> void put(String key, T value) {
+    public void put(String key, Object value) {
         values.put(key, value);
     }
 
-    public <T> T get(String key) {
-        return (T) values.get(key);
+    public Object get(String key) {
+        return values.get(key);
     }
 
     public String methodName() {

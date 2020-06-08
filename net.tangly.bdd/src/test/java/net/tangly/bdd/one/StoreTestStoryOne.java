@@ -15,7 +15,6 @@ package net.tangly.bdd.one;
 
 import net.tangly.bdd.Scenario;
 import net.tangly.bdd.Scene;
-import net.tangly.bdd.Store;
 import net.tangly.bdd.StoreTest;
 import net.tangly.bdd.Story;
 import net.tangly.bdd.engine.StoryExtension;
@@ -33,7 +32,7 @@ class StoreTestStoryOne extends StoreTest {
                 and("has 5 black sweaters in stock", t -> assertThat(store(t).blacks()).as("Store should carry 4 black sweaters").isEqualTo(5)).
                 and("4 blue sweaters in stock", t -> assertThat(store(t).blues()).as("Store should carry 4 blue sweaters").isEqualTo(4)).
 
-                when("The customer buys 3 black sweaters", t -> t.<Store>get("store").sellBlack(3)).
+                when("The customer buys 3 black sweaters", t -> store(t).sellBlack(3)).
 
                 then("The store should have 2 black sweaters in stock",
                         t -> assertThat(store(t).blacks()).as("Store should carry 1 black sweaters").isEqualTo(2)).
