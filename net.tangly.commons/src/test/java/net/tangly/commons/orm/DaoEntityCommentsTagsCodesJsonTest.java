@@ -163,11 +163,6 @@ class DaoEntityCommentsTagsCodesJsonTest extends DaoTest {
                 .build("tangly", "entities", datasource());
     }
 
-    @AfterEach
-    void tearDown() throws SQLException {
-        tearDownDatabase();
-    }
-
     @Test
     void testCreateUpdateDeleteEntity() throws NoSuchMethodException {
         Entity entity = create(1, "2000-01-01", "2020-12-31");

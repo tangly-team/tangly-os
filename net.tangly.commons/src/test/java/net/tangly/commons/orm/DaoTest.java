@@ -28,7 +28,8 @@ public abstract class DaoTest {
 
     private JDBCDataSource datasource;
 
-    void tearDownDatabase() throws SQLException {
+    @AfterEach
+    void tearDown() throws SQLException {
         try (Connection connection = datasource().getConnection(); Statement stmt = connection.createStatement()) {
             stmt.execute("shutdown");
         }
@@ -48,6 +49,4 @@ public abstract class DaoTest {
                 .load();
         flyway.migrate();
     }
-
-
 }

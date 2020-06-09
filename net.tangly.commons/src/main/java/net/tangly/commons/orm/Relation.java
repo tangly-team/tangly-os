@@ -46,6 +46,7 @@ public interface Relation<T extends HasOid, R extends HasOid> {
 
     /**
      * Updates all the instances at the end of the relation.
+     *
      * @param entity entity owning the relation
      * @throws IllegalAccessException if an error occurred when accessing field for foreign key or instance
      */
@@ -53,9 +54,10 @@ public interface Relation<T extends HasOid, R extends HasOid> {
 
     /**
      * Retrieves all the instances at the end of the relation.
+     *
      * @param entity entity owning the relation
-     * @param fid foreign key of the referenced entities. Currently in a {@code N -> 1} relation the fid is the oid of the referenced object, in a
-     * {@code 1 -> N} the fid is the oid of entity
+     * @param fid    foreign key of the referenced entities. Currently in a {@code N -> 1} relation the fid is the oid of the referenced object, in a
+     *               {@code 1 -> N} the fid is the oid of entity
      * @throws IllegalAccessException if an error occurred when accessing field for foreign key or instance
      */
     void retrieve(@NotNull T entity, Long fid) throws IllegalAccessException;
@@ -63,6 +65,7 @@ public interface Relation<T extends HasOid, R extends HasOid> {
     /**
      * Deletes all the instances at the end of the relation. Semantically this method performs only if {@link #isOwned()} returns true.
      *
+     * @param entity entity owning the relation
      * @throws IllegalAccessException if an error occurred when accessing field for foreign key or instance
      */
     void delete(@NotNull T entity) throws IllegalAccessException;

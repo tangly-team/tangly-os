@@ -13,11 +13,14 @@
 
 package net.tangly.commons.orm;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 import net.tangly.bus.core.HasOid;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -85,7 +88,7 @@ public class DaoOwnedAndReferencedEntities extends DaoTest {
         }
 
         List<Entity> referencedOnes() {
-            return referencedOnes;
+            return Collections.unmodifiableList(referencedOnes);
         }
 
         void addReferenced(Entity entity) {
@@ -97,7 +100,7 @@ public class DaoOwnedAndReferencedEntities extends DaoTest {
         }
 
         List<Entity> ownedOnes() {
-            return ownedOnes;
+            return Collections.unmodifiableList(ownedOnes);
         }
 
         void addOwned(Entity entity) {
@@ -243,7 +246,7 @@ public class DaoOwnedAndReferencedEntities extends DaoTest {
 
         // when
         root = entities.find(rootOid).orElse(null);
-        root.referencedOnes().forEach(root::removeReferenced);
+        List.copyOf(root.referencedOnes()).forEach(root::removeReferenced);
         entities.update(root);
         entities.clearCache();
         item = entities.find(rootOid);
