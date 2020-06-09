@@ -43,43 +43,41 @@ import org.jetbrains.annotations.NotNull;
  */
 public class DaoBuilder<T extends HasOid> {
     private static final Map<Property.ConverterType, Function<?, ?>> ID_CONVERTER =
-            Map.of(Property.ConverterType.java2jdbc, UnaryOperator.identity(), Property.ConverterType.jdbc2java, UnaryOperator.identity(),
-                    Property.ConverterType.java2text, Object::toString, Property.ConverterType.text2java, (Function<String, Object>) Long::valueOf);
+            Map.of(Property.ConverterType.java2jdbc, UnaryOperator.identity(), Property.ConverterType.jdbc2java, UnaryOperator.identity());
     private static final Map<Property.ConverterType, Function<?, ?>> TEXT_CONVERTER =
-            Map.of(Property.ConverterType.java2jdbc, UnaryOperator.identity(), Property.ConverterType.jdbc2java, UnaryOperator.identity(),
-                    Property.ConverterType.java2text, UnaryOperator.identity(), Property.ConverterType.text2java, UnaryOperator.identity());
+            Map.of(Property.ConverterType.java2jdbc, UnaryOperator.identity(), Property.ConverterType.jdbc2java, UnaryOperator.identity());
     private static final Map<Property.ConverterType, Function<?, ?>> INTEGER_CONVERTER =
-            Map.of(Property.ConverterType.java2jdbc, UnaryOperator.identity(), Property.ConverterType.jdbc2java, UnaryOperator.identity(),
-                    Property.ConverterType.java2text, Object::toString, Property.ConverterType.text2java,
-                    (Function<String, Object>) Integer::valueOf);
+            Map.of(Property.ConverterType.java2jdbc, UnaryOperator.identity(), Property.ConverterType.jdbc2java, UnaryOperator.identity());
     private static final Map<Property.ConverterType, Function<?, ?>> BIGDECIMAL_CONVERTER =
-            Map.of(Property.ConverterType.java2jdbc, UnaryOperator.identity(), Property.ConverterType.jdbc2java, UnaryOperator.identity(),
-                    Property.ConverterType.java2text, Object::toString, Property.ConverterType.text2java, (Function<String, Object>) BigDecimal::new);
+            Map.of(Property.ConverterType.java2jdbc, UnaryOperator.identity(), Property.ConverterType.jdbc2java, UnaryOperator.identity());
     private static final Map<Property.ConverterType, Function<?, ?>> LOCALDATE_CONVERTER =
-            Map.of(Property.ConverterType.java2jdbc, UnaryOperator.identity(), Property.ConverterType.jdbc2java, UnaryOperator.identity(),
-                    Property.ConverterType.java2text, Object::toString, Property.ConverterType.text2java,
-                    (Function<String, Object>) LocalDate::parse);
+            Map.of(Property.ConverterType.java2jdbc, UnaryOperator.identity(), Property.ConverterType.jdbc2java, UnaryOperator.identity());
     private static final Map<Property.ConverterType, Function<?, ?>> LOCALDATETIME_CONVERTER =
-            Map.of(Property.ConverterType.java2jdbc, UnaryOperator.identity(), Property.ConverterType.jdbc2java, UnaryOperator.identity(),
-                    Property.ConverterType.java2text, Object::toString, Property.ConverterType.text2java,
-                    (Function<String, Object>) LocalDateTime::parse);
+            Map.of(Property.ConverterType.java2jdbc, UnaryOperator.identity(), Property.ConverterType.jdbc2java, UnaryOperator.identity());
     private static final Map<Property.ConverterType, Function<?, ?>> TAGS_CONVERTER =
             Map.of(Property.ConverterType.java2jdbc, (Function<Set<Tag>, Object>) Tag::text, Property.ConverterType.jdbc2java,
-                    (Function<String, Object>) Tag::toTags, Property.ConverterType.java2text, (Function<Set<Tag>, Object>) Tag::text,
-                    Property.ConverterType.text2java, (Function<String, Object>) Tag::toTags);
+                    (Function<String, Object>) Tag::toTags
+            );
 
     private final Class<T> type;
     private final List<Property<T>> properties;
-    private final List<PropertyOne2Many<T, ?>> relations;
+    private final List<Relation<T, ?>> one2one;
+    private final List<Relation<T, ?>> one2many;
     private final Reference<Dao<T>> self = Reference.empty();
 
 
     public DaoBuilder(@NotNull Class<T> type) {
         this.type = type;
         this.properties = new ArrayList<>();
-        this.relations = new ArrayList<>();
+        this.one2one = new ArrayList<>();
+        this.one2many = new ArrayList<>();
     }
 
+    /**
+     * Adds a long unique object identifier property and column.
+     *
+     * @return builder as fluent interface
+     */
     public DaoBuilder<T> withOid() {
         properties.add(new PropertySimple<>("oid", type, Long.TYPE, Types.BIGINT, ID_CONVERTER));
         return this;
@@ -145,28 +143,24 @@ public class DaoBuilder<T extends HasOid> {
         return this;
     }
 
-    public DaoBuilder<T> withOne2One(@NotNull String name) {
-        properties.add(new PropertyOne2One<>(name, type, self));
+    public <R extends HasOid> DaoBuilder<T> withOne2One(@NotNull String name, @NotNull Reference<Dao<R>> reference, boolean owned) {
+        Relation<T, R> relation = new PropertyOne2One<>(name, type, reference, owned);
+        one2one.add(relation);
         return this;
     }
 
-    public <R extends HasOid> DaoBuilder<T> withOne2One(@NotNull String name, @NotNull Reference<Dao<R>> reference) {
-        properties.add(new PropertyOne2One<>(name, type, reference));
-        return this;
-    }
-
-    public DaoBuilder<T> withOne2Many(@NotNull String name, @NotNull String property) {
-        relations.add(new PropertyOne2Many<>(name, type, property, self));
-        return this;
-    }
-
-    public <R extends HasOid> DaoBuilder<T> withOne2Many(String name, String property, Reference<Dao<R>> reference) {
-        relations.add(new PropertyOne2Many<>(name, type, property, reference));
+    public <R extends HasOid> DaoBuilder<T> withOne2Many(String name, String property, Reference<Dao<R>> reference, boolean owned) {
+        Relation<T, R> relation = new PropertyOne2Many<>(name, type, property, reference, owned);
+        one2many.add(relation);
         return this;
     }
 
     public Dao<T> build(String schema, String entity, DataSource dataSource) throws NoSuchMethodException {
-        self.reference(new Dao<>(schema, entity, type, dataSource, properties, relations));
+        self.reference(new Dao<>(schema, entity, type, dataSource, properties, one2one, one2many));
         return self.reference();
+    }
+
+    public Reference<Dao<T>> self() {
+        return self;
     }
 }

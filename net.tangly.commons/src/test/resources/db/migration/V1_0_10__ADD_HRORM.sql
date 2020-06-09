@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-$year Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
  *
@@ -16,6 +16,14 @@ CREATE TABLE hrorm.authors
     name     VARCHAR(64)
 );
 
+CREATE TABLE hrorm.recipes
+(
+    oid      BIGINT PRIMARY KEY,
+    name     VARCHAR(64),
+    author   BIGINT,
+    FOREIGN KEY (author) REFERENCES hrorm.authors(oid)
+);
+
 CREATE TABLE hrorm.ingredients
 (
     oid      BIGINT PRIMARY KEY,
@@ -24,12 +32,4 @@ CREATE TABLE hrorm.ingredients
     recipe   BIGINT,
     FOREIGN KEY (recipe) REFERENCES hrorm.recipes (oid)
 
-);
-
-CREATE TABLE hrorm.recipes
-(
-    oid      BIGINT PRIMARY KEY,
-    name     VARCHAR(64),
-    author   BIGINT,
-    FOREIGN KEY (author) REFERENCES hrorm.authors(oid)
 );

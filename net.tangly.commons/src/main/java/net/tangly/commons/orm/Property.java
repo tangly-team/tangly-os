@@ -41,7 +41,7 @@ import org.jetbrains.annotations.NotNull;
  * @param <T> type of the entity owning the property.
  */
 public interface Property<T extends HasOid> {
-    enum ConverterType {java2jdbc, jdbc2java, java2text, text2java}
+    enum ConverterType {java2jdbc, jdbc2java}
 
     /**
      * Returns the name of the property.

@@ -30,7 +30,6 @@ import java.util.stream.Collectors;
 import javax.sql.DataSource;
 
 import net.tangly.bus.core.HasOid;
-import net.tangly.commons.orm.imp.PropertyOne2Many;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
@@ -52,7 +51,8 @@ public class Dao<T extends HasOid> {
     private final DataSource dataSource;
     private Constructor<T> constructor;
     private List<Property<T>> properties;
-    private List<PropertyOne2Many<T, ?>> relations;
+    private List<Relation<T, ?>> one2one;
+    private List<Relation<T, ?>> one2many;
     private final String findSql;
     private final String replaceSql;
     private final String deleteSql;
@@ -64,14 +64,15 @@ public class Dao<T extends HasOid> {
     private Map<Long, WeakReference<T>> cache;
 
     public Dao(String schema, @NotNull String entity, @NotNull Class<T> type, @NotNull DataSource dataSource, @NotNull List<Property<T>> properties,
-               @NotNull List<PropertyOne2Many<T, ?>> relations) throws NoSuchMethodException {
+               @NotNull List<Relation<T, ?>> one2one, @NotNull List<Relation<T, ?>> one2many) throws NoSuchMethodException {
         this.schema = schema;
         this.entityName = entity;
         this.type = type;
         this.dataSource = dataSource;
         this.cache = new HashMap<>();
         this.properties = List.copyOf(properties);
-        this.relations = List.copyOf(relations);
+        this.one2one = List.copyOf(one2one);
+        this.one2many = List.copyOf(one2many);
         constructor = type.getConstructor();
         findSql = generateFindSql();
         replaceSql = generateReplaceSql();
@@ -113,8 +114,11 @@ public class Dao<T extends HasOid> {
             for (int i = 0; i < properties.size(); i++) {
                 properties.get(i).setParameter(stmt, i + 1, entity);
             }
+            for (var relation : one2one) {
+                relation.update(entity);
+            }
             stmt.executeUpdate();
-            for (var relation : relations) {
+            for (var relation : one2many) {
                 relation.update(entity);
             }
             addToCache(entity);
@@ -173,21 +177,31 @@ public class Dao<T extends HasOid> {
         for (int i = 0; i < properties.size(); i++) {
             properties.get(i).getParameter(set, i + 1, entity);
         }
-        for (var relation : relations) {
-            relation.retrieve(entity);
+        for (var relation : one2many) {
+            relation.retrieve(entity, entity.oid());
         }
         addToCache(entity);
         return entity;
     }
 
-    public void delete(long oid) {
+    public void delete(@NotNull T entity) {
         try (var connection = dataSource.getConnection(); var stmt = connection.prepareStatement(deleteSql)) {
-            stmt.setObject(1, oid, KEY_SQL_TYPE);
+            for (var relation : one2many) {
+                relation.delete(entity);
+            }
+            for (var relation : one2one) {
+                relation.delete(entity);
+            }
+            stmt.setObject(1, entity.oid(), KEY_SQL_TYPE);
             stmt.executeUpdate();
-            removeFromCache(oid);
-        } catch (SQLException e) {
-            logger.atError().log("SQL error when deleting instance {} id {}", entityName, oid, e);
+            removeFromCache(entity.oid());
+        } catch (SQLException | IllegalAccessException e) {
+            logger.atError().log("Error when deleting instance {} id {}", entityName, entity.oid(), e);
         }
+    }
+
+    public void delete(long oid) {
+        find(oid).ifPresent(this::delete);
     }
 
     // endregion

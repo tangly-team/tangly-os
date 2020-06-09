@@ -32,17 +32,17 @@ CREATE TABLE tangly.comments
 
 CREATE TABLE tangly.entities
 (
-    oid      BIGINT PRIMARY KEY,
-    id       VARCHAR(64),
-    name     VARCHAR(64),
-    fromDate DATE,
-    toDate   DATE,
-    text     CLOB,
-    tags     CLOB,
-    code     INT,
-    owner    BIGINT,
-    ownedBy  BIGINT,
-    valuess  CLOB,
+    oid         BIGINT PRIMARY KEY,
+    id          VARCHAR(64),
+    name        VARCHAR(64),
+    fromDate    DATE,
+    toDate      DATE,
+    text        CLOB,
+    tags        CLOB,
+    code        INT,
+    owner       BIGINT,
+    ownedBy     BIGINT,
+    jsonValues CLOB,
     FOREIGN KEY (code) REFERENCES tangly.entityCode (id),
     FOREIGN KEY (owner) REFERENCES tangly.entities (oid),
     FOREIGN KEY (ownedBy) REFERENCES tangly.entities (oid)

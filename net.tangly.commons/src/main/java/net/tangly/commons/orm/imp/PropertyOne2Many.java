@@ -41,14 +41,20 @@ public class PropertyOne2Many<T extends HasOid, R extends HasOid> implements Pro
     private final String name;
     private final Class<T> entity;
     private final String propertyBy;
+    /**
+     * The DAO responsible for the owned object in the 1 - N relation.
+     */
     private final Reference<Dao<R>> type;
+    private final boolean owned;
     private final Field field;
 
-    public PropertyOne2Many(@NotNull String name, @NotNull Class<T> entity, @NotNull String property, @NotNull Reference<Dao<R>> type) {
+    public PropertyOne2Many(@NotNull String name, @NotNull Class<T> entity, @NotNull String property, @NotNull Reference<Dao<R>> type,
+                            boolean owned) {
         this.name = name;
         this.entity = entity;
         this.propertyBy = property;
         this.type = type;
+        this.owned = owned;
         field = ReflectionUtilities.findField(entity, name).orElseThrow();
         field.setAccessible(true);
     }
@@ -88,6 +94,12 @@ public class PropertyOne2Many<T extends HasOid, R extends HasOid> implements Pro
         return null;
     }
 
+    @Override
+    public boolean isOwned() {
+        return owned;
+    }
+
+    @Override
     public void update(@NotNull T entity) throws IllegalAccessException {
         Property foreignProperty = type().getPropertyBy(propertyBy).orElseThrow();
         List<R> oldReferences = new ArrayList<>(type().find(propertyBy + "=" + entity.oid()));
@@ -105,10 +117,17 @@ public class PropertyOne2Many<T extends HasOid, R extends HasOid> implements Pro
         }
     }
 
-    public void retrieve(@NotNull T entity) throws IllegalAccessException {
-        List<R> references = new ArrayList<>(type().find(propertyBy + "=" + entity.oid()));
+    @Override
+    public void retrieve(@NotNull T entity, Long fid) throws IllegalAccessException {
         Collection<R> collection = (Collection<R>) field.get(entity);
         collection.clear();
-        collection.addAll(references);
+        collection.addAll(type().find(propertyBy + "=" + entity.oid()));
+    }
+
+    @Override
+    public void delete(@NotNull T entity) throws IllegalAccessException {
+        if (isOwned()) {
+            ((List<R>) field.get(entity)).forEach(t -> type().delete(t));
+        }
     }
 }

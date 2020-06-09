@@ -13,8 +13,6 @@
 
 package net.tangly.commons.orm.imp;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.sql.Types;
 import java.util.Map;
 import java.util.Objects;
@@ -28,7 +26,11 @@ import org.jetbrains.annotations.NotNull;
 
 
 /**
- * Models a property with managed objects as values and supporting one object.
+ * Models a property with at most one managed instance of a target entity. The following rules apply
+ * <ul>
+ *     <li>The name of the property identifies the field in the instance owning the property.</li>
+ *     <li>THe name of the property is a column in the owning entity table with a BIGINT sql type.</li>
+ * </ul>
  *
  * @param <T> class owning the property
  * @param <R> Class referenced by the property
@@ -37,15 +39,17 @@ public class PropertyOne2One<T extends HasOid, R extends HasOid> extends Propert
     /**
      * The DAO responsible for the owned object in the 1 - 1 relation.
      */
-    private Reference<Dao<R>> type;
+    private final Reference<Dao<R>> type;
+    private final boolean owned;
 
-    public PropertyOne2One(@NotNull String name, @NotNull Class<T> entity, @NotNull Reference<Dao<R>> type) {
+    public PropertyOne2One(@NotNull String name, @NotNull Class<T> entity, @NotNull Reference<Dao<R>> type, boolean owned) {
         super(name, entity, Long.class, Types.BIGINT,
                 Map.of(Property.ConverterType.java2jdbc, (HasOid o) -> Objects.nonNull(o) ? o.oid() : null, Property.ConverterType.jdbc2java,
-                        (Long o) -> Objects.nonNull(o) ? type.reference().find(o).orElse(null) : null, Property.ConverterType.java2text,
-                        (HasOid o) -> Objects.nonNull(o) ? Long.toString(o.oid()) : null, Property.ConverterType.text2java,
-                        (String o) -> Objects.nonNull(o) ? type.reference().find(Long.parseLong(o)).orElse(null) : null));
+                        (Long o) -> Objects.nonNull(o) ? type.reference().find(o).orElse(null) : null
+                )
+        );
         this.type = type;
+        this.owned = owned;
     }
 
     @Override
@@ -54,16 +58,30 @@ public class PropertyOne2One<T extends HasOid, R extends HasOid> extends Propert
     }
 
     @Override
-    public void setParameter(@NotNull PreparedStatement statement, int index, @NotNull T entity) throws SQLException, IllegalAccessException {
+    public boolean isOwned() {
+        return owned;
+    }
+
+    @Override
+    public void update(@NotNull T entity) throws IllegalAccessException {
         R ownee = (R) field().get(entity);
         if (Objects.nonNull(ownee)) {
             type().update(ownee);
         }
-        Object value = get(entity, ConverterType.java2jdbc);
-        if (value != null) {
-            statement.setObject(index, value, sqlType());
-        } else {
-            statement.setNull(index, sqlType());
+    }
+
+    @Override
+    public void retrieve(@NotNull T entity, Long fid) throws IllegalAccessException {
+        // the property is already been udpated through the simple property retrieve mechanism.
+    }
+
+    @Override
+    public void delete(@NotNull T entity) throws IllegalAccessException {
+        if (isOwned()) {
+            R ownee = (R) field().get(entity);
+            if (Objects.nonNull(ownee)) {
+                type().delete(ownee);
+            }
         }
     }
 }

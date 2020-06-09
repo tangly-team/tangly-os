@@ -8,44 +8,57 @@ draft: false
 :source-highlighter: pygments
 :pygments-style: manni
 
-=== Purpose
+== Purpose
 
 [quote,Theodore Roosevelt]
 In any moment of decision, the best thing you can do is the right thing, the next best thing you can do is the wrong thing, the worst thing you can do is nothing.”
 
 Orm provides a mapper between Java objects and relational databases.
-Major design constraints were
+The ORM should be simplistic and provide minimal functions.
+Major design constraints are
 
 * The persisted Java classes do not need to be edited.
-The framework does not rely on inheritance or annotations to perform its duty,
-* No byte code manipulation.
+The approach support hexagonal architecture.
+The framework does not rely on inheritance or annotations to perform its duty.
+Your domain model stays clean of implementation impurities.
+* No magic byte code manipulation.
 The POJO are not modified by the ORM library,
 * No external configuation based on XML or JSON,
 * Only a basic set of operations and abstractions are supported, no advanced capabilities are provided.
 
 Interactions with ORM have two parts.
 You build a DAO using a DAO builder.
+The builder defines the mapping between simple properties and columns in table and relationships between classes and associated tables.
+
 The DAO defines the mapping between a Java class with all its properties and relations to other classes.
+It provides functions to close the gap between Java objects and rows in a relational database.
 
-=== Entities
+== Entities
 
-Using the library means accepting some restrictions on how your entities both the Java classes and the SQL schema are designed.
+Using the library means accepting some restrictions on how your entities both as Java classes and as SQL schema are designed.
 Some of these restrictions are good practices regardless of how database and object models are built.
 
-==== Java Objects
+=== Java Objects
 
-Every entity class should have a *Long* identifier field named *oid* that will be used as a primary key.
-The library will populate this field.
-The primary key will be used when the library performs updates.
-The library expects to work with entities with public getters and setters or with entities with public getters for fields and related builder objects or constructors with setters for the individual fields.
+* Every entity class should have a numeric *Long* identifier field named *oid* that will be used as a mandatory primary key.
+** The library will populate this identifier field.
+** The primary key will be used when the library performs updates in the underlying database.
+* The library expects to work with entities with public getters and setters or with entities with public getters for fields.
+** A special mode is available for immutable objects, in particular Java _record_ having only getters.
 
-The __update__ operation is transitive and updates all referenced objects.
+* Entities can contain lists of other entities.
+In this case, the object containing the other entities is referred to as the owner, and the entities in its list, its owned objects.
+** The _update_ operation is transitive and updates all referenced objects.
+** The _delete_ operation is transitive and all owned objects will be discarded from the persistent store.
+** References between entities are accomplished through their primary keys in the database, but through object references in Java.
 
-==== SQL Schema
+Entity models that do not follow the practices above will be difficult or impossible to support using hrorm.
 
-The library expects every table to have a numeric primary key.
-The library will populate the primary keys on inserts with an unique key value.
-The key value is unique through all objects implicitely supporting polymorphic references in relations.
+=== SQL Schema
+
+* The library expects every table to have a numeric long primary key.
+* The library will populate the primary keys on inserts with an unique key value.
+* The key value is unique through all objects implicitly supporting polymorphic references in relations.
 
 === Relations
 
@@ -53,68 +66,70 @@ One point of using a relational database as opposed to a document store or other
 The impedence mismatach is delegated to the developer who shall declare a private property for each foreign key; no access methods need to be created.
 
 All relations are directional in the programming language.
-Three kinds of relations are identified
+Four kinds of relations are identified (the arrow shows the direction of the relation in Java).
 
 N -> 1::
-most efficient mapping of a relation in the programming language.
-The property contains an optional ownee object.
-The relation is modeled with a foreign key in the owner table.
-A foreign constraint rule can be defined.
+. most efficient mapping of a relation in the programming language.
+.. Updates of the referencing object will always updates all referenced objects.
+. The property of the object referencing the object simply contains an _optional_ or _mandatory_ ownee object.
+. The relation is modeled with a foreign key in the referencing table to the unique identifier of the referenced object table.
+.. The property name contains the referenced instance in the Java object.
+.. The column name in the reference table is the name of the property and have the sql type _BIGINT_.
+.. THe relation can only implement the reference mode and never the owned mode because no unique owner exists.
+. The unique identifier of the referenced object is stored as foreign key in the referencing object.
+.. You can define a foreign key constraint if desired on the reference table.
+Therefore we must first persist the owned object, and then the owner object.
+
+1 -> 1::
+. is a special case of *N -> 1* relation and can efficiently be map in the programming language.
+.. Updates of the referencing object will always updates all referenced objects.
+. The property of the object referencing the object simply contains an _optional_ or _mandatory_ ownee object.
+. The relation is modeled with a foreign key in the referencing table to the unique identifier of the referenced object table.
+.. The property name contains the referenced instance in the Java object.
+.. The column name in the reference table is the name of the property and have the sql type _BIGINT_.
+.. THe relation can only the reference mode and the owned mode because a unique owner exists.
+. The unique identifier of the referenced object is stored as foreign key in the referencing object.
+.. You can define a foreign key constraint if desired on the reference table.
+. If the referencing object owns the referenced object it will be transitively deleted.
 
 1 -> N::
-The property is a list of ownee objects.
-The relation is modeled with a foreign key in the ownee table.
-A foreign constraint rule can be defined.
+. The property is a list of referenced objects.
+.. All referenced objects have the same type.
+.. Updates of the referencing object will always updates all referenced objects.
+. The relation is modeled with a foreign key in the referenced table.
+.. You can define a foreign key constraint if desired on the referenced table.
+. If the referencing object owns the referenced object it will be transitively deleted.
 
 N -> M::
-The property is a list of ownee objects.
-The relation is modeled with a correlation table in the database.
-Two foreign contraint rules can be defined.
+. Is not supported.
+Please be aware that this kind of relation is not available in Java programming language.
+. In Java you can emulate *N -> M* with additional correlation classes.
+Please transform the relation to two *1 -> N* with a correlation class and table.
 
-==== Relation N -> 1 and 1 -> 1
-
-The owner object has an optional reference to the owned object.
-Multiple owners can reference the same owned objects.
-If an owned object is referenced by at most one owner object the relation is of type one 2 one
-
-Because the unique identifier of the owned object is stored as foreign key in the owner we must first persist the owned object, and then the owner object.
-
-This rule is only relevant if the owned object as a new object, meaning the __oid__ is __UNDEFINED_ID__.
-Otherwise the integrity rules are already fulfilled in the database.
-
-==== Relation 1 -> N
-
-The owner object has reference to multiple owned objects.
-An owned object can have at most one owner.
-
-Because the unique identifier of the owner object is stored as foreign key in the owned object we must first persist the owner object, and then the owned object.
 One tricky thing about these relationships is the reversal in how ownership is expressed between the database schema and the object model.
-In the object model the owner has ownees, in the database the ownee has a foreign key reference to the owner.
-
+Insert, update and delete operations have to handle the reversal accordingly.
 This rule is only relevant if the owned object as a new object, meaning the __oid__ is __UNDEFINED_ID__.
 Otherwise the integrity rules are already fulfilled in the database.
 
-==== Relation N -> M
+== Extensions
 
-The owner object has reference to multiple owned objects.
-An owned object can have multiple owner.
-
-The relation is implemented with a correlation table having a foreign key identifier for the owner __owner_oid__ and a foreign key identifier for the owned object __ownee_oid__.
-The name of the table is __owner_ownee_property_X__.
-
-==== Extensions
-
+.Comments
 Comments are handled as a regular entity and the object having comments has a 1 -- N relation with the comment entity.
 
+.Tags
 Tags are handled as a JSON field and are stored as emdedded list in the object having the tags.
 Support for tag type is provided.
 
+.Reference Codes
 Reference code are handled as a local property and the code key is stored in the database.
 Sopport for code type is provided.
 
-==== Data Access Objects DAO
+.Json Properties
+To be written
 
-[plantuml, orm-classes, svg]
+== Data Access Objects Design
+
+[plantuml,orm-classes,svg]
 ----
 @startuml
 
@@ -157,16 +172,15 @@ PropertySimple <|-- PropertyJson
 
 @enduml
 ----
-__To be written__
 
-=== Decisions
+== History
 
-__To be written__
-
-=== History
-
-* The initial implementation is tested against hsqldb.
+* _0.2.x_ The mapper was extended to support owned entities and sibling entities.
+Both are updated upon a save operation.
+If an owner instance is deleted all his owned entities will transitively be deleted.
+Business logic is responsible for the handling of sibling lifecycles.
+* _0.2.x_ The initial implementation is tested against hsqldb.
 No effort was invested to test compatibility with other databases.
 The port should be straight forward because we are using plain JDBC statements.
-* A major drive to create the library is the ease of support for reference code, tags and comments.
+* _0.2.x_ A major drive to create the library is the ease of support for reference code, tags and comments.
 We are still looking for open source libraries providing hooks to support such extensions.

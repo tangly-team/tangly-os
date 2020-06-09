@@ -42,7 +42,8 @@ public class InjectorImp implements Injector {
     @Override
     public <R, T extends R> void bind(Class<R> interfaces, Class<T> clazz) {
         creators.put(interfaces,
-                wrapSingleton(interfaces, new SupplierBinding<R, T>(interfaces, clazz, wrapSingleton(clazz, createConstructor(clazz)))));
+                wrapSingleton(interfaces, new SupplierBinding<R, T>(interfaces, clazz, wrapSingleton(clazz, createConstructor(clazz))))
+        );
     }
 
     @Override
@@ -117,12 +118,14 @@ public class InjectorImp implements Injector {
             if (constructorsWithInject.isEmpty()) {
                 throw new IllegalArgumentException(exceptionMessage(type,
                         "There is more than one public constructor defined so I don't know which one to use. Fix this by either make only one " +
-                                "constructor public or annotate exactly one constructor with the javax.inject.Inject annotation."));
+                                "constructor public or annotate exactly one constructor with the javax.inject.Inject annotation."
+                ));
             }
             if (constructorsWithInject.size() != 1) {
                 throw new IllegalArgumentException(exceptionMessage(type,
                         "There is more than one public constructor marked with @Inject so I don't know which one to use. Fix this by either " +
-                                "make only one constructor public or annotate exactly one constructor with the javax.inject.Inject annotation."));
+                                "make only one constructor public or annotate exactly one constructor with the javax.inject.Inject annotation."
+                ));
             }
             return (Constructor<T>) constructorsWithInject.get(0);
         } else {

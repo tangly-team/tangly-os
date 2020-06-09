@@ -20,16 +20,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import net.tangly.bus.codes.CodeType;
-import net.tangly.bus.core.Comment;
 import net.tangly.bus.core.HasOid;
-import net.tangly.commons.lang.Reference;
-import org.flywaydb.core.Flyway;
-import org.hsqldb.jdbc.JDBCDataSource;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-public class DaoHrormTest {
+public class DaoHrormTest extends DaoTest {
     public record Author(Long id, String name) {
     }
 
@@ -55,25 +50,14 @@ public class DaoHrormTest {
         }
     }
 
-    private static String dbUrl = "jdbc:hsqldb:mem:tangly;sql.syntax_mys=true";
-    private static String username = "SA";
-    private static String password = "";
-
-    private static JDBCDataSource datasource;
-
     @BeforeEach
     void setUp() throws NoSuchMethodException {
-        datasource = new JDBCDataSource();
-        datasource.setDatabase(dbUrl);
-        datasource.setUser(username);
-        datasource.setPassword(password);
-        var flyway = Flyway.configure().dataSource(datasource).load();
-        flyway.migrate();
+        setUpDatabase();
     }
 
     @AfterEach
     void tearDown() throws SQLException {
-        try (Connection connection = datasource.getConnection(); Statement stmt = connection.createStatement()) {
+        try (Connection connection = datasource().getConnection(); Statement stmt = connection.createStatement()) {
             stmt.execute("shutdown");
         }
     }

@@ -47,15 +47,16 @@ public class PropertyJson<T extends HasOid, V> extends PropertySimple<T> {
     /**
      * Constructor of the JSON property.
      *
-     * @param name   name of the property
-     * @param entity class owning the mapped property
+     * @param name          name of the property
+     * @param entity        class owning the mapped property
      * @param referenceType class of the reference type to map
      */
     public PropertyJson(String name, Class<T> entity, final Class<V> referenceType) {
         super(name, entity, String.class, Types.VARCHAR,
                 Map.of(Property.ConverterType.java2jdbc, PropertyJson::toJson, Property.ConverterType.jdbc2java,
-                        (String o) -> PropertyJson.fromJson(o, referenceType), Property.ConverterType.java2text, PropertyJson::toJson,
-                        Property.ConverterType.text2java, (String o) -> PropertyJson.fromJson(o, referenceType)));
+                        (String o) -> PropertyJson.fromJson(o, referenceType)
+                )
+        );
         this.referenceType = referenceType;
     }
 

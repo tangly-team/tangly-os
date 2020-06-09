@@ -37,9 +37,9 @@ public class PropertyCode<T extends HasOid, V extends Code> extends PropertySimp
     public PropertyCode(@NotNull String name, @NotNull Class<T> entity, @NotNull CodeType<V> codeType) {
         super(name, entity, Integer.class, Types.INTEGER,
                 Map.of(Property.ConverterType.java2jdbc, (Code o) -> o == null ? null : o.id(), Property.ConverterType.jdbc2java,
-                        (Integer o) -> o == null ? null : codeType.findCode(o).orElse(null), Property.ConverterType.java2text,
-                        (Code o) -> o == null ? null : Integer.toString(o.id()), Property.ConverterType.text2java,
-                        (String o) -> codeType.findCode(Integer.parseInt(o)).orElse(null)));
+                        (Integer o) -> o == null ? null : codeType.findCode(o).orElse(null)
+                )
+        );
         this.codeType = codeType;
     }
 }
