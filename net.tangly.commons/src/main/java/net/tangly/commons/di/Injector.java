@@ -14,6 +14,7 @@
 package net.tangly.commons.di;
 
 import java.util.Arrays;
+import java.util.function.Consumer;
 import javax.inject.Provider;
 
 import net.tangly.commons.di.imp.InjectorImp;
@@ -31,9 +32,9 @@ public interface Injector {
      * @param modules describe the configuration instructions. Often a module is defined for each subsystem of the application
      * @return injector instance
      */
-    static Injector create(Module... modules) {
+    static Injector create(Consumer<Injector>... modules) {
         Injector injector = new InjectorImp();
-        Arrays.stream(modules).forEachOrdered(o -> o.configure(injector));
+        Arrays.stream(modules).forEachOrdered(o -> o.accept(injector));
         return injector;
     }
 

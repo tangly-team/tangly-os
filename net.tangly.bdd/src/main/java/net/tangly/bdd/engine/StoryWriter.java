@@ -39,6 +39,11 @@ public class StoryWriter {
     private final StoryRun run;
     private final Path path;
 
+    public StoryWriter(StoryRun run) {
+        this.run = run;
+        this.path = Paths.get(getOrCreateBddReportsFolder(run.getClass()).toString(), run.clazz().getName() + Constants.EXT);
+    }
+    
     public static Path getOrCreateBddReportsFolder(Class<?> clazz) {
         URL url = clazz.getResource("");
         Objects.requireNonNull(url);
@@ -54,11 +59,6 @@ public class StoryWriter {
             throw new RuntimeException("Unable to create the folder for saving bdd reports.");
         }
         return bddReportsDirectory;
-    }
-
-    public StoryWriter(StoryRun run) {
-        this.run = run;
-        this.path = Paths.get(getOrCreateBddReportsFolder(run.getClass()).toString(), run.clazz().getName() + Constants.EXT);
     }
 
     void write() {

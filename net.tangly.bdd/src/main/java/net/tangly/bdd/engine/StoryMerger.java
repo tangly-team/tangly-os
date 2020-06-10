@@ -98,7 +98,7 @@ public class StoryMerger {
         }
     }
 
-    private Optional<JSONObject> contains(JSONArray list, String key, String value) {
+    private static Optional<JSONObject> contains(JSONArray list, String key, String value) {
         for (var item : list) {
             JSONObject object = (JSONObject) item;
             if (object.has(key) && (object.getString(key).equals(value))) {

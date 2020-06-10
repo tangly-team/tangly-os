@@ -18,15 +18,15 @@ import java.math.BigDecimal;
 
 public class InvoiceItem implements InvoiceLine {
 
-    int position;
+    private int position;
 
-    String productId;
+    private String productId;
 
-    String text;
+    private String text;
 
-    BigDecimal unitPrice;
+    private BigDecimal unitPrice;
 
-    BigDecimal quantity;
+    private BigDecimal quantity;
 
 
     public InvoiceItem() {

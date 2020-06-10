@@ -19,16 +19,12 @@
          xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
     <description>tangly open source products PMD java ruleset</description>
     <rule ref="category/java/bestpractices.xml"/>
-    <rule ref="category/java/documentation.xml"/>
+    <rule ref="category/java/documentation.xml">
+        <exclude name="UncommentedEmptyMethodBody" />
+    </rule>
     <rule ref="category/java/multithreading.xml"/>
     <rule ref="category/java/performance.xml"/>
     <rule ref="category/java/security.xml"/>
-
-    <rule ref="category/java/errorprone.xml">
-        <exclude name="AvoidFieldNameMatchingTypeName"/>
-        <exclude name="AvoidFieldNameMatchingMethodName"/>
-        <exclude name="BeanMembersShouldSerialize"/>
-    </rule>
     <rule ref="category/java/codestyle.xml">
         <exclude name="LocalVariableCouldBeFinal"/>
         <exclude name="UselessParentheses"/>
@@ -38,6 +34,13 @@
     </rule>
     <rule ref="category/java/design.xml">
         <exclude name="ExcessiveImports"/>
+        <exclude name="LoosePackageCoupling"/>
+        <exclude name="LawOfDemeter" />
+    </rule>
+    <rule ref="category/java/errorprone.xml">
+        <exclude name="AvoidFieldNameMatchingTypeName"/>
+        <exclude name="AvoidFieldNameMatchingMethodName"/>
+        <exclude name="BeanMembersShouldSerialize"/>
     </rule>
     <rule ref="category/java/codestyle.xml/ShortMethodName">
         <properties>
@@ -67,15 +70,15 @@
     </rule>
     <rule ref="category/java/documentation.xml/CommentRequired">
         <properties>
-            <property name="methodWithOverrideCommentRequirement" value="Ignored" />
-            <property name="accessorCommentRequirement" value="Ignored" />
-            <property name="classCommentRequirement" value="Required" />
-            <property name="fieldCommentRequirement" value="Ignored" />
-            <property name="publicMethodCommentRequirement" value="Ignored" />
-            <property name="protectedMethodCommentRequirement" value="Ignored" />
-            <property name="enumCommentRequirement" value="Required" />
-            <property name="serialVersionUIDCommentRequired" value="Ignored" />
-            <property name="serialPersistentFieldsCommentRequired" value="Ignored" />
+            <property name="methodWithOverrideCommentRequirement" value="Ignored"/>
+            <property name="accessorCommentRequirement" value="Ignored"/>
+            <property name="classCommentRequirement" value="Required"/>
+            <property name="fieldCommentRequirement" value="Ignored"/>
+            <property name="publicMethodCommentRequirement" value="Ignored"/>
+            <property name="protectedMethodCommentRequirement" value="Ignored"/>
+            <property name="enumCommentRequirement" value="Required"/>
+            <property name="serialVersionUIDCommentRequired" value="Ignored"/>
+            <property name="serialPersistentFieldsCommentRequired" value="Ignored"/>
         </properties>
     </rule>
 </ruleset>
