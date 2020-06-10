@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import javax.sql.DataSource;
 
@@ -82,10 +83,6 @@ public class Dao<T extends HasOid> {
 
     public Class<T> type() {
         return type;
-    }
-
-    public void clearCache() {
-        cache.clear();
     }
 
     /**
@@ -208,6 +205,10 @@ public class Dao<T extends HasOid> {
 
     // region cache operations
 
+    public void clearCache() {
+        cache.clear();
+    }
+
     private Optional<T> retrieveFromCache(long id) {
         if (cache.containsKey(id)) {
             WeakReference<T> reference = cache.get(id);
@@ -239,6 +240,8 @@ public class Dao<T extends HasOid> {
 
     // endregion
 
+    // region SQL statements
+
     private String generateReplaceSql() {
         return "REPLACE INTO " + tableName() + " (" + properties.stream().map(Property::name).collect(Collectors.joining(", ")) + ") VALUES (" + "?" +
                 String.join("", Collections.nCopies(properties.size() - 1, ", ?")) + ")";
@@ -260,4 +263,6 @@ public class Dao<T extends HasOid> {
     private String tableName() {
         return ((schema != null) ? (schema + "." + entityName) : entityName);
     }
+
+    // endregion
 }

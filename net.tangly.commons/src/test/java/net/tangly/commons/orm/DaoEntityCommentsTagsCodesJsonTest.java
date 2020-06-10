@@ -14,9 +14,6 @@
 package net.tangly.commons.orm;
 
 import java.io.Serializable;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,7 +31,6 @@ import net.tangly.bus.core.HasOid;
 import net.tangly.bus.core.Tag;
 import net.tangly.commons.lang.Reference;
 import org.jetbrains.annotations.NotNull;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -139,28 +135,14 @@ class DaoEntityCommentsTagsCodesJsonTest extends DaoTest {
     @BeforeEach
     void setUp() throws NoSuchMethodException {
         setUpDatabase();
-        comments = new DaoBuilder<Comment>(Comment.class).withOid()
-                .withDateTime("created")
-                .withText("author")
-                .withText("text")
-                .withTags("tags")
-                .withFid("ownedBy")
-                .build("tangly", "comments", datasource());
+        comments = new DaoBuilder<Comment>(Comment.class).withOid().withDateTime("created").withText("author").withText("text").withTags("tags")
+                .withFid("ownedBy").build("tangly", "comments", datasource());
         DaoBuilder<Entity> entitiesBuilder = new DaoBuilder<Entity>(Entity.class);
-        entities = entitiesBuilder.withOid()
-                .withString("id")
-                .withString("name")
-                .withDate("fromDate")
-                .withDate("toDate")
-                .withString("text")
-                .withTags("tags")
-                .withCode("code", CodeType.of(EntityCode.class, Arrays.asList(EntityCode.values())))
-                .withOne2One("owner", entitiesBuilder.self(), true)
-                .withFid("ownedBy")
-                .withOne2Many("ownedOnes", "ownedBy", entitiesBuilder.self(), true)
-                .withOne2Many("comments", "ownedBy", Reference.of(comments), true)
-                .withJson("jsonValues", Value.class)
-                .build("tangly", "entities", datasource());
+        entities = entitiesBuilder.withOid().withString("id").withString("name").withDate("fromDate").withDate("toDate").withString("text")
+                .withTags("tags").withCode("code", CodeType.of(EntityCode.class, Arrays.asList(EntityCode.values())))
+                .withOne2One("owner", entitiesBuilder.self(), true).withFid("ownedBy")
+                .withOne2Many("ownedOnes", "ownedBy", entitiesBuilder.self(), true).withOne2Many("comments", "ownedBy", Reference.of(comments), true)
+                .withJson("jsonValues", Value.class).build("tangly", "entities", datasource());
     }
 
     @Test
@@ -184,14 +166,12 @@ class DaoEntityCommentsTagsCodesJsonTest extends DaoTest {
         entities.update(entity);
         retrievedEntity = entities.find(oid);
         testEntity(retrievedEntity.orElse(null));
-        assertThat(retrievedEntity.get()
-                .text()).isEqualTo("Text Entity 1 updated");
+        assertThat(retrievedEntity.get().text()).isEqualTo("Text Entity 1 updated");
 
         entities.clearCache();
         retrievedEntity = entities.find(oid);
         testEntity(retrievedEntity.orElseThrow());
-        assertThat(retrievedEntity.get()
-                .text()).isEqualTo("Text Entity 1 updated");
+        assertThat(retrievedEntity.get().text()).isEqualTo("Text Entity 1 updated");
 
         entities.delete(oid);
         retrievedEntity = entities.find(oid);
@@ -215,9 +195,7 @@ class DaoEntityCommentsTagsCodesJsonTest extends DaoTest {
 
         // then
         assertThat(retrieved.isPresent()).isTrue();
-        assertThat(retrieved.get()
-                .tags()
-                .size()).isEqualTo(3);
+        assertThat(retrieved.get().tags().size()).isEqualTo(3);
 
         // when
         entity = retrieved.get();
@@ -228,25 +206,18 @@ class DaoEntityCommentsTagsCodesJsonTest extends DaoTest {
 
         // then
         assertThat(retrieved.isPresent()).isTrue();
-        assertThat(retrieved.get()
-                .tags()
-                .size()).isEqualTo(2);
+        assertThat(retrieved.get().tags().size()).isEqualTo(2);
 
         // when
         entity = retrieved.get();
-        entity.remove(entity.tags()
-                .stream()
-                .findAny()
-                .orElse(null));
+        entity.remove(entity.tags().stream().findAny().orElse(null));
         entities.update(entity);
         entities.clearCache();
         retrieved = entities.find(oid);
 
         // then
         assertThat(retrieved.isPresent()).isTrue();
-        assertThat(retrieved.get()
-                .tags()
-                .size()).isEqualTo(1);
+        assertThat(retrieved.get().tags().size()).isEqualTo(1);
 
         // when
         entity.clearTags();
@@ -256,9 +227,7 @@ class DaoEntityCommentsTagsCodesJsonTest extends DaoTest {
 
         // then
         assertThat(retrieved.isPresent()).isTrue();
-        assertThat(retrieved.get()
-                .tags()
-                .isEmpty()).isTrue();
+        assertThat(retrieved.get().tags().isEmpty()).isTrue();
     }
 
     @Test
@@ -282,36 +251,13 @@ class DaoEntityCommentsTagsCodesJsonTest extends DaoTest {
 
         // then
         assertThat(retrieved.isPresent()).isTrue();
-        assertThat(retrieved.get()
-                .values()
-                .size()).isEqualTo(3);
-        assertThat(retrieved.get()
-                .values()
-                .stream()
-                .anyMatch(o -> o.intValue() == 101)).isTrue();
-        assertThat(retrieved.get()
-                .values()
-                .stream()
-                .anyMatch(o -> o.intValue() == 102)).isTrue();
-        assertThat(retrieved.get()
-                .values()
-                .stream()
-                .anyMatch(o -> o.intValue() == 103)).isTrue();
-        assertThat(retrieved.get()
-                .values()
-                .stream()
-                .anyMatch(o -> o.stringValue()
-                        .equals("Value 101"))).isTrue();
-        assertThat(retrieved.get()
-                .values()
-                .stream()
-                .anyMatch(o -> o.stringValue()
-                        .equals("Value 102"))).isTrue();
-        assertThat(retrieved.get()
-                .values()
-                .stream()
-                .anyMatch(o -> o.stringValue()
-                        .equals("Value 103"))).isTrue();
+        assertThat(retrieved.get().values().size()).isEqualTo(3);
+        assertThat(retrieved.get().values().stream().anyMatch(o -> o.intValue() == 101)).isTrue();
+        assertThat(retrieved.get().values().stream().anyMatch(o -> o.intValue() == 102)).isTrue();
+        assertThat(retrieved.get().values().stream().anyMatch(o -> o.intValue() == 103)).isTrue();
+        assertThat(retrieved.get().values().stream().anyMatch(o -> o.stringValue().equals("Value 101"))).isTrue();
+        assertThat(retrieved.get().values().stream().anyMatch(o -> o.stringValue().equals("Value 102"))).isTrue();
+        assertThat(retrieved.get().values().stream().anyMatch(o -> o.stringValue().equals("Value 103"))).isTrue();
     }
 
     @Test
@@ -335,13 +281,8 @@ class DaoEntityCommentsTagsCodesJsonTest extends DaoTest {
 
         // then
         assertThat(retrieved.isPresent()).isTrue();
-        assertThat(retrieved.get()
-                .comments()
-                .size()).isEqualTo(3);
-        assertThat(retrieved.get()
-                .comments()
-                .stream()
-                .anyMatch(o -> o.oid() == HasOid.UNDEFINED_OID)).isFalse();
+        assertThat(retrieved.get().comments().size()).isEqualTo(3);
+        assertThat(retrieved.get().comments().stream().anyMatch(o -> o.oid() == HasOid.UNDEFINED_OID)).isFalse();
     }
 
     @Test
@@ -384,34 +325,24 @@ class DaoEntityCommentsTagsCodesJsonTest extends DaoTest {
         assertThat(entity.oid()).isEqualTo(HasOid.UNDEFINED_OID);
         entities.update(entity);
         assertThat(entity.oid()).isNotEqualTo(HasOid.UNDEFINED_OID);
-        assertThat(entity.ownedOnes.stream()
-                .filter(o -> o.oid() == HasOid.UNDEFINED_OID)
-                .findAny()
-                .isEmpty()).isTrue();
+        assertThat(entity.ownedOnes.stream().filter(o -> o.oid() == HasOid.UNDEFINED_OID).findAny().isEmpty()).isTrue();
         long oid = entity.oid();
 
         entities.clearCache();
         Optional<Entity> retrieved = entities.find(oid);
         assertThat(retrieved.isPresent()).isTrue();
-        assertThat(retrieved.get()
-                .owned()
-                .size()).isEqualTo(OWNED_NR);
+        assertThat(retrieved.get().owned().size()).isEqualTo(OWNED_NR);
 
         entity = retrieved.get();
-        entity.removeOwned(entity.owned()
-                .get(0));
-        entity.removeOwned((entity.owned()
-                .get(0)));
-        entity.removeOwned((entity.owned()
-                .get(0)));
+        entity.removeOwned(entity.owned().get(0));
+        entity.removeOwned((entity.owned().get(0)));
+        entity.removeOwned((entity.owned().get(0)));
         entity.addOwned(create(OWNED_NR + 1, "2000-01-01", "2020-12-31"));
         entities.update(entity);
         entities.clearCache();
         retrieved = entities.find(oid);
         assertThat(retrieved.isPresent()).isTrue();
-        assertThat(retrieved.get()
-                .owned()
-                .size()).isEqualTo(OWNED_NR - 3 + 1);
+        assertThat(retrieved.get().owned().size()).isEqualTo(OWNED_NR - 3 + 1);
     }
 
     @Test
@@ -434,8 +365,7 @@ class DaoEntityCommentsTagsCodesJsonTest extends DaoTest {
 
         // then
         assertThat(retrieved.isPresent()).isTrue();
-        assertThat(retrieved.get()
-                .code()).isEqualTo(EntityCode.CODE_TEST_1);
+        assertThat(retrieved.get().code()).isEqualTo(EntityCode.CODE_TEST_1);
     }
 
     @Test
@@ -448,14 +378,10 @@ class DaoEntityCommentsTagsCodesJsonTest extends DaoTest {
         assertThat(entity.name()).isEqualTo("Test Entity Name 1");
         assertThat(entity.fromDate()).isEqualTo(LocalDate.parse("2000-01-01"));
         assertThat(entity.toDate()).isEqualTo(LocalDate.parse("2020-12-31"));
-        assertThat(entity.tags()
-                .size()).isEqualTo(3);
-        assertThat(entity.findBy("test", "test-A")
-                .isPresent()).isTrue();
-        assertThat(entity.findBy("test", "test-B")
-                .isPresent()).isTrue();
-        assertThat(entity.findBy(null, "test-C")
-                .isPresent()).isTrue();
+        assertThat(entity.tags().size()).isEqualTo(3);
+        assertThat(entity.findBy("test", "test-A").isPresent()).isTrue();
+        assertThat(entity.findBy("test", "test-B").isPresent()).isTrue();
+        assertThat(entity.findBy(null, "test-C").isPresent()).isTrue();
     }
 
     private Entity create(int number, @NotNull String fromDate, @NotNull String toDate) {
