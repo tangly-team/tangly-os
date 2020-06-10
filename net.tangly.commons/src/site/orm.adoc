@@ -50,7 +50,7 @@ You can chain all the properties and relations definitions in one statement.
 
 The _Entity_ Java class declaration is
 
-[source, java]
+[source,java]
 ----
     class Entity implements HasOid {
         private Long oid;
@@ -68,7 +68,7 @@ The _Entity_ Java class declaration is
 
 The _Entity_, _ReferenceType_ and _Comment_ DDL SQL declarations are
 
-[source, sql]
+[source,sql]
 ----
 CREATE TABLE schema.entities
 (
@@ -130,8 +130,8 @@ The naming of _one2one_ shall follow Java and SQL naming conventions.
 .Add One 2 Many Property
 Below the definition of *1 -> 1* relation on the class _ReferenceType_.
 The entity class has a property _one2many_ referencing a list of referenced or owned instances of type _ReferenceType_.
-The property _entityFid_ is the foreign key declared in class _ReferenceType_ to implement the relation. The SQL table of _ReferenceType_ has a
-column _BIGINT entityFid_.
+The property _entityFid_ is the foreign key declared in class _ReferenceType_ to implement the relation.
+The SQL table of _ReferenceType_ has a column _BIGINT entityFid_.
 The boolean parameter states that the instance at the end of the relation is owned.
 
 The naming of _one2many_ and "entityFid" shall follow Java and SQL naming conventions.
@@ -142,10 +142,12 @@ The naming of _one2many_ and "entityFid" shall follow Java and SQL naming conven
 ----
 
 .Add JSON Property
-The _Value_ class is the type of the values to be converted to JSON for storage in the database and converted to Java objects when retrieved from
-the database. The transformation process uses the Jackson library.
+The _Value_ class is the type of the values to be converted to JSON for storage in the database and converted to Java objects when retrieved from the database.
+The transformation process uses the Jackson library.
 
-The _jsonValues_ relation shall be a collection in the Java class. The SQL column declaration has the form _jsonValues CLOB_.
+The _jsonValues_ relation shall be a collection in the Java class.
+The SQL column declaration has the form _jsonValues CLOB_.
+
 [source,java]
 ----
     entitiesBuilder..withJson("jsonValues", Value.class);
@@ -329,6 +331,7 @@ PropertySimple <|-- PropertyJson
 Both are updated upon a save operation.
 If an owner instance is deleted all his owned entities will transitively be deleted.
 Business logic is responsible for the handling of sibling lifecycles.
+The examples in the unit tests and the documentation were extended.
 * _0.2.x_ The initial implementation is tested against hsqldb.
 No effort was invested to test compatibility with other databases.
 The port should be straight forward because we are using plain JDBC statements.
