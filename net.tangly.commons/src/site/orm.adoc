@@ -53,7 +53,7 @@ The _Entity_ Java class declaration is
 [source,java]
 ----
     class Entity implements HasOid {
-        private Long oid;
+        private long oid;
         private String name;
         private LocalDate date;
 
@@ -130,7 +130,7 @@ The naming of _one2one_ shall follow Java and SQL naming conventions.
 .Add One 2 Many Property
 Below the definition of *1 -> 1* relation on the class _ReferenceType_.
 The entity class has a property _one2many_ referencing a list of referenced or owned instances of type _ReferenceType_.
-The property _entityFid_ is the foreign key declared in class _ReferenceType_ to implement the relation.
+The property _entityFid_ is the foreign key declared in class _ReferenceType_ to implement the relation amd must be a _Long_.
 The SQL table of _ReferenceType_ has a column _BIGINT entityFid_.
 The boolean parameter states that the instance at the end of the relation is owned.
 

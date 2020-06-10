@@ -153,7 +153,7 @@ public class Dao<T extends HasOid> {
              var set = stmt.executeQuery(findWhereSql + where)) {
             while (set.next()) {
                 Optional<T> instance = retrieveFromCache((Long) set.getObject(1));
-                entities.add(instance.orElse(materializeEntity(set)));
+                entities.add(instance.isPresent() ? instance.get() : materializeEntity(set));
             }
         } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             logger.atError().log("Exception occured when retrieving entity with id {}", entityName, e);

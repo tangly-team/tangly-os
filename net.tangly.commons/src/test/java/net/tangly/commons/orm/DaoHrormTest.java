@@ -16,6 +16,7 @@ package net.tangly.commons.orm;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -29,7 +30,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class DaoHrormTest extends DaoTest {
     public static class Author implements HasOid {
-        private Long oid;
+        private long oid;
         private String name;
 
         public static Author of(String name) {
@@ -41,13 +42,13 @@ public class DaoHrormTest extends DaoTest {
         public long oid() {
             return oid;
         }
-
     }
 
     public static class Ingredient implements HasOid {
-        private Long oid;
+        private long oid;
         private String name;
         private long amount;
+        private Long recipe;
 
         public static Ingredient of(String name, long amount) {
             Ingredient ingredient = new Ingredient();
@@ -62,10 +63,14 @@ public class DaoHrormTest extends DaoTest {
     }
 
     public static class Recipe implements HasOid {
-        Long oid;
+        long oid;
         String name;
         Author author;
         List<Ingredient> ingredients;
+
+        public Recipe() {
+            ingredients = new ArrayList<>();
+        }
 
         public long oid() {
             return oid;
@@ -100,10 +105,10 @@ public class DaoHrormTest extends DaoTest {
     void setUp() throws NoSuchMethodException {
         setUpDatabase();
         authors = new DaoBuilder<Author>(Author.class).withOid().withString("name").build("hrorm", "authors", datasource());
-        ingredients = new DaoBuilder<Ingredient>(Ingredient.class).withOid().withString("name").withLong("amount").withFid("recipeFid")
+        ingredients = new DaoBuilder<Ingredient>(Ingredient.class).withOid().withString("name").withLong("amount").withFid("recipe")
                 .build("hrorm", "ingredients", datasource());
         recipes = new DaoBuilder<Recipe>(Recipe.class).withOid().withString("name").withOne2One("author", Reference.of(authors), false)
-                .withOne2Many("ingredients", "recipeFid", Reference.of(ingredients), true).build("hrorm", "recipes", datasource());
+                .withOne2Many("ingredients", "recipe", Reference.of(ingredients), true).build("hrorm", "recipes", datasource());
     }
 
     @AfterEach
@@ -137,7 +142,7 @@ public class DaoHrormTest extends DaoTest {
         assertThat(recipe.oid()).isNotEqualTo(HasOid.UNDEFINED_OID);
         assertThat(recipes.find("TRUE").size()).isEqualTo(1);
         assertThat(authors.find("TRUE").size()).isEqualTo(1);
-        assertThat(ingredients.find("TRUE").size()).isEqualTo(4);
+        assertThat(ingredients.find("recipe = " + recipe.oid()).size()).isEqualTo(4);
     }
 
     @Test
@@ -145,6 +150,7 @@ public class DaoHrormTest extends DaoTest {
         // given
         Recipe recipe = createBeefStew();
         recipes.update(recipe);
+        assertThat(ingredients.find("recipe = " + recipe.oid()).size()).isEqualTo(4);
 
         // when
         recipe.remove(recipe.ingredients().get(0));
@@ -155,7 +161,7 @@ public class DaoHrormTest extends DaoTest {
         // then
         assertThat(recipes.find("TRUE").size()).isEqualTo(1);
         assertThat(authors.find("TRUE").size()).isEqualTo(1);
-        assertThat(ingredients.find("TRUE").size()).isEqualTo(2);
+        assertThat(ingredients.find("recipe = " + recipe.oid()).size()).isEqualTo(2);
     }
 
     @Test

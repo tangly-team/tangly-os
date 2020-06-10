@@ -16,9 +16,8 @@ package net.tangly.commons.orm.imp;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.Objects;
 import java.util.function.Function;
 
 import net.tangly.bus.core.HasOid;
@@ -103,17 +102,17 @@ public class PropertyOne2Many<T extends HasOid, R extends HasOid> implements Pro
     public void update(@NotNull T entity) throws IllegalAccessException {
         Property foreignProperty = type().getPropertyBy(propertyBy).orElseThrow();
         List<R> oldReferences = new ArrayList<>(type().find(propertyBy + "=" + entity.oid()));
-        for (R reference : oldReferences) {
-            foreignProperty.field().set(reference, null);
-        }
         List<R> newReferences = (List<R>) field.get(entity);
-        for (R reference : newReferences) {
-            foreignProperty.field().set(reference, entity.oid());
+        oldReferences.removeAll(newReferences);
+        for (R removedItem : oldReferences) {
+            if (isOwned()) {
+                type().delete(removedItem);
+            } else {
+                updateForeignKey(entity, removedItem, foreignProperty, null);
+            }
         }
-        Set<R> references = new HashSet<>(oldReferences);
-        references.addAll(newReferences);
-        for (R reference : references) {
-            type().update(reference);
+        for (R currentItem : newReferences) {
+            updateForeignKey(entity, currentItem, foreignProperty, entity.oid());
         }
     }
 
@@ -128,6 +127,15 @@ public class PropertyOne2Many<T extends HasOid, R extends HasOid> implements Pro
     public void delete(@NotNull T entity) throws IllegalAccessException {
         if (isOwned()) {
             ((List<R>) field.get(entity)).forEach(t -> type().delete(t));
+        }
+    }
+
+    private void updateForeignKey(@NotNull T entity, @NotNull R referencedEntity, @NotNull Property foreignProperty, Object foreignKey) throws
+            IllegalAccessException {
+        Long oldForeignKey = (Long) foreignProperty.field().get(referencedEntity);
+        if (!Objects.equals(oldForeignKey,foreignKey)) {
+            foreignProperty.field().set(referencedEntity, foreignKey);
+            type().update(referencedEntity);
         }
     }
 }
