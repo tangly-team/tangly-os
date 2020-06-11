@@ -11,11 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.commons.vaadin;
-
-import com.vaadin.flow.component.page.AppShellConfigurator;
-import com.vaadin.flow.server.PWA;
-
-@PWA(name = "Tangly CRUD", shortName = "Crud")
-public class AppShell implements AppShellConfigurator {
-}
+/**
+ * The ports package is based on the hexagonal architecture pattern. It avoids polluting the business model with implementation dependant constructs.
+ */
+package net.tangly.erp.invoices.ports;

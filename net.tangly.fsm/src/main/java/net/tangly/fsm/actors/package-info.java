@@ -14,5 +14,4 @@
 /**
  * <p>The package provides actor abstractions to run a set of finite state machines as processes and exchange messages between actors.</p>
  */
-
 package net.tangly.fsm.actors;

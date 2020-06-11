@@ -143,6 +143,7 @@ public class DaoHrormTest extends DaoTest {
         assertThat(recipes.find("TRUE").size()).isEqualTo(1);
         assertThat(authors.find("TRUE").size()).isEqualTo(1);
         assertThat(ingredients.find("recipe = " + recipe.oid()).size()).isEqualTo(4);
+        assertThat(ingredients.find("TRUE").size()).isEqualTo(4);
     }
 
     @Test
@@ -162,6 +163,7 @@ public class DaoHrormTest extends DaoTest {
         assertThat(recipes.find("TRUE").size()).isEqualTo(1);
         assertThat(authors.find("TRUE").size()).isEqualTo(1);
         assertThat(ingredients.find("recipe = " + recipe.oid()).size()).isEqualTo(2);
+        assertThat(ingredients.find("TRUE").size()).isEqualTo(2);
     }
 
     @Test

@@ -1,3 +1,16 @@
+/*
+ * Copyright 2006-2020 Marcel Baumann
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
+ *  a copy of the License at
+ *
+ *          http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
+ *  under the License.
+ */
+
 package net.tangly.commons.vaadin;
 
 import java.time.LocalDate;
@@ -21,6 +34,7 @@ import net.tangly.bus.core.Comment;
 import net.tangly.bus.core.Entity;
 import net.tangly.bus.core.EntityImp;
 import net.tangly.bus.core.Tag;
+
 
 public class EntityForm implements CrudForm<Entity>, CrudActionsListener<Entity> {
     private Binder<Entity> binder;
@@ -92,6 +106,7 @@ public class EntityForm implements CrudForm<Entity>, CrudActionsListener<Entity>
         FormLayout form = new FormLayout(oid, id, name, fromDate, toDate, br, text);
         form.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1), new FormLayout.ResponsiveStep("21em", 2),
                 new FormLayout.ResponsiveStep("42em", 3));
+        binder.readBean(entity);
         return form;
     }
 

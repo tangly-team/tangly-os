@@ -15,5 +15,4 @@
  * <p>The implementation of the finite state machine interfaces; the classes are package private and are only instantiated through the domain
  * specific language implementing the builder pattern.</p>
  */
-
 package net.tangly.fsm.imp;

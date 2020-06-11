@@ -11,11 +11,4 @@
  *  under the License.
  */
 
-package net.tangly.commons.vaadin;
-
-import com.vaadin.flow.component.page.AppShellConfigurator;
-import com.vaadin.flow.server.PWA;
-
-@PWA(name = "Tangly CRUD", shortName = "Crud")
-public class AppShell implements AppShellConfigurator {
-}
+package net.tangly.erp.crm.models.apps;

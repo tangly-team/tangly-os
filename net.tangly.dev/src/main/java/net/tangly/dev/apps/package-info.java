@@ -11,11 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.commons.vaadin;
-
-import com.vaadin.flow.component.page.AppShellConfigurator;
-import com.vaadin.flow.server.PWA;
-
-@PWA(name = "Tangly CRUD", shortName = "Crud")
-public class AppShell implements AppShellConfigurator {
-}
+/**
+ * Provides the applications to analyze source code artifacts managed in a source code version management system.
+ */
+package net.tangly.dev.apps;

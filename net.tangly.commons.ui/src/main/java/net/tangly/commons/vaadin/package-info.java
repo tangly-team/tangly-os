@@ -11,11 +11,9 @@
  *  under the License.
  */
 
+/**
+ * The application can be used by
+ * mvn install (once)
+ * mvn (to run the application)
+ */
 package net.tangly.commons.vaadin;
-
-import com.vaadin.flow.component.page.AppShellConfigurator;
-import com.vaadin.flow.server.PWA;
-
-@PWA(name = "Tangly CRUD", shortName = "Crud")
-public class AppShell implements AppShellConfigurator {
-}

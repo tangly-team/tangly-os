@@ -16,8 +16,13 @@ package net.tangly.bus.core;
 import java.io.Serializable;
 import java.util.Objects;
 
+import org.jetbrains.annotations.NotNull;
+
+/**
+ * The abstraction of an email address until the Java JDK provides one..
+ */
 public record EmailAddress(String recipient, String domain) implements Serializable {
-    public static EmailAddress of(String email) {
+    public static EmailAddress of(@NotNull String email) {
         String[] parts = email.split("@");
         Objects.checkFromIndexSize(0, parts.length, 2);
         return new EmailAddress(parts[0], parts[1]);

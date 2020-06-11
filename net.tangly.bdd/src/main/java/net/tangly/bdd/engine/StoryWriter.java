@@ -27,6 +27,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import net.tangly.bdd.Scene;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -39,12 +40,12 @@ public class StoryWriter {
     private final StoryRun run;
     private final Path path;
 
-    public StoryWriter(StoryRun run) {
+    public StoryWriter(@NotNull StoryRun run) {
         this.run = run;
         this.path = Paths.get(getOrCreateBddReportsFolder(run.getClass()).toString(), run.clazz().getName() + Constants.EXT);
     }
-    
-    public static Path getOrCreateBddReportsFolder(Class<?> clazz) {
+
+    public static Path getOrCreateBddReportsFolder(@NotNull Class<?> clazz) {
         URL url = clazz.getResource("");
         Objects.requireNonNull(url);
         Path targetDir = Paths.get(url.getPath());
@@ -64,11 +65,11 @@ public class StoryWriter {
     void write() {
         // write feature
         JSONArray features = new JSONArray();
-        JSONObject feature = createFeature();
+        JSONObject feature = createFeature(run);
         features.put(feature);
 
         // write story
-        JSONObject story = createStory();
+        JSONObject story = createStory(run);
         feature.getJSONArray(Constants.STORIES).put(story);
 
         // write scenario
@@ -83,7 +84,7 @@ public class StoryWriter {
         }
     }
 
-    private JSONObject createFeature() {
+    private static JSONObject createFeature(StoryRun run) {
         JSONObject feature = new JSONObject();
         feature.put(Constants.PACKAGE_NAME, run.packages().getName());
         feature.put(Constants.NAME, run.featureName());
@@ -93,7 +94,7 @@ public class StoryWriter {
         return feature;
     }
 
-    private JSONObject createStory() {
+    private static JSONObject createStory(StoryRun run) {
         JSONObject story = new JSONObject();
         story.put(Constants.CLASS_NAME, run.clazz().getName());
         story.put(Constants.NAME, run.name());
@@ -103,7 +104,7 @@ public class StoryWriter {
         return story;
     }
 
-    private JSONObject createScenario(Scene scene) {
+    private static JSONObject createScenario(@NotNull Scene scene) {
         JSONObject scenario = new JSONObject();
         scenario.put(Constants.METHOD_NAME, scene.methodName());
         scenario.put(Constants.NAME, scene.description());
@@ -125,7 +126,7 @@ public class StoryWriter {
         return scenario;
     }
 
-    private void addAnds(List<String> ands, JSONObject jsonObject) {
+    private static void addAnds(@NotNull List<String> ands, @NotNull JSONObject jsonObject) {
         if (!ands.isEmpty()) {
             JSONArray jsonArray = new JSONArray();
             ands.forEach(jsonArray::put);

@@ -20,10 +20,15 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+/**
+ * The publisher creates a <i>AsciiDoc</i> report of the behaviour driven design tests documentation generated as JSON during a JUnit 5 run. The
+ * publisher is provided as an example for realising developer driven living documentation.
+ */
 public class StoryAsciiDocPublisher {
     public static final String NEWLINE = " +" + System.lineSeparator();
 
@@ -52,7 +57,7 @@ public class StoryAsciiDocPublisher {
         writer.println();
     }
 
-    private void publishFeature(JSONObject feature) {
+    private void publishFeature(@NotNull JSONObject feature) {
         header("Feature: " + feature.getString(Constants.NAME), 2);
         paragraph(feature.getString(Constants.DESCRIPTION));
         for (var item : feature.getJSONArray(Constants.STORIES)) {
@@ -60,7 +65,7 @@ public class StoryAsciiDocPublisher {
         }
     }
 
-    private void publishStory(JSONObject story) {
+    private void publishStory(@NotNull JSONObject story) {
         header("Story: " + story.getString(Constants.NAME), 3);
         paragraph(story.getString(Constants.DESCRIPTION));
         for (var item : story.getJSONArray(Constants.SCENARIOS)) {
@@ -68,7 +73,7 @@ public class StoryAsciiDocPublisher {
         }
     }
 
-    private void publishScenario(JSONObject scenario) {
+    private void publishScenario(@NotNull JSONObject scenario) {
         writer.append(".Scenario: ").append(scenario.getString(Constants.NAME));
         writer.println();
         writer.println("[%hardbreaks]");
@@ -78,7 +83,7 @@ public class StoryAsciiDocPublisher {
         writer.println();
     }
 
-    private void clause(JSONObject scenario, String clause) {
+    private void clause(@NotNull JSONObject scenario, @NotNull String clause) {
         JSONObject segment = (JSONObject) scenario.get(clause);
         writer.append("*").append(clause).append("* ").append(segment.getString(Constants.TEXT));
         JSONArray ands = segment.optJSONArray(Constants.AND);
@@ -90,12 +95,12 @@ public class StoryAsciiDocPublisher {
         writer.println();
     }
 
-    private void header(String text, int level) {
+    private void header(@NotNull String text, int level) {
         writer.append("=".repeat(level)).append(" ").append(text).println();
         writer.println();
     }
 
-    private void paragraph(String text) {
+    private void paragraph(@NotNull String text) {
         writer.append(text).println();
         writer.println();
     }

@@ -30,5 +30,4 @@
  * <li>We do not support transitions without an explicit trigger, are called completion transitions and are triggered by completion events which are
  * emitted when a state completes all its internal activities</li> </ul>
  */
-
 package net.tangly.fsm;
