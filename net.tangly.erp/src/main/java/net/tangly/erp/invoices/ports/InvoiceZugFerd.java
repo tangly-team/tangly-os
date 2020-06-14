@@ -234,7 +234,6 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction {
 
     @Override
     public String getPaymentTermDescription() {
-        // TODO Auto-generated method stub
         return null;
     }
 

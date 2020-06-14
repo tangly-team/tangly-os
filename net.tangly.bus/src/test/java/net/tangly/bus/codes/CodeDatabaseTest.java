@@ -59,5 +59,16 @@ class CodeDatabaseTest {
         assertThat(type.findCode(3).isPresent()).isTrue();
         assertThat(type.findCode(4).isPresent()).isTrue();
         assertThat(type.findCode(5).isPresent()).isFalse();
+
+        // test basic operations
+        TestCode code1 = type.findCode(1).orElse(null);
+        TestCode code2 = type.findCode(2).orElse(null);
+        assertThat(code1.equals(code1)).isTrue();
+        assertThat(code1.equals(code2)).isFalse();
+        assertThat(code1.hashCode()).isEqualTo(code1.hashCode());
+        assertThat(code1.hashCode()).isNotEqualTo(code2.hashCode());
+        assertThat(code1.toString()).contains("1");
+
     }
 }
+

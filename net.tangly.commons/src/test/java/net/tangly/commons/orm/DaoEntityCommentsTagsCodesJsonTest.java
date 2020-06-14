@@ -370,7 +370,28 @@ class DaoEntityCommentsTagsCodesJsonTest extends DaoTest {
 
     @Test
     void testJsonProperty() throws NoSuchFieldException, NoSuchMethodException {
-        // TODO
+        // given
+        Entity entity = create(20, "2000-01-01", "2020-12-31");
+
+        // when
+        entity.addValue(1, "one");
+        entity.addValue(2, "two");
+        entity.addValue(3, "three");
+        entities.update(entity);
+
+        // then
+        assertThat(entity.oid()).isNotEqualTo(HasOid.UNDEFINED_OID);
+
+        // when
+        long oid = entity.oid();
+        entities.clearCache();
+        Optional<Entity> retrieved = entities.find(oid);
+
+        // then
+        assertThat(retrieved.isPresent()).isTrue();
+        assertThat(retrieved.get().values().size()).isEqualTo(3);
+        assertThat(retrieved.get().values().stream().map(Value::intValue)).contains(1, 2, 3);
+        assertThat(retrieved.get().values().stream().map(Value::stringValue)).contains("one", "two", "three");
     }
 
     private void testEntity(Entity entity) {

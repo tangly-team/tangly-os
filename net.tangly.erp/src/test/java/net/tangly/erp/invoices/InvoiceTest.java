@@ -61,7 +61,7 @@ public class InvoiceTest {
 
         new InvoiceQrCode().create(invoice, Paths.get("/Users/Shared/tmp/invoice.pdf"), new HashMap<>());
 
-        // TODO generate Zugferd
+        // TODO generate Zugferd, open problem with PDF/A
     }
 
     @Test
