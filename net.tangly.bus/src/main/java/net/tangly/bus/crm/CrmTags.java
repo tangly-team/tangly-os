@@ -64,6 +64,7 @@ public final class CrmTags {
         registry.register(TagType.ofMandatory("crm", "email-work", EmailAddress.class, EmailAddress::of));
         registry.register(TagType.ofMandatory("crm", "phone-mobile", PhoneNr.class, PhoneNr::of));
         registry.register(TagType.ofMandatory("crm", "phone-home", PhoneNr.class, PhoneNr::of));
+        registry.register(TagType.ofMandatory("crm", "phone-work", PhoneNr.class, PhoneNr::of));
         registry.register(TagType.ofMandatory("crm", "address-home", Address.class, Address::of));
         registry.register(TagType.ofMandatory("crm", "address-work", Address.class, Address::of));
         registry.register(TagType.ofMandatory("crm", "site-home", URL.class));

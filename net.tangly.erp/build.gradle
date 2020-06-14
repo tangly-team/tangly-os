@@ -30,7 +30,9 @@ dependencies {
 
     implementation 'org.apache.commons:commons-csv:1.8'
     implementation 'org.hsqldb:hsqldb:2.5.0'
-    implementation 'net.codecrete.qrbill:qrbill-generator:2.2.3'
+    // added reference to pdfbox to avoid a runtime error with qrbill-generator, the dependency is too open
+    implementation 'org.apache.pdfbox:pdfbox:2.0.20'
+    implementation 'net.codecrete.qrbill:qrbill-generator:2.3.2'
     implementation 'org.mustangproject.ZUGFeRD:mustang:1.7.7'
     implementation 'org.asciidoctor:asciidoctorj:2.3.0'
     implementation 'org.asciidoctor:asciidoctorj-pdf:1.5.3'

@@ -19,43 +19,32 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Currency;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import net.tangly.bus.crm.BankConnection;
 import net.tangly.bus.crm.LegalEntity;
 
 /**
  * The abstraction of an invoice with a set of positions, subtotals, one VAT rate and a total. The items and the subtotals have a position to order
- * them in the invoice. An invoice and its components have no dependencies to external entities. Therefore an invoice is complete and archived. For
+ * them in the invoice. An invoice and its components have no dependencies to external entities. Therefore, an invoice is complete and archived. For
  * example you can change the VAT percentage or a product price without any consequence on existing invoices.
  */
 public class Invoice {
-
-    private final String id;
-
+    private String id;
     private LegalEntity invoicingEntity;
-
     private BankConnection invoicingConnection;
-
     private String contractId;
-
     private LegalEntity invoicedEntity;
-
+    private LocalDate deliveryDate;
     private LocalDate invoicedDate;
-
     private LocalDate dueDate;
-
     private Currency currency;
-
     private String text;
-
     private String paymentConditions;
-
     private BigDecimal vatRate;
-
     private final List<InvoiceLine> items;
 
-    public Invoice(String id) {
-        this.id = id;
+    public Invoice() {
         items = new ArrayList<>();
     }
 
@@ -63,13 +52,16 @@ public class Invoice {
         return id;
     }
 
+    public void id(String id) {
+        this.id = id;
+    }
+
     public BigDecimal amountWithoutVat() {
-        return items.stream().filter(InvoiceLine::isRawItem).map(InvoiceLine::amount).reduce(new BigDecimal(0), BigDecimal::add);
+        return items.stream().filter(InvoiceLine::isItem).map(InvoiceLine::amount).reduce(new BigDecimal(0), BigDecimal::add);
     }
 
     public BigDecimal amountVat() {
-        return items.stream().filter(InvoiceLine::isRawItem).map(InvoiceLine::amount)
-                .reduce(new BigDecimal(0), (a, b) -> (a.add(b.multiply(vatRate))));
+        return items.stream().filter(InvoiceLine::isItem).map(InvoiceLine::amount).reduce(new BigDecimal(0), (a, b) -> (a.add(b.multiply(vatRate))));
     }
 
     public BigDecimal amountWithVat() {
@@ -106,6 +98,14 @@ public class Invoice {
 
     public void invoicedEntity(LegalEntity invoicedEntity) {
         this.invoicedEntity = invoicedEntity;
+    }
+
+    public LocalDate deliveryDate() {
+        return deliveryDate;
+    }
+
+    public void deliveryDate(LocalDate deliveryDate) {
+        this.deliveryDate = deliveryDate;
     }
 
     public LocalDate invoicedDate() {
@@ -162,6 +162,10 @@ public class Invoice {
 
     public List<InvoiceLine> items() {
         return Collections.unmodifiableList(items);
+    }
+
+    public List<InvoiceItem> positions() {
+        return items.stream().filter(InvoiceLine::isItem).map(o -> (InvoiceItem) o).collect(Collectors.toUnmodifiableList());
     }
 
     public InvoiceLine getAt(int position) {

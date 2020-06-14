@@ -21,30 +21,7 @@ import java.util.List;
  * The abstraction defines a subtotal for a set of position in the invoice. A subtotal groups a set of related positions, such as belonging to the
  * same accounting position or project booking, or to the same amount of VAT percentage for mixed VAT invoices.
  */
-public class Subtotal implements InvoiceLine {
-
-    private final int position;
-
-    private final String text;
-
-    private final List<InvoiceLine> items;
-
-    public Subtotal(int position, String text, List<InvoiceLine> items) {
-        this.position = position;
-        this.text = text;
-        this.items = List.copyOf(items);
-    }
-
-    @Override
-    public int position() {
-        return position;
-    }
-
-    @Override
-    public String text() {
-        return text;
-    }
-
+public record Subtotal(int position, String text, List<InvoiceLine>items) implements InvoiceLine {
     @Override
     public BigDecimal amount() {
         return items.stream().map(InvoiceLine::amount).reduce(BigDecimal.ZERO, BigDecimal::add);
@@ -61,7 +38,7 @@ public class Subtotal implements InvoiceLine {
     }
 
     @Override
-    public boolean isRawItem() {
+    public boolean isItem() {
         return false;
     }
 

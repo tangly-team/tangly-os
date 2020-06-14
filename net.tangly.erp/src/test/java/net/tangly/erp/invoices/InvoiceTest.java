@@ -13,12 +13,15 @@
 
 package net.tangly.erp.invoices;
 
+import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.Currency;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -29,7 +32,6 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import net.tangly.bus.core.Address;
 import net.tangly.bus.core.HasOid;
-import net.tangly.bus.core.PhoneNr;
 import net.tangly.bus.crm.BankConnection;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.LegalEntity;
@@ -38,24 +40,28 @@ import net.tangly.bus.invoices.InvoiceItem;
 import net.tangly.bus.invoices.Product;
 import net.tangly.bus.invoices.Subtotal;
 import net.tangly.erp.invoices.ports.InvoiceAsciiDoc;
-import org.junit.jupiter.api.Disabled;
+import net.tangly.erp.invoices.ports.InvoiceQrCode;
+import org.asciidoctor.Asciidoctor;
+import org.asciidoctor.OptionsBuilder;
 import org.junit.jupiter.api.Test;
 
-public class InvoiceTest {
+import static org.asciidoctor.Asciidoctor.Factory.create;
 
+public class InvoiceTest {
     @Test
-    @Disabled
     void writeAsciiDocReport() {
         Invoice invoice = newInvoice();
-        InvoiceAsciiDoc report = new InvoiceAsciiDoc(invoice);
-        report.create(Paths.get("/Users/Shared/tmp/invoice.adoc"));
-        report.generateQCode(Paths.get("/Users/Shared/tmp/invoice.svg"));
 
-        // TODO wait on release ascidoctorj 1.6.0 before continuing testing due to incompabilities with Java 11
-        // adoc to pdf, merge invoice with qrcode, generate Zugferd
-        // Asciidoctor asciidoctor = create();
-        // Map<String, Object> options = options().inPlace(true).backend("pdf").asMap();
-        // String html = asciidoctor.convertFile(new File("/Users/Shared/tmp/invoice.adoc"), options);
+        new InvoiceAsciiDoc().create(invoice, Paths.get("/Users/Shared/tmp/invoice.adoc"), new HashMap<>());
+
+        Map<String, Object> options = OptionsBuilder.options().inPlace(true).backend("pdf").asMap();
+
+        Asciidoctor asciidoctor = create();
+        String outfile = asciidoctor.convertFile(new File("/Users/Shared/tmp/invoice.adoc"), options);
+
+        new InvoiceQrCode().create(invoice, Paths.get("/Users/Shared/tmp/invoice.pdf"), new HashMap<>());
+
+        // TODO generate Zugferd
     }
 
     @Test
@@ -69,51 +75,56 @@ public class InvoiceTest {
     }
 
     private Invoice newInvoice() {
-        Product coaching = new Product("0001", "Agile coaching", new BigDecimal(1400));
-        Product project = new Product("0002", "Technical project management", new BigDecimal("1400"));
-
-        Address sellerAddress =
-                new Address.Builder().street("Bahnhofstrasse 1").postcode("6300").locality("Zug").region("ZG").country("CH").build();
-        PhoneNr sellerPhoneNr = new PhoneNr("+41 79 778 8689");
+        Product coaching = new Product("0001", "Agile coaching", new BigDecimal(1400), "day");
+        Product project = new Product("0002", "Technical project management", new BigDecimal("1400"), "day");
 
         LegalEntity seller = LegalEntity.of(HasOid.UNDEFINED_OID);
-        seller.name("Flow llc");
-        seller.address(CrmTags.CRM_ADDRESS_WORK, sellerAddress);
-        // seller.setPhoneNr(sellerPhoneNr);
-        seller.id("CHE-123-456.789");
-        seller.vatNr("CCHE-123-456.789 MWST");
+        seller.name("tangly llc");
+        seller.address(CrmTags.CRM_ADDRESS_WORK,
+                new Address.Builder().street("Lorzenhof 27").postcode("6330").locality("Cham").region("ZG").country("CH").build()
+        );
+        seller.setPhoneNr(CrmTags.CRM_PHONE_WORK, "+41 79 778 8689");
+        seller.id("CHE-357-875.339");
+        seller.vatNr("CHE-357-875.339 MWST");
 
         BankConnection sellerConnection = new BankConnection("CH88 0900 0000 3064 1768 2", "POFICHBEXXX", "Postfinanz Schweiz");
 
-        Invoice invoice = new Invoice("2017-8001");
+        LegalEntity sellee = LegalEntity.of(HasOid.UNDEFINED_OID);
+        sellee.name("Flow llc");
+        sellee.address(CrmTags.CRM_ADDRESS_WORK,
+                new Address.Builder().extended("attn. John Doe").street("Bahnhofstrasse 1").postcode("6300").locality("Zug").region("ZG")
+                        .country("CH").build()
+        );
+        sellee.setPhoneNr(CrmTags.CRM_PHONE_WORK, "+41 41 228 4242");
+        sellee.id("CHE-123-456.789");
+        sellee.vatNr("CHE-123-456.789 MWST");
+
+        Invoice invoice = new Invoice();
+        invoice.id("2017-0001");
         invoice.invoicedDate(LocalDate.parse("2018-01-01"));
         invoice.dueDate(LocalDate.parse("2018-01-31"));
         invoice.invoicingEntity(seller);
-        invoice.invoicedEntity(seller);
+        invoice.invoicedEntity(sellee);
         invoice.invoicingConnection(sellerConnection);
+        invoice.text("Coaching contract Planta 20XX-5946 und ARE-20XX-6048");
 
-        invoice.text("Beraterverträge Planta 20XX-5946 und ARE-20XX-6048");
-
-        InvoiceItem item = new InvoiceItem(1, coaching, new BigDecimal("4"));
-        item.text("GIS goes Agile project");
+        InvoiceItem item = new InvoiceItem(1, coaching, "GIS goes Agile project", new BigDecimal("4"));
         invoice.add(item);
 
-        item = new InvoiceItem(2, coaching, new BigDecimal("1.5"));
-        item.text("Java architecture coaching project");
+        item = new InvoiceItem(2, coaching, "Java architecture coaching project", new BigDecimal("1.5"));
         invoice.add(item);
 
-        Subtotal subtotal =
-                new Subtotal(3, "Zwischentotal Führungsunterstützung GEO 2017 83200 Planta 20XX-5946", List.of(invoice.getAt(1), invoice.getAt(2)));
+        Subtotal subtotal = new Subtotal(3, "Subtotal Project Leading GEO 2017 83200 Planta 20XX-5946", List.of(invoice.getAt(1), invoice.getAt(2)));
         invoice.add(subtotal);
 
-        item = new InvoiceItem(4, coaching, new BigDecimal("2.25"));
-        item.text("OGD technical project management");
+        item = new InvoiceItem(4, coaching, "OGD technical project management", new BigDecimal("2.25"));
+        item.text();
         invoice.add(item);
 
-        subtotal = new Subtotal(5, "Zwischentotal DL Dritter 3130 0 80000", List.of(invoice.getAt(4)));
+        subtotal = new Subtotal(5, "Subtotal Agile Coaching 3130 0 80000", List.of(invoice.getAt(4)));
         invoice.add(subtotal);
 
-        invoice.paymentConditions("30 Tage netto");
+        invoice.paymentConditions("30 day netto");
         invoice.vatRate(new BigDecimal("0.077"));
         invoice.currency(Currency.getInstance("CHF"));
         return invoice;

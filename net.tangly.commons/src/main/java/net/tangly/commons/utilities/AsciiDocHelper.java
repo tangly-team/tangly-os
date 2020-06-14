@@ -35,6 +35,10 @@ public class AsciiDocHelper {
         return "*" + text + "*";
     }
 
+    public static String italics(String text)  {
+        return "_" + text + "_";
+    }
+
     /**
      * Formats a decimal value into an accounting representation with two digits after the separator, colored in read if negative, and discarded if
      * the value is zero.

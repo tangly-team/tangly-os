@@ -19,10 +19,6 @@ import java.math.BigDecimal;
  * The invoice line represents one line or position in an invoice.
  */
 public interface InvoiceLine {
-    default boolean isRawItem() {
-        return true;
-    }
-
     /**
      * Returns the line position in the invoice.
      *
@@ -52,4 +48,10 @@ public interface InvoiceLine {
     BigDecimal quantity();
 
     BigDecimal unitPrice();
+
+    boolean isItem();
+
+    default boolean isAggregate() {
+        return !isItem();
+    }
 }

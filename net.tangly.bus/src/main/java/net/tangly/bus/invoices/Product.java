@@ -16,28 +16,8 @@ package net.tangly.bus.invoices;
 
 import java.math.BigDecimal;
 
-public class Product {
-    private final String productId;
-
-    private final String description;
-
-    private final BigDecimal unitPrice;
-
-    public Product(String productId, String description, BigDecimal unitPrice) {
-        this.productId = productId;
-        this.description = description;
-        this.unitPrice = unitPrice;
-    }
-
-    public String productId() {
-        return productId;
-    }
-
-    public String description() {
-        return description;
-    }
-
-    public BigDecimal unitPrice() {
-        return unitPrice;
-    }
+/**
+ * A product sold by a legal entity and referenced in an invoice or an invoice line.
+ */
+public record Product(String productId, String description, BigDecimal unitPrice, String unit) {
 }

@@ -13,20 +13,13 @@
 
 package net.tangly.erp.invoices.ports;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Comparator;
+import java.util.Map;
 
-import net.codecrete.qrbill.generator.Bill;
-import net.codecrete.qrbill.generator.BillFormat;
-import net.codecrete.qrbill.generator.GraphicsFormat;
-import net.codecrete.qrbill.generator.Language;
-import net.codecrete.qrbill.generator.OutputSize;
-import net.codecrete.qrbill.generator.QRBill;
 import net.codecrete.qrbill.generator.Strings;
 import net.tangly.bus.core.Address;
 import net.tangly.bus.crm.CrmTags;
@@ -37,109 +30,81 @@ import net.tangly.commons.utilities.AsciiDocHelper;
 import org.jetbrains.annotations.NotNull;
 
 import static net.tangly.commons.utilities.AsciiDocHelper.NEWLINE;
+import static net.tangly.commons.utilities.AsciiDocHelper.bold;
 import static net.tangly.commons.utilities.AsciiDocHelper.format;
+import static net.tangly.commons.utilities.AsciiDocHelper.italics;
 
 /**
  * Provides support to generate a AsciiDoc representation of an invoice for the Swiss market. It provide a human-readable invoice document following
  * the VAT invoice constraint, the Swiss invoice QR barcode, and the European Zugferd invoice machine readable invoice standard.
  */
-public class InvoiceAsciiDoc {
+public class InvoiceAsciiDoc implements InvoiceGenerator {
     private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(InvoiceAsciiDoc.class);
-    private Invoice invoice;
 
-    public InvoiceAsciiDoc(Invoice invoice) {
-        this.invoice = invoice;
-    }
-
-    public void create(@NotNull Path path) {
-        try (PrintWriter writer = new PrintWriter(path.toFile(), StandardCharsets.UTF_8)) {
+    public void create(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, String> properties) {
+        try (PrintWriter writer = new PrintWriter(invoicePath.toFile(), StandardCharsets.UTF_8)) {
             // TODO i18n, l16n
             AsciiDocHelper helper = new AsciiDocHelper(writer);
 
+            writer.println("image::trefoil.svg[100,100,align=\"center\"]");
+            writer.println();
             helper.header("Invoice", 1);
 
-            helper.tableHeader(null, "frame=\"none\",grid=\"none\", options=\"noheader\", stripes=\"none\", cols=\"2,4,2\"");
-            helper.tableRow(text(invoice.invoicingEntity()), "", text(invoice.invoicedEntity()));
+            helper.tableHeader(null, "frame=\"none\", grid=\"none\", options=\"noheader\", stripes=\"none\", cols=\"2,4,2\"");
+            helper.tableRow(addressText(invoice.invoicingEntity()), "", addressText(invoice.invoicedEntity()));
             helper.tableEnd();
 
             helper.tableHeader(null, "stripes=\"none\", options=\"noheader\", cols=\"4,2,4,2\"");
-            helper.tableRow("Rechnungsnummer", invoice.id(), "Rechnungsdatum", invoice.invoicedDate().toString());
-            helper.tableRow("", "", "Rechnungsfälligkeit", invoice.dueDate().toString());
+            helper.tableRow("Invoice Number", invoice.id(), "Invoice Date", invoice.invoicedDate().toString());
+            helper.tableRow("", "", "Invoice Due Date", invoice.dueDate().toString());
             helper.tableEnd();
 
-            writer.println(invoice.text());
+            writer.println("*" + invoice.text() + "*");
+            writer.println();
 
-            helper.tableHeader(null, "options=\"header\", stripes=\"none\", cols=\"4,^1, >1,>1\"", "Bezeichnung", "Menge", "Preis", "Betrag (CHF)");
-            invoice.items().stream().sorted(Comparator.comparingInt(InvoiceLine::position))
-                    .forEach(o -> helper.tableRow(o.text(), o.isRawItem() ? format(o.quantity()) : "", format(o.unitPrice()), format(o.amount())));
+            helper.tableHeader(null, "options=\"header\", grid=\"none\", frame=\"none\", stripes=\"none\", cols=\"4,^1, >1,>1\"", "Position",
+                    "Quantity", "Price", "Amount (CHF)"
+            );
+            invoice.items().stream().sorted(Comparator.comparingInt(InvoiceLine::position)).forEach(o -> helper
+                    .tableRow((o.isAggregate() ? italics(o.text()) : o.text()), o.isItem() ? format(o.quantity()) : "", format(o.unitPrice()),
+                            o.isAggregate() ? italics(format(o.amount())) : format(o.amount())
+                    ));
+            helper.tableRow("", "", "", "");
             helper.tableRow("Total without VAT", "", "", format(invoice.amountWithoutVat()));
             helper.tableRow("VAT Amount", "", format(invoice.vatRate().multiply(new BigDecimal("100"))) + "%", format(invoice.amountVat()));
-            helper.tableRow("Total", "", "", format(invoice.amountWithVat()));
+            helper.tableRow(bold("Total"), "", "", bold(format(invoice.amountWithVat())));
+            helper.tableEnd();
+
+            writer.println();
+
+            helper.tableHeader(null, "frame=\"none\",grid=\"none\", options=\"noheader\", cols=\"2,4\"");
+            helper.tableRow("Bank Connection",
+                    "IBAN: " + invoice.invoicingConnection().iban() + NEWLINE + "BIC: " + invoice.invoicingConnection().bic() + " (" +
+                            invoice.invoicingConnection().institute() + ")"
+            );
             helper.tableEnd();
 
             helper.tableHeader(null, "frame=\"none\",grid=\"none\", options=\"noheader\", cols=\"2,4\"");
-            helper.tableRow("Bankverbindung",
-                    "IBAN: " + invoice.invoicingConnection().iban() + NEWLINE + "BIC: " + invoice.invoicingConnection().bic() + "(" +
-                            invoice.invoicingConnection().institute() + ")");
+            helper.tableRow("Company ID:", invoice.invoicedEntity().id());
+            helper.tableRow("Company VAT Number:", invoice.invoicedEntity().vatNr());
             helper.tableEnd();
 
-            writer.append("Company ID and VAT Nummer").append(" ").append(invoice.invoicedEntity().id()).println();
-            writer.println();
 
             if (!Strings.isNullOrEmpty(invoice.paymentConditions())) {
-                writer.append("Zahlungsbedingung").append(" ").append(invoice.paymentConditions()).println();
+                writer.append("Payment Conditions").append(" ").append(invoice.paymentConditions()).println();
             }
         } catch (Exception e) {
-            logger.error("Error during reporting", e);
+            logger.error("Error during invoice asciiDoc generation", e);
         }
     }
 
-    public void generateQCode(@NotNull Path path) {
-        Bill bill = new Bill();
-        BillFormat format = new BillFormat();
-        format.setLanguage(Language.EN);
-        format.setOutputSize(OutputSize.A4_PORTRAIT_SHEET);
-        format.setGraphicsFormat(GraphicsFormat.SVG);
-        bill.setFormat(format);
-        bill.setVersion(Bill.Version.V2_0);
-
-        bill.setCreditor(create(invoice.invoicingEntity()));
-        bill.setDebtor(create(invoice.invoicedEntity()));
-
-        bill.setAccount(invoice.invoicingConnection().iban());
-        bill.setAmount(invoice.amountWithVat());
-        bill.setCurrency(invoice.currency().getCurrencyCode());
-
-
-        bill.setReference(null);
-        bill.setUnstructuredMessage(invoice.id());
-
-        byte[] svg = QRBill.generate(bill);
-
-        try {
-            Files.write(path, svg);
-        } catch (IOException e) {
-            throw new IllegalArgumentException(e);
-        }
-    }
-
-    private static String text(@NotNull LegalEntity entity) {
+    private static String addressText(@NotNull LegalEntity entity) {
         StringBuilder text = new StringBuilder();
         Address address = entity.address(CrmTags.CRM_ADDRESS_WORK);
-        text.append(entity.name()).append(NEWLINE).append(Strings.isNullOrEmpty(address.street()) ? "" : (address.street() + NEWLINE))
-                .append(Strings.isNullOrEmpty(address.poBox()) ? "" : (address.poBox() + NEWLINE)).append(address.locality());
+        text.append(entity.name()).append(NEWLINE).append(Strings.isNullOrEmpty(address.extended()) ? "" : (address.extended() + NEWLINE))
+                .append(Strings.isNullOrEmpty(address.street()) ? "" : (address.street() + NEWLINE))
+                .append(Strings.isNullOrEmpty(address.poBox()) ? "" : (address.poBox() + NEWLINE)).append(address.postcode()).append(" ")
+                .append(address.locality());
         return text.toString();
-    }
-
-    private static net.codecrete.qrbill.generator.Address create(@NotNull LegalEntity entity) {
-        Address address = entity.address(CrmTags.CRM_ADDRESS_WORK);
-        net.codecrete.qrbill.generator.Address qrAddress = new net.codecrete.qrbill.generator.Address();
-        qrAddress.setName(entity.name());
-        qrAddress.setStreet(address.street());
-        qrAddress.setHouseNo(null);
-        qrAddress.setPostalCode(address.postcode());
-        qrAddress.setTown(address.locality());
-        qrAddress.setCountryCode(address.country());
-        return qrAddress;
     }
 }

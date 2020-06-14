@@ -16,78 +16,19 @@ package net.tangly.bus.invoices;
 
 import java.math.BigDecimal;
 
-public class InvoiceItem implements InvoiceLine {
-
-    private int position;
-
-    private String productId;
-
-    private String text;
-
-    private BigDecimal unitPrice;
-
-    private BigDecimal quantity;
-
-
-    public InvoiceItem() {
-    }
-
-    public InvoiceItem(int position, Product product, BigDecimal quantity) {
-        this.position = position;
-        this.productId = product.productId();
-        this.unitPrice = product.unitPrice();
-        this.text = product.description();
-        this.quantity = quantity;
-    }
-
-    @Override
-    public int position() {
-        return position;
-    }
-
-    @Override
-    public String text() {
-        return text;
-    }
-
+public record InvoiceItem(int position, Product product, String text, BigDecimal quantity) implements InvoiceLine {
     @Override
     public BigDecimal amount() {
-        return unitPrice.multiply(quantity);
-    }
-
-    @Override
-    public BigDecimal quantity() {
-        return quantity;
+        return unitPrice().multiply(quantity);
     }
 
     @Override
     public BigDecimal unitPrice() {
-        return unitPrice;
+        return product.unitPrice();
     }
 
-    public void position(int position) {
-        this.position = position;
-    }
-
-    public String productId() {
-        return productId;
-    }
-
-    public void productId(String productId) {
-        this.productId = productId;
-    }
-
-    public void text(String text) {
-        this.text = text;
-    }
-
-
-    public void unitPrice(BigDecimal unitPrice) {
-        this.unitPrice = unitPrice;
-    }
-
-
-    public void quantity(BigDecimal quantity) {
-        this.quantity = quantity;
+    @Override
+    public boolean isItem() {
+        return true;
     }
 }

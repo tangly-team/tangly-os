@@ -62,7 +62,7 @@ public interface CrmEntity extends HasTags {
 
     default void address(String kind, Address address) {
         if (address != null) {
-            replace(Tag.of(kind, address.toString()));
+            replace(Tag.of(kind, address.text()));
         } else {
             removeTagNamed(kind);
         }
