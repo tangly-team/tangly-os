@@ -1,9 +1,13 @@
-=== Maven Central Publication
+:icons: font
+:source-highlighter: pygments
+:pygments-style: manni
 
-. Publish artifacts of component with __gradle publishAllPublicationsToMavenRepository__
-.. Pre activity on bitbucket to check the project compile through the continuous integration pipeline
-.. Post activity on git to tag the published package.
-The tag is of the form __AcronymComponent-MajorVerion-MinorVersion-PatchVersion__ as
+== Maven Central Publication
+
+. Publish artifacts of component with ``gradle publishAllPublicationsToMavenRepository``
+.. Pre activity: check on bitbucket the project compile through the continuous integration pipeline
+.. Post activity: tag repository on git to identify version of the published packages.
+The tag is of the form __{AcronymComponent}-MajorVerion-MinorVersion-PatchVersion__ as
  ``git tag label`` and ``git push origin --tags``
 . Log into https://oss.sonatype.org/#welcome[Sonatype Maven Central Repository]
 .. Go to https://oss.sonatype.org/#stagingRepositories[Staging Repositories]
@@ -13,10 +17,13 @@ The tag is of the form __AcronymComponent-MajorVerion-MinorVersion-PatchVersion_
 .. Close stage is initiated and checks are performed.
 If everything was fine the content is published
 .. Release the artifact __button on tool list__
+. See <<website-publication>> to update the website
 
-Upon publication on Maven Central it takes up to one day until the component is visible in Maven Central website.
-
-==== Findings
+[CAUTION]
+====
+It takes up to one day until the component is visible in Maven Central website upon publication.
+====
+=== Findings
 
 . We needed to manually publish the public key on http://keys.gnupg.net[keys.gnupg.net]
 . Gradle build file has a condition include to disable the signing plugin on the CI pipeline because keys and associated authentication are not available.
@@ -24,7 +31,8 @@ See the documentation at the beginning of the Gradle build file for details.
 
 IMPORTANT: Set the property if you want to sign the component artifacts and publish to Maven Central
 
-=== Web Site Publication
+[#website-publication]
+== Website Publication
 
 . Update Hugo pipeline to run planUML with asciidoctor.
 Read the instructions in the asciidoctor script file under the scripts folder.
