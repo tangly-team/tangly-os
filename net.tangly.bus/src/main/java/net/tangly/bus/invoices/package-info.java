@@ -12,6 +12,7 @@
  */
 
 /**
- * The package provides core abstractions used in any commercial application in need of invoice handling.
+ * The package provides core abstractions used in any commercial application in need of invoice handling. The defined information forms the basis
+ * to create an output invoice legible for human beings and fulfilling the European requirements for a legal invoice document.
  */
 package net.tangly.bus.invoices;

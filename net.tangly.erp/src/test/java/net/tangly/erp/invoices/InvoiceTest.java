@@ -13,15 +13,13 @@
 
 package net.tangly.erp.invoices;
 
-import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.Currency;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -41,27 +39,17 @@ import net.tangly.bus.invoices.Product;
 import net.tangly.bus.invoices.Subtotal;
 import net.tangly.erp.invoices.ports.InvoiceAsciiDoc;
 import net.tangly.erp.invoices.ports.InvoiceQrCode;
-import org.asciidoctor.Asciidoctor;
-import org.asciidoctor.OptionsBuilder;
+import net.tangly.erp.invoices.ports.InvoiceZugFerd;
 import org.junit.jupiter.api.Test;
 
-import static org.asciidoctor.Asciidoctor.Factory.create;
 
 public class InvoiceTest {
     @Test
     void writeAsciiDocReport() {
         Invoice invoice = newInvoice();
-
-        new InvoiceAsciiDoc().create(invoice, Paths.get("/Users/Shared/tmp/invoice.adoc"), new HashMap<>());
-
-        Map<String, Object> options = OptionsBuilder.options().inPlace(true).backend("pdf").asMap();
-
-        Asciidoctor asciidoctor = create();
-        String outfile = asciidoctor.convertFile(new File("/Users/Shared/tmp/invoice.adoc"), options);
-
-        new InvoiceQrCode().create(invoice, Paths.get("/Users/Shared/tmp/invoice.pdf"), new HashMap<>());
-
-        // TODO generate Zugferd, open problem with PDF/A
+        new InvoiceAsciiDoc().create(invoice, Paths.get("/Users/Shared/tmp/invoice.adoc"), Collections.emptyMap());
+        new InvoiceQrCode().create(invoice, Paths.get("/Users/Shared/tmp/invoice.pdf"), Collections.emptyMap());
+        new InvoiceZugFerd().create(invoice, Paths.get("/Users/Shared/tmp/invoice.pdf"), Collections.emptyMap());
     }
 
     @Test

@@ -16,6 +16,9 @@ package net.tangly.bus.invoices;
 
 import java.math.BigDecimal;
 
+/**
+ * The invoice item represent a position of sold items defined through a product.
+ */
 public record InvoiceItem(int position, Product product, String text, BigDecimal quantity) implements InvoiceLine {
     @Override
     public BigDecimal amount() {

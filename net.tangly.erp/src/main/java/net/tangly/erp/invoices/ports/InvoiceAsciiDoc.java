@@ -27,12 +27,15 @@ import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceLine;
 import net.tangly.commons.utilities.AsciiDocHelper;
+import org.asciidoctor.Asciidoctor;
+import org.asciidoctor.OptionsBuilder;
 import org.jetbrains.annotations.NotNull;
 
 import static net.tangly.commons.utilities.AsciiDocHelper.NEWLINE;
 import static net.tangly.commons.utilities.AsciiDocHelper.bold;
 import static net.tangly.commons.utilities.AsciiDocHelper.format;
 import static net.tangly.commons.utilities.AsciiDocHelper.italics;
+
 
 /**
  * Provides support to generate a AsciiDoc representation of an invoice for the Swiss market. It provide a human-readable invoice document following
@@ -41,7 +44,7 @@ import static net.tangly.commons.utilities.AsciiDocHelper.italics;
 public class InvoiceAsciiDoc implements InvoiceGenerator {
     private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(InvoiceAsciiDoc.class);
 
-    public void create(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, String> properties) {
+    public void create(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
         try (PrintWriter writer = new PrintWriter(invoicePath.toFile(), StandardCharsets.UTF_8)) {
             // TODO i18n, l16n
             AsciiDocHelper helper = new AsciiDocHelper(writer);
@@ -94,8 +97,15 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
                 writer.append("Payment Conditions").append(" ").append(invoice.paymentConditions()).println();
             }
         } catch (Exception e) {
-            logger.error("Error during invoice asciiDoc generation", e);
+            logger.atError().setCause(e).log("Error during invoice asciiDoc generation {}", invoicePath);
         }
+        createPdf(invoicePath);
+    }
+
+    private static void createPdf(@NotNull Path invoicePath) {
+        Map<String, Object> options = OptionsBuilder.options().inPlace(true).backend("pdf").asMap();
+        Asciidoctor asciidoctor = org.asciidoctor.Asciidoctor.Factory.create();
+        String outfile = asciidoctor.convertFile(invoicePath.toFile(), options);
     }
 
     private static String addressText(@NotNull LegalEntity entity) {

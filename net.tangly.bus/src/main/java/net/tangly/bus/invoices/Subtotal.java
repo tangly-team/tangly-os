@@ -18,7 +18,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * The abstraction defines a subtotal for a set of position in the invoice. A subtotal groups a set of related positions, such as belonging to the
+ * The subtotal defines the sum for a set of positions in the invoice. A subtotal groups a set of related positions, such as belonging to the
  * same accounting position or project booking, or to the same amount of VAT percentage for mixed VAT invoices.
  */
 public record Subtotal(int position, String text, List<InvoiceLine>items) implements InvoiceLine {
@@ -42,6 +42,10 @@ public record Subtotal(int position, String text, List<InvoiceLine>items) implem
         return false;
     }
 
+    /**
+     * Returns the list of positions part of the subtotal aggregate.
+     * @return positions associated whith the subtotal
+     */
     public List<InvoiceLine> positions() {
         return Collections.unmodifiableList(items);
     }

@@ -25,9 +25,11 @@ import net.tangly.bus.crm.BankConnection;
 import net.tangly.bus.crm.LegalEntity;
 
 /**
- * The abstraction of an invoice with a set of positions, subtotals, one VAT rate and a total. The items and the subtotals have a position to order
- * them in the invoice. An invoice and its components have no dependencies to external entities. Therefore, an invoice is complete and archived. For
- * example you can change the VAT percentage or a product price without any consequence on existing invoices.
+ * <p>The abstraction of an invoice with a set of positions, subtotals, one VAT rate and a total. The items and the subtotals have a position
+ * to order them in the invoice. An invoice and its components have no dependencies to external entities. Therefore, an invoice is complete and
+ * archived. For example, you can change the VAT percentage or a product price without any consequence on existing invoices.</p>
+ * <p>The invoice assumes that a single VAT rate applies to all positions. This assumption is reasonable for quite a lot of businesses, in
+ * particular in the service industry.</p>
  */
 public class Invoice {
     private String id;

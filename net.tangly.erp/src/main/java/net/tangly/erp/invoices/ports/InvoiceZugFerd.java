@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.util.Date;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import net.tangly.bus.crm.CrmTags;
@@ -24,6 +25,7 @@ import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceItem;
 import net.tangly.bus.invoices.Product;
+import org.jetbrains.annotations.NotNull;
 import org.mustangproject.ZUGFeRD.IZUGFeRDAllowanceCharge;
 import org.mustangproject.ZUGFeRD.IZUGFeRDExportableContact;
 import org.mustangproject.ZUGFeRD.IZUGFeRDExportableItem;
@@ -33,11 +35,11 @@ import org.mustangproject.ZUGFeRD.IZUGFeRDTradeSettlementPayment;
 import org.mustangproject.ZUGFeRD.ZUGFeRDExporter;
 import org.mustangproject.ZUGFeRD.ZUGFeRDExporterFromA1Factory;
 
-public class InvoiceZugFerd implements IZUGFeRDExportableTransaction {
+public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGenerator {
     /**
      * Implements a ZugFerd exportable contact and maps a legal entity to ZugFerd abstraction.
      */
-    static class ZugFerdContact implements IZUGFeRDExportableContact {
+    class ZugFerdContact implements IZUGFeRDExportableContact {
         private final LegalEntity entity;
 
         public ZugFerdContact(LegalEntity entity) {
@@ -78,7 +80,7 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction {
     /**
      * Implments a ZugFerd exportable item and maps the invoice item to ZugFerd abstraction.
      */
-    static class ZugFerdItem implements IZUGFeRDExportableItem {
+    class ZugFerdItem implements IZUGFeRDExportableItem {
         private InvoiceItem item;
 
         public ZugFerdItem(InvoiceItem item) {
@@ -87,7 +89,7 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction {
 
         @Override
         public IZUGFeRDExportableProduct getProduct() {
-            return new ZugFerdProduct(item.product(), null);
+            return new ZugFerdProduct(item.product(), invoice.vatRate().multiply(HUNDRED));
         }
 
         @Override
@@ -164,7 +166,21 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction {
         }
     }
 
+    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(InvoiceAsciiDoc.class);
+    private static final BigDecimal HUNDRED = new BigDecimal("100");
     private Invoice invoice;
+
+    public void create(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
+        this.invoice = invoice;
+        try {
+            ZUGFeRDExporter exporter = new ZUGFeRDExporterFromA1Factory().ignorePDFAErrors().setZUGFeRDVersion(2).setProducer("tangly ERP")
+                    .setCreator(invoice.invoicingEntity().name()).load(invoicePath.toString());
+            exporter.PDFattachZugferdFile(this);
+            exporter.export(invoicePath.toString());
+        } catch (IOException e) {
+            logger.atError().setCause(e).log("Could not read or write file {}", invoicePath);
+        }
+    }
 
     @Override
     public String getCurrency() {
@@ -264,15 +280,5 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction {
 
     public IZUGFeRDAllowanceCharge[] getZFLogisticsServiceCharges() {
         return null;
-    }
-
-    private void apply(Path invoicePath, String creator) throws IOException {
-        ZUGFeRDExporter exporter =
-                new ZUGFeRDExporterFromA1Factory().ignorePDFAErrors().setZUGFeRDVersion(2).setProducer("tangly ERP").setCreator(creator)
-                        .load(invoicePath.toString());
-
-        exporter.PDFattachZugferdFile(this);
-
-        exporter.export("./MustangGnuaccountingBeispielRE-20190610_507new.pdf");
     }
 }

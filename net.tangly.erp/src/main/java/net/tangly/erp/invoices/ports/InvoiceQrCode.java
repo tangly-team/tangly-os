@@ -37,7 +37,7 @@ import org.jetbrains.annotations.NotNull;
 public class InvoiceQrCode implements InvoiceGenerator {
     private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(InvoiceQrCode.class);
 
-    public void create(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, String> properties) {
+    public void create(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
         Bill bill = new Bill();
         BillFormat format = new BillFormat();
         format.setLanguage(Language.EN);
