@@ -1,4 +1,18 @@
-= 1. Use Tag for per project costs computation
+---
+title: "BUS 002"
+date: 2017-12-01
+draft: false
+---
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+:icons: font
+:source-highlighter: pygments
+:pygments-style: manni
+
+= BUS-002 Use Tag for per project costs computation
 
 Date: 2017-12-01
 

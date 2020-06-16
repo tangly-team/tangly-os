@@ -3,8 +3,16 @@ title: "FSM 002"
 date: 2019-05-01
 draft: false
 ---
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+:icons: font
+:source-highlighter: pygments
+:pygments-style: manni
 
-=== 002. Publish Artifacts on Public Java Components Repository
+=== FSM-002 Publish Artifacts on Public Java Components Repository
 
 Date: 2019-05-01
 

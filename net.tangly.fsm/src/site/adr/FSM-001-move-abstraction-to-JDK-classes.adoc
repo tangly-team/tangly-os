@@ -4,7 +4,16 @@ date: 2019-05-01
 draft: false
 ---
 
-=== 001. Replace Guard and Action classes with JDK BiPredicate and BiFunction Classes
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+:icons: font
+:source-highlighter: pygments
+:pygments-style: manni
+
+=== FSM-001 Replace Guard and Action classes with JDK BiPredicate and BiFunction Classes
 
 Date: 2017-06-01
 
