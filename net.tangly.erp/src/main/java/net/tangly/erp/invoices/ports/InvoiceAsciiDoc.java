@@ -44,6 +44,7 @@ import static net.tangly.commons.utilities.AsciiDocHelper.italics;
 public class InvoiceAsciiDoc implements InvoiceGenerator {
     private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(InvoiceAsciiDoc.class);
 
+    @Override
     public void create(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
         try (PrintWriter writer = new PrintWriter(invoicePath.toFile(), StandardCharsets.UTF_8)) {
             // TODO i18n, l16n
@@ -103,9 +104,10 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
     }
 
     private static void createPdf(@NotNull Path invoicePath) {
-        Map<String, Object> options = OptionsBuilder.options().inPlace(true).backend("pdf").asMap();
-        Asciidoctor asciidoctor = org.asciidoctor.Asciidoctor.Factory.create();
-        String outfile = asciidoctor.convertFile(invoicePath.toFile(), options);
+        try (Asciidoctor asciidoctor = org.asciidoctor.Asciidoctor.Factory.create();) {
+            Map<String, Object> options = OptionsBuilder.options().inPlace(true).backend("pdf").asMap();
+            String outfile = asciidoctor.convertFile(invoicePath.toFile(), options);
+        }
     }
 
     private static String addressText(@NotNull LegalEntity entity) {

@@ -8,16 +8,17 @@ Implemented
 
 == Context
 
-We need to record the VAT components of transactions. The VAT value can be different for each position in a transaction
-therefore the VAT information shall be defined on each part of a transaction.
+We need to record the VAT components of transactions in our ledger system.
+The VAT value can be different for each position in a transaction therefore the VAT information shall be defined on each part of a transaction.
 
-The value of the VAT is computed based on the VAT percentage. The percentage can change over time due to regulatory
-changes.
+The value of the VAT is computed based on the VAT percentage.
+The percentage can change over time due to regulatory changes.
 
 == Decision
 
-We will support tags at the transaction entry. The tags are a triplet *[namespace:]name[=value]* format. We recommend
-the namespace "fin", the name "vat", and a text identifier has value.
+We will support tags at the transaction entry.
+The tags are a triplet *[namespace:]name[=value]* format.
+We recommend the namespace "fin", the name "vat", and a text identifier has value.
 
 The current values are:
 1. F1 for VAT invoiced at 8% and paid to the state at 7.1%
@@ -25,5 +26,5 @@ The current values are:
 
 == Consequences
 
-Ontology based on tags are not hard defined through a type system. Checks have to be implemented to guaranty adequate
-level of tracking.
+* Ontology based on tags are not hard defined through a type system.
+* Checks have to be implemented to guaranty adequate level of tracking.

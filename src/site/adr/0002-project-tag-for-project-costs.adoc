@@ -8,16 +8,17 @@ Implemented
 
 == Context
 
-We would like to compute earnings and costs on per project base. Each transaction entry should support tags to
-identify the associated projects or departments. The tag approach supports multiple consolidation of an orthogonal
-cost structure.
+We would like to compute earnings and costs on per project base.
+Each transaction entry should support tags to identify the associated projects or departments.
+The tag approach supports multiple consolidation of an orthogonal cost structure.
 
 == Decision
 
-We will support tags at the transaction entry. The tags are a triplet *[namespace:]name[=value]* format. We recommend
-the namespace "fin", the name "segment", and a text identifier has value.
+We will support tags at the transaction entry.
+The tags are a triplet *[namespace:]name[=value]* format.
+We recommend the namespace "fin", the name "segment", and a text identifier has value.
 
 == Consequences
 
-Ontology based on tags are not hard defined through a type system. Checks have to be implemented to guaranty adequate
-level of tracking.
+* Ontology based on tags are not hard defined through a type system.
+* Checks have to be implemented to guaranty adequate level of tracking.

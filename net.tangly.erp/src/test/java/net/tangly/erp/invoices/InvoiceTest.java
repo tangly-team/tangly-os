@@ -15,6 +15,8 @@ package net.tangly.erp.invoices;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.Collections;
@@ -42,14 +44,25 @@ import net.tangly.erp.invoices.ports.InvoiceQrCode;
 import net.tangly.erp.invoices.ports.InvoiceZugFerd;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class InvoiceTest {
     @Test
-    void writeAsciiDocReport() {
+    void writeAsciiDocReport() throws IOException {
+        Path invoicesDir = Paths.get("/tmp/");
+        Path invoicePath = invoicesDir.resolve("invoice.adoc");
+        Path invoiceOutputPath = invoicesDir.resolve("invoice.pdf");
+
         Invoice invoice = newInvoice();
-        new InvoiceAsciiDoc().create(invoice, Paths.get("/Users/Shared/tmp/invoice.adoc"), Collections.emptyMap());
-        new InvoiceQrCode().create(invoice, Paths.get("/Users/Shared/tmp/invoice.pdf"), Collections.emptyMap());
-        new InvoiceZugFerd().create(invoice, Paths.get("/Users/Shared/tmp/invoice.pdf"), Collections.emptyMap());
+        new InvoiceAsciiDoc().create(invoice, invoicePath, Collections.emptyMap());
+        new InvoiceQrCode().create(invoice, invoiceOutputPath, Collections.emptyMap());
+        new InvoiceZugFerd().create(invoice, invoiceOutputPath, Collections.emptyMap());
+
+        assertThat(Files.exists(invoicesDir)).isTrue();
+        assertThat(Files.isDirectory(invoicesDir)).isTrue();
+        assertThat(Files.exists(invoicePath)).isTrue();
+        assertThat(Files.exists(invoiceOutputPath)).isTrue();
     }
 
     @Test
@@ -96,21 +109,11 @@ public class InvoiceTest {
         invoice.invoicingConnection(sellerConnection);
         invoice.text("Coaching contract Planta 20XX-5946 und ARE-20XX-6048");
 
-        InvoiceItem item = new InvoiceItem(1, coaching, "GIS goes Agile project", new BigDecimal("4"));
-        invoice.add(item);
-
-        item = new InvoiceItem(2, coaching, "Java architecture coaching project", new BigDecimal("1.5"));
-        invoice.add(item);
-
-        Subtotal subtotal = new Subtotal(3, "Subtotal Project Leading GEO 2017 83200 Planta 20XX-5946", List.of(invoice.getAt(1), invoice.getAt(2)));
-        invoice.add(subtotal);
-
-        item = new InvoiceItem(4, coaching, "OGD technical project management", new BigDecimal("2.25"));
-        item.text();
-        invoice.add(item);
-
-        subtotal = new Subtotal(5, "Subtotal Agile Coaching 3130 0 80000", List.of(invoice.getAt(4)));
-        invoice.add(subtotal);
+        invoice.add(new InvoiceItem(1, coaching, "GIS goes Agile project", new BigDecimal("4")));
+        invoice.add(new InvoiceItem(2, coaching, "Java architecture coaching project", new BigDecimal("1.5")));
+        invoice.add(new Subtotal(3, "Subtotal Project Leading GEO 2017 83200 Planta 20XX-5946", List.of(invoice.getAt(1), invoice.getAt(2))));
+        invoice.add(new InvoiceItem(4, coaching, "OGD technical project management", new BigDecimal("2.25")));
+        invoice.add(new Subtotal(5, "Subtotal Agile Coaching 3130 0 80000", List.of(invoice.getAt(4))));
 
         invoice.paymentConditions("30 day netto");
         invoice.vatRate(new BigDecimal("0.077"));

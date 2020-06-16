@@ -26,7 +26,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Comment defines a human-readable annotation to an entity. A comment is an immutable object. Comments can be tagged to provide classification.
  */
-public class Comment implements HasOid, HasTags, Serializable {
+public class Comment implements HasOid, HasTags {
     private static final long serialVersionUID = 1L;
 
     /**
