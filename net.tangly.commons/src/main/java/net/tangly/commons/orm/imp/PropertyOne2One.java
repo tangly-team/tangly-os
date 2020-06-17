@@ -72,7 +72,7 @@ public class PropertyOne2One<T extends HasOid, R extends HasOid> extends Propert
 
     @Override
     public void retrieve(@NotNull T entity, Long fid) throws IllegalAccessException {
-        // the property is already been udpated through the simple property retrieve mechanism.
+        // the property is already been updated through the simple property retrieve mechanism.
     }
 
     @Override

@@ -69,7 +69,7 @@ public interface HasComments {
     }
 
     /**
-     * Returns all the comments which creation date is in the closed interval
+     * Returns all the comments which creation date is in the closed interval.
      *
      * @param from beginning of the time interval or LocalDateTime.MIN
      * @param to   end of the time interval or LocalDateTime.MAX

@@ -44,7 +44,7 @@ public record Subtotal(int position, String text, List<InvoiceLine>items) implem
 
     /**
      * Returns the list of positions part of the subtotal aggregate.
-     * @return positions associated whith the subtotal
+     * @return positions associated with the subtotal
      */
     public List<InvoiceLine> positions() {
         return Collections.unmodifiableList(items);

@@ -52,11 +52,9 @@ public class CsvImportAndAdocReportTest {
 
     @Test
     void testCsvTransactionsImport() throws IOException, URISyntaxException {
-        LedgerCsvHdl handler = new LedgerCsvHdl(new Ledger());
-        Path path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/ledger/swiss-ledger.csv").toURI());
-        handler.importStructureLedgerFromBanana8(path);
-        handler.ledger().build();
-        path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/ledger/transactions-2015-2016.csv").toURI());
+        LedgerCsvHdl handler = createLedger();
+
+        Path path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/ledger/transactions-2015-2016.csv").toURI());
         handler.importTransactionsLedgerFromBanana8(path);
         assertThat(handler.ledger().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31)).isEmpty()).isFalse();
         ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(handler.ledger());
@@ -67,19 +65,26 @@ public class CsvImportAndAdocReportTest {
 
     @Test
     @Tag("localTest")
-    void testCsvImportAndAdocReport() throws IOException {
-        LedgerCsvHdl handler = new LedgerCsvHdl(new Ledger());
-        handler.importStructureLedgerFromBanana8(Paths.get("/Users/Shared/tmp/swiss-ledger.csv"));
-        handler.ledger().build();
+    void testCsvImportAndAdocReport() throws IOException, URISyntaxException {
+        LedgerCsvHdl handler = createLedger();
 
         handler.importTransactionsLedgerFromBanana8(Paths.get("/Users/Shared/tmp/period-2016.csv"));
         handler.importTransactionsLedgerFromBanana8(Paths.get("/Users/Shared/tmp/period-2017.csv"));
         handler.importTransactionsLedgerFromBanana8(Paths.get("/Users/Shared/tmp/period-2018.csv"));
 
         ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(handler.ledger());
-        report.create(LocalDate.parse("2015-10-01"), LocalDate.parse("2016-12-31"), Paths.get("/Users/Shared/tmp/closing-2016.adoc"));
-        report.create(LocalDate.parse("2017-01-01"), LocalDate.parse("2017-12-31"), Paths.get("/Users/Shared/tmp/closing-2017.adoc"));
-        report.create(LocalDate.parse("2018-01-01"), LocalDate.parse("2018-12-31"), Paths.get("/Users/Shared/tmp/closing-2018.adoc"));
-        report.create(LocalDate.parse("2019-01-01"), LocalDate.parse("2019-12-31"), Paths.get("/Users/Shared/tmp/closing-2019.adoc"));
+        report.create(LocalDate.parse("2015-10-01"), LocalDate.parse("2016-12-31"), Paths.get("/tmp/closing-2016.adoc"));
+        report.create(LocalDate.parse("2017-01-01"), LocalDate.parse("2017-12-31"), Paths.get("/tmp/closing-2017.adoc"));
+        report.create(LocalDate.parse("2018-01-01"), LocalDate.parse("2018-12-31"), Paths.get("/tmp/closing-2018.adoc"));
+        report.create(LocalDate.parse("2019-01-01"), LocalDate.parse("2019-12-31"), Paths.get("/tmp/closing-2019.adoc"));
+    }
+
+    private LedgerCsvHdl createLedger() throws IOException, URISyntaxException {
+        LedgerCsvHdl handler = new LedgerCsvHdl(new Ledger());
+        Path path = Paths.get(getClass().getClassLoader().getResource("net/tangly/erp/ledger/swiss-ledger.csv").toURI());
+        handler.importStructureLedgerFromBanana8(path);
+        handler.ledger().build();
+        return handler;
     }
 }
+

@@ -26,19 +26,17 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 /**
- * The publisher creates a <i>AsciiDoc</i> report of the behaviour driven design tests documentation generated as JSON during a JUnit 5 run. The
+ * The publisher creates a <i>AsciiDoc</i> report of the behaviour driven design tests documentation generated as JSON during JUnit 5 runs. The
  * publisher is provided as an example for realising developer driven living documentation.
  */
 public class StoryAsciiDocPublisher {
-    public static final String NEWLINE = " +" + System.lineSeparator();
-
     private final PrintWriter writer;
 
     public StoryAsciiDocPublisher(Path bddReport, Path report) throws IOException {
         try (Reader reader = Files.newBufferedReader(bddReport, StandardCharsets.UTF_8)) {
             JSONArray features = new JSONArray(new JSONTokener(reader));
             writer = new PrintWriter(report.toFile(), StandardCharsets.UTF_8);
-            header();
+            documentHeader();
             for (var item : features) {
                 publishFeature((JSONObject) item);
             }
@@ -47,7 +45,7 @@ public class StoryAsciiDocPublisher {
         }
     }
 
-    private void header() {
+    private void documentHeader() {
         writer.println("---");
         writer.println("title: \"bdd Report\"");
         writer.println("date: 2020-01-01");

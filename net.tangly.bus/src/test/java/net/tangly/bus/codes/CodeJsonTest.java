@@ -14,7 +14,6 @@
 package net.tangly.bus.codes;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
 import org.junit.jupiter.api.Test;
@@ -23,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CodeJsonTest {
     @Test
-    void testTestCodeTest() throws IOException, URISyntaxException {
+    void testTestCodeTest() throws IOException {
         CodeType<TestCode> type =
                 CodeHelper.build(TestCode.class, TestCode::new, Paths.get(getClass().getClassLoader().getResource("json/TestCodes.json").getPath()));
         assertThat(type.codes().size()).isEqualTo(5);

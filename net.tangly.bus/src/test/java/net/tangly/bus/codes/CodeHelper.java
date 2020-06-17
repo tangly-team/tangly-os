@@ -42,8 +42,8 @@ class CodeHelper {
      * Defines the signature of a code class constructor.
      */
     @FunctionalInterface
-    public static interface CodeFactory<T extends Code> {
-        public T create(int id, String code, boolean enabled);
+    public interface CodeFactory<T extends Code> {
+        T create(int id, String code, boolean enabled);
     }
 
     /**
@@ -93,7 +93,7 @@ class CodeHelper {
      */
     public static <T extends Code> CodeType<T> build(Class<T> clazz, CodeFactory<T> factory, Path path) throws IOException {
         try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
-            Iterator iter = new JSONArray(new JSONTokener(reader)).iterator();
+            Iterator<Object> iter = new JSONArray(new JSONTokener(reader)).iterator();
             List<T> codes = new ArrayList<>();
             while (iter.hasNext()) {
                 JSONObject value = (JSONObject) iter.next();

@@ -55,7 +55,7 @@ public @interface Story {
     String id() default "";
 
     /**
-     * Returns the tags associated with the feature. Tags provides domain specific classification and additional information.
+     * Returns the tags associated with the feature. Tags provide domain specific classification and additional information.
      *
      * @return tags defined in the feature
      */

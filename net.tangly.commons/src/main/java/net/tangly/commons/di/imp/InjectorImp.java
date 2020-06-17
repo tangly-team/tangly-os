@@ -33,7 +33,7 @@ import net.tangly.commons.di.Injector;
  * can provides singleton, JSR330 Provider, or a constructor.
  */
 public class InjectorImp implements Injector {
-    private Map<Class<?>, Supplier<?>> creators;
+    private final Map<Class<?>, Supplier<?>> creators;
 
     public InjectorImp() {
         creators = new HashMap<>();

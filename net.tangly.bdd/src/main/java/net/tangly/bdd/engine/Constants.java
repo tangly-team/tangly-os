@@ -23,13 +23,11 @@ public final class Constants {
     public static final String NAME = "name";
     public static final String ID = "id";
     public static final String DESCRIPTION = "description";
-    public static final String TAGS = "tags";
 
     public static final String PACKAGE_NAME = "package";
     public static final String CLASS_NAME = "class";
     public static final String METHOD_NAME = "method";
 
-    public static final String FEATURES = "features";
     public static final String SCENARIOS = "scenarios";
     public static final String STORIES = "stories";
 

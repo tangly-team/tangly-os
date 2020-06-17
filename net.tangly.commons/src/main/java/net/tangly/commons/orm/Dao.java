@@ -44,16 +44,16 @@ public class Dao<T extends HasOid> {
     private static final String PRIMARY_KEY = "oid";
     private static final int KEY_SQL_TYPE = Types.BIGINT;
     private static final Logger logger = org.slf4j.LoggerFactory.getLogger(Dao.class);
-    private static AtomicLong oidGenerator = new AtomicLong(0);
+    private static final AtomicLong oidGenerator = new AtomicLong(0);
 
     private final String schema;
     private final String entityName;
     private final Class<T> type;
     private final DataSource dataSource;
-    private Constructor<T> constructor;
-    private List<Property<T>> properties;
-    private List<Relation<T, ?>> one2one;
-    private List<Relation<T, ?>> one2many;
+    private final Constructor<T> constructor;
+    private final List<Property<T>> properties;
+    private final List<Relation<T, ?>> one2one;
+    private final List<Relation<T, ?>> one2many;
     private final String findSql;
     private final String replaceSql;
     private final String deleteSql;
@@ -62,7 +62,7 @@ public class Dao<T extends HasOid> {
     /**
      * Cache holding all loaded instances handled through the record.
      */
-    private Map<Long, WeakReference<T>> cache;
+    private final Map<Long, WeakReference<T>> cache;
 
     public Dao(String schema, @NotNull String entity, @NotNull Class<T> type, @NotNull DataSource dataSource, @NotNull List<Property<T>> properties,
                @NotNull List<Relation<T, ?>> one2one, @NotNull List<Relation<T, ?>> one2many) throws NoSuchMethodException {
@@ -120,7 +120,7 @@ public class Dao<T extends HasOid> {
             }
             addToCache(entity);
         } catch (SQLException | IllegalAccessException e) {
-            logger.atError().log("Esception creating {} id {}", entityName, entity.oid(), e);
+            logger.atError().log("Exception creating {} id {}", entityName, entity.oid(), e);
         }
     }
 
@@ -141,7 +141,7 @@ public class Dao<T extends HasOid> {
                     }
                 }
             } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
-                logger.atError().log("Exception occured when retrieving entity {} id {}", entityName, oid, e);
+                logger.atError().log("Exception occurred when retrieving entity {} id {}", entityName, oid, e);
             }
         }
         return entity;
@@ -156,7 +156,7 @@ public class Dao<T extends HasOid> {
                 entities.add(instance.isPresent() ? instance.get() : materializeEntity(set));
             }
         } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
-            logger.atError().log("Exception occured when retrieving entity with id {}", entityName, e);
+            logger.atError().log("Exception occurred when retrieving entity with id {}", entityName, e);
         }
         return entities;
     }

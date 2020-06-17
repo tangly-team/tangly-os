@@ -29,7 +29,7 @@ public interface HasId extends HasOid {
     }
 
     /**
-     * Sets the unique external identifier of the instance
+     * Sets the unique external identifier of the instance.
      *
      * @param id external identifier
      */

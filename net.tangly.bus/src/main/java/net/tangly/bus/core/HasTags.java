@@ -18,6 +18,8 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * The interface defines a mixin and abstracts an entity with tags.
  */
@@ -45,16 +47,28 @@ public interface HasTags {
 
     void clearTags();
 
-    default void replace(Tag tag) {
+    /**
+     * Replace or insert the given tag. Tag equivalence is detected with optional namespace and tag name.
+     * @param tag tag to replace or insert
+     */
+    default void replace(@NotNull Tag tag) {
         Objects.requireNonNull(tag);
         findBy(tag.namespace(), tag.name()).ifPresent(this::remove);
         add(tag);
     }
 
+    /**
+     * Remove the tag with the given tag identification containing optional namespace and tag name.
+     * @param tag tag identification of the tag to be removed
+     */
     default void removeTagNamed(String tag) {
         findBy(Tag.namespace(tag), Tag.name(tag)).ifPresent(this::remove);
     }
 
+    /**
+     * Find the tag with the given tag identification containing optional namespace and tag name.
+     * @param tag tag identification of the tag to be removed
+     */
     default Optional<Tag> findBy(String tag) {
         return findBy(Tag.namespace(tag), Tag.name(tag));
     }
@@ -71,7 +85,12 @@ public interface HasTags {
         return tags().stream().filter(o -> Objects.equals(namespace, o.namespace()) && name.equals(o.name())).findAny();
     }
 
-    default boolean contains(String namespace, String name) {
+    /**
+     * True if the tag with the given tag identification containing optional namespace and tag name could be found.
+     * @param namespace optional namespace of the tag
+     * @param name name of the tag
+     */
+    default boolean contains(String namespace, @NotNull String name) {
         return findBy(namespace, name).isPresent();
     }
 

@@ -27,7 +27,7 @@ class CodeEnumTest {
     private enum EnumCode implements Code {
         CODE_TEST_1, CODE_TEST_2, CODE_TEST_3, CODE_TEST_4, CODE_TEST_5(false);
 
-        private boolean enabled;
+        private final boolean enabled;
 
         EnumCode() {
             this(true);

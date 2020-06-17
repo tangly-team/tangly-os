@@ -59,7 +59,7 @@ public class Reference<T> {
     }
 
     /**
-     * Sets the referencec object.
+     * Sets the referenced object.
      *
      * @param reference referenced object
      */

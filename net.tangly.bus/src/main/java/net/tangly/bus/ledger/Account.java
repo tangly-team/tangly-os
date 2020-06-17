@@ -36,7 +36,7 @@ public class Account {
     public enum AccountGroup {ASSETS, LIABILITIES, EXPENSES, PROFITS_AND_LOSSES}
 
     /**
-     * Unique identifier of the account in the ledger context.
+     * The unique identifier of the account in the ledger context.
      */
     private final String id;
 
@@ -129,12 +129,11 @@ public class Account {
             case LIABILITY -> AccountGroup.LIABILITIES;
             case EXPENSE, INCOME -> AccountGroup.PROFITS_AND_LOSSES;
             case AGGREGATE -> group;
-            default -> null;
         };
     }
 
     /**
-     * Returns true if the account is an aggregate account, meaning the balance is the aggregation of a the balance of a set of accounts.
+     * Returns true if the account is an aggregate account, meaning the balance is the aggregation of a set of accounts.
      *
      * @return flag indicating if the account is an aggregate account
      */

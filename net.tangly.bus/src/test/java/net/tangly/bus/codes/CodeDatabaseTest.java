@@ -33,7 +33,7 @@ class CodeDatabaseTest {
 
 
     @BeforeEach
-    void setUp() throws NoSuchMethodException {
+    void setUp() {
         datasource = new JDBCDataSource();
         datasource.setDatabase(dbUrl);
         datasource.setUser(username);
@@ -63,6 +63,8 @@ class CodeDatabaseTest {
         // test basic operations
         TestCode code1 = type.findCode(1).orElse(null);
         TestCode code2 = type.findCode(2).orElse(null);
+        assertThat(code1).isNotNull();
+        assertThat(code2).isNotNull();
         assertThat(code1.equals(code1)).isTrue();
         assertThat(code1.equals(code2)).isFalse();
         assertThat(code1.hashCode()).isEqualTo(code1.hashCode());

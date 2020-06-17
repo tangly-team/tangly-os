@@ -23,17 +23,17 @@ public abstract class CodeImp implements Code {
     /**
      * Identifier of the code in the context of the code table.
      */
-    private int id;
+    private final int id;
 
     /**
      * Human readable format of the code.
      */
-    private String code;
+    private final String code;
 
     /**
      * Flag indicating if the code is enabled or not.
      */
-    private boolean enabled;
+    private final boolean enabled;
 
     /**
      * Constructor of the immutable class.

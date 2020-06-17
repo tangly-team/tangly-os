@@ -74,9 +74,9 @@ public class ExceptionMapper<H> {
      * @param exception exception to be processed
      */
     public void process(@NotNull H handler, @NotNull Exception exception) {
-        Class<? extends Exception> clazz = exception.getClass();
+        Class<?> clazz = exception.getClass();
         while (!functors.containsKey(clazz) && (clazz != Exception.class)) {
-            clazz = (Class<? extends Exception>) clazz.getSuperclass();
+            clazz = clazz.getSuperclass();
         }
         functors.get(clazz).accept(handler, exception);
     }

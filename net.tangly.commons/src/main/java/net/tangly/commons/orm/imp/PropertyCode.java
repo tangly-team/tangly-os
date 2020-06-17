@@ -23,7 +23,7 @@ import net.tangly.commons.orm.Property;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Defines a property type used to store a reference code as type. The mapping to the persistence layer is predifined.
+ * Defines a property type used to store a reference code as type. The mapping to the persistence layer is predefined.
  *
  * @param <T> type of the class owning the property
  * @param <V> type of the reference code stored in the property

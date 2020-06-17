@@ -27,8 +27,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The ledger implements a ledger with a chart of accounts and a set of transactions. It provides the logic for the
- * automatic processing of VAT amounts and related bookings to the VAT related accounts.
+ * The ledger implements a ledger with a chart of accounts and a set of transactions. It provides the logic for the automatic processing of VAT
+ * amounts and related bookings to the VAT related accounts.
  */
 public class Ledger {
     private static final Logger logger = LoggerFactory.getLogger(Ledger.class);
@@ -74,8 +74,8 @@ public class Ledger {
     }
 
     /**
-     * Adds a transaction to the ledger and the referenced accounts. A warning message is written to the log file if one of the
-     * involved accounts is not registered in the ledger. The involved accounts cannot be aggregate accounts.
+     * Adds a transaction to the ledger and the referenced accounts. A warning message is written to the log file if one of the involved accounts is
+     * not registered in the ledger. The involved accounts cannot be aggregate accounts.
      *
      * @param transaction transaction to add to the ledger
      */
@@ -90,7 +90,8 @@ public class Ledger {
             splits.add(new AccountEntry(credit.account(), credit.date(), credit.amount().subtract(vatDue), credit.text(), false, credit.tags()));
             splits.add(new AccountEntry("2201", credit.date(), vatDue, null, false));
             booked = new Transaction(transaction.date(), transaction.debitAccount(), null, transaction.amount(), splits, transaction.description(),
-                    transaction.reference());
+                    transaction.reference()
+            );
         }
         journal.add(booked);
         booked.debitSplits().forEach(this::bookEntry);
@@ -132,8 +133,9 @@ public class Ledger {
 
     public BigDecimal computeDueVat(LocalDate from, LocalDate to) {
         Optional<Account> account = getAccountBy("2201");
-        return account.isPresent() ? account.get().getEntriesFor(from, to).stream().filter(AccountEntry::isCredit).map(AccountEntry::amount)
-                .reduce(BigDecimal::add).orElse(BigDecimal.ZERO) : BigDecimal.ZERO;
+        return account
+                .map(value -> value.getEntriesFor(from, to).stream().filter(AccountEntry::isCredit).map(AccountEntry::amount).reduce(BigDecimal::add)
+                        .orElse(BigDecimal.ZERO)).orElse(BigDecimal.ZERO);
     }
 
     // endregion

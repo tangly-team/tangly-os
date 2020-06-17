@@ -39,11 +39,8 @@ public class InvoiceQrCode implements InvoiceGenerator {
 
     public void create(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
         Bill bill = new Bill();
-        BillFormat format = new BillFormat();
-        format.setLanguage(Language.EN);
-        format.setOutputSize(OutputSize.A4_PORTRAIT_SHEET);
-        format.setGraphicsFormat(GraphicsFormat.SVG);
-        bill.setFormat(format);
+
+        bill.setFormat(createBillFormat());
         bill.setVersion(Bill.Version.V2_0);
 
         bill.setCreditor(create(invoice.invoicingEntity()));
@@ -53,18 +50,7 @@ public class InvoiceQrCode implements InvoiceGenerator {
         bill.setAmount(invoice.amountWithVat());
         bill.setCurrency(invoice.currency().getCurrencyCode());
 
-
-        SwicoBillInformation swico = new SwicoBillInformation();
-        swico.setInvoiceDate(invoice.invoicedDate());
-        swico.setVatNumber(invoice.invoicingEntity().vatNr());
-        swico.setCustomerReference(invoice.invoicedEntity().id());
-        swico.setInvoiceNumber(invoice.id());
-        SwicoBillInformation.PaymentCondition paymentCondition = new SwicoBillInformation.PaymentCondition();
-        paymentCondition.setDays(30);
-        paymentCondition.setDiscount(BigDecimal.ZERO);
-        swico.setPaymentConditions(List.of(paymentCondition));
-
-        bill.setBillInformation(swico.encodeAsText());
+        bill.setBillInformation(createSwicoBillInformation(invoice).encodeAsText());
         bill.setReference(Payments.createISO11649Reference(invoice.id().replaceAll("[^A-Za-z0-9]", "")));
         bill.setUnstructuredMessage(invoice.text());
 
@@ -72,8 +58,39 @@ public class InvoiceQrCode implements InvoiceGenerator {
             QRBill.draw(bill, canvas);
             canvas.saveAs(invoicePath);
         } catch (IOException e) {
-            logger.atError().log("Error when generating QR code", e);
+            logger.atError().setCause(e).log("Error when generating QR code for {}", invoicePath);
         }
+    }
+
+    private static BillFormat createBillFormat() {
+        BillFormat format = new BillFormat();
+        format.setLanguage(Language.EN);
+        format.setOutputSize(OutputSize.A4_PORTRAIT_SHEET);
+        format.setGraphicsFormat(GraphicsFormat.SVG);
+        return format;
+    }
+
+    /**
+     * Create the SWICO information for the QR code. As remarks SIX Swico states that VAT number is without the MWST postfix.
+     *
+     * @param invoice invoice used to create SWICo information
+     * @return new SWICO bill information
+     */
+    private static SwicoBillInformation createSwicoBillInformation(@NotNull Invoice invoice) {
+        SwicoBillInformation swico = new SwicoBillInformation();
+        swico.setInvoiceDate(invoice.invoicedDate());
+        swico.setInvoiceNumber(invoice.id());
+        swico.setVatNumber(invoice.invoicingEntity().id());
+        swico.setCustomerReference(invoice.invoicedEntity().id());
+
+        SwicoBillInformation.RateDetail detail = new SwicoBillInformation.RateDetail(invoice.vatRate(), invoice.amountWithoutVat());
+        swico.setVatRateDetails(List.of(detail));
+
+        SwicoBillInformation.PaymentCondition paymentCondition = new SwicoBillInformation.PaymentCondition();
+        paymentCondition.setDays(30);
+        paymentCondition.setDiscount(BigDecimal.ZERO);
+        swico.setPaymentConditions(List.of(paymentCondition));
+        return swico;
     }
 
     private static net.codecrete.qrbill.generator.Address create(@NotNull LegalEntity entity) {

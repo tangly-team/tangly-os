@@ -18,7 +18,6 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
@@ -62,7 +61,7 @@ public class AccountEntry implements HasTags {
 
     private final Set<Tag> tags;
 
-    public AccountEntry(String account, LocalDate date, BigDecimal amount, String text, boolean debit) {
+    public AccountEntry(@NotNull String account, @NotNull LocalDate date, @NotNull BigDecimal amount, String text, boolean debit) {
         this.account = account;
         this.date = date;
         this.amount = amount;
@@ -138,8 +137,7 @@ public class AccountEntry implements HasTags {
 
     @Override
     public String toString() {
-        return "{account=" + Objects.toString(account) + ", date=" + Objects.toString(date) + ", amount=" + Objects.toString(amount) + ", isDebit=" +
-                Objects.toString(debit) + ", text=" + Objects.toString(text) + "}";
+        return "{account=" + account + ", date=" + date + ", amount=" + amount + ", isDebit=" + debit + ", text=" + text + "}";
     }
 
     public Optional<BigDecimal> getVat() {

@@ -40,7 +40,7 @@ import org.jetbrains.annotations.NotNull;
  * @param <V> type of the format of the single or multiple values property
  */
 public class PropertyJson<T extends HasOid, V> extends PropertySimple<T> {
-    private static ObjectMapper mapper = createObjectMapper();
+    private static final ObjectMapper mapper = createObjectMapper();
 
     private final Class<V> referenceType;
 

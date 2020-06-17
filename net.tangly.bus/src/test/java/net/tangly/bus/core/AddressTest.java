@@ -14,7 +14,7 @@ public class AddressTest {
     public static final String COUNTRY = "COUNTRY";
 
     @Test
-    void buildAdressTest() {
+    void buildAddressTest() {
         Address address =
                 Address.builder().street(STREET).extended(EXTENDED).poBox(POBOX).locality(LOCALITY).postcode(POSTCODE).region(REGION).country(COUNTRY)
                         .build();
@@ -39,7 +39,6 @@ public class AddressTest {
     @Test
     void testEmptyAddressTextAndOf() {
         Address original = Address.builder().build();
-        String foo = original.text();
         Address copy = Address.of(original.text());
         assertThat(copy).isEqualTo(original);
         assertThat(copy.hashCode()).isEqualTo(original.hashCode());

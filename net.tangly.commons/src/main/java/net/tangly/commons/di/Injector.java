@@ -100,7 +100,7 @@ public interface Injector {
      *
      * @param clazz compatible class of the requested instance
      * @param <T>   generic type of the class
-     * @return instance compatible with the given clsass
+     * @return instance compatible with the given class
      */
     <T> T instance(@NotNull Class<T> clazz);
 }

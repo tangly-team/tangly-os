@@ -44,8 +44,8 @@ public class PropertySimple<T extends HasOid> implements Property<T> {
      */
     protected final Field field;
 
-    private Class<?> jdbcType;
-    private int sqlType;
+    private final Class<?> jdbcType;
+    private final int sqlType;
 
     protected EnumMap<ConverterType, Function<?, ?>> converters;
 

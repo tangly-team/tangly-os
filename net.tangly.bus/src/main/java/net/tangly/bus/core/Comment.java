@@ -13,7 +13,6 @@
 
 package net.tangly.bus.core;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collections;
@@ -30,12 +29,12 @@ public class Comment implements HasOid, HasTags {
     private static final long serialVersionUID = 1L;
 
     /**
-     * Unique object identifier of the comment instance.
+     * The unique object identifier of the comment instance.
      */
     private long oid;
 
     /**
-     * Foreign identifier of the entity owning the comment.
+     * The foreign identifier of the entity owning the comment.
      */
     private long ownedBy;
 
@@ -45,7 +44,7 @@ public class Comment implements HasOid, HasTags {
     private LocalDateTime created;
 
     /**
-     * The author of the comment, the system should insures that the author is an unique external identifier.
+     * The author of the comment, the system should insure that the author is a unique external identifier.
      */
     private String author;
 

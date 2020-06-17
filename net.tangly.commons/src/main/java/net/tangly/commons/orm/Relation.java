@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
  * <ul>
  *     <li>The DAO responsible to handle the instances at the end of the relation.</li>
  *     <li>Updates are always handled transitively. All instances referenced directly and indirectly through relations are update each time an
- *     instance is updaed.</li>
+ *     instance is updated.</li>
  *     <li>The fact if the instances at the end of the relation are exclusively owned and therefore updates and deletions shall be handled
  *     transitively. If not they shared are shared between objects and therefore the application is in charge of deletions.</li>
  * </ul>

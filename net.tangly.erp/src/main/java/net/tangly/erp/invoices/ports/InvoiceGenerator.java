@@ -19,9 +19,12 @@ import java.util.Map;
 import net.tangly.bus.invoices.Invoice;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * The invoice generator abstraction generates a output document based on the provided invoice and optional configuration properties.
+ */
 public interface InvoiceGenerator {
     /**
-     * Create a new invoice document.
+     * Create a new invoice output document.
      *
      * @param invoice     invoice used to create a new invoice document
      * @param invoicePath path to the document to create
