@@ -27,17 +27,17 @@ fulfill these requirements. More customers will validate the usefulness of the l
 
 ==== Decision
 
-The library shall be published on maven central and be accessible to a wide range of developers and organizations. A web site shall be set up to
-provide adequate documentation for users.
+The library shall be published on maven central and be accessible to a wide range of developers and organizations. A website shall be set up to
+provide an adequate documentation for users.
 
-The web site will use a static web approach to minimize costs and provide good legibility.
+The https://tangly-team.bitbucket.io/fsm/[FSM website] will use a static web approach to minimize costs and provide good legibility.
 
-The library will be published on Maven Central to maximize usage potential.
+The library will be published on Maven Central to maximize potential usage.
 
-The ADR FSM-001 supports this evaluation.
+The ADR FSM-001 supports this evolution.
 
 ==== Consequences
 
 * We have to establish a publishing process at the company level to deploy signed artifacts to maven central repository.
-* We have to establish a public web site to host the documentation of public published libraries
+* We have to establish a public website to host the documentation of public published libraries
 * We have to support semantic versioning for all future releases of public published libraries

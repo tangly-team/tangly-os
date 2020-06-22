@@ -11,11 +11,11 @@ draft: false
 This document provides a high-level view of the changes introduced in BDD library by release.
 For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] commits.
 
-=== 0.2.4 (2020-05-31)
+=== 0.2.4 (2020-06-30)
 
 Improvements::
 
-* BDD library is now a Java module (thanks to the new module support in Gradle 6.4)
+* BDD library is now a regular Java 9 module (thanks to the new module support in Gradle 6.4)
 * Library requires JDK 14 and all dependencies were updated to current version
 
 === 0.2.3 (2020-03-06)

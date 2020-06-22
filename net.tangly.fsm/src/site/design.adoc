@@ -4,8 +4,11 @@ date: 2019-05-01
 weight: 50
 draft: false
 ---
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
 :icons: font
 :source-highlighter: pygments
+:pygments-style: manni
 
 == Design Finite State Machine
 
@@ -74,7 +77,6 @@ the event being fired.
 
 __A guard has two parameters. The first is the context object owning the instance of the finite state machine. The second is the event being
 processed.__
-
 
 === Finite State Machine Model
 

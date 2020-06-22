@@ -11,7 +11,7 @@
  * under the License.
  */
 
-package net.tangly.bus.products;
+package net.tangly.bus.projects;
 
 
 import net.tangly.bus.core.EntityImp;

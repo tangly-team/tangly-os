@@ -4,25 +4,43 @@ date: 2019-05-01
 weight: 50
 draft: false
 ---
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:revnumber: v0.1
+:revdate: 2020-05-31
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+:icons: font
 :source-highlighter: pygments
 :pygments-style: manni
 
 == Codes
 
 The abstraction of a reference table or reference codes.
-A code table is an extensible and you can add values when needed or and temporal activation.
+A code table is an extensible set of values.
+You can add values when needed and extend the model with temporal activation if desired.
+For example currencies are typical code values with a temporal duration; well-known retired currencies are the European Currency Unit _ECU_ or the German deutsche mark _DM_.
 New values can be added without recompiling the application.
 A code can have an optional validity period or simply a flag stating it is active or not.
 To guaranty consistency with exported datasets, a code format shall never be deleted, only be disabled.
 Code instances are immutable objects.
+
+[NOTE]
+====
+You can smooth your transition from enumeration types to reference codes.
+Extend your enumeration types with the _Code_ interface.
+
+Now you can transform your code to support generic reference codes and make your application more dynamic to domain model changes.
+====
 
 [plantuml,bus-codes-uml,svg]
 ....
 @startuml
 
 interface Code {
-    int id();
-    String code();
+    int id()
+    String code()
     boolean isEnabled()
 }
 
@@ -63,7 +81,7 @@ interface HasComments {}
 
 interface HasOwner {}
 
-HasOid <|-- HasOwner
+HasOid <|.. HasOwner
 
 interface Entity {
     + String text()
@@ -71,18 +89,19 @@ interface Entity {
     + LocalDate toDate()
 }
 
-HasId <|-- Entity
-HasTags <|-- Entity
-HasComments <|-- Entity
+HasOid <|.. Entity
+HasId <|.. Entity
+HasTags <|.. Entity
+HasComments <|.. Entity
 
 abstract class EntityImp {}
 
 EntityImp *-- Tag : tags
 EntityImp *-- Comment : comments
 
-Entity <|-- EntityImp
+Entity <|.. EntityImp
 
-class Address <<record>>
+class Address << (R,orchid) >>
 
 class Tag <<record>>
 
@@ -99,6 +118,96 @@ class EmailAddress <<record>>
 
 == Invoices
 
+[plantuml,bus-invoice-uml,svg]
+....
+@startuml
+
+package net.tangly.bus.crm {
+    class LegalEntity {}
+
+    class BankConnection << (R,orchid) >> {
+        String iban
+        String bic
+        String institute
+    }
+
+    class Contract {}
+
+}
+
+package net.tangly.bus.invoices {
+class Product {}
+
+class Invoice {
+    String id
+    String contractId
+    LocalDate deliveryDate
+    LocalDate invoicedDate
+    LocalDate dueDate
+    Currency currency
+    String text
+    String paymentConditions
+    BigDecimal vatRate
+}
+
+note right: contractId is the identifier to\nthe contract instance in the CRM package
+
+Invoice *-- InvoiceLine : lines
+Invoice o--> LegalEntity : invoicingEntity
+Invoice o--> LegalEntity : invoicedEntity
+Invoice *--> BankConnection : invoicingConnection
+
+interface InvoiceLine {}
+
+class InvoiceItem << (R,orchid) >> {}
+
+InvoiceLine <|.. InvoiceItem
+
+InvoiceItem o-- Product : product
+
+class Subtotal << (R,orchid) >> {}
+
+InvoiceLine <|.. Subtotal
+
+}
+
+
+@enduml
+....
+
 == Ledger
 
+[plantuml,bus-ledger-uml,svg]
+....
+@startuml
+
+class AccountEntry {}
+
+class Transaction {}
+
+class Account {}
+
+class Ledger {}
+
+Ledger *-- Account : accounts
+Ledger *-- Transaction : transactions
+
+@enduml
+....
+
+
 == Products
+
+[plantuml,bus-product-uml,svg]
+....
+@startuml
+
+class Assignment {}
+
+class Effort {}
+
+class Project {}
+
+@enduml
+....
+

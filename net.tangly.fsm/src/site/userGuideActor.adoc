@@ -4,9 +4,11 @@ date: 2019-05-01
 weight: 40
 draft: false
 ---
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
 :icons: font
 :source-highlighter: pygments
-
+:pygments-style: manni
 
 == User Guide Actors
 

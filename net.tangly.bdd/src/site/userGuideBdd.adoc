@@ -4,6 +4,8 @@ date: 2019-05-01
 weight: 30
 draft: false
 ---
+:copyright: CC-BY-SA 4.0
+:icons: font
 :source-highlighter: pygments
 :pygments-style: manni
 
@@ -14,8 +16,19 @@ This library can be used to create and run features, stories and behaviors as BD
 
 The library promotes a test engineer approach.
 The test cases are programmed against the system under development.
-Upon execution the living documentation of all features and their associated stories are generated.
+Upon execution the living documentation of all features, and their associated stories are generated.
 This document describes the behavior of the system as it is tested.
+
+[WARNING]
+====
+We believe that agile teams should write source code and tests.
+Seldom can users or stakeholders invest the time and learn the capabilities to formulate maintainable and binding acceptance tests.
+They are domain know-how experts and rarely software specialists.
+
+Software developers should write all acceptance tests together with domain experts.
+The acceptance tests should generate legible living documentation.
+Stakeholders use this documenation for feature review and acceptance decisions.
+====
 
 The library is implemented as an extension to the de facto standard JUnit5 for unit testing in the Java ecosystem.
 
@@ -66,10 +79,29 @@ The provided utilities generates JSON and AsciiDoc reports as living documentati
 
 The behavior driven development library defines following concepts
 
-* A feature describes a high-level functionality of the system. A feature annotation `@feature` allows the textual description of a feature and
-supports additional information such as an identifier or a set of tags. A feature is defined a package level.
-* A story describes a specific function of the system. A story annotation `@story` allows the textual description of a story and supports
-additional information such as an identifier or a set of tags. A feature is defined a class level.
-* A scenario describes a specific flow of a story. A scenario annotation `@scenario` allows the textual description of a scenario. A sceanario is
-defied at method level.
-* Acceptance criteria are documented together with the given and when stages inside the method using the bdd library.
+* A _feature_ describes a high-level functionality of the system.
+A feature annotation `@feature` allows the textual description of a feature and supports additional information such as an identifier or a set of tags.
+A feature is defined a package level.
+* A _story_ describes a specific function of the system.
+A story annotation `@story` allows the textual description of a story and supports additional information such as an identifier or a set of tags.
+A feature is defined a class level.
+* A _scenario_ describes a specific flow of a story.
+A scenario annotation `@scenario` allows the textual description of a scenario.
+A scenario is defied at method level.
+* _Acceptance criteria_ are documented together with the given and when stages inside the method using the bdd library.
+
+[NOTE]
+====
+We believe that the three level hierarchy *feature - story - scenario* is enough to describe the requirements of regular software products.
+====
+
+[CAUTION]
+====
+Beware that feature and story as used in agile development approaches such as Scrum are work break-down structures.
+They are not a requirement repository.
+
+You can change the content and the acceptance criteria of stories over the development cycle.
+No information is available in a backlog or JIRA which variant is now the one implemented in the system.
+====
+
+More examples are available as unit tests.

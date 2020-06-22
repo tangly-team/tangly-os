@@ -1,5 +1,8 @@
 siteDir=/Users/Shared/Projects/tangly-os-site
 
+# Copy the generated images of plantuml to the expected static directories as configured. Hugo and asciidoc processor have expectations where the
+# images should be.
+
 mv $siteDir/fsm-design-* $siteDir/static/fsm/design/
 mv $siteDir/fsm-userGuideFsm-* $siteDir/static/fsm/userguidefsm/
 mv $siteDir/bus-* $siteDir/static/bus/businessmodels/

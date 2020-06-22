@@ -1,0 +1,15 @@
+---
+title: "User Guide UI"
+date: 2019-06-30
+weight: 30
+draft: false
+---
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+:icons: font
+:source-highlighter: pygments
+:pygments-style: manni
+
+= User Guide Commons UI
+
+== CRUD Component

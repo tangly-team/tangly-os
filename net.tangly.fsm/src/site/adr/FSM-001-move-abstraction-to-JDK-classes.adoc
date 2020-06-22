@@ -23,7 +23,8 @@ Implemented
 
 ==== Context
 
-We need a legible data model for finite state machine definitions.
+We need a legible data model for finite state machine definitions. New users should easily understand the finite state machine abstractions and map
+them to their domain.
 
 ==== Decision
 
@@ -35,4 +36,7 @@ domain names for classes could have a negative impact of the legibility of the l
 We have a cleaner and simpler interface and have increase dependency to regular JDK classes. The generic names of the guard predicate and functional
 action should not diminish the legibility of the source code. The role of the type is defined through the name of the parameter in the method
 signature.
+
+Care was taken to use explicit parameter names and document them accordingly in JavaDoc. Modern IDE such as IntelliJ IDEA display formatted JavaDoc
+as hints to the developer.
 

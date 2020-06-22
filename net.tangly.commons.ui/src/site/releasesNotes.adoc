@@ -1,0 +1,20 @@
+---
+title: "Release Notes"
+date: 2019-06-30
+lastmod: 2020-06-30
+weight: 20
+draft: false
+---
+:icons: font
+:source-highlighter: pygments
+
+== Commons UI Library Change Logs
+
+This document provides a high-level view of the changes introduced in Common UI library by release.
+For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] commits.
+
+=== 0.2.4 (2020-06-30)
+
+Improvements::
+
+* Initial release of the library

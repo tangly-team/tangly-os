@@ -5,20 +5,22 @@ lastmod: 2020-05-31
 weight: 20
 draft: false
 ---
+:copyright: CC-BY-SA 4.0
 :icons: font
 :source-highlighter: pygments
 
 == FSM Library Change Logs
 
 This document provides a high-level view of the changes introduced in BDD library by release.
-For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] commits.
+For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] git commits.
 
-=== 0.2.4 (2020-05-31)
+=== 0.2.4 (2020-06-30)
 
 Improvements::
 
-* FSM library is now a Java module (thanks to the new module support in Gradle 6.4)
-* Dependencies were updated to current version
+* FSM library is now a regular Java 9 module (thanks to the new module support in Gradle 6.4)
+* The new Java record construct is used to simplify the API of the library
+* Library requires JDK 14 and all dependencies were updated to current version
 
 === 0.2.3 (2020-03-06)
 

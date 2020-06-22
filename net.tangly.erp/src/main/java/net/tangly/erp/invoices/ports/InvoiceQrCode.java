@@ -51,7 +51,9 @@ public class InvoiceQrCode implements InvoiceGenerator {
         bill.setCurrency(invoice.currency().getCurrencyCode());
 
         bill.setBillInformation(createSwicoBillInformation(invoice).encodeAsText());
+        // reference is the usual reference number of Swiss payment slips
         bill.setReference(Payments.createISO11649Reference(invoice.id().replaceAll("[^A-Za-z0-9]", "")));
+        // human readable information text
         bill.setUnstructuredMessage(invoice.text());
 
         try (PDFCanvas canvas = new PDFCanvas(invoicePath, PDFCanvas.NEW_PAGE_AT_END)) {

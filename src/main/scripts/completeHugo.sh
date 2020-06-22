@@ -4,5 +4,6 @@ hugo
 
 cd public
 git add --all
+# commit will push all changes to the git repository and trigger an update of the website
 git commit -m "new release of the tangly-team web site"
 git push -f origin master

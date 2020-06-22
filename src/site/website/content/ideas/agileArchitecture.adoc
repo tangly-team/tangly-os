@@ -26,22 +26,22 @@ draft: false
 
 You are applying successfully the agile and lean approach to your software products development.
 Your teams use https://www.scrumguides.org/scrum-guide.html[Scrum] or https://en.wikipedia.org/wiki/Kanban_(development)[Kanban] to deliver running software at least every two weeks.
-The product market introduction is a success.
+The product launch is a tremendeous success.
 You will likely sell the solution for the next ten years.
 
 How shall you define and nurture the software architecture of your product and insure a long living and high quality solution?
 The experts tell you the design is emergent, what does it mean?
 
-[quote,anonymous]
+[quote,Anonymous]
 ____
 There are 10 types of people: those who understand binary, and those who do not.
 ____
 
 === LeSS Architecture Observations
 
-The _Large-Scaled Scrum_ https://less.works[LeSS] authors have written quite a few interesting things about software design.
-Their following opinionated observations are true for any software product.
-It is irrelevant if developed using agile approaches or traditional older ones.
+The _Large-Scaled Scrum_ https://less.works[LeSS] authors have written quite a few interesting statements about software design and architecture.
+Their opinionated observations are true for any software product.
+It is irrelevant if the product was developed using agile approaches or traditional older ones.
 
 . The sum of all source code is the *true* design blueprint or software architecture,
 . The real software architecture evolves (better or worse) every day of the product, as people are *programming*,
@@ -52,19 +52,19 @@ Every act of programming is some kind of architectural act — good or bad, smal
 
 Agile architecture comes from the behavior of agile _architecting_.
 
-* Hands-on _master-programmer_ architects are key for resilient systems,
+* Hands-on _master-programmer_ architects are key for resilient systems; avoid powerpoint architects no writing any source code,
 * A culture of _excellence_ in code and professionalism for the developers,
 * An emphasis on _pair-programming_ coaching for high-quality code and design,
-* Agile modeling design workshops using peer approaches,
-* _Test-driven development_ and _refactoring_ to continuously remove technical debt,
-* And other hands-on-the-code behaviors.
+* Agile modeling design workshops using collaborative peer approaches,
+* _Test-driven development_ and _refactoring_ to continuously and aggressively remove technical debt,
+* And other _hands-on-the-code_ and _good practice_ behaviors.
 
 These statements reflect the agile and modern approach to software design and architecture.
-The https://www.opengroup.org/[Open Group] also recognized these changes and is trying to modernize enterprise architecture approaches and their standard https://www.opengroup.org/togaf[TOGAF].
+The https://www.opengroup.org/[Open Group] also recognized these changes and is trying to modernize enterprise architecture approaches and their de facto standard https://www.opengroup.org/togaf[TOGAF].
 
 Major agile companies such as Google, Twitter, Amazon, and Apple do not have a formal enterprise architecture organization.
 They delegate most of the decisions to senior development teams.
-Communities of practice are a tried and proven approach to align groups.
+https://en.wikipedia.org/wiki/Community_of_practice[Communities of practice] are a tried and proven approach to align groups and disseminate knowledge.
 
 === Quality of Your Architecture
 
@@ -84,7 +84,7 @@ https://checkstyle.sourceforge.io[Checkstyle]_
 * Fitness functions - validate your non-functional requirements automatically -,
 ** _Micro Profile, VisualVM, ELK_
 * Pair programming - improve the produced artifacts through wisdom of the crowd -,
-** _No tools_
+** _No tools_, it is a practice
 * Pair review and pull requests - validate your developers' work -.
 ** _Bitbucket, Github, IntelliJ IDEA Git Pull Support_
 
@@ -93,7 +93,8 @@ Beware these tools can only detect non-quality and never provide a proof you ach
 Qualified and experienced engineers is your best guaranty to achieve and sustain high quality in architecture and software products.
 
 Implement the above measures to gather data and publish the actual state of your source code.
-You find further information in https://tangly-blog.blogspot.com/2019/04/code-scene-as-crime-scene.html[Code Scene as Crime Scene], https://tangly-blog.blogspot.com/2018/05/sonar-lint-for-impatient.html[SonarLint for the Impatient], and https://tangly-blog.blogspot.com/2018/04/pragmatic-craftsmanship-professional.html[Pragmatic Craftsmanship] articles.
+You find more advanced approaches in https://tangly-blog.blogspot.com/2019/04/code-scene-as-crime-scene.html[Code Scene as Crime Scene],
+https://tangly-blog.blogspot.com/2018/05/sonar-lint-for-impatient.html[SonarLint for the Impatient], and https://tangly-blog.blogspot.com/2018/04/pragmatic-craftsmanship-professional.html[Pragmatic Craftsmanship] articles.
 
 Read the https://less.works/less/technical-excellence/architecture-design.html[LeSS architecture page] for a comprehensive discussion of agile architecting.
 
@@ -151,17 +152,17 @@ Your development team members are
 You shall keep it simple, make it valuable, and build it piece by piece.
 
 The above hints and practices shall empower your teams to practice successfully agile architecture and timely deliver delightful software solutions.
-Your organization shall train your collaborators, see also Shu Ha Ri model.
+Your organization shall train your collaborators, see also https://martinfowler.com/bliki/ShuHaRi.html[Shu Ha Ri] model.
 Smart money goes in training your collaborators.
 
 == Agile Code is Clean Code
 
 You are applying the agile and lean approach to your software product development.
-Your teams use Scrum or Kanban to deliver running software every two weeks.
+Your teams use Scrum or Kanban to deliver running software at least every two weeks.
 
 To create an agile architecture you must write worthy agile code.
 And agile code is always *clean code*.
-Never compromise on your key asset.
+Never compromise on your key strategic asset, the source code of your product.
 Your source code and your data are strategic advantages for your company.
 Start early writing clean code, do it continuously and soon your code will be clean, legible and free of defects.
 
@@ -170,7 +171,7 @@ Start early writing clean code, do it continuously and soon your code will be cl
 Be honest.
 Having a huge class with thousands of lines of code plainly demonstrate that your organization worked unprofessionally over months in the past.
 Such monsters are not born over a night coding session or a weekend hack session.
-It takes time and incompetence to create such maintenance nightmares.
+It takes time and unwavering incompetence to create such maintenance nightmares.
 
 And as long as your product contains such code monsters it is worthless to pretend having a nice and thought through architecture.
 Team discipline and early warning systems are the key to avoid such blunders and kill the monster in the egg.
@@ -188,19 +189,20 @@ ____
 image::tdd-cycle.png[TDD cycle,500,700,role="left"]
 
 . [red]*Red* - Write a test and run it, validating the test harness.
-_I recommend acceptance tests and unit tests,
+_I recommend acceptance tests and unit tests_,
 . [green]*Green* - Write the minimum amount of code to implement the functionality validated in the previously developed test.
 Update the code and run the tests until the test suite shows successful execution,
 . [teal]*Refactor* the code to reach clean code level.
-_Use static analysis tools_ to achieve faster and better this goal_.
+_Use static analysis tools to achieve faster and better success_.
 
 Continuously run the tests to guaranty compliant changes.
 So you avoid any regression problem.
+Good practice is to integrate the test suite execution in a continuous integration pipeline.
 
 If you are a Java developer you will:
 
 * Use JUnit 5 and Mockito 2 to implement the first step.
-Evaluate AssertJ to write legible conditions,
+Evaluate AssertJ to write more legible conditions,
 * Use a powerful IDE such IntelliJ IDEA to write and enhance functional code,
 * Use tools such as SonarLint, Jacoco, Spotbugs, ArchUnit to refactor your functional code and test cases.
 * Clean code applies to productive and test code.
@@ -209,7 +211,7 @@ Evaluate AssertJ to write legible conditions,
 [CAUTION]
 ====
 JUnit 4 is *obsolete*.
-Stop writing unit tests with JUnit 4. Junit 5 was released in 2017 and provides modern features and is the official successor of JUnit 4.
+Stop writing unit tests with JUnit 4. Junit 5 was released in 2017 and provides modern features and is the official and undisputed successor of JUnit 4.
 ====
 
 All above mentioned tools are open source and free to use.
@@ -225,6 +227,15 @@ You as a developer have no excuse to write crap code.
 You are a professional developer, behave like one.
 ====
 
+[quote,Robert C. Martin,The Clean Coder: A Code of Conduct for Professional Programmers]
+____
+Slaves are not allowed to say no.
+Laborers may be hesitant to say no.
+But professionals are expected to say no.
+Indeed, good managers crave someone who has the guts to say no.
+It’s the only way you can really get anything done.
+____
+
 === Acceptance Test Driven Development
 
 How do you know what are the requirements of a specific feature?
@@ -234,11 +245,17 @@ The better way is acceptance test driven development ATDD.
 For each feature you need acceptance criteria; this approach is also called specification by example.
 
 For each acceptance criteria write an acceptance test which is executed each time the application is updated in the continuous delivery pipeline.
-Therefore the acceptance tests are the living documentation of the behavior of your product.
+Therefore, the acceptance tests are the living documentation of the behavior of your product.
+
+[quote,Robert C. Martin,The Clean Coder: A Code of Conduct for Professional Programmers]
+____
+The cost of automating acceptance tests is so small in comparison to the cost of executing manual test plans that it makes no economic sense to write scripts for humans to execute.
+____
 
 To implement this approach you need
 
-* Acceptance criteria which imply https://en.wikipedia.org/wiki/Specification_by_example[specifications by example] - you need to train your business analysts and product owners,
+* Acceptance criteria formulated for each functionality.
+It implies https://en.wikipedia.org/wiki/Specification_by_example[specifications by example] - you need to train your business analysts and product owners,
 * Cucumber for Java (or equivalent tools) - to write acceptance tests,
 * Mock all external systems and the database - to have fast build and test time and avoid external dependencies,
 * A continuous build and delivery pipeline to automatically run your acceptance validation tests upon each application change,
@@ -248,7 +265,7 @@ To implement this approach you need
 [CAUTION]
 ====
 Never access file on the disk or use a database writing to a disk inside tests.
-This approach is way too slow and destroy continuous integration cycles.
+This approach is way too slow and destroy fast continuous integration cycles.
 
 You can put your file system is memory with https://github.com/google/jimfs[jimfs].
 Use for example http://hsqldb.org/[hsqldb] for in-memory database and https://flywaydb.org/[flywaydb] to setup the database tables.
@@ -262,30 +279,41 @@ Any fool can write code that a computer can understand.
 Good programmers write code that humans can understand.
 ____
 
-The simplest engineering practices are the most powerful.
+Simple engineering practices are the most powerful ones.
 Practice consolidates changes in behavior of your development organization.
+Exercising new approaches enforces culture change and implicit modify the organization approaches.
 
 * Pair Programming - is a training on the job and crowd wisdom approach to steadily improve knowledge and quality.
 *TDD and ATDD - are safety net to guaranty quality attributes in your source code\.
 * DevOps starting with git, docker, continuous integration, delivery and deployment - to speed up development and eliminate tedious manual errors.
 * Lack of accountability equates to lack of trust - your teams are accountable for the quality of your product and you should trust them.
 
+Culture change is often necessary.
+Autonomy and accountability are harsh mistresses.
+
+[quote,Robert C. Martin,The Clean Coder: A Code of Conduct for Professional Programmers]
+____
+What would happen if you allowed a bug to slip through a module, and it cost your company $10,000? The nonprofessional would shrug his shoulders, say “stuff happens,” and start writing the next module.
+The professional would write the company a check for $10,000!”
+____
+
 Once good practices are established you can move to more sophisticated tools, such as git history code analysis - to uncover weaknesses in your development department.
 
 Teams ready to learn from the like of Google could evaluate https://trunkbaseddevelopment.com/[Trunk Based Development] and consider long-lived branches as waste.
-A extensive description of the advantages can be found in the articlehttps://martinfowler.com/articles/branching-patterns.html[branching patterns]
+A extensive description of the advantages can be found in the article https://martinfowler.com/articles/branching-patterns.html[branching patterns]
 from Martin Fowler.
 
 ==== Code Review
 
 A code review can be done in different ways.
 Many teams use GitHub, Bitbucket or GitLab.
-So a very common approach for our code reviews are pull requests.
+So a very common approach for code reviews are pull requests.
 However, there are situations where pull requests are not necessary.
+Different approaches are more cost effective and have better cycle time.
 
 image::what-the-fuck.png[What the fuck,role="left"]
 
-For example, if a feature is implemented in pair programming or mob programming then the code is already reviewed while it is written.
+For example, if a feature is implemented through pair programming or mob programming it is a fact that the code is already reviewed while it is written.
 We decided that it doesn’t have to be reviewed again but of course, everybody may look at the commits later on in GitHub and add comments.
 
 As a rule of thumb we agreed that every line of code has to be approved by at least one other developer before it is pushed into our master branch.
@@ -311,7 +339,7 @@ The code is not always reviewed immediately after the commit but in most cases i
 You are applying the agile, lean approach to your software product development.
 Your teams use Scrum or Kanban to deliver running software every two weeks.
 
-Agile architecture is a key element to improve the quality of your product and reduce cycle-time of your product outcomes.
+Agile architecture is a key element to improve the quality of your product and reduce cycle time of your product outcomes.
 
 Your journey toward greater business agility starts by identifying what outcomes are most important to your company’s success.
 A key component is to find out how to create great architecture within the Scrum framework.
@@ -320,9 +348,9 @@ A key component is to find out how to create great architecture within the Scrum
 
 An agile architecture shall have four characteristics.
 
-. _Allow change quickly_ - because we cannot foreseen the future -
-. _Always verifiable_ - because we want changes without impeding integrity -
-. _Support rapid development_ - because we want effective and efficient implementation of new features
+. _Allow change quickly_ - because we cannot foreseen the future -,
+. _Always verifiable_ - because we want changes without impeding integrity -,
+. _Support rapid development_ - because we want effective and efficient implementation of new features,
 . _Always working_ - because we want continuous deployment to have customers' feedback - These characteristics are essential for successful agile development of great software products.
 
 === What Is The Scrum Approach?
@@ -339,7 +367,7 @@ So it could be that senior developers within the team got architecture skills, o
 Those team members with architectural skills are involved in the sprint on a day-to-day basis.
 They attend the daily Scrum meetings, take items off the backlog, and work on them.
 
-Interestingly LeSS is more opiniated and describe successful approaches for agile architecture and design.
+Interestingly https://less.works/[LeSS] is more opinionated and describe successful approaches for agile architecture and design.
 
 === How Do You Perform Agile Design?
 
@@ -358,7 +386,8 @@ The well established practices from the object-oriented and DevOps communities a
 * Aggressive refactoring and understand technical debt,
 * Continuous integration, continuous delivery, and continuous deployment.
 
-For a detailed discussion consult the post Pragmatic Craftsmanship.
+For a detailed discussion consult the post https://tangly-blog.blogspot.com/2018/04/pragmatic-craftsmanship-professional.html[Pragmatic
+Craftsmanship].
 
 === What is the Architect Role?
 
@@ -373,7 +402,7 @@ The architect shall
 He writes actual source code as current good practices are,
 * Have rich knowledge of architecture and design.
 
-[quote, Dave Farley]
+[quote,Dave Farley]
 ____
 Engineering is the application of an empirical scientific approach to finding efficient solutions to practical problems.
 ____
