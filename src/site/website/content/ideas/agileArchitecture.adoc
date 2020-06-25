@@ -713,7 +713,8 @@ A professional engineer should read multiple technical books every year.
 
 === Leadership Responsibilities
 
-Create psychological safety in the workplace.
+Leaders shall create psychological safety in the workplace.
+And please _Walk the Talk_.
 
 [quote,Amy C Edmondson,The Fearless Organization: Creating Psychological Safety in the Workplace for Learning]
 ____
@@ -723,7 +724,7 @@ ____
 
 The major responsibility of senior management is
 
-* Hire and on-boarding collaborators
+* Hire and on-board collaborators
 * Nurture, retain and develop collaborators
 * Respectfully off-board departing collaborators
 * Move collaborators to the learning zone and let them thrive.
@@ -733,19 +734,19 @@ Learning means trying and failing.
 Your culture should embrace small-scale failure to accelerate learning.
 
 Please reflect how you encourage continuous learning in your organization.
-Consider the following statements
+Consider the following statements:
 
 * Is training always an investment and never a cost point?
 * Do you budget and account training activities over the year?
 * Do you consistently reach your learning goals?
-* Are they really investment positions?
+* Are they really investment positions in your budget?
 
 == Pragmatic Software Craftsmanship
 
 The last months I was often confronted with software products having insufficient quality.
 
-Insufficient means late delivery, and few new features.
-The effort to correct errors in the field eats 30% to 50% away from the whole development budget.
+Insufficient means late delivery, and few new features but quite a few errors.
+The effort to correct errors in the field eats away 30% to 50% from the whole development budget.
 How can such a dreadful situation occur?
 
 One root cause is the low quality of the source code and ignorance of basic coding design approaches.
@@ -755,14 +756,15 @@ We are not talking about complex design activities or complex patterns; we are d
 
 Most of the programmers have no formal training in the technology stack they are using daily.
 Their best friend is the Internet.
+Copy and paste from Stackoverflow is a saver.
 And therefore many agile projects are now, steadily and iteratively producing mediocre software.
 
 You shall be a proud software craftsman.
 You shall work as a professional and deliver professional results.
-I recommend for any Java developer
+I recommend for any Java developer to
 
 * Have formal training in the Java language and library.
-For example you should consider a Java Programmer certification for the current JDK you are working daily with,
+For example, you should consider a Java Programmer certification for the current JDK you are working daily with,
 * Learn the new features in Java e.g. Streams, Lambdas, Reactive Programming, LocalDate, Modules, packaging with jlink,
 * Read and understand _Effective Java_ <<effective-java>> from Joshua Bloch,
 * Read and understand _Clean Code_ <<clean-code>>, _Clean Coder_ <<clean-coder>>, _Clean Architecture_ <<clean-architecture>>, and _Clean Agile_<<clean-agile>> from Robert C. Martin,
@@ -771,9 +773,10 @@ For example you should consider a Java Programmer certification for the current 
 * Be aware of famous Java libraries such as Guava, Apache Commons, Use SonarQube - and the SonarLint plugin for your preferred IDE - to catch well-known weaknesses in your source code and improve your coding skills,
 
 A software developer not knowing the above items is almost certainly not a professional person, just a more or less talented amateur.
-See the blog of Mike Cohn the difference between a professional and an amateur for a similar point of view.
+See the blog of Mike Cohn https://www.mountaingoatsoftware.com/blog/the-difference-between-a-professional-and-an-amateur[the difference between a
+professional and an amateur] for a similar point of view.
 
-You can find find a more extensive https://www.tangly.net/insights/books[list of books] on {company} website
+You can find a more extensive https://www.tangly.net/insights/books[list of books] on {company} website
 
 === Improve Continuously
 
@@ -784,24 +787,25 @@ The feeling you reached mastery level is truly awesome.
 ====
 
 * Read a technical book each quarter,
-* Lean a new language or framework every two years,
+* Learn a new language or framework every two years,
 * Read books such as _The Software Craftsman_ <<software-craftsman>>, _Refactoring_ <<refactoring>>, _Agile Code_ <<clean-code>>, _Agile Coder_ <<clean-coder>>, _Clean Architecture_ <<clean-architecture>>, _Clean Agile_ <<clean-agile>>
 * Know approaches such eXtreme Programming,
 * Work with Scrum, Kanban, LeSS - Agile approaches are definitively state of the industry techniques -,
 * Master container approaches with Docker - containers are here to stay and will replace virtual machines -,
-* Technical leaders teach during code reviews.
+* Technical leaders teach during coding dojos and pair programming sessions.
 
 You shall write good enough software without errors and using best practices of the industry.
 If not consider changing your profession.
-See my blog post about technical debt discussing the consequences of missing mastery.
+See my blog post about https://tangly-blog.blogspot.com/2018/03/how-should-you-handle-technical-debt.html[technical debt] discussing the consequences of missing mastery.
 
 === Software Craftsmanship
 
-Software craftsmanship is a initiative to improve the professionalism of software developers.
+Software craftsmanship is an initiative to improve the professionalism of software developers.
 You do not have to agree with them, just look what they are doing.
-For a detailed discussion read for example the book The Software Craftsman: Professionalism, Pragmatism, Pride by Sandro Mancuso.
+For a detailed discussion read for example the book The Software Craftsman: Professionalism, Pragmatism, Pride by Sandro
+Mancuso <<software-craftsman>>.
 
-Don’t discuss practices, discuss value
+Don’t discuss practices, discuss value.
 
 Their manifesto is
 
@@ -811,6 +815,7 @@ Their manifesto is
 * Software craftsmanship takes technical excellence and professionalism to a whole new level.
 
 Take everything you read with a grain of salt.
+
 Software craftsmanship
 
 * Is not a church, trying to convert all developers,
