@@ -89,7 +89,7 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
 
         @Override
         public IZUGFeRDExportableProduct getProduct() {
-            return new ZugFerdProduct(item.product(), invoice.vatRate().multiply(HUNDRED));
+            return new ZugFerdProduct(item.product());
         }
 
         @Override
@@ -120,9 +120,9 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
         private final Product product;
         private final BigDecimal vatPercent;
 
-        public ZugFerdProduct(Product product, BigDecimal vatPercent) {
+        public ZugFerdProduct(Product product) {
             this.product = product;
-            this.vatPercent = vatPercent;
+            this.vatPercent = product.vatRate().multiply(HUNDRED);
         }
 
         @Override
@@ -275,7 +275,7 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
 
     @Override
     public IZUGFeRDExportableItem[] getZFItems() {
-        return invoice.positions().stream().map(o -> new ZugFerdItem(o)).collect(Collectors.toUnmodifiableList()).toArray(new ZugFerdItem[0]);
+        return invoice.items().stream().map(o -> new ZugFerdItem(o)).collect(Collectors.toUnmodifiableList()).toArray(new ZugFerdItem[0]);
     }
 
     public IZUGFeRDAllowanceCharge[] getZFLogisticsServiceCharges() {

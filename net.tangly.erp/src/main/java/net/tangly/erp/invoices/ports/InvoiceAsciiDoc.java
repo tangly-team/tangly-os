@@ -19,6 +19,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import net.codecrete.qrbill.generator.Strings;
 import net.tangly.bus.core.Address;
@@ -43,16 +44,16 @@ import static net.tangly.commons.utilities.AsciiDocHelper.italics;
  */
 public class InvoiceAsciiDoc implements InvoiceGenerator {
     private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(InvoiceAsciiDoc.class);
+    private static final BigDecimal HUNDRED = new BigDecimal("100");
 
     @Override
     public void create(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
         try (PrintWriter writer = new PrintWriter(invoicePath.toFile(), StandardCharsets.UTF_8)) {
-            // TODO i18n, l16n
             AsciiDocHelper helper = new AsciiDocHelper(writer);
 
             writer.println("image::trefoil.svg[100,100,align=\"center\"]");
             writer.println();
-            helper.header("Invoice", 1);
+            helper.header("Invoice", 2);
 
             helper.tableHeader(null, "frame=\"none\", grid=\"none\", options=\"noheader\", stripes=\"none\", cols=\"2,4,2\"");
             helper.tableRow(addressText(invoice.invoicingEntity()), "", addressText(invoice.invoicedEntity()));
@@ -69,16 +70,12 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
             helper.tableHeader(null, "options=\"header\", grid=\"none\", frame=\"none\", stripes=\"none\", cols=\"4,^1, >1,>1\"", "Position",
                     "Quantity", "Price", "Amount (CHF)"
             );
-            invoice.items().stream().sorted(Comparator.comparingInt(InvoiceLine::position)).forEach(o -> helper
+            invoice.positions().stream().sorted(Comparator.comparingInt(InvoiceLine::position)).forEach(o -> helper
                     .tableRow((o.isAggregate() ? italics(o.text()) : o.text()), o.isItem() ? format(o.quantity()) : "", format(o.unitPrice()),
                             o.isAggregate() ? italics(format(o.amount())) : format(o.amount())
                     ));
-            helper.tableRow("", "", "", "");
-            helper.tableRow("Total without VAT", "", "", format(invoice.amountWithoutVat()));
-            helper.tableRow("VAT Amount", "", format(invoice.vatRate().multiply(new BigDecimal("100"))) + "%", format(invoice.amountVat()));
-            helper.tableRow(bold("Total"), "", "", bold(format(invoice.amountWithVat())));
+            createVatDeclarations(helper, invoice);
             helper.tableEnd();
-
             writer.println();
 
             helper.tableHeader(null, "frame=\"none\",grid=\"none\", options=\"noheader\", cols=\"2,4\"");
@@ -93,7 +90,6 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
             helper.tableRow("Company VAT Number:", invoice.invoicedEntity().vatNr());
             helper.tableEnd();
 
-
             if (!Strings.isNullOrEmpty(invoice.paymentConditions())) {
                 writer.append("Payment Conditions").append(" ").append(invoice.paymentConditions()).println();
             }
@@ -101,6 +97,23 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
             logger.atError().setCause(e).log("Error during invoice asciiDoc generation {}", invoicePath);
         }
         createPdf(invoicePath);
+    }
+
+    private void createVatDeclarations(AsciiDocHelper helper, Invoice invoice) {
+        helper.tableRow("", "", "", "");
+        helper.tableRow("Total without VAT", "", "", format(invoice.amountWithoutVat()));
+        if (invoice.hasMultipleVatRates()) {
+            String vats = invoice.vatAmounts().entrySet().stream()
+                    .map(o -> o.getKey().multiply(HUNDRED).stripTrailingZeros().toPlainString() + "% : " +
+                            o.getValue().stripTrailingZeros().toPlainString()).collect(Collectors.joining(", ", "(", ")"));
+            helper.tableRow(italics("VAT Amount " + vats), "", "", italics(format(invoice.vat())));
+        } else {
+            helper.tableRow(italics("VAT Amount"), "",
+                    italics(invoice.uniqueVatRate().orElseThrow().multiply(HUNDRED).stripTrailingZeros().toPlainString()) + "%",
+                    italics(format(invoice.vat()))
+            );
+        }
+        helper.tableRow(bold("Total"), "", "", bold(format(invoice.amountWithVat())));
     }
 
     private static void createPdf(@NotNull Path invoicePath) {

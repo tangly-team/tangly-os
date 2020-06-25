@@ -28,6 +28,11 @@ public record Subtotal(int position, String text, List<InvoiceLine>items) implem
     }
 
     @Override
+    public BigDecimal vat() {
+        return items.stream().map(InvoiceLine::vat).reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    @Override
     public BigDecimal quantity() {
         return items.stream().map(InvoiceLine::quantity).reduce(BigDecimal.ZERO, BigDecimal::add);
     }

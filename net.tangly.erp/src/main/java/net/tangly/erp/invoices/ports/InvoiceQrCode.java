@@ -18,6 +18,7 @@ import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import net.codecrete.qrbill.canvas.PDFCanvas;
 import net.codecrete.qrbill.generator.Bill;
@@ -36,6 +37,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class InvoiceQrCode implements InvoiceGenerator {
     private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(InvoiceQrCode.class);
+    private static final BigDecimal HUNDRED = new BigDecimal("100");
 
     public void create(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
         Bill bill = new Bill();
@@ -85,8 +87,14 @@ public class InvoiceQrCode implements InvoiceGenerator {
         swico.setVatNumber(invoice.invoicingEntity().id());
         swico.setCustomerReference(invoice.invoicedEntity().id());
 
-        SwicoBillInformation.RateDetail detail = new SwicoBillInformation.RateDetail(invoice.vatRate(), invoice.amountWithoutVat());
-        swico.setVatRateDetails(List.of(detail));
+        List<SwicoBillInformation.RateDetail> details =
+                invoice.vatAmounts().entrySet().stream().filter(o -> o.getValue().compareTo(BigDecimal.ZERO) != 0).
+                        map(o -> new SwicoBillInformation.RateDetail(o.getKey().multiply(HUNDRED).stripTrailingZeros(),
+                                o.getValue().stripTrailingZeros()
+                        )).collect(Collectors.toList());
+        if (!details.isEmpty()) {
+            swico.setVatRateDetails(details);
+        }
 
         SwicoBillInformation.PaymentCondition paymentCondition = new SwicoBillInformation.PaymentCondition();
         paymentCondition.setDays(30);

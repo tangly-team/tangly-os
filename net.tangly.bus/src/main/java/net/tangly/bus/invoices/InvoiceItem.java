@@ -26,6 +26,11 @@ public record InvoiceItem(int position, Product product, String text, BigDecimal
     }
 
     @Override
+    public BigDecimal vat() {
+        return amount().multiply(product.vatRate());
+    }
+
+    @Override
     public BigDecimal unitPrice() {
         return product.unitPrice();
     }

@@ -68,6 +68,7 @@ public interface HasTags {
     /**
      * Find the tag with the given tag identification containing optional namespace and tag name.
      * @param tag tag identification of the tag to be removed
+     * @return requested tag as optional
      */
     default Optional<Tag> findBy(String tag) {
         return findBy(Tag.namespace(tag), Tag.name(tag));
@@ -89,6 +90,7 @@ public interface HasTags {
      * True if the tag with the given tag identification containing optional namespace and tag name could be found.
      * @param namespace optional namespace of the tag
      * @param name name of the tag
+     * @return flag indicating if the tag is existing
      */
     default boolean contains(String namespace, @NotNull String name) {
         return findBy(namespace, name).isPresent();

@@ -42,6 +42,12 @@ public interface InvoiceLine {
     BigDecimal amount();
 
     /**
+     * Returns the VAT amount associated with the line.
+     * @return the VAT amount of the line
+     */
+    BigDecimal vat();
+
+    /**
      * Returns the quantity of items associated with an invoice line.
      *
      * @return the quantity of items if defined otherwise zero

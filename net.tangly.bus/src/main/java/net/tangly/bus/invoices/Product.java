@@ -19,5 +19,5 @@ import java.math.BigDecimal;
 /**
  * A product sold by a legal entity and referenced in an invoice or an invoice line.
  */
-public record Product(String productId, String description, BigDecimal unitPrice, String unit) {
+public record Product(String productId, String description, BigDecimal unitPrice, String unit, BigDecimal vatRate) {
 }
