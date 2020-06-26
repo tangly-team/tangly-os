@@ -12,12 +12,10 @@
  */
 
 include 'net.tangly.bdd'
+include 'net.tangly.fsm'
 include 'net.tangly.bus'
+include 'net.tangly.ports'
 include 'net.tangly.commons'
 include 'net.tangly.commons.ui'
 include 'net.tangly.dev'
-include 'net.tangly.ports'
-include 'net.tangly.fsm'
 include 'net.tangly.gleam'
-include 'net.tangly.bdd'
-

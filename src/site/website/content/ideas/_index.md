@@ -1,6 +1,7 @@
 ---
 title: "Ideas"
 date: "2019-05-01"
+order: 6
 draft: false
 ---
 
