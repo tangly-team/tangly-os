@@ -1,0 +1,42 @@
+---
+title: "ERP Ports"
+date: 2020-06-01
+weight: 50
+draft: false
+---
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:revnumber: v0.1
+:revdate: 2020-05-31
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+:icons: font
+:source-highlighter: pygments
+:pygments-style: manni
+
+== CRM Ports
+
+== Invoices Ports
+
+== Ledger Ports
+
+=== Ledger Banana 8 Import Handler
+
+==== Importing Ledger Structure
+
+* Select the accounts tab displaying all the accounts and their structure of the period
+* Goto Data > Export Rows > Export Rows to txt
+* Select the destination file
+* If necessary change the extension to _csv_
+
+The generated file is a CSV file containing the whole ledger account plan. The separator is TAB.
+
+==== Importing Transactions
+
+* Select the transaction tab displaying all the transactions of the period
+* Goto Data > Export Rows > Export Rows to txt
+* Select the destination file
+* If necessary change the extension to _csv_
+
+The generated file is a CSV file containing the transaction details. The separator is TAB.

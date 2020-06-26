@@ -62,6 +62,23 @@ CodeImp <|-- Code
 
 == Core
 
+== Entity
+
+An entity and all subclasses have a set of attributes present in any CSV file.
+
+oid::
+object identifier of the entity instance as the string representation of a 64 bits long. The value is mandatory.
+id::
+identifier of the entity instance as a string. The value is optional.
+name::
+human readable name of the entity instance as a string. The value is optional.
+text::
+human readable description of the entity instance as a long string. The value is optional.
+fromDate::
+start date when the entity instance is active. The value is optional.
+toDate::
+end date when the entity instance is active. Upon end date, the entity should be read-only and no more editied in the system. The value is optional.
+
 [plantuml,bus-core-uml,svg]
 ....
 @startuml
@@ -114,7 +131,7 @@ class EmailAddress <<record>>
 @enduml
 ....
 
-== Customer Relationship Model
+== Customer Relationship Model CRM
 
 [plantuml,bus-crm-uml,svg]
 ....
