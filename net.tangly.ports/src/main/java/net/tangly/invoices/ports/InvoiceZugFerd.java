@@ -1,11 +1,14 @@
 /*
  * Copyright 2006-2020 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
+ *  a copy of the License at
  *
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- *   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
+ *  under the License.
  */
 
 package net.tangly.invoices.ports;
@@ -36,10 +39,10 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
     /**
      * Implements a ZugFerd exportable contact and maps a legal entity to ZugFerd abstraction.
      */
-    class ZugFerdContact implements IZUGFeRDExportableContact {
+    static class ZugFerdContact implements IZUGFeRDExportableContact {
         private final LegalEntity entity;
 
-        public ZugFerdContact(LegalEntity entity) {
+        public ZugFerdContact(@NotNull LegalEntity entity) {
             this.entity = entity;
         }
 
@@ -77,10 +80,10 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
     /**
      * Implments a ZugFerd exportable item and maps the invoice item to ZugFerd abstraction.
      */
-    class ZugFerdItem implements IZUGFeRDExportableItem {
+    static class ZugFerdItem implements IZUGFeRDExportableItem {
         private InvoiceItem item;
 
-        public ZugFerdItem(InvoiceItem item) {
+        public ZugFerdItem(@NotNull InvoiceItem item) {
             this.item = item;
         }
 
@@ -115,11 +118,9 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
      */
     static class ZugFerdProduct implements IZUGFeRDExportableProduct {
         private final Product product;
-        private final BigDecimal vatPercent;
 
-        public ZugFerdProduct(Product product) {
+        public ZugFerdProduct(@NotNull Product product) {
             this.product = product;
-            this.vatPercent = product.vatRate().multiply(HUNDRED);
         }
 
         @Override
@@ -139,12 +140,16 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
 
         @Override
         public BigDecimal getVATPercent() {
-            return vatPercent;
+            return product.vatRate().multiply(HUNDRED);
         }
     }
 
     static class ZugFerdPayment implements IZUGFeRDTradeSettlementPayment {
         private Invoice invoice;
+
+        public ZugFerdPayment(@NotNull Invoice invoice) {
+            this.invoice = invoice;
+        }
 
         @Override
         public String getOwnBIC() {
