@@ -1,14 +1,14 @@
 /*
- * Copyright 2006-2018 Marcel Baumann
+ * Copyright 2006-2020 Marcel Baumann
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
- * a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
+ *  a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
- * under the License.
+ *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
+ *  under the License.
  */
 
 package net.tangly.commons.utilities;
@@ -78,18 +78,18 @@ class BitUtilitiesTest {
         {
             byte[] stream = {(byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF};
             for (int i = 0; i < DWORD; i++) {
-                assertThat((byte) 0x01).isEqualTo(extractBitsToByte(stream, i, 1));
+                assertThat(extractBitsToByte(stream, i, 1)).isEqualTo((byte) 0x01);
             }
         }
         {
             byte[] stream = {(byte) 0x49, (byte) 0x92, (byte) 0x70, (byte) 0xF6};
-            assertThat((byte) 0x49).isEqualTo(extractBitsToByte(stream, 0, 8));
-            assertThat((byte) 0x09).isEqualTo(extractBitsToByte(stream, 0, 4));
-            assertThat((byte) 0x04).isEqualTo(extractBitsToByte(stream, 4, 4));
-            assertThat((byte) 0x24).isEqualTo(extractBitsToByte(stream, 4, 8));
-            assertThat((byte) 0x092).isEqualTo(extractBitsToByte(stream, 8, 8));
-            assertThat((byte) 0x70).isEqualTo(extractBitsToByte(stream, 16, 8));
-            assertThat((byte) 0xF6).isEqualTo(extractBitsToByte(stream, 24, 8));
+            assertThat(extractBitsToByte(stream, 0, 8)).isEqualTo((byte) 0x49);
+            assertThat(extractBitsToByte(stream, 0, 4)).isEqualTo((byte) 0x09);
+            assertThat(extractBitsToByte(stream, 4, 4)).isEqualTo((byte) 0x04);
+            assertThat(extractBitsToByte(stream, 4, 8)).isEqualTo((byte) 0x24);
+            assertThat(extractBitsToByte(stream, 8, 8)).isEqualTo((byte) 0x092);
+            assertThat(extractBitsToByte(stream, 16, 8)).isEqualTo((byte) 0x70);
+            assertThat(extractBitsToByte(stream, 24, 8)).isEqualTo((byte) 0xF6);
         }
     }
 
@@ -105,7 +105,7 @@ class BitUtilitiesTest {
             for (int i = 0; i < DWORD; i++) {
                 appendBits(stream, (short) 0x01, i, 1);
             }
-            assertThat(expected).isEqualTo(stream);
+            assertThat(stream).isEqualTo(expected);
         }
         {
             byte[] expected = {(byte) 0x55, (byte) 0x55, (byte) 0x55, (byte) 0x55};
@@ -113,7 +113,7 @@ class BitUtilitiesTest {
             for (int i = 0; i < DWORD; i++, i++) {
                 appendBits(stream, (short) 0x01, i, 1);
             }
-            assertThat(expected).isEqualTo(stream);
+            assertThat(stream).isEqualTo(expected);
         }
         {
             byte[] expected = {(byte) 0x49, (byte) 0x92, (byte) 0x24, (byte) 0x49};
@@ -121,7 +121,7 @@ class BitUtilitiesTest {
             for (int i = 0; i < DWORD; i++, i++, i++) {
                 appendBits(stream, (short) 0x01, i, 1);
             }
-            assertThat(expected).isEqualTo(stream);
+            assertThat(stream).isEqualTo(expected);
         }
         {
             byte[] expected = {(byte) 0x49, (byte) 0x92, (byte) 0x24, (byte) 0x49};
@@ -132,7 +132,7 @@ class BitUtilitiesTest {
             pos = appendBits(stream, (short) (0x9249 >>> 15), pos, 1);
             pos = appendBits(stream, (short) 0x4924, pos, 16);
             assertThat(pos).isEqualTo(DWORD);
-            assertThat(expected).isEqualTo(stream);
+            assertThat(stream).isEqualTo(expected);
         }
     }
 
@@ -144,13 +144,13 @@ class BitUtilitiesTest {
     void testExtractBitsToShort() {
         byte[] stream = {(byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF};
         for (int i = 0; i < DWORD; i++) {
-            assertThat((short) 0x01).isEqualTo(extractBitsToShort(stream, i, 1));
+            assertThat(extractBitsToShort(stream, i, 1)).isEqualTo((short) 0x01);
         }
         for (int i = 0; i < 20; i++) {
-            assertThat((short) 0xFFF).isEqualTo(extractBitsToShort(stream, i, 12));
+            assertThat(extractBitsToShort(stream, i, 12)).isEqualTo((short) 0xFFF);
         }
-        assertThat((short) 0xFFFF).isEqualTo(extractBitsToShort(stream, 8, 16));
-        assertThat((short) 0xFFFF).isEqualTo(extractBitsToShort(stream, 0, 16));
+        assertThat(extractBitsToShort(stream, 8, 16)).isEqualTo((short) 0xFFFF);
+        assertThat(extractBitsToShort(stream, 0, 16)).isEqualTo((short) 0xFFFF);
     }
 
     /**
@@ -165,7 +165,7 @@ class BitUtilitiesTest {
             for (int i = 0; i < DWORD; i++) {
                 appendBits(stream, 0x01, i, 1);
             }
-            assertThat(expected).isEqualTo(stream);
+            assertThat(stream).isEqualTo(expected);
         }
         {
             byte[] expected = {(byte) 0x55, (byte) 0x55, (byte) 0x55, (byte) 0x55};
@@ -173,7 +173,7 @@ class BitUtilitiesTest {
             for (int i = 0; i < DWORD; i++, i++) {
                 appendBits(stream, 0x01, i, 1);
             }
-            assertThat(expected).isEqualTo(stream);
+            assertThat(stream).isEqualTo(expected);
         }
         {
             byte[] expected = {(byte) 0x49, (byte) 0x92, (byte) 0x24, (byte) 0x49};
@@ -181,7 +181,7 @@ class BitUtilitiesTest {
             for (int i = 0; i < DWORD; i++, i++, i++) {
                 appendBits(stream, 0x01, i, 1);
             }
-            assertThat(expected).isEqualTo(stream);
+            assertThat(stream).isEqualTo(expected);
         }
         {
             byte[] expected = {(byte) 0x49, (byte) 0x92, (byte) 0x24, (byte) 0x49};
@@ -192,7 +192,7 @@ class BitUtilitiesTest {
             pos = appendBits(stream, (0x49249249 >>> 26), pos, 4);
             pos = appendBits(stream, (0x49249249 >>> 30), pos, 2);
             assertThat(pos).isEqualTo(DWORD);
-            assertThat(expected).isEqualTo(stream);
+            assertThat(stream).isEqualTo(expected);
         }
     }
 
@@ -204,12 +204,12 @@ class BitUtilitiesTest {
     void testExtractBitsToInt() {
         byte[] stream = {(byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF};
         for (int i = 0; i < DWORD; i++) {
-            assertThat(0x01).isEqualTo(extractBitsToInt(stream, i, 1));
+            assertThat(extractBitsToInt(stream, i, 1)).isEqualTo(0x01);
         }
         for (int i = 0; i < 20; i++) {
-            assertThat((short) 0xFFF).isEqualTo(extractBitsToShort(stream, i, 12));
+            assertThat(extractBitsToShort(stream, i, 12)).isEqualTo((short) 0xFFF);
         }
-        assertThat(0xFFFFFF).isEqualTo(extractBitsToInt(stream, 0, 24));
+        assertThat(extractBitsToInt(stream, 0, 24)).isEqualTo(0xFFFFFF);
     }
 
     /**
@@ -219,9 +219,9 @@ class BitUtilitiesTest {
     void testToHex() {
         {
             byte[] stream = {(byte) 0x49, (byte) 0x92, (byte) 0x24, (byte) 0x49};
-            assertThat("0x49, 0x92, 0x24, 0x49").isEqualTo(toHex(stream));
+            assertThat(toHex(stream)).isEqualTo("0x49, 0x92, 0x24, 0x49");
         }
         byte[] stream = {};
-        assertThat("").isEqualTo(toHex(stream));
+        assertThat(toHex(stream)).isEqualTo("");
     }
 }

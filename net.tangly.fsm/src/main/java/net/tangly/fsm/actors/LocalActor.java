@@ -1,14 +1,14 @@
 /*
  * Copyright 2006-2020 Marcel Baumann
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
- * a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
+ *  a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
- * under the License.
+ *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
+ *  under the License.
  */
 
 package net.tangly.fsm.actors;
@@ -20,6 +20,8 @@ import net.tangly.fsm.Event;
 import net.tangly.fsm.StateMachine;
 import net.tangly.fsm.dsl.FsmBuilder;
 import org.jetbrains.annotations.NotNull;
+
+import static net.tangly.fsm.actors.LocalActors.instance;
 
 /**
  * A local actor implements the actor contract as a local thread running in the virtual machine. An actor completes when its finite state machine
@@ -52,7 +54,7 @@ public class LocalActor<O extends LocalActor, S extends Enum<S>, E extends Enum<
     public LocalActor(@NotNull FsmBuilder<O, S, E> builder, @NotNull String name) {
         this.fsm = builder.machine(name, (O) this);
         events = new LinkedBlockingQueue<>();
-        LocalActors.instance().register(this);
+        ((LocalActors<E>)instance()).register(this);
     }
 
     @Override

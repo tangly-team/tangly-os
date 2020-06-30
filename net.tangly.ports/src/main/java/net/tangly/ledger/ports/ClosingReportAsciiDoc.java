@@ -1,11 +1,14 @@
 /*
  * Copyright 2006-2020 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
+ *  a copy of the License at
  *
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- *   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
+ *  under the License.
  */
 
 package net.tangly.ledger.ports;
@@ -35,8 +38,7 @@ public class ClosingReportAsciiDoc {
     private final Ledger ledger;
 
     /**
-     * Constructor of the closing report. Multiple ports with variable reporting period length can be generated with
-     * the same instance.
+     * Constructor of the closing report. Multiple ports with variable reporting period length can be generated with the same instance.
      *
      * @param ledger ledger containing all the accounting information for the ports
      */
@@ -68,7 +70,8 @@ public class ClosingReportAsciiDoc {
 
         helper.header("Transactions", 1);
         helper.tableHeader("Transactions", "cols=\"20, 20, 70 , 15, 15, >20, >10\"", "Date", "Voucher", "Description", "Debit", "Credit", "Amount",
-                "VAT");
+                "VAT"
+        );
         ledger.transactions(from, to).forEach(o -> createTransactionRow(helper, o));
         helper.tableEnd();
     }
@@ -108,20 +111,23 @@ public class ClosingReportAsciiDoc {
         if (transaction.isSplit()) {
             if (transaction.debitSplits().size() > 1) {
                 helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.description(), "", transaction.creditAccount(),
-                        format(transaction.amount()), "-");
+                        format(transaction.amount()), "-"
+                );
                 for (AccountEntry entry : transaction.debitSplits()) {
                     helper.tableRow("", "", "", entry.account(), "", format(transaction.amount()), "-");
                 }
             } else {
                 helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.description(), transaction.debitAccount(), "",
-                        format(transaction.amount()), "-");
+                        format(transaction.amount()), "-"
+                );
                 for (AccountEntry entry : transaction.debitSplits()) {
                     helper.tableRow("", "", "", "", entry.account(), format(transaction.amount()), "-");
                 }
             }
         } else {
             helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.description(), transaction.debitAccount(),
-                    transaction.creditAccount(), format(transaction.amount()), vat(transaction.creditSplits().get(0)));
+                    transaction.creditAccount(), format(transaction.amount()), vat(transaction.creditSplits().get(0))
+            );
         }
     }
 

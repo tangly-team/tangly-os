@@ -1,14 +1,14 @@
 /*
  * Copyright 2006-2020 Marcel Baumann
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
- * a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
+ *  a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
- * under the License.
+ *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
+ *  under the License.
  */
 
 package net.tangly.fsm.actor;
@@ -64,7 +64,7 @@ class Server extends LocalActor<Server, ServerStates, Events> implements Actor<E
     private void processRequest(Event<Events> event) {
         nrRequests++;
         var clientName = (String) (event.parameters().get(0));
-        LocalActors.instance().sendEventTo(Event.of(Events.Response, name(), clientName), clientName);
+        LocalActors.<Events>instance().sendEventTo(Event.of(Events.Response, name(), clientName), clientName);
     }
 }
 
@@ -89,7 +89,7 @@ class Client extends LocalActor<Client, ClientStates, Events> implements Actor<E
 
     private void sendRequestToServer(Event<Events> event) {
         var serverName = (String) (event.parameters().get(1));
-        LocalActors.instance().sendEventTo(Event.of(Events.Request, name(), serverName), serverName);
+        LocalActors.<Events>instance().sendEventTo(Event.of(Events.Request, name(), serverName), serverName);
         nrRequests++;
     }
 
@@ -111,7 +111,7 @@ class ActorTest {
         var server = new Server("server");
         var client = new Client("client");
         client.receive(new Event<>(Events.Inquiry, List.of("client", "server")));
-        LocalActors.instance().awaitCompletion(client, 1000);
+        LocalActors.<Events>instance().awaitCompletion(client, 1000);
         assertThat(client.nrRequests).isEqualTo(1);
         assertThat(client.nrAnswers).isEqualTo(1);
         assertThat(server.nrRequests).isEqualTo(1);
@@ -131,9 +131,9 @@ class ActorTest {
             clients.add(client);
             client.receive(new Event<>(Events.Inquiry, List.of(name, "server")));
         }
-        LocalActors.instance().awaitCompletion(clients, 1);
+        LocalActors.<Events>instance().awaitCompletion(clients, 1);
         for (int i = 0; i < nrClients; i++) {
-            Client client = (Client) LocalActors.instance().getActorNamed("client" + i);
+            Client client = (Client) LocalActors.<Events>instance().getActorNamed("client" + i);
             assertThat(client.nrRequests).isEqualTo(1);
             assertThat(client.nrAnswers).isEqualTo(1);
         }

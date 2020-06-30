@@ -11,6 +11,9 @@
  * the specific language governing permissions and limitations under the License.
  */
 
+/**
+ * Provides classes for a fluent based finite state machine library providing hierarchical machines as defined in the UML 2 standard.
+ */
 module net.tangly.fsm {
     exports net.tangly.fsm;
     exports net.tangly.fsm.dsl;

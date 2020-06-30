@@ -1,14 +1,14 @@
 /*
  * Copyright 2006-2020 Marcel Baumann
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
- * a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
+ *  a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *          http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
- * under the License.
+ *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
+ *  under the License.
  */
 
 package net.tangly.fsm.imp;
@@ -82,15 +82,12 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
         activeStates = new ArrayDeque<>();
         history = new HashSet<>();
         helper = new StateMachineEventHandlerHelper<>();
-        reset();
+        initialize();
     }
 
     @Override
     public void reset() {
-        activeStates.clear();
-        history.clear();
-        activeStates.add(root);
-        enterStatesFromCommonAncestor(null, root.initialStates());
+        initialize();
         helper.wasReset();
     }
 
@@ -211,6 +208,16 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
      */
     Collection<State<O, S, E>> getHistoryStates() {
         return Collections.unmodifiableCollection(history);
+    }
+
+    /**
+     * Initialize the final state machine to the hierarchical start state.
+     */
+    private void initialize() {
+        activeStates.clear();
+        history.clear();
+        activeStates.add(root);
+        enterStatesFromCommonAncestor(null, root.initialStates());
     }
 
     /**

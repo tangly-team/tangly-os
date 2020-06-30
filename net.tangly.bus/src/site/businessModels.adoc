@@ -126,7 +126,7 @@ class Comment {}
 
 Comment *-- Tag : tags
 
-class EmailAddress <<record>>
+class EmailAddress << (R,orchid) >>
 
 @enduml
 ....
