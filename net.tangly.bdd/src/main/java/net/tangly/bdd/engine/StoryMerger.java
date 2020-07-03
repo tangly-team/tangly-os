@@ -59,12 +59,11 @@ public class StoryMerger {
             results.filter(t -> t.toString().endsWith(".json")).forEach(t -> {
                 try (Reader reader = Files.newBufferedReader(t, StandardCharsets.UTF_8)) {
                     JSONArray report = new JSONArray(new JSONTokener(reader));
-                    JSONObject feature = (JSONObject) report.get(0);
-                    merge(feature);
+                    merge((JSONObject) report.get(0));
                 } catch (IOException e) {
                     throw new UncheckedIOException(e);
                 } catch (JSONException e) {
-                    logger.atInfo().log("File {} is incorrect due to parallel writing", t);
+                    logger.atError().log("File {} is incorrect due to parallel writing", t);
                 }
             });
         }

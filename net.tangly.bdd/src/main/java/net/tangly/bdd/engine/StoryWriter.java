@@ -57,7 +57,7 @@ public class StoryWriter {
         Path bddReportsDirectory = targetDir.resolve(Paths.get(Constants.BDD_REPORTS_FOLDER));
         File bddReports = bddReportsDirectory.toFile();
         if (!bddReports.exists() && !bddReports.mkdir()) {
-            throw new RuntimeException("Unable to create the folder for saving bdd reports.");
+            throw new IllegalStateException("Unable to create the folder for saving bdd reports.");
         }
         return bddReportsDirectory;
     }

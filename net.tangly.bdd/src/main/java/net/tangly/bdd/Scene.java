@@ -96,13 +96,9 @@ public class Scene {
         Objects.requireNonNull(given, "Start your scene with a \"given\" phase");
         Objects.requireNonNull(when, "Start your scene with a \"when\" phase");
         Objects.requireNonNull(then, "End your scene with a \"then\" phase");
-        try {
-            given.lambda().accept(this);
-            when.lambda().accept(this);
-            then.lambda().accept(this);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        given.lambda().accept(this);
+        when.lambda().accept(this);
+        then.lambda().accept(this);
         return this;
     }
 
