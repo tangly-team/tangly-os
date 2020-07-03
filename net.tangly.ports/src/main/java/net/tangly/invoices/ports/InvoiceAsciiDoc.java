@@ -117,9 +117,9 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
     }
 
     private static void createPdf(@NotNull Path invoicePath) {
-        try (Asciidoctor asciidoctor = org.asciidoctor.Asciidoctor.Factory.create();) {
+        try (Asciidoctor asciidoctor = Asciidoctor.Factory.create()) {
             Map<String, Object> options = OptionsBuilder.options().inPlace(true).backend("pdf").asMap();
-            String outfile = asciidoctor.convertFile(invoicePath.toFile(), options);
+            asciidoctor.convertFile(invoicePath.toFile(), options);
         }
     }
 

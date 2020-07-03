@@ -18,6 +18,7 @@ import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import net.codecrete.qrbill.canvas.PDFCanvas;
@@ -38,6 +39,7 @@ import org.jetbrains.annotations.NotNull;
 public class InvoiceQrCode implements InvoiceGenerator {
     private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(InvoiceQrCode.class);
     private static final BigDecimal HUNDRED = new BigDecimal("100");
+    private static final Pattern ISO11649ReferenceFormat = Pattern.compile("[^A-Za-z0-9]");
 
     public void create(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
         Bill bill = new Bill();
@@ -54,7 +56,7 @@ public class InvoiceQrCode implements InvoiceGenerator {
 
         bill.setBillInformation(createSwicoBillInformation(invoice).encodeAsText());
         // reference is the usual reference number of Swiss payment slips
-        bill.setReference(Payments.createISO11649Reference(invoice.id().replaceAll("[^A-Za-z0-9]", "")));
+        bill.setReference(Payments.createISO11649Reference(ISO11649ReferenceFormat.matcher(invoice.id()).replaceAll("")));
         // human readable information text
         bill.setUnstructuredMessage(invoice.text());
 

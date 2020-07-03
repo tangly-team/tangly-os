@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
 
@@ -167,6 +168,6 @@ public class Comment implements HasOid, HasTags {
 
     @Override
     public String toString() {
-        return String.format("created=%1$%tF-%1$%tT, author=%2$s, text=%3$s, tags=%4$s", created, author, text, Tag.text(tags));
+        return String.format(Locale.US, "created=%1$%tF-%1$%tT, author=%2$s, text=%3$s, tags=%4$s", created, author, text, Tag.text(tags));
     }
 }

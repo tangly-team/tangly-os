@@ -53,12 +53,12 @@ public class InjectorImp implements Injector {
 
     @Override
     public <T> void bindSingleton(Class<T> clazz, T instance) {
-        creators.put(clazz, new SupplierSingleton<T>(clazz, instance));
+        creators.put(clazz, new SupplierSingleton<>(clazz, instance));
     }
 
     @Override
     public <T> void bindSingleton(Class<T> clazz) {
-        creators.put(clazz, new SupplierSingleton<T>(clazz, createConstructor(clazz)));
+        creators.put(clazz, new SupplierSingleton<>(clazz, createConstructor(clazz)));
     }
 
     @Override

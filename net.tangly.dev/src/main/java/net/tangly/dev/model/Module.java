@@ -13,9 +13,21 @@
 
 package net.tangly.dev.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Module {
-    private String name;
-    private List<Packages> packages;
+    private final String name;
+    private final List<Packages> packages;
+
+    public Module(@NotNull String name) {
+        this.name = name;
+        packages = new ArrayList<>();
+    }
+
+    public String name() {
+        return name;
+    }
 }

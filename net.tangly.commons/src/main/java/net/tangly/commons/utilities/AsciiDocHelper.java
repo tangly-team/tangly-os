@@ -36,7 +36,7 @@ public class AsciiDocHelper {
     }
 
     public static String italics(String text)  {
-        return text.length() > 0 ? "_" + text + "_" : "";
+        return text.length() > 0 ? ("_" + text + "_") : "";
     }
 
     /**

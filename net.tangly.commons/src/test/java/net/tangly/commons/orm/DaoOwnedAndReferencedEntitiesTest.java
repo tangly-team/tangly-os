@@ -24,7 +24,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class DaoOwnedAndReferencedEntities extends DaoTest {
+public class DaoOwnedAndReferencedEntitiesTest extends DaoTest {
     static class Entity implements HasOid {
         private long oid;
         private Long referencedBy;

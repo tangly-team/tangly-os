@@ -43,9 +43,9 @@ public class ParserGitCommits {
      */
     private static final Logger logger = LoggerFactory.getLogger(ParserGitCommits.class);
 
-    private Set<Committer> committers;
-    private List<RepositoryFile> files;
-    private List<Commit> commits;
+    private final Set<Committer> committers;
+    private final List<RepositoryFile> files;
+    private final List<Commit> commits;
 
     public ParserGitCommits() {
         committers = new HashSet<>();

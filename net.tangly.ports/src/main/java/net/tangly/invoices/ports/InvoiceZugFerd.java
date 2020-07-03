@@ -168,7 +168,7 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
         }
     }
 
-    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(InvoiceAsciiDoc.class);
+    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(InvoiceZugFerd.class);
     private static final BigDecimal HUNDRED = new BigDecimal("100");
     private Invoice invoice;
 
@@ -277,7 +277,7 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
 
     @Override
     public IZUGFeRDExportableItem[] getZFItems() {
-        return invoice.items().stream().map(o -> new ZugFerdItem(o)).collect(Collectors.toUnmodifiableList()).toArray(new ZugFerdItem[0]);
+        return invoice.items().stream().map(ZugFerdItem::new).collect(Collectors.toUnmodifiableList()).toArray(new ZugFerdItem[0]);
     }
 
     public IZUGFeRDAllowanceCharge[] getZFLogisticsServiceCharges() {

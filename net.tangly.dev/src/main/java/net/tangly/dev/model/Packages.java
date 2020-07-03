@@ -13,9 +13,18 @@
 
 package net.tangly.dev.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Packages {
-    private String name;
-    private List<Clazz> classed;
+    private final String name;
+    private final List<Clazz> classes;
+
+    public Packages(@NotNull String name) {
+        this.name = name;
+        classes = new ArrayList<>();
+    }
+
 }

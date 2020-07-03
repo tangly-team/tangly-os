@@ -26,7 +26,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * The actor infrastructure enabler is responsible to provide parallel execution for all instantiated and alive actors he is in charge.
  */
-public class LocalActors<E extends Enum<E>> implements Actors<E> {
+public final class LocalActors<E extends Enum<E>> implements Actors<E> {
 
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(LocalActors.class);
     private static final LocalActors<?> instance = new LocalActors<>();
