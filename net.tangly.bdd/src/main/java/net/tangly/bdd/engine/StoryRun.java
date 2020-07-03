@@ -14,12 +14,14 @@
 package net.tangly.bdd.engine;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import net.tangly.bdd.Feature;
 import net.tangly.bdd.Scene;
 import net.tangly.bdd.Story;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Recall that our custom extension generates BDD reports after executing the tests. Some parts of these reports are pulled from the elements of the
@@ -31,7 +33,7 @@ public class StoryRun {
     private final Class<?> clazz;
     private final List<Scene> scenes;
 
-    public StoryRun(Class<?> clazz) {
+    public StoryRun(@NotNull Class<?> clazz) {
         this.clazz = clazz;
         scenes = new ArrayList<>();
     }
@@ -53,6 +55,10 @@ public class StoryRun {
         return story.description();
     }
 
+    public List<String> storyTags() {
+        return Arrays.asList(clazz.getAnnotation(Story.class).tags());
+    }
+
     public Class<?> clazz() {
         return clazz;
     }
@@ -62,18 +68,19 @@ public class StoryRun {
     // region Feature
 
     public String featureName() {
-        Feature feature = clazz.getPackage().getAnnotation(Feature.class);
-        return feature.value();
+        return clazz.getPackage().getAnnotation(Feature.class).value();
     }
 
     public String featureId() {
-        Feature feature = clazz.getPackage().getAnnotation(Feature.class);
-        return feature.id();
+        return clazz.getPackage().getAnnotation(Feature.class).id();
     }
 
     public String featureDescription() {
-        Feature feature = clazz.getPackage().getAnnotation(Feature.class);
-        return feature.description();
+        return clazz.getPackage().getAnnotation(Feature.class).description();
+    }
+
+    public List<String> featureTags() {
+        return Arrays.asList(clazz.getPackage().getAnnotation(Feature.class).tags());
     }
 
     public Package packages() {

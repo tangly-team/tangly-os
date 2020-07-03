@@ -58,6 +58,7 @@ public class StoryAsciiDocPublisher {
     private void publishFeature(@NotNull JSONObject feature) {
         header("Feature: " + feature.getString(Constants.NAME), 2);
         paragraph(feature.getString(Constants.DESCRIPTION));
+        publishTags(feature);
         for (var item : feature.getJSONArray(Constants.STORIES)) {
             publishStory((JSONObject) item);
         }
@@ -66,8 +67,20 @@ public class StoryAsciiDocPublisher {
     private void publishStory(@NotNull JSONObject story) {
         header("Story: " + story.getString(Constants.NAME), 3);
         paragraph(story.getString(Constants.DESCRIPTION));
+        publishTags(story);
         for (var item : story.getJSONArray(Constants.SCENARIOS)) {
             publishScenario((JSONObject) item);
+        }
+    }
+
+    private void publishTags(@NotNull JSONObject object) {
+        if (!object.isNull(Constants.TAGS)) {
+            writer.append("*tags:*");
+            for (var tag : object.getJSONArray(Constants.TAGS)) {
+                writer.append(" '").append((String)tag).append("'");
+            }
+            writer.println();
+            writer.println();
         }
     }
 

@@ -90,6 +90,7 @@ public class StoryWriter {
         feature.put(Constants.NAME, run.featureName());
         feature.put(Constants.ID, run.featureId());
         feature.put(Constants.DESCRIPTION, run.featureDescription());
+        createTags(run.featureTags(), feature);
         feature.put(Constants.STORIES, new JSONArray());
         return feature;
     }
@@ -100,6 +101,7 @@ public class StoryWriter {
         story.put(Constants.NAME, run.name());
         story.put(Constants.ID, run.id());
         story.put(Constants.DESCRIPTION, run.description());
+        createTags(run.storyTags(), story);
         story.put(Constants.SCENARIOS, new JSONArray());
         return story;
     }
@@ -126,11 +128,19 @@ public class StoryWriter {
         return scenario;
     }
 
-    private static void addAnds(@NotNull List<String> ands, @NotNull JSONObject jsonObject) {
-        if (!ands.isEmpty()) {
+    private static void addAnds(@NotNull List<String> ands, @NotNull JSONObject object) {
+        addList(ands, object, Constants.AND);
+    }
+
+    private static void createTags(@NotNull List<String> tags, @NotNull JSONObject object) {
+        addList(tags, object, Constants.TAGS);
+    }
+
+    private static void addList(@NotNull List<String> items, @NotNull JSONObject object, String jsonTag) {
+        if (!items.isEmpty()) {
             JSONArray jsonArray = new JSONArray();
-            ands.forEach(jsonArray::put);
-            jsonObject.put(Constants.AND, jsonArray);
+            items.forEach(jsonArray::put);
+            object.put(jsonTag, jsonArray);
         }
     }
 }

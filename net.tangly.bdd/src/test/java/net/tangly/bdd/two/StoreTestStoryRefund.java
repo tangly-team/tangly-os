@@ -25,12 +25,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(StoryExtension.class)
 @Story(value = "Refunded items go back to the stockpile",
-       description = "As a store owner, in order to keep track of stock, I want to add items back to stock when they're refunded.")
+       description = "As a store owner, in order to keep track of stock, I want to add items back to stock when they're refunded.",
+       tags = {"Release 2.0"})
 class StoreTestStoryRefund extends StoreTest {
     @Scenario("Refunded items from the customer should be returned to stock")
     void refundAndRestock(Scene scene) {
         scene.given("A customer bought a black sweater from the store having 4 black and 0 blue sweaters",
-                t -> t.put("store", new Store(4, 0).sellBlack(1))).
+                t -> t.put("store", new Store(4, 0).sellBlack(1)))
+                .
                 and("the store has now 3 black sweaters in stock",
                         t -> assertThat(store(t).blacks()).as("the store should carry 3 black sweaters").isEqualTo(3))
                 .and("0 blue sweaters in stock", t -> assertThat(store(t).blues()).as("the store should carry 0 blue sweaters").isEqualTo(0)).

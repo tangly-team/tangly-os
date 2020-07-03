@@ -37,6 +37,8 @@ public final class Constants {
     public static final String AND = "and";
     public static final String TEXT = "text";
 
+    public static final String TAGS = "tags";
+
     /**
      * Private constructor of an utility class.
      */
