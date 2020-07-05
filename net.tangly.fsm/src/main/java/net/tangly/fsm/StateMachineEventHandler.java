@@ -104,7 +104,7 @@ public interface StateMachineEventHandler<O, S extends Enum<S>, E extends Enum<E
     }
 
     /**
-     * Callback when an exception was thrown during the execution of an entry state action.
+     * Callback when an exception was thrown during the execution of an entry or exit state action.
      *
      * @param state  state being processed
      * @param action action throwing the exception

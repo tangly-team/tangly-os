@@ -7,16 +7,16 @@
 . Publish artifacts of component with ``gradle publishAllPublicationsToMavenRepository``
 .. Pre activity: check on bitbucket the project compile through the continuous integration pipeline
 .. Post activity: tag repository on git to identify version of the published packages.
-The tag is of the form __{AcronymComponent}-MajorVerion-MinorVersion-PatchVersion__ as
+The tag is of the form -{AcronymComponent}-MajorVersion-MinorVersion-PatchVersion- as
  ``git tag label`` and ``git push origin --tags``
 . Log into https://oss.sonatype.org/#welcome[Sonatype Maven Central Repository]
 .. Go to https://oss.sonatype.org/#stagingRepositories[Staging Repositories]
 .. Find your temporary repository at the end of list
 .. Review the content of the repository
-.. Close the repository __button on tool list__
+.. Close the repository -button on tool list-
 .. Close stage is initiated and checks are performed.
 If everything was fine the content is published
-.. Release the artifact __button on tool list__
+.. Release the artifact -button on tool list-
 . See <<website-publication>> to update the website
 
 [CAUTION]
@@ -37,16 +37,16 @@ IMPORTANT: Set the property if you want to sign the component artifacts and publ
 . Update Hugo pipeline to run planUML with asciidoctor.
 Read the instructions in the asciidoctor script file under the scripts folder.
 . Four scripts are provided to generate the Hugo static site with associated structure and theme.
-.. the script __initiateHugo.sh__ creates.
-.. the script __populateHugo.sh__ populates the site.
-.. the script __populateHugoImages.sh__ copies generated images at the expected location for hugo to service them.
+.. the script _initiateHugo.sh_ creates.
+.. the script _populateHugo.sh_ populates the site.
+.. the script _populateHugoImages.sh_ copies generated images at the expected location for hugo to service them.
 Upon completion you can start a local Hugo server and look at the site if desired.
-.. the script __completeHugo.sh__ generates the static pictures and copy them to the static folder and publish the whole site on bitbucket.
+.. the script _completeHugo.sh_ generates the static pictures and copy them to the static folder and publish the whole site on bitbucket.
 Upon completion the site is published on the web for all.
 
-The support of __asciidoc__ files and the __asciidoctor__ generator in Hugo is suboptimal.
-We had to create a specific __asciidoc__ shell script to mitigate the problemes.
+The support of -asciidoc- files and the _asciidoctor_ generator in Hugo is suboptimal.
+We had to create a specific -asciidoc- shell script to mitigate the problems.
 The shell script provides support for the loadable modules:
 
-* asciidoc-diagram -__to draw plantuml diagrams__-
-* pygments -__to display legible source code__-
+* asciidoc-diagram --to draw plantuml diagrams--
+* pygments --to display legible source code--

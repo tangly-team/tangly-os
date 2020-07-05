@@ -14,7 +14,7 @@
 plugins {
     id 'war'
     id 'org.gretty' version "3.0.3"
-    id "com.vaadin" version "0.7.0"
+    id "com.vaadin" version "0.8.0"
 }
 
 project.ext.groupId = 'net.tangly'
@@ -37,5 +37,5 @@ dependencies {
 
     providedCompile "javax.servlet:javax.servlet-api:3.1.0"
 
-    testImplementation 'com.github.mvysny.kaributesting:karibu-testing-v10:1.2.0'
+    testImplementation 'com.github.mvysny.kaributesting:karibu-testing-v10:1.2.1'
 }

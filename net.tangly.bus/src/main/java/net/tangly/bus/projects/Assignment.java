@@ -29,10 +29,6 @@ public class Assignment implements HasId {
     private LocalDate fromDate;
     private LocalDate toDate;
 
-    public Assignment() {
-
-    }
-
     @Override
     public long oid() {
         return oid;

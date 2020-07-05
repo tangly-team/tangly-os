@@ -190,7 +190,7 @@ class TransitionImp<O, S extends Enum<S>, E extends Enum<E>> implements Transiti
 
     @Override
     public boolean evaluate(O context, Event<E> event) {
-        return (event.type() == this.eventId()) && (!hasGuard() || guard.test(context, event));
+        return (event.type().equals(this.eventId()) && (!hasGuard() || guard.test(context, event)));
     }
 
     @Override
