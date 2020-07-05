@@ -16,6 +16,7 @@ For a detailed view of what has changed, refer to the https://bitbucket.org/tang
 Improvements::
 
 * BDD library is now a regular Java 9 module (thanks to the new module support in Gradle 6.4)
+* Added a JSON schema for the bdd report JSON file and validate the format in unit tests
 * Library requires JDK 14 and all dependencies were updated to current version
 
 === 0.2.3 (2020-03-06)

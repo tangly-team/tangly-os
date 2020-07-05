@@ -15,8 +15,8 @@ plugins {
     id 'java-library'
 }
 
-project.ext.groupId= 'net.tangly'
-project.ext.artifactId ='bdd'
+project.ext.groupId = 'net.tangly'
+project.ext.artifactId = 'bdd'
 project.ext.moduleName = 'net.tangly.bdd'
 project.ext.inceptionYear = '2016'
 project.version = "0.2.4"
@@ -25,6 +25,8 @@ project.description = "JUnit 5 BDD - using Java 14 or higher (tangly llc)"
 dependencies {
     implementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
     implementation 'com.guicedee.services:json:1.0.13.1'
+
+    testImplementation "com.networknt:json-schema-validator:1.0.42";
 }
 
 java {

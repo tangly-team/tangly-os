@@ -107,5 +107,4 @@ class StoreTestStoryOne extends StoreTest {
                 ).
                 and("4 blue sweaters in stock", t -> assertThat(store(t).blues()).as("Store should carry 4 blue sweaters").isEqualTo(4)).run();
     }
-
 }

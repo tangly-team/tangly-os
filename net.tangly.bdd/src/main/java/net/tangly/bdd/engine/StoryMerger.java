@@ -63,7 +63,7 @@ public class StoryMerger {
                 } catch (IOException e) {
                     throw new UncheckedIOException(e);
                 } catch (JSONException e) {
-                    logger.atError().log("File {} is incorrect due to parallel writing", t);
+                    logger.atError().log("File {} is incorrect due to parallel writing", e);
                 }
             });
         }
