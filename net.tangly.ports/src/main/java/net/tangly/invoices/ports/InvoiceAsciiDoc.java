@@ -31,6 +31,8 @@ import net.tangly.commons.utilities.AsciiDocHelper;
 import org.asciidoctor.Asciidoctor;
 import org.asciidoctor.OptionsBuilder;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static net.tangly.commons.utilities.AsciiDocHelper.NEWLINE;
 import static net.tangly.commons.utilities.AsciiDocHelper.bold;
@@ -43,7 +45,7 @@ import static net.tangly.commons.utilities.AsciiDocHelper.italics;
  * the VAT invoice constraint, the Swiss invoice QR barcode, and the European Zugferd invoice machine readable invoice standard.
  */
 public class InvoiceAsciiDoc implements InvoiceGenerator {
-    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(InvoiceAsciiDoc.class);
+    private static final Logger logger = LoggerFactory.getLogger(InvoiceAsciiDoc.class);
     private static final BigDecimal HUNDRED = new BigDecimal("100");
 
     @Override

@@ -1,13 +1,13 @@
 /*
  * Copyright 2006-2020 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain 
+ *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  *  a copy of the License at
- *  
+ *
  *          http://www.apache.org/licenses/LICENSE-2.0
- *  
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT 
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations 
+ *
+ *   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
  *  under the License.
  */
 
@@ -16,13 +16,16 @@ package net.tangly.commons.vaadin;
 import java.util.function.Consumer;
 
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * <p>The CRUD provides a grid view to a set of entities and views to view, update, create and delete an entity. The core view is the same for all
@@ -38,28 +41,50 @@ import com.vaadin.flow.data.provider.DataProvider;
  * @param <T> represents the entity displayed and manipulated in the CRUD component.
  */
 public class Crud<T> extends Composite<Div> {
+    /**
+     * Define the different edition modes of the CRUD component.
+     */
+    public enum Mode {
+        EDITABLE, IMMUTABLE, AUDITABLE, READONLY;
+
+        static boolean canUpdate(@NotNull Mode mode) {
+            return (mode == EDITABLE);
+        }
+
+        static boolean canAdd(@NotNull Mode mode) {
+            return (mode == EDITABLE) || (mode == IMMUTABLE) || (mode == AUDITABLE);
+        }
+
+        static boolean canDelete(@NotNull Mode mode) {
+            return (mode == EDITABLE) || (mode == IMMUTABLE);
+        }
+    }
 
     private final Class<T> entityClass;
-    private T selectedItem;
-    private final boolean readOnly;
+    private Mode mode;
     private final Grid<T> grid;
-    private final CrudForm<T> form;
-    private final CrudActionsListener<T> actionsListener;
+    private T selectedItem;
+    private CrudForm<T> form;
+    private CrudActionsListener<T> actionsListener;
 
     private Button details;
     private Button add;
     private Button update;
     private Button delete;
 
-    public Crud(Class<T> entityClass, boolean readOnly, Consumer<Grid> gridConfigurator, DataProvider<T, ?> dataProvider, CrudForm<T> form,
-                CrudActionsListener listener) {
+    public static <E> Crud<E> createWith(Class<E> entityClass, Mode mode, Consumer<Grid> gridConfigurator, DataProvider<E, ?> dataProvider,
+                                         CrudForm<E> form, CrudActionsListener<E> actionsListener) {
+        Crud<E> crud = new Crud<>(entityClass, mode, gridConfigurator, dataProvider);
+        crud.initialize(form, actionsListener);
+        return crud;
+    }
+
+    public Crud(@NotNull Class<T> entityClass, @NotNull Mode mode, @NotNull Consumer<Grid> gridConfigurator, @NotNull DataProvider<T, ?> dataProvider) {
         this.entityClass = entityClass;
-        this.readOnly = readOnly;
+        this.mode = mode;
         this.grid = new Grid<>(entityClass, false);
         gridConfigurator.accept(grid);
         grid.setDataProvider(dataProvider);
-        this.form = form;
-        this.actionsListener = listener;
         grid.asSingleSelect().addValueChangeListener(event -> selectItem(event.getValue()));
         grid.setSizeFull();
         getContent().add(grid, createCrudButtons());
@@ -69,11 +94,29 @@ public class Crud<T> extends Composite<Div> {
         selectItem(null);
     }
 
+    public void mode(@NotNull Mode mode) {
+        this.mode = mode;
+    }
+
+    protected void initialize(@NotNull CrudForm<T> form, @NotNull CrudActionsListener<T> actionsListener) {
+        this.form = form;
+        this.actionsListener = actionsListener;
+    }
+
+    static <E> void initialize(@NotNull Grid<E> grid) {
+        grid.setVerticalScrollingEnabled(true);
+        grid.addThemeVariants(GridVariant.MATERIAL_COLUMN_DIVIDERS);
+    }
+
     private HorizontalLayout createCrudButtons() {
         details = new Button("Details", VaadinIcon.ELLIPSIS_H.create(), event -> displayDialog(CrudForm.Operation.VIEW));
         add = new Button("Add", VaadinIcon.PLUS.create(), event -> displayDialog(CrudForm.Operation.CREATE));
         update = new Button("Update", VaadinIcon.PENCIL.create(), event -> displayDialog(CrudForm.Operation.UPDATE));
         delete = new Button("Delete", VaadinIcon.TRASH.create(), event -> displayDialog(CrudForm.Operation.DELETE));
+
+        add.setEnabled(mode.equals(Mode.EDITABLE) || mode.equals(Mode.IMMUTABLE) || mode.equals(Mode.AUDITABLE));
+        update.setEnabled(mode.equals(Mode.EDITABLE));
+        delete.setEnabled(mode.equals(Mode.EDITABLE) || mode.equals(Mode.IMMUTABLE));
 
         HorizontalLayout actions = new HorizontalLayout();
         actions.add(add, delete, update, details);
@@ -84,14 +127,18 @@ public class Crud<T> extends Composite<Div> {
         Dialog dialog = new Dialog();
         dialog.setCloseOnEsc(false);
         dialog.setCloseOnOutsideClick(false);
-        dialog.add(form.createForm(operation, operation != CrudForm.Operation.CREATE ? selectedItem : null), createFormButtons(dialog, operation));
+        dialog.setModal(false);
+        dialog.add(form.createForm(operation, operation != CrudForm.Operation.CREATE ? selectedItem : null), new HtmlComponent("br"),
+                createFormButtons(dialog, operation)
+        );
         dialog.open();
     }
 
-    private HorizontalLayout createFormButtons(Dialog dialog, CrudForm.Operation operation) {
+    private HorizontalLayout createFormButtons(@NotNull Dialog dialog, @NotNull CrudForm.Operation operation) {
         HorizontalLayout actions = new HorizontalLayout();
+        actions.setSpacing(true);
         Button cancel = new Button("Cancel", event -> {
-            form.formCancelled(null, selectedItem);
+            form.formCancelled(CrudForm.Operation.CANCEL, selectedItem);
             dialog.close();
         });
         Button action;
@@ -136,6 +183,7 @@ public class Crud<T> extends Composite<Div> {
                     grid.getDataProvider().refreshAll();
                 });
                 break;
+            default:
         }
         return actions;
     }
@@ -144,12 +192,12 @@ public class Crud<T> extends Composite<Div> {
         selectedItem = item;
         if (item != null) {
             details.setEnabled(true);
-            add.setEnabled(!readOnly);
-            update.setEnabled(!readOnly);
-            delete.setEnabled(!readOnly);
+            add.setEnabled(Mode.canAdd(mode));
+            update.setEnabled(Mode.canUpdate(mode));
+            delete.setEnabled(Mode.canDelete(mode));
         } else {
             details.setEnabled(false);
-            add.setEnabled(!readOnly);
+            add.setEnabled(Mode.canAdd(mode));
             update.setEnabled(false);
             delete.setEnabled(false);
         }

@@ -6,6 +6,7 @@ draft: false
 ---
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
+:stem:
 :icons: font
 :source-highlighter: pygments
 :pygments-style: manni
@@ -13,3 +14,27 @@ draft: false
 = User Guide Commons UI
 
 == CRUD Component
+
+=== Reflections
+
+One key decision is that the user interface library does not require the use of annotations, interfaces, or inheritance in the business model.
+
+Visualized entities are manipulated under different access rights.
+
+* Readonly or full access
+
+** Readonly access allow a user to view an entity and associated properties.
+The update, delete and create operations are disabled.
+
+** Full access allows a user to view, update, create and delete an entity and associated properties.
+
+* Editable, immutable, or audited immutable entities
+
+** Immutable entities or properties support view, create and delete.
+The update operation is not available.
+We avoid support for hybrid approach such as clone a new instance and delete an old one.
+The semantics are often slightly awkward.
+
+** Audited immutable entities or properties support view, and create.
+Neither update nor delete operations are available to provide an audit trail.
+Immutable instances can be added programmatically to provide an exhaustive audit trail.
