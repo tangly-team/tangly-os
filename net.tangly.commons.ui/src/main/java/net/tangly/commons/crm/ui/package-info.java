@@ -11,13 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.bus.invoices;
-
-
-import java.math.BigDecimal;
-
 /**
- * A product sold by a legal entity and referenced in an invoice or an invoice line.
+ * Defines the user interface views for the CRM domain model abstractions.
  */
-public record Product(String id, String description, BigDecimal unitPrice, String unit, BigDecimal vatRate) {
-}
+package net.tangly.commons.crm.ui;

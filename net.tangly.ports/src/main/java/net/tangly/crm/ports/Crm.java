@@ -11,7 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.apps;
+package net.tangly.crm.ports;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,23 +20,35 @@ import java.util.List;
 
 import net.tangly.bus.core.TagTypeRegistry;
 import net.tangly.bus.crm.Contract;
+import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
 
+/**
+ * Defines the customer relationship management <i>CRM</i> subsystem. The major abstractions are
+ * <ul>
+ *     <li>Natural entities</li>
+ *     <li>Legal Entities</li>
+ *     <li>Employees - defines a relation between a natural entity and a legal entity</li>
+ *     <li>Contract - defines a legal contractual obligation between two legal entities</li>
+ *     <li>CRM tags - defining an ontology in the business domain of customer relationships management</li>
+ * </ul>
+ */
 public class Crm {
-    private TagTypeRegistry tagTypeRegistry;
     private final List<NaturalEntity> naturalEntities;
     private final List<LegalEntity> legalEntities;
     private final List<Employee> employees;
     private final List<Contract> contracts;
+    private final TagTypeRegistry tagTypeRegistry;
 
     public Crm() {
-        tagTypeRegistry = new TagTypeRegistry();
         naturalEntities = new ArrayList<>();
         legalEntities = new ArrayList<>();
         employees = new ArrayList<>();
         contracts = new ArrayList<>();
+        tagTypeRegistry = new TagTypeRegistry();
+        CrmTags.registerTags(tagTypeRegistry);
     }
 
     public TagTypeRegistry tagTypeRegistry() {

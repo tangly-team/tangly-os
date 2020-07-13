@@ -14,7 +14,6 @@
 package net.tangly.bus.crm;
 
 
-import java.net.URI;
 import java.util.Optional;
 
 import net.tangly.bus.core.Address;
@@ -35,33 +34,33 @@ public interface CrmEntity extends HasTags {
         }
     }
 
-    default Optional<PhoneNr> findPhoneNr(String kind) {
-        return findBy(CrmTags.getPhoneTag(kind)).map(o -> PhoneNr.of(o.value()));
+    default Optional<PhoneNr> phoneNr(String kind) {
+        return findBy(CrmTags.phoneTag(kind)).map(o -> PhoneNr.of(o.value()));
     }
 
-    default void setPhoneNr(String kind, String phoneNr) {
+    default void phoneNr(String kind, String phoneNr) {
         if (phoneNr != null) {
-            replace(Tag.of(CrmTags.getPhoneTag(kind), phoneNr));
+            replace(Tag.of(CrmTags.phoneTag(kind), phoneNr));
         } else {
-            removeTagNamed(CrmTags.getPhoneTag(kind));
+            removeTagNamed(CrmTags.phoneTag(kind));
         }
     }
 
-    default Optional<String> findEmail(String kind) {
-        return findBy(CrmTags.getEmailTag(kind)).map(Tag::value);
+    default Optional<String> email(String kind) {
+        return findBy(CrmTags.emailTag(kind)).map(Tag::value);
     }
 
-    default void setEmail(String kind, String email) {
+    default void email(String kind, String email) {
         if (email != null) {
-            replace(Tag.of(CrmTags.getEmailTag(kind), email));
+            replace(Tag.of(CrmTags.emailTag(kind), email));
         } else {
-            removeTagNamed(CrmTags.getEmailTag(kind));
+            removeTagNamed(CrmTags.emailTag(kind));
         }
     }
 
-    default Address address(String kind) {
+    default Optional<Address> address(String kind) {
         var value = findBy(kind);
-        return value.map(Tag::value).map(Address::of).orElse(null);
+        return value.map(Tag::value).map(Address::of);
     }
 
     default void address(String kind, Address address) {
@@ -72,19 +71,23 @@ public interface CrmEntity extends HasTags {
         }
     }
 
-    default void setIm(String kind, String reference) {
+    default void im(String kind, String reference) {
         if (reference != null) {
-            replace(Tag.of(CrmTags.getImTag(kind), reference));
+            replace(Tag.of(CrmTags.imTag(kind), reference));
         } else {
-            removeTagNamed(CrmTags.getImTag(kind));
+            removeTagNamed(CrmTags.imTag(kind));
         }
     }
 
-    default void setSite(String kind, URI site) {
+    default Optional<String> site(String kind) {
+        return findBy(CrmTags.siteTag(kind)).map(Tag::value);
+    }
+
+    default void site(String kind, String site) {
         if (site != null) {
-            replace(Tag.of(CrmTags.getSiteTag(kind), site.toString()));
+            replace(Tag.of(CrmTags.siteTag(kind), site));
         } else {
-            removeTagNamed(CrmTags.getSiteTag(kind));
+            removeTagNamed(CrmTags.siteTag(kind));
         }
     }
 }

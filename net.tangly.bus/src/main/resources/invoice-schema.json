@@ -1,0 +1,201 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "invoice archive schema",
+  "description": "schema to export to other systems or archive invoices",
+  "definitions": {
+    "legalEntity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "fromDate": {
+          "type": "date"
+        },
+        "toDate": {
+          "type": "date"
+        },
+        "vat": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "bankConnection": {
+      "type": "object",
+      "properties": {
+        "iban": {
+          "type": "string"
+        },
+        "bic": {
+          "type": "string"
+        },
+        "institute": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "iban"
+      ]
+    },
+    "product": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "unitPrice": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "vatRate": {
+          "type": "number"
+        }
+      }
+    },
+    "invoiceLine": {
+      "type": "object",
+      "properties": {
+        "position": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "text": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "position",
+        "text",
+        "amount"
+      ]
+    },
+    "invoiceItem": {
+      "type": "object",
+      "allOff": [
+        {
+          "$ref": "#/definitions/invoiceLine"
+        },
+        {
+          "properties": {
+            "product": {
+              "$ref": "#/definitions/product"
+            },
+            "quantity": {
+              "type": "number"
+            },
+            "required": [
+              "product",
+              "quantity"
+            ]
+          }
+        }
+      ]
+    },
+    "invoiceSubtotal": {
+      "type": "object",
+      "allOff": [
+        {
+          "$ref": "#/definitions/invoiceLine"
+        },
+        {
+          "properties": {
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "minimum": 0
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "required": [
+              "items"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "invoice": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "invoicingEntity": {
+        "$ref": "#/definitions/legalEntity"
+      },
+      "invoicingConnection": {
+        "$ref": "#/definitions/bankConnection"
+      },
+      "contractId": {
+        "type": "string"
+      },
+      "invoicedEntity": {
+        "$ref": "#/definitions/legalEntity"
+      },
+      "deliveryDate": {
+        "type": "string",
+        "format": "date"
+      },
+      "invoiceDate": {
+        "type": "string",
+        "format": "date"
+      },
+      "dueDate": {
+        "type": "string",
+        "format": "date"
+      },
+      "currency": {
+        "type": "string"
+      },
+      "text": {
+        "type": "string"
+      },
+      "paymentConditions": {
+        "type": "string"
+      },
+      "items": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/invoiceItem"
+            },
+            {
+              "$ref": "#/definitions/invoiceSubtotal"
+            }
+          ]
+        },
+        "minItems": 1
+      }
+    },
+    "required": [
+      "id",
+      "invoicingEntity",
+      "invoicedEntity",
+      "invoiceDate",
+      "dueDate",
+      "currency"
+    ]
+  }
+}

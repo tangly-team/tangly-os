@@ -18,53 +18,39 @@ import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import net.tangly.apps.Crm;
 import net.tangly.bus.crm.CrmTags;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CsvImportTest {
+public class CrmTsvHdlTest {
     static final String PACKAGE_NAME = "net/tangly/crm/ports/";
 
     @Test
     void testCsvCrm() throws IOException, URISyntaxException {
         Crm crm = new Crm();
-        CrmTags.registerTags(crm.tagTypeRegistry());
-        CrmCsvHdl handler = new CrmCsvHdl(crm);
+        CrmTsvHdl handler = new CrmTsvHdl(crm);
 
-        handler.importNaturalEntities(fromResource(PACKAGE_NAME + "naturalEntities.tsv"));
+        handler.importNaturalEntities(fromResource(PACKAGE_NAME + "natural-entities.tsv"));
         assertThat(crm.naturalEntities().size()).isEqualTo(6);
-
         assertThat(crm.naturalEntities().get(0).oid()).isEqualTo(1);
-        assertThat(crm.naturalEntities().get(0).id()).isNull();
+        assertThat(crm.naturalEntities().get(0).id()).isEqualTo("jd-01");
         assertThat(crm.naturalEntities().get(0).address(CrmTags.CRM_ADDRESS_HOME)).isNotNull();
-        assertThat(crm.naturalEntities().get(0).findEmail(CrmTags.HOME)).isNotNull();
-        assertThat(crm.naturalEntities().get(0).findPhoneNr(CrmTags.HOME)).isNotNull();
-        // assertThat(crm.naturalEntities().getAt(0).findSite(CrmTags.HOME)).isNotNull();
+        assertThat(crm.naturalEntities().get(0).email(CrmTags.HOME)).isNotNull();
+        assertThat(crm.naturalEntities().get(0).phoneNr(CrmTags.HOME)).isNotNull();
+        assertThat(crm.naturalEntities().get(0).site(CrmTags.HOME)).isNotNull();
 
-        handler.importLegalEntities(fromResource(PACKAGE_NAME + "legalEntities.tsv"));
+        handler.importLegalEntities(fromResource(PACKAGE_NAME + CrmWorkflows.LEGAL_ENTITIES_TSV));
         assertThat(crm.legalEntities().size()).isEqualTo(3);
+        assertThat(crm.legalEntities().get(0).oid()).isEqualTo(100);
+        assertThat(crm.legalEntities().get(0).id()).isEqualTo("UNKNOWN-100");
+        assertThat(crm.legalEntities().get(0).name()).isEqualTo("hope llc");
 
-        handler.importEmployees(fromResource(PACKAGE_NAME + "employees.tsv"));
+        handler.importEmployees(fromResource(PACKAGE_NAME + CrmWorkflows.EMPLOYEES_TSV));
         assertThat(crm.employees().size()).isEqualTo(5);
 
-        handler.importContracts(fromResource(PACKAGE_NAME + "contracts.tsv"));
-        assertThat(crm.contracts().size()).isEqualTo(5);
-    }
-
-    @Test
-    @Tag("localTest")
-    void testCsvNaturalEntityImport() throws IOException {
-        Crm crm = new Crm();
-        CrmTags.registerTags(crm.tagTypeRegistry());
-        CrmCsvHdl handler = new CrmCsvHdl(crm);
-
-        assertThat(handler.importNaturalEntities(fromResource(PACKAGE_NAME + "naturalEntities.tsv")).size()).isGreaterThan(0);
-        assertThat(handler.importLegalEntities(fromResource(PACKAGE_NAME + "legalEntities.tsv")).size()).isGreaterThan(0);
-        assertThat(handler.importEmployees(fromResource(PACKAGE_NAME + "employees.tsv")).size()).isGreaterThan(0);
-
+        handler.importContracts(fromResource(PACKAGE_NAME + CrmWorkflows.CONTRACTS_TSV));
+        assertThat(crm.contracts().size()).isNotEqualTo(0);
     }
 
     private Path fromResource(String resource) {

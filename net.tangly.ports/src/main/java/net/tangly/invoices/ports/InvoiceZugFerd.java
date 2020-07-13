@@ -58,22 +58,22 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
 
         @Override
         public String getCountry() {
-            return entity.address(CrmTags.CRM_ADDRESS_WORK).country();
+            return entity.address(CrmTags.CRM_ADDRESS_WORK).orElse(null).country();
         }
 
         @Override
         public String getLocation() {
-            return entity.address(CrmTags.CRM_ADDRESS_WORK).locality();
+            return entity.address(CrmTags.CRM_ADDRESS_WORK).orElse(null).locality();
         }
 
         @Override
         public String getStreet() {
-            return entity.address(CrmTags.CRM_ADDRESS_WORK).street();
+            return entity.address(CrmTags.CRM_ADDRESS_WORK).orElse(null).street();
         }
 
         @Override
         public String getZIP() {
-            return entity.address(CrmTags.CRM_ADDRESS_WORK).postcode();
+            return entity.address(CrmTags.CRM_ADDRESS_WORK).orElse(null).postcode();
         }
     }
 
@@ -130,7 +130,7 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
 
         @Override
         public String getName() {
-            return product.productId();
+            return product.id();
         }
 
         @Override
@@ -211,18 +211,18 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
 
     @Override
     public String getOwnCountry() {
-        return invoice.invoicingEntity().address(CrmTags.CRM_ADDRESS_WORK).country();
+        return invoice.invoicingEntity().address(CrmTags.CRM_ADDRESS_WORK).orElse(null).country();
     }
 
 
     @Override
     public String getOwnLocation() {
-        return invoice.invoicingEntity().address(CrmTags.CRM_ADDRESS_WORK).locality();
+        return invoice.invoicingEntity().address(CrmTags.CRM_ADDRESS_WORK).orElse(null).locality();
     }
 
     @Override
     public String getOwnOrganisationFullPlaintextInfo() {
-        return invoice.invoicedEntity().name() + " " + invoice.invoicingEntity().address(CrmTags.CRM_ADDRESS_WORK).text();
+        return invoice.invoicedEntity().name() + " " + invoice.invoicingEntity().address(CrmTags.CRM_ADDRESS_WORK).orElse(null).text();
     }
 
     @Override
@@ -232,7 +232,7 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
 
     @Override
     public String getOwnStreet() {
-        return invoice.invoicingEntity().address(CrmTags.CRM_ADDRESS_WORK).street();
+        return invoice.invoicingEntity().address(CrmTags.CRM_ADDRESS_WORK).orElse(null).street();
     }
 
     @Override
@@ -247,7 +247,7 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
 
     @Override
     public String getOwnZIP() {
-        return invoice.invoicingEntity().address(CrmTags.CRM_ADDRESS_WORK).postcode();
+        return invoice.invoicingEntity().address(CrmTags.CRM_ADDRESS_WORK).orElse(null).postcode();
     }
 
     @Override

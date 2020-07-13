@@ -16,6 +16,6 @@ package net.tangly.commons.vaadin;
 import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.server.PWA;
 
-@PWA(name = "Tangly CRUD", shortName = "Crud")
+@PWA(name = "Tangly ERP", shortName = "ERP")
 public class AppShell implements AppShellConfigurator {
 }

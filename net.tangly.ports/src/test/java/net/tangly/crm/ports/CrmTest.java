@@ -24,7 +24,9 @@ public class CrmTest {
     void testCrmTags() {
         TagTypeRegistry registry = new TagTypeRegistry();
         CrmTags.registerTags(registry);
-        assertThat(registry.namespaces().size()).isEqualTo(1);
+        assertThat(registry.namespaces().size()).isEqualTo(2);
+        assertThat(registry.namespaces()).contains(CrmTags.CRM, CrmTags.GEO);
+        assertThat(registry.tagsForNamespace(CrmTags.GEO)).contains(CrmTags.LATITUDE, CrmTags.LONGITUDE, CrmTags.ALTITUDE, CrmTags.PLUSCODE);
         assertThat(registry.tagsForNamespace(CrmTags.CRM).isEmpty()).isFalse();
     }
 }

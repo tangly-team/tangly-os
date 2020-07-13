@@ -19,6 +19,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import net.codecrete.qrbill.generator.Strings;
@@ -127,7 +128,7 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
 
     private static String addressText(@NotNull LegalEntity entity) {
         StringBuilder text = new StringBuilder();
-        Address address = entity.address(CrmTags.CRM_ADDRESS_WORK);
+        Address address = entity.address(CrmTags.CRM_ADDRESS_WORK).orElse(null);
         text.append(entity.name()).append(NEWLINE).append(Strings.isNullOrEmpty(address.extended()) ? "" : (address.extended() + NEWLINE))
                 .append(Strings.isNullOrEmpty(address.street()) ? "" : (address.street() + NEWLINE))
                 .append(Strings.isNullOrEmpty(address.poBox()) ? "" : (address.poBox() + NEWLINE)).append(address.postcode()).append(" ")

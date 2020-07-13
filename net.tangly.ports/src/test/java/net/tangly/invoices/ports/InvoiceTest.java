@@ -39,9 +39,6 @@ import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceItem;
 import net.tangly.bus.invoices.Product;
 import net.tangly.bus.invoices.Subtotal;
-import net.tangly.invoices.ports.InvoiceAsciiDoc;
-import net.tangly.invoices.ports.InvoiceQrCode;
-import net.tangly.invoices.ports.InvoiceZugFerd;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -189,7 +186,7 @@ public class InvoiceTest {
         seller.address(CrmTags.CRM_ADDRESS_WORK,
                 new Address.Builder().street("Lorzenhof 27").postcode("6330").locality("Cham").region("ZG").country("CH").build()
         );
-        seller.setPhoneNr(CrmTags.CRM_PHONE_WORK, "+41 79 778 8689");
+        seller.phoneNr(CrmTags.CRM_PHONE_WORK, "+41 79 778 8689");
         seller.id("CHE-357-875.339");
         seller.vatNr("CHE-357-875.339 MWST");
         return seller;
@@ -202,7 +199,7 @@ public class InvoiceTest {
                 new Address.Builder().extended("attn. John Doe").street("Bahnhofstrasse 1").postcode("6300").locality("Zug").region("ZG")
                         .country("CH").build()
         );
-        sellee.setPhoneNr(CrmTags.CRM_PHONE_WORK, "+41 41 228 4242");
+        sellee.phoneNr(CrmTags.CRM_PHONE_WORK, "+41 41 228 4242");
         sellee.id("CHE-123-456.789");
         sellee.vatNr("CHE-123-456.789 MWST");
         return sellee;

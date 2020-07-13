@@ -6,7 +6,7 @@
 
 . Publish artifacts of component with ``gradle publishAllPublicationsToMavenRepository``
 .. Pre activity: check on bitbucket the project compile through the continuous integration pipeline
-.. Post activity: tag repository on git to identify version of the published packages.
+.. Post activity: *tag repository* on git to identify version of the published packages.
 The tag is of the form -{AcronymComponent}-MajorVersion-MinorVersion-PatchVersion- as
  ``git tag label`` and ``git push origin --tags``
 . Log into https://oss.sonatype.org/#welcome[Sonatype Maven Central Repository]
@@ -23,6 +23,17 @@ If everything was fine the content is published
 ====
 It takes up to one day until the component is visible in Maven Central website upon publication.
 ====
+
+The acronyms are (the current composite acronym is BDD-BUS-COMMONS-FSM-PORTS)
+
+* *BDD* behavior driven development library
+* *BUS* business components library
+* *COMMONS* commons library
+* DEV
+* *FSM* hierarchical finite state machine library
+* GLEAM
+* *PORTS* ports library
+
 === Findings
 
 . We needed to manually publish the public key on http://keys.gnupg.net[keys.gnupg.net]

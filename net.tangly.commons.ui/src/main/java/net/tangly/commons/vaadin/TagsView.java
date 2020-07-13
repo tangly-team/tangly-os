@@ -88,8 +88,8 @@ public class TagsView extends Crud<Tag> implements CrudForm<Tag>, CrudActionsLis
         }
 
         FormLayout form = new FormLayout(namespace, name, value);
-        form.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1), new FormLayout.ResponsiveStep("21em", 2),
-                new FormLayout.ResponsiveStep("42em", 3)
+        form.setResponsiveSteps(new FormLayout.ResponsiveStep("25em", 1), new FormLayout.ResponsiveStep("32em", 2),
+                new FormLayout.ResponsiveStep("40em", 3)
         );
         return form;
     }
@@ -98,21 +98,24 @@ public class TagsView extends Crud<Tag> implements CrudForm<Tag>, CrudActionsLis
     public Tag formCompleted(Operation operation, Tag entity) {
         switch (operation) {
             case CREATE:
-                return new Tag(namespace.getValue(), name.getValue(), value.getValue());
-            case DELETE:
-                break;
+                return create();
         }
         return entity;
     }
 
     @Override
-    public void entityAdded(DataProvider<Tag, ?> dataProvider, Tag entity) {
+    public void entityAdded(DataProvider<Tag, ?> provider, Tag entity) {
         hasItems.add(entity);
-
+        CrudActionsListener.super.entityAdded(provider, entity);
     }
 
     @Override
-    public void entityDeleted(DataProvider<Tag, ?> dataProvider, Tag entity) {
+    public void entityDeleted(DataProvider<Tag, ?> provider, Tag entity) {
         hasItems.remove(entity);
+        CrudActionsListener.super.entityAdded(provider, entity);
+    }
+
+    private Tag create() {
+        return new Tag(namespace.getValue(), name.getValue(), value.getValue());
     }
 }

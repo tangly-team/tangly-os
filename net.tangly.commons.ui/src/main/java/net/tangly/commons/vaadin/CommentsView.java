@@ -29,16 +29,15 @@ import net.tangly.bus.core.HasComments;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The comments view is a Crud view with all the comments defined for an entity. Edition functions are provided to add, delete, and view individual
- * comments. Update function is not supported because comments are immutable objects. Immutable objects must be explicitly be deleted before an new
- * version can be added. This approach supports auditing approaches.
+ * The comments view is a Crud view with all the comments defined for an object implementing the {@link HasComments}. Edition
+ * functions are provided to add, delete, and view individual comments. Update function is not supported because comments are immutable objects.
+ * Immutable objects must be explicitly be deleted before an new version can be added. This approach supports auditing approaches.
  */
 public class CommentsView extends Crud<Comment> implements CrudForm<Comment>, CrudActionsListener<Comment> {
     private final transient HasComments hasItems;
     private DateTimePicker created;
     private TextField author;
     private TextArea text;
-
 
     public CommentsView(@NotNull HasComments entity) {
         super(Comment.class, Mode.IMMUTABLE, CommentsView::defineGrid, new ListDataProvider<>(entity.comments()));
@@ -59,7 +58,6 @@ public class CommentsView extends Crud<Comment> implements CrudForm<Comment>, Cr
         boolean readonly = Operation.isReadOnly(operation);
 
         created = new DateTimePicker("Created");
-        created.setValue(LocalDateTime.now());
         created.setReadOnly(true);
 
         author = CrudForm.createTextField("Author", "author", readonly, true);
@@ -67,9 +65,15 @@ public class CommentsView extends Crud<Comment> implements CrudForm<Comment>, Cr
 
         text = new TextArea("Text");
         text.setHeight("8em");
-        text.getStyle().set("colspan", "4");
         text.setReadOnly(readonly);
         text.setRequired(true);
+
+        FormLayout form = new FormLayout();
+        form.setResponsiveSteps(new FormLayout.ResponsiveStep("25em", 1), new FormLayout.ResponsiveStep("32em", 2),
+                new FormLayout.ResponsiveStep("40em", 3)
+        );
+        form.add(created, author, new HtmlComponent("br"), text);
+        form.setColspan(text, 2);
 
         if (readonly) {
             Binder<Comment> binder = new Binder<>(Comment.class);
@@ -77,12 +81,9 @@ public class CommentsView extends Crud<Comment> implements CrudForm<Comment>, Cr
             binder.bind(author, Comment::author, null);
             binder.bind(text, Comment::text, null);
             binder.readBean(entity);
+        } else {
+            created.setValue(LocalDateTime.now());
         }
-
-        FormLayout form = new FormLayout(created, author, new HtmlComponent("br"), text);
-        form.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1), new FormLayout.ResponsiveStep("21em", 2),
-                new FormLayout.ResponsiveStep("42em", 3)
-        );
         return form;
     }
 
@@ -90,21 +91,25 @@ public class CommentsView extends Crud<Comment> implements CrudForm<Comment>, Cr
     public Comment formCompleted(Operation operation, Comment entity) {
         switch (operation) {
             case CREATE:
-                return new Comment(created.getValue(), author.getValue(), text.getValue());
-            case DELETE:
-                break;
+                return create();
         }
         return entity;
     }
 
     @Override
-    public void entityAdded(DataProvider<Comment, ?> dataProvider, Comment entity) {
+    public void entityAdded(DataProvider<Comment, ?> provider, Comment entity) {
         hasItems.add(entity);
+        CrudActionsListener.super.entityAdded(provider, entity);
 
     }
 
     @Override
-    public void entityDeleted(DataProvider<Comment, ?> dataProvider, Comment entity) {
+    public void entityDeleted(DataProvider<Comment, ?> provider, Comment entity) {
         hasItems.remove(entity);
+        CrudActionsListener.super.entityAdded(provider, entity);
+    }
+
+    private Comment create() {
+        return new Comment(created.getValue(), author.getValue(), text.getValue());
     }
 }

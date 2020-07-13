@@ -86,13 +86,13 @@ public class TagForm implements CrudForm<Tag>, CrudActionsListener<Tag> {
     }
 
     @Override
-    public void entityAdded(DataProvider<Tag, ?> dataProvider, Tag tag) {
+    public void entityAdded(DataProvider<Tag, ?> provider, Tag tag) {
         hasTags.add(tag);
 
     }
 
     @Override
-    public void entityDeleted(DataProvider<Tag, ?> dataProvider, Tag tag) {
+    public void entityDeleted(DataProvider<Tag, ?> provider, Tag tag) {
         hasTags.remove(tag);
     }
 }

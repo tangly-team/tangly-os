@@ -11,7 +11,9 @@
  *  under the License.
  */
 
-package net.tangly.gleam.model.dsl;
+package net.tangly.gleam.model;
 
-public interface PropertyBuilder {
+import java.util.function.Consumer;
+
+public record JsonProperty<T>(String name, Class<T> type, JsonEntity<T> entity, Consumer<T> getter) {
 }

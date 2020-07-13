@@ -61,7 +61,7 @@ public class Crud<T> extends Composite<Div> {
     }
 
     private final Class<T> entityClass;
-    private Mode mode;
+    private final Mode mode;
     private final Grid<T> grid;
     private T selectedItem;
     private CrudForm<T> form;
@@ -72,14 +72,8 @@ public class Crud<T> extends Composite<Div> {
     private Button update;
     private Button delete;
 
-    public static <E> Crud<E> createWith(Class<E> entityClass, Mode mode, Consumer<Grid> gridConfigurator, DataProvider<E, ?> dataProvider,
-                                         CrudForm<E> form, CrudActionsListener<E> actionsListener) {
-        Crud<E> crud = new Crud<>(entityClass, mode, gridConfigurator, dataProvider);
-        crud.initialize(form, actionsListener);
-        return crud;
-    }
-
-    public Crud(@NotNull Class<T> entityClass, @NotNull Mode mode, @NotNull Consumer<Grid> gridConfigurator, @NotNull DataProvider<T, ?> dataProvider) {
+    public Crud(@NotNull Class<T> entityClass, @NotNull Mode mode, @NotNull Consumer<Grid<T>> gridConfigurator,
+                @NotNull DataProvider<T, ?> dataProvider) {
         this.entityClass = entityClass;
         this.mode = mode;
         this.grid = new Grid<>(entityClass, false);
@@ -94,16 +88,16 @@ public class Crud<T> extends Composite<Div> {
         selectItem(null);
     }
 
-    public void mode(@NotNull Mode mode) {
-        this.mode = mode;
-    }
-
     protected void initialize(@NotNull CrudForm<T> form, @NotNull CrudActionsListener<T> actionsListener) {
         this.form = form;
         this.actionsListener = actionsListener;
     }
 
-    static <E> void initialize(@NotNull Grid<E> grid) {
+    protected Class<T> entityClass() {
+        return entityClass;
+    }
+
+    protected static <E> void initialize(@NotNull Grid<E> grid) {
         grid.setVerticalScrollingEnabled(true);
         grid.addThemeVariants(GridVariant.MATERIAL_COLUMN_DIVIDERS);
     }
@@ -114,9 +108,9 @@ public class Crud<T> extends Composite<Div> {
         update = new Button("Update", VaadinIcon.PENCIL.create(), event -> displayDialog(CrudForm.Operation.UPDATE));
         delete = new Button("Delete", VaadinIcon.TRASH.create(), event -> displayDialog(CrudForm.Operation.DELETE));
 
-        add.setEnabled(mode.equals(Mode.EDITABLE) || mode.equals(Mode.IMMUTABLE) || mode.equals(Mode.AUDITABLE));
-        update.setEnabled(mode.equals(Mode.EDITABLE));
-        delete.setEnabled(mode.equals(Mode.EDITABLE) || mode.equals(Mode.IMMUTABLE));
+        add.setEnabled((mode == Mode.EDITABLE) || (mode == Mode.IMMUTABLE) || (mode == Mode.AUDITABLE));
+        update.setEnabled(mode == Mode.EDITABLE);
+        delete.setEnabled((mode == Mode.EDITABLE) || (mode == Mode.IMMUTABLE));
 
         HorizontalLayout actions = new HorizontalLayout();
         actions.add(add, delete, update, details);

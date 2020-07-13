@@ -11,7 +11,9 @@
  *  under the License.
  */
 
-package net.tangly.gleam.model.dsl;
+package net.tangly.gleam.model;
 
-public interface EntityBuilder {
+import java.util.List;
+
+public record JsonEntity<T>(Class<T> clazz, List<JsonProperty> properties) {
 }

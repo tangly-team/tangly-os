@@ -11,13 +11,17 @@
  *  under the License.
  */
 
-package net.tangly.bus.invoices;
+package net.tangly.invoices.ports;
 
+import java.nio.file.Path;
+import java.util.Map;
 
-import java.math.BigDecimal;
+import net.tangly.bus.invoices.Invoice;
+import org.jetbrains.annotations.NotNull;
 
-/**
- * A product sold by a legal entity and referenced in an invoice or an invoice line.
- */
-public record Product(String id, String description, BigDecimal unitPrice, String unit, BigDecimal vatRate) {
+public class InvoiceJson implements InvoiceGenerator{
+    @Override
+    public void create(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
+
+    }
 }
