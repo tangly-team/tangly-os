@@ -13,15 +13,15 @@ draft: false
 :source-highlighter: pygments
 :pygments-style: manni
 
-= BUS-001 Use Tag for VAT costs computation
+== BUS-001 Use Tag for VAT costs computation
 
 Date: 2017-12-01
 
-== Status
+=== Status
 
 Implemented
 
-== Context
+=== Context
 
 We need to record the VAT components of transactions in our ledger system.
 The VAT value can be different for each position in a transaction therefore the VAT information shall be defined on each part of a transaction.
@@ -29,7 +29,7 @@ The VAT value can be different for each position in a transaction therefore the 
 The value of the VAT is computed based on the VAT percentage.
 The percentage can change over time due to regulatory changes.
 
-== Decision
+=== Decision
 
 We will support tags at the transaction entry.
 The tags are a triplet *[namespace:]name[=value]* format.
@@ -39,7 +39,7 @@ The current values are:
 1. F1 for VAT invoiced at 8% and paid to the state at 7.1%
 1. F2 for VAT invoiced at 7.7% and paid to the state at 6.9%
 
-== Consequences
+=== Consequences
 
 * Ontology based on tags are not hard defined through a type system.
 * Checks have to be implemented to guaranty adequate level of tracking.

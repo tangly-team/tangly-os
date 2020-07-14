@@ -12,27 +12,27 @@ draft: false
 :source-highlighter: pygments
 :pygments-style: manni
 
-= BUS-002 Use Tag for per project costs computation
+== BUS-002 Use Tag for per project costs computation
 
 Date: 2017-12-01
 
-== Status
+=== Status
 
 Implemented
 
-== Context
+=== Context
 
 We would like to compute earnings and costs on per project base.
 Each transaction entry should support tags to identify the associated projects or departments.
 The tag approach supports multiple consolidation of an orthogonal cost structure.
 
-== Decision
+=== Decision
 
 We will support tags at the transaction entry.
 The tags are a triplet *[namespace:]name[=value]* format.
 We recommend the namespace "fin", the name "segment", and a text identifier has value.
 
-== Consequences
+=== Consequences
 
 * Ontology based on tags are not hard defined through a type system.
 * Checks have to be implemented to guaranty adequate level of tracking.

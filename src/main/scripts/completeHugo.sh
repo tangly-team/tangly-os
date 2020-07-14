@@ -1,3 +1,7 @@
+siteRootDir=/Users/Shared/Projects/
+siteName=tangly-os-site
+siteDir=$siteRootDir$siteName
+
 cd $siteDir
 git clone --no-checkout https://marcel-baumann@bitbucket.org/tangly-team/tangly-team.bitbucket.io.git public
 hugo
