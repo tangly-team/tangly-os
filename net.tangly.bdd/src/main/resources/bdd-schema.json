@@ -9,19 +9,22 @@
       }
     },
     "entity": {
-      "id": {
-        "type": "string"
-      },
-      "name": {
-        "type": "string"
-      },
-      "description": {
-        "type": "string"
-      },
-      "required": [
-        "id",
-        "name"
-      ]
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      }
     },
     "ands": {
       "type": "array",
@@ -80,7 +83,13 @@
                     "then:": {
                       "ref": "definitions.json#/block"
                     },
-                    "required" : ["name", "method", "given", "when", "then"]
+                    "required": [
+                      "name",
+                      "method",
+                      "given",
+                      "when",
+                      "then"
+                    ]
                   }
                 }
               }

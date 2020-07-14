@@ -15,11 +15,9 @@ package net.tangly.commons.vaadin;
 
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import com.github.mvysny.kaributesting.v10.Routes;
-import com.vaadin.flow.component.UI;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
 public class UiTests {
     @BeforeEach
     public void setupVaadin() {

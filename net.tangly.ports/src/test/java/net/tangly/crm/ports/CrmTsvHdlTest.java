@@ -19,6 +19,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import net.tangly.bus.crm.CrmTags;
+import net.tangly.bus.crm.LegalEntity;
+import net.tangly.bus.crm.NaturalEntity;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -32,25 +34,27 @@ public class CrmTsvHdlTest {
         CrmTsvHdl handler = new CrmTsvHdl(crm);
 
         handler.importNaturalEntities(fromResource(PACKAGE_NAME + "natural-entities.tsv"));
-        assertThat(crm.naturalEntities().size()).isEqualTo(6);
-        assertThat(crm.naturalEntities().get(0).oid()).isEqualTo(1);
-        assertThat(crm.naturalEntities().get(0).id()).isEqualTo("jd-01");
-        assertThat(crm.naturalEntities().get(0).address(CrmTags.CRM_ADDRESS_HOME)).isNotNull();
-        assertThat(crm.naturalEntities().get(0).email(CrmTags.HOME)).isNotNull();
-        assertThat(crm.naturalEntities().get(0).phoneNr(CrmTags.HOME)).isNotNull();
-        assertThat(crm.naturalEntities().get(0).site(CrmTags.HOME)).isNotNull();
+        NaturalEntity naturalEntity = crm.naturalEntities().getAll().get(0);
+        assertThat(crm.naturalEntities().getAll().size()).isEqualTo(6);
+        assertThat(naturalEntity.oid()).isEqualTo(1);
+        assertThat(naturalEntity.id()).isEqualTo("jd-01");
+        assertThat(naturalEntity.address(CrmTags.CRM_ADDRESS_HOME)).isNotNull();
+        assertThat(naturalEntity.email(CrmTags.HOME)).isNotNull();
+        assertThat(naturalEntity.phoneNr(CrmTags.HOME)).isNotNull();
+        assertThat(naturalEntity.site(CrmTags.HOME)).isNotNull();
 
         handler.importLegalEntities(fromResource(PACKAGE_NAME + CrmWorkflows.LEGAL_ENTITIES_TSV));
-        assertThat(crm.legalEntities().size()).isEqualTo(3);
-        assertThat(crm.legalEntities().get(0).oid()).isEqualTo(100);
-        assertThat(crm.legalEntities().get(0).id()).isEqualTo("UNKNOWN-100");
-        assertThat(crm.legalEntities().get(0).name()).isEqualTo("hope llc");
+        LegalEntity legalEntity = crm.legalEntities().getAll().get(0);
+        assertThat(crm.legalEntities().getAll().size()).isEqualTo(3);
+        assertThat(legalEntity.oid()).isEqualTo(100);
+        assertThat(legalEntity.id()).isEqualTo("UNKNOWN-100");
+        assertThat(legalEntity.name()).isEqualTo("hope llc");
 
         handler.importEmployees(fromResource(PACKAGE_NAME + CrmWorkflows.EMPLOYEES_TSV));
-        assertThat(crm.employees().size()).isEqualTo(5);
+        assertThat(crm.employees().getAll().size()).isEqualTo(5);
 
         handler.importContracts(fromResource(PACKAGE_NAME + CrmWorkflows.CONTRACTS_TSV));
-        assertThat(crm.contracts().size()).isNotEqualTo(0);
+        assertThat(crm.contracts().getAll().size()).isNotEqualTo(0);
     }
 
     private Path fromResource(String resource) {

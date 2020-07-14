@@ -34,8 +34,8 @@ public class DaoOwnedAndReferencedEntitiesTest extends DaoTest {
         private Entity owner;
         private Entity ownedOne;
         private Entity referencedOne;
-        private List<Entity> ownedOnes;
-        private List<Entity> referencedOnes;
+        private final List<Entity> ownedOnes;
+        private final List<Entity> referencedOnes;
 
         public Entity() {
             referencedOnes = new ArrayList<>();
@@ -115,7 +115,7 @@ public class DaoOwnedAndReferencedEntitiesTest extends DaoTest {
     @BeforeEach
     void setUp() throws NoSuchMethodException {
         setUpDatabase();
-        DaoBuilder<Entity> entitiesBuilder = new DaoBuilder<Entity>(Entity.class);
+        DaoBuilder<Entity> entitiesBuilder = new DaoBuilder<>(Entity.class);
         entities = entitiesBuilder.withOid().withString("name").withOne2One("referencedOne", entitiesBuilder.self(), false)
                 .withOne2One("ownedOne", entitiesBuilder.self(), true).withOne2Many("referencedOnes", "referencedBy", entitiesBuilder.self(), false)
                 .withFid("referencedBy").withOne2Many("ownedOnes", "ownedBy", entitiesBuilder.self(), true).withFid("ownedBy")
@@ -183,9 +183,9 @@ public class DaoOwnedAndReferencedEntitiesTest extends DaoTest {
 
         // then
         long rootOid = root.oid;
-        long onwedOid = root.ownedOne().oid();
+        long onwedoid = root.ownedOne().oid();
         assertThat(rootOid).isNotEqualTo(HasOid.UNDEFINED_OID);
-        assertThat(onwedOid).isNotEqualTo(HasOid.UNDEFINED_OID);
+        assertThat(onwedoid).isNotEqualTo(HasOid.UNDEFINED_OID);
 
         // when
         entities.clearCache();
@@ -208,7 +208,7 @@ public class DaoOwnedAndReferencedEntitiesTest extends DaoTest {
 
         // when
         root = entities.find(rootOid).orElse(null);
-        root.ownedOne(entities.find(onwedOid).orElse(null));
+        root.ownedOne(entities.find(onwedoid).orElse(null));
         assertThat(root.ownedOne()).isNotNull();
         entities.update(root);
 

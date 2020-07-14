@@ -11,7 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.bus.projects;
+package net.tangly.bus.products;
 
 import java.time.LocalDate;
 

@@ -11,7 +11,13 @@
  *  under the License.
  */
 
-/**
- * The package provides core abstractions used in any commercial application in need product and project handling.
- */
-package net.tangly.bus.projects;
+package net.tangly.bus.products;
+
+
+import net.tangly.bus.core.EntityImp;
+
+public class Project extends EntityImp {
+    public Project() {
+        // default constructor
+    }
+}

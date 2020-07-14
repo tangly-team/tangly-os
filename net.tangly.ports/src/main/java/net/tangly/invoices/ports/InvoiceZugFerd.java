@@ -78,7 +78,7 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
     }
 
     /**
-     * Implments a ZugFerd exportable item and maps the invoice item to ZugFerd abstraction.
+     * Implements a ZugFerd exportable item and maps the invoice item to ZugFerd abstraction.
      */
     static class ZugFerdItem implements IZUGFeRDExportableItem {
         private InvoiceItem item;

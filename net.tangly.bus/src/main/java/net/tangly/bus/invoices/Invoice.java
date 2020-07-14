@@ -33,7 +33,7 @@ import net.tangly.bus.crm.LegalEntity;
  * an invoice is complete and can be archived. For example, you can change the VAT percentage or a product price without any consequence on existing
  * invoices.</p>
  * <p>The invoice assumes that a VAT rate applies to a specific product associated with a given invoice item. This assumption is reasonable for
- * quite a lot of businesses, in particular in the service industry. Often an invoice references only one VAT rate, conveniance methods are provided
+ * quite a lot of businesses, in particular in the service industry. Often an invoice references only one VAT rate, convenience methods are provided
  * to streamline this scenario.</p>
  */
 public class Invoice {

@@ -1,3 +1,5 @@
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
 :icons: font
 :source-highlighter: pygments
 :pygments-style: manni
@@ -5,6 +7,7 @@
 == Maven Central Publication
 
 . Publish artifacts of component with ``gradle publishAllPublicationsToMavenRepository``
+.. Pre activitiy: test publishing with ``gradle publishToMavenLocal``
 .. Pre activity: check on bitbucket the project compile through the continuous integration pipeline
 .. Post activity: *tag repository* on git to identify version of the published packages.
 The tag is of the form -{AcronymComponent}-MajorVersion-MinorVersion-PatchVersion- as
@@ -33,6 +36,26 @@ The acronyms are (the current composite acronym is BDD-BUS-COMMONS-FSM-PORTS)
 * *FSM* hierarchical finite state machine library
 * GLEAM
 * *PORTS* ports library
+
+[plantuml, tangly-componentsDependencies, svg]
+....
+
+package net.tangly.bdd {}
+
+package net.tangly.bus {}
+
+package net.tangly.commons {
+}
+net.tangly.commons --> net.tangly.bus
+
+package net.tangly.fsm {
+}
+
+package net.tangly.ports {}
+net.tangly.ports --> net.tangly.commons
+net.tangly.ports --> net.tangly.bus
+
+....
 
 === Findings
 

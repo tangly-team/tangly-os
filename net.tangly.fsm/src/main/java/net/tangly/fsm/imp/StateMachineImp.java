@@ -172,17 +172,17 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
     }
 
     @Override
-    public void addEventHandler(StateMachineEventHandler<O, S, E> handler) {
+    public void addEventHandler(@NotNull StateMachineEventHandler<O, S, E> handler) {
         helper.addEventHandler(handler);
     }
 
     @Override
-    public void removeEventHandler(StateMachineEventHandler<O, S, E> handler) {
+    public void removeEventHandler(@NotNull StateMachineEventHandler<O, S, E> handler) {
         helper.removeEventHandler(handler);
     }
 
     @Override
-    public boolean isRegistered(StateMachineEventHandler<O, S, E> handler) {
+    public boolean isRegistered(@NotNull StateMachineEventHandler<O, S, E> handler) {
         return helper.isRegistered(handler);
     }
 

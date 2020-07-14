@@ -48,7 +48,7 @@ public class ConstructorsTest {
         }
     }
 
-    class ExampleFour {
+    static class ExampleFour {
         @Inject
         public ExampleFour() {
         }
@@ -68,18 +68,18 @@ public class ConstructorsTest {
         }
     }
 
-    class ExampleSix {
+    static class ExampleSix {
         private ExampleSix() {
         }
     }
 
-    class ExampleSeven {
+    static class ExampleSeven {
         public ExampleSeven() {
             throw new NullPointerException();
         }
     }
 
-    class ExampleEight {
+    static class ExampleEight {
         public ExampleEight(ExampleEight example) {
         }
     }
@@ -108,7 +108,7 @@ public class ConstructorsTest {
     @DisplayName("When injecting a constructor")
     class ConstructorInjectionTest {
         @Test
-        @DisplayName("Then binding a class with a simgle public no arguments constructor allows instantiation")
+        @DisplayName("Then binding a class with a simple public no arguments constructor allows instantiation")
         public void testBindPublicNoArgConstructor() {
             final ExampleNine instance = injector.instance(ExampleNine.class);
             assertThat(instance).isNotNull();
@@ -147,7 +147,7 @@ public class ConstructorsTest {
         }
 
         @Test
-        @DisplayName("Then binding a class with a constructor with one argument allows instantiation of instance and constructor parameeter")
+        @DisplayName("Then binding a class with a constructor with one argument allows instantiation of instance and constructor parameter")
         void testConstructorWithOneDependency() {
             final ExampleNine instance = injector.instance(ExampleNine.class);
             assertThat(instance).isNotNull();

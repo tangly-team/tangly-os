@@ -77,7 +77,7 @@ public class StoryAsciiDocPublisher {
         if (!object.isNull(Constants.TAGS)) {
             writer.append("*tags:*");
             for (var tag : object.getJSONArray(Constants.TAGS)) {
-                writer.append(" '").append((String)tag).append("'");
+                writer.append(" '").append((String) tag).append("'");
             }
             writer.println();
             writer.println();

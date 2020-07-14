@@ -39,7 +39,7 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Provides import functions for CRM entities persisted in comma separated tabs files. These files are often defined for integration testing or
- * integrtion of legacy systems not providing programmatic API.
+ * integration of legacy systems not providing programmatic API.
  */
 public class CrmTsvHdl {
     public static final String OID = "oid";
@@ -73,7 +73,7 @@ public class CrmTsvHdl {
                 entity.site("home", get(record, SITE));
                 entities.add(entity);
             }
-            crm.addNaturalEntities(entities);
+            crm.naturalEntities().updateAll(entities);
         }
         return entities;
     }
@@ -94,7 +94,7 @@ public class CrmTsvHdl {
                 entity.im("linkedin", get(record, LINKEDIN));
                 entities.add(entity);
             }
-            crm.addLegalEntities(entities);
+            crm.legalEntities().updateAll(entities);
         }
         return entities;
     }
@@ -113,7 +113,7 @@ public class CrmTsvHdl {
                 entity.setTag("title", get(record, "title"));
                 entities.add(entity);
             }
-            crm.addEmployees(entities);
+            crm.employees().updateAll(entities);
         }
         return entities;
     }
@@ -130,7 +130,7 @@ public class CrmTsvHdl {
                 entity.bankConnection(new BankConnection(get(record, "iban"), get(record, "bic"), get(record, "institute")));
                 entities.add(entity);
             }
-            crm.addContracts(entities);
+            crm.contracts().updateAll(entities);
         }
         return entities;
     }
@@ -161,7 +161,7 @@ public class CrmTsvHdl {
     private Optional<NaturalEntity> findNaturalEntityByOid(String identifier) {
         if (identifier != null) {
             long oid = Long.parseLong(identifier);
-            return crm.naturalEntities().stream().filter(o -> o.oid() == oid).findAny();
+            return crm.naturalEntities().find(oid);
         } else {
             return Optional.empty();
         }
@@ -170,7 +170,7 @@ public class CrmTsvHdl {
     private Optional<LegalEntity> findLegalEntityByOid(String identifier) {
         if (identifier != null) {
             long oid = Long.parseLong(identifier);
-            return crm.legalEntities().stream().filter(o -> o.oid() == oid).findAny();
+            return crm.legalEntities().find(oid);
         } else {
             return Optional.empty();
         }

@@ -64,7 +64,7 @@ public abstract class StoreTest {
     }
 
     /**
-     * Validate the behavior driven aggregate test report agains the JSON schema describing the structure of the report.
+     * Validate the behavior driven aggregate test report against the JSON schema describing the structure of the report.
      *
      * @param bddReport report which structure should be validated
      * @throws IOException if a file could not be found or opened

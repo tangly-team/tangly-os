@@ -104,10 +104,10 @@ public class DaoHrormTest extends DaoTest {
     @BeforeEach
     void setUp() throws NoSuchMethodException {
         setUpDatabase();
-        authors = new DaoBuilder<Author>(Author.class).withOid().withString("name").build("hrorm", "authors", datasource());
-        ingredients = new DaoBuilder<Ingredient>(Ingredient.class).withOid().withString("name").withLong("amount").withFid("recipe")
+        authors = new DaoBuilder<>(Author.class).withOid().withString("name").build("hrorm", "authors", datasource());
+        ingredients = new DaoBuilder<>(Ingredient.class).withOid().withString("name").withLong("amount").withFid("recipe")
                 .build("hrorm", "ingredients", datasource());
-        recipes = new DaoBuilder<Recipe>(Recipe.class).withOid().withString("name").withOne2One("author", Reference.of(authors), false)
+        recipes = new DaoBuilder<>(Recipe.class).withOid().withString("name").withOne2One("author", Reference.of(authors), false)
                 .withOne2Many("ingredients", "recipe", Reference.of(ingredients), true).build("hrorm", "recipes", datasource());
     }
 

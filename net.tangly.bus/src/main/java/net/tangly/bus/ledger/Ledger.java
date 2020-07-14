@@ -127,7 +127,8 @@ public class Ledger {
     public BigDecimal computeVat(LocalDate from, LocalDate to) {
         return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).map(o -> {
             Optional<BigDecimal> vat = o.getVat();
-            return vat.isPresent() ? o.amount().subtract(o.amount().divide(BigDecimal.ONE.add(vat.get()), 2, RoundingMode.HALF_UP)) : BigDecimal.ZERO;
+            return vat.map(bigDecimal -> o.amount().subtract(o.amount().divide(BigDecimal.ONE.add(bigDecimal), 2, RoundingMode.HALF_UP)))
+                    .orElse(BigDecimal.ZERO);
         }).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
     }
 

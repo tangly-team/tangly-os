@@ -23,7 +23,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("Given an injector")
 public class FinalClassTest {
 
-    public final class Dependency {
+    public final static class Dependency {
         public Dependency() {
         }
     }
@@ -47,7 +47,7 @@ public class FinalClassTest {
     @DisplayName("When binding a final class")
     class FinalClassInjectionTest {
         @Test
-        @DisplayName("Then final class can be instantiated and depency through constructor parameter is instantiated and set")
+        @DisplayName("Then final class can be instantiated and dependency through constructor parameter is instantiated and set")
         void success_finalClassCanBeInstantiated() {
             final Example instance = injector.instance(Example.class);
             assertThat(instance).isNotNull();

@@ -13,17 +13,13 @@
 
 package net.tangly.crm.ports;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-
 import net.tangly.bus.core.TagTypeRegistry;
 import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
+import net.tangly.commons.orm.InstanceProviderInMemory;
 
 /**
  * Defines the customer relationship management <i>CRM</i> subsystem. The major abstractions are
@@ -36,17 +32,17 @@ import net.tangly.bus.crm.NaturalEntity;
  * </ul>
  */
 public class Crm {
-    private final List<NaturalEntity> naturalEntities;
-    private final List<LegalEntity> legalEntities;
-    private final List<Employee> employees;
-    private final List<Contract> contracts;
+    private final InstanceProviderInMemory<NaturalEntity> naturalEntities;
+    private final InstanceProviderInMemory<LegalEntity> legalEntities;
+    private final InstanceProviderInMemory<Employee> employees;
+    private final InstanceProviderInMemory<Contract> contracts;
     private final TagTypeRegistry tagTypeRegistry;
 
     public Crm() {
-        naturalEntities = new ArrayList<>();
-        legalEntities = new ArrayList<>();
-        employees = new ArrayList<>();
-        contracts = new ArrayList<>();
+        naturalEntities = new InstanceProviderInMemory<>();
+        legalEntities = new InstanceProviderInMemory<>();
+        employees = new InstanceProviderInMemory<>();
+        contracts = new InstanceProviderInMemory<>();
         tagTypeRegistry = new TagTypeRegistry();
         CrmTags.registerTags(tagTypeRegistry);
     }
@@ -55,35 +51,20 @@ public class Crm {
         return tagTypeRegistry;
     }
 
-    public void addNaturalEntities(Collection<NaturalEntity> naturalEntities) {
-        this.naturalEntities.addAll(naturalEntities);
+    public InstanceProviderInMemory<NaturalEntity> naturalEntities() {
+        return this.naturalEntities;
     }
 
-    public List<NaturalEntity> naturalEntities() {
-        return Collections.unmodifiableList(naturalEntities);
+    public InstanceProviderInMemory<LegalEntity> legalEntities() {
+        return this.legalEntities;
     }
 
-    public void addLegalEntities(Collection<LegalEntity> legalEntities) {
-        this.legalEntities.addAll(legalEntities);
+    public InstanceProviderInMemory<Employee> employees() {
+        return this.employees;
     }
 
-    public List<LegalEntity> legalEntities() {
-        return Collections.unmodifiableList(legalEntities);
+    public InstanceProviderInMemory<Contract> contracts() {
+        return this.contracts;
     }
 
-    public void addEmployees(Collection<Employee> employees) {
-        this.employees.addAll(employees);
-    }
-
-    public List<Employee> employees() {
-        return Collections.unmodifiableList(employees);
-    }
-
-    public void addContracts(Collection<Contract> contracts) {
-        this.contracts.addAll(contracts);
-    }
-
-    public List<Contract> contracts() {
-        return Collections.unmodifiableList(contracts);
-    }
 }

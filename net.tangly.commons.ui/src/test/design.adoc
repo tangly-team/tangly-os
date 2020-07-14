@@ -4,9 +4,9 @@
 
 The entity abstraction has five kinds of properties
 
-Simple Properties:: are all displayed in a form part of a _properties_ tab for visualation or editing.
-Comments:: are displayed as a CRUD Grid - Form component part of a _comments_ tab for visualation or editing following CRUD approach.
-Tags:: are displayed as a CRUD Grid - Form component part of a _tags_ tab for visualation or editing following CRUD approach.
+Simple Properties:: are all displayed in a form part of a _properties_ tab for visualization or editing.
+Comments:: are displayed as a CRUD Grid - Form component part of a _comments_ tab for visualization or editing following CRUD approach.
+Tags:: are displayed as a CRUD Grid - Form component part of a _tags_ tab for visualization or editing following CRUD approach.
 The tag registry provides support for legible _namespaces_, _tag names_, and if defined _values_.
 One to One Relations:: To be written
 One to Many Relations:: To be written

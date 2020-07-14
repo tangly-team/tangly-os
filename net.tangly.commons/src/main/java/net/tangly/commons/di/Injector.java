@@ -44,8 +44,7 @@ public interface Injector {
      * @return injector instance
      */
     static Injector create() {
-        Injector injector = new InjectorImp();
-        return injector;
+        return new InjectorImp();
     }
 
     /**

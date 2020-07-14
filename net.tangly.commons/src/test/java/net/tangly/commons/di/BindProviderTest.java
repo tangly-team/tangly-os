@@ -66,7 +66,7 @@ class BindProviderTest {
         @Test
         @DisplayName("Then an instance is created with constructor provider")
         void testProviderNewIsAvailable() {
-            injector.bindProvider(ThirdParty.class, (Provider<ThirdParty>) ThirdParty::new);
+            injector.bindProvider(ThirdParty.class, ThirdParty::new);
             final Example instance = injector.instance(Example.class);
             assertThat(instance).isNotNull();
             assertThat(instance.dep).isNotNull();
@@ -75,7 +75,7 @@ class BindProviderTest {
         @Test
         @DisplayName("Then an instance is created with method provider")
         void testProviderMethodIsAvailable() {
-            injector.bindProvider(ThirdParty.class, (Provider<ThirdParty>) ThirdParty::thirdPartyFactory);
+            injector.bindProvider(ThirdParty.class, ThirdParty::thirdPartyFactory);
             final Example instance = injector.instance(Example.class);
             assertThat(instance).isNotNull();
             assertThat(instance.dep).isNotNull();

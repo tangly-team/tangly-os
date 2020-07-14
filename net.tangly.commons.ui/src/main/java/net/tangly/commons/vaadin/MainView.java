@@ -19,7 +19,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.vaadin.flow.component.contextmenu.MenuItem;
+import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.router.Route;
@@ -58,6 +61,25 @@ public class MainView extends VerticalLayout {
 
         NaturalEntitiesView crud = new NaturalEntitiesView(entities, DataProvider.ofCollection(entities), registry);
         setSizeFull();
-        add(crud);
+        add(menuBar(), crud);
+    }
+
+    private MenuBar menuBar() {
+        MenuBar menuBar = new MenuBar();
+        menuBar.setOpenOnHover(true);
+
+        MenuItem crm = menuBar.addItem("CRM");
+        SubMenu crmSubMenu = crm.getSubMenu();
+        MenuItem legalEntities = crmSubMenu.addItem("Legal Entities");
+        MenuItem naturalEntities = crmSubMenu.addItem("Natural Entities");
+        MenuItem contracts = crmSubMenu.addItem("Contracts");
+
+        MenuItem products = menuBar.addItem("Products");
+        SubMenu productdSubMenu = crm.getSubMenu();
+        MenuItem projects = crmSubMenu.addItem("Projects");
+
+        MenuItem ledger = menuBar.addItem("Ledger");
+        SubMenu ledgerSubMenu = ledger.getSubMenu();
+        return menuBar;
     }
 }

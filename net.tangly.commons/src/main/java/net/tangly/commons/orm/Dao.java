@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import javax.sql.DataSource;
 
@@ -40,7 +39,7 @@ import org.slf4j.Logger;
  *
  * @param <T> the class being mapped. The table takes care of the handling of the unique object identifier.
  */
-public class Dao<T extends HasOid> {
+public class Dao<T extends HasOid> implements InstanceProvider<T> {
     private static final String PRIMARY_KEY = "oid";
     private static final int KEY_SQL_TYPE = Types.BIGINT;
     private static final Logger logger = org.slf4j.LoggerFactory.getLogger(Dao.class);
@@ -95,7 +94,30 @@ public class Dao<T extends HasOid> {
         return properties.stream().filter(o -> o.name().equals(name)).findAny();
     }
 
-    // region of-CRUD
+    // region of-CRUD and instance provider
+
+    @Override
+    public Optional<T> find(long oid) {
+        Optional<T> entity = retrieveFromCache(oid);
+        if (entity.isEmpty()) {
+            try (var connection = dataSource.getConnection(); var stmt = connection.prepareStatement(findSql)) {
+                stmt.setObject(1, oid, KEY_SQL_TYPE);
+                try (ResultSet set = stmt.executeQuery()) {
+                    if (set.next()) {
+                        entity = Optional.of(materializeEntity(set));
+                    }
+                }
+            } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+                logger.atError().log("Exception occurred when retrieving entity {} id {}", entityName, oid, e);
+            }
+        }
+        return entity;
+    }
+
+    @Override
+    public List<T> getAll() {
+        return find("TRUE");
+    }
 
     /**
      * Updates the persistent data associated with the entity.If the entity is new a row is inserted into the table otherwise the columns are updated.
@@ -103,6 +125,7 @@ public class Dao<T extends HasOid> {
      *
      * @param entity entity to update
      */
+    @Override
     public void update(@NotNull T entity) {
         try (var connection = dataSource.getConnection(); var stmt = connection.prepareStatement(replaceSql)) {
             if (entity.oid() == HasOid.UNDEFINED_OID) {
@@ -124,27 +147,20 @@ public class Dao<T extends HasOid> {
         }
     }
 
-    /**
-     * Finds the entity instance with the given unique object identifier.
-     *
-     * @param oid object identifier of the instance to find
-     * @return optional of the requested entity
-     */
-    public Optional<T> find(long oid) {
-        Optional<T> entity = retrieveFromCache(oid);
-        if (entity.isEmpty()) {
-            try (var connection = dataSource.getConnection(); var stmt = connection.prepareStatement(findSql)) {
-                stmt.setObject(1, oid, KEY_SQL_TYPE);
-                try (ResultSet set = stmt.executeQuery()) {
-                    if (set.next()) {
-                        entity = Optional.of(materializeEntity(set));
-                    }
-                }
-            } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
-                logger.atError().log("Exception occurred when retrieving entity {} id {}", entityName, oid, e);
+    public void delete(@NotNull T entity) {
+        try (var connection = dataSource.getConnection(); var stmt = connection.prepareStatement(deleteSql)) {
+            for (var relation : one2many) {
+                relation.delete(entity);
             }
+            for (var relation : one2one) {
+                relation.delete(entity);
+            }
+            stmt.setObject(1, entity.oid(), KEY_SQL_TYPE);
+            stmt.executeUpdate();
+            removeFromCache(entity.oid());
+        } catch (SQLException | IllegalAccessException e) {
+            logger.atError().log("Error when deleting instance {} id {}", entityName, entity.oid(), e);
         }
-        return entity;
     }
 
     public List<T> find(String where) {
@@ -179,22 +195,6 @@ public class Dao<T extends HasOid> {
         }
         addToCache(entity);
         return entity;
-    }
-
-    public void delete(@NotNull T entity) {
-        try (var connection = dataSource.getConnection(); var stmt = connection.prepareStatement(deleteSql)) {
-            for (var relation : one2many) {
-                relation.delete(entity);
-            }
-            for (var relation : one2one) {
-                relation.delete(entity);
-            }
-            stmt.setObject(1, entity.oid(), KEY_SQL_TYPE);
-            stmt.executeUpdate();
-            removeFromCache(entity.oid());
-        } catch (SQLException | IllegalAccessException e) {
-            logger.atError().log("Error when deleting instance {} id {}", entityName, entity.oid(), e);
-        }
     }
 
     public void delete(long oid) {

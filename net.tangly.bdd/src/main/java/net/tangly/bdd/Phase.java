@@ -40,7 +40,7 @@ public class Phase {
      */
     private final List<String> ands;
 
-    public Phase(String text, @NotNull Consumer<Scene> lambda) {
+    public Phase(@NotNull String text, @NotNull Consumer<Scene> lambda) {
         this.text = text;
         this.lambda = lambda;
         this.ands = new ArrayList<>();
