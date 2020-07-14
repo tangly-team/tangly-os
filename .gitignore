@@ -18,6 +18,10 @@ hs_err_pid*
 /.gradle/
 /.idea/
 
-/net.tangly.commons.ui/webpack.generated.js
-/net.tangly.commons.ui/webpack.config.js
 /net.tangly.commons.ui/package.json
+/net.tangly.commons.ui/pnpm-lock.yaml
+/net.tangly.commons.ui/pnpmfile.js
+/net.tangly.commons.ui/tsconfig.json
+/net.tangly.commons.ui/types.d.ts
+/net.tangly.commons.ui/webpack.config.js
+/net.tangly.commons.ui/webpack.generated.js

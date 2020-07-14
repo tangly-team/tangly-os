@@ -16,14 +16,12 @@ draft: false
 :source-highlighter: pygments
 :pygments-style: manni
 
-== Commons Models
-
 == Reference Codes
 
 === Design Considerations
 
 * The application is sole and exclusive owner of the database instance. Therefore instances can never be changed from another system when the
-applicationis running.
+application is running.
 * The domain model shall not be tainted with active records interfaces or forced inheritance structure. This decision reflect the hexagon
 architecture.
 * Unique object identifiers are necessary to identify instances outside the Java virtual machine, such as databases, CSV files or JSON files.

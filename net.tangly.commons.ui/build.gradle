@@ -33,7 +33,7 @@ dependencies {
     implementation project (':net.tangly.commons')
     implementation project(':net.tangly.bus')
 
-    implementation enforcedPlatform('com.vaadin:vaadin-bom:16.0.0')
+    implementation enforcedPlatform('com.vaadin:vaadin-bom:16.0.1')
     implementation("com.vaadin:vaadin-core")
 
     providedCompile "javax.servlet:javax.servlet-api:3.1.0"

@@ -17,11 +17,19 @@ draft: false
 
 == CRM Ports
 
+_To be written_
+
 == Invoices Ports
+
+_To be written_
 
 == Ledger Ports
 
+_To be written_
+
 === Ledger Banana 8 Import Handler
+
+_To be written_
 
 ==== Importing Ledger Structure
 
