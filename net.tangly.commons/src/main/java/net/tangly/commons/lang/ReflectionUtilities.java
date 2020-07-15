@@ -1,19 +1,22 @@
 /*
  * Copyright 2006-2020 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain 
+ *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  *  a copy of the License at
- *  
+ *
  *          http://www.apache.org/licenses/LICENSE-2.0
- *  
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT 
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations 
+ *
+ *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
  *  under the License.
  */
 
 package net.tangly.commons.lang;
 
 import java.lang.reflect.Field;
+import java.security.AccessController;
+import java.security.PrivilegedActionException;
+import java.security.PrivilegedExceptionAction;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -29,13 +32,28 @@ public final class ReflectionUtilities {
     private ReflectionUtilities() {
     }
 
-    public static <T> void setField(@NotNull T entity, @NotNull String name, @NotNull Object value) throws IllegalAccessException {
+    public static <T> void set(@NotNull T entity, @NotNull String name, @NotNull Object value) throws PrivilegedActionException {
         Optional<Field> field = findField(entity.getClass(), name);
         if (field.isPresent()) {
-            Field property = field.get();
-            property.setAccessible(true);
-            property.set(entity, value);
+            set(entity, field.get(), value);
         }
+    }
+
+    public static <T> void set(@NotNull T entity, @NotNull Field field, @NotNull Object value) throws PrivilegedActionException {
+        PrivilegedExceptionAction<Void> action = (() -> {
+            field.setAccessible(true);
+            field.set(entity, value);
+            return null;
+        });
+        AccessController.doPrivileged(action);
+    }
+
+    public static <T> Object get(@NotNull T entity, Field field) throws PrivilegedActionException {
+        final PrivilegedExceptionAction<Object> action = (() -> {
+            field.setAccessible(true);
+            return field.get(entity);
+        });
+        return AccessController.doPrivileged(action);
     }
 
     /**

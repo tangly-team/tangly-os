@@ -30,7 +30,6 @@ import net.codecrete.qrbill.generator.OutputSize;
 import net.codecrete.qrbill.generator.Payments;
 import net.codecrete.qrbill.generator.QRBill;
 import net.codecrete.qrbill.generator.SwicoBillInformation;
-import net.tangly.bus.core.Address;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.invoices.Invoice;
@@ -106,14 +105,15 @@ public class InvoiceQrCode implements InvoiceGenerator {
     }
 
     private static net.codecrete.qrbill.generator.Address create(@NotNull LegalEntity entity) {
-        Address address = entity.address(CrmTags.CRM_ADDRESS_WORK).orElse(null);
         net.codecrete.qrbill.generator.Address qrAddress = new net.codecrete.qrbill.generator.Address();
-        qrAddress.setName(entity.name());
-        qrAddress.setStreet(address.street());
-        qrAddress.setHouseNo(null);
-        qrAddress.setPostalCode(address.postcode());
-        qrAddress.setTown(address.locality());
-        qrAddress.setCountryCode(address.country());
+        entity.address(CrmTags.CRM_ADDRESS_WORK).ifPresent(address -> {
+            qrAddress.setName(entity.name());
+            qrAddress.setStreet(address.street());
+            qrAddress.setHouseNo(null);
+            qrAddress.setPostalCode(address.postcode());
+            qrAddress.setTown(address.locality());
+            qrAddress.setCountryCode(address.country());
+        });
         return qrAddress;
     }
 }

@@ -19,11 +19,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import net.codecrete.qrbill.generator.Strings;
-import net.tangly.bus.core.Address;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.invoices.Invoice;
@@ -73,7 +71,7 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
             helper.tableHeader(null, "options=\"header\", grid=\"none\", frame=\"none\", stripes=\"none\", cols=\"4,^1, >1,>1\"", "Position",
                     "Quantity", "Price", "Amount (CHF)"
             );
-            invoice.positions().stream().sorted(Comparator.comparingInt(InvoiceLine::position)).forEach(o -> helper
+            invoice.lines().stream().sorted(Comparator.comparingInt(InvoiceLine::position)).forEach(o -> helper
                     .tableRow((o.isAggregate() ? italics(o.text()) : o.text()), o.isItem() ? format(o.quantity()) : "", format(o.unitPrice()),
                             o.isAggregate() ? italics(format(o.amount())) : format(o.amount())
                     ));
@@ -128,11 +126,11 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
 
     private static String addressText(@NotNull LegalEntity entity) {
         StringBuilder text = new StringBuilder();
-        Address address = entity.address(CrmTags.CRM_ADDRESS_WORK).orElse(null);
-        text.append(entity.name()).append(NEWLINE).append(Strings.isNullOrEmpty(address.extended()) ? "" : (address.extended() + NEWLINE))
+        entity.address(CrmTags.CRM_ADDRESS_WORK).ifPresent(address -> text.append(entity.name()).append(NEWLINE)
+                .append(Strings.isNullOrEmpty(address.extended()) ? "" : (address.extended() + NEWLINE))
                 .append(Strings.isNullOrEmpty(address.street()) ? "" : (address.street() + NEWLINE))
                 .append(Strings.isNullOrEmpty(address.poBox()) ? "" : (address.poBox() + NEWLINE)).append(address.postcode()).append(" ")
-                .append(address.locality());
+                .append(address.locality()));
         return text.toString();
     }
 }

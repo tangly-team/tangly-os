@@ -208,10 +208,18 @@ public class Invoice {
         items.add(item);
     }
 
-    public List<InvoiceLine> positions() {
+    /**
+     * Return all positions defined in the invoice either invoice items or subtotals.
+     * @return list of invoice lines
+     */
+    public List<InvoiceLine> lines() {
         return Collections.unmodifiableList(items);
     }
 
+    /**
+     * Return all invoice items defined in the invoice.
+     * @return list of invoice items
+     */
     public List<InvoiceItem> items() {
         return items.stream().filter(InvoiceLine::isItem).map(o -> (InvoiceItem) o).collect(Collectors.toUnmodifiableList());
     }

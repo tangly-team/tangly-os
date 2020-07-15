@@ -13,12 +13,14 @@
 
 package net.tangly.commons.orm.imp;
 
+import java.security.PrivilegedActionException;
 import java.sql.Types;
 import java.util.Map;
 import java.util.Objects;
 
 import net.tangly.bus.core.HasOid;
 import net.tangly.commons.lang.Reference;
+import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.commons.orm.Dao;
 import net.tangly.commons.orm.Property;
 import net.tangly.commons.orm.Relation;
@@ -63,22 +65,22 @@ public class PropertyOne2One<T extends HasOid, R extends HasOid> extends Propert
     }
 
     @Override
-    public void update(@NotNull T entity) throws IllegalAccessException {
-        R ownee = (R) field().get(entity);
+    public void update(@NotNull T entity) throws PrivilegedActionException {
+        R ownee = (R) ReflectionUtilities.get(entity, field);
         if (Objects.nonNull(ownee)) {
             type().update(ownee);
         }
     }
 
     @Override
-    public void retrieve(@NotNull T entity, Long fid) throws IllegalAccessException {
+    public void retrieve(@NotNull T entity, Long fid) throws PrivilegedActionException {
         // the property is already been updated through the simple property retrieve mechanism.
     }
 
     @Override
-    public void delete(@NotNull T entity) throws IllegalAccessException {
+    public void delete(@NotNull T entity) throws PrivilegedActionException {
         if (isOwned()) {
-            R ownee = (R) field().get(entity);
+            R ownee = (R) ReflectionUtilities.get(entity, field);
             if (Objects.nonNull(ownee)) {
                 type().delete(ownee);
             }

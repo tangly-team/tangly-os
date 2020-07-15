@@ -1,19 +1,20 @@
 /*
  * Copyright 2006-2020 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain 
+ *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  *  a copy of the License at
- *  
+ *
  *          http://www.apache.org/licenses/LICENSE-2.0
- *  
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT 
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations 
+ *
+ *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
  *  under the License.
  */
 
 package net.tangly.commons.orm.imp;
 
 import java.lang.reflect.Field;
+import java.security.PrivilegedActionException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -55,7 +56,6 @@ public class PropertyOne2Many<T extends HasOid, R extends HasOid> implements Pro
         this.type = type;
         this.owned = owned;
         field = ReflectionUtilities.findField(entity, name).orElseThrow();
-        field.setAccessible(true);
     }
 
     @Override
@@ -99,10 +99,10 @@ public class PropertyOne2Many<T extends HasOid, R extends HasOid> implements Pro
     }
 
     @Override
-    public void update(@NotNull T entity) throws IllegalAccessException {
+    public void update(@NotNull T entity) throws PrivilegedActionException {
         Property foreignProperty = type().getPropertyBy(propertyBy).orElseThrow();
         List<R> oldReferences = new ArrayList<>(type().find(propertyBy + "=" + entity.oid()));
-        List<R> newReferences = (List<R>) field.get(entity);
+        List<R> newReferences = (List<R>) ReflectionUtilities.get(entity, field);
         oldReferences.removeAll(newReferences);
         for (R removedItem : oldReferences) {
             if (isOwned()) {
@@ -117,24 +117,24 @@ public class PropertyOne2Many<T extends HasOid, R extends HasOid> implements Pro
     }
 
     @Override
-    public void retrieve(@NotNull T entity, Long fid) throws IllegalAccessException {
-        Collection<R> collection = (Collection<R>) field.get(entity);
+    public void retrieve(@NotNull T entity, Long fid) throws PrivilegedActionException {
+        Collection<R> collection = (Collection<R>) ReflectionUtilities.get(entity, field);
         collection.clear();
         collection.addAll(type().find(propertyBy + "=" + entity.oid()));
     }
 
     @Override
-    public void delete(@NotNull T entity) throws IllegalAccessException {
+    public void delete(@NotNull T entity) throws PrivilegedActionException {
         if (isOwned()) {
-            ((List<R>) field.get(entity)).forEach(t -> type().delete(t));
+            ((List<R>) ReflectionUtilities.get(entity, field)).forEach(t -> type().delete(t));
         }
     }
 
     private void updateForeignKey(@NotNull T entity, @NotNull R referencedEntity, @NotNull Property foreignProperty, Object foreignKey) throws
-            IllegalAccessException {
-        Long oldForeignKey = (Long) foreignProperty.field().get(referencedEntity);
-        if (!Objects.equals(oldForeignKey,foreignKey)) {
-            foreignProperty.field().set(referencedEntity, foreignKey);
+            PrivilegedActionException {
+        Long oldForeignKey = (Long) ReflectionUtilities.get(referencedEntity, foreignProperty.field());
+        if (!Objects.equals(oldForeignKey, foreignKey)) {
+            ReflectionUtilities.set(referencedEntity, foreignProperty.field(), foreignKey);
             type().update(referencedEntity);
         }
     }

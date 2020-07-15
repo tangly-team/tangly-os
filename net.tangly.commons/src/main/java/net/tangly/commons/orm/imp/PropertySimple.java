@@ -58,7 +58,6 @@ public class PropertySimple<T extends HasOid> implements Property<T> {
         this.sqlType = sqlType;
         this.converters = new EnumMap<>(converters);
         field = ReflectionUtilities.findField(entity, name).orElseThrow();
-        field.setAccessible(true);
     }
 
     @Override

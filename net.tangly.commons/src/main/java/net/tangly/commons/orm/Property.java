@@ -14,12 +14,14 @@
 package net.tangly.commons.orm;
 
 import java.lang.reflect.Field;
+import java.security.PrivilegedActionException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.function.Function;
 
 import net.tangly.bus.core.HasOid;
+import net.tangly.commons.lang.ReflectionUtilities;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -70,17 +72,17 @@ public interface Property<T extends HasOid> {
 
     <T, R> Function<T, R> getConverter(@NotNull ConverterType type);
 
-    default <P, V> V get(@NotNull T entity, @NotNull ConverterType type) throws IllegalAccessException, IllegalArgumentException {
+    default <P, V> V get(@NotNull T entity, @NotNull ConverterType type) throws PrivilegedActionException {
         Function<P, V> convert = getConverter(type);
-        return convert.apply((P) field().get(entity));
+        return convert.apply((P) ReflectionUtilities.get(entity, field()));
     }
 
-    default <P, V> void set(@NotNull T entity, V value, @NotNull ConverterType type) throws IllegalAccessException, IllegalArgumentException {
+    default <P, V> void set(@NotNull T entity, V value, @NotNull ConverterType type) throws PrivilegedActionException {
         Function<V, P> convert = getConverter(type);
-        field().set(entity, convert.apply(value));
+        ReflectionUtilities.set(entity, field(), convert.apply(value));
     }
 
-    default void setParameter(@NotNull PreparedStatement statement, int index, @NotNull T entity) throws SQLException, IllegalAccessException {
+    default void setParameter(@NotNull PreparedStatement statement, int index, @NotNull T entity) throws PrivilegedActionException, SQLException {
         Object value = get(entity, ConverterType.java2jdbc);
         if (value != null) {
             statement.setObject(index, value, sqlType());
@@ -89,7 +91,7 @@ public interface Property<T extends HasOid> {
         }
     }
 
-    default void getParameter(@NotNull ResultSet set, int index, @NotNull T entity) throws SQLException, IllegalAccessException {
+    default void getParameter(@NotNull ResultSet set, int index, @NotNull T entity) throws PrivilegedActionException, SQLException {
         set(entity, set.getObject(index, jdbcType()), ConverterType.jdbc2java);
     }
 }

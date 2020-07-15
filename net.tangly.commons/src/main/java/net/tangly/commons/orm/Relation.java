@@ -13,6 +13,8 @@
 
 package net.tangly.commons.orm;
 
+import java.security.PrivilegedActionException;
+
 import net.tangly.bus.core.HasOid;
 import org.jetbrains.annotations.NotNull;
 
@@ -48,9 +50,9 @@ public interface Relation<T extends HasOid, R extends HasOid> {
      * Updates all the instances at the end of the relation.
      *
      * @param entity entity owning the relation
-     * @throws IllegalAccessException if an error occurred when accessing field for foreign key or instance
+     * @throws PrivilegedActionException if an error occurred when accessing field for foreign key or instance
      */
-    void update(@NotNull T entity) throws IllegalAccessException;
+    void update(@NotNull T entity) throws PrivilegedActionException;
 
     /**
      * Retrieves all the instances at the end of the relation.
@@ -58,15 +60,15 @@ public interface Relation<T extends HasOid, R extends HasOid> {
      * @param entity entity owning the relation
      * @param fid    foreign key of the referenced entities. Currently in a {@code N -> 1} relation the fid is the oid of the referenced object, in a
      *               {@code 1 -> N} the fid is the oid of entity
-     * @throws IllegalAccessException if an error occurred when accessing field for foreign key or instance
+     * @throws PrivilegedActionException if an error occurred when accessing field for foreign key or instance
      */
-    void retrieve(@NotNull T entity, Long fid) throws IllegalAccessException;
+    void retrieve(@NotNull T entity, Long fid) throws PrivilegedActionException;
 
     /**
      * Deletes all the instances at the end of the relation. Semantically this method performs only if {@link #isOwned()} returns true.
      *
      * @param entity entity owning the relation
-     * @throws IllegalAccessException if an error occurred when accessing field for foreign key or instance
+     * @throws PrivilegedActionException if an error occurred when accessing field for foreign key or instance
      */
-    void delete(@NotNull T entity) throws IllegalAccessException;
+    void delete(@NotNull T entity) throws PrivilegedActionException;
 }

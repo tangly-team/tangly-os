@@ -16,6 +16,7 @@ package net.tangly.commons.orm;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.security.PrivilegedActionException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -30,6 +31,7 @@ import java.util.stream.Collectors;
 import javax.sql.DataSource;
 
 import net.tangly.bus.core.HasOid;
+import net.tangly.commons.lang.ReflectionUtilities;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
@@ -107,7 +109,7 @@ public class Dao<T extends HasOid> implements InstanceProvider<T> {
                         entity = Optional.of(materializeEntity(set));
                     }
                 }
-            } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+            } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException | PrivilegedActionException e) {
                 logger.atError().log("Exception occurred when retrieving entity {} id {}", entityName, oid, e);
             }
         }
@@ -129,7 +131,7 @@ public class Dao<T extends HasOid> implements InstanceProvider<T> {
     public void update(@NotNull T entity) {
         try (var connection = dataSource.getConnection(); var stmt = connection.prepareStatement(replaceSql)) {
             if (entity.oid() == HasOid.UNDEFINED_OID) {
-                properties.get(0).field().set(entity, oidGenerator.incrementAndGet());
+                ReflectionUtilities.set(entity, properties.get(0).field(), oidGenerator.incrementAndGet());
             }
             for (int i = 0; i < properties.size(); i++) {
                 properties.get(i).setParameter(stmt, i + 1, entity);
@@ -142,7 +144,7 @@ public class Dao<T extends HasOid> implements InstanceProvider<T> {
                 relation.update(entity);
             }
             addToCache(entity);
-        } catch (SQLException | IllegalAccessException e) {
+        } catch (SQLException | PrivilegedActionException e) {
             logger.atError().log("Exception creating {} id {}", entityName, entity.oid(), e);
         }
     }
@@ -158,7 +160,7 @@ public class Dao<T extends HasOid> implements InstanceProvider<T> {
             stmt.setObject(1, entity.oid(), KEY_SQL_TYPE);
             stmt.executeUpdate();
             removeFromCache(entity.oid());
-        } catch (SQLException | IllegalAccessException e) {
+        } catch (SQLException | PrivilegedActionException e) {
             logger.atError().log("Error when deleting instance {} id {}", entityName, entity.oid(), e);
         }
     }
@@ -171,7 +173,7 @@ public class Dao<T extends HasOid> implements InstanceProvider<T> {
                 Optional<T> instance = retrieveFromCache((Long) set.getObject(1));
                 entities.add(instance.isPresent() ? instance.get() : materializeEntity(set));
             }
-        } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+        } catch (SQLException | IllegalAccessException | InstantiationException | InvocationTargetException | PrivilegedActionException e) {
             logger.atError().log("Exception occurred when retrieving entity with id {}", entityName, e);
         }
         return entities;
@@ -185,7 +187,7 @@ public class Dao<T extends HasOid> implements InstanceProvider<T> {
      * @throws SQLException if a problem was encountered when retrieving the field values from the result set
      */
     private T materializeEntity(@NotNull ResultSet set) throws SQLException, IllegalAccessException, InstantiationException,
-            InvocationTargetException {
+            InvocationTargetException, PrivilegedActionException {
         T entity = constructor.newInstance();
         for (int i = 0; i < properties.size(); i++) {
             properties.get(i).getParameter(set, i + 1, entity);
