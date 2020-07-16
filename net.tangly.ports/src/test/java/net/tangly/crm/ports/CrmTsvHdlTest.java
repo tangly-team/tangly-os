@@ -21,6 +21,7 @@ import java.nio.file.Paths;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -29,6 +30,7 @@ public class CrmTsvHdlTest {
     static final String PACKAGE_NAME = "net/tangly/crm/ports/";
 
     @Test
+    @Tag("localTest")
     void testCsvCrm() throws IOException, URISyntaxException {
         Crm crm = new Crm();
         CrmTsvHdl handler = new CrmTsvHdl(crm);

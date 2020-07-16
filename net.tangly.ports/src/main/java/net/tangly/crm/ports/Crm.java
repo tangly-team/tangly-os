@@ -19,6 +19,7 @@ import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
+import net.tangly.commons.orm.InstanceProvider;
 import net.tangly.commons.orm.InstanceProviderInMemory;
 
 /**
@@ -32,10 +33,10 @@ import net.tangly.commons.orm.InstanceProviderInMemory;
  * </ul>
  */
 public class Crm {
-    private final InstanceProviderInMemory<NaturalEntity> naturalEntities;
-    private final InstanceProviderInMemory<LegalEntity> legalEntities;
-    private final InstanceProviderInMemory<Employee> employees;
-    private final InstanceProviderInMemory<Contract> contracts;
+    private final InstanceProvider<NaturalEntity> naturalEntities;
+    private final InstanceProvider<LegalEntity> legalEntities;
+    private final InstanceProvider<Employee> employees;
+    private final InstanceProvider<Contract> contracts;
     private final TagTypeRegistry tagTypeRegistry;
 
     public Crm() {
@@ -51,19 +52,19 @@ public class Crm {
         return tagTypeRegistry;
     }
 
-    public InstanceProviderInMemory<NaturalEntity> naturalEntities() {
+    public InstanceProvider<NaturalEntity> naturalEntities() {
         return this.naturalEntities;
     }
 
-    public InstanceProviderInMemory<LegalEntity> legalEntities() {
+    public InstanceProvider<LegalEntity> legalEntities() {
         return this.legalEntities;
     }
 
-    public InstanceProviderInMemory<Employee> employees() {
+    public InstanceProvider<Employee> employees() {
         return this.employees;
     }
 
-    public InstanceProviderInMemory<Contract> contracts() {
+    public InstanceProvider<Contract> contracts() {
         return this.contracts;
     }
 

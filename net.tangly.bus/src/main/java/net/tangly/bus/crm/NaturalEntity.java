@@ -47,7 +47,6 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
 
     public void firstname(String firstname) {
         this.firstname = firstname;
-        updateName();
     }
 
     public String lastname() {
@@ -56,7 +55,15 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
 
     public void lastname(String lastname) {
         this.lastname = lastname;
-        updateName();
+    }
+
+    @Override
+    public void name(String name) {
+    }
+
+    @Override
+    public String name() {
+        return lastname() + ", " + firstname();
     }
 
     public String socialNr() {
@@ -65,9 +72,5 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
 
     public void socialNr(String socialNr) {
         id(socialNr);
-    }
-
-    private void updateName() {
-        name(lastname() + ", " + firstname());
     }
 }

@@ -13,17 +13,21 @@
 
 package net.tangly.commons.crm.ui;
 
-import java.util.List;
-
-import com.vaadin.flow.data.provider.DataProvider;
-import net.tangly.bus.core.TagTypeRegistry;
+import com.vaadin.flow.component.grid.Grid;
 import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.commons.vaadin.EntitiesView;
+import net.tangly.crm.ports.Crm;
 import org.jetbrains.annotations.NotNull;
 
-public class NaturalEntitiesView extends EntitiesView<NaturalEntity> {
-    public NaturalEntitiesView(@NotNull List<NaturalEntity> items, DataProvider<NaturalEntity, ?> dataProvider, TagTypeRegistry registry) {
-        super(NaturalEntity.class, EntitiesView::defineGrid, items, dataProvider, registry);
+public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
+    public NaturalEntitiesView(@NotNull Crm crm) {
+        super(crm, NaturalEntity.class, NaturalEntitiesView::defineNaturalEntityGrid, crm.naturalEntities());
+    }
+
+    public static void defineNaturalEntityGrid(@NotNull Grid<NaturalEntity> grid) {
+        EntitiesView.defineGrid(grid);
+        grid.addColumn(NaturalEntity::lastname).setKey("lastname").setHeader("Last Name").setSortable(true).setAutoWidth(true).setResizable(true);
+        grid.addColumn(NaturalEntity::firstname).setKey("firstname").setHeader("First Name").setSortable(true).setAutoWidth(true).setResizable(true);
     }
 
     @Override

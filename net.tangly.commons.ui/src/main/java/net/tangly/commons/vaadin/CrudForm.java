@@ -18,7 +18,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import org.jetbrains.annotations.NotNull;
 
 public interface CrudForm<T> {
-    enum Operation {
+    public enum Operation {
         VIEW, UPDATE, CREATE, DELETE, CANCEL;
 
         static boolean isReadWrite(@NotNull Operation operation) {

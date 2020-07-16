@@ -11,11 +11,11 @@ draft: false
 :source-highlighter: pygments
 :pygments-style: manni
 
-= User Guide Commons UI
+== User Guide Commons UI
 
-== CRUD Component
+=== CRUD Component
 
-=== Reflections
+==== Reflections
 
 One key decision is that the user interface library does not require the use of annotations, interfaces, or inheritance in the business model.
 

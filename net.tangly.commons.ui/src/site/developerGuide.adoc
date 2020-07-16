@@ -1,0 +1,46 @@
+---
+title: "Developer Guide UI"
+date: 2020-06-30
+weight: 40
+draft: false
+---
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+:stem:
+:icons: font
+:source-highlighter: pygments
+:pygments-style: manni
+
+== Developer Guide Commons UI
+
+The Vaadin Gradle plugin does not support the latest versions of Vaadin.
+Therefore we had to fallback to the Vaadin Maven plugin which indeed support the latest versions of Vaadin.
+
+Due to the idiosyncrasies of maven we had to define a maven configuration in the bash profile file
+
+[source,bash]
+----
+    export MAVEN_OPTS="--enable-preview"
+----
+
+The current head of master supports building and running the Vaadin application using the regular maven commands
+
+[source,bash]
+----
+    mvn vaadin:prepare-frontend <1>
+    mvn install <2>
+    mvn jetty:run <3>
+----
+<1> to initialize once the whole project and the application to generate.
+<2> to compile the application
+<3> to run the application in the embedded jetty application container - the application is available under localhost:8080
+
+If in trouble you can find and kill the server on a specific port address, here 8080 with the following commands.
+
+[source,bash]
+----
+lsof -i :8080 | grep LISTEN <1>
+ps -ef pid
+kill pid
+----
+<1> to get the pid of process using the port 8080

@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>net.tangly.commons</groupId>
-    <artifactId>ui</artifactId>
-    <name>tangly-ui</name>
+    <groupId>net.tangly</groupId>
+    <artifactId>commons-ui</artifactId>
+    <name>commons-ui</name>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
@@ -15,7 +15,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
 
-        <vaadin.version>16.0.0</vaadin.version>
+        <vaadin.version>16.0.1</vaadin.version>
         <drivers.downloader.phase>pre-integration-test</drivers.downloader.phase>
         <jetty.version>9.4.28.v20200408</jetty.version>
     </properties>
@@ -45,6 +45,14 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
+        </repository>
+        <repository>
+            <id>jCenter</id>
+            <url>https://jcenter.bintray.com/</url>
+        </repository>
+        <repository>
+            <id>ZUGFeRD</id>
+            <url>https://raw.github.com/ZUGFeRD/mustangproject/mvn-repo/</url>
         </repository>
     </repositories>
 
@@ -93,20 +101,17 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
         </dependency>
-
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-testbench</artifactId>
             <scope>test</scope>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
@@ -115,20 +120,11 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Tangly open source components specific dependencies -->
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
             <version>19.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.7.0-M1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.16.1</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -136,14 +132,29 @@
             <version>2.0.0-alpha1</version>
         </dependency>
         <dependency>
+            <groupId>net.tangly</groupId>
+            <artifactId>bus</artifactId>
+            <version>0.2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>net.tangly</groupId>
+            <artifactId>commons</artifactId>
+            <version>0.2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>net.tangly</groupId>
+            <artifactId>ports</artifactId>
+            <version>0.2.4</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.mvysny.kaributesting</groupId>
             <artifactId>karibu-testing-v10</artifactId>
             <version>1.2.1</version>
         </dependency>
         <dependency>
-            <groupId>net.tangly</groupId>
-            <artifactId>bus</artifactId>
-            <version>0.2.3</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.7.0-M1</version>
         </dependency>
     </dependencies>
 
@@ -156,6 +167,7 @@
                 <version>3.8.1</version>
                 <configuration>
                     <release>14</release>
+                    <compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
             </plugin>
             <!-- Jetty plugin for easy testing without a server -->

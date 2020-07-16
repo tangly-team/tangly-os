@@ -22,7 +22,7 @@ import net.tangly.bus.core.EntityImp;
 /**
  * A legal contract between two parties, a seller and a sellee.
  */
-public class Contract extends EntityImp {
+public class Contract extends EntityImp implements CrmEntity {
     private static final long serialVersionUID = 1L;
 
     private Address address;

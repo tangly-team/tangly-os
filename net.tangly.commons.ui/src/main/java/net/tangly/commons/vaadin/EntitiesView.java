@@ -61,7 +61,7 @@ public abstract class EntitiesView<T extends Entity> extends Crud<T> implements 
      */
     public EntitiesView(@NotNull Class<T> clazz, @NotNull Consumer<Grid<T>> gridConfigurator, @NotNull List<T> items, DataProvider<T, ?> provider,
                         TagTypeRegistry registry) {
-        super(clazz, Mode.EDITABLE, gridConfigurator, provider);
+        super(clazz, Crud.Mode.EDITABLE, gridConfigurator, provider);
         this.items = new ArrayList<>(items);
         this.registry = registry;
         initialize(this, this);
@@ -69,19 +69,19 @@ public abstract class EntitiesView<T extends Entity> extends Crud<T> implements 
 
     public static <E extends Entity> void defineGrid(@NotNull Grid<E> grid) {
         Crud.initialize(grid);
-        grid.addColumn(Entity::oid).setKey("oid").setHeader("Oid").setSortable(true).setFlexGrow(0).setWidth("200px").setResizable(false)
+        grid.addColumn(Entity::oid).setKey("oid").setHeader("Oid").setSortable(true).setFlexGrow(0).setAutoWidth(true).setResizable(false)
                 .setFrozen(true);
-        grid.addColumn(Entity::id).setKey("id").setHeader("Id").setSortable(true).setFlexGrow(0).setWidth("200px").setResizable(false);
-        grid.addColumn(Entity::name).setKey("name").setHeader("Name").setSortable(true).setFlexGrow(0).setWidth("200px").setResizable(false);
-        grid.addColumn(Entity::fromDate).setKey("from").setHeader("From").setSortable(true).setFlexGrow(0).setWidth("200px").setResizable(false);
-        grid.addColumn(Entity::toDate).setKey("to").setHeader("To").setSortable(true).setFlexGrow(0).setWidth("200px").setResizable(false);
+        grid.addColumn(Entity::id).setKey("id").setHeader("Id").setSortable(true).setAutoWidth(true).setResizable(false);
+        grid.addColumn(Entity::name).setKey("name").setHeader("Name").setSortable(true).setAutoWidth(true).setResizable(false);
+        grid.addColumn(Entity::fromDate).setKey("from").setHeader("From").setSortable(true).setAutoWidth(true).setResizable(true);
+        grid.addColumn(Entity::toDate).setKey("to").setHeader("To").setSortable(true).setAutoWidth(true).setResizable(true);
     }
 
     private Component formShown;
     private final Map<Tab, Component> tabsToPages = new HashMap<>();
 
     @Override
-    public FormLayout createForm(Operation operation, T entity) {
+    public FormLayout createForm(CrudForm.Operation operation, T entity) {
         TabsComponent tabs = new TabsComponent();
         Tab overview = new Tab("Overview");
         tabs.add(overview, createOverallView(operation, entity));

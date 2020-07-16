@@ -18,12 +18,14 @@ import java.util.List;
 import com.vaadin.flow.data.provider.DataProvider;
 import net.tangly.bus.core.TagTypeRegistry;
 import net.tangly.bus.crm.Contract;
+import net.tangly.bus.crm.Employee;
+import net.tangly.crm.ports.Crm;
 import net.tangly.commons.vaadin.EntitiesView;
 import org.jetbrains.annotations.NotNull;
 
-public class ContractsView extends EntitiesView<Contract> {
-    public ContractsView(@NotNull List<Contract> items, DataProvider<Contract, ?> dataProvider, TagTypeRegistry registry) {
-        super(Contract.class, EntitiesView::defineGrid, items, dataProvider, registry);
+public class ContractsView extends CrmEntitiesView<Contract> {
+    public ContractsView(@NotNull Crm crm) {
+        super(crm, Contract.class, EntitiesView::defineGrid, crm.contracts());
     }
 
     @Override

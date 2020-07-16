@@ -17,13 +17,15 @@ import java.util.List;
 
 import com.vaadin.flow.data.provider.DataProvider;
 import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.LegalEntity;
+import net.tangly.crm.ports.Crm;
 import net.tangly.commons.vaadin.EntitiesView;
 import org.jetbrains.annotations.NotNull;
 
-public class LegalEntitiesView extends EntitiesView<LegalEntity> {
-    public LegalEntitiesView(@NotNull List<LegalEntity> items, DataProvider<LegalEntity, ?> dataProvider, TagTypeRegistry registry) {
-        super(LegalEntity.class, EntitiesView::defineGrid, items, dataProvider, registry);
+public class LegalEntitiesView extends CrmEntitiesView<LegalEntity> {
+    public LegalEntitiesView(@NotNull Crm crm) {
+        super(crm, LegalEntity.class, EntitiesView::defineGrid, crm.legalEntities());
     }
 
     @Override

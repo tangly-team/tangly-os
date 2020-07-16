@@ -11,20 +11,17 @@
  *  under the License.
  */
 
-package net.tangly.commons.crm.ui;
+package net.tangly.crm.ports;
 
-import net.tangly.bus.crm.Employee;
-import net.tangly.commons.vaadin.EntitiesView;
-import net.tangly.crm.ports.Crm;
-import org.jetbrains.annotations.NotNull;
+import java.io.IOException;
+import java.nio.file.Paths;
 
-public class EmployeesView extends CrmEntitiesView<Employee> {
-    public EmployeesView(@NotNull Crm crm) {
-        super(crm, Employee.class, EntitiesView::defineGrid, crm.employees());
-    }
+import org.junit.jupiter.api.Test;
 
-    @Override
-    protected Employee create() {
-        return new Employee();
+public class CrmWorkflowsTest {
+    @Test
+    void readTsvFilesTest() throws IOException {
+        CrmWorkflows crmWorkflows = new CrmWorkflows(new Crm());
+        crmWorkflows.importCrmEntitiesFromTsv(Paths.get("/Users/Shared/tangly"));
     }
 }

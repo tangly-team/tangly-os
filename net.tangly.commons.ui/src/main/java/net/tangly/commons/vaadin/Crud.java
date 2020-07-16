@@ -77,14 +77,11 @@ public class Crud<T> extends Composite<Div> {
         this.entityClass = entityClass;
         this.mode = mode;
         this.grid = new Grid<>(entityClass, false);
-        gridConfigurator.accept(grid);
         grid.setDataProvider(dataProvider);
         grid.asSingleSelect().addValueChangeListener(event -> selectItem(event.getValue()));
-        grid.setSizeFull();
+        gridConfigurator.accept(grid);
         getContent().add(grid, createCrudButtons());
         getContent().setSizeFull();
-        getContent().setWidth("80vw");
-        getContent().setHeight("40vh");
         selectItem(null);
     }
 
@@ -99,6 +96,8 @@ public class Crud<T> extends Composite<Div> {
 
     protected static <E> void initialize(@NotNull Grid<E> grid) {
         grid.setVerticalScrollingEnabled(true);
+        grid.setHeightFull();
+        grid.setPageSize(10);
         grid.addThemeVariants(GridVariant.MATERIAL_COLUMN_DIVIDERS);
     }
 
