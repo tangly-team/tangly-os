@@ -32,7 +32,7 @@ public interface HasComments {
     List<Comment> comments();
 
     /**
-     * Adds a comment to the list of comments.
+     * Add a comment to the list of comments.
      *
      * @param comment comment to be added, cannot be null
      */
@@ -46,18 +46,28 @@ public interface HasComments {
     void remove(@NotNull Comment comment);
 
     /**
-     * Returns the comments authored by the given author.
+     * Add a list of comments.
+     *
+     * @param comments comments to be added, cannot be null
+     * @see HasComments#add(Comment)
+     */
+    default void addAll(@NotNull Iterable<Comment> comments) {
+        comments.forEach(this::add);
+    }
+
+    /**
+     * Return the comments authored by the given author.
      *
      * @param author author of the searched comment
      * @return list of requested comments
      */
-    default List<Comment> findByAuthor(String author) {
+    default List<Comment> findByAuthor(@NotNull String author) {
         Objects.requireNonNull(author);
         return comments().stream().filter(o -> Objects.equals(author, o.author())).collect(Collectors.toList());
     }
 
     /**
-     * Returns the comments having the given tag.
+     * Return the comments having the given tag.
      *
      * @param namespace namespace of the tag
      * @param name      name of the tag
@@ -69,7 +79,7 @@ public interface HasComments {
     }
 
     /**
-     * Returns all the comments which creation date is in the closed interval.
+     * Return all the comments which creation date is in the closed interval.
      *
      * @param from beginning of the time interval or LocalDateTime.MIN
      * @param to   end of the time interval or LocalDateTime.MAX
@@ -78,8 +88,7 @@ public interface HasComments {
     default List<Comment> findByTime(LocalDateTime from, LocalDateTime to) {
         Objects.requireNonNull(from);
         Objects.requireNonNull(to);
-        return comments().stream()
-                .filter(o -> (o.created().equals(from) || o.created().isAfter(from)) && (o.created().equals(to) || o.created().isBefore(to)))
+        return comments().stream().filter(o -> (o.created().equals(from) || o.created().isAfter(from)) && (o.created().equals(to) || o.created().isBefore(to)))
                 .collect(Collectors.toList());
     }
 }

@@ -18,7 +18,6 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.data.provider.ListDataProvider;
 import net.tangly.bus.core.HasTags;
 import net.tangly.bus.core.Tag;
@@ -26,10 +25,10 @@ import net.tangly.bus.core.TagTypeRegistry;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The comments view is a Crud view with all the comments defined for an entity. Edition functions are provided to add, delete, and view individual
- * comments. Update function is not supported because comments are immutable objects.
+ * The comments view is a Crud view with all the comments defined for an entity. Edition functions are provided to add, delete, and view individual comments.
+ * Update function is not supported because comments are immutable objects.
  */
-public class TagsView extends Crud<Tag> implements CrudForm<Tag>, CrudActionsListener<Tag> {
+public class TagsView extends Crud<Tag> implements CrudForm<Tag> {
     private final transient HasTags hasItems;
     private final transient TagTypeRegistry registry;
     private ComboBox<String> namespace;
@@ -38,17 +37,16 @@ public class TagsView extends Crud<Tag> implements CrudForm<Tag>, CrudActionsLis
 
     public TagsView(@NotNull HasTags entity, @NotNull TagTypeRegistry registry) {
         super(Tag.class, Mode.IMMUTABLE, TagsView::defineGrid, new ListDataProvider<>(entity.tags()));
-        initialize(this, this);
+        initialize(this, new GridActionsListener<>(grid().getDataProvider(), this::selectedItem));
         this.hasItems = entity;
         this.registry = registry;
     }
 
     public static void defineGrid(@NotNull Grid<Tag> grid) {
-        initialize(grid);
-        grid.addColumn(Tag::namespace).setKey("namespace").setHeader("Namespace").setSortable(true).setFlexGrow(0).setWidth("200px")
-                .setResizable(false).setFrozen(true);
-        grid.addColumn(Tag::name).setKey("name").setHeader("Name").setSortable(true).setFlexGrow(0).setWidth("200px").setResizable(false);
-        grid.addColumn(Tag::value).setKey("value").setHeader("Value").setSortable(true).setFlexGrow(0).setWidth("200px").setResizable(false);
+        VaadinUtils.initialize(grid);
+        grid.addColumn(Tag::namespace).setKey("namespace").setHeader("Namespace").setSortable(true).setFlexGrow(0).setWidth("10em").setResizable(false);
+        grid.addColumn(Tag::name).setKey("name").setHeader("Name").setSortable(true).setFlexGrow(0).setWidth("10em").setResizable(false);
+        grid.addColumn(Tag::value).setKey("value").setHeader("Value").setSortable(false).setFlexGrow(0).setWidth("20em").setResizable(false);
     }
 
     @Override
@@ -88,33 +86,18 @@ public class TagsView extends Crud<Tag> implements CrudForm<Tag>, CrudActionsLis
         }
 
         FormLayout form = new FormLayout(namespace, name, value);
-        form.setResponsiveSteps(new FormLayout.ResponsiveStep("25em", 1), new FormLayout.ResponsiveStep("32em", 2),
-                new FormLayout.ResponsiveStep("40em", 3)
-        );
+        VaadinUtils.setResponsiveSteps(form);
         return form;
     }
 
     @Override
     public Tag formCompleted(Operation operation, Tag entity) {
-        switch (operation) {
-            case CREATE:
-                return create();
-        }
-        return entity;
+        return switch (operation) {
+            case CREATE -> create();
+            default -> entity;
+        };
     }
-
-    @Override
-    public void entityAdded(DataProvider<Tag, ?> provider, Tag entity) {
-        hasItems.add(entity);
-        CrudActionsListener.super.entityAdded(provider, entity);
-    }
-
-    @Override
-    public void entityDeleted(DataProvider<Tag, ?> provider, Tag entity) {
-        hasItems.remove(entity);
-        CrudActionsListener.super.entityAdded(provider, entity);
-    }
-
+    
     private Tag create() {
         return new Tag(namespace.getValue(), name.getValue(), value.getValue());
     }

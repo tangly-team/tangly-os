@@ -15,7 +15,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
 
-        <vaadin.version>16.0.1</vaadin.version>
+        <vaadin.version>16.0.2</vaadin.version>
+        <tangly.version>0.2.5</tangly.version>
         <drivers.downloader.phase>pre-integration-test</drivers.downloader.phase>
         <jetty.version>9.4.28.v20200408</jetty.version>
     </properties>
@@ -95,8 +96,6 @@
             <artifactId>vaadin</artifactId>
         </dependency>
 
-        <!-- Added to provide logging output as Vaadin uses -->
-        <!-- the unbound SLF4J no-operation (NOP) logger implementation -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
@@ -124,7 +123,7 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>19.0.0</version>
+            <version>20.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -134,17 +133,22 @@
         <dependency>
             <groupId>net.tangly</groupId>
             <artifactId>bus</artifactId>
-            <version>0.2.4</version>
+            <version>${tangly.version}</version>
         </dependency>
         <dependency>
             <groupId>net.tangly</groupId>
             <artifactId>commons</artifactId>
-            <version>0.2.4</version>
+            <version>${tangly.version}</version>
         </dependency>
         <dependency>
             <groupId>net.tangly</groupId>
             <artifactId>ports</artifactId>
-            <version>0.2.4</version>
+            <version>${tangly.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.iban4j</groupId>
+            <artifactId>iban4j</artifactId>
+            <version>3.2.1</version>
         </dependency>
         <dependency>
             <groupId>com.github.mvysny.kaributesting</groupId>
@@ -152,9 +156,19 @@
             <version>1.2.1</version>
         </dependency>
         <dependency>
+            <groupId>com.storedobject.chart</groupId>
+            <artifactId>so-charts</artifactId>
+            <version>0.0.5</version>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.7.0-M1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.16.1</version>
         </dependency>
     </dependencies>
 
@@ -179,7 +193,7 @@
                     <!-- If using IntelliJ IDEA with autocompilation, this
                     might cause lots of unnecessary compilations in the
                     background.-->
-                    <scanIntervalSeconds>2</scanIntervalSeconds>
+                    <scanIntervalSeconds>5</scanIntervalSeconds>
                     <!-- Use war output directory to get the webpack files -->
                     <webAppConfig>
                         <allowDuplicateFragmentNames>true</allowDuplicateFragmentNames>

@@ -28,22 +28,22 @@ public class Transaction {
     private final AccountEntry credit;
     private final List<AccountEntry> splits;
     private final String reference;
-    private final String description;
+    private final String text;
     private final LocalDate date;
 
-    public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, String description, String reference) {
+    public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, String text, String reference) {
         this.date = date;
-        this.description = description;
+        this.text = text;
         this.reference = reference;
         this.debit = new AccountEntry(debitAccount, date, amount, reference, true);
         this.credit = new AccountEntry(creditAccount, date, amount, reference, false);
         this.splits = Collections.emptyList();
     }
 
-    public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, List<AccountEntry> splits, String description,
+    public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, List<AccountEntry> splits, String text,
                        String reference) {
         this.date = date;
-        this.description = description;
+        this.text = text;
         this.reference = reference;
         this.debit = (debitAccount != null) ? new AccountEntry(debitAccount, date, amount, reference, true) : null;
         this.credit = (creditAccount != null) ? new AccountEntry(creditAccount, date, amount, reference, false) : null;
@@ -83,7 +83,7 @@ public class Transaction {
      * @return credit account of the transaction
      */
     public String creditAccount() {
-        return (credit != null) ? credit.account() : null;
+        return (credit != null) ? credit.accountId() : null;
     }
 
     /**
@@ -92,7 +92,7 @@ public class Transaction {
      * @return debit account of the transaction
      */
     public String debitAccount() {
-        return (debit != null) ? debit.account() : null;
+        return (debit != null) ? debit.accountId() : null;
     }
 
     /**
@@ -109,8 +109,8 @@ public class Transaction {
      *
      * @return description of the transaction
      */
-    public String description() {
-        return description;
+    public String text() {
+        return text;
     }
 
     /**

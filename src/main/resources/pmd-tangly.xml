@@ -42,6 +42,11 @@
         <exclude name="AvoidFieldNameMatchingMethodName"/>
         <exclude name="BeanMembersShouldSerialize"/>
     </rule>
+    <rule ref="category/java/codestyle.xml/ShortClassName">
+        <properties>
+            <property name="minimum" value="3" />
+        </properties>
+    </rule>
     <rule ref="category/java/codestyle.xml/ShortMethodName">
         <properties>
             <property name="minimum" value="2"/>

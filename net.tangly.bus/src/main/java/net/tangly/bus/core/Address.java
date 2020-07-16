@@ -19,12 +19,11 @@ import java.util.Objects;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Defines the abstraction of a postal address without the recipient. The structure should model all existing postal address. An address is an
- * immutable object - now enforced through a record construct -. The street represents the international concept of house identifier often meaning
- * street name and street number. It can also be street name and house name such as in Ireland or Great Britain.
+ * Defines the abstraction of a postal address without the recipient. The structure should model all existing postal address. An address is an immutable object
+ * - now enforced through a record construct -. The street represents the international concept of house identifier often meaning street name and street number.
+ * It can also be street name and house name such as in Ireland or Great Britain.
  */
-public record Address(String street, String extended, String poBox, String postcode, String locality, String region, String country)
-        implements Serializable {
+public record Address(String street, String extended, String poBox, String postcode, String locality, String region, String country) implements Serializable {
     /**
      * Returns a builder instance for an address object. The builder can be used to create multiple address objects
      *
@@ -124,20 +123,19 @@ public record Address(String street, String extended, String poBox, String postc
     public static Address of(@NotNull String text) {
         var parts = Objects.requireNonNull(text).split(",", -1);
         Objects.checkFromIndexSize(0, parts.length, 7);
-        return builder().street(parts[0]).extended(parts[1]).poBox(parts[2]).postcode(parts[3]).locality(parts[4]).region(parts[5]).country(parts[6])
-                .build();
+        return builder().street(parts[0]).extended(parts[1]).poBox(parts[2]).postcode(parts[3]).locality(parts[4]).region(parts[5]).country(parts[6]).build();
     }
 
     /**
-     * Returns a comma separated representation of an address. Null values are shown as empty strings. The <i>toString</i> method is not used because
-     * the implementation is defined in the API implementation of record construct.
+     * Returns a comma separated representation of an address. Null values are shown as empty strings. The {@link Object#toString()} method is not used because
+     * the implementation is defined in the API implementation of record construct. The generated string can be feed to the {@link Address#of(String)} to create
+     * an address object
      *
      * @return comma separated representation
      * @see Address#of(String)
      */
     public String text() {
         return String.format("%s,%s,%s,%s,%s,%s,%s", Strings.nullToEmpty(street), Strings.nullToEmpty(extended), Strings.nullToEmpty(poBox),
-                Strings.nullToEmpty(postcode), Strings.nullToEmpty(locality), Strings.nullToEmpty(region), Strings.nullToEmpty(country)
-        );
+                Strings.nullToEmpty(postcode), Strings.nullToEmpty(locality), Strings.nullToEmpty(region), Strings.nullToEmpty(country));
     }
 }

@@ -15,6 +15,7 @@ package net.tangly.bus.crm;
 
 
 import java.math.BigDecimal;
+import java.util.Locale;
 
 import net.tangly.bus.core.Address;
 import net.tangly.bus.core.EntityImp;
@@ -26,24 +27,10 @@ public class Contract extends EntityImp implements CrmEntity {
     private static final long serialVersionUID = 1L;
 
     private Address address;
-
     private BankConnection bankConnection;
-
     private BigDecimal amountWithoutVat;
-
     private LegalEntity seller;
-
     private LegalEntity sellee;
-
-    public Contract() {
-        // default constructor
-    }
-
-    public static Contract of(long oid) {
-        Contract entity = new Contract();
-        entity.oid(oid);
-        return entity;
-    }
 
     public Address address() {
         return address;
@@ -83,5 +70,12 @@ public class Contract extends EntityImp implements CrmEntity {
 
     public void sellee(LegalEntity sellee) {
         this.sellee = sellee;
+    }
+
+    @Override
+    public String toString() {
+        return String
+                .format(Locale.US, "Contract[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, address=%s, bankConnection=%s, amountWithoutVat=%s, seller=%s, sellee=%s]",
+                        oid(), id(), name(), fromDate(), toDate(), text(), address(), bankConnection(), amountWithoutVat(), seller(), sellee());
     }
 }

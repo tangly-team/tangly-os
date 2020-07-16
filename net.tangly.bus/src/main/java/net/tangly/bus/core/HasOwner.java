@@ -20,14 +20,14 @@ public interface HasOwner extends HasOid {
     /**
      * Returns the unique object identifier of the owning object.
      *
-     * @return owning object identifier if defined otherwise {@link HasId#UNDEFINED_OID}
+     * @return owning object identifier if defined otherwise {@link HasOid#UNDEFINED_OID}
      */
     long foid();
 
     /**
      * Sets the unique object identifier of the owning object.
      *
-     * @param foid object identifier of the owing object if defined otherwise {@link HasId#UNDEFINED_OID}
+     * @param foid object identifier of the owing object if defined otherwise {@link HasOid#UNDEFINED_OID}
      */
     void foid(long foid);
 }

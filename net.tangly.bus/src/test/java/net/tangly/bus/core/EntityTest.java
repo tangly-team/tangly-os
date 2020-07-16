@@ -96,11 +96,11 @@ class EntityTest {
         item.add(Tag.of("namespace", "tag", "format"));
         item.add(Tag.of("gis", "longitude", "0.0"));
         item.add(Tag.of("gis", "latitude", "0.0"));
-        String rawTags = item.getRawTags();
+        String rawTags = item.rawTags();
         Set<Tag> tags = item.tags();
         item.clearTags();
         assertThat(item.tags().isEmpty()).isTrue();
-        item.addRawTags(rawTags);
+        item.rawTags(rawTags);
         assertThat(item.tags().isEmpty()).isFalse();
         assertThat(item.tags().size()).isEqualTo(3);
         assertThat(item.findByNamespace("gis").size()).isEqualTo(2);
@@ -110,7 +110,7 @@ class EntityTest {
     void testModifyComments() {
         // Given
         var item = Entity.of();
-        var comment = new Comment(LocalDateTime.now(), "John Doe", "This is a comment");
+        var comment = new Comment("John Doe", "This is a comment");
         // When
         item.add(comment);
         // Then
@@ -125,14 +125,14 @@ class EntityTest {
     void testFilterComments() {
         // Given
         var item = Entity.of();
-        var comment = new Comment(LocalDateTime.of(1800, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 1");
+        var comment = Comment.of(LocalDateTime.of(1800, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 1");
         comment.add(new Tag("gis", "longitude", "0.0"));
         comment.add(new Tag("gis", "latitude", "0.0"));
         item.add(comment);
-        comment = new Comment(LocalDateTime.of(1900, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 2");
+        comment = Comment.of(LocalDateTime.of(1900, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 2");
         comment.add(new Tag("gis", "longitude", "0.0"));
         item.add(comment);
-        comment = new Comment(LocalDateTime.of(2000, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 3");
+        comment = Comment.of(LocalDateTime.of(2000, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 3");
         comment.add(new Tag("gis", "latitude", "0.0"));
         item.add(comment);
         // When

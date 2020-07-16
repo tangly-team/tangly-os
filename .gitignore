@@ -10,13 +10,12 @@
 hs_err_pid*
 
 # Covers JetBrains IDE IntelliJ using gradle, include copyrights
+**/.idea/
 **/.gradle/
 **/out/
 **/build/
 **/target/
 **/node_modules/
-/.gradle/
-/.idea/
 
 /net.tangly.commons.ui/package.json
 /net.tangly.commons.ui/pnpm-lock.yaml

@@ -1,7 +1,7 @@
 ---
 title: "Architecture Code Scene"
 date: 2019-05-01
-weight: 80
+weight: 40
 draft: false
 ---
 :author: Marcel Baumann
@@ -91,5 +91,3 @@ Project *-- "*" Commit
 
 @enduml
 ....
-
-== History

@@ -30,5 +30,5 @@ public interface InvoiceGenerator {
      * @param invoicePath path to the document to create
      * @param properties  properties to configure the creation process
      */
-    void create(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties);
+    void exports(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties);
 }

@@ -16,8 +16,19 @@ package net.tangly.bus.invoices;
 
 import java.math.BigDecimal;
 
+import net.tangly.bus.core.HasQualifiers;
+import org.jetbrains.annotations.NotNull;
+
 /**
- * A product sold by a legal entity and referenced in an invoice or an invoice line.
+ * A product sold by a legal entity and referenced in an invoice or an invoice line. A product is a {@link HasQualifiers} mixin because the identifiier is
+ * external and the Java record structure does not support internal {@link net.tangly.bus.core.HasOid} manipulation through reflection.
+ *
+ * @param id        unique external identifier of the product
+ * @param name      human readable name of the product
+ * @param text      human readable description of the product
+ * @param unitPrice unit price of the product
+ * @param unit      unit type of the product such as day, hour,or fix for a workshop
+ * @param vatRate   VAT rate of the product, requested for specific VAT tax regimes
  */
-public record Product(String id, String description, BigDecimal unitPrice, String unit, BigDecimal vatRate) {
+public record Product(@NotNull String id, String name, String text, @NotNull BigDecimal unitPrice, String unit, BigDecimal vatRate) implements HasQualifiers {
 }

@@ -17,7 +17,4 @@ package net.tangly.bus.products;
 import net.tangly.bus.core.EntityImp;
 
 public class Project extends EntityImp {
-    public Project() {
-        // default constructor
-    }
 }

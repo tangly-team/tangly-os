@@ -28,7 +28,7 @@ public class FinalClassTest {
         }
     }
 
-    public final class Example {
+    public final static class Example {
         Dependency dep;
 
         public Example(Dependency dep) {

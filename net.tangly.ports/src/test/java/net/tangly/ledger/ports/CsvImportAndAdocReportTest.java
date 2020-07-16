@@ -24,20 +24,18 @@ import java.time.LocalDate;
 
 import net.tangly.bus.ledger.Account;
 import net.tangly.bus.ledger.Ledger;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CsvImportAndAdocReportTest {
     @Test
-    void testCsvLedgerImport() throws IOException, URISyntaxException {
+    void testCsvLedgerImport() throws URISyntaxException {
         LedgerCsvHdl handler = new LedgerCsvHdl(new Ledger());
         Path path = Paths.get(getClass().getClassLoader().getResource("net/tangly/ledger/ports/swiss-ledger.csv").toURI());
-        handler.importStructureLedgerFromBanana8(path);
+        handler.importLedgerStructureFromBanana(path);
         handler.ledger().build();
-        assertThat(
-                handler.ledger().accounts().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty()).findAny().isEmpty())
+        assertThat(handler.ledger().accounts().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty()).findAny().isEmpty())
                 .isTrue();
         assertThat(handler.ledger().assets().isEmpty()).isFalse();
         assertThat(handler.ledger().liabilities().isEmpty()).isFalse();
@@ -54,7 +52,7 @@ public class CsvImportAndAdocReportTest {
         LedgerCsvHdl handler = createLedger();
 
         Path path = Paths.get(getClass().getClassLoader().getResource("net/tangly/ledger/ports/transactions-2015-2016.csv").toURI());
-        handler.importTransactionsLedgerFromBanana8(path);
+        handler.importTransactionsLedgerFromBanana(path);
         assertThat(handler.ledger().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31)).isEmpty()).isFalse();
         ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(handler.ledger());
         StringWriter writer = new StringWriter();
@@ -63,30 +61,28 @@ public class CsvImportAndAdocReportTest {
     }
 
     @Test
-    @Tag("localTest")
-    void testCsvImportAndAdocReport() throws IOException, URISyntaxException {
-        LedgerCsvHdl handler = createLedger();
+        // @Tag("localTest")
+    void testCsvImportAndAdocReport() {
+        LedgerWorkflows workflows = new LedgerWorkflows();
 
-        handler.importTransactionsLedgerFromBanana8(Paths.get("/Users/Shared/tmp/period-2016.csv"));
-        handler.importTransactionsLedgerFromBanana8(Paths.get("/Users/Shared/tmp/period-2017.csv"));
-        handler.importTransactionsLedgerFromBanana8(Paths.get("/Users/Shared/tmp/period-2018.csv"));
+        workflows.importLedger(Paths.get("/Users/Shared/tangly"));
 
-        ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(handler.ledger());
+        ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(workflows.ledger());
         report.create(LocalDate.parse("2015-10-01"), LocalDate.parse("2016-12-31"), Paths.get("/tmp/closing-2016.adoc"));
         report.create(LocalDate.parse("2017-01-01"), LocalDate.parse("2017-12-31"), Paths.get("/tmp/closing-2017.adoc"));
         report.create(LocalDate.parse("2018-01-01"), LocalDate.parse("2018-12-31"), Paths.get("/tmp/closing-2018.adoc"));
-        report.create(LocalDate.parse("2019-01-01"), LocalDate.parse("2019-12-31"), Paths.get("/tmp/closing-2019.adoc"));
+        // report.create(LocalDate.parse("2019-01-01"), LocalDate.parse("2019-12-31"), Paths.get("/tmp/closing-2019.adoc"));
 
         assertThat(Files.exists(Paths.get("/tmp/closing-2016.adoc"))).isTrue();
         assertThat(Files.exists(Paths.get("/tmp/closing-2017.adoc"))).isTrue();
         assertThat(Files.exists(Paths.get("/tmp/closing-2018.adoc"))).isTrue();
-        assertThat(Files.exists(Paths.get("/tmp/closing-2019.adoc"))).isTrue();
+        // assertThat(Files.exists(Paths.get("/tmp/closing-2019.adoc"))).isTrue();
     }
 
-    private LedgerCsvHdl createLedger() throws IOException, URISyntaxException {
+    private LedgerCsvHdl createLedger() throws URISyntaxException {
         LedgerCsvHdl handler = new LedgerCsvHdl(new Ledger());
         Path path = Paths.get(getClass().getClassLoader().getResource("net/tangly/ledger/ports/swiss-ledger.csv").toURI());
-        handler.importStructureLedgerFromBanana8(path);
+        handler.importLedgerStructureFromBanana(path);
         handler.ledger().build();
         return handler;
     }

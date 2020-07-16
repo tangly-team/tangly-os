@@ -41,7 +41,7 @@ public record Tag(String namespace, @NotNull String name, String value) implemen
      * @see Tag#toTags(String)
      */
     public static String text(Collection<Tag> tags) {
-        return tags.isEmpty() ? null : tags.stream().map(Tag::text).collect(Collectors.joining(","));
+        return tags.isEmpty() ? null : tags.stream().map(Tag::text).collect(Collectors.joining(";"));
     }
 
     /**
@@ -52,7 +52,7 @@ public record Tag(String namespace, @NotNull String name, String value) implemen
      * @see Tag#text(Collection)
      */
     public static Set<Tag> toTags(String rawTags) {
-        return Strings.isNullOrEmpty(rawTags) ? new HashSet<>() : Arrays.stream(rawTags.split(",")).map(Tag::parse).collect(Collectors.toSet());
+        return Strings.isNullOrEmpty(rawTags) ? new HashSet<>() : Arrays.stream(rawTags.split(";")).map(Tag::parse).collect(Collectors.toSet());
     }
 
     public static String namespace(@NotNull String tag) {

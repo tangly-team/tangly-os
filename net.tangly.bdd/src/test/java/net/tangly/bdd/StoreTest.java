@@ -76,7 +76,7 @@ public abstract class StoreTest {
         InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("bdd-schema.json");
         JsonSchema schema = factory.getSchema(is);
 
-        InputStream stream = new BufferedInputStream(new FileInputStream(bddReport.toFile()));
+        InputStream stream = new BufferedInputStream(Files.newInputStream(bddReport));
         JsonNode node = mapper.readTree(stream);
 
         assertThat(schema.validate(node).size()).isEqualTo(0);

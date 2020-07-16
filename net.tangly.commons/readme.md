@@ -25,14 +25,14 @@ The library can be included in Maven as
     <dependency>
       <groupId>net.tangly</groupId>
       <artifactId>commons</artifactId>
-      <version>0.2.4</version>
+      <version>0.2.5</version>
     </dependency>
 ```    
 
 The library can be included in Gradle as
 
 ```groovy
-    implementation "net.tangly:commons:0.2.4"
+    implementation "net.tangly:commons:0.2.5"
 ```
  
 The documentation can be found under [Commons documentation](https://tangly-team.bitbucket.io)

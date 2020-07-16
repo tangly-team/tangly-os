@@ -21,7 +21,7 @@ A finite state machine actor class is provided to easily create an active class 
 class FsmActor<O extends FsmActor<O, S, E>, S extends Enum<S>, E extends Enum<E>> extends Actor<Event<?>, Void> {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 
-    private StateMachine<O, S, E> fsm;
+    private final StateMachine<O, S, E> fsm;
 
     public FsmActor(@Nonnull FsmBuilder<O, S, E> builder, String name) throws SuspendExecution {
          super(name, new MailboxConfig());

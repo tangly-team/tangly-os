@@ -13,29 +13,28 @@
 
 package net.tangly.bus.crm;
 
-import net.tangly.bus.core.EntityImp;
+import java.util.Locale;
+import java.util.Objects;
 
+import net.tangly.bus.core.EntityImp;
+import org.jetbrains.annotations.NotNull;
+
+/**
+ * Defines an employee as a temporal work contract between a natural entity meaning a person and a legal entity meaning an organization or a company. The name
+ * property of the employee is the name property of the natural person of this employee. The from and to date defines the duration of the employment . if the to
+ * date is empty the employee is still legally working for the organization.
+ */
 public class Employee extends EntityImp implements CrmEntity {
     private static final long serialVersionUID = 1L;
 
     private NaturalEntity person;
     private LegalEntity organization;
 
-    public Employee() {
-        // default constructor
-    }
-
-    public static Employee of(long oid) {
-        Employee entity = new Employee();
-        entity.oid(oid);
-        return entity;
-    }
-
     public NaturalEntity person() {
         return person;
     }
 
-    public void person(NaturalEntity person) {
+    public void person(@NotNull NaturalEntity person) {
         this.person = person;
     }
 
@@ -43,7 +42,25 @@ public class Employee extends EntityImp implements CrmEntity {
         return organization;
     }
 
-    public void organization(LegalEntity organization) {
+    public void organization(@NotNull LegalEntity organization) {
         this.organization = organization;
+    }
+
+    @Override
+    public String name() {
+        return Objects.nonNull(person()) ? person().name() : null;
+    }
+
+    @Override
+    public void name(String name) {
+        if (Objects.nonNull(person)) {
+            person().name(name);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return String.format(Locale.US, "Employee[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, person=%s, organization=%s]", oid(), id(), name(),
+                fromDate(), toDate(), text(), person(), organization());
     }
 }

@@ -13,37 +13,82 @@
 
 package net.tangly.commons.vaadin;
 
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import org.jetbrains.annotations.NotNull;
 
 public interface CrudForm<T> {
-    public enum Operation {
-        VIEW, UPDATE, CREATE, DELETE, CANCEL;
+    enum Operation {
+        VIEW, UPDATE, CREATE, DELETE, CANCEL, SELECT;
 
-        static boolean isReadWrite(@NotNull Operation operation) {
-            return (operation == Operation.CREATE) || ((operation == Operation.UPDATE));
+        public static boolean isReadWrite(@NotNull Operation operation) {
+            return (operation == Operation.CREATE) || (operation == Operation.UPDATE) || (operation == SELECT);
         }
 
-        static boolean isReadOnly(@NotNull Operation operation) {
+        public static boolean isReadOnly(@NotNull Operation operation) {
             return (operation == Operation.VIEW) || ((operation == Operation.DELETE));
         }
     }
 
-    static TextField createTextField(String label, String placeholder, boolean readonly, boolean enabled) {
-        TextField field = new TextField(label);
-        field.setPlaceholder(placeholder);
-        field.setReadOnly(readonly);
-        field.setEnabled(enabled);
-        return field;
-    }
+    FormLayout createForm(@NotNull Operation operation, T entity);
 
-    FormLayout createForm(Operation operation, T entity);
-
-    default T formCompleted(Operation operation, T entity) {
+    default T formCompleted(@NotNull Operation operation, T entity) {
         return entity;
     }
 
-    default void formCancelled(Operation operation, T entity) {
+    default void formCancelled(@NotNull Operation operation, T entity) {
+    }
+
+    static <T> HorizontalLayout createFormButtons(@NotNull Dialog dialog, @NotNull CrudForm<T> form, @NotNull CrudForm.Operation operation, @NotNull T entity,
+                                                  @NotNull CrudActionsListener<T> actionsListener) {
+        HorizontalLayout actions = new HorizontalLayout();
+        actions.setSpacing(true);
+        Button cancel = new Button("Cancel", event -> {
+            form.formCancelled(CrudForm.Operation.CANCEL, entity);
+            dialog.close();
+        });
+        Button action;
+        switch (operation) {
+            case VIEW:
+                action = new Button("Ok");
+                actions.add(action);
+                action.addClickListener(event -> {
+                    form.formCompleted(CrudForm.Operation.VIEW, entity);
+                    dialog.close();
+                });
+                break;
+            case UPDATE:
+                action = new Button("Ok");
+                actions.add(action);
+                action.addClickListener(event -> {
+                    form.formCompleted(CrudForm.Operation.UPDATE, entity);
+                    actionsListener.entityUpdated(entity);
+                    dialog.close();
+                });
+                break;
+            case CREATE:
+                action = new Button("Create");
+                actions.add(action, cancel);
+                action.addClickListener(event -> {
+                    T created = form.formCompleted(CrudForm.Operation.CREATE, null);
+                    actionsListener.entityAdded(created);
+                    dialog.close();
+                });
+                break;
+            case DELETE:
+                action = new Button("Delete");
+                actions.add(action, cancel);
+                action.addClickListener(event -> {
+                    form.formCompleted(CrudForm.Operation.DELETE, entity);
+                    actionsListener.entityDeleted(entity);
+                    dialog.close();
+                });
+                break;
+            default:
+        }
+        return actions;
     }
 }
+

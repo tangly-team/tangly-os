@@ -13,7 +13,6 @@
 
 package net.tangly.invoices.ports;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,16 +22,9 @@ import java.util.Collections;
 import java.util.Currency;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
-import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import net.tangly.bus.core.Address;
-import net.tangly.bus.core.HasOid;
 import net.tangly.bus.crm.BankConnection;
+import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.invoices.Invoice;
@@ -45,31 +37,32 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class InvoiceTest {
     private static final BigDecimal VAT_REGULAR = new BigDecimal("0.077");
+    private static final String PAYMENT_CONDITIONS_30_DAYS = "30 days net";
 
     @Test
-    void writeAsciiDocReport() throws IOException {
+    void writeAsciiDocReport() {
         Path invoicesDir = Paths.get("/tmp/");
 
         Path invoicePath = invoicesDir.resolve("2017-001-invoice.adoc");
         Path invoiceOutputPath = invoicesDir.resolve("2017-001-invoice.pdf");
         Invoice invoice = newRegularInvoice();
-        new InvoiceAsciiDoc().create(invoice, invoicePath, Collections.emptyMap());
-        new InvoiceQrCode().create(invoice, invoiceOutputPath, Collections.emptyMap());
-        new InvoiceZugFerd().create(invoice, invoiceOutputPath, Collections.emptyMap());
+        new InvoiceAsciiDoc().exports(invoice, invoicePath, Collections.emptyMap());
+        new InvoiceQrCode().exports(invoice, invoiceOutputPath, Collections.emptyMap());
+        new InvoiceZugFerd().exports(invoice, invoiceOutputPath, Collections.emptyMap());
 
         invoicePath = invoicesDir.resolve("2017-002-invoice.adoc");
         invoiceOutputPath = invoicesDir.resolve("2017-002-invoice.pdf");
         invoice = newTeachingInvoice();
-        new InvoiceAsciiDoc().create(invoice, invoicePath, Collections.emptyMap());
-        new InvoiceQrCode().create(invoice, invoiceOutputPath, Collections.emptyMap());
-        new InvoiceZugFerd().create(invoice, invoiceOutputPath, Collections.emptyMap());
+        new InvoiceAsciiDoc().exports(invoice, invoicePath, Collections.emptyMap());
+        new InvoiceQrCode().exports(invoice, invoiceOutputPath, Collections.emptyMap());
+        new InvoiceZugFerd().exports(invoice, invoiceOutputPath, Collections.emptyMap());
 
         invoicePath = invoicesDir.resolve("2017-003-invoice.adoc");
         invoiceOutputPath = invoicesDir.resolve("2017-003-invoice.pdf");
         invoice = newComplexInvoice();
-        new InvoiceAsciiDoc().create(invoice, invoicePath, Collections.emptyMap());
-        new InvoiceQrCode().create(invoice, invoiceOutputPath, Collections.emptyMap());
-        new InvoiceZugFerd().create(invoice, invoiceOutputPath, Collections.emptyMap());
+        new InvoiceAsciiDoc().exports(invoice, invoicePath, Collections.emptyMap());
+        new InvoiceQrCode().exports(invoice, invoiceOutputPath, Collections.emptyMap());
+        new InvoiceZugFerd().exports(invoice, invoiceOutputPath, Collections.emptyMap());
 
         assertThat(Files.exists(invoicesDir)).isTrue();
         assertThat(Files.isDirectory(invoicesDir)).isTrue();
@@ -78,20 +71,8 @@ public class InvoiceTest {
     }
 
     @Test
-    void writeJsonTest() throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new ParameterNamesModule(JsonCreator.Mode.PROPERTIES));
-        mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
-        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
-        Invoice invoice = newRegularInvoice();
-        String json = writer.writeValueAsString(invoice);
-        assertThat(json.length()).isGreaterThan(0);
-    }
-
-    @Test
     void testRegularInvoiceTotals() {
         Invoice invoice = newRegularInvoice();
-
         assertThat(invoice.amountWithoutVat()).isEqualByComparingTo(new BigDecimal("10850.00"));
         assertThat(invoice.amountWithVat()).isEqualByComparingTo(new BigDecimal("11685.45"));
         assertThat(invoice.vat()).isEqualByComparingTo(new BigDecimal("835.45"));
@@ -100,7 +81,6 @@ public class InvoiceTest {
     @Test
     void testTeachingTotals() {
         Invoice invoice = newTeachingInvoice();
-
         assertThat(invoice.amountWithoutVat()).isEqualByComparingTo(new BigDecimal("4000.00"));
         assertThat(invoice.amountWithVat()).isEqualByComparingTo(new BigDecimal("4000.00"));
         assertThat(invoice.vat()).isEqualByComparingTo(BigDecimal.ZERO);
@@ -109,15 +89,14 @@ public class InvoiceTest {
     @Test
     void testComplexInvoiceTotals() {
         Invoice invoice = newComplexInvoice();
-
         assertThat(invoice.amountWithoutVat()).isEqualByComparingTo(new BigDecimal("13850.00"));
         assertThat(invoice.amountWithVat()).isEqualByComparingTo(new BigDecimal("14685.45"));
         assertThat(invoice.vat()).isEqualByComparingTo(new BigDecimal("835.45"));
     }
 
     private Invoice newRegularInvoice() {
-        Product coaching = new Product("0001", "Agile coaching", new BigDecimal(1400), "day", VAT_REGULAR);
-        Product project = new Product("0002", "Technical project management", new BigDecimal("1400"), "day", VAT_REGULAR);
+        Product coaching = new Product("0001", "Agile coaching", "", new BigDecimal(1400), "day", VAT_REGULAR);
+        Product project = new Product("0002", "Technical project management", "", new BigDecimal("1400"), "day", VAT_REGULAR);
 
         Invoice invoice = newInvoice("2017-0001", "Coaching contract Planta 20XX-5946 und ARE-20XX-6048");
 
@@ -128,27 +107,24 @@ public class InvoiceTest {
         invoice.add(new InvoiceItem(4, coaching, "OGD technical project management", new BigDecimal("2.25")));
         invoice.add(new Subtotal(5, "Subtotal Agile Coaching 3130 0 80000", List.of(invoice.getAt(4))));
 
-        invoice.paymentConditions("30 day net");
+        invoice.paymentConditions(PAYMENT_CONDITIONS_30_DAYS);
         invoice.currency(Currency.getInstance("CHF"));
         return invoice;
     }
 
     private Invoice newTeachingInvoice() {
-        Product teaching = new Product("0011", "Agile training", new BigDecimal(2000), "day", BigDecimal.ZERO);
-
+        Product teaching = new Product("0011", "Agile training", "", new BigDecimal(2000), "day", BigDecimal.ZERO);
         Invoice invoice = newInvoice("2017-0002", "Agile Training and Workshop");
-
         invoice.add(new InvoiceItem(1, teaching, "Scrum Agile Workshop", new BigDecimal("2")));
-
-        invoice.paymentConditions("30 day net");
+        invoice.paymentConditions(PAYMENT_CONDITIONS_30_DAYS);
         invoice.currency(Currency.getInstance("CHF"));
         return invoice;
     }
 
     private Invoice newComplexInvoice() {
-        Product coaching = new Product("0001", "Agile coaching", new BigDecimal(1400), "day", VAT_REGULAR);
-        Product project = new Product("0002", "Technical project management", new BigDecimal("1400"), "day", VAT_REGULAR);
-        Product travelExpenses = new Product("9900", "Travel Expenses", BigDecimal.ONE, "CHF", BigDecimal.ZERO);
+        Product coaching = new Product("0001", "Agile coaching", "", new BigDecimal(1400), "day", VAT_REGULAR);
+        Product project = new Product("0002", "Technical project management", "", new BigDecimal("1400"), "day", VAT_REGULAR);
+        Product travelExpenses = new Product("9900", "Travel Expenses", "", BigDecimal.ONE, "CHF", BigDecimal.ZERO);
 
         Invoice invoice = newInvoice("2017-0003", "Coaching contract Planta 20XX-5946 und ARE-20XX-6048");
 
@@ -163,43 +139,48 @@ public class InvoiceTest {
         invoice.add(new InvoiceItem(7, travelExpenses, "Travel Expenses Berlin", new BigDecimal("1750")));
         invoice.add(new Subtotal(8, "Travel Expenses (no VAT taxes)", List.of(invoice.getAt(6), invoice.getAt(7))));
 
-        invoice.paymentConditions("30 day net");
+        invoice.paymentConditions(PAYMENT_CONDITIONS_30_DAYS);
         invoice.currency(Currency.getInstance("CHF"));
         return invoice;
     }
 
     private Invoice newInvoice(String id, String text) {
+        Contract contract = new Contract();
+        contract.id("TEST-CONTRACT-0000");
+        contract.sellee(sellee());
+        contract.seller(seller());
+        contract.sellee().address(CrmTags.WORK).ifPresent(contract::address);
         Invoice invoice = new Invoice();
         invoice.id(id);
+        invoice.contract(contract);
         invoice.invoicedDate(LocalDate.parse("2018-01-01"));
         invoice.dueDate(LocalDate.parse("2018-01-31"));
         invoice.invoicingEntity(seller());
-        invoice.invoicedEntity(sellee());
+        invoice.invoicingAddress(invoice.invoicingEntity().address(CrmTags.WORK).orElse(null));
         invoice.invoicingConnection(sellerConnection());
+        invoice.invoicedEntity(sellee());
+        invoice.invoicedAddress(invoice.invoicedEntity().address(CrmTags.WORK).orElse(null));
         invoice.text(text);
         return invoice;
     }
 
     private LegalEntity seller() {
-        LegalEntity seller = LegalEntity.of(HasOid.UNDEFINED_OID);
+        LegalEntity seller = new LegalEntity();
         seller.name("tangly llc");
-        seller.address(CrmTags.CRM_ADDRESS_WORK,
-                new Address.Builder().street("Lorzenhof 27").postcode("6330").locality("Cham").region("ZG").country("CH").build()
-        );
-        seller.phoneNr(CrmTags.CRM_PHONE_WORK, "+41 79 778 8689");
+        seller.address(CrmTags.WORK, new Address.Builder().street("Lorzenhof 27").postcode("6330").locality("Cham").region("ZG").country("CH").build());
+        seller.phoneNr(CrmTags.WORK, "+41 79 778 8689");
         seller.id("CHE-357-875.339");
         seller.vatNr("CHE-357-875.339 MWST");
         return seller;
     }
 
     private LegalEntity sellee() {
-        LegalEntity sellee = LegalEntity.of(HasOid.UNDEFINED_OID);
+        LegalEntity sellee = new LegalEntity();
         sellee.name("Flow AG");
-        sellee.address(CrmTags.CRM_ADDRESS_WORK,
-                new Address.Builder().extended("attn. John Doe").street("Bahnhofstrasse 1").postcode("6300").locality("Zug").region("ZG")
-                        .country("CH").build()
-        );
-        sellee.phoneNr(CrmTags.CRM_PHONE_WORK, "+41 41 228 4242");
+        sellee.address(CrmTags.WORK,
+                new Address.Builder().extended("attn. John Doe").street("Bahnhofstrasse 1").postcode("6300").locality("Zug").region("ZG").country("CH")
+                        .build());
+        sellee.phoneNr(CrmTags.WORK, "+41 41 228 4242");
         sellee.id("CHE-123-456.789");
         sellee.vatNr("CHE-123-456.789 MWST");
         return sellee;

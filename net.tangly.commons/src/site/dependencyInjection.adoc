@@ -255,7 +255,7 @@ If you still need the possibility to get instances of various types in your busi
     // in your business code
     public class Example {
 
-        private InstanceProvider context;
+        private final InstanceProvider context;
 
         public Example(InstanceProvider context){
             this.context = context;

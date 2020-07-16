@@ -13,9 +13,9 @@
 
 package net.tangly.commons.vaadin;
 
-import java.io.IOException;
 import java.nio.file.Paths;
 
+import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
@@ -25,12 +25,22 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.material.Material;
+import net.tangly.bus.ledger.Ledger;
+import net.tangly.commons.bus.ui.TagTypesView;
+import net.tangly.commons.crm.ui.ActivitiesView;
 import net.tangly.commons.crm.ui.ContractsView;
 import net.tangly.commons.crm.ui.EmployeesView;
+import net.tangly.commons.crm.ui.InteractionsView;
 import net.tangly.commons.crm.ui.LegalEntitiesView;
 import net.tangly.commons.crm.ui.NaturalEntitiesView;
+import net.tangly.commons.crm.ui.SubjectsView;
+import net.tangly.commons.invoices.ui.InvoicesView;
+import net.tangly.commons.invoices.ui.ProductsView;
+import net.tangly.commons.ledger.ui.AccountsView;
+import net.tangly.commons.ledger.ui.TransactionsView;
 import net.tangly.crm.ports.Crm;
 import net.tangly.crm.ports.CrmWorkflows;
+import net.tangly.ledger.ports.LedgerWorkflows;
 import org.jetbrains.annotations.NotNull;
 
 @Theme(value = Material.class)
@@ -40,24 +50,54 @@ import org.jetbrains.annotations.NotNull;
 public class MainView extends VerticalLayout {
     private Component currentView;
     private final Crm crm;
-    private NaturalEntitiesView naturalEntitiesView;
-    private LegalEntitiesView legalEntitiesView;
-    private EmployeesView employeesView;
-    private ContractsView contractsView;
+    private final Ledger ledger;
+    private final NaturalEntitiesView naturalEntitiesView;
+    private final LegalEntitiesView legalEntitiesView;
+    private final EmployeesView employeesView;
+    private final ContractsView contractsView;
 
-    public MainView() throws IOException {
+    private final ProductsView productsView;
+    private final InvoicesView invoicesView;
+
+    private final InteractionsView interactionsView;
+    private final ActivitiesView activitiesView;
+    private final SubjectsView subjectsView;
+
+    private final AccountsView accountsView;
+    private final TransactionsView transactionsView;
+
+    private final TagTypesView tagTypesView;
+
+    public MainView() {
         crm = new Crm();
         CrmWorkflows crmWorkflows = new CrmWorkflows(crm);
-        crmWorkflows.importCrmEntitiesFromTsv(Paths.get("/Users/Shared/tangly/"));
+        crmWorkflows.importCrmEntities(Paths.get("/Users/Shared/tangly/"));
+
+        LedgerWorkflows ledgerWorkflows = new LedgerWorkflows();
+        ledgerWorkflows.importLedger(Paths.get("/Users/Shared/tangly/"));
+        ledger = ledgerWorkflows.ledger();
 
         naturalEntitiesView = new NaturalEntitiesView(crm);
         legalEntitiesView = new LegalEntitiesView(crm);
         employeesView = new EmployeesView(crm);
         contractsView = new ContractsView(crm);
+        productsView = new ProductsView(crm.products());
+        invoicesView = new InvoicesView(crm.invoices());
+        interactionsView = new InteractionsView(crm);
+        activitiesView = new ActivitiesView(crm);
+        subjectsView = new SubjectsView(crm);
+        accountsView = new AccountsView(ledger, Crud.Mode.EDITABLE);
+        transactionsView = new TransactionsView(ledger, Crud.Mode.EDITABLE);
+        tagTypesView = new TagTypesView(crm.tagTypeRegistry());
 
         setSizeFull();
         currentView = naturalEntitiesView;
         add(menuBar(), naturalEntitiesView);
+    }
+
+    @Override
+    protected void onAttach(AttachEvent attachEvent) {
+        VaadinUtils.setAttribute(this, "username", "mbaumann");
     }
 
     private MenuBar menuBar() {
@@ -66,23 +106,74 @@ public class MainView extends VerticalLayout {
 
         MenuItem crm = menuBar.addItem("CRM");
         SubMenu crmSubMenu = crm.getSubMenu();
-        MenuItem legalEntities = crmSubMenu.addItem("Legal Entities", e -> select(legalEntitiesView));
-        MenuItem naturalEntities = crmSubMenu.addItem("Natural Entities", e -> select(naturalEntitiesView));
-        MenuItem contracts = crmSubMenu.addItem("Contracts", e -> select(contractsView));
+        crmSubMenu.addItem("Legal Entities", e -> select(legalEntitiesView));
+        crmSubMenu.addItem("Natural Entities", e -> select(naturalEntitiesView));
+        crmSubMenu.addItem("Contracts", e -> select(contractsView));
+        crmSubMenu.addItem("Employees", e -> select(employeesView));
+        crmSubMenu.addItem("Interactions", e -> select(interactionsView));
+        crmSubMenu.addItem("Activities", e -> select(activitiesView));
 
-        MenuItem activities = menuBar.addItem("Activities");
+        MenuItem activities = menuBar.addItem("Works");
         SubMenu activitiesSubMenu = activities.getSubMenu();
-        MenuItem products = activitiesSubMenu.addItem("Products");
-        MenuItem projects = activitiesSubMenu.addItem("Projects");
+        activitiesSubMenu.addItem("Projects");
+
+        MenuItem invoices = menuBar.addItem("Invoices");
+        SubMenu invoicesSubMenu = invoices.getSubMenu();
+        invoicesSubMenu.addItem("Products", e -> select(productsView));
+        invoicesSubMenu.addItem("Invoices", e -> select(invoicesView));
 
         MenuItem ledger = menuBar.addItem("Financials");
         SubMenu ledgerSubMenu = ledger.getSubMenu();
+        ledgerSubMenu.addItem("Accounts", e -> select(accountsView));
+        ledgerSubMenu.addItem("Transactions", e -> select(transactionsView));
+
+        MenuItem admin = menuBar.addItem("Admin");
+        SubMenu adminSubmenu = admin.getSubMenu();
+        adminSubmenu.addItem("Users", e -> select(subjectsView));
+        adminSubmenu.addItem("Tags", e -> select(tagTypesView));
+
+        MenuItem actionsItem = adminSubmenu.addItem("Actions");
+        SubMenu actions = actionsItem.getSubMenu();
+        actions.addItem("Import CRM Data", e -> importCrmData());
+        actions.addItem("Export CRM data", e -> exportCrmData());
+        actions.addItem("Count CRM Tags", e -> countCrmTags());
+
         return menuBar;
+    }
+
+    private void countCrmTags() {
+        tagTypesView.clearCounts();
+        tagTypesView.addCounts(crm.naturalEntities().getAll());
+        tagTypesView.addCounts(crm.legalEntities().getAll());
+        tagTypesView.addCounts(crm.employees().getAll());
+        tagTypesView.addCounts(crm.contracts().getAll());
+        tagTypesView.addCounts(crm.subjects().getAll());
+        tagTypesView.refreshData();
     }
 
     private void select(@NotNull Component view) {
         this.remove(currentView);
         this.add(view);
         currentView = view;
+    }
+
+    private void importCrmData() {
+        CrmWorkflows crmWorkflows = new CrmWorkflows(crm);
+        crmWorkflows.importCrmEntities(Paths.get("/Users/Shared/tangly"));
+        refreshViews();
+    }
+
+    private void exportCrmData() {
+        CrmWorkflows crmWorkflows = new CrmWorkflows(crm);
+        crmWorkflows.exportCrmEntities(Paths.get("/Users/Shared/tmp"));
+    }
+
+    private void refreshViews() {
+        naturalEntitiesView.refreshData();
+        legalEntitiesView.refreshData();
+        employeesView.refreshData();
+        contractsView.refreshData();
+        productsView.refreshData();
+        subjectsView.refreshData();
     }
 }

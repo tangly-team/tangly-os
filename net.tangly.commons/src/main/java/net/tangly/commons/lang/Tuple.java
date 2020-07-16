@@ -13,5 +13,10 @@
 
 package net.tangly.commons.lang;
 
+/**
+ * Defines a typed tuple as long as JDK API is not providing the abstraction.
+ * @param <T> left type of the tuple
+ * @param <U> right type of the tuple
+ */
 public record Tuple<T, U>(T left, U right) {
 }

@@ -1,0 +1,28 @@
+---
+title: "Release Notes"
+date: 2019-05-01
+weight: 20
+draft: false
+---
+:source-highlighter: pygments
+
+== Commons Library Change Logs
+
+This document provides a high-level view of the changes introduced in Commons library by release.
+For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] commits.
+
+=== 0.2.5 (2020-08-31)
+
+Improvements::
+
+* Initial release of the library: library was extracted from the commons component
+* The mapper was extended to support owned entities and sibling entities.
+Both are updated upon a save operation.
+If an owner instance is deleted all his owned entities will transitively be deleted.
+Business logic is responsible for the handling of sibling lifecycles.
+The examples in the unit tests and the documentation were extended.
+* The initial implementation is tested against hsqldb.
+No effort was invested to test compatibility with other databases.
+The port should be straight forward because we are using plain JDBC statements.
+* A major drive to create the library is the ease of support for reference code, tags and comments.
+We are still looking for open source libraries providing hooks to support such extensions.

@@ -17,69 +17,37 @@ import java.io.Serializable;
 import java.util.function.BiPredicate;
 import java.util.function.Function;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
- * Implements the conceptual type of a set of related tags, all of the same class. The tag type also provides support to convert the text format of a
- * tag into a Java object and to validate acceptable tag values.
+ * Implements the conceptual type of a set of related tags, all of the same class. The tag type also provides support to convertTo the text format of a tag into
+ * a Java object and to validate acceptable tag values.
  *
- * @param <T> type of the tags
+ * @param namespace namespace of the tags defined through the tag type
+ * @param name      name of the tags defined through the tag type
+ * @param clazz     type of the values stored in the tag
+ * @param <T>       type of the tags
  */
-public record TagType<T extends Serializable>(String namespace, String name, ValueKinds kind, Class<T>clazz, Function<String, T>convert,
-                                              BiPredicate<TagType<T>, T>validate) {
+public record TagType<T extends Serializable>(String namespace, String name, ValueKinds kind, Class<T> clazz, Function<String, T> convertTo,
+                                              BiPredicate<TagType<T>, T> validate) {
     public enum ValueKinds {NONE, OPTIONAL, MANDATORY}
 
-    /**
-     * Defines the official geo tag for latitude.
-     *
-     * @return the tag type for a geographical latitude
-     */
-    public static TagType<Double> createGeoLatitude() {
-        return ofMandatory("geo", "lat", Double.TYPE);
-    }
-
-    /**
-     * Defines the official geo tag for longitude.
-     *
-     * @return the tag type for a geographical longitude
-     */
-    public static TagType<Double> createGeoLongitude() {
-        return ofMandatory("geo", "long", Double.TYPE);
-    }
-
-    /**
-     * Defines the official geo tag for altitude.
-     *
-     * @return the tag type for a geographical altitude
-     */
-    public static TagType<Double> createGeoAltitude() {
-        return ofMandatory("geo", "alt", Double.TYPE);
-    }
-
-    /**
-     * Defines the official geo tag for region.
-     *
-     * @return the tag type for a geographical region
-     */
-    public static TagType<String> createGeoRegion() {
-        return ofMandatory("geo", "region", String.class);
-    }
-
-
-    public static <T extends Serializable> TagType<T> ofMandatory(String namespace, String name, Class<T> clazz, Function<String, T> convert,
+    public static <T extends Serializable> TagType<T> ofMandatory(String namespace, String name, Class<T> clazz, Function<String, T> convertTo,
                                                                   BiPredicate<TagType<T>, T> validate) {
-        return new TagType<>(namespace, name, ValueKinds.MANDATORY, clazz, convert, validate);
+        return new TagType<>(namespace, name, ValueKinds.MANDATORY, clazz, convertTo, validate);
     }
 
-    public static <T extends Serializable> TagType<T> ofMandatory(String namespace, String name, Class<T> clazz, Function<String, T> convert) {
-        return new TagType<>(namespace, name, ValueKinds.MANDATORY, clazz, convert, null);
+    public static <T extends Serializable> TagType<T> ofMandatory(String namespace, String name, Class<T> clazz, Function<String, T> convertTo) {
+        return new TagType<>(namespace, name, ValueKinds.MANDATORY, clazz, convertTo, null);
     }
 
     public static <T extends Serializable> TagType<T> ofMandatory(String namespace, String name, Class<T> clazz) {
         return new TagType<>(namespace, name, ValueKinds.MANDATORY, clazz, null, null);
     }
 
-    public static <T extends Serializable> TagType<T> ofOptional(String namespace, String name, Class<T> clazz, Function<String, T> convert,
+    public static <T extends Serializable> TagType<T> ofOptional(String namespace, String name, Class<T> clazz, Function<String, T> convertTo,
                                                                  BiPredicate<TagType<T>, T> validate) {
-        return new TagType<>(namespace, name, ValueKinds.OPTIONAL, clazz, convert, validate);
+        return new TagType<>(namespace, name, ValueKinds.OPTIONAL, clazz, convertTo, validate);
     }
 
     public static <T extends Serializable> TagType<T> ofOptional(String namespace, String name, Class<T> clazz) {
@@ -90,11 +58,11 @@ public record TagType<T extends Serializable>(String namespace, String name, Val
         return kind != ValueKinds.NONE;
     }
 
-    public T getValue(Tag tag) {
-        return (convert == null) ? null : convert.apply(tag.value());
+    public T getValue(@NotNull Tag tag) {
+        return (convertTo() == null) ? null : convertTo().apply(tag.value());
     }
 
-    public Tag of(T value) {
+    public Tag of(@NotNull T value) {
         return new Tag(namespace, name, value.toString());
     }
 
@@ -102,7 +70,7 @@ public record TagType<T extends Serializable>(String namespace, String name, Val
         return new Tag(namespace, name, value);
     }
 
-    public boolean validate(String value) {
-        return (validate == null) || validate.test(this, convert.apply(value));
+    public boolean validate(@NotNull String value) {
+        return (validate == null) || validate.test(this, convertTo().apply(value));
     }
 }

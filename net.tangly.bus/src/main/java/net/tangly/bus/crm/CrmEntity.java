@@ -22,28 +22,15 @@ import net.tangly.bus.core.PhoneNr;
 import net.tangly.bus.core.Tag;
 
 /**
- * A customer relation management entity defines a set of operations useful for all customers. All information are stored as tags for future
- * extensions.
+ * A customer relation management entity defines a set of operations useful for all customers. All information are stored as tags for future extensions.
  */
 public interface CrmEntity extends HasTags {
-    default void setTag(String kind, String value) {
-        if (value != null) {
-            replace(Tag.of(CrmTags.CRM, kind, value));
-        } else {
-            findBy(CrmTags.CRM, kind).ifPresent(this::remove);
-        }
-    }
-
     default Optional<PhoneNr> phoneNr(String kind) {
         return findBy(CrmTags.phoneTag(kind)).map(o -> PhoneNr.of(o.value()));
     }
 
     default void phoneNr(String kind, String phoneNr) {
-        if (phoneNr != null) {
-            replace(Tag.of(CrmTags.phoneTag(kind), phoneNr));
-        } else {
-            removeTagNamed(CrmTags.phoneTag(kind));
-        }
+        tag(CrmTags.phoneTag(kind), phoneNr);
     }
 
     default Optional<String> email(String kind) {
@@ -51,32 +38,23 @@ public interface CrmEntity extends HasTags {
     }
 
     default void email(String kind, String email) {
-        if (email != null) {
-            replace(Tag.of(CrmTags.emailTag(kind), email));
-        } else {
-            removeTagNamed(CrmTags.emailTag(kind));
-        }
+        tag(CrmTags.emailTag(kind), email);
     }
 
     default Optional<Address> address(String kind) {
-        var value = findBy(kind);
-        return value.map(Tag::value).map(Address::of);
+        return findBy(CrmTags.addressTag(kind)).map(Tag::value).map(Address::of);
     }
 
     default void address(String kind, Address address) {
-        if (address != null) {
-            replace(Tag.of(kind, address.text()));
-        } else {
-            removeTagNamed(kind);
-        }
+        tag(CrmTags.addressTag(kind), address.text());
+    }
+
+    default Optional<String> im(String kind) {
+        return findBy(CrmTags.imTag(kind)).map(Tag::value);
     }
 
     default void im(String kind, String reference) {
-        if (reference != null) {
-            replace(Tag.of(CrmTags.imTag(kind), reference));
-        } else {
-            removeTagNamed(CrmTags.imTag(kind));
-        }
+        tag(CrmTags.imTag(kind), reference);
     }
 
     default Optional<String> site(String kind) {
@@ -84,10 +62,6 @@ public interface CrmEntity extends HasTags {
     }
 
     default void site(String kind, String site) {
-        if (site != null) {
-            replace(Tag.of(CrmTags.siteTag(kind), site));
-        } else {
-            removeTagNamed(CrmTags.siteTag(kind));
-        }
+        tag(CrmTags.siteTag(kind), site);
     }
 }

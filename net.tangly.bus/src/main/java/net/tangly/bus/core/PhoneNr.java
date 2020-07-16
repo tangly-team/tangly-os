@@ -14,24 +14,55 @@
 package net.tangly.bus.core;
 
 import java.io.Serializable;
-import java.util.regex.Pattern;
+
+import com.google.i18n.phonenumbers.NumberParseException;
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import com.google.i18n.phonenumbers.Phonenumber;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * Represents an immutable phone number as a canonical string.
+ * Represents an immutable phone number as a canonical string. Validation and formatting of phone numbers is performed through the phone library of Google
+ * which supports worldwide numbers.
  */
 public record PhoneNr(String number) implements Serializable {
     /**
      * pattern used to normalize the phone numbers.
      */
-    private static final Pattern PATTERN = Pattern.compile("(\\(0\\)| |-|[^\\d+])");
+    private static final Logger logger = LoggerFactory.getLogger(PhoneNr.class);
 
     /**
-     * Factory method to of a new phone number.
+     * Factory method to of a new phone number. The number is formatted based on the international format standard.
      *
      * @param number phone number in raw format
      * @return the newly created phone number if the raw format contained a number otherwise null
      */
     public static PhoneNr of(String number) {
-        return Strings.isNullOrEmpty(number) ? null : new PhoneNr(PATTERN.matcher(number).replaceAll(""));
+        PhoneNr phoneNr = null;
+        if (!Strings.isNullOrBlank(number)) {
+            PhoneNumberUtil numberUtil = PhoneNumberUtil.getInstance();
+            try {
+                Phonenumber.PhoneNumber googleNr = numberUtil.parse(number, "CH");
+                phoneNr = new PhoneNr(numberUtil.format(googleNr, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL));
+            } catch (NumberParseException e) {
+                logger.atWarn().setCause(e).log("Error creating phone number {}", number);
+            }
+        }
+        return phoneNr;
+    }
+
+    /**
+     * Validate a phone number using the Google phone library.
+     * @return true if the phone number is valid otherwise false
+     */
+    public boolean isValid() {
+        PhoneNumberUtil numberUtil = PhoneNumberUtil.getInstance();
+        try {
+            Phonenumber.PhoneNumber phoneNumber = numberUtil.parse(number, "CH");
+            return numberUtil.isValidNumber(phoneNumber);
+        } catch (NumberParseException e) {
+            logger.atWarn().setCause(e).log("Error validating phone number {}", number());
+            return false;
+        }
     }
 }

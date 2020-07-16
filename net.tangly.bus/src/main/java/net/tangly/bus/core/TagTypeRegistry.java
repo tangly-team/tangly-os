@@ -13,6 +13,8 @@
 
 package net.tangly.bus.core;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -43,6 +45,10 @@ public class TagTypeRegistry {
      */
     public void register(@NotNull TagType<?> type) {
         types.add(type);
+    }
+
+    public Collection<TagType<?>> tagTypes() {
+        return Collections.unmodifiableCollection(types);
     }
 
     /**

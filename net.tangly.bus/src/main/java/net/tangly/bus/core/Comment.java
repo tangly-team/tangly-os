@@ -14,7 +14,6 @@
 package net.tangly.bus.core;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Locale;
@@ -24,7 +23,7 @@ import java.util.Set;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Comment defines a human-readable annotation to an entity. A comment is an immutable object. Comments can be tagged to provide classification.
+ * Defines a human-readable annotation to an entity. A comment is an immutable object. Comments can be tagged to provide classification.
  */
 public class Comment implements HasOid, HasTags {
     private static final long serialVersionUID = 1L;
@@ -68,13 +67,12 @@ public class Comment implements HasOid, HasTags {
     /**
      * Default constructor to create an immutable instance.
      *
-     * @param timestamp when the comment instance was created
-     * @param author    of the comment instance as human readable field
-     * @param text      text of the comment, we recommend using asciidoc format
+     * @param author of the comment instance as human readable field
+     * @param text   text of the comment, we recommend using asciidoc format
      */
-    public Comment(@NotNull LocalDateTime timestamp, @NotNull String author, @NotNull String text) {
+    public Comment(@NotNull String author, @NotNull String text) {
         this.oid = HasOid.UNDEFINED_OID;
-        this.created = Objects.requireNonNull(timestamp);
+        this.created = LocalDateTime.now();
         this.author = Objects.requireNonNull(author);
         this.text = Objects.requireNonNull(text);
         tags = new HashSet<>();
@@ -89,21 +87,40 @@ public class Comment implements HasOid, HasTags {
      * @return the newly created comment
      */
     public static Comment of(@NotNull String author, @NotNull String text, Tag... tags) {
-        return of(LocalDateTime.now(), author, text, tags);
+        Comment comment = new Comment(author, text);
+        comment.addTags(Set.of(tags));
+        return comment;
     }
 
     /**
      * Factory method to update a new comment. The current date and time are set a creation date.
      *
-     * @param date   creation date of the comment
-     * @param author author of the comment
-     * @param text   content of the comment
-     * @param tags   optional tags of the comment
+     * @param created creation date of the comment
+     * @param author  author of the comment
+     * @param text    content of the comment
      * @return the newly created comment
      */
-    public static Comment of(@NotNull LocalDateTime date, @NotNull String author, @NotNull String text, Tag... tags) {
-        var comment = new Comment(date, author, text);
-        Arrays.stream(tags).forEach(comment::add);
+    public static Comment of(@NotNull LocalDateTime created, @NotNull String author, @NotNull String text) {
+        var comment = new Comment(author, text);
+        comment.created = created;
+        return comment;
+    }
+
+    /**
+     * Factory method to update a new comment. The current date and time are set a creation date.
+     *
+     * @param created creation date of the comment
+     * @param ownedBy oid of the owning entity
+     * @param author  author of the comment
+     * @param text    content of the comment
+     * @param tags    optional tags of the comment
+     * @return the newly created comment
+     */
+    public static Comment of(@NotNull LocalDateTime created, long ownedBy, @NotNull String author, @NotNull String text, Tag... tags) {
+        var comment = new Comment(author, text);
+        comment.created = created;
+        comment.ownedBy = ownedBy;
+        comment.addTags(Set.of(tags));
         return comment;
     }
 
@@ -132,6 +149,10 @@ public class Comment implements HasOid, HasTags {
      */
     public @NotNull String text() {
         return text;
+    }
+
+    public long ownedBy() {
+        return ownedBy;
     }
 
     // region HasOid

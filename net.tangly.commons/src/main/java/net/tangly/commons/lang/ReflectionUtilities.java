@@ -32,28 +32,35 @@ public final class ReflectionUtilities {
     private ReflectionUtilities() {
     }
 
-    public static <T> void set(@NotNull T entity, @NotNull String name, @NotNull Object value) throws PrivilegedActionException {
+    public static <T> void set(@NotNull T entity, @NotNull String name, @NotNull Object value) {
         Optional<Field> field = findField(entity.getClass(), name);
-        if (field.isPresent()) {
-            set(entity, field.get(), value);
-        }
+        field.ifPresent(field1 -> set(entity, field1, value));
     }
 
-    public static <T> void set(@NotNull T entity, @NotNull Field field, @NotNull Object value) throws PrivilegedActionException {
+    public static <T> void set(@NotNull T entity, @NotNull Field field, @NotNull Object value) {
         PrivilegedExceptionAction<Void> action = (() -> {
             field.setAccessible(true);
             field.set(entity, value);
             return null;
         });
-        AccessController.doPrivileged(action);
+        try {
+            AccessController.doPrivileged(action);
+        } catch (PrivilegedActionException e) {
+            throw new IllegalArgumentException("Privileged Action Exception encountered", e);
+        }
     }
 
-    public static <T> Object get(@NotNull T entity, Field field) throws PrivilegedActionException {
+    public static <T> Object get(@NotNull T entity, Field field) {
         final PrivilegedExceptionAction<Object> action = (() -> {
             field.setAccessible(true);
             return field.get(entity);
         });
-        return AccessController.doPrivileged(action);
+        try {
+            return AccessController.doPrivileged(action);
+        } catch (PrivilegedActionException e) {
+            throw new IllegalArgumentException("Privileged Action Exception encountered", e);
+        }
+
     }
 
     /**

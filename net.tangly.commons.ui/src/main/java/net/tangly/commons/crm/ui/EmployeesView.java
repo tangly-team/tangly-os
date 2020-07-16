@@ -13,18 +13,57 @@
 
 package net.tangly.commons.crm.ui;
 
+import com.vaadin.flow.component.HtmlComponent;
+import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.grid.Grid;
+import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
-import net.tangly.commons.vaadin.EntitiesView;
+import net.tangly.bus.crm.LegalEntity;
+import net.tangly.bus.crm.NaturalEntity;
+import net.tangly.commons.vaadin.EntityField;
+import net.tangly.commons.vaadin.InternalEntitiesView;
+import net.tangly.commons.vaadin.One2OneField;
+import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.crm.ports.Crm;
 import org.jetbrains.annotations.NotNull;
 
 public class EmployeesView extends CrmEntitiesView<Employee> {
     public EmployeesView(@NotNull Crm crm) {
-        super(crm, Employee.class, EntitiesView::defineGrid, crm.employees());
+        super(crm, Employee.class, EmployeesView::defineEmployeesGrid, crm.employees());
+    }
+
+    public static void defineEmployeesGrid(@NotNull Grid<Employee> grid) {
+        InternalEntitiesView.defineGrid(grid);
+        grid.addColumn(e -> e.person().name()).setKey("person").setHeader("Person").setSortable(true).setAutoWidth(true).setResizable(true);
+        grid.addColumn(e -> e.organization().name()).setKey("organization").setHeader("Organization").setSortable(true).setAutoWidth(true).setResizable(true);
+        grid.addColumn(e -> e.tag(CrmTags.CRM_EMPLOYEE_TITLE).orElse("")).setKey("titel").setHeader("Title").setSortable(true).setAutoWidth(true)
+                .setResizable(true);
     }
 
     @Override
     protected Employee create() {
         return new Employee();
+    }
+
+    @Override
+    protected FormLayout createOverallView(@NotNull Operation operation, @NotNull Employee entity) {
+        boolean readonly = Operation.isReadOnly(operation);
+        EntityField entityField = new EntityField();
+        One2OneField<LegalEntity, LegalEntitiesView> organization = new One2OneField<>("Organization", new LegalEntitiesView(crm()));
+        One2OneField<NaturalEntity, NaturalEntitiesView> person = new One2OneField<>("Person", new NaturalEntitiesView(crm()));
+
+        FormLayout form = new FormLayout();
+        VaadinUtils.setResponsiveSteps(form);
+        form.add(entityField);
+        form.add(new HtmlComponent("br"));
+        form.add(organization);
+        form.add(new HtmlComponent("br"));
+        form.add(person);
+
+        entityField.bind(binder);
+        binder.forField(organization).bind(Employee::organization, Employee::organization);
+        binder.forField(person).bind(Employee::person, Employee::person);
+        binder.readBean(entity);
+        return form;
     }
 }

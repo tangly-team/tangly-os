@@ -14,12 +14,16 @@
 package net.tangly.commons.crm.ui;
 
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.data.provider.DataProvider;
+import com.vaadin.flow.component.html.Anchor;
+import com.vaadin.flow.data.renderer.ComponentRenderer;
 import net.tangly.bus.core.Entity;
-import net.tangly.commons.orm.InstanceProvider;
-import net.tangly.commons.vaadin.EntitiesView;
+import net.tangly.bus.core.Tag;
+import net.tangly.bus.crm.CrmTags;
+import net.tangly.bus.providers.Provider;
+import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.crm.ports.Crm;
 import org.jetbrains.annotations.NotNull;
 
@@ -28,39 +32,39 @@ import org.jetbrains.annotations.NotNull;
  *
  * @param <T> type displayed in the CRUD view
  */
-public abstract class CrmEntitiesView<T extends Entity> extends EntitiesView<T> {
+public abstract class CrmEntitiesView<T extends Entity> extends InternalEntitiesView<T> {
     private final Crm crm;
-    private final InstanceProvider<T> instanceProvider;
 
-    protected CrmEntitiesView(@NotNull Crm crm, @NotNull Class<T> clazz, Consumer<Grid<T>> gridConfigurator, InstanceProvider<T> instanceProvider) {
-        super(clazz, gridConfigurator, instanceProvider.getAll(), DataProvider.ofCollection(instanceProvider.getAll()), crm.tagTypeRegistry());
+    protected CrmEntitiesView(@NotNull Crm crm, @NotNull Class<T> clazz, Consumer<Grid<T>> gridConfigurator, Provider<T> provider) {
+        super(clazz, gridConfigurator, provider, crm.tagTypeRegistry());
         this.crm = crm;
-        this.instanceProvider = instanceProvider;
     }
 
+    public static <T extends Entity> ComponentRenderer<Anchor, T> linkedInComponentRenderer(Function<String, String> linkedInUrl) {
+        return new ComponentRenderer<Anchor, T>(item -> {
+            Anchor anchor = new Anchor();
+            Tag tag = item.findBy(CrmTags.CRM_IM_LINKEDIN).orElse(null);
+            String linkedInRef = (tag != null) ? tag.value() : null;
+            anchor.setText(linkedInRef);
+            anchor.setHref((linkedInRef != null) ? linkedInUrl.apply(linkedInRef) : "");
+            anchor.setTarget("_blank");
+            return anchor;
+        });
+    }
+
+    public static <T extends Entity> ComponentRenderer<Anchor, T> urlComponentRenderer(String tagName) {
+        return new ComponentRenderer<Anchor, T>(item -> {
+            Anchor anchor = new Anchor();
+            Tag tag = item.findBy(tagName).orElse(null);
+            String url = (tag != null) ? tag.value() : null;
+            anchor.setText(url);
+            anchor.setHref((url != null) ? "https://" + url : "");
+            anchor.setTarget("_blank");
+            return anchor;
+        });
+    }
+    
     protected Crm crm() {
         return crm;
     }
-
-    // region Crud Action Listener
-
-    @Override
-    public void entityAdded(DataProvider<T, ?> provider, T entity) {
-        instanceProvider.update(entity);
-        provider.refreshAll();
-    }
-
-    @Override
-    public void entityDeleted(DataProvider<T, ?> provider, T entity) {
-        instanceProvider.delete(entity);
-        provider.refreshAll();
-    }
-
-    @Override
-    public void entityUpdated(DataProvider<T, ?> provider, T entity) {
-        instanceProvider.update(entity);
-        provider.refreshItem(entity);
-    }
-
-    // endregion
 }

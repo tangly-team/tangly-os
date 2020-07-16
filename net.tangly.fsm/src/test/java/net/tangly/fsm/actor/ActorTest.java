@@ -133,7 +133,7 @@ class ActorTest {
         }
         LocalActors.<Events>instance().awaitCompletion(clients, 1);
         for (int i = 0; i < nrClients; i++) {
-            Client client = (Client) LocalActors.<Events>instance().getActorNamed("client" + i);
+            Client client = LocalActors.<Events>instance().getActorNamed("client" + i);
             assertThat(client.nrRequests).isEqualTo(1);
             assertThat(client.nrAnswers).isEqualTo(1);
         }

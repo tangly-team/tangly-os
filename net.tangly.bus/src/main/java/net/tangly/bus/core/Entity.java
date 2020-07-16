@@ -29,36 +29,37 @@ import java.time.LocalDate;
  * Orthogonal information can therefore be attached to instances.</li>
  * </ul>
  */
-public interface Entity extends HasId, HasTags, HasComments {
+public interface Entity extends HasOid, HasEditableQualifiers, HasTags, HasComments {
     /**
-     * Returns the text describing the entity.
-     *
-     * @return description of the entity
-     */
-    String text();
-
-    /**
-     * Sets the text describing the entity.
-     *
-     * @param text description of the entity
-     */
-    void text(String text);
-
-    /**
-     * Returns the date from when the entity is existing and active.
+     * Return the date from when the entity is existing and active.
      *
      * @return the start of the existing period of the entity
      */
     LocalDate fromDate();
 
+    /**
+     * Set the start date from when the entity is existing and active.
+     *
+     * @param fromDate the start of the existing period of the entity
+     */
     void fromDate(LocalDate fromDate);
 
     /**
-     * Returns the date until when the entity is existing and active.
+     * Return the date until when the entity is existing and active.
      *
      * @return the end of the existing period of the entity
      */
     LocalDate toDate();
 
+    /**
+     * Set the end date from when the entity is existing and active.
+     *
+     * @param toDate the end of the existing period of the entity
+     */
     void toDate(LocalDate toDate);
+
+    default boolean isActive() {
+        LocalDate toDate = toDate();
+        return (toDate != null) && toDate.isBefore(LocalDate.now());
+    }
 }

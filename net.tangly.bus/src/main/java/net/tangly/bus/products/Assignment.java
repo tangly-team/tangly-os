@@ -13,30 +13,16 @@
 
 package net.tangly.bus.products;
 
-import java.time.LocalDate;
-
-import net.tangly.bus.core.HasId;
+import net.tangly.bus.core.EntityImp;
 import net.tangly.bus.crm.Employee;
 
 /**
- * An assignment defines connection of an employee to a project for a duration. The start date shall be equal or greater to the start date of project.
- * The end date is optional, if defined it shall smaller or equal to the end date of the project.
+ * An assignment defines connection of an employee to a project for a duration. The start date shall be equal or greater to the start date of project. The end
+ * date is optional, if defined it shall smaller or equal to the end date of the project.
  */
-public class Assignment implements HasId {
-    private long oid;
+public class Assignment extends EntityImp {
     private Employee employee;
     private Project project;
-    private LocalDate fromDate;
-    private LocalDate toDate;
-
-    @Override
-    public long oid() {
-        return oid;
-    }
-
-    public void oid(long oid) {
-        this.oid = oid;
-    }
 
     public Employee employee() {
         return employee;
@@ -52,22 +38,6 @@ public class Assignment implements HasId {
 
     public void project(Project project) {
         this.project = project;
-    }
-
-    public LocalDate fromDate() {
-        return fromDate;
-    }
-
-    public void fromDate(LocalDate fromDate) {
-        this.fromDate = fromDate;
-    }
-
-    public LocalDate toDate() {
-        return toDate;
-    }
-
-    public void toDate(LocalDate toDate) {
-        this.toDate = toDate;
     }
 }
 

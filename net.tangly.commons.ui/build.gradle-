@@ -20,7 +20,7 @@ plugins {
 project.ext.groupId = 'net.tangly'
 project.ext.artifactId ='commons.ui'
 project.ext.moduleName = 'net.tangly.commons.ui'
-project.version = "0.2.4"
+project.version = "0.2.5"
 project.ext.inceptionYear = '1996'
 project.description = "User Interface Components for commons data structures using Java 14 or higher (tangly llc)"
 
@@ -35,6 +35,7 @@ dependencies {
 
     implementation enforcedPlatform('com.vaadin:vaadin-bom:16.0.1')
     implementation("com.vaadin:vaadin-core")
+    implementation("org.iban4j:iban4j3.2.1")
 
     providedCompile "javax.servlet:javax.servlet-api:3.1.0"
 

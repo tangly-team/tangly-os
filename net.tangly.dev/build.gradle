@@ -14,7 +14,7 @@
 project.ext.groupId = 'net.tangly'
 project.ext.artifactId ='dev'
 project.ext.moduleName = 'net.tangly.dev'
-project.version = "0.2.4"
+project.version = "0.2.5"
 project.ext.inceptionYear = '1996'
 project.description = "Development Utilities(tangly llc)"
 

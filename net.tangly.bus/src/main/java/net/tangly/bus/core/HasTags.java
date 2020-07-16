@@ -38,6 +38,10 @@ public interface HasTags {
      */
     void add(Tag tag);
 
+    default void addTags(@NotNull Iterable<Tag> tags) {
+        tags.forEach(this::add);
+    }
+
     /**
      * Remove the tag from the set of tags.
      *
@@ -49,6 +53,7 @@ public interface HasTags {
 
     /**
      * Replace or insert the given tag. Tag equivalence is detected with optional namespace and tag name.
+     *
      * @param tag tag to replace or insert
      */
     default void replace(@NotNull Tag tag) {
@@ -59,6 +64,7 @@ public interface HasTags {
 
     /**
      * Remove the tag with the given tag identification containing optional namespace and tag name.
+     *
      * @param tag tag identification of the tag to be removed
      */
     default void removeTagNamed(String tag) {
@@ -67,6 +73,7 @@ public interface HasTags {
 
     /**
      * Find the tag with the given tag identification containing optional namespace and tag name.
+     *
      * @param tag tag identification of the tag to be removed
      * @return requested tag as optional
      */
@@ -87,9 +94,30 @@ public interface HasTags {
     }
 
     /**
+     * Return the value of the tag with the given qualified tag name.
+     *
+     * @param tag qualified tag name
+     * @return the tag value if found
+     */
+    default Optional<String> tag(@NotNull String tag) {
+        return findBy(tag).map(Tag::value);
+    }
+
+    /**
+     * Update the tag with the new value.
+     *
+     * @param tag   qualified tag name of the tag to update
+     * @param value new value of the tag
+     */
+    default void tag(@NotNull String tag, String value) {
+        replace(Tag.of(tag, value));
+    }
+
+    /**
      * True if the tag with the given tag identification containing optional namespace and tag name could be found.
+     *
      * @param namespace optional namespace of the tag
-     * @param name name of the tag
+     * @param name      name of the tag
      * @return flag indicating if the tag is existing
      */
     default boolean contains(String namespace, @NotNull String name) {
@@ -102,15 +130,22 @@ public interface HasTags {
     }
 
     /**
-     * Returns the set of tags as a string representation.
+     * Returns the set of tags as a canonical string representation.
      *
      * @return text representation of the tag set
+     * @see HasTags#rawTags(String)
      */
-    default String getRawTags() {
+    default String rawTags() {
         return Tag.text(tags());
     }
 
-    default void addRawTags(String rawTags) {
+    /**
+     * Set the tags using the canonical string representation.
+     *
+     * @param rawTags canonical representation of the tag set
+     * @see HasTags#rawTags()
+     */
+    default void rawTags(String rawTags) {
         Tag.toTags(rawTags).forEach(this::replace);
     }
 }

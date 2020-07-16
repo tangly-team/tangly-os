@@ -13,12 +13,10 @@
 
 package net.tangly.bus.core;
 
-import java.io.Serializable;
-
 /**
- * Marks a class with the capability to be uniquely identified through an object identifier.
+ * Mixin states a class with the capability to be uniquely identified through an object identifier.
  */
-public interface HasOid extends Serializable {
+public interface HasOid {
     /**
      * Place holder to identify an illegal or undefined internal identifier. It is also the default value if a developer forget to set the value.
      */

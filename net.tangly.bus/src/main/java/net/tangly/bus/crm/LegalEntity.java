@@ -14,25 +14,17 @@
 package net.tangly.bus.crm;
 
 
+import java.util.Locale;
+
 import net.tangly.bus.core.EntityImp;
 import net.tangly.bus.core.Tag;
 
 /**
- * A legal entity is legally recognized organization able to underwrite contracts and hire employees. A legal entity has a name, an identity defined
- * as the legal number of an organization (e.g. zefix number in Switzerland), a text describing it.
+ * A legal entity is legally recognized organization able to underwrite contracts and hire employees. A legal entity has a name, an identity defined as the
+ * legal number of an organization (e.g. zefix UID number in Switzerland, EUID in Europe), and a text describing it.
  */
 public class LegalEntity extends EntityImp implements CrmEntity {
     private static final long serialVersionUID = 1L;
-
-    public LegalEntity() {
-        // default constructor
-    }
-
-    public static LegalEntity of(long oid) {
-        LegalEntity entity = new LegalEntity();
-        entity.oid(oid);
-        return entity;
-    }
 
     /**
      * Returns the VAT identifying number of the legal entity.
@@ -51,5 +43,12 @@ public class LegalEntity extends EntityImp implements CrmEntity {
      */
     public void vatNr(String vatNr) {
         replace(Tag.of(CrmTags.CRM_VAT_NUMBER, vatNr));
+    }
+
+    @Override
+    public String toString() {
+        return String
+                .format(Locale.US, "LegalEntity[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, vatNr=%s]", oid(), id(), name(), fromDate(), toDate(), text(),
+                        vatNr());
     }
 }

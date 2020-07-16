@@ -14,9 +14,9 @@
 package net.tangly.bus.products;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-import net.tangly.bus.core.HasId;
+import net.tangly.bus.core.EntityImp;
 import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.Employee;
 
@@ -26,29 +26,12 @@ import net.tangly.bus.crm.Employee;
  * an optional description. Efforts can be used to generate work ports such as monthly ports and used to calculate the spend
  * time on a contract or a project.
  */
-public class Effort implements HasId {
-    private long oid;
-
+public class Effort extends EntityImp {
+    private LocalDateTime startedOn;
     private BigDecimal duration;
-
-    private LocalDate startedOn;
-
-    private String text;
-
     private Employee employee;
-
     private Project project;
-
     private Contract contract;
-
-    @Override
-    public long oid() {
-        return oid;
-    }
-
-    public void oid(long oid) {
-        this.oid = oid;
-    }
 
     public BigDecimal duration() {
         return duration;
@@ -58,20 +41,12 @@ public class Effort implements HasId {
         this.duration = effort;
     }
 
-    public LocalDate startedOn() {
+    public LocalDateTime startedOn() {
         return startedOn;
     }
 
-    public void startedOn(LocalDate worked) {
+    public void startedOn(LocalDateTime worked) {
         this.startedOn = worked;
-    }
-
-    public String text() {
-        return text;
-    }
-
-    public void text(String text) {
-        this.text = text;
     }
 
     public Employee employee() {

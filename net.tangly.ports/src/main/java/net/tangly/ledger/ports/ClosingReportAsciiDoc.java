@@ -110,22 +110,22 @@ public class ClosingReportAsciiDoc {
     private static void createTransactionRow(AsciiDocHelper helper, Transaction transaction) {
         if (transaction.isSplit()) {
             if (transaction.debitSplits().size() > 1) {
-                helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.description(), "", transaction.creditAccount(),
+                helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.text(), "", transaction.creditAccount(),
                         format(transaction.amount()), "-"
                 );
                 for (AccountEntry entry : transaction.debitSplits()) {
-                    helper.tableRow("", "", "", entry.account(), "", format(transaction.amount()), "-");
+                    helper.tableRow("", "", "", entry.accountId(), "", format(transaction.amount()), "-");
                 }
             } else {
-                helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.description(), transaction.debitAccount(), "",
+                helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.text(), transaction.debitAccount(), "",
                         format(transaction.amount()), "-"
                 );
                 for (AccountEntry entry : transaction.debitSplits()) {
-                    helper.tableRow("", "", "", "", entry.account(), format(transaction.amount()), "-");
+                    helper.tableRow("", "", "", "", entry.accountId(), format(transaction.amount()), "-");
                 }
             }
         } else {
-            helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.description(), transaction.debitAccount(),
+            helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.text(), transaction.debitAccount(),
                     transaction.creditAccount(), format(transaction.amount()), vat(transaction.creditSplits().get(0))
             );
         }
@@ -143,7 +143,7 @@ public class ClosingReportAsciiDoc {
             return;
         }
         String accountId = account.id().startsWith("E") ? AsciiDocHelper.bold(account.id()) : account.id();
-        String description = account.id().startsWith("E") ? AsciiDocHelper.bold(account.description()) : account.description();
+        String description = account.id().startsWith("E") ? AsciiDocHelper.bold(account.text()) : account.text();
         helper.tableRow(accountId, description, account.isAggregate() ? "" : account.kind().name(), format(toBalance), format(fromBalance));
     }
 }

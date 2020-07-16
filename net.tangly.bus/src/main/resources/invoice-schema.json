@@ -16,12 +16,14 @@
           "type": "string"
         },
         "fromDate": {
-          "type": "date"
+          "type": "string",
+          "format": "date"
         },
         "toDate": {
-          "type": "date"
+          "type": "string",
+          "format": "date"
         },
-        "vat": {
+        "vatNr": {
           "type": "string"
         }
       },
@@ -32,6 +34,7 @@
     },
     "bankConnection": {
       "type": "object",
+      "description": "bank connection information to perform a money transfer",
       "properties": {
         "iban": {
           "type": "string"
@@ -49,6 +52,7 @@
     },
     "product": {
       "type": "object",
+      "description": "product sold and invoiced with a standard price and VAT rate",
       "properties": {
         "id": {
           "type": "string"
@@ -57,40 +61,43 @@
           "type": "string"
         },
         "unitPrice": {
-          "type": "number"
+          "type": "number",
+          "minimum": 0
         },
         "unit": {
           "type": "string"
         },
         "vatRate": {
-          "type": "number"
+          "type": "number",
+          "minimum": 0
         }
-      }
+      },
+      "required": [
+        "id",
+        "unitPrice",
+        "unit",
+        "vatRate"
+      ]
     },
     "invoiceLine": {
       "type": "object",
       "properties": {
         "position": {
           "type": "integer",
-          "minimum": 0
+          "minimum": 1
         },
         "text": {
           "type": "string"
-        },
-        "amount": {
-          "type": "number",
-          "minimum": 0
         }
       },
       "required": [
         "position",
-        "text",
-        "amount"
+        "text"
       ]
     },
     "invoiceItem": {
       "type": "object",
-      "allOff": [
+      "allOf": [
         {
           "$ref": "#/definitions/invoiceLine"
         },
@@ -100,7 +107,8 @@
               "$ref": "#/definitions/product"
             },
             "quantity": {
-              "type": "number"
+              "type": "number",
+              "minimum": 0
             },
             "required": [
               "product",
@@ -112,7 +120,7 @@
     },
     "invoiceSubtotal": {
       "type": "object",
-      "allOff": [
+      "allOf": [
         {
           "$ref": "#/definitions/invoiceLine"
         },
@@ -135,67 +143,67 @@
       ]
     }
   },
-  "invoice": {
-    "type": "object",
-    "properties": {
-      "id": {
-        "type": "string"
-      },
-      "invoicingEntity": {
-        "$ref": "#/definitions/legalEntity"
-      },
-      "invoicingConnection": {
-        "$ref": "#/definitions/bankConnection"
-      },
-      "contractId": {
-        "type": "string"
-      },
-      "invoicedEntity": {
-        "$ref": "#/definitions/legalEntity"
-      },
-      "deliveryDate": {
-        "type": "string",
-        "format": "date"
-      },
-      "invoiceDate": {
-        "type": "string",
-        "format": "date"
-      },
-      "dueDate": {
-        "type": "string",
-        "format": "date"
-      },
-      "currency": {
-        "type": "string"
-      },
-      "text": {
-        "type": "string"
-      },
-      "paymentConditions": {
-        "type": "string"
-      },
-      "items": {
-        "type": "array",
-        "items": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/invoiceItem"
-            },
-            {
-              "$ref": "#/definitions/invoiceSubtotal"
-            }
-          ]
-        },
-        "minItems": 1
-      }
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
     },
-    "required": [
-      "id",
-      "invoicingEntity",
-      "invoicedEntity",
-      "invoiceDate",
-      "dueDate",
-      "currency"
-    ]
-  }
+    "invoicingEntity": {
+      "$ref": "#/definitions/legalEntity"
+    },
+    "invoicingConnection": {
+      "$ref": "#/definitions/bankConnection"
+    },
+    "contractId": {
+      "type": "string"
+    },
+    "invoicedEntity": {
+      "$ref": "#/definitions/legalEntity"
+    },
+    "deliveryDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "invoiceDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "dueDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "paymentConditions": {
+      "type": "string"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/invoiceItem"
+          },
+          {
+            "$ref": "#/definitions/invoiceSubtotal"
+          }
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "id",
+    "contractId",
+    "invoicingEntity",
+    "invoicedEntity",
+    "invoiceDate",
+    "dueDate",
+    "currency"
+  ]
 }
+

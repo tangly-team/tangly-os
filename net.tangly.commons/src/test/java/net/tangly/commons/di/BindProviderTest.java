@@ -15,7 +15,6 @@ package net.tangly.commons.di;
 
 
 import java.util.concurrent.atomic.AtomicInteger;
-import javax.inject.Provider;
 import javax.inject.Singleton;
 
 import org.junit.jupiter.api.BeforeEach;

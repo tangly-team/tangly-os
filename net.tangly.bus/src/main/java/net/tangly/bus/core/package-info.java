@@ -14,5 +14,6 @@
 /**
  * The package provides core abstractions used in any commercial application. The cornerstone of the entities is the comment and tags classes
  * providing a simple and powerful extension mechanisms for regular abstractions.
+ * <p></p>
  */
 package net.tangly.bus.core;

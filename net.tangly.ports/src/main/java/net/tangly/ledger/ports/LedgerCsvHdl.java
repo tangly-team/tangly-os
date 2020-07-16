@@ -17,6 +17,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.io.UncheckedIOException;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
@@ -42,6 +43,7 @@ import org.slf4j.LoggerFactory;
  * program language and ledger template use English. The ledger structure CSV file has the columns id, account kind, account group, description, owned
  * by group id. The handler reads a ledger structure description from a CSV file and update a full ledger structure. The transaction CSV file has the
  * columns date, doc, description, account debit, account credit, amount, defineVat code.
+ * <p>The accounting program used to generate the export files is <a href="https://www.banana.ch/">banana</a></p>
  */
 public class LedgerCsvHdl {
     private static final String AMOUNT = "Amount";
@@ -56,7 +58,6 @@ public class LedgerCsvHdl {
     private static final String ACCOUNT_DEBIT = "AccountDebit";
     private static final String ACCOUNT_CREDIT = "AccountCredit";
     private static final String VAT_CODE = "VatCode";
-
 
     private static final Logger log = LoggerFactory.getLogger(LedgerCsvHdl.class);
 
@@ -80,7 +81,7 @@ public class LedgerCsvHdl {
         return ledger;
     }
 
-    public void importStructureLedgerFromBanana8(@NotNull Path path) throws IOException {
+    public void importLedgerStructureFromBanana(@NotNull Path path) {
         try (Reader in = new BufferedReader(new FileReader(path.toFile(), StandardCharsets.UTF_8))) {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             Account.AccountGroup currentSection = null;
@@ -104,6 +105,8 @@ public class LedgerCsvHdl {
                 }
                 record = records.hasNext() ? records.next() : null;
             }
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
         }
     }
 
@@ -111,9 +114,8 @@ public class LedgerCsvHdl {
      * Imports the transaction list exported from banana 8 software as CSV file with header.
      *
      * @param path path to the file containing the list of transactions
-     * @throws IOException if file operations encountered a problem - no file or no privileges -
      */
-    public void importTransactionsLedgerFromBanana8(@NotNull Path path) throws IOException {
+    public void importTransactionsLedgerFromBanana(@NotNull Path path) {
         try (Reader in = new BufferedReader(new FileReader(path.toFile(), StandardCharsets.UTF_8))) {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             CSVRecord record = records.hasNext() ? records.next() : null;
@@ -151,6 +153,8 @@ public class LedgerCsvHdl {
                     log.error("not a legal amount {}", amount, e);
                 }
             }
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
         }
     }
 
@@ -198,21 +202,15 @@ public class LedgerCsvHdl {
     private static void defineVat(@NotNull List<AccountEntry> entries, String code) {
         if (!Strings.isNullOrEmpty(code)) {
             switch (code) {
-                case F1:
-                    entries.forEach(o -> {
-                        o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT, VAT_F1_VALUE.toString()));
-                        o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT_DUE, VAT_F1_DUE_VALUE.toString()));
-                    });
-                    break;
-                case F3:
-                    entries.forEach(o -> {
-                        o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT, VAT_F3_VALUE.toString()));
-                        o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT_DUE, VAT_F3_DUE_VALUE.toString()));
-                    });
-                    break;
-                default:
-                    log.info("Unknown VAT code in CSV file {}", code);
-                    break;
+                case F1 -> entries.forEach(o -> {
+                    o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT, VAT_F1_VALUE.toString()));
+                    o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT_DUE, VAT_F1_DUE_VALUE.toString()));
+                });
+                case F3 -> entries.forEach(o -> {
+                    o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT, VAT_F3_VALUE.toString()));
+                    o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT_DUE, VAT_F3_DUE_VALUE.toString()));
+                });
+                default -> log.info("Unknown VAT code in CSV file {}", code);
             }
         }
     }
@@ -229,22 +227,13 @@ public class LedgerCsvHdl {
     private static Account.AccountGroup ofGroup(String accountGroup) {
         Account.AccountGroup group;
         try {
-            switch (Integer.parseInt(accountGroup)) {
-                case 1:
-                    group = Account.AccountGroup.ASSETS;
-                    break;
-                case 2:
-                    group = Account.AccountGroup.LIABILITIES;
-                    break;
-                case 3:
-                    group = Account.AccountGroup.EXPENSES;
-                    break;
-                case 4:
-                    group = Account.AccountGroup.PROFITS_AND_LOSSES;
-                    break;
-                default:
-                    group = null;
-            }
+            group = switch (Integer.parseInt(accountGroup)) {
+                case 1 -> Account.AccountGroup.ASSETS;
+                case 2 -> Account.AccountGroup.LIABILITIES;
+                case 3 -> Account.AccountGroup.EXPENSES;
+                case 4 -> Account.AccountGroup.PROFITS_AND_LOSSES;
+                default -> null;
+            };
         } catch (NumberFormatException e) {
             return null;
         }
@@ -254,22 +243,13 @@ public class LedgerCsvHdl {
     private static Account.AccountKind ofKInd(String accountKind) {
         Account.AccountKind kind;
         try {
-            switch (Integer.parseInt(accountKind)) {
-                case 1:
-                    kind = Account.AccountKind.ASSET;
-                    break;
-                case 2:
-                    kind = Account.AccountKind.LIABILITY;
-                    break;
-                case 3:
-                    kind = Account.AccountKind.EXPENSE;
-                    break;
-                case 4:
-                    kind = Account.AccountKind.INCOME;
-                    break;
-                default:
-                    kind = null;
-            }
+            kind = switch (Integer.parseInt(accountKind)) {
+                case 1 -> Account.AccountKind.ASSET;
+                case 2 -> Account.AccountKind.LIABILITY;
+                case 3 -> Account.AccountKind.EXPENSE;
+                case 4 -> Account.AccountKind.INCOME;
+                default -> null;
+            };
         } catch (NumberFormatException e) {
             return null;
         }

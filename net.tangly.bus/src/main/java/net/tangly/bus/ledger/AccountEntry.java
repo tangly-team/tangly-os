@@ -37,7 +37,7 @@ public class AccountEntry implements HasTags {
     /**
      * Account on which the entry is booked.
      */
-    private final String account;
+    private final String accountId;
 
     /**
      * Date of the booking entry.
@@ -61,8 +61,8 @@ public class AccountEntry implements HasTags {
 
     private final Set<Tag> tags;
 
-    public AccountEntry(@NotNull String account, @NotNull LocalDate date, @NotNull BigDecimal amount, String text, boolean debit) {
-        this.account = account;
+    public AccountEntry(@NotNull String accountId, @NotNull LocalDate date, @NotNull BigDecimal amount, String text, boolean debit) {
+        this.accountId = accountId;
         this.date = date;
         this.amount = amount;
         this.text = text;
@@ -70,8 +70,8 @@ public class AccountEntry implements HasTags {
         this.tags = new HashSet<>();
     }
 
-    public AccountEntry(String account, LocalDate date, BigDecimal amount, String text, boolean debit, Collection<Tag> tags) {
-        this(account, date, amount, text, debit);
+    public AccountEntry(String accountId, LocalDate date, BigDecimal amount, String text, boolean debit, Collection<Tag> tags) {
+        this(accountId, date, amount, text, debit);
         this.tags.addAll(tags);
     }
 
@@ -87,8 +87,8 @@ public class AccountEntry implements HasTags {
         return new AccountEntry(account, LocalDate.parse(date), new BigDecimal(amount), text, true);
     }
 
-    public String account() {
-        return account;
+    public String accountId() {
+        return accountId;
     }
 
     public LocalDate date() {
@@ -137,7 +137,7 @@ public class AccountEntry implements HasTags {
 
     @Override
     public String toString() {
-        return "{account=" + account + ", date=" + date + ", amount=" + amount + ", isDebit=" + debit + ", text=" + text + "}";
+        return "{account=" + accountId + ", date=" + date + ", amount=" + amount + ", isDebit=" + debit + ", text=" + text + "}";
     }
 
     public Optional<BigDecimal> getVat() {

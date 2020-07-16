@@ -40,7 +40,7 @@ public class InvoiceQrCode implements InvoiceGenerator {
     private static final BigDecimal HUNDRED = new BigDecimal("100");
     private static final Pattern ISO11649ReferenceFormat = Pattern.compile("[^A-Za-z0-9]");
 
-    public void create(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
+    public void exports(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
         Bill bill = new Bill();
 
         bill.setFormat(createBillFormat());
@@ -106,7 +106,7 @@ public class InvoiceQrCode implements InvoiceGenerator {
 
     private static net.codecrete.qrbill.generator.Address create(@NotNull LegalEntity entity) {
         net.codecrete.qrbill.generator.Address qrAddress = new net.codecrete.qrbill.generator.Address();
-        entity.address(CrmTags.CRM_ADDRESS_WORK).ifPresent(address -> {
+        entity.address(CrmTags.WORK).ifPresent(address -> {
             qrAddress.setName(entity.name());
             qrAddress.setStreet(address.street());
             qrAddress.setHouseNo(null);

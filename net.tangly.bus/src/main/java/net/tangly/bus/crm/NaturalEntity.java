@@ -14,32 +14,19 @@
 package net.tangly.bus.crm;
 
 
+import java.util.Locale;
+
 import net.tangly.bus.core.EntityImp;
 
 /**
- * A natural entity is a person. A natural entity has an identity defined as the legal number of a person (e.g. the social security number0, a name
- * defined as the last name and the first name separated by a comma, a life duration and a text describing it.
+ * A natural entity is a person. A natural entity has an identity defined as the legal number of a person (e.g. the social security number0, a name defined as
+ * the last name and the first name separated by a comma, a life duration and a text describing it.
  */
 public class NaturalEntity extends EntityImp implements CrmEntity {
     private static final long serialVersionUID = 1L;
-
     private String firstname;
-
     private String lastname;
-
-    public NaturalEntity() {
-        // default constructor
-    }
-
-    public static NaturalEntity of(long oid, String socialNumber, String lastname, String firstname) {
-        var entity = new NaturalEntity();
-        entity.oid(oid);
-        entity.id(socialNumber);
-        entity.lastname(lastname);
-        entity.firstname(firstname);
-        entity.socialNr(socialNumber);
-        return entity;
-    }
+    private GenderCode gender;
 
     public String firstname() {
         return firstname;
@@ -57,13 +44,21 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
         this.lastname = lastname;
     }
 
+    public GenderCode gender() {
+        return gender;
+    }
+
+    public void gender(GenderCode gender) {
+        this.gender = gender;
+    }
+
     @Override
     public void name(String name) {
     }
 
     @Override
     public String name() {
-        return lastname() + ", " + firstname();
+        return (lastname != null) ? lastname + ((firstname != null) ? ", " + firstname : "") : "";
     }
 
     public String socialNr() {
@@ -72,5 +67,12 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
 
     public void socialNr(String socialNr) {
         id(socialNr);
+    }
+
+    @Override
+    public String toString() {
+        return String
+                .format(Locale.US, "NaturalEntity[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, firstName=%s, lastName=%s]", oid(), id(), name(), fromDate(),
+                        toDate(), text(), firstname(), lastname());
     }
 }

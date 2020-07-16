@@ -14,6 +14,7 @@
 include 'net.tangly.bdd'
 include 'net.tangly.fsm'
 include 'net.tangly.bus'
+include 'net.tangly.orm'
 include 'net.tangly.ports'
 include 'net.tangly.commons'
 // include 'net.tangly.commons.ui'

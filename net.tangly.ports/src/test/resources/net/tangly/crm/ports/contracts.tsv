@@ -1,6 +1,6 @@
-oid	id	name	fromDate	toDate	text	iban	bic	institute	amount	sellerOid	selleeOid
-500	2015-001	Sundance-1	2015-01-01	2015-06-30	This is the contract Sundance 01	DE-0123456789		Raiffaisen	100000	100	101
-501	2015-002	Sundance-2	2015-04-01	2015-05-01	This is the contract Sundance 02	DE-0123456789		Raiffaisen	100000	100	101
-502	2015-003	Sundance-3	2015-06-01	2015-10-31	This is the contract Sundance 03	DE-0123456789		Raiffaisen	100000	100	101
-503	2015-004	Sundance-4	2015-07-01	2015-12-31	This is the contract Sundance 04	DE-0123456789		Raiffaisen	100000	100	101
-504	2015-005	Sundance-5	2015-09-01	2015-12-31	This is the contract Sundance 05	DE-0123456789		Raiffaisen	100000	100	101
+oid	id	name	fromDate	toDate	text	iban	bic	institute	amountWithoutVat	sellerOid	selleeOid
+500	2015-001	Sundance-1	2015-01-01	2015-06-30	This is the contract Sundance 01	DE91 1000 0000 0123 4567 89	RAIFCH22E55	Raiffaisen	100000	100	101
+501	2015-002	Sundance-2	2015-04-01	2015-05-01	This is the contract Sundance 02	DE91 1000 0000 0123 4567 89	RAIFCH22E55	Raiffaisen	100000	100	101
+502	2015-003	Sundance-3	2015-06-01	2015-10-31	This is the contract Sundance 03	DE91 1000 0000 0123 4567 89	RAIFCH22E55	Raiffaisen	100000	100	101
+503	2015-004	Sundance-4	2015-07-01	2015-12-31	This is the contract Sundance 04	DE91 1000 0000 0123 4567 89	RAIFCH22E55	Raiffaisen	100000	100	101
+504	2015-005	Sundance-5	2015-09-01	2015-12-31	This is the contract Sundance 05	DE91 1000 0000 0123 4567 89	RAIFCH22E55	Raiffaisen	100000	100	101

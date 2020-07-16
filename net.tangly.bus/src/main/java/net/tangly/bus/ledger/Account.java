@@ -24,12 +24,13 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import net.tangly.bus.core.HasId;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * Defines an account as seen for double entry booking ledger and legal accounting for tax ports. { id = 1, kind = ASSET, description = "Assets"}
  */
-public class Account {
+public class Account implements HasId {
 
     public enum AccountKind {ASSET, LIABILITY, INCOME, EXPENSE, AGGREGATE}
 
@@ -58,7 +59,7 @@ public class Account {
     /**
      * Human readable description of the account function.
      */
-    private final String description;
+    private final String text;
 
     /**
      * Optional account identifier owning the account.
@@ -75,17 +76,17 @@ public class Account {
      */
     private final List<AccountEntry> entries;
 
-    public Account(String id, AccountKind kind, Currency currency, String description, String ownedBy) {
-        this(id, kind, null, currency, description, ownedBy);
+    public Account(String id, AccountKind kind, Currency currency, String text, String ownedBy) {
+        this(id, kind, null, currency, text, ownedBy);
     }
 
-    public Account(@NotNull String id, @NotNull AccountKind kind, AccountGroup group, @NotNull Currency currency, String description,
+    public Account(@NotNull String id, @NotNull AccountKind kind, AccountGroup group, @NotNull Currency currency, String text,
                    String ownedBy) {
         this.id = id;
         this.kind = kind;
         this.group = group;
         this.currency = currency;
-        this.description = description;
+        this.text = text;
         this.ownedBy = ownedBy;
         this.aggregatedAccounts = new HashSet<>();
         this.entries = new ArrayList<>();
@@ -111,13 +112,14 @@ public class Account {
         return currency;
     }
 
+    public String text() {
+        return text;
+    }
+
     public Set<Account> aggregatedAccounts() {
         return Collections.unmodifiableSet(aggregatedAccounts);
     }
 
-    public String description() {
-        return description;
-    }
 
     public String ownedBy() {
         return ownedBy;

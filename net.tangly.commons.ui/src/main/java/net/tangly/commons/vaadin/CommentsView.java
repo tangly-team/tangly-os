@@ -22,18 +22,17 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.data.provider.ListDataProvider;
 import net.tangly.bus.core.Comment;
 import net.tangly.bus.core.HasComments;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The comments view is a Crud view with all the comments defined for an object implementing the {@link HasComments}. Edition
- * functions are provided to add, delete, and view individual comments. Update function is not supported because comments are immutable objects.
- * Immutable objects must be explicitly be deleted before an new version can be added. This approach supports auditing approaches.
+ * The comments view is a Crud view with all the comments defined for an object implementing the {@link HasComments}. Edition functions are provided to add,
+ * delete, and view individual comments. Update function is not supported because comments are immutable objects. Immutable objects must be explicitly be
+ * deleted before an new version can be added. This approach supports auditing approaches.
  */
-public class CommentsView extends Crud<Comment> implements CrudForm<Comment>, CrudActionsListener<Comment> {
+public class CommentsView extends Crud<Comment> implements CrudForm<Comment> {
     private final transient HasComments hasItems;
     private DateTimePicker created;
     private TextField author;
@@ -41,12 +40,12 @@ public class CommentsView extends Crud<Comment> implements CrudForm<Comment>, Cr
 
     public CommentsView(@NotNull HasComments entity) {
         super(Comment.class, Mode.IMMUTABLE, CommentsView::defineGrid, new ListDataProvider<>(entity.comments()));
-        initialize(this, this);
+        initialize(this, new GridActionsListener<>(grid().getDataProvider(), this::selectedItem));
         this.hasItems = entity;
     }
 
     public static void defineGrid(@NotNull Grid<Comment> grid) {
-        initialize(grid);
+        VaadinUtils.initialize(grid);
         grid.addColumn(Comment::created).setKey("created").setHeader("Created").setSortable(true).setFlexGrow(0).setWidth("200px").setResizable(false)
                 .setFrozen(true);
         grid.addColumn(Comment::author).setKey("author").setHeader("Author").setSortable(true).setFlexGrow(0).setWidth("200px").setResizable(false);
@@ -60,7 +59,7 @@ public class CommentsView extends Crud<Comment> implements CrudForm<Comment>, Cr
         created = new DateTimePicker("Created");
         created.setReadOnly(true);
 
-        author = CrudForm.createTextField("Author", "author", readonly, true);
+        author = VaadinUtils.createTextField("Author", "author", readonly);
         author.setRequired(true);
 
         text = new TextArea("Text");
@@ -69,9 +68,7 @@ public class CommentsView extends Crud<Comment> implements CrudForm<Comment>, Cr
         text.setRequired(true);
 
         FormLayout form = new FormLayout();
-        form.setResponsiveSteps(new FormLayout.ResponsiveStep("25em", 1), new FormLayout.ResponsiveStep("32em", 2),
-                new FormLayout.ResponsiveStep("40em", 3)
-        );
+        form.setResponsiveSteps(new FormLayout.ResponsiveStep("25em", 1), new FormLayout.ResponsiveStep("32em", 2), new FormLayout.ResponsiveStep("40em", 3));
         form.add(created, author, new HtmlComponent("br"), text);
         form.setColspan(text, 2);
 
@@ -89,27 +86,13 @@ public class CommentsView extends Crud<Comment> implements CrudForm<Comment>, Cr
 
     @Override
     public Comment formCompleted(Operation operation, Comment entity) {
-        switch (operation) {
-            case CREATE:
-                return create();
-        }
-        return entity;
-    }
-
-    @Override
-    public void entityAdded(DataProvider<Comment, ?> provider, Comment entity) {
-        hasItems.add(entity);
-        CrudActionsListener.super.entityAdded(provider, entity);
-
-    }
-
-    @Override
-    public void entityDeleted(DataProvider<Comment, ?> provider, Comment entity) {
-        hasItems.remove(entity);
-        CrudActionsListener.super.entityAdded(provider, entity);
+        return switch (operation) {
+            case CREATE -> create();
+            default -> entity;
+        };
     }
 
     private Comment create() {
-        return new Comment(created.getValue(), author.getValue(), text.getValue());
+        return Comment.of(created.getValue(), author.getValue(), text.getValue());
     }
 }

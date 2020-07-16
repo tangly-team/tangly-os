@@ -36,14 +36,14 @@ The library can be included in Maven as
     <dependency>
       <groupId>net.tangly</groupId>
       <artifactId>bdd</artifactId>
-      <version>0.2.4</version>
+      <version>0.2.5</version>
     </dependency>
 ```    
 
 The library can be included in Gradle as
 
 ```groovy
-    testImplementation "net.tangly:bdd:0.2.4"
+    testImplementation "net.tangly:bdd:0.2.5"
 ```
 
 The documentation can be found under [BDD documentation](https://tangly-team.bitbucket.io)

@@ -13,8 +13,10 @@ draft: false
 
 == Developer Guide Commons UI
 
+=== Build with Maven
+
 The Vaadin Gradle plugin does not support the latest versions of Vaadin.
-Therefore we had to fallback to the Vaadin Maven plugin which indeed support the latest versions of Vaadin.
+Therefore, we had to fallback to the Vaadin Maven plugin which indeed support the latest versions of Vaadin.
 
 Due to the idiosyncrasies of maven we had to define a maven configuration in the bash profile file
 
@@ -44,3 +46,10 @@ ps -ef pid
 kill pid
 ----
 <1> to get the pid of process using the port 8080
+
+=== Tips and Tricks
+
+* The application works well with Google Chrome, Safari, and Firefox.
+We have trouble with iPad Safari.
+The menu bar and button bars are not always visible and scrolling is slow and bumpy.
+* Using addAndExpand(Components ...) instead of add(Components ...) displays the button bar of a vertical component in iPad Safari.

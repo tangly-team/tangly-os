@@ -52,9 +52,12 @@ public class Ledger {
         return accounts.stream().filter(o -> Account.AccountGroup.PROFITS_AND_LOSSES == o.group()).collect(Collectors.toUnmodifiableList());
     }
 
+    public List<Transaction> transactions() {
+        return Collections.unmodifiableList(journal);
+    }
     public List<Transaction> transactions(LocalDate from, LocalDate to) {
         return journal.stream().filter(o -> (o.date().isAfter(from) || o.date().equals(from)) && (o.date().isBefore(to) || o.date().isEqual(to)))
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 
     public List<Account> accounts() {
@@ -87,9 +90,9 @@ public class Ledger {
             AccountEntry credit = transaction.creditSplits().get(0);
             BigDecimal vatDue = credit.amount().multiply(vatDuePercent.get());
             List<AccountEntry> splits = new ArrayList<>();
-            splits.add(new AccountEntry(credit.account(), credit.date(), credit.amount().subtract(vatDue), credit.text(), false, credit.tags()));
+            splits.add(new AccountEntry(credit.accountId(), credit.date(), credit.amount().subtract(vatDue), credit.text(), false, credit.tags()));
             splits.add(new AccountEntry("2201", credit.date(), vatDue, null, false));
-            booked = new Transaction(transaction.date(), transaction.debitAccount(), null, transaction.amount(), splits, transaction.description(),
+            booked = new Transaction(transaction.date(), transaction.debitAccount(), null, transaction.amount(), splits, transaction.text(),
                     transaction.reference()
             );
         }
@@ -109,9 +112,9 @@ public class Ledger {
     }
 
     private void bookEntry(@NotNull AccountEntry entry) {
-        Optional<Account> account = getAccountBy(entry.account());
+        Optional<Account> account = getAccountBy(entry.accountId());
         if (account.isEmpty()) {
-            logger.atError().log("account {} for entry with amount {} booked {} is undefined", entry.account(), entry.amount(), entry.date());
+            logger.atError().log("account {} for entry with amount {} booked {} is undefined", entry.accountId(), entry.amount(), entry.date());
         }
         account.ifPresent(o -> o.addEntry(entry));
     }

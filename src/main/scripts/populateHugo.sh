@@ -6,28 +6,23 @@ siteRootDir=/Users/Shared/Projects/
 siteName=tangly-os-site
 siteDir=$siteRootDir$siteName
 
+function copy_module() {
+  cp $prjDir/net.tangly.$1/readme.* $siteDir/content/$1/
+  cp -R $prjDir/net.tangly.$1/src/site/* $siteDir/content/$1/
+  cp -R $prjDir/net.tangly.$1/build/docs/javadoc/* $siteDir/static/$1/api-$1
+}
+
 cp -R $prjDir/src/site/website/ $siteDir/
 
 # you need to run gradle build on the whole project to generate the javadoc for modules. The directories containing javadoc seems to need unique
 # names due to hugo strange behavior.
 
-cp $prjDir/net.tangly.fsm/readme.* $siteDir/content/fsm/
-cp -R $prjDir/net.tangly.fsm/src/site/* $siteDir/content/fsm/
-cp -R $prjDir/net.tangly.fsm/build/docs/javadoc/* $siteDir/static/fsm/api-fsm
-
-cp $prjDir/net.tangly.bdd/readme.* $siteDir/content/bdd/
-cp -R $prjDir/net.tangly.bdd/src/site/* $siteDir/content/bdd/
+copy_module bdd
 cp $prjDir/net.tangly.bdd/out/bdd-reports/bdd-report.adoc $siteDir/content/bdd/
-cp -R $prjDir/net.tangly.bdd/build/docs/javadoc/* $siteDir/static/bdd/api-bdd
 
-cp $prjDir/net.tangly.bus/readme.* $siteDir/content/bus/
-cp -R $prjDir/net.tangly.bus/src/site/* $siteDir/content/bus/
-cp -R $prjDir/net.tangly.bus/build/docs/javadoc/* $siteDir/static/bus/api-bus
-
-cp $prjDir/net.tangly.commons/readme.* $siteDir/content/commons/
-cp -R $prjDir/net.tangly.commons/src/site/* $siteDir/content/commons/
-cp -R $prjDir/net.tangly.commons/build/docs/javadoc/* $siteDir/static/commons/api-commons
-
-cp $prjDir/net.tangly.ports/readme.* $siteDir/content/ports/
-cp -R $prjDir/net.tangly.ports/src/site/* $siteDir/content/ports/
-cp -R $prjDir/net.tangly.ports/build/docs/javadoc/* $siteDir/static/ports/api-ports
+copy_module bus
+copy_module commons
+copy_module fsm
+copy_module gleam
+copy_module orm
+copy_module ports

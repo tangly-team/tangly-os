@@ -13,23 +13,59 @@
 
 package net.tangly.commons.crm.ui;
 
-import java.util.List;
-
-import com.vaadin.flow.data.provider.DataProvider;
-import net.tangly.bus.core.TagTypeRegistry;
+import com.vaadin.flow.component.HtmlComponent;
+import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.data.binder.Binder;
 import net.tangly.bus.crm.Contract;
-import net.tangly.bus.crm.Employee;
+import net.tangly.bus.crm.LegalEntity;
+import net.tangly.commons.vaadin.BankConnectionField;
+import net.tangly.commons.vaadin.EntityField;
+import net.tangly.commons.vaadin.InternalEntitiesView;
+import net.tangly.commons.vaadin.One2OneField;
+import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.crm.ports.Crm;
-import net.tangly.commons.vaadin.EntitiesView;
 import org.jetbrains.annotations.NotNull;
 
 public class ContractsView extends CrmEntitiesView<Contract> {
     public ContractsView(@NotNull Crm crm) {
-        super(crm, Contract.class, EntitiesView::defineGrid, crm.contracts());
+        super(crm, Contract.class, ContractsView::defineContractsGrid, crm.contracts());
+        grid().addColumn(o -> VaadinUtils.format(crm().invoicedAmount(o))).setKey("invoicedAmount").setHeader("Invoiced").setAutoWidth(true).setResizable(true).setSortable(true);
+    }
+
+    public static void defineContractsGrid(@NotNull Grid<Contract> grid) {
+        InternalEntitiesView.defineGrid(grid);
+        grid.addColumn(e -> e.sellee().name()).setKey("customer").setHeader("Customer").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Contract::amountWithoutVat).setKey("amount").setHeader("Amount").setAutoWidth(true).setResizable(true).setSortable(true);
     }
 
     @Override
     protected Contract create() {
         return new Contract();
+    }
+
+    @Override
+    protected FormLayout createOverallView(@NotNull Operation operation, @NotNull Contract entity) {
+        boolean readonly = Operation.isReadOnly(operation);
+        EntityField entityField = new EntityField();
+        BankConnectionField bankConnection = new BankConnectionField();
+        One2OneField<LegalEntity, LegalEntitiesView> seller = new One2OneField<>("Seller", new LegalEntitiesView(crm()));
+        One2OneField<LegalEntity, LegalEntitiesView> sellee = new One2OneField<>("Sellee", new LegalEntitiesView(crm()));
+
+        FormLayout form = new FormLayout();
+        VaadinUtils.setResponsiveSteps(form);
+        form.add(entityField);
+        form.add(new HtmlComponent("br"));
+        form.add(bankConnection);
+        form.add(new HtmlComponent("br"));
+        form.add(seller, sellee);
+
+        binder = new Binder<>(entityClass());
+        entityField.bind(binder);
+        binder.forField(bankConnection).withValidator(bankConnection.validator()).bind(Contract::bankConnection, Contract::bankConnection);
+        binder.forField(seller).bind(Contract::seller, Contract::seller);
+        binder.forField(sellee).bind(Contract::sellee, Contract::sellee);
+        binder.readBean(entity);
+        return form;
     }
 }

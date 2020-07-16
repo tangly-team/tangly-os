@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * The abstraction of an email address until the Java JDK provides one..
  */
-public record EmailAddress(String recipient, String domain) implements Serializable {
+public record EmailAddress(@NotNull String recipient, @NotNull String domain) implements Serializable {
     public static EmailAddress of(@NotNull String email) {
         String[] parts = email.split("@");
         Objects.checkFromIndexSize(0, parts.length, 2);

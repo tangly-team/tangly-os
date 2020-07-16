@@ -48,7 +48,7 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
     private static final BigDecimal HUNDRED = new BigDecimal("100");
 
     @Override
-    public void create(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
+    public void exports(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
         try (PrintWriter writer = new PrintWriter(invoicePath.toFile(), StandardCharsets.UTF_8)) {
             AsciiDocHelper helper = new AsciiDocHelper(writer);
 
