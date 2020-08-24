@@ -24,6 +24,7 @@ import java.time.LocalDate;
 
 import net.tangly.bus.ledger.Account;
 import net.tangly.bus.ledger.Ledger;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -61,7 +62,7 @@ public class CsvImportAndAdocReportTest {
     }
 
     @Test
-        // @Tag("localTest")
+    @Tag("localTest")
     void testCsvImportAndAdocReport() {
         LedgerWorkflows workflows = new LedgerWorkflows();
 

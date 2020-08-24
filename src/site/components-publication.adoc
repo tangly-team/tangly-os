@@ -27,14 +27,14 @@ If everything was fine the content is published
 It takes up to one day until the component is visible in Maven Central website upon publication.
 ====
 
-The acronyms are (the current composite acronym is BDD-BUS-COMMONS-FSM-PORTS)
+The acronyms are (the current composite acronym is TANGLY_OS meaning all components are released)
 
 * *BDD* behavior driven development library
 * *BUS* business components library
 * *COMMONS* commons library
-* DEV
+* *DEV* development tools library
 * *FSM* hierarchical finite state machine library
-* GLEAM
+* *GLEAM* declarative model transformation frameworks library
 * *PORTS* ports library
 
 [plantuml,tangly-componentsDependencies,svg]

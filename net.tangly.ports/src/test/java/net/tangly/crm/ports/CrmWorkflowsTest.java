@@ -15,6 +15,7 @@ package net.tangly.crm.ports;
 
 import java.nio.file.Paths;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,7 +24,7 @@ public class CrmWorkflowsTest {
     private final static String FOLDER = "/Users/Shared/tangly";
 
     @Test
-        //    @Tag("localTest")
+    @Tag("localTest")
     void readTsvFilesTest() {
         Crm crm = new Crm();
         CrmWorkflows crmWorkflows = new CrmWorkflows(crm);
@@ -37,6 +38,7 @@ public class CrmWorkflowsTest {
     }
 
     @Test
+    @Tag("localTest")
     void writeTsvFilesTest() {
         Crm crm = new Crm();
         CrmWorkflows crmWorkflows = new CrmWorkflows(crm);
