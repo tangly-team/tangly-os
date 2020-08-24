@@ -91,13 +91,13 @@ public class CrmTsvHdlTest {
         handler.exportComments(directory.resolve(CrmWorkflows.COMMENTS_TSV));
         handler.importComments(directory.resolve(CrmWorkflows.COMMENTS_TSV));
 
-
         CrmWorkflows crmWorkflows = new CrmWorkflows(crm);
         crmWorkflows.importCrmEntities(directory);
         verifyNaturalEntities(crm);
         verifyLegalEntities(crm);
         verifyEmployees(crm);
         verifyContracts(crm);
+        crmWorkflows.exportCrmEntities(directory);
     }
 
     private void verifyNaturalEntities(Crm crm) {

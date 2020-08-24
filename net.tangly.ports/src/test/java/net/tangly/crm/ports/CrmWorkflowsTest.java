@@ -13,8 +13,16 @@
 
 package net.tangly.crm.ports;
 
+import java.io.IOException;
+import java.nio.file.FileSystem;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Objects;
 
+import com.google.common.jimfs.Configuration;
+import com.google.common.jimfs.Jimfs;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -25,25 +33,10 @@ public class CrmWorkflowsTest {
 
     @Test
     @Tag("localTest")
-    void readTsvFilesTest() {
-        Crm crm = new Crm();
-        CrmWorkflows crmWorkflows = new CrmWorkflows(crm);
-        crmWorkflows.importCrmEntities(Paths.get(FOLDER));
-        assertThat(crm.naturalEntities().getAll()).isNotEmpty();
-        assertThat(crm.legalEntities().getAll()).isNotEmpty();
-        assertThat(crm.employees().getAll()).isNotEmpty();
-        assertThat(crm.contracts().getAll()).isNotEmpty();
-        assertThat(crm.products().getAll()).isNotEmpty();
-        assertThat(crm.subjects().getAll()).isNotEmpty();
-    }
-
-    @Test
-    @Tag("localTest")
-    void writeTsvFilesTest() {
+    void writeTsvFilesTestFormCompanyFolder() {
         Crm crm = new Crm();
         CrmWorkflows crmWorkflows = new CrmWorkflows(crm);
         crmWorkflows.importCrmEntities(Paths.get(FOLDER));
         crmWorkflows.exportCrmEntities(Paths.get(FOLDER));
-
     }
 }

@@ -112,7 +112,7 @@ public class InvoiceTest {
         return invoice;
     }
 
-    private Invoice newTeachingInvoice() {
+    public static Invoice newTeachingInvoice() {
         Product teaching = new Product("0011", "Agile training", "", new BigDecimal(2000), "day", BigDecimal.ZERO);
         Invoice invoice = newInvoice("2017-0002", "Agile Training and Workshop");
         invoice.add(new InvoiceItem(1, teaching, "Scrum Agile Workshop", new BigDecimal("2")));
@@ -121,7 +121,7 @@ public class InvoiceTest {
         return invoice;
     }
 
-    private Invoice newComplexInvoice() {
+    public static Invoice newComplexInvoice() {
         Product coaching = new Product("0001", "Agile coaching", "", new BigDecimal(1400), "day", VAT_REGULAR);
         Product project = new Product("0002", "Technical project management", "", new BigDecimal("1400"), "day", VAT_REGULAR);
         Product travelExpenses = new Product("9900", "Travel Expenses", "", BigDecimal.ONE, "CHF", BigDecimal.ZERO);
@@ -144,7 +144,7 @@ public class InvoiceTest {
         return invoice;
     }
 
-    private Invoice newInvoice(String id, String text) {
+    private static Invoice newInvoice(String id, String text) {
         Contract contract = new Contract();
         contract.id("TEST-CONTRACT-0000");
         contract.sellee(sellee());
@@ -164,7 +164,7 @@ public class InvoiceTest {
         return invoice;
     }
 
-    private LegalEntity seller() {
+    private static LegalEntity seller() {
         LegalEntity seller = new LegalEntity();
         seller.name("tangly llc");
         seller.address(CrmTags.WORK, new Address.Builder().street("Lorzenhof 27").postcode("6330").locality("Cham").region("ZG").country("CH").build());
@@ -174,7 +174,7 @@ public class InvoiceTest {
         return seller;
     }
 
-    private LegalEntity sellee() {
+    private static LegalEntity sellee() {
         LegalEntity sellee = new LegalEntity();
         sellee.name("Flow AG");
         sellee.address(CrmTags.WORK,
@@ -186,7 +186,7 @@ public class InvoiceTest {
         return sellee;
     }
 
-    private BankConnection sellerConnection() {
+    private static BankConnection sellerConnection() {
         return new BankConnection("CH88 0900 0000 3064 1768 2", "POFICHBEXXX", "Postfinanz Schweiz");
     }
 }
