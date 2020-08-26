@@ -25,9 +25,8 @@ import java.util.stream.Collectors;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Registry of tag type and their associated tag values.
+ * Registry of tag types defined for a domain model.
  */
-
 public class TagTypeRegistry {
     /**
      * registered tag types in the registry.
@@ -60,9 +59,8 @@ public class TagTypeRegistry {
         return types.stream().map(TagType::namespace).distinct().collect(Collectors.toUnmodifiableList());
     }
 
-    public List<String> tagsForNamespace(@NotNull String namespace) {
-        return types.stream().filter(o -> Objects.equals(o.namespace(), namespace)).map(TagType::name).distinct()
-                .collect(Collectors.toUnmodifiableList());
+    public List<String> tagNamesForNamespace(@NotNull String namespace) {
+        return types.stream().filter(o -> Objects.equals(o.namespace(), namespace)).map(TagType::name).distinct().collect(Collectors.toUnmodifiableList());
     }
 
     /**

@@ -59,12 +59,6 @@ public class Comment implements HasOid, HasTags {
     private Set<Tag> tags;
 
     /**
-     * Private constructor to support JSON serialization.
-     */
-    public Comment() {
-    }
-
-    /**
      * Default constructor to create an immutable instance.
      *
      * @param author of the comment instance as human readable field

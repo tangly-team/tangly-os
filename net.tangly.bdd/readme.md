@@ -46,7 +46,7 @@ The library can be included in Gradle as
     testImplementation "net.tangly:bdd:0.2.5"
 ```
 
-The documentation can be found under [BDD documentation](https://tangly-team.bitbucket.io)
+The documentation can be found under [BDD documentation](https://tangly-team.bitbucket.io/bdd/)
 
 For any further question and discussion you can use the forum [tangly-OS-Components](https://groups.google.com/d/forum/tangly-os-components)
 

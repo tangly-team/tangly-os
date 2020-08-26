@@ -15,6 +15,7 @@ package net.tangly.bus.core;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -22,9 +23,16 @@ import org.jetbrains.annotations.NotNull;
  * The abstraction of an email address until the Java JDK provides one..
  */
 public record EmailAddress(@NotNull String recipient, @NotNull String domain) implements Serializable {
+    private static String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+
     public static EmailAddress of(@NotNull String email) {
         String[] parts = email.split("@");
         Objects.checkFromIndexSize(0, parts.length, 2);
         return new EmailAddress(parts[0], parts[1]);
+    }
+
+    public static boolean isValid(String email) {
+        Pattern pattern = Pattern.compile(emailRegex);
+        return Strings.isNullOrBlank(email) || pattern.matcher(email).matches();
     }
 }

@@ -20,6 +20,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * The actor infrastructure enabler is responsible to provide parallel execution for all instantiated and alive actors he is in charge.
+ *
+ * @param <E> enumeration describing the events handled
  */
 public interface Actors<E extends Enum<E>> {
 

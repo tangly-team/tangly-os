@@ -175,9 +175,8 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
 
     public void exports(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
         this.invoice = invoice;
-        try {
-            ZUGFeRDExporter exporter = new ZUGFeRDExporterFromA1Factory().ignorePDFAErrors().setZUGFeRDVersion(2).setProducer("tangly ERP")
-                    .setCreator(invoice.invoicingEntity().name()).load(invoicePath.toString());
+        try (ZUGFeRDExporter exporter = new ZUGFeRDExporterFromA1Factory().ignorePDFAErrors().setZUGFeRDVersion(2).setProducer("tangly ERP")
+                .setCreator(invoice.invoicingEntity().name()).load(invoicePath.toString())) {
             exporter.PDFattachZugferdFile(this);
             exporter.export(invoicePath.toString());
         } catch (IOException e) {

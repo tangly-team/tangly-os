@@ -40,4 +40,7 @@ public final class FileUtilities {
             throw new UncheckedIOException(e);
         }
     }
+
+    private FileUtilities() {
+    }
 }

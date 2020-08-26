@@ -12,8 +12,7 @@
  */
 
 /**
- * The package provides core abstractions used in any commercial application. The cornerstone of the entities is the comment and tags classes providing a simple
- * and powerful extension mechanisms for regular abstractions.
- * <p>Core domain model abstractions such as postal address, email address, or bank connection are provided with validation routines.</p>
+ * Support for retrieving <a href="https://en.gravatar.com/">gravatar</a> images is provided through this package. Gravatar imaages is an image associated with
+ * a natural entity and can be used in multiple sites.
  */
-package net.tangly.bus.core;
+package net.tangly.bus.gravatar;

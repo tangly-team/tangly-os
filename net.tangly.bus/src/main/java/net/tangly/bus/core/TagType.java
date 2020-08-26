@@ -16,61 +16,97 @@ package net.tangly.bus.core;
 import java.io.Serializable;
 import java.util.function.BiPredicate;
 import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Implements the conceptual type of a set of related tags, all of the same class. The tag type also provides support to convertTo the text format of a tag into
- * a Java object and to validate acceptable tag values.
+ * Implements the conceptual type of a set of related tags, all of the same class. The tag type also provides support to convert the text format of a tag into a
+ * Java object and to validate acceptable tag values.
  *
  * @param namespace namespace of the tags defined through the tag type
  * @param name      name of the tags defined through the tag type
- * @param clazz     type of the values stored in the tag
+ * @param clazz     class of the type of the values stored in the tag
+ * @param convert   mapping function between a string to a Java object representation of the string value
+ * @param validate  validation function for hte Java representation of the string tag value
  * @param <T>       type of the tags
  */
-public record TagType<T extends Serializable>(String namespace, String name, ValueKinds kind, Class<T> clazz, Function<String, T> convertTo,
-                                              BiPredicate<TagType<T>, T> validate) {
+public record TagType<T extends Serializable>(String namespace, @NotNull String name, @NotNull ValueKinds kind, @NotNull Class<T> clazz,
+                                              Function<String, T> convert, BiPredicate<TagType<T>, T> validate) {
+    /**
+     * Indicate if the tag requires no value, an optional value, or a mandatory one.
+     */
     public enum ValueKinds {NONE, OPTIONAL, MANDATORY}
 
-    public static <T extends Serializable> TagType<T> ofMandatory(String namespace, String name, Class<T> clazz, Function<String, T> convertTo,
-                                                                  BiPredicate<TagType<T>, T> validate) {
-        return new TagType<>(namespace, name, ValueKinds.MANDATORY, clazz, convertTo, validate);
+    public static TagType<String> ofMandatoryString(String namespace, @NotNull String name) {
+        return ofString(namespace, name, ValueKinds.MANDATORY, (tagType, tag) -> true);
     }
 
-    public static <T extends Serializable> TagType<T> ofMandatory(String namespace, String name, Class<T> clazz, Function<String, T> convertTo) {
-        return new TagType<>(namespace, name, ValueKinds.MANDATORY, clazz, convertTo, null);
+    public static TagType<String> ofString(String namespace, @NotNull String name, @NotNull ValueKinds kind,
+                                           @NotNull BiPredicate<TagType<String>, String> validate) {
+        return of(namespace, name, ValueKinds.MANDATORY, String.class, UnaryOperator.identity(), validate);
     }
 
-    public static <T extends Serializable> TagType<T> ofMandatory(String namespace, String name, Class<T> clazz) {
-        return new TagType<>(namespace, name, ValueKinds.MANDATORY, clazz, null, null);
+    public static <T extends Serializable> TagType<T> ofMandatory(String namespace, @NotNull String name, Class<T> clazz, Function<String, T> convert,
+                                                                  @NotNull BiPredicate<TagType<T>, T> validate) {
+        return of(namespace, name, ValueKinds.MANDATORY, clazz, convert, validate);
     }
 
-    public static <T extends Serializable> TagType<T> ofOptional(String namespace, String name, Class<T> clazz, Function<String, T> convertTo,
-                                                                 BiPredicate<TagType<T>, T> validate) {
-        return new TagType<>(namespace, name, ValueKinds.OPTIONAL, clazz, convertTo, validate);
+    public static <T extends Serializable> TagType<T> ofMandatory(String namespace, @NotNull String name, Class<T> clazz,
+                                                                  @NotNull Function<String, T> convert) {
+        return of(namespace, name, ValueKinds.MANDATORY, clazz, convert);
     }
 
-    public static <T extends Serializable> TagType<T> ofOptional(String namespace, String name, Class<T> clazz) {
-        return new TagType<>(namespace, name, ValueKinds.OPTIONAL, clazz, null, null);
+    public static <T extends Serializable> TagType<T> of(String namespace, @NotNull String name, @NotNull ValueKinds kind, @NotNull Class<T> clazz,
+                                                         @NotNull Function<String, T> convert) {
+        return new TagType<>(namespace, name, kind, clazz, convert, (tagType, tag) -> true);
     }
 
+    public static <T extends Serializable> TagType<T> of(String namespace, @NotNull String name, @NotNull ValueKinds kind, Class<T> clazz,
+                                                         Function<String, T> convert, BiPredicate<TagType<T>, T> validate) {
+        return new TagType<>(namespace, name, kind, clazz, convert, validate);
+    }
+
+    /**
+     * Indicate if tags of these types can have values.
+     *
+     * @return true if either mandatory or optional values are supported otherwise false
+     */
     public boolean canHaveValue() {
         return kind != ValueKinds.NONE;
     }
 
-    public T getValue(@NotNull Tag tag) {
-        return (convertTo() == null) ? null : convertTo().apply(tag.value());
+    /**
+     * Transform a tag string value into a Java object.
+     *
+     * @param tag tag which value should be converted
+     * @return the Java object representation of the tag value
+     */
+    public T value(@NotNull Tag tag) {
+        return convert().apply(tag.value());
     }
 
-    public Tag of(@NotNull T value) {
-        return new Tag(namespace, name, value.toString());
+    /**
+     * Create a tag with the given value using the tag type configuration.
+     *
+     * @param value value of the tag
+     * @return new tag instance
+     */
+    public Tag of(T value) {
+        if ((kind() == ValueKinds.MANDATORY) && (value == null)) {
+            throw new IllegalArgumentException(String.format("value is required for mandatory tag type {} {}", namespace(), name()));
+        }
+        return new Tag(namespace, name, (value != null) ? value.toString() : null);
     }
 
     public Tag of(String value) {
+        if ((kind() == ValueKinds.MANDATORY) && (value == null)) {
+            throw new IllegalArgumentException(String.format("value is required for mandatory tag type {} {}", namespace(), name()));
+        }
         return new Tag(namespace, name, value);
     }
 
     public boolean validate(@NotNull String value) {
-        return (validate == null) || validate.test(this, convertTo().apply(value));
+        return validate.test(this, convert().apply(value));
     }
 }

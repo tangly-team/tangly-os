@@ -17,6 +17,7 @@ package net.tangly.bus.crm;
 import java.util.Locale;
 
 import net.tangly.bus.core.EntityImp;
+import net.tangly.bus.core.Strings;
 import net.tangly.bus.core.Tag;
 
 /**
@@ -43,6 +44,10 @@ public class LegalEntity extends EntityImp implements CrmEntity {
      */
     public void vatNr(String vatNr) {
         replace(Tag.of(CrmTags.CRM_VAT_NUMBER, vatNr));
+    }
+
+    public boolean isValid() {
+        return !Strings.isNullOrBlank(id()) && !Strings.isNullOrBlank(name()) && address(CrmTags.WORK).orElseThrow().isValid();
     }
 
     @Override

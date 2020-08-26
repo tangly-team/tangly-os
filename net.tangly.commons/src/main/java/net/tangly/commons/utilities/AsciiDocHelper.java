@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class AsciiDocHelper {
     public static final String NEWLINE = " +" + System.lineSeparator();
-    private static final DecimalFormat df = new DecimalFormat("#,##0.00");
+    private static final DecimalFormat DF = new DecimalFormat("#,##0.00");
 
     private final PrintWriter writer;
 
@@ -48,9 +48,9 @@ public class AsciiDocHelper {
      */
     public static String format(@NotNull BigDecimal value) {
         if (value.compareTo(BigDecimal.ZERO) > 0) {
-            return df.format(value);
+            return DF.format(value);
         } else if (value.compareTo(BigDecimal.ZERO) < 0) {
-            return "[red]#" + df.format(value) + "#";
+            return "[red]#" + DF.format(value) + "#";
         } else {
             return "";
         }

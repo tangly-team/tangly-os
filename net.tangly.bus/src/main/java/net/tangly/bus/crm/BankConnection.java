@@ -14,6 +14,7 @@
 package net.tangly.bus.crm;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import net.tangly.bus.core.Strings;
 import org.iban4j.BicFormatException;
@@ -35,8 +36,9 @@ public record BankConnection(String iban, String bic, String institute) implemen
 
     /**
      * Factory method to construct a bank connection.
-     * @param iban iban of the bank connection
-     * @param bic bic of the bank connection
+     *
+     * @param iban      iban of the bank connection
+     * @param bic       bic of the bank connection
      * @param institute institute of the bank connection
      * @return new bank connection
      */
@@ -46,14 +48,16 @@ public record BankConnection(String iban, String bic, String institute) implemen
 
     /**
      * Return true if the bank connection is a valid one
+     *
      * @return true if the bank connection is valid otherwise false
      */
     public boolean isValid() {
-         return ((!Strings.isNullOrBlank(iban()) && validateIban(iban()))) && (Strings.isNullOrBlank(bic()) || validateBic(bic()));
+        return ((!Strings.isNullOrBlank(iban()) && validateIban(iban()))) && (Strings.isNullOrBlank(bic()) || validateBic(bic()));
     }
 
     /**
      * Validate a string representing a formatted iban number.
+     *
      * @param iban iban number to validate
      * @return true if the iban is valid otherwise false
      */
@@ -69,6 +73,7 @@ public record BankConnection(String iban, String bic, String institute) implemen
 
     /**
      * Validate a string representing a formatted bic number.
+     *
      * @param bic bic number to validate
      * @return true if the bic is valid otherwise false
      */
@@ -76,9 +81,35 @@ public record BankConnection(String iban, String bic, String institute) implemen
         try {
             BicUtil.validate(bic);
             return true;
-        } catch (BicFormatException e) {
+        } catch (BicFormatException | UnsupportedCountryException e) {
             logger.atWarn().setCause(e).log("Error validating BIC {}", bic);
             return false;
         }
     }
+
+    /**
+     * Builds a bank connection object from a comma separated string representation.
+     *
+     * @param text comma separated representation of the address instance
+     * @return new address object
+     * @see BankConnection#text()
+     */
+    public static BankConnection of(@NotNull String text) {
+        var parts = Objects.requireNonNull(text).split(",", -1);
+        Objects.checkFromIndexSize(0, parts.length, 3);
+        return new BankConnection(parts[0], parts[1], parts[2]);
+    }
+
+    /**
+     * Returns a comma separated representation of a bank connection. Null values are shown as empty strings. The {@link Object#toString()} method is not used
+     * because the implementation is defined in the API implementation of record construct. The generated string can be feed to the {@link
+     * BankConnection#of(String)} to create an address object
+     *
+     * @return comma separated representation
+     * @see BankConnection#of(String)
+     */
+    public String text() {
+        return String.format("%s,%s,%s", Strings.nullToEmpty(iban()), Strings.nullToEmpty(bic()), Strings.nullToEmpty(institute()));
+    }
+
 }

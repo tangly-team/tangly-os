@@ -48,9 +48,9 @@ public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>>
      * @param rootId identifier of the root state of the state machine definition under construction
      */
     public DefinitionBuilder(S rootId) {
-        root = new StateImp<O, S, E>(rootId);
+        root = new StateImp<>(rootId);
         root.setInitial(true);
-        states = new EnumMap<S, StateImp<O, S, E>>((Class<S>)rootId.getClass());
+        states = new EnumMap<>((Class<S>)rootId.getClass());
     }
 
     // region StateBuilder

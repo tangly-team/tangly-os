@@ -14,6 +14,7 @@
 package net.tangly.bus.crm;
 
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
 
@@ -25,7 +26,8 @@ import net.tangly.bus.core.TagTypeRegistry;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A taxonomy of tags for a customer relationship management system. The namespace is naturally <i>crm</i>.
+ * A taxonomy of tags for a customer relationship management system. The namespace is naturally <i>crm</i>. Additional namespaces were added to introduce
+ * standard tags such a location tags.
  */
 public final class CrmTags {
     public static final String CRM = "crm";
@@ -41,6 +43,7 @@ public final class CrmTags {
     public static final String MOBILE = "mobile";
     private static final String BILLING = "billing";
     private static final String DELIVERY = "delivery";
+    private static final String SEGMENT = "segment";
 
     public static final String CRM_EMAIL_HOME = CRM + ":email-" + HOME;
     public static final String CRM_EMAIL_WORK = CRM + ":email-" + WORK;
@@ -53,7 +56,7 @@ public final class CrmTags {
     public static final String CRM_ADDRESS_HOME = CRM + ":address-" + HOME;
     public static final String CRM_ADDRESS_BILLING = CRM + ":address-" + BILLING;
     public static final String CRM_ADDRESS_DELIVERY = CRM + ":address-" + DELIVERY;
-
+    public static final String CRM_CUSTOMER_SEGMENT = CRM + SEGMENT;
 
     public static final String CRM_SITE_HOME = CRM + ":site-" + HOME;
     public static final String CRM_SITE_WORK = CRM + ":site-" + WORK;
@@ -78,6 +81,14 @@ public final class CrmTags {
     private CrmTags() {
     }
 
+    public static URL of(String url) {
+        try {
+            return new URL(url);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void registerTags(@NotNull TagTypeRegistry registry) {
         registry.register(TagType.ofMandatory(CRM, "email-" + HOME, EmailAddress.class, EmailAddress::of));
         registry.register(TagType.ofMandatory(CRM, "email-" + WORK, EmailAddress.class, EmailAddress::of));
@@ -86,20 +97,23 @@ public final class CrmTags {
         registry.register(TagType.ofMandatory(CRM, "phone-" + WORK, PhoneNr.class, PhoneNr::of));
         registry.register(TagType.ofMandatory(CRM, "address-" + HOME, Address.class, Address::of));
         registry.register(TagType.ofMandatory(CRM, "address-" + WORK, Address.class, Address::of));
-        registry.register(TagType.ofMandatory(CRM, "site-" + HOME, URL.class));
-        registry.register(TagType.ofMandatory(CRM, "site-" + WORK, URL.class));
-        registry.register(TagType.ofMandatory(CRM, "title", String.class));
-        registry.register(TagType.ofMandatory(CRM, "im-" + LINKEDIN, String.class));
-        registry.register(TagType.ofMandatory(CRM, "im-" + SKYPE, String.class));
-        registry.register(TagType.ofMandatory(CRM, "im-" + GOOGLE, String.class));
-        registry.register(TagType.ofMandatory(CRM, "company-id", String.class));
-        registry.register(TagType.ofMandatory(CRM, "vat-number", String.class));
-        registry.register(TagType.ofMandatory(CRM, "bank-connection", BankConnection.class));
+        registry.register(TagType.ofMandatory(CRM, "address-" + BILLING, Address.class, Address::of));
+        registry.register(TagType.ofMandatory(CRM, "address-" + DELIVERY, Address.class, Address::of));
 
-        registry.register(TagType.ofMandatory(GEO, LATITUDE, Double.TYPE));
-        registry.register(TagType.ofMandatory(GEO, LONGITUDE, Double.TYPE));
-        registry.register(TagType.ofMandatory(GEO, ALTITUDE, Double.TYPE));
-        registry.register(TagType.ofMandatory(GEO, PLUSCODE, String.class));
+        registry.register(TagType.ofMandatory(CRM, "site-" + HOME, URL.class, CrmTags::of));
+        registry.register(TagType.ofMandatory(CRM, "site-" + WORK, URL.class, CrmTags::of));
+        registry.register(TagType.ofMandatoryString(CRM, "title"));
+        registry.register(TagType.ofMandatoryString(CRM, "im-" + LINKEDIN));
+        registry.register(TagType.ofMandatoryString(CRM, "im-" + SKYPE));
+        registry.register(TagType.ofMandatoryString(CRM, "im-" + GOOGLE));
+        registry.register(TagType.ofMandatoryString(CRM, "company-id"));
+        registry.register(TagType.ofMandatoryString(CRM, "vat-number"));
+        registry.register(TagType.ofMandatory(CRM, "bank-connection", BankConnection.class, BankConnection::of));
+
+        registry.register(TagType.ofMandatory(GEO, LATITUDE, Double.TYPE, Double::valueOf));
+        registry.register(TagType.ofMandatory(GEO, LONGITUDE, Double.TYPE, Double::valueOf));
+        registry.register(TagType.ofMandatory(GEO, ALTITUDE, Double.TYPE, Double::valueOf));
+        registry.register(TagType.ofMandatoryString(GEO, PLUSCODE));
     }
 
     public static String phoneTag(@NotNull String kind) {

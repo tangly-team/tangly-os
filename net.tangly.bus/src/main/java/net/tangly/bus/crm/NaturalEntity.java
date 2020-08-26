@@ -16,7 +16,9 @@ package net.tangly.bus.crm;
 
 import java.util.Locale;
 
+import net.tangly.bus.core.EmailAddress;
 import net.tangly.bus.core.EntityImp;
+import net.tangly.bus.core.Strings;
 
 /**
  * A natural entity is a person. A natural entity has an identity defined as the legal number of a person (e.g. the social security number0, a name defined as
@@ -69,10 +71,15 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
         id(socialNr);
     }
 
+    public boolean isValid() {
+        return !Strings.isNullOrBlank(lastname()) && (address(CrmTags.HOME).isEmpty() || address(CrmTags.HOME).orElseThrow().isValid()) &&
+                (phoneNr(CrmTags.HOME).isEmpty() || phoneNr(CrmTags.HOME).orElseThrow().isValid()) && EmailAddress.isValid(email(CrmTags.HOME).orElse(null));
+    }
+
     @Override
     public String toString() {
         return String
-                .format(Locale.US, "NaturalEntity[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, firstName=%s, lastName=%s]", oid(), id(), name(), fromDate(),
-                        toDate(), text(), firstname(), lastname());
+                .format(Locale.US, "NaturalEntity[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, firstName=%s, lastName=%s]", oid(), id(), name(),
+                        fromDate(), toDate(), text(), firstname(), lastname());
     }
 }

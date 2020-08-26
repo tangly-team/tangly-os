@@ -52,6 +52,10 @@ public final class CrmWorkflows {
         this.crm = crm;
     }
 
+    public Crm crm() {
+        return crm;
+    }
+
     /**
      * Import all CRM domain entities defined in a set of TSV files.
      *

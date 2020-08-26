@@ -22,6 +22,9 @@ public class BankConnectionTest {
     void validateTest() {
         BankConnection connection = BankConnection.of("CH88 0900 0000 3064 1768 2", "POFICHBEXXX", "Postfinanz Schweiz");
         assertThat(connection.isValid()).isTrue();
+
+        connection = BankConnection.of(connection.text());
+        assertThat(connection.isValid()).isTrue();
     }
 
     @Test
@@ -36,5 +39,11 @@ public class BankConnectionTest {
         assertThat(BankConnection.validateIban("AT02 2050 3021 0102 3600")).isTrue();
         assertThat(BankConnection.validateBic("POFICHBEXXX")).isTrue();
         assertThat(BankConnection.validateBic("UBSBCHZZXXX")).isTrue();
+    }
+
+    @Test
+    void validateInvalidIbanAndInvalidBicTest() {
+        assertThat(BankConnection.validateIban("CH8809000000306417682")).isFalse();
+        assertThat(BankConnection.validateBic("DUMMYBIC")).isFalse();
     }
 }

@@ -18,33 +18,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
     <description>tangly open source products PMD java ruleset</description>
-    <rule ref="category/java/bestpractices.xml"/>
-    <rule ref="category/java/documentation.xml">
-        <exclude name="UncommentedEmptyMethodBody" />
+    <rule ref="category/java/bestpractices.xml">
+        <exclude name="JUnitAssertionsShouldIncludeMessage"/>
     </rule>
     <rule ref="category/java/multithreading.xml"/>
     <rule ref="category/java/performance.xml"/>
     <rule ref="category/java/security.xml"/>
-    <rule ref="category/java/codestyle.xml">
-        <exclude name="LocalVariableCouldBeFinal"/>
-        <exclude name="UselessParentheses"/>
-        <exclude name="MethodArgumentCouldBeFinal"/>
-        <exclude name="OnlyOneReturn"/>
-        <exclude name="DefaultPackage"/>
-    </rule>
-    <rule ref="category/java/design.xml">
-        <exclude name="ExcessiveImports"/>
-        <exclude name="LoosePackageCoupling"/>
-        <exclude name="LawOfDemeter" />
-    </rule>
-    <rule ref="category/java/errorprone.xml">
-        <exclude name="AvoidFieldNameMatchingTypeName"/>
-        <exclude name="AvoidFieldNameMatchingMethodName"/>
-        <exclude name="BeanMembersShouldSerialize"/>
-    </rule>
     <rule ref="category/java/codestyle.xml/ShortClassName">
         <properties>
-            <property name="minimum" value="3" />
+            <property name="minimum" value="3"/>
         </properties>
     </rule>
     <rule ref="category/java/codestyle.xml/ShortMethodName">
@@ -62,10 +44,39 @@
             <property name="minimum" value="24"/>
         </properties>
     </rule>
+    <rule ref="category/java/codestyle.xml/TooManyStaticImports">
+        <properties>
+            <property name="maximumStaticImports" value="20" />
+        </properties>
+    </rule>
+    <rule ref="category/java/codestyle.xml">
+        <exclude name="AtLeastOneConstructor"/>
+        <exclude name="CommentDefaultAccessModifier"/>
+        <exclude name="ConfusingTernary"/>
+        <exclude name="LocalVariableCouldBeFinal"/>
+        <exclude name="UselessParentheses"/>
+        <exclude name="MethodArgumentCouldBeFinal"/>
+        <exclude name="OnlyOneReturn"/>
+        <exclude name="DefaultPackage"/>
+    </rule>
+    <rule ref="category/java/design.xml">
+        <exclude name="ExcessiveImports"/>
+        <exclude name="LoosePackageCoupling"/>
+        <exclude name="LawOfDemeter"/>
+    </rule>
+    <rule ref="category/java/errorprone.xml">
+        <exclude name="AvoidFieldNameMatchingTypeName"/>
+        <exclude name="AvoidFieldNameMatchingMethodName"/>
+        <exclude name="BeanMembersShouldSerialize"/>
+    </rule>
     <rule ref="category/java/design.xml/TooManyMethods">
         <properties>
             <property name="maxmethods" value="20"/>
         </properties>
+    </rule>
+    <rule ref="category/java/documentation.xml">
+        <exclude name="UncommentedEmptyMethodBody"/>
+        <exclude name="UncommentedEmptyConstructor"/>
     </rule>
     <rule ref="category/java/documentation.xml/CommentSize">
         <properties>

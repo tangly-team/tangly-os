@@ -17,11 +17,13 @@ draft: false
 
 == CRM Ports
 
-_To be written_
+The CRM ports provide a bidirectional interface to persistent file storage.
+
+CRM entitites can be stored to and retrieved from tab separated values _TSV_ files.
 
 == Invoices Ports
 
-_To be written_
+Invoices are stored to and retrieved from JSON files.
 
 == Ledger Ports
 

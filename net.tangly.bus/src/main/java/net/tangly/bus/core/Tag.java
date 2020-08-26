@@ -25,8 +25,12 @@ import java.util.stream.Collectors;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The immutable class tag models a tag with a name and a format. Tags provide a powerful approach for multi-dimensional classifications of values.
- * All fields of a tag are strings. We provide the tag type to support conversions from string values to Java objects.
+ * The immutable class tag models a tag with a name and a format. Tags provide a powerful approach for multi-dimensional classifications of values. All fields
+ * of a tag are strings. We provide the tag type to support conversions from string values to Java objects.
+ *
+ * @param namespace the optional namespace in which the tag is defined
+ * @param name      the name of the tag
+ * @param value     the optional value of the tag
  */
 public record Tag(String namespace, @NotNull String name, String value) implements Serializable {
     public Tag {
@@ -34,18 +38,18 @@ public record Tag(String namespace, @NotNull String name, String value) implemen
     }
 
     /**
-     * Transforms a collection of tags into their textual representation.
+     * Transform a collection of tags into their canonical textual representation.
      *
      * @param tags tags to be transformed
      * @return textual representation of the tags
      * @see Tag#toTags(String)
      */
-    public static String text(Collection<Tag> tags) {
+    public static String text(@NotNull Collection<Tag> tags) {
         return tags.isEmpty() ? null : tags.stream().map(Tag::text).collect(Collectors.joining(";"));
     }
 
     /**
-     * Transforms a raw tag textual representation into a set of tags
+     * Transform raw tags textual representation into a set of tags
      *
      * @param rawTags textual representation of tags
      * @return set of the tag instances
@@ -63,28 +67,28 @@ public record Tag(String namespace, @NotNull String name, String value) implemen
         return tag.substring((tag.contains(":") ? tag.indexOf(':') + 1 : 0), (tag.contains("=")) ? tag.indexOf('=') : tag.length());
     }
 
-    public static String value(String tag) {
+    public static String value(@NotNull String tag) {
         return tag.contains("=") ? tag.substring(tag.indexOf('=') + 1) : null;
     }
 
     public static Tag parse(String tag) {
         Objects.requireNonNull(tag);
-        return new Tag(namespace(tag), name(tag), value(tag));
+        return of(namespace(tag), name(tag), value(tag));
     }
 
-    public static Tag ofEmpty(String namespace, String name) {
-        return new Tag(namespace, name, null);
+    public static Tag ofEmpty(String namespace, @NotNull String name) {
+        return of(namespace, name, null);
     }
 
-    public static Tag ofEmpty(String name) {
-        return new Tag(null, name, null);
+    public static Tag ofEmpty(@NotNull String name) {
+        return of(null, name, null);
     }
 
-    public static Tag of(String tag, String value) {
-        return new Tag(namespace(tag), name(tag), value);
+    public static Tag of(@NotNull String tag, String value) {
+        return of(namespace(tag), name(tag), value);
     }
 
-    public static Tag of(String namespace, String name, String value) {
+    public static Tag of(String namespace, @NotNull String name, String value) {
         return new Tag(namespace, name, value);
     }
 
@@ -98,6 +102,6 @@ public record Tag(String namespace, @NotNull String name, String value) implemen
     }
 
     public String text() {
-        return ((namespace() != null ? namespace() + ":" : "") + name() + (value != null ? "=" + value() : ""));
+        return (!Strings.isNullOrBlank(namespace()) ? namespace() + ":" : "") + name() + (value() != null ? "=" + value() : "");
     }
 }

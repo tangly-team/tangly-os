@@ -41,7 +41,7 @@ public class Subject extends EntityImp {
 
     public static String encryptPassword(@NotNull String password, @NotNull String salt) throws Exception {
         int derivedKeyLength = 160;
-        int iterations = 20000;
+        int iterations = 20_000;
         byte[] saltBytes = Base64.getDecoder().decode(salt);
         KeySpec spec = new PBEKeySpec(password.toCharArray(), saltBytes, iterations, derivedKeyLength);
         SecretKeyFactory factory = SecretKeyFactory.getInstance(ALGORITHM);

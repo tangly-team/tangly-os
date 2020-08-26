@@ -14,7 +14,6 @@
 package net.tangly.bdd;
 
 import java.io.BufferedInputStream;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -34,7 +33,7 @@ import org.junit.jupiter.api.AfterAll;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public abstract class StoreTest {
+public class StoreTest {
     private static final String BDD_REPORT = "bdd-features.json";
 
     @AfterAll
@@ -71,14 +70,12 @@ public abstract class StoreTest {
      */
     private static void validateSchema(Path bddReport) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-
         JsonSchemaFactory factory = JsonSchemaFactory.getInstance(SpecVersion.VersionFlag.V7);
-        InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("bdd-schema.json");
-        JsonSchema schema = factory.getSchema(is);
-
-        InputStream stream = new BufferedInputStream(Files.newInputStream(bddReport));
-        JsonNode node = mapper.readTree(stream);
-
-        assertThat(schema.validate(node).size()).isEqualTo(0);
+        try (InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("bdd-schema.json");
+             InputStream stream = new BufferedInputStream(Files.newInputStream(bddReport))) {
+            JsonSchema schema = factory.getSchema(is);
+            JsonNode node = mapper.readTree(stream);
+            assertThat(schema.validate(node).size()).isEqualTo(0);
+        }
     }
 }

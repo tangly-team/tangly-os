@@ -25,6 +25,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * The actor infrastructure enabler is responsible to provide parallel execution for all instantiated and alive actors he is in charge.
+ *
+ * @param <E> the event enumeration type uniquely identifying the event sent to the state machine
  */
 public final class LocalActors<E extends Enum<E>> implements Actors<E> {
 
@@ -44,6 +46,7 @@ public final class LocalActors<E extends Enum<E>> implements Actors<E> {
     /**
      * Returns the local actors instance.
      *
+     * @param <E> the event enumeration type uniquely identifying the event sent to the state machine
      * @return the local actors instance
      */
     public static <E extends Enum<E>> LocalActors<E> instance() {

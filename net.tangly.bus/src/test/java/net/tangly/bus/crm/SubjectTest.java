@@ -26,4 +26,16 @@ public class SubjectTest {
         assertThat(Subject.encryptPassword(password, subject.passwordSalt())).isEqualTo(subject.passwordHash());
         assertThat(subject.authenticate(password)).isTrue();
     }
+
+    @Test
+    void subjectAvatarTest() {
+        NaturalEntity naturalEntity = new NaturalEntity();
+        naturalEntity.firstname("Marcel");
+        naturalEntity.firstname("Baumann");
+        Subject subject = new Subject();
+        subject.user(naturalEntity);
+        subject.gravatarEmail("marcel.baumann@tangly.net");
+        byte[] avatar = subject.avatar();
+        assertThat(avatar.length).isNotZero();
+    }
 }

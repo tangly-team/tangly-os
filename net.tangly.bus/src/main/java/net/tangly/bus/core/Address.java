@@ -126,6 +126,10 @@ public record Address(String street, String extended, String poBox, String postc
         return builder().street(parts[0]).extended(parts[1]).poBox(parts[2]).postcode(parts[3]).locality(parts[4]).region(parts[5]).country(parts[6]).build();
     }
 
+    public boolean isValid() {
+        return !Strings.isNullOrBlank(locality()) && !Strings.isNullOrBlank(country());
+    }
+
     /**
      * Returns a comma separated representation of an address. Null values are shown as empty strings. The {@link Object#toString()} method is not used because
      * the implementation is defined in the API implementation of record construct. The generated string can be feed to the {@link Address#of(String)} to create

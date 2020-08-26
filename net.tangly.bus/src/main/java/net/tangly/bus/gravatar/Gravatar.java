@@ -18,6 +18,7 @@ import java.io.UncheckedIOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.IOUtils;
@@ -43,7 +44,7 @@ public final class Gravatar {
     }
 
     private String getUrl(String email, int sizeInPixels, GravatarRating rating, GravatarImage image) {
-        return GRAVATAR_URL + DigestUtils.md5Hex(email.toLowerCase().trim()) + ".jpg" + formatUrlParameters(sizeInPixels, rating, image);
+        return GRAVATAR_URL + DigestUtils.md5Hex(email.toLowerCase(Locale.US).trim()) + ".jpg" + formatUrlParameters(sizeInPixels, rating, image);
     }
 
     private String formatUrlParameters(int sizeInPixels, GravatarRating rating, GravatarImage image) {

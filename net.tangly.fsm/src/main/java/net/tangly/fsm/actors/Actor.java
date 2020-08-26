@@ -18,11 +18,14 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * The actor abstraction provides an active actor object to process events through a finite state machine.
+ *
+ * @param <E> enumeration describing the events handled
  */
 public interface Actor<E extends Enum<E>> {
 
     /**
      * Returns the unique name of the actor.
+     *
      * @return unique name of the actor
      */
     String name();

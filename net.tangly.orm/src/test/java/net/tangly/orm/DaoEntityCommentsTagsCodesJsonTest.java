@@ -1,13 +1,13 @@
 /*
  * Copyright 2006-2020 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain 
+ *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  *  a copy of the License at
- *  
+ *
  *          http://www.apache.org/licenses/LICENSE-2.0
- *  
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT 
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations 
+ *
+ *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
  *  under the License.
  */
 
@@ -30,14 +30,13 @@ import net.tangly.bus.core.EntityImp;
 import net.tangly.bus.core.HasOid;
 import net.tangly.bus.core.Tag;
 import net.tangly.commons.lang.Reference;
-import net.tangly.orm.DaoBuilder;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class DaoEntityCommentsTagsCodesJsonTest extends  DaoTest {
+class DaoEntityCommentsTagsCodesJsonTest extends DaoTest {
     /**
      * Enumeration type extended to support the code interface.
      */
@@ -60,7 +59,7 @@ class DaoEntityCommentsTagsCodesJsonTest extends  DaoTest {
         }
     }
 
-    static class Value implements Serializable {
+    static class Value {
         private int intValue;
         private String stringValue;
 
@@ -130,20 +129,20 @@ class DaoEntityCommentsTagsCodesJsonTest extends  DaoTest {
         }
     }
 
-    private  Dao<Entity> entities;
-    private  Dao<Comment> comments;
+    private Dao<Entity> entities;
+    private Dao<Comment> comments;
 
     @BeforeEach
     void setUp() throws NoSuchMethodException {
         setUpDatabase();
-        comments = new DaoBuilder<>(Comment.class).withOid().withDateTime("created").withText("author").withText("text").withTags("tags")
-                .withFid("ownedBy").build("tangly", "comments", datasource());
+        comments = new DaoBuilder<>(Comment.class).withOid().withDateTime("created").withText("author").withText("text").withTags("tags").withFid("ownedBy")
+                .build("tangly", "comments", datasource());
         DaoBuilder<Entity> entitiesBuilder = new DaoBuilder<>(Entity.class);
-        entities = entitiesBuilder.withOid().withString("id").withString("name").withDate("fromDate").withDate("toDate").withString("text")
-                .withTags("tags").withCode("code", CodeType.of(EntityCode.class, Arrays.asList(EntityCode.values())))
-                .withOne2One("owner", entitiesBuilder.self(), true).withFid("ownedBy")
-                .withOne2Many("ownedOnes", "ownedBy", entitiesBuilder.self(), true).withOne2Many("comments", "ownedBy", Reference.of(comments), true)
-                .withJson("jsonValues", Value.class).build("tangly", "entities", datasource());
+        entities = entitiesBuilder.withOid().withString("id").withString("name").withDate("fromDate").withDate("toDate").withString("text").withTags("tags")
+                .withCode("code", CodeType.of(EntityCode.class, Arrays.asList(EntityCode.values()))).withOne2One("owner", entitiesBuilder.self(), true)
+                .withFid("ownedBy").withOne2Many("ownedOnes", "ownedBy", entitiesBuilder.self(), true)
+                .withOne2Many("comments", "ownedBy", Reference.of(comments), true).withJson("jsonValues", Value.class)
+                .build("tangly", "entities", datasource());
     }
 
     @Test

@@ -186,7 +186,7 @@ public class InvoiceTest {
         return sellee;
     }
 
-    private static BankConnection sellerConnection() {
+    public static BankConnection sellerConnection() {
         return new BankConnection("CH88 0900 0000 3064 1768 2", "POFICHBEXXX", "Postfinanz Schweiz");
     }
 }

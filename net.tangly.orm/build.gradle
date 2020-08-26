@@ -19,7 +19,7 @@ project.ext.groupId = 'net.tangly'
 project.ext.artifactId = 'orm'
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 
-project.version = "0.2.5"
+project.version = "0.2.6"
 project.ext.inceptionYear = '1996'
 project.description = "Object Relation Database Mapper - using Java 14 or higher (tangly llc)"
 

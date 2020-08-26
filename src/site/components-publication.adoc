@@ -72,6 +72,8 @@ IMPORTANT: Set the property if you want to sign the component artifacts and publ
 [#website-publication]
 == Website Publication
 
+The tangly open source components website is hosted https://tangly-team.bitbucket.io/[here].
+
 . Update Hugo pipeline to run planUML with asciidoctor.
 Read the instructions in the asciidoctor script file under the scripts folder.
 . Four scripts are provided to generate the Hugo static site with associated structure and theme.

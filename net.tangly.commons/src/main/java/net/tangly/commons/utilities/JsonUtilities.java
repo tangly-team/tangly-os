@@ -58,17 +58,19 @@ public class JsonUtilities {
      * @return set of validation messages if validation errors were found otherwise empty set
      */
     public static Set<ValidationMessage> validateSchema(@NotNull Path jsonFile, @NotNull String resource) {
-        try (InputStream stream = new BufferedInputStream(Files.newInputStream(jsonFile))) {
+        try (InputStream stream = new BufferedInputStream(Files.newInputStream(jsonFile));
+             InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(resource)) {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode node = mapper.readTree(stream);
-
             JsonSchemaFactory factory = JsonSchemaFactory.getInstance(SpecVersion.VersionFlag.V7);
-            InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(resource);
             JsonSchema schema = factory.getSchema(is);
             return schema.validate(node);
         } catch (IOException e) {
             logger.atError().setCause(e).log("IO Exception when processing {}", jsonFile);
             throw new UncheckedIOException(e);
         }
+    }
+
+    private JsonUtilities() {
     }
 }
