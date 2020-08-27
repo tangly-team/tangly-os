@@ -33,15 +33,19 @@ import org.jetbrains.annotations.NotNull;
  * deleted before an new version can be added. This approach supports auditing approaches.
  */
 public class CommentsView extends Crud<Comment> implements CrudForm<Comment> {
-    private final transient HasComments hasItems;
-    private DateTimePicker created;
-    private TextField author;
-    private TextArea text;
+    private final transient HasComments hasComments;
+    private final DateTimePicker created;
+    private final TextField author;
+    private final TextArea text;
 
     public CommentsView(@NotNull HasComments entity) {
         super(Comment.class, Mode.IMMUTABLE, CommentsView::defineGrid, new ListDataProvider<>(entity.comments()));
         initialize(this, new GridActionsListener<>(grid().getDataProvider(), this::selectedItem));
-        this.hasItems = entity;
+        this.hasComments = entity;
+        created = new DateTimePicker("Created");
+        author = VaadinUtils.createTextField("Author", "author");
+        text = new TextArea("Text");
+
     }
 
     public static void defineGrid(@NotNull Grid<Comment> grid) {
@@ -56,22 +60,19 @@ public class CommentsView extends Crud<Comment> implements CrudForm<Comment> {
     public FormLayout createForm(Operation operation, Comment entity) {
         boolean readonly = Operation.isReadOnly(operation);
 
-        created = new DateTimePicker("Created");
-        created.setReadOnly(true);
+        created.setReadOnly(readonly);
 
-        author = VaadinUtils.createTextField("Author", "author", readonly);
         author.setRequired(true);
+        author.setReadOnly(readonly);
 
-        text = new TextArea("Text");
         text.setHeight("8em");
-        text.setReadOnly(readonly);
         text.setRequired(true);
+        text.setReadOnly(readonly);
 
         FormLayout form = new FormLayout();
-        form.setResponsiveSteps(new FormLayout.ResponsiveStep("25em", 1), new FormLayout.ResponsiveStep("32em", 2), new FormLayout.ResponsiveStep("40em", 3));
+        VaadinUtils.setResponsiveSteps(form);
         form.add(created, author, new HtmlComponent("br"), text);
         form.setColspan(text, 2);
-
         if (readonly) {
             Binder<Comment> binder = new Binder<>(Comment.class);
             binder.bind(created, Comment::created, null);
@@ -80,6 +81,8 @@ public class CommentsView extends Crud<Comment> implements CrudForm<Comment> {
             binder.readBean(entity);
         } else {
             created.setValue(LocalDateTime.now());
+            author.clear();
+            text.clear();
         }
         return form;
     }

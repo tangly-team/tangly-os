@@ -1,7 +1,8 @@
 ---
 title: "Ideas"
 date: "2019-05-01"
-order: 8
+lastmod: 2020-08-31
+weight: 80
 draft: false
 ---
 
