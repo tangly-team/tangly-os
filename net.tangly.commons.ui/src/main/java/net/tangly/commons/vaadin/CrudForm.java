@@ -52,7 +52,7 @@ public interface CrudForm<T> {
         Button action;
         switch (operation) {
             case VIEW:
-                action = new Button("Ok");
+                action = new Button("Close");
                 actions.add(action);
                 action.addClickListener(event -> {
                     form.formCompleted(CrudForm.Operation.VIEW, entity);

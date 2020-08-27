@@ -1,7 +1,8 @@
 ---
 title: "Gleam"
 date: "2019-05-01"
-order: 5
+lastmod: 2020-08-31
+weight: 50
 draft: false
 ---
 

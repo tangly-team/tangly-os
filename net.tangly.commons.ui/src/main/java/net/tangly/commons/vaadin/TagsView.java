@@ -25,21 +25,26 @@ import net.tangly.bus.core.TagTypeRegistry;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The comments view is a Crud view with all the comments defined for an entity. Edition functions are provided to add, delete, and view individual comments.
- * Update function is not supported because comments are immutable objects.
+ * The tags view is a Crud view with all the tags defined for an entity. Edition functions are provided to add, delete, and view individual comments. Update
+ * function is not supported because tags are immutable objects.
+ * <p>The form uses information stored in the tag registry to populate the namespace field, the name field and toggle the value field based on the tag type
+ * definition.</p>
  */
 public class TagsView extends Crud<Tag> implements CrudForm<Tag> {
-    private final transient HasTags hasItems;
+    private final transient HasTags hasTags;
     private final transient TagTypeRegistry registry;
-    private ComboBox<String> namespace;
-    private ComboBox<String> name;
-    private TextField value;
+    private final transient ComboBox<String> namespace;
+    private final transient ComboBox<String> name;
+    private final transient TextField value;
 
     public TagsView(@NotNull HasTags entity, @NotNull TagTypeRegistry registry) {
         super(Tag.class, Mode.IMMUTABLE, TagsView::defineGrid, new ListDataProvider<>(entity.tags()));
         initialize(this, new GridActionsListener<>(grid().getDataProvider(), this::selectedItem));
-        this.hasItems = entity;
+        this.hasTags = entity;
         this.registry = registry;
+        namespace = new ComboBox<>("Namespace");
+        name = new ComboBox<>("Name");
+        value = new TextField("Value");
     }
 
     public static void defineGrid(@NotNull Grid<Tag> grid) {
@@ -50,10 +55,8 @@ public class TagsView extends Crud<Tag> implements CrudForm<Tag> {
     }
 
     @Override
-    public FormLayout createForm(Operation operation, Tag entity) {
+    public FormLayout createForm(@NotNull Operation operation, Tag entity) {
         boolean readonly = Operation.isReadOnly(operation);
-
-        namespace = new ComboBox<>("Namespace");
         namespace.setItems(registry.namespaces());
         if (entity != null) {
             namespace.setValue(entity.namespace());
@@ -63,17 +66,21 @@ public class TagsView extends Crud<Tag> implements CrudForm<Tag> {
             if (event.getValue() == null) {
                 name.clear();
             } else {
-                name.setItems(registry.tagsForNamespace(event.getValue()));
+                name.setItems(registry.tagNamesForNamespace(event.getValue()));
             }
         });
-
-        name = new ComboBox<>("Name");
-        if (entity != null) {
-            name.setItems(registry.tagsForNamespace(entity.namespace()));
-        }
         name.setReadOnly(readonly);
-
-        value = new TextField("Value");
+        if (entity != null) {
+            name.setItems(registry.tagNamesForNamespace(entity.namespace()));
+        }
+        name.addValueChangeListener(event -> {
+            if (event.getValue() == null) {
+                name.clear();
+                value.setEnabled(true);
+            } else {
+                registry.find(namespace.getValue(), name.getValue()).ifPresent(o -> value.setEnabled(o.canHaveValue()));
+            }
+        });
         value.setPlaceholder("value");
         value.setReadOnly(readonly);
 
@@ -83,21 +90,23 @@ public class TagsView extends Crud<Tag> implements CrudForm<Tag> {
             binder.bind(name, Tag::name, null);
             binder.bind(value, Tag::value, null);
             binder.readBean(entity);
+        } else {
+            value.clear();
         }
-
-        FormLayout form = new FormLayout(namespace, name, value);
+        FormLayout form = new FormLayout(namespace, name);
+        form.add(value, 2);
         VaadinUtils.setResponsiveSteps(form);
         return form;
     }
 
     @Override
-    public Tag formCompleted(Operation operation, Tag entity) {
+    public Tag formCompleted(@NotNull Operation operation, Tag entity) {
         return switch (operation) {
             case CREATE -> create();
             default -> entity;
         };
     }
-    
+
     private Tag create() {
         return new Tag(namespace.getValue(), name.getValue(), value.getValue());
     }

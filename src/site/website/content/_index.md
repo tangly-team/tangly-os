@@ -1,6 +1,7 @@
 ---
 title: OS components
 date: 2019-05-01
+lastmod: 2020-08-31
 draft: false
 --- 
 
