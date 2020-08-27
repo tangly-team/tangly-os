@@ -17,6 +17,7 @@ plugins {
 
 project.ext.groupId = 'net.tangly'
 project.ext.artifactId = 'orm'
+project.version = "0.2.6"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 
 project.version = "0.2.6"

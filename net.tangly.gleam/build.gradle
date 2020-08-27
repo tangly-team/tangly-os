@@ -11,11 +11,11 @@
  *  under the License.
  */
 
-project.ext.groupId= 'net.tangly'
+project.ext.groupId = 'net.tangly'
 project.ext.artifactId ='gleam'
-project.ext.moduleName = 'net.tangly.gleam'
-project.ext.inceptionYear = '1996'
 project.version = "0.2.6"
+project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
+project.ext.inceptionYear = '1996'
 project.description = "Model Driven Design library (tangly llc)"
 
 dependencies {

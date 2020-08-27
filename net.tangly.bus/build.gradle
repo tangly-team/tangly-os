@@ -17,9 +17,9 @@ plugins {
 
 project.ext.groupId = 'net.tangly'
 project.ext.artifactId = 'bus'
+project.version = "0.2.6"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '2016'
-project.version = "0.2.6"
 project.description = "Business Abstractions - BUS - using Java 14 or higher (tangly llc)"
 
 dependencies {
