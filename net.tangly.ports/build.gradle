@@ -13,6 +13,7 @@
 
 project.ext.groupId = 'net.tangly'
 project.ext.artifactId = 'ports'
+project.version = "0.2.6"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
 project.description = "ports for the business components (tangly llc)"

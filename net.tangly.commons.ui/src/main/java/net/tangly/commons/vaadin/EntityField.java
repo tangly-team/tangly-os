@@ -13,11 +13,9 @@
 
 package net.tangly.commons.vaadin;
 
-import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.details.Details;
-import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
@@ -45,14 +43,9 @@ public class EntityField extends CustomField<Entity> {
         text.setWidthFull();
         Details textDetails = new Details("Text", text);
 
-        FormLayout form = new FormLayout();
-        form.setResponsiveSteps(new FormLayout.ResponsiveStep("25em", 1), new FormLayout.ResponsiveStep("32em", 2), new FormLayout.ResponsiveStep("40em", 3));
-        form.add(new HorizontalLayout(oid, id, name));
-        form.add(new HtmlComponent("br"), 3);
-        form.add(new HorizontalLayout(fromDate, toDate));
-        form.add(new HtmlComponent("br"), 3);
-        form.add(textDetails, 3);
-        add(form);
+        add(new HorizontalLayout(oid, id, name));
+        add(new HorizontalLayout(fromDate, toDate));
+        add(textDetails);
     }
 
     @Override

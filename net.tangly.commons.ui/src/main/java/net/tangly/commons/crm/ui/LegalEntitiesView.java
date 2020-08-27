@@ -92,6 +92,7 @@ public class LegalEntitiesView extends CrmEntitiesView<LegalEntity> {
     protected FormLayout createOverallView(@NotNull Mode mode, @NotNull LegalEntity entity) {
         boolean readonly = Mode.readOnly(mode);
         EntityField entityField = new EntityField();
+        entityField.setReadOnly(readonly);
         TextField site = VaadinUtils.createTextField("Web Site", "website", readonly);
         TextField vatNr = VaadinUtils.createTextField("VAT Nr", "vatNr", readonly);
 

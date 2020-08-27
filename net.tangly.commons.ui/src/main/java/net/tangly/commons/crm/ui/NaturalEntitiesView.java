@@ -72,10 +72,12 @@ public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
     protected FormLayout createOverallView(@NotNull Mode mode, @NotNull NaturalEntity entity) {
         boolean readonly = Mode.readOnly(mode);
         EntityField entityField = new EntityField();
-        TextField firstname = VaadinUtils.createTextField("Firstname", "firstname", false);
-        TextField lastname = VaadinUtils.createTextField("Lastname", "lastname", false);
+        entityField.setReadOnly(readonly);
+        TextField firstname = VaadinUtils.createTextField("Firstname", "firstname", readonly);
+        TextField lastname = VaadinUtils.createTextField("Lastname", "lastname", readonly);
         TextField mobilePhone = VaadinUtils.createTextField("Mobile Phone", "mobile phone number", true);
         EmailField homeEmail = new EmailField("Home Email");
+        homeEmail.setReadOnly(readonly);
         homeEmail.setClearButtonVisible(true);
         TextField homeSite = VaadinUtils.createTextField("Home Site", "home site", true);
 
