@@ -28,8 +28,8 @@ import net.tangly.crm.ports.Crm;
 import org.jetbrains.annotations.NotNull;
 
 public class EmployeesView extends CrmEntitiesView<Employee> {
-    public EmployeesView(@NotNull Crm crm) {
-        super(crm, Employee.class, EmployeesView::defineEmployeesGrid, crm.employees());
+    public EmployeesView(@NotNull Crm crm, @NotNull Mode mode) {
+        super(crm, Employee.class, mode, EmployeesView::defineEmployeesGrid, crm.employees());
     }
 
     public static void defineEmployeesGrid(@NotNull Grid<Employee> grid) {
@@ -46,11 +46,12 @@ public class EmployeesView extends CrmEntitiesView<Employee> {
     }
 
     @Override
-    protected FormLayout createOverallView(@NotNull Operation operation, @NotNull Employee entity) {
-        boolean readonly = Operation.isReadOnly(operation);
+    protected FormLayout createOverallView(@NotNull Mode mode, @NotNull Employee entity) {
+        boolean readonly = Mode.readOnly(mode);
         EntityField entityField = new EntityField();
-        One2OneField<LegalEntity, LegalEntitiesView> organization = new One2OneField<>("Organization", new LegalEntitiesView(crm()));
-        One2OneField<NaturalEntity, NaturalEntitiesView> person = new One2OneField<>("Person", new NaturalEntitiesView(crm()));
+        entityField.setReadOnly(readonly);
+        One2OneField<LegalEntity, LegalEntitiesView> organization = new One2OneField<>("Organization", new LegalEntitiesView(crm(), mode));
+        One2OneField<NaturalEntity, NaturalEntitiesView> person = new One2OneField<>("Person", new NaturalEntitiesView(crm(), mode));
 
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);

@@ -50,8 +50,8 @@ public abstract class InternalEntitiesView<T extends Entity> extends Crud<T> imp
      * @param provider         data provider associated with the grid
      * @param registry         tag type registry used to configure the tags view of the entity class
      */
-    public InternalEntitiesView(@NotNull Class<T> clazz, @NotNull Consumer<Grid<T>> gridConfigurator, @NotNull Provider<T> provider, TagTypeRegistry registry) {
-        super(clazz, Crud.Mode.EDITABLE, gridConfigurator, DataProvider.ofCollection(provider.getAll()));
+    public InternalEntitiesView(@NotNull Class<T> clazz, @NotNull Mode mode, @NotNull Consumer<Grid<T>> gridConfigurator, @NotNull Provider<T> provider, TagTypeRegistry registry) {
+        super(clazz, mode, gridConfigurator, DataProvider.ofCollection(provider.getAll()));
         this.provider = provider;
         this.binder = new Binder<>(clazz);
         this.registry = registry;
@@ -70,7 +70,7 @@ public abstract class InternalEntitiesView<T extends Entity> extends Crud<T> imp
     @Override
     public FormLayout createForm(@NotNull CrudForm.Operation operation, T entity) {
         TabsComponent tabs = new TabsComponent();
-        registerTabs(tabs, operation, entity);
+        registerTabs(tabs, of(operation), entity);
         tabs.tabByName("Overview").ifPresent(tabs::initialize);
 
         FormLayout form = new FormLayout(tabs);
@@ -79,11 +79,11 @@ public abstract class InternalEntitiesView<T extends Entity> extends Crud<T> imp
         return form;
     }
 
-    protected void registerTabs(@NotNull TabsComponent tabs, @NotNull CrudForm.Operation operation, T entity) {
+    protected void registerTabs(@NotNull TabsComponent tabs, @NotNull Mode mode, T entity) {
         T workedOn = (entity != null) ? entity : create();
-        tabs.add(new Tab("Overview"), createOverallView(operation, workedOn));
-        tabs.add(new Tab("Comments"), new CommentsView(workedOn));
-        tabs.add(new Tab("Tags"), new TagsView(workedOn, registry));
+        tabs.add(new Tab("Overview"), createOverallView(mode, workedOn));
+        tabs.add(new Tab("Comments"), new CommentsView(mode, workedOn));
+        tabs.add(new Tab("Tags"), new TagsView(mode, workedOn, registry));
     }
 
     protected Binder<T> binder() {
@@ -105,13 +105,13 @@ public abstract class InternalEntitiesView<T extends Entity> extends Crud<T> imp
     /**
      * factory method creating the form layout for the entity simple attributes to be displayed in the overall view.
      *
-     * @param operation operation mode in which the form will be used
-     * @param entity    entity under edition
+     * @param mode   mode in which the form will be used
+     * @param entity entity under edition
      * @return the form layout
      */
-    protected FormLayout createOverallView(@NotNull Operation operation, @NotNull T entity) {
-        boolean readonly = Operation.isReadOnly(operation);
+    protected FormLayout createOverallView(@NotNull Mode mode, @NotNull T entity) {
         EntityField entityField = new EntityField();
+        entityField.setReadOnly(Mode.readOnly(mode));
 
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);
@@ -124,24 +124,25 @@ public abstract class InternalEntitiesView<T extends Entity> extends Crud<T> imp
 
     @Override
     public T formCompleted(Operation operation, T entity) {
-        switch (operation) {
-            case UPDATE:
+        return switch (operation) {
+            case UPDATE -> {
                 try {
                     binder.writeBean(entity);
                 } catch (ValidationException e) {
                     logger.error("validation error", e);
                 }
-                break;
-            case CREATE:
+                yield entity;
+            }
+            case CREATE -> {
+                T created = create();
                 try {
-                    T created = create();
                     binder.writeBean(created);
-                    return created;
                 } catch (ValidationException e) {
                     logger.error("validation error", e);
                 }
-                break;
-        }
-        return entity;
+                yield created;
+            }
+            default -> entity;
+        };
     }
 }

@@ -83,7 +83,7 @@ public final class VaadinUtils {
         return component.getUI().isPresent() ? component.getUI().get().getSession().getAttribute(attribute) : null;
     }
 
-    public static final BigDecimal toBigDecimal(String value) {
+    public static BigDecimal toBigDecimal(String value) {
         return (value == null) ? BigDecimal.ZERO : new BigDecimal(value);
     }
 

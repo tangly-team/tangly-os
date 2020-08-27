@@ -15,6 +15,11 @@ package net.tangly.commons.vaadin;
 
 import net.tangly.bus.core.HasQualifiers;
 
+/**
+ * Mixin for views supporting selection of a item, in general related to a grid. The item should provide a id, a name and a text for display in the view.
+ *
+ * @param <T> tyoe of the items displayed in the view
+ */
 public interface HasIdView<T extends HasQualifiers> {
     T selectedItem();
 

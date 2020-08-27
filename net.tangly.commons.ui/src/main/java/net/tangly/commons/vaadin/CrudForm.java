@@ -20,6 +20,9 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import org.jetbrains.annotations.NotNull;
 
 public interface CrudForm<T> {
+    /**
+     * Define the operation the form can process. The operation has an impact to the behavior of the fields and buttons of the form.
+     */
     enum Operation {
         VIEW, UPDATE, CREATE, DELETE, CANCEL, SELECT;
 

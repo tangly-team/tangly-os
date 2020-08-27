@@ -83,6 +83,7 @@ public class AddressField extends CustomField<Address> {
 
     @Override
     public void setReadOnly(boolean readOnly) {
+        super.setReadOnly(readOnly);
         street.setReadOnly(readOnly);
         extended.setReadOnly(readOnly);
         poBox.setReadOnly(readOnly);

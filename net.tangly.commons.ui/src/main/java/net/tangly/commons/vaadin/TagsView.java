@@ -37,8 +37,8 @@ public class TagsView extends Crud<Tag> implements CrudForm<Tag> {
     private final transient ComboBox<String> name;
     private final transient TextField value;
 
-    public TagsView(@NotNull HasTags entity, @NotNull TagTypeRegistry registry) {
-        super(Tag.class, Mode.IMMUTABLE, TagsView::defineGrid, new ListDataProvider<>(entity.tags()));
+    public TagsView(@NotNull Mode mode, @NotNull HasTags entity, @NotNull TagTypeRegistry registry) {
+        super(Tag.class,mode, TagsView::defineGrid, new ListDataProvider<>(entity.tags()));
         initialize(this, new GridActionsListener<>(grid().getDataProvider(), this::selectedItem));
         this.hasTags = entity;
         this.registry = registry;
@@ -102,7 +102,15 @@ public class TagsView extends Crud<Tag> implements CrudForm<Tag> {
     @Override
     public Tag formCompleted(@NotNull Operation operation, Tag entity) {
         return switch (operation) {
-            case CREATE -> create();
+            case CREATE -> {
+                Tag tag = create();
+                hasTags.add(tag);
+                yield tag;
+            }
+            case DELETE -> {
+                hasTags.remove(entity);
+                yield entity;
+            }
             default -> entity;
         };
     }

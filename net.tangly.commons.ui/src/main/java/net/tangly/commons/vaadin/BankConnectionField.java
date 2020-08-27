@@ -64,6 +64,7 @@ public class BankConnectionField extends CustomField<BankConnection> {
 
     @Override
     public void setReadOnly(boolean readOnly) {
+        super.setReadOnly(readOnly);
         iban.setReadOnly(readOnly);
         institute.setReadOnly(readOnly);
         bic.setReadOnly(readOnly);

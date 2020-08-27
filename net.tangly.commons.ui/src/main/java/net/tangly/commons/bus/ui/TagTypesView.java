@@ -29,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
 public class TagTypesView extends VerticalLayout {
     private final Grid<TagType> grid;
     private final TagTypeRegistry registry;
-    private final HashMap<TagType, Integer> counts;
+    private final HashMap<TagType<?>, Integer> counts;
 
     public TagTypesView(TagTypeRegistry registry) {
         this.registry = registry;
@@ -43,7 +43,7 @@ public class TagTypesView extends VerticalLayout {
         grid.addColumn(TagType::canHaveValue).setKey("canHaveValue").setHeader("Can Have Value").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(TagType::kind).setKey("Kind").setHeader("Kind").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.clazz().getSimpleName()).setKey("valueType").setHeader("Value Type").setSortable(true).setAutoWidth(true).setResizable(true);
-        grid.addColumn(e -> this.count(e)).setKey("count").setHeader("Count").setSortable(true).setAutoWidth(true).setResizable(true);
+        grid.addColumn(this::count).setKey("count").setHeader("Count").setSortable(true).setAutoWidth(true).setResizable(true);
 
         grid.setHeightFull();
         grid.setMinHeight("20em");
@@ -65,7 +65,7 @@ public class TagTypesView extends VerticalLayout {
     }
 
     int count(@NotNull TagType<?> type) {
-        return counts.containsKey(type) ? counts.get(type) : -1;
+        return counts.getOrDefault(type, -1);
     }
 
     private void increment(@NotNull TagType<?> type) {

@@ -23,16 +23,16 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.server.StreamResource;
 import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.bus.crm.Subject;
-import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.EntityField;
+import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.One2OneField;
 import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.crm.ports.Crm;
 import org.jetbrains.annotations.NotNull;
 
 public class SubjectsView extends CrmEntitiesView<Subject> {
-    public SubjectsView(@NotNull Crm crm) {
-        super(crm, Subject.class, InternalEntitiesView::defineGrid, crm.subjects());
+    public SubjectsView(@NotNull Crm crm, @NotNull Mode mode) {
+        super(crm, Subject.class, mode, InternalEntitiesView::defineGrid, crm.subjects());
     }
 
     @Override
@@ -41,10 +41,10 @@ public class SubjectsView extends CrmEntitiesView<Subject> {
     }
 
     @Override
-    protected FormLayout createOverallView(@NotNull Operation operation, @NotNull Subject entity) {
-        boolean readonly = Operation.isReadOnly(operation);
+    protected FormLayout createOverallView(@NotNull Mode mode, @NotNull Subject entity) {
+        boolean readonly = Mode.readOnly(mode);
         EntityField entityField = new EntityField();
-        One2OneField<NaturalEntity, NaturalEntitiesView> user = new One2OneField<>("User", new NaturalEntitiesView(crm()));
+        One2OneField<NaturalEntity, NaturalEntitiesView> user = new One2OneField<>("User", new NaturalEntitiesView(crm(), mode));
 
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);
@@ -56,7 +56,7 @@ public class SubjectsView extends CrmEntitiesView<Subject> {
         Image image = new Image(new StreamResource("avatar.jpg", () -> new ByteArrayInputStream(entity.avatar())), "avatar");
         image.setWidth("200px");
         image.setHeight("200px");
-        form.add(gravatarEmail,image, user);
+        form.add(gravatarEmail, image, user);
 
         binder = new Binder<>(entityClass());
         entityField.bind(binder);

@@ -35,13 +35,13 @@ import org.jetbrains.annotations.NotNull;
 public abstract class CrmEntitiesView<T extends Entity> extends InternalEntitiesView<T> {
     private final Crm crm;
 
-    protected CrmEntitiesView(@NotNull Crm crm, @NotNull Class<T> clazz, Consumer<Grid<T>> gridConfigurator, Provider<T> provider) {
-        super(clazz, gridConfigurator, provider, crm.tagTypeRegistry());
+    protected CrmEntitiesView(@NotNull Crm crm, @NotNull Class<T> clazz, @NotNull Mode mode, Consumer<Grid<T>> gridConfigurator, Provider<T> provider) {
+        super(clazz, mode, gridConfigurator, provider, crm.tagTypeRegistry());
         this.crm = crm;
     }
 
     public static <T extends Entity> ComponentRenderer<Anchor, T> linkedInComponentRenderer(Function<String, String> linkedInUrl) {
-        return new ComponentRenderer<Anchor, T>(item -> {
+        return new ComponentRenderer<>(item -> {
             Anchor anchor = new Anchor();
             Tag tag = item.findBy(CrmTags.CRM_IM_LINKEDIN).orElse(null);
             String linkedInRef = (tag != null) ? tag.value() : null;
@@ -53,7 +53,7 @@ public abstract class CrmEntitiesView<T extends Entity> extends InternalEntities
     }
 
     public static <T extends Entity> ComponentRenderer<Anchor, T> urlComponentRenderer(String tagName) {
-        return new ComponentRenderer<Anchor, T>(item -> {
+        return new ComponentRenderer<>(item -> {
             Anchor anchor = new Anchor();
             Tag tag = item.findBy(tagName).orElse(null);
             String url = (tag != null) ? tag.value() : null;

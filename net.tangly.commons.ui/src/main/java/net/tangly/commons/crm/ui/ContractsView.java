@@ -28,8 +28,8 @@ import net.tangly.crm.ports.Crm;
 import org.jetbrains.annotations.NotNull;
 
 public class ContractsView extends CrmEntitiesView<Contract> {
-    public ContractsView(@NotNull Crm crm) {
-        super(crm, Contract.class, ContractsView::defineContractsGrid, crm.contracts());
+    public ContractsView(@NotNull Crm crm, @NotNull Mode mode) {
+        super(crm, Contract.class, mode, ContractsView::defineContractsGrid, crm.contracts());
         grid().addColumn(o -> VaadinUtils.format(crm().invoicedAmount(o))).setKey("invoicedAmount").setHeader("Invoiced").setAutoWidth(true).setResizable(true).setSortable(true);
     }
 
@@ -45,12 +45,12 @@ public class ContractsView extends CrmEntitiesView<Contract> {
     }
 
     @Override
-    protected FormLayout createOverallView(@NotNull Operation operation, @NotNull Contract entity) {
-        boolean readonly = Operation.isReadOnly(operation);
+    protected FormLayout createOverallView(@NotNull Mode mode, @NotNull Contract entity) {
+        boolean readonly = Mode.readOnly(mode);
         EntityField entityField = new EntityField();
         BankConnectionField bankConnection = new BankConnectionField();
-        One2OneField<LegalEntity, LegalEntitiesView> seller = new One2OneField<>("Seller", new LegalEntitiesView(crm()));
-        One2OneField<LegalEntity, LegalEntitiesView> sellee = new One2OneField<>("Sellee", new LegalEntitiesView(crm()));
+        One2OneField<LegalEntity, LegalEntitiesView> seller = new One2OneField<>("Seller", new LegalEntitiesView(crm(), mode));
+        One2OneField<LegalEntity, LegalEntitiesView> sellee = new One2OneField<>("Sellee", new LegalEntitiesView(crm(), mode));
 
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);

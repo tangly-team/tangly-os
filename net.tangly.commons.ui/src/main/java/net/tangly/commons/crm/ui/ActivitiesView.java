@@ -29,7 +29,6 @@ import net.tangly.bus.crm.Activity;
 import net.tangly.bus.crm.ActivityCode;
 import net.tangly.bus.crm.Subject;
 import net.tangly.commons.vaadin.CommentsView;
-import net.tangly.commons.vaadin.CrudForm;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.TabsComponent;
@@ -39,8 +38,8 @@ import net.tangly.crm.ports.Crm;
 import org.jetbrains.annotations.NotNull;
 
 public class ActivitiesView extends CrmEntitiesView<Activity> {
-    public ActivitiesView(@NotNull Crm crm) {
-        super(crm, Activity.class, ActivitiesView::defineActivitiesGrid, crm.activities());
+    public ActivitiesView(@NotNull Crm crm, @NotNull Mode mode) {
+        super(crm, Activity.class, mode, ActivitiesView::defineActivitiesGrid, crm.activities());
     }
 
     public static void defineActivitiesGrid(@NotNull Grid<Activity> grid) {
@@ -51,22 +50,23 @@ public class ActivitiesView extends CrmEntitiesView<Activity> {
     }
 
     @Override
-    protected void registerTabs(@NotNull TabsComponent tabs, @NotNull CrudForm.Operation operation, Activity entity) {
+    protected void registerTabs(@NotNull TabsComponent tabs, @NotNull Mode mode, Activity entity) {
         Activity workedOn = (entity != null) ? entity : create();
-        tabs.add(new Tab("Overview"), createOverallView(operation, workedOn));
-        tabs.add(new Tab("Comments"), new CommentsView(workedOn));
-        tabs.add(new Tab("Tags"), new TagsView(workedOn, crm().tagTypeRegistry()));
+        tabs.add(new Tab("Overview"), createOverallView(mode, workedOn));
+        tabs.add(new Tab("Comments"), new CommentsView(mode, workedOn));
+        tabs.add(new Tab("Tags"), new TagsView(mode, workedOn, crm().tagTypeRegistry()));
     }
 
     @Override
-    protected FormLayout createOverallView(@NotNull Operation operation, @NotNull Activity entity) {
+    protected FormLayout createOverallView(@NotNull Mode mode, @NotNull Activity entity) {
         String username = (String) VaadinUtils.getAttribute(this, "username");
         Optional<Subject> myself = crm().subjects().findBy(Subject::id, username);
         // TODO: wait on Jetty 10.0 which do not include Jakarta Mail
-//        ImapSession imapSession = new ImapSession(myself.get().gmailUsername(), myself.get().gmailPassword());
+        //        ImapSession imapSession = new ImapSession(myself.get().gmailUsername(), myself.get().gmailPassword());
 
-        boolean readonly = Operation.isReadOnly(operation);
+        boolean readonly = Mode.readOnly(mode);
         EntityField entityField = new EntityField();
+        entityField.setReadOnly(readonly);
         IntegerField durationInMinutes = new IntegerField("Duration in Minutes", "duration (minutes)");
 
         CodeType<ActivityCode> activityCodeType = CodeType.of(ActivityCode.class);
@@ -81,10 +81,10 @@ public class ActivitiesView extends CrmEntitiesView<Activity> {
         emails.setEmptySelectionAllowed(true);
         List<String> emailIds = Activity.emailIds(entity.details());
         emails.addValueChangeListener(event -> {
-//            List<Object> multiparts = imapSession.selectTextPartsFrom((String)event.getValue());
-//            if (!multiparts.isEmpty()) {
-//                email.setValue((String) multiparts.get(0));
-//            }
+            //            List<Object> multiparts = imapSession.selectTextPartsFrom((String)event.getValue());
+            //            if (!multiparts.isEmpty()) {
+            //                email.setValue((String) multiparts.get(0));
+            //            }
         });
         if (!emailIds.isEmpty()) {
             emails.setItems(emailIds);

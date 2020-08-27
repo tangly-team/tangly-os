@@ -29,8 +29,8 @@ public class InvoicesView extends ExternalEntitiesView<Invoice> {
     private final TextField name;
     private final TextArea text;
 
-    public InvoicesView(@NotNull Provider<Invoice> provider) {
-        super(Invoice.class, Mode.EDITABLE, InvoicesView::defineInvoicesGrid, provider);
+    public InvoicesView(@NotNull Provider<Invoice> provider, @NotNull Mode mode) {
+        super(Invoice.class, mode, InvoicesView::defineInvoicesGrid, provider);
         id = VaadinUtils.createTextField("Id", "id");
         name = VaadinUtils.createTextField("Name", "name");
         text = new TextArea("Text", "text");

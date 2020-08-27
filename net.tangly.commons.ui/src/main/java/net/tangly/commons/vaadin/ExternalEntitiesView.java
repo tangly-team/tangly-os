@@ -73,28 +73,23 @@ public abstract class ExternalEntitiesView<T extends HasId> extends Crud<T> impl
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);
         switch (operation) {
-            case VIEW:
-            case UPDATE:
-            case DELETE:
+            case VIEW, UPDATE, DELETE -> {
                 id.setReadOnly(true);
                 id.setEnabled(false);
-                break;
-            case CREATE:
+            }
+            case CREATE -> {
                 id.setReadOnly(false);
                 id.setEnabled(true);
-                break;
+            }
         }
         return prefillFrom(operation, entity, form);
     }
 
     @Override
-    public T formCompleted(Operation operation, T entity) {
-        switch (operation) {
-            case UPDATE:
-            case CREATE:
-                T created = create();
-                return created;
-        }
-        return entity;
+    public T formCompleted(@NotNull Operation operation, T entity) {
+        return switch (operation) {
+            case UPDATE, CREATE -> create();
+            default -> entity;
+        };
     }
 }

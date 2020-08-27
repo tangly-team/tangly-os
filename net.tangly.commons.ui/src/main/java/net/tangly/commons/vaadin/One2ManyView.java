@@ -83,9 +83,9 @@ public class One2ManyView<T extends Entity> extends VerticalLayout {
         insert = new Button("Add", VaadinIcon.PLUS.create(), event -> displayDialog(CrudForm.Operation.CREATE));
         remove = new Button("Delete", VaadinIcon.TRASH.create(), event -> displayDialog(CrudForm.Operation.DELETE));
 
-        update.setEnabled(mode == Crud.Mode.EDITABLE);
-        insert.setEnabled(mode == Crud.Mode.EDITABLE);
-        remove.setEnabled(mode == Crud.Mode.EDITABLE);
+        update.setEnabled(Crud.Mode.canUpdate(mode));
+        insert.setEnabled(Crud.Mode.canAdd(mode));
+        remove.setEnabled(Crud.Mode.canDelete(mode));
 
         HorizontalLayout actions = new HorizontalLayout();
         actions.add(insert, remove, update, details);

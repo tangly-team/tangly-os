@@ -9,8 +9,8 @@ import net.tangly.commons.vaadin.InternalEntitiesView;
 import org.jetbrains.annotations.NotNull;
 
 public class ProjectsView extends InternalEntitiesView<Project> {
-    public ProjectsView(@NotNull List<Project> items, Provider<Project> provider, TagTypeRegistry registry) {
-        super(Project.class, InternalEntitiesView::defineGrid, provider, registry);
+    public ProjectsView(@NotNull List<Project> items, @NotNull Mode mode, Provider<Project> provider, TagTypeRegistry registry) {
+        super(Project.class, mode, InternalEntitiesView::defineGrid, provider, registry);
     }
 
     @Override

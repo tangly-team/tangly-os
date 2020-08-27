@@ -26,7 +26,6 @@ import net.tangly.bus.codes.CodeType;
 import net.tangly.bus.crm.Interaction;
 import net.tangly.bus.crm.InteractionCode;
 import net.tangly.commons.vaadin.CommentsView;
-import net.tangly.commons.vaadin.CrudForm;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.TabsComponent;
@@ -37,8 +36,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class InteractionsView extends CrmEntitiesView<Interaction> {
     public static final BigDecimal HUNDRED = new BigDecimal("100");
-    public InteractionsView(@NotNull Crm crm) {
-        super(crm, Interaction.class, InteractionsView::defineInteractionsGrid, crm.interactions());
+    public InteractionsView(@NotNull Crm crm,@NotNull Mode mode) {
+        super(crm, Interaction.class, mode, InteractionsView::defineInteractionsGrid, crm.interactions());
     }
 
     public static void defineInteractionsGrid(@NotNull Grid<Interaction> grid) {
@@ -53,16 +52,16 @@ public class InteractionsView extends CrmEntitiesView<Interaction> {
     }
 
     @Override
-    protected void registerTabs(@NotNull TabsComponent tabs, @NotNull CrudForm.Operation operation, Interaction entity) {
+    protected void registerTabs(@NotNull TabsComponent tabs, @NotNull Mode mode, Interaction entity) {
         Interaction workedOn = (entity != null) ? entity : create();
-        tabs.add(new Tab("Overview"), createOverallView(operation, workedOn));
-        tabs.add(new Tab("Comments"), new CommentsView(workedOn));
-        tabs.add(new Tab("Tags"), new TagsView(workedOn, crm().tagTypeRegistry()));
+        tabs.add(new Tab("Overview"), createOverallView(mode, workedOn));
+        tabs.add(new Tab("Comments"), new CommentsView(mode,workedOn));
+        tabs.add(new Tab("Tags"), new TagsView(mode,workedOn, crm().tagTypeRegistry()));
     }
 
     @Override
-    protected FormLayout createOverallView(@NotNull Operation operation, @NotNull Interaction entity) {
-        boolean readonly = Operation.isReadOnly(operation);
+    protected FormLayout createOverallView(@NotNull Mode mode, @NotNull Interaction entity) {
+        boolean readonly = Mode.readOnly(mode);
         EntityField entityField = new EntityField();
         TextField potential = VaadinUtils.createTextField("Potential", "potential");
         TextField probability = VaadinUtils.createTextField("Probability", "probability");

@@ -77,15 +77,15 @@ public class MainView extends VerticalLayout {
         ledgerWorkflows.importLedger(Paths.get("/Users/Shared/tangly/"));
         ledger = ledgerWorkflows.ledger();
 
-        naturalEntitiesView = new NaturalEntitiesView(crm);
-        legalEntitiesView = new LegalEntitiesView(crm);
-        employeesView = new EmployeesView(crm);
-        contractsView = new ContractsView(crm);
-        productsView = new ProductsView(crm.products());
-        invoicesView = new InvoicesView(crm.invoices());
-        interactionsView = new InteractionsView(crm);
-        activitiesView = new ActivitiesView(crm);
-        subjectsView = new SubjectsView(crm);
+        naturalEntitiesView = new NaturalEntitiesView(crm, Crud.Mode.EDITABLE);
+        legalEntitiesView = new LegalEntitiesView(crm, Crud.Mode.EDITABLE);
+        employeesView = new EmployeesView(crm, Crud.Mode.EDITABLE);
+        contractsView = new ContractsView(crm, Crud.Mode.EDITABLE);
+        productsView = new ProductsView(crm.products(), Crud.Mode.EDITABLE);
+        invoicesView = new InvoicesView(crm.invoices(), Crud.Mode.EDITABLE);
+        interactionsView = new InteractionsView(crm, Crud.Mode.EDITABLE);
+        activitiesView = new ActivitiesView(crm, Crud.Mode.EDITABLE);
+        subjectsView = new SubjectsView(crm, Crud.Mode.EDITABLE);
         accountsView = new AccountsView(ledger, Crud.Mode.EDITABLE);
         transactionsView = new TransactionsView(ledger, Crud.Mode.EDITABLE);
         tagTypesView = new TagTypesView(crm.tagTypeRegistry());

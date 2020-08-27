@@ -36,8 +36,8 @@ public class ProductsView extends ExternalEntitiesView<Product> {
      *
      * @param provider provider of the class
      */
-    public ProductsView(@NotNull Provider<Product> provider) {
-        super(Product.class, Mode.IMMUTABLE, ProductsView::defineProductsView, provider);
+    public ProductsView(@NotNull Provider<Product> provider, @NotNull Mode mode) {
+        super(Product.class, mode, ProductsView::defineProductsView, provider);
         name = VaadinUtils.createTextField("Name", "name");
         text = VaadinUtils.createTextField("Text", "text");
         unit = VaadinUtils.createTextField("Unit", "unit");

@@ -30,7 +30,7 @@ public class AccountsView extends ExternalEntitiesView<Account> {
      * Constructor of the CRUD view for sccounts of the ledger.
      *
      * @param ledger ledger which accounts should be displayed
-     * @param mode
+     * @param mode mode of the view
      */
     public AccountsView(@NotNull Ledger ledger, @NotNull Mode mode) {
         super(Account.class, mode, AccountsView::defineAccountsView, RecordProviderInMemory.of((Collection)ledger.accounts()));

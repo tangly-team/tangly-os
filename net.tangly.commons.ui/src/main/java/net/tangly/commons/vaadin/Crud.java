@@ -40,10 +40,14 @@ import org.jetbrains.annotations.NotNull;
  */
 public class Crud<T> extends VerticalLayout {
     /**
-     * Define the different edition modes of the CRUD component.
+     * Define the different edition modes of the CRUD component. The mode has an impact on the displayed fields and the buttons.
      */
     public enum Mode {
         EDITABLE, RECORD_EDITABLE, IMMUTABLE, AUDITABLE, READONLY;
+
+        public static boolean readOnly(@NotNull Mode mode) {
+            return (mode == READONLY) || (mode == AUDITABLE);
+        }
 
         static boolean canUpdate(@NotNull Mode mode) {
             return (mode == EDITABLE);
@@ -76,26 +80,62 @@ public class Crud<T> extends VerticalLayout {
         this.grid = new Grid<>(entityClass, false);
 
         grid.setDataProvider(dataProvider);
-        grid.asSingleSelect().addValueChangeListener(event -> selectItem(event.getValue()));
+        grid.asSingleSelect().addValueChangeListener(event -> selectedItem(event.getValue()));
         grid.setMinHeight("20em");
         grid.setWidthFull();
         gridConfigurator.accept(grid);
 
         setSizeFull();
         addAndExpand(grid, createCrudButtons());
-        selectItem(null);
+        selectedItem(null);
+    }
+
+    /**
+     * Maps a form operation to a compatible mode for the view. This mapping is needed when a view is displayed inside a form.
+     *
+     * @param operation form operation requested by user
+     * @return mode of the view compatible with the form operation
+     */
+    public static Mode of(CrudForm.Operation operation) {
+        return switch (operation) {
+            case VIEW, DELETE, CANCEL, SELECT -> Mode.READONLY;
+            case UPDATE, CREATE -> Mode.EDITABLE;
+        };
     }
 
     public void refreshData() {
         grid.getDataProvider().refreshAll();
     }
 
+    /**
+     * Return the selected item of the view
+     *
+     * @return selecgted item
+     * @see #selectedItem(Object)
+     */
     public T selectedItem() {
         return selectedItem;
     }
 
-    public void selectedItem(T selectedItem) {
-        this.selectedItem = selectedItem;
+    /**
+     * Select programmatically the item in the grid and update the grid and the state of the buttons associated with the view.
+     *
+     * @param item new selected item in the grid
+     * @see #selectedItem()
+     */
+    public void selectedItem(T item) {
+        selectedItem = item;
+        if (selectedItem != null) {
+            details.setEnabled(true);
+            add.setEnabled(Mode.canAdd(mode));
+            update.setEnabled(Mode.canUpdate(mode));
+            delete.setEnabled(Mode.canDelete(mode));
+        } else {
+            details.setEnabled(false);
+            add.setEnabled(Mode.canAdd(mode));
+            update.setEnabled(false);
+            delete.setEnabled(false);
+        }
     }
 
     protected void initialize(@NotNull CrudForm<T> form, @NotNull CrudActionsListener<T> actionsListener) {
@@ -128,27 +168,12 @@ public class Crud<T> extends VerticalLayout {
 
     private void displayDialog(CrudForm.Operation operation) {
         Dialog dialog = new Dialog();
-        dialog.setCloseOnEsc(false);
+        dialog.setCloseOnEsc(true);
         dialog.setCloseOnOutsideClick(false);
         dialog.setModal(false);
         dialog.setResizable(true);
         dialog.add(new VerticalLayout(form.createForm(operation, operation != CrudForm.Operation.CREATE ? selectedItem : null), new HtmlComponent("br"),
                 CrudForm.createFormButtons(dialog, form, operation, selectedItem(), actionsListener)));
         dialog.open();
-    }
-
-    protected void selectItem(T item) {
-        selectedItem = item;
-        if (item != null) {
-            details.setEnabled(true);
-            add.setEnabled(Mode.canAdd(mode));
-            update.setEnabled(Mode.canUpdate(mode));
-            delete.setEnabled(Mode.canDelete(mode));
-        } else {
-            details.setEnabled(false);
-            add.setEnabled(Mode.canAdd(mode));
-            update.setEnabled(false);
-            delete.setEnabled(false);
-        }
     }
 }

@@ -38,8 +38,8 @@ public class CommentsView extends Crud<Comment> implements CrudForm<Comment> {
     private final TextField author;
     private final TextArea text;
 
-    public CommentsView(@NotNull HasComments entity) {
-        super(Comment.class, Mode.IMMUTABLE, CommentsView::defineGrid, new ListDataProvider<>(entity.comments()));
+    public CommentsView(@NotNull Mode mode, @NotNull HasComments entity) {
+        super(Comment.class, mode, CommentsView::defineGrid, new ListDataProvider<>(entity.comments()));
         initialize(this, new GridActionsListener<>(grid().getDataProvider(), this::selectedItem));
         this.hasComments = entity;
         created = new DateTimePicker("Created");
@@ -57,7 +57,7 @@ public class CommentsView extends Crud<Comment> implements CrudForm<Comment> {
     }
 
     @Override
-    public FormLayout createForm(Operation operation, Comment entity) {
+    public FormLayout createForm(@NotNull Operation operation, Comment entity) {
         boolean readonly = Operation.isReadOnly(operation);
 
         created.setReadOnly(readonly);
@@ -88,9 +88,17 @@ public class CommentsView extends Crud<Comment> implements CrudForm<Comment> {
     }
 
     @Override
-    public Comment formCompleted(Operation operation, Comment entity) {
+    public Comment formCompleted(@NotNull Operation operation, Comment entity) {
         return switch (operation) {
-            case CREATE -> create();
+            case CREATE -> {
+                Comment comment = create();
+                hasComments.add(comment);
+                yield comment;
+            }
+            case DELETE -> {
+                hasComments.remove(entity);
+                yield entity;
+            }
             default -> entity;
         };
     }

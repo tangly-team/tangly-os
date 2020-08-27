@@ -13,21 +13,19 @@
 
 package net.tangly.commons.vaadin;
 
-import com.vaadin.flow.component.AbstractCompositeField;
-import com.vaadin.flow.component.HasValue;
 import com.vaadin.flow.component.HtmlComponent;
+import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.details.Details;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import net.tangly.bus.core.Entity;
 import org.jetbrains.annotations.NotNull;
 
-public class EntityField extends AbstractCompositeField<VerticalLayout, EntityField, Entity> {
+public class EntityField extends CustomField<Entity> {
     private boolean readonly;
     private final TextField oid;
     private final TextField id;
@@ -54,7 +52,24 @@ public class EntityField extends AbstractCompositeField<VerticalLayout, EntityFi
         form.add(new HorizontalLayout(fromDate, toDate));
         form.add(new HtmlComponent("br"), 3);
         form.add(textDetails, 3);
-        getContent().add(form);
+        add(form);
+    }
+
+    @Override
+    protected Entity generateModelValue() {
+        return null;
+    }
+
+    @Override
+    protected void setPresentationValue(Entity entity) {
+        if (entity == null) {
+            oid.clear();
+            id.clear();
+            name.clear();
+            fromDate.clear();
+            toDate.clear();
+            text.clear();
+        }
     }
 
     public <T extends Entity> void bind(@NotNull Binder<T> binder) {
@@ -71,14 +86,12 @@ public class EntityField extends AbstractCompositeField<VerticalLayout, EntityFi
     }
 
     @Override
-    protected void setPresentationValue(Entity entity) {
-        if (entity == null) {
-            getChildren().filter(HasValue.class::isInstance).map(HasValue.class::cast).forEach(HasValue::clear);
-        }
-    }
-
-    @Override
     public void setReadOnly(boolean readOnly) {
-        VaadinUtils.setReadOnly(this, readOnly);
+        oid.setReadOnly(readOnly);
+        id.setReadOnly(readOnly);
+        name.setReadOnly(readOnly);
+        fromDate.setReadOnly(readOnly);
+        toDate.setReadOnly(readOnly);
+        text.setReadOnly(readOnly);
     }
 }

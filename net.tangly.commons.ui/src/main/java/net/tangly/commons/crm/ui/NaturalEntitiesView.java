@@ -26,7 +26,6 @@ import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.bus.providers.ProviderView;
 import net.tangly.commons.vaadin.CommentsView;
-import net.tangly.commons.vaadin.CrudForm;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.One2ManyView;
@@ -37,8 +36,8 @@ import net.tangly.crm.ports.Crm;
 import org.jetbrains.annotations.NotNull;
 
 public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
-    public NaturalEntitiesView(@NotNull Crm crm) {
-        super(crm, NaturalEntity.class, NaturalEntitiesView::defineNaturalEntityGrid, crm.naturalEntities());
+    public NaturalEntitiesView(@NotNull Crm crm, @NotNull Mode mode) {
+        super(crm, NaturalEntity.class, mode, NaturalEntitiesView::defineNaturalEntityGrid, crm.naturalEntities());
     }
 
     public static void defineNaturalEntityGrid(@NotNull Grid<NaturalEntity> grid) {
@@ -52,25 +51,26 @@ public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
         VaadinUtils.initialize(grid);
         grid.addColumn(Employee::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(o -> o.organization().name()).setKey("organization").setHeader("Organization").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(o -> o.tag(CrmTags.CRM_EMPLOYEE_TITLE).orElse(null)).setKey("title").setHeader("Title").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(o -> o.tag(CrmTags.CRM_EMPLOYEE_TITLE).orElse(null)).setKey("title").setHeader("Title").setAutoWidth(true).setResizable(true)
+                .setSortable(true);
         grid.addColumn(Employee::fromDate).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Employee::toDate).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
     }
 
     @Override
-    protected void registerTabs(@NotNull TabsComponent tabs, @NotNull CrudForm.Operation operation, NaturalEntity entity) {
+    protected void registerTabs(@NotNull TabsComponent tabs, @NotNull Mode mode, NaturalEntity entity) {
         NaturalEntity workedOn = (entity != null) ? entity : create();
-        tabs.add(new Tab("Overview"), createOverallView(operation, workedOn));
-        tabs.add(new Tab("Comments"), new CommentsView(workedOn));
-        tabs.add(new Tab("Tags"), new TagsView(workedOn, crm().tagTypeRegistry()));
-        One2ManyView<Employee> employees = new One2ManyView<>(Employee.class, Mode.EDITABLE, NaturalEntitiesView::defineOne2ManyEmployees,
-                ProviderView.of(crm().employees(), o -> entity.oid() == o.person().oid()), new EmployeesView(crm()));
+        tabs.add(new Tab("Overview"), createOverallView(mode, workedOn));
+        tabs.add(new Tab("Comments"), new CommentsView(mode, workedOn));
+        tabs.add(new Tab("Tags"), new TagsView(mode, workedOn, crm().tagTypeRegistry()));
+        One2ManyView<Employee> employees = new One2ManyView<>(Employee.class, mode, NaturalEntitiesView::defineOne2ManyEmployees,
+                ProviderView.of(crm().employees(), o -> entity.oid() == o.person().oid()), new EmployeesView(crm(), mode));
         tabs.add(new Tab("Employees"), employees);
     }
 
     @Override
-    protected FormLayout createOverallView(@NotNull Operation operation, @NotNull NaturalEntity entity) {
-        boolean readonly = Operation.isReadOnly(operation);
+    protected FormLayout createOverallView(@NotNull Mode mode, @NotNull NaturalEntity entity) {
+        boolean readonly = Mode.readOnly(mode);
         EntityField entityField = new EntityField();
         TextField firstname = VaadinUtils.createTextField("Firstname", "firstname", false);
         TextField lastname = VaadinUtils.createTextField("Lastname", "lastname", false);
