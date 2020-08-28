@@ -44,6 +44,7 @@ public class SubjectsView extends CrmEntitiesView<Subject> {
     protected FormLayout createOverallView(@NotNull Mode mode, @NotNull Subject entity) {
         boolean readonly = Mode.readOnly(mode);
         EntityField entityField = new EntityField();
+        entityField.setReadOnly(readonly);
         One2OneField<NaturalEntity, NaturalEntitiesView> user = new One2OneField<>("User", new NaturalEntitiesView(crm(), mode));
 
         FormLayout form = new FormLayout();
@@ -51,6 +52,7 @@ public class SubjectsView extends CrmEntitiesView<Subject> {
         form.add(entityField);
         form.add(new HtmlComponent("br"));
         EmailField gravatarEmail = new EmailField("Avatar Email");
+        gravatarEmail.setReadOnly(readonly);
         gravatarEmail.setClearButtonVisible(true);
 
         Image image = new Image(new StreamResource("avatar.jpg", () -> new ByteArrayInputStream(entity.avatar())), "avatar");

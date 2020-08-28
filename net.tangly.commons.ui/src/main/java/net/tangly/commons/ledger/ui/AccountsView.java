@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class AccountsView extends ExternalEntitiesView<Account> {
     /**
-     * Constructor of the CRUD view for sccounts of the ledger.
+     * Constructor of the CRUD view for accounts of the ledger.
      *
      * @param ledger ledger which accounts should be displayed
      * @param mode mode of the view

@@ -89,7 +89,6 @@ public class PropertyJson<T extends HasOid, V> extends PropertySimple<T> {
 
     @Override
     public <P, V> void set(@NotNull T entity, V value, @NotNull ConverterType type) throws PrivilegedActionException {
-        Function<V, P> convert = getConverter(type);
         List<V> items = (List<V>) fromJson((String) value, referenceType);
         Collection<V> collection = (Collection<V>) ReflectionUtilities.get(entity, field());
         collection.clear();

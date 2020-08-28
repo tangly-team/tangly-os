@@ -27,8 +27,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The ledger implements a ledger with a chart of accounts and a set of transactions. It provides the logic for the automatic processing of VAT
- * amounts and related bookings to the VAT related accounts.
+ * The ledger implements a ledger with a chart of accounts and a set of transactions. It provides the logic for the automatic processing of VAT amounts and
+ * related bookings to the VAT related accounts.
  */
 public class Ledger {
     private static final Logger logger = LoggerFactory.getLogger(Ledger.class);
@@ -55,6 +55,7 @@ public class Ledger {
     public List<Transaction> transactions() {
         return Collections.unmodifiableList(journal);
     }
+
     public List<Transaction> transactions(LocalDate from, LocalDate to) {
         return journal.stream().filter(o -> (o.date().isAfter(from) || o.date().equals(from)) && (o.date().isBefore(to) || o.date().isEqual(to)))
                 .collect(Collectors.toUnmodifiableList());
@@ -64,11 +65,11 @@ public class Ledger {
         return Collections.unmodifiableList(accounts);
     }
 
-    public Optional<Account> getAccountBy(String id) {
+    public Optional<Account> accountBy(String id) {
         return accounts.stream().filter(o -> id.equals(o.id())).findAny();
     }
 
-    public List<Account> getAccountsOwnedBy(String id) {
+    public List<Account> accountsOwnedBy(String id) {
         return accounts.stream().filter(o -> id.equals(o.ownedBy())).collect(Collectors.toUnmodifiableList());
     }
 
@@ -77,8 +78,8 @@ public class Ledger {
     }
 
     /**
-     * Adds a transaction to the ledger and the referenced accounts. A warning message is written to the log file if one of the involved accounts is
-     * not registered in the ledger. The involved accounts cannot be aggregate accounts.
+     * Adds a transaction to the ledger and the referenced accounts. A warning message is written to the log file if one of the involved accounts is not
+     * registered in the ledger. The involved accounts cannot be aggregate accounts.
      *
      * @param transaction transaction to add to the ledger
      */
@@ -93,8 +94,7 @@ public class Ledger {
             splits.add(new AccountEntry(credit.accountId(), credit.date(), credit.amount().subtract(vatDue), credit.text(), false, credit.tags()));
             splits.add(new AccountEntry("2201", credit.date(), vatDue, null, false));
             booked = new Transaction(transaction.date(), transaction.debitAccount(), null, transaction.amount(), splits, transaction.text(),
-                    transaction.reference()
-            );
+                    transaction.reference());
         }
         journal.add(booked);
         booked.debitSplits().forEach(this::bookEntry);
@@ -112,7 +112,7 @@ public class Ledger {
     }
 
     private void bookEntry(@NotNull AccountEntry entry) {
-        Optional<Account> account = getAccountBy(entry.accountId());
+        Optional<Account> account = accountBy(entry.accountId());
         if (account.isEmpty()) {
             logger.atError().log("account {} for entry with amount {} booked {} is undefined", entry.accountId(), entry.amount(), entry.date());
         }
@@ -122,9 +122,8 @@ public class Ledger {
     // region VAT-computations
 
     public BigDecimal computeVatSales(LocalDate from, LocalDate to) {
-        return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream())
-                .filter(o -> o.findBy(AccountEntry.FINANCE, AccountEntry.VAT).isPresent()).map(AccountEntry::amount).reduce(BigDecimal::add)
-                .orElse(BigDecimal.ZERO);
+        return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).filter(o -> o.findBy(AccountEntry.FINANCE, AccountEntry.VAT).isPresent())
+                .map(AccountEntry::amount).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
     }
 
     public BigDecimal computeVat(LocalDate from, LocalDate to) {
@@ -136,10 +135,9 @@ public class Ledger {
     }
 
     public BigDecimal computeDueVat(LocalDate from, LocalDate to) {
-        Optional<Account> account = getAccountBy("2201");
-        return account
-                .map(value -> value.getEntriesFor(from, to).stream().filter(AccountEntry::isCredit).map(AccountEntry::amount).reduce(BigDecimal::add)
-                        .orElse(BigDecimal.ZERO)).orElse(BigDecimal.ZERO);
+        Optional<Account> account = accountBy("2201");
+        return account.map(value -> value.getEntriesFor(from, to).stream().filter(AccountEntry::isCredit).map(AccountEntry::amount).reduce(BigDecimal::add)
+                .orElse(BigDecimal.ZERO)).orElse(BigDecimal.ZERO);
     }
 
     // endregion

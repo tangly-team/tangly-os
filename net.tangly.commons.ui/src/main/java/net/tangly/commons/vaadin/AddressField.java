@@ -63,13 +63,7 @@ public class AddressField extends CustomField<Address> {
     @Override
     protected void setPresentationValue(Address address) {
         if (address == null) {
-            street.clear();
-            extended.clear();
-            poBox.clear();
-            postcode.clear();
-            locality.clear();
-            region.clear();
-            country.clear();
+            clear();
         } else {
             VaadinUtils.setValue(street, address.street());
             VaadinUtils.setValue(extended, address.extended());
@@ -91,5 +85,17 @@ public class AddressField extends CustomField<Address> {
         locality.setReadOnly(readOnly);
         region.setReadOnly(readOnly);
         country.setReadOnly(readOnly);
+    }
+    
+    @Override
+    public void clear() {
+        super.clear();
+        street.clear();
+        extended.clear();
+        poBox.clear();
+        postcode.clear();
+        locality.clear();
+        region.clear();
+        country.clear();
     }
 }

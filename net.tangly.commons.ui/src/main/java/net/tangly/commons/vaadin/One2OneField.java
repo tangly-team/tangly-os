@@ -62,9 +62,7 @@ public class One2OneField<T extends HasOid & HasQualifiers, V extends Component 
     @Override
     protected void setPresentationValue(T one2one) {
         if (one2one == null) {
-            oid.clear();
-            id.clear();
-            name.clear();
+            clear();
         } else {
             VaadinUtils.setValue(oid, Long.toString(one2one.oid()));
             VaadinUtils.setValue(id, one2one.id());
@@ -76,6 +74,14 @@ public class One2OneField<T extends HasOid & HasQualifiers, V extends Component 
     public void setReadOnly(boolean readOnly) {
         super.setReadOnly(readOnly);
         update.setEnabled(!isReadOnly());
+    }
+
+    @Override
+    public void clear() {
+        super.clear();
+        oid.clear();
+        id.clear();
+        name.clear();
     }
 
     private void displayRelationships() {

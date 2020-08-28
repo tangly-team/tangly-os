@@ -28,6 +28,7 @@ import com.vaadin.flow.theme.material.Material;
 import net.tangly.bus.ledger.Ledger;
 import net.tangly.commons.bus.ui.TagTypesView;
 import net.tangly.commons.crm.ui.ActivitiesView;
+import net.tangly.commons.crm.ui.AnalyticsCrmView;
 import net.tangly.commons.crm.ui.ContractsView;
 import net.tangly.commons.crm.ui.EmployeesView;
 import net.tangly.commons.crm.ui.InteractionsView;
@@ -66,6 +67,8 @@ public class MainView extends VerticalLayout {
     private final AccountsView accountsView;
     private final TransactionsView transactionsView;
 
+    private final AnalyticsCrmView analyticsCrmView;
+
     private final TagTypesView tagTypesView;
 
     public MainView() {
@@ -88,6 +91,7 @@ public class MainView extends VerticalLayout {
         subjectsView = new SubjectsView(crm, Crud.Mode.EDITABLE);
         accountsView = new AccountsView(ledger, Crud.Mode.EDITABLE);
         transactionsView = new TransactionsView(ledger, Crud.Mode.EDITABLE);
+        analyticsCrmView = new AnalyticsCrmView(crm, ledger);
         tagTypesView = new TagTypesView(crm.tagTypeRegistry());
 
         setSizeFull();
@@ -126,6 +130,10 @@ public class MainView extends VerticalLayout {
         SubMenu ledgerSubMenu = ledger.getSubMenu();
         ledgerSubMenu.addItem("Accounts", e -> select(accountsView));
         ledgerSubMenu.addItem("Transactions", e -> select(transactionsView));
+
+        MenuItem analytics = menuBar.addItem("Analytics");
+        SubMenu analyticsSubMenu = analytics.getSubMenu();
+        analyticsSubMenu.addItem("Turnovers", e -> select(analyticsCrmView));
 
         MenuItem admin = menuBar.addItem("Admin");
         SubMenu adminSubmenu = admin.getSubMenu();

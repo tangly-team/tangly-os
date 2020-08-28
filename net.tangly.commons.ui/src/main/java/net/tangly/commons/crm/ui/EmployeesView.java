@@ -36,7 +36,7 @@ public class EmployeesView extends CrmEntitiesView<Employee> {
         InternalEntitiesView.defineGrid(grid);
         grid.addColumn(e -> e.person().name()).setKey("person").setHeader("Person").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.organization().name()).setKey("organization").setHeader("Organization").setSortable(true).setAutoWidth(true).setResizable(true);
-        grid.addColumn(e -> e.tag(CrmTags.CRM_EMPLOYEE_TITLE).orElse("")).setKey("titel").setHeader("Title").setSortable(true).setAutoWidth(true)
+        grid.addColumn(e -> e.tag(CrmTags.CRM_EMPLOYEE_TITLE).orElse("")).setKey("title").setHeader("Title").setSortable(true).setAutoWidth(true)
                 .setResizable(true);
     }
 

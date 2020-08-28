@@ -41,7 +41,7 @@ public class BankConnectionField extends CustomField<BankConnection> {
     public Validator<BankConnection> validator() {
         return Validator.from(e -> e.iban() != null, "IBAN number is invalid", ErrorLevel.ERROR);
         //         .andThen(Validator.<BankConnection>from(e -> e.bic() != null, "bic should not be null", ErrorLevel.INFO));
-        //         .andThen(Validator.<BankConnection>from(e -> e.institute() != null, "institude should not be null", ErrorLevel.INFO));
+        //         .andThen(Validator.<BankConnection>from(e -> e.institute() != null, "institute should not be null", ErrorLevel.INFO));
     }
 
     @Override
@@ -52,9 +52,7 @@ public class BankConnectionField extends CustomField<BankConnection> {
     @Override
     protected void setPresentationValue(BankConnection connection) {
         if (connection == null) {
-            iban.clear();
-            institute.clear();
-            bic.clear();
+            clear();
         } else {
             VaadinUtils.setValue(iban, connection.iban());
             VaadinUtils.setValue(institute, connection.institute());
@@ -68,5 +66,12 @@ public class BankConnectionField extends CustomField<BankConnection> {
         iban.setReadOnly(readOnly);
         institute.setReadOnly(readOnly);
         bic.setReadOnly(readOnly);
+    }
+
+    @Override
+    public void clear() {
+        iban.clear();
+        institute.clear();
+        bic.clear();
     }
 }

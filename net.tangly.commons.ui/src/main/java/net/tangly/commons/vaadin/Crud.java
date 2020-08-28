@@ -110,7 +110,7 @@ public class Crud<T> extends VerticalLayout {
     /**
      * Return the selected item of the view
      *
-     * @return selecgted item
+     * @return selected item
      * @see #selectedItem(Object)
      */
     public T selectedItem() {

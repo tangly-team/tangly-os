@@ -33,7 +33,7 @@ import org.jetbrains.annotations.NotNull;
  * supported:
  * <ul>
  *     <li>View the list of one2many entities. The columns of the grid can be tailored through the gridConfigurator parameter. The default configuration
- *     displays the object identifer, external identifier and name.</li>
+ *     displays the object identifier, external identifier and name.</li>
  *     <li>View the details of the selected entity and close the view. </li>
  *     <li>View the details of the selected entity and remove it for the list of referenced entities. The view is readonly.</li>
  *     <li>Update the details of the selected entity.</li>

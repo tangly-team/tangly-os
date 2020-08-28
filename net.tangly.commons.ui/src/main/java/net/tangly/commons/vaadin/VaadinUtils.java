@@ -60,11 +60,11 @@ public final class VaadinUtils {
         layout.setResponsiveSteps(new FormLayout.ResponsiveStep("25em", 1), new FormLayout.ResponsiveStep("32em", 2), new FormLayout.ResponsiveStep("40em", 3));
     }
 
-    public static <T extends Composite & HasValue> void clear(T composite) {
+    public static <T extends Composite<?> & HasValue> void clear(T composite) {
         composite.getChildren().filter(HasValue.class::isInstance).map(HasValue.class::cast).forEach(e -> ((HasValue<?, ?>) e).clear());
     }
 
-    public static <T extends Composite & HasValue> void setReadOnly(T composite, boolean readOnly) {
+    public static <T extends Composite<?> & HasValue> void setReadOnly(T composite, boolean readOnly) {
         composite.setReadOnly(readOnly);
         composite.getChildren().filter(HasValue.class::isInstance).map(HasValue.class::cast).forEach(e -> ((HasValue<?, ?>) e).setReadOnly(readOnly));
     }

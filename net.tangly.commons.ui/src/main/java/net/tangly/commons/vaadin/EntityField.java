@@ -56,12 +56,7 @@ public class EntityField extends CustomField<Entity> {
     @Override
     protected void setPresentationValue(Entity entity) {
         if (entity == null) {
-            oid.clear();
-            id.clear();
-            name.clear();
-            fromDate.clear();
-            toDate.clear();
-            text.clear();
+            clear();
         }
     }
 
@@ -80,11 +75,23 @@ public class EntityField extends CustomField<Entity> {
 
     @Override
     public void setReadOnly(boolean readOnly) {
+        super.setReadOnly(readOnly);
         oid.setReadOnly(readOnly);
         id.setReadOnly(readOnly);
         name.setReadOnly(readOnly);
         fromDate.setReadOnly(readOnly);
         toDate.setReadOnly(readOnly);
         text.setReadOnly(readOnly);
+    }
+
+    @Override
+    public void clear() {
+        super.clear();
+        oid.clear();
+        id.clear();
+        name.clear();
+        fromDate.clear();
+        toDate.clear();
+        text.clear();
     }
 }

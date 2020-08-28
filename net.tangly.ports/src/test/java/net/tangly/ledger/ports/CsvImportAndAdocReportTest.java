@@ -41,17 +41,16 @@ public class CsvImportAndAdocReportTest {
         assertThat(handler.ledger().assets().isEmpty()).isFalse();
         assertThat(handler.ledger().liabilities().isEmpty()).isFalse();
         assertThat(handler.ledger().profitAndLoss().isEmpty()).isFalse();
-        assertThat(handler.ledger().getAccountBy("100").isPresent()).isTrue();
-        assertThat(handler.ledger().getAccountBy("1020").isPresent()).isTrue();
-        assertThat(handler.ledger().getAccountBy("2A").isPresent()).isTrue();
-        assertThat(handler.ledger().getAccountBy("2970").isPresent()).isTrue();
-        assertThat(handler.ledger().getAccountsOwnedBy("29A").isEmpty()).isFalse();
+        assertThat(handler.ledger().accountBy("100").isPresent()).isTrue();
+        assertThat(handler.ledger().accountBy("1020").isPresent()).isTrue();
+        assertThat(handler.ledger().accountBy("2A").isPresent()).isTrue();
+        assertThat(handler.ledger().accountBy("2970").isPresent()).isTrue();
+        assertThat(handler.ledger().accountsOwnedBy("29A").isEmpty()).isFalse();
     }
 
     @Test
     void testCsvTransactionsImport() throws IOException, URISyntaxException {
         LedgerCsvHdl handler = createLedger();
-
         Path path = Paths.get(getClass().getClassLoader().getResource("net/tangly/ledger/ports/transactions-2015-2016.csv").toURI());
         handler.importTransactionsLedgerFromBanana(path);
         assertThat(handler.ledger().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31)).isEmpty()).isFalse();

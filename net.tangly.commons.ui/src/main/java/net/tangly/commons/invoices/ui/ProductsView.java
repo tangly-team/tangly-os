@@ -50,7 +50,7 @@ public class ProductsView extends ExternalEntitiesView<Product> {
         grid.addColumn(Product::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Product::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Product::unit).setKey("unit").setHeader("Unit").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Product::unitPrice).setKey("unitPrice").setHeader("Unit Pricd").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Product::unitPrice).setKey("unitPrice").setHeader("Unit Price").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Product::vatRate).setKey("vatRate").setHeader("VAT Rate").setAutoWidth(true).setResizable(true).setSortable(true);
     }
 
