@@ -44,12 +44,14 @@ public final class CrmWorkflows {
     public static final String INVOICES = "invoices";
     public static final String JSON_EXT = ".json";
     public static final String INVOICE_NAME_PATTERN = "\\d{4}-\\d{4}-.*";
-    private static final Logger logger = LoggerFactory.getLogger(CrmWorkflows.class);
 
+    private static final Logger logger = LoggerFactory.getLogger(CrmWorkflows.class);
+    private final Pattern invoicePattern;
     private final Crm crm;
 
     public CrmWorkflows(@NotNull Crm crm) {
         this.crm = crm;
+        invoicePattern = Pattern.compile(INVOICE_NAME_PATTERN);
     }
 
     public Crm crm() {
@@ -60,6 +62,7 @@ public final class CrmWorkflows {
      * Import all CRM domain entities defined in a set of TSV files.
      *
      * @param directory directory where the TSV files are stored
+     * @see #exportCrmEntities(Path) 
      */
     public void importCrmEntities(@NotNull Path directory) {
         CrmTsvHdl handler = new CrmTsvHdl(crm);
@@ -80,6 +83,13 @@ public final class CrmWorkflows {
         }
     }
 
+    /**
+     * Import all invoices to the file system. All invoices are imported from directory/INVOICES. If the name of the invoice starts with a four digits pattern,
+     * it is assumed that it represents the year when the invoice was issued. 
+     * 
+     * @param directory directory in which the invoices will be written
+     * @see #importInvoices(Path)
+     */
     public void importInvoices(@NotNull Path directory) {
         InvoiceJson invoiceJson = new InvoiceJson(crm);
         try (Stream<Path> stream = Files.walk(directory)) {
@@ -98,6 +108,7 @@ public final class CrmWorkflows {
      * Export all CRM domain entities into a set of TSV files.
      *
      * @param directory directory where the TSV files are stored
+     * @see #importCrmEntities(Path)
      */
     public void exportCrmEntities(@NotNull Path directory) {
         CrmTsvHdl handler = new CrmTsvHdl(crm);
@@ -118,22 +129,35 @@ public final class CrmWorkflows {
      * it is assumed that it represents the year when the invoice was issued. A folder with the year will be created and the invoice will be written within.
      *
      * @param directory directory in which the invoices will be written
+     * @see #exportInvoices(Path) 
      */
     public void exportInvoices(@NotNull Path directory) {
         InvoiceJson invoiceJson = new InvoiceJson(crm);
-        Path invoicesPath = directory.resolve(INVOICES);
-        Pattern pattern = Pattern.compile(INVOICE_NAME_PATTERN);
         crm.invoices().getAll().forEach(o -> {
-            Matcher matcher = pattern.matcher(o.name());
-            Path invoicePath = matcher.matches() ? invoicesPath.resolve(o.name().substring(0, 4)) : invoicesPath;
-            if (Files.notExists(invoicePath)) {
-                try {
-                    Files.createDirectories(invoicePath);
-                } catch (IOException e) {
-                    throw new UncheckedIOException(e);
-                }
-            }
+            Path invoicePath = resolvePath(o, directory);
             invoiceJson.exports(o, invoicePath.resolve(o.name() + JSON_EXT), Collections.emptyMap());
         });
+    }
+
+    /**
+     * Resolve the path to where an invoice should be located in the file system. The convention is <i>base directory/invoices/year</i>. If folders do not exist
+     * they are created.
+     *
+     * @param invoice   invoice to write
+     * @param directory base directory
+     * @return path to the folder where the invoic should be outputed
+     */
+    public Path resolvePath(@NotNull Invoice invoice, @NotNull Path directory) {
+        Path invoicesPath = directory.resolve(INVOICES);
+        Matcher matcher = invoicePattern.matcher(invoice.name());
+        Path invoicePath = matcher.matches() ? invoicesPath.resolve(invoice.name().substring(0, 4)) : invoicesPath;
+        if (Files.notExists(invoicePath)) {
+            try {
+                Files.createDirectories(invoicePath);
+            } catch (IOException e) {
+                throw new UncheckedIOException(e);
+            }
+        }
+        return invoicePath;
     }
 }

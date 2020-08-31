@@ -17,10 +17,12 @@ package net.tangly.bus.crm;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
+import java.util.Optional;
 
 import net.tangly.bus.core.Address;
 import net.tangly.bus.core.EmailAddress;
 import net.tangly.bus.core.PhoneNr;
+import net.tangly.bus.core.Tag;
 import net.tangly.bus.core.TagType;
 import net.tangly.bus.core.TagTypeRegistry;
 import org.jetbrains.annotations.NotNull;
@@ -74,6 +76,7 @@ public final class CrmTags {
     public static final String CRM_BANK_CONNECTION = CRM + ":bank-connection";
 
     public static final String CRM_EMPLOYEE_TITLE = CRM + ":title";
+    public static final String CRM_SCHOOL = CRM + ":school";
 
     /**
      * Private constructor of an utility class.
@@ -136,16 +139,33 @@ public final class CrmTags {
         return CRM + ":im-" + Objects.requireNonNull(im);
     }
 
-    public static String individualLinkedInUrl(@NotNull String linkedInReference) {
-        return "https://www.linkedin.com/in/" + linkedInReference;
+    /**
+     * Create the linkedIn profile link for a natural entity
+     * @param entity person which linkedIn profile should be displayed
+     * @return link to the linkedIn profile
+     */
+    public static String individualLinkedInUrl(@NotNull NaturalEntity entity) {
+        return entity.findBy(CrmTags.CRM_IM_LINKEDIN).map(Tag::value).map(o -> "https://www.linkedin.com/in/" + o).orElse(null);
     }
 
-    public static String organizationLinkedInUrl(@NotNull String linkedInReference) {
-        return "https://www.linkedin.com/company/" + linkedInReference;
+    /**
+     * Create the linkedIn company profile lik for a legal entity. LinkedIn handles regular organizations and schools in different ways.
+     * @param entity organization which linkedIn profile should be displayed
+     * @return link to the linkedIn profile
+     */
+    public static String organizationLinkedInUrl(@NotNull LegalEntity entity) {
+        Optional<Tag> school = entity.findBy(CrmTags.CRM_SCHOOL);
+        return entity.findBy(CrmTags.CRM_IM_LINKEDIN).map(Tag::value).map(o -> "https://www.linkedin.com/" + (school.isPresent() ? "school/" : "company/" + o))
+                .orElse(null);
     }
 
-    public static String organizationZefixUrl(@NotNull String uid) {
-        return "https://www.zefix.ch/en/search/entity/list?name=" + uid + "&searchType=exact";
+    /**
+     * Create a link to the Zefix page for the oorganization - makes only sense for Swiss companies -.
+     * @param entity organization which Zefix information should be displayed
+     * @return link to Zefix information
+     */
+    public static String organizationZefixUrl(@NotNull LegalEntity entity) {
+        return "https://www.zefix.ch/en/search/entity/list?name=" + entity.id() + "&searchType=exact";
     }
 
 }

@@ -68,6 +68,7 @@ import static net.tangly.bus.crm.CrmTags.CRM_EMPLOYEE_TITLE;
 import static net.tangly.bus.crm.CrmTags.CRM_IM_LINKEDIN;
 import static net.tangly.bus.crm.CrmTags.CRM_PHONE_MOBILE;
 import static net.tangly.bus.crm.CrmTags.CRM_PHONE_WORK;
+import static net.tangly.bus.crm.CrmTags.CRM_SCHOOL;
 import static net.tangly.bus.crm.CrmTags.CRM_SITE_HOME;
 import static net.tangly.bus.crm.CrmTags.CRM_SITE_WORK;
 import static net.tangly.bus.crm.CrmTags.CRM_VAT_NUMBER;
@@ -105,7 +106,6 @@ public class CrmTsvHdl {
     private static final CSVFormat FORMAT = CSVFormat.TDF.withFirstRecordAsHeader().withIgnoreHeaderCase(true).withRecordSeparator('\n');
 
     private static final Logger logger = LoggerFactory.getLogger(CrmTsvHdl.class);
-
     private final Crm crm;
 
 
@@ -283,6 +283,7 @@ public class CrmTsvHdl {
         fields.add(tagProperty(CRM_SITE_WORK));
         fields.add(TsvProperty.ofString(CRM_PHONE_WORK, e -> e.phoneNr(WORK).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(WORK, p)));
         fields.add(createAddressMapping(WORK));
+        fields.add(tagProperty(CRM_SCHOOL));
         return TsvEntity.of(LegalEntity.class, fields, LegalEntity::new);
     }
 

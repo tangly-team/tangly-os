@@ -13,6 +13,7 @@
 
 package net.tangly.bus.core;
 
+import java.util.Collection;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -42,13 +43,6 @@ public interface HasTags {
         tags.forEach(this::add);
     }
 
-    /**
-     * Remove the tag from the set of tags.
-     *
-     * @param tag tag to remove
-     */
-    void remove(Tag tag);
-
     void clearTags();
 
     /**
@@ -63,12 +57,19 @@ public interface HasTags {
     }
 
     /**
+     * Remove the tag from the set of tags.
+     *
+     * @param tag tag to remove
+     */
+    void remove(Tag tag);
+
+    /**
      * Remove the tag with the given tag identification containing optional namespace and tag name.
      *
      * @param tag tag identification of the tag to be removed
      */
-    default void removeTagNamed(String tag) {
-        findBy(Tag.namespace(tag), Tag.name(tag)).ifPresent(this::remove);
+    default void removeTagNamed(@NotNull String tag) {
+        findBy(tag).ifPresent(this::remove);
     }
 
     /**
@@ -77,7 +78,7 @@ public interface HasTags {
      * @param tag tag identification of the tag to be removed
      * @return requested tag as optional
      */
-    default Optional<Tag> findBy(String tag) {
+    default Optional<Tag> findBy(@NotNull String tag) {
         return findBy(Tag.namespace(tag), Tag.name(tag));
     }
 
@@ -91,6 +92,21 @@ public interface HasTags {
     default Optional<Tag> findBy(String namespace, String name) {
         Objects.requireNonNull(name);
         return tags().stream().filter(o -> Objects.equals(namespace, o.namespace()) && name.equals(o.name())).findAny();
+    }
+
+    default boolean containsTag(@NotNull String tag) {
+        return findBy(tag).isPresent();
+    }
+
+    /**
+     * True if the tag with the given tag identification containing optional namespace and tag name could be found.
+     *
+     * @param namespace optional namespace of the tag
+     * @param name      name of the tag
+     * @return flag indicating if the tag is existing
+     */
+    default boolean containsTag(String namespace, @NotNull String name) {
+        return findBy(namespace, name).isPresent();
     }
 
     /**
@@ -111,17 +127,6 @@ public interface HasTags {
      */
     default void tag(@NotNull String tag, String value) {
         replace(Tag.of(tag, value));
-    }
-
-    /**
-     * True if the tag with the given tag identification containing optional namespace and tag name could be found.
-     *
-     * @param namespace optional namespace of the tag
-     * @param name      name of the tag
-     * @return flag indicating if the tag is existing
-     */
-    default boolean contains(String namespace, @NotNull String name) {
-        return findBy(namespace, name).isPresent();
     }
 
     default Set<Tag> findByNamespace(String namespace) {
@@ -147,5 +152,9 @@ public interface HasTags {
      */
     default void rawTags(String rawTags) {
         Tag.toTags(rawTags).forEach(this::replace);
+    }
+
+    static <T extends HasTags> Collection<T> collect(@NotNull Collection<T> items, @NotNull String tag) {
+        return items.stream().filter(o -> o.containsTag(tag)).collect(Collectors.toUnmodifiableList());
     }
 }

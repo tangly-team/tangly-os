@@ -13,20 +13,22 @@
 
 package net.tangly.crm.ports;
 
-import java.nio.file.Paths;
+import java.io.IOException;
+import java.nio.file.FileSystem;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import com.google.common.jimfs.Configuration;
+import com.google.common.jimfs.Jimfs;
+import org.jetbrains.annotations.NotNull;
 
-public class CrmWorkflowsTest {
-    private final static String FOLDER = "/Users/Shared/tangly";
-
-    @Test
-    @Tag("localTest")
-    void writeTsvFilesTestFormCompanyFolder() {
-        Crm crm = new Crm();
-        CrmWorkflows crmWorkflows = new CrmWorkflows(crm);
-        crmWorkflows.importCrmEntities(Paths.get(FOLDER));
-        crmWorkflows.exportCrmEntities(Paths.get(FOLDER));
+class CrmVcardHdlTest {
+    void exportVcards(@NotNull Path path) throws IOException {
+        try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
+            Path directory = fs.getPath("/import/");
+            Files.createDirectory(directory);
+            Files.createDirectory(directory.resolve("vcards"));
+        }
+        CrmBusinessLogic logic = new CrmBusinessLogic(new Crm());
     }
 }

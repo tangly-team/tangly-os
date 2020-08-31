@@ -18,4 +18,4 @@
  * methods to import all semantically related entities of a domain.</p>
  * <p>The business logic classes publish domain methods spanning multiple domain entities.</p>
  */
-package net.tangly.crm.ports;
+package net.tangly.products.ports;

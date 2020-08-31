@@ -1,0 +1,67 @@
+{
+    "invoicingConnection": {
+        "iban": "CH88 0900 0000 3064 1768 2",
+        "institute": "Postfinanz Schweiz",
+        "bic": "POFICHBEXXX"
+    },
+    "dueDate": "2017-02-28",
+    "paymentConditions": "30 days net",
+    "invoiceDate": "2017-01-25",
+    "invoicedAddress": {
+        "poBox": "Postfach",
+        "country": "CH",
+        "street": "Suurstoffi 12",
+        "locality": "Rotkreuz",
+        "postCode": "6343",
+        "region": "ZG",
+        "extended": "z.H. Bruno Joho"
+    },
+    "invoicingAddress": {
+        "country": "CH",
+        "street": "Lorzenhof 27",
+        "locality": "Cham",
+        "postCode": "6330",
+        "region": "ZG"
+    },
+    "invoicingEntity": {
+        "fromDate": "2015-11-01",
+        "vatNr": "CHE-357.875.339 MWST",
+        "name": "tangly llc",
+        "id": "CHE-357.875.339"
+    },
+    "invoicedEntity": {
+        "name": "Lucerne School of Information Technology",
+        "id": "CHE-302.967.535"
+    },
+    "name": "2017-8001-Invoice-HSLU-February",
+    "contractId": "HSLU-2015",
+    "currency": "CHF",
+    "id": "2017-8001",
+    "text": "Kurzeinsatz in der Weiterbildung 2016-10-15",
+    "items": [
+        {
+            "product": {
+                "unitPrice": 200,
+                "unit": "hour",
+                "vatRate": 0,
+                "description": "Agile training at recognized technical university",
+                "id": "5003"
+            },
+            "quantity": 1,
+            "position": 1,
+            "text": "Pauschalentschädigung für Expertinnen und Experten (mündliche Modulendprüfung inkl. Spesen)"
+        },
+        {
+            "product": {
+                "unitPrice": 25,
+                "unit": "unit",
+                "vatRate": 0,
+                "description": "Examination work per student",
+                "id": "5004"
+            },
+            "quantity": 20,
+            "position": 2,
+            "text": "Studenten mündliche Prüfung"
+        }
+    ]
+}

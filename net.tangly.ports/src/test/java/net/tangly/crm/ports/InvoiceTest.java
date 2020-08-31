@@ -11,7 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.invoices.ports;
+package net.tangly.crm.ports;
 
 import java.math.BigDecimal;
 import java.nio.file.Files;
@@ -31,11 +31,14 @@ import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceItem;
 import net.tangly.bus.invoices.Product;
 import net.tangly.bus.invoices.Subtotal;
+import net.tangly.invoices.ports.InvoiceAsciiDoc;
+import net.tangly.invoices.ports.InvoiceQrCode;
+import net.tangly.invoices.ports.InvoiceZugFerd;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class InvoiceTest {
+class InvoiceTest {
     private static final BigDecimal VAT_REGULAR = new BigDecimal("0.077");
     private static final String PAYMENT_CONDITIONS_30_DAYS = "30 days net";
 

@@ -1,0 +1,53 @@
+{
+    "invoicingConnection": {
+        "iban": "CH88 0900 0000 3064 1768 2",
+        "institute": "Postfinanz Schweiz",
+        "bic": "POFICHBEXXX"
+    },
+    "dueDate": "2017-01-07",
+    "paymentConditions": "30 days net",
+    "invoiceDate": "2016-12-07",
+    "invoicedAddress": {
+        "poBox": "Postfach",
+        "country": "CH",
+        "street": "Suurstoffi 12",
+        "locality": "Rotkreuz",
+        "postCode": "6343",
+        "region": "ZG",
+        "extended": "z.H. Bruno Joho"
+    },
+    "invoicingAddress": {
+        "country": "CH",
+        "street": "Lorzenhof 27",
+        "locality": "Cham",
+        "postCode": "6330",
+        "region": "ZG"
+    },
+    "invoicingEntity": {
+        "fromDate": "2015-11-01",
+        "vatNr": "CHE-357.875.339 MWST",
+        "name": "tangly llc",
+        "id": "CHE-357.875.339"
+    },
+    "invoicedEntity": {
+        "name": "Lucerne School of Information Technology",
+        "id": "CHE-302.967.535"
+    },
+    "name": "2017-8022-Invoice-HSLU-December",
+    "contractId": "HSLU-2015",
+    "currency": "CHF",
+    "id": "2017-8022",
+    "text": "Vorlesung ENAPP Architektur 2017-12-07",
+    "items": [{
+        "product": {
+            "unitPrice": 190,
+            "unit": "hour",
+            "vatRate": 0,
+            "description": "Agile training at recognized technical university",
+            "id": "5002"
+        },
+        "quantity": 3,
+        "position": 1,
+        "text": "Vorlesung Modul ENAPP Architecture\u201c - Kotr/Kost 110083-00"
+    }]
+}

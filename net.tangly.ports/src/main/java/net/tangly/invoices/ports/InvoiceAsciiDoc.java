@@ -100,6 +100,13 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
         createPdf(invoicePath);
     }
 
+    public static void createPdf(@NotNull Path invoicePath) {
+        try (Asciidoctor asciidoctor = Asciidoctor.Factory.create()) {
+            Map<String, Object> options = OptionsBuilder.options().inPlace(true).backend("pdf").asMap();
+            asciidoctor.convertFile(invoicePath.toFile(), options);
+        }
+    }
+
     private static void createVatDeclarations(AsciiDocHelper helper, Invoice invoice) {
         helper.tableRow("", "", "", "");
         helper.tableRow("Total without VAT", "", "", format(invoice.amountWithoutVat()));
@@ -115,13 +122,6 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
             );
         }
         helper.tableRow(bold("Total"), "", "", bold(format(invoice.amountWithVat())));
-    }
-
-    private static void createPdf(@NotNull Path invoicePath) {
-        try (Asciidoctor asciidoctor = Asciidoctor.Factory.create()) {
-            Map<String, Object> options = OptionsBuilder.options().inPlace(true).backend("pdf").asMap();
-            asciidoctor.convertFile(invoicePath.toFile(), options);
-        }
     }
 
     private static String addressText(@NotNull LegalEntity entity) {

@@ -14,12 +14,12 @@
 package net.tangly.ledger.ports;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.UncheckedIOException;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -39,13 +39,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The ledger CSV handler can import ledger plans and transactions journal as exported by the banana 8 ledger application. The import assumes that the
- * program language and ledger template use English. The ledger structure CSV file has the columns id, account kind, account group, description, owned
- * by group id. The handler reads a ledger structure description from a CSV file and update a full ledger structure. The transaction CSV file has the
- * columns date, doc, description, account debit, account credit, amount, defineVat code.
+ * The ledger CSV handler can import ledger plans and transactions journal as exported by the banana 8 ledger application. The import assumes that the program
+ * language and ledger template use English. The ledger structure CSV file has the columns id, account kind, account group, description, owned by group id. The
+ * handler reads a ledger structure description from a CSV file and update a full ledger structure. The transaction CSV file has the columns date, doc,
+ * description, account debit, account credit, amount, defineVat code.
  * <p>The accounting program used to generate the export files is <a href="https://www.banana.ch/">banana</a></p>
  */
-public class LedgerCsvHdl {
+public class LedgerTsvHdl {
     private static final String AMOUNT = "Amount";
     private static final String SECTION = "Section";
     private static final String GROUP = "Group";
@@ -59,7 +59,7 @@ public class LedgerCsvHdl {
     private static final String ACCOUNT_CREDIT = "AccountCredit";
     private static final String VAT_CODE = "VatCode";
 
-    private static final Logger log = LoggerFactory.getLogger(LedgerCsvHdl.class);
+    private static final Logger log = LoggerFactory.getLogger(LedgerTsvHdl.class);
 
     private final Ledger ledger;
 
@@ -68,7 +68,7 @@ public class LedgerCsvHdl {
      *
      * @param ledger ledger to use when importing data from CSV files.
      */
-    public LedgerCsvHdl(@NotNull Ledger ledger) {
+    public LedgerTsvHdl(@NotNull Ledger ledger) {
         this.ledger = ledger;
     }
 
@@ -82,7 +82,7 @@ public class LedgerCsvHdl {
     }
 
     public void importLedgerStructureFromBanana(@NotNull Path path) {
-        try (Reader in = new BufferedReader(new FileReader(path.toFile(), StandardCharsets.UTF_8))) {
+        try (Reader in = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             Account.AccountGroup currentSection = null;
             CSVRecord record = records.hasNext() ? records.next() : null;
@@ -116,7 +116,7 @@ public class LedgerCsvHdl {
      * @param path path to the file containing the list of transactions
      */
     public void importTransactionsLedgerFromBanana(@NotNull Path path) {
-        try (Reader in = new BufferedReader(new FileReader(path.toFile(), StandardCharsets.UTF_8))) {
+        try (Reader in = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             CSVRecord record = records.hasNext() ? records.next() : null;
             while (record != null) {
@@ -134,15 +134,11 @@ public class LedgerCsvHdl {
                     if (isPartOfSplitTransaction(record)) {
                         List<AccountEntry> splits = new ArrayList<>();
                         record = importSplits(records, splits);
-                        transaction =
-                                new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
-                                        new BigDecimal(amount), splits, text, reference
-                                );
+                        transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
+                                new BigDecimal(amount), splits, text, reference);
                     } else {
-                        transaction =
-                                new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
-                                        new BigDecimal(amount), text, reference
-                                );
+                        transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
+                                new BigDecimal(amount), text, reference);
                         record = records.hasNext() ? records.next() : null;
                     }
                     defineProject(transaction.debitSplits(), debitAccount);
@@ -181,14 +177,14 @@ public class LedgerCsvHdl {
     }
 
     /**
-     * Returns true if the record is relevant for the ledger plan, meaning it has a description and either an account identifier not starting with an
-     * semicolon or a group with an identifier different from 0.
+     * Returns true if the record is relevant for the ledger plan, meaning it has a description and either an account identifier not starting with an semicolon
+     * or a group with an identifier different from 0.
      *
      * @return flag indicating if hte record is relevant for the ledger plan or not
      */
     private static boolean isRecordPlanRelevant(String description, String accountId, String groupId) {
-        return !Strings.isNullOrEmpty(description) && ((!Strings.isNullOrEmpty(accountId) && !accountId.startsWith(":")) ||
-                (!Strings.isNullOrEmpty(groupId) && !groupId.equalsIgnoreCase("0")));
+        return !Strings.isNullOrEmpty(description) &&
+                ((!Strings.isNullOrEmpty(accountId) && !accountId.startsWith(":")) || (!Strings.isNullOrEmpty(groupId) && !groupId.equalsIgnoreCase("0")));
     }
 
     // potential strategy pattern

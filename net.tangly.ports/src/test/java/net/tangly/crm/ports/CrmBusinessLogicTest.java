@@ -11,17 +11,10 @@
  *  under the License.
  */
 
-package net.tangly.fsm;
+package net.tangly.crm.ports;
 
-import com.tngtech.archunit.junit.AnalyzeClasses;
-import com.tngtech.archunit.junit.ArchTest;
-import com.tngtech.archunit.lang.ArchRule;
+class CrmBusinessLogicTest {
+    void exportInvoiceDocumentTest() {
 
-import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
-
-@AnalyzeClasses(packages = "net.tangly.fsm")
-class ArchitectureTest {
-    @ArchTest
-    public static final ArchRule ruleIf = classes().that().resideInAPackage("net.tangly.fsm.imp").should().onlyBeAccessed()
-            .byAnyPackage("net.tangly.fsm", "net.tangly.fsm.dsl", "net.tangly.fsm.imp");
+    }
 }

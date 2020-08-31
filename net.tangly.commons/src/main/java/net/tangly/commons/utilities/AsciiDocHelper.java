@@ -14,6 +14,7 @@
 package net.tangly.commons.utilities;
 
 import java.io.PrintWriter;
+import java.io.Writer;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.Arrays;
@@ -27,8 +28,8 @@ public class AsciiDocHelper {
 
     private final PrintWriter writer;
 
-    public AsciiDocHelper(@NotNull PrintWriter writer) {
-        this.writer = writer;
+    public AsciiDocHelper(@NotNull Writer writer) {
+        this.writer = new PrintWriter(writer);
     }
 
     public static String bold(String text) {

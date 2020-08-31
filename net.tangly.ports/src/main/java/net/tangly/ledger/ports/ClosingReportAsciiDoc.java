@@ -14,9 +14,12 @@
 package net.tangly.ledger.ports;
 
 
+import java.io.BufferedWriter;
 import java.io.PrintWriter;
+import java.io.Writer;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.Month;
@@ -47,14 +50,14 @@ public class ClosingReportAsciiDoc {
     }
 
     public void create(LocalDate from, LocalDate to, Path reportPath) {
-        try (PrintWriter writer = new PrintWriter(reportPath.toFile(), StandardCharsets.UTF_8)) {
+        try (Writer writer = Files.newBufferedWriter(reportPath, StandardCharsets.UTF_8)) {
             create(from, to, writer);
         } catch (Exception e) {
             log.error("Error during reporting", e);
         }
     }
 
-    public void create(LocalDate from, LocalDate to, PrintWriter writer) {
+    public void create(LocalDate from, LocalDate to, Writer writer) {
         final AsciiDocHelper helper = new AsciiDocHelper(writer);
         helper.header("Balance Sheet", 1);
         generateResultTableFor(helper, ledger.assets(), from, to, "Assets");

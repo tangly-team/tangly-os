@@ -18,6 +18,10 @@ import java.util.function.Consumer;
 import com.vaadin.flow.data.provider.DataProvider;
 import net.tangly.bus.providers.Provider;
 
+/**
+ * Provides default actions for the grid view.
+ * @param <T> type of items displayed in the grid.
+ */
 public class GridActionsListener<T> implements CrudActionsListener<T> {
     private final Provider<T> provider;
     private final DataProvider<T, ?> dataProvider;

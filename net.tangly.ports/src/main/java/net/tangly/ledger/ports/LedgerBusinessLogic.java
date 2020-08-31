@@ -14,21 +14,38 @@
 package net.tangly.ledger.ports;
 
 import java.math.BigDecimal;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.List;
 
 import net.tangly.bus.ledger.Ledger;
+import org.asciidoctor.Asciidoctor;
+import org.asciidoctor.Attributes;
+import org.asciidoctor.AttributesBuilder;
+import org.asciidoctor.Options;
+import org.asciidoctor.OptionsBuilder;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Define business logic rules and functions for the ledger double entry accounting domain model.
+ */
 public class LedgerBusinessLogic {
-    private static String TURNOVER_ACCOUNT = "3";
-    private static String EBIT_ACCOUNT = "E4";
-    private static String EARNINGS_ACCOUNT = "E7";
+    private static final String TURNOVER_ACCOUNT = "3";
+    private static final String EBIT_ACCOUNT = "E4";
+    private static final String EARNINGS_ACCOUNT = "E7";
+    private static final String ASCII_DOC_EXT = ".adoc";
+    private static final String PDF_EXT = ".pdf";
 
     private final Ledger ledger;
 
     public LedgerBusinessLogic(@NotNull Ledger ledger) {
         this.ledger = ledger;
+    }
+
+    public void createLedgerReport(@NotNull Path pathWithoutExtension, LocalDate from, LocalDate to) {
+        ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(ledger);
+        report.create(from, to, pathWithoutExtension.resolve(ASCII_DOC_EXT));
+        createPdf(pathWithoutExtension.resolve(ASCII_DOC_EXT));
     }
 
     public BigDecimal turnover(@NotNull LocalDate from, @NotNull LocalDate to) {
@@ -53,5 +70,14 @@ public class LedgerBusinessLogic {
 
     private BigDecimal accountChangeInTime(@NotNull String accountId, @NotNull LocalDate from, @NotNull LocalDate to) {
         return ledger.accountBy(accountId).map(o -> o.balance(to).subtract(o.balance(from)).negate()).orElse(BigDecimal.ZERO);
+    }
+
+    public static void createPdf(@NotNull Path invoicePath) {
+        try (Asciidoctor asciidoctor = Asciidoctor.Factory.create()) {
+            Attributes attributes = AttributesBuilder.attributes().get();
+            Options options = OptionsBuilder.options().inPlace(true).attributes(attributes).backend("pdf").get();
+            // TODO move from File to Path
+            asciidoctor.convertFile(invoicePath.toFile(), options);
+        }
     }
 }

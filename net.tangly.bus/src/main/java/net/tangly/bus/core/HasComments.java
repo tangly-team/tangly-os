@@ -75,7 +75,7 @@ public interface HasComments {
      */
     default List<Comment> findByTag(String namespace, String name) {
         Objects.requireNonNull(name);
-        return comments().stream().filter(o -> o.contains(namespace, name)).collect(Collectors.toList());
+        return comments().stream().filter(o -> o.containsTag(namespace, name)).collect(Collectors.toList());
     }
 
     /**
