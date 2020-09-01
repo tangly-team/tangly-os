@@ -76,7 +76,7 @@ public class MainView extends VerticalLayout {
         CrmWorkflows crmWorkflows = new CrmWorkflows(crm);
         crmWorkflows.importCrmEntities(Paths.get("/Users/Shared/tangly/"));
 
-        LedgerWorkflows ledgerWorkflows = new LedgerWorkflows();
+        LedgerWorkflows ledgerWorkflows = new LedgerWorkflows(new Ledger());
         ledgerWorkflows.importLedger(Paths.get("/Users/Shared/tangly/"));
         ledger = ledgerWorkflows.ledger();
 

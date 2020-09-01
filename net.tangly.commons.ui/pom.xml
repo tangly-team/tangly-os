@@ -16,7 +16,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
 
-        <vaadin.version>16.0.3</vaadin.version>
+        <vaadin.version>17.0.0</vaadin.version>
         <tangly.version>0.2.6</tangly.version>
         <jetty.version>9.4.28.v20200408</jetty.version>
     </properties>
@@ -41,18 +41,13 @@
             </snapshots>
         </repository>
         <repository>
-            <id>jCenter</id>
-            <url>https://jcenter.bintray.com/</url>
-        </repository>
-
-        <repository>
             <id>ZUGFeRD</id>
             <url>https://raw.github.com/ZUGFeRD/mustangproject/mvn-repo/</url>
         </repository>
     </repositories>
-
+     
     <pluginRepositories>
-        <!-- Maven Central repository requires https:// to access -->
+         <!-- Maven Central repository requires https:// to access -->
         <pluginRepository>
             <id>central</id>
             <url>https://repo.maven.apache.org/maven2</url>
@@ -135,7 +130,7 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
-
+        
         <!-- Tangly open source components specific dependencies -->
         <dependency>
             <groupId>org.jetbrains</groupId>

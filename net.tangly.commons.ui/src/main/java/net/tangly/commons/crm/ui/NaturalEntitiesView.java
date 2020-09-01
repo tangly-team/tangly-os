@@ -44,7 +44,7 @@ public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
         InternalEntitiesView.defineGrid(grid);
         grid.addColumn(NaturalEntity::lastname).setKey("lastname").setHeader("Last Name").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(NaturalEntity::firstname).setKey("firstname").setHeader("First Name").setSortable(true).setAutoWidth(true).setResizable(true);
-        grid.addColumn(linkedInComponentRenderer(CrmTags::individualLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
+        grid.addColumn(CrmTags::individualLinkedInUrl).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
     }
 
     public static void defineOne2ManyEmployees(@NotNull Grid<Employee> grid) {

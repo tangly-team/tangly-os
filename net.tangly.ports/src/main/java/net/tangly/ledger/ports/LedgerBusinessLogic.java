@@ -13,7 +13,13 @@
 
 package net.tangly.ledger.ports;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.List;
@@ -72,12 +78,15 @@ public class LedgerBusinessLogic {
         return ledger.accountBy(accountId).map(o -> o.balance(to).subtract(o.balance(from)).negate()).orElse(BigDecimal.ZERO);
     }
 
-    public static void createPdf(@NotNull Path invoicePath) {
-        try (Asciidoctor asciidoctor = Asciidoctor.Factory.create()) {
+    public static void createPdf(@NotNull Path invoicePathWithoutExtension) {
+        try (Asciidoctor asciidoctor = Asciidoctor.Factory.create();
+             BufferedReader reader = Files.newBufferedReader(invoicePathWithoutExtension.resolve(ASCII_DOC_EXT), StandardCharsets.UTF_8);
+             BufferedWriter writer = Files.newBufferedWriter(invoicePathWithoutExtension.resolve(PDF_EXT), StandardCharsets.UTF_8)) {
             Attributes attributes = AttributesBuilder.attributes().get();
             Options options = OptionsBuilder.options().inPlace(true).attributes(attributes).backend("pdf").get();
-            // TODO move from File to Path
-            asciidoctor.convertFile(invoicePath.toFile(), options);
+            asciidoctor.convert(reader, writer, options);
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
         }
     }
 }

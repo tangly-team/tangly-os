@@ -50,8 +50,8 @@ public class LegalEntitiesView extends CrmEntitiesView<LegalEntity> {
         grid.addColumn(Entity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Entity::fromDate).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Entity::toDate).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(linkedInComponentRenderer(CrmTags::organizationLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn");
-        grid.addColumn(urlComponentRenderer(CrmTags.CRM_SITE_WORK)).setKey("webSite").setHeader("Web Site").setAutoWidth(true);
+        grid.addColumn(CrmTags::organizationLinkedInUrl).setKey("linkedIn").setHeader("LinkedIn");
+        // grid.addColumn(CrmTags::).setKey("webSite").setHeader("Web Site").setAutoWidth(true);
     }
 
     public static ComponentRenderer<Anchor, LegalEntity> zefixComponentRenderer() {
@@ -59,7 +59,7 @@ public class LegalEntitiesView extends CrmEntitiesView<LegalEntity> {
             Anchor anchor = new Anchor();
             anchor.setText(item.id());
             if ((item.id() != null) && item.id().startsWith("CHE-")) {
-                anchor.setHref(CrmTags.organizationZefixUrl(item.id()));
+                anchor.setHref(CrmTags.organizationZefixUrl(item));
                 anchor.setTarget("_blank");
             }
             return anchor;

@@ -15,11 +15,17 @@ package net.tangly.crm.ports;
 
 import java.io.IOException;
 import java.nio.file.FileSystem;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDate;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
+import net.tangly.bus.ledger.Ledger;
+import net.tangly.ledger.ports.LedgerBusinessLogic;
+import net.tangly.ledger.ports.LedgerWorkflows;
 
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Test the business logic of the ledger domain model. An in-memory file system is set with a Swiss ledger definition and transactions files.
@@ -33,7 +39,21 @@ class LedgerBusinessLogicTest {
         }
     }
 
-    public void turnoverEbitAndEarningsTest() {
+    public void turnoverEbitAndEarningsTest() throws IOException {
+        try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
+            CrmAndLedgerStore store = new CrmAndLedgerStore(fs);
+            LedgerBusinessLogic logic = new LedgerBusinessLogic(createLedger(store));
+            // TOOO remove File reference
+            logic.createLedgerReport(null, LocalDate.of(2015, 10, 01), LocalDate.of(2016, 12, 31));
 
+            assertThat(Files.exists(store.ledgerRoot())).isTrue();
+        }
+    }
+
+    private Ledger createLedger(CrmAndLedgerStore store) {
+        store.createCrmAndLedgerRepository();
+        LedgerWorkflows workflows = new LedgerWorkflows(new Ledger());
+        workflows.importLedger(store.ledgerRoot());
+        return workflows.ledger();
     }
 }

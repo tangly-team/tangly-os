@@ -129,24 +129,33 @@ public class LedgerTsvHdl {
                 String[] creditValues = creditAccount.split("-");
                 String amount = record.get(AMOUNT);
                 String vatCode = record.get(VAT_CODE);
-                try {
-                    Transaction transaction;
-                    if (isPartOfSplitTransaction(record)) {
-                        List<AccountEntry> splits = new ArrayList<>();
-                        record = importSplits(records, splits);
+
+                Transaction transaction = null;
+                if (isPartOfSplitTransaction(record)) {
+                    List<AccountEntry> splits = new ArrayList<>();
+                    record = importSplits(records, splits);
+                    try {
                         transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
                                 new BigDecimal(amount), splits, text, reference);
-                    } else {
+                    } catch (NumberFormatException e) {
+                        log.error("not a legal amount {}", amount, e);
+                    }
+
+                } else {
+                    try {
                         transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
                                 new BigDecimal(amount), text, reference);
-                        record = records.hasNext() ? records.next() : null;
+                    } catch (NumberFormatException e) {
+                        log.error("not a legal amount {}", amount, e);
                     }
+
+                    record = records.hasNext() ? records.next() : null;
+                }
+                if (transaction != null) {
                     defineProject(transaction.debitSplits(), debitAccount);
                     defineProject(transaction.creditSplits(), creditAccount);
                     defineVat(transaction.creditSplits(), vatCode);
                     ledger.add(transaction);
-                } catch (NumberFormatException e) {
-                    log.error("not a legal amount {}", amount, e);
                 }
             }
         } catch (IOException e) {
