@@ -15,13 +15,14 @@ package net.tangly.commons.crm.ui;
 
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.commons.vaadin.BankConnectionField;
 import net.tangly.commons.vaadin.EntityField;
-import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.One2OneField;
 import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.crm.ports.Crm;
@@ -29,14 +30,20 @@ import org.jetbrains.annotations.NotNull;
 
 public class ContractsView extends CrmEntitiesView<Contract> {
     public ContractsView(@NotNull Crm crm, @NotNull Mode mode) {
-        super(crm, Contract.class, mode, ContractsView::defineContractsGrid, crm.contracts());
-        grid().addColumn(o -> VaadinUtils.format(crm().invoicedAmount(o))).setKey("invoicedAmount").setHeader("Invoiced").setAutoWidth(true).setResizable(true).setSortable(true);
+        super(crm, Contract.class, mode, crm.contracts());
+        initialize();
     }
 
-    public static void defineContractsGrid(@NotNull Grid<Contract> grid) {
-        InternalEntitiesView.defineGrid(grid);
+    @Override
+    protected void initialize() {
+        super.initialize();
+        Grid<Contract> grid = grid();
         grid.addColumn(e -> e.sellee().name()).setKey("customer").setHeader("Customer").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Contract::amountWithoutVat).setKey("amount").setHeader("Amount").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(new NumberRenderer<>(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true)
+                .setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
+        grid.addColumn(new NumberRenderer<>(o -> crm().invoicedAmount(o), VaadinUtils.FORMAT)).setKey("invoicedAmount").setHeader("Invoiced").setAutoWidth(true)
+                .setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
+
     }
 
     @Override

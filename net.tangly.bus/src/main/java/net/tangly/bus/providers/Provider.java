@@ -30,7 +30,7 @@ public interface Provider<T> {
      *
      * @return list of all instances
      */
-    List<T> getAll();
+    List<T> items();
 
     /**
      * Update the data associated with the entity. If the entity is new the update is handled as a create operation. The update is transitive and all referenced
@@ -56,9 +56,8 @@ public interface Provider<T> {
      * @return optional of the first matching entity otherwise empty
      */
     default <U> Optional<T> findBy(Function<T, U> getter, U value) {
-        return getAll().stream().filter(o -> value.equals(getter.apply(o))).findAny();
+        return items().stream().filter(o -> value.equals(getter.apply(o))).findAny();
     }
-
 
     /**
      * Update the data associated with all entities.

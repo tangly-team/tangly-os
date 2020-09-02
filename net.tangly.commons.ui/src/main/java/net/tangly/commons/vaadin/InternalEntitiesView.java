@@ -13,8 +13,6 @@
 
 package net.tangly.commons.vaadin;
 
-import java.util.function.Consumer;
-
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.tabs.Tab;
@@ -45,21 +43,21 @@ public abstract class InternalEntitiesView<T extends Entity> extends Crud<T> imp
     /**
      * Constructor of the CRUD view for a subclass of entity.
      *
-     * @param clazz            class of the entity to display
-     * @param gridConfigurator configurator for the grid displaying a list of entities
-     * @param provider         data provider associated with the grid
-     * @param registry         tag type registry used to configure the tags view of the entity class
+     * @param clazz    class of the entity to display
+     * @param provider data provider associated with the grid
+     * @param registry tag type registry used to configure the tags view of the entity class
      */
-    public InternalEntitiesView(@NotNull Class<T> clazz, @NotNull Mode mode, @NotNull Consumer<Grid<T>> gridConfigurator, @NotNull Provider<T> provider, TagTypeRegistry registry) {
-        super(clazz, mode, gridConfigurator, DataProvider.ofCollection(provider.getAll()));
+    public InternalEntitiesView(@NotNull Class<T> clazz, @NotNull Mode mode, @NotNull Provider<T> provider, TagTypeRegistry registry) {
+        super(clazz, mode, DataProvider.ofCollection(provider.items()));
         this.provider = provider;
         this.binder = new Binder<>(clazz);
         this.registry = registry;
-        initialize(this, new GridActionsListener<>(provider, grid().getDataProvider(), this::selectedItem));
     }
 
-    public static <E extends Entity> void defineGrid(@NotNull Grid<E> grid) {
-        VaadinUtils.initialize(grid);
+    protected void initialize() {
+        super.initialize(this, new GridActionsListener<>(provider, grid().getDataProvider(), this::selectedItem));
+        VaadinUtils.initialize(grid());
+        Grid<T> grid = grid();
         grid.addColumn(Entity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(Entity::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Entity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);

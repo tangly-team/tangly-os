@@ -14,6 +14,7 @@
 package net.tangly.bus.core;
 
 import java.time.LocalDate;
+import java.util.function.Predicate;
 
 /**
  * The named interface defines a powerful abstraction for entities in a domain model. The features are
@@ -29,14 +30,7 @@ import java.time.LocalDate;
  * Orthogonal information can therefore be attached to instances.</li>
  * </ul>
  */
-public interface Entity extends HasOid, HasEditableQualifiers, HasTags, HasComments {
-    /**
-     * Return the date from when the entity is existing and active.
-     *
-     * @return the start of the existing period of the entity
-     */
-    LocalDate fromDate();
-
+public interface Entity extends HasOid, HasInterval, HasEditableQualifiers, HasTags, HasComments {
     /**
      * Set the start date from when the entity is existing and active.
      *
@@ -45,21 +39,9 @@ public interface Entity extends HasOid, HasEditableQualifiers, HasTags, HasComme
     void fromDate(LocalDate fromDate);
 
     /**
-     * Return the date until when the entity is existing and active.
-     *
-     * @return the end of the existing period of the entity
-     */
-    LocalDate toDate();
-
-    /**
      * Set the end date from when the entity is existing and active.
      *
      * @param toDate the end of the existing period of the entity
      */
     void toDate(LocalDate toDate);
-
-    default boolean isActive() {
-        LocalDate toDate = toDate();
-        return (toDate != null) && toDate.isBefore(LocalDate.now());
-    }
 }

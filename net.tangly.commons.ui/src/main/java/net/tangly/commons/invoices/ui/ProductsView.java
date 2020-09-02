@@ -19,6 +19,8 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.bus.invoices.Product;
 import net.tangly.bus.providers.Provider;
+import net.tangly.commons.vaadin.CrudActionsListener;
+import net.tangly.commons.vaadin.CrudForm;
 import net.tangly.commons.vaadin.ExternalEntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
@@ -37,16 +39,18 @@ public class ProductsView extends ExternalEntitiesView<Product> {
      * @param provider provider of the class
      */
     public ProductsView(@NotNull Provider<Product> provider, @NotNull Mode mode) {
-        super(Product.class, mode, ProductsView::defineProductsView, provider);
+        super(Product.class, mode, provider);
         name = VaadinUtils.createTextField("Name", "name");
         text = VaadinUtils.createTextField("Text", "text");
         unit = VaadinUtils.createTextField("Unit", "unit");
         unitPrice = VaadinUtils.createTextField("Unit Price", "unit price");
         vatRate = VaadinUtils.createTextField("VAT Rate", "VAT rate");
+        initialize();
     }
 
-    public static void defineProductsView(@NotNull Grid<Product> grid) {
-        ExternalEntitiesView.defineExternalEntitiesView(grid);
+    @Override
+    protected void initialize() {
+        Grid<Product> grid = grid();
         grid.addColumn(Product::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Product::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Product::unit).setKey("unit").setHeader("Unit").setAutoWidth(true).setResizable(true).setSortable(true);

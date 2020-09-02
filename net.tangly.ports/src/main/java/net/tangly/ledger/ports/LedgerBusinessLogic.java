@@ -48,6 +48,10 @@ public class LedgerBusinessLogic {
         this.ledger = ledger;
     }
 
+    public Ledger ledger() {
+        return ledger;
+    }
+
     public void createLedgerReport(@NotNull Path pathWithoutExtension, LocalDate from, LocalDate to) {
         ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(ledger);
         report.create(from, to, pathWithoutExtension.resolve(ASCII_DOC_EXT));

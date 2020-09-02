@@ -58,28 +58,28 @@ public interface EntitiesRealm {
     Provider<Invoice> invoices();
 
     default List<Employee> employeesFor(@NotNull LegalEntity entity) {
-        return employees().getAll().stream().filter(o -> entity.oid() == o.organization().oid()).collect(Collectors.toList());
+        return employees().items().stream().filter(o -> entity.oid() == o.organization().oid()).collect(Collectors.toList());
     }
 
     default List<Employee> employeesFor(@NotNull NaturalEntity entity) {
-        return employees().getAll().stream().filter(o -> entity.oid() == o.person().oid()).collect(Collectors.toList());
+        return employees().items().stream().filter(o -> entity.oid() == o.person().oid()).collect(Collectors.toList());
     }
 
     default List<Invoice> invoicesFor(@NotNull Contract contract) {
-        return invoices().getAll().stream().filter(o -> contract.oid() == o.contract().oid()).collect(Collectors.toList());
+        return invoices().items().stream().filter(o -> contract.oid() == o.contract().oid()).collect(Collectors.toList());
     }
 
     default List<Contract> contractsFor(@NotNull LegalEntity entity) {
-        return contracts().getAll().stream().filter(o -> entity.oid() == o.sellee().oid()).collect(Collectors.toList());
+        return contracts().items().stream().filter(o -> entity.oid() == o.sellee().oid()).collect(Collectors.toList());
     }
 
     default BigDecimal invoicedAmount(@NotNull Contract contract) {
-        return invoices().getAll().stream().filter(o -> o.contract().oid() == contract.oid()).map(Invoice::amountWithoutVat)
+        return invoices().items().stream().filter(o -> o.contract().oid() == contract.oid()).map(Invoice::amountWithoutVat)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     default BigDecimal invoicedAmount(@NotNull LegalEntity customer) {
-        return invoices().getAll().stream().filter((o -> o.invoicedEntity().oid() == customer.oid())).map(Invoice::amountWithoutVat)
+        return invoices().items().stream().filter((o -> o.invoicedEntity().oid() == customer.oid())).map(Invoice::amountWithoutVat)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }

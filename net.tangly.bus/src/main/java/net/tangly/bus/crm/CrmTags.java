@@ -21,6 +21,8 @@ import java.util.Optional;
 
 import net.tangly.bus.core.Address;
 import net.tangly.bus.core.EmailAddress;
+import net.tangly.bus.core.Entity;
+import net.tangly.bus.core.HasTags;
 import net.tangly.bus.core.PhoneNr;
 import net.tangly.bus.core.Tag;
 import net.tangly.bus.core.TagType;
@@ -68,10 +70,7 @@ public final class CrmTags {
     public static final String GOOGLE = "google";
 
     public static final String CRM_IM_LINKEDIN = CRM + ":im-" + LINKEDIN;
-    public static final String CRM_IM_SKYPE = CRM + ":im-" + SKYPE;
-    public static final String CRM_IM_GOOGLE = CRM + ":im-" + GOOGLE;
 
-    public static final String CRM_COMPANY_ID = CRM + ":company-id";
     public static final String CRM_VAT_NUMBER = CRM + ":vat-number";
     public static final String CRM_BANK_CONNECTION = CRM + ":bank-connection";
 
@@ -144,7 +143,7 @@ public final class CrmTags {
      * @param entity person which linkedIn profile should be displayed
      * @return link to the linkedIn profile
      */
-    public static String individualLinkedInUrl(@NotNull NaturalEntity entity) {
+    public static String individualLinkedInUrl(@NotNull Entity entity) {
         return entity.findBy(CrmTags.CRM_IM_LINKEDIN).map(Tag::value).map(o -> "https://www.linkedin.com/in/" + o).orElse(null);
     }
 
@@ -153,9 +152,9 @@ public final class CrmTags {
      * @param entity organization which linkedIn profile should be displayed
      * @return link to the linkedIn profile
      */
-    public static String organizationLinkedInUrl(@NotNull LegalEntity entity) {
+    public static String organizationLinkedInUrl(@NotNull Entity entity) {
         Optional<Tag> school = entity.findBy(CrmTags.CRM_SCHOOL);
-        return entity.findBy(CrmTags.CRM_IM_LINKEDIN).map(Tag::value).map(o -> "https://www.linkedin.com/" + (school.isPresent() ? "school/" : "company/" + o))
+        return entity.findBy(CrmTags.CRM_IM_LINKEDIN).map(Tag::value).map(o -> "https://www.linkedin.com/" + (school.isPresent() ? "school/" : "company/") + o)
                 .orElse(null);
     }
 
@@ -164,7 +163,7 @@ public final class CrmTags {
      * @param entity organization which Zefix information should be displayed
      * @return link to Zefix information
      */
-    public static String organizationZefixUrl(@NotNull LegalEntity entity) {
+    public static String organizationZefixUrl(@NotNull Entity entity) {
         return "https://www.zefix.ch/en/search/entity/list?name=" + entity.id() + "&searchType=exact";
     }
 

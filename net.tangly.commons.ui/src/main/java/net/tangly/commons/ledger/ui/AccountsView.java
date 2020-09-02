@@ -17,33 +17,53 @@ import java.time.LocalDate;
 import java.util.Collection;
 
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.bus.ledger.Account;
-import net.tangly.bus.ledger.Ledger;
 import net.tangly.bus.providers.RecordProviderInMemory;
+import net.tangly.commons.vaadin.CrudActionsListener;
+import net.tangly.commons.vaadin.CrudForm;
 import net.tangly.commons.vaadin.ExternalEntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
+import net.tangly.ledger.ports.LedgerBusinessLogic;
 import org.jetbrains.annotations.NotNull;
 
 public class AccountsView extends ExternalEntitiesView<Account> {
+    private LocalDate from;
+    private LocalDate to;
+
     /**
      * Constructor of the CRUD view for accounts of the ledger.
      *
-     * @param ledger ledger which accounts should be displayed
-     * @param mode mode of the view
+     * @param ledgerLogic ledger business lodgic which accounts should be displayed
+     * @param mode        mode of the view
      */
-    public AccountsView(@NotNull Ledger ledger, @NotNull Mode mode) {
-        super(Account.class, mode, AccountsView::defineAccountsView, RecordProviderInMemory.of((Collection)ledger.accounts()));
+    public AccountsView(@NotNull LedgerBusinessLogic ledgerLogic, @NotNull Mode mode) {
+        super(Account.class, mode, RecordProviderInMemory.of((Collection) ledgerLogic.ledger().accounts()));
+        from = LocalDate.of(LocalDate.now().getYear(), 1,1);
+        to = LocalDate.of(LocalDate.now().getYear(), 12,31);
+        initialize(this, null);
     }
 
-    public static void defineAccountsView(@NotNull Grid<Account> grid) {
-        ExternalEntitiesView.defineExternalEntitiesView(grid);
+    protected void initialize(@NotNull CrudForm<Account> form, @NotNull CrudActionsListener<Account> actionsListener) {
+        super.initialize(form, actionsListener);
+        Grid<Account> grid = grid();
         grid.addColumn(Account::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Account::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(o -> VaadinUtils.format(o.balance(LocalDate.now()))).setKey("balance").setHeader("Balance").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(new NumberRenderer<>(o -> o.balance(from), VaadinUtils.FORMAT)).setKey("opening").setHeader("Opening").setAutoWidth(true)
+                .setResizable(true).setTextAlign(ColumnTextAlign.END);
+        grid.addColumn(new NumberRenderer<>(o -> o.balance(to), VaadinUtils.FORMAT)).setKey("balance").setHeader("Balance").setAutoWidth(true)
+                .setResizable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(Account::kind).setKey("kind").setHeader("Kind").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Account::group).setKey("group").setHeader("Group").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Account::ownedBy).setKey("ownedBy").setHeader("Owned By").setAutoWidth(true).setResizable(true).setSortable(true);
+    }
+
+    public void interval(@NotNull LocalDate from, @NotNull LocalDate to) {
+        this.from = from;
+        this.to = to;
+        grid().getDataProvider().refreshAll();
     }
 
     @Override

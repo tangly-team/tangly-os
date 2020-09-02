@@ -116,24 +116,24 @@ public class CrmTsvHdl {
     public void importComments(@NotNull Path path) {
         Provider<Comment> comments = new InstanceProviderInMemory<>();
         importEntities(path, createTsvComment(), comments);
-        crm.naturalEntities().getAll().forEach(e -> addComments(e, comments));
-        crm.legalEntities().getAll().forEach(e -> addComments(e, comments));
-        crm.employees().getAll().forEach(e -> addComments(e, comments));
-        crm.contracts().getAll().forEach(e -> addComments(e, comments));
-        crm.subjects().getAll().forEach(e -> addComments(e, comments));
-        crm.interactions().getAll().forEach(e -> addComments(e, comments));
-        crm.activities().getAll().forEach(e -> addComments(e, comments));
+        crm.naturalEntities().items().forEach(e -> addComments(e, comments));
+        crm.legalEntities().items().forEach(e -> addComments(e, comments));
+        crm.employees().items().forEach(e -> addComments(e, comments));
+        crm.contracts().items().forEach(e -> addComments(e, comments));
+        crm.subjects().items().forEach(e -> addComments(e, comments));
+        crm.interactions().items().forEach(e -> addComments(e, comments));
+        crm.activities().items().forEach(e -> addComments(e, comments));
     }
 
     public void exportComments(@NotNull Path path) {
         Provider<Comment> comments = new InstanceProviderInMemory<>();
-        crm.naturalEntities().getAll().forEach(o -> comments.updateAll(o.comments()));
-        crm.legalEntities().getAll().forEach(o -> comments.updateAll(o.comments()));
-        crm.employees().getAll().forEach(o -> comments.updateAll(o.comments()));
-        crm.contracts().getAll().forEach(o -> comments.updateAll(o.comments()));
-        crm.subjects().getAll().forEach(o -> comments.updateAll(o.comments()));
-        crm.interactions().getAll().forEach(o -> comments.updateAll(o.comments()));
-        crm.activities().getAll().forEach(o -> comments.updateAll(o.comments()));
+        crm.naturalEntities().items().forEach(o -> comments.updateAll(o.comments()));
+        crm.legalEntities().items().forEach(o -> comments.updateAll(o.comments()));
+        crm.employees().items().forEach(o -> comments.updateAll(o.comments()));
+        crm.contracts().items().forEach(o -> comments.updateAll(o.comments()));
+        crm.subjects().items().forEach(o -> comments.updateAll(o.comments()));
+        crm.interactions().items().forEach(o -> comments.updateAll(o.comments()));
+        crm.activities().items().forEach(o -> comments.updateAll(o.comments()));
         exportEntities(path, createTsvComment(), comments);
     }
 
@@ -223,7 +223,7 @@ public class CrmTsvHdl {
             int counter = 0;
             tsvEntity.headers().forEach(e -> TsvProperty.print(out, e));
             out.println();
-            for (T entity : provider.getAll()) {
+            for (T entity : provider.items()) {
                 tsvEntity.exports(entity, out);
                 out.println();
                 ++counter;
@@ -283,7 +283,11 @@ public class CrmTsvHdl {
         fields.add(tagProperty(CRM_SITE_WORK));
         fields.add(TsvProperty.ofString(CRM_PHONE_WORK, e -> e.phoneNr(WORK).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(WORK, p)));
         fields.add(createAddressMapping(WORK));
-        fields.add(tagProperty(CRM_SCHOOL));
+        fields.add(TsvProperty.ofString(CRM_SCHOOL, e -> (e.containsTag(CRM_SCHOOL) ? "Y" : "N"), (e, p) -> {
+            if ("Y".equals(p)) {
+                e.tag(CRM_SCHOOL, null);
+            }
+        }));
         return TsvEntity.of(LegalEntity.class, fields, LegalEntity::new);
     }
 
@@ -386,11 +390,15 @@ public class CrmTsvHdl {
     }
 
     <T extends HasComments & HasOid> void addComments(T entity, Provider<Comment> comments) {
-        entity.addAll(comments.getAll().stream().filter(o -> o.ownedBy() == entity.oid()).collect(Collectors.toList()));
+        entity.addAll(comments.items().stream().filter(o -> o.ownedBy() == entity.oid()).collect(Collectors.toList()));
     }
 
     static <T extends HasTags> TsvProperty<T, String> tagProperty(String tagName) {
-        return TsvProperty.ofString(tagName, e -> e.tag(tagName).orElse(""), (e, p) -> e.tag(tagName, p));
+        return TsvProperty.ofString(tagName, e -> e.tag(tagName).orElse(null), (e, p) -> {
+            if (p != null) {
+                e.tag(tagName, p);
+            }
+        });
     }
 
     static <T extends CrmEntity> TsvProperty<T, Address> createAddressMapping(@NotNull String tag) {

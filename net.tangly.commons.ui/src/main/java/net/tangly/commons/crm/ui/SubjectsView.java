@@ -23,6 +23,8 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.server.StreamResource;
 import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.bus.crm.Subject;
+import net.tangly.commons.vaadin.CrudActionsListener;
+import net.tangly.commons.vaadin.CrudForm;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.One2OneField;
@@ -32,8 +34,10 @@ import org.jetbrains.annotations.NotNull;
 
 public class SubjectsView extends CrmEntitiesView<Subject> {
     public SubjectsView(@NotNull Crm crm, @NotNull Mode mode) {
-        super(crm, Subject.class, mode, InternalEntitiesView::defineGrid, crm.subjects());
+        super(crm, Subject.class, mode, crm.subjects());
+        initialize();
     }
+
 
     @Override
     protected Subject create() {

@@ -133,7 +133,7 @@ public final class CrmWorkflows {
      */
     public void exportInvoices(@NotNull Path directory) {
         InvoiceJson invoiceJson = new InvoiceJson(crm);
-        crm.invoices().getAll().forEach(o -> {
+        crm.invoices().items().forEach(o -> {
             Path invoicePath = resolvePath(o, directory);
             invoiceJson.exports(o, invoicePath.resolve(o.name() + JSON_EXT), Collections.emptyMap());
         });

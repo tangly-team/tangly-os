@@ -80,24 +80,24 @@ class CrmWorkflowTest {
     }
 
     private void verifyNaturalEntities(@NotNull Crm crm) {
-        assertThat(crm.naturalEntities().getAll().isEmpty()).isFalse();
+        assertThat(crm.naturalEntities().items().isEmpty()).isFalse();
         assertThat(crm.naturalEntities().find(1).isPresent()).isTrue();
         assertThat(crm.naturalEntities().findBy(NaturalEntity::id, "jd-01").isPresent()).isTrue();
-        crm.naturalEntities().getAll().forEach(naturalEntity -> assertThat(naturalEntity.isValid()).isTrue());
+        crm.naturalEntities().items().forEach(naturalEntity -> assertThat(naturalEntity.isValid()).isTrue());
     }
 
     private void verifyLegalEntities(@NotNull Crm crm) {
-        assertThat(crm.legalEntities().getAll().isEmpty()).isFalse();
+        assertThat(crm.legalEntities().items().isEmpty()).isFalse();
         assertThat(crm.legalEntities().find(100).isPresent()).isTrue();
         assertThat(crm.legalEntities().findBy(LegalEntity::id, "UNKNOWN-100").isPresent()).isTrue();
         assertThat(crm.legalEntities().findBy(LegalEntity::name, "hope llc").isPresent()).isTrue();
-        crm.naturalEntities().getAll().forEach(legalEntity -> assertThat(legalEntity.isValid()).isTrue());
+        crm.naturalEntities().items().forEach(legalEntity -> assertThat(legalEntity.isValid()).isTrue());
     }
 
     private void verifyEmployees(@NotNull Crm crm) {
-        assertThat(crm.employees().getAll().isEmpty()).isFalse();
+        assertThat(crm.employees().items().isEmpty()).isFalse();
         assertThat(crm.employees().find(200).isPresent()).isTrue();
-        crm.employees().getAll().forEach(employee -> {
+        crm.employees().items().forEach(employee -> {
             assertThat(employee.oid()).isNotEqualTo(Entity.UNDEFINED_OID);
             assertThat(employee.person()).isNotNull();
             assertThat(employee.organization()).isNotNull();
@@ -105,9 +105,9 @@ class CrmWorkflowTest {
     }
 
     private void verifyContracts(@NotNull Crm crm) {
-        assertThat(crm.contracts().getAll().isEmpty()).isFalse();
+        assertThat(crm.contracts().items().isEmpty()).isFalse();
         assertThat(crm.contracts().find(500).isPresent()).isTrue();
-        crm.contracts().getAll().forEach(contract -> {
+        crm.contracts().items().forEach(contract -> {
             assertThat(contract.bankConnection()).isNotNull();
             assertThat(contract.seller()).isNotNull();
             assertThat(contract.sellee()).isNotNull();
@@ -115,23 +115,23 @@ class CrmWorkflowTest {
     }
 
     private void verifyInvoices(@NotNull Crm crm) {
-        assertThat(crm.invoices().getAll().isEmpty()).isFalse();
+        assertThat(crm.invoices().items().isEmpty()).isFalse();
     }
 
     private void verifyProducts(@NotNull Crm crm) {
-        assertThat(crm.products().getAll().isEmpty()).isFalse();
+        assertThat(crm.products().items().isEmpty()).isFalse();
     }
 
     private void verifyInteractions(@NotNull Crm crm) {
-        assertThat(crm.interactions().getAll().isEmpty()).isFalse();
+        assertThat(crm.interactions().items().isEmpty()).isFalse();
     }
 
     private void verifyActivities(@NotNull Crm crm) {
-        assertThat(crm.activities().getAll().isEmpty()).isFalse();
+        assertThat(crm.activities().items().isEmpty()).isFalse();
     }
 
     private void verifySubjects(@NotNull Crm crm) {
-        assertThat(crm.subjects().getAll().isEmpty()).isTrue();
+        assertThat(crm.subjects().items().isEmpty()).isTrue();
     }
 
     private void verifyComments(@NotNull Crm crm) {

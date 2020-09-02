@@ -49,7 +49,7 @@ public class InstanceProviderInMemory<T extends HasOid> implements InstanceProvi
     }
 
     @Override
-    public List<T> getAll() {
+    public List<T> items() {
         return Collections.unmodifiableList(items);
     }
 

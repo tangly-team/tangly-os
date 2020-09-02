@@ -25,9 +25,10 @@ import net.tangly.bus.core.Entity;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.LegalEntity;
-import net.tangly.bus.providers.ProviderView;
+import net.tangly.bus.providers.ViewProvider;
 import net.tangly.commons.vaadin.CommentsView;
 import net.tangly.commons.vaadin.EntityField;
+import net.tangly.commons.vaadin.GridActionsListener;
 import net.tangly.commons.vaadin.One2ManyView;
 import net.tangly.commons.vaadin.TabsComponent;
 import net.tangly.commons.vaadin.TagsView;
@@ -37,21 +38,22 @@ import org.jetbrains.annotations.NotNull;
 
 public class LegalEntitiesView extends CrmEntitiesView<LegalEntity> {
     public LegalEntitiesView(@NotNull Crm crm, @NotNull Mode mode) {
-        super(crm, LegalEntity.class, mode, LegalEntitiesView::defineLegalEntityGrid, crm.legalEntities());
-        grid().addColumn(o -> VaadinUtils.format(crm().invoicedAmount(o))).setKey("invoicedAmount").setHeader("Invoiced").setAutoWidth(true).setResizable(true)
-                .setSortable(true);
-
+        super(crm, LegalEntity.class, mode, crm.legalEntities());
+        initialize();
     }
 
-    public static void defineLegalEntityGrid(@NotNull Grid<LegalEntity> grid) {
-        VaadinUtils.initialize(grid);
-        grid.addColumn(Entity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
-        grid.addColumn(zefixComponentRenderer()).setKey("id").setHeader("Id");
-        grid.addColumn(Entity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Entity::fromDate).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Entity::toDate).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(CrmTags::organizationLinkedInUrl).setKey("linkedIn").setHeader("LinkedIn");
-        // grid.addColumn(CrmTags::).setKey("webSite").setHeader("Web Site").setAutoWidth(true);
+    @Override
+    protected void initialize() {
+        initialize(this, new GridActionsListener<>(provider, grid().getDataProvider(), this::selectedItem));
+        VaadinUtils.initialize(grid());
+        Grid<LegalEntity> grid = grid();
+        grid.addColumn(LegalEntity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
+        grid.addColumn(zefixComponentRenderer()).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(LegalEntity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(LegalEntity::fromDate).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(LegalEntity::toDate).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(linkedInComponentRenderer(CrmTags::organizationLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
+        grid.addColumn(urlComponentRenderer(CrmTags.CRM_SITE_WORK)).setKey("webSite").setHeader("Web Site").setAutoWidth(true);
     }
 
     public static ComponentRenderer<Anchor, LegalEntity> zefixComponentRenderer() {
@@ -84,7 +86,7 @@ public class LegalEntitiesView extends CrmEntitiesView<LegalEntity> {
         tabs.add(new Tab("Comments"), new CommentsView(mode, workedOn));
         tabs.add(new Tab("Tags"), new TagsView(mode, workedOn, crm().tagTypeRegistry()));
         One2ManyView<Employee> employees = new One2ManyView<>(Employee.class, mode, LegalEntitiesView::defineOne2ManyEmployees,
-                ProviderView.of(crm().employees(), o -> entity.oid() == o.organization().oid()), new EmployeesView(crm(), mode));
+                ViewProvider.of(crm().employees(), o -> entity.oid() == o.organization().oid()), new EmployeesView(crm(), mode));
         tabs.add(new Tab("Employees"), employees);
     }
 

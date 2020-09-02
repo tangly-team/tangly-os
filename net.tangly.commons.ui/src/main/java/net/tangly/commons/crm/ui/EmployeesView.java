@@ -20,6 +20,8 @@ import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
+import net.tangly.commons.vaadin.CrudActionsListener;
+import net.tangly.commons.vaadin.CrudForm;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.One2OneField;
@@ -29,11 +31,14 @@ import org.jetbrains.annotations.NotNull;
 
 public class EmployeesView extends CrmEntitiesView<Employee> {
     public EmployeesView(@NotNull Crm crm, @NotNull Mode mode) {
-        super(crm, Employee.class, mode, EmployeesView::defineEmployeesGrid, crm.employees());
+        super(crm, Employee.class, mode, crm.employees());
+        initialize();
     }
 
-    public static void defineEmployeesGrid(@NotNull Grid<Employee> grid) {
-        InternalEntitiesView.defineGrid(grid);
+    @Override
+    protected void initialize() {
+        super.initialize();
+        Grid<Employee> grid = grid();
         grid.addColumn(e -> e.person().name()).setKey("person").setHeader("Person").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.organization().name()).setKey("organization").setHeader("Organization").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.tag(CrmTags.CRM_EMPLOYEE_TITLE).orElse("")).setKey("title").setHeader("Title").setSortable(true).setAutoWidth(true)

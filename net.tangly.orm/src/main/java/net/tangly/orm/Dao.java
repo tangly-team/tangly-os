@@ -118,7 +118,7 @@ public class Dao<T extends HasOid> implements InstanceProvider<T> {
     }
 
     @Override
-    public List<T> getAll() {
+    public List<T> items() {
         return find("TRUE");
     }
 

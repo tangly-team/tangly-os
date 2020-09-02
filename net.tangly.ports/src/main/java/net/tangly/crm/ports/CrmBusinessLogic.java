@@ -61,12 +61,12 @@ public class CrmBusinessLogic {
     }
 
     public BigDecimal contractAmountWithoutVat(@NotNull Contract contract, LocalDate from, LocalDate to) {
-        return crm.invoices().getAll().stream().filter(o -> (o.contract().oid() == contract.oid()) && DateUtilities.isWithinRange(o.dueDate(), from, to))
+        return crm.invoices().items().stream().filter(o -> (o.contract().oid() == contract.oid()) && DateUtilities.isWithinRange(o.dueDate(), from, to))
                 .map(Invoice::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public BigDecimal customerAmountWithoutVat(@NotNull LegalEntity customer, LocalDate from, LocalDate to) {
-        return crm.contracts().getAll().stream().filter(o -> (o.sellee().oid() == customer.oid())).map(o -> contractAmountWithoutVat(o, from, to))
+        return crm.contracts().items().stream().filter(o -> (o.sellee().oid() == customer.oid())).map(o -> contractAmountWithoutVat(o, from, to))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }

@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The interface defines a mixin and abstracts an entity with comments.
+ * Defines a mixin and abstracts an entity with comments.
  */
 public interface HasComments {
     /**

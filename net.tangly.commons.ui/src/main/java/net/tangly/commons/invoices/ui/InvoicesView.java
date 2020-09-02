@@ -20,6 +20,8 @@ import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.providers.Provider;
+import net.tangly.commons.vaadin.CrudActionsListener;
+import net.tangly.commons.vaadin.CrudForm;
 import net.tangly.commons.vaadin.ExternalEntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
@@ -30,15 +32,16 @@ public class InvoicesView extends ExternalEntitiesView<Invoice> {
     private final TextArea text;
 
     public InvoicesView(@NotNull Provider<Invoice> provider, @NotNull Mode mode) {
-        super(Invoice.class, mode, InvoicesView::defineInvoicesGrid, provider);
+        super(Invoice.class, mode, provider);
         id = VaadinUtils.createTextField("Id", "id");
         name = VaadinUtils.createTextField("Name", "name");
         text = new TextArea("Text", "text");
         text.setWidthFull();
     }
 
-    public static void defineInvoicesGrid(@NotNull Grid<Invoice> grid) {
-        VaadinUtils.initialize(grid);
+    protected void initialize(@NotNull CrudForm<Invoice> form, @NotNull CrudActionsListener<Invoice> actionsListener) {
+        super.initialize();
+        Grid<Invoice> grid = grid();
         grid.addColumn(Invoice::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Invoice::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Invoice::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);

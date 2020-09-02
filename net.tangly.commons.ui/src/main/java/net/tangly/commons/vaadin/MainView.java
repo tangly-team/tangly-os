@@ -38,9 +38,11 @@ import net.tangly.commons.crm.ui.SubjectsView;
 import net.tangly.commons.invoices.ui.InvoicesView;
 import net.tangly.commons.invoices.ui.ProductsView;
 import net.tangly.commons.ledger.ui.AccountsView;
+import net.tangly.commons.ledger.ui.LedgerView;
 import net.tangly.commons.ledger.ui.TransactionsView;
 import net.tangly.crm.ports.Crm;
 import net.tangly.crm.ports.CrmWorkflows;
+import net.tangly.ledger.ports.LedgerBusinessLogic;
 import net.tangly.ledger.ports.LedgerWorkflows;
 import org.jetbrains.annotations.NotNull;
 
@@ -51,7 +53,7 @@ import org.jetbrains.annotations.NotNull;
 public class MainView extends VerticalLayout {
     private Component currentView;
     private final Crm crm;
-    private final Ledger ledger;
+    private final LedgerBusinessLogic ledgerLogic;
     private final NaturalEntitiesView naturalEntitiesView;
     private final LegalEntitiesView legalEntitiesView;
     private final EmployeesView employeesView;
@@ -64,8 +66,7 @@ public class MainView extends VerticalLayout {
     private final ActivitiesView activitiesView;
     private final SubjectsView subjectsView;
 
-    private final AccountsView accountsView;
-    private final TransactionsView transactionsView;
+    private final LedgerView ledgerView;
 
     private final AnalyticsCrmView analyticsCrmView;
 
@@ -78,7 +79,7 @@ public class MainView extends VerticalLayout {
 
         LedgerWorkflows ledgerWorkflows = new LedgerWorkflows(new Ledger());
         ledgerWorkflows.importLedger(Paths.get("/Users/Shared/tangly/"));
-        ledger = ledgerWorkflows.ledger();
+        ledgerLogic = new LedgerBusinessLogic(ledgerWorkflows.ledger());
 
         naturalEntitiesView = new NaturalEntitiesView(crm, Crud.Mode.EDITABLE);
         legalEntitiesView = new LegalEntitiesView(crm, Crud.Mode.EDITABLE);
@@ -89,9 +90,8 @@ public class MainView extends VerticalLayout {
         interactionsView = new InteractionsView(crm, Crud.Mode.EDITABLE);
         activitiesView = new ActivitiesView(crm, Crud.Mode.EDITABLE);
         subjectsView = new SubjectsView(crm, Crud.Mode.EDITABLE);
-        accountsView = new AccountsView(ledger, Crud.Mode.EDITABLE);
-        transactionsView = new TransactionsView(ledger, Crud.Mode.EDITABLE);
-        analyticsCrmView = new AnalyticsCrmView(crm, ledger);
+        ledgerView = new LedgerView(ledgerLogic, Crud.Mode.EDITABLE);
+        analyticsCrmView = new AnalyticsCrmView(crm, ledgerLogic.ledger());
         tagTypesView = new TagTypesView(crm.tagTypeRegistry());
 
         setSizeFull();
@@ -128,12 +128,8 @@ public class MainView extends VerticalLayout {
 
         MenuItem ledger = menuBar.addItem("Financials");
         SubMenu ledgerSubMenu = ledger.getSubMenu();
-        ledgerSubMenu.addItem("Accounts", e -> select(accountsView));
-        ledgerSubMenu.addItem("Transactions", e -> select(transactionsView));
-
-        MenuItem analytics = menuBar.addItem("Analytics");
-        SubMenu analyticsSubMenu = analytics.getSubMenu();
-        analyticsSubMenu.addItem("Turnovers", e -> select(analyticsCrmView));
+        ledgerSubMenu.addItem("Ledger", e -> select(ledgerView));
+        ledgerSubMenu.addItem("Turnovers", e -> select(analyticsCrmView));
 
         MenuItem admin = menuBar.addItem("Admin");
         SubMenu adminSubmenu = admin.getSubMenu();
@@ -151,11 +147,11 @@ public class MainView extends VerticalLayout {
 
     private void countCrmTags() {
         tagTypesView.clearCounts();
-        tagTypesView.addCounts(crm.naturalEntities().getAll());
-        tagTypesView.addCounts(crm.legalEntities().getAll());
-        tagTypesView.addCounts(crm.employees().getAll());
-        tagTypesView.addCounts(crm.contracts().getAll());
-        tagTypesView.addCounts(crm.subjects().getAll());
+        tagTypesView.addCounts(crm.naturalEntities().items());
+        tagTypesView.addCounts(crm.legalEntities().items());
+        tagTypesView.addCounts(crm.employees().items());
+        tagTypesView.addCounts(crm.contracts().items());
+        tagTypesView.addCounts(crm.subjects().items());
         tagTypesView.refreshData();
     }
 

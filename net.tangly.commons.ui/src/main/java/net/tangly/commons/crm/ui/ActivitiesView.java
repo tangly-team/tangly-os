@@ -29,8 +29,9 @@ import net.tangly.bus.crm.Activity;
 import net.tangly.bus.crm.ActivityCode;
 import net.tangly.bus.crm.Subject;
 import net.tangly.commons.vaadin.CommentsView;
+import net.tangly.commons.vaadin.CrudActionsListener;
+import net.tangly.commons.vaadin.CrudForm;
 import net.tangly.commons.vaadin.EntityField;
-import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.TabsComponent;
 import net.tangly.commons.vaadin.TagsView;
 import net.tangly.commons.vaadin.VaadinUtils;
@@ -39,11 +40,14 @@ import org.jetbrains.annotations.NotNull;
 
 public class ActivitiesView extends CrmEntitiesView<Activity> {
     public ActivitiesView(@NotNull Crm crm, @NotNull Mode mode) {
-        super(crm, Activity.class, mode, ActivitiesView::defineActivitiesGrid, crm.activities());
+        super(crm, Activity.class, mode, crm.activities());
+        initialize();
     }
 
-    public static void defineActivitiesGrid(@NotNull Grid<Activity> grid) {
-        InternalEntitiesView.defineGrid(grid);
+    @Override
+    protected void initialize() {
+        super.initialize();
+        Grid<Activity> grid = grid();
         grid.addColumn(Activity::durationInMinutes).setKey("durationInMinutes").setHeader("Duration (')").setAutoWidth(true).setResizable(true)
                 .setSortable(true).setFrozen(true);
         grid.addColumn(Activity::code).setKey("code").setHeader("Code").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);

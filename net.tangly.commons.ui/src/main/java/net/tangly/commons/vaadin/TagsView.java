@@ -38,16 +38,18 @@ public class TagsView extends Crud<Tag> implements CrudForm<Tag> {
     private final transient TextField value;
 
     public TagsView(@NotNull Mode mode, @NotNull HasTags entity, @NotNull TagTypeRegistry registry) {
-        super(Tag.class,mode, TagsView::defineGrid, new ListDataProvider<>(entity.tags()));
-        initialize(this, new GridActionsListener<>(grid().getDataProvider(), this::selectedItem));
+        super(Tag.class,mode, new ListDataProvider<>(entity.tags()));
         this.hasTags = entity;
         this.registry = registry;
         namespace = new ComboBox<>("Namespace");
         name = new ComboBox<>("Name");
         value = new TextField("Value");
+        initialize();
     }
 
-    public static void defineGrid(@NotNull Grid<Tag> grid) {
+    protected void initialize() {
+        super.initialize(this, new GridActionsListener<>(grid().getDataProvider(), this::selectedItem));
+        Grid<Tag> grid = grid();
         VaadinUtils.initialize(grid);
         grid.addColumn(Tag::namespace).setKey("namespace").setHeader("Namespace").setSortable(true).setFlexGrow(0).setWidth("10em").setResizable(false);
         grid.addColumn(Tag::name).setKey("name").setHeader("Name").setSortable(true).setFlexGrow(0).setWidth("10em").setResizable(false);

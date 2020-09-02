@@ -161,7 +161,7 @@ public class InvoiceJson implements InvoiceGenerator {
     public JsonEntity<Contract> createJsonContract() {
         Function<JSONObject, Contract> imports = object -> {
             long oid = object.getLong("contractOid");
-            return crm.contracts().getAll().stream().filter(o -> oid == o.oid()).findAny().orElse(null);
+            return crm.contracts().items().stream().filter(o -> oid == o.oid()).findAny().orElse(null);
         };
 
         List<JsonField<Contract, ?>> fields = new ArrayList<>();
@@ -172,7 +172,7 @@ public class InvoiceJson implements InvoiceGenerator {
     public JsonEntity<LegalEntity> createJsonLegalEntity() {
         Function<JSONObject, LegalEntity> imports = object -> {
             String id = get("id", object);
-            return (id != null) ? crm.legalEntities().getAll().stream().filter(o -> id.equals(o.id())).findAny().orElse(null) : null;
+            return (id != null) ? crm.legalEntities().items().stream().filter(o -> id.equals(o.id())).findAny().orElse(null) : null;
         };
 
         List<JsonField<LegalEntity, ?>> fields = new ArrayList<>();
@@ -227,7 +227,7 @@ public class InvoiceJson implements InvoiceGenerator {
 
     public Product importProduct(JSONObject object) {
         String id = get("id", object);
-        return crm.products().getAll().stream().filter(o -> o.id().equals(id)).findAny().orElse(null);
+        return crm.products().items().stream().filter(o -> o.id().equals(id)).findAny().orElse(null);
     }
 
     public JsonArray<Invoice, InvoiceLine> createPositions() {

@@ -10,7 +10,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class ProjectsView extends InternalEntitiesView<Project> {
     public ProjectsView(@NotNull List<Project> items, @NotNull Mode mode, Provider<Project> provider, TagTypeRegistry registry) {
-        super(Project.class, mode, InternalEntitiesView::defineGrid, provider, registry);
+        super(Project.class, mode, provider, registry);
+        initialize();
     }
 
     @Override

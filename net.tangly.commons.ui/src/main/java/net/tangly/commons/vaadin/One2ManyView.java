@@ -62,7 +62,7 @@ public class One2ManyView<T extends Entity> extends VerticalLayout {
         this.view = view;
         this.provider = provider;
         this.grid = new Grid<>(entityClass, false);
-        grid.setDataProvider(DataProvider.ofCollection(provider.getAll()));
+        grid.setDataProvider(DataProvider.ofCollection(provider.items()));
         grid.asSingleSelect().addValueChangeListener(event -> selectItem(event.getValue()));
         gridConfigurator.accept(grid);
         setSizeFull();

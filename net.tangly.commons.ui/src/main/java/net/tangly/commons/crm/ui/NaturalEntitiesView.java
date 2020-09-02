@@ -24,10 +24,11 @@ import net.tangly.bus.core.PhoneNr;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.NaturalEntity;
-import net.tangly.bus.providers.ProviderView;
+import net.tangly.bus.providers.ViewProvider;
 import net.tangly.commons.vaadin.CommentsView;
+import net.tangly.commons.vaadin.CrudActionsListener;
+import net.tangly.commons.vaadin.CrudForm;
 import net.tangly.commons.vaadin.EntityField;
-import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.One2ManyView;
 import net.tangly.commons.vaadin.TabsComponent;
 import net.tangly.commons.vaadin.TagsView;
@@ -37,14 +38,17 @@ import org.jetbrains.annotations.NotNull;
 
 public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
     public NaturalEntitiesView(@NotNull Crm crm, @NotNull Mode mode) {
-        super(crm, NaturalEntity.class, mode, NaturalEntitiesView::defineNaturalEntityGrid, crm.naturalEntities());
+        super(crm, NaturalEntity.class, mode, crm.naturalEntities());
+        initialize();
     }
 
-    public static void defineNaturalEntityGrid(@NotNull Grid<NaturalEntity> grid) {
-        InternalEntitiesView.defineGrid(grid);
+    @Override
+    protected void initialize() {
+        super.initialize();
+        Grid<NaturalEntity> grid = grid();
         grid.addColumn(NaturalEntity::lastname).setKey("lastname").setHeader("Last Name").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(NaturalEntity::firstname).setKey("firstname").setHeader("First Name").setSortable(true).setAutoWidth(true).setResizable(true);
-        grid.addColumn(CrmTags::individualLinkedInUrl).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
+        grid.addColumn(linkedInComponentRenderer(CrmTags::individualLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
     }
 
     public static void defineOne2ManyEmployees(@NotNull Grid<Employee> grid) {
@@ -64,7 +68,7 @@ public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
         tabs.add(new Tab("Comments"), new CommentsView(mode, workedOn));
         tabs.add(new Tab("Tags"), new TagsView(mode, workedOn, crm().tagTypeRegistry()));
         One2ManyView<Employee> employees = new One2ManyView<>(Employee.class, mode, NaturalEntitiesView::defineOne2ManyEmployees,
-                ProviderView.of(crm().employees(), o -> entity.oid() == o.person().oid()), new EmployeesView(crm(), mode));
+                ViewProvider.of(crm().employees(), o -> entity.oid() == o.person().oid()), new EmployeesView(crm(), mode));
         tabs.add(new Tab("Employees"), employees);
     }
 

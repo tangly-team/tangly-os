@@ -39,17 +39,17 @@ public class CommentsView extends Crud<Comment> implements CrudForm<Comment> {
     private final TextArea text;
 
     public CommentsView(@NotNull Mode mode, @NotNull HasComments entity) {
-        super(Comment.class, mode, CommentsView::defineGrid, new ListDataProvider<>(entity.comments()));
-        initialize(this, new GridActionsListener<>(grid().getDataProvider(), this::selectedItem));
+        super(Comment.class, mode, new ListDataProvider<>(entity.comments()));
         this.hasComments = entity;
         created = new DateTimePicker("Created");
         author = VaadinUtils.createTextField("Author", "author");
         text = new TextArea("Text");
-
+        initialize();
     }
 
-    public static void defineGrid(@NotNull Grid<Comment> grid) {
-        VaadinUtils.initialize(grid);
+    protected void initialize() {
+        super.initialize(this, new GridActionsListener<>(grid().getDataProvider(), this::selectedItem));
+        Grid<Comment> grid = grid();
         grid.addColumn(Comment::created).setKey("created").setHeader("Created").setSortable(true).setFlexGrow(0).setWidth("200px").setResizable(false)
                 .setFrozen(true);
         grid.addColumn(Comment::author).setKey("author").setHeader("Author").setSortable(true).setFlexGrow(0).setWidth("200px").setResizable(false);

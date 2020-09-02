@@ -81,7 +81,7 @@ public class AnalyticsCrmView extends HorizontalLayout {
         CrmBusinessLogic logic = new CrmBusinessLogic(crm);
         List<String> contracts = new ArrayList<>();
         List<BigDecimal> amounts = new ArrayList<>();
-        crm.contracts().getAll().forEach(contract -> {
+        crm.contracts().items().forEach(contract -> {
             BigDecimal amount = logic.contractAmountWithoutVat(contract, null, null);
             if (!amount.equals(BigDecimal.ZERO)) {
                 contracts.add(contract.id());
@@ -105,7 +105,7 @@ public class AnalyticsCrmView extends HorizontalLayout {
         CrmBusinessLogic logic = new CrmBusinessLogic(crm);
         List<String> customers = new ArrayList<>();
         List<BigDecimal> amounts = new ArrayList<>();
-        crm.legalEntities().getAll().forEach(customer -> {
+        crm.legalEntities().items().forEach(customer -> {
             BigDecimal amount = logic.customerAmountWithoutVat(customer, null, null);
             if (!amount.equals(BigDecimal.ZERO)) {
                 customers.add(customer.name());

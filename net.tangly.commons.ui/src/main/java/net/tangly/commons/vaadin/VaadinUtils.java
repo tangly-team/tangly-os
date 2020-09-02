@@ -28,7 +28,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import org.jetbrains.annotations.NotNull;
 
 public final class VaadinUtils {
-    private static final DecimalFormat FORMAT = new DecimalFormat("#,###,###.##", new DecimalFormatSymbols(Locale.US));
+    public static final DecimalFormat FORMAT = new DecimalFormat("###,##0.00", new DecimalFormatSymbols(Locale.US));
 
     private VaadinUtils() {
     }

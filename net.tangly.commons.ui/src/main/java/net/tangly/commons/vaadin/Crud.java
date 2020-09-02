@@ -13,8 +13,6 @@
 
 package net.tangly.commons.vaadin;
 
-import java.util.function.Consumer;
-
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -74,7 +72,7 @@ public class Crud<T> extends VerticalLayout {
     private Button update;
     private Button delete;
 
-    public Crud(@NotNull Class<T> entityClass, @NotNull Mode mode, @NotNull Consumer<Grid<T>> gridConfigurator, @NotNull DataProvider<T, ?> dataProvider) {
+    public Crud(@NotNull Class<T> entityClass, @NotNull Mode mode, @NotNull DataProvider<T, ?> dataProvider) {
         this.entityClass = entityClass;
         this.mode = mode;
         this.grid = new Grid<>(entityClass, false);
@@ -83,11 +81,14 @@ public class Crud<T> extends VerticalLayout {
         grid.asSingleSelect().addValueChangeListener(event -> selectedItem(event.getValue()));
         grid.setMinHeight("20em");
         grid.setWidthFull();
-        gridConfigurator.accept(grid);
-
         setSizeFull();
-        addAndExpand(grid, createCrudButtons());
+        addAndExpand(grid(), createCrudButtons());
         selectedItem(null);
+    }
+
+    protected void initialize(@NotNull CrudForm<T> form, @NotNull CrudActionsListener<T> actionsListener) {
+        this.form = form;
+        this.actionsListener = actionsListener;
     }
 
     /**
@@ -138,11 +139,6 @@ public class Crud<T> extends VerticalLayout {
         }
     }
 
-    protected void initialize(@NotNull CrudForm<T> form, @NotNull CrudActionsListener<T> actionsListener) {
-        this.form = form;
-        this.actionsListener = actionsListener;
-    }
-
     protected Class<T> entityClass() {
         return entityClass;
     }
@@ -151,7 +147,7 @@ public class Crud<T> extends VerticalLayout {
         return grid;
     }
 
-    private HorizontalLayout createCrudButtons() {
+    protected HorizontalLayout createCrudButtons() {
         details = new Button("Details", VaadinIcon.ELLIPSIS_H.create(), event -> displayDialog(CrudForm.Operation.VIEW));
         add = new Button("Add", VaadinIcon.PLUS.create(), event -> displayDialog(CrudForm.Operation.CREATE));
         update = new Button("Update", VaadinIcon.PENCIL.create(), event -> displayDialog(CrudForm.Operation.UPDATE));

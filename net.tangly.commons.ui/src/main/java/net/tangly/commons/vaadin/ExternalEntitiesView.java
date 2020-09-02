@@ -13,10 +13,7 @@
 
 package net.tangly.commons.vaadin;
 
-import java.util.function.Consumer;
-
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.provider.DataProvider;
 import net.tangly.bus.core.HasId;
@@ -36,20 +33,19 @@ public abstract class ExternalEntitiesView<T extends HasId> extends Crud<T> impl
     /**
      * Constructor of the CRUD view for a product.
      *
-     * @param entityClass      class of the entities displayed
-     * @param gridConfigurator configurator of the grid view
-     * @param provider         provider of the class
+     * @param entityClass class of the entities displayed
+     * @param provider    provider of the class
      */
-    public ExternalEntitiesView(@NotNull Class<T> entityClass, @NotNull Mode mode, @NotNull Consumer<Grid<T>> gridConfigurator, @NotNull Provider<T> provider) {
-        super(entityClass, mode, gridConfigurator, DataProvider.ofCollection(provider.getAll()));
+    public ExternalEntitiesView(@NotNull Class<T> entityClass, @NotNull Mode mode, @NotNull Provider<T> provider) {
+        super(entityClass, mode, DataProvider.ofCollection(provider.items()));
         this.provider = provider;
-        initialize(this, new GridActionsListener<>(provider, grid().getDataProvider(), this::selectedItem));
         id = VaadinUtils.createTextField("Id", "id");
     }
 
-    public static <T extends HasId> void defineExternalEntitiesView(@NotNull Grid<T> grid) {
-        VaadinUtils.initialize(grid);
-        grid.addColumn(T::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
+    protected void initialize() {
+        super.initialize(this, new GridActionsListener<>(provider, grid().getDataProvider(), this::selectedItem));
+        VaadinUtils.initialize(grid());
+        grid().addColumn(T::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
     }
 
     /**

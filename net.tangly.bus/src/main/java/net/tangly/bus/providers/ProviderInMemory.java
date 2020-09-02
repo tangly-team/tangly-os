@@ -13,41 +13,47 @@
 
 package net.tangly.bus.providers;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
+import net.tangly.bus.core.HasId;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * Defines a filtered view on an underlying provider.
- * @param <T> type of the items handled in the provider
+ * Instance provider with instances in memory.
+ *
+ * @param <T> type of the instances handled in the provider
  */
-public class ProviderView<T> implements Provider<T> {
-    private final Provider<T> provider;
-    private final Predicate<T> predicate;
+public class ProviderInMemory<T> implements Provider<T> {
+    private static final Logger logger = LoggerFactory.getLogger(ProviderInMemory.class);
+    private final List<T> items;
 
-    public ProviderView(@NotNull Provider<T> provider, @NotNull Predicate<T> predicate) {
-        this.provider = provider;
-        this.predicate = predicate;
+    public ProviderInMemory() {
+        items = new ArrayList<>();
     }
 
-    public static <T> Provider<T> of(@NotNull Provider<T> provider, @NotNull Predicate<T> predicate) {
-        return new ProviderView<>(provider, predicate);
+    public static <T> Provider<T> of(Iterable<? extends T> items) {
+        Provider<T> provider = new ProviderInMemory<>();
+        provider.updateAll(items);
+        return provider;
     }
 
     @Override
-    public List<T> getAll() {
-        return provider.getAll().stream().filter(predicate).collect(Collectors.toList());
+    public List<T> items() {
+        return Collections.unmodifiableList(items);
     }
 
     @Override
     public void update(@NotNull T entity) {
-        provider.update(entity);
+        items.remove(entity);
+        items.add(entity);
     }
 
     @Override
     public void delete(@NotNull T entity) {
-        provider.delete(entity);
+        items.remove(entity);
     }
 }

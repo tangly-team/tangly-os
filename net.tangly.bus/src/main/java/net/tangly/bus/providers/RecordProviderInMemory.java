@@ -43,14 +43,17 @@ public class RecordProviderInMemory<T extends HasId> implements RecordProvider<T
         return provider;
     }
 
+    @Override
     public Optional<T> find(@NotNull String id) {
         return items.stream().filter(o -> (id.equals(o.id()))).findAny();
     }
 
-    public List<T> getAll() {
+    @Override
+    public List<T> items() {
         return Collections.unmodifiableList(items);
     }
 
+    @Override
     public void update(@NotNull T entity) {
         Optional<T> found = find(entity.id());
         found.ifPresent(o -> {
@@ -62,8 +65,8 @@ public class RecordProviderInMemory<T extends HasId> implements RecordProvider<T
         items.add(entity);
     }
 
+    @Override
     public void delete(@NotNull T entity) {
         items.remove(entity);
     }
-
 }
