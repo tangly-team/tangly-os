@@ -106,7 +106,7 @@ public class InvoiceQrCode implements InvoiceGenerator {
 
     private static net.codecrete.qrbill.generator.Address create(@NotNull LegalEntity entity) {
         net.codecrete.qrbill.generator.Address qrAddress = new net.codecrete.qrbill.generator.Address();
-        entity.address(CrmTags.WORK).ifPresent(address -> {
+        entity.address(CrmTags.Type.work).ifPresent(address -> {
             qrAddress.setName(entity.name());
             qrAddress.setStreet(address.street());
             qrAddress.setHouseNo(null);

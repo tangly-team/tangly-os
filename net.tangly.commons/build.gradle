@@ -22,19 +22,9 @@ project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
 project.description = "Commons data structures - using Java 14 or higher (tangly llc)"
 
-
 dependencies {
-    implementation project(':net.tangly.bus')
-    implementation "org.hsqldb:hsqldb:$hsqldbVersion"
     implementation "javax.inject:javax.inject:1"
     implementation "com.networknt:json-schema-validator:1.0.43"
     implementation "com.sun.mail:jakarta.mail:1.6.5"
-
-    implementation "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
-    implementation "com.fasterxml.jackson.module:jackson-module-parameter-names:$jacksonVersion"
-    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion"
-    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
-
-    testImplementation "org.flywaydb:flyway-core:$flyWayVersion"
 }
 

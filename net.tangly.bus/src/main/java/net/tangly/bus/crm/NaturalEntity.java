@@ -29,6 +29,7 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
     private String firstname;
     private String lastname;
     private GenderCode gender;
+    private byte[] photo;
 
     public String firstname() {
         return firstname;
@@ -54,6 +55,18 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
         this.gender = gender;
     }
 
+    public byte[] photo() {
+        return photo;
+    }
+
+    public void photo(byte[] photo) {
+        this.photo = photo;
+    }
+
+    public boolean hasPhoto() {
+        return photo != null;
+    }
+
     @Override
     public void name(String name) {
     }
@@ -72,8 +85,8 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
     }
 
     public boolean isValid() {
-        return !Strings.isNullOrBlank(lastname()) && (address(CrmTags.HOME).isEmpty() || address(CrmTags.HOME).orElseThrow().isValid()) &&
-                (phoneNr(CrmTags.HOME).isEmpty() || phoneNr(CrmTags.HOME).orElseThrow().isValid()) && EmailAddress.isValid(email(CrmTags.HOME).orElse(null));
+        return !Strings.isNullOrBlank(lastname()) && (address(CrmTags.Type.home).isEmpty() || address(CrmTags.Type.home).orElseThrow().isValid()) &&
+                (phoneNr(CrmTags.Type.home).isEmpty() || phoneNr(CrmTags.Type.home).orElseThrow().isValid()) && EmailAddress.isValid(email(CrmTags.Type.home).orElse(null));
     }
 
     @Override

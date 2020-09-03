@@ -40,6 +40,7 @@ import net.tangly.bus.crm.ActivityCode;
 import net.tangly.bus.crm.BankConnection;
 import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.CrmEntity;
+import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.GenderCode;
 import net.tangly.bus.crm.Interaction;
@@ -72,9 +73,6 @@ import static net.tangly.bus.crm.CrmTags.CRM_SCHOOL;
 import static net.tangly.bus.crm.CrmTags.CRM_SITE_HOME;
 import static net.tangly.bus.crm.CrmTags.CRM_SITE_WORK;
 import static net.tangly.bus.crm.CrmTags.CRM_VAT_NUMBER;
-import static net.tangly.bus.crm.CrmTags.HOME;
-import static net.tangly.bus.crm.CrmTags.MOBILE;
-import static net.tangly.bus.crm.CrmTags.WORK;
 
 /**
  * Provides import and export functions for CRM entities persisted in comma separated tabs files. These files are often defined for integration testing or
@@ -267,9 +265,10 @@ public class CrmTsvHdl {
         fields.add(TsvProperty.ofString(LASTNAME, NaturalEntity::lastname, NaturalEntity::lastname));
         fields.add(TsvProperty.ofString(FIRSTNAME, NaturalEntity::firstname, NaturalEntity::firstname));
         fields.add(TsvProperty.of("gender", NaturalEntity::gender, NaturalEntity::gender, e -> Enum.valueOf(GenderCode.class, e), Enum::name));
-        fields.add(createAddressMapping(HOME));
-        fields.add(TsvProperty.ofString(CRM_EMAIL_HOME, e -> e.email(HOME).orElse(""), (e, p) -> e.email(HOME, p)));
-        fields.add(TsvProperty.ofString(CRM_PHONE_MOBILE, e -> e.phoneNr(MOBILE).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(MOBILE, p)));
+        fields.add(createAddressMapping(CrmTags.Type.home));
+        fields.add(TsvProperty.ofString(CRM_EMAIL_HOME, e -> e.email(CrmTags.Type.home).orElse(""), (e, p) -> e.email(CrmTags.Type.home, p)));
+        fields.add(TsvProperty
+                .ofString(CRM_PHONE_MOBILE, e -> e.phoneNr(CrmTags.Type.mobile).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(CrmTags.Type.mobile, p)));
         fields.add(tagProperty(CRM_IM_LINKEDIN));
         fields.add(tagProperty(CRM_SITE_HOME));
         return TsvEntity.of(NaturalEntity.class, fields, NaturalEntity::new);
@@ -281,8 +280,9 @@ public class CrmTsvHdl {
         fields.add(tagProperty(CRM_IM_LINKEDIN));
         fields.add(tagProperty(CRM_EMAIL_WORK));
         fields.add(tagProperty(CRM_SITE_WORK));
-        fields.add(TsvProperty.ofString(CRM_PHONE_WORK, e -> e.phoneNr(WORK).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(WORK, p)));
-        fields.add(createAddressMapping(WORK));
+        fields.add(TsvProperty
+                .ofString(CRM_PHONE_WORK, e -> e.phoneNr(CrmTags.Type.work).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(CrmTags.Type.work, p)));
+        fields.add(createAddressMapping(CrmTags.Type.work));
         fields.add(TsvProperty.ofString(CRM_SCHOOL, e -> (e.containsTag(CRM_SCHOOL) ? "Y" : "N"), (e, p) -> {
             if ("Y".equals(p)) {
                 e.tag(CRM_SCHOOL, null);
@@ -303,7 +303,8 @@ public class CrmTsvHdl {
                 .of("organizationOid", Employee::organization, Employee::organization, e -> this.findLegalEntityByOid(e).orElse(null), convertFoidTo()));
         fields.add(tagProperty(CRM_EMPLOYEE_TITLE));
         fields.add(tagProperty(CRM_EMAIL_WORK));
-        fields.add(TsvProperty.ofString(CRM_PHONE_WORK, e -> e.phoneNr(WORK).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(WORK, p)));
+        fields.add(TsvProperty
+                .ofString(CRM_PHONE_WORK, e -> e.phoneNr(CrmTags.Type.work).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(CrmTags.Type.work, p)));
         return TsvEntity.of(Employee.class, fields, Employee::new);
     }
 
@@ -401,8 +402,8 @@ public class CrmTsvHdl {
         });
     }
 
-    static <T extends CrmEntity> TsvProperty<T, Address> createAddressMapping(@NotNull String tag) {
-        return TsvProperty.of(createTsvAddress(), (T e) -> e.address(tag).orElse(null), (e, p) -> e.address(tag, p));
+    static <T extends CrmEntity> TsvProperty<T, Address> createAddressMapping(@NotNull CrmTags.Type type) {
+        return TsvProperty.of(createTsvAddress(), (T e) -> e.address(type).orElse(null), (e, p) -> e.address(type, p));
     }
 
     static <T extends HasOid> Function<T, Object> convertFoidTo() {

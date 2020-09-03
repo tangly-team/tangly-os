@@ -13,21 +13,23 @@
 
 package net.tangly.commons.crm.ui;
 
+import java.io.ByteArrayInputStream;
+
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.server.StreamResource;
 import net.tangly.bus.core.PhoneNr;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.bus.providers.ViewProvider;
 import net.tangly.commons.vaadin.CommentsView;
-import net.tangly.commons.vaadin.CrudActionsListener;
-import net.tangly.commons.vaadin.CrudForm;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.One2ManyView;
 import net.tangly.commons.vaadin.TabsComponent;
@@ -96,13 +98,18 @@ public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
         form.add(new HtmlComponent("br"));
         form.add(mobilePhone, homeEmail, homeSite);
 
+        Image image = new Image(new StreamResource("photo.jpg", () -> new ByteArrayInputStream(entity.photo())), "photo");
+        image.setWidth("200px");
+        image.setHeight("200px");
+
+
         binder = new Binder<>(entityClass());
         entityField.bind(binder);
         binder.bind(firstname, NaturalEntity::firstname, NaturalEntity::firstname);
         binder.bind(lastname, NaturalEntity::lastname, NaturalEntity::lastname);
-        binder.bind(mobilePhone, e -> e.phoneNr(CrmTags.MOBILE).map(PhoneNr::number).orElse(null), null);
-        binder.bind(homeEmail, e -> e.email(CrmTags.HOME).orElse(null), null);
-        binder.bind(homeSite, e -> e.site(CrmTags.HOME).orElse(null), null);
+        binder.bind(mobilePhone, e -> e.phoneNr(CrmTags.Type.mobile).map(PhoneNr::number).orElse(null), null);
+        binder.bind(homeEmail, e -> e.email(CrmTags.Type.home).orElse(null), null);
+        binder.bind(homeSite, e -> e.site(CrmTags.Type.home).orElse(null), null);
         binder.readBean(entity);
         return form;
     }

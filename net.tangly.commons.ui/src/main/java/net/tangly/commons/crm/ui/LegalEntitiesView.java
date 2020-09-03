@@ -104,7 +104,7 @@ public class LegalEntitiesView extends CrmEntitiesView<LegalEntity> {
 
         binder = new Binder<>(entityClass());
         entityField.bind(binder);
-        binder.bind(site, e -> e.site(CrmTags.WORK).orElse(null), (e, v) -> e.site(CrmTags.WORK, v));
+        binder.bind(site, e -> e.site(CrmTags.Type.work).orElse(null), (e, v) -> e.site(CrmTags.Type.work, v));
         binder.bind(vatNr, LegalEntity::vatNr, LegalEntity::vatNr);
         binder.readBean(entity);
         return form;

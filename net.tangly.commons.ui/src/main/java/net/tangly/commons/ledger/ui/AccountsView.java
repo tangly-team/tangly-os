@@ -49,15 +49,16 @@ public class AccountsView extends ExternalEntitiesView<Account> {
     protected void initialize(@NotNull CrudForm<Account> form, @NotNull CrudActionsListener<Account> actionsListener) {
         super.initialize(form, actionsListener);
         Grid<Account> grid = grid();
-        grid.addColumn(Account::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Account::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Account::group).setKey("group").setHeader("Group").setAutoWidth(true).setResizable(true);
+        grid.addColumn(Account::id).setKey("account").setHeader("Account").setAutoWidth(true).setResizable(true);
+        grid.addColumn(Account::text).setKey("description").setHeader("Description").setAutoWidth(true).setResizable(true);
         grid.addColumn(new NumberRenderer<>(o -> o.balance(from), VaadinUtils.FORMAT)).setKey("opening").setHeader("Opening").setAutoWidth(true)
                 .setResizable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(new NumberRenderer<>(o -> o.balance(to), VaadinUtils.FORMAT)).setKey("balance").setHeader("Balance").setAutoWidth(true)
                 .setResizable(true).setTextAlign(ColumnTextAlign.END);
-        grid.addColumn(Account::kind).setKey("kind").setHeader("Kind").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Account::group).setKey("group").setHeader("Group").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Account::ownedBy).setKey("ownedBy").setHeader("Owned By").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Account::kind).setKey("kind").setHeader("Kind").setAutoWidth(true).setResizable(true);
+        grid.addColumn(Account::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true);
+        grid.addColumn(Account::ownedBy).setKey("ownedBy").setHeader("Owned By").setAutoWidth(true).setResizable(true);
     }
 
     public void interval(@NotNull LocalDate from, @NotNull LocalDate to) {

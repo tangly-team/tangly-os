@@ -13,7 +13,6 @@
 
 package net.tangly.bus.crm;
 
-
 import java.util.Optional;
 
 import net.tangly.bus.core.Address;
@@ -22,46 +21,46 @@ import net.tangly.bus.core.PhoneNr;
 import net.tangly.bus.core.Tag;
 
 /**
- * A customer relation management entity defines a set of operations useful for all customers. All information are stored as tags for future extensions.
+ * A customer relation management mixin entity defines a set of operations useful for all customers. All information are stored as tags for future extensions.
  */
 public interface CrmEntity extends HasTags {
-    default Optional<PhoneNr> phoneNr(String kind) {
-        return findBy(CrmTags.phoneTag(kind)).map(o -> PhoneNr.of(o.value()));
+    default Optional<PhoneNr> phoneNr(CrmTags.Type type) {
+        return findBy(CrmTags.phoneTag(type.name())).map(o -> PhoneNr.of(o.value()));
     }
 
-    default void phoneNr(String kind, String phoneNr) {
-        tag(CrmTags.phoneTag(kind), phoneNr);
+    default void phoneNr(CrmTags.Type type, String phoneNr) {
+        tag(CrmTags.phoneTag(type.name()), phoneNr);
     }
 
-    default Optional<String> email(String kind) {
-        return findBy(CrmTags.emailTag(kind)).map(Tag::value);
+    default Optional<String> email(CrmTags.Type type) {
+        return findBy(CrmTags.emailTag(type.name())).map(Tag::value);
     }
 
-    default void email(String kind, String email) {
-        tag(CrmTags.emailTag(kind), email);
+    default void email(CrmTags.Type type, String email) {
+        tag(CrmTags.emailTag(type.name()), email);
     }
 
-    default Optional<Address> address(String kind) {
-        return findBy(CrmTags.addressTag(kind)).map(Tag::value).map(Address::of);
+    default Optional<Address> address(CrmTags.Type type) {
+        return findBy(CrmTags.addressTag(type.name())).map(Tag::value).map(Address::of);
     }
 
-    default void address(String kind, Address address) {
-        tag(CrmTags.addressTag(kind), address.text());
+    default void address(CrmTags.Type type, Address address) {
+        tag(CrmTags.addressTag(type.name()), address.text());
     }
 
-    default Optional<String> im(String kind) {
-        return findBy(CrmTags.imTag(kind)).map(Tag::value);
+    default Optional<String> im(CrmTags.Type type) {
+        return findBy(CrmTags.imTag(type.name())).map(Tag::value);
     }
 
-    default void im(String kind, String reference) {
-        tag(CrmTags.imTag(kind), reference);
+    default void im(CrmTags.Type type, String reference) {
+        tag(CrmTags.imTag(type.name()), reference);
     }
 
-    default Optional<String> site(String kind) {
-        return findBy(CrmTags.siteTag(kind)).map(Tag::value);
+    default Optional<String> site(CrmTags.Type type) {
+        return findBy(CrmTags.siteTag(type.name())).map(Tag::value);
     }
 
-    default void site(String kind, String site) {
-        tag(CrmTags.siteTag(kind), site);
+    default void site(CrmTags.Type type, String site) {
+        tag(CrmTags.siteTag(type.name()), site);
     }
 }

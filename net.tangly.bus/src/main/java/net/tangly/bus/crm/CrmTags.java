@@ -22,7 +22,6 @@ import java.util.Optional;
 import net.tangly.bus.core.Address;
 import net.tangly.bus.core.EmailAddress;
 import net.tangly.bus.core.Entity;
-import net.tangly.bus.core.HasTags;
 import net.tangly.bus.core.PhoneNr;
 import net.tangly.bus.core.Tag;
 import net.tangly.bus.core.TagType;
@@ -34,6 +33,10 @@ import org.jetbrains.annotations.NotNull;
  * standard tags such a location tags.
  */
 public final class CrmTags {
+    public enum Type {
+        home, work, mobile
+    }
+
     public static final String CRM = "crm";
     public static final String GEO = "geo";
 
@@ -42,28 +45,25 @@ public final class CrmTags {
     public static final String ALTITUDE = "altitude";
     public static final String PLUSCODE = "pluscode";
 
-    public static final String HOME = "home";
-    public static final String WORK = "work";
-    public static final String MOBILE = "mobile";
     private static final String BILLING = "billing";
     private static final String DELIVERY = "delivery";
     private static final String SEGMENT = "segment";
 
-    public static final String CRM_EMAIL_HOME = CRM + ":email-" + HOME;
-    public static final String CRM_EMAIL_WORK = CRM + ":email-" + WORK;
+    public static final String CRM_EMAIL_HOME = CRM + ":email-" + Type.home.name();
+    public static final String CRM_EMAIL_WORK = CRM + ":email-" + Type.work.name();
 
-    public static final String CRM_PHONE_MOBILE = CRM + ":phone-" + MOBILE;
-    public static final String CRM_PHONE_HOME = CRM + ":phone-" + HOME;
-    public static final String CRM_PHONE_WORK = CRM + ":phone-" + WORK;
+    public static final String CRM_PHONE_MOBILE = CRM + ":phone-" + Type.mobile.name();
+    public static final String CRM_PHONE_HOME = CRM + ":phone-" + Type.home.name();
+    public static final String CRM_PHONE_WORK = CRM + ":phone-" + Type.work.name();
 
-    public static final String CRM_ADDRESS_WORK = CRM + ":address-" + WORK;
-    public static final String CRM_ADDRESS_HOME = CRM + ":address-" + HOME;
+    public static final String CRM_ADDRESS_HOME = CRM + ":address-" + Type.home.name();
+    public static final String CRM_ADDRESS_WORK = CRM + ":address-" + Type.work.name();
     public static final String CRM_ADDRESS_BILLING = CRM + ":address-" + BILLING;
     public static final String CRM_ADDRESS_DELIVERY = CRM + ":address-" + DELIVERY;
     public static final String CRM_CUSTOMER_SEGMENT = CRM + SEGMENT;
 
-    public static final String CRM_SITE_HOME = CRM + ":site-" + HOME;
-    public static final String CRM_SITE_WORK = CRM + ":site-" + WORK;
+    public static final String CRM_SITE_HOME = CRM + ":site-" + Type.home.name();
+    public static final String CRM_SITE_WORK = CRM + ":site-" + Type.work.name();
 
     public static final String LINKEDIN = "linkedIn";
     public static final String SKYPE = "skype";
@@ -92,18 +92,18 @@ public final class CrmTags {
     }
 
     public static void registerTags(@NotNull TagTypeRegistry registry) {
-        registry.register(TagType.ofMandatory(CRM, "email-" + HOME, EmailAddress.class, EmailAddress::of));
-        registry.register(TagType.ofMandatory(CRM, "email-" + WORK, EmailAddress.class, EmailAddress::of));
-        registry.register(TagType.ofMandatory(CRM, "phone-" + MOBILE, PhoneNr.class, PhoneNr::of));
-        registry.register(TagType.ofMandatory(CRM, "phone-" + HOME, PhoneNr.class, PhoneNr::of));
-        registry.register(TagType.ofMandatory(CRM, "phone-" + WORK, PhoneNr.class, PhoneNr::of));
-        registry.register(TagType.ofMandatory(CRM, "address-" + HOME, Address.class, Address::of));
-        registry.register(TagType.ofMandatory(CRM, "address-" + WORK, Address.class, Address::of));
+        registry.register(TagType.ofMandatory(CRM, "email-" + Type.home.name(), EmailAddress.class, EmailAddress::of));
+        registry.register(TagType.ofMandatory(CRM, "email-" + Type.work.name(), EmailAddress.class, EmailAddress::of));
+        registry.register(TagType.ofMandatory(CRM, "phone-" + Type.mobile.name(), PhoneNr.class, PhoneNr::of));
+        registry.register(TagType.ofMandatory(CRM, "phone-" + Type.home.name(), PhoneNr.class, PhoneNr::of));
+        registry.register(TagType.ofMandatory(CRM, "phone-" + Type.work.name(), PhoneNr.class, PhoneNr::of));
+        registry.register(TagType.ofMandatory(CRM, "address-" + Type.home.name(), Address.class, Address::of));
+        registry.register(TagType.ofMandatory(CRM, "address-" + Type.work.name(), Address.class, Address::of));
         registry.register(TagType.ofMandatory(CRM, "address-" + BILLING, Address.class, Address::of));
         registry.register(TagType.ofMandatory(CRM, "address-" + DELIVERY, Address.class, Address::of));
 
-        registry.register(TagType.ofMandatory(CRM, "site-" + HOME, URL.class, CrmTags::of));
-        registry.register(TagType.ofMandatory(CRM, "site-" + WORK, URL.class, CrmTags::of));
+        registry.register(TagType.ofMandatory(CRM, "site-" + Type.home.name(), URL.class, CrmTags::of));
+        registry.register(TagType.ofMandatory(CRM, "site-" + Type.work.name(), URL.class, CrmTags::of));
         registry.register(TagType.ofMandatoryString(CRM, "title"));
         registry.register(TagType.ofMandatoryString(CRM, "im-" + LINKEDIN));
         registry.register(TagType.ofMandatoryString(CRM, "im-" + SKYPE));
@@ -140,6 +140,7 @@ public final class CrmTags {
 
     /**
      * Create the linkedIn profile link for a natural entity
+     *
      * @param entity person which linkedIn profile should be displayed
      * @return link to the linkedIn profile
      */
@@ -149,6 +150,7 @@ public final class CrmTags {
 
     /**
      * Create the linkedIn company profile lik for a legal entity. LinkedIn handles regular organizations and schools in different ways.
+     *
      * @param entity organization which linkedIn profile should be displayed
      * @return link to the linkedIn profile
      */
@@ -160,6 +162,7 @@ public final class CrmTags {
 
     /**
      * Create a link to the Zefix page for the oorganization - makes only sense for Swiss companies -.
+     *
      * @param entity organization which Zefix information should be displayed
      * @return link to Zefix information
      */

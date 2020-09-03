@@ -152,17 +152,17 @@ class InvoiceTest {
         contract.id("TEST-CONTRACT-0000");
         contract.sellee(sellee());
         contract.seller(seller());
-        contract.sellee().address(CrmTags.WORK).ifPresent(contract::address);
+        contract.sellee().address(CrmTags.Type.work).ifPresent(contract::address);
         Invoice invoice = new Invoice();
         invoice.id(id);
         invoice.contract(contract);
         invoice.invoicedDate(LocalDate.parse("2018-01-01"));
         invoice.dueDate(LocalDate.parse("2018-01-31"));
         invoice.invoicingEntity(seller());
-        invoice.invoicingAddress(invoice.invoicingEntity().address(CrmTags.WORK).orElse(null));
+        invoice.invoicingAddress(invoice.invoicingEntity().address(CrmTags.Type.work).orElse(null));
         invoice.invoicingConnection(sellerConnection());
         invoice.invoicedEntity(sellee());
-        invoice.invoicedAddress(invoice.invoicedEntity().address(CrmTags.WORK).orElse(null));
+        invoice.invoicedAddress(invoice.invoicedEntity().address(CrmTags.Type.work).orElse(null));
         invoice.text(text);
         return invoice;
     }
@@ -170,8 +170,8 @@ class InvoiceTest {
     private static LegalEntity seller() {
         LegalEntity seller = new LegalEntity();
         seller.name("tangly llc");
-        seller.address(CrmTags.WORK, new Address.Builder().street("Lorzenhof 27").postcode("6330").locality("Cham").region("ZG").country("CH").build());
-        seller.phoneNr(CrmTags.WORK, "+41 79 778 8689");
+        seller.address(CrmTags.Type.work, new Address.Builder().street("Lorzenhof 27").postcode("6330").locality("Cham").region("ZG").country("CH").build());
+        seller.phoneNr(CrmTags.Type.work, "+41 79 778 8689");
         seller.id("CHE-357-875.339");
         seller.vatNr("CHE-357-875.339 MWST");
         return seller;
@@ -180,10 +180,10 @@ class InvoiceTest {
     private static LegalEntity sellee() {
         LegalEntity sellee = new LegalEntity();
         sellee.name("Flow AG");
-        sellee.address(CrmTags.WORK,
+        sellee.address(CrmTags.Type.work,
                 new Address.Builder().extended("attn. John Doe").street("Bahnhofstrasse 1").postcode("6300").locality("Zug").region("ZG").country("CH")
                         .build());
-        sellee.phoneNr(CrmTags.WORK, "+41 41 228 4242");
+        sellee.phoneNr(CrmTags.Type.work, "+41 41 228 4242");
         sellee.id("CHE-123-456.789");
         sellee.vatNr("CHE-123-456.789 MWST");
         return sellee;

@@ -43,17 +43,34 @@ import net.tangly.crm.ports.CrmBusinessLogic;
 import net.tangly.ledger.ports.LedgerBusinessLogic;
 import org.jetbrains.annotations.NotNull;
 
-public class AnalyticsCrmView extends HorizontalLayout {
+public class AnalyticsCrmView extends VerticalLayout {
     private final Crm crm;
     private final Ledger ledger;
     private LocalDate fromDate;
     private LocalDate toDate;
     private final TabsComponent tabs;
 
+    private LocalDate from;
+    private LocalDate to;
+
+
     public AnalyticsCrmView(@NotNull Crm crm, @NotNull Ledger ledger) {
         this.crm = crm;
         this.ledger = ledger;
+        from = LocalDate.of(LocalDate.now().getYear(), 1, 1);
+        to = LocalDate.of(LocalDate.now().getYear(), 12, 31);
         tabs = new TabsComponent();
+    }
+
+    protected void initialize() {
+        DatePicker fromDate = new DatePicker("From Date");
+        fromDate.setValue(from);
+        fromDate.addValueChangeListener(e -> from = e.getValue());
+
+        DatePicker toDate = new DatePicker("To Date");
+        toDate.setValue(to);
+        toDate.addValueChangeListener(e -> to = e.getValue());
+
         setSizeFull();
         Div div = new Div();
         div.setText("Contracts");
@@ -62,7 +79,7 @@ public class AnalyticsCrmView extends HorizontalLayout {
         tabs.add(new Tab("Customers Turnover"), customersChart());
         tabs.add(new Tab("Quarterly Turnover"), quarterlyChart());
         tabs.initialize(contracts);
-        add(tabs);
+        add(new HorizontalLayout(fromDate, toDate), tabs);
     }
 
     private Component contractsChart() {
@@ -82,7 +99,7 @@ public class AnalyticsCrmView extends HorizontalLayout {
         List<String> contracts = new ArrayList<>();
         List<BigDecimal> amounts = new ArrayList<>();
         crm.contracts().items().forEach(contract -> {
-            BigDecimal amount = logic.contractAmountWithoutVat(contract, null, null);
+            BigDecimal amount = logic.contractAmountWithoutVat(contract, from, to);
             if (!amount.equals(BigDecimal.ZERO)) {
                 contracts.add(contract.id());
                 amounts.add(amount);
@@ -106,7 +123,7 @@ public class AnalyticsCrmView extends HorizontalLayout {
         List<String> customers = new ArrayList<>();
         List<BigDecimal> amounts = new ArrayList<>();
         crm.legalEntities().items().forEach(customer -> {
-            BigDecimal amount = logic.customerAmountWithoutVat(customer, null, null);
+            BigDecimal amount = logic.customerAmountWithoutVat(customer, from, to);
             if (!amount.equals(BigDecimal.ZERO)) {
                 customers.add(customer.name());
                 amounts.add(amount);

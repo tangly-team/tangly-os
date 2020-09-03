@@ -40,8 +40,8 @@ import static net.tangly.commons.utilities.AsciiDocHelper.italics;
 
 
 /**
- * Provides support to generate a AsciiDoc representation of an invoice for the Swiss market. It provide a human-readable invoice document following
- * the VAT invoice constraint, the Swiss invoice QR barcode, and the European Zugferd invoice machine readable invoice standard.
+ * Provides support to generate a AsciiDoc representation of an invoice for the Swiss market. It provide a human-readable invoice document following the VAT
+ * invoice constraint, the Swiss invoice QR barcode, and the European Zugferd invoice machine readable invoice standard.
  */
 public class InvoiceAsciiDoc implements InvoiceGenerator {
     private static final Logger logger = LoggerFactory.getLogger(InvoiceAsciiDoc.class);
@@ -68,13 +68,11 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
             writer.println("*" + invoice.text() + "*");
             writer.println();
 
-            helper.tableHeader(null, "options=\"header\", grid=\"none\", frame=\"none\", stripes=\"none\", cols=\"4,^1, >1,>1\"", "Position",
-                    "Quantity", "Price", "Amount (CHF)"
-            );
+            helper.tableHeader(null, "options=\"header\", grid=\"none\", frame=\"none\", stripes=\"none\", cols=\"4,^1, >1,>1\"", "Position", "Quantity",
+                    "Price", "Amount (CHF)");
             invoice.lines().stream().sorted(Comparator.comparingInt(InvoiceLine::position)).forEach(o -> helper
                     .tableRow((o.isAggregate() ? italics(o.text()) : o.text()), o.isItem() ? format(o.quantity()) : "", format(o.unitPrice()),
-                            o.isAggregate() ? italics(format(o.amount())) : format(o.amount())
-                    ));
+                            o.isAggregate() ? italics(format(o.amount())) : format(o.amount())));
             createVatDeclarations(helper, invoice);
             helper.tableEnd();
             writer.println();
@@ -82,8 +80,7 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
             helper.tableHeader(null, "frame=\"none\",grid=\"none\", options=\"noheader\", cols=\"2,4\"");
             helper.tableRow("Bank Connection",
                     "IBAN: " + invoice.invoicingConnection().iban() + NEWLINE + "BIC: " + invoice.invoicingConnection().bic() + " (" +
-                            invoice.invoicingConnection().institute() + ")"
-            );
+                            invoice.invoicingConnection().institute() + ")");
             helper.tableEnd();
 
             helper.tableHeader(null, "frame=\"none\",grid=\"none\", options=\"noheader\", cols=\"2,4\"");
@@ -112,25 +109,24 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
         helper.tableRow("Total without VAT", "", "", format(invoice.amountWithoutVat()));
         if (invoice.hasMultipleVatRates()) {
             String vats = invoice.vatAmounts().entrySet().stream()
-                    .map(o -> o.getKey().multiply(HUNDRED).stripTrailingZeros().toPlainString() + "% : " +
-                            o.getValue().stripTrailingZeros().toPlainString()).collect(Collectors.joining(", ", "(", ")"));
+                    .map(o -> o.getKey().multiply(HUNDRED).stripTrailingZeros().toPlainString() + "% : " + o.getValue().stripTrailingZeros().toPlainString())
+                    .collect(Collectors.joining(", ", "(", ")"));
             helper.tableRow(italics("VAT Amount " + vats), "", "", italics(format(invoice.vat())));
         } else {
             helper.tableRow(italics("VAT Amount"), "",
                     italics(invoice.uniqueVatRate().orElseThrow().multiply(HUNDRED).stripTrailingZeros().toPlainString()) + "%",
-                    italics(format(invoice.vat()))
-            );
+                    italics(format(invoice.vat())));
         }
         helper.tableRow(bold("Total"), "", "", bold(format(invoice.amountWithVat())));
     }
 
     private static String addressText(@NotNull LegalEntity entity) {
         StringBuilder text = new StringBuilder();
-        entity.address(CrmTags.CRM_ADDRESS_WORK).ifPresent(address -> text.append(entity.name()).append(NEWLINE)
-                .append(Strings.isNullOrEmpty(address.extended()) ? "" : (address.extended() + NEWLINE))
-                .append(Strings.isNullOrEmpty(address.street()) ? "" : (address.street() + NEWLINE))
-                .append(Strings.isNullOrEmpty(address.poBox()) ? "" : (address.poBox() + NEWLINE)).append(address.postcode()).append(" ")
-                .append(address.locality()));
+        entity.address(CrmTags.Type.work).ifPresent(
+                address -> text.append(entity.name()).append(NEWLINE).append(Strings.isNullOrEmpty(address.extended()) ? "" : (address.extended() + NEWLINE))
+                        .append(Strings.isNullOrEmpty(address.street()) ? "" : (address.street() + NEWLINE))
+                        .append(Strings.isNullOrEmpty(address.poBox()) ? "" : (address.poBox() + NEWLINE)).append(address.postcode()).append(" ")
+                        .append(address.locality()));
         return text.toString();
     }
 }
