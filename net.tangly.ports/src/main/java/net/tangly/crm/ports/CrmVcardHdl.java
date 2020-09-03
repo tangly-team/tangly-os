@@ -22,6 +22,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import net.fortuna.ical4j.data.ParserException;
 import net.fortuna.ical4j.vcard.Group;
@@ -45,7 +46,7 @@ import org.slf4j.LoggerFactory;
  * Handler to import and export VCard representations of natural entities.
  */
 public class CrmVcardHdl {
-    private static final String EXTENSION = ".vcf";
+    private static final String VCARD_EXT = ".vcf";
 
     private static final Logger logger = LoggerFactory.getLogger(CrmVcardHdl.class);
     private final Crm crm;
@@ -55,12 +56,21 @@ public class CrmVcardHdl {
     }
 
     /**
-     * Import all vcard files located in the folder path. The imported VCard are added as naturl entities. If an organization is specified, an employee
-     * connection is added under the condition the legal entity is found in the CRM.
+     * Import all vcard files located in the folder <i>directory</i>. The imported VCard are added as naturl entities. If an organization is specified, an
+     * employee connection is added under the condition the legal entity is found in the CRM.
      *
-     * @param path path to the folder containing the VCard files to import
+     * @param directory directory to the folder containing the VCard files to import
      */
-    public void importVCards(@NotNull Path path) {
+    public void importVCards(@NotNull Path directory) {
+        // TODO traverse folder and load vcard files - prefix number is oid legal entity, find by home email
+        try (Stream<Path> stream = Files.walk(directory)) {
+            stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(VCARD_EXT)).forEach(o -> importVCard(o));
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+    }
+
+    public void importVCard(@NotNull Path path) {
         try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             GroupRegistry groupRegistry = new GroupRegistry();
             PropertyFactoryRegistry propReg = new PropertyFactoryRegistry();
@@ -74,38 +84,11 @@ public class CrmVcardHdl {
         }
     }
 
-    /**
-     * A natural entity is identified through a home or a work email address. This email address is the only universal unique identifier.
-     *
-     * @param card
-     * @return
-     */
-    public NaturalEntity findOrCreatePerson(VCard card) {
-        // either missing or "individual"
-        String kind = card.getProperty(Property.Id.KIND).getValue();
-        String fullname = card.getProperty(Property.Id.FN).getValue();
-        String lastname = card.getProperty(Property.Id.N).getValue();
-        String firstname = card.getProperty(Property.Id.FN).getValue();
-        String birthday = card.getProperty(Property.Id.BDAY).getValue();
-        String deathday = card.getProperty(Property.Id.DDAY).getValue();
-        // either M, F, null
-        String gender = card.getProperty(Property.Id.GENDER).getValue();
-        // Potential same natural entity has same firstname and lastname
-
-        List<Property> properties = card.getProperties(Property.Id.EMAIL);
-        properties.get(0).getGroup().equals(Group.HOME);
-        properties.get(0).getGroup().equals(Group.WORK);
-        return null;
-    }
-
-    public LegalEntity findOrCreateOrganization(VCard card) {
-        // "organization"
-        String kind = card.getProperty(Property.Id.KIND).getValue();
-        return null;
-    }
-
-    public Optional<LegalEntity> find(VCard vcard) {
-        return Optional.empty();
+    public void enhance(@NotNull NaturalEntity entity, @NotNull VCard2 vcard) {
+        // photography
+        // website
+        // home phone number
+        // birthday
     }
 
     public VCard of(NaturalEntity entity) {

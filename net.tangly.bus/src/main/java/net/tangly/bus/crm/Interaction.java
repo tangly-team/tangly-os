@@ -38,7 +38,7 @@ public class Interaction extends EntityImp {
         naturalEntities = new ArrayList<>();
         legalEntities = new ArrayList<>();
         activities = new ArrayList<>();
-        this.state = InteractionCode.PROSPECT;
+        this.state = InteractionCode.prospect;
         this.potential = BigDecimal.ZERO;
         this.probability = BigDecimal.ZERO;
     }

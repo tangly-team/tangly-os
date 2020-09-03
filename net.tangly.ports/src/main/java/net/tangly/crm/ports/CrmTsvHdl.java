@@ -264,7 +264,7 @@ public class CrmTsvHdl {
         List<TsvProperty<NaturalEntity, ?>> fields = createTsvEntityFields();
         fields.add(TsvProperty.ofString(LASTNAME, NaturalEntity::lastname, NaturalEntity::lastname));
         fields.add(TsvProperty.ofString(FIRSTNAME, NaturalEntity::firstname, NaturalEntity::firstname));
-        fields.add(TsvProperty.of("gender", NaturalEntity::gender, NaturalEntity::gender, e -> Enum.valueOf(GenderCode.class, e), Enum::name));
+        fields.add(TsvProperty.of("gender", NaturalEntity::gender, NaturalEntity::gender, e -> Enum.valueOf(GenderCode.class, e.toLowerCase()), Enum::name));
         fields.add(createAddressMapping(CrmTags.Type.home));
         fields.add(TsvProperty.ofString(CRM_EMAIL_HOME, e -> e.email(CrmTags.Type.home).orElse(""), (e, p) -> e.email(CrmTags.Type.home, p)));
         fields.add(TsvProperty
@@ -318,14 +318,14 @@ public class CrmTsvHdl {
     }
 
     static TsvEntity<Product> createTsvProduct() {
-        Function<CSVRecord, Product> imports = (CSVRecord record) -> new Product(get(record, "id"), get(record, "name"), get(record, "text"),
+        Function<CSVRecord, Product> imports = (CSVRecord record) -> new Product(get(record, ID), get(record, NAME), get(record, TEXT),
                 TsvProperty.CONVERT_BIGDECIMAL_FROM.apply(get(record, "unitPrice")), get(record, "unit"),
                 TsvProperty.CONVERT_BIGDECIMAL_FROM.apply(get(record, "vatRate")));
 
         List<TsvProperty<Product, ?>> fields = new ArrayList<>();
-        fields.add(TsvProperty.ofString("id", Product::id, null));
-        fields.add(TsvProperty.ofString("name", Product::name, null));
-        fields.add(TsvProperty.ofString("text", Product::text, null));
+        fields.add(TsvProperty.ofString(ID, Product::id, null));
+        fields.add(TsvProperty.ofString(NAME, Product::name, null));
+        fields.add(TsvProperty.ofString(TEXT, Product::text, null));
         fields.add(TsvProperty.ofBigDecimal("unitPrice", Product::unitPrice, null));
         fields.add(TsvProperty.ofString("unit", Product::unit, null));
         fields.add(TsvProperty.ofBigDecimal("vatRate", Product::vatRate, null));
@@ -345,7 +345,7 @@ public class CrmTsvHdl {
 
     static TsvEntity<Interaction> createTsvInteraction() {
         List<TsvProperty<Interaction, ?>> fields = createTsvEntityFields();
-        fields.add(TsvProperty.of("state", Interaction::state, Interaction::state, e -> Enum.valueOf(InteractionCode.class, e), Enum::name));
+        fields.add(TsvProperty.of("state", Interaction::state, Interaction::state, e -> Enum.valueOf(InteractionCode.class, e.toLowerCase()), Enum::name));
         fields.add(TsvProperty.ofBigDecimal("potential", Interaction::potential, Interaction::potential));
         fields.add(TsvProperty.ofBigDecimal("probability", Interaction::probability, Interaction::probability));
         return TsvEntity.of(Interaction.class, fields, Interaction::new);
@@ -353,7 +353,7 @@ public class CrmTsvHdl {
 
     static TsvEntity<Activity> createTsvActivity() {
         List<TsvProperty<Activity, ?>> fields = createTsvEntityFields();
-        fields.add(TsvProperty.of("code", Activity::code, Activity::code, e -> Enum.valueOf(ActivityCode.class, e), Enum::name));
+        fields.add(TsvProperty.of("code", Activity::code, Activity::code, e -> Enum.valueOf(ActivityCode.class, e.toLowerCase()), Enum::name));
         fields.add(TsvProperty.ofInt("durationInMinutes", Activity::durationInMinutes, Activity::durationInMinutes));
         fields.add((TsvProperty.ofString("details", Activity::details, Activity::details)));
         return TsvEntity.of(Activity.class, fields, Activity::new);

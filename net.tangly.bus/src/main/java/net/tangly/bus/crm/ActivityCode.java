@@ -19,7 +19,8 @@ import net.tangly.bus.codes.Code;
  * Defines the kinds of af activities between natural persons.
  */
 public enum ActivityCode implements Code {
-    TALK, MEETING, EMAIL, LETTER, AUDIOCALL, VIDEOCALL, CHAT, CAMPAIGN;
+    talk, meeting, email, letter, audiocall, videocall, chat, CAMPAIGN;
+
 
     @Override
     public int id() {

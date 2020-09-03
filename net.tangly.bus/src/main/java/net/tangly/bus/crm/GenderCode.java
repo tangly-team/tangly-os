@@ -19,7 +19,7 @@ import net.tangly.bus.codes.Code;
  * Defines the gender of a natural person. Gender is mainly used to define how the address the person in written communication.
  */
 public enum GenderCode implements Code {
-    MALE, FEMALE, OTHER, UNSPECIFIED;
+    male, female, other, unspecified;
 
     @Override
     public int id() {
