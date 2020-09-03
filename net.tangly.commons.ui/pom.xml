@@ -203,6 +203,7 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jetty.version}</version>
                 <configuration>
+                    <jvmArgs>--enable-preview</jvmArgs>
                     <!-- If using IntelliJ IDEA with autocompilation, this
                     might cause lots of unnecessary compilations in the
                     background.-->
@@ -280,6 +281,7 @@
                             <stopPort>8081</stopPort>
                             <stopWait>5</stopWait>
                             <stopKey>${project.artifactId}</stopKey>
+                            <jvmArgs>--enable-preview</jvmArgs>
                         </configuration>
                         <executions>
                             <execution>

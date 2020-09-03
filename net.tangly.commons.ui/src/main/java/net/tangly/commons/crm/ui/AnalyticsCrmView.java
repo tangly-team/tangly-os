@@ -17,6 +17,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 import com.storedobject.chart.CategoryData;
 import com.storedobject.chart.Data;
@@ -30,7 +31,6 @@ import com.storedobject.chart.SOChart;
 import com.storedobject.chart.Size;
 import com.storedobject.chart.XAxis;
 import com.storedobject.chart.YAxis;
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -42,14 +42,18 @@ import net.tangly.crm.ports.Crm;
 import net.tangly.crm.ports.CrmBusinessLogic;
 import net.tangly.ledger.ports.LedgerBusinessLogic;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AnalyticsCrmView extends VerticalLayout {
+    private static final Logger logger = LoggerFactory.getLogger(AnalyticsCrmView.class);
     private final Crm crm;
     private final Ledger ledger;
-    private LocalDate fromDate;
-    private LocalDate toDate;
     private final TabsComponent tabs;
 
+    private SOChart contractsSoChart;
+    private SOChart customersSoChart;
+    private SOChart quaterlySoChart;
     private LocalDate from;
     private LocalDate to;
 
@@ -60,41 +64,43 @@ public class AnalyticsCrmView extends VerticalLayout {
         from = LocalDate.of(LocalDate.now().getYear(), 1, 1);
         to = LocalDate.of(LocalDate.now().getYear(), 12, 31);
         tabs = new TabsComponent();
+        initialize();
     }
 
     protected void initialize() {
         DatePicker fromDate = new DatePicker("From Date");
         fromDate.setValue(from);
-        fromDate.addValueChangeListener(e -> from = e.getValue());
+        fromDate.addValueChangeListener(e -> {
+            from = e.getValue();
+            update();
+        });
 
         DatePicker toDate = new DatePicker("To Date");
         toDate.setValue(to);
-        toDate.addValueChangeListener(e -> to = e.getValue());
+        toDate.addValueChangeListener(e -> {
+            to = e.getValue();
+            update();
+        });
+
+        quaterlySoChart = new SOChart();
+        quaterlySoChart.setSize("1024px", "600px");
+        customersSoChart = new SOChart();
+        customersSoChart.setSize("1024px", "600px");
+        contractsSoChart = new SOChart();
+        contractsSoChart.setSize("1024px", "600px");
+        update();
 
         setSizeFull();
         Div div = new Div();
         div.setText("Contracts");
-        Tab contracts = new Tab("Contracts Turnover");
-        tabs.add(contracts, contractsChart());
-        tabs.add(new Tab("Customers Turnover"), customersChart());
-        tabs.add(new Tab("Quarterly Turnover"), quarterlyChart());
-        tabs.initialize(contracts);
+        tabs.add(new Tab("Customers Turnover"), new HorizontalLayout(customersSoChart));
+        tabs.add(new Tab("Contracts Turnover"), new HorizontalLayout(contractsSoChart));
+        tabs.add(new Tab("Quarterly Turnover"), new HorizontalLayout(quaterlySoChart));
+        tabs.initialize(tabs.tabByName("Customers Turnover").orElseThrow());
         add(new HorizontalLayout(fromDate, toDate), tabs);
     }
 
-    private Component contractsChart() {
-        DatePicker fromDatePicker = new DatePicker("From Date");
-        fromDatePicker.setPlaceholder("From Date");
-        fromDatePicker.setClearButtonVisible(true);
-        fromDatePicker.setValue(fromDate);
-        fromDatePicker.addValueChangeListener(e -> fromDate = e.getValue());
-        DatePicker toDatePicker = new DatePicker("To Date");
-        toDatePicker.setPlaceholder("To Date");
-        toDatePicker.setClearButtonVisible(true);
-        fromDatePicker.addValueChangeListener(e -> toDate = e.getValue());
-        toDatePicker.setValue(toDate);
-        HorizontalLayout dates = new HorizontalLayout(fromDatePicker, toDatePicker);
-
+    private void contractsChart(@NotNull SOChart chart) {
         CrmBusinessLogic logic = new CrmBusinessLogic(crm);
         List<String> contracts = new ArrayList<>();
         List<BigDecimal> amounts = new ArrayList<>();
@@ -107,18 +113,15 @@ public class AnalyticsCrmView extends VerticalLayout {
         });
         CategoryData labels = new CategoryData(contracts.toArray(new String[0]));
         Data data = new Data(amounts.toArray(new BigDecimal[0]));
-        NightingaleRoseChart chart = new NightingaleRoseChart(labels, data);
-        chart.setName("Contracts Turnover");
+        NightingaleRoseChart roseChart = new NightingaleRoseChart(labels, data);
+        roseChart.setName("Contracts Turnover");
         Position chartPosition = new Position();
         chartPosition.setTop(Size.percentage(20));
-        chart.setPosition(chartPosition);
-        SOChart soChart = new SOChart();
-        soChart.setSize("1024px", "600px");
-        soChart.add(chart);
-        return new VerticalLayout(dates, new HorizontalLayout(soChart));
+        roseChart.setPosition(chartPosition);
+        chart.add(roseChart);
     }
 
-    private HorizontalLayout customersChart() {
+    private void customersChart(@NotNull SOChart chart) {
         CrmBusinessLogic logic = new CrmBusinessLogic(crm);
         List<String> customers = new ArrayList<>();
         List<BigDecimal> amounts = new ArrayList<>();
@@ -131,18 +134,15 @@ public class AnalyticsCrmView extends VerticalLayout {
         });
         CategoryData labels = new CategoryData(customers.toArray(new String[0]));
         Data data = new Data(amounts.toArray(new BigDecimal[0]));
-        NightingaleRoseChart chart = new NightingaleRoseChart(labels, data);
-        chart.setName("Customers Turnover");
+        NightingaleRoseChart roseChart = new NightingaleRoseChart(labels, data);
+        roseChart.setName("Customers Turnover");
         Position chartPosition = new Position();
         chartPosition.setTop(Size.percentage(20));
-        chart.setPosition(chartPosition);
-        SOChart soChart = new SOChart();
-        soChart.setSize("1024px", "600px");
-        soChart.add(chart);
-        return new HorizontalLayout(soChart);
+        roseChart.setPosition(chartPosition);
+        chart.add(roseChart);
     }
 
-    private HorizontalLayout quarterlyChart() {
+    private void quarterlyChart(@NotNull SOChart chart) {
         LedgerBusinessLogic logic = new LedgerBusinessLogic(ledger);
         DateData xValues = new DateData(logic.quarterLegends(null, null).toArray(new LocalDate[0]));
         xValues.setName("Quarters");
@@ -170,7 +170,6 @@ public class AnalyticsCrmView extends VerticalLayout {
         LineChart earningsChart = new LineChart(xValues, earnings);
         earningsChart.setName("Earnings per Quarter");
 
-
         XAxis xAxis = new XAxis(DataType.DATE);
         YAxis yAxis = new YAxis(DataType.NUMBER);
 
@@ -182,10 +181,22 @@ public class AnalyticsCrmView extends VerticalLayout {
         turnoversChart.plotOn(rc);
         ebitsCharts.plotOn(rc);
         earningsChart.plotOn(rc);
+        chart.add(turnoversChart, ebitsCharts, earningsChart);
+    }
 
-        SOChart soChart = new SOChart();
-        soChart.setSize("1024px", "600px");
-        soChart.add(turnoversChart, ebitsCharts, earningsChart);
-        return new HorizontalLayout(soChart);
+    private void update() {
+        update(customersSoChart, this::customersChart);
+        update(contractsSoChart, this::contractsChart);
+        update(quaterlySoChart, this::quarterlyChart);
+    }
+
+    private void update(SOChart chart, Consumer<SOChart> create) {
+        try {
+            chart.removeAll();
+            create.accept(chart);
+            chart.update();
+        } catch (Exception e) {
+            logger.atError().setCause(e).log("Error when updating SO charts");
+        }
     }
 }
