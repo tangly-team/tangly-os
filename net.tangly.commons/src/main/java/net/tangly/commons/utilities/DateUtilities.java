@@ -15,9 +15,11 @@ package net.tangly.commons.utilities;
 
 import java.time.LocalDate;
 
+import org.jetbrains.annotations.NotNull;
+
 public final class DateUtilities {
-    public static boolean isWithinRange(LocalDate date, LocalDate from, LocalDate to) {
-        return !((from != null ? date.isBefore(from) : false) || ( to != null ? date.isAfter(to) : false));
+    public static boolean isWithinRange(@NotNull LocalDate date, LocalDate from, LocalDate to) {
+        return ((from == null) || !date.isBefore(from)) && ((to == null) || !date.isAfter(to));
     }
 
     private DateUtilities() {

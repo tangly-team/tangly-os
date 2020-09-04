@@ -31,7 +31,8 @@ import org.jetbrains.annotations.NotNull;
 class CrmAndLedgerStore {
     private static final String PACKAGE_NAME = "net/tangly/crm/";
     private static final String LEDGER_PACKAGE_NAME = PACKAGE_NAME + "ledger/";
-    private static final String INVOCES_PACKAGE_NAME = PACKAGE_NAME + "invoices/";
+    private static final String INVOICES_PACKAGE_NAME = PACKAGE_NAME + "invoices/";
+    private static final String VCARDS_PACKAGE_NAME = PACKAGE_NAME + "vcards/";
 
     private final FileSystem fs;
 
@@ -51,6 +52,10 @@ class CrmAndLedgerStore {
         return fs.getPath("/crm/invoices/");
     }
 
+    public Path vcardsRoot() {
+        return fs.getPath("/crm/vcards");
+    }
+
     /**
      * Set up the test environment for integration tests of the CRM domain: CRM entities, invoices, and ledger.
      */
@@ -65,6 +70,10 @@ class CrmAndLedgerStore {
             Files.createDirectory(fs.getPath("/crm/invoices/2018/"));
             Files.createDirectory(fs.getPath("/crm/invoices/2019/"));
             Files.createDirectory(fs.getPath("/crm/invoices/2020/"));
+            Files.createDirectory(fs.getPath("/crm/vcards/"));
+            Files.createDirectory(fs.getPath("/crm/reports/"));
+            Files.createDirectory(fs.getPath("/crm/reports/ledger/"));
+            Files.createDirectory(fs.getPath("/crm/reports/invoices/"));
 
             copy(PACKAGE_NAME, crmRoot(), CrmWorkflows.NATURAL_ENTITIES_TSV);
             copy(PACKAGE_NAME, crmRoot(), CrmWorkflows.LEGAL_ENTITIES_TSV);
@@ -80,14 +89,17 @@ class CrmAndLedgerStore {
             copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "swiss-ledger.tsv");
             copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "transactions-2015-2016.tsv");
 
-            copy(INVOCES_PACKAGE_NAME + "2015/", invoicesRoot().resolve("2015"), "2015-8001-Invoice-HSLU-December.json");
-            copy(INVOCES_PACKAGE_NAME + "2016/", invoicesRoot().resolve("2016"), "2016-8001-Invoice-HSLU-October.json");
-            copy(INVOCES_PACKAGE_NAME + "2017/", invoicesRoot().resolve("2017"), "2017-8001-Invoice-HSLU-February.json");
-            copy(INVOCES_PACKAGE_NAME + "2017/", invoicesRoot().resolve("2017"), "2017-8022-Invoice-HSLU-December.json");
-            copy(INVOCES_PACKAGE_NAME + "2018/", invoicesRoot().resolve("2018"), "2018-8001-Invoice-HSLU-January.json");
-            copy(INVOCES_PACKAGE_NAME + "2018/", invoicesRoot().resolve("2018"), "2018-8022-Invoice-HSLU-November.json");
-            copy(INVOCES_PACKAGE_NAME + "2019/", invoicesRoot().resolve("2019"), "2019-8020-Invoice-HSLU-December.json");
-            copy(INVOCES_PACKAGE_NAME + "2020/", invoicesRoot().resolve("2020"), "2020-8001-Invoice-HSLU-May.json");
+            copy(INVOICES_PACKAGE_NAME + "2015/", invoicesRoot().resolve("2015"), "2015-8001-Invoice-HSLU-December.json");
+            copy(INVOICES_PACKAGE_NAME + "2016/", invoicesRoot().resolve("2016"), "2016-8001-Invoice-HSLU-October.json");
+            copy(INVOICES_PACKAGE_NAME + "2017/", invoicesRoot().resolve("2017"), "2017-8001-Invoice-HSLU-February.json");
+            copy(INVOICES_PACKAGE_NAME + "2017/", invoicesRoot().resolve("2017"), "2017-8022-Invoice-HSLU-December.json");
+            copy(INVOICES_PACKAGE_NAME + "2018/", invoicesRoot().resolve("2018"), "2018-8001-Invoice-HSLU-January.json");
+            copy(INVOICES_PACKAGE_NAME + "2018/", invoicesRoot().resolve("2018"), "2018-8022-Invoice-HSLU-November.json");
+            copy(INVOICES_PACKAGE_NAME + "2019/", invoicesRoot().resolve("2019"), "2019-8020-Invoice-HSLU-December.json");
+            copy(INVOICES_PACKAGE_NAME + "2020/", invoicesRoot().resolve("2020"), "2020-8001-Invoice-HSLU-May.json");
+
+            copy(VCARDS_PACKAGE_NAME, vcardsRoot(), "1-MarcelBaumann.vcf");
+
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

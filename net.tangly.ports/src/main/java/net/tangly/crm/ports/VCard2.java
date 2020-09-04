@@ -92,10 +92,10 @@ public class VCard2 {
     public GenderCode gender() {
         String gender = property(Property.Id.GENDER);
         return switch (gender.charAt(0)) {
-            case 'M' -> GenderCode.MALE;
-            case 'F' -> GenderCode.FEMALE;
-            case 'O' -> GenderCode.OTHER;
-            default -> GenderCode.UNSPECIFIED;
+            case 'M' -> GenderCode.male;
+            case 'F' -> GenderCode.female;
+            case 'O' -> GenderCode.other;
+            default -> GenderCode.unspecified;
         };
     }
 

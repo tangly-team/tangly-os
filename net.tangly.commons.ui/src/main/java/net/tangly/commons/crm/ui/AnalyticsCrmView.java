@@ -190,10 +190,10 @@ public class AnalyticsCrmView extends VerticalLayout {
         update(quaterlySoChart, this::quarterlyChart);
     }
 
-    private void update(SOChart chart, Consumer<SOChart> create) {
+    private void update(@NotNull SOChart chart, @NotNull Consumer<SOChart> populate) {
         try {
             chart.removeAll();
-            create.accept(chart);
+            populate.accept(chart);
             chart.update();
         } catch (Exception e) {
             logger.atError().setCause(e).log("Error when updating SO charts");

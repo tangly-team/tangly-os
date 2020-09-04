@@ -25,10 +25,8 @@ import org.jetbrains.annotations.NotNull;
 class CrmVcardHdlTest {
     void exportVcards(@NotNull Path path) throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            Path directory = fs.getPath("/import/");
-            Files.createDirectory(directory);
-            Files.createDirectory(directory.resolve("vcards"));
+            CrmAndLedgerStore store = new CrmAndLedgerStore(fs);
+            store.createCrmAndLedgerRepository();
         }
-        CrmBusinessLogic logic = new CrmBusinessLogic(new Crm());
     }
 }

@@ -42,13 +42,13 @@ public class InjectorImp implements Injector {
     @Override
     public <R, T extends R> void bind(Class<R> interfaces, Class<T> clazz) {
         creators.put(interfaces,
-                wrapSingleton(interfaces, new SupplierBinding<R, T>(interfaces, clazz, wrapSingleton(clazz, createConstructor(clazz))))
+                wrapSingleton(interfaces, new SupplierBinding<>(interfaces, clazz, wrapSingleton(clazz, createConstructor(clazz))))
         );
     }
 
     @Override
     public <T> void bindProvider(Class<T> clazz, Provider<T> provider) {
-        creators.put(clazz, wrapSingleton(clazz, new SupplierProvider<T>(clazz, provider)));
+        creators.put(clazz, wrapSingleton(clazz, new SupplierProvider<>(clazz, provider)));
     }
 
     @Override

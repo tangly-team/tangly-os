@@ -21,7 +21,6 @@ import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
-import net.tangly.bus.core.Entity;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.LegalEntity;
@@ -55,19 +54,6 @@ public class LegalEntitiesView extends CrmEntitiesView<LegalEntity> {
         grid.addColumn(linkedInComponentRenderer(CrmTags::organizationLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
         grid.addColumn(urlComponentRenderer(CrmTags.CRM_SITE_WORK)).setKey("webSite").setHeader("Web Site").setAutoWidth(true);
     }
-
-    public static ComponentRenderer<Anchor, LegalEntity> zefixComponentRenderer() {
-        return new ComponentRenderer<>(item -> {
-            Anchor anchor = new Anchor();
-            anchor.setText(item.id());
-            if ((item.id() != null) && item.id().startsWith("CHE-")) {
-                anchor.setHref(CrmTags.organizationZefixUrl(item));
-                anchor.setTarget("_blank");
-            }
-            return anchor;
-        });
-    }
-
 
     public static void defineOne2ManyEmployees(@NotNull Grid<Employee> grid) {
         VaadinUtils.initialize(grid);

@@ -62,6 +62,18 @@ public abstract class CrmEntitiesView<T extends Entity> extends InternalEntities
         });
     }
 
+    public static <T extends Entity> ComponentRenderer<Anchor, T> zefixComponentRenderer() {
+        return new ComponentRenderer<>(item -> {
+            Anchor anchor = new Anchor();
+            anchor.setText(item.id());
+            if ((item.id() != null) && item.id().startsWith("CHE-")) {
+                anchor.setHref(CrmTags.organizationZefixUrl(item));
+                anchor.setTarget("_blank");
+            }
+            return anchor;
+        });
+    }
+
     protected Crm crm() {
         return crm;
     }

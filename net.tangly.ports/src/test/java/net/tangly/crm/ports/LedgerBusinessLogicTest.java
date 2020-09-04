@@ -24,6 +24,7 @@ import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.ledger.Ledger;
 import net.tangly.ledger.ports.LedgerBusinessLogic;
 import net.tangly.ledger.ports.LedgerWorkflows;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,29 +32,22 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Test the business logic of the ledger domain model. An in-memory file system is set with a Swiss ledger definition and transactions files.
  */
 class LedgerBusinessLogicTest {
-    void createLedgerReportTest() throws IOException {
-        try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            CrmAndLedgerStore crmAndLedgerStore = new CrmAndLedgerStore(fs);
-            crmAndLedgerStore.createCrmAndLedgerRepository();
-            Path directory = crmAndLedgerStore.crmRoot();
-        }
-    }
-
+    @Test
     public void turnoverEbitAndEarningsTest() throws IOException {
+        final String filenameWithoutExtension = "2016-period";
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             CrmAndLedgerStore store = new CrmAndLedgerStore(fs);
             LedgerBusinessLogic logic = new LedgerBusinessLogic(createLedger(store));
-            // TOOO remove File reference
-            logic.createLedgerReport(null, LocalDate.of(2015, 10, 01), LocalDate.of(2016, 12, 31));
-
-            assertThat(Files.exists(store.ledgerRoot())).isTrue();
+            logic.createLedgerReport(fs.getPath("/crm/reports/ledger/"), filenameWithoutExtension, LocalDate.of(2015, 10, 01), LocalDate.of(2016, 12, 31));
+            assertThat(Files.exists(fs.getPath("/crm/reports/ledger/").resolve(filenameWithoutExtension +  ".adoc"))).isTrue();
+            assertThat(Files.exists(fs.getPath("/crm/reports/ledger/").resolve(filenameWithoutExtension + ".pdf"))).isTrue();
         }
     }
 
     private Ledger createLedger(CrmAndLedgerStore store) {
         store.createCrmAndLedgerRepository();
         LedgerWorkflows workflows = new LedgerWorkflows(new Ledger());
-        workflows.importLedger(store.ledgerRoot());
+        workflows.importLedger(store.crmRoot());
         return workflows.ledger();
     }
 }

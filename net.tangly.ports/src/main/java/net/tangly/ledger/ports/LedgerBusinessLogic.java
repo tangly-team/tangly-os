@@ -13,12 +13,10 @@
 
 package net.tangly.ledger.ports;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.UncheckedIOException;
 import java.math.BigDecimal;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
@@ -52,10 +50,10 @@ public class LedgerBusinessLogic {
         return ledger;
     }
 
-    public void createLedgerReport(@NotNull Path pathWithoutExtension, LocalDate from, LocalDate to) {
+    public void createLedgerReport(@NotNull Path directory, String filenameWithoutExtension, LocalDate from, LocalDate to) {
         ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(ledger);
-        report.create(from, to, pathWithoutExtension.resolve(ASCII_DOC_EXT));
-        createPdf(pathWithoutExtension.resolve(ASCII_DOC_EXT));
+        report.create(from, to, directory.resolve(filenameWithoutExtension + ASCII_DOC_EXT));
+        createPdf(directory, filenameWithoutExtension);
     }
 
     public BigDecimal turnover(@NotNull LocalDate from, @NotNull LocalDate to) {
@@ -82,13 +80,13 @@ public class LedgerBusinessLogic {
         return ledger.accountBy(accountId).map(o -> o.balance(to).subtract(o.balance(from)).negate()).orElse(BigDecimal.ZERO);
     }
 
-    public static void createPdf(@NotNull Path invoicePathWithoutExtension) {
+    public static void createPdf(@NotNull Path directory, @NotNull String filenameWithoutExtension) {
         try (Asciidoctor asciidoctor = Asciidoctor.Factory.create();
-             BufferedReader reader = Files.newBufferedReader(invoicePathWithoutExtension.resolve(ASCII_DOC_EXT), StandardCharsets.UTF_8);
-             BufferedWriter writer = Files.newBufferedWriter(invoicePathWithoutExtension.resolve(PDF_EXT), StandardCharsets.UTF_8)) {
+             OutputStream out = Files.newOutputStream(directory.resolve(filenameWithoutExtension + PDF_EXT))) {
+            String asciidoc = Files.readString(directory.resolve(filenameWithoutExtension + ASCII_DOC_EXT));
             Attributes attributes = AttributesBuilder.attributes().get();
-            Options options = OptionsBuilder.options().inPlace(true).attributes(attributes).backend("pdf").get();
-            asciidoctor.convert(reader, writer, options);
+            Options options = OptionsBuilder.options().inPlace(true).attributes(attributes).backend("pdf").toStream(out).get();
+            asciidoctor.convert(asciidoc, options);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
