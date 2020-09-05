@@ -36,6 +36,7 @@ The acronyms are (the current composite acronym is TANGLY_OS meaning all compone
 * *FSM* hierarchical finite state machine library
 * *GLEAM* declarative model transformation frameworks library
 * *PORTS* ports library
+* *UI* Vaadin user interface library
 
 [plantuml,tangly-componentsDependencies,svg]
 ....
@@ -60,6 +61,11 @@ net.tangly.ports --> net.tangly.bus
 The open source components are stored in a mono repository.
 We use de facto standard Git.
 Currently we are hosted at https://bitbucket.org[bibucket].
+
+The bitbucket repository is regularly synchronized with a github mirror repository https://github.com/marcelbaumann/tangly-os.git[github]
+.
+git push --prune https://github.com/marcelbaumann/tangly-os.git +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+
 
 === Findings
 
