@@ -13,8 +13,12 @@
 
 plugins {
     id 'war'
-    id 'org.gretty' version '3.0.3'
+    id 'org.gretty' version '3.0.3' apply(false)
     id "com.vaadin" version "0.17.0.0"
+}
+
+if (!mode.equalsIgnoreCase('int')) {
+    apply plugin: 'org.gretty'
 }
 
 project.ext.groupId = 'net.tangly'
