@@ -17,7 +17,7 @@ plugins {
     id "com.vaadin" version "0.17.0.0"
 }
 
-if (!mode.equalsIgnoreCase('build')) {
+if (mode.equalsIgnoreCase('dev')) {
     apply plugin: 'org.gretty'
 }
 
