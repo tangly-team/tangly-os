@@ -14,7 +14,7 @@ The components are
 
 The documentation is located under [tangly-team](https://tangly-team.bitbucket.io/).
 
-The repository is hosed under bitbucket [tangly OS bitbucket](bitbucket.org/tangly-team/tangly-os.git).
+The repository is hosed under bitbucket [tangly OS bitbucket](https://bitbucket.org/tangly-team/tangly-os.git).
 
 A mirror is also hosted under github [tangly OS github](https://github.com/marcelbaumann/tangly-os.git).
 

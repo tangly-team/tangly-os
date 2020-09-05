@@ -12,7 +12,7 @@ pipelines:
       # simplified version of CI pipeline due to out of memory errors in bitbucket pipeline
       # - ./gradlew build jacocoTestReport jacocoRootReport -Pmode=int
       # - ./gradlew sonarqube -Pmode=int -Dsonar.projectKey=tangly-os-at-tangly.net -Dsonar.organization=tangly-os -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
-      - git push --prune git@github.com:marcelbaumann/tangly-os.git +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+        - git push --prune git@github.com:marcelbaumann/tangly-os.git +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
 definitions:
   caches:
     gradlewrapper: ~/.gradle/wrapper
