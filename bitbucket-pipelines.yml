@@ -8,8 +8,8 @@ pipelines:
       - gradle
       - gradlewrapper
       script:
-      - ./gradlew build jacocoTestReport jacocoRootReport
-      - ./gradlew sonarqube -Dsonar.projectKey=tangly-os-at-tangly.net -Dsonar.organization=tangly-os -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+      - ./gradlew build jacocoTestReport jacocoRootReport -Pmode=int
+      # - ./gradlew sonarqube -Pmode=int -Dsonar.projectKey=tangly-os-at-tangly.net -Dsonar.organization=tangly-os -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
       - git push --prune git@example.com:marcelbaumann/tangly-os.git +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
 definitions:
   caches:
