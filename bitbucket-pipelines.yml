@@ -13,11 +13,6 @@ pipelines:
       # simplified version of CI pipeline due to out of memory errors in bitbucket pipeline
       # - ./gradlew build jacocoTestReport jacocoRootReport -Pmode=int
       # - ./gradlew sonarqube -Pmode=int -Dsonar.projectKey=tangly-os-at-tangly.net -Dsonar.organization=tangly-os -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
-  - step:
-      name: synchronize github mirror
-      script:
-        - apt-get update && apt-get install -y unzip git git-core libc-client-dev libkrb5-dev && rm -r /var/lib/apt/lists/*
-        - git push --prune git@github.com:marcelbaumann/tangly-os.git +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
 definitions:
   caches:
     gradlewrapper: ~/.gradle/wrapper
