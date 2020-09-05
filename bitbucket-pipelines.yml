@@ -1,4 +1,6 @@
 image: openjdk:14
+clone:
+  depth: full
 pipelines:
   default:
   - step:
@@ -8,6 +10,7 @@ pipelines:
       script:
       - ./gradlew build jacocoTestReport jacocoRootReport
       - ./gradlew sonarqube -Dsonar.projectKey=tangly-os-at-tangly.net -Dsonar.organization=tangly-os -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+      - git push --prune git@example.com:marcelbaumann/tangly-os.git +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
 definitions:
   caches:
     gradlewrapper: ~/.gradle/wrapper

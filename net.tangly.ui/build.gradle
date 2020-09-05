@@ -1,0 +1,56 @@
+/*
+ * Copyright 2006-2020 Marcel Baumann
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
+ *  a copy of the License at
+ *
+ *          http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
+ *  under the License.
+ */
+
+plugins {
+    id 'war'
+    id 'org.gretty' version '3.0.3'
+    id "com.vaadin" version "0.17.0.0"
+}
+
+project.ext.groupId = 'net.tangly'
+project.ext.artifactId = 'ui'
+project.version = "0.2.6"
+project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
+project.ext.inceptionYear = '1996'
+project.description = "Vaadin user interface for the business components (tangly llc)"
+
+ext {
+    vaadinVersion = '17.0.0'
+}
+
+vaadin {
+    pnpmEnable = true
+}
+
+jib {
+    from {
+        image = "jetty:9.4-jdk14"
+    }
+    container {
+        appRoot = "/var/lib/jetty/webapps/ROOT"
+    }
+}
+
+dependencies {
+    implementation project(':net.tangly.commons')
+    implementation project(':net.tangly.bus')
+    implementation project(':net.tangly.gleam')
+    implementation project(':net.tangly.ports')
+
+    implementation enforcedPlatform("com.vaadin:vaadin-bom:$vaadinVersion")
+    providedCompile "javax.servlet:javax.servlet-api:3.1.0"
+
+    implementation 'com.github.mvysny.kaributesting:karibu-testing-v10:1.2.1'
+    implementation 'com.storedobject.chart:so-charts:0.0.5'
+    implementation "org.slf4j:slf4j-simple:$slf4jVersion"
+}

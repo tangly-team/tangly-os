@@ -196,7 +196,7 @@ public class AnalyticsCrmView extends VerticalLayout {
             populate.accept(chart);
             chart.update();
         } catch (Exception e) {
-            logger.atError().setCause(e).log("Error when updating SO charts");
+            // TODO logger.atError().setCause(e).log("Error when updating SO charts");
         }
     }
 }
