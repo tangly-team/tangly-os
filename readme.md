@@ -3,14 +3,15 @@
 The _tangly_ open source components are a set of open source libraries released under Apache 2.0 licence and are available through maven central. 
 The components are
 
-* *BDD* behavior driven development library
-* *BUS* business components library
-* *COMMONS* commons library
-* *DEV* development tools library
-* *FSM* hierarchical finite state machine library
-* *GLEAM* declarative model transformation frameworks library. Approaches for TSV and JSON representations are available.
-* *PORTS* ports library providing examples to connect a business domain model to external systems 
-* *UI* Vaadin user interface library
+* [*BDD*](net.tangly.bdd/readme.md) behavior driven development library
+* [*BUS*](net.tangly.bus/readme.md) business components library
+* [*COMMONS*](net.tangly.commons/readme.md) commons library
+* [*DEV*](net.tangly.dev/readme.md) development tools library
+* [*FSM*](net.tangly.fsm/readme.md) hierarchical finite state machine library
+* [*GLEAM*](net.tangly.gleam/readme.md) declarative model transformation frameworks library. Approaches for TSV and JSON representations are available.
+* [*ORM*](net.tangly.orm/readme.md) simple ORM mapper
+* [*PORTS*](net.tangly.ports/readme.md) ports library providing examples to connect a business domain model to external systems 
+* [*UI*](net.tangly.ui/readme.md) Vaadin user interface library
 
 The documentation is located under [tangly-team](https://tangly-team.bitbucket.io/).
 

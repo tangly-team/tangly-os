@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CodeJsonTest {
     @Test
-    void testTestCodeTest() throws IOException {
+    void testCodeType() throws IOException {
         CodeType<TestCode> type =
                 CodeHelper.build(TestCode.class, TestCode::new, Paths.get(getClass().getClassLoader().getResource("json/TestCodes.json").getPath()));
         assertThat(type.codes().size()).isEqualTo(5);

@@ -41,19 +41,32 @@ The acronyms are (the current composite acronym is TANGLY_OS meaning all compone
 [plantuml,tangly-componentsDependencies,svg]
 ....
 package net.tangly.bdd {}
-
 package net.tangly.bus {}
+package net.tangly.commons {}
 
-package net.tangly.commons {
-}
-net.tangly.commons --> net.tangly.bus
+net.tangly.bus --> net.tangly.commons
+package net.tangly.dev {}
 
-package net.tangly.fsm {
-}
+net.tangly.dev --> net.tangly.commons
+package net.tangly.fsm {}
+
+package net.tangly.gleam {}
+net.tangly.gleam --> net.tangly.commons
+
+package net.tangly.orm {}
+net.tangly.orm --> net.tangly.commons
+net.tangly.orm --> net.tangly.bus
 
 package net.tangly.ports {}
 net.tangly.ports --> net.tangly.commons
 net.tangly.ports --> net.tangly.bus
+net.tangly.ports --> net.tangly.gleam
+
+package net.tangly.ui {}
+net.tangly.ui --> net.tangly.commons
+net.tangly.ui --> net.tangly.bus
+net.tangly.ui --> net.tangly.gleam
+net.tangly.ui --> net.tangly.ports
 ....
 
 === Decisions

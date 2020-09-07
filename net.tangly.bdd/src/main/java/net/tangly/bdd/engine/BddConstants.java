@@ -16,7 +16,7 @@ package net.tangly.bdd.engine;
 /**
  * JSON field identifiers used to generate a JSON representation of stories and features.
  */
-public final class Constants {
+public final class BddConstants {
     public static final String EXT = ".json";
     public static final String BDD_REPORTS_FOLDER = "bdd-reports";
 
@@ -42,6 +42,6 @@ public final class Constants {
     /**
      * Private constructor of an utility class.
      */
-    private Constants() {
+    private BddConstants() {
     }
 }

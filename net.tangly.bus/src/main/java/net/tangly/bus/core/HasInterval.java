@@ -28,7 +28,7 @@ public interface HasInterval {
             interval(from, to);
         }
 
-        public void interval(LocalDate from, LocalDate to) {
+        public final void interval(LocalDate from, LocalDate to) {
             this.from = from;
             this.to = to;
         }

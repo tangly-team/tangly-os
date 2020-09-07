@@ -24,6 +24,17 @@
     <rule ref="category/java/multithreading.xml"/>
     <rule ref="category/java/performance.xml"/>
     <rule ref="category/java/security.xml"/>
+    <rule ref="category/java/codestyle.xml/FieldNamingConventions">
+        <properties>
+            <property name="publicConstantPattern" value="[A-Z][A-Z_0-9]*" />
+            <property name="constantPattern" value="[A-Z][A-Z_0-9]*" />
+            <property name="enumConstantPattern" value="[a-zA-Z][a-zA-Z_0-9]*" />
+            <property name="finalFieldPattern" value="[a-z][a-zA-Z0-9]*" />
+            <property name="staticFieldPattern" value="[a-z][a-zA-Z0-9]*" />
+            <property name="defaultFieldPattern" value="[a-z][a-zA-Z0-9]*" />
+            <property name="exclusions" value="serialVersionUID|serialPersistentFields|logger" />
+        </properties>
+    </rule>
     <rule ref="category/java/codestyle.xml/ShortClassName">
         <properties>
             <property name="minimum" value="3"/>

@@ -14,7 +14,6 @@
 package net.tangly.bus.core;
 
 import java.time.LocalDate;
-import java.util.function.Predicate;
 
 /**
  * The named interface defines a powerful abstraction for entities in a domain model. The features are

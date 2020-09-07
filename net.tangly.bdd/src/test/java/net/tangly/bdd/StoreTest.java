@@ -32,7 +32,9 @@ import org.junit.jupiter.api.AfterAll;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
+/**
+ * Store definitions for unit tests.
+ */
 public class StoreTest {
     private static final String BDD_REPORT = "bdd-features.json";
 

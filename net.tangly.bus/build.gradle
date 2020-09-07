@@ -23,10 +23,10 @@ project.ext.inceptionYear = '2016'
 project.description = "Business Abstractions - BUS - using Java 14 or higher (tangly llc)"
 
 dependencies {
-    implementation 'commons-codec:commons-codec:1.14'
+    implementation 'commons-codec:commons-codec:1.15'
     implementation 'commons-io:commons-io:2.7'
     implementation "org.hsqldb:hsqldb:$hsqldbVersion"
-    implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.8'
+    implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.9'
     implementation 'org.iban4j:iban4j:3.2.1'
     testImplementation "org.flywaydb:flyway-core:$flyWayVersion"
     testImplementation "com.guicedee.services:json:$jsonVersion"

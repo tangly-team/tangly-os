@@ -56,27 +56,27 @@ public class StoryAsciiDocPublisher {
     }
 
     private void publishFeature(@NotNull JSONObject feature) {
-        header("Feature: " + feature.getString(Constants.NAME), 2);
-        paragraph(feature.getString(Constants.DESCRIPTION));
+        header("Feature: " + feature.getString(BddConstants.NAME), 2);
+        paragraph(feature.getString(BddConstants.DESCRIPTION));
         publishTags(feature);
-        for (var item : feature.getJSONArray(Constants.STORIES)) {
+        for (var item : feature.getJSONArray(BddConstants.STORIES)) {
             publishStory((JSONObject) item);
         }
     }
 
     private void publishStory(@NotNull JSONObject story) {
-        header("Story: " + story.getString(Constants.NAME), 3);
-        paragraph(story.getString(Constants.DESCRIPTION));
+        header("Story: " + story.getString(BddConstants.NAME), 3);
+        paragraph(story.getString(BddConstants.DESCRIPTION));
         publishTags(story);
-        for (var item : story.getJSONArray(Constants.SCENARIOS)) {
+        for (var item : story.getJSONArray(BddConstants.SCENARIOS)) {
             publishScenario((JSONObject) item);
         }
     }
 
     private void publishTags(@NotNull JSONObject object) {
-        if (!object.isNull(Constants.TAGS)) {
+        if (!object.isNull(BddConstants.TAGS)) {
             writer.append("*tags:*");
-            for (var tag : object.getJSONArray(Constants.TAGS)) {
+            for (var tag : object.getJSONArray(BddConstants.TAGS)) {
                 writer.append(" '").append((String) tag).append("'");
             }
             writer.println();
@@ -85,19 +85,19 @@ public class StoryAsciiDocPublisher {
     }
 
     private void publishScenario(@NotNull JSONObject scenario) {
-        writer.append(".Scenario: ").append(scenario.getString(Constants.NAME));
+        writer.append(".Scenario: ").append(scenario.getString(BddConstants.NAME));
         writer.println();
         writer.println("[%hardbreaks]");
-        clause(scenario, Constants.GIVEN);
-        clause(scenario, Constants.WHEN);
-        clause(scenario, Constants.THEN);
+        clause(scenario, BddConstants.GIVEN);
+        clause(scenario, BddConstants.WHEN);
+        clause(scenario, BddConstants.THEN);
         writer.println();
     }
 
     private void clause(@NotNull JSONObject scenario, @NotNull String clause) {
         JSONObject segment = (JSONObject) scenario.get(clause);
-        writer.append("*").append(clause).append("* ").append(segment.getString(Constants.TEXT));
-        JSONArray ands = segment.optJSONArray(Constants.AND);
+        writer.append("*").append(clause).append("* ").append(segment.getString(BddConstants.TEXT));
+        JSONArray ands = segment.optJSONArray(BddConstants.AND);
         if (ands != null) {
             for (var item : ands) {
                 writer.append(" *and* ").append((String) item);

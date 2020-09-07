@@ -36,13 +36,13 @@ import org.json.JSONObject;
  * generated file.
  */
 public class StoryWriter {
-    private static final Set<String> knownTargetDirs = Set.of("target", "build", "out");
+    private static final Set<String> KNOWN_TARGET_DIRS = Set.of("target", "build", "out");
     private final StoryRun run;
     private final Path path;
 
     public StoryWriter(@NotNull StoryRun run) {
         this.run = run;
-        this.path = Paths.get(getOrCreateBddReportsFolder(run.getClass()).toString(), run.clazz().getName() + Constants.EXT);
+        this.path = Paths.get(getOrCreateBddReportsFolder(run.getClass()).toString(), run.clazz().getName() + BddConstants.EXT);
     }
 
     public static Path getOrCreateBddReportsFolder(@NotNull Class<?> clazz) {
@@ -50,11 +50,11 @@ public class StoryWriter {
         Objects.requireNonNull(url);
         Path targetDir = Paths.get(url.getPath());
         int index = targetDir.getNameCount() - 1;
-        while ((index > 0) && (!knownTargetDirs.contains(targetDir.getName(index).toString()))) {
+        while ((index > 0) && (!KNOWN_TARGET_DIRS.contains(targetDir.getName(index).toString()))) {
             --index;
             targetDir = targetDir.getParent();
         }
-        Path bddReportsDirectory = targetDir.resolve(Paths.get(Constants.BDD_REPORTS_FOLDER));
+        Path bddReportsDirectory = targetDir.resolve(Paths.get(BddConstants.BDD_REPORTS_FOLDER));
         File bddReports = bddReportsDirectory.toFile();
         if (!bddReports.exists() && !bddReports.mkdir()) {
             throw new IllegalStateException("Unable to create the folder for saving bdd reports.");
@@ -70,11 +70,11 @@ public class StoryWriter {
 
         // write story
         JSONObject story = createStory(run);
-        feature.getJSONArray(Constants.STORIES).put(story);
+        feature.getJSONArray(BddConstants.STORIES).put(story);
 
         // write scenario
         for (Scene scene : run.scenes()) {
-            story.getJSONArray(Constants.SCENARIOS).put(createScenario(scene));
+            story.getJSONArray(BddConstants.SCENARIOS).put(createScenario(scene));
         }
 
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
@@ -86,54 +86,54 @@ public class StoryWriter {
 
     private static JSONObject createFeature(StoryRun run) {
         JSONObject feature = new JSONObject();
-        feature.put(Constants.PACKAGE_NAME, run.packages().getName());
-        feature.put(Constants.NAME, run.featureName());
-        feature.put(Constants.ID, run.featureId());
-        feature.put(Constants.DESCRIPTION, run.featureDescription());
+        feature.put(BddConstants.PACKAGE_NAME, run.packages().getName());
+        feature.put(BddConstants.NAME, run.featureName());
+        feature.put(BddConstants.ID, run.featureId());
+        feature.put(BddConstants.DESCRIPTION, run.featureDescription());
         createTags(run.featureTags(), feature);
-        feature.put(Constants.STORIES, new JSONArray());
+        feature.put(BddConstants.STORIES, new JSONArray());
         return feature;
     }
 
     private static JSONObject createStory(StoryRun run) {
         JSONObject story = new JSONObject();
-        story.put(Constants.CLASS_NAME, run.clazz().getName());
-        story.put(Constants.NAME, run.name());
-        story.put(Constants.ID, run.id());
-        story.put(Constants.DESCRIPTION, run.description());
+        story.put(BddConstants.CLASS_NAME, run.clazz().getName());
+        story.put(BddConstants.NAME, run.name());
+        story.put(BddConstants.ID, run.id());
+        story.put(BddConstants.DESCRIPTION, run.description());
         createTags(run.storyTags(), story);
-        story.put(Constants.SCENARIOS, new JSONArray());
+        story.put(BddConstants.SCENARIOS, new JSONArray());
         return story;
     }
 
     private static JSONObject createScenario(@NotNull Scene scene) {
         JSONObject scenario = new JSONObject();
-        scenario.put(Constants.METHOD_NAME, scene.methodName());
-        scenario.put(Constants.NAME, scene.description());
+        scenario.put(BddConstants.METHOD_NAME, scene.methodName());
+        scenario.put(BddConstants.NAME, scene.description());
         if (!scene.given().text().isBlank()) {
             JSONObject given = new JSONObject();
-            given.put(Constants.TEXT, scene.given().text());
+            given.put(BddConstants.TEXT, scene.given().text());
             addAnds(scene.given().ands(), given);
-            scenario.put(Constants.GIVEN, given);
+            scenario.put(BddConstants.GIVEN, given);
         }
         if (!scene.when().text().isBlank()) {
             JSONObject when = new JSONObject();
-            when.put(Constants.TEXT, scene.when().text());
-            scenario.put(Constants.WHEN, when);
+            when.put(BddConstants.TEXT, scene.when().text());
+            scenario.put(BddConstants.WHEN, when);
         }
         JSONObject then = new JSONObject();
-        then.put(Constants.TEXT, scene.then().text());
+        then.put(BddConstants.TEXT, scene.then().text());
         addAnds(scene.then().ands(), then);
-        scenario.put(Constants.THEN, then);
+        scenario.put(BddConstants.THEN, then);
         return scenario;
     }
 
     private static void addAnds(@NotNull List<String> ands, @NotNull JSONObject object) {
-        addList(ands, object, Constants.AND);
+        addList(ands, object, BddConstants.AND);
     }
 
     private static void createTags(@NotNull List<String> tags, @NotNull JSONObject object) {
-        addList(tags, object, Constants.TAGS);
+        addList(tags, object, BddConstants.TAGS);
     }
 
     private static void addList(@NotNull List<String> items, @NotNull JSONObject object, String jsonTag) {

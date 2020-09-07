@@ -83,15 +83,15 @@ public class StoryMerger {
     }
 
     private void merge(JSONObject feature) {
-        Optional<JSONObject> mergedFeature = contains(features, Constants.PACKAGE_NAME, feature.getString(Constants.PACKAGE_NAME));
+        Optional<JSONObject> mergedFeature = contains(features, BddConstants.PACKAGE_NAME, feature.getString(BddConstants.PACKAGE_NAME));
         if (mergedFeature.isEmpty()) {
             features.put(feature);
         } else {
-            JSONArray mergedStories = mergedFeature.get().getJSONArray(Constants.STORIES);
-            JSONArray stories = feature.getJSONArray(Constants.STORIES);
+            JSONArray mergedStories = mergedFeature.get().getJSONArray(BddConstants.STORIES);
+            JSONArray stories = feature.getJSONArray(BddConstants.STORIES);
             for (var item : stories) {
                 JSONObject story = (JSONObject) item;
-                if (contains(mergedStories, Constants.CLASS_NAME, story.getString(Constants.CLASS_NAME)).isEmpty()) {
+                if (contains(mergedStories, BddConstants.CLASS_NAME, story.getString(BddConstants.CLASS_NAME)).isEmpty()) {
                     mergedStories.put(story);
                 }
             }

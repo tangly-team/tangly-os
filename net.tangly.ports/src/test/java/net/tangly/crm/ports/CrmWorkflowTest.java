@@ -44,6 +44,13 @@ class CrmWorkflowTest {
     }
 
     @Test
+    void testCompanyTsvCrm() {
+        CrmWorkflows crmWorkflows = new CrmWorkflows(new Crm());
+        crmWorkflows.importCrmEntities(Path.of("/Users/Shared/tangly"));
+
+    }
+
+    @Test
     void testTsvCrm() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             CrmAndLedgerStore crmAndLedgerStore = new CrmAndLedgerStore(fs);

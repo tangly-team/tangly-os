@@ -26,18 +26,18 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CodeDatabaseTest {
-    private static final String dbUrl = "jdbc:hsqldb:mem:tangly;sql.syntax_mys=true";
-    private static final String username = "SA";
-    private static final String password = "";
+    private static final String DB_URL = "jdbc:hsqldb:mem:tangly;sql.syntax_mys=true";
+    private static final String USERNAME = "SA";
+    private static final String PASSWORD = "";
     private JDBCDataSource datasource;
 
 
     @BeforeEach
     void setUp() {
         datasource = new JDBCDataSource();
-        datasource.setDatabase(dbUrl);
-        datasource.setUser(username);
-        datasource.setPassword(password);
+        datasource.setDatabase(DB_URL);
+        datasource.setUser(USERNAME);
+        datasource.setPassword(PASSWORD);
         var flyway = Flyway.configure().dataSource(datasource).load();
         flyway.migrate();
     }
