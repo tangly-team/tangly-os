@@ -1,0 +1,92 @@
+---
+title: "Gradle 6.4 Finally Supports Java Module"
+linkTitle: "Gradle Support Modules"
+date: 2020-05-01
+---
+
+== Gradle 6.4 Finally Supports Java Module
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2020-05-01-head.jpg[role=left]
+Java 9 release introduced the concept of https://www.oracle.com/corporate/features/understanding-java-9-modules.html[modules] within the Java language.
+Java 9 was released in September 2017.
+
+Until now creating Java modules was quite cumbersome and Gradle did only offer limited support through external plugins.
+
+With the release of https://gradle.org/[Gradle] 6.4 in May 2020 software developers can finally easily generate well-behaved Java modules.
+We had to wait almost three years for native support!
+
+Support for modules is native in the Java plugin.
+You only need to add *one configuration line*.
+Start using Java modules and have language support to enforce modularity in your product.
+
+=== Java Modules in Gradle 6.4
+
+Gradle supports the Java module system with everything you need to compile, test and execute tests for Java modules.
+You can also build Javadoc.
+
+While there is some overlap with Gradle's dependency management features, Java modules offer module boundaries that are enforced by the Java runtime.
+Therefore modularity is enforced at the language level instead of coding conventions or using external tools such as https://www.archunit.org/[ArchUnit].
+
+The only thing you need to configure is module path inference for the Java plugins.
+
+[source, groovy]
+----
+ java {  
+   modularity.inferModulePath.set(true)  
+ }  
+----
+
+Then you just need to make sure that you write a proper Java module by providing An example of a module information file is
+
+[source, java]
+----
+ module net.tangly.fsm {  
+   exports net.tangly.fsm;  
+   exports net.tangly.fsm.dsl;  
+   exports net.tangly.fsm.utilities;
+   requires org.slf4j;  
+   requires static org.jetbrains.annotations;  
+ }
+----
+
+Java 14 in Gradle Java 14 was also released in Spring 2020. It is worth to experiment with the new preview features.
+The following configuration is needed in Gradle to compile, test, execute and generate JavaDoc when using Java 14 preview features.
+
+[source, groovy]
+----
+ tasks.withType(JavaCompile) {  
+     options.encoding = 'UTF-8'  
+     options.fork = true  
+     options.incremental = true  
+     options.warnings = true  
+     options.deprecation = true  
+     options.compilerArgs += ["-parameters", "--enable-preview", "-Xlint:unchecked"]  
+   }  
+   tasks.withType(Test) {  
+     useJUnitPlatform()  
+     options {  
+       setExcludeTags(['integration', 'localTest'] as Set)  
+     }  
+     jvmArgs += "--enable-preview"  
+     maxParallelForks = 8  
+     failFast = false  
+   }  
+   tasks.withType(Javadoc) {  
+     enabled = true  
+     javadoc.options {  
+       encoding("UTF-8")  
+       addBooleanOption('-enable-preview', true)  
+       addStringOption('-release', '14')  
+     }  
+   }  
+   tasks.withType(JavaExec) {  
+     jvmArgs += '--enable-preview'  
+   }
+----
+
+Beware that https://www.jacoco.org/[JaCoCo] shall only release a version supporting code coverage for JDK 14 and in particular record not before June 2020.

@@ -1,0 +1,83 @@
+---
+title: "How Healthy is Your Product? - Source Code Check"
+linkTitle: "Source Code Check"
+date: 2018-10-01
+---
+
+== How Healthy is Your Product? - Source Code Check
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2018-10-01-head.png[role=left]
+You are developing your product using agile and lean approaches.
+
+How can you check your approach and distill improvements?
+A health check of your product and your development approach is certainly a good solution.
+
+This post is the first of a set of articles identifying health checks with different focus.
+We will identify strengths, potential weaknesses and hopefully find room for improvement.
+
+The initial examination shall always be the source code.
+Your code base is a key asset of your company.
+
+=== Rules
+
+The patient solely decides if a health check shall be performed.
+The effort and depth of a health check is defined together with the patient.
+The findings are considered confidential.
+
+A short check with a feedback workshop presenting the insights requires around two work days.
+
+A deeper and more intensive check requests more effort, between one and four weeks.
+Upon completion you can also hire a coach to implement selected findings and improve durably the health of your application.
+The findings are often clear and the measures straightforward.
+The real work is to implement consistently the measures.
+
+I have the same personal challenge when trying to loose weight or improve my running form.
+The long term implementation is the crux.
+
+=== Source Code Checks
+
+How clean, legible and maintainable is your source code?
+Often it is best to start your health evaluation with your product source code.
+At the end of the day it is compiled source code you deliver to all your customers to work with.
+
+One nice aspect about source code checks is that a whole set of tools are available on the market.
+You still need an expert to provide the diagnostic but the gathering of data can be automated and quite inexpensive to gather.
+
+Below a list of capabilities we have build-up over time for source code checks.
+Use common sense and strategic goals to identify the objectives you want to measure.
+Expertise is needed to define values to measure if the source code of your product reaches the selected objectives.
+. *Java* 11/10/9/8/7/6 code and how to migrate to a current version and use the new Java features,
+. Multi-threaded, parallel programming and reactive systems,
+. Functional and object oriented detailed design approaches,
+. Test driven development TDD and build-in quality - gradle or maven -,
+. *Acceptance test driven development ATDD* and user acceptance,
+. Clean code approach and detection of code smells,
+. *Static analysis tools* to measure the quality attributes of source code,
+. Compilation and test automation,
+. Software craftsmanship approach, values and techniques,
+. *Domain driven development* and micro services,
+. Database models and open data,
+. Software architecture and Enterprise architecture,
+. CI and CD - continuous integration, continuous delivery, continuous deployment,
+. Static quality assurance approaches for quick diagnostics,
+. Development tools to improve quality and productivity,
+. User Experience and UI design.
+
+My blogs {url-articles}2018/blog-2018-0a4-01[Pragmatic Craftsmanship] and How to Reach the {url-articles}2018/blog-2018-06-01[Software Quality Graal] provides
+insights why source code quality is of tremendous importance for any company.
+
+And the blog {url-articles}2018/blog-2018-05-01[SonarLint] for the Impatient would be a pragmatic first measure to measure and improve your source code health.
+
+Any project should have a battery of measures deployed to continuously monitor the source code and detects trends over time.
+
+=== Posts in the Health Check Series
+
+. link:../../2018/how-healthy-is-your-product-source-code-check[Source Code Check]
+. link:../../2018/how-healthy-is-your-product-delivery-pipeline-check[Delivery Pipeline Check]
+. link:../../2018/how-healthy-is-your-product-product-strategy-check[Product Strategy Check Company]
+. link:../../2019/how-healthy-is-your-product-company-culture-check/[Company Culture Check]

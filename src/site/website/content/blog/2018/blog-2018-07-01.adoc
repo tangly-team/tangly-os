@@ -1,0 +1,91 @@
+---
+title: "Architectural Decision Records ADR"
+linkTitle: "Architectural Decision Records"
+date: 2018-07-01
+---
+
+== Architectural Decision Records ADR
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2018-07-01-head.jpg[role=left]
+Architecture Decision Record ADR is a compact and traceable documentation of all important decisions taken during the realization of a product.
+Use https://asciidoc.org/[asciidoc] or https://en.wikipedia.org/wiki/Markdown/[Markdown] and Git to have an agile and lean documentation of your major
+decisions.
+
+The huge advantage of Architecture Design Record _ADR_ is the timeline of the decisions. It tremendously help to understand the technical changes during the
+product lifecycle.
+
+=== Definition
+In each ADR file, write these sections:
+
+Title::
+short present tense imperative phrase, less than 50 characters, like a git commit message.
+Status::
+proposed, accepted, rejected, deprecated, superseded
+Context::
+what is the issue that we're seeing that is motivating this decision or change.
+Decision::
+what is the change that we're actually proposing or doing.
+Consequences::
+what becomes easier or more difficult to do because of this change.
+
+I use asciidoc format to write all our architecture design records.
+You can add to the same git repository as the project, visualize differences and if desired generate a nice looking document.
+And my IDE IntelliJ IDEA has a nice plugin for this format.
+
+Before using ADR I documented the decision changes as footnote in a word document. The ADR approach is way more legible and easier to trace with the help of git repositories.
+
+==== Title
+
+These documents have names that are short noun phrases.
+For example, "ADR 1: Deployment on Ruby on Rails 3.0.10" or "ADR 9: LDAP for Multiple tenant Integration"
+
+==== Context
+
+This section describes the forces at play, including technological, political, social, and project local.
+These forces are probably in tension, and should be called out as such.
+The language in this section is value-neutral.
+It is simply describing facts.
+
+==== Decision
+
+This section describes our response to these forces.
+It is stated in full sentences, with active voice.
+"We will ..."
+
+==== Status
+A decision may be "proposed" if the project stakeholders haven't agreed with it yet, or "accepted" once it is agreed.
+If a later ADR changes or reverses a decision, it may be marked as "deprecated" or "superseded" with a reference to its replacement(s).
+
+The status and the graph of related decisions can be tracked and visualize using tools.
+You can also track your decisions without any tools, a regular product has often less than hundred decisions.
+And you can always write a small parse utility to extract your dependency graph.
+
+==== Consequences
+
+This section describes the resulting context, after applying the decision.
+All consequences should be listed here, not just the "positive" ones.
+A particular decision may have positive, negative, and neutral consequences, but all of them affect the team and project in the future.
+
+==== Tips and Tricks
+
+The whole document describing an ADR should be one or two pages long.
+We will write each ADR as if it is a conversation with a future developer.
+This requires good writing style, with full sentences organized into paragraphs.
+Bullets are acceptable only for visual style, not as an excuse for writing sentence fragments (Bullets kill people, even PowerPoint bullets).
+
+The approach is very similar to how you would document a software pattern.
+
+Believe and respect is the prime directive.
+
+[quote, Norman Kerth]
+____
+Regardless of what we discover, we understand and truly believe that everyone did the best job they could,
+given what they knew at the time, their skills and abilities, the resources available, and the situation at hand.
+____
+
+

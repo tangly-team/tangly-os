@@ -13,12 +13,15 @@
 
 package net.tangly.commons.vaadin;
 
+import java.time.format.DateTimeFormatter;
+
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.provider.DataProvider;
+import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import net.tangly.bus.core.Entity;
 import net.tangly.bus.core.TagTypeRegistry;
 import net.tangly.bus.providers.Provider;
@@ -61,8 +64,10 @@ public abstract class InternalEntitiesView<T extends Entity> extends Crud<T> imp
         grid.addColumn(Entity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(Entity::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Entity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Entity::fromDate).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Entity::toDate).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(new LocalDateRenderer<>(Entity::fromDate, DateTimeFormatter.ISO_DATE)).setKey("from").setHeader("From").setAutoWidth(true)
+                .setResizable(true).setSortable(true);
+        grid.addColumn(new LocalDateRenderer<>(Entity::toDate, DateTimeFormatter.ISO_DATE)).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true)
+                .setSortable(true);
     }
 
     @Override

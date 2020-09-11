@@ -1,0 +1,153 @@
+---
+title: "Agile Component Design"
+linkTitle: "Agile Component Design"
+date: 2020-04-01
+---
+
+== Agile Component Design
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2020-04-01-head.jpg[role=left]
+Your are responsible to create or modify a component in your current application.
+This is a *design* activity.
+
+How can you create a good, legible, maintainable component architecture?
+How can you validate your functional and non-functional requirements?
+
+Yes you are right.
+You are responsible for *architecture decisions* at component or subsystem level.
+Below a set of tools to improve the quality of your design.
+
+=== Design Approaches
+
+==== Patterns and Idioms
+
+The pattern movement was started last millennium.
+Very talented and experienced developers have documented how to solve common problems elegantly and effectively.
+Depending on the programming language you are using different idioms are preferred.
+The way to solve the same problem is different in Java, Scala, C++, Python or C#.
+
+You should know all regular structural, behavioral and creational patterns.
+Explore your programming language and discover how idioms and patterns have evolved between major releases.
+For example lambda expressions and streams introduced in Java 8 - released Spring 2014 - completely transform the solution for regular business logic.
+Records introduced in Java 14 - released Spring 2020 - have a huge impact how your architecture deals with data transfer objects - DTO - and immutability.
+
+==== Read Open Source Code
+
+Stop inventing the wheel again and again.
+https://en.wikipedia.org/wiki/Not_invented_here[Avoid Not Invented] Here syndrome.
+Your current problem was already solved multiple times.
+Explore open source solutions, read posts, study books.
+Select the most adequate solution and fill free to improve it.
+
+Instead of searching for a solution for days, post your question on an adequate forum or on https://stackoverflow.com/[Stack Overflow].
+Again fill free to improve the suggested solutions.
+
+Become more efficient and use the wisdom of all these developers accessible through the Internet.
+And always verify the quality and adequacy of their proposed solution.
+
+==== Java Standard API
+
+Know your programming language and the huge associated standard libraries part of your technology stack.
+Wisdom is coded in this code.
+Standard patterns are implemented in almost all packages.
+Idioms are encoded everywhere.
+
+See how Java deals with human and machine time with the https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/time/package-summary.html[java.time]
+ package.
+Decades of trials and errors were needed to finally create a balanced and simple to use time abstractions.
+All these decisions and learnings are encoded in this code.
+
+=== Clean Architecture
+
+==== Clean Code
+
+You want to create a clean architecture you are proud of.
+You must first write clean code.
+Clean architecture build up on clean code.
+Promote clean code in your agile team.
+Agile code is clean code.
+
+Do not fall to the fallacy to draw beautiful and useless UML diagram and write thick software architecture documents.
+The real architecture is hidden in the source code of your product.
+You still should document all major design decisions.
+
+==== Know Your Language
+
+If you are developing in Java, you should use the current features of the programming language.
+For example with with Java 14
+
+* Try with resources and _closeable_ resources,
+* Immutable collections,
+* Streams, optionals, filters, and collectors,
+* Predicates and functions to define lambda expressions,
+* Records and immutability for objects,
+* Pattern matching syntactic sugar as for _instanceof_ operator,
+* Switch expressions Text strings.
+
+==== Aggressive Refactoring
+
+The entropy of source code increases over time.
+Only continuous and aggressive refactoring mitigates the degenerescence of your application.
+Each time you correct an error or add a new functionality refactor your code.
+Remove smells, compiler warnings and migrate older code to use newer and better features of your programming language.
+
+==== Acceptance Test Driven Development
+
+Your users want a working application.
+Write acceptance tests insuring all relevant functions are tested through your continuous integration pipeline.
+Therefore you guarantee your users the application behaves as specified.
+
+==== Test Driven Development
+
+Testability and changeability of your application are architectural aspects.
+You must have a way to verify these non-functional requirements.
+Test driven development is a proven approach to fulfill these requirements and validate them continuously.
+
+==== Continuous Integration
+
+Continuous integration and delivery are the mechanisms to continuously validate and verify all functional and non-functional
+requirements are correctly implemented.
+You guarantee your users and customers that any software delivery they get is compliant and correct.
+
+Each time you find a discrepancy add an additional test validating the requirement behind this fault.
+Therefore the same error will never happen again.
+
+=== Good Practices
+
+Publish your components on a central repository such as _Maven Central_.
+Your users have easy and standardized access to your components and their latest version.
+
+Build tools such as {ref-gradle} and {ref-maven} or IDE such as https://www.jetbrains.com/idea/[IntelliJ IDEA] allows potential users to fetch the component
+without having to install out-of-the-box mechanisms.
+
+Javadoc is the standard and hugely helpful approach to document classes and component public interfaces in Java.
+Similar tools exist for other programming languages.
+
+Architecture design records provide hints why specific design decisions were chosen.
+Your users can better understand the path you follow and the selected tradeoffs of your design.
+They do not have to agree, but they can understand the arguments why you choose so.
+
+Static code generator is an actual good practice to provide current documentation and tutorials for your components.
+We write all our documentation in the {ref-asciidoc} format - including https://plantuml.com/[plantUML] and highlighted source code - and
+generate our web site using {ref-hugo} tool suite.
+
+Start small and improve your approach every day.
+
+=== Agile Architecture Series
+
+The agile architecture track contains the following blogs
+
+. link:../../2019/agile-architecture-principles[Agile Architecture Principles]
+. link:../../2019/clean-code[Agile Code is Clean Code!]
+. link:../../2019/agile-architecture[Agile Architecture within Scrum]
+. link:../../2020/agile-component-design[Agile Component Design]
+. link:../../2020/legacy-systems-refactoring[Legacy Systems Refactoring]
+. link:../../2020/how-agile-collaborators-learn[How Agile Collaborators Learn]
+
+We also published our https://www.tangly.net/insights/continuous-learning/agile-architecture-course[agile architecture course] (3 ECTS) used for teaching
+computer science students at bachelor level at Swiss technical universities.

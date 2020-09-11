@@ -1,0 +1,133 @@
+---
+title: "Git Local Repositories for the Impatient"
+linkTitle: "Git Local Repositories"
+date: 2017-05-02
+---
+
+== Git Local Repositories for the Impatient
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2017-05-02-head.jpg[role=left]
+
+=== Start using Git
+
+You shall put your source code under a version management system.
+The actual industrial standard is git, a distributed version control system - https://en.wikipedia.org/wiki/Distributed_version_control[DVCS] -.
+
+Install git on your development machine.
+If you are using IntelliJ IDEA configure git in the IDE through the preferences pane.
+
+To put your project under git version management, go to the root of the project and do
+
+[code]
+----
+git init
+----
+
+To add a specific file or all your source files to git
+
+[code]
+----
+git add [filename]
+git add *
+----
+
+You can perform these operations to add a project to a local Git repository directly in IntelliJ IDEA as follow
+
+. Open the project you want to store in a repository.
+. On the main menu, choose VCS | Import into Version Control | Create Git Repository.
+. In the dialog that opens, specify the directory where you want to create a new Git repository.
+. Put the required files under Git version control.
+ The files appear in the Local Changes tab of the Version Control tool window, under the Default change list.
+
+=== Commit Changes
+
+To commit your changes you simply
+
+[code]
+----
+git commit -m "commit message, should be clear and legible"
+----
+
+You can perform these operation directly in IntelliJ IDEA (VCS functions) as follow
+. Switch to the Version Control tool window and switch to the Local Changes tab.
+. Expand the Un-versioned Files node, and select the files to be added. From the context menu, chooseAdd to VCS, or press ⌥⌘A.
+. Switch to the Project tool window and select the files to be added. From the context menu, choose Git | Add or press⌥⌘A.
+
+Each time you commit your changes you gain the ability to reverse to exactly this state.
+Each time you made a modification and tested it, just commit it.
+The cost of a commit is marginal.
+When working with Git, TDD, and ATDD it is normal to commit every few minutes.
+By few minutes we mean 5 or 10 minutes.
+
+Observe yourself.
+If you commit at the end of the day, you are using your DVCS as a backup medium.
+It is time to change your habits.
+Use Git as an history of all successful  changes you implement, and simply rollback all unsuccessful ones, simply discarding them.
+
+=== What is Project Status?
+
+To find out what the status of your project is, simply
+
+[code]
+----
+git status
+----
+
+The same information is available in IntelliJ IDEA under
+
+. Open the required project
+. On the main menu, choose VCS | Refresh File Status
+. Switch to the Version Control window and open the Local Changes tab.
+
+=== Work Always with Trunk
+
+Ideally you shall always work against trunk.
+Because you develop using TDD and ATTD you know your source code is always working.
+This approach is deeply compatible with lean and agile values.
+It is also the one with the least waste of effort.
+
+If your team decides to work with branches, make them short lived!. See How to link:../../2016/git-branches-for-the-impatient/[Git Branches for the Impatient]
+post.
+
+=== Discarding Changes
+
+You find you the changes you made locally were not a good decision. No problem, with
+
+[code]
+----
+git reset --hard
+----
+
+You revert to the last save committed set of files.
+Resetting with the hard option recursively discards all of your currently uncommitted (unstaged or staged) changes.
+
+You want to restore just one file to its previous committed state.
+
+[code]
+----
+git checkout --[filename]
+----
+
+=== Configuration Tips
+
+You shall avoid end of line character warnings by configuring git to handle them.
+The situation arises because Microsoft OS uses CRLF for end of lines instead of CR.
+
+You can configure git to handle it by running on Windows.
+
+[code]
+----
+git config --global core.autocrlf true
+----
+
+or on Linux and macOS
+
+[code]
+----
+git config --global core.autocrlf input
+----

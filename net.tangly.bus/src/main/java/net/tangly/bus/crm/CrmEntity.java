@@ -16,12 +16,13 @@ package net.tangly.bus.crm;
 import java.util.Optional;
 
 import net.tangly.bus.core.Address;
+import net.tangly.bus.core.EmailAddress;
 import net.tangly.bus.core.HasTags;
 import net.tangly.bus.core.PhoneNr;
 import net.tangly.bus.core.Tag;
 
 /**
- * A customer relation management mixin entity defines a set of operations useful for all customers. All information are stored as tags for future extensions.
+ * A customer relation management mixin defines a set of operations useful for all customers. All information are stored as tags for future extensions.
  */
 public interface CrmEntity extends HasTags {
     default Optional<PhoneNr> phoneNr(CrmTags.Type type) {
@@ -32,8 +33,12 @@ public interface CrmEntity extends HasTags {
         tag(CrmTags.phoneTag(type.name()), phoneNr);
     }
 
-    default Optional<String> email(CrmTags.Type type) {
-        return findBy(CrmTags.emailTag(type.name())).map(Tag::value);
+    default Optional<EmailAddress> email(CrmTags.Type type) {
+        return findBy(CrmTags.emailTag(type.name())).map(Tag::value).map(EmailAddress::of);
+    }
+
+    default void email(CrmTags.Type type, EmailAddress email) {
+        email(type, email.text());
     }
 
     default void email(CrmTags.Type type, String email) {

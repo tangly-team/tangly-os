@@ -1,0 +1,66 @@
+---
+title: "Scrum Masters are not Administrators"
+linkTitle: "Scrum Masters are not Administrators"
+date: 2017-08-01
+---
+
+== Scrum Masters are not Administrators
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2017-08-01-head.jpg[role=left]
+Lately I was asked if I was interested to work as Scrum master.
+The below job description was handed me over. What an experience it was.
+
+The text with the regular font is the job description. I wrote down my comments in italics.
+
+* Manage team of software engineers: provide technical direction, schedule and delegate work, evaluate performance.
+  Advise on best practices and developing practice, review code.
+** __A Scrum master empowers a development team. The team schedules the work during each Sprint.
+ The team members select the stories they will implement next.
+ The Scrum master advices best practices but he really should not perform code reviews and police the team.__
+** __He does not manage and certainly not micro-manage engineers.
+ He shall never evaluate performance of team members. He shall not police the team by reviewing code.__
+* Analyze requirements and provide time estimates: consume non-technical functional requirements documentation.
+ Provide feedback when necessary, translating into technical documentation when necessary.
+ Provide feasibility assessment and estimate level of effort to implement
+** __The product owner and the team writes and refines stories.
+ Avoid requirements and move to stories and epics.
+ Technical documentation and feasibility assessments shall be done by the team.
+ Only the team has the right to estimate the effort needed to implement a story.__
+** __The Scrum master is neither a business analyst defining requirements nor a project manager creating schedules and time estimates.__
+* Help develop, communicate and enforce workflows.
+ Work with Development department head and QA to assure that clear workflows are established and followed within the team
+** __An agile team has quality assurance roles as cross-functional capabilities.
+ You do need a quality assurane team. Dissolve the quality assurance  department.
+ Move their specialists to the teams and get rid of the vice president of quality assurance.__
+** __The Scrum master does neither administrate flow of information nor implement processes.
+ He trusts and coaches his teams to deliver best quality.__
+* Coordinate with QA, IT Operations, and Database Administrators on testing. l
+ Launch planning, launch, and troubleshooting/optimization of features post-launch.
+** __The product owner plans the release schedule with the team.
+ A high quality product does not need a troubleshooting process.
+ The above nicely describes an organization based on functional silos.
+ No cross-functionality is ensured and product focus is an unknown concept.__
+** __The Scrum master is neither an administrator nor an overall coordinator.
+ His teams are self-organizing and directly communicate with all involved parties.__
+* Architecture: participate in technical design of new and expanding systems and infrastructure.
+ Aid in creating documentation for new and existing systems
+** __The team grows the architecture and implements the solution.
+ Not an external so-called expert shall be in charge of the architecture or sole owner of the design.__
+** __The Scrum master is neither in charge of the architecture nor the external expert imposing his views on the team.__
+
+I clearly decided not to apply for this position.
+I was fascinated that companies still believe that such alibi positions will not be detected.
+The above position is a flag for me.
+As an agile developer, Scrum master or product owner I shall never work for this company.
+I will not have link::../../2017/fun-at-work[Fun at Work].
+
+They were looking for an administrator and a classical project manager.
+They were not looking for an agile professional and Scrum master.
+
+I kindly suggested the authors of the job description shall get an introduction training to Agile, Lean and Scrum.
+And I will certainly not recommend this company to my acquaintances.

@@ -1,24 +1,21 @@
 ---
-title: "FSM 002"
-date: 2019-05-01
-draft: false
+title: "OS 002: Publish Maven Central Artifacts"
+linkTitle: "Publish Maven Central Artifacts"
+date: 2020-01-01
+weight: 2
 ---
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
-:icons: font
-:source-highlighter: pygments
-:pygments-style: manni
 
-== FSM-002 Publish Artifacts on Public Java Components Repository
+== OS-00t Publish Artifacts on Public Java Components Repository
 
-Date: 2019-05-01
+Date: 2020-01-01
 
 === Status
 
-Implemented
+Superseeded by: OS-0005
 
 === Context
 

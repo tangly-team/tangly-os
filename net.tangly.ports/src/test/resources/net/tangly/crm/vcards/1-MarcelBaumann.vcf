@@ -7,18 +7,16 @@ ORG:tangly llc;
 TITLE:Owner
 EMAIL;type=INTERNET;type=HOME;type=pref:marcelbaumann@gmail.com
 EMAIL;type=INTERNET;type=WORK:marcel.baumann@tangly.net
-TEL;type=CELL;type=VOICE;type=pref:+41 79 778 8689
+TEL;type=HOME;type=VOICE;type=pref:+41 79 778 8689
+TEL;type=WORK;type=VOICE:+41 79 778 86 89
 ADR;type=HOME;type=pref:;;27 Lorzenhof;Cham 6330;;6330;Switzerland
 ADR;type=WORK:;;27 Lorzenhof;Cham;;6330;Switzerland
 X-SOCIALPROFILE;type=GOOGLE:x-apple:+Marcel_Baumann
 X-SOCIALPROFILE;type=SKYPE:x-apple:marcel-baumann
 X-SOCIALPROFILE;type=linkedin:http://www.linkedin.com/in/marcelbaumann
-NOTE:Hauswartung Jotic: 079 469 4119
 URL;type=WORK;type=pref:http://www.tangly.net
 item1.URL:https://tangly-blog.blogspot.ch/
 item1.X-ABLabel:_$!<HomePage>!$_
-item2.URL:http://www.google.com/profiles/113608651510733597123
-item2.X-ABLabel:Profile
 BDAY:1964-12-12
 PHOTO;ENCODING=b;TYPE=JPEG:/9j/4AAQSkZJRgABAQAAAQABAAD/4QBsRXhpZgAASUkqAAgA
  AAADADEBAgAHAAAAMgAAABICAwACAAAAAgACAGmHBAABAAAAOgAAAAAAAABHb29nbGUAAAMAAJ

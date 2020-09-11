@@ -1,0 +1,105 @@
+---
+title: "Clean Your Desk and Define New Year Improvements"
+linkTitle: "Clean Your Desk"
+date: 2017-12-01
+---
+
+== Clean Your Desk and Define New Year Improvements
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+:icons: font
+
+image::2017-12-01-head.png[role=left]
+It is Christmas time.
+Clean your desk and the content of your workstation.
+Upgrade your tools and your development environment to the actual version.
+
+It is time to add automated build pipelines, TDD, ATDD, and Docker to your toolbox.
+Embrace agile approaches.
+
+Work focused and avoid overtime.
+Prioritize outcomes instead of outputs.
+Enjoy family life, practice sport, and pursue continuous training.
+
+=== Clean Your Desk
+
+==== Digitalize Your Office
+It is time to sell the last fax device in your office and plan to remove your big printer.
+Burn your paper documentation and discard your folders.
+Please store all information digitally and have an effective search application in your company.
+Use Wiki to publish company data and store knowledge for all collaborators.
+
+Have a professional handset and a good camera for video conference.
+
+Put all your documents on your company drive and index all this information.
+Finding relevant data by keyword searching is a huge gain of time.
+Another advantage is no more backup of workstations and notebooks.
+All mission critical information is always on the company's drives.
+
+==== Socialize with your Team
+
+Organize a real team room.
+Colocate all your team members, design on big whiteboards.
+Please use analog Scrum boards.
+You need big whiteboards, analog Scrum boards, meeting corners.
+
+Restart your brown bag training program.
+A Friday beer event is always a welcome event.
+
+Celebrate success after each major release of your products.
+Another gain is a lot of tensions just disappear when people talk around snacks and drink together a glass of wine.
+
+=== Upgrade your Toolbox
+
+As a Java developer it is time to use state of the industry tools and improve your daily work
+
+. Java 9 JDK - If you are still working with Java 7 or earlier you are a laggard
+.. Java 8 public support shall end middle of next year,
+.. Java 10 shall be available next year.
+ The early releases are already online.
+ Download them and try the new features.
+ The local variable declarations are a huge improvement,
+.. You are a laggard and security danger if you are still using Java 6 or earlier,
+. Gradle
+.. Build, deliver, and deploy your solution with one keystroke,
+. Continuous integration, delivery and deployment pipelines,
+.. Never again configure manually a deployment by hand,
+. Test environments with Docker
+.. Never say again "it is working on my machine",
+. Modern IDE such as IntelliJ IDEA
+.. Very good Gradle support,
+.. Very good JUnit 5 support,
+.. Alt-Enter anywhere brings up context-sensitive options.
+ Run a test, create a test, create subclass, convert to closure, generate missing test methods, remove explicit type, split into declaration and assignment, introduce local variable.
+ The suggestions are limitless.
+.. Great Java 8 support, suggesting lambda notation where appropriate!
+.. Even displaying anonymous inner class usage (collapsed) as if it was written using a lambda expression,
+. Quality with PMD, FindBugs, SonarLint, or the build-in rules of IntelliJ
+. Banish Flash from your workstation
+
+=== New Year Improvements
+
+==== Sustainable Pace
+
+Agile approaches state you should work at a sustainable pace, forty hours a week. Avoid working overtime during evenings or weekends.
+
+Enjoy family time, practice sport, give back to the community.
+
+Work with your team, ideally colocated in a team room. Face2Face exchanges and pair working - pair design, pair review, pair programming, pair checkin - are training on the job occasions.
+
+==== Hone your Craftsmanship
+
+Here some suggestions to hone your craftsmanship
+
+* Practice coding dojos to improve your programming skills,
+* Read good technical books, at least one book per quarter,
+* Learn new shortcuts and plugins for your favorite IDE,
+* Improve the agile, lean, Scrum, LeSS approaches in your department,
+* Refactor daily code and practice clean-code,
+* Become a master of Git,
+* Increase self awareness and work on your soft skills, teamwork shall improve.
+
+I wish you success, fulfillment, happiness and fun.

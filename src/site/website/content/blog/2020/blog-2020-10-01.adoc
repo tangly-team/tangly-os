@@ -1,0 +1,113 @@
+---
+title: "Creating a technical Website and Blog with Hugo, Asciidoc and Docsy"
+linkTitle: "Hugo Asciidoc Website"
+date: 2020-10-01
+---
+
+== Creating a technical Website and Blog with Hugo, Asciidoc and Docsy
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2020-10-01-head.jpg[role=left]
+I hosted my technical blogs on https://www.blogger.com/[blogger] for years.
+It is a great tool with some drawbacks.
+
+* Their editor is brittle, with limited functionality and unreliable.
+ The generated HTML is not legible and does not support concepts such a micro fragments, or code highlighting.
+* The last quarters they started to tinker with their editor and output format.
+ My older posts are a mess and can only be open as HTML file.
+ If I switch to the editor the layout is destroyed and random fonts family and sizes are selected.
+ This backward compatibility destruction of all older blogs and no migration path were killer criteria.
+* Blogger does not support modern markup language such https://www.markdownguide.org/[Markdown] or {ref-asciidoc}.
+
+It is time to find an alternative.
+I am a huge fan of {ref-asciidoc]}.
+
+OK, so why not go with Markdown?
+Don’t get me wrong, there is nothing wrong with Markdown - except that no one should probably use it when {ref-asciidoc} and Asciidoctor are available.
+I’m doing {ref-asciidoc} only these days, and a blog should not be an exception.
+
+=== Requirements
+
+The following needs are identified
+
+. I shall write blogs with the selected solution.
+ The blogs shall be written in {ref-asciidoc}.
+ The blog view should support multiple years of publishing and referencing between blogs.
+. I shall be able to write technical articles and publish them on the same site.
+ The articles are naturally written in {ref-asciidoc}.
+. I shall publish the technical documentation of the open source components I develop on the same site.
+
+{ref-hugo} was selected as static site generator because its support for {ref-asciidoc} is tremendously improving.
+
+First I used the https://github.com/thingsym/hugo-theme-techdoc/[hugo-theme-techdoc] to customized {ref-hugo}.
+It worked great for the technical documentation and technical articles but fall short of my wishes for the blog part.
+When I discover the theme {ref-docsy}.
+It supports the technical documentation, technical articles, and blogging.
+
+The best part is that {ref-hugo} now supports {ref-asciidoctor} natively.
+No more strange manipulation to load gem modules you need.
+And diagrams through asciidoc-diagram and plantUml are generated in the expected folders.
+The documentation is still on the light side but you find the needed information in the various pull requests.
+
+The bonus is that {ref-asciidoctor} newer versions have native support for rouge syntax highlighter.
+It is no more necessary to load pygment highlighter and configure CSS files.
+
+=== Configuration of Asciidoctor
+
+[code, yaml]
+----
+[markup.asciidocext]
+    extensions = ["asciidoctor-html5s", "asciidoctor-diagram"]
+    workingFolderCurrent = true
+    [markup.asciidocext.attributes]
+        imagesdir = "../pics"
+        source-highlighter = "rouge" // <1>
+        rouge-style = "github" // <2>
+        rouge-css = "style" // <3>
+        icons = "font"  // <4>
+        ref-less = "https://less.works/[LeSS]" // <5>
+----
+<1> select rouge as source highlighter. You should not add it to the extensions becouse since {ref-asciidoctor} version 2.0 rouge is included.
+<2> define the style used to highlighten source code
+<3> configure rouge to generate all formating data into the generated html file, avoiding any css file configuration
+<4> icons provide better looking icons for various {ref-asciidoc}} constructs
+<5> Define document attributes which are accessible to all processed documents (DRY concept for the whole site)
+
+=== Configuration of Docsy
+
+==== Additional First Level Folders
+
+Each time you add your own first level folder - meaning at the same level as docs, blog, about, or community you need to extend the layout to support it.
+For example, I store technical articles in the folder ideas and use the standard template.
+So I need to add (if not no items are visible in the side bar).
+
+[code]
+----
+cp -R ./layouts/docs ./layouts/ideas
+----
+
+=== Local Search Engine
+
+One cool feature of {ref-docsy} is local search support through https://lunrjs.com/[lunrjs] engine.
+
+[code, yaml]
+----
+algolia_docsearch = false
+
+offlineSearch = true
+offlineSearchSummaryLength = 200
+offlineSearchMaxResults = 25
+----
+
+==== Learning
+
+The static website is published under {ref-site}.
+
+You can use relative links in your {ref-asciidoc} documents.
+Beware where the file are located by {ref-hugo} and the naming conventions.
+
+Funny is that blogger software and docsy theme are from the same company *Google*.

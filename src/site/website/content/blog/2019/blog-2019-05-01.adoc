@@ -1,0 +1,109 @@
+---
+title: "Agile Architecture Principles"
+linkTitle: "Agile Architecture Principles"
+date: 2019-05-01
+---
+
+== Agile Architecture Principles
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+
+image::2019-05-01-head.jpg[role=left]
+You are applying the agile, lean approach to your software product development.
+Your teams use Scrum or Kanban to deliver running software every two weeks.
+The product market introduction is a success and you will successfully sell the solution for the next ten years.
+
+How shall you define the software architecture of your product and insure a long living and high quality solution?
+The experts tell you the design is emergent, what does it means?
+
+=== LeSS Architecture Observations
+
+The following observations are true for any software product.
+It is irrelevant if developed using agile approaches or traditional older ones.
+
+. _The sum of all source code is the true design blueprint or software architecture_,
+. The real software architecture evolves (better or worse) every day of the product, as people do programming,
+. The _real living architecture needs to be grown every day_ through acts of programming by master programmers,
+. A software architect who is not in touch with the evolving source code of the product is out of touch with reality,
+. _Every programmer is some kind of architect_ — whether wanted or not.
+Every act of programming is some kind of architectural act — good or bad, small or large, intended or not.
+
+Agile architecture comes from the behavior of agile architecting
+
+* hands-on master-programmer architects, a culture of excellence in code,
+* ban emphasis on pair-programming coaching for high-quality code/design,
+* agile modeling design workshops,
+* _test-driven development and refactoring_,
+* and other hands-on-the-code behaviors.
+
+=== Quality of Your Architecture
+
+You shall measure the quality of your design and produced software artifacts.
+
+* Static analysis tools - validate your source code -,
+* Test driven development - validate your design -,
+* Acceptance test driven development - validate your functional requirements -,
+* Fitness functions - validate your non-functional requirements -,
+* Pair programming - improve the produced artifacts through wisdom of the crowd -,
+* Pair review and pull requests - validate your developers' work -.
+
+The above validation activities are backed through tools.
+But these tools can only detect non-quality and never provide a proof you achieved quality.
+Qualified and experienced engineers is your best guaranty to achieve and sustain high quality in architecture and software products.
+
+Implement the above measures to gather data and publish the actual state of your source code.
+You find further information in Code Scene as Crime Scene, SonarLint for the Impatient, and Pragmatic Craftsmanship articles.
+
+Read the https://less.works/less/technical-excellence/architecture-design.html[LeSS architecture page] for a comprehensive discussion of agile architecting.
+
+=== Good versus bad architecture
+
+[quote]
+____
+A good architecture fulfills the specifications and is easy to change.
+
+It shall emerge during the development and intentionally implement the known requirements.
+
+Your architects are talented developers and are full members of your Scrum teams.
+____
+
+Your development teams
+* are expert in the used programming language and stack,
+* understand object-oriented, functional and rule based programming,
+* known all major patterns and idioms of the used development stack,
+* practice https://en.wikipedia.org/wiki/Test-driven_development[TDD], https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD], clean
+code, refactoring, embrace CI/CD and DevOps,
+* read source code from open source projects to learn better ways,
+* know https://en.wikipedia.org/wiki/SMART_criteria[SMART], https://en.wikipedia.org/wiki/INVEST_(mnemonic)[INVEST],
+https://de.wikipedia.org/wiki/Solid_(Software)[SOLID], https://en.wikipedia.org/wiki/KISS_principle[KISS],
+https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI],
+* hold weekly design workshops with huge whiteboards,
+* use https://en.wikipedia.org/wiki/Domain-driven_design[domain driven design] and https://en.wikipedia.org/wiki/Event_storming[event storming],
+* avoid https://en.wikipedia.org/wiki/Big_Design_Up_Front[BDUF].
+
+[quote]
+____
+You shall keep it simple, make it valuable, and build it piece by piece.
+____
+
+The above hints and practices shall empower your teams to practice successfully agile architecture and timely deliver delightful software solutions.
+Your organization shall train your collaborators, see also Shu Ha Ri model.
+Smart money goes in training your collaborators.
+
+=== Agile Architecture Series
+
+The agile architecture track contains the following blogs
+
+. link:../../2019/agile-within-scrum-principles[Agile Architecture Principles]
+. link:../../2019/agile-code-is-clean-code[Agile Code is Clean Code!]
+. link:../../2019/agile-architecture-within-scrum[Agile Architecture within Scrum]
+. link:../../2020/agile-component-design[Agile Component Design]
+. link:../../2020/legacy-systems-refactoring[Legacy Systems Refactoring]
+. link:../../2020/how-agile-collaborators-learn[How Agile Collaborators Learn]
+
+We also published our https://www.tangly.net/insights/continuous-learning/agile-architecture-course[agile architecture course] (3 ECTS) used for teaching
+computer science students at bachelor level at Swiss technical universities.

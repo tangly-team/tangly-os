@@ -1,0 +1,106 @@
+---
+title: "How Should You handle Definition of Done?"
+linkTitle: "Definition of Done"
+date: 2018-10-02
+---
+
+== How Should You handle Definition of Done?
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2018-10-02-head.jpg[role=left]
+An agile team is sole responsible for the internal quality of the product they build and maintain.
+
+And the developers shall be accountable to produce the expected quality and optimize long terms goals of the organization.
+They provide the answer to the seminal question
+
+_Did we build it right?_
+
+https://less.works/less/framework/definition-of-done.html[Definition of Done] _DoD_ is a major building block to answer this question with a sounding *yes*.
+
+=== Definition of Done
+
+https://www.scrumguides.org/scrum-guide.html[Scrum] and {ref-less} have a stringent discussion concerning _Definition of Done_.
+The key question is
+
+[.text-center]
+_Considering our current context and capability, what activities can be completed each Sprint?
+
+[.text-center]
+_This subset is the initial Definition of Done._
+
+A _Definition of Done_ is weak when it is a small subset and strong when it is almost equals to _Potentially Shippable_.
+
+In huger organizations the development teams discuss their context and select the subset of the activities that all teams think they realistically can do during the Sprint.
+This is their initial Definition of Done.
+The teams that can do more will expand this product Definition of Done within their members.
+
+The difference between the Definition of Done and Potentially Shippable is referred to as Undone Work.
+
+[.text-center]
+_Potentially Shippable - Definition of Done = Undone Work_
+
+The Sprint is planned according to the _Definition of Done_ and thus the _Undone Work_ is excluded.
+It is planned to be left undone.
+
+The terms Potentially Shippable and Definition of Done are often not used consistently.
+To clarify the terms:
+
+
+_Potentially Shippable_::
+ All activities that must be performed before the product can be shipped._
+_Definition of Done_::
+ An agreement between the teams and their Product Owner on which activities are performed inside the Sprint.
+ A _Definition of Done_ is perfect when it equals to Potentially Shippable.
+ Teams strive to improve towards a ideal Definition of Done.
+_Undone Work_::
+ The difference between the Definition of Done and Potentially Shippable.
+ When the Definition of Done is perfect then there is no Undone Work.
+ If this isn’t the case then the organization has to decide, first how do we deal with the Undone Work, and second how do we improve so that there is less
+ _Undone Work_ in the future.
+_Unfinished, not finished, or not done—Work_::
+ that was planned in a Sprint but wasn’t completed.
+ This is often confused with Undone Work.
+ _Unfinished_::
+ is work that the team planned for but didn’t finish whereas Undone Work was never even planned for.
+ When a team has work that was not finished then they ought to feel anxious and discuss improvement actions during their retrospective.
+
+Teams should never leave work-in-progress at the end of the Sprint and “carry over” to the next one.
+This causes a lack of transparency and reduces scope flexibility.
+If they forecast too much work, they need to remove complete items which they haven’t started yet.
+
+=== Items of a Definition of Done
+
+* A delivery standard as defined by the team,
+* It contains all requirements to get a user story into production,
+* The fitness for use is evident (enough value was built to justify releasing?),
+* The external quality is verified (we have built the right thing?),
+* The internal quality is verified, you wrote unit tests – and all tests are green,
+* The code is checked in, if necessary the branch was closed and deleted,
+* The code review was completed,
+* All improvements from the code review were implemented,
+* All existing unit tests remain green,
+* The acceptance tests were verified by the development team,
+* All integration tests were passed,
+* and the Status of “done” was confirmed by the product owner.
+
+The following criteria are often overlooked and also need to be checked:
+* Was the technical documentation updated?
+* Was the user documentation updated?
+* Was the user documentation localized?
+* The localization for the application is done.
+* The localization testing is done.
+* The marketing input is done.
+* The legal documents are done.
+* The deployment and migration scripts are available.
+
+The extension of definition of done to deliver a potentially shippable product has often significant and profound impact on the structure of the organization and its processes.
+Experienced agile coaches use the definition of done as an instrument for organizational changes.
+
+When the undone work is slowly removed from the delivery process it triggers structural and process changes.
+For example the separate quality department responsible for the final tests is dissolved and their expertise is integrated in the development teams.
+
+See also the blog {url-articles}2018/blog-2018-04-01[Pragmatic Craftsmanship] for a discussion of build-in quality.

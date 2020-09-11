@@ -1,0 +1,58 @@
+---
+title: "Minimizing Undone Work when Working with Regulatory Departments"
+linkTitle: "Minimize Undone Work"
+date: 2016-01-01
+---
+
+== Minimizing Undone Work when Working with Regulatory Departments
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+:icons: font
+
+image::2016-01-01-head.jpg[role=left]
+The Scrum and agile mantra is to have a "ready to ship" product each time a sprint is completed.
+You must avoid any incomplete activities at any price.
+
+Incomplete activities are also called Undone Work; they are technical debts in your software, hindering its delivery to customers.
+
+Regulatory and traditional quality insurance departments requests all kinds of documents such as review, test results, risk analysis matrix.
+They want insurance that their view of quality is fulfilled.
+
+Scrum sees quality similar to the lean production approach.
+Quality is build into the product and you do not need any documents proving you have fulfilled this goal.
+Your sole goal is to optimize the process to produce best products, not to repair them after production.
+
+And it is the sole responsibility of the Scrum team to guaranty quality.
+But Scrum teams also learnt you cannot win against big corporations.
+So you have to define solutions satisfying the QA departments with minimal overhead and almost no undone work.
+We have experience working with quality insurance and TUV or FDA driven regulatory departments.
+We use the following approaches to handle the needs of the regulatory departments, seen as stakeholders in the Scrum terminology.
+
+* Use static analysis tools such as PMD, Checkstyle, Findbugs to create quality gate reports for your QA department.
+ Thousands of checks and hundred of pages of reports will satisfy any QA department. Plugins exists for Eclipse and continuous integration servers.
+* Use review plugin such as Eclipse Jupiter to create these still mandatory review reports on the source code.
+ These reports are useless in an agile team working with techniques such as refactoring and pair programming.
+ But they are still mandatory for the majority of traditional QA departments.
+ The plugin allows you the generate nice looking reports and to implement the findings at the same time.
+* Use Test Driven Develpment approach and create a lot of unit tests.
+ By slightly extending the logging features of JUnit and by using code coverage tools you can create reports showing which source code was tested.
+ Add some annotations to your test cases, and you have full traceability to your stories and associated software requirements.
+ With a small amount of work you can generate thousands of pages of information and provide the PDF documents to the regulatory department.
+ These documents are also TUV and FDA compliant.
+* Use Behavior Driven Develpment approach and create acceptance criteria for all your stories.
+ Using the reporting features of easyb you can create acceptance test reports for all your stories.
+ It generates hundreds of pages of information and provide the PDF documents to the regulatory department.
+ These documents are also TUV and FDA compliant
+* Use continuous integration servers to run all the above measures and generate the documentation at the end of each sprint or release.
+* Link you version control system with your continuous server, issue tracking system and unit tests.
+ So you can generate release notes stating the list of closed issues with the associated source code and unit tests verifying the correctness of the change.
+
+Similar tools are available in the .NET and C++ community. T
+You can easily satisfy your QA and regulatory stakeholders with a lot of reports nobody will ever read.
+A real Scrum team corrects weaknesses during the development process and always deliver a software of highest quality.
+Therefore the reports can only show the inherent quality of the software and are not worth the paper they are printed on.
+But you satisfy powerful stakeholder groups and can more freely work on the most important goal.
+Deliver on time and in budget the best software the customer wants to have.

@@ -23,7 +23,8 @@ import org.jetbrains.annotations.NotNull;
  * The abstraction of an email address until the Java JDK provides one..
  */
 public record EmailAddress(@NotNull String recipient, @NotNull String domain) implements Serializable {
-    private static String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+    private static final String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+    private static final Pattern pattern = Pattern.compile(emailRegex);
 
     public static EmailAddress of(@NotNull String email) {
         String[] parts = email.split("@");
@@ -32,7 +33,13 @@ public record EmailAddress(@NotNull String recipient, @NotNull String domain) im
     }
 
     public static boolean isValid(String email) {
-        Pattern pattern = Pattern.compile(emailRegex);
         return Strings.isNullOrBlank(email) || pattern.matcher(email).matches();
+    }
+    public boolean isValid() {
+        return !Strings.isNullOrBlank(domain()) || !Strings.isNullOrBlank(recipient());
+    }
+
+    public String text() {
+        return recipient() + "@" + domain();
     }
 }

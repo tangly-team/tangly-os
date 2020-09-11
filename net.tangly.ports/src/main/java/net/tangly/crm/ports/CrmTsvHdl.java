@@ -30,6 +30,7 @@ import java.util.stream.Collectors;
 
 import net.tangly.bus.core.Address;
 import net.tangly.bus.core.Comment;
+import net.tangly.bus.core.EmailAddress;
 import net.tangly.bus.core.Entity;
 import net.tangly.bus.core.HasComments;
 import net.tangly.bus.core.HasOid;
@@ -266,7 +267,8 @@ public class CrmTsvHdl {
         fields.add(TsvProperty.ofString(FIRSTNAME, NaturalEntity::firstname, NaturalEntity::firstname));
         fields.add(TsvProperty.of("gender", NaturalEntity::gender, NaturalEntity::gender, e -> Enum.valueOf(GenderCode.class, e.toLowerCase()), Enum::name));
         fields.add(createAddressMapping(CrmTags.Type.home));
-        fields.add(TsvProperty.ofString(CRM_EMAIL_HOME, e -> e.email(CrmTags.Type.home).orElse(""), (e, p) -> e.email(CrmTags.Type.home, p)));
+        fields.add(TsvProperty
+                .ofString(CRM_EMAIL_HOME, e -> e.email(CrmTags.Type.home).map(EmailAddress::text).orElse(null), (e, p) -> e.email(CrmTags.Type.home, p)));
         fields.add(TsvProperty
                 .ofString(CRM_PHONE_MOBILE, e -> e.phoneNr(CrmTags.Type.mobile).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(CrmTags.Type.mobile, p)));
         fields.add(tagProperty(CRM_IM_LINKEDIN));

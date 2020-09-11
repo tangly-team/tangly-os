@@ -1,0 +1,78 @@
+---
+title: "What does an Agile Coach?"
+linkTitle: "Definition of Done"
+date: 2018-08-01
+---
+
+== What does an Agile Coach?
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2018-08-01-head.jpg[role=left]
+An agile coach has three main areas of activity:
+
+Foster Autonomy::
+Teach and support the team and individuals to be autonomous within the given boundaries of the organization and its processes.
+
+Create Ground for Motivation::
+Help teams to maximize their autonomy, individual mastery and make sure the team has a purpose.
+
+Provide Coaching::
+Support teams and individuals to identify potentials with their roles and within the agile organization and improve.
+
+=== How Can You Do It?
+
+Lateral Leadership::
+Mediating the team through conflicts and help them with making decisions and foster the team's self-organization.
+After a few months a team shall have jelled.
+
+Facilitation::
+Facilitate meetings for the team, including preparing, moderation and post processing for the agile process as well as the supporting agile organization.
+After a year of working with a team, the team members shall be empowered to run regularly all events without you attending.
+
+Teaching::
+Teach teams agile practices and lateral leadership.
+A central area is technical excellence and software craftsmanship.
+Long lasting teaching shall concentrate on values: Scrum values and principles, Less principles, Agile manifesto and the associated 12 principles.
+
+Impediments::
+Actively identify impediments and foster their removal.
+Consult the Scrum guide: You must select one impediment after each retrospective and add it as high priority item in the next Sprint backlog.
+This mechanism insure continuous improvement.
+
+[.text-centered]
+_To ensure continuous improvement, it includes at least one high priority way in which the team works, identified in the previous Retrospective meeting._
+
+Culture::
+Establish a culture of inspect and adapt for teams , create structure to establish a continuous improvement process - also meaning establish a
+tolerance to failure -, advocate transparency, enlighten the organization of the relation between autonomy and accountability.
+
+Ask yourself how your organisation handles meritocracy.
+
+=== One Approach to Coaching
+
+Agile teams thrive with purpose, autonomy and mastery. One approach to coaching is to set your focus on
+
+. Understand the domain: Talk with customers and users and understand their needs. Your teams should have business expertise,
+. Master Technical Excellence: CI, CD, TDD, ATDD, pair programming, refactoring, lean UX, usability
+. Use Process Excellence and apply {ref-scrum}, XP, {ref-less} by the book:
+.. Discuss the core values of commitment, focus, openness, respect, and courage,
+.. Present again the agile manifesto and the twelve principles
+.. Show the organization why commitment in the planning was replaced by forecast in the official Scrum guide,
+.. Require a vision, a roadmap, a release plan with a story map and a refined backlog for each product and team,
+.. Tell why an impediment resolution backlog item shall be part of each iteration,
+.. Teach the importance of Definition of Done for the internal quality of the product. And explain why Definition of Ready is often an anti-pattern,
+.. Show why velocity is not a productivity metrics,
+.. Show the difference between outcome and output,
+.. Extend the agile toolbox with Design Thinking, Lean Factory, Lean UX, DevOps,
+.. Pair Scrum master and technical master to implement a craftsmanship path and achieve product quality,
+.. Explore Center of Competencies to nurture your product development group,
+
+Once you are a master fell free to break the rules, experiment with new rules, approaches.
+Define hypotheses and verify them empirically.
+
+If you are coaching software development groups acknowledge you shall possess profound understanding of technical excellence and software development practices.
+I never heard of a soccer coach not intimately knowing how the game is played.

@@ -22,12 +22,13 @@ A mirror is also hosted under github [tangly OS github](https://github.com/marce
 The issue tracker for errors, improvements, and corrections is [tangly OS issues](https://bitbucket.org/tangly-team/tangly-os/issues).
 
 Beware we are experimenting with the most current versions of components, libraries and JDK.
-The components are stored in a single git repository and are build using a multi-module gradle build script.
+The components are stored in a single git repository and are build using a multi-modules gradle build script.
 
 ## Contribution
 
-You are welcome to contribute to the project with pull requests on Bitbucket. You can download the source files from the 
-[bitbucket git repository](https://bitbucket.org/tangly-team/tangly-os.git) and build  the library with the provided gradle configuration file.
+You are welcome to contribute to the project with pull requests on Bitbucket. 
+You can download the source files from the [bitbucket git repository](https://bitbucket.org/tangly-team/tangly-os.git).
+Build  the library with the provided gradle configuration file.
 
 If you find a bug or want to request a feature, please use the [issue tracker](https://bitbucket.org/tangly-team/tangly-os/issues).
 

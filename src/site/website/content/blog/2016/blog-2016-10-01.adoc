@@ -1,0 +1,88 @@
+---
+title: "Agile Trends Switzerland 2013"
+linkTitle: "Swiss Agile Trends 2013"
+date: 2016-03-01
+---
+
+== Agile Trends Switzerland 2013
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2016-12-01-head.jpg[role=left]
+What are the main hurdles to introduce agile approaches in Swiss companies
+
+* Introducing agile company-wide is a cultural change process. Such a change takes time and sometimes hurts,
+* Without commitment of senior management, the initiative will fail,
+* Doubt that lean or agile works for big projects, doubt you can convince your collaborators and middle management, doubt your customers agree with lean,
+* At the end what matters is collaborator purpose, customer satisfaction,  business value.
+
+http://www.swissq.it/[SwissQ] has published a "SwissQ Agile Trends & Benchmarks Switzerland 2013". The study can be downloaded as PDF from their web site.
+See link:../../2016/agile-trends-switzerland-2012[Agile Trends Switzerland 2012].
+
+Below some of the findings of the study.
+
+=== Major Hurdles When Introducing Agile Approaches
+
+The number left is the value for 2013, the number in parenthesis is the value found in the study for year 2012. Bold items are new in the 2013 study and have no 2012 values.
+
+* 72% (95%): Capabilities to handle organizational changes and the culture
+* 53% (-%): Difficulty how to handle the lost of control - from management perspective -
+* 28% (37%): Availability of skilled collaborators in the area of agile approaches
+* 25% (34%): Projects are too big or too complex
+* 23% (39%): Overall resistance against changes
+* 21% (-%): Scalability
+* 21% (28%): Missing support of senior management
+* 14% (25%): Company wide introduction of agile methods, doubts agile approaches scale
+* 14% (31%): Resistance for the internal or external customer
+* 11% (23%): No resources or time for sustainable changes
+* 4% ( 9%): Costs reasons
+
+The trend is a clear move toward agile approaches.
+Companies seem less reluctant to introduce agile approaches.
+Major opponents such as senior managers or internal and external customers more and more acknowledge the success of agile approaches.
+The two first identified hurdles still reflect the difficulty of changes at company level.
+They are also the main reasons why Scrum introduction fails in Swiss companies for my experience.
+Too often companies revert to some Waterfall/Hermes process or worst to a so called internal ad-hoc method.
+
+We wrote in previous blogs that introducing Scrum in the development department or in the whole company is a
+http://en.wikipedia.org/wiki/Change_management[change process].
+The coaches should be trained in change management and have experiences with resistance to changes.
+
+The Scrum Master is of tremendous importance.
+You need a skilled and enthusiastic Scrum Master; avoid Scrum Administrator.
+Ken and Jeff have a clear idea who is in charge of this.
+
+[quote]
+____
+The Scrum Master serves the organization in several ways, including:
+
+* *Leading* and *coaching* the organization in its Scrum adoption;
+* *Planning* Scrum implementations within the organization;
+* Helping employees and stakeholders understand and enact Scrum and empirical product development;
+* Causing change that increases the productivity of the Scrum Team; and,
+* *Working* with other Scrum Masters to increase the effectiveness of the application of Scrum in the organization.
+____
+
+The Scrum Master is a main driver for the introduction of Scrum in all departments and levels in the company.
+He indeed needs senior management support, but the Scrum Master daily job is to spread Scrum in the company.
+
+=== Swiss IT CIO Agenda 2013
+
+Computerworld Switzerland has published an article about the main reasons why projects are late or cancelled in Switzerland in the April 2013 _CIO Agenda_ edition.
+The study uses data from Computerworld and Experteer. As an excerpt I gave you the four major identified failure reasons.
+
+. Changes during the project (62% Computer, 48% Experteer)
+ _Agile and Scrum welcomes changes in the project. It is one of the four mantra of the Agile Manifesto. All agile processes are optimised to support changes._
+. Unclear project definition form the business stakeholders (50% Computer, 43% Experteer)
+ _Scrum requests a clearly stated vision, roadmap and story map of the project._
+ _The Scrum board is a radiator to communicate the project vision, goals, and motivations to all interested parties._
+. Insufficient project management and controlling (40% Computer, 4847 Experteer)
+ _Scrum team, product owner, and Scrum master have clear responsibilities for project management._
+ _At the end of each sprint we have an objective and explicit control point._
+. Insufficient communication between involved persons (36% Computer, 45% Experteer)
+ _Scrum framework enforces clear, transparent and regular communication within the team and with all stakeholders._
+
+In one sentence, be agile, use {ref-scrum} and {ref-xp}} and the major four above problems are handled in a professional and consistent way.

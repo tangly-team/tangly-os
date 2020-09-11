@@ -17,9 +17,9 @@ plugins {
     id "com.vaadin" version "0.17.0.0"
 }
 
-//if (mode.equalsIgnoreCase('dev')) {
+if (mode.equalsIgnoreCase('dev')) {
     apply plugin: 'org.gretty'
-//}
+}
 
 project.ext.groupId = 'net.tangly'
 project.ext.artifactId = 'ui'
@@ -29,7 +29,7 @@ project.ext.inceptionYear = '1996'
 project.description = "Vaadin user interface for the business components (tangly llc)"
 
 ext {
-    vaadinVersion = '17.0.0'
+    vaadinVersion = '17.0.1'
 }
 
 vaadin {
@@ -45,10 +45,12 @@ jib {
     }
 }
 
-gretty {
-    contextPath = "/"
-    jvmArgs = ['--enable-preview']
-    servletContainer = "jetty9.4"
+if (mode.equalsIgnoreCase('dev')) {
+    gretty {
+        contextPath = "/"
+        jvmArgs = ['--enable-preview']
+        servletContainer = "jetty9.4"
+    }
 }
 
 dependencies {

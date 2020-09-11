@@ -1,0 +1,60 @@
+---
+title: "Sonar Lint for the Impatient"
+linkTitle: "Sonar Lint"
+date: 2018-05-01
+---
+
+== Sonar Lint for the Impatient
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2018-05-01-head.jpg[role=left]
+Remove issues before they reach customer sites.
+No quality problems shall reach your Git master branch.
+
+=== What is Sonar?
+
+https://www.sonarqube.org/[SonarQube] is a central server that processes full analyses (triggered by the various SonarQube Scanners).
+Its purpose is to give a 360° vision of the quality of your code base.
+For this, it analyzes all the source lines of your project on a regular basis.
+
+It should be added that SonarQube also performs scans with well-known third party analyzers (https://spotbugs.github.io/[SpotBugs] - previously FindBugs -,
+http://checkstyle.sourceforge.net/[Checkstyle], https://pmd.github.io/[PMD]) whereas SonarLint does not include those.
+I think the reason is a prioritization on performance and findBugs relying on java byte-code.
+
+=== What is SonarLint?
+
+SonarLint lives only in your IDE (IntelliJ, Eclipse or Visual Studio).
+Its purpose is to give instantaneous feedback as you type your code.
+For this, it concentrates on what code you are adding or updating.
+
+Findings are displayed in the source code with information such as rule violation, rating of the rule and explanation.
+You have a window where all findings are displayed to provide an overview and navigation support.
+You are free to analyze a single file, a package, or the whole project; you can also excludes files or packages from the analysis.
+
+Connect SonarLint to your preferred code quality product.
+It then uses the same code analyzers, rules and settings locally that are used on the server.
+
+Issues marked as Won’t Fix or False Positive in SonarQube or SonarCloud disappear from your IDE.
+
+Both SonarLint and SonarQube rely on the same static source code analyzers - most of them being written using SonarSource technology.
+
+=== How to use It?
+
+.  the SonarLint in your favorite IDE
+.. configure the SonarCube instance to synchronize the rule set used in your project
+. Configure the plugin to access your SonarCube instance
+. Run it,
+.. See the messages in the next few seconds
+.. Jump to the source and correct the problem
+.. Iterate until all issues are solved
+. Run your unit tests and acceptance tests - TDD and ATDD -
+. Commit your changes
+
+This approach guarantees you always release source code with less SonarCube issues, therefore SonarCube always show no findings for new code and for refactored
+code.
+
+And you have made a step to the journey to become a professional software developer and achieve {url-articles}2018/blog-2018-04-01[craftsmanship].

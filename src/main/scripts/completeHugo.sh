@@ -3,8 +3,11 @@ siteName=tangly-os-site
 siteDir=$siteRootDir$siteName
 
 cd $siteDir
-git clone --no-checkout https://marcel-baumann@bitbucket.org/tangly-team/tangly-team.bitbucket.io.git public
-hugo
+
+# guaranty the population of the public folder containing the site to be published
+echo Let the server to build the lunr search index files before stopping the hugo server and publishing the site
+hugo server --destination public
+
 
 cd public
 git add --all

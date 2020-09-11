@@ -1,0 +1,118 @@
+---
+title: "Code Scene as Crime Scene"
+linkTitle: "Crime Scene"
+date: 2019-04-01
+---
+
+== Code Scene as Crime Scene
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+:icons: font
+
+image::2019-04-01-head.jpg[role=left]
+You have a successful product and happy users.
+Slowly the cost adding new features is creeping up and product margins are shrinking.
+Which crimes did put us in this dreaded situation?
+
+How can you analyze the history of your product's source code?
+
+How can you explore the social dimension of your product development?
+How can you find good approaches to increase time to market and improve development costs?
+
+This article presents a set of tools you can use to better understand the alternatives and select the best approach for your product.
+
+Our approach is based on the de facto standard for source code version management https://git-scm.com/[git].
+If your development department is using another tool you should consider to move to another company.
+
+=== First Steps
+
+We want to investigate various contexts in our source code history and identify suspects.
+A context can be a single file, a class, a package or a module.
+
+Gather overall information concerning your repository - use the optionals --before and --after to restrict the time range you are interested in -
+
+[code, bash]
+----
+git log --numstat --pretty=format:'[%h] %an %ad %s' --date=short --before='YYY-MM-DD' --after='YYYY-MM-DD'
+----
+
+Find out which contexts are most often modified
+
+[code, bash]
+----
+git log --pretty=format: --name-only | sort | uniq -c | sort -rg | head -100
+----
+
+or find out which contexts with a specific extension are most often modified
+
+[code, bash]
+----
+git log --pretty=format: --name-only | sort | uniq -c | sort -rg | grep -I extension | head -100
+----
+Find out how many times a specific context was modified
+
+[code, bash]
+----
+git log -- contextPath --pretty=format:'%an' | grep 'Author' | sed -e 's/Author: \(.*\) <\(.*\)/\1/' | sort -rg | uniq -c | sort -rg
+----
+
+Find out how many errors were fixed in a specific context - e.g. identified through close #TicketId -
+
+[code, bash]
+----
+git log -- contextPath | grep 'close #' | wc -l
+----
+
+=== Deeper Insights
+
+image:2019-04-01-code-that-matters.png[role=left]
+Analysis of various products found out that 5% to 10% of the source code is under active development.
+It is where your money is spent to make your customers happy.
+Just put all your refactoring efforts to improve these 10% of your product currently impacting your customer satisfaction.
+
+Technical debt reduction should always be prioritized to only these hotspots.
+Simply use the above described approach to identify the most often changed files during a specific time interval.
+
+==== Identify team and social metrics
+
+To understand team dynamics you should group individual developers to their team.
+Simply replace the name of the team member with the team name at the command line using grep or sed.
+Now you can analyze the set of files the team mainly modifies and maintains.
+If none can be found you have a diffuse code ownership and will have quality issues.
+
+Using the https://en.wikipedia.org/wiki/Domain-driven_design[domain driven design] _DDD_ terminology, bounded domains are developed and maintain through one team.
+This approach encourages architectural purity, continuous refactoring, and accountability.
+
+==== Manage Off-boarding Risks
+
+Each time you find a set of source code artifacts only modified by a single individual you have identified a major off-boarding risk.
+When this developer will leave the department or the company all knowledge associated with the development and the maintenance of these components will immediately be lost.
+
+=== Visualize
+
+The above scripts provide information in textual forms.
+Over time you will become more sophisticated with your inquiries and need better tools.
+Either visualize your findings with https://d3js.org/[d3js] or https://plot.ly/javascript/[plotly.js] or buy a commercial tool such as
+https://codescene.io/[code scene].
+
+Another approach is to write a small framework to analyze the data and to implement more complex queries in your preferred environment.
+
+=== Next Steps
+
+The above techniques are part of the toolbox of professional development departments.
+Establish a software craftsmanship culture in your company.
+It helps you to avoid the invasion of gangs and eradicate crime in your neighborhood.
+
+Find similar ideas in our blogs Pragmatic Craftsmanship, SonarLint for the impatient, and You need an Engineering Culture.
+
+Two books published in the pragmatic programmers series are a wonderful deep analysis of source code as a crime scene <<crimescene>> and
+scanning your product source code <<xrays>>.
+
+[bibliography]
+=== Literature
+
+- [[[crimescene, 1]]] Your Code as a Crime Scene: Using Forensic Techniques to Arrest Defects, Bottlenecks, and Bad Design in your Programs, Adam Tornhill, 2015
+- [[[xrays, 2]]] Software Design X-Rays, Adam Tornhill, 2018

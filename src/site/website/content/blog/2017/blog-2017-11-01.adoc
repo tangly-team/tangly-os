@@ -1,0 +1,79 @@
+---
+title: "Impediment List is of Tremendous Importance"
+linkTitle: "Impediment List"
+date: 2017-09-01
+---
+
+== Impediment List is of Tremendous Importance
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2017-11-01-head.jpg[role=left]
+An impediment is any aspect hindering the team or a company to deliver value and higher quality to the customers.
+An agile organization continuously removes impediments, it is one of her major activities.
+This activity is ongoing and can never be completed.
+
+Impediments resolution is {ref-kaizen} 改善, a key technique to lean, agile and Scrum approaches.
+The translation is change for better.
+Often agile organizations forget to aggressively identify and resolve impediments.
+We provide hints to improve your {ref-kaizen} process.
+
+=== Identify Impediments
+
+The first step is to identify and classify your impediments.
+There are always impediments; solving them will increase effectivity of your department.
+You shall
+
+* Make impediments visible.
+ Publish them on the Scrum board for all to be seen.
+ Use diagrams and colors.
+ Do not hide them in an issue tracker or a spreadsheet,
+* Raise issues early and often.
+ The daily stand-up meeting is an ideal platform.
+ Ask each day if impediments jeopardize the sprint goal,
+* Feelings matter.
+ Let everybody identify impediments.
+ An impediment is a dysfunction of the organization, never a flaw in an individual,
+* Aim for effectivity and quality.
+ Efficiency is less important,
+* Find out the root causes, discuss the https://en.wikipedia.org/wiki/5_Whys[5 Whys] over the how,
+* Provide safe to fail environment. Use the {ref-pdca} loop to implement your experiments to improve,
+* Life the https://www.scrumalliance.org/why-scrum/core-scrum-values-roles[Scrum values].
+ Lead by example: Focus, Commitment, Transparency, Openness, Respect, and Courage.
+
+=== Solve Impediments
+
+The real work of the agile coach is eliminating impediments.
+The goal of resolving impediments is often higher internal quality - internal quality is the sole responsibility of the Scrum Team -.
+Work on improving external quality - a delighted customer will order more -, and improved effectivity.
+
+Start with short-term wins to prove the organization that it is worth the effort.
+
+Allocate time and resources in each sprint to resolve a few high prioritized impediments.
+Please define measurements https://en.wikipedia.org/wiki/Performance_indicator[Key Performance Indicators _KPI_].
+Find out if the solution solves the root cause of the problem.
+
+All team members are responsible to solve team impediments.
+The Scrum master is responsible to coach the team and help solve overall impediments rooted in the organization.
+
+=== Track Impediments
+
+The identification step is the easy one, do not forget to track impediments and their resolution.
+You have a serious problem
+
+* If the impediment backlog lives in the mysterious black book of the Scrum master,
+* If your impediment backlog does not change,
+* If your impediment backlog is empty,
+* If you have an impediment backlog with a growing number of active impediments,
+* If the Scrum master resolves all impediments himself,
+* If you do not solve at least one impediment each sprint - it is now a mandatory part in the {ref-scrumguide} 2018 version -.
+
+As a Scrum coach, Scrum master or Scrum team member you should reflect upon the above statements at least monthly.
+Otherwise you are just pretending.
+Remember
+
+[.text-center]
+_Doing Agile instead of being Agile is just https://en.wikipedia.org/wiki/Cargo_cult[Cargo Cult]._

@@ -25,7 +25,6 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 import net.fortuna.ical4j.data.ParserException;
-import net.fortuna.ical4j.vcard.Group;
 import net.fortuna.ical4j.vcard.GroupRegistry;
 import net.fortuna.ical4j.vcard.ParameterFactoryRegistry;
 import net.fortuna.ical4j.vcard.Property;
@@ -36,7 +35,8 @@ import net.fortuna.ical4j.vcard.property.Fn;
 import net.fortuna.ical4j.vcard.property.N;
 import net.fortuna.ical4j.vcard.property.SortString;
 import net.fortuna.ical4j.vcard.property.Version;
-import net.tangly.bus.crm.LegalEntity;
+import net.tangly.bus.core.EmailAddress;
+import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.NaturalEntity;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -77,6 +77,14 @@ public class CrmVcardHdl {
             ParameterFactoryRegistry parReg = new ParameterFactoryRegistry();
             VCardBuilder builder = new VCardBuilder(reader, groupRegistry, propReg, parReg);
             VCard card = builder.build();
+            VCard2 card2 = new VCard2(card);
+            Optional<EmailAddress> homeEmail = card2.homeEmail();
+            Optional<NaturalEntity> person = Optional.empty();
+            if (homeEmail.isPresent()) {
+                person = crm.naturalEntities().findBy(o -> o.email(CrmTags.Type.home).orElse(null), homeEmail.get());
+            }
+            person.ifPresent(o -> o.photo(card2.photo()));
+
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         } catch (ParserException e) {

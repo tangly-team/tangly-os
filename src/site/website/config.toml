@@ -1,19 +1,188 @@
 baseURL = "https://tangly-team.bitbucket.io/"
+title="tangly Open Source Components"
+
+enableRobotsTXT = true
+theme = ["docsy"]
+
+enableGitInfo = false
+
+contentDir = "content"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+enableMissingTranslationPlaceholders = true
+disableKinds = ["taxonomy", "taxonomyTerm"]
+
+# Highlighting config
+pygmentsCodeFences = true
+pygmentsUseClasses = false
+pygmentsUseClassic = false
+#pygmentsOptions = "linenos=table"
+# See https://help.farbox.com/pygments.html
+pygmentsStyle = "tango"
+
+# Configure how URLs look like per section. :slug
+[permalinks]
+blog = "/:section/:year/:title/"
+
+## Configuration for BlackFriday markdown parser: https://github.com/russross/blackfriday
+[blackfriday]
+plainIDAnchors = true
+hrefTargetBlank = true
+angledQuotes = false
+latexDashes = true
+
+# Image processing configuration.
+[imaging]
+resampleFilter = "CatmullRom"
+quality = 75
+anchor = "smart"
+
+[services]
+[services.googleAnalytics]
+id = "UA-90395055-5"
+
+[languages]
+[languages.en]
+title = "tangly OS Components"
+description = "tangly llc Open Source Components"
+languageName ="English"
+weight = 1
+
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
+[markup.highlight]
+# See a complete list of available styles at https://xyproto.github.io/splash/docs/all.html
+style = "tango"
+# Uncomment if you want your chosen highlight style used for code blocks without a specified language
+guessSyntax = "true"
+
+# rouge is bundled with Asciidoctor 2.0 and should no more be added as extension, the rouge-css style include html marking in the html file (from the
+# Asciidoctor expert Dan Allen). The wroking folder allows asciidoctor-diagram and plantuml to generate diagrams in the correct folder.
+[markup.asciidocext]
+    extensions = ["asciidoctor-html5s", "asciidoctor-diagram"]
+    workingFolderCurrent = true
+    [markup.asciidocext.attributes]
+        imagesdir = "../pics"
+        source-highlighter = "rouge"
+        rouge-style = "github"
+        rouge-css = "style"
+        icons = "font"
+        ref-manifesto = "http://agilemanifesto.org/[Agile Manifesto]"
+        ref-less = "https://less.works/[LeSS]"
+        ref-scrum = "https://scrumguides.org/[Scrum]"
+        ref-scrumguide = "http://www.scrumguides.org/[Scrum Guide]"
+        ref-xp = "http://www.extremeprogramming.org/[eXtreme Programming]"
+        ref-kanban = "https://en.wikipedia.org/wiki/Kanban/[Kanban]"
+        ref-lean = "https://en.wikipedia.org/wiki/Lean_software_development/[Lean Software Development]"
+        ref-flow = "https://en.wikipedia.org/wiki/Flow_(psychology)/[Flow]"
+        ref-pdca = "https://en.wikipedia.org/wiki/PDCA/[Plan-Do-Check-Adapt]"
+        ref-bbrt = "http://bbrt.org/[Beyond Budgeting Round Table]"
+        ref-kaizen = "https://en.wikipedia.org/wiki/Kaizen/[Kaizen]"
+        ref-safe = "https://www.scaledagileframework.com/[SAFe]"
+        ref-tangly = "https://www.tangly.net/[tangly]"
+        ref-asciidoc = "https://asciidoc.org/[Asciidoc]"
+        ref-asciidoctor = "https://asciidoctor.org/[Asciidoctor]"
+        ref-hugo = "https://gohugo.io/[Hugo]"
+        ref-docsy = "https://www.docsy.dev/[Docsy]"
+        ref-gradle = "https://gradle.org/[Gradle Build Tool]"
+        ref-maven = "https://maven.apache.org/[Maven]"
+        ref-repository = "https:https://bitbucket.org/tangly-team/tangly-os/[Source Code]"
+        ref-site = "https://tangly-team.bitbucket.io/[Open Source Components]"
 
 languageCode = "en-us"
 defaultContentLanguage = "en"
-title = "tangly llc Open Source Components"
-theme = "hugo-theme-techdoc"
+title = "tangly Open Source Components"
+theme = "docsy"
 
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 
+# Everything below this are Site Params
+
 [params]
-    google_analytics_id = "UA-90395055-5"
-    date-format = "2000-01-01"
-    menu_style = "open-menu"
+copyright = "tangly llc - Attribution 4.0 International (CC BY 4.0)"
+privacy_policy = "https://policies.google.com/privacy"
+
+time_format_blog = "2006-01-02"
+time_format_default = "2006-01-02"
+rss_sections = ["blog"]
+
+# First one is picked as the Twitter card image if not set on page.
+# images = ["images/project-illustration.png"]
+
+# Menu title if your navbar has a versions selector to access old versions of your site.
+# This menu appears only if you have at least one [params.versions] set.
+version_menu = "Releases"
+
+# Flag used in the "version-banner" partial to decide whether to display a
+# banner on every page indicating that this is an archived version of the docs.
+# Set this flag to "true" if you want to display the banner.
+archived_version = false
+
+# The version number for the version of the docs represented in this doc set.
+# Used in the "version-banner" partial to display a version number for the
+# current doc set.
+version = "0.0"
+
+# A link to latest version of the docs. Used in the "version-banner" partial to
+# point people to the main doc site.
+url_latest_version = "https://example.com"
+
+# Repository configuration (URLs for in-page links to opening issues and suggesting changes)
+# github_repo = "https://bitbucket.org/tangly-team/tangly-os/issues"
+# An optional link to a related project repo. For example, the sibling repository where your product code lives.
+# github_project_repo = "https://bitbucket.org/tangly-team/tangly-os.git"
+# Specify a value here if your content directory is not in your repo's root directory
+# github_subdir = ""
+
+# gcs_engine_id =
+algolia_docsearch = false
+
+offlineSearch = true
+offlineSearchSummaryLength = 200
+offlineSearchMaxResults = 50
 
 [[menu.main]]
-    name = "Components"
-    url ='/'
-    weight = 1
+name = "GitHub"
+weight = 50
+url = "https://bitbucket.org/tangly-team/tangly-os/"
+
+# User interface configuration
+[params.ui]
+# Enable to show the side bar menu in its compact state.
+sidebar_menu_compact = false
+#  Set to true to disable breadcrumb navigation.
+breadcrumb_disable = false
+#  Set to true to hide the sidebar search box (the top nav search box will still be displayed if search is enabled)
+sidebar_search_disable = false
+#  Set to false if you don't want to display a logo (/assets/icons/logo.svg) in the top nav bar
+navbar_logo = true
+# Set to true to disable the About link in the site footer
+footer_about_disable = false
+
+[params.ui.feedback]
+enable = false
+yes = 'Glad to hear it! Please <a href="https://bitbucket.org/tangly-team/tangly-os/issues/new">tell us how we can improve</a>.'
+no = 'Sorry to hear that. Please <a href="https://bitbucket.org/tangly-team/tangly-os/issues/new">tell us how we can improve</a>.'
+
+[params.ui.readingtime]
+enable = false
+
+[params.links]
+[[params.links.user]]
+name = "Issue Tracker"
+url = "https://bitbucket.org/tangly-team/tangly-os/issues"
+icon = "bitbucket-square"
+desc = "Discussion and Improvements Suggestions"
+[[params.links.user]]
+name = "Documentation"
+url = "https://tangly-team.bitbucket.io/"
+icon = "bitbucker-square"
+desc = "Documentation of the open source components (this site)"
+[[params.links.developer]]
+name = "Bitbucket"
+url = "https://bitbucket.org/tangly-team/tangly-os"
+icon = "bitbucket"
+desc = "Development takes place in this repository"

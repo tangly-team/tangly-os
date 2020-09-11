@@ -1,0 +1,99 @@
+---
+title: "Agile Trends Switzerland 2017: We Won"
+linkTitle: "Swiss Agile Trends 2017"
+date: 2017-04-02
+---
+
+== Agile Trends Switzerland 2017: We Won
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2017-04-02-head.jpg[role=left]
+It is time to throw a big party in Switzerland.
+More than 60% of all projects are now realised using an agile approach (see http://swissq.it/en/agile/research-information2/[Agile Trends Switzerland 2017] by
+http://swissq.it/en/agile/[SwissQ]),
+Scrum being the most popular one, Kanban as the second one.
+What a change in just one year.
+n 2016 we had 40% of projects being agile, one year later we have 60%.
+_Time to adapt and become agile_.
+
+It was a long journey.
+At the beginning of this millennium I was convincing managers that agile is not evil and could be used in Switzerland.
+And Yes, agile is compatible with Swiss culture - we finally added {ref-scrum} to the national methodology
+http://www.hermes.admin.ch/onlinepublikation/index.xhtml?element=supportingmaterial_hinweis_agiles_projektmanagement_mit_hermes_und_scrum.html[Hermes] -.
+The report 2016 patently states that agile projects are more successful for the customer and the company than non-agile ones.
+It is genuinely time to adapt.
+
+See our previous blogs for the results of link:../../2017/agile-trends-switzerland-2016[Agile Trends Switzerland 2012],
+link:../../2016/agile-trends-switzerland-2012[Agile Trends Switzerland 2012], and link:../../2016/agile-trends-switzerland-2013[Agile Trends Switzerland 2013].
+They illustrate the slow gains of agile and lean approaches in our country.
+
+But I have a strong _déjà-vu_.
+I am now convincing managers that agile approaches for the whole company are not evil and could be used in Europe and Switzerland.
+Yes, agile approaches are compatible with European and Swiss cultures.
+Yes, holistic agile approaches increase the odds of success to deliver tremendous products to our customers.
+Again I hear the same arguments as 15 years ago why our companies are different and need special approaches.
+
+To ripe the benefits of agile approaches it is now time to transition whole departments and the company.
+I hope to succeed in the first half of this century.
+
+Below some of the findings of the study.
+
+=== Major Hurdles Introducing Agile Approaches
+
+The major hurdles when introducing agile approaches at department/company level are
+
+Current company culture::
+ http://www.craiglarman.com/wiki/index.php?title=Larman%27s_Laws_of_Organizational_Behavior[First change the structure], it enables
+ the http://www.craiglarman.com/wiki/index.php?title=Larman%27s_Laws_of_Organizational_Behavior[cultural change].
+ Quite a few companies try to change their culture without altering their structure. It is doomed to fail,
+Existing company structure and frozen hierarchies::
+ It is time to rethink your structure and move decision power to the teams, near to the customers,
+Controlling not tailored to agile approaches::
+ It is difficult to be slightly agile. The same can be said about lean. Either you are lean, agile or you are not.
+ Try {ref-bbrt},
+Overall processes not tailored to agile::
+ Once you change your structure and hierarchy, the processes will evolve,
+Trust is missing::
+ Here again we talk again about trust or the believe your collaborators are competent and do their best to achieve success.
+ As an organization and as a manager it is time to decide.
+ Do you truly https://en.wikipedia.org/wiki/Theory_X_and_Theory_Y[trust] your collaborators?
+Customers are not involved or engaged::
+ Customers are the center in the new world. Please involve them, talk to them, find out what they need
+
+You could also say organizations are still struggling with _Being agile, not doing agile_.
+Avoid https://en.wikipedia.org/wiki/Cargo_cult[cargo cult].
+
+=== Our Recommendations
+
+You shall start introducing agile approaches at department and company level.
+
+Senior management is fully committed to the approach and approves the cultural change.
+Read the book "Reinventing Organizations" from Frederic Laloux to understand the implied changes.
+
+Train your managers to understand agile, lean, and customer centric approaches. And training is not
+half-day introduction, it is days and days of training, workshops, and reading.
+
+The transition is painful, see the seminal articles of Steve Denning
+https://www.forbes.com/sites/stevedenning/2015/01/26/why-do-managers-hate-agile[Why do managers hate agile?] and
+https://www.forbes.com/sites/stevedenning/2015/01/28/more-on-why-managers-hate-agile[More on why managers hate agile].
+
+The principles are
+
+* Products are value driven and quality oriented
+* Teams are focused to master their work and tools - Craftsmanship, {ref-xp} -
+* For huge development departments consider using the {ref-less}} approach.
+* Teams work best if you can answer a sounding yes to these five questions.
+** Psychological safety: Can we take risks on this team without feeling insecure or embarrassed?
+** Dependability: Can we count on each other to do high quality work on time?
+** Structure & clarity: Are goals, roles, and execution plans on our team clear?
+** Meaning of work: Are we working on something that is personally important for each of us
+** Impact of work: Do we fundamentally believe that the work we’re doing matters?
+
+If you have doubts please refrain using agile and lean methods.
+Introducing agile approaches in product development is similar to introduce lean principles in a production environment.
+Either you do it fully or the benefits are marginal.
+Worst the best employees will see through and probably leave due to unkept promises.

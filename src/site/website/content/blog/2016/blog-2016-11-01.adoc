@@ -1,0 +1,133 @@
+---
+title: "What is an Agile Company?"
+linkTitle: "Agile Company"
+date: 2016-11-01
+---
+
+== What is an Agile Company?
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2016-11-01-head.jpg[role=left]
+Lately people often ask me what is an agile company.
+They have an understanding of agile software development techniques such as {ref-scrum}, Lean, Kanban, {ref-xp} but no clue how a company could be agile.
+
+One way to approach this theme is to implement concepts of the above mentioned agile approaches. These are the pillars for iterative incremental improvements.
+
+=== Scrum Pillars
+
+Transparency::
+ you trust all collaborators to provide their best when working on the product.
+ They need full access to all relevant information: quality, progress, budget, people and financial data.
+ They use the data to select the best alternatives to reach the company’s goals
+Inspection::
+ you cherish a failure culture because inspections will find weak points.
+ You need a culture where people are never blamed.
+ One consequence is that you eliminate management by objectives, and bonuses in your company
+Adaptation::
+ you are ready to learn better approaches and truly believe there is a better solution.
+ Processes change regularly bottom-up, company’s budget can only be a rolling indicative budget, and planning has to be _continuously_ updated
+
+You can also pursue desirable attitudes or values of agile persons
+
+=== Scrum Values
+
+Commitment::
+ as an employee you want to win, you are engaged.
+ Every manager truly believes you work best to achieve the goals.
+ If not, this manager did a mistake by hiring or keeping you
+Courage::
+ you are ready to say “I am wrong” because being wrong opens the door for improvement
+Focus::
+ you daily optimise the customers’ value and thrive for excellence.
+ As a developer you do not work on projects, you work on excellent products.
+ You provide value to your customers
+Openness::
+ you seek better ideas and ways of doing. Openness requires transparency and respect.
+Respect::
+ you truly respect customers, team members, collaborators, persons.
+ In your team I will not hear any disrespectful comments about people
+
+=== Modern Agile
+
+The http://modernagile.org/[modern agile movement] defines guiding principles
+
+Make people awesome::
+ Dedicated collaborators want to give their best.
+ Give them a purpose, a goal, empower them and let them climb the mountain.
+ Thriving persons need purpose, excellence and autonomy.
+ They are happier, healthier and more productive.
+Deliver value continuously::
+ Maintain sustainable pace and stability, all divisions of the organisation should focus on customer value.
+ At the end of the day successful products are the only reason you get your paycheck.
+Make safety a prerequisite::
+ People do their best in their daily work, you believe in McGregor Y theory.
+ Trust them and support them to become excellent.
+ You shall develop self-awareness to increase safety.
+Experiment and learn rapidly::
+ you make mistakes, you learn and increase continuously the delivered value.
+ You have a learning culture, you inspect and adapt.
+ You can react to new opportunities faster than competitors.
+
+=== Self Assessment
+
+The above concepts are comprehensible.
+How do you know if you are moving in the right direction.
+A few concrete tests help you find out if you are an agile department or company.
+
+* _Be agile_ instead of _do agile_.
+ Practice the above attitudes and do not just follow a checklist
+* Nobody micro-manages in your company
+* _Feel accountable_ instead of _be accountable_.
+ You want to improve and your company as a natural part of the daily work.
+* _Compliment every collaborator_ you are working with at least once a week instead of _evaluating weaknesses and criticising people_.
+ o you lead by example?
+* No management by objectives - MBO - or bonuses are established in your company
+* Every collaborator has access to all company data, every collaborator can request process and tool changes.
+ We favour _Individuals and interactions over  tools and processes_
+* You want to be excellent in your work.
+ You have a purpose and autonomy in your daily work
+* Team members take the decision to hire or to fire collaborators, not the department responsible or the human resources group.
+ Think about collaborators selecting their leaders, about managers being servants, about information available to all collaborators
+* Can you say the most important one word _Sorry_, the most important two words _Thank you_, the most important three words _I was wrong_ and the most
+important four words _Can I help you?_ at least three times a week?
+
+I truly believe that we all want a fulfilling job which improves our world.
+I cannot understand other reasons to spend 40 hours and more per week for something less valuable.
+Take the above principles and apply them to your daily work.
+There are universal values to establish a working atmosphere you are proud of.
+
+_I agree with all of you to desire a fulfilling job is only true if you earn enough money to pay your monthly bills._
+
+== Food for Thoughts
+
+These ideas are not new.
+You can delve in empirical evidence and discussions in books written by business management professors, CEO, and passionate agile advocates.
+Below a list of mind openers (available as Amazon ebooks):
+
+* Reinventing organisations: A guide to creating organisations inspired by the next stage of human consciousness by Frederic Laloux,
+* Accelerate: Building strategy agility for a fast moving world by John P. Kotter,
+* Beyond budgeting: How managers can break free from the annual performance trap;
+* The Leader’s Dilemma: How to build an empowered and adaptive organisation without losing control; both books by Jeremy Hope,
+* Holacracy: the new management system for a rapidly changing world by Brian J. Robertson,
+* Deliver Happiness: A path to profits, passion and purpose by Tony Hsieh,
+* The Lean Startup: How today’s entrepreneurs use continuous innovation to create radically successful businesses by Eric Ries,
+* Lean Novels
+** The Lean Manager: A novel of lean transformation;
+** Lead with Respect: A novel of lean practice;
+** The Gold Mine: A novel of lean turnaround; all three books by  Freddy Balle,
+* The Lean Mindset: Ask the right questions by Mary Poppendieck,
+* Social Intelligence: The new science of human relationships, by Daniel Goleman
+* Management 3.0: Leading agile developers, developing agile leaders by Jurgen Appelo,
+* The Fifth Discipline: The art and practice of the learning organisation by Peter M. Senge,
+* Fearless Change: Patterns for introducing new ideas; More Fearless Change: Strategies for making your ideas happen; both books by Linda Rising,
+* Excellence Novels
+** Build to Last: Successful habits of visionary companies;
+** Good to Great: Why some companies make the leap… and others don’t;
+** How the Mighty Fall: And why some companies never give in; all three books by Jim Collins,
+* Google re:work blog.
+
+(this https://www.linkedin.com/pulse/what-agile-company-marcel-baumann[post] was also published on LinkedIn)

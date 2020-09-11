@@ -24,6 +24,7 @@ import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.server.StreamResource;
+import net.tangly.bus.core.EmailAddress;
 import net.tangly.bus.core.PhoneNr;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
@@ -108,7 +109,7 @@ public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
         binder.bind(firstname, NaturalEntity::firstname, NaturalEntity::firstname);
         binder.bind(lastname, NaturalEntity::lastname, NaturalEntity::lastname);
         binder.bind(mobilePhone, e -> e.phoneNr(CrmTags.Type.mobile).map(PhoneNr::number).orElse(null), null);
-        binder.bind(homeEmail, e -> e.email(CrmTags.Type.home).orElse(null), null);
+        binder.bind(homeEmail, e -> e.email(CrmTags.Type.home).map(EmailAddress::text).orElse(null), null);
         binder.bind(homeSite, e -> e.site(CrmTags.Type.home).orElse(null), null);
         binder.readBean(entity);
         return form;

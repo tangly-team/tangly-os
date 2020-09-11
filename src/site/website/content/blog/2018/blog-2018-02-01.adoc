@@ -1,0 +1,123 @@
+---
+title: "Scrum Guide 2017: What changed?"
+linkTitle: "Scrum Guide 2017"
+date: 2018-02-01
+---
+
+== Scrum Guide 2017: What changed?
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2018-10-02-head.jpg[role=left]
+The Scrum guide was revised in 2016 and got clarification concerning the core values.
+I was thrilled.
+Talking about values and mental models you must have to successfully introduce and be agile is awesome.
+
+A new revision was published end of year 2017, just a year after the values addition.
+
+What has changed?
+What have the community learnt and committed to the new version of the guide.
+
+=== Scrum is not only for Software
+
+Scrum was initially developed for managing and developing products.
+Starting in the early 1990s, Scrum has been used extensively, worldwide, to:
+
+. Research and identify viable markets, technologies, and product capabilities,
+. Develop products and enhancements,
+. Release products and enhancements, as frequently as many times per day,
+. Develop and sustain Cloud (online, secure, on-demand) and other operational environments for product use,
+. Sustain and renew products.
+
+The essence of Scrum is a small team of people.
+The individual team is highly flexible and adaptive.
+These strengths continue operating in single, several, and networks of teams.
+They develop, release, operate and sustain the work and work products of thousands of people.
+
+They collaborate and interoperate through sophisticated development architectures and target release environments.
+
+[.text-centered]
+_Scrum is a tool to solve complex problems, any kind of complex problem. It is already the industry standard for software projects, it is becoming a major
+standard for all complex products._
+
+=== What does a Scrum Master?
+
+Changed wording in The Scrum Master section to provide better clarity to the role.
+The text now reads:
+
+[quote]
+____
+The Scrum Master is responsible for _promoting and supporting Scrum_ as defined in the Scrum Guide.
+Scrum Masters do this by helping everyone understand Scrum theory, practices, rules, and values.
+
+The Scrum Master is a _servant-leader_ for the Scrum Team.
+The Scrum Master helps those outside the Scrum Team understand which of their interactions with the Scrum Team are helpful and which are not.
+
+The Scrum Master helps everyone change these interactions to maximize the value created by the Scrum Team.
+____
+
+Added to the section Scrum Master Service to the Product Owner
+
+[quote]
+____
+Ensuring that _goals, scope, and product domain_ are understood by everyone on the Scrum Team as well as possible.
+____
+
+*Scrum master is a servant leader and promotes Scrum and agile approaches.*
+*The whole team work on a product.*
+*They understand the vision, goals, scope, and have extensive domain knowledge.*
+
+*This means the whole team talks with stakeholders and users.*
+*The team members have a genuine interest to learn more about the product domain.*
+
+=== Scrum Events
+
+Updated the first paragraph of the Daily Scrum section to read::
+ The Daily Scrum is a 15-minute time-boxed event for the Development Team.
+ The Daily Scrum is held every day of the Sprint.
+ At it, the Development Team plans work for the next 24 hours.
+ This optimizes team collaboration and performance by inspecting the work since the last Daily Scrum and f__orecasting upcoming Sprint work__.
+ The Daily Scrum is held at the same time and place each day to reduce complexity.
+Updated the Daily Scrum section to provide clarity on the goals of the Daily Scrum including this text::
+ The structure of the meeting is set by the Development Team and can be conducted in different ways if it focuses on progress toward the Sprint Goal.
+ Some Development Teams will use questions, some will be more discussion based. Here is an example of what might be used:
+
+ * What did I do yesterday that helped the Development Team meet the Sprint Goal?
+ * What will I do today to help the Development Team meet the Sprint Goal?
+ * Do I see any impediment that prevents me or the Development Team from meeting the Sprint Goal?
+Added clarity around time-boxes::
+ Using the words “at most” to remove any questions that the time-box for Events means maximum length, but could be shorter.
+
+*The guide clarifies the daily Scrum event. It establishes a daily feedback loop for improvement.*
+
+*For slow learners time-box means maximum duration.*
+
+=== Scrum Artifacts
+
+Added to the Sprint Backlog section::
+ To ensure continuous improvement, it includes at least one high priority way in which the team works, identified in the previous Retrospective meeting.
+Added clarity to the Increment section::
+ An increment is a body of inspectable, "Done" work that supports empiricism at the end of the Sprint.
+ The increment is a step toward a vision or goal.
+
+*The guide emphasizes the learning and improvements process. One root of the agile manifesto is lean thinking.*
+
+*For slow learners you inspect the result of the increment and put at least one improvement measure in the next sprint backlog.*
+
+=== Previous Changes
+
+The biggest change for the daily work was introduced in the previous revision - read previous blog -.
+The word _commitment_ is no more used in the description of the planning event.
+The team now provides a *forecast* which stories shall be realized until the end of the sprint.
+
+This change was necessary because people - especially command and control responsible - did not read the official definition of commitment - Oxford Dictionary -.
+
+[.text-centered]
+_The state or quality of being dedicated to a cause, an activity._
+
+The second big innovation was the introduction of five Scrum values: Commitment, Focus, Openness, Respect, and Courage.
+
+I welcome the focus on values, principles and core behaviors over detailed checklists and rules.
+Please also read again the http://agilemanifesto.org/principles.html[twelve principles] of the agile manifesto.

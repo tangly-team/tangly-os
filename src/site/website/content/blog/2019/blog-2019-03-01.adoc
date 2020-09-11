@@ -1,0 +1,75 @@
+---
+title: "You Need an Engineering Culture"
+linkTitle: "Engineering Culture"
+date: 2019-03-01
+---
+
+== You Need an Engineering Culture
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2019-03-01-head.jpg[role=left]
+Agile approaches are not enough, You need a strong engineering culture to achieve quality and lasting success.
+
+Often coaches and Scrum masters tinker with the processes and invest effort and blood to improve the ceremonies and the company structure.
+
+But at the end of the day the success of your product is defined by its adequacy to customers' needs and its overall quality.
+You need a solid and professional engineering culture to produce high quality products and release them at high rate.
+If not you just release a new set of defects to your paying customers.
+
+How do you establish and nurture a professional and effective engineering culture?
+
+=== Live and Breath Your Values
+
+Remember, values drive your culture and the daily behavior of all your collaborators.
+But even if you have invested time and blood to identify the right values and put all the mechanisms in place, it might still not have the desired results.
+Culture is something that happens daily through personal interactions.
+Putting the right values and mechanisms in place will help move your company in the right direction, but it's not a guaranty for success.
+
+In order to increase your odds for success you need to live and breath your values.
+You need to truly believe at all levels in the organization and not compromise on them.
+
+* Advocate for build-in quality,
+* Support employee first,
+* Promote technical excellence,
+* Don't be penny wise and pound foolish.
+
+=== Communicating
+
+Make sure that people know the values.
+It should be part of every on-boarding.
+It is one of the first things that new people need to learn.
+But also make sure to remind people as often as possible, e.g. in employee guidelines, during appraisals and town hall meetings.
+
+=== Eat Your Own Dog Food
+
+People look up to you and they will imitate your behavior.
+So make sure that you and all members of the leadership team are the evangelists and provide at all times the right example.
+
+Read our blog post Pragmatic Craftsmanship for hints what a technical excellence culture should be.
+
+Learn from the {ref-less}] community.
+
+You can find an initial list of questions in our blog post Company Culture Check.
+
+=== Validating
+
+Validate that all teams are living up to their values.
+Find a way to measure it.
+Identify and put actions in place in case you need to improve.
+If a value doesn't make sense, e.g. the value was defined early on but in hindsight it doesn't fit with your company, then get rid of it.
+
+=== Last Thoughts
+
+Building a great engineering culture is not something that you easily can do.
+You cannot cheat.
+It will not automatically happen by copying the values and organization structure from another company such as Spotify.
+You need to really invest in creating a culture that works for your company.
+
+You can look at organizational structures, values and principles from other companies to get inspired.
+But most important sit down with your people and decide together what is important for your company.
+Put mechanisms in place that will support the concepts, allow them to grow.
+Then live and breathe it within all levels of your company.

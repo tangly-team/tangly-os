@@ -1,0 +1,129 @@
+---
+title: "A Journey Implementing Digital Invoices"
+linkTitle: "Implementing Digital Invoices"
+date: 2020-07-01
+---
+
+== A Journey Implementing Digital Invoices
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2020-07-01-head.png[role=left]
+Our company has the ambition to digitalize all our workflows.
+We proudly state we never bought a printer or a fax machine.
+Analog machines should become obsolete in the digital age.
+Companies should be more environment aware and save some trees.
+
+Switzerland finally introduce a digital payment slip.
+It is based on a QR code and still assume you need to print it.
+The European Union is more inovative and mandates that invoices to government parties must be digital.
+Our company exchanges contracts and invoices with partners and customers using the standardized and well-known PDF format.
+It is time to explore extensions to support the new legal requirements in Switzerland and in Europe.
+
+We show open source based solutions and the trade-offs we had to accept.
+Beware our solutions are based on the Java stack.
+
+=== Swiss QR Code
+
+The https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf[Swiss QR-bill] standard is based on a 2D barcode and associated human readable text
+mirroring the data encoded in the barcode.
+The barcode approach assumes the invoice will be printed by the buyer.
+The interested parties have to scan the barcode to digitize the invoice information.
+This approach clearly breaks digitalization efforts.
+
+Our approach is to add the barcode to the PDF invoice document.
+The workflow can open the digitally received document and parse programmatically the image of the barcode.
+The generation of the invoice and associated barcode is fully digital.
+
+This approach works well only if the issuer fills the so-called SWICO field of the QR code with needed information.
+For example the due date of the invoice and the enumeration of different VAT tax percentages and corresponding VAT taxes are only stored in this field.
+In other words the standard does not foreseen that the due date of the invoice should be a mandatory field.
+Stated bluntly the committee in charge of the standard realized they missed and stuck all missing elements in the so-called SWICO field.
+It is clear that it is impossible to define a digital payment workflow without information such a due date and the VAT percentages and amounts.
+
+The library https://github.com/manuelbl/SwissQRBill[Swiss QR Bill] is a mature and easy to use solution to read and to write legal Swiss QR codes.
+The library is under MIT license and is available for the Java and .NET stacks.
+The code is under active development and the main developer is responsive to suggestions and trouble reports.
+
+=== ZUGFeRD
+
+The ZUGFeRD is a German initiative to promote digital invoices in Germany and in Europe.
+The ZUGFeRD approach is to store the invoice data as a XML part in the PDF document of the invoice.
+The standard is also called Factur-X in France.
+It is compatible to European B2G invoices standard, namely http://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014L0055[EN16931]. It can also be
+used for B2B invoices.
+
+XML is not really a human readable format.
+A JSON based approach would have been more friendly.
+The advantage is that the standard contains all relevant information for an invoice and streamline the digital processing of invoices.
+You can easily define a workflow extracting and parsing the XML payload from all received invoices, and feeding the information to your ERP system for further processing.
+
+The library https://github.com/ZUGFeRD/mustangproject[Mustang ZUGFerD] is a mature and usable solution to read and write digital ZUGFeRD invoices.
+The library is under Apache 2.0 license.
+The current version 2.1 of the standard is fully supported.
+ZUGFeRD additionally can transform a PDF/A-1 into a PDF/A-3 format.
+
+Other similar libraries are also available but the ones we found have quite restrictive licenses.
+
+=== PDF Aspects
+
+The PDF format is universal known.
+Special variants such as PDF/A1 and PDF/A3 are defined for archiving purposes.
+
+The Apache foundation hosts the product https://pdfbox.apache.org/[PDFBox].
+It provides all low-level functions to create, read and edit PDF documents.
+The library is naturally under https://en.wikipedia.org/wiki/Apache_License[Apache 2.0 license].
+
+But no open source products are available for high-level functions.
+In particular support for the creation of archive formats are non existent.
+The famous iText library provides all these features but sadly is no more open source.
+
+The online service https://www.pdftron.com/pdf-tools/pdfa-converter/[pdftron] provides free PDF translation to archive format.
+The https://www.scribus.net/[Scribus] application support archive format export.
+The drawback is these approaches are they require manual steps.
+
+The Mustang library supports the transformation of a PDF/A1 to a PDF/A3 document.
+
+=== Approach
+
+We decided to extend our open source library for creating digital invoices.
+The extensions support the Swiss QR Code and the ZUGFeRD 2.1 standards.
+All the information are stored in one PDF document.
+This document is sent electronically to the customer.
+
+Our current approach is
+
+[source]
+----
+*Generate* AsciiDoc Invoice from our invoice model (Java source code)
+*Generate* PDF version of Invoice using AsciiDocPDF
+    *Add* Swiss QR code as last page in the PDF invoice document
+    *Add* ZUGFeRD XML payload in the PDF invoice document
+----
+
+Currently, we do not generate PDF/A1 documents as required in the ZUGFeRD standard.
+PDFBox would provide the tool box to generate in this format but it would be quite an endeavor.
+Ideally an extension to PDFBox with similar functionality to iText would become available in the future.
+Otherwise we have to write the missing code; in particular the embedding of fonts, pictures and files into the PDF document.
+
+We selected the AsciiDoc format to provide a simple approach to custom templates for invoices.
+Therefore we avoided proprietary solutions based on Microsoft Office templates.
+
+Feel free to use our library and examples.
+They are released under Apache 2.0 license.
+
+=== Learnings
+
+The source code for the invoice component is available as a Java package.
+More information is available under https://tangly-team.bitbucket.io/[tangly open source components].
+
+The generator code for the Swiss QR bill and ZUGFeRD data is available as Java package.
+
+The investment to create the generators and test them against regular invoices of https://www.tangly.net[tangly llc] was around four man-days.
+
+You can find more information how to digitize your company in a blog describing our journey to a digital company.
+We are quite proud no having any Microsoft Office our Outlook tools.
+Our whole toolchain is based on open source solutions and performs flawlessly since the foundation of our company.

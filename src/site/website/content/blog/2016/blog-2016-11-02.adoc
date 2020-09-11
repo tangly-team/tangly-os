@@ -1,0 +1,66 @@
+---
+title: "Found a Limited Liability Company in Switzerland"
+linkTitle: "Agile Company"
+date: 2016-11-02
+---
+
+== Found a Limited Liability Company in Switzerland
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2016-11-02-head.jpg[role=left]
+I left the company I founded 20 years ago and needed a new home to work and have access to social insurances.
+I had to found a limited liability company with a capital of CHF 20'000.
+
+Here the steps for the impatient.
+
+=== Foundation
+
+. https://www.swissregistration.ch/[Swissregistration] wrote the statutes for the company and performed the foundation with certifying notary for CHF 780.
+ Six hours after the first phone call they sent me the electronic documents.
+ The next day the documents were delivered in paper form.
+ It was really impressive.
+. Before you can found a company you must deposit the capital to a special account.
+ I choose https://www.postfinance.ch/[Postfinance].
+ It is a well-known Swiss institute and their fee is only CHF 145.
+ They insisted I meet one of their collaborators to fill their forms – probably never heard about web forms -.
+ I had bad luck and they needed three weeks to create the account and send payment confirmation.
+ They were aware of the problem and very helpful but it still took three weeks.
+. Upon reception of the payment confirmation, I sent all signed documents to https://www.swissregistration.ch/[Swissregistration].
+ The next day the company was founded and I received the official paper documents a few hours later.
+. I went to https://www.zg.ch/behoerden/volkswirtschaftsdirektion/handelsregisteramt[Handelsregisteramt Zug] to register the company.
+ They were very nice but told me they have a lot of work.
+ Two weeks later they finally registered the company and sent me the papers and an invoice of CHF 780.
+. A few phone calls later http://www.postfinance.ch/[Postfinance] converted the account into a regular account.
+ They give me access to the founding capital minus their fee
+
+During the waiting time I started to organise for the mandatory insurances you need in Switzerland
+
+* BVG – the best offer was from https://www.axa-winterthur.ch/[Axa Winthertur].
+They also help me because the company CRIF AG wrongly classified the activities of the new company.
+ – They never contacted me and their NOGA classification has a huge impact on my costs. They are morons -
+* BU/NBU – the best offer was from https://www.baloise.ch/[Basler Versicherung]
+ When starting a software startup I suggest not concluding any other insurances
+
+The government controlled social insurances contracts can only be initiated once the company is registered in the Swiss company registry.
+The AHV center needed more than two weeks to confirm my registration.
+
+=== Lessons Learnt
+
+* The costs of founding my limited company in Switzerland is CHF 1'705 or 8.5% of the capital of the company.
+* The state owned companies and state services are very slow; in my case 20 times slower than the private ones.
+ On the bright side their collaborators are very supportive.
+* Public or big private companies such as insurance firms are incapable to send documents or invoices electronically.
+ They only use paper mail. Upon inquiry their collaborators told me their processes are incapable of handling modern communication ways.
+* Upon foundation you get pseudo-official letters from various companies to sell dubious services. Just throw them away.
+* The industry development office of Kanton Zug has no clues about start-up companies; the ones in Zürich and Luzern seem better.
+
+[.text-centered]
+_Now we are ready to create great products with our customers_
+
+Please leave a comment if you know a better or less expensive way to found a Swiss liability company.
+
+(the https://www.linkedin.com/pulse/found-limited-liability-company-switzerland-marcel-baumann[post] was also published on LinkedIn)

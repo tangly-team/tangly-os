@@ -1,0 +1,60 @@
+---
+title: "Advocate Zero Bug Policy in Your Projects!"
+linkTitle: "Zero Bug Policy"
+date: 2020-10-01
+---
+
+== Advocate Zero Bug Policy in Your Projects!
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2020-12-01-head.jpg[role=left]
+At many customers I visit, I see a lot of effort being put into classification and managing bugs.
+
+Their bug list may contain more than thousands of items, all neatly documented with screenshots, ways to reproduce and a severity and impact classification.
+
+A change management board sits every few weeks and decide which bugs have now a higher priority and should be fixed.
+In general it means an angry customer called someone at C level. Some of these bugs were discovered years ago.
+
+Clearly, many hours have been invested to properly administer bugs.
+
+Creating a list of errors provides an organized inventory of technical debt.
+Spending time on evaluating and administering bugs with the goal of tracking them is wasteful.
+Please stop doing such activities.
+
+The solution is elegant and simple: Implement the _Zero Bug Policy_.
+
+=== Why Bug Management Boards are Useless?
+
+[.text-center]
+_Stop Managing Bugs, Start Focusing on Quality!_
+
+=== How to transition?
+
+Zero-Bug does not mean bug-free code production; it means striving to eradicate all known bugs.
+
+image::2020-12-01-fix-it-or-delete-it.png[role=left]
+The rigorous Zero-baseline approach will force us to clean our code.
+And it will force us to make the customers a little less disappointed by reducing the "buggy-ness" of the application.
+
+Bugs have a tendency to become obsolete pretty quickly in applications that are updated frequently.
+The steps to reproduce become irrelevant, the functionality changes, the impact of the bug often gets lower.
+
+Please, don’t waste your time trying to update these bugs.
+You may lose a few valid ones, but trust me, someone will report it again if it’s still happening.
+
+=== Clean Code and Happy Customers
+
+Bugs are like water leaks.
+If you leave them too long, they can spoil your merchandise and slow down your business.
+
+Finally, to ensure that this system works.
+
+* The bugs that the team decides to fix must be prioritized over other work and must get fixed.
+* In the beginning there will be more bugs to work through, as some of the bugs that were deleted get reported again.
+* As the team shifts its focus to improved quality there will be fewer of them. This is truly a binary system with no wiggle room.
+* Bugs are either fixed now or deleted, there is no severity and no haggling about the classification of the bug!
+* Are you ready to shift your focus from managing bugs to ensuring quality?

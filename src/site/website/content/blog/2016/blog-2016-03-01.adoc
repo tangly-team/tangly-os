@@ -1,0 +1,56 @@
+---
+title: "Why I use a MacBookPro and OS X"
+linkTitle: "MacBook Pro Love"
+date: 2016-03-01
+---
+
+== Why I use a MacBookPro and OS X
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+:icons: font
+
+image::2016-03-01-head.jpg[role=left]
+As a young developer I loved Linux, compiled new kernels during evening sessions and struggled days to have the correct drivers for the graphic card and communication components of my notebook.
+
+I grew older and decided to enjoy my evenings and weekends.
+And surely I would prefer to have no virus, trojan and other evils on my workstation.
+So I went to MacOS and Apple notebooks without regrets.
+
+=== Gains
+
+The major gains upon migrating to OS X are
+
+* No virus scanner is necessary, the speed-up during complex programming and development activities are tremendous,
+* No trouble when updating OS, updates are automatic and often no new start is required,
+* Unix Command Line and Tools are available in the console.
+https://brew.sh/[Homebrew] or https://www.macports.org/[MacPorts] projects provide all known and less-known utilities and programs available under Linux,
+* Long Lived Notebook is still working and looking nice after five years of daily usage.
+ The performance is more than adequate for software development with Java 8/9/10/11 stack and C++.
+
+=== Daily Development
+
+The tools I really enjoy and use on a daily basis for software development - mainly Java - are
+
+* IntelliJ IDEA IDE,
+* Atlassian Cloud applications - BitBucket, HipChat, CI pipeline -,
+* https://brew.sh/[Homebrew] as package manager for utilities,
+* Docker as container manager,
+* VirtualBox when I need a full-fledged virtual machine.
+
+=== Daily Work
+
+The tools I use to perform administrative work are
+
+* LibreOffice,
+* Google Business for team work in the cloud using collaborative tools,
+* Apple Mail Client with GPG plugin for PGP and S/MIME secure email,
+* A local Swiss product https://www.banana.ch[Banana] for accounting and VAT reports for the federal government.
+ I bought it as soon as the company stopped requesting higher prices for OS X than for the other platforms.
+
+LibreOffice completely replaced Microsoft Office suite.
+I stopped using OpenOffice after the strange behavior of Oracle with the product.
+
+I never really regretted leaving Linux or Ubuntu behind me.

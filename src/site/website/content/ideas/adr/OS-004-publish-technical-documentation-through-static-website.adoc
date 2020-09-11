@@ -1,0 +1,42 @@
+---
+title: "OS 004: Publish Technical Documentation Through Static Website"
+linkTitle: "Static Website"
+date: 2020-08-01
+weight: 4
+---
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+= OS-004 Publish Technical Documentation Through Static Website
+
+Date: 2020-01-01
+
+== Status
+
+Implemented
+
+== Context
+
+A legible, well-structured and up-to-date technical documentation of released open source components is a service to all our users.
+Due to the small size of our team we want a straight forward tool chain to generate the website.
+In the future we could move our project to another hosting platform.
+The solution should be build on standard to minimize porting overhead.
+
+I am personally a fan of {ref-asciidoc} and would promote a solution supporting this markup language.
+I will strongly fight against proprietary solutions.
+
+== Decision
+
+1. All our technical documentation and blogs will be written in {ref-asciidoc}.
+2. The website is created using the {ref-hugo} toolchain.
+3. The theme of hugo will be {ref-docsy}.
+
+== Consequences
+
+* Committers are forced to document in {ref-asciidoc}.
+* Tooling is slightly more britle because {ref-asciidoctor} integration in {ref-hugo} is work in progress.
+ {ref-asciidoctor} is also undergoing changes such as the native support of rouge syntax highlighter.
+ The improvements in both tools were impressive the last year but we have to update regularly our toochain and update all {ref-asciidoc} documents.

@@ -1,0 +1,89 @@
+---
+title: "Java 10 aka 18.3 Changes"
+linkTitle: "Java 10"
+date: 2018-03-01
+---
+
+== Java 10 aka 18.3 Changes
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2018-03-01-head.png[role=left]
+[quote, Mark Reinhold]
+____
+For Java to remain competitive it must not just continue to move forward — it must move forward faster.
+____
+
+=== What has changed?
+
+Oracle has decided to release a new JDK two times a year.
+
+The next release Java 10 aka 18.3 will be available on of March 2018.
+
+JDK 11 aka 18.9 will be released in September 2018.
+Java 11 will also be a long term support _LTS_ release.
+
+=== The Visible Change
+
+The visible change is the dawn of the keyword *var*.
+Now instead of typing the type of a local variable - local to a method, a block or an instruction - you can just use the keyword var.
+The constraint being that the variable is initialized at declaration.
+Stay tune for more support in JDK 11.
+
+When the type declaration is a complex generic type definition the var shortcut is a boon.
+The code is less verbose and the legibility is at least as good.
+When the type is a class name I got the impression the benefit is less clear.
+
+As an exercise I updated the source code of open source libraries I have written and the associated tests as in
+
+[source, java]
+----
+Event <Events> event = new Event<>(Events.AA_AB);
+var event = new Event<>(Events.AA_AB);
+----
+
+The first impression is that the new construct sometimes simplify the code of the library and very often improve the test cases.
+Perhaps it takes time until I am accustomed to the new way of writing Java code.
+
+=== Under the Hood Changes
+
+The source code of the JDK is consolidated in one repository.
+It makes development work more efficient.
+
+The garbage collector shall have a clear and documented API. Developing and adding new garbage collectors is easier.
+
+Various updates such as Unicode newest version.
+The extensions are used in library classes to better support locales.
+
+Open JDK and Oracle JDK are slowly merging.
+For example CA certificates will be provided to OpenJDK by Oracle.
+
+=== Outlook
+
+The rhythm of releases is staggering higher.
+Starting Spring 2018 we will have
+* The new rule as blogged by Mark Reinhold https://mreinhold.org/blog/forward-faster[Moving Java Forward Faster].
+* You will get a new JDK every six months
+* You will get security updates every three months
+* You will get a long term support release every three years.
+
+This means that you shall update your JDK in development environment six times a year if you want to install the new JDK and the security releases.
+We recommend automating the process in your environment.
+And you shall deliver your applications in Docker containers to support the whole ecosystem.
+
+The tool landscape is still struggling to adapt to the new rhythm.
+I am working with IntelliJ IDE and I had to wait for the EAP 2018.3 before being able to write JDK 10 code in the IDE.
+I use Gradle as build tool and also to wait until JDK 10 was at least partially supported.
+And I am still waiting for the update of code coverage plugin.
+Before that I was back to stone age, writing software with a text editor and compiling it with the command line.
+
+The library landscape is often behind and regularly they are incompatible with the newest version of the JDK.
+
+JavaFX will be removed from the regular JDK distribution in Fall 2018.
+
+The cloud landscape does not support latest JDK as SAAS.
+You must provide your custom docker images with the expected JDK or JRE.
+So we are back to IAAS.

@@ -1,0 +1,102 @@
+---
+title: "How Healthy is Your Product? - Delivery Pipeline Check"
+linkTitle: "Pipeline Check"
+date: 2018-11-01
+---
+
+== How Healthy is Your Product? - Delivery Pipeline Check
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2018-11-01-head.png[role=left]
+You are developing your product using agile and lean approaches.
+
+How can you check your approach and distill improvements?
+A health check of your product and your development approach is certainly a good solution.
+
+This post is the second of a set of articles identifying health checks with different focus.
+We will identify strengths, potential weaknesses and hopefully find room for improvement.
+
+How you build and deliver your software product has direct implication on your liquidity and cashflow.
+Improvements in your delivery pipeline have direct impact on your finances.
+=== Rules
+
+The patient solely decides if a health check shall be performed.
+The effort and depth of a health check is defined together with the patient.
+The findings are considered confidential.
+
+A short check with a feedback workshop presenting the insights requires around two work days.
+
+A deeper and more intensive check requests more effort, between one and four weeks.
+Upon completion you can also hire a coach to implement selected findings and improve durably the health of your application.
+The findings are often clear and the measures straightforward.
+The real work is to implement consistently the measures.
+
+I have the same personal challenge when trying to loose weight or improve my running form.
+The long term implementation is the crux.
+
+=== Delivery Pipeline Checks
+
+How reproducible, fast and economic is your product deliver pipeline?
+At the end of the day you deliver regularly a reproducible and trackable product version to your customers.
+
+One nice aspect about delivery pipeline checks is that a whole set of tools and methods emerged with the https://en.wikipedia.org/wiki/DevOps[DevOps] movement.
+You still need an expert to tune the diagnostic to your company specific needs but the approach is well documented.
+
+Below a list of capabilities we have build-up over time for delivery pipeline checks.
+Use common sense and strategic goals to identify the objectives you want to measure.
+Expertise is needed to define values to measure if the source code of your product reaches the selected objectives.
+
+. Continuous integration pipeline with quality checks and automatic tests,
+. Continuous delivery pipeline packaging the same binary to all your environments,
+. Continuous deployment if adequate for your solution, certainly it is adequate for the test and integration stages,
+. Automatic source code quality checks and mandatory quality gates,
+. Automatic unit tests, integration tests and end to end tests,
+. https://trunkbaseddevelopment.com/[Golden Trunk] in Git,
+. No branches or only short lived branches policy,
+. https://blog.crisp.se/2018/08/27/yassalsundman/the-story-of-how-to-implement-a-zero-bug-policy[Zero bug policy] -
+eliminates the change management processes and board for errors -,
+. Traceability of specifications to delivered features and product versions,
+. Semantic versioning and API documentation,
+. Configuration and infrastructure as managed artifacts,
+. Generation of documentation part of the delivery pipeline,
+. Monitoring and alarming,
+. DevOps pipeline analysis provides another look at your processes
+.. Code development and Review, Continuous integration and build status,
+.. Continuous testings and business risks feedback,
+.. Artifact repository and pre-deployment staging,
+.. Release automation including change management and release approvals,
+.. Infrastructure configuration and management and infrastructure as code,
+.. Applications performance monitoring and end-user experience.
+
+You should know how often you can deliver your product without failures and track your lead time between fixes.
+The overall goal is faster time to market and improved delivery frequency.
+
+The overall features and processes can be implemented through your development organization is less than a year.
+Stop evaluating, start implementing!
+
+=== Continuous Integration Practices
+
+Check your process to see which continuous practices you are really mastering M
+* Maintain a single source repository - no long lived branches
+* Automate the build - no manual inputs, no manual configuration, automatically triggered
+* Make your build self testing - TDD, ATDD, static metrics, semantic checks
+* Everyone commits to trunk every day
+* Every commit should build trunk on an integration machine
+* Fix broken build immediately - _lean red button stopping production, everybody helps fix the broken build_
+Keep the build fast - _We are talking of minutes not, hours_
+* Test in an integration staging area which is a clone of the production environment - the goal is to have docker images, virtual network, and in-memory
+database to be fast
+* Make it easy for anyone to get the latest packaged release
+* Everyone can see the build status - _transparency, information radiator_
+* Automate deployment
+
+=== Posts in the Health Check Series
+
+. link:../../2018/how-healthy-is-your-product-source-code-check[Source Code Check]
+. link:../../2018/how-healthy-is-your-product-delivery-pipeline-check[Delivery Pipeline Check]
+. link:../../2018/how-healthy-is-your-product-product-strategy-check[Product Strategy Check Company]
+. link:../../2019/how-healthy-is-your-product-company-culture-check/[Company Culture Check]

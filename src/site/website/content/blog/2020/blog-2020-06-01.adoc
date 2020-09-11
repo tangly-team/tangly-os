@@ -1,0 +1,117 @@
+---
+title: "Legacy Systems Refactoring"
+linkTitle: "Legacy Systems Refactoring"
+date: 2020-06-01
+---
+
+== Legacy Systems Refactoring
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2020-06-01-head.jpg[role=left]
+With refactoring you can take a bad design, even chaos software, and rework it into well-designed code.
+Most often it is cheaper refactoring a legacy application instead of rewriting it from scratch.
+
+[quote, Martin Fowler]
+____
+Each refactoring step is simple, even simplistic.
+Yet the cumulative effect of these small changes can radically improve the design.
+____
+
+=== Introduction
+
+For a developer new to a legacy software product, it is often hard to understand the existing application, determine the extent of source code and architectural decay, and identify smells and metric violations.
+
+Legacy applications are often critical to the business and have been in use for years, sometimes decades.
+Since the business is evolving, there is constant pressure to support additional requirements.
+However, changing these applications is difficult and you end up spending an increasing amount of resources maintaining the software.
+
+There are many reasons why maintaining legacy software is a difficult problem.
+Often, most, if not all, of the original developers are gone, and no one understands how the application is implemented.
+The technologies used in the application are no longer current, having been replaced by newer and more exciting technologies.
+Also, software complexity increases as it evolves over time as you add new requirements.
+
+The key to managing the lifecycle of software is to continuously work as a professional and skilled developer.
+A professional engineer https://martinfowler.com/bliki/OpportunisticRefactoring.html[opportunistically refactor] each time he modifies source code.
+
+=== Understand Your Product
+
+* _Understand how it is used_.
+These scenarios define the acceptance tests you need to start creating a set of automated validation criteria.
+And you will better understand how your users are working with your product.
+* _Understand how it is deployed_.
+You need a reproducible and in the long run automated process to deploy a new version of your product.
+We are talking continuous delivery and even continuous deployment.
+* _Understand how it is build_.
+You need a reproducible and automated build process.
+This process must be integrated into your continuous integration and delivery pipeline.
+* _Understand how it is structured_.
+You need a tentative architecture description to start refactoring and to untangle this https://en.wikipedia.org/wiki/Big_ball_of_mud[big ball of mud] into a
+more modular solution.
+
+=== Refactor Your Product
+
+Refactoring is always a successful activity.
+You cannot fail.
+But you need discipline, continuous involvement, and measurement.
+If you are new to refactoring it is worth to have a coach to smooth the learning curve.
+
+. Extract one big service, refactor, test, and deploy.
+*Iterate*.
+_If you are not successful discard your failure and checkout the current working version from git.
+You should have learnt enough so that the next try will be successful._
+. https://refactoring.com/[Refactor code].
+Use static analysis tools to detect the flaws in your source code.
+You should only improve live code, meaning code you must correct or extend.
+See Agile Code is Clean Code.
+_Use a modern IDE to automate the smaller refactoring steps, and avoid spurious errors_.
+. Resolve design issues.
+Your senior design specialists already know the flaws.
+Now it is time to correct them.
+. Increase code coverage.
+Code coverage is the security net when you are refactoring code.
+. Slowly add https://www.thoughtworks.com/insights/articles/fitness-function-driven-development[fitness functions] to continuously validate your non
+functional requirements.
+
+Beware of good practices how to write good software products and refactor successfully applications.
+
+* Move to https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design] as an architecture approach.
+It works either for micro architecture or for modular monolith approaches.
+Master long live domain driven design and event storming Master your technical stack and use current tools and libraries Modularize one big service extraction one after the other Avoid using dead architectural techniques.
+TOGAF, UML, PMI, CMMI are obsolete - various activities they recommend are good, do them in your sprints.
+Avoid lengthy, slow and expensive review approach.
+ATAM is dead.
+The quality tree technique is really good, use fitness functions to implement your quality tree.
+If you are running legacy technology, this not only becomes a threat to your business but also to your hiring and employer branding efforts.
+As fewer and fewer programmers and operation managers will have the knowledge of those systems, you’ll face a dwindling talent pool.
+
+=== Ameliorate Your Process
+
+Applications do not degrade to legacy or geriatric systems over night.
+The organization and development group failed to work professionally over years before the product was ultimately doomed.
+
+You must establish a culture of professional software development.
+Professional software developers write code which is maintainable and legible.
+Only unprofessional organizations create legacy applications.
+
+Embrace software craftsmanship.
+All your developers should have formal software development training and frequent training in new approaches and techniques.
+They read consistently books.
+Is it not that you expect from your physician or the pilot of the plane you are taking?
+
+=== Agile Architecture Series
+
+The agile architecture track contains the following blogs
+
+. link:../../2019/agile-architecture-principles[Agile Architecture Principles]
+. link:../../2019/clean-code[Agile Code is Clean Code!]
+. link:../../2019/agile-architecture[Agile Architecture within Scrum]
+. link:../../2020/agile-component-design[Agile Component Design]
+. link:../../2020/legacy-systems-refactoring[Legacy Systems Refactoring]
+. link:../../2020/how-agile-collaborators-learn[How Agile Collaborators Learn]
+
+We also published our https://www.tangly.net/insights/continuous-learning/agile-architecture-course[agile architecture course] (3 ECTS) used for teaching
+computer science students at bachelor level at Swiss technical universities.

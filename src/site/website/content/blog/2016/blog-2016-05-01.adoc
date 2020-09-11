@@ -1,0 +1,61 @@
+---
+title: "Scrum Master is a full-time Role"
+linkTitle: "Full-time Scrum Master"
+date: 2016-03-01
+---
+
+== Scrum Master is a full-time Role
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+:icons: font
+
+image::2016-05-01-head.jpg[role=left]
+I am very happy we discuss in depth the role, responsibilities and activities of a good Scrum Master.
+I fully agree with Scrum advocates that Scrum Master is a dedicated full-time job.
+
+I am also convinced a Scrum Master can support multiple experienced Scrum teams.
+The Large Scale Scrum framework {ref-less} states a full-time Scrum Master supports 1 to 3 teams.
+
+I worked with quite a few Scrum Masters, Product Owners, and Scrum teams.
+My experience shows it is more productive and effective when the Scrum Master works full-time as (see
+http://www.barryovereem.com/the-8-stances-of-a-scrum-master/[white paper of Barry Overeem])
+
+. a servant leader
+. a coach
+. a facilitator
+. a teacher
+. a mentor
+. an impediment remover
+. a change agent
+. a manager (please restrain yourself)
+
+He should not implement stories.
+A Scrum Master is under huge stress being a development team member and having to balance their Scrum Master responsibilities against the commitment of the sprint goals.
+
+So you shall have full-time Scrum Masters.
+More important is that you have real Scrum Masters, and not only Scrum administrators who organize meetings and manage the Scrum board and burn-down charts.
+{ref-scrum} has always been a hands-on approach, to be successful in this you need to have a passion for getting your hands dirty.
+
+Find out if you are a real professional Scrum master.
+Do you perform each sprint the top things a Scrum Master usually forgets to focus on?
+
+. Do Gemba. Redefine career paths, incentives, organization to be more Scrum focused,
+. Identify with the product owner and the development team missing product backlog items,
+. State team issues not being discussed because they are too uncomfortable,
+. Find out appropriate balance between end-to-end system tests and unit tests,
+. Play back the team's progress against the proposed release plan,
+. Integrate all tests into the continuous integration, delivery and deployment,
+. Coach team members to understand the benefits of refactoring, removing waste and focus on quality,
+. Teach Kaizen. Coach team to peer review and continuously improve towards perfection,
+. Teach pair programming on a daily basis,
+. Expand with the team and the organization the definition of done. Beware it can trigger an organizational change.
+
+I hope the discussion what a successful Scrum master does stay active.
+Avoid agile coaches not being Scrum masters, they are not doing https://en.wikipedia.org/wiki/Gemba[Gemba] and loose contact with the knowledge workers.
+
+Read our link:../../2016/what-you-do-not-need-to-do-in-scrum[what you do not need to do].
+
+It is a huge gain for the Agile community that people and organizations understand that a Scrum master is a professional coach, teacher, mentor, and change catalyst.

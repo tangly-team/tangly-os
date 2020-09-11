@@ -15,9 +15,12 @@ package net.tangly.crm.ports;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.Base64;
 import java.util.Objects;
+import java.util.Optional;
 
 import net.fortuna.ical4j.vcard.Group;
+import net.fortuna.ical4j.vcard.Parameter;
 import net.fortuna.ical4j.vcard.Property;
 import net.fortuna.ical4j.vcard.VCard;
 import net.tangly.bus.core.Address;
@@ -33,60 +36,60 @@ public class VCard2 {
         this.card = card;
     }
 
-    public String name() {
-        return property(Property.Id.KIND);
-    }
-
     public String firstname() {
-        return property(Property.Id.FN);
+        return card.getProperties(Property.Id.FN).stream().map(Property::getValue).map(o -> o.split(";")[1]).findAny().orElse(null);
     }
 
     public String lastname() {
-        return property(Property.Id.N);
+        return card.getProperties(Property.Id.N).stream().map(Property::getValue).map(o -> o.split(";")[0]).findAny().orElse(null);
     }
 
     public String formattedName() {
-        return property(Property.Id.FN);
+        return card.getProperties(Property.Id.N).stream().map(Property::getValue).findAny().orElse(null);
     }
 
-    public EmailAddress homeEmail() {
-        String email = property(Group.HOME, Property.Id.EMAIL);
-        return null;
+    public Optional<EmailAddress> homeEmail() {
+        return card.getProperties(Property.Id.EMAIL).stream()
+                .filter(o -> containsParameterType(o, Parameter.Id.TYPE, "INTERNET") && containsParameterType(o, Parameter.Id.TYPE, "HOME"))
+                .map(Property::getValue).map(EmailAddress::of).findAny();
     }
 
-    public EmailAddress workEmail() {
-        String email = property(Group.WORK, Property.Id.EMAIL);
-        return null;
+    public Optional<EmailAddress> workEmail() {
+        return card.getProperties(Property.Id.EMAIL).stream()
+                .filter(o -> containsParameterType(o, Parameter.Id.TYPE, "INTERNET") && containsParameterType(o, Parameter.Id.TYPE, "WORK"))
+                .map(Property::getValue).map(EmailAddress::of).findAny();
     }
 
-    public PhoneNr homePhone() {
-        String email = property(Group.HOME, Property.Id.TEL);
-        return null;
+    public Optional<PhoneNr> homePhone() {
+        return card.getProperties(Property.Id.TEL).stream()
+                .filter(o -> containsParameterType(o, Parameter.Id.TYPE, "VOICE") && containsParameterType(o, Parameter.Id.TYPE, "HOME"))
+                .map(Property::getValue).map(PhoneNr::of).findAny();
     }
 
-    public PhoneNr workPhone() {
-        String email = property(Group.WORK, Property.Id.TEL);
-        return null;
+    public Optional<PhoneNr> workPhone() {
+        return card.getProperties(Property.Id.TEL).stream()
+                .filter(o -> containsParameterType(o, Parameter.Id.TYPE, "VOICE") && containsParameterType(o, Parameter.Id.TYPE, "WORK"))
+                .map(Property::getValue).map(PhoneNr::of).findAny();
     }
 
     public String title() {
-        return property(Property.Id.TITLE);
+        return card.getProperties(Property.Id.TITLE).stream().map(Property::getValue).findAny().orElse(null);
     }
 
     public String organization() {
-        return property(Property.Id.ORG);
+        return card.getProperties(Property.Id.ORG).stream().map(Property::getValue).findAny().orElse(null);
     }
 
     public String note() {
-        return property(Property.Id.NOTE);
+        return card.getProperties(Property.Id.NOTE).stream().map(Property::getValue).findAny().orElse(null);
     }
 
     public LocalDate birthday() {
-        return date(Property.Id.BDAY);
+        return card.getProperties(Property.Id.BDAY).stream().map(Property::getValue).map(LocalDate::parse).findAny().orElse(null);
     }
 
     public LocalDate deathday() {
-        return date(Property.Id.DDAY);
+        return card.getProperties(Property.Id.DDAY).stream().map(Property::getValue).map(LocalDate::parse).findAny().orElse(null);
     }
 
     public GenderCode gender() {
@@ -104,9 +107,7 @@ public class VCard2 {
     }
 
     public byte[] photo() {
-        //        PHOTO;MEDIATYPE=image/jpeg:http://example.org/photo.jpg
-        //        PHOTO:data:image/jpeg;base64,[base64-data]
-        return null;
+        return card.getProperties(Property.Id.PHOTO).stream().map(Property::getValue).map(o -> Base64.getDecoder().decode(o)).findAny().orElse(null);
     }
 
     private LocalDate date(Property.Id id) {
@@ -131,6 +132,10 @@ public class VCard2 {
         } else {
             return null;
         }
+    }
+
+    private boolean containsParameterType(Property property, Parameter.Id id, String value) {
+        return property.getParameters(id).stream().filter(o -> value.equals(o.getValue())).findAny().isPresent();
     }
 
     private String property(Property.Id id) {

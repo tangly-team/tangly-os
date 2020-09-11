@@ -1,0 +1,80 @@
+---
+title: "Agile Trends Switzerland 2018"
+linkTitle: "Swiss Agile 2018"
+date: 2018-03-02
+---
+
+== Agile Trends Switzerland 2018
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2018-05-02-head.jpg[role=left]
+How can agile approaches be applied to deliver solutions in a government environment?
+
+Here an example of a GIS open data portal successfully developed using agile approaches such as Kanban, lean product and technical excellence.
+
+=== GIS Open Data Initiative
+
+Swiss government has initiated an open government data strategy to provide data at federal and state level to all citizens and interested parties.
+The aims are
+
+Release of official data::
+ The Confederation will make data which is suitable for OGD available to the public in machine-readable and open formats to be freely reused.
+ The individual administrative units must review and, where necessary, adapt the legal, organizational, financial and technical framework of data production
+to make this possible.
+Coordinated publication and provision of official data::
+ With the help of a central infrastructure (OGD portal), the Confederation will make its data sets easily locatable for the public and will make the data available for free use.
+Establishing an open-data culture::
+The Confederation will support the use of data through free, uniform and understandable terms of use and through
+additional information on the individual data sets.
+It will also pursue a continuous dialogue with the public.
+
+You can find more details under
+https://www.egovernment.ch/en/umsetzung/e-government-schweiz-2008-2015/open-government-data-schweiz/[Open Government Data Switzerland].
+
+The solution realized with agile approaches is a GIS open data portal supporting self-service and providing over hundred theme maps with GIS data in multiple formats, resolutions and geographical sizes available through a self-service portal.
+
+=== Agile Approach
+
+The solution was implemented during year 2017 and released to public end of year.
+
+We identified these key elements to explain the success of the whole product development.
+The whole organization and all involved managers shall
+
+* trust the team will solve adequately and pragmatically the customer needs.
+ Trust your team and create a work environment to support them.
+ For example you should
+** Promote technical excellence,
+** Provide approaches for face 2 face communication,
+** Publish Kanban board to increase transparency,
+* Act as an agile leader
+** Encourage accountability and self-management,
+** Delegate and truly support technical autonomy,
+* Be a gatekeeper to support and protect your team
+** Reduce tension with IT, legal and management systems and build bridges to these departments,
+** Set reasonable and achievable goals.
+
+The delivered solution was
+
+* Integrated in existing GIS portal of Zürich state to minimize barrier to interested parties,
+* Self-service approach to minimize running costs,
+* Private cloud approach due to regulatory aspects,
+* REST service to provide human readable and machine readable maps in various formats,
+* Build on existing approaches to generate GIS data to minimize risks and respect ambitious timeline.
+
+A description of the technical solution in German can be found https://www.inser.ch/en/node/393[here]. The REST API is described
+https://are.zh.ch/internet/baudirektion/are/de/geoinformation/geodaten_uebersicht/Open_Data_Kanton_Zuerich/Datenshop-Dienst/_jcr_content/contentPar/downloadlist/downloaditems/schnittstelle_datens.spooler.download.1513149023584.pdf/d-OGD+ZH+-+REST+interface+v1.1.1.pdf[here].
+
+=== Learnings
+
+Pragmatic approaches to become agile were very successful in this setup. These governmental organizations were willing and eager to try them.
+
+Senior management was supportive and after initial doubts the team embraced the approach. They enjoyed the whole process and the successful deployment of the solution.
+
+The enablers were
+* Senior management committed to the approach and supported it,
+* Team was open to new ways of working,
+* Team members were competent.

@@ -1,0 +1,40 @@
+---
+title: "OS 002: Unit Test Conventions"
+linkTitle: "Unit Test Conventions"
+date: 2020-06-15
+weight: 2
+---
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+= OS-002 Define Unit Test Conventions
+
+Date: 2020-06-15
+
+== Status
+
+Implemented
+
+== Context
+
+Some libraries need to create files on a file system.
+For example you want to generate human-readable paper invoices.
+
+== Decision
+
+We recommend the following conventions when writing unit tests creating files . Use Google Java in memory file system https://github.com/google/jimfs[Jimfs].
+Additional file systems can only be used in Java if all operations are performed through Path objects.
+Path objects have a reference to the file system; File objects always referenced the default file system.
+. When writing to the default file system use the root directory ``/tmp/`` available in all Unix like operating systems.
+
+== Consequences
+
+* We have a dependency to an open source project currently managed by Google.
+* Use of https://github.com/google/jimfs[Jimfs] requires use of Path instances.
+We shall remove all references to File instances.
+File instances do not support alternative file systems.
+Therefore, we shall use libraries providing a workaround File instances either by using Path instances or reader and writer to access files.
+* Operations to physical file system have the risk that rights problems could rise in some continuous integration environements.

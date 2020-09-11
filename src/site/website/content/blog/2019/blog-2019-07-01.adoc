@@ -1,0 +1,84 @@
+---
+title: "The World is a Better Place and We Must Tackle Climate Change"
+linkTitle: "The World is a Better Place"
+date: 2019-07-01
+---
+
+== The World is a Better Place and We Must Tackle Climate Change
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2019-07-01-head.jpg[role=left]
+The world has really improved in a lot of areas.
+
+_Stop whining we are doomed. And yes we must act strong and fast to tackle the climate change disaster._
+
+But do not forget how much the world *bettered* the last centuries.
+
+We are not doomed, we must solve the next challenges instead of just complaining and doing nothing.
+
+* Ask yourself if you need a car.
+* Travel with train instead of flying.
+* Schedule a video conference instead of a business trip.
+* Reduce your plastic and paper usage.
+* Each step reduces your carbon footprint.
+
+Millions of persons taking similar steps will be a huge improvement. *Just do it!*
+
+The late Swedish academic https://en.wikipedia.org/wiki/Hans_Rosling[Hans Rosling] has identified a worrying trend.
+Not only do many people across advanced economies have no idea that the world is becoming a much better place, but they actually even think the opposite.
+This is no wonder, when the news focuses on reporting catastrophes, terrorist attacks, wars and famines.
+
+Who wants to hear about the fact that every day some *200'000* people around the world are lifted above the $2-a-day poverty line?
+Or that more than *300'000* people a day get access to electricity and clean water for the first time every day?
+These stories of people in low-income countries simply doesn’t make for exciting news coverage.
+
+=== What is better?
+
+==== Extreme poverty is plumping down
+
+image::2019-07-01-world-poverty.jpg[float="center"]
+
+https://ourworldindata.org/extreme-poverty
+
+==== Literacy and education is exploding
+
+image::2019-07-01-world-literacy.jpg[float="center"]
+https://ourworldindata.org/literacy
+
+==== Health is improving and child mortality is crashing
+
+image::2019-07-01-world-life-expectancy.jpg[float="center"]
+https://ourworldindata.org/life-expectancy
+
+Please stop the doomsday trashing and start to act to improve your social environment and diminish your solution footprint.
+I am tired hearing we cannot improve our world.
+Stop lying and simply look at the facts.
+Feel free to argument based on facts.
+
+I recognize that we have difficult problems to solve and success is not guaranteed.
+I am just tired of negative thinking and persons claiming we cannot improve our world.
+
+Start learning and explore the data on https://ourworldindata.org/[Our World In Data].
+They have interactive charts.
+
+=== Sources
+
+https://www.forbes.com/sites/stevedenning/2017/11/30/why-the-world-is-getting-better-why-hardly-anyone-knows-it/#2ab7ae478268
+[Why the World Is Getting Better And Why Hardly Anyone Knows It]
+
+http://www.bbc.com/future/story/20190111-seven-reasons-why-the-world-is-improving[Seven Reasons the World is Improving]
+
+https://www.vox.com/2014/11/24/7272929/global-poverty-health-crime-literacy-good-news[23 charts and maps that show the world is getting much, much better]
+
+https://ourworldindata.org/[Research and interactive data visualizations to understand the world’s largest problems]
+
+https://www.bbc.com/news/health-47371078[What do the people of the world die from?]
+
+And the beautiful book from Hans Rosling
+
+https://www.amazon.com/Factfulness-Reasons-World-Things-Better-ebook/dp/B0756J1LLV/ref=sr_1_1?keywords=hans+rosling&qid=1563089194&s=digital-text&sr=1-1
+[Factfulness: Ten Reasons We are Wrong about the World - and Why Things Are Better Than You Think, Hans Rosling]

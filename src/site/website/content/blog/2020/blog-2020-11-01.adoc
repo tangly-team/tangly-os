@@ -1,0 +1,149 @@
+---
+title: "Reference Codes"
+linkTitle: "Reference Codes"
+date: 2020-10-01
+---
+
+== Reference Codes
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2020-11-01-head.jpg[role=left]
+Reference codes are an old concept.
+They are often used in relational database schema definition.
+The database specialists often call them lookup tables.
+
+Reference codes are dynamic enumeration values.
+By dynamic, we mean you can add values without recompiling the source code.
+
+In modern DevOps environments where deployment of a new version is performed in minutes this advantage is somewhat shallow.
+We view reference codes more as strongly typed and performant tags.
+
+How can you easily add the concept of reference codes in your application?
+We provide an initial setup approach requiring mere minutes to add codes to your application.
+
+=== Enumerations as Codes
+
+As a professional designer you have declared sets of fixed values as enumeration in your source code. Now you can extend your enumeration classes with the code interface.
+
+The Java code is:
+
+[code, java]
+----
+public interface Code extends Serializable {
+    int id();
+    String code();
+    boolean isEnabled();
+}
+
+public enum EnumCode implements Code {
+    CODE_TEST_1, CODE_TEST_2, CODE_TEST_3, CODE_TEST_4, CODE_TEST_5(false);
+
+    private final boolean enabled;
+
+    EnumCode() { this(true); }
+
+    EnumCode(boolean enabled) { this.enabled = enabled; }
+
+    @Override
+    public int id() { return this.ordinal(); }
+
+    @Override
+    public String code() { return this.toString(); }
+
+    @Override
+    public boolean isEnabled() { return this.enabled; }
+}
+----
+
+The above approach is a low impact transformation of your application. O
+nce your enumeration types implements the code interface you are free to migrate selected types to external persistent and extensible solutions.
+
+=== Persistent Codes
+
+Codes can be defined and stored as JSON sets or in SQL table.
+
+The Java code for the JSON approach is
+
+[code, java]
+----
+/**
+ * Utility method to read all code values from a JSON file using the org.json library.
+ *
+ * @param clazz   class of the reference code
+ * @param factory placeholder to pass the class constructor as lambda expression
+ * @param path    path to the JSON file containing the code values
+ * @param <T>     class of the reference code
+ * @return code type and all its values
+ * @throws IOException if a file access error occurred
+ */
+public static <T extends Code> CodeType<T> build(Class<T> clazz, CodeFactory<T> factory, Path path) throws IOException {
+    try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
+        Iterator<Object> iter = new JSONArray(new JSONTokener(reader)).iterator();
+        List<T> codes = new ArrayList<>();
+        while (iter.hasNext()) {
+            JSONObject value = (JSONObject) iter.next();
+            T code = factory.create(value.getInt("id"), value.getString("code"),
+            value.getBoolean("enabled"));
+            codes.add(code);
+        }
+        return CodeType.of(clazz, codes);
+    }
+}
+-----
+
+The JSON files containing the code values can be stored as resource files and delivered either with application or in a separate jar file.
+
+The Java code for the SQL table is quite similar:
+
+[code, java]
+----
+/**
+ * Utility method to read all code values from a relational database table using Java regular API.
+ *
+ * @param clazz      class of the reference code
+ * @param factory    placeholder to pass the class constructor as lambda expression
+ * @param dataSource data source to the database to read from
+ * @param tableName  name of the table containing the code values
+ * @param <T>        class of the reference code
+ * @return code type and all its values
+ * @throws SQLException if a database access error occurred
+ */
+public static <T extends Code> CodeType<T> build(Class<T> clazz, CodeFactory<T> factory, DataSource dataSource, String tableName) throws SQLException {
+    final String SQL_QUERY = "SELECT id, code, enabled FROM " + tableName;
+    try (Connection connection = dataSource.getConnection(); Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(SQL_QUERY)) {
+        List<T> codes = new ArrayList<>();
+        while (resultSet.next()) {
+            T code = factory.create(resultSet.getInt("id"),
+            resultSet.getString("code"),
+            resultSet.getBoolean("enabled"));
+            codes.add(code);
+        }
+        return CodeType.of(clazz, codes);
+    }
+}
+----
+
+At the database level you can define integrity rules in the schema to increase data quality.
+
+=== Design
+
+You have the freedom to model set of values as enumeration, reference codes or tags.
+Each approach has specific advantages and tradeoffs.
+The costs of moving from one approach to another are quite small.
+Just choose one solution, implement it and track its adequacy and user acceptance.
+
+We provide a Java library BUS implementing these constructs.
+More information is available under {ref-site}.
+
+The unit tests contain examples for enumeration codes, JSON codes and SQL database stored codes.
+
+Related concepts are discussed in our blog series
+
+. link:../../2020/entities-identifiers-external-identifiers-and-names[Entities, Identifiers, External identifiers and Names]
+. link:../../2020/the-power-of-tags-and-comments[The power of Tags and Comments]
+. link:../../2020/reference-codes[Reference Codes]

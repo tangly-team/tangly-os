@@ -1,0 +1,114 @@
+---
+title: "The power of Tags and Comments"
+linkTitle: "The power of Tags and Comments"
+date: 2020-09-01
+---
+
+== The power of Tags and Comments
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2020-09-01-head.jpg[role=left]
+A software architect models customer domains and maps them to _excellent_ software constructs.
+The solution shall support future customer groups and expand to store additional information.
+
+_Tags_, also called labels provide an informal ontology to classify customer data.
+Tags are extensible and are machine readable.
+
+_Comments_ empower users to store relevant unstructured information.
+Comments are only for human beings.
+
+What are good approaches to provide searchable tags and labels and avoid wild growth of useless records?
+Can you as a designer govern the ontology defined through labels?
+
+=== Tags
+
+Tags add semantic information to business entities.
+Tags are often defined as a crowd ontology without enforced schemas.
+Invest in domain modeling to define and maintain tags and you will move tags to a full-fledged ontology other your domain models.
+This ontology supports meaningful search, segmentation and reporting over historical and geographical raw data.
+
+Tags with associated values are also used to decorate unrelated entities with orthogonal information.
+For example you can associate geographical coordinates - GIS - to pictures, meetings, or addresses.
+
+A tag has three parts:
+
+* an _optional namespace_ to classify the tag in the overall ontology,
+* a _mandatory name_ to uniquely identify the tag in the context of its optional namespace,
+* an _optional value_ providing a specific information to the tag
+
+For example, we could define a tag such as _geo:longitude=50.167958_ to provide the meta information of longitude to an entity.
+This tag has a namespace _geo_, a name _longitude_ and a double value _50.167958_.
+
+The source code in modern Java is
+
+[source, java]
+----
+public record Tag(String namespace, @NotNull String name, String value) implements Serializable {}
+----
+
+You should strongly consider the introduction of tag types to constrain the possible values of a specific tag.
+For example, you can define that the namespace geo contains only the tags longitude and latitude.
+Both these tags have mandatory values of type double.
+Once your design supports tag types you can add generic validation rules in the user interface and in the business logic for all existing tags.
+
+The ontology enforcement allows consistent reporting and data drilling over departments in your company and over time.
+
+=== Comments
+
+Comments provide human readable information and hints for entities.
+
+An author writes a comment at a specific time.
+Usually comments shall be immutable.
+To respect human fallibility a correction mode can be supported.
+If changed the new comment replaces the older one and is marked as edited.
+The edition feature is part of the workflow and not part of the domain model.
+
+An author can be another computer system.
+It can provide information about its actions through comments.
+If the deletion of comments is disabled, the comment history is an audit trail documenting what happened overtime with an entity instance.
+
+[WARNING]
+====
+Beware that the authors define an external identifier space.
+Policy should be defined to handle the fact that collaborators quit the company overtime and are no more active users; but they are still referenced as authors.
+====
+
+The code in Java is
+
+[source, java]
+----
+public class Comment implements HasOid, HasTags {
+    private long oid;
+    private LocalDateTime created;
+    private String author;
+    private String text;
+    private Set<Tag> tags;
+
+    // getters and setters
+}
+----
+
+=== Design
+
+Our architecture follow the principles of domain driven design.
+Therefore comments are always associated with a specific domain of the application.
+For example often we model the persistence view of a domain through a database schema.
+Therefore each schema could have a persistence store for comments.
+
+Tags are classification information associated with an instance and stored within the entity and the associated entity store such a a table.
+
+Tag types are a medium to define an ontology and defines valid tag instances.
+A set of tag types shall always be associated with a specific domain of the application.
+
+We provide a Java library BUS implementing these constructs.
+More information is available under https://tangly-team.bitbucket.io/[tangly open source components].
+
+Related concepts are discussed in our blog series
+
+. link:../../2020/entities-identifiers-external-identifiers-and-names[Entities, Identifiers, External identifiers and Names]
+. link:../../2020/the-power-of-tags-and-comments[The power of Tags and Comments]
+. link:../../2020/reference-codes[Reference Codes]

@@ -1,0 +1,46 @@
+---
+title: "OS 005: Publish Maven Central Artifacts"
+linkTitle: "Publish Maven Central Artifacts"
+date: 2019-05-01
+weight: 5
+---
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+:icons: font
+:source-highlighter: pygments
+:pygments-style: manni
+
+== FSM-002 Publish Artifacts on Public Java Components Repository
+
+Date: 2019-05-01
+
+=== Status
+
+Superseed: FSM-0002
+
+=== Context
+
+The {ref-tangly} open source libraries are mature enough to be used in public commercial and academic projects.
+The libraries were used in internal projects and  refined to  fulfill these requirements.
+More customers will validate the usefulness of the library and identify extensions for further releases.
+
+=== Decision
+
+The libraries shall be published as artifacts on maven central and be accessible to a wide range of developers and organizations.
+A website shall be set up to provide an adequate documentation for users.
+
+The https://tangly-team.bitbucket.io[Technical Documentation] will use a static web approach to minimize costs and provide good legibility.
+
+The libraries will be published on Maven Central to maximize potential usage.
+
+=== Consequences
+
+* We have to establish a publishing process at the company level to deploy signed artifacts to maven central repository.
+ See link:../ideas/components-publication[release and publication process]
+* We have to establish a public website to host the documentation of public published libraries.
+ The static website is {ref-site}
+* We have to support semantic versioning for all future releases of public published libraries.
+See link:../ideas/components-publication[release and publication process]

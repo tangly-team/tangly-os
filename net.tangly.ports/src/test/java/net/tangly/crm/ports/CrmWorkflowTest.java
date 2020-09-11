@@ -53,12 +53,11 @@ class CrmWorkflowTest {
     @Test
     void testTsvCrm() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            CrmAndLedgerStore crmAndLedgerStore = new CrmAndLedgerStore(fs);
-            crmAndLedgerStore.createCrmAndLedgerRepository();
-            Path directory = crmAndLedgerStore.crmRoot();
+            CrmAndLedgerStore store = new CrmAndLedgerStore(fs);
+            store.createCrmAndLedgerRepository();
 
             CrmWorkflows crmWorkflows = new CrmWorkflows(new Crm());
-            crmWorkflows.importCrmEntities(directory);
+            crmWorkflows.importCrmEntities(store.crmRoot());
 
             verifyNaturalEntities(crmWorkflows.crm());
             verifyLegalEntities(crmWorkflows.crm());
@@ -70,10 +69,10 @@ class CrmWorkflowTest {
             verifySubjects(crmWorkflows.crm());
             verifyComments(crmWorkflows.crm());
 
-            crmWorkflows.exportCrmEntities(directory);
+            crmWorkflows.exportCrmEntities(store.crmRoot());
 
             crmWorkflows = new CrmWorkflows(new Crm());
-            crmWorkflows.importCrmEntities(directory);
+            crmWorkflows.importCrmEntities(store.crmRoot());
             verifyNaturalEntities(crmWorkflows.crm());
             verifyLegalEntities(crmWorkflows.crm());
             verifyEmployees(crmWorkflows.crm());

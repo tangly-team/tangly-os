@@ -1,0 +1,66 @@
+---
+title: "One Way to Improve Your Scrum Approach"
+linkTitle: "Improve Your Scrum"
+date: 2018-01-02
+---
+
+== One Way to Improve Your Scrum Approach
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2018-01-02-head.jpg[role=left]
+You work using agile approaches.
+Your collaborators are trained how to use agile approaches.
+Techniques such as test driven development, continuous integration or clean code are regularly practiced.
+
+Now you are looking for the next improvement.
+How can your team improve outcome and increase customers' value?
+
+It is time for a fresh view.
+Perform an agile assessment with an external expert from another company or department.
+
+=== Effort
+
+You want to take a fresh view on your process and practices.
+The external person shall provide hints that he observed in your team and how other groups solved similar problems.
+The assessment lasts approximately 2 days per team including the finding workshop with the team members, Scrum Master, and Product Owner.
+This workshop has around half a day duration.
+
+=== Approach
+
+The Scrum Assessment speeds up your Scrum mastery and let you collect low-hanging improvements.
+
+* Do you already work with Scrum or Scrum/Kanban and want to know where you stand?
+* Do you get the benefits that are possible with Scrum?
+* Where do you deviate from the Scrum theory and what are the consequences for you?
+* Are your structures and practices for coordinating dependent teams effective, meaning scale agile?
+* What potential for improvement do you have?
+* Which measures make sense so you can benefit more from Scrum?
+* Could you introduce agile techniques to increase the quality and to enhance outcomes?
+
+We work on these themes in the _Scrum Assessment_.
+
+* We analyze your Scrum implementation,
+* We collect feedback through questionnaires and observation,
+* We assess a single team or the whole development organization,
+* We evaluate in comparison with other companies and make suggestions for improvement.
+
+=== Action
+
+We typically proceed as follow for the analysis:
+
+* Record Scrum meetings - sprint planning, sprint review, sprint retrospective, daily scrum, if necessary backlog refinement -,
+* Observe how the team members work during the sprint, to better understand the dynamics in your team,
+* Analyse the vision, roadmap, release plan, product backlog, and impediment list together with the product owner,
+* Interview product owners, scrum masters, selected developers and selected stakeholders,
+* Review the structures, processes and practices (e.g., Scrum of Scrums, Portfolio Kanban) used to coordinate dependent teams.
+
+After this analysis, we do a debriefing in a half-day workshop.
+We present our observations, conclusions and recommendations.
+The Scrum team uses our findings to reinitiate their agile transformation journey.
+
+Through the workshop approach, we tailor the recommendations together with the team members to specific needs and we can clarify any ambiguities.
+
+Upon request, we will also prepare a written report.

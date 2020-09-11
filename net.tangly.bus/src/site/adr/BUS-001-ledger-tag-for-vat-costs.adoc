@@ -1,7 +1,7 @@
 ---
 title: "BUS 001"
 date:  2017-12-01
-draft: false
+weight: 1
 ---
 
 :author: Marcel Baumann
@@ -9,9 +9,6 @@ draft: false
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
-:icons: font
-:source-highlighter: pygments
-:pygments-style: manni
 
 == BUS-001 Use Tag for VAT costs computation
 

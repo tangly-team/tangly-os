@@ -1,0 +1,103 @@
+---
+title: "Six Levers for better Agile Product Development"
+linkTitle: "Six Levers"
+date: 2018-02-02
+---
+
+== Six Levers for better Agile Product Development
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2018-10-02-head.jpg[role=left]
+How can you create better products and services?
+
+How can you delight your customers, your collaborators, and your stakeholders?
+
+We identified six levers to multiply the effectivity of your agile development teams and empower them to create great services and products.
+
+Please add these tools to your toolbox and create great products.
+
+=== Design Thinking and Customer Experience
+
+You solve customer problems through intuitive services and products.
+Customers' expectations should fit with their experience with your products.
+That is why they should be involved in the whole definition and realization process.
+At the beginning, to understand the need and to test first ideas.
+During the implementation, they are directly asked for feedback, which then flows into the further development steps.
+
+Go out with your _incomplete_ product as soon as possible.
+Each iteration should deliver an upgraded version of the product.
+The pressure to deliver is huge, a design thinking iteration has a duration of at most one week.
+
+=== Lean Startup and Lean UX
+
+Minimum viable products - MVP - are first developed as minimally functional products.
+Within 60 days, a physical prototype will be created that customers can test during this time.
+The software component shall be delivered after the first or second iteration, that means in less than one month.
+
+New technologies such as 3D printing, cheap hardware and IoT boards, continuous delivery, simulation enable your teams to deliver on time.
+These are not pure mockups but executable applications.
+If it appeals to the customer, the MVP will evolve gradually to a minimum marketable product - MMP -.
+The focus is always on adding customer value.
+
+=== Beyond Budgeting Approaches
+
+There is no long-term budget plan for products and projects.
+After each cycle of customer feedback the goals and budget are evaluated again.
+The value streams have agile teams that work like small companies.
+
+Each team has a Product Owner - PO - who has overall responsibility for their respective product.
+Realizations are further funded, modified or canceled on on the basis of initial results, meaning after customer and technical tests.
+
+The product financing is following a start-up approach and not based on yearly budget as usual in larger companies.
+
+=== Co-location and Team ownership
+
+Work is done across departments, in cross-functional teams.
+All those who can contribute to the success of the product (e.g. company organization, IT, market management, or sales) sit in one room.
+They form the agile team.
+Co-location ensures lean coordination processes as well as speed and quality.
+
+Co-location also means: You are moving.
+The teams move into a room and work focused together on their product.
+There are no phones, no other projects, no outside distractions.
+They use collaboration tools - chats, wikis, Scrum boards -.
+Scrum teams are wholly focused on their project,
+
+People checks three times a day their emails; otherwise the email client is closed and inactive.
+All phones have voicemail.
+
+=== Agile Methods and Craftsmanship
+
+Employee training is essential.
+In the value streams, we provide staff with experienced coaches to build knowledge in agile methods and software craftsmanship.
+
+Work is done according to proven agile methods.
+Software development relies on modern and agile techniques such as pair programming, refactoring, test driven development, continuous integration, and Scrum.
+For bigger product development we use {ref-less} approach.
+
+Read this {url-articles}2018/blog-2018-01-01[blog] for a description of modern agile development procedures.
+
+=== Elastic Infrastructure
+
+We shall use state of the industry technology.
+This enables test-driven development - ATDD, TDD -,  meaning predefined automated software tests that run in real-time.
+
+Cloud infrastructure provides unlimited processing capabilities for development, test, and deployment of software artifacts.
+
+Developers have fast notebooks, fast SSD, plenty of RAM, and 4K external screens.
+In addition, the technical infrastructure enables software to be scaled and adjustments made immediately - CI, CD, DevOps -.
+The goal is to deliver a software release in production every few hours if needed.
+
+===  Learnt Lessons
+
+. The power of co-location is tremendous. The work atmosphere is focused, friendly and productive.
+ Team members are continuously working on the product without spurious task switches in their team room,
+. Establish stable and long living teams,
+. Realize the importance of training and coaching,
+. Embed your teams and processes in the organization,
+. Change processes for beyond budgeting approaches and lean enterprise. The organization has to stop requiring exact budgets and detailed yearly planning,
+. Reflect on the impact on the whole organization. See also my blog discussing what agile companies are.

@@ -1,0 +1,118 @@
+---
+title: "Your Management Job in an Agile Environment"
+linkTitle: "Scrum Management Job"
+date: 2017-09-01
+---
+
+== Your Management Job in an Agile Environment
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2017-09-01-head.jpg[role=left]
+=== Introduction
+
+You develop your software products using agile approaches.
+You are doing {ref-scrum}, {ref-kanban}}, https://en.wikipedia.org/wiki/Scrumban/[Scrumban], {ref-lean}, or {ref-less}.
+Your collaborators start asking questions about organisation, management roles, and critique the internal processes.
+How employee yearly evaluation, bonus evaluation - work?
+You hear strange statements such _Be agile, do not do agile_.
+
+You as a manager realise you have to describe your role in an agile environment.
+What does it mean?
+Please read first this blog post describing What is an link::../,,/2016/what-is-an-agile-company/[Agile Company].
+If you have time read the post link::../../2017/scrum-masters-are-not-administrators[Why Scrum Masters are not Administrators]
+and another one about So called link:../../2017/so-called-agile-and-scrum-failures[So Calle Agile and Scrum Failures].
+Upon reading, you shall have a deeper understanding how to describe your role as a manager in an agile environment.
+
+We will first discuss your work environment, and second characteristics of people you are working with.
+Finally we will sketch your job description.
+
+=== Complex Systems and Empiricism
+
+The development organization of a software product is a complex system.
+This means that nobody understands the rules.
+You cannot implement a measure and be certain it will improve the whole system.
+If you want to implement lasting improvements you must
+
+Provide transparency::
+ The more you and your collaborators know the better your decisions are.
+ All information shall be available to all participants, including financial and marketing data,
+Experiment with improvement::
+ Inspection and adaptation are keys; processes and value streams shall constantly be improved,
+ Take the lean approach: Relentlessly eliminate waste and increase the value stream,
+Establish long living teams::
+ Teams are the backbone of your company; people are human beings not resources.
+
+=== Collaborators and their Needs
+
+Knowledge workers are the collaborators you hire in this millennium.
+They are smart, motivated and better qualified than you are.
+
+[quote, Steve Jobs]
+____
+It doesn't make sense to hire smart people and then tell them what to do; we hire smart people so they can tell us what to do.
+____
+
+A manager working with knowledge workers has understood the above quotes and
+
+* Believe in the X vs Y theory.
+ You provide safety to all your people and truly respect them.
+ People only perform if you provide psychological safety.
+ The test is _Do you compliment every collaborator you are working with at least once a week_,
+* Provide a _purpose_, give _autonomy_, and let them _achieve mastery_.
+ The test is _Continuous learning and improvement through trial and error_,
+* Promote exclusively _intrinsic_ motivators.
+ The test is _No bonus or monetary incentive system exits in the company_,
+* Establish a work environment where collaborators work in flow.
+The test is _No email or phone answering rules in the company; no mandatory overtime_.
+
+image::2017-08-02-why-how-what.jpg[Simon Sinek "Start with Why"]
+
+The agile and lean principle {ref-pdca} applies to agile managers as well.
+
+* Are you catalyzing organization change to embrace agile values, starting with a culture of value delivery?
+* Do you provide significant organizational roadblock removal for agile teams?
+* Do they perceive you as a coach and leader more than as a manager?
+* Do you use metrics to support teams improve their performance and to help senior leaders understand how to improve value delivery?
+* Are you helping your partners create lean processes to synchronize with agile teams?
+* How are suppliers encouraged to work in an agile way?
+
+=== Let Go and Delegate
+
+Delegate and empower your team.
+As a manager you shall reconsider which activities are your responsibility.
+An agile team must at least be self-organized and ideally self-designed.
+
+manager lead::
+ The team performs the work,
+self-organised / self-managed::
+ The team organises and performs its own activities and work,
+self-designed / self-selected::
+ The team creates, selects and removes new members and maintains itself.
+ Logically they are also in charge of evaluation, rewards, and career development,
+self-directed / self-governed::
+ The team has no outside management.
+
+image::2017-08-02-types-of-authority.png[]
+
+See also Mike Cohn's blog
+https://www.mountaingoatsoftware.com/blog/two-types-of-authority-leaders-must-give-to-self-organizing-teams
+[Types of Authority Leaders must give to self-organizing Teams].
+
+=== Job Description
+
+Champion the Agile Process::
+ as a manager, you will be expected to get behind the move to agile and support it in both your words and your actions.
+ Create an awesome work environment to attract smart collaborators,
+Mentor Teams to Solve Problems::
+ Their confidence, learning and the level of respect they earn from their teams will depend to a large extent on how you treat them,
+Participate in transition planning::
+ Agile transformation promotes self-organized teams that work efficiently on their own, which involves strategic planning,
+Find ways to reduce waste::
+ as an agile manager, you will be expected to continually improve workflow and maximize efficiency by eliminating impediments.
+ This key activitiy may not be part of your current role as a manager,
+
+You will have more than enough work as a manager in an agile company. Only the content will be different.

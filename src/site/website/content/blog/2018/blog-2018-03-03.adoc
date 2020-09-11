@@ -1,0 +1,84 @@
+---
+title: "Why Do You Need Metrics and KPI in Agile Product Development?"
+linkTitle: "Metrics & KPI"
+date: 2018-03-03
+---
+
+== Why Do You Need Metrics and KPI in Agile Product Development?
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2018-05-02-head.jpg[role=left]
+Why do we define metrics and KPI?
+
+First we want to find out how good the build-in quality of our software artifacts is.
+Second we want to improve the build-in quality through experiments and use the metrics to judge success of these experiments.
+
+And the Key Performance Indicators - KPI - provide plausibility checks by qualifying the intrinsic quality of software artifacts against quantifiable strategic objectives.
+
+Measurements shall be cheap to gather and as much as possible generated automatically through the tooling landscape.
+
+We provide two sets of measurements to find out how supportive the development process is for quality and how to evaluate the quality of the artifacts.
+
+=== Definitions
+
+A metric is a measure or a combination of measures for quantitatively assessing or improving a product, a process or a team.
+
+A _key performance indicator_ is a metric that
+
+* is tied to a strategic objective,
+* have at least one defined time-bound target value - a number, a trend, a variation, etc. -
+
+Therefore you must defined your strategic objectives before you can use KPIs.
+
+Lean approaches have an imperative to reduce cycle-time, eliminate waste and tend to zero-defect products.
+The last one is a corollary because defects are waste. Please use this imperative to define your agile and lean KPIs.
+
+If your tooling landscape does not support automatic gathering of a specific metric, you shall make it optional until you have solved your tooling weaknesses.
+Accurate and real-time automated measurements are of tremendous importance for acceptance and lasting success.
+
+=== Process Aspects
+
+The optimal lean software development process has a batch size of one, almost no waiting time, no superfluous stock and no quality issues.
+
+Cycle Time of defects::
+ It shows the effectivity to resolve non-quality in product development,
+Cumulative Flow Diagram for defects and for stories/Backlog Items::
+ It shows how effectively resources are allocated,
+Sprint and PI burndown planned stories and effort::
+ versus completed stories and effective effort trends show the stability and adaptability of the development process,
+Planned velocity and effective velocity trends::
+ It is an indicator for the maturity of the agile product organization.
+
+This metrics shall be automatically provided through the issue/product backlog system.
+For example the “best of breed” JIRA tool has build-in reports for all the above metrics, so the tools you use should also have them.
+
+=== Technical quality
+
+A high quality software product has no code smell issues, no compiler warnings, always compile, and all tests are successfully processed.
+
+* Code quality
+** Method length distribution,
+** Class size distribution,
+** Cyclomatic complexity distribution,
+** Code Smells,
+* Product quality
+** continuous integration successful build trends,
+** test coverage trends for unit tests, integration tests and -ility tests. This metric implies the development team uses unit testing, TDD, ATDD, and automatic -ility testing,
+* Architecture
+** Separation of API and implementation - can only be inferred on modern technology stacks -,
+* Work techniques
+** Refactoring trends - sometimes needs to be evaluated manually in some projects -,
+** Emergent Architecture documentation trends - probably needs to be evaluated manually in most projects.
+
+These metrics shall be automatically provided through your quality tracking and continuous integration systems. For example the "best of breed" tools SonarQube and Jenkins have build-in reports for these metrics, so the tools you use should also have them.
+
+=== Remainder
+
+The above metrics are tools to discover discrepancies and weaknesses in your product development process and generated artifacts.
+The inferred results shall be used to identify and implement corrective measures.
+
+Agile emphasize transparency. The above metrics and KPIs shall be visible anytime to all involved participants through dashboards.

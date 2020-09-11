@@ -1,0 +1,159 @@
+---
+title: "Why is it so Cool to Develop with Java?"
+linkTitle: "Six Levers"
+date: 2018-01-01
+---
+
+== Why is it so Cool to Develop with Java?
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2018-01-01-head.jpg[role=left]
+Why is it so cool to develop software using Java, a modern IDE and agile tools.
+Because the environment empowers you and incredibly speed-up your development outcomes.
+In seconds, you know if the next code increment adds value to your product.
+
+Liberated your team works adding functions and no more spend unaccounted hours in setting up infrastructure.
+
+Below our current set of techniques and tools to multiply our results and bring earlier a product to your customers.
+
+=== Java Quality
+
+==== Solution Quality
+
+The most efficient approaches to improve the intrinsic quality of your software solution are
+
+Use Pair Programming::
+ Write regularly together source code. Decide that all complex code parts shall always be developed through pair programming. If you
+feel adventurous give a try to mob programming,
+Use Refactoring::
+Before pushing your code to the Git repository, always take a look and refactor your code. You are a craftsman and shall be proud of your result,
+Use Java 8 Lambdas and Streams::
+ Actual Java code builds on lambda expressions and stream constructs. Your for loops are replaced by stream pipeline, your algorithms extensively use lambdas.
+Use Java 9 Modules::
+ It is finally possible to clearly define public interfaces of a whole software component.
+ Configure the dependencies to other libraries, and identify specific modules as privileged participants.
+
+Do not write Java code as it was done last millennium.
+Use the actual constructs to write solid and resilient code.
+
+=== Code Quality
+
+The most efficient tools to detect glitches or legacy constructs in your code are
+
+SonarLint::
+ The plugin for your favorite IDE provides all the SonarCube checkers to apply on your source code.
+ Purify it before pushing it into the continuous build pipeline.
+ The plugin support download of tailored rules from you company SonarCube instance,
+SpotBugs::
+ The successor of the wildly popular FindBugs tool can be integrated in your build pipeline to improve the odds of correctness,
+PMD::
+ Is another tool to automatically detect potential quality problems,
+IntelliJ IDEA build-in Checks::
+ You are lazy and do not want to use additional tools, please use at least the build-in checkers of IntelliJ IDEA to improve your code.
+ It is very unprofessional to have equality problems or boolean condition errors in modern code.
+
+=== Test Quality
+
+==== Test Driven Development - TDD
+
+You are serious about development quality code. So you are working with the test driven approach TDD and need to write unit tests.
+Each time you write some code you go through the loop "red - green - refactor - commit".
+
+Junit 5::
+ is the standard and best unit test framework for Java product. The newest version support lambdas is a pleasure to use.
+AssertJ::
+ enables the writing of legible assert statements in your unit tests.
+Mockito::
+ Tests must be lightening fast, thousands of unit tests shall run in a few seconds.
+ Remove all dependencies to externals components from your source  code, mock these elements with Mockito.
+Hamcrest::
+ Your test conditions are complexer and you want to have legible code, start using hamcrest to write clear assertions in your tests.
+
+Please never access a database or a file system when running unit tests. If you low level tests with files just use an
+https://github.com/google/jimfs[in-memory file system mock].
+
+Each time an error is found in productive code, write first a test to reproduce it, then correct the error.
+This approach guarantees the same error will never again occur.
+
+==== Acceptance Test Driven Development - ATDD
+
+You are serious about delivering the functions your customer need.
+Each story you implement has acceptance criteria.
+These acceptance criteria defines your requirements - see https://en.wikipedia.org/wiki/Specification_by_example[specification by example] -.
+Your acceptance tests document and validate these requirements.
+
+Cucumber::
+ Write your acceptance criteria and document your requirements in one step.
+
+Remember stories are not requirements, they are work items. Requirements are coded and documented in your acceptance tests.
+
+=== Continuous Integration
+
+Agile means reacting to changes.
+Lean means build-in quality.
+Your continuous pipeline certifies after each change that your product is correct and has the correct behavior.
+
+Gradle:: Is the new standard for building your artifacts.
+Jenkins:: Is the regular tool for local build pipeline.
+
+If you a choice use a cloud continuous integration for team activities.
+Decide if you prefer the cloud approach - e.g. with TravisCI or Bitbucket Pipelines - or Jenkins within Docker for your local integration activities.
+
+A smooth running CI pipeline is a boost for team morale and motivation. To know your product compiles and runs through all your automated tests anytime is such a good feeling.
+
+==== Continuous Delivery and Deployment
+
+Agile means react fast the changes. You need to deliver and deploy your new solution to your customers in minutes or hours.
+
+Docker::
+ Virtual machines were a powerful construct but they are slow and require a lot of resources. Docker is the answer. Start a testing instance in 300 milliseconds.
+Tomcat and TomEE::
+ Embedded servers deployed in docker image in a matter of seconds. Actual versions of Tomcat or TomEE support it.
+hsqldb::
+ In memory database are lighting fast for integration and test staging areas.
+ Later move to a file based database for the production area.
+ The database shall be a configuration of the delivery and not require a new compilation.
+Google Cloud AppEngine::
+ To deploy various integration environments
+
+=== Design Quality
+
+Important decisions and overall structure shall be documented for new team members.
+Architecture Decision Record: A lightweight approach to document architecture decisions using markdown documents and traceability through the decision history.
+UML: Sometimes I would like to draw some UML diagrams to explain a design solution. I currently using a textual tool to define such diagrams.
+
+==== Development Quality
+
+Analog Board::
+ Nothing beats a big analog board in the team room as the ideal information radiator.
+ If you want your colocated to work effectively and solve problems as team, you shall provide an analog board.
+Trello, Stride, BitBucket, Hipchat and others Atlassian tools for distributed teams::
+ The first advice is to have a collocated team.
+ The productivity and performance gains are unachievable in a distributed environment.
+ We have very good experience with Atlassian and Google App solutions to mitigate the drawback of distributed teams and establish a team work atmosphere.
+ But a colocated team still rocks.
+IntelliJ IDEA::
+ This IDE is the choice for refactoring, powerful context suggestions and efficient programming.
+ If you use Eclipse or Netbeans just try a friendly refactoring competition with an IDEA convert.
+Git::
+ Please stop using Subversion, CVS, TFS or other geriatric tools.
+ Agile development, efficient integration in delivery pipelines, and extensive refactoring require Git.
+ Just migrate now to Git and leave dreaded message _Tree conflict detected, please solve manually_ behind you.
+
+These tools shall be used the agile way.
+You do not have long-lived branches in your source code management tool.
+Either you have only short-lived local branches or better you just work against trunk.
+Complex branching strategies are just waste for a lean practitioner.
+
+I decided to collect all these hints in the same long post.
+They belong together.
+Every day you design a solution, you code it, test it, improve it and guarantee its quality.
+
+These activities are tangled together to produce a product you are proud of.
+
+And yes I know about Github, Gitlab, Slack, Ant, Maven, Jetty, Amazon Cloud, AssertJ, Subversion, Eclipse, Netbeans and other good tools.
+But I still prefer the ones above;
+I am convinced to be more productive with them.

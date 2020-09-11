@@ -1,0 +1,83 @@
+---
+title: "Do Agile Methods - Scrum - Motivate your Team?"
+linkTitle: "Do Agile Motivate"
+date: 2016-03-01
+---
+
+== Do Agile Methods - Scrum - Motivate your Team?
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+:icons: font
+
+image::2016-02-01-head.jpg[role=left]
+Well my current experience is that the answer is a sounding YES.
+
+Developers love to develop software using Scrum.
+The motivation and positive energy just explodes. P
+eople talk together, build as a team better products and enjoy the daily activities.
+
+Stakeholders and in particular customers or users embraces the advantages they get.
+
+A whisper can still be heard that yes is not without consequences for the organization.
+Say your team is developing with Scrum. We have the following roles:
+
+* the stakeholders
+* the developers (Development Team)
+* the Scrum master (SM)
+* the product owner (PO)
+
+The Scrum Team is the composition of development team, Scrum master, and product owner.
+
+
+=== Stakeholders
+
+Stakeholders love Scrum.
+Every two weeks they have a new application version they can use, test, and get feedback from all users.
+This is the dream of every key account manager.
+
+Because a new release is available every two weeks the stakeholders should also provide feedback every two weeks.
+They sometimes hate the pressure of agile and Scrum.
+
+=== Developers Team
+
+Agile methods - Scrum, XP - are fun for all developers.
+Suddenly everyone can see your code, so at the beginning you as a developer must cope with different views how good code should be written.
+Suddenly you must master Test Driven Development TDD, mocking, unit test, legible documents.
+But, once you have it, you start to experience the "flow" and enjoy the atmosphere and to deliver at the end of each sprint a new software.
+
+Later you realize that Scrum says the team is responsible.
+You must acknowledge that the product success is also your success.
+Each design decision is now also driven by ROI considerations.
+If you master these responsibilities you suddenly discover the world of engineering.
+It is creating great products with an optimal balance of external quality and costs without ever jeopardizing the quality of the core.
+You can never again deny that you as developer are in charge.
+
+=== Scrum Master
+
+Scrum master is cool with a team enjoying Scrum and the flow of success. You just have to realize you are not a master but the enabler of a team of talented engineer.
+
+So you need to discover your "the lonely cowboy riding in the sun" song why this job is so rewarding.
+
+=== Product Owner
+
+As a product owner you control the budget of the project, the priorities and at the end of each iteration you can change all priorities and goals.
+Cool isn't it.
+But wait as a product owner I am responsible of the budget and product success and each time a member of the team asks me something I must have an answer ready.
+
+Scrum is cool and we enjoy it.
+And Scrum makes everything transparent and fast.
+Every two weeks a new version is delivered.
+This version must be evaluated, accepted or a list of improvements must be provided in the next days.
+This rhythm is fast, really fast.
+Once you are up to this speed you will enjoy the flow.
+
+=== Cautious Words
+
+Middle management often struggles with the agile approach at the beginning.
+See for example the discussion about https://less.works/less/management/index.html[manager role in an agile environment] in the {ref-less} approach.
+Be assured the results are worth the effort.
+
+Reading experience report or digging in the findings of Kotter you realize success or failure goes through how you handle middle management.

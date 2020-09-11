@@ -11,9 +11,9 @@ draft: false
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
-:imagesdir: ./architecture-code-scene-images
+:imagesdir: ../pics
 :icons: font
-:source-highlighter: pygments
+:source-highlighter: rouge
 
 == Purpose
 

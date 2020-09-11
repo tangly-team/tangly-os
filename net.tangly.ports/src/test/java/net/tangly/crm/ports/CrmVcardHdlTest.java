@@ -21,12 +21,18 @@ import java.nio.file.Path;
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import org.jetbrains.annotations.NotNull;
+import org.junit.jupiter.api.Test;
 
 class CrmVcardHdlTest {
-    void exportVcards(@NotNull Path path) throws IOException {
+    @Test
+    void testVcard() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             CrmAndLedgerStore store = new CrmAndLedgerStore(fs);
             store.createCrmAndLedgerRepository();
+            CrmWorkflows crmWorkflows = new CrmWorkflows(new Crm());
+            crmWorkflows.importCrmEntities(store.crmRoot());
+            CrmVcardHdl handler = new CrmVcardHdl(crmWorkflows.crm());
+            handler.importVCards(store.vcardsRoot());
         }
     }
 }

@@ -1,0 +1,134 @@
+---
+title: "Agile Code is Clean Code!"
+linkTitle: "Clean Code"
+date: 2019-06-01
+---
+
+== Agile Code is Clean Code!
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2019-06-01-head.png[role=left]
+You are applying the agile, lean approach to your software product development.
+Your teams use Scrum or Kanban to deliver running software every two weeks.
+
+To create an agile architecture you must write agile worthy code.
+And agile code is always clean code.
+
+Start early, do it continuously and soon your code will be clean, legible and free of defects.
+
+=== Architecture versus Code
+
+Be honest.
+Having a huge class with thousands of lines of code plainly demonstrate that your organization worked unprofessionally over months in the past.
+Such monsters are not born over one night coding session.
+It takes time and incompetence to create such maintenance nightmares.
+
+And as long as your product contains such code monsters it is worthless to pretend having a nice and thought through architecture.
+
+Team discipline and early warning systems are the key to avoid such blunders and kill the monster in the egg.
+
+=== Clean Code and Refactoring
+
+The clean code https://en.wikipedia.org/wiki/Test-driven_development[test driven development] _TDD_ approach to write code was defined last millennium.
+Professional developers adopted this approach to deliver high quality, legible and maintainable code artifacts.
+
+image::2019-06-01-red-green-refactor.png[float="left]
+. *Red* - Write a test and run it, validating the test harness,
+. *Green* - Write the minimum amount of code to implement the functionality validated in the previously developed test.
+Update the code and run the tests until the test suite shows successful execution,
+. *Refactor* the code to reach clean code level.
+Continuously run the tests to guaranty compliant changes.
+
+If you are a Java developer you will
+* Use JUnit 5 and Mockito 2 to implement the first step,
+* Use a powerful IDE such IntelliJ IDEA to write and enhance the functional code,
+* Use tools such as SonarLint, Jacoco, Spotbugs, ArchUnit to refactor your functional code and test cases.
+Clean code applies to productive and test code.
+
+The described approach is a good practice since the beginning of this millennium.
+All above mentioned tools are open source and free to use.
+Your organization has no excuse to write crap code.
+
+Just write well engineered, legible and maintainable source code.
+It is a matter of _discipline_.
+It is also a prerequisite to agile architecture.
+
+=== Acceptance Test Driven Development
+
+How do you know what are the requirements of a specific feature?
+Either write huge amount of outdated documentation or find a better way.
+The better way is https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[acceptance test driven development] _ATDD_.
+
+For each feature you need acceptance criteria; this approach is also called _specification by example_.
+For each acceptance criteria write an acceptance test which is executed each time the application is updated in the continuous delivery pipeline.
+Therefore the acceptance tests are the living documentation of the behavior of your product.
+
+To implement this approach you need
+
+* Acceptance criteria which imply specifications by example - you need to train your business analysts and product owners,
+* Cucumber for Java (or equivalent tools) - to write acceptance tests, Mock all external systems and the database - to have fast build and test time and avoid external dependencies,
+* A continuous build and delivery pipeline to automatically run your acceptance validation tests upon each application change,
+* Avoid user interface tests - because they are slow and brittle,
+* Use in memory database only if you have to - they are a fast solution to write acceptance tests but are intrinsically slower than mocks.
+
+=== Code Sociology
+
+The most simple engineering practices are the most powerful.
+Practice consolidates changes in behavior of your development organization.
+
+* https://en.wikipedia.org/wiki/Pair_programming[Pair Programming] - is a training on the job and crowd wisdom approach to steadily improve knowledge and
+quality -,
+* https://en.wikipedia.org/wiki/Test-driven_development[TDD] and https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD] - are safety
+net to guaranty quality attributes in your source code,
+* https://en.wikipedia.org/wiki/DevOps[DevOps] starting with git, docker, continuous integration, delivery and deployment - to speed up development and
+eliminate tedious manual errors,
+* Lack of accountability equates to lack of trust - your teams are accountable for the quality of your product and you should trust them.
+
+Once good practices are established you can move to more sophisticated tools - such as git history code analysis - to uncover weaknesses in your development department.
+
+Teams ready to learn from the like of Google could evaluate https://trunkbaseddevelopment.com/[Trunk Based Development] and consider long-lived branches as
+waste.
+
+==== Code Review
+
+A code review can be done different ways.
+Many teams use GitHub, Bitbucket or GitLab. So a very common approach for our code reviews are pull requests.
+However, there are situations where pull requests are not necessary.
+For example, if a feature is implemented in pair programming or mob programming then the code is already reviewed while it is written.
+
+We decided that it doesn’t have to be reviewed again but of course, everybody may look at the commits later on in GitHub and add comments.
+As a rule of thumb we agreed that every line of code has to be approved by at least one other developer before it is pushed into our master branch.
+
+==== Pull Requests in Trunk Based Development
+
+In trunk based development it is different.
+Since we want to merge our commits into the master branch as quickly as possible, we cannot wait until the complete feature is finished.
+Unlike in the original trunk based development approach we still use feature branches but we have much less divergence from the master branch than in Git Flow.
+We create a pull request as soon as the first commit is pushed into the feature branch.
+Of course that requires that no commit breaks anything or causes tests to fail.
+Remember that unfinished features can always be disabled with feature toggles.
+
+Now, with part of the new feature committed and the pull request created, another developer from the team can review it.
+In most cases that doesn’t happen immediately because the developers don’t want to interrupt their work every time a team member pushes a commit.
+Instead, the code reviews are done when another developer is open for it.
+Meanwhile, the pull request might grow by a few commits.
+
+The code is not always reviewed immediately after the commit but in most cases it reaches the master branch much quicker than in Git Flow.
+
+=== Agile Architecture Series
+
+The agile architecture track contains the following blogs
+
+. link:../../2019/agile-architecture-principles[Agile Architecture Principles]
+. link:../../2019/agile-code-is-clean-code[Agile Code is Clean Code!]
+. link:../../2019/agile-architecture-within-scrum[Agile Architecture within Scrum]
+. link:../../2020/agile-component-design[Agile Component Design]
+. link:../../2020/legacy-systems-refactoring[Legacy Systems Refactoring]
+. link:../../2020/how-agile-collaborators-learn[How Agile Collaborators Learn]
+
+We also published our https://www.tangly.net/insights/continuous-learning/agile-architecture-course[agile architecture course] (3 ECTS) used for teaching
+computer science students at bachelor level at Swiss technical universities.

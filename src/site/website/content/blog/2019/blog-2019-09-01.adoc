@@ -1,0 +1,154 @@
+---
+title: "A Commons View on Scrum"
+linkTitle: "A Commons View on Scrum"
+date: 2019-09-01
+---
+
+== A Commons View on Scrum
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2019-09-01-head.jpg[role=left]
+Agile approaches encourage common ownership of artifacts during product development.
+Historically https://en.wikipedia.org/wiki/Commons[commons] is the term used for shared resources.
+Can we apply the commons learnings to agile and Scrum approaches?
+
+Interestingly economists were kind to state common ownership is doomed to fail through the
+https://en.wikipedia.org/wiki/Tragedy_of_the_commons[tragedy of commons] theory published end of the sixties.
+
+Thirty years later https://en.wikipedia.org/wiki/Elinor_Ostrom[Elinor Ostrom] showed that commons can indeed work well if you follow a small set of rules.
+She found century old examples scattered around the world.
+She was awarded the Nobel price in economics for her findings in 2009 and dissipated the previous fake news.
+
+The picture shows a https://de.wikipedia.org/wiki/Suone[Suone] in Wallis, Switzerland.
+The constructions bring water to arid regions and are build and maintained by communities.
+It is example of commons in place for hundred of years and is one of the concrete implementation studied by Elinor.
+Mountain pastures are also managed as commons in Switzerland. You will find a drawing of Suone on the
+https://en.wikipedia.org/wiki/Banknotes_of_the_Swiss_franc#/media/File:CHF_100_9_back.jpg[hundred Swiss Francs note].
+
+[quote, Elinor Ostrom]
+----
+A resource arrangement that works in practice can work in theory.
+----
+
+Elinor Ostrom identified eight design principles of stable local common pool resource management through the world.
+These principles have a wider range of application than common resource pool groups.
+They are relevant to nearly any situation where people - such as Scrum teams - must cooperate and coordinate to achieve shared goals.
+
+Below the eight principles are presented with a mapping to Scrum aspects.
+
+=== A clear definition of the contents of the common pool resource and effective exclusion of external un-entitled parties
+
+The Scrum teams define the artifacts and processes exclusively owned by the team.
+Teams take easily ownership of items such as source code, Scrum board, pull process.
+Other items such as refactoring process, incident tickets produce more infighting.
+You can measure the maturity of your team accordingly to the clarity which resources they own exclusively.
+The first step shall often be _collective ownership of source code_ and _common coding style_.
+
+=== The appropriation and provision of common resources that are adapted to local conditions
+
+Agile teams own commons resources such as
+* https://martinfowler.com/bliki/CodeOwnership.html[Collective ownership of source code],
+* Definition of Done DoD,
+* Sprint Backlog,
+* Coding Guidelines,
+* Team rules and work techniques.
+
+The work techniques often limit common resources in unexperienced teams.
+They ask the product owner if they could refactor a class or invest a few minutes in clean code techniques.
+They do not own the internal quality of the product.
+More mature teams are able to make the transition with the support of their Scrum master and the organization.
+They truly own the source code and its quality.
+
+=== Collective-choice arrangements that allow most resource appropriators to participate in the decision-making process
+
+{ref-scrum} or {ref-less} have quite a few platforms to support decision making process
+* Daily Scrum,
+* Retrospective,
+* Review,
+* Backlog refinement,
+* Planning.
+
+The decision-making process works only if the organization grants psychological security to their teams.
+In my experience it takes years until an organization discards command and control reflexes and delegates responsibility and accountability to the Scrum team members.
+Often daily Scrum are reporting meetings - either to SM or PO or to the development team - and seldom a platform to collaborate - discussing options and experimenting -.
+
+Consensus or consent approaches are widely more successful than majority decisions is one of the findings of Elinor.
+
+=== Effective monitoring by monitors who are part of or accountable to the appropriators
+
+You have to monitor your commons to know if they are healthy. You can
+
+* Pair program or review commits with pull requests,
+* Automate static metrics and test coverage,
+* Implement continuous integration, delivery and deployment,
+* Try zero bug policy.
+
+I regularly state monitoring is the first commitment of team members to be publicly accountable.
+Often it is painful to realize how difficult transparency is.
+
+=== A scale of graduated sanctions for resource appropriators who violate community rules
+
+Rules are only respected if sanctions are implemented upon violations of the agreement. Scrum teams can rule that
+
+* You must repair the broken build,
+* You must immediately correct your coding violations,
+* You loose your source code management system check-in rights,
+* You are excluded from team.
+
+Most teams need counseling before they can tackle with the concept of sanctions.
+As a Scrum master you must gently empower them to sanction.
+If this rule is not implemented you will always land in the https://en.wikipedia.org/wiki/Tragedy_of_the_commons[tragedy of commons] and
+utterly fail in your agile journey.
+Worse your product will probably also fail.
+
+=== Mechanisms of conflict resolution that are cheap and of easy access
+
+Conflict resolution shall be fast, cheap, and timely. Scrum provides excellent approaches
+
+* Automated checks on the source code and executable application,
+* Daily Scrum,
+* Review and retrospective.
+
+The automatic checks are worth the effort as an effective, neutral, and cost effective to detect violations and automatically block the offender.
+The Scrum events are platforms to discuss and resolve the discovered violations.
+The Scrum master must facilitate the discussion until the team members have developed their own conflict resolution instruments.
+
+=== Self-determination of the community recognized by higher-level authorities
+
+Self-determination works only if recognized by the overall authorities and organization.
+Here we leave the team level and need department recognition - for a LeSS approach - or company level recognition - for example to have ownership to remove a team member -.
+
+* Self-organizing of Scrum team,
+* Ownership of internal quality,
+* Ownership of estimations.
+
+Scrum master shall coach and counsel the organization and the team.
+It takes time until management understand the dependencies between delegation, accountability, ownership, and autonomy.
+And you shall remember https://www.craiglarman.com/wiki/index.php?title=Larman%27s_Laws_of_Organizational_Behavior[Larman's Laws]
+
+[quote, Craig Larman]
+____
+Culture follows structure
+____
+
+As a change agent you will together with leaders change the structure of your organization. Please be gentle and patient.
+
+=== In the case of larger common-pool resources, organization in the form of multiple layers of nested enterprises, with small local CPRs at the base level
+
+Scaling agile practices at the organization level require multiple levels.
+
+* Transparency through Scrum board,
+* Definition of Dome as contract between team and organization,
+* Visibility of source code, continuous integration, delivery and deployment of artifacts
+* Scale to product level using LeSS
+
+If you are ready to scale up to the company you could consider https://bbrt.org/what-is-the-beyond-budgeting-round-table-bbrt/[Beyond Budgeting Round Table]
+_BBRT_ and https://sociocracy30.org/[Sociocracy] approaches and tailor them to your specific needs.
+
+I rediscovered the commons rules through a presentation of https://en.wikipedia.org/wiki/Craig_Larman[Craig Larmann] at the {ref-less}
+conference 2019 in Münich.
+He inspired us to look at agile approaches through the commons lens.

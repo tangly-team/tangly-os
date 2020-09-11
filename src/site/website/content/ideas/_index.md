@@ -1,9 +1,10 @@
 ---
 title: "Ideas"
-date: "2019-05-01"
-lastmod: 2020-08-31
-weight: 90
-draft: false
+linkTitle: "Ideas"
+weight: 30
+menu:
+  main:
+    weight: 30
 ---
 
 Ideas and concepts the developers of tangly open source components are following. 

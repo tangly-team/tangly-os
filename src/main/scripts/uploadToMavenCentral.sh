@@ -19,7 +19,7 @@ function upload() {
   cd ..
 }
 
-# Uploads need to be sequential to avoid spurious errors on sonatype staging area
+# Uploads need to be sequential to avoid spurious errors on sonatype staging area. It seems it crashes the open parallel connections.
 cd $siteRootDir
 upload ./net.tangly.bdd
 upload ./net.tangly.bus

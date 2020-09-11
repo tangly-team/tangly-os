@@ -1,0 +1,59 @@
+---
+title: "Calibrate Your Agile Approach: Bill of Rights"
+linkTitle: "Bill of Rights"
+date: 2020-01-01
+---
+
+== Calibrate Your Agile Approach: Bill of Rights
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2020-01-01-head.jpg[role=left]
+When https://en.wikipedia.org/wiki/Extreme_programming[eXtreme Programming] first came out, one expectation it worked hard to set is who gets to make what
+calls on software projects.
+
+For example, business has the right to know how long something is going to take and when it can expect things to be done.
+
+Conversely, developers have the right to know what the priorities are, and to be able to do good work.
+
+To that end, https://en.wikipedia.org/wiki/Extreme_programming[eXtreme Programming] created the *Customer and Development Team Bill of Rights*.
+
+=== Customer Bill of Rights
+
+* You have the right to an _overall plan_, to know what can be accomplished when and at what cost.
+* You have the right to get the _most possible value out of every programming week_.
+* You have the right to see _progress in a running system_, proven to work by passing _repeatable tests_ that you specify.
+* You have the right to _change your mind_, to substitute functionality, and to change priorities _without paying exorbitant costs_.
+* You have the right to be informed of _schedule changes_, in time to choose how to reduce the scope to restore the original date.
+* _You can cancel at any time and be left with a useful working system_ reflecting investment to date.
+
+=== Developer Bill of Rights
+
+* You have the right to know _what is needed_, with clear declarations of priority.
+* You have the right to produce _quality work at all times_.
+* You have the right _to ask for and receive help from peers, managers, and customers_.
+* You have the right _to make and update your own estimates_.
+* You have the right _to accept your responsibilities_ instead of having them assigned to you.
+
+=== Calibration
+
+You shall use the above bill of rights to evolve the cooperation between the development teams and the customers and improve the outcome value.
+See if:
+
+. Your customer has an overall plan with scheduled functionalities and costs and your development team can schedule changes and update the estimates,
+. Your customer has at any time a running and tested application and your development team always produce quality work,
+. Your customer can cancel at any time the development initiative and your development team receives help from peers, managers and customers,
+. Your customer and the development team accept responsibilities.
+
+Dysfunctions are easy to detect
+
+. Customers are not involved in the development initiative on a daily basis,
+. Development team does not pursue craftsmanship and quality,
+. Customers cannot cancel initiative at any time, Developement team cannot update estimates,
+. Management force responsibilities upon collaborators.
+
+Observe your organization and start to improve.
+The above rules are here to detect link:/../../2019/detecting-agile-bullshit/[Agile Bullshit] and truly improve your organization toward building products which delight the customers.

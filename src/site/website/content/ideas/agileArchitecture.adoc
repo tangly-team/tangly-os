@@ -16,9 +16,9 @@ draft: false
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 :sectnums:
-:imagesdir: ./agile-architecture-images
+:imagesdir: ../pics
 :icons: font
-:source-highlighter: pygments
+:source-highlighter: rouge
 :pygments-style: manni
 :toc:
 
@@ -367,7 +367,7 @@ So it could be that senior developers within the team got architecture skills, o
 Those team members with architectural skills are involved in the sprint on a day-to-day basis.
 They attend the daily Scrum meetings, take items off the backlog, and work on them.
 
-Interestingly https://less.works/[LeSS] is more opinionated and describe successful approaches for agile architecture and design.
+Interestingly {ref-less} is more opinionated and describe successful approaches for agile architecture and design.
 
 === How Do You Perform Agile Design?
 
@@ -386,8 +386,7 @@ The well established practices from the object-oriented and DevOps communities a
 * Aggressive refactoring and understand technical debt,
 * Continuous integration, continuous delivery, and continuous deployment.
 
-For a detailed discussion consult the post https://tangly-blog.blogspot.com/2018/04/pragmatic-craftsmanship-professional.html[Pragmatic
-Craftsmanship].
+For a detailed discussion consult the post link:../../2018/pragmatic-craftsmanship-professional-software-developer[Pragmatic Craftsmanship].
 
 === What is the Architect Role?
 

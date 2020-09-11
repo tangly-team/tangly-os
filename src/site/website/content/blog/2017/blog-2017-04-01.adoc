@@ -1,0 +1,59 @@
+---
+title: "Fun at Workplace"
+linkTitle: "Fun at Workplace"
+date: 2017-04-01
+---
+
+== Fun at Workplace
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2017-04-01-head.jpg[role=left]
+It is Spring in Switzerland.
+We often have time for small talk because it is cold or rainy outside.
+Quite a few of the discussions are about job opportunities and how interesting and motivating the current activities are.
+I selected two articles to help everybody to decide if your software development job is worth the effort.
+
+Just go through the questions and ask yourself if the current project provides the current settings.
+
+=== Joel Test
+
+The Joel Test is slightly outdated. Keep his questions and just do the following changes
+
+* Can you replace CVS with Git to reflect the current state of the industry?
+* Move from daily builds to continuous build at checkin.
+* Remember "Daily Builds are for Wimps"
+* Do not only fix bugs but also write the associated automated unit and acceptance tests.
+ Remember _Defect Driven Development_ to guaranty your customer he will never again see the same issue
+* Check that your specification also has acceptance criteria which can be automated
+* For Microsoft developers, are you forced to use TFS instead of tools of your choice and why?
+* Are you testers and quality experts integrated in your Scrum team and sitting in the same room?
+ Do you think about tester and quality as roles and not persons?
+* Do new candidates code and perform refactoring to achieve clean code during their interview?
+
+http://www.codypowell.com/taods/2009/12/the-codypo-test-aka-8-questions-to-identify-a-lame-programming-job.html[8 Questions to identify a lame programming job].
+The questions are up to date.
+His final remark is worth remembering
+
+No matter how great the potential projects and teammates might be, I don't think you can do truly meaningful work in an environment where you, the
+developer, aren't empowered to succeed.
+
+If a company doesn't get that, then they don't get the software.
+
+=== My personal list
+
+My personal list is as follow
+
+* Is respect a key value of your organization and your team?
+* Are you creating a meaningful product and improve quality of life of mankind?
+* Are you working in an agile team, preferably a Scrum team?
+* Has your team as sustainable development rhythm?
+* Are you using good software practices daily such as TDD, ATDD, refactoring, check-in in Git master, CI/CD, deliver each day?
+* Can you contribute to the open source projects you are using during work time?
+* If you are developing in Java are you using IntelliJ IDEA as IDE?
+
+Take the ten minutes to decide if your current job is good enough.
+Otherwise it is time to regain ownership of your life.
