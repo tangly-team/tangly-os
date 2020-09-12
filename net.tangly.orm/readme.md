@@ -25,14 +25,14 @@ The library can be included in Maven as
     <dependency>
       <groupId>net.tangly</groupId>
       <artifactId>orm</artifactId>
-      <version>0.2.5</version>
+      <version>0.2.6</version>
     </dependency>
 ```    
 
 The library can be included in Gradle as
 
 ```groovy
-    implementation "net.tangly:orm:0.2.5"
+    implementation "net.tangly:orm:0.2.6"
 ```
  
 The documentation can be found under [Commons documentation](https://tangly-team.bitbucket.io/orm/)

@@ -1,6 +1,11 @@
+prjRootDir=/Users/Shared/Projects/
+prjName=tangly-os
+prjDir=$prjRootDir$prjName
+
 siteRootDir=/Users/Shared/Projects/
 siteName=tangly-os-site
 siteDir=$siteRootDir$siteName
+
 
 cd $siteRootDir
 rm -rf $siteName
@@ -24,5 +29,7 @@ git submodule update --init --recursive
 
 # create the layout for the ideas folder under content so that the files are processed
 cp -R ./layouts/docs ./layouts/ideas
+
+cp $prjDir/src/site/website/docsy/layouts/partials/footer.html $siteDir/themes/docsy/layouts/partials
 
 echo "start server with hugo server --destination public --disableFastRender -> site is accessible under localhost:1313"

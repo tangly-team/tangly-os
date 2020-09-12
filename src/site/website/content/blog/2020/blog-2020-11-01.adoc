@@ -29,7 +29,8 @@ We provide an initial setup approach requiring mere minutes to add codes to your
 
 As a professional designer you have declared sets of fixed values as enumeration in your source code. Now you can extend your enumeration classes with the code interface.
 
-The Java code is:
+Additional information are available under link::../../docs/bus/businessmodels/
+Below the source code in modern Java is
 
 [code, java]
 ----

@@ -22,6 +22,7 @@ It is a great tool with some drawbacks.
  If I switch to the editor the layout is destroyed and random fonts family and sizes are selected.
  This backward compatibility destruction of all older blogs and no migration path were killer criteria.
 * Blogger does not support modern markup language such https://www.markdownguide.org/[Markdown] or {ref-asciidoc}.
+ Blogger uses a proprietary and not easy to port format.
 
 It is time to find an alternative.
 I am a huge fan of {ref-asciidoc]}.
@@ -37,8 +38,10 @@ The following needs are identified
 . I shall write blogs with the selected solution.
  The blogs shall be written in {ref-asciidoc}.
  The blog view should support multiple years of publishing and referencing between blogs.
+ Our project and company put effort to publish regularly articles.
 . I shall be able to write technical articles and publish them on the same site.
  The articles are naturally written in {ref-asciidoc}.
+ We want a professional looking documentation to encourage new users to try our open source components.
 . I shall publish the technical documentation of the open source components I develop on the same site.
 
 {ref-hugo} was selected as static site generator because its support for {ref-asciidoc} is tremendously improving.

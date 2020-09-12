@@ -103,7 +103,7 @@ pygmentsUseClasses = true
 
 [params]
 copyright = "tangly llc - Attribution 4.0 International (CC BY 4.0)"
-privacy_policy = "https://policies.google.com/privacy"
+# privacy_policy =
 
 time_format_blog = "2006-01-02"
 time_format_default = "2006-01-02"

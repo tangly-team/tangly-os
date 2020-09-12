@@ -124,7 +124,9 @@ More interesting is that a tourist living in the European zone has none of these
 
 Please implement the internal identifier feature as an interface marker.
 External identifier and name features can be grouped in one interface.
-Below an example written in Java.
+
+Additional information are available under link::../../docs/bus/businessmodels/
+Below the source code in modern Java is
 
 [source, java]
 ----

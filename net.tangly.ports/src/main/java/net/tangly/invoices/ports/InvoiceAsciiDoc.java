@@ -98,6 +98,8 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
     }
 
     public static void createPdf(@NotNull Path invoicePath) {
+        System.setProperty("jruby.compat.version", "RUBY1_9");
+        System.setProperty("jruby.compile.mode", "OFF");
         try (Asciidoctor asciidoctor = Asciidoctor.Factory.create()) {
             Map<String, Object> options = OptionsBuilder.options().inPlace(true).backend("pdf").asMap();
             asciidoctor.convertFile(invoicePath.toFile(), options);

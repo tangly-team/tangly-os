@@ -29,14 +29,14 @@ The library can be included in Maven as
     <dependency>
       <groupId>net.tangly</groupId>
       <artifactId>bus</artifactId>
-      <version>0.2.5</version>
+      <version>0.2.6</version>
     </dependency>
 ```    
 
 The library can be included in Gradle as
 
 ```groovy
-    implementation "net.tangly:bus:0.2.5"
+    implementation "net.tangly:bus:0.2.6"
 ```
  
 The documentation can be found under [Business documentation](https://tangly-team.bitbucket.io/bus/)

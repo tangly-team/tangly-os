@@ -81,6 +81,8 @@ public class LedgerBusinessLogic {
     }
 
     public static void createPdf(@NotNull Path directory, @NotNull String filenameWithoutExtension) {
+        System.setProperty("jruby.compat.version", "RUBY1_9");
+        System.setProperty("jruby.compile.mode", "OFF");
         try (Asciidoctor asciidoctor = Asciidoctor.Factory.create();
              OutputStream out = Files.newOutputStream(directory.resolve(filenameWithoutExtension + PDF_EXT))) {
             String asciidoc = Files.readString(directory.resolve(filenameWithoutExtension + ASCII_DOC_EXT));

@@ -15,7 +15,9 @@ draft: false
 :source-highlighter: pygments
 :pygments-style: manni
 
-== Codes
+== Business Domains Models
+
+=== Codes Model
 
 The abstraction of a reference table or reference codes.
 A code table is an extensible set of values.
@@ -60,9 +62,9 @@ CodeImp <|-- Code
 @enduml
 ....
 
-== Core
+=== Core Model
 
-== Entity
+==== Entity
 
 An entity and all subclasses have a set of attributes present in any CSV file.
 
@@ -143,11 +145,13 @@ class BankConnection << (R,orchid) >> {
     String institute
 }
 
-class CrmEntity {}
+interface Entity {}
+
+class CrmEntity implements Entity {}
 
 HasTags <|.. CrmEntity
 
-class LegalEntity {}
+class LegalEntity implements CrmEntity {}
 
 CrmEntity <|.. LegalEntity
 
@@ -155,16 +159,15 @@ class NaturalEntity {}
 
 CrmEntity <|.. NaturalEntity
 
-class Employee {}
+class Employee implements CrmEntity {}
 
 Employee o-- NaturalEntity
 Employee o-- LegalEntity
 
-
 @enduml
 ....
 
-== Invoices
+== Invoices Model
 
 === Concepts
 
@@ -249,7 +252,7 @@ InvoiceLine <|.. Subtotal
 @enduml
 ....
 
-== Ledger
+=== Ledger Model
 
 [plantuml,bus-ledger-uml,svg]
 ....
@@ -269,7 +272,7 @@ Ledger *-- Transaction : transactions
 @enduml
 ....
 
-== Products
+=== Products Model
 
 [plantuml,bus-product-uml,svg]
 ....

@@ -4,7 +4,6 @@ linkTitle: About
 menu:
   main:
     weight: 10
-
 ---
 
 {{< blocks/cover title="About tangly llc Open Source Components" image_anchor="bottom" height="min" >}}
@@ -13,12 +12,29 @@ menu:
 
 {{% blocks/lead %}}
 
-<a href="https://www.tangly.net">tangly llc</a> is a small company specialized in agile transformation, Scrum, LeSS and lean. 
+<a href="https://www.tangly.net">tangly llc</a> is a small company specialized in software craftsmanship, technical excellence, agile transformation, Scrum
+, LeSS and lean. 
 
 Our technology stack is Java.
 
-As strong supporter of open source we published our open source components. 
+As a strong supporter of open source we published our open source components. 
 {{% /blocks/lead %}}
+
+{{< blocks/section >}}
+<div class="col-12">
+<h2 class="text-center">Do the Right Thing</h2>
+<div style="text-align: center;">Respect and tolerance</div> 
+<div style="text-align: center;">Solidarity and social responsibility</div>
+<div style="text-align: center;">Curiosity, creativity and passion</div>
+<div style="text-align: center;">Transparency and integrity</div>
+
+<h2 class="text-center">Champion Product Excellence</h2>
+<div style="text-align: center;">Do not focus on the products you are building, focus on the problems your customers are encountering</div>
+<div style="text-align: center;">Achievement, accountability and success</div>
+
+<h2 class="text-center">Run a Sustainable Business</h2>
+<div style="text-align: center;">Great companies are not in business to make money, they make money to stay in business and accomplish an important purpose</div>
+{{< /blocks/section >}}
 
 {{% blocks/section %}}
 <div class="col-12">
