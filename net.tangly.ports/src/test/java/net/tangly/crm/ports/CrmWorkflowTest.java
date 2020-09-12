@@ -25,6 +25,7 @@ import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
 import org.jetbrains.annotations.NotNull;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,6 +45,7 @@ class CrmWorkflowTest {
     }
 
     @Test
+    @Tag("localTest")
     void testCompanyTsvCrm() {
         CrmWorkflows crmWorkflows = new CrmWorkflows(new Crm());
         crmWorkflows.importCrmEntities(Path.of("/Users/Shared/tangly"));
