@@ -82,6 +82,11 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
         return of(column, getter, setter, v -> (v == null) ? BigDecimal.ZERO : new BigDecimal(v), BigDecimal::toPlainString);
     }
 
+    public static <T, U extends Enum<U>> TsvProperty<T, U> ofEnum(@NotNull Class<U> clazz, @NotNull String column, Function<T, U> getter,
+                                                                  BiConsumer<T, U> setter) {
+        return of(column, getter, setter, v -> Enum.valueOf(clazz, v.toLowerCase()), U::name);
+    }
+
     /**
      * Define a property mapped to one column with  a transformation step from the string representation to the property type.
      *

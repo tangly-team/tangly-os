@@ -19,17 +19,23 @@ import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.server.StreamResource;
+import net.tangly.bus.codes.CodeType;
 import net.tangly.bus.core.EmailAddress;
 import net.tangly.bus.core.PhoneNr;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
+import net.tangly.bus.crm.GenderCode;
 import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.bus.providers.ViewProvider;
+import net.tangly.commons.vaadin.CodeField;
 import net.tangly.commons.vaadin.CommentsView;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.One2ManyView;
@@ -51,6 +57,8 @@ public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
         Grid<NaturalEntity> grid = grid();
         grid.addColumn(NaturalEntity::lastname).setKey("lastname").setHeader("Last Name").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(NaturalEntity::firstname).setKey("firstname").setHeader("First Name").setSortable(true).setAutoWidth(true).setResizable(true);
+        grid.addColumn(new ComponentRenderer<>(person -> (person.gender() == GenderCode.male) ? new Icon(VaadinIcon.MALE) : new Icon(VaadinIcon.FEMALE)))
+                .setHeader("Gender").setAutoWidth(true).setResizable(true);
         grid.addColumn(linkedInComponentRenderer(CrmTags::individualLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
     }
 
@@ -82,6 +90,7 @@ public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
         entityField.setReadOnly(readonly);
         TextField firstname = VaadinUtils.createTextField("Firstname", "firstname", readonly);
         TextField lastname = VaadinUtils.createTextField("Lastname", "lastname", readonly);
+        CodeField gender = new CodeField(CodeType.of(GenderCode.class), "Gender");
         TextField mobilePhone = VaadinUtils.createTextField("Mobile Phone", "mobile phone number", true);
         EmailField homeEmail = new EmailField("Home Email");
         homeEmail.setReadOnly(readonly);
@@ -95,6 +104,7 @@ public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
         form.add(new HtmlComponent("br"));
         form.add(firstname, 1);
         form.add(lastname, 1);
+        form.add(gender);
 
         form.add(new HtmlComponent("br"));
         form.add(mobilePhone, homeEmail, homeSite);
@@ -108,6 +118,7 @@ public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
         entityField.bind(binder);
         binder.bind(firstname, NaturalEntity::firstname, NaturalEntity::firstname);
         binder.bind(lastname, NaturalEntity::lastname, NaturalEntity::lastname);
+        binder.bind(gender, NaturalEntity::gender, NaturalEntity::gender);
         binder.bind(mobilePhone, e -> e.phoneNr(CrmTags.Type.mobile).map(PhoneNr::number).orElse(null), null);
         binder.bind(homeEmail, e -> e.email(CrmTags.Type.home).map(EmailAddress::text).orElse(null), null);
         binder.bind(homeSite, e -> e.site(CrmTags.Type.home).orElse(null), null);

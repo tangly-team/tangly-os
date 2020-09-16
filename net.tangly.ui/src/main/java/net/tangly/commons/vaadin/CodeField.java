@@ -11,10 +11,20 @@
  *  under the License.
  */
 
-/**
- * The package provides core abstractions used in any commercial application. The cornerstone of the entities is the comment and tags classes providing a simple
- * and powerful extension mechanisms for regular abstractions.
- * <p>Core domain model abstractions such as postal address, email address, or bank connection are provided with validation routines.</p>
- * <p>A set of mixin interfaces to mark entities supporting unique object identifier, external identifiers, namess, tags and comments.</p>
- */
-package net.tangly.bus.core;
+package net.tangly.commons.vaadin;
+
+import com.vaadin.flow.component.select.Select;
+import net.tangly.bus.codes.Code;
+import net.tangly.bus.codes.CodeType;
+
+public class CodeField<T extends Code> extends Select<T> {
+    private final CodeType<T> codeType;
+
+    public CodeField(CodeType<T> codeType, String label) {
+        setLabel(label);
+        this.codeType = codeType;
+        setItemLabelGenerator(T::code);
+        setItems(codeType.codes());
+        setItemEnabledProvider(e -> e.isEnabled());
+    }
+}

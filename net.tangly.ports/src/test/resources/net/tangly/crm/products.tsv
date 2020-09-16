@@ -1,18 +1,18 @@
-id	name	text	unitPrice	unit	vatRate
-1	Agile Coaching	Agile coaching daily rate for Scrum master and team agile coach	1400	day	0.077
-2	Agile Technical Project Management	Agile project coordination and management for projects with multiple suppliers	1400	day	0.077
-3	Agile Coaching	Agile coaching daily rate for Scrum master and team agile coach	1440	day	0.077
-11	Agile Training	"Agile Scrum, Kanban, Lean and software craftsmanship training"	2000	day	0.077
-12	Agile Training	"Agile Scrum, Kanban, Lean and software craftsmanship training"	1950	day	0.077
-100	Agile Coaching	Agile coaching hour rate for Scrum master and team agile coach	155	hour	0.077
-101	Agile Coaching	Agile coaching hour rate for Scrum master and team agile coach	140	hour	0.077
-102	Agile Coaching	Agile coaching daily rate for Scrum master and team agile coach	1100	day	0.077
-1001	Java Software Development	Senior Java software development	1200	day	0.077
-5001	Technical University Training	Agile training at recognized technical university	140	hour	0
-5002	Technical University Training	Agile training at recognized technical university	190	hour	0
-5003	Technical University Training	Agile training at recognized technical university	200	hour	0
-5004	Technical University Examination	Examination work per student	25	unit	0
-5005	Consulting and Assessment	Technical consulting and assessment	178	hour	0.077
-5020	Technical University Coaching	Agile coaching of students and assistents at recognized technical university	1	unit	0
-5021	Agile Coaching and Training	Agile Coaching and Training	1	unit	0.077
-9900	Travel Expenses	Effective travel expenses	1	1	0
+id	name	text	code	unitPrice	unit	vatRate
+1	Agile Coaching	Agile coaching daily rate for Scrum master and team agile coach	work	1400	day	0.077
+2	Agile Technical Project Management	Agile project coordination and management for projects with multiple suppliers	work	1400	day	0.077
+3	Agile Coaching	Agile coaching daily rate for Scrum master and team agile coach	work	1440	day	0.077
+11	Agile Training	"Agile Scrum, Kanban, Lean and software craftsmanship training"	work	2000	day	0.077
+12	Agile Training	"Agile Scrum, Kanban, Lean and software craftsmanship training"	work	1950	day	0.077
+100	Agile Coaching	Agile coaching hour rate for Scrum master and team agile coach	work	155	hour	0.077
+101	Agile Coaching	Agile coaching hour rate for Scrum master and team agile coach	work	140	hour	0.077
+102	Agile Coaching	Agile coaching daily rate for Scrum master and team agile coach	work	1100	day	0.077
+1001	Java Software Development	Senior Java software development	work	1200	day	0.077
+5001	Technical University Training	Agile training at recognized technical university	work	140	hour	0
+5002	Technical University Training	Agile training at recognized technical university	work	190	hour	0
+5003	Technical University Training	Agile training at recognized technical university	work	200	hour	0
+5004	Technical University Examination	Examination work per student	work	25	unit	0
+5005	Consulting and Assessment	Technical consulting and assessment	work	178	hour	0.077
+5020	Technical University Coaching	Agile coaching of students and assistents at recognized technical university	work	1	unit	0
+5021	Agile Coaching and Training	Agile Coaching and Training	work	1	unit	0.077
+9900	Travel Expenses	Effective travel expenses	expenses	1	1	0

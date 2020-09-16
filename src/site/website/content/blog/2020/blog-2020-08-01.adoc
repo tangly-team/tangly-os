@@ -12,8 +12,9 @@ date: 2020-08-01
 :copyright: CC-BY-SA 4.0
 
 image::2020-08-01-head.png[role=left]
-A software architect models customer domains and maps them to good software abstractions.
+A software architect models customer domains and maps them to powerful software abstractions.
 Soon you correlate internal efficient identifiers, meaningful external identifiers and domain entities.
+You enjoy our long conversations with the enterprise data architect and find out the system owning a specific external identifier.
 
 How do you relate with external systems and communicate with other companies?
 
@@ -29,19 +30,20 @@ We need an approach to model customer domain entities and map them to a legible 
 
 An entity is a user domain model abstraction and is mapped to a software type.
 
-* Any entity has _Unique mandatory internal_ object identifier *_oid_*, we recommend the use of numeric values to improve performance
-* External and public identifier id, we recommend the use of text to adequately support various external identification scheme.
+* Any entity has an _unique mandatory internal_ object identifier *_oid_*, we recommend the use of numeric values to improve performance.
+* Public and _external identifier_ *_id_*, we recommend the use of text to adequately support various external identification scheme.
 An example is the European enterprise identifier EUID identifying a company or a certified natural person in Europe
-* Human readable name name.
+* Human readable _name_.
 
-A more sophisticated variant provides additional features
+A more sophisticated variant provides additional features.
 
 * A set of tags to classify the instance through a crowd based ontology.
 Tags are often called labels.
-*A list of comments to add human readable information to the instance.
+* A list of comments to add human readable information to the instance.
+Comments have a timeline and can be sorted by creation date.
 The comments can be extended to add audit information such as functional change information or activities related to the instance.
 
-The entity features should be defined as a set of mixin interfaces.
+These entity features should be defined as a set of https://en.wikipedia.org/wiki/Mixin[mixin] interfaces.
 
 === Internal Object Identifiers _oid_
 
@@ -52,14 +54,14 @@ It should never be visible outside the system or published through an API.
 
 Ideally the identifier is universally valid and uniquely identifies an instance in all contexts.
 For example the concept of UUID tries to provide such an identifier.
-The drawback is that UUID is not a numerical value.
+The drawback is that UUID is not a numerical value and cumbersome for a developer to memorize.
 
 History has taught developers not to spare on the size of identifiers.
 Please use a long value meaning 64 bits.
 
 Avoid using the internal identifier to communicate with external systems.
 If you respect this rule you are free to migrate your objects to another identification scheme in the future.
-New schemes are often helpful when the application grows or you have later to import and take over a lot of legacy data.
+New schemes are often helpful when the application grows, or you have later to import and take over a lot of legacy data.
 
 === External Object Identifiers _id_
 
@@ -72,15 +74,16 @@ This restriction is a corollary of the rule stating an instance is owned by exac
 This system is the one defining and managing the external unique identifiers.
 
 You should clearly define the owning system for the external identification scheme.
-This information shall also be documented and accessible to all involved parties.
+This information shall be documented and accessible to all involved parties.
 This process is part of the enterprise architecture activities of your ecosystem.
 
-When working with legacy system ownership and external identifiers are often a murky situation.
+External identifier ownership is often a murky situation when working with legacy systems.
 You often have multiple source of external identifiers, sometimes overlapping and sometimes no covering all instances.
-You have to formulate a long-term strategy to clean-up your landscape and handle the problem until clean-up activities are completed.
+You have to formulate a long-term strategy to clean-up your landscape and handle the problems until these clean-up activities are completed.
 By handling we mean administrative and import rules matching the various external identifiers to the same object.
 
-One possible solution if other systems have define their own external identifiers due to system constraints or through history is to store this information as a tag specific to the external system involved.
+One possible solution is to use tags. Store externally defined identifiers as tags. Document these tags as specific for the external system.
+This approach scales to multiple external identitfiers, and multiple systems managing the same external identifier.
 So you have a scalable approach and do not pollute your domain model with spurious information defined in external systems.
 Upon completion of the refactoring these tags document historical information and could safely be removed.
 
@@ -93,9 +96,9 @@ As soon as you modify identifiers they are per definition no more real identifie
 
 The entity name is a human readable name to distinguish between entity instances.
 Ideally it should be almost unique.
-The fallback is always to use the external unique identifier id known to all external systems.
-The drawback is that we have no guarantees it is readable.
-Names are essential for well designed user interfaces.
+The fallback is to use the external unique identifier _id_ known to all external systems.
+The drawback is that we have no guarantees it is legible for users.
+Names are essential for well-designed user interfaces.
 Never require from your users to memorize external identifiers, please provide names.
 
 For example first and last names of a person is the name for a natural entity.
@@ -110,7 +113,7 @@ An identifier is immutable and should be numerical for performance reasons.
 . Names are human readable and improve the legibility and usability of user interface and reports.
 
 External identifiers can be tricky.
-In Switzerland we had an old social security number which is still referenced in a lot of legal systems.
+In Switzerland, we had an old social security number which is still referenced in a lot of legal systems.
 For example it is still part of your tax salary yearly form.
 
 We have a new social security number which is used in social insurance workflows.

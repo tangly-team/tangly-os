@@ -35,6 +35,7 @@ public record EmailAddress(@NotNull String recipient, @NotNull String domain) im
     public static boolean isValid(String email) {
         return Strings.isNullOrBlank(email) || pattern.matcher(email).matches();
     }
+
     public boolean isValid() {
         return !Strings.isNullOrBlank(domain()) || !Strings.isNullOrBlank(recipient());
     }

@@ -26,9 +26,11 @@ import org.jetbrains.annotations.NotNull;
  * @param id        unique external identifier of the product
  * @param name      human readable name of the product
  * @param text      human readable description of the product
+ * @param code      code of the product
  * @param unitPrice unit price of the product
  * @param unit      unit type of the product such as day, hour,or fix for a workshop
  * @param vatRate   VAT rate of the product, requested for specific VAT tax regimes
  */
-public record Product(@NotNull String id, String name, String text, @NotNull BigDecimal unitPrice, String unit, BigDecimal vatRate) implements HasQualifiers {
+public record Product(@NotNull String id, String name, String text, @NotNull ProductCode code, @NotNull BigDecimal unitPrice, String unit, BigDecimal vatRate)
+        implements HasQualifiers {
 }

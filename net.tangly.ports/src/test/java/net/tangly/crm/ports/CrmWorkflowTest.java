@@ -45,7 +45,7 @@ class CrmWorkflowTest {
     }
 
     @Test
-    @Tag("localTest")
+    // @Tag("localTest")
     void testCompanyTsvCrm() {
         CrmWorkflows crmWorkflows = new CrmWorkflows(new Crm());
         crmWorkflows.importCrmEntities(Path.of("/Users/Shared/tangly"));

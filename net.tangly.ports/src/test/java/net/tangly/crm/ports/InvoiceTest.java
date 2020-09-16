@@ -30,6 +30,7 @@ import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceItem;
 import net.tangly.bus.invoices.Product;
+import net.tangly.bus.invoices.ProductCode;
 import net.tangly.bus.invoices.Subtotal;
 import net.tangly.invoices.ports.InvoiceAsciiDoc;
 import net.tangly.invoices.ports.InvoiceQrCode;
@@ -98,8 +99,8 @@ class InvoiceTest {
     }
 
     private Invoice newRegularInvoice() {
-        Product coaching = new Product("0001", "Agile coaching", "", new BigDecimal(1400), "day", VAT_REGULAR);
-        Product project = new Product("0002", "Technical project management", "", new BigDecimal("1400"), "day", VAT_REGULAR);
+        Product coaching = new Product("0001", "Agile coaching", "", ProductCode.work, new BigDecimal(1400), "day", VAT_REGULAR);
+        Product project = new Product("0002", "Technical project management", "", ProductCode.work, new BigDecimal("1400"), "day", VAT_REGULAR);
 
         Invoice invoice = newInvoice("2017-0001", "Coaching contract Planta 20XX-5946 und ARE-20XX-6048");
 
@@ -116,7 +117,7 @@ class InvoiceTest {
     }
 
     public static Invoice newTeachingInvoice() {
-        Product teaching = new Product("0011", "Agile training", "", new BigDecimal(2000), "day", BigDecimal.ZERO);
+        Product teaching = new Product("0011", "Agile training", "", ProductCode.work, new BigDecimal(2000), "day", BigDecimal.ZERO);
         Invoice invoice = newInvoice("2017-0002", "Agile Training and Workshop");
         invoice.add(new InvoiceItem(1, teaching, "Scrum Agile Workshop", new BigDecimal("2")));
         invoice.paymentConditions(PAYMENT_CONDITIONS_30_DAYS);
@@ -125,9 +126,9 @@ class InvoiceTest {
     }
 
     public static Invoice newComplexInvoice() {
-        Product coaching = new Product("0001", "Agile coaching", "", new BigDecimal(1400), "day", VAT_REGULAR);
-        Product project = new Product("0002", "Technical project management", "", new BigDecimal("1400"), "day", VAT_REGULAR);
-        Product travelExpenses = new Product("9900", "Travel Expenses", "", BigDecimal.ONE, "CHF", BigDecimal.ZERO);
+        Product coaching = new Product("0001", "Agile coaching", "", ProductCode.work, new BigDecimal(1400), "day", VAT_REGULAR);
+        Product project = new Product("0002", "Technical project management", "", ProductCode.work, new BigDecimal("1400"), "day", VAT_REGULAR);
+        Product travelExpenses = new Product("9900", "Travel Expenses", "", ProductCode.work, BigDecimal.ONE, "CHF", BigDecimal.ZERO);
 
         Invoice invoice = newInvoice("2017-0003", "Coaching contract Planta 20XX-5946 und ARE-20XX-6048");
 

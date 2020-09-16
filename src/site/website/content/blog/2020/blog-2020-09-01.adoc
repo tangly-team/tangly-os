@@ -95,17 +95,19 @@ public class Comment implements HasOid, HasTags {
 
 === Design
 
-Our architecture follow the principles of domain driven design.
-Therefore comments are always associated with a specific domain of the application.
-For example often we model the persistence view of a domain through a database schema.
-Therefore each schema could have a persistence store for comments.
+Our architecture follows the principles of domain driven design.
+Comments are always associated with a specific bounded domain of the overall application.
+For example, we often model the persistence view of a domain through a database schema.
+Each bounded domain has an own independent scheam and could have a persistence store for comments.
 
-Tags are classification information associated with an instance and stored within the entity and the associated entity store such a a table.
+Tags are classification information associated with an instance and should be stored within the entity.
+The set of tagas are often transformed to a textual representation and stored in a column.
+The search features of the underlying database can be applied for selecting intstances of interest.
 
 Tag types are a medium to define an ontology and defines valid tag instances.
 A set of tag types shall always be associated with a specific domain of the application.
 
-We provide a Java library BUS implementing these constructs.
+We provide a Java library libk:../../docs/bus[BUS] implementing these constructs.
 More information is available under https://tangly-team.bitbucket.io/[tangly open source components].
 
 Related concepts are discussed in our blog series

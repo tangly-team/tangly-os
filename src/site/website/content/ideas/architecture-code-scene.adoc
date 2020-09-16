@@ -1,9 +1,9 @@
 ---
 title: "Architecture Code Scene"
 date: 2019-05-01
-weight: 40
-draft: false
+weight: 50
 ---
+== Architecture Code Scene
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :revnumber: v0.1
@@ -15,7 +15,7 @@ draft: false
 :icons: font
 :source-highlighter: rouge
 
-== Purpose
+=== Purpose
 
 Agile development teams shall manage and diminish their technical debt. We provide instruments to increase the pay-off of refactoring measures. The
 most relevant source code parts should be refactored first. But how can we identify them?
@@ -30,7 +30,7 @@ The three area of statistical data are combined to identify the most promising a
 
 The provided tools extract the requested indicators and presents them graphically. The findings are used to support refactoring priorzsation.
 
-== Requirements
+=== Requirements
 
 . Gather changes in the repository artifacts over a specified time interval
   .. the gathered data are date of change, author of change, number of added lines and of removed lines
@@ -41,7 +41,7 @@ The provided tools extract the requested indicators and presents them graphicall
   .. use the official conventions to identify a closed ticket in a commit comment
 
 
-== Modules, Packages, Classes and Files
+=== Modules, Packages, Classes and Files
 
 [plantuml, architecture-code-scene-model, svg]
 ....

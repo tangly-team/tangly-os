@@ -50,6 +50,7 @@ import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.bus.crm.Subject;
 import net.tangly.bus.invoices.Product;
+import net.tangly.bus.invoices.ProductCode;
 import net.tangly.bus.providers.InstanceProviderInMemory;
 import net.tangly.bus.providers.Provider;
 import net.tangly.commons.lang.ReflectionUtilities;
@@ -265,12 +266,10 @@ public class CrmTsvHdl {
         List<TsvProperty<NaturalEntity, ?>> fields = createTsvEntityFields();
         fields.add(TsvProperty.ofString(LASTNAME, NaturalEntity::lastname, NaturalEntity::lastname));
         fields.add(TsvProperty.ofString(FIRSTNAME, NaturalEntity::firstname, NaturalEntity::firstname));
-        fields.add(TsvProperty.of("gender", NaturalEntity::gender, NaturalEntity::gender, e -> Enum.valueOf(GenderCode.class, e.toLowerCase()), Enum::name));
+        fields.add(TsvProperty.ofEnum(GenderCode.class, "gender", NaturalEntity::gender, NaturalEntity::gender));
         fields.add(createAddressMapping(CrmTags.Type.home));
-        fields.add(TsvProperty
-                .ofString(CRM_EMAIL_HOME, e -> e.email(CrmTags.Type.home).map(EmailAddress::text).orElse(null), (e, p) -> e.email(CrmTags.Type.home, p)));
-        fields.add(TsvProperty
-                .ofString(CRM_PHONE_MOBILE, e -> e.phoneNr(CrmTags.Type.mobile).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(CrmTags.Type.mobile, p)));
+        fields.add(emailProperty(CRM_EMAIL_HOME, CrmTags.Type.home));
+        fields.add(phoneNrProperty(CRM_PHONE_MOBILE, CrmTags.Type.mobile));
         fields.add(tagProperty(CRM_IM_LINKEDIN));
         fields.add(tagProperty(CRM_SITE_HOME));
         return TsvEntity.of(NaturalEntity.class, fields, NaturalEntity::new);
@@ -282,8 +281,7 @@ public class CrmTsvHdl {
         fields.add(tagProperty(CRM_IM_LINKEDIN));
         fields.add(tagProperty(CRM_EMAIL_WORK));
         fields.add(tagProperty(CRM_SITE_WORK));
-        fields.add(TsvProperty
-                .ofString(CRM_PHONE_WORK, e -> e.phoneNr(CrmTags.Type.work).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(CrmTags.Type.work, p)));
+        fields.add(phoneNrProperty(CRM_PHONE_WORK, CrmTags.Type.work));
         fields.add(createAddressMapping(CrmTags.Type.work));
         fields.add(TsvProperty.ofString(CRM_SCHOOL, e -> (e.containsTag(CRM_SCHOOL) ? "Y" : "N"), (e, p) -> {
             if ("Y".equals(p)) {
@@ -321,13 +319,14 @@ public class CrmTsvHdl {
 
     static TsvEntity<Product> createTsvProduct() {
         Function<CSVRecord, Product> imports = (CSVRecord record) -> new Product(get(record, ID), get(record, NAME), get(record, TEXT),
-                TsvProperty.CONVERT_BIGDECIMAL_FROM.apply(get(record, "unitPrice")), get(record, "unit"),
-                TsvProperty.CONVERT_BIGDECIMAL_FROM.apply(get(record, "vatRate")));
+                Enum.valueOf(ProductCode.class, get(record, "code").toLowerCase()), TsvProperty.CONVERT_BIGDECIMAL_FROM.apply(get(record, "unitPrice")),
+                get(record, "unit"), TsvProperty.CONVERT_BIGDECIMAL_FROM.apply(get(record, "vatRate")));
 
         List<TsvProperty<Product, ?>> fields = new ArrayList<>();
         fields.add(TsvProperty.ofString(ID, Product::id, null));
         fields.add(TsvProperty.ofString(NAME, Product::name, null));
         fields.add(TsvProperty.ofString(TEXT, Product::text, null));
+        fields.add(TsvProperty.ofEnum(ProductCode.class, "code", Product::code, null));
         fields.add(TsvProperty.ofBigDecimal("unitPrice", Product::unitPrice, null));
         fields.add(TsvProperty.ofString("unit", Product::unit, null));
         fields.add(TsvProperty.ofBigDecimal("vatRate", Product::vatRate, null));
@@ -402,6 +401,14 @@ public class CrmTsvHdl {
                 e.tag(tagName, p);
             }
         });
+    }
+
+    static <T extends CrmEntity> TsvProperty<T, String> phoneNrProperty(String tagName, CrmTags.Type type) {
+            return TsvProperty.ofString(tagName, e -> e.phoneNr(type).map(PhoneNr::number).orElse(null), (e, p) -> e.phoneNr(type, p));
+    }
+
+    static <T extends CrmEntity> TsvProperty<T, String> emailProperty(String tagName, CrmTags.Type type) {
+        return TsvProperty.ofString(tagName, e -> e.email(type).map(EmailAddress::text).orElse(null), (e, p) -> e.email(type, p));
     }
 
     static <T extends CrmEntity> TsvProperty<T, Address> createAddressMapping(@NotNull CrmTags.Type type) {
