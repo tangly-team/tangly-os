@@ -1,7 +1,7 @@
 ---
 title: "Agile Trends Switzerland 2018"
 linkTitle: "Swiss Agile 2018"
-date: 2018-05-02
+date: 2018-05-20
 ---
 
 == Agile Trends Switzerland 2018
@@ -10,7 +10,6 @@ date: 2018-05-02
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
-:icons: font
 
 image::2018-05-02-head.jpg[role=left]
 What are the main hurdles to introduce agile approaches in Swiss companies.

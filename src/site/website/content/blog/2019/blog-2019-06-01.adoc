@@ -1,7 +1,7 @@
 ---
 title: "Agile Code is Clean Code!"
 linkTitle: "Clean Code"
-date: 2019-06-01
+date: 2019-06-13
 ---
 
 == Agile Code is Clean Code!

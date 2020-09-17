@@ -1,7 +1,7 @@
 ---
 title: "Do Agile Methods - Scrum - Motivate your Team?"
 linkTitle: "Do Agile Motivate"
-date: 2016-03-01
+date: 2016-02-24
 ---
 
 == Do Agile Methods - Scrum - Motivate your Team?
@@ -10,7 +10,6 @@ date: 2016-03-01
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
-:icons: font
 
 image::2016-02-01-head.jpg[role=left]
 Well my current experience is that the answer is a sounding YES.

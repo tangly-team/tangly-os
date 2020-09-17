@@ -1,7 +1,7 @@
 ---
 title: "What you do NOT need to do in Scrum!"
 linkTitle: "No Need in Scrum"
-date: 2016-03-01
+date: 2016-12-02
 ---
 
 == What you do NOT need to do in Scrum!

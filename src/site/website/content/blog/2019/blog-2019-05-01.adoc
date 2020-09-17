@@ -1,7 +1,7 @@
 ---
 title: "Agile Architecture Principles"
 linkTitle: "Agile Architecture Principles"
-date: 2019-05-01
+date: 2019-05-06
 ---
 
 == Agile Architecture Principles

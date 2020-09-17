@@ -16,11 +16,6 @@ draft: false
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 :sectnums:
-:imagesdir: ../pics
-:icons: font
-:source-highlighter: rouge
-:pygments-style: manni
-:toc:
 
 == Audit Event Conventions
 

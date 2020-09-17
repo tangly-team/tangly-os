@@ -1,7 +1,7 @@
 ---
 title: "PMI-ACP Certification"
 linkTitle: "PMI-ACP"
-date: 2016-03-01
+date: 2016-03-18
 ---
 
 == PMI-ACP Certification
@@ -10,7 +10,6 @@ date: 2016-03-01
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
-:icons: font
 
 image::2016-07-01-head.jpg[role=left]
 I learnt quite a few new acronyms and techniques when studying for the PMI-ACP certification program.

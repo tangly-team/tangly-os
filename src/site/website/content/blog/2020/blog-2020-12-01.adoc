@@ -12,12 +12,12 @@ date: 2020-10-01
 :copyright: CC-BY-SA 4.0
 
 image::2020-12-01-head.jpg[role=left]
-At many customers I visit, I see a lot of effort being put into classification and managing bugs.
+At many customer sites I visit, I see a lot of effort being put into classifying and managing bugs.
 
 Their bug list may contain more than thousands of items, all neatly documented with screenshots, ways to reproduce and a severity and impact classification.
 
 A change management board sits every few weeks and decide which bugs have now a higher priority and should be fixed.
-In general it means an angry customer called someone at C level. Some of these bugs were discovered years ago.
+It means an angry customer called someone at C level. Some of these bugs were discovered years ago.
 
 Clearly, many hours have been invested to properly administer bugs.
 
@@ -26,6 +26,7 @@ Spending time on evaluating and administering bugs with the goal of tracking the
 Please stop doing such activities.
 
 The solution is elegant and simple: Implement the _Zero Bug Policy_.
+Stop managing bugs, start focusing on quality.
 
 === Why Bug Management Boards are Useless?
 
@@ -38,7 +39,19 @@ Zero-Bug does not mean bug-free code production; it means striving to eradicate 
 
 image::2020-12-01-fix-it-or-delete-it.png[role=left]
 The rigorous Zero-baseline approach will force us to clean our code.
-And it will force us to make the customers a little less disappointed by reducing the "buggy-ness" of the application.
+
+Let us categorize the bugs you have and deal with them accordingly.
+
+. You have a few critical bugs that crash the system or donâ€™t have a workaround.
+ Prioritize and fix those. Your customers will be very thankful.
+ Fix at least a handful of these critical problems in eacch sprint.
+. A big set of bugs that are already in production. They have been in your bug tracking system for quite a while.
+ Delete those.
+ If it is a costly problem your customers will fill a report.
+ Treat such bugs as critical bugs.
+. Establish a software craftsmanship culture.
+ Stop delivering products with known errors.
+ Your product owner should reject any feature with known errors.
 
 Bugs have a tendency to become obsolete pretty quickly in applications that are updated frequently.
 The steps to reproduce become irrelevant, the functionality changes, the impact of the bug often gets lower.
@@ -48,8 +61,12 @@ You may lose a few valid ones, but trust me, someone will report it again if itâ
 
 === Clean Code and Happy Customers
 
+[quote]
+____
 Bugs are like water leaks.
+
 If you leave them too long, they can spoil your merchandise and slow down your business.
+____
 
 Finally, to ensure that this system works.
 
@@ -58,3 +75,4 @@ Finally, to ensure that this system works.
 * As the team shifts its focus to improved quality there will be fewer of them. This is truly a binary system with no wiggle room.
 * Bugs are either fixed now or deleted, there is no severity and no haggling about the classification of the bug!
 * Are you ready to shift your focus from managing bugs to ensuring quality?
+ And if not, why should I buy your product?

@@ -1,7 +1,7 @@
 ---
 title: "A Commons View on Scrum"
 linkTitle: "A Commons View on Scrum"
-date: 2019-09-01
+date: 2019-09-17
 ---
 
 == A Commons View on Scrum

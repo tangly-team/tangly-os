@@ -1,7 +1,7 @@
 ---
 title: "Seven Pitfalls with Agile or Scrum Methods"
 linkTitle: "Agile Pitfalls"
-date: 2017-01-01
+date: 2017-01-07
 ---
 
 == Seven Pitfalls with Agile or Scrum Methods
@@ -10,7 +10,6 @@ date: 2017-01-01
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
-:icons: font
 
 image::2017-01-01-head.png[role=left]
 The post describes a presentation I gave at a company internal technical day.

@@ -1,7 +1,7 @@
 ---
 title: "Agile Component Design"
 linkTitle: "Agile Component Design"
-date: 2020-04-01
+date: 2020-04-17
 ---
 
 == Agile Component Design

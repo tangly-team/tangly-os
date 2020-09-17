@@ -1,7 +1,7 @@
 ---
 title: "List of Agile and Lean Books for Software Engineers or Students"
 linkTitle: "Agile and Lean Books"
-date: 2017-03-01
+date: 2017-03-05
 ---
 
 == List of Agile and Lean Books for Software Engineers or Students

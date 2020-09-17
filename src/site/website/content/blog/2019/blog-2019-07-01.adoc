@@ -1,7 +1,7 @@
 ---
 title: "The World is a Better Place and We Must Tackle Climate Change"
 linkTitle: "The World is a Better Place"
-date: 2019-07-01
+date: 2019-07-14
 ---
 
 == The World is a Better Place and We Must Tackle Climate Change

@@ -1,7 +1,7 @@
 ---
 title: "A Journey Implementing Digital Invoices"
 linkTitle: "Implementing Digital Invoices"
-date: 2020-07-01
+date: 2020-07-15
 ---
 
 == A Journey Implementing Digital Invoices

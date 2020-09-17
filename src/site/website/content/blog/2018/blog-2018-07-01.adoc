@@ -1,7 +1,7 @@
 ---
 title: "Architectural Decision Records ADR"
 linkTitle: "Architectural Decision Records"
-date: 2018-07-01
+date: 2018-07-05
 ---
 
 == Architectural Decision Records ADR

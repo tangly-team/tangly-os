@@ -1,7 +1,7 @@
 ---
 title: "Scrum Master is a full-time Role"
 linkTitle: "Full-time Scrum Master"
-date: 2016-03-01
+date: 2016-05-19
 ---
 
 == Scrum Master is a full-time Role
@@ -10,7 +10,6 @@ date: 2016-03-01
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
-:icons: font
 
 image::2016-05-01-head.jpg[role=left]
 I am very happy we discuss in depth the role, responsibilities and activities of a good Scrum Master.

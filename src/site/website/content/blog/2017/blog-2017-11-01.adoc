@@ -1,7 +1,7 @@
 ---
 title: "Impediment List is of Tremendous Importance"
 linkTitle: "Impediment List"
-date: 2017-09-01
+date: 2017-09-23
 ---
 
 == Impediment List is of Tremendous Importance

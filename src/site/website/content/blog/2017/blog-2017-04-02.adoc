@@ -1,7 +1,7 @@
 ---
 title: "Agile Trends Switzerland 2017: We Won"
 linkTitle: "Swiss Agile Trends 2017"
-date: 2017-04-02
+date: 2017-04-15
 ---
 
 == Agile Trends Switzerland 2017: We Won

@@ -1,7 +1,7 @@
 ---
 title: "Calibrate Your Agile Approach: Bill of Rights"
 linkTitle: "Bill of Rights"
-date: 2020-01-01
+date: 2020-01-06
 ---
 
 == Calibrate Your Agile Approach: Bill of Rights

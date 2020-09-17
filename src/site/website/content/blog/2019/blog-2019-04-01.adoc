@@ -1,7 +1,7 @@
 ---
 title: "Code Scene as Crime Scene"
 linkTitle: "Crime Scene"
-date: 2019-04-01
+date: 2019-04-13
 ---
 
 == Code Scene as Crime Scene
@@ -10,7 +10,6 @@ date: 2019-04-01
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
-:icons: font
 
 image::2019-04-01-head.jpg[role=left]
 You have a successful product and happy users.

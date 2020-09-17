@@ -1,7 +1,7 @@
 ---
 title: "Detecting Agile Bullshit"
 linkTitle: "Agile Bullshit"
-date: 2019-01-01
+date: 2019-01-13
 ---
 
 == Detecting Agile Bullshit

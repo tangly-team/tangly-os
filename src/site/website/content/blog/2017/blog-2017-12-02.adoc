@@ -1,7 +1,7 @@
 ---
 title: "Why Use Current Software Components?"
 linkTitle: "Current Components"
-date: 2017-12-02
+date: 2017-12-22
 ---
 
 == Why Use Current Software Components?
@@ -10,7 +10,6 @@ date: 2017-12-02
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
-:icons: font
 
 image::2017-12-02-head.jpg[role=left]
 Often teams discuss if their product should upgrade to the current version of used components, development tools and programming languages.

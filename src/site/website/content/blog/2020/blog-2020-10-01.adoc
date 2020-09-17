@@ -74,11 +74,12 @@ It is no more necessary to load pygment highlighter and configure CSS files.
         icons = "font"  // <4>
         ref-less = "https://less.works/[LeSS]" // <5>
 ----
-<1> select rouge as source highlighter. You should not add it to the extensions becouse since {ref-asciidoctor} version 2.0 rouge is included.
-<2> define the style used to highlighten source code
-<3> configure rouge to generate all formating data into the generated html file, avoiding any css file configuration
-<4> icons provide better looking icons for various {ref-asciidoc}} constructs
-<5> Define document attributes which are accessible to all processed documents (DRY concept for the whole site)
+<1> Select https://rouge-ruby.github.io/docs/[rouge] as source highlighter.
+ You should not add it to the extensions becouse since {ref-asciidoctor} version 2.0 rouge is included.
+<2> Define the style used to highlight source code.
+<3> Configure rouge to generate all formating data into the generated html file, avoiding any css file configuration.
+<4> Icons provide better looking icons for various {ref-asciidoc}} constructs.
+<5> Define document attributes which are accessible to all processed documents (DRY concept for the whole site).
 
 === Configuration of Docsy
 
@@ -91,6 +92,17 @@ So I need to add (if not no items are visible in the side bar).
 [code]
 ----
 cp -R ./layouts/docs ./layouts/ideas
+----
+
+==== Change layouts
+
+We had to change the partial _footer.html_ to display a better looking copyright clause.
+The original version has hard coded text not really compatible with commons creative license we are using.
+The layout is updated by overwriting the involved partial file.
+
+[code]
+-----
+cp $prjDir/src/site/website/docsy/layouts/partials/footer.html $siteDir/themes/docsy/layouts/partials
 ----
 
 === Local Search Engine

@@ -1,7 +1,7 @@
 ---
 title: "One Way to Improve Your Scrum Approach"
 linkTitle: "Improve Your Scrum"
-date: 2018-01-02
+date: 2018-01-03
 ---
 
 == One Way to Improve Your Scrum Approach

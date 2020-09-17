@@ -1,7 +1,7 @@
 ---
 link: "How to reach the Software Quality Graal?"
 linkTitle: "Quality Graal"
-date: 2018-06-01
+date: 2018-06-19
 ---
 
 == How to reach the Software Quality Graal?

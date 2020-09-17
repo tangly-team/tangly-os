@@ -1,7 +1,7 @@
 ---
 title: "Agile Approaches and Fix Price Contracts"
 linkTitle: "Agile Contracts"
-date: 2017-09-01
+date: 2017-09-02
 ---
 
 == Agile Approaches and Fix Price Contracts

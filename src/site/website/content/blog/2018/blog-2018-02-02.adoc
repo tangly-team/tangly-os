@@ -1,7 +1,7 @@
 ---
 title: "Six Levers for better Agile Product Development"
 linkTitle: "Six Levers"
-date: 2018-02-02
+date: 2018-02-21
 ---
 
 == Six Levers for better Agile Product Development

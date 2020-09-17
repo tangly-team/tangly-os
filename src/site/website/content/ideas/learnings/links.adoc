@@ -13,10 +13,10 @@ weight: 60
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-=== Scrum Links
+=== Scrum Food For Thoughts Links
 
 We are continuously looking for fresh approaches and implementing continuous improvements.
-These sites and blogs are a source of knowledge and experience
+These sites and blogs are a source of knowledge and experience.
 
 * https://www.scrumalliance.org/[Scrum Alliance]
 ** https://www.scrumalliance.org/agilematters/home/[Scrum Alliance Blog]
@@ -48,6 +48,7 @@ https://en.wikipedia.org/wiki/Ken_Schwaber[KenSchwaber] - _Read the history sect
 
 === Knowledge Facts
 
-Analyze facts and act on them - Lean and Agile are rooted in empirical methods and scientific approaches -
+Analyze facts and act on them - Lean and Agile are rooted in empirical methods and scientific approaches -.
+Facinating how our civilisation lost the belief in facts and science.
 
-* * https://ourworldindata.org[Our World in Data]
+The https://ourworldindata.org[Our World in Data] is an initiative to decide based on facts and empirical approaches.

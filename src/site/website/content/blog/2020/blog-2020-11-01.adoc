@@ -29,7 +29,7 @@ We provide an initial setup approach requiring mere minutes to add codes to your
 
 As a professional designer you have declared sets of fixed values as enumeration in your source code. Now you can extend your enumeration classes with the code interface.
 
-Additional information are available under link::../../docs/bus/businessmodels/
+Additional information are available under link::../../../docs/bus/businessmodels/
 Below the source code in modern Java is
 
 [code, java]
@@ -60,8 +60,8 @@ public enum EnumCode implements Code {
 }
 ----
 
-The above approach is a low impact transformation of your application. O
-nce your enumeration types implements the code interface you are free to migrate selected types to external persistent and extensible solutions.
+The above approach is a low impact transformation of your application.
+Once your enumeration types implements the code interface you are free to migrate selected types to external persistent and extensible solutions.
 
 === Persistent Codes
 

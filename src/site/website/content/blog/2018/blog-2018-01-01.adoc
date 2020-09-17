@@ -1,7 +1,7 @@
 ---
 title: "Why is it so Cool to Develop with Java?"
 linkTitle: "Six Levers"
-date: 2018-01-01
+date: 2018-01-02
 ---
 
 == Why is it so Cool to Develop with Java?
