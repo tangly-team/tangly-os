@@ -23,7 +23,8 @@ ____
 
 === Introduction
 
-For a developer new to a legacy software product, it is often hard to understand the existing application, determine the extent of source code and architectural decay, and identify smells and metric violations.
+For a developer new to a legacy software product, it is often hard to understand the existing application.
+He must determine the extent of source code and architectural decay, and identify smells and metric violations.
 
 Legacy applications are often critical to the business and have been in use for years, sometimes decades.
 Since the business is evolving, there is constant pressure to support additional requirements.

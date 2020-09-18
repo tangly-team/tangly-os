@@ -18,36 +18,47 @@ Are you truly using a _six years old_ technology stack?
 
 Are you already applying for a Java laggard club membership?
 
-If you are still using Java 8 you are using technologies released in Spring 2014. You are missing all the improvements in the garbage collector, runtime engine and various API.
+If you are still using Java 8 you are using technologies released in Spring 2014.
+You are missing all the improvements in the garbage collector, runtime engine and various API.
 
-Java 11 LTS was released in September 2018.  The current LTS release is one year old. You had one year to migrate to this long term solution version.
+Java 11 LTS was released in September 2018.
+The current LTS release is one year old.
+You had one year to migrate to this long term solution version.
 
-It is time to modernize the fundament of your application and invest a small amount of effort in it. The payback is really good.
+It is time to modernize the fundament of your application and invest a small amount of effort in it.
+The payback is fantastic.
 
 === Advantages
 
 * You have economical gains through
-** Major performance improvements make your application faster. Therefore you have either higher customer satisfaction or need less processing resources,
-** Major garbage collector updates make your application more predictable. The maximum amount of memory is often lower,
+** Major performance improvements make your application faster.
+ Therefore you have either higher customer satisfaction or need less processing resources,
+** Major garbage collector updates make your application more predictable.
+ The maximum amount of memory is often lower,
 ** Better behavior in container environment translates to less resource usage,
 * You have more legible and maintainable source code
 ** Since Java 8 useful new language features have been introduced, along with new tooling,
 ** Various standard API were extended with convenience methods,
 ** One important change was that internal APIs - largely those classes in packages that started with sun.misc.* - were hidden from use,
-** APIs that are not core to the JDK have also been removed in Java 11 or later. These changes may impact your application but there is a clear path to avoid these problems.
+** APIs that are not core to the JDK have also been removed in Java 11 or later.
+ These changes may impact your application but there is a clear path to avoid these problems.
 * You have to select either the long term support path or upgrade every six months the Java runtime
 ** When upgrading the choice you face is whether to use the latest version of Java, currently 13 and be prepared to upgrade every six months; or upgrade to the latest LTS 11 to give yourself up to three years to think about your next upgrade,
-** Don’t be tempted to ignore compiler warnings.  Deprecation is being taken much more seriously in this modern Java world, and both Java 10 and Java 11 removed APIs.
+** Don’t be tempted to ignore compiler warnings.
+ Deprecation is being taken much more seriously in this modern Java world, and both Java 10 and Java 11 removed APIs.
 ** In less than two years the next LTS will be released with Java 17. It is scheduled in September 2021.
 * Become more agile
 ** Once over this first upgrade, it is worth at least testing the application on the latest version of Java every 6 months, for example in CI.
-** In all cases openJDK is now the new default. Various companies - Oracle, Redhat, Amazon, Azul, IBM - provide commercial support for openJDK for different timelines. Therefore you are more flexible with your migration timeline.
+** In all cases openJDK is now the new default.
+ Various companies - Oracle, Redhat, Amazon, Azul, IBM - provide commercial support for openJDK for different timelines.
+ You are more flexible with your migration timeline.
 
 image::2019-10-01-jdk-releases.png[float="center"]
 
 === How to migrate?
 
-You do not need to implement Java modules to migrate to Java 9 or beyond. It is worth the effort to slowly support the module approach. Your architecture will become more modular and the interfaces are more clearly defined.
+You do not need to implement Java modules to migrate to Java 9 or beyond.
+It is worth the effort to slowly support the module approach. Your architecture will become more modular and the interfaces are more clearly defined.
 
 There are basically four incremental phases to fully migrate to Java 11 or later:
 

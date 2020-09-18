@@ -29,14 +29,15 @@ ____
 
 The scaling approaches I encounter at customer sites in Switzerland and Europe are
 
-* Spotify Model was popularized by Henrik Kniberg. His YouTube videos are worth watching. The banking group ING adopted the approach and made it fashionable.
-* Scrum@Scale defined by Jeff Sutherland and Scrum Alliance. Henrik Kniberg has written an interesting article stating Spotify Model is a kind of Scrum@Scale.
+* Spotify Model was popularized by Henrik Kniberg. His YouTube videos are worth watching.
+ The banking group ING adopted the approach and made it fashionable.
+* Scrum@Scale defined by Jeff Sutherland and Scrum Alliance.
+ Henrik Kniberg has written an interesting article stating Spotify Model is a kind of Scrum@Scale.
 * Nexus defined by Ken Schwaber and Scrum.org.
 * {ref-less} defined by Craig Larman and Bas Vodde. It is also supported by Scrum Alliance.
-* {ref-safe} 5.0 defined by the RUP aficionados and often trashed by Kniberg, Sutherland, Schwaber, Larmann and Vodde. At the same it is the most popular
-approach
-in quite a few countries.
-_And I would never state it is the most successful_.
+* {ref-safe} 5.0 defined by the RUP aficionados and often trashed by Kniberg, Sutherland, Schwaber, Larmann and Vodde.
+ At the same it is the most popular approach in quite a few countries.
+ _And I would never state it is the most successful_.
 
 Additional approaches exist but I did not encounter them lately.
 
@@ -48,7 +49,7 @@ ____
 *Delay your Scaling.  First Lean the ropes.  Try to descale your processes.*
 ____
 
-*Learn the ropes* with small agile teams applying Scrum, Kanban, eXtreme Programming or our own approach.
+*Learn the ropes* with small agile teams applying {ref-scrum}, {ref-kanban}, {ref-xp} or our own approach.
 Learn as much as you can through experiments before considering scaling.
 The invested capital in small experiments with small teams is tremendously cheaper than experimenting with company-wide approaches.
 
@@ -87,7 +88,7 @@ Now you are ready to experiment with scaling.
 === Avoid Common Errors
 
 Study the history and evolution of the various scaling approaches.
-In particular the changes in SAFe are an archeological treasury what they wrongly stated and how they corrected some of the identified flaws.
+In particular the changes in {ref-safe} are an archeological treasury what they wrongly stated and how they corrected some of the identified flaws.
 
 * Continuous delivery is the new approach.
 Eliminate hardening iterations, integration phases, milestones when software should be integrated.

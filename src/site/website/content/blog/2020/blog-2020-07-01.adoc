@@ -12,10 +12,11 @@ date: 2020-07-15
 :copyright: CC-BY-SA 4.0
 
 image::2020-07-01-head.png[role=left]
-Our company has the ambition to digitalize all our workflows.
+Our company has the ambition to digitalize all our workflows since our inception.
 We proudly state we never bought a printer or a fax machine.
 Analog machines should become obsolete in the digital age.
 Companies should be more environment aware and save some trees.
+See our blog link:../../2019/a-journey-to-be-a-digital-company-tangly-llc[A Journey to Be a Digital Company].
 
 Switzerland finally introduce a digital payment slip.
 It is based on a QR code and still assume you need to print it.

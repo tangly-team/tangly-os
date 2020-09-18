@@ -12,7 +12,7 @@ date: 2016-12-02
 :copyright: CC-BY-SA 4.0
 
 image::2016-12-01-head.jpg[role=left]
-I often hear discussions who is doing the "traditional" project leader tasks in Scrum.
+I often hear discussions who is doing the _traditional_ project leader tasks in Scrum.
 This is in general an excuse to state that Scrum alone cannot work and classical project leaders are still needed.
 
 Below a list of tasks you do NOT need anymore to do in {ref-scrum}.
@@ -39,7 +39,7 @@ Now you as Scrum master or agile project manager have to perform important tasks
 
 * Help removing impediments to increase velocity of team
 * Coach team to implement Scrum and reflect on their activities.
-* https://en.wikipedia.org/wiki/PDCA[Plan-Do-Check-Act] _PDCA_ principle is built into Scrum with retrospectives and sprint reviews.
+* {ref-pdca} _PDCA_ principle is built into Scrum with retrospectives and sprint reviews.
 * Coach product owner to deliver a groomed and refined backlog
 * Inform and support all project's stakeholders
 * If you reflect on these two lists it becomes obvious that the first list describes malfunctions and the second one describes mechanisms how to improve continuously - lean principles -.
@@ -51,10 +51,17 @@ Jeff Sutherland gives some interesting insights about the Scrum master
 ** Few problems: for a small team 10%, for a large team 50% of your working time,
 ** Many problems: for a small team 50%, for a large team 100% of your working time until the team reaches a flow status,
 ** A Scrum master is a change agent and supports the organization to become more agile.
-P
-ersonally I experimented with Scrum master part of the team, or Scrum master working for multiple teams. Experience has shown us that the full-time Scrum master is more effective.
+
+I experimented with the Scrum master being part of the team, or Scrum master working for multiple teams.
+Experience has shown us that the full-time Scrum master is more effective.
 
 And the {ref-less} framework has a clear rule about project managers
 
 [.text-centered]
 https://less.works/less/adoption/getting-started.html[Keep project managers away from the teams!]
+
+=== Remarks
+
+For all https://www.pmi.org/[Project Management Institute] +PMI_ fans, the institute has acquired _Disciplined Agile Delivery_ _DAD_ in 2019.
+The PMI-ACP is working on integrating agile approaches in the official PMI approach.
+

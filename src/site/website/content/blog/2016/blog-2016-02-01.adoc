@@ -15,8 +15,8 @@ image::2016-02-01-head.jpg[role=left]
 Well my current experience is that the answer is a sounding YES.
 
 Developers love to develop software using Scrum.
-The motivation and positive energy just explodes. P
-eople talk together, build as a team better products and enjoy the daily activities.
+The motivation and positive energy just explodes.
+People talk together, build as a team better products and enjoy the daily activities.
 
 Stakeholders and in particular customers or users embraces the advantages they get.
 
@@ -29,7 +29,6 @@ Say your team is developing with Scrum. We have the following roles:
 * the product owner (PO)
 
 The Scrum Team is the composition of development team, Scrum master, and product owner.
-
 
 === Stakeholders
 

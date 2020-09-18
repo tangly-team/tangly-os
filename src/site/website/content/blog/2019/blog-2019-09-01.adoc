@@ -132,23 +132,24 @@ And you shall remember https://www.craiglarman.com/wiki/index.php?title=Larman%2
 
 [quote, Craig Larman]
 ____
-Culture follows structure
+Culture follows structure.
 ____
 
-As a change agent you will together with leaders change the structure of your organization. Please be gentle and patient.
+As a change agent you will together with leaders change the structure of your organization.
+Please be gentle and patient.
 
-=== In the case of larger common-pool resources, organization in the form of multiple layers of nested enterprises, with small local CPRs at the base level
+In the case of larger common-pool resources, organization isin the form of multiple layers of nested enterprises.
+Small local CPRs at the base level.
 
 Scaling agile practices at the organization level require multiple levels.
 
 * Transparency through Scrum board,
 * Definition of Dome as contract between team and organization,
-* Visibility of source code, continuous integration, delivery and deployment of artifacts
-* Scale to product level using LeSS
+* Visibility of source code, continuous integration, delivery and deployment of artifacts,
+* Scale to product level using {ref-less}.
 
-If you are ready to scale up to the company you could consider https://bbrt.org/what-is-the-beyond-budgeting-round-table-bbrt/[Beyond Budgeting Round Table]
-_BBRT_ and https://sociocracy30.org/[Sociocracy] approaches and tailor them to your specific needs.
+If you are ready to scale up to the company you could consider {ref-bbrt}. _BBRT_ and {ref-sociocracy} approaches and tailor them to your specific needs.
 
-I rediscovered the commons rules through a presentation of https://en.wikipedia.org/wiki/Craig_Larman[Craig Larmann] at the {ref-less}
-conference 2019 in Münich.
+I rediscovered the commons rules through a presentation of https://en.wikipedia.org/wiki/Craig_Larman[Craig Larmann] at the {ref-less} conference 2019 in
+Munich.
 He inspired us to look at agile approaches through the commons lens.

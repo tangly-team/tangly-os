@@ -59,7 +59,29 @@ The documentation is still on the light side but you find the needed information
 The bonus is that {ref-asciidoctor} newer versions have native support for rouge syntax highlighter.
 It is no more necessary to load pygment highlighter and configure CSS files.
 
+=== Install the Tools
+
+My development platform is a MacBookPro and MacOS. I use https://brew.sh/[Homebrew] as a package manager.
+
+The instructions to install hugo and asciidoctor are:
+
+[code]
+----
+brew install hugo
+
+brew install asciidoctor
+gem install asciidoctor-diagram
+gem install asciidoctor-rouge
+gem install asciidoctor-html5s
+gem install asciimath
+
+brew install graphviz
+brew install plantuml
+----
+
 === Configuration of Asciidoctor
+
+Below the configuration of asciidoctor in the _config.toml_ file.
 
 [code, yaml]
 ----
@@ -122,7 +144,9 @@ offlineSearchMaxResults = 25
 
 The static website is published under {ref-site}.
 
+The source of the whole website is available under https://bitbucket.org/tangly-team/tangly-os/src/master/src/site/website/[Website Source Code].
+
 You can use relative links in your {ref-asciidoc} documents.
 Beware where the file are located by {ref-hugo} and the naming conventions.
 
-Funny is that blogger software and docsy theme are from the same company *Google*.
+Funny is that the blogger software and the docsy theme are from the same company *Google*.
