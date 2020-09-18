@@ -62,7 +62,6 @@ public class CrmVcardHdl {
      * @param directory directory to the folder containing the VCard files to import
      */
     public void importVCards(@NotNull Path directory) {
-        // TODO traverse folder and load vcard files - prefix number is oid legal entity, find by home email
         try (Stream<Path> stream = Files.walk(directory)) {
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(VCARD_EXT)).forEach(o -> importVCard(o));
         } catch (IOException e) {

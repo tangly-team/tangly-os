@@ -14,12 +14,10 @@
 package net.tangly.commons.ledger.ui;
 
 import java.time.LocalDate;
-import java.util.Collection;
 
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.bus.ledger.Account;
 import net.tangly.bus.providers.RecordProviderInMemory;
 import net.tangly.commons.vaadin.CrudActionsListener;
@@ -40,9 +38,9 @@ public class AccountsView extends ExternalEntitiesView<Account> {
      * @param mode        mode of the view
      */
     public AccountsView(@NotNull LedgerBusinessLogic ledgerLogic, @NotNull Mode mode) {
-        super(Account.class, mode, RecordProviderInMemory.of((Collection) ledgerLogic.ledger().accounts()));
-        from = LocalDate.of(LocalDate.now().getYear(), 1,1);
-        to = LocalDate.of(LocalDate.now().getYear(), 12,31);
+        super(Account.class, mode, RecordProviderInMemory.of(ledgerLogic.ledger().accounts()));
+        from = LocalDate.of(LocalDate.now().getYear(), 1, 1);
+        to = LocalDate.of(LocalDate.now().getYear(), 12, 31);
         initialize(this, null);
     }
 
@@ -52,9 +50,9 @@ public class AccountsView extends ExternalEntitiesView<Account> {
         grid.addColumn(Account::group).setKey("group").setHeader("Group").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::id).setKey("account").setHeader("Account").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::text).setKey("description").setHeader("Description").setAutoWidth(true).setResizable(true);
-        grid.addColumn(new NumberRenderer<>(o -> o.balance(from), VaadinUtils.FORMAT)).setKey("opening").setHeader("Opening").setAutoWidth(true)
+        grid.addColumn(VaadinUtils.coloredRender(o -> o.balance(from), VaadinUtils.FORMAT)).setKey("opening").setHeader("Opening").setAutoWidth(true)
                 .setResizable(true).setTextAlign(ColumnTextAlign.END);
-        grid.addColumn(new NumberRenderer<>(o -> o.balance(to), VaadinUtils.FORMAT)).setKey("balance").setHeader("Balance").setAutoWidth(true)
+        grid.addColumn(VaadinUtils.coloredRender(o -> o.balance(to), VaadinUtils.FORMAT)).setKey("balance").setHeader("Balance").setAutoWidth(true)
                 .setResizable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(Account::kind).setKey("kind").setHeader("Kind").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true);

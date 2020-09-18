@@ -34,6 +34,7 @@ public abstract class ExternalEntitiesView<T extends HasId> extends Crud<T> impl
      * Constructor of the CRUD view for a product.
      *
      * @param entityClass class of the entities displayed
+     * @param mode        mode in which the view should be displayed, the active functions will be accordingly configured
      * @param provider    provider of the class
      */
     public ExternalEntitiesView(@NotNull Class<T> entityClass, @NotNull Mode mode, @NotNull Provider<T> provider) {
@@ -61,6 +62,8 @@ public abstract class ExternalEntitiesView<T extends HasId> extends Crud<T> impl
      *
      * @param operation operation applied with the form
      * @param entity    optional entity used to prefill the form
+     * @param form      form to prefill
+     * @return the prefilled form
      */
     protected abstract FormLayout prefillFrom(@NotNull Operation operation, T entity, FormLayout form);
 

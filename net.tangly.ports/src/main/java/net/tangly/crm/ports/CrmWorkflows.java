@@ -43,6 +43,7 @@ public final class CrmWorkflows {
     public static final String SUBJECTS_TSV = "subjects.tsv";
     public static final String INVOICES = "invoices";
     public static final String JSON_EXT = ".json";
+    public static final String VCARDS_FOLDER = "vcards";
     public static final String INVOICE_NAME_PATTERN = "\\d{4}-\\d{4}-.*";
 
     private static final Logger logger = LoggerFactory.getLogger(CrmWorkflows.class);
@@ -74,13 +75,18 @@ public final class CrmWorkflows {
         handler.importInteractions(directory.resolve(INTERACTIONS_TSV));
         handler.importActivities(directory.resolve(ACTIVITIES_TSV));
         handler.importSubjects(directory.resolve(SUBJECTS_TSV));
+
         handler.importComments(directory.resolve(COMMENTS_TSV));
+
         Path invoicesFolder = directory.resolve(INVOICES);
         if (Files.exists(invoicesFolder)) {
             importInvoices(invoicesFolder);
         } else {
             logger.atWarn().log("Invoices folder {} does not exist", invoicesFolder);
         }
+
+        CrmVcardHdl crmVcardHdl = new CrmVcardHdl(crm());
+        crmVcardHdl.importVCards(directory.resolve(VCARDS_FOLDER));
     }
 
     /**

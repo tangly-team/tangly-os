@@ -90,7 +90,7 @@ public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
         entityField.setReadOnly(readonly);
         TextField firstname = VaadinUtils.createTextField("Firstname", "firstname", readonly);
         TextField lastname = VaadinUtils.createTextField("Lastname", "lastname", readonly);
-        CodeField gender = new CodeField(CodeType.of(GenderCode.class), "Gender");
+        CodeField gender = new CodeField<>(CodeType.of(GenderCode.class), "Gender");
         TextField mobilePhone = VaadinUtils.createTextField("Mobile Phone", "mobile phone number", true);
         EmailField homeEmail = new EmailField("Home Email");
         homeEmail.setReadOnly(readonly);
@@ -102,16 +102,17 @@ public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
         form.add(entityField);
 
         form.add(new HtmlComponent("br"));
-        form.add(firstname, 1);
-        form.add(lastname, 1);
-        form.add(gender);
+        form.add(firstname, lastname, gender);
+
+        if (entity.hasPhoto()) {
+            Image image = new Image(new StreamResource("photo.jpg", () -> new ByteArrayInputStream(entity.photo())), "photo");
+            image.setWidth("200px");
+            image.setHeight("300px");
+            form.add(image);
+        }
 
         form.add(new HtmlComponent("br"));
         form.add(mobilePhone, homeEmail, homeSite);
-
-        Image image = new Image(new StreamResource("photo.jpg", () -> new ByteArrayInputStream(entity.photo())), "photo");
-        image.setWidth("200px");
-        image.setHeight("200px");
 
 
         binder = new Binder<>(entityClass());

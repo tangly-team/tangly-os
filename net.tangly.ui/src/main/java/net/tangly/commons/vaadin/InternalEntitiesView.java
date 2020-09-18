@@ -47,6 +47,7 @@ public abstract class InternalEntitiesView<T extends Entity> extends Crud<T> imp
      * Constructor of the CRUD view for a subclass of entity.
      *
      * @param clazz    class of the entity to display
+     * @param mode  mode in which the view should be displayed, the active functions will be accordingly configured
      * @param provider data provider associated with the grid
      * @param registry tag type registry used to configure the tags view of the entity class
      */

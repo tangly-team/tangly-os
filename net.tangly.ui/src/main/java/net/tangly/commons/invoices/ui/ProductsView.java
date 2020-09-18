@@ -41,6 +41,7 @@ public class ProductsView extends ExternalEntitiesView<Product> {
      * Constructor of the CRUD view for a product.
      *
      * @param provider provider of the class
+     * @param mode     mode in which the view should be displayed, the active functions will be accordingly configured
      */
     public ProductsView(@NotNull Provider<Product> provider, @NotNull Mode mode) {
         super(Product.class, mode, provider);

@@ -30,6 +30,7 @@ git submodule update --init --recursive
 # create the layout for the ideas folder under content so that the files are processed
 cp -R ./layouts/docs ./layouts/ideas
 
+# improve copyright dislplay in the footer
 cp $prjDir/src/site/website/docsy/layouts/partials/footer.html $siteDir/themes/docsy/layouts/partials
 
 echo "start server with hugo server --destination public --disableFastRender -> site is accessible under localhost:1313"

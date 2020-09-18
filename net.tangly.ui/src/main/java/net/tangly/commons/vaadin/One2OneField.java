@@ -31,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
  * A composite field to display an one two one relationship instance. The attributes unique object identifier, external identifier and name are shown. The
  * button allows the change of the one 2 one relationship instance.
  *
- * @param <T> @param <T> type of the entity referenced in the one 2 one relationship
+ * @param <T> type of the entity referenced in the one 2 one relationship
  * @param <V> type of the component used to display the details or select a new entity
  */
 public class One2OneField<T extends HasOid & HasQualifiers, V extends Component & HasIdView<T>> extends CustomField<T> {

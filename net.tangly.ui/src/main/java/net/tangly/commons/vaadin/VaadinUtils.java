@@ -16,7 +16,9 @@ package net.tangly.commons.vaadin;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.util.Locale;
+import java.util.function.Function;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Composite;
@@ -24,7 +26,9 @@ import com.vaadin.flow.component.HasValue;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.renderer.ComponentRenderer;
 import org.jetbrains.annotations.NotNull;
 
 public final class VaadinUtils {
@@ -89,5 +93,21 @@ public final class VaadinUtils {
 
     public static String format(BigDecimal value) {
         return FORMAT.format(value);
+    }
+
+    public static <T> ComponentRenderer<Span, T> coloredRender(Function<T, BigDecimal> getter, NumberFormat numberFormat) {
+        return new ComponentRenderer<>((T e) -> {
+            BigDecimal v = getter.apply(e);
+            return switch (BigDecimal.ZERO.compareTo(v)) {
+                case -1 -> new Span(numberFormat.format(v));
+                case 0 -> new Span();
+                case 1 -> {
+                    Span s = new Span(numberFormat.format(v));
+                    s.getElement().getStyle().set("color", "red");
+                    yield s;
+                }
+                default -> new Span("");
+            };
+        });
     }
 }
