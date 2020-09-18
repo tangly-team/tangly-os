@@ -25,10 +25,10 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Provide workflows for ledger activiites.
  * <ul>
- *     <li>Import of the ledger account structure. If using the <a href="https://www.banan.ch">banana</a> application, select all definition rolws in
+ *     <li>Import of the ledger account structure. If using the <a href="https://www.banan.ch">banana</a> application, select all definition rows in
  *     the accounts tab and export it as <i>Data/Export Rows/Export Rows to Txt</i>. Once completed you can use for example MacOs Numbers to remove company
  *     specific information such as segments.</li>
- *     <li>Import transaction journal into the ledger. If using the <a href="https://www.banan.ch">banana</a> application, select all definition rolws in
+ *     <li>Import transaction journal into the ledger. If using the <a href="https://www.banan.ch">banana</a> application, select all transaction rows in
  *     the accounts tab and export it as <i>Data/Export Rows/Export Rows to Txt</i>. </li>
  * </ul>
  */

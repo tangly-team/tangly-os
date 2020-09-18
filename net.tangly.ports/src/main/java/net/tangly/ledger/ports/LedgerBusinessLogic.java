@@ -34,9 +34,13 @@ import org.jetbrains.annotations.NotNull;
  * Define business logic rules and functions for the ledger double entry accounting domain model.
  */
 public class LedgerBusinessLogic {
-    private static final String TURNOVER_ACCOUNT = "3";
-    private static final String EBIT_ACCOUNT = "E4";
-    private static final String EARNINGS_ACCOUNT = "E7";
+    public static final String TURNOVER_ACCOUNT = "3";
+    public static final String EBIT_ACCOUNT = "E4";
+    public static final String EARNINGS_ACCOUNT = "E7";
+    public static final String SHORT_TERM_THIRD_PARTY_CAPITAL_ACCOUNT = "20";
+    public static final String EQUITY_ACCOUNT = "28";
+    public static final String CASH_ON_HAND_ACCOUNT = "100";
+
     private static final String ASCII_DOC_EXT = ".adoc";
     private static final String PDF_EXT = ".pdf";
 
@@ -73,11 +77,31 @@ public class LedgerBusinessLogic {
                 LocalDate.parse("2016-12-31"), LocalDate.parse("2017-03-31"), LocalDate.parse("2017-06-30"), LocalDate.parse("2017-09-30"),
                 LocalDate.parse("2017-12-31"), LocalDate.parse("2018-03-31"), LocalDate.parse("2018-06-30"), LocalDate.parse("2018-09-30"),
                 LocalDate.parse("2018-12-31"), LocalDate.parse("2019-03-31"), LocalDate.parse("2019-06-30"), LocalDate.parse("2019-09-30"),
-                LocalDate.parse("2019-12-31"));
+                LocalDate.parse("2019-12-31"), LocalDate.parse("2020-03-31"), LocalDate.parse("2020-06-30"), LocalDate.parse("2020-09-30"),
+                LocalDate.parse("2020-12-31"));
     }
 
-    private BigDecimal accountChangeInTime(@NotNull String accountId, @NotNull LocalDate from, @NotNull LocalDate to) {
+    /**
+     * Return the change of the selected acount during the specified time interval.
+     *
+     * @param accountId identifier of the account which change shall be computed
+     * @param from      start of the time interval
+     * @param to        end of the itme interval
+     * @return change in the account over the time interval if found otherwise zero
+     */
+    public BigDecimal accountChangeInTime(@NotNull String accountId, @NotNull LocalDate from, @NotNull LocalDate to) {
         return ledger.accountBy(accountId).map(o -> o.balance(to).subtract(o.balance(from)).negate()).orElse(BigDecimal.ZERO);
+    }
+
+    /**
+     * Return the balance of the selected account at the given date.
+     *
+     * @param accountId identifier of the account which change shall be computed
+     * @param date      date of the account state
+     * @return the account state if found otherwise zero
+     */
+    public BigDecimal balance(@NotNull String accountId, @NotNull LocalDate date) {
+        return ledger.accountBy(accountId).map(o -> o.balance(date)).orElse(BigDecimal.ZERO);
     }
 
     public static void createPdf(@NotNull Path directory, @NotNull String filenameWithoutExtension) {

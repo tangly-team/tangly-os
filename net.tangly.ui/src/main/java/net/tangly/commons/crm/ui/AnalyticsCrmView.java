@@ -95,7 +95,7 @@ public class AnalyticsCrmView extends VerticalLayout {
         div.setText("Contracts");
         tabs.add(new Tab("Customers Turnover"), new HorizontalLayout(customersSoChart));
         tabs.add(new Tab("Contracts Turnover"), new HorizontalLayout(contractsSoChart));
-        tabs.add(new Tab("Quarterly Turnover"), new HorizontalLayout(quaterlySoChart));
+        tabs.add(new Tab("Quarterly Financials"), new HorizontalLayout(quaterlySoChart));
         tabs.initialize(tabs.tabByName("Customers Turnover").orElseThrow());
         add(new HorizontalLayout(fromDate, toDate), tabs);
     }
@@ -143,32 +143,30 @@ public class AnalyticsCrmView extends VerticalLayout {
     }
 
     private void quarterlyChart(@NotNull SOChart chart) {
-        LedgerBusinessLogic logic = new LedgerBusinessLogic(ledger);
-        DateData xValues = new DateData(logic.quarterLegends(null, null).toArray(new LocalDate[0]));
+        LedgerBusinessLogic ledgerBusinessLogic = new LedgerBusinessLogic(ledger);
+        DateData xValues = new DateData(ledgerBusinessLogic.quarterLegends(null, null).toArray(new LocalDate[0]));
         xValues.setName("Quarters");
 
         Data turnovers = new Data();
         Data ebits = new Data();
         Data earnings = new Data();
+        Data shortTermThirdPartyCapital = new Data();
+        Data equity = new Data();
+        Data cashOnHand = new Data();
+
         LocalDate start = null;
         LocalDate end = null;
         for (LocalDate date : xValues) {
             start = end;
             end = date;
-            turnovers.add(((start != null) && (end != null)) ? logic.turnover(start, end) : BigDecimal.ZERO);
-            ebits.add(((start != null) && (end != null)) ? logic.ebit(start, end) : BigDecimal.ZERO);
-            earnings.add(((start != null) && (end != null)) ? logic.earnings(start, end) : BigDecimal.ZERO);
+            turnovers.add(((start != null) && (end != null)) ? ledgerBusinessLogic.turnover(start, end) : BigDecimal.ZERO);
+            ebits.add(((start != null) && (end != null)) ? ledgerBusinessLogic.ebit(start, end) : BigDecimal.ZERO);
+            earnings.add(((start != null) && (end != null)) ? ledgerBusinessLogic.earnings(start, end) : BigDecimal.ZERO);
+            shortTermThirdPartyCapital
+                    .add((end != null) ? ledgerBusinessLogic.balance(LedgerBusinessLogic.SHORT_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() : BigDecimal.ZERO);
+            equity.add((end != null) ? ledgerBusinessLogic.balance(LedgerBusinessLogic.EQUITY_ACCOUNT, end).negate() : BigDecimal.ZERO);
+            cashOnHand.add((end != null) ? ledgerBusinessLogic.balance(LedgerBusinessLogic.CASH_ON_HAND_ACCOUNT, end) : BigDecimal.ZERO);
         }
-        turnovers.setName("Turnovers");
-        ebits.setName("Ebits");
-        earnings.setName("Earnings");
-
-        LineChart turnoversChart = new LineChart(xValues, turnovers);
-        turnoversChart.setName("Turnover per Quarter");
-        LineChart ebitsCharts = new LineChart(xValues, ebits);
-        ebitsCharts.setName("Ebit per Quarter");
-        LineChart earningsChart = new LineChart(xValues, earnings);
-        earningsChart.setName("Earnings per Quarter");
 
         XAxis xAxis = new XAxis(DataType.DATE);
         YAxis yAxis = new YAxis(DataType.NUMBER);
@@ -178,10 +176,37 @@ public class AnalyticsCrmView extends VerticalLayout {
         chartPosition.setTop(Size.percentage(20));
         rc.setPosition(chartPosition);
 
+        turnovers.setName("Turnover");
+        LineChart turnoversChart = new LineChart(xValues, turnovers);
+        turnoversChart.setName("Turnover");
         turnoversChart.plotOn(rc);
+
+        ebits.setName("EBIT");
+        LineChart ebitsCharts = new LineChart(xValues, ebits);
+        ebitsCharts.setName("EBIT");
         ebitsCharts.plotOn(rc);
+
+        earnings.setName("Earnings");
+        LineChart earningsChart = new LineChart(xValues, earnings);
+        earningsChart.setName("Earnings");
         earningsChart.plotOn(rc);
-        chart.add(turnoversChart, ebitsCharts, earningsChart);
+
+        shortTermThirdPartyCapital.setName("Short-Term Third Party Capital");
+        LineChart shortTermThirdPartyCapitalChart = new LineChart(xValues, shortTermThirdPartyCapital);
+        shortTermThirdPartyCapitalChart.setName("Short-Term Third Party Capital");
+        shortTermThirdPartyCapitalChart.plotOn(rc);
+
+        equity.setName("Equity");
+        LineChart equityChart = new LineChart(xValues, equity);
+        equityChart.setName("Equity");
+        equityChart.plotOn(rc);
+
+        cashOnHand.setName("Cash On Hand");
+        LineChart cashOnHandChart = new LineChart(xValues, cashOnHand);
+        cashOnHandChart.setName("Cash On Hand");
+        cashOnHandChart.plotOn(rc);
+
+        chart.add(turnoversChart, ebitsCharts, earningsChart, shortTermThirdPartyCapitalChart, earningsChart, cashOnHandChart);
     }
 
     private void update() {
