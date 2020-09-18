@@ -61,7 +61,7 @@ You shall by all means avoid administrative waste such as
 
 === Tips and Tricks
 
-Face2Face::
+Face 2 Face::
  Prefer physical meetings to all other communication medium.
  Use video conference and chatting tools to feel the mood of your team,
 Emergent::
@@ -70,7 +70,7 @@ Emergent::
 https://en.wikipedia.org/wiki/PDCA[Plan Do Check Act] _PDCA_::
  Embrace complex systems and try new approaches to improve your team. F
  ocus on external and internal quality,
-Process ownership to keep it alive::
+Process Ownership to Keep It Alive::
  You are not in charge of the team processes, the team is,
 https://en.wikipedia.org/wiki/Community_of_practice[Community of Practice] _PoC_::
  is an effective way to move your team to technical excellence.

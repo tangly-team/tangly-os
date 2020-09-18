@@ -1,0 +1,89 @@
+---
+title: "Reflections on Agile Fluency Model"
+linkTitle: "Agile Fluency Model"
+date: 2020-10-01
+---
+
+== Reflections on Agile Fluency Model
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2021-01-01-head.jpg[200, 400, role=left]
+
+=== Zones
+
+==== Shift Team Culture: _Focusing_ teams produce business value (2 - 6 months)
+
+The team generates their own day-to-day tasks and plan (based on their business representative’s needs).
+Team members consider their plan to be the team’s work, not individuals’ work.
+Team members share accountability for getting their plan done.
+Management considers the plan to be the team’s work rather than assigning accountability to individuals.
+
+Select team members with appropriate skills, background, and willingness to work together.
+Allocate them 100% to their team.
+
+* Create a productivity-focused shared workspace, strongly preferring a physical team room.
+ If a physical team room is infeasible, provide a richly interactive virtual workspace instead, and accept that this will be less effective.
+* Ensure that someone with expertise on business priorities and customer value is available to act as the team’s business representative.
+*  Remove impediments to effective teamwork such as competitive ranking, individual rewards, and distributed teams.
+* Coach and train team members in Focusing proficiencies.
+* Train managers to create an environment that supports teamwork  and how to manage the work system rather than individual contributions.
+
+==== Shift Team Skills: _Delivering_ teams deliver on the market cadence (3 - 24 months)
+
+Increase Productivity The team has low defect rates, so less time is wasted fixing bugs and more time is invested in making improvements.
+Increase Productivity The team’s codebase has low technical debt, which makes changes cheaper and faster.
+Increase ROI The team ships on the market cadence, capturing value as often as the market will bear
+
+When working with code and similar artifacts, team members leave its technical quality at least slightly better than they found it.
+Production releases are automated and take no more than ten minutes of manual effort.
+The team produces production-grade code without requiring a manual testing phase.
+All team members are aware of how their professional and technical skills affect their ability to accomplish the team’s goals and decrease their maintenance costs.
+They proactively seek to improve those skills.
+
+==== Shift Organizational Structure: _Optimizing_ teams lead their market (1 - 5 years)
+
+To be written
+
+==== Shift Organizational Culture: _Strengthening_ teams make their organizations stronger (unknown)
+
+To be written
+
+=== Choose Your Zone
+
+[cols="1,2,2,2,1", options="header"]
+.Table Zones
+|===
+^|Zone |Benefit |Investment |Learn From |Time to Fluency
+
+|Focusing
+|Greater visibility into teams’ work; ability to redirect.
+|Team development and work process design.
+|Scrum, Kanban, non-technical XP
+|2-6 months
+
+|Delivering
+|Low defects and high productivity.
+|Lowered productivity during technical skill development.
+|Extreme Programming, DevOps movement
+|+3-24 months
+
+|Optimizing
+|Higher-value deliveries and better product decisions.
+|Social capital expended on moving business decisions and expertise into team.
+|LeanSoftware Development, Lean Startup, Beyond Budgeting
+|+1-5 years
+
+|Strengthening
+|Cross-team learning and better organizational decisions.
+|Time and risk in developing new approaches to managing the organization.
+|Organization design and complexity theories
+|unknown
+|===
+
+=== Learnings
+
+https://martinfowler.com/articles/agileFluency.html[Agile Fluency]

@@ -14,7 +14,8 @@ date: 2019-11-04
 image::2019-11-01-head.jpg[role=left]
 Your organization has decided to introduce agile at scale in all development departments or better in the whole company.
 
-Your Chief of Agility _COA_, Chief of Digitalization _COD_ or Chief of Change _COC_ was in an expensive training and has selected the appropriate framework for your company.
+Your Chief of Agility _COA_, Chief of Digitalization _COD_ or Chief of Change _COC_ was in an expensive training.
+After a few drinks he has selected the appropriate framework for your company.
 
 Welcome to the club of companies introducing agile approaches and having no clues why they do it and how they could be successful.
 
@@ -22,14 +23,15 @@ Here some hardly learnt truths worth knowing when starting such an endeavor.
 
 [quote, Martin Fowler]
 ____
-Imposing Agile methods introduces a conflict with the values and principles that underlie Agile methods
+Imposing Agile methods introduces a conflict with the values and principles that underlie Agile methods.
 ____
 
 === Know Popular Scaling Approaches
 
 The scaling approaches I encounter at customer sites in Switzerland and Europe are
 
-* Spotify Model was popularized by Henrik Kniberg. His YouTube videos are worth watching.
+* Spotify Model was popularized by Henrik Kniberg.
+ His YouTube videos are worth watching.
  The banking group ING adopted the approach and made it fashionable.
 * Scrum@Scale defined by Jeff Sutherland and Scrum Alliance.
  Henrik Kniberg has written an interesting article stating Spotify Model is a kind of Scrum@Scale.
@@ -44,6 +46,7 @@ Additional approaches exist but I did not encounter them lately.
 === Delay Scaling
 
 The key learning is
+
 [quote]
 ____
 *Delay your Scaling.  First Lean the ropes.  Try to descale your processes.*

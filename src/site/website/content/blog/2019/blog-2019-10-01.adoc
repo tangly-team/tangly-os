@@ -43,7 +43,8 @@ The payback is fantastic.
 ** APIs that are not core to the JDK have also been removed in Java 11 or later.
  These changes may impact your application but there is a clear path to avoid these problems.
 * You have to select either the long term support path or upgrade every six months the Java runtime
-** When upgrading the choice you face is whether to use the latest version of Java, currently 13 and be prepared to upgrade every six months; or upgrade to the latest LTS 11 to give yourself up to three years to think about your next upgrade,
+** When upgrading the choice you face is whether to use the latest version of Java, currently 13 and be prepared to upgrade every six months.
+ Or upgrade to the latest LTS 11 to give yourself up to three years to think about your next upgrade,
 ** Don’t be tempted to ignore compiler warnings.
  Deprecation is being taken much more seriously in this modern Java world, and both Java 10 and Java 11 removed APIs.
 ** In less than two years the next LTS will be released with Java 17. It is scheduled in September 2021.
@@ -55,7 +56,7 @@ The payback is fantastic.
 
 image::2019-10-01-jdk-releases.png[float="center"]
 
-=== How to migrate?
+=== How to Migrate?
 
 You do not need to implement Java modules to migrate to Java 9 or beyond.
 It is worth the effort to slowly support the module approach. Your architecture will become more modular and the interfaces are more clearly defined.
