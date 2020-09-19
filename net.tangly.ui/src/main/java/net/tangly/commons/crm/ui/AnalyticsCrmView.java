@@ -17,6 +17,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
 import com.storedobject.chart.CategoryData;
@@ -32,7 +33,6 @@ import com.storedobject.chart.Size;
 import com.storedobject.chart.XAxis;
 import com.storedobject.chart.YAxis;
 import com.vaadin.flow.component.datepicker.DatePicker;
-import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
@@ -50,13 +50,12 @@ public class AnalyticsCrmView extends VerticalLayout {
     private final Crm crm;
     private final Ledger ledger;
     private final TabsComponent tabs;
-
     private SOChart contractsSoChart;
     private SOChart customersSoChart;
-    private SOChart quaterlySoChart;
+    private SOChart profitAndLossSoChart;
+    private SOChart financialSoChart;
     private LocalDate from;
     private LocalDate to;
-
 
     public AnalyticsCrmView(@NotNull Crm crm, @NotNull Ledger ledger) {
         this.crm = crm;
@@ -74,28 +73,18 @@ public class AnalyticsCrmView extends VerticalLayout {
             from = e.getValue();
             update();
         });
-
         DatePicker toDate = new DatePicker("To Date");
         toDate.setValue(to);
         toDate.addValueChangeListener(e -> {
             to = e.getValue();
             update();
         });
-
-        quaterlySoChart = new SOChart();
-        quaterlySoChart.setSize("1024px", "600px");
-        customersSoChart = new SOChart();
-        customersSoChart.setSize("1024px", "600px");
-        contractsSoChart = new SOChart();
-        contractsSoChart.setSize("1024px", "600px");
+        customersSoChart = createAndRegisterChart("Customers Turnover");
+        contractsSoChart = createAndRegisterChart("Contracts Turnover");
+        profitAndLossSoChart = createAndRegisterChart("Profit & Loss");
+        financialSoChart = createAndRegisterChart("Financials");
         update();
-
         setSizeFull();
-        Div div = new Div();
-        div.setText("Contracts");
-        tabs.add(new Tab("Customers Turnover"), new HorizontalLayout(customersSoChart));
-        tabs.add(new Tab("Contracts Turnover"), new HorizontalLayout(contractsSoChart));
-        tabs.add(new Tab("Quarterly Financials"), new HorizontalLayout(quaterlySoChart));
         tabs.initialize(tabs.tabByName("Customers Turnover").orElseThrow());
         add(new HorizontalLayout(fromDate, toDate), tabs);
     }
@@ -111,9 +100,8 @@ public class AnalyticsCrmView extends VerticalLayout {
                 amounts.add(amount);
             }
         });
-        CategoryData labels = new CategoryData(contracts.toArray(new String[0]));
-        Data data = new Data(amounts.toArray(new BigDecimal[0]));
-        NightingaleRoseChart roseChart = new NightingaleRoseChart(labels, data);
+        NightingaleRoseChart roseChart =
+                new NightingaleRoseChart(new CategoryData(contracts.toArray(new String[0])), new Data(amounts.toArray(new BigDecimal[0])));
         roseChart.setName("Contracts Turnover");
         Position chartPosition = new Position();
         chartPosition.setTop(Size.percentage(20));
@@ -132,9 +120,8 @@ public class AnalyticsCrmView extends VerticalLayout {
                 amounts.add(amount);
             }
         });
-        CategoryData labels = new CategoryData(customers.toArray(new String[0]));
-        Data data = new Data(amounts.toArray(new BigDecimal[0]));
-        NightingaleRoseChart roseChart = new NightingaleRoseChart(labels, data);
+        NightingaleRoseChart roseChart =
+                new NightingaleRoseChart(new CategoryData(customers.toArray(new String[0])), new Data(amounts.toArray(new BigDecimal[0])));
         roseChart.setName("Customers Turnover");
         Position chartPosition = new Position();
         chartPosition.setTop(Size.percentage(20));
@@ -142,31 +129,10 @@ public class AnalyticsCrmView extends VerticalLayout {
         chart.add(roseChart);
     }
 
-    private void quarterlyChart(@NotNull SOChart chart) {
+    private void profitAndLossChart(@NotNull SOChart chart) {
         LedgerBusinessLogic ledgerBusinessLogic = new LedgerBusinessLogic(ledger);
         DateData xValues = new DateData(ledgerBusinessLogic.quarterLegends(null, null).toArray(new LocalDate[0]));
         xValues.setName("Quarters");
-
-        Data turnovers = new Data();
-        Data ebits = new Data();
-        Data earnings = new Data();
-        Data shortTermThirdPartyCapital = new Data();
-        Data equity = new Data();
-        Data cashOnHand = new Data();
-
-        LocalDate start = null;
-        LocalDate end = null;
-        for (LocalDate date : xValues) {
-            start = end;
-            end = date;
-            turnovers.add(((start != null) && (end != null)) ? ledgerBusinessLogic.turnover(start, end) : BigDecimal.ZERO);
-            ebits.add(((start != null) && (end != null)) ? ledgerBusinessLogic.ebit(start, end) : BigDecimal.ZERO);
-            earnings.add(((start != null) && (end != null)) ? ledgerBusinessLogic.earnings(start, end) : BigDecimal.ZERO);
-            shortTermThirdPartyCapital
-                    .add((end != null) ? ledgerBusinessLogic.balance(LedgerBusinessLogic.SHORT_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() : BigDecimal.ZERO);
-            equity.add((end != null) ? ledgerBusinessLogic.balance(LedgerBusinessLogic.EQUITY_ACCOUNT, end).negate() : BigDecimal.ZERO);
-            cashOnHand.add((end != null) ? ledgerBusinessLogic.balance(LedgerBusinessLogic.CASH_ON_HAND_ACCOUNT, end) : BigDecimal.ZERO);
-        }
 
         XAxis xAxis = new XAxis(DataType.DATE);
         YAxis yAxis = new YAxis(DataType.NUMBER);
@@ -176,43 +142,72 @@ public class AnalyticsCrmView extends VerticalLayout {
         chartPosition.setTop(Size.percentage(20));
         rc.setPosition(chartPosition);
 
-        turnovers.setName("Turnover");
-        LineChart turnoversChart = new LineChart(xValues, turnovers);
-        turnoversChart.setName("Turnover");
-        turnoversChart.plotOn(rc);
+        LineChart turnoversChart = createLineChart("Turnover", xValues,
+                (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? ledgerBusinessLogic.turnover(start, end) : BigDecimal.ZERO, rc);
+        LineChart ebitsCharts = createLineChart("EBIT", xValues,
+                (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? ledgerBusinessLogic.ebit(start, end) : BigDecimal.ZERO, rc);
+        LineChart earningsChart = createLineChart("Earnings", xValues,
+                (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? ledgerBusinessLogic.earnings(start, end) : BigDecimal.ZERO, rc);
 
-        ebits.setName("EBIT");
-        LineChart ebitsCharts = new LineChart(xValues, ebits);
-        ebitsCharts.setName("EBIT");
-        ebitsCharts.plotOn(rc);
+        chart.add(turnoversChart, ebitsCharts, earningsChart);
+    }
 
-        earnings.setName("Earnings");
-        LineChart earningsChart = new LineChart(xValues, earnings);
-        earningsChart.setName("Earnings");
-        earningsChart.plotOn(rc);
+    private void financialsChart(@NotNull SOChart chart) {
+        LedgerBusinessLogic ledgerBusinessLogic = new LedgerBusinessLogic(ledger);
+        DateData xValues = new DateData(ledgerBusinessLogic.quarterLegends(null, null).toArray(new LocalDate[0]));
+        xValues.setName("Quarters");
 
-        shortTermThirdPartyCapital.setName("Short-Term Third Party Capital");
-        LineChart shortTermThirdPartyCapitalChart = new LineChart(xValues, shortTermThirdPartyCapital);
-        shortTermThirdPartyCapitalChart.setName("Short-Term Third Party Capital");
-        shortTermThirdPartyCapitalChart.plotOn(rc);
+        XAxis xAxis = new XAxis(DataType.DATE);
+        YAxis yAxis = new YAxis(DataType.NUMBER);
 
-        equity.setName("Equity");
-        LineChart equityChart = new LineChart(xValues, equity);
-        equityChart.setName("Equity");
-        equityChart.plotOn(rc);
+        RectangularCoordinate rc = new RectangularCoordinate(xAxis, yAxis);
+        Position chartPosition = new Position();
+        chartPosition.setTop(Size.percentage(20));
+        rc.setPosition(chartPosition);
 
-        cashOnHand.setName("Cash On Hand");
-        LineChart cashOnHandChart = new LineChart(xValues, cashOnHand);
-        cashOnHandChart.setName("Cash On Hand");
-        cashOnHandChart.plotOn(rc);
+        LineChart shortTermThirdPartyCapitalChart = createLineChart("Short-Term Third Party Capital", xValues,
+                (LocalDate start, LocalDate end) -> (end != null) ?
+                        ledgerBusinessLogic.balance(LedgerBusinessLogic.SHORT_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() : BigDecimal.ZERO, rc);
+        LineChart longTermThirdPartyCapitalChart = createLineChart("LOng-Term Third Party Capital", xValues, (LocalDate start, LocalDate end) -> (end != null) ?
+                ledgerBusinessLogic.balance(LedgerBusinessLogic.LONG_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() : BigDecimal.ZERO, rc);
+        LineChart cashOnHandChart = createLineChart("Cash On Hand", xValues,
+                (LocalDate start, LocalDate end) -> (end != null) ? ledgerBusinessLogic.balance(LedgerBusinessLogic.CASH_ON_HAND_ACCOUNT, end) :
+                        BigDecimal.ZERO, rc);
+        LineChart equityChart = createLineChart("Equity", xValues,
+                (LocalDate start, LocalDate end) -> (end != null) ? ledgerBusinessLogic.balance(LedgerBusinessLogic.EQUITY_ACCOUNT, end).negate() :
+                        BigDecimal.ZERO, rc);
 
-        chart.add(turnoversChart, ebitsCharts, earningsChart, shortTermThirdPartyCapitalChart, earningsChart, cashOnHandChart);
+        chart.add(shortTermThirdPartyCapitalChart, cashOnHandChart, longTermThirdPartyCapitalChart, equityChart);
+    }
+
+    private SOChart createAndRegisterChart(String label) {
+        SOChart chart = new SOChart();
+        chart.setSize("1200px", "600px");
+        tabs.add(new Tab(label), new HorizontalLayout(chart));
+        return chart;
+    }
+
+    private LineChart createLineChart(String name, DateData xValues, BiFunction<LocalDate, LocalDate, BigDecimal> compute, RectangularCoordinate rc) {
+        Data data = new Data();
+        data.setName(name);
+        LocalDate start;
+        LocalDate end = null;
+        for (LocalDate date : xValues) {
+            start = end;
+            end = date;
+            data.add(compute.apply(start, end));
+        }
+        LineChart lineChart = new LineChart(xValues, data);
+        lineChart.setName(name);
+        lineChart.plotOn(rc);
+        return lineChart;
     }
 
     private void update() {
         update(customersSoChart, this::customersChart);
         update(contractsSoChart, this::contractsChart);
-        update(quaterlySoChart, this::quarterlyChart);
+        update(profitAndLossSoChart, this::profitAndLossChart);
+        update(financialSoChart, this::financialsChart);
     }
 
     private void update(@NotNull SOChart chart, @NotNull Consumer<SOChart> populate) {

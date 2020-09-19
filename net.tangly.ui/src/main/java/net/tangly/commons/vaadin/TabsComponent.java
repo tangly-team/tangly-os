@@ -37,6 +37,7 @@ public class TabsComponent extends VerticalLayout {
             selectedPage.setVisible(true);
         });
         selectedPage = tabsToPages.get(tab);
+        tabs.setSelectedTab(tab);
         selectedPage.setVisible(true);
         add(tabs, pages);
     }

@@ -38,6 +38,7 @@ public class LedgerBusinessLogic {
     public static final String EBIT_ACCOUNT = "E4";
     public static final String EARNINGS_ACCOUNT = "E7";
     public static final String SHORT_TERM_THIRD_PARTY_CAPITAL_ACCOUNT = "20";
+    public static final String LONG_TERM_THIRD_PARTY_CAPITAL_ACCOUNT = "2A";
     public static final String EQUITY_ACCOUNT = "28";
     public static final String CASH_ON_HAND_ACCOUNT = "100";
 

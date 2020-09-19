@@ -61,6 +61,7 @@ public class CrmBusinessLogic {
     }
 
     public BigDecimal contractAmountWithoutVat(@NotNull Contract contract, LocalDate from, LocalDate to) {
+        System.out.println(contract.oid() + " (" + from + " - " + to +")");
         return crm.invoices().items().stream().filter(o -> (o.contract().oid() == contract.oid()) && DateUtilities.isWithinRange(o.dueDate(), from, to))
                 .map(Invoice::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
     }

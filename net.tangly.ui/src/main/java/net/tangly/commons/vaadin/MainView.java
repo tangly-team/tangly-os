@@ -129,7 +129,7 @@ public class MainView extends VerticalLayout {
         MenuItem ledger = menuBar.addItem("Financials");
         SubMenu ledgerSubMenu = ledger.getSubMenu();
         ledgerSubMenu.addItem("Ledger", e -> select(ledgerView));
-        ledgerSubMenu.addItem("Turnovers", e -> select(analyticsCrmView));
+        ledgerSubMenu.addItem("Analytics", e -> select(analyticsCrmView));
 
         MenuItem admin = menuBar.addItem("Admin");
         SubMenu adminSubmenu = admin.getSubMenu();
