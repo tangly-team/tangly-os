@@ -1,0 +1,89 @@
+---
+title: "Talk Money"
+linkTitle: "Talk Money"
+date: 2021-03-01
+---
+
+== Talk Money
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2021-05-01-head.jpg[200, 400, role=left]
+
+You have an incredible idea how to improve your company's development process.
+But nobody listens to you.
+It is time to speak management lingua.
+
+Show your organization you understand the financial aspects of your proposal and have analyzed the risks and opportunity costs.
+
+Here we provide an example with well-known analysis methods.
+
+=== Your Proposal
+
+Your company spend 40 % of the resources to fix quality issues and errors.
+You postulate that introducing continuous integration, clean code, quality metrics, TDD, and refactoring could improve the situation and diminishes the effort to fix errors by 5% a year during the next five years and culminate with at 25 % less unpaid effort in five years.
+
+We assume you have 100 developers, each working productively 1600 hours per year, 8 hours per day and 40 hours per week.
+The internal costs of a hour is 100 and the external income is 150.
+The 100 developers are organized in 15 agile teams.
+
+Your proposal is
+
+First year::
+ 5 days training at a cost of 400 per developer and day and opportunity costs for 5 days
+ 2 K per developer for hardware upgrades
+ 2 days coaching per team per months therefore we need 1.5 coach, we assume that coaching days are only 50% productive time
+ 100 K for server licenses to support the new techniques.
+Second year::
+ 2 days coaching per team per month therefore we need 1.5 coach, we assume that coaching days are only 50% productive time
+ 100 K for server licenses to support the new techniques.
+Third, fourth and fifth year::
+ 1 day coaching per team per month therefore we need 0.75 coach, we assume that coaching days are only 50% productive time.
+ You assume you had know-how transfer the last two years and have grow internal experts.
+ You still have 10 days coaching per team per year to discuss new approaches
+ 100 K for server licenses to support the new techniques.
+
+=== Simple Calculation
+
+K is a shorthand for thousands, M is a shorthand for millions
+
+=== Investment Costs
+
+first year
+developer costs: 2 K + 2 K + 5 days * 8 * 100 + 10 days * 8 * 100 = 16 K
+department costs: 100 * 16 K + 550 K = 2150 K
+second year
+developer costs: 10 * 8 * 100 = 8 K
+department costs: 100 * 8 K + 550 K = 1350 K
+third, fourth and fifth year
+developer costs: 5 * * 8 * 100 = 4 K
+department costs: 100 * 8 K + 375 K = 1175 K
+2150 K + 1350 K + 3 * 1175 K = 7025 K (or 7 M)
+
+=== Gains through Investment
+
+2.5 % + 7.5 % + 12.5 % + 17.5 % + 22.5 % = 62.5 % * 16000 K = 10 M
+The sums are 0.4 M + 1.2 M + 2.0 M + 2.8 M + 3.6 M
+After end of fifth year the gain is at least 25% or 4 M per year
+Because the improvement of 5% is only reached at the end of the year you have only half the gain in average over the whole year.
+ROI = (Gain of Investment - Cost of Investment ) / Const of Investment
+
+(10 M - 7 M) / 7 M = 43%
+
+See wikipedia ROI article for a detailed discussion.
+
+=== Discounted Cash-Flow
+
+DPV = \sum_{t=0}^{N} \frac{FV_t}{(1+r)^{t}} The discounted present value DPV of the future value FV,  r is the interest rate or discount rate, which reflects the cost of tying up capital and may also allow for the risk that the payment may not be received in full and
+t is the time in years before the future cash flow occurs.
+
+See wikipedia discounted cash-flow article for a detailed discussion.
+
+We assume a risk free interest rate of 5% to compute the present value of future positive and negative cash-flows.
+
+=== Final Words
+
+To be written.

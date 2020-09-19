@@ -1,0 +1,143 @@
+---
+title: "LeSS Lessons Learnt"
+linkTitle: "LeSS Lessons"
+date: 2021-02-01
+---
+
+== LeSS Lessons Learnt
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2021-02-01-head.jpg[200, 400, role=left]
+
+Scaling Agile, Lean and {ref-scrum} to the whole product development department is hard work.
+You start a change journey in murky waters.
+Best to communicate a lot, strengthen your teams and have total support of upper management.
+Technical agile coaching usefully describes the work I do.
+Agile coaching helps your business to become more successful, often improve the way you plan and deliver software.
+
+Technical agile coaching focuses on how people write code and deliver high quality products.
+
+My aim is the same as other agile coaches. I improve the agility of the organizations I work with. I use coaching, mentoring, teaching and facilitation techniques just as other coaches do.
+
+My main focus is on the way the code is written, the design is defined and the architecture is formulated.
+
+=== Agile Approach
+
+My own interpretation of agile as doctrine is:
+
+Reduce the distance between problems and problem-solvers, practice Gemba
+Take smaller steps, collect data, validate every step, update approach
+Clean up as you go
+Lead and cycle time is a measure of the organizational agility. Track them.
+
+Do not ask for permission when you want to do continuous improvement. You are supposed to improve.
+This is a core responsibility of your team.
+
+You have the retrospectives to plan your improvements, and you must allocate time for implementing the improvement in every sprint.
+{ref-scrum} is clear, at least one improvement measure is a high priority backlog item in the next sprint.
+
+=== Ways of working
+
+The following three levels of coaching are commonly needed:
+
+==== Organizational Coaching
+
+A coach works with multiple teams and the management to improve the organization and its structure.
+A coach typically focuses on:
+
+Having a clear vision of how an LeSS organization could be:
+
+* Organizational structure and design
+* {ref-less}
+* Role of management
+* Adoption and goals setting
+* Managing an organizational improvement backlog
+* Changing management practices from controlling day-to-day work to building capability
+* Managing work: product backlogs and how the organization manages them
+* Dealing with interruptions
+* Human Resource practices such as appraisals and career paths
+* Facilitating organizational release/roadmap planning and retrospectives
+
+==== Team Coaching (or LeSS coaching)
+
+A coach works with one or a few teams to improve their team-working and LeSS practices.
+It is common for a coach to take on the Scrum Master role.
+A team coach typically focuses on:
+
+* Team responsibilities with self-managing teams
+* Facilitation
+* Improving the team’s decision making and conflict resolution
+* Transparency in the team
+* Making organizational impediments visible
+* Improving the relationship between the Team and the Product Owner
+* Product Ownership (of both the team, the PO, and other stakeholders)
+* Role and contribution of the team’s management
+* Improve Scrum practices (and technical practices)
+* Educate and coach the team’s (future) Scrum Master
+
+==== Technical Practices Coaching
+
+A coach works with (or on) a team on their actual codebase in order to improve the technical practices and adopt agile development techniques such as simple design, refactoring, unit testing, test-driven development and acceptance test-driven development. A coach typically focuses on:
+
+Discovering “code/design smells”. Places where code/design could be improved.
+Explaining modern, “clean” code that is simple and easier to change and maintain.
+Refactoring “smells” into clean code.
+Writing unit tests.
+Test-driven development.
+Test Automation
+Continuous integration and continuous delivery
+Specification by Example (Acceptance Test-Driven Development)
+Efficient and effective working practices (IDE, automation)
+Applying design patterns
+
+In all our mandates one major activity is improving legacy code.
+
+[.text-center]
+Legacy code is *Code without tests*
+
+[.text-center]
+Legacy code is *Profitable code that we feel afraid to change*
+
+=== How Much Coaching?
+
+The most successful LeSS adoptions we’ve see had the following structure:
+
+[.text-center]
+*One internal and one external coach*
+
+This pair provides the overview of the {ref-less} adoption.
+They both coach management but are also involved with team and technical coaching.
+
+External team coaches who help the teams become better and focus on training the Scrum Masters.
+
+External technical coaches who focus on training internal technical coaches
+
+Have some technical coaches work with the teams, but let them focus on training internal coaches.
+After that reduce (not eliminate!) the external technical coaching or let the external coach move to a new area.
+
+=== Be Patient, The Time Horizon is Years
+
+* Trust your people
+* Create opportunities
+* Establish a learning culture
+* Let the team use internal social pressure
+* Eliminate specialization, push mastery
+* At the beginning follow the LeSS rules
+* Extended responsibility, rounded products provides a room and freedom for better decisions
+
+=== Remember
+
+{ref-less} is {ref-scrum}, it is Large Scaled Scrum
+Feature teams are economical and cross-functional
+Technical excellence is the essence of a quality product
+One product owner for the whole product provides focus
+
+The product owner is where the money is.
+Depending on your organization put him where the budget comes from.
+
+Move component owner to become component mentor.
+He is responsible to teach others how to adapt and evolve the component.

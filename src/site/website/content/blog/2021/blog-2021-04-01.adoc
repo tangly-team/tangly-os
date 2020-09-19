@@ -1,0 +1,94 @@
+---
+title: "Agile Leadership"
+linkTitle: "Agile Leadership"
+date: 2021-03-01
+---
+
+== Agile Leadership
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2021-04-01-head.jpg[200, 400, role=left]
+
+Everybody is talking about being agile.
+
+Companies institutionalize agile change programs and send all their collaborators in training to learn the agile way.
+
+What does that mean?
+
+How should I as a manager work the agile way?
+Does this agile way exits or is it simply a fad created by the consulting industry?
+
+This article provides some pointers and hypotheses what agile leadership could be?
+
+Fell free to experiment and refine your successful approach to be agile as an organization.
+
+[quote]
+____
+Organizational agility cannot exceed the level of personal leadership agility of those with the most influence in an organization.
+
+Because agile leadership involves ongoing personal development, it is not something that can be mastered in a single training course.
+____
+
+Agile Leaders engage, empathize, and serve the team at the place of work.
+Serving the team is all the rage these days. You hear or read about Servant Leadership at every turn. But serving the team is too often interpreted as waiting for the team to ask for help. Rather than wait for the team, go to the Gemba — the actual place of work¹. Get out of your office and engage with the team. Help them as they deliver. See their problems first hand. You will know exactly what they are working on. It will become obvious how you can help. You start helping and playing the part only you as a leader can fill. This is true service to the team by being a contributing member of the team.
+
+Growing your team is critical.
+By engaging shoulder to shoulder with your teams, you can help them grow.
+As a leader, you can teach them how to navigate complexity.
+You must engender an ability in your team members to think using the scientific method.
+It is impossible to teach every possible scenario your teams will encounter.
+Instead of teaching them how to probe, sense, and respond.
+This will give them critical abilities to solve complex problems on their own.
+And it builds self-organizing skills in your teams.
+
+Leading by Example to nurture resilient change
+
+Co-select with the teams proficient and experienced agile coaches and Scrum masters
+
+Promote purpose, autonomy, mastery, accountability, strong social connection, small wins
+
+
+Emphasis on
+Information radiators
+Colocation
+Radical transparency
+Job rotations, team liaisons, community of practices
+
+Servant Leader
+
+[quote, Peter Drucker]
+____
+Management is doing things right; leadership is doing the right things.
+____
+
+Is knowledgeable about agile values, approaches and practices
+Understand and apply the Scrum, Kanban and lean, Spotify model frameworks
+Develop people and teams - Self organizing teams Leadership styles, coaching and mentoring, facilitation
+Manage products with agility - Forecasting and release planing, product value, business strategy
+Develop and deliver products professionally
+Evolve the agile organization - organizational design and structure, emporium, evidence based management
+Takes a collaborative continuous improvement approach to organizational effectiveness
+
+
+Hinder value stream organizations and cross-functional teams - Please stop defining component teams -
+Do give tasks to individual collaborators instead of going through the product owner
+Ask progress or control questions during daily Scrum
+Ask control questions or systematically participate to retrospectives
+Promote the mindset that people are exchangeable - see mythical man/months - and anybody can be a good Scrum master
+Criticize craftsmanship approaches such as TDD, DDD, pair programming, continuous integration and delivery
+
+
+Trained in agile values and approaches
+
+Advocate technical excellence
+
+Trust their teams
+
+Work actively to remove impediments by supporting process and structural changes in direction of value streams
+
+
+Agile leadership program from Scrum Alliance and Scrum.org.

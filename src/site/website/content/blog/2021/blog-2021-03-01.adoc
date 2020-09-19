@@ -1,0 +1,108 @@
+---
+title: "Modern Java Development"
+linkTitle: "Modern Java Development"
+date: 2021-03-01
+---
+
+== Modern Java Development
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2021-03-01-head.jpg[200, 400, role=left]
+Java development won traction since the decision to release every six months a new version to the community.
+Preview and incubator features promote feedback from the community and users.
+
+Some tool builders such as JetBrains are working proactively and provide support for JDK in developments.
+Other tool maintainers such as JaCoCo are dreadfully being the release cycle.
+
+We learnt to deal with the new speed and how to tackle the laggards.
+Some experiences were quite painful.
+Below our findings and our current focus to develop.
+
+=== Legibility Matters
+
+Programmers learnt the last decade that legibility and brevity of programming languages matter.
+The Java Coin project was initiated to reduce the verbosity of the Java language mainly through syntactic sugar.
+As a programmer I should not be forced to write statements the compiler could infer.
+
+Examples of improvements are
+
+* diamond operators _to avoid writing two times the same generic parameter declarations_,
+* try with resources _to avoid complicated finally blocks to close resources_,
+* multiple catch of exceptions _to avoid writing multiple time the same error handling block_,
+* var local variables _to avoid complex declarations of  local variables_,
+* default methods in interfaces _to avoid declaring the same method in multiple classes_,
+* Strings as switch selector _to write readable code instead of huge if statements_,
+* Underscore in numerical constants _to increase legibility_.
+
+Deeper changes are
+
+* New date API simplifying the handling of date and time logic.
+The solution is based on the learnings of the https://www.joda.org/joda-time/[Joda] time library.
+
+=== Useful Constructs
+
+Modern Java has introduced powerful constructs to write legible and maintainable code. Modern Java code is quite different from Java 5 code.
+
+Java Modules::
+ Dependencies management supported at language level.
+ _The https://en.wikipedia.org/wiki/Ada_(programming_language)/[Ada] programming language has support for module since 1985_.
+Streams and Lambda::
+ Support of functional programming approaches
+ Streams are declarative and support internal iterators.
+ _The Booch Ada component library supported internal iterators since 1985_.
+Record::
+ Very compact notation to define a data class and transparent handling of properties
+ Immutable objects
+ Modern naming for getters and setters
+Sealed Types::
+ Interesting way to restrict inheritance to a set of selected classes.
+ Very helpful for library designers.
+ You can publish an interface in the public API and limit the classes implementing this interface.
+Reflection versus Lambda::
+ References to methods and constructors are part of the lambda extension.
+ The _LambdaMetafactory_ class allows to create a reference at runtime.
+ Therefore reflection operations can be replaced by lambda expressions.
+ The code is more performant and has security issues.
+Text Blocks::
+ Finally we can write legible multi-lines strings.
+
+=== Cumbersome Aspects
+
+We have still open wounds in the legibility and elegance of the Java programming languages.
+
+* Unsolved legibility problems through annotations polluting your domain model,
+* Null values,
+* Fluent interface when setting multiple properties in an instance,
+* Missing support for modifiable properties (read-only properties have initial support in the record construct),
+* Missing logging interface similar to http://www.slf4j.org/[slf4j],
+* Reified generics to have access to generic types during runtime.
+
+=== Next Improvements?
+We have the first signs of possible improvements.
+A more concise notation for getters and setters::
+ The record extension finally provides a more concise and legible convention for getter and setters.
+ I hope the convention will be used in all new library classes.
+
+[code, java]
+----
+Type property();
+void property(Type property);
+----
+
+Stop using checked exceptions and replace them with runtime exception::
+ Lambda expressions cannot handle checked exceptions.
+ Only runtime exceptions can be thrown in a lambda expression.
+ Experience with other programming languages show that checked exceptions do not provide gains in the quality of delivered code.
+Pattern matching with deconstruction::
+ First pattern matching constructs are available in switch and if statements.
+ Discussions are underway to extend pattern matching with object deconstruction.
+Value Types::
+ Value types would be a huge improvement in performance and support of modern processor architecture if the Valhalla project delivers.
+
+The only caution we have with modern Java development is the sluggish catch-up of open source tools and libraries.
+For example {ref-gradle} needed five years to provide module support in the Java plugin.
+Gradle 6.4 was the first version really supporting Java modules.

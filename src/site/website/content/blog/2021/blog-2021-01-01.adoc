@@ -1,7 +1,7 @@
 ---
 title: "Reflections on Agile Fluency Model"
 linkTitle: "Agile Fluency Model"
-date: 2020-10-01
+date: 2021-01-01
 ---
 
 == Reflections on Agile Fluency Model
@@ -12,12 +12,22 @@ date: 2020-10-01
 :copyright: CC-BY-SA 4.0
 
 image::2021-01-01-head.jpg[200, 400, role=left]
+Agile fluency model is a powerful abstraction to better understand your agile transition.
+It does not matter which flavor of agile you are deploying in your organization; in all cases the agile fluency model can be applied.
+
+The agile fluency model has a powerful message about agile and technical excellence.
+The second zone of the model is all about software craftsmanship and {ref-xp}.
 
 === Zones
 
+The model defines four zones in which your company could thrive.
+You are free to chose the zone best suited for you organization.
+Remember the zones are additive.
+If you target the third zone your teams shall also be fluent in all practices of the first and second zone.
+
 ==== Shift Team Culture: _Focusing_ teams produce business value (2 - 6 months)
 
-The team generates their own day-to-day tasks and plan (based on their business representative’s needs).
+The team generates their own day-to-day tasks and plan based on their business representative’s needs.
 Team members consider their plan to be the team’s work, not individuals’ work.
 Team members share accountability for getting their plan done.
 Management considers the plan to be the team’s work rather than assigning accountability to individuals.
@@ -31,6 +41,8 @@ Allocate them 100% to their team.
 *  Remove impediments to effective teamwork such as competitive ranking, individual rewards, and distributed teams.
 * Coach and train team members in Focusing proficiencies.
 * Train managers to create an environment that supports teamwork  and how to manage the work system rather than individual contributions.
+
+
 
 ==== Shift Team Skills: _Delivering_ teams deliver on the market cadence (3 - 24 months)
 
@@ -46,11 +58,18 @@ They proactively seek to improve those skills.
 
 ==== Shift Organizational Structure: _Optimizing_ teams lead their market (1 - 5 years)
 
-To be written
+Fluent Optimizing teams understand what their market wants, what your business needs, and how to meet those needs.
+Or, as in a startup environment, they know what they need to learn and how to go about learning it.
+In contrast to Delivering teams, Optimizing teams not only have the ability to deliver to market, they also know what to deliver to market.
 
 ==== Shift Organizational Culture: _Strengthening_ teams make their organizations stronger (unknown)
 
-To be written
+Where Optimizing teams have the ability to understand and fulfill the needs of their market, Strengthening teams also play a larger role in their organization.
+
+Strengthening teams contribute to their organization in three ways.
+First, they understand how they are part of a larger system.
+They understand how their purpose aligns with other teams’ to achieve a greater strategy.
+They actively work to make that strategy more successful.
 
 === Choose Your Zone
 
@@ -74,7 +93,7 @@ To be written
 |Optimizing
 |Higher-value deliveries and better product decisions.
 |Social capital expended on moving business decisions and expertise into team.
-|LeanSoftware Development, Lean Startup, Beyond Budgeting
+|Lean Software Development, Lean Startup, Beyond Budgeting
 |+1-5 years
 
 |Strengthening
@@ -86,4 +105,27 @@ To be written
 
 === Learnings
 
-https://martinfowler.com/articles/agileFluency.html[Agile Fluency]
+When Introducing Agile::
+ One of the biggest factors affecting team fluency is organizational support. To continue the bus metaphor, the team has to ride the bus to their fluency zone.
+ No one can do it for them. But the organization has to buy the bus ticket.
+ An organization that expects fluency without providing appropriate support is bound to be disappointed.
+ Even worse, insufficient support can cause turnover and create a cynical corporate culture that hinders improvements.
+ Before embarking on your fluency journey, be sure your organization is prepared to offer the support the journey needs.
+When Sustaining Agile::
+ It’s rare for stable teams to lose fluency on their own.
+ In our experience, it is an external disruption that causes fluency loss.
+ The most common cause of fluency loss is when new management decides that agile approaches do not fit their vision.
+ Without organizational support and the ability to continue practicing what they’ve learned, team fluency erodes quickly.
+ This is often accompanied by loss of expertise as dissatisfied team members seek new positions.
+ Turnover is a related cause of fluency loss.
+ A team that gains or loses too many members may have trouble sustaining what it’s learned.
+ This is a particular problem for organizations that assemble new teams for every project.
+Agile Fluency and Scrum::
+ Agile and Scrum requires long-living and stable teams.
+ Agile at organizational level can only work if the upper and middle management transitioned to agile thinking and handling.
+ The {ref-less} community is vocal how destructive wrong management decision can be.
+ Agile development is a team sport, so fluency is a trait of the team, not individual team members.
+ Fluency is more a matter of habits than skills.
+ Discipline is king.
+
+You find a detailed description of the model under https://martinfowler.com/articles/agileFluency.html[Agile Fluency].

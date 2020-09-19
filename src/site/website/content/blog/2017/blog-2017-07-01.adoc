@@ -61,6 +61,13 @@ You shall by all means avoid administrative waste such as
 
 === Tips and Tricks
 
+[quote, Geoff Watts, Scrum Mastery]
+____
+A good Scrum Master helps a Scrum Team survive in an organizations’ culture.
+A great Scrum Master helps change the culture so Scrum Teams can thrive.
+____
+
+
 Face 2 Face::
  Prefer physical meetings to all other communication medium.
  Use video conference and chatting tools to feel the mood of your team,
