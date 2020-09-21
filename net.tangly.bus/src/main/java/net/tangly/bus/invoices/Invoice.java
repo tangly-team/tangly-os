@@ -149,7 +149,7 @@ public class Invoice implements HasEditableQualifiers {
      * @return flag if the invoice has multiple VAT rates
      */
     public boolean hasMultipleVatRates() {
-        return vatAmounts().entrySet().stream().filter(o -> o.getValue().compareTo(BigDecimal.ZERO) != 0).count() > 1;
+        return this.items().stream().filter(o -> o.isItem()).map(o -> o.product().vatRate()).distinct().count() > 1;
     }
 
     /**

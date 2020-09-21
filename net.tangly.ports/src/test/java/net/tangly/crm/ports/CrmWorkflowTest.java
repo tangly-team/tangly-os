@@ -48,9 +48,11 @@ class CrmWorkflowTest {
     // @Tag("localTest")
     void testCompanyTsvCrm() {
         CrmWorkflows crmWorkflows = new CrmWorkflows(new Crm());
-        crmWorkflows.importCrmEntities(Path.of("/Users/Shared/tangly"));
-
+        Path root = Path.of("/Users/Shared/tangly");
+        crmWorkflows.importCrmEntities(root);
+        crmWorkflows.crm().invoices().items().forEach(o -> crmWorkflows.exportInvoiceToPdf(root, o));
     }
+
 
     @Test
     void testTsvCrm() throws IOException {

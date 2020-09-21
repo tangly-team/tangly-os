@@ -13,22 +13,30 @@
 
 package net.tangly.invoices.ports;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.FileSystem;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.Comparator;
+import java.util.Locale;
 import java.util.Map;
+import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+import com.google.common.jimfs.Configuration;
+import com.google.common.jimfs.Jimfs;
 import net.codecrete.qrbill.generator.Strings;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceLine;
 import net.tangly.commons.utilities.AsciiDocHelper;
-import org.asciidoctor.Asciidoctor;
-import org.asciidoctor.OptionsBuilder;
+import net.tangly.commons.utilities.AsciiDoctorHelper;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,79 +55,87 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
     private static final Logger logger = LoggerFactory.getLogger(InvoiceAsciiDoc.class);
     private static final BigDecimal HUNDRED = new BigDecimal("100");
 
+    private final ResourceBundle bundle;
+
+    public InvoiceAsciiDoc() {
+        bundle = ResourceBundle.getBundle("net.tangly.invoices.ports.InvoiceAsciiDoc", Locale.ENGLISH);
+    }
+
     @Override
-    public void exports(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
-        try (PrintWriter writer = new PrintWriter(invoicePath.toFile(), StandardCharsets.UTF_8)) {
-            AsciiDocHelper helper = new AsciiDocHelper(writer);
-
-            writer.println("image::trefoil.svg[100,100,align=\"center\"]");
-            writer.println();
-            helper.header("Invoice", 2);
-
-            helper.tableHeader(null, "frame=\"none\", grid=\"none\", options=\"noheader\", stripes=\"none\", cols=\"2,4,2\"");
-            helper.tableRow(addressText(invoice.invoicingEntity()), "", addressText(invoice.invoicedEntity()));
-            helper.tableEnd();
-
-            helper.tableHeader(null, "stripes=\"none\", options=\"noheader\", cols=\"4,2,4,2\"");
-            helper.tableRow("Invoice Number", invoice.id(), "Invoice Date", invoice.invoicedDate().toString());
-            helper.tableRow("", "", "Invoice Due Date", invoice.dueDate().toString());
-            helper.tableEnd();
-
-            writer.println("*" + invoice.text() + "*");
-            writer.println();
-
-            helper.tableHeader(null, "options=\"header\", grid=\"none\", frame=\"none\", stripes=\"none\", cols=\"4,^1, >1,>1\"", "Position", "Quantity",
-                    "Price", "Amount (CHF)");
-            invoice.lines().stream().sorted(Comparator.comparingInt(InvoiceLine::position)).forEach(o -> helper
-                    .tableRow((o.isAggregate() ? italics(o.text()) : o.text()), o.isItem() ? format(o.quantity()) : "", format(o.unitPrice()),
-                            o.isAggregate() ? italics(format(o.amount())) : format(o.amount())));
-            createVatDeclarations(helper, invoice);
-            helper.tableEnd();
-            writer.println();
-
-            helper.tableHeader(null, "frame=\"none\",grid=\"none\", options=\"noheader\", cols=\"2,4\"");
-            helper.tableRow("Bank Connection",
-                    "IBAN: " + invoice.invoicingConnection().iban() + NEWLINE + "BIC: " + invoice.invoicingConnection().bic() + " (" +
-                            invoice.invoicingConnection().institute() + ")");
-            helper.tableEnd();
-
-            helper.tableHeader(null, "frame=\"none\",grid=\"none\", options=\"noheader\", cols=\"2,4\"");
-            helper.tableRow("Company ID:", invoice.invoicedEntity().id());
-            helper.tableRow("Company VAT Number:", invoice.invoicedEntity().vatNr());
-            helper.tableEnd();
-
-            if (!Strings.isNullOrEmpty(invoice.paymentConditions())) {
-                writer.append("Payment Conditions").append(" ").append(invoice.paymentConditions()).println();
+    public void exports(@NotNull Invoice invoice, @NotNull Path invoiceFolder, @NotNull Map<String, Object> properties) {
+        try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
+            Files.createDirectory(fs.getPath("/tmp/"));
+            try (InputStream input = getClass().getClassLoader().getResourceAsStream("net/tangly/invoices/ports/trefoil.svg")) {
+                Files.copy(input, fs.getPath("/tmp", "trefoil.svg"), StandardCopyOption.REPLACE_EXISTING);
             }
-        } catch (Exception e) {
-            logger.atError().setCause(e).log("Error during invoice asciiDoc generation {}", invoicePath);
+            Path asciidocFile = fs.getPath("/tmp", invoice.name() + AsciiDoctorHelper.ASCII_DOC_EXT);
+            try (PrintWriter writer = new PrintWriter(Files.newOutputStream(asciidocFile), true, StandardCharsets.UTF_8)) {
+                AsciiDocHelper helper = new AsciiDocHelper(writer);
+                writer.println(":imagesdir: /Users/Shared/tangly/reports");
+                writer.println();
+                writer.println("image::trefoil.svg[100,100,align=\"center\"]");
+                writer.println();
+                helper.header(bundle.getString("invoice"), 2);
+
+                helper.tableHeader(null, "frame=\"none\", grid=\"none\", options=\"noheader\", stripes=\"none\", cols=\"2,4,2\"");
+                helper.tableRow(addressText(invoice.invoicingEntity()), "", addressText(invoice.invoicedEntity()));
+                helper.tableEnd();
+
+                helper.tableHeader(null, "stripes=\"none\", options=\"noheader\", cols=\"4,2,4,2\"");
+                helper.tableRow(bundle.getString("invoiceNumber"), invoice.id(), bundle.getString("invoiceDate"), invoice.invoicedDate().toString());
+                helper.tableRow("", "", bundle.getString("invoiceDueDate"), invoice.dueDate().toString());
+                helper.tableEnd();
+
+                writer.println("*" + invoice.text() + "*");
+                writer.println();
+
+                helper.tableHeader(null, "options=\"header\", grid=\"none\", frame=\"none\", stripes=\"none\", cols=\"4,^1, >1,>1\"",
+                        bundle.getString("position"), bundle.getString("quantity"), bundle.getString("price"), bundle.getString("amount"));
+                invoice.lines().stream().sorted(Comparator.comparingInt(InvoiceLine::position)).forEach(o -> helper
+                        .tableRow((o.isAggregate() ? italics(o.text()) : o.text()), o.isItem() ? format(o.quantity()) : "", format(o.unitPrice()),
+                                o.isAggregate() ? italics(format(o.amount())) : format(o.amount())));
+                createVatDeclarations(helper, invoice);
+                helper.tableEnd();
+                writer.println();
+
+                helper.tableHeader(null, "frame=\"none\",grid=\"none\", options=\"noheader\", cols=\"2,4\"");
+                helper.tableRow(bundle.getString("bankConnection"),
+                        bundle.getString("iban") + ": " + invoice.invoicingConnection().iban() + NEWLINE + bundle.getString("bic") + ": " +
+                                invoice.invoicingConnection().bic() + " (" + invoice.invoicingConnection().institute() + ")");
+                helper.tableEnd();
+
+                helper.tableHeader(null, "frame=\"none\",grid=\"none\", options=\"noheader\", cols=\"2,4\"");
+                helper.tableRow(bundle.getString("companyId") + ":", invoice.invoicedEntity().id());
+                helper.tableRow(bundle.getString("companyVat") + ":", invoice.invoicedEntity().vatNr());
+                helper.tableEnd();
+
+                if (!Strings.isNullOrEmpty(invoice.paymentConditions())) {
+                    writer.append(bundle.getString("paymentConditions")).append(" ").append(invoice.paymentConditions()).println();
+                }
+            } catch (Exception e) {
+                logger.atError().setCause(e).log("Error during invoice asciiDoc generation {}", invoiceFolder);
+            }
+            // currently need to be performed in the default filesystem to work
+            AsciiDoctorHelper.createPdfWithLocalFile(asciidocFile, invoiceFolder, invoice.name());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        createPdf(invoicePath);
     }
 
-    public static void createPdf(@NotNull Path invoicePath) {
-        System.setProperty("jruby.compat.version", "RUBY1_9");
-        System.setProperty("jruby.compile.mode", "OFF");
-        try (Asciidoctor asciidoctor = Asciidoctor.Factory.create()) {
-            Map<String, Object> options = OptionsBuilder.options().inPlace(true).backend("pdf").asMap();
-            asciidoctor.convertFile(invoicePath.toFile(), options);
-        }
-    }
-
-    private static void createVatDeclarations(AsciiDocHelper helper, Invoice invoice) {
+    private void createVatDeclarations(@NotNull AsciiDocHelper helper, @NotNull Invoice invoice) {
         helper.tableRow("", "", "", "");
-        helper.tableRow("Total without VAT", "", "", format(invoice.amountWithoutVat()));
+        helper.tableRow(bundle.getString("totalWithoutVat"), "", "", format(invoice.amountWithoutVat()));
         if (invoice.hasMultipleVatRates()) {
             String vats = invoice.vatAmounts().entrySet().stream()
                     .map(o -> o.getKey().multiply(HUNDRED).stripTrailingZeros().toPlainString() + "% : " + o.getValue().stripTrailingZeros().toPlainString())
                     .collect(Collectors.joining(", ", "(", ")"));
-            helper.tableRow(italics("VAT Amount " + vats), "", "", italics(format(invoice.vat())));
+            helper.tableRow(italics(bundle.getString("vatAmount") + " " + vats), "", "", italics(format(invoice.vat())));
         } else {
-            helper.tableRow(italics("VAT Amount"), "",
+            helper.tableRow(italics(bundle.getString("vatAmount")), "",
                     italics(invoice.uniqueVatRate().orElseThrow().multiply(HUNDRED).stripTrailingZeros().toPlainString()) + "%",
                     italics(format(invoice.vat())));
         }
-        helper.tableRow(bold("Total"), "", "", bold(format(invoice.amountWithVat())));
+        helper.tableRow(bold(bundle.getString("total")), "", "", bold(format(invoice.amountWithVat())));
     }
 
     private static String addressText(@NotNull LegalEntity entity) {

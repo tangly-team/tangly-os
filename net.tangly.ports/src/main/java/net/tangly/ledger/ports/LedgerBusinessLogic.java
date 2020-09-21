@@ -13,21 +13,13 @@
 
 package net.tangly.ledger.ports;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.UncheckedIOException;
 import java.math.BigDecimal;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.List;
 
 import net.tangly.bus.ledger.Ledger;
-import org.asciidoctor.Asciidoctor;
-import org.asciidoctor.Attributes;
-import org.asciidoctor.AttributesBuilder;
-import org.asciidoctor.Options;
-import org.asciidoctor.OptionsBuilder;
+import net.tangly.commons.utilities.AsciiDoctorHelper;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -42,9 +34,6 @@ public class LedgerBusinessLogic {
     public static final String EQUITY_ACCOUNT = "28";
     public static final String CASH_ON_HAND_ACCOUNT = "100";
 
-    private static final String ASCII_DOC_EXT = ".adoc";
-    private static final String PDF_EXT = ".pdf";
-
     private final Ledger ledger;
 
     public LedgerBusinessLogic(@NotNull Ledger ledger) {
@@ -57,8 +46,8 @@ public class LedgerBusinessLogic {
 
     public void createLedgerReport(@NotNull Path directory, String filenameWithoutExtension, LocalDate from, LocalDate to) {
         ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(ledger);
-        report.create(from, to, directory.resolve(filenameWithoutExtension + ASCII_DOC_EXT));
-        createPdf(directory, filenameWithoutExtension);
+        report.create(from, to, directory.resolve(filenameWithoutExtension + AsciiDoctorHelper.ASCII_DOC_EXT));
+        AsciiDoctorHelper.createPdf(directory, filenameWithoutExtension);
     }
 
     public BigDecimal turnover(@NotNull LocalDate from, @NotNull LocalDate to) {
@@ -103,19 +92,5 @@ public class LedgerBusinessLogic {
      */
     public BigDecimal balance(@NotNull String accountId, @NotNull LocalDate date) {
         return ledger.accountBy(accountId).map(o -> o.balance(date)).orElse(BigDecimal.ZERO);
-    }
-
-    public static void createPdf(@NotNull Path directory, @NotNull String filenameWithoutExtension) {
-        System.setProperty("jruby.compat.version", "RUBY1_9");
-        System.setProperty("jruby.compile.mode", "OFF");
-        try (Asciidoctor asciidoctor = Asciidoctor.Factory.create();
-             OutputStream out = Files.newOutputStream(directory.resolve(filenameWithoutExtension + PDF_EXT))) {
-            String asciidoc = Files.readString(directory.resolve(filenameWithoutExtension + ASCII_DOC_EXT));
-            Attributes attributes = AttributesBuilder.attributes().get();
-            Options options = OptionsBuilder.options().inPlace(true).attributes(attributes).backend("pdf").toStream(out).get();
-            asciidoctor.convert(asciidoc, options);
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
     }
 }

@@ -56,8 +56,6 @@ public class InvoiceQrCode implements InvoiceGenerator {
         bill.setBillInformation(createSwicoBillInformation(invoice).encodeAsText());
         // reference is the usual reference number of Swiss payment slips
         bill.setReference(Payments.createISO11649Reference(ISO11649ReferenceFormat.matcher(invoice.id()).replaceAll("")));
-        // human readable information text
-        bill.setUnstructuredMessage(invoice.text());
 
         try (PDFCanvas canvas = new PDFCanvas(invoicePath, PDFCanvas.NEW_PAGE_AT_END)) {
             QRBill.draw(bill, canvas);
@@ -85,7 +83,7 @@ public class InvoiceQrCode implements InvoiceGenerator {
         SwicoBillInformation swico = new SwicoBillInformation();
         swico.setInvoiceDate(invoice.invoicedDate());
         swico.setInvoiceNumber(invoice.id());
-        swico.setVatNumber(invoice.invoicingEntity().id());
+        swico.setVatNumber(swicoVatNumber(invoice.invoicingEntity().id()));
         swico.setCustomerReference(invoice.invoicedEntity().id());
 
         List<SwicoBillInformation.RateDetail> details =
@@ -112,8 +110,12 @@ public class InvoiceQrCode implements InvoiceGenerator {
             qrAddress.setHouseNo(null);
             qrAddress.setPostalCode(address.postcode());
             qrAddress.setTown(address.locality());
-            qrAddress.setCountryCode(address.country());
+           qrAddress.setCountryCode(address.country());
         });
         return qrAddress;
+    }
+
+    private static String swicoVatNumber(String vatNumber) {
+        return vatNumber.replaceAll("[^\\d]","");
     }
 }

@@ -53,13 +53,13 @@
         },
         {
             "product": {
-                "unitPrice": 25,
+                "unitPrice": "25",
                 "unit": "unit",
-                "vatRate": 0,
+                "vatRate": "0",
                 "description": "Examination work per student",
                 "id": "5004"
             },
-            "quantity": 19,
+            "quantity": "19",
             "position": 2,
             "text": "Studenten mündliche Prüfung"
         }

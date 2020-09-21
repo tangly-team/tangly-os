@@ -42,6 +42,7 @@ public final class CrmWorkflows {
     public static final String ACTIVITIES_TSV = "activities.tsv";
     public static final String SUBJECTS_TSV = "subjects.tsv";
     public static final String INVOICES = "invoices";
+    public static final String REPORTS = "reports";
     public static final String JSON_EXT = ".json";
     public static final String VCARDS_FOLDER = "vcards";
     public static final String INVOICE_NAME_PATTERN = "\\d{4}-\\d{4}-.*";
@@ -49,9 +50,11 @@ public final class CrmWorkflows {
     private static final Logger logger = LoggerFactory.getLogger(CrmWorkflows.class);
     private final Pattern invoicePattern;
     private final Crm crm;
+    private final CrmBusinessLogic crmBusinessLogic;
 
     public CrmWorkflows(@NotNull Crm crm) {
         this.crm = crm;
+        this.crmBusinessLogic = new CrmBusinessLogic(crm);
         invoicePattern = Pattern.compile(INVOICE_NAME_PATTERN);
     }
 
@@ -143,6 +146,10 @@ public final class CrmWorkflows {
             Path invoicePath = resolvePath(o, directory);
             invoiceJson.exports(o, invoicePath.resolve(o.name() + JSON_EXT), Collections.emptyMap());
         });
+    }
+
+    public void exportInvoiceToPdf(@NotNull Path directory, @NotNull Invoice invoice) {
+        crmBusinessLogic.exportInvoiceDocument(invoice, resolvePath(invoice, directory.resolve(REPORTS)), true, true);
     }
 
     /**

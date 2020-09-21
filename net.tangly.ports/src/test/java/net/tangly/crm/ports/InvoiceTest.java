@@ -32,6 +32,7 @@ import net.tangly.bus.invoices.InvoiceItem;
 import net.tangly.bus.invoices.Product;
 import net.tangly.bus.invoices.ProductCode;
 import net.tangly.bus.invoices.Subtotal;
+import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.invoices.ports.InvoiceAsciiDoc;
 import net.tangly.invoices.ports.InvoiceQrCode;
 import net.tangly.invoices.ports.InvoiceZugFerd;
@@ -45,32 +46,28 @@ class InvoiceTest {
 
     @Test
     void writeAsciiDocReport() {
-        Path invoicesDir = Paths.get("/tmp/");
+        Path invoicesDir = Paths.get("/Users/Shared/tmp");
 
-        Path invoicePath = invoicesDir.resolve("2017-001-invoice.adoc");
-        Path invoiceOutputPath = invoicesDir.resolve("2017-001-invoice.pdf");
         Invoice invoice = newRegularInvoice();
-        new InvoiceAsciiDoc().exports(invoice, invoicePath, Collections.emptyMap());
+        Path invoiceOutputPath = invoicesDir.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
+        new InvoiceAsciiDoc().exports(invoice, invoicesDir, Collections.emptyMap());
         new InvoiceQrCode().exports(invoice, invoiceOutputPath, Collections.emptyMap());
         new InvoiceZugFerd().exports(invoice, invoiceOutputPath, Collections.emptyMap());
 
-        invoicePath = invoicesDir.resolve("2017-002-invoice.adoc");
-        invoiceOutputPath = invoicesDir.resolve("2017-002-invoice.pdf");
         invoice = newTeachingInvoice();
-        new InvoiceAsciiDoc().exports(invoice, invoicePath, Collections.emptyMap());
+        invoiceOutputPath = invoicesDir.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
+        new InvoiceAsciiDoc().exports(invoice, invoicesDir, Collections.emptyMap());
         new InvoiceQrCode().exports(invoice, invoiceOutputPath, Collections.emptyMap());
         new InvoiceZugFerd().exports(invoice, invoiceOutputPath, Collections.emptyMap());
 
-        invoicePath = invoicesDir.resolve("2017-003-invoice.adoc");
-        invoiceOutputPath = invoicesDir.resolve("2017-003-invoice.pdf");
         invoice = newComplexInvoice();
-        new InvoiceAsciiDoc().exports(invoice, invoicePath, Collections.emptyMap());
+        invoiceOutputPath = invoicesDir.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
+        new InvoiceAsciiDoc().exports(invoice, invoicesDir, Collections.emptyMap());
         new InvoiceQrCode().exports(invoice, invoiceOutputPath, Collections.emptyMap());
         new InvoiceZugFerd().exports(invoice, invoiceOutputPath, Collections.emptyMap());
 
         assertThat(Files.exists(invoicesDir)).isTrue();
         assertThat(Files.isDirectory(invoicesDir)).isTrue();
-        assertThat(Files.exists(invoicePath)).isTrue();
         assertThat(Files.exists(invoiceOutputPath)).isTrue();
     }
 
@@ -128,13 +125,13 @@ class InvoiceTest {
     public static Invoice newComplexInvoice() {
         Product coaching = new Product("0001", "Agile coaching", "", ProductCode.work, new BigDecimal(1400), "day", VAT_REGULAR);
         Product project = new Product("0002", "Technical project management", "", ProductCode.work, new BigDecimal("1400"), "day", VAT_REGULAR);
-        Product travelExpenses = new Product("9900", "Travel Expenses", "", ProductCode.work, BigDecimal.ONE, "CHF", BigDecimal.ZERO);
+        Product travelExpenses = new Product("9900", "Travel Expenses", "", ProductCode.expenses, BigDecimal.ONE, "CHF", BigDecimal.ZERO);
 
         Invoice invoice = newInvoice("2017-0003", "Coaching contract Planta 20XX-5946 und ARE-20XX-6048");
 
         invoice.add(new InvoiceItem(1, coaching, "GIS goes Agile project", new BigDecimal("4")));
         invoice.add(new InvoiceItem(2, coaching, "Java architecture coaching project", new BigDecimal("1.5")));
-        invoice.add(new Subtotal(3, "Subtotal Project Leading GEO 2017 83200 Planta 20XX-5946", List.of(invoice.getAt(1), invoice.getAt(2))));
+        invoice.add(new Subtotal(3, "Subtotal Leading GEO 2017 83200 Planta 20XX-5946", List.of(invoice.getAt(1), invoice.getAt(2))));
 
         invoice.add(new InvoiceItem(4, coaching, "OGD technical project management", new BigDecimal("2.25")));
         invoice.add(new Subtotal(5, "Subtotal Agile Coaching 3130 0 80000", List.of(invoice.getAt(4))));
@@ -156,6 +153,7 @@ class InvoiceTest {
         contract.sellee().address(CrmTags.Type.work).ifPresent(contract::address);
         Invoice invoice = new Invoice();
         invoice.id(id);
+        invoice.name(invoice.id() + "-Invoice");
         invoice.contract(contract);
         invoice.invoicedDate(LocalDate.parse("2018-01-01"));
         invoice.dueDate(LocalDate.parse("2018-01-31"));

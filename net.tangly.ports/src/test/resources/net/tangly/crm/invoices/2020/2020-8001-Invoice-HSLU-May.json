@@ -40,13 +40,13 @@
     "text": "Vorlesung Software Architecture and Techniques SWAT 2020-02-22 bis 2020-05-31 basierend auf Vertragsbestätigung vom 05 Februar 2020",
     "items": [{
         "product": {
-            "unitPrice": 190,
+            "unitPrice": "190",
             "unit": "hour",
-            "vatRate": 0,
+            "vatRate": "0",
             "description": "Agile training at recognized technical university",
             "id": "5002"
         },
-        "quantity": 49,
+        "quantity": "49",
         "position": 1,
         "text": "Vorlesung Software Architecture and Techniques (Kost/Kotr 160\u2019000)"
     }]

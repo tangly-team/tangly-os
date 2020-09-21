@@ -21,6 +21,7 @@ import java.util.Collections;
 import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.invoices.Invoice;
+import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.commons.utilities.DateUtilities;
 import net.tangly.invoices.ports.InvoiceAsciiDoc;
 import net.tangly.invoices.ports.InvoiceQrCode;
@@ -31,8 +32,6 @@ import org.jetbrains.annotations.NotNull;
  * Define business logic rules and functions for the CRM domain model. It connects the CRM entities with the invoices component.
  */
 public class CrmBusinessLogic {
-    private static final String EXTENSION = ".pdf";
-
     private final Crm crm;
 
     public CrmBusinessLogic(@NotNull Crm crm) {
@@ -43,13 +42,14 @@ public class CrmBusinessLogic {
      * Export an invoice to a file.
      *
      * @param invoice     invoice to be exported
-     * @param invoicePath path of the file where the invoice will exported
+     * @param invoiceFolder path of the file where the invoice will exported
      * @param withQrCode  flag if the Swiss QR cde should be added to the invoice document
      * @param withEN16931 flag if the EN16931 digital invoice should be added to the invoice document
      */
-    public void exportInvoiceDocument(@NotNull Invoice invoice, @NotNull Path invoicePath, boolean withQrCode, boolean withEN16931) {
+    public void exportInvoiceDocument(@NotNull Invoice invoice, @NotNull Path invoiceFolder, boolean withQrCode, boolean withEN16931) {
         InvoiceAsciiDoc asciiDocGenerator = new InvoiceAsciiDoc();
-        asciiDocGenerator.exports(invoice, invoicePath, Collections.emptyMap());
+        asciiDocGenerator.exports(invoice, invoiceFolder, Collections.emptyMap());
+        Path invoicePath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
         if (withQrCode) {
             InvoiceQrCode qrGenerator = new InvoiceQrCode();
             qrGenerator.exports(invoice, invoicePath, Collections.emptyMap());
@@ -61,7 +61,6 @@ public class CrmBusinessLogic {
     }
 
     public BigDecimal contractAmountWithoutVat(@NotNull Contract contract, LocalDate from, LocalDate to) {
-        System.out.println(contract.oid() + " (" + from + " - " + to +")");
         return crm.invoices().items().stream().filter(o -> (o.contract().oid() == contract.oid()) && DateUtilities.isWithinRange(o.dueDate(), from, to))
                 .map(Invoice::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
     }

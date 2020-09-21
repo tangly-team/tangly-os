@@ -40,13 +40,13 @@
     "text": "Kurzeinsatz in der Weiterbildung 2015-12-03",
     "items": [{
         "product": {
-            "unitPrice": 140,
+            "unitPrice": "140",
             "unit": "hour",
-            "vatRate": 0,
+            "vatRate": "0",
             "description": "Agile training at recognized technical university",
             "id": "5001"
         },
-        "quantity": 4,
+        "quantity": "4",
         "position": 1,
         "text": "Vorlesung Enterprise Application (Shop Architecture) - Kotr/Kost 11185"
     }]

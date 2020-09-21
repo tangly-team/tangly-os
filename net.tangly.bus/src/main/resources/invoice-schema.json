@@ -61,15 +61,13 @@
           "type": "string"
         },
         "unitPrice": {
-          "type": "number",
-          "minimum": 0
+          "type": "string"
         },
         "unit": {
           "type": "string"
         },
         "vatRate": {
-          "type": "number",
-          "minimum": 0
+          "type": "string"
         }
       },
       "required": [
@@ -107,8 +105,7 @@
               "$ref": "#/definitions/product"
             },
             "quantity": {
-              "type": "number",
-              "minimum": 0
+              "type": "string"
             },
             "required": [
               "product",
