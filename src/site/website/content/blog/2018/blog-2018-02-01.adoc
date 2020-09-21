@@ -10,7 +10,7 @@ date: 2018-02-09
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2018-10-02-head.jpg[role=left]
+image::2018-02-01-head.jpg[role=left]
 The Scrum guide was revised in 2016 and got clarification concerning the core values.
 I was thrilled.
 Talking about values and mental models you must have to successfully introduce and be agile is awesome.

@@ -11,7 +11,7 @@ date: 2018-03-12
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2018-05-02-head.jpg[role=left]
+image::2018-03-02-head.jpg[role=left]
 How can agile approaches be applied to deliver solutions in a government environment?
 
 Here an example of a GIS open data portal successfully developed using agile approaches such as Kanban, lean product and technical excellence.

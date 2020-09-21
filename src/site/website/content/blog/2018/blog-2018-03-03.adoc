@@ -11,7 +11,7 @@ date: 2018-03-14
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2018-05-02-head.jpg[role=left]
+image::2018-03-03-head.jpg[role=left]
 Why do we define metrics and KPI?
 
 First we want to find out how good the build-in quality of our software artifacts is.

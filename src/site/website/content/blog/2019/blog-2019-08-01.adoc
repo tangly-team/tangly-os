@@ -11,7 +11,7 @@ date: 2019-08-12
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2019-05-01-head.jpg[role=left]
+image::2019-08-01-head.jpg[role=left]
 You are applying the agile, lean approach to your software product development.
 Your teams use Scrum or Kanban to deliver running software every two weeks.
 
