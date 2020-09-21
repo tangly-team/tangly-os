@@ -138,15 +138,15 @@ public class LedgerTsvHdl {
                         transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
                                 new BigDecimal(amount), splits, text, reference);
                     } catch (NumberFormatException e) {
-                        log.error("not a legal amount {}", amount, e);
+                        log.atError().setCause(e).log("{}: not a legal amount {}", date, amount);
                     }
 
                 } else {
                     try {
                         transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
-                                new BigDecimal(amount), text, reference);
+                                Strings.isNullOrEmpty(amount) ? BigDecimal.ZERO : new BigDecimal(amount), text, reference);
                     } catch (NumberFormatException e) {
-                        log.error("not a legal amount {}", amount, e);
+                        log.atError().setCause(e).log("{}: not a legal amount {}", date, amount);
                     }
 
                     record = records.hasNext() ? records.next() : null;

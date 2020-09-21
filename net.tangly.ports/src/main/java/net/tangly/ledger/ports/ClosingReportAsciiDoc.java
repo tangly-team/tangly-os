@@ -59,7 +59,7 @@ public class ClosingReportAsciiDoc {
 
     public void create(LocalDate from, LocalDate to, Writer writer) {
         final AsciiDocHelper helper = new AsciiDocHelper(writer);
-        helper.header("Balance Sheet", 1);
+        helper.header("Balance Sheet", 2);
         generateResultTableFor(helper, ledger.assets(), from, to, "Assets");
         generateResultTableFor(helper, ledger.liabilities(), from, to, "Liabilities");
         generateResultTableFor(helper, ledger.profitAndLoss(), from, to, "Profits and Losses");
@@ -71,7 +71,7 @@ public class ClosingReportAsciiDoc {
         }
         helper.tableEnd();
 
-        helper.header("Transactions", 1);
+        helper.header("Transactions", 3);
         helper.tableHeader("Transactions", "cols=\"20, 20, 70 , 15, 15, >20, >10\"", "Date", "Voucher", "Description", "Debit", "Credit", "Amount",
                 "VAT"
         );
@@ -80,8 +80,8 @@ public class ClosingReportAsciiDoc {
     }
 
     private static void generateResultTableFor(AsciiDocHelper helper, List<Account> accounts, LocalDate from, LocalDate to, String category) {
-        helper.header(category, 2);
-        helper.tableHeader(category, "cols=\"25, 150, 20, >25, >25\"", "Account", "Description", "Kind", "Balance", "Initial Balance");
+        helper.header(category, 3);
+        helper.tableHeader(category, "cols=\"20, 100, 25, >25, >25\"", "Account", "Description", "Kind", "Balance", "Initial Balance");
         accounts.forEach(o -> createBalanceRow(helper, o, from, to));
         helper.tableEnd();
     }

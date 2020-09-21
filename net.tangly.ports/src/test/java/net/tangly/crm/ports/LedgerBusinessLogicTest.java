@@ -17,11 +17,14 @@ import java.io.IOException;
 import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.List;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.ledger.Ledger;
+import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.ledger.ports.LedgerBusinessLogic;
 import net.tangly.ledger.ports.LedgerWorkflows;
 import org.junit.jupiter.api.Test;
@@ -32,6 +35,23 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Test the business logic of the ledger domain model. An in-memory file system is set with a Swiss ledger definition and transactions files.
  */
 class LedgerBusinessLogicTest {
+
+    @Test
+    // @Tag("localTest")
+    public void createReports() {
+        LedgerWorkflows ledgerWorkflows = new LedgerWorkflows(new Ledger());
+        ledgerWorkflows.importLedger(Paths.get("/Users/Shared/tangly/"));
+        LedgerBusinessLogic ledgerLogic = new LedgerBusinessLogic(ledgerWorkflows.ledger());
+
+        Path report = Paths.get("/Users/Shared/tangly/reports/ledger");
+        ledgerLogic.createLedgerReport(report, "tangly-" + 2016, LocalDate.of(2015, 11, 1), LocalDate.of(2016, 12, 31));
+        List.of(2017, 2018, 2019, 2020).forEach(
+          o -> {
+              ledgerLogic.createLedgerReport(report, "tangly-" + o, LocalDate.of(o, 1, 1), LocalDate.of(o, 12, 31));
+          }
+        );
+    }
+
     @Test
     public void turnoverEbitAndEarningsTest() throws IOException {
         final String filenameWithoutExtension = "2016-period";

@@ -13,7 +13,10 @@
 
 package net.tangly.ledger.ports;
 
+import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.math.BigDecimal;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.List;
@@ -48,6 +51,11 @@ public class LedgerBusinessLogic {
         ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(ledger);
         report.create(from, to, directory.resolve(filenameWithoutExtension + AsciiDoctorHelper.ASCII_DOC_EXT));
         AsciiDoctorHelper.createPdf(directory, filenameWithoutExtension);
+        try {
+            Files.delete(directory.resolve(filenameWithoutExtension + AsciiDoctorHelper.ASCII_DOC_EXT));
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
     }
 
     public BigDecimal turnover(@NotNull LocalDate from, @NotNull LocalDate to) {

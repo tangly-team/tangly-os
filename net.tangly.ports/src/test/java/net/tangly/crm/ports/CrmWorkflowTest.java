@@ -24,6 +24,7 @@ import net.tangly.bus.core.TagTypeRegistry;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
+import net.tangly.ledger.ports.LedgerBusinessLogic;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
