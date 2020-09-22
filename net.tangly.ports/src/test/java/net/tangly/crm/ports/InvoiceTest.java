@@ -21,6 +21,7 @@ import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Currency;
 import java.util.List;
+import java.util.Locale;
 
 import net.tangly.bus.core.Address;
 import net.tangly.bus.crm.BankConnection;
@@ -50,19 +51,19 @@ class InvoiceTest {
 
         Invoice invoice = newRegularInvoice();
         Path invoiceOutputPath = invoicesDir.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
-        new InvoiceAsciiDoc().exports(invoice, invoicesDir, Collections.emptyMap());
+        new InvoiceAsciiDoc(Locale.ENGLISH).exports(invoice, invoicesDir, Collections.emptyMap());
         new InvoiceQrCode().exports(invoice, invoiceOutputPath, Collections.emptyMap());
         new InvoiceZugFerd().exports(invoice, invoiceOutputPath, Collections.emptyMap());
 
         invoice = newTeachingInvoice();
         invoiceOutputPath = invoicesDir.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
-        new InvoiceAsciiDoc().exports(invoice, invoicesDir, Collections.emptyMap());
+        new InvoiceAsciiDoc(Locale.ENGLISH).exports(invoice, invoicesDir, Collections.emptyMap());
         new InvoiceQrCode().exports(invoice, invoiceOutputPath, Collections.emptyMap());
         new InvoiceZugFerd().exports(invoice, invoiceOutputPath, Collections.emptyMap());
 
         invoice = newComplexInvoice();
         invoiceOutputPath = invoicesDir.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
-        new InvoiceAsciiDoc().exports(invoice, invoicesDir, Collections.emptyMap());
+        new InvoiceAsciiDoc(Locale.ENGLISH).exports(invoice, invoicesDir, Collections.emptyMap());
         new InvoiceQrCode().exports(invoice, invoiceOutputPath, Collections.emptyMap());
         new InvoiceZugFerd().exports(invoice, invoiceOutputPath, Collections.emptyMap());
 

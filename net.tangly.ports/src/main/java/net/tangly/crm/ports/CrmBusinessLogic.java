@@ -17,6 +17,7 @@ import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.Collections;
+import java.util.Locale;
 
 import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.LegalEntity;
@@ -47,7 +48,8 @@ public class CrmBusinessLogic {
      * @param withEN16931 flag if the EN16931 digital invoice should be added to the invoice document
      */
     public void exportInvoiceDocument(@NotNull Invoice invoice, @NotNull Path invoiceFolder, boolean withQrCode, boolean withEN16931) {
-        InvoiceAsciiDoc asciiDocGenerator = new InvoiceAsciiDoc();
+        // inquire locale (language) and set it in the collection with key locale
+        InvoiceAsciiDoc asciiDocGenerator = new InvoiceAsciiDoc(invoice.contract().locale());
         asciiDocGenerator.exports(invoice, invoiceFolder, Collections.emptyMap());
         Path invoicePath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
         if (withQrCode) {

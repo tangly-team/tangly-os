@@ -23,6 +23,7 @@ import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
@@ -310,6 +311,7 @@ public class CrmTsvHdl {
 
     TsvEntity<Contract> createTsvContract() {
         List<TsvProperty<Contract, ?>> fields = createTsvEntityFields();
+        fields.add(TsvProperty.of("locale", Contract::locale, Contract::locale, e -> toLocale(e), u -> u.getLanguage()));
         fields.add(TsvProperty.of(createTsvBankConnection(), Contract::bankConnection, Contract::bankConnection));
         fields.add(TsvProperty.ofBigDecimal("amountWithoutVat", Contract::amountWithoutVat, Contract::amountWithoutVat));
         fields.add(TsvProperty.of("sellerOid", Contract::seller, Contract::seller, e -> this.findLegalEntityByOid(e).orElse(null), convertFoidTo()));
@@ -404,7 +406,7 @@ public class CrmTsvHdl {
     }
 
     static <T extends CrmEntity> TsvProperty<T, String> phoneNrProperty(String tagName, CrmTags.Type type) {
-            return TsvProperty.ofString(tagName, e -> e.phoneNr(type).map(PhoneNr::number).orElse(null), (e, p) -> e.phoneNr(type, p));
+        return TsvProperty.ofString(tagName, e -> e.phoneNr(type).map(PhoneNr::number).orElse(null), (e, p) -> e.phoneNr(type, p));
     }
 
     static <T extends CrmEntity> TsvProperty<T, String> emailProperty(String tagName, CrmTags.Type type) {
@@ -429,5 +431,14 @@ public class CrmTsvHdl {
 
     private Optional<LegalEntity> findLegalEntityByOid(String identifier) {
         return (identifier != null) ? crm.legalEntities().find(Long.parseLong(identifier)) : Optional.empty();
+    }
+
+    private Locale toLocale(String language) {
+        return switch (language.toLowerCase()) {
+            case "en" -> Locale.ENGLISH;
+            case "de" -> Locale.GERMAN;
+            case "fr" -> Locale.FRENCH;
+            default -> Locale.ENGLISH;
+        };
     }
 }

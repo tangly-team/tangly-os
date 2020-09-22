@@ -57,8 +57,8 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
 
     private final ResourceBundle bundle;
 
-    public InvoiceAsciiDoc() {
-        bundle = ResourceBundle.getBundle("net.tangly.invoices.ports.InvoiceAsciiDoc", Locale.ENGLISH);
+    public InvoiceAsciiDoc(Locale locale) {
+        bundle = ResourceBundle.getBundle("net.tangly.invoices.ports.InvoiceAsciiDoc", locale);
     }
 
     @Override
@@ -77,7 +77,7 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
                 writer.println();
                 helper.header(bundle.getString("invoice"), 2);
 
-                helper.tableHeader(null, "frame=\"none\", grid=\"none\", options=\"noheader\", stripes=\"none\", cols=\"2,4,2\"");
+                helper.tableHeader(null, "frame=\"none\", grid=\"none\", options=\"noheader\", stripes=\"none\", cols=\"3,4,3\"");
                 helper.tableRow(addressText(invoice.invoicingEntity()), "", addressText(invoice.invoicedEntity()));
                 helper.tableEnd();
 

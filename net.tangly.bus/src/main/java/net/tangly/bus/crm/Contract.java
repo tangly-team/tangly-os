@@ -22,6 +22,7 @@ import net.tangly.bus.core.EntityImp;
 
 /**
  * A legal contract between two parties, a seller and a sellee.
+ * <p>The locale of the contract defines the language used to generate invoice documents.</p>
  */
 public class Contract extends EntityImp implements CrmEntity {
     private static final long serialVersionUID = 1L;
@@ -31,6 +32,7 @@ public class Contract extends EntityImp implements CrmEntity {
     private BigDecimal amountWithoutVat;
     private LegalEntity seller;
     private LegalEntity sellee;
+    private Locale locale;
 
     public Address address() {
         return address;
@@ -70,6 +72,14 @@ public class Contract extends EntityImp implements CrmEntity {
 
     public void sellee(LegalEntity sellee) {
         this.sellee = sellee;
+    }
+
+    public Locale locale() {
+        return locale;
+    }
+
+    public void locale(Locale locale) {
+        this.locale = locale;
     }
 
     @Override
