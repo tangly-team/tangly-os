@@ -33,11 +33,15 @@ import com.storedobject.chart.Size;
 import com.storedobject.chart.XAxis;
 import com.storedobject.chart.YAxis;
 import com.vaadin.flow.component.datepicker.DatePicker;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
+import com.vaadin.flow.data.provider.DataProvider;
+import net.tangly.bus.crm.Contract;
 import net.tangly.bus.ledger.Ledger;
 import net.tangly.commons.vaadin.TabsComponent;
+import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.crm.ports.Crm;
 import net.tangly.crm.ports.CrmBusinessLogic;
 import net.tangly.ledger.ports.LedgerBusinessLogic;
@@ -54,13 +58,14 @@ public class AnalyticsCrmView extends VerticalLayout {
     private SOChart customersSoChart;
     private SOChart profitAndLossSoChart;
     private SOChart financialSoChart;
+    private Grid<Contract> contractsGrid;
     private LocalDate from;
     private LocalDate to;
 
     public AnalyticsCrmView(@NotNull Crm crm, @NotNull Ledger ledger) {
         this.crm = crm;
         this.ledger = ledger;
-        from = LocalDate.of(LocalDate.now().getYear(), 1, 1);
+        from = LocalDate.of(2015, 11, 1);
         to = LocalDate.of(LocalDate.now().getYear(), 12, 31);
         tabs = new TabsComponent();
         initialize();
@@ -83,10 +88,31 @@ public class AnalyticsCrmView extends VerticalLayout {
         contractsSoChart = createAndRegisterChart("Contracts Turnover");
         profitAndLossSoChart = createAndRegisterChart("Profit & Loss");
         financialSoChart = createAndRegisterChart("Financials");
+
+        contractsGrid = contractsTable();
+        tabs.add(new Tab("Spent On Contracts"), new HorizontalLayout(contractsGrid));
+
         update();
         setSizeFull();
         tabs.initialize(tabs.tabByName("Customers Turnover").orElseThrow());
         add(new HorizontalLayout(fromDate, toDate), tabs);
+    }
+
+    private Grid<Contract> contractsTable() {
+        CrmBusinessLogic crmBusinessLogic = new CrmBusinessLogic(crm);
+        Grid<Contract> grid = new Grid<>();
+        grid.setDataProvider(DataProvider.ofCollection(crm.contracts().items()));
+        grid.addColumn(Contract::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Contract::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Contract::fromDate).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Contract::toDate).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(VaadinUtils.coloredRender(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setHeader("Amount").setAutoWidth(true).setResizable(true)
+                .setSortable(true);
+        grid.addColumn(VaadinUtils.coloredRender(o -> crmBusinessLogic.contractInvoicedAmountWithoutVat(o, from, to), VaadinUtils.FORMAT)).setHeader("Invoiced")
+                .setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(VaadinUtils.coloredRender(o -> crmBusinessLogic.contractExpenses(o, from, to), VaadinUtils.FORMAT)).setHeader("Expenses")
+                .setAutoWidth(true).setResizable(true).setSortable(true);
+        return grid;
     }
 
     private void contractsChart(@NotNull SOChart chart) {
@@ -94,19 +120,13 @@ public class AnalyticsCrmView extends VerticalLayout {
         List<String> contracts = new ArrayList<>();
         List<BigDecimal> amounts = new ArrayList<>();
         crm.contracts().items().forEach(contract -> {
-            BigDecimal amount = logic.contractAmountWithoutVat(contract, from, to);
+            BigDecimal amount = logic.contractInvoicedAmountWithoutVat(contract, from, to);
             if (!amount.equals(BigDecimal.ZERO)) {
                 contracts.add(contract.id());
                 amounts.add(amount);
             }
         });
-        NightingaleRoseChart roseChart =
-                new NightingaleRoseChart(new CategoryData(contracts.toArray(new String[0])), new Data(amounts.toArray(new BigDecimal[0])));
-        roseChart.setName("Contracts Turnover");
-        Position chartPosition = new Position();
-        chartPosition.setTop(Size.percentage(20));
-        roseChart.setPosition(chartPosition);
-        chart.add(roseChart);
+        chart.add(createChart("Contracts Turnover", new CategoryData(contracts.toArray(new String[0])), new Data(amounts.toArray(new BigDecimal[0]))));
     }
 
     private void customersChart(@NotNull SOChart chart) {
@@ -114,19 +134,22 @@ public class AnalyticsCrmView extends VerticalLayout {
         List<String> customers = new ArrayList<>();
         List<BigDecimal> amounts = new ArrayList<>();
         crm.legalEntities().items().forEach(customer -> {
-            BigDecimal amount = logic.customerAmountWithoutVat(customer, from, to);
+            BigDecimal amount = logic.customerInvoicedAmountWithoutVat(customer, from, to);
             if (!amount.equals(BigDecimal.ZERO)) {
                 customers.add(customer.name());
                 amounts.add(amount);
             }
         });
-        NightingaleRoseChart roseChart =
-                new NightingaleRoseChart(new CategoryData(customers.toArray(new String[0])), new Data(amounts.toArray(new BigDecimal[0])));
-        roseChart.setName("Customers Turnover");
+        chart.add(createChart("Customers Turnover", new CategoryData(customers.toArray(new String[0])), new Data(amounts.toArray(new BigDecimal[0]))));
+    }
+
+    private NightingaleRoseChart createChart(@NotNull String name, @NotNull CategoryData categoryData, Data data) {
+        NightingaleRoseChart roseChart = new NightingaleRoseChart(categoryData, data);
+        roseChart.setName(name);
         Position chartPosition = new Position();
-        chartPosition.setTop(Size.percentage(20));
+        chartPosition.setTop(Size.percentage(10));
         roseChart.setPosition(chartPosition);
-        chart.add(roseChart);
+        return roseChart;
     }
 
     private void profitAndLossChart(@NotNull SOChart chart) {
@@ -153,8 +176,8 @@ public class AnalyticsCrmView extends VerticalLayout {
     }
 
     private void financialsChart(@NotNull SOChart chart) {
-        LedgerBusinessLogic ledgerBusinessLogic = new LedgerBusinessLogic(ledger);
-        DateData xValues = new DateData(ledgerBusinessLogic.quarterLegends(null, null).toArray(new LocalDate[0]));
+        LedgerBusinessLogic logic = new LedgerBusinessLogic(ledger);
+        DateData xValues = new DateData(logic.quarterLegends(null, null).toArray(new LocalDate[0]));
         xValues.setName("Quarters");
 
         XAxis xAxis = new XAxis(DataType.DATE);
@@ -166,16 +189,15 @@ public class AnalyticsCrmView extends VerticalLayout {
         rc.setPosition(chartPosition);
 
         LineChart shortTermThirdPartyCapitalChart = createLineChart("Short-Term Third Party Capital", xValues,
-                (LocalDate start, LocalDate end) -> (end != null) ?
-                        ledgerBusinessLogic.balance(LedgerBusinessLogic.SHORT_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() : BigDecimal.ZERO, rc);
-        LineChart longTermThirdPartyCapitalChart = createLineChart("LOng-Term Third Party Capital", xValues, (LocalDate start, LocalDate end) -> (end != null) ?
-                ledgerBusinessLogic.balance(LedgerBusinessLogic.LONG_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() : BigDecimal.ZERO, rc);
+                (LocalDate start, LocalDate end) -> (end != null) ? logic.balance(LedgerBusinessLogic.SHORT_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() :
+                        BigDecimal.ZERO, rc);
+        LineChart longTermThirdPartyCapitalChart = createLineChart("LOng-Term Third Party Capital", xValues,
+                (LocalDate start, LocalDate end) -> (end != null) ? logic.balance(LedgerBusinessLogic.LONG_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() :
+                        BigDecimal.ZERO, rc);
         LineChart cashOnHandChart = createLineChart("Cash On Hand", xValues,
-                (LocalDate start, LocalDate end) -> (end != null) ? ledgerBusinessLogic.balance(LedgerBusinessLogic.CASH_ON_HAND_ACCOUNT, end) :
-                        BigDecimal.ZERO, rc);
+                (LocalDate start, LocalDate end) -> (end != null) ? logic.balance(LedgerBusinessLogic.CASH_ON_HAND_ACCOUNT, end) : BigDecimal.ZERO, rc);
         LineChart equityChart = createLineChart("Equity", xValues,
-                (LocalDate start, LocalDate end) -> (end != null) ? ledgerBusinessLogic.balance(LedgerBusinessLogic.EQUITY_ACCOUNT, end).negate() :
-                        BigDecimal.ZERO, rc);
+                (LocalDate start, LocalDate end) -> (end != null) ? logic.balance(LedgerBusinessLogic.EQUITY_ACCOUNT, end).negate() : BigDecimal.ZERO, rc);
 
         chart.add(shortTermThirdPartyCapitalChart, cashOnHandChart, longTermThirdPartyCapitalChart, equityChart);
     }
@@ -183,7 +205,9 @@ public class AnalyticsCrmView extends VerticalLayout {
     private SOChart createAndRegisterChart(String label) {
         SOChart chart = new SOChart();
         chart.setSize("1200px", "600px");
-        tabs.add(new Tab(label), new HorizontalLayout(chart));
+        HorizontalLayout layout = new HorizontalLayout(chart);
+        layout.setSizeFull();
+        tabs.add(new Tab(label), layout);
         return chart;
     }
 
@@ -208,6 +232,7 @@ public class AnalyticsCrmView extends VerticalLayout {
         update(contractsSoChart, this::contractsChart);
         update(profitAndLossSoChart, this::profitAndLossChart);
         update(financialSoChart, this::financialsChart);
+        contractsGrid.getDataProvider().refreshAll();
     }
 
     private void update(@NotNull SOChart chart, @NotNull Consumer<SOChart> populate) {

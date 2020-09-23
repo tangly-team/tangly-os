@@ -24,9 +24,7 @@ import net.tangly.bus.core.TagTypeRegistry;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
-import net.tangly.ledger.ports.LedgerBusinessLogic;
 import org.jetbrains.annotations.NotNull;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -46,7 +44,7 @@ class CrmWorkflowTest {
     }
 
     @Test
-    // @Tag("localTest")
+        // @Tag("localTest")
     void testCompanyTsvCrm() {
         CrmWorkflows crmWorkflows = new CrmWorkflows(new Crm());
         Path root = Path.of("/Users/Shared/tangly");
@@ -73,6 +71,9 @@ class CrmWorkflowTest {
             verifyActivities(crmWorkflows.crm());
             verifySubjects(crmWorkflows.crm());
             verifyComments(crmWorkflows.crm());
+            verifyInvoices(crmWorkflows.crm());
+
+            verifyCrmBusinessLogic(crmWorkflows.crm());
 
             crmWorkflows.exportCrmEntities(store.crmRoot());
 
@@ -119,14 +120,27 @@ class CrmWorkflowTest {
         assertThat(crm.contracts().items().isEmpty()).isFalse();
         assertThat(crm.contracts().find(500).isPresent()).isTrue();
         crm.contracts().items().forEach(contract -> {
+            assertThat(contract.locale()).isNotNull();
+            assertThat(contract.currency()).isNotNull();
             assertThat(contract.bankConnection()).isNotNull();
             assertThat(contract.seller()).isNotNull();
             assertThat(contract.sellee()).isNotNull();
         });
     }
 
+    private void verifyCrmBusinessLogic(@NotNull Crm crm) {
+        CrmBusinessLogic logic = new CrmBusinessLogic(crm);
+        crm.contracts().items().forEach(contract -> {
+            assertThat(logic.contractPaidAmountWithoutVat(contract, null, null))
+                    .isEqualByComparingTo(logic.contractInvoicedAmountWithoutVat(contract, null, null));
+            assertThat(logic.contractExpenses(contract, null, null)).isNotNegative();
+        });
+    }
+
+
     private void verifyInvoices(@NotNull Crm crm) {
         assertThat(crm.invoices().items().isEmpty()).isFalse();
+        crm.invoices().items().forEach(o -> assertThat(o.isValid()).isTrue());
     }
 
     private void verifyProducts(@NotNull Crm crm) {

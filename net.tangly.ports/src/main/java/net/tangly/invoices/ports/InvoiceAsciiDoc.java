@@ -16,6 +16,7 @@ package net.tangly.invoices.ports;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.io.UncheckedIOException;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystem;
@@ -90,7 +91,8 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
                 writer.println();
 
                 helper.tableHeader(null, "options=\"header\", grid=\"none\", frame=\"none\", stripes=\"none\", cols=\"4,^1, >1,>1\"",
-                        bundle.getString("position"), bundle.getString("quantity"), bundle.getString("price"), bundle.getString("amount"));
+                        bundle.getString("position"), bundle.getString("quantity"), bundle.getString("price"),
+                        bundle.getString("amount") + " (" + invoice.contract().currency().getCurrencyCode() + ")");
                 invoice.lines().stream().sorted(Comparator.comparingInt(InvoiceLine::position)).forEach(o -> helper
                         .tableRow((o.isAggregate() ? italics(o.text()) : o.text()), o.isItem() ? format(o.quantity()) : "", format(o.unitPrice()),
                                 o.isAggregate() ? italics(format(o.amount())) : format(o.amount())));
@@ -118,7 +120,7 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
             // currently need to be performed in the default filesystem to work
             AsciiDoctorHelper.createPdfWithLocalFile(asciidocFile, invoiceFolder, invoice.name());
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new UncheckedIOException(e);
         }
     }
 

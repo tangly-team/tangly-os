@@ -17,7 +17,6 @@ import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.Collections;
-import java.util.Locale;
 
 import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.LegalEntity;
@@ -42,13 +41,12 @@ public class CrmBusinessLogic {
     /**
      * Export an invoice to a file.
      *
-     * @param invoice     invoice to be exported
+     * @param invoice       invoice to be exported
      * @param invoiceFolder path of the file where the invoice will exported
-     * @param withQrCode  flag if the Swiss QR cde should be added to the invoice document
-     * @param withEN16931 flag if the EN16931 digital invoice should be added to the invoice document
+     * @param withQrCode    flag if the Swiss QR cde should be added to the invoice document
+     * @param withEN16931   flag if the EN16931 digital invoice should be added to the invoice document
      */
     public void exportInvoiceDocument(@NotNull Invoice invoice, @NotNull Path invoiceFolder, boolean withQrCode, boolean withEN16931) {
-        // inquire locale (language) and set it in the collection with key locale
         InvoiceAsciiDoc asciiDocGenerator = new InvoiceAsciiDoc(invoice.contract().locale());
         asciiDocGenerator.exports(invoice, invoiceFolder, Collections.emptyMap());
         Path invoicePath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
@@ -62,13 +60,28 @@ public class CrmBusinessLogic {
         }
     }
 
-    public BigDecimal contractAmountWithoutVat(@NotNull Contract contract, LocalDate from, LocalDate to) {
+    public BigDecimal contractExpenses(@NotNull Contract contract, LocalDate from, LocalDate to) {
+        return crm.invoices().items().stream().filter(o -> (o.contract().oid() == contract.oid()) && DateUtilities.isWithinRange(o.invoicedDate(), from, to))
+                .map(Invoice::expenses).reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    public BigDecimal contractInvoicedAmountWithoutVat(@NotNull Contract contract, LocalDate from, LocalDate to) {
+        return crm.invoices().items().stream().filter(o -> (o.contract().oid() == contract.oid()) && DateUtilities.isWithinRange(o.invoicedDate(), from, to))
+                .map(Invoice::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    public BigDecimal contractPaidAmountWithoutVat(@NotNull Contract contract, LocalDate from, LocalDate to) {
         return crm.invoices().items().stream().filter(o -> (o.contract().oid() == contract.oid()) && DateUtilities.isWithinRange(o.dueDate(), from, to))
                 .map(Invoice::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    public BigDecimal customerAmountWithoutVat(@NotNull LegalEntity customer, LocalDate from, LocalDate to) {
-        return crm.contracts().items().stream().filter(o -> (o.sellee().oid() == customer.oid())).map(o -> contractAmountWithoutVat(o, from, to))
+    public BigDecimal customerInvoicedAmountWithoutVat(@NotNull LegalEntity customer, LocalDate from, LocalDate to) {
+        return crm.contracts().items().stream().filter(o -> (o.sellee().oid() == customer.oid())).map(o -> contractInvoicedAmountWithoutVat(o, from, to))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    public BigDecimal customerPaidAmountWithoutVat(@NotNull LegalEntity customer, LocalDate from, LocalDate to) {
+        return crm.contracts().items().stream().filter(o -> (o.sellee().oid() == customer.oid())).map(o -> contractPaidAmountWithoutVat(o, from, to))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }

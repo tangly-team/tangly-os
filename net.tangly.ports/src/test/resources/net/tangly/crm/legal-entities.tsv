@@ -1,5 +1,5 @@
 oid	id	name	fromDate	toDate	text	street	postcode	locality	region	country	crm:phone-work	crm:email-work	crm:site-work	crm:im-linkedIn	crm:vat-number	crm:school
 100	UNKNOWN-100	hope llc	1915-11-01			Central Road 1	10247	Berlin	BE	DE	+49 123 45 6780	info@hope.org	www.hope.org	hope-llc	DE123456789	N
 101	UNKNOWN-101	fun llc	1990-01-01			Central Road 2	20148	Hamburg	HG	DE	+49 123 456 789	info@fun.net	www.fun.net	funn-llc	DE987654321	N
-102	CHE-357-875.339	tangly llc	2015-12-01			Lorzenhof 27	6330	Cham	ZG	CH	+41 79 778 8689	info@tangly.net	www.tangly.net	tangly-llc	CHE-357-875.339	N
+102	CHE-357.875.339	tangly llc	2015-12-01			Lorzenhof 27	6330	Cham	ZG	CH	+41 79 778 8689	info@tangly.net	www.tangly.net	tangly-llc	CHE-357-875.339	N
 104	CHE-302.967.535	Lucerne School of Information Technology				Suurstoffi 41b	6343	Rotkreuz	ZG	Switzerland	+41 41 757 68 11	informatik@hslu.ch	www.hslu.ch	hochschule-luzern		Y

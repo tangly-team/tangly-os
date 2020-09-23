@@ -15,24 +15,34 @@ package net.tangly.bus.crm;
 
 
 import java.math.BigDecimal;
+import java.util.Currency;
 import java.util.Locale;
 
 import net.tangly.bus.core.Address;
 import net.tangly.bus.core.EntityImp;
 
 /**
- * A legal contract between two parties, a seller and a sellee.
- * <p>The locale of the contract defines the language used to generate invoice documents.</p>
+ * A legal contract between two parties, one being the seller and one being the sellee. The properties of the entity defines the identifiers of the contract and
+ * the time interval.
+ * <ul>
+ *   <li>correspondence address used in mail exchange and invoicing</li>
+ *   <li>bank account used for invoicing</li>
+ *   <li>amount (without VAT or expenses) of the whole contract</li>
+ *   <li>seller of the contract</li>
+ *   <li>selle of the contract</li>
+ *   <li>The locale of the contract defines the language used to generate invoice documents.</li>
+ *   <li>The currency of the contract amount and the one used in the invoices</li>
+ * </ul>
  */
 public class Contract extends EntityImp implements CrmEntity {
     private static final long serialVersionUID = 1L;
-
     private Address address;
     private BankConnection bankConnection;
     private BigDecimal amountWithoutVat;
     private LegalEntity seller;
     private LegalEntity sellee;
     private Locale locale;
+    private Currency currency;
 
     public Address address() {
         return address;
@@ -82,10 +92,19 @@ public class Contract extends EntityImp implements CrmEntity {
         this.locale = locale;
     }
 
+    public Currency currency() {
+        return currency;
+    }
+
+    public void currency(Currency currency) {
+        this.currency = currency;
+    }
+
     @Override
     public String toString() {
-        return String
-                .format(Locale.US, "Contract[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, address=%s, bankConnection=%s, amountWithoutVat=%s, seller=%s, sellee=%s]",
-                        oid(), id(), name(), fromDate(), toDate(), text(), address(), bankConnection(), amountWithoutVat(), seller(), sellee());
+        return String.format(Locale.US,
+                "Contract[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, locale=%s, currency=%s, address=%s, bankConnection=%s, " +
+                        "amountWithoutVat=%s, seller=%s, sellee=%s]", oid(), id(), name(), fromDate(), toDate(), text(), locale(), currency(), address(),
+                bankConnection(), amountWithoutVat(), seller(), sellee());
     }
 }

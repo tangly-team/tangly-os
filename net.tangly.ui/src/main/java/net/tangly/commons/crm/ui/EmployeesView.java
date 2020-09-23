@@ -53,7 +53,9 @@ public class EmployeesView extends CrmEntitiesView<Employee> {
         EntityField entityField = new EntityField();
         entityField.setReadOnly(readonly);
         One2OneField<LegalEntity, LegalEntitiesView> organization = new One2OneField<>("Organization", new LegalEntitiesView(crm(), mode));
+        organization.setReadOnly(readonly);
         One2OneField<NaturalEntity, NaturalEntitiesView> person = new One2OneField<>("Person", new NaturalEntitiesView(crm(), mode));
+        person.setReadOnly(readonly);
 
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);

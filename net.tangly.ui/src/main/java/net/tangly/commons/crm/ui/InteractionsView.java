@@ -68,6 +68,7 @@ public class InteractionsView extends CrmEntitiesView<Interaction> {
     protected FormLayout createOverallView(@NotNull Mode mode, @NotNull Interaction entity) {
         boolean readonly = Mode.readOnly(mode);
         EntityField entityField = new EntityField();
+        entityField.setReadOnly(readonly);
         TextField potential = VaadinUtils.createTextField("Potential", "potential");
         TextField probability = VaadinUtils.createTextField("Probability", "probability");
 

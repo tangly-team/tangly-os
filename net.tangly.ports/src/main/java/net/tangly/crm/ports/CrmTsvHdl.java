@@ -22,6 +22,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -312,6 +313,7 @@ public class CrmTsvHdl {
     TsvEntity<Contract> createTsvContract() {
         List<TsvProperty<Contract, ?>> fields = createTsvEntityFields();
         fields.add(TsvProperty.of("locale", Contract::locale, Contract::locale, e -> toLocale(e), u -> u.getLanguage()));
+        fields.add(TsvProperty.of("currency", Contract::currency, Contract::currency, e -> Currency.getInstance(e), u -> u.getCurrencyCode()));
         fields.add(TsvProperty.of(createTsvBankConnection(), Contract::bankConnection, Contract::bankConnection));
         fields.add(TsvProperty.ofBigDecimal("amountWithoutVat", Contract::amountWithoutVat, Contract::amountWithoutVat));
         fields.add(TsvProperty.of("sellerOid", Contract::seller, Contract::seller, e -> this.findLegalEntityByOid(e).orElse(null), convertFoidTo()));

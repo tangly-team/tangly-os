@@ -13,10 +13,14 @@
 
 package net.tangly.commons.crm.ui;
 
+import java.util.Currency;
+import java.util.Locale;
+
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.bus.crm.Contract;
@@ -55,20 +59,38 @@ public class ContractsView extends CrmEntitiesView<Contract> {
     protected FormLayout createOverallView(@NotNull Mode mode, @NotNull Contract entity) {
         boolean readonly = Mode.readOnly(mode);
         EntityField entityField = new EntityField();
+        entityField.setReadOnly(readonly);
         BankConnectionField bankConnection = new BankConnectionField();
+        bankConnection.setReadOnly(readonly);
+        Select<Locale> locale = new Select<>();
+        locale.setLabel("Language");
+        locale.setItems(Locale.ENGLISH, Locale.GERMAN, Locale.FRENCH);
+        locale.setReadOnly(readonly);
+        Select<Currency> currency = new Select<>();
+        currency.setLabel("Currency");
+        currency.setItems(Currency.getInstance("CHF"), Currency.getInstance("EUR"));
+        currency.setReadOnly(readonly);
         One2OneField<LegalEntity, LegalEntitiesView> seller = new One2OneField<>("Seller", new LegalEntitiesView(crm(), mode));
+        seller.setReadOnly(readonly);
         One2OneField<LegalEntity, LegalEntitiesView> sellee = new One2OneField<>("Sellee", new LegalEntitiesView(crm(), mode));
+        sellee.setReadOnly(readonly);
 
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);
         form.add(entityField);
         form.add(new HtmlComponent("br"));
+        form.add(locale, currency);
+        form.add(new HtmlComponent("br"));
         form.add(bankConnection);
         form.add(new HtmlComponent("br"));
-        form.add(seller, sellee);
+        form.add(seller);
+        form.add(new HtmlComponent("br"));
+        form.add(sellee);
 
         binder = new Binder<>(entityClass());
         entityField.bind(binder);
+        binder.forField(locale).bind(Contract::locale, Contract::locale);
+        binder.forField(currency).bind(Contract::currency, Contract::currency);
         binder.forField(bankConnection).withValidator(bankConnection.validator()).bind(Contract::bankConnection, Contract::bankConnection);
         binder.forField(seller).bind(Contract::seller, Contract::seller);
         binder.forField(sellee).bind(Contract::sellee, Contract::sellee);

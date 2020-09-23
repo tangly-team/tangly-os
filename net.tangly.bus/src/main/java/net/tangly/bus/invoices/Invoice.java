@@ -162,6 +162,9 @@ public class Invoice implements HasEditableQualifiers {
         return hasMultipleVatRates() ? Optional.empty() : vatAmounts().keySet().stream().findAny();
     }
 
+    public BigDecimal expenses() {
+        return this.items().stream().filter(o -> ProductCode.expenses == o.product().code()).map(InvoiceItem::amount).reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
     // endregion
 
     public LegalEntity invoicingEntity() {
@@ -280,7 +283,7 @@ public class Invoice implements HasEditableQualifiers {
 
     public boolean isValid() {
         return Objects.nonNull(contract()) && Objects.nonNull(invoicedAddress()) && Objects.nonNull(invoicedEntity()) && Objects.nonNull(invoicingAddress()) &&
-                Objects.nonNull(invoicingEntity) && Objects.nonNull(invoicingConnection()) && name().startsWith(id());
+                Objects.nonNull(invoicingEntity) && Objects.nonNull(invoicingConnection()) && Objects.nonNull(currency) && name().startsWith(id());
     }
 
     @Override

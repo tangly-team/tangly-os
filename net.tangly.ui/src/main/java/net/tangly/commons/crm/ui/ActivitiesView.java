@@ -76,6 +76,7 @@ public class ActivitiesView extends CrmEntitiesView<Activity> {
         Select<ActivityCode> code = new Select<>();
         code.setItemLabelGenerator(ActivityCode::code);
         code.setItems(activityCodeType.activeCodes());
+        code.setReadOnly(readonly);
 
         TextArea email = new TextArea("Email Text");
         email.setReadOnly(true);

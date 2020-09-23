@@ -18,11 +18,13 @@ import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collections;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 import net.tangly.bus.invoices.Invoice;
+import net.tangly.commons.logger.EventData;
 import net.tangly.invoices.ports.InvoiceJson;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -66,7 +68,7 @@ public final class CrmWorkflows {
      * Import all CRM domain entities defined in a set of TSV files.
      *
      * @param directory directory where the TSV files are stored
-     * @see #exportCrmEntities(Path) 
+     * @see #exportCrmEntities(Path)
      */
     public void importCrmEntities(@NotNull Path directory) {
         CrmTsvHdl handler = new CrmTsvHdl(crm);
@@ -94,8 +96,8 @@ public final class CrmWorkflows {
 
     /**
      * Import all invoices to the file system. All invoices are imported from directory/INVOICES. If the name of the invoice starts with a four digits pattern,
-     * it is assumed that it represents the year when the invoice was issued. 
-     * 
+     * it is assumed that it represents the year when the invoice was issued.
+     *
      * @param directory directory in which the invoices will be written
      * @see #importInvoices(Path)
      */
@@ -104,6 +106,9 @@ public final class CrmWorkflows {
         try (Stream<Path> stream = Files.walk(directory)) {
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(JSON_EXT)).forEach(o -> {
                 Invoice invoice = invoiceJson.imports(o, Collections.emptyMap());
+                if (!invoice.isValid()) {
+                    EventData.log("import", "net.tangly.crm.ports", EventData.Status.WARNING, "Invalid Invoice {}", Map.of("invoice", invoice));
+                }
                 if (invoice != null) {
                     crm.invoices().update(invoice);
                 }
@@ -138,7 +143,7 @@ public final class CrmWorkflows {
      * it is assumed that it represents the year when the invoice was issued. A folder with the year will be created and the invoice will be written within.
      *
      * @param directory directory in which the invoices will be written
-     * @see #exportInvoices(Path) 
+     * @see #exportInvoices(Path)
      */
     public void exportInvoices(@NotNull Path directory) {
         InvoiceJson invoiceJson = new InvoiceJson(crm);

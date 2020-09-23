@@ -29,7 +29,7 @@ project.ext.inceptionYear = '1996'
 project.description = "Vaadin user interface for the business components (tangly llc)"
 
 ext {
-    vaadinVersion = '17.0.2'
+    vaadinVersion = '17.0.3'
 }
 
 vaadin {
