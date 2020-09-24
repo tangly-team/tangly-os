@@ -61,8 +61,7 @@ guessSyntax = "true"
 # rouge is bundled with Asciidoctor 2.0 and should no more be added as extension, the rouge-css style include html marking in the html file (from the
 # Asciidoctor expert Dan Allen). The wroking folder allows asciidoctor-diagram and plantuml to generate diagrams in the correct folder.
 [markup.asciidocext]
-    extensions = ["asciidoctor-diagram"]
-    # extensions = ["asciidoctor-html5s", "asciidoctor-diagram"]
+    extensions = ["asciidoctor-html5s", "asciidoctor-diagram"]
     workingFolderCurrent = true
     [markup.asciidocext.attributes]
         imagesdir = "../pics"
@@ -111,7 +110,6 @@ time_format_blog = "2006-01-02"
 time_format_default = "2006-01-02"
 rss_sections = ["blog"]
 
-# First one is picked as the Twitter card image if not set on page.
 # images = ["images/project-illustration.png"]
 
 # Menu title if your navbar has a versions selector to access old versions of your site.

@@ -53,24 +53,37 @@ Below the dependencies between tangly open source components as defined in the m
 
 [plantuml,tangly-componentsDependencies,svg]
 ....
-package net.tangly.bdd {}
-package net.tangly.bus {}
-package net.tangly.commons {}
+package net.tangly.bdd [[https://tangly-team.bitbucket.io/docs/bdd/]] {
+}
+package net.tangly.bus [[https://tangly-team.bitbucket.io/docs/bus/]] {
+}
+
+package net.tangly.commons [[https://tangly-team.bitbucket.io/docs/commons/]] {
+}
 
 net.tangly.bus --> net.tangly.commons
-package net.tangly.dev {}
+package net.tangly.dev [[https://tangly-team.bitbucket.io/docs/dev/]] {
+}
 
 net.tangly.dev --> net.tangly.commons
-package net.tangly.fsm {}
 
-package net.tangly.gleam {}
+package net.tangly.fsm [[https://tangly-team.bitbucket.io/docs/fsm/]] {
+}
+
+package net.tangly.gleam [[https://tangly-team.bitbucket.io/docs/gleam/]] {
+}
+
 net.tangly.gleam --> net.tangly.commons
 
-package net.tangly.orm {}
+package net.tangly.orm [[https://tangly-team.bitbucket.io/docs/orm/]] {
+}
+
 net.tangly.orm --> net.tangly.commons
 net.tangly.orm --> net.tangly.bus
 
-package net.tangly.ports {}
+package net.tangly.ports [[https://tangly-team.bitbucket.io/docs/ports/]] {
+}
+
 net.tangly.ports --> net.tangly.commons
 net.tangly.ports --> net.tangly.bus
 net.tangly.ports --> net.tangly.gleam
@@ -106,6 +119,7 @@ git push --prune https://github.com/marcelbaumann/tangly-os.git +refs/remotes/or
 
 IMPORTANT: Set the property if you want to sign the component artifacts and publish to Maven Central.
 
+[#website-publication]
 === Website Publication
 
 ==== Configure asciidoctor

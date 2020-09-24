@@ -107,7 +107,7 @@ The search features of the underlying database can be applied for selecting ints
 Tag types are a medium to define an ontology and defines valid tag instances.
 A set of tag types shall always be associated with a specific domain of the application.
 
-We provide a Java library libk:../../docs/bus[BUS] implementing these constructs.
+We provide a Java library link:../../docs/bus[BUS] implementing these constructs.
 More information is available under https://tangly-team.bitbucket.io/[tangly open source components].
 
 Related concepts are discussed in our blog series

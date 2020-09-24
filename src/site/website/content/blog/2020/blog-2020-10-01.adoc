@@ -13,14 +13,17 @@ date: 2020-10-01
 
 image::2020-10-01-head.jpg[role=left]
 I hosted my technical blogs on https://www.blogger.com/[blogger] for years.
+If I currently remember I started to use blogger ten years ago.
 It is a great tool with some drawbacks.
+Over the years the drawbacks stinged more and more.
 
 * Their editor is brittle, with limited functionality and unreliable.
- The generated HTML is not legible and does not support concepts such a micro fragments, or code highlighting.
+ The generated HTML is not legible and does not support concepts such a micro fragments, meta information or simple functions such as source code highlighting.
 * The last quarters they started to tinker with their editor and output format.
- My older posts are a mess and can only be open as HTML file.
- If I switch to the editor the layout is destroyed and random fonts family and sizes are selected.
- This backward compatibility destruction of all older blogs and no migration path were killer criteria.
+ My older posts are now a mess and can only be open in HTML mode.
+ If I switch to the editor the layout is destroyed and random fonts family and sizes are displayed.
+ Worse the blogs are also displayed mangled to the readers.
+ This destruction of all older blogs and no documented migration path were killer criteria.
 * Blogger does not support modern markup language such https://www.markdownguide.org/[Markdown] or {ref-asciidoc}.
  Blogger uses a proprietary and not easy to port format.
 
@@ -28,12 +31,9 @@ It is time to find an alternative.
 I am a huge fan of {ref-asciidoc]}.
 
 OK, so why not go with Markdown?
-Don’t get me wrong, there is nothing wrong with Markdown - except that no one should probably use it when {ref-asciidoc} and Asciidoctor are available.
-I’m doing {ref-asciidoc} only these days, and a blog should not be an exception.
-
-=== Requirements
-
-The following needs are identified
+Don’t get me wrong, there is nothing bad with Markdown - except that no one should probably use it when {ref-asciidoc} and Asciidoctor are available.
+I’m writing all my documents with {ref-asciidoc}.
+The following needs are identified:
 
 . I shall write blogs with the selected solution.
  The blogs shall be written in {ref-asciidoc}.
