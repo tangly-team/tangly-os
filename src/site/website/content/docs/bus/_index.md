@@ -1,6 +1,6 @@
 ---
-title: "BUS"
-linkTitle: "BUS - Business Abstractions"
+title: "BUS - Business Abstractions"
+linkTitle: "BUS"
 weight: 20
 ---
 

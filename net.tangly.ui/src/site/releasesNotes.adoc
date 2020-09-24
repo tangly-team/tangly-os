@@ -13,6 +13,14 @@ draft: false
 This document provides a high-level view of the changes introduced in Common UI library by release.
 For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] commits.
 
+=== 0.2.6 (2020-09-30)
+
+Improvements::
+
+* CRM analytics are provided to have a analytics reporting of key indicators
+* Support for localized invoice generation and support of CHF and EUR as currency
+* Upgrade to Vaadin 17
+
 === 0.2.4 (2020-06-30)
 
 Improvements::

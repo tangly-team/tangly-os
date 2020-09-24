@@ -29,9 +29,7 @@ Invoices are stored to and retrieved from JSON files.
 
 _To be written_
 
-=== Ledger Banana 8 Import Handler
-
-_To be written_
+=== Ledger Banana Import Handler
 
 ==== Importing Ledger Structure
 

@@ -1,5 +1,6 @@
 ---
 title: "Architecture Design Record (ADR)"
+linkTitle: "ADR"
 date: 2020-06-30
 draft: false
 ---

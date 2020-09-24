@@ -1,5 +1,5 @@
 ---
-title: "BDD"
+title: "BDD - Behavior Driven Development"
 linkTitle: "BDD"
 weight: 10
 ---

@@ -13,6 +13,8 @@ For a detailed view of what has changed, refer to the https://bitbucket.org/tang
 
 === 0.2.6 (2020-09-30)
 
+* Add validation support for CRM entities
+* Add gender code to natural entities
 * Update of the dependencies
 
 === 0.2.5 (2020-08-31)

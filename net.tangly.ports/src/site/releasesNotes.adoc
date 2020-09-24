@@ -18,7 +18,8 @@ For a detailed view of what has changed, refer to the https://bitbucket.org/tang
 
 Improvements::
 
-*
+* Add additional fields to various CRM entities
+* Updated json schema of invoice to support BigDecimal values
 
 === 0.2.5 (2020-08-31)
 

@@ -145,7 +145,7 @@ offlineSearchSummaryLength = 200
 offlineSearchMaxResults = 50
 
 [[menu.main]]
-name = "GitHub"
+name = "Bitbucket"
 weight = 50
 url = "https://bitbucket.org/tangly-team/tangly-os/"
 
