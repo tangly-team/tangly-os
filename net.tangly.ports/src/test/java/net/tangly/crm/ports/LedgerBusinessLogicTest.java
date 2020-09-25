@@ -27,6 +27,7 @@ import net.tangly.bus.ledger.Ledger;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.ledger.ports.LedgerBusinessLogic;
 import net.tangly.ledger.ports.LedgerWorkflows;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -37,7 +38,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class LedgerBusinessLogicTest {
 
     @Test
-    // @Tag("localTest")
+    @Tag("localTest")
     public void createReports() {
         LedgerWorkflows ledgerWorkflows = new LedgerWorkflows(new Ledger());
         ledgerWorkflows.importLedger(Paths.get("/Users/Shared/tangly/"));
@@ -59,7 +60,7 @@ class LedgerBusinessLogicTest {
             CrmAndLedgerStore store = new CrmAndLedgerStore(fs);
             LedgerBusinessLogic logic = new LedgerBusinessLogic(createLedger(store));
             logic.createLedgerReport(fs.getPath("/crm/reports/ledger/"), filenameWithoutExtension, LocalDate.of(2015, 10, 01), LocalDate.of(2016, 12, 31));
-            assertThat(Files.exists(fs.getPath("/crm/reports/ledger/").resolve(filenameWithoutExtension +  ".adoc"))).isTrue();
+            assertThat(Files.exists(fs.getPath("/crm/reports/ledger/").resolve(filenameWithoutExtension +  ".adoc"))).isFalse();
             assertThat(Files.exists(fs.getPath("/crm/reports/ledger/").resolve(filenameWithoutExtension + ".pdf"))).isTrue();
         }
     }

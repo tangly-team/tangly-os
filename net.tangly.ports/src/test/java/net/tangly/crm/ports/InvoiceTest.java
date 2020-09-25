@@ -37,6 +37,7 @@ import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.invoices.ports.InvoiceAsciiDoc;
 import net.tangly.invoices.ports.InvoiceQrCode;
 import net.tangly.invoices.ports.InvoiceZugFerd;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -46,6 +47,7 @@ class InvoiceTest {
     private static final String PAYMENT_CONDITIONS_30_DAYS = "30 days net";
 
     @Test
+    @Tag("localTest")
     void writeAsciiDocReport() {
         Path invoicesDir = Paths.get("/Users/Shared/tmp");
 
