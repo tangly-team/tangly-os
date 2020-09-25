@@ -17,6 +17,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
 
 import net.tangly.bus.core.EntityImp;
 import org.jetbrains.annotations.NotNull;
@@ -27,20 +29,25 @@ import org.jetbrains.annotations.NotNull;
  * stages. The final result is a contract or a lost opportunity.
  */
 public class Interaction extends EntityImp {
-    private final List<NaturalEntity> naturalEntities;
-    private final List<LegalEntity> legalEntities;
     private final List<Activity> activities;
+    private LegalEntity legalEntity;
     private InteractionCode state;
     private BigDecimal potential;
     private BigDecimal probability;
 
     public Interaction() {
-        naturalEntities = new ArrayList<>();
-        legalEntities = new ArrayList<>();
         activities = new ArrayList<>();
         this.state = InteractionCode.prospect;
         this.potential = BigDecimal.ZERO;
         this.probability = BigDecimal.ZERO;
+    }
+
+    public LegalEntity legalEntity() {
+        return legalEntity;
+    }
+
+    public void legalEntity(LegalEntity legalEntity) {
+        this.legalEntity = legalEntity;
     }
 
     public BigDecimal anticipatedRevenue() {
@@ -82,4 +89,15 @@ public class Interaction extends EntityImp {
     public void remove(Activity activity) {
         activities.remove(activity);
     }
+
+    public boolean isValid() {
+        return (Objects.requireNonNull(potential).compareTo(BigDecimal.ZERO) > 0) && (Objects.requireNonNull(probability).compareTo(BigDecimal.ZERO) > 0);
+    }
+
+    @Override
+    public String toString() {
+        return String.format(Locale.US, "Interaction[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, state=%s, potential=%s, probability=%s, tags=%s]",
+                oid(), id(), name(), fromDate(), toDate(), text(), state(), potential(), probability(), tags());
+    }
+
 }

@@ -16,6 +16,7 @@ package net.tangly.bus.crm;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 import net.tangly.bus.core.EntityImp;
 import net.tangly.bus.core.Strings;
@@ -55,6 +56,10 @@ public class Activity extends EntityImp {
 
     public void details(String details) {
         this.details = details;
+    }
+
+    public boolean isValid() {
+        return Objects.nonNull(code) && (durationInMinutes > 0);
     }
 
     @Override

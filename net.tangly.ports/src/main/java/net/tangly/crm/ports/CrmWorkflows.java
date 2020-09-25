@@ -34,6 +34,7 @@ import org.slf4j.LoggerFactory;
  * Defines the workflows defined for CRM activities. Currently we assume that invoices are often handled through the CRM subsystem.
  */
 public final class CrmWorkflows {
+    public static final String MODULE = "net.tangly.ports";
     public static final String COMMENTS_TSV = "comments.tsv";
     public static final String LEGAL_ENTITIES_TSV = "legal-entities.tsv";
     public static final String NATURAL_ENTITIES_TSV = "natural-entities.tsv";
@@ -106,11 +107,11 @@ public final class CrmWorkflows {
         try (Stream<Path> stream = Files.walk(directory)) {
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(JSON_EXT)).forEach(o -> {
                 Invoice invoice = invoiceJson.imports(o, Collections.emptyMap());
-                if (!invoice.isValid()) {
-                    EventData.log("import", "net.tangly.crm.ports", EventData.Status.WARNING, "Invalid Invoice {}", Map.of("invoice", invoice));
-                }
-                if (invoice != null) {
+                if (invoice.isValid()) {
                     crm.invoices().update(invoice);
+                    EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, "Imported Invoice {}", Map.of("invoice", invoice));
+                } else {
+                    EventData.log(EventData.IMPORT, MODULE, EventData.Status.WARNING, "Invalid Invoice {}", Map.of("invoice", invoice));
                 }
             });
         } catch (IOException e) {
@@ -148,24 +149,27 @@ public final class CrmWorkflows {
     public void exportInvoices(@NotNull Path directory) {
         InvoiceJson invoiceJson = new InvoiceJson(crm);
         crm.invoices().items().forEach(o -> {
-            Path invoicePath = resolvePath(o, directory);
-            invoiceJson.exports(o, invoicePath.resolve(o.name() + JSON_EXT), Collections.emptyMap());
+            Path invoiceFolder = resolvePath(directory, o);
+            Path invoicePath = invoiceFolder.resolve(o.name() + JSON_EXT);
+            invoiceJson.exports(o, invoicePath, Collections.emptyMap());
+            EventData.log(EventData.EXPORT, "net.tangly.crm.ports", EventData.Status.SUCCESS, "Invoice exported to JSON {}",
+                    Map.of("invoice", o, "invoicePath", invoicePath));
         });
     }
 
     public void exportInvoiceToPdf(@NotNull Path directory, @NotNull Invoice invoice) {
-        crmBusinessLogic.exportInvoiceDocument(invoice, resolvePath(invoice, directory.resolve(REPORTS)), true, true);
+        crmBusinessLogic.exportInvoiceDocument(invoice, resolvePath(directory.resolve(REPORTS), invoice), true, true);
     }
 
     /**
      * Resolve the path to where an invoice should be located in the file system. The convention is <i>base directory/invoices/year</i>. If folders do not exist
      * they are created.
      *
+     * @param directory base directory containing the invoices
      * @param invoice   invoice to write
-     * @param directory base directory
-     * @return path to the folder where the invoic should be outputed
+     * @return path to the folder where the invoice should be written
      */
-    public Path resolvePath(@NotNull Invoice invoice, @NotNull Path directory) {
+    public Path resolvePath(@NotNull Path directory, @NotNull Invoice invoice) {
         Path invoicesPath = directory.resolve(INVOICES);
         Matcher matcher = invoicePattern.matcher(invoice.name());
         Path invoicePath = matcher.matches() ? invoicesPath.resolve(invoice.name().substring(0, 4)) : invoicesPath;

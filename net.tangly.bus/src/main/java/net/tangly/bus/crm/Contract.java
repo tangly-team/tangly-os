@@ -17,6 +17,7 @@ package net.tangly.bus.crm;
 import java.math.BigDecimal;
 import java.util.Currency;
 import java.util.Locale;
+import java.util.Objects;
 
 import net.tangly.bus.core.Address;
 import net.tangly.bus.core.EntityImp;
@@ -100,11 +101,16 @@ public class Contract extends EntityImp implements CrmEntity {
         this.currency = currency;
     }
 
+    public boolean isValid() {
+        return Objects.nonNull(bankConnection) && Objects.nonNull(seller) && Objects.nonNull(sellee) &&
+                (Objects.requireNonNull(amountWithoutVat).compareTo(BigDecimal.ZERO) > 0) && Objects.nonNull(currency);
+    }
+
     @Override
     public String toString() {
         return String.format(Locale.US,
                 "Contract[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, locale=%s, currency=%s, address=%s, bankConnection=%s, " +
-                        "amountWithoutVat=%s, seller=%s, sellee=%s]", oid(), id(), name(), fromDate(), toDate(), text(), locale(), currency(), address(),
-                bankConnection(), amountWithoutVat(), seller(), sellee());
+                        "amountWithoutVat=%s, seller=%s, sellee=%s, tags=%s]", oid(), id(), name(), fromDate(), toDate(), text(), locale(), currency(),
+                address(), bankConnection(), amountWithoutVat(), seller(), sellee(), tags());
     }
 }

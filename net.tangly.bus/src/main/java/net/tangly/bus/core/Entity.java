@@ -43,4 +43,8 @@ public interface Entity extends HasOid, HasInterval, HasEditableQualifiers, HasT
      * @param toDate the end of the existing period of the entity
      */
     void toDate(LocalDate toDate);
+
+    default boolean isValid() {
+        return true;
+    }
 }

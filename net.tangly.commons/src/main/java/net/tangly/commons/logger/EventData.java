@@ -27,11 +27,20 @@ import org.slf4j.spi.LoggingEventBuilder;
 /**
  * Provide a simple approach to create an audit trail for all relevant operations performed in the system. Contextual information such as user, IP address are
  * part of the MDR context and implicitly available to the event data logging process.
+ * @param event event triggering the creation of an audit log
+ * @param timestamp timestanmp when the audit log was created
+ * @param component component source of the audit log. By convention we use the module name or if necessary the package name
+ * @param status status associated with the audit log
+ * @param text text of the audit log
+ * @param data data specific to the audit log
+ * @param exception optional exception to be added to the audit log
  */
 public record EventData(@NotNull String event, @NotNull LocalDateTime timestamp, @NotNull String component, @NotNull Status status, String text,
                         @NotNull Map<String, Object> data, Throwable exception) {
+    public static final String IMPORT = "import";
+    public static final String EXPORT = "export";
 
-    public enum Status {SUCCESS, WARNING, FAILURE}
+    public enum Status {SUCCESS, INFO, WARNING, FAILURE}
 
     private static final String AUDIT_LOGGER = "AuditLogger";
     private static final Marker MARKER = MarkerFactory.getMarker("AUDIT_EVENT");
@@ -45,7 +54,11 @@ public record EventData(@NotNull String event, @NotNull LocalDateTime timestamp,
         log(new EventData(event, LocalDateTime.now(), component, status, reason, data, exception));
     }
 
-    public static void log(EventData data) {
+    /**
+     * Log the event data as audit log.
+     * @param data event data to add to the audit trail
+     */
+    public static void log(@NotNull EventData data) {
         Logger logger = LoggerFactory.getLogger(AUDIT_LOGGER);
         LoggingEventBuilder builder = logger.atInfo().addMarker(MARKER);
         if (Objects.nonNull(data.exception())) {

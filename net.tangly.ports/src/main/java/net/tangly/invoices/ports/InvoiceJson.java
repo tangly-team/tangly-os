@@ -64,9 +64,10 @@ public class InvoiceJson implements InvoiceGenerator {
         JSONObject invoiceJson = entity.exports(invoice);
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
             writer.write(invoiceJson.toString(4));
-            EventData.log("export", "net.tangly.ports", EventData.Status.SUCCESS, "Invoice exported to JSON file", Map.of("filename", path, "entity", invoice));
+            EventData.log(EventData.EXPORT, "net.tangly.ports", EventData.Status.SUCCESS, "Invoice exported to JSON file",
+                    Map.of("filename", path, "entity", invoice));
         } catch (IOException e) {
-            EventData.log("export", "net.tangly.ports", EventData.Status.FAILURE, "Invoice exported to JSON file", Map.of("filename", path), e);
+            EventData.log(EventData.EXPORT, "net.tangly.ports", EventData.Status.FAILURE, "Invoice exported to JSON file", Map.of("filename", path), e);
             throw new UncheckedIOException(e);
         }
     }
@@ -81,13 +82,13 @@ public class InvoiceJson implements InvoiceGenerator {
                 if (!invoice.isValid()) {
                     logger.atWarn().log("Invoice {} is invalid", invoice.name());
                 }
-                EventData.log("import", "net.tangly.ports", EventData.Status.SUCCESS, "Invoice imported", Map.of("filename", path, "entity", invoice));
+                EventData.log(EventData.IMPORT, "net.tangly.ports", EventData.Status.SUCCESS, "Invoice imported", Map.of("filename", path, "entity", invoice));
             } catch (IOException e) {
-                EventData.log("import", "net.tangly.ports", EventData.Status.FAILURE, "Error during import of JSON file", Map.of("filename", path), e);
+                EventData.log(EventData.IMPORT, "net.tangly.ports", EventData.Status.FAILURE, "Error during import of JSON file", Map.of("filename", path), e);
                 throw new UncheckedIOException(e);
             }
         } else {
-            EventData.log("import", "net.tangly.ports", EventData.Status.FAILURE, "Invalid JSON schema of JSON file", Map.of("filename", path));
+            EventData.log(EventData.IMPORT, "net.tangly.ports", EventData.Status.FAILURE, "Invalid JSON schema of JSON file", Map.of("filename", path));
         }
         return invoice;
     }

@@ -53,7 +53,7 @@ public class LegalEntity extends EntityImp implements CrmEntity {
     @Override
     public String toString() {
         return String
-                .format(Locale.US, "LegalEntity[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, vatNr=%s]", oid(), id(), name(), fromDate(), toDate(), text(),
-                        vatNr());
+                .format(Locale.US, "LegalEntity[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, vatNr=%s, tags=%s]", oid(), id(), name(), fromDate(),
+                        toDate(), text(), vatNr(), tags());
     }
 }

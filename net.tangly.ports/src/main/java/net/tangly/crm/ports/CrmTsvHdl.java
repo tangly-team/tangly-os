@@ -85,6 +85,7 @@ import static net.tangly.bus.crm.CrmTags.CRM_VAT_NUMBER;
  * separated list of the oid of the referenced entities if at least one is defined, otherwise an empty string.
  */
 public class CrmTsvHdl {
+    public static final String MODULE = "net.tangly.ports";
     public static final String OID = "oid";
     public static final String ID = "id";
     public static final String NAME = "name";
@@ -207,15 +208,27 @@ public class CrmTsvHdl {
         try (Reader in = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
             int counter = 0;
             for (CSVRecord record : FORMAT.parse(in)) {
-                T entity = tsvEntity.imports(record);
-                provider.update(entity);
-                ++counter;
-                EventData.log("import", "net.tangly.ports", EventData.Status.SUCCESS, tsvEntity.clazz().getSimpleName() + " imported",
-                        Map.of("filename", path, "entity", entity));
+                T object = tsvEntity.imports(record);
+                if (object instanceof Entity entity) {
+                    if (entity.isValid()) {
+                        provider.update(object);
+                        ++counter;
+                        EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, tsvEntity.clazz().getSimpleName() + " imported",
+                                Map.of("filename", path, "object", object));
+                    } else {
+                        EventData.log(EventData.IMPORT, MODULE, EventData.Status.WARNING, tsvEntity.clazz().getSimpleName() + " invalid entity",
+                                Map.of("filename", path, "object", object));
+
+                    }
+                } else {
+                    provider.update(object);
+                    ++counter;
+                    EventData.log(EventData.IMPORT, MODULE, EventData.Status.INFO, tsvEntity.clazz().getSimpleName() + " imported",
+                            Map.of("filename", path, "object", object));
+                }
             }
-            EventData.log("import", "net.tangly.ports", EventData.Status.SUCCESS, "imported from TSV file", Map.of("filename", path, "counter", counter));
         } catch (IOException e) {
-            EventData.log("import", "net.tangly.ports", EventData.Status.FAILURE, "Entities imported from TSV file", Map.of("filename", path), e);
+            EventData.log(EventData.IMPORT, MODULE, EventData.Status.FAILURE, "Entities imported from TSV file", Map.of("filename", path), e);
             throw new UncheckedIOException(e);
         }
     }
@@ -229,12 +242,12 @@ public class CrmTsvHdl {
                 tsvEntity.exports(entity, out);
                 out.println();
                 ++counter;
-                EventData.log("export", "net.tangly.ports", EventData.Status.SUCCESS, tsvEntity.clazz().getSimpleName() + " exported to TSV file",
+                EventData.log(EventData.EXPORT, MODULE, EventData.Status.SUCCESS, tsvEntity.clazz().getSimpleName() + " exported to TSV file",
                         Map.of("filename", path, "entity", entity));
             }
-            EventData.log("export", "net.tangly.ports", EventData.Status.SUCCESS, "exported to TSV file", Map.of("filename", path, "counter", counter));
+            EventData.log(EventData.EXPORT, MODULE, EventData.Status.INFO, "exported to TSV file", Map.of("filename", path, "counter", counter));
         } catch (IOException e) {
-            EventData.log("export", "net.tangly.ports", EventData.Status.FAILURE, "Entities exported to TSV file", Map.of("filename", path), e);
+            EventData.log(EventData.EXPORT, MODULE, EventData.Status.FAILURE, "Entities exported to TSV file", Map.of("filename", path), e);
             throw new UncheckedIOException(e);
         }
     }

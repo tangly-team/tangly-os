@@ -85,7 +85,7 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
     }
 
     public boolean isValid() {
-        return !Strings.isNullOrBlank(lastname()) && (address(CrmTags.Type.home).isEmpty() || address(CrmTags.Type.home).orElseThrow().isValid()) &&
+        return !Strings.isNullOrBlank(lastname()) && (gender() != null) &&
                 (phoneNr(CrmTags.Type.home).isEmpty() || phoneNr(CrmTags.Type.home).orElseThrow().isValid()) &&
                 email(CrmTags.Type.home).map(EmailAddress::isValid).orElse(true);
     }
@@ -93,7 +93,8 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
     @Override
     public String toString() {
         return String
-                .format(Locale.US, "NaturalEntity[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, firstName=%s, lastName=%s]", oid(), id(), name(),
-                        fromDate(), toDate(), text(), firstname(), lastname());
+                .format(Locale.US, "NaturalEntity[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, firstname=%s, lastname=%s, gender=%s, tags=%s]",
+                        oid(), id(),
+                        name(), fromDate(), toDate(), text(), firstname(), lastname(), gender(), tags());
     }
 }
