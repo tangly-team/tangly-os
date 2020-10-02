@@ -57,7 +57,7 @@ Agile teams own commons resources such as
 * Coding Guidelines,
 * Team rules and work techniques.
 
-The work techniques often limit common resources in unexperienced teams.
+The work techniques often limit common resources in inexperienced teams.
 They ask the product owner if they could refactor a class or invest a few minutes in clean code techniques.
 They do not own the internal quality of the product.
 More mature teams are able to make the transition with the support of their Scrum master and the organization.
@@ -152,4 +152,4 @@ If you are ready to scale up to the company you could consider {ref-bbrt}. _BBRT
 
 I rediscovered the commons rules through a presentation of https://en.wikipedia.org/wiki/Craig_Larman[Craig Larmann] at the {ref-less} conference 2019 in
 Munich.
-He inspired us to look at agile approaches through the commons lens.
+He inspired us to look at agile approaches through the _commons_ lens.

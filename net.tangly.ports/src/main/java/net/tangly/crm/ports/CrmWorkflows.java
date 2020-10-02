@@ -65,6 +65,10 @@ public final class CrmWorkflows {
         return crm;
     }
 
+    public CrmBusinessLogic logic() {
+        return crmBusinessLogic;
+    }
+
     /**
      * Import all CRM domain entities defined in a set of TSV files.
      *

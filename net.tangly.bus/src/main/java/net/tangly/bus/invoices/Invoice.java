@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Currency;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -288,9 +287,11 @@ public class Invoice implements HasEditableQualifiers {
 
     @Override
     public String toString() {
-        return String.format(Locale.US, "Contract[id=%s, name=%s, text=%s, invoicingEntity=%s, invoicingAddress=%s, invoicingConnection=%s, contract=%s, " +
-                        "invoicedEntity=%s, invoicedAddress=%s, deliveryDate=%s, invoicedDate=%s, dueDate=%s, currency=%s, paymentConditions=%s, items=%s]", id(),
-                name(), text(), invoicingEntity(), invoicingAddress(), invoicingConnection(), contract(), invoicedEntity(), invoicedAddress(), deliveryDate(),
-                invoicedDate(), dueDate(), currency(), paymentConditions(), items());
+        return """
+                Contract[id=%s, name=%s, text=%s, invoicingEntity=%s, invoicingAddress=%s, invoicingConnection=%s, contract=%s, invoicedEntity=%s, \
+                invoicedAddress=%s, deliveryDate=%s, invoicedDate=%s, dueDate=%s, currency=%s, paymentConditions=%s, items=%s]
+                 """
+                .formatted(id(), name(), text(), invoicingEntity(), invoicingAddress(), invoicingConnection(), contract(), invoicedEntity(), invoicedAddress(),
+                        deliveryDate(), invoicedDate(), dueDate(), currency(), paymentConditions(), items());
     }
 }

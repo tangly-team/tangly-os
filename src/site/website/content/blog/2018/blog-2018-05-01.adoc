@@ -33,7 +33,7 @@ For this, it concentrates on what code you are adding or updating.
 
 Findings are displayed in the source code with information such as rule violation, rating of the rule and explanation.
 You have a window where all findings are displayed to provide an overview and navigation support.
-You are free to analyze a single file, a package, or the whole project; you can also excludes files or packages from the analysis.
+You are free to analyze a single file, a package, or the whole project; you can also exclude files or packages from the analysis.
 
 Connect SonarLint to your preferred code quality product.
 It then uses the same code analyzers, rules and settings locally that are used on the server.

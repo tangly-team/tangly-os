@@ -14,8 +14,6 @@
 package net.tangly.bus.crm;
 
 
-import java.util.Locale;
-
 import net.tangly.bus.core.EntityImp;
 import net.tangly.bus.core.Strings;
 import net.tangly.bus.core.Tag;
@@ -52,8 +50,8 @@ public class LegalEntity extends EntityImp implements CrmEntity {
 
     @Override
     public String toString() {
-        return String
-                .format(Locale.US, "LegalEntity[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, vatNr=%s, tags=%s]", oid(), id(), name(), fromDate(),
-                        toDate(), text(), vatNr(), tags());
+        return """
+                LegalEntity[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, vatNr=%s, tags=%s]
+                 """.formatted(oid(), id(), name(), fromDate(), toDate(), text(), vatNr(), tags());
     }
 }

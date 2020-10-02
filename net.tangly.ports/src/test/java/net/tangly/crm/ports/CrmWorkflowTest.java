@@ -22,6 +22,7 @@ import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.core.Entity;
 import net.tangly.bus.core.TagTypeRegistry;
 import net.tangly.bus.crm.CrmTags;
+import net.tangly.bus.crm.InteractionCode;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
 import org.jetbrains.annotations.NotNull;
@@ -45,12 +46,12 @@ class CrmWorkflowTest {
     }
 
     @Test
-    @Tag("localTest")
+    // @Tag("localTest")
     void testCompanyTsvCrm() {
         CrmWorkflows crmWorkflows = new CrmWorkflows(new Crm());
         Path root = Path.of("/Users/Shared/tangly");
         crmWorkflows.importCrmEntities(root);
-        crmWorkflows.crm().invoices().items().forEach(o -> crmWorkflows.exportInvoiceToPdf(root, o));
+        // crmWorkflows.crm().invoices().items().forEach(o -> crmWorkflows.exportInvoiceToPdf(root, o));
     }
 
 

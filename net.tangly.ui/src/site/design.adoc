@@ -1,6 +1,60 @@
-== Design
+---
+title: "ERP Design"
+date: 2020-06-01
+weight: 50
+draft: false
+---
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:revnumber: v0.1
+:revdate: 2020-05-31
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
 
-=== Reflections
+== ERP Design
+
+=== Context
+
+[plantuml, context-diagram-erp, svg]
+....
+@startuml
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Container.puml
+
+Person(salesperson, "Sales Engineer")
+Person(accountant, "Accountant")
+Person(manager, "Manager")
+
+System_Boundary(c1, "tangly ERP") {
+  Container(ledger_app, "Ledger", "Vaadin App", "Accounting System")
+  Container(crm_app, "CRM", "Vaadin App", "Customer Relationship System")
+  Container(analytics_app, "Analytics", "Vaadin App", "Analytics System")
+  ContainerDb(storage, "Storage", "TSV and JSON Files", "Stores application data in TSV / JSON files")
+}
+
+System_Ext(email, "Gmail")
+System_Ext(accounting, "Banana")
+System_Ext(contacts, "Contacts")
+
+Rel(salesperson, crm_app, "Uses", "https")
+Rel(manager, crm_app, "Uses", "https")
+Rel(accountant, ledger_app, "Uses", "https")
+Rel(manager, analytics_app, "Uses", "https")
+
+Rel(analytics_app, ledger_app, "Visualizes")
+Rel(analytics_app, crm_app, "Visualizes")
+Rel_Neighbor(crm_app, storage, "Reads from and writes to", "sync, JDBC")
+Rel_Back_Neighbor(storage, ledger_app, "Reads from and writes to", "sync, JDBC")
+
+
+Rel(ledger_app, accounting, "Gets transactions", "TSV")
+Rel(crm_app, contacts, "Gets person photos", "VCard")
+Rel(crm_app, email, "Gets emails", "IMAP")
+
+@enduml
+....
+
+=== Entity Abstraction
 
 The entity abstraction has five kinds of properties
 

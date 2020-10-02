@@ -47,7 +47,7 @@ The list of hurdles for a successful introduction of agile approaches was update
 69%:: Culture change and you need senior management support
 54%:: Non adapted overall processes because local optimizations have limited effect
 42%:: Missing product overview because a company sells products
-42%:: Fokus on business value  because a company shall earn money
+42%:: Focus on business value  because a company shall earn money
 25%:: Missing agile know-how of collaborators and you shall train your collaborators
 
 We reached a major threshold. The majority of interviewed companies have more than 500 IT collaborators.
@@ -59,7 +59,7 @@ One interesting consequence is the company compiling the report is actively poac
 The majority of teams use Scrum or Kanban.
 The associated events and tools are used.
 The deeper values such as test driven development, acceptance test driven development, clean code or refactoring are often missing.
-The key is
+The key is:
 
 [.text-centered]
 _To be agile, not to do agile_

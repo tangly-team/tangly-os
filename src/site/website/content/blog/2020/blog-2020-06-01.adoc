@@ -85,7 +85,7 @@ Master long live domain driven design and event storming Master your technical s
 TOGAF, UML, PMI, CMMI are obsolete - various activities they recommend are good, do them in your sprints.
 Avoid lengthy, slow and expensive review approach.
 ATAM is dead.
-The quality tree technique is really good, use fitness functions to implement your quality tree.
+The quality tree technique is wonderful, use fitness functions to implement your quality tree.
 If you are running legacy technology, this not only becomes a threat to your business but also to your hiring and employer branding efforts.
 As fewer and fewer programmers and operation managers will have the knowledge of those systems, you’ll face a dwindling talent pool.
 

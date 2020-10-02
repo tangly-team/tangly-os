@@ -39,7 +39,7 @@ The library can be included in Gradle as
     implementation "net.tangly:bus:0.2.6"
 ```
  
-The documentation can be found under [Business documentation](https://tangly-team.bitbucket.io/bus/)
+The documentation can be found under [Business documentation](https://tangly-team.bitbucket.io/docs/bus/)
 
 For any further question and discussion you can use the forum [tangly-OS-Components](https://groups.google.com/d/forum/tangly-os-components)
 

@@ -18,6 +18,15 @@ project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
 project.description = "Model Driven Design library (tangly llc)"
 
+sourceSets {
+    test {
+        // add the configuration file of slf4j
+        resources {
+            srcDirs = ["src/test/resources", "../src/main/config"]
+        }
+    }
+}
+
 dependencies {
     implementation project(':net.tangly.commons')
 

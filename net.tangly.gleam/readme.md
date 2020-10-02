@@ -35,7 +35,7 @@ The library can be included in Gradle as
     implementation "net.tangly:gleam:0.2.5"
 ```
  
-The documentation can be found under [Commons documentation](https://tangly-team.bitbucket.io/fsm/)
+The documentation can be found under [Commons documentation](https://tangly-team.bitbucket.io/docs/gleam/)
 
 For any further question and discussion you can use the forum [tangly-OS-Components](https://groups.google.com/d/forum/tangly-os-components)
 

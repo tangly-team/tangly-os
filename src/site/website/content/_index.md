@@ -25,14 +25,14 @@ The documentation site for open source components published by [tangly llc](http
 
 The current released components are written in _Java_ and released on _Maven Central_ are
 
-* _BUS_ Customer Relation Business Models,
-* _BDD_ Behavior Driven Design Test Library based on JUnit 5 (code first approach),
-* _COMMONS_ Internal Common Components to write company internal applications,
-* _FSM_ Hierarchical Finite State Machine,
-* _GLEAM_ declarative model definition library (map Java objects hierarchy to TSV and JSON format),
-* _ORM_ simple object to relational models mapping library,
-* _PORTS_ Ports for the business models (hexagon architecture principles),
-* _UI_ Vaadin based user interface. 
+* _[BUS](./docs/bus/)_ Customer Relation Business Models,
+* _[BDD](./docs/bdd/)_ Behavior Driven Design Test Library based on JUnit 5 (code first approach),
+* _[COMMONS](./docs/commons)_ Internal Common Components to write company internal applications,
+* _[FSM](./docs/fsm/)_ Hierarchical Finite State Machine,
+* _[GLEAM](./docs/gleam/)_ declarative model definition library (map Java objects hierarchy to TSV and JSON format),
+* _[ORM](./docs/orm/)_ simple object to relational models mapping library,
+* _[PORTS](./docs/ports/)_ Ports for the business models (hexagon architecture principles),
+* _[UI](./docs/ui/)_ Vaadin based user interface. 
 </div>
 {{% /blocks/section %}}
 
@@ -40,7 +40,7 @@ The current released components are written in _Java_ and released on _Maven Cen
 <div class="col">
 <h1 class="text-center">Ideas and In-Depth Articles</h1>
 
-The _ideas_ area is a collection of articles about our journey through agile product development, digitalization, and software craftsmanship.
+The _[ideas](./ideas/)_ area is a collection of articles about our journey through agile product development, digitalization, and software craftsmanship.
 </div>
 {{% /blocks/section %}}
 
@@ -48,7 +48,7 @@ The _ideas_ area is a collection of articles about our journey through agile pro
 <div class="col">
 <h1 class="text-center">tangly llc Company Blog</h1>
 
-Our company blog hosts articles in the topics of
+Our company [blog](./blog/) hosts articles in the topics of
 
 * Agile, Scrum, Lean and Less
 * Java stack experiences

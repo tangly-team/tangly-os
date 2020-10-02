@@ -15,7 +15,6 @@ package net.tangly.bus.crm;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 
 import net.tangly.bus.core.EntityImp;
@@ -64,7 +63,8 @@ public class Activity extends EntityImp {
 
     @Override
     public String toString() {
-        return String.format(Locale.US, "Activity[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, code=%s, durationInMinutes=%s]", oid(), id(), name(),
-                fromDate(), toDate(), text(), code(), durationInMinutes());
+        return """
+                Activity[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, code=%s, durationInMinutes=%s]
+                 """.formatted(oid(), id(), name(), fromDate(), toDate(), text(), code(), durationInMinutes());
     }
 }

@@ -49,7 +49,7 @@ Use these criteria as a checklist to evaluate your current agile transformation
 * Keep project managers away from the teams
 ** Project managers are not needed in an agile organization,
 ** We realize and sells products, projects are irrelevant,
-** Nurture good managers to sustain the transformation
+** Nurture good managers to sustain the transformation.
 
 Further Reading Read the https://less.works/less/rules/index.html[LeSS Rules] for ideas and wisdom how to improve your approach to agile product development.
 

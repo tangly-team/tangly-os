@@ -38,7 +38,7 @@ Signs of this behavior are
 ** Nobody on the software development team is talking with and observing the users of the software in action.
 We mean the actual users of the actual code,
 ** Continuous feedback from users to the development team (bug reports, users assessments) is not available.
-Talking once at the beginning of a program to verify requirements doesn’t count!,
+Talking once at the beginning of a program to verify requirements does not count!,
 * Not deploying early an initial product release
 ** Meeting requirements is treated as more important than getting something useful into the field as quickly as possible,
 * Development teams are silos instead of feature teams

@@ -30,7 +30,7 @@ Gradle supports the Java module system with everything you need to compile, test
 You can also build Javadoc.
 
 While there is some overlap with Gradle's dependency management features, Java modules offer module boundaries that are enforced by the Java runtime.
-Therefore modularity is enforced at the language level instead of coding conventions or using external tools such as https://www.archunit.org/[ArchUnit].
+Modularity is enforced at the language level instead of coding conventions or using external tools such as https://www.archunit.org/[ArchUnit].
 
 The only thing you need to configure is module path inference for the Java plugins.
 
@@ -41,7 +41,7 @@ The only thing you need to configure is module path inference for the Java plugi
  }  
 ----
 
-Then you just need to make sure that you write a proper Java module by providing An example of a module information file is
+Then you just need to make sure you write a proper Java module by providing An example of a module information file is
 
 [source, java]
 ----

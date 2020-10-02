@@ -35,9 +35,9 @@ Promote https://en.wikipedia.org/wiki/Community_of_practice[Communities of Pract
 
 [quote, W. Edwards Deming]
 ____
-It is not enough that management commit themselves to quality and productivity, they must know what it is they must do.
+It is not enough management commit themselves to quality and productivity, they must know what it is they must do.
 
-Such a responsibility cannot be delegated
+Such a responsibility cannot be delegated.
 ____
 
 You have hired good people.
@@ -105,12 +105,12 @@ Are they really investment positions?
 
 The agile architecture track contains the following blogs
 
-. link:../../2019/agile-architecture-principles[Agile Architecture Principles]
-. link:../../2019/agile-code-is-clean-code[Agile Code is Clean Code!]
-. link:../../2019/agile-architecture-within-scrum[Agile Architecture within Scrum]
-. link:../../2020/agile-component-design[Agile Component Design]
-. link:../../2020/legacy-systems-refactoring[Legacy Systems Refactoring]
-. link:../../2020/how-agile-collaborators-learn[How Agile Collaborators Learn]
+. link:../../2019/agile-architecture-principles[Agile Architecture Principles],
+. link:../../2019/agile-code-is-clean-code[Agile Code is Clean Code!],
+. link:../../2019/agile-architecture-within-scrum[Agile Architecture within Scrum],
+. link:../../2020/agile-component-design[Agile Component Design],
+. link:../../2020/legacy-systems-refactoring[Legacy Systems Refactoring],
+. link:../../2020/how-agile-collaborators-learn[How Agile Collaborators Learn].
 
 We also published our https://www.tangly.net/insights/continuous-learning/agile-architecture-course[agile architecture course] (3 ECTS) used for teaching
 computer science students at bachelor level at Swiss technical universities.

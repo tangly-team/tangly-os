@@ -22,7 +22,7 @@ And records as a clean definition of immutable objects can have a tremendous imp
 You as a designer have to reflect why your abstractions are not immutable and what is the rational behind.
 From experience, it improves greatly the quality of your design.
 
-Records guarantee
+Records guarantee:
 
 * An immutable class concept which is the strongest argument for the use of record,
 * Cannot change their state after construction,
@@ -38,7 +38,7 @@ The name of the getters is PropertyType property().
 Finally we get rid of the cumbersome and outdated convention _PropertyType getProperty()_ propagated by Java Beans.
 * A semantic correct implementation of _hashCode()_ and _equals()_.
 Therefore your objects can be used in standard API collections without difficult to find bugs.
-* An human readable implementation _toString()_.
+* A human readable implementation _toString()_.
 
 The huge advantage of the approach against IDE code generation is the guaranty that these methods are semantically always correct.
 
@@ -92,7 +92,7 @@ As soon as the record has more than a few instance variables calling the constru
 
 Two approaches easily mitigate this problem.
 
-* For simple situation create static factory methods taking care of default parameter values.
+* For a simple situation create static factory methods taking care of default parameter values.
 For examples look at the standard API List class and the set of static of methods.
 * For more complex situation implement the builder patten to provide full flexibility to the consumers of your class.
 

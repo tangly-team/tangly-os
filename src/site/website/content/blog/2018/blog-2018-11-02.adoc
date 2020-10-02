@@ -1,5 +1,5 @@
 ---
-title: "SAFE 4.6: Improvements Direly Neededk"
+title: "SAFE 4.6: Improvements Direly Needed"
 linkTitle: "SAFE 4.6"
 date: 2018-11-10
 ---
@@ -86,5 +86,5 @@ You should probably just update your PI roadmap.
 
 === Call for Action
 
-My call for action is less meetings and paper artifacts and more technical excellence.
+My call for action is fewer meetings and paper artifacts and more technical excellence.
 You want to sell excellent and well-designed products, not mediocre software.

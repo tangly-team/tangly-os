@@ -134,7 +134,7 @@ They do not have to agree, but they can understand the arguments why you choose 
 
 Static code generator is an actual good practice to provide current documentation and tutorials for your components.
 We write all our documentation in the {ref-asciidoc} format - including https://plantuml.com/[plantUML] and highlighted source code - and
-generate our web site using {ref-hugo} tool suite.
+generate our website using {ref-hugo} tool suite.
 
 Start small and improve your approach every day.
 
@@ -142,12 +142,12 @@ Start small and improve your approach every day.
 
 The agile architecture track contains the following blogs
 
-. link:../../2019/agile-architecture-principles[Agile Architecture Principles]
-. link:../../2019/clean-code[Agile Code is Clean Code!]
-. link:../../2019/agile-architecture[Agile Architecture within Scrum]
-. link:../../2020/agile-component-design[Agile Component Design]
-. link:../../2020/legacy-systems-refactoring[Legacy Systems Refactoring]
-. link:../../2020/how-agile-collaborators-learn[How Agile Collaborators Learn]
+. link:../../2019/agile-architecture-principles[Agile Architecture Principles],
+. link:../../2019/clean-code[Agile Code is Clean Code!],
+. link:../../2019/agile-architecture[Agile Architecture within Scrum],
+. link:../../2020/agile-component-design[Agile Component Design],
+. link:../../2020/legacy-systems-refactoring[Legacy Systems Refactoring],
+. link:../../2020/how-agile-collaborators-learn[How Agile Collaborators Learn].
 
 We also published our https://www.tangly.net/insights/continuous-learning/agile-architecture-course[agile architecture course] (3 ECTS) used for teaching
 computer science students at bachelor level at Swiss technical universities.

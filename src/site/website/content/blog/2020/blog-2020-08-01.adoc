@@ -83,7 +83,7 @@ You have to formulate a long-term strategy to clean-up your landscape and handle
 By handling we mean administrative and import rules matching the various external identifiers to the same object.
 
 One possible solution is to use tags. Store externally defined identifiers as tags. Document these tags as specific for the external system.
-This approach scales to multiple external identitfiers, and multiple systems managing the same external identifier.
+This approach scales to multiple external identifiers, and multiple systems managing the same external identifier.
 So you have a scalable approach and do not pollute your domain model with spurious information defined in external systems.
 Upon completion of the refactoring these tags document historical information and could safely be removed.
 
@@ -126,9 +126,9 @@ All these external identifiers shall referenced the same natural person.
 More interesting is that a tourist living in the European zone has none of these numbers.
 
 Please implement the internal identifier feature as an interface marker.
-External identifier and name features can be grouped in one interface.
+The external identifier and name features can be grouped in one interface.
 
-Additional information are available under link::../../docs/bus/businessmodels/
+Additional information are available under link:../../docs/bus/businessmodels/.
 Below the source code in modern Java is
 
 [source, java]

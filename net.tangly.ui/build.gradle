@@ -12,9 +12,9 @@
  */
 
 plugins {
-    id 'war'
+    id "com.vaadin" version "0.17.0.1"
     id 'org.gretty' version '3.0.3' apply(false)
-    id "com.vaadin" version "0.17.0.0"
+    id 'war'
 }
 
 if (mode.equalsIgnoreCase('dev')) {
@@ -29,7 +29,7 @@ project.ext.inceptionYear = '1996'
 project.description = "Vaadin user interface for the business components (tangly llc)"
 
 ext {
-    vaadinVersion = '17.0.3'
+    vaadinVersion = '17.0.4'
 }
 
 vaadin {
@@ -53,6 +53,15 @@ if (mode.equalsIgnoreCase('dev')) {
     }
 }
 
+sourceSets {
+    test {
+        // add the configuration file of slf4j
+        resources {
+            srcDirs = ["src/test/resources", "../src/main/config"]
+        }
+    }
+}
+
 dependencies {
     implementation project(':net.tangly.commons')
     implementation project(':net.tangly.bus')
@@ -62,7 +71,7 @@ dependencies {
     implementation enforcedPlatform("com.vaadin:vaadin-bom:$vaadinVersion")
     providedCompile "javax.servlet:javax.servlet-api:3.1.0"
 
-    implementation 'com.storedobject.chart:so-charts:0.0.5'
+    implementation 'com.storedobject.chart:so-charts:0.0.6'
     implementation "org.slf4j:slf4j-simple:$slf4jVersion"
 
     testImplementation 'com.github.mvysny.kaributesting:karibu-testing-v10:1.2.5'

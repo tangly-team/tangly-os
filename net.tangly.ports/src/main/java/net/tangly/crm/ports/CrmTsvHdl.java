@@ -361,11 +361,13 @@ public class CrmTsvHdl {
         return TsvEntity.of(Subject.class, fields, Subject::new);
     }
 
-    static TsvEntity<Interaction> createTsvInteraction() {
+    TsvEntity<Interaction> createTsvInteraction() {
         List<TsvProperty<Interaction, ?>> fields = createTsvEntityFields();
         fields.add(TsvProperty.of("state", Interaction::state, Interaction::state, e -> Enum.valueOf(InteractionCode.class, e.toLowerCase()), Enum::name));
         fields.add(TsvProperty.ofBigDecimal("potential", Interaction::potential, Interaction::potential));
         fields.add(TsvProperty.ofBigDecimal("probability", Interaction::probability, Interaction::probability));
+        fields.add(TsvProperty
+                .of("legalEntity", Interaction::legalEntity, Interaction::legalEntity, e -> this.findLegalEntityByOid(e).orElse(null), convertFoidTo()));
         return TsvEntity.of(Interaction.class, fields, Interaction::new);
     }
 

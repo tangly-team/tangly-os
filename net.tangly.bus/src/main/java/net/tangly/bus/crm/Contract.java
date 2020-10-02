@@ -108,9 +108,11 @@ public class Contract extends EntityImp implements CrmEntity {
 
     @Override
     public String toString() {
-        return String.format(Locale.US,
-                "Contract[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, locale=%s, currency=%s, address=%s, bankConnection=%s, " +
-                        "amountWithoutVat=%s, seller=%s, sellee=%s, tags=%s]", oid(), id(), name(), fromDate(), toDate(), text(), locale(), currency(),
-                address(), bankConnection(), amountWithoutVat(), seller(), sellee(), tags());
+        return """
+                Contract[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, locale=%s, currency=%s, address=%s, bankConnection=%s, amountWithoutVat=%s, \
+                seller=%s, sellee=%s, tags=%s]
+                """
+                .formatted(oid(), id(), name(), fromDate(), toDate(), text(), locale(), currency(), address(), bankConnection(), amountWithoutVat(), seller(),
+                        sellee(), tags());
     }
 }

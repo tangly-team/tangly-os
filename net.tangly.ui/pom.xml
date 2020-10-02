@@ -16,7 +16,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
 
-        <vaadin.version>17.0.3</vaadin.version>
+        <vaadin.version>17.0.4</vaadin.version>
         <tangly.version>0.2.6</tangly.version>
         <jetty.version>9.4.28.v20200408</jetty.version>
     </properties>
@@ -171,7 +171,7 @@
         <dependency>
             <groupId>com.storedobject.chart</groupId>
             <artifactId>so-charts</artifactId>
-            <version>0.0.5</version>
+            <version>0.0.6</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

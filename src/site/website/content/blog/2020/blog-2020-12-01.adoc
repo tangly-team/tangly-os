@@ -1,7 +1,7 @@
 ---
 title: "Advocate Zero Bug Policy in Your Projects!"
 linkTitle: "Zero Bug Policy"
-date: 2020-10-01
+date: 2020-12-01
 ---
 
 == Advocate Zero Bug Policy in Your Projects!
@@ -44,7 +44,7 @@ Let us categorize the bugs you have and deal with them accordingly.
 
 . You have a few critical bugs that crash the system or don’t have a workaround.
  Prioritize and fix those. Your customers will be very thankful.
- Fix at least a handful of these critical problems in eacch sprint.
+ Fix at least a handful of these critical problems in each sprint.
 . A big set of bugs that are already in production. They have been in your bug tracking system for quite a while.
  Delete those.
  If it is a costly problem your customers will fill a report.
@@ -71,7 +71,7 @@ ____
 Finally, to ensure that this system works.
 
 * The bugs that the team decides to fix must be prioritized over other work and must get fixed.
-* In the beginning there will be more bugs to work through, as some of the bugs that were deleted get reported again.
+* In the beginning there will be more bugs to work through, as some bugs that were deleted get reported again.
 * As the team shifts its focus to improved quality there will be fewer of them. This is truly a binary system with no wiggle room.
 * Bugs are either fixed now or deleted, there is no severity and no haggling about the classification of the bug!
 * Are you ready to shift your focus from managing bugs to ensuring quality?

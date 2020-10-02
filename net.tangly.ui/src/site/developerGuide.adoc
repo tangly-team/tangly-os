@@ -7,9 +7,6 @@ draft: false
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 :stem:
-:icons: font
-:source-highlighter: pygments
-:pygments-style: manni
 
 == Developer Guide Commons UI
 

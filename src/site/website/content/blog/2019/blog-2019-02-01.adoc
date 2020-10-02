@@ -77,7 +77,7 @@ A set of questions to detect cultural flaws for a lean and agile focused company
 .. Do they have height adjustable desk?
 .. Do they have big whiteboard and flip charts to work on in the team area?
 .. Do they have rooms to meet and work as a team in the vicinity and available?
-.. Do they best development tools of trade - and not only the basic and cheap version -?
+.. Do they use the best development tools of trade - and not only the basic and cheap version -?
 .. Do they have access to fast and stable continuous integration and deployment pipelines?
 .. Do they develop and document in English?
 . Can you work on refactoring and clean code without a product backlog item or task?

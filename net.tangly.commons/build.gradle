@@ -22,8 +22,16 @@ project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
 project.description = "Commons data structures - using Java 14 or higher (tangly llc)"
 
+sourceSets {
+    test {
+        // add the configuration file of slf4j
+        resources {
+            srcDirs = ["src/test/resources", "../src/main/config"]
+        }
+    }
+}
+
 dependencies {
-    implementation "javax.inject:javax.inject:1"
     implementation "com.networknt:json-schema-validator:1.0.43"
     implementation "com.sun.mail:jakarta.mail:1.6.5"
     implementation 'org.asciidoctor:asciidoctorj:2.4.1'

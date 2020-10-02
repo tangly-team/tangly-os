@@ -20,7 +20,7 @@ See our blog link:../../2019/a-journey-to-be-a-digital-company-tangly-llc[A Jour
 
 Switzerland finally introduce a digital payment slip.
 It is based on a QR code and still assume you need to print it.
-The European Union is more inovative and mandates that invoices to government parties must be digital.
+The European Union is more innovative and mandates that invoices to government parties must be digital.
 Our company exchanges contracts and invoices with partners and customers using the standardized and well-known PDF format.
 It is time to explore extensions to support the new legal requirements in Switzerland and in Europe.
 
@@ -53,7 +53,7 @@ The code is under active development and the main developer is responsive to sug
 
 The ZUGFeRD is a German initiative to promote digital invoices in Germany and in Europe.
 The ZUGFeRD approach is to store the invoice data as a XML part in the PDF document of the invoice.
-The standard is also called Factur-X in France.
+The standard is also called _Factur-X_ in France.
 It is compatible to European B2G invoices standard, namely http://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014L0055[EN16931]. It can also be
 used for B2B invoices.
 
@@ -108,7 +108,7 @@ Our current approach is
 Currently, we do not generate PDF/A1 documents as required in the ZUGFeRD standard.
 PDFBox would provide the tool box to generate in this format but it would be quite an endeavor.
 Ideally an extension to PDFBox with similar functionality to iText would become available in the future.
-Otherwise we have to write the missing code; in particular the embedding of fonts, pictures and files into the PDF document.
+Otherwise, we have to write the missing code; in particular the embedding of fonts, pictures and files into the PDF document.
 
 We selected the AsciiDoc format to provide a simple approach to custom templates for invoices.
 Therefore we avoided proprietary solutions based on Microsoft Office templates.

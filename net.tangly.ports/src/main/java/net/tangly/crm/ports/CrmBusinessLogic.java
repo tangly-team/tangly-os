@@ -19,6 +19,8 @@ import java.time.LocalDate;
 import java.util.Collections;
 
 import net.tangly.bus.crm.Contract;
+import net.tangly.bus.crm.Interaction;
+import net.tangly.bus.crm.InteractionCode;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
@@ -83,5 +85,15 @@ public class CrmBusinessLogic {
     public BigDecimal customerPaidAmountWithoutVat(@NotNull LegalEntity customer, LocalDate from, LocalDate to) {
         return crm.contracts().items().stream().filter(o -> (o.sellee().oid() == customer.oid())).map(o -> contractPaidAmountWithoutVat(o, from, to))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    public BigDecimal funnel(@NotNull InteractionCode state) {
+        return switch (state) {
+            case lead, prospect, lost -> crm.interactions().items().stream().filter(o -> o.state() == state).map(Interaction::weightedPotential)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add);
+            case customer, completed -> crm.interactions().items().stream().filter(o -> o.state() == state)
+                    .flatMap(interaction -> crm.contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.legalEntity().oid()))
+                    .map(Contract::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
+        };
     }
 }

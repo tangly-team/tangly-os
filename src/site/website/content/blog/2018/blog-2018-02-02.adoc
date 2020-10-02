@@ -50,7 +50,7 @@ After each cycle of customer feedback the goals and budget are evaluated again.
 The value streams have agile teams that work like small companies.
 
 Each team has a Product Owner - PO - who has overall responsibility for their respective product.
-Realizations are further funded, modified or canceled on on the basis of initial results, meaning after customer and technical tests.
+Realizations are further funded, modified or canceled on the basis of initial results, meaning after customer and technical tests.
 
 The product financing is following a start-up approach and not based on yearly budget as usual in larger companies.
 

@@ -16,7 +16,7 @@ Architecture Decision Record ADR is a compact and traceable documentation of all
 Use https://asciidoc.org/[asciidoc] or https://en.wikipedia.org/wiki/Markdown/[Markdown] and Git to have an agile and lean documentation of your major
 decisions.
 
-The huge advantage of Architecture Design Record _ADR_ is the timeline of the decisions. It tremendously help to understand the technical changes during the
+The huge advantage of Architecture Design Record _ADR_ is the timeline of the decisions. It tremendously helps to understand the technical changes during the
 product lifecycle.
 
 === Definition

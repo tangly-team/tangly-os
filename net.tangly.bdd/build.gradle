@@ -22,6 +22,15 @@ project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '2016'
 project.description = "JUnit 5 BDD - using Java 14 or higher (tangly llc)"
 
+sourceSets {
+    test {
+        // add the configuration file of slf4j
+        resources {
+            srcDirs = ["src/test/resources", "../src/main/config"]
+        }
+    }
+}
+
 dependencies {
     implementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
     // Java 9 module compliant version of https://github.com/stleary/JSON-java

@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
+import com.storedobject.chart.BarChart;
 import com.storedobject.chart.CategoryData;
 import com.storedobject.chart.Data;
 import com.storedobject.chart.DataType;
@@ -39,11 +40,13 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.data.provider.DataProvider;
 import net.tangly.bus.crm.Contract;
+import net.tangly.bus.crm.InteractionCode;
 import net.tangly.bus.ledger.Ledger;
 import net.tangly.commons.vaadin.TabsComponent;
 import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.crm.ports.Crm;
 import net.tangly.crm.ports.CrmBusinessLogic;
+import net.tangly.crm.ports.CrmWorkflows;
 import net.tangly.ledger.ports.LedgerBusinessLogic;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -51,19 +54,20 @@ import org.slf4j.LoggerFactory;
 
 public class AnalyticsCrmView extends VerticalLayout {
     private static final Logger logger = LoggerFactory.getLogger(AnalyticsCrmView.class);
-    private final Crm crm;
+    private final CrmWorkflows workflows;
     private final Ledger ledger;
     private final TabsComponent tabs;
     private SOChart contractsSoChart;
     private SOChart customersSoChart;
     private SOChart profitAndLossSoChart;
     private SOChart financialSoChart;
+    private SOChart funnelSoChart;
     private Grid<Contract> contractsGrid;
     private LocalDate from;
     private LocalDate to;
 
     public AnalyticsCrmView(@NotNull Crm crm, @NotNull Ledger ledger) {
-        this.crm = crm;
+        this.workflows = new CrmWorkflows(crm);
         this.ledger = ledger;
         from = LocalDate.of(2015, 11, 1);
         to = LocalDate.of(LocalDate.now().getYear(), 12, 31);
@@ -88,6 +92,7 @@ public class AnalyticsCrmView extends VerticalLayout {
         contractsSoChart = createAndRegisterChart("Contracts Turnover");
         profitAndLossSoChart = createAndRegisterChart("Profit & Loss");
         financialSoChart = createAndRegisterChart("Financials");
+        funnelSoChart = createAndRegisterChart("Funnel");
 
         contractsGrid = contractsTable();
         tabs.add(new Tab("Spent On Contracts"), new HorizontalLayout(contractsGrid));
@@ -99,9 +104,9 @@ public class AnalyticsCrmView extends VerticalLayout {
     }
 
     private Grid<Contract> contractsTable() {
-        CrmBusinessLogic crmBusinessLogic = new CrmBusinessLogic(crm);
+        CrmBusinessLogic crmBusinessLogic = new CrmBusinessLogic(workflows.crm());
         Grid<Contract> grid = new Grid<>();
-        grid.setDataProvider(DataProvider.ofCollection(crm.contracts().items()));
+        grid.setDataProvider(DataProvider.ofCollection(workflows.crm().contracts().items()));
         grid.addColumn(Contract::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::fromDate).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
@@ -116,10 +121,10 @@ public class AnalyticsCrmView extends VerticalLayout {
     }
 
     private void contractsChart(@NotNull SOChart chart) {
-        CrmBusinessLogic logic = new CrmBusinessLogic(crm);
+        CrmBusinessLogic logic = new CrmBusinessLogic(workflows.crm());
         List<String> contracts = new ArrayList<>();
         List<BigDecimal> amounts = new ArrayList<>();
-        crm.contracts().items().forEach(contract -> {
+        workflows.crm().contracts().items().forEach(contract -> {
             BigDecimal amount = logic.contractInvoicedAmountWithoutVat(contract, from, to);
             if (!amount.equals(BigDecimal.ZERO)) {
                 contracts.add(contract.id());
@@ -130,10 +135,10 @@ public class AnalyticsCrmView extends VerticalLayout {
     }
 
     private void customersChart(@NotNull SOChart chart) {
-        CrmBusinessLogic logic = new CrmBusinessLogic(crm);
+        CrmBusinessLogic logic = new CrmBusinessLogic(workflows.crm());
         List<String> customers = new ArrayList<>();
         List<BigDecimal> amounts = new ArrayList<>();
-        crm.legalEntities().items().forEach(customer -> {
+        workflows.crm().legalEntities().items().forEach(customer -> {
             BigDecimal amount = logic.customerInvoicedAmountWithoutVat(customer, from, to);
             if (!amount.equals(BigDecimal.ZERO)) {
                 customers.add(customer.name());
@@ -202,6 +207,20 @@ public class AnalyticsCrmView extends VerticalLayout {
         chart.add(shortTermThirdPartyCapitalChart, cashOnHandChart, longTermThirdPartyCapitalChart, equityChart);
     }
 
+    private void funnelChart(@NotNull SOChart chart) {
+        CategoryData labels = new CategoryData("Prospects", "Leads", "Customers", "Completed", "Lost");
+        Data data = new Data(workflows.logic().funnel(InteractionCode.prospect), workflows.logic().funnel(InteractionCode.lead),
+                workflows.logic().funnel(InteractionCode.customer), workflows.logic().funnel(InteractionCode.completed),
+                workflows.logic().funnel(InteractionCode.lost));
+        BarChart barchart = new BarChart(labels, data);
+        RectangularCoordinate rc = new RectangularCoordinate(new XAxis(DataType.CATEGORY), new YAxis(DataType.NUMBER));
+        Position chartPosition = new Position();
+        chartPosition.setTop(Size.percentage(20));
+        rc.setPosition(chartPosition);
+        barchart.plotOn(rc);
+        chart.add(barchart);
+    }
+
     private SOChart createAndRegisterChart(String label) {
         SOChart chart = new SOChart();
         chart.setSize("1200px", "600px");
@@ -232,6 +251,7 @@ public class AnalyticsCrmView extends VerticalLayout {
         update(contractsSoChart, this::contractsChart);
         update(profitAndLossSoChart, this::profitAndLossChart);
         update(financialSoChart, this::financialsChart);
+        update(funnelSoChart, this::funnelChart);
         contractsGrid.getDataProvider().refreshAll();
     }
 

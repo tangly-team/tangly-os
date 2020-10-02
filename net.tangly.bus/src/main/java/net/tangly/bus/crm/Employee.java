@@ -13,8 +13,6 @@
 
 package net.tangly.bus.crm;
 
-import java.math.BigDecimal;
-import java.util.Locale;
 import java.util.Objects;
 
 import net.tangly.bus.core.EntityImp;
@@ -62,10 +60,11 @@ public class Employee extends EntityImp implements CrmEntity {
     public boolean isValid() {
         return Objects.nonNull(person) && Objects.nonNull(organization);
     }
+
     @Override
     public String toString() {
-        return String.format(Locale.US, "Employee[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, person=%s, organization=%s, tags=%s]", oid(), id(),
-                name(),
-                fromDate(), toDate(), text(), person(), organization(), tags());
+        return """
+                Employee[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, person=%s, organization=%s, tags=%s]
+                """.formatted(oid(), id(), name(), fromDate(), toDate(), text(), person(), organization(), tags());
     }
 }

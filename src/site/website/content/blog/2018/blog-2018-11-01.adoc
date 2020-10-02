@@ -20,7 +20,7 @@ A health check of your product and your development approach is certainly a good
 This post is the second of a set of articles identifying health checks with different focus.
 We will identify strengths, potential weaknesses and hopefully find room for improvement.
 
-How you build and deliver your software product has direct implication on your liquidity and cashflow.
+How you build and deliver your software product has direct implication on your liquidity and cash   flow.
 Improvements in your delivery pipeline have direct impact on your finances.
 === Rules
 
@@ -31,7 +31,7 @@ The findings are considered confidential.
 A short check with a feedback workshop presenting the insights requires around two work days.
 
 A deeper and more intensive check requests more effort, between one and four weeks.
-Upon completion you can also hire a coach to implement selected findings and improve durably the health of your application.
+Upon completion, you can also hire a coach to implement selected findings and improve durably the health of your application.
 The findings are often clear and the measures straightforward.
 The real work is to implement consistently the measures.
 
@@ -56,7 +56,7 @@ Expertise is needed to define values to measure if the source code of your produ
 . Automatic source code quality checks and mandatory quality gates,
 . Automatic unit tests, integration tests and end to end tests,
 . https://trunkbaseddevelopment.com/[Golden Trunk] in Git,
-. No branches or only short lived branches policy,
+. No branches or only short-lived branches policy,
 . https://blog.crisp.se/2018/08/27/yassalsundman/the-story-of-how-to-implement-a-zero-bug-policy[Zero bug policy] -
 eliminates the change management processes and board for errors -,
 . Traceability of specifications to delivered features and product versions,
@@ -81,7 +81,7 @@ Stop evaluating, start implementing!
 === Continuous Integration Practices
 
 Check your process to see which continuous practices you are really mastering M
-* Maintain a single source repository - no long lived branches
+* Maintain a single source repository - no long-lived branches
 * Automate the build - no manual inputs, no manual configuration, automatically triggered
 * Make your build self testing - TDD, ATDD, static metrics, semantic checks
 * Everyone commits to trunk every day
@@ -96,7 +96,7 @@ database to be fast
 
 === Posts in the Health Check Series
 
-. link:../../2018/how-healthy-is-your-product-source-code-check[Source Code Check]
-. link:../../2018/how-healthy-is-your-product-delivery-pipeline-check[Delivery Pipeline Check]
-. link:../../2018/how-healthy-is-your-product-product-strategy-check[Product Strategy Check Company]
-. link:../../2019/how-healthy-is-your-product-company-culture-check/[Company Culture Check]
+. link:../../2018/how-healthy-is-your-product-source-code-check[Source Code Check],
+. link:../../2018/how-healthy-is-your-product-delivery-pipeline-check[Delivery Pipeline Check],
+. link:../../2018/how-healthy-is-your-product-product-strategy-check[Product Strategy Check Company],
+. link:../../2019/how-healthy-is-your-product-company-culture-check/[Company Culture Check].

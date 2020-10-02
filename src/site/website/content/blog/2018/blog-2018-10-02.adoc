@@ -62,10 +62,10 @@ _Undone Work_::
  If this isn’t the case then the organization has to decide, first how do we deal with the Undone Work, and second how do we improve so that there is less
  _Undone Work_ in the future.
 _Unfinished, not finished, or not done—Work_::
- that was planned in a Sprint but wasn’t completed.
+ that was planned in a Sprint but was not completed.
  This is often confused with Undone Work.
  _Unfinished_::
- is work that the team planned for but didn’t finish whereas Undone Work was never even planned for.
+ is work that the team planned for but did not finish whereas Undone Work was never even planned for.
  When a team has work that was not finished then they ought to feel anxious and discuss improvement actions during their retrospective.
 
 Teams should never leave work-in-progress at the end of the Sprint and “carry over” to the next one.

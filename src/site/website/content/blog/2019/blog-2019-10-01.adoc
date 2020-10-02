@@ -64,7 +64,7 @@ It is worth the effort to slowly support the module approach. Your architecture 
 There are basically four incremental phases to fully migrate to Java 11 or later:
 
 * Run an existing Java application with the JDK,
-* Compile the application with with the JDK,
+* Compile the application with the JDK,
 * Use the new features of the current JDK,
 * Modularize the application to use module system.
 

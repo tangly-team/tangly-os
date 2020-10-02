@@ -91,7 +91,7 @@ Now you are ready to experiment with scaling.
 === Avoid Common Errors
 
 Study the history and evolution of the various scaling approaches.
-In particular the changes in {ref-safe} are an archeological treasury what they wrongly stated and how they corrected some of the identified flaws.
+In particular the changes in {ref-safe} are an archaeological treasury what they wrongly stated and how they corrected some of the identified flaws.
 
 * Continuous delivery is the new approach.
 Eliminate hardening iterations, integration phases, milestones when software should be integrated.

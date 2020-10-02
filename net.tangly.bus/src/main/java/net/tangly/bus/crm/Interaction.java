@@ -17,16 +17,15 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 
 import net.tangly.bus.core.EntityImp;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Defines an interaction between your company and a set of legal and natural entities. Legal entities are the organizations you want a contract with. The
- * natural entities are the persons in these organizations you are communicated with. The interaction has a set of activities moving your negotiation through
- * stages. The final result is a contract or a lost opportunity.
+ * Defines an interaction between your company and a legal entity and a group of natural entities. Legal entities are the organizations you want a contract
+ * with. The natural entities are the persons in these organizations you are communicated with. The interaction has a set of activities moving your negotiation
+ * through stages. The final result is a contract or a lost opportunity.
  */
 public class Interaction extends EntityImp {
     private final List<Activity> activities;
@@ -48,10 +47,6 @@ public class Interaction extends EntityImp {
 
     public void legalEntity(LegalEntity legalEntity) {
         this.legalEntity = legalEntity;
-    }
-
-    public BigDecimal anticipatedRevenue() {
-        return potential.multiply(probability);
     }
 
     public InteractionCode state() {
@@ -78,6 +73,10 @@ public class Interaction extends EntityImp {
         this.probability = probability;
     }
 
+    public BigDecimal weightedPotential() {
+        return potential.multiply(probability);
+    }
+
     public List<Activity> activities() {
         return Collections.unmodifiableList(activities);
     }
@@ -91,13 +90,15 @@ public class Interaction extends EntityImp {
     }
 
     public boolean isValid() {
-        return (Objects.requireNonNull(potential).compareTo(BigDecimal.ZERO) > 0) && (Objects.requireNonNull(probability).compareTo(BigDecimal.ZERO) > 0);
+        return Objects.nonNull(legalEntity()) && (Objects.requireNonNull(probability).compareTo(BigDecimal.ZERO) == 1) &&
+                (Objects.requireNonNull(probability).compareTo(BigDecimal.ONE) != 1);
     }
 
     @Override
     public String toString() {
-        return String.format(Locale.US, "Interaction[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, state=%s, potential=%s, probability=%s, tags=%s]",
-                oid(), id(), name(), fromDate(), toDate(), text(), state(), potential(), probability(), tags());
+        return """
+                Interaction[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, state=%s, potential=%s, probability=%s, tags=%s]
+                """.formatted(oid(), id(), name(), fromDate(), toDate(), text(), state(), potential(), probability(), tags());
     }
 
 }

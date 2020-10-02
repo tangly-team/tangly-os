@@ -14,8 +14,6 @@
 package net.tangly.bus.crm;
 
 
-import java.util.Locale;
-
 import net.tangly.bus.core.EmailAddress;
 import net.tangly.bus.core.EntityImp;
 import net.tangly.bus.core.Strings;
@@ -92,9 +90,8 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
 
     @Override
     public String toString() {
-        return String
-                .format(Locale.US, "NaturalEntity[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, firstname=%s, lastname=%s, gender=%s, tags=%s]",
-                        oid(), id(),
-                        name(), fromDate(), toDate(), text(), firstname(), lastname(), gender(), tags());
+        return """
+                NaturalEntity[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, firstname=%s, lastname=%s, gender=%s, tags=%s]
+                """.formatted(oid(), id(), name(), fromDate(), toDate(), text(), firstname(), lastname(), gender(), tags());
     }
 }
