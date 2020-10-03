@@ -20,7 +20,7 @@ import net.tangly.bus.invoices.Invoice;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The invoice generator abstraction generates a output document based on the provided invoice and optional configuration properties.
+ * The invoice generator abstraction generates a output document based on the provided invoice and optional configuration fields.
  */
 public interface InvoiceGenerator {
     /**
@@ -28,7 +28,7 @@ public interface InvoiceGenerator {
      *
      * @param invoice     invoice used to create a new invoice document
      * @param invoicePath path to the document to create
-     * @param properties  properties to configure the creation process
+     * @param properties  fields to configure the creation process
      */
     void exports(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties);
 }

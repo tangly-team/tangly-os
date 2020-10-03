@@ -11,7 +11,7 @@ date: 2020-10-02
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2020-10-01-head.jpg[role=left]
+image::2020-10-01-head.jpg[720, 480, role=left]
 I hosted my technical blogs on https://www.blogger.com/[blogger] for years.
 If I correctly remember I started to use blogger ten years ago.
 It is a great tool with some drawbacks.
@@ -66,7 +66,7 @@ My development platform is a MacBookPro and MacOS. I use https://brew.sh/[Homebr
 
 The instructions to install hugo and asciidoctor are:
 
-[code]
+[source,shell]
 ----
 brew install hugo
 
@@ -84,7 +84,7 @@ brew install plantuml
 
 Below the configuration of asciidoctor in the _config.toml_ file.
 
-[code, yaml]
+[source, yaml]
 ----
 [markup.asciidocext]
     extensions = ["asciidoctor-html5s", "asciidoctor-diagram"]
@@ -112,7 +112,7 @@ Each time you add your own first level folder - meaning at the same level as doc
 For example, I store technical articles in the folder ideas and use the standard template.
 So I need to add (if not, no items are visible in the side bar).
 
-[code, shell]
+[source, shell]
 ----
 cp -R ./layouts/docs ./layouts/ideas
 ----
@@ -123,7 +123,7 @@ We had to change the partial _footer.html_ to display a better looking copyright
 The original version has hard coded text not really compatible with the commons creative license we are using.
 The layout is updated by overwriting the involved partial file.
 
-[code, shell]
+[source, shell]
 ----
 cp $prjDir/src/site/website/docsy/layouts/partials/footer.html $siteDir/themes/docsy/layouts/partials
 ----
@@ -132,7 +132,7 @@ cp $prjDir/src/site/website/docsy/layouts/partials/footer.html $siteDir/themes/d
 
 One cool feature of {ref-docsy} is local search support through https://lunrjs.com/[lunrjs] engine.
 
-[code, yaml]
+[source, yaml]
 ----
 algolia_docsearch = false
 

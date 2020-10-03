@@ -267,13 +267,12 @@ public class CrmTsvHdl {
         Function<CSVRecord, Comment> imports = (CSVRecord record) -> Comment
                 .of(LocalDateTime.parse(get(record, CREATED)), Long.parseLong(get(record, OWNED_BY)), get(record, AUTHOR), get(record, TEXT));
 
-        List<TsvProperty<Comment, ?>> fields = new ArrayList<>();
-        fields.add(TsvProperty.of(OID, Comment::oid, (entity, value) -> ReflectionUtilities.set(entity, OID, value), Long::parseLong));
-        fields.add(TsvProperty.ofLong(OWNED_BY, Comment::ownedBy, null));
-        fields.add(TsvProperty.of(CREATED, Comment::created, null, o -> (o != null) ? LocalDateTime.parse(o) : null));
-        fields.add(TsvProperty.ofString(AUTHOR, Comment::author, null));
-        fields.add(TsvProperty.ofString(TEXT, Comment::text, null));
-        fields.add(TsvProperty.ofString(TAGS, HasTags::rawTags, HasTags::rawTags));
+        List<TsvProperty<Comment, ?>> fields =
+                List.of(TsvProperty.of(OID, Comment::oid, (entity, value) -> ReflectionUtilities.set(entity, OID, value), Long::parseLong),
+                        TsvProperty.ofLong(OWNED_BY, Comment::ownedBy, null),
+                        TsvProperty.of(CREATED, Comment::created, null, o -> (o != null) ? LocalDateTime.parse(o) : null),
+                        TsvProperty.ofString(AUTHOR, Comment::author, null), TsvProperty.ofString(TEXT, Comment::text, null),
+                        TsvProperty.ofString(TAGS, HasTags::rawTags, HasTags::rawTags));
         return TsvEntity.of(Comment.class, fields, imports);
     }
 
@@ -307,26 +306,24 @@ public class CrmTsvHdl {
     }
 
     TsvEntity<Employee> createTsvEmployee() {
-        List<TsvProperty<Employee, ?>> fields = new ArrayList<>();
-        fields.add(TsvProperty.of(OID, Employee::oid, (entity, value) -> ReflectionUtilities.set(entity, OID, value), Long::parseLong));
-        fields.add(TsvProperty.ofString(ID, Employee::id, Entity::id));
-        fields.add(TsvProperty.of(FROM_DATE, Employee::fromDate, Entity::fromDate, TsvProperty.CONVERT_DATE_FROM));
-        fields.add(TsvProperty.of(TO_DATE, Employee::toDate, Employee::toDate, TsvProperty.CONVERT_DATE_FROM));
-        fields.add(TsvProperty.ofString(TEXT, Employee::text, Employee::text));
-        fields.add(TsvProperty.of("personOid", Employee::person, Employee::person, e -> this.findNaturalEntityByOid(e).orElse(null), convertFoidTo()));
-        fields.add(TsvProperty
-                .of("organizationOid", Employee::organization, Employee::organization, e -> this.findLegalEntityByOid(e).orElse(null), convertFoidTo()));
-        fields.add(tagProperty(CRM_EMPLOYEE_TITLE));
-        fields.add(tagProperty(CRM_EMAIL_WORK));
-        fields.add(TsvProperty
-                .ofString(CRM_PHONE_WORK, e -> e.phoneNr(CrmTags.Type.work).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(CrmTags.Type.work, p)));
+        List<TsvProperty<Employee, ?>> fields =
+                List.of(TsvProperty.of(OID, Employee::oid, (entity, value) -> ReflectionUtilities.set(entity, OID, value), Long::parseLong),
+                        TsvProperty.ofString(ID, Employee::id, Entity::id),
+                        TsvProperty.of(FROM_DATE, Employee::fromDate, Entity::fromDate, TsvProperty.CONVERT_DATE_FROM),
+                        TsvProperty.of(TO_DATE, Employee::toDate, Employee::toDate, TsvProperty.CONVERT_DATE_FROM),
+                        TsvProperty.ofString(TEXT, Employee::text, Employee::text),
+                        TsvProperty.of("personOid", Employee::person, Employee::person, e -> this.findNaturalEntityByOid(e).orElse(null), convertFoidTo()),
+                        TsvProperty.of("organizationOid", Employee::organization, Employee::organization, e -> this.findLegalEntityByOid(e).orElse(null),
+                                convertFoidTo()), tagProperty(CRM_EMPLOYEE_TITLE), tagProperty(CRM_EMAIL_WORK), TsvProperty
+                                .ofString(CRM_PHONE_WORK, e -> e.phoneNr(CrmTags.Type.work).map(PhoneNr::number).orElse(""),
+                                        (e, p) -> e.phoneNr(CrmTags.Type.work, p)));
         return TsvEntity.of(Employee.class, fields, Employee::new);
     }
 
     TsvEntity<Contract> createTsvContract() {
         List<TsvProperty<Contract, ?>> fields = createTsvEntityFields();
-        fields.add(TsvProperty.of("locale", Contract::locale, Contract::locale, e -> toLocale(e), u -> u.getLanguage()));
-        fields.add(TsvProperty.of("currency", Contract::currency, Contract::currency, e -> Currency.getInstance(e), u -> u.getCurrencyCode()));
+        fields.add(TsvProperty.of("locale", Contract::locale, Contract::locale, this::toLocale, Locale::getLanguage));
+        fields.add(TsvProperty.of("currency", Contract::currency, Contract::currency, Currency::getInstance, Currency::getCurrencyCode));
         fields.add(TsvProperty.of(createTsvBankConnection(), Contract::bankConnection, Contract::bankConnection));
         fields.add(TsvProperty.ofBigDecimal("amountWithoutVat", Contract::amountWithoutVat, Contract::amountWithoutVat));
         fields.add(TsvProperty.of("sellerOid", Contract::seller, Contract::seller, e -> this.findLegalEntityByOid(e).orElse(null), convertFoidTo()));
@@ -336,17 +333,13 @@ public class CrmTsvHdl {
 
     static TsvEntity<Product> createTsvProduct() {
         Function<CSVRecord, Product> imports = (CSVRecord record) -> new Product(get(record, ID), get(record, NAME), get(record, TEXT),
-                Enum.valueOf(ProductCode.class, get(record, "code").toLowerCase()), TsvProperty.CONVERT_BIGDECIMAL_FROM.apply(get(record, "unitPrice")),
-                get(record, "unit"), TsvProperty.CONVERT_BIGDECIMAL_FROM.apply(get(record, "vatRate")));
+                Enum.valueOf(ProductCode.class, get(record, "code").toLowerCase()), TsvProperty.CONVERT_BIG_DECIMAL_FROM.apply(get(record, "unitPrice")),
+                get(record, "unit"), TsvProperty.CONVERT_BIG_DECIMAL_FROM.apply(get(record, "vatRate")));
 
-        List<TsvProperty<Product, ?>> fields = new ArrayList<>();
-        fields.add(TsvProperty.ofString(ID, Product::id, null));
-        fields.add(TsvProperty.ofString(NAME, Product::name, null));
-        fields.add(TsvProperty.ofString(TEXT, Product::text, null));
-        fields.add(TsvProperty.ofEnum(ProductCode.class, "code", Product::code, null));
-        fields.add(TsvProperty.ofBigDecimal("unitPrice", Product::unitPrice, null));
-        fields.add(TsvProperty.ofString("unit", Product::unit, null));
-        fields.add(TsvProperty.ofBigDecimal("vatRate", Product::vatRate, null));
+        List<TsvProperty<Product, ?>> fields = List.of(TsvProperty.ofString(ID, Product::id, null), TsvProperty.ofString(NAME, Product::name, null),
+                TsvProperty.ofString(TEXT, Product::text, null), TsvProperty.ofEnum(ProductCode.class, "code", Product::code, null),
+                TsvProperty.ofBigDecimal("unitPrice", Product::unitPrice, null), TsvProperty.ofString("unit", Product::unit, null),
+                TsvProperty.ofBigDecimal("vatRate", Product::vatRate, null));
         return TsvEntity.of(Product.class, fields, imports);
     }
 
@@ -388,10 +381,9 @@ public class CrmTsvHdl {
             return connection;
         };
 
-        List<TsvProperty<BankConnection, ?>> fields = new ArrayList<>();
-        fields.add(TsvProperty.ofString("iban", BankConnection::iban, null));
-        fields.add(TsvProperty.ofString("bic", BankConnection::bic, null));
-        fields.add(TsvProperty.ofString("institute", BankConnection::institute, null));
+        List<TsvProperty<BankConnection, ?>> fields =
+                List.of(TsvProperty.ofString("iban", BankConnection::iban, null), TsvProperty.ofString("bic", BankConnection::bic, null),
+                        TsvProperty.ofString("institute", BankConnection::institute, null));
         return TsvEntity.of(BankConnection.class, fields, imports);
     }
 
@@ -400,13 +392,10 @@ public class CrmTsvHdl {
                 (CSVRecord record) -> Address.builder().street(get(record, STREET)).postcode(get(record, POSTCODE)).locality(get(record, LOCALITY))
                         .region(get(record, REGION)).country(get(record, COUNTRY)).build();
 
-        List<TsvProperty<Address, ?>> fields = new ArrayList<>();
-        fields.add(TsvProperty.ofString("street", Address::street, null));
-        fields.add(TsvProperty.ofString("extended", Address::extended, null));
-        fields.add(TsvProperty.ofString("postcode", Address::postcode, null));
-        fields.add(TsvProperty.ofString("locality", Address::locality, null));
-        fields.add(TsvProperty.ofString("region", Address::region, null));
-        fields.add(TsvProperty.ofString("country", Address::country, null));
+        List<TsvProperty<Address, ?>> fields =
+                List.of(TsvProperty.ofString("street", Address::street, null), TsvProperty.ofString("extended", Address::extended, null),
+                        TsvProperty.ofString("postcode", Address::postcode, null), TsvProperty.ofString("locality", Address::locality, null),
+                        TsvProperty.ofString("region", Address::region, null), TsvProperty.ofString("country", Address::country, null));
         return TsvEntity.of(Address.class, fields, imports);
     }
 

@@ -11,13 +11,13 @@ date: 2017-04-05
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2017-04-01-head.jpg[role=left]
+image::2017-04-01-head.jpg[720, 480, role=left]
 It is Spring in Switzerland.
 We often have time for small talk because it is cold or rainy outside.
 Quite a few of the discussions are about job opportunities and how interesting and motivating the current activities are.
 I selected two articles to help everybody to decide if your software development job is worth the effort.
 
-Just go through the questions and ask yourself if the current project provides the current settings.
+Just go through the questions and ask yourself if the current outcome provides the current settings.
 
 === Joel Test
 

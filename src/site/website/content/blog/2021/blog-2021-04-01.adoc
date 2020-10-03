@@ -11,7 +11,7 @@ date: 2021-03-01
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2021-04-01-head.jpg[200, 400, role=left]
+image::2021-04-01-head.jpg[720, 480, role=left]
 
 Everybody is talking about being agile.
 

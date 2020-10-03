@@ -11,7 +11,7 @@ date: 2019-12-02
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2019-12-01-head.jpg[role=left]
+image::2019-12-01-head.jpg[720, 480, role=left]
 I long dreamed to work in a digital environment.
 I shall no longer print out a form, sign it by hand and use snake mail to deliver it to the receiving party.
 All company documents are stored electronically.
@@ -53,7 +53,7 @@ Embrace the digital age and be environment aware.
 At https://www.tangly.net[tangly] we use internally
 
 * Google Business Apps and LibreOffice for office work, email, calendar, video conference and document sharing.
- All documents are stored in our project or company online drives,
+ All documents are stored in our outcome or company online drives,
 * Google Business Apps administration console to manage our technical infrastructure such as workstations, mobile devices, DNS record,
 * Bitbucket and continuous integration, delivery and deployment pipelines for software development,
 * Trello for activities management and our electronic Scrum or Kanban board.

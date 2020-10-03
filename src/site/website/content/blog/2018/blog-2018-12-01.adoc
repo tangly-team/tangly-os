@@ -11,7 +11,7 @@ date: 2018-12-11
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2018-12-01-head.png[role=left]
+image::2018-12-01-head.png[720, 480, role=left]
 You are developing your product using agile and lean approaches.
 
 How can you check your approach and distill improvements?
@@ -64,7 +64,7 @@ measures,
 Solution architecture::
 You have an emergent solution architecture with prototype and support the team to refine the architecture proposal and to implement
 it in the solution.
-Do not forget an agile project needs an https://en.wikipedia.org/wiki/Agile_Architecture[agile architecture].
+Do not forget an agile outcome needs an https://en.wikipedia.org/wiki/Agile_Architecture[agile architecture].
 See also the {ref-less} approach for creating an https://less.works/less/technical-excellence/architecture-design.html[agile architecture].
 Non functional requirements::
 You have identified your non functional requirements and constraints and have fitness measures in place.

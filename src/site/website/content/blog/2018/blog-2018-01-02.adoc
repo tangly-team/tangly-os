@@ -10,7 +10,7 @@ date: 2018-01-03
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2018-01-02-head.jpg[role=left]
+image::2018-01-02-head.jpg[720, 480, role=left]
 You work using agile approaches.
 Your collaborators are trained how to use agile approaches.
 Techniques such as test driven development, continuous integration or clean code are regularly practiced.

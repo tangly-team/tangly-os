@@ -11,7 +11,7 @@ date: 2016-07-21
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2016-07-01-head.jpg[role=left]
+image::2016-07-01-head.jpg[720, 480, role=left]
 You are working in a small colocated development team and decided to use branches to implement new features or fix errors.
 Here the cookbook to create, edit, merge and delete local and remote branches in Git (version 2.x).
 Git branches have two important qualities

@@ -15,7 +15,7 @@ Date: 2020-01-01
 
 === Status
 
-Superseeded by: OS-0005
+Superseded by: link:../../../../ideas/adr/os-005-publish-maven-central-artifact[OS-0005]
 
 === Context
 
@@ -27,7 +27,7 @@ fulfill these requirements. More customers will validate the usefulness of the l
 The library shall be published on maven central and be accessible to a wide range of developers and organizations. A website shall be set up to
 provide an adequate documentation for users.
 
-The https://tangly-team.bitbucket.io/fsm/[FSM website] will use a static web approach to minimize costs and provide good legibility.
+The https://tangly-team.bitbucket.io/docs/fsm/[FSM website] will use a static web approach to minimize costs and provide good legibility.
 
 The library will be published on Maven Central to maximize potential usage.
 

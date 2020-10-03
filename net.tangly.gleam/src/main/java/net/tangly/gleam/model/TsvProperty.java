@@ -34,13 +34,13 @@ import org.jetbrains.annotations.NotNull;
  * in one TSV cell. The more complex case is the mapping of a Java property to multiple cells in a TSV file. For example a Java address object has to be mapped
  * so that each element of the address is stored in a specific cell. Both scenarios are supported through the same abstraction.
  *
- * @param columns   ordered list of columns in the TSV file used to encode the property. Simple properties have one column, complex properties mapped on
- *                  multiple columns have multiple values
+ * @param columns   ordered list of columns in the TSV file used to encode the property. Simple fields have one column, complex fields mapped on multiple
+ *                  columns have multiple values
  * @param getter    getter function to retrieve the property from a Java entity instance
  * @param setter    optional setter function to set the property of a Java entity instance
- * @param extractor extractor function to read and transform the set of TSV columns into a property value. Factory methods are provided to simplify the
+ * @param extractor extracts function to read and transform the set of TSV columns into a property value. Factory methods are provided to simplify the
  *                  definition of conversion in the case only one TSV column is used.
- * @param writer    insertor function to transform a property value into a set of TSV columns and write them. Factory methods are provided to simplify the *
+ * @param writer    inserts function to transform a property value into a set of TSV columns and write them. Factory methods are provided to simplify the *
  *                  definition of conversion in the case only one TSV column is used.
  * @param <T>       class owning the Java property
  * @param <U>       type of the property
@@ -48,12 +48,12 @@ import org.jetbrains.annotations.NotNull;
 public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiConsumer<T, U> setter, Function<CSVRecord, U> extractor,
                                 BiConsumer<U, CSVPrinter> writer) {
 
-    public static final Function<String, BigDecimal> CONVERT_BIGDECIMAL_FROM = e -> (e == null) ? BigDecimal.ZERO : new BigDecimal(e);
+    public static final Function<String, BigDecimal> CONVERT_BIG_DECIMAL_FROM = e -> (e == null) ? BigDecimal.ZERO : new BigDecimal(e);
     public static final Function<String, LocalDate> CONVERT_DATE_FROM = e -> (e != null) ? LocalDate.parse(e) : null;
     public static final Function<String, LocalDateTime> CONVERT_DATETIME_FROM = e -> (e != null) ? LocalDateTime.parse(e) : null;
 
     public static <T, U> TsvProperty<T, U> of(@NotNull TsvEntity<U> entity, Function<T, U> getter, BiConsumer<T, U> setter) {
-        List<String> columns = entity.properties().stream().map(e -> e.columns().get(0)).collect(Collectors.toList());
+        List<String> columns = entity.fields().stream().map(e -> e.columns().get(0)).collect(Collectors.toList());
         return of(columns, getter, setter, entity::imports, entity::exports);
     }
 

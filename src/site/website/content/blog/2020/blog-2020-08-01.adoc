@@ -11,7 +11,7 @@ date: 2020-08-24
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2020-08-01-head.png[role=left]
+image::2020-08-01-head.png[720, 480, role=left]
 A software architect models customer domains and maps them to powerful software abstractions.
 Soon you correlate internal efficient identifiers, meaningful external identifiers and domain entities.
 You enjoy our long conversations with the enterprise data architect and find out the system owning a specific external identifier.

@@ -54,6 +54,54 @@ Rel(crm_app, email, "Gets emails", "IMAP")
 @enduml
 ....
 
+=== Persistence
+
+==== Folder Structure
+
+Files are written in italics font, folders are written in bold font.
+Examples with content are provided for each file type as test resources.
+These resources are available in the git repository.
+
+[plantuml, folder-structure-erp, svg]
+....
+@startuml
+    salt
+    {
+        {T
+        + //actitivites.tsv//       | tab separated representation of all activities of the company
+        + //comments.tsv//          | tab separated representation of all comments defined in other entities
+        + //contracts.tsv//         | tab separated representation of all contracts of the company
+        + //employees.tsv//         | tab separated representation of all employees of the company
+        + //interactions.tsv//      | tab separated representation of all interactions of the company
+        + //legal-entities.tsv//    | tab separated representation of all legal entities of the company
+        + //natural-entities.tsv//  | tab separated representation of all natural entities of the company
+        + //products.tsv//          | tab separated representation of all products of the company
+        + //subjects.tsv//          | tab separated representation of all subjects of the company
+        + **invoices**              | contains all invoices grouped by issued date year
+        ++ **2018**                 | all invoices issued in year 2018
+        +++ //2018-01-01-invoice-x.json//
+        +++ ...
+        + **ledger**                | contains the ledger structure and the transactions per period
+        ++ //swiss-ledger.tsv//
+        ++ //2019-period.tsv//
+        ++ //2020-period.tsv//
+        ++ ...
+        + **reports**               | the report files are generated through the ERP application
+        ++ **invoices**
+        +++ **2018**
+        ++++ //2018-01-01-invoice-x.pdf//
+        ++++ ...
+        ++ **ledger**
+        +++ //2020-ledger.pdf//
+        +++ ...
+        + **vcards**
+        ++ //john-doe.vcard//
+        ++ ...
+        }
+    }
+@enduml
+....
+
 === Entity Abstraction
 
 The entity abstraction has five kinds of properties

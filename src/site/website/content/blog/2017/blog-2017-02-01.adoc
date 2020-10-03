@@ -11,7 +11,7 @@ date: 2017-02-09
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2017-02-01-head.jpg[role=left]
+image::2017-02-01-head.jpg[720, 480, role=left]
 What are the main hurdles to introduce agile approaches in Swiss companies. The last five years learn us that
 
 * Introducing agile company-wide is a cultural change process. Such a change takes time and sometimes hurts,

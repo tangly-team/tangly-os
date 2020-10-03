@@ -1,6 +1,6 @@
 ---
 title: "Gradle 6.4 Finally Supports Java Module"
-linkTitle: "Gradle Support Modules"
+linkTitle: "Gradle Supports Modules"
 date: 2020-05-01
 ---
 
@@ -11,7 +11,7 @@ date: 2020-05-01
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2020-05-01-head.jpg[role=left]
+image::2020-05-01-head.jpg[720, 480, role=left]
 Java 9 release introduced the concept of https://www.oracle.com/corporate/features/understanding-java-9-modules.html[modules] within the Java language.
 Java 9 was released in September 2017.
 

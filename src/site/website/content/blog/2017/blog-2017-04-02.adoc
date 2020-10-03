@@ -11,7 +11,7 @@ date: 2017-04-15
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2017-04-02-head.jpg[role=left]
+image::2017-04-02-head.jpg[720, 480, role=left]
 It is time to throw a big party in Switzerland.
 More than 60% of all projects are now realised using an agile approach (see http://swissq.it/en/agile/research-information2/[Agile Trends Switzerland 2017] by
 http://swissq.it/en/agile/[SwissQ]),

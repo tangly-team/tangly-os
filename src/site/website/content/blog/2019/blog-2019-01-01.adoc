@@ -11,7 +11,7 @@ date: 2019-01-13
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2019-01-01-head.jpg[role=left]
+image::2019-01-01-head.jpg[720, 480, role=left]
 The Defense Innovation Board https://innovation.defense.gov/[DIB] advises the secretary of defense of the United States of America.
 
 Members of the board are recognizable names like Eric Schmidt who was CEO of Google and Alphabet, or Instagram COO Marne Levine.
@@ -30,7 +30,7 @@ Many attempts at achieving business agility are misguided and fake. But I consid
 Fake Agile is a signal to do better. Fake agile is a treatable disorder.
 ____
 
-Agile development has become such a holy grail that some organizations or project teams wave the agile flag whether they are true believers or not.
+Agile development has become such a holy grail that some organizations or outcome teams wave the agile flag whether they are true believers or not.
 They throw around talk of sprints, stories and Scrum without meaning it.
 Signs of this behavior are
 
@@ -98,7 +98,7 @@ For a team working on agile, the answer to all of these questions should  be a f
 * Is feedback from users turned into concrete work items for sprint teams on timelines shorter than one month?
 * Are teams empowered to change the requirements based on user feedback?
 * Are teams empowered to change their process based on what they learn?
-* Is the full ecosystem of your project agile?
+* Is the full ecosystem of your outcome agile?
 _Agile programming teams followed by linear, bureaucratic deployment is a failure_.
 
 For a team truly working agile, the answer to all of these questions should  be a form of  “yes”.

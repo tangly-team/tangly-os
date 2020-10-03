@@ -49,7 +49,7 @@ The Scrum Master serves the Product Owner in several ways, including:
 ____
 
 The Scrum Master should also coach the product owner and support him in the long term planning, the communication of the vision and backlog management.
-The vision and goals of the project should always contain an overall planning frame. During the project empirical evidence will trigger revision of the
+The vision and goals of the outcome should always contain an overall planning frame. During the outcome empirical evidence will trigger revision of the
 milestones and product planning.
 
 === What is the meaning of done and a piece of potentially shippable product?
@@ -72,7 +72,7 @@ At the end of a Sprint, the new Increment must be ““Done””, which means 
 _It must be in useable condition regardless of whether the Product Owner decides to actually release it._
 ____
 
-So at the end of sprint all stories realized since the start of the project must be correct.
+So at the end of sprint all stories realized since the start of the outcome must be correct.
 Therefore you need automated acceptance tests to guaranty their correctness.
 The Scrum team must guaranty that at the end of each sprint all functions of the product work as specified and accepted by the product owner in the current and previous sprint reviews.
 

@@ -687,8 +687,8 @@ See our post about pragmatic software craftsmanship.
 
 Establish a culture to use current versions of programming languages, tools and libraries.
 
-For instance, on a previous project, we had planned a coding dojo ritual once every two weeks, during which we shared our practices with some perspective over the project.
-It was an occasion to experiment new technologies, assess their match for the project needs, share new coding techniques, and update our standards together.
+For instance, on a previous outcome, we had planned a coding dojo ritual once every two weeks, during which we shared our practices with some perspective over the outcome.
+It was an occasion to experiment new technologies, assess their match for the outcome needs, share new coding techniques, and update our standards together.
 
 === Formal Training
 
@@ -803,7 +803,7 @@ Don’t discuss practices, discuss value.
 
 Their manifesto is
 
-* Craftsmanship is not enough to guarantee the success of a project but the lack of it can be the main cause of its failure,
+* Craftsmanship is not enough to guarantee the success of a outcome but the lack of it can be the main cause of its failure,
 * Agile and Craftsmanship complement each other and both are necessary,
 * Agile processes assumes technical excellence and a professional attitude,
 * Software craftsmanship takes technical excellence and professionalism to a whole new level.

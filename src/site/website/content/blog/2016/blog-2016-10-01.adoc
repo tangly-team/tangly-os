@@ -11,7 +11,7 @@ date: 2016-03-12
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2016-10-01-head.jpg[role=left]
+image::2016-10-01-head.jpg[720, 480, role=left]
 What are the main hurdles to introduce agile approaches in Swiss companies
 
 * Introducing agile company-wide is a cultural change process. Such a change takes time and sometimes hurts,
@@ -74,13 +74,13 @@ He indeed needs senior management support, but the Scrum Master daily job is to 
 Computerworld Switzerland has published an article about the main reasons why projects are late or cancelled in Switzerland in the April 2013 _CIO Agenda_ edition.
 The study uses data from Computerworld and Experteer. As an excerpt I gave you the four major identified failure reasons.
 
-. Changes during the project (62% Computer, 48% Experteer)
- _Agile and Scrum welcomes changes in the project. It is one of the four mantra of the Agile Manifesto. All agile processes are optimised to support changes._
-. Unclear project definition form the business stakeholders (50% Computer, 43% Experteer)
- _Scrum requests a clearly stated vision, roadmap and story map of the project._
- _The Scrum board is a radiator to communicate the project vision, goals, and motivations to all interested parties._
-. Insufficient project management and controlling (40% Computer, 4847 Experteer)
- _Scrum team, product owner, and Scrum master have clear responsibilities for project management._
+. Changes during the outcome (62% Computer, 48% Experteer)
+ _Agile and Scrum welcomes changes in the outcome. It is one of the four mantra of the Agile Manifesto. All agile processes are optimised to support changes._
+. Unclear outcome definition form the business stakeholders (50% Computer, 43% Experteer)
+ _Scrum requests a clearly stated vision, roadmap and story map of the outcome._
+ _The Scrum board is a radiator to communicate the outcome vision, goals, and motivations to all interested parties._
+. Insufficient outcome management and controlling (40% Computer, 4847 Experteer)
+ _Scrum team, product owner, and Scrum master have clear responsibilities for outcome management._
  _At the end of each sprint we have an objective and explicit control point._
 . Insufficient communication between involved persons (36% Computer, 45% Experteer)
  _Scrum framework enforces clear, transparent and regular communication within the team and with all stakeholders._

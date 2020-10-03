@@ -11,7 +11,7 @@ date: 2020-12-01
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2020-12-01-head.jpg[role=left]
+image::2020-12-01-head.jpg[720, 480, role=left]
 At many customer sites I visit, I see a lot of effort being put into classifying and managing bugs.
 
 Their bug list may contain more than thousands of items, all neatly documented with screenshots, ways to reproduce and a severity and impact classification.
@@ -37,7 +37,7 @@ _Stop Managing Bugs, Start Focusing on Quality!_
 
 Zero-Bug does not mean bug-free code production; it means striving to eradicate all known bugs.
 
-image::2020-12-01-fix-it-or-delete-it.png[role=left]
+image::2020-12-01-fix-it-or-delete-it.png[720, 480, role=left]
 The rigorous Zero-baseline approach will force us to clean our code.
 
 Let us categorize the bugs you have and deal with them accordingly.

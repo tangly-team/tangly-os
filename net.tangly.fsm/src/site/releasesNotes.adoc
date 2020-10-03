@@ -6,8 +6,6 @@ weight: 20
 draft: false
 ---
 :copyright: CC-BY-SA 4.0
-:icons: font
-:source-highlighter: pygments
 
 == FSM Library Change Logs
 

@@ -11,7 +11,7 @@ date: 2019-11-04
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2019-11-01-head.jpg[role=left]
+image::2019-11-01-head.jpg[720, 480, role=left]
 Your organization has decided to introduce agile at scale in all development departments or better in the whole company.
 
 Your Chief of Agility _COA_, Chief of Digitalization _COD_ or Chief of Change _COC_ was in an expensive training.
@@ -98,7 +98,7 @@ Eliminate hardening iterations, integration phases, milestones when software sho
 Your teams shall deliver a workable software on demand, multiple times a week or a day.
 * _Organize around products_.
 Customers buy products.
-Eliminate project based organizations.
+Eliminate outcome based organizations.
 *b _Have one backlog for the whole product_.
 Otherwise multiple backlogs must be synchronized and local optimization is de facto applied.
 This approach is against all lean principles.

@@ -11,7 +11,7 @@ date: 2016-03-16
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2016-03-01-head.jpg[role=left]
+image::2016-03-01-head.jpg[720, 480, role=left]
 As a young developer I loved Linux, compiled new kernels during evening sessions and struggled days to have the correct drivers for the graphic card and communication components of my notebook.
 
 I grew older and decided to enjoy my evenings and weekends.

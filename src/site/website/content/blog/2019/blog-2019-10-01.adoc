@@ -11,7 +11,7 @@ date: 2019-10-23
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2019-10-01-head.jpg[role=left]
+image::2019-10-01-head.jpg[720, 480, role=left]
 Are you still using _Java 8_ to run your mission critical systems?
 
 Are you truly using a _six years old_ technology stack?

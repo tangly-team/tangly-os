@@ -11,7 +11,7 @@ date: 2018-06-19
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2018-06-01-head.jpg[role=left]
+image::2018-06-01-head.jpg[720, 480, role=left]
 Lately I was asked how many bugs and smells detected through SonarQube were acceptable for a software product.
 And a Scrum master inquired which organizational changes are necessary to empower software developers to write good code.
 Speechless and dumbfounded I was unable to answer these questions.

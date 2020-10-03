@@ -11,7 +11,7 @@ date: 2017-07-03
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2017-07-01-head.jpg[role=left]
+image::2017-07-01-head.jpg[720, 480, role=left]
 What does a Scrum master the whole day?
 Are you just a fancy administrator or are you actively removing impediments?
 Do you coach your teams toward mastery?
@@ -21,7 +21,7 @@ They schedule meetings, moderate discussions, write progress reports and draw be
 Or worst they collect extensive statistics about velocity, planned versus delivered story points or how precise story estimation was.
 
 At the end of the day your job is to mentor your team to be champions and build awesome products.
-_Wake up!_ You are not a project manager, you shall be a catalyst.
+_Wake up!_ You are not a outcome manager, you shall be a catalyst.
 
 === Facets of a Scrum Master
 

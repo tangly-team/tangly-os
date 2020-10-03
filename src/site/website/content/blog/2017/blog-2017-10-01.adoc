@@ -11,7 +11,7 @@ date: 2017-09-02
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2017-10-01-head.jpg[role=left]
+image::2017-10-01-head.jpg[720, 480, role=left]
 The difficulty with contracts is that it is about trust.
 Here lays the roots for success or disaster.
 
@@ -51,7 +51,7 @@ Priority on Money::
 Priority on Time::
  Sometimes, it is not about the cost.
  Instead, there is a deadline, like the end of the fiscal year.
- Fix the project milestones - time dimension -.
+ Fix the outcome milestones - time dimension -.
  We still must define a budget and prioritize the stories.
  The must stories shall be implemented before deadline and budget can be extended to respect the deadline.
 Priority on Scope::
@@ -71,7 +71,7 @@ Now you must track progress, manage changes, and reach the agreed goals in a tim
 
 * Commit in trust, training, and decision making. Train your people and customer's representatives,
 * Deliver incrementally every few weeks to prove progress and cement trust,
-* The more trust you build, the less escalation you will have during the project,
+* The more trust you build, the less escalation you will have during the outcome,
 * Have rolling planning, budgeting, and tracking. You shall gain visibility of progress, transparent costs, and tentative end for fulfilling the contract,
 * How do you track and document changes?
 * How do you inform your stakeholders about contract changes?
@@ -100,7 +100,7 @@ Please remember the manifesto, it is all about collaboration and responding to c
 * Create the product vision and initial backlog together.
  Write good epics and identify main topics - topics identify the minimum outcomes to maximize product value -,
 ** Commit to the vision and defined MVP,
-** Define a budget for the project,
+** Define a budget for the outcome,
 ** Define tentative deadlines,
 ** Refine some epics and write the stories. Keep them concise and clear,
 * Estimate the product backlog together with the customer,

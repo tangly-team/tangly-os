@@ -26,7 +26,7 @@ import net.tangly.crm.ports.Crm;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The CRM entity form provides a CRUD abstraction to all properties of an entity instance part of the CRM domain model.
+ * The CRM entity form provides a CRUD abstraction to all fields of an entity instance part of the CRM domain model.
  *
  * @param <T> type displayed in the CRUD view
  */

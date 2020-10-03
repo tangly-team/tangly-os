@@ -10,7 +10,7 @@ date: 2018-01-02
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2018-01-01-head.jpg[role=left]
+image::2018-01-01-head.jpg[720, 480, role=left]
 Why is it so cool to develop software using Java, a modern IDE and agile tools.
 Because the environment empowers you and incredibly speed-up your development outcomes.
 In seconds, you know if the next code increment adds value to your product.

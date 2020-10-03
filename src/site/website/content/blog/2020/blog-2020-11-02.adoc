@@ -1,0 +1,135 @@
+---
+title: "What is An Agile Company: Five Years tangly llc"
+linkTitle: "Five Years Tangly"
+date: 2020-11-01
+---
+
+== What is An Agile Company: Five Years tangly llc
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2020-11-02-head.png[720, 480, role=left]
+
+=== Agile Motivation
+
+An agile company is a business with the ability to quickly adapt to market changes.
+There are some keys identifying characteristics of an agile company.
+They must be fast-moving and flexible, have rapid response to unexpected obstacles, lead change, be in touch with customers, and have continuous competitive
+advantage, and flat organizational structure for quick communication.
+
+In other words, an agile organization is optimized for a
+https://en.wikipedia.org/wiki/Volatility,_uncertainty,_complexity_and_ambiguity[VUCA] - Volatile, Uncertain, Complex, Ambiguous - environment.
+The organization should provide vision, understanding, courage and adaptability.
+
+[quote, Gary Hamel, 2007]
+____
+There is simply no way to build tomorrow's essential organizational capabilities - resilience, innovation and employee engagement -
+atop the scaffolding of 20th century management principles.
+____
+
+=== Agile Culture
+
+The {ref-less} movement states the main approach clearly:
+
+[quote, Craig Larman]
+____
+Culture follows Structure.
+____
+
+The steps are always
+
+. Change the structure. One approach is value streams and product development with cross-functional teams advocated in {ref-less}.
+. Change the processes. Work using agile approaches such as {ref-scrum}, {ref-kanban}, {ref-xp}. Study the advices of the {ref-less} guys.
+. Culture will follow. The organization must nurture the change process and eliminate barriers. The servant-leader approach is ideal.
+
+image::2020-11-02-waisfisz-levels-of-culture.png[role=center]
+
+To Waisfisz, an organization’s culture is defined by how its parts relate to each other.
+Moreover, it refutes the _the way we do things here_ model by reinforcing that your internal culture is defined by its differences from other organizations.
+This model lends from group dynamics where groups are not only defined by their internal identity but also by their differences to other groups.
+
+Clearly recognize no changing structure and just renaming roles and processes will not trigger any change. See the Larman laws
+
+[quote, Craig Larman]
+____
+. Organizations are implicitly optimized to avoid changing the status quo middle- and first-level manager and *specialist* positions & power structures.
+
+. As a corollary to (1), any change initiative will be reduced to redefining or overloading the new terminology to mean basically the same as status quo.
+
+. As a corollary to (1), any change initiative will be derided as *purist*, *theoretical*, *revolutionary*, *religion*,
+and *needing pragmatic customization for local concerns* — which deflects from addressing weaknesses and manager/specialist status quo.
+
+. As a corollary to (1), if after changing the change some managers and single-specialists are still displaced, they become *coaches/trainers* for the
+change, frequently reinforcing (2) and (3).
+____
+
+In the language of social psychology we can state
+
+[quote, Principles of Social Psychology, 1st Internation Edition]
+____
+
+It turns out that if we engage in a behavior, and particularly one that we had not expected that we would have,
+our thoughts and feelings toward that behavior are likely to change.
+
+This might not seem intuitive, but it represents another example of how the principles of social psychology—in this case,
+the principle of attitude consistency—lead us to make predictions that would not otherwise be that obvious.
+____
+
+=== Agile Anti-Patterns
+
+You have to acknowledge you will change the structure of your company.
+The current approach is to remove functional silos and reorganize along value streams.
+A stream is in charge of s set of related products and directly communicates with the users of these products.
+
+[quote, John Seddon]
+____
+Attempting to change an organization’s culture is a folly, it always fails.
+Peoples’ behavior _the culture_ is a product of the system; when you change the system peoples’ behavior changes."
+____
+
+* The major anti-pattern is the refusal to change structure of your organization. Without changing structure you will fail.
+* Your organization is unique but not esoteric. The actual approaches will work. You need to tailor them.
+* Agile is around for a quarter of a century. Accept that if you changing now, you are late. You will find thousands of experience reports.
+* Accept it will take time. The https://martinfowler.com/articles/agileFluency.html[Agile Fluency Model] provides a potential roadmap.
+* Agile transformation works only if your organization thrives to satisfy customer's needs and achieve technical excellence.
+
+Please compare your change process against these anti-patterns. Correct if needed.
+
+=== Lessons Learnt
+
+Agile is now mainstream. More than 80% of all software development initiatives claim to be agile.
+ALmost all research and development departments are implementing agile processes to achieve faster and better results.
+The organizations moving now to agile approaches are laggards.
+
+Beware that laggards will fight against any change. I hear upper management statements such as:
+
+* I do not like and do not want to hear the word _agile_
+* We are different industry. Agile cannot work in our environment.
+* We have our processes, we cannot change them. And agile is anyway chaos.
+
+Find a champion and get rid of the most vocal laggards.
+If no champion can be found either move to another company or renounce agile approaches.
+Be realistic, you will fail to have any lasting success in such an environment.
+
+And embrace reality. At least ighty percent of all software and research activities claim to follow agile approaches.
+This war is won. We are moping the last islands of resistance.
+
+_For me, it is similar to the introduction of object-oriented approaches in analysis, design, and realisation of software projects.
+In the late nineties of last century the war was won. It took more than ten years to take care of the last luddites._
+
+[bibliography]
+=== Literature
+
+[[[futureOfMgmt]]] The Future of Management, Gerry Hamel, Harvard Business School Press
+
+[[[cutlturalPerspective]]] An Organizational Cultural Perspective, Waisfisz Bob, 2015, Hofstede Culture Center Strategy, ITIM International
+
+Laloux
+
+Kotter
+
+Senge
+

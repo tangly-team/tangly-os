@@ -11,7 +11,7 @@ date: 2019-04-13
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2019-04-01-head.jpg[role=left]
+image::2019-04-01-head.jpg[720, 480, role=left]
 You have a successful product and happy users.
 Slowly the cost adding new features is creeping up and product margins are shrinking.
 Which crimes did put us in this dreaded situation?
@@ -33,41 +33,41 @@ A context can be a single file, a class, a package or a module.
 
 Gather overall information concerning your repository - use the optionals --before and --after to restrict the time range you are interested in -
 
-[code, bash]
+[source, bash]
 ----
 git log --numstat --pretty=format:'[%h] %an %ad %s' --date=short --before='YYY-MM-DD' --after='YYYY-MM-DD'
 ----
 
 Find out which contexts are most often modified
 
-[code, bash]
+[source, bash]
 ----
 git log --pretty=format: --name-only | sort | uniq -c | sort -rg | head -100
 ----
 
 or find out which contexts with a specific extension are most often modified
 
-[code, bash]
+[source, bash]
 ----
 git log --pretty=format: --name-only | sort | uniq -c | sort -rg | grep -I extension | head -100
 ----
 Find out how many times a specific context was modified
 
-[code, bash]
+[source, bash]
 ----
 git log -- contextPath --pretty=format:'%an' | grep 'Author' | sed -e 's/Author: \(.*\) <\(.*\)/\1/' | sort -rg | uniq -c | sort -rg
 ----
 
 Find out how many errors were fixed in a specific context - e.g. identified through close #TicketId -
 
-[code, bash]
+[source, bash]
 ----
 git log -- contextPath | grep 'close #' | wc -l
 ----
 
 === Deeper Insights
 
-image:2019-04-01-code-that-matters.png[role=left]
+image:2019-04-01-code-that-matters.png[720, 480, role=left]
 Analysis of various products found out that 5% to 10% of the source code is under active development.
 It is where your money is spent to make your customers happy.
 Just put all your refactoring efforts to improve these 10% of your product currently impacting your customer satisfaction.

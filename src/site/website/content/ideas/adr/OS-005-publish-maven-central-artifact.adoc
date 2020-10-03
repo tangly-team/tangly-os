@@ -10,13 +10,13 @@ weight: 5
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-== FSM-002 Publish Artifacts on Public Java Components Repository
+== OS-005 Publish Artifacts on Public Java Components Repository
 
 Date: 2019-05-01
 
 === Status
 
-Superseed: FSM-0002
+Supersede: link:../../../../docs/fsm/adr/fsm-002-publish-maven-central-artifact[FSM-0002]
 
 === Context
 
@@ -30,14 +30,15 @@ The libraries shall be published as artifacts on maven central and be accessible
 A website shall be set up to provide an adequate documentation for users.
 
 The https://tangly-team.bitbucket.io[Technical Documentation] will use a static web approach to minimize costs and provide good legibility.
+All open source components will be hosted on the same site.
 
 The libraries will be published on Maven Central to maximize potential usage.
 
 === Consequences
 
 * We have to establish a publishing process at the company level to deploy signed artifacts to maven central repository.
- See link:../ideas/components-publication[release and publication process]
+ See link:../../../ideas/components-publication[release and publication process]
 * We have to establish a public website to host the documentation of public published libraries.
  The static website is {ref-site}
 * We have to support semantic versioning for all future releases of public published libraries.
-See link:../ideas/components-publication[release and publication process]
+ See link:../../../ideas/components-publication[release and publication process]

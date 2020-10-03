@@ -11,7 +11,7 @@ date: 2016-03-07
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2016-09-01-head.jpg[role=left]
+image::2016-09-01-head.jpg[720, 480, role=left]
 What are the main hurdles to introduce agile approaches in Swiss companies.
 
 * Introducing agile company-wide is a cultural change process. Such a change takes time and sometimes hurts,
@@ -41,7 +41,7 @@ http://en.wikipedia.org/wiki/Change_management[change process].
 The coaches should be trained in change management and have experiences with resistance to changes.
 
 The above points in italics are all related to change processes.
-You can handle two thirds of the hurdles with adequate change management training and a clear change project definition.
+You can handle two thirds of the hurdles with adequate change management training and a clear change outcome definition.
 Do not try to introduce Scrum at company level without such an approach.
 
 === Main Reasons Why Agile Projects are Cancelled

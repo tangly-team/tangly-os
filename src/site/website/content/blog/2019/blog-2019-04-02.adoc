@@ -11,7 +11,7 @@ date: 2019-04-15
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2019-04-02-head.jpg[role=left]
+image::2019-04-02-head.jpg[720, 480, role=left]
 As a young developer I loved Linux, compiled new kernels during evening sessions and struggled days to have the correct drivers for the graphic card and communication components of my notebook.
 
 I grew older and decided to enjoy my weekends, family and outdoor activities.
@@ -53,7 +53,7 @@ It could sometimes be slightly snappier but still the best Java IDE under the sk
 ** {ref-gradle} is kept up to date either with homebrew or gradlew,
 * Atlassian Cloud applications - https://bitbucket.org/[BitBucket], https://trello.com/[Trello] and CI pipeline - and SourceTree for some git operations,
 * https://brew.sh/[Homebrew] as package manager for utilities,
-* https://www.docker.com/[Docker] as container manager - for complex project you can run locally kubernetes,
+* https://www.docker.com/[Docker] as container manager - for complex outcome you can run locally kubernetes,
 * _https://www.google.com/chrome/[Chrome] is my default browser. I almost never use _Safari_ or _Firefox_,
 
 I retired https://www.virtualbox.org/[VirtualBox] because I do not need any virtual machines. They were replaced with Docker images, I stopped using MacPorts.

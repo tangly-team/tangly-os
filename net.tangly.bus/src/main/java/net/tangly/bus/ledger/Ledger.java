@@ -90,9 +90,9 @@ public class Ledger {
         if (!transaction.isSplit() && vatDuePercent.isPresent()) {
             AccountEntry credit = transaction.creditSplits().get(0);
             BigDecimal vatDue = credit.amount().multiply(vatDuePercent.get());
-            List<AccountEntry> splits = new ArrayList<>();
-            splits.add(new AccountEntry(credit.accountId(), credit.date(), credit.amount().subtract(vatDue), credit.text(), false, credit.tags()));
-            splits.add(new AccountEntry("2201", credit.date(), vatDue, null, false));
+            List<AccountEntry> splits =
+                    List.of(new AccountEntry(credit.accountId(), credit.date(), credit.amount().subtract(vatDue), credit.text(), false, credit.tags()),
+                            new AccountEntry("2201", credit.date(), vatDue, null, false));
             booked = new Transaction(transaction.date(), transaction.debitAccount(), null, transaction.amount(), splits, transaction.text(),
                     transaction.reference());
         }

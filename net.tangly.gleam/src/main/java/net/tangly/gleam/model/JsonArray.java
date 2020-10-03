@@ -35,7 +35,7 @@ import org.json.JSONObject;
 public record JsonArray<T, U>(@NotNull String property, @NotNull Function<T, Collection<U>> getter, @NotNull BiConsumer<T, U> setter,
                               Function<JSONObject, JsonEntity<?>> importSelector, Function<Object, JsonEntity<?>> exportSelector) implements JsonField<T, U> {
     @Override
-    public void exports(@NotNull T entity, JSONObject object) {
+    public void exports(@NotNull T entity, @NotNull JSONObject object) {
         Collection<U> entities = getter().apply(entity);
         JSONArray items = new JSONArray();
         entities.forEach(o -> {

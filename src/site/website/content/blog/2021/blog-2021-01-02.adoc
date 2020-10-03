@@ -1,0 +1,56 @@
+---
+title: "Meaningful Identifiers"
+linkTitle: "eaningful Identifiers"
+date: 2020-01-15
+---
+
+== Meaningful Identifiers
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2021-01-02-head.jpg[720, 480, role=left]
+
+=== External Well-Defined Identifiers
+
+The best identifiers are externally well-defined identifiers. Examples are
+
+* Currency names as defined in https://en.wikipedia.org/wiki/ISO_4217[ISO standard 4217],
+* Country abbreviations as define in https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes[ISO standard 3166],
+* Social security numbers are well documented in the country they are used,
+* Car numbers are well-known and documented.
+
+As much as possible try to use global identifiers. Examples are
+
+* IBAN account numbers are defined worldwide through https://en.wikipedia.org/wiki/International_Bank_Account_Number[ISO 13616],
+* Car number and country acronym are defined worldwide,
+* Passport numbers are defined worldwide. But each country has its own structure,
+* Social security numbers are a counter example. Their are currently only defined locally.
+
+=== External Managed Identifiers
+
+=== Internal Managed Identifiers
+
+One possible approach is to define a naming convention such as
+
+Year - Acronym - Counter
+
+An example of such an identifier would be
+
+    2021-CNT-0001 (Contract number 1 in year 2021)
+    2020-EVT-0101 (Event  number 101 in year 2020)
+
+Variations are
+
+* A full date as prefix, our system uses this convention to name invoices
+* A more readable acronym, our system uses the word invocie to name invoices
+
+=== Lessons Learnt
+
+Always try to find an external well-defined identifier for your entitites.
+
+Avoid by all means to use an internal privately defined identifier as a public one.
+You will bear the burden to document, manage and evolve the scheme as soon as you do this.
+

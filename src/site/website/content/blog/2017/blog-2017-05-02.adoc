@@ -11,7 +11,7 @@ date: 2017-05-17
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2017-05-02-head.jpg[role=left]
+image::2017-05-02-head.jpg[720, 480, role=left]
 
 === Start using Git
 
@@ -21,7 +21,7 @@ The actual industrial standard is git, a distributed version control system - ht
 Install git on your development machine.
 If you are using IntelliJ IDEA configure git in the IDE through the preferences pane.
 
-To put your project under git version management, go to the root of the project and do
+To put your outcome under git version management, go to the root of the outcome and do
 
 [code]
 ----
@@ -36,9 +36,9 @@ git add [filename]
 git add *
 ----
 
-You can perform these operations to add a project to a local Git repository directly in IntelliJ IDEA as follow
+You can perform these operations to add a outcome to a local Git repository directly in IntelliJ IDEA as follow
 
-. Open the project you want to store in a repository.
+. Open the outcome you want to store in a repository.
 . On the main menu, choose VCS | Import into Version Control | Create Git Repository.
 . In the dialog that opens, specify the directory where you want to create a new Git repository.
 . Put the required files under Git version control.
@@ -71,7 +71,7 @@ Use Git as an history of all successful  changes you implement, and simply rollb
 
 === What is Project Status?
 
-To find out what the status of your project is, simply
+To find out what the status of your outcome is, simply
 
 [code]
 ----
@@ -80,7 +80,7 @@ git status
 
 The same information is available in IntelliJ IDEA under
 
-. Open the required project
+. Open the required outcome
 . On the main menu, choose VCS | Refresh File Status
 . Switch to the Version Control window and open the Local Changes tab.
 

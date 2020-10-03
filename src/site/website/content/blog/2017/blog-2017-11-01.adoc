@@ -11,7 +11,7 @@ date: 2017-09-23
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2017-11-01-head.jpg[role=left]
+image::2017-11-01-head.jpg[720, 480, role=left]
 An impediment is any aspect hindering the team or a company to deliver value and higher quality to the customers.
 An agile organization continuously removes impediments, it is one of her major activities.
 This activity is ongoing and can never be completed.

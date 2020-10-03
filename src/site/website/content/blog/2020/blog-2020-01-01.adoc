@@ -11,7 +11,7 @@ date: 2020-01-06
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2020-01-01-head.jpg[role=left]
+image::2020-01-01-head.jpg[720, 480, role=left]
 When https://en.wikipedia.org/wiki/Extreme_programming[eXtreme Programming] first came out, one expectation it worked hard to set is who gets to make what
 calls on software projects.
 

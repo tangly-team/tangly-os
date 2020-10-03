@@ -10,15 +10,15 @@ weight: 3
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-= OS-003 Remove usage of Google Guava Library
+== OS-003 Remove usage of Google Guava Library
 
 Date: 2020-01-01
 
-== Status
+=== Status
 
 Implemented
 
-== Context
+=== Context
 
 JDK are released every six months to all Java developers.
 Better approaches support clean code, less verbose source code and reduce programming errors.
@@ -27,17 +27,23 @@ These constructs shall be used in our modules as soon as they are released to th
 The advantage is better integration, always synchronized with the current release of the JDK and no incompatibilities.
 The drawback is that our clients have to use the current JDK released version.
 
-== Decision
+=== Decision
 
 We use the current released JDK and all constructs provided in this JDK.
 We use preview features and incubating functionality present in this JDK.
 The main advantages are
 
-1. Current JDK versions provide performant and elegant implementation. See for example the record construct provided since JDK 14.
-2. Source code is legible and has less errors.
-3. Our developers are up to date with Java evolution and enjoy writing modern code.
+. Current JDK versions provide performant and elegant implementation. See for example the record construct provided since JDK 14.
+. Source code is legible and has less errors.
+. Our developers are up to date with Java evolution and enjoy writing modern code.
 
-== Consequences
+=== Consequences
 
 * Clients are forced to use current JDK version.
 * Tooling is more brittle because a lot of tool maintainers are late to adapt actual version of JDK.
+
+=== Examples of New Features
+
+* The _instanceof_ operator supports in conditional statement deconstruction.
+* The _record_ construct simplifies data objects and enccourages immutability.
+* The _UncheckedIOExcepiton_ encourages the use of non-checked exceptions.

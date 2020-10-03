@@ -11,7 +11,7 @@ date: 2018-04-12
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2018-04-01-head.png[role=left]
+image::2018-04-01-head.png[720, 480, role=left]
 The last months I was often confronted with software products having insufficient quality.
 
 Insufficient means late delivery, and few new features.
@@ -80,7 +80,7 @@ Their manifesto is
 
 [quote]
 ____
-Craftsmanship is not enough to guarantee the success of a project but the lack of it can be the main cause of its failure.
+Craftsmanship is not enough to guarantee the success of a outcome but the lack of it can be the main cause of its failure.
 
 Agile and Craftsmanship complement each other and both are necessary
 

@@ -11,7 +11,7 @@ date: 2016-04-21
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2016-04-01-head.jpg[role=left]
+image::2016-04-01-head.jpg[720, 480, role=left]
 Often I am told that it is difficult to use Agile/Scrum approaches for brown field projects or for big projects or for distributed projects or for in other situations.
 
 Interestingly these persons also state that the same problem exist for RUP/OpenUP, Waterfall model DIN XT, Swiss variant called Hermes.
@@ -41,7 +41,7 @@ To open the discussion and bring the discussion back to objective arguments I of
  The work of one of the Scrum founders how a company can adopt Scrum.
  You should read the standard works of Scrum to understand the concepts.
 * Agile Project Management with Scrum, Ken Schwaber, Microsoft Press 2003
- The work of one of the Scrum founders how Scrum influence project organization and management.
+ The work of one of the Scrum founders how Scrum influence outcome organization and management.
  You should read the standard works of Scrum to understand the concepts.
 
 === Brown-Field Projects
@@ -82,7 +82,7 @@ To open the discussion and bring the discussion back to objective arguments I of
 * Peopleware: Productive Projects and Teams, Tom DeMarco & Timothy Lister, Dorset House 1987
  How to growth teams and lead successful projects
 * The Mythical Man-Month 2nd Edition, Frederick P. Brooks, Addison-Wesley 1995
- The first version was published in 1975. The rules postulated by Brooks are still actual. Sad is that a lot of project leaders have no clue of these rules.
+ The first version was published in 1975. The rules postulated by Brooks are still actual. Sad is that a lot of outcome leaders have no clue of these rules.
 * Becoming a Technical Leader: An organic Problem-Solving Approach, Gerald M. Weingartner, Dorset House 1986
  How a gifted technical engineer can become a manager.
 * Slack: Getting past burnout, busywork, and the myth of total efficiency, Tom DeMarco, Broadway Books 2001

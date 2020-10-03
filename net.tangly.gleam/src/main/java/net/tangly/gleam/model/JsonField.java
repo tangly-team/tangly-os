@@ -25,7 +25,7 @@ import org.json.JSONObject;
  */
 public interface JsonField<T, U> {
     /**
-     * Import the JSON value and set the associated property after an optional conversion.
+     * Import the JSON value and set the associated property after an optional conversion. Multiple values can be used if the object is a complex one.
      *
      * @param entity entity which property will be imported and set
      * @param object JSON object containing the values
@@ -34,11 +34,23 @@ public interface JsonField<T, U> {
     void imports(@NotNull T entity, @NotNull JSONObject object);
 
     /**
-     * Export the JSON value from the associated property after an optional conversion.
+     * Export the JSON value from the associated property after an optional conversion. Multiple values can be written if the object is a complex one.
      *
      * @param entity entity which property will be exported as TSV value
      * @param object JSON object to write the TSV value(s)
      * @see JsonProperty#imports(Object, JSONObject)
      */
     void exports(@NotNull T entity, @NotNull JSONObject object);
+
+    /**
+     * Returns the string value associated with the property key.
+     *
+     * @param key    key of the property
+     * @param object JSON object containing the property
+     * @return the string value if the property exists otherwise null
+     */
+    static String get(@NotNull String key, @NotNull JSONObject object) {
+        return object.has(key) ? object.getString(key) : null;
+    }
+
 }

@@ -11,7 +11,7 @@ date: 2021-01-01
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2021-01-01-head.jpg[200, 400, role=left]
+image::2021-01-01-head.jpg[720, 480, role=left]
 Agile fluency model is a powerful abstraction to better understand your agile transition.
 It does not matter which flavor of agile you are deploying in your organization; in all cases the agile fluency model can be applied.
 
@@ -119,7 +119,7 @@ When Sustaining Agile::
  This is often accompanied by loss of expertise as dissatisfied team members seek new positions.
  Turnover is a related cause of fluency loss.
  A team that gains or loses too many members may have trouble sustaining what it’s learned.
- This is a particular problem for organizations that assemble new teams for every project.
+ This is a particular problem for organizations that assemble new teams for every outcome.
 Agile Fluency and Scrum::
  Agile and Scrum requires long-living and stable teams.
  Agile at organizational level can only work if the upper and middle management transitioned to agile thinking and handling.

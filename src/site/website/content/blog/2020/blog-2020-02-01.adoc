@@ -11,7 +11,7 @@ date: 2020-02-29
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2020-02-01-head.jpg[role=left]
+image::2020-02-01-head.jpg[720, 480, role=left]
 Most products are developed by a team, and these achievements are the fruit of teamwork.
 
 Software product development is now agile, and most often uses the https://scrumguides.org/scrum-guide.html[Scrum] approach.
@@ -65,8 +65,8 @@ See our post about link:../../2018/pragmatic-craftsmanship-professional-software
 
 Establish a culture to use current versions of programming languages, tools and libraries.
 
-On a previous project, we had planned a coding dojo ritual once every two weeks, during which we shared our practices with some perspective over the project.
-It was an occasion to experiment with new technologies, assess their match for the project needs, share new coding techniques, and update our standards together.
+On a previous outcome, we had planned a coding dojo ritual once every two weeks, during which we shared our practices with some perspective over the outcome.
+It was an occasion to experiment with new technologies, assess their match for the outcome needs, share new coding techniques, and update our standards together.
 
 === Formal Training
 
@@ -83,7 +83,7 @@ A professional engineer should read multiple technical books each year.
 
 Create https://en.wikipedia.org/wiki/Psychological_safety[psychological safety] in the workplace.
 
-image::2020-02-01-psychological-safety.jpg[role=left]
+image::2020-02-01-psychological-safety.jpg[720, 480, role=left]
 The major responsibility of senior management is hire the best collaborators, retain and develop top collaborators, and respectfully off-board departing collaborators.
 
 * Hiring and on-boarding collaborators,
@@ -105,12 +105,12 @@ Are they really investment positions?
 
 The agile architecture track contains the following blogs
 
-. link:../../2019/agile-architecture-principles[Agile Architecture Principles],
-. link:../../2019/agile-code-is-clean-code[Agile Code is Clean Code!],
-. link:../../2019/agile-architecture-within-scrum[Agile Architecture within Scrum],
-. link:../../2020/agile-component-design[Agile Component Design],
-. link:../../2020/legacy-systems-refactoring[Legacy Systems Refactoring],
-. link:../../2020/how-agile-collaborators-learn[How Agile Collaborators Learn].
+. link:../../2019/agile-architecture-principles[Agile Architecture Principles]
+. link:../../2019/agile-code-is-clean-code[Agile Code is Clean Code!]
+. link:../../2019/agile-architecture-within-scrum[Agile Architecture within Scrum]
+. link:../../2020/agile-component-design[Agile Component Design]
+. link:../../2020/legacy-systems-refactoring[Legacy Systems Refactoring]
+. link:../../2020/how-agile-collaborators-learn[How Agile Collaborators Learn]
 
 We also published our https://www.tangly.net/insights/continuous-learning/agile-architecture-course[agile architecture course] (3 ECTS) used for teaching
 computer science students at bachelor level at Swiss technical universities.

@@ -1,0 +1,114 @@
+---
+title: "User Guide Gleaam"
+date: 2019-05-01
+weight: 40
+draft: false
+---
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+== User Guide Gleam
+
+=== JSON Mapping
+
+==== Strengths
+
+The advantages of the Gleam JSON mapping library are:
+
+* Use POJO - _Plain Old Java Objects_ - and do not require Java Bean naming conventions for getters and setters.
+* Support immutable *record* constructs of Java
+* Support heteregeneous collections and can instantiate the expected instances through a user provided discriminator function.
+* Use lambda for reading and writing properties
+
+The JSON manipulation uses the https://github.com/stleary/JSON-java[JSON-Java] library.
+We use the library variant _com.guicedee.services:json_ supporting Java 9 module semantic.
+
+[plantuml, json-class-diagram, svg]
+....
+interface JsonField<T, U> {
+    void imports(T entity, JSONObject object)
+    void exports(T entity, JSONObject object)
+}
+
+class JsonProperty<T, U> <<record>> {}
+JsonProperty <|.. JsonField
+
+class JsonArray<T, U> <<record>> {}
+JsonArray <|.. JsonField
+
+class JsonEntity<T> <<record>> {}
+
+JsonEntity *- JsonField : fields
+....
+
+Complex structures are implemented through fields have a JSON entity as the generic parameter _U_.
+
+==== Recipes
+
+The classes provide factory methods to create JSON entity defining the transformation of a Java object to a JSON instance and vice-versa.
+Below the code to map a bank connection object defined as a Java record with three String properties.
+
+[source, java]
+----
+public static JsonEntity<BankConnection> createJsonBankConnection() {
+    Function<JSONObject, BankConnection> imports = object -> {  // <1>
+        BankConnection connection = new BankConnection(JsonField.get("iban", object), JsonField.get("bic", object), JsonField.get("institute", object));
+        return (connection.isValid()) ? connection : null;
+    };
+
+    List<JsonField<BankConnection, ?>> fields =
+            List.of(JsonProperty.ofString("iban", BankConnection::iban, null), JsonProperty.ofString("bic", BankConnection::bic, null),
+                    JsonProperty.ofString("institute", BankConnection::institute, null));
+    return JsonEntity.of(fields, imports); // <2>
+}
+----
+<1> defines the import method to retrieve the values to create a bank connection, create an immutable Java record object, and validate the properties.
+<2> Returns a JSON entity defining an import method to construct an instance, and regular properties to create the JSON represenation.
+
+The _InvoiceJson_ class is a good example using most of the factory methods provided in the JSON conversion library.
+
+=== TSV Mapping
+
+==== Strengths
+
+The advantages of the Gleam TSV mapping library are:
+
+* Use POJO - _Plain Old Java Objects_ - and do not require Java Bean naming conventions for getters and setters.
+* Support immutable *record* constructs of Java
+
+[plantuml, tsv-class-diagram, svg]
+....
+class TsvProperty<T, U> <<record>> {}
+class TsvEntity<T<T, U>> <<record>> {}
+
+TsvEntity *- TsvField : fields
+....
+
+The TSV manipulation uses the https://commons.apache.org/proper/commons-csv/[apache commons csv] library.
+
+==== Recipes
+
+The classes provide factory methods to create JSON entity defining the transformation of a Java object to a JSON instance and vice-versa.
+Below the code to map a bank connection object defined as a Java record with three String properties.
+
+[source, java]
+----
+}
+static TsvEntity<BankConnection> createTsvBankConnection() {
+    Function<CSVRecord, BankConnection> imports = (CSVRecord record) -> { // <1>
+        BankConnection connection = new BankConnection(get(record, IBAN), get(record, BIC), get(record, INSTITUTE));
+        if (!connection.isValid()) {
+            logger.atWarn().log("Invalid bank connection {}", connection);
+        }
+        return connection;
+    };
+
+    List<TsvProperty<BankConnection, ?>> fields =
+            List.of(TsvProperty.ofString("iban", BankConnection::iban, null), TsvProperty.ofString("bic", BankConnection::bic, null),
+                    TsvProperty.ofString("institute", BankConnection::institute, null));
+
+    return TsvEntity.of(BankConnection.class, fields, imports); // <2>
+}
+----
+<1> defines the import method to retrieve the values to create a bank connection, create an immutable Java record object, and validate the properties.
+<2> Returns a TSV entity defining an import method to construct an instance, and regular properties to create the TSV represenation.

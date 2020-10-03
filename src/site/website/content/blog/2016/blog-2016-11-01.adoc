@@ -11,7 +11,7 @@ date: 2016-11-13
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2016-11-01-head.jpg[role=left]
+image::2016-11-01-head.jpg[720, 480, role=left]
 Lately people often ask me what is an agile company.
 They have an understanding of agile software development techniques such as {ref-scrum}, Lean, Kanban, {ref-xp} but no clue how a company could be agile.
 

@@ -11,7 +11,7 @@ date: 2016-01-21
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2016-01-01-head.jpg[role=left]
+image::2016-01-01-head.jpg[720, 480, role=left]
 The Scrum and agile mantra is to have a "ready to ship" product each time a sprint is completed.
 You must avoid any incomplete activities at any price.
 

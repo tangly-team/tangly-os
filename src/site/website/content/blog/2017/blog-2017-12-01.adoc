@@ -11,7 +11,7 @@ date: 2017-12-06
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2017-12-01-head.png[role=left]
+image::2017-12-01-head.png[720, 480, role=left]
 It is Christmas time.
 Clean your desk and the content of your workstation.
 Upgrade your tools and your development environment to the actual version.

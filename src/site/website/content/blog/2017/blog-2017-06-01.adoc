@@ -11,10 +11,10 @@ date: 2017-06-08
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2017-06-01-head.jpg[role=left]
-Agile will never guarantee project success.
+image::2017-06-01-head.jpg[720, 480, role=left]
+Agile will never guarantee outcome success.
 All projects, especially application development, entail risk.
-If a project was risk free it is unlikely to provide significant benefits or competitive advantages.
+If a outcome was risk free it is unlikely to provide significant benefits or competitive advantages.
 There are however, a number of ways in which Agile Scrum projects repeatedly fail which are worth examining.
 
 Agile approaches and Scrum framework can reduce risks in projects and increase the return on investment.
@@ -25,7 +25,7 @@ image::2017-06-01-agile-vs-waterfall.jpg[role=center]
 Below are common patterns and errors when doing agile instead of being agile
 
 Wagile::
- is a team which continues to follow a basically Waterfall project but uses the language of Agile and adds a few agile practices.
+ is a team which continues to follow a basically Waterfall outcome but uses the language of Agile and adds a few agile practices.
  For example, the team may present burn-down charts together with Gantt charts. Or the team compute individual resource allocation for the next three months.
  You can also replace Waterfall with V-Model, http://www.hermes.admin.ch/onlinepublikation/index.xhtml[HERMES], RUP, and even sometimes {ref-safe}}.
 ScrumBut::
@@ -33,7 +33,7 @@ ScrumBut::
  Or _We do {ref-scrum} but the Project Manager allocates tasks_.
  Such teams normally have a long list of “buts” and show little progress of removing them.
 Hitting The Scrum Wall::
- The most popular Agile method is Scrum which is a project management technique.
+ The most popular Agile method is Scrum which is a outcome management technique.
  Scrum is normally used with a number of other Agile techniques, typically user stories redaction and the technical practices from {ref-xp} – such as TDD,
  ATDD, code refactoring, continuous integration and delivery CI/CD, pair programming, etc.
  Teams that adopt the Scrum framework initially see an improvement in productivity and customer satisfaction.
@@ -46,9 +46,9 @@ Potemkin Agile::
  occurs when an a team adopts and applies an Agile method well but does not deliver business value.
  This is a form of goal deferment were the team consider adhering to the process rather than delivering business value as the success criteria.
 Customer (Business Analyst, Product Manager, Product Owner) overload::
- on a well functioning Agile project the customer, or proxy customer, is called upon to do a lot.
- They need to decide requirements, set priorities, scout ahead of the project, align strategy, work with the developers, testers and managers, and may even
- have their own day job to do. In the earliest XP project (“C3”) the first business analyst came close to a nervous breakdown.
+ on a well functioning Agile outcome the customer, or proxy customer, is called upon to do a lot.
+ They need to decide requirements, set priorities, scout ahead of the outcome, align strategy, work with the developers, testers and managers, and may even
+ have their own day job to do. In the earliest XP outcome (“C3”) the first business analyst came close to a nervous breakdown.
 Fall back::
  management may bring in consultants and other experts help switch a team to Agile. When the consultants leave some teams return to their old ways of working.
  Advisers and consultants can be a great help when introducing Agile but they need to build capacity in the development team to continue learning

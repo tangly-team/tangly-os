@@ -30,9 +30,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The entity form provides an interface to all properties of an entity instance. The properties are grouped in tabs.
+ * The entity form provides an interface to all fields of an entity instance. The fields are grouped in tabs.
  * <ul>
- *    <li>The overview panel shows the regular properties of an entity.</li>
+ *    <li>The overview panel shows the regular fields of an entity.</li>
  *    <li>The comments panel shows all comments associated with the entity. This panel is a Crud&lt; Comment&gt; instance.</li>
  *    <li>The tags panel shows all tags associated with the entity. This panel is a Crud&lt;Tag&gt; instance.</li>
  * </ul>

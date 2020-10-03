@@ -11,7 +11,7 @@ date: 2016-02-24
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2016-02-01-head.jpg[role=left]
+image::2016-02-01-head.jpg[720, 480, role=left]
 Well my current experience is that the answer is a sounding YES.
 
 Developers love to develop software using Scrum.
@@ -61,7 +61,7 @@ So you need to discover your "the lonely cowboy riding in the sun" song why this
 
 === Product Owner
 
-As a product owner you control the budget of the project, the priorities and at the end of each iteration you can change all priorities and goals.
+As a product owner you control the budget of the outcome, the priorities and at the end of each iteration you can change all priorities and goals.
 Cool isn't it.
 But wait as a product owner I am responsible of the budget and product success and each time a member of the team asks me something I must have an answer ready.
 

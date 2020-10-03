@@ -14,13 +14,13 @@
 /**
  * The application can be used by mvn install (once) mvn (to run the application) The package provides a CRUD component for entities. Entities can have
  * <ul>
- *     <li>A list displaying a list of entities with selected properties.</li>
- *     <li>A tabbed details view showing simple properties view, comments view, tags view. The comments and tags view display again a list of
+ *     <li>A list displaying a list of entities with selected fields.</li>
+ *     <li>A tabbed details view showing simple fields view, comments view, tags view. The comments and tags view display again a list of
  *     values.</li>
  * </ul>
  * <p>The composite field abstractions cover two scenarios. Composite fields for immutable entities cannot use a binder. We provide a validator method to return
- * validation logic for all internal fields. Regular beans providing at least getters for properties can be connected with a binder. Here we provide a
- * binding method to connect the bean properties with converters and validators declared in the binder.</p>
+ * validation logic for all internal fields. Regular beans providing at least getters for fields can be connected with a binder. Here we provide a
+ * binding method to connect the bean fields with converters and validators declared in the binder.</p>
  * <p>Care was taken to support cascadating read-only and editing modes for all details views.</p>
  */
 package net.tangly.commons.vaadin;

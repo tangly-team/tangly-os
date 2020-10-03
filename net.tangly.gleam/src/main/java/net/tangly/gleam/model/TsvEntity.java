@@ -26,11 +26,11 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Defines an entity mapped to a row of TSV values written to a TSV file.
  *
- * @param properties properties of the entity with the mapping rules
- * @param factory    factory method to create a new entity instance
- * @param <T>        class of the entity
+ * @param fields  fields of the entity with the mapping rules
+ * @param factory factory method to create a new entity instance
+ * @param <T>     class of the entity
  */
-public record TsvEntity<T>(Class<T> clazz, List<TsvProperty<T, ?>> properties, Supplier<T> factory, Function<CSVRecord, T> imports,
+public record TsvEntity<T>(Class<T> clazz, List<TsvProperty<T, ?>> fields, Supplier<T> factory, Function<CSVRecord, T> imports,
                            BiConsumer<T, CSVPrinter> exports) {
     public static <T> TsvEntity<T> of(Class<T> clazz, List<TsvProperty<T, ?>> properties, Supplier<T> factory) {
         return new TsvEntity<>(clazz, properties, factory, null, null);
@@ -46,12 +46,12 @@ public record TsvEntity<T>(Class<T> clazz, List<TsvProperty<T, ?>> properties, S
      * @return ordered list of column header names for the TSV record header
      */
     public List<String> headers() {
-        return properties().stream().flatMap(e -> e.columns().stream()).collect(Collectors.toList());
+        return fields().stream().flatMap(e -> e.columns().stream()).collect(Collectors.toList());
     }
 
     /**
      * Export an entity as a row in a TSV file. Upon completion of the export the caller shall call. If defined the imports lambda is executed, otherwise the
-     * import lambdas for all properties are executed.
+     * import lambdas for all fields are executed.
      *
      * @param entity  entity to be exported as TSV record
      * @param printer printer to write TSV record
@@ -60,13 +60,13 @@ public record TsvEntity<T>(Class<T> clazz, List<TsvProperty<T, ?>> properties, S
         if (exports() != null) {
             exports().accept(entity, printer);
         } else {
-            properties().forEach(property -> property.exports(entity, printer));
+            fields().forEach(property -> property.exports(entity, printer));
         }
     }
 
     /**
      * Import an entity from a TSV record. First if defined the imports lambda is executed otherwise the factory is used to create a new Java domain object.
-     * When all properties with a defined setter will have their imports lambda executed.
+     * When all fields with a defined setter will have their imports lambda executed.
      *
      * @param record TSV record containing the TSV representation of the entity
      * @return entity base on the TSV record
@@ -78,7 +78,7 @@ public record TsvEntity<T>(Class<T> clazz, List<TsvProperty<T, ?>> properties, S
         } else {
             entity = factory.get();
         }
-        properties().stream().filter(o -> o.setter() != null).forEach(property -> property.imports(entity, record));
+        fields().stream().filter(o -> o.setter() != null).forEach(property -> property.imports(entity, record));
         return entity;
     }
 }

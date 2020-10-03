@@ -11,7 +11,7 @@ date: 2019-03-19
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2019-03-01-head.jpg[role=left]
+image::2019-03-01-head.jpg[720, 480, role=left]
 Agile approaches are not enough, You need a strong engineering culture to achieve quality and lasting success.
 
 Often coaches and Scrum masters tinker with the processes and invest effort and blood to improve the ceremonies and the company structure.

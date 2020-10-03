@@ -11,7 +11,7 @@ date: 2017-05-01
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2017-05-01-head.jpg[role=left]
+image::2017-05-01-head.jpg[720, 480, role=left]
 You have currently more agile coaches on the market than sand corns on a regular beach.
 They all promise the holly grail of agile product development, highly productive teams and perfect applications for internal and external customers.
 
@@ -73,7 +73,7 @@ Organizational coaching::
 ** Improve organization to see the whole product and the customer,
 ** Delegate decision making processes to teams,
 ** Remove functional silos,
-** Redefine the roles of project managers, middle managers, quality managers,
+** Redefine the roles of outcome managers, middle managers, quality managers,
 ** Eliminate waste: processes and artefacts not adding any value to the customer products.
 Team coaching::
  The coach works with one or a few teams to improve their team-working and LeSS practices. It is common for a coach to take on the Scrum Master role.

@@ -11,7 +11,7 @@ date: 2016-11-15
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2016-11-02-head.jpg[role=left]
+image::2016-11-02-head.jpg[720, 480, role=left]
 I left the company I founded 20 years ago and needed a new home to work and have access to social insurances.
 I had to found a limited liability company with a capital of CHF 20'000.
 

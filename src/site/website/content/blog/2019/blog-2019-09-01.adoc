@@ -11,7 +11,7 @@ date: 2019-09-17
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2019-09-01-head.jpg[role=left]
+image::2019-09-01-head.jpg[720, 480, role=left]
 Agile approaches encourage common ownership of artifacts during product development.
 Historically https://en.wikipedia.org/wiki/Commons[commons] is the term used for shared resources.
 Can we apply the commons learnings to agile and Scrum approaches?

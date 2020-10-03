@@ -11,7 +11,7 @@ date: 2018-09-25
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2018-09-01-head.png[role=left]
+image::2018-09-01-head.png[720, 480, role=left]
 First teams have successfully used Scrum to develop applications.
 The news spread out and everybody wants to apply Scrum.
 It is time to introduce Enterprise wide Agile with Scrum or Kanban or XP.

@@ -11,7 +11,7 @@ date: 2021-02-01
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2021-02-01-head.jpg[200, 400, role=left]
+image::2021-02-01-head.jpg[720, 480, role=left]
 
 Scaling Agile, Lean and {ref-scrum} to the whole product development department is hard work.
 You start a change journey in murky waters.
