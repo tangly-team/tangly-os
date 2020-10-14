@@ -16,6 +16,7 @@ hs_err_pid*
 **/build/
 **/target/
 **/node_modules/
+**/.asciidoctor/
 
 /net.tangly.commons.ui/package.json
 /net.tangly.commons.ui/pnpm-lock.yaml
