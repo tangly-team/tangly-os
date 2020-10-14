@@ -2,6 +2,7 @@
 title: "Agile Architecture within Scrum"
 linkTitle: "Agile Architecture"
 date: 2019-08-12
+tags: ["agile"]
 ---
 
 == Agile Architecture within Scrum
@@ -12,10 +13,10 @@ date: 2019-08-12
 :copyright: CC-BY-SA 4.0
 
 image::2019-08-01-head.jpg[720, 480, role=left]
-You are applying the agile, lean approach to your software product development.
+You are applying the agile, lean approach to your software article development.
 Your teams use Scrum or Kanban to deliver running software every two weeks.
 
-Agile architecture is a key element to improve the quality of your product and reduce cycle-time of your product outcomes.
+Agile architecture is a key element to improve the quality of your article and reduce cycle-time of your article outcomes.
 
 Your journey toward greater business agility starts by identifying what outcomes are most important to your company’s success.
 A key component is to find out how to create great architecture within the Scrum framework.
@@ -80,7 +81,7 @@ overwhelming UML models -,
 He writes actual source code as current good practices are,
 * Have rich knowledge of architecture and design.
 
-We have mentioned refactoring, which is how we evolve an ever-improving design and architecture while building the product incrementally.
+We have mentioned refactoring, which is how we evolve an ever-improving design and architecture while building the article incrementally.
 To do that, we need to know the difference between good architecture and design and not-so-good.
 We need a rich pool of architecture and design options in our bag of tricks, ranging from very simple options to the more complex and rich options that we may need as the system grows.
 One never knows too much about the quality of architecture, code, and design.

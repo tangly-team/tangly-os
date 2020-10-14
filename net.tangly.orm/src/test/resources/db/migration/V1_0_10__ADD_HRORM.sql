@@ -13,26 +13,23 @@
 
 CREATE SCHEMA hrorm;
 
-CREATE TABLE hrorm.authors
-(
+CREATE TABLE hrorm.authors (
     oid  BIGINT PRIMARY KEY,
     name VARCHAR(64)
-);
+                           );
 
-CREATE TABLE hrorm.recipes
-(
+CREATE TABLE hrorm.recipes (
     oid    BIGINT PRIMARY KEY,
     name   VARCHAR(64),
     author BIGINT,
     FOREIGN KEY (author) REFERENCES hrorm.authors (oid)
-);
+                           );
 
-CREATE TABLE hrorm.ingredients
-(
-    oid       BIGINT PRIMARY KEY,
-    name      VARCHAR(64),
-    amount    BIGINT,
+CREATE TABLE hrorm.ingredients (
+    oid    BIGINT PRIMARY KEY,
+    name   VARCHAR(64),
+    amount BIGINT,
     recipe BIGINT,
     FOREIGN KEY (recipe) REFERENCES hrorm.recipes (oid)
 
-);
+                               );

@@ -33,8 +33,7 @@ public final class ReflectionUtilities {
     }
 
     public static <T> void set(@NotNull T entity, @NotNull String name, @NotNull Object value) {
-        Optional<Field> field = findField(entity.getClass(), name);
-        field.ifPresent(field1 -> set(entity, field1, value));
+        set(entity, findField(entity.getClass(), name).orElseThrow() , value);
     }
 
     public static <T> void set(@NotNull T entity, @NotNull Field field, @NotNull Object value) {
@@ -50,7 +49,11 @@ public final class ReflectionUtilities {
         }
     }
 
-    public static <T> Object get(@NotNull T entity, Field field) {
+    public static <T> Object get(@NotNull T entity, @NotNull String name) {
+        return get(entity, findField(entity.getClass(), name).orElseThrow());
+    }
+
+    public static <T> Object get(@NotNull T entity, @NotNull Field field) {
         final PrivilegedExceptionAction<Object> action = (() -> {
             field.setAccessible(true);
             return field.get(entity);

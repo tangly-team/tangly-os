@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
-    <artifactId>project-base</artifactId>
+    <artifactId>product-base</artifactId>
     <name>Project base for Vaadin</name>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
@@ -12,11 +12,11 @@
     <properties>
         <maven.compiler.source>1.14</maven.compiler.source>
         <maven.compiler.target>1.14</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <product.build.sourceEncoding>UTF-8</product.build.sourceEncoding>
+        <product.reporting.outputEncoding>UTF-8</product.reporting.outputEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
 
-        <vaadin.version>17.0.4</vaadin.version>
+        <vaadin.version>17.0.7</vaadin.version>
         <tangly.version>0.2.6</tangly.version>
         <jetty.version>9.4.28.v20200408</jetty.version>
     </properties>
@@ -280,7 +280,7 @@
                             <scanIntervalSeconds>0</scanIntervalSeconds>
                             <stopPort>8081</stopPort>
                             <stopWait>5</stopWait>
-                            <stopKey>${project.artifactId}</stopKey>
+                            <stopKey>${product.artifactId}</stopKey>
                             <jvmArgs>--enable-preview</jvmArgs>
                         </configuration>
                         <executions>

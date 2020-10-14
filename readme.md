@@ -26,7 +26,7 @@ The components are stored in a single git repository and are build using a multi
 
 ## Contribution
 
-You are welcome to contribute to the project with pull requests on Bitbucket. 
+You are welcome to contribute to the product with pull requests on Bitbucket. 
 You can download the source files from the [bitbucket git repository](https://bitbucket.org/tangly-team/tangly-os.git).
 Build  the library with the provided gradle configuration file.
 

@@ -30,9 +30,11 @@ import net.codecrete.qrbill.generator.OutputSize;
 import net.codecrete.qrbill.generator.Payments;
 import net.codecrete.qrbill.generator.QRBill;
 import net.codecrete.qrbill.generator.SwicoBillInformation;
+import net.tangly.bus.core.Address;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.invoices.Invoice;
+import net.tangly.bus.invoices.InvoiceLegalEntity;
 import org.jetbrains.annotations.NotNull;
 
 public class InvoiceQrCode implements InvoiceGenerator {
@@ -46,8 +48,8 @@ public class InvoiceQrCode implements InvoiceGenerator {
         bill.setFormat(createBillFormat());
         bill.setVersion(Bill.Version.V2_0);
 
-        bill.setCreditor(create(invoice.invoicingEntity()));
-        bill.setDebtor(create(invoice.invoicedEntity()));
+        bill.setCreditor(create(invoice.invoicingEntity(), invoice.invoicingAddress()));
+        bill.setDebtor(create(invoice.invoicedEntity(), invoice.invoicedAddress()));
 
         bill.setAccount(invoice.invoicingConnection().iban());
         bill.setAmount(invoice.amountWithVat());
@@ -102,16 +104,14 @@ public class InvoiceQrCode implements InvoiceGenerator {
         return swico;
     }
 
-    private static net.codecrete.qrbill.generator.Address create(@NotNull LegalEntity entity) {
+    private static net.codecrete.qrbill.generator.Address create(@NotNull InvoiceLegalEntity entity, @NotNull Address address) {
         net.codecrete.qrbill.generator.Address qrAddress = new net.codecrete.qrbill.generator.Address();
-        entity.address(CrmTags.Type.work).ifPresent(address -> {
             qrAddress.setName(entity.name());
             qrAddress.setStreet(address.street());
             qrAddress.setHouseNo(null);
             qrAddress.setPostalCode(address.postcode());
             qrAddress.setTown(address.locality());
            qrAddress.setCountryCode(address.country());
-        });
         return qrAddress;
     }
 

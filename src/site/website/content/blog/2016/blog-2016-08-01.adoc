@@ -2,6 +2,7 @@
 title: "PMI-ACP Certification"
 linkTitle: "PMI-ACP"
 date: 2016-03-18
+tags: ["agile"]
 ---
 
 == PMI-ACP Certification
@@ -14,7 +15,7 @@ date: 2016-03-18
 image::2016-08-01-head.jpg[720, 480, role=left]
 I learnt quite a few new acronyms and techniques when studying for the PMI-ACP certification program.
 In this post I collected these acronyms, some definition and the bibliography you should know before attending the examination.
-The main advantage of having it is that you no more need to argue with PMI certified outcome managers if agile is applicable to software projects.
+The main advantage of having it is that you no more need to argue with PMI certified product managers if agile is applicable to software projects.
 
 The main interest of PMI-ACP certification is their collection of concepts taken from Agile, eXtreme Programming, Scrum and Lean.
 
@@ -33,26 +34,26 @@ Some online videos of https://www.mountaingoatsoftware.com/blog[Mike Cohn] also 
 === Chapter List
 
 . http://www.pmi.org/Certification/New-PMI-Agile-Certification.aspx[PMI ACP] eligibility, examination content
-. http://en.wikipedia.org/wiki/Agile_software_development[Agile outcome management] __APM __Framework, agile outcome lifecycle
+. http://en.wikipedia.org/wiki/Agile_software_development[Agile product management] __APM __Framework, agile product lifecycle
 .. Envision,
-.. Speculate (During the Speculate phase, the product stories are delivered.
- This phase involves planning and delivering tested stories in a short iteration, constantly seeking to reduce the risk and uncertainty of the outcome.),
+.. Speculate (During the Speculate phase, the article stories are delivered.
+ This phase involves planning and delivering tested stories in a short iteration, constantly seeking to reduce the risk and uncertainty of the product.),
 .. Explore,
 .. Adapt,
 .. Close.
 .. Scope, Costs, Time
-.. http://jimhighsmith.com/2010/11/14/beyond-scope-schedule-and-cost-the-agile-triangle/[The agile triangle]: Value (releasable product),
- Quality (reliable, adaptable product),  Constraints (cost, schedule, scope)
+.. http://jimhighsmith.com/2010/11/14/beyond-scope-schedule-and-cost-the-agile-triangle/[The agile triangle]: Value (releasable article),
+ Quality (reliable, adaptable article),  Constraints (cost, schedule, scope)
 . People, Products and Processes
 . http://jimhighsmith.com/2010/11/14/beyond-scope-schedule-and-cost-the-agile-triangle/[Value, Quality and Constraints]
- The five identified core risk areas for a outcome are: Intrinsic schedule flaw, Specification breakdown, Scope creep,
+ The five identified core risk areas for a product are: Intrinsic schedule flaw, Specification breakdown, Scope creep,
 Personnel loss and Productivity variation.
 . Planning, monitoring, adapting
 . Estimation in agile projects
 . Communication on agile projects
 . Analysis and design on agile projects
 . Agile quality
-. Soft skills for agile outcome leaders and negotiation
+. Soft skills for agile product leaders and negotiation
 . Value based prioritization of requirements
 . Managing risk on agile projects
 . Metrics and charts on agile projects
@@ -133,11 +134,11 @@ image:active-listening[float="right"]
 * JBGE Just Barely Good Enough
 * http://en.wikipedia.org/wiki/INVEST_(mnemonic)[INVEST] Independent Negotiable Valuable Estimable Small (Sized appropriately) Testable
 * http://en.wikipedia.org/wiki/Internal_rate_of_return[Internal Rate of Return] _IRR_, the higher the better.
- Internal Rate of Return (IRR) is used to express the return on outcome in % terms when comparing two different cash flow streams.
+ Internal Rate of Return (IRR) is used to express the return on product in % terms when comparing two different cash flow streams.
 * JIT Just In Time
 * http://en.wikipedia.org/wiki/Kano_model[Kano Model]: Must have, Linear feature, Delight
-** Threshold or basic attributes are must have attributes otherwise the product is incomplete.
- Threshold features are those that must be present in the product  for it to be successful. They are often referred to as must-have features.
+** Threshold or basic attributes are must have attributes otherwise the article is incomplete.
+ Threshold features are those that must be present in the article  for it to be successful. They are often referred to as must-have features.
 ** Performance attributes are linear, the more the better
 ** Excitement attribues are delights
 * MMF Minimally Marketable Feature
@@ -166,7 +167,7 @@ image:active-listening[float="right"]
 * RUP Rational Unified Process: Inception, Elaboration, Construction, Transition phases
 * Staging: The process of defining and prioritizing the nonfunctional requirements for scaling is called staging.
  Staging occurs prior to the start of the first sprint and takes just one day.
- During this day, the nonfunctional scaling requirements for this particular outcome are determined and placed in the Product Backlog.
+ During this day, the nonfunctional scaling requirements for this particular product are determined and placed in the Product Backlog.
 * http://en.wikipedia.org/wiki/Shuhari[Shu Ha Ri]: can be considered as concentric circles, with Shu within Ha, and both Shu and Ha within Ri.
  The fundamental techniques and knowledge do not change.
 ** "protect", "obey" — traditional wisdom — learning fundamentals, techniques, heuristics, proverbs
@@ -186,7 +187,7 @@ image:active-listening[float="right"]
 * http://en.wikipedia.org/wiki/Wideband_delphi[Wideband Delphi]
 * Wave: Wave is the Product Planning structure with Medium range time frame (3 months) with story level capability and capability commitment.
  Waves, or milestones, are intermediate points, usually from one month to three months apart.
- Waves can have both a outcome management and a technical function. From a outcome management perspective, they provide a chance to review progress and make adjustments.
+ Waves can have both a product management and a technical function. From a product management perspective, they provide a chance to review progress and make adjustments.
 * http://en.wikipedia.org/wiki/Work_breakdown_structure[Work Breakdown Structure] _WBS_
 
 Below some additional definitions
@@ -224,7 +225,7 @@ ____
 each iteration? _Workload Management_
 * Which of the following technique can be used to apply to bring down the Lost Opportunity Cost within your team? _Team Collocation_
 * When should the Product Owner provide feedback on the work results? _Just in time reviews_
-* Who is the most appropriate person to monitor all the risks in an Agile outcome? _The outcome manager_
+* Who is the most appropriate person to monitor all the risks in an Agile product? _The product manager_
 * Which of the following is false about Velocity? _Velocity cannot correct Estimation errors_
 * Which of the following is NOT the skill for Agile coaches for facilitating change? _Reaching agreement_
 * Which tool combines the estimation techniques of expert opinion, disaggregation and analogy?
@@ -234,7 +235,7 @@ _Business case realization -The PMO can help the teams to enable timely decision
 * Which is the communication technique where you repeat back a summary of what the other person just said to you to confirm understanding?
 _Reflective Listening is a communication technique where you repeat back a summary of what the other person just said to you to confirm understanding._
 _Another benefit in this situation is that having the person hear their own ideas in another person’s voice/words may make it easier for them to be objective._
-* Adaptation depends upon understanding a wide range of information, including an assessment of the outcome's progress, technical risks, the requirements
+* Adaptation depends upon understanding a wide range of information, including an assessment of the product's progress, technical risks, the requirements
 evolution, and ongoing competitive market analysis. Which are the areas where every team needs to constantly evaluate and make appropriate adaptations ?
 _Product Value, Product quality, Product status, Team performance -Every team needs to constantly evaluate and make appropriate adaptations in the following four areas - Product Value, Product quality, Product status, Team performance-_
 * A standard for measuring or evaluating something. _Metric - A metric is a standard for measuring or evaluating something.-_
@@ -242,10 +243,10 @@ _Product Value, Product quality, Product status, Team performance -Every team ne
  Learners in the Fluent stage are experts -The Stage 3 Learner is at the stage of mastery.
  He is able to figure out the end effect of any procedure and to make his way to that end.-
 * Scrum uses the sashimi technique to require that every slice of functionality created by the developers be complete.
- All of the requirements gathering and analysis, design work, coding, testing, and documentation that constitute a complete product are required to be completed
+ All of the requirements gathering and analysis, design work, coding, testing, and documentation that constitute a complete article are required to be completed
  in every Sprint and demonstrated in the Sprint increment of functionality. Sprints are kept short enough that the stakeholders don’t lose interest in the
- outcome before the Sprints are completed. And stakeholders can see that they have an opportunity to redirect the outcome at the start of every Sprint to
- optimize the value they derive from the outcome. At the end of every Sprint, stakeholders see new functionality. Models, requirements, and internal
+ product before the Sprints are completed. And stakeholders can see that they have an opportunity to redirect the product at the start of every Sprint to
+ optimize the value they derive from the product. At the end of every Sprint, stakeholders see new functionality. Models, requirements, and internal
  artefacts might be of use to the developers, but they are never shown to the stakeholders.
 * Feature X has a value of 12 and the total value of all features is 35. If the feature is estimated to cost 56%, what is the priority of this feature using
  relative weighting?
@@ -260,13 +261,13 @@ _Product Value, Product quality, Product status, Team performance -Every team ne
 * Normative methodologies are based on solutions or sequences of steps known to work for the discipline.
  Electrical and other building codes in house wiring are examples.
  In software development, one would include state diagram verification in this category.
-* Iterative development means that we build a partial version of a product and then expand that version through successive short time periods of development
- followed by reviews and adaptations. Feature-based delivery means that the engineering team builds features of the final product or, particularly with
- industrial products. At least a close representation of the final product (such as a simulation model). Iterations are constrained to produce a result within
+* Iterative development means that we build a partial version of a article and then expand that version through successive short time periods of development
+ followed by reviews and adaptations. Feature-based delivery means that the engineering team builds features of the final article or, particularly with
+ industrial products. At least a close representation of the final article (such as a simulation model). Iterations are constrained to produce a result within
  a certain period of time—a time box (as short as 1–4 weeks for software). Time boxes force closure; they force us to make something concrete, often before
  we are quite ready. Incremental development means that we build these products such that they could be deployed at the end of one or more of the iterations.
-* Forecasting the financial value of a theme is the responsibility of the product owner, but it is a responsibility shared with all other team
- members—programmers, testers, analysts, outcome managers, and so on.
+* Forecasting the financial value of a theme is the responsibility of the article owner, but it is a responsibility shared with all other team
+ members—programmers, testers, analysts, product managers, and so on.
 * Decision Framing focuses majorly on,
 _Decision framing focuses on who gets involved in the decision process._
 _Managers who make decisions without input from subordinates and peers make poor decisions._

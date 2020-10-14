@@ -2,6 +2,7 @@
 title: "Why Do You Need Metrics and KPI in Agile Product Development?"
 linkTitle: "Metrics & KPI"
 date: 2018-03-14
+tags: ["agile"]
 ---
 
 == Why Do You Need Metrics and KPI in Agile Product Development?
@@ -25,7 +26,7 @@ We provide two sets of measurements to find out how supportive the development p
 
 === Definitions
 
-A metric is a measure or a combination of measures for quantitatively assessing or improving a product, a process or a team.
+A metric is a measure or a combination of measures for quantitatively assessing or improving a article, a process or a team.
 
 A _key performance indicator_ is a metric that
 
@@ -45,20 +46,20 @@ Accurate and real-time automated measurements are of tremendous importance for a
 The optimal lean software development process has a batch size of one, almost no waiting time, no superfluous stock and no quality issues.
 
 Cycle Time of defects::
- It shows the effectivity to resolve non-quality in product development,
+ It shows the effectivity to resolve non-quality in article development,
 Cumulative Flow Diagram for defects and for stories/Backlog Items::
  It shows how effectively resources are allocated,
 Sprint and PI burndown planned stories and effort::
  versus completed stories and effective effort trends show the stability and adaptability of the development process,
 Planned velocity and effective velocity trends::
- It is an indicator for the maturity of the agile product organization.
+ It is an indicator for the maturity of the agile article organization.
 
-This metrics shall be automatically provided through the issue/product backlog system.
+This metrics shall be automatically provided through the issue/article backlog system.
 For example the “best of breed” JIRA tool has build-in reports for all the above metrics, so the tools you use should also have them.
 
 === Technical quality
 
-A high quality software product has no code smell issues, no compiler warnings, always compile, and all tests are successfully processed.
+A high quality software article has no code smell issues, no compiler warnings, always compile, and all tests are successfully processed.
 
 * Code quality
 ** Method length distribution,
@@ -78,7 +79,7 @@ These metrics shall be automatically provided through your quality tracking and 
 
 === Remainder
 
-The above metrics are tools to discover discrepancies and weaknesses in your product development process and generated artifacts.
+The above metrics are tools to discover discrepancies and weaknesses in your article development process and generated artifacts.
 The inferred results shall be used to identify and implement corrective measures.
 
 Agile emphasize transparency. The above metrics and KPIs shall be visible anytime to all involved participants through dashboards.

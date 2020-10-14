@@ -2,6 +2,8 @@
 title: "Calibrate Your Agile Approach: Bill of Rights"
 linkTitle: "Bill of Rights"
 date: 2020-01-06
+tags: ["agile"]
+
 ---
 
 == Calibrate Your Agile Approach: Bill of Rights
@@ -44,7 +46,7 @@ You have the right
 
 === Calibration
 
-You shall use the above bill of rights to evolve the cooperation between the development teams and the customers and improve the outcome value.
+You shall use the above bill of rights to evolve the cooperation between the development teams and the customers and improve the product value.
 See if:
 
 . Your customer has an overall plan with scheduled functionalities and costs.

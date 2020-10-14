@@ -2,6 +2,7 @@
 title: "Time to Migrate to a Modern JDK, Laggards!"
 linkTitle: "Time to Migrate"
 date: 2019-10-23
+tags: ["java"]
 ---
 
 == Time to Migrate to a Modern JDK, Laggards!

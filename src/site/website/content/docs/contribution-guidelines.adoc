@@ -14,7 +14,7 @@ date: 2020-09-10
 
 === How to contribute to {ref-tangly} Open Source Components
 
-This is an open source outcome.
+This is an open source product.
 We love getting patches and contributions to make our components and their documentation even better.
 
 === Contributing to tangly Open Source Components
@@ -24,15 +24,15 @@ The git repository and the issue tracker are public and accessible to all intere
 
 === Contributor License Agreement
 
-Source Code contributions to this outcome must be published under Apache 2.0 license.
+Source Code contributions to this product must be published under Apache 2.0 license.
 
-All documentations and texts to this outcome must be published under CC-BY-SA 4.0.
+All documentations and texts to this product must be published under CC-BY-SA 4.0.
 
-This simply gives us permission to use and redistribute your contributions as part of the outcome.
+This simply gives us permission to use and redistribute your contributions as part of the product.
 
 === Code reviews
 
-All submissions, including submissions by outcome members, require review.
+All submissions, including submissions by product members, require review.
 We use bitbucket pull requests for this purpose.
 Consult bitbucket https://www.atlassian.com/git/tutorials/making-a-pull-request[Tutorial and Help] for more information on using pull requests.
 
@@ -41,7 +41,7 @@ Consult bitbucket https://www.atlassian.com/git/tutorials/making-a-pull-request[
 Source Code Changes::
  Build locally code changes with the provided Gradle scripts.
 Documentation Changes::
- The scripts to generate and populate the site from the outcome clone repository are located under
+ The scripts to generate and populate the site from the product clone repository are located under
  https://bitbucket.org/tangly-team/tangly-os/src/master/src/main/scripts/[scripts].
 
 === Creating issues

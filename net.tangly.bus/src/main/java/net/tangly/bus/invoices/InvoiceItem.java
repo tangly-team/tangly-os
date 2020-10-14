@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 /**
  * The invoice item represent a position of sold items defined through a product.
  */
-public record InvoiceItem(int position, Product product, String text, BigDecimal quantity) implements InvoiceLine {
+public record InvoiceItem(int position, Article article, String text, BigDecimal quantity) implements InvoiceLine {
     @Override
     public BigDecimal amount() {
         return unitPrice().multiply(quantity);
@@ -27,12 +27,12 @@ public record InvoiceItem(int position, Product product, String text, BigDecimal
 
     @Override
     public BigDecimal vat() {
-        return amount().multiply(product.vatRate());
+        return amount().multiply(article.vatRate());
     }
 
     @Override
     public BigDecimal unitPrice() {
-        return product.unitPrice();
+        return article.unitPrice();
     }
 
     @Override

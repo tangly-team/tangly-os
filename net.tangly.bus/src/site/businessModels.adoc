@@ -69,17 +69,24 @@ CodeImp <|-- Code
 An entity and all subclasses have a set of attributes present in any CSV file.
 
 oid::
-object identifier of the entity instance as the string representation of a 64 bits long. The value is mandatory.
+object identifier of the entity instance as the string representation of a 64 bits long.
+The value is mandatory.
 id::
-identifier of the entity instance as a string. The value is optional.
+identifier of the entity instance as a string.
+The value is optional.
 name::
-human readable name of the entity instance as a string. The value is optional.
+human readable name of the entity instance as a string.
+The value is optional.
 text::
-human readable description of the entity instance as a long string. The value is optional.
+human readable description of the entity instance as a long string.
+The value is optional.
 fromDate::
-start date when the entity instance is active. The value is optional.
+start date when the entity instance is active.
+The value is optional.
 toDate::
-end date when the entity instance is active. Upon end date, the entity should be read-only and no more editied in the system. The value is optional.
+end date when the entity instance is active.
+Upon end date, the entity should be read-only and no more editied in the system.
+The value is optional.
 
 [plantuml,bus-core-uml,svg]
 ....
@@ -141,34 +148,193 @@ See our blogs for a discussion of the cornerstone abstractions of the business c
 
 == Customer Relationship Model CRM
 
-[plantuml,bus-crm-uml,svg]
+[plantuml,bus-realmCrm-uml,svg]
 ....
 @startuml
 
-class BankConnection << (R,orchid) >> {
-    String iban
-    String bic
-    String institute
+package Shared <<Rectangle>> {
+    interface HasId {
+        String id()
+        String name()
+    }
+
+    interface HasOid {
+        long oid()
+    }
+
+    interface HasTags {}
+
+    interface HasComments {}
+
+    interface HasOwner {
+    }
+    HasOid <|.. HasOwner
+
+    interface Entity {
+        + String text()
+        + LocalDate fromDate()
+        + LocalDate toDate()
+    }
+    HasOid <|.. Entity
+    HasId <|.. Entity
+    HasTags <|.. Entity
+    HasComments <|.. Entity
+
+    abstract class EntityImp {
+    }
+    EntityImp *-- Tag : tags
+    EntityImp *-- Comment : comments
+    Entity <|.. EntityImp
+
+    class Tag <<record>>
+
+    class Comment {
+    }
+    Comment *-- Tag : tags
+
+    class BankConnection <<(R,orchid) record>> {
+        String iban
+        String bic
+        String institute
+    }
+
+    class Address <<(R, orchid) record>> {
+        String street
+        String extended
+        String poBox
+        String postcode
+        String locality
+        String region
+        String country
+    }
+
+    class EmailAddress <<(R, orchid) record>> {
+        String domain
+        String recipient
+    }
+
+    class PhoneNr <<(R, orchid) record>> {
+        String number
+    }
 }
 
-interface Entity {}
+package Bounded_Domain_CRM <<Rectangle>> {
 
-class CrmEntity implements Entity {}
+    interface Entity {}
 
-HasTags <|.. CrmEntity
+    class CrmEntity implements Entity {}
 
-class LegalEntity implements CrmEntity {}
+    HasTags <|.. CrmEntity
 
-CrmEntity <|.. LegalEntity
+    class LegalEntity implements CrmEntity {}
 
-class NaturalEntity {}
+    CrmEntity <|.. LegalEntity
 
-CrmEntity <|.. NaturalEntity
+    class NaturalEntity {}
 
-class Employee implements CrmEntity {}
+    CrmEntity <|.. NaturalEntity
 
-Employee o-- NaturalEntity
-Employee o-- LegalEntity
+    class Employee implements CrmEntity {}
+
+    Employee o-- NaturalEntity
+    Employee o-- LegalEntity
+
+    enum ActivityCode {
+    }
+    Code <|-- ActivityCode
+
+    class Activity {
+    }
+    Activity *-- ActivityCode : code
+
+    class Contract {
+    }
+    Contract o-- LegalEntity : seller
+    Contract o-- LegalEntity : sellee
+
+    enum InteractionCode {
+    }
+    Code <|-- InteractionCode
+
+    class Interaction {
+    }
+    Interaction *-- InteractionCode : code
+    Interaction *-- Activity : activities
+
+}
+
+package Bounded_Domain_Invoices <<Rectangle>> {
+    interface InvoiceLine {
+    }
+
+    class InvoiceItem <<(R,orchid) record>> {
+        int position
+        String text
+        BigDecimal quantity
+    }
+    InvoiceLine <|-- InvoiceItem
+    InvoiceItem o-- Article : article
+
+
+    class Subtotal <<(R,orchid) record>> {
+        int position
+        String text
+    }
+    InvoiceLine <|-- Subtotal
+    Subtotal o-- InvoiceItem : items
+
+    class Invoice {
+    }
+    Invoice o-- LegalEntity : seller
+    Invoice o-- LegalEntity : sellee
+    Invoice *-- InvoiceLine : items
+
+    enum ProductCode {
+    }
+    Code <|-- ProductCode
+
+    class Article <<(R, orchid) record>> {
+        String id
+        String name
+        String text
+        BigDecimal unitPrice
+        String unit
+        BigDecimal vatRate
+    }
+    Article o-- ProductCode : code
+}
+
+package Bounded_Domain_Products <<Rectangle>> {
+
+    class Product {
+    }
+
+    class Assignment {
+    }
+
+    class Effort {
+    }
+}
+
+package Bounded_Domain_Ledger <<Rectangle>> {
+    class AccountEntry {
+    }
+
+    class Account {
+    }
+    Account *-- AccountEntry : entries
+    Account *-- Account : aggregatedAccounts
+
+    class Transaction {
+    }
+    Transaction o-- AccountEntry : debit
+    Transaction o-- AccountEntry : credit
+
+    class Ledger {
+    }
+    Ledger *-- Account : accounts
+    Ledger *-- Transaction : journal
+}
 
 @enduml
 ....
@@ -180,11 +346,11 @@ Employee o-- LegalEntity
 Invoices define a business bounded domain as defined in domain driven design approach.
 They are not constrained through external entities such as products, contracts or legal entities.
 External entities can provide hints to streamline the creation of regular invoices.
-The invoice product identifier is available as an external identifier to the product bounded domain.
+The invoice article identifier is available as an external identifier to the article bounded domain.
 Similar identifiers are available for legal entities.
 
-VAT rates are defined within a product definition.
-Therefore, different VAT rates require different product definitions.
+VAT rates are defined within a article definition.
+Therefore, different VAT rates require different article definitions.
 For example in Switzerland a service company has two VAT rates.
 One for regular services and one for services exempted from VAT taxes.
 
@@ -203,7 +369,7 @@ The JSON file is an adequate archive format which can digitally be processed.
 ....
 @startuml
 
-package net.tangly.bus.crm {
+package net.tangly.bus.realmCrm {
     class LegalEntity {}
 
     class BankConnection << (R,orchid) >> {
@@ -248,11 +414,13 @@ class InvoiceItem << (R,orchid) >> {}
 
 InvoiceLine <|.. InvoiceItem
 
-InvoiceItem o-- Product : product
+InvoiceItem o-- Product : article
 
 class Subtotal << (R,orchid) >> {}
 
 InvoiceLine <|.. Subtotal
+Subtotal o-- InvoiceLine
+
 }
 
 @enduml
@@ -280,7 +448,7 @@ Ledger *-- Transaction : transactions
 
 === Products Model
 
-[plantuml,bus-product-uml,svg]
+[plantuml,bus-article-uml,svg]
 ....
 @startuml
 

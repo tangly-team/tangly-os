@@ -2,6 +2,7 @@
 title: "Entities, Identifiers, External identifiers and Names"
 linkTitle: "Entities, Identifiers, Names"
 date: 2020-08-24
+tags: ["java", "design"]
 ---
 
 == Entities, Identifiers, External identifiers and Names
@@ -115,6 +116,11 @@ An identifier is immutable and should be numerical for performance reasons.
 External identifiers can be tricky.
 In Switzerland, we had an old social security number which is still referenced in a lot of legal systems.
 For example it is still part of your tax salary yearly form.
+
+[NOTE]
+====
+Identifiers are a key element to model entities using the domain driven design _DDD_ approach.
+====
 
 We have a new social security number which is used in social insurance workflows.
 _The same number is also used in medical insurance workflows._

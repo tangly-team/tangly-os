@@ -2,6 +2,7 @@
 title: "How Should You handle Definition of Done?"
 linkTitle: "Definition of Done"
 date: 2018-09-25
+tags: ["agile"]
 ---
 
 == How Should You handle Definition of Done?
@@ -16,7 +17,7 @@ First teams have successfully used Scrum to develop applications.
 The news spread out and everybody wants to apply Scrum.
 It is time to introduce Enterprise wide Agile with Scrum or Kanban or XP.
 
-Your Company wants to introduce Enterprise Agility in their product development, quality assurance and sales departments.
+Your Company wants to introduce Enterprise Agility in their article development, quality assurance and sales departments.
 The company as a whole shall transition to an agile organization and all teams shall adopt Scrum.
 
 Try the http://martinfowler.com/bliki/ShuHaRi.html[Shu Ha Ri] approach for such a change process.
@@ -37,7 +38,7 @@ You can also use the agile fluency model if you prefer.
 
 This model also maps very well to the “Awareness – Desire – Knowledge – Ability – Reinforcement “or ADFAR model.
 The Company has already reached the awareness and desire level because they want to introduce enterprise agile.
-Below we describe the activities for the development organization consisting of the software development, product management and quality insurance departments, and the activities at company level.
+Below we describe the activities for the development organization consisting of the software development, article management and quality insurance departments, and the activities at company level.
 
 === Development Organization
 
@@ -49,7 +50,7 @@ The extensive training is aligned with experiences and industrial best practices
 
 All collaborators shall attend an introduction to agile and Scrum approaches.
 All technical collaborators shall attend the Scrum - Master or Developer - training.
-Each group of technical collaborators will learn specific techniques and skills necessary to work effectively in an agile product environment.
+Each group of technical collaborators will learn specific techniques and skills necessary to work effectively in an agile article environment.
 
 The agile coaches have two roles.
 First they facilitate and support the teams to implement all meetings, artifacts, and rules of the Scrum approach.
@@ -152,7 +153,7 @@ We recommend
 
 . Workshop with key managers as described above,
 . One Coach at C-level,
-. Transform the company one product line after the other, delay the broad deployment to have time to learn and improve,
+. Transform the company one article line after the other, delay the broad deployment to have time to learn and improve,
 . Study {ref-less} as a valuable approach.
  We strongly support {ref-less} as an ideal candidate for company wide agile approach,
 . Implement selected company-wide measures during the second phase of the change management process when the development department moves to proficient level.

@@ -21,11 +21,10 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import net.tangly.bus.core.Address;
-import net.tangly.bus.crm.CrmTags;
-import net.tangly.bus.crm.LegalEntity;
+import net.tangly.bus.invoices.Article;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceItem;
-import net.tangly.bus.invoices.Product;
+import net.tangly.bus.invoices.InvoiceLegalEntity;
 import org.jetbrains.annotations.NotNull;
 import org.mustangproject.ZUGFeRD.IZUGFeRDAllowanceCharge;
 import org.mustangproject.ZUGFeRD.IZUGFeRDExportableContact;
@@ -41,10 +40,12 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
      * Implements a ZugFerd exportable contact and maps a legal entity to ZugFerd abstraction.
      */
     static class ZugFerdContact implements IZUGFeRDExportableContact {
-        private final LegalEntity entity;
+        private final InvoiceLegalEntity entity;
+        private final Address address;
 
-        public ZugFerdContact(@NotNull LegalEntity entity) {
+        public ZugFerdContact(@NotNull InvoiceLegalEntity entity, @NotNull Address address) {
             this.entity = entity;
+            this.address = address;
         }
 
         @Override
@@ -59,22 +60,22 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
 
         @Override
         public String getCountry() {
-            return entity.address(CrmTags.Type.work).map(Address::country).orElse(null);
+            return address.country();
         }
 
         @Override
         public String getLocation() {
-            return entity.address(CrmTags.Type.work).map(Address::locality).orElse(null);
+            return address.locality();
         }
 
         @Override
         public String getStreet() {
-            return entity.address(CrmTags.Type.work).map(Address::street).orElse(null);
+            return address.street();
         }
 
         @Override
         public String getZIP() {
-            return entity.address(CrmTags.Type.work).map(Address::postcode).orElse(null);
+            return address.postcode();
         }
     }
 
@@ -90,7 +91,7 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
 
         @Override
         public IZUGFeRDExportableProduct getProduct() {
-            return new ZugFerdProduct(item.product());
+            return new ZugFerdProduct(item.article());
         }
 
         @Override
@@ -118,30 +119,30 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
      * Implements a ZugFerd exportable product and maps the product to the ZugFerd abstraction.
      */
     static class ZugFerdProduct implements IZUGFeRDExportableProduct {
-        private final Product product;
+        private final Article article;
 
-        public ZugFerdProduct(@NotNull Product product) {
-            this.product = product;
+        public ZugFerdProduct(@NotNull Article article) {
+            this.article = article;
         }
 
         @Override
         public String getUnit() {
-            return product.unit();
+            return article.unit();
         }
 
         @Override
         public String getName() {
-            return product.id();
+            return article.id();
         }
 
         @Override
         public String getDescription() {
-            return product.text();
+            return article.text();
         }
 
         @Override
         public BigDecimal getVATPercent() {
-            return product.vatRate().multiply(HUNDRED);
+            return article.vatRate().multiply(HUNDRED);
         }
     }
 
@@ -211,18 +212,18 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
 
     @Override
     public String getOwnCountry() {
-        return invoice.invoicingEntity().address(CrmTags.Type.work).map(Address::country).orElse(null);
+        return invoice.invoicingAddress().country();
     }
 
 
     @Override
     public String getOwnLocation() {
-        return invoice.invoicingEntity().address(CrmTags.Type.work).map(Address::locality).orElse(null);
+        return invoice.invoicingAddress().locality();
     }
 
     @Override
     public String getOwnOrganisationFullPlaintextInfo() {
-        return invoice.invoicedEntity().name() + " " + invoice.invoicingEntity().address(CrmTags.Type.work).map(Address::text).orElse(null);
+        return invoice.invoicedEntity().name() + " " + invoice.invoicingAddress().text();
     }
 
     @Override
@@ -232,7 +233,7 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
 
     @Override
     public String getOwnStreet() {
-        return invoice.invoicingEntity().address(CrmTags.Type.work).map(Address::street).orElse(null);
+        return invoice.invoicingAddress().street();
     }
 
     @Override
@@ -247,7 +248,7 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
 
     @Override
     public String getOwnZIP() {
-        return invoice.invoicingEntity().address(CrmTags.Type.work).map(Address::postcode).orElse(null);
+        return invoice.invoicingAddress().postcode();
     }
 
     @Override
@@ -257,7 +258,7 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
 
     @Override
     public IZUGFeRDExportableContact getRecipient() {
-        return new ZugFerdContact(invoice.invoicedEntity());
+        return new ZugFerdContact(invoice.invoicedEntity(), invoice.invoicedAddress());
     }
 
     @Override

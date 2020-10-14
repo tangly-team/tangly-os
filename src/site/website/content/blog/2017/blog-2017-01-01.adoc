@@ -2,6 +2,7 @@
 title: "Seven Pitfalls with Agile or Scrum Methods"
 linkTitle: "Agile Pitfalls"
 date: 2017-01-07
+tags: ["agile"]
 ---
 
 == Seven Pitfalls with Agile or Scrum Methods
@@ -139,7 +140,7 @@ Scrum is about agility.
 Therefore you have the right to change anything at any time, isn't it?
 Your stakeholders need the changes now.
 They cannot wait until the end of the Sprint, a mere ten working days or two weeks of elapsed time.
-But Scrum also states we have a vision, features, a minimum viable product and a potentially shippable product.
+But Scrum also states we have a vision, features, a minimum viable article and a potentially shippable article.
 How often can you change these key concepts?
 What is the balance between agility and chaos?
 
@@ -150,7 +151,7 @@ _ROI: New value versus cost of development and associated errors_
 First let me state some concepts deeply entrenched in Scrum Sprint backlog cannot be changed during a sprint.
 This is Scrum.
 
-Bend it with Kanban - for maintenance activities -, Agile approach is about a minimum viable product release as soon as possible.
+Bend it with Kanban - for maintenance activities -, Agile approach is about a minimum viable article release as soon as possible.
 This definition is part of the vision and the initial release planning, Release planning is a must in real Scrum projects.
 
 So you have the right to change everything at the end of each sprint but the costs are enormous.
@@ -189,17 +190,17 @@ I expect a talented team to provide an architecture with some prototyping in les
 === You shall write user stories during coffee breaks
 
 image:2017-01-01-Meeting.jpg[720, 480, role=left]
-Writing user stories is easy and anyway nobody has time for - The product owner has better to do.
+Writing user stories is easy and anyway nobody has time for - The article owner has better to do.
 He writes the stories during a coffee break or just before the start of the planning meeting, - Anyway just read the requirements, it is all written down, - The developers want to code, they have no time to write some user stories or improve them.
 
-Scrum states the product backlog is the most important document in a Scrum outcome.
+Scrum states the article backlog is the most important document in a Scrum product.
 
 [TIP]
 ====
-_ROI: New features with the most value_ To create a new successful product is a full time job.
+_ROI: New features with the most value_ To create a new successful article is a full time job.
 
 You cannot define a vision and key features during a coffee break.
-The product owner must create a vision, an initial release plan, identify the key features and define a minimal shippable product - see above "You shall not perform up-front design" -, Either the product owner has a team of requirement engineers to elicit the use cases, Or the role of requirement engineering is part of the team, The team provide technical feedback and input about potential technologies for all stories, discuss the non-functional requirements and refine the acceptance criteria, As a simple check, the team guaranty together with the product owner that each story is INVEST - Independent, Negotiable, Valuable (ROI), Estimable, Size appropriately, Testable -.
+The article owner must create a vision, an initial release plan, identify the key features and define a minimal shippable article - see above "You shall not perform up-front design" -, Either the article owner has a team of requirement engineers to elicit the use cases, Or the role of requirement engineering is part of the team, The team provide technical feedback and input about potential technologies for all stories, discuss the non-functional requirements and refine the acceptance criteria, As a simple check, the team guaranty together with the article owner that each story is INVEST - Independent, Negotiable, Valuable (ROI), Estimable, Size appropriately, Testable -.
 ====
 
 If not why?
@@ -239,7 +240,7 @@ See for example the concept of coding dojo.
 
 image:2017-01-01-Process.jpg[720, 480, role=left]
 Scrum is a framework.
-You can use it to manage different things, including complex product development.
+You can use it to manage different things, including complex article development.
 
 Scrum is defined in the Scrum Guide and consists of roles, events and meetings, artefacts, and a set of rules binding them together.
 It is based on empirical process control and bottom-up thinking.
@@ -264,7 +265,7 @@ Eliminate these misunderstandings in your projects
 What is the risk?
 
 The truth is complex, more blurred.
-The answer for your outcome cannot be stated in one standard rule set.
+The answer for your product cannot be stated in one standard rule set.
 We are talking about agile quality assurance, lean approaches and best practices.
 
 A best practice should only be selected through its ROI.

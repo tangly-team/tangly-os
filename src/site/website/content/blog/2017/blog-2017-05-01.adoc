@@ -2,6 +2,7 @@
 title: "What is Our Specialty as Agile Coaches at tangly?"
 linkTitle: "tangly Agile Coaches"
 date: 2017-05-01
+tags: ["organization"]
 ---
 
 == What is Our Specialty as Agile Coaches at tangly?
@@ -13,21 +14,21 @@ date: 2017-05-01
 
 image::2017-05-01-head.jpg[720, 480, role=left]
 You have currently more agile coaches on the market than sand corns on a regular beach.
-They all promise the holly grail of agile product development, highly productive teams and perfect applications for internal and external customers.
+They all promise the holly grail of agile article development, highly productive teams and perfect applications for internal and external customers.
 
 Why should any sane customer hire us to deploy or perfect their agile approach?
 
 Your overall goal is to continuously improve the products delivered to customers.
 I am convinced to achieve ingrained success an agile coach shall
 
-* Coach team members how to reach technical excellence. They build your product, it shall fulfill the user's requirements, be of high quality and affordable.
+* Coach team members how to reach technical excellence. They build your article, it shall fulfill the user's requirements, be of high quality and affordable.
 * Learn them to attain https://en.wikipedia.org/wiki/Software_craftsmanship/[mastery] and build awesome products,
 * Coach the team how to improve, focus and enjoy the work on a daily basis. https://en.wikipedia.org/wiki/Flow_(psychology)[Flow] shall be natural for them,
 * Coach the organisation how to adapt, provide the ground to have the best collaborators and become most successful in the market.
  Use a https://en.wikipedia.org/wiki/Lean_startup[lean approach].
 
 In other words you need technical coaching, team coaching and organization coaching.
-Avoid hiring management consultants with an agile painting, coaches should understand software and product development.
+Avoid hiring management consultants with an agile painting, coaches should understand software and article development.
 
 At the end of the day your products shall improve.
 Your customers shall be delighted.
@@ -43,7 +44,7 @@ productivity - efficiency for the company -.
 
 [quote, {ref-less}]
 ____
-Coaching means that an experienced coach will work closely together with an organization to improve the organization’s product development.
+Coaching means that an experienced coach will work closely together with an organization to improve the organization’s article development.
 
 This usually involved shortening feedback loops and focusing on improved quality.
 
@@ -70,10 +71,10 @@ To improve your organization you need these three levels of coaching
 Organizational coaching::
  The coach works with multiple teams and the management to improve the organization and its structure
 ** Change processes to be customer centric,
-** Improve organization to see the whole product and the customer,
+** Improve organization to see the whole article and the customer,
 ** Delegate decision making processes to teams,
 ** Remove functional silos,
-** Redefine the roles of outcome managers, middle managers, quality managers,
+** Redefine the roles of product managers, middle managers, quality managers,
 ** Eliminate waste: processes and artefacts not adding any value to the customer products.
 Team coaching::
  The coach works with one or a few teams to improve their team-working and LeSS practices. It is common for a coach to take on the Scrum Master role.

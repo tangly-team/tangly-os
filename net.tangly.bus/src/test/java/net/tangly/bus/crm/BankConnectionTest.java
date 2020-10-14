@@ -13,6 +13,7 @@
 
 package net.tangly.bus.crm;
 
+import net.tangly.bus.core.BankConnection;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

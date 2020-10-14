@@ -2,6 +2,7 @@
 title: "What you do NOT need to do in Scrum!"
 linkTitle: "No Need in Scrum"
 date: 2016-12-02
+tags: ["agile"]
 ---
 
 == What you do NOT need to do in Scrum!
@@ -12,8 +13,8 @@ date: 2016-12-02
 :copyright: CC-BY-SA 4.0
 
 image::2016-12-01-head.jpg[720, 480, role=left]
-I often hear discussions who is doing the _traditional_ outcome leader tasks in Scrum.
-This is in general an excuse to state that Scrum alone cannot work and classical outcome leaders are still needed.
+I often hear discussions who is doing the _traditional_ product leader tasks in Scrum.
+This is in general an excuse to state that Scrum alone cannot work and classical product leaders are still needed.
 
 Below a list of tasks you do NOT need anymore to do in {ref-scrum}.
 
@@ -30,18 +31,18 @@ Below a list of tasks you do NOT need anymore to do in {ref-scrum}.
 * Update Gantt charts for the iteration and release planning,
 * Finding out that requirements mean to explain team members what they should implement,
 * Review the documents and code to guaranty quality,
-* Explain upper management why the outcome is late and why you need additional resources,
-* Explain upper management why you cannot transfer a team member to another outcome,
-* Attend weekly progress and escalation meetings to explain in details the status of your outcome,
+* Explain upper management why the product is late and why you need additional resources,
+* Explain upper management why you cannot transfer a team member to another product,
+* Attend weekly progress and escalation meetings to explain in details the status of your product,
 * Define the priority of the next activities.
 
-Now you as Scrum master or agile outcome manager have to perform important tasks
+Now you as Scrum master or agile product manager have to perform important tasks
 
 * Help removing impediments to increase velocity of team
 * Coach team to implement Scrum and reflect on their activities.
 * {ref-pdca} _PDCA_ principle is built into Scrum with retrospectives and sprint reviews.
-* Coach product owner to deliver a groomed and refined backlog
-* Inform and support all outcome's stakeholders
+* Coach article owner to deliver a groomed and refined backlog
+* Inform and support all product's stakeholders
 * If you reflect on these two lists it becomes obvious that the first list describes malfunctions and the second one describes mechanisms how to improve continuously - lean principles -.
 
 Jeff Sutherland gives some interesting insights about the Scrum master
@@ -55,10 +56,10 @@ Jeff Sutherland gives some interesting insights about the Scrum master
 I experimented with the Scrum master being part of the team, or Scrum master working for multiple teams.
 Experience has shown us that the full-time Scrum master is more effective.
 
-And the {ref-less} framework has a clear rule about outcome managers
+And the {ref-less} framework has a clear rule about product managers
 
 [.text-centered]
-https://less.works/less/adoption/getting-started.html[Keep outcome managers away from the teams!]
+https://less.works/less/adoption/getting-started.html[Keep product managers away from the teams!]
 
 === Remarks
 

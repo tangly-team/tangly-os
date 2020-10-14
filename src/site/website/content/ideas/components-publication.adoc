@@ -16,7 +16,7 @@ The following process is used to publish {ref-tangly} open source component on h
  Do not use the gradle task `gradle publishAllPublicationsToMavenRepository -Pmode=prod`.
  Sonatype cannot handle parallel upload of multiple components and simply close the connections during upload (Status 2020-Q2).
 .. Pre activity: test publishing with `gradle publishToMavenLocal`
-.. Pre activity: check on bitbucket the outcome compile through the *CI* continuous integration pipeline
+.. Pre activity: check on bitbucket the product compile through the *CI* continuous integration pipeline
 .. Post activity: *tag repository* on git to identify the version of the published packages.
  The tag version semantic part *must* be the same as the package version on https://mvnrepository.com/repos/central[Maven Central]
  The tag is of the form -{AcronymComponent}-MajorVersion-MinorVersion-PatchVersion-

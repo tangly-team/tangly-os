@@ -20,15 +20,15 @@ import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
+import net.tangly.bus.crm.RealmCrm;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.One2OneField;
 import net.tangly.commons.vaadin.VaadinUtils;
-import net.tangly.crm.ports.Crm;
 import org.jetbrains.annotations.NotNull;
 
 public class EmployeesView extends CrmEntitiesView<Employee> {
-    public EmployeesView(@NotNull Crm crm, @NotNull Mode mode) {
-        super(crm, Employee.class, mode, crm.employees());
+    public EmployeesView(@NotNull RealmCrm realmCrm, @NotNull Mode mode) {
+        super(realmCrm, Employee.class, mode, realmCrm.employees());
         initialize();
     }
 
@@ -52,9 +52,9 @@ public class EmployeesView extends CrmEntitiesView<Employee> {
         boolean readonly = Mode.readOnly(mode);
         EntityField entityField = new EntityField();
         entityField.setReadOnly(readonly);
-        One2OneField<LegalEntity, LegalEntitiesView> organization = new One2OneField<>("Organization", new LegalEntitiesView(crm(), mode));
+        One2OneField<LegalEntity, LegalEntitiesView> organization = new One2OneField<>("Organization", new LegalEntitiesView(realm(), mode));
         organization.setReadOnly(readonly);
-        One2OneField<NaturalEntity, NaturalEntitiesView> person = new One2OneField<>("Person", new NaturalEntitiesView(crm(), mode));
+        One2OneField<NaturalEntity, NaturalEntitiesView> person = new One2OneField<>("Person", new NaturalEntitiesView(realm(), mode));
         person.setReadOnly(readonly);
 
         FormLayout form = new FormLayout();

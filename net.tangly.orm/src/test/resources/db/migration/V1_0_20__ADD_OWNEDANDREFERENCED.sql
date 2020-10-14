@@ -13,8 +13,7 @@
 
 CREATE SCHEMA ownedvsreferenced;
 
-CREATE TABLE ownedvsreferenced.entities
-(
+CREATE TABLE ownedvsreferenced.entities (
     oid           BIGINT PRIMARY KEY,
     name          VARCHAR(64),
     owner         BIGINT,
@@ -27,4 +26,4 @@ CREATE TABLE ownedvsreferenced.entities
     FOREIGN KEY (ownedOne) REFERENCES ownedvsreferenced.entities (oid),
     FOREIGN KEY (referencedBy) REFERENCES ownedvsreferenced.entities (oid),
     FOREIGN KEY (ownedBy) REFERENCES ownedvsreferenced.entities (oid)
-)
+                                        )

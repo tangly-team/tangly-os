@@ -13,7 +13,7 @@
 
 package net.tangly.commons.vaadin;
 
-import net.tangly.bus.crm.BankConnection;
+import net.tangly.bus.core.BankConnection;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

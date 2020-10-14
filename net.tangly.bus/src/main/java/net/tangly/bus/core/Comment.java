@@ -23,7 +23,8 @@ import java.util.Set;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Defines a human-readable annotation to an entity. A comment is an immutable object. Comments can be tagged to provide classification.
+ * Defines a human-readable annotation to an entity. A comment is an immutable object. Comments can be tagged to provide classification. A comment belongs to
+ * the entity owning it an is only accessbile through this entity.
  */
 public class Comment implements HasOid, HasTags {
     private static final long serialVersionUID = 1L;
@@ -36,7 +37,7 @@ public class Comment implements HasOid, HasTags {
     /**
      * The foreign identifier of the entity owning the comment.
      */
-    private long ownedBy;
+    private long ownerFoid;
 
     /**
      * The creation date and time of the comment.
@@ -106,16 +107,16 @@ public class Comment implements HasOid, HasTags {
      * Factory method to update a new comment. The current date and time are set a creation date.
      *
      * @param created creation date of the comment
-     * @param ownedBy oid of the owning entity
+     * @param ownerFoid oid of the owning entity
      * @param author  author of the comment
      * @param text    content of the comment
      * @param tags    optional tags of the comment
      * @return the newly created comment
      */
-    public static Comment of(@NotNull LocalDateTime created, long ownedBy, @NotNull String author, @NotNull String text, Tag... tags) {
+    public static Comment of(@NotNull LocalDateTime created, long ownerFoid, @NotNull String author, @NotNull String text, Tag... tags) {
         var comment = new Comment(author, text);
         comment.created = created;
-        comment.ownedBy = ownedBy;
+        comment.ownerFoid = ownerFoid;
         comment.addTags(Set.of(tags));
         return comment;
     }
@@ -147,8 +148,8 @@ public class Comment implements HasOid, HasTags {
         return text;
     }
 
-    public long ownedBy() {
-        return ownedBy;
+    public long ownerFoid() {
+        return ownerFoid;
     }
 
     // region HasOid

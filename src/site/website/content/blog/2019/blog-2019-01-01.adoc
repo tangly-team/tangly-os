@@ -2,6 +2,7 @@
 title: "Detecting Agile Bullshit"
 linkTitle: "Agile Bullshit"
 date: 2019-01-13
+tags: ["agile"]
 ---
 
 == Detecting Agile Bullshit
@@ -30,7 +31,7 @@ Many attempts at achieving business agility are misguided and fake. But I consid
 Fake Agile is a signal to do better. Fake agile is a treatable disorder.
 ____
 
-Agile development has become such a holy grail that some organizations or outcome teams wave the agile flag whether they are true believers or not.
+Agile development has become such a holy grail that some organizations or product teams wave the agile flag whether they are true believers or not.
 They throw around talk of sprints, stories and Scrum without meaning it.
 Signs of this behavior are
 
@@ -39,7 +40,7 @@ Signs of this behavior are
 We mean the actual users of the actual code,
 ** Continuous feedback from users to the development team (bug reports, users assessments) is not available.
 Talking once at the beginning of a program to verify requirements does not count!,
-* Not deploying early an initial product release
+* Not deploying early an initial article release
 ** Meeting requirements is treated as more important than getting something useful into the field as quickly as possible,
 * Development teams are silos instead of feature teams
 *** Participants act like ‘it’s not my job’,
@@ -94,11 +95,11 @@ For a team working on agile, the answer to all of these questions should  be a f
 === Questions for Program Leadership
 
 * Are teams delivering working software to at least some subset of real users every iteration and gathering feedback?
-* Is there a product charter that lays out the mission and strategic goals? Do all members of the team understand both, and are they able to see how their work contributes to both?
+* Is there a article charter that lays out the mission and strategic goals? Do all members of the team understand both, and are they able to see how their work contributes to both?
 * Is feedback from users turned into concrete work items for sprint teams on timelines shorter than one month?
 * Are teams empowered to change the requirements based on user feedback?
 * Are teams empowered to change their process based on what they learn?
-* Is the full ecosystem of your outcome agile?
+* Is the full ecosystem of your product agile?
 _Agile programming teams followed by linear, bureaucratic deployment is a failure_.
 
 For a team truly working agile, the answer to all of these questions should  be a form of  “yes”.

@@ -2,6 +2,7 @@
 title: "List of Agile and Lean Books for Software Engineers or Students"
 linkTitle: "Agile and Lean Books"
 date: 2017-03-05
+tags: ["agile"]
 ---
 
 == List of Agile and Lean Books for Software Engineers or Students
@@ -35,7 +36,7 @@ Below a selection of books I read and found really interesting. The selection is
 * Agile Project Management with Scrum, Ken Schwaber
  A seminal work from one of the founders of Scrum
 * Agile Product Management With Scrum: Creating Products That Customers Love, Roman Pichler
- From the expert for product owner role and activities, Make the shift from outcome to product
+ From the expert for article owner role and activities, Make the shift from product to article
 * Agile Testing: A Practical Guide for Testers and Agile Teams, Lisa Crispin and Janet Gregory
  What does it means to test and insure quality in an agile environment?
 

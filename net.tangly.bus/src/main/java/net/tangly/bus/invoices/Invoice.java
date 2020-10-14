@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Currency;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -26,10 +27,8 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import net.tangly.bus.core.Address;
+import net.tangly.bus.core.BankConnection;
 import net.tangly.bus.core.HasEditableQualifiers;
-import net.tangly.bus.crm.BankConnection;
-import net.tangly.bus.crm.Contract;
-import net.tangly.bus.crm.LegalEntity;
 
 /**
  * <p>The abstraction of an invoice with a set of positions, subtotals, and a total. The items and the subtotals have a position
@@ -49,23 +48,33 @@ public class Invoice implements HasEditableQualifiers {
      * The name is a human readable identifier of the invoice. The name is also used as file name if the invoice is stored in a JSON file
      */
     public String name;
-
     private String text;
-    private LegalEntity invoicingEntity;
+    private InvoiceLegalEntity invoicingEntity;
+    private InvoiceLegalEntity invoicedEntity;
+    private String contractId;
     private Address invoicingAddress;
     private BankConnection invoicingConnection;
-    private Contract contract;
-    private LegalEntity invoicedEntity;
     private Address invoicedAddress;
     private LocalDate deliveryDate;
     private LocalDate invoicedDate;
     private LocalDate dueDate;
+
+    /**
+     * Currency of the invoice. Currently we do support multi-currency invoices. Please create one invoice for each currency.
+     */
     private Currency currency;
+
+    /**
+     * Locsle of the invoice. It is used for the localization of the invoice text.
+     */
+    private Locale locale;
     private String paymentConditions;
     private final List<InvoiceLine> items;
 
     public Invoice() {
         items = new ArrayList<>();
+        currency = Currency.getInstance("CHF");
+        locale = Locale.ENGLISH;
     }
 
     // region HasEditableQualifiers
@@ -138,7 +147,7 @@ public class Invoice implements HasEditableQualifiers {
      */
     public Map<BigDecimal, BigDecimal> vatAmounts() {
         Map<BigDecimal, BigDecimal> vatAmounts = new TreeMap<>();
-        this.items().forEach(o -> vatAmounts.put(o.product().vatRate(), vatAmounts.getOrDefault(o.product().vatRate(), BigDecimal.ZERO).add(o.vat())));
+        this.items().forEach(o -> vatAmounts.put(o.article().vatRate(), vatAmounts.getOrDefault(o.article().vatRate(), BigDecimal.ZERO).add(o.vat())));
         return vatAmounts;
     }
 
@@ -148,7 +157,7 @@ public class Invoice implements HasEditableQualifiers {
      * @return flag if the invoice has multiple VAT rates
      */
     public boolean hasMultipleVatRates() {
-        return this.items().stream().filter(o -> o.isItem()).map(o -> o.product().vatRate()).distinct().count() > 1;
+        return this.items().stream().filter(InvoiceItem::isItem).map(o -> o.article().vatRate()).distinct().count() > 1;
     }
 
     /**
@@ -162,16 +171,24 @@ public class Invoice implements HasEditableQualifiers {
     }
 
     public BigDecimal expenses() {
-        return this.items().stream().filter(o -> ProductCode.expenses == o.product().code()).map(InvoiceItem::amount).reduce(BigDecimal.ZERO, BigDecimal::add);
+        return this.items().stream().filter(o -> ArticleCode.expenses == o.article().code()).map(InvoiceItem::amount).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
     // endregion
 
-    public LegalEntity invoicingEntity() {
+    public InvoiceLegalEntity invoicingEntity() {
         return invoicingEntity;
     }
 
-    public void invoicingEntity(LegalEntity invoicingEntity) {
+    public void invoicingEntity(InvoiceLegalEntity invoicingEntity) {
         this.invoicingEntity = invoicingEntity;
+    }
+
+    public InvoiceLegalEntity invoicedEntity() {
+        return invoicedEntity;
+    }
+
+    public void invoicedEntity(InvoiceLegalEntity invoicedEntity) {
+        this.invoicedEntity = invoicedEntity;
     }
 
     public Address invoicingAddress() {
@@ -198,20 +215,12 @@ public class Invoice implements HasEditableQualifiers {
         this.invoicedAddress = invoicedAddress;
     }
 
-    public Contract contract() {
-        return contract;
+    public String contractId() {
+        return contractId;
     }
 
-    public void contract(Contract contract) {
-        this.contract = contract;
-    }
-
-    public LegalEntity invoicedEntity() {
-        return invoicedEntity;
-    }
-
-    public void invoicedEntity(LegalEntity invoicedEntity) {
-        this.invoicedEntity = invoicedEntity;
+    public void contractId(String contractId) {
+        this.contractId = contractId;
     }
 
     public LocalDate deliveryDate() {
@@ -244,6 +253,14 @@ public class Invoice implements HasEditableQualifiers {
 
     public void currency(Currency currency) {
         this.currency = currency;
+    }
+
+    public Locale locale() {
+        return locale;
+    }
+
+    public void locale(Locale locale) {
+        this.locale = locale;
     }
 
     public String paymentConditions() {
@@ -281,17 +298,16 @@ public class Invoice implements HasEditableQualifiers {
     }
 
     public boolean isValid() {
-        return Objects.nonNull(contract()) && Objects.nonNull(invoicedAddress()) && Objects.nonNull(invoicedEntity()) && Objects.nonNull(invoicingAddress()) &&
-                Objects.nonNull(invoicingEntity) && Objects.nonNull(invoicingConnection()) && Objects.nonNull(currency) && name().startsWith(id());
+        return Objects.nonNull(contractId()) && Objects.nonNull(invoicingEntity()) && Objects.nonNull(invoicedEntity()) && Objects.nonNull(invoicedAddress()) &&
+                Objects.nonNull(invoicingAddress()) && Objects.nonNull(invoicingConnection()) && Objects.nonNull(currency) && name().startsWith(id());
     }
 
     @Override
     public String toString() {
         return """
-                Contract[id=%s, name=%s, text=%s, invoicingEntity=%s, invoicingAddress=%s, invoicingConnection=%s, contract=%s, invoicedEntity=%s, \
-                invoicedAddress=%s, deliveryDate=%s, invoicedDate=%s, dueDate=%s, currency=%s, paymentConditions=%s, items=%s]
-                 """
-                .formatted(id(), name(), text(), invoicingEntity(), invoicingAddress(), invoicingConnection(), contract(), invoicedEntity(), invoicedAddress(),
-                        deliveryDate(), invoicedDate(), dueDate(), currency(), paymentConditions(), items());
+                Invoice[id=%s, name=%s, text=%s, invoicingEntity=%s, invoicedEntity=%s, invoicingAddress=%s, invoicingConnection=%s, contractId=%s,  \
+                invoicedAddress=%s, deliveryDate=%s, invoicedDate=%s, dueDate=%s, currency=%s, locale=%s, paymentConditions=%s, items=%s]
+                 """.formatted(id(), name(), text(), invoicingEntity(), invoicedEntity(), invoicingAddress(), invoicingConnection(), contractId(),
+                invoicedAddress(), deliveryDate(), invoicedDate(), dueDate(), currency(), locale(), paymentConditions(), items());
     }
 }

@@ -30,7 +30,16 @@ git submodule update --init --recursive
 # create the layout for the ideas folder under content so that the files are processed
 cp -R ./layouts/docs ./layouts/ideas
 
-# improve copyright dislplay in the footer
+# improve copyright in the footer and taxonomy display
 cp $prjDir/src/site/website/docsy/layouts/partials/footer.html $siteDir/themes/docsy/layouts/partials
+
+mkdir $siteDir/themes/docsy/layouts/taxonomy
+cp $prjDir/src/site/website/docsy/layouts/taxonomy/tag.html $siteDir/themes/docsy/layouts/taxonomy
+
+# install postcss for final generation of site
+cd $siteDir
+sudo npm install -D --save autoprefixer
+sudo npm install -D --save postcss-cli
+sudo npm install -D --save postcss
 
 echo "start server with hugo server --destination public --disableFastRender -> site is accessible under localhost:1313"

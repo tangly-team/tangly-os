@@ -2,6 +2,7 @@
 title: "Pragmatic Craftsmanship - Professional Software Developer"
 linkTitle: "Pragmatic Craftsmanship"
 date: 2018-04-12
+tags: ["agile", "design"]
 ---
 
 == Pragmatic Craftsmanship - Professional Software Developer
@@ -80,7 +81,7 @@ Their manifesto is
 
 [quote]
 ____
-Craftsmanship is not enough to guarantee the success of a outcome but the lack of it can be the main cause of its failure.
+Craftsmanship is not enough to guarantee the success of a product but the lack of it can be the main cause of its failure.
 
 Agile and Craftsmanship complement each other and both are necessary
 

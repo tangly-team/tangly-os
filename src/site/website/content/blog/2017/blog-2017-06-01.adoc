@@ -2,6 +2,7 @@
 title: "So Called Agile and Scrum Failures"
 linkTitle: "Agile Failures"
 date: 2017-06-08
+tags: ["agile"]
 ---
 
 == So Called Agile and Scrum Failures
@@ -12,9 +13,9 @@ date: 2017-06-08
 :copyright: CC-BY-SA 4.0
 
 image::2017-06-01-head.jpg[720, 480, role=left]
-Agile will never guarantee outcome success.
+Agile will never guarantee product success.
 All projects, especially application development, entail risk.
-If a outcome was risk free it is unlikely to provide significant benefits or competitive advantages.
+If a product was risk free it is unlikely to provide significant benefits or competitive advantages.
 There are however, a number of ways in which Agile Scrum projects repeatedly fail which are worth examining.
 
 Agile approaches and Scrum framework can reduce risks in projects and increase the return on investment.
@@ -25,7 +26,7 @@ image::2017-06-01-agile-vs-waterfall.jpg[role=center]
 Below are common patterns and errors when doing agile instead of being agile
 
 Wagile::
- is a team which continues to follow a basically Waterfall outcome but uses the language of Agile and adds a few agile practices.
+ is a team which continues to follow a basically Waterfall product but uses the language of Agile and adds a few agile practices.
  For example, the team may present burn-down charts together with Gantt charts. Or the team compute individual resource allocation for the next three months.
  You can also replace Waterfall with V-Model, http://www.hermes.admin.ch/onlinepublikation/index.xhtml[HERMES], RUP, and even sometimes {ref-safe}}.
 ScrumBut::
@@ -33,22 +34,22 @@ ScrumBut::
  Or _We do {ref-scrum} but the Project Manager allocates tasks_.
  Such teams normally have a long list of “buts” and show little progress of removing them.
 Hitting The Scrum Wall::
- The most popular Agile method is Scrum which is a outcome management technique.
+ The most popular Agile method is Scrum which is a product management technique.
  Scrum is normally used with a number of other Agile techniques, typically user stories redaction and the technical practices from {ref-xp} – such as TDD,
  ATDD, code refactoring, continuous integration and delivery CI/CD, pair programming, etc.
  Teams that adopt the Scrum framework initially see an improvement in productivity and customer satisfaction.
  However without the technical practices quality is low and the team hit the wall. The quality gap makes it impossible to maintain the pace in the long run.
 Fake Agile::
  occurs when a team declares itself Agile and blames everyone else for their failure to interact correctly with the group.
- Such a group typically  stops writing documentation, listening to business analysts, product managers and other customers, and dictates its own delivery schedule.
+ Such a group typically  stops writing documentation, listening to business analysts, article managers and other customers, and dictates its own delivery schedule.
  Meanwhile the team do not improve quality, does not adopt test driven development or any other practice they dislike.
 Potemkin Agile::
  occurs when an a team adopts and applies an Agile method well but does not deliver business value.
  This is a form of goal deferment were the team consider adhering to the process rather than delivering business value as the success criteria.
 Customer (Business Analyst, Product Manager, Product Owner) overload::
- on a well functioning Agile outcome the customer, or proxy customer, is called upon to do a lot.
- They need to decide requirements, set priorities, scout ahead of the outcome, align strategy, work with the developers, testers and managers, and may even
- have their own day job to do. In the earliest XP outcome (“C3”) the first business analyst came close to a nervous breakdown.
+ on a well functioning Agile product the customer, or proxy customer, is called upon to do a lot.
+ They need to decide requirements, set priorities, scout ahead of the product, align strategy, work with the developers, testers and managers, and may even
+ have their own day job to do. In the earliest XP product (“C3”) the first business analyst came close to a nervous breakdown.
 Fall back::
  management may bring in consultants and other experts help switch a team to Agile. When the consultants leave some teams return to their old ways of working.
  Advisers and consultants can be a great help when introducing Agile but they need to build capacity in the development team to continue learning
@@ -86,7 +87,7 @@ We can state that (see the {ref-scrumguide})
 * Company process improvement is a major task for the Scrum Master or the Scrum Coach
 ** Leading and coaching the organization in Agile and Scrum adoption
 ** Planning Scrum implementations within the organization;
-** Helping employees and stakeholders understand and enact Scrum and empirical product development;
+** Helping employees and stakeholders understand and enact Scrum and empirical article development;
 ** Causing change that increases the productivity of the Scrum Team; and,
 ** Working with other Scrum Masters to increase the effectiveness of the application of Scrum in the organization.
 

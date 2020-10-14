@@ -2,6 +2,7 @@
 title: "Clean Your Desk and Define New Year Improvements"
 linkTitle: "Clean Your Desk"
 date: 2017-12-06
+tags: ["organization"]
 ---
 
 == Clean Your Desk and Define New Year Improvements

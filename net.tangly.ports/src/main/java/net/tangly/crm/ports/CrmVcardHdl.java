@@ -19,25 +19,21 @@ import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
+
+import javax.inject.Inject;
 
 import net.fortuna.ical4j.data.ParserException;
 import net.fortuna.ical4j.vcard.GroupRegistry;
 import net.fortuna.ical4j.vcard.ParameterFactoryRegistry;
-import net.fortuna.ical4j.vcard.Property;
 import net.fortuna.ical4j.vcard.PropertyFactoryRegistry;
 import net.fortuna.ical4j.vcard.VCard;
 import net.fortuna.ical4j.vcard.VCardBuilder;
-import net.fortuna.ical4j.vcard.property.Fn;
-import net.fortuna.ical4j.vcard.property.N;
-import net.fortuna.ical4j.vcard.property.SortString;
-import net.fortuna.ical4j.vcard.property.Version;
 import net.tangly.bus.core.EmailAddress;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.NaturalEntity;
+import net.tangly.bus.crm.RealmCrm;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,10 +45,11 @@ public class CrmVcardHdl {
     private static final String VCARD_EXT = ".vcf";
 
     private static final Logger logger = LoggerFactory.getLogger(CrmVcardHdl.class);
-    private final Crm crm;
+    private final RealmCrm realm;
 
-    public CrmVcardHdl(@NotNull Crm crm) {
-        this.crm = crm;
+    @Inject
+    public CrmVcardHdl(@NotNull RealmCrm realm) {
+        this.realm = realm;
     }
 
     /**
@@ -80,7 +77,7 @@ public class CrmVcardHdl {
             Optional<EmailAddress> homeEmail = card2.homeEmail();
             Optional<NaturalEntity> person = Optional.empty();
             if (homeEmail.isPresent()) {
-                person = crm.naturalEntities().findBy(o -> o.email(CrmTags.Type.home).orElse(null), homeEmail.get());
+                person = realm.naturalEntities().findBy(o -> o.email(CrmTags.Type.home).orElse(null), homeEmail.get());
             }
             person.ifPresent(o -> o.photo(card2.photo()));
 
@@ -90,22 +87,4 @@ public class CrmVcardHdl {
             logger.atError().setCause(e).log("Error when parsing vcf file {}", path);
         }
     }
-
-    public void enhance(@NotNull NaturalEntity entity, @NotNull VCard2 vcard) {
-        // photography
-        // website
-        // home phone number
-        // birthday
-    }
-
-    public VCard of(NaturalEntity entity) {
-        List<Property> props = new ArrayList<Property>();
-        props.add(Version.VERSION_4_0);
-        props.add(new N(entity.lastname(), entity.firstname(), null, null, null));
-        props.add(new Fn(entity.name()));
-        props.add(new SortString(entity.lastname()));
-        return null;
-    }
 }
-
-

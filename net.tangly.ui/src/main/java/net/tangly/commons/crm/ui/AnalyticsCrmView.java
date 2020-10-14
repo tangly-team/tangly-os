@@ -39,14 +39,15 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.data.provider.DataProvider;
+import net.tangly.bus.crm.BusinessLogicCrm;
 import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.InteractionCode;
+import net.tangly.bus.crm.RealmCrm;
+import net.tangly.bus.invoices.BusinessLogicInvoices;
+import net.tangly.bus.invoices.RealmInvoices;
 import net.tangly.bus.ledger.Ledger;
 import net.tangly.commons.vaadin.TabsComponent;
 import net.tangly.commons.vaadin.VaadinUtils;
-import net.tangly.crm.ports.Crm;
-import net.tangly.crm.ports.CrmBusinessLogic;
-import net.tangly.crm.ports.CrmWorkflows;
 import net.tangly.ledger.ports.LedgerBusinessLogic;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -54,7 +55,8 @@ import org.slf4j.LoggerFactory;
 
 public class AnalyticsCrmView extends VerticalLayout {
     private static final Logger logger = LoggerFactory.getLogger(AnalyticsCrmView.class);
-    private final CrmWorkflows workflows;
+    private final BusinessLogicCrm logicCrm;
+    private final BusinessLogicInvoices logicInvoices;
     private final Ledger ledger;
     private final TabsComponent tabs;
     private SOChart contractsSoChart;
@@ -66,8 +68,9 @@ public class AnalyticsCrmView extends VerticalLayout {
     private LocalDate from;
     private LocalDate to;
 
-    public AnalyticsCrmView(@NotNull Crm crm, @NotNull Ledger ledger) {
-        this.workflows = new CrmWorkflows(crm);
+    public AnalyticsCrmView(@NotNull RealmCrm realmCrm, @NotNull RealmInvoices realmInvoices, @NotNull Ledger ledger) {
+        logicCrm = new BusinessLogicCrm(realmCrm);
+        logicInvoices = new BusinessLogicInvoices(realmInvoices);
         this.ledger = ledger;
         from = LocalDate.of(2015, 11, 1);
         to = LocalDate.of(LocalDate.now().getYear(), 12, 31);
@@ -104,28 +107,26 @@ public class AnalyticsCrmView extends VerticalLayout {
     }
 
     private Grid<Contract> contractsTable() {
-        CrmBusinessLogic crmBusinessLogic = new CrmBusinessLogic(workflows.crm());
         Grid<Contract> grid = new Grid<>();
-        grid.setDataProvider(DataProvider.ofCollection(workflows.crm().contracts().items()));
+        grid.setDataProvider(DataProvider.ofCollection(logicCrm.realm().contracts().items()));
         grid.addColumn(Contract::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::fromDate).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::toDate).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(VaadinUtils.coloredRender(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setHeader("Amount").setAutoWidth(true).setResizable(true)
                 .setSortable(true);
-        grid.addColumn(VaadinUtils.coloredRender(o -> crmBusinessLogic.contractInvoicedAmountWithoutVat(o, from, to), VaadinUtils.FORMAT)).setHeader("Invoiced")
-                .setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(VaadinUtils.coloredRender(o -> crmBusinessLogic.contractExpenses(o, from, to), VaadinUtils.FORMAT)).setHeader("Expenses")
+        grid.addColumn(VaadinUtils.coloredRender(o -> logicInvoices.invoicedAmountWithoutVatForContract(o.id(), from, to), VaadinUtils.FORMAT))
+                .setHeader("Invoiced").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(VaadinUtils.coloredRender(o -> logicInvoices.expensesForContract(o.id(), from, to), VaadinUtils.FORMAT)).setHeader("Expenses")
                 .setAutoWidth(true).setResizable(true).setSortable(true);
         return grid;
     }
 
     private void contractsChart(@NotNull SOChart chart) {
-        CrmBusinessLogic logic = new CrmBusinessLogic(workflows.crm());
         List<String> contracts = new ArrayList<>();
         List<BigDecimal> amounts = new ArrayList<>();
-        workflows.crm().contracts().items().forEach(contract -> {
-            BigDecimal amount = logic.contractInvoicedAmountWithoutVat(contract, from, to);
+        logicCrm.realm().contracts().items().forEach(contract -> {
+            BigDecimal amount = logicInvoices.invoicedAmountWithoutVatForContract(contract.id(), from, to);
             if (!amount.equals(BigDecimal.ZERO)) {
                 contracts.add(contract.id());
                 amounts.add(amount);
@@ -135,11 +136,10 @@ public class AnalyticsCrmView extends VerticalLayout {
     }
 
     private void customersChart(@NotNull SOChart chart) {
-        CrmBusinessLogic logic = new CrmBusinessLogic(workflows.crm());
         List<String> customers = new ArrayList<>();
         List<BigDecimal> amounts = new ArrayList<>();
-        workflows.crm().legalEntities().items().forEach(customer -> {
-            BigDecimal amount = logic.customerInvoicedAmountWithoutVat(customer, from, to);
+        logicCrm.realm().legalEntities().items().forEach(customer -> {
+            BigDecimal amount = logicInvoices.paidAmountWithoutVatForCustomer(customer.id(), from, to);
             if (!amount.equals(BigDecimal.ZERO)) {
                 customers.add(customer.name());
                 amounts.add(amount);
@@ -208,10 +208,10 @@ public class AnalyticsCrmView extends VerticalLayout {
     }
 
     private void funnelChart(@NotNull SOChart chart) {
-        CategoryData labels = new CategoryData("Prospects", "Leads", "Customers", "Completed", "Lost");
-        Data data = new Data(workflows.logic().funnel(InteractionCode.prospect), workflows.logic().funnel(InteractionCode.lead),
-                workflows.logic().funnel(InteractionCode.customer), workflows.logic().funnel(InteractionCode.completed),
-                workflows.logic().funnel(InteractionCode.lost));
+        CategoryData labels = new CategoryData("Prospects", "Leads", "Customers", "Lost", "Completed");
+        Data data = new Data(logicCrm.funnel(InteractionCode.prospect, from, to), logicCrm.funnel(InteractionCode.lead, from, to),
+                logicCrm.funnel(InteractionCode.customer, from, to), logicCrm.funnel(InteractionCode.lost, from, to),
+                logicCrm.funnel(InteractionCode.completed, from, to));
         BarChart barchart = new BarChart(labels, data);
         RectangularCoordinate rc = new RectangularCoordinate(new XAxis(DataType.CATEGORY), new YAxis(DataType.NUMBER));
         Position chartPosition = new Position();

@@ -80,8 +80,7 @@ public class Account implements HasId {
         this(id, kind, null, currency, text, ownedBy);
     }
 
-    public Account(@NotNull String id, @NotNull AccountKind kind, AccountGroup group, @NotNull Currency currency, String text,
-                   String ownedBy) {
+    public Account(@NotNull String id, @NotNull AccountKind kind, AccountGroup group, @NotNull Currency currency, String text, String ownedBy) {
         this.id = id;
         this.kind = kind;
         this.group = group;
@@ -162,8 +161,8 @@ public class Account implements HasId {
     }
 
     /**
-     * Debits and Credits are from the bank’s point of view and so are the opposite of what you expect when it comes to the maths involved. Debits -
-     * meaning assets and expenses - have a positive balance and Credits - meaning liabilities and income - have a negative balance.
+     * Debits and Credits are from the bank’s point of view and so are the opposite of what you expect when it comes to the maths involved. Debits - meaning
+     * assets and expenses - have a positive balance and Credits - meaning liabilities and income - have a negative balance.
      * <p>
      * If I Debit (add to) a Debit account it gets more positive and has a larger format (Debit -&gt; Soll)
      * <p>
@@ -177,11 +176,8 @@ public class Account implements HasId {
      * @return the balance of the account at the requested date
      */
     public BigDecimal balance(LocalDate date) {
-        if (isAggregate()) {
-            return aggregatedAccounts.stream().map(o -> o.balance(date)).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
-        } else {
-            return entries.stream().filter(o -> date.compareTo(o.date()) >= 0).map(Account::booking).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
-        }
+        return isAggregate() ? aggregatedAccounts.stream().map(o -> o.balance(date)).reduce(BigDecimal::add).orElse(BigDecimal.ZERO) :
+                entries.stream().filter(o -> date.compareTo(o.date()) >= 0).map(Account::booking).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
     }
 
     public List<AccountEntry> getEntriesFor(LocalDate from, LocalDate to) {

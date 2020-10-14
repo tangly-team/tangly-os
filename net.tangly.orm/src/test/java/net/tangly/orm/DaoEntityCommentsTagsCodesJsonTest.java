@@ -135,13 +135,13 @@ class DaoEntityCommentsTagsCodesJsonTest extends DaoTest {
     @BeforeEach
     void setUp() throws NoSuchMethodException {
         setUpDatabase();
-        comments = new DaoBuilder<>(Comment.class).withOid().withDateTime("created").withText("author").withText("text").withTags("tags").withFid("ownedBy")
+        comments = new DaoBuilder<>(Comment.class).withOid().withDateTime("created").withText("author").withText("text").withTags("tags").withFid("ownerFoid")
                 .build("tangly", "comments", datasource());
         DaoBuilder<Entity> entitiesBuilder = new DaoBuilder<>(Entity.class);
         entities = entitiesBuilder.withOid().withString("id").withString("name").withDate("fromDate").withDate("toDate").withString("text").withTags("tags")
                 .withCode("code", CodeType.of(EntityCode.class, Arrays.asList(EntityCode.values()))).withOne2One("owner", entitiesBuilder.self(), true)
                 .withFid("ownedBy").withOne2Many("ownedOnes", "ownedBy", entitiesBuilder.self(), true)
-                .withOne2Many("comments", "ownedBy", Reference.of(comments), true).withJson("jsonValues", Value.class)
+                .withOne2Many("comments", "ownerFoid", Reference.of(comments), true).withJson("jsonValues", Value.class)
                 .build("tangly", "entities", datasource());
     }
 

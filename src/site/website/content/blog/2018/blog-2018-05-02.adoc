@@ -2,6 +2,7 @@
 title: "Agile Trends Switzerland 2018"
 linkTitle: "Swiss Agile 2018"
 date: 2018-05-20
+tags: ["agile"]
 ---
 
 == Agile Trends Switzerland 2018
@@ -18,7 +19,7 @@ The Swiss agile trends report was published for the last ten years and learn us 
 SwissQ has published a "SwissQ Software Development Switzerland 2018", the tenth version of this report.
 
 Introducing agile company-wide was and is a cultural change process.
-Such a change takes time and sometimes hurts. Too often organizations stop the process and revert to all command and control approaches with Waterfall outcome management.
+Such a change takes time and sometimes hurts. Too often organizations stop the process and revert to all command and control approaches with Waterfall product management.
 
 Without commitment of senior management, the initiative will fail. In other words _Walk the talk_.
 
@@ -46,7 +47,7 @@ The list of hurdles for a successful introduction of agile approaches was update
 
 69%:: Culture change and you need senior management support
 54%:: Non adapted overall processes because local optimizations have limited effect
-42%:: Missing product overview because a company sells products
+42%:: Missing article overview because a company sells products
 42%:: Focus on business value  because a company shall earn money
 25%:: Missing agile know-how of collaborators and you shall train your collaborators
 

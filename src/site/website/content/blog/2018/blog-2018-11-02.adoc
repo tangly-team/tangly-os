@@ -2,6 +2,7 @@
 title: "SAFE 4.6: Improvements Direly Needed"
 linkTitle: "SAFE 4.6"
 date: 2018-11-10
+tags: ["agile"]
 ---
 
 == SAFE 4.6: Improvements Direly Needed
@@ -22,7 +23,7 @@ SAFe finally recognizes the tremendous importance of https://v46.scaledagilefram
 They advocate two findings.
 First you need team agility, how you apply Scrum or Kanban.
 In other words _being agile instead of doing agile_.
-Second you need technical agility, how you develop a quality product.
+Second you need technical agility, how you develop a quality article.
 
 I challenge you.
 If you are following {ref-safe}, talk with your teams and checks how many of their official good practices are you using on a daily basis.
@@ -57,7 +58,7 @@ All C-level managers are trained in lean and agile, they advocates these approac
 Therefore all managers shall be advocate technical excellence on a daily basis.
 
 If not the seminal work of John Kotter clearly states the transformation will fail.
-You will have a bunch of Scrum teams in your development department, but have none of the expected synergies at product or company level.
+You will have a bunch of Scrum teams in your development department, but have none of the expected synergies at article or company level.
 
 Personally I prefer the {ref-less} approach, but I respect your choice - https://www.scaledagileframework.com/[SAFe],
 https://www.scrum.org/resources/nexus-guide[Nexus], or https://www.scrumatscale.com/scrum-at-scale-guide/[Scrum@Scale] - as long as technical excellence is
@@ -71,10 +72,10 @@ https://v46\.scaledagileframework.com/[five core competencies] of your method.
 See also my blogs {url-articles}2018/blog-2018-04-01[Pragmatic Craftsmanship], {url-articles}2018/blog-2018-06-01[Software Quality Graal], and
 _How healthy is your Product?_ article series for information about technical excellence.
 
-. link:../../2018/how-healthy-is-your-product-source-code-check[Source Code Check]
-. link:../../2018/how-healthy-is-your-product-delivery-pipeline-check[Delivery Pipeline Check]
-. link:../../2018/how-healthy-is-your-product-product-strategy-check[Product Strategy Check Company]
-. link:../../2019/how-healthy-is-your-product-company-culture-check/[Company Culture Check]
+. link:../../2018/how-healthy-is-your-article-source-code-check[Source Code Check]
+. link:../../2018/how-healthy-is-your-article-delivery-pipeline-check[Delivery Pipeline Check]
+. link:../../2018/how-healthy-is-your-article-article-strategy-check[Product Strategy Check Company]
+. link:../../2019/how-healthy-is-your-article-company-culture-check/[Company Culture Check]
 
 The other big improvement is that the PI horizon is now _limited_ to 8 or 12 weeks.
 No more semesterly or hopefully quarterly cadence.

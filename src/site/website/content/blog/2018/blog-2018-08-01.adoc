@@ -2,6 +2,7 @@
 title: "What does an Agile Coach?"
 linkTitle: "Definition of Done"
 date: 2018-08-16
+tags: ["agile"]
 ---
 
 == What does an Agile Coach?
@@ -62,14 +63,14 @@ Agile teams thrive with purpose, autonomy and mastery. One approach to coaching 
 .. Discuss the core values of commitment, focus, openness, respect, and courage,
 .. Present again the agile manifesto and the twelve principles
 .. Show the organization why commitment in the planning was replaced by forecast in the official Scrum guide,
-.. Require a vision, a roadmap, a release plan with a story map and a refined backlog for each product and team,
+.. Require a vision, a roadmap, a release plan with a story map and a refined backlog for each article and team,
 .. Tell why an impediment resolution backlog item shall be part of each iteration,
-.. Teach the importance of Definition of Done for the internal quality of the product. And explain why Definition of Ready is often an anti-pattern,
+.. Teach the importance of Definition of Done for the internal quality of the article. And explain why Definition of Ready is often an anti-pattern,
 .. Show why velocity is not a productivity metrics,
-.. Show the difference between outcome and output,
+.. Show the difference between product and output,
 .. Extend the agile toolbox with Design Thinking, Lean Factory, Lean UX, DevOps,
-.. Pair Scrum master and technical master to implement a craftsmanship path and achieve product quality,
-.. Explore Center of Competencies to nurture your product development group,
+.. Pair Scrum master and technical master to implement a craftsmanship path and achieve article quality,
+.. Explore Center of Competencies to nurture your article development group,
 
 Once you are a master fell free to break the rules, experiment with new rules, approaches.
 Define hypotheses and verify them empirically.

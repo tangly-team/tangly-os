@@ -2,6 +2,7 @@
 link: "How to reach the Software Quality Graal?"
 linkTitle: "Quality Graal"
 date: 2018-06-19
+tags: ["design"]
 ---
 
 == How to reach the Software Quality Graal?
@@ -12,7 +13,7 @@ date: 2018-06-19
 :copyright: CC-BY-SA 4.0
 
 image::2018-06-01-head.jpg[720, 480, role=left]
-Lately I was asked how many bugs and smells detected through SonarQube were acceptable for a software product.
+Lately I was asked how many bugs and smells detected through SonarQube were acceptable for a software article.
 And a Scrum master inquired which organizational changes are necessary to empower software developers to write good code.
 Speechless and dumbfounded I was unable to answer these questions.
 
@@ -21,17 +22,17 @@ But tools can only measure _non-quality_.
 
 They tell you when you are doing it wrong, only your heart can tell you when you are doing it right.
 
-But first that does it means to have a quality software product?
+But first that does it means to have a quality software article?
 
 [quote]
 ____
-A high quality software product has no catastrophic failures, and seldom bad behavior.
+A high quality software article has no catastrophic failures, and seldom bad behavior.
 
 It is maintainable and extendable with new technologies and new features.
 ____
 
-The first part is called extrinsic quality and is why customers buy your product.
-The second part is called intrinsic quality and is why customers buy your product again and recommend it.
+The first part is called extrinsic quality and is why customers buy your article.
+The second part is called intrinsic quality and is why customers buy your article again and recommend it.
 
 Criteria such as test code coverage, static analyzers, coding guidelines are just tools to detect missing quality.
 They help your team produce higher quality and nothing else.
@@ -65,7 +66,7 @@ _Is why you can daily drive your car and not have to weekly repair it. And, late
 * Static code analysis - Known weaknesses are removed from your source code,
 * Test driven development TDD - You can change the code without changing the behavior or outputs, see also ATDD,
 * Clean code - You guarantee the source code is maintainable,
-* Clean architecture and domain driven development - You guarantee the product is extendable.
+* Clean architecture and domain driven development - You guarantee the article is extendable.
 
 === Accountability
 
@@ -90,14 +91,14 @@ ____
 Developers please read the seminal book _Clean Coder_ <<cleancoder>> from Robert Martin.
 As a professional you are responsible and accountable for the quality of the software you produce.
 
-I find intolerable to hear software professionals stating they are not in charge of the intrinsic quality of the product they write.
+I find intolerable to hear software professionals stating they are not in charge of the intrinsic quality of the article they write.
 They cowardly try to push the responsibility to the internal quality assurance department or to the whole organization.
 
 The above ideas are keys for https://tangly-blog.blogspot.com/2018/04/pragmatic-craftsmanship-professional.html[Software Craftsmanship].
 
 === Kaizen - Small Steps bring First Successes
 
-The first steps to improve your product are quite simple are around for at least twenty years.
+The first steps to improve your article are quite simple are around for at least twenty years.
 
 * Eliminate all compiler errors and warnings,
 * Use static checkers,

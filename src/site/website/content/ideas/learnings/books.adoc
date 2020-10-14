@@ -63,7 +63,7 @@ Frederic Laloux, 2014
  Eric Ries, 2011
 * https://www.amazon.com/dp/0321896904[The Lean Mindset: Ask the Right Questions],
  Mary Poppendieck &n Tom Poppendieck, 2014
-* https://www.amazon.com/dp/product/B00HNB3VQE[Implementing Lean Software Development: From Concept to Cash],
+* https://www.amazon.com/dp/article/B00HNB3VQE[Implementing Lean Software Development: From Concept to Cash],
  Mary Poppendieck &n Tom Poppendieck, 2007
 * https://www.amazon.com/dp/0974322563[The Gold Mine: a Novel of Lean Turnaround],
  Michael Ballé & Freddy Ballé, 2005
@@ -122,7 +122,7 @@ Frederic Laloux, 2014
  Roman Pichler, 2016
 * https://www.amazon.com/dp/0321605780[Agile Product Management with Scrum: Creating Products that Customers Love],
  Roman Pichler, 2010
-* https://www.amazon.com/dp/product/B085L8Z4YS[How to Lead in Product Management: Practices to Align Stakeholders, Guide Development Teams, and Create Value Together],
+* https://www.amazon.com/dp/article/B085L8Z4YS[How to Lead in Product Management: Practices to Align Stakeholders, Guide Development Teams, and Create Value Together],
  Roman Pichler, 2020
 * https://www.amazon.com/dp/0321205685[User Stories Applied for Agile Software Development],
  Mike Cohn, 2004

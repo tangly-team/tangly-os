@@ -2,6 +2,7 @@
 title: "Agile Trends Switzerland 2012"
 linkTitle: "Swiss Agile Trends 2012"
 date: 2016-03-07
+tags: ["agile"]
 ---
 
 == Agile Trends Switzerland 2012
@@ -41,7 +42,7 @@ http://en.wikipedia.org/wiki/Change_management[change process].
 The coaches should be trained in change management and have experiences with resistance to changes.
 
 The above points in italics are all related to change processes.
-You can handle two thirds of the hurdles with adequate change management training and a clear change outcome definition.
+You can handle two thirds of the hurdles with adequate change management training and a clear change product definition.
 Do not try to introduce Scrum at company level without such an approach.
 
 === Main Reasons Why Agile Projects are Cancelled
@@ -74,7 +75,7 @@ The Scrum Master serves the organization in several ways, including:
 
 * *Leading* and *coaching* the organization in its Scrum adoption;
 * *Planning* Scrum implementations within the organization;
-* Helping employees and stakeholders understand and enact Scrum and empirical product development;
+* Helping employees and stakeholders understand and enact Scrum and empirical article development;
 * Causing change that increases the productivity of the Scrum Team; and,
 * *Working* with other Scrum Masters to increase the effectiveness of the application of Scrum in the organization.
 ____

@@ -2,6 +2,7 @@
 title: "Agile @ Scale"
 linkTitle: "Agile@Scale"
 date: 2019-11-04
+tags: ["agile"]
 ---
 
 == Agile @ Scale
@@ -77,7 +78,7 @@ Now you are ready to experiment with scaling.
 ** Experiment with new approaches and measure success,
 * Organize around up to eight teams, _one backlog for one product_
 ** Avoid team backlogs,
-** Have one product owner in charge of the whole product,
+** Have one article owner in charge of the whole article,
 * Pull, do not push
 ** Collaborators and teams select workload,
 ** All information are available to all collaborators,
@@ -85,7 +86,7 @@ Now you are ready to experiment with scaling.
 ** _Automate aggressively_,
 ** Put all artifacts under version control,
 * Focus on outcomes and impact, not on outputs
-** Customer features are outcome only when used by users,
+** Customer features are product only when used by users,
 ** Velocity and burn-down charts are output.
 
 === Avoid Common Errors
@@ -98,12 +99,12 @@ Eliminate hardening iterations, integration phases, milestones when software sho
 Your teams shall deliver a workable software on demand, multiple times a week or a day.
 * _Organize around products_.
 Customers buy products.
-Eliminate outcome based organizations.
+Eliminate product based organizations.
 *b _Have one backlog for the whole product_.
 Otherwise multiple backlogs must be synchronized and local optimization is de facto applied.
 This approach is against all lean principles.
 * _Customer and users talks directly with the development team_.
-Product owners, product managers enterprise architects should never be filtering the information flow between customers and engineers.
+Product owners, article managers enterprise architects should never be filtering the information flow between customers and engineers.
 * _Eliminate step by step all coordination roles_.
 Emphasize communication between developers in the team and between teams.
 Scrum of Scrums where only Scrum masters attend, Release Train Engineer, System teams, corporate Solution Engineers are just a waste of resources.

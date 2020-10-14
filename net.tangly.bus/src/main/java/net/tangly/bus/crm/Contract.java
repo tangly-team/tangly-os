@@ -20,6 +20,7 @@ import java.util.Locale;
 import java.util.Objects;
 
 import net.tangly.bus.core.Address;
+import net.tangly.bus.core.BankConnection;
 import net.tangly.bus.core.EntityImp;
 
 /**

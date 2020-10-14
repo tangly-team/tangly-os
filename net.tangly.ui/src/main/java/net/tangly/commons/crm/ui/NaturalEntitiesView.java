@@ -34,6 +34,7 @@ import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.GenderCode;
 import net.tangly.bus.crm.NaturalEntity;
+import net.tangly.bus.crm.RealmCrm;
 import net.tangly.bus.providers.ViewProvider;
 import net.tangly.commons.vaadin.CodeField;
 import net.tangly.commons.vaadin.CommentsView;
@@ -42,12 +43,11 @@ import net.tangly.commons.vaadin.One2ManyView;
 import net.tangly.commons.vaadin.TabsComponent;
 import net.tangly.commons.vaadin.TagsView;
 import net.tangly.commons.vaadin.VaadinUtils;
-import net.tangly.crm.ports.Crm;
 import org.jetbrains.annotations.NotNull;
 
 public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
-    public NaturalEntitiesView(@NotNull Crm crm, @NotNull Mode mode) {
-        super(crm, NaturalEntity.class, mode, crm.naturalEntities());
+    public NaturalEntitiesView(@NotNull RealmCrm realmCrm, @NotNull Mode mode) {
+        super(realmCrm, NaturalEntity.class, mode, realmCrm.naturalEntities());
         initialize();
     }
 
@@ -77,9 +77,9 @@ public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
         NaturalEntity workedOn = (entity != null) ? entity : create();
         tabs.add(new Tab("Overview"), createOverallView(mode, workedOn));
         tabs.add(new Tab("Comments"), new CommentsView(mode, workedOn));
-        tabs.add(new Tab("Tags"), new TagsView(mode, workedOn, crm().tagTypeRegistry()));
+        tabs.add(new Tab("Tags"), new TagsView(mode, workedOn, realm().tagTypeRegistry()));
         One2ManyView<Employee> employees = new One2ManyView<>(Employee.class, mode, NaturalEntitiesView::defineOne2ManyEmployees,
-                ViewProvider.of(crm().employees(), o -> entity.oid() == o.person().oid()), new EmployeesView(crm(), mode));
+                ViewProvider.of(realm().employees(), o -> entity.oid() == o.person().oid()), new EmployeesView(realm(), mode));
         tabs.add(new Tab("Employees"), employees);
     }
 

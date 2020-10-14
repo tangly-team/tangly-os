@@ -27,19 +27,19 @@ import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.bus.codes.CodeType;
 import net.tangly.bus.crm.Interaction;
 import net.tangly.bus.crm.InteractionCode;
+import net.tangly.bus.crm.RealmCrm;
 import net.tangly.commons.vaadin.CommentsView;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.TabsComponent;
 import net.tangly.commons.vaadin.TagsView;
 import net.tangly.commons.vaadin.VaadinUtils;
-import net.tangly.crm.ports.Crm;
 import org.jetbrains.annotations.NotNull;
 
 public class InteractionsView extends CrmEntitiesView<Interaction> {
     public static final BigDecimal HUNDRED = new BigDecimal("100");
 
-    public InteractionsView(@NotNull Crm crm, @NotNull Mode mode) {
-        super(crm, Interaction.class, mode, crm.interactions());
+    public InteractionsView(@NotNull RealmCrm realmCrm, @NotNull Mode mode) {
+        super(realmCrm, Interaction.class, mode, realmCrm.interactions());
         initialize();
     }
 
@@ -47,7 +47,7 @@ public class InteractionsView extends CrmEntitiesView<Interaction> {
     protected void initialize() {
         super.initialize();
         Grid<Interaction> grid = grid();
-        grid.addColumn(Interaction::state).setKey("state").setHeader("State").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
+        grid.addColumn(Interaction::code).setKey("state").setHeader("State").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(e -> VaadinUtils.format(e.potential())).setKey("potential").setHeader("Potential").setAutoWidth(true).setResizable(true)
                 .setSortable(true).setFrozen(true);
         grid.addColumn(new NumberRenderer<>(e -> HUNDRED.multiply(e.probability()), VaadinUtils.FORMAT)).setKey("probability").setHeader("Probability (%)")
@@ -61,7 +61,7 @@ public class InteractionsView extends CrmEntitiesView<Interaction> {
         Interaction workedOn = (entity != null) ? entity : create();
         tabs.add(new Tab("Overview"), createOverallView(mode, workedOn));
         tabs.add(new Tab("Comments"), new CommentsView(mode, workedOn));
-        tabs.add(new Tab("Tags"), new TagsView(mode, workedOn, crm().tagTypeRegistry()));
+        tabs.add(new Tab("Tags"), new TagsView(mode, workedOn, realm().tagTypeRegistry()));
     }
 
     @Override

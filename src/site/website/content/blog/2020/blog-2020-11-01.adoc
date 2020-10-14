@@ -2,6 +2,7 @@
 title: "Reference Codes"
 linkTitle: "Reference Codes"
 date: 2020-11-01
+tags: ["java", "design"]
 ---
 
 == Reference Codes
@@ -11,7 +12,7 @@ date: 2020-11-01
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2020-11-01-head.jpg[720, 480, role=left]
+image::2020-11-01-head.jpg[720,480,role=left]
 Reference codes are an old concept.
 They are often used in relational database schema definition.
 The database specialists often call them lookup tables.
@@ -27,12 +28,12 @@ We provide an initial setup approach requiring mere minutes to add codes to your
 
 === Enumerations as Codes
 
-As a professional designer you have declared sets of fixed values as enumeration in your source code. Now you can extend your enumeration classes with the code interface.
+As a professional designer you have declared sets of fixed values as enumeration in your source code.
+Now you can extend your enumeration classes with the code interface.
 
-Additional information are available under link::../../../docs/bus/businessmodels/
-Below the source code in modern Java is
+Additional information are available under link::../../../docs/bus/businessmodels/ Below the source code in modern Java is
 
-[source, java]
+[source,java]
 ----
 public interface Code extends Serializable {
     int id();
@@ -69,7 +70,7 @@ Codes can be defined and stored as JSON sets or in SQL table.
 
 The Java code for the JSON approach is
 
-[source, java]
+[source,java]
 ----
 /**
  * Utility method to read all code values from a JSON file using the org.json library.
@@ -102,31 +103,18 @@ The Java code for the SQL table is quite similar:
 
 [source, java]
 ----
+
 /**
- * Utility method to read all code values from a relational database table using Java regular API.
- *
- * @param clazz      class of the reference code
- * @param factory    placeholder to pass the class constructor as lambda expression
- * @param dataSource data source to the database to read from
- * @param tableName  name of the table containing the code values
- * @param <T>        class of the reference code
- * @return code type and all its values
- * @throws SQLException if a database access error occurred
- */
-public static <T extends Code> CodeType<T> build(Class<T> clazz, CodeFactory<T> factory, DataSource dataSource, String tableName) throws SQLException {
-    final String SQL_QUERY = "SELECT id, code, enabled FROM " + tableName;
-    try (Connection connection = dataSource.getConnection(); Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(SQL_QUERY)) {
-        List<T> codes = new ArrayList<>();
-        while (resultSet.next()) {
-            T code = factory.create(resultSet.getInt("id"),
-            resultSet.getString("code"),
-            resultSet.getBoolean("enabled"));
-            codes.add(code);
-        }
-        return CodeType.of(clazz, codes);
-    }
-}
+* Utility method to read all code values from a relational database table using Java regular API.
+*
+* @param clazz class of the reference code
+* @param factory placeholder to pass the class constructor as lambda expression
+* @param dataSource data source to the database to read from
+* @param tableName name of the table containing the code values
+* @param <T> class of the reference code
+* @return code type and all its values
+* @throws SQLException if a database access error occurred */ public static <T extends Code> CodeType<T> build(Class<T> clazz, CodeFactory<T> factory, DataSource dataSource, String tableName) throws SQLException { final String SQL_QUERY = "SELECT id, code, enabled FROM " + tableName; try (Connection connection = dataSource.getConnection(); Statement statement = connection.createStatement(); ResultSet resultSet = statement.executeQuery(SQL_QUERY)) { List<T> codes = new ArrayList<>(); while (resultSet.next()) { T code = factory.create(resultSet.getInt("id"), resultSet.getString("code"), resultSet.getBoolean("enabled")); codes.add(code); } return CodeType.of(clazz, codes); } }
+
 ----
 
 At the database level you can define integrity rules in the schema to increase data quality.

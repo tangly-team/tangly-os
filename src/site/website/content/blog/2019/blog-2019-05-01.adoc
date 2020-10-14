@@ -2,6 +2,7 @@
 title: "Agile Architecture Principles"
 linkTitle: "Agile Architecture Principles"
 date: 2019-05-06
+tags: ["agile", "design"]
 ---
 
 == Agile Architecture Principles
@@ -13,22 +14,22 @@ date: 2019-05-06
 
 
 image::2019-05-01-head.jpg[720, 480, role=left]
-You are applying the agile, lean approach to your software product development.
+You are applying the agile, lean approach to your software article development.
 Your teams use Scrum or Kanban to deliver running software every two weeks.
-The product market introduction is a success and you will successfully sell the solution for the next ten years.
+The article market introduction is a success and you will successfully sell the solution for the next ten years.
 
-How shall you define the software architecture of your product and insure a long living and high quality solution?
+How shall you define the software architecture of your article and insure a long living and high quality solution?
 The experts tell you the design is emergent, what does it means?
 
 === LeSS Architecture Observations
 
-The following observations are true for any software product.
+The following observations are true for any software article.
 It is irrelevant if developed using agile approaches or traditional older ones.
 
 . _The sum of all source code is the true design blueprint or software architecture_,
-. The real software architecture evolves (better or worse) every day of the product, as people do programming,
+. The real software architecture evolves (better or worse) every day of the article, as people do programming,
 . The _real living architecture needs to be grown every day_ through acts of programming by master programmers,
-. A software architect who is not in touch with the evolving source code of the product is out of touch with reality,
+. A software architect who is not in touch with the evolving source code of the article is out of touch with reality,
 . _Every programmer is some kind of architect_ — whether wanted or not.
 Every act of programming is some kind of architectural act — good or bad, small or large, intended or not.
 

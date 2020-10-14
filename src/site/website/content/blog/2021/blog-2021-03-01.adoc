@@ -2,6 +2,8 @@
 title: "Modern Java Development"
 linkTitle: "Modern Java Development"
 date: 2021-03-01
+tags: ["java"]
+
 ---
 
 == Modern Java Development
@@ -25,7 +27,7 @@ Below our findings and our current focus to develop.
 === Legibility Matters
 
 Programmers learnt the last decade that legibility and brevity of programming languages matter.
-The Java Coin outcome was initiated to reduce the verbosity of the Java language mainly through syntactic sugar.
+The Java Coin product was initiated to reduce the verbosity of the Java language mainly through syntactic sugar.
 As a programmer I should not be forced to write statements the compiler could infer.
 
 Examples of improvements are
@@ -100,7 +102,7 @@ Pattern matching with deconstruction::
 First pattern matching constructs are available in switch and if statements.
 Discussions are underway to extend pattern matching with object deconstruction.
 Value Types::
-Value types would be a huge improvement in performance and support of modern processor architecture if the Valhalla outcome delivers.
+Value types would be a huge improvement in performance and support of modern processor architecture if the Valhalla product delivers.
 
 The only caution we have with modern Java development is the sluggish catch-up of open source tools and libraries.
 For example {ref-gradle} needed five years to provide module support in the Java plugin.

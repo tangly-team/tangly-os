@@ -113,10 +113,10 @@ public class Ledger {
 
     private void bookEntry(@NotNull AccountEntry entry) {
         Optional<Account> account = accountBy(entry.accountId());
+        account.ifPresent(o -> o.addEntry(entry));
         if (account.isEmpty()) {
             logger.atError().log("account {} for entry with amount {} booked {} is undefined", entry.accountId(), entry.amount(), entry.date());
         }
-        account.ifPresent(o -> o.addEntry(entry));
     }
 
     // region VAT-computations

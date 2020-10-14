@@ -24,9 +24,8 @@ import java.util.List;
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.ledger.Ledger;
-import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.ledger.ports.LedgerBusinessLogic;
-import net.tangly.ledger.ports.LedgerWorkflows;
+import net.tangly.ledger.ports.LedgerHdl;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -40,17 +39,13 @@ class LedgerBusinessLogicTest {
     @Test
     @Tag("localTest")
     public void createReports() {
-        LedgerWorkflows ledgerWorkflows = new LedgerWorkflows(new Ledger());
-        ledgerWorkflows.importLedger(Paths.get("/Users/Shared/tangly/"));
-        LedgerBusinessLogic ledgerLogic = new LedgerBusinessLogic(ledgerWorkflows.ledger());
+        LedgerHdl ledgerHdl = new LedgerHdl(new Ledger());
+        ledgerHdl.importLedger(Paths.get("/Users/Shared/tangly/"));
+        LedgerBusinessLogic ledgerLogic = new LedgerBusinessLogic(ledgerHdl.ledger());
 
         Path report = Paths.get("/Users/Shared/tangly/reports/ledger");
         ledgerLogic.createLedgerReport(report, "tangly-" + 2016, LocalDate.of(2015, 11, 1), LocalDate.of(2016, 12, 31));
-        List.of(2017, 2018, 2019, 2020).forEach(
-          o -> {
-              ledgerLogic.createLedgerReport(report, "tangly-" + o, LocalDate.of(o, 1, 1), LocalDate.of(o, 12, 31));
-          }
-        );
+        List.of(2017, 2018, 2019, 2020).forEach(o -> ledgerLogic.createLedgerReport(report, "tangly-" + o, LocalDate.of(o, 1, 1), LocalDate.of(o, 12, 31)));
     }
 
     @Test
@@ -59,16 +54,16 @@ class LedgerBusinessLogicTest {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             CrmAndLedgerStore store = new CrmAndLedgerStore(fs);
             LedgerBusinessLogic logic = new LedgerBusinessLogic(createLedger(store));
-            logic.createLedgerReport(fs.getPath("/crm/reports/ledger/"), filenameWithoutExtension, LocalDate.of(2015, 10, 01), LocalDate.of(2016, 12, 31));
-            assertThat(Files.exists(fs.getPath("/crm/reports/ledger/").resolve(filenameWithoutExtension +  ".adoc"))).isFalse();
-            assertThat(Files.exists(fs.getPath("/crm/reports/ledger/").resolve(filenameWithoutExtension + ".pdf"))).isTrue();
+            logic.createLedgerReport(store.ledgerRoot(), filenameWithoutExtension, LocalDate.of(2015, 10, 01), LocalDate.of(2016, 12, 31));
+            assertThat(Files.exists(store.ledgerRoot().resolve(filenameWithoutExtension + ".adoc"))).isFalse();
+            assertThat(Files.exists(store.ledgerRoot().resolve(filenameWithoutExtension + ".pdf"))).isTrue();
         }
     }
 
     private Ledger createLedger(CrmAndLedgerStore store) {
         store.createCrmAndLedgerRepository();
-        LedgerWorkflows workflows = new LedgerWorkflows(new Ledger());
-        workflows.importLedger(store.crmRoot());
-        return workflows.ledger();
+        LedgerHdl ledgerHdl = new LedgerHdl(new Ledger());
+        ledgerHdl.importLedger(store.ledgerRoot());
+        return ledgerHdl.ledger();
     }
 }

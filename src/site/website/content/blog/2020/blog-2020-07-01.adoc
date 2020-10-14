@@ -2,6 +2,7 @@
 title: "A Journey Implementing Digital Invoices"
 linkTitle: "Implementing Digital Invoices"
 date: 2020-07-15
+tags: ["java", "design", "crm"]
 ---
 
 == A Journey Implementing Digital Invoices
@@ -74,7 +75,7 @@ Other similar libraries are also available but the ones we found have quite rest
 The PDF format is universal known.
 Special variants such as PDF/A1 and PDF/A3 are defined for archiving purposes.
 
-The Apache foundation hosts the product https://pdfbox.apache.org/[PDFBox].
+The Apache foundation hosts the article https://pdfbox.apache.org/[PDFBox].
 It provides all low-level functions to create, read and edit PDF documents.
 The library is naturally under https://en.wikipedia.org/wiki/Apache_License[Apache 2.0 license].
 

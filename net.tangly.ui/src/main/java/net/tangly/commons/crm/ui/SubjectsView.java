@@ -22,16 +22,16 @@ import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.server.StreamResource;
 import net.tangly.bus.crm.NaturalEntity;
+import net.tangly.bus.crm.RealmCrm;
 import net.tangly.bus.crm.Subject;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.One2OneField;
 import net.tangly.commons.vaadin.VaadinUtils;
-import net.tangly.crm.ports.Crm;
 import org.jetbrains.annotations.NotNull;
 
 public class SubjectsView extends CrmEntitiesView<Subject> {
-    public SubjectsView(@NotNull Crm crm, @NotNull Mode mode) {
-        super(crm, Subject.class, mode, crm.subjects());
+    public SubjectsView(@NotNull RealmCrm realmCrm, @NotNull Mode mode) {
+        super(realmCrm, Subject.class, mode, realmCrm.subjects());
         initialize();
     }
 
@@ -46,7 +46,7 @@ public class SubjectsView extends CrmEntitiesView<Subject> {
         boolean readonly = Mode.readOnly(mode);
         EntityField entityField = new EntityField();
         entityField.setReadOnly(readonly);
-        One2OneField<NaturalEntity, NaturalEntitiesView> user = new One2OneField<>("User", new NaturalEntitiesView(crm(), mode));
+        One2OneField<NaturalEntity, NaturalEntitiesView> user = new One2OneField<>("User", new NaturalEntitiesView(realm(), mode));
 
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);

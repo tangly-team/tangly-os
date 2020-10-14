@@ -32,7 +32,7 @@ Path objects have a reference to the file system; File objects always referenced
 
 === Consequences
 
-* We have a dependency to an open source outcome currently managed by Google.
+* We have a dependency to an open source product currently managed by Google.
 * Use of https://github.com/google/jimfs[Jimfs] requires use of Path instances.
 We shall remove all references to File instances.
 File instances do not support alternative file systems.

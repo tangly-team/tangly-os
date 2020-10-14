@@ -24,14 +24,12 @@ import java.util.List;
 import java.util.Locale;
 
 import net.tangly.bus.core.Address;
-import net.tangly.bus.crm.BankConnection;
-import net.tangly.bus.crm.Contract;
-import net.tangly.bus.crm.CrmTags;
-import net.tangly.bus.crm.LegalEntity;
+import net.tangly.bus.core.BankConnection;
+import net.tangly.bus.invoices.Article;
+import net.tangly.bus.invoices.ArticleCode;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceItem;
-import net.tangly.bus.invoices.Product;
-import net.tangly.bus.invoices.ProductCode;
+import net.tangly.bus.invoices.InvoiceLegalEntity;
 import net.tangly.bus.invoices.Subtotal;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.invoices.ports.InvoiceAsciiDoc;
@@ -99,8 +97,8 @@ class InvoiceTest {
     }
 
     private Invoice newRegularInvoice() {
-        Product coaching = new Product("0001", "Agile coaching", "", ProductCode.work, new BigDecimal(1400), "day", VAT_REGULAR);
-        Product project = new Product("0002", "Technical project management", "", ProductCode.work, new BigDecimal("1400"), "day", VAT_REGULAR);
+        Article coaching = new Article("0001", "Agile coaching", "", ArticleCode.work, new BigDecimal(1400), "day", VAT_REGULAR);
+        Article project = new Article("0002", "Technical project management", "", ArticleCode.work, new BigDecimal("1400"), "day", VAT_REGULAR);
 
         Invoice invoice = newInvoice("2017-0001", "Coaching contract Planta 20XX-5946 und ARE-20XX-6048");
 
@@ -108,7 +106,7 @@ class InvoiceTest {
         invoice.add(new InvoiceItem(2, coaching, "Java architecture coaching project", new BigDecimal("1.5")));
         invoice.add(new Subtotal(3, "Subtotal Project Leading GEO 2017 83200 Planta 20XX-5946", List.of(invoice.getAt(1), invoice.getAt(2))));
 
-        invoice.add(new InvoiceItem(4, coaching, "OGD technical project management", new BigDecimal("2.25")));
+        invoice.add(new InvoiceItem(4, project, "OGD technical project management", new BigDecimal("2.25")));
         invoice.add(new Subtotal(5, "Subtotal Agile Coaching 3130 0 80000", List.of(invoice.getAt(4))));
 
         invoice.paymentConditions(PAYMENT_CONDITIONS_30_DAYS);
@@ -117,7 +115,7 @@ class InvoiceTest {
     }
 
     public static Invoice newTeachingInvoice() {
-        Product teaching = new Product("0011", "Agile training", "", ProductCode.work, new BigDecimal(2000), "day", BigDecimal.ZERO);
+        Article teaching = new Article("0011", "Agile training", "", ArticleCode.work, new BigDecimal(2000), "day", BigDecimal.ZERO);
         Invoice invoice = newInvoice("2017-0002", "Agile Training and Workshop");
         invoice.add(new InvoiceItem(1, teaching, "Scrum Agile Workshop", new BigDecimal("2")));
         invoice.paymentConditions(PAYMENT_CONDITIONS_30_DAYS);
@@ -126,9 +124,9 @@ class InvoiceTest {
     }
 
     public static Invoice newComplexInvoice() {
-        Product coaching = new Product("0001", "Agile coaching", "", ProductCode.work, new BigDecimal(1400), "day", VAT_REGULAR);
-        Product project = new Product("0002", "Technical project management", "", ProductCode.work, new BigDecimal("1400"), "day", VAT_REGULAR);
-        Product travelExpenses = new Product("9900", "Travel Expenses", "", ProductCode.expenses, BigDecimal.ONE, "CHF", BigDecimal.ZERO);
+        Article coaching = new Article("0001", "Agile coaching", "", ArticleCode.work, new BigDecimal(1400), "day", VAT_REGULAR);
+        Article project = new Article("0002", "Technical project management", "", ArticleCode.work, new BigDecimal("1400"), "day", VAT_REGULAR);
+        Article travelExpenses = new Article("9900", "Travel Expenses", "", ArticleCode.expenses, BigDecimal.ONE, "CHF", BigDecimal.ZERO);
 
         Invoice invoice = newInvoice("2017-0003", "Coaching contract Planta 20XX-5946 und ARE-20XX-6048");
 
@@ -136,7 +134,7 @@ class InvoiceTest {
         invoice.add(new InvoiceItem(2, coaching, "Java architecture coaching project", new BigDecimal("1.5")));
         invoice.add(new Subtotal(3, "Subtotal Leading GEO 2017 83200 Planta 20XX-5946", List.of(invoice.getAt(1), invoice.getAt(2))));
 
-        invoice.add(new InvoiceItem(4, coaching, "OGD technical project management", new BigDecimal("2.25")));
+        invoice.add(new InvoiceItem(4, project, "OGD technical project management", new BigDecimal("2.25")));
         invoice.add(new Subtotal(5, "Subtotal Agile Coaching 3130 0 80000", List.of(invoice.getAt(4))));
 
         invoice.add(new InvoiceItem(6, travelExpenses, "Travel Expenses Paris", new BigDecimal("1250")));
@@ -149,46 +147,35 @@ class InvoiceTest {
     }
 
     private static Invoice newInvoice(String id, String text) {
-        Contract contract = new Contract();
-        contract.id("TEST-CONTRACT-0000");
-        contract.sellee(sellee());
-        contract.seller(seller());
-        contract.sellee().address(CrmTags.Type.work).ifPresent(contract::address);
         Invoice invoice = new Invoice();
         invoice.id(id);
         invoice.name(invoice.id() + "-Invoice");
-        invoice.contract(contract);
+        invoice.contractId("TEST-CONTRACT-0000");
         invoice.invoicedDate(LocalDate.parse("2018-01-01"));
         invoice.dueDate(LocalDate.parse("2018-01-31"));
         invoice.invoicingEntity(seller());
-        invoice.invoicingAddress(invoice.invoicingEntity().address(CrmTags.Type.work).orElse(null));
+        invoice.invoicingAddress(sellerAddress());
         invoice.invoicingConnection(sellerConnection());
         invoice.invoicedEntity(sellee());
-        invoice.invoicedAddress(invoice.invoicedEntity().address(CrmTags.Type.work).orElse(null));
+        invoice.invoicedAddress(selleeAddress());
         invoice.text(text);
         return invoice;
     }
 
-    private static LegalEntity seller() {
-        LegalEntity seller = new LegalEntity();
-        seller.name("tangly llc");
-        seller.address(CrmTags.Type.work, new Address.Builder().street("Lorzenhof 27").postcode("6330").locality("Cham").region("ZG").country("CH").build());
-        seller.phoneNr(CrmTags.Type.work, "+41 79 778 8689");
-        seller.id("CHE-357-875.339");
-        seller.vatNr("CHE-357-875.339 MWST");
-        return seller;
+    private static InvoiceLegalEntity seller() {
+        return new InvoiceLegalEntity("CHE-357-875.339", "tangly llc", "CHE-357-875.339 MWST");
     }
 
-    private static LegalEntity sellee() {
-        LegalEntity sellee = new LegalEntity();
-        sellee.name("Flow AG");
-        sellee.address(CrmTags.Type.work,
-                new Address.Builder().extended("attn. John Doe").street("Bahnhofstrasse 1").postcode("6300").locality("Zug").region("ZG").country("CH")
-                        .build());
-        sellee.phoneNr(CrmTags.Type.work, "+41 41 228 4242");
-        sellee.id("CHE-123-456.789");
-        sellee.vatNr("CHE-123-456.789 MWST");
-        return sellee;
+    private static Address sellerAddress() {
+        return new Address.Builder().street("Lorzenhof 27").postcode("6330").locality("Cham").region("ZG").country("CH").build();
+    }
+
+    private static InvoiceLegalEntity sellee() {
+        return new InvoiceLegalEntity("CHE-123-456.789", "Flow AG", "CHE-123-456.789 MWST");
+    }
+
+    private static Address selleeAddress() {
+        return new Address.Builder().extended("attn. John Doe").street("Bahnhofstrasse 1").postcode("6300").locality("Zug").region("ZG").country("CH").build();
     }
 
     public static BankConnection sellerConnection() {

@@ -2,6 +2,7 @@
 title: "Agile Component Design"
 linkTitle: "Agile Component Design"
 date: 2020-04-17
+tags: ["agile", "design"]
 ---
 
 == Agile Component Design
@@ -73,7 +74,7 @@ Promote clean code in your agile team.
 Agile code is clean code.
 
 Do not fall to the fallacy to draw beautiful and useless UML diagram and write thick software architecture documents.
-The real architecture is hidden in the source code of your product.
+The real architecture is hidden in the source code of your article.
 You still should document all major design decisions.
 
 ==== Know Your Language

@@ -2,6 +2,7 @@
 title: "Java 10 aka 18.3 Changes"
 linkTitle: "Java 10"
 date: 2018-03-09
+tags: ["java"]
 ---
 
 == Java 10 aka 18.3 Changes

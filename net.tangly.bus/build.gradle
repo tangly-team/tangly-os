@@ -32,6 +32,8 @@ sourceSets {
 }
 
 dependencies {
+    implementation project(':net.tangly.commons')
+
     implementation 'commons-codec:commons-codec:1.15'
     implementation 'commons-io:commons-io:2.8.0'
     implementation "org.hsqldb:hsqldb:$hsqldbVersion"

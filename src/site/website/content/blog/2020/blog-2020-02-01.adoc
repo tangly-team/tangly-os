@@ -2,6 +2,7 @@
 title: "How Agile Collaborators Learn"
 linkTitle: "How Collaborators Learn"
 date: 2020-02-29
+tags: ["agile"]
 ---
 
 == How Agile Collaborators Learn
@@ -14,7 +15,7 @@ date: 2020-02-29
 image::2020-02-01-head.jpg[720, 480, role=left]
 Most products are developed by a team, and these achievements are the fruit of teamwork.
 
-Software product development is now agile, and most often uses the https://scrumguides.org/scrum-guide.html[Scrum] approach.
+Software article development is now agile, and most often uses the https://scrumguides.org/scrum-guide.html[Scrum] approach.
 
 Just putting a bunch of people together in the same open office will not produce a high performance agile team.
 Quite a few companies find that out the hard way.
@@ -65,8 +66,8 @@ See our post about link:../../2018/pragmatic-craftsmanship-professional-software
 
 Establish a culture to use current versions of programming languages, tools and libraries.
 
-On a previous outcome, we had planned a coding dojo ritual once every two weeks, during which we shared our practices with some perspective over the outcome.
-It was an occasion to experiment with new technologies, assess their match for the outcome needs, share new coding techniques, and update our standards together.
+On a previous product, we had planned a coding dojo ritual once every two weeks, during which we shared our practices with some perspective over the product.
+It was an occasion to experiment with new technologies, assess their match for the product needs, share new coding techniques, and update our standards together.
 
 === Formal Training
 

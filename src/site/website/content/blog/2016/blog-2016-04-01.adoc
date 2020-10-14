@@ -2,6 +2,7 @@
 title: "Books for Persons interested in Agile Approaches"
 linkTitle: "Agile Books"
 date: 2016-04-21
+tags: ["agile"]
 ---
 
 == Books for Persons interested in Agile Approaches
@@ -41,7 +42,7 @@ To open the discussion and bring the discussion back to objective arguments I of
  The work of one of the Scrum founders how a company can adopt Scrum.
  You should read the standard works of Scrum to understand the concepts.
 * Agile Project Management with Scrum, Ken Schwaber, Microsoft Press 2003
- The work of one of the Scrum founders how Scrum influence outcome organization and management.
+ The work of one of the Scrum founders how Scrum influence product organization and management.
  You should read the standard works of Scrum to understand the concepts.
 
 === Brown-Field Projects
@@ -82,7 +83,7 @@ To open the discussion and bring the discussion back to objective arguments I of
 * Peopleware: Productive Projects and Teams, Tom DeMarco & Timothy Lister, Dorset House 1987
  How to growth teams and lead successful projects
 * The Mythical Man-Month 2nd Edition, Frederick P. Brooks, Addison-Wesley 1995
- The first version was published in 1975. The rules postulated by Brooks are still actual. Sad is that a lot of outcome leaders have no clue of these rules.
+ The first version was published in 1975. The rules postulated by Brooks are still actual. Sad is that a lot of product leaders have no clue of these rules.
 * Becoming a Technical Leader: An organic Problem-Solving Approach, Gerald M. Weingartner, Dorset House 1986
  How a gifted technical engineer can become a manager.
 * Slack: Getting past burnout, busywork, and the myth of total efficiency, Tom DeMarco, Broadway Books 2001

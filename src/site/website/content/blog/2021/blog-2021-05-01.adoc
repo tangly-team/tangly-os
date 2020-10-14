@@ -2,6 +2,7 @@
 title: "Talk Money"
 linkTitle: "Talk Money"
 date: 2021-03-01
+tags: ["agile"]
 ---
 
 == Talk Money

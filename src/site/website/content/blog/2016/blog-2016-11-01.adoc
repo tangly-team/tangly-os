@@ -2,6 +2,7 @@
 title: "What is an Agile Company?"
 linkTitle: "Agile Company"
 date: 2016-11-13
+tags: ["agile", "organization"]
 ---
 
 == What is an Agile Company?
@@ -20,7 +21,7 @@ One way to approach this theme is to implement concepts of the above mentioned a
 === Scrum Pillars
 
 Transparency::
- you trust all collaborators to provide their best when working on the product.
+ you trust all collaborators to provide their best when working on the article.
  They need full access to all relevant information: quality, progress, budget, people and financial data.
  They use the data to select the best alternatives to reach the company’s goals
 Inspection::

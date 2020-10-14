@@ -30,7 +30,7 @@ The current head of master supports building and running the Vaadin application 
     mvn install <2>
     mvn jetty:run <3>
 ----
-<1> to initialize once the whole project and the application to generate.
+<1> to initialize once the whole product and the application to generate.
 <2> to compile the application
 <3> to run the application in the embedded jetty application container - the application is available under localhost:8080
 

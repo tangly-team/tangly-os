@@ -25,9 +25,10 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.material.Material;
+import net.tangly.bus.crm.RealmCrm;
+import net.tangly.bus.invoices.RealmInvoices;
 import net.tangly.bus.ledger.Ledger;
 import net.tangly.commons.bus.ui.TagTypesView;
-import net.tangly.commons.crm.ui.ActivitiesView;
 import net.tangly.commons.crm.ui.AnalyticsCrmView;
 import net.tangly.commons.crm.ui.ContractsView;
 import net.tangly.commons.crm.ui.EmployeesView;
@@ -35,15 +36,15 @@ import net.tangly.commons.crm.ui.InteractionsView;
 import net.tangly.commons.crm.ui.LegalEntitiesView;
 import net.tangly.commons.crm.ui.NaturalEntitiesView;
 import net.tangly.commons.crm.ui.SubjectsView;
+import net.tangly.commons.invoices.ui.ArticlesView;
 import net.tangly.commons.invoices.ui.InvoicesView;
-import net.tangly.commons.invoices.ui.ProductsView;
-import net.tangly.commons.ledger.ui.AccountsView;
 import net.tangly.commons.ledger.ui.LedgerView;
-import net.tangly.commons.ledger.ui.TransactionsView;
-import net.tangly.crm.ports.Crm;
-import net.tangly.crm.ports.CrmWorkflows;
+import net.tangly.crm.ports.CrmEntities;
+import net.tangly.crm.ports.CrmHdl;
+import net.tangly.invoices.ports.InvoicesEntities;
+import net.tangly.invoices.ports.InvoicesHdl;
 import net.tangly.ledger.ports.LedgerBusinessLogic;
-import net.tangly.ledger.ports.LedgerWorkflows;
+import net.tangly.ledger.ports.LedgerHdl;
 import org.jetbrains.annotations.NotNull;
 
 @Theme(value = Material.class)
@@ -52,18 +53,18 @@ import org.jetbrains.annotations.NotNull;
 @Route("")
 public class MainView extends VerticalLayout {
     private Component currentView;
-    private final Crm crm;
+    private final RealmCrm realmCrm;
+    private final RealmInvoices realmInvoices;
     private final LedgerBusinessLogic ledgerLogic;
     private final NaturalEntitiesView naturalEntitiesView;
     private final LegalEntitiesView legalEntitiesView;
     private final EmployeesView employeesView;
     private final ContractsView contractsView;
 
-    private final ProductsView productsView;
+    private final ArticlesView articlesView;
     private final InvoicesView invoicesView;
 
     private final InteractionsView interactionsView;
-    private final ActivitiesView activitiesView;
     private final SubjectsView subjectsView;
 
     private final LedgerView ledgerView;
@@ -73,26 +74,28 @@ public class MainView extends VerticalLayout {
     private final TagTypesView tagTypesView;
 
     public MainView() {
-        crm = new Crm();
-        CrmWorkflows crmWorkflows = new CrmWorkflows(crm);
-        crmWorkflows.importCrmEntities(Paths.get("/Users/Shared/tangly/"));
+        realmCrm = new CrmEntities();
+        realmInvoices = new InvoicesEntities();
 
-        LedgerWorkflows ledgerWorkflows = new LedgerWorkflows(new Ledger());
-        ledgerWorkflows.importLedger(Paths.get("/Users/Shared/tangly/"));
-        ledgerLogic = new LedgerBusinessLogic(ledgerWorkflows.ledger());
+        CrmHdl crmHdl = new CrmHdl(realmCrm);
+        crmHdl.importEntities(Paths.get("/Users/Shared/tangly/crm"));
+        InvoicesHdl invoicesHdl = new InvoicesHdl(realmInvoices);
+        invoicesHdl.importEntities(Paths.get("/Users/Shared/tangly/invoices/"));
+        LedgerHdl ledgerHdl = new LedgerHdl(new Ledger());
+        ledgerHdl.importLedger(Paths.get("/Users/Shared/tangly/ledger"));
+        ledgerLogic = new LedgerBusinessLogic(ledgerHdl.ledger());
 
-        naturalEntitiesView = new NaturalEntitiesView(crm, Crud.Mode.EDITABLE);
-        legalEntitiesView = new LegalEntitiesView(crm, Crud.Mode.EDITABLE);
-        employeesView = new EmployeesView(crm, Crud.Mode.EDITABLE);
-        contractsView = new ContractsView(crm, Crud.Mode.EDITABLE);
-        productsView = new ProductsView(crm.products(), Crud.Mode.EDITABLE);
-        invoicesView = new InvoicesView(crm.invoices(), Crud.Mode.EDITABLE);
-        interactionsView = new InteractionsView(crm, Crud.Mode.EDITABLE);
-        activitiesView = new ActivitiesView(crm, Crud.Mode.EDITABLE);
-        subjectsView = new SubjectsView(crm, Crud.Mode.EDITABLE);
+        naturalEntitiesView = new NaturalEntitiesView(realmCrm, Crud.Mode.EDITABLE);
+        legalEntitiesView = new LegalEntitiesView(realmCrm, Crud.Mode.EDITABLE);
+        employeesView = new EmployeesView(realmCrm, Crud.Mode.EDITABLE);
+        contractsView = new ContractsView(realmCrm, realmInvoices, Crud.Mode.EDITABLE);
+        articlesView = new ArticlesView(realmInvoices.articles(), Crud.Mode.EDITABLE);
+        invoicesView = new InvoicesView(realmInvoices.invoices(), Crud.Mode.EDITABLE);
+        interactionsView = new InteractionsView(realmCrm, Crud.Mode.EDITABLE);
+        subjectsView = new SubjectsView(realmCrm, Crud.Mode.EDITABLE);
         ledgerView = new LedgerView(ledgerLogic, Crud.Mode.EDITABLE);
-        analyticsCrmView = new AnalyticsCrmView(crm, ledgerLogic.ledger());
-        tagTypesView = new TagTypesView(crm.tagTypeRegistry());
+        analyticsCrmView = new AnalyticsCrmView(realmCrm, realmInvoices, ledgerLogic.ledger());
+        tagTypesView = new TagTypesView(realmCrm.tagTypeRegistry());
 
         setSizeFull();
         currentView = naturalEntitiesView;
@@ -115,7 +118,6 @@ public class MainView extends VerticalLayout {
         crmSubMenu.addItem("Contracts", e -> select(contractsView));
         crmSubMenu.addItem("Employees", e -> select(employeesView));
         crmSubMenu.addItem("Interactions", e -> select(interactionsView));
-        crmSubMenu.addItem("Activities", e -> select(activitiesView));
 
         MenuItem activities = menuBar.addItem("Works");
         SubMenu activitiesSubMenu = activities.getSubMenu();
@@ -123,7 +125,7 @@ public class MainView extends VerticalLayout {
 
         MenuItem invoices = menuBar.addItem("Invoices");
         SubMenu invoicesSubMenu = invoices.getSubMenu();
-        invoicesSubMenu.addItem("Products", e -> select(productsView));
+        invoicesSubMenu.addItem("Products", e -> select(articlesView));
         invoicesSubMenu.addItem("Invoices", e -> select(invoicesView));
 
         MenuItem ledger = menuBar.addItem("Financials");
@@ -147,11 +149,11 @@ public class MainView extends VerticalLayout {
 
     private void countCrmTags() {
         tagTypesView.clearCounts();
-        tagTypesView.addCounts(crm.naturalEntities().items());
-        tagTypesView.addCounts(crm.legalEntities().items());
-        tagTypesView.addCounts(crm.employees().items());
-        tagTypesView.addCounts(crm.contracts().items());
-        tagTypesView.addCounts(crm.subjects().items());
+        tagTypesView.addCounts(realmCrm.naturalEntities().items());
+        tagTypesView.addCounts(realmCrm.legalEntities().items());
+        tagTypesView.addCounts(realmCrm.employees().items());
+        tagTypesView.addCounts(realmCrm.contracts().items());
+        tagTypesView.addCounts(realmCrm.subjects().items());
         tagTypesView.refreshData();
     }
 
@@ -162,14 +164,14 @@ public class MainView extends VerticalLayout {
     }
 
     private void importCrmData() {
-        CrmWorkflows crmWorkflows = new CrmWorkflows(crm);
-        crmWorkflows.importCrmEntities(Paths.get("/Users/Shared/tangly"));
+        CrmHdl crmHdl = new CrmHdl(realmCrm);
+        crmHdl.importEntities(Paths.get("/Users/Shared/tangly"));
         refreshViews();
     }
 
     private void exportCrmData() {
-        CrmWorkflows crmWorkflows = new CrmWorkflows(crm);
-        crmWorkflows.exportCrmEntities(Paths.get("/Users/Shared/tmp"));
+        CrmHdl crmHdl = new CrmHdl(realmCrm);
+        crmHdl.exportEntities(Paths.get("/Users/Shared/tmp"));
     }
 
     private void refreshViews() {
@@ -177,7 +179,7 @@ public class MainView extends VerticalLayout {
         legalEntitiesView.refreshData();
         employeesView.refreshData();
         contractsView.refreshData();
-        productsView.refreshData();
+        articlesView.refreshData();
         subjectsView.refreshData();
     }
 }

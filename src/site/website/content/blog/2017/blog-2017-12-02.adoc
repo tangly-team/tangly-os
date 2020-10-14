@@ -2,6 +2,7 @@
 title: "Why Use Current Software Components?"
 linkTitle: "Current Components"
 date: 2017-12-22
+tags: ["design"]
 ---
 
 == Why Use Current Software Components?
@@ -12,21 +13,21 @@ date: 2017-12-22
 :copyright: CC-BY-SA 4.0
 
 image::2017-12-02-head.jpg[720, 480, role=left]
-Often teams discuss if their product should upgrade to the current version of used components, development tools and programming languages.
+Often teams discuss if their article should upgrade to the current version of used components, development tools and programming languages.
 
 I have a strong opinion about upgrades.
-You should always use the current version of all components included in your product.
+You should always use the current version of all components included in your article.
 The only discussion is the timely *when* and never the *if*.
-Be realist, if your product is successful, you have to upgrade before the components are obsolete.
-Otherwise your product will become a geriatric solution.
+Be realist, if your article is successful, you have to upgrade before the components are obsolete.
+Otherwise your article will become a geriatric solution.
 
 Below I show you arguments why you should always update all components in a timely fashion.
 
 === Security and Governance
 
-Social responsibility and liability considerations require your product to be immune to published attacks.
+Social responsibility and liability considerations require your article to be immune to published attacks.
 Your company shall provide reasonable protection to all your customers.
-Therefore, you always must include security patches in your product in a timely manner.
+Therefore, you always must include security patches in your article in a timely manner.
 Other approaches are deeply unprofessional and unethical.
 In quite a few countries you are liable if you do not update your software to avoid known security attacks.
 
@@ -37,7 +38,7 @@ Java 8 support will stop end of September 2018, older versions are no more publi
 If for some reasons you are using an older commercially but no more publicly supported JDK, you must sign a support contract with Oracle company and pay for it.
 You cannot use deprecated JDK versions because nobody provides security fixes on these versions - e.g. Java 6 commercial support ended in December 2017 - .
 
-If you include a deprecated JDK / JVM in your product, you willingly endanger your users and shall be liable for their losses.
+If you include a deprecated JDK / JVM in your article, you willingly endanger your users and shall be liable for their losses.
 
 === Upgrades and Genuine Improvements
 

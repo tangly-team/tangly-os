@@ -2,6 +2,7 @@
 title: "Why I use a MacBookPro and OS X"
 linkTitle: "MacBook Pro Love"
 date: 2016-03-16
+tags: ["organization"]
 ---
 
 == Why I use a MacBookPro and OS X
@@ -46,10 +47,10 @@ The tools I use to perform administrative work are
 * LibreOffice,
 * Google Business for team work in the cloud using collaborative tools,
 * Apple Mail Client with GPG plugin for PGP and S/MIME secure email,
-* A local Swiss product https://www.banana.ch[Banana] for accounting and VAT reports for the federal government.
+* A local Swiss article https://www.banana.ch[Banana] for accounting and VAT reports for the federal government.
  I bought it as soon as the company stopped requesting higher prices for OS X than for the other platforms.
 
 LibreOffice completely replaced Microsoft Office suite.
-I stopped using OpenOffice after the strange behavior of Oracle with the product.
+I stopped using OpenOffice after the strange behavior of Oracle with the article.
 
 I never really regretted leaving Linux or Ubuntu behind me.

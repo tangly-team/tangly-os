@@ -10,7 +10,10 @@ contentDir = "content"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 enableMissingTranslationPlaceholders = true
-disableKinds = ["taxonomy", "taxonomyTerm"]
+
+# disableKinds = ["taxonomy", "taxonomyTerm"]
+[taxonomies]
+tag = "tags"
 
 # Highlighting config
 pygmentsCodeFences = true
@@ -110,7 +113,7 @@ time_format_blog = "2006-01-02"
 time_format_default = "2006-01-02"
 rss_sections = ["blog"]
 
-# images = ["images/outcome-illustration.png"]
+# images = ["images/product-illustration.png"]
 
 # Menu title if your navbar has a versions selector to access old versions of your site.
 # This menu appears only if you have at least one [params.versions] set.
@@ -132,7 +135,7 @@ url_latest_version = "https://example.com"
 
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
 # github_repo = "https://bitbucket.org/tangly-team/tangly-os/issues"
-# An optional link to a related outcome repo. For example, the sibling repository where your product code lives.
+# An optional link to a related product repo. For example, the sibling repository where your article code lives.
 # github_project_repo = "https://bitbucket.org/tangly-team/tangly-os.git"
 # Specify a value here if your content directory is not in your repo's root directory
 # github_subdir = ""

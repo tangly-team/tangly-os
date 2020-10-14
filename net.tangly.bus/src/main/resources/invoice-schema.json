@@ -172,6 +172,9 @@
     "currency": {
       "type": "string"
     },
+    "locale" : {
+      "type" : "string"
+    },
     "text": {
       "type": "string"
     },

@@ -2,6 +2,7 @@
 title: "Minimizing Undone Work when Working with Regulatory Departments"
 linkTitle: "Minimize Undone Work"
 date: 2016-01-21
+tags: ["agile"]
 ---
 
 == Minimizing Undone Work when Working with Regulatory Departments
@@ -12,7 +13,7 @@ date: 2016-01-21
 :copyright: CC-BY-SA 4.0
 
 image::2016-01-01-head.jpg[720, 480, role=left]
-The Scrum and agile mantra is to have a "ready to ship" product each time a sprint is completed.
+The Scrum and agile mantra is to have a "ready to ship" article each time a sprint is completed.
 You must avoid any incomplete activities at any price.
 
 Incomplete activities are also called Undone Work; they are technical debts in your software, hindering its delivery to customers.
@@ -21,7 +22,7 @@ Regulatory and traditional quality insurance departments requests all kinds of d
 They want insurance that their view of quality is fulfilled.
 
 Scrum sees quality similar to the lean production approach.
-Quality is build into the product and you do not need any documents proving you have fulfilled this goal.
+Quality is build into the article and you do not need any documents proving you have fulfilled this goal.
 Your sole goal is to optimize the process to produce best products, not to repair them after production.
 
 And it is the sole responsibility of the Scrum team to guaranty quality.

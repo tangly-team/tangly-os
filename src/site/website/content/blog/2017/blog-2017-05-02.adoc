@@ -2,6 +2,7 @@
 title: "Git Local Repositories for the Impatient"
 linkTitle: "Git Local Repositories"
 date: 2017-05-17
+tags: ["design"]
 ---
 
 == Git Local Repositories for the Impatient
@@ -21,7 +22,7 @@ The actual industrial standard is git, a distributed version control system - ht
 Install git on your development machine.
 If you are using IntelliJ IDEA configure git in the IDE through the preferences pane.
 
-To put your outcome under git version management, go to the root of the outcome and do
+To put your product under git version management, go to the root of the product and do
 
 [code]
 ----
@@ -36,9 +37,9 @@ git add [filename]
 git add *
 ----
 
-You can perform these operations to add a outcome to a local Git repository directly in IntelliJ IDEA as follow
+You can perform these operations to add a product to a local Git repository directly in IntelliJ IDEA as follow
 
-. Open the outcome you want to store in a repository.
+. Open the product you want to store in a repository.
 . On the main menu, choose VCS | Import into Version Control | Create Git Repository.
 . In the dialog that opens, specify the directory where you want to create a new Git repository.
 . Put the required files under Git version control.
@@ -71,7 +72,7 @@ Use Git as an history of all successful  changes you implement, and simply rollb
 
 === What is Project Status?
 
-To find out what the status of your outcome is, simply
+To find out what the status of your product is, simply
 
 [code]
 ----
@@ -80,7 +81,7 @@ git status
 
 The same information is available in IntelliJ IDEA under
 
-. Open the required outcome
+. Open the required product
 . On the main menu, choose VCS | Refresh File Status
 . Switch to the Version Control window and open the Local Changes tab.
 

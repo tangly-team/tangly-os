@@ -13,40 +13,37 @@
 
 CREATE SCHEMA tangly;
 
-CREATE TABLE tangly.entityCode
-(
+CREATE TABLE tangly.entityCode (
     id      INT PRIMARY KEY,
-    code    VARCHAR(64) NOT NULL,
+    code    VARCHAR(64) NOT NULL UNIQUE,
     enabled BOOLEAN
-);
+                               );
 
-CREATE TABLE tangly.comments
-(
-    oid     BIGINT PRIMARY KEY,
-    created DATETIME    NOT NULL,
-    author  VARCHAR(64) NOT NULL,
-    text    CLOB,
-    tags    CLOB,
-    ownedBy BIGINT      NOT NULL
-);
+CREATE TABLE tangly.comments (
+    oid       BIGINT PRIMARY KEY,
+    created   DATETIME    NOT NULL,
+    author    VARCHAR(64) NOT NULL,
+    text      CLOB,
+    tags      CLOB,
+    ownerFoid BIGINT      NOT NULL
+                             );
 
-CREATE TABLE tangly.entities
-(
-    oid         BIGINT PRIMARY KEY,
-    id          VARCHAR(64),
-    name        VARCHAR(64),
-    fromDate    DATE,
-    toDate      DATE,
-    text        CLOB,
-    tags        CLOB,
-    code        INT,
-    owner       BIGINT,
-    ownedBy     BIGINT,
+CREATE TABLE tangly.entities (
+    oid        BIGINT PRIMARY KEY,
+    id         VARCHAR(64) UNIQUE,
+    name       VARCHAR(64),
+    fromDate   DATE,
+    toDate     DATE,
+    text       CLOB,
+    tags       CLOB,
+    code       INT,
+    owner      BIGINT,
+    ownedBy    BIGINT,
     jsonValues CLOB,
     FOREIGN KEY (code) REFERENCES tangly.entityCode (id),
     FOREIGN KEY (owner) REFERENCES tangly.entities (oid),
     FOREIGN KEY (ownedBy) REFERENCES tangly.entities (oid)
-);
+                             );
 
 INSERT INTO tangly.entityCode (id, code, enabled)
 VALUES (0, 'CODE_TEST_0', TRUE);

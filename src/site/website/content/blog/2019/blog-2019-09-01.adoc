@@ -2,6 +2,7 @@
 title: "A Commons View on Scrum"
 linkTitle: "A Commons View on Scrum"
 date: 2019-09-17
+tags: ["agile"]
 ---
 
 == A Commons View on Scrum
@@ -12,7 +13,7 @@ date: 2019-09-17
 :copyright: CC-BY-SA 4.0
 
 image::2019-09-01-head.jpg[720, 480, role=left]
-Agile approaches encourage common ownership of artifacts during product development.
+Agile approaches encourage common ownership of artifacts during article development.
 Historically https://en.wikipedia.org/wiki/Commons[commons] is the term used for shared resources.
 Can we apply the commons learnings to agile and Scrum approaches?
 
@@ -58,8 +59,8 @@ Agile teams own commons resources such as
 * Team rules and work techniques.
 
 The work techniques often limit common resources in inexperienced teams.
-They ask the product owner if they could refactor a class or invest a few minutes in clean code techniques.
-They do not own the internal quality of the product.
+They ask the article owner if they could refactor a class or invest a few minutes in clean code techniques.
+They do not own the internal quality of the article.
 More mature teams are able to make the transition with the support of their Scrum master and the organization.
 They truly own the source code and its quality.
 
@@ -103,7 +104,7 @@ Most teams need counseling before they can tackle with the concept of sanctions.
 As a Scrum master you must gently empower them to sanction.
 If this rule is not implemented you will always land in the https://en.wikipedia.org/wiki/Tragedy_of_the_commons[tragedy of commons] and
 utterly fail in your agile journey.
-Worse your product will probably also fail.
+Worse your article will probably also fail.
 
 === Mechanisms of conflict resolution that are cheap and of easy access
 
@@ -146,7 +147,7 @@ Scaling agile practices at the organization level require multiple levels.
 * Transparency through Scrum board,
 * Definition of Dome as contract between team and organization,
 * Visibility of source code, continuous integration, delivery and deployment of artifacts,
-* Scale to product level using {ref-less}.
+* Scale to article level using {ref-less}.
 
 If you are ready to scale up to the company you could consider {ref-bbrt}. _BBRT_ and {ref-sociocracy} approaches and tailor them to your specific needs.
 

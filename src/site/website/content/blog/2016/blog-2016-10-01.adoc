@@ -2,6 +2,7 @@
 title: "Agile Trends Switzerland 2013"
 linkTitle: "Swiss Agile Trends 2013"
 date: 2016-03-12
+tags: ["agile"]
 ---
 
 == Agile Trends Switzerland 2013
@@ -61,7 +62,7 @@ The Scrum Master serves the organization in several ways, including:
 
 * *Leading* and *coaching* the organization in its Scrum adoption;
 * *Planning* Scrum implementations within the organization;
-* Helping employees and stakeholders understand and enact Scrum and empirical product development;
+* Helping employees and stakeholders understand and enact Scrum and empirical article development;
 * Causing change that increases the productivity of the Scrum Team; and,
 * *Working* with other Scrum Masters to increase the effectiveness of the application of Scrum in the organization.
 ____
@@ -74,13 +75,13 @@ He indeed needs senior management support, but the Scrum Master daily job is to 
 Computerworld Switzerland has published an article about the main reasons why projects are late or cancelled in Switzerland in the April 2013 _CIO Agenda_ edition.
 The study uses data from Computerworld and Experteer. As an excerpt I gave you the four major identified failure reasons.
 
-. Changes during the outcome (62% Computer, 48% Experteer)
- _Agile and Scrum welcomes changes in the outcome. It is one of the four mantra of the Agile Manifesto. All agile processes are optimised to support changes._
-. Unclear outcome definition form the business stakeholders (50% Computer, 43% Experteer)
- _Scrum requests a clearly stated vision, roadmap and story map of the outcome._
- _The Scrum board is a radiator to communicate the outcome vision, goals, and motivations to all interested parties._
-. Insufficient outcome management and controlling (40% Computer, 4847 Experteer)
- _Scrum team, product owner, and Scrum master have clear responsibilities for outcome management._
+. Changes during the product (62% Computer, 48% Experteer)
+ _Agile and Scrum welcomes changes in the product. It is one of the four mantra of the Agile Manifesto. All agile processes are optimised to support changes._
+. Unclear product definition form the business stakeholders (50% Computer, 43% Experteer)
+ _Scrum requests a clearly stated vision, roadmap and story map of the product._
+ _The Scrum board is a radiator to communicate the product vision, goals, and motivations to all interested parties._
+. Insufficient product management and controlling (40% Computer, 4847 Experteer)
+ _Scrum team, article owner, and Scrum master have clear responsibilities for product management._
  _At the end of each sprint we have an objective and explicit control point._
 . Insufficient communication between involved persons (36% Computer, 45% Experteer)
  _Scrum framework enforces clear, transparent and regular communication within the team and with all stakeholders._

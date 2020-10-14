@@ -16,14 +16,13 @@ package net.tangly.commons.crm.ui;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import com.vaadin.flow.data.renderer.ComponentRenderer;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.LegalEntity;
+import net.tangly.bus.crm.RealmCrm;
 import net.tangly.bus.providers.ViewProvider;
 import net.tangly.commons.vaadin.CommentsView;
 import net.tangly.commons.vaadin.EntityField;
@@ -32,12 +31,11 @@ import net.tangly.commons.vaadin.One2ManyView;
 import net.tangly.commons.vaadin.TabsComponent;
 import net.tangly.commons.vaadin.TagsView;
 import net.tangly.commons.vaadin.VaadinUtils;
-import net.tangly.crm.ports.Crm;
 import org.jetbrains.annotations.NotNull;
 
 public class LegalEntitiesView extends CrmEntitiesView<LegalEntity> {
-    public LegalEntitiesView(@NotNull Crm crm, @NotNull Mode mode) {
-        super(crm, LegalEntity.class, mode, crm.legalEntities());
+    public LegalEntitiesView(@NotNull RealmCrm realmCrm, @NotNull Mode mode) {
+        super(realmCrm, LegalEntity.class, mode, realmCrm.legalEntities());
         initialize();
     }
 
@@ -70,9 +68,9 @@ public class LegalEntitiesView extends CrmEntitiesView<LegalEntity> {
         LegalEntity workedOn = (entity != null) ? entity : create();
         tabs.add(new Tab("Overview"), createOverallView(mode, workedOn));
         tabs.add(new Tab("Comments"), new CommentsView(mode, workedOn));
-        tabs.add(new Tab("Tags"), new TagsView(mode, workedOn, crm().tagTypeRegistry()));
+        tabs.add(new Tab("Tags"), new TagsView(mode, workedOn, realm().tagTypeRegistry()));
         One2ManyView<Employee> employees = new One2ManyView<>(Employee.class, mode, LegalEntitiesView::defineOne2ManyEmployees,
-                ViewProvider.of(crm().employees(), o -> entity.oid() == o.organization().oid()), new EmployeesView(crm(), mode));
+                ViewProvider.of(realm().employees(), o -> entity.oid() == o.organization().oid()), new EmployeesView(realm(), mode));
         tabs.add(new Tab("Employees"), employees);
     }
 

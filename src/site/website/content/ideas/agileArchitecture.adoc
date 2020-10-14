@@ -10,7 +10,7 @@ weight: 30
 :revnumber: v0.1 
 :revdate: 2020-05-31
 :homepage: https://www.tangly.net/
-:description: An introduction to software architecture in agile product development
+:description: An introduction to software architecture in agile article development
 :keywords: agile, architecture, Scrum, LeSS
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
@@ -21,10 +21,10 @@ weight: 30
 
 You are applying successfully the agile and lean approach to your software products development.
 Your teams use https://www.scrumguides.org/scrum-guide.html[Scrum] or https://en.wikipedia.org/wiki/Kanban_(development)[Kanban] to deliver running software at least every two weeks.
-The product launch is a tremendeous success.
+The article launch is a tremendeous success.
 You will likely sell the solution for the next ten years.
 
-How shall you define and nurture the software architecture of your product and insure a long living and high quality solution?
+How shall you define and nurture the software architecture of your article and insure a long living and high quality solution?
 The experts tell you the design is emergent, what does it mean?
 
 [quote,Anonymous]
@@ -35,13 +35,13 @@ ____
 === LeSS Architecture Observations
 
 The _Large-Scaled Scrum_ https://less.works[LeSS] authors have written quite a few interesting statements about software design and architecture.
-Their opinionated observations are true for any software product.
-It is irrelevant if the product was developed using agile approaches or traditional older ones.
+Their opinionated observations are true for any software article.
+It is irrelevant if the article was developed using agile approaches or traditional older ones.
 
 . The sum of all source code is the *true* design blueprint or software architecture,
-. The real software architecture evolves (better or worse) every day of the product, as people are *programming*,
+. The real software architecture evolves (better or worse) every day of the article, as people are *programming*,
 . The real living architecture needs to be grown every day through acts of programming by *master programmers*,
-. A software architect who is not in touch with the evolving source code of the product is out of touch with reality,
+. A software architect who is not in touch with the evolving source code of the article is out of touch with reality,
 . *Every programmer is some kind of architect* — whether wanted or not.
 Every act of programming is some kind of architectural act — good or bad, small or large, intended or not.
 
@@ -137,7 +137,7 @@ Your development team members are
 * Practice https://en.wikipedia.org/wiki/Test-driven_development[TDD], https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD], clean code, refactoring,
 * Embrace continuous integration _CI_, continuous delivery _CD_, continuous development _CD_,
 * Automate everything and and establish DevOps,
-** _https://www.jenkins.io/[Jenkins], https://bitbucket.org/product/features/pipelines[bitbucket pipeline]_
+** _https://www.jenkins.io/[Jenkins], https://bitbucket.org/article/features/pipelines[bitbucket pipeline]_
 * Study source code from open source projects to learn better ways,
 * Know https://en.wikipedia.org/wiki/SMART_criteria[SMART], https://en.wikipedia.org/wiki/INVEST_(mnemonic)[INVEST], https://de.wikipedia.org/wiki/Solid_(Software)[SOLID], https://en.wikipedia.org/wiki/KISS_principle[KISS], https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI],
 * hold weekly design workshops with _huge_ whiteboards,
@@ -152,12 +152,12 @@ Smart money goes in training your collaborators.
 
 == Agile Code is Clean Code
 
-You are applying the agile and lean approach to your software product development.
+You are applying the agile and lean approach to your software article development.
 Your teams use Scrum or Kanban to deliver running software at least every two weeks.
 
 To create an agile architecture you must write worthy agile code.
 And agile code is always *clean code*.
-Never compromise on your key strategic asset, the source code of your product.
+Never compromise on your key strategic asset, the source code of your article.
 Your source code and your data are strategic advantages for your company.
 Start early writing clean code, do it continuously and soon your code will be clean, legible and free of defects.
 
@@ -168,7 +168,7 @@ Having a huge class with thousands of lines of code plainly demonstrate that you
 Such monsters are not born over a night coding session or a weekend hack session.
 It takes time and unwavering incompetence to create such maintenance nightmares.
 
-And as long as your product contains such code monsters it is worthless to pretend having a nice and thought through architecture.
+And as long as your article contains such code monsters it is worthless to pretend having a nice and thought through architecture.
 Team discipline and early warning systems are the key to avoid such blunders and kill the monster in the egg.
 
 === Clean Code and Refactoring
@@ -240,7 +240,7 @@ The better way is acceptance test driven development ATDD.
 For each feature you need acceptance criteria; this approach is also called specification by example.
 
 For each acceptance criteria write an acceptance test which is executed each time the application is updated in the continuous delivery pipeline.
-Therefore, the acceptance tests are the living documentation of the behavior of your product.
+Therefore, the acceptance tests are the living documentation of the behavior of your article.
 
 [quote,Robert C. Martin,The Clean Coder: A Code of Conduct for Professional Programmers]
 ____
@@ -250,7 +250,7 @@ ____
 To implement this approach you need
 
 * Acceptance criteria formulated for each functionality.
-It implies https://en.wikipedia.org/wiki/Specification_by_example[specifications by example] - you need to train your business analysts and product owners,
+It implies https://en.wikipedia.org/wiki/Specification_by_example[specifications by example] - you need to train your business analysts and article owners,
 * Cucumber for Java (or equivalent tools) - to write acceptance tests,
 * Mock all external systems and the database - to have fast build and test time and avoid external dependencies,
 * A continuous build and delivery pipeline to automatically run your acceptance validation tests upon each application change,
@@ -281,7 +281,7 @@ Exercising new approaches enforces culture change and implicit modify the organi
 * Pair Programming - is a training on the job and crowd wisdom approach to steadily improve knowledge and quality.
 *TDD and ATDD - are safety net to guaranty quality attributes in your source code\.
 * DevOps starting with git, docker, continuous integration, delivery and deployment - to speed up development and eliminate tedious manual errors.
-* Lack of accountability equates to lack of trust - your teams are accountable for the quality of your product and you should trust them.
+* Lack of accountability equates to lack of trust - your teams are accountable for the quality of your article and you should trust them.
 
 Culture change is often necessary.
 Autonomy and accountability are harsh mistresses.
@@ -331,10 +331,10 @@ The code is not always reviewed immediately after the commit but in most cases i
 
 == Agile Architecture within Scrum
 
-You are applying the agile, lean approach to your software product development.
+You are applying the agile, lean approach to your software article development.
 Your teams use Scrum or Kanban to deliver running software every two weeks.
 
-Agile architecture is a key element to improve the quality of your product and reduce cycle time of your product outcomes.
+Agile architecture is a key element to improve the quality of your article and reduce cycle time of your article outcomes.
 
 Your journey toward greater business agility starts by identifying what outcomes are most important to your company’s success.
 A key component is to find out how to create great architecture within the Scrum framework.
@@ -401,7 +401,7 @@ ____
 Engineering is the application of an empirical scientific approach to finding efficient solutions to practical problems.
 ____
 
-We have mentioned refactoring, which is how we evolve an ever-improving design and architecture while building the product incrementally.
+We have mentioned refactoring, which is how we evolve an ever-improving design and architecture while building the article incrementally.
 To do that, we need to know the difference between good architecture and design and not-so-good.
 We need a rich pool of architecture and design options in our bag of tricks, ranging from very simple options to the more complex and rich options that we may need as the system grows.
 One never knows too much about the quality of architecture, code, and design.
@@ -472,7 +472,7 @@ Promote, support, teach clean code in your agile team.
 Agile code is clean code.
 
 Do not fall to the fallacy to draw beautiful and useless UML diagram and write thick software architecture documents.
-The real architecture is hidden in the source code of your product.
+The real architecture is hidden in the source code of your article.
 
 You still should document all major design decisions and should use UML to enlighten important architecture decisions.
 
@@ -554,7 +554,7 @@ ____
 
 === Approach
 
-For a developer new to a legacy software product, it is often hard to understand the existing application, determine the extent of source code and architectural decay, and identify smells and metric violations.
+For a developer new to a legacy software article, it is often hard to understand the existing application, determine the extent of source code and architectural decay, and identify smells and metric violations.
 
 Legacy applications are often critical to the business and have been in use for years, sometimes decades.
 Since the business is evolving, there is constant pressure to support additional requirements.
@@ -578,9 +578,9 @@ A professional engineer opportunistically refactor each time he modifies source 
 
 * Understand how it is used.
 These scenarios are the acceptance tests you need to start creating a set of automated validation criteria.
-And you will better understand how your users are working with your product.
+And you will better understand how your users are working with your article.
 * Understand how it is deployed.
-You need a reproducible and in the long run automated process to deploy a new version of your product.
+You need a reproducible and in the long run automated process to deploy a new version of your article.
 * Understand how it is build.
 You need a reproducible and automated build process.
 This process must be integrated into a continuous integration and delivery pipeline.
@@ -628,7 +628,7 @@ As fewer and fewer programmers and operation managers will have the knowledge of
 === Ameliorate Your Process
 
 Applications do not degrade to legacy or geriatric systems over night.
-The organization and development group failed to work professionally over years before the product is doomed.
+The organization and development group failed to work professionally over years before the article is doomed.
 
 You must establish a culture of professional software development.
 Professional software developers write code which is maintainable and legible.
@@ -643,7 +643,7 @@ Is it not that you expect from your physician or the pilot of the plane you are 
 
 Most products are developed by a team, and these achievements are the fruit of teamwork.
 
-Software product development is now agile, and most often uses the Scrum approach.
+Software article development is now agile, and most often uses the Scrum approach.
 
 Just putting a bunch of people together will not produce a high performance agile team.
 Quite a few companies find that out the hard way.
@@ -687,8 +687,8 @@ See our post about pragmatic software craftsmanship.
 
 Establish a culture to use current versions of programming languages, tools and libraries.
 
-For instance, on a previous outcome, we had planned a coding dojo ritual once every two weeks, during which we shared our practices with some perspective over the outcome.
-It was an occasion to experiment new technologies, assess their match for the outcome needs, share new coding techniques, and update our standards together.
+For instance, on a previous product, we had planned a coding dojo ritual once every two weeks, during which we shared our practices with some perspective over the product.
+It was an occasion to experiment new technologies, assess their match for the product needs, share new coding techniques, and update our standards together.
 
 === Formal Training
 
@@ -803,7 +803,7 @@ Don’t discuss practices, discuss value.
 
 Their manifesto is
 
-* Craftsmanship is not enough to guarantee the success of a outcome but the lack of it can be the main cause of its failure,
+* Craftsmanship is not enough to guarantee the success of a product but the lack of it can be the main cause of its failure,
 * Agile and Craftsmanship complement each other and both are necessary,
 * Agile processes assumes technical excellence and a professional attitude,
 * Software craftsmanship takes technical excellence and professionalism to a whole new level.

@@ -20,9 +20,9 @@ import com.vaadin.flow.data.renderer.ComponentRenderer;
 import net.tangly.bus.core.Entity;
 import net.tangly.bus.core.Tag;
 import net.tangly.bus.crm.CrmTags;
+import net.tangly.bus.crm.RealmCrm;
 import net.tangly.bus.providers.Provider;
 import net.tangly.commons.vaadin.InternalEntitiesView;
-import net.tangly.crm.ports.Crm;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -31,11 +31,11 @@ import org.jetbrains.annotations.NotNull;
  * @param <T> type displayed in the CRUD view
  */
 public abstract class CrmEntitiesView<T extends Entity> extends InternalEntitiesView<T> {
-    private final Crm crm;
+    private final RealmCrm realmCrm;
 
-    protected CrmEntitiesView(@NotNull Crm crm, @NotNull Class<T> clazz, @NotNull Mode mode, Provider<T> provider) {
-        super(clazz, mode, provider, crm.tagTypeRegistry());
-        this.crm = crm;
+    protected CrmEntitiesView(@NotNull RealmCrm realmCrm, @NotNull Class<T> clazz, @NotNull Mode mode, Provider<T> provider) {
+        super(clazz, mode, provider, realmCrm.tagTypeRegistry());
+        this.realmCrm = realmCrm;
     }
 
     public static <T extends Entity> ComponentRenderer<Anchor, T> linkedInComponentRenderer(Function<Entity, String> linkedInUrl) {
@@ -74,7 +74,7 @@ public abstract class CrmEntitiesView<T extends Entity> extends InternalEntities
         });
     }
 
-    protected Crm crm() {
-        return crm;
+    protected RealmCrm realm() {
+        return realmCrm;
     }
 }

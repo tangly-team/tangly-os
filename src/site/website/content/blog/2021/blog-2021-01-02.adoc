@@ -1,7 +1,8 @@
 ---
 title: "Meaningful Identifiers"
-linkTitle: "eaningful Identifiers"
-date: 2020-01-15
+linkTitle: "Meaningful Identifiers"
+date: 2021-01-15
+tags: ["design"]
 ---
 
 == Meaningful Identifiers

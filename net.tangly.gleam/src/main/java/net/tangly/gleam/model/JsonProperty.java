@@ -16,6 +16,7 @@ package net.tangly.gleam.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Currency;
+import java.util.Locale;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -63,6 +64,11 @@ public record JsonProperty<T, U>(@NotNull String property, @NotNull Function<T, 
     public static <T> JsonProperty<T, Currency> ofCurrency(String property, Function<T, Currency> getter, BiConsumer<T, Currency> setter) {
         return of(property, getter, setter, o -> (JsonField.get(property, o) != null) ? Currency.getInstance(o.getString(property)) : null,
                 (u, o) -> o.put(property, u));
+    }
+
+    public static <T> JsonProperty<T, Locale> ofLocale(String property, Function<T, Locale> getter, BiConsumer<T, Locale> setter) {
+        return of(property, getter, setter, o -> (JsonField.get(property, o) != null) ? Locale.forLanguageTag (o.getString(property)) : null,
+                (u, o) -> o.put(property, u.toLanguageTag()));
     }
 
     /**

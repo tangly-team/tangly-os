@@ -13,12 +13,10 @@
 
 package net.tangly.bus.products;
 
-import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import net.tangly.bus.core.EntityImp;
-import net.tangly.bus.crm.Contract;
-import net.tangly.bus.crm.Employee;
+import net.tangly.bus.core.HasOid;
 
 /**
  * An duration defines work performed on a project. It is possible to specify an additional contract to identify the financial
@@ -26,50 +24,56 @@ import net.tangly.bus.crm.Employee;
  * an optional description. Efforts can be used to generate work ports such as monthly ports and used to calculate the spend
  * time on a contract or a project.
  */
-public class Effort extends EntityImp {
-    private LocalDateTime startedOn;
-    private BigDecimal duration;
-    private Employee employee;
-    private Project project;
-    private Contract contract;
+public class Effort implements HasOid {
+    private long oid;
+    private String text;
+    private LocalDate date;
+    private int durationInMinutes;
+    private Assignment assignment;
+    private String contractId;
 
-    public BigDecimal duration() {
-        return duration;
+    @Override
+    public long oid() {
+        return 0;
     }
 
-    public void duration(BigDecimal effort) {
-        this.duration = effort;
+    public String text() {
+        return text;
     }
 
-    public LocalDateTime startedOn() {
-        return startedOn;
+    public void text(String text) {
+        this.text = text;
     }
 
-    public void startedOn(LocalDateTime worked) {
-        this.startedOn = worked;
+    public int duration() {
+        return durationInMinutes;
     }
 
-    public Employee employee() {
-        return employee;
+    public void duration(int effort) {
+        this.durationInMinutes = effort;
     }
 
-    public void employee(Employee employee) {
-        this.employee = employee;
+    public LocalDate date() {
+        return date;
     }
 
-    public Project project() {
-        return project;
+    public void date(LocalDate date) {
+        this.date = date;
     }
 
-    public void project(Project project) {
-        this.project = project;
+    public Assignment assignment() {
+        return assignment;
     }
 
-    public Contract contract() {
-        return contract;
+    public void assignment(Assignment assignment) {
+        this.assignment = assignment;
     }
 
-    public void contract(Contract contract) {
-        this.contract = contract;
+    public String contractId() {
+        return contractId;
+    }
+
+    public void contract(String contractId) {
+        this.contractId = contractId;
     }
 }

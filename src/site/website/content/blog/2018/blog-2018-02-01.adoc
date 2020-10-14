@@ -2,6 +2,7 @@
 title: "Scrum Guide 2017: What changed?"
 linkTitle: "Scrum Guide 2017"
 date: 2018-02-09
+tags: ["agile"]
 ---
 
 == Scrum Guide 2017: What changed?
@@ -25,10 +26,10 @@ What have the community learnt and committed to the new version of the guide.
 Scrum was initially developed for managing and developing products.
 Starting in the early 1990s, Scrum has been used extensively, worldwide, to:
 
-. Research and identify viable markets, technologies, and product capabilities,
+. Research and identify viable markets, technologies, and article capabilities,
 . Develop products and enhancements,
 . Release products and enhancements, as frequently as many times per day,
-. Develop and sustain Cloud (online, secure, on-demand) and other operational environments for product use,
+. Develop and sustain Cloud (online, secure, on-demand) and other operational environments for article use,
 . Sustain and renew products.
 
 The essence of Scrum is a small team of people.
@@ -62,15 +63,15 @@ Added to the section Scrum Master Service to the Product Owner
 
 [quote]
 ____
-Ensuring that _goals, scope, and product domain_ are understood by everyone on the Scrum Team as well as possible.
+Ensuring that _goals, scope, and article domain_ are understood by everyone on the Scrum Team as well as possible.
 ____
 
 *Scrum master is a servant leader and promotes Scrum and agile approaches.*
-*The whole team work on a product.*
+*The whole team work on a article.*
 *They understand the vision, goals, scope, and have extensive domain knowledge.*
 
 *This means the whole team talks with stakeholders and users.*
-*The team members have a genuine interest to learn more about the product domain.*
+*The team members have a genuine interest to learn more about the article domain.*
 
 === Scrum Events
 

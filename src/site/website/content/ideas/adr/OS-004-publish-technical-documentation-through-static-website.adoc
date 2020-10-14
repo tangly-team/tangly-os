@@ -22,7 +22,7 @@ Implemented
 
 A legible, well-structured and up-to-date technical documentation of released open source components is a service to all our users.
 Due to the small size of our team we want a straight forward tool chain to generate the website.
-In the future we could move our outcome to another hosting platform.
+In the future we could move our product to another hosting platform.
 The solution should be build on standard to minimize porting overhead.
 
 I am personally a fan of {ref-asciidoc} and would promote a solution supporting this markup language.

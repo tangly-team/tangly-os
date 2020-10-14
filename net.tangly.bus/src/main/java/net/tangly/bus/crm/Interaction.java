@@ -14,7 +14,9 @@
 package net.tangly.bus.crm;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -30,13 +32,14 @@ import org.jetbrains.annotations.NotNull;
 public class Interaction extends EntityImp {
     private final List<Activity> activities;
     private LegalEntity legalEntity;
-    private InteractionCode state;
+    private InteractionCode code;
     private BigDecimal potential;
     private BigDecimal probability;
 
     public Interaction() {
         activities = new ArrayList<>();
-        this.state = InteractionCode.prospect;
+        fromDate(LocalDate.now());
+        this.code = InteractionCode.prospect;
         this.potential = BigDecimal.ZERO;
         this.probability = BigDecimal.ZERO;
     }
@@ -49,12 +52,12 @@ public class Interaction extends EntityImp {
         this.legalEntity = legalEntity;
     }
 
-    public InteractionCode state() {
-        return state;
+    public InteractionCode code() {
+        return code;
     }
 
-    public void state(@NotNull InteractionCode state) {
-        this.state = state;
+    public void code(@NotNull InteractionCode code) {
+        this.code = code;
     }
 
     public BigDecimal potential() {
@@ -81,6 +84,10 @@ public class Interaction extends EntityImp {
         return Collections.unmodifiableList(activities);
     }
 
+    public void addAll(Collection<Activity> activities) {
+        this.activities.addAll(activities);
+    }
+
     public void add(Activity activity) {
         activities.add(activity);
     }
@@ -98,7 +105,7 @@ public class Interaction extends EntityImp {
     public String toString() {
         return """
                 Interaction[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, state=%s, potential=%s, probability=%s, tags=%s]
-                """.formatted(oid(), id(), name(), fromDate(), toDate(), text(), state(), potential(), probability(), tags());
+                """.formatted(oid(), id(), name(), fromDate(), toDate(), text(), code(), potential(), probability(), tags());
     }
 
 }

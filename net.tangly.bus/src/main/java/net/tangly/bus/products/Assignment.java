@@ -14,30 +14,29 @@
 package net.tangly.bus.products;
 
 import net.tangly.bus.core.EntityImp;
-import net.tangly.bus.crm.Employee;
 
 /**
  * An assignment defines connection of an employee to a project for a duration. The start date shall be equal or greater to the start date of project. The end
  * date is optional, if defined it shall smaller or equal to the end date of the project.
  */
 public class Assignment extends EntityImp {
-    private Employee employee;
-    private Project project;
+    private String employeeId;
+    private Product product;
 
-    public Employee employee() {
-        return employee;
+    public String employeeId() {
+        return employeeId;
     }
 
-    public void employee(Employee employee) {
-        this.employee = employee;
+    public void employeeId(String employeeId) {
+        this.employeeId = employeeId;
     }
 
-    public Project project() {
-        return project;
+    public Product project() {
+        return product;
     }
 
-    public void project(Project project) {
-        this.project = project;
+    public void project(Product product) {
+        this.product = product;
     }
 }
 

@@ -32,9 +32,9 @@ import java.util.stream.Collectors;
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.codecrete.qrbill.generator.Strings;
-import net.tangly.bus.crm.CrmTags;
-import net.tangly.bus.crm.LegalEntity;
+import net.tangly.bus.core.Address;
 import net.tangly.bus.invoices.Invoice;
+import net.tangly.bus.invoices.InvoiceLegalEntity;
 import net.tangly.bus.invoices.InvoiceLine;
 import net.tangly.commons.utilities.AsciiDocHelper;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
@@ -79,7 +79,8 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
                 helper.header(bundle.getString("invoice"), 2);
 
                 helper.tableHeader(null, "frame=\"none\", grid=\"none\", options=\"noheader\", stripes=\"none\", cols=\"3,4,3\"");
-                helper.tableRow(addressText(invoice.invoicingEntity()), "", addressText(invoice.invoicedEntity()));
+                helper.tableRow(addressText(invoice.invoicingEntity(), invoice.invoicingAddress()), "",
+                        addressText(invoice.invoicedEntity(), invoice.invoicedAddress()));
                 helper.tableEnd();
 
                 helper.tableHeader(null, "stripes=\"none\", options=\"noheader\", cols=\"4,2,4,2\"");
@@ -92,7 +93,7 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
 
                 helper.tableHeader(null, "options=\"header\", grid=\"none\", frame=\"none\", stripes=\"none\", cols=\"4,^1, >1,>1\"",
                         bundle.getString("position"), bundle.getString("quantity"), bundle.getString("price"),
-                        bundle.getString("amount") + " (" + invoice.contract().currency().getCurrencyCode() + ")");
+                        bundle.getString("amount") + " (" + invoice.currency().getCurrencyCode() + ")");
                 invoice.lines().stream().sorted(Comparator.comparingInt(InvoiceLine::position)).forEach(o -> helper
                         .tableRow((o.isAggregate() ? italics(o.text()) : o.text()), o.isItem() ? format(o.quantity()) : "", format(o.unitPrice()),
                                 o.isAggregate() ? italics(format(o.amount())) : format(o.amount())));
@@ -140,13 +141,9 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
         helper.tableRow(bold(bundle.getString("total")), "", "", bold(format(invoice.amountWithVat())));
     }
 
-    private static String addressText(@NotNull LegalEntity entity) {
-        StringBuilder text = new StringBuilder();
-        entity.address(CrmTags.Type.work).ifPresent(
-                address -> text.append(entity.name()).append(NEWLINE).append(Strings.isNullOrEmpty(address.extended()) ? "" : (address.extended() + NEWLINE))
-                        .append(Strings.isNullOrEmpty(address.street()) ? "" : (address.street() + NEWLINE))
-                        .append(Strings.isNullOrEmpty(address.poBox()) ? "" : (address.poBox() + NEWLINE)).append(address.postcode()).append(" ")
-                        .append(address.locality()));
-        return text.toString();
+    private static String addressText(@NotNull InvoiceLegalEntity entity, @NotNull Address address) {
+        return entity.name() + NEWLINE + (Strings.isNullOrEmpty(address.extended()) ? "" : (address.extended() + NEWLINE)) +
+                (Strings.isNullOrEmpty(address.street()) ? "" : (address.street() + NEWLINE)) +
+                (Strings.isNullOrEmpty(address.poBox()) ? "" : (address.poBox() + NEWLINE)) + address.postcode() + " " + address.locality();
     }
 }

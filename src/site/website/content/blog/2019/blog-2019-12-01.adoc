@@ -2,6 +2,7 @@
 title: "A Journey to be a Digital Company - tangly llc"
 linkTitle: "A Journey to be a Digital Company"
 date: 2019-12-02
+tags: ["organization"]
 ---
 
 == A Journey to be a Digital Company - tangly llc
@@ -53,7 +54,7 @@ Embrace the digital age and be environment aware.
 At https://www.tangly.net[tangly] we use internally
 
 * Google Business Apps and LibreOffice for office work, email, calendar, video conference and document sharing.
- All documents are stored in our outcome or company online drives,
+ All documents are stored in our product or company online drives,
 * Google Business Apps administration console to manage our technical infrastructure such as workstations, mobile devices, DNS record,
 * Bitbucket and continuous integration, delivery and deployment pipelines for software development,
 * Trello for activities management and our electronic Scrum or Kanban board.

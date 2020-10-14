@@ -2,6 +2,7 @@
 title: "Your Management Job in an Agile Environment"
 linkTitle: "Scrum Management Job"
 date: 2017-09-02
+tags: ["agile"]
 ---
 
 == Your Management Job in an Agile Environment
@@ -32,7 +33,7 @@ Finally we will sketch your job description.
 
 === Complex Systems and Empiricism
 
-The development organization of a software product is a complex system.
+The development organization of a software article is a complex system.
 This means that nobody understands the rules.
 You cannot implement a measure and be certain it will improve the whole system.
 If you want to implement lasting improvements you must

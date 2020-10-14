@@ -25,28 +25,34 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.LegalEntity;
+import net.tangly.bus.crm.RealmCrm;
+import net.tangly.bus.invoices.BusinessLogicInvoices;
+import net.tangly.bus.invoices.RealmInvoices;
 import net.tangly.commons.vaadin.BankConnectionField;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.One2OneField;
 import net.tangly.commons.vaadin.VaadinUtils;
-import net.tangly.crm.ports.Crm;
 import org.jetbrains.annotations.NotNull;
 
 public class ContractsView extends CrmEntitiesView<Contract> {
-    public ContractsView(@NotNull Crm crm, @NotNull Mode mode) {
-        super(crm, Contract.class, mode, crm.contracts());
+    private final RealmInvoices realmInvoices;
+
+    public ContractsView(@NotNull RealmCrm realmCrm, RealmInvoices realmInvoices, @NotNull Mode mode) {
+        super(realmCrm, Contract.class, mode, realmCrm.contracts());
+        this.realmInvoices = realmInvoices;
         initialize();
     }
 
     @Override
     protected void initialize() {
         super.initialize();
+        BusinessLogicInvoices logic = new BusinessLogicInvoices(realmInvoices);
         Grid<Contract> grid = grid();
         grid.addColumn(e -> e.sellee().name()).setKey("customer").setHeader("Customer").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(new NumberRenderer<>(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true)
                 .setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
-        grid.addColumn(new NumberRenderer<>(o -> crm().invoicedAmount(o), VaadinUtils.FORMAT)).setKey("invoicedAmount").setHeader("Invoiced").setAutoWidth(true)
-                .setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
+        grid.addColumn(new NumberRenderer<>(o -> logic.invoicedAmountWithoutVatForContract(o.id(), null, null), VaadinUtils.FORMAT)).setKey("invoicedAmount")
+                .setHeader("Invoiced").setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
 
     }
 
@@ -70,9 +76,9 @@ public class ContractsView extends CrmEntitiesView<Contract> {
         currency.setLabel("Currency");
         currency.setItems(Currency.getInstance("CHF"), Currency.getInstance("EUR"));
         currency.setReadOnly(readonly);
-        One2OneField<LegalEntity, LegalEntitiesView> seller = new One2OneField<>("Seller", new LegalEntitiesView(crm(), mode));
+        One2OneField<LegalEntity, LegalEntitiesView> seller = new One2OneField<>("Seller", new LegalEntitiesView(realm(), mode));
         seller.setReadOnly(readonly);
-        One2OneField<LegalEntity, LegalEntitiesView> sellee = new One2OneField<>("Sellee", new LegalEntitiesView(crm(), mode));
+        One2OneField<LegalEntity, LegalEntitiesView> sellee = new One2OneField<>("Sellee", new LegalEntitiesView(realm(), mode));
         sellee.setReadOnly(readonly);
 
         FormLayout form = new FormLayout();

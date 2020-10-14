@@ -22,6 +22,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Objects;
 
+import net.tangly.invoices.ports.InvoicesHdl;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -29,10 +30,11 @@ import org.jetbrains.annotations.NotNull;
  * the test component. The store copies all the resources in an in-memory file system for efficient tests.
  */
 class CrmAndLedgerStore {
-    private static final String PACKAGE_NAME = "net/tangly/crm/";
+    private static final String PACKAGE_NAME = "net/tangly/";
+    private static final String CRM_PACKAGE_NAME = PACKAGE_NAME + "crm/";
     private static final String LEDGER_PACKAGE_NAME = PACKAGE_NAME + "ledger/";
     private static final String INVOICES_PACKAGE_NAME = PACKAGE_NAME + "invoices/";
-    private static final String VCARDS_PACKAGE_NAME = PACKAGE_NAME + "vcards/";
+    private static final String VCARDS_PACKAGE_NAME = CRM_PACKAGE_NAME + "vcards/";
 
     private final FileSystem fs;
 
@@ -40,20 +42,28 @@ class CrmAndLedgerStore {
         this.fs = fs;
     }
 
+    public Path organizationRoot() {
+        return fs.getPath("/organization/");
+    }
+
     public Path crmRoot() {
-        return fs.getPath("/crm/");
+        return fs.getPath("/organization/crm/");
     }
 
     public Path ledgerRoot() {
-        return fs.getPath("/crm/ledger/");
+        return fs.getPath("/organization/ledger/");
     }
 
     public Path invoicesRoot() {
-        return fs.getPath("/crm/invoices/");
+        return fs.getPath("/organization/invoices/");
     }
 
     public Path vcardsRoot() {
-        return fs.getPath("/crm/vcards");
+        return fs.getPath("/organization/crm/vcards/");
+    }
+
+    public Path ledgerReportsRoot() {
+        return fs.getPath("/organization/reports/ledger/");
     }
 
     /**
@@ -61,34 +71,34 @@ class CrmAndLedgerStore {
      */
     public void createCrmAndLedgerRepository() {
         try {
-            Files.createDirectory(fs.getPath("/crm/"));
-            Files.createDirectory(fs.getPath("/crm/ledger/"));
-            Files.createDirectory(fs.getPath("/crm/invoices/"));
-            Files.createDirectory(fs.getPath("/crm/invoices/2015/"));
-            Files.createDirectory(fs.getPath("/crm/invoices/2016/"));
-            Files.createDirectory(fs.getPath("/crm/invoices/2017/"));
-            Files.createDirectory(fs.getPath("/crm/invoices/2018/"));
-            Files.createDirectory(fs.getPath("/crm/invoices/2019/"));
-            Files.createDirectory(fs.getPath("/crm/invoices/2020/"));
-            Files.createDirectory(fs.getPath("/crm/vcards/"));
-            Files.createDirectory(fs.getPath("/crm/reports/"));
-            Files.createDirectory(fs.getPath("/crm/reports/ledger/"));
-            Files.createDirectory(fs.getPath("/crm/reports/invoices/"));
+            Files.createDirectory(fs.getPath("/organization/"));
+            Files.createDirectory(fs.getPath("/organization/crm/"));
+            Files.createDirectory(fs.getPath("/organization/crm/vcards/"));
+            Files.createDirectory(fs.getPath("/organization/ledger/"));
+            Files.createDirectory(fs.getPath("/organization/invoices/"));
+            Files.createDirectory(fs.getPath("/organization/invoices/2015/"));
+            Files.createDirectory(fs.getPath("/organization/invoices/2016/"));
+            Files.createDirectory(fs.getPath("/organization/invoices/2017/"));
+            Files.createDirectory(fs.getPath("/organization/invoices/2018/"));
+            Files.createDirectory(fs.getPath("/organization/invoices/2019/"));
+            Files.createDirectory(fs.getPath("/organization/invoices/2020/"));
+            Files.createDirectory(fs.getPath("/organization/reports/"));
+            Files.createDirectory(fs.getPath("/organization/reports/ledger/"));
+            Files.createDirectory(fs.getPath("/organization/reports/invoices/"));
 
-            copy(PACKAGE_NAME, crmRoot(), CrmWorkflows.NATURAL_ENTITIES_TSV);
-            copy(PACKAGE_NAME, crmRoot(), CrmWorkflows.LEGAL_ENTITIES_TSV);
-            copy(PACKAGE_NAME, crmRoot(), CrmWorkflows.EMPLOYEES_TSV);
-            copy(PACKAGE_NAME, crmRoot(), CrmWorkflows.CONTRACTS_TSV);
-            copy(PACKAGE_NAME, crmRoot(), CrmWorkflows.PRODUCTS_TSV);
-            copy(PACKAGE_NAME, crmRoot(), CrmWorkflows.INTERACTIONS_TSV);
-            copy(PACKAGE_NAME, crmRoot(), CrmWorkflows.ACTIVITIES_TSV);
-            copy(PACKAGE_NAME, crmRoot(), CrmWorkflows.SUBJECTS_TSV);
-            copy(PACKAGE_NAME, crmRoot(), CrmWorkflows.CONTRACTS_TSV);
-            copy(PACKAGE_NAME, crmRoot(), CrmWorkflows.COMMENTS_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.NATURAL_ENTITIES_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.LEGAL_ENTITIES_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.EMPLOYEES_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.CONTRACTS_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.INTERACTIONS_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.ACTIVITIES_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.SUBJECTS_TSV);
+            copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.COMMENTS_TSV);
 
             copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "swiss-ledger.tsv");
             copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "transactions-2015-2016.tsv");
 
+            copy(INVOICES_PACKAGE_NAME, invoicesRoot(), InvoicesHdl.ARTICLES_TSV);
             copy(INVOICES_PACKAGE_NAME + "2015/", invoicesRoot().resolve("2015"), "2015-8001-Invoice-HSLU-December.json");
             copy(INVOICES_PACKAGE_NAME + "2016/", invoicesRoot().resolve("2016"), "2016-8001-Invoice-HSLU-October.json");
             copy(INVOICES_PACKAGE_NAME + "2017/", invoicesRoot().resolve("2017"), "2017-8001-Invoice-HSLU-February.json");

@@ -2,6 +2,7 @@
 title: "What does a Scrum Master?"
 linkTitle: "What does a Scrum Master?"
 date: 2017-07-03
+tags: ["agile"]
 ---
 
 == What does a Scrum Master?
@@ -21,7 +22,7 @@ They schedule meetings, moderate discussions, write progress reports and draw be
 Or worst they collect extensive statistics about velocity, planned versus delivered story points or how precise story estimation was.
 
 At the end of the day your job is to mentor your team to be champions and build awesome products.
-_Wake up!_ You are not a outcome manager, you shall be a catalyst.
+_Wake up!_ You are not a product manager, you shall be a catalyst.
 
 === Facets of a Scrum Master
 
@@ -55,7 +56,7 @@ You shall by all means avoid administrative waste such as
 * Writing information in Word documents or in Wiki that nobody actively uses,
 * Writing multiple times the same information,
 * Writing status information instead of publishing it on the team board.
- The board shall be the information radiator of your product development.
+ The board shall be the information radiator of your article development.
  Do not create head sinks in documents,
 * Holding meetings with one person projecting their notebook screen content and all other attendees looking at it -.
 

@@ -26,6 +26,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import jnr.ffi.annotations.In;
 import net.tangly.bus.core.Tag;
 import net.tangly.bus.ledger.Account;
 import net.tangly.bus.ledger.AccountEntry;
@@ -63,11 +66,7 @@ public class LedgerTsvHdl {
 
     private final Ledger ledger;
 
-    /**
-     * Constructor of the class.
-     *
-     * @param ledger ledger to use when importing data from CSV files.
-     */
+    @Inject
     public LedgerTsvHdl(@NotNull Ledger ledger) {
         this.ledger = ledger;
     }

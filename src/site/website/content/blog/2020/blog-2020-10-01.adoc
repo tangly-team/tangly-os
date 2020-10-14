@@ -2,6 +2,7 @@
 title: "Creating a technical Website with Hugo and Asciidoc"
 linkTitle: "Hugo Asciidoc Website"
 date: 2020-10-02
+tags: ["design"]
 ---
 
 == Creating a technical Website with Hugo and Asciidoc
@@ -68,17 +69,25 @@ The instructions to install hugo and asciidoctor are:
 
 [source,shell]
 ----
-brew install hugo
+brew install hugo                         # <1>
 
-brew install asciidoctor
+brew install asciidoctor                  # <2>
 gem install asciidoctor-diagram
 gem install asciidoctor-rouge
 gem install asciidoctor-html5s
 gem install asciimath
 
+brew install plantuml                     # <3>
 brew install graphviz
-brew install plantuml
+
+sudo npm install -D --save autoprefixer   # <4>
+sudo npm install -D --save postcss-cli
+sudo npm install -D --save postcss
 ----
+<1> install hugo application
+<2> install asciidoctor and additional asciidoctor packages
+<3> install plantuml and graphviz for diagrams, in particcular UML sketches
+<4> install postcss and additional packages used by docsy to generate deployment site
 
 ==== Asciidoctor Configuration
 
@@ -87,15 +96,15 @@ Below the configuration of asciidoctor in the _config.toml_ file.
 [source, yaml]
 ----
 [markup.asciidocext]
-    extensions = ["asciidoctor-html5s", "asciidoctor-diagram"]
-    workingFolderCurrent = true
-    [markup.asciidocext.attributes]
-        imagesdir = "../pics"
-        source-highlighter = "rouge" // <1>
-        rouge-style = "github" // <2>
-        rouge-css = "style" // <3>
-        icons = "font"  // <4>
-        ref-less = "https://less.works/[LeSS]" // <5>
+  extensions = ["asciidoctor-html5s", "asciidoctor-diagram"]
+  workingFolderCurrent = true
+  [markup.asciidocext.attributes]
+    imagesdir = "../pics"
+    source-highlighter = "rouge"            // <1>
+    rouge-style = "github"                  // <2>
+    rouge-css = "style"                     // <3>
+    icons = "font"                          // <4>
+    ref-less = "https://less.works/[LeSS]"  // <5>
 ----
 <1> Select https://rouge-ruby.github.io/docs/[rouge] as source highlighter.
  You should not add it to the extensions because since {ref-asciidoctor} version 2.0 rouge is included.
