@@ -19,7 +19,7 @@ Architecture design record for the whole projects are also located under [ideas]
 <div class="col-12">
 <h1 class="text-center">Commercial Support</h1>
 
-https://www.tangly.net[tangly llc] provides commercial support for all components.
+[tangly llc](https://www.tangly.net) provides commercial support for all components.
 Please contact the company for support agreements and training workshops.
 
 What you pay will also contribute to the maintenance and future development of tangly open source components.

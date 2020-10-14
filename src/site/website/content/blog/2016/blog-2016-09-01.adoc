@@ -75,7 +75,7 @@ The Scrum Master serves the organization in several ways, including:
 
 * *Leading* and *coaching* the organization in its Scrum adoption;
 * *Planning* Scrum implementations within the organization;
-* Helping employees and stakeholders understand and enact Scrum and empirical article development;
+* Helping employees and stakeholders understand and enact Scrum and empirical product development;
 * Causing change that increases the productivity of the Scrum Team; and,
 * *Working* with other Scrum Masters to increase the effectiveness of the application of Scrum in the organization.
 ____

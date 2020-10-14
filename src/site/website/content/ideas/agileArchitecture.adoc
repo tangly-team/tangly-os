@@ -10,7 +10,7 @@ weight: 30
 :revnumber: v0.1 
 :revdate: 2020-05-31
 :homepage: https://www.tangly.net/
-:description: An introduction to software architecture in agile article development
+:description: An introduction to software architecture in agile product development
 :keywords: agile, architecture, Scrum, LeSS
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
@@ -21,10 +21,10 @@ weight: 30
 
 You are applying successfully the agile and lean approach to your software products development.
 Your teams use https://www.scrumguides.org/scrum-guide.html[Scrum] or https://en.wikipedia.org/wiki/Kanban_(development)[Kanban] to deliver running software at least every two weeks.
-The article launch is a tremendeous success.
+The product launch is a tremendous success.
 You will likely sell the solution for the next ten years.
 
-How shall you define and nurture the software architecture of your article and insure a long living and high quality solution?
+How shall you define and nurture the software architecture of your product and insure a long living and high quality solution?
 The experts tell you the design is emergent, what does it mean?
 
 [quote,Anonymous]
@@ -35,13 +35,13 @@ ____
 === LeSS Architecture Observations
 
 The _Large-Scaled Scrum_ https://less.works[LeSS] authors have written quite a few interesting statements about software design and architecture.
-Their opinionated observations are true for any software article.
-It is irrelevant if the article was developed using agile approaches or traditional older ones.
+Their opinionated observations are true for any software product.
+It is irrelevant if the product was developed using agile approaches or traditional older ones.
 
 . The sum of all source code is the *true* design blueprint or software architecture,
-. The real software architecture evolves (better or worse) every day of the article, as people are *programming*,
+. The real software architecture evolves (better or worse) every day of the product, as people are *programming*,
 . The real living architecture needs to be grown every day through acts of programming by *master programmers*,
-. A software architect who is not in touch with the evolving source code of the article is out of touch with reality,
+. A software architect who is not in touch with the evolving source code of the product is out of touch with reality,
 . *Every programmer is some kind of architect* — whether wanted or not.
 Every act of programming is some kind of architectural act — good or bad, small or large, intended or not.
 
@@ -152,12 +152,12 @@ Smart money goes in training your collaborators.
 
 == Agile Code is Clean Code
 
-You are applying the agile and lean approach to your software article development.
+You are applying the agile and lean approach to your software product development.
 Your teams use Scrum or Kanban to deliver running software at least every two weeks.
 
 To create an agile architecture you must write worthy agile code.
 And agile code is always *clean code*.
-Never compromise on your key strategic asset, the source code of your article.
+Never compromise on your key strategic asset, the source code of your product.
 Your source code and your data are strategic advantages for your company.
 Start early writing clean code, do it continuously and soon your code will be clean, legible and free of defects.
 
@@ -168,7 +168,7 @@ Having a huge class with thousands of lines of code plainly demonstrate that you
 Such monsters are not born over a night coding session or a weekend hack session.
 It takes time and unwavering incompetence to create such maintenance nightmares.
 
-And as long as your article contains such code monsters it is worthless to pretend having a nice and thought through architecture.
+And as long as your product contains such code monsters it is worthless to pretend having a nice and thought through architecture.
 Team discipline and early warning systems are the key to avoid such blunders and kill the monster in the egg.
 
 === Clean Code and Refactoring
@@ -240,7 +240,7 @@ The better way is acceptance test driven development ATDD.
 For each feature you need acceptance criteria; this approach is also called specification by example.
 
 For each acceptance criteria write an acceptance test which is executed each time the application is updated in the continuous delivery pipeline.
-Therefore, the acceptance tests are the living documentation of the behavior of your article.
+Therefore, the acceptance tests are the living documentation of the behavior of your product.
 
 [quote,Robert C. Martin,The Clean Coder: A Code of Conduct for Professional Programmers]
 ____
@@ -281,7 +281,7 @@ Exercising new approaches enforces culture change and implicit modify the organi
 * Pair Programming - is a training on the job and crowd wisdom approach to steadily improve knowledge and quality.
 *TDD and ATDD - are safety net to guaranty quality attributes in your source code\.
 * DevOps starting with git, docker, continuous integration, delivery and deployment - to speed up development and eliminate tedious manual errors.
-* Lack of accountability equates to lack of trust - your teams are accountable for the quality of your article and you should trust them.
+* Lack of accountability equates to lack of trust - your teams are accountable for the quality of your product and you should trust them.
 
 Culture change is often necessary.
 Autonomy and accountability are harsh mistresses.
@@ -331,10 +331,10 @@ The code is not always reviewed immediately after the commit but in most cases i
 
 == Agile Architecture within Scrum
 
-You are applying the agile, lean approach to your software article development.
+You are applying the agile, lean approach to your software product development.
 Your teams use Scrum or Kanban to deliver running software every two weeks.
 
-Agile architecture is a key element to improve the quality of your article and reduce cycle time of your article outcomes.
+Agile architecture is a key element to improve the quality of your product and reduce cycle time of your application outcomes.
 
 Your journey toward greater business agility starts by identifying what outcomes are most important to your company’s success.
 A key component is to find out how to create great architecture within the Scrum framework.
@@ -401,7 +401,7 @@ ____
 Engineering is the application of an empirical scientific approach to finding efficient solutions to practical problems.
 ____
 
-We have mentioned refactoring, which is how we evolve an ever-improving design and architecture while building the article incrementally.
+We have mentioned refactoring, which is how we evolve an ever-improving design and architecture while building the product incrementally.
 To do that, we need to know the difference between good architecture and design and not-so-good.
 We need a rich pool of architecture and design options in our bag of tricks, ranging from very simple options to the more complex and rich options that we may need as the system grows.
 One never knows too much about the quality of architecture, code, and design.

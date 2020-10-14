@@ -14,11 +14,11 @@ tags: ["java"]
 image::2018-01-01-head.jpg[720, 480, role=left]
 Why is it so cool to develop software using Java, a modern IDE and agile tools.
 Because the environment empowers you and incredibly speed-up your development outcomes.
-In seconds, you know if the next code increment adds value to your article.
+In seconds, you know if the next code increment adds value to your product.
 
 Liberated your team works adding functions and no more spend unaccounted hours in setting up infrastructure.
 
-Below our current set of techniques and tools to multiply our results and bring earlier a article to your customers.
+Below our current set of techniques and tools to multiply our results and bring earlier a product to your customers.
 
 === Java Quality
 
@@ -64,7 +64,8 @@ You are serious about development quality code. So you are working with the test
 Each time you write some code you go through the loop "red - green - refactor - commit".
 
 Junit 5::
- is the standard and best unit test framework for Java article. The newest version support lambdas is a pleasure to use.
+ is the standard and best unit test framework for Java solutions.
+ The newest version support lambdas is a pleasure to use.
 AssertJ::
  enables the writing of legible assert statements in your unit tests.
 Mockito::
@@ -95,7 +96,7 @@ Remember stories are not requirements, they are work items. Requirements are cod
 
 Agile means reacting to changes.
 Lean means build-in quality.
-Your continuous pipeline certifies after each change that your article is correct and has the correct behavior.
+Your continuous pipeline certifies after each change that your solution is correct and has the correct behavior.
 
 Gradle:: Is the new standard for building your artifacts.
 Jenkins:: Is the regular tool for local build pipeline.
@@ -103,7 +104,8 @@ Jenkins:: Is the regular tool for local build pipeline.
 If you a choice use a cloud continuous integration for team activities.
 Decide if you prefer the cloud approach - e.g. with TravisCI or Bitbucket Pipelines - or Jenkins within Docker for your local integration activities.
 
-A smooth running CI pipeline is a boost for team morale and motivation. To know your article compiles and runs through all your automated tests anytime is such a good feeling.
+A smooth running CI pipeline is a boost for team morale and motivation. To know your application compiles and runs through all your automated tests anytime is
+such a good feeling.
 
 ==== Continuous Delivery and Deployment
 
@@ -153,7 +155,7 @@ I decided to collect all these hints in the same long post.
 They belong together.
 Every day you design a solution, you code it, test it, improve it and guarantee its quality.
 
-These activities are tangled together to produce a article you are proud of.
+These activities are tangled together to produce a product you are proud of.
 
 And yes I know about Github, Gitlab, Slack, Ant, Maven, Jetty, Amazon Cloud, AssertJ, Subversion, Eclipse, Netbeans and other good tools.
 But I still prefer the ones above;

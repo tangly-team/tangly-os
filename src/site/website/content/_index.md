@@ -40,7 +40,7 @@ The current released components are written in _Java_ and released on _Maven Cen
 <div class="col">
 <h1 class="text-center">Ideas and In-Depth Articles</h1>
 
-The _[ideas](./ideas/)_ area is a collection of articles about our journey through agile article development, digitalization, and software craftsmanship.
+The _[ideas](./ideas/)_ area is a collection of articles about our journey through agile product development, digitalization, and software craftsmanship.
 </div>
 {{% /blocks/section %}}
 

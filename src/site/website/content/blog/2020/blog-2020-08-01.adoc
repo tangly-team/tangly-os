@@ -2,7 +2,7 @@
 title: "Entities, Identifiers, External identifiers and Names"
 linkTitle: "Entities, Identifiers, Names"
 date: 2020-08-24
-tags: ["java", "design"]
+tags: ["java", "design", "crm"]
 ---
 
 == Entities, Identifiers, External identifiers and Names

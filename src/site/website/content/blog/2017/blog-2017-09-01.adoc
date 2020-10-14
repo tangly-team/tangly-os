@@ -33,7 +33,7 @@ Finally we will sketch your job description.
 
 === Complex Systems and Empiricism
 
-The development organization of a software article is a complex system.
+The development organization of a software solution is a complex system.
 This means that nobody understands the rules.
 You cannot implement a measure and be certain it will improve the whole system.
 If you want to implement lasting improvements you must

@@ -69,14 +69,14 @@ ____
 Is knowledgeable about agile values, approaches and practices
 Understand and apply the Scrum, Kanban and lean, Spotify model frameworks
 Develop people and teams - Self organizing teams Leadership styles, coaching and mentoring, facilitation
-Manage products with agility - Forecasting and release planing, article value, business strategy
+Manage products with agility - Forecasting and release planing, product value, business strategy
 Develop and deliver products professionally
 Evolve the agile organization - organizational design and structure, emporium, evidence based management
 Takes a collaborative continuous improvement approach to organizational effectiveness
 
 
 Hinder value stream organizations and cross-functional teams - Please stop defining component teams -
-Do give tasks to individual collaborators instead of going through the article owner
+Do give tasks to individual collaborators instead of going through the product owner
 Ask progress or control questions during daily Scrum
 Ask control questions or systematically participate to retrospectives
 Promote the mindset that people are exchangeable - see mythical man/months - and anybody can be a good Scrum master

@@ -23,7 +23,7 @@ We had to wait almost three years for native support!
 
 Support for modules is native in the Java plugin.
 You only need to add *one configuration line*.
-Start using Java modules and have language support to enforce modularity in your article.
+Start using Java modules and have language support to enforce modularity in your product.
 
 === Java Modules in Gradle 6.4
 

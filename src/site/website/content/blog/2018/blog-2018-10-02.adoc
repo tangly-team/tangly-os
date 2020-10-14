@@ -13,7 +13,7 @@ tags: ["agile"]
 :copyright: CC-BY-SA 4.0
 
 image::2018-10-02-head.jpg[720, 480, role=left]
-An agile team is sole responsible for the internal quality of the article they build and maintain.
+An agile team is sole responsible for the internal quality of the product they build and maintain.
 
 And the developers shall be accountable to produce the expected quality and optimize long terms goals of the organization.
 They provide the answer to the seminal question
@@ -37,7 +37,7 @@ A _Definition of Done_ is weak when it is a small subset and strong when it is a
 
 In huger organizations the development teams discuss their context and select the subset of the activities that all teams think they realistically can do during the Sprint.
 This is their initial Definition of Done.
-The teams that can do more will expand this article Definition of Done within their members.
+The teams that can do more will expand this product _Definition of Done_ within their members.
 
 The difference between the Definition of Done and Potentially Shippable is referred to as Undone Work.
 
@@ -52,7 +52,7 @@ To clarify the terms:
 
 
 _Potentially Shippable_::
- All activities that must be performed before the article can be shipped._
+ All activities that must be performed before the product can be shipped._
 _Definition of Done_::
  An agreement between the teams and their Product Owner on which activities are performed inside the Sprint.
  A _Definition of Done_ is perfect when it equals to Potentially Shippable.
@@ -86,7 +86,7 @@ If they forecast too much work, they need to remove complete items which they ha
 * All existing unit tests remain green,
 * The acceptance tests were verified by the development team,
 * All integration tests were passed,
-* and the Status of “done” was confirmed by the article owner.
+* and the Status of “done” was confirmed by the product owner.
 
 The following criteria are often overlooked and also need to be checked:
 * Was the technical documentation updated?
@@ -98,7 +98,7 @@ The following criteria are often overlooked and also need to be checked:
 * The legal documents are done.
 * The deployment and migration scripts are available.
 
-The extension of definition of done to deliver a potentially shippable article has often significant and profound impact on the structure of the organization and its processes.
+The extension of definition of done to deliver a potentially shippable product has often significant and profound impact on the structure of the organization and its processes.
 Experienced agile coaches use the definition of done as an instrument for organizational changes.
 
 When the undone work is slowly removed from the delivery process it triggers structural and process changes.

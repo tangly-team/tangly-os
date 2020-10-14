@@ -13,7 +13,7 @@ tags: ["agile"]
 :copyright: CC-BY-SA 4.0
 
 image::2019-06-01-head.png[720, 480, role=left]
-You are applying the agile, lean approach to your software article development.
+You are applying the agile, lean approach to your software product development.
 Your teams use Scrum or Kanban to deliver running software every two weeks.
 
 To create an agile architecture you must write agile worthy code.
@@ -28,7 +28,7 @@ Having a huge class with thousands of lines of code plainly demonstrate that you
 Such monsters are not born over one night coding session.
 It takes time and incompetence to create such maintenance nightmares.
 
-And as long as your article contains such code monsters it is worthless to pretend having a nice and thought through architecture.
+And as long as your product contains such code monsters it is worthless to pretend having a nice and thought through architecture.
 
 Team discipline and early warning systems are the key to avoid such blunders and kill the monster in the egg.
 
@@ -66,11 +66,11 @@ The better way is https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_d
 
 For each feature you need acceptance criteria; this approach is also called _specification by example_.
 For each acceptance criteria write an acceptance test which is executed each time the application is updated in the continuous delivery pipeline.
-Therefore the acceptance tests are the living documentation of the behavior of your article.
+Therefore the acceptance tests are the living documentation of the behavior of your product.
 
 To implement this approach you need
 
-* Acceptance criteria which imply specifications by example - you need to train your business analysts and article owners,
+* Acceptance criteria which imply specifications by example - you need to train your business analysts and product owners,
 * Cucumber for Java (or equivalent tools) - to write acceptance tests, Mock all external systems and the database - to have fast build and test time and avoid external dependencies,
 * A continuous build and delivery pipeline to automatically run your acceptance validation tests upon each application change,
 * Avoid user interface tests - because they are slow and brittle,
@@ -87,7 +87,7 @@ quality -,
 net to guaranty quality attributes in your source code,
 * https://en.wikipedia.org/wiki/DevOps[DevOps] starting with git, docker, continuous integration, delivery and deployment - to speed up development and
 eliminate tedious manual errors,
-* Lack of accountability equates to lack of trust - your teams are accountable for the quality of your article and you should trust them.
+* Lack of accountability equates to lack of trust - your teams are accountable for the quality of your product and you should trust them.
 
 Once good practices are established you can move to more sophisticated tools - such as git history code analysis - to uncover weaknesses in your development department.
 

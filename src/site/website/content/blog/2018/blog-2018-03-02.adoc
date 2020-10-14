@@ -15,7 +15,7 @@ tags: ["agile"]
 image::2018-03-02-head.jpg[720, 480, role=left]
 How can agile approaches be applied to deliver solutions in a government environment?
 
-Here an example of a GIS open data portal successfully developed using agile approaches such as Kanban, lean article and technical excellence.
+Here an example of a GIS open data portal successfully developed using agile approaches such as Kanban, lean product and technical excellence.
 
 === GIS Open Data Initiative
 
@@ -42,7 +42,7 @@ The solution realized with agile approaches is a GIS open data portal supporting
 
 The solution was implemented during year 2017 and released to public end of year.
 
-We identified these key elements to explain the success of the whole article development.
+We identified these key elements to explain the success of the whole product development.
 The whole organization and all involved managers shall
 
 * trust the team will solve adequately and pragmatically the customer needs.

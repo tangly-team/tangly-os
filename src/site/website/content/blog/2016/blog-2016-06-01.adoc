@@ -27,7 +27,7 @@ The Scrum Master serves the organization in several ways, including:
 
 * _Leading_ and _coaching_ the organization in its Scrum adoption;
 * _Planning_ Scrum implementations within the organization;
-* Helping employees and stakeholders understand and enact Scrum and empirical article development;
+* Helping employees and stakeholders understand and enact Scrum and empirical product development;
 * Causing change that increases the productivity of the Scrum Team; and,
 * _Working_ with other Scrum Masters to increase the effectiveness of the application of Scrum in the organization.
 ____
@@ -35,7 +35,7 @@ ____
 The Scrum Master is a main driver for the introduction of Scrum in all departments and levels in the company.
 He needs indeed senior management support but the Scrum Master daily job is to spread Scrum in the company.
 
-=== Who should coach the article owner to write better backlog and clarify the vision?
+=== Who should coach the product owner to write better backlog and clarify the vision?
 
 [quote]
 ____
@@ -44,25 +44,25 @@ The Scrum Master serves the Product Owner in several ways, including:
 * _Finding_ techniques for effective Product Backlog management;
 * _Clearly communicating vision_, goals, and Product Backlog items to the Development Team;
 * Teaching the Development Team to create clear and concise Product Backlog items;
-* _Understanding long-term article planning_ in an empirical environment;
+* _Understanding long-term product planning_ in an empirical environment;
 * Understanding and practicing agility; and,
 * _Facilitating_ Scrum events as requested or needed.
 ____
 
-The Scrum Master should also coach the article owner and support him in the long term planning, the communication of the vision and backlog management.
+The Scrum Master should also coach the product owner and support him in the long term planning, the communication of the vision and backlog management.
 The vision and goals of the product should always contain an overall planning frame. During the product empirical evidence will trigger revision of the
-milestones and article planning.
+milestones and product planning.
 
-=== What is the meaning of done and a piece of potentially shippable article?
+=== What is the meaning of done and a piece of potentially shippable product?
 
 [quote]
 ____
 When the Product Backlog item or an Increment is described as “Done”, everyone must understand what “Done” means.
 Although this varies significantly per Scrum Team, members must have a shared understanding of what it means for work to be complete, to ensure transparency.
-This is the _Definition of Done_ for the Scrum Team and is used to assess when work is complete on the article Increment.
+This is the _Definition of Done_ for the Scrum Team and is used to assess when work is complete on the product Increment.
 
-Development Teams deliver an Increment of article functionality every Sprint.
-This Increment is working article, so a Product Owner may choose to immediately release it.
+Development Teams deliver an Increment of product functionality every Sprint.
+This Increment is working product, so a Product Owner may choose to immediately release it.
 Each Increment is additive to all prior Increments and thoroughly tested, ensuring that all Increments work together.
 
 As Scrum Teams mature, it is expected that their _Definition of Done_ will expand to include more stringent criteria for higher quality.
@@ -75,7 +75,7 @@ ____
 
 So at the end of sprint all stories realized since the start of the product must be correct.
 Therefore you need automated acceptance tests to guaranty their correctness.
-The Scrum team must guaranty that at the end of each sprint all functions of the article work as specified and accepted by the article owner in the current and previous sprint reviews.
+The Scrum team must guaranty that at the end of each sprint all functions of the product work as specified and accepted by the product owner in the current and previous sprint reviews.
 
 Higher quality is reached through extreme programming approach: test driven development, clean code, pair programming, pair check-in, coding dojo, static analysis tools.
 

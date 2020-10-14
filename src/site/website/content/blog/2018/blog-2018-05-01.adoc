@@ -36,7 +36,7 @@ Findings are displayed in the source code with information such as rule violatio
 You have a window where all findings are displayed to provide an overview and navigation support.
 You are free to analyze a single file, a package, or the whole product; you can also exclude files or packages from the analysis.
 
-Connect SonarLint to your preferred code quality article.
+Connect SonarLint to your preferred code quality application.
 It then uses the same code analyzers, rules and settings locally that are used on the server.
 
 Issues marked as Won’t Fix or False Positive in SonarQube or SonarCloud disappear from your IDE.

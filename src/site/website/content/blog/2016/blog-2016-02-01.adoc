@@ -21,15 +21,19 @@ People talk together, build as a team better products and enjoy the daily activi
 
 Stakeholders and in particular customers or users embraces the advantages they get.
 
-A whisper can still be heard that yes is not without consequences for the organization.
-Say your team is developing with Scrum. We have the following roles:
+A whisper can still be heard:
+
+[.text-center]
+_Yes, it is not without consequences for the organization_.
+
+Say your team is developing software products with Scrum. We have the following roles:
 
 * the stakeholders
 * the developers (Development Team)
 * the Scrum master (SM)
-* the article owner (PO)
+* the product owner (PO)
 
-The Scrum Team is the composition of development team, Scrum master, and article owner.
+The Scrum Team is the composition of the development team, Scrum master, and the product owner.
 
 === Stakeholders
 
@@ -48,7 +52,7 @@ Suddenly you must master Test Driven Development TDD, mocking, unit test, legibl
 But, once you have it, you start to experience the "flow" and enjoy the atmosphere and to deliver at the end of each sprint a new software.
 
 Later you realize that Scrum says the team is responsible.
-You must acknowledge that the article success is also your success.
+You must acknowledge that the product success is also your success.
 Each design decision is now also driven by ROI considerations.
 If you master these responsibilities you suddenly discover the world of engineering.
 It is creating great products with an optimal balance of external quality and costs without ever jeopardizing the quality of the core.
@@ -62,9 +66,9 @@ So you need to discover your "the lonely cowboy riding in the sun" song why this
 
 === Product Owner
 
-As a article owner you control the budget of the product, the priorities and at the end of each iteration you can change all priorities and goals.
+As a product owner you control the budget of the product, the priorities and at the end of each iteration you can change all priorities and goals.
 Cool isn't it.
-But wait as a article owner I am responsible of the budget and article success and each time a member of the team asks me something I must have an answer ready.
+But wait as a product owner I am responsible of the budget and product success and each time a member of the team asks me something I must have an answer ready.
 
 Scrum is cool and we enjoy it.
 And Scrum makes everything transparent and fast.

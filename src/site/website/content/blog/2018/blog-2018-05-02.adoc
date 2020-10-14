@@ -47,7 +47,7 @@ The list of hurdles for a successful introduction of agile approaches was update
 
 69%:: Culture change and you need senior management support
 54%:: Non adapted overall processes because local optimizations have limited effect
-42%:: Missing article overview because a company sells products
+42%:: Missing product overview because a company sells products
 42%:: Focus on business value  because a company shall earn money
 25%:: Missing agile know-how of collaborators and you shall train your collaborators
 

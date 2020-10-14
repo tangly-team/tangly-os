@@ -41,7 +41,7 @@ Now you as Scrum master or agile product manager have to perform important tasks
 * Help removing impediments to increase velocity of team
 * Coach team to implement Scrum and reflect on their activities.
 * {ref-pdca} _PDCA_ principle is built into Scrum with retrospectives and sprint reviews.
-* Coach article owner to deliver a groomed and refined backlog
+* Coach product owner to deliver a groomed and refined backlog
 * Inform and support all product's stakeholders
 * If you reflect on these two lists it becomes obvious that the first list describes malfunctions and the second one describes mechanisms how to improve continuously - lean principles -.
 

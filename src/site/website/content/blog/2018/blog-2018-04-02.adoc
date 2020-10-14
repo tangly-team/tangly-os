@@ -32,27 +32,27 @@ Use these criteria as a checklist to evaluate your current agile transformation
 ** Select an experienced coach understanding organization, team, and technical excellence,
 ** Plan for a long term engagement of the coach.
  The journey will take years,
-*Define your “article”
-** You need an elevator pitch describing your article family and why the customers is buying,
-** Identify your vision, your roadmap for the next three years, your releases for the next 12 months, and article backlog and boundaries of your article,
+*Define your “product”
+** You need an elevator pitch describing your product family and why the customers is buying,
+** Identify your vision, your roadmap for the next three years, your releases for the next 12 months, and product backlog and boundaries of your product,
 * Define “done” - *Definition of Done*
 ** Definition of done tells when your work is completed,
 ** A strong definition of done supports organizational changes, see the {ref-less} metaphor of the _Undone Department_,
 ** Check the team can implement the current definition of done or expand cross-functionality and training,
 * Have appropriately structured teams
-** A team is stable, *long-lived, colocated, cross-functional* and implement end to end features for the article.
+** A team is stable, *long-lived, colocated, cross-functional* and implement end to end features for the solution.
  Avoid component teams specialized for database, user interface or communication layer,
 * Team members are dedicated to the team.
  They do not work in other projects and do not report to a matrix structure,
 * Only the Product Owner provides work for the teams
-** The team is dedicated to implement the best article as defined by the article owner.
+** The team is dedicated to implement the best solutions as defined by the product owner.
  No side activities are tolerated,
 * Keep product managers away from the teams
 ** Project managers are not needed in an agile organization,
 ** We realize and sells products, projects are irrelevant,
 ** Nurture good managers to sustain the transformation.
 
-Further Reading Read the https://less.works/less/rules/index.html[LeSS Rules] for ideas and wisdom how to improve your approach to agile article development.
+Further Reading Read the https://less.works/less/rules/index.html[LeSS Rules] for ideas and wisdom how to improve your approach to agile product development.
 
 As you found out now, I am convinced that {ref-less} approach is one of the best ways to truly transform into an agile organization.
 And less truly and deeply advocate technical excellence for all collaborators.

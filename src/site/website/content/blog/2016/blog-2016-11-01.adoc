@@ -21,7 +21,7 @@ One way to approach this theme is to implement concepts of the above mentioned a
 === Scrum Pillars
 
 Transparency::
- you trust all collaborators to provide their best when working on the article.
+ you trust all collaborators to provide their best when working on the product.
  They need full access to all relevant information: quality, progress, budget, people and financial data.
  They use the data to select the best alternatives to reach the company’s goals
 Inspection::

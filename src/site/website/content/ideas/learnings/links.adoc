@@ -27,7 +27,7 @@ These sites and blogs are a source of knowledge and experience.
  Scrum masters shall read these books to achieve proficiency
 * https://less.works/[LeSS] - extensive documentation on important aspects using Large Scaled Scrum approach -
 * https://www.mountaingoatsoftware.com/blog[Mike Cohn Blog]
-* https://www.romanpichler.com/blog/[Roman Pichler Blog] especially for article owners
+* https://www.romanpichler.com/blog/[Roman Pichler Blog] especially for product owners
 * https://ronjeffries.com/[Ron Jeffries Blog]
 * https://guntherverheyen.com/[Gunther Verheyen Blog] A Scrum caretaker
 * Crisp
@@ -37,7 +37,7 @@ These sites and blogs are a source of knowledge and experience.
 ** Kniberg has also very professional and interesting youtube presentations
 * https://martinfowler.com[Martin Fowler Blog] Martin Fowler is working at Thoughtworks and has written seminal books
 * https://leanarch.eu/[Viktor Grgic Blog]
-* Stefan Wolpers https://age-of-article.com/[Age of Product Blog] tons of materials and a weekly newsletter with links to interesting articles
+* Stefan Wolpers https://age-of-product.com/[Age of Product Blog] tons of materials and a weekly newsletter with links to interesting articles
 ** link:../../blog/[tangly Blog] our learnings over the years with the support of our customers -
 
 === Seminal references are found under

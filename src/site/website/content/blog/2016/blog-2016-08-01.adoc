@@ -36,14 +36,14 @@ Some online videos of https://www.mountaingoatsoftware.com/blog[Mike Cohn] also 
 . http://www.pmi.org/Certification/New-PMI-Agile-Certification.aspx[PMI ACP] eligibility, examination content
 . http://en.wikipedia.org/wiki/Agile_software_development[Agile product management] __APM __Framework, agile product lifecycle
 .. Envision,
-.. Speculate (During the Speculate phase, the article stories are delivered.
+.. Speculate (During the Speculate phase, the product stories are delivered.
  This phase involves planning and delivering tested stories in a short iteration, constantly seeking to reduce the risk and uncertainty of the product.),
 .. Explore,
 .. Adapt,
 .. Close.
 .. Scope, Costs, Time
-.. http://jimhighsmith.com/2010/11/14/beyond-scope-schedule-and-cost-the-agile-triangle/[The agile triangle]: Value (releasable article),
- Quality (reliable, adaptable article),  Constraints (cost, schedule, scope)
+.. http://jimhighsmith.com/2010/11/14/beyond-scope-schedule-and-cost-the-agile-triangle/[The agile triangle]: Value (releasable product),
+ Quality (reliable, adaptable product),  Constraints (cost, schedule, scope)
 . People, Products and Processes
 . http://jimhighsmith.com/2010/11/14/beyond-scope-schedule-and-cost-the-agile-triangle/[Value, Quality and Constraints]
  The five identified core risk areas for a product are: Intrinsic schedule flaw, Specification breakdown, Scope creep,
@@ -137,8 +137,8 @@ image:active-listening[float="right"]
  Internal Rate of Return (IRR) is used to express the return on product in % terms when comparing two different cash flow streams.
 * JIT Just In Time
 * http://en.wikipedia.org/wiki/Kano_model[Kano Model]: Must have, Linear feature, Delight
-** Threshold or basic attributes are must have attributes otherwise the article is incomplete.
- Threshold features are those that must be present in the article  for it to be successful. They are often referred to as must-have features.
+** Threshold or basic attributes are must have attributes otherwise the product is incomplete.
+ Threshold features are those that must be present in the product  for it to be successful. They are often referred to as must-have features.
 ** Performance attributes are linear, the more the better
 ** Excitement attribues are delights
 * MMF Minimally Marketable Feature
@@ -243,7 +243,7 @@ _Product Value, Product quality, Product status, Team performance -Every team ne
  Learners in the Fluent stage are experts -The Stage 3 Learner is at the stage of mastery.
  He is able to figure out the end effect of any procedure and to make his way to that end.-
 * Scrum uses the sashimi technique to require that every slice of functionality created by the developers be complete.
- All of the requirements gathering and analysis, design work, coding, testing, and documentation that constitute a complete article are required to be completed
+ All of the requirements gathering and analysis, design work, coding, testing, and documentation that constitute a complete product are required to be completed
  in every Sprint and demonstrated in the Sprint increment of functionality. Sprints are kept short enough that the stakeholders don’t lose interest in the
  product before the Sprints are completed. And stakeholders can see that they have an opportunity to redirect the product at the start of every Sprint to
  optimize the value they derive from the product. At the end of every Sprint, stakeholders see new functionality. Models, requirements, and internal
@@ -261,12 +261,12 @@ _Product Value, Product quality, Product status, Team performance -Every team ne
 * Normative methodologies are based on solutions or sequences of steps known to work for the discipline.
  Electrical and other building codes in house wiring are examples.
  In software development, one would include state diagram verification in this category.
-* Iterative development means that we build a partial version of a article and then expand that version through successive short time periods of development
- followed by reviews and adaptations. Feature-based delivery means that the engineering team builds features of the final article or, particularly with
- industrial products. At least a close representation of the final article (such as a simulation model). Iterations are constrained to produce a result within
+* Iterative development means that we build a partial version of a product and then expand that version through successive short time periods of development
+ followed by reviews and adaptations. Feature-based delivery means that the engineering team builds features of the final product or, particularly with
+ industrial products. At least a close representation of the final product (such as a simulation model). Iterations are constrained to produce a result within
  a certain period of time—a time box (as short as 1–4 weeks for software). Time boxes force closure; they force us to make something concrete, often before
  we are quite ready. Incremental development means that we build these products such that they could be deployed at the end of one or more of the iterations.
-* Forecasting the financial value of a theme is the responsibility of the article owner, but it is a responsibility shared with all other team
+* Forecasting the financial value of a theme is the responsibility of the product owner, but it is a responsibility shared with all other team
  members—programmers, testers, analysts, product managers, and so on.
 * Decision Framing focuses majorly on,
 _Decision framing focuses on who gets involved in the decision process._

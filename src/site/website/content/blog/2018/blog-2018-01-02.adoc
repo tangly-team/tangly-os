@@ -54,8 +54,8 @@ We typically proceed as follow for the analysis:
 
 * Record Scrum meetings - sprint planning, sprint review, sprint retrospective, daily scrum, if necessary backlog refinement -,
 * Observe how the team members work during the sprint, to better understand the dynamics in your team,
-* Analyse the vision, roadmap, release plan, article backlog, and impediment list together with the article owner,
-* Interview article owners, scrum masters, selected developers and selected stakeholders,
+* Analyse the vision, roadmap, release plan, product backlog, and impediment list together with the product owner,
+* Interview product owners, scrum masters, selected developers and selected stakeholders,
 * Review the structures, processes and practices (e.g., Scrum of Scrums, Portfolio Kanban) used to coordinate dependent teams.
 
 After this analysis, we do a debriefing in a half-day workshop.

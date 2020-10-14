@@ -78,7 +78,7 @@ Now you are ready to experiment with scaling.
 ** Experiment with new approaches and measure success,
 * Organize around up to eight teams, _one backlog for one product_
 ** Avoid team backlogs,
-** Have one article owner in charge of the whole article,
+** Have one product owner in charge of the whole product,
 * Pull, do not push
 ** Collaborators and teams select workload,
 ** All information are available to all collaborators,
@@ -104,7 +104,7 @@ Eliminate product based organizations.
 Otherwise multiple backlogs must be synchronized and local optimization is de facto applied.
 This approach is against all lean principles.
 * _Customer and users talks directly with the development team_.
-Product owners, article managers enterprise architects should never be filtering the information flow between customers and engineers.
+Product owners, product managers enterprise architects should never be filtering the information flow between customers and engineers.
 * _Eliminate step by step all coordination roles_.
 Emphasize communication between developers in the team and between teams.
 Scrum of Scrums where only Scrum masters attend, Release Train Engineer, System teams, corporate Solution Engineers are just a waste of resources.

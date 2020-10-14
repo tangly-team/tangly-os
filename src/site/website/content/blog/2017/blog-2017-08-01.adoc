@@ -28,7 +28,7 @@ The text with the regular font is the job description. I wrote down my comments 
 * Analyze requirements and provide time estimates: consume non-technical functional requirements documentation.
  Provide feedback when necessary, translating into technical documentation when necessary.
  Provide feasibility assessment and estimate level of effort to implement
-** __The article owner and the team writes and refines stories.
+** __The product owner and the team writes and refines stories.
  Avoid requirements and move to stories and epics.
  Technical documentation and feasibility assessments shall be done by the team.
  Only the team has the right to estimate the effort needed to implement a story.__
@@ -42,10 +42,10 @@ The text with the regular font is the job description. I wrote down my comments 
  He trusts and coaches his teams to deliver best quality.__
 * Coordinate with QA, IT Operations, and Database Administrators on testing. l
  Launch planning, launch, and troubleshooting/optimization of features post-launch.
-** __The article owner plans the release schedule with the team.
- A high quality article does not need a troubleshooting process.
+** __The product owner plans the release schedule with the team.
+ A high quality product does not need a troubleshooting process.
  The above nicely describes an organization based on functional silos.
- No cross-functionality is ensured and article focus is an unknown concept.__
+ No cross-functionality is ensured and product focus is an unknown concept.__
 ** __The Scrum master is neither an administrator nor an overall coordinator.
  His teams are self-organizing and directly communicate with all involved parties.__
 * Architecture: participate in technical design of new and expanding systems and infrastructure.
@@ -57,10 +57,10 @@ The text with the regular font is the job description. I wrote down my comments 
 I clearly decided not to apply for this position.
 I was fascinated that companies still believe that such alibi positions will not be detected.
 The above position is a flag for me.
-As an agile developer, Scrum master or article owner I shall never work for this company.
+As an agile developer, Scrum master or product owner I shall never work for this company.
 I will not have link::../../2017/fun-at-work[Fun at Work].
 
-They were looking for an administrator and a classical product manager.
+They were looking for an administrator and a classical project manager.
 They were not looking for an agile professional and Scrum master.
 
 I kindly suggested the authors of the job description shall get an introduction training to Agile, Lean and Scrum.

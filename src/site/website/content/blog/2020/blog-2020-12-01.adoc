@@ -52,7 +52,7 @@ Let us categorize the bugs you have and deal with them accordingly.
  Treat such bugs as critical bugs.
 . Establish a software craftsmanship culture.
  Stop delivering products with known errors.
- Your article owner should reject any feature with known errors.
+ Your product owner should reject any feature with known errors.
 
 Bugs have a tendency to become obsolete pretty quickly in applications that are updated frequently.
 The steps to reproduce become irrelevant, the functionality changes, the impact of the bug often gets lower.
@@ -76,4 +76,4 @@ Finally, to ensure that this system works.
 * As the team shifts its focus to improved quality there will be fewer of them. This is truly a binary system with no wiggle room.
 * Bugs are either fixed now or deleted, there is no severity and no haggling about the classification of the bug!
 * Are you ready to shift your focus from managing bugs to ensuring quality?
- And if not, why should I buy your article?
+ And if not, why should I buy your product?

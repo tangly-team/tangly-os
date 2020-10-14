@@ -40,7 +40,7 @@ Signs of this behavior are
 We mean the actual users of the actual code,
 ** Continuous feedback from users to the development team (bug reports, users assessments) is not available.
 Talking once at the beginning of a program to verify requirements does not count!,
-* Not deploying early an initial article release
+* Not deploying early an initial product release
 ** Meeting requirements is treated as more important than getting something useful into the field as quickly as possible,
 * Development teams are silos instead of feature teams
 *** Participants act like ‘it’s not my job’,
@@ -95,7 +95,7 @@ For a team working on agile, the answer to all of these questions should  be a f
 === Questions for Program Leadership
 
 * Are teams delivering working software to at least some subset of real users every iteration and gathering feedback?
-* Is there a article charter that lays out the mission and strategic goals? Do all members of the team understand both, and are they able to see how their work contributes to both?
+* Is there a product charter that lays out the mission and strategic goals? Do all members of the team understand both, and are they able to see how their work contributes to both?
 * Is feedback from users turned into concrete work items for sprint teams on timelines shorter than one month?
 * Are teams empowered to change the requirements based on user feedback?
 * Are teams empowered to change their process based on what they learn?

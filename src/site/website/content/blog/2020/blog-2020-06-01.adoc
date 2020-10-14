@@ -24,7 +24,7 @@ ____
 
 === Introduction
 
-For a developer new to a legacy software article, it is often hard to understand the existing application.
+For a developer new to a legacy software solution, it is often hard to understand the existing application.
 He must determine the extent of source code and architectural decay, and identify smells and metric violations.
 
 Legacy applications are often critical to the business and have been in use for years, sometimes decades.
@@ -43,9 +43,9 @@ A professional engineer https://martinfowler.com/bliki/OpportunisticRefactoring.
 
 * _Understand how it is used_.
 These scenarios define the acceptance tests you need to start creating a set of automated validation criteria.
-And you will better understand how your users are working with your article.
+And you will better understand how your users are working with your product.
 * _Understand how it is deployed_.
-You need a reproducible and in the long run automated process to deploy a new version of your article.
+You need a reproducible and in the long run automated process to deploy a new version of your application.
 We are talking continuous delivery and even continuous deployment.
 * _Understand how it is build_.
 You need a reproducible and automated build process.
@@ -93,7 +93,7 @@ As fewer and fewer programmers and operation managers will have the knowledge of
 === Ameliorate Your Process
 
 Applications do not degrade to legacy or geriatric systems over night.
-The organization and development group failed to work professionally over years before the article was ultimately doomed.
+The organization and development group failed to work professionally over years before the product was ultimately doomed.
 
 You must establish a culture of professional software development.
 Professional software developers write code which is maintainable and legible.

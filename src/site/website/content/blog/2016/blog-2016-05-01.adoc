@@ -43,7 +43,7 @@ Find out if you are a real professional Scrum master.
 Do you perform each sprint the top things a Scrum Master usually forgets to focus on?
 
 . Do Gemba. Redefine career paths, incentives, organization to be more Scrum focused,
-. Identify with the article owner and the development team missing article backlog items,
+. Identify with the product owner and the development team missing product backlog items,
 . State team issues not being discussed because they are too uncomfortable,
 . Find out appropriate balance between end-to-end system tests and unit tests,
 . Play back the team's progress against the proposed release plan,

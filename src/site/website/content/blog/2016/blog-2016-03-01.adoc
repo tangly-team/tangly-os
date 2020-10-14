@@ -51,6 +51,6 @@ The tools I use to perform administrative work are
  I bought it as soon as the company stopped requesting higher prices for OS X than for the other platforms.
 
 LibreOffice completely replaced Microsoft Office suite.
-I stopped using OpenOffice after the strange behavior of Oracle with the article.
+I stopped using OpenOffice after the strange behavior of Oracle with the application.
 
 I never really regretted leaving Linux or Ubuntu behind me.

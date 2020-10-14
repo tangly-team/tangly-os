@@ -13,10 +13,10 @@ tags: ["agile"]
 :copyright: CC-BY-SA 4.0
 
 image::2019-02-01-head.png[720, 480, role=left]
-You are developing your article using agile and lean approaches.
+You are developing your applicaion using agile and lean approaches.
 
 How can you check your approach and distill improvements?
-A health check of your article and your development approach is certainly a good solution.
+A health check of your product and your development approach is certainly a good solution.
 
 This post is the fourth and last of a set of articles identifying health checks with different focus.
 We will identify strengths, potential weaknesses and hopefully find room for improvement.
@@ -65,7 +65,7 @@ A set of questions to detect cultural flaws for a lean and agile focused company
 . Are the human resources department collaborators trained in agile approaches and agile HR?
 . Are all collaborators and managers working in the development organization trained in agile and lean approaches?
 . Are all collaborators and managers working in the development organization trained in software development techniques?
-. Is there a article charter that lays out the mission and strategic goals?
+. Is there a product charter that lays out the mission and strategic goals?
 . Do all members of the team understand both, and are they able to see how their work contributes to both?
 . Do you release your products at least monthly?
 . Do software developers have local administrator rights on their workstation?
@@ -81,7 +81,7 @@ A set of questions to detect cultural flaws for a lean and agile focused company
 .. Do they use the best development tools of trade - and not only the basic and cheap version -?
 .. Do they have access to fast and stable continuous integration and deployment pipelines?
 .. Do they develop and document in English?
-. Can you work on refactoring and clean code without a article backlog item or task?
+. Can you work on refactoring and clean code without a product backlog item or task?
 . Do your managers knows the most important sentences and practice them daily?
 .. _Sorry_
 .. _Thank you_
@@ -90,7 +90,7 @@ A set of questions to detect cultural flaws for a lean and agile focused company
 
 === Posts in the Health Check Series
 
-. link:../../2018/how-healthy-is-your-article-source-code-check[Source Code Check]
-. link:../../2018/how-healthy-is-your-article-delivery-pipeline-check[Delivery Pipeline Check]
-. link:../../2018/how-healthy-is-your-article-article-strategy-check[Product Strategy Check Company]
-. link:../../2019/how-healthy-is-your-article-company-culture-check/[Company Culture Check]
+. link:../../2018/how-healthy-is-your-product-source-code-check[Source Code Check]
+. link:../../2018/how-healthy-is-your-product-delivery-pipeline-check[Delivery Pipeline Check]
+. link:../../2018/how-healthy-is-your-product-strategy-check[Product Strategy Check Company]
+. link:../../2019/how-healthy-is-your-product-company-culture-check/[Company Culture Check]

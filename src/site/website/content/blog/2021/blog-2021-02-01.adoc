@@ -14,7 +14,7 @@ tags: ["agile"]
 
 image::2021-02-01-head.jpg[720, 480, role=left]
 
-Scaling Agile, Lean and {ref-scrum} to the whole article development department is hard work.
+Scaling Agile, Lean and {ref-scrum} to the whole product development department is hard work.
 You start a change journey in murky waters.
 Best to communicate a lot, strengthen your teams and have total support of upper management.
 Technical agile coaching usefully describes the work I do.
@@ -58,7 +58,7 @@ Having a clear vision of how an LeSS organization could be:
 * Adoption and goals setting
 * Managing an organizational improvement backlog
 * Changing management practices from controlling day-to-day work to building capability
-* Managing work: article backlogs and how the organization manages them
+* Managing work: product backlogs and how the organization manages them
 * Dealing with interruptions
 * Human Resource practices such as appraisals and career paths
 * Facilitating organizational release/roadmap planning and retrospectives
@@ -134,10 +134,10 @@ After that reduce (not eliminate!) the external technical coaching or let the ex
 
 {ref-less} is {ref-scrum}, it is Large Scaled Scrum
 Feature teams are economical and cross-functional
-Technical excellence is the essence of a quality article
-One article owner for the whole article provides focus
+Technical excellence is the essence of a quality solution
+One product owner for the whole product provides focus
 
-The article owner is where the money is.
+The product owner is where the money is.
 Depending on your organization put him where the budget comes from.
 
 Move component owner to become component mentor.
