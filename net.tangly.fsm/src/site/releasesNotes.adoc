@@ -5,7 +5,9 @@ lastmod: 2020-05-31
 weight: 20
 draft: false
 ---
+:company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
+
 
 == FSM Library Change Logs
 

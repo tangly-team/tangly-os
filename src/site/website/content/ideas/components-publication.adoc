@@ -51,7 +51,7 @@ The acronyms are (the current composite acronym is TANGLY_OS meaning all compone
 
 Below the dependencies between tangly open source components as defined in the multi-modules {ref-gradle} build file.
 
-[plantuml,tangly-componentsDependencies,svg]
+[plantuml,tangly-componentsDependencies,svg,svg-type="interactive"]
 ....
 package net.tangly.bdd [[https://tangly-team.bitbucket.io/docs/bdd/]] {
 }

@@ -1,0 +1,34 @@
+---
+title: "Developer's Guide PORT"
+linkTitle: "Developer's Guide"
+date: 2020-06-01
+weight: 50
+draft: false
+---
+
+== Developer's Guide PORT
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:revnumber: v0.1
+:revdate: 2020-05-31
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+=== Conventions for Test Data
+
+The following ranges of object identifiers _OID_ are foreseen:
+
+Natural entities:: 1 - 99
+Legal entities:: 100 - 199
+Employees:: 200 - 299
+Comments:: 300 - 399
+Assignments:: 400 -499
+Contracts:: 500 -599
+Interactions:: 600 - 699
+Activities:: 700 - 799
+Products:: 800 - 899
+Subjects:: 900 - 999
+Efforts:: 1000 - 1099
+
+The test dataset defined as resources for the integration tests of the PORT component follows the above conventions.
