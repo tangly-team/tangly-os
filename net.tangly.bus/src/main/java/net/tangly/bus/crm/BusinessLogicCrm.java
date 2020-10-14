@@ -41,23 +41,19 @@ public class BusinessLogicCrm {
      * state. Set the end date property of interaction to the end date of the last activity associated with the interaction in the case of lost state.
      */
     public void updateInteractions() {
-        realm().interactions().items().forEach(interaction -> {
-            interaction.toDate(realm().contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.legalEntity().oid())
-                    .map(Contract::toDate).max(Comparator.comparing(LocalDate::toEpochDay)).get());
-        });
+        realm().interactions().items().forEach(interaction -> interaction.toDate(realm().contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.legalEntity().oid())
+                .map(Contract::toDate).max(Comparator.comparing(LocalDate::toEpochDay)).get()));
         realm().interactions().items().stream().filter(o -> o.code() == InteractionCode.lost).forEach(interaction -> interaction
                 .toDate(interaction.activities().stream().map(Activity::date).max(Comparator.comparing(LocalDate::toEpochDay)).get()));
     }
 
     public BigDecimal funnel(@NotNull InteractionCode state, LocalDate from, LocalDate to) {
-        HasInterval.IntervalFilter<Interaction> filterInteractions = new HasInterval.IntervalFilter(from, to);
-        HasInterval.IntervalFilter<Contract> filterContracts = new HasInterval.IntervalFilter(from, to);
         return switch (state) {
-            case lead, prospect, lost -> realm.interactions().items().stream().filter(o -> o.code() == state).filter(filterInteractions)
+            case lead, prospect, lost -> realm.interactions().items().stream().filter(o -> o.code() == state).filter(new HasInterval.IntervalFilter<>(from, to))
                     .map(Interaction::weightedPotential).reduce(BigDecimal.ZERO, BigDecimal::add);
             case customer, completed -> realm.interactions().items().stream().filter(o -> o.code() == state)
                     .flatMap(interaction -> realm.contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.legalEntity().oid()))
-                    .filter(filterContracts).map(Contract::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
+                    .filter(new HasInterval.IntervalFilter<>(from, to)).map(Contract::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
         };
     }
 }

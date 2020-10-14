@@ -77,11 +77,11 @@ Your development teams
 * understand object-oriented, functional and rule based programming,
 * known all major patterns and idioms of the used development stack,
 * practice https://en.wikipedia.org/wiki/Test-driven_development[TDD], https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD], clean
-code, refactoring, embrace CI/CD and DevOps,
+ code, refactoring, embrace CI/CD and DevOps,
 * read source code from open source projects to learn better ways,
 * know https://en.wikipedia.org/wiki/SMART_criteria[SMART], https://en.wikipedia.org/wiki/INVEST_(mnemonic)[INVEST],
-https://de.wikipedia.org/wiki/Solid_(Software)[SOLID], https://en.wikipedia.org/wiki/KISS_principle[KISS],
-https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI],
+ https://de.wikipedia.org/wiki/Solid_(Software)[SOLID], https://en.wikipedia.org/wiki/KISS_principle[KISS],
+ https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI],
 * hold weekly design workshops with huge whiteboards,
 * use https://en.wikipedia.org/wiki/Domain-driven_design[domain driven design] and https://en.wikipedia.org/wiki/Event_storming[event storming],
 * avoid https://en.wikipedia.org/wiki/Big_Design_Up_Front[BDUF].

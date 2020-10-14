@@ -35,7 +35,7 @@ The following process is used to publish {ref-tangly} open source component on h
 ====
 It takes up to one day until the component is visible in Maven Central website upon publication.
 
-The last publications were performed in less than 30 minutes.
+On the positive side, the last publications were performed in less than 30 minutes.
 ====
 
 The acronyms are (the current composite acronym is TANGLY_OS meaning all components are released)

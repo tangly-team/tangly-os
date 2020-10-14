@@ -6,7 +6,7 @@ cd $siteDir
 
 # guaranty the population of the public folder containing the site to be published
 echo Let the server time to build the lunr search index files before stopping the hugo server and publishing the site
-hugo server --destination public
+hugo --destination public
 
 cd public
 git add --all

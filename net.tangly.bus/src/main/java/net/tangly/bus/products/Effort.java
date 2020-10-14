@@ -14,15 +14,13 @@
 package net.tangly.bus.products;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import net.tangly.bus.core.HasOid;
 
 /**
- * An duration defines work performed on a project. It is possible to specify an additional contract to identify the financial
- * link to the duration. An duration is always performed by one employee. Administrative data specify the duration, the date and
- * an optional description. Efforts can be used to generate work ports such as monthly ports and used to calculate the spend
- * time on a contract or a project.
+ * An duration defines work performed on a project. It is possible to specify an additional contract to identify the financial link to the duration. An duration
+ * is always performed by one employee. Administrative data specify the duration, the date and an optional description. Efforts can be used to generate work
+ * ports such as monthly ports and used to calculate the spend time on a contract or a project.
  */
 public class Effort implements HasOid {
     private long oid;

@@ -84,10 +84,10 @@ sudo npm install -D --save autoprefixer   # <4>
 sudo npm install -D --save postcss-cli
 sudo npm install -D --save postcss
 ----
-<1> install hugo application
-<2> install asciidoctor and additional asciidoctor packages
-<3> install plantuml and graphviz for diagrams, in particcular UML sketches
-<4> install postcss and additional packages used by docsy to generate deployment site
+<1> Install hugo application
+<2> Install asciidoctor and additional asciidoctor packages
+<3> Install plantuml and graphviz for diagrams, in particcular UML sketches
+<4> Install postcss and additional packages used by docsy to generate deployment site
 
 ==== Asciidoctor Configuration
 

@@ -76,6 +76,9 @@ If the deletion of comments is disabled, the comment history is an audit trail d
 [WARNING]
 ====
 Beware that the authors define an external identifier space.
+If your application requires a user account, you can connect the author with the user account.
+The consequence is that you should only disable these accounts, and never delete them.
+
 Policy should be defined to handle the fact that collaborators quit the company overtime and are no more active users; but they are still referenced as authors.
 ====
 

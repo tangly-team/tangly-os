@@ -16,7 +16,6 @@ package net.tangly.bus.crm;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 
 import net.tangly.bus.core.HasOid;

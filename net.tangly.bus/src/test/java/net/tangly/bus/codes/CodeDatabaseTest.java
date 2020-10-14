@@ -65,7 +65,6 @@ class CodeDatabaseTest {
         TestCode code2 = type.findCode(2).orElse(null);
         assertThat(code1).isNotNull();
         assertThat(code2).isNotNull();
-        assertThat(code1.equals(code1)).isTrue();
         assertThat(code1.equals(code2)).isFalse();
         assertThat(code1.hashCode()).isEqualTo(code1.hashCode());
         assertThat(code1.hashCode()).isNotEqualTo(code2.hashCode());

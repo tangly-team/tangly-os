@@ -31,10 +31,8 @@ git submodule update --init --recursive
 cp -R ./layouts/docs ./layouts/ideas
 
 # improve copyright in the footer and taxonomy display
-cp $prjDir/src/site/website/docsy/layouts/partials/footer.html $siteDir/themes/docsy/layouts/partials
-
-mkdir $siteDir/themes/docsy/layouts/taxonomy
-cp $prjDir/src/site/website/docsy/layouts/taxonomy/tag.html $siteDir/themes/docsy/layouts/taxonomy
+cp $prjDir/src/site/website/docsy/layouts/_default/* $siteDir/themes/docsy/layouts/_default
+cp $prjDir/src/site/website/docsy/layouts/partials/* $siteDir/themes/docsy/layouts/partials
 
 # install postcss for final generation of site
 cd $siteDir

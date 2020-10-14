@@ -73,6 +73,5 @@ I still have no need to use any Microsoft applications.
 My findings are inline with the ones in my link:../../2016/macbook-pro-love[older blog] in March 2016.
 I hope Apple will still produce high-quality hardware and software in the future.
 
-The only big MacOS big improvement I am waiting for from Apple is that Apple delegate the installation and update of Unix applications and utilities to
-Homebrew.
+The only big MacOS improvement I am waiting for from Apple is that Apple delegate the installation and update of Unix applications and utilities to Homebrew.
 Apple is sadly always behind the release cycle of regular Unix programs. Homebrew does a way better job to support software developers.

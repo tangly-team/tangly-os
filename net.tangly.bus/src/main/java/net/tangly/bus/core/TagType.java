@@ -94,14 +94,14 @@ public record TagType<T extends Serializable>(String namespace, @NotNull String 
      */
     public Tag of(T value) {
         if ((kind() == ValueKinds.MANDATORY) && (value == null)) {
-            throw new IllegalArgumentException(String.format("value is required for mandatory tag type {} {}", namespace(), name()));
+            throw new IllegalArgumentException(String.format("value is required for mandatory tag type %s %s", namespace(), name()));
         }
         return new Tag(namespace, name, (value != null) ? value.toString() : null);
     }
 
     public Tag of(String value) {
         if ((kind() == ValueKinds.MANDATORY) && (value == null)) {
-            throw new IllegalArgumentException(String.format("value is required for mandatory tag type {} {}", namespace(), name()));
+            throw new IllegalArgumentException(String.format("value is required for mandatory tag type %s %s", namespace(), name()));
         }
         return new Tag(namespace, name, value);
     }

@@ -54,6 +54,7 @@ Our company [blog](./blog/) hosts articles in the topics of
 * Java stack experiences
 * Private opinions about technological aspects
 
-We publish regularly new articles. The goal is to publish at least one article per month. Stay tuned.
+A classificaton accordingly to [topics](./tags/) is available.
+We publish regularly new articles. The goal is to publish at least one article per month. **Stay tuned**.
 </div>
 {{% /blocks/section %}}
