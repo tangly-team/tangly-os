@@ -82,7 +82,7 @@ public class MainView extends VerticalLayout {
         InvoicesHdl invoicesHdl = new InvoicesHdl(realmInvoices);
         invoicesHdl.importEntities(Paths.get("/Users/Shared/tangly/invoices/"));
         LedgerHdl ledgerHdl = new LedgerHdl(new Ledger());
-        ledgerHdl.importLedger(Paths.get("/Users/Shared/tangly/ledger"));
+        ledgerHdl.importEntities(Paths.get("/Users/Shared/tangly/ledger"));
         ledgerLogic = new LedgerBusinessLogic(ledgerHdl.ledger());
 
         naturalEntitiesView = new NaturalEntitiesView(realmCrm, Crud.Mode.EDITABLE);

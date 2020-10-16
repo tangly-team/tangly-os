@@ -37,7 +37,7 @@ dependencies {
     implementation 'commons-codec:commons-codec:1.15'
     implementation 'commons-io:commons-io:2.8.0'
     implementation "org.hsqldb:hsqldb:$hsqldbVersion"
-    implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.10'
+    implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.11'
     implementation 'org.iban4j:iban4j:3.2.1'
     testImplementation "org.flywaydb:flyway-core:$flyWayVersion"
     testImplementation "com.guicedee.services:json:$jsonVersion"

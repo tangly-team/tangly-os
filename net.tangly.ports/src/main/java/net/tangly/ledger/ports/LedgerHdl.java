@@ -51,7 +51,7 @@ public class LedgerHdl {
      *
      * @param directory path to the ledger structure and to transaction files
      */
-    public void importLedger(@NotNull Path directory) {
+    public void importEntities(@NotNull Path directory) {
         LedgerTsvHdl handler = new LedgerTsvHdl(ledger);
         handler.importLedgerStructureFromBanana(directory.resolve("swiss-ledger.tsv"));
         ledger.build();

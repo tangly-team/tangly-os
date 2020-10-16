@@ -40,7 +40,7 @@ class LedgerBusinessLogicTest {
     @Tag("localTest")
     public void createReports() {
         LedgerHdl ledgerHdl = new LedgerHdl(new Ledger());
-        ledgerHdl.importLedger(Paths.get("/Users/Shared/tangly/"));
+        ledgerHdl.importEntities(Paths.get("/Users/Shared/tangly/"));
         LedgerBusinessLogic ledgerLogic = new LedgerBusinessLogic(ledgerHdl.ledger());
 
         Path report = Paths.get("/Users/Shared/tangly/reports/ledger");
@@ -63,7 +63,7 @@ class LedgerBusinessLogicTest {
     private Ledger createLedger(CrmAndLedgerStore store) {
         store.createCrmAndLedgerRepository();
         LedgerHdl ledgerHdl = new LedgerHdl(new Ledger());
-        ledgerHdl.importLedger(store.ledgerRoot());
+        ledgerHdl.importEntities(store.ledgerRoot());
         return ledgerHdl.ledger();
     }
 }
