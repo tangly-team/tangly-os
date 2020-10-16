@@ -53,14 +53,14 @@ public class CrmVcardHdl {
     }
 
     /**
-     * Import all vcard files located in the folder <i>directory</i>. The imported VCard are added as naturl entities. If an organization is specified, an
+     * Import all vcard files located in the folder <i>directory</i>. The imported VCard are added as natural entities. If an organization is specified, an
      * employee connection is added under the condition the legal entity is found in the CRM.
      *
      * @param directory directory to the folder containing the VCard files to import
      */
     public void importVCards(@NotNull Path directory) {
         try (Stream<Path> stream = Files.walk(directory)) {
-            stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(VCARD_EXT)).forEach(o -> importVCard(o));
+            stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(VCARD_EXT)).forEach(this::importVCard);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

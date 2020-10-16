@@ -26,6 +26,7 @@ import net.fortuna.ical4j.vcard.VCard;
 import net.tangly.bus.core.Address;
 import net.tangly.bus.core.EmailAddress;
 import net.tangly.bus.core.PhoneNr;
+import net.tangly.bus.core.Strings;
 import net.tangly.bus.crm.GenderCode;
 import org.jetbrains.annotations.NotNull;
 
@@ -94,7 +95,7 @@ public class VCard2 {
 
     public GenderCode gender() {
         String gender = property(Property.Id.GENDER);
-        return switch (gender.charAt(0)) {
+        return Strings.isNullOrBlank(gender) ? GenderCode.unspecified : switch (gender.charAt(0)) {
             case 'M' -> GenderCode.male;
             case 'F' -> GenderCode.female;
             case 'O' -> GenderCode.other;
@@ -135,7 +136,7 @@ public class VCard2 {
     }
 
     private boolean containsParameterType(Property property, Parameter.Id id, String value) {
-        return property.getParameters(id).stream().filter(o -> value.equals(o.getValue())).findAny().isPresent();
+        return property.getParameters(id).stream().anyMatch(o -> value.equals(o.getValue()));
     }
 
     private String property(Property.Id id) {

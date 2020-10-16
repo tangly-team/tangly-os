@@ -25,9 +25,10 @@ import net.tangly.bus.core.EntityImp;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Defines an interaction between your company and a legal entity and a group of natural entities. Legal entities are the organizations you want a contract
- * with. The natural entities are the persons in these organizations you are communicated with. The interaction has a set of activities moving your negotiation
+ * Defines an interaction between your company and a legal entity and a group of natural entities. The egal entity is the organization you want a contract with.
+ * The natural entities are the persons in these organizations you are communicated with. The interaction has a set of activities moving your negotiation
  * through stages. The final result is a contract or a lost opportunity.
+ * <p>An interaction can have quite a long duration. Activities are the events when you interact with your potential customer.</p>
  */
 public class Interaction extends EntityImp {
     private final List<Activity> activities;

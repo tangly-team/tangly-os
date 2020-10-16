@@ -80,7 +80,7 @@ public class LedgerBusinessLogic {
     }
 
     /**
-     * Return the change of the selected acount during the specified time interval.
+     * Return the change of the selected account during the specified time interval.
      *
      * @param accountId identifier of the account which change shall be computed
      * @param from      start of the time interval

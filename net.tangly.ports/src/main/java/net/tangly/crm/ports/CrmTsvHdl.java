@@ -198,7 +198,7 @@ public class CrmTsvHdl {
     }
 
     static void addActivities(Interaction entity, Provider<Activity> activities) {
-        entity.addAll(activities.items().stream().filter(o -> ((Long) ReflectionUtilities.get(o, "interactionFoid")).longValue() == entity.oid())
+        entity.addAll(activities.items().stream().filter(o -> (Long) ReflectionUtilities.get(o, "interactionFoid") == entity.oid())
                 .collect(Collectors.toList()));
     }
 

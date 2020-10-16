@@ -17,7 +17,6 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -25,10 +24,8 @@ import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
-
 import javax.inject.Inject;
 
-import jnr.ffi.annotations.In;
 import net.tangly.bus.invoices.Article;
 import net.tangly.bus.invoices.ArticleCode;
 import net.tangly.bus.invoices.Invoice;
@@ -130,6 +127,10 @@ public class InvoicesHdl {
         return TsvEntity.of(Article.class, fields, imports);
     }
 
+    public void exportInvoiceToPdf(@NotNull Path directory, @NotNull Invoice invoice) {
+        exportInvoiceDocument(invoice, resolvePath(directory.resolve(REPORTS), invoice), true, true);
+    }
+
     /**
      * Export an invoice to a file.
      *
@@ -150,10 +151,6 @@ public class InvoicesHdl {
             InvoiceZugFerd en164391Generator = new InvoiceZugFerd();
             en164391Generator.exports(invoice, invoicePath, Collections.emptyMap());
         }
-    }
-
-    public void exportInvoiceToPdf(@NotNull Path directory, @NotNull Invoice invoice) {
-        exportInvoiceDocument(invoice, resolvePath(directory.resolve(REPORTS), invoice), true, true);
     }
 
     /**
@@ -177,12 +174,4 @@ public class InvoicesHdl {
         }
         return invoicePath;
     }
-
-    //    Path invoicesFolder = directory.resolve(INVOICES);
-    //        if (Files.exists(invoicesFolder)) {
-    //        importInvoices(invoicesFolder);
-    //    } else {
-    //        logger.atWarn().log("Invoices folder {} does not exist", invoicesFolder);
-    //    }
-
 }

@@ -25,7 +25,7 @@ import net.tangly.bus.ledger.Ledger;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Provide workflows for ledger activiites.
+ * Provide workflows for ledger activities.
  * <ul>
  *     <li>Import of the ledger account structure. If using the <a href="https://www.banan.ch">banana</a> application, select all definition rows in
  *     the accounts tab and export it as <i>Data/Export Rows/Export Rows to Txt</i>. Once completed you can use for example MacOs Numbers to remove company

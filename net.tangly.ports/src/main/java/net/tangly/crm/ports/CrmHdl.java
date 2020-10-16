@@ -14,7 +14,6 @@
 package net.tangly.crm.ports;
 
 import java.nio.file.Path;
-
 import javax.inject.Inject;
 
 import net.tangly.bus.crm.RealmCrm;
@@ -23,7 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Defines the workflows defined for CRM activities. Currently we assume that invoices are often handled through the CRM subsystem.
+ * Defines the workflows defined for CRM activities
  */
 public final class CrmHdl {
     public static final String MODULE = "net.tangly.ports";

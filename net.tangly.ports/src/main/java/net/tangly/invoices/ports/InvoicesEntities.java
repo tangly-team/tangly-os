@@ -17,7 +17,6 @@ import net.tangly.bus.invoices.Article;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceLegalEntity;
 import net.tangly.bus.invoices.RealmInvoices;
-import net.tangly.bus.providers.Provider;
 import net.tangly.bus.providers.RecordProvider;
 import net.tangly.bus.providers.RecordProviderInMemory;
 

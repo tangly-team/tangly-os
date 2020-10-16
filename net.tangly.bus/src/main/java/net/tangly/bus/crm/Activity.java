@@ -25,6 +25,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * An activity is an action between a seller and a potential sellee. Activities are performed in the context of interaction. Activities are only available
  * through their context, meaning no access to all activities exists.
+ * <p>The author of the activity identifies the collaborator interacting with the potential customer.</p>
  */
 public class Activity implements HasOid {
     private long oid;

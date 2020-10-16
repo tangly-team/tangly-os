@@ -14,8 +14,6 @@
 package net.tangly.ledger.ports;
 
 
-import java.io.BufferedWriter;
-import java.io.PrintWriter;
 import java.io.Writer;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
@@ -72,9 +70,7 @@ public class ClosingReportAsciiDoc {
         helper.tableEnd();
 
         helper.header("Transactions", 3);
-        helper.tableHeader("Transactions", "cols=\"20, 20, 70 , 15, 15, >20, >10\"", "Date", "Voucher", "Description", "Debit", "Credit", "Amount",
-                "VAT"
-        );
+        helper.tableHeader("Transactions", "cols=\"20, 20, 70 , 15, 15, >20, >10\"", "Date", "Voucher", "Description", "Debit", "Credit", "Amount", "VAT");
         ledger.transactions(from, to).forEach(o -> createTransactionRow(helper, o));
         helper.tableEnd();
     }
@@ -87,8 +83,8 @@ public class ClosingReportAsciiDoc {
     }
 
     /**
-     * Creates the VAT results table rows. For each half year - the period used by the Swiss government as VAT payment period for small companies
-     * using the net tax rate VAT variant - and full year we provide the turnover, the invoiced VAT and the VAT tax to pay to the government.
+     * Creates the VAT results table rows. For each half year - the period used by the Swiss government as VAT payment period for small companies using the net
+     * tax rate VAT variant - and full year we provide the turnover, the invoiced VAT and the VAT tax to pay to the government.
      *
      * @param helper asciidoc helper to write the report
      * @param year   the year to raws shall be computed
@@ -114,23 +110,20 @@ public class ClosingReportAsciiDoc {
         if (transaction.isSplit()) {
             if (transaction.debitSplits().size() > 1) {
                 helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.text(), "", transaction.creditAccount(),
-                        format(transaction.amount()), "-"
-                );
+                        format(transaction.amount()), "-");
                 for (AccountEntry entry : transaction.debitSplits()) {
                     helper.tableRow("", "", "", entry.accountId(), "", format(transaction.amount()), "-");
                 }
             } else {
                 helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.text(), transaction.debitAccount(), "",
-                        format(transaction.amount()), "-"
-                );
+                        format(transaction.amount()), "-");
                 for (AccountEntry entry : transaction.debitSplits()) {
                     helper.tableRow("", "", "", "", entry.accountId(), format(transaction.amount()), "-");
                 }
             }
         } else {
-            helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.text(), transaction.debitAccount(),
-                    transaction.creditAccount(), format(transaction.amount()), vat(transaction.creditSplits().get(0))
-            );
+            helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.text(), transaction.debitAccount(), transaction.creditAccount(),
+                    format(transaction.amount()), vat(transaction.creditSplits().get(0)));
         }
     }
 

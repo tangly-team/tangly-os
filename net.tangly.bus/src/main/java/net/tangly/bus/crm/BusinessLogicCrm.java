@@ -47,11 +47,18 @@ public class BusinessLogicCrm {
                 .toDate(interaction.activities().stream().map(Activity::date).max(Comparator.comparing(LocalDate::toEpochDay)).get()));
     }
 
-    public BigDecimal funnel(@NotNull InteractionCode state, LocalDate from, LocalDate to) {
-        return switch (state) {
-            case lead, prospect, lost -> realm.interactions().items().stream().filter(o -> o.code() == state).filter(new HasInterval.IntervalFilter<>(from, to))
+    /**
+     * Returns the potential amount of all interactions in the selected time slot and tate.
+     * @param code defines the state of the expected interactions
+     * @param from interactions should have been started after this date
+     * @param to interactions should have been started after this date
+     * @return the aggregated potential amount
+     */
+    public BigDecimal funnel(@NotNull InteractionCode code, LocalDate from, LocalDate to) {
+        return switch (code) {
+            case lead, prospect, lost -> realm.interactions().items().stream().filter(o -> o.code() == code).filter(new HasInterval.IntervalFilter<>(from, to))
                     .map(Interaction::weightedPotential).reduce(BigDecimal.ZERO, BigDecimal::add);
-            case customer, completed -> realm.interactions().items().stream().filter(o -> o.code() == state)
+            case customer, completed -> realm.interactions().items().stream().filter(o -> o.code() == code)
                     .flatMap(interaction -> realm.contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.legalEntity().oid()))
                     .filter(new HasInterval.IntervalFilter<>(from, to)).map(Contract::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
         };
