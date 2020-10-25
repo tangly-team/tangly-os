@@ -23,23 +23,25 @@ import java.nio.file.StandardCopyOption;
 import java.util.Objects;
 
 import net.tangly.invoices.ports.InvoicesHdl;
+import net.tangly.products.ports.ProductsHdl;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * Create a CRM and ledger domain model store with all persistent values of all involved entities. The entities are stored in TSV and JSON file as resources of
  * the test component. The store copies all the resources in an in-memory file system for efficient tests.
  */
-class CrmAndLedgerStore {
+class ErpStore {
     private static final String PACKAGE_NAME = "net/tangly/";
     private static final String CRM_PACKAGE_NAME = PACKAGE_NAME + "crm/";
     private static final String LEDGER_PACKAGE_NAME = PACKAGE_NAME + "ledger/";
+    private static final String PRODUCTS_PACKAGE_NAME = PACKAGE_NAME + "products/";
     private static final String INVOICES_PACKAGE_NAME = PACKAGE_NAME + "invoices/";
     private static final String VCARDS_PACKAGE_NAME = CRM_PACKAGE_NAME + "vcards/";
     private static final String ORGANIZATION = "/organization/";
 
     private final FileSystem fs;
 
-    public CrmAndLedgerStore(@NotNull FileSystem fs) {
+    public ErpStore(@NotNull FileSystem fs) {
         this.fs = fs;
     }
 
@@ -80,6 +82,7 @@ class CrmAndLedgerStore {
             Files.createDirectory(fs.getPath(ORGANIZATION, "crm/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "crm/vcards/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "ledger/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, "products/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2015/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2016/"));
@@ -99,6 +102,10 @@ class CrmAndLedgerStore {
             copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.ACTIVITIES_TSV);
             copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.SUBJECTS_TSV);
             copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.COMMENTS_TSV);
+
+            copy(PRODUCTS_PACKAGE_NAME, productsRoot(), ProductsHdl.PRODUCTS_TSV);
+            copy(PRODUCTS_PACKAGE_NAME, productsRoot(), ProductsHdl.ASSIGNMENTS_TSV);
+            copy(PRODUCTS_PACKAGE_NAME, productsRoot(), ProductsHdl.EFFORTS_TSV);
 
             copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "swiss-ledger.tsv");
             copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "transactions-2015-2016.tsv");

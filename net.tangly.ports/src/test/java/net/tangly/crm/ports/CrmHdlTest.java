@@ -24,9 +24,9 @@ import net.tangly.bus.core.TagTypeRegistry;
 import net.tangly.bus.crm.BusinessLogicCrm;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.LegalEntity;
-import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.bus.crm.RealmCrm;
 import org.jetbrains.annotations.NotNull;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -46,7 +46,7 @@ class CrmHdlTest {
     }
 
     @Test
-    // @Tag("localTest")
+    @Tag("localTest")
     void testCompanyTsvCrm() {
         CrmHdl crmHdl = new CrmHdl(new CrmEntities(new TagTypeRegistry()));
         BusinessLogicCrm logic = new BusinessLogicCrm(crmHdl.realm());
@@ -57,7 +57,7 @@ class CrmHdlTest {
     @Test
     void testTsvCrm() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            CrmAndLedgerStore store = new CrmAndLedgerStore(fs);
+            ErpStore store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
 
             CrmHdl crmHdl = new CrmHdl(new CrmEntities(new TagTypeRegistry()));

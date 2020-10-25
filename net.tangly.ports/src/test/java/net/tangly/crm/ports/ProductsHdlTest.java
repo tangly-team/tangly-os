@@ -22,11 +22,12 @@ import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.core.TagTypeRegistry;
 import net.tangly.products.ports.ProductsEntities;
 import net.tangly.products.ports.ProductsHdl;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 public class ProductsHdlTest {
     @Test
-        // @Tag("localTest")
+    @Tag("localTest")
     void testCompanyTsvCrm() {
         ProductsHdl productsHdl = new ProductsHdl(new ProductsEntities(new TagTypeRegistry()));
         productsHdl.importEntities(Path.of("/Users/Shared/tangly/", "products"));
@@ -35,7 +36,7 @@ public class ProductsHdlTest {
     @Test
     void testTsvCrm() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            CrmAndLedgerStore store = new CrmAndLedgerStore(fs);
+            ErpStore store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
 
             ProductsHdl productsHdl = new ProductsHdl(new ProductsEntities(new TagTypeRegistry()));

@@ -72,7 +72,8 @@ public class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
         grid.addColumn(new ComponentRenderer<>(person -> (person.gender() == GenderCode.male) ? new Icon(VaadinIcon.MALE) : new Icon(VaadinIcon.FEMALE)))
                 .setHeader("Gender").setAutoWidth(true).setResizable(true);
         grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::individualLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
-        addAndExpand(grid(), createCrudButtons());
+        // TODO find out why it is not working with PaginatedGrid but is working with standard Grid
+        addAndExpand(filterCriteria(grid()), grid(), createCrudButtons());
     }
 
     public static void defineOne2ManyEmployees(@NotNull Grid<Employee> grid) {

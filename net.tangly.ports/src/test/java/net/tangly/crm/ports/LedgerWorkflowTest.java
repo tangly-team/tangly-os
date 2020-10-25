@@ -36,11 +36,11 @@ class LedgerWorkflowTest {
     @Test
     void testCsvLedgerImport() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            CrmAndLedgerStore crmAndLedgerStore = new CrmAndLedgerStore(fs);
-            crmAndLedgerStore.createCrmAndLedgerRepository();
+            ErpStore erpStore = new ErpStore(fs);
+            erpStore.createCrmAndLedgerRepository();
 
             LedgerTsvHdl handler = new LedgerTsvHdl(new Ledger());
-            handler.importLedgerStructureFromBanana(crmAndLedgerStore.ledgerRoot().resolve(SWISS_LEDGER));
+            handler.importLedgerStructureFromBanana(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
             handler.ledger().build();
             assertThat(handler.ledger().accounts().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty()).findAny().isEmpty())
                     .isTrue();
@@ -58,11 +58,11 @@ class LedgerWorkflowTest {
     @Test
     void testCsvTransactionsImport() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            CrmAndLedgerStore crmAndLedgerStore = new CrmAndLedgerStore(fs);
-            crmAndLedgerStore.createCrmAndLedgerRepository();
+            ErpStore erpStore = new ErpStore(fs);
+            erpStore.createCrmAndLedgerRepository();
 
             LedgerTsvHdl handler = new LedgerTsvHdl(new Ledger());
-            handler.importTransactionsLedgerFromBanana(crmAndLedgerStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
+            handler.importTransactionsLedgerFromBanana(erpStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
             assertThat(handler.ledger().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31)).isEmpty()).isFalse();
         }
     }
@@ -70,11 +70,11 @@ class LedgerWorkflowTest {
     @Test
     void testWriteClosingReport() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            CrmAndLedgerStore crmAndLedgerStore = new CrmAndLedgerStore(fs);
-            crmAndLedgerStore.createCrmAndLedgerRepository();
+            ErpStore erpStore = new ErpStore(fs);
+            erpStore.createCrmAndLedgerRepository();
 
             LedgerTsvHdl handler = new LedgerTsvHdl(new Ledger());
-            handler.importTransactionsLedgerFromBanana(crmAndLedgerStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
+            handler.importTransactionsLedgerFromBanana(erpStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
 
             ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(handler.ledger());
             StringWriter writer = new StringWriter();

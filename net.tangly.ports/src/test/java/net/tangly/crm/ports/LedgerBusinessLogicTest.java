@@ -52,7 +52,7 @@ class LedgerBusinessLogicTest {
     public void turnoverEbitAndEarningsTest() throws IOException {
         final String filenameWithoutExtension = "2016-period";
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            CrmAndLedgerStore store = new CrmAndLedgerStore(fs);
+            ErpStore store = new ErpStore(fs);
             LedgerBusinessLogic logic = new LedgerBusinessLogic(createLedger(store));
             logic.createLedgerReport(store.ledgerRoot(), filenameWithoutExtension, LocalDate.of(2015, 10, 01), LocalDate.of(2016, 12, 31));
             assertThat(Files.exists(store.ledgerRoot().resolve(filenameWithoutExtension + ".adoc"))).isFalse();
@@ -60,7 +60,7 @@ class LedgerBusinessLogicTest {
         }
     }
 
-    private Ledger createLedger(CrmAndLedgerStore store) {
+    private Ledger createLedger(ErpStore store) {
         store.createCrmAndLedgerRepository();
         LedgerHdl ledgerHdl = new LedgerHdl(new Ledger());
         ledgerHdl.importEntities(store.ledgerRoot());

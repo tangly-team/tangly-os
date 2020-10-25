@@ -22,8 +22,8 @@ import net.tangly.bus.core.Address;
 
 /**
  * A composite field to update an address immutable entity.
+ * @see Address
  */
-
 public class AddressField extends CustomField<Address> {
     private final TextField street;
     private final TextField extended;
@@ -86,7 +86,7 @@ public class AddressField extends CustomField<Address> {
         region.setReadOnly(readOnly);
         country.setReadOnly(readOnly);
     }
-    
+
     @Override
     public void clear() {
         super.clear();

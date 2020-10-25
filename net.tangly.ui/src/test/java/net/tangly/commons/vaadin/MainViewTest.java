@@ -42,6 +42,7 @@ public class MainViewTest {
     @Test
     public void mainViewTest() {
         System.out.println(UI.getCurrent().getChildren().findFirst().get());
+        // TODO find out why it is not working due to the routes
         // final MainView main = (MainView) UI.getCurrent().getChildren().findFirst().get();
         // assertThat(main.getChildren().count()).isEqualTo(2);
     }

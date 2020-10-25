@@ -17,6 +17,11 @@ import com.vaadin.flow.component.select.Select;
 import net.tangly.bus.codes.Code;
 import net.tangly.bus.codes.CodeType;
 
+/**
+ * Selection field for a reference code and all its values.
+ * @param <T> reference code to display
+ * @see Code
+ */
 public class CodeField<T extends Code> extends Select<T> {
     private final CodeType<T> codeType;
 

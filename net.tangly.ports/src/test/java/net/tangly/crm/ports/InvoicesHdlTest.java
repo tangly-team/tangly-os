@@ -25,6 +25,7 @@ import net.tangly.bus.invoices.RealmInvoices;
 import net.tangly.invoices.ports.InvoicesEntities;
 import net.tangly.invoices.ports.InvoicesHdl;
 import org.jetbrains.annotations.NotNull;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -33,7 +34,7 @@ public class InvoicesHdlTest {
     public static final String CONTRACT_HSLU_2015 = "HSLU-2015";
 
     @Test
-        // @Tag("localTest")
+    @Tag("localTest")
     void testCompanyTsvInvoices() {
         InvoicesHdl invoicesHdl = new InvoicesHdl(new InvoicesEntities(new TagTypeRegistry()));
         invoicesHdl.importEntities(Path.of("/Users/Shared/tangly/", "invoices"));
@@ -42,7 +43,7 @@ public class InvoicesHdlTest {
     @Test
     void testTsvInvoices() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            CrmAndLedgerStore store = new CrmAndLedgerStore(fs);
+            ErpStore store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
 
             InvoicesHdl invoicesHdl = new InvoicesHdl(new InvoicesEntities(new TagTypeRegistry()));

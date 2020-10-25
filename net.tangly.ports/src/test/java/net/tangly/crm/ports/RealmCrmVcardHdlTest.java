@@ -25,7 +25,7 @@ class RealmCrmVcardHdlTest {
     @Test
     void testVcard() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            CrmAndLedgerStore store = new CrmAndLedgerStore(fs);
+            ErpStore store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
             CrmHdl crmHdl = new CrmHdl(new CrmEntities(new TagTypeRegistry()));
             crmHdl.importEntities(store.crmRoot());
