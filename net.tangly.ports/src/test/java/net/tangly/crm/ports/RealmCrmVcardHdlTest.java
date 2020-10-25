@@ -18,6 +18,7 @@ import java.nio.file.FileSystem;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
+import net.tangly.bus.core.TagTypeRegistry;
 import org.junit.jupiter.api.Test;
 
 class RealmCrmVcardHdlTest {
@@ -26,7 +27,7 @@ class RealmCrmVcardHdlTest {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             CrmAndLedgerStore store = new CrmAndLedgerStore(fs);
             store.createCrmAndLedgerRepository();
-            CrmHdl crmHdl = new CrmHdl(new CrmEntities());
+            CrmHdl crmHdl = new CrmHdl(new CrmEntities(new TagTypeRegistry()));
             crmHdl.importEntities(store.crmRoot());
             CrmVcardHdl handler = new CrmVcardHdl(crmHdl.realm());
             handler.importVCards(store.vcardsRoot());

@@ -32,14 +32,14 @@ dependencies {
     implementation project(':net.tangly.bus')
     implementation project(':net.tangly.gleam')
 
-    implementation "com.networknt:json-schema-validator:1.0.43"
+    implementation "com.networknt:json-schema-validator:$jsonValidatorVersion"
     implementation "org.apache.commons:commons-csv:$apacheCommonsCvsVersion"
     // Java 9 module compliant version of https://github.com/stleary/JSON-java
     implementation "com.guicedee.services:json:$jsonVersion"
     implementation "org.hsqldb:hsqldb:$hsqldbVersion"
     // added reference to pdfbox to avoid a runtime error with qrbill-generator, the dependency is too open
     implementation 'org.apache.pdfbox:pdfbox:2.0.21'
-    implementation 'net.codecrete.qrbill:qrbill-generator:2.4.3'
+    implementation 'net.codecrete.qrbill:qrbill-generator:2.5.0'
     implementation 'org.mustangproject.ZUGFeRD:mustang:1.7.8'
     implementation "com.google.jimfs:jimfs:$jimfsVersion"
     implementation 'org.asciidoctor:asciidoctorj:2.4.1'

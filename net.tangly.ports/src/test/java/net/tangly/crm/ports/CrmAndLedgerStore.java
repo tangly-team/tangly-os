@@ -35,6 +35,7 @@ class CrmAndLedgerStore {
     private static final String LEDGER_PACKAGE_NAME = PACKAGE_NAME + "ledger/";
     private static final String INVOICES_PACKAGE_NAME = PACKAGE_NAME + "invoices/";
     private static final String VCARDS_PACKAGE_NAME = CRM_PACKAGE_NAME + "vcards/";
+    private static final String ORGANIZATION = "/organization/";
 
     private final FileSystem fs;
 
@@ -43,27 +44,31 @@ class CrmAndLedgerStore {
     }
 
     public Path organizationRoot() {
-        return fs.getPath("/organization/");
+        return fs.getPath(ORGANIZATION);
     }
 
     public Path crmRoot() {
-        return fs.getPath("/organization/crm/");
+        return fs.getPath(ORGANIZATION, "crm/");
     }
 
     public Path ledgerRoot() {
-        return fs.getPath("/organization/ledger/");
+        return fs.getPath(ORGANIZATION, "ledger/");
     }
 
     public Path invoicesRoot() {
-        return fs.getPath("/organization/invoices/");
+        return fs.getPath(ORGANIZATION, "invoices/");
+    }
+
+    public Path productsRoot() {
+        return fs.getPath(ORGANIZATION, "products/");
     }
 
     public Path vcardsRoot() {
-        return fs.getPath("/organization/crm/vcards/");
+        return fs.getPath(ORGANIZATION, "crm/vcards/");
     }
 
     public Path ledgerReportsRoot() {
-        return fs.getPath("/organization/reports/ledger/");
+        return fs.getPath(ORGANIZATION, "reports/ledger/");
     }
 
     /**
@@ -71,20 +76,20 @@ class CrmAndLedgerStore {
      */
     public void createCrmAndLedgerRepository() {
         try {
-            Files.createDirectory(fs.getPath("/organization/"));
-            Files.createDirectory(fs.getPath("/organization/crm/"));
-            Files.createDirectory(fs.getPath("/organization/crm/vcards/"));
-            Files.createDirectory(fs.getPath("/organization/ledger/"));
-            Files.createDirectory(fs.getPath("/organization/invoices/"));
-            Files.createDirectory(fs.getPath("/organization/invoices/2015/"));
-            Files.createDirectory(fs.getPath("/organization/invoices/2016/"));
-            Files.createDirectory(fs.getPath("/organization/invoices/2017/"));
-            Files.createDirectory(fs.getPath("/organization/invoices/2018/"));
-            Files.createDirectory(fs.getPath("/organization/invoices/2019/"));
-            Files.createDirectory(fs.getPath("/organization/invoices/2020/"));
-            Files.createDirectory(fs.getPath("/organization/reports/"));
-            Files.createDirectory(fs.getPath("/organization/reports/ledger/"));
-            Files.createDirectory(fs.getPath("/organization/reports/invoices/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION));
+            Files.createDirectory(fs.getPath(ORGANIZATION, "crm/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, "crm/vcards/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, "ledger/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2015/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2016/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2017/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2018/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2019/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2020/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, "reports/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, "reports/ledger/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, "reports/invoices/"));
 
             copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.NATURAL_ENTITIES_TSV);
             copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.LEGAL_ENTITIES_TSV);

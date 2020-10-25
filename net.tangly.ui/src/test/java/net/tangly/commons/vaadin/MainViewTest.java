@@ -15,19 +15,34 @@ package net.tangly.commons.vaadin;
 
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import com.github.mvysny.kaributesting.v10.Routes;
+import com.vaadin.flow.component.UI;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class UiTests {
+public class MainViewTest {
+    private static Routes routes;
+
+    @BeforeAll
+    public static void createRoutes() {
+        routes = new Routes().autoDiscoverViews("net.tangly.commons.ui");
+    }
+
     @BeforeEach
     public void setupVaadin() {
-        MockVaadin.setup(new Routes().autoDiscoverViews("net.tangly.commons.ui"));
+        MockVaadin.setup(routes);
+    }
+
+    @AfterEach
+    public void tearDownVaadin() {
+        MockVaadin.tearDown();
     }
 
     @Test
-    void test() {
+    public void mainViewTest() {
+        System.out.println(UI.getCurrent().getChildren().findFirst().get());
         // final MainView main = (MainView) UI.getCurrent().getChildren().findFirst().get();
-        // assertThat(main.getChildren().count()).isGreaterThan(0);
-        // TODO wait until vaadin gradle plugin does support JDK 14 and Vaadin 16.x.x
+        // assertThat(main.getChildren().count()).isEqualTo(2);
     }
 }

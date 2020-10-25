@@ -21,6 +21,8 @@ A mirror is also hosted under github [tangly OS github](https://github.com/marce
 
 The issue tracker for errors, improvements, and corrections is [tangly OS issues](https://bitbucket.org/tangly-team/tangly-os/issues).
 
+For any further question and discussion you can use the forum [tangly-OS-Components](https://groups.google.com/g/tangly-os-components)
+
 Beware we are experimenting with the most current versions of components, libraries and JDK.
 The components are stored in a single git repository and are build using a multi-modules gradle build script.
 

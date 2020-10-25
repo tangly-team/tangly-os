@@ -22,7 +22,9 @@ import java.util.Optional;
 import net.tangly.bus.core.Address;
 import net.tangly.bus.core.BankConnection;
 import net.tangly.bus.core.EmailAddress;
-import net.tangly.bus.core.Entity;
+import net.tangly.bus.core.HasId;
+import net.tangly.bus.core.HasTags;
+import net.tangly.bus.core.QualifiedEntity;
 import net.tangly.bus.core.PhoneNr;
 import net.tangly.bus.core.Tag;
 import net.tangly.bus.core.TagType;
@@ -145,7 +147,7 @@ public final class CrmTags {
      * @param entity person which linkedIn profile should be displayed
      * @return link to the linkedIn profile
      */
-    public static String individualLinkedInUrl(@NotNull Entity entity) {
+    public static String individualLinkedInUrl(@NotNull HasTags entity) {
         return entity.findBy(CrmTags.CRM_IM_LINKEDIN).map(Tag::value).map(o -> "https://www.linkedin.com/in/" + o).orElse(null);
     }
 
@@ -155,7 +157,7 @@ public final class CrmTags {
      * @param entity organization which linkedIn profile should be displayed
      * @return link to the linkedIn profile
      */
-    public static String organizationLinkedInUrl(@NotNull Entity entity) {
+    public static String organizationLinkedInUrl(@NotNull HasTags entity) {
         Optional<Tag> school = entity.findBy(CrmTags.CRM_SCHOOL);
         return entity.findBy(CrmTags.CRM_IM_LINKEDIN).map(Tag::value).map(o -> "https://www.linkedin.com/" + (school.isPresent() ? "school/" : "company/") + o)
                 .orElse(null);
@@ -167,7 +169,7 @@ public final class CrmTags {
      * @param entity organization which Zefix information should be displayed
      * @return link to Zefix information
      */
-    public static String organizationZefixUrl(@NotNull Entity entity) {
+    public static String organizationZefixUrl(@NotNull LegalEntity entity) {
         return "https://www.zefix.ch/en/search/entity/list?name=" + entity.id() + "&searchType=exact";
     }
 

@@ -41,7 +41,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Handler to import and export VCard representations of natural entities.
  */
-public class CrmVcardHdl {
+class CrmVcardHdl {
     private static final String VCARD_EXT = ".vcf";
 
     private static final Logger logger = LoggerFactory.getLogger(CrmVcardHdl.class);

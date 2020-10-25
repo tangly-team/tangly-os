@@ -19,6 +19,9 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.binder.ValidationException;
+import net.tangly.bus.core.QualifiedEntity;
+import net.tangly.bus.crm.Activity;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.LegalEntity;
@@ -27,30 +30,35 @@ import net.tangly.bus.providers.ViewProvider;
 import net.tangly.commons.vaadin.CommentsView;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.GridActionsListener;
+import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.One2ManyView;
+import net.tangly.commons.vaadin.QualifiedEntityField;
 import net.tangly.commons.vaadin.TabsComponent;
 import net.tangly.commons.vaadin.TagsView;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class LegalEntitiesView extends CrmEntitiesView<LegalEntity> {
-    public LegalEntitiesView(@NotNull RealmCrm realmCrm, @NotNull Mode mode) {
-        super(realmCrm, LegalEntity.class, mode, realmCrm.legalEntities());
-        initialize();
+public class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
+    private final RealmCrm realm;
+
+    public LegalEntitiesView(@NotNull RealmCrm realm, @NotNull Mode mode) {
+        super(LegalEntity.class, mode, realm.legalEntities(), realm.tagTypeRegistry());
+        this.realm = realm;
+        initializeGrid();
     }
 
     @Override
-    protected void initialize() {
+    protected void initializeGrid() {
         initialize(this, new GridActionsListener<>(provider, grid().getDataProvider(), this::selectedItem));
-        VaadinUtils.initialize(grid());
         Grid<LegalEntity> grid = grid();
         grid.addColumn(LegalEntity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
-        grid.addColumn(zefixComponentRenderer()).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(VaadinUtils.zefixComponentRenderer()).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(LegalEntity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(LegalEntity::fromDate).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(LegalEntity::toDate).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(linkedInComponentRenderer(CrmTags::organizationLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
-        grid.addColumn(urlComponentRenderer(CrmTags.CRM_SITE_WORK)).setKey("webSite").setHeader("Web Site").setAutoWidth(true);
+        grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::organizationLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
+        grid.addColumn(VaadinUtils.urlComponentRenderer(CrmTags.CRM_SITE_WORK)).setKey("webSite").setHeader("Web Site").setAutoWidth(true);
+        addAndExpand(filterCriteria(grid()), grid(), createCrudButtons());
     }
 
     public static void defineOne2ManyEmployees(@NotNull Grid<Employee> grid) {
@@ -65,27 +73,26 @@ public class LegalEntitiesView extends CrmEntitiesView<LegalEntity> {
 
     @Override
     protected void registerTabs(@NotNull TabsComponent tabs, @NotNull Mode mode, LegalEntity entity) {
-        LegalEntity workedOn = (entity != null) ? entity : create();
-        tabs.add(new Tab("Overview"), createOverallView(mode, workedOn));
-        tabs.add(new Tab("Comments"), new CommentsView(mode, workedOn));
-        tabs.add(new Tab("Tags"), new TagsView(mode, workedOn, realm().tagTypeRegistry()));
+        tabs.add(new Tab("Overview"), createOverallView(mode, entity));
+        tabs.add(new Tab("Comments"), new CommentsView(mode, entity));
+        tabs.add(new Tab("Tags"), new TagsView(mode, entity, realm.tagTypeRegistry()));
         One2ManyView<Employee> employees = new One2ManyView<>(Employee.class, mode, LegalEntitiesView::defineOne2ManyEmployees,
-                ViewProvider.of(realm().employees(), o -> entity.oid() == o.organization().oid()), new EmployeesView(realm(), mode));
+                ViewProvider.of(realm.employees(), o -> entity.oid() == o.organization().oid()), new EmployeesView(realm, mode));
         tabs.add(new Tab("Employees"), employees);
     }
 
     @Override
     protected FormLayout createOverallView(@NotNull Mode mode, @NotNull LegalEntity entity) {
         boolean readonly = Mode.readOnly(mode);
-        EntityField entityField = new EntityField();
+        QualifiedEntityField<LegalEntity> entityField = new QualifiedEntityField<>();
         entityField.setReadOnly(readonly);
         TextField site = VaadinUtils.createTextField("Web Site", "website", readonly);
         TextField vatNr = VaadinUtils.createTextField("VAT Nr", "vatNr", readonly);
 
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);
-        form.add(entityField, new HtmlComponent("br"), site, vatNr);
-
+        entityField.addEntityComponentsTo(form);
+        form.add(new HtmlComponent("br"), site, vatNr);
         binder = new Binder<>(entityClass());
         entityField.bind(binder);
         binder.bind(site, e -> e.site(CrmTags.Type.work).orElse(null), (e, v) -> e.site(CrmTags.Type.work, v));
@@ -95,7 +102,13 @@ public class LegalEntitiesView extends CrmEntitiesView<LegalEntity> {
     }
 
     @Override
-    protected LegalEntity create() {
-        return new LegalEntity();
+    protected LegalEntity updateOrCreate(LegalEntity entity) {
+        LegalEntity legalEntity = (entity != null) ? entity : new LegalEntity();
+        try {
+            binder.writeBean(legalEntity);
+        } catch (ValidationException e) {
+            e.printStackTrace();
+        }
+        return legalEntity;
     }
 }

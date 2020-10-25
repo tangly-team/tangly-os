@@ -19,8 +19,9 @@ import java.nio.file.Path;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
-import net.tangly.bus.core.Entity;
+import net.tangly.bus.core.QualifiedEntity;
 import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.bus.crm.BusinessLogicCrm;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
@@ -47,7 +48,9 @@ class CrmHdlTest {
     @Test
     // @Tag("localTest")
     void testCompanyTsvCrm() {
-        CrmHdl crmHdl = new CrmHdl(new CrmEntities());
+        CrmHdl crmHdl = new CrmHdl(new CrmEntities(new TagTypeRegistry()));
+        BusinessLogicCrm logic = new BusinessLogicCrm(crmHdl.realm());
+        logic.registerTags(crmHdl.realm().tagTypeRegistry());
         crmHdl.importEntities(Path.of("/Users/Shared/tangly/", "crm"));
     }
 
@@ -57,7 +60,7 @@ class CrmHdlTest {
             CrmAndLedgerStore store = new CrmAndLedgerStore(fs);
             store.createCrmAndLedgerRepository();
 
-            CrmHdl crmHdl = new CrmHdl(new CrmEntities());
+            CrmHdl crmHdl = new CrmHdl(new CrmEntities(new TagTypeRegistry()));
             crmHdl.importEntities(store.crmRoot());
 
             verifyNaturalEntities(crmHdl.realm());
@@ -71,7 +74,7 @@ class CrmHdlTest {
 
             crmHdl.exportEntities(store.crmRoot());
 
-            crmHdl = new CrmHdl(new CrmEntities());
+            crmHdl = new CrmHdl(new CrmEntities(new TagTypeRegistry()));
             crmHdl.importEntities(store.crmRoot());
             verifyNaturalEntities(crmHdl.realm());
             verifyLegalEntities(crmHdl.realm());
@@ -87,7 +90,6 @@ class CrmHdlTest {
     private void verifyNaturalEntities(@NotNull RealmCrm realmCrm) {
         assertThat(realmCrm.naturalEntities().items().isEmpty()).isFalse();
         assertThat(realmCrm.naturalEntities().find(1).isPresent()).isTrue();
-        assertThat(realmCrm.naturalEntities().findBy(NaturalEntity::id, "jd-01").isPresent()).isTrue();
         realmCrm.naturalEntities().items().forEach(naturalEntity -> assertThat(naturalEntity.isValid()).isTrue());
     }
 
@@ -103,7 +105,7 @@ class CrmHdlTest {
         assertThat(realmCrm.employees().items().isEmpty()).isFalse();
         assertThat(realmCrm.employees().find(200).isPresent()).isTrue();
         realmCrm.employees().items().forEach(employee -> {
-            assertThat(employee.oid()).isNotEqualTo(Entity.UNDEFINED_OID);
+            assertThat(employee.oid()).isNotEqualTo(QualifiedEntity.UNDEFINED_OID);
             assertThat(employee.person()).isNotNull();
             assertThat(employee.organization()).isNotNull();
         });

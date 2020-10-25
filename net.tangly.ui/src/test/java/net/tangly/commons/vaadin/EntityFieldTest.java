@@ -16,6 +16,7 @@ package net.tangly.commons.vaadin;
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import com.github.mvysny.kaributesting.v10.Routes;
 import net.tangly.bus.core.Entity;
+import net.tangly.bus.crm.LegalEntity;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,19 +31,23 @@ public class EntityFieldTest {
 
     @BeforeAll
     public static void createRoutes() {
-        // initialize routes only once, to avoid view auto-detection before every test and to speed up the tests
-        routes = new Routes().autoDiscoverViews("com.vaadin.flow.demo");
+        routes = new Routes().autoDiscoverViews("net.tangly.commmons.ui");
     }
 
     @BeforeEach
     public void setupVaadin() {
         MockVaadin.setup(routes);
     }
+
     @Test
     void testAddressField() {
         Entity entity = null;
-        final EntityField entityField = new EntityField();
+        final EntityField<Entity> entityField = new EntityField<>();
         entityField.setValue(entity);
         assertThat(entityField.getValue()).isNull();
+
+        entity = new LegalEntity();
+        entityField.setValue(entity);
+        assertThat(entityField.getValue()).isNotNull();
     }
 }

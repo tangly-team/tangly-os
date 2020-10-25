@@ -23,7 +23,7 @@ CREATE TABLE crm.naturalEntities (
     toDate    DATE,
     text      CLOB,
     tags      CLOB
-                                 );
+);
 
 CREATE TABLE crm.legalEntities (
     oid      BIGINT PRIMARY KEY,
@@ -33,7 +33,7 @@ CREATE TABLE crm.legalEntities (
     toDate   DATE,
     text     CLOB,
     tags     CLOB
-                               );
+);
 
 CREATE TABLE crm.employees (
     oid             BIGINT PRIMARY KEY,
@@ -46,9 +46,9 @@ CREATE TABLE crm.employees (
     tags            CLOB,
     personOid       BIGINT      NOT NULL,
     organizationOid BIGINT      NOT NULL,
-    FOREIGN KEY (personOid) REFERENCES crm.naturalEntities (oid),
-    FOREIGN KEY (organizationOid) REFERENCES crm.legalEntities (oid)
-                           );
+    CONSTRAINT employees_personOid FOREIGN KEY (personOid) REFERENCES crm.naturalEntities (oid),
+    CONSTRAINT employees_organizationOid FOREIGN KEY (organizationOid) REFERENCES crm.legalEntities (oid)
+);
 
 CREATE TABLE crm.contracts (
     oid              BIGINT PRIMARY KEY,
@@ -61,32 +61,33 @@ CREATE TABLE crm.contracts (
     sellerOid        BIGINT      NOT NULL,
     selleeOid        BIGINT      NOT NULL,
     tags             CLOB,
-    FOREIGN KEY (sellerOid) REFERENCES crm.legalEntities (oid),
-    FOREIGN KEY (selleeOid) REFERENCES crm.legalEntities (oid)
-                           );
+    CONSTRAINT contracts_sellerOid FOREIGN KEY (sellerOid) REFERENCES crm.legalEntities (oid),
+    CONSTRAINT contracts_selleeOid FOREIGN KEY (selleeOid) REFERENCES crm.legalEntities (oid)
+);
 
 CREATE TABLE crm.interactions (
-    oid         BIGINT PRIMARY KEY,
-    id          VARCHAR(64) NOT NULL UNIQUE,
-    name        VARCHAR(64),
-    fromDate    DATE,
-    toDate      DATE,
-    code        INT,
-    legalEntity BIGINT      NOT NULL,
-    potential   DECIMAL(5, 2),
-    probability DECIMAL(5, 2),
-    text        CLOB
-                              );
+    oid            BIGINT PRIMARY KEY,
+    id             VARCHAR(64) NOT NULL UNIQUE,
+    name           VARCHAR(64),
+    fromDate       DATE,
+    toDate         DATE,
+    code           INT,
+    legalEntityOid BIGINT      NOT NULL,
+    potential      DECIMAL(5, 2),
+    probability    DECIMAL(5, 2),
+    text           CLOB,
+    CONSTRAINT interactions_legalEntityOid FOREIGN KEY (legalEntityOid) REFERENCES crm.legalEntities (oid)
+);
 
 CREATE TABLE crm.activities (
-    oid      BIGINT PRIMARY KEY,
-    id       VARCHAR(64) NOT NULL UNIQUE,
-    name     VARCHAR(64),
-    fromDate DATE,
-    toDate   DATE,
-    code     INT,
+    oid               BIGINT PRIMARY KEY,
+    id                VARCHAR(64) NOT NULL UNIQUE,
+    name              VARCHAR(64),
+    fromDate          DATE,
+    toDate            DATE,
+    code              INT,
     durationInMinutes INT,
-    details CLOB
-    text     CLOB
-                            );
+    text              CLOB,
+    details           CLOB
+);
 

@@ -21,7 +21,7 @@ import java.util.Objects;
 
 import net.tangly.bus.core.Address;
 import net.tangly.bus.core.BankConnection;
-import net.tangly.bus.core.EntityImp;
+import net.tangly.bus.core.QualifiedEntityImp;
 
 /**
  * A legal contract between two parties, one being the seller and one being the sellee. The properties of the entity defines the identifiers of the contract and
@@ -36,7 +36,7 @@ import net.tangly.bus.core.EntityImp;
  *   <li>The currency of the contract amount and the one used in the invoices</li>
  * </ul>
  */
-public class Contract extends EntityImp implements CrmEntity {
+public class Contract extends QualifiedEntityImp implements CrmEntity {
     private static final long serialVersionUID = 1L;
     private Address address;
     private BankConnection bankConnection;

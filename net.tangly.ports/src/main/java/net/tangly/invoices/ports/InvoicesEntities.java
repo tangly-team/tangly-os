@@ -13,22 +13,31 @@
 
 package net.tangly.invoices.ports;
 
+import net.tangly.bus.core.TagTypeRegistry;
 import net.tangly.bus.invoices.Article;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceLegalEntity;
 import net.tangly.bus.invoices.RealmInvoices;
 import net.tangly.bus.providers.RecordProvider;
 import net.tangly.bus.providers.RecordProviderInMemory;
+import org.jetbrains.annotations.NotNull;
 
 public class InvoicesEntities implements RealmInvoices {
+    private final TagTypeRegistry registry;
     private final RecordProviderInMemory<Invoice> invoices;
     private final RecordProviderInMemory<Article> articles;
     private final RecordProviderInMemory<InvoiceLegalEntity> legalEntities;
 
-    public InvoicesEntities() {
+    public InvoicesEntities(@NotNull TagTypeRegistry registry) {
+        this.registry = registry;
         invoices = new RecordProviderInMemory<>();
         articles = new RecordProviderInMemory<>();
         legalEntities = new RecordProviderInMemory<>();
+    }
+
+    @Override
+    public TagTypeRegistry tagTypeRegistry() {
+        return registry;
     }
 
     @Override

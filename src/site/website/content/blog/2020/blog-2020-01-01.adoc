@@ -65,4 +65,5 @@ Dysfunctions are easy to detect
 . Management force responsibilities upon collaborators.
 
 Observe your organization and start to improve.
-The above rules are here to detect link:/../../2019/detecting-agile-bullshit/[Agile Bullshit] and truly improve your organization toward building products which delight the customers.
+The above rules are here to detect link:/../../2019/detecting-agile-bullshit/[Agile Bullshit] and truly improve your organization toward building products
+which delight the customers.

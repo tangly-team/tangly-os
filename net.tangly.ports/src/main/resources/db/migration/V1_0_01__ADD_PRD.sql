@@ -13,7 +13,7 @@
 
 CREATE SCHEMA prd;
 
-CREATE TABLE prd.outcomes (
+CREATE TABLE prd.products (
     oid         BIGINT PRIMARY KEY,
     id          VARCHAR(64) NOT NULL UNIQUE,
     name        VARCHAR(64),
@@ -32,19 +32,19 @@ CREATE TABLE prd.assignments (
     fromDate   DATE,
     toDate     DATE,
     text       CLOB,
-    outcomeOid BIGINT      NOT NULL,
+    productOid BIGINT      NOT NULL,
     employeeId VARCHAR(32) NOT NULL,
     tags       CLOB,
-    FOREIGN KEY (outcomeOid) REFERENCES prd.outcomes (oid)
+    CONSTRAINT assignmemts_productOid FOREIGN KEY (productOid) REFERENCES prd.products (oid)
 );
 
 CREATE TABLE prd.efforts (
-    oid  BIGINT PRIMARY KEY,
-    id   VARCHAR(64) NOT NULL UNIQUE,
-    text CLOB,
-    startedOn DATETIME,
+    oid               BIGINT PRIMARY KEY,
+    id                VARCHAR(64) NOT NULL UNIQUE,
+    text              CLOB,
+    startedOn         DATETIME,
     durationInMinutes INTEGER,
-    assignmentOid BIGINT,
-    contractId VARCHAR(32),
+    assignmentOid     BIGINT,
+    contractId        VARCHAR(32),
     FOREIGN KEY (assignmentOid) REFERENCES prd.assignments (oid)
 );

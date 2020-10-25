@@ -6,12 +6,12 @@
  *
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- *   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
+ *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
  *  under the License.
  */
 
-package net.tangly.commons.vaadin;
+package net.tangly.commons.ui;
 
 import java.nio.file.Paths;
 
@@ -25,10 +25,17 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.material.Material;
+import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.bus.crm.BusinessLogicCrm;
 import net.tangly.bus.crm.RealmCrm;
 import net.tangly.bus.invoices.RealmInvoices;
 import net.tangly.bus.ledger.Ledger;
+import net.tangly.bus.products.RealmProducts;
 import net.tangly.commons.bus.ui.TagTypesView;
+import net.tangly.commons.crm.products.ui.AssignementsView;
+import net.tangly.commons.crm.products.ui.EffortsView;
+import net.tangly.commons.crm.products.ui.ProductsView;
+import net.tangly.commons.crm.ui.ActivitiesView;
 import net.tangly.commons.crm.ui.AnalyticsCrmView;
 import net.tangly.commons.crm.ui.ContractsView;
 import net.tangly.commons.crm.ui.EmployeesView;
@@ -39,12 +46,17 @@ import net.tangly.commons.crm.ui.SubjectsView;
 import net.tangly.commons.invoices.ui.ArticlesView;
 import net.tangly.commons.invoices.ui.InvoicesView;
 import net.tangly.commons.ledger.ui.LedgerView;
+import net.tangly.commons.vaadin.Crud;
+import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.crm.ports.CrmEntities;
 import net.tangly.crm.ports.CrmHdl;
 import net.tangly.invoices.ports.InvoicesEntities;
 import net.tangly.invoices.ports.InvoicesHdl;
 import net.tangly.ledger.ports.LedgerBusinessLogic;
 import net.tangly.ledger.ports.LedgerHdl;
+import net.tangly.products.ports.ProductsEntities;
+import net.tangly.products.ports.ProductsHdl;
+import org.checkerframework.checker.units.qual.A;
 import org.jetbrains.annotations.NotNull;
 
 @Theme(value = Material.class)
@@ -53,19 +65,25 @@ import org.jetbrains.annotations.NotNull;
 @Route("")
 public class MainView extends VerticalLayout {
     private Component currentView;
-    private final RealmCrm realmCrm;
-    private final RealmInvoices realmInvoices;
-    private final LedgerBusinessLogic ledgerLogic;
+    private RealmCrm realmCrm;
+    private RealmInvoices realmInvoices;
+    private RealmProducts realmProducts;
+    private LedgerBusinessLogic ledgerLogic;
+
     private final NaturalEntitiesView naturalEntitiesView;
     private final LegalEntitiesView legalEntitiesView;
     private final EmployeesView employeesView;
     private final ContractsView contractsView;
+    private final InteractionsView interactionsView;
+    private final ActivitiesView activitiesView;
+    private final SubjectsView subjectsView;
 
     private final ArticlesView articlesView;
     private final InvoicesView invoicesView;
 
-    private final InteractionsView interactionsView;
-    private final SubjectsView subjectsView;
+    private final ProductsView productsView;
+    private final AssignementsView assignementsView;
+    private final EffortsView effortsView;
 
     private final LedgerView ledgerView;
 
@@ -74,28 +92,28 @@ public class MainView extends VerticalLayout {
     private final TagTypesView tagTypesView;
 
     public MainView() {
-        realmCrm = new CrmEntities();
-        realmInvoices = new InvoicesEntities();
-
-        CrmHdl crmHdl = new CrmHdl(realmCrm);
-        crmHdl.importEntities(Paths.get("/Users/Shared/tangly/crm"));
-        InvoicesHdl invoicesHdl = new InvoicesHdl(realmInvoices);
-        invoicesHdl.importEntities(Paths.get("/Users/Shared/tangly/invoices/"));
-        LedgerHdl ledgerHdl = new LedgerHdl(new Ledger());
-        ledgerHdl.importEntities(Paths.get("/Users/Shared/tangly/ledger"));
-        ledgerLogic = new LedgerBusinessLogic(ledgerHdl.ledger());
+        importErpData();
 
         naturalEntitiesView = new NaturalEntitiesView(realmCrm, Crud.Mode.EDITABLE);
         legalEntitiesView = new LegalEntitiesView(realmCrm, Crud.Mode.EDITABLE);
         employeesView = new EmployeesView(realmCrm, Crud.Mode.EDITABLE);
         contractsView = new ContractsView(realmCrm, realmInvoices, Crud.Mode.EDITABLE);
+        interactionsView = new InteractionsView(realmCrm, Crud.Mode.EDITABLE);
+        activitiesView = new ActivitiesView(realmCrm, Crud.Mode.READONLY);
+
+        subjectsView = new SubjectsView(realmCrm, Crud.Mode.EDITABLE);
+
         articlesView = new ArticlesView(realmInvoices.articles(), Crud.Mode.EDITABLE);
         invoicesView = new InvoicesView(realmInvoices.invoices(), Crud.Mode.EDITABLE);
-        interactionsView = new InteractionsView(realmCrm, Crud.Mode.EDITABLE);
-        subjectsView = new SubjectsView(realmCrm, Crud.Mode.EDITABLE);
+
         ledgerView = new LedgerView(ledgerLogic, Crud.Mode.EDITABLE);
+
         analyticsCrmView = new AnalyticsCrmView(realmCrm, realmInvoices, ledgerLogic.ledger());
         tagTypesView = new TagTypesView(realmCrm.tagTypeRegistry());
+
+        productsView = new ProductsView(realmProducts, Crud.Mode.EDITABLE);
+        assignementsView = new AssignementsView(realmProducts, Crud.Mode.EDITABLE);
+        effortsView = new EffortsView(realmProducts, Crud.Mode.READONLY);
 
         setSizeFull();
         currentView = naturalEntitiesView;
@@ -118,14 +136,17 @@ public class MainView extends VerticalLayout {
         crmSubMenu.addItem("Contracts", e -> select(contractsView));
         crmSubMenu.addItem("Employees", e -> select(employeesView));
         crmSubMenu.addItem("Interactions", e -> select(interactionsView));
+        crmSubMenu.addItem("Activities", e -> select(activitiesView));
 
         MenuItem activities = menuBar.addItem("Works");
         SubMenu activitiesSubMenu = activities.getSubMenu();
-        activitiesSubMenu.addItem("Projects");
+        activitiesSubMenu.addItem("Products", e -> select(productsView));
+        activitiesSubMenu.addItem("Assignments", e -> select(assignementsView));
+        activitiesSubMenu.addItem("Efforts", e -> select(effortsView));
 
         MenuItem invoices = menuBar.addItem("Invoices");
         SubMenu invoicesSubMenu = invoices.getSubMenu();
-        invoicesSubMenu.addItem("Products", e -> select(articlesView));
+        invoicesSubMenu.addItem("Articles", e -> select(articlesView));
         invoicesSubMenu.addItem("Invoices", e -> select(invoicesView));
 
         MenuItem ledger = menuBar.addItem("Financials");
@@ -140,8 +161,11 @@ public class MainView extends VerticalLayout {
 
         MenuItem actionsItem = adminSubmenu.addItem("Actions");
         SubMenu actions = actionsItem.getSubMenu();
-        actions.addItem("Import CRM Data", e -> importCrmData());
-        actions.addItem("Export CRM data", e -> exportCrmData());
+        actions.addItem("Import CRM Data", e -> {
+            importErpData();
+            refreshViews();
+        });
+        actions.addItem("Export CRM data", e -> exportErpData());
         actions.addItem("Count CRM Tags", e -> countCrmTags());
 
         return menuBar;
@@ -163,15 +187,33 @@ public class MainView extends VerticalLayout {
         currentView = view;
     }
 
-    private void importCrmData() {
+    private void importErpData() {
+        TagTypeRegistry registry = new TagTypeRegistry();
+
+        realmCrm = new CrmEntities(registry);
+        realmInvoices = new InvoicesEntities(registry);
+        realmProducts = new ProductsEntities(registry);
+
+        BusinessLogicCrm businessLogicCrm = new BusinessLogicCrm(realmCrm);
+        businessLogicCrm.registerTags(registry);
+
         CrmHdl crmHdl = new CrmHdl(realmCrm);
-        crmHdl.importEntities(Paths.get("/Users/Shared/tangly"));
-        refreshViews();
+        crmHdl.importEntities(Paths.get("/Users/Shared/tangly/crm"));
+        InvoicesHdl invoicesHdl = new InvoicesHdl(realmInvoices);
+        invoicesHdl.importEntities(Paths.get("/Users/Shared/tangly/invoices/"));
+        ProductsHdl productsHdl = new ProductsHdl(realmProducts);
+        productsHdl.importEntities(Paths.get("/Users/Shared/tangly/products"));
+
+        LedgerHdl ledgerHdl = new LedgerHdl(new Ledger());
+        ledgerHdl.importEntities(Paths.get("/Users/Shared/tangly/ledger"));
+        ledgerLogic = new LedgerBusinessLogic(ledgerHdl.ledger());
     }
 
-    private void exportCrmData() {
+    private void exportErpData() {
         CrmHdl crmHdl = new CrmHdl(realmCrm);
-        crmHdl.exportEntities(Paths.get("/Users/Shared/tmp"));
+        crmHdl.exportEntities(Paths.get("/Users/Shared/tangly/crm"));
+        InvoicesHdl invoicesHdl = new InvoicesHdl(realmInvoices);
+        invoicesHdl.exportEntities(Paths.get("Users/Shared/tangly/invoices"));
     }
 
     private void refreshViews() {
@@ -181,5 +223,12 @@ public class MainView extends VerticalLayout {
         contractsView.refreshData();
         articlesView.refreshData();
         subjectsView.refreshData();
+
+        articlesView.refreshData();
+        invoicesView.refreshData();
+
+        productsView.refreshData();
+        assignementsView.refreshData();
+        effortsView.refreshData();
     }
 }

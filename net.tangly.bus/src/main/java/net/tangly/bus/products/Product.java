@@ -15,20 +15,20 @@ package net.tangly.bus.products;
 
 import java.util.List;
 
-import net.tangly.bus.core.EntityImp;
+import net.tangly.bus.core.QualifiedEntityImp;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * An outcome such as a product or a research result which should be produced. An outcome is financed through one or more contracts.
  */
-public class Product extends EntityImp {
+public class Product extends QualifiedEntityImp {
     private List<String> contracIds;
 
-    public List<String> contracIds() {
+    public List<String> contractIds() {
         return contracIds;
     }
 
-    public void contracIds(@NotNull List<String> contracIds) {
+    public void contracIds(@NotNull List<String> contractIds) {
         this.contracIds = List.copyOf(contracIds);
     }
 }

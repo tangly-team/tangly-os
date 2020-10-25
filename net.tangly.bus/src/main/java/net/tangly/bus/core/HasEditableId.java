@@ -13,16 +13,12 @@
 
 package net.tangly.bus.core;
 
-/**
- * Mixin states that the class has an external unique object identifier and a human readable name. The interface supports only querying the external identifier.
- * It is the responsibility of the application to decide if the external identifier can be modified or not.
- */
-public interface HasEditableQualifiers extends HasQualifiers {
-
+public interface HasEditableId extends HasId, HasName {
     /**
      * Sets the unique external identifier of the instance.
      *
      * @param id external identifier
+     * @see HasId#id()
      */
     void id(String id);
 
@@ -30,13 +26,8 @@ public interface HasEditableQualifiers extends HasQualifiers {
      * Sets the name of the entity.
      *
      * @param name human readable name of the entity
+     * @see HasName#name()
      */
     void name(String name);
 
-    /**
-     * Sets the text description of the entity.
-     *
-     * @param text human readable text description
-     */
-    void text(String text);
 }

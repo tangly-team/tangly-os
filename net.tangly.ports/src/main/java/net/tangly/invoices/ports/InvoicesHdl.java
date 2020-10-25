@@ -44,6 +44,9 @@ import static net.tangly.ports.TsvHdl.NAME;
 import static net.tangly.ports.TsvHdl.TEXT;
 import static net.tangly.ports.TsvHdl.get;
 
+/**
+ * Defines the workflows defined for bounded domain activities in particular the import and export to files.
+ */
 public class InvoicesHdl {
     public static final String INVOICES = "invoices";
     public static final String REPORTS = "reports";

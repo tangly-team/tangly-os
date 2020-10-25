@@ -21,7 +21,6 @@ import net.tangly.bus.codes.Code;
 public enum ActivityCode implements Code {
     talk, meeting, email, letter, audiocall, videocall, chat, campaign;
 
-
     @Override
     public int id() {
         return this.ordinal();

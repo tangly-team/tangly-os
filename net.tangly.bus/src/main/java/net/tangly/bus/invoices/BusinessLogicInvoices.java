@@ -32,6 +32,10 @@ public class BusinessLogicInvoices {
         this.realm = realm;
     }
 
+    public RealmInvoices realm() {
+        return realm;
+    }
+
     public BigDecimal expensesForContract(@NotNull String contractId, LocalDate from, LocalDate to) {
         return realm.invoices().items().stream().filter(o -> (contractId.equals(o.contractId())) && isWithinRange(o.invoicedDate(), from, to))
                 .map(Invoice::expenses).reduce(BigDecimal.ZERO, BigDecimal::add);

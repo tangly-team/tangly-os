@@ -184,6 +184,11 @@ name = "Documentation"
 url = "https://tangly-team.bitbucket.io/"
 icon = "bitbucker-square"
 desc = "Documentation of the open source components (this site)"
+[[params.links.user]]
+name = "Groups"
+url = "https://groups.google.com/g/tangly-os-components"
+icon = "users-cog"
+desc = "Discussion groups of the open source components"
 [[params.links.developer]]
 name = "Bitbucket"
 url = "https://bitbucket.org/tangly-team/tangly-os"

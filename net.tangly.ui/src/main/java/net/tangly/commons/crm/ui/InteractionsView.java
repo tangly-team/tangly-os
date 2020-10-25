@@ -20,33 +20,35 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.select.Select;
-import com.vaadin.flow.component.tabs.Tab;
+import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.bus.codes.CodeType;
 import net.tangly.bus.crm.Interaction;
 import net.tangly.bus.crm.InteractionCode;
+import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.RealmCrm;
-import net.tangly.commons.vaadin.CommentsView;
 import net.tangly.commons.vaadin.EntityField;
-import net.tangly.commons.vaadin.TabsComponent;
-import net.tangly.commons.vaadin.TagsView;
+import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class InteractionsView extends CrmEntitiesView<Interaction> {
+public class InteractionsView extends InternalEntitiesView<Interaction> {
     public static final BigDecimal HUNDRED = new BigDecimal("100");
+    private final RealmCrm realm;
 
-    public InteractionsView(@NotNull RealmCrm realmCrm, @NotNull Mode mode) {
-        super(realmCrm, Interaction.class, mode, realmCrm.interactions());
-        initialize();
+    public InteractionsView(@NotNull RealmCrm realm, @NotNull Mode mode) {
+        super(Interaction.class, mode, realm.interactions(), realm.tagTypeRegistry());
+        this.realm = realm;
+        initializeGrid();
     }
 
     @Override
-    protected void initialize() {
-        super.initialize();
+    protected void initializeGrid() {
         Grid<Interaction> grid = grid();
+        InternalEntitiesView.addQualifiedEntityColumns(grid);
         grid.addColumn(Interaction::code).setKey("state").setHeader("State").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(e -> VaadinUtils.format(e.potential())).setKey("potential").setHeader("Potential").setAutoWidth(true).setResizable(true)
                 .setSortable(true).setFrozen(true);
@@ -54,20 +56,13 @@ public class InteractionsView extends CrmEntitiesView<Interaction> {
                 .setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(new NumberRenderer<>(e -> e.potential().multiply(e.probability()), VaadinUtils.FORMAT)).setKey("forecast").setHeader("Forecast")
                 .setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
-    }
-
-    @Override
-    protected void registerTabs(@NotNull TabsComponent tabs, @NotNull Mode mode, Interaction entity) {
-        Interaction workedOn = (entity != null) ? entity : create();
-        tabs.add(new Tab("Overview"), createOverallView(mode, workedOn));
-        tabs.add(new Tab("Comments"), new CommentsView(mode, workedOn));
-        tabs.add(new Tab("Tags"), new TagsView(mode, workedOn, realm().tagTypeRegistry()));
+        addAndExpand(filterCriteria(grid()), grid(), createCrudButtons());
     }
 
     @Override
     protected FormLayout createOverallView(@NotNull Mode mode, @NotNull Interaction entity) {
         boolean readonly = Mode.readOnly(mode);
-        EntityField entityField = new EntityField();
+        EntityField<Interaction> entityField = new EntityField<>();
         entityField.setReadOnly(readonly);
         TextField potential = VaadinUtils.createTextField("Potential", "potential");
         TextField probability = VaadinUtils.createTextField("Probability", "probability");
@@ -80,7 +75,8 @@ public class InteractionsView extends CrmEntitiesView<Interaction> {
 
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);
-        form.add(entityField, new HtmlComponent("br"), potential, probability);
+        entityField.addEntityComponentsTo(form);
+        form.add(new HtmlComponent("br"), potential, probability);
 
         binder = new Binder<>(entityClass());
         entityField.bind(binder);
@@ -91,7 +87,13 @@ public class InteractionsView extends CrmEntitiesView<Interaction> {
     }
 
     @Override
-    protected Interaction create() {
-        return new Interaction();
+    protected Interaction updateOrCreate(Interaction entity) {
+        Interaction interaction = (entity != null) ? entity : new Interaction();
+        try {
+            binder.writeBean(interaction);
+        } catch (ValidationException e) {
+            e.printStackTrace();
+        }
+        return interaction;
     }
 }

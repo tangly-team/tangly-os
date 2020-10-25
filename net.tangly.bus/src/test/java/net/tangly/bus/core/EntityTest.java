@@ -22,7 +22,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class EntityTest {
-    static class Entity extends EntityImp {
+    static class Entity extends QualifiedEntityImp {
         private Address address;
         private EmailAddress email;
         private PhoneNr phoneNr;

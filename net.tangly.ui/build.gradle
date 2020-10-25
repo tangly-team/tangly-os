@@ -72,8 +72,8 @@ dependencies {
     providedCompile "javax.servlet:javax.servlet-api:3.1.0"
 
     implementation 'com.storedobject.chart:so-charts:0.0.7'
+    implementation 'org.vaadin.klaudeta:grid-pagination:2.0.9'
     implementation "org.slf4j:slf4j-simple:$slf4jVersion"
 
     testImplementation 'com.github.mvysny.kaributesting:karibu-testing-v10:1.2.5'
-
 }

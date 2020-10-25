@@ -16,59 +16,69 @@ package net.tangly.commons.crm.ui;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.data.binder.ValidationException;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.bus.crm.RealmCrm;
 import net.tangly.commons.vaadin.EntityField;
+import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.One2OneField;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class EmployeesView extends CrmEntitiesView<Employee> {
-    public EmployeesView(@NotNull RealmCrm realmCrm, @NotNull Mode mode) {
-        super(realmCrm, Employee.class, mode, realmCrm.employees());
-        initialize();
+public class EmployeesView extends InternalEntitiesView<Employee> {
+    private final RealmCrm realm;
+
+    public EmployeesView(@NotNull RealmCrm realm, @NotNull Mode mode) {
+        super(Employee.class, mode, realm.employees(), realm.tagTypeRegistry());
+        this.realm = realm;
+        initializeGrid();
     }
 
     @Override
-    protected void initialize() {
-        super.initialize();
+    protected void initializeGrid() {
         Grid<Employee> grid = grid();
+        grid.addColumn(Employee::name).setKey("employee").setHeader("Employee").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.person().name()).setKey("person").setHeader("Person").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.organization().name()).setKey("organization").setHeader("Organization").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.tag(CrmTags.CRM_EMPLOYEE_TITLE).orElse("")).setKey("title").setHeader("Title").setSortable(true).setAutoWidth(true)
                 .setResizable(true);
-    }
-
-    @Override
-    protected Employee create() {
-        return new Employee();
+        addAndExpand(filterCriteria(grid()), grid(), createCrudButtons());
     }
 
     @Override
     protected FormLayout createOverallView(@NotNull Mode mode, @NotNull Employee entity) {
         boolean readonly = Mode.readOnly(mode);
-        EntityField entityField = new EntityField();
+        EntityField<Employee> entityField = new EntityField<>();
         entityField.setReadOnly(readonly);
-        One2OneField<LegalEntity, LegalEntitiesView> organization = new One2OneField<>("Organization", new LegalEntitiesView(realm(), mode));
+        One2OneField<LegalEntity, LegalEntitiesView> organization = new One2OneField<>("Organization", new LegalEntitiesView(realm, mode));
         organization.setReadOnly(readonly);
-        One2OneField<NaturalEntity, NaturalEntitiesView> person = new One2OneField<>("Person", new NaturalEntitiesView(realm(), mode));
+        One2OneField<NaturalEntity, NaturalEntitiesView> person = new One2OneField<>("Person", new NaturalEntitiesView(realm, mode));
         person.setReadOnly(readonly);
 
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);
-        form.add(entityField);
+        entityField.addEntityComponentsTo(form);
         form.add(new HtmlComponent("br"));
-        form.add(organization);
-        form.add(new HtmlComponent("br"));
-        form.add(person);
+        form.add(person, organization);
 
         entityField.bind(binder);
         binder.forField(organization).bind(Employee::organization, Employee::organization);
         binder.forField(person).bind(Employee::person, Employee::person);
         binder.readBean(entity);
         return form;
+    }
+
+    @Override
+    protected Employee updateOrCreate(Employee entity) {
+        Employee employee = (entity != null) ? entity : new Employee();
+        try {
+            binder.writeBean(employee);
+        } catch (ValidationException e) {
+            e.printStackTrace();
+        }
+        return employee;
     }
 }

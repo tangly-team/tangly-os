@@ -84,16 +84,17 @@ sudo npm install -D --save autoprefixer   # <4>
 sudo npm install -D --save postcss-cli
 sudo npm install -D --save postcss
 ----
-<1> Install hugo application
-<2> Install asciidoctor and additional asciidoctor packages
-<3> Install plantuml and graphviz for diagrams, in particcular UML sketches
-<4> Install postcss and additional packages used by docsy to generate deployment site
+<1> Install https://gohugo.io/[hugo] application
+<2> Install https://asciidoctor.org/[asciidoctor] and additional asciidoctor packages
+<3> Install https://plantuml.com/[plantuml] and https://graphviz.org/[graphviz] for diagrams, in particular UML sketches
+<4> Install https://postcss.org/[PostCSS] and additional packages used by docsy to generate deployment site.
+ See also https://www.docsy.dev/docs/getting-started/[docsy documentation].
 
 ==== Asciidoctor Configuration
 
 Below the configuration of asciidoctor in the _config.toml_ file.
 
-[source, yaml]
+[source,yaml]
 ----
 [markup.asciidocext]
   extensions = ["asciidoctor-html5s", "asciidoctor-diagram"]
@@ -141,7 +142,7 @@ cp $prjDir/src/site/website/docsy/layouts/partials/footer.html $siteDir/themes/d
 
 One cool feature of {ref-docsy} is local search support through https://lunrjs.com/[lunrjs] engine.
 
-[source, yaml]
+[source,yaml]
 ----
 algolia_docsearch = false
 

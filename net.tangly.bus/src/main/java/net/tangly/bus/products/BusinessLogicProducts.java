@@ -24,4 +24,8 @@ public class BusinessLogicProducts {
     public BusinessLogicProducts(@NotNull RealmProducts realm) {
         this.realm = realm;
     }
+
+    public RealmProducts realm() {
+        return realm;
+    }
 }

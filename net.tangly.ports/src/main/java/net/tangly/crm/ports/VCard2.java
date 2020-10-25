@@ -30,7 +30,7 @@ import net.tangly.bus.core.Strings;
 import net.tangly.bus.crm.GenderCode;
 import org.jetbrains.annotations.NotNull;
 
-public class VCard2 {
+class VCard2 {
     private final VCard card;
 
     public VCard2(@NotNull VCard card) {

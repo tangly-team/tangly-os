@@ -13,6 +13,8 @@
 
 package net.tangly.crm.ports;
 
+import javax.inject.Inject;
+
 import net.tangly.bus.core.TagTypeRegistry;
 import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.CrmTags;
@@ -24,6 +26,7 @@ import net.tangly.bus.crm.RealmCrm;
 import net.tangly.bus.crm.Subject;
 import net.tangly.bus.providers.InstanceProvider;
 import net.tangly.bus.providers.InstanceProviderInMemory;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Defines the customer relationship management <i>CRM</i> subsystem. The major abstractions are
@@ -46,22 +49,22 @@ public class CrmEntities implements RealmCrm {
     private final InstanceProvider<Contract> contracts;
     private final InstanceProvider<Interaction> interactions;
     private final InstanceProvider<Subject> subjects;
-    private final TagTypeRegistry tagTypeRegistry;
+    private final TagTypeRegistry registry;
 
-    public CrmEntities() {
+    @Inject
+    public CrmEntities(@NotNull TagTypeRegistry registry) {
         naturalEntities = new InstanceProviderInMemory<>();
         legalEntities = new InstanceProviderInMemory<>();
         employees = new InstanceProviderInMemory<>();
         contracts = new InstanceProviderInMemory<>();
         interactions = new InstanceProviderInMemory<>();
         subjects = new InstanceProviderInMemory<>();
-        tagTypeRegistry = new TagTypeRegistry();
-        CrmTags.registerTags(tagTypeRegistry);
+        this.registry = registry;
     }
 
     @Override
     public TagTypeRegistry tagTypeRegistry() {
-        return tagTypeRegistry;
+        return registry;
     }
 
     @Override

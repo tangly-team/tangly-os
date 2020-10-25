@@ -22,7 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Defines the workflows defined for CRM activities
+ * Defines the workflows defined for bounded domain activities in particular the import and export to files.
  */
 public final class CrmHdl {
     public static final String MODULE = "net.tangly.ports";

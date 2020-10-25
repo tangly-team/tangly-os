@@ -19,6 +19,7 @@ import java.nio.file.Path;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
+import net.tangly.bus.core.TagTypeRegistry;
 import net.tangly.bus.invoices.BusinessLogicInvoices;
 import net.tangly.bus.invoices.RealmInvoices;
 import net.tangly.invoices.ports.InvoicesEntities;
@@ -34,7 +35,7 @@ public class InvoicesHdlTest {
     @Test
         // @Tag("localTest")
     void testCompanyTsvInvoices() {
-        InvoicesHdl invoicesHdl = new InvoicesHdl(new InvoicesEntities());
+        InvoicesHdl invoicesHdl = new InvoicesHdl(new InvoicesEntities(new TagTypeRegistry()));
         invoicesHdl.importEntities(Path.of("/Users/Shared/tangly/", "invoices"));
     }
 
@@ -44,7 +45,7 @@ public class InvoicesHdlTest {
             CrmAndLedgerStore store = new CrmAndLedgerStore(fs);
             store.createCrmAndLedgerRepository();
 
-            InvoicesHdl invoicesHdl = new InvoicesHdl(new InvoicesEntities());
+            InvoicesHdl invoicesHdl = new InvoicesHdl(new InvoicesEntities(new TagTypeRegistry()));
             invoicesHdl.importEntities(store.invoicesRoot());
 
             verifyArticles(invoicesHdl.realm());
@@ -54,7 +55,7 @@ public class InvoicesHdlTest {
 
             invoicesHdl.exportEntities(store.invoicesRoot());
 
-            invoicesHdl = new InvoicesHdl(new InvoicesEntities());
+            invoicesHdl = new InvoicesHdl(new InvoicesEntities(new TagTypeRegistry()));
             invoicesHdl.importEntities(store.invoicesRoot());
             verifyArticles(invoicesHdl.realm());
         }

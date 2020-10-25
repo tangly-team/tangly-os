@@ -23,20 +23,17 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
-import net.tangly.bus.core.HasOid;
-import net.tangly.bus.core.HasQualifiers;
+import net.tangly.bus.core.HasName;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A composite field to display an one two one relationship instance. The attributes unique object identifier, external identifier and name are shown. The
- * button allows the change of the one 2 one relationship instance.
+ * A composite field to display an one two one relationship instance. The unique name of the referenced instance is shown. The button allows the change of the
+ * one 2 one relationship instance.
  *
  * @param <T> type of the entity referenced in the one 2 one relationship
  * @param <V> type of the component used to display the details or select a new entity
  */
-public class One2OneField<T extends HasOid & HasQualifiers, V extends Component & HasIdView<T>> extends CustomField<T> {
-    private final TextField oid;
-    private final TextField id;
+public class One2OneField<T extends HasName, V extends Component & HasIdView<T>> extends CustomField<T> {
     private final TextField name;
     private final Button update;
     private final V view;
@@ -44,13 +41,11 @@ public class One2OneField<T extends HasOid & HasQualifiers, V extends Component 
     public One2OneField(@NotNull String relation, @NotNull V view) {
         this.view = view;
         setLabel(relation);
-        oid = VaadinUtils.createTextField("Oid", "oid", true, false);
-        id = VaadinUtils.createTextField("Id", "id", true, false);
         name = VaadinUtils.createTextField("Name", "name", true, false);
         update = new Button(new Icon(VaadinIcon.ELLIPSIS_DOTS_V));
         update.addClickListener(e -> displayRelationships());
         HorizontalLayout horizontalLayout = new HorizontalLayout();
-        horizontalLayout.add(oid, id, name, update);
+        horizontalLayout.add(name, update);
         add(horizontalLayout);
     }
 
@@ -64,8 +59,6 @@ public class One2OneField<T extends HasOid & HasQualifiers, V extends Component 
         if (one2one == null) {
             clear();
         } else {
-            VaadinUtils.setValue(oid, Long.toString(one2one.oid()));
-            VaadinUtils.setValue(id, one2one.id());
             VaadinUtils.setValue(name, one2one.name());
         }
     }
@@ -79,8 +72,6 @@ public class One2OneField<T extends HasOid & HasQualifiers, V extends Component 
     @Override
     public void clear() {
         super.clear();
-        oid.clear();
-        id.clear();
         name.clear();
     }
 

@@ -30,9 +30,13 @@ public class Effort implements HasOid {
     private Assignment assignment;
     private String contractId;
 
+    public Effort() {
+        oid = HasOid.UNDEFINED_OID;
+    }
+
     @Override
     public long oid() {
-        return 0;
+        return oid;
     }
 
     public String text() {
@@ -71,7 +75,7 @@ public class Effort implements HasOid {
         return contractId;
     }
 
-    public void contract(String contractId) {
+    public void contractId(String contractId) {
         this.contractId = contractId;
     }
 }

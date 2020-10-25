@@ -14,7 +14,7 @@ tags: ["java", "design", "crm"]
 
 image::2020-11-01-head.jpg[720,480,role=left]
 Reference codes are an old concept.
-They are often used in relational database schema definition.
+They are often used in relational database schema definition as enumeration values.
 The database specialists often call them lookup tables.
 
 Reference codes are dynamic enumeration values.
@@ -95,13 +95,13 @@ public static <T extends Code> CodeType<T> build(Class<T> clazz, CodeFactory<T> 
         return CodeType.of(clazz, codes);
     }
 }
------
+----
 
 The JSON files containing the code values can be stored as resource files and delivered either with application or in a separate jar file.
 
 The Java code for the SQL table is quite similar:
 
-[source, java]
+[source,java]
 ----
 
 /**

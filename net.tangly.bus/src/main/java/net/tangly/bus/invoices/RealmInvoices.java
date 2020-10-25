@@ -16,6 +16,7 @@ package net.tangly.bus.invoices;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import net.tangly.bus.core.TagTypeRegistry;
 import net.tangly.bus.providers.Provider;
 import net.tangly.bus.providers.RecordProviderInMemory;
 import org.jetbrains.annotations.NotNull;
@@ -27,6 +28,8 @@ import org.jetbrains.annotations.NotNull;
  * </ul>
  **/
 public interface RealmInvoices {
+    TagTypeRegistry tagTypeRegistry();
+
     Provider<Invoice> invoices();
 
     Provider<Article> articles();

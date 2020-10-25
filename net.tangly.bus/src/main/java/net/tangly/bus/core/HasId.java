@@ -14,7 +14,7 @@
 package net.tangly.bus.core;
 
 /**
- * Mixin states a class with the capability to be uniquely identified through an external object identifier.
+ * Mixin indicating the class has the capability to be uniquely identified through an external object identifier.
  */
 public interface HasId {
     /**

@@ -79,6 +79,7 @@ public class TransactionsView extends Crud<Transaction> implements CrudForm<Tran
         grid.addColumn(Transaction::creditAccount).setKey("credit").setHeader("Credit").setAutoWidth(true).setResizable(true);
         grid.addColumn(new NumberRenderer<>(Transaction::amount, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true).setResizable(true)
                 .setTextAlign(ColumnTextAlign.END);
+        addAndExpand(grid(), createCrudButtons());
     }
 
     void interval(@NotNull LocalDate from, @NotNull LocalDate to) {

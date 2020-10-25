@@ -20,16 +20,13 @@ import java.time.LocalDate;
  * <ul>
  * <li>oid: an optional internal identifier, an internal identifier is never visible to external systems or users. It
  * is optional because the domain model decides if it is needed or not.</li>
- * <li>id: a unique identifier of an instance in the context of the domain model.</li>
- * <li>name: a human readable name of an instance in the context of the domain model. A name can but do not need to be
- * an identifier.</li>
  * <li>text: a human readable documentation of the instance. We recommend using markdown syntax for the text.</li>
- * <li>model: human readable model describing aspects of an instance.</li>
+ * <li>comments: human readable comments describing aspects of an instance.</li>
  * <li>tags: human readable and machine processable tags defining an ontology to classify instance in the domain model.
  * Orthogonal information can therefore be attached to instances.</li>
  * </ul>
  */
-public interface Entity extends HasOid, HasInterval, HasEditableQualifiers, HasTags, HasComments {
+public interface Entity extends HasOid, HasName, HasInterval, HasTags, HasComments {
     /**
      * Set the start date from when the entity is existing and active.
      *
@@ -43,6 +40,22 @@ public interface Entity extends HasOid, HasInterval, HasEditableQualifiers, HasT
      * @param toDate the end of the existing period of the entity
      */
     void toDate(LocalDate toDate);
+
+    /**
+     * Returns the human readable text description of the instance.
+     *
+     * @return human readable text description of the instance
+     * @see #text(String)
+     */
+    String text();
+
+    /**
+     * Sets the text description of the entity.
+     *
+     * @param text human readable text description
+     * @see #text()
+     */
+    void text(String text);
 
     default boolean isValid() {
         return true;

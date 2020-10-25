@@ -41,7 +41,7 @@ The library can be included in Gradle as
  
 The documentation can be found under [Business documentation](https://tangly-team.bitbucket.io/docs/ports/)
 
-For any further question and discussion you can use the forum [tangly-OS-Components](https://groups.google.com/d/forum/tangly-os-components)
+For any further question and discussion you can use the forum [tangly-OS-Components](https://groups.google.com/g/tangly-os-components)
 
 ## Contribution
 

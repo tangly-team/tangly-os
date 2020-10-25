@@ -25,12 +25,10 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Default implementation of the Entity interface.
  *
- * @see Entity
+ * @see QualifiedEntity
  */
 public abstract class EntityImp implements Entity {
     private long oid;
-    private String id;
-    private String name;
     private String text;
     private LocalDate fromDate;
     private LocalDate toDate;
@@ -47,36 +45,9 @@ public abstract class EntityImp implements Entity {
     }
 
     // region HasOid
-    @Override
+
     public long oid() {
         return oid;
-    }
-
-    protected void oid(long oid) {
-        this.oid = oid;
-    }
-
-    // endregion
-
-    // region HasId
-    @Override
-    public String id() {
-        return id;
-    }
-
-    @Override
-    public void id(String id) {
-        this.id = id;
-    }
-
-    @Override
-    public String name() {
-        return name;
-    }
-
-    @Override
-    public void name(String name) {
-        this.name = name;
     }
 
     // endregion

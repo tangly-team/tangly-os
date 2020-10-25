@@ -25,16 +25,22 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import net.tangly.bus.core.HasId;
+import net.tangly.bus.core.HasName;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * Defines an account as seen for double entry booking ledger and legal accounting for tax ports. { id = 1, kind = ASSET, description = "Assets"}
  */
-public class Account implements HasId {
+public class Account implements HasId, HasName {
 
     public enum AccountKind {ASSET, LIABILITY, INCOME, EXPENSE, AGGREGATE}
 
     public enum AccountGroup {ASSETS, LIABILITIES, EXPENSES, PROFITS_AND_LOSSES}
+
+    /**
+     * Human readable description of the account function.
+     */
+    private final String name;
 
     /**
      * The unique identifier of the account in the ledger context.
@@ -57,11 +63,6 @@ public class Account implements HasId {
     private final Currency currency;
 
     /**
-     * Human readable description of the account function.
-     */
-    private final String text;
-
-    /**
      * Optional account identifier owning the account.
      */
     private final String ownedBy;
@@ -80,12 +81,12 @@ public class Account implements HasId {
         this(id, kind, null, currency, text, ownedBy);
     }
 
-    public Account(@NotNull String id, @NotNull AccountKind kind, AccountGroup group, @NotNull Currency currency, String text, String ownedBy) {
+    public Account(@NotNull String id, @NotNull AccountKind kind, AccountGroup group, @NotNull Currency currency, String name, String ownedBy) {
         this.id = id;
         this.kind = kind;
         this.group = group;
         this.currency = currency;
-        this.text = text;
+        this.name = name;
         this.ownedBy = ownedBy;
         this.aggregatedAccounts = new HashSet<>();
         this.entries = new ArrayList<>();
@@ -99,8 +100,14 @@ public class Account implements HasId {
         return new Account(id, AccountKind.AGGREGATE, group, Currency.getInstance("CHF"), description, ownedByGroupId);
     }
 
+    @Override
     public String id() {
         return id;
+    }
+
+    @Override
+    public String name() {
+        return name;
     }
 
     public AccountKind kind() {
@@ -109,10 +116,6 @@ public class Account implements HasId {
 
     public Currency currency() {
         return currency;
-    }
-
-    public String text() {
-        return text;
     }
 
     public Set<Account> aggregatedAccounts() {

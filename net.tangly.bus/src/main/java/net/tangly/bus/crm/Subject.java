@@ -19,7 +19,7 @@ import java.util.Base64;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
-import net.tangly.bus.core.EntityImp;
+import net.tangly.bus.core.QualifiedEntityImp;
 import net.tangly.bus.gravatar.Gravatar;
 import net.tangly.bus.gravatar.GravatarImage;
 import net.tangly.bus.gravatar.GravatarRating;
@@ -29,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
  * Defines the abstraction of a registered subject entitled to use the application and associated services.
  * The id of the subject is the human readable unique identifier.
  */
-public class Subject extends EntityImp {
+public class Subject extends QualifiedEntityImp {
     private static final String ALGORITHM = "PBKDF2WithHmacSHA512";
     private NaturalEntity user;
     private String gravatarEmail;

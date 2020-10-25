@@ -16,6 +16,7 @@ package net.tangly.bus.crm;
 
 import net.tangly.bus.core.EmailAddress;
 import net.tangly.bus.core.EntityImp;
+import net.tangly.bus.core.QualifiedEntityImp;
 import net.tangly.bus.core.Strings;
 
 /**
@@ -24,10 +25,16 @@ import net.tangly.bus.core.Strings;
  */
 public class NaturalEntity extends EntityImp implements CrmEntity {
     private static final long serialVersionUID = 1L;
+    private String socialNr;
     private String firstname;
     private String lastname;
     private GenderCode gender;
     private byte[] photo;
+
+    @Override
+    public String name() {
+        return lastname() + ", " + firstname();
+    }
 
     public String firstname() {
         return firstname;
@@ -65,21 +72,12 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
         return photo != null;
     }
 
-    @Override
-    public void name(String name) {
-    }
-
-    @Override
-    public String name() {
-        return (lastname != null) ? lastname + ((firstname != null) ? ", " + firstname : "") : "";
-    }
-
     public String socialNr() {
-        return id();
+        return socialNr;
     }
 
     public void socialNr(String socialNr) {
-        id(socialNr);
+        this.socialNr = socialNr;
     }
 
     public boolean isValid() {
@@ -91,7 +89,7 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
     @Override
     public String toString() {
         return """
-                NaturalEntity[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, firstname=%s, lastname=%s, gender=%s, tags=%s]
-                """.formatted(oid(), id(), name(), fromDate(), toDate(), text(), firstname(), lastname(), gender(), tags());
+                NaturalEntity[oid=%s, fromDate=%s, toDate=%s, text=%s, firstname=%s, lastname=%s, gender=%s, tags=%s]
+                """.formatted(oid(), fromDate(), toDate(), text(), firstname(), lastname(), gender(), tags());
     }
 }

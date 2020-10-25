@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class AddressFieldTest {
     @Test
     void testAddressField() {
-        Address address = Address.builder().postcode("6300").locality("Zug").build();
+        Address address = Address.builder().postcode("6300").locality("Zug").street("Bahnhofstrasse 1").region("ZG").country("CH").build();
         final AddressField addressField = new AddressField();
         addressField.setValue(address);
         assertThat(addressField.getValue()).isEqualTo(address);

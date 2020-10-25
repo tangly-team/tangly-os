@@ -32,7 +32,7 @@ sourceSets {
 }
 
 dependencies {
-    implementation "com.networknt:json-schema-validator:1.0.43"
+    implementation "com.networknt:json-schema-validator:$jsonValidatorVersion"
     implementation "com.sun.mail:jakarta.mail:1.6.5"
     implementation 'org.asciidoctor:asciidoctorj:2.4.1'
     implementation 'org.asciidoctor:asciidoctorj-pdf:1.5.3'

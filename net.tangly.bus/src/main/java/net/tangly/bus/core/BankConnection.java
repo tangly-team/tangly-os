@@ -87,7 +87,7 @@ public record BankConnection(String iban, String bic, String institute) implemen
     }
 
     /**
-     * Builds a bank connection object from a comma separated string representation.
+     * Build a bank connection object from a comma separated string representation.
      *
      * @param text comma separated representation of the address instance
      * @return new address object
@@ -100,9 +100,9 @@ public record BankConnection(String iban, String bic, String institute) implemen
     }
 
     /**
-     * Returns a comma separated representation of a bank connection. Null values are shown as empty strings. The {@link Object#toString()} method is not used
+     * Return a comma separated representation of a bank connection. Null values are shown as empty strings. The {@link Object#toString()} method is not used
      * because the implementation is defined in the API implementation of record construct. The generated string can be feed to the {@link
-     * BankConnection#of(String)} to create an address object
+     * BankConnection#of(String)} to create an bank connection object.
      *
      * @return comma separated representation
      * @see BankConnection#of(String)

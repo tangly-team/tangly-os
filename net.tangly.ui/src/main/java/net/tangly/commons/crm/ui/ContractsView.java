@@ -22,6 +22,7 @@ import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.LegalEntity;
@@ -30,41 +31,39 @@ import net.tangly.bus.invoices.BusinessLogicInvoices;
 import net.tangly.bus.invoices.RealmInvoices;
 import net.tangly.commons.vaadin.BankConnectionField;
 import net.tangly.commons.vaadin.EntityField;
+import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.One2OneField;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class ContractsView extends CrmEntitiesView<Contract> {
+public class ContractsView extends InternalEntitiesView<Contract> {
+    private final RealmCrm realm;
     private final RealmInvoices realmInvoices;
 
-    public ContractsView(@NotNull RealmCrm realmCrm, RealmInvoices realmInvoices, @NotNull Mode mode) {
-        super(realmCrm, Contract.class, mode, realmCrm.contracts());
+    public ContractsView(@NotNull RealmCrm realm, RealmInvoices realmInvoices, @NotNull Mode mode) {
+        super(Contract.class, mode, realm.contracts(), realm.tagTypeRegistry());
+        this.realm = realm;
         this.realmInvoices = realmInvoices;
-        initialize();
+        initializeGrid();
     }
 
     @Override
-    protected void initialize() {
-        super.initialize();
+    protected void initializeGrid() {
         BusinessLogicInvoices logic = new BusinessLogicInvoices(realmInvoices);
         Grid<Contract> grid = grid();
+        InternalEntitiesView.addQualifiedEntityColumns(grid);
         grid.addColumn(e -> e.sellee().name()).setKey("customer").setHeader("Customer").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(new NumberRenderer<>(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true)
                 .setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(new NumberRenderer<>(o -> logic.invoicedAmountWithoutVatForContract(o.id(), null, null), VaadinUtils.FORMAT)).setKey("invoicedAmount")
                 .setHeader("Invoiced").setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
-
-    }
-
-    @Override
-    protected Contract create() {
-        return new Contract();
+        addAndExpand(filterCriteria(grid()), grid(), createCrudButtons());
     }
 
     @Override
     protected FormLayout createOverallView(@NotNull Mode mode, @NotNull Contract entity) {
         boolean readonly = Mode.readOnly(mode);
-        EntityField entityField = new EntityField();
+        EntityField<Contract> entityField = new EntityField<>();
         entityField.setReadOnly(readonly);
         BankConnectionField bankConnection = new BankConnectionField();
         bankConnection.setReadOnly(readonly);
@@ -76,22 +75,20 @@ public class ContractsView extends CrmEntitiesView<Contract> {
         currency.setLabel("Currency");
         currency.setItems(Currency.getInstance("CHF"), Currency.getInstance("EUR"));
         currency.setReadOnly(readonly);
-        One2OneField<LegalEntity, LegalEntitiesView> seller = new One2OneField<>("Seller", new LegalEntitiesView(realm(), mode));
+        One2OneField<LegalEntity, LegalEntitiesView> seller = new One2OneField<>("Seller", new LegalEntitiesView(realm, mode));
         seller.setReadOnly(readonly);
-        One2OneField<LegalEntity, LegalEntitiesView> sellee = new One2OneField<>("Sellee", new LegalEntitiesView(realm(), mode));
+        One2OneField<LegalEntity, LegalEntitiesView> sellee = new One2OneField<>("Sellee", new LegalEntitiesView(realm, mode));
         sellee.setReadOnly(readonly);
 
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);
-        form.add(entityField);
+        entityField.addEntityComponentsTo(form);
         form.add(new HtmlComponent("br"));
         form.add(locale, currency);
         form.add(new HtmlComponent("br"));
         form.add(bankConnection);
         form.add(new HtmlComponent("br"));
-        form.add(seller);
-        form.add(new HtmlComponent("br"));
-        form.add(sellee);
+        form.add(seller, sellee);
 
         binder = new Binder<>(entityClass());
         entityField.bind(binder);
@@ -102,5 +99,16 @@ public class ContractsView extends CrmEntitiesView<Contract> {
         binder.forField(sellee).bind(Contract::sellee, Contract::sellee);
         binder.readBean(entity);
         return form;
+    }
+
+    @Override
+    protected Contract updateOrCreate(Contract entity) {
+        Contract contract = (entity != null) ? entity : new Contract();
+        try {
+            binder.writeBean(contract);
+        } catch (ValidationException e) {
+            e.printStackTrace();
+        }
+        return contract;
     }
 }

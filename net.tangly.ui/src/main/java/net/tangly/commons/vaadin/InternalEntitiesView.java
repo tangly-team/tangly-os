@@ -17,12 +17,13 @@ import java.time.format.DateTimeFormatter;
 
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.data.binder.Binder;
-import com.vaadin.flow.data.binder.ValidationException;
-import com.vaadin.flow.data.provider.DataProvider;
+import com.vaadin.flow.data.provider.ListDataProvider;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import net.tangly.bus.core.Entity;
+import net.tangly.bus.core.QualifiedEntity;
 import net.tangly.bus.core.TagTypeRegistry;
 import net.tangly.bus.providers.Provider;
 import org.jetbrains.annotations.NotNull;
@@ -37,7 +38,7 @@ import org.slf4j.LoggerFactory;
  *    <li>The tags panel shows all tags associated with the entity. This panel is a Crud&lt;Tag&gt; instance.</li>
  * </ul>
  */
-public abstract class InternalEntitiesView<T extends Entity> extends Crud<T> implements CrudForm<T>, HasIdView<T> {
+public abstract class InternalEntitiesView<T extends Entity> extends EntitiesView<T> implements CrudForm<T>, HasIdView<T> {
     private static final Logger logger = LoggerFactory.getLogger(InternalEntitiesView.class);
     protected final transient Provider<T> provider;
     protected Binder<T> binder;
@@ -47,47 +48,61 @@ public abstract class InternalEntitiesView<T extends Entity> extends Crud<T> imp
      * Constructor of the CRUD view for a subclass of entity.
      *
      * @param clazz    class of the entity to display
-     * @param mode  mode in which the view should be displayed, the active functions will be accordingly configured
+     * @param mode     mode in which the view should be displayed, the active functions will be accordingly configured
      * @param provider data provider associated with the grid
      * @param registry tag type registry used to configure the tags view of the entity class
      */
     public InternalEntitiesView(@NotNull Class<T> clazz, @NotNull Mode mode, @NotNull Provider<T> provider, TagTypeRegistry registry) {
-        super(clazz, mode, DataProvider.ofCollection(provider.items()));
+        super(clazz, mode, provider);
         this.provider = provider;
         this.binder = new Binder<>(clazz);
         this.registry = registry;
     }
 
-    protected void initialize() {
-        super.initialize(this, new GridActionsListener<>(provider, grid().getDataProvider(), this::selectedItem));
-        VaadinUtils.initialize(grid());
-        Grid<T> grid = grid();
+    protected HorizontalLayout filterCriteria(Grid<T> grid) {
+        GridFilters<T> filters = new GridFilters<>((ListDataProvider<T>) grid.getDataProvider());
+        filters.addFilter(new GridFilters.GridFilterText<>(filters, T::name, "Name", "name"));
+        filters.addFilter(new GridFilters.GridFilterInterval<>(filters));
+        filters.addFilter(new GridFilters.GridFilterTags<>(filters));
+        return filters;
+    }
+
+    protected static <T extends Entity> void addEntityColumns(Grid<T> grid) {
         grid.addColumn(Entity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
-        grid.addColumn(Entity::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Entity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(new LocalDateRenderer<>(Entity::fromDate, DateTimeFormatter.ISO_DATE)).setKey("from").setHeader("From").setAutoWidth(true)
                 .setResizable(true).setSortable(true);
         grid.addColumn(new LocalDateRenderer<>(Entity::toDate, DateTimeFormatter.ISO_DATE)).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true)
                 .setSortable(true);
     }
 
-    @Override
-    public FormLayout createForm(@NotNull CrudForm.Operation operation, T entity) {
-        TabsComponent tabs = new TabsComponent();
-        registerTabs(tabs, of(operation), entity);
-        tabs.tabByName("Overview").ifPresent(tabs::initialize);
+    protected static <T extends QualifiedEntity> void addQualifiedEntityColumns(Grid<T> grid) {
+        grid.addColumn(QualifiedEntity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
+        grid.addColumn(QualifiedEntity::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(QualifiedEntity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(new LocalDateRenderer<>(QualifiedEntity::fromDate, DateTimeFormatter.ISO_DATE)).setKey("from").setHeader("From").setAutoWidth(true)
+                .setResizable(true).setSortable(true);
+        grid.addColumn(new LocalDateRenderer<>(QualifiedEntity::toDate, DateTimeFormatter.ISO_DATE)).setKey("to").setHeader("To").setAutoWidth(true)
+                .setResizable(true).setSortable(true);
+    }
 
-        FormLayout form = new FormLayout(tabs);
-        form.setSizeFull();
-        VaadinUtils.setResponsiveSteps(form);
+    @Override
+    public FormLayout fillForm(@NotNull Operation operation, T entity, FormLayout form) {
+        if (entity != null) {
+            TabsComponent tabs = new TabsComponent();
+            registerTabs(tabs, of(operation), entity);
+            tabs.tabByName("Overview").ifPresent(tabs::initialize);
+            form.add(tabs);
+            form.setSizeFull();
+        } else {
+            form.add(createOverallView(of(operation), entity));
+        }
         return form;
     }
 
-    protected void registerTabs(@NotNull TabsComponent tabs, @NotNull Mode mode, T entity) {
-        T workedOn = (entity != null) ? entity : create();
-        tabs.add(new Tab("Overview"), createOverallView(mode, workedOn));
-        tabs.add(new Tab("Comments"), new CommentsView(mode, workedOn));
-        tabs.add(new Tab("Tags"), new TagsView(mode, workedOn, registry));
+    protected void registerTabs(@NotNull TabsComponent tabs, @NotNull Mode mode, @NotNull T entity) {
+        tabs.add(new Tab("Overview"), createOverallView(mode, entity));
+        tabs.add(new Tab("Comments"), new CommentsView(mode, entity));
+        tabs.add(new Tab("Tags"), new TagsView(mode, entity, registry));
     }
 
     protected Binder<T> binder() {
@@ -99,54 +114,25 @@ public abstract class InternalEntitiesView<T extends Entity> extends Crud<T> imp
     }
 
     /**
-     * factory method to create a new instance of the entity class displayed in the CRUD view. Access to the form allows the use of constructors with
-     * parameters.
-     *
-     * @return a new instance of the entity class
-     */
-    protected abstract T create();
-
-    /**
-     * factory method creating the form layout for the entity simple attributes to be displayed in the overall view.
+     * Factory method creating the form layout for the entity simple attributes to be displayed in the overall view.
      *
      * @param mode   mode in which the form will be used
      * @param entity entity under edition
      * @return the form layout
      */
-    protected FormLayout createOverallView(@NotNull Mode mode, @NotNull T entity) {
-        EntityField entityField = new EntityField();
+    protected FormLayout createOverallView(@NotNull Mode mode, T entity) {
+        EntityField<T> entityField = new EntityField<>();
         entityField.setReadOnly(Mode.readOnly(mode));
 
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);
-        form.add(entityField);
+        entityField.addEntityComponentsTo(form);
 
         binder = new Binder<>(entityClass());
-        binder.readBean(entity);
+        entityField.bind(binder);
+        if (entity != null) {
+            binder.readBean(entity);
+        }
         return form;
-    }
-
-    @Override
-    public T formCompleted(Operation operation, T entity) {
-        return switch (operation) {
-            case UPDATE -> {
-                try {
-                    binder.writeBean(entity);
-                } catch (ValidationException e) {
-                    logger.error("validation error", e);
-                }
-                yield entity;
-            }
-            case CREATE -> {
-                T created = create();
-                try {
-                    binder.writeBean(created);
-                } catch (ValidationException e) {
-                    logger.error("validation error", e);
-                }
-                yield created;
-            }
-            default -> entity;
-        };
     }
 }

@@ -84,7 +84,7 @@ Policy should be defined to handle the fact that collaborators quit the company 
 
 The code in Java is
 
-[source, java]
+[source,java]
 ----
 public class Comment implements HasOid, HasTags {
     private long oid;

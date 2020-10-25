@@ -139,7 +139,7 @@ public class ClosingReportAsciiDoc {
             return;
         }
         String accountId = account.id().startsWith("E") ? AsciiDocHelper.bold(account.id()) : account.id();
-        String description = account.id().startsWith("E") ? AsciiDocHelper.bold(account.text()) : account.text();
+        String description = account.id().startsWith("E") ? AsciiDocHelper.bold(account.name()) : account.name();
         helper.tableRow(accountId, description, account.isAggregate() ? "" : account.kind().name(), format(toBalance), format(fromBalance));
     }
 }

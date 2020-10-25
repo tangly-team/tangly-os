@@ -54,10 +54,20 @@ public interface HasInterval {
 
     /**
      * Return true if the date now is in the time interval of the instance.
+     *
      * @return true if inside the interval otherwise false
      */
     default boolean isActive() {
-        LocalDate now = LocalDate.now();
-        return ((fromDate() == null) || (!now.isAfter(fromDate()))) && ((toDate() == null) || (!now.isAfter(fromDate())));
+        return isActive(LocalDate.now());
+    }
+
+    /**
+     * Return true if the date now is in the time interval of the instance.
+     *
+     * @param date date against which the inclusion test is evaluated
+     * @return true if inside the interval otherwise false
+     */
+    default boolean isActive(LocalDate date) {
+        return ((fromDate() == null) || (!date.isBefore(fromDate()))) && ((toDate() == null) || (!date.isAfter(toDate())));
     }
 }

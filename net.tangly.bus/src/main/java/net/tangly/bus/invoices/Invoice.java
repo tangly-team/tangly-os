@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 
 import net.tangly.bus.core.Address;
 import net.tangly.bus.core.BankConnection;
-import net.tangly.bus.core.HasEditableQualifiers;
+import net.tangly.bus.core.HasEditableId;
 
 /**
  * <p>The abstraction of an invoice with a set of positions, subtotals, and a total. The items and the subtotals have a position
@@ -38,7 +38,7 @@ import net.tangly.bus.core.HasEditableQualifiers;
  * quite a lot of businesses, in particular in the service industry. Often an invoice references only one VAT rate, convenience methods are provided to
  * streamline this scenario.</p>
  */
-public class Invoice implements HasEditableQualifiers {
+public class Invoice implements HasEditableId {
     /**
      * The identifier is the unique external identifier of the invoice used in the accounting and tracking systems.
      */
@@ -99,12 +99,10 @@ public class Invoice implements HasEditableQualifiers {
         this.name = name;
     }
 
-    @Override
     public String text() {
         return text;
     }
 
-    @Override
     public void text(String text) {
         this.text = text;
     }

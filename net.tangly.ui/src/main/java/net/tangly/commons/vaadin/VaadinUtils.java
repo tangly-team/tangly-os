@@ -17,18 +17,25 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.function.Function;
 
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.HasEnabled;
 import com.vaadin.flow.component.HasValue;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
+import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
+import net.tangly.bus.core.HasTags;
+import net.tangly.bus.core.QualifiedEntity;
+import net.tangly.bus.core.Tag;
+import net.tangly.bus.crm.CrmTags;
+import net.tangly.bus.crm.LegalEntity;
 import org.jetbrains.annotations.NotNull;
 
 public final class VaadinUtils {
@@ -62,15 +69,6 @@ public final class VaadinUtils {
 
     public static void setResponsiveSteps(@NotNull FormLayout layout) {
         layout.setResponsiveSteps(new FormLayout.ResponsiveStep("25em", 1), new FormLayout.ResponsiveStep("32em", 2), new FormLayout.ResponsiveStep("40em", 3));
-    }
-
-    public static <T extends Composite<?> & HasValue> void clear(T composite) {
-        composite.getChildren().filter(HasValue.class::isInstance).map(HasValue.class::cast).forEach(e -> ((HasValue<?, ?>) e).clear());
-    }
-
-    public static <T extends Composite<?> & HasValue> void setReadOnly(T composite, boolean readOnly) {
-        composite.setReadOnly(readOnly);
-        composite.getChildren().filter(HasValue.class::isInstance).map(HasValue.class::cast).forEach(e -> ((HasValue<?, ?>) e).setReadOnly(readOnly));
     }
 
     public static <E> void initialize(@NotNull Grid<E> grid) {
@@ -108,6 +106,71 @@ public final class VaadinUtils {
                 }
                 default -> new Span("");
             };
+        });
+    }
+
+    @SafeVarargs
+    public static <T extends HasValue> void readOnly(CrudForm.Operation operation, T... components) {
+        readOnly(Crud.Mode.readOnly(Crud.of(operation)), components);
+    }
+
+    @SafeVarargs
+    public static <T extends HasValue> void readOnly(boolean readOnly, T... components) {
+        Arrays.stream(components).forEach(o -> o.setReadOnly(readOnly));
+    }
+
+    public static <T extends HasEnabled & HasValue> void configureId(CrudForm.Operation operation, T component) {
+        switch (operation) {
+            case VIEW, UPDATE, DELETE -> {
+                component.setReadOnly(true);
+                component.setEnabled(false);
+            }
+            case CREATE -> {
+                component.setReadOnly(false);
+                component.setEnabled(true);
+            }
+        }
+
+    }
+
+    public static <T extends HasEnabled & HasValue> void configureOid(CrudForm.Operation operation, T component) {
+        component.setReadOnly(false);
+        component.setEnabled(false);
+    }
+
+    public static <T extends HasTags> ComponentRenderer<Anchor, T> linkedInComponentRenderer(Function<HasTags, String> linkedInUrl) {
+        return new ComponentRenderer<>(item -> {
+            Anchor anchor = new Anchor();
+            Tag tag = item.findBy(CrmTags.CRM_IM_LINKEDIN).orElse(null);
+            String linkedInRef = (tag != null) ? tag.value() : null;
+            anchor.setText(linkedInRef);
+            anchor.setHref((linkedInRef != null) ? linkedInUrl.apply(item) : "");
+            anchor.setTarget("_blank");
+            return anchor;
+        });
+    }
+
+    public static <T extends HasTags> ComponentRenderer<Anchor, T> urlComponentRenderer(String tagName) {
+        return new ComponentRenderer<>(item -> {
+            Anchor anchor = new Anchor();
+            Tag tag = item.findBy(tagName).orElse(null);
+            String url = (tag != null) ? tag.value() : null;
+            anchor.setText(url);
+            anchor.setHref((url != null) ? "https://" + url : "");
+            anchor.setTarget("_blank");
+            return anchor;
+        });
+    }
+
+    public static <T extends LegalEntity> ComponentRenderer<Anchor, T> zefixComponentRenderer() {
+        return new ComponentRenderer<>(item -> {
+            Anchor anchor = new Anchor();
+            anchor.setText(item.id());
+            if ((item.id() != null) && item.id().startsWith("CHE-")) {
+                anchor.setHref(CrmTags.organizationZefixUrl(item));
+                anchor.setTarget("_blank");
+            }
+            return anchor;
         });
     }
 }

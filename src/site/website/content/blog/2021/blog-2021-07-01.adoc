@@ -1,0 +1,62 @@
+---
+title: "Temporal Aspects of Rolling ERP Planning"
+linkTitle: "Rolling ERP Planning"
+date: 2021-01-01
+tags: ["agile"]
+---
+
+== Temporal Aspects of Rolling ERP Planning
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2021-07-01-head.jpg[720, 480, role=left]
+
+Agile approaches advocate dynamic planning and adaptation to new inputs and priority changes.
+The {ref-bbrt} movement promotes rolling planning, budgeting and reporting.
+
+The beyond budgeting techniques recommend complete abolition of traditional budgeting processes.
+They require the implementation of new techniques that will replace them.
+The BB framework does not specify the exact techniques that are applicable to all companies.
+
+However, there are some techniques that have proven to be effective in real cases in the past. These techniques include the following:
+
+* Rolling forecasts are created monthly or quarterly rather than annually.
+* Company’s targets are based on key performance indicators _KPI_.
+* The performance of the company’s managers is evaluated based on external benchmarks rather than their past performance.
+* Operational managers are empowered to react to the changes in the business environment and can dynamically coordinate their actions.
+
+What are the consequences of rolling approaches to any CRM or ERP system?
+
+=== Accounting
+
+Rolling accounting is quite easy.
+
+You shall display only transactions bocked during the selected time interval.
+You shall be able to generate the balance sheet for the date defining the start of the time interval.
+
+The data is usable only if your accounting department does not tune the accounts at the end of quarter or at the end of the year.
+For example, Swiss companies shall separate the rolling accounting from their legal accounting used for VAT or earnings tax purposes.
+A better approach is to define rules avoiding most of the tuning actions.
+
+=== Customers, Activities and Offers
+
+=== Contracts and Projects
+
+Only the contracts and projects active in the selected time interval shall be displayed.
+Efforts booked during the time interval are relevant for the analytics.
+
+=== Invoices
+
+
+=== Implementation
+
+The tangly ERP was extended to support rolling analytics based on a user defined time interval.
+
+The system supports the definition of a time interval to display only currently relevant entities.
+
+The analytics time interval is independent from the system overall interval.
+
+=== Lessons Learnt

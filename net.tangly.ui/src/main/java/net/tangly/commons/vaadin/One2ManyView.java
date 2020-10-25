@@ -24,7 +24,8 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
-import net.tangly.bus.core.Entity;
+import net.tangly.bus.core.HasName;
+import net.tangly.bus.core.QualifiedEntity;
 import net.tangly.bus.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
@@ -44,9 +45,9 @@ import org.jetbrains.annotations.NotNull;
  *
  * @param <T> type of the entities referenced in the one 2 many relationship
  */
-public class One2ManyView<T extends Entity> extends VerticalLayout {
+public class One2ManyView<T extends HasName> extends VerticalLayout {
     private final Crud.Mode mode;
-    private final InternalEntitiesView<T> view;
+    private final EntitiesView<T> view;
     private final Provider<T> provider;
     private final Grid<T> grid;
     private T selectedItem;
@@ -57,7 +58,7 @@ public class One2ManyView<T extends Entity> extends VerticalLayout {
     private Button remove;
 
     public One2ManyView(@NotNull Class<T> entityClass, @NotNull Crud.Mode mode, @NotNull Consumer<Grid<T>> gridConfigurator, @NotNull Provider<T> provider,
-                        InternalEntitiesView<T> view) {
+                        EntitiesView<T> view) {
         this.mode = mode;
         this.view = view;
         this.provider = provider;
@@ -70,11 +71,9 @@ public class One2ManyView<T extends Entity> extends VerticalLayout {
         selectItem(null);
     }
 
-    public static <E extends Entity> void defineGrid(@NotNull Grid<E> grid) {
+    public static <E extends QualifiedEntity> void defineGrid(@NotNull Grid<E> grid) {
         VaadinUtils.initialize(grid);
-        grid.addColumn(Entity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
-        grid.addColumn(Entity::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Entity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(QualifiedEntity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
     }
 
     public HorizontalLayout createCrudButtons() {

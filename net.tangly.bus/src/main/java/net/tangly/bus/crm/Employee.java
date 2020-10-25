@@ -16,6 +16,7 @@ package net.tangly.bus.crm;
 import java.util.Objects;
 
 import net.tangly.bus.core.EntityImp;
+import net.tangly.bus.core.HasName;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -25,9 +26,12 @@ import org.jetbrains.annotations.NotNull;
  */
 public class Employee extends EntityImp implements CrmEntity {
     private static final long serialVersionUID = 1L;
-
     private NaturalEntity person;
     private LegalEntity organization;
+
+    public String name() {
+        return inferName(person) + " - " + inferName(organization) + " : " + fromDate();
+    }
 
     public NaturalEntity person() {
         return person;
@@ -45,18 +49,6 @@ public class Employee extends EntityImp implements CrmEntity {
         this.organization = organization;
     }
 
-    @Override
-    public String name() {
-        return Objects.nonNull(person()) ? person().name() : null;
-    }
-
-    @Override
-    public void name(String name) {
-        if (Objects.nonNull(person)) {
-            person().name(name);
-        }
-    }
-
     public boolean isValid() {
         return Objects.nonNull(person) && Objects.nonNull(organization);
     }
@@ -64,7 +56,11 @@ public class Employee extends EntityImp implements CrmEntity {
     @Override
     public String toString() {
         return """
-                Employee[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, person=%s, organization=%s, tags=%s]
-                """.formatted(oid(), id(), name(), fromDate(), toDate(), text(), person(), organization(), tags());
+                Employee[oid=%s, fromDate=%s, toDate=%s, text=%s, person=%s, organization=%s, tags=%s]
+                """.formatted(oid(), fromDate(), toDate(), text(), person(), organization(), tags());
+    }
+
+    private String inferName(HasName entity) {
+        return (entity != null) ? entity.name() : "UNKNOWN";
     }
 }

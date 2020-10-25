@@ -13,9 +13,12 @@
 
 package net.tangly.commons.vaadin;
 
+import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.details.Details;
+import com.vaadin.flow.component.details.DetailsVariant;
+import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
@@ -23,11 +26,9 @@ import com.vaadin.flow.data.binder.Binder;
 import net.tangly.bus.core.Entity;
 import org.jetbrains.annotations.NotNull;
 
-public class EntityField extends CustomField<Entity> {
+public class EntityField<T extends Entity> extends CustomField<T> {
     private boolean readonly;
     private final TextField oid;
-    private final TextField id;
-    private final TextField name;
     private final DatePicker fromDate;
     private final DatePicker toDate;
     private final TextArea text;
@@ -35,35 +36,35 @@ public class EntityField extends CustomField<Entity> {
     public EntityField() {
         super(null);
         oid = new TextField("Oid", "oid");
-        id = new TextField("Id", "id");
-        name = new TextField("Name", "name");
         fromDate = new DatePicker("From Date");
         toDate = new DatePicker("To Date");
         text = new TextArea("Text", "text");
         text.setWidthFull();
-        Details textDetails = new Details("Text", text);
+        add(new HorizontalLayout(oid, fromDate, toDate));
+        add(text);
+    }
 
-        add(new HorizontalLayout(oid, id, name));
-        add(new HorizontalLayout(fromDate, toDate));
-        add(textDetails);
+    public void addEntityComponentsTo(@NotNull FormLayout form) {
+        Details textDetails = new Details("text", text);
+        textDetails.addThemeVariants(DetailsVariant.SMALL);
+        form.add(oid, fromDate, toDate, new HtmlComponent("br"), textDetails);
+        form.setColspan(textDetails, 3);
     }
 
     @Override
-    protected Entity generateModelValue() {
+    protected T generateModelValue() {
         return null;
     }
 
     @Override
-    protected void setPresentationValue(Entity entity) {
+    protected void setPresentationValue(T entity) {
         if (entity == null) {
             clear();
         }
     }
 
-    public <T extends Entity> void bind(@NotNull Binder<T> binder) {
+    public void bind(@NotNull Binder<T> binder) {
         binder.bind(oid, o -> Long.toString(o.oid()), null);
-        binder.bind(id, Entity::id, Entity::id);
-        binder.bind(name, Entity::name, Entity::name);
         binder.forField(fromDate)
                 .withValidator(from -> (from == null) || (toDate.getValue() == null) || (from.isBefore(toDate.getValue())), "From date must be before to date")
                 .bind(Entity::fromDate, Entity::fromDate);
@@ -77,8 +78,6 @@ public class EntityField extends CustomField<Entity> {
     public void setReadOnly(boolean readOnly) {
         super.setReadOnly(readOnly);
         oid.setReadOnly(readOnly);
-        id.setReadOnly(readOnly);
-        name.setReadOnly(readOnly);
         fromDate.setReadOnly(readOnly);
         toDate.setReadOnly(readOnly);
         text.setReadOnly(readOnly);
@@ -88,8 +87,6 @@ public class EntityField extends CustomField<Entity> {
     public void clear() {
         super.clear();
         oid.clear();
-        id.clear();
-        name.clear();
         fromDate.clear();
         toDate.clear();
         text.clear();

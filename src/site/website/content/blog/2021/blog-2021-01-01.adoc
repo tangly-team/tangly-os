@@ -1,11 +1,11 @@
 ---
-title: "Reflections on Agile Fluency Model"
-linkTitle: "Agile Fluency Model"
-date: 2021-01-01
-tags: ["agile"]
+title: "Value Objects as Embedded Entities"
+linkTitle: "Value Objects"
+date: 2021-01-15
+tags: ["design", "crm"]
 ---
 
-== Reflections on Agile Fluency Model
+== Value Objects as Embedded Entities
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
@@ -13,120 +13,39 @@ tags: ["agile"]
 :copyright: CC-BY-SA 4.0
 
 image::2021-01-01-head.jpg[720, 480, role=left]
-Agile fluency model is a powerful abstraction to better understand your agile transition.
-It does not matter which flavor of agile you are deploying in your organization; in all cases the agile fluency model can be applied.
 
-The agile fluency model has a powerful message about agile and technical excellence.
-The second zone of the model is all about software craftsmanship and {ref-xp}.
+=== Value Objects
 
-=== Zones
+This post is about the value object pattern and the factory pattern which are tactical patterns in domain driven design (DDD).
+Value objects define the second kind of domain objects besides entities.
+Their main characteristic is immutability: _Attributes of a value object never change_.
 
-The model defines four zones in which your company could thrive.
-You are free to chose the zone best suited for you organization.
-Remember the zones are additive.
-If you target the third zone your teams shall also be fluent in all practices of the first and second zone.
+Value objects do have attributes and methods as entities.
+Attributes of value objects are immutable though which implies that methods of value objects can only be queries, never commands that change the internal state of an object.
+We can pass value objects to clients through getters for example without worrying that they change them.
 
-==== Shift Team Culture: _Focusing_ teams produce business value (2 - 6 months)
+Many objects can be modeled as value objects instead of entities because they are defined through their attributes.
+These objects measure, quantify or describe things in the domain model.
+Because they are so easy to handle we should model as many value objects as possible.
 
-The team generates their own day-to-day tasks and plan based on their business representative’s needs.
-Team members consider their plan to be the team’s work, not individuals’ work.
-Team members share accountability for getting their plan done.
-Management considers the plan to be the team’s work rather than assigning accountability to individuals.
+=== Design Decisions
 
-Select team members with appropriate skills, background, and willingness to work together.
-Allocate them 100% to their team.
+==== Addresses, Phone Numbers, Email Addresses
 
-* Create a productivity-focused shared workspace, strongly preferring a physical team room.
- If a physical team room is infeasible, provide a richly interactive virtual workspace instead, and accept that this will be less effective.
-* Ensure that someone with expertise on business priorities and customer value is available to act as the team’s business representative.
-*  Remove impediments to effective teamwork such as competitive ranking, individual rewards, and distributed teams.
-* Coach and train team members in Focusing proficiencies.
-* Train managers to create an environment that supports teamwork  and how to manage the work system rather than individual contributions.
+==== Invoice Lines
 
+=== Factories
 
+The factory pattern in DDD can be seen as a super pattern for the Gang of Four (GoF) creational patterns.
+Factories are concerned with creating new entities and value objects.
+They also validate the invariants for the newly created objects.
+We can place a factory on the entity or value object itself or an independent object.
 
-==== Shift Team Skills: _Delivering_ teams deliver on the market cadence (3 - 24 months)
+Factories that are placed on the same object they create are either factory methods or prototype methods.
+The factory method creates a completely new object from the method parameters.
+The prototype method uses an existing instance to derive a new object.
 
-Increase Productivity The team has low defect rates, so less time is wasted fixing bugs and more time is invested in making improvements.
-Increase Productivity The team’s codebase has low technical debt, which makes changes cheaper and faster.
-Increase ROI The team ships on the market cadence, capturing value as often as the market will bear
+When the creation logic is complex or has dependencies that are not needed by the created object it is best to create a separate factory.
+This factory could then provide multiple ways to create new instances.
 
-When working with code and similar artifacts, team members leave its technical quality at least slightly better than they found it.
-Production releases are automated and take no more than ten minutes of manual effort.
-The team produces production-grade code without requiring a manual testing phase.
-All team members are aware of how their professional and technical skills affect their ability to accomplish the team’s goals and decrease their maintenance costs.
-They proactively seek to improve those skills.
-
-==== Shift Organizational Structure: _Optimizing_ teams lead their market (1 - 5 years)
-
-Fluent Optimizing teams understand what their market wants, what your business needs, and how to meet those needs.
-Or, as in a startup environment, they know what they need to learn and how to go about learning it.
-In contrast to Delivering teams, Optimizing teams not only have the ability to deliver to market, they also know what to deliver to market.
-
-==== Shift Organizational Culture: _Strengthening_ teams make their organizations stronger (unknown)
-
-Where Optimizing teams have the ability to understand and fulfill the needs of their market, Strengthening teams also play a larger role in their organization.
-
-Strengthening teams contribute to their organization in three ways.
-First, they understand how they are part of a larger system.
-They understand how their purpose aligns with other teams’ to achieve a greater strategy.
-They actively work to make that strategy more successful.
-
-=== Choose Your Zone
-
-[cols="1,2,2,2,1", options="header"]
-.Table Zones
-|===
-^|Zone |Benefit |Investment |Learn From |Time to Fluency
-
-|Focusing
-|Greater visibility into teams’ work; ability to redirect.
-|Team development and work process design.
-|Scrum, Kanban, non-technical XP
-|2-6 months
-
-|Delivering
-|Low defects and high productivity.
-|Lowered productivity during technical skill development.
-|Extreme Programming, DevOps movement
-|+3-24 months
-
-|Optimizing
-|Higher-value deliveries and better product decisions.
-|Social capital expended on moving business decisions and expertise into team.
-|Lean Software Development, Lean Startup, Beyond Budgeting
-|+1-5 years
-
-|Strengthening
-|Cross-team learning and better organizational decisions.
-|Time and risk in developing new approaches to managing the organization.
-|Organization design and complexity theories
-|unknown
-|===
-
-=== Learnings
-
-When Introducing Agile::
- One of the biggest factors affecting team fluency is organizational support. To continue the bus metaphor, the team has to ride the bus to their fluency zone.
- No one can do it for them. But the organization has to buy the bus ticket.
- An organization that expects fluency without providing appropriate support is bound to be disappointed.
- Even worse, insufficient support can cause turnover and create a cynical corporate culture that hinders improvements.
- Before embarking on your fluency journey, be sure your organization is prepared to offer the support the journey needs.
-When Sustaining Agile::
- It’s rare for stable teams to lose fluency on their own.
- In our experience, it is an external disruption that causes fluency loss.
- The most common cause of fluency loss is when new management decides that agile approaches do not fit their vision.
- Without organizational support and the ability to continue practicing what they’ve learned, team fluency erodes quickly.
- This is often accompanied by loss of expertise as dissatisfied team members seek new positions.
- Turnover is a related cause of fluency loss.
- A team that gains or loses too many members may have trouble sustaining what it’s learned.
- This is a particular problem for organizations that assemble new teams for every product.
-Agile Fluency and Scrum::
- Agile and Scrum requires long-living and stable teams.
- Agile at organizational level can only work if the upper and middle management transitioned to agile thinking and handling.
- The {ref-less} community is vocal how destructive wrong management decision can be.
- Agile development is a team sport, so fluency is a trait of the team, not individual team members.
- Fluency is more a matter of habits than skills.
- Discipline is king.
-
-You find a detailed description of the model under https://martinfowler.com/articles/agileFluency.html[Agile Fluency].
+==== Value Objects in Persistent Store

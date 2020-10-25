@@ -13,7 +13,6 @@
 
 package net.tangly.orm;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,7 +25,7 @@ import java.util.Set;
 import net.tangly.bus.codes.Code;
 import net.tangly.bus.codes.CodeType;
 import net.tangly.bus.core.Comment;
-import net.tangly.bus.core.EntityImp;
+import net.tangly.bus.core.QualifiedEntityImp;
 import net.tangly.bus.core.HasOid;
 import net.tangly.bus.core.Tag;
 import net.tangly.commons.lang.Reference;
@@ -80,7 +79,7 @@ class DaoEntityCommentsTagsCodesJsonTest extends DaoTest {
         }
     }
 
-    static class Entity extends EntityImp {
+    static class Entity extends QualifiedEntityImp {
         private Entity owner;
         private EntityCode code;
         private final List<Entity> ownedOnes;

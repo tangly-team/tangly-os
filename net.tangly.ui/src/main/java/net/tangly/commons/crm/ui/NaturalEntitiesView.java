@@ -14,6 +14,7 @@
 package net.tangly.commons.crm.ui;
 
 import java.io.ByteArrayInputStream;
+import java.time.format.DateTimeFormatter;
 
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -25,7 +26,9 @@ import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
+import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import com.vaadin.flow.server.StreamResource;
 import net.tangly.bus.codes.CodeType;
 import net.tangly.bus.core.EmailAddress;
@@ -39,27 +42,37 @@ import net.tangly.bus.providers.ViewProvider;
 import net.tangly.commons.vaadin.CodeField;
 import net.tangly.commons.vaadin.CommentsView;
 import net.tangly.commons.vaadin.EntityField;
+import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.One2ManyView;
 import net.tangly.commons.vaadin.TabsComponent;
 import net.tangly.commons.vaadin.TagsView;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
-    public NaturalEntitiesView(@NotNull RealmCrm realmCrm, @NotNull Mode mode) {
-        super(realmCrm, NaturalEntity.class, mode, realmCrm.naturalEntities());
-        initialize();
+public class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
+    private final RealmCrm realm;
+
+    public NaturalEntitiesView(@NotNull RealmCrm realm, @NotNull Mode mode) {
+        super(NaturalEntity.class, mode, realm.naturalEntities(), realm.tagTypeRegistry());
+        this.realm = realm;
+        initializeGrid();
     }
 
     @Override
-    protected void initialize() {
-        super.initialize();
+    protected void initializeGrid() {
         Grid<NaturalEntity> grid = grid();
+        grid.addColumn(NaturalEntity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
+        grid.addColumn(NaturalEntity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(new LocalDateRenderer<>(NaturalEntity::fromDate, DateTimeFormatter.ISO_DATE)).setKey("from").setHeader("From").setAutoWidth(true)
+                .setResizable(true).setSortable(true);
+        grid.addColumn(new LocalDateRenderer<>(NaturalEntity::toDate, DateTimeFormatter.ISO_DATE)).setKey("to").setHeader("To").setAutoWidth(true)
+                .setResizable(true).setSortable(true);
         grid.addColumn(NaturalEntity::lastname).setKey("lastname").setHeader("Last Name").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(NaturalEntity::firstname).setKey("firstname").setHeader("First Name").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(new ComponentRenderer<>(person -> (person.gender() == GenderCode.male) ? new Icon(VaadinIcon.MALE) : new Icon(VaadinIcon.FEMALE)))
                 .setHeader("Gender").setAutoWidth(true).setResizable(true);
-        grid.addColumn(linkedInComponentRenderer(CrmTags::individualLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
+        grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::individualLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
+        addAndExpand(grid(), createCrudButtons());
     }
 
     public static void defineOne2ManyEmployees(@NotNull Grid<Employee> grid) {
@@ -73,34 +86,32 @@ public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
     }
 
     @Override
-    protected void registerTabs(@NotNull TabsComponent tabs, @NotNull Mode mode, NaturalEntity entity) {
-        NaturalEntity workedOn = (entity != null) ? entity : create();
-        tabs.add(new Tab("Overview"), createOverallView(mode, workedOn));
-        tabs.add(new Tab("Comments"), new CommentsView(mode, workedOn));
-        tabs.add(new Tab("Tags"), new TagsView(mode, workedOn, realm().tagTypeRegistry()));
+    protected void registerTabs(@NotNull TabsComponent tabs, @NotNull Mode mode, @NotNull NaturalEntity entity) {
+        tabs.add(new Tab("Overview"), createOverallView(mode, entity));
+        tabs.add(new Tab("Comments"), new CommentsView(mode, entity));
+        tabs.add(new Tab("Tags"), new TagsView(mode, entity, realm.tagTypeRegistry()));
         One2ManyView<Employee> employees = new One2ManyView<>(Employee.class, mode, NaturalEntitiesView::defineOne2ManyEmployees,
-                ViewProvider.of(realm().employees(), o -> entity.oid() == o.person().oid()), new EmployeesView(realm(), mode));
+                ViewProvider.of(realm.employees(), o -> entity.oid() == o.person().oid()), new EmployeesView(realm, mode));
         tabs.add(new Tab("Employees"), employees);
     }
 
     @Override
     protected FormLayout createOverallView(@NotNull Mode mode, @NotNull NaturalEntity entity) {
         boolean readonly = Mode.readOnly(mode);
-        EntityField entityField = new EntityField();
-        entityField.setReadOnly(readonly);
+        EntityField<NaturalEntity> entityField = new EntityField<>();
         TextField firstname = VaadinUtils.createTextField("Firstname", "firstname", readonly);
         TextField lastname = VaadinUtils.createTextField("Lastname", "lastname", readonly);
-        CodeField gender = new CodeField<>(CodeType.of(GenderCode.class), "Gender");
+        CodeField<GenderCode> gender = new CodeField<>(CodeType.of(GenderCode.class), "Gender");
         TextField mobilePhone = VaadinUtils.createTextField("Mobile Phone", "mobile phone number", true);
         EmailField homeEmail = new EmailField("Home Email");
-        homeEmail.setReadOnly(readonly);
         homeEmail.setClearButtonVisible(true);
         TextField homeSite = VaadinUtils.createTextField("Home Site", "home site", true);
 
+        VaadinUtils.readOnly(Mode.readOnly(mode), entityField, homeEmail);
+
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);
-        form.add(entityField);
-
+        entityField.addEntityComponentsTo(form);
         form.add(new HtmlComponent("br"));
         form.add(firstname, lastname, gender);
 
@@ -113,7 +124,6 @@ public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
 
         form.add(new HtmlComponent("br"));
         form.add(mobilePhone, homeEmail, homeSite);
-
 
         binder = new Binder<>(entityClass());
         entityField.bind(binder);
@@ -128,7 +138,13 @@ public class NaturalEntitiesView extends CrmEntitiesView<NaturalEntity> {
     }
 
     @Override
-    protected NaturalEntity create() {
-        return new NaturalEntity();
+    protected NaturalEntity updateOrCreate(NaturalEntity entity) {
+        NaturalEntity naturalEntity = (entity != null) ? entity : new NaturalEntity();
+        try {
+            binder.writeBean(naturalEntity);
+        } catch (ValidationException e) {
+            e.printStackTrace();
+        }
+        return naturalEntity;
     }
 }

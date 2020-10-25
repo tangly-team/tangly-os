@@ -1,0 +1,33 @@
+---
+title: "Why Java Path Class is better?"
+linkTitle: "Why Java Path?"
+date: 2021-02-01
+tags: ["agile"]
+---
+
+== Why Java Path Class is better?
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2021-02-02-head.jpg[720, 480, role=left]
+
+=== File System NIO
+
+=== Unit Tests
+
+=== Paths
+
+=== Learnt Lessons
+
+Legacy libraries heavily use File objects in their algorithms and their public interface.
+Such libraries do not work with in-memory file systems.
+
+The simplest approach is to always provide an API returning streams in addition of file systems methods.
+It is always possible to map a stream to a file system specific streams for read and write operations.
+
+The more complex approach is to replace all File objects with Path objects.
+Ideally Java community should declare the File class as deprecated.
+But, this approach would break backward compatibility.

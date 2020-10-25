@@ -22,6 +22,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
 import org.jetbrains.annotations.NotNull;
+import org.vaadin.klaudeta.PaginatedGrid;
 
 /**
  * <p>The CRUD provides a grid view to a set of entities and views to view, update, create and delete an entity. The core view is the same for all
@@ -62,7 +63,7 @@ public class Crud<T> extends VerticalLayout {
 
     private final Class<T> entityClass;
     private final Mode mode;
-    private final Grid<T> grid;
+    private final PaginatedGrid<T> grid;
     private T selectedItem;
     private CrudForm<T> form;
     private CrudActionsListener<T> actionsListener;
@@ -75,20 +76,33 @@ public class Crud<T> extends VerticalLayout {
     public Crud(@NotNull Class<T> entityClass, @NotNull Mode mode, @NotNull DataProvider<T, ?> dataProvider) {
         this.entityClass = entityClass;
         this.mode = mode;
-        this.grid = new Grid<>(entityClass, false);
+
+        this.grid = new PaginatedGrid<>(entityClass);
+        grid.setPageSize(10);
+        grid.setPaginatorSize(3);
 
         grid.setDataProvider(dataProvider);
         grid.asSingleSelect().addValueChangeListener(event -> selectedItem(event.getValue()));
-        grid.setMinHeight("20em");
+        VaadinUtils.initialize(grid());
+        grid.setMinHeight("5em");
         grid.setWidthFull();
         setSizeFull();
-        addAndExpand(grid(), createCrudButtons());
-        selectedItem(null);
+
+        details = new Button("Details", VaadinIcon.ELLIPSIS_H.create(), event -> displayDialog(CrudForm.Operation.VIEW));
+        add = new Button("Add", VaadinIcon.PLUS.create(), event -> displayDialog(CrudForm.Operation.CREATE));
+        update = new Button("Update", VaadinIcon.PENCIL.create(), event -> displayDialog(CrudForm.Operation.UPDATE));
+        delete = new Button("Delete", VaadinIcon.TRASH.create(), event -> displayDialog(CrudForm.Operation.DELETE));
+
+        add.setEnabled((mode == Mode.EDITABLE) || (mode == Mode.IMMUTABLE) || (mode == Mode.AUDITABLE));
+        update.setEnabled(mode == Mode.EDITABLE);
+        delete.setEnabled((mode == Mode.EDITABLE) || (mode == Mode.IMMUTABLE));
+
     }
 
     protected void initialize(@NotNull CrudForm<T> form, @NotNull CrudActionsListener<T> actionsListener) {
         this.form = form;
         this.actionsListener = actionsListener;
+        selectedItem(null);
     }
 
     /**
@@ -148,15 +162,6 @@ public class Crud<T> extends VerticalLayout {
     }
 
     protected HorizontalLayout createCrudButtons() {
-        details = new Button("Details", VaadinIcon.ELLIPSIS_H.create(), event -> displayDialog(CrudForm.Operation.VIEW));
-        add = new Button("Add", VaadinIcon.PLUS.create(), event -> displayDialog(CrudForm.Operation.CREATE));
-        update = new Button("Update", VaadinIcon.PENCIL.create(), event -> displayDialog(CrudForm.Operation.UPDATE));
-        delete = new Button("Delete", VaadinIcon.TRASH.create(), event -> displayDialog(CrudForm.Operation.DELETE));
-
-        add.setEnabled((mode == Mode.EDITABLE) || (mode == Mode.IMMUTABLE) || (mode == Mode.AUDITABLE));
-        update.setEnabled(mode == Mode.EDITABLE);
-        delete.setEnabled((mode == Mode.EDITABLE) || (mode == Mode.IMMUTABLE));
-
         HorizontalLayout actions = new HorizontalLayout();
         actions.add(add, delete, update, details);
         return actions;
@@ -167,7 +172,10 @@ public class Crud<T> extends VerticalLayout {
         dialog.setCloseOnEsc(true);
         dialog.setCloseOnOutsideClick(false);
         dialog.setModal(false);
+        dialog.setWidth("90vw");
+        dialog.setHeight("70vh");
         dialog.setResizable(true);
+        dialog.setDraggable(true);
         dialog.add(new VerticalLayout(form.createForm(operation, operation != CrudForm.Operation.CREATE ? selectedItem : null), new HtmlComponent("br"),
                 CrudForm.createFormButtons(dialog, form, operation, selectedItem(), actionsListener)));
         dialog.open();

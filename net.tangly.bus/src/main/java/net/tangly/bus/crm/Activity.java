@@ -66,11 +66,11 @@ public class Activity implements HasOid {
         this.date = date;
     }
 
-    public int durationInMinutes() {
+    public int duration() {
         return durationInMinutes;
     }
 
-    public void durationInMinutes(int durationInMinutes) {
+    public void duration(int durationInMinutes) {
         this.durationInMinutes = durationInMinutes;
     }
 
@@ -106,6 +106,6 @@ public class Activity implements HasOid {
     public String toString() {
         return """
                 Activity[oid=%s, code=%s, date=%s, durationInMinutes=%s, text=%s]
-                """.formatted(oid(), date(), code(), durationInMinutes(), text());
+                """.formatted(oid(), date(), code(), duration(), text());
     }
 }

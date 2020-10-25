@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
-import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.data.provider.ListDataProvider;
@@ -25,17 +24,19 @@ import net.tangly.bus.core.HasTags;
 import net.tangly.bus.core.TagType;
 import net.tangly.bus.core.TagTypeRegistry;
 import org.jetbrains.annotations.NotNull;
+import org.vaadin.klaudeta.PaginatedGrid;
 
 public class TagTypesView extends VerticalLayout {
-    private final Grid<TagType> grid;
+    private final PaginatedGrid<TagType> grid;
     private final TagTypeRegistry registry;
     private final HashMap<TagType<?>, Integer> counts;
 
     public TagTypesView(TagTypeRegistry registry) {
         this.registry = registry;
         this.counts = new HashMap<>();
-        this.grid = new Grid<>(TagType.class, false);
-
+        this.grid = new PaginatedGrid<>(TagType.class);
+        grid.setPageSize(10);
+        grid.setPaginatorSize(3);
         grid.setDataProvider((ListDataProvider) DataProvider.ofCollection(registry.tagTypes()));
 
         grid.addColumn(TagType::namespace).setKey("namespace").setHeader("Namespace").setSortable(true).setAutoWidth(true).setResizable(true);
@@ -46,7 +47,7 @@ public class TagTypesView extends VerticalLayout {
         grid.addColumn(this::count).setKey("count").setHeader("Count").setSortable(true).setAutoWidth(true).setResizable(true);
 
         grid.setHeightFull();
-        grid.setMinHeight("20em");
+        grid.setMinHeight("5em");
         grid.setWidthFull();
         setSizeFull();
         add(grid);

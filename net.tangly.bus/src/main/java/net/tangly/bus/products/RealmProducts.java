@@ -13,9 +13,12 @@
 
 package net.tangly.bus.products;
 
+import net.tangly.bus.core.TagTypeRegistry;
 import net.tangly.bus.providers.Provider;
 
 public interface RealmProducts {
+    TagTypeRegistry tagTypeRegistry();
+
     Provider<Assignment> assignements();
     Provider<Effort> efforts();
     Provider<Product> products();

@@ -21,7 +21,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import net.tangly.bus.core.EntityImp;
+import net.tangly.bus.core.QualifiedEntityImp;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -30,7 +30,7 @@ import org.jetbrains.annotations.NotNull;
  * through stages. The final result is a contract or a lost opportunity.
  * <p>An interaction can have quite a long duration. Activities are the events when you interact with your potential customer.</p>
  */
-public class Interaction extends EntityImp {
+public class Interaction extends QualifiedEntityImp {
     private final List<Activity> activities;
     private LegalEntity legalEntity;
     private InteractionCode code;

@@ -16,12 +16,12 @@ package net.tangly.bus.invoices;
 
 import java.math.BigDecimal;
 
-import net.tangly.bus.core.HasQualifiers;
+import net.tangly.bus.core.HasId;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A product sold by a legal entity and referenced in an invoice or an invoice line. A product is a {@link HasQualifiers} mixin because the identifiier is
- * external and the Java record structure does not support internal {@link net.tangly.bus.core.HasOid} manipulation through reflection.
+ * A product sold by a legal entity and referenced in an invoice or an invoice line. An article is a {@link HasId} mixin because the identifier is external and
+ * the Java record structure does not support internal {@link net.tangly.bus.core.HasOid} manipulation through reflection.
  *
  * @param id        unique external identifier of the product
  * @param name      human readable name of the product
@@ -32,5 +32,5 @@ import org.jetbrains.annotations.NotNull;
  * @param vatRate   VAT rate of the product, requested for specific VAT tax regimes
  */
 public record Article(@NotNull String id, String name, String text, @NotNull ArticleCode code, @NotNull BigDecimal unitPrice, String unit, BigDecimal vatRate)
-        implements HasQualifiers {
+        implements HasId {
 }

@@ -23,11 +23,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
 
-import net.tangly.bus.core.Address;
-import net.tangly.bus.core.BankConnection;
 import net.tangly.bus.core.Comment;
-import net.tangly.bus.core.EmailAddress;
-import net.tangly.bus.core.Entity;
 import net.tangly.bus.core.HasComments;
 import net.tangly.bus.core.HasOid;
 import net.tangly.bus.core.HasTags;
@@ -35,7 +31,6 @@ import net.tangly.bus.core.PhoneNr;
 import net.tangly.bus.crm.Activity;
 import net.tangly.bus.crm.ActivityCode;
 import net.tangly.bus.crm.Contract;
-import net.tangly.bus.crm.CrmEntity;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.GenderCode;
@@ -50,6 +45,7 @@ import net.tangly.bus.providers.Provider;
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
+import net.tangly.ports.TsvHdl;
 import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -66,14 +62,21 @@ import static net.tangly.bus.crm.CrmTags.CRM_SITE_HOME;
 import static net.tangly.bus.crm.CrmTags.CRM_SITE_WORK;
 import static net.tangly.bus.crm.CrmTags.CRM_VAT_NUMBER;
 import static net.tangly.ports.TsvHdl.FROM_DATE;
-import static net.tangly.ports.TsvHdl.ID;
 import static net.tangly.ports.TsvHdl.OID;
 import static net.tangly.ports.TsvHdl.TEXT;
 import static net.tangly.ports.TsvHdl.TO_DATE;
+import static net.tangly.ports.TsvHdl.addComments;
+import static net.tangly.ports.TsvHdl.convertFoidTo;
+import static net.tangly.ports.TsvHdl.createAddressMapping;
+import static net.tangly.ports.TsvHdl.createTsvBankConnection;
 import static net.tangly.ports.TsvHdl.createTsvEntityFields;
+import static net.tangly.ports.TsvHdl.createTsvQualifiedEntityFields;
+import static net.tangly.ports.TsvHdl.emailProperty;
 import static net.tangly.ports.TsvHdl.exportEntities;
 import static net.tangly.ports.TsvHdl.get;
 import static net.tangly.ports.TsvHdl.importEntities;
+import static net.tangly.ports.TsvHdl.phoneNrProperty;
+import static net.tangly.ports.TsvHdl.tagProperty;
 
 /**
  * Provides import and export functions for CRM entities persisted in comma separated tabs files. These files are often defined for integration testing or
@@ -81,17 +84,9 @@ import static net.tangly.ports.TsvHdl.importEntities;
  * one relations are mapped through the oid of the referenced entity if defined, otherwise an empty string. One 2 many relations are mapped through an comma
  * separated list of the oid of the referenced entities if at least one is defined, otherwise an empty string.
  */
-public class CrmTsvHdl {
+class CrmTsvHdl {
     public static final String FIRSTNAME = "firstname";
     public static final String LASTNAME = "lastname";
-    private static final String STREET = "street";
-    private static final String POSTCODE = "postcode";
-    private static final String LOCALITY = "locality";
-    private static final String REGION = "region";
-    private static final String COUNTRY = "country";
-    private static final String IBAN = "iban";
-    private static final String BIC = "bic";
-    private static final String INSTITUTE = "institute";
     private static final String OWNER_FOID = "ownerFoid";
     private static final String CREATED = "created";
     private static final String AUTHOR = "author";
@@ -198,8 +193,8 @@ public class CrmTsvHdl {
     }
 
     static void addActivities(Interaction entity, Provider<Activity> activities) {
-        entity.addAll(activities.items().stream().filter(o -> (Long) ReflectionUtilities.get(o, "interactionFoid") == entity.oid())
-                .collect(Collectors.toList()));
+        entity.addAll(
+                activities.items().stream().filter(o -> (Long) ReflectionUtilities.get(o, "interactionFoid") == entity.oid()).collect(Collectors.toList()));
     }
 
 
@@ -230,7 +225,7 @@ public class CrmTsvHdl {
     }
 
     static TsvEntity<LegalEntity> createTsvLegalEntity() {
-        List<TsvProperty<LegalEntity, ?>> fields = createTsvEntityFields();
+        List<TsvProperty<LegalEntity, ?>> fields = createTsvQualifiedEntityFields();
         fields.add(TsvProperty.ofString(CRM_VAT_NUMBER, LegalEntity::vatNr, LegalEntity::vatNr));
         fields.add(tagProperty(CRM_IM_LINKEDIN));
         fields.add(tagProperty(CRM_EMAIL_WORK));
@@ -248,8 +243,7 @@ public class CrmTsvHdl {
     TsvEntity<Employee> createTsvEmployee() {
         List<TsvProperty<Employee, ?>> fields =
                 List.of(TsvProperty.of(OID, Employee::oid, (entity, value) -> ReflectionUtilities.set(entity, OID, value), Long::parseLong),
-                        TsvProperty.ofString(ID, Employee::id, Entity::id),
-                        TsvProperty.of(FROM_DATE, Employee::fromDate, Entity::fromDate, TsvProperty.CONVERT_DATE_FROM),
+                        TsvProperty.of(FROM_DATE, Employee::fromDate, Employee::fromDate, TsvProperty.CONVERT_DATE_FROM),
                         TsvProperty.of(TO_DATE, Employee::toDate, Employee::toDate, TsvProperty.CONVERT_DATE_FROM),
                         TsvProperty.ofString(TEXT, Employee::text, Employee::text),
                         TsvProperty.of("personOid", Employee::person, Employee::person, e -> this.findNaturalEntityByOid(e).orElse(null), convertFoidTo()),
@@ -261,8 +255,8 @@ public class CrmTsvHdl {
     }
 
     TsvEntity<Contract> createTsvContract() {
-        List<TsvProperty<Contract, ?>> fields = createTsvEntityFields();
-        fields.add(TsvProperty.of("locale", Contract::locale, Contract::locale, this::toLocale, Locale::getLanguage));
+        List<TsvProperty<Contract, ?>> fields = createTsvQualifiedEntityFields();
+        fields.add(TsvProperty.of("locale", Contract::locale, Contract::locale, TsvHdl::toLocale, Locale::getLanguage));
         fields.add(TsvProperty.of("currency", Contract::currency, Contract::currency, Currency::getInstance, Currency::getCurrencyCode));
         fields.add(TsvProperty.of(createTsvBankConnection(), Contract::bankConnection, Contract::bankConnection));
         fields.add(TsvProperty.ofBigDecimal("amountWithoutVat", Contract::amountWithoutVat, Contract::amountWithoutVat));
@@ -272,7 +266,7 @@ public class CrmTsvHdl {
     }
 
     TsvEntity<Subject> createTsvSubject() {
-        List<TsvProperty<Subject, ?>> fields = createTsvEntityFields();
+        List<TsvProperty<Subject, ?>> fields = createTsvQualifiedEntityFields();
         fields.add(TsvProperty.of("userOid", Subject::user, Subject::user, e -> this.findNaturalEntityByOid(e).orElse(null), convertFoidTo()));
         fields.add(TsvProperty.ofString("gravatarEmail", Subject::gravatarEmail, Subject::gravatarEmail));
         fields.add(TsvProperty.ofString("passwordSalt", Subject::passwordSalt, Subject::passwordSalt));
@@ -283,7 +277,7 @@ public class CrmTsvHdl {
     }
 
     TsvEntity<Interaction> createTsvInteraction() {
-        List<TsvProperty<Interaction, ?>> fields = createTsvEntityFields();
+        List<TsvProperty<Interaction, ?>> fields = createTsvQualifiedEntityFields();
         fields.add(TsvProperty.of("state", Interaction::code, Interaction::code, e -> Enum.valueOf(InteractionCode.class, e.toLowerCase()), Enum::name));
         fields.add(TsvProperty.ofBigDecimal("potential", Interaction::potential, Interaction::potential));
         fields.add(TsvProperty.ofBigDecimal("probability", Interaction::probability, Interaction::probability));
@@ -293,86 +287,22 @@ public class CrmTsvHdl {
     }
 
     static TsvEntity<Activity> createTsvActivity() {
-
         List<TsvProperty<Activity, ?>> fields =
                 List.of(TsvProperty.of(OID, Activity::oid, (entity, value) -> ReflectionUtilities.set(entity, OID, value), Long::parseLong), TsvProperty
                                 .of("interactionFoid", Activity::interactionFoid, (entity, value) -> ReflectionUtilities.set(entity, "interactionFoid", value),
                                         Long::parseLong),
                         TsvProperty.of("code", Activity::code, Activity::code, e -> Enum.valueOf(ActivityCode.class, e.toLowerCase()), Enum::name),
                         TsvProperty.of("date", Activity::date, Activity::date, TsvProperty.CONVERT_DATE_FROM),
-                        TsvProperty.ofInt("durationInMinutes", Activity::durationInMinutes, Activity::durationInMinutes),
+                        TsvProperty.ofInt("durationInMinutes", Activity::duration, Activity::duration),
                         TsvProperty.ofString(AUTHOR, Activity::author, Activity::author), TsvProperty.ofString(TEXT, Activity::text, Activity::text));
         return TsvEntity.of(Activity.class, fields, Activity::new);
     }
 
-    static TsvEntity<BankConnection> createTsvBankConnection() {
-        Function<CSVRecord, BankConnection> imports = (CSVRecord record) -> {
-            BankConnection connection = new BankConnection(get(record, IBAN), get(record, BIC), get(record, INSTITUTE));
-            if (!connection.isValid()) {
-                logger.atWarn().log("Invalid bank connection {}", connection);
-            }
-            return connection;
-        };
-        List<TsvProperty<BankConnection, ?>> fields =
-                List.of(TsvProperty.ofString("iban", BankConnection::iban, null), TsvProperty.ofString("bic", BankConnection::bic, null),
-                        TsvProperty.ofString("institute", BankConnection::institute, null));
-        return TsvEntity.of(BankConnection.class, fields, imports);
-    }
-
-    static TsvEntity<Address> createTsvAddress() {
-        Function<CSVRecord, Address> imports =
-                (CSVRecord record) -> Address.builder().street(get(record, STREET)).postcode(get(record, POSTCODE)).locality(get(record, LOCALITY))
-                        .region(get(record, REGION)).country(get(record, COUNTRY)).build();
-
-        List<TsvProperty<Address, ?>> fields =
-                List.of(TsvProperty.ofString("street", Address::street, null), TsvProperty.ofString("extended", Address::extended, null),
-                        TsvProperty.ofString("postcode", Address::postcode, null), TsvProperty.ofString("locality", Address::locality, null),
-                        TsvProperty.ofString("region", Address::region, null), TsvProperty.ofString("country", Address::country, null));
-        return TsvEntity.of(Address.class, fields, imports);
-    }
-
-    <T extends HasComments & HasOid> void addComments(T entity, Provider<Comment> comments) {
-        entity.addAll(comments.items().stream().filter(o -> o.ownerFoid() == entity.oid()).collect(Collectors.toList()));
-    }
-
-    static <T extends HasTags> TsvProperty<T, String> tagProperty(String tagName) {
-        return TsvProperty.ofString(tagName, e -> e.tag(tagName).orElse(null), (e, p) -> {
-            if (p != null) {
-                e.tag(tagName, p);
-            }
-        });
-    }
-
-    static <T extends CrmEntity> TsvProperty<T, String> phoneNrProperty(String tagName, CrmTags.Type type) {
-        return TsvProperty.ofString(tagName, e -> e.phoneNr(type).map(PhoneNr::number).orElse(null), (e, p) -> e.phoneNr(type, p));
-    }
-
-    static <T extends CrmEntity> TsvProperty<T, String> emailProperty(String tagName, CrmTags.Type type) {
-        return TsvProperty.ofString(tagName, e -> e.email(type).map(EmailAddress::text).orElse(null), (e, p) -> e.email(type, p));
-    }
-
-    static <T extends CrmEntity> TsvProperty<T, Address> createAddressMapping(@NotNull CrmTags.Type type) {
-        return TsvProperty.of(createTsvAddress(), (T e) -> e.address(type).orElse(null), (e, p) -> e.address(type, p));
-    }
-
-    static <T extends HasOid> Function<T, Object> convertFoidTo() {
-        return u -> (u != null) ? Long.toString(u.oid()) : "";
-    }
-
-    private Optional<NaturalEntity> findNaturalEntityByOid(String identifier) {
+    public Optional<NaturalEntity> findNaturalEntityByOid(String identifier) {
         return (identifier != null) ? realm.naturalEntities().find(Long.parseLong(identifier)) : Optional.empty();
     }
 
     private Optional<LegalEntity> findLegalEntityByOid(String identifier) {
         return (identifier != null) ? realm.legalEntities().find(Long.parseLong(identifier)) : Optional.empty();
-    }
-
-    private Locale toLocale(String language) {
-        return switch (language.toLowerCase()) {
-            case "en" -> Locale.ENGLISH;
-            case "de" -> Locale.GERMAN;
-            case "fr" -> Locale.FRENCH;
-            default -> Locale.ENGLISH;
-        };
     }
 }
