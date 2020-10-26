@@ -16,9 +16,6 @@ package net.tangly.products.ports;
 import javax.inject.Inject;
 
 import net.tangly.bus.core.TagTypeRegistry;
-import net.tangly.bus.crm.LegalEntity;
-import net.tangly.bus.crm.NaturalEntity;
-import net.tangly.bus.invoices.Article;
 import net.tangly.bus.products.Assignment;
 import net.tangly.bus.products.Effort;
 import net.tangly.bus.products.Product;
@@ -27,7 +24,6 @@ import net.tangly.bus.providers.InstanceProvider;
 import net.tangly.bus.providers.InstanceProviderInMemory;
 import net.tangly.bus.providers.Provider;
 import net.tangly.bus.providers.ProviderInMemory;
-import net.tangly.bus.providers.RecordProviderInMemory;
 import org.jetbrains.annotations.NotNull;
 
 public class ProductsEntities implements RealmProducts {

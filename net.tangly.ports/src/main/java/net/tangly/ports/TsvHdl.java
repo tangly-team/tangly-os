@@ -152,7 +152,7 @@ public final class TsvHdl {
         };
         List<TsvProperty<BankConnection, ?>> fields =
                 List.of(TsvProperty.ofString("iban", BankConnection::iban, null), TsvProperty.ofString("bic", BankConnection::bic, null),
-                        TsvProperty.ofString("institute", BankConnection::institute, null));
+                        TsvProperty.ofString(INSTITUTE, BankConnection::institute, null));
         return TsvEntity.of(BankConnection.class, fields, imports);
     }
 
@@ -162,9 +162,10 @@ public final class TsvHdl {
                         .region(get(record, REGION)).country(get(record, COUNTRY)).build();
 
         List<TsvProperty<Address, ?>> fields =
-                List.of(TsvProperty.ofString("street", Address::street, null), TsvProperty.ofString("extended", Address::extended, null),
-                        TsvProperty.ofString("postcode", Address::postcode, null), TsvProperty.ofString("locality", Address::locality, null),
-                        TsvProperty.ofString("region", Address::region, null), TsvProperty.ofString("country", Address::country, null));
+                List.of(TsvProperty.ofString(STREET, Address::street, null), TsvProperty.ofString("extended", Address::extended, null),
+                        TsvProperty.ofString(POSTCODE, Address::postcode, null), TsvProperty.ofString(LOCALITY, Address::locality, null),
+
+                        TsvProperty.ofString(REGION, Address::region, null), TsvProperty.ofString(COUNTRY, Address::country, null));
         return TsvEntity.of(Address.class, fields, imports);
     }
 

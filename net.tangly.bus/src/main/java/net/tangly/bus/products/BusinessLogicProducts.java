@@ -13,6 +13,9 @@
 
 package net.tangly.bus.products;
 
+import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
 import javax.inject.Inject;
 
 import org.jetbrains.annotations.NotNull;
@@ -27,5 +30,9 @@ public class BusinessLogicProducts {
 
     public RealmProducts realm() {
         return realm;
+    }
+
+    public List<Assignment> collect(Assignment assignment, LocalDate from, LocalDate to) {
+        return Collections.emptyList();
     }
 }

@@ -55,6 +55,7 @@ public class ProductsHdl {
 
     TsvEntity<Product> createTsvProduct() {
         List<TsvProperty<Product, ?>> fields = createTsvEntityFields();
+        // TODO implements
         //                        fields.add(TsvProperty.of("contractIds", Product::contractIds, Product::contractIds,
         //                                (String e) -> Arrays.asList(e.split(",", -1)),
         //                                (List<String> e) -> String.join(",", e)));
@@ -63,7 +64,7 @@ public class ProductsHdl {
 
     TsvEntity<Assignment> createTsvAssignment() {
         List<TsvProperty<Assignment, ?>> fields = createTsvEntityFields();
-        fields.add(TsvProperty.ofString("collaboratorId", Assignment::collaboratorId, Assignment::collaboratorId));
+        fields.add(TsvProperty.ofString("collaboratorName", Assignment::collaboratorName, Assignment::collaboratorName));
         // TODO add foid to product
         return TsvEntity.of(Assignment.class, fields, Assignment::new);
     }

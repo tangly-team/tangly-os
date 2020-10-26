@@ -26,8 +26,8 @@ import net.tangly.bus.gravatar.GravatarRating;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Defines the abstraction of a registered subject entitled to use the application and associated services.
- * The id of the subject is the human readable unique identifier.
+ * Defines the abstraction of a registered subject entitled to use the application and associated services. The id of the subject is the human readable unique
+ * identifier.
  */
 public class Subject extends QualifiedEntityImp {
     private static final String ALGORITHM = "PBKDF2WithHmacSHA512";
@@ -38,6 +38,9 @@ public class Subject extends QualifiedEntityImp {
     private String gmailUsername;
     private String gmailPassword;
     private transient byte[] avatar;
+
+    public Subject() {
+    }
 
     public static String encryptPassword(@NotNull String password, @NotNull String salt) throws Exception {
         int derivedKeyLength = 160;

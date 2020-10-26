@@ -14,7 +14,6 @@
 package net.tangly.bus.crm;
 
 
-import net.tangly.bus.core.HasId;
 import net.tangly.bus.core.QualifiedEntityImp;
 import net.tangly.bus.core.Strings;
 import net.tangly.bus.core.Tag;
@@ -25,6 +24,9 @@ import net.tangly.bus.core.Tag;
  */
 public class LegalEntity extends QualifiedEntityImp implements CrmEntity {
     private static final long serialVersionUID = 1L;
+
+    public LegalEntity() {
+    }
 
     /**
      * Returns the VAT identifying number of the legal entity.

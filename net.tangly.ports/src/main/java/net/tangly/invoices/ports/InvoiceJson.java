@@ -51,6 +51,7 @@ import org.slf4j.LoggerFactory;
 
 public class InvoiceJson implements InvoiceGenerator {
     private static final Logger logger = LoggerFactory.getLogger(InvoiceJson.class);
+    private static final String COMPONENT = "net.tangly.ports";
     private final RealmInvoices realm;
 
     public InvoiceJson(@NotNull RealmInvoices realm) {
@@ -63,10 +64,9 @@ public class InvoiceJson implements InvoiceGenerator {
         JSONObject invoiceJson = entity.exports(invoice);
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
             writer.write(invoiceJson.toString(4));
-            EventData.log(EventData.EXPORT, "net.tangly.ports", EventData.Status.SUCCESS, "Invoice exported to JSON file",
-                    Map.of("filename", path, "entity", invoice));
+            EventData.log(EventData.EXPORT, COMPONENT, EventData.Status.SUCCESS, "Invoice exported to JSON file", Map.of("filename", path, "entity", invoice));
         } catch (IOException e) {
-            EventData.log(EventData.EXPORT, "net.tangly.ports", EventData.Status.FAILURE, "Invoice exported to JSON file", Map.of("filename", path), e);
+            EventData.log(EventData.EXPORT, COMPONENT, EventData.Status.FAILURE, "Invoice exported to JSON file", Map.of("filename", path), e);
             throw new UncheckedIOException(e);
         }
     }
@@ -81,13 +81,13 @@ public class InvoiceJson implements InvoiceGenerator {
                 if (!invoice.isValid()) {
                     logger.atWarn().log("Invoice {} is invalid", invoice.name());
                 }
-                EventData.log(EventData.IMPORT, "net.tangly.ports", EventData.Status.SUCCESS, "Invoice imported", Map.of("filename", path, "entity", invoice));
+                EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.SUCCESS, "Invoice imported", Map.of("filename", path, "entity", invoice));
             } catch (IOException e) {
-                EventData.log(EventData.IMPORT, "net.tangly.ports", EventData.Status.FAILURE, "Error during import of JSON file", Map.of("filename", path), e);
+                EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.FAILURE, "Error during import of JSON file", Map.of("filename", path), e);
                 throw new UncheckedIOException(e);
             }
         } else {
-            EventData.log(EventData.IMPORT, "net.tangly.ports", EventData.Status.FAILURE, "Invalid JSON schema of JSON file", Map.of("filename", path));
+            EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.FAILURE, "Invalid JSON schema of JSON file", Map.of("filename", path));
         }
         return invoice;
     }
@@ -97,8 +97,7 @@ public class InvoiceJson implements InvoiceGenerator {
         JsonEntity<Address> jsonAddress = createJsonAddress();
         JsonEntity<BankConnection> jsonBankConnection = createJsonBankConnection();
         List<JsonField<Invoice, ?>> fields =
-                List.of(JsonProperty.ofString("id", Invoice::id, Invoice::id),
-                        JsonProperty.ofString("name", Invoice::name, Invoice::name),
+                List.of(JsonProperty.ofString("id", Invoice::id, Invoice::id), JsonProperty.ofString("name", Invoice::name, Invoice::name),
                         JsonProperty.ofString("text", Invoice::text, Invoice::text),
                         JsonProperty.ofString("contractId", Invoice::contractId, Invoice::contractId),
                         JsonProperty.ofType("invoicingEntity", Invoice::invoicingEntity, Invoice::invoicingEntity, jsonLegalEntity),
@@ -201,7 +200,7 @@ public class InvoiceJson implements InvoiceGenerator {
     public JsonArray<Invoice, InvoiceLine> createPositions() {
         JsonEntity<Subtotal> jsonSubtotal = createJsonSubtotal();
         JsonEntity<InvoiceItem> jsonInvoiceItem = createJsonInvoiceItem();
-        java.util.function.Function<JSONObject, JsonEntity<?>> importSelector = o -> {
+        Function<JSONObject, JsonEntity<?>> importSelector = o -> {
             if (o.has("items")) {
                 return jsonSubtotal;
             } else {

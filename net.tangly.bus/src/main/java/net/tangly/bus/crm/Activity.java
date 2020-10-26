@@ -37,6 +37,9 @@ public class Activity implements HasOid {
     private String text;
     private String details;
 
+    public Activity() {
+    }
+
     public static List<String> emailIds(String details) {
         return Strings.isNullOrBlank(details) ? null : Arrays.asList(details.split(" "));
     }

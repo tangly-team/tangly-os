@@ -36,7 +36,7 @@ public class AssignementsView extends InternalEntitiesView<Assignment> {
     protected void initializeGrid() {
         Grid<Assignment> grid = grid();
         InternalEntitiesView.addQualifiedEntityColumns(grid);
-        grid.addColumn(Assignment::collaboratorId).setKey("collaboratorId").setHeader("CollaboratorId").setSortable(true).setAutoWidth(true).setResizable(true);
+        grid.addColumn(Assignment::collaboratorName).setKey("collaboratorName").setHeader("Collaborator").setSortable(true).setAutoWidth(true).setResizable(true);
         // grid.addColumn(e -> e.product().name()).setKey("project").setHeader("Project").setSortable(true).setAutoWidth(true).setResizable(true);
         addAndExpand(filterCriteria(grid()), grid(), createCrudButtons());
     }

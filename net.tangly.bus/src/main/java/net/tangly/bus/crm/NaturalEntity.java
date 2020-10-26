@@ -30,6 +30,9 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
     private GenderCode gender;
     private byte[] photo;
 
+    public NaturalEntity() {
+    }
+
     @Override
     public String name() {
         return lastname() + ", " + firstname();

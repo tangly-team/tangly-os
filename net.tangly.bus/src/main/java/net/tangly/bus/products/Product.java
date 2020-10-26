@@ -24,6 +24,9 @@ import org.jetbrains.annotations.NotNull;
 public class Product extends QualifiedEntityImp {
     private List<String> contracIds;
 
+    public Product() {
+    }
+
     public List<String> contractIds() {
         return contracIds;
     }

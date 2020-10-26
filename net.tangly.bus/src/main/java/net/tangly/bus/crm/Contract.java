@@ -46,6 +46,9 @@ public class Contract extends QualifiedEntityImp implements CrmEntity {
     private Locale locale;
     private Currency currency;
 
+    public Contract() {
+    }
+
     public Address address() {
         return address;
     }

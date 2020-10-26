@@ -183,7 +183,7 @@ class CrmTsvHdl {
     }
 
     static <T extends HasComments & HasOid> void updateAndCollectComments(T entity, Provider<Comment> comments) {
-        entity.comments().forEach(comment -> ReflectionUtilities.set(comment, "ownerFoid", entity.oid()));
+        entity.comments().forEach(comment -> ReflectionUtilities.set(comment, OWNER_FOID, entity.oid()));
         comments.updateAll(entity.comments());
     }
 

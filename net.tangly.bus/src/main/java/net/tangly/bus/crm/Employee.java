@@ -29,6 +29,9 @@ public class Employee extends EntityImp implements CrmEntity {
     private NaturalEntity person;
     private LegalEntity organization;
 
+    public Employee() {
+    }
+
     public String name() {
         return inferName(person) + " - " + inferName(organization) + " : " + fromDate();
     }
