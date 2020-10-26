@@ -33,6 +33,7 @@ import com.vaadin.flow.server.StreamResource;
 import net.tangly.bus.codes.CodeType;
 import net.tangly.bus.core.EmailAddress;
 import net.tangly.bus.core.PhoneNr;
+import net.tangly.bus.crm.Activity;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.GenderCode;
@@ -41,6 +42,7 @@ import net.tangly.bus.crm.RealmCrm;
 import net.tangly.bus.providers.ViewProvider;
 import net.tangly.commons.vaadin.CodeField;
 import net.tangly.commons.vaadin.CommentsView;
+import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.One2ManyView;
@@ -140,12 +142,6 @@ public class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
 
     @Override
     protected NaturalEntity updateOrCreate(NaturalEntity entity) {
-        NaturalEntity naturalEntity = (entity != null) ? entity : new NaturalEntity();
-        try {
-            binder.writeBean(naturalEntity);
-        } catch (ValidationException e) {
-            e.printStackTrace();
-        }
-        return naturalEntity;
+        return EntitiesView.updateOrCreate(entity, binder, NaturalEntity::new);
     }
 }

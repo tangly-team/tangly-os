@@ -16,6 +16,7 @@ package net.tangly.crm.ports;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.UncheckedIOException;
+import java.lang.invoke.MethodHandles;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -44,7 +45,7 @@ import org.slf4j.LoggerFactory;
 class CrmVcardHdl {
     private static final String VCARD_EXT = ".vcf";
 
-    private static final Logger logger = LoggerFactory.getLogger(CrmVcardHdl.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private final RealmCrm realm;
 
     @Inject

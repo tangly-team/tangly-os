@@ -14,6 +14,7 @@
 package net.tangly.invoices.ports;
 
 import java.io.IOException;
+import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.util.List;
@@ -34,9 +35,11 @@ import net.tangly.bus.core.Address;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceLegalEntity;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class InvoiceQrCode implements InvoiceGenerator {
-    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(InvoiceQrCode.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private static final BigDecimal HUNDRED = new BigDecimal("100");
     private static final Pattern ISO11649ReferenceFormat = Pattern.compile("[^A-Za-z0-9]");
 

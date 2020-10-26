@@ -13,6 +13,7 @@
 
 package net.tangly.commons.crm.products.ui;
 
+import java.lang.invoke.MethodHandles;
 import javax.inject.Inject;
 
 import com.vaadin.flow.component.grid.Grid;
@@ -21,8 +22,11 @@ import net.tangly.bus.products.Assignment;
 import net.tangly.bus.products.RealmProducts;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AssignementsView extends InternalEntitiesView<Assignment> {
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private final RealmProducts realmProducts;
 
     @Inject
@@ -36,7 +40,8 @@ public class AssignementsView extends InternalEntitiesView<Assignment> {
     protected void initializeGrid() {
         Grid<Assignment> grid = grid();
         InternalEntitiesView.addQualifiedEntityColumns(grid);
-        grid.addColumn(Assignment::collaboratorName).setKey("collaboratorName").setHeader("Collaborator").setSortable(true).setAutoWidth(true).setResizable(true);
+        grid.addColumn(Assignment::collaboratorName).setKey("collaboratorName").setHeader("Collaborator").setSortable(true).setAutoWidth(true)
+                .setResizable(true);
         // grid.addColumn(e -> e.product().name()).setKey("project").setHeader("Project").setSortable(true).setAutoWidth(true).setResizable(true);
         addAndExpand(filterCriteria(grid()), grid(), createCrudButtons());
     }
@@ -47,7 +52,7 @@ public class AssignementsView extends InternalEntitiesView<Assignment> {
         try {
             binder.writeBean(assignment);
         } catch (ValidationException e) {
-            e.printStackTrace();
+            logger.atError().setCause(e).log("Validation error for {}", entity);
         }
         return assignment;
     }

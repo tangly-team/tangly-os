@@ -17,6 +17,7 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
+import java.lang.invoke.MethodHandles;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Set;
@@ -35,7 +36,7 @@ import org.slf4j.LoggerFactory;
  * Utilities to process and validate JSON files.
  */
 public class JsonUtilities {
-    private static final Logger logger = LoggerFactory.getLogger(JsonUtilities.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     /**
      * Check if the JSON file is valid against the JSON schema describing the structure of the JSON file.

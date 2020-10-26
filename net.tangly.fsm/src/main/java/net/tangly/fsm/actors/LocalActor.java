@@ -13,6 +13,7 @@
 
 package net.tangly.fsm.actors;
 
+import java.lang.invoke.MethodHandles;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -20,6 +21,8 @@ import net.tangly.fsm.Event;
 import net.tangly.fsm.StateMachine;
 import net.tangly.fsm.dsl.FsmBuilder;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static net.tangly.fsm.actors.LocalActors.instance;
 
@@ -32,11 +35,7 @@ import static net.tangly.fsm.actors.LocalActors.instance;
  * @param <E> the event enumeration type uniquely identifying the event sent to the state machine
  */
 public class LocalActor<O extends LocalActor, S extends Enum<S>, E extends Enum<E>> implements Actor<E>, Runnable {
-
-    /**
-     * Logger of the instances of the class.
-     */
-    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(LocalActor.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     /**
      * Queue of received events waiting to be processed.
@@ -75,9 +74,9 @@ public class LocalActor<O extends LocalActor, S extends Enum<S>, E extends Enum<
     public void receive(@NotNull Event<E> event) {
         try {
             events.put(event);
-            log.atInfo().log("Actor {} received event {}", name(), event);
+            logger.atInfo().log("Actor {} received event {}", name(), event);
         } catch (InterruptedException e) {
-            log.atError().log("Actor {} encountered interrupted exception {}", name(), e);
+            logger.atError().log("Actor {} encountered interrupted exception {}", name(), e);
             Thread.currentThread().interrupt();
         }
     }
@@ -89,7 +88,7 @@ public class LocalActor<O extends LocalActor, S extends Enum<S>, E extends Enum<
                 Event<E> event = events.take();
                 fsm.fire(event);
             } catch (InterruptedException e) {
-                log.atError().log("Actor {} encountered interrupted exception {}", name(), e);
+                logger.atError().log("Actor {} encountered interrupted exception {}", name(), e);
                 Thread.currentThread().interrupt();
             }
         }

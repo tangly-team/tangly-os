@@ -13,6 +13,7 @@
 
 package net.tangly.orm;
 
+import java.lang.invoke.MethodHandles;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -35,6 +36,7 @@ import net.tangly.bus.providers.InstanceProvider;
 import net.tangly.commons.lang.ReflectionUtilities;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Represents the mapping between a Java class and a relational database table containing the values of the instances of the class. The design promotes
@@ -45,7 +47,7 @@ import org.slf4j.Logger;
 public class Dao<T extends HasOid> implements InstanceProvider<T> {
     private static final String PRIMARY_KEY = "oid";
     private static final int KEY_SQL_TYPE = Types.BIGINT;
-    private static final Logger logger = org.slf4j.LoggerFactory.getLogger(Dao.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private static final AtomicLong oidGenerator = new AtomicLong(0);
 
     private final String schema;

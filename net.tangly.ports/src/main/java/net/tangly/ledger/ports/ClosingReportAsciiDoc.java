@@ -15,6 +15,7 @@ package net.tangly.ledger.ports;
 
 
 import java.io.Writer;
+import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -28,6 +29,8 @@ import net.tangly.bus.ledger.AccountEntry;
 import net.tangly.bus.ledger.Ledger;
 import net.tangly.bus.ledger.Transaction;
 import net.tangly.commons.utilities.AsciiDocHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static net.tangly.commons.utilities.AsciiDocHelper.format;
 
@@ -35,7 +38,7 @@ import static net.tangly.commons.utilities.AsciiDocHelper.format;
  * A complete accounting report for a specific time interval. We suggest you use year, half-year and quarter ports. The output format is AsciiDoc.
  */
 public class ClosingReportAsciiDoc {
-    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ClosingReportAsciiDoc.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private final Ledger ledger;
 
     /**
@@ -51,7 +54,7 @@ public class ClosingReportAsciiDoc {
         try (Writer writer = Files.newBufferedWriter(reportPath, StandardCharsets.UTF_8)) {
             create(from, to, writer);
         } catch (Exception e) {
-            log.error("Error during reporting", e);
+            logger.error("Error during reporting", e);
         }
     }
 

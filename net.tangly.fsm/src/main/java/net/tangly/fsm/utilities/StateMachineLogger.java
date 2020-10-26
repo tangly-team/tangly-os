@@ -13,6 +13,7 @@
 
 package net.tangly.fsm.utilities;
 
+import java.lang.invoke.MethodHandles;
 import java.util.Objects;
 import java.util.function.BiConsumer;
 
@@ -29,10 +30,7 @@ import org.slf4j.LoggerFactory;
  * the following structure: machine_name[machine_oid] operation operation parameters
  */
 public class StateMachineLogger<O, S extends Enum<S>, E extends Enum<E>> implements StateMachineEventHandler<O, S, E> {
-    /**
-     * /** The logger of the instance.
-     */
-    private static final Logger logger = LoggerFactory.getLogger(StateMachineLogger.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     /**
      * The machine being logged with this logger handler instance.

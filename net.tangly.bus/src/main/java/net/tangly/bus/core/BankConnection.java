@@ -14,6 +14,7 @@
 package net.tangly.bus.core;
 
 import java.io.Serializable;
+import java.lang.invoke.MethodHandles;
 import java.util.Objects;
 
 import org.iban4j.BicFormatException;
@@ -31,7 +32,7 @@ import org.slf4j.LoggerFactory;
  * Describes a bank connection with IBAN account number, BIC identification and name of the institute. The class is immutable.
  */
 public record BankConnection(String iban, String bic, String institute) implements Serializable {
-    private static final Logger logger = LoggerFactory.getLogger(BankConnection.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     /**
      * Factory method to construct a bank connection.

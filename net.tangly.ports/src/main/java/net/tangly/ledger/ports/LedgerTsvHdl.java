@@ -17,6 +17,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.UncheckedIOException;
+import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -60,8 +61,7 @@ public class LedgerTsvHdl {
     private static final String ACCOUNT_CREDIT = "AccountCredit";
     private static final String VAT_CODE = "VatCode";
 
-    private static final Logger log = LoggerFactory.getLogger(LedgerTsvHdl.class);
-
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private final Ledger ledger;
 
     @Inject
@@ -135,7 +135,7 @@ public class LedgerTsvHdl {
                         transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
                                 new BigDecimal(amount), splits, text, reference);
                     } catch (NumberFormatException e) {
-                        log.atError().setCause(e).log("{}: not a legal amount {}", date, amount);
+                        logger.atError().setCause(e).log("{}: not a legal amount {}", date, amount);
                     }
 
                 } else {
@@ -143,7 +143,7 @@ public class LedgerTsvHdl {
                         transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
                                 Strings.isNullOrEmpty(amount) ? BigDecimal.ZERO : new BigDecimal(amount), text, reference);
                     } catch (NumberFormatException e) {
-                        log.atError().setCause(e).log("{}: not a legal amount {}", date, amount);
+                        logger.atError().setCause(e).log("{}: not a legal amount {}", date, amount);
                     }
 
                     record = records.hasNext() ? records.next() : null;
@@ -212,7 +212,7 @@ public class LedgerTsvHdl {
                     o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT, VAT_F3_VALUE.toString()));
                     o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT_DUE, VAT_F3_DUE_VALUE.toString()));
                 });
-                default -> log.info("Unknown VAT code in CSV file {}", code);
+                default -> logger.info("Unknown VAT code in CSV file {}", code);
             }
         }
     }

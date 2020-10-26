@@ -20,7 +20,6 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import com.vaadin.flow.data.binder.ValidationException;
 import net.tangly.bus.codes.CodeType;
 import net.tangly.bus.crm.Activity;
 import net.tangly.bus.crm.ActivityCode;
@@ -28,6 +27,7 @@ import net.tangly.bus.crm.RealmCrm;
 import net.tangly.bus.providers.ProviderInMemory;
 import net.tangly.commons.vaadin.CodeField;
 import net.tangly.commons.vaadin.EntitiesView;
+import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -54,13 +54,7 @@ public class ActivitiesView extends EntitiesView<Activity> {
 
     @Override
     protected Activity updateOrCreate(Activity entity) {
-        Activity activity = (entity != null) ? entity : new Activity();
-        try {
-            binder.writeBean(activity);
-        } catch (ValidationException e) {
-            e.printStackTrace();
-        }
-        return activity;
+        return EntitiesView.updateOrCreate(entity, binder, Activity::new);
     }
 
     @Override

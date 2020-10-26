@@ -13,11 +13,17 @@
 
 package net.tangly.commons.vaadin;
 
+import java.lang.invoke.MethodHandles;
+import java.util.function.Supplier;
+
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.provider.DataProvider;
 import net.tangly.bus.providers.Provider;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Defines a generic view for entities. The provider is the connection to the application backend. Classes inheriting entities view shall implement at least
@@ -32,6 +38,7 @@ import org.jetbrains.annotations.NotNull;
  * @param <T> type of the external entities
  */
 public abstract class EntitiesView<T> extends Crud<T> implements CrudForm<T> {
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     protected final Provider<T> provider;
 
     /**
@@ -86,4 +93,15 @@ public abstract class EntitiesView<T> extends Crud<T> implements CrudForm<T> {
             default -> entity;
         };
     }
+
+    protected static <T> T updateOrCreate(T entity, Binder<T> binder, Supplier<T> factory) {
+        T instance = (entity != null) ? entity : factory.get();
+        try {
+            binder.writeBean(entity);
+        } catch (ValidationException e) {
+            logger.atError().setCause(e).log("Validation error for {}", instance);
+        }
+        return entity;
+    }
+
 }

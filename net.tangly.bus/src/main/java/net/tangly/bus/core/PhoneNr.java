@@ -14,6 +14,7 @@
 package net.tangly.bus.core;
 
 import java.io.Serializable;
+import java.lang.invoke.MethodHandles;
 
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
@@ -26,10 +27,7 @@ import org.slf4j.LoggerFactory;
  * which supports worldwide numbers.
  */
 public record PhoneNr(String number) implements Serializable {
-    /**
-     * pattern used to normalize the phone numbers.
-     */
-    private static final Logger logger = LoggerFactory.getLogger(PhoneNr.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     /**
      * Factory method to of a new phone number. The number is formatted based on the international format standard.

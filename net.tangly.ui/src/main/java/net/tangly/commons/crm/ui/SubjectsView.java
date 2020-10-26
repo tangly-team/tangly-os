@@ -22,9 +22,11 @@ import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.server.StreamResource;
+import net.tangly.bus.crm.Activity;
 import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.bus.crm.RealmCrm;
 import net.tangly.bus.crm.Subject;
+import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.One2OneField;
@@ -76,12 +78,6 @@ public class SubjectsView extends InternalEntitiesView<Subject> {
 
     @Override
     protected Subject updateOrCreate(Subject entity) {
-        Subject subject = (entity != null) ? entity : new Subject();
-        try {
-            binder.writeBean(subject);
-        } catch (ValidationException e) {
-            e.printStackTrace();
-        }
-        return subject;
+        return EntitiesView.updateOrCreate(entity, binder, Subject::new);
     }
 }

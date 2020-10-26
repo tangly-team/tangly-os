@@ -13,6 +13,7 @@
 
 package net.tangly.bus.ledger;
 
+import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
@@ -31,7 +32,7 @@ import org.slf4j.LoggerFactory;
  * related bookings to the VAT related accounts.
  */
 public class Ledger {
-    private static final Logger logger = LoggerFactory.getLogger(Ledger.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private final List<Account> accounts;
     private final List<Transaction> journal;
 

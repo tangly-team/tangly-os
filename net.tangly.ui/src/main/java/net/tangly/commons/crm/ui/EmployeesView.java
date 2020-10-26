@@ -17,11 +17,13 @@ import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.data.binder.ValidationException;
+import net.tangly.bus.crm.Activity;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.bus.crm.RealmCrm;
+import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.One2OneField;
@@ -73,12 +75,6 @@ public class EmployeesView extends InternalEntitiesView<Employee> {
 
     @Override
     protected Employee updateOrCreate(Employee entity) {
-        Employee employee = (entity != null) ? entity : new Employee();
-        try {
-            binder.writeBean(employee);
-        } catch (ValidationException e) {
-            e.printStackTrace();
-        }
-        return employee;
+        return EntitiesView.updateOrCreate(entity, binder, Employee::new);
     }
 }

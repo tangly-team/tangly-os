@@ -13,6 +13,7 @@
 
 package net.tangly.crm.ports;
 
+import java.lang.invoke.MethodHandles;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.Currency;
@@ -92,7 +93,7 @@ class CrmTsvHdl {
     private static final String AUTHOR = "author";
     private static final String TAGS = "tags";
 
-    private static final Logger logger = LoggerFactory.getLogger(CrmTsvHdl.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private final RealmCrm realm;
 
     @Inject

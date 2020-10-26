@@ -13,6 +13,7 @@
 
 package net.tangly.fsm.actors;
 
+import java.lang.invoke.MethodHandles;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
@@ -22,6 +23,8 @@ import java.util.concurrent.Executors;
 
 import net.tangly.fsm.Event;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The actor infrastructure enabler is responsible to provide parallel execution for all instantiated and alive actors he is in charge.
@@ -29,8 +32,7 @@ import org.jetbrains.annotations.NotNull;
  * @param <E> the event enumeration type uniquely identifying the event sent to the state machine
  */
 public final class LocalActors<E extends Enum<E>> implements Actors<E> {
-
-    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(LocalActors.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private static final LocalActors<?> instance = new LocalActors<>();
     private final Map<String, Actor<E>> actors;
     private final ExecutorService executor;
@@ -85,7 +87,7 @@ public final class LocalActors<E extends Enum<E>> implements Actors<E> {
             try {
                 Thread.sleep(intervalInMilliseconds);
             } catch (InterruptedException e) {
-                log.error("LocalActors encountered interrupted exception", e);
+                logger.error("LocalActors encountered interrupted exception", e);
                 Thread.currentThread().interrupt();
             }
         }

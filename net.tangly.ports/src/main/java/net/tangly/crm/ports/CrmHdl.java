@@ -13,6 +13,7 @@
 
 package net.tangly.crm.ports;
 
+import java.lang.invoke.MethodHandles;
 import java.nio.file.Path;
 import javax.inject.Inject;
 
@@ -36,7 +37,7 @@ public final class CrmHdl {
     public static final String SUBJECTS_TSV = "subjects.tsv";
     public static final String VCARDS_FOLDER = "vcards";
 
-    private static final Logger logger = LoggerFactory.getLogger(CrmHdl.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private final RealmCrm realm;
 
     @Inject

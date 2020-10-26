@@ -26,10 +26,12 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.bus.codes.CodeType;
+import net.tangly.bus.crm.Activity;
 import net.tangly.bus.crm.Interaction;
 import net.tangly.bus.crm.InteractionCode;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.RealmCrm;
+import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
@@ -88,12 +90,6 @@ public class InteractionsView extends InternalEntitiesView<Interaction> {
 
     @Override
     protected Interaction updateOrCreate(Interaction entity) {
-        Interaction interaction = (entity != null) ? entity : new Interaction();
-        try {
-            binder.writeBean(interaction);
-        } catch (ValidationException e) {
-            e.printStackTrace();
-        }
-        return interaction;
+        return EntitiesView.updateOrCreate(entity, binder, Interaction::new);
     }
 }

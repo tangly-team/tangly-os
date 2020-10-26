@@ -24,12 +24,14 @@ import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.renderer.NumberRenderer;
+import net.tangly.bus.crm.Activity;
 import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.RealmCrm;
 import net.tangly.bus.invoices.BusinessLogicInvoices;
 import net.tangly.bus.invoices.RealmInvoices;
 import net.tangly.commons.vaadin.BankConnectionField;
+import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.One2OneField;
@@ -103,12 +105,6 @@ public class ContractsView extends InternalEntitiesView<Contract> {
 
     @Override
     protected Contract updateOrCreate(Contract entity) {
-        Contract contract = (entity != null) ? entity : new Contract();
-        try {
-            binder.writeBean(contract);
-        } catch (ValidationException e) {
-            e.printStackTrace();
-        }
-        return contract;
+        return EntitiesView.updateOrCreate(entity, binder, Contract::new);
     }
 }

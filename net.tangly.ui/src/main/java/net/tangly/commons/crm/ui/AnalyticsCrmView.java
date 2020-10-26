@@ -13,6 +13,7 @@
 
 package net.tangly.commons.crm.ui;
 
+import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class AnalyticsCrmView extends VerticalLayout {
-    private static final Logger logger = LoggerFactory.getLogger(AnalyticsCrmView.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private final BusinessLogicCrm logicCrm;
     private final BusinessLogicInvoices logicInvoices;
     private final Ledger ledger;

@@ -13,18 +13,23 @@
 
 package net.tangly.commons.vaadin;
 
+import java.lang.invoke.MethodHandles;
 import java.time.format.DateTimeFormatter;
+import java.util.function.Supplier;
 
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.provider.ListDataProvider;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import net.tangly.bus.core.Entity;
 import net.tangly.bus.core.QualifiedEntity;
 import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.bus.crm.Activity;
+import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.bus.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -39,7 +44,7 @@ import org.slf4j.LoggerFactory;
  * </ul>
  */
 public abstract class InternalEntitiesView<T extends Entity> extends EntitiesView<T> implements CrudForm<T>, HasIdView<T> {
-    private static final Logger logger = LoggerFactory.getLogger(InternalEntitiesView.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     protected final transient Provider<T> provider;
     protected Binder<T> binder;
     private final TagTypeRegistry registry;

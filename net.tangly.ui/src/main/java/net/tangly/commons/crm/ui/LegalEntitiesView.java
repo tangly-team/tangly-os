@@ -28,6 +28,7 @@ import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.RealmCrm;
 import net.tangly.bus.providers.ViewProvider;
 import net.tangly.commons.vaadin.CommentsView;
+import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.GridActionsListener;
 import net.tangly.commons.vaadin.InternalEntitiesView;
@@ -103,12 +104,6 @@ public class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
 
     @Override
     protected LegalEntity updateOrCreate(LegalEntity entity) {
-        LegalEntity legalEntity = (entity != null) ? entity : new LegalEntity();
-        try {
-            binder.writeBean(legalEntity);
-        } catch (ValidationException e) {
-            e.printStackTrace();
-        }
-        return legalEntity;
+        return EntitiesView.updateOrCreate(entity, binder, LegalEntity::new);
     }
 }

@@ -13,6 +13,7 @@
 
 package net.tangly.bus.providers;
 
+import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -27,7 +28,7 @@ import org.slf4j.LoggerFactory;
  * @param <T> type of the instances handled in the provider
  */
 public class ProviderInMemory<T> implements Provider<T> {
-    private static final Logger logger = LoggerFactory.getLogger(ProviderInMemory.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private final List<T> items;
 
     public ProviderInMemory() {

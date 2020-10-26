@@ -14,6 +14,7 @@
 package net.tangly.invoices.ports;
 
 import java.io.IOException;
+import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.util.Date;
@@ -34,6 +35,8 @@ import org.mustangproject.ZUGFeRD.IZUGFeRDExportableTransaction;
 import org.mustangproject.ZUGFeRD.IZUGFeRDTradeSettlementPayment;
 import org.mustangproject.ZUGFeRD.ZUGFeRDExporter;
 import org.mustangproject.ZUGFeRD.ZUGFeRDExporterFromA1Factory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGenerator {
     /**
@@ -170,7 +173,7 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
         }
     }
 
-    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(InvoiceZugFerd.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private static final BigDecimal HUNDRED = new BigDecimal("100");
     private Invoice invoice;
 
