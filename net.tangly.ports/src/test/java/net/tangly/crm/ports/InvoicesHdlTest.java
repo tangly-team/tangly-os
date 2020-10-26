@@ -15,6 +15,7 @@ package net.tangly.crm.ports;
 
 import java.io.IOException;
 import java.nio.file.FileSystem;
+import java.nio.file.Files;
 import java.nio.file.Path;
 
 import com.google.common.jimfs.Configuration;
@@ -59,6 +60,20 @@ public class InvoicesHdlTest {
             invoicesHdl = new InvoicesHdl(new InvoicesEntities(new TagTypeRegistry()));
             invoicesHdl.importEntities(store.invoicesRoot());
             verifyArticles(invoicesHdl.realm());
+        }
+    }
+
+    @Test
+    void testInvoiceDocuments() throws IOException {
+        try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
+            ErpStore store = new ErpStore(fs);
+            store.createCrmAndLedgerRepository();
+
+            InvoicesHdl invoicesHdl = new InvoicesHdl(new InvoicesEntities(new TagTypeRegistry()));
+            invoicesHdl.importEntities(store.invoicesRoot());
+            invoicesHdl.exportInvoiceDocuments(store.invoiceReportsRoot(), false, false);
+
+            invoicesHdl.realm().invoices().items().forEach(o -> assertThat(Files.exists(invoicesHdl.resolvePath(store.invoicesRoot(), o))).isTrue());
         }
     }
 

@@ -18,7 +18,6 @@ import java.io.OutputStream;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Map;
 
 import org.asciidoctor.Asciidoctor;
 import org.asciidoctor.Attributes;
@@ -32,22 +31,6 @@ public class AsciiDoctorHelper {
     public static final String ASCII_DOC_EXT = ".adoc";
     public static final String PDF_EXT = ".pdf";
 
-    public static void createPdfWithLocalFile(@NotNull Path asciidocInvoice, @NotNull Path directory, @NotNull String filenameWithoutExtension) {
-        try {
-            Path asciiDocInvoiceCopy = directory.resolve(filenameWithoutExtension + ASCII_DOC_EXT);
-            Files.copy(asciidocInvoice, asciiDocInvoiceCopy);
-            System.setProperty("jruby.compat.version", "RUBY1_9");
-            System.setProperty("jruby.compile.mode", "OFF");
-            try (Asciidoctor asciidoctor = Asciidoctor.Factory.create()) {
-                Map<String, Object> options = OptionsBuilder.options().inPlace(true).backend("pdf").safe(SafeMode.UNSAFE).asMap();
-                asciidoctor.convertFile(asciiDocInvoiceCopy.toFile(), options);
-            }
-            Files.delete(asciiDocInvoiceCopy);
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
-    }
-
     public static void createPdf(@NotNull Path directory, @NotNull String filenameWithoutExtension) {
         createPdf(directory.resolve(filenameWithoutExtension + ASCII_DOC_EXT), directory, filenameWithoutExtension);
     }
@@ -59,7 +42,7 @@ public class AsciiDoctorHelper {
              OutputStream out = Files.newOutputStream(pdfDirectory.resolve(filenameWithoutExtension + PDF_EXT))) {
             String asciidoc = Files.readString(asciidocPath);
             Attributes attributes = AttributesBuilder.attributes().get();
-            Options options = OptionsBuilder.options().inPlace(true).attributes(attributes).backend("pdf").toStream(out).get();
+            Options options = OptionsBuilder.options().inPlace(true).attributes(attributes).backend("pdf").safe(SafeMode.UNSAFE).toStream(out).get();
             asciidoctor.convert(asciidoc, options);
         } catch (IOException e) {
             throw new UncheckedIOException(e);

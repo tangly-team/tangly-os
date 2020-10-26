@@ -65,15 +65,10 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
 
     @Override
     public void exports(@NotNull Invoice invoice, @NotNull Path invoiceFolder, @NotNull Map<String, Object> properties) {
-        try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            Files.createDirectory(fs.getPath("/tmp/"));
-            try (InputStream input = getClass().getClassLoader().getResourceAsStream("net/tangly/invoices/ports/trefoil.svg")) {
-                Files.copy(input, fs.getPath("/tmp", "trefoil.svg"), StandardCopyOption.REPLACE_EXISTING);
-            }
-            Path asciidocFile = fs.getPath("/tmp", invoice.name() + AsciiDoctorHelper.ASCII_DOC_EXT);
+            Path asciidocFile = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.ASCII_DOC_EXT);
             try (PrintWriter writer = new PrintWriter(Files.newOutputStream(asciidocFile), true, StandardCharsets.UTF_8)) {
                 AsciiDocHelper helper = new AsciiDocHelper(writer);
-                writer.println(":imagesdir: /Users/Shared/tangly/reports");
+                writer.println(":imagesdir: ../..");
                 writer.println();
                 writer.println("image::trefoil.svg[100,100,align=\"center\"]");
                 writer.println();
@@ -120,10 +115,7 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
                 logger.atError().setCause(e).log("Error during invoice asciiDoc generation {}", invoiceFolder);
             }
             // currently need to be performed in the default filesystem to work
-            AsciiDoctorHelper.createPdfWithLocalFile(asciidocFile, invoiceFolder, invoice.name());
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
+            AsciiDoctorHelper.createPdf(invoiceFolder, invoice.name());
     }
 
     private void createVatDeclarations(@NotNull AsciiDocHelper helper, @NotNull Invoice invoice) {

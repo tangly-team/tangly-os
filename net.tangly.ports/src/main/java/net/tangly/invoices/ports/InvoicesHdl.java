@@ -53,13 +53,12 @@ public class InvoicesHdl {
     public static final String ARTICLES_TSV = "articles.tsv";
     public static final String JSON_EXT = ".json";
     public static final String INVOICE_NAME_PATTERN = "\\d{4}-\\d{4}-.*";
+    private static final Pattern invoicePattern = Pattern.compile(INVOICE_NAME_PATTERN);
     private final RealmInvoices realm;
-    private final Pattern invoicePattern;
 
     @Inject
     public InvoicesHdl(RealmInvoices realm) {
         this.realm = realm;
-        invoicePattern = Pattern.compile(INVOICE_NAME_PATTERN);
     }
 
     public RealmInvoices realm() {
@@ -110,6 +109,10 @@ public class InvoicesHdl {
         });
     }
 
+    public void exportInvoiceDocuments(Path directory, boolean withQrCode, boolean withEN16931) {
+        realm.invoices().items().forEach(o -> exportInvoiceDocument(o, directory, withQrCode, withEN16931));
+    }
+
     public void exportArticles(@NotNull Path path) {
         TsvHdl.exportEntities(path, createTsvArticle(), realm.articles());
     }
@@ -128,10 +131,6 @@ public class InvoicesHdl {
                 TsvProperty.ofBigDecimal("unitPrice", Article::unitPrice, null), TsvProperty.ofString("unit", Article::unit, null),
                 TsvProperty.ofBigDecimal("vatRate", Article::vatRate, null));
         return TsvEntity.of(Article.class, fields, imports);
-    }
-
-    public void exportInvoiceToPdf(@NotNull Path directory, @NotNull Invoice invoice) {
-        exportInvoiceDocument(invoice, resolvePath(directory.resolve(REPORTS), invoice), true, true);
     }
 
     /**
@@ -154,6 +153,8 @@ public class InvoicesHdl {
             InvoiceZugFerd en164391Generator = new InvoiceZugFerd();
             en164391Generator.exports(invoice, invoicePath, Collections.emptyMap());
         }
+        EventData.log(EventData.EXPORT, "net.tangly.crm.ports", EventData.Status.SUCCESS, "Invoice exported to PDF {}",
+                Map.of("invoice", invoice, "invoicePath", invoicePath, "withQrCode", withQrCode, "withEN16931", withEN16931));
     }
 
     /**
@@ -164,7 +165,7 @@ public class InvoicesHdl {
      * @param invoice   invoice to write
      * @return path to the folder where the invoice should be written
      */
-    public Path resolvePath(@NotNull Path directory, @NotNull Invoice invoice) {
+    public static Path resolvePath(@NotNull Path directory, @NotNull Invoice invoice) {
         Path invoicesPath = directory.resolve(INVOICES);
         Matcher matcher = invoicePattern.matcher(invoice.name());
         Path invoicePath = matcher.matches() ? invoicesPath.resolve(invoice.name().substring(0, 4)) : invoicesPath;

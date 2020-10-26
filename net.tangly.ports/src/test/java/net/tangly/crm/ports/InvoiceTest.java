@@ -13,16 +13,19 @@
 
 package net.tangly.crm.ports;
 
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Currency;
 import java.util.List;
 import java.util.Locale;
 
+import com.google.common.jimfs.Configuration;
+import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.core.Address;
 import net.tangly.bus.core.BankConnection;
 import net.tangly.bus.invoices.Article;
@@ -35,7 +38,6 @@ import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.invoices.ports.InvoiceAsciiDoc;
 import net.tangly.invoices.ports.InvoiceQrCode;
 import net.tangly.invoices.ports.InvoiceZugFerd;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -43,34 +45,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 class InvoiceTest {
     private static final BigDecimal VAT_REGULAR = new BigDecimal("0.077");
     private static final String PAYMENT_CONDITIONS_30_DAYS = "30 days net";
-
-    @Test
-    @Tag("localTest")
-    void writeAsciiDocReport() {
-        Path invoicesDir = Paths.get("/Users/Shared/tmp");
-
-        Invoice invoice = newRegularInvoice();
-        Path invoiceOutputPath = invoicesDir.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
-        new InvoiceAsciiDoc(Locale.ENGLISH).exports(invoice, invoicesDir, Collections.emptyMap());
-        new InvoiceQrCode().exports(invoice, invoiceOutputPath, Collections.emptyMap());
-        new InvoiceZugFerd().exports(invoice, invoiceOutputPath, Collections.emptyMap());
-
-        invoice = newTeachingInvoice();
-        invoiceOutputPath = invoicesDir.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
-        new InvoiceAsciiDoc(Locale.ENGLISH).exports(invoice, invoicesDir, Collections.emptyMap());
-        new InvoiceQrCode().exports(invoice, invoiceOutputPath, Collections.emptyMap());
-        new InvoiceZugFerd().exports(invoice, invoiceOutputPath, Collections.emptyMap());
-
-        invoice = newComplexInvoice();
-        invoiceOutputPath = invoicesDir.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
-        new InvoiceAsciiDoc(Locale.ENGLISH).exports(invoice, invoicesDir, Collections.emptyMap());
-        new InvoiceQrCode().exports(invoice, invoiceOutputPath, Collections.emptyMap());
-        new InvoiceZugFerd().exports(invoice, invoiceOutputPath, Collections.emptyMap());
-
-        assertThat(Files.exists(invoicesDir)).isTrue();
-        assertThat(Files.isDirectory(invoicesDir)).isTrue();
-        assertThat(Files.exists(invoiceOutputPath)).isTrue();
-    }
 
     @Test
     void testRegularInvoiceTotals() {

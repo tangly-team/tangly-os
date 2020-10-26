@@ -16,10 +16,13 @@ package net.tangly.commons.vaadin;
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import com.github.mvysny.kaributesting.v10.Routes;
 import com.vaadin.flow.component.UI;
+import net.tangly.commons.ui.MainView;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class MainViewTest {
     private static Routes routes;
@@ -41,9 +44,7 @@ public class MainViewTest {
 
     @Test
     public void mainViewTest() {
-        System.out.println(UI.getCurrent().getChildren().findFirst().get());
-        // TODO find out why it is not working due to the routes
-        // final MainView main = (MainView) UI.getCurrent().getChildren().findFirst().get();
-        // assertThat(main.getChildren().count()).isEqualTo(2);
+        final MainView main = (MainView) UI.getCurrent().getChildren().findFirst().get();
+        assertThat(main.getChildren().count()).isEqualTo(2);
     }
 }

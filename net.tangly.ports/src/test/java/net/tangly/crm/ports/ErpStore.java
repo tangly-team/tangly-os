@@ -37,6 +37,7 @@ class ErpStore {
     private static final String PRODUCTS_PACKAGE_NAME = PACKAGE_NAME + "products/";
     private static final String INVOICES_PACKAGE_NAME = PACKAGE_NAME + "invoices/";
     private static final String VCARDS_PACKAGE_NAME = CRM_PACKAGE_NAME + "vcards/";
+    private static final String REPORTS_PACKAGE_NAME = PACKAGE_NAME + "reports/";
     private static final String ORGANIZATION = "/organization/";
 
     private final FileSystem fs;
@@ -69,8 +70,16 @@ class ErpStore {
         return fs.getPath(ORGANIZATION, "crm/vcards/");
     }
 
+    public Path reportsRoot() {
+        return fs.getPath(ORGANIZATION, "reports/");
+    }
+
     public Path ledgerReportsRoot() {
         return fs.getPath(ORGANIZATION, "reports/ledger/");
+    }
+
+    public Path invoiceReportsRoot() {
+        return fs.getPath(ORGANIZATION, "reports/invoices/");
     }
 
     /**
@@ -121,6 +130,8 @@ class ErpStore {
             copy(INVOICES_PACKAGE_NAME + "2020/", invoicesRoot().resolve("2020"), "2020-8001-Invoice-HSLU-May.json");
 
             copy(VCARDS_PACKAGE_NAME, vcardsRoot(), "1-MarcelBaumann.vcf");
+
+            copy(REPORTS_PACKAGE_NAME, reportsRoot(), "trefoil.svg");
 
         } catch (IOException e) {
             throw new UncheckedIOException(e);

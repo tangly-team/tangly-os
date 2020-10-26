@@ -16,6 +16,7 @@ package net.tangly.invoices.ports;
 import java.io.IOException;
 import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Date;
 import java.util.Map;
@@ -182,7 +183,7 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
         try (ZUGFeRDExporter exporter = new ZUGFeRDExporterFromA1Factory().ignorePDFAErrors().setZUGFeRDVersion(2).setProducer("tangly ERP")
                 .setCreator(invoice.invoicingEntity().name()).load(invoicePath.toString())) {
             exporter.PDFattachZugferdFile(this);
-            exporter.export(invoicePath.toString());
+            exporter.export(Files.newOutputStream(invoicePath));
         } catch (IOException e) {
             logger.atError().setCause(e).log("Could not read or write file {}", invoicePath);
         }
