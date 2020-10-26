@@ -97,9 +97,10 @@ public class Interaction extends QualifiedEntityImp {
         activities.remove(activity);
     }
 
+    @Override
     public boolean isValid() {
-        return Objects.nonNull(legalEntity()) && (Objects.requireNonNull(probability).compareTo(BigDecimal.ZERO) == 1) &&
-                (Objects.requireNonNull(probability).compareTo(BigDecimal.ONE) != 1);
+        return Objects.nonNull(legalEntity()) && (Objects.requireNonNull(probability).compareTo(BigDecimal.ZERO) > 0) &&
+                (Objects.requireNonNull(probability).compareTo(BigDecimal.ONE) <= 0);
     }
 
     @Override

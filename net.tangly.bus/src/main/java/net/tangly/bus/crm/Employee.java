@@ -49,6 +49,7 @@ public class Employee extends EntityImp implements CrmEntity {
         this.organization = organization;
     }
 
+    @Override
     public boolean isValid() {
         return Objects.nonNull(person) && Objects.nonNull(organization);
     }
@@ -60,7 +61,7 @@ public class Employee extends EntityImp implements CrmEntity {
                 """.formatted(oid(), fromDate(), toDate(), text(), person(), organization(), tags());
     }
 
-    private String inferName(HasName entity) {
+    private static String inferName(HasName entity) {
         return (entity != null) ? entity.name() : "UNKNOWN";
     }
 }

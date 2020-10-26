@@ -47,7 +47,7 @@ public final class Gravatar {
         return GRAVATAR_URL + DigestUtils.md5Hex(email.toLowerCase(Locale.US).trim()) + ".jpg" + formatUrlParameters(sizeInPixels, rating, image);
     }
 
-    private String formatUrlParameters(int sizeInPixels, GravatarRating rating, GravatarImage image) {
+    private static String formatUrlParameters(int sizeInPixels, GravatarRating rating, GravatarImage image) {
         List<String> params = new ArrayList<>();
         if (sizeInPixels != 0) {
             params.add("s=" + sizeInPixels);

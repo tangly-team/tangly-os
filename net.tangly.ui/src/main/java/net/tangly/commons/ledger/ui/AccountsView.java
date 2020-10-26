@@ -39,7 +39,6 @@ public class AccountsView extends EntitiesView<Account> {
      */
     public AccountsView(@NotNull LedgerBusinessLogic ledgerLogic, @NotNull Mode mode) {
         super(Account.class, mode, RecordProviderInMemory.of(ledgerLogic.ledger().accounts()));
-        initialize(this, null);
         from = LocalDate.of(LocalDate.now().getYear(), 1, 1);
         to = LocalDate.of(LocalDate.now().getYear(), 12, 31);
         initializeGrid();

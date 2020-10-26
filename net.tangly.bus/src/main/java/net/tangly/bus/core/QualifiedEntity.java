@@ -13,8 +13,6 @@
 
 package net.tangly.bus.core;
 
-import java.time.LocalDate;
-
 /**
  * The named interface defines a powerful abstraction for entities in a domain model. The features are
  * <ul>
@@ -27,6 +25,7 @@ import java.time.LocalDate;
  * <li>comments: human readable comments describing aspects of an instance.</li>
  * <li>tags: human readable and machine processable tags defining an ontology to classify instance in the domain model.
  * Orthogonal information can therefore be attached to instances.</li>
+ *
  * @see Entity
  * </ul>
  */

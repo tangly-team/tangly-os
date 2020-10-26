@@ -20,17 +20,15 @@ import java.util.function.Predicate;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.bus.ledger.Transaction;
-import net.tangly.commons.vaadin.Crud;
-import net.tangly.commons.vaadin.CrudActionsListener;
-import net.tangly.commons.vaadin.CrudForm;
+import net.tangly.bus.providers.ProviderInMemory;
+import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.ledger.ports.LedgerBusinessLogic;
 import org.jetbrains.annotations.NotNull;
 
-public class TransactionsView extends Crud<Transaction> implements CrudForm<Transaction> {
+public class TransactionsView extends EntitiesView<Transaction> {
     private LocalDate from;
     private LocalDate to;
 
@@ -41,7 +39,7 @@ public class TransactionsView extends Crud<Transaction> implements CrudForm<Tran
      * @param mode        mode of the view
      */
     public TransactionsView(@NotNull LedgerBusinessLogic ledgerLogic, @NotNull Mode mode) {
-        super(Transaction.class, mode, DataProvider.ofCollection(ledgerLogic.ledger().transactions()));
+        super(Transaction.class, mode, ProviderInMemory.of(ledgerLogic.ledger().transactions()));
         from = LocalDate.of(LocalDate.now().getYear(), 1, 1);
         to = LocalDate.of(LocalDate.now().getYear(), 12, 31);
         initialize(this, null);
@@ -67,11 +65,8 @@ public class TransactionsView extends Crud<Transaction> implements CrudForm<Tran
         }
     }
 
-    public static void defineTransactionsView(@NotNull Grid<Transaction> grid) {
-    }
-
-    protected void initialize(@NotNull CrudForm<Transaction> form, @NotNull CrudActionsListener<Transaction> actionsListener) {
-        super.initialize(form, actionsListener);
+    @Override
+    protected void initializeGrid() {
         Grid<Transaction> grid = grid();
         grid.addColumn(Transaction::date).setKey("date").setHeader("Date").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Transaction::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
@@ -89,12 +84,13 @@ public class TransactionsView extends Crud<Transaction> implements CrudForm<Tran
     }
 
     @Override
-    public FormLayout createForm(@NotNull Operation operation, Transaction entity) {
-        return null;
+    protected FormLayout fillForm(@NotNull Operation operation, Transaction entity, FormLayout form) {
+        return form;
     }
 
     @Override
-    public Transaction formCompleted(@NotNull Operation operation, Transaction entity) {
+    protected Transaction updateOrCreate(Transaction entity) {
         return null;
     }
+
 }

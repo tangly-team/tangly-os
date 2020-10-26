@@ -16,7 +16,6 @@ package net.tangly.bus.crm;
 
 import net.tangly.bus.core.EmailAddress;
 import net.tangly.bus.core.EntityImp;
-import net.tangly.bus.core.QualifiedEntityImp;
 import net.tangly.bus.core.Strings;
 
 /**
@@ -80,6 +79,7 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
         this.socialNr = socialNr;
     }
 
+    @Override
     public boolean isValid() {
         return !Strings.isNullOrBlank(lastname()) && (gender() != null) &&
                 (phoneNr(CrmTags.Type.home).isEmpty() || phoneNr(CrmTags.Type.home).orElseThrow().isValid()) &&

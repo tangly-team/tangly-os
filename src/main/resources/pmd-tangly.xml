@@ -24,6 +24,17 @@
     <rule ref="category/java/multithreading.xml"/>
     <rule ref="category/java/performance.xml"/>
     <rule ref="category/java/security.xml"/>
+    <rule ref="category/java/codestyle.xml">
+        <exclude name="AtLeastOneConstructor"/>
+        <exclude name="ClassNamingConventions"/>
+        <exclude name="CommentDefaultAccessModifier"/>
+        <exclude name="ConfusingTernary"/>
+        <exclude name="DefaultPackage"/>
+        <exclude name="LocalVariableCouldBeFinal"/>
+        <exclude name="MethodArgumentCouldBeFinal"/>
+        <exclude name="OnlyOneReturn"/>
+        <exclude name="UselessParentheses"/>
+    </rule>
     <rule ref="category/java/codestyle.xml/FieldNamingConventions">
         <properties>
             <property name="publicConstantPattern" value="[A-Z][A-Z_0-9]*" />
@@ -60,20 +71,10 @@
             <property name="maximumStaticImports" value="20" />
         </properties>
     </rule>
-    <rule ref="category/java/codestyle.xml">
-        <exclude name="AtLeastOneConstructor"/>
-        <exclude name="CommentDefaultAccessModifier"/>
-        <exclude name="ConfusingTernary"/>
-        <exclude name="LocalVariableCouldBeFinal"/>
-        <exclude name="UselessParentheses"/>
-        <exclude name="MethodArgumentCouldBeFinal"/>
-        <exclude name="OnlyOneReturn"/>
-        <exclude name="DefaultPackage"/>
-    </rule>
     <rule ref="category/java/design.xml">
         <exclude name="ExcessiveImports"/>
-        <exclude name="LoosePackageCoupling"/>
         <exclude name="LawOfDemeter"/>
+        <exclude name="LoosePackageCoupling"/>
     </rule>
     <rule ref="category/java/errorprone.xml">
         <exclude name="AvoidFieldNameMatchingTypeName"/>

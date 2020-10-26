@@ -102,6 +102,7 @@ public class Contract extends QualifiedEntityImp implements CrmEntity {
         this.currency = currency;
     }
 
+    @Override
     public boolean isValid() {
         return Objects.nonNull(bankConnection) && Objects.nonNull(seller) && Objects.nonNull(sellee) &&
                 (Objects.requireNonNull(amountWithoutVat).compareTo(BigDecimal.ZERO) > 0) && Objects.nonNull(currency);
