@@ -18,7 +18,7 @@
 
         <vaadin.version>17.0.7</vaadin.version>
         <tangly.version>0.2.6</tangly.version>
-        <jetty.version>9.4.28.v20200408</jetty.version>
+        <jetty.version>9.4.33.v20201020</jetty.version>
     </properties>
 
     <repositories>
@@ -204,7 +204,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <release>14</release>
+                    <release>15</release>
                     <compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
             </plugin>
