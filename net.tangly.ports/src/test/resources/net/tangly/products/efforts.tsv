@@ -1,1 +1,3 @@
 "oid"	"date"	"durationInMinutes"	"text"	"assignementOid"	"contractId"
+800	2020-01-01	30	coaching	400	504
+801	2020-01-15	480	spike JDK 14	400	504

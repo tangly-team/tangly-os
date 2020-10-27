@@ -13,16 +13,24 @@
 
 package net.tangly.commons.ui;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UncheckedIOException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Objects;
 
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.menubar.MenuBar;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.StreamResource;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.material.Material;
 import net.tangly.bus.core.TagTypeRegistry;
@@ -56,14 +64,13 @@ import net.tangly.ledger.ports.LedgerBusinessLogic;
 import net.tangly.ledger.ports.LedgerHdl;
 import net.tangly.products.ports.ProductsEntities;
 import net.tangly.products.ports.ProductsHdl;
-import org.checkerframework.checker.units.qual.A;
 import org.jetbrains.annotations.NotNull;
 
 @Theme(value = Material.class)
 @CssImport("./styles/shared-styles.css")
 @CssImport(value = "./styles/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
 @Route("")
-public class MainView extends VerticalLayout {
+public class MainView extends AppLayout {
     private Component currentView;
     private RealmCrm realmCrm;
     private RealmInvoices realmInvoices;
@@ -115,9 +122,18 @@ public class MainView extends VerticalLayout {
         assignementsView = new AssignementsView(realmProducts, Crud.Mode.EDITABLE);
         effortsView = new EffortsView(realmProducts, Crud.Mode.READONLY);
 
-        setSizeFull();
         currentView = naturalEntitiesView;
-        add(menuBar(), naturalEntitiesView);
+
+        Image image;
+        try {
+            byte[] buffer = Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("tangly70x70.png")).readAllBytes();
+            image = new Image(new StreamResource("tangly70x70.png", () -> new ByteArrayInputStream(buffer)), "tangly70x70.png");
+            image.setHeight("44px");
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+        addToNavbar(image, menuBar());
+        setContent(naturalEntitiesView);
     }
 
     @Override
@@ -182,8 +198,7 @@ public class MainView extends VerticalLayout {
     }
 
     private void select(@NotNull Component view) {
-        this.remove(currentView);
-        this.add(view);
+        setContent(view);
         currentView = view;
     }
 
