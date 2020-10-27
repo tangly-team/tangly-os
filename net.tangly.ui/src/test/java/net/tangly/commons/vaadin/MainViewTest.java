@@ -20,6 +20,7 @@ import net.tangly.commons.ui.MainView;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -43,6 +44,7 @@ public class MainViewTest {
     }
 
     @Test
+    @Tag("localTest")
     public void mainViewTest() {
         final MainView main = (MainView) UI.getCurrent().getChildren().findFirst().get();
         assertThat(main.getChildren().count()).isEqualTo(2);
