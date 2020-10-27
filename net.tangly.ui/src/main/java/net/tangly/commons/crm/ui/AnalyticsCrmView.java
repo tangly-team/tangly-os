@@ -95,7 +95,7 @@ public class AnalyticsCrmView extends VerticalLayout {
         customersSoChart = createAndRegisterChart("Customers Turnover");
         contractsSoChart = createAndRegisterChart("Contracts Turnover");
         profitAndLossSoChart = createAndRegisterChart("Profit & Loss");
-        financialSoChart = createAndRegisterChart("Financials");
+        financialSoChart = createAndRegisterChart("Assets");
         funnelSoChart = createAndRegisterChart("Funnel");
 
         contractsGrid = contractsTable();
