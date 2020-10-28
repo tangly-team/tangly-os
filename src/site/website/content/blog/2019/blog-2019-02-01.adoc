@@ -2,7 +2,7 @@
 title: "How Healthy is Your Product? - Company Culture Check"
 linkTitle: "Company Culture Check"
 date: 2019-02-01
-tags: ["agile"]
+tags: ["agile", "serie-how-healthy"]
 ---
 
 == How Healthy is Your Product? - Company Culture Check

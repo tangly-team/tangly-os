@@ -2,7 +2,7 @@
 title: "Agile Component Design"
 linkTitle: "Agile Component Design"
 date: 2020-04-17
-tags: ["agile", "design", "java"]
+tags: ["agile", "design", "java", "serie-agile-design"]
 ---
 
 == Agile Component Design

@@ -2,7 +2,7 @@
 title: "Agile Trends Switzerland 2018"
 linkTitle: "Swiss Agile 2018"
 date: 2018-03-12
-tags: ["agile"]
+tags: ["agile", "serie-swiss-agile-trends"]
 ---
 
 == Agile Trends Switzerland 2018

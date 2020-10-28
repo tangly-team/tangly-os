@@ -2,7 +2,7 @@
 title: "How Healthy is Your Product? - Source Code Check"
 linkTitle: "Source Code Check"
 date: 2018-10-01
-tags: ["agile"]
+tags: ["agile", "serie-how-healthy"]
 ---
 
 == How Healthy is Your Product? - Source Code Check

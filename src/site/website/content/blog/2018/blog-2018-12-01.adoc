@@ -2,7 +2,7 @@
 title: "How Healthy is Your Product? - Product Strategy Check"
 linkTitle: "Product Check"
 date: 2018-12-11
-tags: ["agile"]
+tags: ["agile", "serie-how-healthy"]
 ---
 
 == How Healthy is Your Product? - Product Strategy Check

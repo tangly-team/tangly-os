@@ -2,7 +2,7 @@
 title: "Reference Codes"
 linkTitle: "Reference Codes"
 date: 2020-11-01
-tags: ["java", "design", "crm"]
+tags: ["java", "design", "crm", "serie-identifiers"]
 ---
 
 == Reference Codes
