@@ -9,9 +9,9 @@ menu:
 <div class="col-12">
 <h1 class="text-center">Release Process</h1>
 
-Find the description of the release and publication process under [ideas](../Ideas).
+Find the description of the release and publication process under [ideas](../ideas/components-publication).
 
-Architecture design record for the whole projects are also located under [ideas](../Ideas).
+Architecture design record for the whole projects are also located under [ideas](../ideas/adr).
 </div>
 {{% /blocks/section %}}
 
