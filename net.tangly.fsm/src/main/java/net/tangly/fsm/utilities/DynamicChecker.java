@@ -22,9 +22,9 @@ import net.tangly.fsm.StateMachineEventHandler;
 import net.tangly.fsm.Transition;
 
 /**
- * The finite state machine dynamic checker verifies the correctness of a state machine description. The following rules are applied. <uL> <li>Only
- * one transition is eligible upon processing of an event otherwise the state machine behavior is undefined because the machine is not deterministic
- * as expected in hierarchical Harel state machines.</li> <li>No exception should be thrown during the processing of a condition or an action.</li>
+ * The finite state machine dynamic checker verifies the correctness of a state machine description. The following rules are applied. <uL> <li>Only one
+ * transition is eligible upon processing of an event otherwise the state machine behavior is undefined because the machine is not deterministic as expected in
+ * hierarchical Harel state machines.</li> <li>No exception should be thrown during the processing of a condition or an action.</li>
  * </uL> <p> For each violation an illegal state exception will be thrown.
  *
  * @param <O> the class of the instance owning the finite state machine instance

@@ -21,11 +21,12 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.data.renderer.NumberRenderer;
+import net.tangly.bus.ledger.BusinessLogicLedger;
 import net.tangly.bus.ledger.Transaction;
 import net.tangly.bus.providers.ProviderInMemory;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
-import net.tangly.ledger.ports.LedgerBusinessLogic;
+import net.tangly.ledger.ports.LedgerPort;
 import org.jetbrains.annotations.NotNull;
 
 public class TransactionsView extends EntitiesView<Transaction> {
@@ -38,11 +39,10 @@ public class TransactionsView extends EntitiesView<Transaction> {
      * @param ledgerLogic ledger business lodgic which accounts should be displayed
      * @param mode        mode of the view
      */
-    public TransactionsView(@NotNull LedgerBusinessLogic ledgerLogic, @NotNull Mode mode) {
+    public TransactionsView(@NotNull BusinessLogicLedger ledgerLogic, @NotNull Mode mode) {
         super(Transaction.class, mode, ProviderInMemory.of(ledgerLogic.ledger().transactions()));
         from = LocalDate.of(LocalDate.now().getYear(), 1, 1);
         to = LocalDate.of(LocalDate.now().getYear(), 12, 31);
-        initialize(this, null);
     }
 
     static class InTime<T> implements Predicate<T> {

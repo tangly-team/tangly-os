@@ -1,13 +1,13 @@
 /*
  * Copyright 2006-2020 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain 
+ *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  *  a copy of the License at
- *  
+ *
  *          http://www.apache.org/licenses/LICENSE-2.0
- *  
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT 
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations 
+ *
+ *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
  *  under the License.
  */
 
@@ -21,8 +21,8 @@ import static net.tangly.commons.lang.Preconditions.checkArgument;
 
 /**
  * <p> The bit utility class provides utility functions to manipulate bit streams as used on older communication
- * protocols. The functions manipulate byte (8 bits), short (16 bits) and long (32 bits) bit streams and append them into the bit stream at location.
- * Mirror functions support the extraction of bits from a bit stream.</p>
+ * protocols. The functions manipulate byte (8 bits), short (16 bits) and long (32 bits) bit streams and append them into the bit stream at location. Mirror
+ * functions support the extraction of bits from a bit stream.</p>
  * <p>Any legacy bit oriented communication protocols can efficiently be handled with the provided functions.</p>
  */
 public final class BitUtilities {
@@ -55,8 +55,8 @@ public final class BitUtilities {
     }
 
     /**
-     * Writes length number of bits from data into the byte stream at the bit position. The assumption is that bits are appended and the stream is
-     * initialized to 0.
+     * Writes length number of bits from data into the byte stream at the bit position. The assumption is that bits are appended and the stream is initialized
+     * to 0.
      *
      * @param stream   stream of bits encoded as array of bytes. The stream cannot be null
      * @param data     byte of data to be inserted into the bit stream
@@ -124,8 +124,8 @@ public final class BitUtilities {
     }
 
     /**
-     * Writes length number of bits from data into the byte stream at the bit position. The assumption is that bits are appended and the stream is
-     * initialized to 0.
+     * Writes length number of bits from data into the byte stream at the bit position. The assumption is that bits are appended and the stream is initialized
+     * to 0.
      *
      * @param stream   stream of bits encoded as array of bytes. The stream cannot be null
      * @param data     word of data to be inserted into the bit stream
@@ -166,8 +166,8 @@ public final class BitUtilities {
     }
 
     /**
-     * Writes length number of bits from data into the byte stream at the bit position. The assumption is that bits are appended and the stream is
-     * initialized to 0.
+     * Writes length number of bits from data into the byte stream at the bit position. The assumption is that bits are appended and the stream is initialized
+     * to 0.
      *
      * @param stream   stream of bits encoded as array of bytes. The stream cannot be null
      * @param data     long word of data to be inserted into the bit stream

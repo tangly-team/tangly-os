@@ -20,6 +20,8 @@ public interface RealmProducts {
     TagTypeRegistry tagTypeRegistry();
 
     Provider<Assignment> assignements();
+
     Provider<Effort> efforts();
+
     Provider<Product> products();
 }

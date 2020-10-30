@@ -16,10 +16,8 @@ package net.tangly.fsm;
 import java.util.function.BiConsumer;
 
 /**
- * The handler observing all the changes in a hierarchical final state machine. Enough information
- * is provided to implement sophisticated mechanisms such as tracing, profiling or validating FSM
- * during execution. All methods are defined as default ones to ease the creation of custom
- * handlers.
+ * The handler observing all the changes in a hierarchical final state machine. Enough information is provided to implement sophisticated mechanisms such as
+ * tracing, profiling or validating FSM during execution. All methods are defined as default ones to ease the creation of custom handlers.
  *
  * @param <O> the class of the instance owning the finite state machine instance
  * @param <S> the state enumeration type uniquely identifying a state in the state machine

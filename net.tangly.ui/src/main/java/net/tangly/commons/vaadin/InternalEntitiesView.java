@@ -15,21 +15,17 @@ package net.tangly.commons.vaadin;
 
 import java.lang.invoke.MethodHandles;
 import java.time.format.DateTimeFormatter;
-import java.util.function.Supplier;
 
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.data.binder.Binder;
-import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.provider.ListDataProvider;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import net.tangly.bus.core.Entity;
 import net.tangly.bus.core.QualifiedEntity;
 import net.tangly.bus.core.TagTypeRegistry;
-import net.tangly.bus.crm.Activity;
-import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.bus.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -65,10 +61,10 @@ public abstract class InternalEntitiesView<T extends Entity> extends EntitiesVie
     }
 
     protected HorizontalLayout filterCriteria(Grid<T> grid) {
-        GridFilters<T> filters = new GridFilters<>((ListDataProvider<T>) grid.getDataProvider());
-        filters.addFilter(new GridFilters.GridFilterText<>(filters, T::name, "Name", "name"));
-        filters.addFilter(new GridFilters.GridFilterInterval<>(filters));
-        filters.addFilter(new GridFilters.GridFilterTags<>(filters));
+        GridFiltersAndActions<T> filters = new GridFiltersAndActions<>((ListDataProvider<T>) grid.getDataProvider());
+        filters.addFilter(new GridFiltersAndActions.GridFilterText<>(filters, T::name, "Name", "name"));
+        filters.addFilter(new GridFiltersAndActions.GridFilterInterval<>(filters));
+        filters.addFilter(new GridFiltersAndActions.GridFilterTags<>(filters));
         return filters;
     }
 

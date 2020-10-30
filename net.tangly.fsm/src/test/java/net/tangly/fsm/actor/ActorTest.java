@@ -99,8 +99,7 @@ class Client extends LocalActor<Client, ClientStates, Events> implements Actor<E
 }
 
 /**
- * The class shows how to implement a finite state machine context using the quasar library to
- * exchange events between active state machine instances.
+ * The class shows how to implement a finite state machine context using the quasar library to exchange events between active state machine instances.
  */
 class ActorTest {
     /**

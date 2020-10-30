@@ -23,8 +23,7 @@ package net.tangly.fsm.dsl;
 public interface ToTransitionBuilder<O, S extends Enum<?>, E extends Enum<E>> {
 
     /**
-     * Creates a transition from the selected state to the one with the given identifier. A transition
-     * builder is returned.
+     * Creates a transition from the selected state to the one with the given identifier. A transition builder is returned.
      *
      * @param stateId identifier of the state where the transition arrives
      * @return transition builder to configure the transition
@@ -34,8 +33,7 @@ public interface ToTransitionBuilder<O, S extends Enum<?>, E extends Enum<E>> {
     }
 
     /**
-     * Creates a transition from the selected state to the one with the given identifier. A transition
-     * builder is returned.
+     * Creates a transition from the selected state to the one with the given identifier. A transition builder is returned.
      *
      * @param stateId     identifier of the state where the transition arrives
      * @param description description of the transition

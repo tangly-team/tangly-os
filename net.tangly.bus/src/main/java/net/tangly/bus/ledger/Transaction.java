@@ -19,9 +19,9 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * A simple transaction is a money transfer between a debit and a credit accounts. A split transaction is a money transfer between a debit account and
- * a set of credit accounts or a credit account and a set of debit accounts. The total debit and the total credit of a transaction must be the same
- * format. The majority of transactions have one debit and one credit account. The class is immutable.
+ * A simple transaction is a money transfer between a debit and a credit accounts. A split transaction is a money transfer between a debit account and a set of
+ * credit accounts or a credit account and a set of debit accounts. The total debit and the total credit of a transaction must be the same format. The majority
+ * of transactions have one debit and one credit account. The class is immutable.
  */
 public class Transaction {
     private final AccountEntry debit;
@@ -40,8 +40,7 @@ public class Transaction {
         this.splits = Collections.emptyList();
     }
 
-    public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, List<AccountEntry> splits, String text,
-                       String reference) {
+    public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, List<AccountEntry> splits, String text, String reference) {
         this.date = date;
         this.text = text;
         this.reference = reference;
@@ -51,13 +50,11 @@ public class Transaction {
     }
 
     public static Transaction of(String date, int debitAccount, int creditAccount, String amount, String text) {
-        return new Transaction(LocalDate.parse(date), String.valueOf(debitAccount), String.valueOf(creditAccount), new BigDecimal(amount), text,
-                null);
+        return new Transaction(LocalDate.parse(date), String.valueOf(debitAccount), String.valueOf(creditAccount), new BigDecimal(amount), text, null);
     }
 
     public static Transaction of(String date, int debitAccount, int creditAccount, String amount, String text, String reference) {
-        return new Transaction(LocalDate.parse(date), String.valueOf(debitAccount), String.valueOf(creditAccount), new BigDecimal(amount), text,
-                reference);
+        return new Transaction(LocalDate.parse(date), String.valueOf(debitAccount), String.valueOf(creditAccount), new BigDecimal(amount), text, reference);
     }
 
     public List<AccountEntry> debitSplits() {

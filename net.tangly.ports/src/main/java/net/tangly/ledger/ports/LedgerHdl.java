@@ -18,7 +18,6 @@ import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Stream;
-
 import javax.inject.Inject;
 
 import net.tangly.bus.ledger.Ledger;
@@ -36,10 +35,12 @@ import org.jetbrains.annotations.NotNull;
  */
 public class LedgerHdl {
     private final Ledger ledger;
+    private final Path folder;
 
     @Inject
-    public LedgerHdl(@NotNull Ledger ledger) {
+    public LedgerHdl(@NotNull Ledger ledger, @NotNull Path folder) {
         this.ledger = ledger;
+        this.folder = folder;
     }
 
     public Ledger ledger() {
@@ -48,14 +49,12 @@ public class LedgerHdl {
 
     /**
      * Import the ledger structure and initialize it. All found transaction files are added to the ledger.
-     *
-     * @param directory path to the ledger structure and to transaction files
      */
-    public void importEntities(@NotNull Path directory) {
+    public void importEntities() {
         LedgerTsvHdl handler = new LedgerTsvHdl(ledger);
-        handler.importLedgerStructureFromBanana(directory.resolve("swiss-ledger.tsv"));
+        handler.importLedgerStructureFromBanana(folder.resolve("swiss-ledger.tsv"));
         ledger.build();
-        try (Stream<Path> stream = Files.walk(directory)) {
+        try (Stream<Path> stream = Files.walk(folder)) {
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith("-period.tsv"))
                     .forEach(handler::importTransactionsLedgerFromBanana);
         } catch (IOException e) {

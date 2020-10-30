@@ -53,8 +53,7 @@ public class CodeType<T extends Code> {
     }
 
     /**
-     * Builder for a reference code implemented as a Java class. Provides a pragmatic approach to map a class and a set of instances into a reference
-     * code.
+     * Builder for a reference code implemented as a Java class. Provides a pragmatic approach to map a class and a set of instances into a reference code.
      *
      * @param clazz class of the reference code table
      * @param codes the set of code instances associated with the code class

@@ -204,7 +204,6 @@ class TransitionImp<O, S extends Enum<S>, E extends Enum<E>> implements Transiti
 
     @Override
     public String toString() {
-        return String.format("Transition(%s -> %s : %s [%s] %s : %s)", source.id(), target.id(), eventId, guardDescription, actionDescription,
-                description);
+        return String.format("Transition(%s -> %s : %s [%s] %s : %s)", source.id(), target.id(), eventId, guardDescription, actionDescription, description);
     }
 }

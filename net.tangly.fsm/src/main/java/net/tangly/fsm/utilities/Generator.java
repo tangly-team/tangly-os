@@ -60,8 +60,8 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
     }
 
     /**
-     * Generates the content of the file identified through the path if the file does not exist or the new creation of the output is different to the
-     * one in the file. This feature is for example helpful if the file is under version control to avoid spurious changes.
+     * Generates the content of the file identified through the path if the file does not exist or the new creation of the output is different to the one in the
+     * file. This feature is for example helpful if the file is under version control to avoid spurious changes.
      *
      * @param path path to the file to updated.
      * @return flag indicating if the file was updated or not

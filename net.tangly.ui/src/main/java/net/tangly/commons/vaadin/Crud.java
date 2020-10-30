@@ -134,6 +134,7 @@ public class Crud<T> extends VerticalLayout {
 
     /**
      * Select programmatically the item in the grid and update the grid and the state of the buttons associated with the view.
+     * Is also called when an element is selected in the grid.
      *
      * @param item new selected item in the grid
      * @see #selectedItem()

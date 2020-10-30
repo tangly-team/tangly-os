@@ -26,6 +26,7 @@ import net.tangly.fsm.utilities.Generator;
 import net.tangly.fsm.utilities.GeneratorAsciiDoc;
 import net.tangly.fsm.utilities.GeneratorGraphDot;
 import net.tangly.fsm.utilities.GeneratorPlantUml;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -72,6 +73,7 @@ class GeneratorsTest {
      * @throws FileNotFoundException if file could not be created and updated
      */
     @Test
+    @Tag("localTest")
     void generateAsciiDocTest() throws IOException {
         generateTest(new GeneratorAsciiDoc<>(FsmBbv.build(), "fsm-bbv"));
         generateTest(new GeneratorAsciiDoc<>(FsmTest.build(), "fsm-test"));

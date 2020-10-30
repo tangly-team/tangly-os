@@ -12,7 +12,8 @@
  */
 
 /**
- * The package provides core abstractions used in any commercial application in need of customer relation management entities. The cornerstone of
- * the package are the set of CRM entities, natural and legal entities and the employee relation between a legal and natural entity.
+ * The package provides core abstractions used in any commercial application in need of customer relation management entities. The cornerstone of the package
+ * are the set of CRM entities, natural and legal entities and the employee relation between a legal and natural entity.
+ * <p>The customer relationship management package is designed as a bounded domain.</p>
  */
 package net.tangly.bus.crm;

@@ -31,7 +31,6 @@ import net.tangly.bus.invoices.ArticleCode;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.RealmInvoices;
 import net.tangly.commons.logger.EventData;
-import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
 import net.tangly.ports.TsvHdl;
@@ -55,10 +54,12 @@ public class InvoicesHdl {
     public static final String INVOICE_NAME_PATTERN = "\\d{4}-\\d{4}-.*";
     private static final Pattern invoicePattern = Pattern.compile(INVOICE_NAME_PATTERN);
     private final RealmInvoices realm;
+    private final Path invoicesFolder;
 
     @Inject
-    public InvoicesHdl(RealmInvoices realm) {
+    public InvoicesHdl(@NotNull RealmInvoices realm, @NotNull Path invoicesFolder) {
         this.realm = realm;
+        this.invoicesFolder = invoicesFolder;
     }
 
     public RealmInvoices realm() {
@@ -69,13 +70,12 @@ public class InvoicesHdl {
      * Import all invoices to the file system. All invoices are imported from directory/INVOICES. If the name of the invoice starts with a four digits pattern,
      * it is assumed that it represents the year when the invoice was issued.
      *
-     * @param directory directory in which the invoices will be written
-     * @see #exportEntities(Path) (Path)
+     * @see #exportEntities()
      */
-    public void importEntities(@NotNull Path directory) {
+    public void importEntities() {
         InvoiceJson invoiceJson = new InvoiceJson(realm);
-        importArticles(directory.resolve(ARTICLES_TSV));
-        try (Stream<Path> stream = Files.walk(directory)) {
+        importArticles(invoicesFolder.resolve(ARTICLES_TSV));
+        try (Stream<Path> stream = Files.walk(invoicesFolder)) {
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(JSON_EXT)).forEach(o -> {
                 Invoice invoice = invoiceJson.imports(o, Collections.emptyMap());
                 if (invoice.isValid()) {
@@ -94,23 +94,18 @@ public class InvoicesHdl {
      * Export all invoices to the file system. All invoices are created under directory/INVOICES. If the name of the invoice starts with a four digits pattern,
      * it is assumed that it represents the year when the invoice was issued. A folder with the year will be created and the invoice will be written within.
      *
-     * @param directory directory in which the invoices will be written
-     * @see #importEntities(Path) (Path)
+     * @see #importEntities()
      */
-    public void exportEntities(@NotNull Path directory) {
-        exportArticles(directory.resolve(ARTICLES_TSV));
+    public void exportEntities() {
+        exportArticles(invoicesFolder.resolve(ARTICLES_TSV));
         InvoiceJson invoiceJson = new InvoiceJson(realm);
         realm.invoices().items().forEach(o -> {
-            Path invoiceFolder = resolvePath(directory, o);
+            Path invoiceFolder = resolvePath(invoicesFolder, o);
             Path invoicePath = invoiceFolder.resolve(o.name() + JSON_EXT);
             invoiceJson.exports(o, invoicePath, Collections.emptyMap());
             EventData.log(EventData.EXPORT, "net.tangly.crm.ports", EventData.Status.SUCCESS, "Invoice exported to JSON {}",
                     Map.of("invoice", o, "invoicePath", invoicePath));
         });
-    }
-
-    public void exportInvoiceDocuments(Path directory, boolean withQrCode, boolean withEN16931) {
-        realm.invoices().items().forEach(o -> exportInvoiceDocument(o, directory, withQrCode, withEN16931));
     }
 
     public void exportArticles(@NotNull Path path) {
@@ -133,29 +128,6 @@ public class InvoicesHdl {
         return TsvEntity.of(Article.class, fields, imports);
     }
 
-    /**
-     * Export an invoice to a file.
-     *
-     * @param invoice       invoice to be exported
-     * @param invoiceFolder path of the file where the invoice will exported
-     * @param withQrCode    flag if the Swiss QR cde should be added to the invoice document
-     * @param withEN16931   flag if the EN16931 digital invoice should be added to the invoice document
-     */
-    public void exportInvoiceDocument(@NotNull Invoice invoice, @NotNull Path invoiceFolder, boolean withQrCode, boolean withEN16931) {
-        InvoiceAsciiDoc asciiDocGenerator = new InvoiceAsciiDoc(invoice.locale());
-        asciiDocGenerator.exports(invoice, invoiceFolder, Collections.emptyMap());
-        Path invoicePath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.PDF_EXT);
-        if (withQrCode) {
-            InvoiceQrCode qrGenerator = new InvoiceQrCode();
-            qrGenerator.exports(invoice, invoicePath, Collections.emptyMap());
-        }
-        if (withEN16931) {
-            InvoiceZugFerd en164391Generator = new InvoiceZugFerd();
-            en164391Generator.exports(invoice, invoicePath, Collections.emptyMap());
-        }
-        EventData.log(EventData.EXPORT, "net.tangly.crm.ports", EventData.Status.SUCCESS, "Invoice exported to PDF {}",
-                Map.of("invoice", invoice, "invoicePath", invoicePath, "withQrCode", withQrCode, "withEN16931", withEN16931));
-    }
 
     /**
      * Resolve the path to where an invoice should be located in the file system. The convention is <i>base directory/invoices/year</i>. If folders do not exist

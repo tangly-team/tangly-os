@@ -16,8 +16,6 @@ package net.tangly.commons.crm.ui;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.data.binder.ValidationException;
-import net.tangly.bus.crm.Activity;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.LegalEntity;

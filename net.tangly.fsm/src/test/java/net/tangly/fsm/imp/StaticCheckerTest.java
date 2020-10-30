@@ -45,7 +45,7 @@ class StaticCheckerTest {
         builder.in(States.A).add(States.AA).isInitial(true);
         builder.in(States.A).add(States.AB);
         builder.root().add(States.B);
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(()-> builder.in(States.B).add(States.AB));
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> builder.in(States.B).add(States.AB));
     }
 
     @Test

@@ -39,10 +39,12 @@ public final class CrmHdl {
 
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private final RealmCrm realm;
+    private final Path folder;
 
     @Inject
-    public CrmHdl(@NotNull RealmCrm realm) {
+    public CrmHdl(@NotNull RealmCrm realm, @NotNull Path folder) {
         this.realm = realm;
+        this.folder = folder;
     }
 
     public RealmCrm realm() {
@@ -52,39 +54,37 @@ public final class CrmHdl {
     /**
      * Import all CRM domain entities defined in a set of TSV files.
      *
-     * @param directory directory where the TSV files are stored
-     * @see #exportEntities(Path)
+     * @see #exportEntities()
      */
-    public void importEntities(@NotNull Path directory) {
+    public void importEntities() {
         CrmTsvHdl handler = new CrmTsvHdl(realm());
-        handler.importLegalEntities(directory.resolve(LEGAL_ENTITIES_TSV));
-        handler.importNaturalEntities(directory.resolve(NATURAL_ENTITIES_TSV));
-        handler.importEmployees(directory.resolve(EMPLOYEES_TSV));
-        handler.importContracts(directory.resolve(CONTRACTS_TSV));
-        handler.importInteractions(directory.resolve(INTERACTIONS_TSV));
-        handler.importActivities(directory.resolve(ACTIVITIES_TSV));
-        handler.importSubjects(directory.resolve(SUBJECTS_TSV));
-        handler.importComments(directory.resolve(COMMENTS_TSV));
+        handler.importLegalEntities(folder.resolve(LEGAL_ENTITIES_TSV));
+        handler.importNaturalEntities(folder.resolve(NATURAL_ENTITIES_TSV));
+        handler.importEmployees(folder.resolve(EMPLOYEES_TSV));
+        handler.importContracts(folder.resolve(CONTRACTS_TSV));
+        handler.importInteractions(folder.resolve(INTERACTIONS_TSV));
+        handler.importActivities(folder.resolve(ACTIVITIES_TSV));
+        handler.importSubjects(folder.resolve(SUBJECTS_TSV));
+        handler.importComments(folder.resolve(COMMENTS_TSV));
 
         CrmVcardHdl crmVcardHdl = new CrmVcardHdl(realm());
-        crmVcardHdl.importVCards(directory.resolve(VCARDS_FOLDER));
+        crmVcardHdl.importVCards(folder.resolve(VCARDS_FOLDER));
     }
 
     /**
      * Export all CRM domain entities into a set of TSV files.
      *
-     * @param directory directory where the TSV files are stored
-     * @see #importEntities(Path)
+     * @see #importEntities()
      */
-    public void exportEntities(@NotNull Path directory) {
+    public void exportEntities() {
         CrmTsvHdl handler = new CrmTsvHdl(realm);
-        handler.exportLegalEntities(directory.resolve(LEGAL_ENTITIES_TSV));
-        handler.exportNaturalEntities(directory.resolve(NATURAL_ENTITIES_TSV));
-        handler.exportEmployees(directory.resolve(EMPLOYEES_TSV));
-        handler.exportContracts(directory.resolve(CONTRACTS_TSV));
-        handler.exportInteractions(directory.resolve(INTERACTIONS_TSV));
-        handler.exportActivities(directory.resolve(ACTIVITIES_TSV));
-        handler.exportSubjects(directory.resolve(SUBJECTS_TSV));
-        handler.exportComments(directory.resolve(COMMENTS_TSV));
+        handler.exportLegalEntities(folder.resolve(LEGAL_ENTITIES_TSV));
+        handler.exportNaturalEntities(folder.resolve(NATURAL_ENTITIES_TSV));
+        handler.exportEmployees(folder.resolve(EMPLOYEES_TSV));
+        handler.exportContracts(folder.resolve(CONTRACTS_TSV));
+        handler.exportInteractions(folder.resolve(INTERACTIONS_TSV));
+        handler.exportActivities(folder.resolve(ACTIVITIES_TSV));
+        handler.exportSubjects(folder.resolve(SUBJECTS_TSV));
+        handler.exportComments(folder.resolve(COMMENTS_TSV));
     }
 }

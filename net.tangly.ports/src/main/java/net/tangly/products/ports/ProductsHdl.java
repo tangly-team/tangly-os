@@ -36,21 +36,23 @@ public class ProductsHdl {
     public static final String EFFORTS_TSV = "efforts.tsv";
 
     private final RealmProducts realm;
+    private final Path folder;
 
-    public ProductsHdl(@NotNull RealmProducts realm) {
+    public ProductsHdl(@NotNull RealmProducts realm, @NotNull Path folder) {
         this.realm = realm;
+        this.folder = folder;
     }
 
-    public void importEntities(@NotNull Path directory) {
-        TsvHdl.importEntities(directory.resolve(PRODUCTS_TSV), createTsvProduct(), realm.products());
-        TsvHdl.importEntities(directory.resolve(ASSIGNMENTS_TSV), createTsvAssignment(), realm.assignements());
-        TsvHdl.importEntities(directory.resolve(EFFORTS_TSV), createTsvEffort(), realm.efforts());
+    public void importEntities() {
+        TsvHdl.importEntities(folder.resolve(PRODUCTS_TSV), createTsvProduct(), realm.products());
+        TsvHdl.importEntities(folder.resolve(ASSIGNMENTS_TSV), createTsvAssignment(), realm.assignements());
+        TsvHdl.importEntities(folder.resolve(EFFORTS_TSV), createTsvEffort(), realm.efforts());
     }
 
-    public void exportEntities(@NotNull Path directory) {
-        TsvHdl.exportEntities(directory.resolve(PRODUCTS_TSV), createTsvProduct(), realm.products());
-        TsvHdl.exportEntities(directory.resolve(ASSIGNMENTS_TSV), createTsvAssignment(), realm.assignements());
-        TsvHdl.exportEntities(directory.resolve(EFFORTS_TSV), createTsvEffort(), realm.efforts());
+    public void exportEntities() {
+        TsvHdl.exportEntities(folder.resolve(PRODUCTS_TSV), createTsvProduct(), realm.products());
+        TsvHdl.exportEntities(folder.resolve(ASSIGNMENTS_TSV), createTsvAssignment(), realm.assignements());
+        TsvHdl.exportEntities(folder.resolve(EFFORTS_TSV), createTsvEffort(), realm.efforts());
     }
 
     TsvEntity<Product> createTsvProduct() {

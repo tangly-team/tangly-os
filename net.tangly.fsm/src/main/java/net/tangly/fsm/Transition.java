@@ -91,8 +91,8 @@ public interface Transition<O, S extends Enum<S>, E extends Enum<E>> {
     boolean evaluate(O context, Event<E> event);
 
     /**
-     * Executes the action associated with the transition if defined. The action is only executed if
-     * the event and guard evaluates to true {@link #evaluate(Object, Event)}.
+     * Executes the action associated with the transition if defined. The action is only executed if the event and guard evaluates to true {@link
+     * #evaluate(Object, Event)}.
      *
      * @param context instance owning the finite state machine
      * @param event   the event triggering the execution of the action

@@ -46,10 +46,11 @@ import net.tangly.bus.crm.InteractionCode;
 import net.tangly.bus.crm.RealmCrm;
 import net.tangly.bus.invoices.BusinessLogicInvoices;
 import net.tangly.bus.invoices.RealmInvoices;
+import net.tangly.bus.ledger.BusinessLogicLedger;
 import net.tangly.bus.ledger.Ledger;
 import net.tangly.commons.vaadin.TabsComponent;
 import net.tangly.commons.vaadin.VaadinUtils;
-import net.tangly.ledger.ports.LedgerBusinessLogic;
+import net.tangly.ledger.ports.LedgerPort;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,6 +59,7 @@ public class AnalyticsCrmView extends VerticalLayout {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private final BusinessLogicCrm logicCrm;
     private final BusinessLogicInvoices logicInvoices;
+    private final BusinessLogicLedger logicLedger;
     private final Ledger ledger;
     private final TabsComponent tabs;
     private SOChart contractsSoChart;
@@ -72,6 +74,7 @@ public class AnalyticsCrmView extends VerticalLayout {
     public AnalyticsCrmView(@NotNull RealmCrm realmCrm, @NotNull RealmInvoices realmInvoices, @NotNull Ledger ledger) {
         logicCrm = new BusinessLogicCrm(realmCrm);
         logicInvoices = new BusinessLogicInvoices(realmInvoices);
+        logicLedger = new BusinessLogicLedger(ledger);
         this.ledger = ledger;
         from = LocalDate.of(2015, 11, 1);
         to = LocalDate.of(LocalDate.now().getYear(), 12, 31);
@@ -159,8 +162,7 @@ public class AnalyticsCrmView extends VerticalLayout {
     }
 
     private void profitAndLossChart(@NotNull SOChart chart) {
-        LedgerBusinessLogic ledgerBusinessLogic = new LedgerBusinessLogic(ledger);
-        DateData xValues = new DateData(ledgerBusinessLogic.quarterLegends(null, null).toArray(new LocalDate[0]));
+        DateData xValues = new DateData(VaadinUtils.quarterLegends(null, null).toArray(new LocalDate[0]));
         xValues.setName("Quarters");
 
         XAxis xAxis = new XAxis(DataType.DATE);
@@ -172,18 +174,17 @@ public class AnalyticsCrmView extends VerticalLayout {
         rc.setPosition(chartPosition);
 
         LineChart turnoversChart = createLineChart("Turnover", xValues,
-                (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? ledgerBusinessLogic.turnover(start, end) : BigDecimal.ZERO, rc);
+                (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? logicLedger.turnover(start, end) : BigDecimal.ZERO, rc);
         LineChart ebitsCharts = createLineChart("EBIT", xValues,
-                (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? ledgerBusinessLogic.ebit(start, end) : BigDecimal.ZERO, rc);
+                (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? logicLedger.ebit(start, end) : BigDecimal.ZERO, rc);
         LineChart earningsChart = createLineChart("Earnings", xValues,
-                (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? ledgerBusinessLogic.earnings(start, end) : BigDecimal.ZERO, rc);
+                (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? logicLedger.earnings(start, end) : BigDecimal.ZERO, rc);
 
         chart.add(turnoversChart, ebitsCharts, earningsChart);
     }
 
     private void financialsChart(@NotNull SOChart chart) {
-        LedgerBusinessLogic logic = new LedgerBusinessLogic(ledger);
-        DateData xValues = new DateData(logic.quarterLegends(null, null).toArray(new LocalDate[0]));
+        DateData xValues = new DateData(VaadinUtils.quarterLegends(null, null).toArray(new LocalDate[0]));
         xValues.setName("Quarters");
 
         XAxis xAxis = new XAxis(DataType.DATE);
@@ -195,15 +196,15 @@ public class AnalyticsCrmView extends VerticalLayout {
         rc.setPosition(chartPosition);
 
         LineChart shortTermThirdPartyCapitalChart = createLineChart("Short-Term Third Party Capital", xValues,
-                (LocalDate start, LocalDate end) -> (end != null) ? logic.balance(LedgerBusinessLogic.SHORT_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() :
-                        BigDecimal.ZERO, rc);
-        LineChart longTermThirdPartyCapitalChart = createLineChart("LOng-Term Third Party Capital", xValues,
-                (LocalDate start, LocalDate end) -> (end != null) ? logic.balance(LedgerBusinessLogic.LONG_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() :
-                        BigDecimal.ZERO, rc);
+                (LocalDate start, LocalDate end) -> (end != null) ?
+                        logicLedger.balance(LedgerPort.SHORT_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() : BigDecimal.ZERO, rc);
+        LineChart longTermThirdPartyCapitalChart = createLineChart("LOng-Term Third Party Capital", xValues, (LocalDate start, LocalDate end) -> (end != null) ?
+                logicLedger.balance(LedgerPort.LONG_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() : BigDecimal.ZERO, rc);
         LineChart cashOnHandChart = createLineChart("Cash On Hand", xValues,
-                (LocalDate start, LocalDate end) -> (end != null) ? logic.balance(LedgerBusinessLogic.CASH_ON_HAND_ACCOUNT, end) : BigDecimal.ZERO, rc);
+                (LocalDate start, LocalDate end) -> (end != null) ? logicLedger.balance(LedgerPort.CASH_ON_HAND_ACCOUNT, end) : BigDecimal.ZERO, rc);
         LineChart equityChart = createLineChart("Equity", xValues,
-                (LocalDate start, LocalDate end) -> (end != null) ? logic.balance(LedgerBusinessLogic.EQUITY_ACCOUNT, end).negate() : BigDecimal.ZERO, rc);
+                (LocalDate start, LocalDate end) -> (end != null) ? logicLedger.balance(LedgerPort.EQUITY_ACCOUNT, end).negate() : BigDecimal.ZERO,
+                rc);
 
         chart.add(shortTermThirdPartyCapitalChart, cashOnHandChart, longTermThirdPartyCapitalChart, equityChart);
     }

@@ -26,8 +26,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The state machine logger documents all activities performed during the firing of events for a specific finite state machine instance. All logs have
- * the following structure: machine_name[machine_oid] operation operation parameters
+ * The state machine logger documents all activities performed during the firing of events for a specific finite state machine instance. All logs have the
+ * following structure: machine_name[machine_oid] operation operation parameters
  */
 public class StateMachineLogger<O, S extends Enum<S>, E extends Enum<E>> implements StateMachineEventHandler<O, S, E> {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());

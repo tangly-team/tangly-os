@@ -22,6 +22,7 @@ import java.time.LocalDate;
 
 import net.tangly.bus.products.Assignment;
 import net.tangly.bus.products.BusinessLogicProducts;
+import net.tangly.bus.products.Effort;
 import net.tangly.commons.utilities.AsciiDocHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,9 +44,15 @@ public class WorkReportAsciiDoc {
         }
     }
 
-    public void create(Assignment assignment, String collaboratorName, LocalDate from, LocalDate to, Writer writer) {
+    public void create(Assignment assignment, LocalDate from, LocalDate to, Writer writer) {
         final AsciiDocHelper helper = new AsciiDocHelper(writer);
         helper.header("Work Report", 1);
         helper.tableHeader("work-report", "cols=\"1,5a,1>\", options=\"header\"", "Date", "Description", "Duration");
+        logic.collect(assignment, from, to).forEach(o -> helper.tableRow(o.date().toString(), o.text(), Integer.toString(o.duration())));
+
+        int totalDuration = logic.collect(assignment, from, to).stream().map(Effort::duration).reduce(0, Integer::sum);
+        helper.tableRow("Total Time", "", Integer.toString(totalDuration));
+        helper.tableEnd();
     }
+
 }

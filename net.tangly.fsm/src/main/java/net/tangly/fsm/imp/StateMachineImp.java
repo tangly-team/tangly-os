@@ -221,8 +221,8 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
     }
 
     /**
-     * Walks up the hierarchy to the common ancestor. The exit action of the left state is executed. If the left state has history when the previously
-     * active child must be added to the history.
+     * Walks up the hierarchy to the common ancestor. The exit action of the left state is executed. If the left state has history when the previously active
+     * child must be added to the history.
      *
      * @param event    event triggering the state machine change
      * @param ancestor the common ancestor of the source and target states of the fired transition
@@ -292,8 +292,8 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
     }
 
     /**
-     * Returns the common ancestor of the current active object from the root down to the common ancestor. The current hierarchy is stored in active
-     * states field.
+     * Returns the common ancestor of the current active object from the root down to the common ancestor. The current hierarchy is stored in active states
+     * field.
      *
      * @param state state which ancestor is searched in the list of active states
      * @return the common ancestor

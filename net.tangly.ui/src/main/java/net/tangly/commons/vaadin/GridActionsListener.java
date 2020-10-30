@@ -20,6 +20,7 @@ import net.tangly.bus.providers.Provider;
 
 /**
  * Provides default actions for the grid view.
+ *
  * @param <T> type of items displayed in the grid.
  */
 public class GridActionsListener<T> implements CrudActionsListener<T> {

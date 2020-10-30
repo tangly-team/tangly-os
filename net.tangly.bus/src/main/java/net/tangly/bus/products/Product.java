@@ -10,9 +10,9 @@
  *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
  *  under the License.
  */
-
 package net.tangly.bus.products;
 
+import java.util.Collections;
 import java.util.List;
 
 import net.tangly.bus.core.QualifiedEntityImp;
@@ -22,16 +22,16 @@ import org.jetbrains.annotations.NotNull;
  * An outcome such as a product or a research result which should be produced. An outcome is financed through one or more contracts.
  */
 public class Product extends QualifiedEntityImp {
-    private List<String> contracIds;
+    private List<String> contractIds;
 
     public Product() {
     }
 
     public List<String> contractIds() {
-        return contracIds;
+        return Collections.unmodifiableList(contractIds);
     }
 
     public void contracIds(@NotNull List<String> contractIds) {
-        this.contracIds = List.copyOf(contracIds);
+        this.contractIds = List.copyOf(this.contractIds);
     }
 }

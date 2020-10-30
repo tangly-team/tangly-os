@@ -38,7 +38,7 @@ public class TagsView extends Crud<Tag> implements CrudForm<Tag> {
     private final transient TextField value;
 
     public TagsView(@NotNull Mode mode, @NotNull HasTags entity, @NotNull TagTypeRegistry registry) {
-        super(Tag.class,mode, new ListDataProvider<>(entity.tags()));
+        super(Tag.class, mode, new ListDataProvider<>(entity.tags()));
         this.hasTags = entity;
         this.registry = registry;
         namespace = new ComboBox<>("Namespace");

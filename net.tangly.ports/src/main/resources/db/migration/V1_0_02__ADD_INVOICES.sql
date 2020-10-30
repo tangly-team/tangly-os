@@ -11,4 +11,4 @@
  *  under the License.
  */
 
- CREATE SCHEMA invoices;
+CREATE SCHEMA invoices;

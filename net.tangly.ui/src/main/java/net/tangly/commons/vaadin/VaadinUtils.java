@@ -17,7 +17,9 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
+import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import java.util.function.Function;
 
@@ -32,7 +34,6 @@ import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import net.tangly.bus.core.HasTags;
-import net.tangly.bus.core.QualifiedEntity;
 import net.tangly.bus.core.Tag;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.LegalEntity;
@@ -173,4 +174,14 @@ public final class VaadinUtils {
             return anchor;
         });
     }
+
+    public static List<LocalDate> quarterLegends(LocalDate from, LocalDate to) {
+        return List.of(LocalDate.parse("2015-12-31"), LocalDate.parse("2016-03-31"), LocalDate.parse("2016-06-30"), LocalDate.parse("2016-09-30"),
+                LocalDate.parse("2016-12-31"), LocalDate.parse("2017-03-31"), LocalDate.parse("2017-06-30"), LocalDate.parse("2017-09-30"),
+                LocalDate.parse("2017-12-31"), LocalDate.parse("2018-03-31"), LocalDate.parse("2018-06-30"), LocalDate.parse("2018-09-30"),
+                LocalDate.parse("2018-12-31"), LocalDate.parse("2019-03-31"), LocalDate.parse("2019-06-30"), LocalDate.parse("2019-09-30"),
+                LocalDate.parse("2019-12-31"), LocalDate.parse("2020-03-31"), LocalDate.parse("2020-06-30"), LocalDate.parse("2020-09-30"),
+                LocalDate.parse("2020-12-31"));
+    }
+
 }

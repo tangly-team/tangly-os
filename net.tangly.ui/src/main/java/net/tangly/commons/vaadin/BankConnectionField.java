@@ -22,6 +22,7 @@ import net.tangly.bus.core.BankConnection;
 
 /**
  * A composite field to update an immutable bonk connection entity.
+ *
  * @see BankConnection
  */
 public class BankConnectionField extends CustomField<BankConnection> {

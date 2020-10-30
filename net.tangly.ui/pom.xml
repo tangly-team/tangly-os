@@ -16,7 +16,7 @@
         <product.reporting.outputEncoding>UTF-8</product.reporting.outputEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
 
-        <vaadin.version>17.0.7</vaadin.version>
+        <vaadin.version>17.0.8</vaadin.version>
         <tangly.version>0.2.6</tangly.version>
         <jetty.version>9.4.33.v20201020</jetty.version>
     </properties>
@@ -192,7 +192,7 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.16.1</version>
+            <version>3.18.0</version>
         </dependency>
     </dependencies>
 

@@ -20,10 +20,11 @@ import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.bus.ledger.Account;
+import net.tangly.bus.ledger.BusinessLogicLedger;
 import net.tangly.bus.providers.RecordProviderInMemory;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
-import net.tangly.ledger.ports.LedgerBusinessLogic;
+import net.tangly.ledger.ports.LedgerPort;
 import org.jetbrains.annotations.NotNull;
 
 public class AccountsView extends EntitiesView<Account> {
@@ -37,7 +38,7 @@ public class AccountsView extends EntitiesView<Account> {
      * @param ledgerLogic ledger business lodgic which accounts should be displayed
      * @param mode        mode of the view
      */
-    public AccountsView(@NotNull LedgerBusinessLogic ledgerLogic, @NotNull Mode mode) {
+    public AccountsView(@NotNull BusinessLogicLedger ledgerLogic, @NotNull Mode mode) {
         super(Account.class, mode, RecordProviderInMemory.of(ledgerLogic.ledger().accounts()));
         from = LocalDate.of(LocalDate.now().getYear(), 1, 1);
         to = LocalDate.of(LocalDate.now().getYear(), 12, 31);

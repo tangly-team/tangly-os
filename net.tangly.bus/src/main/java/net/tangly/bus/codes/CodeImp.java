@@ -16,8 +16,8 @@ package net.tangly.bus.codes;
 import java.util.Objects;
 
 /**
- * The class represents an immutable code describing one format of a set of related codes aggregated in the same code table. The protected default
- * constructor is necessary for JSON parsing of subclasses if no annotations are used to select a non-default constructor.
+ * The class represents an immutable code describing one format of a set of related codes aggregated in the same code table. The protected default constructor
+ * is necessary for JSON parsing of subclasses if no annotations are used to select a non-default constructor.
  */
 public abstract class CodeImp implements Code {
     /**

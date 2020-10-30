@@ -104,8 +104,7 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
     Set<Transition<O, S, E>> transitions();
 
     /**
-     * Returns the list of local or self transitions starting from this state. Self transitions do not
-     * trigger entry or exit actions.
+     * Returns the list of local or self transitions starting from this state. Self transitions do not trigger entry or exit actions.
      *
      * @return the list of self transitions or an empty list if none is defined
      */
@@ -144,19 +143,18 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
     /**
      * Returns the state machine's default initial state.
      *
-     * @return the ordered hierarchy of states being an initial state if defined otherwise an empty
-     * list. The head contains the root state, the tail contains the deepest substate
+     * @return the ordered hierarchy of states being an initial state if defined otherwise an empty list. The head contains the root state, the tail contains
+     * the deepest substate
      */
 
     Deque<State<O, S, E>> initialStates();
 
     /**
-     * Returns the list of all substates including this state and the search substate to reach the
-     * given substate. If not found the list is empty.
+     * Returns the list of all substates including this state and the search substate to reach the given substate. If not found the list is empty.
      *
      * @param substate substate to look for
-     * @return the ordered hierarchy of states to reach the substate if found otherwise an empty list.
-     * The head contains the root state, the tail contains the searched substate
+     * @return the ordered hierarchy of states to reach the substate if found otherwise an empty list. The head contains the root state, the tail contains the
+     * searched substate
      */
 
     Deque<State<O, S, E>> getHierarchyFor(State<O, S, E> substate);

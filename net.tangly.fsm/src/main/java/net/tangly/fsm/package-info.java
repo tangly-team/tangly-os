@@ -15,15 +15,15 @@
  * <p>The package defines the interfaces to access and work with hierarchical state machines. The interfaces are designed to provide an immutable
  * representation of finite state machine definition.</p>
  * <h2>Definitions</h2> <p>The actual state of a state machine is given by its active state configuration and by the contents of its event queue.
- * The active state configuration is the tree of active states; in particular, for every concurrent composite state each of its orthogonal regions is
- * active. The event queue holds the events that have not yet been handled by the machine.</p>
+ * The active state configuration is the tree of active states; in particular, for every concurrent composite state each of its orthogonal regions is active.
+ * The event queue holds the events that have not yet been handled by the machine.</p>
  * <p>The event dispatcher selects the first event from the queue; the event is then processed in a run-to-completion (RTC) step. First, a
  * maximally consistent set of enabled transitions is chosen: a transition is enabled if all of its source states are contained in the active state
- * configuration, if its trigger is matched by the current event, and if its guard is true; two enabled transitions are consistent if they do not
- * share a source state. The set must have a maximum size of one.</p>
+ * configuration, if its trigger is matched by the current event, and if its guard is true; two enabled transitions are consistent if they do not share a source
+ * state. The set must have a maximum size of one.</p>
  * <p>The least common ancestor (LCA) of the enabled transition is determined, i.e. the lowest composite state that contains all the transition
- * source and target states. The transition main source state, that is the direct substate of the LCA containing the source states, is deactivated,
- * the transition actions are executed, and its target states are activated.</p>
+ * source and target states. The transition main source state, that is the direct substate of the LCA containing the source states, is deactivated, the
+ * transition actions are executed, and its target states are activated.</p>
  * <h2>Decisions</h2>
  * <ul> <li>We do not support concurrent composite states. By design you should map concurrency to multiple instances and use the concurrency
  * semantic provided through the programming language. </li>

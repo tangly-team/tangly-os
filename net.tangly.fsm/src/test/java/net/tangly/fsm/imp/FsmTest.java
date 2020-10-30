@@ -31,8 +31,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 /**
- * The test class verifies the expected behavior of hierarchical machine declaration, instantiation
- * of finite state machines, and firing of various transitions.
+ * The test class verifies the expected behavior of hierarchical machine declaration, instantiation of finite state machines, and firing of various
+ * transitions.
  */
 @SuppressWarnings("unchecked")
 class FsmTest {
@@ -174,8 +174,7 @@ class FsmTest {
     }
 
     /**
-     * Tests the firing of a transition between two transitions and the execution of the associated
-     * action.
+     * Tests the firing of a transition between two transitions and the execution of the associated action.
      */
     @Test
     void fireTransitionTest() {
@@ -197,8 +196,7 @@ class FsmTest {
     }
 
     /**
-     * Tests the firing of a local transition between two transitions and the execution of the
-     * associated action.
+     * Tests the firing of a local transition between two transitions and the execution of the associated action.
      */
 
     @Test
@@ -315,8 +313,8 @@ class FsmTest {
         fsm.addEventHandler(checker);
         assertThat(fsm.isRegistered(checker)).isTrue();
         fsm.reset();
-        assertThatExceptionOfType(IllegalStateException.class).isThrownBy(()-> fsm.fire(Event.of(Events.AA_AA)));
-        assertThatExceptionOfType(IllegalStateException.class).isThrownBy(()-> fsm.fire(Event.of(Events.A_C)));
+        assertThatExceptionOfType(IllegalStateException.class).isThrownBy(() -> fsm.fire(Event.of(Events.AA_AA)));
+        assertThatExceptionOfType(IllegalStateException.class).isThrownBy(() -> fsm.fire(Event.of(Events.A_C)));
     }
 
     /**

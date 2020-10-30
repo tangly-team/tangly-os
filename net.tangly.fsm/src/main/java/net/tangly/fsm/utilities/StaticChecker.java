@@ -25,10 +25,10 @@ import net.tangly.fsm.State;
 import net.tangly.fsm.Transition;
 
 /**
- * The finite state machine static checker verifies the correctness of a state machine description. The following rules are verified. <ul> <li>Each
- * enumeration value is used exactly once in the state machine description.</li> <li>A state has at most one initial substate.</li> <li>Each composite
- * state with a transition ending on it has an initial state.</li> <li>The state machine has a clear set of initial states so that it can be
- * initialized properly.</li> <li>A final state has no outgoing transition.</li> </ul>
+ * The finite state machine static checker verifies the correctness of a state machine description. The following rules are verified. <ul> <li>Each enumeration
+ * value is used exactly once in the state machine description.</li> <li>A state has at most one initial substate.</li> <li>Each composite state with a
+ * transition ending on it has an initial state.</li> <li>The state machine has a clear set of initial states so that it can be initialized properly.</li> <li>A
+ * final state has no outgoing transition.</li> </ul>
  *
  * @param <O> the class of the instance owning the finite state machine instance
  * @param <S> the state enumeration type uniquely identifying a state in the state machine
@@ -87,8 +87,7 @@ public class StaticChecker<O, S extends Enum<S>, E extends Enum<E>> implements C
      */
     public List<String> checkStateHasAtMostOneInitialState(State<O, S, E> root) {
         return collectAllSubstates(root).stream().filter(State::isComposite).filter(state -> getInitialSubstates(state).size() > 1)
-                .map(state -> createError(bundle, "FSM-STAT-003", state.id(), getInitialSubstates(state).size()))
-                .collect(Collectors.toUnmodifiableList());
+                .map(state -> createError(bundle, "FSM-STAT-003", state.id(), getInitialSubstates(state).size())).collect(Collectors.toUnmodifiableList());
     }
 
     /**
@@ -120,9 +119,9 @@ public class StaticChecker<O, S extends Enum<S>, E extends Enum<E>> implements C
      */
 
     public List<String> checkStateWithAfferentTransitionHasInitialState(State<O, S, E> state) {
-        return collectAllSubstates(state).stream().flatMap(o -> o.transitions().stream()).map(Transition::target).distinct()
-                .filter(State::isComposite).filter(o -> getInitialSubstates(o).size() != 1)
-                .map(o -> createError(bundle, "FSM-STAT-004", o.id(), getInitialSubstates(o).size())).collect(Collectors.toList());
+        return collectAllSubstates(state).stream().flatMap(o -> o.transitions().stream()).map(Transition::target).distinct().filter(State::isComposite)
+                .filter(o -> getInitialSubstates(o).size() != 1).map(o -> createError(bundle, "FSM-STAT-004", o.id(), getInitialSubstates(o).size()))
+                .collect(Collectors.toList());
     }
 
 

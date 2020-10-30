@@ -15,9 +15,6 @@ package net.tangly.commons.crm.products.ui;
 
 import javax.inject.Inject;
 
-import com.vaadin.flow.data.binder.ValidationException;
-import net.tangly.bus.crm.Activity;
-import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.products.Product;
 import net.tangly.bus.products.RealmProducts;
 import net.tangly.commons.vaadin.EntitiesView;

@@ -20,8 +20,8 @@ import net.tangly.fsm.dsl.FsmBuilder;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The generator creates graphical graph representations of a finite state machine in the graphical language of <a
- * href="http://www.graphviz.org/">Graphviz dot</a> language.
+ * The generator creates graphical graph representations of a finite state machine in the graphical language of <a href="http://www.graphviz.org/">Graphviz
+ * dot</a> language.
  *
  * @param <O> the class of the instance owning the finite state machine instance
  * @param <S> enumeration type for the identifiers of states

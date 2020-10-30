@@ -33,7 +33,7 @@ public final class ReflectionUtilities {
     }
 
     public static <T> void set(@NotNull T entity, @NotNull String name, @NotNull Object value) {
-        set(entity, findField(entity.getClass(), name).orElseThrow() , value);
+        set(entity, findField(entity.getClass(), name).orElseThrow(), value);
     }
 
     public static <T> void set(@NotNull T entity, @NotNull Field field, @NotNull Object value) {

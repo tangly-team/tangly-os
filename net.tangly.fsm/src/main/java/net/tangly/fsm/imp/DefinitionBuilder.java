@@ -27,8 +27,8 @@ import net.tangly.fsm.dsl.ToTransitionBuilder;
 import net.tangly.fsm.dsl.TransitionBuilder;
 
 /**
- * The class implements the interfaces to build a complete finite state machine definition using a fluent DSL - Domain Specific Language -. Care was
- * taken to balance expression power, compact syntax, and syntax sugar.
+ * The class implements the interfaces to build a complete finite state machine definition using a fluent DSL - Domain Specific Language -. Care was taken to
+ * balance expression power, compact syntax, and syntax sugar.
  *
  * @param <O> the class of the instance owning the finite state machine instance
  * @param <S> enumeration type for the identifiers of states
@@ -50,7 +50,7 @@ public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>>
     public DefinitionBuilder(S rootId) {
         root = new StateImp<>(rootId);
         root.setInitial(true);
-        states = new EnumMap<>((Class<S>)rootId.getClass());
+        states = new EnumMap<>((Class<S>) rootId.getClass());
     }
 
     // region StateBuilder

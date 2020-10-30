@@ -22,7 +22,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Optional;
 import java.util.stream.Stream;
-
 import javax.inject.Inject;
 
 import net.fortuna.ical4j.data.ParserException;
@@ -42,7 +41,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Handler to import and export VCard representations of natural entities.
  */
-class CrmVcardHdl {
+public class CrmVcardHdl {
     private static final String VCARD_EXT = ".vcf";
 
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());

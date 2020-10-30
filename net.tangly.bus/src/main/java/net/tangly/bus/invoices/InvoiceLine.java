@@ -16,8 +16,8 @@ package net.tangly.bus.invoices;
 import java.math.BigDecimal;
 
 /**
- * The invoice line represents one line or position in an invoice. A line should contain only one kind of sold items so that the quantity and unit
- * price are clearly defined.
+ * The invoice line represents one line or position in an invoice. A line should contain only one kind of sold items so that the quantity and unit price are
+ * clearly defined.
  */
 public interface InvoiceLine {
     /**
@@ -43,6 +43,7 @@ public interface InvoiceLine {
 
     /**
      * Returns the VAT amount associated with the line.
+     *
      * @return the VAT amount of the line
      */
     BigDecimal vat();
@@ -56,18 +57,21 @@ public interface InvoiceLine {
 
     /**
      * Returns the unit price of items associated with an invoice line.
+     *
      * @return the unit price of the items of the line
      */
     BigDecimal unitPrice();
 
     /**
      * Returns true if the line contains items.
+     *
      * @return flag indicating the line contains items
      */
     boolean isItem();
 
     /**
      * Returns true if the line is an aggregate of other lines.
+     *
      * @return flag indicating the line is an aggregate
      */
     default boolean isAggregate() {

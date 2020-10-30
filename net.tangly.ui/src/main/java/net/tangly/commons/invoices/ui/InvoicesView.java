@@ -19,9 +19,11 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.provider.ListDataProvider;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.providers.Provider;
 import net.tangly.commons.vaadin.EntitiesView;
+import net.tangly.commons.vaadin.GridFiltersAndActions;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -52,7 +54,9 @@ public class InvoicesView extends EntitiesView<Invoice> {
         grid.addColumn(o -> VaadinUtils.format(o.amountWithoutVat())).setKey("amountWithoutVat").setHeader("Amount").setAutoWidth(true).setResizable(true)
                 .setSortable(true);
         grid.addColumn(Invoice::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
-        addAndExpand(grid(), createCrudButtons());
+        GridFiltersAndActions<Invoice> gridFunctions = new GridFiltersAndActions<>((ListDataProvider<Invoice>) grid().getDataProvider());
+        gridFunctions.actions().addItem("Print", e -> new CommandCreateInvoiceDocument(selectedItem()));
+        addAndExpand(gridFunctions, grid(), createCrudButtons());
     }
 
     @Override

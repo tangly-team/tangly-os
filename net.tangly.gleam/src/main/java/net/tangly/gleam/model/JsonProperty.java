@@ -67,7 +67,7 @@ public record JsonProperty<T, U>(@NotNull String property, @NotNull Function<T, 
     }
 
     public static <T> JsonProperty<T, Locale> ofLocale(String property, Function<T, Locale> getter, BiConsumer<T, Locale> setter) {
-        return of(property, getter, setter, o -> (JsonField.get(property, o) != null) ? Locale.forLanguageTag (o.getString(property)) : null,
+        return of(property, getter, setter, o -> (JsonField.get(property, o) != null) ? Locale.forLanguageTag(o.getString(property)) : null,
                 (u, o) -> o.put(property, u.toLanguageTag()));
     }
 

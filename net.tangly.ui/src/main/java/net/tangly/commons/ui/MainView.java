@@ -15,15 +15,14 @@ package net.tangly.commons.ui;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.UncheckedIOException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
 
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
+import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -37,6 +36,7 @@ import net.tangly.bus.core.TagTypeRegistry;
 import net.tangly.bus.crm.BusinessLogicCrm;
 import net.tangly.bus.crm.RealmCrm;
 import net.tangly.bus.invoices.RealmInvoices;
+import net.tangly.bus.ledger.BusinessLogicLedger;
 import net.tangly.bus.ledger.Ledger;
 import net.tangly.bus.products.RealmProducts;
 import net.tangly.commons.bus.ui.TagTypesView;
@@ -60,7 +60,7 @@ import net.tangly.crm.ports.CrmEntities;
 import net.tangly.crm.ports.CrmHdl;
 import net.tangly.invoices.ports.InvoicesEntities;
 import net.tangly.invoices.ports.InvoicesHdl;
-import net.tangly.ledger.ports.LedgerBusinessLogic;
+import net.tangly.ledger.ports.LedgerPort;
 import net.tangly.ledger.ports.LedgerHdl;
 import net.tangly.products.ports.ProductsEntities;
 import net.tangly.products.ports.ProductsHdl;
@@ -75,7 +75,7 @@ public class MainView extends AppLayout {
     private RealmCrm realmCrm;
     private RealmInvoices realmInvoices;
     private RealmProducts realmProducts;
-    private LedgerBusinessLogic ledgerLogic;
+    private BusinessLogicLedger ledgerLogic;
 
     private final NaturalEntitiesView naturalEntitiesView;
     private final LegalEntitiesView legalEntitiesView;
@@ -132,7 +132,8 @@ public class MainView extends AppLayout {
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
-        addToNavbar(image, menuBar());
+        setPrimarySection(Section.NAVBAR);
+        addToNavbar(new DrawerToggle(), image, menuBar());
         setContent(naturalEntitiesView);
     }
 
@@ -212,23 +213,25 @@ public class MainView extends AppLayout {
         BusinessLogicCrm businessLogicCrm = new BusinessLogicCrm(realmCrm);
         businessLogicCrm.registerTags(registry);
 
-        CrmHdl crmHdl = new CrmHdl(realmCrm);
-        crmHdl.importEntities(Paths.get("/Users/Shared/tangly/crm"));
-        InvoicesHdl invoicesHdl = new InvoicesHdl(realmInvoices);
-        invoicesHdl.importEntities(Paths.get("/Users/Shared/tangly/invoices/"));
-        ProductsHdl productsHdl = new ProductsHdl(realmProducts);
-        productsHdl.importEntities(Paths.get("/Users/Shared/tangly/products"));
+        CrmHdl crmHdl = new CrmHdl(realmCrm, Paths.get("/Users/Shared/tangly/crm"));
+        crmHdl.importEntities();
 
-        LedgerHdl ledgerHdl = new LedgerHdl(new Ledger());
-        ledgerHdl.importEntities(Paths.get("/Users/Shared/tangly/ledger"));
-        ledgerLogic = new LedgerBusinessLogic(ledgerHdl.ledger());
+        InvoicesHdl invoicesHdl = new InvoicesHdl(realmInvoices, Paths.get("/Users/Shared/tangly/invoices"));
+        invoicesHdl.importEntities();
+
+        ProductsHdl productsHdl = new ProductsHdl(realmProducts, Paths.get("/Users/Shared/tangly/products/"));
+        productsHdl.importEntities();
+
+        LedgerHdl ledgerHdl = new LedgerHdl(new Ledger(), Paths.get("/Users/Shared/tangly/ledger"));
+        ledgerHdl.importEntities();
+        ledgerLogic = new BusinessLogicLedger(ledgerHdl.ledger());
     }
 
     private void exportErpData() {
-        CrmHdl crmHdl = new CrmHdl(realmCrm);
-        crmHdl.exportEntities(Paths.get("/Users/Shared/tangly/crm"));
-        InvoicesHdl invoicesHdl = new InvoicesHdl(realmInvoices);
-        invoicesHdl.exportEntities(Paths.get("Users/Shared/tangly/invoices"));
+        CrmHdl crmHdl = new CrmHdl(realmCrm, Paths.get("/Users/Shared/tangly/crm"));
+        crmHdl.exportEntities();
+        InvoicesHdl invoicesHdl = new InvoicesHdl(realmInvoices, Paths.get("/Users/Shared/tangly/invoices"));
+        invoicesHdl.exportEntities();
     }
 
     private void refreshViews() {

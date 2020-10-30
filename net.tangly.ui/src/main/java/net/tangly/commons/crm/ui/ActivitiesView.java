@@ -27,7 +27,6 @@ import net.tangly.bus.crm.RealmCrm;
 import net.tangly.bus.providers.ProviderInMemory;
 import net.tangly.commons.vaadin.CodeField;
 import net.tangly.commons.vaadin.EntitiesView;
-import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 

@@ -18,10 +18,10 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * The subtotal defines the sum for a set of positions in the invoice. A subtotal groups a set of related positions, such as belonging to the
- * same accounting position or project booking, or to the same amount of VAT percentage for mixed VAT invoices.
+ * The subtotal defines the sum for a set of positions in the invoice. A subtotal groups a set of related positions, such as belonging to the same accounting
+ * position or project booking, or to the same amount of VAT percentage for mixed VAT invoices.
  */
-public record Subtotal(int position, String text, List<InvoiceLine>items) implements InvoiceLine {
+public record Subtotal(int position, String text, List<InvoiceLine> items) implements InvoiceLine {
     @Override
     public BigDecimal amount() {
         return items.stream().map(InvoiceLine::amount).reduce(BigDecimal.ZERO, BigDecimal::add);
@@ -49,6 +49,7 @@ public record Subtotal(int position, String text, List<InvoiceLine>items) implem
 
     /**
      * Returns the list of positions part of the subtotal aggregate.
+     *
      * @return positions associated with the subtotal
      */
     public List<InvoiceLine> positions() {

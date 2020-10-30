@@ -59,7 +59,8 @@ public class Comment implements HasOid, HasTags {
      */
     private Set<Tag> tags;
 
-    public Comment() {}
+    public Comment() {
+    }
 
     /**
      * Default constructor to create an immutable instance.
@@ -106,11 +107,11 @@ public class Comment implements HasOid, HasTags {
     /**
      * Factory method to update a new comment. The current date and time are set a creation date.
      *
-     * @param created creation date of the comment
+     * @param created   creation date of the comment
      * @param ownerFoid oid of the owning entity
-     * @param author  author of the comment
-     * @param text    content of the comment
-     * @param tags    optional tags of the comment
+     * @param author    author of the comment
+     * @param text      content of the comment
+     * @param tags      optional tags of the comment
      * @return the newly created comment
      */
     public static Comment of(@NotNull LocalDateTime created, long ownerFoid, @NotNull String author, @NotNull String text, Tag... tags) {

@@ -32,17 +32,21 @@ public class AsciiDocHelper {
         this.writer = new PrintWriter(writer);
     }
 
+    public PrintWriter writer() {
+        return writer;
+    }
+
     public static String bold(String text) {
         return "*" + text + "*";
     }
 
-    public static String italics(String text)  {
+    public static String italics(String text) {
         return text.length() > 0 ? ("_" + text + "_") : "";
     }
 
     /**
-     * Formats a decimal value into an accounting representation with two digits after the separator, colored in read if negative, and discarded if
-     * the value is zero.
+     * Formats a decimal value into an accounting representation with two digits after the separator, colored in read if negative, and discarded if the value is
+     * zero.
      *
      * @param value decimal value to format
      * @return the formatted string

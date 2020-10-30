@@ -23,8 +23,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Represents an immutable phone number as a canonical string. Validation and formatting of phone numbers is performed through the phone library of Google
- * which supports worldwide numbers.
+ * Represents an immutable phone number as a canonical string. Validation and formatting of phone numbers is performed through the phone library of Google which
+ * supports worldwide numbers.
  */
 public record PhoneNr(String number) implements Serializable {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -51,6 +51,7 @@ public record PhoneNr(String number) implements Serializable {
 
     /**
      * Validate a phone number using the Google phone library.
+     *
      * @return true if the phone number is valid otherwise false
      */
     public boolean isValid() {

@@ -11,4 +11,4 @@
  *  under the License.
  */
 
- CREATE SCHEMA ledger;
+CREATE SCHEMA ledger;

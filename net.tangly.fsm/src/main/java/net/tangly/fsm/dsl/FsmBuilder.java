@@ -18,8 +18,8 @@ import net.tangly.fsm.StateMachine;
 import net.tangly.fsm.imp.DefinitionBuilder;
 
 /**
- * Domain specific language fluent interface to build a state machine declaration starting with a state. This interface provides the entry point to
- * select a state or add a substate to a selected state.
+ * Domain specific language fluent interface to build a state machine declaration starting with a state. This interface provides the entry point to select a
+ * state or add a substate to a selected state.
  *
  * @param <O> the class of the instance owning the finite state machine instance
  * @param <S> enumeration type for the identifiers of states

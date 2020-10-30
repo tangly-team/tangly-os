@@ -54,8 +54,10 @@ class FsmBbv {
         builder.in(States.FM).add(States.AutoTune).onEntry(FsmBbv::logAutoTuneEntry).onExit(FsmBbv::logAutoTuneExit);
         builder.in(States.Off).on(Events.TogglePower).to(States.Maintenance, "Off -> TogglePower").onlyIf(FsmBbv::isMaintenanceMode, "Maintenance is On")
                 .execute(FsmBbv::logTransitionFromOffToMaintenance, "log transition Off to Maintenance");
-        builder.in(States.Maintenance).on(Events.TogglePower).to(States.Off, "Maintenance -> Off").execute(FsmBbv::logTransitionFromMaintenanceToOff, "MaintainedtoOff");
-        builder.in(States.Off).on(Events.TogglePower).to(States.On, "Off -> On").onlyIf((o) -> !o.isMaintenanceMode(), "Maintenance Off").execute(FsmBbv::logTransitionFromOffToOn, "OfftoOn");
+        builder.in(States.Maintenance).on(Events.TogglePower).to(States.Off, "Maintenance -> Off")
+                .execute(FsmBbv::logTransitionFromMaintenanceToOff, "MaintainedtoOff");
+        builder.in(States.Off).on(Events.TogglePower).to(States.On, "Off -> On").onlyIf((o) -> !o.isMaintenanceMode(), "Maintenance Off")
+                .execute(FsmBbv::logTransitionFromOffToOn, "OfftoOn");
         builder.in(States.On).on(Events.TogglePower).to(States.Off, "TogglePower -> On").execute(FsmBbv::logTransitionFromOnToOff, "OntoOff");
         builder.in(States.DAB).on(Events.ToggleMode).to(States.FM, "DAB -> FM").execute(FsmBbv::logTransitionFromDabToFm, "DABtoFM");
         builder.in(States.FM).on(Events.ToggleMode).to(States.DAB, "FM -> DAB").execute(FsmBbv::logTransitionFromFmToDab, "FMtoDAB");

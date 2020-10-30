@@ -21,9 +21,8 @@ import net.tangly.fsm.dsl.FsmBuilder;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Generates a AsciiDoc description of the finite state machine declaration.
- * A state has a name, a context, description, final flag, initial flag, composite flag, entry action, and exit action.
- * A transition has a start state name, end state name, description, local flag, guard, action,
+ * Generates a AsciiDoc description of the finite state machine declaration. A state has a name, a context, description, final flag, initial flag, composite
+ * flag, entry action, and exit action. A transition has a start state name, end state name, description, local flag, guard, action,
  *
  * @param <O> the class of the instance owning the finite state machine instance
  * @param <S> enumeration type for the identifiers of states

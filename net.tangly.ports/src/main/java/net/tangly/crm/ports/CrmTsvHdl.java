@@ -85,7 +85,7 @@ import static net.tangly.ports.TsvHdl.tagProperty;
  * one relations are mapped through the oid of the referenced entity if defined, otherwise an empty string. One 2 many relations are mapped through an comma
  * separated list of the oid of the referenced entities if at least one is defined, otherwise an empty string.
  */
-class CrmTsvHdl {
+public class CrmTsvHdl {
     public static final String FIRSTNAME = "firstname";
     public static final String LASTNAME = "lastname";
     private static final String OWNER_FOID = "ownerFoid";

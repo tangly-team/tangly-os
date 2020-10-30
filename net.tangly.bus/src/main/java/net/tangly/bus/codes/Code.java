@@ -16,9 +16,9 @@ package net.tangly.bus.codes;
 import java.io.Serializable;
 
 /**
- * The abstraction of a reference table or reference codes. A code table is an extensible and temporal enumeration. New values can be added without
- * recompiling the application. A code can have a validity period. To guaranty consistency a code format shall never be deleted, only be disabled.
- * Code instances are immutable.
+ * The abstraction of a reference table or reference codes. A code table is an extensible and temporal enumeration. New values can be added without recompiling
+ * the application. A code can have a validity period. To guaranty consistency a code format shall never be deleted, only be disabled. Code instances are
+ * immutable.
  */
 public interface Code extends Serializable {
     /**

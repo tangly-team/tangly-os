@@ -20,8 +20,6 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import com.vaadin.flow.data.binder.ValidationException;
-import net.tangly.bus.crm.Activity;
 import net.tangly.bus.products.Effort;
 import net.tangly.bus.products.RealmProducts;
 import net.tangly.commons.vaadin.EntitiesView;

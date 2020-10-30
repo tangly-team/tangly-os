@@ -41,7 +41,6 @@ dependencies {
     implementation 'org.apache.pdfbox:pdfbox:2.0.21'
     implementation 'net.codecrete.qrbill:qrbill-generator:2.5.0'
     implementation 'org.mustangproject.ZUGFeRD:mustang:1.7.8'
-    implementation "com.google.jimfs:jimfs:$jimfsVersion"
     implementation 'org.asciidoctor:asciidoctorj:2.4.1'
     implementation 'org.asciidoctor:asciidoctorj-pdf:1.5.3'
 

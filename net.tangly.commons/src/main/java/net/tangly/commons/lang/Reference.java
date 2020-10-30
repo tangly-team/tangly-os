@@ -14,8 +14,8 @@
 package net.tangly.commons.lang;
 
 /**
- * A reference to an object, emulating the concept of typed pointer to typed variable. The indirection can be updated to emulate indirection such as
- * pointer to pointer in other languages.
+ * A reference to an object, emulating the concept of typed pointer to typed variable. The indirection can be updated to emulate indirection such as pointer to
+ * pointer in other languages.
  *
  * @param <T> type of the reference
  */

@@ -20,3 +20,6 @@ include 'net.tangly.gleam'
 include 'net.tangly.orm'
 include 'net.tangly.ports'
 include 'net.tangly.ui'
+include 'net.tangly.erp-integration'
+
+

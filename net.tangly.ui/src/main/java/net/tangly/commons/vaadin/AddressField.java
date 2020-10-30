@@ -22,6 +22,7 @@ import net.tangly.bus.core.Address;
 
 /**
  * A composite field to update an address immutable entity.
+ *
  * @see Address
  */
 public class AddressField extends CustomField<Address> {
