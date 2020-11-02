@@ -144,7 +144,7 @@ Start small and improve your approach every day.
 The agile architecture track contains the following blogs
 
 . link:../../2019/agile-architecture-principles[Agile Architecture Principles]
-. link:../../2019/clean-code[Agile Code is Clean Code!]
+. link:../../2019/agile-code-is-clean-code[Agile Code is Clean Code!]
 . link:../../2019/agile-architecture[Agile Architecture within Scrum]
 . link:../../2020/agile-component-design[Agile Component Design]
 . link:../../2020/legacy-systems-refactoring[Legacy Systems Refactoring]

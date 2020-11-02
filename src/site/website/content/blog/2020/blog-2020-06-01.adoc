@@ -2,7 +2,7 @@
 title: "Legacy Systems Refactoring"
 linkTitle: "Legacy Systems Refactoring"
 date: 2020-06-01
-tags: ["design"]
+tags: ["design", "serie-agile-design"]
 ---
 
 == Legacy Systems Refactoring
@@ -109,7 +109,7 @@ Is it not that you expect from your physician or the pilot of the plane you are 
 The agile architecture track contains the following blogs
 
 . link:../../2019/agile-architecture-principles[Agile Architecture Principles]
-. link:../../2019/clean-code[Agile Code is Clean Code!]
+. link:../../2019/agile-code-is-clean-code[Agile Code is Clean Code!]
 . link:../../2019/agile-architecture[Agile Architecture within Scrum]
 . link:../../2020/agile-component-design[Agile Component Design]
 . link:../../2020/legacy-systems-refactoring[Legacy Systems Refactoring]
