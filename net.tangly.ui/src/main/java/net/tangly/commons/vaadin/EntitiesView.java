@@ -21,7 +21,6 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.data.provider.ListDataProvider;
-import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -97,13 +96,13 @@ public abstract class EntitiesView<T> extends Crud<T> implements CrudForm<T> {
 
     protected GridButtons<T> gridButtons() {
         GridButtons<T> buttons = new GridButtons<>(mode(), this, new GridActionsListener<>(provider, grid().getDataProvider(), this::selectedItem));
-        addSelectedItemListerner(buttons);
+        addSelectedItemListener(buttons);
         return buttons;
     }
 
     protected GridFiltersAndActions<T> gridFiltersAndActions() {
         GridFiltersAndActions<T> gridFunctions = new GridFiltersAndActions<>((ListDataProvider<T>) grid().getDataProvider());
-        addSelectedItemListerner(gridFunctions);
+        addSelectedItemListener(gridFunctions);
         return gridFunctions;
     }
 

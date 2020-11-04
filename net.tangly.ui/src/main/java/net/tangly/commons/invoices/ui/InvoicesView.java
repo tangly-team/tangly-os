@@ -19,7 +19,6 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.data.provider.ListDataProvider;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoicesBusinessLogic;
 import net.tangly.commons.vaadin.EntitiesView;
@@ -54,7 +53,7 @@ public class InvoicesView extends EntitiesView<Invoice> {
         grid.addColumn(Invoice::invoicedDate).setKey("invoicedDate").setHeader("Invoiced Date").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Invoice::dueDate).setKey("dueDate").setHeader("Due Date").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(o -> VaadinUtils.format(o.amountWithoutVat())).setKey("amountWithoutVat").setHeader("Amount").setAutoWidth(true).setResizable(true)
-                .setSortable(true);
+            .setSortable(true);
         grid.addColumn(Invoice::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
         GridFiltersAndActions<Invoice> gridFunctions = gridFiltersAndActions();
         gridFunctions.actions().addItem("Print", e -> new CommandCreateInvoiceDocument(selectedItem(), logicInvoices));

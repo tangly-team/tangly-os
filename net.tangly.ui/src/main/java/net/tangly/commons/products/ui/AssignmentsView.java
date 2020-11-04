@@ -26,12 +26,12 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class AssignementsView extends InternalEntitiesView<Assignment> {
+public class AssignmentsView extends InternalEntitiesView<Assignment> {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private final ProductsBusinessLogic logic;
 
     @Inject
-    public AssignementsView(@NotNull ProductsBusinessLogic logic, @NotNull Mode mode) {
+    public AssignmentsView(@NotNull ProductsBusinessLogic logic, @NotNull Mode mode) {
         super(Assignment.class, mode, logic.realm().assignements(), logic.realm().tagTypeRegistry());
         this.logic = logic;
         initialize();

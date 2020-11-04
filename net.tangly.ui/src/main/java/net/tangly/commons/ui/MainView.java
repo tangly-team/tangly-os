@@ -54,7 +54,7 @@ import net.tangly.commons.invoices.ui.ArticlesView;
 import net.tangly.commons.invoices.ui.InvoicesView;
 import net.tangly.commons.ledger.ui.AccountsView;
 import net.tangly.commons.ledger.ui.TransactionsView;
-import net.tangly.commons.products.ui.AssignementsView;
+import net.tangly.commons.products.ui.AssignmentsView;
 import net.tangly.commons.products.ui.EffortsView;
 import net.tangly.commons.products.ui.ProductsView;
 import net.tangly.commons.vaadin.Crud;
@@ -96,7 +96,7 @@ public class MainView extends AppLayout {
     private final InvoicesView invoicesView;
 
     private final ProductsView productsView;
-    private final AssignementsView assignementsView;
+    private final AssignmentsView assignmentsView;
     private final EffortsView effortsView;
 
     private final AccountsView accountsView;
@@ -128,7 +128,7 @@ public class MainView extends AppLayout {
         tagTypesView = new TagTypesView(crmLogic.realm().tagTypeRegistry());
 
         productsView = new ProductsView(productsLogic, Crud.Mode.EDITABLE);
-        assignementsView = new AssignementsView(productsLogic, Crud.Mode.EDITABLE);
+        assignmentsView = new AssignmentsView(productsLogic, Crud.Mode.EDITABLE);
         effortsView = new EffortsView(productsLogic, Crud.Mode.READONLY);
 
         currentView = naturalEntitiesView;
@@ -190,7 +190,7 @@ public class MainView extends AppLayout {
         MenuItem activities = menuBar.addItem("Works");
         SubMenu activitiesSubMenu = activities.getSubMenu();
         activitiesSubMenu.addItem("Products", e -> select(productsView));
-        activitiesSubMenu.addItem("Assignments", e -> select(assignementsView));
+        activitiesSubMenu.addItem("Assignments", e -> select(assignmentsView));
         activitiesSubMenu.addItem("Efforts", e -> select(effortsView));
 
         MenuItem invoices = menuBar.addItem("Invoices");
@@ -270,7 +270,7 @@ public class MainView extends AppLayout {
         invoicesView.refreshData();
 
         productsView.refreshData();
-        assignementsView.refreshData();
+        assignmentsView.refreshData();
         effortsView.refreshData();
     }
 }

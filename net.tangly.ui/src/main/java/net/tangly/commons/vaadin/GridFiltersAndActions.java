@@ -35,7 +35,7 @@ public class GridFiltersAndActions<T> extends HorizontalLayout implements Select
     private final MenuBar menuBar;
     private final MenuItem actionsItem;
     private final SubMenu actions;
-    private T seletectItem;
+    private T selectedItem;
 
     public GridFiltersAndActions(@NotNull ListDataProvider<T> provider) {
         this.provider = provider;
@@ -48,12 +48,12 @@ public class GridFiltersAndActions<T> extends HorizontalLayout implements Select
     }
 
     public void selectedItem(T entity) {
-        seletectItem = entity;
+        selectedItem = entity;
         actionsItem.setEnabled(entity != null);
     }
 
     public T selectedItem() {
-        return seletectItem;
+        return selectedItem;
     }
 
     public SubMenu actions() {

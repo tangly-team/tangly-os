@@ -31,6 +31,6 @@ public class CodeField<T extends Code> extends Select<T> {
         this.codeType = codeType;
         setItemLabelGenerator(T::code);
         setItems(codeType.codes());
-        setItemEnabledProvider(e -> e.isEnabled());
+        setItemEnabledProvider(Code::isEnabled);
     }
 }

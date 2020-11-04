@@ -20,7 +20,7 @@ public interface SelectedItemListener<T> {
      * @return selected item
      * @see #selectedItem(Object)
      */
-    public T selectedItem();
+    T selectedItem();
 
     /**
      * Select programmatically the item in the component and update it.
@@ -28,5 +28,5 @@ public interface SelectedItemListener<T> {
      * @param item new selected item in the component
      * @see #selectedItem()
      */
-    public void selectedItem(T item);
+    void selectedItem(T item);
 }

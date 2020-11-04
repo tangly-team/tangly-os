@@ -24,10 +24,10 @@ public class GridButtons<T> extends HorizontalLayout implements SelectedItemList
     private final Crud.Mode mode;
     private final CrudForm<T> form;
     private final CrudActionsListener<T> actionsListener;
-    private Button details;
-    private Button add;
-    private Button update;
-    private Button delete;
+    private final Button details;
+    private final Button add;
+    private final Button update;
+    private final Button delete;
     private T selectedItem;
 
 

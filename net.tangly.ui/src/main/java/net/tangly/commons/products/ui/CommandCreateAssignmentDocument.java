@@ -13,8 +13,6 @@
 
 package net.tangly.commons.products.ui;
 
-import java.util.Locale;
-
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.datepicker.DatePicker;

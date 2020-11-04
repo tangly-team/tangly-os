@@ -34,7 +34,7 @@ public class AccountsView extends EntitiesView<Account> {
     /**
      * Constructor of the CRUD view for accounts of the ledger.
      *
-     * @param logic ledger business lodgic which accounts should be displayed
+     * @param logic ledger business logic which accounts should be displayed
      * @param mode  mode of the view
      */
     public AccountsView(@NotNull LedgerBusinessLogic logic, @NotNull Mode mode) {

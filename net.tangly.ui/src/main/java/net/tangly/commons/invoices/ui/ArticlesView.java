@@ -59,7 +59,7 @@ public class ArticlesView extends EntitiesView<Article> {
         grid.addColumn(Article::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Article::code).setKey("code").setHeader("Code").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Article::unit).setKey("unit").setHeader("Unit").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(new NumberRenderer<>(o -> o.unitPrice(), VaadinUtils.FORMAT)).setKey("unitPrice").setHeader("Unit Price").setAutoWidth(true)
+        grid.addColumn(new NumberRenderer<>(Article::unitPrice, VaadinUtils.FORMAT)).setKey("unitPrice").setHeader("Unit Price").setAutoWidth(true)
                 .setResizable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(Article::vatRate).setKey("vatRate").setHeader("VAT Rate").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Article::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);

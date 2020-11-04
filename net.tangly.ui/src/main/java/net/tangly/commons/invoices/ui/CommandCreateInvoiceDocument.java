@@ -26,8 +26,8 @@ import net.tangly.bus.invoices.InvoicesBusinessLogic;
 import net.tangly.commons.vaadin.VaadinUtils;
 
 public class CommandCreateInvoiceDocument extends Dialog {
-    Checkbox withQrCode;
-    Checkbox withEN16931;
+    private final Checkbox withQrCode;
+    private final Checkbox withEN16931;
 
     public CommandCreateInvoiceDocument(Invoice invoice, InvoicesBusinessLogic logic) {
         FormLayout form = new FormLayout();

@@ -60,10 +60,10 @@ public abstract class InternalEntitiesView<T extends Entity> extends EntitiesVie
         filters.addFilter(new GridFiltersAndActions.GridFilterText<>(filters, T::name, "Name", "name"));
         filters.addFilter(new GridFiltersAndActions.GridFilterInterval<>(filters));
         filters.addFilter(new GridFiltersAndActions.GridFilterTags<>(filters));
-        addSelectedItemListerner(filters);
+        addSelectedItemListener(filters);
         return filters;
     }
-    
+
     protected static <T extends QualifiedEntity> void addQualifiedEntityColumns(Grid<T> grid) {
         grid.addColumn(QualifiedEntity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(QualifiedEntity::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);

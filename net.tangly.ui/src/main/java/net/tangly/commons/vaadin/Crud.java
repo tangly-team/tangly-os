@@ -93,7 +93,7 @@ public class Crud<T> extends VerticalLayout implements SelectedItemListener<T> {
         selectedItem = item;
     }
 
-    public void addSelectedItemListerner(SelectedItemListener<T> listener) {
+    public void addSelectedItemListener(SelectedItemListener<T> listener) {
         this.selectedItemListenerListeners.add(listener);
     }
 

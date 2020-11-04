@@ -21,6 +21,6 @@
  * <p>The composite field abstractions cover two scenarios. Composite fields for immutable entities cannot use a binder. We provide a validator method to return
  * validation logic for all internal fields. Regular beans providing at least getters for fields can be connected with a binder. Here we provide a
  * binding method to connect the bean fields with converters and validators declared in the binder.</p>
- * <p>Care was taken to support cascadating read-only and editing modes for all details views.</p>
+ * <p>Care was taken to support cascading read-only and editing modes for all details views.</p>
  */
 package net.tangly.commons.vaadin;
