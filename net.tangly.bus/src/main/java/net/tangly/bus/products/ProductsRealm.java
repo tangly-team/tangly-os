@@ -20,7 +20,7 @@ import net.tangly.bus.providers.Provider;
 public interface ProductsRealm {
     TagTypeRegistry tagTypeRegistry();
 
-    InstanceProvider<Assignment> assignements();
+    InstanceProvider<Assignment> assignments();
 
     Provider<Effort> efforts();
 

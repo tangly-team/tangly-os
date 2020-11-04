@@ -25,8 +25,8 @@ import net.tangly.bus.core.QualifiedEntityImp;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Defines an interaction between your company and a legal entity and a group of natural entities. The egal entity is the organization you want a contract with.
- * The natural entities are the persons in these organizations you are communicated with. The interaction has a set of activities moving your negotiation
+ * Defines an interaction between your company and a legal entity and a group of natural entities. The legal entity is the organization you want a contract
+ * with. The natural entities are the persons in these organizations you are communicated with. The interaction has a set of activities moving your negotiation
  * through stages. The final result is a contract or a lost opportunity.
  * <p>An interaction can have quite a long duration. Activities are the events when you interact with your potential customer.</p>
  */
@@ -100,14 +100,14 @@ public class Interaction extends QualifiedEntityImp {
     @Override
     public boolean isValid() {
         return Objects.nonNull(legalEntity()) && (Objects.requireNonNull(probability).compareTo(BigDecimal.ZERO) > 0) &&
-                (Objects.requireNonNull(probability).compareTo(BigDecimal.ONE) <= 0);
+            (Objects.requireNonNull(probability).compareTo(BigDecimal.ONE) <= 0);
     }
 
     @Override
     public String toString() {
         return """
-                Interaction[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, state=%s, potential=%s, probability=%s, tags=%s]
-                """.formatted(oid(), id(), name(), fromDate(), toDate(), text(), code(), potential(), probability(), tags());
+            Interaction[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, state=%s, potential=%s, probability=%s, tags=%s]
+            """.formatted(oid(), id(), name(), fromDate(), toDate(), text(), code(), potential(), probability(), tags());
     }
 
 }

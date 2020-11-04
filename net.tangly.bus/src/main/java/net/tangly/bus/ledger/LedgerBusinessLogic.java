@@ -68,7 +68,7 @@ public class LedgerBusinessLogic {
      *
      * @param accountId identifier of the account which change shall be computed
      * @param from      start of the time interval
-     * @param to        end of the itme interval
+     * @param to        end of the time interval
      * @return change in the account over the time interval if found otherwise zero
      */
     public BigDecimal accountChangeInTime(@NotNull String accountId, @NotNull LocalDate from, @NotNull LocalDate to) {

@@ -49,13 +49,13 @@ public class ProductsHdl implements ProductsHandler {
 
     public void importEntities() {
         TsvHdl.importEntities(folder.resolve(PRODUCTS_TSV), createTsvProduct(), realm.products());
-        TsvHdl.importEntities(folder.resolve(ASSIGNMENTS_TSV), createTsvAssignment(), realm.assignements());
+        TsvHdl.importEntities(folder.resolve(ASSIGNMENTS_TSV), createTsvAssignment(), realm.assignments());
         TsvHdl.importEntities(folder.resolve(EFFORTS_TSV), createTsvEffort(), realm.efforts());
     }
 
     public void exportEntities() {
         TsvHdl.exportEntities(folder.resolve(PRODUCTS_TSV), createTsvProduct(), realm.products());
-        TsvHdl.exportEntities(folder.resolve(ASSIGNMENTS_TSV), createTsvAssignment(), realm.assignements());
+        TsvHdl.exportEntities(folder.resolve(ASSIGNMENTS_TSV), createTsvAssignment(), realm.assignments());
         TsvHdl.exportEntities(folder.resolve(EFFORTS_TSV), createTsvEffort(), realm.efforts());
     }
 
@@ -89,7 +89,7 @@ public class ProductsHdl implements ProductsHandler {
     }
 
     public Optional<Assignment> findAssignmentByOid(String identifier) {
-        return (identifier != null) ? realm.assignements().find(Long.parseLong(identifier)) : Optional.empty();
+        return (identifier != null) ? realm.assignments().find(Long.parseLong(identifier)) : Optional.empty();
     }
 
 }

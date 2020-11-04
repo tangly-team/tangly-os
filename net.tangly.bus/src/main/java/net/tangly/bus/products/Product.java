@@ -31,7 +31,7 @@ public class Product extends QualifiedEntityImp {
         return Collections.unmodifiableList(contractIds);
     }
 
-    public void contracIds(@NotNull List<String> contractIds) {
+    public void contractIds(@NotNull List<String> contractIds) {
         this.contractIds = List.copyOf(this.contractIds);
     }
 }

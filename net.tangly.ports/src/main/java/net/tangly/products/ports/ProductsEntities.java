@@ -52,7 +52,7 @@ public class ProductsEntities implements ProductsRealm {
     }
 
     @Override
-    public InstanceProvider<Assignment> assignements() {
+    public InstanceProvider<Assignment> assignments() {
         return assignments;
     }
 

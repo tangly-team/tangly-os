@@ -9,7 +9,7 @@ weight: 2
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-== BUS-002 Use Tag for per product costs computation
+== BUS-002 Use Tag for product costs computation
 
 Date: 2017-12-01
 

@@ -27,7 +27,7 @@ They are domain know-how experts and rarely software specialists.
 
 Software developers should write all acceptance tests together with domain experts.
 The acceptance tests should generate legible living documentation.
-Stakeholders use this documenation for feature review and acceptance decisions.
+Stakeholders use this documentation for feature review and acceptance decisions.
 ====
 
 The library is implemented as an extension to the de facto standard JUnit5 for unit testing in the Java ecosystem.

@@ -65,7 +65,7 @@ public class Invoice implements HasEditableId {
     private Currency currency;
 
     /**
-     * Locsle of the invoice. It is used for the localization of the invoice text.
+     * Locale of the invoice. It is used for the localization of the invoice text.
      */
     private Locale locale;
     private String paymentConditions;
