@@ -15,6 +15,7 @@ package net.tangly.products.ports;
 
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Optional;
 
 import net.tangly.bus.products.Assignment;
 import net.tangly.bus.products.Effort;
@@ -29,7 +30,9 @@ import org.jetbrains.annotations.NotNull;
 
 import static net.tangly.ports.TsvHdl.OID;
 import static net.tangly.ports.TsvHdl.TEXT;
+import static net.tangly.ports.TsvHdl.convertFoidTo;
 import static net.tangly.ports.TsvHdl.createTsvEntityFields;
+import static net.tangly.ports.TsvHdl.createTsvQualifiedEntityFields;
 
 public class ProductsHdl implements ProductsHandler {
     public static final String PRODUCTS_TSV = "products.tsv";
@@ -66,18 +69,27 @@ public class ProductsHdl implements ProductsHandler {
     }
 
     TsvEntity<Assignment> createTsvAssignment() {
-        List<TsvProperty<Assignment, ?>> fields = createTsvEntityFields();
-        fields.add(TsvProperty.ofString("collaboratorName", Assignment::collaboratorName, Assignment::collaboratorName));
-        // TODO add foid to product
+        List<TsvProperty<Assignment, ?>> fields = createTsvQualifiedEntityFields();
+        fields.add(TsvProperty.ofString("collaboratorId", Assignment::collaboratorId, Assignment::collaboratorId));
+        fields.add(TsvProperty.of("productOid", Assignment::product, Assignment::product, e -> findProductByOid(e).orElse(null), convertFoidTo()));
         return TsvEntity.of(Assignment.class, fields, Assignment::new);
     }
 
     TsvEntity<Effort> createTsvEffort() {
         List<TsvProperty<Effort, ?>> fields =
-                List.of(TsvProperty.of(OID, Effort::oid, (entity, value) -> ReflectionUtilities.set(entity, OID, value), Long::parseLong),
-                        TsvProperty.ofString(TEXT, Effort::text, Effort::text),
-                        TsvProperty.of("date", Effort::date, Effort::date, TsvProperty.CONVERT_DATE_FROM),
-                        TsvProperty.ofInt("durationInMinutes", Effort::duration, Effort::duration));
+            List.of(TsvProperty.of(OID, Effort::oid, (entity, value) -> ReflectionUtilities.set(entity, OID, value), Long::parseLong),
+                TsvProperty.ofString(TEXT, Effort::text, Effort::text), TsvProperty.of("date", Effort::date, Effort::date, TsvProperty.CONVERT_DATE_FROM),
+                TsvProperty.ofInt("durationInMinutes", Effort::duration, Effort::duration),
+                TsvProperty.of("assignmentOid", Effort::assignment, Effort::assignment, e -> findAssignmentByOid(e).orElse(null), convertFoidTo()));
         return TsvEntity.of(Effort.class, fields, Effort::new);
     }
+
+    public Optional<Product> findProductByOid(String identifier) {
+        return (identifier != null) ? realm.products().find(Long.parseLong(identifier)) : Optional.empty();
+    }
+
+    public Optional<Assignment> findAssignmentByOid(String identifier) {
+        return (identifier != null) ? realm.assignements().find(Long.parseLong(identifier)) : Optional.empty();
+    }
+
 }

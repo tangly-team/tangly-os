@@ -11,7 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.commons.crm.products.ui;
+package net.tangly.commons.products.ui;
 
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;

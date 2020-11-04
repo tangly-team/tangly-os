@@ -18,27 +18,28 @@ import java.time.LocalDate;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.bus.ledger.Account;
 import net.tangly.bus.ledger.LedgerBusinessLogic;
 import net.tangly.bus.providers.RecordProviderInMemory;
 import net.tangly.commons.vaadin.EntitiesView;
+import net.tangly.commons.vaadin.GridFiltersAndActions;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class AccountsView extends EntitiesView<Account> {
-    private TextField id;
+    private final LedgerBusinessLogic logic;
     private LocalDate from;
     private LocalDate to;
 
     /**
      * Constructor of the CRUD view for accounts of the ledger.
      *
-     * @param ledgerLogic ledger business lodgic which accounts should be displayed
-     * @param mode        mode of the view
+     * @param logic ledger business lodgic which accounts should be displayed
+     * @param mode  mode of the view
      */
-    public AccountsView(@NotNull LedgerBusinessLogic ledgerLogic, @NotNull Mode mode) {
-        super(Account.class, mode, RecordProviderInMemory.of(ledgerLogic.ledger().accounts()));
+    public AccountsView(@NotNull LedgerBusinessLogic logic, @NotNull Mode mode) {
+        super(Account.class, mode, RecordProviderInMemory.of(logic.ledger().accounts()));
+        this.logic = logic;
         from = LocalDate.of(LocalDate.now().getYear(), 1, 1);
         to = LocalDate.of(LocalDate.now().getYear(), 12, 31);
         initialize();
@@ -51,13 +52,16 @@ public class AccountsView extends EntitiesView<Account> {
         grid.addColumn(Account::group).setKey("group").setHeader("Group").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true);
         grid.addColumn(VaadinUtils.coloredRender(o -> o.balance(from), VaadinUtils.FORMAT)).setKey("opening").setHeader("Opening").setAutoWidth(true)
-                .setResizable(true).setTextAlign(ColumnTextAlign.END);
+            .setResizable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(VaadinUtils.coloredRender(o -> o.balance(to), VaadinUtils.FORMAT)).setKey("balance").setHeader("Balance").setAutoWidth(true)
-                .setResizable(true).setTextAlign(ColumnTextAlign.END);
+            .setResizable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(Account::kind).setKey("kind").setHeader("Kind").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::ownedBy).setKey("ownedBy").setHeader("Owned By").setAutoWidth(true).setResizable(true);
-        addAndExpand(grid(), gridButtons());
+
+        GridFiltersAndActions<Account> gridFunctions = gridFiltersAndActions();
+        gridFunctions.actions().addItem("Print", e -> new CommandCreateLedgerDocument(logic));
+        addAndExpand(gridFunctions, grid(), gridButtons());
     }
 
     public void interval(@NotNull LocalDate from, @NotNull LocalDate to) {

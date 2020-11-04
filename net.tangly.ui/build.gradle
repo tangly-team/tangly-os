@@ -74,6 +74,7 @@ dependencies {
 
     implementation 'com.storedobject.chart:so-charts:0.1.1'
     implementation 'org.vaadin.klaudeta:grid-pagination:2.0.9'
+    implementation 'org.vaadin.alejandro:pdf-browser:3.0.1'
     implementation "org.slf4j:slf4j-simple:$slf4jVersion"
 
     testImplementation 'com.github.mvysny.kaributesting:karibu-testing-v10:1.2.5'

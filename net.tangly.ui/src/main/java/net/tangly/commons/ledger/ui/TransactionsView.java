@@ -27,17 +27,19 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class TransactionsView extends EntitiesView<Transaction> {
+    private final LedgerBusinessLogic logic;
     private LocalDate from;
     private LocalDate to;
 
     /**
      * Constructor of the CRUD view for accounts of the ledger.
      *
-     * @param ledgerLogic ledger business lodgic which accounts should be displayed
+     * @param logic ledger business lodgic which accounts should be displayed
      * @param mode        mode of the view
      */
-    public TransactionsView(@NotNull LedgerBusinessLogic ledgerLogic, @NotNull Mode mode) {
-        super(Transaction.class, mode, ProviderInMemory.of(ledgerLogic.ledger().transactions()));
+    public TransactionsView(@NotNull LedgerBusinessLogic logic, @NotNull Mode mode) {
+        super(Transaction.class, mode, ProviderInMemory.of(logic.ledger().transactions()));
+        this.logic = logic;
         from = LocalDate.of(LocalDate.now().getYear(), 1, 1);
         to = LocalDate.of(LocalDate.now().getYear(), 12, 31);
         initialize();

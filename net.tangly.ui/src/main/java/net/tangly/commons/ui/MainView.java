@@ -37,14 +37,11 @@ import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.CrmRealm;
 import net.tangly.bus.invoices.InvoicesBusinessLogic;
 import net.tangly.bus.invoices.InvoicesRealm;
-import net.tangly.bus.ledger.LedgerRealm;
 import net.tangly.bus.ledger.LedgerBusinessLogic;
+import net.tangly.bus.ledger.LedgerRealm;
 import net.tangly.bus.products.ProductsBusinessLogic;
 import net.tangly.bus.products.ProductsRealm;
 import net.tangly.commons.bus.ui.TagTypesView;
-import net.tangly.commons.crm.products.ui.AssignementsView;
-import net.tangly.commons.crm.products.ui.EffortsView;
-import net.tangly.commons.crm.products.ui.ProductsView;
 import net.tangly.commons.crm.ui.ActivitiesView;
 import net.tangly.commons.crm.ui.AnalyticsCrmView;
 import net.tangly.commons.crm.ui.ContractsView;
@@ -55,7 +52,11 @@ import net.tangly.commons.crm.ui.NaturalEntitiesView;
 import net.tangly.commons.crm.ui.SubjectsView;
 import net.tangly.commons.invoices.ui.ArticlesView;
 import net.tangly.commons.invoices.ui.InvoicesView;
-import net.tangly.commons.ledger.ui.LedgerView;
+import net.tangly.commons.ledger.ui.AccountsView;
+import net.tangly.commons.ledger.ui.TransactionsView;
+import net.tangly.commons.products.ui.AssignementsView;
+import net.tangly.commons.products.ui.EffortsView;
+import net.tangly.commons.products.ui.ProductsView;
 import net.tangly.commons.vaadin.Crud;
 import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.crm.ports.CrmEntities;
@@ -63,7 +64,9 @@ import net.tangly.crm.ports.CrmHdl;
 import net.tangly.invoices.ports.InvoicesAdapter;
 import net.tangly.invoices.ports.InvoicesEntities;
 import net.tangly.invoices.ports.InvoicesHdl;
+import net.tangly.ledger.ports.LedgerAdapter;
 import net.tangly.ledger.ports.LedgerHdl;
+import net.tangly.products.ports.ProductsAdapter;
 import net.tangly.products.ports.ProductsEntities;
 import net.tangly.products.ports.ProductsHdl;
 import org.jetbrains.annotations.NotNull;
@@ -96,7 +99,8 @@ public class MainView extends AppLayout {
     private final AssignementsView assignementsView;
     private final EffortsView effortsView;
 
-    private final LedgerView ledgerView;
+    private final AccountsView accountsView;
+    private final TransactionsView transactionsView;
 
     private final AnalyticsCrmView analyticsCrmView;
 
@@ -117,7 +121,8 @@ public class MainView extends AppLayout {
         articlesView = new ArticlesView(invoicesLogic, Crud.Mode.EDITABLE);
         invoicesView = new InvoicesView(invoicesLogic, Crud.Mode.EDITABLE);
 
-        ledgerView = new LedgerView(ledgerLogic, Crud.Mode.EDITABLE);
+        accountsView = new AccountsView(ledgerLogic, Crud.Mode.EDITABLE);
+        transactionsView = new TransactionsView(ledgerLogic, Crud.Mode.EDITABLE);
 
         analyticsCrmView = new AnalyticsCrmView(crmLogic, invoicesLogic, ledgerLogic);
         tagTypesView = new TagTypesView(crmLogic.realm().tagTypeRegistry());
@@ -144,7 +149,7 @@ public class MainView extends AppLayout {
     InvoicesBusinessLogic ofInvoicesLogic(TagTypeRegistry registry) {
         InvoicesRealm realm = new InvoicesEntities(registry);
         return new InvoicesBusinessLogic(realm, new InvoicesHdl(realm, Path.of(ORGANIZATION, "invoices/")),
-                new InvoicesAdapter(realm, Path.of(ORGANIZATION, "reports/invoices/")));
+            new InvoicesAdapter(realm, Path.of(ORGANIZATION, "reports/invoices/")));
     }
 
     CrmBusinessLogic ofCrmLogic(TagTypeRegistry registry) {
@@ -154,12 +159,14 @@ public class MainView extends AppLayout {
 
     ProductsBusinessLogic ofProductsLogic(TagTypeRegistry registry) {
         ProductsRealm realm = new ProductsEntities(registry);
-        return new ProductsBusinessLogic(realm, new ProductsHdl(realm, Path.of(ORGANIZATION, "products/")));
+        return new ProductsBusinessLogic(realm, new ProductsHdl(realm, Path.of(ORGANIZATION, "products/")),
+            new ProductsAdapter(realm, Path.of(ORGANIZATION, "reports/assignments")));
     }
 
     LedgerBusinessLogic ofLedgerLogic() {
         LedgerRealm ledger = new LedgerRealm();
-        return new LedgerBusinessLogic(ledger, new LedgerHdl(ledger, Path.of(ORGANIZATION, "ledger/")));
+        return new LedgerBusinessLogic(ledger, new LedgerHdl(ledger, Path.of(ORGANIZATION, "ledger/")),
+            new LedgerAdapter(ledger, Path.of(ORGANIZATION, "reports/ledger")));
     }
 
     @Override
@@ -193,7 +200,8 @@ public class MainView extends AppLayout {
 
         MenuItem ledger = menuBar.addItem("Financials");
         SubMenu ledgerSubMenu = ledger.getSubMenu();
-        ledgerSubMenu.addItem("Ledger", e -> select(ledgerView));
+        ledgerSubMenu.addItem("Accounts", e -> select(accountsView));
+        ledgerSubMenu.addItem("Transactions", e -> select(transactionsView));
         ledgerSubMenu.addItem("Analytics", e -> select(analyticsCrmView));
 
         MenuItem admin = menuBar.addItem("Admin");

@@ -23,8 +23,8 @@ import java.util.List;
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.ledger.LedgerRealm;
+import net.tangly.ledger.ports.LedgerAdapter;
 import net.tangly.ledger.ports.LedgerHdl;
-import net.tangly.ledger.ports.LedgerPort;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -39,10 +39,10 @@ class LedgerRealmPortTest {
     public void createReports() {
         LedgerHdl ledgerHdl = new LedgerHdl(new LedgerRealm(), Paths.get("/Users/Shared/tangly/ledger"));
         ledgerHdl.importEntities();
-        LedgerPort ledgerLogic = new LedgerPort(ledgerHdl.ledger(), Paths.get("/Users/Shared/tangly/reports/ledger"));
+        LedgerAdapter adapter = new LedgerAdapter(ledgerHdl.ledger(), Paths.get("/Users/Shared/tangly/reports/ledger"));
 
-        ledgerLogic.createLedgerReport("tangly-" + 2016, LocalDate.of(2015, 11, 1), LocalDate.of(2016, 12, 31));
-        List.of(2017, 2018, 2019, 2020).forEach(o -> ledgerLogic.createLedgerReport("tangly-" + o, LocalDate.of(o, 1, 1), LocalDate.of(o, 12, 31)));
+        adapter.exportLedgerDocument("tangly-" + 2016, LocalDate.of(2015, 11, 1), LocalDate.of(2016, 12, 31));
+        List.of(2017, 2018, 2019, 2020).forEach(o -> adapter.exportLedgerDocument("tangly-" + o, LocalDate.of(o, 1, 1), LocalDate.of(o, 12, 31)));
     }
 
     @Test
@@ -50,8 +50,8 @@ class LedgerRealmPortTest {
         final String filenameWithoutExtension = "2016-period";
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             ErpStore store = new ErpStore(fs);
-            LedgerPort logic = new LedgerPort(createLedger(store), store.ledgerRoot());
-            logic.createLedgerReport(filenameWithoutExtension, LocalDate.of(2015, 10, 01), LocalDate.of(2016, 12, 31));
+            LedgerAdapter adapter = new LedgerAdapter(createLedger(store), store.ledgerRoot());
+            adapter.exportLedgerDocument(filenameWithoutExtension, LocalDate.of(2015, 10, 01), LocalDate.of(2016, 12, 31));
             assertThat(Files.exists(store.ledgerRoot().resolve(filenameWithoutExtension + ".adoc"))).isFalse();
             assertThat(Files.exists(store.ledgerRoot().resolve(filenameWithoutExtension + ".pdf"))).isTrue();
         }

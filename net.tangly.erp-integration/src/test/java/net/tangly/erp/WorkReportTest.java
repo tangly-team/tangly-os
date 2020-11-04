@@ -13,12 +13,12 @@
 
 package net.tangly.erp;
 
-import net.tangly.products.ports.WorkReportAsciiDoc;
+import net.tangly.products.ports.EffortReportAsciiDoc;
 import org.junit.jupiter.api.Test;
 
 class WorkReportTest {
     @Test
     void testWorkReport() {
-        WorkReportAsciiDoc reporter = new WorkReportAsciiDoc(null);
+        EffortReportAsciiDoc reporter = new EffortReportAsciiDoc(null);
     }
 }

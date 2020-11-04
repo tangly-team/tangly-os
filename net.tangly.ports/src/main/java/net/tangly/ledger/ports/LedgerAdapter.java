@@ -19,6 +19,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 
+import net.tangly.bus.ledger.LedgerPort;
 import net.tangly.bus.ledger.LedgerRealm;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import org.jetbrains.annotations.NotNull;
@@ -26,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Define business logic rules and functions for the ledger double entry accounting domain model.
  */
-public class LedgerPort {
+public class LedgerAdapter implements LedgerPort {
     public static final String TURNOVER_ACCOUNT = "3";
     public static final String EBIT_ACCOUNT = "E4";
     public static final String EARNINGS_ACCOUNT = "E7";
@@ -38,7 +39,7 @@ public class LedgerPort {
     private final LedgerRealm ledger;
     private final Path folder;
 
-    public LedgerPort(@NotNull LedgerRealm ledger, @NotNull Path folder) {
+    public LedgerAdapter(@NotNull LedgerRealm ledger, @NotNull Path folder) {
         this.ledger = ledger;
         this.folder = folder;
     }
@@ -47,15 +48,16 @@ public class LedgerPort {
         return ledger;
     }
 
-    public void createLedgerReport(String filenameWithoutExtension, LocalDate from, LocalDate to) {
+    @Override
+    public void exportLedgerDocument(String name, LocalDate from, LocalDate to) {
         ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(ledger);
-        report.create(from, to, folder.resolve(filenameWithoutExtension + AsciiDoctorHelper.ASCIIDOC_EXT));
-        AsciiDoctorHelper.createPdf(folder.resolve(filenameWithoutExtension + AsciiDoctorHelper.ASCIIDOC_EXT),
-            folder.resolve(filenameWithoutExtension + AsciiDoctorHelper.PDF_EXT));
+        report.create(from, to, folder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT));
+        AsciiDoctorHelper.createPdf(folder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), folder.resolve(name + AsciiDoctorHelper.PDF_EXT));
         try {
-            Files.delete(folder.resolve(filenameWithoutExtension + AsciiDoctorHelper.ASCIIDOC_EXT));
+            Files.delete(folder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
+
     }
 }

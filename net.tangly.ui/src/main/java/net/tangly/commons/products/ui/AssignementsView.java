@@ -11,15 +11,16 @@
  *  under the License.
  */
 
-package net.tangly.commons.crm.products.ui;
+package net.tangly.commons.products.ui;
 
 import java.lang.invoke.MethodHandles;
 import javax.inject.Inject;
 
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.data.binder.ValidationException;
 import net.tangly.bus.products.Assignment;
 import net.tangly.bus.products.ProductsBusinessLogic;
+import net.tangly.commons.vaadin.EntitiesView;
+import net.tangly.commons.vaadin.GridFiltersAndActions;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -27,12 +28,12 @@ import org.slf4j.LoggerFactory;
 
 public class AssignementsView extends InternalEntitiesView<Assignment> {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-    private final ProductsBusinessLogic productsLogic;
+    private final ProductsBusinessLogic logic;
 
     @Inject
-    public AssignementsView(@NotNull ProductsBusinessLogic productsLogic, @NotNull Mode mode) {
-        super(Assignment.class, mode, productsLogic.realm().assignements(), productsLogic.realm().tagTypeRegistry());
-        this.productsLogic = productsLogic;
+    public AssignementsView(@NotNull ProductsBusinessLogic logic, @NotNull Mode mode) {
+        super(Assignment.class, mode, logic.realm().assignements(), logic.realm().tagTypeRegistry());
+        this.logic = logic;
         initialize();
     }
 
@@ -40,20 +41,17 @@ public class AssignementsView extends InternalEntitiesView<Assignment> {
     protected void initialize() {
         Grid<Assignment> grid = grid();
         InternalEntitiesView.addQualifiedEntityColumns(grid);
-        grid.addColumn(Assignment::collaboratorName).setKey("collaboratorName").setHeader("Collaborator").setSortable(true).setAutoWidth(true)
-                .setResizable(true);
-        grid.addColumn(e -> (e.product() != null) ? e.product().name() : null).setKey("project").setHeader("Project").setSortable(true).setAutoWidth(true).setResizable(true);
-        addAndExpand(filterCriteria(grid()), grid(), gridButtons());
+        grid.addColumn(Assignment::collaboratorId).setKey("collaboratorId").setHeader("Collaborator").setSortable(true).setAutoWidth(true)
+            .setResizable(true);
+        grid.addColumn(e -> (e.product() != null) ? e.product().name() : null).setKey("project").setHeader("Project").setSortable(true).setAutoWidth(true)
+            .setResizable(true);
+        GridFiltersAndActions<Assignment> gridFunctions = gridFiltersAndActions();
+        gridFunctions.actions().addItem("Print", e -> new CommandCreateAssignmentDocument(selectedItem(), logic));
+        addAndExpand(gridFunctions, grid(), gridButtons());
     }
 
     @Override
     protected Assignment updateOrCreate(Assignment entity) {
-        Assignment assignment = (entity != null) ? entity : new Assignment();
-        try {
-            binder.writeBean(assignment);
-        } catch (ValidationException e) {
-            logger.atError().setCause(e).log("Validation error for {}", entity);
-        }
-        return assignment;
+        return EntitiesView.updateOrCreate(entity, binder, Assignment::new);
     }
 }

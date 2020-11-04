@@ -207,7 +207,7 @@ subprojects {
         options.incremental = true
         options.warnings = true
         options.deprecation = true
-        options.compilerArgs += ["-parameters", "--enable-preview", "-Xlint:all,-serial,-varargs", "-Xdoclint:none,html"]
+        options.compilerArgs += ["-parameters", "--enable-preview", "-Xlint:all,-serial,-varargs", "-Xdoclint:all,-missing/public"]
     }
 
     tasks.withType(Test) {

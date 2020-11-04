@@ -1,2 +1,2 @@
-"oid"	"id"	"name"	"fromDate"	"toDate"	"text"	"collaboratorName"
-"400"	"Coach-2020"	"Baumann, Marcel"	"2019-11-01"	"2020-09-30"	"Agile coaching and training of Saint Gobain Glass Compiègne"	"756.5149.8825.64"
+"oid"	"id"	"name"	"fromDate"	"toDate"	"text"	"collaboratorId"	"productOid"
+"400"	"Coach-2020"	"Baumann, Marcel"	"2019-11-01"	"2020-09-30"	"Agile coaching and training of Saint Gobain Glass Compiègne"	"756.5149.8825.64"	"800"

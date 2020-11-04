@@ -26,6 +26,7 @@ import java.util.function.Function;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasEnabled;
 import com.vaadin.flow.component.HasValue;
+import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
@@ -55,6 +56,18 @@ public final class VaadinUtils {
 
     public static TextField createTextField(String label, String placeholder, boolean readonly, boolean enabled) {
         TextField field = new TextField(label, placeholder);
+        field.setReadOnly(readonly);
+        field.setEnabled(enabled);
+        return field;
+    }
+
+    public static DatePicker createDatePicker(String label) {
+        return createDatePicker(label, false, true);
+    }
+
+    public static DatePicker createDatePicker(String label, boolean readonly, boolean enabled) {
+        DatePicker field = new DatePicker(label);
+        field.setLocale(Locale.forLanguageTag("sv-SE"));
         field.setReadOnly(readonly);
         field.setEnabled(enabled);
         return field;
@@ -177,11 +190,11 @@ public final class VaadinUtils {
 
     public static List<LocalDate> quarterLegends(LocalDate from, LocalDate to) {
         return List.of(LocalDate.parse("2015-12-31"), LocalDate.parse("2016-03-31"), LocalDate.parse("2016-06-30"), LocalDate.parse("2016-09-30"),
-                LocalDate.parse("2016-12-31"), LocalDate.parse("2017-03-31"), LocalDate.parse("2017-06-30"), LocalDate.parse("2017-09-30"),
-                LocalDate.parse("2017-12-31"), LocalDate.parse("2018-03-31"), LocalDate.parse("2018-06-30"), LocalDate.parse("2018-09-30"),
-                LocalDate.parse("2018-12-31"), LocalDate.parse("2019-03-31"), LocalDate.parse("2019-06-30"), LocalDate.parse("2019-09-30"),
-                LocalDate.parse("2019-12-31"), LocalDate.parse("2020-03-31"), LocalDate.parse("2020-06-30"), LocalDate.parse("2020-09-30"),
-                LocalDate.parse("2020-12-31"));
+            LocalDate.parse("2016-12-31"), LocalDate.parse("2017-03-31"), LocalDate.parse("2017-06-30"), LocalDate.parse("2017-09-30"),
+            LocalDate.parse("2017-12-31"), LocalDate.parse("2018-03-31"), LocalDate.parse("2018-06-30"), LocalDate.parse("2018-09-30"),
+            LocalDate.parse("2018-12-31"), LocalDate.parse("2019-03-31"), LocalDate.parse("2019-06-30"), LocalDate.parse("2019-09-30"),
+            LocalDate.parse("2019-12-31"), LocalDate.parse("2020-03-31"), LocalDate.parse("2020-06-30"), LocalDate.parse("2020-09-30"),
+            LocalDate.parse("2020-12-31"));
     }
 
 }

@@ -30,11 +30,13 @@ public class LedgerBusinessLogic {
 
     private final LedgerRealm ledger;
     private final LedgerHandler handler;
+    private final LedgerPort port;
 
     @Inject
-    public LedgerBusinessLogic(@NotNull LedgerRealm ledger, LedgerHandler handler) {
+    public LedgerBusinessLogic(@NotNull LedgerRealm ledger, LedgerHandler handler, LedgerPort port) {
         this.ledger = ledger;
         this.handler = handler;
+        this.port = port;
     }
 
     public LedgerRealm ledger() {
@@ -43,6 +45,10 @@ public class LedgerBusinessLogic {
 
     public LedgerHandler handler() {
         return handler;
+    }
+
+    public LedgerPort port() {
+        return port;
     }
 
     public BigDecimal turnover(@NotNull LocalDate from, @NotNull LocalDate to) {

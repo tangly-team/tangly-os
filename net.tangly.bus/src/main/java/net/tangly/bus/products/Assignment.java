@@ -20,18 +20,10 @@ import net.tangly.bus.core.QualifiedEntityImp;
  * date is optional, if defined it shall smaller or equal to the end date of the project.
  */
 public class Assignment extends QualifiedEntityImp {
-    private String collaboratorName;
     private Product product;
+    private String collaboratorId;
 
     public Assignment() {
-    }
-
-    public String collaboratorName() {
-        return collaboratorName;
-    }
-
-    public void collaboratorName(String collaboratorName) {
-        this.collaboratorName = collaboratorName;
     }
 
     public Product product() {
@@ -40,6 +32,14 @@ public class Assignment extends QualifiedEntityImp {
 
     public void product(Product product) {
         this.product = product;
+    }
+
+    public String collaboratorId() {
+        return collaboratorId;
+    }
+
+    public void collaboratorId(String collaboratorId) {
+        this.collaboratorId = collaboratorId;
     }
 }
 

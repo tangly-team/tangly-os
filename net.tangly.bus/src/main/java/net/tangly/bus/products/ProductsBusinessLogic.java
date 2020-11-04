@@ -25,11 +25,13 @@ import org.jetbrains.annotations.NotNull;
 public class ProductsBusinessLogic {
     private final ProductsRealm realm;
     private final ProductsHandler handler;
+    private final ProductsPort port;
 
     @Inject
-    public ProductsBusinessLogic(@NotNull ProductsRealm realm, ProductsHandler handler) {
+    public ProductsBusinessLogic(@NotNull ProductsRealm realm, ProductsHandler handler, ProductsPort port) {
         this.realm = realm;
         this.handler = handler;
+        this.port = port;
     }
 
     public ProductsRealm realm() {
@@ -40,8 +42,12 @@ public class ProductsBusinessLogic {
         return handler;
     }
 
+    public ProductsPort port() {
+        return port;
+    }
+
     public List<Effort> collect(Assignment assignment, LocalDate from, LocalDate to) {
         return realm().efforts().items().stream().filter(o -> Objects.equals(o.assignment(), assignment))
-                .filter(o -> DateUtilities.isWithinRange(o.date(), from, to)).collect(Collectors.toList());
+            .filter(o -> DateUtilities.isWithinRange(o.date(), from, to)).collect(Collectors.toList());
     }
 }

@@ -11,10 +11,17 @@
  *  under the License.
  */
 
-package net.tangly.bus.products;
+package net.tangly.bus.ledger;
 
 import java.time.LocalDate;
 
-public interface ProductsPort {
-    void exportEffortsDocument(Assignment assignment, LocalDate from, LocalDate to);
+public interface LedgerPort {
+    /**
+     * Export a ledger report with profits and losses, and assets and liabilities information for a specific time interval.
+     *
+     * @param name name of the document
+     * @param from start of the time interval relevant for the report
+     * @param to   end of the time interval relevant for the report
+     */
+    void exportLedgerDocument(String name, LocalDate from, LocalDate to);
 }

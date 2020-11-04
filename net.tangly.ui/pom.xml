@@ -47,7 +47,7 @@
     </repositories>
 
     <pluginRepositories>
-         <!-- Maven Central repository requires https:// to access -->
+        <!-- Maven Central repository requires https:// to access -->
         <pluginRepository>
             <id>central</id>
             <url>https://repo.maven.apache.org/maven2</url>
@@ -187,6 +187,11 @@
             <groupId>org.vaadin.klaudeta</groupId>
             <artifactId>grid-pagination</artifactId>
             <version>2.0.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.vaadin.alejandro</groupId>
+            <artifactId>pdf-browser</artifactId>
+            <version>3.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

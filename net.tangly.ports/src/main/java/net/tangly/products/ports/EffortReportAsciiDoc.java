@@ -13,8 +13,10 @@
 
 package net.tangly.products.ports;
 
+import java.io.IOException;
 import java.io.Writer;
 import java.lang.invoke.MethodHandles;
+import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -27,32 +29,31 @@ import net.tangly.commons.utilities.AsciiDocHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class WorkReportAsciiDoc {
+public class EffortReportAsciiDoc {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     private final ProductsBusinessLogic logic;
 
-    public WorkReportAsciiDoc(ProductsBusinessLogic logic) {
+    public EffortReportAsciiDoc(ProductsBusinessLogic logic) {
         this.logic = logic;
     }
 
-    public void create(Assignment assignment, String collaboratorName, LocalDate from, LocalDate to, Path path) {
-        try (Writer writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
-            // TODO create the report
-        } catch (Exception e) {
+    public void create(Assignment assignment, LocalDate from, LocalDate to, Path reportPath) {
+        try (Writer writer = Files.newBufferedWriter(reportPath, StandardCharsets.UTF_8)) {
+            final AsciiDocHelper helper = new AsciiDocHelper(writer);
+            helper.header("Work Report", 1);
+            helper.tableHeader("work-report", "cols=\"1,5a,>1\", options=\"header\"");
+            helper.writer().println("^|Date ^|Description ^|Duration");
+            helper.writer().println();
+
+            logic.collect(assignment, from, to).forEach(o -> helper.tableRow(o.date().toString(), o.text(), Integer.toString(o.duration())));
+
+            int totalDuration = logic.collect(assignment, from, to).stream().map(Effort::duration).reduce(0, Integer::sum);
+            BigDecimal totalHours = new BigDecimal(totalDuration).divide(new BigDecimal(60));
+            helper.tableRow("Total Time", "(time in minutes " + Integer.toString(totalDuration) + ")", totalHours.toString());
+            helper.tableEnd();
+        } catch (IOException e) {
             logger.error("Error during reporting", e);
         }
     }
-
-    public void create(Assignment assignment, LocalDate from, LocalDate to, Writer writer) {
-        final AsciiDocHelper helper = new AsciiDocHelper(writer);
-        helper.header("Work Report", 1);
-        helper.tableHeader("work-report", "cols=\"1,5a,1>\", options=\"header\"", "Date", "Description", "Duration");
-        logic.collect(assignment, from, to).forEach(o -> helper.tableRow(o.date().toString(), o.text(), Integer.toString(o.duration())));
-
-        int totalDuration = logic.collect(assignment, from, to).stream().map(Effort::duration).reduce(0, Integer::sum);
-        helper.tableRow("Total Time", "", Integer.toString(totalDuration));
-        helper.tableEnd();
-    }
-
 }

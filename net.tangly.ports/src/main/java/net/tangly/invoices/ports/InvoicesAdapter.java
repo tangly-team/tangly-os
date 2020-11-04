@@ -30,7 +30,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Invoice adapter is an adapter for the invoice port defined as a secondary port. The port has access to
  * <ul>
- *     <li>realm of the invoices bounded domain and associated entity</li>
+ *     <li>realm of the invoices bounded domain and associated entities</li>
  *     <li>folder to the root directory containing all invoice reports and documents</li>
  * </ul>
  */

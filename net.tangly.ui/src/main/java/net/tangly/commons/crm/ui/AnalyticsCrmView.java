@@ -47,7 +47,7 @@ import net.tangly.bus.invoices.InvoicesBusinessLogic;
 import net.tangly.bus.ledger.LedgerBusinessLogic;
 import net.tangly.commons.vaadin.TabsComponent;
 import net.tangly.commons.vaadin.VaadinUtils;
-import net.tangly.ledger.ports.LedgerPort;
+import net.tangly.ledger.ports.LedgerAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -191,15 +191,15 @@ public class AnalyticsCrmView extends VerticalLayout {
         rc.setPosition(chartPosition);
 
         LineChart shortTermThirdPartyCapitalChart = createLineChart("Short-Term Third Party Capital", xValues,
-                (LocalDate start, LocalDate end) -> (end != null) ? ledgerLogic.balance(LedgerPort.SHORT_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() :
+                (LocalDate start, LocalDate end) -> (end != null) ? ledgerLogic.balance(LedgerAdapter.SHORT_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() :
                         BigDecimal.ZERO, rc);
         LineChart longTermThirdPartyCapitalChart = createLineChart("LOng-Term Third Party Capital", xValues,
-                (LocalDate start, LocalDate end) -> (end != null) ? ledgerLogic.balance(LedgerPort.LONG_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() :
+                (LocalDate start, LocalDate end) -> (end != null) ? ledgerLogic.balance(LedgerAdapter.LONG_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() :
                         BigDecimal.ZERO, rc);
         LineChart cashOnHandChart = createLineChart("Cash On Hand", xValues,
-                (LocalDate start, LocalDate end) -> (end != null) ? ledgerLogic.balance(LedgerPort.CASH_ON_HAND_ACCOUNT, end) : BigDecimal.ZERO, rc);
+                (LocalDate start, LocalDate end) -> (end != null) ? ledgerLogic.balance(LedgerAdapter.CASH_ON_HAND_ACCOUNT, end) : BigDecimal.ZERO, rc);
         LineChart equityChart = createLineChart("Equity", xValues,
-                (LocalDate start, LocalDate end) -> (end != null) ? ledgerLogic.balance(LedgerPort.EQUITY_ACCOUNT, end).negate() : BigDecimal.ZERO, rc);
+                (LocalDate start, LocalDate end) -> (end != null) ? ledgerLogic.balance(LedgerAdapter.EQUITY_ACCOUNT, end).negate() : BigDecimal.ZERO, rc);
 
         chart.add(shortTermThirdPartyCapitalChart, cashOnHandChart, longTermThirdPartyCapitalChart, equityChart);
     }
