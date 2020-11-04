@@ -20,6 +20,8 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.provider.DataProvider;
+import com.vaadin.flow.data.provider.ListDataProvider;
+import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -29,11 +31,11 @@ import org.slf4j.LoggerFactory;
  * Defines a generic view for entities. The provider is the connection to the application backend. Classes inheriting entities view shall implement at least
  * following methods
  * <ul>
- *     <li>{@link #initializeGrid()} and define the columns of the grid used to display the entities.</li>
+ *     <li>{@link #initialize()} and define the columns of the grid used to display the entities.</li>
  *     <li>{@link #fillForm(Operation, Object, FormLayout)}  and define the fields for the details view of the entity.</li>
  *     <li>{@link #updateOrCreate(Object)} and define the factory method to creat entity instances.</li>
  * </ul>
- * <p>The constructor of the subclass must call the {@link #initializeGrid()} method to cleanly construct an instance.</p>
+ * <p>The constructor of the subclass must call the {@link #initialize()} method to cleanly construct an instance.</p>
  *
  * @param <T> type of the external entities
  */
@@ -50,15 +52,29 @@ public abstract class EntitiesView<T> extends Crud<T> implements CrudForm<T> {
      */
     public EntitiesView(@NotNull Class<T> entityClass, @NotNull Mode mode, @NotNull Provider<T> provider) {
         super(entityClass, mode, DataProvider.ofCollection(provider.items()));
-        super.initialize(this, new GridActionsListener<>(provider, grid().getDataProvider(), this::selectedItem));
         VaadinUtils.initialize(grid());
         this.provider = provider;
     }
 
+    @Override
+    public FormLayout createForm(@NotNull Operation operation, T entity) {
+        FormLayout form = new FormLayout();
+        VaadinUtils.setResponsiveSteps(form);
+        return fillForm(operation, entity, form);
+    }
+
+    @Override
+    public T formCompleted(@NotNull Operation operation, T entity) {
+        return switch (operation) {
+            case UPDATE, CREATE -> updateOrCreate(entity);
+            default -> entity;
+        };
+    }
+
     /**
-     * Initialize the grid of the view.
+     * Initialize the grid of the view. The method should be called in the constructor of the subclass to respect the idiom construction is initialization.
      */
-    protected abstract void initializeGrid();
+    protected abstract void initialize();
 
     /**
      * Prefills the form layout with application related data and optionally sets the mode such as readonly or enabled of the fields part of the form layout.
@@ -79,19 +95,16 @@ public abstract class EntitiesView<T> extends Crud<T> implements CrudForm<T> {
      */
     protected abstract T updateOrCreate(T entity);
 
-    @Override
-    public FormLayout createForm(@NotNull Operation operation, T entity) {
-        FormLayout form = new FormLayout();
-        VaadinUtils.setResponsiveSteps(form);
-        return fillForm(operation, entity, form);
+    protected GridButtons<T> gridButtons() {
+        GridButtons<T> buttons = new GridButtons<>(mode(), this, new GridActionsListener<>(provider, grid().getDataProvider(), this::selectedItem));
+        addSelectedItemListerner(buttons);
+        return buttons;
     }
 
-    @Override
-    public T formCompleted(@NotNull Operation operation, T entity) {
-        return switch (operation) {
-            case UPDATE, CREATE -> updateOrCreate(entity);
-            default -> entity;
-        };
+    protected GridFiltersAndActions<T> gridFiltersAndActions() {
+        GridFiltersAndActions<T> gridFunctions = new GridFiltersAndActions<>((ListDataProvider<T>) grid().getDataProvider());
+        addSelectedItemListerner(gridFunctions);
+        return gridFunctions;
     }
 
     protected static <T> T updateOrCreate(T entity, Binder<T> binder, Supplier<T> factory) {
@@ -103,5 +116,4 @@ public abstract class EntitiesView<T> extends Crud<T> implements CrudForm<T> {
         }
         return entity;
     }
-
 }

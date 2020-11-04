@@ -17,12 +17,12 @@ import net.tangly.bus.core.TagTypeRegistry;
 import net.tangly.bus.invoices.Article;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceLegalEntity;
-import net.tangly.bus.invoices.RealmInvoices;
+import net.tangly.bus.invoices.InvoicesRealm;
 import net.tangly.bus.providers.RecordProvider;
 import net.tangly.bus.providers.RecordProviderInMemory;
 import org.jetbrains.annotations.NotNull;
 
-public class InvoicesEntities implements RealmInvoices {
+public class InvoicesEntities implements InvoicesRealm {
     private final TagTypeRegistry registry;
     private final RecordProviderInMemory<Invoice> invoices;
     private final RecordProviderInMemory<Article> articles;

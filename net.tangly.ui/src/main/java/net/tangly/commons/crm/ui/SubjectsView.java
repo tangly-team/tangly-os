@@ -21,8 +21,8 @@ import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.server.StreamResource;
+import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.NaturalEntity;
-import net.tangly.bus.crm.RealmCrm;
 import net.tangly.bus.crm.Subject;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.EntityField;
@@ -32,18 +32,18 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class SubjectsView extends InternalEntitiesView<Subject> {
-    private final RealmCrm realm;
+    private final CrmBusinessLogic crmLogic;
 
-    public SubjectsView(@NotNull RealmCrm realm, @NotNull Mode mode) {
-        super(Subject.class, mode, realm.subjects(), realm.tagTypeRegistry());
-        this.realm = realm;
-        initializeGrid();
+    public SubjectsView(@NotNull CrmBusinessLogic crmLogic, @NotNull Mode mode) {
+        super(Subject.class, mode, crmLogic.realm().subjects(), crmLogic.realm().tagTypeRegistry());
+        this.crmLogic = crmLogic;
+        initialize();
     }
 
     @Override
-    protected void initializeGrid() {
+    protected void initialize() {
         InternalEntitiesView.addQualifiedEntityColumns(grid());
-        addAndExpand(grid(), createCrudButtons());
+        addAndExpand(grid(), gridButtons());
     }
 
     @Override
@@ -51,7 +51,7 @@ public class SubjectsView extends InternalEntitiesView<Subject> {
         boolean readonly = Mode.readOnly(mode);
         EntityField<Subject> entityField = new EntityField<>();
         entityField.setReadOnly(readonly);
-        One2OneField<NaturalEntity, NaturalEntitiesView> user = new One2OneField<>("User", new NaturalEntitiesView(realm, mode));
+        One2OneField<NaturalEntity, NaturalEntitiesView> user = new One2OneField<>("User", new NaturalEntitiesView(crmLogic, mode));
 
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);

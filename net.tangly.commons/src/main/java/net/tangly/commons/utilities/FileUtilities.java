@@ -20,17 +20,22 @@ import java.nio.file.Path;
 import java.util.Set;
 import java.util.stream.Stream;
 
+import org.jetbrains.annotations.NotNull;
+
 public final class FileUtilities {
-    public static void process(Path directory, Set<String> endings) {
+    private FileUtilities() {
+    }
+
+    public static void replaceInSelectedFileWithUnixEol(@NotNull Path directory, @NotNull Set<String> endings) {
         try (Stream<Path> stream = Files.walk(directory)) {
             stream.filter(file -> !Files.isDirectory(file) && endings.stream().anyMatch(o -> file.getFileName().toString().endsWith(o)))
-                    .forEach(FileUtilities::modifyFile);
+                    .forEach(FileUtilities::replaceWithUnixEol);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
     }
 
-    public static void modifyFile(Path path) {
+    public static void replaceWithUnixEol(@NotNull Path path) {
         try {
             String text = Files.readString(path);
             text = text.replace("\r\n", "\n");
@@ -39,8 +44,5 @@ public final class FileUtilities {
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
-    }
-
-    private FileUtilities() {
     }
 }

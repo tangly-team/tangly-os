@@ -23,7 +23,7 @@ import com.vaadin.flow.data.binder.Binder;
 import net.tangly.bus.codes.CodeType;
 import net.tangly.bus.crm.Activity;
 import net.tangly.bus.crm.ActivityCode;
-import net.tangly.bus.crm.RealmCrm;
+import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.providers.ProviderInMemory;
 import net.tangly.commons.vaadin.CodeField;
 import net.tangly.commons.vaadin.EntitiesView;
@@ -31,24 +31,24 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class ActivitiesView extends EntitiesView<Activity> {
-    private final RealmCrm realm;
+    private final CrmBusinessLogic logicCrm;
     private Binder<Activity> binder;
 
-    public ActivitiesView(@NotNull RealmCrm realm, @NotNull Mode mode) {
-        super(Activity.class, mode, ProviderInMemory.of(realm.collectActivities(e -> true)));
-        this.realm = realm;
-        initializeGrid();
+    public ActivitiesView(@NotNull CrmBusinessLogic logicCrm, @NotNull Mode mode) {
+        super(Activity.class, mode, ProviderInMemory.of(logicCrm.realm().collectActivities(e -> true)));
+        this.logicCrm = logicCrm;
+        initialize();
     }
 
     @Override
-    protected void initializeGrid() {
+    protected void initialize() {
         Grid<Activity> grid = grid();
         grid.addColumn(Activity::date).setKey("date").setHeader("Date").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Activity::code).setKey("code").setHeader("Code").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Activity::duration).setKey("durationInMinutes").setHeader("Duration").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Activity::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Activity::details).setKey("details").setHeader("Details").setAutoWidth(true).setResizable(true).setSortable(true);
-        addAndExpand(grid(), createCrudButtons());
+        addAndExpand(grid(), gridButtons());
     }
 
     @Override

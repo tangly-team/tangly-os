@@ -148,7 +148,7 @@ See our blogs for a discussion of the cornerstone abstractions of the business c
 
 == Customer Relationship Model CRM
 
-[plantuml,bus-realmCrm-uml,svg]
+[plantuml,bus-crmRealm-uml,svg]
 ....
 @startuml
 
@@ -369,7 +369,7 @@ The JSON file is an adequate archive format which can digitally be processed.
 ....
 @startuml
 
-package net.tangly.bus.realmCrm {
+package net.tangly.bus.crmRealm {
     class LegalEntity {}
 
     class BankConnection << (R,orchid) >> {

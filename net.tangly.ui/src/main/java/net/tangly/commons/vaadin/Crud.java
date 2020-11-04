@@ -13,12 +13,10 @@
 
 package net.tangly.commons.vaadin;
 
-import com.vaadin.flow.component.HtmlComponent;
-import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.dialog.Dialog;
+import java.util.HashSet;
+import java.util.Set;
+
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
 import org.jetbrains.annotations.NotNull;
@@ -37,7 +35,7 @@ import org.vaadin.klaudeta.PaginatedGrid;
  *
  * @param <T> represents the entity displayed and manipulated in the CRUD component.
  */
-public class Crud<T> extends VerticalLayout {
+public class Crud<T> extends VerticalLayout implements SelectedItemListener<T> {
     /**
      * Define the different edition modes of the CRUD component. The mode has an impact on the displayed fields and the buttons.
      */
@@ -64,18 +62,13 @@ public class Crud<T> extends VerticalLayout {
     private final Class<T> entityClass;
     private final Mode mode;
     private final PaginatedGrid<T> grid;
+    private final Set<SelectedItemListener<T>> selectedItemListenerListeners;
     private T selectedItem;
-    private CrudForm<T> form;
-    private CrudActionsListener<T> actionsListener;
-
-    private Button details;
-    private Button add;
-    private Button update;
-    private Button delete;
 
     public Crud(@NotNull Class<T> entityClass, @NotNull Mode mode, @NotNull DataProvider<T, ?> dataProvider) {
         this.entityClass = entityClass;
         this.mode = mode;
+        this.selectedItemListenerListeners = new HashSet<>();
 
         this.grid = new PaginatedGrid<>(entityClass);
         grid.setPageSize(10);
@@ -87,22 +80,25 @@ public class Crud<T> extends VerticalLayout {
         grid.setMinHeight("5em");
         grid.setWidthFull();
         setSizeFull();
-
-        details = new Button("Details", VaadinIcon.ELLIPSIS_H.create(), event -> displayDialog(CrudForm.Operation.VIEW));
-        add = new Button("Add", VaadinIcon.PLUS.create(), event -> displayDialog(CrudForm.Operation.CREATE));
-        update = new Button("Update", VaadinIcon.PENCIL.create(), event -> displayDialog(CrudForm.Operation.UPDATE));
-        delete = new Button("Delete", VaadinIcon.TRASH.create(), event -> displayDialog(CrudForm.Operation.DELETE));
-
-        add.setEnabled((mode == Mode.EDITABLE) || (mode == Mode.IMMUTABLE) || (mode == Mode.AUDITABLE));
-        update.setEnabled(mode == Mode.EDITABLE);
-        delete.setEnabled((mode == Mode.EDITABLE) || (mode == Mode.IMMUTABLE));
-
     }
 
-    protected void initialize(@NotNull CrudForm<T> form, @NotNull CrudActionsListener<T> actionsListener) {
-        this.form = form;
-        this.actionsListener = actionsListener;
-        selectedItem(null);
+    @Override
+    public T selectedItem() {
+        return selectedItem;
+    }
+
+    @Override
+    public void selectedItem(T item) {
+        selectedItemListenerListeners.forEach(o -> o.selectedItem(item));
+        selectedItem = item;
+    }
+
+    public void addSelectedItemListerner(SelectedItemListener<T> listener) {
+        this.selectedItemListenerListeners.add(listener);
+    }
+
+    public Mode mode() {
+        return mode;
     }
 
     /**
@@ -122,63 +118,11 @@ public class Crud<T> extends VerticalLayout {
         grid.getDataProvider().refreshAll();
     }
 
-    /**
-     * Return the selected item of the view
-     *
-     * @return selected item
-     * @see #selectedItem(Object)
-     */
-    public T selectedItem() {
-        return selectedItem;
-    }
-
-    /**
-     * Select programmatically the item in the grid and update the grid and the state of the buttons associated with the view.
-     * Is also called when an element is selected in the grid.
-     *
-     * @param item new selected item in the grid
-     * @see #selectedItem()
-     */
-    public void selectedItem(T item) {
-        selectedItem = item;
-        if (selectedItem != null) {
-            details.setEnabled(true);
-            add.setEnabled(Mode.canAdd(mode));
-            update.setEnabled(Mode.canUpdate(mode));
-            delete.setEnabled(Mode.canDelete(mode));
-        } else {
-            details.setEnabled(false);
-            add.setEnabled(Mode.canAdd(mode));
-            update.setEnabled(false);
-            delete.setEnabled(false);
-        }
-    }
-
     protected Class<T> entityClass() {
         return entityClass;
     }
 
     protected Grid<T> grid() {
         return grid;
-    }
-
-    protected HorizontalLayout createCrudButtons() {
-        HorizontalLayout actions = new HorizontalLayout();
-        actions.add(add, delete, update, details);
-        return actions;
-    }
-
-    private void displayDialog(CrudForm.Operation operation) {
-        Dialog dialog = new Dialog();
-        dialog.setCloseOnEsc(true);
-        dialog.setCloseOnOutsideClick(false);
-        dialog.setModal(false);
-        dialog.setWidth("90vw");
-        dialog.setHeight("70vh");
-        dialog.setResizable(true);
-        dialog.setDraggable(true);
-        dialog.add(new VerticalLayout(form.createForm(operation, operation != CrudForm.Operation.CREATE ? selectedItem : null), new HtmlComponent("br"),
-                CrudForm.createFormButtons(dialog, form, operation, selectedItem(), actionsListener)));
-        dialog.open();
     }
 }

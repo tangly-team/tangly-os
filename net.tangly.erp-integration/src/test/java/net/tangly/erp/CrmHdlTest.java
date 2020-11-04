@@ -21,9 +21,9 @@ import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.core.QualifiedEntity;
 import net.tangly.bus.core.TagTypeRegistry;
-import net.tangly.bus.crm.BusinessLogicCrm;
+import net.tangly.bus.crm.CrmBusinessLogic;
+import net.tangly.bus.crm.CrmRealm;
 import net.tangly.bus.crm.LegalEntity;
-import net.tangly.bus.crm.RealmCrm;
 import net.tangly.crm.ports.CrmEntities;
 import net.tangly.crm.ports.CrmHdl;
 import org.jetbrains.annotations.NotNull;
@@ -40,7 +40,7 @@ class CrmHdlTest {
     @Tag("localTest")
     void testCompanyTsvCrm() {
         CrmHdl crmHdl = new CrmHdl(new CrmEntities(new TagTypeRegistry()), Path.of("/Users/Shared/tangly/", "crm"));
-        BusinessLogicCrm logic = new BusinessLogicCrm(crmHdl.realm());
+        CrmBusinessLogic logic = new CrmBusinessLogic(crmHdl.realm(), null, null);
         logic.registerTags(crmHdl.realm().tagTypeRegistry());
         crmHdl.importEntities();
     }
@@ -78,34 +78,34 @@ class CrmHdlTest {
         }
     }
 
-    private void verifyNaturalEntities(@NotNull RealmCrm realmCrm) {
-        assertThat(realmCrm.naturalEntities().items().isEmpty()).isFalse();
-        assertThat(realmCrm.naturalEntities().find(1).isPresent()).isTrue();
-        realmCrm.naturalEntities().items().forEach(naturalEntity -> assertThat(naturalEntity.isValid()).isTrue());
+    private void verifyNaturalEntities(@NotNull CrmRealm crmRealm) {
+        assertThat(crmRealm.naturalEntities().items().isEmpty()).isFalse();
+        assertThat(crmRealm.naturalEntities().find(1).isPresent()).isTrue();
+        crmRealm.naturalEntities().items().forEach(naturalEntity -> assertThat(naturalEntity.isValid()).isTrue());
     }
 
-    private void verifyLegalEntities(@NotNull RealmCrm realmCrm) {
-        assertThat(realmCrm.legalEntities().items().isEmpty()).isFalse();
-        assertThat(realmCrm.legalEntities().find(100).isPresent()).isTrue();
-        assertThat(realmCrm.legalEntities().findBy(LegalEntity::id, "UNKNOWN-100").isPresent()).isTrue();
-        assertThat(realmCrm.legalEntities().findBy(LegalEntity::name, "hope llc").isPresent()).isTrue();
-        realmCrm.naturalEntities().items().forEach(legalEntity -> assertThat(legalEntity.isValid()).isTrue());
+    private void verifyLegalEntities(@NotNull CrmRealm crmRealm) {
+        assertThat(crmRealm.legalEntities().items().isEmpty()).isFalse();
+        assertThat(crmRealm.legalEntities().find(100).isPresent()).isTrue();
+        assertThat(crmRealm.legalEntities().findBy(LegalEntity::id, "UNKNOWN-100").isPresent()).isTrue();
+        assertThat(crmRealm.legalEntities().findBy(LegalEntity::name, "hope llc").isPresent()).isTrue();
+        crmRealm.naturalEntities().items().forEach(legalEntity -> assertThat(legalEntity.isValid()).isTrue());
     }
 
-    private void verifyEmployees(@NotNull RealmCrm realmCrm) {
-        assertThat(realmCrm.employees().items().isEmpty()).isFalse();
-        assertThat(realmCrm.employees().find(200).isPresent()).isTrue();
-        realmCrm.employees().items().forEach(employee -> {
+    private void verifyEmployees(@NotNull CrmRealm crmRealm) {
+        assertThat(crmRealm.employees().items().isEmpty()).isFalse();
+        assertThat(crmRealm.employees().find(200).isPresent()).isTrue();
+        crmRealm.employees().items().forEach(employee -> {
             assertThat(employee.oid()).isNotEqualTo(QualifiedEntity.UNDEFINED_OID);
             assertThat(employee.person()).isNotNull();
             assertThat(employee.organization()).isNotNull();
         });
     }
 
-    private void verifyContracts(@NotNull RealmCrm realmCrm) {
-        assertThat(realmCrm.contracts().items().isEmpty()).isFalse();
-        assertThat(realmCrm.contracts().find(500).isPresent()).isTrue();
-        realmCrm.contracts().items().forEach(contract -> {
+    private void verifyContracts(@NotNull CrmRealm crmRealm) {
+        assertThat(crmRealm.contracts().items().isEmpty()).isFalse();
+        assertThat(crmRealm.contracts().find(500).isPresent()).isTrue();
+        crmRealm.contracts().items().forEach(contract -> {
             assertThat(contract.locale()).isNotNull();
             assertThat(contract.currency()).isNotNull();
             assertThat(contract.bankConnection()).isNotNull();
@@ -114,20 +114,20 @@ class CrmHdlTest {
         });
     }
 
-    private void verifyInteractions(@NotNull RealmCrm realmCrm) {
-        assertThat(realmCrm.interactions().items().isEmpty()).isFalse();
+    private void verifyInteractions(@NotNull CrmRealm crmRealm) {
+        assertThat(crmRealm.interactions().items().isEmpty()).isFalse();
     }
 
-    private void verifyActivities(@NotNull RealmCrm realmCrm) {
-        assertThat(realmCrm.collectActivities(o -> true)).isNotEmpty();
+    private void verifyActivities(@NotNull CrmRealm crmRealm) {
+        assertThat(crmRealm.collectActivities(o -> true)).isNotEmpty();
     }
 
-    private void verifySubjects(@NotNull RealmCrm realmCrm) {
-        assertThat(realmCrm.subjects().items().isEmpty()).isTrue();
+    private void verifySubjects(@NotNull CrmRealm crmRealm) {
+        assertThat(crmRealm.subjects().items().isEmpty()).isTrue();
     }
 
-    private void verifyComments(@NotNull RealmCrm realmCrm) {
-        assertThat(realmCrm.naturalEntities().find(1).orElseThrow().comments().isEmpty()).isFalse();
-        assertThat(realmCrm.legalEntities().find(102).orElseThrow().comments().isEmpty()).isFalse();
+    private void verifyComments(@NotNull CrmRealm crmRealm) {
+        assertThat(crmRealm.naturalEntities().find(1).orElseThrow().comments().isEmpty()).isFalse();
+        assertThat(crmRealm.legalEntities().find(102).orElseThrow().comments().isEmpty()).isFalse();
     }
 }

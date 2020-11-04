@@ -19,7 +19,7 @@ import javax.inject.Inject;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.data.binder.ValidationException;
 import net.tangly.bus.products.Assignment;
-import net.tangly.bus.products.RealmProducts;
+import net.tangly.bus.products.ProductsBusinessLogic;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -27,23 +27,23 @@ import org.slf4j.LoggerFactory;
 
 public class AssignementsView extends InternalEntitiesView<Assignment> {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-    private final RealmProducts realmProducts;
+    private final ProductsBusinessLogic productsLogic;
 
     @Inject
-    public AssignementsView(@NotNull RealmProducts realmProducts, @NotNull Mode mode) {
-        super(Assignment.class, mode, realmProducts.assignements(), realmProducts.tagTypeRegistry());
-        this.realmProducts = realmProducts;
-        initializeGrid();
+    public AssignementsView(@NotNull ProductsBusinessLogic productsLogic, @NotNull Mode mode) {
+        super(Assignment.class, mode, productsLogic.realm().assignements(), productsLogic.realm().tagTypeRegistry());
+        this.productsLogic = productsLogic;
+        initialize();
     }
 
     @Override
-    protected void initializeGrid() {
+    protected void initialize() {
         Grid<Assignment> grid = grid();
         InternalEntitiesView.addQualifiedEntityColumns(grid);
         grid.addColumn(Assignment::collaboratorName).setKey("collaboratorName").setHeader("Collaborator").setSortable(true).setAutoWidth(true)
                 .setResizable(true);
-        // grid.addColumn(e -> e.product().name()).setKey("project").setHeader("Project").setSortable(true).setAutoWidth(true).setResizable(true);
-        addAndExpand(filterCriteria(grid()), grid(), createCrudButtons());
+        grid.addColumn(e -> (e.product() != null) ? e.product().name() : null).setKey("project").setHeader("Project").setSortable(true).setAutoWidth(true).setResizable(true);
+        addAndExpand(filterCriteria(grid()), grid(), gridButtons());
     }
 
     @Override

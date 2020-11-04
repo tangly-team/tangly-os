@@ -21,31 +21,33 @@ import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.provider.ListDataProvider;
 import net.tangly.bus.invoices.Invoice;
-import net.tangly.bus.providers.Provider;
+import net.tangly.bus.invoices.InvoicesBusinessLogic;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.GridFiltersAndActions;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class InvoicesView extends EntitiesView<Invoice> {
+    private final InvoicesBusinessLogic logicInvoices;
     private final TextField id;
     private final TextField name;
     private final DatePicker invoicedDate;
     private final DatePicker dueDate;
     private final TextArea text;
 
-    public InvoicesView(@NotNull Provider<Invoice> provider, @NotNull Mode mode) {
-        super(Invoice.class, mode, provider);
+    public InvoicesView(@NotNull InvoicesBusinessLogic logicInvoices, @NotNull Mode mode) {
+        super(Invoice.class, mode, logicInvoices.realm().invoices());
+        this.logicInvoices = logicInvoices;
         id = VaadinUtils.createTextField("Id", "id");
         name = VaadinUtils.createTextField("Name", "name");
         invoicedDate = new DatePicker("Invoiced Date");
         dueDate = new DatePicker("DUe Date");
         text = new TextArea("Text", "text");
         text.setWidthFull();
-        initializeGrid();
+        initialize();
     }
 
-    protected void initializeGrid() {
+    protected void initialize() {
         Grid<Invoice> grid = grid();
         grid.addColumn(Invoice::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Invoice::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
@@ -54,14 +56,14 @@ public class InvoicesView extends EntitiesView<Invoice> {
         grid.addColumn(o -> VaadinUtils.format(o.amountWithoutVat())).setKey("amountWithoutVat").setHeader("Amount").setAutoWidth(true).setResizable(true)
                 .setSortable(true);
         grid.addColumn(Invoice::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
-        GridFiltersAndActions<Invoice> gridFunctions = new GridFiltersAndActions<>((ListDataProvider<Invoice>) grid().getDataProvider());
-        gridFunctions.actions().addItem("Print", e -> new CommandCreateInvoiceDocument(selectedItem()));
-        addAndExpand(gridFunctions, grid(), createCrudButtons());
+        GridFiltersAndActions<Invoice> gridFunctions = gridFiltersAndActions();
+        gridFunctions.actions().addItem("Print", e -> new CommandCreateInvoiceDocument(selectedItem(), logicInvoices));
+        addAndExpand(gridFunctions, grid(), gridButtons());
     }
 
     @Override
     protected Invoice updateOrCreate(Invoice entity) {
-        Invoice invoice = new Invoice();
+        Invoice invoice = (entity != null) ? entity : new Invoice();
         invoice.id(id.getValue());
         invoice.name(name.getValue());
         invoice.text(text.getValue());

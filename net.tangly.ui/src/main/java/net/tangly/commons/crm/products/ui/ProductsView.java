@@ -16,25 +16,25 @@ package net.tangly.commons.crm.products.ui;
 import javax.inject.Inject;
 
 import net.tangly.bus.products.Product;
-import net.tangly.bus.products.RealmProducts;
+import net.tangly.bus.products.ProductsBusinessLogic;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import org.jetbrains.annotations.NotNull;
 
 public class ProductsView extends InternalEntitiesView<Product> {
-    private final RealmProducts realmProducts;
+    private final ProductsBusinessLogic productsLogic;
 
     @Inject
-    public ProductsView(@NotNull RealmProducts realmProducts, @NotNull Mode mode) {
-        super(Product.class, mode, realmProducts.products(), realmProducts.tagTypeRegistry());
-        this.realmProducts = realmProducts;
-        initializeGrid();
+    public ProductsView(@NotNull ProductsBusinessLogic productsLogic, @NotNull Mode mode) {
+        super(Product.class, mode, productsLogic.realm().products(), productsLogic.realm().tagTypeRegistry());
+        this.productsLogic = productsLogic;
+        initialize();
     }
 
     @Override
-    protected void initializeGrid() {
+    protected void initialize() {
         InternalEntitiesView.addQualifiedEntityColumns(grid());
-        addAndExpand(filterCriteria(grid()), grid(), createCrudButtons());
+        addAndExpand(filterCriteria(grid()), grid(), gridButtons());
     }
 
     @Override

@@ -13,19 +13,17 @@
 
 package net.tangly.crm.ports;
 
-import java.lang.invoke.MethodHandles;
 import java.nio.file.Path;
 import javax.inject.Inject;
 
-import net.tangly.bus.crm.RealmCrm;
+import net.tangly.bus.crm.CrmHandler;
+import net.tangly.bus.crm.CrmRealm;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Defines the workflows defined for bounded domain activities in particular the import and export to files.
  */
-public final class CrmHdl {
+public final class CrmHdl implements CrmHandler {
     public static final String MODULE = "net.tangly.ports";
     public static final String COMMENTS_TSV = "comments.tsv";
     public static final String LEGAL_ENTITIES_TSV = "legal-entities.tsv";
@@ -37,17 +35,16 @@ public final class CrmHdl {
     public static final String SUBJECTS_TSV = "subjects.tsv";
     public static final String VCARDS_FOLDER = "vcards";
 
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-    private final RealmCrm realm;
+    private final CrmRealm realm;
     private final Path folder;
 
     @Inject
-    public CrmHdl(@NotNull RealmCrm realm, @NotNull Path folder) {
+    public CrmHdl(@NotNull CrmRealm realm, @NotNull Path folder) {
         this.realm = realm;
         this.folder = folder;
     }
 
-    public RealmCrm realm() {
+    public CrmRealm realm() {
         return realm;
     }
 

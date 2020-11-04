@@ -22,13 +22,14 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.bus.invoices.Invoice;
+import net.tangly.bus.invoices.InvoicesBusinessLogic;
 import net.tangly.commons.vaadin.VaadinUtils;
 
 public class CommandCreateInvoiceDocument extends Dialog {
     Checkbox withQrCode;
     Checkbox withEN16931;
 
-    public CommandCreateInvoiceDocument(Invoice invoice) {
+    public CommandCreateInvoiceDocument(Invoice invoice, InvoicesBusinessLogic logicInvoices) {
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);
 
@@ -38,7 +39,10 @@ public class CommandCreateInvoiceDocument extends Dialog {
         withQrCode = new Checkbox("with QR Code");
         withEN16931 = new Checkbox("with EN 16931");
 
-        Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> this.close());
+        Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
+            logicInvoices.port().exportInvoiceDocument(invoice, withQrCode.getValue(), withEN16931.getValue());
+            this.close();
+        });
         Button cancel = new Button("Cancel", e -> this.close());
 
         form.add(name, new HtmlComponent("br"), withQrCode, withEN16931, new HtmlComponent("br"), new HorizontalLayout(execute, cancel));

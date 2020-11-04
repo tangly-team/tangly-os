@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
  *     <li>Invoices are legal entity invoices</li>
  * </ul>
  **/
-public interface RealmInvoices {
+public interface InvoicesRealm {
     TagTypeRegistry tagTypeRegistry();
 
     Provider<Invoice> invoices();

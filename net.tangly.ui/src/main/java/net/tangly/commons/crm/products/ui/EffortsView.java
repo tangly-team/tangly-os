@@ -21,24 +21,24 @@ import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import net.tangly.bus.products.Effort;
-import net.tangly.bus.products.RealmProducts;
+import net.tangly.bus.products.ProductsBusinessLogic;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class EffortsView extends EntitiesView<Effort> {
-    private final RealmProducts realmProducts;
+    private final ProductsBusinessLogic productsLogic;
     private Binder<Effort> binder;
 
-    public EffortsView(@NotNull RealmProducts realmProducts, @NotNull Mode mode) {
-        super(Effort.class, mode, realmProducts.efforts());
-        this.realmProducts = realmProducts;
-        initializeGrid();
-        addAndExpand(grid(), createCrudButtons());
+    public EffortsView(@NotNull ProductsBusinessLogic productsLogic, @NotNull Mode mode) {
+        super(Effort.class, mode, productsLogic.realm().efforts());
+        this.productsLogic = productsLogic;
+        initialize();
+        addAndExpand(grid(), gridButtons());
     }
 
     @Override
-    protected void initializeGrid() {
+    protected void initialize() {
         Grid<Effort> grid = grid();
         grid.addColumn(Effort::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Effort::date).setKey("date").setHeader("Date").setAutoWidth(true).setResizable(true).setSortable(true);

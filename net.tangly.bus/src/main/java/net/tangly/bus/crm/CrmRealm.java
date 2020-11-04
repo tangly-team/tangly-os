@@ -35,7 +35,7 @@ import org.jetbrains.annotations.NotNull;
  *     <li>CRM tags defining an ontology in the business domain of customer relationships management</li>
  * </ul>
  */
-public interface RealmCrm {
+public interface CrmRealm {
     TagTypeRegistry tagTypeRegistry();
 
     InstanceProvider<NaturalEntity> naturalEntities();

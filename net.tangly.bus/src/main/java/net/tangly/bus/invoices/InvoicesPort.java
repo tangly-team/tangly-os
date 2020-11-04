@@ -11,7 +11,20 @@
  *  under the License.
  */
 
+package net.tangly.bus.invoices;
+
+import org.jetbrains.annotations.NotNull;
+
 /**
- * A set of utility classes providing functions missing in the standard JDK API.
+ * Defines the export port for the invoices bounded domain.
  */
-package net.tangly.commons.utilities;
+public interface InvoicesPort {
+    /**
+     * Export the document form of the invoice.
+     *
+     * @param invoice     invoice to export=
+     * @param withQrCode  flag indicating if a Swiss QR code payment slip should be generated
+     * @param withEN16931 flag indicating if digital invoice data based on standard EN 16931 should be generated
+     */
+    void exportInvoiceDocument(@NotNull Invoice invoice, boolean withQrCode, boolean withEN16931);
+}

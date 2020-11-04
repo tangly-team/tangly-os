@@ -24,7 +24,7 @@ import net.tangly.crm.ports.CrmHdl;
 import net.tangly.crm.ports.CrmVcardHdl;
 import org.junit.jupiter.api.Test;
 
-class RealmCrmVcardHdlTest {
+class CrmRealmVcardHdlTest {
     @Test
     void testVcard() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {

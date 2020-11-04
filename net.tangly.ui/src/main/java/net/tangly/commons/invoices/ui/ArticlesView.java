@@ -22,14 +22,14 @@ import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.bus.codes.CodeType;
 import net.tangly.bus.invoices.Article;
 import net.tangly.bus.invoices.ArticleCode;
-import net.tangly.bus.providers.Provider;
+import net.tangly.bus.invoices.InvoicesBusinessLogic;
 import net.tangly.commons.vaadin.CodeField;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class ArticlesView extends EntitiesView<Article> {
-    ;
+    private final InvoicesBusinessLogic logicInvoices;
     private final TextField id;
     private final TextField name;
     private final TextField text;
@@ -39,14 +39,9 @@ public class ArticlesView extends EntitiesView<Article> {
     private final TextField vatRate;
 
 
-    /**
-     * Constructor of the CRUD view for a product.
-     *
-     * @param provider provider of the class
-     * @param mode     mode in which the view should be displayed, the active functions will be accordingly configured
-     */
-    public ArticlesView(@NotNull Provider<Article> provider, @NotNull Mode mode) {
-        super(Article.class, mode, provider);
+    public ArticlesView(@NotNull InvoicesBusinessLogic logicInvoices, @NotNull Mode mode) {
+        super(Article.class, mode, logicInvoices.realm().articles());
+        this.logicInvoices = logicInvoices;
         id = new TextField("Id", "id");
         name = VaadinUtils.createTextField("Name", "name");
         text = VaadinUtils.createTextField("Text", "text");
@@ -54,11 +49,11 @@ public class ArticlesView extends EntitiesView<Article> {
         unit = VaadinUtils.createTextField("Unit", "unit");
         unitPrice = VaadinUtils.createTextField("Unit Price", "unit price");
         vatRate = VaadinUtils.createTextField("VAT Rate", "VAT rate");
-        initializeGrid();
+        initialize();
     }
 
     @Override
-    protected void initializeGrid() {
+    protected void initialize() {
         Grid<Article> grid = grid();
         grid.addColumn(Article::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Article::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
@@ -68,7 +63,7 @@ public class ArticlesView extends EntitiesView<Article> {
                 .setResizable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(Article::vatRate).setKey("vatRate").setHeader("VAT Rate").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Article::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
-        addAndExpand(grid(), createCrudButtons());
+        addAndExpand(grid(), gridButtons());
     }
 
     @Override

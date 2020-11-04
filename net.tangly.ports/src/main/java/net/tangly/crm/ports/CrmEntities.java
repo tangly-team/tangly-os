@@ -17,11 +17,11 @@ import javax.inject.Inject;
 
 import net.tangly.bus.core.TagTypeRegistry;
 import net.tangly.bus.crm.Contract;
+import net.tangly.bus.crm.CrmRealm;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.Interaction;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
-import net.tangly.bus.crm.RealmCrm;
 import net.tangly.bus.crm.Subject;
 import net.tangly.bus.providers.InstanceProvider;
 import net.tangly.bus.providers.InstanceProviderInMemory;
@@ -41,7 +41,7 @@ import org.jetbrains.annotations.NotNull;
  * </ul>
  * <p>The class is also the connection point between the CRM domain model and other ones. One such external domain is the invoices domain.</p>
  */
-public class CrmEntities implements RealmCrm {
+public class CrmEntities implements CrmRealm {
     private final InstanceProvider<NaturalEntity> naturalEntities;
     private final InstanceProvider<LegalEntity> legalEntities;
     private final InstanceProvider<Employee> employees;

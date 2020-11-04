@@ -19,7 +19,8 @@ import java.util.List;
 import net.tangly.bus.products.Assignment;
 import net.tangly.bus.products.Effort;
 import net.tangly.bus.products.Product;
-import net.tangly.bus.products.RealmProducts;
+import net.tangly.bus.products.ProductsHandler;
+import net.tangly.bus.products.ProductsRealm;
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
@@ -30,15 +31,15 @@ import static net.tangly.ports.TsvHdl.OID;
 import static net.tangly.ports.TsvHdl.TEXT;
 import static net.tangly.ports.TsvHdl.createTsvEntityFields;
 
-public class ProductsHdl {
+public class ProductsHdl implements ProductsHandler {
     public static final String PRODUCTS_TSV = "products.tsv";
     public static final String ASSIGNMENTS_TSV = "assignments.tsv";
     public static final String EFFORTS_TSV = "efforts.tsv";
 
-    private final RealmProducts realm;
+    private final ProductsRealm realm;
     private final Path folder;
 
-    public ProductsHdl(@NotNull RealmProducts realm, @NotNull Path folder) {
+    public ProductsHdl(@NotNull ProductsRealm realm, @NotNull Path folder) {
         this.realm = realm;
         this.folder = folder;
     }

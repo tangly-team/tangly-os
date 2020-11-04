@@ -20,11 +20,10 @@ import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.bus.ledger.Account;
-import net.tangly.bus.ledger.BusinessLogicLedger;
+import net.tangly.bus.ledger.LedgerBusinessLogic;
 import net.tangly.bus.providers.RecordProviderInMemory;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
-import net.tangly.ledger.ports.LedgerPort;
 import org.jetbrains.annotations.NotNull;
 
 public class AccountsView extends EntitiesView<Account> {
@@ -38,15 +37,15 @@ public class AccountsView extends EntitiesView<Account> {
      * @param ledgerLogic ledger business lodgic which accounts should be displayed
      * @param mode        mode of the view
      */
-    public AccountsView(@NotNull BusinessLogicLedger ledgerLogic, @NotNull Mode mode) {
+    public AccountsView(@NotNull LedgerBusinessLogic ledgerLogic, @NotNull Mode mode) {
         super(Account.class, mode, RecordProviderInMemory.of(ledgerLogic.ledger().accounts()));
         from = LocalDate.of(LocalDate.now().getYear(), 1, 1);
         to = LocalDate.of(LocalDate.now().getYear(), 12, 31);
-        initializeGrid();
+        initialize();
     }
 
     @Override
-    protected void initializeGrid() {
+    protected void initialize() {
         Grid<Account> grid = grid();
         grid.addColumn(Account::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::group).setKey("group").setHeader("Group").setAutoWidth(true).setResizable(true);
@@ -58,7 +57,7 @@ public class AccountsView extends EntitiesView<Account> {
         grid.addColumn(Account::kind).setKey("kind").setHeader("Kind").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::ownedBy).setKey("ownedBy").setHeader("Owned By").setAutoWidth(true).setResizable(true);
-        addAndExpand(grid(), createCrudButtons());
+        addAndExpand(grid(), gridButtons());
     }
 
     public void interval(@NotNull LocalDate from, @NotNull LocalDate to) {

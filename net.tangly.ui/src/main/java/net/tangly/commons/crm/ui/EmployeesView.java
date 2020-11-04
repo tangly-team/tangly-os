@@ -16,11 +16,11 @@ package net.tangly.commons.crm.ui;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
+import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
-import net.tangly.bus.crm.RealmCrm;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.InternalEntitiesView;
@@ -29,23 +29,23 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class EmployeesView extends InternalEntitiesView<Employee> {
-    private final RealmCrm realm;
+    private final CrmBusinessLogic crmLogic;
 
-    public EmployeesView(@NotNull RealmCrm realm, @NotNull Mode mode) {
-        super(Employee.class, mode, realm.employees(), realm.tagTypeRegistry());
-        this.realm = realm;
-        initializeGrid();
+    public EmployeesView(@NotNull CrmBusinessLogic crmLogic, @NotNull Mode mode) {
+        super(Employee.class, mode, crmLogic.realm().employees(), crmLogic.realm().tagTypeRegistry());
+        this.crmLogic = crmLogic;
+        initialize();
     }
 
     @Override
-    protected void initializeGrid() {
+    protected void initialize() {
         Grid<Employee> grid = grid();
         grid.addColumn(Employee::name).setKey("employee").setHeader("Employee").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.person().name()).setKey("person").setHeader("Person").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.organization().name()).setKey("organization").setHeader("Organization").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.tag(CrmTags.CRM_EMPLOYEE_TITLE).orElse("")).setKey("title").setHeader("Title").setSortable(true).setAutoWidth(true)
                 .setResizable(true);
-        addAndExpand(filterCriteria(grid()), grid(), createCrudButtons());
+        addAndExpand(filterCriteria(grid()), grid(), gridButtons());
     }
 
     @Override
@@ -53,9 +53,9 @@ public class EmployeesView extends InternalEntitiesView<Employee> {
         boolean readonly = Mode.readOnly(mode);
         EntityField<Employee> entityField = new EntityField<>();
         entityField.setReadOnly(readonly);
-        One2OneField<LegalEntity, LegalEntitiesView> organization = new One2OneField<>("Organization", new LegalEntitiesView(realm, mode));
+        One2OneField<LegalEntity, LegalEntitiesView> organization = new One2OneField<>("Organization", new LegalEntitiesView(crmLogic, mode));
         organization.setReadOnly(readonly);
-        One2OneField<NaturalEntity, NaturalEntitiesView> person = new One2OneField<>("Person", new NaturalEntitiesView(realm, mode));
+        One2OneField<NaturalEntity, NaturalEntitiesView> person = new One2OneField<>("Person", new NaturalEntitiesView(crmLogic, mode));
         person.setReadOnly(readonly);
 
         FormLayout form = new FormLayout();

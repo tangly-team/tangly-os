@@ -7,21 +7,20 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
-import net.tangly.bus.ledger.BusinessLogicLedger;
+import net.tangly.bus.ledger.LedgerBusinessLogic;
 import net.tangly.commons.vaadin.Crud;
 import net.tangly.commons.vaadin.TabsComponent;
-import net.tangly.ledger.ports.LedgerPort;
 import org.jetbrains.annotations.NotNull;
 
 public class LedgerView extends VerticalLayout {
     private final TabsComponent tabs;
     private final AccountsView accountsView;
     private final TransactionsView transactionsView;
-    private final BusinessLogicLedger ledgerLogic;
+    private final LedgerBusinessLogic ledgerLogic;
     private LocalDate from;
     private LocalDate to;
 
-    public LedgerView(@NotNull BusinessLogicLedger ledgerLogic, @NotNull Crud.Mode mode) {
+    public LedgerView(@NotNull LedgerBusinessLogic ledgerLogic, @NotNull Crud.Mode mode) {
         this.ledgerLogic = ledgerLogic;
         from = LocalDate.of(LocalDate.now().getYear(), 1, 1);
         to = LocalDate.of(LocalDate.now().getYear(), 12, 31);

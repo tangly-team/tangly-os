@@ -35,7 +35,7 @@ import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceItem;
 import net.tangly.bus.invoices.InvoiceLegalEntity;
 import net.tangly.bus.invoices.InvoiceLine;
-import net.tangly.bus.invoices.RealmInvoices;
+import net.tangly.bus.invoices.InvoicesRealm;
 import net.tangly.bus.invoices.Subtotal;
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.JsonUtilities;
@@ -53,9 +53,9 @@ import org.slf4j.LoggerFactory;
 public class InvoiceJson implements InvoiceGenerator {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private static final String COMPONENT = "net.tangly.ports";
-    private final RealmInvoices realm;
+    private final InvoicesRealm realm;
 
-    public InvoiceJson(@NotNull RealmInvoices realm) {
+    public InvoiceJson(@NotNull InvoicesRealm realm) {
         this.realm = realm;
     }
 

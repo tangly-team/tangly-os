@@ -24,9 +24,9 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.bus.codes.CodeType;
+import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.Interaction;
 import net.tangly.bus.crm.InteractionCode;
-import net.tangly.bus.crm.RealmCrm;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.InternalEntitiesView;
@@ -35,16 +35,16 @@ import org.jetbrains.annotations.NotNull;
 
 public class InteractionsView extends InternalEntitiesView<Interaction> {
     public static final BigDecimal HUNDRED = new BigDecimal("100");
-    private final RealmCrm realm;
+    private final CrmBusinessLogic crmLogic;
 
-    public InteractionsView(@NotNull RealmCrm realm, @NotNull Mode mode) {
-        super(Interaction.class, mode, realm.interactions(), realm.tagTypeRegistry());
-        this.realm = realm;
-        initializeGrid();
+    public InteractionsView(@NotNull CrmBusinessLogic crmLogic, @NotNull Mode mode) {
+        super(Interaction.class, mode, crmLogic.realm().interactions(), crmLogic.realm().tagTypeRegistry());
+        this.crmLogic = crmLogic;
+        initialize();
     }
 
     @Override
-    protected void initializeGrid() {
+    protected void initialize() {
         Grid<Interaction> grid = grid();
         InternalEntitiesView.addQualifiedEntityColumns(grid);
         grid.addColumn(Interaction::code).setKey("state").setHeader("State").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
@@ -54,7 +54,7 @@ public class InteractionsView extends InternalEntitiesView<Interaction> {
                 .setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(new NumberRenderer<>(e -> e.potential().multiply(e.probability()), VaadinUtils.FORMAT)).setKey("forecast").setHeader("Forecast")
                 .setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
-        addAndExpand(filterCriteria(grid()), grid(), createCrudButtons());
+        addAndExpand(filterCriteria(grid()), grid(), gridButtons());
     }
 
     @Override

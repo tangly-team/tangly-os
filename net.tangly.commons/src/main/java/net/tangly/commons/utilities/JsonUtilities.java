@@ -38,6 +38,9 @@ import org.slf4j.LoggerFactory;
 public class JsonUtilities {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
+    private JsonUtilities() {
+    }
+
     /**
      * Check if the JSON file is valid against the JSON schema describing the structure of the JSON file.
      *
@@ -70,8 +73,5 @@ public class JsonUtilities {
             logger.atError().setCause(e).log("IO Exception when processing {}", jsonFile);
             throw new UncheckedIOException(e);
         }
-    }
-
-    private JsonUtilities() {
     }
 }

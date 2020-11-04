@@ -20,11 +20,12 @@ import java.nio.file.Path;
 
 import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.core.TagTypeRegistry;
-import net.tangly.bus.invoices.BusinessLogicInvoices;
-import net.tangly.bus.invoices.RealmInvoices;
+import net.tangly.bus.invoices.InvoicesBusinessLogic;
+import net.tangly.bus.invoices.InvoicesRealm;
+import net.tangly.invoices.ports.InvoicesAdapter;
 import net.tangly.invoices.ports.InvoicesEntities;
 import net.tangly.invoices.ports.InvoicesHdl;
-import net.tangly.invoices.ports.InvoicesPort;
+import net.tangly.invoices.ports.InvoicesUtilities;
 import org.apache.pdfbox.cos.COSDocument;
 import org.apache.pdfbox.io.RandomAccessBufferedFileInputStream;
 import org.apache.pdfbox.pdfparser.PDFParser;
@@ -74,27 +75,27 @@ class InvoicesHdlTest {
             ErpStore store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
 
-            InvoicesPort port = new InvoicesPort(new InvoicesEntities(new TagTypeRegistry()), store.invoiceReportsRoot());
+            InvoicesAdapter port = new InvoicesAdapter(new InvoicesEntities(new TagTypeRegistry()), store.invoiceReportsRoot());
 
             InvoicesHdl handler = new InvoicesHdl(new InvoicesEntities(new TagTypeRegistry()), store.invoicesRoot());
             handler.importEntities();
-            port.exportInvoiceDocuments(store.invoiceReportsRoot(), false, false);
+            port.exportInvoiceDocuments(false, false);
 
-            handler.realm().invoices().items().forEach(o -> assertThat(Files.exists(handler.resolvePath(store.invoicesRoot(), o))).isTrue());
+            handler.realm().invoices().items().forEach(o -> assertThat(Files.exists(InvoicesUtilities.resolvePath(store.invoicesRoot(), o))).isTrue());
         }
     }
 
-    private void verifyInvoices(@NotNull RealmInvoices realm) {
+    private void verifyInvoices(@NotNull InvoicesRealm realm) {
         assertThat(realm.invoices().items().isEmpty()).isFalse();
         realm.invoices().items().forEach(o -> assertThat(o.isValid()).isTrue());
     }
 
-    private void verifyArticles(@NotNull RealmInvoices realm) {
+    private void verifyArticles(@NotNull InvoicesRealm realm) {
         assertThat(realm.articles().items().isEmpty()).isFalse();
     }
 
-    private void verifyBusinessLogic(@NotNull RealmInvoices realm) {
-        BusinessLogicInvoices logic = new BusinessLogicInvoices(realm);
+    private void verifyBusinessLogic(@NotNull InvoicesRealm realm) {
+        InvoicesBusinessLogic logic = new InvoicesBusinessLogic(realm, null, null);
         assertThat(logic.invoicedAmountWithoutVatForContract(CONTRACT_HSLU_2015, null, null))
                 .isEqualByComparingTo(logic.paidAmountWithoutVatForContract(CONTRACT_HSLU_2015, null, null));
         assertThat(logic.expensesForContract(CONTRACT_HSLU_2015, null, null)).isNotNegative();

@@ -21,15 +21,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.Stream;
 import javax.inject.Inject;
 
 import net.tangly.bus.invoices.Article;
 import net.tangly.bus.invoices.ArticleCode;
 import net.tangly.bus.invoices.Invoice;
-import net.tangly.bus.invoices.RealmInvoices;
+import net.tangly.bus.invoices.InvoicesHandler;
+import net.tangly.bus.invoices.InvoicesRealm;
 import net.tangly.commons.logger.EventData;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
@@ -46,23 +45,20 @@ import static net.tangly.ports.TsvHdl.get;
 /**
  * Defines the workflows defined for bounded domain activities in particular the import and export to files.
  */
-public class InvoicesHdl {
-    public static final String INVOICES = "invoices";
+public class InvoicesHdl implements InvoicesHandler {
     public static final String REPORTS = "reports";
     public static final String ARTICLES_TSV = "articles.tsv";
     public static final String JSON_EXT = ".json";
-    public static final String INVOICE_NAME_PATTERN = "\\d{4}-\\d{4}-.*";
-    private static final Pattern invoicePattern = Pattern.compile(INVOICE_NAME_PATTERN);
-    private final RealmInvoices realm;
+    private final InvoicesRealm realm;
     private final Path invoicesFolder;
 
     @Inject
-    public InvoicesHdl(@NotNull RealmInvoices realm, @NotNull Path invoicesFolder) {
+    public InvoicesHdl(@NotNull InvoicesRealm realm, @NotNull Path invoicesFolder) {
         this.realm = realm;
         this.invoicesFolder = invoicesFolder;
     }
 
-    public RealmInvoices realm() {
+    public InvoicesRealm realm() {
         return realm;
     }
 
@@ -100,11 +96,11 @@ public class InvoicesHdl {
         exportArticles(invoicesFolder.resolve(ARTICLES_TSV));
         InvoiceJson invoiceJson = new InvoiceJson(realm);
         realm.invoices().items().forEach(o -> {
-            Path invoiceFolder = resolvePath(invoicesFolder, o);
+            Path invoiceFolder = InvoicesUtilities.resolvePath(invoicesFolder, o);
             Path invoicePath = invoiceFolder.resolve(o.name() + JSON_EXT);
             invoiceJson.exports(o, invoicePath, Collections.emptyMap());
             EventData.log(EventData.EXPORT, "net.tangly.crm.ports", EventData.Status.SUCCESS, "Invoice exported to JSON {}",
-                    Map.of("invoice", o, "invoicePath", invoicePath));
+                Map.of("invoice", o, "invoicePath", invoicePath));
         });
     }
 
@@ -118,36 +114,13 @@ public class InvoicesHdl {
 
     static TsvEntity<Article> createTsvArticle() {
         Function<CSVRecord, Article> imports = (CSVRecord record) -> new Article(get(record, ID), get(record, NAME), get(record, TEXT),
-                Enum.valueOf(ArticleCode.class, get(record, "code").toLowerCase()), TsvProperty.CONVERT_BIG_DECIMAL_FROM.apply(get(record, "unitPrice")),
-                get(record, "unit"), TsvProperty.CONVERT_BIG_DECIMAL_FROM.apply(get(record, "vatRate")));
+            Enum.valueOf(ArticleCode.class, get(record, "code").toLowerCase()), TsvProperty.CONVERT_BIG_DECIMAL_FROM.apply(get(record, "unitPrice")),
+            get(record, "unit"), TsvProperty.CONVERT_BIG_DECIMAL_FROM.apply(get(record, "vatRate")));
 
         List<TsvProperty<Article, ?>> fields = List.of(TsvProperty.ofString(ID, Article::id, null), TsvProperty.ofString(NAME, Article::name, null),
-                TsvProperty.ofString(TEXT, Article::text, null), TsvProperty.ofEnum(ArticleCode.class, "code", Article::code, null),
-                TsvProperty.ofBigDecimal("unitPrice", Article::unitPrice, null), TsvProperty.ofString("unit", Article::unit, null),
-                TsvProperty.ofBigDecimal("vatRate", Article::vatRate, null));
+            TsvProperty.ofString(TEXT, Article::text, null), TsvProperty.ofEnum(ArticleCode.class, "code", Article::code, null),
+            TsvProperty.ofBigDecimal("unitPrice", Article::unitPrice, null), TsvProperty.ofString("unit", Article::unit, null),
+            TsvProperty.ofBigDecimal("vatRate", Article::vatRate, null));
         return TsvEntity.of(Article.class, fields, imports);
-    }
-
-
-    /**
-     * Resolve the path to where an invoice should be located in the file system. The convention is <i>base directory/invoices/year</i>. If folders do not exist
-     * they are created.
-     *
-     * @param directory base directory containing the invoices
-     * @param invoice   invoice to write
-     * @return path to the folder where the invoice should be written
-     */
-    public static Path resolvePath(@NotNull Path directory, @NotNull Invoice invoice) {
-        Path invoicesPath = directory.resolve(INVOICES);
-        Matcher matcher = invoicePattern.matcher(invoice.name());
-        Path invoicePath = matcher.matches() ? invoicesPath.resolve(invoice.name().substring(0, 4)) : invoicesPath;
-        if (Files.notExists(invoicePath)) {
-            try {
-                Files.createDirectories(invoicePath);
-            } catch (IOException e) {
-                throw new UncheckedIOException(e);
-            }
-        }
-        return invoicePath;
     }
 }

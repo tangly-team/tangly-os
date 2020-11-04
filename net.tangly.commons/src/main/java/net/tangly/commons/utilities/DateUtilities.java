@@ -18,10 +18,10 @@ import java.time.LocalDate;
 import org.jetbrains.annotations.NotNull;
 
 public final class DateUtilities {
-    public static boolean isWithinRange(@NotNull LocalDate date, LocalDate from, LocalDate to) {
-        return ((from == null) || !date.isBefore(from)) && ((to == null) || !date.isAfter(to));
+    private DateUtilities() {
     }
 
-    private DateUtilities() {
+    public static boolean isWithinRange(@NotNull LocalDate date, LocalDate from, LocalDate to) {
+        return ((from == null) || !date.isBefore(from)) && ((to == null) || !date.isAfter(to));
     }
 }

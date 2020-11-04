@@ -12,6 +12,6 @@
  */
 
 /**
- * Provides extensions to the slf4j logging framework. One major extension is the concept of audit trail to create audit log for all relevant aperations.
+ * Provide extensions to the slf4j logging framework. One major extension is the concept of audit trail to create audit log for all relevant aperations.
  */
 package net.tangly.commons.logger;

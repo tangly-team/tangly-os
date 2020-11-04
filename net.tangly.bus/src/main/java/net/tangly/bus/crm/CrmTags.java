@@ -109,7 +109,6 @@ public final class CrmTags {
         registry.register(TagType.ofMandatoryString(CRM, "im-" + LINKEDIN));
         registry.register(TagType.ofMandatoryString(CRM, "im-" + SKYPE));
         registry.register(TagType.ofMandatoryString(CRM, "im-" + GOOGLE));
-        registry.register(TagType.ofMandatoryString(CRM, "company-id"));
         registry.register(TagType.ofMandatoryString(CRM, "vat-number"));
         registry.register(TagType.ofMandatory(CRM, "bank-connection", BankConnection.class, BankConnection::of));
 

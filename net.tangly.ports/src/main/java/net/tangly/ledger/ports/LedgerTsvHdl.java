@@ -31,7 +31,7 @@ import javax.inject.Inject;
 import net.tangly.bus.core.Tag;
 import net.tangly.bus.ledger.Account;
 import net.tangly.bus.ledger.AccountEntry;
-import net.tangly.bus.ledger.Ledger;
+import net.tangly.bus.ledger.LedgerRealm;
 import net.tangly.bus.ledger.Transaction;
 import net.tangly.commons.lang.Strings;
 import org.apache.commons.csv.CSVFormat;
@@ -62,10 +62,10 @@ public class LedgerTsvHdl {
     private static final String VAT_CODE = "VatCode";
 
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-    private final Ledger ledger;
+    private final LedgerRealm ledger;
 
     @Inject
-    public LedgerTsvHdl(@NotNull Ledger ledger) {
+    public LedgerTsvHdl(@NotNull LedgerRealm ledger) {
         this.ledger = ledger;
     }
 
@@ -74,7 +74,7 @@ public class LedgerTsvHdl {
      *
      * @return the ledger used by the handler
      */
-    public Ledger ledger() {
+    public LedgerRealm ledger() {
         return ledger;
     }
 

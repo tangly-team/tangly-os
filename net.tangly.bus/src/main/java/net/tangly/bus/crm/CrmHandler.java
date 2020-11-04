@@ -11,7 +11,23 @@
  *  under the License.
  */
 
+package net.tangly.bus.crm;
+
 /**
- * A set of utility classes providing functions missing in the standard JDK API.
+ * Define the import port for the bounded domain. It is a primary port in the DDD terminology.
  */
-package net.tangly.commons.utilities;
+public interface CrmHandler {
+    /**
+     * Import all CRM entities from the file system.
+     *
+     * @see #exportEntities()
+     */
+    void importEntities();
+
+    /**
+     * Export all CRM entities to the file system.
+     *
+     * @see #importEntities()
+     */
+    void exportEntities();
+}

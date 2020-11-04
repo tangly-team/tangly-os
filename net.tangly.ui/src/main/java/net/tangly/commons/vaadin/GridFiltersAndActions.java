@@ -29,31 +29,38 @@ import net.tangly.bus.core.HasInterval;
 import net.tangly.bus.core.HasTags;
 import org.jetbrains.annotations.NotNull;
 
-public class GridFiltersAndActions<E> extends HorizontalLayout {
-    private final ListDataProvider<E> provider;
-    private final List<GridFilter<E>> filters;
+public class GridFiltersAndActions<T> extends HorizontalLayout implements SelectedItemListener<T> {
+    private final ListDataProvider<T> provider;
+    private final List<GridFilter<T>> filters;
     private final MenuBar menuBar;
     private final MenuItem actionsItem;
     private final SubMenu actions;
+    private T seletectItem;
 
-    public GridFiltersAndActions(@NotNull ListDataProvider<E> provider) {
+    public GridFiltersAndActions(@NotNull ListDataProvider<T> provider) {
         this.provider = provider;
         filters = new ArrayList<>();
         menuBar = new MenuBar();
         actionsItem = menuBar.addItem("Actions");
         actions = actionsItem.getSubMenu();
+        selectedItem(null);
         add(menuBar);
     }
 
-    public void selectedGridItemEvent(E entity) {
+    public void selectedItem(T entity) {
+        seletectItem = entity;
         actionsItem.setEnabled(entity != null);
+    }
+
+    public T selectedItem() {
+        return seletectItem;
     }
 
     public SubMenu actions() {
         return actions;
     }
 
-    public void addFilter(@NotNull GridFilter<E> filter) {
+    public void addFilter(@NotNull GridFilter<T> filter) {
         filters.add(filter);
         this.add(filter.component());
     }
@@ -72,7 +79,7 @@ public class GridFiltersAndActions<E> extends HorizontalLayout {
     public static class GridFilterTags<E extends HasTags> implements GridFilter<E> {
         private final TextField component;
 
-        public GridFilterTags(@NotNull GridFiltersAndActions container) {
+        public GridFilterTags(@NotNull GridFiltersAndActions<E> container) {
             component = new TextField("Tags", "tags");
             component.setClearButtonVisible(true);
             component.addValueChangeListener(e -> container.updateFilters());
@@ -92,7 +99,7 @@ public class GridFiltersAndActions<E> extends HorizontalLayout {
     public static class GridFilterInterval<E extends HasInterval> implements GridFilter<E> {
         private final DatePicker component;
 
-        public GridFilterInterval(@NotNull GridFiltersAndActions container) {
+        public GridFilterInterval(@NotNull GridFiltersAndActions<E> container) {
             component = new DatePicker("Date");
             component.setClearButtonVisible(true);
             component.addValueChangeListener(e -> container.updateFilters());
@@ -113,7 +120,7 @@ public class GridFiltersAndActions<E> extends HorizontalLayout {
         private final TextField component;
         private final Function<E, String> getter;
 
-        public GridFilterText(@NotNull GridFiltersAndActions container, @NotNull Function<E, String> getter, String label, String placeholder) {
+        public GridFilterText(@NotNull GridFiltersAndActions<E> container, @NotNull Function<E, String> getter, String label, String placeholder) {
             component = new TextField(label, placeholder);
             component.setClearButtonVisible(true);
             component.addValueChangeListener(e -> container.updateFilters());

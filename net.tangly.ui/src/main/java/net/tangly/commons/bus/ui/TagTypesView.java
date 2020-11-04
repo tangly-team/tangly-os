@@ -31,7 +31,7 @@ public class TagTypesView extends VerticalLayout {
     private final TagTypeRegistry registry;
     private final HashMap<TagType<?>, Integer> counts;
 
-    public TagTypesView(TagTypeRegistry registry) {
+    public TagTypesView(@NotNull TagTypeRegistry registry) {
         this.registry = registry;
         this.counts = new HashMap<>();
         this.grid = new PaginatedGrid<>(TagType.class);

@@ -28,19 +28,17 @@ import org.asciidoctor.SafeMode;
 import org.jetbrains.annotations.NotNull;
 
 public class AsciiDoctorHelper {
-    public static final String ASCII_DOC_EXT = ".adoc";
+    public static final String ASCIIDOC_EXT = ".adoc";
     public static final String PDF_EXT = ".pdf";
 
-    public static void createPdf(@NotNull Path directory, @NotNull String filenameWithoutExtension) {
-        createPdf(directory.resolve(filenameWithoutExtension + ASCII_DOC_EXT), directory, filenameWithoutExtension);
+    private AsciiDoctorHelper() {
     }
 
-    public static void createPdf(@NotNull Path asciidocPath, @NotNull Path pdfDirectory, @NotNull String filenameWithoutExtension) {
+    public static void createPdf(@NotNull Path asciidocFilePath, @NotNull Path pdfFilePath) {
         System.setProperty("jruby.compat.version", "RUBY1_9");
         System.setProperty("jruby.compile.mode", "OFF");
-        try (Asciidoctor asciidoctor = Asciidoctor.Factory.create();
-             OutputStream out = Files.newOutputStream(pdfDirectory.resolve(filenameWithoutExtension + PDF_EXT))) {
-            String asciidoc = Files.readString(asciidocPath);
+        try (Asciidoctor asciidoctor = Asciidoctor.Factory.create(); OutputStream out = Files.newOutputStream(pdfFilePath)) {
+            String asciidoc = Files.readString(asciidocFilePath);
             Attributes attributes = AttributesBuilder.attributes().get();
             Options options = OptionsBuilder.options().inPlace(true).attributes(attributes).backend("pdf").safe(SafeMode.UNSAFE).toStream(out).get();
             asciidoctor.convert(asciidoc, options);

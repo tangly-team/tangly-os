@@ -14,6 +14,7 @@
 package net.tangly.bus.core;
 
 import java.time.LocalDate;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
@@ -35,6 +36,26 @@ public interface HasInterval {
 
         public boolean test(T entity) {
             return (from == null || !from.isAfter(entity.fromDate())) && (to == null || !to.isBefore(entity.toDate()));
+        }
+    }
+
+    class IsInInterval<T> implements Predicate<T> {
+        private LocalDate from;
+        private LocalDate to;
+        private final Function<T, LocalDate> date;
+
+        IsInInterval(Function<T, LocalDate> date) {
+            this.date = date;
+        }
+
+        public void interval(LocalDate from, LocalDate to) {
+            this.from = from;
+            this.to = to;
+        }
+
+        @Override
+        public boolean test(T object) {
+            return ((from == null) || from.isAfter(date.apply(object))) && ((to == null) || to.isBefore(date.apply(object)));
         }
     }
 

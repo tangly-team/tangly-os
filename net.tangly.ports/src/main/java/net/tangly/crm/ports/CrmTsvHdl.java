@@ -39,7 +39,7 @@ import net.tangly.bus.crm.Interaction;
 import net.tangly.bus.crm.InteractionCode;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
-import net.tangly.bus.crm.RealmCrm;
+import net.tangly.bus.crm.CrmRealm;
 import net.tangly.bus.crm.Subject;
 import net.tangly.bus.providers.InstanceProviderInMemory;
 import net.tangly.bus.providers.Provider;
@@ -94,10 +94,10 @@ public class CrmTsvHdl {
     private static final String TAGS = "tags";
 
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-    private final RealmCrm realm;
+    private final CrmRealm realm;
 
     @Inject
-    public CrmTsvHdl(@NotNull RealmCrm realm) {
+    public CrmTsvHdl(@NotNull CrmRealm realm) {
         this.realm = realm;
     }
 

@@ -11,7 +11,17 @@
  *  under the License.
  */
 
-/**
- * A set of utility classes providing functions missing in the standard JDK API.
- */
-package net.tangly.commons.utilities;
+package net.tangly.bus.products;
+
+import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.bus.providers.Provider;
+
+public interface ProductsRealm {
+    TagTypeRegistry tagTypeRegistry();
+
+    Provider<Assignment> assignements();
+
+    Provider<Effort> efforts();
+
+    Provider<Product> products();
+}

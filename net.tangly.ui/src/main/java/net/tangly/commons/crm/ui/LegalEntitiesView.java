@@ -19,14 +19,13 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.LegalEntity;
-import net.tangly.bus.crm.RealmCrm;
 import net.tangly.bus.providers.ViewProvider;
 import net.tangly.commons.vaadin.CommentsView;
 import net.tangly.commons.vaadin.EntitiesView;
-import net.tangly.commons.vaadin.GridActionsListener;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.One2ManyView;
 import net.tangly.commons.vaadin.QualifiedEntityField;
@@ -36,17 +35,16 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
-    private final RealmCrm realm;
+    private final CrmBusinessLogic crmLogic;
 
-    public LegalEntitiesView(@NotNull RealmCrm realm, @NotNull Mode mode) {
-        super(LegalEntity.class, mode, realm.legalEntities(), realm.tagTypeRegistry());
-        this.realm = realm;
-        initializeGrid();
+    public LegalEntitiesView(@NotNull CrmBusinessLogic crmLogic, @NotNull Mode mode) {
+        super(LegalEntity.class, mode, crmLogic.realm().legalEntities(), crmLogic.realm().tagTypeRegistry());
+        this.crmLogic = crmLogic;
+        initialize();
     }
 
     @Override
-    protected void initializeGrid() {
-        initialize(this, new GridActionsListener<>(provider, grid().getDataProvider(), this::selectedItem));
+    protected void initialize() {
         Grid<LegalEntity> grid = grid();
         grid.addColumn(LegalEntity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(VaadinUtils.zefixComponentRenderer()).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
@@ -55,7 +53,8 @@ public class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
         grid.addColumn(LegalEntity::toDate).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::organizationLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
         grid.addColumn(VaadinUtils.urlComponentRenderer(CrmTags.CRM_SITE_WORK)).setKey("webSite").setHeader("Web Site").setAutoWidth(true);
-        addAndExpand(filterCriteria(grid()), grid(), createCrudButtons());
+
+        addAndExpand(filterCriteria(grid()), grid(), gridButtons());
     }
 
     public static void defineOne2ManyEmployees(@NotNull Grid<Employee> grid) {
@@ -63,7 +62,7 @@ public class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
         grid.addColumn(Employee::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(o -> o.person().name()).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(o -> o.tag(CrmTags.CRM_EMPLOYEE_TITLE).orElse(null)).setKey("title").setHeader("Title").setAutoWidth(true).setResizable(true)
-                .setSortable(true);
+            .setSortable(true);
         grid.addColumn(Employee::fromDate).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Employee::toDate).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
     }
@@ -72,9 +71,9 @@ public class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
     protected void registerTabs(@NotNull TabsComponent tabs, @NotNull Mode mode, LegalEntity entity) {
         tabs.add(new Tab("Overview"), createOverallView(mode, entity));
         tabs.add(new Tab("Comments"), new CommentsView(mode, entity));
-        tabs.add(new Tab("Tags"), new TagsView(mode, entity, realm.tagTypeRegistry()));
+        tabs.add(new Tab("Tags"), new TagsView(mode, entity, crmLogic.realm().tagTypeRegistry()));
         One2ManyView<Employee> employees = new One2ManyView<>(Employee.class, mode, LegalEntitiesView::defineOne2ManyEmployees,
-                ViewProvider.of(realm.employees(), o -> entity.oid() == o.organization().oid()), new EmployeesView(realm, mode));
+            ViewProvider.of(crmLogic.realm().employees(), o -> entity.oid() == o.organization().oid()), new EmployeesView(crmLogic, mode));
         tabs.add(new Tab("Employees"), employees);
     }
 

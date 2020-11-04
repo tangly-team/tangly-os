@@ -25,17 +25,30 @@ import org.jetbrains.annotations.NotNull;
 /**
  * The business logic and rules of the bounded domain of CRM entities.
  */
-public class BusinessLogicCrm {
-    private final RealmCrm realm;
+public class CrmBusinessLogic {
+    private final CrmRealm realm;
+    private final CrmHandler handler;
+    private final CrmPort port;
 
     @Inject
-    public BusinessLogicCrm(@NotNull RealmCrm realm) {
+    public CrmBusinessLogic(@NotNull CrmRealm realm, CrmHandler handler, CrmPort port) {
         this.realm = realm;
+        this.handler = handler;
+        this.port = port;
     }
 
-    public RealmCrm realm() {
+    public CrmRealm realm() {
         return realm;
     }
+
+    public CrmHandler handler() {
+        return handler;
+    }
+
+    public CrmPort port() {
+        return port;
+    }
+
 
     public void registerTags(@NotNull TagTypeRegistry registry) {
         CrmTags.registerTags(registry);

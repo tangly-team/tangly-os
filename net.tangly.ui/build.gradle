@@ -29,7 +29,7 @@ project.ext.inceptionYear = '1996'
 project.description = "Vaadin user interface for the business components (tangly llc)"
 
 ext {
-    vaadinVersion = '17.0.8'
+    vaadinVersion = '17.0.9'
 }
 
 vaadin {
@@ -72,7 +72,7 @@ dependencies {
     implementation enforcedPlatform("com.vaadin:vaadin-bom:$vaadinVersion")
     providedCompile "javax.servlet:javax.servlet-api:3.1.0"
 
-    implementation 'com.storedobject.chart:so-charts:0.0.7'
+    implementation 'com.storedobject.chart:so-charts:0.1.1'
     implementation 'org.vaadin.klaudeta:grid-pagination:2.0.9'
     implementation "org.slf4j:slf4j-simple:$slf4jVersion"
 

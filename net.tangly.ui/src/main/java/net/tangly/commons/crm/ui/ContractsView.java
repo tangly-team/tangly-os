@@ -24,10 +24,9 @@ import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.bus.crm.Contract;
+import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.LegalEntity;
-import net.tangly.bus.crm.RealmCrm;
-import net.tangly.bus.invoices.BusinessLogicInvoices;
-import net.tangly.bus.invoices.RealmInvoices;
+import net.tangly.bus.invoices.InvoicesBusinessLogic;
 import net.tangly.commons.vaadin.BankConnectionField;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.EntityField;
@@ -37,27 +36,26 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class ContractsView extends InternalEntitiesView<Contract> {
-    private final RealmCrm realm;
-    private final RealmInvoices realmInvoices;
+    private final CrmBusinessLogic crmLogic;
+    private final InvoicesBusinessLogic logicInvoices;
 
-    public ContractsView(@NotNull RealmCrm realm, RealmInvoices realmInvoices, @NotNull Mode mode) {
-        super(Contract.class, mode, realm.contracts(), realm.tagTypeRegistry());
-        this.realm = realm;
-        this.realmInvoices = realmInvoices;
-        initializeGrid();
+    public ContractsView(@NotNull CrmBusinessLogic crmLogic, InvoicesBusinessLogic logicInvoices, @NotNull Mode mode) {
+        super(Contract.class, mode, crmLogic.realm().contracts(), crmLogic.realm().tagTypeRegistry());
+        this.crmLogic = crmLogic;
+        this.logicInvoices = logicInvoices;
+        initialize();
     }
 
     @Override
-    protected void initializeGrid() {
-        BusinessLogicInvoices logic = new BusinessLogicInvoices(realmInvoices);
+    protected void initialize() {
         Grid<Contract> grid = grid();
         InternalEntitiesView.addQualifiedEntityColumns(grid);
         grid.addColumn(e -> e.sellee().name()).setKey("customer").setHeader("Customer").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(new NumberRenderer<>(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true)
                 .setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
-        grid.addColumn(new NumberRenderer<>(o -> logic.invoicedAmountWithoutVatForContract(o.id(), null, null), VaadinUtils.FORMAT)).setKey("invoicedAmount")
-                .setHeader("Invoiced").setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
-        addAndExpand(filterCriteria(grid()), grid(), createCrudButtons());
+        grid.addColumn(new NumberRenderer<>(o -> logicInvoices.invoicedAmountWithoutVatForContract(o.id(), null, null), VaadinUtils.FORMAT))
+                .setKey("invoicedAmount").setHeader("Invoiced").setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
+        addAndExpand(filterCriteria(grid()), grid(), gridButtons());
     }
 
     @Override
@@ -75,9 +73,9 @@ public class ContractsView extends InternalEntitiesView<Contract> {
         currency.setLabel("Currency");
         currency.setItems(Currency.getInstance("CHF"), Currency.getInstance("EUR"));
         currency.setReadOnly(readonly);
-        One2OneField<LegalEntity, LegalEntitiesView> seller = new One2OneField<>("Seller", new LegalEntitiesView(realm, mode));
+        One2OneField<LegalEntity, LegalEntitiesView> seller = new One2OneField<>("Seller", new LegalEntitiesView(crmLogic, mode));
         seller.setReadOnly(readonly);
-        One2OneField<LegalEntity, LegalEntitiesView> sellee = new One2OneField<>("Sellee", new LegalEntitiesView(realm, mode));
+        One2OneField<LegalEntity, LegalEntitiesView> sellee = new One2OneField<>("Sellee", new LegalEntitiesView(crmLogic, mode));
         sellee.setReadOnly(readonly);
 
         FormLayout form = new FormLayout();

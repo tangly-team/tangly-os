@@ -32,11 +32,11 @@ import com.vaadin.flow.server.StreamResource;
 import net.tangly.bus.codes.CodeType;
 import net.tangly.bus.core.EmailAddress;
 import net.tangly.bus.core.PhoneNr;
+import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.GenderCode;
 import net.tangly.bus.crm.NaturalEntity;
-import net.tangly.bus.crm.RealmCrm;
 import net.tangly.bus.providers.ViewProvider;
 import net.tangly.commons.vaadin.CodeField;
 import net.tangly.commons.vaadin.CommentsView;
@@ -50,16 +50,16 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
-    private final RealmCrm realm;
+    private final CrmBusinessLogic crmLogic;
 
-    public NaturalEntitiesView(@NotNull RealmCrm realm, @NotNull Mode mode) {
-        super(NaturalEntity.class, mode, realm.naturalEntities(), realm.tagTypeRegistry());
-        this.realm = realm;
-        initializeGrid();
+    public NaturalEntitiesView(@NotNull CrmBusinessLogic crmLogic, @NotNull Mode mode) {
+        super(NaturalEntity.class, mode, crmLogic.realm().naturalEntities(), crmLogic.realm().tagTypeRegistry());
+        this.crmLogic = crmLogic;
+        initialize();
     }
 
     @Override
-    protected void initializeGrid() {
+    protected void initialize() {
         Grid<NaturalEntity> grid = grid();
         grid.addColumn(NaturalEntity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(NaturalEntity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
@@ -73,7 +73,8 @@ public class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
                 .setHeader("Gender").setAutoWidth(true).setResizable(true);
         grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::individualLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
         // TODO find out why it is not working with PaginatedGrid but is working with standard Grid
-        addAndExpand(filterCriteria(grid()), grid(), createCrudButtons());
+        addAndExpand(filterCriteria(grid()), grid(), gridButtons());
+
     }
 
     public static void defineOne2ManyEmployees(@NotNull Grid<Employee> grid) {
@@ -90,9 +91,9 @@ public class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
     protected void registerTabs(@NotNull TabsComponent tabs, @NotNull Mode mode, @NotNull NaturalEntity entity) {
         tabs.add(new Tab("Overview"), createOverallView(mode, entity));
         tabs.add(new Tab("Comments"), new CommentsView(mode, entity));
-        tabs.add(new Tab("Tags"), new TagsView(mode, entity, realm.tagTypeRegistry()));
+        tabs.add(new Tab("Tags"), new TagsView(mode, entity, crmLogic.realm().tagTypeRegistry()));
         One2ManyView<Employee> employees = new One2ManyView<>(Employee.class, mode, NaturalEntitiesView::defineOne2ManyEmployees,
-                ViewProvider.of(realm.employees(), o -> entity.oid() == o.person().oid()), new EmployeesView(realm, mode));
+                ViewProvider.of(crmLogic.realm().employees(), o -> entity.oid() == o.person().oid()), new EmployeesView(crmLogic, mode));
         tabs.add(new Tab("Employees"), employees);
     }
 

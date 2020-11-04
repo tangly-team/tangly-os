@@ -22,14 +22,14 @@ import java.time.LocalDate;
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.ledger.Account;
-import net.tangly.bus.ledger.Ledger;
+import net.tangly.bus.ledger.LedgerRealm;
 import net.tangly.ledger.ports.ClosingReportAsciiDoc;
 import net.tangly.ledger.ports.LedgerTsvHdl;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class LedgerWorkflowTest {
+class LedgerRealmWorkflowTest {
     private static final String PACKAGE_NAME = "net/tangly/crm/ledger/";
     private static final String SWISS_LEDGER = "swiss-ledger.tsv";
 
@@ -39,7 +39,7 @@ class LedgerWorkflowTest {
             ErpStore erpStore = new ErpStore(fs);
             erpStore.createCrmAndLedgerRepository();
 
-            LedgerTsvHdl handler = new LedgerTsvHdl(new Ledger());
+            LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerRealm());
             handler.importLedgerStructureFromBanana(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
             handler.ledger().build();
             assertThat(handler.ledger().accounts().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty()).findAny().isEmpty())
@@ -61,7 +61,7 @@ class LedgerWorkflowTest {
             ErpStore erpStore = new ErpStore(fs);
             erpStore.createCrmAndLedgerRepository();
 
-            LedgerTsvHdl handler = new LedgerTsvHdl(new Ledger());
+            LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerRealm());
             handler.importTransactionsLedgerFromBanana(erpStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
             assertThat(handler.ledger().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31)).isEmpty()).isFalse();
         }
@@ -73,7 +73,7 @@ class LedgerWorkflowTest {
             ErpStore erpStore = new ErpStore(fs);
             erpStore.createCrmAndLedgerRepository();
 
-            LedgerTsvHdl handler = new LedgerTsvHdl(new Ledger());
+            LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerRealm());
             handler.importTransactionsLedgerFromBanana(erpStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
 
             ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(handler.ledger());

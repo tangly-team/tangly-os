@@ -40,14 +40,11 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.data.provider.DataProvider;
-import net.tangly.bus.crm.BusinessLogicCrm;
 import net.tangly.bus.crm.Contract;
+import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.InteractionCode;
-import net.tangly.bus.crm.RealmCrm;
-import net.tangly.bus.invoices.BusinessLogicInvoices;
-import net.tangly.bus.invoices.RealmInvoices;
-import net.tangly.bus.ledger.BusinessLogicLedger;
-import net.tangly.bus.ledger.Ledger;
+import net.tangly.bus.invoices.InvoicesBusinessLogic;
+import net.tangly.bus.ledger.LedgerBusinessLogic;
 import net.tangly.commons.vaadin.TabsComponent;
 import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.ledger.ports.LedgerPort;
@@ -57,10 +54,9 @@ import org.slf4j.LoggerFactory;
 
 public class AnalyticsCrmView extends VerticalLayout {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-    private final BusinessLogicCrm logicCrm;
-    private final BusinessLogicInvoices logicInvoices;
-    private final BusinessLogicLedger logicLedger;
-    private final Ledger ledger;
+    private final CrmBusinessLogic crmLogic;
+    private final InvoicesBusinessLogic invoicesLogic;
+    private final LedgerBusinessLogic ledgerLogic;
     private final TabsComponent tabs;
     private SOChart contractsSoChart;
     private SOChart customersSoChart;
@@ -71,11 +67,10 @@ public class AnalyticsCrmView extends VerticalLayout {
     private LocalDate from;
     private LocalDate to;
 
-    public AnalyticsCrmView(@NotNull RealmCrm realmCrm, @NotNull RealmInvoices realmInvoices, @NotNull Ledger ledger) {
-        logicCrm = new BusinessLogicCrm(realmCrm);
-        logicInvoices = new BusinessLogicInvoices(realmInvoices);
-        logicLedger = new BusinessLogicLedger(ledger);
-        this.ledger = ledger;
+    public AnalyticsCrmView(@NotNull CrmBusinessLogic crmLogic, @NotNull InvoicesBusinessLogic invoicesLogic, @NotNull LedgerBusinessLogic ledgerLogic) {
+        this.crmLogic = crmLogic;
+        this.invoicesLogic = invoicesLogic;
+        this.ledgerLogic = ledgerLogic;
         from = LocalDate.of(2015, 11, 1);
         to = LocalDate.of(LocalDate.now().getYear(), 12, 31);
         tabs = new TabsComponent();
@@ -112,16 +107,16 @@ public class AnalyticsCrmView extends VerticalLayout {
 
     private Grid<Contract> contractsTable() {
         Grid<Contract> grid = new Grid<>();
-        grid.setDataProvider(DataProvider.ofCollection(logicCrm.realm().contracts().items()));
+        grid.setDataProvider(DataProvider.ofCollection(crmLogic.realm().contracts().items()));
         grid.addColumn(Contract::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::fromDate).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::toDate).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(VaadinUtils.coloredRender(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setHeader("Amount").setAutoWidth(true).setResizable(true)
                 .setSortable(true);
-        grid.addColumn(VaadinUtils.coloredRender(o -> logicInvoices.invoicedAmountWithoutVatForContract(o.id(), from, to), VaadinUtils.FORMAT))
+        grid.addColumn(VaadinUtils.coloredRender(o -> invoicesLogic.invoicedAmountWithoutVatForContract(o.id(), from, to), VaadinUtils.FORMAT))
                 .setHeader("Invoiced").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(VaadinUtils.coloredRender(o -> logicInvoices.expensesForContract(o.id(), from, to), VaadinUtils.FORMAT)).setHeader("Expenses")
+        grid.addColumn(VaadinUtils.coloredRender(o -> invoicesLogic.expensesForContract(o.id(), from, to), VaadinUtils.FORMAT)).setHeader("Expenses")
                 .setAutoWidth(true).setResizable(true).setSortable(true);
         return grid;
     }
@@ -129,8 +124,8 @@ public class AnalyticsCrmView extends VerticalLayout {
     private void contractsChart(@NotNull SOChart chart) {
         List<String> contracts = new ArrayList<>();
         List<BigDecimal> amounts = new ArrayList<>();
-        logicCrm.realm().contracts().items().forEach(contract -> {
-            BigDecimal amount = logicInvoices.invoicedAmountWithoutVatForContract(contract.id(), from, to);
+        crmLogic.realm().contracts().items().forEach(contract -> {
+            BigDecimal amount = invoicesLogic.invoicedAmountWithoutVatForContract(contract.id(), from, to);
             if (!amount.equals(BigDecimal.ZERO)) {
                 contracts.add(contract.id());
                 amounts.add(amount);
@@ -142,8 +137,8 @@ public class AnalyticsCrmView extends VerticalLayout {
     private void customersChart(@NotNull SOChart chart) {
         List<String> customers = new ArrayList<>();
         List<BigDecimal> amounts = new ArrayList<>();
-        logicCrm.realm().legalEntities().items().forEach(customer -> {
-            BigDecimal amount = logicInvoices.paidAmountWithoutVatForCustomer(customer.id(), from, to);
+        crmLogic.realm().legalEntities().items().forEach(customer -> {
+            BigDecimal amount = invoicesLogic.paidAmountWithoutVatForCustomer(customer.id(), from, to);
             if (!amount.equals(BigDecimal.ZERO)) {
                 customers.add(customer.name());
                 amounts.add(amount);
@@ -174,11 +169,11 @@ public class AnalyticsCrmView extends VerticalLayout {
         rc.setPosition(chartPosition);
 
         LineChart turnoversChart = createLineChart("Turnover", xValues,
-                (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? logicLedger.turnover(start, end) : BigDecimal.ZERO, rc);
+                (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? ledgerLogic.turnover(start, end) : BigDecimal.ZERO, rc);
         LineChart ebitsCharts = createLineChart("EBIT", xValues,
-                (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? logicLedger.ebit(start, end) : BigDecimal.ZERO, rc);
+                (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? ledgerLogic.ebit(start, end) : BigDecimal.ZERO, rc);
         LineChart earningsChart = createLineChart("Earnings", xValues,
-                (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? logicLedger.earnings(start, end) : BigDecimal.ZERO, rc);
+                (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? ledgerLogic.earnings(start, end) : BigDecimal.ZERO, rc);
 
         chart.add(turnoversChart, ebitsCharts, earningsChart);
     }
@@ -196,24 +191,24 @@ public class AnalyticsCrmView extends VerticalLayout {
         rc.setPosition(chartPosition);
 
         LineChart shortTermThirdPartyCapitalChart = createLineChart("Short-Term Third Party Capital", xValues,
-                (LocalDate start, LocalDate end) -> (end != null) ?
-                        logicLedger.balance(LedgerPort.SHORT_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() : BigDecimal.ZERO, rc);
-        LineChart longTermThirdPartyCapitalChart = createLineChart("LOng-Term Third Party Capital", xValues, (LocalDate start, LocalDate end) -> (end != null) ?
-                logicLedger.balance(LedgerPort.LONG_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() : BigDecimal.ZERO, rc);
+                (LocalDate start, LocalDate end) -> (end != null) ? ledgerLogic.balance(LedgerPort.SHORT_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() :
+                        BigDecimal.ZERO, rc);
+        LineChart longTermThirdPartyCapitalChart = createLineChart("LOng-Term Third Party Capital", xValues,
+                (LocalDate start, LocalDate end) -> (end != null) ? ledgerLogic.balance(LedgerPort.LONG_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() :
+                        BigDecimal.ZERO, rc);
         LineChart cashOnHandChart = createLineChart("Cash On Hand", xValues,
-                (LocalDate start, LocalDate end) -> (end != null) ? logicLedger.balance(LedgerPort.CASH_ON_HAND_ACCOUNT, end) : BigDecimal.ZERO, rc);
+                (LocalDate start, LocalDate end) -> (end != null) ? ledgerLogic.balance(LedgerPort.CASH_ON_HAND_ACCOUNT, end) : BigDecimal.ZERO, rc);
         LineChart equityChart = createLineChart("Equity", xValues,
-                (LocalDate start, LocalDate end) -> (end != null) ? logicLedger.balance(LedgerPort.EQUITY_ACCOUNT, end).negate() : BigDecimal.ZERO,
-                rc);
+                (LocalDate start, LocalDate end) -> (end != null) ? ledgerLogic.balance(LedgerPort.EQUITY_ACCOUNT, end).negate() : BigDecimal.ZERO, rc);
 
         chart.add(shortTermThirdPartyCapitalChart, cashOnHandChart, longTermThirdPartyCapitalChart, equityChart);
     }
 
     private void funnelChart(@NotNull SOChart chart) {
         CategoryData labels = new CategoryData("Prospects", "Leads", "Customers", "Lost", "Completed");
-        Data data = new Data(logicCrm.funnel(InteractionCode.prospect, from, to), logicCrm.funnel(InteractionCode.lead, from, to),
-                logicCrm.funnel(InteractionCode.customer, from, to), logicCrm.funnel(InteractionCode.lost, from, to),
-                logicCrm.funnel(InteractionCode.completed, from, to));
+        Data data = new Data(crmLogic.funnel(InteractionCode.prospect, from, to), crmLogic.funnel(InteractionCode.lead, from, to),
+                crmLogic.funnel(InteractionCode.customer, from, to), crmLogic.funnel(InteractionCode.lost, from, to),
+                crmLogic.funnel(InteractionCode.completed, from, to));
         BarChart barchart = new BarChart(labels, data);
         RectangularCoordinate rc = new RectangularCoordinate(new XAxis(DataType.CATEGORY), new YAxis(DataType.NUMBER));
         Position chartPosition = new Position();

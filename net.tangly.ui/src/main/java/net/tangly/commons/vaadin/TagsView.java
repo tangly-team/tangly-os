@@ -18,10 +18,10 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import com.vaadin.flow.data.provider.ListDataProvider;
 import net.tangly.bus.core.HasTags;
 import net.tangly.bus.core.Tag;
 import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.bus.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -30,7 +30,7 @@ import org.jetbrains.annotations.NotNull;
  * <p>The form uses information stored in the tag registry to populate the namespace field, the name field and toggle the value field based on the tag type
  * definition.</p>
  */
-public class TagsView extends Crud<Tag> implements CrudForm<Tag> {
+public class TagsView extends EntitiesView<Tag> {
     private final transient HasTags hasTags;
     private final transient TagTypeRegistry registry;
     private final transient ComboBox<String> namespace;
@@ -38,7 +38,7 @@ public class TagsView extends Crud<Tag> implements CrudForm<Tag> {
     private final transient TextField value;
 
     public TagsView(@NotNull Mode mode, @NotNull HasTags entity, @NotNull TagTypeRegistry registry) {
-        super(Tag.class, mode, new ListDataProvider<>(entity.tags()));
+        super(Tag.class, mode, ProviderInMemory.of(entity.tags()));
         this.hasTags = entity;
         this.registry = registry;
         namespace = new ComboBox<>("Namespace");
@@ -47,13 +47,24 @@ public class TagsView extends Crud<Tag> implements CrudForm<Tag> {
         initialize();
     }
 
+    @Override
     protected void initialize() {
-        super.initialize(this, new GridActionsListener<>(grid().getDataProvider(), this::selectedItem));
         Grid<Tag> grid = grid();
-        VaadinUtils.initialize(grid);
         grid.addColumn(Tag::namespace).setKey("namespace").setHeader("Namespace").setSortable(true).setFlexGrow(0).setWidth("10em").setResizable(false);
         grid.addColumn(Tag::name).setKey("name").setHeader("Name").setSortable(true).setFlexGrow(0).setWidth("10em").setResizable(false);
         grid.addColumn(Tag::value).setKey("value").setHeader("Value").setSortable(false).setFlexGrow(0).setWidth("20em").setResizable(false);
+        addAndExpand(grid(), gridButtons());
+    }
+
+    @Override
+    protected FormLayout fillForm(@NotNull Operation operation, Tag entity, FormLayout form) {
+        // TODO implement
+        return null;
+    }
+
+    @Override
+    protected Tag updateOrCreate(Tag entity) {
+        return new Tag(namespace.getValue(), name.getValue(), value.getValue());
     }
 
     @Override
@@ -105,7 +116,7 @@ public class TagsView extends Crud<Tag> implements CrudForm<Tag> {
     public Tag formCompleted(@NotNull Operation operation, Tag entity) {
         return switch (operation) {
             case CREATE -> {
-                Tag tag = create();
+                Tag tag = updateOrCreate(entity);
                 hasTags.add(tag);
                 yield tag;
             }
@@ -115,9 +126,5 @@ public class TagsView extends Crud<Tag> implements CrudForm<Tag> {
             }
             default -> entity;
         };
-    }
-
-    private Tag create() {
-        return new Tag(namespace.getValue(), name.getValue(), value.getValue());
     }
 }

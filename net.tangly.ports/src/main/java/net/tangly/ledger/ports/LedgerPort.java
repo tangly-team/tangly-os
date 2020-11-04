@@ -18,9 +18,8 @@ import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
-import java.util.List;
 
-import net.tangly.bus.ledger.Ledger;
+import net.tangly.bus.ledger.LedgerRealm;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import org.jetbrains.annotations.NotNull;
 
@@ -36,24 +35,25 @@ public class LedgerPort {
     public static final String EQUITY_ACCOUNT = "28";
     public static final String CASH_ON_HAND_ACCOUNT = "100";
 
-    private final Ledger ledger;
+    private final LedgerRealm ledger;
     private final Path folder;
 
-    public LedgerPort(@NotNull Ledger ledger, @NotNull Path folder) {
+    public LedgerPort(@NotNull LedgerRealm ledger, @NotNull Path folder) {
         this.ledger = ledger;
         this.folder = folder;
     }
 
-    public Ledger ledger() {
+    public LedgerRealm ledger() {
         return ledger;
     }
 
     public void createLedgerReport(String filenameWithoutExtension, LocalDate from, LocalDate to) {
         ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(ledger);
-        report.create(from, to, folder.resolve(filenameWithoutExtension + AsciiDoctorHelper.ASCII_DOC_EXT));
-        AsciiDoctorHelper.createPdf(folder, filenameWithoutExtension);
+        report.create(from, to, folder.resolve(filenameWithoutExtension + AsciiDoctorHelper.ASCIIDOC_EXT));
+        AsciiDoctorHelper.createPdf(folder.resolve(filenameWithoutExtension + AsciiDoctorHelper.ASCIIDOC_EXT),
+            folder.resolve(filenameWithoutExtension + AsciiDoctorHelper.PDF_EXT));
         try {
-            Files.delete(folder.resolve(filenameWithoutExtension + AsciiDoctorHelper.ASCII_DOC_EXT));
+            Files.delete(folder.resolve(filenameWithoutExtension + AsciiDoctorHelper.ASCIIDOC_EXT));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

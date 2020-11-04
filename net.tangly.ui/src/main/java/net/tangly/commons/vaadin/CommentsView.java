@@ -22,9 +22,9 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import com.vaadin.flow.data.provider.ListDataProvider;
 import net.tangly.bus.core.Comment;
 import net.tangly.bus.core.HasComments;
+import net.tangly.bus.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -32,14 +32,14 @@ import org.jetbrains.annotations.NotNull;
  * delete, and view individual comments. Update function is not supported because comments are immutable objects. Immutable objects must be explicitly be
  * deleted before an new version can be added. This approach supports auditing approaches.
  */
-public class CommentsView extends Crud<Comment> implements CrudForm<Comment> {
+public class CommentsView extends EntitiesView<Comment> {
     private final transient HasComments hasComments;
     private final DateTimePicker created;
     private final TextField author;
     private final TextArea text;
 
     public CommentsView(@NotNull Mode mode, @NotNull HasComments entity) {
-        super(Comment.class, mode, new ListDataProvider<>(entity.comments()));
+        super(Comment.class, mode, ProviderInMemory.of(entity.comments()));
         this.hasComments = entity;
         created = new DateTimePicker("Created");
         author = VaadinUtils.createTextField("Author", "author");
@@ -47,17 +47,19 @@ public class CommentsView extends Crud<Comment> implements CrudForm<Comment> {
         initialize();
     }
 
+    @Override
     protected void initialize() {
-        super.initialize(this, new GridActionsListener<>(grid().getDataProvider(), this::selectedItem));
         Grid<Comment> grid = grid();
         grid.addColumn(Comment::created).setKey("created").setHeader("Created").setSortable(true).setFlexGrow(0).setWidth("200px").setResizable(false)
-                .setFrozen(true);
+            .setFrozen(true);
         grid.addColumn(Comment::author).setKey("author").setHeader("Author").setSortable(true).setFlexGrow(0).setWidth("200px").setResizable(false);
         grid.addColumn(Comment::text).setKey("text").setHeader("Text").setSortable(true).setFlexGrow(0).setWidth("200px").setResizable(false);
+        addAndExpand(grid(), gridButtons());
     }
 
+
     @Override
-    public FormLayout createForm(@NotNull Operation operation, Comment entity) {
+    protected FormLayout fillForm(@NotNull Operation operation, Comment entity, FormLayout form) {
         boolean readonly = Operation.isReadOnly(operation);
 
         created.setReadOnly(readonly);
@@ -69,8 +71,6 @@ public class CommentsView extends Crud<Comment> implements CrudForm<Comment> {
         text.setRequired(true);
         text.setReadOnly(readonly);
 
-        FormLayout form = new FormLayout();
-        VaadinUtils.setResponsiveSteps(form);
         form.add(created, author, new HtmlComponent("br"), text);
         form.setColspan(text, 2);
         if (readonly) {
@@ -88,10 +88,15 @@ public class CommentsView extends Crud<Comment> implements CrudForm<Comment> {
     }
 
     @Override
+    protected Comment updateOrCreate(Comment entity) {
+        return Comment.of(created.getValue(), author.getValue(), text.getValue());
+    }
+
+    @Override
     public Comment formCompleted(@NotNull Operation operation, Comment entity) {
         return switch (operation) {
             case CREATE -> {
-                Comment comment = create();
+                Comment comment = updateOrCreate(entity);
                 hasComments.add(comment);
                 yield comment;
             }
@@ -101,9 +106,5 @@ public class CommentsView extends Crud<Comment> implements CrudForm<Comment> {
             }
             default -> entity;
         };
-    }
-
-    private Comment create() {
-        return Comment.of(created.getValue(), author.getValue(), text.getValue());
     }
 }

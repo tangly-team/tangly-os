@@ -22,16 +22,22 @@ import javax.inject.Inject;
 import net.tangly.commons.utilities.DateUtilities;
 import org.jetbrains.annotations.NotNull;
 
-public class BusinessLogicProducts {
-    private final RealmProducts realm;
+public class ProductsBusinessLogic {
+    private final ProductsRealm realm;
+    private final ProductsHandler handler;
 
     @Inject
-    public BusinessLogicProducts(@NotNull RealmProducts realm) {
+    public ProductsBusinessLogic(@NotNull ProductsRealm realm, ProductsHandler handler) {
         this.realm = realm;
+        this.handler = handler;
     }
 
-    public RealmProducts realm() {
+    public ProductsRealm realm() {
         return realm;
+    }
+
+    public ProductsHandler handler() {
+        return handler;
     }
 
     public List<Effort> collect(Assignment assignment, LocalDate from, LocalDate to) {

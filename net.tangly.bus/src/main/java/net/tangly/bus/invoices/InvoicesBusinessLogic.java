@@ -24,16 +24,28 @@ import static net.tangly.commons.utilities.DateUtilities.isWithinRange;
 /**
  * The business logic and rules of the bounded domain of invoices entities.
  */
-public class BusinessLogicInvoices {
-    private final RealmInvoices realm;
+public class InvoicesBusinessLogic {
+    private final InvoicesRealm realm;
+    private final InvoicesHandler handler;
+    private final InvoicesPort port;
 
     @Inject
-    public BusinessLogicInvoices(@NotNull RealmInvoices realm) {
+    public InvoicesBusinessLogic(@NotNull InvoicesRealm realm, InvoicesHandler handler, InvoicesPort port) {
         this.realm = realm;
+        this.handler = handler;
+        this.port = port;
     }
 
-    public RealmInvoices realm() {
+    public InvoicesRealm realm() {
         return realm;
+    }
+
+    public InvoicesHandler handler() {
+        return handler;
+    }
+
+    public InvoicesPort port() {
+        return port;
     }
 
     public BigDecimal expensesForContract(@NotNull String contractId, LocalDate from, LocalDate to) {

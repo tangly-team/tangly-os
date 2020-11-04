@@ -11,7 +11,23 @@
  *  under the License.
  */
 
+package net.tangly.bus.invoices;
+
 /**
- * A set of utility classes providing functions missing in the standard JDK API.
+ * Define the import port for the invoices bounded domain.
  */
-package net.tangly.commons.utilities;
+public interface InvoicesHandler {
+    /**
+     * Import all invoices from the file system.
+     *
+     * @see #exportEntities()
+     */
+    void importEntities();
+
+    /**
+     * Export all invoices to the file system.
+     *
+     * @see #importEntities()
+     */
+    void exportEntities();
+}

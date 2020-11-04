@@ -16,7 +16,7 @@
         <product.reporting.outputEncoding>UTF-8</product.reporting.outputEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
 
-        <vaadin.version>17.0.8</vaadin.version>
+        <vaadin.version>17.0.9</vaadin.version>
         <tangly.version>0.2.6</tangly.version>
         <jetty.version>9.4.33.v20201020</jetty.version>
     </properties>
@@ -45,7 +45,7 @@
             <url>https://raw.github.com/ZUGFeRD/mustangproject/mvn-repo/</url>
         </repository>
     </repositories>
-     
+
     <pluginRepositories>
          <!-- Maven Central repository requires https:// to access -->
         <pluginRepository>
@@ -110,7 +110,11 @@
             <artifactId>slf4j-simple</artifactId>
             <version>2.0.0-alpha1</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.27</version>
+        </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -131,7 +135,7 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
-        
+
         <!-- Tangly open source components specific dependencies -->
         <dependency>
             <groupId>org.jetbrains</groupId>

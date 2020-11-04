@@ -13,15 +13,21 @@
 
 package net.tangly.bus.products;
 
-import net.tangly.bus.core.TagTypeRegistry;
-import net.tangly.bus.providers.Provider;
+/**
+ * Define the import port for the invoices bounded domain.
+ */
+public interface ProductsHandler {
+    /**
+     * Import all product entities from the file system.
+     *
+     * @see #exportEntities()
+     */
+    void importEntities();
 
-public interface RealmProducts {
-    TagTypeRegistry tagTypeRegistry();
-
-    Provider<Assignment> assignements();
-
-    Provider<Effort> efforts();
-
-    Provider<Product> products();
+    /**
+     * Export all product entities to the file system.
+     *
+     * @see #importEntities()
+     */
+    void exportEntities();
 }

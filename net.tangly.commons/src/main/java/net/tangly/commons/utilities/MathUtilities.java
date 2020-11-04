@@ -25,15 +25,11 @@ public final class MathUtilities {
     public static final double Z_VALUE_PERCENTILE_80 = 1.28;
     public static final double Z_VALUE_PERCENTILE_75 = 1.04;
 
-    /**
-     * Private constructor for a utility class.
-     */
     private MathUtilities() {
     }
 
-
     public static double average(int... values) {
-        return Arrays.stream(values).average().getAsDouble();
+        return Arrays.stream(values).average().orElse(0);
     }
 
     public static double mean(int... values) {

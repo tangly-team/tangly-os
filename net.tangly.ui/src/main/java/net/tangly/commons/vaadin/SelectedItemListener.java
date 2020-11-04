@@ -11,7 +11,22 @@
  *  under the License.
  */
 
-/**
- * A set of utility classes providing functions missing in the standard JDK API.
- */
-package net.tangly.commons.utilities;
+package net.tangly.commons.vaadin;
+
+public interface SelectedItemListener<T> {
+    /**
+     * Return the selected item of the component.
+     *
+     * @return selected item
+     * @see #selectedItem(Object)
+     */
+    public T selectedItem();
+
+    /**
+     * Select programmatically the item in the component and update it.
+     *
+     * @param item new selected item in the component
+     * @see #selectedItem()
+     */
+    public void selectedItem(T item);
+}

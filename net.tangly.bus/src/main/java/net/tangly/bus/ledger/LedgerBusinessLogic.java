@@ -19,7 +19,7 @@ import javax.inject.Inject;
 
 import org.jetbrains.annotations.NotNull;
 
-public class BusinessLogicLedger {
+public class LedgerBusinessLogic {
     public static final String TURNOVER_ACCOUNT = "3";
     public static final String EBIT_ACCOUNT = "E4";
     public static final String EARNINGS_ACCOUNT = "E7";
@@ -28,15 +28,21 @@ public class BusinessLogicLedger {
     public static final String EQUITY_ACCOUNT = "28";
     public static final String CASH_ON_HAND_ACCOUNT = "100";
 
-    private final Ledger ledger;
+    private final LedgerRealm ledger;
+    private final LedgerHandler handler;
 
     @Inject
-    public BusinessLogicLedger(@NotNull Ledger ledger) {
+    public LedgerBusinessLogic(@NotNull LedgerRealm ledger, LedgerHandler handler) {
         this.ledger = ledger;
+        this.handler = handler;
     }
 
-    public Ledger ledger() {
+    public LedgerRealm ledger() {
         return ledger;
+    }
+
+    public LedgerHandler handler() {
+        return handler;
     }
 
     public BigDecimal turnover(@NotNull LocalDate from, @NotNull LocalDate to) {

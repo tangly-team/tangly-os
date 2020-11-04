@@ -11,7 +11,10 @@
  *  under the License.
  */
 
+package net.tangly.bus.crm;
+
 /**
- * A set of utility classes providing functions missing in the standard JDK API.
+ * Define the export port for the bounded domain. It is a secondary port in the DDD terminology.
  */
-package net.tangly.commons.utilities;
+public interface CrmPort {
+}

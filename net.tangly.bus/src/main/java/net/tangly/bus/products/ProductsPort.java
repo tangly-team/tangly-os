@@ -11,7 +11,7 @@
  *  under the License.
  */
 
-/**
- * A set of utility classes providing functions missing in the standard JDK API.
- */
-package net.tangly.commons.utilities;
+package net.tangly.bus.products;
+
+public interface ProductsPort {
+}

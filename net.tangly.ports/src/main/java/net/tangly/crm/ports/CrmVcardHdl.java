@@ -31,9 +31,9 @@ import net.fortuna.ical4j.vcard.PropertyFactoryRegistry;
 import net.fortuna.ical4j.vcard.VCard;
 import net.fortuna.ical4j.vcard.VCardBuilder;
 import net.tangly.bus.core.EmailAddress;
+import net.tangly.bus.crm.CrmRealm;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.NaturalEntity;
-import net.tangly.bus.crm.RealmCrm;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,10 +45,10 @@ public class CrmVcardHdl {
     private static final String VCARD_EXT = ".vcf";
 
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-    private final RealmCrm realm;
+    private final CrmRealm realm;
 
     @Inject
-    public CrmVcardHdl(@NotNull RealmCrm realm) {
+    public CrmVcardHdl(@NotNull CrmRealm realm) {
         this.realm = realm;
     }
 

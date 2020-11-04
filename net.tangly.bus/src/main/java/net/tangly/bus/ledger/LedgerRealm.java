@@ -31,12 +31,12 @@ import org.slf4j.LoggerFactory;
  * The ledger implements a ledger with a chart of accounts and a set of transactions. It provides the logic for the automatic processing of VAT amounts and
  * related bookings to the VAT related accounts.
  */
-public class Ledger {
+public class LedgerRealm {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private final List<Account> accounts;
     private final List<Transaction> journal;
 
-    public Ledger() {
+    public LedgerRealm() {
         accounts = new ArrayList<>();
         journal = new ArrayList<>();
     }

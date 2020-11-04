@@ -13,12 +13,10 @@
 
 package net.tangly.commons.vaadin;
 
-import java.lang.invoke.MethodHandles;
 import java.time.format.DateTimeFormatter;
 
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.provider.ListDataProvider;
@@ -28,8 +26,6 @@ import net.tangly.bus.core.QualifiedEntity;
 import net.tangly.bus.core.TagTypeRegistry;
 import net.tangly.bus.providers.Provider;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * The entity form provides an interface to all fields of an entity instance. The fields are grouped in tabs.
@@ -40,7 +36,6 @@ import org.slf4j.LoggerFactory;
  * </ul>
  */
 public abstract class InternalEntitiesView<T extends Entity> extends EntitiesView<T> implements CrudForm<T>, HasIdView<T> {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     protected final transient Provider<T> provider;
     protected Binder<T> binder;
     private final TagTypeRegistry registry;
@@ -60,30 +55,23 @@ public abstract class InternalEntitiesView<T extends Entity> extends EntitiesVie
         this.registry = registry;
     }
 
-    protected HorizontalLayout filterCriteria(Grid<T> grid) {
+    protected GridFiltersAndActions<T> filterCriteria(Grid<T> grid) {
         GridFiltersAndActions<T> filters = new GridFiltersAndActions<>((ListDataProvider<T>) grid.getDataProvider());
         filters.addFilter(new GridFiltersAndActions.GridFilterText<>(filters, T::name, "Name", "name"));
         filters.addFilter(new GridFiltersAndActions.GridFilterInterval<>(filters));
         filters.addFilter(new GridFiltersAndActions.GridFilterTags<>(filters));
+        addSelectedItemListerner(filters);
         return filters;
     }
-
-    protected static <T extends Entity> void addEntityColumns(Grid<T> grid) {
-        grid.addColumn(Entity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
-        grid.addColumn(new LocalDateRenderer<>(Entity::fromDate, DateTimeFormatter.ISO_DATE)).setKey("from").setHeader("From").setAutoWidth(true)
-                .setResizable(true).setSortable(true);
-        grid.addColumn(new LocalDateRenderer<>(Entity::toDate, DateTimeFormatter.ISO_DATE)).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true)
-                .setSortable(true);
-    }
-
+    
     protected static <T extends QualifiedEntity> void addQualifiedEntityColumns(Grid<T> grid) {
         grid.addColumn(QualifiedEntity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(QualifiedEntity::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(QualifiedEntity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(new LocalDateRenderer<>(QualifiedEntity::fromDate, DateTimeFormatter.ISO_DATE)).setKey("from").setHeader("From").setAutoWidth(true)
-                .setResizable(true).setSortable(true);
+            .setResizable(true).setSortable(true);
         grid.addColumn(new LocalDateRenderer<>(QualifiedEntity::toDate, DateTimeFormatter.ISO_DATE)).setKey("to").setHeader("To").setAutoWidth(true)
-                .setResizable(true).setSortable(true);
+            .setResizable(true).setSortable(true);
     }
 
     @Override

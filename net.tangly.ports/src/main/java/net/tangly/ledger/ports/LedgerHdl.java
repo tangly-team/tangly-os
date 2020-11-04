@@ -20,7 +20,8 @@ import java.nio.file.Path;
 import java.util.stream.Stream;
 import javax.inject.Inject;
 
-import net.tangly.bus.ledger.Ledger;
+import net.tangly.bus.ledger.LedgerRealm;
+import net.tangly.bus.ledger.LedgerHandler;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -33,23 +34,20 @@ import org.jetbrains.annotations.NotNull;
  *     the accounts tab and export it as <i>Data/Export Rows/Export Rows to Txt</i>. </li>
  * </ul>
  */
-public class LedgerHdl {
-    private final Ledger ledger;
+public class LedgerHdl implements LedgerHandler {
+    private final LedgerRealm ledger;
     private final Path folder;
 
     @Inject
-    public LedgerHdl(@NotNull Ledger ledger, @NotNull Path folder) {
+    public LedgerHdl(@NotNull LedgerRealm ledger, @NotNull Path folder) {
         this.ledger = ledger;
         this.folder = folder;
     }
 
-    public Ledger ledger() {
+    public LedgerRealm ledger() {
         return ledger;
     }
 
-    /**
-     * Import the ledger structure and initialize it. All found transaction files are added to the ledger.
-     */
     public void importEntities() {
         LedgerTsvHdl handler = new LedgerTsvHdl(ledger);
         handler.importLedgerStructureFromBanana(folder.resolve("swiss-ledger.tsv"));

@@ -26,7 +26,7 @@ import java.util.List;
 
 import net.tangly.bus.ledger.Account;
 import net.tangly.bus.ledger.AccountEntry;
-import net.tangly.bus.ledger.Ledger;
+import net.tangly.bus.ledger.LedgerRealm;
 import net.tangly.bus.ledger.Transaction;
 import net.tangly.commons.utilities.AsciiDocHelper;
 import org.slf4j.Logger;
@@ -39,14 +39,14 @@ import static net.tangly.commons.utilities.AsciiDocHelper.format;
  */
 public class ClosingReportAsciiDoc {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-    private final Ledger ledger;
+    private final LedgerRealm ledger;
 
     /**
      * Constructor of the closing report. Multiple ports with variable reporting period length can be generated with the same instance.
      *
      * @param ledger ledger containing all the accounting information for the ports
      */
-    public ClosingReportAsciiDoc(Ledger ledger) {
+    public ClosingReportAsciiDoc(LedgerRealm ledger) {
         this.ledger = ledger;
     }
 

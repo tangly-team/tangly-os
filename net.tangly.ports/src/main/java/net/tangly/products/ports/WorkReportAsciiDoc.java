@@ -21,8 +21,8 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 
 import net.tangly.bus.products.Assignment;
-import net.tangly.bus.products.BusinessLogicProducts;
 import net.tangly.bus.products.Effort;
+import net.tangly.bus.products.ProductsBusinessLogic;
 import net.tangly.commons.utilities.AsciiDocHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,9 +30,9 @@ import org.slf4j.LoggerFactory;
 public class WorkReportAsciiDoc {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-    private final BusinessLogicProducts logic;
+    private final ProductsBusinessLogic logic;
 
-    public WorkReportAsciiDoc(BusinessLogicProducts logic) {
+    public WorkReportAsciiDoc(ProductsBusinessLogic logic) {
         this.logic = logic;
     }
 

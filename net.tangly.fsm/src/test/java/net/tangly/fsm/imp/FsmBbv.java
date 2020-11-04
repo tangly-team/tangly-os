@@ -16,7 +16,7 @@ package net.tangly.fsm.imp;
 import net.tangly.fsm.dsl.FsmBuilder;
 
 /**
- * The class defines the finite state machine of the <emp>bbv fsm</emp> open source project example.
+ * The class defines the finite state machine of the <em>bbv fsm</em> open source project example.
  */
 class FsmBbv {
     /**

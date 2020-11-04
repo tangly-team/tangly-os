@@ -22,7 +22,7 @@ import java.util.List;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
-import net.tangly.bus.ledger.Ledger;
+import net.tangly.bus.ledger.LedgerRealm;
 import net.tangly.ledger.ports.LedgerHdl;
 import net.tangly.ledger.ports.LedgerPort;
 import org.junit.jupiter.api.Tag;
@@ -33,11 +33,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Test the business logic of the ledger domain model. An in-memory file system is set with a Swiss ledger definition and transactions files.
  */
-class LedgerPortTest {
+class LedgerRealmPortTest {
     @Test
     @Tag("localTest")
     public void createReports() {
-        LedgerHdl ledgerHdl = new LedgerHdl(new Ledger(), Paths.get("/Users/Shared/tangly/ledger"));
+        LedgerHdl ledgerHdl = new LedgerHdl(new LedgerRealm(), Paths.get("/Users/Shared/tangly/ledger"));
         ledgerHdl.importEntities();
         LedgerPort ledgerLogic = new LedgerPort(ledgerHdl.ledger(), Paths.get("/Users/Shared/tangly/reports/ledger"));
 
@@ -57,9 +57,9 @@ class LedgerPortTest {
         }
     }
 
-    private Ledger createLedger(ErpStore store) {
+    private LedgerRealm createLedger(ErpStore store) {
         store.createCrmAndLedgerRepository();
-        LedgerHdl ledgerHdl = new LedgerHdl(new Ledger(), store.ledgerRoot());
+        LedgerHdl ledgerHdl = new LedgerHdl(new LedgerRealm(), store.ledgerRoot());
         ledgerHdl.importEntities();
         return ledgerHdl.ledger();
     }

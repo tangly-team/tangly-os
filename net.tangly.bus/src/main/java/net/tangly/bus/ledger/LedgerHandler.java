@@ -11,7 +11,14 @@
  *  under the License.
  */
 
+package net.tangly.bus.ledger;
+
 /**
- * A set of utility classes providing functions missing in the standard JDK API.
+ * Define the import port for the invoices bounded domain.
  */
-package net.tangly.commons.utilities;
+public interface LedgerHandler {
+    /**
+     * Import all ledger entities from the file system.
+     */
+    void importEntities();
+}

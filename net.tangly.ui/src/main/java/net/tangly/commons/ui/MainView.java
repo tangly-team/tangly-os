@@ -16,7 +16,7 @@ package net.tangly.commons.ui;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.UncheckedIOException;
-import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.util.Objects;
 
 import com.vaadin.flow.component.AttachEvent;
@@ -33,12 +33,14 @@ import com.vaadin.flow.server.StreamResource;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.material.Material;
 import net.tangly.bus.core.TagTypeRegistry;
-import net.tangly.bus.crm.BusinessLogicCrm;
-import net.tangly.bus.crm.RealmCrm;
-import net.tangly.bus.invoices.RealmInvoices;
-import net.tangly.bus.ledger.BusinessLogicLedger;
-import net.tangly.bus.ledger.Ledger;
-import net.tangly.bus.products.RealmProducts;
+import net.tangly.bus.crm.CrmBusinessLogic;
+import net.tangly.bus.crm.CrmRealm;
+import net.tangly.bus.invoices.InvoicesBusinessLogic;
+import net.tangly.bus.invoices.InvoicesRealm;
+import net.tangly.bus.ledger.LedgerRealm;
+import net.tangly.bus.ledger.LedgerBusinessLogic;
+import net.tangly.bus.products.ProductsBusinessLogic;
+import net.tangly.bus.products.ProductsRealm;
 import net.tangly.commons.bus.ui.TagTypesView;
 import net.tangly.commons.crm.products.ui.AssignementsView;
 import net.tangly.commons.crm.products.ui.EffortsView;
@@ -58,9 +60,9 @@ import net.tangly.commons.vaadin.Crud;
 import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.crm.ports.CrmEntities;
 import net.tangly.crm.ports.CrmHdl;
+import net.tangly.invoices.ports.InvoicesAdapter;
 import net.tangly.invoices.ports.InvoicesEntities;
 import net.tangly.invoices.ports.InvoicesHdl;
-import net.tangly.ledger.ports.LedgerPort;
 import net.tangly.ledger.ports.LedgerHdl;
 import net.tangly.products.ports.ProductsEntities;
 import net.tangly.products.ports.ProductsHdl;
@@ -71,11 +73,13 @@ import org.jetbrains.annotations.NotNull;
 @CssImport(value = "./styles/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
 @Route("")
 public class MainView extends AppLayout {
+    private static final String ORGANIZATION = "/Users/Shared/tangly/";
     private Component currentView;
-    private RealmCrm realmCrm;
-    private RealmInvoices realmInvoices;
-    private RealmProducts realmProducts;
-    private BusinessLogicLedger ledgerLogic;
+
+    private CrmBusinessLogic crmLogic;
+    private LedgerBusinessLogic ledgerLogic;
+    private InvoicesBusinessLogic invoicesLogic;
+    private ProductsBusinessLogic productsLogic;
 
     private final NaturalEntitiesView naturalEntitiesView;
     private final LegalEntitiesView legalEntitiesView;
@@ -101,26 +105,26 @@ public class MainView extends AppLayout {
     public MainView() {
         importErpData();
 
-        naturalEntitiesView = new NaturalEntitiesView(realmCrm, Crud.Mode.EDITABLE);
-        legalEntitiesView = new LegalEntitiesView(realmCrm, Crud.Mode.EDITABLE);
-        employeesView = new EmployeesView(realmCrm, Crud.Mode.EDITABLE);
-        contractsView = new ContractsView(realmCrm, realmInvoices, Crud.Mode.EDITABLE);
-        interactionsView = new InteractionsView(realmCrm, Crud.Mode.EDITABLE);
-        activitiesView = new ActivitiesView(realmCrm, Crud.Mode.READONLY);
+        naturalEntitiesView = new NaturalEntitiesView(crmLogic, Crud.Mode.EDITABLE);
+        legalEntitiesView = new LegalEntitiesView(crmLogic, Crud.Mode.EDITABLE);
+        employeesView = new EmployeesView(crmLogic, Crud.Mode.EDITABLE);
+        contractsView = new ContractsView(crmLogic, invoicesLogic, Crud.Mode.EDITABLE);
+        interactionsView = new InteractionsView(crmLogic, Crud.Mode.EDITABLE);
+        activitiesView = new ActivitiesView(crmLogic, Crud.Mode.READONLY);
 
-        subjectsView = new SubjectsView(realmCrm, Crud.Mode.EDITABLE);
+        subjectsView = new SubjectsView(crmLogic, Crud.Mode.EDITABLE);
 
-        articlesView = new ArticlesView(realmInvoices.articles(), Crud.Mode.EDITABLE);
-        invoicesView = new InvoicesView(realmInvoices.invoices(), Crud.Mode.EDITABLE);
+        articlesView = new ArticlesView(invoicesLogic, Crud.Mode.EDITABLE);
+        invoicesView = new InvoicesView(invoicesLogic, Crud.Mode.EDITABLE);
 
         ledgerView = new LedgerView(ledgerLogic, Crud.Mode.EDITABLE);
 
-        analyticsCrmView = new AnalyticsCrmView(realmCrm, realmInvoices, ledgerLogic.ledger());
-        tagTypesView = new TagTypesView(realmCrm.tagTypeRegistry());
+        analyticsCrmView = new AnalyticsCrmView(crmLogic, invoicesLogic, ledgerLogic);
+        tagTypesView = new TagTypesView(crmLogic.realm().tagTypeRegistry());
 
-        productsView = new ProductsView(realmProducts, Crud.Mode.EDITABLE);
-        assignementsView = new AssignementsView(realmProducts, Crud.Mode.EDITABLE);
-        effortsView = new EffortsView(realmProducts, Crud.Mode.READONLY);
+        productsView = new ProductsView(productsLogic, Crud.Mode.EDITABLE);
+        assignementsView = new AssignementsView(productsLogic, Crud.Mode.EDITABLE);
+        effortsView = new EffortsView(productsLogic, Crud.Mode.READONLY);
 
         currentView = naturalEntitiesView;
 
@@ -135,6 +139,27 @@ public class MainView extends AppLayout {
         setPrimarySection(Section.NAVBAR);
         addToNavbar(new DrawerToggle(), image, menuBar());
         setContent(naturalEntitiesView);
+    }
+
+    InvoicesBusinessLogic ofInvoicesLogic(TagTypeRegistry registry) {
+        InvoicesRealm realm = new InvoicesEntities(registry);
+        return new InvoicesBusinessLogic(realm, new InvoicesHdl(realm, Path.of(ORGANIZATION, "invoices/")),
+                new InvoicesAdapter(realm, Path.of(ORGANIZATION, "reports/invoices/")));
+    }
+
+    CrmBusinessLogic ofCrmLogic(TagTypeRegistry registry) {
+        CrmRealm realm = new CrmEntities(registry);
+        return new CrmBusinessLogic(realm, new CrmHdl(realm, Path.of(ORGANIZATION, "crm")), null);
+    }
+
+    ProductsBusinessLogic ofProductsLogic(TagTypeRegistry registry) {
+        ProductsRealm realm = new ProductsEntities(registry);
+        return new ProductsBusinessLogic(realm, new ProductsHdl(realm, Path.of(ORGANIZATION, "products/")));
+    }
+
+    LedgerBusinessLogic ofLedgerLogic() {
+        LedgerRealm ledger = new LedgerRealm();
+        return new LedgerBusinessLogic(ledger, new LedgerHdl(ledger, Path.of(ORGANIZATION, "ledger/")));
     }
 
     @Override
@@ -190,11 +215,11 @@ public class MainView extends AppLayout {
 
     private void countCrmTags() {
         tagTypesView.clearCounts();
-        tagTypesView.addCounts(realmCrm.naturalEntities().items());
-        tagTypesView.addCounts(realmCrm.legalEntities().items());
-        tagTypesView.addCounts(realmCrm.employees().items());
-        tagTypesView.addCounts(realmCrm.contracts().items());
-        tagTypesView.addCounts(realmCrm.subjects().items());
+        tagTypesView.addCounts(crmLogic.realm().naturalEntities().items());
+        tagTypesView.addCounts(crmLogic.realm().legalEntities().items());
+        tagTypesView.addCounts(crmLogic.realm().employees().items());
+        tagTypesView.addCounts(crmLogic.realm().contracts().items());
+        tagTypesView.addCounts(crmLogic.realm().subjects().items());
         tagTypesView.refreshData();
     }
 
@@ -206,32 +231,23 @@ public class MainView extends AppLayout {
     private void importErpData() {
         TagTypeRegistry registry = new TagTypeRegistry();
 
-        realmCrm = new CrmEntities(registry);
-        realmInvoices = new InvoicesEntities(registry);
-        realmProducts = new ProductsEntities(registry);
+        crmLogic = ofCrmLogic(registry);
+        invoicesLogic = ofInvoicesLogic(registry);
+        productsLogic = ofProductsLogic(registry);
+        ledgerLogic = ofLedgerLogic();
 
-        BusinessLogicCrm businessLogicCrm = new BusinessLogicCrm(realmCrm);
-        businessLogicCrm.registerTags(registry);
+        crmLogic.registerTags(registry);
 
-        CrmHdl crmHdl = new CrmHdl(realmCrm, Paths.get("/Users/Shared/tangly/crm"));
-        crmHdl.importEntities();
-
-        InvoicesHdl invoicesHdl = new InvoicesHdl(realmInvoices, Paths.get("/Users/Shared/tangly/invoices"));
-        invoicesHdl.importEntities();
-
-        ProductsHdl productsHdl = new ProductsHdl(realmProducts, Paths.get("/Users/Shared/tangly/products/"));
-        productsHdl.importEntities();
-
-        LedgerHdl ledgerHdl = new LedgerHdl(new Ledger(), Paths.get("/Users/Shared/tangly/ledger"));
-        ledgerHdl.importEntities();
-        ledgerLogic = new BusinessLogicLedger(ledgerHdl.ledger());
+        crmLogic.handler().importEntities();
+        invoicesLogic.handler().importEntities();
+        productsLogic.handler().importEntities();
+        ledgerLogic.handler().importEntities();
     }
 
     private void exportErpData() {
-        CrmHdl crmHdl = new CrmHdl(realmCrm, Paths.get("/Users/Shared/tangly/crm"));
-        crmHdl.exportEntities();
-        InvoicesHdl invoicesHdl = new InvoicesHdl(realmInvoices, Paths.get("/Users/Shared/tangly/invoices"));
-        invoicesHdl.exportEntities();
+        crmLogic.handler().exportEntities();
+        invoicesLogic.handler().exportEntities();
+        productsLogic.handler().exportEntities();
     }
 
     private void refreshViews() {
