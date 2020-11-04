@@ -14,6 +14,7 @@
 package net.tangly.ledger.ports;
 
 
+import java.io.IOException;
 import java.io.Writer;
 import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
@@ -50,32 +51,34 @@ public class ClosingReportAsciiDoc {
         this.ledger = ledger;
     }
 
-    public void create(LocalDate from, LocalDate to, Path reportPath) {
+    public void create(LocalDate from, LocalDate to, Path reportPath, boolean withVat, boolean withTransactions) {
         try (Writer writer = Files.newBufferedWriter(reportPath, StandardCharsets.UTF_8)) {
-            create(from, to, writer);
-        } catch (Exception e) {
+            create(from, to, writer, withVat, withTransactions);
+        } catch (IOException e) {
             logger.error("Error during reporting", e);
         }
     }
 
-    public void create(LocalDate from, LocalDate to, Writer writer) {
+    public void create(LocalDate from, LocalDate to, Writer writer, boolean withVat, boolean withTransactions) {
         final AsciiDocHelper helper = new AsciiDocHelper(writer);
         helper.header("Balance Sheet", 2);
         generateResultTableFor(helper, ledger.assets(), from, to, "Assets");
         generateResultTableFor(helper, ledger.liabilities(), from, to, "Liabilities");
         generateResultTableFor(helper, ledger.profitAndLoss(), from, to, "Profits and Losses");
-
-        helper.tableHeader("VAT", "cols=\"100, >25, >25 , >25\"", "Period", "Turnover", "VAT", "Due VAT");
-        addVatRows(helper, from.getYear());
-        if (from.getYear() != to.getYear()) {
-            addVatRows(helper, to.getYear());
+        if (withVat) {
+            helper.tableHeader("VAT", "cols=\"100, >25, >25 , >25\"", "Period", "Turnover", "VAT", "Due VAT");
+            addVatRows(helper, from.getYear());
+            if (from.getYear() != to.getYear()) {
+                addVatRows(helper, to.getYear());
+            }
+            helper.tableEnd();
         }
-        helper.tableEnd();
-
-        helper.header("Transactions", 3);
-        helper.tableHeader("Transactions", "cols=\"20, 20, 70 , 15, 15, >20, >10\"", "Date", "Voucher", "Description", "Debit", "Credit", "Amount", "VAT");
-        ledger.transactions(from, to).forEach(o -> createTransactionRow(helper, o));
-        helper.tableEnd();
+        if (withTransactions) {
+            helper.header("Transactions", 3);
+            helper.tableHeader("Transactions", "cols=\"20, 20, 70 , 15, 15, >20, >10\"", "Date", "Voucher", "Description", "Debit", "Credit", "Amount", "VAT");
+            ledger.transactions(from, to).forEach(o -> createTransactionRow(helper, o));
+            helper.tableEnd();
+        }
     }
 
     private static void generateResultTableFor(AsciiDocHelper helper, List<Account> accounts, LocalDate from, LocalDate to, String category) {
@@ -113,20 +116,20 @@ public class ClosingReportAsciiDoc {
         if (transaction.isSplit()) {
             if (transaction.debitSplits().size() > 1) {
                 helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.text(), "", transaction.creditAccount(),
-                        format(transaction.amount()), "-");
+                    format(transaction.amount()), "-");
                 for (AccountEntry entry : transaction.debitSplits()) {
                     helper.tableRow("", "", "", entry.accountId(), "", format(transaction.amount()), "-");
                 }
             } else {
                 helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.text(), transaction.debitAccount(), "",
-                        format(transaction.amount()), "-");
+                    format(transaction.amount()), "-");
                 for (AccountEntry entry : transaction.debitSplits()) {
                     helper.tableRow("", "", "", "", entry.accountId(), format(transaction.amount()), "-");
                 }
             }
         } else {
             helper.tableRow(transaction.date().toString(), transaction.reference(), transaction.text(), transaction.debitAccount(), transaction.creditAccount(),
-                    format(transaction.amount()), vat(transaction.creditSplits().get(0)));
+                format(transaction.amount()), vat(transaction.creditSplits().get(0)));
         }
     }
 

@@ -41,8 +41,8 @@ class LedgerRealmPortTest {
         ledgerHdl.importEntities();
         LedgerAdapter adapter = new LedgerAdapter(ledgerHdl.ledger(), Paths.get("/Users/Shared/tangly/reports/ledger"));
 
-        adapter.exportLedgerDocument("tangly-" + 2016, LocalDate.of(2015, 11, 1), LocalDate.of(2016, 12, 31));
-        List.of(2017, 2018, 2019, 2020).forEach(o -> adapter.exportLedgerDocument("tangly-" + o, LocalDate.of(o, 1, 1), LocalDate.of(o, 12, 31)));
+        adapter.exportLedgerDocument("tangly-" + 2016, LocalDate.of(2015, 11, 1), LocalDate.of(2016, 12, 31), true, true);
+        List.of(2017, 2018, 2019, 2020).forEach(o -> adapter.exportLedgerDocument("tangly-" + o, LocalDate.of(o, 1, 1), LocalDate.of(o, 12, 31), true, true));
     }
 
     @Test
@@ -51,7 +51,7 @@ class LedgerRealmPortTest {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             ErpStore store = new ErpStore(fs);
             LedgerAdapter adapter = new LedgerAdapter(createLedger(store), store.ledgerRoot());
-            adapter.exportLedgerDocument(filenameWithoutExtension, LocalDate.of(2015, 10, 01), LocalDate.of(2016, 12, 31));
+            adapter.exportLedgerDocument(filenameWithoutExtension, LocalDate.of(2015, 10, 01), LocalDate.of(2016, 12, 31), true, true);
             assertThat(Files.exists(store.ledgerRoot().resolve(filenameWithoutExtension + ".adoc"))).isFalse();
             assertThat(Files.exists(store.ledgerRoot().resolve(filenameWithoutExtension + ".pdf"))).isTrue();
         }

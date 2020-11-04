@@ -15,6 +15,7 @@ package net.tangly.commons.ledger.ui;
 
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -28,6 +29,8 @@ public class CommandCreateLedgerDocument extends Dialog {
     private final TextField name;
     private final DatePicker fromDate;
     private final DatePicker toDate;
+    private final Checkbox withVat;
+    private final Checkbox withTransactions;
 
     public CommandCreateLedgerDocument(LedgerBusinessLogic logic) {
         FormLayout form = new FormLayout();
@@ -36,14 +39,16 @@ public class CommandCreateLedgerDocument extends Dialog {
         name = new TextField("Name", "document name");
         fromDate = VaadinUtils.createDatePicker("From");
         toDate = VaadinUtils.createDatePicker("To");
+        withVat = new Checkbox("Include VAT Report");
+        withTransactions = new Checkbox("Include Transactions");
 
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
-            logic.port().exportLedgerDocument(name.getValue(), fromDate.getValue(), toDate.getValue());
+            logic.port().exportLedgerDocument(name.getValue(), fromDate.getValue(), toDate.getValue(), withVat.getValue(), withTransactions.getValue());
             this.close();
         });
         Button cancel = new Button("Cancel", e -> this.close());
 
-        form.add(name, new HtmlComponent("br"), fromDate, toDate, new HtmlComponent("br"), new HorizontalLayout(execute, cancel));
+        form.add(name, new HtmlComponent("br"), fromDate, toDate, withVat, withTransactions, new HtmlComponent("br"), new HorizontalLayout(execute, cancel));
         add(form);
         open();
     }

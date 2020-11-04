@@ -78,7 +78,7 @@ class LedgerRealmWorkflowTest {
 
             ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(handler.ledger());
             StringWriter writer = new StringWriter();
-            report.create(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31), new PrintWriter(writer));
+            report.create(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31), new PrintWriter(writer), true, true);
             assertThat(writer.toString().isEmpty()).isFalse();
         }
     }

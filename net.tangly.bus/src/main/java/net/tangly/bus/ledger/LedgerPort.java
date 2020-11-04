@@ -22,6 +22,8 @@ public interface LedgerPort {
      * @param name name of the document
      * @param from start of the time interval relevant for the report
      * @param to   end of the time interval relevant for the report
+     * @param withVat flag indicating if VAT information should be part of the report
+     * @param withTransactions flag indicating if the transactions should be part of the report
      */
-    void exportLedgerDocument(String name, LocalDate from, LocalDate to);
+     void exportLedgerDocument(String name, LocalDate from, LocalDate to, boolean withVat, boolean withTransactions);
 }
