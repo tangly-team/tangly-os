@@ -74,6 +74,7 @@ public final class CrmTags {
 
     public static final String CRM_VAT_NUMBER = CRM + ":vat-number";
     public static final String CRM_BANK_CONNECTION = CRM + ":bank-connection";
+    public static final String CRM_RESPONSIBLE = CRM + ":responsible";
 
     public static final String CRM_EMPLOYEE_TITLE = CRM + ":title";
     public static final String CRM_SCHOOL = CRM + ":school";
@@ -111,6 +112,7 @@ public final class CrmTags {
         registry.register(TagType.ofMandatoryString(CRM, "im-" + GOOGLE));
         registry.register(TagType.ofMandatoryString(CRM, "vat-number"));
         registry.register(TagType.ofMandatory(CRM, "bank-connection", BankConnection.class, BankConnection::of));
+        registry.register(TagType.ofMandatoryString(CRM, "responsible"));
 
         registry.register(TagType.ofMandatory(GEO, LATITUDE, Double.TYPE, Double::valueOf));
         registry.register(TagType.ofMandatory(GEO, LONGITUDE, Double.TYPE, Double::valueOf));
@@ -157,7 +159,7 @@ public final class CrmTags {
     public static String organizationLinkedInUrl(@NotNull HasTags entity) {
         Optional<Tag> school = entity.findBy(CrmTags.CRM_SCHOOL);
         return entity.findBy(CrmTags.CRM_IM_LINKEDIN).map(Tag::value).map(o -> "https://www.linkedin.com/" + (school.isPresent() ? "school/" : "company/") + o)
-                .orElse(null);
+            .orElse(null);
     }
 
     /**
