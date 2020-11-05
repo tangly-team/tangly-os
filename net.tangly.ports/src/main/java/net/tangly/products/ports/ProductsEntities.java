@@ -15,7 +15,7 @@ package net.tangly.products.ports;
 
 import javax.inject.Inject;
 
-import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.core.TagTypeRegistry;
 import net.tangly.bus.products.Assignment;
 import net.tangly.bus.products.Effort;
 import net.tangly.bus.products.Product;

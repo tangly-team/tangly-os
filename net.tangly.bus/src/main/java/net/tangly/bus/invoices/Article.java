@@ -16,12 +16,13 @@ package net.tangly.bus.invoices;
 
 import java.math.BigDecimal;
 
-import net.tangly.bus.core.HasId;
+import net.tangly.core.HasId;
+import net.tangly.core.HasOid;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * A product sold by a legal entity and referenced in an invoice or an invoice line. An article is a {@link HasId} mixin because the identifier is external and
- * the Java record structure does not support internal {@link net.tangly.bus.core.HasOid} manipulation through reflection.
+ * the Java record structure does not support internal {@link HasOid} manipulation through reflection.
  *
  * @param id        unique external identifier of the product
  * @param name      human readable name of the product

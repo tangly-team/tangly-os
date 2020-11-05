@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.core.TagTypeRegistry;
 import net.tangly.bus.providers.InstanceProvider;
 import org.jetbrains.annotations.NotNull;
 

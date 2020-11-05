@@ -13,11 +13,11 @@
 
 package net.tangly.bus.ledger;
 
-import net.tangly.bus.core.TagTypeRegistry;
-import net.tangly.commons.app.BoundedDomain;
+import net.tangly.core.TagTypeRegistry;
+import net.tangly.core.app.BoundedDomain;
 
 public class LedgerBoundedDomain extends BoundedDomain<LedgerRealm, LedgerBusinessLogic, LedgerHandler, LedgerPort> {
-    public LedgerBoundedDomain(LedgerRealm realm, LedgerBusinessLogic logic, LedgerHandler handler, LedgerPort port) {
-        super(realm, logic, handler, port);
+    public LedgerBoundedDomain(LedgerRealm realm, LedgerBusinessLogic logic, LedgerHandler handler, LedgerPort port, TagTypeRegistry registry) {
+        super(realm, logic, handler, port, registry);
     }
 }

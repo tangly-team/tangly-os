@@ -13,16 +13,11 @@
 
 package net.tangly.bus.products;
 
-import net.tangly.bus.core.TagTypeRegistry;
-import net.tangly.commons.app.BoundedDomain;
+import net.tangly.core.TagTypeRegistry;
+import net.tangly.core.app.BoundedDomain;
 
 public class ProductsBoundedDomain extends BoundedDomain<ProductsRealm, ProductsBusinessLogic, ProductsHandler, ProductsPort> {
-    public ProductsBoundedDomain(ProductsRealm realm, ProductsBusinessLogic logic, ProductsHandler handler, ProductsPort port) {
-        super(realm, logic, handler, port);
+    public ProductsBoundedDomain(ProductsRealm realm, ProductsBusinessLogic logic, ProductsHandler handler, ProductsPort port, TagTypeRegistry registry) {
+        super(realm, logic, handler, port, registry);
     }
-
-    public TagTypeRegistry tagTypeRegistry() {
-        return realm().tagTypeRegistry();
-    }
-
 }

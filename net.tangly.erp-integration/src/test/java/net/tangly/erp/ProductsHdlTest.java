@@ -19,7 +19,7 @@ import java.nio.file.Path;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
-import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.core.TagTypeRegistry;
 import net.tangly.products.ports.ProductsEntities;
 import net.tangly.products.ports.ProductsHdl;
 import org.junit.jupiter.api.Tag;

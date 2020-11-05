@@ -15,8 +15,8 @@ package net.tangly.bus.crm;
 
 import java.util.Objects;
 
-import net.tangly.bus.core.EntityImp;
-import net.tangly.bus.core.HasName;
+import net.tangly.core.EntityImp;
+import net.tangly.core.HasName;
 import org.jetbrains.annotations.NotNull;
 
 /**

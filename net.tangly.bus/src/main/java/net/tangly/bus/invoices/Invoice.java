@@ -26,9 +26,9 @@ import java.util.Optional;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
-import net.tangly.bus.core.Address;
-import net.tangly.bus.core.BankConnection;
-import net.tangly.bus.core.HasEditableId;
+import net.tangly.core.Address;
+import net.tangly.core.BankConnection;
+import net.tangly.core.HasEditableId;
 
 /**
  * <p>The abstraction of an invoice with a set of positions, subtotals, and a total. The items and the subtotals have a position

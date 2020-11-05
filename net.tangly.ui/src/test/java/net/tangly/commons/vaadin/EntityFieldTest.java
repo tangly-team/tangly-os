@@ -15,7 +15,7 @@ package net.tangly.commons.vaadin;
 
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import com.github.mvysny.kaributesting.v10.Routes;
-import net.tangly.bus.core.Entity;
+import net.tangly.core.Entity;
 import net.tangly.bus.crm.LegalEntity;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;

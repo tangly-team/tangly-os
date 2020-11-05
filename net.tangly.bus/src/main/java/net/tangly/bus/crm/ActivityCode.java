@@ -13,7 +13,7 @@
 
 package net.tangly.bus.crm;
 
-import net.tangly.bus.codes.Code;
+import net.tangly.core.codes.Code;
 
 /**
  * Defines the kinds of af activities between natural persons.

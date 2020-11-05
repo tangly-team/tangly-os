@@ -24,8 +24,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import net.tangly.bus.core.HasId;
-import net.tangly.bus.core.HasName;
+import net.tangly.core.HasId;
+import net.tangly.core.HasName;
 import org.jetbrains.annotations.NotNull;
 
 /**

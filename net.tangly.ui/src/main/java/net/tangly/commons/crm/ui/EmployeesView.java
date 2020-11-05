@@ -33,7 +33,7 @@ public class EmployeesView extends InternalEntitiesView<Employee> {
     private final CrmBoundedDomain domain;
 
     public EmployeesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
-        super(Employee.class, mode, domain.realm().employees(), domain.tagTypeRegistry());
+        super(Employee.class, mode, domain.realm().employees(), domain.registry());
         this.domain = domain;
         initialize();
     }

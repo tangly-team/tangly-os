@@ -23,7 +23,7 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
-import net.tangly.bus.core.HasName;
+import net.tangly.core.HasName;
 import org.jetbrains.annotations.NotNull;
 
 /**

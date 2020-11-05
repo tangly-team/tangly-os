@@ -20,7 +20,7 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import net.tangly.bus.codes.CodeType;
+import net.tangly.core.codes.CodeType;
 import net.tangly.bus.crm.Activity;
 import net.tangly.bus.crm.ActivityCode;
 import net.tangly.bus.crm.CrmBoundedDomain;

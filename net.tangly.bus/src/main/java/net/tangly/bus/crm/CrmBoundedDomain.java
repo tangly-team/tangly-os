@@ -15,16 +15,17 @@ package net.tangly.bus.crm;
 
 import javax.inject.Inject;
 
-import net.tangly.bus.core.TagTypeRegistry;
-import net.tangly.commons.app.BoundedDomain;
+import net.tangly.core.TagTypeRegistry;
+import net.tangly.core.app.BoundedDomain;
 
 public class CrmBoundedDomain extends BoundedDomain<CrmRealm, CrmBusinessLogic, CrmHandler, CrmPort> {
     @Inject
-    public CrmBoundedDomain(CrmRealm realm, CrmBusinessLogic logic, CrmHandler handler, CrmPort port) {
-        super(realm, logic, handler, port);
+    public CrmBoundedDomain(CrmRealm realm, CrmBusinessLogic logic, CrmHandler handler, CrmPort port, TagTypeRegistry registry) {
+        super(realm, logic, handler, port, registry);
     }
 
-    public TagTypeRegistry tagTypeRegistry() {
-        return realm().tagTypeRegistry();
+    @Override
+    protected void registerTags() {
+        CrmTags.registerTags(registry());
     }
 }

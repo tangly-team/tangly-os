@@ -19,14 +19,14 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.Optional;
 
-import net.tangly.bus.core.Address;
-import net.tangly.bus.core.BankConnection;
-import net.tangly.bus.core.EmailAddress;
-import net.tangly.bus.core.HasTags;
-import net.tangly.bus.core.PhoneNr;
-import net.tangly.bus.core.Tag;
-import net.tangly.bus.core.TagType;
-import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.core.Address;
+import net.tangly.core.BankConnection;
+import net.tangly.core.EmailAddress;
+import net.tangly.core.HasTags;
+import net.tangly.core.PhoneNr;
+import net.tangly.core.Tag;
+import net.tangly.core.TagType;
+import net.tangly.core.TagTypeRegistry;
 import org.jetbrains.annotations.NotNull;
 
 /**

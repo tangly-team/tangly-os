@@ -18,8 +18,8 @@ import java.time.LocalDate;
 import java.util.Currency;
 import java.util.List;
 
-import net.tangly.bus.core.Address;
-import net.tangly.bus.core.BankConnection;
+import net.tangly.core.Address;
+import net.tangly.core.BankConnection;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

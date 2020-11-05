@@ -31,7 +31,7 @@ import net.codecrete.qrbill.generator.OutputSize;
 import net.codecrete.qrbill.generator.Payments;
 import net.codecrete.qrbill.generator.QRBill;
 import net.codecrete.qrbill.generator.SwicoBillInformation;
-import net.tangly.bus.core.Address;
+import net.tangly.core.Address;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceLegalEntity;
 import org.jetbrains.annotations.NotNull;

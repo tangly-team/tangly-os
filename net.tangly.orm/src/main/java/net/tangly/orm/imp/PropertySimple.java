@@ -18,7 +18,7 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.function.Function;
 
-import net.tangly.bus.core.HasOid;
+import net.tangly.core.HasOid;
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.orm.Property;
 import org.jetbrains.annotations.NotNull;

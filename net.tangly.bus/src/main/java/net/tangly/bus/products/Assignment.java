@@ -13,7 +13,7 @@
 
 package net.tangly.bus.products;
 
-import net.tangly.bus.core.QualifiedEntityImp;
+import net.tangly.core.QualifiedEntityImp;
 
 /**
  * An assignment defines connection of an employee to a project for a duration. The start date shall be equal or greater to the start date of project. The end

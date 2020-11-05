@@ -13,7 +13,7 @@
 
 package net.tangly.bus.invoices;
 
-import net.tangly.bus.core.HasId;
+import net.tangly.core.HasId;
 
 public record InvoiceLegalEntity(String id, String name, String vatNr) implements HasId {
 }

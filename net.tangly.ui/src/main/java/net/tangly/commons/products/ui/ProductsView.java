@@ -27,7 +27,7 @@ public class ProductsView extends InternalEntitiesView<Product> {
 
     @Inject
     public ProductsView(@NotNull ProductsBoundedDomain domain, @NotNull Mode mode) {
-        super(Product.class, mode, domain.realm().products(), domain.tagTypeRegistry());
+        super(Product.class, mode, domain.realm().products(), domain.registry());
         this.domain = domain;
         initialize();
     }

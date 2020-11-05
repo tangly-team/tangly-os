@@ -15,7 +15,7 @@ package net.tangly.crm.ports;
 
 import javax.inject.Inject;
 
-import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.core.TagTypeRegistry;
 import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.CrmRealm;
 import net.tangly.bus.crm.Employee;

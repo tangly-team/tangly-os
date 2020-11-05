@@ -13,15 +13,11 @@
 
 package net.tangly.bus.invoices;
 
-import net.tangly.bus.core.TagTypeRegistry;
-import net.tangly.commons.app.BoundedDomain;
+import net.tangly.core.TagTypeRegistry;
+import net.tangly.core.app.BoundedDomain;
 
 public class InvoicesBoundedDomain extends BoundedDomain<InvoicesRealm, InvoicesBusinessLogic, InvoicesHandler, InvoicesPort> {
-    public InvoicesBoundedDomain(InvoicesRealm realm, InvoicesBusinessLogic logic, InvoicesHandler handler, InvoicesPort port) {
-        super(realm, logic, handler, port);
-    }
-
-    public TagTypeRegistry tagTypeRegistry() {
-        return realm().tagTypeRegistry();
+    public InvoicesBoundedDomain(InvoicesRealm realm, InvoicesBusinessLogic logic, InvoicesHandler handler, InvoicesPort port, TagTypeRegistry registry) {
+        super(realm, logic, handler, port, registry);
     }
 }

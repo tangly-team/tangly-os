@@ -13,7 +13,7 @@
 
 package net.tangly.bus.crm;
 
-import net.tangly.commons.app.Handler;
+import net.tangly.core.app.Handler;
 
 /**
  * Define the import port for the bounded domain. It is a primary port in the DDD terminology.

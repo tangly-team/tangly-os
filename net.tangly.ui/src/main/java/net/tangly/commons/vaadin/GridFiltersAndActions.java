@@ -25,8 +25,8 @@ import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.provider.ListDataProvider;
-import net.tangly.bus.core.HasInterval;
-import net.tangly.bus.core.HasTags;
+import net.tangly.core.HasInterval;
+import net.tangly.core.HasTags;
 import org.jetbrains.annotations.NotNull;
 
 public class GridFiltersAndActions<T> extends HorizontalLayout implements SelectedItemListener<T> {

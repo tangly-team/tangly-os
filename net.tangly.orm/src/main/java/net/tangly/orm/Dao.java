@@ -31,7 +31,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 import javax.sql.DataSource;
 
-import net.tangly.bus.core.HasOid;
+import net.tangly.core.HasOid;
 import net.tangly.bus.providers.InstanceProvider;
 import net.tangly.commons.lang.ReflectionUtilities;
 import org.jetbrains.annotations.NotNull;

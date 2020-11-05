@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import net.tangly.bus.core.HasOid;
+import net.tangly.core.HasOid;
 import net.tangly.commons.lang.Reference;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

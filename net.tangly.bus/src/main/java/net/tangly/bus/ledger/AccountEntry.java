@@ -21,8 +21,8 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-import net.tangly.bus.core.HasTags;
-import net.tangly.bus.core.Tag;
+import net.tangly.core.HasTags;
+import net.tangly.core.Tag;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 

@@ -23,10 +23,10 @@ import net.fortuna.ical4j.vcard.Group;
 import net.fortuna.ical4j.vcard.Parameter;
 import net.fortuna.ical4j.vcard.Property;
 import net.fortuna.ical4j.vcard.VCard;
-import net.tangly.bus.core.Address;
-import net.tangly.bus.core.EmailAddress;
-import net.tangly.bus.core.PhoneNr;
-import net.tangly.bus.core.Strings;
+import net.tangly.core.Address;
+import net.tangly.core.EmailAddress;
+import net.tangly.core.PhoneNr;
+import net.tangly.core.Strings;
 import net.tangly.bus.crm.GenderCode;
 import org.jetbrains.annotations.NotNull;
 

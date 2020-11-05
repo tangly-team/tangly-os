@@ -40,7 +40,7 @@ public class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
     private final CrmBoundedDomain domain;
 
     public LegalEntitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
-        super(LegalEntity.class, mode, domain.realm().legalEntities(), domain.tagTypeRegistry());
+        super(LegalEntity.class, mode, domain.realm().legalEntities(), domain.registry());
         this.domain = domain;
         initialize();
     }

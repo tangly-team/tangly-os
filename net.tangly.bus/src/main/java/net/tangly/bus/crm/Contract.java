@@ -19,9 +19,9 @@ import java.util.Currency;
 import java.util.Locale;
 import java.util.Objects;
 
-import net.tangly.bus.core.Address;
-import net.tangly.bus.core.BankConnection;
-import net.tangly.bus.core.QualifiedEntityImp;
+import net.tangly.core.Address;
+import net.tangly.core.BankConnection;
+import net.tangly.core.QualifiedEntityImp;
 
 /**
  * A legal contract between two parties, one being the seller and one being the sellee. The properties of the entity defines the identifiers of the contract and

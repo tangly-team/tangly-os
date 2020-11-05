@@ -13,7 +13,7 @@
 
 package net.tangly.commons.vaadin;
 
-import net.tangly.bus.core.Address;
+import net.tangly.core.Address;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

@@ -32,7 +32,7 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.material.Material;
-import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.core.TagTypeRegistry;
 import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.CrmRealm;
@@ -83,10 +83,11 @@ public class MainView extends AppLayout {
     private static final String ORGANIZATION = "/Users/Shared/tangly/";
     private Component currentView;
 
-    private CrmBoundedDomain crmDomain;
-    private LedgerBoundedDomain ledgerDomain;
-    private InvoicesBoundedDomain invoicesDomain;
-    private ProductsBoundedDomain productsDomain;
+    private final TagTypeRegistry registry;
+    private final CrmBoundedDomain crmDomain;
+    private final LedgerBoundedDomain ledgerDomain;
+    private final InvoicesBoundedDomain invoicesDomain;
+    private final ProductsBoundedDomain productsDomain;
 
     private final NaturalEntitiesView naturalEntitiesView;
     private final LegalEntitiesView legalEntitiesView;
@@ -111,6 +112,12 @@ public class MainView extends AppLayout {
     private final TagTypesView tagTypesView;
 
     public MainView() {
+        registry = new TagTypeRegistry();
+        crmDomain = ofCrmDomain();
+        invoicesDomain = ofInvoicesDomain();
+        productsDomain = ofProductsDomain();
+        ledgerDomain = ofLedgerDomain();
+
         importErpData();
 
         naturalEntitiesView = new NaturalEntitiesView(crmDomain, Crud.Mode.EDITABLE);
@@ -150,28 +157,28 @@ public class MainView extends AppLayout {
         setContent(naturalEntitiesView);
     }
 
-    InvoicesBoundedDomain ofInvoicesLogic(TagTypeRegistry registry) {
+    InvoicesBoundedDomain ofInvoicesDomain() {
         InvoicesRealm realm = new InvoicesEntities(registry);
         return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesHdl(realm, Path.of(ORGANIZATION, "invoices/")),
-            new InvoicesAdapter(realm, Path.of(ORGANIZATION, "reports/invoices/")));
+            new InvoicesAdapter(realm, Path.of(ORGANIZATION, "reports/invoices/")), registry);
     }
 
-    CrmBoundedDomain ofCrmLogic(TagTypeRegistry registry) {
+    CrmBoundedDomain ofCrmDomain() {
         CrmRealm realm = new CrmEntities(registry);
-        return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmHdl(realm, Path.of(ORGANIZATION, "crm")), null);
+        return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmHdl(realm, Path.of(ORGANIZATION, "crm")), null, registry);
     }
 
-    ProductsBoundedDomain ofProductsLogic(TagTypeRegistry registry) {
+    ProductsBoundedDomain ofProductsDomain() {
         ProductsRealm realm = new ProductsEntities(registry);
         ProductsBusinessLogic logic = new ProductsBusinessLogic(realm);
         return new ProductsBoundedDomain(realm, logic, new ProductsHdl(realm, Path.of(ORGANIZATION, "products/")),
-            new ProductsAdapter(logic, Path.of(ORGANIZATION, "reports/assignments")));
+            new ProductsAdapter(logic, Path.of(ORGANIZATION, "reports/assignments")), registry);
     }
 
-    LedgerBoundedDomain ofLedgerLogic() {
+    LedgerBoundedDomain ofLedgerDomain() {
         LedgerRealm ledger = new LedgerRealm();
         return new LedgerBoundedDomain(ledger, new LedgerBusinessLogic(ledger), new LedgerHdl(ledger, Path.of(ORGANIZATION, "ledger/")),
-            new LedgerAdapter(ledger, Path.of(ORGANIZATION, "reports/ledger")));
+            new LedgerAdapter(ledger, Path.of(ORGANIZATION, "reports/ledger")), registry);
     }
 
     @Override
@@ -242,15 +249,6 @@ public class MainView extends AppLayout {
     }
 
     private void importErpData() {
-        TagTypeRegistry registry = new TagTypeRegistry();
-
-        crmDomain = ofCrmLogic(registry);
-        invoicesDomain = ofInvoicesLogic(registry);
-        productsDomain = ofProductsLogic(registry);
-        ledgerDomain = ofLedgerLogic();
-
-        crmDomain.logic().registerTags(registry);
-
         crmDomain.handler().importEntities();
         invoicesDomain.handler().importEntities();
         productsDomain.handler().importEntities();

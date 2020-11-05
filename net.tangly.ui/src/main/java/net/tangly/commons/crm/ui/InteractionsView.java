@@ -23,9 +23,8 @@ import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.NumberRenderer;
-import net.tangly.bus.codes.CodeType;
+import net.tangly.core.codes.CodeType;
 import net.tangly.bus.crm.CrmBoundedDomain;
-import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.Interaction;
 import net.tangly.bus.crm.InteractionCode;
 import net.tangly.commons.vaadin.EntitiesView;
@@ -39,7 +38,7 @@ public class InteractionsView extends InternalEntitiesView<Interaction> {
     private final CrmBoundedDomain domain;
 
     public InteractionsView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
-        super(Interaction.class, mode, domain.realm().interactions(), domain.tagTypeRegistry());
+        super(Interaction.class, mode, domain.realm().interactions(), domain.registry());
         this.domain = domain;
         initialize();
     }

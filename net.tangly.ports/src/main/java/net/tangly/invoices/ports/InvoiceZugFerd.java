@@ -22,7 +22,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import net.tangly.bus.core.Address;
+import net.tangly.core.Address;
 import net.tangly.bus.invoices.Article;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceItem;

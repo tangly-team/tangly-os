@@ -13,7 +13,7 @@
 
 package net.tangly.bus.crm;
 
-import net.tangly.bus.codes.Code;
+import net.tangly.core.codes.Code;
 
 /**
  * Defines the gender of a natural person. Gender is mainly used to define how the address the person in written communication.

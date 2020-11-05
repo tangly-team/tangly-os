@@ -16,9 +16,9 @@ package net.tangly.orm.imp;
 import java.sql.Types;
 import java.util.Map;
 
-import net.tangly.bus.codes.Code;
-import net.tangly.bus.codes.CodeType;
-import net.tangly.bus.core.HasOid;
+import net.tangly.core.codes.Code;
+import net.tangly.core.codes.CodeType;
+import net.tangly.core.HasOid;
 import net.tangly.orm.Property;
 import org.jetbrains.annotations.NotNull;
 

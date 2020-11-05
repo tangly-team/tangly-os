@@ -36,7 +36,7 @@ public class SubjectsView extends InternalEntitiesView<Subject> {
     private final CrmBoundedDomain domain;
 
     public SubjectsView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
-        super(Subject.class, mode, domain.realm().subjects(), domain.tagTypeRegistry());
+        super(Subject.class, mode, domain.realm().subjects(), domain.registry());
         this.domain = domain;
         initialize();
     }

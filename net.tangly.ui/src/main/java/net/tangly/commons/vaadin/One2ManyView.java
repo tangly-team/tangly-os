@@ -24,8 +24,8 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
-import net.tangly.bus.core.HasName;
-import net.tangly.bus.core.QualifiedEntity;
+import net.tangly.core.HasName;
+import net.tangly.core.QualifiedEntity;
 import net.tangly.bus.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 

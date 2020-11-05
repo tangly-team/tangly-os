@@ -13,7 +13,7 @@
 
 package net.tangly.crm.ports;
 
-import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.core.TagTypeRegistry;
 import net.tangly.bus.crm.CrmTags;
 import org.junit.jupiter.api.Test;
 

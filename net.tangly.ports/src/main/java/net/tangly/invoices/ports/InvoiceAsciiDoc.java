@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 import net.codecrete.qrbill.generator.Strings;
-import net.tangly.bus.core.Address;
+import net.tangly.core.Address;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceLegalEntity;
 import net.tangly.bus.invoices.InvoiceLine;

@@ -19,7 +19,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import com.google.common.jimfs.Jimfs;
-import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.core.TagTypeRegistry;
 import net.tangly.bus.invoices.InvoicesBusinessLogic;
 import net.tangly.bus.invoices.InvoicesRealm;
 import net.tangly.invoices.ports.InvoicesAdapter;

@@ -21,9 +21,9 @@ import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.provider.ListDataProvider;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
-import net.tangly.bus.core.Entity;
-import net.tangly.bus.core.QualifiedEntity;
-import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.core.Entity;
+import net.tangly.core.QualifiedEntity;
+import net.tangly.core.TagTypeRegistry;
 import net.tangly.bus.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 

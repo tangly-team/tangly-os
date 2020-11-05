@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
 
-import net.tangly.bus.core.HasOid;
+import net.tangly.core.HasOid;
 import net.tangly.commons.lang.Reference;
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.orm.Dao;

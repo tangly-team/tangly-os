@@ -18,8 +18,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-import net.tangly.bus.core.HasOid;
-import net.tangly.bus.core.Strings;
+import net.tangly.core.HasOid;
+import net.tangly.core.Strings;
 import org.jetbrains.annotations.NotNull;
 
 /**

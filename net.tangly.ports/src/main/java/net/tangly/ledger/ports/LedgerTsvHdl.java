@@ -28,7 +28,7 @@ import java.util.Iterator;
 import java.util.List;
 import javax.inject.Inject;
 
-import net.tangly.bus.core.Tag;
+import net.tangly.core.Tag;
 import net.tangly.bus.ledger.Account;
 import net.tangly.bus.ledger.AccountEntry;
 import net.tangly.bus.ledger.LedgerRealm;

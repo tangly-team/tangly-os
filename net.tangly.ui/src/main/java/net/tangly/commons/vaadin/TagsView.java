@@ -18,9 +18,9 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import net.tangly.bus.core.HasTags;
-import net.tangly.bus.core.Tag;
-import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.core.HasTags;
+import net.tangly.core.Tag;
+import net.tangly.core.TagTypeRegistry;
 import net.tangly.bus.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
 

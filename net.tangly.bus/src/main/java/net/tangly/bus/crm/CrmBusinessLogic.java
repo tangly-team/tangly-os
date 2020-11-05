@@ -18,8 +18,8 @@ import java.time.LocalDate;
 import java.util.Comparator;
 import javax.inject.Inject;
 
-import net.tangly.bus.core.HasInterval;
-import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.core.HasInterval;
+import net.tangly.core.TagTypeRegistry;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -35,10 +35,6 @@ public class CrmBusinessLogic {
 
     public CrmRealm realm() {
         return realm;
-    }
-
-    public void registerTags(@NotNull TagTypeRegistry registry) {
-        CrmTags.registerTags(registry);
     }
 
     /**

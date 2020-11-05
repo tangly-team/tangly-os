@@ -22,12 +22,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import net.tangly.bus.codes.Code;
-import net.tangly.bus.codes.CodeType;
-import net.tangly.bus.core.Comment;
-import net.tangly.bus.core.QualifiedEntityImp;
-import net.tangly.bus.core.HasOid;
-import net.tangly.bus.core.Tag;
+import net.tangly.core.codes.Code;
+import net.tangly.core.codes.CodeType;
+import net.tangly.core.Comment;
+import net.tangly.core.QualifiedEntityImp;
+import net.tangly.core.HasOid;
+import net.tangly.core.Tag;
 import net.tangly.commons.lang.Reference;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeEach;

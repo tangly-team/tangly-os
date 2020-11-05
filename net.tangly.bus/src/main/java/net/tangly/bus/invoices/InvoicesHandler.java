@@ -13,7 +13,7 @@
 
 package net.tangly.bus.invoices;
 
-import net.tangly.commons.app.Handler;
+import net.tangly.core.app.Handler;
 
 /**
  * Define the import port for the invoices bounded domain.

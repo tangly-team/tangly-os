@@ -24,11 +24,11 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
 
-import net.tangly.bus.core.Comment;
-import net.tangly.bus.core.HasComments;
-import net.tangly.bus.core.HasOid;
-import net.tangly.bus.core.HasTags;
-import net.tangly.bus.core.PhoneNr;
+import net.tangly.core.Comment;
+import net.tangly.core.HasComments;
+import net.tangly.core.HasOid;
+import net.tangly.core.HasTags;
+import net.tangly.core.PhoneNr;
 import net.tangly.bus.crm.Activity;
 import net.tangly.bus.crm.ActivityCode;
 import net.tangly.bus.crm.Contract;

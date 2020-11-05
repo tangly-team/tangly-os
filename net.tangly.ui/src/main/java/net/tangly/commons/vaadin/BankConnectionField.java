@@ -18,7 +18,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ErrorLevel;
 import com.vaadin.flow.data.binder.Validator;
-import net.tangly.bus.core.BankConnection;
+import net.tangly.core.BankConnection;
 
 /**
  * A composite field to update an immutable bonk connection entity.

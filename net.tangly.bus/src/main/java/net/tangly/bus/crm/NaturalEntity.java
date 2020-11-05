@@ -14,9 +14,9 @@
 package net.tangly.bus.crm;
 
 
-import net.tangly.bus.core.EmailAddress;
-import net.tangly.bus.core.EntityImp;
-import net.tangly.bus.core.Strings;
+import net.tangly.core.EmailAddress;
+import net.tangly.core.EntityImp;
+import net.tangly.core.Strings;
 
 /**
  * A natural entity is a person. A natural entity has an identity defined as the legal number of a person (e.g. the social security number0, a name defined as

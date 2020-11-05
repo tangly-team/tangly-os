@@ -41,7 +41,7 @@ public class ContractsView extends InternalEntitiesView<Contract> {
     private final InvoicesBusinessLogic logicInvoices;
 
     public ContractsView(@NotNull CrmBoundedDomain domain, InvoicesBusinessLogic logicInvoices, @NotNull Mode mode) {
-        super(Contract.class, mode, domain.realm().contracts(), domain.tagTypeRegistry());
+        super(Contract.class, mode, domain.realm().contracts(), domain.registry());
         this.domain = domain;
         this.logicInvoices = logicInvoices;
         initialize();

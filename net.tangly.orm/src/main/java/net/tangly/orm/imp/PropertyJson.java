@@ -19,7 +19,6 @@ import java.sql.Types;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -30,7 +29,7 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
-import net.tangly.bus.core.HasOid;
+import net.tangly.core.HasOid;
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.orm.Property;
 import org.jetbrains.annotations.NotNull;

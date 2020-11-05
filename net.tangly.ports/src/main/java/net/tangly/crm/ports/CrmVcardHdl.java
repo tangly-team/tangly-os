@@ -30,7 +30,7 @@ import net.fortuna.ical4j.vcard.ParameterFactoryRegistry;
 import net.fortuna.ical4j.vcard.PropertyFactoryRegistry;
 import net.fortuna.ical4j.vcard.VCard;
 import net.fortuna.ical4j.vcard.VCardBuilder;
-import net.tangly.bus.core.EmailAddress;
+import net.tangly.core.EmailAddress;
 import net.tangly.bus.crm.CrmRealm;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.NaturalEntity;

@@ -13,7 +13,7 @@
 
 package net.tangly.orm;
 
-import net.tangly.bus.core.HasId;
+import net.tangly.core.HasId;
 import net.tangly.bus.providers.RecordProvider;
 
 public abstract class RecordDao<T extends HasId> implements RecordProvider<T> {

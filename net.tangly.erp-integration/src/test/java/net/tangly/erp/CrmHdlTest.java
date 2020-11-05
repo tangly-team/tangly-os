@@ -19,8 +19,8 @@ import java.nio.file.Path;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
-import net.tangly.bus.core.QualifiedEntity;
-import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.core.QualifiedEntity;
+import net.tangly.core.TagTypeRegistry;
 import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.CrmRealm;
 import net.tangly.bus.crm.LegalEntity;
@@ -42,7 +42,6 @@ class CrmHdlTest {
         CrmRealm realm = new CrmEntities(new TagTypeRegistry());
         CrmHdl crmHdl = new CrmHdl(realm, Path.of("/Users/Shared/tangly/", "crm"));
         CrmBusinessLogic logic = new CrmBusinessLogic(realm);
-        logic.registerTags(crmHdl.realm().tagTypeRegistry());
         crmHdl.importEntities();
     }
 

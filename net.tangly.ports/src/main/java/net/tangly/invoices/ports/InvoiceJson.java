@@ -28,8 +28,8 @@ import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import net.tangly.bus.core.Address;
-import net.tangly.bus.core.BankConnection;
+import net.tangly.core.Address;
+import net.tangly.core.BankConnection;
 import net.tangly.bus.invoices.Article;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceItem;

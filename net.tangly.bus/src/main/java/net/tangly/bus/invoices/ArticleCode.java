@@ -13,7 +13,7 @@
 
 package net.tangly.bus.invoices;
 
-import net.tangly.bus.codes.Code;
+import net.tangly.core.codes.Code;
 
 /**
  * Defines the product categories we offer in our shop. Categories are handled differently in invoices and accounting. For example expenses are added at the end

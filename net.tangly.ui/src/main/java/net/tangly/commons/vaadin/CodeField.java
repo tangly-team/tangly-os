@@ -14,8 +14,8 @@
 package net.tangly.commons.vaadin;
 
 import com.vaadin.flow.component.select.Select;
-import net.tangly.bus.codes.Code;
-import net.tangly.bus.codes.CodeType;
+import net.tangly.core.codes.Code;
+import net.tangly.core.codes.CodeType;
 
 /**
  * Selection field for a reference code and all its values.

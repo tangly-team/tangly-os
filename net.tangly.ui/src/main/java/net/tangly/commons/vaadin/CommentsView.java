@@ -22,8 +22,8 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import net.tangly.bus.core.Comment;
-import net.tangly.bus.core.HasComments;
+import net.tangly.core.Comment;
+import net.tangly.core.HasComments;
 import net.tangly.bus.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
 

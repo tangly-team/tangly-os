@@ -23,7 +23,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import net.tangly.bus.core.Entity;
+import net.tangly.core.Entity;
 import org.jetbrains.annotations.NotNull;
 
 public class EntityField<T extends Entity> extends CustomField<T> {

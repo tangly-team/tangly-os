@@ -15,7 +15,7 @@ package net.tangly.orm;
 
 import java.security.PrivilegedActionException;
 
-import net.tangly.bus.core.HasOid;
+import net.tangly.core.HasOid;
 import org.jetbrains.annotations.NotNull;
 
 /**

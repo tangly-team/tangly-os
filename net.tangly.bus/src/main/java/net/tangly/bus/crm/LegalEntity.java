@@ -14,9 +14,9 @@
 package net.tangly.bus.crm;
 
 
-import net.tangly.bus.core.QualifiedEntityImp;
-import net.tangly.bus.core.Strings;
-import net.tangly.bus.core.Tag;
+import net.tangly.core.QualifiedEntityImp;
+import net.tangly.core.Strings;
+import net.tangly.core.Tag;
 
 /**
  * A legal entity is legally recognized organization able to underwrite contracts and hire employees. A legal entity has a name, an identity defined as the

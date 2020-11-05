@@ -15,7 +15,7 @@ package net.tangly.bus.providers;
 
 import java.util.Optional;
 
-import net.tangly.bus.core.HasOid;
+import net.tangly.core.HasOid;
 
 /**
  * Defines the abstraction to handle all instances of a business model abstraction type.

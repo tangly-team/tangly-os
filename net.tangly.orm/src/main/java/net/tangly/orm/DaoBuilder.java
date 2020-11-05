@@ -25,10 +25,10 @@ import java.util.function.Function;
 import java.util.function.UnaryOperator;
 import javax.sql.DataSource;
 
-import net.tangly.bus.codes.Code;
-import net.tangly.bus.codes.CodeType;
-import net.tangly.bus.core.HasOid;
-import net.tangly.bus.core.Tag;
+import net.tangly.core.codes.Code;
+import net.tangly.core.codes.CodeType;
+import net.tangly.core.HasOid;
+import net.tangly.core.Tag;
 import net.tangly.commons.lang.Reference;
 import net.tangly.orm.imp.PropertyCode;
 import net.tangly.orm.imp.PropertyJson;

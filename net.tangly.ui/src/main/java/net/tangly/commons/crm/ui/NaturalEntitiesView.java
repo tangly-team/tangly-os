@@ -29,9 +29,9 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import com.vaadin.flow.server.StreamResource;
-import net.tangly.bus.codes.CodeType;
-import net.tangly.bus.core.EmailAddress;
-import net.tangly.bus.core.PhoneNr;
+import net.tangly.core.codes.CodeType;
+import net.tangly.core.EmailAddress;
+import net.tangly.core.PhoneNr;
 import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
@@ -53,7 +53,7 @@ public class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
     private final CrmBoundedDomain domain;
 
     public NaturalEntitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
-        super(NaturalEntity.class, mode, domain.realm().naturalEntities(), domain.tagTypeRegistry());
+        super(NaturalEntity.class, mode, domain.realm().naturalEntities(), domain.registry());
         this.domain = domain;
         initialize();
     }

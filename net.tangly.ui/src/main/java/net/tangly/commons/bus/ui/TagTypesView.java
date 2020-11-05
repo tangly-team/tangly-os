@@ -20,9 +20,9 @@ import java.util.Optional;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.data.provider.ListDataProvider;
-import net.tangly.bus.core.HasTags;
-import net.tangly.bus.core.TagType;
-import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.core.HasTags;
+import net.tangly.core.TagType;
+import net.tangly.core.TagTypeRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.vaadin.klaudeta.PaginatedGrid;
 
