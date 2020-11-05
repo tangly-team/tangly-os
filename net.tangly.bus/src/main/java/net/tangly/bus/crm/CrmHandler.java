@@ -13,21 +13,10 @@
 
 package net.tangly.bus.crm;
 
+import net.tangly.commons.app.Handler;
+
 /**
  * Define the import port for the bounded domain. It is a primary port in the DDD terminology.
  */
-public interface CrmHandler {
-    /**
-     * Import all CRM entities from the file system.
-     *
-     * @see #exportEntities()
-     */
-    void importEntities();
-
-    /**
-     * Export all CRM entities to the file system.
-     *
-     * @see #importEntities()
-     */
-    void exportEntities();
+public interface CrmHandler extends Handler {
 }

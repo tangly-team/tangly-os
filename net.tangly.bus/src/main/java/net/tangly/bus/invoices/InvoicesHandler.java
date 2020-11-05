@@ -13,21 +13,10 @@
 
 package net.tangly.bus.invoices;
 
+import net.tangly.commons.app.Handler;
+
 /**
  * Define the import port for the invoices bounded domain.
  */
-public interface InvoicesHandler {
-    /**
-     * Import all invoices from the file system.
-     *
-     * @see #exportEntities()
-     */
-    void importEntities();
-
-    /**
-     * Export all invoices to the file system.
-     *
-     * @see #importEntities()
-     */
-    void exportEntities();
+public interface InvoicesHandler extends Handler {
 }
