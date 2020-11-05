@@ -22,6 +22,7 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.bus.products.Assignment;
+import net.tangly.bus.products.ProductsBoundedDomain;
 import net.tangly.bus.products.ProductsBusinessLogic;
 import net.tangly.commons.vaadin.VaadinUtils;
 
@@ -31,7 +32,7 @@ public class CommandCreateAssignmentDocument extends Dialog {
     private final DatePicker fromDate;
     private final DatePicker toDate;
 
-    public CommandCreateAssignmentDocument(Assignment assignment, ProductsBusinessLogic logic) {
+    public CommandCreateAssignmentDocument(Assignment assignment, ProductsBoundedDomain domain) {
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);
 
@@ -44,7 +45,7 @@ public class CommandCreateAssignmentDocument extends Dialog {
         toDate = VaadinUtils.createDatePicker("To");
 
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
-            logic.port().exportEffortsDocument(assignment, fromDate.getValue(), toDate.getValue());
+            domain.port().exportEffortsDocument(assignment, fromDate.getValue(), toDate.getValue());
             this.close();
         });
         Button cancel = new Button("Cancel", e -> this.close());

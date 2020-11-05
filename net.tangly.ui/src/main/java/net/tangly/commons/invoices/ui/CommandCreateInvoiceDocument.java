@@ -22,6 +22,7 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.bus.invoices.Invoice;
+import net.tangly.bus.invoices.InvoicesBoundedDomain;
 import net.tangly.bus.invoices.InvoicesBusinessLogic;
 import net.tangly.commons.vaadin.VaadinUtils;
 
@@ -29,7 +30,7 @@ public class CommandCreateInvoiceDocument extends Dialog {
     private final Checkbox withQrCode;
     private final Checkbox withEN16931;
 
-    public CommandCreateInvoiceDocument(Invoice invoice, InvoicesBusinessLogic logic) {
+    public CommandCreateInvoiceDocument(Invoice invoice, InvoicesBoundedDomain domain) {
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);
 
@@ -40,7 +41,7 @@ public class CommandCreateInvoiceDocument extends Dialog {
         withEN16931 = new Checkbox("with EN 16931");
 
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
-            logic.port().exportInvoiceDocument(invoice, withQrCode.getValue(), withEN16931.getValue());
+            domain.port().exportInvoiceDocument(invoice, withQrCode.getValue(), withEN16931.getValue());
             this.close();
         });
         Button cancel = new Button("Cancel", e -> this.close());

@@ -19,7 +19,6 @@ import java.time.LocalDate;
 import net.tangly.bus.products.Assignment;
 import net.tangly.bus.products.ProductsBusinessLogic;
 import net.tangly.bus.products.ProductsPort;
-import net.tangly.bus.products.ProductsRealm;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 
 /**
@@ -30,16 +29,15 @@ import net.tangly.commons.utilities.AsciiDoctorHelper;
  * </ul>
  */
 public class ProductsAdapter implements ProductsPort {
-    private final ProductsRealm realm;
+    private final ProductsBusinessLogic logic;
     private final Path folder;
 
-    public ProductsAdapter(ProductsRealm realm, Path folder) {
-        this.realm = realm;
+    public ProductsAdapter(ProductsBusinessLogic logic, Path folder) {
+        this.logic = logic;
         this.folder = folder;
     }
 
     public void exportEffortsDocument(Assignment assignment, LocalDate from, LocalDate to) {
-        ProductsBusinessLogic logic = new ProductsBusinessLogic(realm, null, this);
         String collaborator = assignment.name().replace(",", "_").replace(" ", "");
         Path assignmentDocumentPath =
             folder.resolve(assignment.id() + "-" + collaborator + "-" + from.toString() + "_" + to.toString() + AsciiDoctorHelper.ASCIIDOC_EXT);

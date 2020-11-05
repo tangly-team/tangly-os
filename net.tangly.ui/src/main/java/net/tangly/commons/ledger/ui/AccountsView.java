@@ -19,6 +19,7 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import net.tangly.bus.ledger.Account;
+import net.tangly.bus.ledger.LedgerBoundedDomain;
 import net.tangly.bus.ledger.LedgerBusinessLogic;
 import net.tangly.bus.providers.RecordProviderInMemory;
 import net.tangly.commons.vaadin.EntitiesView;
@@ -27,19 +28,19 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class AccountsView extends EntitiesView<Account> {
-    private final LedgerBusinessLogic logic;
+    private final LedgerBoundedDomain domain;
     private LocalDate from;
     private LocalDate to;
 
     /**
      * Constructor of the CRUD view for accounts of the ledger.
      *
-     * @param logic ledger business logic which accounts should be displayed
+     * @param domain ledger business domain containing the accounts should be displayed
      * @param mode  mode of the view
      */
-    public AccountsView(@NotNull LedgerBusinessLogic logic, @NotNull Mode mode) {
-        super(Account.class, mode, RecordProviderInMemory.of(logic.ledger().accounts()));
-        this.logic = logic;
+    public AccountsView(@NotNull LedgerBoundedDomain domain, @NotNull Mode mode) {
+        super(Account.class, mode, RecordProviderInMemory.of(domain.realm().accounts()));
+        this.domain = domain;
         from = LocalDate.of(LocalDate.now().getYear(), 1, 1);
         to = LocalDate.of(LocalDate.now().getYear(), 12, 31);
         initialize();
@@ -60,7 +61,7 @@ public class AccountsView extends EntitiesView<Account> {
         grid.addColumn(Account::ownedBy).setKey("ownedBy").setHeader("Owned By").setAutoWidth(true).setResizable(true);
 
         GridFiltersAndActions<Account> gridFunctions = gridFiltersAndActions();
-        gridFunctions.actions().addItem("Print", e -> new CommandCreateLedgerDocument(logic));
+        gridFunctions.actions().addItem("Print", e -> new CommandCreateLedgerDocument(domain));
         addAndExpand(gridFunctions, grid(), gridButtons());
     }
 

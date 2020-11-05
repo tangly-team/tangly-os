@@ -23,7 +23,7 @@ import com.vaadin.flow.data.binder.Binder;
 import net.tangly.bus.codes.CodeType;
 import net.tangly.bus.crm.Activity;
 import net.tangly.bus.crm.ActivityCode;
-import net.tangly.bus.crm.CrmBusinessLogic;
+import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.providers.ProviderInMemory;
 import net.tangly.commons.vaadin.CodeField;
 import net.tangly.commons.vaadin.EntitiesView;
@@ -31,12 +31,12 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class ActivitiesView extends EntitiesView<Activity> {
-    private final CrmBusinessLogic logicCrm;
+    private final CrmBoundedDomain domain;
     private Binder<Activity> binder;
 
-    public ActivitiesView(@NotNull CrmBusinessLogic logicCrm, @NotNull Mode mode) {
-        super(Activity.class, mode, ProviderInMemory.of(logicCrm.realm().collectActivities(e -> true)));
-        this.logicCrm = logicCrm;
+    public ActivitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
+        super(Activity.class, mode, ProviderInMemory.of(domain.realm().collectActivities(e -> true)));
+        this.domain = domain;
         initialize();
     }
 

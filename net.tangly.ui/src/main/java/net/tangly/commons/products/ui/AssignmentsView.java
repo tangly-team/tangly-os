@@ -18,7 +18,7 @@ import javax.inject.Inject;
 
 import com.vaadin.flow.component.grid.Grid;
 import net.tangly.bus.products.Assignment;
-import net.tangly.bus.products.ProductsBusinessLogic;
+import net.tangly.bus.products.ProductsBoundedDomain;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.GridFiltersAndActions;
 import net.tangly.commons.vaadin.InternalEntitiesView;
@@ -28,12 +28,12 @@ import org.slf4j.LoggerFactory;
 
 public class AssignmentsView extends InternalEntitiesView<Assignment> {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-    private final ProductsBusinessLogic logic;
+    private final ProductsBoundedDomain domain;
 
     @Inject
-    public AssignmentsView(@NotNull ProductsBusinessLogic logic, @NotNull Mode mode) {
-        super(Assignment.class, mode, logic.realm().assignments(), logic.realm().tagTypeRegistry());
-        this.logic = logic;
+    public AssignmentsView(@NotNull ProductsBoundedDomain domain, @NotNull Mode mode) {
+        super(Assignment.class, mode, domain.realm().assignments(), domain.realm().tagTypeRegistry());
+        this.domain = domain;
         initialize();
     }
 
@@ -41,12 +41,11 @@ public class AssignmentsView extends InternalEntitiesView<Assignment> {
     protected void initialize() {
         Grid<Assignment> grid = grid();
         InternalEntitiesView.addQualifiedEntityColumns(grid);
-        grid.addColumn(Assignment::collaboratorId).setKey("collaboratorId").setHeader("Collaborator").setSortable(true).setAutoWidth(true)
-            .setResizable(true);
+        grid.addColumn(Assignment::collaboratorId).setKey("collaboratorId").setHeader("Collaborator").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> (e.product() != null) ? e.product().name() : null).setKey("project").setHeader("Project").setSortable(true).setAutoWidth(true)
             .setResizable(true);
         GridFiltersAndActions<Assignment> gridFunctions = gridFiltersAndActions();
-        gridFunctions.actions().addItem("Print", e -> new CommandCreateAssignmentDocument(selectedItem(), logic));
+        gridFunctions.actions().addItem("Print", e -> new CommandCreateAssignmentDocument(selectedItem(), domain));
         addAndExpand(gridFunctions, grid(), gridButtons());
     }
 

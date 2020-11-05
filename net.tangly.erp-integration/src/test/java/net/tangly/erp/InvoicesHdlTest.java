@@ -95,7 +95,7 @@ class InvoicesHdlTest {
     }
 
     private void verifyBusinessLogic(@NotNull InvoicesRealm realm) {
-        InvoicesBusinessLogic logic = new InvoicesBusinessLogic(realm, null, null);
+        InvoicesBusinessLogic logic = new InvoicesBusinessLogic(realm);
         assertThat(logic.invoicedAmountWithoutVatForContract(CONTRACT_HSLU_2015, null, null))
                 .isEqualByComparingTo(logic.paidAmountWithoutVatForContract(CONTRACT_HSLU_2015, null, null));
         assertThat(logic.expensesForContract(CONTRACT_HSLU_2015, null, null)).isNotNegative();

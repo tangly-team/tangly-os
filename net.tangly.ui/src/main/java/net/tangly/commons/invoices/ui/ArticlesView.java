@@ -22,6 +22,7 @@ import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.bus.codes.CodeType;
 import net.tangly.bus.invoices.Article;
 import net.tangly.bus.invoices.ArticleCode;
+import net.tangly.bus.invoices.InvoicesBoundedDomain;
 import net.tangly.bus.invoices.InvoicesBusinessLogic;
 import net.tangly.commons.vaadin.CodeField;
 import net.tangly.commons.vaadin.EntitiesView;
@@ -29,7 +30,7 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class ArticlesView extends EntitiesView<Article> {
-    private final InvoicesBusinessLogic logicInvoices;
+    private final InvoicesBoundedDomain domain;
     private final TextField id;
     private final TextField name;
     private final TextField text;
@@ -39,9 +40,9 @@ public class ArticlesView extends EntitiesView<Article> {
     private final TextField vatRate;
 
 
-    public ArticlesView(@NotNull InvoicesBusinessLogic logicInvoices, @NotNull Mode mode) {
-        super(Article.class, mode, logicInvoices.realm().articles());
-        this.logicInvoices = logicInvoices;
+    public ArticlesView(@NotNull InvoicesBoundedDomain domain, @NotNull Mode mode) {
+        super(Article.class, mode, domain.realm().articles());
+        this.domain = domain;
         id = new TextField("Id", "id");
         name = VaadinUtils.createTextField("Name", "name");
         text = VaadinUtils.createTextField("Text", "text");

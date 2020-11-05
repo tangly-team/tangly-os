@@ -24,26 +24,14 @@ import org.jetbrains.annotations.NotNull;
 
 public class ProductsBusinessLogic {
     private final ProductsRealm realm;
-    private final ProductsHandler handler;
-    private final ProductsPort port;
 
     @Inject
-    public ProductsBusinessLogic(@NotNull ProductsRealm realm, ProductsHandler handler, ProductsPort port) {
+    public ProductsBusinessLogic(@NotNull ProductsRealm realm) {
         this.realm = realm;
-        this.handler = handler;
-        this.port = port;
     }
 
     public ProductsRealm realm() {
         return realm;
-    }
-
-    public ProductsHandler handler() {
-        return handler;
-    }
-
-    public ProductsPort port() {
-        return port;
     }
 
     public List<Effort> collect(Assignment assignment, LocalDate from, LocalDate to) {

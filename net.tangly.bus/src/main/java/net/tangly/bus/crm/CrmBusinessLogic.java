@@ -27,28 +27,15 @@ import org.jetbrains.annotations.NotNull;
  */
 public class CrmBusinessLogic {
     private final CrmRealm realm;
-    private final CrmHandler handler;
-    private final CrmPort port;
 
     @Inject
-    public CrmBusinessLogic(@NotNull CrmRealm realm, CrmHandler handler, CrmPort port) {
+    public CrmBusinessLogic(@NotNull CrmRealm realm) {
         this.realm = realm;
-        this.handler = handler;
-        this.port = port;
     }
 
     public CrmRealm realm() {
         return realm;
     }
-
-    public CrmHandler handler() {
-        return handler;
-    }
-
-    public CrmPort port() {
-        return port;
-    }
-
 
     public void registerTags(@NotNull TagTypeRegistry registry) {
         CrmTags.registerTags(registry);

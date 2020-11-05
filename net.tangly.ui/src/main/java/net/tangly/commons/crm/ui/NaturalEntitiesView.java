@@ -32,7 +32,7 @@ import com.vaadin.flow.server.StreamResource;
 import net.tangly.bus.codes.CodeType;
 import net.tangly.bus.core.EmailAddress;
 import net.tangly.bus.core.PhoneNr;
-import net.tangly.bus.crm.CrmBusinessLogic;
+import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.GenderCode;
@@ -50,11 +50,11 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
-    private final CrmBusinessLogic crmLogic;
+    private final CrmBoundedDomain domain;
 
-    public NaturalEntitiesView(@NotNull CrmBusinessLogic crmLogic, @NotNull Mode mode) {
-        super(NaturalEntity.class, mode, crmLogic.realm().naturalEntities(), crmLogic.realm().tagTypeRegistry());
-        this.crmLogic = crmLogic;
+    public NaturalEntitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
+        super(NaturalEntity.class, mode, domain.realm().naturalEntities(), domain.tagTypeRegistry());
+        this.domain = domain;
         initialize();
     }
 
@@ -64,13 +64,13 @@ public class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
         grid.addColumn(NaturalEntity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(NaturalEntity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(new LocalDateRenderer<>(NaturalEntity::fromDate, DateTimeFormatter.ISO_DATE)).setKey("from").setHeader("From").setAutoWidth(true)
-                .setResizable(true).setSortable(true);
+            .setResizable(true).setSortable(true);
         grid.addColumn(new LocalDateRenderer<>(NaturalEntity::toDate, DateTimeFormatter.ISO_DATE)).setKey("to").setHeader("To").setAutoWidth(true)
-                .setResizable(true).setSortable(true);
+            .setResizable(true).setSortable(true);
         grid.addColumn(NaturalEntity::lastname).setKey("lastname").setHeader("Last Name").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(NaturalEntity::firstname).setKey("firstname").setHeader("First Name").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(new ComponentRenderer<>(person -> (person.gender() == GenderCode.male) ? new Icon(VaadinIcon.MALE) : new Icon(VaadinIcon.FEMALE)))
-                .setHeader("Gender").setAutoWidth(true).setResizable(true);
+            .setHeader("Gender").setAutoWidth(true).setResizable(true);
         grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::individualLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
         // TODO find out why it is not working with PaginatedGrid but is working with standard Grid
         addAndExpand(filterCriteria(grid()), grid(), gridButtons());
@@ -82,7 +82,7 @@ public class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
         grid.addColumn(Employee::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(o -> o.organization().name()).setKey("organization").setHeader("Organization").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(o -> o.tag(CrmTags.CRM_EMPLOYEE_TITLE).orElse(null)).setKey("title").setHeader("Title").setAutoWidth(true).setResizable(true)
-                .setSortable(true);
+            .setSortable(true);
         grid.addColumn(Employee::fromDate).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Employee::toDate).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
     }
@@ -91,9 +91,9 @@ public class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
     protected void registerTabs(@NotNull TabsComponent tabs, @NotNull Mode mode, @NotNull NaturalEntity entity) {
         tabs.add(new Tab("Overview"), createOverallView(mode, entity));
         tabs.add(new Tab("Comments"), new CommentsView(mode, entity));
-        tabs.add(new Tab("Tags"), new TagsView(mode, entity, crmLogic.realm().tagTypeRegistry()));
+        tabs.add(new Tab("Tags"), new TagsView(mode, entity, domain.realm().tagTypeRegistry()));
         One2ManyView<Employee> employees = new One2ManyView<>(Employee.class, mode, NaturalEntitiesView::defineOne2ManyEmployees,
-                ViewProvider.of(crmLogic.realm().employees(), o -> entity.oid() == o.person().oid()), new EmployeesView(crmLogic, mode));
+            ViewProvider.of(domain.realm().employees(), o -> entity.oid() == o.person().oid()), new EmployeesView(domain, mode));
         tabs.add(new Tab("Employees"), employees);
     }
 

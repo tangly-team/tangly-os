@@ -20,6 +20,7 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.bus.invoices.Invoice;
+import net.tangly.bus.invoices.InvoicesBoundedDomain;
 import net.tangly.bus.invoices.InvoicesBusinessLogic;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.GridFiltersAndActions;
@@ -27,16 +28,16 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class InvoicesView extends EntitiesView<Invoice> {
-    private final InvoicesBusinessLogic logicInvoices;
+    private final InvoicesBoundedDomain domain;
     private final TextField id;
     private final TextField name;
     private final DatePicker invoicedDate;
     private final DatePicker dueDate;
     private final TextArea text;
 
-    public InvoicesView(@NotNull InvoicesBusinessLogic logicInvoices, @NotNull Mode mode) {
-        super(Invoice.class, mode, logicInvoices.realm().invoices());
-        this.logicInvoices = logicInvoices;
+    public InvoicesView(@NotNull InvoicesBoundedDomain domain, @NotNull Mode mode) {
+        super(Invoice.class, mode, domain.realm().invoices());
+        this.domain = domain;
         id = VaadinUtils.createTextField("Id", "id");
         name = VaadinUtils.createTextField("Name", "name");
         invoicedDate = new DatePicker("Invoiced Date");
@@ -56,7 +57,7 @@ public class InvoicesView extends EntitiesView<Invoice> {
             .setSortable(true);
         grid.addColumn(Invoice::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
         GridFiltersAndActions<Invoice> gridFunctions = gridFiltersAndActions();
-        gridFunctions.actions().addItem("Print", e -> new CommandCreateInvoiceDocument(selectedItem(), logicInvoices));
+        gridFunctions.actions().addItem("Print", e -> new CommandCreateInvoiceDocument(selectedItem(), domain));
         addAndExpand(gridFunctions, grid(), gridButtons());
     }
 

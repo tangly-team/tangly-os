@@ -16,6 +16,7 @@ package net.tangly.commons.crm.ui;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
+import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
@@ -29,11 +30,11 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class EmployeesView extends InternalEntitiesView<Employee> {
-    private final CrmBusinessLogic crmLogic;
+    private final CrmBoundedDomain domain;
 
-    public EmployeesView(@NotNull CrmBusinessLogic crmLogic, @NotNull Mode mode) {
-        super(Employee.class, mode, crmLogic.realm().employees(), crmLogic.realm().tagTypeRegistry());
-        this.crmLogic = crmLogic;
+    public EmployeesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
+        super(Employee.class, mode, domain.realm().employees(), domain.tagTypeRegistry());
+        this.domain = domain;
         initialize();
     }
 
@@ -53,9 +54,9 @@ public class EmployeesView extends InternalEntitiesView<Employee> {
         boolean readonly = Mode.readOnly(mode);
         EntityField<Employee> entityField = new EntityField<>();
         entityField.setReadOnly(readonly);
-        One2OneField<LegalEntity, LegalEntitiesView> organization = new One2OneField<>("Organization", new LegalEntitiesView(crmLogic, mode));
+        One2OneField<LegalEntity, LegalEntitiesView> organization = new One2OneField<>("Organization", new LegalEntitiesView(domain, mode));
         organization.setReadOnly(readonly);
-        One2OneField<NaturalEntity, NaturalEntitiesView> person = new One2OneField<>("Person", new NaturalEntitiesView(crmLogic, mode));
+        One2OneField<NaturalEntity, NaturalEntitiesView> person = new One2OneField<>("Person", new NaturalEntitiesView(domain, mode));
         person.setReadOnly(readonly);
 
         FormLayout form = new FormLayout();

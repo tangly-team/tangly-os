@@ -29,26 +29,14 @@ public class LedgerBusinessLogic {
     public static final String CASH_ON_HAND_ACCOUNT = "100";
 
     private final LedgerRealm ledger;
-    private final LedgerHandler handler;
-    private final LedgerPort port;
 
     @Inject
-    public LedgerBusinessLogic(@NotNull LedgerRealm ledger, LedgerHandler handler, LedgerPort port) {
+    public LedgerBusinessLogic(@NotNull LedgerRealm ledger) {
         this.ledger = ledger;
-        this.handler = handler;
-        this.port = port;
     }
 
     public LedgerRealm ledger() {
         return ledger;
-    }
-
-    public LedgerHandler handler() {
-        return handler;
-    }
-
-    public LedgerPort port() {
-        return port;
     }
 
     public BigDecimal turnover(@NotNull LocalDate from, @NotNull LocalDate to) {

@@ -16,18 +16,19 @@ package net.tangly.commons.products.ui;
 import javax.inject.Inject;
 
 import net.tangly.bus.products.Product;
+import net.tangly.bus.products.ProductsBoundedDomain;
 import net.tangly.bus.products.ProductsBusinessLogic;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import org.jetbrains.annotations.NotNull;
 
 public class ProductsView extends InternalEntitiesView<Product> {
-    private final ProductsBusinessLogic productsLogic;
+    private final ProductsBoundedDomain domain;
 
     @Inject
-    public ProductsView(@NotNull ProductsBusinessLogic productsLogic, @NotNull Mode mode) {
-        super(Product.class, mode, productsLogic.realm().products(), productsLogic.realm().tagTypeRegistry());
-        this.productsLogic = productsLogic;
+    public ProductsView(@NotNull ProductsBoundedDomain domain, @NotNull Mode mode) {
+        super(Product.class, mode, domain.realm().products(), domain.tagTypeRegistry());
+        this.domain = domain;
         initialize();
     }
 

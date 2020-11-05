@@ -24,6 +24,7 @@ import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.bus.crm.Contract;
+import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.invoices.InvoicesBusinessLogic;
@@ -36,12 +37,12 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class ContractsView extends InternalEntitiesView<Contract> {
-    private final CrmBusinessLogic crmLogic;
+    private final CrmBoundedDomain domain;
     private final InvoicesBusinessLogic logicInvoices;
 
-    public ContractsView(@NotNull CrmBusinessLogic crmLogic, InvoicesBusinessLogic logicInvoices, @NotNull Mode mode) {
-        super(Contract.class, mode, crmLogic.realm().contracts(), crmLogic.realm().tagTypeRegistry());
-        this.crmLogic = crmLogic;
+    public ContractsView(@NotNull CrmBoundedDomain domain, InvoicesBusinessLogic logicInvoices, @NotNull Mode mode) {
+        super(Contract.class, mode, domain.realm().contracts(), domain.tagTypeRegistry());
+        this.domain = domain;
         this.logicInvoices = logicInvoices;
         initialize();
     }
@@ -73,9 +74,9 @@ public class ContractsView extends InternalEntitiesView<Contract> {
         currency.setLabel("Currency");
         currency.setItems(Currency.getInstance("CHF"), Currency.getInstance("EUR"));
         currency.setReadOnly(readonly);
-        One2OneField<LegalEntity, LegalEntitiesView> seller = new One2OneField<>("Seller", new LegalEntitiesView(crmLogic, mode));
+        One2OneField<LegalEntity, LegalEntitiesView> seller = new One2OneField<>("Seller", new LegalEntitiesView(domain, mode));
         seller.setReadOnly(readonly);
-        One2OneField<LegalEntity, LegalEntitiesView> sellee = new One2OneField<>("Sellee", new LegalEntitiesView(crmLogic, mode));
+        One2OneField<LegalEntity, LegalEntitiesView> sellee = new One2OneField<>("Sellee", new LegalEntitiesView(domain, mode));
         sellee.setReadOnly(readonly);
 
         FormLayout form = new FormLayout();

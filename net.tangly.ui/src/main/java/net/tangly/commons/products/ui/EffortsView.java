@@ -21,18 +21,19 @@ import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import net.tangly.bus.products.Effort;
+import net.tangly.bus.products.ProductsBoundedDomain;
 import net.tangly.bus.products.ProductsBusinessLogic;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class EffortsView extends EntitiesView<Effort> {
-    private final ProductsBusinessLogic productsLogic;
+    private final ProductsBoundedDomain domain;
     private Binder<Effort> binder;
 
-    public EffortsView(@NotNull ProductsBusinessLogic productsLogic, @NotNull Mode mode) {
-        super(Effort.class, mode, productsLogic.realm().efforts());
-        this.productsLogic = productsLogic;
+    public EffortsView(@NotNull ProductsBoundedDomain domain, @NotNull Mode mode) {
+        super(Effort.class, mode, domain.realm().efforts());
+        this.domain = domain;
         initialize();
         addAndExpand(grid(), gridButtons());
     }

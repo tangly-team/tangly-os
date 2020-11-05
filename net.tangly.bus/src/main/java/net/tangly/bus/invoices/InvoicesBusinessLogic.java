@@ -26,50 +26,38 @@ import static net.tangly.commons.utilities.DateUtilities.isWithinRange;
  */
 public class InvoicesBusinessLogic {
     private final InvoicesRealm realm;
-    private final InvoicesHandler handler;
-    private final InvoicesPort port;
 
     @Inject
-    public InvoicesBusinessLogic(@NotNull InvoicesRealm realm, InvoicesHandler handler, InvoicesPort port) {
+    public InvoicesBusinessLogic(@NotNull InvoicesRealm realm) {
         this.realm = realm;
-        this.handler = handler;
-        this.port = port;
     }
 
     public InvoicesRealm realm() {
         return realm;
     }
 
-    public InvoicesHandler handler() {
-        return handler;
-    }
-
-    public InvoicesPort port() {
-        return port;
-    }
-
     public BigDecimal expensesForContract(@NotNull String contractId, LocalDate from, LocalDate to) {
         return realm.invoices().items().stream().filter(o -> (contractId.equals(o.contractId())) && isWithinRange(o.invoicedDate(), from, to))
-                .map(Invoice::expenses).reduce(BigDecimal.ZERO, BigDecimal::add);
+            .map(Invoice::expenses).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public BigDecimal invoicedAmountWithoutVatForContract(@NotNull String contractId, LocalDate from, LocalDate to) {
         return realm.invoices().items().stream().filter(o -> (contractId.equals(o.contractId())) && isWithinRange(o.invoicedDate(), from, to))
-                .map(Invoice::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
+            .map(Invoice::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public BigDecimal paidAmountWithoutVatForContract(@NotNull String contractId, LocalDate from, LocalDate to) {
         return realm.invoices().items().stream().filter(o -> (contractId.equals(o.contractId())) && isWithinRange(o.dueDate(), from, to))
-                .map(Invoice::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
+            .map(Invoice::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public BigDecimal invoicedAmountWithoutVatForCustomer(@NotNull String customerId, LocalDate from, LocalDate to) {
         return realm.invoices().items().stream().filter(o -> (customerId.equals(o.invoicedEntity().id())) && isWithinRange(o.invoicedDate(), from, to))
-                .map(Invoice::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
+            .map(Invoice::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public BigDecimal paidAmountWithoutVatForCustomer(@NotNull String customerId, LocalDate from, LocalDate to) {
         return realm.invoices().items().stream().filter(o -> (customerId.equals(o.invoicedEntity().id())) && isWithinRange(o.dueDate(), from, to))
-                .map(Invoice::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
+            .map(Invoice::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }

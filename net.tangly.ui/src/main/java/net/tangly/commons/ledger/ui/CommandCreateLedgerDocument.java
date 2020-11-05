@@ -22,6 +22,7 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import net.tangly.bus.ledger.LedgerBoundedDomain;
 import net.tangly.bus.ledger.LedgerBusinessLogic;
 import net.tangly.commons.vaadin.VaadinUtils;
 
@@ -32,7 +33,7 @@ public class CommandCreateLedgerDocument extends Dialog {
     private final Checkbox withVat;
     private final Checkbox withTransactions;
 
-    public CommandCreateLedgerDocument(LedgerBusinessLogic logic) {
+    public CommandCreateLedgerDocument(LedgerBoundedDomain domain) {
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);
 
@@ -43,7 +44,7 @@ public class CommandCreateLedgerDocument extends Dialog {
         withTransactions = new Checkbox("Include Transactions");
 
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
-            logic.port().exportLedgerDocument(name.getValue(), fromDate.getValue(), toDate.getValue(), withVat.getValue(), withTransactions.getValue());
+            domain.port().exportLedgerDocument(name.getValue(), fromDate.getValue(), toDate.getValue(), withVat.getValue(), withTransactions.getValue());
             this.close();
         });
         Button cancel = new Button("Cancel", e -> this.close());

@@ -33,12 +33,16 @@ import com.vaadin.flow.server.StreamResource;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.material.Material;
 import net.tangly.bus.core.TagTypeRegistry;
+import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.CrmRealm;
+import net.tangly.bus.invoices.InvoicesBoundedDomain;
 import net.tangly.bus.invoices.InvoicesBusinessLogic;
 import net.tangly.bus.invoices.InvoicesRealm;
+import net.tangly.bus.ledger.LedgerBoundedDomain;
 import net.tangly.bus.ledger.LedgerBusinessLogic;
 import net.tangly.bus.ledger.LedgerRealm;
+import net.tangly.bus.products.ProductsBoundedDomain;
 import net.tangly.bus.products.ProductsBusinessLogic;
 import net.tangly.bus.products.ProductsRealm;
 import net.tangly.commons.bus.ui.TagTypesView;
@@ -79,10 +83,10 @@ public class MainView extends AppLayout {
     private static final String ORGANIZATION = "/Users/Shared/tangly/";
     private Component currentView;
 
-    private CrmBusinessLogic crmLogic;
-    private LedgerBusinessLogic ledgerLogic;
-    private InvoicesBusinessLogic invoicesLogic;
-    private ProductsBusinessLogic productsLogic;
+    private CrmBoundedDomain crmDomain;
+    private LedgerBoundedDomain ledgerDomain;
+    private InvoicesBoundedDomain invoicesDomain;
+    private ProductsBoundedDomain productsDomain;
 
     private final NaturalEntitiesView naturalEntitiesView;
     private final LegalEntitiesView legalEntitiesView;
@@ -109,27 +113,27 @@ public class MainView extends AppLayout {
     public MainView() {
         importErpData();
 
-        naturalEntitiesView = new NaturalEntitiesView(crmLogic, Crud.Mode.EDITABLE);
-        legalEntitiesView = new LegalEntitiesView(crmLogic, Crud.Mode.EDITABLE);
-        employeesView = new EmployeesView(crmLogic, Crud.Mode.EDITABLE);
-        contractsView = new ContractsView(crmLogic, invoicesLogic, Crud.Mode.EDITABLE);
-        interactionsView = new InteractionsView(crmLogic, Crud.Mode.EDITABLE);
-        activitiesView = new ActivitiesView(crmLogic, Crud.Mode.READONLY);
+        naturalEntitiesView = new NaturalEntitiesView(crmDomain, Crud.Mode.EDITABLE);
+        legalEntitiesView = new LegalEntitiesView(crmDomain, Crud.Mode.EDITABLE);
+        employeesView = new EmployeesView(crmDomain, Crud.Mode.EDITABLE);
+        contractsView = new ContractsView(crmDomain, invoicesDomain.logic(), Crud.Mode.EDITABLE);
+        interactionsView = new InteractionsView(crmDomain, Crud.Mode.EDITABLE);
+        activitiesView = new ActivitiesView(crmDomain, Crud.Mode.READONLY);
 
-        subjectsView = new SubjectsView(crmLogic, Crud.Mode.EDITABLE);
+        subjectsView = new SubjectsView(crmDomain, Crud.Mode.EDITABLE);
 
-        articlesView = new ArticlesView(invoicesLogic, Crud.Mode.EDITABLE);
-        invoicesView = new InvoicesView(invoicesLogic, Crud.Mode.EDITABLE);
+        articlesView = new ArticlesView(invoicesDomain, Crud.Mode.EDITABLE);
+        invoicesView = new InvoicesView(invoicesDomain, Crud.Mode.EDITABLE);
 
-        accountsView = new AccountsView(ledgerLogic, Crud.Mode.EDITABLE);
-        transactionsView = new TransactionsView(ledgerLogic, Crud.Mode.EDITABLE);
+        accountsView = new AccountsView(ledgerDomain, Crud.Mode.EDITABLE);
+        transactionsView = new TransactionsView(ledgerDomain, Crud.Mode.EDITABLE);
 
-        analyticsCrmView = new AnalyticsCrmView(crmLogic, invoicesLogic, ledgerLogic);
-        tagTypesView = new TagTypesView(crmLogic.realm().tagTypeRegistry());
+        analyticsCrmView = new AnalyticsCrmView(crmDomain.logic(), invoicesDomain.logic(), ledgerDomain.logic());
+        tagTypesView = new TagTypesView(crmDomain.realm().tagTypeRegistry());
 
-        productsView = new ProductsView(productsLogic, Crud.Mode.EDITABLE);
-        assignmentsView = new AssignmentsView(productsLogic, Crud.Mode.EDITABLE);
-        effortsView = new EffortsView(productsLogic, Crud.Mode.READONLY);
+        productsView = new ProductsView(productsDomain, Crud.Mode.EDITABLE);
+        assignmentsView = new AssignmentsView(productsDomain, Crud.Mode.EDITABLE);
+        effortsView = new EffortsView(productsDomain, Crud.Mode.READONLY);
 
         currentView = naturalEntitiesView;
 
@@ -146,26 +150,27 @@ public class MainView extends AppLayout {
         setContent(naturalEntitiesView);
     }
 
-    InvoicesBusinessLogic ofInvoicesLogic(TagTypeRegistry registry) {
+    InvoicesBoundedDomain ofInvoicesLogic(TagTypeRegistry registry) {
         InvoicesRealm realm = new InvoicesEntities(registry);
-        return new InvoicesBusinessLogic(realm, new InvoicesHdl(realm, Path.of(ORGANIZATION, "invoices/")),
+        return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesHdl(realm, Path.of(ORGANIZATION, "invoices/")),
             new InvoicesAdapter(realm, Path.of(ORGANIZATION, "reports/invoices/")));
     }
 
-    CrmBusinessLogic ofCrmLogic(TagTypeRegistry registry) {
+    CrmBoundedDomain ofCrmLogic(TagTypeRegistry registry) {
         CrmRealm realm = new CrmEntities(registry);
-        return new CrmBusinessLogic(realm, new CrmHdl(realm, Path.of(ORGANIZATION, "crm")), null);
+        return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmHdl(realm, Path.of(ORGANIZATION, "crm")), null);
     }
 
-    ProductsBusinessLogic ofProductsLogic(TagTypeRegistry registry) {
+    ProductsBoundedDomain ofProductsLogic(TagTypeRegistry registry) {
         ProductsRealm realm = new ProductsEntities(registry);
-        return new ProductsBusinessLogic(realm, new ProductsHdl(realm, Path.of(ORGANIZATION, "products/")),
-            new ProductsAdapter(realm, Path.of(ORGANIZATION, "reports/assignments")));
+        ProductsBusinessLogic logic = new ProductsBusinessLogic(realm);
+        return new ProductsBoundedDomain(realm, logic, new ProductsHdl(realm, Path.of(ORGANIZATION, "products/")),
+            new ProductsAdapter(logic, Path.of(ORGANIZATION, "reports/assignments")));
     }
 
-    LedgerBusinessLogic ofLedgerLogic() {
+    LedgerBoundedDomain ofLedgerLogic() {
         LedgerRealm ledger = new LedgerRealm();
-        return new LedgerBusinessLogic(ledger, new LedgerHdl(ledger, Path.of(ORGANIZATION, "ledger/")),
+        return new LedgerBoundedDomain(ledger, new LedgerBusinessLogic(ledger), new LedgerHdl(ledger, Path.of(ORGANIZATION, "ledger/")),
             new LedgerAdapter(ledger, Path.of(ORGANIZATION, "reports/ledger")));
     }
 
@@ -223,11 +228,11 @@ public class MainView extends AppLayout {
 
     private void countCrmTags() {
         tagTypesView.clearCounts();
-        tagTypesView.addCounts(crmLogic.realm().naturalEntities().items());
-        tagTypesView.addCounts(crmLogic.realm().legalEntities().items());
-        tagTypesView.addCounts(crmLogic.realm().employees().items());
-        tagTypesView.addCounts(crmLogic.realm().contracts().items());
-        tagTypesView.addCounts(crmLogic.realm().subjects().items());
+        tagTypesView.addCounts(crmDomain.realm().naturalEntities().items());
+        tagTypesView.addCounts(crmDomain.realm().legalEntities().items());
+        tagTypesView.addCounts(crmDomain.realm().employees().items());
+        tagTypesView.addCounts(crmDomain.realm().contracts().items());
+        tagTypesView.addCounts(crmDomain.realm().subjects().items());
         tagTypesView.refreshData();
     }
 
@@ -239,23 +244,23 @@ public class MainView extends AppLayout {
     private void importErpData() {
         TagTypeRegistry registry = new TagTypeRegistry();
 
-        crmLogic = ofCrmLogic(registry);
-        invoicesLogic = ofInvoicesLogic(registry);
-        productsLogic = ofProductsLogic(registry);
-        ledgerLogic = ofLedgerLogic();
+        crmDomain = ofCrmLogic(registry);
+        invoicesDomain = ofInvoicesLogic(registry);
+        productsDomain = ofProductsLogic(registry);
+        ledgerDomain = ofLedgerLogic();
 
-        crmLogic.registerTags(registry);
+        crmDomain.logic().registerTags(registry);
 
-        crmLogic.handler().importEntities();
-        invoicesLogic.handler().importEntities();
-        productsLogic.handler().importEntities();
-        ledgerLogic.handler().importEntities();
+        crmDomain.handler().importEntities();
+        invoicesDomain.handler().importEntities();
+        productsDomain.handler().importEntities();
+        ledgerDomain.handler().importEntities();
     }
 
     private void exportErpData() {
-        crmLogic.handler().exportEntities();
-        invoicesLogic.handler().exportEntities();
-        productsLogic.handler().exportEntities();
+        crmDomain.handler().exportEntities();
+        invoicesDomain.handler().exportEntities();
+        productsDomain.handler().exportEntities();
     }
 
     private void refreshViews() {

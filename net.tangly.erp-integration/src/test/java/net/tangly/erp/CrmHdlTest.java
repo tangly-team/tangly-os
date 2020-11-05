@@ -39,8 +39,9 @@ class CrmHdlTest {
     @Test
     @Tag("localTest")
     void testCompanyTsvCrm() {
-        CrmHdl crmHdl = new CrmHdl(new CrmEntities(new TagTypeRegistry()), Path.of("/Users/Shared/tangly/", "crm"));
-        CrmBusinessLogic logic = new CrmBusinessLogic(crmHdl.realm(), null, null);
+        CrmRealm realm = new CrmEntities(new TagTypeRegistry());
+        CrmHdl crmHdl = new CrmHdl(realm, Path.of("/Users/Shared/tangly/", "crm"));
+        CrmBusinessLogic logic = new CrmBusinessLogic(realm);
         logic.registerTags(crmHdl.realm().tagTypeRegistry());
         crmHdl.importEntities();
     }
