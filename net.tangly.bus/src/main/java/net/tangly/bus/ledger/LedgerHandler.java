@@ -13,12 +13,10 @@
 
 package net.tangly.bus.ledger;
 
+import net.tangly.core.app.Handler;
+
 /**
  * Define the import port for the invoices bounded domain.
  */
-public interface LedgerHandler {
-    /**
-     * Import all ledger entities from the file system.
-     */
-    void importEntities();
+public interface LedgerHandler extends Handler {
 }

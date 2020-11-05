@@ -48,6 +48,7 @@ public class LedgerHdl implements LedgerHandler {
         return ledger;
     }
 
+    @Override
     public void importEntities() {
         LedgerTsvHdl handler = new LedgerTsvHdl(ledger);
         handler.importLedgerStructureFromBanana(folder.resolve("swiss-ledger.tsv"));
@@ -58,5 +59,9 @@ public class LedgerHdl implements LedgerHandler {
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
+    }
+
+    @Override
+    public void exportEntities() {
     }
 }

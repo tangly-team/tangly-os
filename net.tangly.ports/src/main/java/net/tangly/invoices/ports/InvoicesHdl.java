@@ -62,12 +62,7 @@ public class InvoicesHdl implements InvoicesHandler {
         return realm;
     }
 
-    /**
-     * Import all invoices to the file system. All invoices are imported from directory/INVOICES. If the name of the invoice starts with a four digits pattern,
-     * it is assumed that it represents the year when the invoice was issued.
-     *
-     * @see #exportEntities()
-     */
+    @Override
     public void importEntities() {
         InvoiceJson invoiceJson = new InvoiceJson(realm);
         importArticles(invoicesFolder.resolve(ARTICLES_TSV));
@@ -86,12 +81,7 @@ public class InvoicesHdl implements InvoicesHandler {
         }
     }
 
-    /**
-     * Export all invoices to the file system. All invoices are created under directory/INVOICES. If the name of the invoice starts with a four digits pattern,
-     * it is assumed that it represents the year when the invoice was issued. A folder with the year will be created and the invoice will be written within.
-     *
-     * @see #importEntities()
-     */
+    @Override
     public void exportEntities() {
         exportArticles(invoicesFolder.resolve(ARTICLES_TSV));
         InvoiceJson invoiceJson = new InvoiceJson(realm);

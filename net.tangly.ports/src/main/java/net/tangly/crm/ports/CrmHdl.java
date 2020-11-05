@@ -48,11 +48,7 @@ public final class CrmHdl implements CrmHandler {
         return realm;
     }
 
-    /**
-     * Import all CRM domain entities defined in a set of TSV files.
-     *
-     * @see #exportEntities()
-     */
+    @Override
     public void importEntities() {
         CrmTsvHdl handler = new CrmTsvHdl(realm());
         handler.importLegalEntities(folder.resolve(LEGAL_ENTITIES_TSV));
@@ -68,11 +64,7 @@ public final class CrmHdl implements CrmHandler {
         crmVcardHdl.importVCards(folder.resolve(VCARDS_FOLDER));
     }
 
-    /**
-     * Export all CRM domain entities into a set of TSV files.
-     *
-     * @see #importEntities()
-     */
+    @Override
     public void exportEntities() {
         CrmTsvHdl handler = new CrmTsvHdl(realm);
         handler.exportLegalEntities(folder.resolve(LEGAL_ENTITIES_TSV));
