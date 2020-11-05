@@ -17,7 +17,7 @@ package net.tangly.bus.gravatar;
  * Defines the official ratings of the gravatar site.
  */
 public enum GravatarRating {
-    GENERAL_AUDIENCES("g"), PARENTAL_GUIDANCE_SUGGESTED("pg"), RESTRICTED("r"), XPLICIT("x");
+    GENERAL_AUDIENCES("g"), PARENTAL_GUIDANCE_SUGGESTED("pg"), RESTRICTED("r"), EXPLICIT("x");
 
     private final String code;
 

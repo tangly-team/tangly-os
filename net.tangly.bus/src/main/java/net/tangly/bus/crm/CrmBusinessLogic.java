@@ -19,7 +19,6 @@ import java.util.Comparator;
 import javax.inject.Inject;
 
 import net.tangly.core.HasInterval;
-import net.tangly.core.TagTypeRegistry;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -42,11 +41,11 @@ public class CrmBusinessLogic {
      * state. Set the end date property of interaction to the end date of the last activity associated with the interaction in the case of lost state.
      */
     public void updateInteractions() {
-        realm().interactions().items().forEach(interaction -> interaction
-                .toDate(realm().contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.legalEntity().oid())
-                        .map(Contract::toDate).max(Comparator.comparing(LocalDate::toEpochDay)).get()));
+        realm().interactions().items().forEach(interaction -> interaction.toDate(
+            realm().contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.legalEntity().oid()).map(Contract::toDate)
+                .max(Comparator.comparing(LocalDate::toEpochDay)).orElseThrow()));
         realm().interactions().items().stream().filter(o -> o.code() == InteractionCode.lost).forEach(interaction -> interaction
-                .toDate(interaction.activities().stream().map(Activity::date).max(Comparator.comparing(LocalDate::toEpochDay)).get()));
+            .toDate(interaction.activities().stream().map(Activity::date).max(Comparator.comparing(LocalDate::toEpochDay)).orElseThrow()));
     }
 
     /**
@@ -60,10 +59,10 @@ public class CrmBusinessLogic {
     public BigDecimal funnel(@NotNull InteractionCode code, LocalDate from, LocalDate to) {
         return switch (code) {
             case lead, prospect, lost -> realm.interactions().items().stream().filter(o -> o.code() == code).filter(new HasInterval.IntervalFilter<>(from, to))
-                    .map(Interaction::weightedPotential).reduce(BigDecimal.ZERO, BigDecimal::add);
+                .map(Interaction::weightedPotential).reduce(BigDecimal.ZERO, BigDecimal::add);
             case customer, completed -> realm.interactions().items().stream().filter(o -> o.code() == code)
-                    .flatMap(interaction -> realm.contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.legalEntity().oid()))
-                    .filter(new HasInterval.IntervalFilter<>(from, to)).map(Contract::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
+                .flatMap(interaction -> realm.contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.legalEntity().oid()))
+                .filter(new HasInterval.IntervalFilter<>(from, to)).map(Contract::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
         };
     }
 }

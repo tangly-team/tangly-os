@@ -163,7 +163,7 @@ public final class CrmTags {
     }
 
     /**
-     * Create a link to the Zefix page for the oorganization - makes only sense for Swiss companies -.
+     * Create a link to the Zefix page for the organization - makes only sense for Swiss companies -.
      *
      * @param entity organization which Zefix information should be displayed
      * @return link to Zefix information

@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
  * <ul>
  *     <li>Natural entities are persons</li>
  *     <li>Legal Entities are legal recognized organizations</li>
- *     <li>Employee defines a relation between a natural entity and a legal entity when a person has a contractual aggreement with an organization</li>
+ *     <li>Employee defines a relation between a natural entity and a legal entity when a person has a contractual agreement with an organization</li>
  *     <li>Contract defines a legal contractual obligation between two legal entities</li>
  *     <li>Interaction defines an interaction between your company and a set of legal and natural entities</li>
  *     <li>Activity defines a specific event part of an interaction</li>
@@ -61,7 +61,7 @@ public interface CrmRealm {
     }
 
     /**
-     * Return all the employeee positions a person had and has.
+     * Return all the employee positions a person had and has.
      *
      * @param entity entity which employees should be retrieved
      * @return the list of employees
