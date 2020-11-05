@@ -57,7 +57,7 @@ public interface Entity extends HasOid, HasName, HasInterval, HasTags, HasCommen
      */
     void text(String text);
 
-    default boolean isValid() {
+    default boolean check() {
         return true;
     }
 }

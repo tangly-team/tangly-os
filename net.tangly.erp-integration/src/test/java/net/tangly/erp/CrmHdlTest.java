@@ -81,7 +81,7 @@ class CrmHdlTest {
     private void verifyNaturalEntities(@NotNull CrmRealm crmRealm) {
         assertThat(crmRealm.naturalEntities().items().isEmpty()).isFalse();
         assertThat(crmRealm.naturalEntities().find(1).isPresent()).isTrue();
-        crmRealm.naturalEntities().items().forEach(naturalEntity -> assertThat(naturalEntity.isValid()).isTrue());
+        crmRealm.naturalEntities().items().forEach(naturalEntity -> assertThat(naturalEntity.check()).isTrue());
     }
 
     private void verifyLegalEntities(@NotNull CrmRealm crmRealm) {
@@ -89,7 +89,7 @@ class CrmHdlTest {
         assertThat(crmRealm.legalEntities().find(100).isPresent()).isTrue();
         assertThat(crmRealm.legalEntities().findBy(LegalEntity::id, "UNKNOWN-100").isPresent()).isTrue();
         assertThat(crmRealm.legalEntities().findBy(LegalEntity::name, "hope llc").isPresent()).isTrue();
-        crmRealm.naturalEntities().items().forEach(legalEntity -> assertThat(legalEntity.isValid()).isTrue());
+        crmRealm.naturalEntities().items().forEach(legalEntity -> assertThat(legalEntity.check()).isTrue());
     }
 
     private void verifyEmployees(@NotNull CrmRealm crmRealm) {

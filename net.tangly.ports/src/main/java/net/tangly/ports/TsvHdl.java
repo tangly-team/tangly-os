@@ -99,7 +99,7 @@ public final class TsvHdl {
             for (CSVRecord record : FORMAT.parse(in)) {
                 T object = tsvEntity.imports(record);
                 if (object instanceof Entity entity) {
-                    if (entity.isValid()) {
+                    if (entity.check()) {
                         provider.update(object);
                         ++counter;
                         EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, tsvEntity.clazz().getSimpleName() + " imported",

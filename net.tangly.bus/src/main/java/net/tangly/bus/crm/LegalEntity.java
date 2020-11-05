@@ -48,7 +48,7 @@ public class LegalEntity extends QualifiedEntityImp implements CrmEntity {
     }
 
     @Override
-    public boolean isValid() {
+    public boolean check() {
         return !Strings.isNullOrBlank(id()) && !Strings.isNullOrBlank(name()) && address(CrmTags.Type.work).orElseThrow().isValid();
     }
 

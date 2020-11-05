@@ -87,7 +87,7 @@ class InvoicesHdlTest {
 
     private void verifyInvoices(@NotNull InvoicesRealm realm) {
         assertThat(realm.invoices().items().isEmpty()).isFalse();
-        realm.invoices().items().forEach(o -> assertThat(o.isValid()).isTrue());
+        realm.invoices().items().forEach(o -> assertThat(o.check()).isTrue());
     }
 
     private void verifyArticles(@NotNull InvoicesRealm realm) {

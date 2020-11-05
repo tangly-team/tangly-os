@@ -79,7 +79,7 @@ public class InvoiceJson implements InvoiceGenerator {
             try (Reader in = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
                 JSONObject jsonInvoice = new JSONObject(new JSONTokener(in));
                 invoice = entity.imports(jsonInvoice);
-                if (!invoice.isValid()) {
+                if (!invoice.check()) {
                     logger.atWarn().log("Invoice {} is invalid", invoice.name());
                 }
                 EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.SUCCESS, "Invoice imported", Map.of("filename", path, "entity", invoice));

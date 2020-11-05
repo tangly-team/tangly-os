@@ -101,7 +101,7 @@ public class Activity implements HasOid {
         this.details = details;
     }
 
-    public boolean isValid() {
+    public boolean check() {
         return Objects.nonNull(code) && (durationInMinutes > 0);
     }
 

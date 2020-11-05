@@ -295,7 +295,7 @@ public class Invoice implements HasEditableId {
         return items.stream().filter(o -> o.position() == position).findAny().orElse(null);
     }
 
-    public boolean isValid() {
+    public boolean check() {
         return Objects.nonNull(contractId()) && Objects.nonNull(invoicingEntity()) && Objects.nonNull(invoicedEntity()) && Objects.nonNull(invoicedAddress()) &&
                 Objects.nonNull(invoicingAddress()) && Objects.nonNull(invoicingConnection()) && Objects.nonNull(currency) && name().startsWith(id());
     }

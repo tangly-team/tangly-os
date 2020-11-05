@@ -53,7 +53,7 @@ public class Employee extends EntityImp implements CrmEntity {
     }
 
     @Override
-    public boolean isValid() {
+    public boolean check() {
         return Objects.nonNull(person) && Objects.nonNull(organization);
     }
 

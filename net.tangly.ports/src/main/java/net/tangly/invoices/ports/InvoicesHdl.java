@@ -69,7 +69,7 @@ public class InvoicesHdl implements InvoicesHandler {
         try (Stream<Path> stream = Files.walk(invoicesFolder)) {
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(JSON_EXT)).forEach(o -> {
                 Invoice invoice = invoiceJson.imports(o, Collections.emptyMap());
-                if (invoice.isValid()) {
+                if (invoice.check()) {
                     realm.invoices().update(invoice);
                     EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, "Imported Invoice {}", Map.of("invoice", invoice));
                 } else {
