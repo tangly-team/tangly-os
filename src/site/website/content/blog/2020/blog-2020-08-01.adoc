@@ -31,7 +31,7 @@ We need an approach to model customer domain entities and map them to a legible 
 
 An entity is a user domain model abstraction and is mapped to a software type.
 
-* Any entity has an _unique mandatory internal_ object identifier *_oid_*, we recommend the use of numeric values to improve performance.
+* Any entity has a _unique mandatory internal_ object identifier *_oid_*, we recommend the use of numeric values to improve performance.
 * Public and _external identifier_ *_id_*, we recommend the use of text to adequately support various external identification scheme.
 An example is the European enterprise identifier EUID identifying a company or a certified natural person in Europe
 * Human readable _name_.
@@ -56,6 +56,16 @@ It should never be visible outside the system or published through an API.
 Ideally the identifier is universally valid and uniquely identifies an instance in all contexts.
 For example the concept of UUID tries to provide such an identifier.
 The drawback is that UUID is not a numerical value and cumbersome for a developer to memorize.
+
+[NOTE]
+====
+An interesting approach is to support unique identifiers in the context of a bounded domain.
+All entities of the domain will have a unique object identifiers.
+The implementation can use a sequence from the domain database or schema.
+A programmatic identity generator can also be established in the domain.
+
+Because the _oid_ is never exported, the solution is a powerful and simple to realize.
+====
 
 History has taught developers not to spare on the size of identifiers.
 Please use a long value meaning 64 bits.
@@ -115,7 +125,7 @@ An identifier is immutable and should be numerical for performance reasons.
 
 External identifiers can be tricky.
 In Switzerland, we had an old social security number which is still referenced in a lot of legal systems.
-For example it is still part of your tax salary yearly form.
+For example, it is still part of your tax salary yearly form.
 
 [NOTE]
 ====
@@ -135,7 +145,7 @@ Please implement the internal identifier feature as an interface marker.
 The external identifier and name features can be grouped in one interface.
 
 Additional information are available under link:../../docs/bus/businessmodels/.
-Below the source code in modern Java is
+Below the source code in modern Java is:
 
 [source, java]
 ----
@@ -160,7 +170,7 @@ See our blog how to extend the entity concept with the powerful and flexible con
 
 Another blog shows a constrained form of tags using the concept of reference codes also called reference tables or lookup tables.
 
-Related concepts are discussed in our blog series
+Related concepts are discussed in our blog series:
 
 . link:../../2020/entities-identifiers-external-identifiers-and-names[Entities, Identifiers, External identifiers and Names]
 . link:../../2020/the-power-of-tags-and-comments[The power of Tags and Comments]
