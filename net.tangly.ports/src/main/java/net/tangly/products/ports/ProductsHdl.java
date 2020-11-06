@@ -14,6 +14,7 @@
 package net.tangly.products.ports;
 
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +32,6 @@ import org.jetbrains.annotations.NotNull;
 import static net.tangly.ports.TsvHdl.OID;
 import static net.tangly.ports.TsvHdl.TEXT;
 import static net.tangly.ports.TsvHdl.convertFoidTo;
-import static net.tangly.ports.TsvHdl.createTsvEntityFields;
 import static net.tangly.ports.TsvHdl.createTsvQualifiedEntityFields;
 
 public class ProductsHdl implements ProductsHandler {
@@ -62,11 +62,8 @@ public class ProductsHdl implements ProductsHandler {
     }
 
     TsvEntity<Product> createTsvProduct() {
-        List<TsvProperty<Product, ?>> fields = createTsvEntityFields();
-        // TODO implements
-        //                        fields.add(TsvProperty.of("contractIds", Product::contractIds, Product::contractIds,
-        //                                (String e) -> Arrays.asList(e.split(",", -1)),
-        //                                (List<String> e) -> String.join(",", e)));
+        List<TsvProperty<Product, ?>> fields = createTsvQualifiedEntityFields();
+        fields.add(TsvProperty.of("contractIds", Product::contractIds, Product::contractIds, e -> Arrays.asList(e.split(",", -1)), e -> String.join(",", e)));
         return TsvEntity.of(Product.class, fields, Product::new);
     }
 

@@ -25,13 +25,21 @@ public class Product extends QualifiedEntityImp {
     private List<String> contractIds;
 
     public Product() {
+        contractIds = Collections.emptyList();
     }
 
     public List<String> contractIds() {
-        return Collections.unmodifiableList(contractIds);
+        return contractIds;
     }
 
     public void contractIds(@NotNull List<String> contractIds) {
-        this.contractIds = List.copyOf(this.contractIds);
+        this.contractIds = List.copyOf(contractIds);
+    }
+
+    @Override
+    public String toString() {
+        return """
+            Product[oid=%s, id=%s, fromDate=%s, toDate=%s, text=%s, contractIds=%s, tags=%s]
+            """.formatted(oid(), id(), fromDate(), toDate(), text(), contractIds(), tags());
     }
 }

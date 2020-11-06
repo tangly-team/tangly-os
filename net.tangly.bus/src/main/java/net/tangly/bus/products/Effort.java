@@ -24,11 +24,11 @@ import net.tangly.core.HasOid;
  */
 public class Effort implements HasOid {
     private long oid;
-    private String text;
     private LocalDate date;
     private int durationInMinutes;
-    private Assignment assignment;
     private String contractId;
+    private String text;
+    private Assignment assignment;
 
     public Effort() {
         oid = HasOid.UNDEFINED_OID;
@@ -77,5 +77,12 @@ public class Effort implements HasOid {
 
     public void contractId(String contractId) {
         this.contractId = contractId;
+    }
+
+    @Override
+    public String toString() {
+        return """
+            Effort[oid=%s, date=%s, durationInMinutes=%s, contractId=%s, text=%s, assignment=%s]
+            """.formatted(oid(), date(), duration(), contractId(), text(), assignment());
     }
 }

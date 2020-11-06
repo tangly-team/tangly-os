@@ -21,7 +21,6 @@ import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoicesBoundedDomain;
-import net.tangly.bus.invoices.InvoicesBusinessLogic;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.GridFiltersAndActions;
 import net.tangly.commons.vaadin.VaadinUtils;
@@ -57,7 +56,7 @@ public class InvoicesView extends EntitiesView<Invoice> {
             .setSortable(true);
         grid.addColumn(Invoice::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
         GridFiltersAndActions<Invoice> gridFunctions = gridFiltersAndActions();
-        gridFunctions.actions().addItem("Print", e -> new CommandCreateInvoiceDocument(selectedItem(), domain));
+        gridFunctions.actions().addItem("Print", e -> new CmdCreateInvoiceDocument(selectedItem(), domain));
         addAndExpand(gridFunctions, grid(), gridButtons());
     }
 

@@ -11,46 +11,49 @@
  *  under the License.
  */
 
-package net.tangly.commons.ledger.ui;
+package net.tangly.commons.products.ui;
 
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
-import net.tangly.bus.ledger.LedgerBoundedDomain;
-import net.tangly.bus.ledger.LedgerBusinessLogic;
+import net.tangly.bus.products.Assignment;
+import net.tangly.bus.products.ProductsBoundedDomain;
+import net.tangly.bus.products.ProductsBusinessLogic;
 import net.tangly.commons.vaadin.VaadinUtils;
+import org.jetbrains.annotations.NotNull;
 
-public class CommandCreateLedgerDocument extends Dialog {
-    private final TextField name;
+public class CmdCreateAssignmentDocument extends Dialog {
+    private final TextField assignmentName;
+    private final TextField collaboratorName;
     private final DatePicker fromDate;
     private final DatePicker toDate;
-    private final Checkbox withVat;
-    private final Checkbox withTransactions;
 
-    public CommandCreateLedgerDocument(LedgerBoundedDomain domain) {
+    public CmdCreateAssignmentDocument(@NotNull Assignment assignment, @NotNull ProductsBoundedDomain domain) {
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);
 
-        name = new TextField("Name", "document name");
+        assignmentName = VaadinUtils.createTextField("Assignment", "assignment name", true);
+        VaadinUtils.setValue(assignmentName, assignment.id());
+        collaboratorName = VaadinUtils.createTextField("Collaborator", "collaborator name", true);
+        VaadinUtils.setValue(collaboratorName, assignment.name());
+
         fromDate = VaadinUtils.createDatePicker("From");
         toDate = VaadinUtils.createDatePicker("To");
-        withVat = new Checkbox("Include VAT Report");
-        withTransactions = new Checkbox("Include Transactions");
 
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
-            domain.port().exportLedgerDocument(name.getValue(), fromDate.getValue(), toDate.getValue(), withVat.getValue(), withTransactions.getValue());
+            domain.port().exportEffortsDocument(assignment, fromDate.getValue(), toDate.getValue());
             this.close();
         });
         Button cancel = new Button("Cancel", e -> this.close());
 
-        form.add(name, new HtmlComponent("br"), fromDate, toDate, withVat, withTransactions, new HtmlComponent("br"), new HorizontalLayout(execute, cancel));
+        form.add(assignmentName, collaboratorName, new HtmlComponent("br"), fromDate, toDate, new HtmlComponent("br"), new HorizontalLayout(execute, cancel));
         add(form);
+        setResizable(true);
         open();
     }
 }

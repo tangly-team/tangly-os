@@ -45,7 +45,8 @@ public class AssignmentsView extends InternalEntitiesView<Assignment> {
         grid.addColumn(e -> (e.product() != null) ? e.product().name() : null).setKey("project").setHeader("Project").setSortable(true).setAutoWidth(true)
             .setResizable(true);
         GridFiltersAndActions<Assignment> gridFunctions = gridFiltersAndActions();
-        gridFunctions.actions().addItem("Print", e -> new CommandCreateAssignmentDocument(selectedItem(), domain));
+        gridFunctions.actions().addItem("Add Effort", e -> new CmdCreateEffort(selectedItem(),domain));
+        gridFunctions.actions().addItem("Print", e -> new CmdCreateAssignmentDocument(selectedItem(), domain));
         addAndExpand(gridFunctions, grid(), gridButtons());
     }
 

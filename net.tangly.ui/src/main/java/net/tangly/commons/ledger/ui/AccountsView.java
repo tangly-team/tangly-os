@@ -20,7 +20,6 @@ import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import net.tangly.bus.ledger.Account;
 import net.tangly.bus.ledger.LedgerBoundedDomain;
-import net.tangly.bus.ledger.LedgerBusinessLogic;
 import net.tangly.bus.providers.RecordProviderInMemory;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.GridFiltersAndActions;
@@ -61,7 +60,7 @@ public class AccountsView extends EntitiesView<Account> {
         grid.addColumn(Account::ownedBy).setKey("ownedBy").setHeader("Owned By").setAutoWidth(true).setResizable(true);
 
         GridFiltersAndActions<Account> gridFunctions = gridFiltersAndActions();
-        gridFunctions.actions().addItem("Print", e -> new CommandCreateLedgerDocument(domain));
+        gridFunctions.actions().addItem("Print", e -> new CmdCreateLedgerDocument(domain));
         addAndExpand(gridFunctions, grid(), gridButtons());
     }
 

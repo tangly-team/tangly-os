@@ -57,7 +57,7 @@ public class EffortsView extends EntitiesView<Effort> {
     @Override
     protected FormLayout fillForm(@NotNull Operation operation, Effort entity, FormLayout form) {
         TextField oid = new TextField("Oid", "oid");
-        DatePicker date = new DatePicker("Date");
+        DatePicker date = VaadinUtils.createDatePicker("Date");
         IntegerField duration = new IntegerField("Duration", "duration");
         TextField contractId = new TextField("Contract Id", "contractId");
         TextArea text = new TextArea("Text", "text");

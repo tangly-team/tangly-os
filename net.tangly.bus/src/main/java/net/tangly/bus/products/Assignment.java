@@ -41,6 +41,13 @@ public class Assignment extends QualifiedEntityImp {
     public void collaboratorId(String collaboratorId) {
         this.collaboratorId = collaboratorId;
     }
+
+    @Override
+    public String toString() {
+        return """
+            Assignment[oid=%s, id=%s, fromDate=%s, toDate=%s, text=%s, product=%s, collaboratorId=%s, tags=%s]
+            """.formatted(oid(), id(), fromDate(), toDate(), text(), product(), collaboratorId(), tags());
+    }
 }
 
 
