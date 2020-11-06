@@ -13,36 +13,24 @@
 
 package net.tangly.core.app;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class IdGenerator {
-    ReentrantLock lock = new ReentrantLock();
-    Map<Class<?>, Long> oidValues;
-    long oidValue = 1000;
+    private final ReentrantLock lock;
+    private long oidValue;
 
-    public IdGenerator() {
-        oidValues = new HashMap<>();
+    public IdGenerator(long oidInitialValue) {
+        this.oidValue = oidInitialValue;
+        lock = new ReentrantLock();
     }
 
     public long nextOid(Class<?> clazz) {
         lock.lock();
         try {
-            if (oidValues.containsKey(clazz) && ((oidValues.get(clazz) / 100) < 99)) {
-                long oid = oidValues.get(clazz) + 1;
-                oidValues.put(clazz, oid);
-                return oid;
-            } else {
-                oidValue += 1;
-                return oidValue;
-            }
+            oidValue += 1;
+            return oidValue;
         } finally {
             lock.unlock();
         }
-    }
-
-    void initialValueFor(Class<?> clazz, long initialValue) {
-        oidValues.put(clazz, initialValue);
     }
 }

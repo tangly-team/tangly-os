@@ -77,9 +77,10 @@ public class ProductsHdl implements ProductsHandler {
     TsvEntity<Effort> createTsvEffort() {
         List<TsvProperty<Effort, ?>> fields =
             List.of(TsvProperty.of(OID, Effort::oid, (entity, value) -> ReflectionUtilities.set(entity, OID, value), Long::parseLong),
-                TsvProperty.ofString(TEXT, Effort::text, Effort::text), TsvProperty.of("date", Effort::date, Effort::date, TsvProperty.CONVERT_DATE_FROM),
-                TsvProperty.ofInt("durationInMinutes", Effort::duration, Effort::duration),
-                TsvProperty.of("assignmentOid", Effort::assignment, Effort::assignment, e -> findAssignmentByOid(e).orElse(null), convertFoidTo()));
+                TsvProperty.of("date", Effort::date, Effort::date, TsvProperty.CONVERT_DATE_FROM),
+                TsvProperty.ofInt("durationInMinutes", Effort::duration, Effort::duration), TsvProperty.ofString(TEXT, Effort::text, Effort::text),
+                TsvProperty.of("assignmentOid", Effort::assignment, Effort::assignment, e -> findAssignmentByOid(e).orElse(null), convertFoidTo()),
+                TsvProperty.ofString("contractId", Effort::contractId, Effort::contractId));
         return TsvEntity.of(Effort.class, fields, Effort::new);
     }
 

@@ -13,6 +13,8 @@
 
 package net.tangly.core.app;
 
+import java.util.Map;
+
 import net.tangly.core.TagTypeRegistry;
 
 public class BoundedDomain<R, B, H, P> {
@@ -21,13 +23,19 @@ public class BoundedDomain<R, B, H, P> {
     private final P port;
     private final B logic;
     private final TagTypeRegistry registry;
+    private final Map<String, String> configuration;
 
     public BoundedDomain(R realm, B logic, H handler, P port, TagTypeRegistry registry) {
+        this(realm, logic,handler,port,registry, null);
+    }
+
+    public BoundedDomain(R realm, B logic, H handler, P port, TagTypeRegistry registry, Map <String,String> configuration) {
         this.realm = realm;
         this.logic = logic;
         this.handler = handler;
         this.port = port;
         this.registry = registry;
+        this.configuration = configuration;
         registerTags();
     }
 

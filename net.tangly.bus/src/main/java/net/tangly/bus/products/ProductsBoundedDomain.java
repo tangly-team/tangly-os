@@ -15,9 +15,17 @@ package net.tangly.bus.products;
 
 import net.tangly.core.TagTypeRegistry;
 import net.tangly.core.app.BoundedDomain;
+import net.tangly.core.app.IdGenerator;
 
 public class ProductsBoundedDomain extends BoundedDomain<ProductsRealm, ProductsBusinessLogic, ProductsHandler, ProductsPort> {
+    private IdGenerator idGenerator;
+
     public ProductsBoundedDomain(ProductsRealm realm, ProductsBusinessLogic logic, ProductsHandler handler, ProductsPort port, TagTypeRegistry registry) {
         super(realm, logic, handler, port, registry);
+        idGenerator = new IdGenerator(1000);
+    }
+
+    public IdGenerator idGenerator() {
+        return idGenerator;
     }
 }

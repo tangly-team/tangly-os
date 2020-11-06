@@ -22,7 +22,6 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import net.tangly.bus.products.Effort;
 import net.tangly.bus.products.ProductsBoundedDomain;
-import net.tangly.bus.products.ProductsBusinessLogic;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
@@ -42,11 +41,11 @@ public class EffortsView extends EntitiesView<Effort> {
     protected void initialize() {
         Grid<Effort> grid = grid();
         grid.addColumn(Effort::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(o -> o.assignment().id()).setKey("assignment").setHeader("Assignment").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(o -> o.assignment().name()).setKey("collaborator").setHeader("Collaborator").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Effort::date).setKey("date").setHeader("Date").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Effort::duration).setKey("duration").setHeader("Duration").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Effort::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Effort::contractId).setKey("contractId").setHeader("ContractId").setAutoWidth(true).setResizable(true).setSortable(true);
-        // TODO add assignment name to identify collaborator
     }
 
     @Override
@@ -57,6 +56,9 @@ public class EffortsView extends EntitiesView<Effort> {
     @Override
     protected FormLayout fillForm(@NotNull Operation operation, Effort entity, FormLayout form) {
         TextField oid = new TextField("Oid", "oid");
+        TextField assignment = VaadinUtils.createTextField("Assignment", "assignment", true, false);
+        TextField collaborator = VaadinUtils.createTextField("Collaborator", "collaborator", true, false);
+        TextField collaboratorId = VaadinUtils.createTextField("Collaborator ID", "collaborator id", true, false);
         DatePicker date = VaadinUtils.createDatePicker("Date");
         IntegerField duration = new IntegerField("Duration", "duration");
         TextField contractId = new TextField("Contract Id", "contractId");
@@ -65,14 +67,17 @@ public class EffortsView extends EntitiesView<Effort> {
         VaadinUtils.configureOid(operation, oid);
         VaadinUtils.readOnly(operation, date, duration, contractId, text);
 
-        form.add(oid, date, duration, contractId);
+        form.add(oid, assignment, collaborator, collaboratorId, contractId, date, duration);
         form.add(text, 3);
 
         binder = new Binder<>();
         binder.bind(oid, o -> Long.toString(o.oid()), null);
+        binder.bind(assignment, o -> o.assignment().id(), null);
+        binder.bind(collaborator, o -> o.assignment().name(), null);
+        binder.bind(collaboratorId, o -> o.assignment().collaboratorId(), null);
+        binder.bind(contractId, Effort::contractId, Effort::contractId);
         binder.bind(date, Effort::date, Effort::date);
         binder.bind(duration, Effort::duration, Effort::duration);
-        binder.bind(contractId, Effort::contractId, Effort::contractId);
         binder.bind(text, Effort::text, Effort::text);
         if (entity != null) {
             binder.readBean(entity);

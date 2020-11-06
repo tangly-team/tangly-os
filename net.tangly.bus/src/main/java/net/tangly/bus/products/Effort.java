@@ -15,6 +15,7 @@ package net.tangly.bus.products;
 
 import java.time.LocalDate;
 
+import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.core.HasOid;
 
 /**

@@ -32,6 +32,7 @@ import com.vaadin.flow.data.binder.ValidationException;
 import net.tangly.bus.products.Assignment;
 import net.tangly.bus.products.Effort;
 import net.tangly.bus.products.ProductsBoundedDomain;
+import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -62,6 +63,7 @@ public class CmdCreateEffort extends Dialog {
         TextField collaboratorId = VaadinUtils.createTextField("Collaborator ID", "collaborator id", true, false);
         DatePicker date = VaadinUtils.createDatePicker("Date");
         IntegerField duration = new IntegerField("Duration", "duration");
+        // TODO add validation duration > 0
         duration.setRequiredIndicatorVisible(true);
         TextField contract = null;
         ComboBox<String> contracts = null;
@@ -77,7 +79,7 @@ public class CmdCreateEffort extends Dialog {
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
             try {
                 binder.writeBean(effort);
-                // TODO solve oid problem -> over domain id generator
+                ReflectionUtilities.set(effort, "oid", domain.idGenerator().nextOid(Effort.class));
                 domain.realm().efforts().update(effort);
             } catch (ValidationException validationException) {
                 validationException.printStackTrace();

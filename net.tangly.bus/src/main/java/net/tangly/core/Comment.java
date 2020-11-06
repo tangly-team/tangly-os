@@ -84,6 +84,7 @@ public class Comment implements HasOid, HasTags {
      * @param tags   optional tags of the comment
      * @return the newly created comment
      */
+    @SafeVarargs
     public static Comment of(@NotNull String author, @NotNull String text, Tag... tags) {
         Comment comment = new Comment(author, text);
         comment.addTags(Set.of(tags));
@@ -114,6 +115,7 @@ public class Comment implements HasOid, HasTags {
      * @param tags      optional tags of the comment
      * @return the newly created comment
      */
+    @SafeVarargs
     public static Comment of(@NotNull LocalDateTime created, long ownerFoid, @NotNull String author, @NotNull String text, Tag... tags) {
         var comment = new Comment(author, text);
         comment.created = created;
