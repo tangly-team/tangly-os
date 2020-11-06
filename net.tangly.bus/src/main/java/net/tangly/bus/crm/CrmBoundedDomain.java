@@ -13,19 +13,27 @@
 
 package net.tangly.bus.crm;
 
+import java.util.Map;
 import javax.inject.Inject;
 
 import net.tangly.core.TagTypeRegistry;
 import net.tangly.core.app.BoundedDomain;
+import net.tangly.core.app.IdGenerator;
+import org.jetbrains.annotations.NotNull;
 
 public class CrmBoundedDomain extends BoundedDomain<CrmRealm, CrmBusinessLogic, CrmHandler, CrmPort> {
+    public static final String CRM_OID_VALUE = "crm-oid-value";
+
     @Inject
-    public CrmBoundedDomain(CrmRealm realm, CrmBusinessLogic logic, CrmHandler handler, CrmPort port, TagTypeRegistry registry) {
-        super(realm, logic, handler, port, registry);
+    public CrmBoundedDomain(CrmRealm realm, CrmBusinessLogic logic, CrmHandler handler, CrmPort port, TagTypeRegistry registry,
+                            @NotNull Map<String, String> configuration) {
+        super(realm, logic, handler, port, registry, configuration);
     }
 
     @Override
-    protected void registerTags() {
+    protected void initialize(@NotNull Map<String, String> configuration) {
+        // TODO handle missing configuration
+        idGenerator = new IdGenerator(Long.parseLong(configuration.get(CRM_OID_VALUE)));
         CrmTags.registerTags(registry());
     }
 }

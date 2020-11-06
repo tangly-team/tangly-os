@@ -40,14 +40,14 @@ public class Crud<T> extends VerticalLayout implements SelectedItemListener<T> {
      * Define the different edition modes of the CRUD component. The mode has an impact on the displayed fields and the buttons.
      */
     public enum Mode {
-        EDITABLE, RECORD_EDITABLE, IMMUTABLE, AUDITABLE, READONLY;
+        EDITABLE, IMMUTABLE, AUDITABLE, READONLY, EDIT_DELETE;
 
         public static boolean readOnly(@NotNull Mode mode) {
             return (mode == READONLY) || (mode == AUDITABLE);
         }
 
         static boolean canUpdate(@NotNull Mode mode) {
-            return (mode == EDITABLE);
+            return (mode == EDITABLE) || (mode == EDIT_DELETE);
         }
 
         static boolean canAdd(@NotNull Mode mode) {
@@ -55,7 +55,7 @@ public class Crud<T> extends VerticalLayout implements SelectedItemListener<T> {
         }
 
         static boolean canDelete(@NotNull Mode mode) {
-            return (mode == EDITABLE) || (mode == IMMUTABLE);
+            return (mode == EDITABLE) || (mode == IMMUTABLE) || (mode == EDIT_DELETE);
         }
     }
 

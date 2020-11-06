@@ -13,19 +13,24 @@
 
 package net.tangly.bus.products;
 
+import java.util.Map;
+
 import net.tangly.core.TagTypeRegistry;
 import net.tangly.core.app.BoundedDomain;
 import net.tangly.core.app.IdGenerator;
+import org.jetbrains.annotations.NotNull;
 
 public class ProductsBoundedDomain extends BoundedDomain<ProductsRealm, ProductsBusinessLogic, ProductsHandler, ProductsPort> {
-    private IdGenerator idGenerator;
+    public static final String PRODUCTS_OID_VALUE = "products-oid-value";
 
-    public ProductsBoundedDomain(ProductsRealm realm, ProductsBusinessLogic logic, ProductsHandler handler, ProductsPort port, TagTypeRegistry registry) {
-        super(realm, logic, handler, port, registry);
-        idGenerator = new IdGenerator(1000);
+    public ProductsBoundedDomain(ProductsRealm realm, ProductsBusinessLogic logic, ProductsHandler handler, ProductsPort port, TagTypeRegistry registry,
+                                 @NotNull Map<String, String> configuration) {
+        super(realm, logic, handler, port, registry, configuration);
     }
 
-    public IdGenerator idGenerator() {
-        return idGenerator;
+    @Override
+    protected void initialize(@NotNull Map<String, String> configuration) {
+        // TODO handle missing configuration
+        idGenerator = new IdGenerator(Long.parseLong(configuration.get(PRODUCTS_OID_VALUE)));
     }
 }

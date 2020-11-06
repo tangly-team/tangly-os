@@ -207,7 +207,7 @@ subprojects {
         options.incremental = true
         options.warnings = true
         options.deprecation = true
-        options.compilerArgs += ["-parameters", "--enable-preview", "-Xlint:all,-serial,-varargs", "-Xdoclint:all,-missing/public"]
+        options.compilerArgs += ["-parameters", "--enable-preview", "-Xlint:all,-serial,-varargs", "-Xdoclint:none"]
     }
 
     tasks.withType(Test) {
@@ -239,16 +239,16 @@ subprojects {
             manifest {
                 if (!configurations.runtime.isEmpty()) {
                     manifest.attributes(
-                            'Name': project.name,
-                            'Automatic-Module-Name': project.ext.moduleName,
-                            'Specification-Title': "tangly open source library $project.ext.artifactId",
-                            'Specification-Version': project.version,
-                            'Specification-Vendor': "tangyly llc, Switzerland (https://www.tangly.net)",
-                            'License': 'Apache License v2.0',
-                            'Implementation-Title': project.name,
-                            'Implementation-Version': project.version,
-                            'Implementation-Vendor': "tangyly llc, Switzerland (https://www.tangly.net)",
-                            'Class-Path': configurations.runtime.files.collect { it.name }.join(' ')
+                        'Name': project.name,
+                        'Automatic-Module-Name': project.ext.moduleName,
+                        'Specification-Title': "tangly open source library $project.ext.artifactId",
+                        'Specification-Version': project.version,
+                        'Specification-Vendor': "tangyly llc, Switzerland (https://www.tangly.net)",
+                        'License': 'Apache License v2.0',
+                        'Implementation-Title': project.name,
+                        'Implementation-Version': project.version,
+                        'Implementation-Vendor': "tangyly llc, Switzerland (https://www.tangly.net)",
+                        'Class-Path': configurations.runtime.files.collect { it.name }.join(' ')
                     )
                 }
             }

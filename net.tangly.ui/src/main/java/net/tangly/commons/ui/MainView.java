@@ -17,6 +17,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Path;
+import java.util.Map;
 import java.util.Objects;
 
 import com.vaadin.flow.component.AttachEvent;
@@ -32,7 +33,6 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.material.Material;
-import net.tangly.core.TagTypeRegistry;
 import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.CrmRealm;
@@ -63,6 +63,8 @@ import net.tangly.commons.products.ui.EffortsView;
 import net.tangly.commons.products.ui.ProductsView;
 import net.tangly.commons.vaadin.Crud;
 import net.tangly.commons.vaadin.VaadinUtils;
+import net.tangly.core.TagTypeRegistry;
+import net.tangly.core.app.App;
 import net.tangly.crm.ports.CrmEntities;
 import net.tangly.crm.ports.CrmHdl;
 import net.tangly.invoices.ports.InvoicesAdapter;
@@ -110,8 +112,10 @@ public class MainView extends AppLayout {
     private final AnalyticsCrmView analyticsCrmView;
 
     private final TagTypesView tagTypesView;
+    private final Map<String, String> configuration;
 
     public MainView() {
+        configuration = App.readConfiguration(Path.of(ORGANIZATION, "configuration.properties"));
         registry = new TagTypeRegistry();
         crmDomain = ofCrmDomain();
         invoicesDomain = ofInvoicesDomain();
@@ -140,7 +144,7 @@ public class MainView extends AppLayout {
 
         productsView = new ProductsView(productsDomain, Crud.Mode.EDITABLE);
         assignmentsView = new AssignmentsView(productsDomain, Crud.Mode.EDITABLE);
-        effortsView = new EffortsView(productsDomain, Crud.Mode.READONLY);
+        effortsView = new EffortsView(productsDomain, Crud.Mode.EDIT_DELETE);
 
         currentView = naturalEntitiesView;
 
@@ -160,25 +164,25 @@ public class MainView extends AppLayout {
     InvoicesBoundedDomain ofInvoicesDomain() {
         InvoicesRealm realm = new InvoicesEntities(registry);
         return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesHdl(realm, Path.of(ORGANIZATION, "invoices/")),
-            new InvoicesAdapter(realm, Path.of(ORGANIZATION, "reports/invoices/")), registry);
+            new InvoicesAdapter(realm, Path.of(ORGANIZATION, "reports/invoices/")), registry, configuration);
     }
 
     CrmBoundedDomain ofCrmDomain() {
         CrmRealm realm = new CrmEntities(registry);
-        return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmHdl(realm, Path.of(ORGANIZATION, "crm")), null, registry);
+        return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmHdl(realm, Path.of(ORGANIZATION, "crm")), null, registry, configuration);
     }
 
     ProductsBoundedDomain ofProductsDomain() {
         ProductsRealm realm = new ProductsEntities(registry);
         ProductsBusinessLogic logic = new ProductsBusinessLogic(realm);
         return new ProductsBoundedDomain(realm, logic, new ProductsHdl(realm, Path.of(ORGANIZATION, "products/")),
-            new ProductsAdapter(logic, Path.of(ORGANIZATION, "reports/assignments")), registry);
+            new ProductsAdapter(logic, Path.of(ORGANIZATION, "reports/assignments")), registry, configuration);
     }
 
     LedgerBoundedDomain ofLedgerDomain() {
         LedgerRealm ledger = new LedgerRealm();
         return new LedgerBoundedDomain(ledger, new LedgerBusinessLogic(ledger), new LedgerHdl(ledger, Path.of(ORGANIZATION, "ledger/")),
-            new LedgerAdapter(ledger, Path.of(ORGANIZATION, "reports/ledger")), registry);
+            new LedgerAdapter(ledger, Path.of(ORGANIZATION, "reports/ledger")), registry, configuration);
     }
 
     @Override

@@ -13,11 +13,27 @@
 
 package net.tangly.bus.ledger;
 
+import java.util.Map;
+import javax.inject.Inject;
+
 import net.tangly.core.TagTypeRegistry;
 import net.tangly.core.app.BoundedDomain;
+import net.tangly.core.app.IdGenerator;
+import org.jetbrains.annotations.NotNull;
 
 public class LedgerBoundedDomain extends BoundedDomain<LedgerRealm, LedgerBusinessLogic, LedgerHandler, LedgerPort> {
-    public LedgerBoundedDomain(LedgerRealm realm, LedgerBusinessLogic logic, LedgerHandler handler, LedgerPort port, TagTypeRegistry registry) {
-        super(realm, logic, handler, port, registry);
+    public static final String LEDGER_OID_VALUE = "ledger-oid-value";
+
+    @Inject
+    public LedgerBoundedDomain(LedgerRealm realm, LedgerBusinessLogic logic, LedgerHandler handler, LedgerPort port, TagTypeRegistry registry,
+                               @NotNull Map<String, String> configuration) {
+        super(realm, logic, handler, port, registry, configuration);
     }
+
+    @Override
+    protected void initialize(@NotNull Map<String, String> configuration) {
+        // TODO handle missing configuration
+        idGenerator = new IdGenerator(Long.parseLong(configuration.get(LEDGER_OID_VALUE)));
+    }
+
 }

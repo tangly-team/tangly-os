@@ -13,9 +13,12 @@
 
 package net.tangly.core.app;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 import net.tangly.core.TagTypeRegistry;
+import org.jetbrains.annotations.NotNull;
 
 public class BoundedDomain<R, B, H, P> {
     private final R realm;
@@ -24,19 +27,21 @@ public class BoundedDomain<R, B, H, P> {
     private final B logic;
     private final TagTypeRegistry registry;
     private final Map<String, String> configuration;
+    protected IdGenerator idGenerator;
 
     public BoundedDomain(R realm, B logic, H handler, P port, TagTypeRegistry registry) {
-        this(realm, logic,handler,port,registry, null);
+        this(realm, logic, handler, port, registry, Collections.emptyMap());
     }
 
-    public BoundedDomain(R realm, B logic, H handler, P port, TagTypeRegistry registry, Map <String,String> configuration) {
+    public BoundedDomain(R realm, B logic, H handler, P port, TagTypeRegistry registry, @NotNull Map<String, String> configuration) {
         this.realm = realm;
         this.logic = logic;
         this.handler = handler;
         this.port = port;
         this.registry = registry;
-        this.configuration = configuration;
-        registerTags();
+        this.configuration = new HashMap<>(configuration);
+        idGenerator = new IdGenerator(1000);
+        initialize(configuration);
     }
 
     public R realm() {
@@ -59,6 +64,10 @@ public class BoundedDomain<R, B, H, P> {
         return registry;
     }
 
-    protected void registerTags() {
+    public IdGenerator idGenerator() {
+        return idGenerator;
+    }
+
+    protected void initialize(@NotNull Map<String, String> configuration) {
     }
 }

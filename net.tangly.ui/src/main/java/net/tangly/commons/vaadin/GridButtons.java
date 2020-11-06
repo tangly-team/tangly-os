@@ -44,7 +44,16 @@ public class GridButtons<T> extends HorizontalLayout implements SelectedItemList
         update.setEnabled(mode == Crud.Mode.EDITABLE);
         delete.setEnabled((mode == Crud.Mode.EDITABLE) || (mode == Crud.Mode.IMMUTABLE));
         selectedItem(null);
-        addAndExpand(add, delete, update, details);
+        if (Crud.Mode.canAdd(mode)) {
+            addAndExpand(add);
+        }
+        if (Crud.Mode.canDelete(mode)) {
+            addAndExpand(delete);
+        }
+        if (Crud.Mode.canUpdate(mode)) {
+            addAndExpand(update);
+        }
+        addAndExpand(details);
     }
 
     public T selectedItem() {

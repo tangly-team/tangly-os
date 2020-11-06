@@ -13,11 +13,26 @@
 
 package net.tangly.bus.invoices;
 
+import java.util.Map;
+import javax.inject.Inject;
+
 import net.tangly.core.TagTypeRegistry;
 import net.tangly.core.app.BoundedDomain;
+import net.tangly.core.app.IdGenerator;
+import org.jetbrains.annotations.NotNull;
 
 public class InvoicesBoundedDomain extends BoundedDomain<InvoicesRealm, InvoicesBusinessLogic, InvoicesHandler, InvoicesPort> {
-    public InvoicesBoundedDomain(InvoicesRealm realm, InvoicesBusinessLogic logic, InvoicesHandler handler, InvoicesPort port, TagTypeRegistry registry) {
-        super(realm, logic, handler, port, registry);
+    public static final String INVOICES_OID_VALUE = "invoices-oid-value";
+
+    @Inject
+    public InvoicesBoundedDomain(InvoicesRealm realm, InvoicesBusinessLogic logic, InvoicesHandler handler, InvoicesPort port, TagTypeRegistry registry,
+                                 @NotNull Map<String, String> configuration) {
+        super(realm, logic, handler, port, registry, configuration);
+    }
+
+    @Override
+    protected void initialize(@NotNull Map<String, String> configuration) {
+        // TODO handle missing configuration
+        idGenerator = new IdGenerator(Long.parseLong(configuration.get(INVOICES_OID_VALUE)));
     }
 }
