@@ -18,10 +18,13 @@ import java.time.LocalDate;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.Binder;
 import net.tangly.bus.ledger.Account;
 import net.tangly.bus.ledger.LedgerBoundedDomain;
 import net.tangly.bus.providers.RecordProviderInMemory;
 import net.tangly.commons.vaadin.EntitiesView;
+import net.tangly.commons.vaadin.EnumField;
 import net.tangly.commons.vaadin.GridFiltersAndActions;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
@@ -30,12 +33,13 @@ public class AccountsView extends EntitiesView<Account> {
     private final LedgerBoundedDomain domain;
     private LocalDate from;
     private LocalDate to;
+    private Binder<Account> binder;
 
     /**
      * Constructor of the CRUD view for accounts of the ledger.
      *
      * @param domain ledger business domain containing the accounts should be displayed
-     * @param mode  mode of the view
+     * @param mode   mode of the view
      */
     public AccountsView(@NotNull LedgerBoundedDomain domain, @NotNull Mode mode) {
         super(Account.class, mode, RecordProviderInMemory.of(domain.realm().accounts()));
@@ -43,6 +47,12 @@ public class AccountsView extends EntitiesView<Account> {
         from = LocalDate.of(LocalDate.now().getYear(), 1, 1);
         to = LocalDate.of(LocalDate.now().getYear(), 12, 31);
         initialize();
+    }
+
+    public void interval(@NotNull LocalDate from, @NotNull LocalDate to) {
+        this.from = from;
+        this.to = to;
+        grid().getDataProvider().refreshAll();
     }
 
     @Override
@@ -64,14 +74,31 @@ public class AccountsView extends EntitiesView<Account> {
         addAndExpand(gridFunctions, grid(), gridButtons());
     }
 
-    public void interval(@NotNull LocalDate from, @NotNull LocalDate to) {
-        this.from = from;
-        this.to = to;
-        grid().getDataProvider().refreshAll();
-    }
-
     @Override
     protected FormLayout fillForm(@NotNull Operation operation, Account entity, FormLayout form) {
+        TextField id = VaadinUtils.createTextField("Id", "id");
+        id.setRequired(true);
+        TextField name = VaadinUtils.createTextField("Name", "name");
+        name.setRequired(true);
+        EnumField<Account.AccountKind> kind = new EnumField<>(Account.AccountKind.class, "Kind");
+        kind.setRequiredIndicatorVisible(true);
+        EnumField<Account.AccountGroup> group = new EnumField<>(Account.AccountGroup.class, "Group");
+        group.setRequiredIndicatorVisible(true);
+        TextField currency = VaadinUtils.createTextField("Currency", "currency");
+        TextField ownedBy = VaadinUtils.createTextField("Owned By", "owned by");
+        VaadinUtils.readOnly(operation, id, name, kind, group, currency, ownedBy);
+
+        binder = new Binder<>();
+        binder.bind(id, Account::id, null);
+        binder.bind(name, Account::name, null);
+        binder.bind(kind, o -> o.kind(), null);
+        binder.bind(group, o -> o.group(), null);
+        binder.bind(currency, o -> o.currency().getCurrencyCode(), null);
+        binder.bind(ownedBy, Account::ownedBy, null);
+        form.add(id, name, kind, group, currency, ownedBy);
+        if (entity != null) {
+            binder.readBean(entity);
+        }
         return form;
     }
 

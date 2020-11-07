@@ -40,7 +40,7 @@ class LedgerRealmWorkflowTest {
             erpStore.createCrmAndLedgerRepository();
 
             LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerRealm());
-            handler.importLedgerStructureFromBanana(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
+            handler.importChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
             handler.ledger().build();
             assertThat(handler.ledger().accounts().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty()).findAny().isEmpty())
                     .isTrue();
@@ -62,7 +62,7 @@ class LedgerRealmWorkflowTest {
             erpStore.createCrmAndLedgerRepository();
 
             LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerRealm());
-            handler.importTransactionsLedgerFromBanana(erpStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
+            handler.importJournal(erpStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
             assertThat(handler.ledger().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31)).isEmpty()).isFalse();
         }
     }
@@ -74,7 +74,7 @@ class LedgerRealmWorkflowTest {
             erpStore.createCrmAndLedgerRepository();
 
             LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerRealm());
-            handler.importTransactionsLedgerFromBanana(erpStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
+            handler.importJournal(erpStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
 
             ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(handler.ledger());
             StringWriter writer = new StringWriter();

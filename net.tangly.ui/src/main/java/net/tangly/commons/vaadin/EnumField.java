@@ -11,26 +11,22 @@
  *  under the License.
  */
 
-package net.tangly.core.app;
+package net.tangly.commons.vaadin;
 
-import java.util.concurrent.locks.ReentrantLock;
+import com.vaadin.flow.component.select.Select;
 
-public class IdGenerator {
-    private final ReentrantLock lock;
-    private long oidValue;
+/**
+ * Selection field for an enumeration type and all its values.
+ *
+ * @param <T> enumeration to display
+ */
+public class EnumField<T extends Enum<T>> extends Select<T> {
+    private final Class<T> clazz;
 
-    public IdGenerator(long oidInitialValue) {
-        this.oidValue = oidInitialValue;
-        lock = new ReentrantLock();
-    }
-
-    public long nextOid(Class<?> clazz) {
-        lock.lock();
-        try {
-            oidValue += 1;
-            return oidValue;
-        } finally {
-            lock.unlock();
-        }
+    public EnumField(Class<T> clazz, String label) {
+        setLabel(label);
+        this.clazz = clazz;
+        setItemLabelGenerator(T::name);
+        setItems(clazz.getEnumConstants());
     }
 }

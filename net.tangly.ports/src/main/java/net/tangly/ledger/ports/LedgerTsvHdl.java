@@ -26,15 +26,19 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import javax.inject.Inject;
 
-import net.tangly.core.Tag;
 import net.tangly.bus.ledger.Account;
 import net.tangly.bus.ledger.AccountEntry;
 import net.tangly.bus.ledger.LedgerRealm;
 import net.tangly.bus.ledger.Transaction;
 import net.tangly.commons.lang.Strings;
+import net.tangly.commons.logger.EventData;
+import net.tangly.core.Tag;
+import net.tangly.ports.TsvHdl;
 import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -57,6 +61,7 @@ public class LedgerTsvHdl {
     private static final String DOC = "Doc";
     private static final String BCLASS = "BClass";
     private static final String GR = "Gr";
+    private static final String CURRENCY = "Currency";
     private static final String ACCOUNT_DEBIT = "AccountDebit";
     private static final String ACCOUNT_CREDIT = "AccountCredit";
     private static final String VAT_CODE = "VatCode";
@@ -78,14 +83,29 @@ public class LedgerTsvHdl {
         return ledger;
     }
 
-    public void importLedgerStructureFromBanana(@NotNull Path path) {
+    /**
+     * The file structure provided by the external program is:
+     * <dl>
+     *     <dt>Section</dt><dd>Defines the section the account is belonging to: 1 for assets, 2 for liabilities, 4 for profits and losses. A star indicates a
+     *     separation line with a title in the document.</dd>
+     *     <dt>Group</dt><dd>if the line has a group value, it is an aggregated account and therefore has no account identifier</dd>
+     *     <dt>Account</dt><dd>if the line has a account value, it is an account and the value is the accoun identifier. It has no group value.</dd>
+     *     <dt>Description</dt><dd>the description is the human readable name of the account or aggregated acount</dd>
+     *     <dt>BClass</dt><dd>Defines the type of account: 1 for assets, 2 for liabilities, 3 for expenses, and 4 for incomes</dd>
+     *     <dt>Gr</dt><dd>Defines the aggregate account owning the account</dd>
+     *     <dt>Currency</dt><dd>Defines the currency of the account</dd>
+     * </dl>
+     *
+     * @param path path to the file containing the chart of accounts
+     * @see #exportChartOfAccounts(Path)
+     */
+    public void importChartOfAccounts(@NotNull Path path) {
         try (Reader in = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
-            Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
+            int counter = 0;
             Account.AccountGroup currentSection = null;
-            CSVRecord record = records.hasNext() ? records.next() : null;
-            while (record != null) {
+            for (CSVRecord record : TsvHdl.FORMAT.parse(in)) {
                 String section = record.get(SECTION);
-                if ((section != null) && !section.isEmpty()) {
+                if (!Strings.isNullOrBlank(section)) {
                     currentSection = ofGroup(section);
                 }
                 String accountGroup = record.get(GROUP);
@@ -93,16 +113,76 @@ public class LedgerTsvHdl {
                 String text = record.get(DESCRIPTION);
                 String accountKind = record.get(BCLASS);
                 String ownedByGroupId = record.get(GR);
-                if (isRecordPlanRelevant(text, id, accountGroup)) {
-                    if (Strings.isNullOrEmpty(accountGroup)) {
-                        ledger.add(Account.of(Integer.parseInt(id), ofKInd(accountKind), text, ownedByGroupId));
-                    } else {
-                        ledger.add(Account.of(accountGroup, currentSection, text, ownedByGroupId));
-                    }
+                String currency = record.get(CURRENCY);
+                if (Strings.isNullOrBlank(currency)) {
+                    currency = "CHF";
                 }
-                record = records.hasNext() ? records.next() : null;
+                if (isRecordPlanRelevant(text, id, accountGroup)) {
+                    Account account;
+                    if (Strings.isNullOrEmpty(accountGroup)) {
+                        account = Account.of(Integer.parseInt(id), ofKInd(accountKind), currency, text, ownedByGroupId);
+                        ledger.add(account);
+                    } else {
+                        account = Account.of(accountGroup, currentSection, currency, text, ownedByGroupId);
+                        ledger.add(account);
+                    }
+                    ++counter;
+                    EventData.log(EventData.IMPORT, TsvHdl.MODULE, EventData.Status.INFO, Account.class.getSimpleName() + " imported",
+                        Map.of("filename", path, "object", account));
+
+                }
+                EventData.log(EventData.IMPORT, TsvHdl.MODULE, EventData.Status.INFO, Account.class.getSimpleName() + " imported objects",
+                    Map.of("filename", path, "count", counter));
             }
         } catch (IOException e) {
+            EventData.log(EventData.IMPORT, TsvHdl.MODULE, EventData.Status.FAILURE, "Entities not imported from TSV file", Map.of("filename", path), e);
+            throw new UncheckedIOException(e);
+        }
+    }
+
+    /**
+     * Exports the chart of accounts to the provided file.
+     *
+     * @param path path to the file
+     * @see #importChartOfAccounts(Path)
+     */
+    public void exportChartOfAccounts(@NotNull Path path) {
+        try (CSVPrinter out = new CSVPrinter(Files.newBufferedWriter(path, StandardCharsets.UTF_8), TsvHdl.FORMAT)) {
+            int counter = 0;
+            out.print(SECTION);
+            out.print(GROUP);
+            out.print(ACCOUNT);
+            out.print(DESCRIPTION);
+            out.print(BCLASS);
+            out.print(GR);
+            out.println();
+            Account.AccountGroup section = null;
+            for (Account account : ledger.accounts()) {
+                if (account.group() != section) {
+                    section = account.group();
+                    out.print(account.group().ordinal());
+                } else {
+                    out.print(null);
+                }
+                if (account.isAggregate()) {
+                    out.print(account.id());
+                    out.print(null);
+                } else {
+                    out.print(null);
+                    out.print(account.id());
+                }
+                out.print(account.name());
+                out.print(account.kind().ordinal());
+                out.print(account.ownedBy());
+                out.println();
+                ++counter;
+                EventData.log(EventData.EXPORT, TsvHdl.MODULE, EventData.Status.SUCCESS, Account.class.getSimpleName() + " exported to charter of accounts",
+                    Map.of("filename", path, "entity", account));
+            }
+            EventData
+                .log(EventData.EXPORT, TsvHdl.MODULE, EventData.Status.INFO, "exported to charter of accounts", Map.of("filename", path, "counter", counter));
+        } catch (IOException e) {
+            EventData.log(EventData.EXPORT, TsvHdl.MODULE, EventData.Status.FAILURE, "Entities exported to TSV file", Map.of("filename", path), e);
             throw new UncheckedIOException(e);
         }
     }
@@ -112,7 +192,7 @@ public class LedgerTsvHdl {
      *
      * @param path path to the file containing the list of transactions
      */
-    public void importTransactionsLedgerFromBanana(@NotNull Path path) {
+    public void importJournal(@NotNull Path path) {
         try (Reader in = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             CSVRecord record = records.hasNext() ? records.next() : null;
@@ -133,7 +213,7 @@ public class LedgerTsvHdl {
                     record = importSplits(records, splits);
                     try {
                         transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
-                                new BigDecimal(amount), splits, text, reference);
+                            new BigDecimal(amount), splits, text, reference);
                     } catch (NumberFormatException e) {
                         logger.atError().setCause(e).log("{}: not a legal amount {}", date, amount);
                     }
@@ -141,7 +221,7 @@ public class LedgerTsvHdl {
                 } else {
                     try {
                         transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
-                                Strings.isNullOrEmpty(amount) ? BigDecimal.ZERO : new BigDecimal(amount), text, reference);
+                            Strings.isNullOrEmpty(amount) ? BigDecimal.ZERO : new BigDecimal(amount), text, reference);
                     } catch (NumberFormatException e) {
                         logger.atError().setCause(e).log("{}: not a legal amount {}", date, amount);
                     }
@@ -158,6 +238,9 @@ public class LedgerTsvHdl {
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
+    }
+
+    public void exportJournal(@NotNull Path path, LocalDate from, LocalDate to) {
     }
 
     private static CSVRecord importSplits(@NotNull Iterator<CSVRecord> records, List<AccountEntry> splits) {
@@ -190,7 +273,7 @@ public class LedgerTsvHdl {
      */
     private static boolean isRecordPlanRelevant(String description, String accountId, String groupId) {
         return !Strings.isNullOrEmpty(description) &&
-                ((!Strings.isNullOrEmpty(accountId) && !accountId.startsWith(":")) || (!Strings.isNullOrEmpty(groupId) && !groupId.equalsIgnoreCase("0")));
+            ((!Strings.isNullOrEmpty(accountId) && !accountId.startsWith(":")) || (!Strings.isNullOrEmpty(groupId) && !groupId.equalsIgnoreCase("0")));
     }
 
     // potential strategy pattern

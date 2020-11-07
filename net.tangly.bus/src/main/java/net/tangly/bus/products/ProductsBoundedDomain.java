@@ -15,9 +15,9 @@ package net.tangly.bus.products;
 
 import java.util.Map;
 
+import net.tangly.commons.generator.LongIdGenerator;
 import net.tangly.core.TagTypeRegistry;
 import net.tangly.core.app.BoundedDomain;
-import net.tangly.core.app.IdGenerator;
 import org.jetbrains.annotations.NotNull;
 
 public class ProductsBoundedDomain extends BoundedDomain<ProductsRealm, ProductsBusinessLogic, ProductsHandler, ProductsPort> {
@@ -31,6 +31,6 @@ public class ProductsBoundedDomain extends BoundedDomain<ProductsRealm, Products
     @Override
     protected void initialize(@NotNull Map<String, String> configuration) {
         // TODO handle missing configuration
-        idGenerator = new IdGenerator(Long.parseLong(configuration.get(PRODUCTS_OID_VALUE)));
+        idGenerator = new LongIdGenerator(Long.parseLong(configuration.get(PRODUCTS_OID_VALUE)));
     }
 }

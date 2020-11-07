@@ -54,6 +54,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public final class TsvHdl {
+    public static final CSVFormat FORMAT = CSVFormat.TDF.withFirstRecordAsHeader().withIgnoreHeaderCase(true).withRecordSeparator('\n');
     public static final String OID = "oid";
     public static final String ID = "id";
     public static final String NAME = "name";
@@ -69,7 +70,6 @@ public final class TsvHdl {
     private static final String BIC = "bic";
     private static final String INSTITUTE = "institute";
     public static final String MODULE = "net.tangly.ports";
-    private static final CSVFormat FORMAT = CSVFormat.TDF.withFirstRecordAsHeader().withIgnoreHeaderCase(true).withRecordSeparator('\n');
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 
@@ -119,7 +119,7 @@ public final class TsvHdl {
             EventData.log(EventData.IMPORT, MODULE, EventData.Status.INFO, tsvEntity.clazz().getSimpleName() + " imported objects",
                     Map.of("filename", path, "count", counter));
         } catch (IOException e) {
-            EventData.log(EventData.IMPORT, MODULE, EventData.Status.FAILURE, "Entities imported from TSV file", Map.of("filename", path), e);
+            EventData.log(EventData.IMPORT, MODULE, EventData.Status.FAILURE, "Entities not imported from TSV file", Map.of("filename", path), e);
             throw new UncheckedIOException(e);
         }
     }

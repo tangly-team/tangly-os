@@ -51,11 +51,11 @@ public class LedgerHdl implements LedgerHandler {
     @Override
     public void importEntities() {
         LedgerTsvHdl handler = new LedgerTsvHdl(ledger);
-        handler.importLedgerStructureFromBanana(folder.resolve("swiss-ledger.tsv"));
+        handler.importChartOfAccounts(folder.resolve("swiss-ledger.tsv"));
         ledger.build();
         try (Stream<Path> stream = Files.walk(folder)) {
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith("-period.tsv"))
-                    .forEach(handler::importTransactionsLedgerFromBanana);
+                    .forEach(handler::importJournal);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

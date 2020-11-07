@@ -92,12 +92,12 @@ public class Account implements HasId, HasName {
         this.entries = new ArrayList<>();
     }
 
-    public static Account of(int id, AccountKind kind, String description, String ownedByGroupId) {
-        return new Account(Integer.toString(id), kind, Currency.getInstance("CHF"), description, ownedByGroupId);
+    public static Account of(int id, AccountKind kind, String currency, String description, String ownedByGroupId) {
+        return new Account(Integer.toString(id), kind, Currency.getInstance(currency), description, ownedByGroupId);
     }
 
-    public static Account of(String id, AccountGroup group, String description, String ownedByGroupId) {
-        return new Account(id, AccountKind.AGGREGATE, group, Currency.getInstance("CHF"), description, ownedByGroupId);
+    public static Account of(String id, AccountGroup group, String currency, String description, String ownedByGroupId) {
+        return new Account(id, AccountKind.AGGREGATE, group, Currency.getInstance(currency), description, ownedByGroupId);
     }
 
     @Override

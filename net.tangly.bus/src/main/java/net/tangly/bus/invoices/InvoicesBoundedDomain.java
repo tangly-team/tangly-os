@@ -16,9 +16,9 @@ package net.tangly.bus.invoices;
 import java.util.Map;
 import javax.inject.Inject;
 
+import net.tangly.commons.generator.LongIdGenerator;
 import net.tangly.core.TagTypeRegistry;
 import net.tangly.core.app.BoundedDomain;
-import net.tangly.core.app.IdGenerator;
 import org.jetbrains.annotations.NotNull;
 
 public class InvoicesBoundedDomain extends BoundedDomain<InvoicesRealm, InvoicesBusinessLogic, InvoicesHandler, InvoicesPort> {
@@ -33,6 +33,6 @@ public class InvoicesBoundedDomain extends BoundedDomain<InvoicesRealm, Invoices
     @Override
     protected void initialize(@NotNull Map<String, String> configuration) {
         // TODO handle missing configuration
-        idGenerator = new IdGenerator(Long.parseLong(configuration.get(INVOICES_OID_VALUE)));
+        idGenerator = new LongIdGenerator(Long.parseLong(configuration.get(INVOICES_OID_VALUE)));
     }
 }

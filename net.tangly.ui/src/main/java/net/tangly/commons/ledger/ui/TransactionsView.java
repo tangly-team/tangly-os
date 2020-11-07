@@ -15,9 +15,11 @@ package net.tangly.commons.ledger.ui;
 
 import java.time.LocalDate;
 
+import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.bus.ledger.LedgerBoundedDomain;
 import net.tangly.bus.ledger.Transaction;
@@ -59,6 +61,11 @@ public class TransactionsView extends EntitiesView<Transaction> {
 
     @Override
     protected FormLayout fillForm(@NotNull Operation operation, Transaction entity, FormLayout form) {
+        DatePicker date;
+        TextField text;
+        TextField reference;
+
+        // TODO debit and credit including splits
         return form;
     }
 

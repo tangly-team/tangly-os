@@ -17,6 +17,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.tangly.commons.generator.IdGenerator;
+import net.tangly.commons.generator.LongIdGenerator;
 import net.tangly.core.TagTypeRegistry;
 import org.jetbrains.annotations.NotNull;
 
@@ -40,7 +42,7 @@ public class BoundedDomain<R, B, H, P> {
         this.port = port;
         this.registry = registry;
         this.configuration = new HashMap<>(configuration);
-        idGenerator = new IdGenerator(1000);
+        idGenerator = new LongIdGenerator(1000);
         initialize(configuration);
     }
 
