@@ -15,6 +15,9 @@ package net.tangly.bus.products;
 
 import java.time.LocalDate;
 
+/**
+ * Defines the export port for the products bounded domain. It is the secondary port in the DDD terminology.
+ */
 public interface ProductsPort {
     void exportEffortsDocument(Assignment assignment, LocalDate from, LocalDate to);
 }

@@ -53,13 +53,17 @@ public class LedgerRealm {
         return accounts.stream().filter(o -> Account.AccountGroup.PROFITS_AND_LOSSES == o.group()).collect(Collectors.toUnmodifiableList());
     }
 
+    public List<Account> bookableAccounts() {
+        return accounts.stream().filter(o -> !o.isAggregate()).collect(Collectors.toUnmodifiableList());
+    }
+
     public List<Transaction> transactions() {
         return Collections.unmodifiableList(journal);
     }
 
     public List<Transaction> transactions(LocalDate from, LocalDate to) {
         return journal.stream().filter(o -> (o.date().isAfter(from) || o.date().equals(from)) && (o.date().isBefore(to) || o.date().isEqual(to)))
-                .collect(Collectors.toUnmodifiableList());
+            .collect(Collectors.toUnmodifiableList());
     }
 
     public List<Account> accounts() {
@@ -92,10 +96,10 @@ public class LedgerRealm {
             AccountEntry credit = transaction.creditSplits().get(0);
             BigDecimal vatDue = credit.amount().multiply(vatDuePercent.get());
             List<AccountEntry> splits =
-                    List.of(new AccountEntry(credit.accountId(), credit.date(), credit.amount().subtract(vatDue), credit.text(), false, credit.tags()),
-                            new AccountEntry("2201", credit.date(), vatDue, null, false));
+                List.of(new AccountEntry(credit.accountId(), credit.date(), credit.amount().subtract(vatDue), credit.text(), false, credit.tags()),
+                    new AccountEntry("2201", credit.date(), vatDue, null, false));
             booked = new Transaction(transaction.date(), transaction.debitAccount(), null, transaction.amount(), splits, transaction.text(),
-                    transaction.reference());
+                transaction.reference());
         }
         journal.add(booked);
         booked.debitSplits().forEach(this::bookEntry);
@@ -107,9 +111,9 @@ public class LedgerRealm {
      */
     public void build() {
         accounts.stream().filter(Account::isAggregate)
-                .forEach(o -> o.updateAggregatedAccounts(accounts.stream().filter(sub -> o.id().equals(sub.ownedBy())).collect(Collectors.toList())));
+            .forEach(o -> o.updateAggregatedAccounts(accounts.stream().filter(sub -> o.id().equals(sub.ownedBy())).collect(Collectors.toList())));
         accounts.stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty())
-                .forEach(o -> logger.atError().log("Aggregate account wrongly defined {}", o.id()));
+            .forEach(o -> logger.atError().log("Aggregate account wrongly defined {}", o.id()));
     }
 
     private void bookEntry(@NotNull AccountEntry entry) {
@@ -124,21 +128,21 @@ public class LedgerRealm {
 
     public BigDecimal computeVatSales(LocalDate from, LocalDate to) {
         return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).filter(o -> o.findBy(AccountEntry.FINANCE, AccountEntry.VAT).isPresent())
-                .map(AccountEntry::amount).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
+            .map(AccountEntry::amount).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
     }
 
     public BigDecimal computeVat(LocalDate from, LocalDate to) {
         return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).map(o -> {
             Optional<BigDecimal> vat = o.getVat();
             return vat.map(bigDecimal -> o.amount().subtract(o.amount().divide(BigDecimal.ONE.add(bigDecimal), 2, RoundingMode.HALF_UP)))
-                    .orElse(BigDecimal.ZERO);
+                .orElse(BigDecimal.ZERO);
         }).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
     }
 
     public BigDecimal computeDueVat(LocalDate from, LocalDate to) {
         Optional<Account> account = accountBy("2201");
         return account.map(value -> value.getEntriesFor(from, to).stream().filter(AccountEntry::isCredit).map(AccountEntry::amount).reduce(BigDecimal::add)
-                .orElse(BigDecimal.ZERO)).orElse(BigDecimal.ZERO);
+            .orElse(BigDecimal.ZERO)).orElse(BigDecimal.ZERO);
     }
 
     // endregion

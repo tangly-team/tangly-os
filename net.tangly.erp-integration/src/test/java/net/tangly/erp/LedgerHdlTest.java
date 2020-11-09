@@ -14,8 +14,6 @@
 package net.tangly.erp;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.nio.file.FileSystem;
 import java.time.LocalDate;
 
@@ -23,18 +21,17 @@ import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.ledger.Account;
 import net.tangly.bus.ledger.LedgerRealm;
-import net.tangly.ledger.ports.ClosingReportAsciiDoc;
 import net.tangly.ledger.ports.LedgerTsvHdl;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class LedgerRealmWorkflowTest {
+class LedgerHdlTest {
     private static final String PACKAGE_NAME = "net/tangly/crm/ledger/";
     private static final String SWISS_LEDGER = "swiss-ledger.tsv";
 
     @Test
-    void testCsvLedgerImport() throws IOException {
+    void testTsvLedgerImport() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             ErpStore erpStore = new ErpStore(fs);
             erpStore.createCrmAndLedgerRepository();
@@ -43,7 +40,7 @@ class LedgerRealmWorkflowTest {
             handler.importChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
             handler.ledger().build();
             assertThat(handler.ledger().accounts().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty()).findAny().isEmpty())
-                    .isTrue();
+                .isTrue();
             assertThat(handler.ledger().assets().isEmpty()).isFalse();
             assertThat(handler.ledger().liabilities().isEmpty()).isFalse();
             assertThat(handler.ledger().profitAndLoss().isEmpty()).isFalse();
@@ -56,7 +53,32 @@ class LedgerRealmWorkflowTest {
     }
 
     @Test
-    void testCsvTransactionsImport() throws IOException {
+    void testTsvLedgerImportExport() throws IOException {
+        try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
+            ErpStore erpStore = new ErpStore(fs);
+            erpStore.createCrmAndLedgerRepository();
+
+            LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerRealm());
+            handler.importChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
+            handler.ledger().build();
+            int nrOfAccounts = handler.ledger().accounts().size();
+            int nrOfBookableAccounts = handler.ledger().bookableAccounts().size();
+            int nrOfLiabilitiesAccounts = handler.ledger().liabilities().size();
+            int nrOfProfitAndLossAccounts = handler.ledger().profitAndLoss().size();
+
+            handler.exportChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
+            handler = new LedgerTsvHdl(new LedgerRealm());
+            handler.importChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
+            handler.ledger().build();
+            assertThat(handler.ledger().accounts().size()).isEqualTo(nrOfAccounts);
+            assertThat(handler.ledger().bookableAccounts().size()).isEqualTo(nrOfBookableAccounts);
+            assertThat(handler.ledger().liabilities().size()).isEqualTo(nrOfLiabilitiesAccounts);
+            assertThat(handler.ledger().profitAndLoss().size()).isEqualTo(nrOfProfitAndLossAccounts);
+        }
+    }
+
+    @Test
+    void testTsvTransactionsImport() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             ErpStore erpStore = new ErpStore(fs);
             erpStore.createCrmAndLedgerRepository();
@@ -64,22 +86,6 @@ class LedgerRealmWorkflowTest {
             LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerRealm());
             handler.importJournal(erpStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
             assertThat(handler.ledger().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31)).isEmpty()).isFalse();
-        }
-    }
-
-    @Test
-    void testWriteClosingReport() throws IOException {
-        try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            ErpStore erpStore = new ErpStore(fs);
-            erpStore.createCrmAndLedgerRepository();
-
-            LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerRealm());
-            handler.importJournal(erpStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
-
-            ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(handler.ledger());
-            StringWriter writer = new StringWriter();
-            report.create(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31), new PrintWriter(writer), true, true);
-            assertThat(writer.toString().isEmpty()).isFalse();
         }
     }
 }

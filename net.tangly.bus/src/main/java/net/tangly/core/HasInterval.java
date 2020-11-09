@@ -60,21 +60,21 @@ public interface HasInterval {
     }
 
     /**
-     * Return the date from when the entity is existing and active.
+     * Returns the date from when the entity is existing and active.
      *
      * @return the start of the existing period of the entity
      */
     LocalDate fromDate();
 
     /**
-     * Return the date until when the entity is existing and active.
+     * Returns the date until when the entity is existing and active.
      *
      * @return the end of the existing period of the entity
      */
     LocalDate toDate();
 
     /**
-     * Return true if the date now is in the time interval of the instance.
+     * Returns true if the date now is in the time interval of the instance.
      *
      * @return true if inside the interval otherwise false
      */
@@ -83,7 +83,7 @@ public interface HasInterval {
     }
 
     /**
-     * Return true if the date now is in the time interval of the instance.
+     * Returns true if the date now is in the time interval of the instance.
      *
      * @param date date against which the inclusion test is evaluated
      * @return true if inside the interval otherwise false

@@ -42,7 +42,7 @@ public record Address(String street, String extended, String poBox, String postc
     }
 
     /**
-     * Define the builder for the address class with a fluent interface. The builder supports the creation of multiple address objects. A canonical
+     * Defines the builder for the address class with a fluent interface. The builder supports the creation of multiple address objects. A canonical
      * transformation is used to transform empty or blank {@link String#isBlank} string fields into null values.
      */
     public static class Builder {
@@ -139,7 +139,7 @@ public record Address(String street, String extended, String poBox, String postc
     }
 
     /**
-     * Return a comma separated representation of an address. Null values are shown as empty strings. The {@link Object#toString()} method is not used because
+     * Returns a comma separated representation of an address. Null values are shown as empty strings. The {@link Object#toString()} method is not used because
      * the implementation is defined in the API implementation of record construct. The generated string can be feed to the {@link Address#of(String)} to create
      * an address object.
      *

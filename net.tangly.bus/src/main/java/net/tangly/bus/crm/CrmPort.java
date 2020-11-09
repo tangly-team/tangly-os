@@ -14,7 +14,7 @@
 package net.tangly.bus.crm;
 
 /**
- * Define the export port for the bounded domain. It is a secondary port in the DDD terminology.
+ * Defines the export port for the bounded domain. It is a secondary port in the DDD terminology.
  */
 public interface CrmPort {
 }

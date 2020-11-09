@@ -16,7 +16,7 @@ package net.tangly.bus.products;
 import net.tangly.core.app.Handler;
 
 /**
- * Define the import port for the invoices bounded domain.
+ * Defines the import port for the products bounded domain. It is the primary port in the DDD terminology.
  */
 public interface ProductsHandler extends Handler {
 }

@@ -32,7 +32,7 @@ public interface HasComments {
     List<Comment> comments();
 
     /**
-     * Add a comment to the list of comments.
+     * Adds a comment to the list of comments.
      *
      * @param comment comment to be added, cannot be null
      */
@@ -46,7 +46,7 @@ public interface HasComments {
     void remove(@NotNull Comment comment);
 
     /**
-     * Add a list of comments.
+     * Adds a list of comments.
      *
      * @param comments comments to be added, cannot be null
      * @see HasComments#add(Comment)
@@ -56,7 +56,7 @@ public interface HasComments {
     }
 
     /**
-     * Return the comments authored by the given author.
+     * Returns the comments authored by the given author.
      *
      * @param author author of the searched comment
      * @return list of requested comments
@@ -67,7 +67,7 @@ public interface HasComments {
     }
 
     /**
-     * Return the comments having the given tag.
+     * Returns the comments having the given tag.
      *
      * @param namespace namespace of the tag
      * @param name      name of the tag
@@ -79,7 +79,7 @@ public interface HasComments {
     }
 
     /**
-     * Return all the comments which creation date is in the closed interval.
+     * Returns all the comments which creation date is in the closed interval.
      *
      * @param from beginning of the time interval or LocalDateTime.MIN
      * @param to   end of the time interval or LocalDateTime.MAX

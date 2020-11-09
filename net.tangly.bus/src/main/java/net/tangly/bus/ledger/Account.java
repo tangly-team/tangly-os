@@ -33,8 +33,14 @@ import org.jetbrains.annotations.NotNull;
  */
 public class Account implements HasId, HasName {
 
+    /**
+     * Defines the kind of the account: asset, liability, income, expense, or an aggregate one. The kind is used for computing correctly the balance.
+     */
     public enum AccountKind {ASSET, LIABILITY, INCOME, EXPENSE, AGGREGATE}
 
+    /**
+     * Defines to which group the account belongs: assets, liabilities, expenses, or profits and losses.
+     */
     public enum AccountGroup {ASSETS, LIABILITIES, EXPENSES, PROFITS_AND_LOSSES}
 
     /**
@@ -122,18 +128,21 @@ public class Account implements HasId, HasName {
         return Collections.unmodifiableSet(aggregatedAccounts);
     }
 
-
     public String ownedBy() {
         return ownedBy;
     }
 
     public AccountGroup group() {
-        return switch (kind()) {
-            case ASSET -> AccountGroup.ASSETS;
-            case LIABILITY -> AccountGroup.LIABILITIES;
-            case EXPENSE, INCOME -> AccountGroup.PROFITS_AND_LOSSES;
-            case AGGREGATE -> group;
-        };
+        if (kind() == null) {
+            return null;
+        } else {
+            return switch (kind()) {
+                case ASSET -> AccountGroup.ASSETS;
+                case LIABILITY -> AccountGroup.LIABILITIES;
+                case EXPENSE, INCOME -> AccountGroup.PROFITS_AND_LOSSES;
+                case AGGREGATE -> group;
+            };
+        }
     }
 
     /**
@@ -180,12 +189,12 @@ public class Account implements HasId, HasName {
      */
     public BigDecimal balance(LocalDate date) {
         return isAggregate() ? aggregatedAccounts.stream().map(o -> o.balance(date)).reduce(BigDecimal::add).orElse(BigDecimal.ZERO) :
-                entries.stream().filter(o -> date.compareTo(o.date()) >= 0).map(Account::booking).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
+            entries.stream().filter(o -> date.compareTo(o.date()) >= 0).map(Account::booking).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
     }
 
     public List<AccountEntry> getEntriesFor(LocalDate from, LocalDate to) {
         return entries.stream().filter(o -> (o.date().isAfter(from) || o.date().equals(from)) && (o.date().isBefore(to) || o.date().isEqual(to)))
-                .collect(Collectors.toList());
+            .collect(Collectors.toList());
     }
 
     public void addEntry(AccountEntry entry) {

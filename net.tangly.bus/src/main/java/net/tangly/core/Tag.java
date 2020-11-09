@@ -38,7 +38,7 @@ public record Tag(String namespace, @NotNull String name, String value) implemen
     }
 
     /**
-     * Transform a collection of tags into their canonical textual representation.
+     * Transforms a collection of tags into their canonical textual representation.
      *
      * @param tags tags to be transformed
      * @return textual representation of the tags
@@ -49,7 +49,7 @@ public record Tag(String namespace, @NotNull String name, String value) implemen
     }
 
     /**
-     * Transform raw tags textual representation into a set of tags
+     * Transforms raw tags textual representation into a set of tags
      *
      * @param rawTags textual representation of tags
      * @return set of the tag instances

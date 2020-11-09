@@ -16,7 +16,7 @@ package net.tangly.erp;
 import net.tangly.products.ports.EffortReportAsciiDoc;
 import org.junit.jupiter.api.Test;
 
-class WorkReportTest {
+class ProductsPortTest {
     @Test
     void testWorkReport() {
         EffortReportAsciiDoc reporter = new EffortReportAsciiDoc(null);

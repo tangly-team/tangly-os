@@ -43,7 +43,7 @@ public class BoundedDomain<R, B, H, P> {
         this.registry = registry;
         this.configuration = new HashMap<>(configuration);
         idGenerator = new LongIdGenerator(1000);
-        initialize(configuration);
+        initialize();
     }
 
     public R realm() {
@@ -70,6 +70,10 @@ public class BoundedDomain<R, B, H, P> {
         return idGenerator;
     }
 
-    protected void initialize(@NotNull Map<String, String> configuration) {
+    public Map<String, String> configuration() {
+        return Collections.unmodifiableMap(configuration);
+    }
+
+    protected void initialize() {
     }
 }

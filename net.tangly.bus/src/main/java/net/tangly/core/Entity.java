@@ -28,14 +28,14 @@ import java.time.LocalDate;
  */
 public interface Entity extends HasOid, HasName, HasInterval, HasTags, HasComments {
     /**
-     * Set the start date from when the entity is existing and active.
+     * Sets the start date from when the entity is existing and active.
      *
      * @param fromDate the start of the existing period of the entity
      */
     void fromDate(LocalDate fromDate);
 
     /**
-     * Set the end date from when the entity is existing and active.
+     * Sets the end date from when the entity is existing and active.
      *
      * @param toDate the end of the existing period of the entity
      */

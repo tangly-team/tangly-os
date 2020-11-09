@@ -28,7 +28,7 @@ plugins {
     id "org.sonarqube" version "3.0"
     id "info.solidsoft.pitest" version "1.5.2"
     id 'com.google.cloud.tools.jib' version '2.6.0'
-    id 'com.github.ben-manes.versions' version '0.34.0'
+    id 'com.github.ben-manes.versions' version '0.35.0'
 }
 
 ext {

@@ -38,7 +38,7 @@ public class TagTypeRegistry {
     }
 
     /**
-     * Register a tag type.
+     * Registers a tag type.
      *
      * @param type tag type to bind
      */

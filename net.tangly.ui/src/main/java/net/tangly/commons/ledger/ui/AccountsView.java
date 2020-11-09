@@ -29,6 +29,9 @@ import net.tangly.commons.vaadin.GridFiltersAndActions;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Charts of accounts are defined externally as TSV files. Currently the account view is a read-only view on accounts instances.
+ */
 public class AccountsView extends EntitiesView<Account> {
     private final LedgerBoundedDomain domain;
     private LocalDate from;

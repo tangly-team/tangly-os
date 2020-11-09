@@ -11,7 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.crm.ports;
+package net.tangly.erp;
 
 import net.tangly.core.TagTypeRegistry;
 import net.tangly.bus.crm.CrmTags;
@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Test the import and export of CRM entities to TSV files. All files are either defined as resources or written to an in-memory file system.
  */
-class CrmHdlTest {
+class CrmBusinessLogicTest {
     @Test
     void testCrmTags() {
         TagTypeRegistry registry = new TagTypeRegistry();

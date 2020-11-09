@@ -51,7 +51,7 @@ public interface CrmRealm {
     InstanceProvider<Subject> subjects();
 
     /**
-     * Return all the past and present employees of a legal organization.
+     * Returns all the past and present employees of a legal organization.
      *
      * @param entity entity which employees should be retrieved
      * @return the list of employees
@@ -61,7 +61,7 @@ public interface CrmRealm {
     }
 
     /**
-     * Return all the employee positions a person had and has.
+     * Returns all the employee positions a person had and has.
      *
      * @param entity entity which employees should be retrieved
      * @return the list of employees

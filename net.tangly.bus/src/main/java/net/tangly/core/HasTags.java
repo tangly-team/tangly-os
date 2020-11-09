@@ -46,7 +46,7 @@ public interface HasTags {
     void clearTags();
 
     /**
-     * Replace or insert the given tag. Tag equivalence is detected with optional namespace and tag name.
+     * Replaces or inserts the given tag. Tag equivalence is detected with optional namespace and tag name.
      *
      * @param tag tag to replace or insert
      */
@@ -57,14 +57,14 @@ public interface HasTags {
     }
 
     /**
-     * Remove the tag from the set of tags.
+     * Removes the tag from the set of tags.
      *
      * @param tag tag to remove
      */
     void remove(Tag tag);
 
     /**
-     * Remove the tag with the given tag identification containing optional namespace and tag name.
+     * Removes the tag with the given tag identification containing optional namespace and tag name.
      *
      * @param tag tag identification of the tag to be removed
      */
@@ -73,7 +73,7 @@ public interface HasTags {
     }
 
     /**
-     * Find the tag with the given tag identification containing optional namespace and tag name.
+     * Finds the tag with the given tag identification containing optional namespace and tag name.
      *
      * @param tag tag identification of the tag to be removed
      * @return requested tag as optional
@@ -83,7 +83,7 @@ public interface HasTags {
     }
 
     /**
-     * Search for a tag with the given namespace and name.
+     * Searches for a tag with the given namespace and name.
      *
      * @param namespace optional namespace of the tag to be found
      * @param name      name of the tag to be found
@@ -110,7 +110,7 @@ public interface HasTags {
     }
 
     /**
-     * Return the value of the tag with the given qualified tag name.
+     * Returns the value of the tag with the given qualified tag name.
      *
      * @param tag qualified tag name
      * @return the tag value if found
@@ -120,7 +120,7 @@ public interface HasTags {
     }
 
     /**
-     * Update the tag with the new value.
+     * Updates the tag with the new value.
      *
      * @param tag   qualified tag name of the tag to update
      * @param value new value of the tag
@@ -145,7 +145,7 @@ public interface HasTags {
     }
 
     /**
-     * Set the tags using the canonical string representation.
+     * Sets the tags using the canonical string representation.
      *
      * @param rawTags canonical representation of the tag set
      * @see HasTags#rawTags()

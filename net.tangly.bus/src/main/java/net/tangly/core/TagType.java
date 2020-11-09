@@ -27,6 +27,7 @@ import org.jetbrains.annotations.NotNull;
  * @param namespace namespace of the tags defined through the tag type
  * @param name      name of the tags defined through the tag type
  * @param clazz     class of the type of the values stored in the tag
+ * @param kind      kind of the tag specifying if a value exists and if it is mandatory
  * @param convert   mapping function between a string to a Java object representation of the string value
  * @param validate  validation function for hte Java representation of the string tag value
  * @param <T>       type of the tags
@@ -34,7 +35,7 @@ import org.jetbrains.annotations.NotNull;
 public record TagType<T extends Serializable>(String namespace, @NotNull String name, @NotNull ValueKinds kind, @NotNull Class<T> clazz,
                                               Function<String, T> convert, BiPredicate<TagType<T>, T> validate) {
     /**
-     * Indicate if the tag requires no value, an optional value, or a mandatory one.
+     * Indicates if the tag requires no value, an optional value, or a mandatory one.
      */
     public enum ValueKinds {NONE, OPTIONAL, MANDATORY}
 
@@ -44,7 +45,7 @@ public record TagType<T extends Serializable>(String namespace, @NotNull String 
 
     public static TagType<String> ofString(String namespace, @NotNull String name, @NotNull ValueKinds kind,
                                            @NotNull BiPredicate<TagType<String>, String> validate) {
-        return of(namespace, name, ValueKinds.MANDATORY, String.class, UnaryOperator.identity(), validate);
+        return of(namespace, name, kind, String.class, UnaryOperator.identity(), validate);
     }
 
     public static <T extends Serializable> TagType<T> ofMandatory(String namespace, @NotNull String name, Class<T> clazz, Function<String, T> convert,
@@ -68,7 +69,7 @@ public record TagType<T extends Serializable>(String namespace, @NotNull String 
     }
 
     /**
-     * Indicate if tags of these types can have values.
+     * Indicates if tags of these type can have values.
      *
      * @return true if either mandatory or optional values are supported otherwise false
      */
@@ -77,7 +78,7 @@ public record TagType<T extends Serializable>(String namespace, @NotNull String 
     }
 
     /**
-     * Transform a tag string value into a Java object.
+     * Transforms a tag string value into a Java object.
      *
      * @param tag tag which value should be converted
      * @return the Java object representation of the tag value
@@ -87,26 +88,30 @@ public record TagType<T extends Serializable>(String namespace, @NotNull String 
     }
 
     /**
-     * Create a tag with the given value using the tag type configuration.
+     * Creates a tag with the given value using the tag type configuration.
      *
      * @param value value of the tag
      * @return new tag instance
      */
     public Tag of(T value) {
-        if ((kind() == ValueKinds.MANDATORY) && (value == null)) {
-            throw new IllegalArgumentException(String.format("value is required for mandatory tag type %s %s", namespace(), name()));
-        }
+        validateValuePresence(value);
         return new Tag(namespace, name, (value != null) ? value.toString() : null);
     }
 
     public Tag of(String value) {
-        if ((kind() == ValueKinds.MANDATORY) && (value == null)) {
-            throw new IllegalArgumentException(String.format("value is required for mandatory tag type %s %s", namespace(), name()));
-        }
+        validateValuePresence(value);
         return new Tag(namespace, name, value);
     }
 
     public boolean validate(@NotNull String value) {
         return validate.test(this, convert().apply(value));
+    }
+
+    private void validateValuePresence(Object value) {
+        if ((kind() == ValueKinds.MANDATORY) && (value == null)) {
+            throw new IllegalArgumentException(String.format("value is required for mandatory tag type %s %s", namespace(), name()));
+        } else if ((kind() == ValueKinds.NONE) && (value != null)) {
+            throw new IllegalArgumentException(String.format("value is denied for none tag type %s %s", namespace(), name()));
+        }
     }
 }

@@ -31,9 +31,9 @@ public class CrmBoundedDomain extends BoundedDomain<CrmRealm, CrmBusinessLogic, 
     }
 
     @Override
-    protected void initialize(@NotNull Map<String, String> configuration) {
+    protected void initialize() {
         // TODO handle missing configuration
-        idGenerator = new LongIdGenerator(Long.parseLong(configuration.get(CRM_OID_VALUE)));
+        idGenerator = new LongIdGenerator(Long.parseLong(configuration().get(CRM_OID_VALUE)));
         CrmTags.registerTags(registry());
     }
 }

@@ -16,7 +16,7 @@ package net.tangly.bus.ledger;
 import net.tangly.core.app.Handler;
 
 /**
- * Define the import port for the invoices bounded domain.
+ * Defines the import port for the ledger bounded domain. It is the primary port in DDD terminology.
  */
 public interface LedgerHandler extends Handler {
 }

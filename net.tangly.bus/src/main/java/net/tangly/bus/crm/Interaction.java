@@ -109,5 +109,4 @@ public class Interaction extends QualifiedEntityImp {
             Interaction[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, state=%s, potential=%s, probability=%s, tags=%s]
             """.formatted(oid(), id(), name(), fromDate(), toDate(), text(), code(), potential(), probability(), tags());
     }
-
 }

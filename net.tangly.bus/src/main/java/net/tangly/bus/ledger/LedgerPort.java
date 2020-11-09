@@ -15,9 +15,13 @@ package net.tangly.bus.ledger;
 
 import java.time.LocalDate;
 
+/**
+ * Defines the export port for the ledger bounded domain. It is the secondary port in DDD terminology.
+ */
+
 public interface LedgerPort {
     /**
-     * Export a ledger report with profits and losses, and assets and liabilities information for a specific time interval.
+     * Exports a ledger report with profits and losses, and assets and liabilities information for a specific time interval.
      *
      * @param name name of the document
      * @param from start of the time interval relevant for the report

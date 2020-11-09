@@ -37,7 +37,7 @@ public class CrmBusinessLogic {
     }
 
     /**
-     * Set the end date property of interaction to the end date of the last contract associated with the interaction in the case of customer and completed
+     * Sets the end date property of interaction to the end date of the last contract associated with the interaction in the case of customer and completed
      * state. Set the end date property of interaction to the end date of the last activity associated with the interaction in the case of lost state.
      */
     public void updateInteractions() {

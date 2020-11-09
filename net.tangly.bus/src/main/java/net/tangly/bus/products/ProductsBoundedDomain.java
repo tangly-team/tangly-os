@@ -29,8 +29,8 @@ public class ProductsBoundedDomain extends BoundedDomain<ProductsRealm, Products
     }
 
     @Override
-    protected void initialize(@NotNull Map<String, String> configuration) {
+    protected void initialize() {
         // TODO handle missing configuration
-        idGenerator = new LongIdGenerator(Long.parseLong(configuration.get(PRODUCTS_OID_VALUE)));
+        idGenerator = new LongIdGenerator(Long.parseLong(configuration().get(PRODUCTS_OID_VALUE)));
     }
 }

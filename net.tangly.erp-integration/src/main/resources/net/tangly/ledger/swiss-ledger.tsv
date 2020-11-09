@@ -1,263 +1,269 @@
-Section	Group	Account	Description	BClass	Gr
-*			BALANCE SHEET		
-					
-1			ASSETS		
-					
-		1000	Cash on hand	1	100
-		1020	Bank account	1	100
-	100		Cash and cash equivalents		10
-					
-		1060	Bonds and stocks	1	106
-	106		Short-term Assets listed in Stock Exchange		10
-					
-		1090	Internal transfers	1	109
-		1091	Transfer account for salaries	1	109
-		1099	Amounts to be clarified	1	109
-	109		Transfer accounts		10
-					
-		1100	Due from Clients or Debtors	1	110
-		1109	Provision for Doubtful Debts	1	110
-	110		Accounts receivable		10
-					
-		1140	Advances and loans	1	114
-		1176	Withholding tax	1	114
-		1180	Receivables from social insurances and social security institutions	1	114
-		1188	Source tax	1	114
-		1190	Various short-term receivables	1	114
-		1191	Securities	1	114
-	114		Other short-term receivables		10
-					
-		1200	Goods for resale	1	120
-		1210	Raw materials	1	120
-		1220	Auxiliary material	1	120
-		1230	Consumables	1	120
-		1260	Finished products	1	120
-		1270	In-process products	1	120
-		1280	Non-invoiced services	1	120
-	120		Inventories		10
-					
-		1300	Prepaid expenses	1	130
-		1301	Accrued income	1	130
-	130		Prepaid Expenses		10
-					
-	10		Current assets		1
-					
-		1400	Bonds and stocks	1	140
-		1440	Loans	1	140
-		1460	Loan to share-holder	1	140
-	140		Financial assets		14
-					
-		1480	Investments	1	148
-	148		Investments		14
-					
-		1500	Machinery	1	150
-		1510	Office furniture and equipment	1	150
-		1520	"Office machinery                                                                ,information and communication technology"	1	150
-		1530	Motor vehicles	1	150
-		1540	Tools and equipment	1	150
-	150		Tangible assets		14
-					
-		1600	Commercial buildings	1	160
-	160		Tangible fixed asset management		14
-					
-		1700	"Patents                                                                         ,know-how                                                            ,licences                                            ,rights and development"	1	170
-		1710	Brands	1	170
-		1712	Models	1	170
-		1770	Goodwill	1	170
-	170		 Intangible fixed assets		14
-					
-		1850	"Share capital                                                                   ,rights not paid or non-paid Foundation capital"	1	180
-	180		Capital or non-paid Foundation capital		14
-					
-	14		Fixed Assets		1
-					
-	1		Total Assets		0
-					
-					
-2			LIABILITIES		
-					
-		2000	Suppliers or creditors	2	200
-		2030	Deposits received	2	200
-	200		Suppliers or creditors		20
-					
-		2100	Due to banks short/term	2	210
-		2120	Financial leasing commitments	2	210
-		2140	Other onerous debts	2	210
-	210		Short-term onorous debts		20
-					
-		2200	VAT Due	2	220
-		2201	VAT according to VAT report	2	220
-		2206	Withholding tax	2	220
-		2208	Direct taxes	2	220
-		2210	Other short-term debts	2	220
-		2260	Due to share-holder	2	220
-		2261	Dividends	2	220
-		2270	Social insurances and social security institutions	2	220
-		2271	"Account AHV                                                                     ,IV                                                                  ,EO                                                  ,ALV"	2	220
-		2272	Account FAK	2	220
-		2273	Accident insurance UVG	2	220
-		2279	Source tax	2	220
-	220		Other short-term debts		20
-					
-		2300	Accrued expenses	2	230
-		2301	Next year's revenues collected	2	230
-		2330	Short-term provisions	2	230
-	230		Accruals and deferred income		20
-					
-	20		Short-term third party capital		2A
-					
-		2400	Due to banks 	2	240
-		2420	Financial leasing commitments	2	240
-		2430	Debenture loans	2	240
-		2450	Loans	2	240
-		2451	Mortgage	2	240
-	240		Long-term onorous debts		24
-					
-		2500	Other long-term debts (non-onorous)	2	250
-	250		Other long-term debts		24
-					
-		2600	Provisions	2	260
-	260		Provisions and similar statutory posts		24
-					
-	24		Long-term third party capital		2A
-					
-	2A		Third party capital		2
-					
-		2800	"Share capital                                                                   ,rights                                                              ,foundation capital"	2	280
-	280		Capital or capital of the foundation		28
-		2900	Legal reserves	2	290
-		2940	Revaluation reserves	2	290
-	290		Legal reserves		28
-		2950	Legal reserve from profit	2	295
-	295		Legal reserve from profit		28
-		2960	Optional reserves from profit	2	296
-	296		Optional reserves from profit		28
-		2970	Profit / Loss carried forward	2	297
-	29A		Profit / Loss for the year		297
-	297		Profit / Loss from Balance Sheet		28
-		2980	"Treasury stock                                                                  ,shares                                                              ,rights of investment (negative)"	2	298
-	298		"Treasury stock                                                                   ,shares                                                              ,rights of investment (negative)"		28
-					
-	28		Equity		2
-					
-	2		Total liabilities		0
-					
-					
-*			PROFIT & LOSS STATEMENT		
-4					
-		3000	Earnings from own products	4	30
-		3200	Earnings from resale 	4	30
-		3400	Earnings from services rendered	4	30
-		3600	Other revenues and services	4	30
-		3710	Own consumption	4	30
-		3800	Decrease in revenues	4	30
-		3805	"Losses on accounts receivable                                                   ,credit variation"	4	30
-		3809	VAT flat tax rate	4	30
-	30		Net revenues from supplies and services		3
-		3900	Change in inventories of in-process products	4	39
-		3901	Change in inventories of finished products	4	39
-		3940	Non-invoiced services variations	4	39
-	39		Change in inventories and Non-invoiced services		3
-	3		Revenues from supplies and services		E1
-					
-		4000	Raw materials	3	4
-		4200	Expenses for goods for resale 	3	4
-		4400	Third party expenses	3	4
-		4500	Energy consumption for production	3	4
-		4900	Reduction of costs	3	4
-	4		"Costs for material                                                                 ,goods                                                               ,services and energy"		E1
-					
-	E1		Gross operating result after deducting costs for materials and goods		E2
-					
-		5000	Salaries 	3	5
-		5700	Contribution to old age insurance and unemployment	3	5
-		5710	Family equalization fund	3	5
-		5720	Contribution to pension funds	3	5
-		5730	Contribution to accident insurance	3	5
-		5740	Contribution to voluntary daily benefits insurance	3	5
-		5790	Source tax	3	5
-		5800	Other personnel expenses	3	5
-		5810	Training of personnel	3	5
-		5820	Travel and entertainment expenses effective	3	5
-		5830	Travel and entertainment expense allowance 	3	5
-		5900	Temporary staff	3	5
-	5		Personnel expenses		E2
-					
-	E2		Gross operating result after deducting personnel expenses		E3
-					
-		6000	Rental	3	60
-		6040	Cleaning of facilities	3	60
-	60		Rental		6
-		6100	"Maintenance                                                                     ,repairs and replacement of tangible assets"	3	61
-		6105	Leasing costs tangible assets	3	61
-	61		"Maintenance                                                                       ,repairs and replacement of tangible assets"		6
-		6200	Repairs	3	62
-		6210	Fuel	3	62
-		6220	Car insurance	3	62
-		6260	Car leasing and rental	3	62
-		6270	Car costs - private part	3	62
-		6282	Transportation expenses	3	62
-	62		Vehicle and transportation expenses		6
-		6300	Insurance for damage of items	3	63
-	63		Insurance for damage of items		6
-		6402	Electricity	3	64
-		6410	Heating expenses	3	64
-		6430	Water	3	64
-		6460	Garbage	3	64
-	64		Energy and disposal costs		6
-		6500	Office supplies	3	65
-		6503	"Technical magazines                                                             ,newspapers                                                          ,periodicals"	3	65
-		6510	Telephone / internet	3	65
-		6511	Hosting at third-party	3	65
-		6512	Internet	3	65
-		6513	Postal charges	3	65
-		6570	IT charges including leasing	3	65
-		6580	Licenses and updates	3	65
-		6583	Consumables	3	65
-	65		Administrative and IT costs		6
-		6600	Advertising	3	66
-		6641	Customer care	3	66
-		6642	Gifts to customers	3	66
-	66		Advertising		6
-		6700	Various costs for the financial year	3	67
-	67		Various costs for the financial year		6
-	6		"Other operating expenses                                                           ,depreciation                                                        ,value adjustments and financial results"		E3
-					
-	E3		"Operating result before depreciation and value adjustments                        ,financial results and taxes (EBITDA)"		E4
-					
-		6800	Depreciation and value adjustments of fixed assets	3	68
-	68		Depreciation and value adjustments of fixed assets		E4
-					
-	E4		Operating result before financial results and taxes (EBIT)		E5
-					
-		6900	Costs for bank interest	3	69
-		6940	Bank costs	3	69
-		6950	Financial revenue	4	69
-	69		Financial costs and revenue		E5
-					
-	E5		Operating result before taxes (EBT)		E6
-					
-		7000	Non-operating revenue	4	7
-		7010	Non-operating costs	3	7
-		7500	Corporate real estate revenues	4	7
-		7510	Corporate real estate costs	3	7
-	7		Non-operating items		E6
-					
-		8000	Extraneous costs	3	8
-		8100	Extraneous revenue	4	8
-		8500	"Extraordinary                                                                   ,unique costs or costs relating to other accounting periods"	3	8
-		8510	"Extraordinary                                                                   ,unique revenue or revenue relating to other accounting periods"	4	8
-	8		"Results of extraneous                                                              ,extraordinary or unique character                                   ,or for other accounting periods"		E6
-					
-	E6		Profit or loss before taxes		E7
-					
-		8900	Direct taxes	3	89
-	89		Direct taxes		E7
-					
-	E7		Annual profit or loss		29A
-					
-	0		Difference should be = 0 (blank cell)		
-					
-					
-*			SEGMENTS		
-		:	Projects		
+"Section"	"Group"	"Account"	"Description"	"BClass"	"Gr"	"Currency"
+"*"	""	""	"BALANCE SHEET"	""	""	""
+""	""	""	""	""	""	""
+"1"	""	""	"ASSETS"	""	""	""
+""	""	""	""	""	""	""
+""	""	"1000"	"Cash on hand"	"1"	"100"	"CHF"
+""	""	"1020"	"Bank account"	"1"	"100"	"CHF"
+""	"100"	""	"Cash and cash equivalents"	""	"10"	""
+""	""	""	""	""	""	""
+""	""	"1060"	"Bonds and stocks"	"1"	"106"	"CHF"
+""	"106"	""	"Short-term Assets listed in Stock Exchange"	""	"10"	""
+""	""	""	""	""	""	""
+""	""	"1090"	"Internal transfers"	"1"	"109"	"CHF"
+""	""	"1091"	"Transfer account for salaries"	"1"	"109"	"CHF"
+""	""	"1099"	"Amounts to be clarified"	"1"	"109"	"CHF"
+""	"109"	""	"Transfer accounts"	""	"10"	""
+""	""	""	""	""	""	"CHF"
+""	""	"1100"	"Due from Clients or Debtors"	"1"	"110"	"CHF"
+""	""	"1109"	"Provision for Doubtful Debts"	"1"	"110"	"CHF"
+""	"110"	""	"Accounts receivable"	""	"10"	""
+""	""	""	""	""	""	""
+""	""	"1140"	"Advances and loans"	"1"	"114"	"CHF"
+""	""	"1176"	"Withholding tax"	"1"	"114"	"CHF"
+""	""	"1180"	"Receivables from social insurances and social security institutions"	"1"	"114"	"CHF"
+""	""	"1188"	"Source tax"	"1"	"114"	"CHF"
+""	""	"1190"	"Various short-term receivables"	"1"	"114"	"CHF"
+""	""	"1191"	"Securities"	"1"	"114"	"CHF"
+""	"114"	""	"Other short-term receivables"	""	"10"	""
+""	""	""	""	""	""	""
+""	""	"1200"	"Goods for resale"	"1"	"120"	"CHF"
+""	""	"1210"	"Raw materials"	"1"	"120"	"CHF"
+""	""	"1220"	"Auxiliary material"	"1"	"120"	"CHF"
+""	""	"1230"	"Consumables"	"1"	"120"	"CHF"
+""	""	"1260"	"Finished products"	"1"	"120"	"CHF"
+""	""	"1270"	"In-process products"	"1"	"120"	"CHF"
+""	""	"1280"	"Non-invoiced services"	"1"	"120"	"CHF"
+""	"120"	""	"Inventories"	""	"10"	""
+""	""	""	""	""	""	""
+""	""	"1300"	"Prepaid expenses"	"1"	"130"	"CHF"
+""	""	"1301"	"Accrued income"	"1"	"130"	"CHF"
+""	"130"	""	"Prepaid Expenses"	""	"10"	""
+""	""	""	""	""	""	""
+""	"10"	""	"Current assets"	""	"1"	""
+""	""	""	""	""	""	""
+""	""	"1400"	"Bonds and stocks"	"1"	"140"	"CHF"
+""	""	"1440"	"Loans"	"1"	"140"	"CHF"
+""	""	"1460"	"Loan to share-holder"	"1"	"140"	"CHF"
+""	"140"	""	"Financial assets"	""	"14"	""
+""	""	""	""	""	""	""
+""	""	"1480"	"Investments"	"1"	"148"	""
+""	"148"	""	"Investments"	""	"14"	""
+""	""	""	""	""	""	""
+""	""	"1500"	"Machinery"	"1"	"150"	"CHF"
+""	""	"1510"	"Office furniture and equipment"	"1"	"150"	"CHF"
+""	""	"1520"	"Office machinery                                                                ,information and communication technology"	"1"	"150"	"CHF"
+""	""	"1530"	"Motor vehicles"	"1"	"150"	"CHF"
+""	""	"1540"	"Tools and equipment"	"1"	"150"	"CHF"
+""	"150"	""	"Tangible assets"	""	"14"	""
+""	""	""	""	""	""	""
+""	""	"1600"	"Commercial buildings"	"1"	"160"	""
+""	"160"	""	"Tangible fixed asset management"	""	"14"	""
+""	""	""	""	""	""	""
+""	""	"1700"	"Patents                                                                         ,know-how                                                            ,licences                                            ,rights and development"	"1"	"170"	"CHF"
+""	""	"1710"	"Brands"	"1"	"170"	"CHF"
+""	""	"1712"	"Models"	"1"	"170"	"CHF"
+""	""	"1770"	"Goodwill"	"1"	"170"	"CHF"
+""	"170"	""	" Intangible fixed assets"	""	"14"	""
+""	""	""	""	""	""	""
+""	""	"1850"	"Share capital                                                                   ,rights not paid or non-paid Foundation capital"	"1"	"180"	""
+""	"180"	""	"Capital or non-paid Foundation capital"	""	"14"	""
+""	""	""	""	""	""	""
+""	"14"	""	"Fixed Assets"	""	"1"	""
+""	""	""	""	""	""	""
+""	"1"	""	"Total Assets"	""	"0"	""
+""	""	""	""	""	""	""
+""	""	""	""	""	""	""
+"2"	""	""	"LIABILITIES"	""	""	""
+""	""	""	""	""	""	""
+""	""	"2000"	"Suppliers or creditors"	"2"	"200"	"CHF"
+""	""	"2030"	"Deposits received"	"2"	"200"	"CHF"
+""	"200"	""	"Suppliers or creditors"	""	"20"	""
+""	""	""	""	""	""	""
+""	""	"2100"	"Due to banks short/term"	"2"	"210"	"CHF"
+""	""	"2120"	"Financial leasing commitments"	"2"	"210"	"CHF"
+""	""	"2140"	"Other onerous debts"	"2"	"210"	"CHF"
+""	"210"	""	"Short-term onorous debts"	""	"20"	""
+""	""	""	""	""	""	""
+""	""	"2200"	"VAT Due"	"2"	"220"	"CHF"
+""	""	"2201"	"VAT according to VAT report"	"2"	"220"	"CHF"
+""	""	""	""	""	""	""
+""	""	"2206"	"Withholding tax"	"2"	"220"	"CHF"
+""	""	"2208"	"Direct taxes"	"2"	"220"	"CHF"
+""	""	"2210"	"Other short-term debts"	"2"	"220"	"CHF"
+""	""	"2260"	"Due to share-holder"	"2"	"220"	"CHF"
+""	""	"2261"	"Dividends"	"2"	"220"	"CHF"
+""	""	"2270"	"Social insurances and social security institutions"	"2"	"220"	"CHF"
+""	""	"2271"	"Account AHV                                                                     ,IV                                                                  ,EO                                                  ,ALV"	"2"	"220"	"CHF"
+""	""	"2272"	"Account FAK"	"2"	"220"	"CHF"
+""	""	"2273"	"Accident insurance UVG"	"2"	"220"	"CHF"
+""	""	"2279"	"Source tax"	"2"	"220"	"CHF"
+""	"220"	""	"Other short-term debts"	""	"20"	""
+""	""	""	""	""	""	""
+""	""	"2300"	"Accrued expenses"	"2"	"230"	"CHF"
+""	""	"2301"	"Next year's revenues collected"	"2"	"230"	"CHF"
+""	""	"2330"	"Short-term provisions"	"2"	"230"	"CHF"
+""	"230"	""	"Accruals and deferred income"	""	"20"	""
+""	""	""	""	""	""	""
+""	"20"	""	"Short-term third party capital"	""	"2A"	""
+""	""	""	""	""	""	""
+""	""	"2400"	"Due to banks "	"2"	"240"	"CHF"
+""	""	"2420"	"Financial leasing commitments"	"2"	"240"	"CHF"
+""	""	"2430"	"Debenture loans"	"2"	"240"	"CHF"
+""	""	"2450"	"Loans"	"2"	"240"	"CHF"
+""	""	"2451"	"Mortgage"	"2"	"240"	"CHF"
+""	"240"	""	"Long-term onorous debts"	""	"24"	""
+""	""	""	""	""	""	""
+""	""	"2500"	"Other long-term debts (non-onorous)"	"2"	"250"	"CHF"
+""	"250"	""	"Other long-term debts"	""	"24"	"CHF"
+""	""	""	""	""	""	""
+""	""	"2600"	"Provisions"	"2"	"260"	"CHF"
+""	"260"	""	"Provisions and similar statutory posts"	""	"24"	"CHF"
+""	""	""	""	""	""	""
+""	"24"	""	"Long-term third party capital"	""	"2A"	"CHF"
+""	""	""	""	""	""	""
+""	"2A"	""	"Third party capital"	""	"2"	"CHF"
+""	""	""	""	""	""	""
+""	""	"2800"	"Share capital                                                                   ,rights                                                              ,foundation capital"	"2"	"280"	"CHF"
+""	"280"	""	"Capital or capital of the foundation"	""	"28"	""
+""	""	"2900"	"Legal reserves"	"2"	"290"	"CHF"
+""	""	"2940"	"Revaluation reserves"	"2"	"290"	"CHF"
+""	"290"	""	"Legal reserves"	""	"28"	""
+""	""	"2950"	"Legal reserve from profit"	"2"	"295"	"CHF"
+""	"295"	""	"Legal reserve from profit"	""	"28"	""
+""	""	"2960"	"Optional reserves from profit"	"2"	"296"	"CHF"
+""	"296"	""	"Optional reserves from profit"	""	"28"	""
+""	""	"2970"	"Profit / Loss carried forward"	"2"	"297"	"CHF"
+""	"29A"	""	"Profit / Loss for the year"	""	"297"	""
+""	"297"	""	"Profit / Loss from Balance Sheet"	""	"28"	""
+""	""	"2980"	"Treasury stock                                                                  ,shares                                                              ,rights of investment (negative)"	"2"	"298"	"CHF"
+""	"298"	""	"Treasury stock                                                                   ,shares                                                              ,rights of investment (negative)"	""	"28"	""
+""	""	""	""	""	""	""
+""	"28"	""	"Equity"	""	"2"	""
+""	""	""	""	""	""	""
+""	"2"	""	"Total liabilities"	""	"0"	""
+""	""	""	""	""	""	""
+""	""	""	""	""	""	""
+"*"	""	""	"PROFIT & LOSS STATEMENT"	""	""	""
+"4"	""	""	""	""	""	""
+""	""	"3000"	"Earnings from own products"	"4"	"30"	"CHF"
+""	""	"3200"	"Earnings from resale "	"4"	"30"	"CHF"
+""	""	"3400"	"Earnings from services rendered"	"4"	"30"	"CHF"
+""	""	"3600"	"Other revenues and services"	"4"	"30"	"CHF"
+""	""	"3710"	"Own consumption"	"4"	"30"	"CHF"
+""	""	"3800"	"Decrease in revenues"	"4"	"30"	"CHF"
+""	""	"3805"	"Losses on accounts receivable                                                   ,credit variation"	"4"	"30"	"CHF"
+""	""	"3809"	"VAT flat tax rate"	"4"	"30"	"CHF"
+""	"30"	""	"Net revenues from supplies and services"	""	"3"	""
+""	""	"3900"	"Change in inventories of in-process products"	"4"	"39"	"CHF"
+""	""	"3901"	"Change in inventories of finished products"	"4"	"39"	"CHF"
+""	""	"3940"	"Non-invoiced services variations"	"4"	"39"	"CHF"
+""	"39"	""	"Change in inventories and Non-invoiced services"	""	"3"	""
+""	"3"	""	"Revenues from supplies and services"	""	"E1"	""
+""	""	""	""	""	""	""
+""	""	"4000"	"Raw materials"	"3"	"4"	"CHF"
+""	""	"4200"	"Expenses for goods for resale "	"3"	"4"	"CHF"
+""	""	"4400"	"Third party expenses"	"3"	"4"	"CHF"
+""	""	"4500"	"Energy consumption for production"	"3"	"4"	"CHF"
+""	""	"4900"	"Reduction of costs"	"3"	"4"	"CHF"
+""	"4"	""	"Costs for material                                                                 ,goods                                                               ,services and energy"	""	"E1"	""
+""	""	""	""	""	""	""
+""	"E1"	""	"Gross operating result after deducting costs for materials and goods"	""	"E2"	""
+""	""	""	""	""	""	""
+""	""	"5000"	"Salaries "	"3"	"5"	"CHF"
+""	""	"5700"	"Contribution to old age insurance and unemployment"	"3"	"5"	"CHF"
+""	""	"5710"	"Family equalization fund"	"3"	"5"	"CHF"
+""	""	"5720"	"Contribution to pension funds"	"3"	"5"	"CHF"
+""	""	"5730"	"Contribution to accident insurance"	"3"	"5"	"CHF"
+""	""	"5740"	"Contribution to voluntary daily benefits insurance"	"3"	"5"	"CHF"
+""	""	"5790"	"Source tax"	"3"	"5"	"CHF"
+""	""	"5800"	"Other personnel expenses"	"3"	"5"	"CHF"
+""	""	"5810"	"Training of personnel"	"3"	"5"	"CHF"
+""	""	"5820"	"Travel and entertainment expenses effective"	"3"	"5"	"CHF"
+""	""	"5830"	"Travel and entertainment expense allowance "	"3"	"5"	"CHF"
+""	""	"5900"	"Temporary staff"	"3"	"5"	"CHF"
+""	"5"	""	"Personnel expenses"	""	"E2"	""
+""	""	""	""	""	""	""
+""	"E2"	""	"Gross operating result after deducting personnel expenses"	""	"E3"	""
+""	""	""	""	""	""	""
+""	""	"6000"	"Rental"	"3"	"60"	"CHF"
+""	""	"6040"	"Cleaning of facilities"	"3"	"60"	"CHF"
+""	"60"	""	"Rental"	""	"6"	""
+""	""	"6100"	"Maintenance                                                                     ,repairs and replacement of tangible assets"	"3"	"61"	"CHF"
+""	""	"6105"	"Leasing costs tangible assets"	"3"	"61"	"CHF"
+""	"61"	""	"Maintenance                                                                       ,repairs and replacement of tangible assets"	""	"6"	""
+""	""	"6200"	"Repairs"	"3"	"62"	"CHF"
+""	""	"6210"	"Fuel"	"3"	"62"	"CHF"
+""	""	"6220"	"Car insurance"	"3"	"62"	"CHF"
+""	""	"6260"	"Car leasing and rental"	"3"	"62"	"CHF"
+""	""	"6270"	"Car costs - private part"	"3"	"62"	"CHF"
+""	""	"6282"	"Transportation expenses"	"3"	"62"	"CHF"
+""	"62"	""	"Vehicle and transportation expenses"	""	"6"	""
+""	""	"6300"	"Insurance for damage of items"	"3"	"63"	"CHF"
+""	"63"	""	"Insurance for damage of items"	""	"6"	""
+""	""	"6402"	"Electricity"	"3"	"64"	"CHF"
+""	""	"6410"	"Heating expenses"	"3"	"64"	"CHF"
+""	""	"6430"	"Water"	"3"	"64"	"CHF"
+""	""	"6460"	"Garbage"	"3"	"64"	"CHF"
+""	"64"	""	"Energy and disposal costs"	""	"6"	""
+""	""	"6500"	"Office supplies"	"3"	"65"	"CHF"
+""	""	"6503"	"Technical magazines                                                             ,newspapers                                                          ,periodicals"	"3"	"65"	"CHF"
+""	""	"6510"	"Telephone / internet"	"3"	"65"	"CHF"
+""	""	"6511"	"Hosting at third-party"	"3"	"65"	"CHF"
+""	""	"6512"	"Internet"	"3"	"65"	"CHF"
+""	""	"6513"	"Postal charges"	"3"	"65"	"CHF"
+""	""	"6570"	"IT charges including leasing"	"3"	"65"	"CHF"
+""	""	"6580"	"Licenses and updates"	"3"	"65"	"CHF"
+""	""	"6583"	"Consumables"	"3"	"65"	"CHF"
+""	"65"	""	"Administrative and IT costs"	""	"6"	""
+""	""	"6600"	"Advertising"	"3"	"66"	"CHF"
+""	""	"6641"	"Customer care"	"3"	"66"	"CHF"
+""	""	"6642"	"Gifts to customers"	"3"	"66"	"CHF"
+""	"66"	""	"Advertising"	""	"6"	""
+""	""	"6700"	"Various costs for the financial year"	"3"	"67"	"CHF"
+""	"67"	""	"Various costs for the financial year"	""	"6"	""
+""	"6"	""	"Other operating expenses                                                           ,depreciation                                                        ,value adjustments and financial results"	""	"E3"	""
+""	""	""	""	""	""	""
+""	"E3"	""	"Operating result before depreciation and value adjustments                        ,financial results and taxes (EBITDA)"	""	"E4"	""
+""	""	""	""	""	""	""
+""	""	"6800"	"Depreciation and value adjustments of fixed assets"	"3"	"68"	"CHF"
+""	"68"	""	"Depreciation and value adjustments of fixed assets"	""	"E4"	""
+""	""	""	""	""	""	""
+""	"E4"	""	"Operating result before financial results and taxes (EBIT)"	""	"E5"	""
+""	""	""	""	""	""	""
+""	""	"6900"	"Costs for bank interest"	"3"	"69"	"CHF"
+""	""	"6940"	"Bank costs"	"3"	"69"	"CHF"
+""	""	"6950"	"Financial revenue"	"4"	"69"	"CHF"
+""	"69"	""	"Financial costs and revenue"	""	"E5"	""
+""	""	""	""	""	""	""
+""	"E5"	""	"Operating result before taxes (EBT)"	""	"E6"	""
+""	""	""	""	""	""	""
+""	""	"7000"	"Non-operating revenue"	"4"	"7"	"CHF"
+""	""	"7010"	"Non-operating costs"	"3"	"7"	"CHF"
+""	""	"7500"	"Corporate real estate revenues"	"4"	"7"	"CHF"
+""	""	"7510"	"Corporate real estate costs"	"3"	"7"	"CHF"
+""	"7"	""	"Non-operating items"	""	"E6"	""
+""	""	""	""	""	""	""
+""	""	"8000"	"Extraneous costs"	"3"	"8"	"CHF"
+""	""	"8100"	"Extraneous revenue"	"4"	"8"	"CHF"
+""	""	"8500"	"Extraordinary                                                                   ,unique costs or costs relating to other accounting periods"	"3"	"8"	"CHF"
+""	""	"8510"	"Extraordinary                                                                   ,unique revenue or revenue relating to other accounting periods"	"4"	"8"	"CHF"
+""	"8"	""	"Results of extraneous                                                              ,extraordinary or unique character                                   ,or for other accounting periods"	""	"E6"	""
+""	""	""	""	""	""	""
+""	"E6"	""	"Profit or loss before taxes"	""	"E7"	""
+""	""	""	""	""	""	""
+""	""	"8900"	"Direct taxes"	"3"	"89"	""
+""	"89"	""	"Direct taxes"	""	"E7"	""
+""	""	""	""	""	""	""
+""	"E7"	""	"Annual profit or loss"	""	"29A"	""
+""	""	""	""	""	""	""
+""	"0"	""	"Difference should be = 0 (blank cell)"	""	""	""
+""	""	""	""	""	""	""
+""	""	""	""	""	""	""
+"*"	""	""	"SEGMENTS"	""	""	""
+""	""	":"	"Projects"	""	""	""
+""	""	":HSLU"	"HSLU Segment"	""	""	""
+""	""	":ARE"	"ARE Segment"	""	""	""
+""	""	":ADCU"	"Adcubum Segment"	""	""	""
+""	""	":KALU"	"Luzern Segment"	""	""	""
+""	""	""	""	""	""	""

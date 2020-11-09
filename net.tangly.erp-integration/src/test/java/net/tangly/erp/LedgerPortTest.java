@@ -14,6 +14,8 @@
 package net.tangly.erp;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -23,8 +25,10 @@ import java.util.List;
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.ledger.LedgerRealm;
+import net.tangly.ledger.ports.ClosingReportAsciiDoc;
 import net.tangly.ledger.ports.LedgerAdapter;
 import net.tangly.ledger.ports.LedgerHdl;
+import net.tangly.ledger.ports.LedgerTsvHdl;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -33,7 +37,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Test the business logic of the ledger domain model. An in-memory file system is set with a Swiss ledger definition and transactions files.
  */
-class LedgerRealmPortTest {
+class LedgerPortTest {
     @Test
     @Tag("localTest")
     public void createReports() {
@@ -54,6 +58,22 @@ class LedgerRealmPortTest {
             adapter.exportLedgerDocument(filenameWithoutExtension, LocalDate.of(2015, 10, 01), LocalDate.of(2016, 12, 31), true, true);
             assertThat(Files.exists(store.ledgerRoot().resolve(filenameWithoutExtension + ".adoc"))).isFalse();
             assertThat(Files.exists(store.ledgerRoot().resolve(filenameWithoutExtension + ".pdf"))).isTrue();
+        }
+    }
+
+    @Test
+    void testWriteClosingReport() throws IOException {
+        try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
+            ErpStore erpStore = new ErpStore(fs);
+            erpStore.createCrmAndLedgerRepository();
+
+            LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerRealm());
+            handler.importJournal(erpStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
+
+            ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(handler.ledger());
+            StringWriter writer = new StringWriter();
+            report.create(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31), new PrintWriter(writer), true, true);
+            assertThat(writer.toString().isEmpty()).isFalse();
         }
     }
 

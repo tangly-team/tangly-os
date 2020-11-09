@@ -120,7 +120,7 @@ public class Transaction {
     }
 
     /**
-     * returns true if the transaction credit side is split between multiple accounts.
+     * Returns true if the transaction credit side is split between multiple accounts.
      *
      * @return true if the transaction is split
      */

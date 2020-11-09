@@ -274,7 +274,7 @@ public class Invoice implements HasEditableId {
     }
 
     /**
-     * Return all positions defined in the invoice either invoice items or subtotals.
+     * Returns all positions defined in the invoice either invoice items or subtotals.
      *
      * @return list of invoice lines
      */
@@ -283,7 +283,7 @@ public class Invoice implements HasEditableId {
     }
 
     /**
-     * Return all invoice items defined in the invoice.
+     * Returns all invoice items defined in the invoice.
      *
      * @return list of invoice items
      */

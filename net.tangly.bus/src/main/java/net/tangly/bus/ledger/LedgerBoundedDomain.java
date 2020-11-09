@@ -32,14 +32,10 @@ public class LedgerBoundedDomain extends BoundedDomain<LedgerRealm, LedgerBusine
     }
 
     @Override
-    protected void initialize(@NotNull Map<String, String> configuration) {
+    protected void initialize() {
         // TODO handle missing configuration
-        idGenerator = new LongIdGenerator(Long.parseLong(configuration.get(LEDGER_OID_VALUE))) {
-            @Override
-            public long id() {
-                return 0;
-            }
-        };
+        idGenerator = new LongIdGenerator(Long.parseLong(configuration().get(LEDGER_OID_VALUE)));
+        LedgerTags.registerTags(registry());
     }
 
 }

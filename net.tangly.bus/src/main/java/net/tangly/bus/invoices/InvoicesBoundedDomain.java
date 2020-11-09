@@ -31,8 +31,8 @@ public class InvoicesBoundedDomain extends BoundedDomain<InvoicesRealm, Invoices
     }
 
     @Override
-    protected void initialize(@NotNull Map<String, String> configuration) {
+    protected void initialize() {
         // TODO handle missing configuration
-        idGenerator = new LongIdGenerator(Long.parseLong(configuration.get(INVOICES_OID_VALUE)));
+        idGenerator = new LongIdGenerator(Long.parseLong(configuration().get(INVOICES_OID_VALUE)));
     }
 }

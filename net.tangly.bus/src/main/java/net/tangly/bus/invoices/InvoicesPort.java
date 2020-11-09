@@ -16,11 +16,11 @@ package net.tangly.bus.invoices;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Defines the export port for the invoices bounded domain.
+ * Defines the export port for the invoices bounded domain. It is the secondary port in the DDD terminology.
  */
 public interface InvoicesPort {
     /**
-     * Export the document form of the invoice.
+     * Exports the document form of the invoice.
      *
      * @param invoice     invoice to export=
      * @param withQrCode  flag indicating if a Swiss QR code payment slip should be generated

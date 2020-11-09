@@ -47,7 +47,7 @@ public record BankConnection(String iban, String bic, String institute) implemen
     }
 
     /**
-     * Return true if the bank connection is a valid one
+     * Returns true if the bank connection is a valid one
      *
      * @return true if the bank connection is valid otherwise false
      */
@@ -56,7 +56,7 @@ public record BankConnection(String iban, String bic, String institute) implemen
     }
 
     /**
-     * Validate a string representing a formatted iban number.
+     * Validates a string representing a formatted iban number.
      *
      * @param iban iban number to validate
      * @return true if the iban is valid otherwise false
@@ -72,7 +72,7 @@ public record BankConnection(String iban, String bic, String institute) implemen
     }
 
     /**
-     * Validate a string representing a formatted bic number.
+     * Validates a string representing a formatted bic number.
      *
      * @param bic bic number to validate
      * @return true if the bic is valid otherwise false
@@ -88,7 +88,7 @@ public record BankConnection(String iban, String bic, String institute) implemen
     }
 
     /**
-     * Build a bank connection object from a comma separated string representation.
+     * Builds a bank connection object from a comma separated string representation.
      *
      * @param text comma separated representation of the address instance
      * @return new address object
@@ -101,7 +101,7 @@ public record BankConnection(String iban, String bic, String institute) implemen
     }
 
     /**
-     * Return a comma separated representation of a bank connection. Null values are shown as empty strings. The {@link Object#toString()} method is not used
+     * Returns a comma separated representation of a bank connection. Null values are shown as empty strings. The {@link Object#toString()} method is not used
      * because the implementation is defined in the API implementation of record construct. The generated string can be feed to the {@link
      * BankConnection#of(String)} to create an bank connection object.
      *

@@ -50,7 +50,7 @@ public record PhoneNr(String number) implements Serializable {
     }
 
     /**
-     * Validate a phone number using the Google phone library.
+     * Validates a phone number using the Google phone library.
      *
      * @return true if the phone number is valid otherwise false
      */

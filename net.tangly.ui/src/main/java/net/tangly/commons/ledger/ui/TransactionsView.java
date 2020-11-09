@@ -61,9 +61,12 @@ public class TransactionsView extends EntitiesView<Transaction> {
 
     @Override
     protected FormLayout fillForm(@NotNull Operation operation, Transaction entity, FormLayout form) {
-        DatePicker date;
-        TextField text;
-        TextField reference;
+        DatePicker date = new DatePicker("Date");
+        TextField text = VaadinUtils.createTextField("Text", "text");
+        TextField reference = VaadinUtils.createTextField("Reference", "reference");
+        TextField debitAccount;
+        TextField creditAccount;
+        TextField amount;
 
         // TODO debit and credit including splits
         return form;
@@ -71,6 +74,7 @@ public class TransactionsView extends EntitiesView<Transaction> {
 
     @Override
     protected Transaction updateOrCreate(Transaction entity) {
-        return null;
+        Transaction transaction = null;
+        return transaction;
     }
 }
