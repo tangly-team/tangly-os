@@ -17,12 +17,11 @@ image::2020-11-02-head.png[720, 480, role=left]
 === Agile Motivation
 
 An agile company is a business with the ability to quickly adapt to market changes <<ReinventingOrganizations>>.
-There are some keys identifying characteristics of an agile company.
 Agile organizations must be fast-moving and flexible, have rapid response to unexpected obstacles, lead change, be in touch with customers.
-They have continuous competitive advantage, and flat organizational structure for quick communication <<futureOfMgmt>>.
+They have a continuous competitive advantage, and a flat organizational structure for quick communication <<futureOfMgmt>>.
 
 In other words, an agile organization is optimized for a
-https://en.wikipedia.org/wiki/Volatility,_uncertainty,_complexity_and_ambiguity[VUCA] - Volatile, Uncertain, Complex, Ambiguous - environment.
+https://en.wikipedia.org/wiki/Volatility,_uncertainty,_complexity_and_ambiguity[VUCA] - __V__olatile, __U__ncertain, __C__omplex, __A__mbiguous - environment.
 The organization should provide vision, understanding, courage and adaptability.
 
 [quote, Gary Hamel, 2007]
@@ -37,10 +36,10 @@ The {ref-less} movement states the main approach clearly:
 
 [quote, Craig Larman]
 ____
-Culture follows Structure.
+*Culture follows Structure.*
 ____
 
-The successful steps are always
+The successful steps are always:
 
 Change the structure::
  One approach is value streams organization and product development with cross-functional teams advocated in {ref-less}.
@@ -59,7 +58,7 @@ Clearly recognize not changing the structure and just renaming roles and process
 
 [quote, Craig Larman]
 ____
-. Organizations are implicitly optimized to avoid changing the status quo middle- and first-level manager and *specialist* positions & power structures.
+. Organizations are implicitly optimized to avoid changing the status quo middle- and first-level manager and *specialist* positions and power structures.
 
 . As a corollary to (1), any change initiative will be reduced to redefining or overloading the new terminology to mean basically the same as status quo.
 
@@ -68,6 +67,8 @@ and *needing pragmatic customization for local concerns* — which deflects from
 
 . As a corollary to (1), if after changing the change some managers and single-specialists are still displaced, they become *coaches/trainers* for the
 change, frequently reinforcing (2) and (3).
+
+. Culture follows structure.
 ____
 
 In the language of social psychology <<culturalPerspective>> we can state:
@@ -116,7 +117,7 @@ The organizations moving now to agile approaches are laggards.
 Beware that laggards will fight against any change. I still hear upper management statements such as:
 
 * I do not like and do not want to hear the word _agile_
-* We are different industry.
+* We are a different industry.
  Agile cannot work in our environment.
 * We have our processes, we cannot change them.
  And, agile is anyway chaos.
@@ -125,14 +126,14 @@ Find a champion and get rid of the most vocal laggards.
 If no champion can be found either move to another company or renounce agile approaches.
 Be realistic, you will fail to have any lasting success in such an environment.
 
-And embrace reality. At least eighty percent of all software and research activities claim to follow agile approaches.
+Embrace reality. At least eighty percent of all software and research activities claim to follow agile approaches.
 This war is won. We are moping the last islands of resistance.
 
 _For me, it is similar to the introduction of object-oriented approaches in analysis, design, and realisation of software projects.
 In the late nineties of last century the war was won. It took more than ten years to take care of the last luddites._
 
 _Our company https://wwww.tangly.net/[tangly llc] works steadily and continuously to advance agile and lean values.
-Our structure and processes actively support agile values._
+Our structure and processes actively support agile values. We are very happy with the current results._
 
 [bibliography]
 === Literature
