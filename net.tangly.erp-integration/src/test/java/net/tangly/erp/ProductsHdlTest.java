@@ -19,7 +19,6 @@ import java.nio.file.Path;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
-import net.tangly.core.TagTypeRegistry;
 import net.tangly.products.ports.ProductsEntities;
 import net.tangly.products.ports.ProductsHdl;
 import org.junit.jupiter.api.Tag;
@@ -29,7 +28,7 @@ class ProductsHdlTest {
     @Test
     @Tag("localTest")
     void testCompanyTsvCrm() {
-        ProductsHdl productsHdl = new ProductsHdl(new ProductsEntities(new TagTypeRegistry()), Path.of("/Users/Shared/tangly/", "products"));
+        ProductsHdl productsHdl = new ProductsHdl(new ProductsEntities(), Path.of("/Users/Shared/tangly/", "products"));
         productsHdl.importEntities();
     }
 
@@ -39,7 +38,7 @@ class ProductsHdlTest {
             ErpStore store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
 
-            ProductsHdl productsHdl = new ProductsHdl(new ProductsEntities(new TagTypeRegistry()), store.productsRoot());
+            ProductsHdl productsHdl = new ProductsHdl(new ProductsEntities(), store.productsRoot());
             productsHdl.importEntities();
 
             // TODO test

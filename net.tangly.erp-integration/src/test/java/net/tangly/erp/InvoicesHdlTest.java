@@ -15,22 +15,12 @@ package net.tangly.erp;
 
 import java.io.IOException;
 import java.nio.file.FileSystem;
-import java.nio.file.Files;
 import java.nio.file.Path;
 
 import com.google.common.jimfs.Jimfs;
-import net.tangly.core.TagTypeRegistry;
-import net.tangly.bus.invoices.InvoicesBusinessLogic;
 import net.tangly.bus.invoices.InvoicesRealm;
-import net.tangly.invoices.ports.InvoicesAdapter;
 import net.tangly.invoices.ports.InvoicesEntities;
 import net.tangly.invoices.ports.InvoicesHdl;
-import net.tangly.invoices.ports.InvoicesUtilities;
-import org.apache.pdfbox.cos.COSDocument;
-import org.apache.pdfbox.io.RandomAccessBufferedFileInputStream;
-import org.apache.pdfbox.pdfparser.PDFParser;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.text.PDFTextStripper;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -41,7 +31,7 @@ class InvoicesHdlTest {
     @Test
     @Tag("localTest")
     void testCompanyTsvInvoices() {
-        InvoicesHdl handler = new InvoicesHdl(new InvoicesEntities(new TagTypeRegistry()), Path.of("/Users/Shared/tangly/", "invoices"));
+        InvoicesHdl handler = new InvoicesHdl(new InvoicesEntities(), Path.of("/Users/Shared/tangly/", "invoices"));
         handler.importEntities();
     }
 
@@ -51,7 +41,7 @@ class InvoicesHdlTest {
             ErpStore store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
 
-            InvoicesHdl handler = new InvoicesHdl(new InvoicesEntities(new TagTypeRegistry()), store.invoicesRoot());
+            InvoicesHdl handler = new InvoicesHdl(new InvoicesEntities(), store.invoicesRoot());
             handler.importEntities();
 
             verifyArticles(handler.realm());
@@ -59,7 +49,7 @@ class InvoicesHdlTest {
 
             handler.exportEntities();
 
-            handler = new InvoicesHdl(new InvoicesEntities(new TagTypeRegistry()), store.invoicesRoot());
+            handler = new InvoicesHdl(new InvoicesEntities(), store.invoicesRoot());
             handler.importEntities();
             verifyArticles(handler.realm());
         }

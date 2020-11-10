@@ -30,7 +30,7 @@ class CrmRealmVcardHdlTest {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             ErpStore store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
-            CrmHdl crmHdl = new CrmHdl(new CrmEntities(new TagTypeRegistry()), store.crmRoot());
+            CrmHdl crmHdl = new CrmHdl(new CrmEntities(), store.crmRoot());
             crmHdl.importEntities();
             CrmVcardHdl handler = new CrmVcardHdl(crmHdl.realm());
             handler.importVCards(store.vcardsRoot());

@@ -40,11 +40,11 @@ public class InvoicesPortTest {
             ErpStore store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
 
-            InvoicesAdapter port = new InvoicesAdapter(new InvoicesEntities(new TagTypeRegistry()), store.invoiceReportsRoot());
+            InvoicesAdapter port = new InvoicesAdapter(new InvoicesEntities(), store.invoiceReportsRoot());
 
-            InvoicesHdl handler = new InvoicesHdl(new InvoicesEntities(new TagTypeRegistry()), store.invoicesRoot());
+            InvoicesHdl handler = new InvoicesHdl(new InvoicesEntities(), store.invoicesRoot());
             handler.importEntities();
-            port.exportInvoiceDocuments(false, false);
+            port.exportInvoiceDocuments(false, true);
 
             handler.realm().invoices().items().forEach(o -> assertThat(Files.exists(InvoicesUtilities.resolvePath(store.invoicesRoot(), o))).isTrue());
         }

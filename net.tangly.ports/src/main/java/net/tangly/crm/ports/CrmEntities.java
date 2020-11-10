@@ -48,22 +48,15 @@ public class CrmEntities implements CrmRealm {
     private final InstanceProvider<Contract> contracts;
     private final InstanceProvider<Interaction> interactions;
     private final InstanceProvider<Subject> subjects;
-    private final TagTypeRegistry registry;
 
     @Inject
-    public CrmEntities(@NotNull TagTypeRegistry registry) {
+    public CrmEntities() {
         naturalEntities = new InstanceProviderInMemory<>();
         legalEntities = new InstanceProviderInMemory<>();
         employees = new InstanceProviderInMemory<>();
         contracts = new InstanceProviderInMemory<>();
         interactions = new InstanceProviderInMemory<>();
         subjects = new InstanceProviderInMemory<>();
-        this.registry = registry;
-    }
-
-    @Override
-    public TagTypeRegistry tagTypeRegistry() {
-        return registry;
     }
 
     @Override

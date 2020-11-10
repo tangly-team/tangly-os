@@ -36,7 +36,6 @@ import org.jetbrains.annotations.NotNull;
  * </ul>
  */
 public interface CrmRealm {
-    TagTypeRegistry tagTypeRegistry();
 
     InstanceProvider<NaturalEntity> naturalEntities();
 

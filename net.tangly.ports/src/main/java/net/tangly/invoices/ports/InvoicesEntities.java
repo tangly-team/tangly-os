@@ -23,21 +23,14 @@ import net.tangly.bus.providers.RecordProviderInMemory;
 import org.jetbrains.annotations.NotNull;
 
 public class InvoicesEntities implements InvoicesRealm {
-    private final TagTypeRegistry registry;
     private final RecordProviderInMemory<Invoice> invoices;
     private final RecordProviderInMemory<Article> articles;
     private final RecordProviderInMemory<InvoiceLegalEntity> legalEntities;
 
-    public InvoicesEntities(@NotNull TagTypeRegistry registry) {
-        this.registry = registry;
+    public InvoicesEntities() {
         invoices = new RecordProviderInMemory<>();
         articles = new RecordProviderInMemory<>();
         legalEntities = new RecordProviderInMemory<>();
-    }
-
-    @Override
-    public TagTypeRegistry tagTypeRegistry() {
-        return registry;
     }
 
     @Override

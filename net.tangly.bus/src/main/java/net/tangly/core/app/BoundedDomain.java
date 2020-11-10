@@ -27,8 +27,8 @@ public class BoundedDomain<R, B, H, P> {
     private final H handler;
     private final P port;
     private final B logic;
-    private final TagTypeRegistry registry;
-    private final Map<String, String> configuration;
+    private final transient TagTypeRegistry registry;
+    private final transient Map<String, String> configuration;
     protected IdGenerator idGenerator;
 
     public BoundedDomain(R realm, B logic, H handler, P port, TagTypeRegistry registry) {

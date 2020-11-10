@@ -36,14 +36,14 @@ public class InvoicesBusinessLogicTest {
             ErpStore store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
 
-            InvoicesHdl handler = new InvoicesHdl(new InvoicesEntities(new TagTypeRegistry()), store.invoicesRoot());
+            InvoicesHdl handler = new InvoicesHdl(new InvoicesEntities(), store.invoicesRoot());
             handler.importEntities();
 
             verifyBusinessLogic(handler.realm());
 
             handler.exportEntities();
 
-            handler = new InvoicesHdl(new InvoicesEntities(new TagTypeRegistry()), store.invoicesRoot());
+            handler = new InvoicesHdl(new InvoicesEntities(), store.invoicesRoot());
             handler.importEntities();
         }
     }

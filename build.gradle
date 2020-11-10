@@ -61,6 +61,7 @@ allprojects {
         maven { url "https://maven.vaadin.com/vaadin-addons" }
         maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
         maven { url "https://raw.github.com/ZUGFeRD/mustangproject/mvn-repo" }
+        maven { url "https://repo.microstream.one/repository/maven-public/" }
     }
 
     jacoco {

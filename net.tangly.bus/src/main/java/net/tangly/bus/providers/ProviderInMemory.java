@@ -48,8 +48,9 @@ public class ProviderInMemory<T> implements Provider<T> {
 
     @Override
     public void update(@NotNull T entity) {
-        items.remove(entity);
-        items.add(entity);
+        if (!items.contains(entity)) {
+            items.add(entity);
+        }
     }
 
     @Override

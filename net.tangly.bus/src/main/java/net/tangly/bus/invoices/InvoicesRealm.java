@@ -28,8 +28,6 @@ import org.jetbrains.annotations.NotNull;
  * </ul>
  **/
 public interface InvoicesRealm {
-    TagTypeRegistry tagTypeRegistry();
-
     Provider<Invoice> invoices();
 
     Provider<Article> articles();

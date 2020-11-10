@@ -57,13 +57,13 @@ public class InstanceProviderInMemory<T extends HasOid> implements InstanceProvi
     @Override
     public void update(@NotNull T entity) {
         Optional<T> found = find(entity.oid());
-        found.ifPresent(o -> {
-            if (o != entity) {
-                items.remove(o);
-                logger.atDebug().addArgument(found).log("Duplicate instance with same oid found {}");
-            }
-        });
-        items.add(entity);
+        if (found.isEmpty()) {
+            items.add(entity);
+        } else if (found.get() != entity) {
+            items.remove(found.get());
+            items.add(entity);
+            logger.atDebug().addArgument(found).log("Duplicate instance with same oid found {}");
+        }
     }
 
     @Override

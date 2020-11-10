@@ -15,7 +15,6 @@ package net.tangly.products.ports;
 
 import javax.inject.Inject;
 
-import net.tangly.core.TagTypeRegistry;
 import net.tangly.bus.products.Assignment;
 import net.tangly.bus.products.Effort;
 import net.tangly.bus.products.Product;
@@ -24,26 +23,17 @@ import net.tangly.bus.providers.InstanceProvider;
 import net.tangly.bus.providers.InstanceProviderInMemory;
 import net.tangly.bus.providers.Provider;
 import net.tangly.bus.providers.ProviderInMemory;
-import org.jetbrains.annotations.NotNull;
 
 public class ProductsEntities implements ProductsRealm {
-    private final TagTypeRegistry registry;
     private final InstanceProvider<Product> products;
     private final InstanceProvider<Assignment> assignments;
     private final ProviderInMemory<Effort> efforts;
 
-
     @Inject
-    public ProductsEntities(@NotNull TagTypeRegistry registry) {
-        this.registry = registry;
+    public ProductsEntities() {
         this.products = new InstanceProviderInMemory<>();
         this.assignments = new InstanceProviderInMemory<>();
         this.efforts = new ProviderInMemory<>();
-    }
-
-    @Override
-    public TagTypeRegistry tagTypeRegistry() {
-        return registry;
     }
 
     @Override

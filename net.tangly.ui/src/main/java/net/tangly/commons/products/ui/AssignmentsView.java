@@ -32,7 +32,7 @@ public class AssignmentsView extends InternalEntitiesView<Assignment> {
 
     @Inject
     public AssignmentsView(@NotNull ProductsBoundedDomain domain, @NotNull Mode mode) {
-        super(Assignment.class, mode, domain.realm().assignments(), domain.realm().tagTypeRegistry());
+        super(Assignment.class, mode, domain.realm().assignments(), domain.registry());
         this.domain = domain;
         initialize();
     }

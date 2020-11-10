@@ -17,7 +17,7 @@ At many customer sites I visit, I see a lot of effort being put into classifying
 
 Their bug list may contain more than thousands of items, all neatly documented with screenshots, ways to reproduce and a severity and impact classification.
 
-A change management board sits every few weeks and decide which bugs have now a higher priority and should be fixed.
+A change management board meets every few weeks and decide which bugs have now a higher priority and should urgently be fixed.
 It means an angry customer called someone at C level. Some of these bugs were discovered years ago.
 
 Clearly, many hours have been invested to properly administer bugs.
@@ -27,12 +27,9 @@ Spending time on evaluating and administering bugs with the goal of tracking the
 Please stop doing such activities.
 
 The solution is elegant and simple: Implement the _Zero Bug Policy_.
-Stop managing bugs, start focusing on quality.
-
-=== Why Bug Management Boards are Useless?
 
 [.text-center]
-_Stop Managing Bugs, Start Focusing on Quality!_
+*Stop Managing Bugs, Start Focusing on Quality!*
 
 === How to transition?
 

@@ -91,7 +91,7 @@ public class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
     protected void registerTabs(@NotNull TabsComponent tabs, @NotNull Mode mode, @NotNull NaturalEntity entity) {
         tabs.add(new Tab("Overview"), createOverallView(mode, entity));
         tabs.add(new Tab("Comments"), new CommentsView(mode, entity));
-        tabs.add(new Tab("Tags"), new TagsView(mode, entity, domain.realm().tagTypeRegistry()));
+        tabs.add(new Tab("Tags"), new TagsView(mode, entity, domain.registry()));
         One2ManyView<Employee> employees = new One2ManyView<>(Employee.class, mode, NaturalEntitiesView::defineOne2ManyEmployees,
             ViewProvider.of(domain.realm().employees(), o -> entity.oid() == o.person().oid()), new EmployeesView(domain, mode));
         tabs.add(new Tab("Employees"), employees);

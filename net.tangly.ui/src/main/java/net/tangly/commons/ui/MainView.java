@@ -140,7 +140,7 @@ public class MainView extends AppLayout {
         transactionsView = new TransactionsView(ledgerDomain, Crud.Mode.EDITABLE);
 
         analyticsCrmView = new AnalyticsCrmView(crmDomain.logic(), invoicesDomain.logic(), ledgerDomain.logic());
-        tagTypesView = new TagTypesView(crmDomain.realm().tagTypeRegistry());
+        tagTypesView = new TagTypesView(crmDomain.registry());
 
         productsView = new ProductsView(productsDomain, Crud.Mode.EDITABLE);
         assignmentsView = new AssignmentsView(productsDomain, Crud.Mode.EDITABLE);
@@ -162,18 +162,18 @@ public class MainView extends AppLayout {
     }
 
     InvoicesBoundedDomain ofInvoicesDomain() {
-        InvoicesRealm realm = new InvoicesEntities(registry);
+        InvoicesRealm realm = new InvoicesEntities();
         return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesHdl(realm, Path.of(ORGANIZATION, "invoices/")),
             new InvoicesAdapter(realm, Path.of(ORGANIZATION, "reports/invoices/")), registry, configuration);
     }
 
     CrmBoundedDomain ofCrmDomain() {
-        CrmRealm realm = new CrmEntities(registry);
+        CrmRealm realm = new CrmEntities();
         return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmHdl(realm, Path.of(ORGANIZATION, "crm")), null, registry, configuration);
     }
 
     ProductsBoundedDomain ofProductsDomain() {
-        ProductsRealm realm = new ProductsEntities(registry);
+        ProductsRealm realm = new ProductsEntities();
         ProductsBusinessLogic logic = new ProductsBusinessLogic(realm);
         return new ProductsBoundedDomain(realm, logic, new ProductsHdl(realm, Path.of(ORGANIZATION, "products/")),
             new ProductsAdapter(logic, Path.of(ORGANIZATION, "reports/assignments")), registry, configuration);

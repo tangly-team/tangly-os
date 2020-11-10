@@ -47,6 +47,9 @@ dependencies {
     implementation 'org.mnode.ical4j:ical4j:3.0.19'
     implementation 'org.mnode.ical4j:ical4j-vcard:1.0.5'
 
+    implementation 'one.microstream:storage.embedded:04.00.00-MS-GA'
+    implementation 'one.microstream:storage.embedded.configuration:04.00.00-MS-GA'
+
     testImplementation "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
     testImplementation "com.fasterxml.jackson.module:jackson-module-parameter-names:$jacksonVersion"
     testImplementation "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion"

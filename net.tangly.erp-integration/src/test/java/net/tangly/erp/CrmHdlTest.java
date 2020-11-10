@@ -39,7 +39,7 @@ class CrmHdlTest {
     @Test
     @Tag("localTest")
     void testCompanyTsvCrm() {
-        CrmRealm realm = new CrmEntities(new TagTypeRegistry());
+        CrmRealm realm = new CrmEntities();
         CrmHdl crmHdl = new CrmHdl(realm, Path.of("/Users/Shared/tangly/", "crm"));
         CrmBusinessLogic logic = new CrmBusinessLogic(realm);
         crmHdl.importEntities();
@@ -51,7 +51,7 @@ class CrmHdlTest {
             ErpStore store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
 
-            CrmHdl crmHdl = new CrmHdl(new CrmEntities(new TagTypeRegistry()), store.crmRoot());
+            CrmHdl crmHdl = new CrmHdl(new CrmEntities(), store.crmRoot());
             crmHdl.importEntities();
 
             verifyNaturalEntities(crmHdl.realm());
@@ -65,7 +65,7 @@ class CrmHdlTest {
 
             crmHdl.exportEntities();
 
-            crmHdl = new CrmHdl(new CrmEntities(new TagTypeRegistry()),store.crmRoot());
+            crmHdl = new CrmHdl(new CrmEntities(),store.crmRoot());
             crmHdl.importEntities();
             verifyNaturalEntities(crmHdl.realm());
             verifyLegalEntities(crmHdl.realm());
