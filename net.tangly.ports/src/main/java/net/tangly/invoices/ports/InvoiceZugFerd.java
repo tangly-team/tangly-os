@@ -22,11 +22,11 @@ import java.util.Date;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import net.tangly.core.Address;
 import net.tangly.bus.invoices.Article;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceItem;
 import net.tangly.bus.invoices.InvoiceLegalEntity;
+import net.tangly.core.Address;
 import org.jetbrains.annotations.NotNull;
 import org.mustangproject.ZUGFeRD.IZUGFeRDAllowanceCharge;
 import org.mustangproject.ZUGFeRD.IZUGFeRDExportableContact;
@@ -181,7 +181,7 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
     public void exports(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
         this.invoice = invoice;
         try (ZUGFeRDExporter exporter = new ZUGFeRDExporterFromA1Factory().ignorePDFAErrors().setZUGFeRDVersion(2).setProducer("tangly ERP")
-                .setCreator(invoice.invoicingEntity().name()).load(invoicePath.toString())) {
+            .setCreator(invoice.invoicingEntity().name()).load(Files.newInputStream(invoicePath))) {
             exporter.PDFattachZugferdFile(this);
             exporter.export(Files.newOutputStream(invoicePath));
         } catch (IOException e) {
