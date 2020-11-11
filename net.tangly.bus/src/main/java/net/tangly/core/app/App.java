@@ -28,7 +28,7 @@ public class App {
         try (InputStream stream = Files.newInputStream(configurationFile)) {
             Properties properties = new Properties();
             properties.load(stream);
-            return properties.keySet().stream().map(Object::toString).collect(Collectors.toMap(e -> e, e -> properties.getProperty(e)));
+            return properties.keySet().stream().map(Object::toString).collect(Collectors.toMap(e -> e, properties::getProperty));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

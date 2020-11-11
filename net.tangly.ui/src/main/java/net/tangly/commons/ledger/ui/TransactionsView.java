@@ -64,9 +64,10 @@ public class TransactionsView extends EntitiesView<Transaction> {
         DatePicker date = new DatePicker("Date");
         TextField text = VaadinUtils.createTextField("Text", "text");
         TextField reference = VaadinUtils.createTextField("Reference", "reference");
-        TextField debitAccount;
-        TextField creditAccount;
-        TextField amount;
+        // TODO debit and credit account as pulldown selectiom
+        TextField debitAccount = VaadinUtils.createTextField("Debit", "debit account");
+        TextField creditAccount = VaadinUtils.createTextField("Credit", "credit account");
+        TextField amount = VaadinUtils.createTextField("Amount", "amount");
 
         // TODO debit and credit including splits
         return form;

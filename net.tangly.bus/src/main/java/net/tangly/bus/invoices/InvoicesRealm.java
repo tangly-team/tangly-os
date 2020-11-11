@@ -16,7 +16,6 @@ package net.tangly.bus.invoices;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import net.tangly.core.TagTypeRegistry;
 import net.tangly.bus.providers.Provider;
 import net.tangly.bus.providers.RecordProviderInMemory;
 import org.jetbrains.annotations.NotNull;

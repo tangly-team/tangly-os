@@ -24,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
  * The tags ontology of the ledger bounded domain is defined here.
  * <dl>
  *     <dt>fin:expected-date</dt><dd>expected date when a payment is performed and the transaction can be booked. This information is useful for creditors
- *     and debitors accounting in the ledger domain.</dd>
+ *     and debtors accounting in the ledger domain.</dd>
  *     <dt>fin:vat</dt><dd>VAT rate added on an invoice and set to an transaction amount. The information is used for VAT due to government computation.</dd>
  *     <dt>fin:vat-due</dt><dd>VAT due to the government and set to an transaction amount. In Switzerland one VAT model defines the VAT rate for a
  *     transaction and the VAT due to the government to simplify VAT computation and payment. The information is used for VAT due to government computation.</dd>

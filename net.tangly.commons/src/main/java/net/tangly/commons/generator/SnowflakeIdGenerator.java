@@ -15,7 +15,6 @@ package net.tangly.commons.generator;
 
 import java.net.NetworkInterface;
 import java.net.SocketException;
-import java.net.UnknownHostException;
 import java.util.Enumeration;
 import java.util.Random;
 import java.util.concurrent.locks.ReentrantLock;
@@ -42,7 +41,7 @@ public class SnowflakeIdGenerator implements IdGenerator {
         if (datacenterId == 0) {
             try {
                 this.datacenterId = getDatacenterId();
-            } catch (SocketException | UnknownHostException | NullPointerException e) {
+            } catch (SocketException | NullPointerException e) {
                 Random rnd = new Random();
                 this.datacenterId = rnd.nextInt((int) maxDatacenterId) + 1;
             }
@@ -90,7 +89,7 @@ public class SnowflakeIdGenerator implements IdGenerator {
         return timestamp;
     }
 
-    protected long getDatacenterId() throws SocketException, UnknownHostException {
+    protected long getDatacenterId() throws SocketException {
         NetworkInterface network = null;
         Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces();
         while (en.hasMoreElements()) {

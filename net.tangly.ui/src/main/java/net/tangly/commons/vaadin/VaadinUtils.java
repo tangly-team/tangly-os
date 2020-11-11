@@ -32,12 +32,13 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
-import net.tangly.core.HasTags;
-import net.tangly.core.Tag;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.LegalEntity;
+import net.tangly.core.HasTags;
+import net.tangly.core.Tag;
 import org.jetbrains.annotations.NotNull;
 
 public final class VaadinUtils {
@@ -59,6 +60,14 @@ public final class VaadinUtils {
         field.setReadOnly(readonly);
         field.setEnabled(enabled);
         return field;
+    }
+
+    public static <T extends Enum<T>> Select<T> createSelectFor(Class<T> clazz, String label) {
+        Select<T> component = new Select<>();
+        component.setLabel(label);
+        component.setItemLabelGenerator(T::name);
+        component.setItems(clazz.getEnumConstants());
+        return component;
     }
 
     public static DatePicker createDatePicker(String label) {

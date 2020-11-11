@@ -15,8 +15,6 @@ package net.tangly.commons.utilities;
 
 import java.util.Objects;
 
-import org.jetbrains.annotations.NotNull;
-
 import static net.tangly.commons.lang.Preconditions.checkArgument;
 
 /**
@@ -46,7 +44,7 @@ public final class BitUtilities {
      * Mask structure to select the first n [0..8] bits of a byte. The first element is defined to have logical indexes in the code.
      */
     private static final byte[] MASKS =
-            {0b0000_0000, 0b0000_0001, 0b0000_0011, 0b0000_0111, 0b0000_1111, 0b0001_1111, 0b0011_1111, 0b0111_1111, (byte) 0b1111_1111};
+        {0b0000_0000, 0b0000_0001, 0b0000_0011, 0b0000_0111, 0b0000_1111, 0b0001_1111, 0b0011_1111, 0b0111_1111, (byte) 0b1111_1111};
 
     /**
      * Private constructor for a utility class.
@@ -64,7 +62,7 @@ public final class BitUtilities {
      * @param length   number of bits to insert into the stream. The format is constrained in [1..8]
      * @return the position at the end of the written stream
      */
-    public static int appendBits(@NotNull byte[] stream, byte data, int position, int length) {
+    public static int appendBits(byte[] stream, byte data, int position, int length) {
         Objects.requireNonNull(stream);
         Objects.checkIndex(position, stream.length * BYTE - length + 1);
         checkArgument((length >= 1) && (length <= BYTE));
@@ -100,7 +98,7 @@ public final class BitUtilities {
      * @param length   number of bits to insert into the stream. The format is constrained in [1..8]
      * @return the extracted data from the byte stream
      */
-    public static byte extractBitsToByte(@NotNull byte[] stream, int position, int length) {
+    public static byte extractBitsToByte(byte[] stream, int position, int length) {
         Objects.requireNonNull(stream);
         Objects.checkIndex(position, stream.length * BYTE - length + 1);
         checkArgument((length >= 1) && (length <= BYTE));
@@ -133,7 +131,7 @@ public final class BitUtilities {
      * @param length   number of bits to insert into the stream. The format is constrained in [1..16]
      * @return the position at the end of the written stream
      */
-    public static int appendBits(@NotNull byte[] stream, short data, int position, int length) {
+    public static int appendBits(byte[] stream, short data, int position, int length) {
         Objects.requireNonNull(stream);
         Objects.checkIndex(position, stream.length * BYTE - length + 1);
         checkArgument((length >= 1) && (length <= WORD));
@@ -154,7 +152,7 @@ public final class BitUtilities {
      * @param length   number of bits to insert into the stream. The format is constrained in [1..16]
      * @return the extracted data from the byte stream
      */
-    public static short extractBitsToShort(@NotNull byte[] stream, int position, int length) {
+    public static short extractBitsToShort(byte[] stream, int position, int length) {
         Objects.requireNonNull(stream);
         Objects.checkIndex(position, stream.length * BYTE - length + 1);
         checkArgument((length >= 1) && (length <= WORD));
@@ -175,7 +173,7 @@ public final class BitUtilities {
      * @param length   number of bits to insert into the stream. The format is constrained in [1..32]
      * @return the position at the end of the written stream
      */
-    public static int appendBits(@NotNull byte[] stream, int data, int position, int length) {
+    public static int appendBits(byte[] stream, int data, int position, int length) {
         Objects.requireNonNull(stream);
         Objects.checkIndex(position, stream.length * BYTE - length + 1);
         checkArgument((length >= 1) && (length <= DWORD));
@@ -196,7 +194,7 @@ public final class BitUtilities {
      * @param length   number of bits to insert into the stream. The format is constrained in [1..32]
      * @return the extracted data from the byte stream
      */
-    public static int extractBitsToInt(@NotNull byte[] stream, int position, int length) {
+    public static int extractBitsToInt(byte[] stream, int position, int length) {
         Objects.requireNonNull(stream);
         Objects.checkIndex(position, stream.length * BYTE - length + 1);
         checkArgument((length >= 1) && (length <= DWORD));
@@ -213,7 +211,7 @@ public final class BitUtilities {
      * @param stream the byte stream to transform. The stream must not be null
      * @return the hexadecimal representation of the byte stream
      */
-    public static String toHex(@NotNull byte[] stream) {
+    public static String toHex(byte[] stream) {
         Objects.requireNonNull(stream);
         StringBuilder buffer = new StringBuilder();
         if (stream.length > 0) {

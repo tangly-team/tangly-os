@@ -14,7 +14,6 @@
 package net.tangly.core.codes;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -24,22 +23,11 @@ import org.jetbrains.annotations.NotNull;
 /**
  * The code type describes a reference code table entity and all the existing code values.
  *
- * @param <T> reference code type
+ * @param <T>   reference code type
+ * @param clazz class of the reference code table
+ * @param codes list of all reference code table values
  */
-public class CodeType<T extends Code> {
-    private final Class<T> clazz;
-    private final List<T> codes;
-
-    /**
-     * Constructor of the class representing the type of the reference code and all existing instances.
-     *
-     * @param clazz class of the reference code table
-     * @param codes list of all reference code table values
-     */
-    public CodeType(@NotNull Class<T> clazz, @NotNull List<T> codes) {
-        this.clazz = clazz;
-        this.codes = List.copyOf(codes);
-    }
+public record CodeType<T extends Code>(@NotNull Class<T> clazz, @NotNull List<T> codes) {
 
     /**
      * Builder for a reference code implemented as an enumeration. Provides a simple approach to map any enumeration type into a reference code.
@@ -62,24 +50,6 @@ public class CodeType<T extends Code> {
      */
     public static <E extends Code> CodeType<E> of(Class<E> clazz, List<E> codes) {
         return new CodeType<>(clazz, codes);
-    }
-
-    /**
-     * Returns the class of the reference code.
-     *
-     * @return class of the reference code
-     */
-    public Class<T> clazz() {
-        return this.clazz;
-    }
-
-    /**
-     * Returns all codes defined for the code table.
-     *
-     * @return list of codes of the code table
-     */
-    public List<T> codes() {
-        return Collections.unmodifiableList(codes);
     }
 
     /**
