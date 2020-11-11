@@ -1,6 +1,6 @@
 ---
 title: "The Quest for an Agile Company: Five Years tangly llc"
-linkTitle: "Five Years Tangly"
+linkTitle: "Five Years tangly"
 date: 2020-11-06
 tags: ["agile"]
 ---
