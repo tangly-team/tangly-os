@@ -31,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
  * @param region   region of the address as custom in the country
  * @param country  mandatory country of the address as ISO 2 characters code
  */
-public record Address(String street, String extended, String poBox, String postcode, String locality, String region, String country) implements Serializable {
+public record Address(String street, String extended, String poBox, String postcode, String locality, String region, String country) {
     /**
      * Return a builder instance for an address object. The builder can be used to create multiple address objects
      *

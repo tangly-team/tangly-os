@@ -149,11 +149,12 @@ tasks.register("jacocoRootReport", JacocoReport) {
 }
 
 subprojects {
-    sourceCompatibility = JavaVersion.VERSION_15
-    targetCompatibility = JavaVersion.VERSION_15
+    sourceCompatibility = JavaVersion.VERSION_14
+    targetCompatibility = JavaVersion.VERSION_14
 
     ext {
         apacheCommonsCvsVersion = '1.8'
+        asciidoctorjVersion = '2.4.2'
         jacksonVersion = '2.12.0-rc1'
         junitVersion = '5.7.0'
         jsonVersion = '1.0.19.13'
@@ -227,7 +228,7 @@ subprojects {
         javadoc.options {
             encoding("UTF-8")
             addBooleanOption('-enable-preview', true)
-            addStringOption('-release', '15')
+            addStringOption('-release', '14')
         }
     }
 

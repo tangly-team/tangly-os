@@ -20,6 +20,7 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.bus.ledger.LedgerBoundedDomain;
 import net.tangly.bus.ledger.Transaction;
@@ -32,6 +33,7 @@ public class TransactionsView extends EntitiesView<Transaction> {
     private final LedgerBoundedDomain domain;
     private LocalDate from;
     private LocalDate to;
+    private Binder<Transaction> binder;
 
     public TransactionsView(@NotNull LedgerBoundedDomain domain, @NotNull Mode mode) {
         super(Transaction.class, mode, ProviderInMemory.of(domain.realm().transactions()));
@@ -61,21 +63,45 @@ public class TransactionsView extends EntitiesView<Transaction> {
 
     @Override
     protected FormLayout fillForm(@NotNull Operation operation, Transaction entity, FormLayout form) {
-        DatePicker date = new DatePicker("Date");
+        DatePicker date = VaadinUtils.createDatePicker("date");
         TextField text = VaadinUtils.createTextField("Text", "text");
         TextField reference = VaadinUtils.createTextField("Reference", "reference");
-        // TODO debit and credit account as pulldown selectiom
+        // TODO debit and credit account as pull down selection
         TextField debitAccount = VaadinUtils.createTextField("Debit", "debit account");
         TextField creditAccount = VaadinUtils.createTextField("Credit", "credit account");
         TextField amount = VaadinUtils.createTextField("Amount", "amount");
+        VaadinUtils.readOnly(operation, date, text, reference, debitAccount, creditAccount, amount);
 
+        binder = new Binder<>();
+        binder.bind(date, Transaction::date, null);
+        binder.bind(debitAccount, Transaction::debitAccount, null);
+        binder.bind(creditAccount, Transaction::creditAccount, null);
+        binder.bind(amount, o -> o.text().toString(), null);
+        binder.bind(text, Transaction::text, null);
+        binder.bind(reference, Transaction::reference, null);
         // TODO debit and credit including splits
+        form.add(date, reference, text, debitAccount, creditAccount, amount);
+        form.setColspan(text, 3);
+        if (entity != null) {
+            binder.readBean(entity);
+        }
         return form;
     }
 
     @Override
     protected Transaction updateOrCreate(Transaction entity) {
-        Transaction transaction = null;
+        Transaction transaction;
+        if (entity == null) {
+            LocalDate date = (LocalDate) binder.getBinding("date").orElseThrow().getField().getValue();
+            String debitAccount = (String) binder.getBinding("debitAccount").orElseThrow().getField().getValue();
+            String creditAccount = (String) binder.getBinding("creditAccount").orElseThrow().getField().getValue();
+            // handle BigDecimal amount
+            String text = (String) binder.getBinding("text").orElseThrow().getField().getValue();
+            String reference = (String) binder.getBinding("reference").orElseThrow().getField().getValue();
+            transaction = new Transaction(date, debitAccount, creditAccount, null, text, reference);
+        } else {
+            transaction = entity;
+        }
         return transaction;
     }
 }

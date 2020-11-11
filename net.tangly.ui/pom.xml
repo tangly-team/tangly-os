@@ -44,6 +44,10 @@
             <id>ZUGFeRD</id>
             <url>https://raw.github.com/ZUGFeRD/mustangproject/mvn-repo/</url>
         </repository>
+        <repository>
+            <id>microstream</id>
+            <url>https://repo.microstream.one/repository/maven-public/</url>
+        </repository>
     </repositories>
 
     <pluginRepositories>

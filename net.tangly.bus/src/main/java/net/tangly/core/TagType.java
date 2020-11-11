@@ -13,7 +13,6 @@
 
 package net.tangly.core;
 
-import java.io.Serializable;
 import java.util.function.BiPredicate;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
@@ -32,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
  * @param validate  validation function for hte Java representation of the string tag value
  * @param <T>       type of the tags
  */
-public record TagType<T extends Serializable>(String namespace, @NotNull String name, @NotNull ValueKinds kind, @NotNull Class<T> clazz,
+public record TagType<T>(String namespace, @NotNull String name, @NotNull ValueKinds kind, @NotNull Class<T> clazz,
                                               Function<String, T> convert, BiPredicate<TagType<T>, T> validate) {
     /**
      * Indicates if the tag requires no value, an optional value, or a mandatory one.
@@ -48,22 +47,22 @@ public record TagType<T extends Serializable>(String namespace, @NotNull String 
         return of(namespace, name, kind, String.class, UnaryOperator.identity(), validate);
     }
 
-    public static <T extends Serializable> TagType<T> ofMandatory(String namespace, @NotNull String name, Class<T> clazz, Function<String, T> convert,
+    public static <T> TagType<T> ofMandatory(String namespace, @NotNull String name, Class<T> clazz, Function<String, T> convert,
                                                                   @NotNull BiPredicate<TagType<T>, T> validate) {
         return of(namespace, name, ValueKinds.MANDATORY, clazz, convert, validate);
     }
 
-    public static <T extends Serializable> TagType<T> ofMandatory(String namespace, @NotNull String name, Class<T> clazz,
+    public static <T> TagType<T> ofMandatory(String namespace, @NotNull String name, Class<T> clazz,
                                                                   @NotNull Function<String, T> convert) {
         return of(namespace, name, ValueKinds.MANDATORY, clazz, convert);
     }
 
-    public static <T extends Serializable> TagType<T> of(String namespace, @NotNull String name, @NotNull ValueKinds kind, @NotNull Class<T> clazz,
+    public static <T> TagType<T> of(String namespace, @NotNull String name, @NotNull ValueKinds kind, @NotNull Class<T> clazz,
                                                          @NotNull Function<String, T> convert) {
         return new TagType<>(namespace, name, kind, clazz, convert, (tagType, tag) -> true);
     }
 
-    public static <T extends Serializable> TagType<T> of(String namespace, @NotNull String name, @NotNull ValueKinds kind, Class<T> clazz,
+    public static <T> TagType<T> of(String namespace, @NotNull String name, @NotNull ValueKinds kind, Class<T> clazz,
                                                          Function<String, T> convert, BiPredicate<TagType<T>, T> validate) {
         return new TagType<>(namespace, name, kind, clazz, convert, validate);
     }
