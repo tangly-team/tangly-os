@@ -11,12 +11,14 @@
  *  under the License.
  */
 
-package net.tangly.bus.providers;
+package net.tangly.core.providers;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
+import net.tangly.core.HasId;
+import net.tangly.core.HasOid;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -25,6 +27,14 @@ import org.jetbrains.annotations.NotNull;
  * @param <T> type of the instances
  */
 public interface Provider<T> {
+    public static <E extends HasOid, Long> Optional<E> findByOid(@NotNull Provider<E> provider, long oid) {
+        return provider.findBy(E::oid, oid);
+    }
+
+    public static <E extends HasId, String> Optional<E> findById(@NotNull Provider<E> provider, String id) {
+        return provider.findBy(E::id, id);
+    }
+
     /**
      * Return a list containing all known instances of the entity type.
      *

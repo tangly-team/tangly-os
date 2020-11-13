@@ -19,11 +19,11 @@ import java.nio.file.Path;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
-import net.tangly.core.QualifiedEntity;
-import net.tangly.core.TagTypeRegistry;
 import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.CrmRealm;
 import net.tangly.bus.crm.LegalEntity;
+import net.tangly.core.QualifiedEntity;
+import net.tangly.core.providers.Provider;
 import net.tangly.crm.ports.CrmEntities;
 import net.tangly.crm.ports.CrmHdl;
 import org.jetbrains.annotations.NotNull;
@@ -40,7 +40,7 @@ class CrmHdlTest {
     @Tag("localTest")
     void testCompanyTsvCrm() {
         CrmRealm realm = new CrmEntities();
-        CrmHdl crmHdl = new CrmHdl(realm, Path.of("/Users/Shared/tangly/", "crm"));
+        CrmHdl crmHdl = new CrmHdl(realm, Path.of("/Users/Shared/tangly/", "import/crm"));
         CrmBusinessLogic logic = new CrmBusinessLogic(realm);
         crmHdl.importEntities();
     }
@@ -65,7 +65,7 @@ class CrmHdlTest {
 
             crmHdl.exportEntities();
 
-            crmHdl = new CrmHdl(new CrmEntities(),store.crmRoot());
+            crmHdl = new CrmHdl(new CrmEntities(), store.crmRoot());
             crmHdl.importEntities();
             verifyNaturalEntities(crmHdl.realm());
             verifyLegalEntities(crmHdl.realm());
@@ -80,13 +80,13 @@ class CrmHdlTest {
 
     private void verifyNaturalEntities(@NotNull CrmRealm crmRealm) {
         assertThat(crmRealm.naturalEntities().items().isEmpty()).isFalse();
-        assertThat(crmRealm.naturalEntities().find(1).isPresent()).isTrue();
+        assertThat(Provider.findByOid(crmRealm.naturalEntities(), 1).isPresent()).isTrue();
         crmRealm.naturalEntities().items().forEach(naturalEntity -> assertThat(naturalEntity.check()).isTrue());
     }
 
     private void verifyLegalEntities(@NotNull CrmRealm crmRealm) {
         assertThat(crmRealm.legalEntities().items().isEmpty()).isFalse();
-        assertThat(crmRealm.legalEntities().find(100).isPresent()).isTrue();
+        assertThat(Provider.findByOid(crmRealm.legalEntities(), 100).isPresent()).isTrue();
         assertThat(crmRealm.legalEntities().findBy(LegalEntity::id, "UNKNOWN-100").isPresent()).isTrue();
         assertThat(crmRealm.legalEntities().findBy(LegalEntity::name, "hope llc").isPresent()).isTrue();
         crmRealm.naturalEntities().items().forEach(legalEntity -> assertThat(legalEntity.check()).isTrue());
@@ -94,7 +94,7 @@ class CrmHdlTest {
 
     private void verifyEmployees(@NotNull CrmRealm crmRealm) {
         assertThat(crmRealm.employees().items().isEmpty()).isFalse();
-        assertThat(crmRealm.employees().find(200).isPresent()).isTrue();
+        assertThat(Provider.findByOid(crmRealm.employees(), 200).isPresent()).isTrue();
         crmRealm.employees().items().forEach(employee -> {
             assertThat(employee.oid()).isNotEqualTo(QualifiedEntity.UNDEFINED_OID);
             assertThat(employee.person()).isNotNull();
@@ -104,7 +104,7 @@ class CrmHdlTest {
 
     private void verifyContracts(@NotNull CrmRealm crmRealm) {
         assertThat(crmRealm.contracts().items().isEmpty()).isFalse();
-        assertThat(crmRealm.contracts().find(500).isPresent()).isTrue();
+        assertThat(Provider.findByOid(crmRealm.contracts(), 500).isPresent()).isTrue();
         crmRealm.contracts().items().forEach(contract -> {
             assertThat(contract.locale()).isNotNull();
             assertThat(contract.currency()).isNotNull();
@@ -127,7 +127,7 @@ class CrmHdlTest {
     }
 
     private void verifyComments(@NotNull CrmRealm crmRealm) {
-        assertThat(crmRealm.naturalEntities().find(1).orElseThrow().comments().isEmpty()).isFalse();
-        assertThat(crmRealm.legalEntities().find(102).orElseThrow().comments().isEmpty()).isFalse();
+        assertThat(Provider.findByOid(crmRealm.naturalEntities(), 1).orElseThrow().comments().isEmpty()).isFalse();
+        assertThat(Provider.findByOid(crmRealm.legalEntities(), 102).orElseThrow().comments().isEmpty()).isFalse();
     }
 }

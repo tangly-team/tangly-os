@@ -1,6 +1,6 @@
 ## tangly OS Components
 
-The _tangly_ open source components are a set of open source libraries released under Apache 2.0 licence and are available through maven central. 
+The _tangly_ open source components are a set of open source libraries released under Apache 2.0 licence and are available through maven central.
 The components are
 
 * [*BDD*](net.tangly.bdd/readme.md) behavior driven development library
@@ -9,8 +9,7 @@ The components are
 * [*DEV*](net.tangly.dev/readme.md) development tools library
 * [*FSM*](net.tangly.fsm/readme.md) hierarchical finite state machine library
 * [*GLEAM*](net.tangly.gleam/readme.md) declarative model transformation frameworks library. Approaches for TSV and JSON representations are available.
-* [*ORM*](net.tangly.orm/readme.md) simple ORM mapper
-* [*PORTS*](net.tangly.ports/readme.md) ports library providing examples to connect a business domain model to external systems 
+* [*PORTS*](net.tangly.ports/readme.md) ports library providing examples to connect a business domain model to external systems
 * [*UI*](net.tangly.ui/readme.md) Vaadin user interface library
 
 The documentation is located under [tangly-team](https://tangly-team.bitbucket.io/).
@@ -28,7 +27,7 @@ The components are stored in a single git repository and are build using a multi
 
 ## Contribution
 
-You are welcome to contribute to the product with pull requests on Bitbucket. 
+You are welcome to contribute to the product with pull requests on Bitbucket.
 You can download the source files from the [bitbucket git repository](https://bitbucket.org/tangly-team/tangly-os.git).
 Build  the library with the provided gradle configuration file.
 

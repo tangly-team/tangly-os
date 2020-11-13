@@ -15,14 +15,18 @@ package net.tangly.core.app;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import net.tangly.commons.generator.IdGenerator;
 import net.tangly.commons.generator.LongIdGenerator;
+import net.tangly.core.HasTags;
+import net.tangly.core.TagType;
 import net.tangly.core.TagTypeRegistry;
 import org.jetbrains.annotations.NotNull;
 
-public class BoundedDomain<R, B, H, P> {
+public class BoundedDomain<R, B, H extends Handler, P> {
     private final R realm;
     private final H handler;
     private final P port;
@@ -44,6 +48,18 @@ public class BoundedDomain<R, B, H, P> {
         this.configuration = new HashMap<>(configuration);
         idGenerator = new LongIdGenerator(1000);
         initialize();
+    }
+
+    static void addTagCounts(TagTypeRegistry registry, List<? extends HasTags> entities, HashMap<TagType<?>, Integer> counts) {
+        entities.stream().flatMap(e -> e.tags().stream()).map(registry::find).flatMap(Optional::stream).forEach(e -> {
+            if (!counts.containsKey(e)) {
+                counts.put(e, 0);
+            }
+            counts.put(e, counts.get(e) + 1);
+        });
+    }
+
+    public void countTags(@NotNull HashMap<TagType<?>, Integer> counts) {
     }
 
     public R realm() {

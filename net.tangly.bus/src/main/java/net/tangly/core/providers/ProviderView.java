@@ -11,7 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.bus.providers;
+package net.tangly.core.providers;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -24,11 +24,11 @@ import org.jetbrains.annotations.NotNull;
  *
  * @param <T> type of the items handled in the provider
  */
-public class ViewProvider<T> implements Provider<T> {
+public class ProviderView<T> implements Provider<T> {
     private final Provider<T> provider;
     private Predicate<T> predicate;
 
-    public ViewProvider(@NotNull Provider<T> provider, @NotNull Predicate<T> predicate) {
+    public ProviderView(@NotNull Provider<T> provider, @NotNull Predicate<T> predicate) {
         this.provider = provider;
         this.predicate = predicate;
     }
@@ -38,7 +38,7 @@ public class ViewProvider<T> implements Provider<T> {
     }
 
     public static <T> Provider<T> of(@NotNull Provider<T> provider, @NotNull Predicate<T> predicate) {
-        return new ViewProvider<>(provider, predicate);
+        return new ProviderView<>(provider, predicate);
     }
 
     @Override

@@ -122,7 +122,7 @@ public class Crud<T> extends VerticalLayout implements SelectedItemListener<T> {
         return entityClass;
     }
 
-    protected Grid<T> grid() {
+    protected PaginatedGrid<T> grid() {
         return grid;
     }
 }

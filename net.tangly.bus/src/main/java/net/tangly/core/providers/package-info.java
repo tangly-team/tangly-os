@@ -11,4 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.orm;
+/**
+ * Provides the provider abstraction to handle a list of items. Update operations are supported.
+ */
+package net.tangly.core.providers;

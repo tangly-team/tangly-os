@@ -16,7 +16,7 @@ package net.tangly.commons.vaadin;
 import java.util.function.Consumer;
 
 import com.vaadin.flow.data.provider.DataProvider;
-import net.tangly.bus.providers.Provider;
+import net.tangly.core.providers.Provider;
 
 /**
  * Provides default actions for the grid view.

@@ -35,7 +35,6 @@ The _component_ field is one of the tangly component
 * net.tangly.dev
 * net.tangly.fsm
 * net.tangly.gleam
-* net.tangly.orm
 * net.tangly.ports
 * net.tangly.commons.ui.vaadin
 

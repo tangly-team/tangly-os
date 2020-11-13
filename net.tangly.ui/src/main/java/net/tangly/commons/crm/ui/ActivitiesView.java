@@ -24,7 +24,7 @@ import net.tangly.core.codes.CodeType;
 import net.tangly.bus.crm.Activity;
 import net.tangly.bus.crm.ActivityCode;
 import net.tangly.bus.crm.CrmBoundedDomain;
-import net.tangly.bus.providers.ProviderInMemory;
+import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.commons.vaadin.CodeField;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;

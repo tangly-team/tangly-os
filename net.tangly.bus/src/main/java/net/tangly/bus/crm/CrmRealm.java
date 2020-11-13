@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import net.tangly.bus.providers.InstanceProvider;
+import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -36,17 +36,17 @@ import org.jetbrains.annotations.NotNull;
  */
 public interface CrmRealm {
 
-    InstanceProvider<NaturalEntity> naturalEntities();
+    Provider<NaturalEntity> naturalEntities();
 
-    InstanceProvider<LegalEntity> legalEntities();
+    Provider<LegalEntity> legalEntities();
 
-    InstanceProvider<Employee> employees();
+    Provider<Employee> employees();
 
-    InstanceProvider<Contract> contracts();
+    Provider<Contract> contracts();
 
-    InstanceProvider<Interaction> interactions();
+    Provider<Interaction> interactions();
 
-    InstanceProvider<Subject> subjects();
+    Provider<Subject> subjects();
 
     /**
      * Returns all the past and present employees of a legal organization.

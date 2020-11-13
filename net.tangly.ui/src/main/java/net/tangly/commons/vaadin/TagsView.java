@@ -21,7 +21,7 @@ import com.vaadin.flow.data.binder.Binder;
 import net.tangly.core.HasTags;
 import net.tangly.core.Tag;
 import net.tangly.core.TagTypeRegistry;
-import net.tangly.bus.providers.ProviderInMemory;
+import net.tangly.core.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
 
 /**

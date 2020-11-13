@@ -41,7 +41,7 @@ class LedgerPortTest {
     @Test
     @Tag("localTest")
     public void createReports() {
-        LedgerHdl ledgerHdl = new LedgerHdl(new LedgerRealm(), Paths.get("/Users/Shared/tangly/ledger"));
+        LedgerHdl ledgerHdl = new LedgerHdl(new LedgerRealm(), Paths.get("/Users/Shared/tangly/import/ledger"));
         ledgerHdl.importEntities();
         LedgerAdapter adapter = new LedgerAdapter(ledgerHdl.ledger(), Paths.get("/Users/Shared/tangly/reports/ledger"));
 

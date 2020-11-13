@@ -40,7 +40,7 @@ import net.tangly.core.PhoneNr;
 import net.tangly.core.QualifiedEntity;
 import net.tangly.bus.crm.CrmEntity;
 import net.tangly.bus.crm.CrmTags;
-import net.tangly.bus.providers.Provider;
+import net.tangly.core.providers.Provider;
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.commons.lang.Strings;
 import net.tangly.commons.logger.EventData;

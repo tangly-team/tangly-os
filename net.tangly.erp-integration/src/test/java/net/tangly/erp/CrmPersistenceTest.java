@@ -13,46 +13,85 @@
 
 package net.tangly.erp;
 
+import java.io.IOException;
+import java.nio.file.FileSystem;
 import java.nio.file.Path;
 
+import com.google.common.jimfs.Configuration;
+import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.crm.CrmRealm;
 import net.tangly.crm.ports.CrmEntities;
 import net.tangly.crm.ports.CrmHdl;
 import one.microstream.storage.types.EmbeddedStorage;
 import one.microstream.storage.types.EmbeddedStorageManager;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CrmPersistenceTest {
-    public static final String PATH = "/Users/Shared/tmp/db";
+
     @Test
-    void persistCrmRealTest() {
-        CrmRealm realm = new CrmEntities();
-        CrmHdl crmHdl = new CrmHdl(realm, Path.of("/Users/Shared/tangly/", "crm"));
+    @Tag("localTest")
+    void persistCrmRealTest() throws IOException {
+        try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
+            ErpStore store = new ErpStore(fs);
+            store.createCrmAndLedgerRepository();
+
+            CrmHdl crmHdl = new CrmHdl(new CrmEntities(), store.crmRoot());
+            crmHdl.importEntities();
+            CrmRealm realm = crmHdl.realm();
+
+            assertThat(realm.naturalEntities().items().isEmpty()).isFalse();
+            assertThat(realm.legalEntities().items().isEmpty()).isFalse();
+            assertThat(realm.employees().items().isEmpty()).isFalse();
+            assertThat(realm.contracts().items().isEmpty()).isFalse();
+            assertThat(realm.interactions().items().isEmpty()).isFalse();
+
+            // NioFileSystem msFs = NioFileSystem.New();
+            // EmbeddedStorageManager storageManager = EmbeddedStorage.start(msFs.ensureDirectoryPath(store.crmDb());
+
+            EmbeddedStorageManager storageManager = EmbeddedStorage.start(store.crmDb());
+            storageManager.setRoot(realm);
+            storageManager.storeRoot();
+            storageManager.shutdown();
+
+            storageManager = EmbeddedStorage.start(store.crmDb());
+            Object persistentRealm = storageManager.root();
+            System.out.println(persistentRealm);
+            assertThat(persistentRealm instanceof CrmRealm).isTrue();
+            realm = (CrmRealm) persistentRealm;
+            assertThat(realm.naturalEntities().items().isEmpty()).isFalse();
+            assertThat(realm.legalEntities().items().isEmpty()).isFalse();
+            assertThat(realm.employees().items().isEmpty()).isFalse();
+            assertThat(realm.contracts().items().isEmpty()).isFalse();
+            assertThat(realm.interactions().items().isEmpty()).isFalse();
+
+            storageManager.shutdown();
+        }
+    }
+
+    @Test
+    void persistCrmRealLocalTest() {
+        String PATH = "/Users/Shared/tangly/db/crm";
+        CrmEntities realm = new CrmEntities(Path.of(PATH));
+        realm.storeRoot();
+        CrmHdl crmHdl = new CrmHdl(realm, Path.of("/Users/Shared/tangly/", "import/crm"));
         crmHdl.importEntities();
         assertThat(realm.naturalEntities().items().isEmpty()).isFalse();
         assertThat(realm.legalEntities().items().isEmpty()).isFalse();
         assertThat(realm.employees().items().isEmpty()).isFalse();
         assertThat(realm.contracts().items().isEmpty()).isFalse();
         assertThat(realm.interactions().items().isEmpty()).isFalse();
+        realm.storeRoot();
+        realm.shutdown();
 
-        EmbeddedStorageManager storageManager = EmbeddedStorage.start(Path.of(PATH));
-        storageManager.setRoot(realm);
-        storageManager.storeRoot();
-        storageManager.shutdown();
-
-        storageManager = EmbeddedStorage.start(Path.of(PATH));
-        Object persistentRealm = storageManager.root();
-        System.out.println(persistentRealm);
-        assertThat(persistentRealm instanceof CrmRealm).isTrue();
-        realm = (CrmRealm) persistentRealm;
-        assertThat(realm.naturalEntities().items().isEmpty()).isFalse();
-        assertThat(realm.legalEntities().items().isEmpty()).isFalse();
-        assertThat(realm.employees().items().isEmpty()).isFalse();
-        assertThat(realm.contracts().items().isEmpty()).isFalse();
-        assertThat(realm.interactions().items().isEmpty()).isFalse();
-
-        storageManager.shutdown();
+        CrmEntities persistentRealm = new CrmEntities(Path.of(PATH));
+        assertThat(persistentRealm.naturalEntities().items().isEmpty()).isFalse();
+        assertThat(persistentRealm.legalEntities().items().isEmpty()).isFalse();
+        assertThat(persistentRealm.employees().items().isEmpty()).isFalse();
+        assertThat(persistentRealm.contracts().items().isEmpty()).isFalse();
+        assertThat(persistentRealm.interactions().items().isEmpty()).isFalse();
+        persistentRealm.shutdown();
     }
 }

@@ -13,9 +13,13 @@
 
 package net.tangly.crm.ports;
 
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.inject.Inject;
 
-import net.tangly.core.TagTypeRegistry;
 import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.CrmRealm;
 import net.tangly.bus.crm.Employee;
@@ -23,9 +27,12 @@ import net.tangly.bus.crm.Interaction;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.bus.crm.Subject;
-import net.tangly.bus.providers.InstanceProvider;
-import net.tangly.bus.providers.InstanceProviderInMemory;
-import org.jetbrains.annotations.NotNull;
+import net.tangly.core.HasOid;
+import net.tangly.core.providers.Provider;
+import net.tangly.core.providers.ProviderInMemory;
+import net.tangly.core.providers.ProviderPersistence;
+import one.microstream.storage.types.EmbeddedStorage;
+import one.microstream.storage.types.EmbeddedStorageManager;
 
 /**
  * Defines the customer relationship management <i>CRM</i> subsystem. The major abstractions are
@@ -42,50 +49,96 @@ import org.jetbrains.annotations.NotNull;
  * <p>The class is also the connection point between the CRM domain model and other ones. One such external domain is the invoices domain.</p>
  */
 public class CrmEntities implements CrmRealm {
-    private final InstanceProvider<NaturalEntity> naturalEntities;
-    private final InstanceProvider<LegalEntity> legalEntities;
-    private final InstanceProvider<Employee> employees;
-    private final InstanceProvider<Contract> contracts;
-    private final InstanceProvider<Interaction> interactions;
-    private final InstanceProvider<Subject> subjects;
+    static class Data {
+        private List<NaturalEntity> naturalEntities;
+        private List<LegalEntity> legalEntities;
+        private List<Employee> employees;
+        private List<Contract> contracts;
+        private List<Interaction> interactions;
+        private List<Subject> subjects;
+        private long oidCounter;
+        private Map<String, String> configuration;
+
+        Data() {
+            naturalEntities = new ArrayList<>();
+            legalEntities = new ArrayList<>();
+            employees = new ArrayList<>();
+            contracts = new ArrayList<>();
+            interactions = new ArrayList<>();
+            subjects = new ArrayList<>();
+            oidCounter = HasOid.UNDEFINED_OID;
+            configuration = new HashMap<>();
+        }
+    }
+
+    private final Data data;
+    private final Provider<NaturalEntity> naturalEntities;
+    private final Provider<LegalEntity> legalEntities;
+    private final Provider<Employee> employees;
+    private final Provider<Contract> contracts;
+    private final Provider<Interaction> interactions;
+    private final Provider<Subject> subjects;
+    private final EmbeddedStorageManager storageManager;
 
     @Inject
+    public CrmEntities(Path path) {
+        this.data = new Data();
+        storageManager = EmbeddedStorage.start(data, path);
+
+        naturalEntities = new ProviderPersistence<>(storageManager, data.naturalEntities);
+        legalEntities = new ProviderPersistence<>(storageManager, data.legalEntities);
+        employees = new ProviderPersistence<>(storageManager, data.employees);
+        contracts = new ProviderPersistence<>(storageManager, data.contracts);
+        interactions = new ProviderPersistence<>(storageManager, data.interactions);
+        subjects = new ProviderPersistence<>(storageManager, data.subjects);
+    }
+
     public CrmEntities() {
-        naturalEntities = new InstanceProviderInMemory<>();
-        legalEntities = new InstanceProviderInMemory<>();
-        employees = new InstanceProviderInMemory<>();
-        contracts = new InstanceProviderInMemory<>();
-        interactions = new InstanceProviderInMemory<>();
-        subjects = new InstanceProviderInMemory<>();
+        this.data = new Data();
+        storageManager = null;
+        naturalEntities = new ProviderInMemory<>(data.naturalEntities);
+        legalEntities = new ProviderInMemory<>(data.legalEntities);
+        employees = new ProviderInMemory<>(data.employees);
+        contracts = new ProviderInMemory<>(data.contracts);
+        interactions = new ProviderInMemory<>(data.interactions);
+        subjects = new ProviderInMemory<>(data.subjects);
+    }
+
+    public void storeRoot() {
+        storageManager.storeRoot();
+    }
+
+    public void shutdown() {
+        storageManager.shutdown();
     }
 
     @Override
-    public InstanceProvider<NaturalEntity> naturalEntities() {
+    public Provider<NaturalEntity> naturalEntities() {
         return this.naturalEntities;
     }
 
     @Override
-    public InstanceProvider<LegalEntity> legalEntities() {
+    public Provider<LegalEntity> legalEntities() {
         return this.legalEntities;
     }
 
     @Override
-    public InstanceProvider<Employee> employees() {
+    public Provider<Employee> employees() {
         return this.employees;
     }
 
     @Override
-    public InstanceProvider<Contract> contracts() {
+    public Provider<Contract> contracts() {
         return this.contracts;
     }
 
     @Override
-    public InstanceProvider<Interaction> interactions() {
+    public Provider<Interaction> interactions() {
         return this.interactions;
     }
 
     @Override
-    public InstanceProvider<Subject> subjects() {
+    public Provider<Subject> subjects() {
         return this.subjects;
     }
 }

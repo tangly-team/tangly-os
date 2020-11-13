@@ -28,7 +28,7 @@ class ProductsHdlTest {
     @Test
     @Tag("localTest")
     void testCompanyTsvCrm() {
-        ProductsHdl productsHdl = new ProductsHdl(new ProductsEntities(), Path.of("/Users/Shared/tangly/", "products"));
+        ProductsHdl productsHdl = new ProductsHdl(new ProductsEntities(), Path.of("/Users/Shared/tangly/", "import/products"));
         productsHdl.importEntities();
     }
 

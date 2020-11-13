@@ -27,7 +27,6 @@ upload ./net.tangly.commons
 upload ./net.tangly.dev
 upload ./net.tangly.fsm
 upload ./net.tangly.gleam
-upload ./net.tangly.orm
 upload ./net.tangly.ports
 
 

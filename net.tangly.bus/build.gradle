@@ -39,6 +39,8 @@ dependencies {
     implementation "org.hsqldb:hsqldb:$hsqldbVersion"
     implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.12'
     implementation 'org.iban4j:iban4j:3.2.1'
+    implementation 'one.microstream:storage.embedded:04.00.00-MS-GA'
+
     testImplementation "org.flywaydb:flyway-core:$flyWayVersion"
     testImplementation "com.guicedee.services:json:$jsonVersion"
 }

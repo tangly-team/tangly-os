@@ -37,7 +37,7 @@ import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.GenderCode;
 import net.tangly.bus.crm.NaturalEntity;
-import net.tangly.bus.providers.ViewProvider;
+import net.tangly.core.providers.ProviderView;
 import net.tangly.commons.vaadin.CodeField;
 import net.tangly.commons.vaadin.CommentsView;
 import net.tangly.commons.vaadin.EntitiesView;
@@ -93,7 +93,7 @@ public class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
         tabs.add(new Tab("Comments"), new CommentsView(mode, entity));
         tabs.add(new Tab("Tags"), new TagsView(mode, entity, domain.registry()));
         One2ManyView<Employee> employees = new One2ManyView<>(Employee.class, mode, NaturalEntitiesView::defineOne2ManyEmployees,
-            ViewProvider.of(domain.realm().employees(), o -> entity.oid() == o.person().oid()), new EmployeesView(domain, mode));
+            ProviderView.of(domain.realm().employees(), o -> entity.oid() == o.person().oid()), new EmployeesView(domain, mode));
         tabs.add(new Tab("Employees"), employees);
     }
 

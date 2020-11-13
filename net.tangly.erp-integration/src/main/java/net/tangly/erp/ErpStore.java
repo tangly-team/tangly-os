@@ -51,6 +51,10 @@ public class ErpStore {
         return fs.getPath(ORGANIZATION);
     }
 
+    public Path crmDb() {
+        return fs.getPath(ORGANIZATION, "db/crm/");
+    }
+
     public Path crmRoot() {
         return fs.getPath(ORGANIZATION, "crm/");
     }
@@ -93,6 +97,7 @@ public class ErpStore {
             Files.createDirectory(fs.getPath(ORGANIZATION, "crm/vcards/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "ledger/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "products/"));
+
             Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2015/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2016/"));
@@ -100,9 +105,13 @@ public class ErpStore {
             Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2018/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2019/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2020/"));
+
             Files.createDirectory(fs.getPath(ORGANIZATION, "reports/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "reports/ledger/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "reports/invoices/"));
+
+            Files.createDirectory(fs.getPath(ORGANIZATION, "db/"));
+            Files.createDirectory(crmDb());
 
             copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.NATURAL_ENTITIES_TSV);
             copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.LEGAL_ENTITIES_TSV);

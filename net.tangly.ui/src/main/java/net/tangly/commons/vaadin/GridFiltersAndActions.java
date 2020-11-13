@@ -28,17 +28,20 @@ import com.vaadin.flow.data.provider.ListDataProvider;
 import net.tangly.core.HasInterval;
 import net.tangly.core.HasTags;
 import org.jetbrains.annotations.NotNull;
+import org.vaadin.klaudeta.PaginatedGrid;
 
 public class GridFiltersAndActions<T> extends HorizontalLayout implements SelectedItemListener<T> {
     private final ListDataProvider<T> provider;
+    private final PaginatedGrid<T> grid;
     private final List<GridFilter<T>> filters;
     private final MenuBar menuBar;
     private final MenuItem actionsItem;
     private final SubMenu actions;
     private T selectedItem;
 
-    public GridFiltersAndActions(@NotNull ListDataProvider<T> provider) {
+    public GridFiltersAndActions(@NotNull ListDataProvider<T> provider, @NotNull PaginatedGrid<T> grid) {
         this.provider = provider;
+        this.grid = grid;
         filters = new ArrayList<>();
         menuBar = new MenuBar();
         actionsItem = menuBar.addItem("Actions");

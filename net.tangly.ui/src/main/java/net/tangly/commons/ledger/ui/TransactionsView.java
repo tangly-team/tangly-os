@@ -15,6 +15,7 @@ package net.tangly.commons.ledger.ui;
 
 import java.time.LocalDate;
 
+import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
@@ -24,7 +25,7 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.bus.ledger.LedgerBoundedDomain;
 import net.tangly.bus.ledger.Transaction;
-import net.tangly.bus.providers.ProviderInMemory;
+import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
@@ -67,8 +68,12 @@ public class TransactionsView extends EntitiesView<Transaction> {
         TextField text = VaadinUtils.createTextField("Text", "text");
         TextField reference = VaadinUtils.createTextField("Reference", "reference");
         // TODO debit and credit account as pull down selection
-        TextField debitAccount = VaadinUtils.createTextField("Debit", "debit account");
-        TextField creditAccount = VaadinUtils.createTextField("Credit", "credit account");
+        ComboBox<String> debitAccount = new ComboBox<>("Debit");
+        debitAccount.setItems(domain.logic().bookableAccountIds());
+        debitAccount.setClearButtonVisible(true);
+        ComboBox<String> creditAccount = new ComboBox<>("Credit");
+        creditAccount.setItems(domain.logic().bookableAccountIds());
+        creditAccount.setClearButtonVisible(true);
         TextField amount = VaadinUtils.createTextField("Amount", "amount");
         VaadinUtils.readOnly(operation, date, text, reference, debitAccount, creditAccount, amount);
 

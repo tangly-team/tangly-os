@@ -13,13 +13,12 @@
 
 package net.tangly.bus.products;
 
-import net.tangly.bus.providers.InstanceProvider;
-import net.tangly.bus.providers.Provider;
+import net.tangly.core.providers.Provider;
 
 public interface ProductsRealm {
-    InstanceProvider<Assignment> assignments();
+    Provider<Assignment> assignments();
 
     Provider<Effort> efforts();
 
-    InstanceProvider<Product> products();
+    Provider<Product> products();
 }

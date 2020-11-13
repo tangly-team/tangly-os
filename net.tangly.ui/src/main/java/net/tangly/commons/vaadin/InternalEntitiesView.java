@@ -24,7 +24,7 @@ import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import net.tangly.core.Entity;
 import net.tangly.core.QualifiedEntity;
 import net.tangly.core.TagTypeRegistry;
-import net.tangly.bus.providers.Provider;
+import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -56,7 +56,7 @@ public abstract class InternalEntitiesView<T extends Entity> extends EntitiesVie
     }
 
     protected GridFiltersAndActions<T> filterCriteria(Grid<T> grid) {
-        GridFiltersAndActions<T> filters = new GridFiltersAndActions<>((ListDataProvider<T>) grid.getDataProvider());
+        GridFiltersAndActions<T> filters = new GridFiltersAndActions<>((ListDataProvider<T>) grid.getDataProvider(), grid());
         filters.addFilter(new GridFiltersAndActions.GridFilterText<>(filters, T::name, "Name", "name"));
         filters.addFilter(new GridFiltersAndActions.GridFilterInterval<>(filters));
         filters.addFilter(new GridFiltersAndActions.GridFilterTags<>(filters));

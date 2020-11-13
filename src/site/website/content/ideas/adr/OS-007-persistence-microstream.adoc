@@ -1,0 +1,55 @@
+---
+title: "OS 007: Persistence with MicroStream"
+linkTitle: "DI Guice"
+date: 2020-10-01
+weight: 6
+---
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+== S 007: Persistence with MicroStream
+
+Date: 2020-11-13
+
+=== Status
+
+Implemented
+
+=== Context
+
+The modules provided as {ref-tangly} open source components are used in more complex applications.
+These applications require a reliable and performant persistence approach for their data.
+
+=== Decision
+
+MicroStream was selected as persistence approach for the first versions of the ERP solution.
+
+. Almost no impedence mismatch between the Java application and persistence store
+. Elegant approach to provide one persistence container per bounded domain inthe same application
+. MicroStream has formally announced their software library will be published under an open souce license
+. The library supports current versions of the JDK and all constructs of the language including preview constructs
+. The support of the company is good and the answers professional
+
+Care will be taken to provide later a fallback to another persistence solution if performance or licensing problems occur.
+
+=== Consequences
+
+* Knowledge in MicroStream library must be build-up,
+* Software design must be slightly adapted to the MicroStream approach,
+** A clear separation of data from functions is required,
+** Lambdas cannot currently be persisted.
+ Therefore, all data containers with lambda variables must either be redesigned or declared as transient,
+* Work on a design enabling domain driven design with MicroStream approach.
+
+The MicroStream approach supports a very effective way to persist data.
+The effort to define storage and map Java objects to a persistent representation are minimal.
+This approach minimizes the costs for this functionality without impeding the quality or completeness of the solution.
+
+=== Conventions
+
+. Realm shall have a private data class to store all data to be persisted
+. The application must generated unique object identifiers.
+ MicroStream does not provide functions in this area.

@@ -11,7 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.bus.providers;
+package net.tangly.core.providers;
 
 import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
@@ -33,6 +33,10 @@ public class ProviderInMemory<T> implements Provider<T> {
 
     public ProviderInMemory() {
         items = new ArrayList<>();
+    }
+
+    public ProviderInMemory(List<T> items) {
+        this.items = items;
     }
 
     public static <T> Provider<T> of(Iterable<? extends T> items) {

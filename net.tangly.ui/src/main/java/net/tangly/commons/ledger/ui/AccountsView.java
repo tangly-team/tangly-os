@@ -23,10 +23,10 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import net.tangly.bus.ledger.Account;
 import net.tangly.bus.ledger.LedgerBoundedDomain;
-import net.tangly.bus.providers.RecordProviderInMemory;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.GridFiltersAndActions;
 import net.tangly.commons.vaadin.VaadinUtils;
+import net.tangly.core.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -45,7 +45,7 @@ public class AccountsView extends EntitiesView<Account> {
      * @param mode   mode of the view
      */
     public AccountsView(@NotNull LedgerBoundedDomain domain, @NotNull Mode mode) {
-        super(Account.class, mode, RecordProviderInMemory.of(domain.realm().accounts()));
+        super(Account.class, mode, ProviderInMemory.of(domain.realm().accounts()));
         this.domain = domain;
         from = LocalDate.of(LocalDate.now().getYear(), 1, 1);
         to = LocalDate.of(LocalDate.now().getYear(), 12, 31);

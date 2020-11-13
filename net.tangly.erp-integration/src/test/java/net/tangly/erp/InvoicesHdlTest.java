@@ -31,7 +31,7 @@ class InvoicesHdlTest {
     @Test
     @Tag("localTest")
     void testCompanyTsvInvoices() {
-        InvoicesHdl handler = new InvoicesHdl(new InvoicesEntities(), Path.of("/Users/Shared/tangly/", "invoices"));
+        InvoicesHdl handler = new InvoicesHdl(new InvoicesEntities(), Path.of("/Users/Shared/tangly/", "import/invoices"));
         handler.importEntities();
     }
 

@@ -24,11 +24,6 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
 
-import net.tangly.core.Comment;
-import net.tangly.core.HasComments;
-import net.tangly.core.HasOid;
-import net.tangly.core.HasTags;
-import net.tangly.core.PhoneNr;
 import net.tangly.bus.crm.Activity;
 import net.tangly.bus.crm.ActivityCode;
 import net.tangly.bus.crm.Contract;
@@ -41,9 +36,14 @@ import net.tangly.bus.crm.InteractionCode;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.bus.crm.Subject;
-import net.tangly.bus.providers.InstanceProviderInMemory;
-import net.tangly.bus.providers.Provider;
 import net.tangly.commons.lang.ReflectionUtilities;
+import net.tangly.core.Comment;
+import net.tangly.core.HasComments;
+import net.tangly.core.HasOid;
+import net.tangly.core.HasTags;
+import net.tangly.core.PhoneNr;
+import net.tangly.core.providers.Provider;
+import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
 import net.tangly.ports.TsvHdl;
@@ -102,7 +102,7 @@ public class CrmTsvHdl {
     }
 
     public void importComments(@NotNull Path path) {
-        Provider<Comment> comments = new InstanceProviderInMemory<>();
+        Provider<Comment> comments = new ProviderInMemory<>();
         importEntities(path, createTsvComment(), comments);
         realm.naturalEntities().items().forEach(e -> addComments(e, comments));
         realm.legalEntities().items().forEach(e -> addComments(e, comments));
@@ -113,7 +113,7 @@ public class CrmTsvHdl {
     }
 
     public void exportComments(@NotNull Path path) {
-        Provider<Comment> comments = new InstanceProviderInMemory<>();
+        Provider<Comment> comments = new ProviderInMemory<>();
         realm.naturalEntities().items().forEach(o -> updateAndCollectComments(o, comments));
         realm.legalEntities().items().forEach(o -> updateAndCollectComments(o, comments));
         realm.employees().items().forEach(o -> updateAndCollectComments(o, comments));
@@ -172,13 +172,13 @@ public class CrmTsvHdl {
     }
 
     public void importActivities(@NotNull Path path) {
-        Provider<Activity> activities = new InstanceProviderInMemory<>();
+        Provider<Activity> activities = new ProviderInMemory<>();
         importEntities(path, createTsvActivity(), activities);
         realm.interactions().items().forEach(e -> addActivities(e, activities));
     }
 
     public void exportActivities(@NotNull Path path) {
-        Provider<Activity> activities = new InstanceProviderInMemory<>();
+        Provider<Activity> activities = new ProviderInMemory<>();
         realm.interactions().items().forEach(o -> updateAndCollectActivities(o, activities));
         exportEntities(path, createTsvActivity(), activities);
     }
@@ -247,8 +247,8 @@ public class CrmTsvHdl {
                 TsvProperty.of(FROM_DATE, Employee::fromDate, Employee::fromDate, TsvProperty.CONVERT_DATE_FROM),
                 TsvProperty.of(TO_DATE, Employee::toDate, Employee::toDate, TsvProperty.CONVERT_DATE_FROM),
                 TsvProperty.ofString(TEXT, Employee::text, Employee::text),
-                TsvProperty.of("personOid", Employee::person, Employee::person, e -> findNaturalEntityByOid(e).orElse(null), convertFoidTo()), TsvProperty
-                    .of("organizationOid", Employee::organization, Employee::organization, e -> findLegalEntityByOid(e).orElse(null), convertFoidTo()),
+                TsvProperty.of("personOid", Employee::person, Employee::person, e -> findNaturalEntityByOid(e).orElse(null), convertFoidTo()),
+                TsvProperty.of("organizationOid", Employee::organization, Employee::organization, e -> findLegalEntityByOid(e).orElse(null), convertFoidTo()),
                 tagProperty(CRM_EMPLOYEE_TITLE), tagProperty(CRM_EMAIL_WORK), TsvProperty
                     .ofString(CRM_PHONE_WORK, e -> e.phoneNr(CrmTags.Type.work).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(CrmTags.Type.work, p)));
         return TsvEntity.of(Employee.class, fields, Employee::new);
@@ -299,10 +299,10 @@ public class CrmTsvHdl {
     }
 
     public Optional<NaturalEntity> findNaturalEntityByOid(String identifier) {
-        return (identifier != null) ? realm.naturalEntities().find(Long.parseLong(identifier)) : Optional.empty();
+        return (identifier != null) ? Provider.findByOid(realm.naturalEntities(), Long.parseLong(identifier)) : Optional.empty();
     }
 
     private Optional<LegalEntity> findLegalEntityByOid(String identifier) {
-        return (identifier != null) ? realm.legalEntities().find(Long.parseLong(identifier)) : Optional.empty();
+        return (identifier != null) ? Provider.findByOid(realm.legalEntities(), Long.parseLong(identifier)) : Optional.empty();
     }
 }

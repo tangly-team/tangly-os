@@ -11,42 +11,30 @@
  *  under the License.
  */
 
-package net.tangly.bus.providers;
+package net.tangly.core.providers;
 
 import java.lang.invoke.MethodHandles;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
-import net.tangly.core.HasOid;
+import one.microstream.storage.types.EmbeddedStorageManager;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Instance provider with instances in memory.
+ * Provider with instances in memory and persisted.
  *
  * @param <T> type of the instances handled in the provider
  */
-public class InstanceProviderInMemory<T extends HasOid> implements InstanceProvider<T> {
+public class ProviderPersistence<T> implements Provider<T> {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private transient final EmbeddedStorageManager storageManager;
     private final List<T> items;
 
-    public InstanceProviderInMemory() {
-        items = new ArrayList<>();
-    }
-
-    public static <T extends HasOid> Provider<T> of(Collection<? extends T> items) {
-        Provider<T> provider = new InstanceProviderInMemory<>();
-        provider.updateAll(items);
-        return provider;
-    }
-
-    @Override
-    public Optional<T> find(long oid) {
-        return findBy(T::oid, oid);
+    public ProviderPersistence(EmbeddedStorageManager storageManager, @NotNull List<T> items) {
+        this.storageManager = storageManager;
+        this.items = items;
     }
 
     @Override
@@ -56,14 +44,16 @@ public class InstanceProviderInMemory<T extends HasOid> implements InstanceProvi
 
     @Override
     public void update(@NotNull T entity) {
-        Optional<T> found = find(entity.oid());
-        if (found.isEmpty()) {
+        if (!items.contains(entity)) {
             items.add(entity);
-        } else if (found.get() != entity) {
-            items.remove(found.get());
-            items.add(entity);
-            logger.atDebug().addArgument(found).log("Duplicate instance with same oid found {}");
         }
+        storageManager.store(items);
+    }
+
+    @Override
+    public void updateAll(@NotNull Iterable<? extends T> entities) {
+        updateAll(entities);
+        storageManager.store(items);
     }
 
     @Override

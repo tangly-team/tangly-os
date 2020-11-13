@@ -13,36 +13,73 @@
 
 package net.tangly.products.ports;
 
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.inject.Inject;
 
 import net.tangly.bus.products.Assignment;
 import net.tangly.bus.products.Effort;
 import net.tangly.bus.products.Product;
 import net.tangly.bus.products.ProductsRealm;
-import net.tangly.bus.providers.InstanceProvider;
-import net.tangly.bus.providers.InstanceProviderInMemory;
-import net.tangly.bus.providers.Provider;
-import net.tangly.bus.providers.ProviderInMemory;
+import net.tangly.core.HasOid;
+import net.tangly.core.providers.Provider;
+import net.tangly.core.providers.ProviderInMemory;
+import net.tangly.core.providers.ProviderPersistence;
+import one.microstream.storage.types.EmbeddedStorage;
+import one.microstream.storage.types.EmbeddedStorageManager;
 
 public class ProductsEntities implements ProductsRealm {
-    private final InstanceProvider<Product> products;
-    private final InstanceProvider<Assignment> assignments;
-    private final ProviderInMemory<Effort> efforts;
+    static class Data {
+        List<Product> products;
+        List<Assignment> assignments;
+        List<Effort> efforts;
+        private long oidCounter;
+        private Map<String, String> configuration;
+
+        Data() {
+            products = new ArrayList<>();
+            assignments = new ArrayList<>();
+            efforts = new ArrayList<>();
+            oidCounter = HasOid.UNDEFINED_OID;
+            configuration = new HashMap<>();
+        }
+    }
+
+    private final Data data;
+
+    private final Provider<Product> products;
+    private final Provider<Assignment> assignments;
+    private final Provider<Effort> efforts;
+    private final EmbeddedStorageManager storageManager;
+
+
+    public ProductsEntities(Path path) {
+        data = new Data();
+        storageManager = EmbeddedStorage.start(data, path);
+        products = new ProviderPersistence<>(storageManager, data.products);
+        assignments = new ProviderPersistence<>(storageManager, data.assignments);
+        efforts = new ProviderPersistence<>(storageManager, data.efforts);
+    }
 
     @Inject
     public ProductsEntities() {
-        this.products = new InstanceProviderInMemory<>();
-        this.assignments = new InstanceProviderInMemory<>();
-        this.efforts = new ProviderInMemory<>();
+        data = new Data();
+        storageManager = null;
+        this.products = new ProviderInMemory<>(data.products);
+        this.assignments = new ProviderInMemory<>(data.assignments);
+        this.efforts = new ProviderInMemory<>(data.efforts);
     }
 
     @Override
-    public InstanceProvider<Product> products() {
+    public Provider<Product> products() {
         return products;
     }
 
     @Override
-    public InstanceProvider<Assignment> assignments() {
+    public Provider<Assignment> assignments() {
         return assignments;
     }
 

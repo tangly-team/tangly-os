@@ -10,7 +10,7 @@ weight: 6
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-== OS-005 Dependency Injection with Guice
+== OS-006 Dependency Injection with Guice
 
 Date: 2018-02-20
 

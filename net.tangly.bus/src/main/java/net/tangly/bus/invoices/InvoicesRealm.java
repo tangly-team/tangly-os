@@ -16,8 +16,7 @@ package net.tangly.bus.invoices;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import net.tangly.bus.providers.Provider;
-import net.tangly.bus.providers.RecordProviderInMemory;
+import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -31,7 +30,7 @@ public interface InvoicesRealm {
 
     Provider<Article> articles();
 
-    RecordProviderInMemory<InvoiceLegalEntity> legalEntities();
+    Provider<InvoiceLegalEntity> legalEntities();
 
     default List<Invoice> invoicesFor(@NotNull String contractId) {
         return invoices().items().stream().filter(o -> contractId.equals(o.contractId())).collect(Collectors.toList());

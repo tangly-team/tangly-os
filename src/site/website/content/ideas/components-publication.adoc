@@ -75,12 +75,6 @@ package net.tangly.gleam [[https://tangly-team.bitbucket.io/docs/gleam/]] {
 
 net.tangly.gleam --> net.tangly.commons
 
-package net.tangly.orm [[https://tangly-team.bitbucket.io/docs/orm/]] {
-}
-
-net.tangly.orm --> net.tangly.commons
-net.tangly.orm --> net.tangly.bus
-
 package net.tangly.ports [[https://tangly-team.bitbucket.io/docs/ports/]] {
 }
 

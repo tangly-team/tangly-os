@@ -13,38 +13,76 @@
 
 package net.tangly.invoices.ports;
 
-import net.tangly.core.TagTypeRegistry;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import net.tangly.bus.invoices.Article;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceLegalEntity;
 import net.tangly.bus.invoices.InvoicesRealm;
-import net.tangly.bus.providers.RecordProvider;
-import net.tangly.bus.providers.RecordProviderInMemory;
-import org.jetbrains.annotations.NotNull;
+import net.tangly.core.HasOid;
+import net.tangly.core.providers.Provider;
+import net.tangly.core.providers.ProviderInMemory;
+import net.tangly.core.providers.ProviderPersistence;
+import one.microstream.storage.types.EmbeddedStorage;
+import one.microstream.storage.types.EmbeddedStorageManager;
 
 public class InvoicesEntities implements InvoicesRealm {
-    private final RecordProviderInMemory<Invoice> invoices;
-    private final RecordProviderInMemory<Article> articles;
-    private final RecordProviderInMemory<InvoiceLegalEntity> legalEntities;
+    private static class Data {
+        List<Invoice> invoices;
+        List<Article> articles;
+        List<InvoiceLegalEntity> legalEntities;
+        private long oidCounter;
+        private Map<String, String> configuration;
+
+        Data() {
+            invoices = new ArrayList<>();
+            articles = new ArrayList<>();
+            legalEntities = new ArrayList<>();
+            oidCounter = HasOid.UNDEFINED_OID;
+            configuration = new HashMap<>();
+        }
+    }
+
+    private final Data data;
+
+    private final Provider<Invoice> invoices;
+    private final Provider<Article> articles;
+    private final Provider<InvoiceLegalEntity> legalEntities;
+    private final EmbeddedStorageManager storageManager;
+
+
+    public InvoicesEntities(Path path) {
+        this.data = new Data();
+        storageManager = EmbeddedStorage.start(data, path);
+        invoices = new ProviderPersistence<>(storageManager, data.invoices);
+        articles = new ProviderPersistence<>(storageManager, data.articles);
+        legalEntities = new ProviderPersistence<>(storageManager, data.legalEntities);
+    }
 
     public InvoicesEntities() {
-        invoices = new RecordProviderInMemory<>();
-        articles = new RecordProviderInMemory<>();
-        legalEntities = new RecordProviderInMemory<>();
+        data = new Data();
+        storageManager = null;
+        invoices = new ProviderInMemory<>(data.invoices);
+        articles = new ProviderInMemory<>(data.articles);
+        legalEntities = new ProviderInMemory<>(data.legalEntities);
     }
 
     @Override
-    public RecordProvider<Article> articles() {
+    public Provider<Article> articles() {
         return this.articles;
     }
 
     @Override
-    public RecordProvider<Invoice> invoices() {
+    public Provider<Invoice> invoices() {
         return this.invoices;
     }
 
     @Override
-    public RecordProviderInMemory<InvoiceLegalEntity> legalEntities() {
+    public Provider<InvoiceLegalEntity> legalEntities() {
         return legalEntities;
     }
 }

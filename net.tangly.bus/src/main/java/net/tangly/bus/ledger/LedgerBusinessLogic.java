@@ -75,4 +75,8 @@ public class LedgerBusinessLogic {
     public BigDecimal balance(@NotNull String accountId, @NotNull LocalDate date) {
         return ledger.accountBy(accountId).map(o -> o.balance(date)).orElse(BigDecimal.ZERO);
     }
+
+    public List<String> bookableAccountIds() {
+        return ledger().bookableAccounts().stream().map(Account::id).collect(Collectors.toUnmodifiableList());
+    }
 }

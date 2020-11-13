@@ -65,6 +65,7 @@ import net.tangly.commons.vaadin.Crud;
 import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.core.TagTypeRegistry;
 import net.tangly.core.app.App;
+import net.tangly.core.app.BoundedDomain;
 import net.tangly.crm.ports.CrmEntities;
 import net.tangly.crm.ports.CrmHdl;
 import net.tangly.invoices.ports.InvoicesAdapter;
@@ -85,11 +86,13 @@ public class MainView extends AppLayout {
     private static final String ORGANIZATION = "/Users/Shared/tangly/";
     private Component currentView;
 
-    private final TagTypeRegistry registry;
-    private final CrmBoundedDomain crmDomain;
-    private final LedgerBoundedDomain ledgerDomain;
-    private final InvoicesBoundedDomain invoicesDomain;
-    private final ProductsBoundedDomain productsDomain;
+    private static TagTypeRegistry registry;
+    private static CrmBoundedDomain crmDomain;
+    private static LedgerBoundedDomain ledgerDomain;
+    private static InvoicesBoundedDomain invoicesDomain;
+    private static ProductsBoundedDomain productsDomain;
+    private static Map<String, String> configuration;
+
 
     private final NaturalEntitiesView naturalEntitiesView;
     private final LegalEntitiesView legalEntitiesView;
@@ -112,9 +115,8 @@ public class MainView extends AppLayout {
     private final AnalyticsCrmView analyticsCrmView;
 
     private final TagTypesView tagTypesView;
-    private final Map<String, String> configuration;
 
-    public MainView() {
+    static {
         configuration = App.readConfiguration(Path.of(ORGANIZATION, "configuration.properties"));
         registry = new TagTypeRegistry();
         crmDomain = ofCrmDomain();
@@ -122,15 +124,15 @@ public class MainView extends AppLayout {
         productsDomain = ofProductsDomain();
         ledgerDomain = ofLedgerDomain();
 
-        importErpData();
+    }
 
+    public MainView() {
         naturalEntitiesView = new NaturalEntitiesView(crmDomain, Crud.Mode.EDITABLE);
         legalEntitiesView = new LegalEntitiesView(crmDomain, Crud.Mode.EDITABLE);
         employeesView = new EmployeesView(crmDomain, Crud.Mode.EDITABLE);
         contractsView = new ContractsView(crmDomain, invoicesDomain.logic(), Crud.Mode.EDITABLE);
         interactionsView = new InteractionsView(crmDomain, Crud.Mode.EDITABLE);
         activitiesView = new ActivitiesView(crmDomain, Crud.Mode.READONLY);
-
         subjectsView = new SubjectsView(crmDomain, Crud.Mode.EDITABLE);
 
         articlesView = new ArticlesView(invoicesDomain, Crud.Mode.EDITABLE);
@@ -139,12 +141,12 @@ public class MainView extends AppLayout {
         accountsView = new AccountsView(ledgerDomain, Crud.Mode.EDITABLE);
         transactionsView = new TransactionsView(ledgerDomain, Crud.Mode.EDITABLE);
 
-        analyticsCrmView = new AnalyticsCrmView(crmDomain.logic(), invoicesDomain.logic(), ledgerDomain.logic());
-        tagTypesView = new TagTypesView(crmDomain.registry());
-
         productsView = new ProductsView(productsDomain, Crud.Mode.EDITABLE);
         assignmentsView = new AssignmentsView(productsDomain, Crud.Mode.EDITABLE);
         effortsView = new EffortsView(productsDomain, Crud.Mode.EDIT_DELETE);
+
+        analyticsCrmView = new AnalyticsCrmView(crmDomain.logic(), invoicesDomain.logic(), ledgerDomain.logic());
+        tagTypesView = new TagTypesView(registry);
 
         currentView = naturalEntitiesView;
 
@@ -161,27 +163,27 @@ public class MainView extends AppLayout {
         setContent(naturalEntitiesView);
     }
 
-    InvoicesBoundedDomain ofInvoicesDomain() {
-        InvoicesRealm realm = new InvoicesEntities();
-        return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesHdl(realm, Path.of(ORGANIZATION, "invoices/")),
+    static InvoicesBoundedDomain ofInvoicesDomain() {
+        InvoicesRealm realm = new InvoicesEntities(Path.of(ORGANIZATION, "db/invoices/"));
+        return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesHdl(realm, Path.of(ORGANIZATION, "import/invoices/")),
             new InvoicesAdapter(realm, Path.of(ORGANIZATION, "reports/invoices/")), registry, configuration);
     }
 
-    CrmBoundedDomain ofCrmDomain() {
-        CrmRealm realm = new CrmEntities();
-        return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmHdl(realm, Path.of(ORGANIZATION, "crm")), null, registry, configuration);
+    static CrmBoundedDomain ofCrmDomain() {
+        CrmRealm realm = new CrmEntities(Path.of(ORGANIZATION, "db/crm/"));
+        return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmHdl(realm, Path.of(ORGANIZATION, "import/crm/")), null, registry, configuration);
     }
 
-    ProductsBoundedDomain ofProductsDomain() {
-        ProductsRealm realm = new ProductsEntities();
+    static ProductsBoundedDomain ofProductsDomain() {
+        ProductsRealm realm = new ProductsEntities(Path.of(ORGANIZATION, "db/products/"));
         ProductsBusinessLogic logic = new ProductsBusinessLogic(realm);
-        return new ProductsBoundedDomain(realm, logic, new ProductsHdl(realm, Path.of(ORGANIZATION, "products/")),
+        return new ProductsBoundedDomain(realm, logic, new ProductsHdl(realm, Path.of(ORGANIZATION, "import/products/")),
             new ProductsAdapter(logic, Path.of(ORGANIZATION, "reports/assignments")), registry, configuration);
     }
 
-    LedgerBoundedDomain ofLedgerDomain() {
+    static LedgerBoundedDomain ofLedgerDomain() {
         LedgerRealm ledger = new LedgerRealm();
-        return new LedgerBoundedDomain(ledger, new LedgerBusinessLogic(ledger), new LedgerHdl(ledger, Path.of(ORGANIZATION, "ledger/")),
+        return new LedgerBoundedDomain(ledger, new LedgerBusinessLogic(ledger), new LedgerHdl(ledger, Path.of(ORGANIZATION, "import/ledger/")),
             new LedgerAdapter(ledger, Path.of(ORGANIZATION, "reports/ledger")), registry, configuration);
     }
 
@@ -194,7 +196,7 @@ public class MainView extends AppLayout {
         MenuBar menuBar = new MenuBar();
         menuBar.setOpenOnHover(true);
 
-        MenuItem crm = menuBar.addItem("CRM");
+        MenuItem crm = menuBar.addItem("Customers");
         SubMenu crmSubMenu = crm.getSubMenu();
         crmSubMenu.addItem("Legal Entities", e -> select(legalEntitiesView));
         crmSubMenu.addItem("Natural Entities", e -> select(naturalEntitiesView));
@@ -220,6 +222,12 @@ public class MainView extends AppLayout {
         ledgerSubMenu.addItem("Transactions", e -> select(transactionsView));
         ledgerSubMenu.addItem("Analytics", e -> select(analyticsCrmView));
 
+        SubMenu importExportSubMenu = menuBar.addItem("Import/Export").getSubMenu();
+        registerActions(importExportSubMenu, crmDomain, "CRM");
+        registerActions(importExportSubMenu, productsDomain, "Products");
+        registerActions(importExportSubMenu, invoicesDomain, "Invoices");
+        registerActions(importExportSubMenu, ledgerDomain, "Ledger");
+
         MenuItem admin = menuBar.addItem("Admin");
         SubMenu adminSubmenu = admin.getSubMenu();
         adminSubmenu.addItem("Users", e -> select(subjectsView));
@@ -227,14 +235,19 @@ public class MainView extends AppLayout {
 
         MenuItem actionsItem = adminSubmenu.addItem("Actions");
         SubMenu actions = actionsItem.getSubMenu();
-        actions.addItem("Import CRM Data", e -> {
-            importErpData();
-            refreshViews();
-        });
-        actions.addItem("Export CRM data", e -> exportErpData());
         actions.addItem("Count CRM Tags", e -> countCrmTags());
 
         return menuBar;
+    }
+
+    private void registerActions(SubMenu subMenu, BoundedDomain<?, ?, ?, ?> boundedDomain, String domainName) {
+        MenuItem domain = subMenu.addItem(domainName);
+        SubMenu domainSubMenu = domain.getSubMenu();
+        domainSubMenu.addItem("Import Data", e -> {
+            boundedDomain.handler().importEntities();
+            refreshViews();
+        });
+        domainSubMenu.addItem("Export Data", e -> boundedDomain.handler().exportEntities());
     }
 
     private void countCrmTags() {
@@ -250,19 +263,6 @@ public class MainView extends AppLayout {
     private void select(@NotNull Component view) {
         setContent(view);
         currentView = view;
-    }
-
-    private void importErpData() {
-        crmDomain.handler().importEntities();
-        invoicesDomain.handler().importEntities();
-        productsDomain.handler().importEntities();
-        ledgerDomain.handler().importEntities();
-    }
-
-    private void exportErpData() {
-        crmDomain.handler().exportEntities();
-        invoicesDomain.handler().exportEntities();
-        productsDomain.handler().exportEntities();
     }
 
     private void refreshViews() {

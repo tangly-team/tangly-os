@@ -36,7 +36,6 @@ copy_module bus
 copy_module commons
 copy_module fsm
 copy_module gleam
-copy_module orm
 copy_module ports
 copy_module ui
 
