@@ -17,12 +17,11 @@ import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,55 +30,44 @@ import org.slf4j.LoggerFactory;
  * The ledger implements a ledger with a chart of accounts and a set of transactions. It provides the logic for the automatic processing of VAT amounts and
  * related bookings to the VAT related accounts.
  */
-public class LedgerRealm {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-    private final List<Account> accounts;
-    private final List<Transaction> journal;
+public interface LedgerRealm {
+    static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-    public LedgerRealm() {
-        accounts = new ArrayList<>();
-        journal = new ArrayList<>();
+    Provider<Account> accounts();
+
+    Provider<Transaction> transactions();
+
+    default List<Account> assets() {
+        return accounts().items().stream().filter(o -> Account.AccountGroup.ASSETS == o.group()).collect(Collectors.toUnmodifiableList());
     }
 
-    public List<Account> assets() {
-        return accounts.stream().filter(o -> Account.AccountGroup.ASSETS == o.group()).collect(Collectors.toUnmodifiableList());
+    default List<Account> liabilities() {
+        return accounts().items().stream().filter(o -> Account.AccountGroup.LIABILITIES == o.group()).collect(Collectors.toUnmodifiableList());
     }
 
-    public List<Account> liabilities() {
-        return accounts.stream().filter(o -> Account.AccountGroup.LIABILITIES == o.group()).collect(Collectors.toUnmodifiableList());
+    default List<Account> profitAndLoss() {
+        return accounts().items().stream().filter(o -> Account.AccountGroup.PROFITS_AND_LOSSES == o.group()).collect(Collectors.toUnmodifiableList());
     }
 
-    public List<Account> profitAndLoss() {
-        return accounts.stream().filter(o -> Account.AccountGroup.PROFITS_AND_LOSSES == o.group()).collect(Collectors.toUnmodifiableList());
+    default List<Account> bookableAccounts() {
+        return accounts().items().stream().filter(o -> !o.isAggregate()).collect(Collectors.toUnmodifiableList());
     }
 
-    public List<Account> bookableAccounts() {
-        return accounts.stream().filter(o -> !o.isAggregate()).collect(Collectors.toUnmodifiableList());
-    }
-
-    public List<Transaction> transactions() {
-        return Collections.unmodifiableList(journal);
-    }
-
-    public List<Transaction> transactions(LocalDate from, LocalDate to) {
-        return journal.stream().filter(o -> (o.date().isAfter(from) || o.date().equals(from)) && (o.date().isBefore(to) || o.date().isEqual(to)))
+    default List<Transaction> transactions(LocalDate from, LocalDate to) {
+        return transactions().items().stream().filter(o -> (o.date().isAfter(from) || o.date().equals(from)) && (o.date().isBefore(to) || o.date().isEqual(to)))
             .collect(Collectors.toUnmodifiableList());
     }
 
-    public List<Account> accounts() {
-        return Collections.unmodifiableList(accounts);
+    default Optional<Account> accountBy(String id) {
+        return accounts().items().stream().filter(o -> id.equals(o.id())).findAny();
     }
 
-    public Optional<Account> accountBy(String id) {
-        return accounts.stream().filter(o -> id.equals(o.id())).findAny();
+    default List<Account> accountsOwnedBy(String id) {
+        return accounts().items().stream().filter(o -> id.equals(o.ownedBy())).collect(Collectors.toUnmodifiableList());
     }
 
-    public List<Account> accountsOwnedBy(String id) {
-        return accounts.stream().filter(o -> id.equals(o.ownedBy())).collect(Collectors.toUnmodifiableList());
-    }
-
-    public void add(@NotNull Account account) {
-        accounts.add(account);
+    default void add(@NotNull Account account) {
+        accounts().items().add(account);
     }
 
     /**
@@ -88,7 +76,7 @@ public class LedgerRealm {
      *
      * @param transaction transaction to add to the ledger
      */
-    public void add(@NotNull Transaction transaction) {
+    default void add(@NotNull Transaction transaction) {
         Transaction booked = transaction;
         // handle VAT for credit entries in a non split-transaction, the payment is split between amount for the company, and due vat to government
         Optional<BigDecimal> vatDuePercent = transaction.creditSplits().get(0).getVatDue();
@@ -101,7 +89,7 @@ public class LedgerRealm {
             booked = new Transaction(transaction.date(), transaction.debitAccount(), null, transaction.amount(), splits, transaction.text(),
                 transaction.reference());
         }
-        journal.add(booked);
+        transactions().items().add(booked);
         booked.debitSplits().forEach(this::bookEntry);
         booked.creditSplits().forEach(this::bookEntry);
     }
@@ -109,10 +97,10 @@ public class LedgerRealm {
     /**
      * Build the account tree structure and perform basic validation.
      */
-    public void build() {
-        accounts.stream().filter(Account::isAggregate)
-            .forEach(o -> o.updateAggregatedAccounts(accounts.stream().filter(sub -> o.id().equals(sub.ownedBy())).collect(Collectors.toList())));
-        accounts.stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty())
+    default void build() {
+        accounts().items().stream().filter(Account::isAggregate)
+            .forEach(o -> o.updateAggregatedAccounts(accounts().items().stream().filter(sub -> o.id().equals(sub.ownedBy())).collect(Collectors.toList())));
+        accounts().items().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty())
             .forEach(o -> logger.atError().log("Aggregate account wrongly defined {}", o.id()));
     }
 
@@ -126,12 +114,12 @@ public class LedgerRealm {
 
     // region VAT-computations
 
-    public BigDecimal computeVatSales(LocalDate from, LocalDate to) {
+    default BigDecimal computeVatSales(LocalDate from, LocalDate to) {
         return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).filter(o -> o.findBy(AccountEntry.FINANCE, AccountEntry.VAT).isPresent())
             .map(AccountEntry::amount).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
     }
 
-    public BigDecimal computeVat(LocalDate from, LocalDate to) {
+    default BigDecimal computeVat(LocalDate from, LocalDate to) {
         return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).map(o -> {
             Optional<BigDecimal> vat = o.getVat();
             return vat.map(bigDecimal -> o.amount().subtract(o.amount().divide(BigDecimal.ONE.add(bigDecimal), 2, RoundingMode.HALF_UP)))
@@ -139,7 +127,7 @@ public class LedgerRealm {
         }).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
     }
 
-    public BigDecimal computeDueVat(LocalDate from, LocalDate to) {
+    default BigDecimal computeDueVat(LocalDate from, LocalDate to) {
         Optional<Account> account = accountBy("2201");
         return account.map(value -> value.getEntriesFor(from, to).stream().filter(AccountEntry::isCredit).map(AccountEntry::amount).reduce(BigDecimal::add)
             .orElse(BigDecimal.ZERO)).orElse(BigDecimal.ZERO);

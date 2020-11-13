@@ -37,7 +37,7 @@ public class TransactionsView extends EntitiesView<Transaction> {
     private Binder<Transaction> binder;
 
     public TransactionsView(@NotNull LedgerBoundedDomain domain, @NotNull Mode mode) {
-        super(Transaction.class, mode, ProviderInMemory.of(domain.realm().transactions()));
+        super(Transaction.class, mode, domain.realm().transactions());
         this.domain = domain;
         from = LocalDate.of(LocalDate.now().getYear(), 1, 1);
         to = LocalDate.of(LocalDate.now().getYear(), 12, 31);

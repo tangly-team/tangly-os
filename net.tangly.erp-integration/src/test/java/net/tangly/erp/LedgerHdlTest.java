@@ -20,7 +20,7 @@ import java.time.LocalDate;
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.ledger.Account;
-import net.tangly.bus.ledger.LedgerRealm;
+import net.tangly.ledger.ports.LedgerEntities;
 import net.tangly.ledger.ports.LedgerTsvHdl;
 import org.junit.jupiter.api.Test;
 
@@ -36,10 +36,11 @@ class LedgerHdlTest {
             ErpStore erpStore = new ErpStore(fs);
             erpStore.createCrmAndLedgerRepository();
 
-            LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerRealm());
+            LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerEntities());
             handler.importChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
             handler.ledger().build();
-            assertThat(handler.ledger().accounts().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty()).findAny().isEmpty())
+            assertThat(
+                handler.ledger().accounts().items().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty()).findAny().isEmpty())
                 .isTrue();
             assertThat(handler.ledger().assets().isEmpty()).isFalse();
             assertThat(handler.ledger().liabilities().isEmpty()).isFalse();
@@ -58,19 +59,19 @@ class LedgerHdlTest {
             ErpStore erpStore = new ErpStore(fs);
             erpStore.createCrmAndLedgerRepository();
 
-            LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerRealm());
+            LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerEntities());
             handler.importChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
             handler.ledger().build();
-            int nrOfAccounts = handler.ledger().accounts().size();
+            int nrOfAccounts = handler.ledger().accounts().items().size();
             int nrOfBookableAccounts = handler.ledger().bookableAccounts().size();
             int nrOfLiabilitiesAccounts = handler.ledger().liabilities().size();
             int nrOfProfitAndLossAccounts = handler.ledger().profitAndLoss().size();
 
             handler.exportChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
-            handler = new LedgerTsvHdl(new LedgerRealm());
+            handler = new LedgerTsvHdl(new LedgerEntities());
             handler.importChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
             handler.ledger().build();
-            assertThat(handler.ledger().accounts().size()).isEqualTo(nrOfAccounts);
+            assertThat(handler.ledger().accounts().items().size()).isEqualTo(nrOfAccounts);
             assertThat(handler.ledger().bookableAccounts().size()).isEqualTo(nrOfBookableAccounts);
             assertThat(handler.ledger().liabilities().size()).isEqualTo(nrOfLiabilitiesAccounts);
             assertThat(handler.ledger().profitAndLoss().size()).isEqualTo(nrOfProfitAndLossAccounts);
@@ -83,7 +84,7 @@ class LedgerHdlTest {
             ErpStore erpStore = new ErpStore(fs);
             erpStore.createCrmAndLedgerRepository();
 
-            LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerRealm());
+            LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerEntities());
             handler.importJournal(erpStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
             assertThat(handler.ledger().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31)).isEmpty()).isFalse();
         }

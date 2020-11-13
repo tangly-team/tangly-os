@@ -146,7 +146,7 @@ public class LedgerTsvHdl {
             out.printRecord(SECTION, GROUP, ACCOUNT, DESCRIPTION, BCLASS, GR, CURRENCY);
             int counter = 0;
             Account.AccountGroup group = null;
-            for (Account account : ledger.accounts()) {
+            for (Account account : ledger.accounts().items()) {
                 if ((account.group() != null) && (account.group() != group)) {
                     group = account.group();
                     writeSection(group, out);

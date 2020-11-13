@@ -72,6 +72,7 @@ import net.tangly.invoices.ports.InvoicesAdapter;
 import net.tangly.invoices.ports.InvoicesEntities;
 import net.tangly.invoices.ports.InvoicesHdl;
 import net.tangly.ledger.ports.LedgerAdapter;
+import net.tangly.ledger.ports.LedgerEntities;
 import net.tangly.ledger.ports.LedgerHdl;
 import net.tangly.products.ports.ProductsAdapter;
 import net.tangly.products.ports.ProductsEntities;
@@ -182,7 +183,7 @@ public class MainView extends AppLayout {
     }
 
     static LedgerBoundedDomain ofLedgerDomain() {
-        LedgerRealm ledger = new LedgerRealm();
+        LedgerRealm ledger = new LedgerEntities(Path.of(ORGANIZATION, "d/ledger/"));
         return new LedgerBoundedDomain(ledger, new LedgerBusinessLogic(ledger), new LedgerHdl(ledger, Path.of(ORGANIZATION, "import/ledger/")),
             new LedgerAdapter(ledger, Path.of(ORGANIZATION, "reports/ledger")), registry, configuration);
     }

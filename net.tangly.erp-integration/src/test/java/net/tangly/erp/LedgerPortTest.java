@@ -27,6 +27,7 @@ import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.ledger.LedgerRealm;
 import net.tangly.ledger.ports.ClosingReportAsciiDoc;
 import net.tangly.ledger.ports.LedgerAdapter;
+import net.tangly.ledger.ports.LedgerEntities;
 import net.tangly.ledger.ports.LedgerHdl;
 import net.tangly.ledger.ports.LedgerTsvHdl;
 import org.junit.jupiter.api.Tag;
@@ -41,7 +42,7 @@ class LedgerPortTest {
     @Test
     @Tag("localTest")
     public void createReports() {
-        LedgerHdl ledgerHdl = new LedgerHdl(new LedgerRealm(), Paths.get("/Users/Shared/tangly/import/ledger"));
+        LedgerHdl ledgerHdl = new LedgerHdl(new LedgerEntities(), Paths.get("/Users/Shared/tangly/import/ledger"));
         ledgerHdl.importEntities();
         LedgerAdapter adapter = new LedgerAdapter(ledgerHdl.ledger(), Paths.get("/Users/Shared/tangly/reports/ledger"));
 
@@ -67,7 +68,7 @@ class LedgerPortTest {
             ErpStore erpStore = new ErpStore(fs);
             erpStore.createCrmAndLedgerRepository();
 
-            LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerRealm());
+            LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerEntities());
             handler.importJournal(erpStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
 
             ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(handler.ledger());
@@ -79,7 +80,7 @@ class LedgerPortTest {
 
     private LedgerRealm createLedger(ErpStore store) {
         store.createCrmAndLedgerRepository();
-        LedgerHdl ledgerHdl = new LedgerHdl(new LedgerRealm(), store.ledgerRoot());
+        LedgerHdl ledgerHdl = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
         ledgerHdl.importEntities();
         return ledgerHdl.ledger();
     }

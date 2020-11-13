@@ -45,7 +45,7 @@ public class AccountsView extends EntitiesView<Account> {
      * @param mode   mode of the view
      */
     public AccountsView(@NotNull LedgerBoundedDomain domain, @NotNull Mode mode) {
-        super(Account.class, mode, ProviderInMemory.of(domain.realm().accounts()));
+        super(Account.class, mode, domain.realm().accounts());
         this.domain = domain;
         from = LocalDate.of(LocalDate.now().getYear(), 1, 1);
         to = LocalDate.of(LocalDate.now().getYear(), 12, 31);

@@ -11,7 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.invoices.ports;
+package net.tangly.ledger.ports;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -19,10 +19,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.tangly.bus.invoices.Article;
-import net.tangly.bus.invoices.Invoice;
-import net.tangly.bus.invoices.InvoiceLegalEntity;
-import net.tangly.bus.invoices.InvoicesRealm;
+import net.tangly.bus.ledger.Account;
+import net.tangly.bus.ledger.LedgerRealm;
+import net.tangly.bus.ledger.Transaction;
 import net.tangly.core.HasOid;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
@@ -30,58 +29,48 @@ import net.tangly.core.providers.ProviderPersistence;
 import one.microstream.storage.types.EmbeddedStorage;
 import one.microstream.storage.types.EmbeddedStorageManager;
 
-public class InvoicesEntities implements InvoicesRealm {
+public class LedgerEntities implements LedgerRealm {
     private static class Data {
-        List<Invoice> invoices;
-        List<Article> articles;
-        List<InvoiceLegalEntity> legalEntities;
+        List<Account> accounts;
+        List<Transaction> transactions;
         private long oidCounter;
         private Map<String, String> configuration;
 
         Data() {
-            invoices = new ArrayList<>();
-            articles = new ArrayList<>();
-            legalEntities = new ArrayList<>();
+            accounts = new ArrayList<>();
+            transactions = new ArrayList<>();
             oidCounter = HasOid.UNDEFINED_OID;
             configuration = new HashMap<>();
         }
     }
 
     private final Data data;
-    private final Provider<Invoice> invoices;
-    private final Provider<Article> articles;
-    private final Provider<InvoiceLegalEntity> legalEntities;
+    private final Provider<Account> accounts;
+    private final Provider<Transaction> transactions;
     private final EmbeddedStorageManager storageManager;
 
 
-    public InvoicesEntities(Path path) {
+    public LedgerEntities(Path path) {
         this.data = new Data();
         storageManager = EmbeddedStorage.start(data, path);
-        invoices = new ProviderPersistence<>(storageManager, data.invoices);
-        articles = new ProviderPersistence<>(storageManager, data.articles);
-        legalEntities = new ProviderPersistence<>(storageManager, data.legalEntities);
+        accounts = new ProviderPersistence<>(storageManager, data.accounts);
+        transactions = new ProviderPersistence<>(storageManager, data.transactions);
     }
 
-    public InvoicesEntities() {
-        data = new Data();
+    public LedgerEntities() {
+        this.data = new Data();
         storageManager = null;
-        invoices = new ProviderInMemory<>(data.invoices);
-        articles = new ProviderInMemory<>(data.articles);
-        legalEntities = new ProviderInMemory<>(data.legalEntities);
+        accounts = new ProviderInMemory<>(data.accounts);
+        transactions = new ProviderInMemory<>(data.transactions);
     }
 
     @Override
-    public Provider<Article> articles() {
-        return this.articles;
+    public Provider<Account> accounts() {
+        return accounts;
     }
 
     @Override
-    public Provider<Invoice> invoices() {
-        return this.invoices;
-    }
-
-    @Override
-    public Provider<InvoiceLegalEntity> legalEntities() {
-        return legalEntities;
+    public Provider<Transaction> transactions() {
+        return transactions;
     }
 }
