@@ -23,7 +23,6 @@ import net.tangly.core.Tag;
  * legal number of an organization (e.g. zefix UID number in Switzerland, EUID in Europe), and a text describing it.
  */
 public class LegalEntity extends QualifiedEntityImp implements CrmEntity {
-    private static final long serialVersionUID = 1L;
 
     public LegalEntity() {
     }

@@ -27,7 +27,6 @@ import org.jetbrains.annotations.NotNull;
  * the entity owning it an is only accessible through this entity.
  */
 public class Comment implements HasOid, HasTags {
-    private static final long serialVersionUID = 1L;
 
     /**
      * The unique object identifier of the comment instance.

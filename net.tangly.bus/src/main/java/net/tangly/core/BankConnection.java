@@ -13,7 +13,6 @@
 
 package net.tangly.core;
 
-import java.io.Serializable;
 import java.lang.invoke.MethodHandles;
 import java.util.Objects;
 
@@ -31,7 +30,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Describes a bank connection with IBAN account number, BIC identification and name of the institute. The class is immutable.
  */
-public record BankConnection(String iban, String bic, String institute) implements Serializable {
+public record BankConnection(String iban, String bic, String institute) {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     /**

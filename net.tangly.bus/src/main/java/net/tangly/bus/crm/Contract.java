@@ -37,7 +37,6 @@ import net.tangly.core.QualifiedEntityImp;
  * </ul>
  */
 public class Contract extends QualifiedEntityImp implements CrmEntity {
-    private static final long serialVersionUID = 1L;
     private Address address;
     private BankConnection bankConnection;
     private BigDecimal amountWithoutVat;

@@ -25,7 +25,6 @@ import org.jetbrains.annotations.NotNull;
  * date is empty the employee is still legally working for the organization.
  */
 public class Employee extends EntityImp implements CrmEntity {
-    private static final long serialVersionUID = 1L;
     private NaturalEntity person;
     private LegalEntity organization;
 

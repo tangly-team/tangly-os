@@ -14,7 +14,6 @@
 package net.tangly.core;
 
 
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
@@ -32,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
  * @param name      the name of the tag
  * @param value     the optional value of the tag
  */
-public record Tag(String namespace, @NotNull String name, String value) implements Serializable {
+public record Tag(String namespace, @NotNull String name, String value) {
     public Tag {
         Objects.requireNonNull(name);
     }

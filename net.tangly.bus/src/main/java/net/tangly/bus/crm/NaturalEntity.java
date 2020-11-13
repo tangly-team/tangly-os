@@ -23,7 +23,6 @@ import net.tangly.core.Strings;
  * the last name and the first name separated by a comma, a life duration and a text describing it.
  */
 public class NaturalEntity extends EntityImp implements CrmEntity {
-    private static final long serialVersionUID = 1L;
     private String socialNr;
     private String firstname;
     private String lastname;

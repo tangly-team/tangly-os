@@ -12,7 +12,7 @@ tags: ["java", "design", "crm", "serie-identifiers"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2020-08-01-head.png[720, 480, role=left]
+image::2020-08-01-head.png[720,480,role=left]
 A software architect models customer domains and maps them to powerful software abstractions.
 Soon you correlate internal efficient identifiers, meaningful external identifiers and domain entities.
 You enjoy our long conversations with the enterprise data architect and find out the system owning a specific external identifier.
@@ -93,7 +93,9 @@ You often have multiple source of external identifiers, sometimes overlapping an
 You have to formulate a long-term strategy to clean-up your landscape and handle the problems until these clean-up activities are completed.
 By handling we mean administrative and import rules matching the various external identifiers to the same object.
 
-One possible solution is to use tags. Store externally defined identifiers as tags. Document these tags as specific for the external system.
+One possible solution is to use tags.
+Store externally defined identifiers as tags.
+Document these tags as specific for the external system.
 This approach scales to multiple external identifiers, and multiple systems managing the same external identifier.
 So you have a scalable approach and do not pollute your domain model with spurious information defined in external systems.
 Upon completion of the refactoring these tags document historical information and could safely be removed.
@@ -135,8 +137,7 @@ Identifiers are a key element to model entities using the domain driven design _
 We have a new social security number which is used in social insurance workflows.
 _The same number is also used in medical insurance workflows._
 
-We have also a federal identity card number, a federal passport number, a federal driver license number, additional medical card insurance numbers,
-a state tax personal identification number, and more external identifiers.
+We have also a federal identity card number, a federal passport number, a federal driver license number, additional medical card insurance numbers, a state tax personal identification number, and more external identifiers.
 All these external identifiers shall referenced the same natural person.
 
 More interesting is that a tourist living in the European zone has none of these numbers.
@@ -147,9 +148,9 @@ The external identifier and name features can be grouped in one interface.
 Additional information are available under link:../../docs/bus/businessmodels/.
 Below the source code in modern Java is:
 
-[source, java]
+[source,java]
 ----
-public interface HasOid extends Serializable {
+public interface HasOid {
     long oid();
 }
 

@@ -13,14 +13,12 @@
 
 package net.tangly.core.codes;
 
-import java.io.Serializable;
-
 /**
  * The abstraction of a reference table or reference codes. A code table is an extensible and temporal enumeration. New values can be added without recompiling
  * the application. A code can have a validity period. To guaranty consistency a code format shall never be deleted, only be disabled. Code instances are
  * immutable.
  */
-public interface Code extends Serializable {
+public interface Code {
     /**
      * Returns the unique identifier of a code table entity.
      *

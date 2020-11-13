@@ -13,7 +13,6 @@
 
 package net.tangly.core;
 
-import java.io.Serializable;
 import java.lang.invoke.MethodHandles;
 
 import com.google.i18n.phonenumbers.NumberParseException;
@@ -26,7 +25,7 @@ import org.slf4j.LoggerFactory;
  * Represents an immutable phone number as a canonical string. Validation and formatting of phone numbers is performed through the phone library of Google which
  * supports worldwide numbers.
  */
-public record PhoneNr(String number) implements Serializable {
+public record PhoneNr(String number) {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     /**

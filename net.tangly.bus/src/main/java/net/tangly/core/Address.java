@@ -13,7 +13,6 @@
 
 package net.tangly.core;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 import org.jetbrains.annotations.NotNull;
@@ -148,6 +147,6 @@ public record Address(String street, String extended, String poBox, String postc
      */
     public String text() {
         return String.format("%s,%s,%s,%s,%s,%s,%s", Strings.nullToEmpty(street), Strings.nullToEmpty(extended), Strings.nullToEmpty(poBox),
-                Strings.nullToEmpty(postcode), Strings.nullToEmpty(locality), Strings.nullToEmpty(region), Strings.nullToEmpty(country));
+            Strings.nullToEmpty(postcode), Strings.nullToEmpty(locality), Strings.nullToEmpty(region), Strings.nullToEmpty(country));
     }
 }
