@@ -201,6 +201,13 @@ public class Account implements HasId, HasName {
         entries.add(entry);
     }
 
+    @Override
+    public String toString() {
+        return """
+            Account[id=%s, kind=%s, group=%s, currency=%s, name=%s, ownedBy=%s, aggregatedAccounts=%s]
+            """.formatted(id(), kind(), group(), currency(), name(), ownedBy(), aggregatedAccounts());
+    }
+
     void updateAggregatedAccounts(Collection<Account> aggregatedAccounts) {
         this.aggregatedAccounts.clear();
         this.aggregatedAccounts.addAll(aggregatedAccounts);

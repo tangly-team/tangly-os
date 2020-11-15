@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import javax.inject.Inject;
 
 import net.tangly.bus.ledger.Account;
@@ -84,12 +85,12 @@ public class LedgerTsvHdl {
      * <dl>
      *     <dt>Section</dt><dd>Defines the section the account is belonging to: 1 for assets, 2 for liabilities, 4 for profits and losses. A star indicates a
      *     separation line with a title in the document.</dd>
-     *     <dt>Group</dt><dd>if the line has a group value, it is an aggregated account and therefore has no account identifier</dd>
+     *     <dt>Group</dt><dd>if the line has a group value, it is an aggregated account and therefore has no account identifier.</dd>
      *     <dt>Account</dt><dd>if the line has a account value, it is an account and the value is the account identifier. It has no group value.</dd>
-     *     <dt>Description</dt><dd>the description is the human readable name of the account or aggregated account</dd>
-     *     <dt>BClass</dt><dd>Defines the type of account: 1 for assets, 2 for liabilities, 3 for expenses, and 4 for incomes</dd>
-     *     <dt>Gr</dt><dd>Defines the aggregate account owning the account</dd>
-     *     <dt>Currency</dt><dd>Defines the currency of the account</dd>
+     *     <dt>Description</dt><dd>the description is the human readable name of the account or aggregated account.</dd>
+     *     <dt>BClass</dt><dd>Defines the type of account: 1 for assets, 2 for liabilities, 3 for expenses, and 4 for incomes.</dd>
+     *     <dt>Gr</dt><dd>Defines the aggregate account owning the account.</dd>
+     *     <dt>Currency</dt><dd>Defines the currency of the accoun.t</dd>
      * </dl>
      *
      * @param path path to the file containing the chart of accounts
@@ -182,8 +183,19 @@ public class LedgerTsvHdl {
 
     /**
      * Imports the transaction list exported from a CSV file with header.
+     * <p>The file structure provided by the external program is:</p>
+     * <dl>
+     *     <dt>date</dt><dd>date of the transaction encoded as ISO standard YYYY-MM-DD.</dd>
+     *     <dt>reference</dt><dd>optional reference to a document associated with the transaction.</dd>
+     *     <dt>text</dt><dd>text deecribing the transaction.</dd>
+     *     <dt>account debit</dt><dd>account debited. If empty indicates a split transaction.</dd>
+     *     <dt>account credit</dt><dd>account credited. If empty indicates a split transaction.</dd>
+     *     <dt>amount</dt><dd>amount of the transaction.</dd>
+     *     <dt>VAT code</dt><dd>optional VAT code associated with the transaction or the split part of a transaction.</dd>
+     * </dl>
      *
      * @param path path to the file containing the list of transactions
+     * @see #exportJournal(Path, LocalDate, LocalDate)
      */
     public void importJournal(@NotNull Path path) {
         try (Reader in = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
@@ -200,6 +212,7 @@ public class LedgerTsvHdl {
                 String[] creditValues = creditAccount.split("-");
                 String amount = record.get(AMOUNT);
                 String vatCode = record.get(VAT_CODE);
+                String dateExpected = record.get(DATE_EXPECTED);
                 Transaction transaction = null;
                 if (isPartOfSplitTransaction(record)) {
                     List<AccountEntry> splits = new ArrayList<>();
@@ -214,6 +227,7 @@ public class LedgerTsvHdl {
                     try {
                         transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
                             Strings.isNullOrEmpty(amount) ? BigDecimal.ZERO : new BigDecimal(amount), text, reference);
+                        defineVat(transaction.creditSplits().get(0), vatCode);
                     } catch (NumberFormatException e) {
                         logger.atError().setCause(e).log("{}: not a legal amount {}", date, amount);
                     }
@@ -222,8 +236,7 @@ public class LedgerTsvHdl {
                 if (transaction != null) {
                     defineProject(transaction.debitSplits(), debitAccount);
                     defineProject(transaction.creditSplits(), creditAccount);
-                    defineVat(transaction.creditSplits(), vatCode);
-                    ledger.add(transaction);
+                    ledger.addVat(transaction);
                     ++counter;
                     EventData.log(EventData.IMPORT, TsvHdl.MODULE, EventData.Status.SUCCESS, Transaction.class.getSimpleName() + " imported to journal",
                         Map.of("filename", path, "entity", transaction));
@@ -236,23 +249,37 @@ public class LedgerTsvHdl {
         }
     }
 
+    /**
+     * Exports the transactions with a date in the given time interval.
+     *
+     * @param path path to the file containing the list of transactions
+     * @param from start of the time interval of relevant transactions
+     * @param to   end of the time interval of relevant transactions
+     */
     public void exportJournal(@NotNull Path path, LocalDate from, LocalDate to) {
         try (CSVPrinter out = new CSVPrinter(Files.newBufferedWriter(path, StandardCharsets.UTF_8), TsvHdl.FORMAT)) {
             out.printRecord(DATE, DOC, DESCRIPTION, ACCOUNT_DEBIT, ACCOUNT_CREDIT, AMOUNT, VAT_CODE, DATE_EXPECTED);
             int counter = 0;
             for (Transaction transaction : ledger.transactions(from, to)) {
+                Optional<Tag> vat = transaction.creditSplits().get(0).findBy(AccountEntry.FINANCE, AccountEntry.VAT_FLAG);
+                out.printRecord(transaction.date(), transaction.reference(), transaction.text(), transaction.debitAccount(), transaction.creditAccount(),
+                    transaction.amount(), vat.isPresent() ? vat.get().value() : null, null);
+                // TODO write export code for project
+                // TODO write export code for expected date
                 if (transaction.isSplit()) {
-                    // TODO write export code
-                } else {
-                    out.print(transaction.date());
-                    out.print(transaction.reference());
-                    out.print(transaction.text());
-                    out.print(transaction.debitAccount());
-                    out.print(transaction.creditAccount());
-                    out.print(transaction.amount());
-                    // TODO write export code for VAT code
-                    // TODO write export code for expected date
-                    // TODO write export code for project
+                    if (transaction.debitAccount() == null) {
+                        for (AccountEntry entry : transaction.debitSplits()) {
+                            vat = entry.findBy(AccountEntry.FINANCE, AccountEntry.VAT_FLAG);
+                            out.printRecord(entry.date(), transaction.reference(), entry.text(), entry.accountId(), null, entry.amount(),
+                                vat.isPresent() ? vat.get().value() : null, null);
+                        }
+                    } else if (transaction.creditAccount() == null) {
+                        for (AccountEntry entry : transaction.creditSplits()) {
+                            vat = entry.findBy(AccountEntry.FINANCE, AccountEntry.VAT_FLAG);
+                            out.printRecord(entry.date(), transaction.reference(), entry.text(), null, entry.accountId(), entry.amount(),
+                                vat.isPresent() ? vat.get().value() : null, null);
+                        }
+                    }
                 }
                 ++counter;
             }
@@ -270,6 +297,7 @@ public class LedgerTsvHdl {
             String debitAccount = record.get(ACCOUNT_DEBIT);
             String creditAccount = record.get(ACCOUNT_CREDIT);
             String splitAmount = record.get(AMOUNT);
+            String vatCode = record.get(VAT_CODE);
             AccountEntry entry = null;
             if (!Strings.isNullOrEmpty(debitAccount)) {
                 String[] debitValues = debitAccount.split("-");
@@ -278,6 +306,7 @@ public class LedgerTsvHdl {
                 String[] creditValues = creditAccount.split("-");
                 entry = AccountEntry.credit(creditValues[0], date, splitAmount, text);
             }
+            defineVat(entry, vatCode);
             splits.add(entry);
             record = records.hasNext() ? records.next() : null;
         }
@@ -303,17 +332,20 @@ public class LedgerTsvHdl {
     private static final BigDecimal VAT_F1_DUE_VALUE = new BigDecimal("0.061");
     private static final BigDecimal VAT_F3_DUE_VALUE = new BigDecimal("0.065");
 
-    private static void defineVat(@NotNull List<AccountEntry> entries, String code) {
+    private static void defineVat(@NotNull AccountEntry entry, String code) {
+        // TODO wrong VAT codes are per credit account entry
         if (!Strings.isNullOrEmpty(code)) {
             switch (code) {
-                case F1 -> entries.forEach(o -> {
-                    o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT, VAT_F1_VALUE.toString()));
-                    o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT_DUE, VAT_F1_DUE_VALUE.toString()));
-                });
-                case F3 -> entries.forEach(o -> {
-                    o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT, VAT_F3_VALUE.toString()));
-                    o.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT_DUE, VAT_F3_DUE_VALUE.toString()));
-                });
+                case F1 -> {
+                    entry.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT, VAT_F1_VALUE.toString()));
+                    entry.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT_DUE, VAT_F1_DUE_VALUE.toString()));
+                    entry.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT_FLAG, F1));
+                }
+                case F3 -> {
+                    entry.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT, VAT_F3_VALUE.toString()));
+                    entry.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT_DUE, VAT_F3_DUE_VALUE.toString()));
+                    entry.add(Tag.of(AccountEntry.FINANCE, AccountEntry.VAT_FLAG, F3));
+                }
                 default -> logger.info("Unknown VAT code in CSV file {}", code);
             }
         }

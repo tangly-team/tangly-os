@@ -33,7 +33,10 @@ public class AccountEntry implements HasTags {
     public static final String FINANCE = "fin";
     public static final String VAT = "vat";
     public static final String VAT_DUE = "vat-due";
+    public static final String VAT_FLAG = "flag";
     public static final String PROJECT = "project";
+    public static final String DATE_EXPECTED = "date-expected";
+
     /**
      * Account on which the entry is booked.
      */
@@ -137,7 +140,9 @@ public class AccountEntry implements HasTags {
 
     @Override
     public String toString() {
-        return "{account=" + accountId + ", date=" + date + ", amount=" + amount + ", isDebit=" + debit + ", text=" + text + "}";
+        return """
+            AccountEntry[accountId=%s, date=%s, amount=%s, isDebit=%s", text="%s, tags=%s]
+            """.formatted(accountId(), date(), amount(), isDebit(), text(), tags());
     }
 
     public Optional<BigDecimal> getVat() {

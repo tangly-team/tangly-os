@@ -24,12 +24,12 @@ import java.util.List;
  * of transactions have one debit and one credit account. The class is immutable.
  */
 public class Transaction {
+    private final LocalDate date;
     private final AccountEntry debit;
     private final AccountEntry credit;
     private final List<AccountEntry> splits;
     private final String reference;
     private final String text;
-    private final LocalDate date;
 
     public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, String text, String reference) {
         this.date = date;
@@ -120,12 +120,19 @@ public class Transaction {
     }
 
     /**
-     * Returns true if the transaction credit side is split between multiple accounts.
+     * Returns true if the transaction is split between multiple accounts.
      *
      * @return true if the transaction is split
      */
     public boolean isSplit() {
         return (debit == null) || (credit == null);
+    }
+
+    @Override
+    public String toString() {
+        return """
+            Transaction[date=%s, debit=%s, credit=%s, splits=%s, reference, text]
+            """.formatted(date(), debitAccount(), creditAccount(), splits, reference(), text());
     }
 }
 

@@ -19,6 +19,7 @@ import java.io.UncheckedIOException;
 import java.nio.file.Path;
 import java.util.Map;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Component;
@@ -191,6 +192,30 @@ public class MainView extends AppLayout {
     @Override
     protected void onAttach(AttachEvent attachEvent) {
         VaadinUtils.setAttribute(this, "username", "mbaumann");
+    }
+
+    private void registerDomain(MenuBar menuBar, BoundedDomain<?, ?, ?, ?> boundedDomain, String domainName, Consumer<SubMenu> registerViews,
+                                Consumer<SubMenu> registerAnalyticsViews, Consumer<SubMenu> registerAdministrationViews) {
+        SubMenu domainMenu = menuBar.addItem(domainName).getSubMenu();
+        registerViews.accept(domainMenu);
+        domainMenu.addItem("Legal Entities", e -> select(legalEntitiesView));
+        domainMenu.addItem("Natural Entities", e -> select(naturalEntitiesView));
+        domainMenu.addItem("Contracts", e -> select(contractsView));
+        domainMenu.addItem("Employees", e -> select(employeesView));
+        domainMenu.addItem("Interactions", e -> select(interactionsView));
+        domainMenu.addItem("Activities", e -> select(activitiesView));
+
+        SubMenu analyticsSubMenu = domainMenu.addItem("Analytics").getSubMenu();
+        registerAnalyticsViews.accept(analyticsSubMenu);
+
+        SubMenu adminSubMenu = domainMenu.addItem("Administration").getSubMenu();
+        registerAdministrationViews.accept(adminSubMenu);
+
+        adminSubMenu.addItem("Import Data", e -> {
+            boundedDomain.handler().importEntities();
+            refreshViews();
+        });
+        adminSubMenu.addItem("Export Data", e -> boundedDomain.handler().exportEntities());
     }
 
     private MenuBar menuBar() {

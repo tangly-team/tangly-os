@@ -17,6 +17,8 @@ import java.time.LocalDate;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Defines a mixin with a time interval.
  */
@@ -88,7 +90,11 @@ public interface HasInterval {
      * @param date date against which the inclusion test is evaluated
      * @return true if inside the interval otherwise false
      */
-    default boolean isActive(LocalDate date) {
+    default boolean isActive(@NotNull LocalDate date) {
         return ((fromDate() == null) || (!date.isBefore(fromDate()))) && ((toDate() == null) || (!date.isAfter(toDate())));
+    }
+
+    static boolean isActive(@NotNull LocalDate date, LocalDate fromDate, LocalDate toDate) {
+        return ((fromDate == null) || (!date.isBefore(fromDate))) && ((toDate == null) || (!date.isAfter(toDate)));
     }
 }

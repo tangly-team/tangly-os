@@ -28,6 +28,7 @@ import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.providers.ProviderPersistence;
 import one.microstream.storage.types.EmbeddedStorage;
 import one.microstream.storage.types.EmbeddedStorageManager;
+import org.jetbrains.annotations.NotNull;
 
 public class LedgerEntities implements LedgerRealm {
     private static class Data {
@@ -72,5 +73,16 @@ public class LedgerEntities implements LedgerRealm {
     @Override
     public Provider<Transaction> transactions() {
         return transactions;
+    }
+
+    @Override
+    public void add(@NotNull Transaction transaction) {
+        transactions.update(transaction);
+    }
+
+    @Override
+    public void add(@NotNull Account account) {
+        accounts.update(account);
+
     }
 }

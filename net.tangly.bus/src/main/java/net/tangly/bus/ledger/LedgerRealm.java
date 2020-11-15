@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import net.tangly.core.HasInterval;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -54,8 +55,7 @@ public interface LedgerRealm {
     }
 
     default List<Transaction> transactions(LocalDate from, LocalDate to) {
-        return transactions().items().stream().filter(o -> (o.date().isAfter(from) || o.date().equals(from)) && (o.date().isBefore(to) || o.date().isEqual(to)))
-            .collect(Collectors.toUnmodifiableList());
+        return transactions().items().stream().filter(o -> HasInterval.isActive(o.date(), from, to)).collect(Collectors.toUnmodifiableList());
     }
 
     default Optional<Account> accountBy(String id) {
@@ -66,9 +66,9 @@ public interface LedgerRealm {
         return accounts().items().stream().filter(o -> id.equals(o.ownedBy())).collect(Collectors.toUnmodifiableList());
     }
 
-    default void add(@NotNull Account account) {
-        accounts().items().add(account);
-    }
+    void add(@NotNull Account account);
+
+    void add(@NotNull Transaction transaction);
 
     /**
      * Adds a transaction to the ledger and the referenced accounts. A warning message is written to the log file if one of the involved accounts is not
@@ -76,7 +76,7 @@ public interface LedgerRealm {
      *
      * @param transaction transaction to add to the ledger
      */
-    default void add(@NotNull Transaction transaction) {
+    default void addVat(@NotNull Transaction transaction) {
         Transaction booked = transaction;
         // handle VAT for credit entries in a non split-transaction, the payment is split between amount for the company, and due vat to government
         Optional<BigDecimal> vatDuePercent = transaction.creditSplits().get(0).getVatDue();
@@ -89,9 +89,9 @@ public interface LedgerRealm {
             booked = new Transaction(transaction.date(), transaction.debitAccount(), null, transaction.amount(), splits, transaction.text(),
                 transaction.reference());
         }
-        transactions().items().add(booked);
         booked.debitSplits().forEach(this::bookEntry);
         booked.creditSplits().forEach(this::bookEntry);
+        add(booked);
     }
 
     /**

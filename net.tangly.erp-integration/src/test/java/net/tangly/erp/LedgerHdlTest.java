@@ -15,6 +15,7 @@ package net.tangly.erp;
 
 import java.io.IOException;
 import java.nio.file.FileSystem;
+import java.nio.file.Path;
 import java.time.LocalDate;
 
 import com.google.common.jimfs.Configuration;
@@ -85,8 +86,26 @@ class LedgerHdlTest {
             erpStore.createCrmAndLedgerRepository();
 
             LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerEntities());
+            handler.importChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
+            handler.ledger().build();
+
             handler.importJournal(erpStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
             assertThat(handler.ledger().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31)).isEmpty()).isFalse();
+        }
+    }
+
+    @Test
+    void testTsvTransactionsImportExport() throws IOException {
+        try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
+            ErpStore erpStore = new ErpStore(fs);
+            erpStore.createCrmAndLedgerRepository();
+
+            LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerEntities());
+            handler.importChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
+            handler.ledger().build();
+            handler.importJournal(erpStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
+
+            handler.exportJournal(Path.of("/Users/Shared/tmp/foo.tsv"), null, null);
         }
     }
 }
