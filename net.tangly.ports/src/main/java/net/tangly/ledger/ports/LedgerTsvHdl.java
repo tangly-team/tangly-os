@@ -204,14 +204,11 @@ public class LedgerTsvHdl {
             CSVRecord record = records.hasNext() ? records.next() : null;
             while (record != null) {
                 String date = record.get(DATE);
-                String reference = record.get(DOC);
-                String text = record.get(DESCRIPTION);
                 String debitAccount = record.get(ACCOUNT_DEBIT);
                 String creditAccount = record.get(ACCOUNT_CREDIT);
                 String[] debitValues = debitAccount.split("-");
                 String[] creditValues = creditAccount.split("-");
                 String amount = record.get(AMOUNT);
-                String vatCode = record.get(VAT_CODE);
                 String dateExpected = record.get(DATE_EXPECTED);
                 Transaction transaction = null;
                 if (isPartOfSplitTransaction(record)) {
@@ -219,23 +216,27 @@ public class LedgerTsvHdl {
                     record = importSplits(records, splits);
                     try {
                         transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
-                            new BigDecimal(amount), splits, text, reference);
+                            new BigDecimal(amount), splits, record.get(DESCRIPTION), record.get(DOC));
                     } catch (NumberFormatException e) {
                         logger.atError().setCause(e).log("{}: not a legal amount {}", date, amount);
                     }
                 } else {
                     try {
                         transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
-                            Strings.isNullOrEmpty(amount) ? BigDecimal.ZERO : new BigDecimal(amount), text, reference);
-                        defineVat(transaction.creditSplits().get(0), vatCode);
+                            Strings.isNullOrEmpty(amount) ? BigDecimal.ZERO : new BigDecimal(amount), record.get(DESCRIPTION), record.get(DOC));
+                        defineVat(transaction.creditSplits().get(0), record.get(VAT_CODE));
                     } catch (NumberFormatException e) {
                         logger.atError().setCause(e).log("{}: not a legal amount {}", date, amount);
                     }
                     record = records.hasNext() ? records.next() : null;
                 }
                 if (transaction != null) {
-                    defineProject(transaction.debitSplits(), debitAccount);
-                    defineProject(transaction.creditSplits(), creditAccount);
+                    if (transaction.debitSplits().size() == 1) {
+                        defineSegments(transaction.debitSplits().get(0), debitAccount);
+                    }
+                    if (transaction.creditSplits().size() == 1) {
+                        defineSegments(transaction.creditSplits().get(0), creditAccount);
+                    }
                     ledger.addVat(transaction);
                     ++counter;
                     EventData.log(EventData.IMPORT, TsvHdl.MODULE, EventData.Status.SUCCESS, Transaction.class.getSimpleName() + " imported to journal",
@@ -262,22 +263,20 @@ public class LedgerTsvHdl {
             int counter = 0;
             for (Transaction transaction : ledger.transactions(from, to)) {
                 Optional<Tag> vat = transaction.creditSplits().get(0).findBy(AccountEntry.FINANCE, AccountEntry.VAT_FLAG);
-                out.printRecord(transaction.date(), transaction.reference(), transaction.text(), transaction.debitAccount(), transaction.creditAccount(),
-                    transaction.amount(), vat.isPresent() ? vat.get().value() : null, null);
-                // TODO write export code for project
-                // TODO write export code for expected date
+                out.printRecord(transaction.date(), transaction.reference(), transaction.text(), accountCompositeId(transaction.debitSplits().get(0)),
+                    accountCompositeId(transaction.creditSplits().get(0)), transaction.amount(), vat.map(Tag::value).orElse(null), null);
                 if (transaction.isSplit()) {
                     if (transaction.debitAccount() == null) {
                         for (AccountEntry entry : transaction.debitSplits()) {
                             vat = entry.findBy(AccountEntry.FINANCE, AccountEntry.VAT_FLAG);
-                            out.printRecord(entry.date(), transaction.reference(), entry.text(), entry.accountId(), null, entry.amount(),
-                                vat.isPresent() ? vat.get().value() : null, null);
+                            out.printRecord(entry.date(), transaction.reference(), entry.text(), accountCompositeId(entry), null, entry.amount(),
+                                vat.map(Tag::value).orElse(null), null);
                         }
                     } else if (transaction.creditAccount() == null) {
                         for (AccountEntry entry : transaction.creditSplits()) {
                             vat = entry.findBy(AccountEntry.FINANCE, AccountEntry.VAT_FLAG);
-                            out.printRecord(entry.date(), transaction.reference(), entry.text(), null, entry.accountId(), entry.amount(),
-                                vat.isPresent() ? vat.get().value() : null, null);
+                            out.printRecord(entry.date(), transaction.reference(), entry.text(), null, accountCompositeId(entry), entry.amount(),
+                                vat.map(Tag::value).orElse(null), null);
                         }
                     }
                 }
@@ -292,21 +291,19 @@ public class LedgerTsvHdl {
     private static CSVRecord importSplits(@NotNull Iterator<CSVRecord> records, List<AccountEntry> splits) {
         CSVRecord record = records.hasNext() ? records.next() : null;
         while (isPartOfSplitTransaction(record)) {
-            String date = record.get(DATE);
-            String text = record.get(DESCRIPTION);
             String debitAccount = record.get(ACCOUNT_DEBIT);
             String creditAccount = record.get(ACCOUNT_CREDIT);
-            String splitAmount = record.get(AMOUNT);
-            String vatCode = record.get(VAT_CODE);
             AccountEntry entry = null;
             if (!Strings.isNullOrEmpty(debitAccount)) {
                 String[] debitValues = debitAccount.split("-");
-                entry = AccountEntry.debit(debitValues[0], date, splitAmount, text);
+                entry = AccountEntry.debit(debitValues[0], record.get(DATE), record.get(AMOUNT), record.get(DESCRIPTION));
+                defineSegments(entry, debitAccount);
             } else if (!Strings.isNullOrEmpty(creditAccount)) {
                 String[] creditValues = creditAccount.split("-");
-                entry = AccountEntry.credit(creditValues[0], date, splitAmount, text);
+                entry = AccountEntry.credit(creditValues[0], record.get(DATE), record.get(AMOUNT), record.get(DESCRIPTION));
+                defineSegments(entry, creditAccount);
             }
-            defineVat(entry, vatCode);
+            defineVat(entry, record.get(VAT_CODE));
             splits.add(entry);
             record = records.hasNext() ? records.next() : null;
         }
@@ -333,7 +330,6 @@ public class LedgerTsvHdl {
     private static final BigDecimal VAT_F3_DUE_VALUE = new BigDecimal("0.065");
 
     private static void defineVat(@NotNull AccountEntry entry, String code) {
-        // TODO wrong VAT codes are per credit account entry
         if (!Strings.isNullOrEmpty(code)) {
             switch (code) {
                 case F1 -> {
@@ -351,12 +347,25 @@ public class LedgerTsvHdl {
         }
     }
 
-    private static void defineProject(@NotNull List<AccountEntry> entries, String code) {
+    private static void defineSegments(@NotNull AccountEntry entry, String code) {
         if (!Strings.isNullOrEmpty(code)) {
             String[] values = code.split("-");
             if (values.length > 1) {
-                entries.forEach(o -> o.add(new Tag(AccountEntry.FINANCE, AccountEntry.PROJECT, values[1])));
+                entry.add(new Tag(AccountEntry.FINANCE, AccountEntry.PROJECT, values[1]));
             }
+            if (values.length > 2) {
+                entry.add(new Tag(AccountEntry.FINANCE, AccountEntry.SEGMENT, values[2]));
+            }
+        }
+    }
+
+    private static String accountCompositeId(AccountEntry entry) {
+        if (entry != null) {
+            Optional<Tag> project = entry.findBy(AccountEntry.FINANCE, AccountEntry.PROJECT);
+            Optional<Tag> segment = entry.findBy(AccountEntry.FINANCE, AccountEntry.SEGMENT);
+            return entry.accountId() + (project.map(tag -> "-" + tag.value()).orElse("")) + (segment.map(value -> "-" + value.value()).orElse(""));
+        } else {
+            return null;
         }
     }
 
@@ -414,22 +423,22 @@ public class LedgerTsvHdl {
 
     private static void writeSection(Account.AccountGroup group, CSVPrinter out) throws IOException {
         switch (group) {
-            case ASSETS:
+            case ASSETS -> {
                 out.printRecord("*", null, null, "BALANCE SHEET", null, null, null);
                 out.println();
                 out.printRecord(ofGroup(group), null, null, "ASSETS", null, null, null);
                 out.println();
-                break;
-            case LIABILITIES:
+            }
+            case LIABILITIES -> {
                 out.println();
                 out.printRecord(ofGroup(group), null, null, "LIABILITIES", null, null, null);
                 out.println();
-                break;
-            case PROFITS_AND_LOSSES:
+            }
+            case PROFITS_AND_LOSSES -> {
                 out.println();
                 out.printRecord("*", null, null, "PROFIT & LOSS STATEMENT", null, null, null);
                 out.printRecord(ofGroup(group), null, null, null, null, null, null);
-                break;
+            }
         }
     }
 

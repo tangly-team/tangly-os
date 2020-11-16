@@ -35,6 +35,7 @@ public class AccountEntry implements HasTags {
     public static final String VAT_DUE = "vat-due";
     public static final String VAT_FLAG = "flag";
     public static final String PROJECT = "project";
+    public static final String SEGMENT = "segment";
     public static final String DATE_EXPECTED = "date-expected";
 
     /**
