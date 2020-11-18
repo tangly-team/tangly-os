@@ -39,9 +39,9 @@ public class ProductsAdapter implements ProductsPort {
 
     public void exportEffortsDocument(Assignment assignment, LocalDate from, LocalDate to) {
         String collaborator = assignment.name().replace(",", "_").replace(" ", "");
-        Path assignmentDocumentPath =
+        var assignmentDocumentPath =
             folder.resolve(assignment.id() + "-" + collaborator + "-" + from.toString() + "_" + to.toString() + AsciiDoctorHelper.ASCIIDOC_EXT);
-        EffortReportAsciiDoc helper = new EffortReportAsciiDoc(logic);
+        var helper = new EffortReportAsciiDoc(logic);
         helper.create(assignment, from, to, assignmentDocumentPath);
     }
 }

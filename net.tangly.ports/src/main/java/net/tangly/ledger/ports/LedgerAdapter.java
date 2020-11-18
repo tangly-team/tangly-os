@@ -50,7 +50,7 @@ public class LedgerAdapter implements LedgerPort {
 
     @Override
     public void exportLedgerDocument(String name, LocalDate from, LocalDate to, boolean withVat, boolean withTransactions) {
-        ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(ledger);
+        var report = new ClosingReportAsciiDoc(ledger);
         report.create(from, to, folder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), withVat, withTransactions);
         AsciiDoctorHelper.createPdf(folder.resolve(name + AsciiDoctorHelper.ASCIIDOC_EXT), folder.resolve(name + AsciiDoctorHelper.PDF_EXT));
         try {

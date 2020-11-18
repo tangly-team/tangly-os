@@ -16,6 +16,7 @@ package net.tangly.bus.invoices;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import net.tangly.core.app.Realm;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
@@ -25,7 +26,7 @@ import org.jetbrains.annotations.NotNull;
  *     <li>Invoices are legal entity invoices</li>
  * </ul>
  **/
-public interface InvoicesRealm {
+public interface InvoicesRealm extends Realm {
     Provider<Invoice> invoices();
 
     Provider<Article> articles();

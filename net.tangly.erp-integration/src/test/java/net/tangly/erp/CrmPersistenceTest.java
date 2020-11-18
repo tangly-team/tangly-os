@@ -30,47 +30,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CrmPersistenceTest {
-
-    @Test
-    @Tag("localTest")
-    void persistCrmRealTest() throws IOException {
-        try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            ErpStore store = new ErpStore(fs);
-            store.createCrmAndLedgerRepository();
-
-            CrmHdl crmHdl = new CrmHdl(new CrmEntities(), store.crmRoot());
-            crmHdl.importEntities();
-            CrmRealm realm = crmHdl.realm();
-
-            assertThat(realm.naturalEntities().items().isEmpty()).isFalse();
-            assertThat(realm.legalEntities().items().isEmpty()).isFalse();
-            assertThat(realm.employees().items().isEmpty()).isFalse();
-            assertThat(realm.contracts().items().isEmpty()).isFalse();
-            assertThat(realm.interactions().items().isEmpty()).isFalse();
-
-            // NioFileSystem msFs = NioFileSystem.New();
-            // EmbeddedStorageManager storageManager = EmbeddedStorage.start(msFs.ensureDirectoryPath(store.crmDb());
-
-            EmbeddedStorageManager storageManager = EmbeddedStorage.start(store.crmDb());
-            storageManager.setRoot(realm);
-            storageManager.storeRoot();
-            storageManager.shutdown();
-
-            storageManager = EmbeddedStorage.start(store.crmDb());
-            Object persistentRealm = storageManager.root();
-            System.out.println(persistentRealm);
-            assertThat(persistentRealm instanceof CrmRealm).isTrue();
-            realm = (CrmRealm) persistentRealm;
-            assertThat(realm.naturalEntities().items().isEmpty()).isFalse();
-            assertThat(realm.legalEntities().items().isEmpty()).isFalse();
-            assertThat(realm.employees().items().isEmpty()).isFalse();
-            assertThat(realm.contracts().items().isEmpty()).isFalse();
-            assertThat(realm.interactions().items().isEmpty()).isFalse();
-
-            storageManager.shutdown();
-        }
-    }
-
     @Test
     void persistCrmRealLocalTest() {
         String PATH = "/Users/Shared/tangly/db/crm";

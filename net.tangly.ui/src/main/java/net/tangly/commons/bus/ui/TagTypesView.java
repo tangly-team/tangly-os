@@ -15,6 +15,7 @@ package net.tangly.commons.bus.ui;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -57,8 +58,8 @@ public class TagTypesView extends VerticalLayout {
         grid.getDataProvider().refreshAll();
     }
 
-    public void addCounts(List<? extends HasTags> entities) {
-        entities.stream().flatMap(e -> e.tags().stream()).map(registry::find).flatMap(Optional::stream).forEach(this::increment);
+    public void addCounts(Map<TagType<?>, Integer> counts) {
+        this.counts.putAll(counts);
     }
 
     public void clearCounts() {

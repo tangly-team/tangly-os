@@ -132,6 +132,10 @@ public class Account implements HasId, HasName {
         return ownedBy;
     }
 
+    List<AccountEntry> entries() {
+        return Collections.unmodifiableList(entries);
+    }
+
     public AccountGroup group() {
         if (kind() == null) {
             return null;

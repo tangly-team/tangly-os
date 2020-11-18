@@ -15,9 +15,8 @@ package net.tangly.crm.ports;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.concurrent.locks.ReentrantLock;
 import javax.inject.Inject;
 
 import net.tangly.bus.crm.Contract;
@@ -27,12 +26,15 @@ import net.tangly.bus.crm.Interaction;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.bus.crm.Subject;
+import net.tangly.commons.generator.IdGenerator;
 import net.tangly.core.HasOid;
+import net.tangly.core.app.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.providers.ProviderPersistence;
 import one.microstream.storage.types.EmbeddedStorage;
 import one.microstream.storage.types.EmbeddedStorageManager;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Defines the customer relationship management <i>CRM</i> subsystem. The major abstractions are
@@ -49,15 +51,15 @@ import one.microstream.storage.types.EmbeddedStorageManager;
  * <p>The class is also the connection point between the CRM domain model and other ones. One such external domain is the invoices domain.</p>
  */
 public class CrmEntities implements CrmRealm {
-    static class Data {
-        private List<NaturalEntity> naturalEntities;
-        private List<LegalEntity> legalEntities;
-        private List<Employee> employees;
-        private List<Contract> contracts;
-        private List<Interaction> interactions;
-        private List<Subject> subjects;
+    static class Data implements IdGenerator {
+        private final List<NaturalEntity> naturalEntities;
+        private final List<LegalEntity> legalEntities;
+        private final List<Employee> employees;
+        private final List<Contract> contracts;
+        private final List<Interaction> interactions;
+        private final List<Subject> subjects;
         private long oidCounter;
-        private Map<String, String> configuration;
+        private transient final ReentrantLock lock;
 
         Data() {
             naturalEntities = new ArrayList<>();
@@ -67,10 +69,21 @@ public class CrmEntities implements CrmRealm {
             interactions = new ArrayList<>();
             subjects = new ArrayList<>();
             oidCounter = HasOid.UNDEFINED_OID;
-            configuration = new HashMap<>();
+            this.lock = new ReentrantLock();
+        }
+
+        @Override
+        public long id() {
+            lock.lock();
+            try {
+                return oidCounter++;
+            } finally {
+                lock.unlock();
+            }
         }
     }
 
+    private static final long OID_SEQUENCE_START = 1000;
     private final Data data;
     private final Provider<NaturalEntity> naturalEntities;
     private final Provider<LegalEntity> legalEntities;
@@ -81,7 +94,7 @@ public class CrmEntities implements CrmRealm {
     private final EmbeddedStorageManager storageManager;
 
     @Inject
-    public CrmEntities(Path path) {
+    public CrmEntities(@NotNull Path path) {
         this.data = new Data();
         storageManager = EmbeddedStorage.start(data, path);
 
@@ -102,6 +115,14 @@ public class CrmEntities implements CrmRealm {
         contracts = new ProviderInMemory<>(data.contracts);
         interactions = new ProviderInMemory<>(data.interactions);
         subjects = new ProviderInMemory<>(data.subjects);
+
+        long oidCounter = Realm.maxOid(naturalEntities());
+        oidCounter = Math.max(oidCounter, Realm.maxOid(legalEntities()));
+        oidCounter = Math.max(oidCounter, Realm.maxOid(employees()));
+        oidCounter = Math.max(oidCounter, Realm.maxOid(contracts()));
+        oidCounter = Math.max(oidCounter, Realm.maxOid(interactions()));
+        oidCounter = Math.max(oidCounter, Realm.maxOid(subjects()));
+        data.oidCounter = Math.max(oidCounter, OID_SEQUENCE_START);
     }
 
     public void storeRoot() {
@@ -110,6 +131,13 @@ public class CrmEntities implements CrmRealm {
 
     public void shutdown() {
         storageManager.shutdown();
+    }
+
+    @Override
+    public <T extends HasOid> T registerOid(@NotNull T entity) {
+        Realm.setOid(entity, data.id());
+        storeRoot();
+        return entity;
     }
 
     @Override

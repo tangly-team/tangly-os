@@ -17,12 +17,16 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Map;
 import java.util.stream.Stream;
 import javax.inject.Inject;
 
-import net.tangly.bus.ledger.LedgerRealm;
 import net.tangly.bus.ledger.LedgerHandler;
+import net.tangly.bus.ledger.LedgerRealm;
+import net.tangly.commons.logger.EventData;
 import org.jetbrains.annotations.NotNull;
+
+import static net.tangly.ports.TsvHdl.MODULE;
 
 /**
  * Provide workflows for ledger activities.
@@ -50,12 +54,16 @@ public class LedgerHdl implements LedgerHandler {
 
     @Override
     public void importEntities() {
-        LedgerTsvHdl handler = new LedgerTsvHdl(ledger);
-        handler.importChartOfAccounts(folder.resolve("swiss-ledger.tsv"));
+        var handler = new LedgerTsvHdl(ledger);
+        var chartOfAccounts = folder.resolve("swiss-ledger.tsv");
+        handler.importChartOfAccounts(chartOfAccounts);
         ledger.build();
+        EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, "Chart of accounts imported {}", Map.of("chartOfAccountsPath", chartOfAccounts));
         try (Stream<Path> stream = Files.walk(folder)) {
-            stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith("-period.tsv"))
-                    .forEach(handler::importJournal);
+            stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith("-period.tsv")).forEach(o -> {
+                handler.importJournal(o);
+                EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, "Journal imported {}", Map.of("journalPath", o));
+            });
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
@@ -63,5 +71,9 @@ public class LedgerHdl implements LedgerHandler {
 
     @Override
     public void exportEntities() {
+        var handler = new LedgerTsvHdl(ledger);
+        handler.exportChartOfAccounts(folder.resolve("swiss-ledger.tsv"));
+        handler.exportJournal(folder.resolve("journal.tsv"), null, null);
+        // TODO log export to event data
     }
 }

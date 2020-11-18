@@ -26,7 +26,6 @@ import javax.inject.Inject;
 
 import net.tangly.bus.invoices.Article;
 import net.tangly.bus.invoices.ArticleCode;
-import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoicesHandler;
 import net.tangly.bus.invoices.InvoicesRealm;
 import net.tangly.commons.logger.EventData;
@@ -64,11 +63,11 @@ public class InvoicesHdl implements InvoicesHandler {
 
     @Override
     public void importEntities() {
-        InvoiceJson invoiceJson = new InvoiceJson(realm);
+        var invoiceJson = new InvoiceJson(realm);
         importArticles(invoicesFolder.resolve(ARTICLES_TSV));
         try (Stream<Path> stream = Files.walk(invoicesFolder)) {
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(JSON_EXT)).forEach(o -> {
-                Invoice invoice = invoiceJson.imports(o, Collections.emptyMap());
+                var invoice = invoiceJson.imports(o, Collections.emptyMap());
                 if (invoice.check()) {
                     realm.invoices().update(invoice);
                     EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, "Imported Invoice {}", Map.of("invoice", invoice));
@@ -84,13 +83,12 @@ public class InvoicesHdl implements InvoicesHandler {
     @Override
     public void exportEntities() {
         exportArticles(invoicesFolder.resolve(ARTICLES_TSV));
-        InvoiceJson invoiceJson = new InvoiceJson(realm);
+        var invoiceJson = new InvoiceJson(realm);
         realm.invoices().items().forEach(o -> {
-            Path invoiceFolder = InvoicesUtilities.resolvePath(invoicesFolder, o);
-            Path invoicePath = invoiceFolder.resolve(o.name() + JSON_EXT);
+            var invoiceFolder = InvoicesUtilities.resolvePath(invoicesFolder, o);
+            var invoicePath = invoiceFolder.resolve(o.name() + JSON_EXT);
             invoiceJson.exports(o, invoicePath, Collections.emptyMap());
-            EventData.log(EventData.EXPORT, "net.tangly.crm.ports", EventData.Status.SUCCESS, "Invoice exported to JSON {}",
-                Map.of("invoice", o, "invoicePath", invoicePath));
+            EventData.log(EventData.EXPORT, MODULE, EventData.Status.SUCCESS, "Invoice exported to JSON {}", Map.of("invoice", o, "invoicePath", invoicePath));
         });
     }
 

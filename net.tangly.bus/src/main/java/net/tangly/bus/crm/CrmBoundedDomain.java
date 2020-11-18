@@ -13,10 +13,12 @@
 
 package net.tangly.bus.crm;
 
+import java.util.HashMap;
 import java.util.Map;
 import javax.inject.Inject;
 
 import net.tangly.commons.generator.LongIdGenerator;
+import net.tangly.core.TagType;
 import net.tangly.core.TagTypeRegistry;
 import net.tangly.core.app.BoundedDomain;
 import org.jetbrains.annotations.NotNull;
@@ -32,8 +34,16 @@ public class CrmBoundedDomain extends BoundedDomain<CrmRealm, CrmBusinessLogic, 
 
     @Override
     protected void initialize() {
-        // TODO handle missing configuration
-        idGenerator = new LongIdGenerator(Long.parseLong(configuration().get(CRM_OID_VALUE)));
         CrmTags.registerTags(registry());
+    }
+
+    @Override
+    public Map<TagType<?>, Integer> countTags(@NotNull Map<TagType<?>, Integer> counts) {
+        addTagCounts(registry(), realm().naturalEntities().items(), counts);
+        addTagCounts(registry(), realm().legalEntities().items(), counts);
+        addTagCounts(registry(), realm().employees().items(), counts);
+        addTagCounts(registry(), realm().interactions().items(), counts);
+        addTagCounts(registry(), realm().subjects().items(), counts);
+        return counts;
     }
 }

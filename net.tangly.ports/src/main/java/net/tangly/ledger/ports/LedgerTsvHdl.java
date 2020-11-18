@@ -90,7 +90,7 @@ public class LedgerTsvHdl {
      *     <dt>Description</dt><dd>the description is the human readable name of the account or aggregated account.</dd>
      *     <dt>BClass</dt><dd>Defines the type of account: 1 for assets, 2 for liabilities, 3 for expenses, and 4 for incomes.</dd>
      *     <dt>Gr</dt><dd>Defines the aggregate account owning the account.</dd>
-     *     <dt>Currency</dt><dd>Defines the currency of the accoun.t</dd>
+     *     <dt>Currency</dt><dd>Defines the currency of the account.</dd>
      * </dl>
      *
      * @param path path to the file containing the chart of accounts
@@ -187,7 +187,7 @@ public class LedgerTsvHdl {
      * <dl>
      *     <dt>date</dt><dd>date of the transaction encoded as ISO standard YYYY-MM-DD.</dd>
      *     <dt>reference</dt><dd>optional reference to a document associated with the transaction.</dd>
-     *     <dt>text</dt><dd>text deecribing the transaction.</dd>
+     *     <dt>text</dt><dd>text describing the transaction.</dd>
      *     <dt>account debit</dt><dd>account debited. If empty indicates a split transaction.</dd>
      *     <dt>account credit</dt><dd>account credited. If empty indicates a split transaction.</dd>
      *     <dt>amount</dt><dd>amount of the transaction.</dd>
@@ -201,7 +201,7 @@ public class LedgerTsvHdl {
         try (Reader in = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
             Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
             int counter = 0;
-            CSVRecord record = records.hasNext() ? records.next() : null;
+            var record = records.hasNext() ? records.next() : null;
             while (record != null) {
                 String date = record.get(DATE);
                 String debitAccount = record.get(ACCOUNT_DEBIT);
@@ -212,11 +212,13 @@ public class LedgerTsvHdl {
                 String dateExpected = record.get(DATE_EXPECTED);
                 Transaction transaction = null;
                 if (isPartOfSplitTransaction(record)) {
+                    String description = record.get(DESCRIPTION);
+                    String reference = record.get(DOC);
                     List<AccountEntry> splits = new ArrayList<>();
                     record = importSplits(records, splits);
                     try {
                         transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
-                            new BigDecimal(amount), splits, record.get(DESCRIPTION), record.get(DOC));
+                            new BigDecimal(amount), splits, description, reference);
                     } catch (NumberFormatException e) {
                         logger.atError().setCause(e).log("{}: not a legal amount {}", date, amount);
                     }
@@ -289,7 +291,7 @@ public class LedgerTsvHdl {
     }
 
     private static CSVRecord importSplits(@NotNull Iterator<CSVRecord> records, List<AccountEntry> splits) {
-        CSVRecord record = records.hasNext() ? records.next() : null;
+        var record = records.hasNext() ? records.next() : null;
         while (isPartOfSplitTransaction(record)) {
             String debitAccount = record.get(ACCOUNT_DEBIT);
             String creditAccount = record.get(ACCOUNT_CREDIT);
@@ -349,7 +351,7 @@ public class LedgerTsvHdl {
 
     private static void defineSegments(@NotNull AccountEntry entry, String code) {
         if (!Strings.isNullOrEmpty(code)) {
-            String[] values = code.split("-");
+            var values = code.split("-");
             if (values.length > 1) {
                 entry.add(new Tag(AccountEntry.FINANCE, AccountEntry.PROJECT, values[1]));
             }
@@ -370,10 +372,9 @@ public class LedgerTsvHdl {
     }
 
     private static Account.AccountGroup ofGroup(String accountGroup) {
-        Account.AccountGroup group = null;
         if (!accountGroup.contains("*")) {
             try {
-                group = switch (Integer.parseInt(accountGroup)) {
+                return switch (Integer.parseInt(accountGroup)) {
                     case 1 -> Account.AccountGroup.ASSETS;
                     case 2 -> Account.AccountGroup.LIABILITIES;
                     case 3 -> Account.AccountGroup.EXPENSES;
@@ -384,7 +385,7 @@ public class LedgerTsvHdl {
                 logger.atError().setCause(e).log("Format error for account group {}", accountGroup);
             }
         }
-        return group;
+        return null;
     }
 
     private static String ofGroup(Account.AccountGroup group) {

@@ -28,7 +28,7 @@ plugins {
     id "org.sonarqube" version "3.0"
     id "info.solidsoft.pitest" version "1.5.2"
     id 'com.google.cloud.tools.jib' version '2.6.0'
-    id 'com.github.ben-manes.versions' version '0.35.0'
+    id 'com.github.ben-manes.versions' version '0.36.0'
 }
 
 ext {
@@ -161,10 +161,10 @@ subprojects {
         jimfsVersion = '1.1'
         slf4jVersion = '2.0.0-alpha1'
         mockitoVersion = '3.6.0'
-        assertjVersion = '3.18.0'
+        assertjVersion = '3.18.1'
         annotationsVersion = '20.1.0'
         archUnitVersion = '0.14.1'
-        flyWayVersion = '7.1.1'
+        flyWayVersion = '7.2.0'
         hsqldbVersion = '2.5.1'
         guiceVersion = '4.2.3'
         jsonValidatorVersion = '1.0.44'

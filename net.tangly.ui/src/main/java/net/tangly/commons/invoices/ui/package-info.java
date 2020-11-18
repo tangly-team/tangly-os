@@ -11,15 +11,4 @@
  *  under the License.
  */
 
-package net.tangly.bus.products;
-
-import net.tangly.core.app.Realm;
-import net.tangly.core.providers.Provider;
-
-public interface ProductsRealm extends Realm {
-    Provider<Assignment> assignments();
-
-    Provider<Effort> efforts();
-
-    Provider<Product> products();
-}
+package net.tangly.commons.invoices.ui;

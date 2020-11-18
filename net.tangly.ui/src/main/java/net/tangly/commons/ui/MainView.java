@@ -17,6 +17,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Path;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.function.Consumer;
@@ -278,11 +279,7 @@ public class MainView extends AppLayout {
 
     private void countCrmTags() {
         tagTypesView.clearCounts();
-        tagTypesView.addCounts(crmDomain.realm().naturalEntities().items());
-        tagTypesView.addCounts(crmDomain.realm().legalEntities().items());
-        tagTypesView.addCounts(crmDomain.realm().employees().items());
-        tagTypesView.addCounts(crmDomain.realm().contracts().items());
-        tagTypesView.addCounts(crmDomain.realm().subjects().items());
+        tagTypesView.addCounts(crmDomain.countTags(new HashMap<>()));
         tagTypesView.refreshData();
     }
 

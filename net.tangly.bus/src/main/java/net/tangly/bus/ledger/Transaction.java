@@ -131,7 +131,7 @@ public class Transaction {
     @Override
     public String toString() {
         return """
-            Transaction[date=%s, debit=%s, credit=%s, splits=%s, reference, text]
+            Transaction[date=%s, debit=%s, credit=%s, splits=%s, reference=%s, text=%s]
             """.formatted(date(), debitAccount(), creditAccount(), splits, reference(), text());
     }
 }

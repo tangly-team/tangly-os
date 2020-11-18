@@ -79,7 +79,7 @@ public class CmdCreateEffort extends Dialog {
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
             try {
                 binder.writeBean(effort);
-                ReflectionUtilities.set(effort, "oid", domain.idGenerator().id());
+                domain.realm().registerOid(effort);
                 domain.realm().efforts().update(effort);
             } catch (ValidationException validationException) {
                 validationException.printStackTrace();

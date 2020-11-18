@@ -27,11 +27,11 @@ import org.jetbrains.annotations.NotNull;
  * @param <T> type of the instances
  */
 public interface Provider<T> {
-    public static <E extends HasOid, Long> Optional<E> findByOid(@NotNull Provider<E> provider, long oid) {
+    static <E extends HasOid, Long> Optional<E> findByOid(@NotNull Provider<E> provider, long oid) {
         return provider.findBy(E::oid, oid);
     }
 
-    public static <E extends HasId, String> Optional<E> findById(@NotNull Provider<E> provider, String id) {
+    static <E extends HasId, String> Optional<E> findById(@NotNull Provider<E> provider, String id) {
         return provider.findBy(E::id, id);
     }
 

@@ -31,9 +31,9 @@ import net.codecrete.qrbill.generator.OutputSize;
 import net.codecrete.qrbill.generator.Payments;
 import net.codecrete.qrbill.generator.QRBill;
 import net.codecrete.qrbill.generator.SwicoBillInformation;
-import net.tangly.core.Address;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceLegalEntity;
+import net.tangly.core.Address;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,18 +44,15 @@ public class InvoiceQrCode implements InvoiceGenerator {
     private static final Pattern ISO11649ReferenceFormat = Pattern.compile("[^A-Za-z0-9]");
 
     public void exports(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
-        Bill bill = new Bill();
+        var bill = new Bill();
 
         bill.setFormat(createBillFormat());
         bill.setVersion(Bill.Version.V2_0);
-
         bill.setCreditor(create(invoice.invoicingEntity(), invoice.invoicingAddress()));
         bill.setDebtor(create(invoice.invoicedEntity(), invoice.invoicedAddress()));
-
         bill.setAccount(invoice.invoicingConnection().iban());
         bill.setAmount(invoice.amountWithVat());
         bill.setCurrency(invoice.currency().getCurrencyCode());
-
         bill.setBillInformation(createSwicoBillInformation(invoice).encodeAsText());
         // reference is the usual reference number of Swiss payment slips
         bill.setReference(Payments.createISO11649Reference(ISO11649ReferenceFormat.matcher(invoice.id()).replaceAll("")));
@@ -83,20 +80,20 @@ public class InvoiceQrCode implements InvoiceGenerator {
      * @return new SWICO bill information
      */
     private static SwicoBillInformation createSwicoBillInformation(@NotNull Invoice invoice) {
-        SwicoBillInformation swico = new SwicoBillInformation();
+        var swico = new SwicoBillInformation();
         swico.setInvoiceDate(invoice.invoicedDate());
         swico.setInvoiceNumber(invoice.id());
         swico.setVatNumber(swicoVatNumber(invoice.invoicingEntity().id()));
         swico.setCustomerReference(invoice.invoicedEntity().id());
 
         List<SwicoBillInformation.RateDetail> details = invoice.vatAmounts().entrySet().stream().filter(o -> o.getValue().compareTo(BigDecimal.ZERO) != 0).
-                map(o -> new SwicoBillInformation.RateDetail(o.getKey().multiply(HUNDRED).stripTrailingZeros(), o.getValue().stripTrailingZeros()))
-                .collect(Collectors.toList());
+            map(o -> new SwicoBillInformation.RateDetail(o.getKey().multiply(HUNDRED).stripTrailingZeros(), o.getValue().stripTrailingZeros()))
+            .collect(Collectors.toList());
         if (!details.isEmpty()) {
             swico.setVatRateDetails(details);
         }
 
-        SwicoBillInformation.PaymentCondition paymentCondition = new SwicoBillInformation.PaymentCondition();
+        var paymentCondition = new SwicoBillInformation.PaymentCondition();
         paymentCondition.setDays(30);
         paymentCondition.setDiscount(BigDecimal.ZERO);
         swico.setPaymentConditions(List.of(paymentCondition));
@@ -104,7 +101,7 @@ public class InvoiceQrCode implements InvoiceGenerator {
     }
 
     private static net.codecrete.qrbill.generator.Address create(@NotNull InvoiceLegalEntity entity, @NotNull Address address) {
-        net.codecrete.qrbill.generator.Address qrAddress = new net.codecrete.qrbill.generator.Address();
+        var qrAddress = new net.codecrete.qrbill.generator.Address();
         qrAddress.setName(entity.name());
         qrAddress.setStreet(address.street());
         qrAddress.setHouseNo(null);

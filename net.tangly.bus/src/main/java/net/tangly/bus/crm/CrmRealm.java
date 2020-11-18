@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import net.tangly.core.app.Realm;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
@@ -34,7 +35,7 @@ import org.jetbrains.annotations.NotNull;
  *     <li>CRM tags defining an ontology in the business domain of customer relationships management</li>
  * </ul>
  */
-public interface CrmRealm {
+public interface CrmRealm extends Realm {
 
     Provider<NaturalEntity> naturalEntities();
 

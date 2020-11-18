@@ -16,8 +16,8 @@ package net.tangly.bus.ledger;
 import java.util.Map;
 import javax.inject.Inject;
 
-import net.tangly.commons.generator.IdGenerator;
 import net.tangly.commons.generator.LongIdGenerator;
+import net.tangly.core.TagType;
 import net.tangly.core.TagTypeRegistry;
 import net.tangly.core.app.BoundedDomain;
 import org.jetbrains.annotations.NotNull;
@@ -33,9 +33,12 @@ public class LedgerBoundedDomain extends BoundedDomain<LedgerRealm, LedgerBusine
 
     @Override
     protected void initialize() {
-        // TODO handle missing configuration
-        idGenerator = new LongIdGenerator(Long.parseLong(configuration().get(LEDGER_OID_VALUE)));
         LedgerTags.registerTags(registry());
     }
 
+    @Override
+    public Map<TagType<?>, Integer> countTags(@NotNull Map<TagType<?>, Integer> counts) {
+        realm().accounts().items().stream().map(Account::entries).forEach(o -> addTagCounts(registry(), o, counts));
+        return counts;
+    }
 }

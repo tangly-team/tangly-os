@@ -14,26 +14,21 @@
 package net.tangly.core.app;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import net.tangly.commons.generator.IdGenerator;
-import net.tangly.commons.generator.LongIdGenerator;
 import net.tangly.core.HasTags;
 import net.tangly.core.TagType;
 import net.tangly.core.TagTypeRegistry;
 import org.jetbrains.annotations.NotNull;
 
-public class BoundedDomain<R, B, H extends Handler, P> {
+public class BoundedDomain<R extends Realm, B, H extends Handler, P> {
     private final R realm;
     private final H handler;
     private final P port;
     private final B logic;
     private final transient TagTypeRegistry registry;
-    private final transient Map<String, String> configuration;
-    protected IdGenerator idGenerator;
 
     public BoundedDomain(R realm, B logic, H handler, P port, TagTypeRegistry registry) {
         this(realm, logic, handler, port, registry, Collections.emptyMap());
@@ -45,12 +40,10 @@ public class BoundedDomain<R, B, H extends Handler, P> {
         this.handler = handler;
         this.port = port;
         this.registry = registry;
-        this.configuration = new HashMap<>(configuration);
-        idGenerator = new LongIdGenerator(1000);
         initialize();
     }
 
-    static void addTagCounts(TagTypeRegistry registry, List<? extends HasTags> entities, HashMap<TagType<?>, Integer> counts) {
+    protected static void addTagCounts(TagTypeRegistry registry, List<? extends HasTags> entities, Map<TagType<?>, Integer> counts) {
         entities.stream().flatMap(e -> e.tags().stream()).map(registry::find).flatMap(Optional::stream).forEach(e -> {
             if (!counts.containsKey(e)) {
                 counts.put(e, 0);
@@ -59,7 +52,8 @@ public class BoundedDomain<R, B, H extends Handler, P> {
         });
     }
 
-    public void countTags(@NotNull HashMap<TagType<?>, Integer> counts) {
+    public Map<TagType<?>, Integer> countTags(@NotNull Map<TagType<?>, Integer> counts) {
+        return counts;
     }
 
     public R realm() {
@@ -80,14 +74,6 @@ public class BoundedDomain<R, B, H extends Handler, P> {
 
     public TagTypeRegistry registry() {
         return registry;
-    }
-
-    public IdGenerator idGenerator() {
-        return idGenerator;
-    }
-
-    public Map<String, String> configuration() {
-        return Collections.unmodifiableMap(configuration);
     }
 
     protected void initialize() {

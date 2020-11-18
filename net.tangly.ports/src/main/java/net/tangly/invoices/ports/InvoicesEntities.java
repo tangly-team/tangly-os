@@ -15,36 +15,49 @@ package net.tangly.invoices.ports;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.concurrent.locks.ReentrantLock;
 
 import net.tangly.bus.invoices.Article;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoiceLegalEntity;
 import net.tangly.bus.invoices.InvoicesRealm;
+import net.tangly.commons.generator.IdGenerator;
 import net.tangly.core.HasOid;
+import net.tangly.core.app.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.providers.ProviderPersistence;
 import one.microstream.storage.types.EmbeddedStorage;
 import one.microstream.storage.types.EmbeddedStorageManager;
+import org.jetbrains.annotations.NotNull;
 
 public class InvoicesEntities implements InvoicesRealm {
-    private static class Data {
-        List<Invoice> invoices;
-        List<Article> articles;
-        List<InvoiceLegalEntity> legalEntities;
+    private static class Data implements IdGenerator {
+        private List<Invoice> invoices;
+        private List<Article> articles;
+        private List<InvoiceLegalEntity> legalEntities;
         private long oidCounter;
-        private Map<String, String> configuration;
+        private transient final ReentrantLock lock;
 
         Data() {
             invoices = new ArrayList<>();
             articles = new ArrayList<>();
             legalEntities = new ArrayList<>();
             oidCounter = HasOid.UNDEFINED_OID;
-            configuration = new HashMap<>();
+            this.lock = new ReentrantLock();
         }
+
+        @Override
+        public long id() {
+            lock.lock();
+            try {
+                return oidCounter++;
+            } finally {
+                lock.unlock();
+            }
+        }
+
     }
 
     private final Data data;
@@ -68,6 +81,21 @@ public class InvoicesEntities implements InvoicesRealm {
         invoices = new ProviderInMemory<>(data.invoices);
         articles = new ProviderInMemory<>(data.articles);
         legalEntities = new ProviderInMemory<>(data.legalEntities);
+    }
+
+    public void storeRoot() {
+        storageManager.storeRoot();
+    }
+
+    public void shutdown() {
+        storageManager.shutdown();
+    }
+
+    @Override
+    public <T extends HasOid> T registerOid(@NotNull T entity) {
+        Realm.setOid(entity, data.id());
+        storeRoot();
+        return entity;
     }
 
     @Override

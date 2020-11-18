@@ -40,8 +40,8 @@ public class InvoicesUtilities {
      * @return path to the folder where the invoice should be written
      */
     public static Path resolvePath(@NotNull Path directory, @NotNull Invoice invoice) {
-        Matcher matcher = invoicePattern.matcher(invoice.name());
-        Path invoicePath = matcher.matches() ? directory.resolve(invoice.name().substring(0, 4)) : directory;
+        var matcher = invoicePattern.matcher(invoice.name());
+        var invoicePath = matcher.matches() ? directory.resolve(invoice.name().substring(0, 4)) : directory;
         if (Files.notExists(invoicePath)) {
             try {
                 Files.createDirectories(invoicePath);

@@ -15,7 +15,7 @@ package net.tangly.bus.products;
 
 import java.util.Map;
 
-import net.tangly.commons.generator.LongIdGenerator;
+import net.tangly.core.TagType;
 import net.tangly.core.TagTypeRegistry;
 import net.tangly.core.app.BoundedDomain;
 import org.jetbrains.annotations.NotNull;
@@ -29,8 +29,9 @@ public class ProductsBoundedDomain extends BoundedDomain<ProductsRealm, Products
     }
 
     @Override
-    protected void initialize() {
-        // TODO handle missing configuration
-        idGenerator = new LongIdGenerator(Long.parseLong(configuration().get(PRODUCTS_OID_VALUE)));
+    public Map<TagType<?>, Integer> countTags(@NotNull Map<TagType<?>, Integer> counts) {
+        addTagCounts(registry(), realm().products().items(), counts);
+        addTagCounts(registry(), realm().assignments().items(), counts);
+        return counts;
     }
 }

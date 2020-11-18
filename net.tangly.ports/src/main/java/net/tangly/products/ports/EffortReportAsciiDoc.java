@@ -50,7 +50,7 @@ public class EffortReportAsciiDoc {
 
             int totalDuration = logic.collect(assignment, from, to).stream().map(Effort::duration).reduce(0, Integer::sum);
             BigDecimal totalHours = new BigDecimal(totalDuration).divide(new BigDecimal(60));
-            helper.tableRow("Total Time", "(time in minutes " + Integer.toString(totalDuration) + ")", totalHours.toString());
+            helper.tableRow("Total Time", "(time in minutes " + totalDuration + ")", totalHours.toString());
             helper.tableEnd();
         } catch (IOException e) {
             logger.error("Error during reporting", e);

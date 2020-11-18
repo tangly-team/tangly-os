@@ -62,7 +62,7 @@ public class InvoiceJson implements InvoiceGenerator {
     @Override
     public void exports(@NotNull Invoice invoice, @NotNull Path path, @NotNull Map<String, Object> properties) {
         JsonEntity<Invoice> entity = createJsonInvoice();
-        JSONObject invoiceJson = entity.exports(invoice);
+        var invoiceJson = entity.exports(invoice);
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
             writer.write(invoiceJson.toString(4));
             EventData.log(EventData.EXPORT, COMPONENT, EventData.Status.SUCCESS, "Invoice exported to JSON file", Map.of("filename", path, "entity", invoice));
@@ -77,7 +77,7 @@ public class InvoiceJson implements InvoiceGenerator {
         Invoice invoice = null;
         if (JsonUtilities.isValid(path, "invoice-schema.json")) {
             try (Reader in = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
-                JSONObject jsonInvoice = new JSONObject(new JSONTokener(in));
+                var jsonInvoice = new JSONObject(new JSONTokener(in));
                 invoice = entity.imports(jsonInvoice);
                 if (!invoice.check()) {
                     logger.atWarn().log("Invoice {} is invalid", invoice.name());
