@@ -28,11 +28,11 @@ class CrmRealmVcardHdlTest {
     @Test
     void testVcard() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            ErpStore store = new ErpStore(fs);
+            var store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
-            CrmHdl crmHdl = new CrmHdl(new CrmEntities(), store.crmRoot());
+            var crmHdl = new CrmHdl(new CrmEntities(), store.crmRoot());
             crmHdl.importEntities();
-            CrmVcardHdl handler = new CrmVcardHdl(crmHdl.realm());
+            var handler = new CrmVcardHdl(crmHdl.realm());
             handler.importVCards(store.vcardsRoot());
         }
     }

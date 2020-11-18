@@ -37,7 +37,7 @@ class LedgerHdlTest {
             ErpStore erpStore = new ErpStore(fs);
             erpStore.createCrmAndLedgerRepository();
 
-            LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerEntities());
+            var handler = new LedgerTsvHdl(new LedgerEntities());
             handler.importChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
             handler.ledger().build();
             assertThat(
@@ -60,7 +60,7 @@ class LedgerHdlTest {
             ErpStore erpStore = new ErpStore(fs);
             erpStore.createCrmAndLedgerRepository();
 
-            LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerEntities());
+            var handler = new LedgerTsvHdl(new LedgerEntities());
             handler.importChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
             handler.ledger().build();
             int nrOfAccounts = handler.ledger().accounts().items().size();
@@ -85,7 +85,7 @@ class LedgerHdlTest {
             ErpStore erpStore = new ErpStore(fs);
             erpStore.createCrmAndLedgerRepository();
 
-            LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerEntities());
+            var handler = new LedgerTsvHdl(new LedgerEntities());
             handler.importChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
             handler.ledger().build();
 
@@ -100,7 +100,7 @@ class LedgerHdlTest {
             ErpStore erpStore = new ErpStore(fs);
             erpStore.createCrmAndLedgerRepository();
 
-            LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerEntities());
+            var handler = new LedgerTsvHdl(new LedgerEntities());
             handler.importChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
             handler.ledger().build();
             handler.importJournal(erpStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));

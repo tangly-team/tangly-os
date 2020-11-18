@@ -57,7 +57,7 @@ public class InvoicesAdapter implements InvoicesPort {
      */
     @Override
     public void exportInvoiceDocument(@NotNull Invoice invoice, boolean withQrCode, boolean withEN16931) {
-        InvoiceAsciiDoc asciiDocGenerator = new InvoiceAsciiDoc(invoice.locale());
+        var asciiDocGenerator = new InvoiceAsciiDoc(invoice.locale());
         Path invoiceFolder = InvoicesUtilities.resolvePath(folder, invoice);
         Path invoiceAsciiDocPath = invoiceFolder.resolve(invoice.name() + AsciiDoctorHelper.ASCIIDOC_EXT);
         asciiDocGenerator.exports(invoice, invoiceAsciiDocPath, Collections.emptyMap());
@@ -70,11 +70,11 @@ public class InvoicesAdapter implements InvoicesPort {
         }
         // currently need to be performed in the default filesystem to work due to external libraries
         if (withQrCode) {
-            InvoiceQrCode qrGenerator = new InvoiceQrCode();
+            var qrGenerator = new InvoiceQrCode();
             qrGenerator.exports(invoice, invoicePdfPath, Collections.emptyMap());
         }
         if (withEN16931) {
-            InvoiceZugFerd en164391Generator = new InvoiceZugFerd();
+            var en164391Generator = new InvoiceZugFerd();
             en164391Generator.exports(invoice, invoicePdfPath, Collections.emptyMap());
         }
         EventData.log(EventData.EXPORT, "net.tangly.crm.ports", EventData.Status.SUCCESS, "Invoice exported to PDF {}",

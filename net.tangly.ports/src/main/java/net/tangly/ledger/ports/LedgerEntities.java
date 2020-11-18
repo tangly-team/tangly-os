@@ -33,8 +33,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class LedgerEntities implements LedgerRealm {
     private static class Data implements IdGenerator {
-        private List<Account> accounts;
-        private List<Transaction> transactions;
+        private final List<Account> accounts;
+        private final List<Transaction> transactions;
         private long oidCounter;
         private transient final ReentrantLock lock;
 

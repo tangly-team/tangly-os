@@ -16,7 +16,6 @@ package net.tangly.bus.ledger;
 import java.util.Map;
 import javax.inject.Inject;
 
-import net.tangly.commons.generator.LongIdGenerator;
 import net.tangly.core.TagType;
 import net.tangly.core.TagTypeRegistry;
 import net.tangly.core.app.BoundedDomain;

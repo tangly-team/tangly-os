@@ -34,9 +34,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class InvoicesEntities implements InvoicesRealm {
     private static class Data implements IdGenerator {
-        private List<Invoice> invoices;
-        private List<Article> articles;
-        private List<InvoiceLegalEntity> legalEntities;
+        private final List<Invoice> invoices;
+        private final List<Article> articles;
+        private final List<InvoiceLegalEntity> legalEntities;
         private long oidCounter;
         private transient final ReentrantLock lock;
 

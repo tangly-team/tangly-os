@@ -300,12 +300,13 @@ public class LedgerTsvHdl {
                 String[] debitValues = debitAccount.split("-");
                 entry = AccountEntry.debit(debitValues[0], record.get(DATE), record.get(AMOUNT), record.get(DESCRIPTION));
                 defineSegments(entry, debitAccount);
+                defineVat(entry, record.get(VAT_CODE));
             } else if (!Strings.isNullOrEmpty(creditAccount)) {
                 String[] creditValues = creditAccount.split("-");
                 entry = AccountEntry.credit(creditValues[0], record.get(DATE), record.get(AMOUNT), record.get(DESCRIPTION));
                 defineSegments(entry, creditAccount);
+                defineVat(entry, record.get(VAT_CODE));
             }
-            defineVat(entry, record.get(VAT_CODE));
             splits.add(entry);
             record = records.hasNext() ? records.next() : null;
         }

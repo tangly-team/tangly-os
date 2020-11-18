@@ -45,7 +45,6 @@ public class InvoiceQrCode implements InvoiceGenerator {
 
     public void exports(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
         var bill = new Bill();
-
         bill.setFormat(createBillFormat());
         bill.setVersion(Bill.Version.V2_0);
         bill.setCreditor(create(invoice.invoicingEntity(), invoice.invoicingAddress()));
@@ -66,7 +65,7 @@ public class InvoiceQrCode implements InvoiceGenerator {
     }
 
     private static BillFormat createBillFormat() {
-        BillFormat format = new BillFormat();
+        var format = new BillFormat();
         format.setLanguage(Language.EN);
         format.setOutputSize(OutputSize.A4_PORTRAIT_SHEET);
         format.setGraphicsFormat(GraphicsFormat.SVG);

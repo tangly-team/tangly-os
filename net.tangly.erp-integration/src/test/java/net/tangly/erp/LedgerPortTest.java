@@ -55,7 +55,7 @@ class LedgerPortTest {
         final String filenameWithoutExtension = "2016-period";
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             ErpStore store = new ErpStore(fs);
-            LedgerAdapter adapter = new LedgerAdapter(createLedger(store), store.ledgerRoot());
+            var adapter = new LedgerAdapter(createLedger(store), store.ledgerRoot());
             adapter.exportLedgerDocument(filenameWithoutExtension, LocalDate.of(2015, 10, 01), LocalDate.of(2016, 12, 31), true, true);
             assertThat(Files.exists(store.ledgerRoot().resolve(filenameWithoutExtension + ".adoc"))).isFalse();
             assertThat(Files.exists(store.ledgerRoot().resolve(filenameWithoutExtension + ".pdf"))).isTrue();
@@ -68,10 +68,10 @@ class LedgerPortTest {
             ErpStore erpStore = new ErpStore(fs);
             erpStore.createCrmAndLedgerRepository();
 
-            LedgerTsvHdl handler = new LedgerTsvHdl(new LedgerEntities());
+            var handler = new LedgerTsvHdl(new LedgerEntities());
             handler.importJournal(erpStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
 
-            ClosingReportAsciiDoc report = new ClosingReportAsciiDoc(handler.ledger());
+            var report = new ClosingReportAsciiDoc(handler.ledger());
             StringWriter writer = new StringWriter();
             report.create(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31), new PrintWriter(writer), true, true);
             assertThat(writer.toString().isEmpty()).isFalse();
@@ -80,7 +80,7 @@ class LedgerPortTest {
 
     private LedgerRealm createLedger(ErpStore store) {
         store.createCrmAndLedgerRepository();
-        LedgerHdl ledgerHdl = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
+        var ledgerHdl = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
         ledgerHdl.importEntities();
         return ledgerHdl.ledger();
     }

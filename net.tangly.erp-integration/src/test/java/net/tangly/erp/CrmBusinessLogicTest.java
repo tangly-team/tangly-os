@@ -25,7 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CrmBusinessLogicTest {
     @Test
     void testCrmTags() {
-        TagTypeRegistry registry = new TagTypeRegistry();
+        var registry = new TagTypeRegistry();
         CrmTags.registerTags(registry);
         assertThat(registry.namespaces().size()).isEqualTo(2);
         assertThat(registry.namespaces()).contains(CrmTags.CRM, CrmTags.GEO);

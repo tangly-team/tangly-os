@@ -58,7 +58,7 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
     @Override
     public void exports(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
         try (PrintWriter writer = new PrintWriter(Files.newOutputStream(invoicePath), true, StandardCharsets.UTF_8)) {
-            AsciiDocHelper helper = new AsciiDocHelper(writer);
+            var helper = new AsciiDocHelper(writer);
             writer.println(":imagesdir: ../..");
             writer.println();
             writer.println("image::trefoil.svg[100,100,align=\"center\"]");
