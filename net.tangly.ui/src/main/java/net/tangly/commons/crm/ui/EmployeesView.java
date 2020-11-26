@@ -17,7 +17,6 @@ import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import net.tangly.bus.crm.CrmBoundedDomain;
-import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.LegalEntity;
@@ -46,7 +45,7 @@ public class EmployeesView extends InternalEntitiesView<Employee> {
         grid.addColumn(e -> e.organization().name()).setKey("organization").setHeader("Organization").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.tag(CrmTags.CRM_EMPLOYEE_TITLE).orElse("")).setKey("title").setHeader("Title").setSortable(true).setAutoWidth(true)
                 .setResizable(true);
-        addAndExpand(filterCriteria(grid()), grid(), gridButtons());
+        addAndExpand(filterCriteria(false, false), grid(), gridButtons());
     }
 
     @Override

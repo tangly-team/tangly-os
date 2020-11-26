@@ -13,7 +13,7 @@
 
 package net.tangly.bus.products;
 
-import net.tangly.core.app.Handler;
+import net.tangly.core.domain.Handler;
 
 /**
  * Defines the import port for the products bounded domain. It is the primary port in the DDD terminology.

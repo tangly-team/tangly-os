@@ -29,6 +29,7 @@ sourceSets {
 
 dependencies {
     implementation project(':net.tangly.commons')
+    implementation project(':net.tangly.core')
     implementation project(':net.tangly.bus')
     implementation project(':net.tangly.gleam')
 
@@ -50,6 +51,7 @@ dependencies {
     implementation 'one.microstream:storage.embedded:04.00.00-MS-GA'
     implementation 'one.microstream:storage.embedded.configuration:04.00.00-MS-GA'
 
+    testImplementation "org.flywaydb:flyway-core:$flyWayVersion"
     testImplementation "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
     testImplementation "com.fasterxml.jackson.module:jackson-module-parameter-names:$jacksonVersion"
     testImplementation "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion"

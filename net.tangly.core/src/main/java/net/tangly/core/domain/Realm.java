@@ -11,7 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.core.app;
+package net.tangly.core.domain;
 
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.core.HasOid;
@@ -20,8 +20,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Realm is responsible for the handling of entities and value objects part of the domain model.
- * <p>One key feature of entities is their unique object identifier defined in the context of the bounded domain. The realm provides functions to genereate
- * unique object identifiers and set them in the entities in need of them.</p>
+ * <p>One key feature of entities is their unique object identifier defined in the context of the bounded domain. The realm provides functions to generate
+ * unique object identifiers and set them in the entities in need of them. The object identifiers are created in the application.</p>
  */
 public interface Realm {
     static <T extends HasOid> long maxOid(Provider<T> provider) {

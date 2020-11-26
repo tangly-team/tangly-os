@@ -25,7 +25,6 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.CrmBoundedDomain;
-import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.invoices.InvoicesBusinessLogic;
 import net.tangly.commons.vaadin.BankConnectionField;
@@ -56,7 +55,7 @@ public class ContractsView extends InternalEntitiesView<Contract> {
                 .setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(new NumberRenderer<>(o -> logicInvoices.invoicedAmountWithoutVatForContract(o.id(), null, null), VaadinUtils.FORMAT))
                 .setKey("invoicedAmount").setHeader("Invoiced").setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
-        addAndExpand(filterCriteria(grid()), grid(), gridButtons());
+        addAndExpand(filterCriteria( false, false), grid(), gridButtons());
     }
 
     @Override

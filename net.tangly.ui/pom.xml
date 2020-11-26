@@ -16,9 +16,9 @@
         <product.reporting.outputEncoding>UTF-8</product.reporting.outputEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
 
-        <vaadin.version>17.0.9</vaadin.version>
+        <vaadin.version>17.0.10</vaadin.version>
         <tangly.version>0.2.6</tangly.version>
-        <jetty.version>9.4.33.v20201020</jetty.version>
+        <jetty.version>9.4.34.v20201102</jetty.version>
     </properties>
 
     <repositories>
@@ -164,6 +164,16 @@
         <dependency>
             <groupId>net.tangly</groupId>
             <artifactId>commons</artifactId>
+            <version>${tangly.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.tangly</groupId>
+            <artifactId>core</artifactId>
+            <version>${tangly.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.tangly</groupId>
+            <artifactId>gleam</artifactId>
             <version>${tangly.version}</version>
         </dependency>
         <dependency>

@@ -11,34 +11,39 @@
  *  under the License.
  */
 
-package net.tangly.commons.bus.ui;
+package net.tangly.commons.domain.ui;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.data.provider.ListDataProvider;
-import net.tangly.core.HasTags;
+import net.tangly.commons.vaadin.GridFiltersAndActions;
 import net.tangly.core.TagType;
-import net.tangly.core.TagTypeRegistry;
+import net.tangly.core.domain.BoundedDomain;
 import org.jetbrains.annotations.NotNull;
 import org.vaadin.klaudeta.PaginatedGrid;
 
+/**
+ * Displays all tags and their usage, often use for administrative inforomation for a bounded domain.
+ */
 public class TagTypesView extends VerticalLayout {
     private final PaginatedGrid<TagType> grid;
-    private final TagTypeRegistry registry;
+    private final BoundedDomain<?, ?, ?, ?> domain;
     private final HashMap<TagType<?>, Integer> counts;
 
-    public TagTypesView(@NotNull TagTypeRegistry registry) {
-        this.registry = registry;
+    public TagTypesView(@NotNull BoundedDomain<?, ?, ?, ?> domain) {
+        this.domain = domain;
         this.counts = new HashMap<>();
         this.grid = new PaginatedGrid<>(TagType.class);
+        initialize();
+    }
+
+    protected void initialize() {
         grid.setPageSize(10);
         grid.setPaginatorSize(3);
-        grid.setDataProvider((ListDataProvider) DataProvider.ofCollection(registry.tagTypes()));
+        grid.setDataProvider((ListDataProvider) DataProvider.ofCollection(domain.registry().tagTypes()));
 
         grid.addColumn(TagType::namespace).setKey("namespace").setHeader("Namespace").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(TagType::name).setKey("name").setHeader("Name").setSortable(true).setAutoWidth(true).setResizable(true);
@@ -50,24 +55,22 @@ public class TagTypesView extends VerticalLayout {
         grid.setHeightFull();
         grid.setMinHeight("5em");
         grid.setWidthFull();
+
+        GridFiltersAndActions<TagType> decorator = new GridFiltersAndActions<TagType>(grid, false, true);
+        decorator.addGlobalAction("Count Tags", e -> update(domain.countTags(new HashMap<>())));
+
         setSizeFull();
-        add(grid);
+        addAndExpand(decorator, grid);
     }
 
-    public void refreshData() {
+    public void update(@NotNull Map<TagType<?>, Integer> counts) {
+        counts.clear();
+        this.counts.putAll(counts);
         grid.getDataProvider().refreshAll();
     }
 
-    public void addCounts(Map<TagType<?>, Integer> counts) {
-        this.counts.putAll(counts);
-    }
-
-    public void clearCounts() {
-        counts.clear();
-    }
-
     int count(@NotNull TagType<?> type) {
-        return counts.getOrDefault(type, -1);
+        return counts.getOrDefault(type, 0);
     }
 
     private void increment(@NotNull TagType<?> type) {

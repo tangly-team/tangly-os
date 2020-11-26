@@ -79,6 +79,10 @@ public class Effort implements HasOid {
         this.contractId = contractId;
     }
 
+    public boolean check() {
+        return (date() != null) && (duration() >= 0) && (contractId != null) && (assignment() != null);
+    }
+
     @Override
     public String toString() {
         return """

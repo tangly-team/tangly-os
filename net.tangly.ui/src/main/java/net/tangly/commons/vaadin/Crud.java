@@ -16,7 +16,6 @@ package net.tangly.commons.vaadin;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
 import org.jetbrains.annotations.NotNull;
@@ -94,7 +93,7 @@ public class Crud<T> extends VerticalLayout implements SelectedItemListener<T> {
     }
 
     public void addSelectedItemListener(SelectedItemListener<T> listener) {
-        this.selectedItemListenerListeners.add(listener);
+        selectedItemListenerListeners.add(listener);
     }
 
     public Mode mode() {

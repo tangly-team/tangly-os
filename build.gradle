@@ -164,7 +164,7 @@ subprojects {
         assertjVersion = '3.18.1'
         annotationsVersion = '20.1.0'
         archUnitVersion = '0.14.1'
-        flyWayVersion = '7.2.0'
+        flyWayVersion = '7.2.1'
         hsqldbVersion = '2.5.1'
         guiceVersion = '4.2.3'
         jsonValidatorVersion = '1.0.44'

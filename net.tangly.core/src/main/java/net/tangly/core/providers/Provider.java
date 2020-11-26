@@ -36,14 +36,15 @@ public interface Provider<T> {
     }
 
     /**
-     * Return a list containing all known instances of the entity type.
+     * Returns a list containing all known instances of the entity type.
      *
      * @return list of all instances
      */
     List<T> items();
 
     /**
-     * Update the data associated with the entity. If the entity is new the update is handled as a create operation. The update is transitive and all referenced
+     * Updates the data associated with the entity. If the entity is new the update is handled as a create operation. The update is transitive and all
+     * referenced
      * entities are also updated. The entity given as parameter becomes the instance managed through the provider.
      *
      * @param entity entity to update
@@ -51,14 +52,23 @@ public interface Provider<T> {
     void update(@NotNull T entity);
 
     /**
-     * Delete the data associated with the entity. The object identifier is invalidated.
+     * Deletes the data associated with the entity. The object identifier is invalidated.
      *
      * @param entity entity to delete
      */
     void delete(@NotNull T entity);
 
     /**
-     * Return the first entity which property matches the value.
+     * Updates the data associated with all entities.
+     *
+     * @param items entities to update
+     */
+    default void updateAll(@NotNull Iterable<? extends T> items) {
+        items.forEach(this::update);
+    }
+
+    /**
+     * Returns the first entity which property matches the value.
      *
      * @param getter getter to retrieve the property
      * @param value  value to compare with
@@ -67,14 +77,5 @@ public interface Provider<T> {
      */
     default <U> Optional<T> findBy(Function<T, U> getter, U value) {
         return items().stream().filter(o -> value.equals(getter.apply(o))).findAny();
-    }
-
-    /**
-     * Update the data associated with all entities.
-     *
-     * @param items entities to update
-     */
-    default void updateAll(@NotNull Iterable<? extends T> items) {
-        items.forEach(this::update);
     }
 }

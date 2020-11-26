@@ -13,18 +13,10 @@
 
 package net.tangly.erp;
 
-import java.io.IOException;
-import java.nio.file.FileSystem;
 import java.nio.file.Path;
 
-import com.google.common.jimfs.Configuration;
-import com.google.common.jimfs.Jimfs;
-import net.tangly.bus.crm.CrmRealm;
 import net.tangly.crm.ports.CrmEntities;
 import net.tangly.crm.ports.CrmHdl;
-import one.microstream.storage.types.EmbeddedStorage;
-import one.microstream.storage.types.EmbeddedStorageManager;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -33,7 +25,7 @@ public class CrmPersistenceTest {
     @Test
     void persistCrmRealLocalTest() {
         String PATH = "/Users/Shared/tangly/db/crm";
-        CrmEntities realm = new CrmEntities(Path.of(PATH));
+        var realm = new CrmEntities(Path.of(PATH));
         realm.storeRoot();
         CrmHdl crmHdl = new CrmHdl(realm, Path.of("/Users/Shared/tangly/", "import/crm"));
         crmHdl.importEntities();
@@ -45,7 +37,7 @@ public class CrmPersistenceTest {
         realm.storeRoot();
         realm.shutdown();
 
-        CrmEntities persistentRealm = new CrmEntities(Path.of(PATH));
+        var persistentRealm = new CrmEntities(Path.of(PATH));
         assertThat(persistentRealm.naturalEntities().items().isEmpty()).isFalse();
         assertThat(persistentRealm.legalEntities().items().isEmpty()).isFalse();
         assertThat(persistentRealm.employees().items().isEmpty()).isFalse();

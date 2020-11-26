@@ -33,14 +33,8 @@ sourceSets {
 
 dependencies {
     implementation project(':net.tangly.commons')
+    implementation project(':net.tangly.core')
 
     implementation 'commons-codec:commons-codec:1.15'
     implementation 'commons-io:commons-io:2.8.0'
-    implementation "org.hsqldb:hsqldb:$hsqldbVersion"
-    implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.13'
-    implementation 'org.iban4j:iban4j:3.2.1'
-    implementation 'one.microstream:storage.embedded:04.00.00-MS-GA'
-
-    testImplementation "org.flywaydb:flyway-core:$flyWayVersion"
-    testImplementation "com.guicedee.services:json:$jsonVersion"
 }

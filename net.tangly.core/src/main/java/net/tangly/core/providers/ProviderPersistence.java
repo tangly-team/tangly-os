@@ -52,7 +52,12 @@ public class ProviderPersistence<T> implements Provider<T> {
 
     @Override
     public void updateAll(@NotNull Iterable<? extends T> entities) {
-        entities.forEach(this::update);
+        entities.forEach(entity -> {
+            if (!items.contains(entity)) {
+                items.add(entity);
+            }
+        });
+        storageManager.store(items);
     }
 
     @Override

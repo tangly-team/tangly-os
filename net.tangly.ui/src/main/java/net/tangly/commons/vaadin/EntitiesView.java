@@ -100,10 +100,8 @@ public abstract class EntitiesView<T> extends Crud<T> implements CrudForm<T> {
         return buttons;
     }
 
-    protected GridFiltersAndActions<T> gridFiltersAndActions() {
-        GridFiltersAndActions<T> gridFunctions = new GridFiltersAndActions<>((ListDataProvider<T>) grid().getDataProvider(), grid());
-        addSelectedItemListener(gridFunctions);
-        return gridFunctions;
+    protected GridFiltersAndActions<T> gridFiltersAndActions(boolean hasItemActions, boolean hasGlobalActions) {
+        return GridFiltersAndActions.of(this, grid(), hasItemActions, hasGlobalActions);
     }
 
     protected static <T> T updateOrCreate(T entity, Binder<T> binder, Supplier<T> factory) {

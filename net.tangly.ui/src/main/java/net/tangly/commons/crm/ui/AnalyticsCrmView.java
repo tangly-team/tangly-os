@@ -51,6 +51,7 @@ import net.tangly.ledger.ports.LedgerAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.vaadin.klaudeta.PaginatedGrid;
 
 public class AnalyticsCrmView extends VerticalLayout {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -106,7 +107,7 @@ public class AnalyticsCrmView extends VerticalLayout {
     }
 
     private Grid<Contract> contractsTable() {
-        Grid<Contract> grid = new Grid<>();
+        PaginatedGrid<Contract> grid = new PaginatedGrid<>();
         grid.setDataProvider(DataProvider.ofCollection(crmLogic.realm().contracts().items()));
         grid.addColumn(Contract::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
@@ -258,7 +259,7 @@ public class AnalyticsCrmView extends VerticalLayout {
             populate.accept(chart);
             chart.update();
         } catch (Exception e) {
-            // TODO logger.atError().setCause(e).log("Error when updating SO charts");
+            logger.atError().setCause(e).log("Error when updating SO charts");
         }
     }
 }

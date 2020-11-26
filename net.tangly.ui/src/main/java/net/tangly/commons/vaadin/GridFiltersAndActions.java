@@ -15,9 +15,12 @@ package net.tangly.commons.vaadin;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 
+import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.datepicker.DatePicker;
@@ -31,36 +34,71 @@ import org.jetbrains.annotations.NotNull;
 import org.vaadin.klaudeta.PaginatedGrid;
 
 public class GridFiltersAndActions<T> extends HorizontalLayout implements SelectedItemListener<T> {
+    /**
+     * Defines the structure for a submenu of context actions associated with entities displayed in a grid.
+     */
+    public static class Actions {
+        private final MenuItem menuItem;
+        private final SubMenu subMenu;
+
+        public Actions(@NotNull MenuBar menuBar, @NotNull String label) {
+            menuItem = menuBar.addItem(label);
+            subMenu = menuItem.getSubMenu();
+        }
+
+        public void addAction(@NotNull String text, @NotNull ComponentEventListener<ClickEvent<MenuItem>> clickListener) {
+            subMenu.addItem(text, clickListener);
+        }
+
+        public void enabled(boolean enabled) {
+            menuItem.setEnabled(enabled);
+        }
+    }
+
     private final ListDataProvider<T> provider;
     private final PaginatedGrid<T> grid;
     private final List<GridFilter<T>> filters;
     private final MenuBar menuBar;
-    private final MenuItem actionsItem;
-    private final SubMenu actions;
+    private final Actions itemActions;
+    private final Actions globalActions;
     private T selectedItem;
 
-    public GridFiltersAndActions(@NotNull ListDataProvider<T> provider, @NotNull PaginatedGrid<T> grid) {
-        this.provider = provider;
+    public GridFiltersAndActions(@NotNull PaginatedGrid<T> grid, boolean hasItemActions, boolean hasGlobalActions) {
         this.grid = grid;
-        filters = new ArrayList<>();
+        this.provider = (ListDataProvider<T>) grid.getDataProvider();
         menuBar = new MenuBar();
-        actionsItem = menuBar.addItem("Actions");
-        actions = actionsItem.getSubMenu();
+        itemActions = hasItemActions ? new Actions(menuBar, "Actions") : null;
+        globalActions = hasGlobalActions ? new Actions(menuBar, "Operations") : null;
+        filters = new ArrayList<>();
         selectedItem(null);
-        add(menuBar);
+        if (hasItemActions || hasGlobalActions) {
+            add(menuBar);
+        }
+    }
+
+    public static <U> GridFiltersAndActions<U> of(@NotNull Crud<U> view, @NotNull PaginatedGrid<U> grid, boolean hasItemActions, boolean hasGlobalActions) {
+        GridFiltersAndActions<U> decorator = new GridFiltersAndActions<>(grid, hasItemActions, hasGlobalActions);
+        view.addSelectedItemListener(decorator);
+        return decorator;
+    }
+
+    public void addItemAction(@NotNull String text, @NotNull ComponentEventListener<ClickEvent<MenuItem>> clickListener) {
+        Objects.requireNonNull(itemActions).addAction(text, clickListener);
+    }
+
+    public void addGlobalAction(@NotNull String text, @NotNull ComponentEventListener<ClickEvent<MenuItem>> clickListener) {
+        Objects.requireNonNull(globalActions).addAction(text, clickListener);
     }
 
     public void selectedItem(T entity) {
         selectedItem = entity;
-        actionsItem.setEnabled(entity != null);
+        if (itemActions != null) {
+            itemActions.enabled(entity != null);
+        }
     }
 
     public T selectedItem() {
         return selectedItem;
-    }
-
-    public SubMenu actions() {
-        return actions;
     }
 
     public void addFilter(@NotNull GridFilter<T> filter) {

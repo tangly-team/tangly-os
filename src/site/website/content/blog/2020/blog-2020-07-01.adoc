@@ -123,6 +123,19 @@ The source code for the invoice component is available as a Java package.
 More information is available under https://tangly-team.bitbucket.io/[tangly open source components].
 
 The generator code for the Swiss QR bill and ZUGFeRD data is available as Java package.
+The developer was very supportive to improve the component.
+For example, it is now possible to write unit tests using in-memory file systems.
+
+The Facture-X component also support unit tests using in-memory file systems.
+
+WARNING
+====
+Not all Java developers have realized that the Java class *File* should be deprecated.
+*java.io.File* instances always access the default file system.
+
+*java.nio.Path* instances contain the file system it should use and support in-memory file systems.
+Use *java.nio.Files* to create input streams, output streams, buffered readers, or buffered writers using path instances.
+====
 
 The investment to create the generators and test them against regular invoices of https://www.tangly.net[tangly llc] was around four man-days.
 

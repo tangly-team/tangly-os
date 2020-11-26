@@ -34,11 +34,11 @@ class LedgerHdlTest {
     @Test
     void testTsvLedgerImport() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            ErpStore erpStore = new ErpStore(fs);
-            erpStore.createCrmAndLedgerRepository();
+            var store = new ErpStore(fs);
+            store.createCrmAndLedgerRepository();
 
             var handler = new LedgerTsvHdl(new LedgerEntities());
-            handler.importChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
+            handler.importChartOfAccounts(store.ledgerRoot().resolve(SWISS_LEDGER));
             handler.ledger().build();
             assertThat(
                 handler.ledger().accounts().items().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty()).findAny().isEmpty())
@@ -57,20 +57,20 @@ class LedgerHdlTest {
     @Test
     void testTsvLedgerImportExport() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            ErpStore erpStore = new ErpStore(fs);
-            erpStore.createCrmAndLedgerRepository();
+            var store = new ErpStore(fs);
+            store.createCrmAndLedgerRepository();
 
             var handler = new LedgerTsvHdl(new LedgerEntities());
-            handler.importChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
+            handler.importChartOfAccounts(store.ledgerRoot().resolve(SWISS_LEDGER));
             handler.ledger().build();
             int nrOfAccounts = handler.ledger().accounts().items().size();
             int nrOfBookableAccounts = handler.ledger().bookableAccounts().size();
             int nrOfLiabilitiesAccounts = handler.ledger().liabilities().size();
             int nrOfProfitAndLossAccounts = handler.ledger().profitAndLoss().size();
 
-            handler.exportChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
+            handler.exportChartOfAccounts(store.ledgerRoot().resolve(SWISS_LEDGER));
             handler = new LedgerTsvHdl(new LedgerEntities());
-            handler.importChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
+            handler.importChartOfAccounts(store.ledgerRoot().resolve(SWISS_LEDGER));
             handler.ledger().build();
             assertThat(handler.ledger().accounts().items().size()).isEqualTo(nrOfAccounts);
             assertThat(handler.ledger().bookableAccounts().size()).isEqualTo(nrOfBookableAccounts);
@@ -82,14 +82,14 @@ class LedgerHdlTest {
     @Test
     void testTsvTransactionsImport() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            ErpStore erpStore = new ErpStore(fs);
-            erpStore.createCrmAndLedgerRepository();
+            var store = new ErpStore(fs);
+            store.createCrmAndLedgerRepository();
 
             var handler = new LedgerTsvHdl(new LedgerEntities());
-            handler.importChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
+            handler.importChartOfAccounts(store.ledgerRoot().resolve(SWISS_LEDGER));
             handler.ledger().build();
 
-            handler.importJournal(erpStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
+            handler.importJournal(store.ledgerRoot().resolve("transactions-2015-2016.tsv"));
             assertThat(handler.ledger().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31)).isEmpty()).isFalse();
         }
     }
@@ -97,13 +97,13 @@ class LedgerHdlTest {
     @Test
     void testTsvTransactionsImportExport() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            ErpStore erpStore = new ErpStore(fs);
-            erpStore.createCrmAndLedgerRepository();
+            var store = new ErpStore(fs);
+            store.createCrmAndLedgerRepository();
 
             var handler = new LedgerTsvHdl(new LedgerEntities());
-            handler.importChartOfAccounts(erpStore.ledgerRoot().resolve(SWISS_LEDGER));
+            handler.importChartOfAccounts(store.ledgerRoot().resolve(SWISS_LEDGER));
             handler.ledger().build();
-            handler.importJournal(erpStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
+            handler.importJournal(store.ledgerRoot().resolve("transactions-2015-2016.tsv"));
 
             handler.exportJournal(Path.of("/Users/Shared/tmp/foo.tsv"), null, null);
         }

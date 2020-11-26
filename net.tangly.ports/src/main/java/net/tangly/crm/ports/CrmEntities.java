@@ -28,7 +28,7 @@ import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.bus.crm.Subject;
 import net.tangly.commons.generator.IdGenerator;
 import net.tangly.core.HasOid;
-import net.tangly.core.app.Realm;
+import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.providers.ProviderPersistence;

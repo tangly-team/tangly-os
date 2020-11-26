@@ -36,6 +36,10 @@ public class Product extends QualifiedEntityImp {
         this.contractIds = List.copyOf(contractIds);
     }
 
+    public boolean check() {
+        return (contractIds().size() > 0);
+    }
+
     @Override
     public String toString() {
         return """

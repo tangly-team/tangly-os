@@ -33,10 +33,10 @@ public class InvoicesBusinessLogicTest {
     @Test
     void testTsvInvoices() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(com.google.common.jimfs.Configuration.unix())) {
-            ErpStore store = new ErpStore(fs);
+            var store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
 
-            InvoicesHdl handler = new InvoicesHdl(new InvoicesEntities(), store.invoicesRoot());
+            var handler = new InvoicesHdl(new InvoicesEntities(), store.invoicesRoot());
             handler.importEntities();
 
             verifyBusinessLogic(handler.realm());
@@ -49,7 +49,7 @@ public class InvoicesBusinessLogicTest {
     }
 
     private void verifyBusinessLogic(@NotNull InvoicesRealm realm) {
-        InvoicesBusinessLogic logic = new InvoicesBusinessLogic(realm);
+        var logic = new InvoicesBusinessLogic(realm);
         assertThat(logic.invoicedAmountWithoutVatForContract(CONTRACT_HSLU_2015, null, null))
             .isEqualByComparingTo(logic.paidAmountWithoutVatForContract(CONTRACT_HSLU_2015, null, null));
         assertThat(logic.expensesForContract(CONTRACT_HSLU_2015, null, null)).isNotNegative();

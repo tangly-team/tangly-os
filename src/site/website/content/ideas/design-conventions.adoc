@@ -5,19 +5,16 @@ weight: 60
 draft: false
 ---
 
-= Design Conventions
+== Design Conventions
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
-:revnumber: v0.1
-:revdate: 2020-05-31
-:homepage: https://www.tangly.net/
 :description: Design conventions for the open source components of tangly
 :keywords: agile, architecture, design
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 :sectnums:
 
-== Audit Event Conventions
+=== Audit Event Conventions
 
 The _event_ field is one of of the following values
 
@@ -38,9 +35,18 @@ The _component_ field is one of the tangly component
 * net.tangly.ports
 * net.tangly.commons.ui.vaadin
 
-== Java Conventions
+=== Java Conventions
 
-=== toString Method
+==== Modern Java Constructs
+
+Use modern Java constructs in our daily coding
+
+* Prefer record over class construct to promote immutable objects
+* Prefer stream use over explicit control statements to promote functional programming
+* Promote modules for information hiding and reducing coupling between components
+* Experiment with var construct to find out if code is more legible
+
+==== toString Method
 
 The method implementation uses a _String.format()_ approach.
 We assume that Java will introduce intrinsics support for an efficient implementation of toString method based on _String.format()_.
@@ -48,3 +54,7 @@ As soon as the intrisics is available we will migrate to the supported version a
 
 The _toString_ method is used to create detailed audit and looging messages and support production error searching.
 The format of the message is based on the build-in format defined in the JDK for Java records.
+
+=== Design Conventions
+
+Use plantUML to document all design decisions.

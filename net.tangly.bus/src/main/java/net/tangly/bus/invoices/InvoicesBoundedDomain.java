@@ -13,19 +13,24 @@
 
 package net.tangly.bus.invoices;
 
-import java.util.Map;
+import java.util.List;
 import javax.inject.Inject;
 
 import net.tangly.core.TagTypeRegistry;
-import net.tangly.core.app.BoundedDomain;
-import org.jetbrains.annotations.NotNull;
+import net.tangly.core.domain.BoundedDomain;
+import net.tangly.core.domain.DomainEntity;
 
 public class InvoicesBoundedDomain extends BoundedDomain<InvoicesRealm, InvoicesBusinessLogic, InvoicesHandler, InvoicesPort> {
-    public static final String INVOICES_OID_VALUE = "invoices-oid-value";
+    public static final String DOMAIN = "invoices";
 
     @Inject
-    public InvoicesBoundedDomain(InvoicesRealm realm, InvoicesBusinessLogic logic, InvoicesHandler handler, InvoicesPort port, TagTypeRegistry registry,
-                                 @NotNull Map<String, String> configuration) {
-        super(realm, logic, handler, port, registry, configuration);
+    public InvoicesBoundedDomain(InvoicesRealm realm, InvoicesBusinessLogic logic, InvoicesHandler handler, InvoicesPort port, TagTypeRegistry registry) {
+        super(DOMAIN, realm, logic, handler, port, registry);
+    }
+
+    @Override
+    public List<DomainEntity<?>> entities() {
+        return List.of(new DomainEntity<>(DOMAIN, Article.class, realm().articles()), new DomainEntity<>(DOMAIN, Invoice.class, realm().invoices()),
+            new DomainEntity<>(DOMAIN, InvoiceLegalEntity.class, realm().legalEntities()));
     }
 }

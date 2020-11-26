@@ -37,12 +37,11 @@ public class InvoicesPortTest {
     @Test
     void testInvoiceDocuments() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(com.google.common.jimfs.Configuration.unix())) {
-            ErpStore store = new ErpStore(fs);
+            var store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
 
-            InvoicesAdapter port = new InvoicesAdapter(new InvoicesEntities(), store.invoiceReportsRoot());
-
-            InvoicesHdl handler = new InvoicesHdl(new InvoicesEntities(), store.invoicesRoot());
+            var port = new InvoicesAdapter(new InvoicesEntities(), store.invoiceReportsRoot());
+            var handler = new InvoicesHdl(new InvoicesEntities(), store.invoicesRoot());
             handler.importEntities();
             port.exportInvoiceDocuments(false, true);
 
@@ -52,14 +51,13 @@ public class InvoicesPortTest {
 
     private String textFromPdf(Path file) throws IOException {
         try (RandomAccessBufferedFileInputStream stream = new RandomAccessBufferedFileInputStream(Files.newInputStream(file))) {
-            PDFParser parser = new PDFParser(stream);
+            var parser = new PDFParser(stream);
             parser.parse();
             try (COSDocument cosDoc = parser.getDocument()) {
-                PDFTextStripper pdfStripper = new PDFTextStripper();
-                PDDocument pdDoc = new PDDocument(cosDoc);
+                var pdfStripper = new PDFTextStripper();
+                var pdDoc = new PDDocument(cosDoc);
                 pdfStripper.setStartPage(1);
-                String parsedText = pdfStripper.getText(pdDoc);
-                return parsedText;
+                return pdfStripper.getText(pdDoc);
             }
         }
     }

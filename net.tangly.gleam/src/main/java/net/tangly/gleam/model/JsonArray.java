@@ -50,7 +50,7 @@ public record JsonArray<T, U>(@NotNull String property, @NotNull Function<T, Col
         if (object.has(property())) {
             JSONArray items = object.getJSONArray(property());
             items.forEach(o -> {
-                JsonEntity jsonEntity = importSelector.apply((JSONObject) o);
+                JsonEntity<?> jsonEntity = importSelector.apply((JSONObject) o);
                 setter().accept(entity, (U) jsonEntity.imports((JSONObject) o, entity));
             });
         }

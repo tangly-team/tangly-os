@@ -56,7 +56,7 @@ public class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
         grid.addColumn(o -> o.tag(CrmTags.CRM_RESPONSIBLE).orElse(null)).setKey("responsible").setHeader("Responsible").setAutoWidth(true)
             .setSortable(true);
 
-        addAndExpand(filterCriteria(grid()), grid(), gridButtons());
+        addAndExpand(filterCriteria( false, false), grid(), gridButtons());
     }
 
     public static void defineOne2ManyEmployees(@NotNull Grid<Employee> grid) {

@@ -39,42 +39,42 @@ class CrmHdlTest {
     @Test
     @Tag("localTest")
     void testCompanyTsvCrm() {
-        CrmRealm realm = new CrmEntities();
-        CrmHdl crmHdl = new CrmHdl(realm, Path.of("/Users/Shared/tangly/", "import/crm"));
-        CrmBusinessLogic logic = new CrmBusinessLogic(realm);
+        var realm = new CrmEntities();
+        var crmHdl = new CrmHdl(realm, Path.of("/Users/Shared/tangly/", "import/crm"));
+        var logic = new CrmBusinessLogic(realm);
         crmHdl.importEntities();
     }
 
     @Test
     void testTsvCrm() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            ErpStore store = new ErpStore(fs);
+            var store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
 
-            CrmHdl crmHdl = new CrmHdl(new CrmEntities(), store.crmRoot());
-            crmHdl.importEntities();
+            var handler = new CrmHdl(new CrmEntities(), store.crmRoot());
+            handler.importEntities();
 
-            verifyNaturalEntities(crmHdl.realm());
-            verifyLegalEntities(crmHdl.realm());
-            verifyEmployees(crmHdl.realm());
-            verifyContracts(crmHdl.realm());
-            verifyInteractions(crmHdl.realm());
-            verifyActivities(crmHdl.realm());
-            verifySubjects(crmHdl.realm());
-            verifyComments(crmHdl.realm());
+            verifyNaturalEntities(handler.realm());
+            verifyLegalEntities(handler.realm());
+            verifyEmployees(handler.realm());
+            verifyContracts(handler.realm());
+            verifyInteractions(handler.realm());
+            verifyActivities(handler.realm());
+            verifySubjects(handler.realm());
+            verifyComments(handler.realm());
 
-            crmHdl.exportEntities();
+            handler.exportEntities();
 
-            crmHdl = new CrmHdl(new CrmEntities(), store.crmRoot());
-            crmHdl.importEntities();
-            verifyNaturalEntities(crmHdl.realm());
-            verifyLegalEntities(crmHdl.realm());
-            verifyEmployees(crmHdl.realm());
-            verifyContracts(crmHdl.realm());
-            verifyInteractions(crmHdl.realm());
-            verifyActivities(crmHdl.realm());
-            verifySubjects(crmHdl.realm());
-            verifyComments(crmHdl.realm());
+            handler = new CrmHdl(new CrmEntities(), store.crmRoot());
+            handler.importEntities();
+            verifyNaturalEntities(handler.realm());
+            verifyLegalEntities(handler.realm());
+            verifyEmployees(handler.realm());
+            verifyContracts(handler.realm());
+            verifyInteractions(handler.realm());
+            verifyActivities(handler.realm());
+            verifySubjects(handler.realm());
+            verifyComments(handler.realm());
         }
     }
 

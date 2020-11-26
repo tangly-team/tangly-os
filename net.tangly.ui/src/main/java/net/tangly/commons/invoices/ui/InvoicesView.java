@@ -55,8 +55,8 @@ public class InvoicesView extends EntitiesView<Invoice> {
         grid.addColumn(o -> VaadinUtils.format(o.amountWithoutVat())).setKey("amountWithoutVat").setHeader("Amount").setAutoWidth(true).setResizable(true)
             .setSortable(true);
         grid.addColumn(Invoice::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
-        GridFiltersAndActions<Invoice> gridFunctions = gridFiltersAndActions();
-        gridFunctions.actions().addItem("Print", e -> new CmdCreateInvoiceDocument(selectedItem(), domain));
+        GridFiltersAndActions<Invoice> gridFunctions = gridFiltersAndActions(true, false);
+        gridFunctions.addItemAction("Print", e -> new CmdCreateInvoiceDocument(selectedItem(), domain));
         addAndExpand(gridFunctions, grid(), gridButtons());
     }
 

@@ -13,21 +13,25 @@
 
 package net.tangly.bus.ledger;
 
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import javax.inject.Inject;
 
 import net.tangly.core.TagType;
 import net.tangly.core.TagTypeRegistry;
-import net.tangly.core.app.BoundedDomain;
+import net.tangly.core.domain.BoundedDomain;
+import net.tangly.core.domain.DomainEntity;
+import net.tangly.core.providers.Provider;
+import net.tangly.core.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
 
 public class LedgerBoundedDomain extends BoundedDomain<LedgerRealm, LedgerBusinessLogic, LedgerHandler, LedgerPort> {
-    public static final String LEDGER_OID_VALUE = "ledger-oid-value";
+    public static final String DOMAIN = "ledger";
 
     @Inject
-    public LedgerBoundedDomain(LedgerRealm realm, LedgerBusinessLogic logic, LedgerHandler handler, LedgerPort port, TagTypeRegistry registry,
-                               @NotNull Map<String, String> configuration) {
-        super(realm, logic, handler, port, registry, configuration);
+    public LedgerBoundedDomain(LedgerRealm realm, LedgerBusinessLogic logic, LedgerHandler handler, LedgerPort port, TagTypeRegistry registry) {
+        super(DOMAIN, realm, logic, handler, port, registry);
     }
 
     @Override
@@ -39,5 +43,15 @@ public class LedgerBoundedDomain extends BoundedDomain<LedgerRealm, LedgerBusine
     public Map<TagType<?>, Integer> countTags(@NotNull Map<TagType<?>, Integer> counts) {
         realm().accounts().items().stream().map(Account::entries).forEach(o -> addTagCounts(registry(), o, counts));
         return counts;
+    }
+
+    @Override
+    public List<DomainEntity<?>> entities() {
+        return List.of(new DomainEntity<>(DOMAIN, Account.class, realm().accounts()), new DomainEntity<>(DOMAIN, AccountEntry.class, entries()),
+            new DomainEntity<>(DOMAIN, Transaction.class, realm().transactions()));
+    }
+
+    private Provider<AccountEntry> entries() {
+        return ProviderInMemory.of(realm().accounts().items().stream().flatMap(o -> o.entries().stream()).collect(Collectors.toList()));
     }
 }

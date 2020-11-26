@@ -29,7 +29,7 @@ project.ext.inceptionYear = '1996'
 project.description = "Vaadin user interface for the business components (tangly llc)"
 
 ext {
-    vaadinVersion = '17.0.9'
+    vaadinVersion = '17.0.10'
 }
 
 vaadin {
@@ -50,8 +50,7 @@ if (mode.equalsIgnoreCase('dev')) {
         contextPath = "/"
         jvmArgs = ['--enable-preview']
         servletContainer = "jetty9.4"
-        jetty94Version = "9.4.33.v20201020"
-//        jetty94Version = "9.4.34.v20201102"
+        jetty94Version = "9.4.34.v20201102"
     }
 }
 
@@ -66,6 +65,7 @@ sourceSets {
 
 dependencies {
     implementation project(':net.tangly.commons')
+    implementation project(':net.tangly.core')
     implementation project(':net.tangly.bus')
     implementation project(':net.tangly.gleam')
     implementation project(':net.tangly.ports')

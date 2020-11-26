@@ -22,7 +22,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import net.tangly.core.HasInterval;
-import net.tangly.core.app.Realm;
+import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;

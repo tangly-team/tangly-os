@@ -34,7 +34,6 @@ public class EffortsView extends EntitiesView<Effort> {
         super(Effort.class, mode, domain.realm().efforts());
         this.domain = domain;
         initialize();
-        addAndExpand(grid(), gridButtons());
     }
 
     @Override
@@ -46,6 +45,7 @@ public class EffortsView extends EntitiesView<Effort> {
         grid.addColumn(Effort::date).setKey("date").setHeader("Date").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Effort::duration).setKey("duration").setHeader("Duration").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Effort::contractId).setKey("contractId").setHeader("ContractId").setAutoWidth(true).setResizable(true).setSortable(true);
+        addAndExpand(grid(), gridButtons());
     }
 
     @Override

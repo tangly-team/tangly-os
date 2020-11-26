@@ -14,4 +14,4 @@
 /**
  * Defines the core abstractions for a bounded domain implementation. Entities defined in the domain can have oid, id, name, tags and comments.
  */
-package net.tangly.core.app;
+package net.tangly.core.domain;

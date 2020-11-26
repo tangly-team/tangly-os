@@ -26,7 +26,6 @@ import net.tangly.bus.ledger.LedgerBoundedDomain;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.GridFiltersAndActions;
 import net.tangly.commons.vaadin.VaadinUtils;
-import net.tangly.core.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -72,8 +71,8 @@ public class AccountsView extends EntitiesView<Account> {
         grid.addColumn(Account::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::ownedBy).setKey("ownedBy").setHeader("Owned By").setAutoWidth(true).setResizable(true);
 
-        GridFiltersAndActions<Account> gridFunctions = gridFiltersAndActions();
-        gridFunctions.actions().addItem("Print", e -> new CmdCreateLedgerDocument(domain));
+        GridFiltersAndActions<Account> gridFunctions = gridFiltersAndActions(true, false);
+        gridFunctions.addItemAction("Print", e -> new CmdCreateLedgerDocument(domain));
         addAndExpand(gridFunctions, grid(), gridButtons());
     }
 

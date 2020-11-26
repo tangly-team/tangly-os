@@ -58,17 +58,6 @@ public class TagsView extends EntitiesView<Tag> {
 
     @Override
     protected FormLayout fillForm(@NotNull Operation operation, Tag entity, FormLayout form) {
-        // TODO implement
-        return null;
-    }
-
-    @Override
-    protected Tag updateOrCreate(Tag entity) {
-        return new Tag(namespace.getValue(), name.getValue(), value.getValue());
-    }
-
-    @Override
-    public FormLayout createForm(@NotNull Operation operation, Tag entity) {
         boolean readonly = Operation.isReadOnly(operation);
         namespace.setItems(registry.namespaces());
         if (entity != null) {
@@ -106,10 +95,14 @@ public class TagsView extends EntitiesView<Tag> {
         } else {
             value.clear();
         }
-        FormLayout form = new FormLayout(namespace, name);
         form.add(value, 2);
         VaadinUtils.setResponsiveSteps(form);
         return form;
+    }
+
+    @Override
+    protected Tag updateOrCreate(Tag entity) {
+        return new Tag(namespace.getValue(), name.getValue(), value.getValue());
     }
 
     @Override

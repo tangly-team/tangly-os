@@ -13,25 +13,32 @@
 
 package net.tangly.bus.products;
 
+import java.util.List;
 import java.util.Map;
 
 import net.tangly.core.TagType;
 import net.tangly.core.TagTypeRegistry;
-import net.tangly.core.app.BoundedDomain;
+import net.tangly.core.domain.BoundedDomain;
+import net.tangly.core.domain.DomainEntity;
 import org.jetbrains.annotations.NotNull;
 
 public class ProductsBoundedDomain extends BoundedDomain<ProductsRealm, ProductsBusinessLogic, ProductsHandler, ProductsPort> {
-    public static final String PRODUCTS_OID_VALUE = "products-oid-value";
+    public static final String DOMAIN = "products";
 
-    public ProductsBoundedDomain(ProductsRealm realm, ProductsBusinessLogic logic, ProductsHandler handler, ProductsPort port, TagTypeRegistry registry,
-                                 @NotNull Map<String, String> configuration) {
-        super(realm, logic, handler, port, registry, configuration);
+    public ProductsBoundedDomain(ProductsRealm realm, ProductsBusinessLogic logic, ProductsHandler handler, ProductsPort port, TagTypeRegistry registry) {
+        super(DOMAIN, realm, logic, handler, port, registry);
     }
 
     @Override
     public Map<TagType<?>, Integer> countTags(@NotNull Map<TagType<?>, Integer> counts) {
-        addTagCounts(registry(), realm().products().items(), counts);
-        addTagCounts(registry(), realm().assignments().items(), counts);
+        addTagCounts(registry(), realm().products(), counts);
+        addTagCounts(registry(), realm().assignments(), counts);
         return counts;
+    }
+
+    @Override
+    public List<DomainEntity<?>> entities() {
+        return List.of(new DomainEntity<>(DOMAIN, Assignment.class, realm().assignments()), new DomainEntity<>(DOMAIN, Effort.class, realm().efforts()),
+            new DomainEntity<>(DOMAIN, Product.class, realm().products()));
     }
 }

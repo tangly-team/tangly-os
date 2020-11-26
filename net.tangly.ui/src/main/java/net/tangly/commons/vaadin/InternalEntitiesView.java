@@ -19,7 +19,6 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.data.binder.Binder;
-import com.vaadin.flow.data.provider.ListDataProvider;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import net.tangly.core.Entity;
 import net.tangly.core.QualifiedEntity;
@@ -55,12 +54,11 @@ public abstract class InternalEntitiesView<T extends Entity> extends EntitiesVie
         this.registry = registry;
     }
 
-    protected GridFiltersAndActions<T> filterCriteria(Grid<T> grid) {
-        GridFiltersAndActions<T> filters = new GridFiltersAndActions<>((ListDataProvider<T>) grid.getDataProvider(), grid());
+    protected GridFiltersAndActions<T> filterCriteria(boolean hasItemActions, boolean hasGlobalActions) {
+        GridFiltersAndActions<T> filters = GridFiltersAndActions.of(this, grid(), hasItemActions, hasGlobalActions);
         filters.addFilter(new GridFiltersAndActions.GridFilterText<>(filters, T::name, "Name", "name"));
         filters.addFilter(new GridFiltersAndActions.GridFilterInterval<>(filters));
         filters.addFilter(new GridFiltersAndActions.GridFilterTags<>(filters));
-        addSelectedItemListener(filters);
         return filters;
     }
 

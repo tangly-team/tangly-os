@@ -38,10 +38,10 @@ class InvoicesHdlTest {
     @Test
     void testTsvInvoices() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(com.google.common.jimfs.Configuration.unix())) {
-            ErpStore store = new ErpStore(fs);
+            var store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
 
-            InvoicesHdl handler = new InvoicesHdl(new InvoicesEntities(), store.invoicesRoot());
+            var handler = new InvoicesHdl(new InvoicesEntities(), store.invoicesRoot());
             handler.importEntities();
 
             verifyArticles(handler.realm());

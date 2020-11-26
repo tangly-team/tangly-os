@@ -19,10 +19,14 @@ import java.nio.file.Path;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
+import net.tangly.bus.products.ProductsRealm;
 import net.tangly.products.ports.ProductsEntities;
 import net.tangly.products.ports.ProductsHdl;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class ProductsHdlTest {
     @Test
@@ -35,16 +39,37 @@ class ProductsHdlTest {
     @Test
     void testTsvCrm() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            ErpStore store = new ErpStore(fs);
+            var store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
 
-            var productsHdl = new ProductsHdl(new ProductsEntities(), store.productsRoot());
-            productsHdl.importEntities();
+            var handler = new ProductsHdl(new ProductsEntities(), store.productsRoot());
+            handler.importEntities();
+            verifyProducts(handler.realm());
+            verifyAssignements(handler.realm());
+            verifyEfforts(handler.realm());
+            handler.exportEntities();
 
-            // TODO test
-            productsHdl.exportEntities();
-
-            // TODO test
+            handler = new ProductsHdl(new ProductsEntities(), store.productsRoot());
+            handler.importEntities();
+            verifyProducts(handler.realm());
+            verifyAssignements(handler.realm());
+            verifyEfforts(handler.realm());
         }
+    }
+
+    private void verifyProducts(@NotNull ProductsRealm realm) {
+        assertThat(realm.products().items().isEmpty()).isFalse();
+        realm.products().items().forEach(o -> assertThat(o.check()).isTrue());
+    }
+
+    private void verifyAssignements(@NotNull ProductsRealm realm) {
+        assertThat(realm.assignments().items().isEmpty()).isFalse();
+        realm.assignments().items().forEach(o -> assertThat(o.check()).isTrue());
+    }
+
+    private void verifyEfforts(@NotNull ProductsRealm realm) {
+        assertThat(realm.efforts().items().isEmpty()).isFalse();
+        realm.efforts().items().forEach(o -> assertThat(o.check()).isTrue());
+
     }
 }

@@ -48,7 +48,7 @@ public class LedgerHdl implements LedgerHandler {
         this.folder = folder;
     }
 
-    public LedgerRealm ledger() {
+    public LedgerRealm realm() {
         return ledger;
     }
 
@@ -58,7 +58,6 @@ public class LedgerHdl implements LedgerHandler {
         var chartOfAccounts = folder.resolve("swiss-ledger.tsv");
         handler.importChartOfAccounts(chartOfAccounts);
         ledger.build();
-        EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, "Chart of accounts imported {}", Map.of("chartOfAccountsPath", chartOfAccounts));
         try (Stream<Path> stream = Files.walk(folder)) {
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith("-period.tsv")).forEach(o -> {
                 handler.importJournal(o);
@@ -74,6 +73,5 @@ public class LedgerHdl implements LedgerHandler {
         var handler = new LedgerTsvHdl(ledger);
         handler.exportChartOfAccounts(folder.resolve("swiss-ledger.tsv"));
         handler.exportJournal(folder.resolve("journal.tsv"), null, null);
-        // TODO log export to event data
     }
 }

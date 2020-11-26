@@ -42,9 +42,9 @@ class LedgerPortTest {
     @Test
     @Tag("localTest")
     public void createReports() {
-        LedgerHdl ledgerHdl = new LedgerHdl(new LedgerEntities(), Paths.get("/Users/Shared/tangly/import/ledger"));
-        ledgerHdl.importEntities();
-        LedgerAdapter adapter = new LedgerAdapter(ledgerHdl.ledger(), Paths.get("/Users/Shared/tangly/reports/ledger"));
+        var handler = new LedgerHdl(new LedgerEntities(), Paths.get("/Users/Shared/tangly/import/ledger"));
+        handler.importEntities();
+        var adapter = new LedgerAdapter(handler.realm(), Paths.get("/Users/Shared/tangly/reports/ledger"));
 
         adapter.exportLedgerDocument("tangly-" + 2016, LocalDate.of(2015, 11, 1), LocalDate.of(2016, 12, 31), true, true);
         List.of(2017, 2018, 2019, 2020).forEach(o -> adapter.exportLedgerDocument("tangly-" + o, LocalDate.of(o, 1, 1), LocalDate.of(o, 12, 31), true, true));
@@ -54,7 +54,7 @@ class LedgerPortTest {
     public void turnoverEbitAndEarningsTest() throws IOException {
         final String filenameWithoutExtension = "2016-period";
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            ErpStore store = new ErpStore(fs);
+            var store = new ErpStore(fs);
             var adapter = new LedgerAdapter(createLedger(store), store.ledgerRoot());
             adapter.exportLedgerDocument(filenameWithoutExtension, LocalDate.of(2015, 10, 01), LocalDate.of(2016, 12, 31), true, true);
             assertThat(Files.exists(store.ledgerRoot().resolve(filenameWithoutExtension + ".adoc"))).isFalse();
@@ -65,14 +65,14 @@ class LedgerPortTest {
     @Test
     void testWriteClosingReport() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
-            ErpStore erpStore = new ErpStore(fs);
-            erpStore.createCrmAndLedgerRepository();
+            var store = new ErpStore(fs);
+            store.createCrmAndLedgerRepository();
 
             var handler = new LedgerTsvHdl(new LedgerEntities());
-            handler.importJournal(erpStore.ledgerRoot().resolve("transactions-2015-2016.tsv"));
+            handler.importJournal(store.ledgerRoot().resolve("transactions-2015-2016.tsv"));
 
             var report = new ClosingReportAsciiDoc(handler.ledger());
-            StringWriter writer = new StringWriter();
+            var writer = new StringWriter();
             report.create(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31), new PrintWriter(writer), true, true);
             assertThat(writer.toString().isEmpty()).isFalse();
         }
@@ -82,6 +82,6 @@ class LedgerPortTest {
         store.createCrmAndLedgerRepository();
         var ledgerHdl = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
         ledgerHdl.importEntities();
-        return ledgerHdl.ledger();
+        return ledgerHdl.realm();
     }
 }

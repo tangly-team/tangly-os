@@ -11,4 +11,22 @@
  *  under the License.
  */
 
-package net.tangly.commons.bus.ui;
+CREATE SCHEMA tangly;
+
+CREATE TABLE tangly.dbCode
+(
+    id      INT PRIMARY KEY,
+    code    VARCHAR(64) NOT NULL,
+    enabled BOOLEAN
+);
+
+INSERT INTO tangly.dbCode (id, code, enabled)
+VALUES (0, 'CODE_TEST_0', TRUE);
+INSERT INTO tangly.DbCode (id, code, enabled)
+VALUES (1, 'CODE_TEST_1', TRUE);
+INSERT INTO tangly.dbCode (id, code, enabled)
+VALUES (2, 'CODE_TEST_2', TRUE);
+INSERT INTO tangly.dbCode (id, code, enabled)
+VALUES (3, 'CODE_TEST_3', TRUE);
+INSERT INTO tangly.dbCode (id, code, enabled)
+VALUES (4, 'CODE_TEST_4', TRUE);

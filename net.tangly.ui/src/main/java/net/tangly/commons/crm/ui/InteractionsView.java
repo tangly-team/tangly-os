@@ -54,7 +54,7 @@ public class InteractionsView extends InternalEntitiesView<Interaction> {
                 .setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(new NumberRenderer<>(e -> e.potential().multiply(e.probability()), VaadinUtils.FORMAT)).setKey("forecast").setHeader("Forecast")
                 .setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
-        addAndExpand(filterCriteria(grid()), grid(), gridButtons());
+        addAndExpand(filterCriteria( false, false), grid(), gridButtons());
     }
 
     @Override

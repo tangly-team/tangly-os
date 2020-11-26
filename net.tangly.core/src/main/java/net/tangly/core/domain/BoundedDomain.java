@@ -11,7 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.core.app;
+package net.tangly.core.domain;
 
 import java.util.Collections;
 import java.util.List;
@@ -21,20 +21,27 @@ import java.util.Optional;
 import net.tangly.core.HasTags;
 import net.tangly.core.TagType;
 import net.tangly.core.TagTypeRegistry;
+import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * A bounded domain as defined in the DDD approach has a domain specific model and a set of adapters.
+ *
+ * @param <R> realm handles all entities and values objects of the domain model
+ * @param <B> business logic provides complex domain business logic functions
+ * @param <H> handler provides an interface to interact with the bounded domain from outer layers
+ * @param <P> port empowers the business domain to communicate with outer layers or external sustems
+ */
 public class BoundedDomain<R extends Realm, B, H extends Handler, P> {
+    private final String name;
     private final R realm;
     private final H handler;
     private final P port;
     private final B logic;
     private final transient TagTypeRegistry registry;
 
-    public BoundedDomain(R realm, B logic, H handler, P port, TagTypeRegistry registry) {
-        this(realm, logic, handler, port, registry, Collections.emptyMap());
-    }
-
-    public BoundedDomain(R realm, B logic, H handler, P port, TagTypeRegistry registry, @NotNull Map<String, String> configuration) {
+    public BoundedDomain(String name, R realm, B logic, H handler, P port, TagTypeRegistry registry) {
+        this.name = name;
         this.realm = realm;
         this.logic = logic;
         this.handler = handler;
@@ -43,7 +50,11 @@ public class BoundedDomain<R extends Realm, B, H extends Handler, P> {
         initialize();
     }
 
-    protected static void addTagCounts(TagTypeRegistry registry, List<? extends HasTags> entities, Map<TagType<?>, Integer> counts) {
+    protected static <I extends HasTags> void addTagCounts(TagTypeRegistry registry, Provider<I> provider, Map<TagType<?>, Integer> counts) {
+        addTagCounts(registry, provider.items(), counts);
+    }
+
+    protected static <I extends HasTags> void addTagCounts(TagTypeRegistry registry, List<I> entities, Map<TagType<?>, Integer> counts) {
         entities.stream().flatMap(e -> e.tags().stream()).map(registry::find).flatMap(Optional::stream).forEach(e -> {
             if (!counts.containsKey(e)) {
                 counts.put(e, 0);
@@ -74,6 +85,10 @@ public class BoundedDomain<R extends Realm, B, H extends Handler, P> {
 
     public TagTypeRegistry registry() {
         return registry;
+    }
+
+    public List<DomainEntity<?>> entities() {
+        return Collections.emptyList();
     }
 
     protected void initialize() {

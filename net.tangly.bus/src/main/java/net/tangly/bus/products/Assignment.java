@@ -42,6 +42,10 @@ public class Assignment extends QualifiedEntityImp {
         this.collaboratorId = collaboratorId;
     }
 
+    public boolean check() {
+        return (product() != null) && (collaboratorId() != null);
+    }
+
     @Override
     public String toString() {
         return """

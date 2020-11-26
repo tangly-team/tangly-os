@@ -13,7 +13,7 @@
 
 package net.tangly.bus.products;
 
-import net.tangly.core.app.Realm;
+import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 
 public interface ProductsRealm extends Realm {

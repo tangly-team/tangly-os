@@ -24,6 +24,7 @@ import net.tangly.bus.products.Product;
 import net.tangly.bus.products.ProductsHandler;
 import net.tangly.bus.products.ProductsRealm;
 import net.tangly.commons.lang.ReflectionUtilities;
+import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
@@ -46,6 +47,11 @@ public class ProductsHdl implements ProductsHandler {
     public ProductsHdl(@NotNull ProductsRealm realm, @NotNull Path folder) {
         this.realm = realm;
         this.folder = folder;
+    }
+
+    @Override
+    public ProductsRealm realm() {
+        return realm;
     }
 
     @Override

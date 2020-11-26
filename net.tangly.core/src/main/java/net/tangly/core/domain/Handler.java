@@ -11,7 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.core.app;
+package net.tangly.core.domain;
 
 /**
  * Define the import port for the bounded domain. It is a primary port in the DDD terminology.
@@ -30,4 +30,6 @@ public interface Handler {
      * @see #importEntities()
      */
     void exportEntities();
+
+    Realm realm();
 }
