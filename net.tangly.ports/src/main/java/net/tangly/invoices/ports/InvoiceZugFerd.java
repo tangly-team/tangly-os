@@ -28,28 +28,22 @@ import net.tangly.bus.invoices.InvoiceItem;
 import net.tangly.bus.invoices.InvoiceLegalEntity;
 import net.tangly.core.Address;
 import org.jetbrains.annotations.NotNull;
+import org.mustangproject.ZUGFeRD.IExportableTransaction;
 import org.mustangproject.ZUGFeRD.IZUGFeRDAllowanceCharge;
 import org.mustangproject.ZUGFeRD.IZUGFeRDExportableContact;
 import org.mustangproject.ZUGFeRD.IZUGFeRDExportableItem;
 import org.mustangproject.ZUGFeRD.IZUGFeRDExportableProduct;
-import org.mustangproject.ZUGFeRD.IZUGFeRDExportableTransaction;
+import org.mustangproject.ZUGFeRD.IZUGFeRDExportableTradeParty;
 import org.mustangproject.ZUGFeRD.IZUGFeRDTradeSettlementPayment;
-import org.mustangproject.ZUGFeRD.ZUGFeRDExporter;
-import org.mustangproject.ZUGFeRD.ZUGFeRDExporterFromA1Factory;
+import org.mustangproject.ZUGFeRD.ZUGFeRDExporterFromA3;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGenerator {
-    /**
-     * Implements a ZugFerd exportable contact and maps a legal entity to ZugFerd abstraction.
-     */
-    static class ZugFerdContact implements IZUGFeRDExportableContact {
-        private final InvoiceLegalEntity entity;
-        private final Address address;
-
-        public ZugFerdContact(@NotNull InvoiceLegalEntity entity, @NotNull Address address) {
-            this.entity = entity;
-            this.address = address;
+public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator {
+    static record TradeParty(@NotNull InvoiceLegalEntity entity, @NotNull Address address) implements IZUGFeRDExportableTradeParty {
+        @Override
+        public IZUGFeRDExportableContact getContact() {
+            return new Contact(entity, address);
         }
 
         @Override
@@ -84,18 +78,47 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
     }
 
     /**
-     * Implements a ZugFerd exportable item and maps the invoice item to ZugFerd abstraction.
+     * Implements a ZugFerd exportable contact and maps a legal entity to ZugFerd abstraction.
      */
-    static class ZugFerdItem implements IZUGFeRDExportableItem {
-        private final InvoiceItem item;
-
-        public ZugFerdItem(@NotNull InvoiceItem item) {
-            this.item = item;
+    static record Contact(@NotNull InvoiceLegalEntity entity, @NotNull Address address) implements IZUGFeRDExportableContact {
+        @Override
+        public String getName() {
+            return entity.name();
         }
 
         @Override
+        public String getVATID() {
+            return entity.vatNr();
+        }
+
+        @Override
+        public String getCountry() {
+            return address.country();
+        }
+
+        @Override
+        public String getLocation() {
+            return address.locality();
+        }
+
+        @Override
+        public String getStreet() {
+            return address.street();
+        }
+
+        @Override
+        public String getZIP() {
+            return address.postcode();
+        }
+    }
+
+    /**
+     * Implements a ZugFerd exportable item and maps the invoice item to ZugFerd abstraction.
+     */
+    static record Item(@NotNull InvoiceItem item) implements IZUGFeRDExportableItem {
+        @Override
         public IZUGFeRDExportableProduct getProduct() {
-            return new ZugFerdProduct(item.article());
+            return new Product(item.article());
         }
 
         @Override
@@ -122,13 +145,7 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
     /**
      * Implements a ZugFerd exportable product and maps the product to the ZugFerd abstraction.
      */
-    static class ZugFerdProduct implements IZUGFeRDExportableProduct {
-        private final Article article;
-
-        public ZugFerdProduct(@NotNull Article article) {
-            this.article = article;
-        }
-
+    static record Product(@NotNull Article article) implements IZUGFeRDExportableProduct {
         @Override
         public String getUnit() {
             return article.unit();
@@ -150,22 +167,10 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
         }
     }
 
-    static class ZugFerdPayment implements IZUGFeRDTradeSettlementPayment {
-        private final Invoice invoice;
-
-        public ZugFerdPayment(@NotNull Invoice invoice) {
-            this.invoice = invoice;
-        }
-
+    static record Payment(@NotNull Invoice invoice) implements IZUGFeRDTradeSettlementPayment {
         @Override
         public String getOwnBIC() {
             return invoice.invoicingConnection().bic();
-        }
-
-        @Override
-        public String getOwnBankName() {
-            return invoice.invoicingConnection().institute();
-
         }
 
         @Override
@@ -180,9 +185,9 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
 
     public void exports(@NotNull Invoice invoice, @NotNull Path invoicePath, @NotNull Map<String, Object> properties) {
         this.invoice = invoice;
-        try (ZUGFeRDExporter exporter = new ZUGFeRDExporterFromA1Factory().ignorePDFAErrors().setZUGFeRDVersion(2).setProducer("tangly ERP")
-            .setCreator(invoice.invoicingEntity().name()).load(Files.newInputStream(invoicePath))) {
-            exporter.PDFattachZugferdFile(this);
+        try (ZUGFeRDExporterFromA3 exporter = new ZUGFeRDExporterFromA3().setProducer("tangly ERP").setCreator(invoice.invoicingEntity().name())
+            .setZUGFeRDVersion(2).setProfile("EN16931").load(Files.newInputStream(invoicePath))) {
+            exporter.setTransaction(this);
             exporter.export(Files.newOutputStream(invoicePath));
         } catch (IOException e) {
             logger.atError().setCause(e).log("Could not read or write file {}", invoicePath);
@@ -261,8 +266,8 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
     }
 
     @Override
-    public IZUGFeRDExportableContact getRecipient() {
-        return new ZugFerdContact(invoice.invoicedEntity(), invoice.invoicedAddress());
+    public IZUGFeRDExportableTradeParty getRecipient() {
+        return new TradeParty(invoice.invoicedEntity(), invoice.invoicedAddress());
     }
 
     @Override
@@ -282,7 +287,7 @@ public class InvoiceZugFerd implements IZUGFeRDExportableTransaction, InvoiceGen
 
     @Override
     public IZUGFeRDExportableItem[] getZFItems() {
-        return invoice.items().stream().map(ZugFerdItem::new).collect(Collectors.toUnmodifiableList()).toArray(new ZugFerdItem[0]);
+        return invoice.items().stream().map(Item::new).collect(Collectors.toUnmodifiableList()).toArray(new Item[0]);
     }
 
     public IZUGFeRDAllowanceCharge[] getZFLogisticsServiceCharges() {

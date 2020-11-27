@@ -160,14 +160,14 @@ subprojects {
         jsonVersion = '1.0.19.13'
         jimfsVersion = '1.1'
         slf4jVersion = '2.0.0-alpha1'
-        mockitoVersion = '3.6.0'
+        mockitoVersion = '3.6.28'
         assertjVersion = '3.18.1'
         annotationsVersion = '20.1.0'
         archUnitVersion = '0.14.1'
-        flyWayVersion = '7.2.1'
+        flyWayVersion = '7.3.0'
         hsqldbVersion = '2.5.1'
         guiceVersion = '4.2.3'
-        jsonValidatorVersion = '1.0.44'
+        jsonValidatorVersion = '1.0.45'
     }
 
     configurations.all {
@@ -175,6 +175,8 @@ subprojects {
             // necessary to avoid runtime errors due to older versions without the fluent API functionality until 2.0 is released and used by all components
             force "org.slf4j:slf4j-api:$slf4jVersion"
             force "org.slf4j:slf4j-simple:$slf4jVersion"
+            // necessary toavoid compile errors with MustangProject library
+            force "org.assertj:assertj-core:$assertjVersion"
             // necessary to avoid JRuby errors because Jackson is loading version 1.19 with an API error
             force "org.yaml:snakeyaml:1.27"
         }

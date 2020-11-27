@@ -27,6 +27,10 @@ sourceSets {
     }
 }
 
+ext {
+    mustangProjectVersion = '2.0.2'
+}
+
 dependencies {
     implementation project(':net.tangly.commons')
     implementation project(':net.tangly.core')
@@ -41,7 +45,7 @@ dependencies {
     // added reference to pdfbox to avoid a runtime error with qrbill-generator, the dependency is too open
     implementation 'org.apache.pdfbox:pdfbox:2.0.21'
     implementation 'net.codecrete.qrbill:qrbill-generator:2.5.0'
-    implementation 'org.mustangproject.ZUGFeRD:mustang:1.7.8'
+    implementation "org.mustangproject:library:$mustangProjectVersion"
     implementation "org.asciidoctor:asciidoctorj:$asciidoctorjVersion"
     implementation 'org.asciidoctor:asciidoctorj-pdf:1.5.3'
 
@@ -52,6 +56,7 @@ dependencies {
     implementation 'one.microstream:storage.embedded.configuration:04.00.00-MS-GA'
 
     testImplementation "org.flywaydb:flyway-core:$flyWayVersion"
+    // testImplementation "org.mustangproject:validator:$mustangProjectVersion"
     testImplementation "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
     testImplementation "com.fasterxml.jackson.module:jackson-module-parameter-names:$jacksonVersion"
     testImplementation "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion"
