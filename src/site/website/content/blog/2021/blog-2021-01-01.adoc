@@ -12,7 +12,7 @@ tags: ["design", "crm"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2021-01-01-head.jpg[720, 480, role=left]
+image::2021-01-01-head.png[720, 480, role=left]
 
 === Value Objects
 
@@ -32,7 +32,35 @@ Because they are so easy to handle we should model as many value objects as poss
 
 ==== Addresses, Phone Numbers, Email Addresses
 
+Some value objects are part of any commercial application domain.
+Postal addresses, phone numbers and email addresses are canonical value objects.
+
+This means that these objects do not have an object identifier and should not be stored in a seperate table if stored in a SQL database.
+Value objects shall be embedded objects and part of an object such as a person.
+
+A person should have an external identifier and has a postal address, multiple phone numbers, and one or more email addresses.
+
+Check your domain model and validate the above assumptions.
+
+* Postal address, phone numbers, email addresses are value objects and have not object identifiers.
+* They are always owned by other entities such as persons, companies, delivery forms.
+* They are immutable objects.
+* Business processes can replace such an object with a new instance without impeding other domain instances.
+
 ==== Invoice Lines
+
+Invoice lines are lines in an invoices. Invoice lines are always value objects belonging to exactly one invoice.
+
+To complicate matter, invoice lines have different types such as a regular line with a specific article, quantity, unit price and price for the quantity.
+Often VAT aspects must be considered and computed for the overall invoice. An invoice line can also be a subtotal for a set of regular invoice lines.
+
+The following design challenges exist
+
+* Serialization libraries such as JSON Jackson library cannot handle invoice lines with multiple Java class types.
+ A workable approach is described and implemented the open source component https://tangly-team.bitbucket.io/docs/gleam/[Gleam].
+ The approach is to define selectors to instantiate the correct Java class/
+* Invoices are complex objects and ideal candidates for a document oriented persistent approach.
+ Invoices should not be stored in a relation based persistence store, meaning a SQL database.
 
 === Factories
 
@@ -49,3 +77,7 @@ When the creation logic is complex or has dependencies that are not needed by th
 This factory could then provide multiple ways to create new instances.
 
 ==== Value Objects in Persistent Store
+
+We encourage experimenting with the https://microstream.one/[MicroStream] approach for small projects.
+The effort to persist a Java object graph is very small.
+You can always move to a no SQL solution when your application is succesfull and time is come to harden it.

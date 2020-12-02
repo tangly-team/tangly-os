@@ -1,0 +1,16 @@
+---
+title: "What I Learnt Teaching Agile Software Architecture"
+linkTitle: "Agile Software Architecture"
+date: 2021-03-01
+tags: ["agile", "serie-students"]
+---
+
+== Agile Leadership
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2021-09-01-head.png[720, 480, role=left]
+

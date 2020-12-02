@@ -17,7 +17,6 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Path;
-import java.util.Map;
 import java.util.Objects;
 import java.util.function.Consumer;
 
@@ -32,8 +31,6 @@ import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
-import com.vaadin.flow.theme.Theme;
-import com.vaadin.flow.theme.material.Material;
 import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.CrmRealm;
@@ -79,7 +76,6 @@ import net.tangly.products.ports.ProductsEntities;
 import net.tangly.products.ports.ProductsHdl;
 import org.jetbrains.annotations.NotNull;
 
-@Theme(value = Material.class)
 @CssImport("./styles/shared-styles.css")
 @CssImport(value = "./styles/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
 @Route("")

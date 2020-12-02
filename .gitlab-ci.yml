@@ -1,7 +1,6 @@
 image: openjdk:15
 
 variables:
-# GRADLE_OPTS: "-Dorg.gradle.daemon=false"
 
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.grade

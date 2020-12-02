@@ -98,6 +98,7 @@ More sophisticated source code management systems based on git with additional a
 * https://github.com/[github] closed source solution and most well-known solution.
 Microsoft acquired them in 2020.
 Some Swiss technical universities - ZHAW, University of Bern - use the academic github campus program.
+CI and CD pipelines are not part of the Github product and must be installed separately.
 The program means you receive github licenses.
 Your organization is responsible to run the software on premises.
 * https://about.gitlab.com/[gitlab] open source solution and strong contender to github.

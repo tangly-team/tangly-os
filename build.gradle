@@ -88,7 +88,7 @@ allprojects {
             ignoreFailures = true
             effort = "max"
             reportLevel = "low"
-            toolVersion = '4.1.4'
+            toolVersion = '4.2.0'
         }
         [spotbugsMain, spotbugsTest].each { task ->
             task.configure {
@@ -155,7 +155,7 @@ subprojects {
     ext {
         apacheCommonsCvsVersion = '1.8'
         asciidoctorjVersion = '2.4.2'
-        jacksonVersion = '2.12.0-rc1'
+        jacksonVersion = '2.12.0'
         junitVersion = '5.7.0'
         jsonVersion = '1.0.19.13'
         jimfsVersion = '1.1'

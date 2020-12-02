@@ -16,7 +16,7 @@
         <product.reporting.outputEncoding>UTF-8</product.reporting.outputEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
 
-        <vaadin.version>17.0.10</vaadin.version>
+        <vaadin.version>18.0.1</vaadin.version>
         <tangly.version>0.2.6</tangly.version>
         <jetty.version>9.4.34.v20201102</jetty.version>
     </properties>
