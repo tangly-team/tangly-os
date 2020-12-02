@@ -4,7 +4,7 @@ date: 2019-05-01
 weight: 50
 ---
 
-== Agile and Technbical Excellence Books
+== Agile and Technical Excellence Books
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :revnumber: v0.1
@@ -14,8 +14,6 @@ weight: 50
 :copyright: CC-BY-SA 4.0
 
 === Agile
-
-*Agile Books*
 
 .Agile Books
 [%collapsible]
@@ -35,7 +33,7 @@ Frederic Laloux, 2014
 
 === Scrum
 
-. Scrum Books
+.Scrum Books
 [%collapsible]
 ====
 * https://www.amazon.com/dp/1329224272[Scrum and XP from the trenches (2nd Edition)],

@@ -16,7 +16,7 @@ function copy_module() {
   # content folder contains all the site dynamic content such as markdown and asciidoc documents
   cp $prjDir/net.tangly.$1/readme.* $siteDir/content/docs/$1/
   cp -R $prjDir/net.tangly.$1/src/site/* $siteDir/content/docs/$1/
-  # static folde contains all the site static content such as JavaDoc html for components
+  # static folder contains all the site static content such as JavaDoc html for components
   cp -R $prjDir/net.tangly.$1/build/docs/javadoc/* $siteDir/static/docs/$1/api-$1
 }
 
@@ -34,6 +34,7 @@ cp $prjDir/net.tangly.bdd/out/bdd-reports/bdd-report.adoc $siteDir/content/docs/
 
 copy_module bus
 copy_module commons
+copy_module core
 copy_module fsm
 copy_module gleam
 copy_module ports

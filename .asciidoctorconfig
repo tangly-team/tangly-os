@@ -1,0 +1,5 @@
+:imagesdir: ./pics
+:source-highlighter: rouge
+:rouge-style: github
+:rouge-css: style
+:icons: font

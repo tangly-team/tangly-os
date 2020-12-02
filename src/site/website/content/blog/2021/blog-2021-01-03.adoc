@@ -1,0 +1,327 @@
+---
+title: "Gitlab for Bachelor Students"
+linkTitle: "Gitlab for Students"
+date: 2021-01-20
+tags: ["java", "serie-students"]
+---
+
+== Gitlab for Bachelor Students
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2021-01-03-head.jpg[720,480,role=left]
+
+Students shall be proficient with a basic set of software development techniques.
+
+* _Technical excellence_ is a mandatory skill for all software developers.
+* _Agile development approaches_ are state of the industry and used almost all software development initiatives.
+* _DevOps_ approaches are used in modern organizations.
+
+Technical schools should provide in-depth experience in these areas to prepare their students to their future activities after completing their bachelor.
+
+The below mind map consolidates concepts, tools and approaches based on the gitlab tooling established in some universities.
+
+[plantuml,students-proficiencies,svg]
+....
+@startmindmap
+<style>
+mindmapDiagram {
+  .hslu {
+    BackgroundColor lightblue
+  }
+}
+</style>
++ <&people> **Proficiencies**
+++ Artifacts Management
++++ Basic //Git//
++++ <color:green>Advanced Git</color>
++++ <color:green>Pull Requests</color>
+++ DevOps
++++ Continuous Integration
+++++ <color:green>Gradle</color>
+++++ <color:green>Gitlab Pipelines</color>
++++ Continuous Delivery
+++++ <color:green>Gitlab Pipelines</color>
+++++ //Maven Central//
++++ Infrastructure as Code
+++++ //Docker//
+++++ //Docker Repository//
+++ Programming
++++ Modern Java
++++ Unit Tests
+++++ //JUnit5//
+++++ //Mockito//
+++++ //AssertJ//
++++ Patterns and Idioms <<hslu>>
++++ Refactor
+++++ //IntelliJ IDE//
+-- Design <<hslu>>
+--- Domain Driven Design
+--- Diagrams (UML, C4) <<hslu>>
+---- //PlantUML//<color:green>
+-- Documentation <<hslu>>
+--- //Markdown//
+--- //AsciiDoc//
+--- //PlantUML//
+--- Site Generators
+---- //Hugo//
+---- <color:green>Gitlab Pages</color>
+-- Agile Development <<hslu>>
+--- Scrum <<hslu>>
+---- <color:green>Backlog: Epics, Stories</color>
+---- <color:green>Iterations: Tasks, Burndown Charts</color>
+---- <color:green>Goals, Roadmap and Releases</color>
+-- <color:green>Software Quality</color>
+--- Static Checkers
+---- //IDEA Analyze//
+---- //SpotBugs//
+---- <color:green>Gitlab Reports</color>
+--- Runtime Checkers
+---- //JaCoCo//
+---- <color:green>Gitlab Reports</color>
+@endmindmap
+....
+
+Italic terms identify concrete tools.
+Green font marks Gitlab features.
+Light blue background concepts map to technical university guidelines.
+
+Yous should develop software applications using agile and DevOps techniques.
+You shall put your source code under a version management system.
+The actual industrial standard is https://git-scm.com/[git], a distributed version control system - https://en.wikipedia.org/wiki/Distributed_version_control[DVCS] -.
+
+More sophisticated source code management systems based on git with additional agile and DevOps functionalities are
+
+* https://github.com/[github] closed source solution and most well-known solution.
+Microsoft acquired them in 2020.
+Some Swiss technical universities - ZHAW, University of Bern - use the academic github campus program.
+The program means you receive github licenses.
+Your organization is responsible to run the software on premises.
+* https://about.gitlab.com/[gitlab] open source solution and strong contender to github.
+* https://bitbucket.org/dashboard/overview[Bitbucket] closed source solution of Attlassian.
+Attlassian also owns JIRA, Confluence and Trello.
+* https://azure.microsoft.com/en-us/services/devops/[Azure Devops] closed source solution and Microsoft answer for .NET development.
+They slowly open to additional development stacks.
+* https://gitea.io/[Gitea] Gitea is a community managed lightweight code hosting solution written in Go.
+The project is hosed on Github.
+It is published under the MIT license.
+* https://gogs.io/[Gogs] A painless self-hosted Git service.
+The project is hosed on Github.
+* https://gitolite.com/[gitolite] Gitolite allows you to set up git hosting on a central server.
+It has fine-grained access control and many more powerful features.
+
+School often select gitlab due to his open source license and the tremendous DevOps functionality.
+The gitlab solution supports source code versioning, DevOps pipelines, agile development approaches, and quality insurance for the produced artifacts.
+
+=== Basic Git for Students
+
+Any developer can create a git hosted project with a few commands in the shell.
+
+[NOTE]
+====
+Linux distributions often include the git application.
+If not use the package manager to download and install git.
+
+MacOS users should use https://brew.sh/[homebrew] as package manager.
+Homebrew can download and install a huge set of Unix packages.To install git you just have to execute _brew install git_.
+
+The huge advantage of package managers is the update function to install new versions of your applications without any configuration activities.
+
+You are a Windows user you can find a Windows package on the : https://git-scm.com/downloads[git home page].
+====
+
+Git has 3 different _areas_ for your code:
+
+Working directory::
+The area that you will be doing all of your work in (creating, editing, deleting, and organizing files)
+Staging area::
+The area where you will list the changes that you have made to the working directory
+Repository::
+Where Git permanently stores the changes you have made as different versions of the project
+
+[code,shell]
+----
+git init // <1>
+git clone https://gitlab.enterpriselab.ch/tangly/tangly-os.git // <2>
+
+git add README.md // <3>
+git add * // <4>
+
+git commit -m "commit message, should be clear and legible" // <5>
+git push // <6>
+git pull // <7>
+
+git status // <8>
+git remote // <9>
+git --version // <10>
+----
+<1>  Create a repository for the root folder of your project, the folder _.git_ is created and contains all the git tracking information.
+<2>  Clone the repository _tangly-os_ and copy all files into the current folder.
+<3>  Add the README file to git.
+<4>  Add all files to git.
+<5>  Commit files.
+<6>  Push files to the remote repository you cloned in step 2.
+Your changes are now public and available to other developers.
+<7>  Pull files from the remote repository you clone in step 2 Your local repository contains the last public changes of other developers.
+<8>  Returns status information about your local project.
+<9>  Returns the list of remote repositories your project is connected to.
+Often you have just one remote to synchronize with.
+<10> Displays the version of your git installation.
+
+See our blog ../../2017/git-local-repositories-for-the-impatient[Git Local Repositories For the Impatient].
+
+See our blog ../../2016/git-branches-for-the-impatient[Git Branches for the Impatient] for more advanced commands.
+
+=== CI Pipelines for Students
+
+image::2021-01-03-cicd_pipeline.png[720,480,role=left]
+
+The minimal gradle build file of a Java project is very simple and compact
+
+[code,gradle]
+----
+apply plugin: 'java'
+----
+
+Multi-module Gradle build file requires an additional _gradle.settings_ file identifying your modules.
+The initial build file for each module is the same as for a minimal gradle project.
+
+[code,gradle]
+----
+include 'net.tangly.bdd'
+include 'net.tangly.bus'
+include 'net.tangly.commons'
+----
+
+You can now compile, test and check your application
+
+[code,bash]
+----
+gradle build // <1>
+gradle test // <2>
+gradle check // <3>
+gradle clean // <4>
+----
+<1> Compile the simple or multi-module Java project.
+<2> Execute the unit tests of the project.
+<3> Perform static analysis checks if you define them.
+<4> Clean the output folders and delete all generated files.
+
+You are now ready to create a complete continuous integration pipeline of your project in gitlab.
+A complete _.gitlab-ci.yml_ configuration for a gradle project would be:
+
+[source,yaml]
+----
+image: openjdk:15
+
+variables:
+
+before_script:
+  - export GRADLE_USER_HOME=`pwd`/.grade
+
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  script: ./gradlew --build-cache assemble
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: push
+    paths:
+      - build
+      - .gradle
+
+test:
+  stage: test
+  script: ./gradlew check
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: pull
+    paths:
+      - build
+      - .gradle
+
+----
+
+=== Java Development Environment
+
+[WARNING]
+====
+Please prefer a workstation powered with Linux or MacOS if you are developing in Java, Groovy or Python.
+
+You will be more efficient and avoid all the problems related to virus scanners, missing packages or arcane path length problems.
+====
+
+. Install the latest LTS JDK and latest JDK on your workstation.
+. Install IntelliJ IDEA IDE. Students can request a student license and work with the Ultimate edition.
+The community edition is free for everybody.
+. Use the static analysis function of IntelliJ IDEA has a static analysis feature.
+.. Select the file or package to inspect in the project view.
+.. Click the right mouse button to display the context menu and select the menu item _Analyze/Inspect Code..._.
+The findings will teach you how to write better Java code and eliminate common errors.
+. Install Gradle to build your application
+
+IntelliJ IDEA environment provides all the tools to work efficiently locally.
+All the tools identified in the above mindmap are supported in IDE and associated plugins.
+Students can work offline and learn the tools in a gentle manner.
+
+The students can use the https://www.jetbrains.com/help/idea/running-inspections.html[IDEA Static Code Analyzer] without any additional configuration.
+The quality is good enough and the feature empowers junior developers to learn modern and correct Java code.
+
+More advanced scenarios use https://spotbugs.github.io/[SpotBugs] and the associated IDEA plugin.
+
+=== How to Write Unit Tests for a Java Application
+
+You should write unit and integration tests for your Java application using
+
+* https://junit.org/junit5/[JUnit 5]
+* https://site.mockito.org/[Mockito]
+* https://assertj.github.io/doc/[AssertJ]
+
+=== How to Document Your Project
+
+Static code generators are becoming the standard approach for technical documentation.
+One huge advantage is you can check the whole documentation into your git repository.
+You have now a synchronisation between a released version of your application and the corresponding documentation.
+Both are stored in the same repository and can be marked with a version label You can use
+
+* https://www.markdownguide.org/[Markdown]
+* https://asciidoc.org/[AsciiDoc]
+* https://gohugo.io/[Hugo]
+
+IntelliJ has native support for markdown and an excellent plugin for Asciidoc.
+
+Gitlab provides the https://docs.gitlab.com/ee/user/project/pages/[Pages] concept to create and publish a complete documentation of a product.
+
+=== Diagrams
+
+image::2021-01-03-diagrams.png[720,480,role=left]
+
+https://plantuml.com/[PlantUML] is a simple and powerful tool for diagramming.
+The tool is compatible with git philosophy and static website generators.
+
+The IntelliJ Asciidoc is used to write technical documentation and to display embedded PlantUML diagrams.
+Asciidoc format has native support for PlantUML diagrams.
+
+Students have training in technical notations such as UML, BPNM, C4 and others.
+They can now apply these notations to their projects using plantUML.
+
+=== Agile and Scrum
+
+Students have training in agile development and the Scrum framework.
+Gitlab allows them to apply these https://about.gitlab.com/solutions/agile-delivery/[Agile Delivery Concepts] to their semester and bachelor projects.
+Lecturers have access to the agile and Scrum artifacts and can qualify the quality of the work.
+
+=== Advanced Git for Complex Team Development
+
+* Merge
+* Rebase
+* Squash
+* Cherry Picking
+* Local and Remote Branch
+* Pull Request

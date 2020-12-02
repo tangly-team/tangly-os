@@ -2,7 +2,7 @@
 title: "Git Branches for the Impatient"
 linkTitle: "Git Branches"
 date: 2016-07-21
-tags: ["agile"]
+tags: ["agile", "serie-students"]
 ---
 
 == Git Branches for the Impatient
@@ -13,64 +13,64 @@ tags: ["agile"]
 :copyright: CC-BY-SA 4.0
 
 image::2016-07-01-head.jpg[720, 480, role=left]
-You are working in a small colocated development team and decided to use branches to implement new features or fix errors.
+You are working in a small collocated development team and decided to use branches to implement new features or fix errors.
 Here the cookbook to create, edit, merge and delete local and remote branches in Git (version 2.x).
 Git branches have two important qualities
 
-* A branch is like an idea. Once you implemented the idea, feature or fix you just delete the branch,
+* A branch is like an idea. Once you implemented the idea, feature or fix you just merge back to trunk and delete the branch,
 * The history of the branch commits is still visible upon deletion of the branch.
 
 _You should use meaningful names for your branch name and associated commit messages._
 _Put the ticket number into the branch name and messages for future searches._
 
-A lot of servers support keywords such "fix #42" to automatically close the ticket 42.
+A lot of servers support keywords such _fix #42_ to automatically close the ticket 42.
 
 The described approach is optimal for small teams.
-The approach is compatible to pull requests if you introduce later such a workflow.
-If you are working co-located you do not need pull requests. I prefer pair programming and pair check-in sessions.
+The approach is compatible to pull requests if you introduce such a workflow later.
+If you are working collocated you do not need pull requests. I prefer pair programming and pair check-in sessions against the trunk.
 
-For a short introduction how to start using Git in software projects see previous blog
+For a short introduction how to start using Git in software projects see the blog
 link:../../2017/git-local-repositories-for-impatient[Git Local Repositories for the Impatient].
 
 === Create the Branch
 
 Create new branch feat_#42 locally
 
-[code]
+[code, shell]
 ----
 git checkout -b feat_#42
 ----
 
-Create the remote branch with the same name and initiate tracking
+Create the remote branch with the same name and initiate tracking, assuming your remote uses the standard default name origin.
 
-[code]
+[code, shell]
 ----
 git push -u origin feat_#42
 ----
 
 === Work on the Branch
 
-Do some changes and commit them regularly
+Add your changes and commit them regularly.
 
-[code]
+[code, shell]
 ----
 git commit -a -m “commit message describing activities for feat_#42“
 ----
 
-Push the changes to repository
+Upon running the unit tests locally, push the changes to repository
 
-[code]
+[code, shell]
 ----
 git push
 ----
 
-_Now you can test the branch from the central repository and deploy it to a continuous integration server or a test environment._
+_Now you can test the branch from the central repository and deploy it to your continuous integration pipeline environment._
 
 === Merge the Branch
 
-Switch to master and synchronize with repository, the _-p_ parameter means __--prune__
+Switch to master and synchronize with your remote repository, the _-p_ parameter means __--prune__
 
-[code]
+[code, shell]
 ----
 git checkout master
 git fetch --all -p
@@ -79,37 +79,39 @@ git pull
 
 Merge to master. The option --no-ff will always keep branch information
 
-[code]
+[code, shell]
 ----
 git merge --no-ff feat_#42
 ----
 
 Or if you want a single commit for the complete branch
 
-[code]
+[code, shell]
 ----
 git merge —squash —no-ff feat_#42
 ----
 
 Push the changes
 
-[code]
+[code, shell]
 ----
 git push
 ----
+
+For advanced users you can first rebase your branch and squash superfluous commits before merging the branch back to trunk.
 
 === Delete the Branch
 
 Delete the remote branch (also git branch -dr origin/feat_#42)
 
-[code]
+[code, shell]
 ----
 git push origin --delete feat_#42
 ----
 
 Delete the local branch
 
-[code]
+[code, shell]
 ----
 git branch -d feat_#42
 ----
@@ -120,7 +122,7 @@ You are done. Now you are ready to implement the next feature.
 
 If you want to view branches use the following commands for the local branches
 
-[code]
+[code, shell]
 ----
 git branch
 git branch --no-merged
@@ -128,7 +130,7 @@ git branch --no-merged
 
 If you want to view remote branches
 
-[code]
+[code, shell]
 ----
 git branch -r
 git branch -r --no-merged
@@ -138,19 +140,20 @@ Checkout remote Branch
 
 The -p parameter means --prune
 
-[code]
+[code, shell]
 ----
 git fetch --all -p
 git checkout #feat_42
 ----
 
-==More Information
+=== More Information
 
 You can find a lot of information on http://stackoverflow.com/questions/tagged/git[Stack Overflow].
-Beware that the Git commands have changed over time.
+Beware when reading the answers on Stack Overflow that Git commands have changed over time.
 Select new posts to find the best answers.
-The nitty-gritty details can be found in the official https://git-scm.com/book/en/v2[Git documentation].
+The nifty-gritty details can be found in the official https://git-scm.com/book/en/v2[Git documentation].
 
 Beware that for example http://gitolite.com/[gitolite] does not support special characters such as # in branch names.
 Use them only in the commit messages.
+
 These same characters work in https://bitbucket.org/[bitbucket].

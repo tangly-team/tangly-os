@@ -1,6 +1,6 @@
 ---
 title: "Found a Limited Liability Company in Switzerland"
-linkTitle: "Agile Company"
+linkTitle: "Found An Agile Company"
 date: 2016-11-15
 tags: ["organization"]
 ---

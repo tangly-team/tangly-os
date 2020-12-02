@@ -2,7 +2,7 @@
 title: "Creating a technical Website with Hugo and Asciidoc"
 linkTitle: "Hugo Asciidoc Website"
 date: 2020-10-02
-tags: ["design"]
+tags: ["design", "serie-students"]
 ---
 
 == Creating a technical Website with Hugo and Asciidoc

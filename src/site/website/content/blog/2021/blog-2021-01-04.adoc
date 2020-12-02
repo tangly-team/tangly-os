@@ -1,0 +1,98 @@
+---
+title: "Software Development for Students"
+linkTitle: "Software Development for Students"
+date: 2021-01-20
+tags: ["java", "serie-students"]
+---
+
+== Software Development for Students
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2021-01-04-head.jpg[720, 480, role=left]
+=== Source Code Version Management with Git
+
+https://git-scm.com/[Git] is the standard tool for distributed source code management system.
+It is supported by all major development IDE and continuous integration environments.
+
+First year students shall master the basic git commands to write their semester projects.
+
+Second year students shall master the git commands used to work in teams.
+Pull requests are a standard approach to review team colleague works and consolidate new functions into the application.
+
+=== Modern Java Software Development
+
+Java is the preferred programming language for the majority of teaching institutions around the world.
+The programming language has evolved the last ten years.
+Students should learn the current way of writing code in Java.
+The actual Java approach is to use streams and renouce in most cases to use instructions such as _for_ or _while_ loops or conditional _if_ statements.
+Delegation and lambda constructs often replace inheritance design.
+
+The IntelliJ IDEA IDE is now the industrial standard for the Java and often Python world.
+The IDEA environment promotes the use of modern Java constructs.
+Currently, constructs such as records, sealed classes, closeable resources, switch instructions as expressions are new approaches to write legible Java code.
+Concepts such as Optional, Streams, immutable objects, and unchecked expressions promote more functional programming styles.
+
+https://gradle.org/[Gradle] is the preferred build tool for Java projects.
+
+=== Technical Excellence
+
+The DevOps and software craftsmanship movement strongly promote technical excellence and intrinsic quality in software development.
+
+image::2021-01-04-devOps.png[720,480,role=left]
+
+Students shall be fluent with
+
+* Static code analysis
+* Unit tests and integration tests
+* Continuous integration pipeline
+
+=== Documentation
+
+You should only check text artifacts into a git repository.
+Modern approaches with Markdown and AsciiDoc syntax promote this axiom.
+PlantUMl is a text based diagramming approach.
+All major syntax and in particular all UML diagram types are supported.
+AsciiDoc has native support for diagrams in general and PlantUMl in particular.
+
+=== Agile and Scrum
+
+Agile and Scrum are the standard methods to develop software products in the industry.
+All students shall excel in agile development approaches.
+Scrum is the most used approach and should be taught to all computer science students.
+
+Students shall understand the agile concepts and main constructs.
+When working in a Scrum environment, they have used backlog, issues, stories, defintion of done.
+They have planed their projects with a vision, a roadmap, epics, and sprints.
+
+=== Gitlab as a Student's Tool
+
+image::2021-01-04-gitlab.png[720, 480, role=left]
+Gitlab is an integrated solution for software development in teams and DevOps approaches.
+
+They learn the expertise and hands-on how to develop software application.
+The students will use their learnings to develop software components when working after the completion of their studies.
+All the above tools and approaches are now standard software development departments.
+
+=== Gitlab as a Lecturer's Tool
+
+All the source code and artifacts of a student class are available on Gitlab.
+The development history over a project or a semester are visible in Git.
+The lecturers can access the artifacts or use scripts to extract the data necessary to set the grades for the students.
+The grading process can be standardized and the decison process is part of the gitlab data.
+
+=== Links
+
+The students serie is a serie of blogs showing how to use central tools for modern software development.
+
+* ../../2021/software-development-for-students[Software Development for Students]
+* ../../2018/pragmatic-craftsmanship-professional-software-developer[Pragmatic Craftsmanship]
+* ../../2017/why-use-current-software-components[Current Software Components]
+* ../../2016/git-branches-for-the-impatient[Git Branches for the Impatient]
+* ../../2017/git-local-repositories-for-the-impatient[Git Local Repositories For the Impatient]
+* ../../2021/gitlab-for-bachelor-students[Gitlab for Bachelor Students]
+* ../../2020/advocate-zero-bug-policy-in-your-projects/[Zero Bug Policy]
+* ../../2020//creating-a-technical-website-with-hugo-and-asciidoc[Creating a Technical Website with Hugo and AsciiDoc]

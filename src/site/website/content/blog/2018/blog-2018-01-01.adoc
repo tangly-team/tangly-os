@@ -1,6 +1,6 @@
 ---
 title: "Why is it so Cool to Develop with Java?"
-linkTitle: "Six Levers"
+linkTitle: "Java Development is Cool"
 date: 2018-01-02
 tags: ["java"]
 ---

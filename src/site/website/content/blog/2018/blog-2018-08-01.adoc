@@ -1,6 +1,6 @@
 ---
 title: "What does an Agile Coach?"
-linkTitle: "Definition of Done"
+linkTitle: "Whad does An Agile Coach"
 date: 2018-08-16
 tags: ["agile"]
 ---
