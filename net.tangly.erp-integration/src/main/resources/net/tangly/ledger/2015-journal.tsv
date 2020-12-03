@@ -1,0 +1,5 @@
+"Date"	"Doc"	"Description"	"AccountDebit"	"AccountCredit"	"Amount"	"VatCode"	"DateExpected"
+"2015-12-01"	""	"Payment of company capital"	"1020"	"2800"	"20000"	""	""
+"2015-12-01"	"2015-0001"	"Costs for foundation account at Postfinance"	"6940"	"1020"	"145"	""	""
+"2015-12-03"	"2015-0002"	"Costs for registration of the company to Zug state"	"6700"	"1020"	"720.8"	""	""
+"2015-12-30"	"2015-0003"	"Payment BUV and NBUV"	"2273"	"1020"	"459.7"	""	""

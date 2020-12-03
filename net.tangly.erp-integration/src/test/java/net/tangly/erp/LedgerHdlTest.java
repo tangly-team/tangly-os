@@ -15,14 +15,13 @@ package net.tangly.erp;
 
 import java.io.IOException;
 import java.nio.file.FileSystem;
-import java.nio.file.Path;
 import java.time.LocalDate;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.ledger.Account;
 import net.tangly.ledger.ports.LedgerEntities;
-import net.tangly.ledger.ports.LedgerTsvHdl;
+import net.tangly.ledger.ports.LedgerHdl;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -37,20 +36,19 @@ class LedgerHdlTest {
             var store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
 
-            var handler = new LedgerTsvHdl(new LedgerEntities());
-            handler.importChartOfAccounts(store.ledgerRoot().resolve(SWISS_LEDGER));
-            handler.ledger().build();
+            var handler = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
+            handler.importEntities();
             assertThat(
-                handler.ledger().accounts().items().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty()).findAny().isEmpty())
+                handler.realm().accounts().items().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty()).findAny().isEmpty())
                 .isTrue();
-            assertThat(handler.ledger().assets().isEmpty()).isFalse();
-            assertThat(handler.ledger().liabilities().isEmpty()).isFalse();
-            assertThat(handler.ledger().profitAndLoss().isEmpty()).isFalse();
-            assertThat(handler.ledger().accountBy("100").isPresent()).isTrue();
-            assertThat(handler.ledger().accountBy("1020").isPresent()).isTrue();
-            assertThat(handler.ledger().accountBy("2A").isPresent()).isTrue();
-            assertThat(handler.ledger().accountBy("2970").isPresent()).isTrue();
-            assertThat(handler.ledger().accountsOwnedBy("29A").isEmpty()).isFalse();
+            assertThat(handler.realm().assets().isEmpty()).isFalse();
+            assertThat(handler.realm().liabilities().isEmpty()).isFalse();
+            assertThat(handler.realm().profitAndLoss().isEmpty()).isFalse();
+            assertThat(handler.realm().accountBy("100").isPresent()).isTrue();
+            assertThat(handler.realm().accountBy("1020").isPresent()).isTrue();
+            assertThat(handler.realm().accountBy("2A").isPresent()).isTrue();
+            assertThat(handler.realm().accountBy("2970").isPresent()).isTrue();
+            assertThat(handler.realm().accountsOwnedBy("29A").isEmpty()).isFalse();
         }
     }
 
@@ -60,22 +58,20 @@ class LedgerHdlTest {
             var store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
 
-            var handler = new LedgerTsvHdl(new LedgerEntities());
-            handler.importChartOfAccounts(store.ledgerRoot().resolve(SWISS_LEDGER));
-            handler.ledger().build();
-            int nrOfAccounts = handler.ledger().accounts().items().size();
-            int nrOfBookableAccounts = handler.ledger().bookableAccounts().size();
-            int nrOfLiabilitiesAccounts = handler.ledger().liabilities().size();
-            int nrOfProfitAndLossAccounts = handler.ledger().profitAndLoss().size();
+            var handler = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
+            handler.importEntities();
+            int nrOfAccounts = handler.realm().accounts().items().size();
+            int nrOfBookableAccounts = handler.realm().bookableAccounts().size();
+            int nrOfLiabilitiesAccounts = handler.realm().liabilities().size();
+            int nrOfProfitAndLossAccounts = handler.realm().profitAndLoss().size();
 
-            handler.exportChartOfAccounts(store.ledgerRoot().resolve(SWISS_LEDGER));
-            handler = new LedgerTsvHdl(new LedgerEntities());
-            handler.importChartOfAccounts(store.ledgerRoot().resolve(SWISS_LEDGER));
-            handler.ledger().build();
-            assertThat(handler.ledger().accounts().items().size()).isEqualTo(nrOfAccounts);
-            assertThat(handler.ledger().bookableAccounts().size()).isEqualTo(nrOfBookableAccounts);
-            assertThat(handler.ledger().liabilities().size()).isEqualTo(nrOfLiabilitiesAccounts);
-            assertThat(handler.ledger().profitAndLoss().size()).isEqualTo(nrOfProfitAndLossAccounts);
+            handler.exportEntities();
+            handler = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
+            handler.importEntities();
+            assertThat(handler.realm().accounts().items().size()).isEqualTo(nrOfAccounts);
+            assertThat(handler.realm().bookableAccounts().size()).isEqualTo(nrOfBookableAccounts);
+            assertThat(handler.realm().liabilities().size()).isEqualTo(nrOfLiabilitiesAccounts);
+            assertThat(handler.realm().profitAndLoss().size()).isEqualTo(nrOfProfitAndLossAccounts);
         }
     }
 
@@ -84,13 +80,9 @@ class LedgerHdlTest {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
-
-            var handler = new LedgerTsvHdl(new LedgerEntities());
-            handler.importChartOfAccounts(store.ledgerRoot().resolve(SWISS_LEDGER));
-            handler.ledger().build();
-
-            handler.importJournal(store.ledgerRoot().resolve("transactions-2015-2016.tsv"));
-            assertThat(handler.ledger().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31)).isEmpty()).isFalse();
+            var handler = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
+            handler.importEntities();
+            assertThat(handler.realm().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31)).isEmpty()).isFalse();
         }
     }
 
@@ -99,13 +91,15 @@ class LedgerHdlTest {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
+            var handler = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
+            handler.importEntities();
+            int nrOfTransactions = handler.realm().transactions().items().size();
 
-            var handler = new LedgerTsvHdl(new LedgerEntities());
-            handler.importChartOfAccounts(store.ledgerRoot().resolve(SWISS_LEDGER));
-            handler.ledger().build();
-            handler.importJournal(store.ledgerRoot().resolve("transactions-2015-2016.tsv"));
+            handler.exportEntities();
 
-            handler.exportJournal(Path.of("/Users/Shared/tmp/foo.tsv"), null, null);
+            handler = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
+            handler.importEntities();
+            assertThat(handler.realm().transactions().items().size()).isEqualTo(nrOfTransactions);
         }
     }
 }

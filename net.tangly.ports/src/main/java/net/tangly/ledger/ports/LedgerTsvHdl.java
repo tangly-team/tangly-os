@@ -264,8 +264,8 @@ public class LedgerTsvHdl {
             int counter = 0;
             for (Transaction transaction : ledger.transactions(from, to)) {
                 Optional<Tag> vat = transaction.creditSplits().get(0).findBy(AccountEntry.FINANCE, AccountEntry.VAT_FLAG);
-                out.printRecord(transaction.date(), transaction.reference(), transaction.text(), accountCompositeId(transaction.debitSplits().get(0)),
-                    accountCompositeId(transaction.creditSplits().get(0)), transaction.amount(), vat.map(Tag::value).orElse(null), null);
+                out.printRecord(transaction.date(), transaction.reference(), transaction.text(), accountCompositeId(transaction.debit()),
+                    accountCompositeId(transaction.credit()), transaction.amount(), vat.map(Tag::value).orElse(null), null);
                 if (transaction.isSplit()) {
                     if (transaction.debitAccount() == null) {
                         for (AccountEntry entry : transaction.debitSplits()) {

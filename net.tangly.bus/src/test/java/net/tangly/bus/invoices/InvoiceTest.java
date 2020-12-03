@@ -15,6 +15,7 @@ package net.tangly.bus.invoices;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.Currency;
 import java.util.List;
 
@@ -107,8 +108,9 @@ class InvoiceTest {
         invoice.id(id);
         invoice.name(invoice.id() + "-Invoice");
         invoice.contractId("TEST-CONTRACT-0000");
-        invoice.invoicedDate(LocalDate.parse("2018-01-01"));
-        invoice.dueDate(LocalDate.parse("2018-01-31"));
+        invoice.invoicedDate(LocalDate.of(2018, Month.JANUARY, 01));
+        invoice.dueDate(LocalDate.of(2018, Month.JANUARY, 31));
+        invoice.paidDate((LocalDate.of(2018, Month.FEBRUARY, 10)));
         invoice.invoicingEntity(seller());
         invoice.invoicingAddress(sellerAddress());
         invoice.invoicingConnection(sellerConnection());

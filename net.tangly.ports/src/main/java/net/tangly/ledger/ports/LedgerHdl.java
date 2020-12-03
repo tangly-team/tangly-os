@@ -17,12 +17,15 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.Map;
 import java.util.stream.Stream;
 import javax.inject.Inject;
 
 import net.tangly.bus.ledger.LedgerHandler;
 import net.tangly.bus.ledger.LedgerRealm;
+import net.tangly.bus.ledger.Transaction;
 import net.tangly.commons.logger.EventData;
 import org.jetbrains.annotations.NotNull;
 
@@ -39,6 +42,8 @@ import static net.tangly.ports.TsvHdl.MODULE;
  * </ul>
  */
 public class LedgerHdl implements LedgerHandler {
+    public static final String LEDGER = "swiss-ledger.tsv";
+    public static final String JOURNAL = "-journal.tsv";
     private final LedgerRealm ledger;
     private final Path folder;
 
@@ -48,6 +53,7 @@ public class LedgerHdl implements LedgerHandler {
         this.folder = folder;
     }
 
+    @Override
     public LedgerRealm realm() {
         return ledger;
     }
@@ -55,11 +61,11 @@ public class LedgerHdl implements LedgerHandler {
     @Override
     public void importEntities() {
         var handler = new LedgerTsvHdl(ledger);
-        var chartOfAccounts = folder.resolve("swiss-ledger.tsv");
+        var chartOfAccounts = folder.resolve(LEDGER);
         handler.importChartOfAccounts(chartOfAccounts);
         ledger.build();
         try (Stream<Path> stream = Files.walk(folder)) {
-            stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith("-period.tsv")).forEach(o -> {
+            stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(JOURNAL)).forEach(o -> {
                 handler.importJournal(o);
                 EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, "Journal imported {}", Map.of("journalPath", o));
             });
@@ -71,7 +77,11 @@ public class LedgerHdl implements LedgerHandler {
     @Override
     public void exportEntities() {
         var handler = new LedgerTsvHdl(ledger);
-        handler.exportChartOfAccounts(folder.resolve("swiss-ledger.tsv"));
-        handler.exportJournal(folder.resolve("journal.tsv"), null, null);
+        handler.exportChartOfAccounts(folder.resolve(LEDGER));
+        realm().transactions().items().stream().map(Transaction::date).map(o -> o.getYear()).distinct().forEach(o -> {
+            Path journal = folder.resolve(o + JOURNAL);
+            handler.exportJournal(journal, LocalDate.of(o, Month.JANUARY, 1), LocalDate.of(o, Month.DECEMBER, 31));
+            EventData.log(EventData.EXPORT, MODULE, EventData.Status.SUCCESS, "Journal exported {}", Map.of("journalPath", journal.toString(), "year", o));
+        });
     }
 }

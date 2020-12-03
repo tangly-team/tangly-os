@@ -61,6 +61,14 @@ public class Transaction {
         return (debit != null) ? List.of(debit) : splits;
     }
 
+    public AccountEntry debit() {
+        return debit;
+    }
+
+    public AccountEntry credit() {
+        return credit;
+    }
+
     public List<AccountEntry> creditSplits() {
         return (credit != null) ? List.of(credit) : splits;
     }

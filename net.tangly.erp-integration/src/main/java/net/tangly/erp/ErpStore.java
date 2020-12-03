@@ -121,7 +121,8 @@ public record ErpStore(@NotNull FileSystem fs) {
             copy(PRODUCTS_PACKAGE_NAME, productsRoot(), ProductsHdl.EFFORTS_TSV);
 
             copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "swiss-ledger.tsv");
-            copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "transactions-2015-2016.tsv");
+            copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "2015-journal.tsv");
+            copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "2016-journal.tsv");
 
             copy(INVOICES_PACKAGE_NAME, invoicesRoot(), InvoicesHdl.ARTICLES_TSV);
             copy(INVOICES_PACKAGE_NAME + "2015/", invoicesRoot().resolve("2015"), "2015-8001-Invoice-HSLU-December.json");
