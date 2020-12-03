@@ -38,7 +38,6 @@ import net.tangly.commons.lang.Strings;
 import net.tangly.commons.logger.EventData;
 import net.tangly.core.Tag;
 import net.tangly.ports.TsvHdl;
-import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
@@ -199,7 +198,7 @@ public class LedgerTsvHdl {
      */
     public void importJournal(@NotNull Path path) {
         try (Reader in = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
-            Iterator<CSVRecord> records = CSVFormat.TDF.withFirstRecordAsHeader().parse(in).iterator();
+            Iterator<CSVRecord> records = TsvHdl.FORMAT.parse(in).iterator();
             int counter = 0;
             var record = records.hasNext() ? records.next() : null;
             while (record != null) {

@@ -26,11 +26,13 @@ The best identifiers are externally well-defined identifiers. Examples are
 As much as possible try to use global identifiers. Examples are
 
 * IBAN account numbers are defined worldwide through https://en.wikipedia.org/wiki/International_Bank_Account_Number[ISO 13616],
-* Car number and country acronym are defined worldwide,
-* Passport numbers are defined worldwide. But each country has its own structure,
-* Social security numbers are a counter example. Their are currently only defined locally.
+* Car numbers and country acronyms are defined worldwide,
+* Passport numbers are defined worldwide. Each country has its own structure and conventions,
+* Social security numbers are a counter-example. There are currently only defined locally.
 
 === External Managed Identifiers
+
+You shall document the source of truth for all externally defined and managed identifiers.
 
 === Internal Managed Identifiers
 
@@ -45,12 +47,12 @@ An example of such an identifier would be
 
 Variations are
 
-* A full date as prefix, our system uses this convention to name invoices
-* A more readable acronym, our system uses the word invocie to name invoices
+* A full date as prefix, our system uses this convention to name invoices,
+* A more readable acronym, our system uses the word invoice to name invoices.
 
 === Lessons Learnt
 
-Always try to find an external well-defined identifier for your entitites.
+Always try to find an external well-defined identifier for your entities.
 
 Avoid by all means to use an internal privately defined identifier as a public one.
 You will bear the burden to document, manage and evolve the scheme as soon as you do this.

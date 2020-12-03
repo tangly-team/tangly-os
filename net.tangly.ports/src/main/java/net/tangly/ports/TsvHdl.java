@@ -54,7 +54,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public final class TsvHdl {
-    public static final CSVFormat FORMAT = CSVFormat.TDF.withFirstRecordAsHeader().withIgnoreHeaderCase(true).withRecordSeparator('\n');
+    public static final CSVFormat FORMAT =
+        CSVFormat.TDF.withFirstRecordAsHeader().withIgnoreHeaderCase(true).withIgnoreEmptyLines(true).withRecordSeparator('\n');
     public static final String OID = "oid";
     public static final String ID = "id";
     public static final String NAME = "name";

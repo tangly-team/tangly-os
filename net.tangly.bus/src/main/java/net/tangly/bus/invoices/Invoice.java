@@ -58,6 +58,7 @@ public class Invoice implements HasEditableId {
     private LocalDate deliveryDate;
     private LocalDate invoicedDate;
     private LocalDate dueDate;
+    private LocalDate paidDate;
 
     /**
      * Currency of the invoice. Currently we do support multi-currency invoices. Please create one invoice for each currency.
@@ -245,6 +246,14 @@ public class Invoice implements HasEditableId {
         this.dueDate = dueDate;
     }
 
+    public LocalDate paidDate() {
+        return paidDate;
+    }
+
+    public void paidDate(LocalDate paidDate) {
+        this.paidDate = paidDate;
+    }
+
     public Currency currency() {
         return currency;
     }
@@ -297,15 +306,16 @@ public class Invoice implements HasEditableId {
 
     public boolean check() {
         return Objects.nonNull(contractId()) && Objects.nonNull(invoicingEntity()) && Objects.nonNull(invoicedEntity()) && Objects.nonNull(invoicedAddress()) &&
-                Objects.nonNull(invoicingAddress()) && Objects.nonNull(invoicingConnection()) && Objects.nonNull(currency) && name().startsWith(id());
+            Objects.nonNull(invoicingAddress()) && Objects.nonNull(invoicingConnection()) && Objects.nonNull(currency) && name().startsWith(id());
     }
 
     @Override
     public String toString() {
         return """
-                Invoice[id=%s, name=%s, text=%s, invoicingEntity=%s, invoicedEntity=%s, invoicingAddress=%s, invoicingConnection=%s, contractId=%s,  \
-                invoicedAddress=%s, deliveryDate=%s, invoicedDate=%s, dueDate=%s, currency=%s, locale=%s, paymentConditions=%s, items=%s]
-                 """.formatted(id(), name(), text(), invoicingEntity(), invoicedEntity(), invoicingAddress(), invoicingConnection(), contractId(),
-                invoicedAddress(), deliveryDate(), invoicedDate(), dueDate(), currency(), locale(), paymentConditions(), items());
+            Invoice[id=%s, name=%s, text=%s, invoicingEntity=%s, invoicedEntity=%s, invoicingAddress=%s, invoicingConnection=%s, contractId=%s,  \
+            invoicedAddress=%s, deliveryDate=%s, invoicedDate=%s, dueDate=%s, currency=%s, locale=%s, paymentConditions=%s, items=%s]
+             """
+            .formatted(id(), name(), text(), invoicingEntity(), invoicedEntity(), invoicingAddress(), invoicingConnection(), contractId(), invoicedAddress(),
+                deliveryDate(), invoicedDate(), dueDate(), currency(), locale(), paymentConditions(), items());
     }
 }

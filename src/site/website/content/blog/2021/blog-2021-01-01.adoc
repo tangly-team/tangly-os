@@ -12,7 +12,7 @@ tags: ["design", "crm"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2021-01-01-head.png[720, 480, role=left]
+image::2021-01-01-head.png[720,480,role=left]
 
 === Value Objects
 
@@ -46,25 +46,28 @@ Check your domain model and validate the above assumptions.
 * They are always owned by other entities such as persons, companies, delivery forms.
 * They are immutable objects.
 * Business processes can replace such an object with a new instance without impeding other domain instances.
+* Programmed in modern Java these value objects should be records to guaranty immutability.
 
 ==== Invoice Lines
 
-Invoice lines are lines in an invoices. Invoice lines are always value objects belonging to exactly one invoice.
+Invoice lines are lines in an invoices.
+Invoice lines are always value objects belonging to exactly one invoice.
 
 To complicate matter, invoice lines have different types such as a regular line with a specific article, quantity, unit price and price for the quantity.
-Often VAT aspects must be considered and computed for the overall invoice. An invoice line can also be a subtotal for a set of regular invoice lines.
+Often VAT aspects must be considered and computed for the overall invoice.
+An invoice line can also be a subtotal for a set of regular invoice lines.
 
 The following design challenges exist
 
 * Serialization libraries such as JSON Jackson library cannot handle invoice lines with multiple Java class types.
- A workable approach is described and implemented the open source component https://tangly-team.bitbucket.io/docs/gleam/[Gleam].
- The approach is to define selectors to instantiate the correct Java class/
+A workable approach is described and implemented the open source component https://tangly-team.bitbucket.io/docs/gleam/[Gleam].
+The approach is to define selectors to instantiate the correct Java class/
 * Invoices are complex objects and ideal candidates for a document oriented persistent approach.
- Invoices should not be stored in a relation based persistence store, meaning a SQL database.
+Invoices should not be stored in a relation based persistence store, meaning a SQL database.
 
 === Factories
 
-The factory pattern in DDD can be seen as a super pattern for the Gang of Four (GoF) creational patterns.
+The factory pattern in Domain Driven Design _DDD_ can be seen as a super pattern for the Gang of Four (GoF) creational patterns.
 Factories are concerned with creating new entities and value objects.
 They also validate the invariants for the newly created objects.
 We can place a factory on the entity or value object itself or an independent object.
