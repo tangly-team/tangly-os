@@ -64,6 +64,7 @@ import static net.tangly.bus.crm.CrmTags.CRM_SITE_WORK;
 import static net.tangly.bus.crm.CrmTags.CRM_VAT_NUMBER;
 import static net.tangly.ports.TsvHdl.FROM_DATE;
 import static net.tangly.ports.TsvHdl.OID;
+import static net.tangly.ports.TsvHdl.OWNER_FOID;
 import static net.tangly.ports.TsvHdl.TEXT;
 import static net.tangly.ports.TsvHdl.TO_DATE;
 import static net.tangly.ports.TsvHdl.addComments;
@@ -88,7 +89,6 @@ import static net.tangly.ports.TsvHdl.tagProperty;
 public class CrmTsvHdl {
     public static final String FIRSTNAME = "firstname";
     public static final String LASTNAME = "lastname";
-    private static final String OWNER_FOID = "ownerFoid";
     private static final String CREATED = "created";
     private static final String AUTHOR = "author";
     private static final String TAGS = "tags";
@@ -104,12 +104,12 @@ public class CrmTsvHdl {
     public void importComments(@NotNull Path path) {
         Provider<Comment> comments = new ProviderInMemory<>();
         importEntities(path, createTsvComment(), comments);
-        realm.naturalEntities().items().forEach(e -> addComments(e, comments));
-        realm.legalEntities().items().forEach(e -> addComments(e, comments));
-        realm.employees().items().forEach(e -> addComments(e, comments));
-        realm.contracts().items().forEach(e -> addComments(e, comments));
-        realm.subjects().items().forEach(e -> addComments(e, comments));
-        realm.interactions().items().forEach(e -> addComments(e, comments));
+        realm.naturalEntities().items().forEach(e -> addComments(realm.naturalEntities(), e, comments));
+        realm.legalEntities().items().forEach(e -> addComments(realm.legalEntities(), e, comments));
+        realm.employees().items().forEach(e -> addComments(realm.employees(), e, comments));
+        realm.contracts().items().forEach(e -> addComments(realm.contracts(), e, comments));
+        realm.subjects().items().forEach(e -> addComments(realm.subjects(), e, comments));
+        realm.interactions().items().forEach(e -> addComments(realm.interactions(), e, comments));
     }
 
     public void exportComments(@NotNull Path path) {
@@ -152,7 +152,7 @@ public class CrmTsvHdl {
     }
 
     public void exportContracts(@NotNull Path path) {
-        importEntities(path, createTsvContract(), realm.contracts());
+        exportEntities(path, createTsvContract(), realm.contracts());
     }
 
     public void importSubjects(@NotNull Path path) {
@@ -174,7 +174,7 @@ public class CrmTsvHdl {
     public void importActivities(@NotNull Path path) {
         Provider<Activity> activities = new ProviderInMemory<>();
         importEntities(path, createTsvActivity(), activities);
-        realm.interactions().items().forEach(e -> addActivities(e, activities));
+        realm.interactions().items().forEach(e -> addActivities(realm.interactions(), e, activities));
     }
 
     public void exportActivities(@NotNull Path path) {
@@ -184,31 +184,32 @@ public class CrmTsvHdl {
     }
 
     static <T extends HasComments & HasOid> void updateAndCollectComments(T entity, Provider<Comment> comments) {
-        entity.comments().forEach(comment -> ReflectionUtilities.set(comment, OWNER_FOID, entity.oid()));
+        entity.comments().forEach(comment -> ReflectionUtilities.set(comment, TsvHdl.OWNER_FOID, entity.oid()));
         comments.updateAll(entity.comments());
     }
 
-    static void updateAndCollectActivities(Interaction entity, Provider<Activity> activities) {
-        entity.activities().forEach(activity -> ReflectionUtilities.set(activity, "interactionFoid", entity.oid()));
+    static void updateAndCollectActivities(@NotNull Interaction entity, @NotNull Provider<Activity> activities) {
+        entity.activities().forEach(activity -> ReflectionUtilities.set(activity, OWNER_FOID, entity.oid()));
         activities.updateAll(entity.activities());
     }
 
-    static void addActivities(Interaction entity, Provider<Activity> activities) {
-        entity
-            .addAll(activities.items().stream().filter(o -> (Long) ReflectionUtilities.get(o, "interactionFoid") == entity.oid()).collect(Collectors.toList()));
+    static void addActivities(Provider<Interaction> provider, Interaction entity, Provider<Activity> activities) {
+        var items = activities.items().stream().filter(o -> (Long) ReflectionUtilities.get(o, OWNER_FOID) == entity.oid()).collect(Collectors.toList());
+        if (!items.isEmpty()) {
+            entity.addAll(items);
+            provider.update(entity);
+        }
     }
-
 
     static TsvEntity<Comment> createTsvComment() {
         Function<CSVRecord, Comment> imports = (CSVRecord record) -> Comment
             .of(LocalDateTime.parse(get(record, CREATED)), Long.parseLong(get(record, OWNER_FOID)), get(record, AUTHOR), get(record, TEXT));
 
-        List<TsvProperty<Comment, ?>> fields =
-            List.of(TsvProperty.of(OID, Comment::oid, (entity, value) -> ReflectionUtilities.set(entity, OID, value), Long::parseLong),
-                TsvProperty.ofLong(OWNER_FOID, Comment::ownerFoid, null),
-                TsvProperty.of(CREATED, Comment::created, null, o -> (o != null) ? LocalDateTime.parse(o) : null),
-                TsvProperty.ofString(AUTHOR, Comment::author, null), TsvProperty.ofString(TEXT, Comment::text, null),
-                TsvProperty.ofString(TAGS, HasTags::rawTags, HasTags::rawTags));
+        List<TsvProperty<Comment, ?>> fields = List.of(TsvProperty.of(OID, Comment::oid, (e, v) -> ReflectionUtilities.set(e, OID, v), Long::parseLong),
+            TsvProperty.ofLong(OWNER_FOID, (e) -> (long) ReflectionUtilities.get(e, OWNER_FOID), (e, v) -> ReflectionUtilities.set(e, OWNER_FOID, v)),
+            TsvProperty.of(CREATED, Comment::created, null, o -> (o != null) ? LocalDateTime.parse(o) : null),
+            TsvProperty.ofString(AUTHOR, Comment::author, null), TsvProperty.ofString(TEXT, Comment::text, null),
+            TsvProperty.ofString(TAGS, HasTags::rawTags, HasTags::rawTags));
         return TsvEntity.of(Comment.class, fields, imports);
     }
 
@@ -288,9 +289,8 @@ public class CrmTsvHdl {
 
     static TsvEntity<Activity> createTsvActivity() {
         List<TsvProperty<Activity, ?>> fields =
-            List.of(TsvProperty.of(OID, Activity::oid, (entity, value) -> ReflectionUtilities.set(entity, OID, value), Long::parseLong), TsvProperty
-                    .of("interactionFoid", Activity::interactionFoid, (entity, value) -> ReflectionUtilities.set(entity, "interactionFoid", value),
-                        Long::parseLong),
+            List.of(TsvProperty.of(OID, Activity::oid, (entity, value) -> ReflectionUtilities.set(entity, OID, value), Long::parseLong),
+                TsvProperty.of(OWNER_FOID, (e) -> ReflectionUtilities.get(e, OWNER_FOID), (e, v) -> ReflectionUtilities.set(e, OWNER_FOID, v), Long::parseLong),
                 TsvProperty.of("code", Activity::code, Activity::code, e -> Enum.valueOf(ActivityCode.class, e.toLowerCase()), Enum::name),
                 TsvProperty.of("date", Activity::date, Activity::date, TsvProperty.CONVERT_DATE_FROM),
                 TsvProperty.ofInt("durationInMinutes", Activity::duration, Activity::duration),

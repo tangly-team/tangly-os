@@ -17,12 +17,14 @@ import java.nio.file.Path;
 
 import net.tangly.crm.ports.CrmEntities;
 import net.tangly.crm.ports.CrmHdl;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CrmPersistenceTest {
     @Test
+    @Tag("localTest")
     void persistCrmRealLocalTest() {
         String PATH = "/Users/Shared/tangly/db/crm";
         var realm = new CrmEntities(Path.of(PATH));

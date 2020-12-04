@@ -40,17 +40,6 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class LedgerPortTest {
     @Test
-    @Tag("localTest")
-    public void createReports() {
-        var handler = new LedgerHdl(new LedgerEntities(), Paths.get("/Users/Shared/tangly/import/ledger"));
-        handler.importEntities();
-        var adapter = new LedgerAdapter(handler.realm(), Paths.get("/Users/Shared/tangly/reports/ledger"));
-
-        adapter.exportLedgerDocument("tangly-" + 2016, LocalDate.of(2015, 11, 1), LocalDate.of(2016, 12, 31), true, true);
-        List.of(2017, 2018, 2019, 2020).forEach(o -> adapter.exportLedgerDocument("tangly-" + o, LocalDate.of(o, 1, 1), LocalDate.of(o, 12, 31), true, true));
-    }
-
-    @Test
     public void turnoverEbitAndEarningsTest() throws IOException {
         final String filenameWithoutExtension = "2016-period";
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {

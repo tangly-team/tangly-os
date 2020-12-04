@@ -46,8 +46,12 @@ public class ProviderPersistence<T> implements Provider<T> {
     public void update(@NotNull T entity) {
         if (!items.contains(entity)) {
             items.add(entity);
+            storageManager.store(items);
+        } else {
+            var storer = storageManager.createEagerStorer();
+            storer.store(entity);
+            storer.commit();
         }
-        storageManager.store(items);
     }
 
     @Override
@@ -55,6 +59,8 @@ public class ProviderPersistence<T> implements Provider<T> {
         entities.forEach(entity -> {
             if (!items.contains(entity)) {
                 items.add(entity);
+            } else {
+                storageManager.store(entity);
             }
         });
         storageManager.store(items);

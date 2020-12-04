@@ -15,19 +15,18 @@ package net.tangly.erp;
 
 import java.io.IOException;
 import java.nio.file.FileSystem;
-import java.nio.file.Path;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
-import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.CrmRealm;
 import net.tangly.bus.crm.LegalEntity;
+import net.tangly.core.Entity;
 import net.tangly.core.QualifiedEntity;
+import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.crm.ports.CrmEntities;
 import net.tangly.crm.ports.CrmHdl;
 import org.jetbrains.annotations.NotNull;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -36,15 +35,6 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Test the import and export of CRM entities to TSV files. All files are either defined as resources or written to an in-memory file system.
  */
 class CrmHdlTest {
-    @Test
-    @Tag("localTest")
-    void testCompanyTsvCrm() {
-        var realm = new CrmEntities();
-        var crmHdl = new CrmHdl(realm, Path.of("/Users/Shared/tangly/", "import/crm"));
-        var logic = new CrmBusinessLogic(realm);
-        crmHdl.importEntities();
-    }
-
     @Test
     void testTsvCrm() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
@@ -61,6 +51,7 @@ class CrmHdlTest {
             verifyInteractions(handler.realm());
             verifyActivities(handler.realm());
             verifySubjects(handler.realm());
+            verifyActivities(handler.realm());
             verifyComments(handler.realm());
 
             handler.exportEntities();
@@ -74,60 +65,55 @@ class CrmHdlTest {
             verifyInteractions(handler.realm());
             verifyActivities(handler.realm());
             verifySubjects(handler.realm());
+            verifyActivities(handler.realm());
             verifyComments(handler.realm());
         }
     }
 
-    private void verifyNaturalEntities(@NotNull CrmRealm crmRealm) {
-        assertThat(crmRealm.naturalEntities().items().isEmpty()).isFalse();
-        assertThat(Provider.findByOid(crmRealm.naturalEntities(), 1).isPresent()).isTrue();
-        crmRealm.naturalEntities().items().forEach(naturalEntity -> assertThat(naturalEntity.check()).isTrue());
+    private void verifyNaturalEntities(@NotNull CrmRealm realm) {
+        assertThat(realm.naturalEntities().items().isEmpty()).isFalse();
+        assertThat(Provider.findByOid(realm.naturalEntities(), 1).isPresent()).isTrue();
+        Realm.checkEntities(realm.naturalEntities());
     }
 
-    private void verifyLegalEntities(@NotNull CrmRealm crmRealm) {
-        assertThat(crmRealm.legalEntities().items().isEmpty()).isFalse();
-        assertThat(Provider.findByOid(crmRealm.legalEntities(), 100).isPresent()).isTrue();
-        assertThat(crmRealm.legalEntities().findBy(LegalEntity::id, "UNKNOWN-100").isPresent()).isTrue();
-        assertThat(crmRealm.legalEntities().findBy(LegalEntity::name, "hope llc").isPresent()).isTrue();
-        crmRealm.naturalEntities().items().forEach(legalEntity -> assertThat(legalEntity.check()).isTrue());
+    private void verifyLegalEntities(@NotNull CrmRealm realm) {
+        assertThat(realm.legalEntities().items().isEmpty()).isFalse();
+        assertThat(Provider.findByOid(realm.legalEntities(), 100).isPresent()).isTrue();
+        assertThat(realm.legalEntities().findBy(LegalEntity::id, "UNKNOWN-100").isPresent()).isTrue();
+        assertThat(realm.legalEntities().findBy(LegalEntity::name, "hope llc").isPresent()).isTrue();
+        Realm.checkEntities(realm.legalEntities());
     }
 
-    private void verifyEmployees(@NotNull CrmRealm crmRealm) {
-        assertThat(crmRealm.employees().items().isEmpty()).isFalse();
-        assertThat(Provider.findByOid(crmRealm.employees(), 200).isPresent()).isTrue();
-        crmRealm.employees().items().forEach(employee -> {
-            assertThat(employee.oid()).isNotEqualTo(QualifiedEntity.UNDEFINED_OID);
-            assertThat(employee.person()).isNotNull();
-            assertThat(employee.organization()).isNotNull();
-        });
+    private void verifyEmployees(@NotNull CrmRealm realm) {
+        assertThat(realm.employees().items().isEmpty()).isFalse();
+        assertThat(Provider.findByOid(realm.employees(), 200).isPresent()).isTrue();
+        Realm.checkEntities(realm.employees());
     }
 
-    private void verifyContracts(@NotNull CrmRealm crmRealm) {
-        assertThat(crmRealm.contracts().items().isEmpty()).isFalse();
-        assertThat(Provider.findByOid(crmRealm.contracts(), 500).isPresent()).isTrue();
-        crmRealm.contracts().items().forEach(contract -> {
-            assertThat(contract.locale()).isNotNull();
-            assertThat(contract.currency()).isNotNull();
-            assertThat(contract.bankConnection()).isNotNull();
-            assertThat(contract.seller()).isNotNull();
-            assertThat(contract.sellee()).isNotNull();
-        });
+    private void verifyContracts(@NotNull CrmRealm realm) {
+        assertThat(realm.contracts().items().isEmpty()).isFalse();
+        assertThat(Provider.findByOid(realm.contracts(), 500).isPresent()).isTrue();
+        Realm.checkEntities(realm.contracts());
     }
 
-    private void verifyInteractions(@NotNull CrmRealm crmRealm) {
-        assertThat(crmRealm.interactions().items().isEmpty()).isFalse();
+    private void verifyInteractions(@NotNull CrmRealm realm) {
+        assertThat(realm.interactions().items().isEmpty()).isFalse();
+        Realm.checkEntities(realm.interactions());
     }
 
-    private void verifyActivities(@NotNull CrmRealm crmRealm) {
-        assertThat(crmRealm.collectActivities(o -> true)).isNotEmpty();
+    private void verifyActivities(@NotNull CrmRealm realm) {
+        assertThat(realm.collectActivities(o -> true)).isNotEmpty();
+        realm.collectActivities(o -> true).forEach(activity -> assertThat(activity.check()).isTrue());
     }
 
-    private void verifySubjects(@NotNull CrmRealm crmRealm) {
-        assertThat(crmRealm.subjects().items().isEmpty()).isTrue();
+    private void verifySubjects(@NotNull CrmRealm realm) {
+        assertThat(realm.subjects().items().isEmpty()).isTrue();
+        Realm.checkEntities(realm.subjects());
     }
 
-    private void verifyComments(@NotNull CrmRealm crmRealm) {
-        assertThat(Provider.findByOid(crmRealm.naturalEntities(), 1).orElseThrow().comments().isEmpty()).isFalse();
-        assertThat(Provider.findByOid(crmRealm.legalEntities(), 102).orElseThrow().comments().isEmpty()).isFalse();
+    private void verifyComments(@NotNull CrmRealm realm) {
+        assertThat(Provider.findByOid(realm.naturalEntities(), 1).orElseThrow().comments().isEmpty()).isFalse();
+        assertThat(Provider.findByOid(realm.naturalEntities(), 6).orElseThrow().comments().isEmpty()).isFalse();
+        assertThat(Provider.findByOid(realm.legalEntities(), 102).orElseThrow().comments().isEmpty()).isFalse();
     }
 }

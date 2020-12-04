@@ -14,6 +14,7 @@
 package net.tangly.core.domain;
 
 import net.tangly.commons.lang.ReflectionUtilities;
+import net.tangly.core.Entity;
 import net.tangly.core.HasOid;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
@@ -31,6 +32,14 @@ public interface Realm {
     static <T extends HasOid> T setOid(@NotNull T entity, long oid) {
         ReflectionUtilities.set(entity, "oid", oid);
         return entity;
+    }
+
+    static <T extends Entity> void checkEntities(Provider<T> provider) {
+        provider.items().forEach(e -> {
+            if (!e.check()) {
+                throw new IllegalStateException("Entity Check Error for %s".formatted(e));
+            }
+        });
     }
 
     <T extends HasOid> T registerOid(@NotNull T entity);

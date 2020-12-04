@@ -65,9 +65,9 @@ public class InvoiceJson implements InvoiceGenerator {
         var invoiceJson = entity.exports(invoice);
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
             writer.write(invoiceJson.toString(4));
-            EventData.log(EventData.EXPORT, COMPONENT, EventData.Status.SUCCESS, "Invoice exported to JSON file", Map.of("filename", path, "entity", invoice));
+            EventData.log(EventData.EXPORT, COMPONENT, EventData.Status.SUCCESS, "Invoice exported to JSON", Map.of("filename", path, "entity", invoice));
         } catch (IOException e) {
-            EventData.log(EventData.EXPORT, COMPONENT, EventData.Status.FAILURE, "Invoice exported to JSON file", Map.of("filename", path), e);
+            EventData.log(EventData.EXPORT, COMPONENT, EventData.Status.FAILURE, "Invoice exported to JSON", Map.of("filename", path), e);
             throw new UncheckedIOException(e);
         }
     }
@@ -84,11 +84,11 @@ public class InvoiceJson implements InvoiceGenerator {
                 }
                 EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.SUCCESS, "Invoice imported", Map.of("filename", path, "entity", invoice));
             } catch (IOException e) {
-                EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.FAILURE, "Error during import of JSON file", Map.of("filename", path), e);
+                EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.FAILURE, "Error during import of JSON", Map.of("filename", path), e);
                 throw new UncheckedIOException(e);
             }
         } else {
-            EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.FAILURE, "Invalid JSON schema of JSON file", Map.of("filename", path));
+            EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.FAILURE, "Invalid JSON schema file", Map.of("filename", path));
         }
         return invoice;
     }

@@ -15,26 +15,17 @@ package net.tangly.erp;
 
 import java.io.IOException;
 import java.nio.file.FileSystem;
-import java.nio.file.Path;
 
 import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.invoices.InvoicesRealm;
 import net.tangly.invoices.ports.InvoicesEntities;
 import net.tangly.invoices.ports.InvoicesHdl;
 import org.jetbrains.annotations.NotNull;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class InvoicesHdlTest {
-    @Test
-    @Tag("localTest")
-    void testCompanyTsvInvoices() {
-        InvoicesHdl handler = new InvoicesHdl(new InvoicesEntities(), Path.of("/Users/Shared/tangly/", "import/invoices"));
-        handler.importEntities();
-    }
-
     @Test
     void testTsvInvoices() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(com.google.common.jimfs.Configuration.unix())) {

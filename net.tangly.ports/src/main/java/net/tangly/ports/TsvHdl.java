@@ -56,6 +56,7 @@ import org.slf4j.LoggerFactory;
 public final class TsvHdl {
     public static final CSVFormat FORMAT =
         CSVFormat.TDF.withFirstRecordAsHeader().withIgnoreHeaderCase(true).withIgnoreEmptyLines(true).withRecordSeparator('\n');
+    public static final String OWNER_FOID = "ownerFoid";
     public static final String OID = "oid";
     public static final String ID = "id";
     public static final String NAME = "name";
@@ -84,7 +85,6 @@ public final class TsvHdl {
         fields.add(TsvProperty.of(TO_DATE, Entity::toDate, Entity::toDate, TsvProperty.CONVERT_DATE_FROM));
         return fields;
     }
-
 
     public static <T extends QualifiedEntity> List<TsvProperty<T, ?>> createTsvQualifiedEntityFields() {
         List<TsvProperty<T, ?>> fields = createTsvEntityFields();
@@ -171,13 +171,16 @@ public final class TsvHdl {
         return TsvEntity.of(Address.class, fields, imports);
     }
 
-
     public static String get(@NotNull CSVRecord record, @NotNull String column) {
         return Strings.emptyToNull(record.get(column));
     }
 
-    public static <T extends HasComments & HasOid> void addComments(T entity, Provider<Comment> comments) {
-        entity.addAll(comments.items().stream().filter(o -> o.ownerFoid() == entity.oid()).collect(Collectors.toList()));
+    public static <T extends HasComments & HasOid> void addComments(Provider<T> provider, T entity, Provider<Comment> comments) {
+        var items = comments.items().stream().filter(o -> (long) ReflectionUtilities.get(o, OWNER_FOID) == entity.oid()).collect(Collectors.toList());
+        if (!items.isEmpty()) {
+            entity.addAll(items);
+            provider.update(entity);
+        }
     }
 
     public static <T extends HasTags> TsvProperty<T, String> tagProperty(String tagName) {

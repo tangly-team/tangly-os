@@ -53,7 +53,7 @@ public record JsonProperty<T, U>(@NotNull String property, @NotNull Function<T, 
     }
 
     public static <T> JsonProperty<T, BigDecimal> ofBigDecimal(String property, Function<T, BigDecimal> getter, BiConsumer<T, BigDecimal> setter) {
-        return of(property, getter, setter, o -> o.has(property) ? o.getBigDecimal(property) : null, (u, o) -> o.put(property, u));
+        return of(property, getter, setter, o -> o.has(property) ? o.getBigDecimal(property) : null, (u, o) -> o.put(property, u.toPlainString()));
     }
 
     public static <T> JsonProperty<T, LocalDate> ofLocalDate(String property, Function<T, LocalDate> getter, BiConsumer<T, LocalDate> setter) {

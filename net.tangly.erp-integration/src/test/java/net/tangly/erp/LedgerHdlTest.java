@@ -27,9 +27,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LedgerHdlTest {
-    private static final String PACKAGE_NAME = "net/tangly/crm/ledger/";
-    private static final String SWISS_LEDGER = "swiss-ledger.tsv";
-
     @Test
     void testTsvLedgerImport() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
@@ -103,4 +100,3 @@ class LedgerHdlTest {
         }
     }
 }
-

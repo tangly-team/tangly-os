@@ -150,10 +150,6 @@ public class Comment implements HasOid, HasTags {
         return text;
     }
 
-    public long ownerFoid() {
-        return ownerFoid;
-    }
-
     // region HasOid
 
     @Override

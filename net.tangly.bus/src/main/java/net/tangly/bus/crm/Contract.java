@@ -106,17 +106,16 @@ public class Contract extends QualifiedEntityImp implements CrmEntity {
 
     @Override
     public boolean check() {
-        return Objects.nonNull(bankConnection) && Objects.nonNull(seller) && Objects.nonNull(sellee) &&
-                (Objects.requireNonNull(amountWithoutVat).compareTo(BigDecimal.ZERO) > 0) && Objects.nonNull(currency);
+        return Objects.nonNull(bankConnection()) && Objects.nonNull(seller()) && Objects.nonNull(sellee()) &&
+            (Objects.requireNonNull(amountWithoutVat()).compareTo(BigDecimal.ZERO) > 0) && Objects.nonNull(currency()) && Objects.nonNull(locale());
     }
 
     @Override
     public String toString() {
         return """
-                Contract[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, locale=%s, currency=%s, address=%s, bankConnection=%s, amountWithoutVat=%s, \
-                seller=%s, sellee=%s, tags=%s]
-                """
-                .formatted(oid(), id(), name(), fromDate(), toDate(), text(), locale(), currency(), address(), bankConnection(), amountWithoutVat(), seller(),
-                        sellee(), tags());
+            Contract[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, locale=%s, currency=%s, address=%s, bankConnection=%s, amountWithoutVat=%s, \
+            seller=%s, sellee=%s, tags=%s]
+            """.formatted(oid(), id(), name(), fromDate(), toDate(), text(), locale(), currency(), address(), bankConnection(), amountWithoutVat(), seller(),
+            sellee(), tags());
     }
 }

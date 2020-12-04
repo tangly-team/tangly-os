@@ -29,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class Activity implements HasOid {
     private long oid;
-    private long interactionFoid;
+    private long ownerFoid;
     private ActivityCode code;
     private LocalDate date;
     private int durationInMinutes;
@@ -47,10 +47,6 @@ public class Activity implements HasOid {
     @Override
     public long oid() {
         return oid;
-    }
-
-    public long interactionFoid() {
-        return interactionFoid;
     }
 
     public ActivityCode code() {

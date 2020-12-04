@@ -15,27 +15,19 @@ package net.tangly.erp;
 
 import java.io.IOException;
 import java.nio.file.FileSystem;
-import java.nio.file.Path;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.products.ProductsRealm;
+import net.tangly.core.domain.Realm;
 import net.tangly.products.ports.ProductsEntities;
 import net.tangly.products.ports.ProductsHdl;
 import org.jetbrains.annotations.NotNull;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ProductsHdlTest {
-    @Test
-    @Tag("localTest")
-    void testCompanyTsvCrm() {
-        var productsHdl = new ProductsHdl(new ProductsEntities(), Path.of("/Users/Shared/tangly/", "import/products"));
-        productsHdl.importEntities();
-    }
-
     @Test
     void testTsvCrm() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
@@ -59,17 +51,16 @@ class ProductsHdlTest {
 
     private void verifyProducts(@NotNull ProductsRealm realm) {
         assertThat(realm.products().items().isEmpty()).isFalse();
-        realm.products().items().forEach(o -> assertThat(o.check()).isTrue());
+        Realm.checkEntities(realm.products());
     }
 
     private void verifyAssignements(@NotNull ProductsRealm realm) {
         assertThat(realm.assignments().items().isEmpty()).isFalse();
-        realm.assignments().items().forEach(o -> assertThat(o.check()).isTrue());
+        Realm.checkEntities(realm.assignments());
     }
 
     private void verifyEfforts(@NotNull ProductsRealm realm) {
         assertThat(realm.efforts().items().isEmpty()).isFalse();
         realm.efforts().items().forEach(o -> assertThat(o.check()).isTrue());
-
     }
 }
