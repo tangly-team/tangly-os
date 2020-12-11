@@ -1,5 +1,5 @@
 baseURL = "https://tangly-team.bitbucket.io/"
-title="tangly Open Source Components"
+title = "tangly Open Source Components"
 
 enableRobotsTXT = true
 theme = ["docsy"]
@@ -48,7 +48,7 @@ id = "UA-90395055-5"
 [languages.en]
 title = "tangly OS Components"
 description = "tangly llc Open Source Components"
-languageName ="English"
+languageName = "English"
 weight = 1
 
 [markup]
@@ -64,36 +64,36 @@ guessSyntax = "true"
 # rouge is bundled with Asciidoctor 2.0 and should no more be added as extension, the rouge-css style include html marking in the html file (from the
 # Asciidoctor expert Dan Allen). The wroking folder allows asciidoctor-diagram and plantuml to generate diagrams in the correct folder.
 [markup.asciidocext]
-    extensions = ["asciidoctor-html5s", "asciidoctor-diagram"]
-    workingFolderCurrent = true
-    [markup.asciidocext.attributes]
-        imagesdir = "../pics"
-        source-highlighter = "rouge"
-        rouge-style = "github"
-        rouge-css = "style"
-        icons = "font"
-        ref-manifesto = "http://agilemanifesto.org/[Agile Manifesto]"
-        ref-less = "https://less.works/[LeSS]"
-        ref-scrum = "https://scrumguides.org/[Scrum]"
-        ref-scrumguide = "http://www.scrumguides.org/[Scrum Guide]"
-        ref-xp = "http://www.extremeprogramming.org/[eXtreme Programming]"
-        ref-kanban = "https://en.wikipedia.org/wiki/Kanban/[Kanban]"
-        ref-lean = "https://en.wikipedia.org/wiki/Lean_software_development/[Lean Software Development]"
-        ref-flow = "https://en.wikipedia.org/wiki/Flow_(psychology)/[Flow]"
-        ref-pdca = "https://en.wikipedia.org/wiki/PDCA/[Plan-Do-Check-Adapt]"
-        ref-bbrt = "http://bbrt.org/[Beyond Budgeting Round Table]"
-        ref-sociocracy = "https://sociocracy30.org/[Sociocracy]"
-        ref-kaizen = "https://en.wikipedia.org/wiki/Kaizen/[Kaizen]"
-        ref-safe = "https://www.scaledagileframework.com/[SAFe]"
-        ref-tangly = "https://www.tangly.net/[tangly]"
-        ref-asciidoc = "https://asciidoc.org/[Asciidoc]"
-        ref-asciidoctor = "https://asciidoctor.org/[Asciidoctor]"
-        ref-hugo = "https://gohugo.io/[Hugo]"
-        ref-docsy = "https://www.docsy.dev/[Docsy]"
-        ref-gradle = "https://gradle.org/[Gradle Build Tool]"
-        ref-maven = "https://maven.apache.org/[Maven]"
-        ref-repository = "https:https://bitbucket.org/tangly-team/tangly-os/[Source Code]"
-        ref-site = "https://tangly-team.bitbucket.io/[Open Source Components]"
+extensions = ["asciidoctor-html5s", "asciidoctor-diagram"]
+workingFolderCurrent = true
+[markup.asciidocext.attributes]
+imagesdir = "../pics"
+source-highlighter = "rouge"
+rouge-style = "github"
+rouge-css = "style"
+icons = "font"
+ref-manifesto = "http://agilemanifesto.org/[Agile Manifesto]"
+ref-less = "https://less.works/[LeSS]"
+ref-scrum = "https://scrumguides.org/[Scrum]"
+ref-scrumguide = "http://www.scrumguides.org/[Scrum Guide]"
+ref-xp = "http://www.extremeprogramming.org/[eXtreme Programming]"
+ref-kanban = "https://en.wikipedia.org/wiki/Kanban/[Kanban]"
+ref-lean = "https://en.wikipedia.org/wiki/Lean_software_development/[Lean Software Development]"
+ref-flow = "https://en.wikipedia.org/wiki/Flow_(psychology)/[Flow]"
+ref-pdca = "https://en.wikipedia.org/wiki/PDCA/[Plan-Do-Check-Adapt]"
+ref-bbrt = "http://bbrt.org/[Beyond Budgeting Round Table]"
+ref-sociocracy = "https://sociocracy30.org/[Sociocracy]"
+ref-kaizen = "https://en.wikipedia.org/wiki/Kaizen/[Kaizen]"
+ref-safe = "https://www.scaledagileframework.com/[SAFe]"
+ref-tangly = "https://www.tangly.net/[tangly]"
+ref-asciidoc = "https://asciidoc.org/[Asciidoc]"
+ref-asciidoctor = "https://asciidoctor.org/[Asciidoctor]"
+ref-hugo = "https://gohugo.io/[Hugo]"
+ref-docsy = "https://www.docsy.dev/[Docsy]"
+ref-gradle = "https://gradle.org/[Gradle Build Tool]"
+ref-maven = "https://maven.apache.org/[Maven]"
+ref-repository = "https:https://bitbucket.org/tangly-team/tangly-os/[Source Code]"
+ref-site = "https://tangly-team.bitbucket.io/[Open Source Components]"
 
 languageCode = "en-us"
 defaultContentLanguage = "en"
@@ -102,6 +102,9 @@ theme = "docsy"
 
 pygmentsCodeFences = true
 pygmentsUseClasses = true
+
+[outputs]
+section = ["HTML", "RSS", "print"]
 
 # Everything below this are Site Params
 
@@ -112,6 +115,12 @@ copyright = "tangly llc - Attribution 4.0 International (CC BY 4.0)"
 time_format_blog = "2006-01-02"
 time_format_default = "2006-01-02"
 rss_sections = ["blog"]
+
+# flag indicating if the utterances (https://utteranc.es/) should be displayed
+comments_utterances = true
+
+# GitHub repository name where all comments are stored. The repository can be the same as the website repository or a different one.
+comments_utterances_repo = "marcelbaumann/tangly-team-comments"
 
 # images = ["images/product-illustration.png"]
 

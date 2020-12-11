@@ -1,0 +1,162 @@
+---
+title: "Support Comments for Static Hugo Website"
+linkTitle: "Support Comments for Static Website"
+date: 2020-12-11
+tags: ["design", "serie-students"]
+---
+
+== Support Comments for Static Hugo Website
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2020-12-02-head.png[720,480,role=left]
+There are times in software when you're facing a problem, you find an off-the-shelf solution, and 20 lines of code later it just works.
+
+Today I lived one of those moments.
+
+=== Motivation
+
+I wanted to add a comments section to this blog for a while.
+I was reluctant to implement one myself the classical way, using an external service such as disqus.
+This blog does not use a database.
+All pages are static AsciiDoc content stored in a repository and rendered using Hugo.
+I wanted to store comments in a personally owned repository and protect my readers from advertisement and personal information collection.
+
+=== Meeting Utteranc.es
+
+Some information on the Internet about https://utteranc.es/[utteranc.es] is wrong.
+Facts are:
+
+* Utterances uses a github repository to store comments of your website articles and pages.
+* Your website can be hosted *anywhere*.
+You do *not* need to host your static website repository on github; but you can.
+* Readers wanting to comment *must* login once with their github account to authorize the utterances application.
+Anonymous commenting is not supported.
+This restriction is reasonable for a technical website which readers are technical affine and already have a github account.
+* Utterances is free.
+No tracking, no advertisement, no lock-in.
+The comments are stored in your repository as GitHub issues.
+* Utterances layout looks nice and can be styled.
+
+Utterances is an open source app built and maintained by Jeremy Danyow which he announced in 2018.
+It provides a lightweight web widget (an <iframe>) to add a comment section to a website.
+
+When someone posts a comment, the Utterances bot literally leaves a corresponding comment on the issue.
+In other words, each page gets its own issue with a comment feed, and so you benefit from the entire feature set of issues out-of-the-box.
+
+* Comments are stored in issues of a GitHub repo of your choosing.
+* You can edit, report and delete comments.
+These functions are great for moderation.
+* If you are watching the repository, you will get email notifications when comments are posted to your site.
+
+The other wonderful aspect about Utterances is how simple the entire setup really is.
+
+=== Setting Up Utterances
+
+The process is described https://utteranc.es/[Here].
+The steps are:
+
+. Create a public GitHub repository.
+. Install the utterances app on the repo you would like to host comments on.
+You can used the repository of your blog, or setup a dedicated repository.
+This option means your blog or website does not need to be hosted on GitHub.
+. Configure the code snippet on the utterances website and copy it.
+
+[TIP]
+====
+You can skip the code snippet step if you are using Docsy and follow the below instructions to configure your theme.
+====
+
+[code,javascript]
+----
+<script
+  async
+  src="https://utteranc.es/client.js"
+  repo="<OWNER>/<NAME>" // <1>
+  issue-term="title"
+  theme="github-light"
+  crossorigin="anonymous"
+</script>
+----
+<1> <OWNER>/<NAME> is the name of your repository.
+In my case it would be _marcelbaumann/tangly-team-comments_.
+
+=== Configure Docsy Theme
+
+I use the Hugo theme https://www.docsy.dev/[Docsy] to style the {ref-site}.
+I put some effort to have a configurable extension through site prameters.
+
+==== Create the comments partial for utterances
+
+The partial file contains the code to display for commenting using utterances.
+It is a modified version of the snippet you can generate on the utterances website.
+
+Create a partial in _docsy/layout/partial_.
+I named my partial _comments-utterances.html_ and add the following snippet.
+
+[code,html]
+----
+<div class="page-blank">
+    <div id="utterancers_thread"></div>
+    <script src="https://utteranc.es/client.js"
+            repo= {{ .Site.Params.comments_utterances_repo }}
+            issue-term="pathname"  // <1>
+            theme="github-light"   // <2>
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+----
+<1> See utterances documentation how the reference to the page or articles can be tailored
+<2> See utterances documentation about supported themes
+
+== Edit the blog content file
+
+The template _docsy/layouts/blog/content.html_ is edited to include the above defined partial file.
+The original file supports connecting to disqus.
+I replaced the disqus specific code with the inclusion of the partial defined above for utterances comment support.
+
+[code,html]
+----
+<div class="td-content">
+	<h1>{{ .Title }}</h1>
+	{{ with .Params.description }}<div class="lead">{{ . | markdownify }}</div>{{ end }}
+	<div class="td-byline mb-4">
+		{{ with .Params.author }}{{ T "post_byline_by" }} <b>{{ . | markdownify }}</b> |{{ end}}
+		<time datetime="{{  $.Date.Format "2006-01-02" }}" class="text-muted">{{ $.Date.Format $.Site.Params.time_format_blog  }}</time>
+	</div>
+	{{ if (and (not .Params.hide_readingtime) (.Site.Params.ui.readingtime.enable)) }}
+	    {{ partial "reading-time.html" . }}
+	{{ end }}
+	{{ .Content }}
+	{{ if (.Site.Params.comments_utterances) }}
+		<br />
+		{{ partial "comments-utterances.html" . }}
+		<br />
+	{{ end }}
+
+	{{ partial "pager.html" . }}
+</div>
+----
+
+=== Add two site variables to config.toml
+
+The above changes try to be generic and are configured through site variables in the site configuration file under the _[params]_ block.
+
+[code,toml]
+----
+# flag indicating if the utterances (https://utteranc.es/) should be displayed
+comments_utterances = true
+
+# GitHub repository name where all comments are stored. The repository can be the same as the website repository or a different one.
+comments_utterances_repo = "owner/repository-name" # <1>
+----
+<1> Set the value to your GitHub repository where the comments should be stored.
+
+== Hugo and Docsy Related Articles
+
+. link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc[Creating a technical Website with Hugo and Asciidoc]
+. link:../../2020/support-comments-for-static-hugo-website[Support Comments for Static Hugo Website]

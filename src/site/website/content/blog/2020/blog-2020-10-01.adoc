@@ -163,3 +163,8 @@ Beware where the file are located by {ref-hugo} engine and the naming convention
 Funny is that the blogger software and the docsy theme are from the same company *Google*.
 
 _This blog article is naturally written in {ref-asciidoc} syntax_.
+
+== Hugo and Docsy Related Articles
+
+. link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc[Creating a technical Website with Hugo and Asciidoc]
+. link:../../2020/support-comments-for-static-hugo-website[Support Comments for Static Hugo Website]
