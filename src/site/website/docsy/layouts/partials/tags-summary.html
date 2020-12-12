@@ -1,7 +1,7 @@
 <div class = 'summary'>
     <div class = 'summary_header'>
         <h3><a href='{{ .Permalink }}'>{{ .Title  }}</a></h3>
-        {{ partial "article_meta.html" . }}
+        {{ partial "article-meta.html" . }}
     </div>
     <p class = 'summary_section'>{{ .Summary | truncate 320 }}</p>
     <a href='{{ .Permalink }}'>Read More</a>

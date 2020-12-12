@@ -13,7 +13,7 @@ enableMissingTranslationPlaceholders = true
 
 # disableKinds = ["taxonomy", "taxonomyTerm"]
 [taxonomies]
-tag = "tags"
+tags = "tags"
 
 # Highlighting config
 pygmentsCodeFences = true
