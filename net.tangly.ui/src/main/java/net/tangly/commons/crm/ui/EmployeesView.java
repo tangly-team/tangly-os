@@ -50,7 +50,7 @@ public class EmployeesView extends InternalEntitiesView<Employee> {
 
     @Override
     protected FormLayout createOverallView(@NotNull Mode mode, @NotNull Employee entity) {
-        boolean readonly = Mode.readOnly(mode);
+        boolean readonly = mode.readOnly();
         EntityField<Employee> entityField = new EntityField<>();
         entityField.setReadOnly(readonly);
         One2OneField<LegalEntity, LegalEntitiesView> organization = new One2OneField<>("Organization", new LegalEntitiesView(domain, mode));

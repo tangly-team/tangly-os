@@ -13,6 +13,8 @@
 
 package net.tangly.commons.vaadin;
 
+import java.util.Objects;
+
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -30,7 +32,6 @@ public class GridButtons<T> extends HorizontalLayout implements SelectedItemList
     private final Button delete;
     private T selectedItem;
 
-
     public GridButtons(Crud.Mode mode, CrudForm<T> form, CrudActionsListener<T> actionsListener) {
         this.mode = mode;
         this.form = form;
@@ -44,16 +45,16 @@ public class GridButtons<T> extends HorizontalLayout implements SelectedItemList
         update.setEnabled(mode == Crud.Mode.EDITABLE);
         delete.setEnabled((mode == Crud.Mode.EDITABLE) || (mode == Crud.Mode.IMMUTABLE));
         selectedItem(null);
-        if (Crud.Mode.canAdd(mode)) {
-            addAndExpand(add);
+        if (mode.canAdd()) {
+            add(add);
         }
-        if (Crud.Mode.canDelete(mode)) {
-            addAndExpand(delete);
+        if (mode.canDelete()) {
+            add(delete);
         }
-        if (Crud.Mode.canUpdate(mode)) {
-            addAndExpand(update);
+        if (mode.canUpdate()) {
+            add(update);
         }
-        addAndExpand(details);
+        add(details);
     }
 
     public T selectedItem() {
@@ -62,14 +63,14 @@ public class GridButtons<T> extends HorizontalLayout implements SelectedItemList
 
     public void selectedItem(T item) {
         selectedItem = item;
-        if (selectedItem != null) {
+        if (Objects.nonNull(selectedItem)) {
             details.setEnabled(true);
-            add.setEnabled(Crud.Mode.canAdd(mode));
-            update.setEnabled(Crud.Mode.canUpdate(mode));
-            delete.setEnabled(Crud.Mode.canDelete(mode));
+            add.setEnabled(mode.canAdd());
+            update.setEnabled(mode.canUpdate());
+            delete.setEnabled(mode.canDelete());
         } else {
             details.setEnabled(false);
-            add.setEnabled(Crud.Mode.canAdd(mode));
+            add.setEnabled(mode.canAdd());
             update.setEnabled(false);
             delete.setEnabled(false);
         }
@@ -85,7 +86,7 @@ public class GridButtons<T> extends HorizontalLayout implements SelectedItemList
         dialog.setResizable(true);
         dialog.setDraggable(true);
         dialog.add(new VerticalLayout(form.createForm(operation, operation != CrudForm.Operation.CREATE ? selectedItem : null), new HtmlComponent("br"),
-            CrudForm.createFormButtons(dialog, form, operation, selectedItem(), actionsListener)));
+            form.createFormButtons(dialog, operation, mode.isCancellable(), selectedItem(), actionsListener)));
         dialog.open();
     }
 }

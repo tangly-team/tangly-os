@@ -133,8 +133,8 @@ public final class VaadinUtils {
     }
 
     @SafeVarargs
-    public static <T extends HasValue> void readOnly(CrudForm.Operation operation, T... components) {
-        readOnly(Crud.Mode.readOnly(Crud.of(operation)), components);
+    public static <E extends HasValue> void readOnly(CrudForm.Operation operation, E... components) {
+        readOnly(Crud.of(operation).readOnly(), components);
     }
 
     @SafeVarargs
@@ -142,7 +142,7 @@ public final class VaadinUtils {
         Arrays.stream(components).forEach(o -> o.setReadOnly(readOnly));
     }
 
-    public static <T extends HasEnabled & HasValue> void configureId(CrudForm.Operation operation, T component) {
+    public static <T extends HasEnabled & HasValue> void configureId(@NotNull CrudForm.Operation operation, T component) {
         switch (operation) {
             case VIEW, UPDATE, DELETE -> {
                 component.setReadOnly(true);
@@ -153,10 +153,9 @@ public final class VaadinUtils {
                 component.setEnabled(true);
             }
         }
-
     }
 
-    public static <T extends HasEnabled & HasValue> void configureOid(CrudForm.Operation operation, T component) {
+    public static <T extends HasEnabled & HasValue> void configureOid(@NotNull CrudForm.Operation operation, T component) {
         component.setReadOnly(false);
         component.setEnabled(false);
     }

@@ -13,6 +13,8 @@
 
 package net.tangly.commons.vaadin;
 
+import java.util.Objects;
+
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.datepicker.DatePicker;
@@ -62,7 +64,7 @@ public class QualifiedEntityField<T extends QualifiedEntity> extends CustomField
 
     @Override
     protected void setPresentationValue(T entity) {
-        if (entity == null) {
+        if (Objects.isNull(entity)) {
             clear();
         }
     }

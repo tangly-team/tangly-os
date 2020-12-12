@@ -13,6 +13,8 @@
 
 package net.tangly.core;
 
+import java.util.Objects;
+
 /**
  * String utility class until the official API supports these operation.
  */
@@ -21,11 +23,11 @@ public final class Strings {
     }
 
     public static boolean isNullOrEmpty(String string) {
-        return string == null || string.isBlank();
+        return Objects.isNull(string) || string.isBlank();
     }
 
     public static boolean isNullOrBlank(String string) {
-        return string == null || string.isBlank();
+        return Objects.isNull(string) || string.isBlank();
     }
 
     public static String blankToNull(String string) {
@@ -37,6 +39,6 @@ public final class Strings {
     }
 
     public static String nullToEmpty(String string) {
-        return (string == null) ? "" : string;
+        return Objects.isNull(string) ? "" : string;
     }
 }

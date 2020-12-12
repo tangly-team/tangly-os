@@ -26,12 +26,12 @@ public interface CrudForm<T> {
     enum Operation {
         VIEW, UPDATE, CREATE, DELETE, CANCEL, SELECT;
 
-        public static boolean isReadWrite(@NotNull Operation operation) {
-            return (operation == Operation.CREATE) || (operation == Operation.UPDATE) || (operation == SELECT);
+        public boolean isReadWrite() {
+            return (this == Operation.CREATE) || (this == Operation.UPDATE) || (this == SELECT);
         }
 
-        public static boolean isReadOnly(@NotNull Operation operation) {
-            return (operation == Operation.VIEW) || ((operation == Operation.DELETE));
+        public boolean isReadOnly() {
+            return (this == Operation.VIEW) || ((this == Operation.DELETE));
         }
     }
 
@@ -44,12 +44,12 @@ public interface CrudForm<T> {
     default void formCancelled(@NotNull Operation operation, T entity) {
     }
 
-    static <T> HorizontalLayout createFormButtons(@NotNull Dialog dialog, @NotNull CrudForm<T> form, @NotNull CrudForm.Operation operation, @NotNull T entity,
-                                                  @NotNull CrudActionsListener<T> actionsListener) {
+    default HorizontalLayout createFormButtons(@NotNull Dialog dialog, @NotNull CrudForm.Operation operation, boolean isCancellable, @NotNull T entity,
+                                               @NotNull CrudActionsListener<T> actionsListener) {
         HorizontalLayout actions = new HorizontalLayout();
         actions.setSpacing(true);
         Button cancel = new Button("Cancel", event -> {
-            form.formCancelled(CrudForm.Operation.CANCEL, entity);
+            formCancelled(CrudForm.Operation.CANCEL, entity);
             dialog.close();
         });
         Button action;
@@ -58,15 +58,19 @@ public interface CrudForm<T> {
                 action = new Button("Close");
                 actions.add(action);
                 action.addClickListener(event -> {
-                    form.formCompleted(CrudForm.Operation.VIEW, entity);
+                    formCompleted(CrudForm.Operation.VIEW, entity);
                     dialog.close();
                 });
                 break;
             case UPDATE:
                 action = new Button("Ok");
-                actions.add(action);
+                if (isCancellable) {
+                    actions.add(action, cancel);
+                } else {
+                    actions.add(action);
+                }
                 action.addClickListener(event -> {
-                    form.formCompleted(CrudForm.Operation.UPDATE, entity);
+                    formCompleted(CrudForm.Operation.UPDATE, entity);
                     actionsListener.entityUpdated(entity);
                     dialog.close();
                 });
@@ -75,7 +79,7 @@ public interface CrudForm<T> {
                 action = new Button("Create");
                 actions.add(action, cancel);
                 action.addClickListener(event -> {
-                    T created = form.formCompleted(CrudForm.Operation.CREATE, null);
+                    T created = formCompleted(CrudForm.Operation.CREATE, null);
                     actionsListener.entityAdded(created);
                     dialog.close();
                 });
@@ -84,7 +88,7 @@ public interface CrudForm<T> {
                 action = new Button("Delete");
                 actions.add(action, cancel);
                 action.addClickListener(event -> {
-                    form.formCompleted(CrudForm.Operation.DELETE, entity);
+                    formCompleted(CrudForm.Operation.DELETE, entity);
                     actionsListener.entityDeleted(entity);
                     dialog.close();
                 });

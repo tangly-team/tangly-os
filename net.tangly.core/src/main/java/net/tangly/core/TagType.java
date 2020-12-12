@@ -13,6 +13,7 @@
 
 package net.tangly.core;
 
+import java.util.Objects;
 import java.util.function.BiPredicate;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
@@ -22,17 +23,20 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Implements the conceptual type of a set of related tags, all of the same class. The tag type also provides support to convert the text format of a tag into a
  * Java object and to validate acceptable tag values.
+ * <p>A tag should be associated at most once with an entity. If multiple values are needed, the tag value should be a comma separated list of all values.
+ * The conversion method shall transform the comma separated string into a list of objects if needed.</p>
  *
  * @param namespace namespace of the tags defined through the tag type
  * @param name      name of the tags defined through the tag type
  * @param clazz     class of the type of the values stored in the tag
  * @param kind      kind of the tag specifying if a value exists and if it is mandatory
- * @param convert   mapping function between a string to a Java object representation of the string value
- * @param validate  validation function for hte Java representation of the string tag value
+ * @param convert   mapping function between a string to a Java object representation of the string value. if multiple values are supported, the mapping
+ *                  function shall return a list of Java objects.
+ * @param validate  validation function for the Java representation of the string tag value
  * @param <T>       type of the tags
  */
-public record TagType<T>(String namespace, @NotNull String name, @NotNull ValueKinds kind, @NotNull Class<T> clazz,
-                                              Function<String, T> convert, BiPredicate<TagType<T>, T> validate) {
+public record TagType<T>(String namespace, @NotNull String name, @NotNull ValueKinds kind, @NotNull Class<T> clazz, Function<String, T> convert,
+                         BiPredicate<TagType<T>, T> validate) {
     /**
      * Indicates if the tag requires no value, an optional value, or a mandatory one.
      */
@@ -48,32 +52,30 @@ public record TagType<T>(String namespace, @NotNull String name, @NotNull ValueK
     }
 
     public static <T> TagType<T> ofMandatory(String namespace, @NotNull String name, Class<T> clazz, Function<String, T> convert,
-                                                                  @NotNull BiPredicate<TagType<T>, T> validate) {
+                                             @NotNull BiPredicate<TagType<T>, T> validate) {
         return of(namespace, name, ValueKinds.MANDATORY, clazz, convert, validate);
     }
 
-    public static <T> TagType<T> ofMandatory(String namespace, @NotNull String name, Class<T> clazz,
-                                                                  @NotNull Function<String, T> convert) {
+    public static <T> TagType<T> ofMandatory(String namespace, @NotNull String name, Class<T> clazz, @NotNull Function<String, T> convert) {
         return of(namespace, name, ValueKinds.MANDATORY, clazz, convert);
     }
 
     public static <T> TagType<T> of(String namespace, @NotNull String name, @NotNull ValueKinds kind, @NotNull Class<T> clazz,
-                                                         @NotNull Function<String, T> convert) {
+                                    @NotNull Function<String, T> convert) {
         return new TagType<>(namespace, name, kind, clazz, convert, (tagType, tag) -> true);
     }
 
-    public static <T> TagType<T> of(String namespace, @NotNull String name, @NotNull ValueKinds kind, Class<T> clazz,
-                                                         Function<String, T> convert, BiPredicate<TagType<T>, T> validate) {
+    public static <T> TagType<T> of(String namespace, @NotNull String name, @NotNull ValueKinds kind, Class<T> clazz, Function<String, T> convert,
+                                    BiPredicate<TagType<T>, T> validate) {
         return new TagType<>(namespace, name, kind, clazz, convert, validate);
     }
 
-    /**
-     * Indicates if tags of these type can have values.
-     *
-     * @return true if either mandatory or optional values are supported otherwise false
-     */
     public boolean canHaveValue() {
         return kind != ValueKinds.NONE;
+    }
+
+    public boolean mustHaveValue() {
+        return kind == ValueKinds.MANDATORY;
     }
 
     /**
@@ -107,9 +109,9 @@ public record TagType<T>(String namespace, @NotNull String name, @NotNull ValueK
     }
 
     private void validateValuePresence(Object value) {
-        if ((kind() == ValueKinds.MANDATORY) && (value == null)) {
+        if ((kind() == ValueKinds.MANDATORY) && (Objects.isNull(value))) {
             throw new IllegalArgumentException(String.format("value is required for mandatory tag type %s %s", namespace(), name()));
-        } else if ((kind() == ValueKinds.NONE) && (value != null)) {
+        } else if ((kind() == ValueKinds.NONE) && (Objects.nonNull(value))) {
             throw new IllegalArgumentException(String.format("value is denied for none tag type %s %s", namespace(), name()));
         }
     }

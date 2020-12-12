@@ -60,7 +60,7 @@ public class ContractsView extends InternalEntitiesView<Contract> {
 
     @Override
     protected FormLayout createOverallView(@NotNull Mode mode, @NotNull Contract entity) {
-        boolean readonly = Mode.readOnly(mode);
+        boolean readonly = mode.readOnly();
         EntityField<Contract> entityField = new EntityField<>();
         entityField.setReadOnly(readonly);
         BankConnectionField bankConnection = new BankConnectionField();

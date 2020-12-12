@@ -13,6 +13,8 @@
 
 package net.tangly.commons.vaadin;
 
+import java.util.Objects;
+
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
@@ -20,15 +22,23 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import net.tangly.core.HasTags;
 import net.tangly.core.Tag;
+import net.tangly.core.TagType;
 import net.tangly.core.TagTypeRegistry;
 import net.tangly.core.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * The tags view is a Crud view with all the tags defined for an entity. Edition functions are provided to add, delete, and view individual comments. Update
- * function is not supported because tags are immutable objects.
+ * function is not supported because tags are immutable objects. Update is therefore a create operation.
  * <p>The form uses information stored in the tag registry to populate the namespace field, the name field and toggle the value field based on the tag type
- * definition.</p>
+ * definition. The operations are:</p>
+ * <dl>
+ *     <dt>view</dt><dd>The tag properties are displayed in read-only fields. The operation can be acknowledged.</dd>
+ *     <dt>create</dt><dd>The tag properties view is displayed with empty values. Only the tag names for the selected namespace will be displayed. The
+ *     value field is only editable if the tag type supports values for the tag. The operation can be accepeted or canceled.</dd>
+ *     <dt>update</dt><dd>Only the value of the tag can be edited. The namespace and name of the tag are read-only.The operation can be accepeted or canceled.</dd>
+ *     <dt>delete</dt><dd>The selected tag is removed.The operation can be accepeted or canceled.</dd>
+ * </dl>
  */
 public class TagsView extends EntitiesView<Tag> {
     private final transient HasTags hasTags;
@@ -36,14 +46,22 @@ public class TagsView extends EntitiesView<Tag> {
     private final transient ComboBox<String> namespace;
     private final transient ComboBox<String> name;
     private final transient TextField value;
+    private final transient Binder<Tag> binder;
 
     public TagsView(@NotNull Mode mode, @NotNull HasTags entity, @NotNull TagTypeRegistry registry) {
         super(Tag.class, mode, ProviderInMemory.of(entity.tags()));
         this.hasTags = entity;
         this.registry = registry;
         namespace = new ComboBox<>("Namespace");
+        namespace.setItems(registry.namespaces());
         name = new ComboBox<>("Name");
-        value = new TextField("Value");
+        name.setRequired(true);
+        value = new TextField("Value", "value");
+        binder = new Binder<>(Tag.class);
+        binder.bind(namespace, Tag::namespace, null);
+        binder.bind(name, Tag::name, null);
+        binder.bind(value, Tag::value, null);
+
         initialize();
     }
 
@@ -57,44 +75,32 @@ public class TagsView extends EntitiesView<Tag> {
     }
 
     @Override
-    protected FormLayout fillForm(@NotNull Operation operation, Tag entity, FormLayout form) {
-        boolean readonly = Operation.isReadOnly(operation);
-        namespace.setItems(registry.namespaces());
-        if (entity != null) {
-            namespace.setValue(entity.namespace());
-        }
-        namespace.setReadOnly(readonly);
+    protected FormLayout fillForm(@NotNull Operation operation, Tag entity, @NotNull FormLayout form) {
+        namespace.setReadOnly(Objects.nonNull(entity) || operation.isReadOnly());
+        name.setReadOnly(true);
+        deactivateValue();
         namespace.addValueChangeListener(event -> {
-            if (event.getValue() == null) {
-                name.clear();
-            } else {
+            name.clear();
+            if (Objects.nonNull(event.getValue())) {
                 name.setItems(registry.tagNamesForNamespace(event.getValue()));
+                name.setReadOnly(Objects.nonNull(entity));
+                deactivateValue();
             }
         });
-        name.setReadOnly(readonly);
-        if (entity != null) {
-            name.setItems(registry.tagNamesForNamespace(entity.namespace()));
-        }
         name.addValueChangeListener(event -> {
-            if (event.getValue() == null) {
-                name.clear();
-                value.setEnabled(true);
-            } else {
-                registry.find(namespace.getValue(), name.getValue()).ifPresent(o -> value.setEnabled(o.canHaveValue()));
+            if (Objects.nonNull(event.getValue())) {
+                activateValue(registry.find(namespace.getValue(), name.getValue()).orElseThrow(), operation);
             }
         });
-        value.setPlaceholder("value");
-        value.setReadOnly(readonly);
-
-        if (readonly) {
-            Binder<Tag> binder = new Binder<>(Tag.class);
-            binder.bind(namespace, Tag::namespace, null);
-            binder.bind(name, Tag::name, null);
-            binder.bind(value, Tag::value, null);
+        if (Objects.nonNull(entity)) {
+            name.setItems(registry.tagNamesForNamespace(entity.namespace()));
             binder.readBean(entity);
         } else {
+            namespace.clear();
+            name.clear();
             value.clear();
         }
+        form.add(namespace, name);
         form.add(value, 2);
         VaadinUtils.setResponsiveSteps(form);
         return form;
@@ -113,11 +119,33 @@ public class TagsView extends EntitiesView<Tag> {
                 hasTags.add(tag);
                 yield tag;
             }
+            case UPDATE -> {
+                Tag tag = updateOrCreate(entity);
+                hasTags.replace(tag);
+                yield tag;
+            }
             case DELETE -> {
                 hasTags.remove(entity);
                 yield entity;
             }
             default -> entity;
         };
+    }
+
+    private void deactivateValue() {
+        value.clear();
+        value.setEnabled(false);
+        value.setReadOnly(true);
+        value.setRequired(false);
+    }
+
+    private void activateValue(@NotNull TagType<?> type, @NotNull Operation operation) {
+        if (type.canHaveValue()) {
+            value.setEnabled(true);
+        } else {
+            value.clear();
+        }
+        value.setReadOnly(operation.isReadOnly());
+        value.setRequired(type.mustHaveValue());
     }
 }

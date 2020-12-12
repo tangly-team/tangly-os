@@ -37,24 +37,37 @@ import org.vaadin.klaudeta.PaginatedGrid;
 public class Crud<T> extends VerticalLayout implements SelectedItemListener<T> {
     /**
      * Define the different edition modes of the CRUD component. The mode has an impact on the displayed fields and the buttons.
+     * <dl>
+     *     <dt>editable</dt><dd>The items of the list can be added to the list, deleted from the list, and properties of the item can be modified.
+     *     Edition can be canceled.</dd>
+     *     <dt>immutable</dt><dd>The items of the list are immutable. Items can be added or removed from the list.</dd>
+     *     <dt>auditable</dt><dd>the items of the list are auditable therefore they are immutable. Items can only be added to the list.</dd>
+     *     <dt>readonly</dt><dd>The items of the list and the list are readonly and immutable.</dd>
+     *     <dt>edit_delete</dt><dd>The items of the list can be deleted from the list, and properties of the item can be modified. Edition can
+     *     be cancelled.</dd>
+     * </dl>
      */
     public enum Mode {
         EDITABLE, IMMUTABLE, AUDITABLE, READONLY, EDIT_DELETE;
 
-        public static boolean readOnly(@NotNull Mode mode) {
-            return (mode == READONLY) || (mode == AUDITABLE);
+        public boolean readOnly() {
+            return (this == READONLY) || (this == AUDITABLE) || (this == EDIT_DELETE);
         }
 
-        static boolean canUpdate(@NotNull Mode mode) {
-            return (mode == EDITABLE) || (mode == EDIT_DELETE);
+        public boolean canUpdate() {
+            return (this == EDITABLE) || (this == EDIT_DELETE);
         }
 
-        static boolean canAdd(@NotNull Mode mode) {
-            return (mode == EDITABLE) || (mode == IMMUTABLE) || (mode == AUDITABLE);
+        public boolean canAdd() {
+            return (this == EDITABLE) || (this == IMMUTABLE) || (this == AUDITABLE);
         }
 
-        static boolean canDelete(@NotNull Mode mode) {
-            return (mode == EDITABLE) || (mode == IMMUTABLE) || (mode == EDIT_DELETE);
+        public boolean canDelete() {
+            return (this == EDITABLE) || (this == IMMUTABLE) || (this == EDIT_DELETE);
+        }
+
+        public boolean isCancellable() {
+            return (this != EDITABLE) && (this != EDIT_DELETE);
         }
     }
 

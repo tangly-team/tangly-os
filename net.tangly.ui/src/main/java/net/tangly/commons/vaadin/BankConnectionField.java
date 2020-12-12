@@ -13,6 +13,8 @@
 
 package net.tangly.commons.vaadin;
 
+import java.util.Objects;
+
 import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -53,7 +55,7 @@ public class BankConnectionField extends CustomField<BankConnection> {
 
     @Override
     protected void setPresentationValue(BankConnection connection) {
-        if (connection == null) {
+        if (Objects.isNull(connection)) {
             clear();
         } else {
             VaadinUtils.setValue(iban, connection.iban());

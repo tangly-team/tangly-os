@@ -28,7 +28,7 @@ import net.tangly.products.ports.ProductsHdl;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Create a CRM and ledger domain model store with all persistent values of all involved entities. The entities are stored in TSV and JSON file as resources of
+ * Creates a CRM and ledger domain model store with all persistent values of all involved entities. The entities are stored in TSV and JSON file as resources of
  * the test component. The store copies all the resources in an in-memory file system for efficient tests.
  */
 public record ErpStore(@NotNull FileSystem fs) {
@@ -82,7 +82,7 @@ public record ErpStore(@NotNull FileSystem fs) {
     }
 
     /**
-     * Set up the test environment for integration tests of the CRM domain: CRM entities, invoices, and ledger.
+     * Sets up the test environment for integration tests of the CRM domain: CRM entities, invoices, and ledger.
      */
     public void createCrmAndLedgerRepository() {
         try {
@@ -91,7 +91,6 @@ public record ErpStore(@NotNull FileSystem fs) {
             Files.createDirectory(fs.getPath(ORGANIZATION, "crm/vcards/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "ledger/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "products/"));
-
             Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2015/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2016/"));
@@ -99,11 +98,9 @@ public record ErpStore(@NotNull FileSystem fs) {
             Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2018/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2019/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2020/"));
-
             Files.createDirectory(fs.getPath(ORGANIZATION, "reports/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "reports/ledger/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "reports/invoices/"));
-
             Files.createDirectory(fs.getPath(ORGANIZATION, "db/"));
             Files.createDirectory(crmDb());
 
@@ -115,15 +112,12 @@ public record ErpStore(@NotNull FileSystem fs) {
             copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.ACTIVITIES_TSV);
             copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.SUBJECTS_TSV);
             copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.COMMENTS_TSV);
-
             copy(PRODUCTS_PACKAGE_NAME, productsRoot(), ProductsHdl.PRODUCTS_TSV);
             copy(PRODUCTS_PACKAGE_NAME, productsRoot(), ProductsHdl.ASSIGNMENTS_TSV);
             copy(PRODUCTS_PACKAGE_NAME, productsRoot(), ProductsHdl.EFFORTS_TSV);
-
             copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "swiss-ledger.tsv");
             copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "2015-journal.tsv");
             copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "2016-journal.tsv");
-
             copy(INVOICES_PACKAGE_NAME, invoicesRoot(), InvoicesHdl.ARTICLES_TSV);
             copy(INVOICES_PACKAGE_NAME + "2015/", invoicesRoot().resolve("2015"), "2015-8001-Invoice-HSLU-December.json");
             copy(INVOICES_PACKAGE_NAME + "2016/", invoicesRoot().resolve("2016"), "2016-8001-Invoice-HSLU-October.json");
@@ -133,11 +127,8 @@ public record ErpStore(@NotNull FileSystem fs) {
             copy(INVOICES_PACKAGE_NAME + "2018/", invoicesRoot().resolve("2018"), "2018-8022-Invoice-HSLU-November.json");
             copy(INVOICES_PACKAGE_NAME + "2019/", invoicesRoot().resolve("2019"), "2019-8020-Invoice-HSLU-December.json");
             copy(INVOICES_PACKAGE_NAME + "2020/", invoicesRoot().resolve("2020"), "2020-8001-Invoice-HSLU-May.json");
-
             copy(VCARDS_PACKAGE_NAME, vcardsRoot(), "1-MarcelBaumann.vcf");
-
             copy(REPORTS_PACKAGE_NAME, reportsRoot(), "trefoil.svg");
-
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

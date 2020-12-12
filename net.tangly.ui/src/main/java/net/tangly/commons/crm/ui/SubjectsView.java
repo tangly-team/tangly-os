@@ -49,7 +49,7 @@ public class SubjectsView extends InternalEntitiesView<Subject> {
 
     @Override
     protected FormLayout createOverallView(@NotNull Mode mode, @NotNull Subject entity) {
-        boolean readonly = Mode.readOnly(mode);
+        boolean readonly = mode.readOnly();
         EntityField<Subject> entityField = new EntityField<>();
         entityField.setReadOnly(readonly);
         One2OneField<NaturalEntity, NaturalEntitiesView> user = new One2OneField<>("User", new NaturalEntitiesView(domain, mode));

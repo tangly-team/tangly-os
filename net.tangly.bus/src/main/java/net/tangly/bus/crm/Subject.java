@@ -13,16 +13,18 @@
 
 package net.tangly.bus.crm;
 
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.Base64;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
-import net.tangly.core.QualifiedEntityImp;
 import net.tangly.bus.gravatar.Gravatar;
 import net.tangly.bus.gravatar.GravatarImage;
 import net.tangly.bus.gravatar.GravatarRating;
+import net.tangly.core.QualifiedEntityImp;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -42,14 +44,19 @@ public class Subject extends QualifiedEntityImp {
     public Subject() {
     }
 
-    public static String encryptPassword(@NotNull String password, @NotNull String salt) throws Exception {
+    public static String encryptPassword(@NotNull String password, @NotNull String salt) {
         int derivedKeyLength = 160;
         int iterations = 20_000;
         byte[] saltBytes = Base64.getDecoder().decode(salt);
         KeySpec spec = new PBEKeySpec(password.toCharArray(), saltBytes, iterations, derivedKeyLength);
-        SecretKeyFactory factory = SecretKeyFactory.getInstance(ALGORITHM);
-        byte[] encBytes = factory.generateSecret(spec).getEncoded();
-        return Base64.getEncoder().encodeToString(encBytes);
+        SecretKeyFactory factory = null;
+        try {
+            factory = SecretKeyFactory.getInstance(ALGORITHM);
+            byte[] encBytes = factory.generateSecret(spec).getEncoded();
+            return Base64.getEncoder().encodeToString(encBytes);
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            throw new IllegalStateException(e);
+        }
     }
 
     public static String newSalt() throws Exception {
@@ -113,7 +120,7 @@ public class Subject extends QualifiedEntityImp {
 
     }
 
-    public boolean authenticate(@NotNull String password) throws Exception {
+    public boolean authenticate(@NotNull String password) {
         return encryptPassword(password, passwordSalt()).equals(passwordHash());
     }
 

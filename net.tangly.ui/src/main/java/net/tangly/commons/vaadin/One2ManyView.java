@@ -13,6 +13,7 @@
 
 package net.tangly.commons.vaadin;
 
+import java.util.Objects;
 import java.util.function.Consumer;
 
 import com.vaadin.flow.component.HtmlComponent;
@@ -82,9 +83,9 @@ public class One2ManyView<T extends HasName> extends VerticalLayout {
         insert = new Button("Add", VaadinIcon.PLUS.create(), event -> displayDialog(CrudForm.Operation.CREATE));
         remove = new Button("Delete", VaadinIcon.TRASH.create(), event -> displayDialog(CrudForm.Operation.DELETE));
 
-        update.setEnabled(Crud.Mode.canUpdate(mode));
-        insert.setEnabled(Crud.Mode.canAdd(mode));
-        remove.setEnabled(Crud.Mode.canDelete(mode));
+        update.setEnabled(mode.canUpdate());
+        insert.setEnabled(mode.canAdd());
+        remove.setEnabled(mode.canDelete());
 
         HorizontalLayout actions = new HorizontalLayout();
         actions.add(insert, remove, update, details);
@@ -99,21 +100,22 @@ public class One2ManyView<T extends HasName> extends VerticalLayout {
         dialog.setResizable(true);
         FormLayout form = view.createForm(operation, operation != CrudForm.Operation.CREATE ? selectedItem : null);
         CrudActionsListener<T> actionsListener = new GridActionsListener<>(provider, grid.getDataProvider(), this::selectItem);
-        dialog.add(new VerticalLayout(form, new HtmlComponent("br"), CrudForm.createFormButtons(dialog, view, operation, selectedItem, actionsListener)));
+        dialog.add(new VerticalLayout(form, new HtmlComponent("br"), view.createFormButtons(dialog, operation, mode.isCancellable(), selectedItem,
+            actionsListener)));
         dialog.open();
     }
 
     private void selectItem(T item) {
         selectedItem = item;
-        if (item != null) {
+        if (Objects.nonNull(item)) {
             details.setEnabled(true);
-            update.setEnabled(Crud.Mode.canUpdate(mode));
-            remove.setEnabled(Crud.Mode.canDelete(mode));
+            update.setEnabled(mode.canUpdate());
+            remove.setEnabled(mode.canDelete());
         } else {
             details.setEnabled(false);
             update.setEnabled(false);
             remove.setEnabled(false);
         }
-        insert.setEnabled(Crud.Mode.canAdd(mode));
+        insert.setEnabled(mode.canAdd());
     }
 }

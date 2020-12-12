@@ -16,6 +16,7 @@ package net.tangly.bus.crm;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Comparator;
+import java.util.Optional;
 import javax.inject.Inject;
 
 import net.tangly.core.HasInterval;
@@ -34,6 +35,10 @@ public class CrmBusinessLogic {
 
     public CrmRealm realm() {
         return realm;
+    }
+
+    public Optional<Subject> login(String username, String password) {
+        return realm().subjects().items().stream().filter(o -> o.id().equals(username) && o.authenticate(password)).findAny();
     }
 
     /**

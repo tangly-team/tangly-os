@@ -92,7 +92,7 @@ public class GridFiltersAndActions<T> extends HorizontalLayout implements Select
 
     public void selectedItem(T entity) {
         selectedItem = entity;
-        if (itemActions != null) {
+        if (Objects.nonNull(itemActions)) {
             itemActions.enabled(entity != null);
         }
     }

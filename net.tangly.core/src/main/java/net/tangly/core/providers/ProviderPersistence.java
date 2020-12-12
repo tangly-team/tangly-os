@@ -24,6 +24,8 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Provider with instances in memory and persisted.
+ * <p>The update method uses an eager storage strategy to insure that all instance variables of a Java object are persisted. This approach is necessary due
+ * to the implementation restrictions of MicroStream.</p>
  *
  * @param <T> type of the instances handled in the provider
  */
@@ -48,9 +50,9 @@ public class ProviderPersistence<T> implements Provider<T> {
             items.add(entity);
             storageManager.store(items);
         } else {
-            var storer = storageManager.createEagerStorer();
-            storer.store(entity);
-            storer.commit();
+            var storage = storageManager.createEagerStorer();
+            storage.store(entity);
+            storage.commit();
         }
     }
 

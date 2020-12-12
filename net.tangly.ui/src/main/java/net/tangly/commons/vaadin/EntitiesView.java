@@ -20,7 +20,6 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.provider.DataProvider;
-import com.vaadin.flow.data.provider.ListDataProvider;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;

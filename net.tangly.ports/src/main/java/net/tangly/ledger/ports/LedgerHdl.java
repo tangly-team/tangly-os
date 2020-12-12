@@ -78,10 +78,14 @@ public class LedgerHdl implements LedgerHandler {
     public void exportEntities() {
         var handler = new LedgerTsvHdl(ledger);
         handler.exportChartOfAccounts(folder.resolve(LEDGER));
-        realm().transactions().items().stream().map(Transaction::date).map(o -> o.getYear()).distinct().forEach(o -> {
-            Path journal = folder.resolve(o + JOURNAL);
+        realm().transactions().items().stream().map(Transaction::date).map(LocalDate::getYear).distinct().forEach(o -> {
+            Path journal = folder.resolve(journalForYear(o));
             handler.exportJournal(journal, LocalDate.of(o, Month.JANUARY, 1), LocalDate.of(o, Month.DECEMBER, 31));
             EventData.log(EventData.EXPORT, MODULE, EventData.Status.SUCCESS, "Journal exported {}", Map.of("journalPath", journal.toString(), "year", o));
         });
+    }
+
+    public static String journalForYear(int year) {
+        return year + JOURNAL;
     }
 }

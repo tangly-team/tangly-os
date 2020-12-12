@@ -13,6 +13,8 @@
 
 package net.tangly.commons.vaadin;
 
+import java.util.Objects;
+
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
@@ -56,10 +58,10 @@ public class One2OneField<T extends HasName, V extends Component & HasIdView<T>>
 
     @Override
     protected void setPresentationValue(T one2one) {
-        if (one2one == null) {
-            clear();
-        } else {
+        if (Objects.nonNull(one2one)) {
             VaadinUtils.setValue(name, one2one.name());
+        } else {
+            clear();
         }
     }
 

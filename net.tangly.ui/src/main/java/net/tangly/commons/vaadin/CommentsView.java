@@ -22,6 +22,7 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.server.VaadinSession;
 import net.tangly.core.Comment;
 import net.tangly.core.HasComments;
 import net.tangly.core.providers.ProviderInMemory;
@@ -42,8 +43,13 @@ public class CommentsView extends EntitiesView<Comment> {
         super(Comment.class, mode, ProviderInMemory.of(entity.comments()));
         this.hasComments = entity;
         created = new DateTimePicker("Created");
+        created.setRequiredIndicatorVisible(true);
+        created.setReadOnly(true);
         author = VaadinUtils.createTextField("Author", "author");
-        text = new TextArea("Text");
+        author.setRequired(true);
+        author.setReadOnly(true);
+        text = new TextArea("Text", "text");
+        text.setRequired(true);
         initialize();
     }
 
@@ -60,17 +66,9 @@ public class CommentsView extends EntitiesView<Comment> {
 
     @Override
     protected FormLayout fillForm(@NotNull Operation operation, Comment entity, FormLayout form) {
-        boolean readonly = Operation.isReadOnly(operation);
-
-        created.setReadOnly(readonly);
-
-        author.setRequired(true);
-        author.setReadOnly(readonly);
-
+        boolean readonly = operation.isReadOnly();
         text.setHeight("8em");
-        text.setRequired(true);
         text.setReadOnly(readonly);
-
         form.add(created, author, new HtmlComponent("br"), text);
         form.setColspan(text, 2);
         if (readonly) {
@@ -81,7 +79,7 @@ public class CommentsView extends EntitiesView<Comment> {
             binder.readBean(entity);
         } else {
             created.setValue(LocalDateTime.now());
-            author.clear();
+            author.setValue(username());
             text.clear();
         }
         return form;
@@ -100,11 +98,21 @@ public class CommentsView extends EntitiesView<Comment> {
                 hasComments.add(comment);
                 yield comment;
             }
+            case UPDATE -> {
+                Comment comment = updateOrCreate(entity);
+                hasComments.remove(entity);
+                hasComments.add(comment);
+                yield comment;
+            }
             case DELETE -> {
                 hasComments.remove(entity);
                 yield entity;
             }
             default -> entity;
         };
+    }
+
+    private String username() {
+        return (VaadinSession.getCurrent() != null) ? (String) VaadinSession.getCurrent().getAttribute("username") : null;
     }
 }

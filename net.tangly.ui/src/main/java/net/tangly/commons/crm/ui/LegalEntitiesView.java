@@ -81,7 +81,7 @@ public class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
 
     @Override
     protected FormLayout createOverallView(@NotNull Mode mode, @NotNull LegalEntity entity) {
-        boolean readonly = Mode.readOnly(mode);
+        boolean readonly = mode.readOnly();
         QualifiedEntityField<LegalEntity> entityField = new QualifiedEntityField<>();
         entityField.setReadOnly(readonly);
         TextField site = VaadinUtils.createTextField("Web Site", "website", readonly);

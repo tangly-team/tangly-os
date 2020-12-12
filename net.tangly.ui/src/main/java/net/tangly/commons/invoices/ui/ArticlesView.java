@@ -74,7 +74,7 @@ public class ArticlesView extends EntitiesView<Article> {
 
     @Override
     protected FormLayout fillForm(@NotNull Operation operation, Article entity, @NotNull FormLayout form) {
-        readOnly(Operation.isReadOnly(operation));
+        readOnly(operation.isReadOnly());
 
         VaadinUtils.configureId(operation, id);
         VaadinUtils.readOnly(operation, name, unit, unitPrice, vatRate, code, text);

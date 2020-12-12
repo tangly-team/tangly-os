@@ -19,10 +19,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import net.tangly.fsm.State;
 import net.tangly.fsm.Transition;
+
+import static java.util.function.Predicate.not;
 
 /**
  * The finite state machine static checker verifies the correctness of a state machine description. The following rules are verified. <ul> <li>Each enumeration
@@ -74,7 +77,7 @@ public class StaticChecker<O, S extends Enum<S>, E extends Enum<E>> implements C
                 values.add(state.id());
             }
         }
-        messages.addAll(allValues.stream().filter(state -> !values.contains(state)).map(state -> createError(bundle, "FSM-STAT-002", state))
+        messages.addAll(allValues.stream().filter(not(values::contains)).map(state -> createError(bundle, "FSM-STAT-002", state))
                 .collect(Collectors.toList()));
         return messages;
     }

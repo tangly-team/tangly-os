@@ -14,6 +14,7 @@
 package net.tangly.commons.vaadin;
 
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
@@ -74,7 +75,7 @@ public abstract class InternalEntitiesView<T extends Entity> extends EntitiesVie
 
     @Override
     public FormLayout fillForm(@NotNull Operation operation, T entity, FormLayout form) {
-        if (entity != null) {
+        if (Objects.nonNull(entity)) {
             TabsComponent tabs = new TabsComponent();
             registerTabs(tabs, of(operation), entity);
             tabs.tabByName("Overview").ifPresent(tabs::initialize);
@@ -109,7 +110,7 @@ public abstract class InternalEntitiesView<T extends Entity> extends EntitiesVie
      */
     protected FormLayout createOverallView(@NotNull Mode mode, T entity) {
         EntityField<T> entityField = new EntityField<>();
-        entityField.setReadOnly(Mode.readOnly(mode));
+        entityField.setReadOnly(mode.readOnly());
 
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);
@@ -117,7 +118,7 @@ public abstract class InternalEntitiesView<T extends Entity> extends EntitiesVie
 
         binder = new Binder<>(entityClass());
         entityField.bind(binder);
-        if (entity != null) {
+        if (Objects.nonNull(entity)) {
             binder.readBean(entity);
         }
         return form;

@@ -58,7 +58,8 @@ class LedgerPortTest {
             store.createCrmAndLedgerRepository();
 
             var handler = new LedgerTsvHdl(new LedgerEntities());
-            handler.importJournal(store.ledgerRoot().resolve("transactions-2015-2016.tsv"));
+            handler.importJournal(store.ledgerRoot().resolve(LedgerHdl.journalForYear(2015)));
+            handler.importJournal(store.ledgerRoot().resolve(LedgerHdl.journalForYear(2016)));
 
             var report = new ClosingReportAsciiDoc(handler.ledger());
             var writer = new StringWriter();

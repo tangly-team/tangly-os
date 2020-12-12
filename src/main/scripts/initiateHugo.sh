@@ -32,6 +32,7 @@ cp -R ./layouts/docs ./layouts/ideas
 
 # improve copyright in the footer and taxonomy display
 cp $prjDir/src/site/website/docsy/layouts/_default/* $siteDir/themes/docsy/layouts/_default
+cp $prjDir/src/site/website/docsy/layouts/blog/* $siteDir/themes/docsy/layouts/blog
 cp $prjDir/src/site/website/docsy/layouts/partials/* $siteDir/themes/docsy/layouts/partials
 
 # install postcss for final generation of site

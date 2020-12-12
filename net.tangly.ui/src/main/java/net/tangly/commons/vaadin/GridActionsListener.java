@@ -13,6 +13,7 @@
 
 package net.tangly.commons.vaadin;
 
+import java.util.Objects;
 import java.util.function.Consumer;
 
 import com.vaadin.flow.data.provider.DataProvider;
@@ -40,7 +41,7 @@ public class GridActionsListener<T> implements CrudActionsListener<T> {
 
     @Override
     public void entityAdded(T entity) {
-        if (provider != null) {
+        if (Objects.nonNull(provider)) {
             provider.update(entity);
         }
         dataProvider.refreshAll();
@@ -49,7 +50,7 @@ public class GridActionsListener<T> implements CrudActionsListener<T> {
 
     @Override
     public void entityDeleted(T entity) {
-        if (provider != null) {
+        if (Objects.nonNull(provider)) {
             provider.delete(entity);
         }
         dataProvider.refreshAll();
@@ -58,9 +59,9 @@ public class GridActionsListener<T> implements CrudActionsListener<T> {
 
     @Override
     public void entityUpdated(T entity) {
-        if (provider != null) {
+        if (Objects.nonNull(provider)) {
             provider.update(entity);
         }
-        dataProvider.refreshItem(entity);
+        selection.accept(entity);
     }
 }

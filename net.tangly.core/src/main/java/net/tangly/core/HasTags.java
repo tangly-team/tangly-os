@@ -89,7 +89,7 @@ public interface HasTags {
      * @param name      name of the tag to be found
      * @return optional found tag
      */
-    default Optional<Tag> findBy(String namespace, String name) {
+    default Optional<Tag> findBy(String namespace, @NotNull String name) {
         Objects.requireNonNull(name);
         return tags().stream().filter(o -> Objects.equals(namespace, o.namespace()) && name.equals(o.name())).findAny();
     }

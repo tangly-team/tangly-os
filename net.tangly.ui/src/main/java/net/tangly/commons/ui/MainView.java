@@ -16,8 +16,8 @@ package net.tangly.commons.ui;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.UncheckedIOException;
-import java.nio.file.Path;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 import com.vaadin.flow.component.AttachEvent;
@@ -28,21 +28,16 @@ import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.login.LoginI18n;
+import com.vaadin.flow.component.login.LoginOverlay;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
 import net.tangly.bus.crm.CrmBoundedDomain;
-import net.tangly.bus.crm.CrmBusinessLogic;
-import net.tangly.bus.crm.CrmRealm;
+import net.tangly.bus.crm.Subject;
 import net.tangly.bus.invoices.InvoicesBoundedDomain;
-import net.tangly.bus.invoices.InvoicesBusinessLogic;
-import net.tangly.bus.invoices.InvoicesRealm;
 import net.tangly.bus.ledger.LedgerBoundedDomain;
-import net.tangly.bus.ledger.LedgerBusinessLogic;
-import net.tangly.bus.ledger.LedgerRealm;
 import net.tangly.bus.products.ProductsBoundedDomain;
-import net.tangly.bus.products.ProductsBusinessLogic;
-import net.tangly.bus.products.ProductsRealm;
 import net.tangly.commons.crm.ui.ActivitiesView;
 import net.tangly.commons.crm.ui.AnalyticsCrmView;
 import net.tangly.commons.crm.ui.ContractsView;
@@ -61,33 +56,20 @@ import net.tangly.commons.products.ui.EffortsView;
 import net.tangly.commons.products.ui.ProductsView;
 import net.tangly.commons.vaadin.Crud;
 import net.tangly.commons.vaadin.VaadinUtils;
-import net.tangly.core.TagTypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
-import net.tangly.crm.ports.CrmEntities;
-import net.tangly.crm.ports.CrmHdl;
-import net.tangly.invoices.ports.InvoicesAdapter;
-import net.tangly.invoices.ports.InvoicesEntities;
-import net.tangly.invoices.ports.InvoicesHdl;
-import net.tangly.ledger.ports.LedgerAdapter;
-import net.tangly.ledger.ports.LedgerEntities;
-import net.tangly.ledger.ports.LedgerHdl;
-import net.tangly.products.ports.ProductsAdapter;
-import net.tangly.products.ports.ProductsEntities;
-import net.tangly.products.ports.ProductsHdl;
+import net.tangly.erp.Erp;
 import org.jetbrains.annotations.NotNull;
 
 @CssImport("./styles/shared-styles.css")
 @CssImport(value = "./styles/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
 @Route("")
 public class MainView extends AppLayout {
-    private static final String ORGANIZATION = "/Users/Shared/tangly/";
     private Component currentView;
 
-    private static TagTypeRegistry registry;
-    private static CrmBoundedDomain crmDomain;
-    private static LedgerBoundedDomain ledgerDomain;
-    private static InvoicesBoundedDomain invoicesDomain;
-    private static ProductsBoundedDomain productsDomain;
+    private static final CrmBoundedDomain crmDomain;
+    private static final LedgerBoundedDomain ledgerDomain;
+    private static final InvoicesBoundedDomain invoicesDomain;
+    private static final ProductsBoundedDomain productsDomain;
 
     private final NaturalEntitiesView naturalEntitiesView;
     private final LegalEntitiesView legalEntitiesView;
@@ -114,11 +96,10 @@ public class MainView extends AppLayout {
     private final AnalyticsCrmView analyticsCrmView;
 
     static {
-        registry = new TagTypeRegistry();
-        crmDomain = ofCrmDomain();
-        invoicesDomain = ofInvoicesDomain();
-        productsDomain = ofProductsDomain();
-        ledgerDomain = ofLedgerDomain();
+        crmDomain = Erp.ofCrmDomain();
+        invoicesDomain = Erp.ofInvoicesDomain();
+        productsDomain = Erp.ofProductsDomain();
+        ledgerDomain = Erp.ofLedgerDomain();
 
     }
 
@@ -163,33 +144,29 @@ public class MainView extends AppLayout {
         setContent(naturalEntitiesView);
     }
 
-    static InvoicesBoundedDomain ofInvoicesDomain() {
-        InvoicesRealm realm = new InvoicesEntities(Path.of(ORGANIZATION, "db/invoices/"));
-        return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesHdl(realm, Path.of(ORGANIZATION, "import/invoices/")),
-            new InvoicesAdapter(realm, Path.of(ORGANIZATION, "reports/invoices/")), registry);
-    }
-
-    static CrmBoundedDomain ofCrmDomain() {
-        CrmRealm realm = new CrmEntities(Path.of(ORGANIZATION, "db/crm/"));
-        return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmHdl(realm, Path.of(ORGANIZATION, "import/crm/")), null, registry);
-    }
-
-    static ProductsBoundedDomain ofProductsDomain() {
-        ProductsRealm realm = new ProductsEntities(Path.of(ORGANIZATION, "db/products/"));
-        ProductsBusinessLogic logic = new ProductsBusinessLogic(realm);
-        return new ProductsBoundedDomain(realm, logic, new ProductsHdl(realm, Path.of(ORGANIZATION, "import/products/")),
-            new ProductsAdapter(logic, Path.of(ORGANIZATION, "reports/assignments")), registry);
-    }
-
-    static LedgerBoundedDomain ofLedgerDomain() {
-        LedgerRealm ledger = new LedgerEntities(Path.of(ORGANIZATION, "db/ledger/"));
-        return new LedgerBoundedDomain(ledger, new LedgerBusinessLogic(ledger), new LedgerHdl(ledger, Path.of(ORGANIZATION, "import/ledger/")),
-            new LedgerAdapter(ledger, Path.of(ORGANIZATION, "reports/ledger")), registry);
-    }
 
     @Override
     protected void onAttach(AttachEvent attachEvent) {
-        VaadinUtils.setAttribute(this, "username", "mbaumann");
+        Object foo = VaadinUtils.getAttribute(this, "username");
+        if (Objects.isNull(VaadinUtils.getAttribute(this, "username"))) {
+            LoginOverlay component = new LoginOverlay();
+            LoginI18n i18n = LoginI18n.createDefault();
+            i18n.setHeader(new LoginI18n.Header());
+            i18n.getHeader().setTitle("tangly ERP");
+            i18n.getHeader().setDescription("tangly llc ERP Application");
+            component.setI18n(i18n);
+            component.setOpened(true);
+            component.addLoginListener(e -> {
+                Optional<Subject> subject = crmDomain.logic().login(e.getUsername(), e.getPassword());
+                if (subject.isPresent()) {
+                    VaadinUtils.setAttribute(this, "subject", subject.get());
+                    VaadinUtils.setAttribute(this, "username", subject.get().id());
+                    component.close();
+                } else {
+                    component.setError(true);
+                }
+            });
+        }
     }
 
     private void registerDomain(MenuBar menuBar, BoundedDomain<?, ?, ?, ?> boundedDomain, String domainName, Consumer<SubMenu> registerViews,

@@ -59,7 +59,7 @@ public class InteractionsView extends InternalEntitiesView<Interaction> {
 
     @Override
     protected FormLayout createOverallView(@NotNull Mode mode, @NotNull Interaction entity) {
-        boolean readonly = Mode.readOnly(mode);
+        boolean readonly = mode.readOnly();
         EntityField<Interaction> entityField = new EntityField<>();
         entityField.setReadOnly(readonly);
         TextField potential = VaadinUtils.createTextField("Potential", "potential");

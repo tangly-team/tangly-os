@@ -98,7 +98,7 @@ public class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
 
     @Override
     protected FormLayout createOverallView(@NotNull Mode mode, @NotNull NaturalEntity entity) {
-        boolean readonly = Mode.readOnly(mode);
+        boolean readonly = mode.readOnly();
         EntityField<NaturalEntity> entityField = new EntityField<>();
         TextField firstname = VaadinUtils.createTextField("Firstname", "firstname", readonly);
         TextField lastname = VaadinUtils.createTextField("Lastname", "lastname", readonly);
@@ -108,7 +108,7 @@ public class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
         homeEmail.setClearButtonVisible(true);
         TextField homeSite = VaadinUtils.createTextField("Home Site", "home site", true);
 
-        VaadinUtils.readOnly(Mode.readOnly(mode), entityField, homeEmail);
+        VaadinUtils.readOnly(mode.readOnly(), entityField, homeEmail);
 
         FormLayout form = new FormLayout();
         VaadinUtils.setResponsiveSteps(form);
