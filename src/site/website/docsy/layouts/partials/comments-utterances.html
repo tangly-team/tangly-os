@@ -2,8 +2,8 @@
     <div id="utterancers_thread"></div>
     <script src="https://utteranc.es/client.js"
             repo= {{ .Site.Params.comments_utterances_repo }}
-            issue-term="pathname"
-            theme="github-light"
+            issue-term= {{ .Site.Params.comments_utterances_issue_term }}
+            theme= {{ .Site.Params.comments_utterances_theme }}
             crossorigin="anonymous"
             async>
     </script>

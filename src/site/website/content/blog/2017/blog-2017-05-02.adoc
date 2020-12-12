@@ -25,14 +25,14 @@ In case you are using IntelliJ IDEA configure git in the IDE through the prefere
 
 To put your product under git version management, go to the root of the product and perform the command
 
-[code,shell]
+[source,shell]
 ----
 git init
 ----
 
 To add a specific file or all your source files to git
 
-[code,shell]
+[source,shell]
 ----
 git add [filename]
 git add *
@@ -50,7 +50,7 @@ The files appear in the Local Changes tab of the Version Control tool window, un
 
 To commit your changes you simply
 
-[code,shell]
+[source,shell]
 ----
 git commit -m "commit message, should be clear and legible"
 ----
@@ -76,7 +76,7 @@ Use Git as an history of all successful changes you implement, and simply rollba
 
 To find out what the status of your product is, simply
 
-[code,shell]
+[source,shell]
 ----
 git status
 ----
@@ -102,7 +102,7 @@ See How to link:../../2016/git-branches-for-the-impatient/[Git Branches for the 
 You find you the changes you made locally were not a good decision.
 No problem, with
 
-[code,shell]
+[source,shell]
 ----
 git reset --hard
 ----
@@ -112,7 +112,7 @@ Resetting with the hard option recursively discards all of your currently uncomm
 
 You want to restore just one file to its previous committed state.
 
-[code,shell]
+[source,shell]
 ----
 git checkout --[filename]
 ----
@@ -124,14 +124,14 @@ The situation arises because Microsoft OS uses CRLF for end of lines instead of 
 
 You can configure git to handle it by running on Windows.
 
-[code,shell]
+[source,shell]
 ----
 git config --global core.autocrlf true
 ----
 
 or on Linux and macOS
 
-[code,shell]
+[source,shell]
 ----
 git config --global core.autocrlf input
 ----

@@ -143,7 +143,7 @@ The area where you will list the changes that you have made to the working direc
 Repository::
 Where Git permanently stores the changes you have made as different versions of the project
 
-[code,shell]
+[source,shell]
 ----
 git init // <1>
 git clone https://gitlab.enterpriselab.ch/tangly/tangly-os.git // <2>
@@ -182,7 +182,7 @@ image::2021-01-03-cicd_pipeline.png[720,480,role=left]
 
 The minimal gradle build file of a Java project is very simple and compact
 
-[code,gradle]
+[source,gradle]
 ----
 apply plugin: 'java'
 ----
@@ -190,7 +190,7 @@ apply plugin: 'java'
 Multi-module Gradle build file requires an additional _gradle.settings_ file identifying your modules.
 The initial build file for each module is the same as for a minimal gradle project.
 
-[code,gradle]
+[source,gradle]
 ----
 include 'net.tangly.bdd'
 include 'net.tangly.bus'
@@ -199,7 +199,7 @@ include 'net.tangly.commons'
 
 You can now compile, test and check your application
 
-[code,bash]
+[source,bash]
 ----
 gradle build // <1>
 gradle test // <2>

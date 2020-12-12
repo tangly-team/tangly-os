@@ -139,7 +139,7 @@ Our structure and processes actively support agile values. We are very happy wit
 === Literature
 
 - [[[ReinventingOrganizations, 1]]] Reinventing Organizations: A Guide to Creating Organizations Inspired by the Next Stage of Human Consciousness, Frédéric
-Laloux,2014
-- [[[futureOfMgmt, 2]]] The Future of Management, Gerry Hamel, Harvard Business School Press
+Laloux, 2014
+- [[[futureOfMgmt, 2]]] The Future of Management, Gerry Hamel, Harvard Business School Press, 2007
 - [[[culturalPerspective, 3]]] An Organizational Cultural Perspective, Waisfisz Bob, 2015, Hofstede Culture Center Strategy, ITIM International
 

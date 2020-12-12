@@ -90,6 +90,7 @@ ref-asciidoc = "https://asciidoc.org/[Asciidoc]"
 ref-asciidoctor = "https://asciidoctor.org/[Asciidoctor]"
 ref-hugo = "https://gohugo.io/[Hugo]"
 ref-docsy = "https://www.docsy.dev/[Docsy]"
+ref-utterances = "https://utteranc.es/[utteranc.es]"
 ref-gradle = "https://gradle.org/[Gradle Build Tool]"
 ref-maven = "https://maven.apache.org/[Maven]"
 ref-repository = "https:https://bitbucket.org/tangly-team/tangly-os/[Source Code]"
@@ -121,6 +122,12 @@ comments_utterances = true
 
 # GitHub repository name where all comments are stored. The repository can be the same as the website repository or a different one.
 comments_utterances_repo = "marcelbaumann/tangly-team-comments"
+
+# Encoding used to map a site page to a GitHub issue. See utterances (https://utteranc.es/) documentation.
+comments_utterances_issue_term = "pathname"
+
+# Theme used by utterance on the website. See utterances (https://utteranc.es/) documentation.
+comments_utterances_theme = "github-light"
 
 # images = ["images/product-illustration.png"]
 
