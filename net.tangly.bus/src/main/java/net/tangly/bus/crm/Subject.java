@@ -59,8 +59,13 @@ public class Subject extends QualifiedEntityImp {
         }
     }
 
-    public static String newSalt() throws Exception {
-        SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
+    public static String newSalt() {
+        SecureRandom random = null;
+        try {
+            random = SecureRandom.getInstance("SHA1PRNG");
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalStateException("mssing random algorithm SHA1PRNG", e);
+        }
         byte[] salt = new byte[8];
         random.nextBytes(salt);
         return Base64.getEncoder().encodeToString(salt);
@@ -114,9 +119,9 @@ public class Subject extends QualifiedEntityImp {
         this.gmailPassword = gmailPassword;
     }
 
-    public void newPassword(String password) throws Exception {
+    public void newPassword(String password) {
         passwordSalt(Subject.newSalt());
-        passwordHash(Subject.encryptPassword("aeon", passwordSalt()));
+        passwordHash(Subject.encryptPassword(password, passwordSalt()));
 
     }
 

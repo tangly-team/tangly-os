@@ -12,7 +12,7 @@ tags: ["agile", "serie-agile-design"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2019-08-01-head.jpg[720, 480, role=left]
+image::2019-08-01-head.jpg[width=420, height=360, role=left]
 You are applying the agile, lean approach to your software product development.
 Your teams use Scrum or Kanban to deliver running software every two weeks.
 
@@ -25,7 +25,7 @@ What Is Agile Architecture?
 
 An agile architecture shall have four characteristics.
 
-image::2019-08-01-architecture.jpg[720, 480, role=left]
+image::2019-08-01-architecture.jpg[width=420, height=360, role=left]
 
 . _Allow change quickly_ because we cannot foreseen the future
 . _Always verifiable_ because we want changes without impeding integrity

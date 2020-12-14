@@ -23,6 +23,7 @@ Students shall be proficient with a basic set of software development techniques
 Technical schools should provide in-depth experience in these areas to prepare their students to their future activities after completing their bachelor.
 
 The below mind map consolidates concepts, tools and approaches based on the gitlab tooling established in some universities.
+The approach emphasize agile and DevOps concepts and approaches.
 
 [plantuml,students-proficiencies,svg]
 ....
@@ -58,6 +59,10 @@ mindmapDiagram {
 +++ Patterns and Idioms <<hslu>>
 +++ Refactor
 ++++ //IntelliJ IDE//
+-- Analysis <<hslu>>
+--- Agile Approaches
+--- Diagrams (BPML) <<hslu>>
+---- //BPMN Sketch Minere//<color:green>
 -- Design <<hslu>>
 --- Domain Driven Design
 --- Diagrams (UML, C4) <<hslu>>
@@ -188,7 +193,6 @@ apply plugin: 'java'
 ----
 
 Multi-module Gradle build file requires an additional _gradle.settings_ file identifying your modules.
-The initial build file for each module is the same as for a minimal gradle project.
 
 [source,gradle]
 ----
@@ -197,6 +201,7 @@ include 'net.tangly.bus'
 include 'net.tangly.commons'
 ----
 
+The initial build file for each module is the same as for a minimal gradle project.
 You can now compile, test and check your application
 
 [source,bash]

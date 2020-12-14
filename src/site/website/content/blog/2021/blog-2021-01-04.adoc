@@ -12,7 +12,7 @@ tags: ["java", "serie-students"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2021-01-04-head.jpg[720, 480, role=left]
+image::2021-01-04-head.jpg[width=420, height=360, role=left]
 === Source Code Version Management with Git
 
 https://git-scm.com/[Git] is the standard tool for distributed source code management system.
@@ -46,9 +46,12 @@ image::2021-01-04-devOps.png[720,480,role=left]
 
 Students shall be fluent with
 
-* Static code analysis
+* Static code analysis.
+Intellij IDEA provides an _analyze_ function for static code analysis. The IDE is free for students.
 * Unit tests and integration tests
+Use the seminal libraries _JUnit5_, _Mockito_, and _AssertJ_
 * Continuous integration pipeline
+Use the CI pipeline of your product management tool; either _GitLab_, _GitHub_, _Bitbucket_, or _Azure DevOps_.
 
 === Documentation
 
@@ -70,7 +73,7 @@ They have planed their projects with a vision, a roadmap, epics, and sprints.
 
 === Gitlab as a Student's Tool
 
-image::2021-01-04-gitlab.png[720, 480, role=left]
+image::2021-01-04-gitlab.png[width=420, height=360, role=left]
 Gitlab is an integrated solution for software development in teams and DevOps approaches.
 
 They learn the expertise and hands-on how to develop software application.

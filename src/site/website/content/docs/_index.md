@@ -14,7 +14,6 @@ The current released components are written in _Java_ and released on _Maven Cen
 * _COMMONS_ Internal Common Components to write company internal applications,
 * _FSM_ Finite State Machine,
 * _GLEAM_ declarative model definition library,
-* _ORM_ simple object to relational models mapping library,
 * _PORTS_ Ports for the business models,
-* _UI_ Vaadin based user interface. 
+* _UI_ Vaadin based user interface.
 

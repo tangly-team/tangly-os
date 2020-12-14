@@ -22,6 +22,7 @@ import java.util.function.Consumer;
 
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.contextmenu.MenuItem;
@@ -33,6 +34,7 @@ import com.vaadin.flow.component.login.LoginOverlay;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
+import com.vaadin.flow.server.VaadinSession;
 import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.Subject;
 import net.tangly.bus.invoices.InvoicesBoundedDomain;
@@ -169,6 +171,11 @@ public class MainView extends AppLayout {
         }
     }
 
+    public void logout() {
+        VaadinSession.getCurrent().getSession().invalidate();
+        UI.getCurrent().getPage().setLocation("");
+    }
+
     private void registerDomain(MenuBar menuBar, BoundedDomain<?, ?, ?, ?> boundedDomain, String domainName, Consumer<SubMenu> registerViews,
                                 Consumer<SubMenu> registerAnalyticsViews, Consumer<SubMenu> registerAdministrationViews) {
         SubMenu domainMenu = menuBar.addItem(domainName).getSubMenu();
@@ -230,6 +237,7 @@ public class MainView extends AppLayout {
         MenuItem admin = menuBar.addItem("Admin");
         SubMenu adminSubmenu = admin.getSubMenu();
         adminSubmenu.addItem("Users", e -> select(subjectsView));
+        adminSubmenu.addItem("Logout", e -> logout());
 
         return menuBar;
     }

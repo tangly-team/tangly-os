@@ -13,7 +13,7 @@ tags: ["java"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2021-03-01-head.jpg[720,480, role=left]
+image::2021-03-01-head.png[width=420, height=360, role=left]
 Java development won traction since the decision to release every six months a new version to the community.
 Preview and incubator features promote feedback from the community and users.
 

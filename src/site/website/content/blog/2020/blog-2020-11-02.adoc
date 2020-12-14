@@ -12,7 +12,7 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2020-11-02-head.png[720, 480, role=left]
+image::2020-11-02-head.png[width=420, height=360, role=left]
 
 === Agile Motivation
 
@@ -110,7 +110,9 @@ Please compare your change process against these anti-patterns. Correct if neede
 
 === Lessons Learnt
 
+image::2020-11-02-agile-digital-architecture.png[width=480, height=480, role=left]
 Agile is now mainstream. More than 80% of all software development initiatives claim to be agile.
+Digital and agile enterprise are two sides of the same coin.
 Almost all research and development departments are implementing agile processes to achieve faster and better results.
 The organizations moving now to agile approaches are laggards.
 

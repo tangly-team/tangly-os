@@ -15,7 +15,7 @@ date: 2020-09-10
 === How to contribute to {ref-tangly} Open Source Components
 
 This is an open source product.
-We love getting patches and contributions to make our components and their documentation even better.
+We love getting patches and contributions to make our components, and their documentation even better.
 
 === Contributing to tangly Open Source Components
 

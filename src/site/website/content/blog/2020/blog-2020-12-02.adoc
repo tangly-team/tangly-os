@@ -12,7 +12,7 @@ tags: ["design", "serie-students"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2020-12-02-head.png[720,480,role=left]
+image::2020-12-02-head.png[width=420, height=360, role=left]
 There are times in software when you are facing a problem, you find an off-the-shelf solution, and a few lines of code later it just works.
 
 Today I lived one of those moments.

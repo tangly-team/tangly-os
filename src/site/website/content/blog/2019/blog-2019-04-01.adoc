@@ -12,7 +12,7 @@ tags: ["design"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2019-04-01-head.jpg[720, 480, role=left]
+image::2019-04-01-head.jpg[width=420, height=360, role=left]
 You have a successful product and happy users.
 Slowly the cost adding new features is creeping up and product margins are shrinking.
 Which crimes did put us in this dreaded situation?
@@ -68,7 +68,7 @@ git log -- contextPath | grep 'close #' | wc -l
 
 === Deeper Insights
 
-image:2019-04-01-code-that-matters.png[720, 480, role=left]
+image:2019-04-01-code-that-matters.png[width=420, height=360, role=left]
 Analysis of various products found out that 5% to 10% of the source code is under active development.
 It is where your money is spent to make your customers happy.
 Just put all your refactoring efforts to improve these 10% of your product currently impacting your customer satisfaction.

@@ -12,7 +12,7 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2021-07-01-head.jpg[720, 480, role=left]
+image::2021-07-01-head.jpg[width=420, height=360, role=left]
 
 Agile approaches advocate dynamic planning and adaptation to new inputs and priority changes.
 The {ref-bbrt} movement promotes rolling planning, budgeting and reporting.

@@ -12,7 +12,7 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2016-08-01-head.jpg[720, 480, role=left]
+image::2016-08-01-head.jpg[width=420, height=360, role=left]
 I learnt quite a few new acronyms and techniques when studying for the PMI-ACP certification program.
 In this post I collected these acronyms, some definition and the bibliography you should know before attending the examination.
 The main advantage of having it is that you no more need to argue with PMI certified product managers if agile is applicable to software projects.

@@ -12,7 +12,7 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2016-12-01-head.jpg[720, 480, role=left]
+image::2016-12-01-head.jpg[width=420, height=360, role=left]
 I often hear discussions who is doing the _traditional_ product leader tasks in Scrum.
 This is in general an excuse to state that Scrum alone cannot work and classical product leaders are still needed.
 

@@ -23,6 +23,7 @@ Architecture design record for the whole projects are also located under [ideas]
 Please contact the company for support agreements and training workshops.
 
 What you pay will also contribute to the maintenance and future development of tangly open source components.
+All contributions will be licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
 </div>
 {{% /blocks/section %}}
