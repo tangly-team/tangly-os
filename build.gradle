@@ -79,7 +79,7 @@ allprojects {
     if (mode.equalsIgnoreCase('int')) {
         pmd {
             ruleSetFiles = files(rootProject.file('src/main/resources/pmd-tangly.xml'))
-            toolVersion = "6.29.0"
+            toolVersion = "6.30.0"
             ignoreFailures = true
             incrementalAnalysis = true
             rulePriority = 3
