@@ -2,6 +2,9 @@
 hide empty description
 
 state Root {
+    state C
+    C --> [*]
+
     [*] --> A
     state A {
         [*] --> AA
@@ -15,7 +18,7 @@ state Root {
         AB -> AB : AB_AB
 
         A -> C : A_C
-}
+    }
 
     state B {
         state BA
@@ -28,10 +31,7 @@ state Root {
         BB -> C : BB_C
 
         B -> C : B_C
-}
-
-    state C
-    C --> [*]
+    }
 
 }
 

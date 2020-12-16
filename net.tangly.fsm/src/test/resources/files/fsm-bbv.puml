@@ -11,6 +11,10 @@ state Root {
     Maintenance -> Off : TogglePower / MaintainedtoOff
 
     state On {
+        [*] --> DAB
+        state DAB
+        DAB -> FM : ToggleMode / DABtoFM
+
         state FM {
             [*] --> Play
             state Play
@@ -20,14 +24,10 @@ state Root {
             AutoTune -> Play : StationFound / AutoTunetoPlay
 
             FM -> DAB : ToggleMode / FMtoDAB
-}
-
-        [*] --> DAB
-        state DAB
-        DAB -> FM : ToggleMode / DABtoFM
+        }
 
         On -> Off : TogglePower / OntoOff
-}
+    }
 
 }
 

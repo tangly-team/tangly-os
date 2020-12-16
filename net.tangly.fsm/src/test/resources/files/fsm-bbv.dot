@@ -1,39 +1,33 @@
 digraph G {
     compound=true;
 
-    subgraph cluster1000 {
-        style=invis;
-        subgraph cluster0 {
-            style="visible, dashed, bold";
-            label = "Root"
-                Off [style="dashed"];
-                Maintenance [];
-                subgraph cluster1003 {
-                    style=invis;
-                    subgraph cluster3 {
-                        style="visible, filled";
-                        label = "On"
-                            subgraph cluster1004 {
-                                style=invis;
-                                subgraph cluster4 {
-                                    style="visible, filled";
-                                    label = "FM"
-                                        Play [style="dashed, filled"];
-                                        AutoTune [];
-                                }
-                            }
-                            DAB [style="dashed"];
-                    }
-                }
+    subgraph "cluster-Root" {
+        style="visible, dashed, bold";
+        label = "Root"
+
+        Off [style="dashed"];
+        Maintenance [];
+        subgraph "cluster-On" {
+            style="visible, filled";
+            label = "On"
+
+            subgraph "cluster-FM" {
+                style="visible, filled";
+                label = "FM"
+
+                Play [style="dashed, filled"];
+                AutoTune [];
+            }
+            DAB [style="dashed"];
         }
     }
 
     Off -> Maintenance [label="TogglePower[Maintenance is On]/log transition Off to Maintenance"];
-    Off -> On [lhead=cluster3, label="TogglePower[Maintenance Off]/OfftoOn"];
+    Off -> AutoTune [lhead="cluster-On", label="TogglePower[Maintenance Off]/OfftoOn"];
     Maintenance -> Off [label="TogglePower/MaintainedtoOff"];
-    On -> Off [ltail=cluster3, label="TogglePower/OntoOff"];
-    FM -> DAB [ltail=cluster4, label="ToggleMode/FMtoDAB"];
-    DAB -> FM [lhead=cluster4, label="ToggleMode/DABtoFM"];
+    AutoTune -> Off [ltail="cluster-On", label="TogglePower/OntoOff"];
+    AutoTune -> DAB [ltail="cluster-FM", label="ToggleMode/FMtoDAB"];
+    DAB -> AutoTune [lhead="cluster-FM", label="ToggleMode/DABtoFM"];
     Play -> AutoTune [label="StationLost/PlaytoAutoTune"];
     AutoTune -> Play [label="StationFound/AutoTunetoPlay"];
 }

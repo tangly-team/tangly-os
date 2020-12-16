@@ -26,6 +26,8 @@ import net.tangly.fsm.utilities.Generator;
 import net.tangly.fsm.utilities.GeneratorAsciiDoc;
 import net.tangly.fsm.utilities.GeneratorGraphDot;
 import net.tangly.fsm.utilities.GeneratorPlantUml;
+import net.tangly.fsm.utilities.GeneratorStateMachineCat;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -68,12 +70,23 @@ class GeneratorsTest {
     }
 
     /**
+     * Tests the generation of state machine cat FSM representation of the bbv, test and washer finite state machines.
+     *
+     * @throws FileNotFoundException if file could not be created and updated
+     */
+    @Test
+    void generateStateMachineCatTest() throws IOException {
+        generateTest(new GeneratorStateMachineCat<>(FsmBbv.build(), "fsm-bbv"));
+        generateTest(new GeneratorStateMachineCat<>(FsmTest.build(), "fsm-test"));
+        generateTest(new GeneratorStateMachineCat<>(FsmWasherTest.build(), "fsm-washer"));
+    }
+
+    /**
      * Tests the generation of asciidoc FSM representation of the bbv, test and washer finite state machines.
      *
      * @throws FileNotFoundException if file could not be created and updated
      */
     @Test
-    @Tag("localTest")
     void generateAsciiDocTest() throws IOException {
         generateTest(new GeneratorAsciiDoc<>(FsmBbv.build(), "fsm-bbv"));
         generateTest(new GeneratorAsciiDoc<>(FsmTest.build(), "fsm-test"));

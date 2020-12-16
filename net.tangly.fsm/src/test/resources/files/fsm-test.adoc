@@ -1,15 +1,10 @@
-== fsm-test Finite State Machine
-
-image::pics/fsm-test.svg[fsm-test]
-
 === fsm-test States
 
 [cols="2,2,3,1,1,1,3,3"]
 |===
 |Name |Context |Description |Final |Initial |Composite |Entry Action |Exit Action
 
-|
-[[fsm-test-Root]]Root
+|[[fsm-test-Root]]Root
 |-
 |
 |true
@@ -18,8 +13,7 @@ image::pics/fsm-test.svg[fsm-test]
 |-
 |-
 
-|
-[[fsm-test-A]]A
+|[[fsm-test-A]]A
 |Root
 |State A
 |false
@@ -28,8 +22,7 @@ image::pics/fsm-test.svg[fsm-test]
 |-
 |-
 
-|
-[[fsm-test-AA]]AA
+|[[fsm-test-AA]]AA
 |A
 |State AA
 |false
@@ -38,8 +31,7 @@ image::pics/fsm-test.svg[fsm-test]
 |-
 |-
 
-|
-[[fsm-test-AB]]AB
+|[[fsm-test-AB]]AB
 |A
 |State AB
 |false
@@ -48,8 +40,7 @@ image::pics/fsm-test.svg[fsm-test]
 |-
 |-
 
-|
-[[fsm-test-B]]B
+|[[fsm-test-B]]B
 |Root
 |
 |false
@@ -58,8 +49,7 @@ image::pics/fsm-test.svg[fsm-test]
 |-
 |-
 
-|
-[[fsm-test-BA]]BA
+|[[fsm-test-BA]]BA
 |B
 |State BA
 |false
@@ -68,8 +58,7 @@ image::pics/fsm-test.svg[fsm-test]
 |-
 |-
 
-|
-[[fsm-test-BB]]BB
+|[[fsm-test-BB]]BB
 |B
 |State BB
 |false
@@ -78,8 +67,7 @@ image::pics/fsm-test.svg[fsm-test]
 |-
 |-
 
-|
-[[fsm-test-C]]C
+|[[fsm-test-C]]C
 |Root
 |
 |true

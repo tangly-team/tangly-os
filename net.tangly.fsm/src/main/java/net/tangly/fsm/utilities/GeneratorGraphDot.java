@@ -28,8 +28,6 @@ import org.jetbrains.annotations.NotNull;
  * @param <E> enumeration type for the identifiers of events
  */
 public class GeneratorGraphDot<O, S extends Enum<S>, E extends Enum<E>> extends Generator<O, S, E> {
-    private static final int MAX_NR_STATES = 1000;
-
     /**
      * Constructor of the class.
      *
@@ -69,13 +67,11 @@ public class GeneratorGraphDot<O, S extends Enum<S>, E extends Enum<E>> extends 
 
     private void writeState(@NotNull State<O, S, E> state, int depth, @NotNull PrintWriter writer) {
         if (state.isComposite()) {
-            indent(writer, depth).append("subgraph cluster").append(Integer.toString(MAX_NR_STATES + state.id().ordinal())).println(" {");
-            indent(writer, depth + 1).println("style=invis;");
-            indent(writer, depth + 1).append("subgraph cluster").append(getStateId(state)).println(" {");
-            indent(writer, depth + 2).append(getStyle(state)).println(";");
-            indent(writer, depth + 2).append("label = \"").append(state.id().name()).println("\"");
-            state.substates().stream().sorted().forEach(o -> writeState(o, depth + 3, writer));
-            indent(writer, depth + 1).println("}");
+            indent(writer, depth).append("subgraph \"cluster-").append(state.id().name()).println("\" {");
+            indent(writer, depth + 1).append(getStyle(state)).println(";");
+            indent(writer, depth + 1).append("label = \"").append(state.id().name()).println("\"");
+            writer.println();
+            state.substates().stream().sorted().forEach(o -> writeState(o, depth + 1, writer));
             indent(writer, depth).println("}");
         } else {
             indent(writer, depth).append(state.id().name()).append(" [").append(getStyle(state)).println("];");
@@ -86,12 +82,13 @@ public class GeneratorGraphDot<O, S extends Enum<S>, E extends Enum<E>> extends 
         state.transitions().stream().sorted(transitionComparator()).forEach(transition -> {
             var source = transition.source();
             var target = transition.target();
-            indent(writer, 1).append(getStateName((source))).append(" -> ").append(getStateName((target))).append(" [");
+            indent(writer, 1).append(getStateName((inferTransitionState(source)))).append(" -> ").append(getStateName((inferTransitionState(target))))
+                .append(" [");
             if (source.isComposite()) {
-                writer.append("ltail=cluster").append(getStateId(source)).append(", ");
+                writer.append("ltail=\"cluster-").append(getStateName(source)).append("\", ");
             }
             if (target.isComposite()) {
-                writer.append("lhead=cluster").append(getStateId(target)).append(", ");
+                writer.append("lhead=\"cluster-").append(getStateName(target)).append("\", ");
             }
             writer.append("label=\"").append(transition.eventId().name());
             if (transition.hasGuard()) {
@@ -102,6 +99,10 @@ public class GeneratorGraphDot<O, S extends Enum<S>, E extends Enum<E>> extends 
             }
             writer.println("\"];");
         });
+    }
+
+    private State<O, S, E> inferTransitionState(@NotNull State<O, S, E> state) {
+        return state.isComposite() ? inferTransitionState(state.substates().stream().findAny().orElseThrow()) : state;
     }
 
     private String getStyle(@NotNull State<O, S, E> state) {

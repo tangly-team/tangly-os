@@ -2,6 +2,12 @@
 hide empty description
 
 state Root {
+    state End
+    End --> [*]
+
+    state PowerOff
+    PowerOff -> Running : RestorePower
+
     [*] --> Running
     state Running {
         [*] --> Washing
@@ -16,13 +22,7 @@ state Root {
 
         Running -> End : Stop
         Running -> PowerOff : CutPower
-}
-
-    state End
-    End --> [*]
-
-    state PowerOff
-    PowerOff -> Running : RestorePower
+    }
 
 }
 

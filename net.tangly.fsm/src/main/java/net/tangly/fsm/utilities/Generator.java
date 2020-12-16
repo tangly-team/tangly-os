@@ -19,7 +19,6 @@ import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Optional;
@@ -54,7 +53,7 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
         this.builder = builder;
         this.name = name;
         this.comparator = Comparator.comparing(Transition<O, S, E>::source).thenComparing(Transition::target).thenComparing(Transition::eventId)
-                .thenComparing(Comparator.nullsLast(Comparator.comparing(Transition::guardDescription)));
+            .thenComparing(Comparator.nullsLast(Comparator.comparing(Transition::guardDescription)));
         this.states = new HashSet<>();
         getAllStates(this.states, builder.definition());
     }
@@ -70,8 +69,8 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
     public boolean generateFileIfChanged(@NotNull Path path) throws IOException {
         var writer = new StringWriter();
         generate(new PrintWriter(writer));
-        String newText = writer.toString();
-        Path filePath = Paths.get(path.toString(), name + "." + extension());
+        var newText = writer.toString();
+        var filePath = path.resolve(name + "." + extension());
         boolean shouldBeUpdated;
         if (Files.exists(filePath)) {
             String oldText = Files.readString(filePath, StandardCharsets.UTF_8);
@@ -80,7 +79,7 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
             shouldBeUpdated = true;
         }
         if (shouldBeUpdated) {
-            try (PrintWriter out = new PrintWriter(filePath.toFile(), StandardCharsets.UTF_8)) {
+            try (var out = new PrintWriter(Files.newBufferedWriter(filePath, StandardCharsets.UTF_8))) {
                 out.append(newText);
                 out.flush();
             }

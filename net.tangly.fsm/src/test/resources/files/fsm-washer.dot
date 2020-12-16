@@ -1,29 +1,25 @@
 digraph G {
     compound=true;
 
-    subgraph cluster1000 {
-        style=invis;
-        subgraph cluster0 {
-            style="visible, dashed, bold";
-            label = "Root"
-                subgraph cluster1001 {
-                    style=invis;
-                    subgraph cluster1 {
-                        style="visible, dashed, filled";
-                        label = "Running"
-                            Washing [style="dashed"];
-                            Rinsing [];
-                            Drying [style="bold"];
-                    }
-                }
-                End [style="bold"];
-                PowerOff [];
+    subgraph "cluster-Root" {
+        style="visible, dashed, bold";
+        label = "Root"
+
+        subgraph "cluster-Running" {
+            style="visible, dashed, filled";
+            label = "Running"
+
+            Washing [style="dashed"];
+            Rinsing [];
+            Drying [style="bold"];
         }
+        End [style="bold"];
+        PowerOff [];
     }
 
-    Running -> End [ltail=cluster1, label="Stop"];
-    Running -> PowerOff [ltail=cluster1, label="CutPower"];
+    Rinsing -> End [ltail="cluster-Running", label="Stop"];
+    Rinsing -> PowerOff [ltail="cluster-Running", label="CutPower"];
     Washing -> Rinsing [label="Rinse"];
     Rinsing -> Drying [label="Dry"];
-    PowerOff -> Running [lhead=cluster1, label="RestorePower"];
+    PowerOff -> Rinsing [lhead="cluster-Running", label="RestorePower"];
 }

@@ -42,7 +42,6 @@ public class GeneratorAsciiDoc<O, S extends Enum<S>, E extends Enum<E>> extends 
 
     @Override
     public void generate(@NotNull PrintWriter writer) {
-        generateImageXRef(writer);
         writeStateTablePreamble(writer);
         states.stream().sorted().forEach(state -> writeState(state, writer));
         writeTablePostamble(writer);
@@ -56,13 +55,6 @@ public class GeneratorAsciiDoc<O, S extends Enum<S>, E extends Enum<E>> extends 
     @Override
     public String extension() {
         return ("adoc");
-    }
-
-    private void generateImageXRef(@NotNull PrintWriter writer) {
-        writer.append("== ").append(name).append(" Finite State Machine").println();
-        writer.println();
-        writer.append("image::pics/").append(name).append(".svg[").append(name).append("]").println();
-        writer.println();
     }
 
     private void writeStateTablePreamble(@NotNull PrintWriter writer) {

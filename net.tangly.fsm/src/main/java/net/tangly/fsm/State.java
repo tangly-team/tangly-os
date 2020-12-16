@@ -14,6 +14,7 @@
 package net.tangly.fsm;
 
 import java.util.Deque;
+import java.util.Objects;
 import java.util.Set;
 import java.util.function.BiConsumer;
 
@@ -92,7 +93,6 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
      *
      * @return the list of substates or an empty list if none is defined.
      */
-
     Set<State<O, S, E>> substates();
 
     /**
@@ -100,7 +100,6 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
      *
      * @return the list of transitions or an empty list if none is defined
      */
-
     Set<Transition<O, S, E>> transitions();
 
     /**
@@ -108,8 +107,16 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
      *
      * @return the list of self transitions or an empty list if none is defined
      */
-
     Set<Transition<O, S, E>> localTransitions();
+
+    /**
+     * Returns true if the state has an entry action.
+     *
+     * @return flag indicating if the sate has an entry action
+     */
+    default boolean hasEntryAction() {
+        return Objects.nonNull(entryAction());
+    }
 
     /**
      * Returns the entry action of the state.
@@ -117,6 +124,15 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
      * @return the action if defined otherwise null
      */
     BiConsumer<O, Event<E>> entryAction();
+
+    /**
+     * Returns true if the state has an exit action.
+     *
+     * @return flag indicating if the sate has an exit action
+     */
+    default boolean hasExitAction() {
+        return Objects.nonNull(entryAction());
+    }
 
     /**
      * Returns the exit action of the state.

@@ -14,6 +14,7 @@
 package net.tangly.fsm.utilities;
 
 import java.io.PrintWriter;
+import java.util.function.Predicate;
 
 import net.tangly.fsm.State;
 import net.tangly.fsm.dsl.FsmBuilder;
@@ -71,9 +72,10 @@ public class GeneratorPlantUml<O, S extends Enum<S>, E extends Enum<E>> extends 
         }
         if (state.isComposite()) {
             indent(writer, depth).append("state ").append(getStateName(state)).println(" {");
-            state.substates().stream().sorted().forEach(o -> writeState(o, depth + 1, writer));
+            state.substates().stream().sorted().filter(Predicate.not(State::isComposite)).forEach(o -> writeState(o, depth + 1, writer));
+            state.substates().stream().sorted().filter(State::isComposite).forEach(o -> writeState(o, depth + 1, writer));
             writeTransitions(state, writer, depth + 1);
-            writer.println("}");
+            indent(writer, depth).println("}");
         } else {
             indent(writer, depth).append("state ").append(getStateName(state)).println();
             writeTransitions(state, writer, depth);
@@ -89,7 +91,7 @@ public class GeneratorPlantUml<O, S extends Enum<S>, E extends Enum<E>> extends 
             var source = transition.source();
             var target = transition.target();
             indent(writer, depth).append(getStateName((source))).append(" -> ").append(getStateName((target))).append(" : ")
-                    .append(transition.eventId().toString());
+                .append(transition.eventId().toString());
             if (transition.hasGuard()) {
                 writer.append(" [").append(transition.guardDescription() != null ? transition.guardDescription() : "").append("]");
             }
