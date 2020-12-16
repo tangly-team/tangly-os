@@ -1,0 +1,56 @@
+---
+title: "Agile Software Architecture is Mainstream"
+linkTitle: "Agile Software Architecture"
+date: 2021-04-02
+tags: ["java","serie-students"]
+
+---
+
+== Agile Software Architecture is Mainstream
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+image::2021-03-03-head.jpg[width=420,height=360,role=left]
+
+Slowly, slowly major actors in the sofware architecture landscape acknowledge agile development is state of the industry approach to build software products.
+They are still struggling to integrate their older views in a faster, iterative, incremental development approach.
+More important they have discovered we build products because no customers buy projects.
+They buy solutions and products.
+
+I am relieved I nee less fighting to convince enterprise architects that agile is the way.
+The big names https://www.pmi.org/[_Project Management Institute_], https://www.opengroup.org/[_Open Group_], and https://www.isaqb.org/[_iSAQB_]
+have an agile architecture offering.
+If pushed they acknowledge agile development is mainstream and huge in the overwhelming majority of product development.
+But we have learnt that it is difficult to concede and congratulate the winning party.
+Look at the president of the United States of America Donald Trump to have a well documented of a loser trying all lies and tricks to avoid the reality.
+No long ago the tobacco industry did the same as professional liars.
+And we still have the climate change deniers.
+
+We show mercy to all the software architect and designer traditionalists who need almost twenty years to acknowledge the supremacy of agile approaches.
+
+=== PMI and Disciplined Agile Delivery
+
+PMI realized a few years ago their standard approach to project management was loosing ground.
+The first step was the _PMI Agile Certified Practitioner_ certification to test what agile is.
+The coup was their acquisition of _Disciplined Agile Delivery_ in the second half of 2019.
+The https://en.wikipedia.org/wiki/Disciplined_agile_delivery[DAD] approach is aroound since 2015 and had some success.
+The framework has a complexity sympathetic to PMI.
+The roots of a lot of concepts can be found in RUP, an interative and incremental methodology.
+The founder of DAD https://en.wikipedia.org/wiki/Scott_Ambler[Scott W. Ambler] has a long history with the Unified Modeling Language and CMM.
+But RUP is certainly not agile.
+
+Anyway it is a huge step for PMI to move away from traditional heavy project development methods and to embrace somehow agile product development.
+
+image::2021-03-03-dad.jpg[width=420,height=360,role=left]
+
+=== Open Group and Open Agile Architecture Initiative
+
+image::2021-03-03-open-group-agile.png[width=420,height=360,role=left]
+
+image::2021-03-03-open-agile-architecture.png[width=420,height=360,role=left]
+
+=== iSAQB Agile Software Architecture
+
+image::2021-03-03-isaqb.jpg[width=420,height=360,role=left]
