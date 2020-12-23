@@ -27,7 +27,7 @@ plugins {
     id "com.github.spotbugs" version "4.6.0"
     id "org.sonarqube" version "3.0"
     id "info.solidsoft.pitest" version "1.5.2"
-    id 'com.google.cloud.tools.jib' version '2.6.0'
+    id 'com.google.cloud.tools.jib' version '2.7.0'
     id 'com.github.ben-manes.versions' version '0.36.0'
 }
 
@@ -125,8 +125,8 @@ sonarqube {
         property "sonar.host.url", "https://sonarcloud.io"
         property "sonar.sourceEncoding", "UTF-8"
         property "sonar.language", "java"
-        property "sonar.java.source", "14"
-        property "sonar.coverage.jacoco.reportPaths", "**/build/reports/jacoco/test/jacocoTestReport.xml"
+        property "sonar.java.source", "1"
+        property "sonar.coverage.jacoco.reportPath5s", "**/build/reports/jacoco/test/jacocoTestReport.xml"
     }
 }
 
@@ -160,11 +160,12 @@ subprojects {
         jsonVersion = '1.0.19.13'
         jimfsVersion = '1.1'
         slf4jVersion = '2.0.0-alpha1'
+        microStreamVersion = '04.01.00-MS-GA'
         mockitoVersion = '3.6.28'
         assertjVersion = '3.18.1'
         annotationsVersion = '20.1.0'
-        archUnitVersion = '0.14.1'
-        flyWayVersion = '7.3.0'
+        archUnitVersion = '0.15.0'
+        flyWayVersion = '7.3.2'
         hsqldbVersion = '2.5.1'
         guiceVersion = '4.2.3'
         jsonValidatorVersion = '1.0.45'

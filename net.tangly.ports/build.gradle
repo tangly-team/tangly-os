@@ -28,7 +28,7 @@ sourceSets {
 }
 
 ext {
-    mustangProjectVersion = '2.0.2'
+    mustangProjectVersion = '2.0.3'
 }
 
 dependencies {
@@ -43,7 +43,7 @@ dependencies {
     implementation "com.guicedee.services:json:$jsonVersion"
     implementation "org.hsqldb:hsqldb:$hsqldbVersion"
     // added reference to pdfbox to avoid a runtime error with qrbill-generator, the dependency is too open
-    implementation 'org.apache.pdfbox:pdfbox:2.0.21'
+    implementation 'org.apache.pdfbox:pdfbox:2.0.22'
     implementation 'net.codecrete.qrbill:qrbill-generator:2.5.0'
     implementation "org.mustangproject:library:$mustangProjectVersion"
     implementation "org.asciidoctor:asciidoctorj:$asciidoctorjVersion"
@@ -52,8 +52,8 @@ dependencies {
     implementation 'org.mnode.ical4j:ical4j:3.0.19'
     implementation 'org.mnode.ical4j:ical4j-vcard:1.0.5'
 
-    implementation 'one.microstream:storage.embedded:04.00.00-MS-GA'
-    implementation 'one.microstream:storage.embedded.configuration:04.00.00-MS-GA'
+    implementation "one.microstream:storage.embedded:$microStreamVersion"
+    implementation "one.microstream:storage.embedded.configuration:$microStreamVersion"
 
     testImplementation "org.flywaydb:flyway-core:$flyWayVersion"
     // testImplementation "org.mustangproject:validator:$mustangProjectVersion"

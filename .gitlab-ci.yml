@@ -1,4 +1,4 @@
-image: openjdk:14
+image: openjdk:15
 
 variables:
 

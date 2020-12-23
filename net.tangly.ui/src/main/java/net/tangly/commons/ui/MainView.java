@@ -28,10 +28,12 @@ import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.login.LoginI18n;
 import com.vaadin.flow.component.login.LoginOverlay;
 import com.vaadin.flow.component.menubar.MenuBar;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
 import com.vaadin.flow.server.VaadinSession;
@@ -63,7 +65,10 @@ import net.tangly.erp.Erp;
 import org.jetbrains.annotations.NotNull;
 
 @CssImport("./styles/shared-styles.css")
-@CssImport(value = "./styles/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
+@CssImport(value = "./styles/override-overlay.css", themeFor = "vaadin-dialog-overlay")
+@CssImport(value = "./styles/override-negative.css", themeFor = "vaadin-grid")
+@JsModule("prefers-color-scheme.js")
+@PageTitle("tangly ERP")
 @Route("")
 public class MainView extends AppLayout {
     private Component currentView;
@@ -102,7 +107,6 @@ public class MainView extends AppLayout {
         invoicesDomain = Erp.ofInvoicesDomain();
         productsDomain = Erp.ofProductsDomain();
         ledgerDomain = Erp.ofLedgerDomain();
-
     }
 
     public MainView() {
@@ -122,7 +126,6 @@ public class MainView extends AppLayout {
         accountsView = new AccountsView(ledgerDomain, Crud.Mode.EDITABLE);
         transactionsView = new TransactionsView(ledgerDomain, Crud.Mode.EDITABLE);
         ledgerDomainView = new DomainView(ledgerDomain);
-
 
         productsView = new ProductsView(productsDomain, Crud.Mode.EDITABLE);
         assignmentsView = new AssignmentsView(productsDomain, Crud.Mode.EDITABLE);
@@ -146,11 +149,9 @@ public class MainView extends AppLayout {
         setContent(naturalEntitiesView);
     }
 
-
     @Override
-    protected void onAttach(AttachEvent attachEvent) {
-        Object foo = VaadinUtils.getAttribute(this, "username");
-        if (Objects.isNull(VaadinUtils.getAttribute(this, "username"))) {
+    protected void onAttach(@NotNull AttachEvent attachEvent) {
+        if (Objects.isNull(VaadinUtils.getAttribute(this, "subject"))) {
             LoginOverlay component = new LoginOverlay();
             LoginI18n i18n = LoginI18n.createDefault();
             i18n.setHeader(new LoginI18n.Header());
@@ -176,7 +177,7 @@ public class MainView extends AppLayout {
         UI.getCurrent().getPage().setLocation("");
     }
 
-    private void registerDomain(MenuBar menuBar, BoundedDomain<?, ?, ?, ?> boundedDomain, String domainName, Consumer<SubMenu> registerViews,
+    private void registerDomain(@NotNull MenuBar menuBar, BoundedDomain<?, ?, ?, ?> boundedDomain, String domainName, Consumer<SubMenu> registerViews,
                                 Consumer<SubMenu> registerAnalyticsViews, Consumer<SubMenu> registerAdministrationViews) {
         SubMenu domainMenu = menuBar.addItem(domainName).getSubMenu();
         registerViews.accept(domainMenu);

@@ -1,0 +1,5 @@
+/* Defines red as theme style to display negative values in red */
+
+.negative-value {
+    color : red;
+}

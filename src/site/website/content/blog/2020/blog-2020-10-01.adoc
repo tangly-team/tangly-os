@@ -12,21 +12,21 @@ tags: ["design", "serie-students"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2020-10-01-head.jpg[width=420, height=360, role=left]
+image::2020-10-01-head.jpg[width=420,height=360,role=left]
 I hosted my technical blogs on https://www.blogger.com/[blogger] for years.
 If I correctly remember I started to use blogger ten years ago.
 It is a great tool with some drawbacks.
 Over the years the drawbacks sting more and more:
 
 * Their editor is brittle, with limited functionality and unreliable.
- The generated HTML is not legible and does not support concepts such a micro fragments, meta information or simple functions such as source code highlighting.
+The generated HTML is not legible and does not support concepts such a micro fragments, meta information or simple functions such as source code highlighting.
 * The last quarters they started to tinker with their editor and output format.
- My older posts are now a mess and can only be open in HTML mode.
- If I switch to their WYSIWYG editor the layout is destroyed and random fonts family and sizes are displayed.
- Worse the blogs are also displayed mangled to the readers even if I do not edit them.
- This destruction of all older blogs and the missing migration path were killer criteria.
+My older posts are now a mess and can only be open in HTML mode.
+If I switch to their WYSIWYG editor the layout is destroyed and random fonts family and sizes are displayed.
+Worse the blogs are also displayed mangled to the readers even if I do not edit them.
+This destruction of all older blogs and the missing migration path were killer criteria.
 * Blogger does not support modern markup language such https://www.markdownguide.org/[Markdown] or {ref-asciidoc}.
- Blogger uses a proprietary and not easy to port format.
+Blogger uses a proprietary and not easy to port format.
 
 It is *time* to find an alternative, and I have to confess I am a huge fan of {ref-asciidoc}.
 
@@ -37,12 +37,12 @@ I’m writing all my documents with {ref-asciidoc}.
 The following needs are identified:
 
 . I shall write blogs with the selected solution.
- The blogs shall be written in {ref-asciidoc}.
- The blog platform should support multiple years of publishing and referencing between blogs.
- Our projects and our collaborators put effort to regularly publish articles.
+The blogs shall be written in {ref-asciidoc}.
+The blog platform should support multiple years of publishing and referencing between blogs.
+Our projects and our collaborators put effort to regularly publish articles.
 . I shall be able to write technical articles and publish them on the same site.
- The articles are naturally written in {ref-asciidoc}.
- We want a professional looking documentation to encourage new users to try our open source components.
+The articles are naturally written in {ref-asciidoc}.
+We want a professional looking documentation to encourage new users to try our open source components.
 . I shall publish the technical documentation of the open source components I develop on the same site.
 
 {ref-hugo} was selected as static site generator because its support for {ref-asciidoc} is tremendously improving.
@@ -88,7 +88,7 @@ sudo npm install -D --save postcss
 <2> Install https://asciidoctor.org/[asciidoctor] and additional asciidoctor packages
 <3> Install https://plantuml.com/[plantuml] and https://graphviz.org/[graphviz] for diagrams, in particular UML sketches
 <4> Install https://postcss.org/[PostCSS] and additional packages used by docsy to generate deployment site.
- See also https://www.docsy.dev/docs/getting-started/[docsy documentation].
+See also https://www.docsy.dev/docs/getting-started/[docsy documentation].
 
 ==== Asciidoctor Configuration
 
@@ -108,7 +108,7 @@ Below the configuration of asciidoctor in the _config.toml_ file.
     ref-less = "https://less.works/[LeSS]"  // <5>
 ----
 <1> Select https://rouge-ruby.github.io/docs/[rouge] as source highlighter.
- You should not add it to the extensions because since {ref-asciidoctor} version 2.0 rouge is included.
+You should not add it to the extensions because since {ref-asciidoctor} version 2.0 rouge is included.
 <2> Define the style used to highlight source code.
 <3> Configure rouge to generate all formatting data into the generated html file, avoiding any css file configuration.
 <4> Icons provide better looking icons for various {ref-asciidoc}} constructs.
@@ -122,7 +122,7 @@ Each time you add your own first level folder - meaning at the same level as doc
 For example, I store technical articles in the folder ideas and use the standard template.
 So I need to add (if not, no items are visible in the side bar).
 
-[source, shell]
+[source,shell]
 ----
 cp -R ./layouts/docs ./layouts/ideas
 ----
@@ -133,7 +133,7 @@ We had to change the partial _footer.html_ to display a better looking copyright
 The original version has hard coded text not really compatible with the commons creative license we are using.
 The layout is updated by overwriting the involved partial file.
 
-[source, shell]
+[source,shell]
 ----
 cp $prjDir/src/site/website/docsy/layouts/partials/footer.html $siteDir/themes/docsy/layouts/partials
 ----
@@ -156,6 +156,10 @@ offlineSearchMaxResults = 25
 The static website is published under {ref-site}.
 
 The source of the whole website is available under https://bitbucket.org/tangly-team/tangly-os/src/master/src/site/website/[Website Source Code].
+
+Printing of a single article is supported through your browser.
+You can configure printing a whole section with or without a table of contents through https://www.docsy.dev/docs/adding-content/print/[configuration options].
+For advanced cases you can define the layout of the printed document.
 
 You can use relative links in your {ref-asciidoc} documents.
 Beware where the file are located by {ref-hugo} engine and the naming conventions shall follow {ref-hugo} rules.

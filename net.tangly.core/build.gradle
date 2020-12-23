@@ -34,9 +34,9 @@ sourceSets {
 dependencies {
     implementation project(':net.tangly.commons')
 
-    implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.13'
+    implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.15'
     implementation 'org.iban4j:iban4j:3.2.1'
-    implementation 'one.microstream:storage.embedded:04.00.00-MS-GA'
+    implementation "one.microstream:storage.embedded:$microStreamVersion"
 
     testImplementation "org.flywaydb:flyway-core:$flyWayVersion"
     testImplementation "com.guicedee.services:json:$jsonVersion"

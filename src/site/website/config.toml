@@ -107,6 +107,9 @@ pygmentsUseClasses = true
 [outputs]
 section = ["HTML", "RSS", "print"]
 
+[params.print]
+disable_toc = true
+
 # Everything below this are Site Params
 
 [params]
