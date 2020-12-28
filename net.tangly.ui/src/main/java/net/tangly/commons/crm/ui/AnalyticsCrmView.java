@@ -47,11 +47,11 @@ import net.tangly.bus.invoices.InvoicesBusinessLogic;
 import net.tangly.bus.ledger.LedgerBusinessLogic;
 import net.tangly.commons.vaadin.TabsComponent;
 import net.tangly.commons.vaadin.VaadinUtils;
+import net.tangly.components.PaginatedGrid;
 import net.tangly.ledger.ports.LedgerAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.vaadin.klaudeta.PaginatedGrid;
 
 public class AnalyticsCrmView extends VerticalLayout {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());

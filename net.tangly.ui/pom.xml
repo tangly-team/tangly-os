@@ -16,7 +16,7 @@
         <product.reporting.outputEncoding>UTF-8</product.reporting.outputEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
 
-        <vaadin.version>18.0.2</vaadin.version>
+        <vaadin.version>18.0.3</vaadin.version>
         <tangly.version>0.2.6</tangly.version>
         <jetty.version>9.4.34.v20201102</jetty.version>
     </properties>
@@ -195,13 +195,15 @@
         <dependency>
             <groupId>com.storedobject.chart</groupId>
             <artifactId>so-charts</artifactId>
-            <version>0.0.6</version>
+            <version>0.2.0</version>
         </dependency>
+        <!--
         <dependency>
             <groupId>org.vaadin.klaudeta</groupId>
             <artifactId>grid-pagination</artifactId>
             <version>2.0.10</version>
         </dependency>
+        -->
         <dependency>
             <groupId>com.vaadin.componentfactory</groupId>
             <artifactId>tooltip</artifactId>

@@ -20,10 +20,10 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.data.provider.ListDataProvider;
 import net.tangly.commons.vaadin.GridFiltersAndActions;
+import net.tangly.components.PaginatedGrid;
 import net.tangly.core.TagType;
 import net.tangly.core.domain.BoundedDomain;
 import org.jetbrains.annotations.NotNull;
-import org.vaadin.klaudeta.PaginatedGrid;
 
 /**
  * Displays all tags and their usage, often use for administrative inforomation for a bounded domain.
@@ -42,7 +42,7 @@ public class TagTypesView extends VerticalLayout {
 
     protected void initialize() {
         grid.setPageSize(10);
-        grid.setPaginatorSize(3);
+        grid.paginatorSize(3);
         grid.setDataProvider((ListDataProvider) DataProvider.ofCollection(domain.registry().tagTypes()));
 
         grid.addColumn(TagType::namespace).setKey("namespace").setHeader("Namespace").setSortable(true).setAutoWidth(true).setResizable(true);

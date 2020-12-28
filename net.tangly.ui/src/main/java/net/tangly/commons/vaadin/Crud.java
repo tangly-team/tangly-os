@@ -18,8 +18,8 @@ import java.util.Set;
 
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
+import net.tangly.components.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
-import org.vaadin.klaudeta.PaginatedGrid;
 
 /**
  * <p>The CRUD provides a grid view to a set of entities and views to view, update, create and delete an entity. The core view is the same for all
@@ -84,7 +84,7 @@ public class Crud<T> extends VerticalLayout implements SelectedItemListener<T> {
 
         this.grid = new PaginatedGrid<>(entityClass);
         grid.setPageSize(10);
-        grid.setPaginatorSize(3);
+        grid.paginatorSize(3);
 
         grid.setDataProvider(dataProvider);
         grid.asSingleSelect().addValueChangeListener(event -> selectedItem(event.getValue()));

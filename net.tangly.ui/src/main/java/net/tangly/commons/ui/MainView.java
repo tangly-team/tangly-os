@@ -33,6 +33,7 @@ import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.login.LoginI18n;
 import com.vaadin.flow.component.login.LoginOverlay;
 import com.vaadin.flow.component.menubar.MenuBar;
+import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
@@ -151,6 +152,7 @@ public class MainView extends AppLayout {
 
     @Override
     protected void onAttach(@NotNull AttachEvent attachEvent) {
+        super.onAttach(attachEvent);
         if (Objects.isNull(VaadinUtils.getAttribute(this, "subject"))) {
             LoginOverlay component = new LoginOverlay();
             LoginI18n i18n = LoginI18n.createDefault();

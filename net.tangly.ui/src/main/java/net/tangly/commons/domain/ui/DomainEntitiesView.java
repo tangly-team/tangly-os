@@ -17,11 +17,11 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.data.provider.ListDataProvider;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.GridFiltersAndActions;
+import net.tangly.components.PaginatedGrid;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
 import net.tangly.core.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
-import org.vaadin.klaudeta.PaginatedGrid;
 
 /**
  * Displays all entities of a bounded domain with administration information. The view is useful during development of a new release or when evaluating the
@@ -41,7 +41,7 @@ public class DomainEntitiesView extends EntitiesView<DomainEntity> {
     @Override
     protected void initialize() {
         grid.setPageSize(10);
-        grid.setPaginatorSize(3);
+        grid.paginatorSize(3);
 
         grid.setDataProvider(new ListDataProvider<>(domain.entities()));
         grid.addColumn(DomainEntity::domain).setKey("domain").setHeader("Domain").setSortable(true).setAutoWidth(true).setResizable(true);

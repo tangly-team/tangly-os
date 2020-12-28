@@ -31,7 +31,7 @@ import com.vaadin.flow.data.provider.ListDataProvider;
 import net.tangly.core.HasInterval;
 import net.tangly.core.HasTags;
 import org.jetbrains.annotations.NotNull;
-import org.vaadin.klaudeta.PaginatedGrid;
+import net.tangly.components.PaginatedGrid;
 
 public class GridFiltersAndActions<T> extends HorizontalLayout implements SelectedItemListener<T> {
     /**
@@ -65,7 +65,7 @@ public class GridFiltersAndActions<T> extends HorizontalLayout implements Select
 
     public GridFiltersAndActions(@NotNull PaginatedGrid<T> grid, boolean hasItemActions, boolean hasGlobalActions) {
         this.grid = grid;
-        this.provider = (ListDataProvider<T>) grid.getDataProvider();
+        this.provider = (ListDataProvider<T>) grid.dataProvider();
         menuBar = new MenuBar();
         itemActions = hasItemActions ? new Actions(menuBar, "Actions") : null;
         globalActions = hasGlobalActions ? new Actions(menuBar, "Operations") : null;
