@@ -43,7 +43,7 @@ public class DomainEntitiesView extends EntitiesView<DomainEntity> {
         grid.setPageSize(10);
         grid.paginatorSize(3);
 
-        grid.setDataProvider(new ListDataProvider<>(domain.entities()));
+        grid.dataProvider(new ListDataProvider<>(domain.entities()));
         grid.addColumn(DomainEntity::domain).setKey("domain").setHeader("Domain").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(DomainEntity::name).setKey("name").setHeader("Name").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(o -> o.clazz().getName()).setKey("class").setHeader("Class").setSortable(true).setAutoWidth(true).setResizable(true);

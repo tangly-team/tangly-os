@@ -36,6 +36,7 @@ public class GridButtons<T> extends HorizontalLayout implements SelectedItemList
         this.mode = mode;
         this.form = form;
         this.actionsListener = actionsListener;
+        setDefaultVerticalComponentAlignment(Alignment.END);
         details = new Button("Details", VaadinIcon.ELLIPSIS_H.create(), event -> displayDialog(CrudForm.Operation.VIEW));
         add = new Button("Add", VaadinIcon.PLUS.create(), event -> displayDialog(CrudForm.Operation.CREATE));
         update = new Button("Update", VaadinIcon.PENCIL.create(), event -> displayDialog(CrudForm.Operation.UPDATE));

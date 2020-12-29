@@ -33,6 +33,10 @@ import net.tangly.core.HasInterval;
 import net.tangly.core.HasTags;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Defines the filters and actions specific to a grid.
+ * @param <T> type of entities displayed in the grid
+ */
 public class GridFiltersAndActions<T> extends HorizontalLayout implements SelectedItemListener<T> {
     /**
      * Defines the structure for a submenu of context actions associated with entities displayed in a grid.
@@ -55,7 +59,6 @@ public class GridFiltersAndActions<T> extends HorizontalLayout implements Select
         }
     }
 
-    private final ListDataProvider<T> provider;
     private final PaginatedGrid<T> grid;
     private final List<GridFilter<T>> filters;
     private final MenuBar menuBar;
@@ -65,7 +68,6 @@ public class GridFiltersAndActions<T> extends HorizontalLayout implements Select
 
     public GridFiltersAndActions(@NotNull PaginatedGrid<T> grid, boolean hasItemActions, boolean hasGlobalActions) {
         this.grid = grid;
-        this.provider = (ListDataProvider<T>) grid.dataProvider();
         menuBar = new MenuBar();
         itemActions = hasItemActions ? new Actions(menuBar, "Actions") : null;
         globalActions = hasGlobalActions ? new Actions(menuBar, "Operations") : null;
@@ -107,8 +109,8 @@ public class GridFiltersAndActions<T> extends HorizontalLayout implements Select
     }
 
     void updateFilters() {
-        provider.clearFilters();
-        filters.forEach(o -> o.addFilter(provider));
+        dataProvider().clearFilters();
+        filters.forEach(o -> o.addFilter(dataProvider()));
     }
 
     public interface GridFilter<E> {
@@ -177,5 +179,9 @@ public class GridFiltersAndActions<T> extends HorizontalLayout implements Select
                 provider.addFilter(entity -> getter.apply(entity).toLowerCase().contains(component.getValue().toLowerCase()));
             }
         }
+    }
+
+    private ListDataProvider<T> dataProvider() {
+        return (ListDataProvider<T>) grid.dataProvider();
     }
 }

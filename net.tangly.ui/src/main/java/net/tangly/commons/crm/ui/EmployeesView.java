@@ -26,6 +26,7 @@ import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.One2OneField;
 import net.tangly.commons.vaadin.VaadinUtils;
+import net.tangly.components.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
 
 public class EmployeesView extends InternalEntitiesView<Employee> {
@@ -39,7 +40,7 @@ public class EmployeesView extends InternalEntitiesView<Employee> {
 
     @Override
     protected void initialize() {
-        Grid<Employee> grid = grid();
+        PaginatedGrid<Employee> grid = grid();
         grid.addColumn(Employee::name).setKey("employee").setHeader("Employee").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.person().name()).setKey("person").setHeader("Person").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.organization().name()).setKey("organization").setHeader("Organization").setSortable(true).setAutoWidth(true).setResizable(true);

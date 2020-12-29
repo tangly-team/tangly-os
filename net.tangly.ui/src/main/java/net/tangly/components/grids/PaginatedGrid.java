@@ -12,8 +12,10 @@
 
 package net.tangly.components.grids;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Component;
@@ -35,44 +37,32 @@ import com.vaadin.flow.shared.Registration;
  * @param <T> type of the entities displayed in the grid
  */
 public class PaginatedGrid<T> extends Grid<T> {
-    private LitPagination pagination;
-    private Component paginationContainer;
+    /**
+     * Enumeration to define the location of the element relative to the grid
+     **/
+    public enum PaginationLocation {
+        TOP, BOTTOM
+    }
+
+    private final LitPagination pagination;
     private PaginationLocation paginationLocation;
+    private Component paginationContainer;
     private DataProvider<T, ?> dataProvider;
 
     public PaginatedGrid() {
-        init();
-    }
-
-    public PaginatedGrid(Class<T> beanType) {
-        super(beanType);
-        init();
-    }
-
-    private void init() {
-        dataProvider = super.getDataProvider();
         pagination = new LitPagination();
-        pagination.addPageChangeListener(e -> doCalcs(e.newPage()));
+        pagination.addPageChangeListener(e -> doCalculations(e.newPage()));
         paginationLocation = PaginationLocation.BOTTOM;
         setHeightByRows(true);
-        addSortListener(e -> doCalcs(pagination.getPage()));
-    }
-
-    /**
-     * Returns the data provider associated with the grid.
-     *
-     * @return data provider of the grid
-     */
-    public DataProvider<T, ?> dataProvider() {
-        return dataProvider;
+        addSortListener(e -> doCalculations(pagination.getPage()));
     }
 
     /**
      * Sets a container component for the pagination component to be placed within. If a container is set the PaginationLocation will be ignored.
      *
-     * @param paginationContainer
+     * @param paginationContainer new pagination container
      */
-    public void setPaginationContainer(Component paginationContainer) {
+    public void paginationContainer(Component paginationContainer) {
         this.paginationContainer = paginationContainer;
     }
 
@@ -95,14 +85,7 @@ public class PaginatedGrid<T> extends Grid<T> {
                 p.getElement().insertChild(indexOfChild, wrapper.getElement());
             });
         }
-        doCalcs(0);
-    }
-
-    private void doCalcs(int newPage) {
-        int offset = (newPage > 0) ? (newPage - 1) * this.getPageSize() : 0;
-        InnerQuery query = new InnerQuery<>(offset);
-        pagination.getTotal(dataProvider.size(query));
-        super.setDataProvider(DataProvider.fromStream(dataProvider.fetch(query)));
+        doCalculations(0);
     }
 
     public void refreshPaginator() {
@@ -110,7 +93,7 @@ public class PaginatedGrid<T> extends Grid<T> {
             pagination.pageSize(getPageSize());
             pagination.setPage(1);
             if (dataProvider != null) {
-                doCalcs(pagination.getPage());
+                doCalculations(pagination.getPage());
             }
             pagination.refresh();
         }
@@ -121,7 +104,6 @@ public class PaginatedGrid<T> extends Grid<T> {
         super.setPageSize(pageSize);
         refreshPaginator();
     }
-
 
     public int page() {
         return pagination.getPage();
@@ -147,7 +129,7 @@ public class PaginatedGrid<T> extends Grid<T> {
     /**
      * Sets the count of the pages displayed before or after the current page.
      *
-     * @param size
+     * @param size new size of a page
      */
     public void paginatorSize(int size) {
         pagination.setPage(1);
@@ -166,9 +148,12 @@ public class PaginatedGrid<T> extends Grid<T> {
         pagination.ofText(ofText);
     }
 
-    @Override
-    public void setDataProvider(DataProvider<T, ?> dataProvider) {
-        Objects.requireNonNull(dataProvider, "DataProvider shoul not be null!");
+    public DataProvider<T, ?> dataProvider() {
+        return dataProvider;
+    }
+
+    public void dataProvider(DataProvider<T, ?> dataProvider) {
+        Objects.requireNonNull(dataProvider, "Data provider should not be null!");
         if (!Objects.equals(this.dataProvider, dataProvider)) {
             this.dataProvider = dataProvider;
             this.dataProvider.addDataProviderListener(event -> {
@@ -197,10 +182,12 @@ public class PaginatedGrid<T> extends Grid<T> {
         return pagination.addPageChangeListener(listener);
     }
 
-    /**
-     * Enumeration to define the location of the element relative to the grid
-     **/
-    public enum PaginationLocation {TOP, BOTTOM}
+    private void doCalculations(int newPage) {
+        int offset = (newPage > 0) ? (newPage - 1) * this.getPageSize() : 0;
+        InnerQuery query = new InnerQuery<>(offset);
+        pagination.getTotal(dataProvider.size(query));
+        super.setItems((Collection) dataProvider.fetch(query).collect(Collectors.toList()));
+    }
 
     private class InnerQuery<F> extends Query<T, F> {
         InnerQuery(int offset) {

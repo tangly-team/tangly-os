@@ -64,7 +64,7 @@ public class AnalyticsCrmView extends VerticalLayout {
     private SOChart profitAndLossSoChart;
     private SOChart financialSoChart;
     private SOChart funnelSoChart;
-    private Grid<Contract> contractsGrid;
+    private PaginatedGrid<Contract> contractsGrid;
     private LocalDate from;
     private LocalDate to;
 
@@ -106,9 +106,9 @@ public class AnalyticsCrmView extends VerticalLayout {
         add(new HorizontalLayout(fromDate, toDate), tabs);
     }
 
-    private Grid<Contract> contractsTable() {
+    private PaginatedGrid<Contract> contractsTable() {
         PaginatedGrid<Contract> grid = new PaginatedGrid<>();
-        grid.setDataProvider(DataProvider.ofCollection(crmLogic.realm().contracts().items()));
+        grid.dataProvider(DataProvider.ofCollection(crmLogic.realm().contracts().items()));
         grid.addColumn(Contract::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::fromDate).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);

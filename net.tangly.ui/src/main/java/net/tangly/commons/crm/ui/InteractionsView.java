@@ -23,6 +23,7 @@ import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.NumberRenderer;
+import net.tangly.components.grids.PaginatedGrid;
 import net.tangly.core.codes.CodeType;
 import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.Interaction;
@@ -45,7 +46,7 @@ public class InteractionsView extends InternalEntitiesView<Interaction> {
 
     @Override
     protected void initialize() {
-        Grid<Interaction> grid = grid();
+        PaginatedGrid<Interaction> grid = grid();
         InternalEntitiesView.addQualifiedEntityColumns(grid);
         grid.addColumn(Interaction::code).setKey("state").setHeader("State").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(e -> VaadinUtils.format(e.potential())).setKey("potential").setHeader("Potential").setAutoWidth(true).setResizable(true)

@@ -19,6 +19,7 @@ import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.NumberRenderer;
+import net.tangly.components.grids.PaginatedGrid;
 import net.tangly.core.codes.CodeType;
 import net.tangly.bus.invoices.Article;
 import net.tangly.bus.invoices.ArticleCode;
@@ -54,7 +55,7 @@ public class ArticlesView extends EntitiesView<Article> {
 
     @Override
     protected void initialize() {
-        Grid<Article> grid = grid();
+        PaginatedGrid<Article> grid = grid();
         grid.addColumn(Article::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Article::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Article::code).setKey("code").setHeader("Code").setAutoWidth(true).setResizable(true).setSortable(true);

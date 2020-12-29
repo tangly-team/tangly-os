@@ -20,6 +20,7 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import net.tangly.components.grids.PaginatedGrid;
 import net.tangly.core.HasTags;
 import net.tangly.core.Tag;
 import net.tangly.core.TagType;
@@ -67,7 +68,7 @@ public class TagsView extends EntitiesView<Tag> {
 
     @Override
     protected void initialize() {
-        Grid<Tag> grid = grid();
+        PaginatedGrid<Tag> grid = grid();
         grid.addColumn(Tag::namespace).setKey("namespace").setHeader("Namespace").setSortable(true).setFlexGrow(0).setWidth("10em").setResizable(false);
         grid.addColumn(Tag::name).setKey("name").setHeader("Name").setSortable(true).setFlexGrow(0).setWidth("10em").setResizable(false);
         grid.addColumn(Tag::value).setKey("value").setHeader("Value").setSortable(false).setFlexGrow(0).setWidth("20em").setResizable(false);

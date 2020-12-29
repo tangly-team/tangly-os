@@ -36,14 +36,14 @@ public class TagTypesView extends VerticalLayout {
     public TagTypesView(@NotNull BoundedDomain<?, ?, ?, ?> domain) {
         this.domain = domain;
         this.counts = new HashMap<>();
-        this.grid = new PaginatedGrid<>(TagType.class);
+        this.grid = new PaginatedGrid<>();
         initialize();
     }
 
     protected void initialize() {
         grid.setPageSize(10);
         grid.paginatorSize(3);
-        grid.setDataProvider((ListDataProvider) DataProvider.ofCollection(domain.registry().tagTypes()));
+        grid.dataProvider((ListDataProvider) DataProvider.ofCollection(domain.registry().tagTypes()));
 
         grid.addColumn(TagType::namespace).setKey("namespace").setHeader("Namespace").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(TagType::name).setKey("name").setHeader("Name").setSortable(true).setAutoWidth(true).setResizable(true);

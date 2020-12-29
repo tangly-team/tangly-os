@@ -33,6 +33,7 @@ import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.One2OneField;
 import net.tangly.commons.vaadin.VaadinUtils;
+import net.tangly.components.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
 
 public class ContractsView extends InternalEntitiesView<Contract> {
@@ -48,7 +49,7 @@ public class ContractsView extends InternalEntitiesView<Contract> {
 
     @Override
     protected void initialize() {
-        Grid<Contract> grid = grid();
+        PaginatedGrid<Contract> grid = grid();
         InternalEntitiesView.addQualifiedEntityColumns(grid);
         grid.addColumn(e -> e.sellee().name()).setKey("customer").setHeader("Customer").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(new NumberRenderer<>(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true)

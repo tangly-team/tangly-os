@@ -40,6 +40,7 @@ class LitPagination extends Component implements LitPaginationModel {
      * Gets the size of the page, that is number of elements a page could display.
      *
      * @return the size of the page
+     * @see #pageSize()
      */
     public int pageSize() {
         return getLimit();
@@ -49,6 +50,7 @@ class LitPagination extends Component implements LitPaginationModel {
      * Sets the page size, that is number of items a page could display.
      *
      * @param size new page size
+     * @see #pageSize(int)
      */
     public void pageSize(int size) {
         getLimit(size);
@@ -92,20 +94,10 @@ class LitPagination extends Component implements LitPaginationModel {
             this.oldPage = oldPage;
         }
 
-        /**
-         * Returns the new selected page.
-         *
-         * @return based 1 index of the selected page
-         */
         public int newPage() {
             return newPage;
         }
 
-        /**
-         * Returns the previously selected page before it was changed.
-         *
-         * @return based 1 index of the previously selected page
-         */
         public int oldPage() {
             return oldPage;
         }

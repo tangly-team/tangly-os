@@ -25,6 +25,7 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
+import net.tangly.components.grids.PaginatedGrid;
 import net.tangly.core.HasName;
 import net.tangly.core.QualifiedEntity;
 import net.tangly.core.providers.Provider;
@@ -50,7 +51,7 @@ public class One2ManyView<T extends HasName> extends VerticalLayout {
     private final Crud.Mode mode;
     private final EntitiesView<T> view;
     private final Provider<T> provider;
-    private final Grid<T> grid;
+    private final PaginatedGrid<T> grid;
     private T selectedItem;
 
     private Button details;
@@ -63,8 +64,8 @@ public class One2ManyView<T extends HasName> extends VerticalLayout {
         this.mode = mode;
         this.view = view;
         this.provider = provider;
-        this.grid = new Grid<>(entityClass, false);
-        grid.setDataProvider(DataProvider.ofCollection(provider.items()));
+        this.grid = new PaginatedGrid<>();
+        grid.dataProvider(DataProvider.ofCollection(provider.items()));
         grid.asSingleSelect().addValueChangeListener(event -> selectItem(event.getValue()));
         gridConfigurator.accept(grid);
         setSizeFull();
@@ -100,8 +101,8 @@ public class One2ManyView<T extends HasName> extends VerticalLayout {
         dialog.setResizable(true);
         FormLayout form = view.createForm(operation, operation != CrudForm.Operation.CREATE ? selectedItem : null);
         CrudActionsListener<T> actionsListener = new GridActionsListener<>(provider, grid.getDataProvider(), this::selectItem);
-        dialog.add(new VerticalLayout(form, new HtmlComponent("br"), view.createFormButtons(dialog, operation, mode.isCancellable(), selectedItem,
-            actionsListener)));
+        dialog.add(
+            new VerticalLayout(form, new HtmlComponent("br"), view.createFormButtons(dialog, operation, mode.isCancellable(), selectedItem, actionsListener)));
         dialog.open();
     }
 

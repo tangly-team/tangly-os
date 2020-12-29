@@ -12,13 +12,11 @@
 
 /**
  * The paginated grid adds pagination feature to the Vaadin 14+ Grid component. To do so, it extends the existing Vaadin 14 Grid and creates a custom
- * PaginatedGrid
+ * PaginatedGrid.
+ * <p>An internal LitPagination component is created which handles the pagination and navigation through pages. To use the pagination feature on the grid you
+ * just have to use @link{net.tangly.components.grids.PaginatedGrid} component instead of the standard Vaadin 14+ Grid as follows:</p>
  *
- * <p>>An internal LitPagination component is created which handles the pagination and navigation through pages. To use the pagination feature on the grid you
- * just have to use @link{net.tangly.components.grids.PaginatedGrid} component instead of the standard Vaadin 14+ Grid as follows:</p
- *
- * <pre>
- * @code{
+ * <pre>{@code
  *  PaginatedGrid<Address> grid = new PaginatedGrid<>();
  *
  * 	grid.addColumn(Address::getId).setHeader("ID");
@@ -34,13 +32,10 @@
  *
  * 	// Sets how many pages should be visible on the pagination before and/or after the current selected page
  * 	grid.setPaginatorSize(5);
- *    }
- * </pre>
+ * }</pre>
  * <p>If you want a specific page to be selected on the pagination:</p>
- * <pre>
- * @code {
+ * <pre>{@code
  * 	grid.setPage(4);
- * }
- * </pre>
+ * }</pre>
  */
 package net.tangly.components.grids;

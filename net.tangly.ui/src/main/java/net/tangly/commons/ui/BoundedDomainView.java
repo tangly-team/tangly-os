@@ -10,20 +10,7 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-/**
- * The API is similar to its client-side counterpart:
- *
- * <pre>@{code
- * Canvas canvas = new Canvas(800, 500);
- * CanvasRenderingContext2D ctx = canvas.getContext();
- *
- * // Draw a red line from point (10,10) to (100,100):
- * ctx.setStrokeStyle("red");
- * ctx.beginPath();
- * ctx.moveTo(10, 10);
- * ctx.lineTo(100, 100);
- * ctx.closePath();
- * ctx.stroke();
- * }</pre>
- */
-package net.tangly.components.canvases;
+package net.tangly.commons.ui;
+
+public interface BoundedDomainView {
+}

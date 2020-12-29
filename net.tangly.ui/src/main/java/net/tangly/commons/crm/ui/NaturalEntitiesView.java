@@ -29,6 +29,7 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import com.vaadin.flow.server.StreamResource;
+import net.tangly.components.grids.PaginatedGrid;
 import net.tangly.core.codes.CodeType;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.PhoneNr;
@@ -60,7 +61,7 @@ public class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
 
     @Override
     protected void initialize() {
-        Grid<NaturalEntity> grid = grid();
+        PaginatedGrid<NaturalEntity> grid = grid();
         grid.addColumn(NaturalEntity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(NaturalEntity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(new LocalDateRenderer<>(NaturalEntity::fromDate, DateTimeFormatter.ISO_DATE)).setKey("from").setHeader("From").setAutoWidth(true)
@@ -73,7 +74,6 @@ public class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
             .setHeader("Gender").setAutoWidth(true).setResizable(true);
         grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::individualLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
         addAndExpand(filterCriteria(false, false), grid(), gridButtons());
-
     }
 
     public static void defineOne2ManyEmployees(@NotNull Grid<Employee> grid) {

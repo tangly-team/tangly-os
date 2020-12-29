@@ -33,7 +33,6 @@ import net.tangly.components.canvases.events.MouseUpEvent;
  * canvas</a>.
  * <p>The component is derived from the work under <a href="https://github.com/pekam/vaadin-flow-canvas">Canvas</a>.</p>
  * Use {@link #getContext()} to get API for rendering shapes and images on the canvas.
- * <p>
  */
 @Tag("canvas")
 @SuppressWarnings("serial")
@@ -41,12 +40,9 @@ public class Canvas extends Component implements HasStyle, HasSize, KeyNotifier 
     private CanvasRenderingContext2D context;
 
     /**
-     * Creates a new canvas component with the given size.
-     * <p>
-     * Use the API provided by {@link #getContext()} to render graphics on the canvas.
-     * <p>
-     * The width and height parameters will be used for the canvas' coordinate system. They will determine the size of the component in pixels, unless you
-     * explicitly set the component's size with {@link #setWidth(String)} or {@link #setHeight(String)}.
+     * Creates a new canvas component with the given size. Use the API provided by {@link #getContext()} to render graphics on the canvas. The width and height
+     * parameters will be used for the canvas' coordinate system. They will determine the size of the component in pixels, unless you explicitly set the
+     * component's size with {@link #setWidth(String)} or {@link #setHeight(String)}.
      *
      * @param width  the width of the canvas
      * @param height the height of the canvas
@@ -59,9 +55,8 @@ public class Canvas extends Component implements HasStyle, HasSize, KeyNotifier 
     }
 
     /**
-     * Gets the context for rendering shapes and images in the canvas.
-     * <p>
-     * It is a Java wrapper for the <a href= "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D">same client-side API</a>.
+     * Gets the context for rendering shapes and images in the canvas. It is a Java wrapper for the <a href= "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D">same
+     * client-side API</a>.
      *
      * @return the 2D rendering context of this canvas
      */
@@ -71,10 +66,8 @@ public class Canvas extends Component implements HasStyle, HasSize, KeyNotifier 
 
     /**
      * {@inheritDoc}
-     * <p>
-     * <b>NOTE:</b> Canvas has an internal coordinate system that it uses for
-     * drawing, and it uses the width and height provided in the constructor. This coordinate system is independent of the component's size. Changing the
-     * component's size with this method may scale/stretch the rendered graphics.
+     * <p><b>NOTE:</b> Canvas has an internal coordinate system that it uses for drawing, and it uses the width and height provided in the constructor. This
+     * coordinate system is independent of the component's size. Changing the component's size with this method may scale/stretch the rendered graphics.</p>
      */
     @Override
     public void setWidth(String width) {
@@ -83,10 +76,8 @@ public class Canvas extends Component implements HasStyle, HasSize, KeyNotifier 
 
     /**
      * {@inheritDoc}
-     * <p>
-     * <b>NOTE:</b> Canvas has an internal coordinate system that it uses for
-     * drawing, and it uses the width and height provided in the constructor. This coordinate system is independent of the component's size. Changing the
-     * component's size with this method may scale/stretch the rendered graphics.
+     * <p> <b>NOTE:</b> Canvas has an internal coordinate system that it uses for drawing, and it uses the width and height provided in the constructor. This
+     * coordinate system is independent of the component's size. Changing the component's size with this method may scale/stretch the rendered graphics.</p>
      */
     @Override
     public void setHeight(String height) {
@@ -95,10 +86,8 @@ public class Canvas extends Component implements HasStyle, HasSize, KeyNotifier 
 
     /**
      * {@inheritDoc}
-     * <p>
-     * <b>NOTE:</b> Canvas has an internal coordinate system that it uses for
-     * drawing, and it uses the width and height provided in the constructor. This coordinate system is independent of the component's size. Changing the
-     * component's size with this method may scale/stretch the rendered graphics.
+     * <p><b>NOTE:</b> Canvas has an internal coordinate system that it uses for drawing, and it uses the width and height provided in the constructor. This
+     * coordinate system is independent of the component's size. Changing the component's size with this method may scale/stretch the rendered graphics.</p>
      */
     @Override
     public void setSizeFull() {

@@ -23,6 +23,7 @@ import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.LegalEntity;
+import net.tangly.components.grids.PaginatedGrid;
 import net.tangly.core.providers.ProviderView;
 import net.tangly.commons.vaadin.CommentsView;
 import net.tangly.commons.vaadin.EntitiesView;
@@ -45,7 +46,7 @@ public class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
 
     @Override
     protected void initialize() {
-        Grid<LegalEntity> grid = grid();
+        PaginatedGrid<LegalEntity> grid = grid();
         grid.addColumn(LegalEntity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(VaadinUtils.zefixComponentRenderer()).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(LegalEntity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);

@@ -20,6 +20,7 @@ import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import net.tangly.components.grids.PaginatedGrid;
 import net.tangly.core.codes.CodeType;
 import net.tangly.bus.crm.Activity;
 import net.tangly.bus.crm.ActivityCode;
@@ -42,7 +43,7 @@ public class ActivitiesView extends EntitiesView<Activity> {
 
     @Override
     protected void initialize() {
-        Grid<Activity> grid = grid();
+        PaginatedGrid<Activity> grid = grid();
         grid.addColumn(Activity::date).setKey("date").setHeader("Date").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Activity::code).setKey("code").setHeader("Code").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Activity::duration).setKey("durationInMinutes").setHeader("Duration").setAutoWidth(true).setResizable(true).setSortable(true);
