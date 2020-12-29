@@ -20,7 +20,7 @@ import com.vaadin.flow.component.grid.Grid;
 import net.tangly.bus.products.Assignment;
 import net.tangly.bus.products.ProductsBoundedDomain;
 import net.tangly.commons.vaadin.EntitiesView;
-import net.tangly.commons.vaadin.GridFiltersAndActions;
+import net.tangly.components.grids.GridFiltersAndActions;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;

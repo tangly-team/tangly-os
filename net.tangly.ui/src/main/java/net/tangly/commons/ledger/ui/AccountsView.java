@@ -24,7 +24,7 @@ import com.vaadin.flow.data.binder.Binder;
 import net.tangly.bus.ledger.Account;
 import net.tangly.bus.ledger.LedgerBoundedDomain;
 import net.tangly.commons.vaadin.EntitiesView;
-import net.tangly.commons.vaadin.GridFiltersAndActions;
+import net.tangly.components.grids.GridFiltersAndActions;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 

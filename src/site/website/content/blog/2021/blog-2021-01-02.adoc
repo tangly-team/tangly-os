@@ -12,23 +12,39 @@ tags: ["design", "crm"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2021-01-02-head.jpg[width=420, height=360, role=left]
+image::2021-01-02-head.jpg[width=420,height=360,role=left]
+
+Identifiers are identifiers.
+Identifiers cannot be changed at any time.
+Updating identifiers means introducing mapping relations between the old and the new values.
+
+[quote]
+____
+In computer science, identifiers (IDs) are lexical tokens that name entities.
+Identifiers are used extensively in virtually all information processing systems.
+Identifying entities makes it possible to refer to them, which is essential for any kind of symbolic processing.
+____
 
 === External Well-Defined Identifiers
 
-The best identifiers are externally well-defined identifiers. Examples are
+The best identifiers are externally well-defined identifiers.
+A unique and well-defined authority is responsible to define and publish them.
+Examples are
 
 * Currency names as defined in https://en.wikipedia.org/wiki/ISO_4217[ISO standard 4217],
 * Country abbreviations as define in https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes[ISO standard 3166],
 * Social security numbers are well documented in the country they are used,
 * Car numbers are well-known and documented.
 
-As much as possible try to use global identifiers. Examples are
+As much as possible try to use global identifiers.
+Examples are
 
 * IBAN account numbers are defined worldwide through https://en.wikipedia.org/wiki/International_Bank_Account_Number[ISO 13616],
 * Car numbers and country acronyms are defined worldwide,
-* Passport numbers are defined worldwide. Each country has its own structure and conventions,
-* Social security numbers are a counter-example. There are currently only defined locally.
+* Passport numbers are defined worldwide.
+Each country has its own structure and conventions,
+* Social security numbers are a counter-example.
+There are currently only defined locally.
 
 === External Managed Identifiers
 
@@ -43,7 +59,7 @@ Year - Acronym - Counter
 An example of such an identifier would be
 
     2021-CNT-0001 (Contract number 1 in year 2021)
-    2020-EVT-0101 (Event  number 101 in year 2020)
+    2020-EVT-0101 (Event number 101 in year 2020)
 
 Variations are
 
@@ -56,4 +72,3 @@ Always try to find an external well-defined identifier for your entities.
 
 Avoid by all means to use an internal privately defined identifier as a public one.
 You will bear the burden to document, manage and evolve the scheme as soon as you do this.
-

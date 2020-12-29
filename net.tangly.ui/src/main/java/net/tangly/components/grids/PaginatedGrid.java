@@ -1,4 +1,16 @@
-package net.tangly.components;
+/*
+ * Copyright 2006-2020 Marcel Baumann
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ *          http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ */
+
+package net.tangly.components.grids;
 
 import java.util.List;
 import java.util.Objects;
@@ -17,6 +29,8 @@ import com.vaadin.flow.shared.Registration;
 /**
  * Grid component where scrolling feature is replaced with a pagination component. The grid provider is a list data provider containing the items to be shown in
  * the current grid page. The data provider is stored locally to retrieve the items to be displayed when a page change occurs.
+ * <p>The code is derived from <a href="https://github.com/Klaudeta/grid-pagination">Paginated Grid</a> component. The component has a few drawbacks and is not
+ * well maintained.</p>
  *
  * @param <T> type of the entities displayed in the grid
  */
@@ -36,11 +50,11 @@ public class PaginatedGrid<T> extends Grid<T> {
     }
 
     private void init() {
-        pagination = new LitPagination();
-        paginationLocation = PaginationLocation.BOTTOM;
         dataProvider = super.getDataProvider();
-        setHeightByRows(true);
+        pagination = new LitPagination();
         pagination.addPageChangeListener(e -> doCalcs(e.newPage()));
+        paginationLocation = PaginationLocation.BOTTOM;
+        setHeightByRows(true);
         addSortListener(e -> doCalcs(pagination.getPage()));
     }
 
@@ -117,18 +131,10 @@ public class PaginatedGrid<T> extends Grid<T> {
         pagination.setPage(page);
     }
 
-    /**
-     * @return the location of the pagination element
-     */
     public PaginationLocation paginationLocation() {
         return paginationLocation;
     }
 
-    /**
-     * setter of pagination location
-     *
-     * @param paginationLocation either PaginationLocation.TOP or PaginationLocation.BOTTOM
-     */
     public void paginationLocation(PaginationLocation paginationLocation) {
         this.paginationLocation = paginationLocation;
     }

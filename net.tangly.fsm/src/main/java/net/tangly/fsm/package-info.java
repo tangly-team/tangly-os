@@ -13,7 +13,15 @@
 
 /**
  * <p>The package defines the interfaces to access and work with hierarchical state machines. The interfaces are designed to provide an immutable
- * representation of finite state machine definition.</p>
+ * representation of finite state machine definition. The finite state machine aims to provide following features:</p>
+ * <ul>
+ * <li>Easy to use flat one level state machine for simple use cases.</li>
+ * <li>Hierarchical state machine structure to ease complex state configuration.</li>
+ * <li>Usage of triggers, transitions, guards, transition actions, and state entry or exit actions.</li>
+ * <li>Type safe configuration based on Java generics.</li>
+ * <li>Builder pattern for easy instantiation and legible declaration.</li>
+ * <li>State machine event listeners for advanced requirements.</li>
+ * </ul>
  * <h2>Definitions</h2> <p>The actual state of a state machine is given by its active state configuration and by the contents of its event queue.
  * The active state configuration is the tree of active states; in particular, for every concurrent composite state each of its orthogonal regions is active.
  * The event queue holds the events that have not yet been handled by the machine.</p>

@@ -1,17 +1,16 @@
 /*
  * Copyright 2006-2020 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
- *  a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
- *  under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.commons.vaadin;
+package net.tangly.components.grids;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +27,11 @@ import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.provider.ListDataProvider;
+import net.tangly.commons.vaadin.Crud;
+import net.tangly.commons.vaadin.SelectedItemListener;
 import net.tangly.core.HasInterval;
 import net.tangly.core.HasTags;
 import org.jetbrains.annotations.NotNull;
-import net.tangly.components.PaginatedGrid;
 
 public class GridFiltersAndActions<T> extends HorizontalLayout implements SelectedItemListener<T> {
     /**
@@ -174,7 +174,7 @@ public class GridFiltersAndActions<T> extends HorizontalLayout implements Select
 
         public void addFilter(@NotNull ListDataProvider<E> provider) {
             if (!component.isEmpty()) {
-                provider.addFilter(entity -> getter.apply(entity).contains(component.getValue()));
+                provider.addFilter(entity -> getter.apply(entity).toLowerCase().contains(component.getValue().toLowerCase()));
             }
         }
     }

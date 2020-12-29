@@ -18,7 +18,12 @@ hs_err_pid*
 **/node_modules/
 **/.asciidoctor/
 
+# Covers vaadin specifics
+**/node_modules/
+**/jspm_packages/
+
 /net.tangly.commons.ui/package.json
+/net.tangly.commons.ui/package-lock.json
 /net.tangly.commons.ui/pnpm-lock.yaml
 /net.tangly.commons.ui/pnpmfile.js
 /net.tangly.commons.ui/tsconfig.json

@@ -14,32 +14,28 @@ tags: ["design", "crm"]
 
 image::2021-01-01-head.png[width=420, height=360, role=left]
 
-=== Value Objects
-
-This post is about the value object pattern, and the factory pattern which are tactical patterns in domain driven design (DDD) approach.
+This post is about the value object pattern, and the factory pattern which are tactical patterns in the domain driven design _DDD_ approach.
 Value objects define the second kind of domain objects besides entities.
 Their main characteristic is immutability: _Attributes of a value object never change_.
 A second characteristic is they do not have external identifiers.
-Unlike an entity two value objects with the exact same properties can be considered equal.
+Unlike an entity two value objects with the exact same properties are considered equal.
 
 Value objects do have attributes and methods as entities.
-Attributes of value objects are immutable though which implies that methods of value objects can only be queries.
+Attributes of value objects are immutable therefore methods of value objects can only be queries without side effects.
 Operations never command a change to the internal state of a value object.
-We can pass value objects to clients without worrying that they change them.
+We can pass value objects to clients without worrying they change them.
 
 Many objects can be modeled as value objects instead of entities because they are defined through their attributes.
 These objects measure, quantify or describe things in the domain model.
 Because they are so easy to handle we should model as many value objects as possible.
 
-=== Design Decisions
-
-==== Addresses, Phone Numbers, Email Addresses
+=== Addresses, Phone Numbers, Email Addresses
 
 Some value objects are part of any commercial application domain.
 Postal addresses, phone numbers and email addresses are canonical value objects.
 
 This means that these objects do not have an object identifier and should not be stored in a separate table if stored in a SQL database.
-Value objects shall be embedded objects and part of an object such as a person.
+Value objects shall be embedded objects and be part of an object such as a person.
 
 A person is an entity.
 It should have an external identifier and has a postal address, multiple phone numbers, and one or more email addresses.
@@ -53,12 +49,12 @@ Check your domain model and validate the above assumptions.
 * Programmed in modern Java these value objects should be *records* to guaranty immutability at the language level.
  As a bonus you get the *hashCode* and *equals* methods for free.
 
-==== Invoice Lines
+=== Invoice Lines
 
-Invoice lines are lines containing details in an invoices.
+Invoice lines are lines containing details in an invoice.
 Invoice lines are always value objects belonging to exactly one invoice.
 
-To complicate matter, invoice lines have different types such as a regular line with a specific article, quantity, unit price and price for the quantity.
+To complicate matter, invoice lines have different types such as a regular line with a specific article, quantity, unit price and computed price.
 Often VAT aspects must be considered and computed for the overall invoice.
 An invoice line can also be a subtotal for a set of regular invoice lines.
 
@@ -66,7 +62,7 @@ An invoice line can also be a subtotal for a set of regular invoice lines.
 ====
 VAT definition and computation is often a murky domain.
 The VAT value can be dependant of the article, the company selling it and the client buying it.
-Often when public administration defines a domain and the associated business rules the world becomes quite complicated and ambiguous.
+Often when public administration defines a domain and associated business rules the world becomes quite complicated and ambiguous.
 The VAT administrative laws in Switzerland are more than 2000 pages of illegible text.
 
 The complete definition of this business domain is not part of this article.
@@ -75,7 +71,7 @@ The complete definition of this business domain is not part of this article.
 The following design challenges exist
 
 * Serialization libraries such as JSON Jackson library cannot handle invoice lines with multiple Java class types.
-A workable approach is described and implemented the open source component https://tangly-team.bitbucket.io/docs/gleam/[Gleam].
+A workable approach is described and implemented with the open source component https://tangly-team.bitbucket.io/docs/gleam/[Gleam].
 The solution is to define selectors to instantiate the correct Java class.
 * Invoices are complex objects and ideal candidates for a document oriented persistent approach.
 Invoices should not be stored in a relation based persistence store, meaning a SQL database.
@@ -86,12 +82,13 @@ To store them in a table you have to model the various type of lines and add a t
 The factory pattern in Domain Driven Design _DDD_ can be seen as a super pattern for the Gang of Four (GoF) creational patterns.
 Factories are concerned with creating new entities and value objects.
 They also validate the invariants for the newly created objects.
-We can place a factory on the entity or value object itself or an independent object.
+We can place a factory on the entity or value object itself or on an independent object.
 
 [TIP]
 ====
-Java *record* constructs support validation of properties as part of a constructor.
+Java *record* constructs support validation of properties as part of the constructor.
 Invalid objects cannot be constructed if the constructor validation detects a violation.
+This mechanism ensures only valid instances exist in the domain.
 ====
 
 Factories that are declared on the same object they create are either factory methods or prototype methods.
@@ -102,10 +99,11 @@ The prototype method uses an existing instance to derive a new object.
 ====
 The prototype method is supported with the keyword *with* in C#.
 The JEPs for deconstruction and construction of objects in *switch* statement could provide a similar approach in the future for Java.
+The current version JDK 16 does not support this feature.
 ====
 
 When the creation logic is complex or has dependencies that are not needed by the created object it is best to create a separate factory.
-This factory could then provide multiple ways to create new instances.
+This factory could provide multiple ways to create new instances.
 
 === Value Objects in Persistent Store
 

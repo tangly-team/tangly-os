@@ -21,6 +21,7 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
+import net.tangly.components.grids.GridFiltersAndActions;
 import net.tangly.core.Entity;
 import net.tangly.core.QualifiedEntity;
 import net.tangly.core.TagTypeRegistry;
@@ -64,13 +65,13 @@ public abstract class InternalEntitiesView<T extends Entity> extends EntitiesVie
     }
 
     protected static <T extends QualifiedEntity> void addQualifiedEntityColumns(Grid<T> grid) {
-        grid.addColumn(QualifiedEntity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
-        grid.addColumn(QualifiedEntity::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(QualifiedEntity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(new LocalDateRenderer<>(QualifiedEntity::fromDate, DateTimeFormatter.ISO_DATE)).setKey("from").setHeader("From").setAutoWidth(true)
-            .setResizable(true).setSortable(true);
-        grid.addColumn(new LocalDateRenderer<>(QualifiedEntity::toDate, DateTimeFormatter.ISO_DATE)).setKey("to").setHeader("To").setAutoWidth(true)
-            .setResizable(true).setSortable(true);
+        grid.addColumn(QualifiedEntity::oid).setKey("oid").setHeader("Oid").setResizable(true).setSortable(true).setFlexGrow(0).setWidth("3em");
+        grid.addColumn(QualifiedEntity::id).setKey("id").setHeader("Id").setResizable(true).setSortable(true).setFlexGrow(0).setWidth("5em");
+        grid.addColumn(QualifiedEntity::name).setKey("name").setHeader("Name").setResizable(true).setSortable(true).setFlexGrow(0).setWidth("10em");
+        grid.addColumn(new LocalDateRenderer<>(QualifiedEntity::fromDate, DateTimeFormatter.ISO_DATE)).setKey("from").setHeader("From").setResizable(true)
+            .setSortable(true).setFlexGrow(0).setWidth("5em");
+        grid.addColumn(new LocalDateRenderer<>(QualifiedEntity::toDate, DateTimeFormatter.ISO_DATE)).setKey("to").setHeader("To").setResizable(true)
+            .setSortable(true).setFlexGrow(0).setWidth("5em");
     }
 
     @Override

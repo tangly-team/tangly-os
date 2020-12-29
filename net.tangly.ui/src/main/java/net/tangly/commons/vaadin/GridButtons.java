@@ -81,8 +81,8 @@ public class GridButtons<T> extends HorizontalLayout implements SelectedItemList
         dialog.setCloseOnEsc(true);
         dialog.setCloseOnOutsideClick(false);
         dialog.setModal(false);
-        dialog.setWidth("400vw");
-        dialog.setHeight("80vh");
+        dialog.setWidth("80vw");
+        dialog.setHeight("70vh");
         dialog.setResizable(true);
         dialog.setDraggable(true);
         dialog.add(new VerticalLayout(form.createForm(operation, operation != CrudForm.Operation.CREATE ? selectedItem : null), new HtmlComponent("br"),

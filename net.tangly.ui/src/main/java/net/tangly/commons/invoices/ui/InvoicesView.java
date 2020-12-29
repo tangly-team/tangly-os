@@ -22,7 +22,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoicesBoundedDomain;
 import net.tangly.commons.vaadin.EntitiesView;
-import net.tangly.commons.vaadin.GridFiltersAndActions;
+import net.tangly.components.grids.GridFiltersAndActions;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 

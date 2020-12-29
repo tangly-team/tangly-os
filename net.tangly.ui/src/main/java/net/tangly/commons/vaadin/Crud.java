@@ -18,7 +18,7 @@ import java.util.Set;
 
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
-import net.tangly.components.PaginatedGrid;
+import net.tangly.components.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
 
 /**
