@@ -12,7 +12,7 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2017-10-01-head.jpg[width=420, height=360, role=left]
+image::2017-10-01-head.gif[width=420, height=360, role=left]
 The difficulty with contracts is that it is about trust.
 Here lays the roots for success or disaster.
 
@@ -27,6 +27,7 @@ How shall we be agile and work the lean way in a contractual environment?
 By contractual I mean no time and material approach.
 
 We shall
+
 * Define and rapidly realize the minimum viable product _MVP_.
  It defines success and build trust.
  Use this MVP as anchor during contract negotiation.
@@ -40,27 +41,27 @@ We shall
 
 === Contract
 
-Initial success is the timely _realization_ and _deployment_ of the MVP.
+Initial success is the timely _realization_ and _deployment_ of the https://en.wikipedia.org/wiki/Minimum_viable_product[MVP].
 The MVP is the anchor of trust.
 Use rolling contracts to extend the product.
 
 Priority on Money::
- Frame cost as investment and discuss value with the customer, not just money.
- Fix the budget - money dimension - and have some tentative milestones.
+ Frame cost as investment and discuss value with the customer, not just money. +
+ _Fix the budget - money dimension - and have some tentative milestones.
  Therefore we must invest to prioritize the stories and talk about your MVP.
- Often nice to have functions are never realized.
+ Often nice to have functions are never realized._
 Priority on Time::
  Sometimes, it is not about the cost.
- Instead, there is a deadline, like the end of the fiscal year.
- Fix the product milestones - time dimension -.
+ Instead, there is a deadline, like the end of the fiscal year. +
+ _Fix the product milestones - time dimension -.
  We still must define a budget and prioritize the stories.
- The must stories shall be implemented before deadline and budget can be extended to respect the deadline.
+ The must stories shall be implemented before deadline and budget can be extended to respect the deadline._
 Priority on Scope::
  And in other cases, the scope actually is quite defined, and both money and time are flexible.
- In these cases, it makes sense to fix the scope variable.
- Fix the functionality - scope dimension -. Budget overrun and delays are possible.
+ In these cases, it makes sense to fix the scope variable. +
+ _Fix the functionality - scope dimension -. Budget overrun and delays are possible.
  Defining the scope in advance is less agile.
- You assume you already know everything about the product to build.
+ You assume you already know everything about the product to build._
 
 The contract defines a service.
 The delivered product is the output of the service contract but not the sole item of the contractual binding.

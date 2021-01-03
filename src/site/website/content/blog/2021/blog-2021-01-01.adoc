@@ -1,7 +1,7 @@
 ---
 title: "Value Objects as Embedded Entities"
 linkTitle: "Embedded Value Objects"
-date: 2021-01-10
+date: 2021-01-04
 tags: ["design", "crm"]
 ---
 
@@ -14,25 +14,33 @@ tags: ["design", "crm"]
 
 image::2021-01-01-head.png[width=420, height=360, role=left]
 
-This post is about the value object pattern, and the factory pattern which are tactical patterns in the domain driven design _DDD_ approach.
+This post discusses the value object pattern, and the factory pattern which are tactical patterns in the domain driven design
+https://en.wikipedia.org/wiki/Domain-driven_design[DDD] approach.
 Value objects define the second kind of domain objects besides entities.
-Their main characteristic is immutability: _Attributes of a value object never change_.
+Their main characteristic is immutability:
+
+[quote]
+____
+_Attributes of a value object *never* change_.
+____
+
 A second characteristic is they do not have external identifiers.
 Unlike an entity two value objects with the exact same properties are considered equal.
 
-Value objects do have attributes and methods as entities.
+https://en.wikipedia.org/wiki/Value_object[Value Objects] do have attributes and methods as entities.
 Attributes of value objects are immutable therefore methods of value objects can only be queries without side effects.
 Operations never command a change to the internal state of a value object.
 We can pass value objects to clients without worrying they change them.
 
 Many objects can be modeled as value objects instead of entities because they are defined through their attributes.
 These objects measure, quantify or describe things in the domain model.
-Because they are so easy to handle we should model as many value objects as possible.
+Because they are so easy to handle we should model domain abstractions as value objects as often as possible.
 
 === Addresses, Phone Numbers, Email Addresses
 
 Some value objects are part of any commercial application domain.
 Postal addresses, phone numbers and email addresses are canonical value objects.
+Other candidates are bank account IBAN numbers, job titles, job descriptions, company legal statuses.
 
 This means that these objects do not have an object identifier and should not be stored in a separate table if stored in a SQL database.
 Value objects shall be embedded objects and be part of an object such as a person.
@@ -40,7 +48,7 @@ Value objects shall be embedded objects and be part of an object such as a perso
 A person is an entity.
 It should have an external identifier and has a postal address, multiple phone numbers, and one or more email addresses.
 
-Check your domain model and validate the above assumptions.
+Check your domain model and validate these assumptions.
 
 * Postal address, phone numbers, email addresses are value objects and have no external or internal identifiers.
 * They are always owned by other value objects or more often by entities such as persons, companies, delivery forms.
@@ -48,6 +56,11 @@ Check your domain model and validate the above assumptions.
 * Business processes can replace such an object with a new instance without impeding other domain instances.
 * Programmed in modern Java these value objects should be *records* to guaranty immutability at the language level.
  As a bonus you get the *hashCode* and *equals* methods for free.
+
+[NOTE]
+====
+A Java record class declaration is very compact. Often it is an one liner.
+====
 
 === Invoice Lines
 
@@ -99,7 +112,7 @@ The prototype method uses an existing instance to derive a new object.
 ====
 The prototype method is supported with the keyword *with* in C#.
 The JEPs for deconstruction and construction of objects in *switch* statement could provide a similar approach in the future for Java.
-The current version JDK 16 does not support this feature.
+The current version of Java _JDK 16_ does not support this feature.
 ====
 
 When the creation logic is complex or has dependencies that are not needed by the created object it is best to create a separate factory.
@@ -109,4 +122,13 @@ This factory could provide multiple ways to create new instances.
 
 We encourage experimenting with the https://microstream.one/[MicroStream] approach for small projects.
 The effort to persist a Java object graph is very small.
+
 You can always move to a no SQL solution when your application is succesfull and time is come to harden it.
+Another standard but cumbersome approach is to move to JPA.
+
+Related concepts are discussed in our blog series
+
+. link:../../2020/entities-identifiers-external-identifiers-and-names[Entities, Identifiers, External identifiers and Names]
+. link:../../2020/the-power-of-tags-and-comments[The power of Tags and Comments]
+. link:../../2020/reference-codes[Reference Codes]
+. link:../../2021/value-objects-as-embedded-entities[Value Objects as Embedded Entities]
