@@ -168,7 +168,7 @@ subprojects {
         flyWayVersion = '7.3.2'
         hsqldbVersion = '2.5.1'
         guiceVersion = '4.2.3'
-        jsonValidatorVersion = '1.0.45'
+        jsonValidatorVersion = '1.0.46'
     }
 
     configurations.all {

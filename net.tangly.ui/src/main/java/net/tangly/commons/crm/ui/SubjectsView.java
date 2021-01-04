@@ -22,7 +22,6 @@ import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.server.StreamResource;
 import net.tangly.bus.crm.CrmBoundedDomain;
-import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.bus.crm.Subject;
 import net.tangly.commons.vaadin.EntitiesView;
@@ -32,7 +31,7 @@ import net.tangly.commons.vaadin.One2OneField;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class SubjectsView extends InternalEntitiesView<Subject> {
+class SubjectsView extends InternalEntitiesView<Subject> {
     private final CrmBoundedDomain domain;
 
     public SubjectsView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {

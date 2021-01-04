@@ -72,20 +72,37 @@ public class Crud<T> extends VerticalLayout implements SelectedItemListener<T> {
     }
 
     private final Class<T> entityClass;
-    private final Mode mode;
     private final PaginatedGrid<T> grid;
     private final Set<SelectedItemListener<T>> selectedItemListenerListeners;
+    private Mode mode;
     private T selectedItem;
 
     public Crud(@NotNull Class<T> entityClass, @NotNull Mode mode, @NotNull DataProvider<T, ?> dataProvider) {
         this.entityClass = entityClass;
-        this.mode = mode;
-        this.selectedItemListenerListeners = new HashSet<>();
-
         this.grid = new PaginatedGrid<>();
+        this.selectedItemListenerListeners = new HashSet<>();
+        this.mode = mode;
+        grid.dataProvider(dataProvider);
+        init();
+    }
+
+    public Crud(@NotNull Class<T> entityClass) {
+        this.entityClass = entityClass;
+        this.grid = new PaginatedGrid<>();
+        this.selectedItemListenerListeners = new HashSet<>();
+        init();
+    }
+
+    public static <T> Crud<T> of(@NotNull Class<T> entityClass, @NotNull Mode mode, @NotNull DataProvider<T, ?> dataProvider) {
+        Crud<T> crud = new Crud(entityClass, mode, dataProvider);
+        crud.mode(mode);
+        crud.grid().dataProvider(dataProvider);
+        return crud;
+    }
+
+    protected void init() {
         grid.setPageSize(10);
         grid.paginatorSize(3);
-        grid.dataProvider(dataProvider);
         grid.asSingleSelect().addValueChangeListener(event -> selectedItem(event.getValue()));
         VaadinUtils.initialize(grid());
         grid.setMinHeight("5em");
@@ -110,6 +127,10 @@ public class Crud<T> extends VerticalLayout implements SelectedItemListener<T> {
 
     public Mode mode() {
         return mode;
+    }
+
+    public void mode(Mode mode) {
+        this.mode = mode;
     }
 
     /**

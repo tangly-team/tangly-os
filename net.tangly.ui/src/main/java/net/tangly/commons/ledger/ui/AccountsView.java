@@ -24,14 +24,14 @@ import com.vaadin.flow.data.binder.Binder;
 import net.tangly.bus.ledger.Account;
 import net.tangly.bus.ledger.LedgerBoundedDomain;
 import net.tangly.commons.vaadin.EntitiesView;
-import net.tangly.components.grids.GridFiltersAndActions;
 import net.tangly.commons.vaadin.VaadinUtils;
+import net.tangly.components.grids.GridFiltersAndActions;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * Charts of accounts are defined externally as TSV files. Currently the account view is a read-only view on accounts instances.
  */
-public class AccountsView extends EntitiesView<Account> {
+class AccountsView extends EntitiesView<Account> {
     private final LedgerBoundedDomain domain;
     private LocalDate from;
     private LocalDate to;
@@ -72,7 +72,7 @@ public class AccountsView extends EntitiesView<Account> {
         grid.addColumn(Account::ownedBy).setKey("ownedBy").setHeader("Owned By").setAutoWidth(true).setResizable(true);
 
         GridFiltersAndActions<Account> gridFunctions = gridFiltersAndActions(true, false);
-        gridFunctions.addItemAction("Print", e -> new CmdCreateLedgerDocument(domain));
+        gridFunctions.addItemAction("Print", e -> new CmdCreateLedgerDocument(domain).execute());
         addAndExpand(gridFunctions, grid(), gridButtons());
     }
 

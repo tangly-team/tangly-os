@@ -19,7 +19,6 @@ import java.util.Locale;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
-import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.NumberRenderer;
@@ -36,7 +35,7 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.components.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
 
-public class ContractsView extends InternalEntitiesView<Contract> {
+class ContractsView extends InternalEntitiesView<Contract> {
     private final CrmBoundedDomain domain;
     private final InvoicesBusinessLogic logicInvoices;
 
@@ -53,10 +52,10 @@ public class ContractsView extends InternalEntitiesView<Contract> {
         InternalEntitiesView.addQualifiedEntityColumns(grid);
         grid.addColumn(e -> e.sellee().name()).setKey("customer").setHeader("Customer").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(new NumberRenderer<>(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true)
-                .setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
+            .setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(new NumberRenderer<>(o -> logicInvoices.invoicedAmountWithoutVatForContract(o.id(), null, null), VaadinUtils.FORMAT))
-                .setKey("invoicedAmount").setHeader("Invoiced").setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
-        addAndExpand(filterCriteria( false, false), grid(), gridButtons());
+            .setKey("invoicedAmount").setHeader("Invoiced").setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
+        addAndExpand(filterCriteria(false, false), grid(), gridButtons());
     }
 
     @Override

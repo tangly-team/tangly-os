@@ -85,7 +85,7 @@ Try to avoid a full fledged change management process and systematic escalations
 
 The {ref-manifesto} states
 
-[quote, Agile Manifesto]
+[quote, Agile Manifesto, 2001]
 ____
 Individuals and interactions over processes and tools
 

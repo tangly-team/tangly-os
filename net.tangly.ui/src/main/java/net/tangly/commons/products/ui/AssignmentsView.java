@@ -20,13 +20,13 @@ import com.vaadin.flow.component.grid.Grid;
 import net.tangly.bus.products.Assignment;
 import net.tangly.bus.products.ProductsBoundedDomain;
 import net.tangly.commons.vaadin.EntitiesView;
-import net.tangly.components.grids.GridFiltersAndActions;
 import net.tangly.commons.vaadin.InternalEntitiesView;
+import net.tangly.components.grids.GridFiltersAndActions;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class AssignmentsView extends InternalEntitiesView<Assignment> {
+class AssignmentsView extends InternalEntitiesView<Assignment> {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private final ProductsBoundedDomain domain;
 
@@ -45,8 +45,8 @@ public class AssignmentsView extends InternalEntitiesView<Assignment> {
         grid.addColumn(e -> (e.product() != null) ? e.product().name() : null).setKey("project").setHeader("Project").setSortable(true).setAutoWidth(true)
             .setResizable(true);
         GridFiltersAndActions<Assignment> gridFunctions = gridFiltersAndActions(true, false);
-        gridFunctions.addItemAction("Add Effort", e -> new CmdCreateEffort(selectedItem(),domain));
-        gridFunctions.addItemAction("Print", e -> new CmdCreateAssignmentDocument(selectedItem(), domain));
+        gridFunctions.addItemAction("Add Effort", e -> new CmdCreateEffort(selectedItem(), domain).execute());
+        gridFunctions.addItemAction("Print", e -> new CmdCreateAssignmentDocument(selectedItem(), domain).execute());
         addAndExpand(gridFunctions, grid(), gridButtons());
     }
 

@@ -18,13 +18,10 @@ import java.math.BigDecimal;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
-import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.NumberRenderer;
-import net.tangly.components.grids.PaginatedGrid;
-import net.tangly.core.codes.CodeType;
 import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.Interaction;
 import net.tangly.bus.crm.InteractionCode;
@@ -32,9 +29,11 @@ import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
+import net.tangly.components.grids.PaginatedGrid;
+import net.tangly.core.codes.CodeType;
 import org.jetbrains.annotations.NotNull;
 
-public class InteractionsView extends InternalEntitiesView<Interaction> {
+class InteractionsView extends InternalEntitiesView<Interaction> {
     public static final BigDecimal HUNDRED = new BigDecimal("100");
     private final CrmBoundedDomain domain;
 
@@ -50,12 +49,12 @@ public class InteractionsView extends InternalEntitiesView<Interaction> {
         InternalEntitiesView.addQualifiedEntityColumns(grid);
         grid.addColumn(Interaction::code).setKey("state").setHeader("State").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(e -> VaadinUtils.format(e.potential())).setKey("potential").setHeader("Potential").setAutoWidth(true).setResizable(true)
-                .setSortable(true).setFrozen(true);
+            .setSortable(true).setFrozen(true);
         grid.addColumn(new NumberRenderer<>(e -> HUNDRED.multiply(e.probability()), VaadinUtils.FORMAT)).setKey("probability").setHeader("Probability (%)")
-                .setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
+            .setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(new NumberRenderer<>(e -> e.potential().multiply(e.probability()), VaadinUtils.FORMAT)).setKey("forecast").setHeader("Forecast")
-                .setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
-        addAndExpand(filterCriteria( false, false), grid(), gridButtons());
+            .setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
+        addAndExpand(filterCriteria(false, false), grid(), gridButtons());
     }
 
     @Override

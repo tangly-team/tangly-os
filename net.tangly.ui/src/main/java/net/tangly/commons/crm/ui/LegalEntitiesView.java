@@ -23,8 +23,6 @@ import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.LegalEntity;
-import net.tangly.components.grids.PaginatedGrid;
-import net.tangly.core.providers.ProviderView;
 import net.tangly.commons.vaadin.CommentsView;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.InternalEntitiesView;
@@ -33,9 +31,11 @@ import net.tangly.commons.vaadin.QualifiedEntityField;
 import net.tangly.commons.vaadin.TabsComponent;
 import net.tangly.commons.vaadin.TagsView;
 import net.tangly.commons.vaadin.VaadinUtils;
+import net.tangly.components.grids.PaginatedGrid;
+import net.tangly.core.providers.ProviderView;
 import org.jetbrains.annotations.NotNull;
 
-public class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
+class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
     private final CrmBoundedDomain domain;
 
     public LegalEntitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
@@ -54,10 +54,9 @@ public class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
         grid.addColumn(LegalEntity::toDate).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::organizationLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
         grid.addColumn(VaadinUtils.urlComponentRenderer(CrmTags.CRM_SITE_WORK)).setKey("webSite").setHeader("Web Site").setAutoWidth(true);
-        grid.addColumn(o -> o.tag(CrmTags.CRM_RESPONSIBLE).orElse(null)).setKey("responsible").setHeader("Responsible").setAutoWidth(true)
-            .setSortable(true);
+        grid.addColumn(o -> o.tag(CrmTags.CRM_RESPONSIBLE).orElse(null)).setKey("responsible").setHeader("Responsible").setAutoWidth(true).setSortable(true);
 
-        addAndExpand(filterCriteria( false, false), grid(), gridButtons());
+        addAndExpand(filterCriteria(false, false), grid(), gridButtons());
     }
 
     public static void defineOne2ManyEmployees(@NotNull Grid<Employee> grid) {

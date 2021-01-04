@@ -26,17 +26,17 @@ public record EmailAddress(@NotNull String recipient, @NotNull String domain) {
     private static final Pattern pattern = Pattern.compile(emailRegex);
 
     public static EmailAddress of(@NotNull String email) {
-        String[] parts = email.split("@");
+        String[] parts = Objects.requireNonNull(email).split("@");
         Objects.checkFromIndexSize(0, parts.length, 2);
         return new EmailAddress(parts[0], parts[1]);
     }
 
     public static boolean isValid(String email) {
-        return Strings.isNullOrBlank(email) || pattern.matcher(email).matches();
+        return !Strings.isNullOrBlank(email) && pattern.matcher(email).matches();
     }
 
     public boolean isValid() {
-        return !Strings.isNullOrBlank(domain()) || !Strings.isNullOrBlank(recipient());
+        return !Strings.isNullOrBlank(domain()) && !Strings.isNullOrBlank(recipient());
     }
 
     public String text() {

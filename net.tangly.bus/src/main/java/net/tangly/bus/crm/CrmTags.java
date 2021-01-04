@@ -34,6 +34,9 @@ import org.jetbrains.annotations.NotNull;
  * standard tags such a location tags.
  */
 public final class CrmTags {
+    /**
+     * Defines the tag categories for tags accordingly to the VCard RFC.
+     */
     public enum Type {
         home, work, mobile
     }

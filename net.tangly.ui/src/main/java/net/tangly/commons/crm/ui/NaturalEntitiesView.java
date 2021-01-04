@@ -29,16 +29,11 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import com.vaadin.flow.server.StreamResource;
-import net.tangly.components.grids.PaginatedGrid;
-import net.tangly.core.codes.CodeType;
-import net.tangly.core.EmailAddress;
-import net.tangly.core.PhoneNr;
 import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.GenderCode;
 import net.tangly.bus.crm.NaturalEntity;
-import net.tangly.core.providers.ProviderView;
 import net.tangly.commons.vaadin.CodeField;
 import net.tangly.commons.vaadin.CommentsView;
 import net.tangly.commons.vaadin.EntitiesView;
@@ -48,9 +43,14 @@ import net.tangly.commons.vaadin.One2ManyView;
 import net.tangly.commons.vaadin.TabsComponent;
 import net.tangly.commons.vaadin.TagsView;
 import net.tangly.commons.vaadin.VaadinUtils;
+import net.tangly.components.grids.PaginatedGrid;
+import net.tangly.core.EmailAddress;
+import net.tangly.core.PhoneNr;
+import net.tangly.core.codes.CodeType;
+import net.tangly.core.providers.ProviderView;
 import org.jetbrains.annotations.NotNull;
 
-public class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
+class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
     private final CrmBoundedDomain domain;
 
     public NaturalEntitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {

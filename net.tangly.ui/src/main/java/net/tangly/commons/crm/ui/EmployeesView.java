@@ -15,7 +15,6 @@ package net.tangly.commons.crm.ui;
 
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.grid.Grid;
 import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.CrmTags;
 import net.tangly.bus.crm.Employee;
@@ -29,7 +28,7 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.components.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
 
-public class EmployeesView extends InternalEntitiesView<Employee> {
+class EmployeesView extends InternalEntitiesView<Employee> {
     private final CrmBoundedDomain domain;
 
     public EmployeesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
@@ -45,7 +44,7 @@ public class EmployeesView extends InternalEntitiesView<Employee> {
         grid.addColumn(e -> e.person().name()).setKey("person").setHeader("Person").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.organization().name()).setKey("organization").setHeader("Organization").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.tag(CrmTags.CRM_EMPLOYEE_TITLE).orElse("")).setKey("title").setHeader("Title").setSortable(true).setAutoWidth(true)
-                .setResizable(true);
+            .setResizable(true);
         addAndExpand(filterCriteria(false, false), grid(), gridButtons());
     }
 

@@ -23,23 +23,31 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoicesBoundedDomain;
-import net.tangly.bus.invoices.InvoicesBusinessLogic;
+import net.tangly.commons.domain.ui.Cmd;
 import net.tangly.commons.vaadin.VaadinUtils;
+import org.jetbrains.annotations.NotNull;
 
-public class CmdCreateInvoiceDocument extends Dialog {
+public class CmdCreateInvoiceDocument extends Dialog implements Cmd {
     private final Checkbox withQrCode;
     private final Checkbox withEN16931;
+    private final TextField name;
+    private final InvoicesBoundedDomain domain;
+    private final Invoice invoice;
 
-    public CmdCreateInvoiceDocument(Invoice invoice, InvoicesBoundedDomain domain) {
-        FormLayout form = new FormLayout();
-        VaadinUtils.setResponsiveSteps(form);
-
-        TextField name = new TextField("Name");
+    public CmdCreateInvoiceDocument(@NotNull Invoice invoice, @NotNull InvoicesBoundedDomain domain) {
+        this.invoice = invoice;
+        this.domain = domain;
+        name = new TextField("Name");
         name.setReadOnly(true);
         name.setValue(invoice.name());
         withQrCode = new Checkbox("with QR Code");
         withEN16931 = new Checkbox("with EN 16931");
+    }
 
+    @Override
+    public void execute() {
+        FormLayout form = new FormLayout();
+        VaadinUtils.setResponsiveSteps(form);
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
             domain.port().exportInvoiceDocument(invoice, withQrCode.getValue(), withEN16931.getValue());
             this.close();
@@ -49,5 +57,6 @@ public class CmdCreateInvoiceDocument extends Dialog {
         form.add(name, new HtmlComponent("br"), withQrCode, withEN16931, new HtmlComponent("br"), new HorizontalLayout(execute, cancel));
         add(form);
         open();
+
     }
 }

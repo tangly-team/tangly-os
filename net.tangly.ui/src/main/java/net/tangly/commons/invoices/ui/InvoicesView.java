@@ -26,7 +26,7 @@ import net.tangly.components.grids.GridFiltersAndActions;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class InvoicesView extends EntitiesView<Invoice> {
+class InvoicesView extends EntitiesView<Invoice> {
     private final InvoicesBoundedDomain domain;
     private final TextField id;
     private final TextField name;
@@ -56,7 +56,7 @@ public class InvoicesView extends EntitiesView<Invoice> {
             .setSortable(true);
         grid.addColumn(Invoice::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
         GridFiltersAndActions<Invoice> gridFunctions = gridFiltersAndActions(true, false);
-        gridFunctions.addItemAction("Print", e -> new CmdCreateInvoiceDocument(selectedItem(), domain));
+        gridFunctions.addItemAction("Print", e -> new CmdCreateInvoiceDocument(selectedItem(), domain).execute());
         addAndExpand(gridFunctions, grid(), gridButtons());
     }
 

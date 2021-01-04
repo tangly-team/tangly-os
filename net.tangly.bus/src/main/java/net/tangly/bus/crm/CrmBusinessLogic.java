@@ -41,6 +41,12 @@ public class CrmBusinessLogic {
         return realm().subjects().items().stream().filter(o -> o.id().equals(username) && o.authenticate(password)).findAny();
     }
 
+    public boolean changePassword(String username, String password, String newPassword) {
+        Optional<Subject> subject = realm().subjects().items().stream().filter(o -> o.id().equals(username) && o.authenticate(password)).findAny();
+        subject.ifPresent(o -> o.newPassword(newPassword));
+        return subject.isPresent();
+    }
+
     /**
      * Sets the end date property of interaction to the end date of the last contract associated with the interaction in the case of customer and completed
      * state. Set the end date property of interaction to the end date of the last activity associated with the interaction in the case of lost state.

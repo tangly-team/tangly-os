@@ -15,23 +15,22 @@ package net.tangly.commons.crm.ui;
 
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import net.tangly.components.grids.PaginatedGrid;
-import net.tangly.core.codes.CodeType;
 import net.tangly.bus.crm.Activity;
 import net.tangly.bus.crm.ActivityCode;
 import net.tangly.bus.crm.CrmBoundedDomain;
-import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.commons.vaadin.CodeField;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
+import net.tangly.components.grids.PaginatedGrid;
+import net.tangly.core.codes.CodeType;
+import net.tangly.core.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
 
-public class ActivitiesView extends EntitiesView<Activity> {
+class ActivitiesView extends EntitiesView<Activity> {
     private final CrmBoundedDomain domain;
     private Binder<Activity> binder;
 

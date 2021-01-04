@@ -29,7 +29,7 @@ import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class ArticlesView extends EntitiesView<Article> {
+class ArticlesView extends EntitiesView<Article> {
     private final InvoicesBoundedDomain domain;
     private final TextField id;
     private final TextField name;

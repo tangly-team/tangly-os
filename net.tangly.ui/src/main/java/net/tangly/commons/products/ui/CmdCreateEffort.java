@@ -32,15 +32,19 @@ import com.vaadin.flow.data.binder.ValidationException;
 import net.tangly.bus.products.Assignment;
 import net.tangly.bus.products.Effort;
 import net.tangly.bus.products.ProductsBoundedDomain;
-import net.tangly.commons.lang.ReflectionUtilities;
+import net.tangly.commons.domain.ui.Cmd;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class CmdCreateEffort extends Dialog {
+public class CmdCreateEffort extends Dialog implements Cmd {
     private final Binder<Effort> binder;
     private final Effort effort;
+    private final Assignment assignment;
+    private final ProductsBoundedDomain domain;
 
     public CmdCreateEffort(@NotNull Assignment assignment, @NotNull ProductsBoundedDomain domain) {
+        this.assignment = assignment;
+        this.domain = domain;
         binder = new Binder<>();
         effort = new Effort();
         effort.assignment(assignment);
@@ -49,6 +53,10 @@ public class CmdCreateEffort extends Dialog {
         if (contractIds.size() == 1) {
             effort.contractId(contractIds.get(0));
         }
+    }
+
+    @Override
+    public void execute() {
         setResizable(true);
         add(create(domain));
         open();
@@ -63,8 +71,9 @@ public class CmdCreateEffort extends Dialog {
         TextField collaboratorId = VaadinUtils.createTextField("Collaborator ID", "collaborator id", true, false);
         DatePicker date = VaadinUtils.createDatePicker("Date");
         IntegerField duration = new IntegerField("Duration", "duration");
-        // TODO add validation duration > 0
         duration.setRequiredIndicatorVisible(true);
+        duration.setHasControls(true);
+        duration.setMin(1);
         TextField contract = null;
         ComboBox<String> contracts = null;
         List<String> contractIds = effort.assignment().product().contractIds();

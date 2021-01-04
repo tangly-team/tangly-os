@@ -25,12 +25,11 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.bus.ledger.LedgerBoundedDomain;
 import net.tangly.bus.ledger.Transaction;
-import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class TransactionsView extends EntitiesView<Transaction> {
+class TransactionsView extends EntitiesView<Transaction> {
     private final LedgerBoundedDomain domain;
     private LocalDate from;
     private LocalDate to;
@@ -67,7 +66,6 @@ public class TransactionsView extends EntitiesView<Transaction> {
         DatePicker date = VaadinUtils.createDatePicker("date");
         TextField text = VaadinUtils.createTextField("Text", "text");
         TextField reference = VaadinUtils.createTextField("Reference", "reference");
-        // TODO debit and credit account as pull down selection
         ComboBox<String> debitAccount = new ComboBox<>("Debit");
         debitAccount.setItems(domain.logic().bookableAccountIds());
         debitAccount.setClearButtonVisible(true);

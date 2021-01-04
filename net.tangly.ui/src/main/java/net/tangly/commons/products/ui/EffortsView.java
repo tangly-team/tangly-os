@@ -26,7 +26,7 @@ import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class EffortsView extends EntitiesView<Effort> {
+class EffortsView extends EntitiesView<Effort> {
     private final ProductsBoundedDomain domain;
     private Binder<Effort> binder;
 

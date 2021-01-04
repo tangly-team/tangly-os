@@ -35,7 +35,6 @@ import com.storedobject.chart.Size;
 import com.storedobject.chart.XAxis;
 import com.storedobject.chart.YAxis;
 import com.vaadin.flow.component.datepicker.DatePicker;
-import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
@@ -114,11 +113,11 @@ public class AnalyticsCrmView extends VerticalLayout {
         grid.addColumn(Contract::fromDate).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::toDate).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(VaadinUtils.coloredRender(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setHeader("Amount").setAutoWidth(true).setResizable(true)
-                .setSortable(true);
+            .setSortable(true);
         grid.addColumn(VaadinUtils.coloredRender(o -> invoicesLogic.invoicedAmountWithoutVatForContract(o.id(), from, to), VaadinUtils.FORMAT))
-                .setHeader("Invoiced").setAutoWidth(true).setResizable(true).setSortable(true);
+            .setHeader("Invoiced").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(VaadinUtils.coloredRender(o -> invoicesLogic.expensesForContract(o.id(), from, to), VaadinUtils.FORMAT)).setHeader("Expenses")
-                .setAutoWidth(true).setResizable(true).setSortable(true);
+            .setAutoWidth(true).setResizable(true).setSortable(true);
         return grid;
     }
 
@@ -170,11 +169,11 @@ public class AnalyticsCrmView extends VerticalLayout {
         rc.setPosition(chartPosition);
 
         LineChart turnoversChart = createLineChart("Turnover", xValues,
-                (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? ledgerLogic.turnover(start, end) : BigDecimal.ZERO, rc);
+            (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? ledgerLogic.turnover(start, end) : BigDecimal.ZERO, rc);
         LineChart ebitsCharts = createLineChart("EBIT", xValues,
-                (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? ledgerLogic.ebit(start, end) : BigDecimal.ZERO, rc);
+            (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? ledgerLogic.ebit(start, end) : BigDecimal.ZERO, rc);
         LineChart earningsChart = createLineChart("Earnings", xValues,
-                (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? ledgerLogic.earnings(start, end) : BigDecimal.ZERO, rc);
+            (LocalDate start, LocalDate end) -> ((start != null) && (end != null)) ? ledgerLogic.earnings(start, end) : BigDecimal.ZERO, rc);
 
         chart.add(turnoversChart, ebitsCharts, earningsChart);
     }
@@ -192,15 +191,15 @@ public class AnalyticsCrmView extends VerticalLayout {
         rc.setPosition(chartPosition);
 
         LineChart shortTermThirdPartyCapitalChart = createLineChart("Short-Term Third Party Capital", xValues,
-                (LocalDate start, LocalDate end) -> (end != null) ? ledgerLogic.balance(LedgerAdapter.SHORT_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() :
-                        BigDecimal.ZERO, rc);
+            (LocalDate start, LocalDate end) -> (end != null) ? ledgerLogic.balance(LedgerAdapter.SHORT_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() :
+                BigDecimal.ZERO, rc);
         LineChart longTermThirdPartyCapitalChart = createLineChart("LOng-Term Third Party Capital", xValues,
-                (LocalDate start, LocalDate end) -> (end != null) ? ledgerLogic.balance(LedgerAdapter.LONG_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() :
-                        BigDecimal.ZERO, rc);
+            (LocalDate start, LocalDate end) -> (end != null) ? ledgerLogic.balance(LedgerAdapter.LONG_TERM_THIRD_PARTY_CAPITAL_ACCOUNT, end).negate() :
+                BigDecimal.ZERO, rc);
         LineChart cashOnHandChart = createLineChart("Cash On Hand", xValues,
-                (LocalDate start, LocalDate end) -> (end != null) ? ledgerLogic.balance(LedgerAdapter.CASH_ON_HAND_ACCOUNT, end) : BigDecimal.ZERO, rc);
+            (LocalDate start, LocalDate end) -> (end != null) ? ledgerLogic.balance(LedgerAdapter.CASH_ON_HAND_ACCOUNT, end) : BigDecimal.ZERO, rc);
         LineChart equityChart = createLineChart("Equity", xValues,
-                (LocalDate start, LocalDate end) -> (end != null) ? ledgerLogic.balance(LedgerAdapter.EQUITY_ACCOUNT, end).negate() : BigDecimal.ZERO, rc);
+            (LocalDate start, LocalDate end) -> (end != null) ? ledgerLogic.balance(LedgerAdapter.EQUITY_ACCOUNT, end).negate() : BigDecimal.ZERO, rc);
 
         chart.add(shortTermThirdPartyCapitalChart, cashOnHandChart, longTermThirdPartyCapitalChart, equityChart);
     }
@@ -208,8 +207,8 @@ public class AnalyticsCrmView extends VerticalLayout {
     private void funnelChart(@NotNull SOChart chart) {
         CategoryData labels = new CategoryData("Prospects", "Leads", "Customers", "Lost", "Completed");
         Data data = new Data(crmLogic.funnel(InteractionCode.prospect, from, to), crmLogic.funnel(InteractionCode.lead, from, to),
-                crmLogic.funnel(InteractionCode.customer, from, to), crmLogic.funnel(InteractionCode.lost, from, to),
-                crmLogic.funnel(InteractionCode.completed, from, to));
+            crmLogic.funnel(InteractionCode.customer, from, to), crmLogic.funnel(InteractionCode.lost, from, to),
+            crmLogic.funnel(InteractionCode.completed, from, to));
         BarChart barchart = new BarChart(labels, data);
         RectangularCoordinate rc = new RectangularCoordinate(new XAxis(DataType.CATEGORY), new YAxis(DataType.NUMBER));
         Position chartPosition = new Position();

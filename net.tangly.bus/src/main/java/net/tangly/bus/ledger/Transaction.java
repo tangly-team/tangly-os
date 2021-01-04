@@ -15,8 +15,10 @@ package net.tangly.bus.ledger;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * A simple transaction is a money transfer between a debit and a credit accounts. A split transaction is a money transfer between a debit account and a set of
@@ -24,29 +26,77 @@ import java.util.List;
  * of transactions have one debit and one credit account. The class is immutable.
  */
 public class Transaction {
+    public static class Builder {
+        private LocalDate date;
+        private String reference;
+        private String text;
+        private List<AccountEntry> splits;
+
+        Builder() {
+            splits = new ArrayList<>();
+        }
+
+        Builder date(LocalDate date) {
+            this.date = date;
+            return this;
+        }
+
+        Builder reference(String reference) {
+            this.reference = reference;
+            return this;
+        }
+
+        Builder text(String text) {
+            this.text = text;
+            return this;
+        }
+
+        Builder debit(String account, BigDecimal amount) {
+            splits.add(new AccountEntry(account, date, amount, reference, true));
+            return this;
+        }
+
+        Builder credit(String account, BigDecimal amount) {
+            splits.add(new AccountEntry(account, date, amount, reference, false));
+            return this;
+        }
+
+        Transaction build() {
+            List<AccountEntry> debits = splits.stream().filter(AccountEntry::isDebit).collect(Collectors.toList());
+            List<AccountEntry> credits = splits.stream().filter(AccountEntry::isCredit).collect(Collectors.toList());
+            BigDecimal amount = (debits.size() == 1) ? debits.get(0).amount() : ((credits.size() == 1) ? credits.get(0).amount() : BigDecimal.ZERO);
+            return new Transaction(date, text, reference, amount, (debits.size() == 1) ? debits.get(0) : null, (credits.size() == 1) ? credits.get(0) : null,
+                (debits.size() > 1) ? debits : ((credits.size() > 1) ? credits : null));
+        }
+    }
+
     private final LocalDate date;
+    private final String reference;
+    private final String text;
+    private final BigDecimal amount;
     private final AccountEntry debit;
     private final AccountEntry credit;
     private final List<AccountEntry> splits;
-    private final String reference;
-    private final String text;
 
     public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, String text, String reference) {
-        this.date = date;
-        this.text = text;
-        this.reference = reference;
-        this.debit = new AccountEntry(debitAccount, date, amount, reference, true);
-        this.credit = new AccountEntry(creditAccount, date, amount, reference, false);
-        this.splits = Collections.emptyList();
+        this(date, text, reference, amount, new AccountEntry(debitAccount, date, amount, reference, true),
+            new AccountEntry(creditAccount, date, amount, reference, false), null);
     }
 
     public Transaction(LocalDate date, String debitAccount, String creditAccount, BigDecimal amount, List<AccountEntry> splits, String text, String reference) {
+        this(date, text, reference, amount, (debitAccount != null) ? new AccountEntry(debitAccount, date, amount, reference, true) : null,
+            (creditAccount != null) ? new AccountEntry(creditAccount, date, amount, reference, false) : null, splits);
+    }
+
+    protected Transaction(LocalDate date, String text, String reference, BigDecimal amount, AccountEntry debit, AccountEntry credit,
+                          List<AccountEntry> splits) {
         this.date = date;
         this.text = text;
         this.reference = reference;
-        this.debit = (debitAccount != null) ? new AccountEntry(debitAccount, date, amount, reference, true) : null;
-        this.credit = (creditAccount != null) ? new AccountEntry(creditAccount, date, amount, reference, false) : null;
-        this.splits = List.copyOf(splits);
+        this.amount = amount;
+        this.debit = debit;
+        this.credit = credit;
+        this.splits = (splits != null) ? List.copyOf(splits) : Collections.emptyList();
     }
 
     public static Transaction of(String date, int debitAccount, int creditAccount, String amount, String text) {
@@ -143,4 +193,3 @@ public class Transaction {
             """.formatted(date(), debitAccount(), creditAccount(), splits, reference(), text());
     }
 }
-

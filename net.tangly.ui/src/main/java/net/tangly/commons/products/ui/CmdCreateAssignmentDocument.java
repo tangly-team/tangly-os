@@ -23,37 +23,43 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.bus.products.Assignment;
 import net.tangly.bus.products.ProductsBoundedDomain;
-import net.tangly.bus.products.ProductsBusinessLogic;
+import net.tangly.commons.domain.ui.Cmd;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class CmdCreateAssignmentDocument extends Dialog {
+public class CmdCreateAssignmentDocument extends Dialog implements Cmd {
     private final TextField assignmentName;
     private final TextField collaboratorName;
     private final DatePicker fromDate;
     private final DatePicker toDate;
+    private final Assignment assignment;
+    private final ProductsBoundedDomain domain;
 
     public CmdCreateAssignmentDocument(@NotNull Assignment assignment, @NotNull ProductsBoundedDomain domain) {
-        FormLayout form = new FormLayout();
-        VaadinUtils.setResponsiveSteps(form);
-
+        this.assignment = assignment;
+        this.domain = domain;
         assignmentName = VaadinUtils.createTextField("Assignment", "assignment name", true);
         VaadinUtils.setValue(assignmentName, assignment.id());
         collaboratorName = VaadinUtils.createTextField("Collaborator", "collaborator name", true);
         VaadinUtils.setValue(collaboratorName, assignment.name());
-
         fromDate = VaadinUtils.createDatePicker("From");
         toDate = VaadinUtils.createDatePicker("To");
 
+    }
+
+    @Override
+    public void execute() {
+        FormLayout form = new FormLayout();
+        VaadinUtils.setResponsiveSteps(form);
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
             domain.port().exportEffortsDocument(assignment, fromDate.getValue(), toDate.getValue());
             this.close();
         });
         Button cancel = new Button("Cancel", e -> this.close());
-
         form.add(assignmentName, collaboratorName, new HtmlComponent("br"), fromDate, toDate, new HtmlComponent("br"), new HorizontalLayout(execute, cancel));
         add(form);
         setResizable(true);
         open();
+
     }
 }
