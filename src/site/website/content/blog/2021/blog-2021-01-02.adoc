@@ -14,14 +14,15 @@ tags: ["design", "crm", "serie-identifiers"]
 
 image::2021-01-02-head.jpg[width=420,height=360,role=left]
 
-Identifiers are identifiers.
+Identifiers are a key concept to sucessfully model complex business domains.
+Identifiers are *identifiers*.
 Identifiers cannot be changed at any time.
 Updating identifiers means introducing mapping relations between the old and the new values.
 
 [quote]
 ____
-In computer science, identifiers (IDs) are lexical tokens that name entities.
-Identifiers are used extensively in virtually all information processing systems.
+In computer science, identifiers _IDs_ are lexical tokens that name entities. +
+Identifiers are used extensively in virtually all information processing systems. +
 Identifying entities makes it possible to refer to them, which is essential for any kind of symbolic processing.
 ____
 
@@ -29,6 +30,9 @@ ____
 
 The best identifiers are externally well-defined identifiers.
 A unique and well-defined authority is responsible to define and publish them.
+Ideally the authority should only create new identifiers and never delete existing ones.
+The published information is available to all interested parties.
+
 Examples are
 
 * Currency names as defined in https://en.wikipedia.org/wiki/ISO_4217[ISO standard 4217],
@@ -37,9 +41,13 @@ Examples are
 * Car numbers are well-known and documented.
 
 As much as possible try to use global identifiers.
+Always document the authority in charge to create the identifiers.
+
 Examples are
 
 * IBAN account numbers are defined worldwide through https://en.wikipedia.org/wiki/International_Bank_Account_Number[ISO 13616],
+* Bank connections are defined as Business Identifier Codes through https://en.wikipedia.org/wiki/ISO_9362[BIC ISO 9362].
+The registration authority is https://en.wikipedia.org/wiki/Society_for_Worldwide_Interbank_Financial_Telecommunication[SWIFT],
 * Car numbers and country acronyms are defined worldwide,
 * Passport numbers are defined worldwide.
 Each country has its own structure and conventions,
@@ -69,6 +77,15 @@ Variations are
 === Lessons Learnt
 
 Always try to find an external well-defined identifier for your entities.
+Beware of legal aspects when you are using government defined identifiers such as social security numbers, passport numbers or car numbers.
 
 Avoid by all means to use an internal privately defined identifier as a public one.
 You will bear the burden to document, manage and evolve the scheme as soon as you do this.
+
+Related concepts are discussed in our blog series
+
+. link:../../2020/entities-identifiers-external-identifiers-and-names[Entities, Identifiers, External identifiers and Names]
+. link:../../2020/the-power-of-tags-and-comments[The power of Tags and Comments]
+. link:../../2020/reference-codes[Reference Codes]
+. link:../../2021/value-objects-as-embedded-entities[Value Objects as Embedded Entities]
+. link:../../2021/meaningful-identifiers[Meaningful Identifiers]

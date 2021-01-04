@@ -171,9 +171,10 @@ See our blog how to extend the entity concept with the powerful and flexible con
 
 Another blog shows a constrained form of tags using the concept of reference codes also called reference tables or lookup tables.
 
-Related concepts are discussed in our blog series:
+Related concepts are discussed in our blog series
 
 . link:../../2020/entities-identifiers-external-identifiers-and-names[Entities, Identifiers, External identifiers and Names]
 . link:../../2020/the-power-of-tags-and-comments[The power of Tags and Comments]
 . link:../../2020/reference-codes[Reference Codes]
 . link:../../2021/value-objects-as-embedded-entities[Value Objects as Embedded Entities]
+. link:../../2021/meaningful-identifiers[Meaningful Identifiers]

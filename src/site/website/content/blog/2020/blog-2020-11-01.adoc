@@ -146,3 +146,4 @@ Related concepts are discussed in our blog series
 . link:../../2020/the-power-of-tags-and-comments[The power of Tags and Comments]
 . link:../../2020/reference-codes[Reference Codes]
 . link:../../2021/value-objects-as-embedded-entities[Value Objects as Embedded Entities]
+. link:../../2021/meaningful-identifiers[Meaningful Identifiers]

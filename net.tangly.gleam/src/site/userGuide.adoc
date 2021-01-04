@@ -1,5 +1,5 @@
 ---
-title: "User Guide Gleaam"
+title: "User Guide Gleam"
 date: 2019-05-01
 weight: 40
 draft: false
