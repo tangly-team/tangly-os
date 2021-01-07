@@ -1,14 +1,13 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2021 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
- *  a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
- *  under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
 /**
@@ -19,5 +18,7 @@
  * <p>Through iterations the optimal mixins were identified. The _HasOid_ marks an instance internally stored in a repository. The _HasId_ marks an instance
  * shared with other bounded domains and having a unique public identifier. The _HasName_ marks an instance with human-readable identification characteristic. A
  * name is often not unique and also used for entities without a recognized external identifier.</p>
+ * <p>Value objects constructors can throw an illegal parameter exception if the parameters violates domain validity constraints. The factory methods <i>of</i>
+ * either return a valid object or null without throwing exceptions.</p>
  */
 package net.tangly.core;

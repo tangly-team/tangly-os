@@ -25,14 +25,18 @@ class EmailAddressTest {
 
      @Test
      void testConstructors() {
-         assertThat(EmailAddress.of(CORRECT_ADDRESS)).isNotNull();
+         assertThat(new EmailAddress("john.doe", "somewhere.edu")).isNotNull();
+         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> new EmailAddress("", ""));
+         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> new EmailAddress("", "somewhere.edu"));
+         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> new EmailAddress("john.doe", ""));
      }
 
     @Test
     void testAddressOf() {
-        assertThatExceptionOfType(ArrayIndexOutOfBoundsException.class).isThrownBy(() -> EmailAddress.of(WRONG_ADDRESS_1));
-        assertThatExceptionOfType(ArrayIndexOutOfBoundsException.class).isThrownBy(() -> EmailAddress.of(WRONG_ADDRESS_2));
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> EmailAddress.of(WRONG_ADDRESS_3));
+        assertThat(EmailAddress.of(CORRECT_ADDRESS)).isNotNull();
+        assertThat(EmailAddress.of(WRONG_ADDRESS_1)).isNull();
+        assertThat(EmailAddress.of(WRONG_ADDRESS_2)).isNull();
+        assertThat(EmailAddress.of(WRONG_ADDRESS_3)).isNull();
     }
 
     @Test

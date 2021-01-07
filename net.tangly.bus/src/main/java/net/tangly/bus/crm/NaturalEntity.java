@@ -84,8 +84,7 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
     @Override
     public boolean check() {
         return !Strings.isNullOrBlank(lastname()) && (gender() != null) &&
-                (phoneNr(CrmTags.Type.home).isEmpty() || phoneNr(CrmTags.Type.home).orElseThrow().isValid()) &&
-                email(CrmTags.Type.home).map(EmailAddress::isValid).orElse(true);
+                (phoneNr(CrmTags.Type.home).isEmpty() || phoneNr(CrmTags.Type.home).orElseThrow().isValid());
     }
 
     @Override

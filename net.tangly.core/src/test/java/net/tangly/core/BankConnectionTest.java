@@ -55,4 +55,24 @@ public class BankConnectionTest {
         connection = new BankConnection("CH88 0900 0000 3064 1768 2");
         assertThat(BankConnection.of(connection.text())).isEqualTo(connection);
     }
+
+    @Test
+    void validateIbanAndBicTest() {
+        assertThat(BankConnection.validateIban("CH88 0900 0000 3064 1768 2")).isTrue();
+        assertThat(BankConnection.validateIban("DE27 1007 7777 0209 2997 00")).isTrue();
+        assertThat(BankConnection.validateIban("BE68 8440 1037 0034")).isTrue();
+        assertThat(BankConnection.validateIban("FR76 3006 6100 4100 0105 7380 116")).isTrue();
+        assertThat(BankConnection.validateIban("IT68 D030 0203 2800 0040 0162 854")).isTrue();
+        assertThat(BankConnection.validateIban("LI10 0880 0000 0201 7630 6")).isTrue();
+        assertThat(BankConnection.validateIban("PT50 0035 0683 0000 0007 8431 1")).isTrue();
+        assertThat(BankConnection.validateIban("AT02 2050 3021 0102 3600")).isTrue();
+        assertThat(BankConnection.validateBic("POFICHBEXXX")).isTrue();
+        assertThat(BankConnection.validateBic("UBSBCHZZXXX")).isTrue();
+    }
+
+    @Test
+    void validateInvalidIbanAndInvalidBicTest() {
+        assertThat(BankConnection.validateIban("CH8809000000306417682")).isFalse();
+        assertThat(BankConnection.validateBic("DUMMYBIC")).isFalse();
+    }
 }

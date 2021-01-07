@@ -145,13 +145,7 @@ public final class TsvHdl {
     }
 
     public static TsvEntity<BankConnection> createTsvBankConnection() {
-        Function<CSVRecord, BankConnection> imports = (CSVRecord record) -> {
-            BankConnection connection = new BankConnection(get(record, IBAN), get(record, BIC), get(record, INSTITUTE));
-            if (!connection.isValid()) {
-                logger.atWarn().log("Invalid bank connection {}", connection);
-            }
-            return connection;
-        };
+        Function<CSVRecord, BankConnection> imports = (CSVRecord record) -> BankConnection.of(get(record, IBAN), get(record, BIC), get(record, INSTITUTE));
         List<TsvProperty<BankConnection, ?>> fields =
             List.of(TsvProperty.ofString("iban", BankConnection::iban, null), TsvProperty.ofString("bic", BankConnection::bic, null),
                 TsvProperty.ofString(INSTITUTE, BankConnection::institute, null));

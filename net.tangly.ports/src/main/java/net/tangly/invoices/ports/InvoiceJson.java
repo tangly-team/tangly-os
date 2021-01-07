@@ -115,10 +115,8 @@ public class InvoiceJson implements InvoiceGenerator {
     }
 
     public static JsonEntity<BankConnection> createJsonBankConnection() {
-        Function<JSONObject, BankConnection> imports = object -> {
-            BankConnection connection = new BankConnection(JsonField.get("iban", object), JsonField.get("bic", object), JsonField.get("institute", object));
-            return (connection.isValid()) ? connection : null;
-        };
+        Function<JSONObject, BankConnection> imports =
+            object -> BankConnection.of(JsonField.get("iban", object), JsonField.get("bic", object), JsonField.get("institute", object));
         List<JsonField<BankConnection, ?>> fields =
             List.of(JsonProperty.ofString("iban", BankConnection::iban, null), JsonProperty.ofString("bic", BankConnection::bic, null),
                 JsonProperty.ofString("institute", BankConnection::institute, null));
