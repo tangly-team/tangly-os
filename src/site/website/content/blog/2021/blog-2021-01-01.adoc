@@ -16,6 +16,10 @@ image::2021-01-01-head.png[width=420, height=360, role=left]
 
 This post discusses the value object pattern, and the factory pattern which are tactical patterns in the domain driven design
 https://en.wikipedia.org/wiki/Domain-driven_design[DDD] approach.
+
+Value objects represent typed values, that have no conceptual identity in your domain.
+They can hel you write better code that is less error-prone, more performant and more expressive.
+
 Value objects define the second kind of domain objects besides entities.
 Their main characteristic is immutability:
 
@@ -26,6 +30,10 @@ ____
 
 A second characteristic is they do not have external identifiers.
 Unlike an entity two value objects with the exact same properties are considered equal.
+
+A third one is they should be self-validating.
+A value object shall verify the validity of its attributes when being created.
+If any of its attributes are invalid, the objecgt should not be created and an error or exception should be raised.
 
 https://en.wikipedia.org/wiki/Value_object[Value Objects] do have attributes and methods as entities.
 Attributes of value objects are immutable therefore methods of value objects can only be queries without side effects.
