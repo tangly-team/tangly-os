@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Describes a bank connection with IBAN account number, BIC identification and name of the institute. The class is immutable.
  */
-public record BankConnection(String iban, String bic, String institute) {
+public record BankConnection(@NotNull String iban, String bic, String institute) {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     /**
@@ -45,13 +45,34 @@ public record BankConnection(String iban, String bic, String institute) {
         return new BankConnection(iban, bic, institute);
     }
 
+    public BankConnection {
+        if (Strings.isNullOrBlank(iban) || !validateIban(iban)) {
+            throw new IllegalArgumentException("Illegal IBAN number " + iban);
+        }
+        if (!Strings.isNullOrBlank(bic) && !validateBic(bic)) {
+            throw new IllegalArgumentException("Illegal BIC number " + bic);
+        }
+    }
+
+    public BankConnection(@NotNull String iban) {
+        this(iban, null, null);
+    }
+
+    public BankConnection(@NotNull String iban, String bic) {
+        this(iban, bic, null);
+    }
+
     /**
-     * Returns true if the bank connection is a valid one
+     * Builds a bank connection object from a comma separated string representation.
      *
-     * @return true if the bank connection is valid otherwise false
+     * @param text comma separated representation of the address instance
+     * @return new address object
+     * @see BankConnection#text()
      */
-    public boolean isValid() {
-        return ((!Strings.isNullOrBlank(iban()) && validateIban(iban()))) && (Strings.isNullOrBlank(bic()) || validateBic(bic()));
+    public static BankConnection of(@NotNull String text) {
+        var parts = Objects.requireNonNull(text).split(",", -1);
+        Objects.checkFromIndexSize(0, parts.length, 3);
+        return new BankConnection(Strings.normalizeToNull(parts[0]), Strings.normalizeToNull(parts[1]), Strings.normalizeToNull(parts[2]));
     }
 
     /**
@@ -84,19 +105,6 @@ public record BankConnection(String iban, String bic, String institute) {
             logger.atWarn().setCause(e).log("Error validating BIC {}", bic);
             return false;
         }
-    }
-
-    /**
-     * Builds a bank connection object from a comma separated string representation.
-     *
-     * @param text comma separated representation of the address instance
-     * @return new address object
-     * @see BankConnection#text()
-     */
-    public static BankConnection of(@NotNull String text) {
-        var parts = Objects.requireNonNull(text).split(",", -1);
-        Objects.checkFromIndexSize(0, parts.length, 3);
-        return new BankConnection(parts[0], parts[1], parts[2]);
     }
 
     /**

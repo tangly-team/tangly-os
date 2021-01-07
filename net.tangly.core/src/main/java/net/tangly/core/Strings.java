@@ -41,4 +41,12 @@ public final class Strings {
     public static String nullToEmpty(String string) {
         return Objects.isNull(string) ? "" : string;
     }
+
+    public static String trim(String string) {
+        return (string == null) ? null : string.trim();
+    }
+
+    public static String normalizeToNull(String string) {
+        return isNullOrEmpty(string) ? null : string.trim();
+    }
 }

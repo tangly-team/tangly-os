@@ -81,37 +81,37 @@ public record Address(String street, String extended, String poBox, String postc
         private String country;
 
         public Builder street(String street) {
-            this.street = Strings.blankToNull(street);
+            this.street = Strings.normalizeToNull(street);
             return this;
         }
 
         public Builder extended(String extended) {
-            this.extended = Strings.blankToNull(extended);
+            this.extended = Strings.normalizeToNull(extended);
             return this;
         }
 
         public Builder poBox(String poBox) {
-            this.poBox = Strings.blankToNull(poBox);
+            this.poBox = Strings.normalizeToNull(poBox);
             return this;
         }
 
         public Builder postcode(String postcode) {
-            this.postcode = Strings.blankToNull(postcode);
+            this.postcode = Strings.normalizeToNull(postcode);
             return this;
         }
 
         public Builder locality(String locality) {
-            this.locality = Strings.blankToNull(locality);
+            this.locality = Strings.normalizeToNull(locality);
             return this;
         }
 
         public Builder region(String region) {
-            this.region = Strings.blankToNull(region);
+            this.region = Strings.normalizeToNull(region);
             return this;
         }
 
         public Builder country(String country) {
-            this.country = Strings.blankToNull(country);
+            this.country = Strings.normalizeToNull(country);
             return this;
         }
 

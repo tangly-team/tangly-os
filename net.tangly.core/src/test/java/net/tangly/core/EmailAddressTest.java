@@ -23,12 +23,16 @@ class EmailAddressTest {
      static final String WRONG_ADDRESS_2 = "                      ";
      static final String WRONG_ADDRESS_3 = "@somewhere.edu";
 
+     @Test
+     void testConstructors() {
+         assertThat(EmailAddress.of(CORRECT_ADDRESS)).isNotNull();
+     }
+
     @Test
     void testAddressOf() {
-        assertThat(EmailAddress.of(CORRECT_ADDRESS).isValid()).isTrue();
-        assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> EmailAddress.of(WRONG_ADDRESS_1));
-        assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> EmailAddress.of(WRONG_ADDRESS_2));
-        assertThat(EmailAddress.of(WRONG_ADDRESS_3).isValid()).isFalse();
+        assertThatExceptionOfType(ArrayIndexOutOfBoundsException.class).isThrownBy(() -> EmailAddress.of(WRONG_ADDRESS_1));
+        assertThatExceptionOfType(ArrayIndexOutOfBoundsException.class).isThrownBy(() -> EmailAddress.of(WRONG_ADDRESS_2));
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> EmailAddress.of(WRONG_ADDRESS_3));
     }
 
     @Test
@@ -41,6 +45,8 @@ class EmailAddressTest {
 
     @Test
     void testToString() {
-        assertThat(EmailAddress.of(CORRECT_ADDRESS).text()).isEqualTo(CORRECT_ADDRESS);
+        var address = EmailAddress.of(CORRECT_ADDRESS);
+        assertThat(address.text()).isEqualTo(CORRECT_ADDRESS);
+        assertThat(EmailAddress.of(address.text())).isEqualTo(address);
     }
 }

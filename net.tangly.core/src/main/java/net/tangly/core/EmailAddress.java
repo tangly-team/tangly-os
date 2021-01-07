@@ -28,17 +28,28 @@ public record EmailAddress(@NotNull String recipient, @NotNull String domain) {
     public static EmailAddress of(@NotNull String email) {
         String[] parts = Objects.requireNonNull(email).split("@");
         Objects.checkFromIndexSize(0, parts.length, 2);
-        return new EmailAddress(parts[0], parts[1]);
+        return new EmailAddress(Strings.normalizeToNull(parts[0]), Strings.normalizeToNull(parts[1]));
+    }
+
+    public EmailAddress {
+        if (Strings.isNullOrBlank(domain)) {
+            throw new IllegalArgumentException("Illegal domain " + domain);
+        }
+        if (Strings.isNullOrBlank(recipient)) {
+            throw new IllegalArgumentException("Illegal recipient " + recipient);
+        }
     }
 
     public static boolean isValid(String email) {
         return !Strings.isNullOrBlank(email) && pattern.matcher(email).matches();
     }
 
-    public boolean isValid() {
-        return !Strings.isNullOrBlank(domain()) && !Strings.isNullOrBlank(recipient());
-    }
-
+    /**
+     * Returns a text representation of an email address. The {@link Object#toString()} method is not used * because the implementation is defined in the API
+     * implementation of record construct. The generated string can be feed to the {@link * EmailAddress#of(String)} to create an email address object.
+     *
+     * @return text representation
+     */
     public String text() {
         return recipient() + "@" + domain();
     }
