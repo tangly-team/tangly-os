@@ -14,7 +14,6 @@
 package net.tangly.bus.crm;
 
 
-import net.tangly.core.EmailAddress;
 import net.tangly.core.EntityImp;
 import net.tangly.core.Strings;
 
@@ -83,14 +82,13 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
 
     @Override
     public boolean check() {
-        return !Strings.isNullOrBlank(lastname()) && (gender() != null) &&
-                (phoneNr(CrmTags.Type.home).isEmpty() || phoneNr(CrmTags.Type.home).orElseThrow().isValid());
+        return !Strings.isNullOrBlank(lastname()) && (gender() != null) && phoneNr(CrmTags.Type.home).isEmpty();
     }
 
     @Override
     public String toString() {
         return """
-                NaturalEntity[oid=%s, fromDate=%s, toDate=%s, text=%s, firstname=%s, lastname=%s, gender=%s, tags=%s]
-                """.formatted(oid(), fromDate(), toDate(), text(), firstname(), lastname(), gender(), tags());
+            NaturalEntity[oid=%s, fromDate=%s, toDate=%s, text=%s, firstname=%s, lastname=%s, gender=%s, tags=%s]
+            """.formatted(oid(), fromDate(), toDate(), text(), firstname(), lastname(), gender(), tags());
     }
 }

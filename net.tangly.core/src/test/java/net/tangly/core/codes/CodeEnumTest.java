@@ -12,8 +12,6 @@
 
 package net.tangly.core.codes;
 
-import java.util.Optional;
-
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -54,7 +52,7 @@ class CodeEnumTest {
 
     @Test
     void testCodeTest() {
-        final CodeType<EnumCode> type = CodeType.of(EnumCode.class);
+        final var type = CodeType.of(EnumCode.class);
         assertThat(type.codes()).isNotEmpty();
         assertThat(type.codes().size()).isEqualTo(5);
         assertThat(type.activeCodes().size()).isEqualTo(4);
@@ -65,9 +63,9 @@ class CodeEnumTest {
 
     @Test
     void testFindAndEquivalence() {
-        final CodeType<EnumCode> type = CodeType.of(EnumCode.class);
-        Optional<EnumCode> code1 = type.findCode(EnumCode.CODE_TEST_2.id());
-        Optional<EnumCode> code2 = type.findCode(EnumCode.CODE_TEST_2.code());
+        final var type = CodeType.of(EnumCode.class);
+        var code1 = type.findCode(EnumCode.CODE_TEST_2.id());
+        var code2 = type.findCode(EnumCode.CODE_TEST_2.code());
         if (code1.isPresent() && code2.isPresent()) {
             assertThat(code1.get() == code2.get()).isTrue();
             assertThat(code1.get().equals(code2.get())).isTrue();

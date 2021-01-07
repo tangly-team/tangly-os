@@ -22,9 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CodeJsonTest {
     @Test
     void testCodeType() throws IOException {
-        net.tangly.core.codes.CodeType<net.tangly.core.codes.TestCode> type =
-                net.tangly.core.codes.CodeHelper.build(
-                    net.tangly.core.codes.TestCode.class, net.tangly.core.codes.TestCode::new, Paths.get(getClass().getClassLoader().getResource("json/TestCodes.json").getPath()));
+        var type = CodeHelper.build(TestCode.class, TestCode::new, Paths.get(getClass().getClassLoader().getResource("json/TestCodes.json").getPath()));
         assertThat(type.codes().size()).isEqualTo(5);
     }
 }

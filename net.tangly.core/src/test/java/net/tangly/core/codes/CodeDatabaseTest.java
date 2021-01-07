@@ -50,7 +50,7 @@ class CodeDatabaseTest {
 
     @Test
     void testTestCodes() throws SQLException {
-        CodeType<TestCode> type = CodeHelper.build(TestCode.class, TestCode::new, datasource, "tangly.dbCode");
+        var type = CodeHelper.build(TestCode.class, TestCode::new, datasource, "tangly.dbCode");
         assertThat(type.activeCodes().size()).isEqualTo(5);
         assertThat(type.findCode(0).isPresent()).isTrue();
         assertThat(type.findCode(1).isPresent()).isTrue();

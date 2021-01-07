@@ -27,9 +27,8 @@ public class AddressTest {
 
     @Test
     void buildAddressTest() {
-        Address address =
-                Address.builder().street(STREET).extended(EXTENDED).poBox(POBOX).locality(LOCALITY).postcode(POSTCODE).region(REGION).country(COUNTRY)
-                        .build();
+        var address =
+            Address.builder().street(STREET).extended(EXTENDED).poBox(POBOX).locality(LOCALITY).postcode(POSTCODE).region(REGION).country(COUNTRY).build();
         assertThat(address.street()).isEqualTo(STREET);
         assertThat(address.extended()).isEqualTo(EXTENDED);
         assertThat(address.poBox()).isEqualTo(POBOX);
@@ -40,9 +39,8 @@ public class AddressTest {
 
     @Test
     void buildAddressFromString() {
-        Address original =
-                Address.builder().street(STREET).extended(EXTENDED).poBox(POBOX).locality(LOCALITY).postcode(POSTCODE).region(REGION).country(COUNTRY)
-                        .build();
+        var original =
+            Address.builder().street(STREET).extended(EXTENDED).poBox(POBOX).locality(LOCALITY).postcode(POSTCODE).region(REGION).country(COUNTRY).build();
         Address copy = Address.of(original.text());
         assertThat(copy).isEqualTo(original);
         assertThat(copy.hashCode()).isEqualTo(original.hashCode());
@@ -50,8 +48,8 @@ public class AddressTest {
 
     @Test
     void testEmptyAddressTextAndOf() {
-        Address original = Address.builder().build();
-        Address copy = Address.of(original.text());
+        var original = Address.builder().build();
+        var copy = Address.of(original.text());
         assertThat(copy).isEqualTo(original);
         assertThat(copy.hashCode()).isEqualTo(original.hashCode());
     }

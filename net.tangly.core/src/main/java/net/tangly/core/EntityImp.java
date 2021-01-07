@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
  * @see QualifiedEntity
  */
 public abstract class EntityImp implements Entity {
-    private long oid;
+    private final long oid;
     private String text;
     private LocalDate fromDate;
     private LocalDate toDate;
