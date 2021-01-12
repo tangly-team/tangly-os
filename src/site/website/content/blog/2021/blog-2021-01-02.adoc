@@ -1,7 +1,7 @@
 ---
 title: "Meaningful Identifiers"
 linkTitle: "Meaningful Identifiers"
-date: 2021-01-15
+date: 2021-01-12
 tags: ["design", "crm", "serie-identifiers"]
 ---
 
@@ -14,8 +14,12 @@ tags: ["design", "crm", "serie-identifiers"]
 
 image::2021-01-02-head.jpg[width=420,height=360,role=left]
 
-Identifiers are a key concept to sucessfully model complex business domains.
+Identifiers are a key concept to successfully model complex business domains.
+They permeate how our modern civilisation functions.
+Could you imagine a country without car registration number, internet addresses, postal addresses or social security numbers.
+
 Identifiers are *identifiers*.
+
 Identifiers cannot be changed at any time.
 Updating identifiers means introducing mapping relations between the old and the new values.
 
@@ -40,10 +44,10 @@ Examples are
 * Social security numbers are well documented in the country they are used,
 * Car numbers are well-known and documented.
 
-As much as possible try to use global identifiers.
-Always document the authority in charge to create the identifiers.
+As much as possible try to use global externally defined identifiers.
+Always document the authority in charge to create these identifiers.
 
-Examples are
+Examples you are using are
 
 * IBAN account numbers are defined worldwide through https://en.wikipedia.org/wiki/International_Bank_Account_Number[ISO 13616],
 * Bank connections are defined as Business Identifier Codes through https://en.wikipedia.org/wiki/ISO_9362[BIC ISO 9362].
@@ -57,6 +61,9 @@ There are currently only defined locally.
 === External Managed Identifiers
 
 You shall document the source of truth for all externally defined and managed identifiers.
+
+The source of truth shall work as a benevolent responsible.
+It should support all interested parties and guaranty their identifiers can be trusted.
 
 === Internal Managed Identifiers
 
@@ -72,7 +79,12 @@ An example of such an identifier would be
 Variations are
 
 * A full date as prefix, our system uses this convention to name invoices,
-* A more readable acronym, our system uses the word invoice to name invoices.
+* A more readable acronym, our ERP system uses the word invoice to name invoices.
+
+Beware if you export internal managed identifiers you become a source of truth.
+You are responsible to document these identifiers, and the process to create new ones.
+You shall also guaranty that existing identifiers are never recycled.
+If your identifiers are strings, you shall clearly defined the supported languages, and character sets.
 
 === Lessons Learnt
 

@@ -13,17 +13,18 @@ menu:
 {{% blocks/lead %}}
 
 <a href="https://www.tangly.net">tangly llc</a> is a small company specialized in software craftsmanship, technical excellence, agile transformation, Scrum
-, LeSS and lean. 
+, LeSS and lean.
 
-Our technology stack is Java.
+Our technology stack is Modern Java.
 
-As a strong supporter of open source we published our open source components. 
+As a strong supporter of open source we published our open source components.
 {{% /blocks/lead %}}
 
 {{< blocks/section >}}
 <div class="col-12">
+<h1 class="text-center">Our Values</h1>
 <h2 class="text-center">Do the Right Thing</h2>
-<div style="text-align: center;">Respect and tolerance</div> 
+<div style="text-align: center;">Respect and tolerance</div>
 <div style="text-align: center;">Solidarity and social responsibility</div>
 <div style="text-align: center;">Curiosity, creativity and passion</div>
 <div style="text-align: center;">Transparency and integrity</div>
@@ -40,9 +41,10 @@ As a strong supporter of open source we published our open source components.
 <div class="col-12">
 <h1 class="text-center">Technical Information</h1>
 
-The static website is generated using Hugo and Asciidoctor. 
-We write all technical documents and blogs in the asciidoc syntax. 
-The theme of our site is docsy.
+The static website is generated using [Hugo](https://gohugo.io/) and [Asciidoctor](https://asciidoctor.org/).
+We use the Hugo [docsy](https://www.docsy.dev/) theme.
+
+We write all technical documents and blogs using the asciidoc syntax.
 
 The website repository is hosted on [tangly bitbucket documentation repository](https://bitbucket.org/tangly-team/tangly-team.bitbucket.io/).
 </div>

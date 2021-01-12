@@ -39,9 +39,10 @@ Be honest with yourself and your teams, either you implement the techniques desc
 not agile and have no {ref-safe} power engine.
 It is called https://en.wikipedia.org/wiki/Cargo_cult_programming[cargo cult].
 
-A good starting point are the five dimensions of build-in quality described in {ref-safe} 4.6. And yes now {ref-safe} acknowledged the tremendous importance of a
+A good starting point are the five dimensions of build-in quality described in {ref-safe} 4.6.
+And yes now {ref-safe} acknowledged the tremendous importance of a
 https://v46.scaledagileframework.com/continuous-delivery-pipeline/[continuous delivery pipeline].
-And experts agree you can apply DevOps only if you have continuous integration, delivery and deployment.
+Experts agree you can apply DevOps only if you have continuous integration, delivery and deployment.
 
 Once you realize where your organization stands remember that build-in quality is one of tour core values of {ref-safe}.
 That I mean is walk the talk.

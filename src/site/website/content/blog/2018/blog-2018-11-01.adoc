@@ -81,14 +81,15 @@ Stop evaluating, start implementing!
 
 === Continuous Integration Practices
 
-Check your process to see which continuous practices you are really mastering M
+Check your process to see which continuous practices you are really mastering
+
 * Maintain a single source repository - no long-lived branches
 * Automate the build - no manual inputs, no manual configuration, automatically triggered
 * Make your build self testing - TDD, ATDD, static metrics, semantic checks
 * Everyone commits to trunk every day
 * Every commit should build trunk on an integration machine
 * Fix broken build immediately - _lean red button stopping production, everybody helps fix the broken build_
-Keep the build fast - _We are talking of minutes not, hours_
+Keep the build fast - _We are talking of minutes not hours_
 * Test in an integration staging area which is a clone of the production environment - the goal is to have docker images, virtual network, and in-memory
 database to be fast
 * Make it easy for anyone to get the latest packaged release

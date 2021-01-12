@@ -2,7 +2,7 @@
 title: "Value Objects as Embedded Entities"
 linkTitle: "Embedded Value Objects"
 date: 2021-01-04
-tags: ["design", "crm"]
+tags: ["design", "crm", "serie-identifiers"]
 ---
 
 == Value Objects as Embedded Entities
@@ -12,7 +12,7 @@ tags: ["design", "crm"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2021-01-01-head.png[width=420, height=360, role=left]
+image::2021-01-01-head.png[width=420,height=360,role=left]
 
 This post discusses the value object pattern, and the factory pattern which are tactical patterns in the domain driven design
 https://en.wikipedia.org/wiki/Domain-driven_design[DDD] approach.
@@ -63,11 +63,12 @@ Check your domain model and validate these assumptions.
 * They are immutable objects.
 * Business processes can replace such an object with a new instance without impeding other domain instances.
 * Programmed in modern Java these value objects should be *records* to guaranty immutability at the language level.
- As a bonus you get the *hashCode* and *equals* methods for free.
+As a bonus you get the *hashCode* and *equals* methods for free.
 
 [NOTE]
 ====
-A Java record class declaration is very compact. Often it is an one liner.
+A Java record class declaration is very compact.
+Often it is an one liner.
 ====
 
 === Invoice Lines

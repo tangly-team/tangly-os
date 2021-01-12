@@ -76,6 +76,7 @@ Hamcrest::
 
 Please never access a database or a file system when running unit tests. If you low level tests with files just use an
 https://github.com/google/jimfs[in-memory file system mock].
+footnote:[After years of neglect, a Jimfs 1.2 was released in January 2021 and published on maven central.]
 
 Each time an error is found in productive code, write first a test to reproduce it, then correct the error.
 This approach guarantees the same error will never again occur.

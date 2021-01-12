@@ -1,18 +1,18 @@
 ---
-title: "How Should You handle Definition of Done?"
-linkTitle: "Definition of Done"
+title: "Introduce Agile in A Company"
+linkTitle: "Shu Ha Ri"
 date: 2018-09-25
 tags: ["agile"]
 ---
 
-== How Should You handle Definition of Done?
+== Introduce Agile in A Company: Shu Ha Ri
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2018-09-01-head.png[width=420, height=360, role=left]
+image::2018-09-01-head.png[width=420,height=360,role=left]
 First teams have successfully used Scrum to develop applications.
 The news spread out and everybody wants to apply Scrum.
 It is time to introduce Enterprise wide Agile with Scrum or Kanban or XP.
@@ -57,14 +57,15 @@ First they facilitate and support the teams to implement all meetings, artifacts
 Second they train the team members how to use the learnt techniques such as clean code, pair programming, pair check-in, agile architecture, requirements elicitation, test driven development, agile quality assurance, acceptance test driven development, continuous integration, deployment and delivery.
 
 After the initial training the coaches ensure that this knowledge and ground rules are applied in daily activities.
-[options ="header"]
+
+[options ="header",frame="all",grid="all"]
 |===
 ^|Developer |Business Analyst / PO |SM / PL / Line Manager |Quality Manager / Tester |Others
 5+^|Agile and Scrum Introduction(1 day)
 4+^|Scrum Master (2 days) |
 4+^|Product Owner (2 days)|
 
-a|* agile  and clean developer
+a|* agile and clean developer
 * TDD
 * ATTD
 * Agile Development Game
@@ -101,12 +102,11 @@ We recommend
 === Ha – Proficient Level - “Bend the Rules”
 
 The duration of the “proficient level” will be up to two years.
-The goal is to reinforce the learnt techniques and become proficient in using them. T
-he motto is
+The goal is to reinforce the learnt techniques and become proficient in using them.
+T he motto is
 
 [.text-center]
-_Most difficulties in Scrum don't arise from learning the Scrum framework._
-_Rather they arise in applying the framework on an existing organizational structure and culture._
+_Most difficulties in Scrum don't arise from learning the Scrum framework._ _Rather they arise in applying the framework on an existing organizational structure and culture._
 
 This requires hands-on experienced guidance, and not just at the team level, but at the leadership and organizational level.
 See below the discussion about enterprise transformation.
@@ -115,20 +115,26 @@ We recommend
 
 . An Agile (eXtreme Programming techniques) and Scrum coach responsible of four to five Scrum teams.
 . Two coaches of coaches for the growth of internal Scrum coaches for the company.
-. Start to blend the team coaching with the company wide changes. See below the chapter “Organization Transformation”.
+. Start to blend the team coaching with the company wide changes.
+See below the chapter “Organization Transformation”.
 . Workshops could be organized for selected products or teams to solve identified major impediments.
 
 === Ri – Expert Level - “Break the Rules”
 
 The “expert level” will be reached earliest after two years.
-It is reasonable to state that not all collaborators will reach this level of expertise. The goal is to transfer ownership of the agile approaches to Company collaborators. The company will take over the responsibility to reinforce agile and Scrum activities and resolve newly identified impediments in products or at company level. The motto is
+It is reasonable to state that not all collaborators will reach this level of expertise.
+The goal is to transfer ownership of the agile approaches to Company collaborators.
+The company will take over the responsibility to reinforce agile and Scrum activities and resolve newly identified impediments in products or at company level.
+The motto is
 
 [.text-center]
-_*Doing* agile is easy. *Being* agile is hard._
+_*Doing* agile is easy.
+*Being* agile is hard._
 
 We recommend
 
-. An Agile and Scrum coach responsible for six to eight Scrum teams. The internal coaches should start taking responsibilities
+. An Agile and Scrum coach responsible for six to eight Scrum teams.
+The internal coaches should start taking responsibilities
 . A center of competence for the growth of internal Scrum coaches for the company.
 
 === Company Transformation
@@ -138,16 +144,15 @@ We work on the cultural, organization, and process level to enable agility in th
 
 Workshops with key managers will
 
-* Discuss the fact that the standard competencies of agile leadership and coaching – mentoring, facilitating, problem-solving, and conflict navigating – are
- essential to agile adoption, but simply not enough to sustain and grow agility within an organization.
- We find that the unique blend of combining senior internal leaders with experienced agile coaches provides an unprecedented learning environment for all.
+* Discuss the fact that the standard competencies of agile leadership and coaching – mentoring, facilitating, problem-solving, and conflict navigating – are essential to agile adoption, but simply not enough to sustain and grow agility within an organization.
+We find that the unique blend of combining senior internal leaders with experienced agile coaches provides an unprecedented learning environment for all.
 * Understand that most organizations adopt agile "Outside-In" - that means they start with a process change and expose organizational impediments.
- The problem is that most of the organizational impediments are driven from cultural values deep within the organization.
-  the process changes rarely stick,
+The problem is that most of the organizational impediments are driven from cultural values deep within the organization.
+the process changes rarely stick,
 * Identify an "Inside-Out" approach - that means we will start with the company culture.
- Just as understanding the personality of a person is a key to working effectively with that person, understanding the culture of an organization is critical to its success in adopting, and more importantly sustaining, agility.
+Just as understanding the personality of a person is a key to working effectively with that person, understanding the culture of an organization is critical to its success in adopting, and more importantly sustaining, agility.
 * Explore a number of organizational systems and structures which enable (or impede) agility at an organizational level.
- This approach sets the priority first to the culture, second to the structure and third to the processes of the company
+This approach sets the priority first to the culture, second to the structure and third to the processes of the company
 
 We recommend
 
@@ -155,22 +160,23 @@ We recommend
 . One Coach at C-level,
 . Transform the company one product line after the other, delay the broad deployment to have time to learn and improve,
 . Study {ref-less} as a valuable approach.
- We strongly support {ref-less} as an ideal candidate for company wide agile approach,
+We strongly support {ref-less} as an ideal candidate for company wide agile approach,
 . Implement selected company-wide measures during the second phase of the change management process when the development department moves to proficient level.
- Top managers must realize that cultural elements must first be modified before the structure and the processes of the company can be adapted,
+Top managers must realize that cultural elements must first be modified before the structure and the processes of the company can be adapted,
 . Be patient and do not loose your mojo.
 
 === Checklist
 
 Here a checklist example to reflect why and how to transform into an agile organization
 
-* Answer the question, “_Why move to Agile?_” This is important, as the reasons for attempting such a fundamental change should be well understood from both a
- quantitative as well as qualitative standpoint,
+* Answer the question, “_Why move to Agile?_” This is important, as the reasons for attempting such a fundamental change should be well understood from both a quantitative as well as qualitative standpoint,
 * Understand the current business culture.
- Change is hard and there will be champions as well as potential saboteurs of the changes to come,
+Change is hard and there will be champions as well as potential saboteurs of the changes to come,
 * Spend time on the organization structure to understand how it helps or hinders the move to agile and lean,
-* Involve all levels of the business, including top level ‘C’ executives. Their sponsorship and support will be important,
+* Involve all levels of the business, including top level ‘C’ executives.
+Their sponsorship and support will be important,
 * Don’t neglect mid-level management as their support is vital to the success of the transformation,
 * Create a roadmap with the explicit understanding that it will change over time,
-* Don’t attempt to change everything. Pick an area where a win will be evident and beneficial,
+* Don’t attempt to change everything.
+Pick an area where a win will be evident and beneficial,
 * Prefer narrow and deep change to broad and shallow approach.

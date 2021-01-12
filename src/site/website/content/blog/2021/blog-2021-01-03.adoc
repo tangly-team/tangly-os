@@ -14,16 +14,17 @@ tags: ["java", "serie-students"]
 
 image::2021-01-03-head.jpg[720,480,role=left]
 
-Students shall be proficient with a basic set of software development techniques.
+Computer science students shall be proficient with a basic set of software development techniques.
 
 * _Technical excellence_ is a mandatory skill for all software developers.
 * _Agile development approaches_ are state of the industry and used almost all software development initiatives.
 * _DevOps_ approaches are used in modern organizations.
+They predate agile development approaches.
 
 Technical schools should provide in-depth experience in these areas to prepare their students to their future activities after completing their bachelor.
 
 The below mind map consolidates concepts, tools and approaches based on the gitlab tooling established in some universities.
-The approach emphasize agile and DevOps concepts and approaches.
+The approach emphasizes agile and DevOps concepts and approaches.
 
 [plantuml,students-proficiencies,svg]
 ....
@@ -100,17 +101,20 @@ The actual industrial standard is https://git-scm.com/[git], a distributed versi
 
 More sophisticated source code management systems based on git with additional agile and DevOps functionalities are
 
-* https://github.com/[github] closed source solution and most well-known solution.
+* https://github.com/[github] is a closed source solution and most well-known solution.
 Microsoft acquired them in 2020.
 Some Swiss technical universities - ZHAW, University of Bern - use the academic github campus program.
 CI and CD pipelines are not part of the Github product and must be installed separately.
-The program means you receive github licenses.
+The academic program means you receive github licenses.
 Your organization is responsible to run the software on premises.
-* https://about.gitlab.com/[gitlab] open source solution and strong contender to github.
-* https://bitbucket.org/dashboard/overview[Bitbucket] closed source solution of Attlassian.
-Attlassian also owns JIRA, Confluence and Trello.
+* https://about.gitlab.com/[gitlab] is an open source solution and strong contender to github.
+CI and CD pipelines are part of the product.
+* https://bitbucket.org/dashboard/overview[Bitbucket] closed source solution of Atlassian.
+CI and CD pipelines are part of the product.
+Atlassian also owns JIRA, Confluence and Trello.
 * https://azure.microsoft.com/en-us/services/devops/[Azure Devops] closed source solution and Microsoft answer for .NET development.
-They slowly open to additional development stacks.
+CI and CD pipelines access is under definition by Microsoft.
+They slowly open their prodcut to additional development stacks such as Java, Python.
 * https://gitea.io/[Gitea] Gitea is a community managed lightweight code hosting solution written in Go.
 The project is hosed on Github.
 It is published under the MIT license.
@@ -122,7 +126,12 @@ It has fine-grained access control and many more powerful features.
 School often select gitlab due to his open source license and the tremendous DevOps functionality.
 The gitlab solution supports source code versioning, DevOps pipelines, agile development approaches, and quality insurance for the produced artifacts.
 
-=== Basic Git for Students
+=== Basic Git Knowledge for Students
+
+Studying the history of software development practices shows the raise and fall of https://en.wikipedia.org/wiki/Source_Code_Control_System[SCCS],
+https://en.wikipedia.org/wiki/Concurrent_Versions_System[CVS], ClearCase, Visual Source Safe, or
+https://en.wikipedia.org/wiki/Apache_Subversion[Subversion].
+The current most used tool is https://en.wikipedia.org/wiki/Git[Git].
 
 Any developer can create a git hosted project with a few commands in the shell.
 
@@ -324,6 +333,8 @@ Gitlab allows them to apply these https://about.gitlab.com/solutions/agile-deliv
 Lecturers have access to the agile and Scrum artifacts and can qualify the quality of the work.
 
 === Advanced Git for Complex Team Development
+
+Once you master the basic commands, consider learning advanced commands like:
 
 * Merge
 * Rebase

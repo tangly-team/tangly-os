@@ -1,0 +1,90 @@
+---
+title: "Effective Working in Digital Age"
+linkTitle: "Effective Digital Working"
+date: 2021-02-01
+tags: ["agile"]
+---
+
+== Effective Working in Digital Age?
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2021-02-03-head.jpg[width=420, height=360, role=left]
+
+Home office is the new way of working.
+A lot of my friends and business partners are working from home.
+Our meetings are mostly online.
+We share results through digital platforms.
+
+I truly hope we continue to work online in the future.
+I would like to mix home office, local coworking space, and regular office attendance.
+Less commute time and greener approach to work are certainly great improvements.
+
+I would also state the obvious. My infrastructure at home is better.
+I have a better Internet connection, my display is a high-end 4K screen instead of a cheap HD version.
+The coffee is also better.
+
+My life would be more productive and fun if more people better understand how to work in a digital world.
+
+Here a few advices to improve our experience.
+
+=== Schedule an Appointment
+
+* Send me a calendar invitation in the _ics_ format.
+Never email me asking for an appointment, please provide directly the invitation.
+Do not send invitations in Outlook proprietary format, I use MacOS and Linux, not Microsoft and Office.
+* Send me a meaningful invitation.
+Provide an agenda, attendee list and attach documents I shall read before the meeting.
+Add the link and password for the conference such as Zoom, Google Hangouts, or Microsoft Team.
+
+Test your connection before initiating your call.
+Mute your microphone to avoid disturbing the call attendees.
+Please buy a professional headset.
+
+Use tools such as Trello and Miro to have more collegial meetings.
+
+=== Share a Document
+
+The rules to share a document are:
+
+* Avoid sending me a document per email.
+Send me the link to the document in a shared repository I have access to.
+I mean everybody is using Google Drive, DropBox, or Microsoft One Drive.
+
+The rules to edit a document are:
+
+* Do not assume I am using Microsoft Office. In fact I strongly prefer Libre Office.
+I support open source software and format.
+Microsoft Office formal definition is not even implemented in Office.
+* When modifying a shared document, consider using the review mode as being polite to your team members.
+* PDF is the defacto standard to exchange documents in the wide world. Acrobat Reader is free to use on all major platforms.
+Acrobat Reader supports a review mode.
+
+=== Communicate
+
+* Please use a chat application like Slack to communicate.
+Do not email me and call 20 minutes later to ask me if I read your email.
+* Please call me to discuss a complicated topic or schedule a telco
+Do not start an email trail to identify potential solutions to something complicated
+
+=== Work on a Project
+
+* Use Git and set all the code artifacts under source code management.
+* Work with text formats.
+Avoid Office or Libre Office formats for your documents
+You cannot compute differences on such documents.
+* Consider AsciidDoc as your perfered format.
+AsciiDoc is semantically equivalent to DocBook.
+You can write whole books with AsciiDoc.
+
+=== Lessons Learnt
+
+Adapt your analog processes to the digital world.
+Do not just copy them.
+
+Enjoy your online interactions.
+Go regularly drink a coffee or a beer with your peers.
+We are flesh and blood entities.
