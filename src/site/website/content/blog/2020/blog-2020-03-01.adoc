@@ -18,7 +18,7 @@ Records provide a first-class means for modeling data-only aggregates.
 They are available in Java since release of JDK 14.
 
 Records are often seen as _syntactic sugar_ to easily create _immutable objects_ without having to write a lot of boilerplate code.
-And records as a clean definition of immutable objects can have a tremendous impact on your component design.
+Records as a clean definition of immutable objects can have a tremendous impact on your component design.
 
 You as a designer have to reflect why your abstractions are not immutable and what is the rational behind.
 From experience, it improves greatly the quality of your design.
@@ -36,10 +36,10 @@ Records provide
 These methods are always semantically correct and efficient,
 * A public constructor initializing all instance variables Getters for all instance variables.
 The name of the getters is PropertyType property().
-Finally we get rid of the cumbersome and outdated convention _PropertyType getProperty()_ propagated by Java Beans.
+We get finally rid of the cumbersome and outdated convention _PropertyType getProperty()_ propagated by Java Beans.
 * A semantic correct implementation of _hashCode()_ and _equals()_.
 Therefore your objects can be used in standard API collections without difficult to find bugs.
-* A human readable implementation _toString()_.
+* A human-readable implementation _toString()_.
 
 The huge advantage of the approach against IDE code generation is the guaranty that these methods are semantically always correct.
 
@@ -67,9 +67,9 @@ Records motivate you as a clean coder and designer to decide why a class should 
 This pressure had a tremendous impact on the quality of my subsystem design.
 The Java language guarantees that all record classes must be immutable.
 
-And immutable value objects are a cornerstone in the https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design] _DDD_ approach.
+Immutable value objects are a cornerstone in the https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design] _DDD_ approach.
 
-If you are using Data Transfer Objects DTO they should probably always be records.
+When you are using Data Transfer Objects DTO they should probably always be records.
 In the long run you should eliminate your DTO, they are just waste and break all the rules of abstraction and information hiding.
 
 === Tricks and Tips

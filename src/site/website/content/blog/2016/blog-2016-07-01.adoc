@@ -2,7 +2,7 @@
 title: "Git Branches for the Impatient"
 linkTitle: "Git Branches"
 date: 2016-07-21
-tags: ["agile", "serie-students"]
+tags: ["agile", "git", "serie-students"]
 ---
 
 == Git Branches for the Impatient
@@ -15,19 +15,30 @@ tags: ["agile", "serie-students"]
 image::2016-07-01-head.jpg[width=420, height=360, role=left]
 You are working in a small collocated development team and decided to use branches to implement new features or fix errors.
 Here the cookbook to create, edit, merge and delete local and remote branches in Git (version 2.x).
-Git branches have two important qualities
+Git branches have two important qualities.
 
 * A branch is like an idea. Once you implemented the idea, feature or fix you just merge back to trunk and delete the branch,
 * The history of the branch commits is still visible upon deletion of the branch.
 
+[NOTE]
+====
+In an agile working setup, a branch should be merged before the end of the sprint it was started.
+
+Stories should be completed inside a sprint time slot.
+====
+
 _You should use meaningful names for your branch name and associated commit messages._
 _Put the ticket number into the branch name and messages for future searches._
 
+[TIP]
+====
 A lot of servers support keywords such _fix #42_ to automatically close the ticket 42.
+====
 
 The described approach is optimal for small teams.
 The approach is compatible to pull requests if you introduce such a workflow later.
-If you are working collocated you do not need pull requests. I prefer pair programming and pair check-in sessions against the trunk.
+You do not need pull requests when you are working collocated .
+I prefer pair programming and pair check-in sessions against the trunk.
 
 For a short introduction how to start using Git in software projects see the blog
 link:../../2017/git-local-repositories-for-impatient[Git Local Repositories for the Impatient].
@@ -77,21 +88,21 @@ git fetch --all -p
 git pull
 ----
 
-Merge to master. The option --no-ff will always keep branch information
+Merge to master. The option --no-ff will always keep branch information.
 
 [source, shell]
 ----
 git merge --no-ff feat_#42
 ----
 
-Or if you want a single commit for the complete branch
+Or if you want a single commit for the complete branch.
 
 [source, shell]
 ----
 git merge —squash —no-ff feat_#42
 ----
 
-Push the changes
+Push the changes.
 
 [source, shell]
 ----
@@ -102,14 +113,14 @@ For advanced users you can first rebase your branch and squash superfluous commi
 
 === Delete the Branch
 
-Delete the remote branch (also git branch -dr origin/feat_#42)
+Delete the remote branch (also _git branch -dr origin/feat_#42_).
 
 [source, shell]
 ----
 git push origin --delete feat_#42
 ----
 
-Delete the local branch
+Delete the local branch.
 
 [source, shell]
 ----
@@ -120,7 +131,7 @@ You are done. Now you are ready to implement the next feature.
 
 === View local and remote Branches
 
-If you want to view branches use the following commands for the local branches
+If you want to view branches use the following commands for the local branches.
 
 [source, shell]
 ----
@@ -128,7 +139,7 @@ git branch
 git branch --no-merged
 ----
 
-If you want to view remote branches
+If you want to view remote branches.
 
 [source, shell]
 ----
@@ -136,7 +147,7 @@ git branch -r
 git branch -r --no-merged
 ----
 
-Checkout remote Branch
+Checkout remote Branch.
 
 The -p parameter means --prune
 
@@ -151,9 +162,13 @@ git checkout #feat_42
 You can find a lot of information on http://stackoverflow.com/questions/tagged/git[Stack Overflow].
 Beware when reading the answers on Stack Overflow that Git commands have changed over time.
 Select new posts to find the best answers.
+
 The nifty-gritty details can be found in the official https://git-scm.com/book/en/v2[Git documentation].
 
+[WARNING]
+====
 Beware that for example http://gitolite.com/[gitolite] does not support special characters such as # in branch names.
 Use them only in the commit messages.
+====
 
 These same characters work in https://bitbucket.org/[bitbucket].

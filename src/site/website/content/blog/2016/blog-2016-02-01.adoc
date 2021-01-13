@@ -68,7 +68,8 @@ So you need to discover your "the lonely cowboy riding in the sun" song why this
 
 As a product owner you control the budget of the product, the priorities and at the end of each iteration you can change all priorities and goals.
 Cool isn't it.
-But wait as a product owner I am responsible of the budget and product success and each time a member of the team asks me something I must have an answer ready.
+But wait as a product owner I am responsible for the budget and product success and each time a member of the team asks me something I must have an answer
+ready.
 
 Scrum is cool and we enjoy it.
 And Scrum makes everything transparent and fast.

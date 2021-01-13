@@ -12,11 +12,10 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2017-04-02-head.jpg[width=420, height=360, role=left]
+image::2017-04-02-head.jpg[width=420,height=360,role=left]
 It is time to throw a big party in Switzerland.
 More than 60% of all projects are now realised using an agile approach (see http://swissq.it/en/agile/research-information2/[Agile Trends Switzerland 2017] by
-http://swissq.it/en/agile/[SwissQ]),
-Scrum being the most popular one, Kanban as the second one.
+http://swissq.it/en/agile/[SwissQ]), Scrum being the most popular one, Kanban as the second one.
 What a change in just one year.
 n 2016 we had 40% of projects being agile, one year later we have 60%.
 _Time to adapt and become agile_.
@@ -48,22 +47,25 @@ Below some of the findings of the study.
 The major hurdles when introducing agile approaches at department/company level are
 
 Current company culture::
- http://www.craiglarman.com/wiki/index.php?title=Larman%27s_Laws_of_Organizational_Behavior[First change the structure], it enables
- the http://www.craiglarman.com/wiki/index.php?title=Larman%27s_Laws_of_Organizational_Behavior[cultural change].
- Quite a few companies try to change their culture without altering their structure. It is doomed to fail,
+http://www.craiglarman.com/wiki/index.php?title=Larman%27s_Laws_of_Organizational_Behavior[First change the structure], it enables the http://www.craiglarman.com/wiki/index.php?title=Larman%27s_Laws_of_Organizational_Behavior[cultural change].
+Quite a few companies try to change their culture without altering their structure.
+It is doomed to fail,
 Existing company structure and frozen hierarchies::
- It is time to rethink your structure and move decision power to the teams, near to the customers,
+It is time to rethink your structure and move decision power to the teams, near to the customers,
 Controlling not tailored to agile approaches::
- It is difficult to be slightly agile. The same can be said about lean. Either you are lean, agile or you are not.
- Try {ref-bbrt},
+It is difficult to be slightly agile.
+The same can be said about lean.
+Either you are lean, agile or you are not.
+Try {ref-bbrt},
 Overall processes not tailored to agile::
- Once you change your structure and hierarchy, the processes will evolve,
+Once you change your structure and hierarchy, the processes will evolve,
 Trust is missing::
- Here again we talk again about trust or the believe your collaborators are competent and do their best to achieve success.
- As an organization and as a manager it is time to decide.
- Do you truly https://en.wikipedia.org/wiki/Theory_X_and_Theory_Y[trust] your collaborators?
+Here again we talk again about trust or the believe your collaborators are competent and do their best to achieve success.
+As an organization and as a manager it is time to decide.
+Do you truly https://en.wikipedia.org/wiki/Theory_X_and_Theory_Y[trust] your collaborators?
 Customers are not involved or engaged::
- Customers are the center in the new world. Please involve them, talk to them, find out what they need
+Customers are the center in the new world.
+Please involve them, talk to them, find out what they need
 
 You could also say organizations are still struggling with _Being agile, not doing agile_.
 Avoid https://en.wikipedia.org/wiki/Cargo_cult[cargo cult].
@@ -75,8 +77,8 @@ You shall start introducing agile approaches at department and company level.
 Senior management is fully committed to the approach and approves the cultural change.
 Read the book "Reinventing Organizations" from Frederic Laloux to understand the implied changes.
 
-Train your managers to understand agile, lean, and customer centric approaches. And training is not
-half-day introduction, it is days and days of training, workshops, and reading.
+Train your managers to understand agile, lean, and customer centric approaches.
+And training is not half-day introduction, it is days and days of training, workshops, and reading.
 
 The transition is painful, see the seminal articles of Steve Denning
 https://www.forbes.com/sites/stevedenning/2015/01/26/why-do-managers-hate-agile[Why do managers hate agile?] and
@@ -86,7 +88,7 @@ The principles are
 
 * Products are value driven and quality oriented
 * Teams are focused to master their work and tools - Craftsmanship, {ref-xp} -
-* For huge development departments consider using the {ref-less}} approach.
+* For huge development departments consider using the {ref-less} approach.
 * Teams work best if you can answer a sounding yes to these five questions.
 ** Psychological safety: Can we take risks on this team without feeling insecure or embarrassed?
 ** Dependability: Can we count on each other to do high quality work on time?

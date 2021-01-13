@@ -77,7 +77,7 @@ You should expect from a person working forty hours a week for the next forty ye
 
 You should expect regular certifications in the used technology stack or development approaches.
 A Scrum master two days training does not make somebody an expert.
-But a specialist refusing to invest in a two days training is probably not a member you want in a high performing team.
+A specialist refusing to invest in a two days training is probably not a member you want in a high performing team.
 
 A professional engineer should read multiple technical books each year.
 

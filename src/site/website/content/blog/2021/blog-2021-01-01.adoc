@@ -33,7 +33,13 @@ Unlike an entity two value objects with the exact same properties are considered
 
 A third one is they should be self-validating.
 A value object shall verify the validity of its attributes when being created.
-If any of its attributes are invalid, the objecgt should not be created and an error or exception should be raised.
+If any of its attributes are invalid, the object should not be created and an error or exception should be raised.
+
+[TIP]
+====
+Immutable value objects are defined as *record* in Java. Use the constructor to validate your objects.
+Throw an _IllegalArgumentException_ if a validation error occurs.
+====
 
 https://en.wikipedia.org/wiki/Value_object[Value Objects] do have attributes and methods as entities.
 Attributes of value objects are immutable therefore methods of value objects can only be queries without side effects.
@@ -68,7 +74,7 @@ As a bonus you get the *hashCode* and *equals* methods for free.
 [NOTE]
 ====
 A Java record class declaration is very compact.
-Often it is an one liner.
+Often it is a one liner.
 ====
 
 === Invoice Lines
@@ -132,7 +138,7 @@ This factory could provide multiple ways to create new instances.
 We encourage experimenting with the https://microstream.one/[MicroStream] approach for small projects.
 The effort to persist a Java object graph is very small.
 
-You can always move to a no SQL solution when your application is succesfull and time is come to harden it.
+You can always move to a no SQL solution when your application is successful and time is come to harden it.
 Another standard but cumbersome approach is to move to JPA.
 
 Related concepts are discussed in our blog series

@@ -75,7 +75,7 @@ Your senior design specialists already know the flaws.
 Now it is time to correct them.
 . Increase code coverage.
 Code coverage is the security net when you are refactoring code.
-. Slowly add https://www.thoughtworks.com/insights/articles/fitness-function-driven-development[fitness functions] to continuously validate your non
+. Slowly add https://www.thoughtworks.com/insights/articles/fitness-function-driven-development[fitness functions] to continuously validate your non-
 functional requirements.
 
 Beware of good practices how to write good software products and refactor successfully applications.
@@ -92,7 +92,7 @@ As fewer and fewer programmers and operation managers will have the knowledge of
 
 === Ameliorate Your Process
 
-Applications do not degrade to legacy or geriatric systems over night.
+Applications do not degrade to legacy or geriatric systems overnight.
 The organization and development group failed to work professionally over years before the product was ultimately doomed.
 
 You must establish a culture of professional software development.

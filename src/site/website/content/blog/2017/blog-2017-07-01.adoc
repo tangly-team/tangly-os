@@ -12,7 +12,7 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2017-07-01-head.jpg[width=420, height=360, role=left]
+image::2017-07-01-head.jpg[width=420,height=360,role=left]
 What does a Scrum master the whole day?
 Are you just a fancy administrator or are you actively removing impediments?
 Do you coach your teams toward mastery?
@@ -26,8 +26,7 @@ _Wake up!_ You are not a product manager, you shall be a catalyst.
 
 === Facets of a Scrum Master
 
-* Be a https://en.wikipedia.org/wiki/Servant_leadership[servant leader] whose focus is on the needs of the team members and those they serve (the customer),
-with the goal of achieving results in line with the organization’s values, principles, and business objectives,
+* Be a https://en.wikipedia.org/wiki/Servant_leadership[servant leader] whose focus is on the needs of the team members and those they serve (the customer), with the goal of achieving results in line with the organization’s values, principles, and business objectives,
 * Teach to ensure agile, lean, Scrum and other approaches are understood and enacted,
 * Mentor to transfer agile knowledge and experience to the team, and concentrate on continuous improvement,
 * Coach the individual with a focus on mindset and behaviour,
@@ -43,8 +42,8 @@ Each team is self-managing, cross-functional and customer-focused, co-located, l
 
 === Scrum Master Tasks
 
-* Help your teams to emove impediments.
- From time to time you could also remove a specific impediment.
+* Help your teams to remove impediments.
+From time to time you could also remove a specific impediment.
 * Evangelise agile, lean values and principles
 * Moderate Scrum meetings - do not forget to regulate delegate moderation to your team -
 * Gently transform your department and organization to become more agile
@@ -52,36 +51,32 @@ Each team is self-managing, cross-functional and customer-focused, co-located, l
 ** Remove individual bonus, either introduce team bonuses or better remove extrinsic motivators
 ** Remove test and quality department, move the specialists to the Scrum teams
 
-You shall by all means avoid administrative waste such as
-* Writing information in Word documents or in Wiki that nobody actively uses,
-* Writing multiple times the same information,
-* Writing status information instead of publishing it on the team board.
- The board shall be the information radiator of your product development.
- Do not create head sinks in documents,
-* Holding meetings with one person projecting their notebook screen content and all other attendees looking at it -.
+You shall by all means avoid administrative waste such as * Writing information in Word documents or in Wiki that nobody actively uses, * Writing multiple times the same information, * Writing status information instead of publishing it on the team board.
+The board shall be the information radiator of your product development.
+Do not create head sinks in documents, * Holding meetings with one person projecting their notebook screen content and all other attendees looking at it -.
 
 === Tips and Tricks
 
-[quote, Geoff Watts, Scrum Mastery]
+[quote,Geoff Watts,Scrum Mastery]
 ____
 A good Scrum Master helps a Scrum Team survive in an organizations’ culture.
 A great Scrum Master helps change the culture so Scrum Teams can thrive.
 ____
 
-
 Face 2 Face::
- Prefer physical meetings to all other communication medium.
- Use video conference and chatting tools to feel the mood of your team,
+Prefer physical meetings to all other communication medium.
+Use video conference and chatting tools to feel the mood of your team,
 Emergent::
-  Good enough to try it, Safe enough to do it.
-  Do not look for the perfect solution before trying a new approach,
+Good enough to try it, Safe enough to do it.
+Do not look for the perfect solution before trying a new approach,
 https://en.wikipedia.org/wiki/PDCA[Plan Do Check Act] _PDCA_::
- Embrace complex systems and try new approaches to improve your team. F
- ocus on external and internal quality,
+Embrace complex systems and try new approaches to improve your team.
+F focus on external and internal quality,
 Process Ownership to Keep It Alive::
- You are not in charge of the team processes, the team is,
+You are not in charge of the team processes, the team is,
 https://en.wikipedia.org/wiki/Community_of_practice[Community of Practice] _PoC_::
- is an effective way to move your team to technical excellence.
+is an effective way to move your team to technical excellence.
 
-If you are new to the role read "The Great Scrum Master" from Zuzana Šochová. A more extensive
+If you are new to the role read "The Great Scrum Master" from Zuzana Šochová.
+A more extensive
 link:../../2017/list-of-agile-and-lean-books-for-software-engineers-or-students[list of books] can be found here.

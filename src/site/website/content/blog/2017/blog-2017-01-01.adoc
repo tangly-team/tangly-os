@@ -12,7 +12,7 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2017-01-01-head.png[width=420, height=360, role=left]
+image::2017-01-01-head.png[width=420,height=360,role=left]
 The post describes a presentation I gave at a company internal technical day.
 It reflects situations we have seen in a lot of agile projects over the last years.
 
@@ -31,7 +31,7 @@ We exhort you to eliminate these misunderstandings in your projects.
 
 === What is Scrum?
 
-image:2017-01-01-Scrum.jpg[width=420, height=360, role=left]
+image:2017-01-01-Scrum.jpg[width=420,height=360,role=left]
 The Scrum approach is clear, well documented and shall be done by the book.
 
 The Scrum framework is straight forward.
@@ -43,19 +43,19 @@ This article is not about http://www.scrum.org/ScrumBut[Scrum But] impediments d
 
 We are talking about misunderstandings once you have reached this first level of mastership.
 Before talking about misunderstandings we should remember the most important facet of Scrum.
-*Scrum is all about ROI.*
-Scrum was defined because the founders were convinced you can develop more effectively better products with higher value.
+*Scrum is all about ROI.* Scrum was defined because the founders were convinced you can develop more effectively better products with higher value.
 
 === The essence of Scrum is ROI
 
-image:2017-01-01-Essence.jpg[width=420, height=360, role=left]
+image:2017-01-01-Essence.jpg[width=420,height=360,role=left]
 All decisions in Scrum should be based on Return of Investment ROI.
 
-Each time you doubt how you should do an activity, ask your team what is the ROI of your  proposition?
+Each time you doubt how you should do an activity, ask your team what is the ROI of your proposition?
 
 Stakeholders want ROI. Each time you request budget from your stakeholders you should always remember.
 
-_you want stakeholders' money, convince them_. Show your different solutions to the problem.
+_you want stakeholders' money, convince them_.
+Show your different solutions to the problem.
 
 [TIP]
 ====
@@ -69,19 +69,17 @@ In other words we want _Bang for the Buck_
 
 === You shall fill all time-boxed meetings
 
-image:2017-01-01-Meeting.jpg[width=420, height=360, role=left]
+image:2017-01-01-Meeting.jpg[width=420,height=360,role=left]
 The agile manifesto states
 
-[quote, Agile Manifesto]
+[quote,Agile Manifesto]
 ____
 Individuals and interactions over processes and tools
 
 Customer collaboration over contract negotiation.
 ____
 
-Perhaps too often we interpret these sentences as
-* Respect people, have nice interactions and avoid any hard discussions,
-* Collaborate with the customer, never disagree and avoid harsh truths.
+Perhaps too often we interpret these sentences as * Respect people, have nice interactions and avoid any hard discussions, * Collaborate with the customer, never disagree and avoid harsh truths.
 Swiss people are well-educated.
 They always empty their glasses in the restaurant and have trouble leaving some wine in the glass.
 They also do not like conflict.
@@ -107,7 +105,7 @@ Compute your ROI.
 
 === You shall have a cross functional team
 
-image:2017-01-01-A-Team.jpg[width=420, height=360, role=left]
+image:2017-01-01-A-Team.jpg[width=420,height=360,role=left]
 Scrum teams try to be fully cross-functional and invest a lot of effort to reach this goal.
 They probably do it because it is written in all Scrum tutorials.
 Every person should be able to take a task from the Scrum board and implement it.
@@ -135,7 +133,7 @@ As a rule of thumb a good T-shape person Is master in one technical area, Has a 
 
 === You shall allow changes anytime
 
-image:2017-01-01-Change-Ahead.jpg[width=420, height=360, role=left]
+image:2017-01-01-Change-Ahead.jpg[width=420,height=360,role=left]
 Scrum is about agility.
 Therefore you have the right to change anything at any time, isn't it?
 Your stakeholders need the changes now.
@@ -164,7 +162,7 @@ In other words are you ready to change the user interface two hours before the s
 
 === You shall not perform up-front design Architecture emerge during the coding of the solution.
 
-image:2017-01-01-Indian-Village.jpg[width=420, height=360, role=left]
+image:2017-01-01-Indian-Village.jpg[width=420,height=360,role=left]
 So teams state that - No architecture is needed before starting coding, - No enterprise architecture should be defined or look at, - No non-functional considerations are needed.
 Look at the picture.
 Could you design a village without knowing about the ground, the kind of population, do you need school, do they have flood in the area?
@@ -189,7 +187,7 @@ I expect a talented team to provide an architecture with some prototyping in les
 
 === You shall write user stories during coffee breaks
 
-image:2017-01-01-Meeting.jpg[width=420, height=360, role=left]
+image:2017-01-01-Meeting.jpg[width=420,height=360,role=left]
 Writing user stories is easy and anyway nobody has time for - The product owner has better to do.
 He writes the stories during a coffee break or just before the start of the planning meeting, - Anyway just read the requirements, it is all written down, - The developers want to code, they have no time to write some user stories or improve them.
 
@@ -212,12 +210,13 @@ _Be honest_: Developers cannot write clean requirements or design a clean user i
 
 === You shall not train engineering practices
 
-image:2017-01-01-Rope.jpg[width=420, height=360, role=left]
+image:2017-01-01-Rope.jpg[width=420,height=360,role=left]
 You shall not train engineering practices
+
 * The process solves all problems,
 * I want to code, I do not have time to become a craftsman,
-* crum is snake oil.
- It cures all illnesses and makes you immortal, For the older ones, do you remember CASE, CMM and ISO-9000.
+* Scrum is snake oil.
+It cures all illnesses and makes you immortal, For the older ones, do you remember CASE, CMM and ISO-9000.
 * The PROCESS promises that you will deliver high quality software on time, on budget with unqualified and cheap collaborators.
 
 Do you really believe in snake oil?
@@ -238,7 +237,7 @@ See for example the concept of coding dojo.
 
 === You shall worship Scrum as the PROCESS
 
-image:2017-01-01-Process.jpg[width=420, height=360, role=left]
+image:2017-01-01-Process.jpg[width=420,height=360,role=left]
 Scrum is a framework.
 You can use it to manage different things, including complex product development.
 
@@ -272,7 +271,7 @@ A best practice should only be selected through its ROI.
 
 Please look at the http://manifesto.softwarecraftsmanship.org/[Software Craftsmanship Manifesto].
 
-[quote, Software Craftsmanship Manifesto]
+[quote,Software Craftsmanship Manifesto]
 ----
 Not only working software, but also well-crafted software,
 

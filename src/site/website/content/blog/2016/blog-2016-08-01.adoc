@@ -94,7 +94,7 @@ It is interesting to compare the above list with the reference list of the Certi
 
 The more terms and acronyms you know, the easier the examination will be.
 
-image:active-listening[float="right"]
+image:2016-08-01-active-listening.png[float="right"]
 
 * http://en.wikipedia.org/wiki/Active_listening[Active Listening]
 * ARCS - Attention Relevance Confidence Satisfaction - relevant for motivational theory and process for systematic motivational design
@@ -128,7 +128,7 @@ image:active-listening[float="right"]
 .. Problem to Solve (Good Teams) -> Collaboration, consensus
  Collaboration- Seeking a win-win situation. Consensus- Learning where every team member’s head is with regard to the issue and, in time, arriving at a decision everyone can back.
 .. Disagreement -> Negotiate, support
-.. Contest -> Accomodate
+.. Contest -> Accommodate
 .. Crusade -> Shuttle between parties
 .. World War -> Protect to avoid injuries
 * JBGE Just Barely Good Enough
@@ -140,7 +140,7 @@ image:active-listening[float="right"]
 ** Threshold or basic attributes are must have attributes otherwise the product is incomplete.
  Threshold features are those that must be present in the product  for it to be successful. They are often referred to as must-have features.
 ** Performance attributes are linear, the more the better
-** Excitement attribues are delights
+** Excitement attributes are delights
 * MMF Minimally Marketable Feature
 * http://en.wikipedia.org/wiki/MoSCoW_Method[MoSCoW] Must, Should, Could, Won't
 * http://en.wikipedia.org/wiki/Net_present_value[Net Present Value] _NPV_ -> FV = PV * (1+i)^n, FV is future value, PV is present value, n is the number of
@@ -159,7 +159,7 @@ image:active-listening[float="right"]
 ** Strategies: Avoid, Mitigate, Transfer, Accept
 * ROI Return On Investment (Benefits - Costs) / Costs in percent. The higher the better
 * http://java.dzone.com/articles/60-second-agility-roti[ROTI] Return On Time Invested (done in 60 seconds)
-** 0 = "I'd have been better off making a Starbuck's run. Complete waste of time" or Lost Principle: No Benefit Received for Time Invested Break-Even
+** 0 = "I'd have been better off making a Starbucks run. Complete waste of time" or Lost Principle: No Benefit Received for Time Invested Break-Even
 ** 1 = "You really should have let me stay at my desk and code"
 ** 2 = "This was an OK meeting. About as valuable as if I'd been coding" or Received Benefit Equal to Time Invested High Return on Investment
 ** 3 = "Surprisingly, this was more valuable than if I'd been writing code"
@@ -243,7 +243,7 @@ _Product Value, Product quality, Product status, Team performance -Every team ne
  Learners in the Fluent stage are experts -The Stage 3 Learner is at the stage of mastery.
  He is able to figure out the end effect of any procedure and to make his way to that end.-
 * Scrum uses the sashimi technique to require that every slice of functionality created by the developers be complete.
- All of the requirements gathering and analysis, design work, coding, testing, and documentation that constitute a complete product are required to be completed
+ All the requirements gathering and analysis, design work, coding, testing, and documentation that constitute a complete product are required to be completed
  in every Sprint and demonstrated in the Sprint increment of functionality. Sprints are kept short enough that the stakeholders don’t lose interest in the
  product before the Sprints are completed. And stakeholders can see that they have an opportunity to redirect the product at the start of every Sprint to
  optimize the value they derive from the product. At the end of every Sprint, stakeholders see new functionality. Models, requirements, and internal
@@ -274,7 +274,7 @@ _Managers who make decisions without input from subordinates and peers make poor
 _Engineers who make decisions without input from managers and peers make poor decisions._
 _Who makes the decision is less important than getting the right people involved in the decision process._
 * Which of the following charts shows the total number of story points completed through the end of each iteration? _Cumulative story point burn-down chart_
-* During critical problem solving, you can ask probing questions, use active and reflective listening, Lead to an answer but one should avoid injecting their
+* During a critical problem solving, you can ask probing questions, use active and reflective listening, Lead to an answer but one should avoid injecting their
 own ideas.
 
 I wish you success for your certification.

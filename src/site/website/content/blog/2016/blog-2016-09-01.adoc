@@ -21,9 +21,9 @@ What are the main hurdles to introduce agile approaches in Swiss companies.
 * At the end what matters is collaborator purpose, customer satisfaction,  business value.
 
 http://www.swissq.it/[SwissQ] has published a "SwissQ Agile Trends & Benchmarks Switzerland 2012".
-The study can be downloaded as PDF from their web site.
+The study can be downloaded as PDF from their website.
 
-Below some of the findings of the study.
+Below some findings of the study.
 
 === Major Hurdles When Introducing Agile Approaches
 
@@ -37,7 +37,7 @@ Below some of the findings of the study.
 * 23%: No resources or time for sustainable changes
 * 9%: Costs reasons
 
-We wrote in blogs that introducing Scrum in the development department or in the whole company is a
+We wrote on blogs that introducing Scrum in the development department or in the whole company is a
 http://en.wikipedia.org/wiki/Change_management[change process].
 The coaches should be trained in change management and have experiences with resistance to changes.
 

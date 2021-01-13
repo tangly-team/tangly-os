@@ -12,7 +12,7 @@ tags: ["organization"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2017-05-01-head.jpg[width=420, height=360, role=left]
+image::2017-05-01-head.jpg[width=420,height=360,role=left]
 You have currently more agile coaches on the market than sand corns on a regular beach.
 They all promise the holly grail of agile product development, highly productive teams and perfect applications for internal and external customers.
 
@@ -22,11 +22,11 @@ Your overall goal is to continuously improve the products delivered to customers
 I am convinced to achieve ingrained success an agile coach shall
 
 * Coach team members how to reach technical excellence.
- They build your solution, it shall fulfill the user's requirements, be of high quality and affordable.
+They build your solution, it shall fulfill the user's requirements, be of high quality and affordable.
 * Learn them to attain https://en.wikipedia.org/wiki/Software_craftsmanship/[mastery] and build awesome products,
 * Coach the team how to improve, focus and enjoy the work on a daily basis. https://en.wikipedia.org/wiki/Flow_(psychology)[Flow] shall be natural for them,
 * Coach the organisation how to adapt, provide the ground to have the best collaborators and become most successful in the market.
- Use a https://en.wikipedia.org/wiki/Lean_startup[lean approach].
+Use a https://en.wikipedia.org/wiki/Lean_startup[lean approach].
 
 In other words you need technical coaching, team coaching and organization coaching.
 Avoid hiring management consultants with an agile painting, coaches should understand software and product development.
@@ -36,14 +36,13 @@ Your customers shall be delighted.
 How your highly qualified teams develop software shall become more effective and efficient.
 
 First comes quality, effectiveness and only later efficiency.
-Look at https://en.wikipedia.org/wiki/Lean_software_development[lean methods], first we improve the quality - effectiveness for the customer - than the
-productivity - efficiency for the company -.
+Look at https://en.wikipedia.org/wiki/Lean_software_development[lean methods], first we improve the quality - effectiveness for the customer - than the productivity - efficiency for the company -.
 
 === Minimum Viable Change
 
 ==== What is coaching?
 
-[quote, {ref-less}]
+[quote,{ref-less}]
 ____
 Coaching means that an experienced coach will work closely together with an organization to improve the organization’s product development.
 
@@ -60,7 +59,6 @@ A MVC has an hypothesis how to improve an aspect of your organization or your te
 It has measurements - often called KPI by management - to decide if the change was a worthy improvement.
 For the savvy readers it is a variant of PDCA, a cornerstone of all agile and lean approaches.
 
-
 Our core strength at {ref-tangly} is we truly understand software technology and software craftsmen.
 We consistently connect organizational MVC with technical MVC.
 This is our special recipe for deep-rooted and lasting success.
@@ -70,15 +68,16 @@ This is our special recipe for deep-rooted and lasting success.
 To improve your organization you need these three levels of coaching
 
 Organizational coaching::
- The coach works with multiple teams and the management to improve the organization and its structure
+The coach works with multiple teams and the management to improve the organization and its structure
 ** Change processes to be customer centric,
 ** Improve organization to see the whole product and the customer,
-** Delegate decision making processes to teams,
+** Delegate decision-making processes to teams,
 ** Remove functional silos,
 ** Redefine the roles of product managers, middle managers, quality managers,
 ** Eliminate waste: processes and artefacts not adding any value to the customer products.
 Team coaching::
- The coach works with one or a few teams to improve their team-working and LeSS practices. It is common for a coach to take on the Scrum Master role.
+The coach works with one or a few teams to improve their team-working and LeSS practices.
+It is common for a coach to take on the Scrum Master role.
 ** Implement MVC,
 ** Improve Scrum approach, teach agile values,
 ** Introduce {ref-xp} practices,
@@ -86,9 +85,9 @@ Team coaching::
 ** Learn, teach, coach through the stages of Shu Ha Ri (守破離),
 ** Empower the team to turn into best of breed.
 Technical coaching::
- The coach works with (or on) a team on their actual codebase in order to improve the technical practices and adopt agile development
- techniques such as simple design, refactoring, unit testing, test-driven development and acceptance test-driven development.
-** Discovering “code/design smells”. Places where code/design could be improved,
+The coach works with (or on) a team on their actual codebase in order to improve the technical practices and adopt agile development techniques such as simple design, refactoring, unit testing, test-driven development and acceptance test-driven development.
+** Discovering “code/design smells”.
+Places where code/design could be improved,
 ** Explaining modern, “clean” code that is simple and easier to change and maintain,
 ** Refactoring “smells” into clean code,
 ** Test-driven development and test automation,

@@ -2,7 +2,7 @@
 title: "Gitlab for Bachelor Students"
 linkTitle: "Gitlab for Students"
 date: 2021-01-20
-tags: ["java", "serie-students"]
+tags: ["java", "git", "serie-students"]
 ---
 
 == Gitlab for Bachelor Students
@@ -23,8 +23,8 @@ They predate agile development approaches.
 
 Technical schools should provide in-depth experience in these areas to prepare their students to their future activities after completing their bachelor.
 
-The below mind map consolidates concepts, tools and approaches based on the gitlab tooling established in some universities.
-The approach emphasizes agile and DevOps concepts and approaches.
+The below mind map consolidates concepts, tools and approaches based on the https://about.gitlab.com/[GitLab] tooling established in some universities.
+The approach emphasizes *agile* and *DevOps* concepts and approaches.
 
 [plantuml,students-proficiencies,svg]
 ....
@@ -123,7 +123,7 @@ The project is hosed on Github.
 * https://gitolite.com/[gitolite] Gitolite allows you to set up git hosting on a central server.
 It has fine-grained access control and many more powerful features.
 
-School often select gitlab due to his open source license and the tremendous DevOps functionality.
+School often select https://about.gitlab.com/[GitLab] due to his open source license and the tremendous DevOps functionality.
 The gitlab solution supports source code versioning, DevOps pipelines, agile development approaches, and quality insurance for the produced artifacts.
 
 === Basic Git Knowledge for Students
@@ -133,7 +133,7 @@ https://en.wikipedia.org/wiki/Concurrent_Versions_System[CVS], ClearCase, Visual
 https://en.wikipedia.org/wiki/Apache_Subversion[Subversion].
 The current most used tool is https://en.wikipedia.org/wiki/Git[Git].
 
-Any developer can create a git hosted project with a few commands in the shell.
+Any software developer or web designer can create a git hosted project with a few commands in the shell.
 
 [NOTE]
 ====
@@ -213,7 +213,7 @@ include 'net.tangly.commons'
 The initial build file for each module is the same as for a minimal gradle project.
 You can now compile, test and check your application
 
-[source,bash]
+[source,shell]
 ----
 gradle build // <1>
 gradle test // <2>
@@ -336,9 +336,95 @@ Lecturers have access to the agile and Scrum artifacts and can qualify the quali
 
 Once you master the basic commands, consider learning advanced commands like:
 
-* Merge
-* Rebase
-* Squash
-* Cherry Picking
-* Local and Remote Branch
-* Pull Request
+==== Merge
+
+Merge your branch _my-branch_ back into _trunk_
+
+[source, shell]
+----
+# ...develop some code and commit it in the currently selected my-branch
+git commit –m "Some commit message"
+
+# switched to branch 'trunk'
+git checkout trunk
+
+# merge the branch "my-branch
+$ git merge my-branch
+----
+
+==== Rebase
+
+Rebase trunk into your branch _my-branch_.
+Note that after a rebase, the commit ids of the rebased branch are new.
+A rebase is not simply a moving of commits around in the history.
+Git actually creates brand new commits with new commit ids and permanently deletes the old commits.
+
+You should prefer to rebase only with local branches. Avoid rebasing shared branches.
+If you rebase a branch that was pulled from GitHub or GitLab, and then push it back, the server will reject it.
+
+[source, shell]
+----
+git rebase my-branch trunk
+----
+
+==== Squash
+
+Git squash is a technique that helps you to take a series of commits and condense it to a few commits.
+
+So let’s see how to squash the last three commits to a single commit.
+
+[source, shell]
+----
+git rebase -i HEAD~3
+----
+
+The following content will be shown:
+
+[source, shell]
+----
+pick 474bfdc2 3rd last commit
+pick 1bffc15c 2nd last commit
+pick 474bf0c2 last commit
+----
+
+For the commits that you want to squash, replace pick with fixup, so it becomes:
+
+[source, shell]
+----
+fixup 474bfdc2 3rd last commit
+fixup 1bffc15c 2nd last commit
+pick 474bf0c2 last commit
+----
+
+==== Cherry Picking
+
+Cherry picking in Git means to choose a commit from one branch and apply it onto another.
+This is in contrast with other ways such as _merge_ and _rebase_ which normally apply many commits onto another branch.
+
+You can display the hashes of your commits in trunk with the command
+
+[source, shell]
+----
+git log --oneline trunk
+----
+
+Now you can cherry pick the commit you are interested in and apply it into your branch.
+
+[source, shell]
+----
+git checkout my-branch
+git cherry-pick <commit-hash>
+----
+
+==== Local and Remote Branch
+
+Read the post link:../../2016/git-branches-for-the-impatient[Git Branches for the Impatient].
+
+==== Pull Request
+
+Read the documentation of GitLab, BitBucket or GitHub.
+
+=== References
+
+. link:../../2017/git-local-repositories-for-the-impatient[Git Local Repositories for the Impatient]
+. link:../../2016/git-branches-for-the-impatient[Git Branches for the Impatient]

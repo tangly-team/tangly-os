@@ -39,7 +39,7 @@ You can also pursue desirable attitudes or values of agile persons
 Commitment::
  as an employee you want to win, you are engaged.
  Every manager truly believes you work best to achieve the goals.
- If not, this manager did a mistake by hiring or keeping you
+ If not, this manager made a mistake by hiring or keeping you
 Courage::
  you are ready to say “I am wrong” because being wrong opens the door for improvement
 Focus::
@@ -83,7 +83,7 @@ A few concrete tests help you find out if you are an agile department or company
  Practice the above attitudes and do not just follow a checklist
 * Nobody micro-manages in your company
 * _Feel accountable_ instead of _be accountable_.
- You want to improve and your company as a natural part of the daily work.
+ You want to improve, and your company as a natural part of the daily work.
 * _Compliment every collaborator_ you are working with at least once a week instead of _evaluating weaknesses and criticising people_.
  o you lead by example?
 * No management by objectives - MBO - or bonuses are established in your company

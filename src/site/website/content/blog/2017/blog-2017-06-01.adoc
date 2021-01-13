@@ -12,66 +12,68 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2017-06-01-head.jpg[width=420, height=360, role=left]
+image::2017-06-01-head.jpg[width=420,height=360,role=left]
 Agile will never guarantee product success.
 All projects, especially application development, entail risk.
 If a product was risk free it is unlikely to provide significant benefits or competitive advantages.
 There are however, a number of ways in which Agile Scrum projects repeatedly fail which are worth examining.
 
 Agile approaches and Scrum framework can reduce risks in projects and increase the return on investment.
-https://www.infoq.com/articles/standish-chaos-2015[Standish Group report] is a proof for this statement. One picture shows it all - look at the failed column -
+https://www.infoq.com/articles/standish-chaos-2015[Standish Group report] is a proof for this statement.
+One picture shows it all - look at the failed column -
 
 image::2017-06-01-agile-vs-waterfall.jpg[role=center]
 
 Below are common patterns and errors when doing agile instead of being agile
 
 Wagile::
- is a team which continues to follow a basically Waterfall product but uses the language of Agile and adds a few agile practices.
- For example, the team may present burn-down charts together with Gantt charts. Or the team compute individual resource allocation for the next three months.
- You can also replace Waterfall with V-Model, http://www.hermes.admin.ch/onlinepublikation/index.xhtml[HERMES], RUP, and even sometimes {ref-safe}}.
+is a team which continues to follow a basically Waterfall product but uses the language of Agile and adds a few agile practices.
+For example, the team may present burn-down charts together with Gantt charts.
+Or the team compute individual resource allocation for the next three months.
+You can also replace Waterfall with V-Model, http://www.hermes.admin.ch/onlinepublikation/index.xhtml[HERMES], RUP, and even sometimes {ref-safe}}.
 ScrumBut::
- describes a team which claims to follow Scrum but misses various practices; for example _We do Scrum but we don’t have a Product Owner_.
- Or _We do {ref-scrum} but the Project Manager allocates tasks_.
- Such teams normally have a long list of “buts” and show little progress of removing them.
+describes a team which claims to follow Scrum but misses various practices; for example _We do Scrum but we don’t have a Product Owner_.
+Or _We do {ref-scrum} but the Project Manager allocates tasks_.
+Such teams normally have a long list of “buts” and show little progress of removing them.
 Hitting The Scrum Wall::
- The most popular Agile method is Scrum which is a product management technique.
- Scrum is normally used with a number of other Agile techniques, typically user stories redaction and the technical practices from {ref-xp} – such as TDD,
- ATDD, code refactoring, continuous integration and delivery CI/CD, pair programming, etc.
- Teams that adopt the Scrum framework initially see an improvement in productivity and customer satisfaction.
- However without the technical practices quality is low and the team hit the wall. The quality gap makes it impossible to maintain the pace in the long run.
+The most popular Agile method is Scrum which is a product management technique.
+Scrum is normally used with a number of other Agile techniques, typically user stories redaction and the technical practices from {ref-xp} – such as TDD, ATDD, code refactoring, continuous integration and delivery CI/CD, pair programming, etc.
+Teams that adopt the Scrum framework initially see an improvement in productivity and customer satisfaction.
+However without the technical practices quality is low and the team hit the wall.
+The quality gap makes it impossible to maintain the pace in the long run.
 Fake Agile::
- occurs when a team declares itself Agile and blames everyone else for their failure to interact correctly with the group.
- Such a group typically  stops writing documentation, listening to business analysts, product managers and other customers, and dictates its own delivery schedule.
- Meanwhile the team do not improve quality, does not adopt test driven development or any other practice they dislike.
+occurs when a team declares itself Agile and blames everyone else for their failure to interact correctly with the group.
+Such a group typically stops writing documentation, listening to business analysts, product managers and other customers, and dictates its own delivery schedule.
+Meanwhile the team do not improve quality, does not adopt test driven development or any other practice they dislike.
 Potemkin Agile::
- occurs when an a team adopts and applies an Agile method well but does not deliver business value.
- This is a form of goal deferment were the team consider adhering to the process rather than delivering business value as the success criteria.
+occurs when an a team adopts and applies an Agile method well but does not deliver business value.
+This is a form of goal deferment were the team consider adhering to the process rather than delivering business value as the success criteria.
 Customer (Business Analyst, Product Manager, Product Owner) overload::
- on a well functioning Agile product the customer, or proxy customer, is called upon to do a lot.
- They need to decide requirements, set priorities, scout ahead of the product, align strategy, work with the developers, testers and managers, and may even
- have their own day job to do. In the earliest XP product (“C3”) the first business analyst came close to a nervous breakdown.
+on a well functioning Agile product the customer, or proxy customer, is called upon to do a lot.
+They need to decide requirements, set priorities, scout ahead of the product, align strategy, work with the developers, testers and managers, and may even have their own day job to do.
+In the earliest XP product (“C3”) the first business analyst came close to a nervous breakdown.
 Fall back::
- management may bring in consultants and other experts help switch a team to Agile. When the consultants leave some teams return to their old ways of working.
- Advisers and consultants can be a great help when introducing Agile but they need to build capacity in the development team to continue learning
- and evolving when the consultants are gone.
+management may bring in consultants and other experts help switch a team to Agile.
+When the consultants leave some teams return to their old ways of working.
+Advisers and consultants can be a great help when introducing Agile but they need to build capacity in the development team to continue learning and evolving when the consultants are gone.
 Failure to go far enough::
- To maximise the benefits of Agile Software Development the people, processes and organization that interface and work with the  Agile team need to
- understand Agile and adjust their expectations and working techniques too.
- Agile is not a drop-in technology that can be swapped in to replace another failing method. Isolated Agile teams will find it difficult to be completely Agile.
- When other groups adapt the benefits of Agile can spread beyond Software Development.
+To maximise the benefits of Agile Software Development the people, processes and organization that interface and work with the Agile team need to understand Agile and adjust their expectations and working techniques too.
+Agile is not a drop-in technology that can be swapped in to replace another failing method.
+Isolated Agile teams will find it difficult to be completely Agile.
+When other groups adapt the benefits of Agile can spread beyond Software Development.
 Exploding cards::
-  happens when teams do not sufficiently understand the technology they are working with – either in the solution or problem domain.
- As a result small work packages turn out to be large tasks in their own right.
+happens when teams do not sufficiently understand the technology they are working with – either in the solution or problem domain.
+As a result small work packages turn out to be large tasks in their own right.
 Hyper changing requirements::
- With the exception of Kanban, most Agile methods, especially Scrum, hold the iteration goals fixed for a few weeks.
- Most businesses should be able to hold to goals for such short periods of time.
- If it proves impossible to hold requirements and goals fixed for even one week then something is wrong.
- In a few cases the business is genuinely changing extremely rapidly.
- When this is the case teams are better off using Kanban style management than a Scrum based approach.
- More often hyper change in goals and requirements are a sign that something is wrong beyond the team.
- The organization itself may lack strategy and objectives, or the Product Owner may not be filling their role adequately.
+With the exception of Kanban, most Agile methods, especially Scrum, hold the iteration goals fixed for a few weeks.
+Most businesses should be able to hold to goals for such short periods of time.
+If it proves impossible to hold requirements and goals fixed for even one week then something is wrong.
+In a few cases the business is genuinely changing extremely rapidly.
+When this is the case teams are better off using Kanban style management than a Scrum based approach.
+More often hyper change in goals and requirements are a sign that something is wrong beyond the team.
+The organization itself may lack strategy and objectives, or the Product Owner may not be filling their role adequately.
 Fragile, not Agile::
- some of the Agile techniques, like TDD, ATDD, CI or CD, when poorly applied with a lack of understanding can show short term benefits but create long term problems.
+some of the Agile techniques, like TDD, ATDD, CI or CD, when poorly applied with a lack of understanding can show short term benefits but create long term problems.
 
 Few of these failure modes are unique to Agile approaches, they are reoccurring failure modes for all IT software development projects.
 Neither are they a comprehensive list of the ways in which Agile or traditional application development projects fail.

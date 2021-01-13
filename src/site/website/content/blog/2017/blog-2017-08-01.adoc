@@ -58,7 +58,7 @@ I clearly decided not to apply for this position.
 I was fascinated that companies still believe that such alibi positions will not be detected.
 The above position is a flag for me.
 As an agile developer, Scrum master or product owner I shall never work for this company.
-I will not have link::../../2017/fun-at-work[Fun at Work].
+I will not have link::../../2017/fun-at-workplace[Fun at Work].
 
 They were looking for an administrator and a classical project manager.
 They were not looking for an agile professional and Scrum master.

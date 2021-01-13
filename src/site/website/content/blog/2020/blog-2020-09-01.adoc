@@ -17,7 +17,7 @@ A software architect models customer domains and maps them to _excellent_ softwa
 The solution shall support future customer groups and expand to store additional information.
 
 _Tags_, also called labels provide an informal ontology to classify customer data.
-Tags are extensible and are machine readable.
+Tags are extensible and are machine-readable.
 
 _Comments_ empower users to store relevant unstructured information.
 Comments are only for human beings.

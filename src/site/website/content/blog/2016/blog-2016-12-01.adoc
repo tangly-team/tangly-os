@@ -13,7 +13,7 @@ tags: ["agile"]
 :copyright: CC-BY-SA 4.0
 
 image::2016-12-01-head.jpg[width=420, height=360, role=left]
-I often hear discussions who is doing the _traditional_ product leader tasks in Scrum.
+I often hear discussions asking who is performing the _traditional_ product leader tasks in Scrum.
 This is in general an excuse to state that Scrum alone cannot work and classical product leaders are still needed.
 
 Below a list of tasks you do NOT need anymore to do in {ref-scrum}.
@@ -25,7 +25,7 @@ Below a list of tasks you do NOT need anymore to do in {ref-scrum}.
 * Monitor the team's progress to make sure they stay on schedule,
 * Step in and determine the solution,
 * Conduct weekly status update and face to face meetings with the team to surface issues and provide direction,
-* Provide motivation and push the team to work harder than they might want to using carrots and sticks,
+* Provide motivation and push the team to work harder than they might want to use carrots and sticks,
 * Decide task assignments among the team members and follow up on tasks to verify completion. Force them to work during weekends,
 * Be responsible for the team doing the right thing at the right time in the right way,
 * Update Gantt charts for the iteration and release planning,
@@ -38,7 +38,7 @@ Below a list of tasks you do NOT need anymore to do in {ref-scrum}.
 
 Now you as Scrum master or agile product manager have to perform important tasks
 
-* Help removing impediments to increase velocity of team
+* Help to remove impediments to increase velocity of team
 * Coach team to implement Scrum and reflect on their activities.
 * {ref-pdca} _PDCA_ principle is built into Scrum with retrospectives and sprint reviews.
 * Coach product owner to deliver a groomed and refined backlog
