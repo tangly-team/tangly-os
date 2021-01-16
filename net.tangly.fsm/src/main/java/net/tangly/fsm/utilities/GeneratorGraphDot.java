@@ -41,13 +41,14 @@ public class GeneratorGraphDot<O, S extends Enum<S>, E extends Enum<E>> extends 
 
     @Override
     public void generate(@NotNull PrintWriter writer) {
-        writePreamble(writer);
-        writeState(builder.definition(), 1, writer);
-        writer.println();
-        states.stream().sorted().forEach(state -> writeTransitions(state, writer));
-        writePostamble(writer);
-        writer.flush();
-        writer.close();
+        try (writer) {
+            writePreamble(writer);
+            writeState(builder.definition(), 1, writer);
+            writer.println();
+            states.stream().sorted().forEach(state -> writeTransitions(state, writer));
+            writePostamble(writer);
+            writer.flush();
+        }
     }
 
     @Override
@@ -102,7 +103,7 @@ public class GeneratorGraphDot<O, S extends Enum<S>, E extends Enum<E>> extends 
     }
 
     private State<O, S, E> inferTransitionState(@NotNull State<O, S, E> state) {
-        return state.isComposite() ? inferTransitionState(state.substates().stream().findAny().orElseThrow()) : state;
+        return state.isComposite() ? inferTransitionState(state.substates().stream().sorted().findFirst().orElseThrow()) : state;
     }
 
     private String getStyle(@NotNull State<O, S, E> state) {

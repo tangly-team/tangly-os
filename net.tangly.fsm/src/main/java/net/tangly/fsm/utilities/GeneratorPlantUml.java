@@ -42,11 +42,12 @@ public class GeneratorPlantUml<O, S extends Enum<S>, E extends Enum<E>> extends 
 
     @Override
     public void generate(@NotNull PrintWriter writer) {
-        writePreamble(writer);
-        writeState(builder.definition(), 0, writer);
-        writePostamble(writer);
-        writer.flush();
-        writer.close();
+        try (writer) {
+            writePreamble(writer);
+            writeState(builder.definition(), 0, writer);
+            writePostamble(writer);
+            writer.flush();
+        }
     }
 
     @Override

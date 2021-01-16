@@ -24,11 +24,11 @@ digraph G {
 
     AA -> C [ltail="cluster-A", label="A_C/"];
     AA -> AB [label="AA_AB/"];
-    AA -> BB [lhead="cluster-B", label="AA_B/"];
+    AA -> BA [lhead="cluster-B", label="AA_B/"];
     AA -> BB [label="AA_BB/"];
     AB -> AA [label="AB_AA/"];
     AB -> AB [label="AB_AB/"];
-    BB -> C [ltail="cluster-B", label="B_C/"];
+    BA -> C [ltail="cluster-B", label="B_C/"];
     BA -> AA [lhead="cluster-A", label="BA_A/"];
     BA -> BB [label="BA_BB/"];
     BB -> BA [label="BB_BA/VV -> BA when BB_BA"];

@@ -23,11 +23,11 @@ digraph G {
     }
 
     Off -> Maintenance [label="TogglePower[Maintenance is On]/log transition Off to Maintenance"];
-    Off -> AutoTune [lhead="cluster-On", label="TogglePower[Maintenance Off]/OfftoOn"];
+    Off -> Play [lhead="cluster-On", label="TogglePower[Maintenance Off]/OfftoOn"];
     Maintenance -> Off [label="TogglePower/MaintainedtoOff"];
-    AutoTune -> Off [ltail="cluster-On", label="TogglePower/OntoOff"];
-    AutoTune -> DAB [ltail="cluster-FM", label="ToggleMode/FMtoDAB"];
-    DAB -> AutoTune [lhead="cluster-FM", label="ToggleMode/DABtoFM"];
+    Play -> Off [ltail="cluster-On", label="TogglePower/OntoOff"];
+    Play -> DAB [ltail="cluster-FM", label="ToggleMode/FMtoDAB"];
+    DAB -> Play [lhead="cluster-FM", label="ToggleMode/DABtoFM"];
     Play -> AutoTune [label="StationLost/PlaytoAutoTune"];
     AutoTune -> Play [label="StationFound/AutoTunetoPlay"];
 }

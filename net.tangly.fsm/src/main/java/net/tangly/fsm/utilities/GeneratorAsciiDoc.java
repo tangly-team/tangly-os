@@ -42,14 +42,15 @@ public class GeneratorAsciiDoc<O, S extends Enum<S>, E extends Enum<E>> extends 
 
     @Override
     public void generate(@NotNull PrintWriter writer) {
-        writeStateTablePreamble(writer);
-        states.stream().sorted().forEach(state -> writeState(state, writer));
-        writeTablePostamble(writer);
-        writeTransitionTablePreamble(writer);
-        states.stream().sorted().forEach(state -> writeTransitions(state, writer));
-        writeTablePostamble(writer);
-        writer.flush();
-        writer.close();
+        try (writer) {
+            writeStateTablePreamble(writer);
+            states.stream().sorted().forEach(state -> writeState(state, writer));
+            writeTablePostamble(writer);
+            writeTransitionTablePreamble(writer);
+            states.stream().sorted().forEach(state -> writeTransitions(state, writer));
+            writeTablePostamble(writer);
+            writer.flush();
+        }
     }
 
     @Override
