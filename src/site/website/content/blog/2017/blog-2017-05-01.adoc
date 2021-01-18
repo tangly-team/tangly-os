@@ -55,7 +55,7 @@ ____
 
 You use Minimum Viable Change (MVC).
 So I am using yet another acronym.
-A MVC has an hypothesis how to improve an aspect of your organization or your team.
+A MVC has a hypothesis how to improve an aspect of your organization or your team.
 It has measurements - often called KPI by management - to decide if the change was a worthy improvement.
 For the savvy readers it is a variant of PDCA, a cornerstone of all agile and lean approaches.
 

@@ -28,7 +28,7 @@ Below our findings and our current focus to develop.
 
 Programmers learnt the last decade that legibility and brevity of programming languages matter.
 The Java Coin product was initiated to reduce the verbosity of the Java language mainly through syntactic sugar.
-As a programmer I should not be forced to write statements the compiler could infer.
+A programmer should not be forced to write statements the compiler could infer.
 
 Examples of improvements are
 
@@ -65,7 +65,7 @@ You can publish an interface in the public API and limit the classes implementin
 Reflection versus Lambda::
 References to methods and constructors are part of the lambda extension.
 The _LambdaMetafactory_ class allows to create a reference at runtime.
-Therefore reflection operations can be replaced by lambda expressions.
+The reflection operations can be replaced by lambda expressions.
 The code is more performant and has security issues.
 Text Blocks::
 Finally we can write legible multi-lines strings.

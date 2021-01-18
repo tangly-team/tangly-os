@@ -15,13 +15,13 @@ tags: ["agile"]
 image::2021-02-03-head.jpg[width=420, height=360, role=left]
 
 Home office is the new way of working.
-A lot of my friends and business partners are working from home.
+A lot of friends and business partners are working from home.
 Our meetings are mostly online.
-We share results through digital platforms.
+We share documents and results through digital platforms.
 
 I truly hope we continue to work online in the future.
 I would like to mix home office, local coworking space, and regular office attendance.
-Less commute time and greener approach to work are certainly great improvements.
+I am convinced less commute time and a greener approach to work are certainly great improvements.
 
 I would also state the obvious. My infrastructure at home is better.
 I have a better Internet connection, my display is a high-end 4K screen instead of a cheap HD version.
@@ -35,7 +35,7 @@ Here a few advices to improve our experience.
 
 * Send me a calendar invitation in the _ics_ format.
 Never email me asking for an appointment, please provide directly the invitation.
-Do not send invitations in Outlook proprietary format, I use MacOS and Linux, not Microsoft and Office.
+Do not send invitations in Outlook proprietary format, I use macOS and Linux, not Microsoft and Office.
 * Send me a meaningful invitation.
 Provide an agenda, attendee list and attach documents I shall read before the meeting.
 Add the link and password for the conference such as Zoom, Google Hangouts, or Microsoft Team.
@@ -56,11 +56,11 @@ I mean everybody is using Google Drive, DropBox, or Microsoft One Drive.
 
 The rules to edit a document are:
 
-* Do not assume I am using Microsoft Office. In fact I strongly prefer Libre Office.
+* Do not assume I am using Microsoft Office. I use and strongly prefer LibreOffice.
 I support open source software and format.
 Microsoft Office formal definition is not even implemented in Office.
 * When modifying a shared document, consider using the review mode as being polite to your team members.
-* PDF is the defacto standard to exchange documents in the wide world. Acrobat Reader is free to use on all major platforms.
+* PDF is the de facto standard to exchange documents in the wide world. Acrobat Reader is free to use on all major platforms.
 Acrobat Reader supports a review mode.
 
 === Communicate
@@ -74,9 +74,9 @@ Do not start an email trail to identify potential solutions to something complic
 
 * Use Git and set all the code artifacts under source code management.
 * Work with text formats.
-Avoid Office or Libre Office formats for your documents
+Avoid Office or LibreOffice formats for your documents
 You cannot compute differences on such documents.
-* Consider AsciidDoc as your perfered format.
+* Consider AsciidDoc as your preferred format.
 AsciiDoc is semantically equivalent to DocBook.
 You can write whole books with AsciiDoc.
 

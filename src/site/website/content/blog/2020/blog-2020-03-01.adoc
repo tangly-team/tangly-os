@@ -20,7 +20,7 @@ They are available in Java since release of JDK 14.
 Records are often seen as _syntactic sugar_ to easily create _immutable objects_ without having to write a lot of boilerplate code.
 Records as a clean definition of immutable objects can have a tremendous impact on your component design.
 
-You as a designer have to reflect why your abstractions are not immutable and what is the rational behind.
+You as a designer have to reflect why your abstractions are not immutable and what is the rationale behind.
 From experience, it improves greatly the quality of your design.
 
 Records guarantee:
@@ -45,7 +45,7 @@ The huge advantage of the approach against IDE code generation is the guaranty t
 
 === Advantages
 
-Some of the key benefits of immutable objects are:
+Key benefits of immutable objects are:
 * *Thread safety*
 * Atomicity of failure
 * Absence of hidden side-effects
@@ -79,7 +79,7 @@ This validation block is automatically inserted at the beginning of the generate
 
 [source, java]
 ----
- record Range(int lo, int hi) {
+ public record Range(int lo, int hi) {
     public Range {
         if (lo > hi) {
             // referring here to the implicit constructor parameters

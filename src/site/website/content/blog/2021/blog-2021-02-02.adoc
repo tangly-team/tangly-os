@@ -2,7 +2,7 @@
 title: "Why Java Path Class is better?"
 linkTitle: "Why Java Path?"
 date: 2021-02-01
-tags: ["agile"]
+tags: ["agile", "java"]
 ---
 
 == Why Java Path API Class is better?
@@ -12,22 +12,69 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2021-02-02-head.jpg[width=420, height=360, role=left]
+image::2021-02-02-head.jpg[width=420,height=360,role=left]
 
 === File System NIO
 
+Java NIO (New IO) is an alternative IO API for Java, meaning alternative to the standard Java IO and Java Networking API's.
+Java NIO offers a different IO programming model than the traditional IO APIs.
+
+[NOTE]
+====
+Sometimes NIO is claimed to mean Non-blocking IO.
+However, this is not what NIO meant originally.
+Also, parts of the NIO APIs are actually blocking - e.g. the file APIs - so the label "Non-blocking" would be slightly misleading.
+====
+
+One major feature of interest is the support of file systems.
+An in-memory file system is ideal to test file related operations in unit and integration tests
+
 === Unit Tests
 
+The https://github.com/google/jimfs[Jimfs] library implements an in-memory file system.
+The approach is ideal to write unit tests working with files.
+These unit tests can also be deployed in a continuous integration pipeline where you do not have a documented and reliable acess to a file system.
+
+When you look at the implementation of Path.of or Paths.get, you will see this:
+
+[source,java]
+----
+public static Path of(String first, String... more) {
+    return FileSystems.getDefault().getPath(first, more);
+}
+----
+
+So, while this method and simiar ones are very convenient, using them will imply you want to access your default FileSystem.
+The one your JVM is running on, not your in-memory FileSystem.
+
+Hence, when wanting to make sure your code works against in-memory file systems, you must make sure to never call these helpers methods.
+Instead, you should always use the FileSystem or a Path as an anchor, like you are doing in the examples above.
+
+Depending on your project and your libraries, this is quite a challenge to pull off
+footnote:[I regularly open issues in various open source libraries to request an API extension to support Path.
+Often the maintainer of the library is not aware you need Path to unit test with in-memory file systems.].
+
 === Paths
+
+Alternative file system operations require all methods should use path objects instead of file objects.
+File objects contain the name of the accessed file but loose all references to the underlying file system.
+All operations using file objects implicitly use the default file system.
+
+Path objects encapsulate the file and the file system.
+Operations are aware of the underlying file system and behave as expected.
+
+Consider the Java file class as a legacy abstraction.
+Avoid using it and move over to the Java path abstraction.
 
 === Learnt Lessons
 
 Legacy libraries heavily use File objects in their algorithms and their public interface.
-Such libraries do not work with in-memory file systems.
+Such libraries do *not* work with in-memory file systems.
 
 The simplest approach is to always provide an API returning streams in addition of file systems methods.
 It is always possible to map a stream to a file system specific streams for read and write operations.
 
-The more complex approach is to replace all File objects with Path objects.
-Ideally Java community should declare the File class as deprecated.
-But, this approach would break backward compatibility.
+The more complex approach is to replace all _File_ objects with _Path_ objects.
+Ideally the Java community should declare the _File_ class as a deprecated one.
+Another solution would be to extend File with an internal path instance.
+This approach could break backward compatibility.

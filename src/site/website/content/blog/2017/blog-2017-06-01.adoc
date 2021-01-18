@@ -30,7 +30,7 @@ Wagile::
 is a team which continues to follow a basically Waterfall product but uses the language of Agile and adds a few agile practices.
 For example, the team may present burn-down charts together with Gantt charts.
 Or the team compute individual resource allocation for the next three months.
-You can also replace Waterfall with V-Model, http://www.hermes.admin.ch/onlinepublikation/index.xhtml[HERMES], RUP, and even sometimes {ref-safe}}.
+You can also replace Waterfall with V-Model, http://www.hermes.admin.ch/onlinepublikation/index.xhtml[HERMES], RUP, and even sometimes {ref-safe}.
 ScrumBut::
 describes a team which claims to follow Scrum but misses various practices; for example _We do Scrum but we don’t have a Product Owner_.
 Or _We do {ref-scrum} but the Project Manager allocates tasks_.
@@ -63,13 +63,14 @@ Isolated Agile teams will find it difficult to be completely Agile.
 When other groups adapt the benefits of Agile can spread beyond Software Development.
 Exploding cards::
 happens when teams do not sufficiently understand the technology they are working with – either in the solution or problem domain.
-As a result small work packages turn out to be large tasks in their own right.
+Small work packages suddenly turn out to be large tasks in their own right.
 Hyper changing requirements::
-With the exception of Kanban, most Agile methods, especially Scrum, hold the iteration goals fixed for a few weeks.
+Most Agile methods, especially Scrum, hold the iteration goals fixed for a few weeks.
+An exception is Kanban.
 Most businesses should be able to hold to goals for such short periods of time.
 If it proves impossible to hold requirements and goals fixed for even one week then something is wrong.
 In a few cases the business is genuinely changing extremely rapidly.
-When this is the case teams are better off using Kanban style management than a Scrum based approach.
+In this case teams are better off using Kanban style management than a Scrum based approach.
 More often hyper change in goals and requirements are a sign that something is wrong beyond the team.
 The organization itself may lack strategy and objectives, or the Product Owner may not be filling their role adequately.
 Fragile, not Agile::

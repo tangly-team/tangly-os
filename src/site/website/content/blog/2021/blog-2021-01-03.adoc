@@ -1,7 +1,7 @@
 ---
 title: "Gitlab for Bachelor Students"
 linkTitle: "Gitlab for Students"
-date: 2021-01-20
+date: 2021-01-18
 tags: ["java", "git", "serie-students"]
 ---
 
@@ -17,7 +17,7 @@ image::2021-01-03-head.jpg[720,480,role=left]
 Computer science students shall be proficient with a basic set of software development techniques.
 
 * _Technical excellence_ is a mandatory skill for all software developers.
-* _Agile development approaches_ are state of the industry and used almost all software development initiatives.
+* _Agile development approaches_ are state of the industry and used in almost all software development initiatives.
 * _DevOps_ approaches are used in modern organizations.
 They predate agile development approaches.
 
@@ -63,7 +63,7 @@ mindmapDiagram {
 -- Analysis <<hslu>>
 --- Agile Approaches
 --- Diagrams (BPML) <<hslu>>
----- //BPMN Sketch Minere//<color:green>
+---- //BPMN Sketch Miner//<color:green>
 -- Design <<hslu>>
 --- Domain Driven Design
 --- Diagrams (UML, C4) <<hslu>>
@@ -99,7 +99,7 @@ Yous should develop software applications using agile and DevOps techniques.
 You shall put your source code under a version management system.
 The actual industrial standard is https://git-scm.com/[git], a distributed version control system - https://en.wikipedia.org/wiki/Distributed_version_control[DVCS] -.
 
-More sophisticated source code management systems based on git with additional agile and DevOps functionalities are
+More sophisticated source code management systems based on git with additional agile and DevOps functionalities are:
 
 * https://github.com/[github] is a closed source solution and most well-known solution.
 Microsoft acquired them in 2020.
@@ -109,18 +109,18 @@ The academic program means you receive github licenses.
 Your organization is responsible to run the software on premises.
 * https://about.gitlab.com/[gitlab] is an open source solution and strong contender to github.
 CI and CD pipelines are part of the product.
-* https://bitbucket.org/dashboard/overview[Bitbucket] closed source solution of Atlassian.
+* https://bitbucket.org/dashboard/overview[Bitbucket] is a closed source solution of Atlassian.
 CI and CD pipelines are part of the product.
 Atlassian also owns JIRA, Confluence and Trello.
-* https://azure.microsoft.com/en-us/services/devops/[Azure Devops] closed source solution and Microsoft answer for .NET development.
+* https://azure.microsoft.com/en-us/services/devops/[Azure Devops] is a closed source solution and Microsoft answer for .NET development.
 CI and CD pipelines access is under definition by Microsoft.
-They slowly open their prodcut to additional development stacks such as Java, Python.
-* https://gitea.io/[Gitea] Gitea is a community managed lightweight code hosting solution written in Go.
+They slowly open their product to additional development stacks such as Java, Python.
+* https://gitea.io/[Gitea] is a community managed lightweight code hosting solution written in Go.
 The project is hosed on Github.
 It is published under the MIT license.
-* https://gogs.io/[Gogs] A painless self-hosted Git service.
+* https://gogs.io/[Gogs] is a painless self-hosted Git service.
 The project is hosed on Github.
-* https://gitolite.com/[gitolite] Gitolite allows you to set up git hosting on a central server.
+* https://gitolite.com/[gitolite] allows you to set up git hosting on a central server.
 It has fine-grained access control and many more powerful features.
 
 School often select https://about.gitlab.com/[GitLab] due to his open source license and the tremendous DevOps functionality.
@@ -131,14 +131,14 @@ The gitlab solution supports source code versioning, DevOps pipelines, agile dev
 Studying the history of software development practices shows the raise and fall of https://en.wikipedia.org/wiki/Source_Code_Control_System[SCCS],
 https://en.wikipedia.org/wiki/Concurrent_Versions_System[CVS], ClearCase, Visual Source Safe, or
 https://en.wikipedia.org/wiki/Apache_Subversion[Subversion].
-The current most used tool is https://en.wikipedia.org/wiki/Git[Git].
+The current most popular and used tool is https://en.wikipedia.org/wiki/Git[Git].
 
 Any software developer or web designer can create a git hosted project with a few commands in the shell.
 
 [NOTE]
 ====
 Linux distributions often include the git application.
-If not use the package manager to download and install git.
+If not use the package manager to download and install the git tools.
 
 MacOS users should use https://brew.sh/[homebrew] as package manager.
 Homebrew can download and install a huge set of Unix packages.To install git you just have to execute _brew install git_.
@@ -173,22 +173,23 @@ git status // <8>
 git remote // <9>
 git --version // <10>
 ----
-<1>  Create a repository for the root folder of your project, the folder _.git_ is created and contains all the git tracking information.
-<2>  Clone the repository _tangly-os_ and copy all files into the current folder.
+<1>  *Create* a new repository for the root folder of your project, the folder _.git_ is created and contains all the git tracking information.
+<2>  *Clone* the repository _tangly-os_ and copy all files into the current folder.
 <3>  Add the README file to git.
 <4>  Add all files to git.
 <5>  Commit files.
 <6>  Push files to the remote repository you cloned in step 2.
 Your changes are now public and available to other developers.
-<7>  Pull files from the remote repository you clone in step 2 Your local repository contains the last public changes of other developers.
+<7>  Pull files from the remote repository you cloned in step 2.
+Your local repository contains the last public changes of other developers.
 <8>  Returns status information about your local project.
 <9>  Returns the list of remote repositories your project is connected to.
 Often you have just one remote to synchronize with.
 <10> Displays the version of your git installation.
 
-See our blog ../../2017/git-local-repositories-for-the-impatient[Git Local Repositories For the Impatient].
+See our blog link:../../2017/git-local-repositories-for-the-impatient[Git Local Repositories For the Impatient].
 
-See our blog ../../2016/git-branches-for-the-impatient[Git Branches for the Impatient] for more advanced commands.
+See our blog link:../../2016/git-branches-for-the-impatient[Git Branches for the Impatient] for more advanced commands.
 
 === CI Pipelines for Students
 
@@ -267,7 +268,7 @@ test:
 
 [WARNING]
 ====
-Please prefer a workstation powered with Linux or MacOS if you are developing in Java, Groovy or Python.
+Please prefer a workstation powered with Linux or macOS if you are developing in Java, Groovy or Python.
 
 You will be more efficient and avoid all the problems related to virus scanners, missing packages or arcane path length problems.
 ====
@@ -357,7 +358,7 @@ $ git merge my-branch
 Rebase trunk into your branch _my-branch_.
 Note that after a rebase, the commit ids of the rebased branch are new.
 A rebase is not simply a moving of commits around in the history.
-Git actually creates brand new commits with new commit ids and permanently deletes the old commits.
+Git actually creates brand-new commits with new commit ids and permanently deletes the old commits.
 
 You should prefer to rebase only with local branches. Avoid rebasing shared branches.
 If you rebase a branch that was pulled from GitHub or GitLab, and then push it back, the server will reject it.
@@ -398,7 +399,7 @@ pick 474bf0c2 last commit
 
 ==== Cherry Picking
 
-Cherry picking in Git means to choose a commit from one branch and apply it onto another.
+Cherry-picking in Git means to choose a commit from one branch and apply it onto another.
 This is in contrast with other ways such as _merge_ and _rebase_ which normally apply many commits onto another branch.
 
 You can display the hashes of your commits in trunk with the command
@@ -408,7 +409,7 @@ You can display the hashes of your commits in trunk with the command
 git log --oneline trunk
 ----
 
-Now you can cherry pick the commit you are interested in and apply it into your branch.
+Now you can cherry-pick the commit you are interested in and apply it into your branch.
 
 [source, shell]
 ----
@@ -428,3 +429,5 @@ Read the documentation of GitLab, BitBucket or GitHub.
 
 . link:../../2017/git-local-repositories-for-the-impatient[Git Local Repositories for the Impatient]
 . link:../../2016/git-branches-for-the-impatient[Git Branches for the Impatient]
+. Link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc[Creating a Technical Website with Hugo and AsciiDoc]
+. link:../../2020/support-comments-for-static-hugo-website[Support Comments For Static Hugo Website]

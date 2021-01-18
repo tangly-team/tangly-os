@@ -74,7 +74,7 @@ All students shall excel in agile development approaches.
 Scrum is the most used approach and should be taught to all computer science students.
 
 Students shall understand the agile concepts and main constructs.
-When working in a Scrum environment, they have used backlog, issues, stories, definition of done.
+When working in a Scrum environment, they have used the backlog, issues, stories, definition of done.
 They have planed their projects with a vision, a roadmap, epics, and sprints.
 
 === Gitlab as a Student's Tool
@@ -95,7 +95,7 @@ The grading process can be standardized and the decision process is part of the 
 
 === Links
 
-The students serie is a serie of blogs showing how to use central tools for modern software development.
+The students serie is a set of blogs showing how to use central tools for modern software development.
 
 . ../../2021/software-development-for-students[Software Development for Students]
 . ../../2018/pragmatic-craftsmanship-professional-software-developer[Pragmatic Craftsmanship]

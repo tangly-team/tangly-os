@@ -116,7 +116,7 @@ requirements are correctly implemented.
 You guarantee your users and customers that any software delivery they get is compliant and correct.
 
 Each time you find a discrepancy, add an additional test validating the requirement behind this fault.
-Therefore the same error will never happen again.
+The same error will never happen again.
 
 === Good Practices
 
