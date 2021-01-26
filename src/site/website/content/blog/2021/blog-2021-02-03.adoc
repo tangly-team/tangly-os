@@ -24,7 +24,8 @@ I would like to mix home office, local coworking space, and regular office atten
 I am convinced less commute time and a greener approach to work are certainly great improvements.
 
 I would also state the obvious. My infrastructure at home is better.
-I have a better Internet connection, my display is a high-end 4K screen instead of a cheap HD version.
+I have a better Internet connection.
+My display is a high-end 4K screen instead of a cheap HD version.
 The coffee is also better.
 
 My life would be more productive and fun if more people better understand how to work in a digital world.
@@ -45,6 +46,24 @@ Mute your microphone to avoid disturbing the call attendees.
 Please buy a professional headset.
 
 Use tools such as Trello and Miro to have more collegial meetings.
+
+=== Write a Meeting Protocol
+
+If you are responsible for a meeting please:
+
+* Provide an invitation with attendee list, agenda, and as attachment the documents I should read if I want to attend.
+* Write a protocol describing the activities of the meeting.
+A well-written protocol has the following sections
+** A copy of the agenda you sent to all attendees
+** A short description of the discussion
+** A list of decisions
+** A list of tasks to implement.
+Each task has a description, a due date and a responsible.
+
+Please send the link to the protocol for review to all attendees. Define the deadline when the protocol will be released.
+
+Any meeting without such a protocol was in fact just a gathering to eat donuts and drink coffee.
+Modern organizations have coffee break for such gatherings.
 
 === Share a Document
 
@@ -84,6 +103,7 @@ You can write whole books with AsciiDoc.
 
 Adapt your analog processes to the digital world.
 Do not just copy them.
+Improve your processes and remove spurious activities.
 
 Enjoy your online interactions.
 Go regularly drink a coffee or a beer with your peers.

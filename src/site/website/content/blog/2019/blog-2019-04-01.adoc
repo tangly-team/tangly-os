@@ -25,7 +25,7 @@ How can you find good approaches to increase time to market and improve developm
 This article presents a set of tools you can use to better understand the alternatives and select the best approach for your product.
 
 Our approach is based on the de facto standard for source code version management https://git-scm.com/[git].
-If your development department is using another tool you should consider to move to another company.
+If your development department is using another tool you should consider moving to another company.
 
 === First Steps
 
@@ -108,7 +108,7 @@ It helps you to avoid the invasion of gangs and eradicate crime in your neighbor
 
 Find similar ideas in our blogs Pragmatic Craftsmanship, SonarLint for the impatient, and You need an Engineering Culture.
 
-Two books published in the pragmatic programmers series are a wonderful deep analysis of source code as a crime scene <<crimescene>> and
+Two books published in the pragmatic programmer's series are a wonderful deep analysis of source code as a crime scene <<crimescene>> and
 scanning your application source code <<xrays>>.
 
 [bibliography]

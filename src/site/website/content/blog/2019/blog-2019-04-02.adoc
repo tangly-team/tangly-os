@@ -5,7 +5,7 @@ date: 2019-04-15
 tags: ["organization"]
 ---
 
-== Why I still love to use a MacBookPro and MacOS in 2019
+== Why I still love to use a MacBookPro and macOS in 2019
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
@@ -18,17 +18,17 @@ As a young developer I loved Linux, compiled new kernels during evening sessions
 I grew older and decided to enjoy my weekends, family and outdoor activities.
 
 And surely I shall have no virus, trojan and other evils on my workstation.
-So I went to MacOS and Apple notebooks without regrets.
+So I went to macOS and Apple notebooks without regrets.
 
 === Gains
 
-The major gains using MacOS are
+The major gains using macOS are
 * Still no virus scanner is necessary, the speed-up during complex programming and development activities is tremendous,
 * No trouble when updating OS, updates are automatic and often no new start is required, Unix command line and tools are available in the console, Homebrew
 provide all known and less-known utilities and programs available under Linux.
 * My previous MacBook is now six years old and still used as a development backup platform.
 The performance is still very good,
-* My preferred IDE Intellij IDEA works flawlessly on MacOS,
+* My preferred IDE Intellij IDEA works flawlessly on macOS,
 * My new MacBookPro is perfect for Java development, database integration and running multiple Docker images locally.
 The 32 GB RAM goes a long way to run multiple docker images and databases.
 
@@ -38,7 +38,7 @@ Suddenly the generated artifacts were considered harmful.
 This decision just broke the CI/CD pipeline for hours.
 
 https://brew.sh/[Homebrew] easily downloads and installs newer versions of favorite applications and utilities.
-It solved the dread of MacOS slow or missing application updates.
+It solved the dread of macOS slow or missing application updates.
 Pre-installed Unix utilities are seldom kept up to date by Apple.
 Just use Homebrew and forget about Apple slow updates.
 
@@ -67,11 +67,11 @@ The tools I used to perform administrative work are
 * Google Business for teamwork in the cloud using collaborative tools,
 * Apple Mail Client with GPG plugin for PGP and S/MIME secure email,
 * A local Swiss article https://www.banana.ch/[Banana] for accounting and VAT reports for the federal government.
-I bought it as soon as the company stopped requesting higher prices for MacOS than for the other platforms.
+I bought it as soon as the company stopped requesting higher prices for macOS than for the other platforms.
 
 I still have no need to use any Microsoft applications.
 My findings are inline with the ones in my link:../../2016/macbook-pro-love[older blog] in March 2016.
 I hope Apple will still produce high-quality hardware and software in the future.
 
-The only big MacOS improvement I am waiting for from Apple is that Apple delegate the installation and update of Unix applications and utilities to Homebrew.
+The only big macOS improvement I am waiting for from Apple is that Apple delegate the installation and update of Unix applications and utilities to Homebrew.
 Apple is sadly always behind the release cycle of regular Unix programs. Homebrew does a way better job to support software developers.

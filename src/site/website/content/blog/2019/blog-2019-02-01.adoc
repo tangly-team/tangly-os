@@ -13,7 +13,7 @@ tags: ["agile", "serie-how-healthy"]
 :copyright: CC-BY-SA 4.0
 
 image::2019-02-01-head.png[[width=420, height=360, role=left]
-You are developing your applicaion using agile and lean approaches.
+You are developing your application using agile and lean approaches.
 
 How can you check your approach and distill improvements?
 A health check of your product and your development approach is certainly a good solution.
@@ -38,11 +38,11 @@ ____
 
 A short check with a feedback workshop presenting the insights requires around two work days.
 A deeper and more intensive check requests more effort, between one and four weeks.
-Upon completion you can also hire a coach to implement selected findings and improve durably the health of your application.
+Upon completion, you can also hire a coach to implement selected findings and improve durably the health of your application.
 The findings are often clear and the measures straightforward.
 The real work is to implement consistently the measures.
 
-I have the same personal challenge when trying to loose weight or improve my running form.
+I have the same personal challenge when trying to lose weight or improve my running form.
 The long term implementation is the crux.
 
 === Company Culture Checks

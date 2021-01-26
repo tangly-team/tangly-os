@@ -95,19 +95,19 @@ Italic terms identify concrete tools.
 Green font marks Gitlab features.
 Light blue background concepts map to technical university guidelines.
 
-Yous should develop software applications using agile and DevOps techniques.
+You should develop software applications using agile and DevOps techniques.
 You shall put your source code under a version management system.
 The actual industrial standard is https://git-scm.com/[git], a distributed version control system - https://en.wikipedia.org/wiki/Distributed_version_control[DVCS] -.
 
 More sophisticated source code management systems based on git with additional agile and DevOps functionalities are:
 
-* https://github.com/[github] is a closed source solution and most well-known solution.
+* https://github.com/[Github] is a closed source solution and most well-known solution.
 Microsoft acquired them in 2020.
 Some Swiss technical universities - ZHAW, University of Bern - use the academic github campus program.
 CI and CD pipelines are not part of the Github product and must be installed separately.
 The academic program means you receive github licenses.
 Your organization is responsible to run the software on premises.
-* https://about.gitlab.com/[gitlab] is an open source solution and strong contender to github.
+* https://about.gitlab.com/[Gitlab] is an open source solution and strong contender to github.
 CI and CD pipelines are part of the product.
 * https://bitbucket.org/dashboard/overview[Bitbucket] is a closed source solution of Atlassian.
 CI and CD pipelines are part of the product.
@@ -120,7 +120,7 @@ The project is hosed on Github.
 It is published under the MIT license.
 * https://gogs.io/[Gogs] is a painless self-hosted Git service.
 The project is hosed on Github.
-* https://gitolite.com/[gitolite] allows you to set up git hosting on a central server.
+* https://gitolite.com/[Gitolite] allows you to set up git hosting on a central server.
 It has fine-grained access control and many more powerful features.
 
 School often select https://about.gitlab.com/[GitLab] due to his open source license and the tremendous DevOps functionality.
@@ -343,15 +343,13 @@ Merge your branch _my-branch_ back into _trunk_
 
 [source, shell]
 ----
-# ...develop some code and commit it in the currently selected my-branch
-git commit –m "Some commit message"
-
-# switched to branch 'trunk'
-git checkout trunk
-
-# merge the branch "my-branch
-$ git merge my-branch
+git commit –m "Some commit message" // <1>
+git checkout trunk // <2>
+$ git merge my-branch // <3>
 ----
+<1> ...develop some code and commit it in the currently selected my-branch
+<2> switched to branch _trunk_
+<3> merge the branch _my-branch_ into _trunk_
 
 ==== Rebase
 
@@ -388,7 +386,7 @@ pick 1bffc15c 2nd last commit
 pick 474bf0c2 last commit
 ----
 
-For the commits that you want to squash, replace pick with fixup, so it becomes:
+For the commits that you want to squash, replace the pick instruction with fixup, so it becomes:
 
 [source, shell]
 ----
@@ -402,7 +400,7 @@ pick 474bf0c2 last commit
 Cherry-picking in Git means to choose a commit from one branch and apply it onto another.
 This is in contrast with other ways such as _merge_ and _rebase_ which normally apply many commits onto another branch.
 
-You can display the hashes of your commits in trunk with the command
+You can display the hashes of your commits in _trunk_ with the command
 
 [source, shell]
 ----
@@ -429,5 +427,5 @@ Read the documentation of GitLab, BitBucket or GitHub.
 
 . link:../../2017/git-local-repositories-for-the-impatient[Git Local Repositories for the Impatient]
 . link:../../2016/git-branches-for-the-impatient[Git Branches for the Impatient]
-. Link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc[Creating a Technical Website with Hugo and AsciiDoc]
+. link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc[Creating a Technical Website with Hugo and AsciiDoc]
 . link:../../2020/support-comments-for-static-hugo-website[Support Comments For Static Hugo Website]

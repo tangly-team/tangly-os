@@ -73,7 +73,7 @@ The architect shall
 
 * Be part of the team, work daily with team members and attend all team events,
 * Maintain the pace of development,
-* Communicate often and early as a coach and mentor - _meaning pair programming and design sessions_ -,
+* Often Communicate and early as a coach and mentor - _meaning pair programming and design sessions_ -,
 * Be fluent in domain driven development, hexagonal architecture, refactoring, and clean code,
 * Use architecture design record ADR and light documentation to describe architecture decisions - meaning no lengthy Software Architecture Document SAD or
 overwhelming UML models -,
