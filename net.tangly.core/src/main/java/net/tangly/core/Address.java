@@ -30,6 +30,15 @@ import org.jetbrains.annotations.NotNull;
  * @param country  mandatory country of the address as ISO 2 characters code
  */
 public record Address(String street, String extended, String poBox, String postcode, String locality, String region, String country) {
+    public Address {
+        if (Strings.isNullOrBlank(country)) {
+            throw new IllegalArgumentException("Ilegal country " + country);
+        }
+        if (Strings.isNullOrBlank(locality)) {
+            throw new IllegalArgumentException("Illegal locality " + locality);
+        }
+    }
+
     /**
      * Return a builder instance for an address object. The builder can be used to create multiple address objects
      *
@@ -130,10 +139,6 @@ public record Address(String street, String extended, String poBox, String postc
         var parts = Objects.requireNonNull(text).split(",", -1);
         Objects.checkFromIndexSize(0, parts.length, 7);
         return builder().street(parts[0]).extended(parts[1]).poBox(parts[2]).postcode(parts[3]).locality(parts[4]).region(parts[5]).country(parts[6]).build();
-    }
-
-    public boolean isValid() {
-        return !Strings.isNullOrBlank(locality()) && !Strings.isNullOrBlank(country());
     }
 
     /**
