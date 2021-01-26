@@ -20,33 +20,31 @@ import net.tangly.commons.ui.MainLayout;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MainLayoutTest {
+class MainLayoutTest {
     private static Routes routes;
 
     @BeforeAll
-    public static void createRoutes() {
+    static void createRoutes() {
         routes = new Routes().autoDiscoverViews("net.tangly.commons.ui");
     }
 
     @BeforeEach
-    public void setupVaadin() {
+    void setupVaadin() {
         MockVaadin.setup(routes);
     }
 
     @AfterEach
-    public void tearDownVaadin() {
+    void tearDownVaadin() {
         MockVaadin.tearDown();
     }
 
     @Test
-    @Tag("localTest")
-    public void mainViewTest() {
+    void mainViewTest() {
         final MainLayout main = (MainLayout) UI.getCurrent().getChildren().findFirst().get();
-        assertThat(main.getChildren().count()).isEqualTo(2);
+        assertThat(main.getChildren().count()).isEqualTo(6);
     }
 }

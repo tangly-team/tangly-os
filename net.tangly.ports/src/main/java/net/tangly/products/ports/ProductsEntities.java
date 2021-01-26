@@ -120,4 +120,8 @@ public class ProductsEntities implements ProductsRealm {
         return efforts;
     }
 
+    @Override
+    public void close() throws Exception {
+        storageManager.close();
+    }
 }

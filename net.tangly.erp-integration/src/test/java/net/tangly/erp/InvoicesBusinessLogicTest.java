@@ -18,7 +18,6 @@ import java.nio.file.FileSystem;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.invoices.InvoicesBusinessLogic;
 import net.tangly.bus.invoices.InvoicesRealm;
-import net.tangly.core.TagTypeRegistry;
 import net.tangly.invoices.ports.InvoicesEntities;
 import net.tangly.invoices.ports.InvoicesHdl;
 import org.jetbrains.annotations.NotNull;

@@ -55,7 +55,7 @@ class ContractsView extends InternalEntitiesView<Contract> {
             .setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(new NumberRenderer<>(o -> logicInvoices.invoicedAmountWithoutVatForContract(o.id(), null, null), VaadinUtils.FORMAT))
             .setKey("invoicedAmount").setHeader("Invoiced").setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
-        addAndExpand(filterCriteria(false, false), grid(), gridButtons());
+        addAndExpand(filterCriteria(false, false, InternalEntitiesView::addQualifiedEntityFilters), grid(), gridButtons());
     }
 
     @Override
@@ -79,7 +79,7 @@ class ContractsView extends InternalEntitiesView<Contract> {
         sellee.setReadOnly(readonly);
 
         FormLayout form = new FormLayout();
-        VaadinUtils.setResponsiveSteps(form);
+        VaadinUtils.set3ResponsiveSteps(form);
         entityField.addEntityComponentsTo(form);
         form.add(new HtmlComponent("br"));
         form.add(locale, currency);

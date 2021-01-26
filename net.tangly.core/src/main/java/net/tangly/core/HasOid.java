@@ -17,6 +17,11 @@ package net.tangly.core;
  */
 public interface HasOid {
     /**
+     * String representation of the property associated with the mixin.
+     */
+    String OID = "oid";
+
+    /**
      * Place holder to identify an illegal or undefined internal identifier. It is also the default value if a developer forget to set the value.
      */
     long UNDEFINED_OID = 0;

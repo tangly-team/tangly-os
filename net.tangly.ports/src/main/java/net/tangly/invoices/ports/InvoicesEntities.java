@@ -112,4 +112,9 @@ public class InvoicesEntities implements InvoicesRealm {
     public Provider<InvoiceLegalEntity> legalEntities() {
         return legalEntities;
     }
+
+    @Override
+    public void close() throws Exception {
+        storageManager.close();
+    }
 }

@@ -68,7 +68,6 @@ class CodeDatabaseTest {
         assertThat(code1.hashCode()).isEqualTo(code1.hashCode());
         assertThat(code1.hashCode()).isNotEqualTo(code2.hashCode());
         assertThat(code1.toString()).contains("1");
-
     }
 }
 

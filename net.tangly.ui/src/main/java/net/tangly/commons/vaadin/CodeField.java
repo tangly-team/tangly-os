@@ -13,12 +13,15 @@
 
 package net.tangly.commons.vaadin;
 
+import java.util.Objects;
+
 import com.vaadin.flow.component.select.Select;
 import net.tangly.core.codes.Code;
 import net.tangly.core.codes.CodeType;
 
 /**
  * Selection field for a reference code and all its values.
+ * <p>Beware that the selected item can be null when {@link com.vaadin.flow.component.select.Select#setEmptySelectionAllowed(boolean)} is set to true.</p>
  *
  * @param <T> reference code to display
  * @see Code
@@ -29,8 +32,8 @@ public class CodeField<T extends Code> extends Select<T> {
     public CodeField(CodeType<T> codeType, String label) {
         setLabel(label);
         this.codeType = codeType;
-        setItemLabelGenerator(T::code);
+        setItemLabelGenerator(o -> (Objects.isNull(o) ? "" : o.code()));
         setItems(codeType.codes());
-        setItemEnabledProvider(Code::isEnabled);
+        setItemEnabledProvider(o -> (Objects.isNull(o) ? true : o.isEnabled()));
     }
 }

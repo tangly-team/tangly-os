@@ -12,7 +12,7 @@
 
 package net.tangly.erp;
 
-import net.tangly.core.TagTypeRegistry;
+import net.tangly.core.TypeRegistry;
 import net.tangly.bus.crm.CrmTags;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +24,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CrmBusinessLogicTest {
     @Test
     void testCrmTags() {
-        var registry = new TagTypeRegistry();
+        var registry = new TypeRegistry();
         CrmTags.registerTags(registry);
         assertThat(registry.namespaces().size()).isEqualTo(2);
         assertThat(registry.namespaces()).contains(CrmTags.CRM, CrmTags.GEO);

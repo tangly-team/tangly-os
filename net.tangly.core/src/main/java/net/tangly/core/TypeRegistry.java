@@ -21,19 +21,20 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import net.tangly.core.codes.Code;
+import net.tangly.core.codes.CodeType;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * Registry of tag types defined for a domain model.
  */
-public class TagTypeRegistry {
-    /**
-     * registered tag types in the registry.
-     */
-    private final Set<TagType<?>> types;
+public class TypeRegistry {
+    private final Set<TagType<?>> tagTypes;
+    private final Set<CodeType<?>> codeTypes;
 
-    public TagTypeRegistry() {
-        types = new HashSet<>();
+    public TypeRegistry() {
+        tagTypes = new HashSet<>();
+        codeTypes = new HashSet<>();
     }
 
     /**
@@ -42,11 +43,11 @@ public class TagTypeRegistry {
      * @param type tag type to bind
      */
     public void register(@NotNull TagType<?> type) {
-        types.add(type);
+        tagTypes.add(type);
     }
 
     public Collection<TagType<?>> tagTypes() {
-        return Collections.unmodifiableCollection(types);
+        return Collections.unmodifiableCollection(tagTypes);
     }
 
     /**
@@ -55,11 +56,11 @@ public class TagTypeRegistry {
      * @return List of namespaces
      */
     public List<String> namespaces() {
-        return types.stream().map(TagType::namespace).distinct().collect(Collectors.toUnmodifiableList());
+        return tagTypes.stream().map(TagType::namespace).distinct().collect(Collectors.toUnmodifiableList());
     }
 
     public List<String> tagNamesForNamespace(@NotNull String namespace) {
-        return types.stream().filter(o -> Objects.equals(o.namespace(), namespace)).map(TagType::name).distinct().collect(Collectors.toUnmodifiableList());
+        return tagTypes.stream().filter(o -> Objects.equals(o.namespace(), namespace)).map(TagType::name).distinct().collect(Collectors.toUnmodifiableList());
     }
 
     /**
@@ -70,7 +71,7 @@ public class TagTypeRegistry {
      * @return requested tag type
      */
     public Optional<TagType<?>> find(String namespace, @NotNull String name) {
-        return types.stream().filter(o -> Objects.equals(o.namespace(), namespace) && Objects.equals(o.name(), name)).findAny();
+        return tagTypes.stream().filter(o -> Objects.equals(o.namespace(), namespace) && Objects.equals(o.name(), name)).findAny();
     }
 
     /**
@@ -83,5 +84,12 @@ public class TagTypeRegistry {
     public Optional<TagType<?>> find(@NotNull Tag tag) {
         return find(tag.namespace(), tag.name());
     }
-}
 
+    public void register(@NotNull CodeType<?> type) {
+        codeTypes.add(type);
+    }
+
+    public Optional<CodeType<?>> find(@NotNull Class<?> clazz) {
+        return codeTypes.stream().filter(o -> clazz.equals(o.clazz())).findAny();
+    }
+}

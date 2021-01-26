@@ -47,7 +47,7 @@ public class CmdCreateInvoiceDocument extends Dialog implements Cmd {
     @Override
     public void execute() {
         FormLayout form = new FormLayout();
-        VaadinUtils.setResponsiveSteps(form);
+        VaadinUtils.set3ResponsiveSteps(form);
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
             domain.port().exportInvoiceDocument(invoice, withQrCode.getValue(), withEN16931.getValue());
             this.close();

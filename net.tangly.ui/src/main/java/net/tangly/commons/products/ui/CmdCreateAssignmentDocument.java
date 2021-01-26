@@ -50,7 +50,7 @@ public class CmdCreateAssignmentDocument extends Dialog implements Cmd {
     @Override
     public void execute() {
         FormLayout form = new FormLayout();
-        VaadinUtils.setResponsiveSteps(form);
+        VaadinUtils.set3ResponsiveSteps(form);
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
             domain.port().exportEffortsDocument(assignment, fromDate.getValue(), toDate.getValue());
             this.close();

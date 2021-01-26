@@ -27,17 +27,22 @@ import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.provider.ListDataProvider;
+import net.tangly.commons.vaadin.CodeField;
 import net.tangly.commons.vaadin.Crud;
 import net.tangly.commons.vaadin.SelectedItemListener;
+import net.tangly.core.HasDate;
 import net.tangly.core.HasInterval;
 import net.tangly.core.HasTags;
+import net.tangly.core.codes.Code;
+import net.tangly.core.codes.CodeType;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * Defines the filters and actions specific to a grid.
+ *
  * @param <T> type of entities displayed in the grid
  */
-public class GridFiltersAndActions<T> extends HorizontalLayout implements SelectedItemListener<T> {
+public class GridDecorators<T> extends HorizontalLayout implements SelectedItemListener<T> {
     /**
      * Defines the structure for a submenu of context actions associated with entities displayed in a grid.
      */
@@ -66,7 +71,7 @@ public class GridFiltersAndActions<T> extends HorizontalLayout implements Select
     private final Actions globalActions;
     private T selectedItem;
 
-    public GridFiltersAndActions(@NotNull PaginatedGrid<T> grid, boolean hasItemActions, boolean hasGlobalActions) {
+    public GridDecorators(@NotNull PaginatedGrid<T> grid, boolean hasItemActions, boolean hasGlobalActions) {
         this.grid = grid;
         menuBar = new MenuBar();
         itemActions = hasItemActions ? new Actions(menuBar, "Actions") : null;
@@ -78,8 +83,8 @@ public class GridFiltersAndActions<T> extends HorizontalLayout implements Select
         }
     }
 
-    public static <U> GridFiltersAndActions<U> of(@NotNull Crud<U> view, @NotNull PaginatedGrid<U> grid, boolean hasItemActions, boolean hasGlobalActions) {
-        GridFiltersAndActions<U> decorator = new GridFiltersAndActions<>(grid, hasItemActions, hasGlobalActions);
+    public static <U> GridDecorators<U> of(@NotNull Crud<U> view, @NotNull PaginatedGrid<U> grid, boolean hasItemActions, boolean hasGlobalActions) {
+        GridDecorators<U> decorator = new GridDecorators<>(grid, hasItemActions, hasGlobalActions);
         view.addSelectedItemListener(decorator);
         return decorator;
     }
@@ -119,10 +124,10 @@ public class GridFiltersAndActions<T> extends HorizontalLayout implements Select
         void addFilter(@NotNull ListDataProvider<E> provider);
     }
 
-    public static class GridFilterTags<E extends HasTags> implements GridFilter<E> {
+    public static class FilterTags<E extends HasTags> implements GridFilter<E> {
         private final TextField component;
 
-        public GridFilterTags(@NotNull GridFiltersAndActions<E> container) {
+        public FilterTags(@NotNull GridDecorators<E> container) {
             component = new TextField("Tags", "tags");
             component.setClearButtonVisible(true);
             component.addValueChangeListener(e -> container.updateFilters());
@@ -139,10 +144,38 @@ public class GridFiltersAndActions<T> extends HorizontalLayout implements Select
         }
     }
 
-    public static class GridFilterInterval<E extends HasInterval> implements GridFilter<E> {
+    public static class FilterDate<E extends HasDate> implements GridFilter<E> {
+        private final DatePicker from;
+        private final DatePicker to;
+        private final HorizontalLayout component;
+
+        public FilterDate(@NotNull GridDecorators<E> container) {
+            from = new DatePicker("From");
+            from.setClearButtonVisible(true);
+            from.addValueChangeListener(e -> container.updateFilters());
+            to = new DatePicker("To");
+            to.setClearButtonVisible(true);
+            to.addValueChangeListener(e -> container.updateFilters());
+            component = new HorizontalLayout();
+            component.add(from, to);
+        }
+
+        public Component component() {
+            return component;
+        }
+
+        public void addFilter(@NotNull ListDataProvider<E> provider) {
+            if (!from.isEmpty() && !to.isEmpty()) {
+                var predicate = new HasDate.IntervalFilter(from.getValue(), to.getValue());
+                provider.addFilter(entity ->  predicate.test(entity));
+            }
+        }
+    }
+
+    public static class FilterInterval<E extends HasInterval> implements GridFilter<E> {
         private final DatePicker component;
 
-        public GridFilterInterval(@NotNull GridFiltersAndActions<E> container) {
+        public FilterInterval(@NotNull GridDecorators<E> container) {
             component = new DatePicker("Date");
             component.setClearButtonVisible(true);
             component.addValueChangeListener(e -> container.updateFilters());
@@ -159,11 +192,11 @@ public class GridFiltersAndActions<T> extends HorizontalLayout implements Select
         }
     }
 
-    public static class GridFilterText<E> implements GridFilter<E> {
+    public static class FilterText<E> implements GridFilter<E> {
         private final TextField component;
         private final Function<E, String> getter;
 
-        public GridFilterText(@NotNull GridFiltersAndActions<E> container, @NotNull Function<E, String> getter, String label, String placeholder) {
+        public FilterText(@NotNull GridDecorators<E> container, @NotNull Function<E, String> getter, String label, String placeholder) {
             component = new TextField(label, placeholder);
             component.setClearButtonVisible(true);
             component.addValueChangeListener(e -> container.updateFilters());
@@ -177,6 +210,28 @@ public class GridFiltersAndActions<T> extends HorizontalLayout implements Select
         public void addFilter(@NotNull ListDataProvider<E> provider) {
             if (!component.isEmpty()) {
                 provider.addFilter(entity -> getter.apply(entity).toLowerCase().contains(component.getValue().toLowerCase()));
+            }
+        }
+    }
+
+    public static class FilterCode<E, C extends Code> implements GridFilter<E> {
+        private final CodeField<C> component;
+        private final Function<E, C> getter;
+
+        public FilterCode(@NotNull GridDecorators<E> container, @NotNull CodeType<C> type, @NotNull Function<E, C> getter, String label) {
+            component = new CodeField<C>(type, label);
+            component.setEmptySelectionAllowed(true);
+            component.addValueChangeListener(e -> container.updateFilters());
+            this.getter = getter;
+        }
+
+        public Component component() {
+            return component;
+        }
+
+        public void addFilter(@NotNull ListDataProvider<E> provider) {
+            if (!component.isEmpty()) {
+                provider.addFilter(entity -> getter.apply(entity).equals(component.getValue()));
             }
         }
     }

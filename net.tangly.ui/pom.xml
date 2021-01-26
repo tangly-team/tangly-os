@@ -3,10 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.example</groupId>
-    <artifactId>product-base</artifactId>
-    <name>Project base for Vaadin</name>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>net.tangly</groupId>
+    <artifactId>erp</artifactId>
+    <name>tangly ERP</name>
+    <version>0.2.6</version>
     <packaging>war</packaging>
 
     <properties>
@@ -16,9 +16,9 @@
         <product.reporting.outputEncoding>UTF-8</product.reporting.outputEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
 
-        <vaadin.version>18.0.3</vaadin.version>
+        <vaadin.version>18.0.5</vaadin.version>
         <tangly.version>0.2.6</tangly.version>
-        <jetty.version>9.4.34.v20201102</jetty.version>
+        <jetty.version>9.4.36.v20210114</jetty.version>
     </properties>
 
     <repositories>
@@ -28,17 +28,11 @@
         <repository>
             <id>central</id>
             <url>https://repo.maven.apache.org/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
         </repository>
         <!-- Repository used by many Vaadin add-ons -->
         <repository>
             <id>Vaadin Directory</id>
             <url>https://maven.vaadin.com/vaadin-addons</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
         </repository>
         <repository>
             <id>ZUGFeRD</id>
@@ -55,9 +49,6 @@
         <pluginRepository>
             <id>central</id>
             <url>https://repo.maven.apache.org/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
         </pluginRepository>
     </pluginRepositories>
 
@@ -189,7 +180,7 @@
         <dependency>
             <groupId>com.github.mvysny.kaributesting</groupId>
             <artifactId>karibu-testing-v10</artifactId>
-            <version>1.2.1</version>
+            <version>1.2.8</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -197,17 +188,10 @@
             <artifactId>so-charts</artifactId>
             <version>0.2.0</version>
         </dependency>
-        <!--
-        <dependency>
-            <groupId>org.vaadin.klaudeta</groupId>
-            <artifactId>grid-pagination</artifactId>
-            <version>2.0.10</version>
-        </dependency>
-        -->
         <dependency>
             <groupId>com.vaadin.componentfactory</groupId>
             <artifactId>tooltip</artifactId>
-            <version>1.3.0</version>
+            <version>1.3.4</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -217,7 +201,7 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.18.0</version>
+            <version>3.18.1</version>
         </dependency>
     </dependencies>
 

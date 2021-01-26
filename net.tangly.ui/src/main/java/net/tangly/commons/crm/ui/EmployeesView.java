@@ -43,9 +43,9 @@ class EmployeesView extends InternalEntitiesView<Employee> {
         grid.addColumn(Employee::name).setKey("employee").setHeader("Employee").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.person().name()).setKey("person").setHeader("Person").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.organization().name()).setKey("organization").setHeader("Organization").setSortable(true).setAutoWidth(true).setResizable(true);
-        grid.addColumn(e -> e.tag(CrmTags.CRM_EMPLOYEE_TITLE).orElse("")).setKey("title").setHeader("Title").setSortable(true).setAutoWidth(true)
+        grid.addColumn(e -> e.value(CrmTags.CRM_EMPLOYEE_TITLE).orElse("")).setKey("title").setHeader("Title").setSortable(true).setAutoWidth(true)
             .setResizable(true);
-        addAndExpand(filterCriteria(false, false), grid(), gridButtons());
+        addAndExpand(filterCriteria(false, false, InternalEntitiesView::addEntityFilters), grid(), gridButtons());
     }
 
     @Override
@@ -59,7 +59,7 @@ class EmployeesView extends InternalEntitiesView<Employee> {
         person.setReadOnly(readonly);
 
         FormLayout form = new FormLayout();
-        VaadinUtils.setResponsiveSteps(form);
+        VaadinUtils.set3ResponsiveSteps(form);
         entityField.addEntityComponentsTo(form);
         form.add(new HtmlComponent("br"));
         form.add(person, organization);

@@ -13,7 +13,6 @@
 package net.tangly.core;
 
 import java.time.LocalDate;
-import java.util.function.Function;
 import java.util.function.Predicate;
 
 import org.jetbrains.annotations.NotNull;
@@ -22,41 +21,9 @@ import org.jetbrains.annotations.NotNull;
  * Defines a mixin with a time interval.
  */
 public interface HasInterval {
-    class IntervalFilter<T extends HasInterval> implements Predicate<T> {
-        private LocalDate from;
-        private LocalDate to;
-
-        public IntervalFilter(LocalDate from, LocalDate to) {
-            interval(from, to);
-        }
-
-        public final void interval(LocalDate from, LocalDate to) {
-            this.from = from;
-            this.to = to;
-        }
-
-        public boolean test(T entity) {
+    record IntervalFilter<T extends HasInterval>(LocalDate from, LocalDate to) implements Predicate<T> {
+        public boolean test(@NotNull T entity) {
             return (from == null || !from.isAfter(entity.fromDate())) && (to == null || !to.isBefore(entity.toDate()));
-        }
-    }
-
-    class IsInInterval<T> implements Predicate<T> {
-        private LocalDate from;
-        private LocalDate to;
-        private final Function<T, LocalDate> date;
-
-        IsInInterval(Function<T, LocalDate> date) {
-            this.date = date;
-        }
-
-        public void interval(LocalDate from, LocalDate to) {
-            this.from = from;
-            this.to = to;
-        }
-
-        @Override
-        public boolean test(T object) {
-            return ((from == null) || from.isAfter(date.apply(object))) && ((to == null) || to.isBefore(date.apply(object)));
         }
     }
 

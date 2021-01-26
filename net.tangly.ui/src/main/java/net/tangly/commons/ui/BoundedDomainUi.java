@@ -15,10 +15,15 @@ package net.tangly.commons.ui;
 import com.vaadin.flow.component.menubar.MenuBar;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Defines the interface for the user interface of a bounded domain.
+ */
 public interface BoundedDomainUi {
     String ENTITIES = "Entities";
     String ADMINISTRATION = "Administration";
     String STATISTICS = "Statistics";
+    String IMPORT = "Import";
+    String EXPORT = "Export";
 
     /**
      * Returns the name of bounded domain user interface as displayed in the user interface.

@@ -21,10 +21,10 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
-import net.tangly.components.grids.GridFiltersAndActions;
+import net.tangly.components.grids.GridDecorators;
 import net.tangly.core.Entity;
 import net.tangly.core.QualifiedEntity;
-import net.tangly.core.TagTypeRegistry;
+import net.tangly.core.TypeRegistry;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
@@ -39,7 +39,7 @@ import org.jetbrains.annotations.NotNull;
 public abstract class InternalEntitiesView<T extends Entity> extends EntitiesView<T> implements CrudForm<T>, HasIdView<T> {
     protected final transient Provider<T> provider;
     protected Binder<T> binder;
-    private final TagTypeRegistry registry;
+    private final TypeRegistry registry;
 
     /**
      * Constructor of the CRUD view for a subclass of entity.
@@ -49,19 +49,23 @@ public abstract class InternalEntitiesView<T extends Entity> extends EntitiesVie
      * @param provider data provider associated with the grid
      * @param registry tag type registry used to configure the tags view of the entity class
      */
-    public InternalEntitiesView(@NotNull Class<T> clazz, @NotNull Mode mode, @NotNull Provider<T> provider, TagTypeRegistry registry) {
+    public InternalEntitiesView(@NotNull Class<T> clazz, @NotNull Mode mode, @NotNull Provider<T> provider, TypeRegistry registry) {
         super(clazz, mode, provider);
         this.provider = provider;
         this.binder = new Binder<>(clazz);
         this.registry = registry;
     }
 
-    protected GridFiltersAndActions<T> filterCriteria(boolean hasItemActions, boolean hasGlobalActions) {
-        GridFiltersAndActions<T> filters = GridFiltersAndActions.of(this, grid(), hasItemActions, hasGlobalActions);
-        filters.addFilter(new GridFiltersAndActions.GridFilterText<>(filters, T::name, "Name", "name"));
-        filters.addFilter(new GridFiltersAndActions.GridFilterInterval<>(filters));
-        filters.addFilter(new GridFiltersAndActions.GridFilterTags<>(filters));
-        return filters;
+    protected static <T extends Entity> void addEntityFilters(GridDecorators<T> filters) {
+        filters.addFilter(new GridDecorators.FilterText<>(filters, T::name, "Name", "name"));
+        filters.addFilter(new GridDecorators.FilterInterval<>(filters));
+        filters.addFilter(new GridDecorators.FilterTags<>(filters));
+
+    }
+
+    protected static <T extends QualifiedEntity> void addQualifiedEntityFilters(GridDecorators<T> filters) {
+        filters.addFilter(new GridDecorators.FilterText<>(filters, T::id, "Id", "id"));
+        addEntityFilters(filters);
     }
 
     protected static <T extends QualifiedEntity> void addQualifiedEntityColumns(Grid<T> grid) {
@@ -114,7 +118,7 @@ public abstract class InternalEntitiesView<T extends Entity> extends EntitiesVie
         entityField.setReadOnly(mode.readOnly());
 
         FormLayout form = new FormLayout();
-        VaadinUtils.setResponsiveSteps(form);
+        VaadinUtils.set3ResponsiveSteps(form);
         entityField.addEntityComponentsTo(form);
 
         binder = new Binder<>(entityClass());

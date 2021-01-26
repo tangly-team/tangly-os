@@ -20,6 +20,8 @@ import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.invoices.InvoicesBoundedDomain;
+import net.tangly.commons.domain.ui.CmdExportEntities;
+import net.tangly.commons.domain.ui.CmdImportEntities;
 import net.tangly.commons.domain.ui.DomainView;
 import net.tangly.commons.ui.BoundedDomainUi;
 import net.tangly.commons.ui.MainLayout;
@@ -27,6 +29,8 @@ import net.tangly.commons.vaadin.Crud;
 import org.jetbrains.annotations.NotNull;
 
 public class CrmBoundedDomainUi implements BoundedDomainUi {
+    private final CrmBoundedDomain domain;
+    private final LeadsView leadsView;
     private final NaturalEntitiesView naturalEntitiesView;
     private final LegalEntitiesView legalEntitiesView;
     private final EmployeesView employeesView;
@@ -39,6 +43,8 @@ public class CrmBoundedDomainUi implements BoundedDomainUi {
 
     @Inject
     public CrmBoundedDomainUi(@NotNull CrmBoundedDomain crmDomain, @NotNull InvoicesBoundedDomain invoicesDomain) {
+        this.domain = crmDomain;
+        leadsView = new LeadsView(crmDomain, Crud.Mode.EDITABLE);
         naturalEntitiesView = new NaturalEntitiesView(crmDomain, Crud.Mode.EDITABLE);
         legalEntitiesView = new LegalEntitiesView(crmDomain, Crud.Mode.EDITABLE);
         employeesView = new EmployeesView(crmDomain, Crud.Mode.EDITABLE);
@@ -59,6 +65,7 @@ public class CrmBoundedDomainUi implements BoundedDomainUi {
     public void select(@NotNull MainLayout layout, @NotNull MenuBar menuBar) {
         MenuItem menuItem = menuBar.addItem(ENTITIES);
         SubMenu subMenu = menuItem.getSubMenu();
+        subMenu.addItem("Leads", e -> select(layout, leadsView));
         subMenu.addItem("Legal Entities", e -> select(layout, legalEntitiesView));
         subMenu.addItem("Natural Entities", e -> select(layout, naturalEntitiesView));
         subMenu.addItem("Contracts", e -> select(layout, contractsView));
@@ -70,6 +77,8 @@ public class CrmBoundedDomainUi implements BoundedDomainUi {
         menuItem = menuBar.addItem(ADMINISTRATION);
         subMenu = menuItem.getSubMenu();
         subMenu.addItem(STATISTICS, e -> select(layout, domainView));
+        subMenu.addItem(IMPORT, e -> new CmdImportEntities(domain).execute());
+        subMenu.addItem(EXPORT, e -> new CmdExportEntities(domain).execute());
         select(layout, currentView);
     }
 

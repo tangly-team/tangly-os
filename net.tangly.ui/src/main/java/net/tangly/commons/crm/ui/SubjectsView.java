@@ -54,7 +54,7 @@ class SubjectsView extends InternalEntitiesView<Subject> {
         One2OneField<NaturalEntity, NaturalEntitiesView> user = new One2OneField<>("User", new NaturalEntitiesView(domain, mode));
 
         FormLayout form = new FormLayout();
-        VaadinUtils.setResponsiveSteps(form);
+        VaadinUtils.set3ResponsiveSteps(form);
         entityField.addEntityComponentsTo(form);
         form.add(new HtmlComponent("br"));
         EmailField gravatarEmail = new EmailField("Avatar Email");

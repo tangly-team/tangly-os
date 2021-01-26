@@ -19,7 +19,7 @@ import java.util.Optional;
 
 import net.tangly.core.HasTags;
 import net.tangly.core.TagType;
-import net.tangly.core.TagTypeRegistry;
+import net.tangly.core.TypeRegistry;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
@@ -37,9 +37,9 @@ public class BoundedDomain<R extends Realm, B, H extends Handler, P> {
     private final H handler;
     private final P port;
     private final B logic;
-    private final transient TagTypeRegistry registry;
+    private final transient TypeRegistry registry;
 
-    public BoundedDomain(String name, R realm, B logic, H handler, P port, TagTypeRegistry registry) {
+    public BoundedDomain(String name, R realm, B logic, H handler, P port, TypeRegistry registry) {
         this.name = name;
         this.realm = realm;
         this.logic = logic;
@@ -49,11 +49,11 @@ public class BoundedDomain<R extends Realm, B, H extends Handler, P> {
         initialize();
     }
 
-    protected static <I extends HasTags> void addTagCounts(TagTypeRegistry registry, Provider<I> provider, Map<TagType<?>, Integer> counts) {
+    protected static <I extends HasTags> void addTagCounts(TypeRegistry registry, Provider<I> provider, Map<TagType<?>, Integer> counts) {
         addTagCounts(registry, provider.items(), counts);
     }
 
-    protected static <I extends HasTags> void addTagCounts(TagTypeRegistry registry, List<I> entities, Map<TagType<?>, Integer> counts) {
+    protected static <I extends HasTags> void addTagCounts(TypeRegistry registry, List<I> entities, Map<TagType<?>, Integer> counts) {
         entities.stream().flatMap(e -> e.tags().stream()).map(registry::find).flatMap(Optional::stream).forEach(e -> {
             if (!counts.containsKey(e)) {
                 counts.put(e, 0);
@@ -82,7 +82,7 @@ public class BoundedDomain<R extends Realm, B, H extends Handler, P> {
         return port;
     }
 
-    public TagTypeRegistry registry() {
+    public TypeRegistry registry() {
         return registry;
     }
 

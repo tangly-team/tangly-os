@@ -18,10 +18,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BankConnectionFieldTest {
+class BankConnectionFieldTest {
+    public static final String IBAN = "CH88 0900 0000 3064 1768 2";
+    public static final String BIC = "POFICHBEXXX";
+
     @Test
     void testAddressField() {
-        BankConnection connection = new BankConnection("", "", "");
+        BankConnection connection = new BankConnection(IBAN, BIC, "");
         final BankConnectionField bankConnectionField = new BankConnectionField();
         bankConnectionField.setValue(connection);
         assertThat(bankConnectionField.getValue()).isEqualTo(connection);

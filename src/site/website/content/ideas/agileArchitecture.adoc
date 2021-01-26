@@ -5,9 +5,9 @@ weight: 30
 ---
 
 = Agile Architecture
-:author: Marcel Baumann 
+:author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
-:revnumber: v0.1 
+:revnumber: v0.1
 :revdate: 2020-05-31
 :homepage: https://www.tangly.net/
 :description: An introduction to software architecture in agile product development
@@ -109,17 +109,35 @@ Your architects are talented developers and are full members of your Scrum teams
 +++ Kanban
 +++ eXtreme Programming
 +++ Software Craftsmanship
++++ Value Streams
 ++ Clean Code & Architecture
 +++ Agile Component Design
 +++ Refactoring
 +++ Legacy Systems
 +++ Domain Driven Development
+++ Agile Documentation
++++ ADR
++++ Static Website
++++ JavaDoc
++++ BDD for Documentation
+++ Standards
++++ Domain Driven Development
+++++ Event Storming
++++ PMI
+++++ PMI-ACP
++++ TOGAF
 -- Master Your Techniques
 --- CI/CD/CD
 --- ATDD
 --- TDD
---- Refactoring with IDE
+--- Clean Code
+---- Refactoring with IDE
 --- DevOps
+---- Infrastructure as Code
+---- Container Deployment
+---- Validation and Verfication
+----- Monitoring
+----- Auditing
 -- Master Your Technology Stack (Java)
 --- IntelliJ IDEA
 --- JUnit 5, Mockito 2, AssertJ

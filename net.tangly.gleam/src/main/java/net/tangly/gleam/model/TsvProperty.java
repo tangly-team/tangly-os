@@ -70,6 +70,10 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
         return of(column, getter, setter, v -> v, u -> u);
     }
 
+    public static <T> TsvProperty<T, LocalDate> ofDate(@NotNull String column, Function<T, LocalDate> getter, BiConsumer<T, LocalDate> setter) {
+        return of(column, getter, setter, v -> (v != null) ? LocalDate.parse(v) : null, u -> u);
+    }
+
     public static <T> TsvProperty<T, Integer> ofInt(@NotNull String column, Function<T, Integer> getter, BiConsumer<T, Integer> setter) {
         return of(column, getter, setter, v -> (v == null) ? 0 : Integer.parseInt(v), u -> u);
     }

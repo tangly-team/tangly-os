@@ -12,6 +12,7 @@
 
 package net.tangly.core;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Set;
@@ -48,6 +49,20 @@ class EntityTest {
     }
 
     @Test
+    void testHasInterval() {
+        var entity = Entity.of();
+        entity.fromDate(LocalDate.of(2000, Month.JANUARY, 1));
+        entity.toDate(LocalDate.of(2000, Month.DECEMBER, 31));
+
+        assertThat(entity.isActive(LocalDate.of(1999, Month.DECEMBER, 31))).isFalse();
+        assertThat(entity.isActive(LocalDate.of(2000, Month.JANUARY, 1))).isTrue();
+        assertThat(entity.isActive(LocalDate.of(2000, Month.JUNE, 1))).isTrue();
+        assertThat(entity.isActive(LocalDate.of(2000, Month.DECEMBER, 31))).isTrue();
+        assertThat(entity.isActive(LocalDate.of(2001, Month.JANUARY, 1))).isFalse();
+        assertThat(entity.isActive()).isFalse();
+    }
+
+    @Test
     void testAddress() {
         final String COUNTRY = "Switzerland";
         final String LOCALITY = "Zug";
@@ -81,12 +96,33 @@ class EntityTest {
         assertThat(item.tags().contains(tag)).isTrue();
         assertThat(item.findByNamespace("namespace").size()).isEqualTo(1);
         assertThat(item.findBy("namespace", "tag").isPresent()).isTrue();
+        assertThat(item.findBy("namespace:tag").isPresent()).isTrue();
+        assertThat(item.containsTag("namespace", "tag")).isTrue();
+        assertThat(item.containsTag("namespace:tag")).isTrue();
+        assertThat(item.value("namespace:tag").orElseThrow()).isEqualTo("format");
+
         // When
         item.remove(tag);
         // Then
         assertThat(item.tags().size()).isEqualTo(0);
         assertThat(item.findByNamespace("namespace").isEmpty()).isTrue();
         assertThat(item.findBy("namespace", "tag").isPresent()).isFalse();
+        assertThat(item.value("namespace:tag").isEmpty()).isTrue();
+    }
+
+    @Test
+    void testUpdateTags() {
+        // Given
+        var item = Entity.of();
+        var tag = new Tag("namespace", "tag", "format");
+
+        // When - Then
+        assertThat(item.tags().size()).isEqualTo(0);
+        item.update(tag);
+        assertThat(item.tags().size()).isEqualTo(1);
+        item.update(tag);
+        assertThat(item.tags().size()).isEqualTo(1);
+        item.update("namespace:tag", "format");
     }
 
     @Test
@@ -131,18 +167,21 @@ class EntityTest {
         comment = Comment.of(LocalDateTime.of(1900, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 2");
         comment.add(new Tag("gis", "longitude", "0.0"));
         item.add(comment);
-        comment = Comment.of(LocalDateTime.of(2000, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 3");
-        comment.add(new Tag("gis", "latitude", "0.0"));
+        comment = Comment
+            .of(LocalDateTime.of(2000, Month.JANUARY, 1, 0, 0), HasOid.UNDEFINED_OID, "John Doe", "This is comment 3", Tag.of("gis", "longitude", "0.0"),
+                Tag.of("gis", "latitude", "0.0"));
         item.add(comment);
         // When
         assertThat(item.findByAuthor("John Doe").size()).isEqualTo(3);
+
         assertThat(item.findByTime(LocalDateTime.MIN, LocalDateTime.MAX).size()).isEqualTo(3);
         assertThat(item.findByTime(LocalDateTime.of(1700, 1, 1, 0, 0), LocalDateTime.of(2100, 1, 1, 0, 0)).size()).isEqualTo(3);
         assertThat(item.findByTime(LocalDateTime.of(1799, 1, 1, 0, 0), LocalDateTime.of(2100, 1, 1, 0, 0)).size()).isEqualTo(3);
         assertThat(item.findByTime(LocalDateTime.of(1800, 1, 1, 0, 0), LocalDateTime.of(2000, 1, 1, 0, 0)).size()).isEqualTo(3);
         assertThat(item.findByTime(LocalDateTime.of(1900, 1, 1, 0, 0), LocalDateTime.of(2000, 1, 1, 0, 0)).size()).isEqualTo(2);
         assertThat(item.findByTime(LocalDateTime.of(1900, 1, 1, 0, 0), LocalDateTime.of(1990, 1, 1, 0, 0)).size()).isEqualTo(1);
-        assertThat(item.findByTag("gis", "longitude").size()).isEqualTo(2);
+
+        assertThat(item.findByTag("gis", "longitude").size()).isEqualTo(3);
         assertThat(item.findByTag("gis", "latitude").size()).isEqualTo(2);
         assertThat(item.findByTag("gis", "none").isEmpty()).isTrue();
     }

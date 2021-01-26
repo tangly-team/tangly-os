@@ -17,7 +17,6 @@ import java.nio.file.FileSystem;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
-import net.tangly.core.TagTypeRegistry;
 import net.tangly.crm.ports.CrmEntities;
 import net.tangly.crm.ports.CrmHdl;
 import net.tangly.crm.ports.CrmVcardHdl;

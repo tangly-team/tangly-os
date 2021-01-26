@@ -49,10 +49,21 @@ public interface HasTags {
      *
      * @param tag tag to replace or insert
      */
-    default void replace(@NotNull Tag tag) {
+    default void update(@NotNull Tag tag) {
         Objects.requireNonNull(tag);
         findBy(tag.namespace(), tag.name()).ifPresent(this::remove);
         add(tag);
+    }
+
+    /**
+     * Replaces or inserts the given tag. Tag equivalence is detected with optional namespace and tag name.
+     *
+     * @param tag   tag to replace or insert
+     * @param value optional value of the tag
+     */
+    default void update(@NotNull String tag, String value) {
+        Objects.requireNonNull(tag);
+        update(Tag.of(tag, value));
     }
 
     /**
@@ -114,18 +125,8 @@ public interface HasTags {
      * @param tag qualified tag name
      * @return the tag value if found
      */
-    default Optional<String> tag(@NotNull String tag) {
+    default Optional<String> value(@NotNull String tag) {
         return findBy(tag).map(Tag::value);
-    }
-
-    /**
-     * Updates the tag with the new value.
-     *
-     * @param tag   qualified tag name of the tag to update
-     * @param value new value of the tag
-     */
-    default void tag(@NotNull String tag, String value) {
-        replace(Tag.of(tag, value));
     }
 
     default Set<Tag> findByNamespace(String namespace) {
@@ -150,7 +151,7 @@ public interface HasTags {
      * @see HasTags#rawTags()
      */
     default void rawTags(String rawTags) {
-        Tag.toTags(rawTags).forEach(this::replace);
+        Tag.toTags(rawTags).forEach(this::update);
     }
 
     static <T extends HasTags> Collection<T> collect(@NotNull Collection<T> items, @NotNull String tag) {

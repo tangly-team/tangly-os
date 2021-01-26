@@ -57,6 +57,7 @@ public class InvoicesHdl implements InvoicesHandler {
         this.invoicesFolder = invoicesFolder;
     }
 
+    @Override
     public InvoicesRealm realm() {
         return realm;
     }

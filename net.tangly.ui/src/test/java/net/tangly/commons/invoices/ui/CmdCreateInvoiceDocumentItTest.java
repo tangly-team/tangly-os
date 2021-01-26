@@ -10,13 +10,13 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.commons.lang;
+package net.tangly.commons.invoices.ui;
 
-/**
- * Defines a typed tuple as long as JDK API is not providing the abstraction.
- *
- * @param <T> left type of the tuple
- * @param <U> right type of the tuple
- */
-public record Tuple<T, U>(T left, U right) {
+import org.junit.jupiter.api.Test;
+
+class CmdCreateInvoiceDocumentItTest {
+    @Test
+    void createInfoiceDocumentTest() {
+
+    }
 }

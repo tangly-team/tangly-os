@@ -23,7 +23,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import com.vaadin.flow.data.binder.ValidationResult;
+import com.vaadin.flow.data.binder.ValidationException;
 import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.Subject;
 import net.tangly.commons.domain.ui.Cmd;
@@ -31,49 +31,99 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class CmdChangePassword extends Dialog implements Cmd {
+    public static final String USERNAME = "Username";
+    public static final String CURRENT_PASSWORD = "Current Password";
+    public static final String NEW_PASSWORD = "New Password";
+    public static final String CONFIRM_PASSWORD = "Confirm New Password";
+    public static final String EXECUTE = "Update";
+    public static final String CANCEL = "Cancel";
+
+    static class ChangePassword {
+        private Subject subject;
+        private String oldPassword;
+        private String newPassword;
+        private String confirmPassword;
+
+        ChangePassword(Subject subject) {
+            this.subject = subject;
+        }
+
+        public Subject subject() {
+            return subject;
+        }
+
+        String oldPassword() {
+            return oldPassword;
+        }
+
+        void oldPassword(String oldPassword) {
+            this.oldPassword = oldPassword;
+        }
+
+        String newPassword() {
+            return newPassword;
+        }
+
+        void newPassword(String newPassword) {
+            this.newPassword = newPassword;
+        }
+
+        String confirmPassword() {
+            return confirmPassword;
+        }
+
+        void confirmPassword(String confirmPassword) {
+            this.confirmPassword = confirmPassword;
+        }
+    }
+
     private final CrmBoundedDomain domain;
+    private final ChangePassword changePassword;
     private final TextField username;
     private final PasswordField oldPassword;
     private final PasswordField newPassword;
     private final PasswordField confirmPassword;
 
-    public CmdChangePassword(@NotNull CrmBoundedDomain domain) {
+    public CmdChangePassword(@NotNull CrmBoundedDomain domain, @NotNull Subject subject) {
         this.domain = domain;
-        username = new TextField("Username", "username");
+        changePassword = new ChangePassword(subject);
+        username = new TextField(USERNAME, "username");
         username.setReadOnly(true);
-        oldPassword = new PasswordField("Old Password", "old password");
+        oldPassword = new PasswordField(CURRENT_PASSWORD, "old password");
         oldPassword.setRequired(true);
-        newPassword = new PasswordField("New Password", "new password");
+        newPassword = new PasswordField(NEW_PASSWORD, "new password");
         newPassword.setRequired(true);
-        confirmPassword = new PasswordField("Confirm Password", "new password");
+        confirmPassword = new PasswordField(CONFIRM_PASSWORD, "new password");
         confirmPassword.setRequired(true);
     }
 
     @Override
     public void execute() {
-        FormLayout form = new FormLayout();
-        VaadinUtils.setResponsiveSteps(form);
-        Subject subject = (Subject) VaadinUtils.getAttribute(this, "subject");
-        Binder<Subject> binder = new Binder();
-        binder.bind(username, Subject::id, null);
-        binder.withValidator((item, valueContext) -> {
-            if (Objects.equals(newPassword.getValue(), confirmPassword.getValue())) {
-                return ValidationResult.ok();
-            }
-            return ValidationResult.error("Please input the same text in new and confirm password fileds");
-        });
-        binder.readBean(subject);
-        Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
-            binder.validate();
-            if (binder.isValid()) {
-                domain.logic().changePassword(username.getValue(), oldPassword.getValue(), newPassword.getValue());
-                this.close();
-            }
-        });
-        Button cancel = new Button("Cancel", e -> this.close());
-        form.add(username, oldPassword, newPassword, confirmPassword, new HtmlComponent("br"), new HorizontalLayout(execute, cancel));
-        add(form);
+        add(form());
         open();
+    }
 
+    FormLayout form() {
+        FormLayout form = new FormLayout();
+        VaadinUtils.set1ResponsiveSteps(form);
+        Binder<ChangePassword> binder = new Binder<>();
+        binder.bind(username, o -> o.subject().id(), null);
+        binder.bind(oldPassword, ChangePassword::oldPassword, ChangePassword::oldPassword);
+        binder.bind(newPassword, ChangePassword::newPassword, ChangePassword::newPassword);
+        binder.forField(confirmPassword).
+            withValidator(v -> Objects.equals(newPassword.getValue(), v), "new password and confirm password should the same text")
+            .bind(ChangePassword::confirmPassword, ChangePassword::confirmPassword);
+        binder.readBean(changePassword);
+        Button execute = new Button(EXECUTE, VaadinIcon.COGS.create(), event -> {
+            try {
+                binder.writeBean(changePassword);
+                domain.logic().changePassword(changePassword.subject().id(), changePassword.oldPassword(), changePassword.newPassword());
+                close();
+            } catch (ValidationException e) {
+            }
+        });
+        Button cancel = new Button(CANCEL, e -> close());
+        form.add(username, oldPassword, newPassword, confirmPassword, new HtmlComponent("br"), new HorizontalLayout(execute, cancel));
+        return form;
     }
 }

@@ -46,7 +46,7 @@ public record PhoneNr(@NotNull String number) {
             try {
                 Phonenumber.PhoneNumber googleNr = numberUtil.parse(number, "CH");
                 return new PhoneNr(numberUtil.format(googleNr, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL));
-            } catch (NumberParseException e) {
+            } catch (NumberParseException |IllegalArgumentException e) {
                 logger.atWarn().setCause(e).log("Error creating phone number {}", number);
             }
         }

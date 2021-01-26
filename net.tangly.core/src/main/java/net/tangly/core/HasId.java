@@ -17,6 +17,11 @@ package net.tangly.core;
  */
 public interface HasId {
     /**
+     * String representation of the property associated with the mixin.
+     */
+    String ID = "id";
+
+    /**
      * Returns the unique external identifier of the instance.
      *
      * @return unique external identifier

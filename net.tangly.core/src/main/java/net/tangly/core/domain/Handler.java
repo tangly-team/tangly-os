@@ -14,8 +14,9 @@ package net.tangly.core.domain;
 
 /**
  * Define the import port for the bounded domain. It is a primary port in the DDD terminology.
+ * @param <R> Realm of the bounded domain
  */
-public interface Handler {
+public interface Handler<R extends Realm> {
     /**
      * Import all entities of the bounded domain from the file system.
      *
@@ -30,5 +31,10 @@ public interface Handler {
      */
     void exportEntities();
 
-    Realm realm();
+    /**
+     * Return the realm containing all the entities of the bounded domain.
+     *
+     * @return realm of the bounded domain
+     */
+    R realm();
 }

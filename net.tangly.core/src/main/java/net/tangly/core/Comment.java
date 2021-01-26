@@ -57,8 +57,6 @@ public class Comment implements HasOid, HasTags {
      */
     private Set<Tag> tags;
 
-    public Comment() {
-    }
 
     /**
      * Default constructor to create an immutable instance.

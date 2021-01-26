@@ -14,13 +14,14 @@
 package net.tangly.commons.vaadin;
 
 import java.lang.invoke.MethodHandles;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.provider.DataProvider;
-import net.tangly.components.grids.GridFiltersAndActions;
+import net.tangly.components.grids.GridDecorators;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -58,7 +59,7 @@ public abstract class EntitiesView<T> extends Crud<T> implements CrudForm<T> {
     @Override
     public FormLayout createForm(@NotNull Operation operation, T entity) {
         FormLayout form = new FormLayout();
-        VaadinUtils.setResponsiveSteps(form);
+        VaadinUtils.set3ResponsiveSteps(form);
         return fillForm(operation, entity, form);
     }
 
@@ -94,14 +95,20 @@ public abstract class EntitiesView<T> extends Crud<T> implements CrudForm<T> {
      */
     protected abstract T updateOrCreate(T entity);
 
+    protected GridDecorators<T> filterCriteria(boolean hasItemActions, boolean hasGlobalActions, Consumer<GridDecorators<T>> creator) {
+        GridDecorators<T> filters = GridDecorators.of(this, grid(), hasItemActions, hasGlobalActions);
+        creator.accept(filters);
+        return filters;
+    }
+
     protected GridButtons<T> gridButtons() {
         GridButtons<T> buttons = new GridButtons<>(mode(), this, new GridActionsListener<>(provider, grid().getDataProvider(), this::selectedItem));
         addSelectedItemListener(buttons);
         return buttons;
     }
 
-    protected GridFiltersAndActions<T> gridFiltersAndActions(boolean hasItemActions, boolean hasGlobalActions) {
-        return GridFiltersAndActions.of(this, grid(), hasItemActions, hasGlobalActions);
+    protected GridDecorators<T> gridFiltersAndActions(boolean hasItemActions, boolean hasGlobalActions) {
+        return GridDecorators.of(this, grid(), hasItemActions, hasGlobalActions);
     }
 
     protected static <T> T updateOrCreate(T entity, Binder<T> binder, Supplier<T> factory) {

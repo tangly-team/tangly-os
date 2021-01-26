@@ -79,7 +79,7 @@ class CrmHdlTest {
         assertThat(realm.legalEntities().items().isEmpty()).isFalse();
         assertThat(Provider.findByOid(realm.legalEntities(), 100).isPresent()).isTrue();
         assertThat(realm.legalEntities().findBy(LegalEntity::id, "UNKNOWN-100").isPresent()).isTrue();
-        assertThat(realm.legalEntities().findBy(LegalEntity::name, "hope llc").isPresent()).isTrue();
+        assertThat(realm.legalEntities().findBy(LegalEntity::name, "Vaadin GbmH").isPresent()).isTrue();
         Realm.checkEntities(realm.legalEntities());
     }
 

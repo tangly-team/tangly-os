@@ -48,7 +48,7 @@ public class AddressTest {
 
     @Test
     void testEmptyAddressTextAndOf() {
-        var original = Address.builder().build();
+        var original = Address.builder().locality(LOCALITY).country(COUNTRY).build();
         var copy = Address.of(original.text());
         assertThat(copy).isEqualTo(original);
         assertThat(copy.hashCode()).isEqualTo(original.hashCode());

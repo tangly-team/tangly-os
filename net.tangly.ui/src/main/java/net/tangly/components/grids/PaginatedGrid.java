@@ -55,6 +55,7 @@ public class PaginatedGrid<T> extends Grid<T> {
         paginationLocation = PaginationLocation.BOTTOM;
         setHeightByRows(true);
         addSortListener(e -> doCalculations(pagination.getPage()));
+        setHeightFull();
     }
 
     /**

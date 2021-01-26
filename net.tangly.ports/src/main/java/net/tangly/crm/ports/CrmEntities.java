@@ -23,6 +23,7 @@ import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.CrmRealm;
 import net.tangly.bus.crm.Employee;
 import net.tangly.bus.crm.Interaction;
+import net.tangly.bus.crm.Lead;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.bus.crm.Subject;
@@ -52,6 +53,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class CrmEntities implements CrmRealm {
     static class Data implements IdGenerator {
+        private final List<Lead> leads;
         private final List<NaturalEntity> naturalEntities;
         private final List<LegalEntity> legalEntities;
         private final List<Employee> employees;
@@ -62,6 +64,7 @@ public class CrmEntities implements CrmRealm {
         private transient final ReentrantLock lock;
 
         Data() {
+            leads = new ArrayList<>();
             naturalEntities = new ArrayList<>();
             legalEntities = new ArrayList<>();
             employees = new ArrayList<>();
@@ -85,6 +88,7 @@ public class CrmEntities implements CrmRealm {
 
     private static final long OID_SEQUENCE_START = 1000;
     private final Data data;
+    private final Provider<Lead> leads;
     private final Provider<NaturalEntity> naturalEntities;
     private final Provider<LegalEntity> legalEntities;
     private final Provider<Employee> employees;
@@ -98,6 +102,7 @@ public class CrmEntities implements CrmRealm {
         this.data = new Data();
         storageManager = EmbeddedStorage.start(data, path);
 
+        leads = new ProviderPersistence<>(storageManager, data.leads);
         naturalEntities = new ProviderPersistence<>(storageManager, data.naturalEntities);
         legalEntities = new ProviderPersistence<>(storageManager, data.legalEntities);
         employees = new ProviderPersistence<>(storageManager, data.employees);
@@ -109,6 +114,7 @@ public class CrmEntities implements CrmRealm {
     public CrmEntities() {
         this.data = new Data();
         storageManager = null;
+        leads = new ProviderInMemory<>(data.leads);
         naturalEntities = new ProviderInMemory<>(data.naturalEntities);
         legalEntities = new ProviderInMemory<>(data.legalEntities);
         employees = new ProviderInMemory<>(data.employees);
@@ -141,6 +147,11 @@ public class CrmEntities implements CrmRealm {
     }
 
     @Override
+    public Provider<Lead> leads() {
+        return this.leads;
+    }
+
+    @Override
     public Provider<NaturalEntity> naturalEntities() {
         return this.naturalEntities;
     }
@@ -168,5 +179,10 @@ public class CrmEntities implements CrmRealm {
     @Override
     public Provider<Subject> subjects() {
         return this.subjects;
+    }
+
+    @Override
+    public void close() {
+        storageManager.close();
     }
 }

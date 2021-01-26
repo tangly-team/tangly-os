@@ -25,6 +25,7 @@ import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.commons.vaadin.CodeField;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
+import net.tangly.components.grids.GridDecorators;
 import net.tangly.components.grids.PaginatedGrid;
 import net.tangly.core.codes.CodeType;
 import net.tangly.core.providers.ProviderInMemory;
@@ -48,7 +49,12 @@ class ActivitiesView extends EntitiesView<Activity> {
         grid.addColumn(Activity::duration).setKey("durationInMinutes").setHeader("Duration").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Activity::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Activity::details).setKey("details").setHeader("Details").setAutoWidth(true).setResizable(true).setSortable(true);
-        addAndExpand(grid(), gridButtons());
+        addAndExpand(filterCriteria(false, false, filters -> {
+            filters.addFilter(new GridDecorators.FilterDate<>(filters));
+            filters.addFilter(
+                new GridDecorators.FilterCode<>(filters, (CodeType<ActivityCode>) domain.registry().find(ActivityCode.class).orElseThrow(), Activity::code,
+                    "Code"));
+        }), grid(), gridButtons());
     }
 
     @Override
@@ -58,27 +64,23 @@ class ActivitiesView extends EntitiesView<Activity> {
 
     @Override
     protected FormLayout fillForm(@NotNull Operation operation, Activity entity, FormLayout form) {
-        TextField oid = new TextField("Oid", "oid");
-        TextField author = new TextField("Author", "author");
         DatePicker date = new DatePicker("Date");
+        TextField author = new TextField("Author", "author");
         IntegerField duration = new IntegerField("Duration", "duration");
         CodeField<ActivityCode> code = new CodeField<>(CodeType.of(ActivityCode.class), "code");
         TextArea text = new TextArea("Text", "text");
         TextArea details = new TextArea("Details", "details");
 
-        VaadinUtils.configureOid(operation, oid);
         VaadinUtils.readOnly(operation, author, date, duration, code, text, details);
-
-        form.add(oid, author, date, duration, code);
+        form.add(author, date, duration, code);
         form.add(text, 3);
         form.add(details, 3);
 
         binder = new Binder<>();
-        binder.bind(oid, o -> Long.toString(o.oid()), null);
-        binder.bind(author, Activity::author, Activity::author);
-        binder.bind(code, Activity::code, Activity::code);
         binder.bind(date, Activity::date, Activity::date);
+        binder.bind(author, Activity::author, Activity::author);
         binder.bind(duration, Activity::duration, Activity::duration);
+        binder.bind(code, Activity::code, Activity::code);
         binder.bind(text, Activity::text, Activity::text);
         binder.bind(details, Activity::details, Activity::details);
         if (entity != null) {

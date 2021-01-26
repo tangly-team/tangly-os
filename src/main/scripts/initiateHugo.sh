@@ -35,10 +35,10 @@ cp $prjDir/src/site/website/docsy/layouts/_default/* $siteDir/themes/docsy/layou
 cp $prjDir/src/site/website/docsy/layouts/blog/* $siteDir/themes/docsy/layouts/blog
 cp $prjDir/src/site/website/docsy/layouts/partials/* $siteDir/themes/docsy/layouts/partials
 
-# install postcss for final generation of site
+# install postcss (https://postcss.org/)) for final generation of site
 cd $siteDir
-sudo npm install -D --save autoprefixer
-sudo npm install -D --save postcss-cli
-sudo npm install -D --save postcss
+sudo npm install -D autoprefixer
+sudo npm install -D postcss-cli
+sudo npm install -D postcss
 
 echo "start server with hugo server --destination public --disableFastRender -> site is accessible under localhost:1313"

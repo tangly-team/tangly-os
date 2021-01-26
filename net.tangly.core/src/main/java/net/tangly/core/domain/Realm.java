@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
  * <p>One key feature of entities is their unique object identifier defined in the context of the bounded domain. The realm provides functions to generate
  * unique object identifiers and set them in the entities in need of them. The object identifiers are created in the application.</p>
  */
-public interface Realm {
+public interface Realm extends AutoCloseable {
     static <T extends HasOid> long maxOid(Provider<T> provider) {
         return provider.items().stream().mapToLong(HasOid::oid).max().orElse(HasOid.UNDEFINED_OID);
     }

@@ -90,8 +90,16 @@ public final class VaadinUtils {
         }
     }
 
-    public static void setResponsiveSteps(@NotNull FormLayout layout) {
+    public static void set3ResponsiveSteps(@NotNull FormLayout layout) {
         layout.setResponsiveSteps(new FormLayout.ResponsiveStep("25em", 1), new FormLayout.ResponsiveStep("32em", 2), new FormLayout.ResponsiveStep("40em", 3));
+    }
+
+    public static void set2ResponsiveSteps(@NotNull FormLayout layout) {
+        layout.setResponsiveSteps(new FormLayout.ResponsiveStep("25em", 1), new FormLayout.ResponsiveStep("32em", 2));
+    }
+
+    public static void set1ResponsiveSteps(@NotNull FormLayout layout) {
+        layout.setResponsiveSteps(new FormLayout.ResponsiveStep("25em", 1));
     }
 
     public static <E> void initialize(@NotNull Grid<E> grid) {

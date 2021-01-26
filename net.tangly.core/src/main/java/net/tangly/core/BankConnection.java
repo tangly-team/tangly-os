@@ -32,18 +32,6 @@ import org.slf4j.LoggerFactory;
 public record BankConnection(@NotNull String iban, String bic, String institute) {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-    /**
-     * Factory method to construct a bank connection.
-     *
-     * @param iban      iban of the bank connection
-     * @param bic       bic of the bank connection
-     * @param institute institute of the bank connection
-     * @return new bank connection
-     */
-    public static BankConnection of(@NotNull String iban, String bic, String institute) {
-        return new BankConnection(iban, bic, institute);
-    }
-
     public BankConnection {
         if (Strings.isNullOrBlank(iban) || !validateIban(iban)) {
             throw new IllegalArgumentException("Illegal IBAN number " + iban);
@@ -59,6 +47,22 @@ public record BankConnection(@NotNull String iban, String bic, String institute)
 
     public BankConnection(@NotNull String iban, String bic) {
         this(iban, bic, null);
+    }
+
+    /**
+     * Factory method to construct a bank connection.
+     *
+     * @param iban      iban of the bank connection
+     * @param bic       bic of the bank connection
+     * @param institute institute of the bank connection
+     * @return new bank connection
+     */
+    public static BankConnection of(@NotNull String iban, String bic, String institute) {
+        try {
+            return new BankConnection(iban, bic, institute);
+        } catch (IllegalArgumentException e) {
+            return null;
+        }
     }
 
     /**

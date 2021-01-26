@@ -1,0 +1,52 @@
+---
+title: "User Guide tangly ERP"
+date: 2019-06-30
+weight: 40
+draft: false
+---
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:revnumber: v0.1
+:revdate: 2020-12-31
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+:stem:
+
+== ERP
+
+=== Introduction
+
+The tangly ERP application promotes the various open source components our {ref:tangly} company develops, supports, and publishes.
+
+We are a strong supporter of the _eat your own dog food_ approach.
+The application is used to run daily business and all financial processes of our company.
+All data since the inception were moved in the application.
+This approach is ideal for the industrialisation and validation of all features.
+
+We are proud to provide quite a few advanced functions in the released application.
+
+* Full support of the Swiss 2D barcode payment solution for all invoices issued for Swiss customers,
+* Full support of digital invoice data based on the EN 16931 standard for all interested customers.
+The standard is also know as _Factur-X_ and _ZUGFeRD_ version 2.1 in France and Germany.
+E-invoices are mandatory for some business in Germany and France.
+Switzerland is a slow adapter.
+* Sliding windows for all financial reports to support rolling financial planning and reporting.
+{ref:bbrt} advocates similar approaches for digital and agile company-wide transformation.
+
+The first objective of Factur-X is to enable suppliers, invoice issuers, to create added-value e-invoices.
+The e-invoices shall contain a maximum of information in structured form, according to their ability to produce them in this form.
+Let customers recipients free to use the invoice data or the readable presentation, depending on their needs, and their invoice process maturity on automation.
+
+=== Components
+
+The application provides independant components to manage all aspects of a service company
+
+Customer Relationships::
+To be written
+Products and Projects::
+To be written
+Articles and Invoices::
+To be written
+Financial Accounting::
+To be written

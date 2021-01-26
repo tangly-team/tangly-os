@@ -28,7 +28,7 @@ sourceSets {
 }
 
 ext {
-    mustangProjectVersion = '2.0.3'
+    mustangProjectVersion = '2.1.0'
 }
 
 dependencies {
@@ -47,7 +47,7 @@ dependencies {
     implementation 'net.codecrete.qrbill:qrbill-generator:2.5.0'
     implementation "org.mustangproject:library:$mustangProjectVersion"
     implementation "org.asciidoctor:asciidoctorj:$asciidoctorjVersion"
-    implementation 'org.asciidoctor:asciidoctorj-pdf:1.5.3'
+    implementation "org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion"
 
     implementation 'org.mnode.ical4j:ical4j:3.0.19'
     implementation 'org.mnode.ical4j:ical4j-vcard:1.0.5'

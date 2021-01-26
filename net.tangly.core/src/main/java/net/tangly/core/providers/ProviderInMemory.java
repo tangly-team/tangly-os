@@ -35,7 +35,7 @@ public class ProviderInMemory<T> implements Provider<T> {
     }
 
     public ProviderInMemory(List<T> items) {
-        this.items = items;
+        this.items = new ArrayList<>(items);
     }
 
     public static <T> Provider<T> of(Iterable<? extends T> items) {

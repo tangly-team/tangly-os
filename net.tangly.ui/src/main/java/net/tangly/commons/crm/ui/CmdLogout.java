@@ -16,10 +16,7 @@ import com.vaadin.flow.component.UI;
 import com.vaadin.flow.server.VaadinSession;
 import net.tangly.commons.domain.ui.Cmd;
 
-public class CmdLogout implements Cmd {
-    public CmdLogout() {
-    }
-
+public record CmdLogout() implements Cmd {
     @Override
     public void execute() {
         VaadinSession.getCurrent().getSession().invalidate();

@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -39,6 +40,7 @@ import net.tangly.core.Comment;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.Entity;
 import net.tangly.core.HasComments;
+import net.tangly.core.HasId;
 import net.tangly.core.HasOid;
 import net.tangly.core.HasTags;
 import net.tangly.core.PhoneNr;
@@ -57,9 +59,12 @@ public final class TsvHdl {
     public static final CSVFormat FORMAT =
         CSVFormat.TDF.withFirstRecordAsHeader().withIgnoreHeaderCase(true).withIgnoreEmptyLines(true).withRecordSeparator('\n');
     public static final String OWNER_FOID = "ownerFoid";
-    public static final String OID = "oid";
-    public static final String ID = "id";
+    public static final String OID = HasOid.OID;
+    public static final String ID = HasId.ID;
+    public static final String CODE = "code";
+    public static final String GENDER = "gender";
     public static final String NAME = "name";
+    public static final String DATE = "date";
     public static final String FROM_DATE = "fromDate";
     public static final String TO_DATE = "toDate";
     public static final String TEXT = "text";
@@ -153,9 +158,9 @@ public final class TsvHdl {
     }
 
     public static TsvEntity<Address> createTsvAddress() {
-        Function<CSVRecord, Address> imports =
-            (CSVRecord record) -> Address.builder().street(get(record, STREET)).postcode(get(record, POSTCODE)).locality(get(record, LOCALITY))
-                .region(get(record, REGION)).country(get(record, COUNTRY)).build();
+        Function<CSVRecord, Address> imports = (CSVRecord record) -> (Objects.isNull(get(record, LOCALITY)) || Objects.isNull(get(record, COUNTRY))) ? null :
+            Address.builder().street(get(record, STREET)).postcode(get(record, POSTCODE)).locality(get(record, LOCALITY)).region(get(record, REGION))
+                .country(get(record, COUNTRY)).build();
 
         List<TsvProperty<Address, ?>> fields =
             List.of(TsvProperty.ofString(STREET, Address::street, null), TsvProperty.ofString("extended", Address::extended, null),
@@ -178,9 +183,9 @@ public final class TsvHdl {
     }
 
     public static <T extends HasTags> TsvProperty<T, String> tagProperty(String tagName) {
-        return TsvProperty.ofString(tagName, e -> e.tag(tagName).orElse(null), (e, p) -> {
+        return TsvProperty.ofString(tagName, e -> e.value(tagName).orElse(null), (e, p) -> {
             if (p != null) {
-                e.tag(tagName, p);
+                e.update(tagName, p);
             }
         });
     }

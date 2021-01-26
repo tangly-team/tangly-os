@@ -113,4 +113,9 @@ public class LedgerEntities implements LedgerRealm {
         accounts.update(account);
 
     }
+
+    @Override
+    public void close() throws Exception {
+        storageManager.close();
+    }
 }

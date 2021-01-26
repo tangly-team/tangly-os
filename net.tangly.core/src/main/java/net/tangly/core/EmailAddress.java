@@ -28,14 +28,18 @@ public record EmailAddress(@NotNull String recipient, @NotNull String domain) {
     private static final String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
     private static final Pattern pattern = Pattern.compile(emailRegex);
 
-    public static EmailAddress of(@NotNull String email) {
-        String[] parts = Objects.requireNonNull(email).split("@");
-        try {
-            Objects.checkFromIndexSize(0, parts.length, 2);
-            return new EmailAddress(Strings.normalizeToNull(parts[0]), Strings.normalizeToNull(parts[1]));
-        } catch (ArrayIndexOutOfBoundsException | IllegalArgumentException e) {
-            logger.atWarn().setCause(e).log("Error creating email address", email);
+    public static EmailAddress of(String email) {
+        if (Strings.isNullOrBlank(email)) {
             return null;
+        } else {
+            String[] parts = Objects.requireNonNull(email).split("@");
+            try {
+                Objects.checkFromIndexSize(0, parts.length, 2);
+                return new EmailAddress(Strings.normalizeToNull(parts[0]), Strings.normalizeToNull(parts[1]));
+            } catch (ArrayIndexOutOfBoundsException | IllegalArgumentException e) {
+                logger.atWarn().setCause(e).log("Error creating email address", email);
+                return null;
+            }
         }
     }
 

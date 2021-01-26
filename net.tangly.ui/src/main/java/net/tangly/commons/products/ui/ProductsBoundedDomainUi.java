@@ -19,6 +19,8 @@ import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.bus.products.ProductsBoundedDomain;
+import net.tangly.commons.domain.ui.CmdExportEntities;
+import net.tangly.commons.domain.ui.CmdImportEntities;
 import net.tangly.commons.domain.ui.DomainView;
 import net.tangly.commons.ui.BoundedDomainUi;
 import net.tangly.commons.ui.MainLayout;
@@ -26,6 +28,7 @@ import net.tangly.commons.vaadin.Crud;
 import org.jetbrains.annotations.NotNull;
 
 public class ProductsBoundedDomainUi implements BoundedDomainUi {
+    private final ProductsBoundedDomain domain;
     private final ProductsView productsView;
     private final AssignmentsView assignmentsView;
     private final EffortsView effortsView;
@@ -34,6 +37,7 @@ public class ProductsBoundedDomainUi implements BoundedDomainUi {
 
     @Inject
     public ProductsBoundedDomainUi(@NotNull ProductsBoundedDomain domain) {
+        this.domain = domain;
         productsView = new ProductsView(domain, Crud.Mode.EDITABLE);
         assignmentsView = new AssignmentsView(domain, Crud.Mode.EDITABLE);
         effortsView = new EffortsView(domain, Crud.Mode.EDIT_DELETE);
@@ -57,6 +61,8 @@ public class ProductsBoundedDomainUi implements BoundedDomainUi {
         menuItem = menuBar.addItem(ADMINISTRATION);
         subMenu = menuItem.getSubMenu();
         subMenu.addItem(STATISTICS, e -> select(layout, domainView));
+        subMenu.addItem(IMPORT, e -> new CmdImportEntities(domain).execute());
+        subMenu.addItem(EXPORT, e -> new CmdExportEntities(domain).execute());
         select(layout, currentView);
     }
 

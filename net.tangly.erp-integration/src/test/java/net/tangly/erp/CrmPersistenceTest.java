@@ -12,8 +12,12 @@
 
 package net.tangly.erp;
 
+import java.io.IOException;
+import java.nio.file.FileSystem;
 import java.nio.file.Path;
 
+import com.google.common.jimfs.Configuration;
+import com.google.common.jimfs.Jimfs;
 import net.tangly.crm.ports.CrmEntities;
 import net.tangly.crm.ports.CrmHdl;
 import org.junit.jupiter.api.Tag;
@@ -23,27 +27,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CrmPersistenceTest {
     @Test
-    @Tag("localTest")
-    void persistCrmRealLocalTest() {
-        String PATH = "/Users/Shared/tangly/db/crm";
-        var realm = new CrmEntities(Path.of(PATH));
-        realm.storeRoot();
-        CrmHdl crmHdl = new CrmHdl(realm, Path.of("/Users/Shared/tangly/", "import/crm"));
-        crmHdl.importEntities();
-        assertThat(realm.naturalEntities().items().isEmpty()).isFalse();
-        assertThat(realm.legalEntities().items().isEmpty()).isFalse();
-        assertThat(realm.employees().items().isEmpty()).isFalse();
-        assertThat(realm.contracts().items().isEmpty()).isFalse();
-        assertThat(realm.interactions().items().isEmpty()).isFalse();
-        realm.storeRoot();
-        realm.shutdown();
+    void persistCrmRealLocalTest() throws Exception {
+        try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
+            var store = new ErpStore(fs);
+            store.createCrmAndLedgerRepository();
 
-        var persistentRealm = new CrmEntities(Path.of(PATH));
-        assertThat(persistentRealm.naturalEntities().items().isEmpty()).isFalse();
-        assertThat(persistentRealm.legalEntities().items().isEmpty()).isFalse();
-        assertThat(persistentRealm.employees().items().isEmpty()).isFalse();
-        assertThat(persistentRealm.contracts().items().isEmpty()).isFalse();
-        assertThat(persistentRealm.interactions().items().isEmpty()).isFalse();
-        persistentRealm.shutdown();
+            var handler = new CrmHdl(new CrmEntities(store.crmRoot()), store.crmRoot());
+            handler.importEntities();
+            assertThat(handler.realm().naturalEntities().items().isEmpty()).isFalse();
+            assertThat(handler.realm().legalEntities().items().isEmpty()).isFalse();
+            assertThat(handler.realm().employees().items().isEmpty()).isFalse();
+            assertThat(handler.realm().contracts().items().isEmpty()).isFalse();
+            assertThat(handler.realm().interactions().items().isEmpty()).isFalse();
+            handler.realm().close();
+
+            handler = new CrmHdl(new CrmEntities(store.crmRoot()), store.crmRoot());
+            assertThat(handler.realm().naturalEntities().items().isEmpty()).isFalse();
+            assertThat(handler.realm().legalEntities().items().isEmpty()).isFalse();
+            assertThat(handler.realm().employees().items().isEmpty()).isFalse();
+            assertThat(handler.realm().contracts().items().isEmpty()).isFalse();
+            assertThat(handler.realm().interactions().items().isEmpty()).isFalse();
+            handler.realm().close();
+        }
     }
 }

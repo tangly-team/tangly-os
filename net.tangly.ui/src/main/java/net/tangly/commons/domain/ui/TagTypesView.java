@@ -19,7 +19,7 @@ import java.util.Map;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.data.provider.ListDataProvider;
-import net.tangly.components.grids.GridFiltersAndActions;
+import net.tangly.components.grids.GridDecorators;
 import net.tangly.components.grids.PaginatedGrid;
 import net.tangly.core.TagType;
 import net.tangly.core.domain.BoundedDomain;
@@ -56,7 +56,7 @@ public class TagTypesView extends VerticalLayout {
         grid.setMinHeight("5em");
         grid.setWidthFull();
 
-        GridFiltersAndActions<TagType> decorator = new GridFiltersAndActions<TagType>(grid, false, true);
+        GridDecorators<TagType> decorator = new GridDecorators<TagType>(grid, false, true);
         decorator.addGlobalAction("Count Tags", e -> update(domain.countTags(new HashMap<>())));
 
         setSizeFull();

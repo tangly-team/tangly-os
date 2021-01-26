@@ -54,5 +54,4 @@ class InvoicesHdlTest {
     private void verifyArticles(@NotNull InvoicesRealm realm) {
         assertThat(realm.articles().items().isEmpty()).isFalse();
     }
-
 }

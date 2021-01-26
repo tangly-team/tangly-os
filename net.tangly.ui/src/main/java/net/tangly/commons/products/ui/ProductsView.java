@@ -34,7 +34,7 @@ class ProductsView extends InternalEntitiesView<Product> {
     @Override
     protected void initialize() {
         InternalEntitiesView.addQualifiedEntityColumns(grid());
-        addAndExpand(filterCriteria(false, false), grid(), gridButtons());
+        addAndExpand(filterCriteria(false, false, InternalEntitiesView::addQualifiedEntityFilters), grid(), gridButtons());
     }
 
     @Override

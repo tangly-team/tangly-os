@@ -16,7 +16,7 @@ package net.tangly.commons.domain.ui;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.data.provider.ListDataProvider;
 import net.tangly.commons.vaadin.EntitiesView;
-import net.tangly.components.grids.GridFiltersAndActions;
+import net.tangly.components.grids.GridDecorators;
 import net.tangly.components.grids.PaginatedGrid;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
@@ -59,10 +59,8 @@ public class DomainEntitiesView extends EntitiesView<DomainEntity> {
         grid.setWidthFull();
         setSizeFull();
 
-        GridFiltersAndActions<DomainEntity<?>> decorator = new GridFiltersAndActions(grid, false, true);
-        decorator.addFilter(new GridFiltersAndActions.GridFilterText<>(decorator, DomainEntity::name, "Name", "name"));
-        decorator.addGlobalAction("Import Data", e -> domain.handler().importEntities());
-        decorator.addGlobalAction("Export Data", e -> domain.handler().exportEntities());
+        GridDecorators<DomainEntity<?>> decorator = new GridDecorators(grid, false, false);
+        decorator.addFilter(new GridDecorators.FilterText<>(decorator, DomainEntity::name, "Name", "name"));
         addAndExpand(decorator, grid);
     }
 

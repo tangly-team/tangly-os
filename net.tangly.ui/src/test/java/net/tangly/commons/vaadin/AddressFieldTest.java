@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class AddressFieldTest {
+class AddressFieldTest {
     @Test
     void testAddressField() {
         Address address = Address.builder().postcode("6300").locality("Zug").street("Bahnhofstrasse 1").region("ZG").country("CH").build();

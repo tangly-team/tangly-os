@@ -64,7 +64,7 @@ public class CmdCreateEffort extends Dialog implements Cmd {
 
     private FormLayout create(@NotNull ProductsBoundedDomain domain) {
         FormLayout form = new FormLayout();
-        VaadinUtils.setResponsiveSteps(form);
+        VaadinUtils.set3ResponsiveSteps(form);
 
         TextField assignment = VaadinUtils.createTextField("Assignment", "assignment", true, false);
         TextField collaborator = VaadinUtils.createTextField("Collaborator", "collaborator", true, false);

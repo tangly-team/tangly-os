@@ -58,6 +58,5 @@ public class LedgerAdapter implements LedgerPort {
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
-
     }
 }

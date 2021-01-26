@@ -35,6 +35,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
 import net.tangly.bus.crm.CrmBoundedDomain;
+import net.tangly.bus.crm.Subject;
 import net.tangly.bus.invoices.InvoicesBoundedDomain;
 import net.tangly.bus.ledger.LedgerBoundedDomain;
 import net.tangly.bus.products.ProductsBoundedDomain;
@@ -113,7 +114,7 @@ public class MainLayout extends AppLayout {
         MenuItem admin = menuBar.addItem("Admin");
         SubMenu adminSubmenu = admin.getSubMenu();
         adminSubmenu.addItem("Logout", e -> new CmdLogout().execute());
-        adminSubmenu.addItem("Change Password ...", e -> new CmdChangePassword(crmDomain).execute());
+        adminSubmenu.addItem("Change Password ...", e -> new CmdChangePassword(crmDomain, (Subject) VaadinUtils.getAttribute(this, "subject")).execute());
         return menuBar;
     }
 

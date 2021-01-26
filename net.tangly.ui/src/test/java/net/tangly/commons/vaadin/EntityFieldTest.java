@@ -15,8 +15,8 @@ package net.tangly.commons.vaadin;
 
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import com.github.mvysny.kaributesting.v10.Routes;
-import net.tangly.core.Entity;
 import net.tangly.bus.crm.LegalEntity;
+import net.tangly.core.Entity;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,7 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * The test needs karibu mocking because DateTimePicker retrieve locale instance through UI instance.
  */
-public class EntityFieldTest {
+class EntityFieldTest {
     private static Routes routes;
 
     @BeforeAll

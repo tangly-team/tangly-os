@@ -17,14 +17,13 @@ import java.util.Objects;
 
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import net.tangly.components.grids.PaginatedGrid;
 import net.tangly.core.HasTags;
 import net.tangly.core.Tag;
 import net.tangly.core.TagType;
-import net.tangly.core.TagTypeRegistry;
+import net.tangly.core.TypeRegistry;
 import net.tangly.core.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
 
@@ -43,13 +42,13 @@ import org.jetbrains.annotations.NotNull;
  */
 public class TagsView extends EntitiesView<Tag> {
     private final transient HasTags hasTags;
-    private final transient TagTypeRegistry registry;
+    private final transient TypeRegistry registry;
     private final transient ComboBox<String> namespace;
     private final transient ComboBox<String> name;
     private final transient TextField value;
     private final transient Binder<Tag> binder;
 
-    public TagsView(@NotNull Mode mode, @NotNull HasTags entity, @NotNull TagTypeRegistry registry) {
+    public TagsView(@NotNull Mode mode, @NotNull HasTags entity, @NotNull TypeRegistry registry) {
         super(Tag.class, mode, ProviderInMemory.of(entity.tags()));
         this.hasTags = entity;
         this.registry = registry;
@@ -103,7 +102,7 @@ public class TagsView extends EntitiesView<Tag> {
         }
         form.add(namespace, name);
         form.add(value, 2);
-        VaadinUtils.setResponsiveSteps(form);
+        VaadinUtils.set3ResponsiveSteps(form);
         return form;
     }
 
@@ -122,7 +121,7 @@ public class TagsView extends EntitiesView<Tag> {
             }
             case UPDATE -> {
                 Tag tag = updateOrCreate(entity);
-                hasTags.replace(tag);
+                hasTags.update(tag);
                 yield tag;
             }
             case DELETE -> {

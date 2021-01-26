@@ -16,19 +16,14 @@ import java.util.Optional;
 
 import com.vaadin.flow.component.login.LoginI18n;
 import com.vaadin.flow.component.login.LoginOverlay;
+import com.vaadin.flow.component.notification.Notification;
 import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.Subject;
 import net.tangly.commons.domain.ui.Cmd;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class CmdLogin implements Cmd {
-    private final CrmBoundedDomain domain;
-
-    public CmdLogin(@NotNull CrmBoundedDomain domain) {
-        this.domain = domain;
-    }
-
+public record CmdLogin(@NotNull CrmBoundedDomain domain) implements Cmd {
     @Override
     public void execute() {
         LoginOverlay component = new LoginOverlay();
@@ -48,5 +43,6 @@ public class CmdLogin implements Cmd {
                 component.setError(true);
             }
         });
+        component.addForgotPasswordListener(e -> Notification.show("Please contact tangly llc under info@tangly.net"));
     }
 }

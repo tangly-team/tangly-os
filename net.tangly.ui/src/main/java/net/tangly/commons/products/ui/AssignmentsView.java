@@ -21,7 +21,7 @@ import net.tangly.bus.products.Assignment;
 import net.tangly.bus.products.ProductsBoundedDomain;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.InternalEntitiesView;
-import net.tangly.components.grids.GridFiltersAndActions;
+import net.tangly.components.grids.GridDecorators;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,7 +44,7 @@ class AssignmentsView extends InternalEntitiesView<Assignment> {
         grid.addColumn(Assignment::collaboratorId).setKey("collaboratorId").setHeader("Collaborator").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> (e.product() != null) ? e.product().name() : null).setKey("project").setHeader("Project").setSortable(true).setAutoWidth(true)
             .setResizable(true);
-        GridFiltersAndActions<Assignment> gridFunctions = gridFiltersAndActions(true, false);
+        GridDecorators<Assignment> gridFunctions = gridFiltersAndActions(true, false);
         gridFunctions.addItemAction("Add Effort", e -> new CmdCreateEffort(selectedItem(), domain).execute());
         gridFunctions.addItemAction("Print", e -> new CmdCreateAssignmentDocument(selectedItem(), domain).execute());
         addAndExpand(gridFunctions, grid(), gridButtons());
