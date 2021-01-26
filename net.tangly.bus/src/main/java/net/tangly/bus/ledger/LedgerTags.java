@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import net.tangly.core.TagType;
-import net.tangly.core.TagTypeRegistry;
+import net.tangly.core.TypeRegistry;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -46,7 +46,7 @@ public final class LedgerTags {
     private LedgerTags() {
     }
 
-    public static void registerTags(@NotNull TagTypeRegistry registry) {
+    public static void registerTags(@NotNull TypeRegistry registry) {
         registry.register(TagType.ofMandatory(LEDGER, EXPECTED_DATE, LocalDate.class, LocalDate::parse));
         registry.register(TagType.ofMandatory(LEDGER, VAT, BigDecimal.class, BigDecimal::new));
         registry.register(TagType.ofMandatory(LEDGER, VAT_DUE, BigDecimal.class, BigDecimal::new));

@@ -26,7 +26,7 @@ import net.tangly.core.HasTags;
 import net.tangly.core.PhoneNr;
 import net.tangly.core.Tag;
 import net.tangly.core.TagType;
-import net.tangly.core.TagTypeRegistry;
+import net.tangly.core.TypeRegistry;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -96,7 +96,7 @@ public final class CrmTags {
         }
     }
 
-    public static void registerTags(@NotNull TagTypeRegistry registry) {
+    public static void registerTags(@NotNull TypeRegistry registry) {
         registry.register(TagType.ofMandatory(CRM, "email-" + Type.home.name(), EmailAddress.class, EmailAddress::of));
         registry.register(TagType.ofMandatory(CRM, "email-" + Type.work.name(), EmailAddress.class, EmailAddress::of));
         registry.register(TagType.ofMandatory(CRM, "phone-" + Type.mobile.name(), PhoneNr.class, PhoneNr::of));
@@ -160,7 +160,7 @@ public final class CrmTags {
      * @return link to the linkedIn profile
      */
     public static String organizationLinkedInUrl(@NotNull HasTags entity) {
-        Optional<Tag> school = entity.findBy(CrmTags.CRM_SCHOOL);
+        var school = entity.findBy(CrmTags.CRM_SCHOOL);
         return entity.findBy(CrmTags.CRM_IM_LINKEDIN).map(Tag::value).map(o -> "https://www.linkedin.com/" + (school.isPresent() ? "school/" : "company/") + o)
             .orElse(null);
     }

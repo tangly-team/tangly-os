@@ -30,7 +30,11 @@ public interface CrmEntity extends HasTags {
     }
 
     default void phoneNr(CrmTags.Type type, String phoneNr) {
-        tag(CrmTags.phoneTag(type.name()), phoneNr);
+        if (phoneNr != null) {
+            update(CrmTags.phoneTag(type.name()), phoneNr);
+        } else {
+            removeTagNamed(CrmTags.emailTag(type.name()));
+        }
     }
 
     default Optional<EmailAddress> email(CrmTags.Type type) {
@@ -38,11 +42,19 @@ public interface CrmEntity extends HasTags {
     }
 
     default void email(CrmTags.Type type, EmailAddress email) {
-        email(type, email.text());
+        if (email != null) {
+            email(type, email.text());
+        } else {
+            removeTagNamed(CrmTags.emailTag(type.name()));
+        }
     }
 
     default void email(CrmTags.Type type, String email) {
-        tag(CrmTags.emailTag(type.name()), email);
+        if (email != null) {
+            update(CrmTags.emailTag(type.name()), email);
+        } else {
+            removeTagNamed(CrmTags.emailTag(type.name()));
+        }
     }
 
     default Optional<Address> address(CrmTags.Type type) {
@@ -50,7 +62,11 @@ public interface CrmEntity extends HasTags {
     }
 
     default void address(CrmTags.Type type, Address address) {
-        tag(CrmTags.addressTag(type.name()), address.text());
+        if (address != null) {
+            update(CrmTags.addressTag(type.name()), address.text());
+        } else {
+            removeTagNamed(CrmTags.addressTag(type.name()));
+        }
     }
 
     default Optional<String> im(CrmTags.Type type) {
@@ -58,7 +74,7 @@ public interface CrmEntity extends HasTags {
     }
 
     default void im(CrmTags.Type type, String reference) {
-        tag(CrmTags.imTag(type.name()), reference);
+        update(CrmTags.imTag(type.name()), reference);
     }
 
     default Optional<String> site(CrmTags.Type type) {
@@ -66,6 +82,6 @@ public interface CrmEntity extends HasTags {
     }
 
     default void site(CrmTags.Type type, String site) {
-        tag(CrmTags.siteTag(type.name()), site);
+        update(CrmTags.siteTag(type.name()), site);
     }
 }

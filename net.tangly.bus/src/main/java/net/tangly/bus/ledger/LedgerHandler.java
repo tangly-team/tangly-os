@@ -18,5 +18,5 @@ import net.tangly.core.domain.Handler;
 /**
  * Defines the import port for the ledger bounded domain. It is the primary port in DDD terminology.
  */
-public interface LedgerHandler extends Handler {
+public interface LedgerHandler extends Handler<LedgerRealm> {
 }

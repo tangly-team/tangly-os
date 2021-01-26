@@ -16,7 +16,8 @@ package net.tangly.bus.invoices;
 import java.util.List;
 import javax.inject.Inject;
 
-import net.tangly.core.TagTypeRegistry;
+import net.tangly.core.TypeRegistry;
+import net.tangly.core.codes.CodeType;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
 
@@ -24,8 +25,13 @@ public class InvoicesBoundedDomain extends BoundedDomain<InvoicesRealm, Invoices
     public static final String DOMAIN = "invoices";
 
     @Inject
-    public InvoicesBoundedDomain(InvoicesRealm realm, InvoicesBusinessLogic logic, InvoicesHandler handler, InvoicesPort port, TagTypeRegistry registry) {
+    public InvoicesBoundedDomain(InvoicesRealm realm, InvoicesBusinessLogic logic, InvoicesHandler handler, InvoicesPort port, TypeRegistry registry) {
         super(DOMAIN, realm, logic, handler, port, registry);
+    }
+
+    @Override
+    protected void initialize() {
+        registry().register(CodeType.of(ArticleCode.class));
     }
 
     @Override

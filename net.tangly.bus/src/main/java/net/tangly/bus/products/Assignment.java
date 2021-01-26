@@ -16,8 +16,8 @@ package net.tangly.bus.products;
 import net.tangly.core.QualifiedEntityImp;
 
 /**
- * An assignment defines connection of an employee to a project for a duration. The start date shall be equal or greater to the start date of project. The end
- * date is optional, if defined it shall smaller or equal to the end date of the project.
+ * An assignment defines the connection of an employee to a project for a duration. The start date shall be equal or greater to the start date of project. The
+ * end date is optional, if defined it shall smaller or equal to the end date of the project.
  */
 public class Assignment extends QualifiedEntityImp {
     private Product product;

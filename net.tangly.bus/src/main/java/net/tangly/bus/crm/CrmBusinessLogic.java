@@ -42,7 +42,7 @@ public class CrmBusinessLogic {
     }
 
     public boolean changePassword(String username, String password, String newPassword) {
-        Optional<Subject> subject = realm().subjects().items().stream().filter(o -> o.id().equals(username) && o.authenticate(password)).findAny();
+        var subject = realm().subjects().items().stream().filter(o -> o.id().equals(username) && o.authenticate(password)).findAny();
         subject.ifPresent(o -> o.newPassword(newPassword));
         return subject.isPresent();
     }

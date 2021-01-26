@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-import net.tangly.core.HasOid;
+import net.tangly.core.HasDate;
 import net.tangly.core.Strings;
 import org.jetbrains.annotations.NotNull;
 
@@ -27,11 +27,10 @@ import org.jetbrains.annotations.NotNull;
  * through their context, meaning no access to all activities exists.
  * <p>The author of the activity identifies the collaborator interacting with the potential customer.</p>
  */
-public class Activity implements HasOid {
-    private long oid;
+public class Activity implements HasDate {
     private long ownerFoid;
-    private ActivityCode code;
     private LocalDate date;
+    private ActivityCode code;
     private int durationInMinutes;
     private String author;
     private String text;
@@ -45,8 +44,12 @@ public class Activity implements HasOid {
     }
 
     @Override
-    public long oid() {
-        return oid;
+    public LocalDate date() {
+        return date;
+    }
+
+    public void date(LocalDate date) {
+        this.date = date;
     }
 
     public ActivityCode code() {
@@ -55,14 +58,6 @@ public class Activity implements HasOid {
 
     public void code(@NotNull ActivityCode code) {
         this.code = code;
-    }
-
-    public LocalDate date() {
-        return date;
-    }
-
-    public void date(LocalDate date) {
-        this.date = date;
     }
 
     public int duration() {
@@ -104,7 +99,7 @@ public class Activity implements HasOid {
     @Override
     public String toString() {
         return """
-                Activity[oid=%s, code=%s, date=%s, durationInMinutes=%s, text=%s]
-                """.formatted(oid(), date(), code(), duration(), text());
+            Activity[date=%s, code=%s, durationInMinutes=%s, author=%s, text=%s, details=%s]
+            """.formatted(date(), code(), duration(), author(), text(), details());
     }
 }

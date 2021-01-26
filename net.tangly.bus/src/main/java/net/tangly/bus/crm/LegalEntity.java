@@ -43,12 +43,12 @@ public class LegalEntity extends QualifiedEntityImp implements CrmEntity {
      * @param vatNr new VAT identifying number
      */
     public void vatNr(String vatNr) {
-        replace(Tag.of(CrmTags.CRM_VAT_NUMBER, vatNr));
+        update(CrmTags.CRM_VAT_NUMBER, vatNr);
     }
 
     @Override
     public boolean check() {
-        return !Strings.isNullOrBlank(id()) && !Strings.isNullOrBlank(name()) && address(CrmTags.Type.work).orElseThrow().isValid();
+        return !Strings.isNullOrBlank(id()) && !Strings.isNullOrBlank(name());
     }
 
     @Override

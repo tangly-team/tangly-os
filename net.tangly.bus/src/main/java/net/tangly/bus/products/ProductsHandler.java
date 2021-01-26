@@ -18,5 +18,5 @@ import net.tangly.core.domain.Handler;
 /**
  * Defines the import port for the products bounded domain. It is the primary port in the DDD terminology.
  */
-public interface ProductsHandler extends Handler {
+public interface ProductsHandler extends Handler<ProductsRealm> {
 }

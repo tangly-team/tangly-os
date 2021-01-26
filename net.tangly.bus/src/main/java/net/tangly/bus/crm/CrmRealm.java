@@ -36,6 +36,7 @@ import org.jetbrains.annotations.NotNull;
  * </ul>
  */
 public interface CrmRealm extends Realm {
+    Provider<Lead> leads();
 
     Provider<NaturalEntity> naturalEntities();
 
@@ -48,6 +49,7 @@ public interface CrmRealm extends Realm {
     Provider<Interaction> interactions();
 
     Provider<Subject> subjects();
+
 
     /**
      * Returns all the past and present employees of a legal organization.

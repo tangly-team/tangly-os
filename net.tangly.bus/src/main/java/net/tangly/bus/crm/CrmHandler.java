@@ -18,5 +18,5 @@ import net.tangly.core.domain.Handler;
 /**
  * Defines the import port for the bounded domain. It is a primary port in the DDD terminology.
  */
-public interface CrmHandler extends Handler {
+public interface CrmHandler extends Handler<CrmRealm> {
 }

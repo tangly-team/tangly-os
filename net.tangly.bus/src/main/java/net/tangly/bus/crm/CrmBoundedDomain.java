@@ -18,7 +18,8 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import net.tangly.core.TagType;
-import net.tangly.core.TagTypeRegistry;
+import net.tangly.core.TypeRegistry;
+import net.tangly.core.codes.CodeType;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
 import org.jetbrains.annotations.NotNull;
@@ -27,13 +28,17 @@ public class CrmBoundedDomain extends BoundedDomain<CrmRealm, CrmBusinessLogic, 
     public static final String DOMAIN = "crm";
 
     @Inject
-    public CrmBoundedDomain(CrmRealm realm, CrmBusinessLogic logic, CrmHandler handler, CrmPort port, TagTypeRegistry registry) {
+    public CrmBoundedDomain(CrmRealm realm, CrmBusinessLogic logic, CrmHandler handler, CrmPort port, TypeRegistry registry) {
         super(DOMAIN, realm, logic, handler, port, registry);
     }
 
     @Override
     protected void initialize() {
         CrmTags.registerTags(registry());
+        registry().register(CodeType.of(ActivityCode.class));
+        registry().register(CodeType.of(GenderCode.class));
+        registry().register(CodeType.of(LeadCode.class));
+        registry().register(CodeType.of(InteractionCode.class));
     }
 
     @Override

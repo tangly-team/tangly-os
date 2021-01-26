@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 import javax.inject.Inject;
 
 import net.tangly.core.TagType;
-import net.tangly.core.TagTypeRegistry;
+import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
 import net.tangly.core.providers.Provider;
@@ -30,7 +30,7 @@ public class LedgerBoundedDomain extends BoundedDomain<LedgerRealm, LedgerBusine
     public static final String DOMAIN = "ledger";
 
     @Inject
-    public LedgerBoundedDomain(LedgerRealm realm, LedgerBusinessLogic logic, LedgerHandler handler, LedgerPort port, TagTypeRegistry registry) {
+    public LedgerBoundedDomain(LedgerRealm realm, LedgerBusinessLogic logic, LedgerHandler handler, LedgerPort port, TypeRegistry registry) {
         super(DOMAIN, realm, logic, handler, port, registry);
     }
 
