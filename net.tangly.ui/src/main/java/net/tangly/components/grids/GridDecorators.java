@@ -25,6 +25,7 @@ import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.provider.ListDataProvider;
 import net.tangly.commons.vaadin.CodeField;
@@ -108,9 +109,10 @@ public class GridDecorators<T> extends HorizontalLayout implements SelectedItemL
         return selectedItem;
     }
 
-    public void addFilter(@NotNull GridFilter<T> filter) {
+    public GridDecorators<T> addFilter(@NotNull GridFilter<T> filter) {
         filters.add(filter);
-        this.add(filter.component());
+        add(filter.component());
+        return this;
     }
 
     void updateFilters() {
@@ -210,6 +212,28 @@ public class GridDecorators<T> extends HorizontalLayout implements SelectedItemL
         public void addFilter(@NotNull ListDataProvider<E> provider) {
             if (!component.isEmpty()) {
                 provider.addFilter(entity -> getter.apply(entity).toLowerCase().contains(component.getValue().toLowerCase()));
+            }
+        }
+    }
+
+    public static class FilterNumber<E, T> implements GridFilter<E> {
+        private final NumberField component;
+        private final Function<E, T> getter;
+
+        public FilterNumber(@NotNull GridDecorators<E> container, @NotNull Function<E, T> getter, @NotNull String label, String placeholder) {
+            component = new NumberField (label, placeholder);
+            component.setClearButtonVisible(true);
+            component.addValueChangeListener(e -> container.updateFilters());
+            this.getter = getter;
+        }
+
+        public Component component() {
+            return component;
+        }
+
+        public void addFilter(@NotNull ListDataProvider<E> provider) {
+            if (!component.isEmpty()) {
+                provider.addFilter(entity -> getter.apply(entity).equals(component.getValue()));
             }
         }
     }

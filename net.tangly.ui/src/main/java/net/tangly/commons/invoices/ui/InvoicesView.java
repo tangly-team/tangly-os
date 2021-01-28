@@ -22,8 +22,8 @@ import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoicesBoundedDomain;
 import net.tangly.commons.vaadin.EntitiesView;
-import net.tangly.components.grids.GridDecorators;
 import net.tangly.commons.vaadin.VaadinUtils;
+import net.tangly.components.grids.GridDecorators;
 import org.jetbrains.annotations.NotNull;
 
 class InvoicesView extends EntitiesView<Invoice> {
@@ -50,13 +50,14 @@ class InvoicesView extends EntitiesView<Invoice> {
         Grid<Invoice> grid = grid();
         grid.addColumn(Invoice::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Invoice::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Invoice::invoicedDate).setKey("invoicedDate").setHeader("Invoiced Date").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Invoice::date).setKey("invoicedDate").setHeader("Invoiced Date").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Invoice::dueDate).setKey("dueDate").setHeader("Due Date").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(o -> VaadinUtils.format(o.amountWithoutVat())).setKey("amountWithoutVat").setHeader("Amount").setAutoWidth(true).setResizable(true)
-            .setSortable(true);
+        grid.addColumn(o -> VaadinUtils.format(o.amountWithoutVat())).setKey("amountWithoutVat").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Invoice::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
         GridDecorators<Invoice> functions = gridFiltersAndActions(true, false);
-        functions.addFilter(new GridDecorators.FilterText<>(functions, Invoice::id, "Id", "id"));
+        functions.addFilter(new GridDecorators.FilterText<>(functions, Invoice::id, "Id", "id"))
+            .addFilter(new GridDecorators.FilterText<>(functions, Invoice::name, "Name", "name"))
+            .addFilter(new GridDecorators.FilterDate<>(functions));
         functions.addItemAction("Print", e -> new CmdCreateInvoiceDocument(selectedItem(), domain).execute());
         addAndExpand(functions, grid(), gridButtons());
     }
@@ -78,7 +79,7 @@ class InvoicesView extends EntitiesView<Invoice> {
         if (entity != null) {
             id.setValue(entity.id());
             name.setValue(entity.name());
-            invoicedDate.setValue(entity.invoicedDate());
+            invoicedDate.setValue(entity.date());
             dueDate.setValue(entity.dueDate());
             text.setValue(entity.text());
         }

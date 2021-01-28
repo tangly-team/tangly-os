@@ -63,17 +63,27 @@ class AccountsView extends EntitiesView<Account> {
         grid.addColumn(Account::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::group).setKey("group").setHeader("Group").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true);
-        grid.addColumn(VaadinUtils.coloredRender(o -> o.balance(from), VaadinUtils.FORMAT)).setKey("opening").setHeader("Opening").setAutoWidth(true)
-            .setResizable(true).setTextAlign(ColumnTextAlign.END);
-        grid.addColumn(VaadinUtils.coloredRender(o -> o.balance(to), VaadinUtils.FORMAT)).setKey("balance").setHeader("Balance").setAutoWidth(true)
-            .setResizable(true).setTextAlign(ColumnTextAlign.END);
+        grid.addColumn(VaadinUtils.coloredRender(o -> o.balance(from), VaadinUtils.FORMAT))
+            .setKey("opening")
+            .setHeader("Opening")
+            .setAutoWidth(true)
+            .setResizable(true)
+            .setTextAlign(ColumnTextAlign.END);
+        grid.addColumn(VaadinUtils.coloredRender(o -> o.balance(to), VaadinUtils.FORMAT))
+            .setKey("balance")
+            .setHeader("Balance")
+            .setAutoWidth(true)
+            .setResizable(true)
+            .setTextAlign(ColumnTextAlign.END);
         grid.addColumn(Account::kind).setKey("kind").setHeader("Kind").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::ownedBy).setKey("ownedBy").setHeader("Owned By").setAutoWidth(true).setResizable(true);
 
-        GridDecorators<Account> gridFunctions = gridFiltersAndActions(true, false);
-        gridFunctions.addItemAction("Print", e -> new CmdCreateLedgerDocument(domain).execute());
-        addAndExpand(gridFunctions, grid(), gridButtons());
+        GridDecorators<Account> functions = gridFiltersAndActions(true, false);
+        functions.addFilter(new GridDecorators.FilterText<>(functions, Account::id, "Id", "id"))
+            .addFilter(new GridDecorators.FilterText<>(functions, Account::name, "Name", "name"));
+        functions.addItemAction("Print", e -> new CmdCreateLedgerDocument(domain).execute());
+        addAndExpand(functions, grid(), gridButtons());
     }
 
     @Override

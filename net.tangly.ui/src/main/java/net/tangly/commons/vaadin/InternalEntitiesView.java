@@ -57,9 +57,9 @@ public abstract class InternalEntitiesView<T extends Entity> extends EntitiesVie
     }
 
     protected static <T extends Entity> void addEntityFilters(GridDecorators<T> filters) {
-        filters.addFilter(new GridDecorators.FilterText<>(filters, T::name, "Name", "name"));
-        filters.addFilter(new GridDecorators.FilterInterval<>(filters));
-        filters.addFilter(new GridDecorators.FilterTags<>(filters));
+        filters.addFilter(new GridDecorators.FilterText<>(filters, T::name, "Name", "name"))
+            .addFilter(new GridDecorators.FilterInterval<>(filters))
+            .addFilter(new GridDecorators.FilterTags<>(filters));
 
     }
 
@@ -72,10 +72,20 @@ public abstract class InternalEntitiesView<T extends Entity> extends EntitiesVie
         grid.addColumn(QualifiedEntity::oid).setKey("oid").setHeader("Oid").setResizable(true).setSortable(true).setFlexGrow(0).setWidth("3em");
         grid.addColumn(QualifiedEntity::id).setKey("id").setHeader("Id").setResizable(true).setSortable(true).setFlexGrow(0).setWidth("5em");
         grid.addColumn(QualifiedEntity::name).setKey("name").setHeader("Name").setResizable(true).setSortable(true).setFlexGrow(0).setWidth("10em");
-        grid.addColumn(new LocalDateRenderer<>(QualifiedEntity::fromDate, DateTimeFormatter.ISO_DATE)).setKey("from").setHeader("From").setResizable(true)
-            .setSortable(true).setFlexGrow(0).setWidth("5em");
-        grid.addColumn(new LocalDateRenderer<>(QualifiedEntity::toDate, DateTimeFormatter.ISO_DATE)).setKey("to").setHeader("To").setResizable(true)
-            .setSortable(true).setFlexGrow(0).setWidth("5em");
+        grid.addColumn(new LocalDateRenderer<>(QualifiedEntity::fromDate, DateTimeFormatter.ISO_DATE))
+            .setKey("from")
+            .setHeader("From")
+            .setResizable(true)
+            .setSortable(true)
+            .setFlexGrow(0)
+            .setWidth("5em");
+        grid.addColumn(new LocalDateRenderer<>(QualifiedEntity::toDate, DateTimeFormatter.ISO_DATE))
+            .setKey("to")
+            .setHeader("To")
+            .setResizable(true)
+            .setSortable(true)
+            .setFlexGrow(0)
+            .setWidth("5em");
     }
 
     @Override

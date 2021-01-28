@@ -25,6 +25,7 @@ import net.tangly.commons.vaadin.EntityField;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.commons.vaadin.One2OneField;
 import net.tangly.commons.vaadin.VaadinUtils;
+import net.tangly.components.grids.GridDecorators;
 import net.tangly.components.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
 
@@ -43,9 +44,17 @@ class EmployeesView extends InternalEntitiesView<Employee> {
         grid.addColumn(Employee::name).setKey("employee").setHeader("Employee").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.person().name()).setKey("person").setHeader("Person").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.organization().name()).setKey("organization").setHeader("Organization").setSortable(true).setAutoWidth(true).setResizable(true);
-        grid.addColumn(e -> e.value(CrmTags.CRM_EMPLOYEE_TITLE).orElse("")).setKey("title").setHeader("Title").setSortable(true).setAutoWidth(true)
+        grid.addColumn(e -> e.value(CrmTags.CRM_EMPLOYEE_TITLE).orElse(""))
+            .setKey("title")
+            .setHeader("Title")
+            .setSortable(true)
+            .setAutoWidth(true)
             .setResizable(true);
-        addAndExpand(filterCriteria(false, false, InternalEntitiesView::addEntityFilters), grid(), gridButtons());
+        GridDecorators<Employee> functions = gridFiltersAndActions(false, false);
+        functions.addFilter(new GridDecorators.FilterText<>(functions, e -> e.person().name(), "Person", "person"))
+            .addFilter(new GridDecorators.FilterText<>(functions, e -> e.organization().name(), "Organization", "organization"))
+            .addFilter(new GridDecorators.FilterInterval<>(functions));
+        addAndExpand(functions, grid(), gridButtons());
     }
 
     @Override

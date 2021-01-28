@@ -43,7 +43,7 @@ class SubjectsView extends InternalEntitiesView<Subject> {
     @Override
     protected void initialize() {
         InternalEntitiesView.addQualifiedEntityColumns(grid());
-        addAndExpand(grid(), gridButtons());
+        addAndExpand(filterCriteria(false, false, InternalEntitiesView::addEntityFilters), grid(), gridButtons());
     }
 
     @Override

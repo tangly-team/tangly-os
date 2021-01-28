@@ -64,7 +64,7 @@ public class InvoicesBoundedDomainUi implements BoundedDomainUi {
     }
 
     private void select(@NotNull MainLayout layout, @NotNull Component view) {
-        layout.setContent(view);
         currentView = view;
+        layout.setContent(currentView);
     }
 }

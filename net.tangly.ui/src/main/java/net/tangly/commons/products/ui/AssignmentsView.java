@@ -42,12 +42,16 @@ class AssignmentsView extends InternalEntitiesView<Assignment> {
         Grid<Assignment> grid = grid();
         InternalEntitiesView.addQualifiedEntityColumns(grid);
         grid.addColumn(Assignment::collaboratorId).setKey("collaboratorId").setHeader("Collaborator").setSortable(true).setAutoWidth(true).setResizable(true);
-        grid.addColumn(e -> (e.product() != null) ? e.product().name() : null).setKey("project").setHeader("Project").setSortable(true).setAutoWidth(true)
+        grid.addColumn(e -> (e.product() != null) ? e.product().name() : null)
+            .setKey("project")
+            .setHeader("Project")
+            .setSortable(true)
+            .setAutoWidth(true)
             .setResizable(true);
         GridDecorators<Assignment> gridFunctions = gridFiltersAndActions(true, false);
         gridFunctions.addItemAction("Add Effort", e -> new CmdCreateEffort(selectedItem(), domain).execute());
         gridFunctions.addItemAction("Print", e -> new CmdCreateAssignmentDocument(selectedItem(), domain).execute());
-        addAndExpand(gridFunctions, grid(), gridButtons());
+        addAndExpand(filterCriteria(false, false, InternalEntitiesView::addQualifiedEntityFilters), grid(), gridButtons());
     }
 
     @Override

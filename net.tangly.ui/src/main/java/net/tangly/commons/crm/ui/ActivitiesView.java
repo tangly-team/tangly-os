@@ -50,10 +50,10 @@ class ActivitiesView extends EntitiesView<Activity> {
         grid.addColumn(Activity::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Activity::details).setKey("details").setHeader("Details").setAutoWidth(true).setResizable(true).setSortable(true);
         addAndExpand(filterCriteria(false, false, filters -> {
-            filters.addFilter(new GridDecorators.FilterDate<>(filters));
-            filters.addFilter(
-                new GridDecorators.FilterCode<>(filters, (CodeType<ActivityCode>) domain.registry().find(ActivityCode.class).orElseThrow(), Activity::code,
-                    "Code"));
+            filters.addFilter(new GridDecorators.FilterDate<>(filters))
+                .addFilter(
+                    new GridDecorators.FilterCode<>(filters, (CodeType<ActivityCode>) domain.registry().find(ActivityCode.class).orElseThrow(), Activity::code,
+                        "Code"));
         }), grid(), gridButtons());
     }
 

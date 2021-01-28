@@ -27,6 +27,7 @@ import net.tangly.bus.ledger.LedgerBoundedDomain;
 import net.tangly.bus.ledger.Transaction;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
+import net.tangly.components.grids.GridDecorators;
 import org.jetbrains.annotations.NotNull;
 
 class TransactionsView extends EntitiesView<Transaction> {
@@ -50,9 +51,19 @@ class TransactionsView extends EntitiesView<Transaction> {
         grid.addColumn(Transaction::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Transaction::debitAccount).setKey("debit").setHeader("Debit").setAutoWidth(true).setResizable(true);
         grid.addColumn(Transaction::creditAccount).setKey("credit").setHeader("Credit").setAutoWidth(true).setResizable(true);
-        grid.addColumn(new NumberRenderer<>(Transaction::amount, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true).setResizable(true)
+        grid.addColumn(new NumberRenderer<>(Transaction::amount, VaadinUtils.FORMAT))
+            .setKey("amount")
+            .setHeader("Amount")
+            .setAutoWidth(true)
+            .setResizable(true)
             .setTextAlign(ColumnTextAlign.END);
-        addAndExpand(grid(), gridButtons());
+        GridDecorators<Transaction> functions = gridFiltersAndActions(true, false);
+        functions.addFilter(new GridDecorators.FilterText<>(functions, Transaction::reference, "Reference", "reference"))
+            .addFilter(new GridDecorators.FilterText<>(functions, Transaction::debitAccount, "Debit", "debit"))
+            .addFilter(new GridDecorators.FilterText<>(functions, Transaction::creditAccount, "Credit", "credit"))
+            .addFilter(new GridDecorators.FilterDate<>(functions))
+            .addFilter(new GridDecorators.FilterText<>(functions, Transaction::text, "Text", "text"));
+        addAndExpand(functions, grid(), gridButtons());
     }
 
     void interval(@NotNull LocalDate from, @NotNull LocalDate to) {

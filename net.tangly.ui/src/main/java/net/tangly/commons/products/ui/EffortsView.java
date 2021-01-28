@@ -24,6 +24,7 @@ import net.tangly.bus.products.Effort;
 import net.tangly.bus.products.ProductsBoundedDomain;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
+import net.tangly.components.grids.GridDecorators;
 import org.jetbrains.annotations.NotNull;
 
 class EffortsView extends EntitiesView<Effort> {
@@ -45,7 +46,12 @@ class EffortsView extends EntitiesView<Effort> {
         grid.addColumn(Effort::date).setKey("date").setHeader("Date").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Effort::duration).setKey("duration").setHeader("Duration").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Effort::contractId).setKey("contractId").setHeader("ContractId").setAutoWidth(true).setResizable(true).setSortable(true);
-        addAndExpand(grid(), gridButtons());
+
+        GridDecorators<Effort> functions = gridFiltersAndActions(true, false);
+        functions.addFilter(new GridDecorators.FilterText<>(functions, o -> o.assignment().id(), "Assignment", "assignment"))
+            .addFilter(new GridDecorators.FilterText<>(functions, o -> o.assignment().name(), "Collaborator", "collaborator"))
+            .addFilter(new GridDecorators.FilterDate<>(functions));
+        addAndExpand(functions, grid(), gridButtons());
     }
 
     @Override

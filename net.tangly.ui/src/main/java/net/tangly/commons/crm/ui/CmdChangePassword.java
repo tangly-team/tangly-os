@@ -99,7 +99,11 @@ public class CmdChangePassword extends Dialog implements Cmd {
 
     @Override
     public void execute() {
-        add(form());
+        HorizontalLayout layout = new HorizontalLayout();
+        layout.setPadding(true);
+        layout.add(form());
+        add(layout);
+        this.setWidth("20em");
         open();
     }
 

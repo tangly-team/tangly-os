@@ -50,6 +50,7 @@
     <orderEntry type="library" name="Maven: io.swagger:swagger-models:1.5.21" level="project" />
     <orderEntry type="library" name="Maven: io.swagger:swagger-annotations:1.5.21" level="project" />
     <orderEntry type="library" name="Maven: io.swagger.core.v3:swagger-core:2.0.4" level="project" />
+    <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.3.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.5" level="project" />
     <orderEntry type="library" name="Maven: io.swagger.core.v3:swagger-annotations:2.0.4" level="project" />
     <orderEntry type="library" name="Maven: io.swagger.parser.v3:swagger-parser-core:2.0.5" level="project" />
@@ -216,7 +217,7 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: ch.qos.logback:logback-core:1.3.0-alpha5" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: edu.washington.cs.types.checker:checker-framework:1.7.0" level="project" />
     <orderEntry type="library" name="Maven: net.tangly:commons:0.2.6" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: com.networknt:json-schema-validator:1.0.46" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.networknt:json-schema-validator:1.0.47" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.sun.mail:jakarta.mail:2.0.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.sun.activation:jakarta.activation:2.0.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.asciidoctor:asciidoctorj:2.4.2" level="project" />
@@ -241,9 +242,9 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.headius:backport9:1.8" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.jruby:jruby-stdlib:9.2.13.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.beust:jcommander:1.72" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.asciidoctor:asciidoctorj-pdf:1.5.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.asciidoctor:asciidoctorj-pdf:1.5.4" level="project" />
     <orderEntry type="library" name="Maven: net.tangly:core:0.2.6" level="project" />
-    <orderEntry type="library" name="Maven: com.googlecode.libphonenumber:libphonenumber:8.12.15" level="project" />
+    <orderEntry type="library" name="Maven: com.googlecode.libphonenumber:libphonenumber:8.12.16" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: one.microstream:storage.embedded:04.01.00-MS-GA" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: one.microstream:storage:04.01.00-MS-GA" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: one.microstream:persistence.binary:04.01.00-MS-GA" level="project" />
@@ -254,43 +255,36 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.commons:commons-csv:1.8" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.guicedee.services:json:1.0.19.13" level="project" />
     <orderEntry type="library" name="Maven: net.tangly:ports:0.2.6" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.pdfbox:pdfbox:2.0.22" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.pdfbox:fontbox:2.0.22" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: net.codecrete.qrbill:qrbill-generator:2.5.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: io.nayuki:qrcodegen:1.6.0" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.pdfbox:pdfbox:2.0.17" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.pdfbox:fontbox:2.0.17" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.mustangproject:library:2.0.3" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: net.sf.saxon:Saxon-HE:9.9.0-1" level="project" />
-    <orderEntry type="library" name="Maven: javax.activation:activation:1.1.1" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.pdfbox:preflight:2.0.17" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.pdfbox:xmpbox:2.0.17" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.dom4j:dom4j:2.1.3" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xmlunit:xmlunit-assertj:2.6.3" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xmlunit:xmlunit-core:2.6.3" level="project" />
-    <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.3.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.mustangproject:library:2.1.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.mnode.ical4j:ical4j:3.0.19" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.commons:commons-collections4:4.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.sun.mail:javax.mail:1.6.2" level="project" />
+    <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.mnode.ical4j:ical4j-vcard:1.0.5" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.codehaus.groovy:groovy-all:2.3.6" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.slf4j:jcl-over-slf4j:1.7.25" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: one.microstream:storage.embedded.configuration:04.01.00-MS-GA" level="project" />
     <orderEntry type="library" name="Maven: org.iban4j:iban4j:3.2.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.github.mvysny.kaributesting:karibu-testing-v10:1.2.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.github.mvysny.kaributesting:mock-servlet-environment:1.2.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jetbrains.kotlin:kotlin-test:1.3.72" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jetbrains.kotlin:kotlin-test-common:1.3.72" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-common:1.3.72" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.3.72" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.github.mvysny.kaributesting:karibu-testing-v10:1.2.8" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.github.mvysny.kaributesting:mock-servlet-environment:1.2.8" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jetbrains.kotlin:kotlin-test:1.4.21" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jetbrains.kotlin:kotlin-test-common:1.4.21" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-common:1.4.21" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.4.21" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.21" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.21" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: io.github.classgraph:classgraph:4.6.23" level="project" />
     <orderEntry type="library" name="Maven: com.storedobject.chart:so-charts:0.2.0" level="project" />
     <orderEntry type="library" name="Maven: com.storedobject.helper:so-helper:1.0.0" level="project" />
-    <orderEntry type="library" name="Maven: com.vaadin.componentfactory:tooltip:1.3.0" level="project" />
+    <orderEntry type="library" name="Maven: com.vaadin.componentfactory:tooltip:1.3.4" level="project" />
     <orderEntry type="library" name="Maven: org.junit.jupiter:junit-jupiter-api:5.7.0-M1" level="project" />
     <orderEntry type="library" name="Maven: org.apiguardian:apiguardian-api:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
     <orderEntry type="library" name="Maven: org.junit.platform:junit-platform-commons:1.7.0-M1" level="project" />
-    <orderEntry type="library" name="Maven: org.assertj:assertj-core:3.18.0" level="project" />
+    <orderEntry type="library" name="Maven: org.assertj:assertj-core:3.18.1" level="project" />
   </component>
 </module>
