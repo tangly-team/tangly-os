@@ -135,7 +135,7 @@ Your architects are talented developers and are full members of your Scrum teams
 --- DevOps
 ---- Infrastructure as Code
 ---- Container Deployment
----- Validation and Verfication
+---- Validation and Verification
 ----- Monitoring
 ----- Auditing
 -- Master Your Technology Stack (Java)
@@ -154,7 +154,7 @@ Your development team members are
 * Known all major patterns and idioms of the used development stack,
 * Practice https://en.wikipedia.org/wiki/Test-driven_development[TDD], https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD], clean code, refactoring,
 * Embrace continuous integration _CI_, continuous delivery _CD_, continuous development _CD_,
-* Automate everything and and establish DevOps,
+* Automate everything and establish DevOps,
 ** _https://www.jenkins.io/[Jenkins], https://bitbucket.org/article/features/pipelines[bitbucket pipeline]_
 * Study source code from open source projects to learn better ways,
 * Know https://en.wikipedia.org/wiki/SMART_criteria[SMART], https://en.wikipedia.org/wiki/INVEST_(mnemonic)[INVEST], https://de.wikipedia.org/wiki/Solid_(Software)[SOLID], https://en.wikipedia.org/wiki/KISS_principle[KISS], https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI],
@@ -174,7 +174,7 @@ You are applying the agile and lean approach to your software product developmen
 Your teams use Scrum or Kanban to deliver running software at least every two weeks.
 
 To create an agile architecture you must write worthy agile code.
-And agile code is always *clean code*.
+Agile code is always *clean code*.
 Never compromise on your key strategic asset, the source code of your product.
 Your source code and your data are strategic advantages for your company.
 Start early writing clean code, do it continuously and soon your code will be clean, legible and free of defects.
@@ -186,7 +186,7 @@ Having a huge class with thousands of lines of code plainly demonstrate that you
 Such monsters are not born over a night coding session or a weekend hack session.
 It takes time and unwavering incompetence to create such maintenance nightmares.
 
-And as long as your product contains such code monsters it is worthless to pretend having a nice and thought through architecture.
+And as long as your product contains such code monsters it is worthless to pretend to have a nice and thought through architecture.
 Team discipline and early warning systems are the key to avoid such blunders and kill the monster in the egg.
 
 === Clean Code and Refactoring
@@ -341,7 +341,7 @@ Of course that requires that no commit breaks anything or causes tests to fail.
 Remember that unfinished features can always be disabled with feature toggles.
 
 Now, with part of the new feature committed and the pull request created, another developer from the team can review it.
-In most cases that doesn’t happen immediately because the developers don’t want to interrupt their work every time a team member pushes a commit.
+In most cases that does not happen immediately because the developers don’t want to interrupt their work every time a team member pushes a commit.
 Instead, the code reviews are done when another developer is open for it.
 Meanwhile, the pull request might grow by a few commits.
 
@@ -374,7 +374,9 @@ Do not forget the https://agilemanifesto.org/principles.html[agile manifesto twe
 
 The architect shall be part of the Scrum development team.
 This is the most embedded way an architect would fit into a Scrum team.
-It may not even be an individual who has the title of architect, because the big idea behind Scrum teams is that team members have different skills and their roles may change to deliver what is required for a particular sprint.
+It may not even be an individual who has the title of architect.
+The big idea behind Scrum teams is that team members have different skills.
+Their roles may change to deliver what is required for a particular sprint.
 
 So it could be that senior developers within the team got architecture skills, or are in the best position, or have the best knowledge, to make those architectural decisions.
 Those team members with architectural skills are involved in the sprint on a day-to-day basis.
@@ -427,7 +429,7 @@ One does, of course, need to apply that knowledge smoothly, incrementally, littl
 
 == Agile Component Design
 
-Your are responsible to create or modify a component in your current application.
+You are responsible to create or modify a component in your current application.
 This is a *design* activity.
 
 How can you create a good, legible, maintainable component architecture?
@@ -463,7 +465,7 @@ Instead of searching for a solution for days, post your question on an adequate 
 Again fill free to improve the suggested solutions.
 
 Become more efficient and use the wisdom of all these developers accessible through the Internet.
-And always verify the quality and adequacy of their proposed solution.
+Always verify the quality and adequacy of their proposed solution.
 
 ==== Java Standard API
 
@@ -554,13 +556,14 @@ Architecture design records provide hints why specific design decisions were cho
 Your users can better understand the path you follow and the selected tradeoffs.
 They do not have to agree but they can understand the arguments why you choose so.
 
-Static code generator is an actual good practice to provide current documentation and tutorials for your components.
+Static code generator is an actual good practice to provide the current documentation and tutorials for your components.
 We write all our documentation in the asciidoc format - including plantUML and highlighted source code - and generate our web site using hugo tool suite.
 
 Start small and improve your approach every day.
 
 == Legacy System Refactoring
 
+image:architecture-approaches.png[architecture-approaches,500,1000,role="left"]
 With refactoring you can take a bad design, even chaos software, and rework it into well-designed code.
 Most often it is cheaper refactoring a legacy application instead of rewriting it from scratch.
 
@@ -610,6 +613,9 @@ You need a tentative architecture description to start refactoring and to untang
 Refactoring is always a successful activity.
 You cannot fail.
 But you need discipline, continuous involvement, and measurement.
+
+image::reuse-categories.png[reuse-categories,500,1000,role="left"]
+
 If you are new to refactoring it is worth to have a coach to smooth the learning curve.
 
 . Extract one big service, refactor, test, and deploy.
@@ -638,7 +644,7 @@ It works either for micro architecture or for modular monolith approaches.
 TOGAF, UML, PMI, CMMI are obsolete - various activities they recommend are good, do them in your sprints.
 * Avoid lengthy, slow and expensive review approach.
 ATAM is dead.
-* The quality tree technique is really good, use fitness functions to implement your quality tree.
+* The quality tree technique is superb, use fitness functions to implement your quality tree.
 
 If you are running legacy technology, this not only becomes a threat to your business but also to your hiring and employer branding efforts.
 As fewer and fewer programmers and operation managers will have the knowledge of those systems, you’ll face a dwindling talent pool.
@@ -814,8 +820,7 @@ See my blog post about https://tangly-blog.blogspot.com/2018/03/how-should-you-h
 
 Software craftsmanship is an initiative to improve the professionalism of software developers.
 You do not have to agree with them, just look what they are doing.
-For a detailed discussion read for example the book The Software Craftsman: Professionalism, Pragmatism, Pride by Sandro
-Mancuso <<software-craftsman>>.
+For a detailed discussion read for example the book The Software Craftsman: Professionalism, Pragmatism, Pride by Sandro Mancuso <<software-craftsman>>.
 
 Don’t discuss practices, discuss value.
 

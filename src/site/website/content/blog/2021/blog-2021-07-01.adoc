@@ -57,6 +57,6 @@ The tangly ERP was extended to support rolling analytics based on a user defined
 
 The system supports the definition of a time interval to display only currently relevant entities.
 
-The analytics time interval is independent from the system overall interval.
+The analytics time interval is independent of the system overall interval.
 
 === Lessons Learnt

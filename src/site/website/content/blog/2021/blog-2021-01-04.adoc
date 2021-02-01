@@ -2,7 +2,7 @@
 title: "Software Development for Students"
 linkTitle: "Software Development for Students"
 date: 2021-01-25
-tags: ["java", "serie-students"]
+tags: ["java", "series-students"]
 ---
 
 == Software Development for Students
@@ -105,7 +105,7 @@ The decision process is part of the gitlab data and is auditable.
 
 === Links
 
-The students serie is a set of blogs showing how to use central tools for modern software development.
+The student series is a set of blogs showing how to use central tools for modern software development.
 
 . link:../../2021/software-development-for-students[Software Development for Students]
 . link:../../2018/pragmatic-craftsmanship-professional-software-developer[Pragmatic Craftsmanship]

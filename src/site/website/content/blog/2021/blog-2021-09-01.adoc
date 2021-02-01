@@ -2,7 +2,7 @@
 title: "Improving a Static Web Site Build With Hugo and Docsy Theme"
 linkTitle: "Improving a Static Web Site"
 date: 2021-09-01
-tags: ["agile", "serie-students"]
+tags: ["agile", "series-students"]
 ---
 
 == Improving a Static Web Site Build With Hugo and Docsy Theme
@@ -15,7 +15,7 @@ image::2021-09-02-head.jpg[width=420, height=360, role=left]
 
 === Search Function for the Web Site
 
-=== Coment Function for Blog Article
+=== Comment Function for Blog Article
 
 === Tag Function for Blog Article
 

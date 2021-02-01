@@ -2,7 +2,7 @@
 title: "What I Learnt Teaching Agile Software Architecture"
 linkTitle: "Agile Software Architecture"
 date: 2021-09-01
-tags: ["agile", "serie-students"]
+tags: ["agile", "series-students"]
 ---
 
 == What I Learnt Teaching Agile Software Architecture

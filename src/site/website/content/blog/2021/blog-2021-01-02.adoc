@@ -2,7 +2,7 @@
 title: "Meaningful Identifiers"
 linkTitle: "Meaningful Identifiers"
 date: 2021-01-12
-tags: ["design", "crm", "serie-identifiers"]
+tags: ["design", "crm", "series-identifiers"]
 ---
 
 == Meaningful Identifiers

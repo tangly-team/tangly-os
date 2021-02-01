@@ -2,7 +2,7 @@
 title: "Legacy Systems Refactoring"
 linkTitle: "Legacy Systems Refactoring"
 date: 2020-06-01
-tags: ["design", "serie-agile-design"]
+tags: ["design", "series-agile-design"]
 ---
 
 == Legacy Systems Refactoring

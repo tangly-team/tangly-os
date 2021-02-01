@@ -2,7 +2,7 @@
 title: "Agile Software Architecture is Mainstream"
 linkTitle: "Agile Software Architecture"
 date: 2021-04-02
-tags: ["java","serie-students"]
+tags: ["java","series-students"]
 
 ---
 
@@ -14,12 +14,12 @@ tags: ["java","serie-students"]
 :copyright: CC-BY-SA 4.0
 image::2021-03-03-head.jpg[width=420,height=360,role=left]
 
-Slowly, slowly major actors in the sofware architecture landscape acknowledge agile development is state of the industry approach to build software products.
+Slowly, slowly major actors in the software architecture landscape acknowledge agile development is state of the industry approach to build software products.
 They are still struggling to integrate their older views in a faster, iterative, incremental development approach.
 More important they have discovered we build products because no customers buy projects.
 They buy solutions and products.
 
-I am relieved I nee less fighting to convince enterprise architects that agile is the way.
+I am relieved I need less fighting to convince enterprise architects that agile is the way.
 The big names https://www.pmi.org/[_Project Management Institute_], https://www.opengroup.org/[_Open Group_], and https://www.isaqb.org/[_iSAQB_]
 have an agile architecture offering.
 If pushed they acknowledge agile development is mainstream and huge in the overwhelming majority of product development.

@@ -2,7 +2,7 @@
 title: "Git Branches for the Impatient"
 linkTitle: "Git Branches"
 date: 2016-07-21
-tags: ["agile", "git", "serie-students"]
+tags: ["agile", "git", "series-students"]
 ---
 
 == Git Branches for the Impatient

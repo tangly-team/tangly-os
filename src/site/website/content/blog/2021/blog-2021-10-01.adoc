@@ -2,7 +2,7 @@
 title: "Agile Design Modeling"
 linkTitle: "Agile Design Modeling"
 date: 2021-10-01
-tags: ["agile", "serie-students"]
+tags: ["agile", "series-students"]
 ---
 
 == Agile Design Modeling

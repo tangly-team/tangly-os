@@ -2,7 +2,7 @@
 title: "The power of Tags and Comments"
 linkTitle: "The power of Tags and Comments"
 date: 2020-09-08
-tags: ["java", "design", "crm", "serie-identifiers"]
+tags: ["java", "design", "crm", "series-identifiers"]
 ---
 
 == The power of Tags and Comments

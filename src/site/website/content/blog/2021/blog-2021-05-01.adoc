@@ -42,7 +42,7 @@ Second year::
  2 days coaching per team per month therefore we need 1.5 coach, we assume that coaching days are only 50% productive time
  100 K for server licenses to support the new techniques.
 Third, fourth and fifth year::
- 1 day coaching per team per month therefore we need 0.75 coach, we assume that coaching days are only 50% productive time.
+ 1 day coaching per team and per month therefore we need 0.75 coach, we assume that coaching days are only 50% productive time.
  You assume you had know-how transfer the last two years and have grow internal experts.
  You still have 10 days coaching per team per year to discuss new approaches
  100 K for server licenses to support the new techniques.

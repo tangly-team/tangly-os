@@ -1,7 +1,7 @@
 ---
 title: "Effective Working in Digital Age"
 linkTitle: "Effective Digital Working"
-date: 2021-02-01
+date: 2021-02-20
 tags: ["agile"]
 ---
 
@@ -95,7 +95,7 @@ Do not start an email trail to identify potential solutions to something complic
 * Work with text formats.
 Avoid Office or LibreOffice formats for your documents
 You cannot compute differences on such documents.
-* Consider AsciidDoc as your preferred format.
+* Consider AsciiDoc as your preferred format.
 AsciiDoc is semantically equivalent to DocBook.
 You can write whole books with AsciiDoc.
 

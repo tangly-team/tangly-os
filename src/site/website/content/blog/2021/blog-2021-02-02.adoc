@@ -1,7 +1,7 @@
 ---
 title: "Why Java Path Class is better?"
 linkTitle: "Why Java Path?"
-date: 2021-02-01
+date: 2021-02-10
 tags: ["agile", "java"]
 ---
 
@@ -33,7 +33,7 @@ An in-memory file system is ideal to test file related operations in unit and in
 
 The https://github.com/google/jimfs[Jimfs] library implements an in-memory file system.
 The approach is ideal to write unit tests working with files.
-These unit tests can also be deployed in a continuous integration pipeline where you do not have a documented and reliable acess to a file system.
+These unit tests can also be deployed in a continuous integration pipeline where you do not have a documented and reliable access to a file system.
 
 When you look at the implementation of Path.of or Paths.get, you will see this:
 
@@ -44,7 +44,7 @@ public static Path of(String first, String... more) {
 }
 ----
 
-So, while this method and simiar ones are very convenient, using them will imply you want to access your default FileSystem.
+So, while this method and similar ones are very convenient, using them will imply you want to access your default FileSystem.
 The one your JVM is running on, not your in-memory FileSystem.
 
 Hence, when wanting to make sure your code works against in-memory file systems, you must make sure to never call these helpers methods.

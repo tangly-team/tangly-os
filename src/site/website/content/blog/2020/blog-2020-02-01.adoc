@@ -2,7 +2,7 @@
 title: "How Agile Collaborators Learn"
 linkTitle: "How Collaborators Learn"
 date: 2020-02-29
-tags: ["agile", "serie-agile-design"]
+tags: ["agile", "series-agile-design"]
 ---
 
 == How Agile Collaborators Learn

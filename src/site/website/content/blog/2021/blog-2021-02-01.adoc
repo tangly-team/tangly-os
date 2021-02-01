@@ -54,9 +54,10 @@ The following three levels of coaching are commonly needed:
 
 ==== Organizational LeSS Coaching
 
-image::2021-02-01-coaching.png[width=420,height=360,role=left]
 A coach works with multiple teams and the management to improve the organization and its structure.
 A clear vision of how a LeSS organization could be:
+
+image::2021-02-01-coaching.png[width=420,height=360,role=left]
 
 * Organizational structure and design
 * {ref-less}
@@ -88,11 +89,12 @@ A team coach typically focuses on:
 
 ==== Technical Practices Coaching
 
+A coach works with (or on) a team on their actual codebase in order to improve the technical practices and adopt agile development techniques.
+
 [.text-center]
 *A technical coach is an expert in software development techniques*
 
-image::2021-02-01-technical-agility.png[width=420,height=360,role=left]
-A coach works with (or on) a team on their actual codebase in order to improve the technical practices and adopt agile development techniques.
+image::2021-02-01-technical-agility.png[width=800,height=600,role=center]
 
 {ref-less} strongly emphasizes technical agility and promotes associated good practices.
 High-quality products requires well-trained professional developers and mastery.

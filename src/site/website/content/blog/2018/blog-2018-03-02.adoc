@@ -2,7 +2,7 @@
 title: "Agile GIS Open Data Initiative"
 linkTitle: "Agile GIS Open Data"
 date: 2018-03-12
-tags: ["agile", "serie-swiss-agile-trends"]
+tags: ["agile", "series-swiss-agile-trends"]
 ---
 
 == Agile Trends Switzerland 2018

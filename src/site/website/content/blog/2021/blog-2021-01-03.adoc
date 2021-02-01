@@ -2,7 +2,7 @@
 title: "Gitlab for Bachelor Students"
 linkTitle: "Gitlab for Students"
 date: 2021-01-18
-tags: ["java", "git", "serie-students"]
+tags: ["java", "git", "series-students"]
 ---
 
 == Gitlab for Bachelor Students

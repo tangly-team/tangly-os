@@ -2,7 +2,7 @@
 title: "Git Local Repositories for the Impatient"
 linkTitle: "Git Local Repositories"
 date: 2017-05-17
-tags: ["agile", "git", "serie-students"]
+tags: ["agile", "git", "series-students"]
 ---
 
 == Git Local Repositories for the Impatient
