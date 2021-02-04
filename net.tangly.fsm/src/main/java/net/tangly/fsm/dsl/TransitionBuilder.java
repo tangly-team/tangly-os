@@ -29,7 +29,6 @@ import net.tangly.fsm.Event;
  */
 
 public interface TransitionBuilder<O, S extends Enum<?>, E extends Enum<E>> {
-
     /**
      * Once a transition is selected, you can addToRoot an optional guard.
      *
@@ -109,4 +108,10 @@ public interface TransitionBuilder<O, S extends Enum<?>, E extends Enum<E>> {
     default TransitionBuilder<O, S, E> execute(Consumer<O> actionWithoutEvent, String description) {
         return execute((o, e) -> actionWithoutEvent.accept(o), description);
     }
+
+    /**
+     * Build the transition and add it to the context.
+     * @return the state builder of the source transaction
+     */
+    StateBuilder<O,S,E> build();
 }

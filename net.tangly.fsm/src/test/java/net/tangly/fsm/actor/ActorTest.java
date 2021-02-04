@@ -53,7 +53,7 @@ class Server extends LocalActor<Server, ServerStates, Events> implements Actor<E
     private static FsmBuilder<Server, ServerStates, Events> buildFsm() {
         FsmBuilder<Server, ServerStates, Events> builder = FsmBuilder.of(ServerStates.Root);
         builder.root().add(ServerStates.WaitingForRequest).isInitial();
-        builder.in(ServerStates.WaitingForRequest).onLocal(Events.Request).execute(Server::processRequest);
+        builder.in(ServerStates.WaitingForRequest).onLocal(Events.Request).execute(Server::processRequest).build();
         return builder;
     }
 
@@ -78,8 +78,8 @@ class Client extends LocalActor<Client, ClientStates, Events> implements Actor<E
         builder.root().add(ClientStates.Idle).isInitial();
         builder.root().add(ClientStates.WaitingForResponse);
         builder.root().add(ClientStates.Finished);
-        builder.in(ClientStates.Idle).on(Events.Inquiry).to(ClientStates.WaitingForResponse).execute(Client::sendRequestToServer);
-        builder.in(ClientStates.WaitingForResponse).on(Events.Response).to(ClientStates.Finished).execute(Client::processAnswer);
+        builder.in(ClientStates.Idle).on(Events.Inquiry).to(ClientStates.WaitingForResponse).execute(Client::sendRequestToServer).build();
+        builder.in(ClientStates.WaitingForResponse).on(Events.Response).to(ClientStates.Finished).execute(Client::processAnswer).build();
         return builder;
     }
 

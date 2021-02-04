@@ -52,11 +52,12 @@ class FsmWasherTest {
         builder.in(States.Running).add(States.Drying, "Drying State");
         builder.addToRoot(States.PowerOff, "PowerOff State");
         builder.addToRoot(States.End, "State End");
-        builder.in(States.Washing).on(Events.Rinse).to(States.Rinsing, "Washing -> Rinsing");
-        builder.in(States.Rinsing).on(Events.Dry).to(States.Drying, "Rinsing -> Drying");
-        builder.in(States.Running).on(Events.CutPower).to(States.PowerOff, "Running -> PowerOff");
-        builder.in(States.PowerOff).on(Events.RestorePower).to(States.Running, "PowerOff -> Running");
-        builder.in(States.Running).on(Events.Stop).to(States.End, "Running -> End");
+
+        builder.in(States.Washing).on(Events.Rinse).to(States.Rinsing, "Washing -> Rinsing").build();
+        builder.in(States.Rinsing).on(Events.Dry).to(States.Drying, "Rinsing -> Drying").build();
+        builder.in(States.Running).on(Events.CutPower).to(States.PowerOff, "Running -> PowerOff").build();
+        builder.in(States.PowerOff).on(Events.RestorePower).to(States.Running, "PowerOff -> Running").build();
+        builder.in(States.Running).on(Events.Stop).to(States.End, "Running -> End").build();
         return builder;
     }
 

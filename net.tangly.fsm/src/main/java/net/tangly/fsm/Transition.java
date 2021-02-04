@@ -24,6 +24,12 @@ import java.util.function.BiPredicate;
  * @param <E> the event enumeration type uniquely identifying the event sent to the state machine
  */
 public interface Transition<O, S extends Enum<S>, E extends Enum<E>> {
+    /**
+     * Returns the start state or source state of the transition.
+     *
+     * @return source state of the transition
+     */
+    State<O, S, E> source();
 
     /**
      * Returns the end state or target state of the transition.
@@ -31,13 +37,6 @@ public interface Transition<O, S extends Enum<S>, E extends Enum<E>> {
      * @return end state of the transition
      */
     State<O, S, E> target();
-
-    /**
-     * Returns the start state or source state of the transition.
-     *
-     * @return source state of the transition
-     */
-    State<O, S, E> source();
 
     /**
      * Returns the identifier of the event triggering the firing of the transition.
@@ -112,7 +111,6 @@ public interface Transition<O, S extends Enum<S>, E extends Enum<E>> {
      *
      * @return the description of the guard of the transition if defined otherwise null
      */
-
     String guardDescription();
 
     /**

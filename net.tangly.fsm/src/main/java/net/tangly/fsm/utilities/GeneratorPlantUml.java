@@ -91,7 +91,10 @@ public class GeneratorPlantUml<O, S extends Enum<S>, E extends Enum<E>> extends 
         state.transitions().stream().sorted(transitionComparator()).forEach(transition -> {
             var source = transition.source();
             var target = transition.target();
-            indent(writer, depth).append(getStateName((source))).append(" -> ").append(getStateName((target))).append(" : ")
+            indent(writer, depth).append(getStateName((source)))
+                .append(" -> ")
+                .append(getStateName((target)))
+                .append(" : ")
                 .append(transition.eventId().toString());
             if (transition.hasGuard()) {
                 writer.append(" [").append(transition.guardDescription() != null ? transition.guardDescription() : "").append("]");

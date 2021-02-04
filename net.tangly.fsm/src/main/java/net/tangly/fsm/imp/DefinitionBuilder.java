@@ -35,12 +35,17 @@ import net.tangly.fsm.dsl.TransitionBuilder;
  * @param <E> enumeration type for the identifiers of events
  */
 public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>>
-        implements FsmBuilder<O, S, E>, StateBuilder<O, S, E>, SubStateBuilder<O, S, E>, ToTransitionBuilder<O, S, E>, TransitionBuilder<O, S, E> {
+    implements FsmBuilder<O, S, E>, StateBuilder<O, S, E>, SubStateBuilder<O, S, E>, ToTransitionBuilder<O, S, E>, TransitionBuilder<O, S, E> {
     private final EnumMap<S, StateImp<O, S, E>> states;
     private final StateImp<O, S, E> root;
     private StateImp<O, S, E> context;
+    private StateImp<O, S, E> target;
     private E eventId;
-    private TransitionImp<O, S, E> transition;
+    private BiPredicate<O, Event<E>> guard;
+    private BiConsumer<O, Event<E>> action;
+    private String description;
+    private String actionDescription;
+    private String guardDescription;
 
     /**
      * Constructor of the class. Creates a finite state machine builder with the given root state identifier.
@@ -57,7 +62,6 @@ public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>>
 
     @Override
     public State<O, S, E> definition() {
-        resetContext();
         return root;
     }
 
@@ -71,14 +75,12 @@ public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>>
         if (!states.containsKey(stateId)) {
             throw new IllegalArgumentException();
         }
-        resetContext();
         context = states.get(stateId);
         return this;
     }
 
     @Override
     public StateBuilder<O, S, E> root() {
-        resetContext();
         context = root;
         return this;
     }
@@ -105,32 +107,37 @@ public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>>
         if (!states.containsKey(stateId) || (eventId == null)) {
             throw new IllegalArgumentException();
         }
-        transition = new TransitionImp<>(context, states.get(stateId), eventId);
-        transition.description(description);
-        context.addTransition(transition);
+        this.target = states.get(stateId);
+        this.description = description;
         return this;
     }
 
     @Override
     public TransitionBuilder<O, S, E> onLocal(E eventId, String description) {
+        this.target = context;
         this.eventId = eventId;
-        transition = new TransitionImp<>(context, context, eventId);
-        transition.description(description);
-        context.addLocalTransition(transition);
+        this.description = description;
         return this;
     }
 
     @Override
-    public TransitionBuilder<O, S, E> onlyIf(BiPredicate<O, Event<E>> guard, String description) {
-        transition.guard(guard);
-        transition.guardDescription(description);
+    public TransitionBuilder<O, S, E> onlyIf(BiPredicate<O, Event<E>> guard, String guardDescription) {
+        this.guard = guard;
+        this.guardDescription = guardDescription;
         return this;
     }
 
     @Override
-    public TransitionBuilder<O, S, E> execute(BiConsumer<O, Event<E>> action, String description) {
-        transition.action(action);
-        transition.setActionDescription(description);
+    public TransitionBuilder<O, S, E> execute(BiConsumer<O, Event<E>> action, String actionDescription) {
+        this.action = action;
+        this.actionDescription = actionDescription;
+        return this;
+    }
+
+    @Override
+    public StateBuilder<O, S, E> build() {
+        context.addTransition(new TransitionImp<>(context, target, eventId, guard, action, description, guardDescription, actionDescription));
+        resetTransactionContext();
         return this;
     }
 
@@ -184,9 +191,13 @@ public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>>
     /**
      * Resets the builder context to clean.
      */
-    private void resetContext() {
-        context = null;
+    private void resetTransactionContext() {
+        target = null;
         eventId = null;
-        transition = null;
+        guard = null;
+        action = null;
+        description = null;
+        guardDescription = null;
+        actionDescription = null;
     }
 }

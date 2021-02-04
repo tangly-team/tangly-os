@@ -63,7 +63,7 @@ public interface StateBuilder<O, S extends Enum<?>, E extends Enum<E>> {
      * Once a state is selected, you can addToRoot a new local transition on the state.
      *
      * @param eventId     the identifier of the event firing the local transition on the state
-     * @param description description of the substate
+     * @param description description of the transition
      * @return the transition builder to complete the creation and configuration of a transition
      */
     TransitionBuilder<O, S, E> onLocal(E eventId, String description);

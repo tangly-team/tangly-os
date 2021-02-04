@@ -76,19 +76,19 @@ class FsmTest {
         builder.in(States.B).add(States.BA, "State BA").hasHistory();
         builder.in(States.B).add(States.BB, "State BB").isInitial();
         builder.addToRoot(States.C);
-        builder.in(States.A).on(Events.A_C).to(States.C, "A -> C when A_C").execute(action);
-        builder.in(States.AA).on(Events.AA_AB).to(States.AB, "AA -> AB when AA_AB").execute(action);
-        builder.in(States.AA).on(Events.AA_B).to(States.B, "AA -> B when AA_B").execute(action);
-        builder.in(States.AA).on(Events.AA_BB).to(States.BB, "AA -> BB when (AA_BB)").execute(action);
-        builder.in(States.AA).onLocal(Events.AA_AA, "Local transition AA -> AA when (AA_AA)").execute(action);
-        builder.in(States.AB).on(Events.AB_AA).to(States.AA, "AB -> AA when AB_AA").execute(action);
-        builder.in(States.AB).on(Events.AB_AB).to(States.AB, "AB -> AB when AB_AB").execute(action);
-        builder.in(States.B).on(Events.B_C).to(States.C, "B -> C when B_C").execute(action);
-        builder.in(States.BA).on(Events.BA_A).to(States.A, "BA -> A when BA_C").execute(action);
-        builder.in(States.BA).on(Events.BA_BB).to(States.BB, "BA -> BB when BA_BB").execute(action);
-        builder.in(States.BB).on(Events.BB_BA).to(States.BA).execute(action, "VV -> BA when BB_BA");
-        builder.in(States.BB).onLocal(Events.BB_BB, "Local transition BB -> BB when BB_BB").execute(action);
-        builder.in(States.BB).on(Events.BB_C).to(States.C, "BB -> C when BB_C").execute(action);
+        builder.in(States.A).on(Events.A_C).to(States.C, "A -> C when A_C").execute(action).build();
+        builder.in(States.AA).on(Events.AA_AB).to(States.AB, "AA -> AB when AA_AB").execute(action).build();
+        builder.in(States.AA).on(Events.AA_B).to(States.B, "AA -> B when AA_B").execute(action).build();
+        builder.in(States.AA).on(Events.AA_BB).to(States.BB, "AA -> BB when (AA_BB)").execute(action).build();
+        builder.in(States.AA).onLocal(Events.AA_AA, "Local transition AA -> AA when (AA_AA)").execute(action).build();
+        builder.in(States.AB).on(Events.AB_AA).to(States.AA, "AB -> AA when AB_AA").execute(action).build();
+        builder.in(States.AB).on(Events.AB_AB).to(States.AB, "AB -> AB when AB_AB").execute(action).build();
+        builder.in(States.B).on(Events.B_C).to(States.C, "B -> C when B_C").execute(action).build();
+        builder.in(States.BA).on(Events.BA_A).to(States.A, "BA -> A when BA_C").execute(action).build();
+        builder.in(States.BA).on(Events.BA_BB).to(States.BB, "BA -> BB when BA_BB").execute(action).build();
+        builder.in(States.BB).on(Events.BB_BA).to(States.BA).execute(action, "VV -> BA when BB_BA").build();
+        builder.in(States.BB).onLocal(Events.BB_BB, "Local transition BB -> BB when BB_BB").execute(action).build();
+        builder.in(States.BB).on(Events.BB_C).to(States.C, "BB -> C when BB_C").execute(action).build();
         return builder;
     }
 
@@ -105,15 +105,15 @@ class FsmTest {
         });
         builder.in(States.A).on(Events.A_C).to(States.C).execute((o, e) -> {
             throw new RuntimeException();
-        });
+        }).build();
         builder.in(States.A).onLocal(Events.AA_AA).onlyIf((o, e) -> {
             throw new RuntimeException();
         }).execute((o, e) -> {
             throw new RuntimeException();
-        });
+        }).build();
         builder.in(States.C).onLocal(Events.C_C).execute((o, e) -> {
             throw new RuntimeException();
-        });
+        }).build();
         return builder;
     }
 
@@ -180,7 +180,7 @@ class FsmTest {
     void fireTransitionTest() {
         var action = mock(BiConsumer.class);
         var root = build(action).definition();
-        var fsm = new StateMachineImp<>("test-fsm", root, this);
+        var fsm = new StateMachineImp<FsmTest, States, Events>("test-fsm", root, this);
         assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isTrue();
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.AA))).isTrue();
@@ -203,7 +203,7 @@ class FsmTest {
     void fireLocalTransitionTest() {
         var action = mock(BiConsumer.class);
         var root = build(action).definition();
-        var fsm = new StateMachineImp<>("test-fsm", root, this);
+        var fsm = new StateMachineImp<FsmTest, States, Events>("test-fsm", root, this);
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isTrue();
         assertThat(root.initialStates().contains(root.getStateFor(States.AA))).isTrue();
         assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
@@ -222,7 +222,7 @@ class FsmTest {
     void fireFatherTransitionTest() {
         var action = mock(BiConsumer.class);
         var root = build(action).definition();
-        var fsm = new StateMachineImp<>("test-fsm", root, this);
+        var fsm = new StateMachineImp<FsmTest, States, Events>("test-fsm", root, this);
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isTrue();
         assertThat(root.initialStates().contains(root.getStateFor(States.AA))).isTrue();
         assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
@@ -242,7 +242,7 @@ class FsmTest {
     void fireTransitionToStateWithInitialStatesTest() {
         var action = mock(BiConsumer.class);
         var root = build(action).definition();
-        var fsm = new StateMachineImp<>("test-fsm", root, this);
+        var fsm = new StateMachineImp<FsmTest, States, Events>("test-fsm", root, this);
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isTrue();
         assertThat(root.initialStates().contains(root.getStateFor(States.AA))).isTrue();
         assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
@@ -261,7 +261,7 @@ class FsmTest {
     void eventHandlerTest() {
         var action = mock(BiConsumer.class);
         var root = build(action).definition();
-        var fsm = new StateMachineImp<>("test-fsm", root, this);
+        var fsm = new StateMachineImp<FsmTest, States, Events>("test-fsm", root, this);
         StateMachineEventHandler<FsmTest, States, Events> handler = mock(StateMachineEventHandler.class);
         DynamicChecker<FsmTest, States, Events> checker = new DynamicChecker<>(fsm);
         assertThat(fsm.isRegistered(handler)).isFalse();
@@ -307,7 +307,7 @@ class FsmTest {
     @Test
     void dynamicCheckerExceptionTest() {
         var root = buildWithException().definition();
-        var fsm = new StateMachineImp<>("test-fsm", root, this);
+        var fsm = new StateMachineImp<FsmTest, States, Events>("test-fsm", root, this);
         var checker = new DynamicChecker<>(fsm);
         assertThat(fsm.isRegistered(checker)).isFalse();
         fsm.addEventHandler(checker);

@@ -47,10 +47,11 @@ public class FsmEasyTest {
         FsmBuilder<FsmEasyTest, FsmEasyTest.States, FsmEasyTest.Events> builder = FsmBuilder.of(FsmEasyTest.States.Root);
         builder.addToRoot(States.Locked, "Locked").isInitial();
         builder.addToRoot(States.Unlocked, "Unlocked");
-        builder.in(States.Locked).on(Events.Push).to(States.Locked, "pushLocked");
-        builder.in(States.Locked).on(Events.Coin).to(States.Unlocked, "unlock");
-        builder.in(States.Unlocked).on(Events.Push).to(States.Locked, "lock");
-        builder.in(States.Unlocked).on(Events.Coin).to(States.Unlocked, "coinUnlocked");
+
+        builder.in(States.Locked).on(Events.Push).to(States.Locked, "pushLocked").build();
+        builder.in(States.Locked).on(Events.Coin).to(States.Unlocked, "unlock").build();
+        builder.in(States.Unlocked).on(Events.Push).to(States.Locked, "lock").build();
+        builder.in(States.Unlocked).on(Events.Coin).to(States.Unlocked, "coinUnlocked").build();
         return builder;
     }
 

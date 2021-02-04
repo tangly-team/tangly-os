@@ -74,7 +74,7 @@ class StaticCheckerTest {
         builder.root().add(States.A).isInitial(true);
         builder.root().add(States.B);
         builder.in(States.B).add(States.AB);
-        builder.in(States.A).on(Events.A_B).to(States.B);
+        builder.in(States.A).on(Events.A_B).to(States.B).build();
         StaticChecker<StaticCheckerTest, States, Events> checker = new StaticChecker<>();
         assertThat(checker.checkStateWithAfferentTransitionHasInitialState(builder.definition()).size()).isEqualTo(1);
     }

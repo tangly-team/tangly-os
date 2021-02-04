@@ -32,10 +32,9 @@ import net.tangly.fsm.Transition;
  * @param <E> the event enumeration type uniquely identifying the event sent to the state machine
  */
 class StateImp<O, S extends Enum<S>, E extends Enum<E>> implements State<O, S, E> {
-
     private final S id;
     private boolean hasHistory;
-    private boolean initial;
+    private boolean isInitial;
     private BiConsumer<O, Event<E>> entryAction;
     private BiConsumer<O, Event<E>> exitAction;
     private final Set<State<O, S, E>> substates;
@@ -80,7 +79,7 @@ class StateImp<O, S extends Enum<S>, E extends Enum<E>> implements State<O, S, E
 
     @Override
     public boolean isInitial() {
-        return initial;
+        return isInitial;
     }
 
     /**
@@ -90,7 +89,7 @@ class StateImp<O, S extends Enum<S>, E extends Enum<E>> implements State<O, S, E
      * @see #isInitial()
      */
     void setInitial(boolean initial) {
-        this.initial = initial;
+        this.isInitial = initial;
     }
 
     @Override
@@ -269,7 +268,7 @@ class StateImp<O, S extends Enum<S>, E extends Enum<E>> implements State<O, S, E
 
     @Override
     public String toString() {
-        return String.format("id=%s, hasHistory=%s, initial=%s, description=%s, entryAction=%s, exitAction=%s", id, hasHistory, initial, description,
+        return String.format("id=%s, hasHistory=%s, initial=%s, description=%s, entryAction=%s, exitAction=%s", id, hasHistory, isInitial, description,
                 entryActionDescription, exitActionDescription);
     }
 

@@ -13,6 +13,7 @@
 
 package net.tangly.fsm.imp;
 
+import java.util.Objects;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 
@@ -27,35 +28,14 @@ import net.tangly.fsm.Transition;
  * @param <S> the state enumeration type uniquely identifying a state in the state machine
  * @param <E> the event enumeration type uniquely identifying the event sent to the state machine
  */
-class TransitionImp<O, S extends Enum<S>, E extends Enum<E>> implements Transition<O, S, E> {
-    /**
-     * The source or origin state of the transition.
-     */
-    private final State<O, S, E> source;
-
-    /**
-     * The target or destination state of the transition.
-     */
-    private final State<O, S, E> target;
-
-    /**
-     * The event identifier which triggers the transition.
-     */
-    private final E eventId;
-
-    /**
-     * The optional guard which allows conditional trigger of the transition.
-     */
-    private BiPredicate<O, Event<E>> guard;
-
-    /**
-     * The optional action to accept when the transition is fired.
-     */
-    private BiConsumer<O, Event<E>> action;
-
-    private String description;
-    private String guardDescription;
-    private String actionDescription;
+record TransitionImp<O, S extends Enum<S>, E extends Enum<E>>(State<O, S, E> source, State<O, S, E> target, E eventId, BiPredicate<O, Event<E>> guard,
+                                                              BiConsumer<O, Event<E>> action, String description, String guardDescription,
+                                                              String actionDescription) implements Transition<O, S, E> {
+    public TransitionImp {
+        Objects.requireNonNull(source);
+        Objects.requireNonNull(target);
+        Objects.requireNonNull(eventId);
+    }
 
     /**
      * Constructor of the class.
@@ -77,7 +57,7 @@ class TransitionImp<O, S extends Enum<S>, E extends Enum<E>> implements Transiti
      * @param action  action executed when the transition is fired
      */
     TransitionImp(State<O, S, E> source, State<O, S, E> target, E eventId, BiConsumer<O, Event<E>> action) {
-        this(source, target, eventId, null, action);
+        this(source, target, eventId, null, action, null, null, null);
     }
 
     /**
@@ -90,103 +70,8 @@ class TransitionImp<O, S extends Enum<S>, E extends Enum<E>> implements Transiti
      * @param action  action executed when the transition is fired
      */
     TransitionImp(State<O, S, E> source, State<O, S, E> target, E eventId, BiPredicate<O, Event<E>> guard, BiConsumer<O, Event<E>> action) {
-        this.source = source;
-        this.target = target;
-        this.eventId = eventId;
-        this.guard = guard;
-        this.action = action;
+        this(source, target, eventId, guard, action, null, null, null);
     }
-
-    @Override
-    public State<O, S, E> target() {
-        return target;
-    }
-
-    @Override
-    public State<O, S, E> source() {
-        return source;
-    }
-
-    @Override
-    public E eventId() {
-        return eventId;
-    }
-
-    @Override
-    public BiPredicate<O, Event<E>> guard() {
-        return guard;
-    }
-
-    /**
-     * Sets the guard of the transition.
-     *
-     * @param guard guard of the transition
-     * @see #guard()
-     */
-    public void guard(BiPredicate<O, Event<E>> guard) {
-        this.guard = guard;
-    }
-
-    @Override
-    public BiConsumer<O, Event<E>> action() {
-        return action;
-    }
-
-    /**
-     * Sets the action of the transition.
-     *
-     * @param action action executed when the transition is fired
-     * @see #action()
-     */
-    public void action(BiConsumer<O, Event<E>> action) {
-        this.action = action;
-    }
-
-    @Override
-    public String actionDescription() {
-        return actionDescription;
-    }
-
-    /**
-     * Sets the description of the action.
-     *
-     * @param description new description of the action
-     * @see #actionDescription()
-     */
-    public void setActionDescription(String description) {
-        this.actionDescription = description;
-    }
-
-    @Override
-    public String description() {
-        return description;
-    }
-
-    /**
-     * Sets the description of the transition.
-     *
-     * @param description new description of the action
-     * @see #description()
-     */
-    public void description(String description) {
-        this.description = description;
-    }
-
-    @Override
-    public String guardDescription() {
-        return guardDescription;
-    }
-
-    /**
-     * Sets the description of the guard.
-     *
-     * @param description new description of the guard
-     * @see #guardDescription()
-     */
-    public void guardDescription(String description) {
-        this.guardDescription = description;
-    }
-
 
     @Override
     public boolean evaluate(O context, Event<E> event) {
@@ -200,10 +85,5 @@ class TransitionImp<O, S extends Enum<S>, E extends Enum<E>> implements Transiti
             action.accept(context, event);
         }
         return canBeFired;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("Transition(%s -> %s : %s [%s] %s : %s)", source.id(), target.id(), eventId, guardDescription, actionDescription, description);
     }
 }
