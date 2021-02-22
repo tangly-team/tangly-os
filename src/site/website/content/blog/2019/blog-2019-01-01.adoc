@@ -24,61 +24,68 @@ Worth your time, if the government has this problem, you probably will also enco
 
 === Tips to Identify Fake Agile Organizations
 
-[quote, Jurgen Appelo]
+[quote,Jurgen Appelo]
 ____
-Many attempts at achieving business agility are misguided and fake. But I consider the glass half full, not half empty.
+Many attempts at achieving business agility are misguided and fake.
+But I consider the glass half full, not half empty.
 
-Fake Agile is a signal to do better. Fake agile is a treatable disorder.
+Fake Agile is a signal to do better.
+Fake agile is a *treatable* disorder.
 ____
 
 Agile development has become such a holy grail that some organizations or product teams wave the agile flag whether they are true believers or not.
 They throw around talk of sprints, stories and Scrum without meaning it.
 Signs of this behavior are
 
-* Ignoring users
-** Nobody on the software development team is talking with and observing the users of the software in action.
+Ignoring users::
+* Nobody on the software development team is talking with and observing the users of the software in action.
 We mean the actual users of the actual code,
-** Continuous feedback from users to the development team (bug reports, users assessments) is not available.
+* Continuous feedback from users to the development team (bug reports, users assessments) is not available.
 Talking once at the beginning of a program to verify requirements does not count!,
-* Not deploying early an initial product release
-** Meeting requirements is treated as more important than getting something useful into the field as quickly as possible,
-* Development teams are silos instead of feature teams
-*** Participants act like ‘it’s not my job’,
-*Technical Excellence
+Not deploying early an initial product release::
+* Meeting requirements is treated as more important than getting something useful into the field as quickly as possible,
+Development teams are silos instead of feature teams::
+* Participants act like ‘it’s not my job’,
+* Technical Excellence
 ** DevOps or DevSecOps culture is lacking if manual processes are tolerated.
-Such processes can and should be automated (e.g. automated testing, continuous
-integration, continuous delivery),
+Such processes can and should be automated (e.g. automated testing, continuous integration, continuous delivery),
 ** Distributed version control management systems - Git - are not used,
 ** Continuous integration and delivery - Jenkins - are not used,
 ** Modern deployment platforms - Docker, Kubernetes - are not used.
 
 === Questions to Ask Programming Teams
 
-* How do you test your code? _Wrong answer: “we have a testing organization responsible for testing”_
+* How do you test your code? +
+_Wrong answer: “we have a testing organization responsible for testing”_
 ** What tool suite are you using for unit tests, regression testing, functional tests, security scans, and deployment certification?
 * How automated are your development, testing, security, and deployment pipelines?
 ** What tool suite are you using for continuous integration CI, continuous deployment CD, regression testing, program documentation?
 ** Is your infrastructure defined by code?
 * Who are your users and how are you interacting with them?
-** What mechanisms are you using to get direct feedback from your users? What tool suite are you using for issue reporting and tracking? How do you allocate
-issues to programming teams? How to you inform users that their issues are being addressed and/or have been resolved?
+** What mechanisms are you using to get direct feedback from your users?
+** What tool suite are you using for issue reporting and tracking?
+** How do you allocate issues to programming teams?
+** How to you inform users that their issues are being addressed and/or have been resolved?
 * What is your (current and future) cycle time for releases to your users?
-** What software platforms to you support? Are you using containers? What configuration management tools do you use?
+** What software platforms to you support?
+Are you using containers?
+What configuration management tools do you use?
 
-For a team working on agile, the answer to all of these questions should  be a form of  “yes”.
+For a team working on agile, the answer to all of these questions should be a form of “yes”.
 
 === Questions for Program Management
 
-* How many programmers are part of the organizations that owns the budget and milestones for the program?
+* How many programmers are part of the organizations that owns the budget and milestones for the program? +
 _Wrong answers: “we don’t know,” “zero,” “it depends on how you define a programmer”_,
 * What are your management metrics for development and operations; how are they used to inform priorities, detect problems?
 * How often are they accessed and used by leadership?
-* What have you learned in your past three sprint cycles and what did you do about it?
+* What have you learned in your past three sprint cycles and what did you do about it? +
 _Wrong answers: “what’s a sprint cycle?,” “we are waiting to get approval from management”_,
-*Who are the users that you deliver value to each sprint cycle? Can we talk to them?
+* Who are the users that you deliver value to each sprint cycle?
+Can we talk to them? +
 _Wrong answers: “we don’t directly deploy our code to users”_.
 
-For a team working on agile, the answer to all of these questions should  be a form of  “yes.”
+For a team working on agile, the answer to all of these questions should be a form of “yes.”
 
 === Questions for Customers and Users
 
@@ -90,19 +97,20 @@ For a team working on agile, the answer to all of these questions should  be a f
 * Are you ever asked to try prototypes of new software features and observed using them?
 * What is the time it takes for a requested feature to show up in the application?
 
-For a team working on agile, the answer to all of these questions should  be a form of  “yes”.
+For a team working on agile, the answer to all of these questions should be a form of “yes”.
 
 === Questions for Program Leadership
 
 * Are teams delivering working software to at least some subset of real users every iteration and gathering feedback?
-* Is there a product charter that lays out the mission and strategic goals? Do all members of the team understand both, and are they able to see how their work contributes to both?
+* Is there a product charter that lays out the mission and strategic goals?
+Do all members of the team understand both, and are they able to see how their work contributes to both?
 * Is feedback from users turned into concrete work items for sprint teams on timelines shorter than one month?
 * Are teams empowered to change the requirements based on user feedback?
 * Are teams empowered to change their process based on what they learn?
 * Is the full ecosystem of your product agile?
 _Agile programming teams followed by linear, bureaucratic deployment is a failure_.
 
-For a team truly working agile, the answer to all of these questions should  be a form of  “yes”.
+For a team truly working agile, the answer to all of these questions should be a form of “yes”.
 
 === Conclusion
 
@@ -110,9 +118,12 @@ The above questions are taken directly from the document
 https://media.defense.gov/2018/Oct/09/2002049591/-1/-1/0/DIB_DETECTING_AGILE_BS_2018.10.05.PDF[Detecting Agile Bullshit].
 Evaluate organization to find out if they or you are agile.
 
-Read also my related set of blogs How Healthy is Your Product?
-Starting with blog-2019-04-02[Source Code Check] or {url-articles}2018/blog-2018-11-01[Delivery Pipeline Check] for an in-depth check of your agile framework,
-values and current work processes.
+Read my related set of blogs How Healthy is Your Product?
+
+Additional blogs for an in-depth check of your agile framework, values and current work processes are:
+
+. link:../../2019/code-scene-as-crime-scene/[Code Scene As a Crime Scene]
+. link:../../2018/how-healthy-is-your-product-delivery-pipeline-check[Delivery Pipeline Check]
 
 Now government procurement acknowledges that some companies are just cheating with their agile claims, improve yours before getting caught.
 Luckily the check will find out you are really being agile instead of pretending.

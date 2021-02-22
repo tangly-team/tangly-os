@@ -27,7 +27,7 @@ image::2017-06-01-agile-vs-waterfall.jpg[role=center]
 Below are common patterns and errors when doing agile instead of being agile
 
 Wagile::
-is a team which continues to follow a basically Waterfall product but uses the language of Agile and adds a few agile practices.
+is a team which continues to follow basically a Waterfall product but uses the language of Agile and adds a few agile practices.
 For example, the team may present burn-down charts together with Gantt charts.
 Or the team compute individual resource allocation for the next three months.
 You can also replace Waterfall with V-Model, http://www.hermes.admin.ch/onlinepublikation/index.xhtml[HERMES], RUP, and even sometimes {ref-safe}.
@@ -39,7 +39,7 @@ Hitting The Scrum Wall::
 The most popular Agile method is Scrum which is a product management technique.
 Scrum is normally used with a number of other Agile techniques, typically user stories redaction and the technical practices from {ref-xp} – such as TDD, ATDD, code refactoring, continuous integration and delivery CI/CD, pair programming, etc.
 Teams that adopt the Scrum framework initially see an improvement in productivity and customer satisfaction.
-However without the technical practices quality is low and the team hit the wall.
+However without the technical practices quality is low, and the team hit the wall.
 The quality gap makes it impossible to maintain the pace in the long run.
 Fake Agile::
 occurs when a team declares itself Agile and blames everyone else for their failure to interact correctly with the group.

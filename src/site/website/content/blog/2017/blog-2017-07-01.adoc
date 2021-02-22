@@ -27,9 +27,9 @@ _Wake up!_ You are not a product manager, you shall be a catalyst.
 === Facets of a Scrum Master
 
 * Be a https://en.wikipedia.org/wiki/Servant_leadership[servant leader] whose focus is on the needs of the team members and those they serve (the customer), with the goal of achieving results in line with the organization’s values, principles, and business objectives,
-* Teach to ensure agile, lean, Scrum and other approaches are understood and enacted,
+* Teach ensuring agile, lean, Scrum and other approaches are understood and enacted,
 * Mentor to transfer agile knowledge and experience to the team, and concentrate on continuous improvement,
-* Coach the individual with a focus on mindset and behaviour,
+* Coach the individual with a focus on their mindset and behaviour,
 * Help the organization to truly collaborate with the Scrum team,
 * Be an impediment remover solving blocking issues to the team’s progress, taking into account the self-organizing capabilities of the development team,
 * Facilitate by setting the stage and providing clear boundaries in which the team can collaborate,
@@ -48,7 +48,7 @@ From time to time you could also remove a specific impediment.
 * Moderate Scrum meetings - do not forget to regulate delegate moderation to your team -
 * Gently transform your department and organization to become more agile
 ** Remove yearly evaluation, practice bi-weekly face2face meetings
-** Remove individual bonus, either introduce team bonuses or better remove extrinsic motivators
+** Remove any individual bonus, either introduce team bonuses or better remove extrinsic motivators
 ** Remove test and quality department, move the specialists to the Scrum teams
 
 You shall by all means avoid administrative waste such as * Writing information in Word documents or in Wiki that nobody actively uses, * Writing multiple times the same information, * Writing status information instead of publishing it on the team board.
@@ -78,5 +78,4 @@ https://en.wikipedia.org/wiki/Community_of_practice[Community of Practice] _PoC_
 is an effective way to move your team to technical excellence.
 
 If you are new to the role read "The Great Scrum Master" from Zuzana Šochová.
-A more extensive
-link:../../2017/list-of-agile-and-lean-books-for-software-engineers-or-students[list of books] can be found here.
+A more extensive link:../../2017/list-of-agile-and-lean-books-for-software-engineers-or-students[list of books] can be found here.

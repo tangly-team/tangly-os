@@ -2,7 +2,7 @@
 title: "Agile Introduction Success Criteria through the LeSS lens"
 linkTitle: "LeSS lens"
 date: 2018-04-18
-tags: ["agile"]
+tags: ["agile", "LeSS"]
 ---
 
 == Agile Introduction Success Criteria through the LeSS lens

@@ -1,21 +1,26 @@
 ---
-title: "MicroStream 4.0"
-linkTitle: "MicroStream 4.0"
-date: 2021-03-01
+title: "MicroStream 4.x"
+linkTitle: "MicroStream 4.x"
+date: 2021-03-10
 tags: ["java"]
 
 ---
 
-== MicroStream 4.0
+== MicroStream 4.x
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2021-03-02-head.jpg[width=420, height=360, role=left]
+image::2021-03-02-head.jpg[width=420,height=360,role=left]
 
 === Cool Approach
+
+https://microstream.one/[MicroStream] approach empowers Java developers.
+You can persist your whole data model with less than hundred lines of code.
+
+Modern architectures based on bounded domains and https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design] are supported.
 
 === Constraints
 
@@ -27,11 +32,22 @@ Saving a collection
 
 ==== In Memory File System
 
-In-memory file systems are a must for unit and integration testing. A continuous integration pipeline does not always have access to a regular file system.
+In-memory file systems are a must for unit and integration testing.
+A continuous integration pipeline does not always have access to a regular file system.
 Disk based file systems are too slow for automatic testing.
+footnote:[I have reported the bug how they used path instance. The developers were very supportive. The version 4.01 supports in-memory file systems such as JIMFS.]
 
 ==== Java Records
 
 Field cannot be manipulated anymore in record since Java JDK 1.5.1.
+The _MicroStream_ 4.x releases crash when using record in JDK 15 and JDK 16
+footnote:[I have reported the bug in the microstream forum and informed them that their clain they support these JDK is plain wrong. The project does not currently have a bug reporting system. We hope that the version promised for April 2021 will finally solved these show stoppers.]
+
+And I have to verify the library can cope with sealed declarations.
 
 === Next Steps
+
+* Wait for April 2021 release and pray they will support record feature.
+Records are an official feature in JDK 16 released in March 2021 and no more a preview feature..
+* Codify a performant approach to save whole instances using eager store operations.
+* Explore the migration features when the data schema is changing

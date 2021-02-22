@@ -22,21 +22,21 @@ The text with the regular font is the job description. I wrote down my comments 
   Advise on best practices and developing practice, review code.
 ** __A Scrum master empowers a development team. The team schedules the work during each Sprint.
  The team members select the stories they will implement next.
- The Scrum master advices best practices but he really should not perform code reviews and police the team.__
+ The Scrum master advices best practices, but he really should not perform code reviews and police the team.__
 ** __He does not manage and certainly not micro-manage engineers.
  He shall never evaluate performance of team members. He shall not police the team by reviewing code.__
 * Analyze requirements and provide time estimates: consume non-technical functional requirements documentation.
- Provide feedback when necessary, translating into technical documentation when necessary.
+ Provide feedback when necessary, translating into the technical documentation when necessary.
  Provide feasibility assessment and estimate level of effort to implement
 ** __The product owner and the team writes and refines stories.
  Avoid requirements and move to stories and epics.
  Technical documentation and feasibility assessments shall be done by the team.
  Only the team has the right to estimate the effort needed to implement a story.__
-** __The Scrum master is neither a business analyst defining requirements nor a product manager creating schedules and time estimates.__
+** __The Scrum master is neither a business analyst defining requirements, nor a product manager creating schedules and time estimates.__
 * Help develop, communicate and enforce workflows.
  Work with Development department head and QA to assure that clear workflows are established and followed within the team
 ** __An agile team has quality assurance roles as cross-functional capabilities.
- You do need a quality assurane team. Dissolve the quality assurance  department.
+ You do need a quality assurance team. Dissolve the quality assurance  department.
  Move their specialists to the teams and get rid of the vice president of quality assurance.__
 ** __The Scrum master does neither administrate flow of information nor implement processes.
  He trusts and coaches his teams to deliver best quality.__
@@ -58,10 +58,10 @@ I clearly decided not to apply for this position.
 I was fascinated that companies still believe that such alibi positions will not be detected.
 The above position is a flag for me.
 As an agile developer, Scrum master or product owner I shall never work for this company.
-I will not have link::../../2017/fun-at-workplace[Fun at Work].
+I will not have link:../../2017/fun-at-workplace[Fun at Work].
 
 They were looking for an administrator and a classical project manager.
 They were not looking for an agile professional and Scrum master.
 
 I kindly suggested the authors of the job description shall get an introduction training to Agile, Lean and Scrum.
-And I will certainly not recommend this company to my acquaintances.
+I will certainly not recommend this company to my acquaintances.

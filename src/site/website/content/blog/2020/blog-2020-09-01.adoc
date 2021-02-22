@@ -44,7 +44,7 @@ A tag has three parts:
 For example, we could define a tag such as _geo:longitude=50.167958_ to provide the meta information of longitude to an entity.
 This tag has a namespace _geo_, a name _longitude_ and a double value _50.167958_.
 
-Additional information are available under link::../../docs/bus/businessmodels/ Below the source code in modern Java is
+Additional information are available under link:../../docs/bus/businessmodels/ Below the source code in modern Java is
 
 [source,java]
 ----

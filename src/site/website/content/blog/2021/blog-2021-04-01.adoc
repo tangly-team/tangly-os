@@ -1,7 +1,7 @@
 ---
 title: "JDk 16"
 linkTitle: "JDK 16"
-date: 2021-04-25
+date: 2021-04-01
 tags: ["java"]
 
 ---
@@ -13,21 +13,49 @@ tags: ["java"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2021-04-01-head.png[width=420, height=360, role=left]
+image::2021-04-01-head.png[width=420,height=360,role=left]
+I truly love the new release rhythm of the Java ecosystem.
+Being able to use new features every six months is awesome.
+The migration overhead is held to a minimum thanks to the incredible backward compatibility.
+
+The new features greatly simplify existing code and tremendously increase legibility.
+
+Features like _records_, _sealed types_, or _switch expressions_ are wonderful.
+
+Polishing of functional programming approach improved my source code quite stupendously.
 
 === New Features
 
+Java 16 fully support https://en.wikipedia.org/wiki/Algebraic_data_type[Algebraic Data Types] with the https://openjdk.java.net/jeps/395[record] and
+https://openjdk.java.net/jeps/397[sealed types] features.
+
+The first step with modern pattern matching constructs was provided with https://openjdk.java.net/jeps/394[Pattern Matching for Instanceof].
+
+The other new features are more of internal nature.
+
+Notice that https://openjdk.java.net/jeps/386[Alpine Unix] is now officially supported.
+This port is great new to shrink the size of docker images containing a Java runtime.
+
 === Troubles With Some Packages
 
-microstream
+MicroStream:: https://microstream.one/[MicroStream] persistence library crashes if you are using records.
+ArchUnit:: https://www.archunit.org/[ArchUnit] crashes if you are using records.
+jacoco:: https://www.eclemma.org/jacoco/index.html[Jacoco] has trouble to handle records.
 
-jacoco
+Records were announced more than a year ago.
+Wake-up call to maintainers of Java libraries.
+
+Please do not be laggards.
+Did you realize that since Java 8 a new version is release every six months?
 
 === Next Changes I am Dreaming Of
 
-Concise Method Body
+Concise Method Body:: Syntactic sugar to write compact delegation classes.
+It provides the same mechanisms for method overwriting as for lambda declarations.
 
-Switch Type Selection
+Switch Type Selection:: We can already chain _if else if_ statements with *instanceof* operator and variable declarations.
+I want to do the same in a _switch_ statement.
 
-More Packages Support Modules
-
+More Packages Support Modules:: Java modules were introduced with Java 8.
+I really, really, really want to use module in Java 16.
+Therefore, I need a module version for all mainstream Java libraries.

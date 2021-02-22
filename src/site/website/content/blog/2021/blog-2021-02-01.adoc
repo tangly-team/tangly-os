@@ -2,7 +2,7 @@
 title: "LeSS Lessons Learnt"
 linkTitle: "LeSS Lessons"
 date: 2021-02-01
-tags: ["agile"]
+tags: ["agile", "LeSS"]
 ---
 
 == LeSS Lessons Learnt
@@ -30,14 +30,18 @@ I use coaching, mentoring, teaching and facilitation techniques just as other co
 
 My main focus is how the source code is written, the design defined, and the architecture formulated.
 
+Our goal is to deliver a highly successful product.
+
 === Agile Approach
 
 My own interpretation of agile as doctrine is:
 
 * Reduce the distance between problems and problem-solvers.
-* Practice Gemba.
+* Practice *Gemba*.
 * Take small steps, collect data, validate every step, update your approach.
-* Clean up as you go lead and cycle-time are measures of the organizational agility.
+Apply the _Plan-Do-Check-Act_ https://en.wikipedia.org/wiki/PDCA[PDCA loop].
+Clean up as you go.
+* Lead and cycle-time are measures of the organizational agility.
 Track them.
 
 Do not ask for permission when you want to continuously improve.
@@ -46,7 +50,8 @@ This is a core responsibility of your teams and team members.
 
 You have the retrospectives to identify and plan your improvements.
 You must allocate time for implementing the improvement in every sprint.
-{ref-scrum} is clear, at least one improvement measure is a high priority backlog item in the next sprint.
+{ref-scrum} is clear, at least one improvement measure is a high priority backlog item in the next sprint
+footnote:[Sadly the Scrum Guide revision of 2020 removed this rule. They delite this PDCA mechanism.].
 
 === Ways of working
 
@@ -59,16 +64,16 @@ A clear vision of how a LeSS organization could be:
 
 image::2021-02-01-coaching.png[width=420,height=360,role=left]
 
-* Organizational structure and design
-* {ref-less}
-* Role of management
-* Adoption and goals setting
-* Managing an organizational improvement backlog
-* Changing management practices from controlling day-to-day work to building capability
-* Managing work: product backlogs and how the organization manages them
-* Dealing with interruptions
-* Human Resource practices such as appraisals and career paths
-* Facilitating organizational release/roadmap planning and retrospectives
+* Organizational structure and design,
+* {ref-less},
+* Role of management,
+* Adoption and goals setting,
+* Managing an organizational improvement backlog,
+* Changing management practices from controlling day-to-day work to building capability,
+* Managing work: product backlogs and how the organization manages them,
+* Dealing with interruptions,
+* Human Resource practices such as appraisals and career paths,
+* Facilitating organizational release/roadmap planning and retrospectives.
 
 ==== Team LeSS Coaching
 
@@ -76,16 +81,16 @@ A coach works with at most a few teams to improve their team-working and LeSS pr
 It is common for a coach to take on the Scrum Master role.
 A team coach typically focuses on:
 
-* Team responsibilities with self-managing teams
-* Facilitation
-* Improving the team’s decision-making and conflict resolution
-* Transparency in the team
-* Making organizational impediments visible
-* Improving the relationship between the _Development Team_ and the _Product Owner_
-* Product Ownership (of both the team, the PO, and other stakeholders)
-* Role and contribution of the team’s management
-* Improve Scrum practices (and technical practices)
-* Educate and coach the team’s (future) Scrum Master
+* Team responsibilities with self-managing teams,
+* Facilitation,
+* Improving the team’s decision-making and conflict resolution,
+* Transparency in the team,
+* Making organizational impediments visible,
+* Improving the relationship between the _Development Team_ and the _Product Owner_,
+* Product Ownership (of both the team, the PO, and other stakeholders),
+* Role and contribution of the team’s management,
+* Improve Scrum practices (and technical practices),
+* Educate and coach the team’s (future) Scrum Master.
 
 ==== Technical Practices Coaching
 
@@ -103,16 +108,16 @@ Examples are simple design, refactoring, unit testing, test-driven development a
 
 A coach typically focuses on:
 
-* Discovering “code/design smells”.
-* Places where code/design could be improved.
-* Explaining modern, “clean” code that is simple and easier to change and maintain.
-* Refactoring “smells” into clean code.
-* Writing unit tests.
-* Test-driven development.
-* Test Automation Continuous integration and continuous delivery
-* Specification by Example (Acceptance Test-Driven Development)
-* Efficient and effective working practices (IDE, automation)
-* Applying design patterns
+* Discovering “code/design smells”,
+* Places where code/design could be improved,
+* Explaining modern, “clean” code that is simple and easier to change and maintain,
+* Refactoring “smells” into clean code,
+* Writing unit tests,
+* Test-driven development,
+* Test Automation Continuous integration and continuous delivery,
+* Specification by Example (Acceptance Test-Driven Development),
+* Efficient and effective working practices (IDE, automation),
+* Applying design patterns.
 
 In all our mandates one major activity is improving legacy code.
 
@@ -141,17 +146,19 @@ After that reduce (not eliminate!) the external technical coaching or let the ex
 
 === Be Patient, The Time Horizon is Years
 
-* Trust your people
-* Create opportunities
-* Establish a learning culture
-* Let the team use internal social pressure
-* Eliminate specialization, push mastery
-* At the beginning follow the LeSS rules
-* Extended responsibility, rounded products provides a room and freedom for better decisions
+* Trust your people,
+* Create opportunities,
+* Establish a learning culture,
+* Thrive for craftsmanship,
+* Let the team use internal social pressure,
+* Eliminate specialization, push mastery,
+* At the beginning follow the LeSS rules,
+* Extended responsibility, rounded products provides a room and freedom for better decisions.
 
 === Remember
 
-{ref-less} is {ref-scrum}, it is Large Scaled Scrum Feature teams are economical and cross-functional Technical excellence is the essence of a quality solution One product owner for the whole product provides focus
+{ref-less} is {ref-scrum}, it is Large Scaled Scrum Feature teams are economical.
+Cross-functional Technical excellence is the essence of a quality solution One product owner for the whole product provides focus.
 
 The product owner is where the money is.
 Depending on your organization put him where the budget comes from.
