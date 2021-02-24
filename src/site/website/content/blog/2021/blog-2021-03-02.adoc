@@ -1,7 +1,7 @@
 ---
 title: "MicroStream 4.x"
 linkTitle: "MicroStream 4.x"
-date: 2021-03-10
+date: 2021-03-02
 tags: ["java"]
 
 ---
@@ -18,15 +18,90 @@ image::2021-03-02-head.jpg[width=420,height=360,role=left]
 === Cool Approach
 
 https://microstream.one/[MicroStream] approach empowers Java developers.
-You can persist your whole data model with less than hundred lines of code.
+You can persist your whole data model with less than a hundred lines of code.
+The library is efficient and works reliably.
 
 Modern architectures based on bounded domains and https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design] are supported.
 
+The company behind the product has promised to open source their product beginning of 2021.
+
+I use to library to prototype bounded domain implementations requiring persistent data.
+The implementation speed and ease are awesome.
+I hope the current flaws of the product will be removed and allow productive use.
+
 === Constraints
 
-Saving a Java Object
+Saving a Java Object::
+The library made some strange design decisions.
+If you want to persist an instance having fields using collections, you must use the _eager_ mode.
+Beware that you must explicitly commit the transaction if using the _eager_ mode.
+Debugging problems::
+The source code is currently obfuscated.
+Debugging is difficult and cumbersome because variable names are synthetic and all comments are missing.
+Saving a collection::
+If you have access to the collection, just call store on the collection.
+If the collection is hidden inside an object, you are forced to use _eager_ store.
 
-Saving a collection
+=== Design
+
+Our provider persists instances for all our bounded domains in need of persistence.
+
+[source,java]
+----
+package net.tangly.core.providers;
+
+import java.lang.invoke.MethodHandles;
+import java.util.Collections;
+import java.util.List;
+
+import one.microstream.storage.types.EmbeddedStorageManager;
+import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * Provider with instances cached in memory and persisted onto the file system or a database.
+ * <p>The update method uses an eager storage strategy to insure that all instance variables of a Java object are persisted. This approach is necessary due
+ * to the implementation restrictions of MicroStream.</p>
+ *
+ * @param <T> type of the instances handled in the provider
+ */
+public record ProviderPersistence<T>(@NotNull EmbeddedStorageManager storageManager, @NotNull List<T> items) implements Provider<T> {
+    @Override
+    public List<T> items() {
+        return Collections.unmodifiableList(items);
+    }
+
+    @Override
+    public void update(@NotNull T entity) {
+        if (!items.contains(entity)) {
+            items.add(entity);
+            storageManager.store(items);
+        } else {
+            var storage = storageManager.createEagerStorer();
+            storage.store(entity);
+            storage.commit();
+        }
+    }
+
+    @Override
+    public void updateAll(@NotNull Iterable<? extends T> entities) {
+        entities.forEach(entity -> {
+            if (!items.contains(entity)) {
+                items.add(entity);
+            } else {
+                storageManager.store(entity);
+            }
+        });
+        storageManager.store(items);
+    }
+
+    @Override
+    public void delete(@NotNull T entity) {
+        items.remove(entity);
+    }
+}
+----
 
 === Current Flaws
 
@@ -37,17 +112,26 @@ A continuous integration pipeline does not always have access to a regular file 
 Disk based file systems are too slow for automatic testing.
 footnote:[I have reported the bug how they used path instance. The developers were very supportive. The version 4.01 supports in-memory file systems such as JIMFS.]
 
+We migrate with full success all our unit tests to use in-memory file systems in January 2021.
+The execution speed rocks.
+Thanks to the MicroStream developers.
+See their _file systems_ example in their https://github.com/microstream-one/examples[GitHub example repository]
+
 ==== Java Records
 
 Field cannot be manipulated anymore in record since Java JDK 1.5.1.
-The _MicroStream_ 4.x releases crash when using record in JDK 15 and JDK 16
+The _MicroStream_ 4.x releases crash when using record in JDK 15 and JDK 16. It only works with JDK 14.
+You are forced to use an obsolete JDK no more supported.
+For example IntelliJ IDEA stops to provide support for obsolete JDKs as soon as the new official JDK release is available.
+It hinders you to use the associated preview features.
+
 footnote:[I have reported the bug in the microstream forum and informed them that their clain they support these JDK is plain wrong. The project does not currently have a bug reporting system. We hope that the version promised for April 2021 will finally solved these show stoppers.]
 
-And I have to verify the library can cope with sealed declarations.
+I have to verify the library can cope with sealed declarations.
 
 === Next Steps
 
-* Wait for April 2021 release and pray they will support record feature.
-Records are an official feature in JDK 16 released in March 2021 and no more a preview feature..
+* Wait for the release scheduled for April 2021 and pray they will support record feature.
+Records are an official feature in JDK 16 released in March 2021 and no more a preview feature.
 * Codify a performant approach to save whole instances using eager store operations.
-* Explore the migration features when the data schema is changing
+* Explore the migration features when the data schema is changing.

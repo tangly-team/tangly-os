@@ -13,7 +13,7 @@ tags: ["java"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2021-03-01-head.png[width=420, height=360, role=left]
+image::2021-03-01-head.png[width=420,height=360,role=left]
 Java development won traction since the decision to release every six months a new version to the community.
 Preview and incubator features promote feedback from the community and users.
 
@@ -32,11 +32,11 @@ A programmer should not be forced to write statements the compiler could infer.
 
 Examples of improvements are
 
-* diamond operators _to avoid writing two times the same generic parameter declarations_,
-* try with resources _to avoid complicated finally blocks to close resources_,
-* multiple catch of exceptions _to avoid writing multiple time the same error handling block_,
-* var local variables _to avoid complex declarations of local variables_,
-* default methods in interfaces _to avoid declaring the same method in multiple classes_,
+* Diamond operators _to avoid writing two times the same generic parameter declarations_,
+* Try with resources _to avoid complicated finally blocks to close resources_,
+* Multiple catch of exceptions _to avoid writing multiple time the same error handling block_,
+* *var* local variables _to avoid complex declarations of local variables_,
+* *default* methods in interfaces _to avoid declaring the same method in multiple classes_,
 * Strings as switch selector _to write readable code instead of huge if statements_,
 * Underscore in numerical constants _to increase legibility_.
 
@@ -51,20 +51,22 @@ Modern Java has introduced powerful constructs to write legible and maintainable
 Modern Java code is quite different from Java 5 code.
 
 Java Modules::
-Dependencies management supported at language level.
-_The https://en.wikipedia.org/wiki/Ada_(programming_language)/[Ada] programming language has support for module since 1985_.
+Dependencies management supported at language level. +
+The https://en.wikipedia.org/wiki/Ada_(programming_language)/[Ada] programming language has support for module since 1985.
 Streams and Lambda::
-Support of functional programming approaches Streams are declarative and support internal iterators.
+Support of functional programming approaches Streams are declarative and support internal iterators. +
 _The Booch Ada component library supported internal iterators since 1985_.
 Record::
-Very compact notation to define a data class and transparent handling of properties Immutable objects Modern naming for getters and setters
+Very compact notation to define a data class and transparent handling of properties.
+Records are immutable objects and finally use modern naming for getters
+footnote:algebraic-types[Records and Sealed Types are the Java implementation for https://en.wikipedia.org/wiki/Algebraic_data_type[Algebraic Data Types]].
 Sealed Types::
 Interesting way to restrict inheritance to a set of selected classes.
 Very helpful for library designers.
-You can publish an interface in the public API and limit the classes implementing this interface.
+You can publish an interface in the public API and limit the classes implementing this interfacefootnote:algebraic-types[].
 Reflection versus Lambda::
 References to methods and constructors are part of the lambda extension.
-The _LambdaMetafactory_ class allows to create a reference at runtime.
+The _LambdaMetafactory_ class allows you to create a reference at runtime.
 The reflection operations can be replaced by lambda expressions.
 The code is more performant and has security issues.
 Text Blocks::
@@ -75,7 +77,8 @@ Finally we can write legible multi-lines strings.
 We have still open wounds in the legibility and elegance of the Java programming languages.
 
 * Unsolved legibility problems through annotations polluting your domain model,
-* Null values,
+* Null values (and the missing of an https://en.wikipedia.org/wiki/Elvis_operator[Elvis Operator] or a
+https://en.wikipedia.org/wiki/Null_coalescing_operator[Null Coalescing Operator]),
 * Fluent interface when setting multiple properties in an instance,
 * Missing support for modifiable properties (read-only properties have initial support in the record construct),
 * Missing logging interface similar to http://www.slf4j.org/[slf4j],
@@ -84,16 +87,15 @@ We have still open wounds in the legibility and elegance of the Java programming
 === Next Improvements?
 
 We have the first signs of possible improvements.
+
 A more concise notation for getters and setters::
 The record extension finally provides a more concise and legible convention for getter and setters.
 I hope the convention will be used in all new library classes.
-
 [source,java]
 ----
 Type property();
 void property(Type property);
 ----
-
 Stop using checked exceptions and replace them with runtime exception::
 Lambda expressions cannot handle checked exceptions.
 Only runtime exceptions can be thrown in a lambda expression.
@@ -104,6 +106,6 @@ Discussions are underway to extend pattern matching with object deconstruction.
 Value Types::
 Value types would be a huge improvement in performance and support of modern processor architecture if the Valhalla product delivers.
 
-The only caution we have with modern Java development is the sluggish catch-up of open source tools and libraries.
+The only drawback we have with modern Java development is the sluggish catch-up of open source tools and libraries.
 For example {ref-gradle} needed five years to provide module support in the Java plugin.
 Gradle 6.4 was the first version really supporting Java modules.
