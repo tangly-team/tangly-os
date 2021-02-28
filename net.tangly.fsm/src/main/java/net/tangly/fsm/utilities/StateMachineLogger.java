@@ -1,14 +1,13 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2021 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
- *  a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
- *  under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
 package net.tangly.fsm.utilities;
@@ -29,22 +28,8 @@ import org.slf4j.LoggerFactory;
  * The state machine logger documents all activities performed during the firing of events for a specific finite state machine instance. All logs have the
  * following structure: machine_name[machine_oid] operation operation parameters
  */
-public class StateMachineLogger<O, S extends Enum<S>, E extends Enum<E>> implements StateMachineEventHandler<O, S, E> {
+public record StateMachineLogger<O, S extends Enum<S>, E extends Enum<E>>(StateMachine<O, S, E> machine) implements StateMachineEventHandler<O, S, E> {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-
-    /**
-     * The machine being logged with this logger handler instance.
-     */
-    private final StateMachine<O, S, E> machine;
-
-    /**
-     * Constructor of the class
-     *
-     * @param machine finite state machine to check
-     */
-    public StateMachineLogger(StateMachine<O, S, E> machine) {
-        this.machine = machine;
-    }
 
     @Override
     public void processEvent(Event<E> event) {

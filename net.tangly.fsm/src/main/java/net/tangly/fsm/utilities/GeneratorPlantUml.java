@@ -1,19 +1,19 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2021 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
- *  a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
- *  under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
 package net.tangly.fsm.utilities;
 
 import java.io.PrintWriter;
+import java.util.Comparator;
 import java.util.function.Predicate;
 
 import net.tangly.fsm.State;
@@ -73,8 +73,8 @@ public class GeneratorPlantUml<O, S extends Enum<S>, E extends Enum<E>> extends 
         }
         if (state.isComposite()) {
             indent(writer, depth).append("state ").append(getStateName(state)).println(" {");
-            state.substates().stream().sorted().filter(Predicate.not(State::isComposite)).forEach(o -> writeState(o, depth + 1, writer));
-            state.substates().stream().sorted().filter(State::isComposite).forEach(o -> writeState(o, depth + 1, writer));
+            state.substates().stream().sorted(Comparator.comparing(State::id)).filter(Predicate.not(State::isComposite)).forEach(o -> writeState(o, depth + 1, writer));
+            state.substates().stream().sorted(Comparator.comparing(State::id)).filter(State::isComposite).forEach(o -> writeState(o, depth + 1, writer));
             writeTransitions(state, writer, depth + 1);
             indent(writer, depth).println("}");
         } else {

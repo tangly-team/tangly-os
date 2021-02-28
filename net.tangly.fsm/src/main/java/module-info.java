@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2021 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  */
 
 /**
- * Provides classes for a fluent based finite state machine library providing hierarchical machines as defined in the UML 2 standard.
+ * Provides classes for a fluent based finite state machine library implementing hierarchical state machines as defined in the UML 2 standard.
  */
 module net.tangly.fsm {
     exports net.tangly.fsm;
@@ -20,5 +20,5 @@ module net.tangly.fsm {
     exports net.tangly.fsm.utilities;
 
     requires org.slf4j;
-    requires transitive static org.jetbrains.annotations;
+    requires static org.jetbrains.annotations;
 }

@@ -1,0 +1,76 @@
+== Finite State Machine _bbv Test_
+:graphvizdot: /usr/local/bin/dot
+
+include::fsm-bbv.adoc[]
+
+=== Graphical Representation with dot
+
+[graphviz, fsm-bbv-dot, svg]
+....
+include::fsm-bbv.dot[]
+....
+
+=== Graphical Representation with PlantUml
+
+[plantuml, fsm-bbv-plantuml, svg]
+....
+include::fsm-bbv.puml[]
+....
+
+=== Graphical Representation with State Machine Machine Cat
+
+[smcat, fsm-bbv-smcat, svg]
+....
+include::fsm-bbv.smcat[]
+....
+
+== Finite State Machine _Test_
+
+include::fsm-test.adoc[]
+
+=== Graphical Representation with dot
+
+[graphviz, fsm-test-dot, svg]
+....
+include::fsm-test.dot[]
+....
+
+=== Graphical Representation with PlantUml
+
+[plantuml, fsm-test-plantuml, svg]
+....
+include::fsm-test.puml[]
+....
+
+=== Graphical Representation with State Machine Machine Cat
+
+[smcat, fsm-test-smcat, svg]
+....
+include::fsm-test.smcat[]
+....
+
+== Finite State Machine _Washer_
+
+include::fsm-washer.adoc[]
+
+=== Graphical Representation with dot
+
+[graphviz, fsm-washer-dot, svg]
+....
+include::fsm-washer.dot[]
+....
+
+=== Graphical Representation with PlantUml
+
+[plantuml, fsm-washer-plantuml, svg]
+....
+include::fsm-washer.puml[]
+....
+
+=== Graphical Representation with State Machine Machine Cat
+
+[smcat, fsm-washer-smcat, svg]
+....
+include::fsm-washer.smcat[]
+....
+

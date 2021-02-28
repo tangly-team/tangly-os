@@ -1,14 +1,13 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2021 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
- *  a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
- *  under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
 package net.tangly.fsm.imp;
@@ -35,42 +34,6 @@ record TransitionImp<O, S extends Enum<S>, E extends Enum<E>>(State<O, S, E> sou
         Objects.requireNonNull(source);
         Objects.requireNonNull(target);
         Objects.requireNonNull(eventId);
-    }
-
-    /**
-     * Constructor of the class.
-     *
-     * @param source  source or start node of the transition
-     * @param target  target or end node of the transition
-     * @param eventId identifier of the event triggering the transition
-     */
-    TransitionImp(State<O, S, E> source, State<O, S, E> target, E eventId) {
-        this(source, target, eventId, null, null);
-    }
-
-    /**
-     * Constructor of the class.
-     *
-     * @param source  source or start node of the transition
-     * @param target  target or end node of the transition
-     * @param eventId identifier of the event triggering the transition
-     * @param action  action executed when the transition is fired
-     */
-    TransitionImp(State<O, S, E> source, State<O, S, E> target, E eventId, BiConsumer<O, Event<E>> action) {
-        this(source, target, eventId, null, action, null, null, null);
-    }
-
-    /**
-     * Constructor of the class.
-     *
-     * @param source  source or start node of the transition
-     * @param target  target or end node of the transition
-     * @param eventId identifier of the event triggering the transition
-     * @param guard   guard controlling the firing of the transition
-     * @param action  action executed when the transition is fired
-     */
-    TransitionImp(State<O, S, E> source, State<O, S, E> target, E eventId, BiPredicate<O, Event<E>> guard, BiConsumer<O, Event<E>> action) {
-        this(source, target, eventId, guard, action, null, null, null);
     }
 
     @Override

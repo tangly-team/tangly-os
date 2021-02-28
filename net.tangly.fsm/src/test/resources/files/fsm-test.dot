@@ -1,0 +1,36 @@
+digraph G {
+    compound=true;
+
+    subgraph "cluster-Root" {
+        style="visible, dashed, bold";
+        label = "Root"
+
+        subgraph "cluster-A" {
+            style="visible, dashed";
+            label = "A"
+
+            AA [style="dashed"];
+            AB [];
+        }
+        subgraph "cluster-B" {
+            style="visible, filled";
+            label = "B"
+
+            BA [style="filled"];
+            BB [style="dashed"];
+        }
+        C [style="bold"];
+    }
+
+    AA -> C [ltail="cluster-A", label="A_C/"];
+    AA -> AB [label="AA_AB/"];
+    AA -> BA [lhead="cluster-B", label="AA_B/"];
+    AA -> BB [label="AA_BB/"];
+    AB -> AA [label="AB_AA/"];
+    AB -> AB [label="AB_AB/"];
+    BA -> C [ltail="cluster-B", label="B_C/"];
+    BA -> AA [lhead="cluster-A", label="BA_A/"];
+    BA -> BB [label="BA_BB/"];
+    BB -> BA [label="BB_BA/VV -> BA when BB_BA"];
+    BB -> C [label="BB_C/"];
+}

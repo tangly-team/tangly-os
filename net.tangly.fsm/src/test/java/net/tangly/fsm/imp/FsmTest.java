@@ -26,6 +26,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -173,6 +174,33 @@ class FsmTest {
         assertThat(state.isInitial() && (state.id() == States.AA)).isTrue();
     }
 
+    @Test
+    void buildFsmWrongStateDeclarationsTest() {
+        FsmBuilder<FsmTest, States, Events> builder = FsmBuilder.of(States.Root);
+        builder.addToRoot(States.A, "State A").isInitial();
+        builder.in(States.A).add(States.AA, "State AA").isInitial();
+        assertThrows(IllegalArgumentException.class, () -> builder.addToRoot(States.A));
+        assertThrows(IllegalArgumentException.class, () -> builder.addToRoot(States.AA));
+        assertThrows(IllegalArgumentException.class, () -> builder.in(States.A).add(States.AA));
+        assertThrows(IllegalArgumentException.class, () -> builder.in(States.B).add(States.AA));
+    }
+
+    @Test
+    void buildFsmWrongTransitionsTest() {
+        FsmBuilder<FsmTest, States, Events> builder = FsmBuilder.of(States.Root);
+        builder.addToRoot(States.A, "State A").isInitial();
+        assertThrows(IllegalArgumentException.class, () ->  builder.in(States.A).on(Events.A_C).to(States.C));
+    }
+
+    @Test
+    void buildMachineTest() {
+        var root = build().definition();
+        var fsm = new StateMachineImp<>("test-fsm", root, this);
+
+        assertThat(fsm.name()).isEqualTo("test-fsm");
+        assertThat(fsm.toString()).isNotNull();
+    }
+
     /**
      * Tests the firing of a transition between two transitions and the execution of the associated action.
      */
@@ -181,6 +209,7 @@ class FsmTest {
         var action = mock(BiConsumer.class);
         var root = build(action).definition();
         var fsm = new StateMachineImp<FsmTest, States, Events>("test-fsm", root, this);
+
         assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isTrue();
         assertThat(fsm.getActiveStates().contains(root.getStateFor(States.AA))).isTrue();
@@ -198,7 +227,6 @@ class FsmTest {
     /**
      * Tests the firing of a local transition between two transitions and the execution of the associated action.
      */
-
     @Test
     void fireLocalTransitionTest() {
         var action = mock(BiConsumer.class);
@@ -307,7 +335,7 @@ class FsmTest {
     @Test
     void dynamicCheckerExceptionTest() {
         var root = buildWithException().definition();
-        var fsm = new StateMachineImp<FsmTest, States, Events>("test-fsm", root, this);
+        var fsm = new StateMachineImp<>("test-fsm", root, this);
         var checker = new DynamicChecker<>(fsm);
         assertThat(fsm.isRegistered(checker)).isFalse();
         fsm.addEventHandler(checker);

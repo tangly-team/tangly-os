@@ -1,19 +1,19 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2021 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
- *  a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
- *  under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
 package net.tangly.fsm.utilities;
 
 import java.io.PrintWriter;
+import java.util.Comparator;
 
 import net.tangly.fsm.State;
 import net.tangly.fsm.Transition;
@@ -44,10 +44,10 @@ public class GeneratorAsciiDoc<O, S extends Enum<S>, E extends Enum<E>> extends 
     public void generate(@NotNull PrintWriter writer) {
         try (writer) {
             writeStateTablePreamble(writer);
-            states.stream().sorted().forEach(state -> writeState(state, writer));
+            states.stream().sorted(Comparator.comparing(State::id)).forEach(state -> writeState(state, writer));
             writeTablePostamble(writer);
             writeTransitionTablePreamble(writer);
-            states.stream().sorted().forEach(state -> writeTransitions(state, writer));
+            states.stream().sorted(Comparator.comparing(State::id)).forEach(state -> writeTransitions(state, writer));
             writeTablePostamble(writer);
             writer.flush();
         }

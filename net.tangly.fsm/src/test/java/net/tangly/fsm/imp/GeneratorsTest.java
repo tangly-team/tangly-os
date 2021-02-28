@@ -27,8 +27,6 @@ import net.tangly.fsm.utilities.GeneratorAsciiDoc;
 import net.tangly.fsm.utilities.GeneratorGraphDot;
 import net.tangly.fsm.utilities.GeneratorPlantUml;
 import net.tangly.fsm.utilities.GeneratorStateMachineCat;
-import org.jetbrains.annotations.NotNull;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

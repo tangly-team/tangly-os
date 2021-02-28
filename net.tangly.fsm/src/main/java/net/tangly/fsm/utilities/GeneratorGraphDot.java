@@ -1,19 +1,19 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2021 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
- *  a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
- *  under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
 package net.tangly.fsm.utilities;
 
 import java.io.PrintWriter;
+import java.util.Comparator;
 
 import net.tangly.fsm.State;
 import net.tangly.fsm.dsl.FsmBuilder;
@@ -45,7 +45,7 @@ public class GeneratorGraphDot<O, S extends Enum<S>, E extends Enum<E>> extends 
             writePreamble(writer);
             writeState(builder.definition(), 1, writer);
             writer.println();
-            states.stream().sorted().forEach(state -> writeTransitions(state, writer));
+            states.stream().sorted(Comparator.comparing(State::id)).forEach(state -> writeTransitions(state, writer));
             writePostamble(writer);
             writer.flush();
         }
@@ -72,7 +72,7 @@ public class GeneratorGraphDot<O, S extends Enum<S>, E extends Enum<E>> extends 
             indent(writer, depth + 1).append(getStyle(state)).println(";");
             indent(writer, depth + 1).append("label = \"").append(state.id().name()).println("\"");
             writer.println();
-            state.substates().stream().sorted().forEach(o -> writeState(o, depth + 1, writer));
+            state.substates().stream().sorted(Comparator.comparing(State::id)).forEach(o -> writeState(o, depth + 1, writer));
             indent(writer, depth).println("}");
         } else {
             indent(writer, depth).append(state.id().name()).append(" [").append(getStyle(state)).println("];");
@@ -103,7 +103,7 @@ public class GeneratorGraphDot<O, S extends Enum<S>, E extends Enum<E>> extends 
     }
 
     private State<O, S, E> inferTransitionState(@NotNull State<O, S, E> state) {
-        return state.isComposite() ? inferTransitionState(state.substates().stream().sorted().findFirst().orElseThrow()) : state;
+        return state.isComposite() ? inferTransitionState(state.substates().stream().sorted(Comparator.comparing(State::id)).findFirst().orElseThrow()) : state;
     }
 
     private String getStyle(@NotNull State<O, S, E> state) {

@@ -1,14 +1,13 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2021 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
- *  a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
- *  under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
 package net.tangly.fsm.utilities;
@@ -19,7 +18,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import net.tangly.fsm.State;
@@ -77,8 +75,7 @@ public class StaticChecker<O, S extends Enum<S>, E extends Enum<E>> implements C
                 values.add(state.id());
             }
         }
-        messages.addAll(allValues.stream().filter(not(values::contains)).map(state -> createError(bundle, "FSM-STAT-002", state))
-                .collect(Collectors.toList()));
+        messages.addAll(allValues.stream().filter(not(values::contains)).map(state -> createError(bundle, "FSM-STAT-002", state)).collect(Collectors.toList()));
         return messages;
     }
 
@@ -89,8 +86,11 @@ public class StaticChecker<O, S extends Enum<S>, E extends Enum<E>> implements C
      * @return the list of detected error messages
      */
     public List<String> checkStateHasAtMostOneInitialState(State<O, S, E> root) {
-        return collectAllSubstates(root).stream().filter(State::isComposite).filter(state -> getInitialSubstates(state).size() > 1)
-                .map(state -> createError(bundle, "FSM-STAT-003", state.id(), getInitialSubstates(state).size())).collect(Collectors.toUnmodifiableList());
+        return collectAllSubstates(root).stream()
+            .filter(State::isComposite)
+            .filter(state -> getInitialSubstates(state).size() > 1)
+            .map(state -> createError(bundle, "FSM-STAT-003", state.id(), getInitialSubstates(state).size()))
+            .collect(Collectors.toUnmodifiableList());
     }
 
     /**
@@ -122,9 +122,14 @@ public class StaticChecker<O, S extends Enum<S>, E extends Enum<E>> implements C
      */
 
     public List<String> checkStateWithAfferentTransitionHasInitialState(State<O, S, E> state) {
-        return collectAllSubstates(state).stream().flatMap(o -> o.transitions().stream()).map(Transition::target).distinct().filter(State::isComposite)
-                .filter(o -> getInitialSubstates(o).size() != 1).map(o -> createError(bundle, "FSM-STAT-004", o.id(), getInitialSubstates(o).size()))
-                .collect(Collectors.toList());
+        return collectAllSubstates(state).stream()
+            .flatMap(o -> o.transitions().stream())
+            .map(Transition::target)
+            .distinct()
+            .filter(State::isComposite)
+            .filter(o -> getInitialSubstates(o).size() != 1)
+            .map(o -> createError(bundle, "FSM-STAT-004", o.id(), getInitialSubstates(o).size()))
+            .collect(Collectors.toList());
     }
 
 
