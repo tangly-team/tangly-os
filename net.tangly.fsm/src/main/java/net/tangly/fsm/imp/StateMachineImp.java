@@ -128,7 +128,7 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
                 try {
                     if (transition.evaluate(owner, event)) {
                         fired = true;
-                        var hierarchy = getHierarchyUpToCommonAncestor(transition.target());
+                        var hierarchy = getHierarchyToFirstActiveStaterFor(transition.target());
                         exitStatesToCommonAncestor(event, hierarchy.getFirst());
                         helper.fireTransition(transition, event);
                         fireTransition(transition, event);
@@ -188,7 +188,7 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
     @Override
     public String toString() {
         return new StringJoiner(", ", this.getClass().getSimpleName() + "[", "]").add("name=" + name).add("activeStates=" + activeStates)
-                .add("history=" + history).toString();
+            .add("history=" + history).toString();
     }
 
     /**
@@ -291,21 +291,18 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
     }
 
     /**
-     * Returns the common ancestor of the current active object from the root down to the common ancestor. The current hierarchy is stored in active states
-     * field.
+     * Returns the common ancestor between the current active objects and given state.
      *
      * @param state state which ancestor is searched in the list of active states
      * @return the common ancestor
      */
-    private Deque<State<O, S, E>> getHierarchyUpToCommonAncestor(@NotNull State<O, S, E> state) {
-        var hierarchy = root.getHierarchyFor(state);
+    private Deque<State<O, S, E>> getHierarchyToFirstActiveStaterFor(@NotNull State<O, S, E> state) {
+        var ancestors = root.getHierarchyFor(state);
         State<O, S, E> ancestor = null;
-        while (!hierarchy.isEmpty() && activeStates.contains(hierarchy.getFirst())) {
-            ancestor = hierarchy.pollFirst();
+        while (!ancestors.isEmpty() && activeStates.contains(ancestors.getFirst()) && !state.equals(ancestors.getFirst())) {
+            ancestor = ancestors.removeFirst();
         }
-        if (ancestor != null) {
-            hierarchy.addFirst(ancestor);
-        }
-        return hierarchy;
+        ancestors.addFirst(ancestor);
+        return ancestors;
     }
 }

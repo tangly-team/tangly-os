@@ -48,9 +48,7 @@ public interface StateMachine<O, S extends Enum<S>, E extends Enum<E>> {
      *
      * @return the context of the state machine
      */
-
     O context();
-
 
     /**
      * Returns true if the finite state machine is in a non final state and will process further events.

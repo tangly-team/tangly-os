@@ -12,8 +12,10 @@
 
 package net.tangly.fsm;
 
+import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.BiConsumer;
 
@@ -161,18 +163,7 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
      * @return the ordered hierarchy of states being an initial state if defined otherwise an empty list. The head contains the root state, the tail contains
      * the deepest substate
      */
-
     Deque<State<O, S, E>> initialStates();
-
-    /**
-     * Returns the list of all substates including this state and the search substate to reach the given substate. If not found the list is empty.
-     *
-     * @param substate substate to look for
-     * @return the ordered hierarchy of states to reach the substate if found otherwise an empty list. The head contains the root state, the tail contains the
-     * searched substate
-     */
-
-    Deque<State<O, S, E>> getHierarchyFor(State<O, S, E> substate);
 
     /**
      * Returns the human readable description of the state.
@@ -194,4 +185,46 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
      * @return the description of the exit action of state if defined otherwise null
      */
     String exitActionDescription();
+
+    /**
+     * Returns the list of all substates including this state and the given substate to reach the given substate. The hierarchy includes the boundary states. If
+     * not found the list is empty.
+     *
+     * @param substate substate to look for
+     * @return the ordered hierarchy of states to reach the substate if found otherwise an empty list. The head contains the root state, the tail contains the
+     * searched substate
+     */
+    default Deque<State<O, S, E>> getHierarchyFor(State<O, S, E> substate) {
+        return getHierarchyFor(new ArrayDeque<>(), this, substate);
+    }
+
+    default Optional<State<O, S, E>> findBy(@NotNull S stateId) {
+        Optional<State<O, S, E>> result = Optional.empty();
+        if (id() == stateId) {
+            result = Optional.of(this);
+        } else {
+            for (State<O, S, E> state : substates()) {
+                result = state.findBy(stateId);
+                if (result.isPresent()) {
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
+    private Deque<State<O, S, E>> getHierarchyFor(Deque<State<O, S, E>> substates, State<O, S, E> compositeState, State<O, S, E> substate) {
+        if (compositeState.substates().contains(substate)) {
+            substates.addFirst(substate);
+            substates.addFirst(this);
+        } else {
+            for (var state : compositeState.substates()) {
+                if (!state.getHierarchyFor(substates, state, substate).isEmpty()) {
+                    substates.addFirst(compositeState);
+                    break;
+                }
+            }
+        }
+        return substates;
+    }
 }

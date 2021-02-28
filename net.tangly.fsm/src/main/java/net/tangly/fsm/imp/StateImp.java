@@ -93,14 +93,14 @@ class StateImp<O, S extends Enum<S>, E extends Enum<E>> implements State<O, S, E
 
     @Override
     public void executeEntryAction(O owner, Event<E> event) {
-        if (entryAction != null) {
+        if (hasEntryAction()) {
             entryAction.accept(owner, event);
         }
     }
 
     @Override
     public void executeExitAction(O owner, Event<E> event) {
-        if (exitAction != null) {
+        if (hasExitAction()) {
             exitAction.accept(owner, event);
         }
     }
@@ -261,28 +261,8 @@ class StateImp<O, S extends Enum<S>, E extends Enum<E>> implements State<O, S, E
     }
 
     @Override
-    public Deque<State<O, S, E>> getHierarchyFor(State<O, S, E> substate) {
-        return getHierarchyFor(new ArrayDeque<>(), this, substate);
-    }
-
-    @Override
     public String toString() {
         return String.format("id=%s, hasHistory=%s, initial=%s, description=%s, entryAction=%s, exitAction=%s", id, hasHistory, isInitial, description,
-                entryActionDescription, exitActionDescription);
-    }
-
-    private Deque<State<O, S, E>> getHierarchyFor(Deque<State<O, S, E>> substates, State<O, S, E> compositeState, State<O, S, E> substate) {
-        if (compositeState.substates().contains(substate)) {
-            substates.addFirst(substate);
-            substates.addFirst(this);
-        } else {
-            for (var state : compositeState.substates()) {
-                if (!((StateImp<O, S, E>) state).getHierarchyFor(substates, state, substate).isEmpty()) {
-                    substates.addFirst(compositeState);
-                    break;
-                }
-            }
-        }
-        return substates;
+            entryActionDescription, exitActionDescription);
     }
 }

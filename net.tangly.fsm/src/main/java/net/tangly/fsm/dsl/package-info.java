@@ -13,11 +13,12 @@
 /**
  * <p>The domain specific language builds finite state machine definitions including Lambda expressions and optional human-readable names and
  * descriptions. The DSL assumes that you are working with a state. Once you have retrieved the state you want to modify you can</p>
- * <ul>
- *     <li>addToRoot a new state to a composite state and configure the state properties</li>
- *     <li>addToRoot a local transition and configure its event, guard and action. You can addToRoot local transitions and self transitions.</li>
- *     <li>addToRoot a transition to another state and configure the transition event, guard and action</li>
- * </ul>
+ * <dl>
+ *     <dt>addToRoot<dt><dd>adds a new state to the root state and configure the state properties</dd>
+ *     <dt>add<dt><dd>adds a new state to a composite state and configure the state properties</dd>
+ *     <dt>onLocal<dt><dd>adds a local transition and configure its event, guard and action. You can addToRoot local transitions and self transitions.</dd>
+ *     <dt>on<dt><dd>adds a transition to another state and configure the transition event, guard and action</dd>
+ * </dl>
  * <p>The first aspect you configure when adding is always the event triggering the firing of the transaction. The order of all other
  * properties is open.</p>
  * <h2>Features</h2>

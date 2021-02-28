@@ -27,6 +27,8 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -49,7 +51,7 @@ class FsmTest {
      * The finite state machine internal events for the test configuration.
      */
     enum Events {
-        A_C, AA_AA, AA_AB, AA_B, AA_BB, AB_AA, AB_AB, B_C, BA_A, BA_BB, BB_BA, BB_BB, BB_C, C_C
+        A_A, A_C, AA_AA, AA_AB, AA_B, AA_BB, AB_AA, AB_AB, B_C, BA_A, BA_BB, BB_BA, BB_BB, BB_C, C_C
     }
 
     /**
@@ -189,7 +191,7 @@ class FsmTest {
     void buildFsmWrongTransitionsTest() {
         FsmBuilder<FsmTest, States, Events> builder = FsmBuilder.of(States.Root);
         builder.addToRoot(States.A, "State A").isInitial();
-        assertThrows(IllegalArgumentException.class, () ->  builder.in(States.A).on(Events.A_C).to(States.C));
+        assertThrows(IllegalArgumentException.class, () -> builder.in(States.A).on(Events.A_C).to(States.C));
     }
 
     @Test
@@ -201,47 +203,26 @@ class FsmTest {
         assertThat(fsm.toString()).isNotNull();
     }
 
-    /**
-     * Tests the firing of a transition between two transitions and the execution of the associated action.
-     */
     @Test
     void fireTransitionTest() {
         var action = mock(BiConsumer.class);
         var root = build(action).definition();
-        var fsm = new StateMachineImp<FsmTest, States, Events>("test-fsm", root, this);
+        var fsm = new StateMachineImp<FsmTest, FsmTest.States, FsmTest.Events>("test-fsm", root, this);
 
         assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isTrue();
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.AA))).isTrue();
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.AB))).isFalse();
-        var event = Event.of(Events.AA_AB);
+        assertThat(fsm.getActiveStates().contains(root.getStateFor(FsmTest.States.A))).isTrue();
+        assertThat(fsm.getActiveStates().contains(root.getStateFor(FsmTest.States.AA))).isTrue();
+        assertThat(fsm.getActiveStates().contains(root.getStateFor(FsmTest.States.AB))).isFalse();
+        var event = Event.of(FsmTest.Events.AA_AB);
         fsm.fire(event);
         assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isTrue();
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.AA))).isFalse();
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.AB))).isTrue();
+        assertThat(fsm.getActiveStates().contains(root.getStateFor(FsmTest.States.A))).isTrue();
+        assertThat(fsm.getActiveStates().contains(root.getStateFor(FsmTest.States.AA))).isFalse();
+        assertThat(fsm.getActiveStates().contains(root.getStateFor(FsmTest.States.AB))).isTrue();
         assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
         verify(action, times(1)).accept(this, event);
     }
 
-    /**
-     * Tests the firing of a local transition between two transitions and the execution of the associated action.
-     */
-    @Test
-    void fireLocalTransitionTest() {
-        var action = mock(BiConsumer.class);
-        var root = build(action).definition();
-        var fsm = new StateMachineImp<FsmTest, States, Events>("test-fsm", root, this);
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isTrue();
-        assertThat(root.initialStates().contains(root.getStateFor(States.AA))).isTrue();
-        assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
-        var event = Event.of(Events.AA_AA);
-        fsm.fire(event);
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isTrue();
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.AA))).isTrue();
-        assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
-        verify(action, times(1)).accept(this, event);
-    }
 
     /**
      * Tests the transition from a containing state to a final state.
