@@ -17,8 +17,8 @@ image::2021-03-01-head.png[width=420,height=360,role=left]
 Java development won traction since the decision to release every six months a new version to the community.
 Preview and incubator features promote feedback from the community and users.
 
-Some tool builders such as JetBrains are working proactively and provide support for JDK in developments.
-Other tool maintainers such as JaCoCo are dreadfully being the release cycle.
+Some tool builders such as https://www.jetbrains.com/[JetBrains] are working proactively and provide support for JDK in developments.
+Other tool maintainers such as https://www.eclemma.org/jacoco/[JaCoCo] are dreadfully behind the release cycle.
 
 We learnt to deal with the new speed and how to tackle the laggards.
 Some experiences were quite painful.
@@ -27,7 +27,8 @@ Below our findings and our current focus to develop.
 === Legibility Matters
 
 Programmers learnt the last decade that legibility and brevity of programming languages matter.
-The Java Coin product was initiated to reduce the verbosity of the Java language mainly through syntactic sugar.
+The Java https://openjdk.java.net/projects/coin/[Coin] and https://openjdk.java.net/projects/amber/[Amber]
+projects were initiated to reduce the verbosity of the Java language mainly through syntactic sugar.
 A programmer should not be forced to write statements the compiler could infer.
 
 Examples of improvements are
@@ -44,6 +45,7 @@ Deeper changes are
 
 * New date API simplifying the handling of date and time logic.
 The solution is based on the learnings of the https://www.joda.org/joda-time/[Joda] time library.
+* Support of Lambda constructs greatly eliminates the need of verbose anonymous classes.
 
 === Useful Constructs
 
@@ -91,11 +93,13 @@ We have the first signs of possible improvements.
 A more concise notation for getters and setters::
 The record extension finally provides a more concise and legible convention for getter and setters.
 I hope the convention will be used in all new library classes.
+
 [source,java]
 ----
 Type property();
 void property(Type property);
 ----
+
 Stop using checked exceptions and replace them with runtime exception::
 Lambda expressions cannot handle checked exceptions.
 Only runtime exceptions can be thrown in a lambda expression.

@@ -17,6 +17,12 @@ image::2020-11-02-head.png[width=420, height=360, role=left]
 === Agile Motivation
 
 An agile company is a business with the ability to quickly adapt to market changes <<ReinventingOrganizations>>.
+
+[quote, George Bernard Shaw]
+____
+Life isn’t about finding yourself. Life is about creating yourself.
+____
+
 Agile organizations must be fast-moving and flexible, have rapid response to unexpected obstacles, lead change, be in touch with customers.
 They have a continuous competitive advantage, and a flat organizational structure for quick communication <<futureOfMgmt>>.
 
