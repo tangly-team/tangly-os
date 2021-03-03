@@ -108,7 +108,7 @@ class InvoiceTest {
         invoice.id(id);
         invoice.name(invoice.id() + "-Invoice");
         invoice.contractId("TEST-CONTRACT-0000");
-        invoice.invoicedDate(LocalDate.of(2018, Month.JANUARY, 01));
+        invoice.date(LocalDate.of(2018, Month.JANUARY, 01));
         invoice.dueDate(LocalDate.of(2018, Month.JANUARY, 31));
         invoice.paidDate((LocalDate.of(2018, Month.FEBRUARY, 10)));
         invoice.invoicingEntity(seller());

@@ -37,12 +37,12 @@ public class InvoicesBusinessLogic {
     }
 
     public BigDecimal expensesForContract(@NotNull String contractId, LocalDate from, LocalDate to) {
-        return realm.invoices().items().stream().filter(o -> (contractId.equals(o.contractId())) && isWithinRange(o.invoicedDate(), from, to))
+        return realm.invoices().items().stream().filter(o -> (contractId.equals(o.contractId())) && isWithinRange(o.date(), from, to))
             .map(Invoice::expenses).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public BigDecimal invoicedAmountWithoutVatForContract(@NotNull String contractId, LocalDate from, LocalDate to) {
-        return realm.invoices().items().stream().filter(o -> (contractId.equals(o.contractId())) && isWithinRange(o.invoicedDate(), from, to))
+        return realm.invoices().items().stream().filter(o -> (contractId.equals(o.contractId())) && isWithinRange(o.date(), from, to))
             .map(Invoice::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
@@ -52,7 +52,7 @@ public class InvoicesBusinessLogic {
     }
 
     public BigDecimal invoicedAmountWithoutVatForCustomer(@NotNull String customerId, LocalDate from, LocalDate to) {
-        return realm.invoices().items().stream().filter(o -> (customerId.equals(o.invoicedEntity().id())) && isWithinRange(o.invoicedDate(), from, to))
+        return realm.invoices().items().stream().filter(o -> (customerId.equals(o.invoicedEntity().id())) && isWithinRange(o.date(), from, to))
             .map(Invoice::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 

@@ -28,6 +28,7 @@ import java.util.stream.Collectors;
 
 import net.tangly.core.Address;
 import net.tangly.core.BankConnection;
+import net.tangly.core.HasDate;
 import net.tangly.core.HasEditableId;
 
 /**
@@ -38,7 +39,7 @@ import net.tangly.core.HasEditableId;
  * quite a lot of businesses, in particular in the service industry. Often an invoice references only one VAT rate, convenience methods are provided to
  * streamline this scenario.</p>
  */
-public class Invoice implements HasEditableId {
+public class Invoice implements HasEditableId, HasDate {
     /**
      * The identifier is the unique external identifier of the invoice used in the accounting and tracking systems.
      */
@@ -56,7 +57,11 @@ public class Invoice implements HasEditableId {
     private BankConnection invoicingConnection;
     private Address invoicedAddress;
     private LocalDate deliveryDate;
-    private LocalDate invoicedDate;
+
+    /**
+     * The date is the invoiced date of the invoice.
+     */
+    private LocalDate date;
     private LocalDate dueDate;
     private LocalDate paidDate;
 
@@ -230,12 +235,13 @@ public class Invoice implements HasEditableId {
         this.deliveryDate = deliveryDate;
     }
 
-    public LocalDate invoicedDate() {
-        return invoicedDate;
+    @Override
+    public LocalDate date() {
+        return date;
     }
 
-    public void invoicedDate(LocalDate invoicedDate) {
-        this.invoicedDate = invoicedDate;
+    public void date(LocalDate invoicedDate) {
+        this.date = invoicedDate;
     }
 
     public LocalDate dueDate() {
@@ -314,8 +320,7 @@ public class Invoice implements HasEditableId {
         return """
             Invoice[id=%s, name=%s, text=%s, invoicingEntity=%s, invoicedEntity=%s, invoicingAddress=%s, invoicingConnection=%s, contractId=%s,  \
             invoicedAddress=%s, deliveryDate=%s, invoicedDate=%s, dueDate=%s, currency=%s, locale=%s, paymentConditions=%s, items=%s]
-             """
-            .formatted(id(), name(), text(), invoicingEntity(), invoicedEntity(), invoicingAddress(), invoicingConnection(), contractId(), invoicedAddress(),
-                deliveryDate(), invoicedDate(), dueDate(), currency(), locale(), paymentConditions(), items());
+             """.formatted(id(), name(), text(), invoicingEntity(), invoicedEntity(), invoicingAddress(), invoicingConnection(), contractId(),
+            invoicedAddress(), deliveryDate(), date(), dueDate(), currency(), locale(), paymentConditions(), items());
     }
 }

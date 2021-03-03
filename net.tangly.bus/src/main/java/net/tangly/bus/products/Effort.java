@@ -15,6 +15,7 @@ package net.tangly.bus.products;
 
 import java.time.LocalDate;
 
+import net.tangly.core.HasDate;
 import net.tangly.core.HasOid;
 
 /**
@@ -22,7 +23,7 @@ import net.tangly.core.HasOid;
  * is always performed by one employee. Administrative data specify the duration, the date and an optional description. Efforts can be used to generate work
  * ports such as monthly ports and used to calculate the spend time on a contract or a project.
  */
-public class Effort implements HasOid {
+public class Effort implements HasOid, HasDate {
     private long oid;
     private LocalDate date;
     private int durationInMinutes;

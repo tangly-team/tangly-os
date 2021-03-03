@@ -20,12 +20,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import net.tangly.core.HasDate;
+
 /**
  * A simple transaction is a money transfer between a debit and a credit accounts. A split transaction is a money transfer between a debit account and a set of
  * credit accounts or a credit account and a set of debit accounts. The total debit and the total credit of a transaction must be the same format. The majority
  * of transactions have one debit and one credit account. The class is immutable.
  */
-public class Transaction {
+public class Transaction implements HasDate {
     public static class Builder {
         private LocalDate date;
         private String reference;

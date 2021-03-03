@@ -34,7 +34,7 @@ public class ProductsBusinessLogic {
         return realm;
     }
 
-    public List<Effort> collect(Assignment assignment, LocalDate from, LocalDate to) {
+    public List<Effort> collect(@NotNull Assignment assignment, LocalDate from, LocalDate to) {
         return realm().efforts().items().stream().filter(o -> Objects.equals(o.assignment(), assignment))
             .filter(o -> DateUtilities.isWithinRange(o.date(), from, to)).collect(Collectors.toList());
     }
