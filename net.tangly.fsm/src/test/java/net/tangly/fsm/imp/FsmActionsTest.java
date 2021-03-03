@@ -28,7 +28,7 @@ import static org.mockito.Mockito.verify;
 
 public class FsmActionsTest {
     enum States {
-        Root, A, AA, AB, B, BA
+        Root, A, AA, AB, B, BA, BB
     }
 
     enum Events {
@@ -107,6 +107,56 @@ public class FsmActionsTest {
     }
 
     @Test
+    void fireTransitionToCompositeStateTest() {
+        var transitionAction = mockAction();
+        FsmBuilder<FsmActionsTest, States, Events> builder = FsmBuilder.of(States.Root);
+        builder.addToRoot(States.A, "State A").onEntry(mockAction()).onExit(mockAction()).isInitial();
+        builder.addToRoot(States.B, "State A").onEntry(mockAction()).onExit(mockAction());
+        builder.in(States.B).add(States.BA, "State BA").onEntry(mockAction()).onExit(mockAction()).isInitial();
+        builder.in(States.B).add(States.BB, "State BA").onEntry(mockAction()).onExit(mockAction());
+        builder.in(States.A).on(Events.A_B).to(States.B).execute(transitionAction).build();
+
+        var fsm = builder.machine("test", this);
+        var event = Event.of(Events.A_B);
+        fsm.fire(event);
+
+        verify(findBy(builder, States.A).entryAction(), times(1)).accept(eq(this), any());
+        verify(findBy(builder, States.A).exitAction(), times(1)).accept(eq(this), any());
+        verify(findBy(builder, States.B).entryAction(), times(1)).accept(eq(this), any());
+        verify(findBy(builder, States.B).exitAction(), times(0)).accept(eq(this), any());
+        verify(findBy(builder, States.BA).entryAction(), times(1)).accept(eq(this), any());
+        verify(findBy(builder, States.BA).exitAction(), times(0)).accept(eq(this), any());
+        verify(findBy(builder, States.BB).entryAction(), times(0)).accept(eq(this), any());
+        verify(findBy(builder, States.BB).exitAction(), times(0)).accept(eq(this), any());
+        verify(transitionAction, times(1)).accept(this, event);
+    }
+
+    @Test
+    void fireTransitionToStateWithInitialSubstate() {
+        var transitionAction = mockAction();
+        FsmBuilder<FsmActionsTest, States, Events> builder = FsmBuilder.of(States.Root);
+        builder.addToRoot(States.A, "State A").onEntry(mockAction()).onExit(mockAction()).isInitial();
+        builder.in(States.A).add(States.AA, "State AA").onEntry(mockAction()).onExit(mockAction()).isInitial();
+        builder.addToRoot(States.B, "State A").onEntry(mockAction()).onExit(mockAction());
+        builder.in(States.B).add(States.BA, "State BA").onEntry(mockAction()).onExit(mockAction()).isInitial();
+        builder.in(States.AA).on(Events.AA_B).to(States.B).execute(transitionAction).build();
+
+        var fsm = builder.machine("test", this);
+        var event = Event.of(Events.AA_B);
+        fsm.fire(event);
+
+        verify(findBy(builder, States.A).entryAction(), times(1)).accept(eq(this), any());
+        verify(findBy(builder, States.A).exitAction(), times(1)).accept(eq(this), any());
+        verify(findBy(builder, States.AA).entryAction(), times(1)).accept(eq(this), any());
+        verify(findBy(builder, States.AA).exitAction(), times(1)).accept(eq(this), any());
+        verify(findBy(builder, States.B).entryAction(), times(1)).accept(eq(this), any());
+        verify(findBy(builder, States.B).exitAction(), times(0)).accept(eq(this), any());
+        verify(findBy(builder, States.BA).entryAction(), times(1)).accept(eq(this), any());
+        verify(findBy(builder, States.BA).exitAction(), times(0)).accept(eq(this), any());
+        verify(transitionAction, times(1)).accept(this, event);
+    }
+
+    @Test
     void fireTransitionToAnotherSubstateTest() {
         var transitionAction = mockAction();
         FsmBuilder<FsmActionsTest, States, Events> builder = FsmBuilder.of(States.Root);
@@ -148,31 +198,6 @@ public class FsmActionsTest {
         verify(findBy(builder, States.AB).exitAction(), times(1)).accept(eq(this), any());
         verify(findBy(builder, States.B).entryAction(), times(1)).accept(eq(this), any());
         verify(findBy(builder, States.BA).exitAction(), times(0)).accept(eq(this), any());
-        verify(findBy(builder, States.BA).entryAction(), times(1)).accept(eq(this), any());
-        verify(findBy(builder, States.BA).exitAction(), times(0)).accept(eq(this), any());
-        verify(transitionAction, times(1)).accept(this, event);
-    }
-
-    @Test
-    void fireTransitionToStateWithInitialSubstate() {
-        var transitionAction = mockAction();
-        FsmBuilder<FsmActionsTest, States, Events> builder = FsmBuilder.of(States.Root);
-        builder.addToRoot(States.A, "State A").onEntry(mockAction()).onExit(mockAction()).isInitial();
-        builder.in(States.A).add(States.AA, "State AA").onEntry(mockAction()).onExit(mockAction()).isInitial();
-        builder.addToRoot(States.B, "State A").onEntry(mockAction()).onExit(mockAction());
-        builder.in(States.B).add(States.BA, "State BA").onEntry(mockAction()).onExit(mockAction()).isInitial();
-        builder.in(States.AA).on(Events.AA_B).to(States.B).execute(transitionAction).build();
-
-        var fsm = builder.machine("test", this);
-        var event = Event.of(Events.AA_B);
-        fsm.fire(event);
-
-        verify(findBy(builder, States.A).entryAction(), times(1)).accept(eq(this), any());
-        verify(findBy(builder, States.A).exitAction(), times(1)).accept(eq(this), any());
-        verify(findBy(builder, States.AA).entryAction(), times(1)).accept(eq(this), any());
-        verify(findBy(builder, States.AA).exitAction(), times(1)).accept(eq(this), any());
-        verify(findBy(builder, States.B).entryAction(), times(1)).accept(eq(this), any());
-        verify(findBy(builder, States.B).exitAction(), times(0)).accept(eq(this), any());
         verify(findBy(builder, States.BA).entryAction(), times(1)).accept(eq(this), any());
         verify(findBy(builder, States.BA).exitAction(), times(0)).accept(eq(this), any());
         verify(transitionAction, times(1)).accept(this, event);
