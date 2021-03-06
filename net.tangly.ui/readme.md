@@ -21,6 +21,16 @@ The **tangly ui erp** component provides a Vaadin based user interfaces for ente
 The component is using records and requires **Java 14 or higher**.
 
 
+Currently we are moving at the bleeding edge of our components. Therefore to build and execute the ERP application please
+
+```shell
+    mvn jetty:run
+```
+
+The initial username and password are 'administrator' and 'aeon'.
+
+The Maven POM file is used to build the application and run it because the Gradle Jetty plugin crashes.
+
 ## Download and Documentation
 
 The library can be included in Maven as
@@ -31,21 +41,21 @@ The library can be included in Maven as
       <artifactId>ui</artifactId>
       <version>0.2.6</version>
     </dependency>
-```    
+```
 
 The library can be included in Gradle as
 
 ```groovy
     implementation "net.tangly:ui:0.2.6"
 ```
- 
+
 The documentation can be found under [Business documentation](https://tangly-team.bitbucket.io/docs/ui/)
 
 For any further question and discussion you can use the forum [tangly-OS-Components](https://groups.google.com/g/tangly-os-components)
 
 ## Contribution
 
-You are welcome to contribute to the product with pull requests on Bitbucket. You can download the source files from the 
+You are welcome to contribute to the product with pull requests on Bitbucket. You can download the source files from the
 [bitbucket git repository](https://bitbucket.org/tangly-team/tangly-os.git) and build  the library with the provided gradle configuration file.
 
 If you find a bug or want to request a feature, please use the [issue tracker](https://bitbucket.org/tangly-team/tangly-os/issues).

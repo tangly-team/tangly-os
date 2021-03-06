@@ -10,8 +10,8 @@
     <packaging>war</packaging>
 
     <properties>
-        <maven.compiler.source>1.14</maven.compiler.source>
-        <maven.compiler.target>1.14</maven.compiler.target>
+        <maven.compiler.source>1.15</maven.compiler.source>
+        <maven.compiler.target>1.15</maven.compiler.target>
         <product.build.sourceEncoding>UTF-8</product.build.sourceEncoding>
         <product.reporting.outputEncoding>UTF-8</product.reporting.outputEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -218,7 +218,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <release>14</release>
+                    <release>15</release>
                     <compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
             </plugin>

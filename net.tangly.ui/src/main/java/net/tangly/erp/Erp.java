@@ -32,17 +32,22 @@ public class Erp {
     private static final String ORGANIZATION = "/Users/Shared/tangly/";
     private static final TypeRegistry registry = new TypeRegistry();
 
+    // TODO configure root directory through parameter
     public Erp() {
     }
 
     public static InvoicesBoundedDomain ofInvoicesDomain() {
-        var realm = new InvoicesEntities(Path.of(ORGANIZATION, "db/invoices/"));
+        // TODO change as soon as MicroStream supports again records, currently persistence is disabled
+        //        var realm = new InvoicesEntities(Path.of(ORGANIZATION, "db/invoices/"));
+        var realm = new InvoicesEntities();
         return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesHdl(realm, Path.of(ORGANIZATION, "import/invoices/")),
             new InvoicesAdapter(realm, Path.of(ORGANIZATION, "reports/invoices/")), registry);
     }
 
     public static CrmBoundedDomain ofCrmDomain() {
-        var realm = new CrmEntities(Path.of(ORGANIZATION, "db/crm/"));
+        // TODO change as soon as MicroStream supports again records, currently persistence is disabled
+        //        var realm = new CrmEntities(Path.of(ORGANIZATION, "db/crm/"));
+        var realm = new CrmEntities();
         if (realm.subjects().items().isEmpty()) {
             realm.subjects().update(createAdminSubject());
         }
@@ -50,14 +55,18 @@ public class Erp {
     }
 
     public static ProductsBoundedDomain ofProductsDomain() {
-        var realm = new ProductsEntities(Path.of(ORGANIZATION, "db/products/"));
+        // TODO change as soon as MicroStream supports again records, currently persistence is disabled
+        //        var realm = new ProductsEntities(Path.of(ORGANIZATION, "db/products/"));
+        var realm = new ProductsEntities();
         var logic = new ProductsBusinessLogic(realm);
         return new ProductsBoundedDomain(realm, logic, new ProductsHdl(realm, Path.of(ORGANIZATION, "import/products/")),
             new ProductsAdapter(logic, Path.of(ORGANIZATION, "reports/assignments")), registry);
     }
 
     public static LedgerBoundedDomain ofLedgerDomain() {
-        var ledger = new LedgerEntities(Path.of(ORGANIZATION, "db/ledger/"));
+        // TODO change as soon as MicroStream supports again records, currently persistence is disabled
+        //        var ledger = new LedgerEntities(Path.of(ORGANIZATION, "db/ledger/"));
+        var ledger = new LedgerEntities();
         return new LedgerBoundedDomain(ledger, new LedgerBusinessLogic(ledger), new LedgerHdl(ledger, Path.of(ORGANIZATION, "import/ledger/")),
             new LedgerAdapter(ledger, Path.of(ORGANIZATION, "reports/ledger")), registry);
     }
