@@ -42,7 +42,7 @@ import org.slf4j.LoggerFactory;
 public abstract class EntitiesView<T> extends Crud<T> implements CrudForm<T> {
     public static final String DATE_WIDTH = "8em";
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-    protected final Provider<T> provider;
+    protected final transient Provider<T> provider;
 
     /**
      * Constructor of the CRUD view for a product.

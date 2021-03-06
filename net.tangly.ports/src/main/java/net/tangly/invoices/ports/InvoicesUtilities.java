@@ -22,10 +22,10 @@ import java.util.regex.Pattern;
 import net.tangly.bus.invoices.Invoice;
 import org.jetbrains.annotations.NotNull;
 
-public class InvoicesUtilities {
+public final class InvoicesUtilities {
     public static final String INVOICES = "invoices";
     public static final String INVOICE_NAME_PATTERN = "\\d{4}-\\d{4}-.*";
-    private static final Pattern invoicePattern = Pattern.compile(INVOICE_NAME_PATTERN);
+    private static final Pattern INVOICE_PATTERN = Pattern.compile(INVOICE_NAME_PATTERN);
 
     private InvoicesUtilities() {
     }
@@ -39,7 +39,7 @@ public class InvoicesUtilities {
      * @return path to the folder where the invoice should be written
      */
     public static Path resolvePath(@NotNull Path directory, @NotNull Invoice invoice) {
-        var matcher = invoicePattern.matcher(invoice.name());
+        var matcher = INVOICE_PATTERN.matcher(invoice.name());
         var invoicePath = matcher.matches() ? directory.resolve(invoice.name().substring(0, 4)) : directory;
         if (Files.notExists(invoicePath)) {
             try {

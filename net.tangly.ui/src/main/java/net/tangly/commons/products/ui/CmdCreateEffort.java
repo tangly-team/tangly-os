@@ -13,6 +13,7 @@
 
 package net.tangly.commons.products.ui;
 
+import java.lang.invoke.MethodHandles;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -35,12 +36,15 @@ import net.tangly.bus.products.ProductsBoundedDomain;
 import net.tangly.commons.domain.ui.Cmd;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CmdCreateEffort extends Dialog implements Cmd {
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private final Binder<Effort> binder;
     private final Effort effort;
-    private final Assignment assignment;
-    private final ProductsBoundedDomain domain;
+    private final transient Assignment assignment;
+    private final transient ProductsBoundedDomain domain;
 
     public CmdCreateEffort(@NotNull Assignment assignment, @NotNull ProductsBoundedDomain domain) {
         this.assignment = assignment;
@@ -91,7 +95,7 @@ public class CmdCreateEffort extends Dialog implements Cmd {
                 domain.realm().registerOid(effort);
                 domain.realm().efforts().update(effort);
             } catch (ValidationException validationException) {
-                validationException.printStackTrace();
+                logger.atError().log("Validation error", e);
             }
             this.close();
         });

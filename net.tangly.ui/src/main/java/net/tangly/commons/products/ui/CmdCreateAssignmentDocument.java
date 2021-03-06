@@ -31,8 +31,8 @@ public class CmdCreateAssignmentDocument extends CmdDialog {
     private final TextField collaboratorName;
     private final DatePicker fromDate;
     private final DatePicker toDate;
-    private final Assignment assignment;
-    private final ProductsBoundedDomain domain;
+    private final transient Assignment assignment;
+    private final transient ProductsBoundedDomain domain;
 
     public CmdCreateAssignmentDocument(@NotNull Assignment assignment, @NotNull ProductsBoundedDomain domain) {
         super("4oem");

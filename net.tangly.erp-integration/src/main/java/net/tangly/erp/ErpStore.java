@@ -19,7 +19,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.Objects;
 
 import net.tangly.crm.ports.CrmHdl;
 import net.tangly.invoices.ports.InvoicesHdl;
@@ -65,7 +64,7 @@ public record ErpStore(@NotNull FileSystem fs) {
     }
 
     public Path vcardsRoot() {
-        return fs.getPath(ORGANIZATION, "crm/vcards/");
+        return crmRoot().resolve("vcards/");
     }
 
     public Path reportsRoot() {
@@ -73,11 +72,11 @@ public record ErpStore(@NotNull FileSystem fs) {
     }
 
     public Path ledgerReportsRoot() {
-        return fs.getPath(ORGANIZATION, "reports/ledger/");
+        return reportsRoot().resolve("ledger/");
     }
 
     public Path invoiceReportsRoot() {
-        return fs.getPath(ORGANIZATION, "reports/invoices/");
+        return reportsRoot().resolve("invoices/");
     }
 
     /**
@@ -97,6 +96,7 @@ public record ErpStore(@NotNull FileSystem fs) {
             Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2018/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2019/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2020/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2021/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "reports/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "reports/ledger/"));
             Files.createDirectory(fs.getPath(ORGANIZATION, "reports/invoices/"));
@@ -134,8 +134,8 @@ public record ErpStore(@NotNull FileSystem fs) {
         }
     }
 
-    private void copy(@NotNull String packageName, @NotNull Path folder, @NotNull String filename) throws IOException {
-        Path resourcePath = Paths.get(Objects.requireNonNull(getClass().getClassLoader().getResource(packageName + filename).getPath()));
+    private static void copy(@NotNull String packageName, @NotNull Path folder, @NotNull String filename) throws IOException {
+        Path resourcePath = Paths.get(Thread.currentThread().getContextClassLoader().getResource(packageName + filename).getPath());
         Files.copy(resourcePath, folder.resolve(filename), StandardCopyOption.REPLACE_EXISTING);
     }
 }

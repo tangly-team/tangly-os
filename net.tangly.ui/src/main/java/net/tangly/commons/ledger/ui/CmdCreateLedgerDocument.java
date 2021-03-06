@@ -31,7 +31,7 @@ public class CmdCreateLedgerDocument extends CmdDialog {
     private final DatePicker toDate;
     private final Checkbox withVat;
     private final Checkbox withTransactions;
-    private final LedgerBoundedDomain domain;
+    private final transient LedgerBoundedDomain domain;
 
     public CmdCreateLedgerDocument(LedgerBoundedDomain domain) {
         super("40em");

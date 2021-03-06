@@ -75,7 +75,7 @@ public class Crud<T> extends VerticalLayout implements SelectedItemListener<T> {
     private final PaginatedGrid<T> grid;
     private final Set<SelectedItemListener<T>> selectedItemListenerListeners;
     private Mode mode;
-    private T selectedItem;
+    private transient T selectedItem;
 
     public Crud(@NotNull Class<T> entityClass, @NotNull Mode mode, @NotNull DataProvider<T, ?> dataProvider) {
         this.entityClass = entityClass;

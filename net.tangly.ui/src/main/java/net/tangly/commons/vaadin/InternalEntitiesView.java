@@ -40,7 +40,6 @@ public abstract class InternalEntitiesView<T extends Entity> extends EntitiesVie
     public static final String OID_WIDTH = "5em";
     public static final String ID_WIDTH = "12em";
     public static final String NAME_WIDTH = "20em";
-    protected final transient Provider<T> provider;
     protected Binder<T> binder;
     private final TypeRegistry registry;
 
@@ -54,16 +53,13 @@ public abstract class InternalEntitiesView<T extends Entity> extends EntitiesVie
      */
     public InternalEntitiesView(@NotNull Class<T> clazz, @NotNull Mode mode, @NotNull Provider<T> provider, TypeRegistry registry) {
         super(clazz, mode, provider);
-        this.provider = provider;
         this.binder = new Binder<>(clazz);
         this.registry = registry;
     }
 
     protected static <T extends Entity> void addEntityFilters(GridDecorators<T> filters) {
-        filters.addFilter(new GridDecorators.FilterText<>(filters, T::name, "Name", "name"))
-            .addFilter(new GridDecorators.FilterInterval<>(filters))
+        filters.addFilter(new GridDecorators.FilterText<>(filters, T::name, "Name", "name")).addFilter(new GridDecorators.FilterInterval<>(filters))
             .addFilter(new GridDecorators.FilterTags<>(filters));
-
     }
 
     protected static <T extends QualifiedEntity> void addQualifiedEntityFilters(GridDecorators<T> filters) {
@@ -75,20 +71,10 @@ public abstract class InternalEntitiesView<T extends Entity> extends EntitiesVie
         grid.addColumn(QualifiedEntity::oid).setKey("oid").setHeader("Oid").setResizable(true).setSortable(true).setFlexGrow(0).setWidth(OID_WIDTH);
         grid.addColumn(QualifiedEntity::id).setKey("id").setHeader("Id").setResizable(true).setSortable(true).setFlexGrow(0).setWidth(ID_WIDTH);
         grid.addColumn(QualifiedEntity::name).setKey("name").setHeader("Name").setResizable(true).setSortable(true).setFlexGrow(0).setWidth(NAME_WIDTH);
-        grid.addColumn(new LocalDateRenderer<>(QualifiedEntity::fromDate, DateTimeFormatter.ISO_DATE))
-            .setKey("from")
-            .setHeader("From")
-            .setResizable(true)
-            .setSortable(true)
-            .setFlexGrow(0)
-            .setWidth(DATE_WIDTH);
-        grid.addColumn(new LocalDateRenderer<>(QualifiedEntity::toDate, DateTimeFormatter.ISO_DATE))
-            .setKey("to")
-            .setHeader("To")
-            .setResizable(true)
-            .setSortable(true)
-            .setFlexGrow(0)
-            .setWidth(DATE_WIDTH);
+        grid.addColumn(new LocalDateRenderer<>(QualifiedEntity::fromDate, DateTimeFormatter.ISO_DATE)).setKey("from").setHeader("From").setResizable(true)
+            .setSortable(true).setFlexGrow(0).setWidth(DATE_WIDTH);
+        grid.addColumn(new LocalDateRenderer<>(QualifiedEntity::toDate, DateTimeFormatter.ISO_DATE)).setKey("to").setHeader("To").setResizable(true)
+            .setSortable(true).setFlexGrow(0).setWidth(DATE_WIDTH);
     }
 
     @Override

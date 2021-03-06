@@ -37,7 +37,7 @@ import net.tangly.components.canvases.events.MouseUpEvent;
 @Tag("canvas")
 @SuppressWarnings("serial")
 public class Canvas extends Component implements HasStyle, HasSize, KeyNotifier {
-    private CanvasRenderingContext2D context;
+    private transient CanvasRenderingContext2D context;
 
     /**
      * Creates a new canvas component with the given size. Use the API provided by {@link #getContext()} to render graphics on the canvas. The width and height

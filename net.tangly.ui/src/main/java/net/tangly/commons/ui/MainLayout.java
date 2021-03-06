@@ -81,7 +81,7 @@ public class MainLayout extends AppLayout {
 
         Image image;
         try {
-            byte[] buffer = Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("tangly70x70.png")).readAllBytes();
+            byte[] buffer = Thread.currentThread().getContextClassLoader().getResourceAsStream("tangly70x70.png").readAllBytes();
             image = new Image(new StreamResource("tangly70x70.png", () -> new ByteArrayInputStream(buffer)), "tangly70x70.png");
             image.setHeight("44px");
         } catch (IOException e) {

@@ -28,6 +28,15 @@ public record EmailAddress(@NotNull String recipient, @NotNull String domain) {
     private static final String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
     private static final Pattern pattern = Pattern.compile(emailRegex);
 
+    public EmailAddress {
+        if (Strings.isNullOrBlank(domain)) {
+            throw new IllegalArgumentException("Illegal domain " + domain);
+        }
+        if (Strings.isNullOrBlank(recipient)) {
+            throw new IllegalArgumentException("Illegal recipient " + recipient);
+        }
+    }
+
     public static EmailAddress of(String email) {
         if (Strings.isNullOrBlank(email)) {
             return null;
@@ -40,15 +49,6 @@ public record EmailAddress(@NotNull String recipient, @NotNull String domain) {
                 logger.atWarn().setCause(e).log("Error creating email address", email);
                 return null;
             }
-        }
-    }
-
-    public EmailAddress {
-        if (Strings.isNullOrBlank(domain)) {
-            throw new IllegalArgumentException("Illegal domain " + domain);
-        }
-        if (Strings.isNullOrBlank(recipient)) {
-            throw new IllegalArgumentException("Illegal recipient " + recipient);
         }
     }
 

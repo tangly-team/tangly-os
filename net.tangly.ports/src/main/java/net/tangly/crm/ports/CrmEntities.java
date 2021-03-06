@@ -123,11 +123,11 @@ public class CrmEntities implements CrmRealm {
         subjects = new ProviderInMemory<>(data.subjects);
 
         long oidCounter = Realm.maxOid(naturalEntities());
-        oidCounter = Math.max(oidCounter, Realm.maxOid(legalEntities()));
-        oidCounter = Math.max(oidCounter, Realm.maxOid(employees()));
-        oidCounter = Math.max(oidCounter, Realm.maxOid(contracts()));
-        oidCounter = Math.max(oidCounter, Realm.maxOid(interactions()));
-        oidCounter = Math.max(oidCounter, Realm.maxOid(subjects()));
+        oidCounter = Math.max(oidCounter, Realm.maxOid(legalEntities));
+        oidCounter = Math.max(oidCounter, Realm.maxOid(employees));
+        oidCounter = Math.max(oidCounter, Realm.maxOid(contracts));
+        oidCounter = Math.max(oidCounter, Realm.maxOid(interactions));
+        oidCounter = Math.max(oidCounter, Realm.maxOid(subjects));
         data.oidCounter = Math.max(oidCounter, OID_SEQUENCE_START);
     }
 

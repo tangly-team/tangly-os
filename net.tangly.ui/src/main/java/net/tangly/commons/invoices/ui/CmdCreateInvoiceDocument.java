@@ -32,8 +32,8 @@ public class CmdCreateInvoiceDocument extends CmdDialog {
     private final Checkbox withQrCode;
     private final Checkbox withEN16931;
     private final TextField name;
-    private final InvoicesBoundedDomain domain;
-    private final Invoice invoice;
+    private final transient InvoicesBoundedDomain domain;
+    private final transient Invoice invoice;
 
     public CmdCreateInvoiceDocument(@NotNull Invoice invoice, @NotNull InvoicesBoundedDomain domain) {
         super("40em");
