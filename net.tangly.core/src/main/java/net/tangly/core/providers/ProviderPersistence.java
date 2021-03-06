@@ -22,22 +22,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Provider with instances in memory and persisted.
+ * Provider with instances cached in memory and persisted onto the file system or a database.
  * <p>The update method uses an eager storage strategy to insure that all instance variables of a Java object are persisted. This approach is necessary due
- * to the implementation restrictions of MicroStream.</p>
+ * to the implementation restrictions of MicroStream. The current regular store operation does not persist fields based on collections.</p>
  *
  * @param <T> type of the instances handled in the provider
  */
-public class ProviderPersistence<T> implements Provider<T> {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-    private transient final EmbeddedStorageManager storageManager;
-    private final List<T> items;
-
-    public ProviderPersistence(EmbeddedStorageManager storageManager, @NotNull List<T> items) {
-        this.storageManager = storageManager;
-        this.items = items;
-    }
-
+public record ProviderPersistence<T>(@NotNull EmbeddedStorageManager storageManager, @NotNull List<T> items) implements Provider<T> {
     @Override
     public List<T> items() {
         return Collections.unmodifiableList(items);

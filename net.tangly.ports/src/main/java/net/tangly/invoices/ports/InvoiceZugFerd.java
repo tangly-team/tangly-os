@@ -201,7 +201,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
 
     @Override
     public Date getDeliveryDate() {
-        return java.sql.Date.valueOf(invoice.invoicedDate());
+        return java.sql.Date.valueOf(invoice.date());
     }
 
     @Override
@@ -211,7 +211,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
 
     @Override
     public Date getIssueDate() {
-        return java.sql.Date.valueOf(invoice.invoicedDate());
+        return java.sql.Date.valueOf(invoice.date());
     }
 
     @Override

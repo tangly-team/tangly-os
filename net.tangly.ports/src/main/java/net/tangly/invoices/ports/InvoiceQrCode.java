@@ -80,7 +80,7 @@ public class InvoiceQrCode implements InvoiceGenerator {
      */
     private static SwicoBillInformation createSwicoBillInformation(@NotNull Invoice invoice) {
         var swico = new SwicoBillInformation();
-        swico.setInvoiceDate(invoice.invoicedDate());
+        swico.setInvoiceDate(invoice.date());
         swico.setInvoiceNumber(invoice.id());
         swico.setVatNumber(swicoVatNumber(invoice.invoicingEntity().id()));
         swico.setCustomerReference(invoice.invoicedEntity().id());

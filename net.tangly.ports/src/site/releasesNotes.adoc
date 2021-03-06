@@ -13,7 +13,7 @@ draft: false
 This document provides a high-level view of the changes introduced in PORTS library by release.
 For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] git commits.
 
-=== 0.2.6 (2020-12-30)
+=== 0.2.6 (2021-04-30)
 
 Improvements::
 

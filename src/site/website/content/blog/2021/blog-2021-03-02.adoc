@@ -32,14 +32,18 @@ I hope the current flaws of the product will be removed and allow productive use
 
 Saving a Java Object::
 The library made some strange design decisions.
-If you want to persist an instance having fields using collections, you must use the _eager_ mode.
+If you want to persist an instance having fields based on collections, you must use the _eager_ mode.
 Beware that you must explicitly commit the transaction if using the _eager_ mode.
+The normal mode automatically commit the transaction.
+I hope that the API improves and the behavior is coherent for similar functions.
 Debugging problems::
 The source code is currently obfuscated.
 Debugging is difficult and cumbersome because variable names are synthetic and all comments are missing.
+The source code documentation is shallow and insufficient to understand the behavior of the library.
 Saving a collection::
 If you have access to the collection, just call store on the collection.
 If the collection is hidden inside an object, you are forced to use _eager_ store.
+If you use standard object-oriented practices you will have to use the less efficient approach of eager write operations.
 
 === Design
 
@@ -109,10 +113,14 @@ public record ProviderPersistence<T>(@NotNull EmbeddedStorageManager storageMana
 In-memory file systems are a must for unit and integration testing.
 A continuous integration pipeline does not always have access to a regular file system.
 Disk based file systems are too slow for automatic testing
-footnote:[I have reported the bug how they used path instances. The developers were very supportive. The version 4.01 supports in-memory file systems such as
-JIMFS.].
+footnote:[I have reported the bug how they used path instances. The developers were very supportive. The version 4.01 supports in-memory file systems such as https://github.com/google/jimfs[Jimfs].].
 
 We migrate with full success all our unit tests to use in-memory file systems in January 2021.
+We use the https://github.com/google/jimfs[Jimfs] library.
+When creating a Jimfs file system, you can specify whether it should imitate a UNIX- or Windows-style file system.
+They differ in the naming conventions and attribute usage, so choose the one you prefer.
+The Windows file system implements some of Windows’ quirks, such as not permitting the creation of a file in the root directory.
+
 The execution speed rocks.
 Thanks to the MicroStream developers.
 See their _file systems_ example in their https://github.com/microstream-one/examples[GitHub example repository]
@@ -124,8 +132,7 @@ The _MicroStream_ 4.x releases crash when using record in JDK 15 and JDK 16. It 
 You are forced to use an obsolete JDK no more supported.
 For example IntelliJ IDEA stops to provide support for obsolete JDKs as soon as the new official JDK release is available.
 It hinders you to use the associated preview features
-footnote:[I have reported the bug in the microstream forum and informed them that their clain they support these JDK is plain wrong. The project sadly does
-not currently have a bug reporting system. We hope that the version promised for April 2021 will finally solved these show stoppers.].
+footnote:[I have reported the bug in the microstream forum and informed them that their clain they support these JDK is plain wrong. The project sadly does not currently have a bug reporting system. I hope the version promised for April 2021 will finally solved these show stoppers.].
 
 I have to verify if the library can cope with sealed declarations.
 
@@ -137,3 +144,4 @@ See our http://localhost:1313/blog/2021/modern-java-development/[Modern Java Dev
 discussion how organizations cope with the Java release cycle or are just laggards.
 * Codify a performant approach to save whole instances using eager store operations.
 * Explore the migration features when the data schema is changing.
+* Wait and see if the promised licensing under open source will be published.

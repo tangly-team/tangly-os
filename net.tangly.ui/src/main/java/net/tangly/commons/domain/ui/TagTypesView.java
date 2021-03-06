@@ -56,7 +56,7 @@ public class TagTypesView extends VerticalLayout {
         grid.setMinHeight("5em");
         grid.setWidthFull();
 
-        GridDecorators<TagType> decorator = new GridDecorators<TagType>(grid, false, true);
+        GridDecorators<TagType> decorator = new GridDecorators<TagType>(grid, TagType.class.getSimpleName(), false, true);
         decorator.addGlobalAction("Count Tags", e -> update(domain.countTags(new HashMap<>())));
 
         setSizeFull();

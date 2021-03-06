@@ -34,12 +34,19 @@ import net.tangly.commons.vaadin.SelectedItemListener;
 import net.tangly.core.HasDate;
 import net.tangly.core.HasInterval;
 import net.tangly.core.HasTags;
+import net.tangly.core.Strings;
 import net.tangly.core.codes.Code;
 import net.tangly.core.codes.CodeType;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Defines the filters and actions specific to a grid.
+ * Defines the filters and actions specific to a grid. A grid decorator provides
+ * <ul>
+ *     <li>A text describing the content of the grid. Often it is the name of the displayed entities.</li>
+ *     <li>A list of filter fields to filter out relevant instances.</li>
+ *     <li>A menu bar with instances specific actions and global actions. The menu bar and the submenus are only displayed if specific or global actions
+ *     are defined.</li>
+ * </ul>
  *
  * @param <T> type of entities displayed in the grid
  */
@@ -72,20 +79,25 @@ public class GridDecorators<T> extends HorizontalLayout implements SelectedItemL
     private final Actions globalActions;
     private T selectedItem;
 
-    public GridDecorators(@NotNull PaginatedGrid<T> grid, boolean hasItemActions, boolean hasGlobalActions) {
+    public GridDecorators(@NotNull PaginatedGrid<T> grid, String text, boolean hasItemActions, boolean hasGlobalActions) {
         this.grid = grid;
+        this.setPadding(true);
         menuBar = new MenuBar();
         itemActions = hasItemActions ? new Actions(menuBar, "Actions") : null;
         globalActions = hasGlobalActions ? new Actions(menuBar, "Operations") : null;
         filters = new ArrayList<>();
         selectedItem(null);
+        if (!Strings.isNullOrBlank(text)) {
+            add(text);
+        }
         if (hasItemActions || hasGlobalActions) {
             add(menuBar);
         }
     }
 
-    public static <U> GridDecorators<U> of(@NotNull Crud<U> view, @NotNull PaginatedGrid<U> grid, boolean hasItemActions, boolean hasGlobalActions) {
-        GridDecorators<U> decorator = new GridDecorators<>(grid, hasItemActions, hasGlobalActions);
+    public static <U> GridDecorators<U> of(@NotNull Crud<U> view, @NotNull PaginatedGrid<U> grid, String text, boolean hasItemActions,
+                                           boolean hasGlobalActions) {
+        GridDecorators<U> decorator = new GridDecorators<>(grid, text, hasItemActions, hasGlobalActions);
         view.addSelectedItemListener(decorator);
         return decorator;
     }
@@ -169,7 +181,7 @@ public class GridDecorators<T> extends HorizontalLayout implements SelectedItemL
         public void addFilter(@NotNull ListDataProvider<E> provider) {
             if (!from.isEmpty() && !to.isEmpty()) {
                 var predicate = new HasDate.IntervalFilter(from.getValue(), to.getValue());
-                provider.addFilter(entity ->  predicate.test(entity));
+                provider.addFilter(entity -> predicate.test(entity));
             }
         }
     }
@@ -221,7 +233,7 @@ public class GridDecorators<T> extends HorizontalLayout implements SelectedItemL
         private final Function<E, T> getter;
 
         public FilterNumber(@NotNull GridDecorators<E> container, @NotNull Function<E, T> getter, @NotNull String label, String placeholder) {
-            component = new NumberField (label, placeholder);
+            component = new NumberField(label, placeholder);
             component.setClearButtonVisible(true);
             component.addValueChangeListener(e -> container.updateFilters());
             this.getter = getter;

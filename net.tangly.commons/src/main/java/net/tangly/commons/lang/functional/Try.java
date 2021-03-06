@@ -10,7 +10,7 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.commons.lang;
+package net.tangly.commons.lang.functional;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -67,5 +67,9 @@ public record Try<T>(T result, RuntimeException failure) {
 
     public Optional<T> optional() {
         return Optional.ofNullable(result);
+    }
+
+    public Optional<RuntimeException> exception() {
+        return Optional.ofNullable(failure);
     }
 }

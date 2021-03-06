@@ -31,6 +31,7 @@ public class LedgerBoundedDomainUi implements BoundedDomainUi {
     private final LedgerBoundedDomain domain;
     private final AccountsView accountsView;
     private final TransactionsView transactionsView;
+    private final AnalyticsLedgerView analyticsView;
     private final DomainView domainView;
     private Component currentView;
 
@@ -39,6 +40,7 @@ public class LedgerBoundedDomainUi implements BoundedDomainUi {
         this.domain = domain;
         accountsView = new AccountsView(domain, Crud.Mode.EDITABLE);
         transactionsView = new TransactionsView(domain, Crud.Mode.EDITABLE);
+        analyticsView = new AnalyticsLedgerView(domain);
         domainView = new DomainView(domain);
         currentView = transactionsView;
     }
@@ -54,6 +56,10 @@ public class LedgerBoundedDomainUi implements BoundedDomainUi {
         SubMenu subMenu = menuItem.getSubMenu();
         subMenu.addItem("Accounts", e -> select(layout, accountsView));
         subMenu.addItem("Transactions", e -> select(layout, transactionsView));
+
+        menuItem = menuBar.addItem(ANALYTICS);
+        subMenu = menuItem.getSubMenu();
+        subMenu.addItem(ANALYTICS, e -> select(layout, analyticsView));
 
         menuItem = menuBar.addItem(ADMINISTRATION);
         subMenu = menuItem.getSubMenu();

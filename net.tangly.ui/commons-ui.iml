@@ -244,7 +244,7 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.beust:jcommander:1.72" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.asciidoctor:asciidoctorj-pdf:1.5.4" level="project" />
     <orderEntry type="library" name="Maven: net.tangly:core:0.2.6" level="project" />
-    <orderEntry type="library" name="Maven: com.googlecode.libphonenumber:libphonenumber:8.12.16" level="project" />
+    <orderEntry type="library" name="Maven: com.googlecode.libphonenumber:libphonenumber:8.12.17" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: one.microstream:storage.embedded:04.01.00-MS-GA" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: one.microstream:storage:04.01.00-MS-GA" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: one.microstream:persistence.binary:04.01.00-MS-GA" level="project" />
@@ -278,9 +278,10 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.21" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.21" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: io.github.classgraph:classgraph:4.6.23" level="project" />
-    <orderEntry type="library" name="Maven: com.storedobject.chart:so-charts:0.2.0" level="project" />
-    <orderEntry type="library" name="Maven: com.storedobject.helper:so-helper:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.storedobject.chart:so-charts:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.storedobject.helper:so-helper:2.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.vaadin.componentfactory:tooltip:1.3.4" level="project" />
+    <orderEntry type="library" name="Maven: com.vaadin.componentfactory:autocomplete:2.3.1" level="project" />
     <orderEntry type="library" name="Maven: org.junit.jupiter:junit-jupiter-api:5.7.0-M1" level="project" />
     <orderEntry type="library" name="Maven: org.apiguardian:apiguardian-api:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />

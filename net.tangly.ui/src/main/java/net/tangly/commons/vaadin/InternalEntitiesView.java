@@ -37,6 +37,9 @@ import org.jetbrains.annotations.NotNull;
  * </ul>
  */
 public abstract class InternalEntitiesView<T extends Entity> extends EntitiesView<T> implements CrudForm<T>, HasIdView<T> {
+    public static final String OID_WIDTH = "5em";
+    public static final String ID_WIDTH = "12em";
+    public static final String NAME_WIDTH = "20em";
     protected final transient Provider<T> provider;
     protected Binder<T> binder;
     private final TypeRegistry registry;
@@ -69,23 +72,23 @@ public abstract class InternalEntitiesView<T extends Entity> extends EntitiesVie
     }
 
     protected static <T extends QualifiedEntity> void addQualifiedEntityColumns(Grid<T> grid) {
-        grid.addColumn(QualifiedEntity::oid).setKey("oid").setHeader("Oid").setResizable(true).setSortable(true).setFlexGrow(0).setWidth("3em");
-        grid.addColumn(QualifiedEntity::id).setKey("id").setHeader("Id").setResizable(true).setSortable(true).setFlexGrow(0).setWidth("5em");
-        grid.addColumn(QualifiedEntity::name).setKey("name").setHeader("Name").setResizable(true).setSortable(true).setFlexGrow(0).setWidth("10em");
+        grid.addColumn(QualifiedEntity::oid).setKey("oid").setHeader("Oid").setResizable(true).setSortable(true).setFlexGrow(0).setWidth(OID_WIDTH);
+        grid.addColumn(QualifiedEntity::id).setKey("id").setHeader("Id").setResizable(true).setSortable(true).setFlexGrow(0).setWidth(ID_WIDTH);
+        grid.addColumn(QualifiedEntity::name).setKey("name").setHeader("Name").setResizable(true).setSortable(true).setFlexGrow(0).setWidth(NAME_WIDTH);
         grid.addColumn(new LocalDateRenderer<>(QualifiedEntity::fromDate, DateTimeFormatter.ISO_DATE))
             .setKey("from")
             .setHeader("From")
             .setResizable(true)
             .setSortable(true)
             .setFlexGrow(0)
-            .setWidth("5em");
+            .setWidth(DATE_WIDTH);
         grid.addColumn(new LocalDateRenderer<>(QualifiedEntity::toDate, DateTimeFormatter.ISO_DATE))
             .setKey("to")
             .setHeader("To")
             .setResizable(true)
             .setSortable(true)
             .setFlexGrow(0)
-            .setWidth("5em");
+            .setWidth(DATE_WIDTH);
     }
 
     @Override

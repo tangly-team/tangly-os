@@ -20,6 +20,7 @@ import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.invoices.InvoicesBoundedDomain;
+import net.tangly.commons.domain.ui.AnalyticsView;
 import net.tangly.commons.domain.ui.CmdExportEntities;
 import net.tangly.commons.domain.ui.CmdImportEntities;
 import net.tangly.commons.domain.ui.DomainView;
@@ -38,21 +39,23 @@ public class CrmBoundedDomainUi implements BoundedDomainUi {
     private final InteractionsView interactionsView;
     private final ActivitiesView activitiesView;
     private final SubjectsView subjectsView;
+    private final AnalyticsCrmView analyticsView;
     private final DomainView domainView;
     private Component currentView;
 
     @Inject
     public CrmBoundedDomainUi(@NotNull CrmBoundedDomain crmDomain, @NotNull InvoicesBoundedDomain invoicesDomain) {
         this.domain = crmDomain;
-        leadsView = new LeadsView(crmDomain, Crud.Mode.EDITABLE);
-        naturalEntitiesView = new NaturalEntitiesView(crmDomain, Crud.Mode.EDITABLE);
-        legalEntitiesView = new LegalEntitiesView(crmDomain, Crud.Mode.EDITABLE);
-        employeesView = new EmployeesView(crmDomain, Crud.Mode.EDITABLE);
-        contractsView = new ContractsView(crmDomain, invoicesDomain.logic(), Crud.Mode.EDITABLE);
-        interactionsView = new InteractionsView(crmDomain, Crud.Mode.EDITABLE);
-        activitiesView = new ActivitiesView(crmDomain, Crud.Mode.READONLY);
-        subjectsView = new SubjectsView(crmDomain, Crud.Mode.EDITABLE);
-        domainView = new DomainView(crmDomain);
+        leadsView = new LeadsView(domain, Crud.Mode.EDITABLE);
+        naturalEntitiesView = new NaturalEntitiesView(domain, Crud.Mode.EDITABLE);
+        legalEntitiesView = new LegalEntitiesView(domain, Crud.Mode.EDITABLE);
+        employeesView = new EmployeesView(domain, Crud.Mode.EDITABLE);
+        contractsView = new ContractsView(domain, invoicesDomain.logic(), Crud.Mode.EDITABLE);
+        interactionsView = new InteractionsView(domain, Crud.Mode.EDITABLE);
+        activitiesView = new ActivitiesView(domain, Crud.Mode.READONLY);
+        subjectsView = new SubjectsView(domain, Crud.Mode.EDITABLE);
+        analyticsView = new AnalyticsCrmView(domain, invoicesDomain);
+        domainView = new DomainView(domain);
         currentView = naturalEntitiesView;
     }
 
@@ -73,6 +76,10 @@ public class CrmBoundedDomainUi implements BoundedDomainUi {
         subMenu.addItem("Interactions", e -> select(layout, interactionsView));
         subMenu.addItem("Activities", e -> select(layout, activitiesView));
         subMenu.addItem("Subjects", e -> select(layout, subjectsView));
+
+        menuItem = menuBar.addItem(ANALYTICS);
+        subMenu = menuItem.getSubMenu();
+        subMenu.addItem(ANALYTICS, e -> select(layout, analyticsView));
 
         menuItem = menuBar.addItem(ADMINISTRATION);
         subMenu = menuItem.getSubMenu();

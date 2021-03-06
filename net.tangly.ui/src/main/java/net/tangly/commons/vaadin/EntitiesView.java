@@ -40,6 +40,7 @@ import org.slf4j.LoggerFactory;
  * @param <T> type of the external entities
  */
 public abstract class EntitiesView<T> extends Crud<T> implements CrudForm<T> {
+    public static final String DATE_WIDTH = "8em";
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     protected final Provider<T> provider;
 
@@ -96,7 +97,7 @@ public abstract class EntitiesView<T> extends Crud<T> implements CrudForm<T> {
     protected abstract T updateOrCreate(T entity);
 
     protected GridDecorators<T> filterCriteria(boolean hasItemActions, boolean hasGlobalActions, Consumer<GridDecorators<T>> creator) {
-        GridDecorators<T> filters = GridDecorators.of(this, grid(), hasItemActions, hasGlobalActions);
+        GridDecorators<T> filters = GridDecorators.of(this, grid(), entityClass().getSimpleName(), hasItemActions, hasGlobalActions);
         creator.accept(filters);
         return filters;
     }
@@ -108,7 +109,7 @@ public abstract class EntitiesView<T> extends Crud<T> implements CrudForm<T> {
     }
 
     protected GridDecorators<T> gridFiltersAndActions(boolean hasItemActions, boolean hasGlobalActions) {
-        return GridDecorators.of(this, grid(), hasItemActions, hasGlobalActions);
+        return GridDecorators.of(this, grid(), entityClass().getSimpleName(), hasItemActions, hasGlobalActions);
     }
 
     protected static <T> T updateOrCreate(T entity, Binder<T> binder, Supplier<T> factory) {

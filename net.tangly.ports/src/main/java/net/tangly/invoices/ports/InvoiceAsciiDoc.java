@@ -71,7 +71,7 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
             helper.tableEnd();
 
             helper.tableHeader(null, "stripes=\"none\", options=\"noheader\", cols=\"4,2,4,2\"");
-            helper.tableRow(bundle.getString("invoiceNumber"), invoice.id(), bundle.getString("invoiceDate"), invoice.invoicedDate().toString());
+            helper.tableRow(bundle.getString("invoiceNumber"), invoice.id(), bundle.getString("invoiceDate"), invoice.date().toString());
             helper.tableRow("", "", bundle.getString("invoiceDueDate"), invoice.dueDate().toString());
             helper.tableEnd();
 

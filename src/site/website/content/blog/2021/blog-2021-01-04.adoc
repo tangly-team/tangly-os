@@ -2,7 +2,7 @@
 title: "Software Development for Students"
 linkTitle: "Software Development for Students"
 date: 2021-01-25
-tags: ["java", "series-students"]
+tags: ["java", "git", "series-students"]
 ---
 
 == Software Development for Students

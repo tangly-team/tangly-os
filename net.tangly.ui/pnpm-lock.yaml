@@ -5,6 +5,7 @@ dependencies:
   '@polymer/paper-button': 3.0.1
   '@polymer/paper-icon-button': 3.0.2
   '@polymer/polymer': 3.2.0
+  '@vaadin-component-factory/vcf-autocomplete': 1.2.7
   '@vaadin-component-factory/vcf-tooltip': 1.3.13
   '@vaadin/flow-frontend': 'link:target/flow-frontend'
   '@vaadin/form': 'link:target/flow-frontend/form'
@@ -264,6 +265,23 @@ packages:
     dev: true
     resolution:
       integrity: sha512-gHUHI6pJaANIO2r6WcbT7+WMgbL9GZooR4tWpuBOETpDIqFNxwaJluE+6rj6VGYe8k6OkfhbHz2Fkm8kl06Igw==
+  /@vaadin-component-factory/vcf-autocomplete/1.2.7:
+    dependencies:
+      '@polymer/iron-icon': 3.0.1
+      '@polymer/iron-resizable-behavior': 3.0.1
+      '@polymer/polymer': 3.2.0
+      '@vaadin/vaadin-button': 2.4.0
+      '@vaadin/vaadin-element-mixin': 2.4.2
+      '@vaadin/vaadin-item': 2.3.0
+      '@vaadin/vaadin-license-checker': 2.1.2
+      '@vaadin/vaadin-list-box': 1.4.0
+      '@vaadin/vaadin-lumo-styles': 1.6.1
+      '@vaadin/vaadin-overlay': 3.5.1
+      '@vaadin/vaadin-text-field': 2.8.2
+      '@vaadin/vaadin-themable-mixin': 1.6.2
+    dev: false
+    resolution:
+      integrity: sha512-fFNaZGiiPSEEj66Y322kqRaCcSivRGuilm6RC6DZBWFYIx/eSGV0kdj8v6djP3iQdNApUTSx8dZ+FA879b4hPg==
   /@vaadin-component-factory/vcf-tooltip/1.3.13:
     dependencies:
       '@polymer/polymer': 3.2.0
@@ -6465,6 +6483,7 @@ specifiers:
   '@polymer/paper-icon-button': ^3.0.2
   '@polymer/polymer': 3.2.0
   '@types/validator': 13.1.0
+  '@vaadin-component-factory/vcf-autocomplete': 1.2.7
   '@vaadin-component-factory/vcf-tooltip': 1.3.13
   '@vaadin/flow-frontend': ./target/flow-frontend
   '@vaadin/form': ./target/flow-frontend/form

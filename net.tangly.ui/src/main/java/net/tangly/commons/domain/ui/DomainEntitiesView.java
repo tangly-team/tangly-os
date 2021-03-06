@@ -59,7 +59,8 @@ public class DomainEntitiesView extends EntitiesView<DomainEntity> {
         grid.setWidthFull();
         setSizeFull();
 
-        GridDecorators<DomainEntity<?>> decorator = new GridDecorators(grid, false, false);
+        // TODO why create decorator
+        GridDecorators<DomainEntity<?>> decorator = new GridDecorators(grid, entityClass().getSimpleName(),false, false);
         decorator.addFilter(new GridDecorators.FilterText<>(decorator, DomainEntity::name, "Name", "name"));
         addAndExpand(decorator, grid);
     }

@@ -17,16 +17,15 @@ import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.datepicker.DatePicker;
-import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.bus.ledger.LedgerBoundedDomain;
-import net.tangly.commons.domain.ui.Cmd;
+import net.tangly.commons.domain.ui.CmdDialog;
 import net.tangly.commons.vaadin.VaadinUtils;
 
-public class CmdCreateLedgerDocument extends Dialog implements Cmd {
+public class CmdCreateLedgerDocument extends CmdDialog {
     private final TextField name;
     private final DatePicker fromDate;
     private final DatePicker toDate;
@@ -35,6 +34,7 @@ public class CmdCreateLedgerDocument extends Dialog implements Cmd {
     private final LedgerBoundedDomain domain;
 
     public CmdCreateLedgerDocument(LedgerBoundedDomain domain) {
+        super("40em");
         this.domain = domain;
         name = new TextField("Name", "document name");
         fromDate = VaadinUtils.createDatePicker("From");
@@ -44,7 +44,7 @@ public class CmdCreateLedgerDocument extends Dialog implements Cmd {
     }
 
     @Override
-    public void execute() {
+    protected FormLayout form() {
         FormLayout form = new FormLayout();
         VaadinUtils.set3ResponsiveSteps(form);
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
@@ -53,7 +53,6 @@ public class CmdCreateLedgerDocument extends Dialog implements Cmd {
         });
         Button cancel = new Button("Cancel", e -> this.close());
         form.add(name, new HtmlComponent("br"), fromDate, toDate, withVat, withTransactions, new HtmlComponent("br"), new HorizontalLayout(execute, cancel));
-        add(form);
-        open();
+        return form;
     }
 }

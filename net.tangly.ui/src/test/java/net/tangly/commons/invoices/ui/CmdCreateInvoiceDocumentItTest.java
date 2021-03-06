@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 class CmdCreateInvoiceDocumentItTest {
     @Test
-    void createInfoiceDocumentTest() {
+    void testCreateInfoiceDocument() {
 
     }
 }

@@ -39,7 +39,6 @@ import net.tangly.bus.crm.Subject;
 import net.tangly.bus.invoices.InvoicesBoundedDomain;
 import net.tangly.bus.ledger.LedgerBoundedDomain;
 import net.tangly.bus.products.ProductsBoundedDomain;
-import net.tangly.commons.crm.ui.AnalyticsCrmView;
 import net.tangly.commons.crm.ui.CmdChangePassword;
 import net.tangly.commons.crm.ui.CmdLogin;
 import net.tangly.commons.crm.ui.CmdLogout;
@@ -63,8 +62,6 @@ public class MainLayout extends AppLayout {
     private static final InvoicesBoundedDomain invoicesDomain;
     private static final ProductsBoundedDomain productsDomain;
 
-    private final AnalyticsCrmView analyticsCrmView;
-
     private final Map<String, BoundedDomainUi> domains;
     private MenuBar menuBar;
 
@@ -81,8 +78,6 @@ public class MainLayout extends AppLayout {
         put(new ProductsBoundedDomainUi(productsDomain));
         put(new InvoicesBoundedDomainUi(invoicesDomain));
         put(new LedgerBoundedDomainUi(ledgerDomain));
-
-        analyticsCrmView = new AnalyticsCrmView(crmDomain.logic(), invoicesDomain.logic(), ledgerDomain.logic());
 
         Image image;
         try {

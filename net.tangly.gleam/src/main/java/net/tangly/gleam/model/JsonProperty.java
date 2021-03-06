@@ -21,7 +21,7 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import net.tangly.commons.lang.TriFunction;
+import net.tangly.commons.lang.functional.TriFunction;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 

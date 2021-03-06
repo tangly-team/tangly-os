@@ -10,25 +10,25 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.commons.lang;
+package net.tangly.commons.lang.exceptions;
 
 import java.util.concurrent.CompletionException;
-import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 /**
- * Wrapper for a consumer throwing a checked exception to enable use in streams.
+ * Wrapper for a predicate throwing a checked exception to enable use in streams.
  *
  * @param <T> parameter of the function
  * @param <E> checked exception thrown by the function
  */
 @FunctionalInterface
-interface ThrowingConsumer<T, E extends Exception> {
-    void accept(T t) throws E;
+public interface ThrowingPredicate<T, E extends Exception> {
+    boolean test(T t) throws E;
 
-    static <T, E extends Exception> Consumer<T> of(ThrowingConsumer<T, E> consumer) {
+    static <T, E extends Exception> Predicate<T> of(ThrowingPredicate<T, E> f) {
         return t -> {
             try {
-                consumer.accept(t);
+                return f.test(t);
             } catch (Exception e) {
                 throw new CompletionException(e);
             }

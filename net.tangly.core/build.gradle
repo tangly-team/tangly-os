@@ -31,14 +31,23 @@ sourceSets {
     }
 }
 
+//java {
+//    modularity.inferModulePath.set(true)
+//}
+
 dependencies {
     implementation project(':net.tangly.commons')
 
-    implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.16'
+    implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.19'
     implementation 'org.iban4j:iban4j:3.2.2-RELEASE'
     implementation "one.microstream:storage.embedded:$microStreamVersion"
 
+    implementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    // Java 9 module compliant version of https://github.com/stleary/JSON-java
+    implementation "com.guicedee.services:json:$jsonVersion"
+
+    testImplementation "com.networknt:json-schema-validator:$jsonValidatorVersion"
+
     testImplementation "org.flywaydb:flyway-core:$flyWayVersion"
-    testImplementation "com.guicedee.services:json:$jsonVersion"
     implementation "org.hsqldb:hsqldb:$hsqldbVersion"
 }

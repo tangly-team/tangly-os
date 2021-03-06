@@ -16,18 +16,17 @@ package net.tangly.commons.products.ui;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.datepicker.DatePicker;
-import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.bus.products.Assignment;
 import net.tangly.bus.products.ProductsBoundedDomain;
-import net.tangly.commons.domain.ui.Cmd;
+import net.tangly.commons.domain.ui.CmdDialog;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class CmdCreateAssignmentDocument extends Dialog implements Cmd {
+public class CmdCreateAssignmentDocument extends CmdDialog {
     private final TextField assignmentName;
     private final TextField collaboratorName;
     private final DatePicker fromDate;
@@ -36,6 +35,7 @@ public class CmdCreateAssignmentDocument extends Dialog implements Cmd {
     private final ProductsBoundedDomain domain;
 
     public CmdCreateAssignmentDocument(@NotNull Assignment assignment, @NotNull ProductsBoundedDomain domain) {
+        super("4oem");
         this.assignment = assignment;
         this.domain = domain;
         assignmentName = VaadinUtils.createTextField("Assignment", "assignment name", true);
@@ -48,7 +48,7 @@ public class CmdCreateAssignmentDocument extends Dialog implements Cmd {
     }
 
     @Override
-    public void execute() {
+    protected FormLayout form() {
         FormLayout form = new FormLayout();
         VaadinUtils.set3ResponsiveSteps(form);
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
@@ -57,9 +57,6 @@ public class CmdCreateAssignmentDocument extends Dialog implements Cmd {
         });
         Button cancel = new Button("Cancel", e -> this.close());
         form.add(assignmentName, collaboratorName, new HtmlComponent("br"), fromDate, toDate, new HtmlComponent("br"), new HorizontalLayout(execute, cancel));
-        add(form);
-        setResizable(true);
-        open();
-
+        return form;
     }
 }

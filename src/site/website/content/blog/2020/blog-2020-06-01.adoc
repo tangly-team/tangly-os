@@ -12,14 +12,31 @@ tags: ["design", "series-agile-design"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2020-06-01-head.jpg[width=420, height=360, role=left]
+image::2020-06-01-head.jpg[width=420,height=360,role=left]
+In computer programming and software design, code refactoring is the process of restructuring existing computer code without changing its external behavior.
+
+Refactoring is intended to improve the design, structure, or implementation of the software (its non-functional attributes), while preserving its functionality.
+
 With refactoring you can take a bad design, even chaos software, and rework it into well-designed code.
 Most often it is cheaper refactoring a legacy application instead of rewriting it from scratch.
 
-[quote, Martin Fowler]
+Simply put, refactoring is a way of decreasing https://en.wikipedia.org/wiki/Technical_debt[Technical Debt].
+
+There are two general categories of benefits to the activity of refactoring.
+
+Maintainability::
+It is easier to fix bugs because the source code is easy to read and the intent of its author is easy to grasp.
+This might be achieved by reducing large monolithic routines into a set of individually concise, well-named, single-purpose methods.
+It might be achieved by moving a method to a more appropriate class, or by removing misleading comments.
+Extensibility::
+It is easier to extend the capabilities of the application if it uses recognizable design patterns.
+It provides flexibility where none before may have existed.
+
+[quote,Martin Fowler]
 ____
-Each refactoring step is simple, even simplistic.
-Yet the cumulative effect of these small changes can radically improve the design.
+Refactoring is the process of changing a software system in such a way that it does not alter the external behavior of the code yet improves its internal structure.
+It is a disciplined way to clean up code that minimizes the chances of introducing bugs.
+In essence when you refactor you are improving the design of the code after it has been written.
 ____
 
 === Introduction
@@ -51,14 +68,20 @@ We are talking continuous delivery and even continuous deployment.
 You need a reproducible and automated build process.
 This process must be integrated into your continuous integration and delivery pipeline.
 * _Understand how it is structured_.
-You need a tentative architecture description to start refactoring and to untangle this https://en.wikipedia.org/wiki/Big_ball_of_mud[big ball of mud] into a
-more modular solution.
+You need a tentative architecture description to start refactoring and to untangle this https://en.wikipedia.org/wiki/Big_ball_of_mud[big ball of mud] into a more modular solution.
 
 === Refactor Your Product
 
 Refactoring is always a successful activity.
 You cannot fail.
 But you need discipline, continuous involvement, and measurement.
+
+[quote,Martin Fowler]
+____
+Each refactoring step is simple, even simplistic.
+Yet the cumulative effect of these small changes can radically improve the design.
+____
+
 If you are new to refactoring it is worth to have a coach to smooth the learning curve.
 
 . Extract one big service, refactor, test, and deploy.
@@ -75,18 +98,20 @@ Your senior design specialists already know the flaws.
 Now it is time to correct them.
 . Increase code coverage.
 Code coverage is the security net when you are refactoring code.
-. Slowly add https://www.thoughtworks.com/insights/articles/fitness-function-driven-development[fitness functions] to continuously validate your non-
-functional requirements.
+. Slowly add https://www.thoughtworks.com/insights/articles/fitness-function-driven-development[fitness functions] to continuously validate your non- functional requirements.
 
 Beware of good practices how to write good software products and refactor successfully applications.
 
 * Move to https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design] as an architecture approach.
 It works either for micro architecture or for modular monolith approaches.
-Master long live domain driven design and event storming Master your technical stack and use current tools and libraries Modularize one big service extraction one after the other Avoid using dead architectural techniques.
+* Master long live domain driven design and event storming
+* Master your technical stack and use current tools and libraries.
+* Modularize one big service extraction one after the other Avoid using dead architectural techniques.
 TOGAF, UML, PMI, CMMI are obsolete - various activities they recommend are good, do them in your sprints.
 Avoid lengthy, slow and expensive review approach.
-ATAM is dead.
+* https://en.wikipedia.org/wiki/Architecture_tradeoff_analysis_method[ATAM] is dead.
 The quality tree technique is wonderful, use fitness functions to implement your quality tree.
+
 If you are running legacy technology, this not only becomes a threat to your business but also to your hiring and employer branding efforts.
 As fewer and fewer programmers and operation managers will have the knowledge of those systems, you’ll face a dwindling talent pool.
 
@@ -94,6 +119,13 @@ As fewer and fewer programmers and operation managers will have the knowledge of
 
 Applications do not degrade to legacy or geriatric systems overnight.
 The organization and development group failed to work professionally over years before the product was ultimately doomed.
+
+[quote,Joshua Kerievsky,Refactoring to Patterns]
+____
+By continuously improving the design of code, we make it easier and easier to work with.
+This is in sharp contrast to what typically happens: little refactoring and a great deal of attention paid to expediently adding new features.
+If you get into the hygienic habit of refactoring continuously, you'll find that it is easier to extend and maintain code.
+____
 
 You must establish a culture of professional software development.
 Professional software developers write code which is maintainable and legible.
@@ -115,5 +147,4 @@ The agile architecture track contains the following blogs
 . link:../../2020/legacy-systems-refactoring[Legacy Systems Refactoring]
 . link:../../2020/how-agile-collaborators-learn[How Agile Collaborators Learn]
 
-We also published our https://www.tangly.net/insights/continuous-learning/agile-architecture-course[agile architecture course] (3 ECTS) used for teaching
-computer science students at bachelor level at Swiss technical universities.
+We also published our https://www.tangly.net/insights/continuous-learning/agile-architecture-course[agile architecture course] (3 ECTS) used for teaching computer science students at bachelor level at Swiss technical universities.

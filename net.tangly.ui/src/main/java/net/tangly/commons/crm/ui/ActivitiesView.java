@@ -44,16 +44,16 @@ class ActivitiesView extends EntitiesView<Activity> {
     @Override
     protected void initialize() {
         PaginatedGrid<Activity> grid = grid();
-        grid.addColumn(Activity::date).setKey("date").setHeader("Date").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Activity::code).setKey("code").setHeader("Code").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Activity::duration).setKey("durationInMinutes").setHeader("Duration").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Activity::date).setKey("date").setHeader("Date").setResizable(true).setSortable(true).setFlexGrow(0).setWidth(DATE_WIDTH);
+        grid.addColumn(Activity::code).setKey("code").setHeader("Code").setResizable(true).setSortable(true).setFlexGrow(0).setWidth("10em");
+        grid.addColumn(Activity::duration).setKey("durationInMinutes").setHeader("Duration").setResizable(true).setSortable(true).setFlexGrow(0)
+            .setWidth("5em");
         grid.addColumn(Activity::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Activity::details).setKey("details").setHeader("Details").setAutoWidth(true).setResizable(true).setSortable(true);
         addAndExpand(filterCriteria(false, false, filters -> {
-            filters.addFilter(new GridDecorators.FilterDate<>(filters))
-                .addFilter(
-                    new GridDecorators.FilterCode<>(filters, (CodeType<ActivityCode>) domain.registry().find(ActivityCode.class).orElseThrow(), Activity::code,
-                        "Code"));
+            filters.addFilter(new GridDecorators.FilterDate<>(filters)).addFilter(
+                new GridDecorators.FilterCode<>(filters, (CodeType<ActivityCode>) domain.registry().find(ActivityCode.class).orElseThrow(), Activity::code,
+                    "Code"));
         }), grid(), gridButtons());
     }
 

@@ -12,5 +12,10 @@
 
 package net.tangly.commons.ledger.ui;
 
+import org.junit.jupiter.api.Test;
+
 class CmdCreateLedgerDocumentItTest extends LedgerItTest {
+    @Test
+    void testCreateLedgerDocument() {
+    }
 }

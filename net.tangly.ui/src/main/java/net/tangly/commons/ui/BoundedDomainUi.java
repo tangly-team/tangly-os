@@ -21,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 public interface BoundedDomainUi {
     String ENTITIES = "Entities";
     String ADMINISTRATION = "Administration";
+    String ANALYTICS = "Analytics";
     String STATISTICS = "Statistics";
     String IMPORT = "Import";
     String EXPORT = "Export";

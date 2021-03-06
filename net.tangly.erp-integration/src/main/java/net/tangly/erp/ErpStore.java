@@ -103,6 +103,7 @@ public record ErpStore(@NotNull FileSystem fs) {
             Files.createDirectory(fs.getPath(ORGANIZATION, "db/"));
             Files.createDirectory(crmDb());
 
+            copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.LEADS_TSV);
             copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.NATURAL_ENTITIES_TSV);
             copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.LEGAL_ENTITIES_TSV);
             copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.EMPLOYEES_TSV);

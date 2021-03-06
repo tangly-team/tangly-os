@@ -45,17 +45,17 @@ public class Comment implements HasOid, HasTags {
     /**
      * The author of the comment, the system should insure that the author is a unique external identifier.
      */
-    private String author;
+    private final String author;
 
     /**
      * The comment as a markdown text.
      */
-    private String text;
+    private final String text;
 
     /**
      * The tags of the comment.
      */
-    private Set<Tag> tags;
+    private final Set<Tag> tags;
 
 
     /**

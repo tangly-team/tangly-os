@@ -12,5 +12,11 @@
 
 package net.tangly.commons.products.ui;
 
+import org.junit.jupiter.api.Test;
+
 class CmdCreateAssignmentDocumentItTest extends ProductsItTest {
+    @Test
+    void testCreateAssignmentDocument() {
+    }
+
 }

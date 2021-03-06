@@ -23,7 +23,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import net.tangly.commons.lang.Strings;
-import net.tangly.commons.lang.ThrowingIOExceptionConsumer;
+import net.tangly.commons.lang.exceptions.ThrowingIOExceptionConsumer;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;

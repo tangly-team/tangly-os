@@ -24,10 +24,11 @@ import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.bus.invoices.Invoice;
 import net.tangly.bus.invoices.InvoicesBoundedDomain;
 import net.tangly.commons.domain.ui.Cmd;
+import net.tangly.commons.domain.ui.CmdDialog;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class CmdCreateInvoiceDocument extends Dialog implements Cmd {
+public class CmdCreateInvoiceDocument extends CmdDialog {
     private final Checkbox withQrCode;
     private final Checkbox withEN16931;
     private final TextField name;
@@ -35,6 +36,7 @@ public class CmdCreateInvoiceDocument extends Dialog implements Cmd {
     private final Invoice invoice;
 
     public CmdCreateInvoiceDocument(@NotNull Invoice invoice, @NotNull InvoicesBoundedDomain domain) {
+        super("40em");
         this.invoice = invoice;
         this.domain = domain;
         name = new TextField("Name");
@@ -44,8 +46,7 @@ public class CmdCreateInvoiceDocument extends Dialog implements Cmd {
         withEN16931 = new Checkbox("with EN 16931");
     }
 
-    @Override
-    public void execute() {
+    protected FormLayout form() {
         FormLayout form = new FormLayout();
         VaadinUtils.set3ResponsiveSteps(form);
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
@@ -55,8 +56,6 @@ public class CmdCreateInvoiceDocument extends Dialog implements Cmd {
         Button cancel = new Button("Cancel", e -> this.close());
 
         form.add(name, new HtmlComponent("br"), withQrCode, withEN16931, new HtmlComponent("br"), new HorizontalLayout(execute, cancel));
-        add(form);
-        open();
-
+        return form;
     }
 }

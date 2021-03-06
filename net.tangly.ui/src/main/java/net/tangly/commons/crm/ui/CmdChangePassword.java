@@ -16,7 +16,6 @@ import java.util.Objects;
 
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -26,11 +25,11 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
 import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.Subject;
-import net.tangly.commons.domain.ui.Cmd;
+import net.tangly.commons.domain.ui.CmdDialog;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class CmdChangePassword extends Dialog implements Cmd {
+public class CmdChangePassword extends CmdDialog {
     public static final String USERNAME = "Username";
     public static final String CURRENT_PASSWORD = "Current Password";
     public static final String NEW_PASSWORD = "New Password";
@@ -85,6 +84,7 @@ public class CmdChangePassword extends Dialog implements Cmd {
     private final PasswordField confirmPassword;
 
     public CmdChangePassword(@NotNull CrmBoundedDomain domain, @NotNull Subject subject) {
+        super("2oem");
         this.domain = domain;
         changePassword = new ChangePassword(subject);
         username = new TextField(USERNAME, "username");
@@ -98,16 +98,7 @@ public class CmdChangePassword extends Dialog implements Cmd {
     }
 
     @Override
-    public void execute() {
-        HorizontalLayout layout = new HorizontalLayout();
-        layout.setPadding(true);
-        layout.add(form());
-        add(layout);
-        this.setWidth("20em");
-        open();
-    }
-
-    FormLayout form() {
+    protected FormLayout form() {
         FormLayout form = new FormLayout();
         VaadinUtils.set1ResponsiveSteps(form);
         Binder<ChangePassword> binder = new Binder<>();

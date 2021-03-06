@@ -12,6 +12,6 @@
  */
 
 /**
- * Defines the user interface views for the CRM domain model abstractions.
+ * Defines the user interface views for the CRM bounded domain model abstractions.
  */
 package net.tangly.commons.crm.ui;
