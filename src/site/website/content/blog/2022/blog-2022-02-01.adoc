@@ -1,0 +1,54 @@
+---
+title: "The Quest for an Agile Company: Five Years tangly llc"
+linkTitle: "Five Years tangly"
+date: 2020-11-06
+tags: ["agile"]
+---
+
+== The Quest for an Agile Company: Five Years tangly llc
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2022-02-01-head.png[width=420,height=360,role=left]
+Historically, big beat small.
+Scale was a sufficient advantage.
+Now, fast and adaptive beats slow and steadfast.
+New technologies, evolving customer preferences and changing employee expectations are fundamentally challenging established ways of working.
+It’s time to move beyond a rigid hierarchy, siloed business units, crippling bureaucracy and an increasingly unwieldy matrix.
+Agile organizations combine the efficiencies of scale with the speed, flexibility and resilience to compete and win in today’s world.
+
+Companies are asking:
+
+* Why does our organization struggle to move quickly and what can we do about it?
+* How do we empower our people to take more accountability for performance and truly embed customer centricity?
+* How do we organize for both sides of the productivity equation—cost and innovation-driven growth?
+
+=== Challenges of Agile Companies
+
+Now, we find the machine paradigm shifting in the face of the organizational challenges brought by the “digital revolution” that is transforming industries, economies, and societies.
+This is expressed in four current trends:
+
+Quickly evolving environment::
+All stakeholders’ demand patterns are evolving rapidly: customers, partners, and regulators have pressing needs; investors are demanding growth, which results in acquisitions and restructuring; and competitors and collaborators demand action to accommodate fast-changing priorities.
+Constant introduction of disruptive technology::
+Established businesses and industries are being commoditized or replaced through digitization, bioscience advancements, the innovative use of new models, and automation.
+Examples include developments such as machine learning, the Internet of Things, and robotics.
+Accelerating digitization and democratization of information::
+The increased volume, transparency, and distribution of information require organizations to rapidly engage in multidirectional communication and complex collaboration with customers, partners, and colleagues.
+The new war for talent::
+As creative knowledge- and learning-based tasks become more important, organizations need a distinctive value proposition to acquire—and retain—the best talent, which is often more diverse.
+These “learning workers” often have more diverse origins, thoughts, composition, and experience and may have different desires (for example, millennials).
+
+=== Five Trademarks of Agile Organizations
+
+North Star embodied across the organization Network of empowered teams Rapid decision and learning cycles Dynamic people model that ignites passion Next-generation enabling technology
+
+=== References
+
+. link:../../2020/the-quest-for-an-agile-company-five-years-tangly-llc[The Quest for an Agile Company: Five Years tangly llc]
+. link:../../2019/a-journey-to-be-a-digital-company-tangly-llc[A Journey To Be a Digital Company]
+. link:../../2016/found-a-limited-liability-company-in-switzerland/[Found a Limited Liability Company]
+

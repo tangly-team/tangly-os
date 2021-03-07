@@ -2,7 +2,7 @@
 title: "MicroStream 4.x"
 linkTitle: "MicroStream 4.x"
 date: 2021-03-02
-tags: ["java"]
+tags: ["java", "design"]
 
 ---
 
