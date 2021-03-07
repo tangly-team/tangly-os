@@ -28,10 +28,6 @@ project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
 project.description = "Vaadin user interface for the business components (tangly llc)"
 
-ext {
-    vaadinVersion = '18.0.6'
-}
-
 vaadin {
     pnpmEnable = true
 }
