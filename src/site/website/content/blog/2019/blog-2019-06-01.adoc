@@ -17,7 +17,7 @@ You are applying the agile, lean approach to your software product development.
 Your teams use Scrum or Kanban to deliver running software every two weeks.
 
 To create an agile architecture you must write agile worthy code.
-And agile code is always clean code.
+Agile code is always clean code.
 
 Start early, do it continuously and soon your code will be clean, legible and free of defects.
 
@@ -28,9 +28,9 @@ Having a huge class with thousands of lines of code plainly demonstrate that you
 Such monsters are not born over one night coding session.
 It takes time and incompetence to create such maintenance nightmares.
 
-And as long as your product contains such code monsters it is worthless to pretend having a nice and thought through architecture.
+As long as your product contains such code monsters it is worthless to pretend to have a nice and thought through architecture.
 
-Team discipline and early warning systems are the key to avoid such blunders and kill the monster in the egg.
+Team discipline and early warning systems are the keys to avoid such blunders and kill the monster in the egg.
 
 === Clean Code and Refactoring
 
@@ -66,12 +66,13 @@ The better way is https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_d
 
 For each feature you need acceptance criteria; this approach is also called _specification by example_.
 For each acceptance criteria write an acceptance test which is executed each time the application is updated in the continuous delivery pipeline.
-Therefore the acceptance tests are the living documentation of the behavior of your product.
+The acceptance tests are the living documentation of the behavior of your product.
 
 To implement this approach you need
 
 * Acceptance criteria which imply specifications by example - you need to train your business analysts and product owners,
-* Cucumber for Java (or equivalent tools) - to write acceptance tests, Mock all external systems and the database - to have fast build and test time and avoid external dependencies,
+* Cucumber for Java (or equivalent tools) - to write acceptance tests, Mock all external systems including the database.
+You want to have fast build and test time and avoid external dependencies,
 * A continuous build and delivery pipeline to automatically run your acceptance validation tests upon each application change,
 * Avoid user interface tests - because they are slow and brittle,
 * Use in memory database only if you have to - they are a fast solution to write acceptance tests but are intrinsically slower than mocks.
@@ -87,7 +88,8 @@ quality -,
 net to guaranty quality attributes in your source code,
 * https://en.wikipedia.org/wiki/DevOps[DevOps] starting with git, docker, continuous integration, delivery and deployment - to speed up development and
 eliminate tedious manual errors,
-* Lack of accountability equates to lack of trust - your teams are accountable for the quality of your product and you should trust them.
+* Lack of accountability equates to lack of trust - your teams are accountable for the quality of your product.
+You should trust them.
 
 Once good practices are established you can move to more sophisticated tools - such as git history code analysis - to uncover weaknesses in your development department.
 
@@ -102,7 +104,7 @@ However, there are situations where pull requests are not necessary.
 For example, if a feature is implemented in pair programming or mob programming then the code is already reviewed while it is written.
 
 We decided that it does not have to be reviewed again but of course, everybody may look at the commits later on in GitHub and add comments.
-As a rule of thumb we agreed that every line of code has to be approved by at least one other developer before it is pushed into our master branch.
+A rule of thumb we agreed upon is that every line of code has to be approved by at least one other developer before it is pushed into our master branch.
 
 ==== Pull Requests in Trunk Based Development
 

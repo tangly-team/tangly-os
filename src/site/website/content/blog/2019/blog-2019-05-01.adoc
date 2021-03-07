@@ -73,6 +73,7 @@ Your architects are talented developers and are full members of your Scrum teams
 ____
 
 Your development teams
+
 * are expert in the used programming language and stack,
 * understand object-oriented, functional and rule based programming,
 * known all major patterns and idioms of the used development stack,
