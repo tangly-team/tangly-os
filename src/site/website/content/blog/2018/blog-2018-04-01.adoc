@@ -114,4 +114,4 @@ How you do it is up to you.
 - [[[effectivejava, 8]]] Effective Java: Best Practices for the Java Platform (3^rd^ Edition), Joshua Bloch, 2018
 - [[[refactoring, 9]]] Refactoring: Improving the Design of Existing Code (2^nd^ Edition), Martin Fowler, 2018
 
-An extensive list of books can be found under ../../ideas/learnings/books[Books].
+An extensive list of books can be found under link:../../ideas/learnings/books[Books].
