@@ -1,8 +1,12 @@
 package net.tangly.erp;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.lang.invoke.MethodHandles;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Properties;
 
 import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.CrmBusinessLogic;
@@ -27,48 +31,71 @@ import net.tangly.ledger.ports.LedgerHdl;
 import net.tangly.products.ports.ProductsAdapter;
 import net.tangly.products.ports.ProductsEntities;
 import net.tangly.products.ports.ProductsHdl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+/**
+ * The ERP application instantiating the bounded domain instances. The class implements a modular monolithical applicaition.
+ */
 public class Erp {
-    private static final String ORGANIZATION = "/Users/Shared/tangly/";
-    private static final TypeRegistry registry = new TypeRegistry();
+    private static final String ROOT_DIRECTORY_PROPERTY = "erp.root.directory";
+    private static final String DATABASES_DIRECTORY_PROPERTY = "erp.root.db.directory";
+    private static final String IMPORTS_DIRECTORY_PROPERTY = "erp.root.imports.directory";
+    private static final String REPORTS_DIRECTORY_PROPERTY = "erp.root.reports.directory";
 
-    // TODO configure root directory through parameter
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private final TypeRegistry registry;
+    private final String organization;
+    private final String databases;
+    private final String imports;
+    private final String reports;
+    private final Properties properties;
+
     public Erp() {
+        this.registry = new TypeRegistry();
+        this.properties = new Properties();
+        load();
+        organization = properties.getProperty(ROOT_DIRECTORY_PROPERTY);
+        databases = properties.getProperty(DATABASES_DIRECTORY_PROPERTY);
+        imports = properties.getProperty(IMPORTS_DIRECTORY_PROPERTY);
+        reports = properties.getProperty(REPORTS_DIRECTORY_PROPERTY);
+
     }
 
-    public static InvoicesBoundedDomain ofInvoicesDomain() {
-        // TODO change as soon as MicroStream supports again records, currently persistence is disabled
-        //        var realm = new InvoicesEntities(Path.of(ORGANIZATION, "db/invoices/"));
-        var realm = new InvoicesEntities();
-        return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesHdl(realm, Path.of(ORGANIZATION, "import/invoices/")),
-            new InvoicesAdapter(realm, Path.of(ORGANIZATION, "reports/invoices/")), registry);
+    public InvoicesBoundedDomain ofInvoicesDomain() {
+        var realm = (databases == null) ? new InvoicesEntities() : new InvoicesEntities(Path.of(databases, InvoicesBoundedDomain.DOMAIN));
+        return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesHdl(realm, Path.of(imports, InvoicesBoundedDomain.DOMAIN)),
+            new InvoicesAdapter(realm, Path.of(reports, InvoicesBoundedDomain.DOMAIN)), registry);
     }
 
-    public static CrmBoundedDomain ofCrmDomain() {
-        // TODO change as soon as MicroStream supports again records, currently persistence is disabled
-        //        var realm = new CrmEntities(Path.of(ORGANIZATION, "db/crm/"));
-        var realm = new CrmEntities();
+    public CrmBoundedDomain ofCrmDomain() {
+        var realm = (databases == null) ? new CrmEntities() : new CrmEntities(Path.of(databases, CrmBoundedDomain.DOMAIN));
         if (realm.subjects().items().isEmpty()) {
             realm.subjects().update(createAdminSubject());
         }
-        return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmHdl(realm, Path.of(ORGANIZATION, "import/crm/")), null, registry);
+        return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmHdl(realm, Path.of(imports, CrmBoundedDomain.DOMAIN)), null, registry);
     }
 
-    public static ProductsBoundedDomain ofProductsDomain() {
-        // TODO change as soon as MicroStream supports again records, currently persistence is disabled
-        //        var realm = new ProductsEntities(Path.of(ORGANIZATION, "db/products/"));
-        var realm = new ProductsEntities();
+    public ProductsBoundedDomain ofProductsDomain() {
+        var realm = (databases == null) ? new ProductsEntities() : new ProductsEntities(Path.of(databases, ProductsBoundedDomain.DOMAIN));
         var logic = new ProductsBusinessLogic(realm);
-        return new ProductsBoundedDomain(realm, logic, new ProductsHdl(realm, Path.of(ORGANIZATION, "import/products/")),
-            new ProductsAdapter(logic, Path.of(ORGANIZATION, "reports/assignments")), registry);
+        return new ProductsBoundedDomain(realm, logic, new ProductsHdl(realm, Path.of(imports, ProductsBoundedDomain.DOMAIN)),
+            new ProductsAdapter(logic, Path.of(reports, ProductsBoundedDomain.DOMAIN)), registry);
     }
 
-    public static LedgerBoundedDomain ofLedgerDomain() {
-        // TODO change as soon as MicroStream supports again records, currently persistence is disabled
-        //        var ledger = new LedgerEntities(Path.of(ORGANIZATION, "db/ledger/"));
-        var ledger = new LedgerEntities();
-        return new LedgerBoundedDomain(ledger, new LedgerBusinessLogic(ledger), new LedgerHdl(ledger, Path.of(ORGANIZATION, "import/ledger/")),
-            new LedgerAdapter(ledger, Path.of(ORGANIZATION, "reports/ledger")), registry);
+    public LedgerBoundedDomain ofLedgerDomain() {
+        var realm = (databases == null) ? new LedgerEntities() : new LedgerEntities(Path.of(databases, LedgerBoundedDomain.DOMAIN));
+        return new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), new LedgerHdl(realm, Path.of(imports, LedgerBoundedDomain.DOMAIN)),
+            new LedgerAdapter(realm, Path.of(reports, LedgerBoundedDomain.DOMAIN)), registry);
+    }
+
+    private void load() {
+        String propertiesPath = Thread.currentThread().getContextClassLoader().getResource("application.properties").getPath();
+        try {
+            properties.load(new FileInputStream(propertiesPath));
+        } catch (IOException e) {
+            logger.atError().log("Application Configuration Load Error", e);
+        }
     }
 
     private static Subject createAdminSubject() {

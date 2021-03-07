@@ -66,10 +66,11 @@ public class MainLayout extends AppLayout {
     private MenuBar menuBar;
 
     static {
-        crmDomain = Erp.ofCrmDomain();
-        invoicesDomain = Erp.ofInvoicesDomain();
-        productsDomain = Erp.ofProductsDomain();
-        ledgerDomain = Erp.ofLedgerDomain();
+        Erp erp = new Erp();
+        crmDomain = erp.ofCrmDomain();
+        invoicesDomain = erp.ofInvoicesDomain();
+        productsDomain = erp.ofProductsDomain();
+        ledgerDomain = erp.ofLedgerDomain();
     }
 
     public MainLayout() {

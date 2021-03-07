@@ -21,13 +21,16 @@ The **tangly ui erp** component provides a Vaadin based user interfaces for ente
 The component is using records and requires **Java 14 or higher**.
 
 
-Currently we are moving at the bleeding edge of our components. Therefore to build and execute the ERP application please
+Currently, we are moving at the bleeding edge of our components. Therefore to build and execute the ERP application please
 
 ```shell
     mvn jetty:run
 ```
 
 The initial username and password are 'administrator' and 'aeon'.
+
+The file _application.properties_ in _.../main/resources_ directory tailors the configuration of the application, mainly the location of data.
+The file contains comments for new users.
 
 The Maven POM file is used to build the application and run it because the Gradle Jetty plugin crashes.
 

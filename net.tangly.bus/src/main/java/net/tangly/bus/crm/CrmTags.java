@@ -17,7 +17,6 @@ package net.tangly.bus.crm;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
-import java.util.Optional;
 
 import net.tangly.core.Address;
 import net.tangly.core.BankConnection;
@@ -174,5 +173,4 @@ public final class CrmTags {
     public static String organizationZefixUrl(@NotNull LegalEntity entity) {
         return "https://www.zefix.ch/en/search/entity/list?name=" + entity.id() + "&searchType=exact";
     }
-
 }
