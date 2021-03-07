@@ -320,7 +320,8 @@ public class Invoice implements HasEditableId, HasDate {
         return """
             Invoice[id=%s, name=%s, text=%s, invoicingEntity=%s, invoicedEntity=%s, invoicingAddress=%s, invoicingConnection=%s, contractId=%s,  \
             invoicedAddress=%s, deliveryDate=%s, invoicedDate=%s, dueDate=%s, currency=%s, locale=%s, paymentConditions=%s, items=%s]
-             """.formatted(id(), name(), text(), invoicingEntity(), invoicedEntity(), invoicingAddress(), invoicingConnection(), contractId(),
-            invoicedAddress(), deliveryDate(), date(), dueDate(), currency(), locale(), paymentConditions(), items());
+             """
+            .formatted(id(), name(), text(), invoicingEntity(), invoicedEntity(), invoicingAddress(), invoicingConnection(), contractId(), invoicedAddress(),
+                deliveryDate(), date(), dueDate(), currency(), locale(), paymentConditions(), items());
     }
 }

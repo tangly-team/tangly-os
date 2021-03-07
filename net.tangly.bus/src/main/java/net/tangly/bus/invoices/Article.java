@@ -33,5 +33,5 @@ import org.jetbrains.annotations.NotNull;
  * @param vatRate   VAT rate of the product, requested for specific VAT tax regimes
  */
 public record Article(@NotNull String id, String name, String text, @NotNull ArticleCode code, @NotNull BigDecimal unitPrice, String unit, BigDecimal vatRate)
-        implements HasId {
+    implements HasId {
 }

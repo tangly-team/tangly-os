@@ -35,7 +35,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The ERP application instantiating the bounded domain instances. The class implements a modular monolithical applicaition.
+ * The ERP application instantiating the bounded domain instances. The class implements a modular monolith application.
  */
 public class Erp {
     private static final String ROOT_DIRECTORY_PROPERTY = "erp.root.directory";
@@ -91,8 +91,8 @@ public class Erp {
 
     private void load() {
         String propertiesPath = Thread.currentThread().getContextClassLoader().getResource("application.properties").getPath();
-        try {
-            properties.load(new FileInputStream(propertiesPath));
+        try (var propertiesFile = new FileInputStream(propertiesPath)) {
+            properties.load(propertiesFile);
         } catch (IOException e) {
             logger.atError().log("Application Configuration Load Error", e);
         }
