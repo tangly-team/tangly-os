@@ -146,3 +146,26 @@ Before uploading the site stop the Hugo local server.
 . the script _completeHugo.sh_ generates the static pictures and copy them to the static folder and publish the whole site on bitbucket.
 
 Upon completion the site is published on the web for all.
+
+==== Set JDK Version under macOS
+
+Install regular Java JDK (Oracle or OpenJDK for example). They will be located under _/Library/Java/JavaVirtualMachines_.
+
+If using bash shell, add following commands to your .bash_profile.
+
+[source, shell]
+----
+alias java15 = "export JAVA_HOME=`/usr/libexec/java_home -v 15`; java -version"
+alias java11 = "export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
+----
+
+You can set the exact version such as _15.0.2_ to precisely select a JDK or set an overall version such as _15_ to select a generic version.
+
+After restarting your terminal the command _java15_ will set JDK 15 to default JDK (if installed on your macOS).
+
+The list of JDK can be found with
+
+[source, shell]
+----
+/usr/libexec/java_home -V
+----
