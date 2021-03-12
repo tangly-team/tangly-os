@@ -40,7 +40,7 @@ class GuiceTest {
         }
     }
 
-    public class TestModule extends AbstractModule {
+    public static class TestModule extends AbstractModule {
         @Override
         protected void configure() {
             bind(AbstractExample.class).to(Example.class);

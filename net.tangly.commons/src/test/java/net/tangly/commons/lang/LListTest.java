@@ -15,12 +15,10 @@ package net.tangly.commons.lang;
 import net.tangly.commons.lang.functional.LList;
 import org.junit.jupiter.api.Test;
 
-import static net.tangly.commons.lang.functional.LList.cons;
-import static net.tangly.commons.lang.functional.LList.list;
-import static net.tangly.commons.lang.functional.LList.nil;
+import static net.tangly.commons.lang.functional.LList.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class LListTest {
+class LListTest {
     @Test
     void testCreateCons() {
         LList<Integer> list = cons(1, cons(2, cons(3, cons(4, cons(5, nil())))));
@@ -47,7 +45,7 @@ public class LListTest {
     void testLength() {
         LList<Integer> list = cons(1, cons(2, cons(3, cons(4, cons(5, nil())))));
         assertThat(list.length()).isEqualTo(5);
-        assertThat(LList.nil().length()).isEqualTo(0);
+        assertThat(LList.nil().length()).isZero();
     }
 
     @Test
