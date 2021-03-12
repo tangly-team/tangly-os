@@ -39,6 +39,17 @@ The source code is licensed under [Apache license 2.0](https://www.apache.org/li
 
 The documentation and examples are licensed under [Creative Common (CC Attribution 4.0 International)](https://creativecommons.org/licenses/by/4.0/).
 
+## Compile the product
+
+You must install JDK version 15 to compile the source code.
+The gradle build file can be triggered without any supplemental installion with
+
+````shell
+./gradlew build
+````
+
+The first run will take time because all dependencies will be downloaded from Maven repositories.
+
 ## Awesome Sponsors and Developers
 
 Corporate sponsors are
