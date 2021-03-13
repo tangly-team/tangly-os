@@ -31,12 +31,17 @@ import org.jetbrains.annotations.NotNull;
  */
 public record ErpStore(@NotNull FileSystem fs) {
     private static final String PACKAGE_NAME = "net/tangly/";
-    private static final String CRM_PACKAGE_NAME = PACKAGE_NAME + "crm/";
-    private static final String LEDGER_PACKAGE_NAME = PACKAGE_NAME + "ledger/";
-    private static final String PRODUCTS_PACKAGE_NAME = PACKAGE_NAME + "products/";
-    private static final String INVOICES_PACKAGE_NAME = PACKAGE_NAME + "invoices/";
+    private static final String CRM = "crm/";
+    private static final String LEDGER = "ledger/";
+    private static final String PRODUCTS = "products/";
+    private static final String INVOICES = "invoices/";
+    private static final String REPORTS = "reports/";
+    private static final String CRM_PACKAGE_NAME = PACKAGE_NAME + CRM;
+    private static final String LEDGER_PACKAGE_NAME = PACKAGE_NAME + LEDGER;
+    private static final String PRODUCTS_PACKAGE_NAME = PACKAGE_NAME + PRODUCTS;
+    private static final String INVOICES_PACKAGE_NAME = PACKAGE_NAME + INVOICES;
     private static final String VCARDS_PACKAGE_NAME = CRM_PACKAGE_NAME + "vcards/";
-    private static final String REPORTS_PACKAGE_NAME = PACKAGE_NAME + "reports/";
+    private static final String REPORTS_PACKAGE_NAME = PACKAGE_NAME + REPORTS;
     private static final String ORGANIZATION = "/organization/";
 
     public Path organizationRoot() {
@@ -48,19 +53,19 @@ public record ErpStore(@NotNull FileSystem fs) {
     }
 
     public Path crmRoot() {
-        return fs.getPath(ORGANIZATION, "crm/");
+        return fs.getPath(ORGANIZATION, CRM);
     }
 
     public Path ledgerRoot() {
-        return fs.getPath(ORGANIZATION, "ledger/");
+        return fs.getPath(ORGANIZATION, LEDGER);
     }
 
     public Path invoicesRoot() {
-        return fs.getPath(ORGANIZATION, "invoices/");
+        return fs.getPath(ORGANIZATION, INVOICES);
     }
 
     public Path productsRoot() {
-        return fs.getPath(ORGANIZATION, "products/");
+        return fs.getPath(ORGANIZATION, PRODUCTS);
     }
 
     public Path vcardsRoot() {
@@ -68,15 +73,15 @@ public record ErpStore(@NotNull FileSystem fs) {
     }
 
     public Path reportsRoot() {
-        return fs.getPath(ORGANIZATION, "reports/");
+        return fs.getPath(ORGANIZATION, REPORTS);
     }
 
     public Path ledgerReportsRoot() {
-        return reportsRoot().resolve("ledger/");
+        return reportsRoot().resolve(LEDGER);
     }
 
     public Path invoiceReportsRoot() {
-        return reportsRoot().resolve("invoices/");
+        return reportsRoot().resolve(INVOICES);
     }
 
     /**
@@ -85,21 +90,21 @@ public record ErpStore(@NotNull FileSystem fs) {
     public void createCrmAndLedgerRepository() {
         try {
             Files.createDirectory(fs.getPath(ORGANIZATION));
-            Files.createDirectory(fs.getPath(ORGANIZATION, "crm/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, CRM));
             Files.createDirectory(fs.getPath(ORGANIZATION, "crm/vcards/"));
-            Files.createDirectory(fs.getPath(ORGANIZATION, "ledger/"));
-            Files.createDirectory(fs.getPath(ORGANIZATION, "products/"));
-            Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/"));
-            Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2015/"));
-            Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2016/"));
-            Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2017/"));
-            Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2018/"));
-            Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2019/"));
-            Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2020/"));
-            Files.createDirectory(fs.getPath(ORGANIZATION, "invoices/2021/"));
-            Files.createDirectory(fs.getPath(ORGANIZATION, "reports/"));
-            Files.createDirectory(fs.getPath(ORGANIZATION, "reports/ledger/"));
-            Files.createDirectory(fs.getPath(ORGANIZATION, "reports/invoices/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, LEDGER));
+            Files.createDirectory(fs.getPath(ORGANIZATION, PRODUCTS));
+            Files.createDirectory(fs.getPath(ORGANIZATION, INVOICES));
+            Files.createDirectory(fs.getPath(ORGANIZATION, INVOICES, "2015/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, INVOICES, "2016/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, INVOICES, "2017/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, INVOICES, "2018/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, INVOICES, "2019/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, INVOICES, "2020/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, INVOICES, "2021/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, REPORTS));
+            Files.createDirectory(fs.getPath(ORGANIZATION, REPORTS, LEDGER));
+            Files.createDirectory(fs.getPath(ORGANIZATION, REPORTS, INVOICES));
             Files.createDirectory(fs.getPath(ORGANIZATION, "db/"));
             Files.createDirectory(crmDb());
 
