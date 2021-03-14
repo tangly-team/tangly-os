@@ -22,11 +22,12 @@ hs_err_pid*
 **/node_modules/
 **/jspm_packages/
 
-/net.tangly.commons.ui/package.json
-/net.tangly.commons.ui/package-lock.json
-/net.tangly.commons.ui/pnpm-lock.yaml
-/net.tangly.commons.ui/pnpmfile.js
-/net.tangly.commons.ui/tsconfig.json
-/net.tangly.commons.ui/types.d.ts
-/net.tangly.commons.ui/webpack.config.js
-/net.tangly.commons.ui/webpack.generated.js
+/net.tangly.ui/package.json
+/net.tangly.ui/package-lock.json
+/net.tangly.ui/pnpm-lock.yaml
+/net.tangly.ui/pnpmfile.js
+/net.tangly.ui/tsconfig.json
+/net.tangly.ui/types.d.ts
+/net.tangly.ui/webpack.config.js
+/net.tangly.ui/webpack.generated.js
+

@@ -127,7 +127,7 @@ public class MainLayout extends AppLayout {
         });
     }
 
-    private void put(BoundedDomainUi domainUi) {
+    private void put(@NotNull BoundedDomainUi domainUi) {
         domains.put(domainUi.name(), domainUi);
     }
 }
