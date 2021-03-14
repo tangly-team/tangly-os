@@ -13,9 +13,6 @@
 
 package net.tangly.commons.vaadin;
 
-import java.time.format.DateTimeFormatter;
-import java.util.Objects;
-
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.tabs.Tab;
@@ -27,6 +24,9 @@ import net.tangly.core.QualifiedEntity;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
+
+import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 /**
  * The entity form provides an interface to all fields of an entity instance. The fields are grouped in tabs.

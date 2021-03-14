@@ -13,6 +13,16 @@
 
 package net.tangly.invoices.ports;
 
+import net.codecrete.qrbill.generator.Strings;
+import net.tangly.bus.invoices.Invoice;
+import net.tangly.bus.invoices.InvoiceLegalEntity;
+import net.tangly.bus.invoices.InvoiceLine;
+import net.tangly.commons.utilities.AsciiDocHelper;
+import net.tangly.core.Address;
+import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.PrintWriter;
 import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
@@ -25,20 +35,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-import net.codecrete.qrbill.generator.Strings;
-import net.tangly.core.Address;
-import net.tangly.bus.invoices.Invoice;
-import net.tangly.bus.invoices.InvoiceLegalEntity;
-import net.tangly.bus.invoices.InvoiceLine;
-import net.tangly.commons.utilities.AsciiDocHelper;
-import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import static net.tangly.commons.utilities.AsciiDocHelper.NEWLINE;
-import static net.tangly.commons.utilities.AsciiDocHelper.bold;
-import static net.tangly.commons.utilities.AsciiDocHelper.format;
-import static net.tangly.commons.utilities.AsciiDocHelper.italics;
+import static net.tangly.commons.utilities.AsciiDocHelper.*;
 
 
 /**

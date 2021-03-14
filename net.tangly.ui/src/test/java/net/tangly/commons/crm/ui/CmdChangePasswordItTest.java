@@ -18,14 +18,8 @@ import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.bus.crm.Subject;
 import org.junit.jupiter.api.Test;
 
-import static com.github.mvysny.kaributesting.v10.LocatorJ._click;
-import static com.github.mvysny.kaributesting.v10.LocatorJ._get;
-import static com.github.mvysny.kaributesting.v10.LocatorJ._setValue;
-import static net.tangly.commons.crm.ui.CmdChangePassword.CANCEL;
-import static net.tangly.commons.crm.ui.CmdChangePassword.CONFIRM_PASSWORD;
-import static net.tangly.commons.crm.ui.CmdChangePassword.CURRENT_PASSWORD;
-import static net.tangly.commons.crm.ui.CmdChangePassword.EXECUTE;
-import static net.tangly.commons.crm.ui.CmdChangePassword.NEW_PASSWORD;
+import static com.github.mvysny.kaributesting.v10.LocatorJ.*;
+import static net.tangly.commons.crm.ui.CmdChangePassword.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CmdChangePasswordItTest extends CrmItTest {

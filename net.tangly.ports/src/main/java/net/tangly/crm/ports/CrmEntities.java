@@ -13,20 +13,7 @@
 
 package net.tangly.crm.ports;
 
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.locks.ReentrantLock;
-import javax.inject.Inject;
-
-import net.tangly.bus.crm.Contract;
-import net.tangly.bus.crm.CrmRealm;
-import net.tangly.bus.crm.Employee;
-import net.tangly.bus.crm.Interaction;
-import net.tangly.bus.crm.Lead;
-import net.tangly.bus.crm.LegalEntity;
-import net.tangly.bus.crm.NaturalEntity;
-import net.tangly.bus.crm.Subject;
+import net.tangly.bus.crm.*;
 import net.tangly.commons.generator.IdGenerator;
 import net.tangly.core.HasOid;
 import net.tangly.core.domain.Realm;
@@ -36,6 +23,12 @@ import net.tangly.core.providers.ProviderPersistence;
 import one.microstream.storage.types.EmbeddedStorage;
 import one.microstream.storage.types.EmbeddedStorageManager;
 import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Inject;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Defines the customer relationship management <i>CRM</i> subsystem. The major abstractions are

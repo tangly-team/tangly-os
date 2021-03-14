@@ -13,23 +13,15 @@
 
 package net.tangly.bus.invoices;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Currency;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
-
 import net.tangly.core.Address;
 import net.tangly.core.BankConnection;
 import net.tangly.core.HasDate;
 import net.tangly.core.HasEditableId;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * <p>The abstraction of an invoice with a set of positions, subtotals, and a total. The items and the subtotals have a position

@@ -13,14 +13,14 @@
 
 package net.tangly.bus.products;
 
+import net.tangly.commons.utilities.DateUtilities;
+import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Inject;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import javax.inject.Inject;
-
-import net.tangly.commons.utilities.DateUtilities;
-import org.jetbrains.annotations.NotNull;
 
 public class ProductsBusinessLogic {
     private final ProductsRealm realm;

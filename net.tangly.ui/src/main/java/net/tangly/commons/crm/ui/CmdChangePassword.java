@@ -12,8 +12,6 @@
 
 package net.tangly.commons.crm.ui;
 
-import java.util.Objects;
-
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -28,6 +26,8 @@ import net.tangly.bus.crm.Subject;
 import net.tangly.commons.domain.ui.CmdDialog;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 public class CmdChangePassword extends CmdDialog {
     public static final String USERNAME = "Username";

@@ -13,14 +13,14 @@
 
 package net.tangly.invoices.ports;
 
+import net.tangly.bus.invoices.Invoice;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.regex.Pattern;
-
-import net.tangly.bus.invoices.Invoice;
-import org.jetbrains.annotations.NotNull;
 
 public final class InvoicesUtilities {
     public static final String INVOICES = "invoices";

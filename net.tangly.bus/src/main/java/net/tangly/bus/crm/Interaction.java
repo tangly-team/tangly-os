@@ -13,16 +13,12 @@
 
 package net.tangly.bus.crm;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-
 import net.tangly.core.QualifiedEntityImp;
 import org.jetbrains.annotations.NotNull;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.*;
 
 /**
  * Defines an interaction between your company and a legal entity and a group of natural entities. The legal entity is the organization you want a contract

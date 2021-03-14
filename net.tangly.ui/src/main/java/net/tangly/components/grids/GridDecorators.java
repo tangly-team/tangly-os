@@ -12,11 +12,6 @@
 
 package net.tangly.components.grids;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Function;
-
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEventListener;
@@ -38,6 +33,11 @@ import net.tangly.core.Strings;
 import net.tangly.core.codes.Code;
 import net.tangly.core.codes.CodeType;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.Function;
 
 /**
  * Defines the filters and actions specific to a grid. A grid decorator provides
@@ -73,11 +73,11 @@ public class GridDecorators<T> extends HorizontalLayout implements SelectedItemL
     }
 
     private final PaginatedGrid<T> grid;
-    private final List<GridFilter<T>> filters;
     private final MenuBar menuBar;
     private final Actions itemActions;
-    private final Actions globalActions;
-    private T selectedItem;
+    private final transient List<GridFilter<T>> filters;
+    private final transient Actions globalActions;
+    private transient T selectedItem;
 
     public GridDecorators(@NotNull PaginatedGrid<T> grid, String text, boolean hasItemActions, boolean hasGlobalActions) {
         this.grid = grid;

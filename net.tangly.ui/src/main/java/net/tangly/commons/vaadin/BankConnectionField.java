@@ -13,14 +13,14 @@
 
 package net.tangly.commons.vaadin;
 
-import java.util.Objects;
-
 import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ErrorLevel;
 import com.vaadin.flow.data.binder.Validator;
 import net.tangly.core.BankConnection;
+
+import java.util.Objects;
 
 /**
  * A composite field to update an immutable bonk connection entity.

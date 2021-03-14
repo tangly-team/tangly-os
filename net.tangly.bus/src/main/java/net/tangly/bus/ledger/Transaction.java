@@ -13,14 +13,14 @@
 
 package net.tangly.bus.ledger;
 
+import net.tangly.core.HasDate;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import net.tangly.core.HasDate;
 
 /**
  * A simple transaction is a money transfer between a debit and a credit accounts. A split transaction is a money transfer between a debit account and a set of

@@ -13,8 +13,6 @@
 
 package net.tangly.commons.vaadin;
 
-import java.util.Objects;
-
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.datepicker.DatePicker;
@@ -27,6 +25,8 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import net.tangly.core.QualifiedEntity;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 public class QualifiedEntityField<T extends QualifiedEntity> extends CustomField<T> {
     private boolean readonly;

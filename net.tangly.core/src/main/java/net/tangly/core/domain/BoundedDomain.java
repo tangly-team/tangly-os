@@ -29,9 +29,9 @@ import org.jetbrains.annotations.NotNull;
  * @param <R> realm handles all entities and values objects of the domain model
  * @param <B> business logic provides complex domain business logic functions
  * @param <H> handler provides an interface to interact with the bounded domain from outer layers
- * @param <P> port empowers the business domain to communicate with outer layers or external sustems
+ * @param <P> port empowers the business domain to communicate with outer layers or external systems
  */
-public class BoundedDomain<R extends Realm, B, H extends Handler, P> {
+public class BoundedDomain<R extends Realm, B, H extends Handler<?>, P> {
     private final String name;
     private final R realm;
     private final H handler;
@@ -54,12 +54,8 @@ public class BoundedDomain<R extends Realm, B, H extends Handler, P> {
     }
 
     protected static <I extends HasTags> void addTagCounts(TypeRegistry registry, List<I> entities, Map<TagType<?>, Integer> counts) {
-        entities.stream().flatMap(e -> e.tags().stream()).map(registry::find).flatMap(Optional::stream).forEach(e -> {
-            if (!counts.containsKey(e)) {
-                counts.put(e, 0);
-            }
-            counts.put(e, counts.get(e) + 1);
-        });
+        entities.stream().flatMap(e -> e.tags().stream()).map(registry::find).flatMap(Optional::stream).forEach(e ->
+            counts.merge(e, 1, (oldValue, _$) -> oldValue++));
     }
 
     public Map<TagType<?>, Integer> countTags(@NotNull Map<TagType<?>, Integer> counts) {

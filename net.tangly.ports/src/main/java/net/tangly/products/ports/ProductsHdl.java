@@ -13,28 +13,20 @@
 
 package net.tangly.products.ports;
 
-import java.nio.file.Path;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-
-import net.tangly.bus.products.Assignment;
-import net.tangly.bus.products.Effort;
-import net.tangly.bus.products.Product;
-import net.tangly.bus.products.ProductsHandler;
-import net.tangly.bus.products.ProductsRealm;
+import net.tangly.bus.products.*;
 import net.tangly.commons.lang.ReflectionUtilities;
-import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
 import net.tangly.ports.TsvHdl;
 import org.jetbrains.annotations.NotNull;
 
-import static net.tangly.ports.TsvHdl.OID;
-import static net.tangly.ports.TsvHdl.TEXT;
-import static net.tangly.ports.TsvHdl.convertFoidTo;
-import static net.tangly.ports.TsvHdl.createTsvQualifiedEntityFields;
+import java.nio.file.Path;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+import static net.tangly.ports.TsvHdl.*;
 
 public class ProductsHdl implements ProductsHandler {
     public static final String PRODUCTS_TSV = "products.tsv";

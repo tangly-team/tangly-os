@@ -20,5 +20,5 @@ module net.tangly.fsm {
     exports net.tangly.fsm.utilities;
 
     requires org.slf4j;
-    requires static org.jetbrains.annotations;
+    requires static transitive org.jetbrains.annotations;
 }

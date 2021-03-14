@@ -13,11 +13,11 @@
 
 package net.tangly.commons.vaadin;
 
-import java.util.Objects;
-import java.util.function.Consumer;
-
 import com.vaadin.flow.data.provider.DataProvider;
 import net.tangly.core.providers.Provider;
+
+import java.util.Objects;
+import java.util.function.Consumer;
 
 /**
  * Provides default actions for the grid view.

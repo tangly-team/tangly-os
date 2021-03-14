@@ -12,8 +12,6 @@
 
 package net.tangly.commons.products.ui;
 
-import javax.inject.Inject;
-
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
@@ -26,6 +24,8 @@ import net.tangly.commons.ui.BoundedDomainUi;
 import net.tangly.commons.ui.MainLayout;
 import net.tangly.commons.vaadin.Crud;
 import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Inject;
 
 public class ProductsBoundedDomainUi implements BoundedDomainUi {
     private final ProductsBoundedDomain domain;

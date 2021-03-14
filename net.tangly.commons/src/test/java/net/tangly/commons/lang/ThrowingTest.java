@@ -12,14 +12,14 @@
 
 package net.tangly.commons.lang;
 
-import java.net.URISyntaxException;
-import java.util.concurrent.TimeoutException;
-import java.util.stream.IntStream;
-
 import net.tangly.commons.lang.exceptions.ThrowingConsumer;
 import net.tangly.commons.lang.exceptions.ThrowingFunction;
 import net.tangly.commons.lang.exceptions.ThrowingPredicate;
 import org.junit.jupiter.api.Test;
+
+import java.net.URISyntaxException;
+import java.util.concurrent.TimeoutException;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 

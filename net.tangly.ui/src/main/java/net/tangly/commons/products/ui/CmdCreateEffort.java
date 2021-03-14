@@ -13,10 +13,6 @@
 
 package net.tangly.commons.products.ui;
 
-import java.lang.invoke.MethodHandles;
-import java.time.LocalDate;
-import java.util.List;
-
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
@@ -38,6 +34,10 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.lang.invoke.MethodHandles;
+import java.time.LocalDate;
+import java.util.List;
 
 public class CmdCreateEffort extends Dialog implements Cmd {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());

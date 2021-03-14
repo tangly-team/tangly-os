@@ -13,13 +13,6 @@
 
 package net.tangly.commons.ui;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
@@ -49,6 +42,13 @@ import net.tangly.commons.products.ui.ProductsBoundedDomainUi;
 import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.erp.Erp;
 import org.jetbrains.annotations.NotNull;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 @CssImport("./styles/shared-styles.css")
 @CssImport(value = "./styles/override-overlay.css", themeFor = "vaadin-dialog-overlay")

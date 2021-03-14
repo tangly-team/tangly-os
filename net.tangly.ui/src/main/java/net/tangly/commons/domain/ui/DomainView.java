@@ -18,13 +18,19 @@ import com.vaadin.flow.component.tabs.Tab;
 import net.tangly.commons.vaadin.TabsComponent;
 import net.tangly.core.domain.BoundedDomain;
 
+import javax.validation.constraints.NotNull;
+
+/**
+ * Provides a view on the domain with tabs monitoring the instances of domain specific entities and tags used in the
+ * bounded domain.
+ */
 public class DomainView extends VerticalLayout {
     private static final String ENTITIES = "Entities";
     private static final String TAGS = "Tags";
     private final TabsComponent tabs;
-    private final BoundedDomain<?, ?, ?, ?> domain;
+    private final transient BoundedDomain<?, ?, ?, ?> domain;
 
-    public DomainView(BoundedDomain<?, ?, ?, ?> domain) {
+    public DomainView(@NotNull BoundedDomain<?, ?, ?, ?> domain) {
         this.domain = domain;
         tabs = new TabsComponent();
         initialize();

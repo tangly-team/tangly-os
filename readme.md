@@ -41,15 +41,18 @@ The documentation and examples are licensed under [Creative Common (CC Attributi
 
 ## Compile the product
 
-You shall have access to a git installation to clone the repository and download the files.
-You must install JDK version 15 to compile the source code.
-The gradle build file can be triggered without any supplemental installation with
+You shall have access to a https://git-scm.com/[Git] installation to clone the repository and download the files.
+You must install https://openjdk.java.net/install/index.html[JDK] version 15 to compile the source code.
+The https://gradle.org/[Gradle] build file can be triggered without any supplemental installation with
 
 ````shell
 ./gradlew build
 ````
 
 The first run will take time because all dependencies will be downloaded from Maven repositories.
+Ensure you have enough bandwidth to provide a smooth experience.
+
+All development activities are performed with probably the best Java IDE IntelliJ IDEA.
 
 ## Awesome Sponsors and Developers
 

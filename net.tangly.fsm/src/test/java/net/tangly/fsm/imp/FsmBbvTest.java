@@ -113,10 +113,10 @@ class FsmBbvTest {
     void staticCheckerTest() {
         FsmBuilder<FsmBbv, FsmBbv.States, FsmBbv.Events> builder = FsmBbv.build();
         StaticChecker<FsmBbv, FsmBbv.States, FsmBbv.Events> checker = new StaticChecker<>();
-        assertThat(checker.check(builder.definition()).size()).isEqualTo(0);
-        assertThat(checker.checkStateHasAtMostOneInitialState(builder.definition()).size()).isEqualTo(0);
-        assertThat(checker.checkStateIdUsedOnce(builder.definition()).size()).isEqualTo(0);
-        assertThat(checker.checkStateWithAfferentTransitionHasInitialState(builder.definition()).size()).isEqualTo(0);
+        assertThat(checker.check(builder.definition()).size()).isZero();
+        assertThat(checker.checkStateHasAtMostOneInitialState(builder.definition()).size()).isZero();
+        assertThat(checker.checkStateIdUsedOnce(builder.definition()).size()).isZero();
+        assertThat(checker.checkStateWithAfferentTransitionHasInitialState(builder.definition()).size()).isZero();
     }
 
     private StateMachine<FsmBbv, FsmBbv.States, FsmBbv.Events> createFsm() {

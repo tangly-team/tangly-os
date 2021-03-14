@@ -13,13 +13,13 @@
 
 package net.tangly.commons.vaadin;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
 import net.tangly.components.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * <p>The CRUD provides a grid view to a set of entities and views to view, update, create and delete an entity. The core view is the same for all

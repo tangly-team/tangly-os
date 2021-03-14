@@ -12,9 +12,9 @@
 
 package net.tangly.commons.utilities;
 
-import java.util.Arrays;
-
 import net.tangly.commons.lang.Interval;
+
+import java.util.Arrays;
 
 public final class MathUtilities {
     public static final double Z_VALUE_PERCENTILE_99 = 2.576;

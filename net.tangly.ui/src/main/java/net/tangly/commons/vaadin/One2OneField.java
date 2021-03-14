@@ -13,8 +13,6 @@
 
 package net.tangly.commons.vaadin;
 
-import java.util.Objects;
-
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
@@ -27,6 +25,8 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.core.HasName;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 /**
  * A composite field to display an one two one relationship instance. The unique name of the referenced instance is shown. The button allows the change of the

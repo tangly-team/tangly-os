@@ -13,8 +13,6 @@
 
 package net.tangly.commons.vaadin;
 
-import java.util.Objects;
-
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -26,6 +24,8 @@ import net.tangly.core.TagType;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 /**
  * The tags view is a Crud view with all the tags defined for an entity. Edition functions are provided to add, delete, and view individual comments. Update

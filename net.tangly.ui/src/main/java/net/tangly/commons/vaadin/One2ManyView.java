@@ -13,9 +13,6 @@
 
 package net.tangly.commons.vaadin;
 
-import java.util.Objects;
-import java.util.function.Consumer;
-
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -30,6 +27,9 @@ import net.tangly.core.HasName;
 import net.tangly.core.QualifiedEntity;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
+import java.util.function.Consumer;
 
 /**
  * Defines a view for a list of referenced entities displayed in a grid. The details of the selected referenced entity can be shown. The following actions are

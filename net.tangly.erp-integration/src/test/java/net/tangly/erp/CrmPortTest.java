@@ -12,13 +12,16 @@
 
 package net.tangly.erp;
 
-import java.io.IOException;
-import java.nio.file.FileSystem;
-
 import com.google.common.jimfs.Jimfs;
 import net.tangly.crm.ports.CrmAdapter;
 import net.tangly.crm.ports.CrmEntities;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+import java.nio.file.FileSystem;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class CrmPortTest {
     @Test
@@ -26,8 +29,8 @@ public class CrmPortTest {
         try (FileSystem fs = Jimfs.newFileSystem(com.google.common.jimfs.Configuration.unix())) {
             var store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
-
             var port = new CrmAdapter(new CrmEntities());
+            assertThat(port).isNotNull();
         }
     }
 }

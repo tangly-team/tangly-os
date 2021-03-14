@@ -13,15 +13,15 @@
 
 package net.tangly.bdd.engine;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 import net.tangly.bdd.Feature;
 import net.tangly.bdd.Scene;
 import net.tangly.bdd.Story;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Recall that our custom extension generates BDD reports after executing the tests. Some parts of these reports are pulled from the elements of the

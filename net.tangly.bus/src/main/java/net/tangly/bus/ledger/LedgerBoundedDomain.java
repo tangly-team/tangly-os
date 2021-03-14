@@ -13,11 +13,6 @@
 
 package net.tangly.bus.ledger;
 
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import javax.inject.Inject;
-
 import net.tangly.core.TagType;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
@@ -25,6 +20,11 @@ import net.tangly.core.domain.DomainEntity;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Inject;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class LedgerBoundedDomain extends BoundedDomain<LedgerRealm, LedgerBusinessLogic, LedgerHandler, LedgerPort> {
     public static final String DOMAIN = "ledger";

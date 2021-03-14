@@ -13,21 +13,7 @@
 
 package net.tangly.commons.crm.ui;
 
-import java.lang.invoke.MethodHandles;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.storedobject.chart.BarChart;
-import com.storedobject.chart.CategoryData;
-import com.storedobject.chart.Data;
-import com.storedobject.chart.DataType;
-import com.storedobject.chart.Position;
-import com.storedobject.chart.RectangularCoordinate;
-import com.storedobject.chart.SOChart;
-import com.storedobject.chart.Size;
-import com.storedobject.chart.XAxis;
-import com.storedobject.chart.YAxis;
+import com.storedobject.chart.*;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.data.provider.DataProvider;
@@ -43,6 +29,11 @@ import net.tangly.components.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.lang.invoke.MethodHandles;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AnalyticsCrmView extends AnalyticsView {
     private static final String CustomersTurnover = "Customers Turnover";

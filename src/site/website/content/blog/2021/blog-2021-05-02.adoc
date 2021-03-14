@@ -1,0 +1,72 @@
+---
+title: "Agile Trends Switzerland 2020"
+linkTitle: "Swiss Agile 2020"
+date: 2021-05-10
+tags: ["agile", "series-swiss-agile-trends"]
+---
+
+== Agile Trends Switzerland 2020
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2021-05-02-head.jpg[width=420,height=360,role=left]
+As a modern leader, you are aware of the importance of transforming your organization to become more agile.
+Indeed, you have been successful already in implementing first steps.
+But things are not moving forward as quickly as they should, especially in the current challenging situation.
+The leadership behaviour of your colleagues is only changing slowly.
+While the adjustments and decisions needed to drive the transformation forward get stuck in the cog works of the organization
+
+https://www.hermes.admin.ch/de/projektmanagement-2021.html[Hermes 2021] is still the official government method.
+They clearly acknowledged that this
+https://stefanedbrittain.medium.com/the-insidious-institutionalisation-of-water-scrum-fall-4af7de8865b9[Water-Scrum-Fall]
+is only need because administration are strongly hierarchical and unable to adapt to changes over the development of the solution.
+
+=== Where we Stand
+
+The agile approach continues to spread rapidly around the world: 89.8% of all teams have already adopted or are in the process of adopting agile methodology, a considerable number.
+On the other hand, organizations are still struggling to build greater company-wide agility and only a few have already adopted agility on a portfolio (15.3%) or strategic level (8.2%).
+The good news is that many companies have started transformation initiatives or are planning to do so in the near future.
+=== Findings
+
+Going fully agile is challenging and sticking with waterfall is not an option.
+This has left many, about 40% to be exact, stuck in a hybrid approach, i.e., a combination of waterfall and agile.
+This is not necessarily a bad thing, if you manage to get the best of both worlds.
+Kanban offers an easy start with agile and unlike Scrum is applicable to any process.
+As our numbers show, it is becoming more and more popular.
+But remember, it is not Kanban if it doesn't have WIP limits.
+There is also a trend towards stable product teams that extend their responsibilities beyond those of "just" the development of a solution or service.
+
+=== Transformation Findings
+
+* Happening mainly in IT and has not yet reached the Business,
+* Going fully agile is challenging and sticking with waterfall is not an option, Leaving many stuck in a Hybrid Approach,
+* Agile Development is more successful than waterfall,
+* Satisfaction with the agile way of working is high; with the transformation is low,
+* Leadership and culture are the main success factors.
+Yet focus is on Processes over People,
+* Team Accountability needs to be improved.
+Decentralisation of decisions is too hard for many.
+* Higher management has a way more optimistic view of the organization agility then middle management and collaborators.
+
+=== Insights
+
+Agile appraoches are steadily making progress in Switzerland.
+We have reach the level where late majority and laggards are slowly looking the approach.
+Progress is slow and resistance is very high.
+
+Be positive.
+This is the drawback of becoming a mainstream approach.
+
+I am currently focusing on Software Craftsmanship and key agile values and approaches.
+The more people know about key principles, the better the adoption and the implementation will be.
+One decision was to teach and train bachelor students in these principles to implement a grassroot approach.
+
+We still promote
+
+[.text-centered]
+_To be agile, not to do agile_
+
+You can download the https://swissq.it/en/downloads/trends-benchmarks-report-2020/[Trends Benchmark Report 2020] report.

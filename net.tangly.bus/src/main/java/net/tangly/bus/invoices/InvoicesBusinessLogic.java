@@ -13,11 +13,11 @@
 
 package net.tangly.bus.invoices;
 
+import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import javax.inject.Inject;
-
-import org.jetbrains.annotations.NotNull;
 
 import static net.tangly.commons.utilities.DateUtilities.isWithinRange;
 

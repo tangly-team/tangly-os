@@ -13,18 +13,14 @@
 
 package net.tangly.bus.ledger;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-
 import net.tangly.core.HasTags;
 import net.tangly.core.Tag;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.*;
 
 /**
  * The account entry class models one booking in an account of a double entry accounting system. The class is immutable.

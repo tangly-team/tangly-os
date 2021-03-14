@@ -13,8 +13,6 @@
 
 package net.tangly.commons.vaadin;
 
-import java.time.LocalDateTime;
-
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.datetimepicker.DateTimePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -27,6 +25,8 @@ import net.tangly.core.Comment;
 import net.tangly.core.HasComments;
 import net.tangly.core.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
+
+import java.time.LocalDateTime;
 
 /**
  * The comments view is a Crud view with all the comments defined for an object implementing the {@link HasComments}. Edition functions are provided to add,

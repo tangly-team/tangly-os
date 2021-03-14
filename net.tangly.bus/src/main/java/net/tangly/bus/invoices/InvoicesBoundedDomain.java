@@ -13,13 +13,13 @@
 
 package net.tangly.bus.invoices;
 
-import java.util.List;
-import javax.inject.Inject;
-
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.codes.CodeType;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
+
+import javax.inject.Inject;
+import java.util.List;
 
 public class InvoicesBoundedDomain extends BoundedDomain<InvoicesRealm, InvoicesBusinessLogic, InvoicesHandler, InvoicesPort> {
     public static final String DOMAIN = "invoices";

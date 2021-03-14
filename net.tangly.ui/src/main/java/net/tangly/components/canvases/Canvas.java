@@ -12,20 +12,9 @@
 
 package net.tangly.components.canvases;
 
-import com.vaadin.flow.component.ClientCallable;
-import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.ComponentEventListener;
-import com.vaadin.flow.component.HasSize;
-import com.vaadin.flow.component.HasStyle;
-import com.vaadin.flow.component.KeyNotifier;
-import com.vaadin.flow.component.Tag;
+import com.vaadin.flow.component.*;
 import com.vaadin.flow.shared.Registration;
-import net.tangly.components.canvases.events.ImageLoadEvent;
-import net.tangly.components.canvases.events.MouseClickEvent;
-import net.tangly.components.canvases.events.MouseDblClickEvent;
-import net.tangly.components.canvases.events.MouseDownEvent;
-import net.tangly.components.canvases.events.MouseMoveEvent;
-import net.tangly.components.canvases.events.MouseUpEvent;
+import net.tangly.components.canvases.events.*;
 
 /**
  * Canvas component that you can draw shapes and images on. It's a Java wrapper for the

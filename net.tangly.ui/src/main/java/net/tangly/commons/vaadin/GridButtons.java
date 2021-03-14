@@ -13,14 +13,14 @@
 
 package net.tangly.commons.vaadin;
 
-import java.util.Objects;
-
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+
+import java.util.Objects;
 
 public class GridButtons<T> extends HorizontalLayout implements SelectedItemListener<T> {
     private final Crud.Mode mode;

@@ -48,7 +48,7 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
      * @param builder the finite state machine builder containing the machine to draw
      * @param name    name of the finite state machine description
      */
-    public Generator(@NotNull FsmBuilder<O, S, E> builder, @NotNull String name) {
+    protected Generator(@NotNull FsmBuilder<O, S, E> builder, @NotNull String name) {
         this.builder = builder;
         this.name = name;
         this.comparator = Comparator.comparing(Transition<O, S, E>::source)

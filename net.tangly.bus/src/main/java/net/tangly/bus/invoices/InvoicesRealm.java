@@ -13,12 +13,12 @@
 
 package net.tangly.bus.invoices;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Handles the invoices subsystem entities. A realm provides access to the instances of the CRM abstractions. The major abstractions are:

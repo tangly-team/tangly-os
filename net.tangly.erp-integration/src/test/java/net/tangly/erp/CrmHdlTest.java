@@ -12,21 +12,19 @@
 
 package net.tangly.erp;
 
-import java.io.IOException;
-import java.nio.file.FileSystem;
-
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.crm.CrmRealm;
 import net.tangly.bus.crm.LegalEntity;
-import net.tangly.core.Entity;
-import net.tangly.core.QualifiedEntity;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.crm.ports.CrmEntities;
 import net.tangly.crm.ports.CrmHdl;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+import java.nio.file.FileSystem;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

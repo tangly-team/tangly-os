@@ -13,15 +13,15 @@
 
 package net.tangly.bus.gravatar;
 
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.io.IOUtils;
+
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
-import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.io.IOUtils;
 
 /**
  * A gravatar is a dynamic image resource that is requested from the gravatar.com server. The class calculates the gravatar url and fetches gravatar images.

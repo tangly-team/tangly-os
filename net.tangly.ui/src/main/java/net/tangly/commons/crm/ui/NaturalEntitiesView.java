@@ -13,9 +13,6 @@
 
 package net.tangly.commons.crm.ui;
 
-import java.io.ByteArrayInputStream;
-import java.time.format.DateTimeFormatter;
-
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
@@ -29,26 +26,17 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import com.vaadin.flow.server.StreamResource;
-import net.tangly.bus.crm.CrmBoundedDomain;
-import net.tangly.bus.crm.CrmTags;
-import net.tangly.bus.crm.Employee;
-import net.tangly.bus.crm.GenderCode;
-import net.tangly.bus.crm.NaturalEntity;
-import net.tangly.commons.vaadin.CodeField;
-import net.tangly.commons.vaadin.CommentsView;
-import net.tangly.commons.vaadin.EntitiesView;
-import net.tangly.commons.vaadin.EntityField;
-import net.tangly.commons.vaadin.InternalEntitiesView;
-import net.tangly.commons.vaadin.One2ManyView;
-import net.tangly.commons.vaadin.TabsComponent;
-import net.tangly.commons.vaadin.TagsView;
-import net.tangly.commons.vaadin.VaadinUtils;
+import net.tangly.bus.crm.*;
+import net.tangly.commons.vaadin.*;
 import net.tangly.components.grids.PaginatedGrid;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.PhoneNr;
 import net.tangly.core.codes.CodeType;
 import net.tangly.core.providers.ProviderView;
 import org.jetbrains.annotations.NotNull;
+
+import java.io.ByteArrayInputStream;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Regular CRUD view on natural entities abstraction. The grid and edition dialog wre optimized for usability.

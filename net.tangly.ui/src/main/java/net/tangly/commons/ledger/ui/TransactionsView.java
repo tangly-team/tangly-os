@@ -13,8 +13,6 @@
 
 package net.tangly.commons.ledger.ui;
 
-import java.time.LocalDate;
-
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -29,6 +27,8 @@ import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.components.grids.GridDecorators;
 import org.jetbrains.annotations.NotNull;
+
+import java.time.LocalDate;
 
 /**
  * Regular CRUD view on transactions abstraction. The grid and edition dialog wre optimized for usability.

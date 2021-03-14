@@ -13,9 +13,6 @@
 
 package net.tangly.commons.products.ui;
 
-import java.lang.invoke.MethodHandles;
-import javax.inject.Inject;
-
 import com.vaadin.flow.component.grid.Grid;
 import net.tangly.bus.products.Assignment;
 import net.tangly.bus.products.ProductsBoundedDomain;
@@ -25,6 +22,9 @@ import net.tangly.components.grids.GridDecorators;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.inject.Inject;
+import java.lang.invoke.MethodHandles;
 
 /**
  * Regular CRUD view on assignments abstraction. The grid and edition dialog wre optimized for usability.

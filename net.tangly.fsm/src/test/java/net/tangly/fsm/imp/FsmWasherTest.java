@@ -65,18 +65,18 @@ class FsmWasherTest {
     void testTransitions() {
         State<FsmWasherTest, States, Events> root = build().definition();
         StateMachineImp<FsmWasherTest, States, Events> fsm = new StateMachineImp<>("Washer", root, this);
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.Running))).isTrue();
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.Washing))).isTrue();
-        assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
+        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.Running));
+        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.Washing));
+        assertThat(fsm.getHistoryStates()).isEmpty();
         fsm.fire(Event.of(Events.Rinse));
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.Rinsing))).isTrue();
+        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.Rinsing));
         fsm.fire(Event.of(Events.CutPower));
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.PowerOff))).isTrue();
-        assertThat(fsm.getHistoryStates().contains(root.getStateFor(States.Rinsing))).isTrue();
-        assertThat(fsm.getHistoryStates().contains(root.getStateFor(States.Running))).isTrue();
+        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.PowerOff));
+        assertThat(fsm.getHistoryStates()).contains(root.getStateFor(States.Rinsing));
+        assertThat(fsm.getHistoryStates()).contains(root.getStateFor(States.Running));
         fsm.fire(Event.of(Events.RestorePower));
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.Running))).isTrue();
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.Rinsing))).isTrue();
-        assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
+        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.Running));
+        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.Rinsing));
+        assertThat(fsm.getHistoryStates()).isEmpty();
     }
 }

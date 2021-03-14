@@ -13,9 +13,6 @@
 
 package net.tangly.commons.crm.ui;
 
-import java.util.Currency;
-import java.util.Locale;
-
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
@@ -26,14 +23,12 @@ import net.tangly.bus.crm.Contract;
 import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.LegalEntity;
 import net.tangly.bus.invoices.InvoicesBusinessLogic;
-import net.tangly.commons.vaadin.BankConnectionField;
-import net.tangly.commons.vaadin.EntitiesView;
-import net.tangly.commons.vaadin.EntityField;
-import net.tangly.commons.vaadin.InternalEntitiesView;
-import net.tangly.commons.vaadin.One2OneField;
-import net.tangly.commons.vaadin.VaadinUtils;
+import net.tangly.commons.vaadin.*;
 import net.tangly.components.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Currency;
+import java.util.Locale;
 
 /**
  * Regular CRUD view on contracts abstraction. The grid and edition dialog wre optimized for usability.

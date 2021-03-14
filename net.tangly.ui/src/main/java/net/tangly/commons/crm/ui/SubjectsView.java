@@ -13,8 +13,6 @@
 
 package net.tangly.commons.crm.ui;
 
-import java.io.ByteArrayInputStream;
-
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.Image;
@@ -24,15 +22,13 @@ import com.vaadin.flow.server.StreamResource;
 import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.NaturalEntity;
 import net.tangly.bus.crm.Subject;
-import net.tangly.commons.vaadin.EntitiesView;
-import net.tangly.commons.vaadin.EntityField;
-import net.tangly.commons.vaadin.InternalEntitiesView;
-import net.tangly.commons.vaadin.One2OneField;
-import net.tangly.commons.vaadin.VaadinUtils;
+import net.tangly.commons.vaadin.*;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.ByteArrayInputStream;
+
 class SubjectsView extends InternalEntitiesView<Subject> {
-    private final CrmBoundedDomain domain;
+    private final transient CrmBoundedDomain domain;
 
     public SubjectsView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(Subject.class, mode, domain.realm().subjects(), domain.registry());

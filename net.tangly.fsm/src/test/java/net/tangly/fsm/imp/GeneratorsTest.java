@@ -110,7 +110,7 @@ class GeneratorsTest {
         generator.generate(new PrintWriter(stream));
         writer.flush();
         writer.close();
-        assertThat(stream.toString().length()).isGreaterThan(0);
+        assertThat(stream.toString().length()).isPositive();
     }
 
     private Path path() {

@@ -13,16 +13,6 @@
 
 package net.tangly.commons.vaadin;
 
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasEnabled;
 import com.vaadin.flow.component.HasValue;
@@ -40,6 +30,16 @@ import net.tangly.bus.crm.LegalEntity;
 import net.tangly.core.HasTags;
 import net.tangly.core.Tag;
 import org.jetbrains.annotations.NotNull;
+
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
 
 public final class VaadinUtils {
     public static final DecimalFormat FORMAT = new DecimalFormat("###,##0.00", new DecimalFormatSymbols(Locale.US));

@@ -13,28 +13,7 @@
 
 package net.tangly.invoices.ports;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.UncheckedIOException;
-import java.lang.invoke.MethodHandles;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-
-import net.tangly.bus.invoices.Article;
-import net.tangly.bus.invoices.Invoice;
-import net.tangly.bus.invoices.InvoiceItem;
-import net.tangly.bus.invoices.InvoiceLegalEntity;
-import net.tangly.bus.invoices.InvoiceLine;
-import net.tangly.bus.invoices.InvoicesRealm;
-import net.tangly.bus.invoices.Subtotal;
+import net.tangly.bus.invoices.*;
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.JsonUtilities;
 import net.tangly.core.Address;
@@ -49,6 +28,17 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.*;
+import java.lang.invoke.MethodHandles;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
 public class InvoiceJson implements InvoiceGenerator {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());

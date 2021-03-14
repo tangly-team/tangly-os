@@ -13,13 +13,13 @@
 
 package net.tangly.bdd;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.function.Consumer;
-
-import org.jetbrains.annotations.NotNull;
 
 /**
  * A scene is central to BDD or specification by example style of writing tests. It describes a use case in a story or specification and holds all the

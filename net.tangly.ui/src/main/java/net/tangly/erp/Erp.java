@@ -1,13 +1,5 @@
 package net.tangly.erp;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.lang.invoke.MethodHandles;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.Properties;
-
 import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.crm.CrmBusinessLogic;
 import net.tangly.bus.crm.Subject;
@@ -33,6 +25,14 @@ import net.tangly.products.ports.ProductsEntities;
 import net.tangly.products.ports.ProductsHdl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.lang.invoke.MethodHandles;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.Properties;
 
 /**
  * The ERP application instantiating the bounded domain instances. The class implements a modular monolith application.

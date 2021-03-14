@@ -13,13 +13,13 @@
 
 package net.tangly.bus.crm;
 
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Handles the customer relationship management <i>CRM</i> subsystem entities. A realm provides access to the instances of the CRM abstractions. The major

@@ -13,17 +13,6 @@
 
 package net.tangly.invoices.ports;
 
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import javax.inject.Inject;
-
 import net.tangly.bus.invoices.Article;
 import net.tangly.bus.invoices.ArticleCode;
 import net.tangly.bus.invoices.InvoicesHandler;
@@ -35,11 +24,18 @@ import net.tangly.ports.TsvHdl;
 import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
 
-import static net.tangly.ports.TsvHdl.ID;
-import static net.tangly.ports.TsvHdl.MODULE;
-import static net.tangly.ports.TsvHdl.NAME;
-import static net.tangly.ports.TsvHdl.TEXT;
-import static net.tangly.ports.TsvHdl.get;
+import javax.inject.Inject;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Stream;
+
+import static net.tangly.ports.TsvHdl.*;
 
 /**
  * Defines the workflows defined for bounded domain activities in particular the import and export to files.

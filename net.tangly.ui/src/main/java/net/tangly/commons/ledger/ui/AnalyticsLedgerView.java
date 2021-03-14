@@ -13,19 +13,7 @@
 
 package net.tangly.commons.ledger.ui;
 
-import java.lang.invoke.MethodHandles;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-
-import com.storedobject.chart.DataType;
-import com.storedobject.chart.DateData;
-import com.storedobject.chart.LineChart;
-import com.storedobject.chart.Position;
-import com.storedobject.chart.RectangularCoordinate;
-import com.storedobject.chart.SOChart;
-import com.storedobject.chart.Size;
-import com.storedobject.chart.XAxis;
-import com.storedobject.chart.YAxis;
+import com.storedobject.chart.*;
 import net.tangly.bus.ledger.LedgerBoundedDomain;
 import net.tangly.bus.ledger.LedgerBusinessLogic;
 import net.tangly.commons.domain.ui.AnalyticsView;
@@ -34,6 +22,10 @@ import net.tangly.ledger.ports.LedgerAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.lang.invoke.MethodHandles;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class AnalyticsLedgerView extends AnalyticsView {
     private static final String ProfitAndLoss = "Profit & Loss";

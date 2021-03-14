@@ -13,8 +13,6 @@
 
 package net.tangly.commons.ledger.ui;
 
-import java.time.LocalDate;
-
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
@@ -27,6 +25,8 @@ import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.components.grids.GridDecorators;
 import org.jetbrains.annotations.NotNull;
+
+import java.time.LocalDate;
 
 /**
  * Charts of accounts are defined externally as TSV files. Currently the account view is a read-only view on accounts instances.

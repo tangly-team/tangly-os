@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2021 Marcel Baumann
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  *  a copy of the License at
@@ -13,25 +13,24 @@
 
 package net.tangly.commons.domain.ui;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
-import com.vaadin.flow.data.provider.ListDataProvider;
 import net.tangly.components.grids.GridDecorators;
 import net.tangly.components.grids.PaginatedGrid;
 import net.tangly.core.TagType;
 import net.tangly.core.domain.BoundedDomain;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
- * Displays all tags and their usage, often use for administrative inforomation for a bounded domain.
+ * Displays all tags and their usage, often use for administrative information for a bounded domain.
  */
 public class TagTypesView extends VerticalLayout {
-    private final PaginatedGrid<TagType> grid;
-    private final BoundedDomain<?, ?, ?, ?> domain;
-    private final HashMap<TagType<?>, Integer> counts;
+    private final PaginatedGrid<TagType<?>> grid;
+    private final transient BoundedDomain<?, ?, ?, ?> domain;
+    private final transient HashMap<TagType<?>, Integer> counts;
 
     public TagTypesView(@NotNull BoundedDomain<?, ?, ?, ?> domain) {
         this.domain = domain;
@@ -43,7 +42,7 @@ public class TagTypesView extends VerticalLayout {
     protected void initialize() {
         grid.setPageSize(10);
         grid.paginatorSize(3);
-        grid.dataProvider((ListDataProvider) DataProvider.ofCollection(domain.registry().tagTypes()));
+        grid.dataProvider(DataProvider.ofCollection(domain.registry().tagTypes()));
 
         grid.addColumn(TagType::namespace).setKey("namespace").setHeader("Namespace").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(TagType::name).setKey("name").setHeader("Name").setSortable(true).setAutoWidth(true).setResizable(true);
@@ -56,7 +55,7 @@ public class TagTypesView extends VerticalLayout {
         grid.setMinHeight("5em");
         grid.setWidthFull();
 
-        GridDecorators<TagType> decorator = new GridDecorators<TagType>(grid, TagType.class.getSimpleName(), false, true);
+        GridDecorators<TagType<?>> decorator = new GridDecorators<>(grid, TagType.class.getSimpleName(), false, true);
         decorator.addGlobalAction("Count Tags", e -> update(domain.countTags(new HashMap<>())));
 
         setSizeFull();
@@ -69,14 +68,7 @@ public class TagTypesView extends VerticalLayout {
         grid.getDataProvider().refreshAll();
     }
 
-    int count(@NotNull TagType<?> type) {
+    private int count(@NotNull TagType<?> type) {
         return counts.getOrDefault(type, 0);
-    }
-
-    private void increment(@NotNull TagType<?> type) {
-        if (!counts.containsKey(type)) {
-            counts.put(type, 0);
-        }
-        counts.put(type, counts.get(type) + 1);
     }
 }

@@ -59,18 +59,18 @@ public class FsmEasyTest {
     void testTransitions() {
         State<FsmEasyTest, FsmEasyTest.States, FsmEasyTest.Events> root = build().definition();
         StateMachineImp<FsmEasyTest, FsmEasyTest.States, FsmEasyTest.Events> fsm = new StateMachineImp<>("easy-rules", root, this);
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.Locked))).isTrue();
+        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.Locked));
         fsm.fire(Event.of(Events.Push));
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.Locked))).isTrue();
-        assertThat(fsm.getActiveStates().size() == 2).isTrue();
+        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.Locked));
+        assertThat(fsm.getActiveStates().size()).isSameAs(2);
         fsm.fire(Event.of(Events.Coin));
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.Unlocked))).isTrue();
-        assertThat(fsm.getActiveStates().size() == 2).isTrue();
+        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.Unlocked));
+        assertThat(fsm.getActiveStates().size()).isSameAs(2);
         fsm.fire(Event.of(Events.Coin));
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.Unlocked))).isTrue();
-        assertThat(fsm.getActiveStates().size() == 2).isTrue();
+        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.Unlocked));
+        assertThat(fsm.getActiveStates().size()).isSameAs(2);
         fsm.fire(Event.of(Events.Push));
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.Locked))).isTrue();
-        assertThat(fsm.getActiveStates().size() == 2).isTrue();
+        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.Locked));
+        assertThat(fsm.getActiveStates().size()).isSameAs(2);
     }
 }

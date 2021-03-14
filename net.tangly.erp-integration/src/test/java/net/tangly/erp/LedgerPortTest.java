@@ -12,25 +12,18 @@
 
 package net.tangly.erp;
 
+import com.google.common.jimfs.Configuration;
+import com.google.common.jimfs.Jimfs;
+import net.tangly.bus.ledger.LedgerRealm;
+import net.tangly.ledger.ports.*;
+import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.nio.file.FileSystem;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.util.List;
-
-import com.google.common.jimfs.Configuration;
-import com.google.common.jimfs.Jimfs;
-import net.tangly.bus.ledger.LedgerRealm;
-import net.tangly.ledger.ports.ClosingReportAsciiDoc;
-import net.tangly.ledger.ports.LedgerAdapter;
-import net.tangly.ledger.ports.LedgerEntities;
-import net.tangly.ledger.ports.LedgerHdl;
-import net.tangly.ledger.ports.LedgerTsvHdl;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

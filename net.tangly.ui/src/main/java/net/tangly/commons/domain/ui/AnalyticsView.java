@@ -13,21 +13,7 @@
 
 package net.tangly.commons.domain.ui;
 
-import java.lang.invoke.MethodHandles;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-
-import com.storedobject.chart.CategoryData;
-import com.storedobject.chart.Data;
-import com.storedobject.chart.DateData;
-import com.storedobject.chart.LineChart;
-import com.storedobject.chart.NightingaleRoseChart;
-import com.storedobject.chart.Position;
-import com.storedobject.chart.RectangularCoordinate;
-import com.storedobject.chart.SOChart;
-import com.storedobject.chart.Size;
+import com.storedobject.chart.*;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -36,6 +22,12 @@ import net.tangly.commons.vaadin.TabsComponent;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.lang.invoke.MethodHandles;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
 public abstract class AnalyticsView extends VerticalLayout {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());

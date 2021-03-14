@@ -12,11 +12,6 @@
 
 package net.tangly.components.grids;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEventListener;
@@ -27,6 +22,11 @@ import com.vaadin.flow.data.provider.Query;
 import com.vaadin.flow.data.provider.QuerySortOrder;
 import com.vaadin.flow.function.SerializableComparator;
 import com.vaadin.flow.shared.Registration;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * Grid component where scrolling feature is replaced with a pagination component. The grid provider is a list data provider containing the items to be shown in

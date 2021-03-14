@@ -13,11 +13,11 @@
 
 package net.tangly.commons.vaadin;
 
-import java.util.Objects;
-
 import com.vaadin.flow.component.select.Select;
 import net.tangly.core.codes.Code;
 import net.tangly.core.codes.CodeType;
+
+import java.util.Objects;
 
 /**
  * Selection field for a reference code and all its values.

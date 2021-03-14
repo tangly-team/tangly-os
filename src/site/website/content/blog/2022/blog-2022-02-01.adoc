@@ -1,11 +1,11 @@
 ---
-title: "The Quest for an Agile Company: Five Years tangly llc"
-linkTitle: "Five Years tangly"
-date: 2020-11-06
+title: "The Quest for an Agile Company: Six Years tangly llc"
+linkTitle: "Six Years tangly"
+date: 2022-02-01
 tags: ["agile"]
 ---
 
-== The Quest for an Agile Company: Five Years tangly llc
+== The Quest for an Agile Company: Six Years tangly llc
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
@@ -48,6 +48,7 @@ North Star embodied across the organization Network of empowered teams Rapid dec
 
 === References
 
+. link:../../2022/the-quest-for-an-agile-company-six-years-tangly-llc[The Quest for an Agile Company: Six Years tangly llc]
 . link:../../2020/the-quest-for-an-agile-company-five-years-tangly-llc[The Quest for an Agile Company: Five Years tangly llc]
 . link:../../2019/a-journey-to-be-a-digital-company-tangly-llc[A Journey To Be a Digital Company]
 . link:../../2016/found-a-limited-liability-company-in-switzerland/[Found a Limited Liability Company]

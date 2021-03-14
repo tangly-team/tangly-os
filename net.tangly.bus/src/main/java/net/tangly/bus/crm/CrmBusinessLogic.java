@@ -13,14 +13,14 @@
 
 package net.tangly.bus.crm;
 
+import net.tangly.core.HasInterval;
+import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.Optional;
-import javax.inject.Inject;
-
-import net.tangly.core.HasInterval;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * The business logic and rules of the bounded domain of CRM entities.

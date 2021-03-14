@@ -13,6 +13,15 @@
 
 package net.tangly.invoices.ports;
 
+import net.codecrete.qrbill.canvas.PDFCanvas;
+import net.codecrete.qrbill.generator.*;
+import net.tangly.bus.invoices.Invoice;
+import net.tangly.bus.invoices.InvoiceLegalEntity;
+import net.tangly.core.Address;
+import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
@@ -21,22 +30,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-
-import net.codecrete.qrbill.canvas.PDFCanvas;
-import net.codecrete.qrbill.generator.Bill;
-import net.codecrete.qrbill.generator.BillFormat;
-import net.codecrete.qrbill.generator.GraphicsFormat;
-import net.codecrete.qrbill.generator.Language;
-import net.codecrete.qrbill.generator.OutputSize;
-import net.codecrete.qrbill.generator.Payments;
-import net.codecrete.qrbill.generator.QRBill;
-import net.codecrete.qrbill.generator.SwicoBillInformation;
-import net.tangly.bus.invoices.Invoice;
-import net.tangly.bus.invoices.InvoiceLegalEntity;
-import net.tangly.core.Address;
-import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class InvoiceQrCode implements InvoiceGenerator {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());

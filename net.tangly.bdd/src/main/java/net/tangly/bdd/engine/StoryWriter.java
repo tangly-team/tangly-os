@@ -13,6 +13,11 @@
 
 package net.tangly.bdd.engine;
 
+import net.tangly.bdd.Scene;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
@@ -25,11 +30,6 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-
-import net.tangly.bdd.Scene;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 /**
  * Writes the story with all executed scenarios in a JSON file. The feature associated with the package of the story class is also added to the

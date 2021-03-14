@@ -12,12 +12,12 @@
 
 package net.tangly.commons.lang.functional;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Supplier;
-
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Defines the try abstraction in Java. Try can be used to return a function result in the context of streams. Streams do not accept methods throwing

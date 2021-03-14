@@ -12,27 +12,18 @@
 
 package net.tangly.commons.imap;
 
-import java.io.Closeable;
-import java.io.IOException;
-import java.lang.invoke.MethodHandles;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Properties;
-
 import com.sun.mail.imap.IMAPFolder;
-import jakarta.mail.BodyPart;
-import jakarta.mail.Folder;
-import jakarta.mail.Message;
-import jakarta.mail.MessagingException;
-import jakarta.mail.Session;
-import jakarta.mail.Store;
+import jakarta.mail.*;
 import jakarta.mail.internet.MimeMultipart;
 import jakarta.mail.search.MessageIDTerm;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.Closeable;
+import java.io.IOException;
+import java.lang.invoke.MethodHandles;
+import java.util.*;
 
 
 public class ImapSession implements Closeable {

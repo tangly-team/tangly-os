@@ -13,6 +13,17 @@
 
 package net.tangly.crm.ports;
 
+import net.fortuna.ical4j.data.ParserException;
+import net.fortuna.ical4j.vcard.*;
+import net.tangly.bus.crm.CrmRealm;
+import net.tangly.bus.crm.CrmTags;
+import net.tangly.bus.crm.NaturalEntity;
+import net.tangly.core.EmailAddress;
+import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.inject.Inject;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.UncheckedIOException;
@@ -22,21 +33,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Optional;
 import java.util.stream.Stream;
-import javax.inject.Inject;
-
-import net.fortuna.ical4j.data.ParserException;
-import net.fortuna.ical4j.vcard.GroupRegistry;
-import net.fortuna.ical4j.vcard.ParameterFactoryRegistry;
-import net.fortuna.ical4j.vcard.PropertyFactoryRegistry;
-import net.fortuna.ical4j.vcard.VCard;
-import net.fortuna.ical4j.vcard.VCardBuilder;
-import net.tangly.core.EmailAddress;
-import net.tangly.bus.crm.CrmRealm;
-import net.tangly.bus.crm.CrmTags;
-import net.tangly.bus.crm.NaturalEntity;
-import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Handler to import and export VCard representations of natural entities.

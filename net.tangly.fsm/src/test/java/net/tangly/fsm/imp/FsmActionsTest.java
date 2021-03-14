@@ -26,7 +26,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-public class FsmActionsTest {
+class FsmActionsTest {
     enum States {
         Root, A, AA, AB, B, BA, BB
     }

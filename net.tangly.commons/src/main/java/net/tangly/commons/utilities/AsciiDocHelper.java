@@ -12,14 +12,14 @@
 
 package net.tangly.commons.utilities;
 
+import net.tangly.commons.lang.Strings;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.Arrays;
-
-import net.tangly.commons.lang.Strings;
-import org.jetbrains.annotations.NotNull;
 
 public class AsciiDocHelper {
     public static final String NEWLINE = " +" + System.lineSeparator();

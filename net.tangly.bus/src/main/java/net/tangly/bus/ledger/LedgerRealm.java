@@ -13,6 +13,13 @@
 
 package net.tangly.bus.ledger;
 
+import net.tangly.core.HasInterval;
+import net.tangly.core.domain.Realm;
+import net.tangly.core.providers.Provider;
+import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -20,13 +27,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import net.tangly.core.HasInterval;
-import net.tangly.core.domain.Realm;
-import net.tangly.core.providers.Provider;
-import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * The ledger implements a ledger with a chart of accounts and a set of transactions. It provides the logic for the automatic processing of VAT amounts and

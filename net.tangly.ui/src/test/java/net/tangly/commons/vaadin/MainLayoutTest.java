@@ -17,11 +17,7 @@ import com.github.mvysny.kaributesting.v10.MockVaadin;
 import com.github.mvysny.kaributesting.v10.Routes;
 import com.vaadin.flow.component.UI;
 import net.tangly.commons.ui.MainLayout;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

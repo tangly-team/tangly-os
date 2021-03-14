@@ -12,15 +12,12 @@
 
 package net.tangly.commons.crm.ui;
 
-import javax.inject.Inject;
-
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.bus.crm.CrmBoundedDomain;
 import net.tangly.bus.invoices.InvoicesBoundedDomain;
-import net.tangly.commons.domain.ui.AnalyticsView;
 import net.tangly.commons.domain.ui.CmdExportEntities;
 import net.tangly.commons.domain.ui.CmdImportEntities;
 import net.tangly.commons.domain.ui.DomainView;
@@ -28,6 +25,8 @@ import net.tangly.commons.ui.BoundedDomainUi;
 import net.tangly.commons.ui.MainLayout;
 import net.tangly.commons.vaadin.Crud;
 import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Inject;
 
 public class CrmBoundedDomainUi implements BoundedDomainUi {
     private final CrmBoundedDomain domain;

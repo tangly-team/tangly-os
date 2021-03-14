@@ -12,15 +12,6 @@
 
 package net.tangly.commons.utilities;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UncheckedIOException;
-import java.lang.invoke.MethodHandles;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Set;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.networknt.schema.JsonSchema;
@@ -30,6 +21,15 @@ import com.networknt.schema.ValidationMessage;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UncheckedIOException;
+import java.lang.invoke.MethodHandles;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Set;
 
 /**
  * Utilities to process and validate JSON files.

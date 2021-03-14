@@ -16,17 +16,16 @@ package net.tangly.commons.invoices.ui;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
-import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.NumberRenderer;
-import net.tangly.components.grids.PaginatedGrid;
-import net.tangly.core.codes.CodeType;
 import net.tangly.bus.invoices.Article;
 import net.tangly.bus.invoices.ArticleCode;
 import net.tangly.bus.invoices.InvoicesBoundedDomain;
 import net.tangly.commons.vaadin.CodeField;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
+import net.tangly.components.grids.PaginatedGrid;
+import net.tangly.core.codes.CodeType;
 import org.jetbrains.annotations.NotNull;
 
 /**

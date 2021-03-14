@@ -13,9 +13,16 @@
 
 package net.tangly.products.ports;
 
+import net.tangly.bus.products.Assignment;
+import net.tangly.bus.products.Effort;
+import net.tangly.bus.products.ProductsBusinessLogic;
+import net.tangly.commons.utilities.AsciiDocHelper;
+import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.io.Writer;
-import java.lang.annotation.Native;
 import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
@@ -24,14 +31,6 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
-
-import net.tangly.bus.products.Assignment;
-import net.tangly.bus.products.Effort;
-import net.tangly.bus.products.ProductsBusinessLogic;
-import net.tangly.commons.utilities.AsciiDocHelper;
-import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static java.util.stream.Collectors.groupingBy;
 

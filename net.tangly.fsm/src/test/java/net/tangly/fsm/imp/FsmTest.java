@@ -39,7 +39,6 @@ import static org.mockito.Mockito.verify;
  */
 @SuppressWarnings("unchecked")
 class FsmTest {
-
     /**
      * The finite state machine internal states for the test configuration.
      */
@@ -142,7 +141,7 @@ class FsmTest {
         assertThat(root.getStateFor(States.B).hasHistory()).isTrue();
         assertThat(root.getStateFor(States.B).isFinal()).isFalse();
         assertThat(root.getStateFor(States.C)).isNotNull();
-        assertThat(root.getStateFor(States.C).substates().size()).isEqualTo(0);
+        assertThat(root.getStateFor(States.C).substates()).isEmpty();
         assertThat(root.getStateFor(States.C).isFinal()).isTrue();
         assertThat(root.getStateFor(States.A).transitions().isEmpty()).isFalse();
         assertThat(root.getStateFor(States.A).transitions().stream().findAny().orElseThrow().toString()).contains("A ->");
@@ -209,17 +208,17 @@ class FsmTest {
         var root = build(action).definition();
         var fsm = new StateMachineImp<FsmTest, FsmTest.States, FsmTest.Events>("test-fsm", root, this);
 
-        assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(FsmTest.States.A))).isTrue();
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(FsmTest.States.AA))).isTrue();
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(FsmTest.States.AB))).isFalse();
+        assertThat(fsm.getHistoryStates()).isEmpty();
+        assertThat(fsm.getActiveStates()).contains(root.getStateFor(FsmTest.States.A));
+        assertThat(fsm.getActiveStates()).contains(root.getStateFor(FsmTest.States.AA));
+        assertThat(fsm.getActiveStates()).doesNotContain(root.getStateFor(FsmTest.States.AB));
         var event = Event.of(FsmTest.Events.AA_AB);
         fsm.fire(event);
-        assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(FsmTest.States.A))).isTrue();
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(FsmTest.States.AA))).isFalse();
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(FsmTest.States.AB))).isTrue();
-        assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
+        assertThat(fsm.getHistoryStates()).isEmpty();
+        assertThat(fsm.getActiveStates()).contains(root.getStateFor(FsmTest.States.A));
+        assertThat(fsm.getActiveStates()).doesNotContain(root.getStateFor(FsmTest.States.AA));
+        assertThat(fsm.getActiveStates()).contains(root.getStateFor(FsmTest.States.AB));
+        assertThat(fsm.getHistoryStates()).isEmpty();
         verify(action, times(1)).accept(this, event);
     }
 
@@ -232,15 +231,15 @@ class FsmTest {
         var action = mock(BiConsumer.class);
         var root = build(action).definition();
         var fsm = new StateMachineImp<FsmTest, States, Events>("test-fsm", root, this);
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isTrue();
-        assertThat(root.initialStates().contains(root.getStateFor(States.AA))).isTrue();
-        assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
+        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.A));
+        assertThat(root.initialStates()).contains(root.getStateFor(States.AA));
+        assertThat(fsm.getHistoryStates()).isEmpty();
         var event = Event.of(Events.A_C);
         fsm.fire(event);
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isFalse();
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.AA))).isFalse();
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.C))).isTrue();
-        assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
+        assertThat(fsm.getActiveStates()).doesNotContain(root.getStateFor(States.A));
+        assertThat(fsm.getActiveStates()).doesNotContain(root.getStateFor(States.AA));
+        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.C));
+        assertThat(fsm.getHistoryStates()).isEmpty();
         verify(action, times(1)).accept(this, event);
     }
 
@@ -252,15 +251,15 @@ class FsmTest {
         var action = mock(BiConsumer.class);
         var root = build(action).definition();
         var fsm = new StateMachineImp<FsmTest, States, Events>("test-fsm", root, this);
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isTrue();
-        assertThat(root.initialStates().contains(root.getStateFor(States.AA))).isTrue();
-        assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
+        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.A));
+        assertThat(root.initialStates()).contains(root.getStateFor(States.AA));
+        assertThat(fsm.getHistoryStates()).isEmpty();
         fsm.fire(Event.of(Events.AA_B));
-        assertThat(fsm.getActiveStates().contains(root.getStateFor(States.A))).isFalse();
+        assertThat(fsm.getActiveStates()).doesNotContain(root.getStateFor(States.A));
         assertThat(fsm.getActiveStates()).doesNotContain(root.getStateFor(States.AA));
         assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.B));
         assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.BB));
-        assertThat(fsm.getHistoryStates().isEmpty()).isTrue();
+        assertThat(fsm.getHistoryStates()).isEmpty();
     }
 
     /**
@@ -333,9 +332,9 @@ class FsmTest {
     void staticCheckerTest() {
         FsmBuilder<FsmTest, States, Events> builder = build();
         StaticChecker<FsmTest, States, Events> checker = new StaticChecker<>();
-        assertThat(checker.check(builder.definition()).size()).isEqualTo(0);
-        assertThat(checker.checkStateHasAtMostOneInitialState(builder.definition()).size()).isEqualTo(0);
-        assertThat(checker.checkStateIdUsedOnce(builder.definition()).size()).isEqualTo(0);
-        assertThat(checker.checkStateWithAfferentTransitionHasInitialState(builder.definition()).size()).isEqualTo(0);
+        assertThat(checker.check(builder.definition())).isEmpty();
+        assertThat(checker.checkStateHasAtMostOneInitialState(builder.definition())).isEmpty();
+        assertThat(checker.checkStateIdUsedOnce(builder.definition())).isEmpty();
+        assertThat(checker.checkStateWithAfferentTransitionHasInitialState(builder.definition())).isEmpty();
     }
 }

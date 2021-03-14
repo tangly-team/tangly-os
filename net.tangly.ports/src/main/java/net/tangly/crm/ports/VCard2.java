@@ -13,22 +13,22 @@
 
 package net.tangly.crm.ports;
 
+import net.fortuna.ical4j.vcard.Group;
+import net.fortuna.ical4j.vcard.Parameter;
+import net.fortuna.ical4j.vcard.Property;
+import net.fortuna.ical4j.vcard.VCard;
+import net.tangly.bus.crm.GenderCode;
+import net.tangly.core.Address;
+import net.tangly.core.EmailAddress;
+import net.tangly.core.PhoneNr;
+import net.tangly.core.Strings;
+import org.jetbrains.annotations.NotNull;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Base64;
 import java.util.Objects;
 import java.util.Optional;
-
-import net.fortuna.ical4j.vcard.Group;
-import net.fortuna.ical4j.vcard.Parameter;
-import net.fortuna.ical4j.vcard.Property;
-import net.fortuna.ical4j.vcard.VCard;
-import net.tangly.core.Address;
-import net.tangly.core.EmailAddress;
-import net.tangly.core.PhoneNr;
-import net.tangly.core.Strings;
-import net.tangly.bus.crm.GenderCode;
-import org.jetbrains.annotations.NotNull;
 
 public class VCard2 {
     private final VCard card;

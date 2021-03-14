@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2021 Marcel Baumann
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  *  a copy of the License at
@@ -10,14 +10,13 @@
  *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
  *  under the License.
  */
-
 package net.tangly.gleam;
 
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class GleamTest {
+class GleamTest {
     @Test
     void testNothingForJacoco() {
         // test added to avoid crash of Jacoco

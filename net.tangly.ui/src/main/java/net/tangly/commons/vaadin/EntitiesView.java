@@ -13,10 +13,6 @@
 
 package net.tangly.commons.vaadin;
 
-import java.lang.invoke.MethodHandles;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
@@ -26,6 +22,10 @@ import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.lang.invoke.MethodHandles;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 /**
  * Defines a generic view for entities. The provider is the connection to the application backend. Classes inheriting entities view shall implement at least
