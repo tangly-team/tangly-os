@@ -84,5 +84,5 @@ dependencies {
     implementation 'org.vaadin.alejandro:pdf-browser:3.0.1'
     implementation 'com.vaadin.componentfactory:autocomplete:2.3.1'
 
-    testImplementation 'com.github.mvysny.kaributesting:karibu-testing-v10:1.2.10'
+    testImplementation 'com.github.mvysny.kaributesting:karibu-testing-v10:1.2.12'
 }

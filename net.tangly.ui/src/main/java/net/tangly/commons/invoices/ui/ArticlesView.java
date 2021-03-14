@@ -29,8 +29,11 @@ import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Regular CRUD view on articles abstraction. The grid and edition dialog wre optimized for usability.
+ */
 class ArticlesView extends EntitiesView<Article> {
-    private final InvoicesBoundedDomain domain;
+    private final transient InvoicesBoundedDomain domain;
     private final TextField id;
     private final TextField name;
     private final TextField text;

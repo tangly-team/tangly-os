@@ -29,8 +29,11 @@ import net.tangly.components.grids.GridDecorators;
 import net.tangly.components.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Regular CRUD view on employees abstraction. The grid and edition dialog wre optimized for usability.
+ */
 class EmployeesView extends InternalEntitiesView<Employee> {
-    private final CrmBoundedDomain domain;
+    private final transient CrmBoundedDomain domain;
 
     public EmployeesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(Employee.class, mode, domain.realm().employees(), domain.registry());

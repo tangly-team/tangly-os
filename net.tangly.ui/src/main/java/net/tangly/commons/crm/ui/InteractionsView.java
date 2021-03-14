@@ -33,9 +33,12 @@ import net.tangly.components.grids.PaginatedGrid;
 import net.tangly.core.codes.CodeType;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Regular CRUD view on interactions abstraction. The grid and edition dialog wre optimized for usability.
+ */
 class InteractionsView extends InternalEntitiesView<Interaction> {
     public static final BigDecimal HUNDRED = new BigDecimal("100");
-    private final CrmBoundedDomain domain;
+    private final transient CrmBoundedDomain domain;
 
     public InteractionsView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(Interaction.class, mode, domain.realm().interactions(), domain.registry());

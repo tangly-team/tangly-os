@@ -41,8 +41,8 @@ public sealed interface LList<T> permits Nil, ImmutableList {
      *
      * @param <T> type of the list items
      */
-    static class LListSplitIterator<T> implements Spliterator<T> {
-        private LList<T> list;
+    class LListSplitIterator<T> implements Spliterator<T> {
+        private final LList<T> list;
         private LList<T> pointer;
 
         public LListSplitIterator(@NotNull LList<T> list) {

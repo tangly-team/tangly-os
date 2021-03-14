@@ -12,7 +12,13 @@
 
 package net.tangly.commons.lang;
 
+/**
+ * Utility class providing missing methods of the {@link java.lang.String} class.
+ */
 public final class Strings {
+    private Strings() {
+    }
+
     public static boolean isNullOrEmpty(String string) {
         return string == null || string.isEmpty();
     }
@@ -29,6 +35,4 @@ public final class Strings {
         return (string == null) ? "" : string;
     }
 
-    private Strings() {
-    }
 }

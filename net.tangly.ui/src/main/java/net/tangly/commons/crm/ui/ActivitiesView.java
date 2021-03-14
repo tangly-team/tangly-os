@@ -31,8 +31,11 @@ import net.tangly.core.codes.CodeType;
 import net.tangly.core.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Regular CRUD view on activities abstraction. The grid and edition dialog wre optimized for usability.
+ */
 class ActivitiesView extends EntitiesView<Activity> {
-    private final CrmBoundedDomain domain;
+    private final transient CrmBoundedDomain domain;
     private Binder<Activity> binder;
 
     public ActivitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {

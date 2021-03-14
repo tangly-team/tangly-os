@@ -27,8 +27,11 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.components.grids.GridDecorators;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Regular CRUD view on efforts abstraction. The grid and edition dialog wre optimized for usability.
+ */
 class EffortsView extends EntitiesView<Effort> {
-    private final ProductsBoundedDomain domain;
+    private final transient ProductsBoundedDomain domain;
     private Binder<Effort> binder;
 
     public EffortsView(@NotNull ProductsBoundedDomain domain, @NotNull Mode mode) {

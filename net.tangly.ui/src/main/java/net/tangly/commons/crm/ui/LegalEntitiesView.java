@@ -35,8 +35,11 @@ import net.tangly.components.grids.PaginatedGrid;
 import net.tangly.core.providers.ProviderView;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Regular CRUD view on legal entities abstraction. The grid and edition dialog wre optimized for usability.
+ */
 class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
-    private final CrmBoundedDomain domain;
+    private final transient CrmBoundedDomain domain;
 
     public LegalEntitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(LegalEntity.class, mode, domain.realm().legalEntities(), domain.registry());
@@ -56,7 +59,7 @@ class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
         grid.addColumn(VaadinUtils.urlComponentRenderer(CrmTags.CRM_SITE_WORK)).setKey("webSite").setHeader("Web Site").setAutoWidth(true);
         grid.addColumn(o -> o.value(CrmTags.CRM_RESPONSIBLE).orElse(null)).setKey("responsible").setHeader("Responsible").setAutoWidth(true).setSortable(true);
 
-        addAndExpand(filterCriteria(false, false,InternalEntitiesView::addQualifiedEntityFilters), grid(), gridButtons());
+        addAndExpand(filterCriteria(false, false, InternalEntitiesView::addQualifiedEntityFilters), grid(), gridButtons());
     }
 
     public static void defineOne2ManyEmployees(@NotNull Grid<Employee> grid) {

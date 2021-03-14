@@ -19,7 +19,7 @@ import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.material.Material;
 
-@Theme(value = Material.class)
+@Theme(themeClass = Material.class)
 @PWA(name = "Tangly ERP", shortName = "ERP")
 @Push
 public class AppShell implements AppShellConfigurator {

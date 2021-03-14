@@ -26,9 +26,12 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Regular CRUD view on assignments abstraction. The grid and edition dialog wre optimized for usability.
+ */
 class AssignmentsView extends InternalEntitiesView<Assignment> {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-    private final ProductsBoundedDomain domain;
+    private final transient ProductsBoundedDomain domain;
 
     @Inject
     public AssignmentsView(@NotNull ProductsBoundedDomain domain, @NotNull Mode mode) {

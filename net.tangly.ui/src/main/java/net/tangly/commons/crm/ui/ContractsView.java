@@ -35,8 +35,12 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.components.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Regular CRUD view on contracts abstraction. The grid and edition dialog wre optimized for usability.
+ */
+
 class ContractsView extends InternalEntitiesView<Contract> {
-    private final CrmBoundedDomain domain;
+    private final transient CrmBoundedDomain domain;
     private final InvoicesBusinessLogic logicInvoices;
 
     public ContractsView(@NotNull CrmBoundedDomain domain, InvoicesBusinessLogic logicInvoices, @NotNull Mode mode) {

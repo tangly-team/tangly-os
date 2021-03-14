@@ -41,8 +41,9 @@ The documentation and examples are licensed under [Creative Common (CC Attributi
 
 ## Compile the product
 
+You shall have access to a git installation to clone the repository and download the files.
 You must install JDK version 15 to compile the source code.
-The gradle build file can be triggered without any supplemental installion with
+The gradle build file can be triggered without any supplemental installation with
 
 ````shell
 ./gradlew build

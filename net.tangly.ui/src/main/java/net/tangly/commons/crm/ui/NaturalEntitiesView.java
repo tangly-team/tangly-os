@@ -50,8 +50,11 @@ import net.tangly.core.codes.CodeType;
 import net.tangly.core.providers.ProviderView;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Regular CRUD view on natural entities abstraction. The grid and edition dialog wre optimized for usability.
+ */
 class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
-    private final CrmBoundedDomain domain;
+    private final transient CrmBoundedDomain domain;
 
     public NaturalEntitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(NaturalEntity.class, mode, domain.realm().naturalEntities(), domain.registry());

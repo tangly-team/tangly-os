@@ -29,7 +29,7 @@ public class Product extends QualifiedEntityImp {
     }
 
     public List<String> contractIds() {
-        return contractIds;
+        return Collections.unmodifiableList(contractIds);
     }
 
     public void contractIds(@NotNull List<String> contractIds) {
@@ -37,7 +37,7 @@ public class Product extends QualifiedEntityImp {
     }
 
     public boolean check() {
-        return (contractIds().size() > 0);
+        return !contractIds().isEmpty();
     }
 
     @Override

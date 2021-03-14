@@ -30,8 +30,11 @@ import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.components.grids.GridDecorators;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Regular CRUD view on transactions abstraction. The grid and edition dialog wre optimized for usability.
+ */
 class TransactionsView extends EntitiesView<Transaction> {
-    private final LedgerBoundedDomain domain;
+    private final transient LedgerBoundedDomain domain;
     private LocalDate from;
     private LocalDate to;
     private Binder<Transaction> binder;

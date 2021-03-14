@@ -38,8 +38,11 @@ import net.tangly.core.PhoneNr;
 import net.tangly.core.codes.CodeType;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Regular CRUD view on leads abstraction. The grid and edition dialog wre optimized for usability.
+ */
 class LeadsView extends EntitiesView<Lead> {
-    private final CrmBoundedDomain domain;
+    private final transient CrmBoundedDomain domain;
     private DatePicker date;
     private CodeField<LeadCode> code;
     private TextField firstname;
