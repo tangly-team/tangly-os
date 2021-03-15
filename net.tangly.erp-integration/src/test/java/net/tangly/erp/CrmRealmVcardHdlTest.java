@@ -22,16 +22,20 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.nio.file.FileSystem;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 class CrmRealmVcardHdlTest {
     @Test
     void testVcard() throws IOException {
+        var realm = new CrmEntities();
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
             store.createCrmAndLedgerRepository();
-            var crmHdl = new CrmHdl(new CrmEntities(), store.crmRoot());
+            var crmHdl = new CrmHdl(realm, store.crmRoot());
             crmHdl.importEntities();
             var handler = new CrmVcardHdl(crmHdl.realm());
             handler.importVCards(store.vcardsRoot());
         }
+        assertThat(realm.naturalEntities().items().stream().filter(o -> o.oid() == 6).findAny().orElseThrow().hasPhoto()).isTrue();
     }
 }
