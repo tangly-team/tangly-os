@@ -15,6 +15,10 @@ plugins {
     id 'java-library'
 }
 
+java {
+    modularity.inferModulePath.set(true)
+}
+
 project.ext.groupId = 'net.tangly'
 project.ext.artifactId = 'commons'
 project.version = "0.2.6"
@@ -32,6 +36,9 @@ sourceSets {
 }
 
 dependencies {
+    implementation "org.slf4j:slf4j-api:$slf4jVersion"
+    implementation "org.jetbrains:annotations:$annotationsVersion"
+    implementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
     implementation "com.networknt:json-schema-validator:$jsonValidatorVersion"
     implementation "com.sun.mail:jakarta.mail:2.0.0"
     implementation "org.asciidoctor:asciidoctorj:$asciidoctorjVersion"

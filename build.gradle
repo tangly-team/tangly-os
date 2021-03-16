@@ -32,12 +32,6 @@ plugins {
     id 'com.github.ben-manes.versions' version '0.38.0'
 }
 
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(15))
-    }
-}
-
 ext {
     // support conditional gradle script execution for dev, int, prod. Used for example to disable slow reporting plugins
     mode = "dev"
@@ -123,8 +117,6 @@ allprojects {
     }
 }
 
-def allTestCoverageFile = "$buildDir/reports/jacoco/jacocoRootReport/jacocoRootReport.xml"
-
 sonarqube {
     properties {
         property "sonar.projectKey", "tangly-os-at-tangly.net"
@@ -156,6 +148,15 @@ tasks.register("jacocoRootReport", JacocoReport) {
 }
 
 subprojects {
+    java {
+        // TODO reactivate after new release of Gradle, current version crashes (documented in GitHub)
+//        toolchain {
+//            languageVersion = JavaLanguageVersion.of(16)
+//        }
+        withJavadocJar()
+        withSourcesJar()
+    }
+
     ext {
         annotationsVersion = '20.1.0'
         apacheCommonsCvsVersion = '1.8'
@@ -163,7 +164,7 @@ subprojects {
         asciidoctorjVersion = '2.4.3'
         asciidoctorjPdfVersion = '1.5.4'
         assertjVersion = '3.18.1'
-        flyWayVersion = '7.6.0'
+        flyWayVersion = '7.7.0'
         guiceVersion = '5.0.1'
         hsqldbVersion = '2.5.1'
         jacksonVersion = '2.12.2'
@@ -174,7 +175,7 @@ subprojects {
         slf4jVersion = '2.0.0-alpha1'
         microStreamVersion = '04.01.00-MS-GA'
         mockitoVersion = '3.8.0'
-        vaadinVersion = '19.0.0'
+        vaadinVersion = '19.0.1'
     }
 
     configurations.all {
@@ -182,7 +183,7 @@ subprojects {
             // necessary to avoid runtime errors due to older versions without the fluent API functionality until 2.0 is released and used by all components
             force "org.slf4j:slf4j-api:$slf4jVersion"
             force "org.slf4j:slf4j-simple:$slf4jVersion"
-            // necessary toavoid compile errors with MustangProject library
+            // necessary to avoid compile errors with MustangProject library
             force "org.assertj:assertj-core:$assertjVersion"
             // necessary to avoid JRuby errors because Jackson is loading version 1.19 with an API error
             force "org.yaml:snakeyaml:1.27"
@@ -201,11 +202,6 @@ subprojects {
         testImplementation "com.tngtech.archunit:archunit-junit5-api:$archUnitVersion"
         testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
         testRuntimeOnly "com.tngtech.archunit:archunit-junit5-engine:$archUnitVersion"
-    }
-
-    java {
-        withJavadocJar()
-        withSourcesJar()
     }
 
     tasks.withType(JavaCompile) {
@@ -230,11 +226,12 @@ subprojects {
     }
 
     tasks.withType(Javadoc) {
-        enabled = true
+        enabled = false
         javadoc.options {
             encoding("UTF-8")
+            addBooleanOption('-Xdoclint:none')
             addBooleanOption('-enable-preview', true)
-            addStringOption('-release', '15')
+            addStringOption('-release', '16')
         }
     }
 

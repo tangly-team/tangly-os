@@ -30,4 +30,4 @@ hs_err_pid*
 /net.tangly.ui/types.d.ts
 /net.tangly.ui/webpack.config.js
 /net.tangly.ui/webpack.generated.js
-
+/net.tangly.ui/.npmrc

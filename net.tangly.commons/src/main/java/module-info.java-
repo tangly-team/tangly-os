@@ -9,16 +9,23 @@
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for
  * the specific language governing permissions and limitations under the License.
+ *
  */
 
 /**
- * Provides classes for a fluent based finite state machine library implementing hierarchical state machines as defined in the UML 2 standard.
+ * Provides classes for a programmer first behavior driven framework build on the features of Junit 5.
  */
-module net.tangly.fsm {
-    exports net.tangly.fsm;
-    exports net.tangly.fsm.dsl;
-    exports net.tangly.fsm.utilities;
+module net.tangly.core {
+    exports net.tangly.commons.generator;
+    exports net.tangly.commons.imap;
+    exports net.tangly.commons.lang;
+    exports net.tangly.commons.lang.exceptions;
+    exports net.tangly.commons.lang.functional;
+    exports net.tangly.commons.logger;
+    exports net.tangly.commons.utilities;
 
+    requires org.junit.jupiter.api;
     requires org.slf4j;
-    requires static org.jetbrains.annotations;
+    // asciidoctor still not supporting modules
+    requires static transitive org.jetbrains.annotations;
 }

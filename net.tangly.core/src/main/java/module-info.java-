@@ -23,7 +23,7 @@ module net.tangly.core {
 
     requires org.junit.jupiter.api;
     requires org.slf4j;
-    requires static org.json;
     requires storage.embedded;
+    requires static org.json;
     requires static org.jetbrains.annotations;
 }

@@ -90,7 +90,7 @@ public class Erp {
     }
 
     private void load() {
-        String propertiesPath = Thread.currentThread().getContextClassLoader().getResource("application.properties").getPath();
+        String propertiesPath = Thread.currentThread().getContextClassLoader().getResource("/application.properties").getPath();
         try (var propertiesFile = new FileInputStream(propertiesPath)) {
             properties.load(propertiesFile);
         } catch (IOException e) {

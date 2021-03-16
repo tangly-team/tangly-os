@@ -12,13 +12,10 @@
  */
 
 plugins {
+    id "java"
+    id "application"
     id "com.vaadin" version "0.17.0.1"
-    id 'org.gretty' version '3.0.3' apply(false)
-    id 'war'
-}
 
-if (mode.equalsIgnoreCase('dev')) {
-    apply plugin: 'org.gretty'
 }
 
 project.ext.groupId = 'net.tangly'
@@ -28,27 +25,14 @@ project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
 project.description = "Vaadin user interface for the business components (tangly llc)"
 
+ext {
+    // don't use Jetty 10 - requires Java 11
+    // don't use Jetty 11+ - uses jakarta.Servlet instead of javax.Servlet which makes it incompatible with Vaadin
+    jettyVersion = "9.4.38.v20210224"
+}
+
 vaadin {
     pnpmEnable = true
-}
-
-jib {
-    from {
-        image = "jetty:9.4-jdk14"
-    }
-    container {
-        appRoot = "/var/lib/jetty/webapps/ROOT"
-    }
-}
-
-if (mode.equalsIgnoreCase('dev')) {
-    gretty {
-        contextPath = "/"
-        jvmArgs = ['--enable-preview']
-        servletContainer = "jetty9.4"
-        jetty94Version = "9.4.36.v20210114"
-        logbackConfigFile = "/Users/Shared/Projects/tangly-os/src/main/config/logback.xml"
-    }
 }
 
 sourceSets {
@@ -67,6 +51,10 @@ sourceSets {
     }
 }
 
+application {
+    mainClassName = "net.tangly.commons.ui.EmbeddedJetty"
+}
+
 dependencies {
     implementation project(':net.tangly.commons')
     implementation project(':net.tangly.core')
@@ -75,7 +63,6 @@ dependencies {
     implementation project(':net.tangly.ports')
 
     implementation enforcedPlatform("com.vaadin:vaadin-bom:$vaadinVersion")
-    providedCompile "javax.servlet:javax.servlet-api:3.1.0"
 
     implementation "one.microstream:storage.embedded:$microStreamVersion"
     implementation 'com.storedobject.chart:so-charts:1.0.0'
@@ -83,6 +70,16 @@ dependencies {
     implementation 'com.vaadin.componentfactory:tooltip:1.3.4'
     implementation 'org.vaadin.alejandro:pdf-browser:3.0.1'
     implementation 'com.vaadin.componentfactory:autocomplete:2.3.1'
+
+    // Embedded Jetty dependencies
+    implementation("org.eclipse.jetty:jetty-continuation:${jettyVersion}")
+    implementation("org.eclipse.jetty:jetty-server:${jettyVersion}")
+    implementation("org.eclipse.jetty.websocket:websocket-server:${jettyVersion}")
+    implementation("org.eclipse.jetty.websocket:javax-websocket-server-impl:${jettyVersion}") {
+        exclude(module: "javax.websocket-client-api")
+    }
+    // implementation group: 'org.eclipse.jetty.websocket', name: 'websocket-jetty-server', version: '10.0.1'
+
 
     testImplementation 'com.github.mvysny.kaributesting:karibu-testing-v10:1.2.12'
 }

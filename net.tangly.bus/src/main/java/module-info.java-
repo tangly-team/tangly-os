@@ -21,5 +21,5 @@ module net.tangly.bus {
     requires org.junit.jupiter.api;
     requires static org.apache.commons.codec;
     requires static org.apache.commons.io;
-    requires transitive static org.jetbrains.annotations;
+    requires static org.jetbrains.annotations;
 }

@@ -14,9 +14,9 @@ package net.tangly.commons.invoices.ui;
 
 import org.junit.jupiter.api.Test;
 
-class CmdCreateInvoiceDocumentItTest {
+class CmdCreateInvoiceDocumentItTest extends InvoicesItTest {
     @Test
-    void testCreateInfoiceDocument() {
+    void testCreateInvoiceDocument() {
 
     }
 }
