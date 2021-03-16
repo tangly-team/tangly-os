@@ -39,7 +39,8 @@ public class FsmEasyTest {
     }
 
     /**
-     * Returns the builder for the finite state machine with all states, transitions, guards and actions.
+     * Returns the builder for the finite state machine with all states, transitions, guards and actions. The construction of the finite state machine is quite
+     * compacter with our DSL when compared with <i>easy-states</i>.
      *
      * @return builder instance for the finite state machine
      */

@@ -14,16 +14,22 @@ draft: false
 [quote,Albert Einstein]
 A person who never made a mistake never tried anything new.
 
-What is a finite state machine? __A Finite State Machine__ or __FSM__ is an abstract model of computation, which can be in only one finite state at a
-specific moment. Finite State Machines are used to model problems in different domains such as AI, games, or application flows. It describes how a
-program should behave by specifying states and routes between them.
+What is a finite state machine?
+__A Finite State Machine__ or __FSM__ is an abstract model of deterministic computation, which can be in only one finite state at a specific moment.
+Finite State Machines are used to model problems in different domains such as AI, games, or application flows.
+It describes how a program should behave by specifying states and routes between them.
+
+Finite state machines are also called https://en.wikipedia.org/wiki/Deterministic_finite_automaton[deterministic Finite Automaton].
+
+Another open source implementation can be found under https://github.com/j-easy/easy-states[Easy States].
 
 ==== States
 
-A state is a description of the status of a system that is waiting to execute a transition. A transition is a set of actions to be executed when an
-event is received. For example, when using an audio system to listen to the radio, receiving a "next" stimulus results in moving to the next
-station. When the system is in the "CD" state, the "next" stimulus results in moving to the next track. Identical stimuli trigger different actions
-depending on the current state.
+A state is a description of the status of a system that is waiting to execute a transition.
+A transition is a set of actions to be executed when an event is received.
+For example, when using an audio system to listen to the radio, receiving a "next" stimulus results in moving to the next station.
+When the system is in the "CD" state, the "next" stimulus results in moving to the next track.
+Identical stimuli trigger different actions depending on the current state.
 
 It is also possible to associate actions with a state:
 
@@ -32,57 +38,61 @@ It is also possible to associate actions with a state:
 
 __The set of possible states are defined as an enumeration type in our library.__
 
-States can contain substates. A state containing a set of substates is called a hierarchical state.
+States can contain substates.
+A state containing a set of substates is called a hierarchical state.
 
-When you enter a hierarchical state, it is possible to define an initial state which is activated when a transition terminates on the border of
-the hierarchical state and no history is active.
+When you enter a hierarchical state, it is possible to define an initial state which is activated when a transition terminates on the border of the hierarchical state and no history is active.
 
-A hierarchical state can have an history. When a transition terminates on the border of the hierarchical state and it has an history the latest
-active state is automatically activated. If no history is available the default state is activated. If none is defined, an illegal state error
-occurs.
+A hierarchical state can have an history.
+When a transition terminates on the border of the hierarchical state and it has an history the latest active state is automatically activated.
+If no history is available the default state is activated.
+If none is defined, an illegal state error occurs.
 
 ==== Events
 
-An event is an external trigger processed in the finite state machine. The trigger can induce the firing of one transition.
+An event is an external trigger processed in the finite state machine.
+The trigger can induce the firing of one transition.
 
 __The set of possible events are defined as an enumeration type in our library.__
 
 ==== Transitions
 
-A transition defines a potential change from one state to another one. A transition has a mandatory event triggering the firing of transition and a
-optional guard evaluation as a boolean condition.
+A transition defines a potential change from one state to another one.
+A transition has a mandatory event triggering the firing of transition and a optional guard evaluation as a boolean condition.
 
-A local transition is a transition starting and ending in the same state. When fired the exit and entry actions of the state are not executed.
+A local transition is a transition starting and ending in the same state.
+When fired the exit and entry actions of the state are not executed.
 
-An external transition between two states or the same state. When fired the exit and entry actions of the states are always executed.
+An external transition between two states or the same state.
+When fired the exit and entry actions of the states are always executed.
 
 ==== Actions and Guards
 
-An operation executed when the state machine processes an event. An action can be executed
-* when a transition is fired and the action is associated with the transition
-* when a state is entered through the firing of a transition
-* when a state is exited through the firing of a transition
+An operation executed when the state machine processes an event.
+An action can be executed * when a transition is fired and the action is associated with the transition * when a state is entered through the firing of a transition * when a state is exited through the firing of a transition
 
-__An action has two parameters. The first is the context object owning the instance of the finite state machine. The second is the event being
-processed.__
+__An action has two parameters.
+The first is the context object owning the instance of the finite state machine.
+The second is the event being processed.__
 
-__The order of the processing is the ordered list of actions associated with the exited states, the action on the transition, and the ordered list
- of actions associated with the entered states. The ordering is based on the traversal of the states seen from the transition being fired.__
+__The order of the processing is the ordered list of actions associated with the exited states, the action on the transition, and the ordered list of actions associated with the entered states.
+The ordering is based on the traversal of the states seen from the transition being fired.__
 
-A guard evaluates a transition which could potentially be fired. A transition is only fired if the guard returns true and the transition event is
-the event being fired.
+A guard evaluates a transition which could potentially be fired.
+A transition is only fired if the guard returns true and the transition event is the event being fired.
 
-__A guard has two parameters. The first is the context object owning the instance of the finite state machine. The second is the event being
-processed.__
+__A guard has two parameters.
+The first is the context object owning the instance of the finite state machine.
+The second is the event being processed.__
 
 === Finite State Machine Model
 
 The event class triggering transitions in the finite state machine must be an enumeration type.
 
-The state class defining the set of possible states in the finite state machine must be an enumeration type. By convention the root state enclosing
- the whole machine is called __Root__.
+The state class defining the set of possible states in the finite state machine must be an enumeration type.
+By convention the root state enclosing the whole machine is called __Root__.
 
-[plantuml, fsm-design-machine_model, svg]
+[plantuml,fsm-design-machine_model,svg]
 ....
 class Event<E extends Enum<E>> {
     - E type;
@@ -127,7 +137,7 @@ State "1" *-- "0..n" State : substates
 
 The builder interfaces provide the implementation of the builder pattern to construct a finite state machine description using a fluent API.
 
-[plantuml, fsm-design-builder_model, svg]
+[plantuml,fsm-design-builder_model,svg]
 ....
 interface StateBuilder<O, S extends Enum<?>, E extends Enum<E>> {
 }

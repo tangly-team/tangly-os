@@ -7,6 +7,7 @@
 *.zip
 *.tar.gz
 *.rar
+*.iml
 hs_err_pid*
 
 # Covers JetBrains IDE IntelliJ using gradle, include copyrights
