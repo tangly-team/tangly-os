@@ -17,7 +17,9 @@ Improvements::
 
 * CRM analytics are provided to have a analytics reporting of key indicators
 * Support for localized invoice generation and support of CHF and EUR as currency
-* Upgrade to Vaadin 17
+* Upgrade to Vaadin 19
+* Provides full run and debug mode through Intellij IDEA and gradle. Removed all dependencies to maven.
+* Provides embedded Jetty standalone mode for production deployment
 
 === 0.2.4 (2020-06-30)
 

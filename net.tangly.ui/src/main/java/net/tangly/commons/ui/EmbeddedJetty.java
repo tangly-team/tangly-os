@@ -45,7 +45,6 @@ public class EmbeddedJetty {
             logger.atInfo().log("Production mode detected, enforcing");
             System.setProperty("vaadin.productionMode", "true");
         }
-
         final WebAppContext context = new WebAppContext();
         context.setBaseResource(findWebRoot());
         context.setContextPath("/");
@@ -95,11 +94,11 @@ public class EmbeddedJetty {
         if (!url.endsWith("/ROOT")) {
             throw new RuntimeException("Parameter url: invalid value " + url + ": doesn't end with /ROOT");
         }
-        System.err.println("/webapp/ROOT is " + file);
+        logger.atError().addArgument(file).log("/webapp/ROOT is {}");
 
         // Resolve file to directory
         URL webRoot = new URL(url.substring(0, url.length() - 5));
-        System.err.println("WebRoot is " + webRoot);
+        logger.atError().addArgument(webRoot).log("WebRoot is {}");
         return Resource.newResource(webRoot);
     }
 }
