@@ -12,13 +12,13 @@
 
 package net.tangly.erp;
 
+import java.io.IOException;
+import java.nio.file.FileSystem;
+
 import com.google.common.jimfs.Jimfs;
 import net.tangly.crm.ports.CrmAdapter;
 import net.tangly.crm.ports.CrmEntities;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.nio.file.FileSystem;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -12,10 +12,10 @@
 
 package net.tangly.bus.products;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * An expense defines a monetary cost associated with a contract and implictly a product.

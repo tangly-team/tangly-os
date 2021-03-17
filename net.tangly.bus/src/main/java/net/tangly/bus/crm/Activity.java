@@ -13,14 +13,14 @@
 
 package net.tangly.bus.crm;
 
-import net.tangly.core.HasDate;
-import net.tangly.core.Strings;
-import org.jetbrains.annotations.NotNull;
-
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+
+import net.tangly.core.HasDate;
+import net.tangly.core.Strings;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * An activity is an action between a seller and a potential sellee. Activities are performed in the context of interaction. Activities are only available

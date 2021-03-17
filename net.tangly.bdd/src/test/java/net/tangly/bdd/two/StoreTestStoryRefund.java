@@ -13,7 +13,11 @@
 
 package net.tangly.bdd.two;
 
-import net.tangly.bdd.*;
+import net.tangly.bdd.Scenario;
+import net.tangly.bdd.Scene;
+import net.tangly.bdd.Store;
+import net.tangly.bdd.StoreTest;
+import net.tangly.bdd.Story;
 import net.tangly.bdd.engine.StoryExtension;
 import org.junit.jupiter.api.extension.ExtendWith;
 

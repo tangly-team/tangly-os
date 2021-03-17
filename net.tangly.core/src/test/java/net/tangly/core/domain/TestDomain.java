@@ -13,7 +13,6 @@
 package net.tangly.core.domain;
 
 import net.tangly.core.HasOid;
-import net.tangly.core.TypeRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 

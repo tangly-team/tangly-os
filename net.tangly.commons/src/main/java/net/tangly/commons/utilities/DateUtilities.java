@@ -12,9 +12,9 @@
 
 package net.tangly.commons.utilities;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.time.LocalDate;
+
+import org.jetbrains.annotations.NotNull;
 
 public final class DateUtilities {
     private DateUtilities() {

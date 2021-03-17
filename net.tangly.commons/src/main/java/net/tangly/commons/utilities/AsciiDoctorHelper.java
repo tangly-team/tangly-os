@@ -12,14 +12,19 @@
 
 package net.tangly.commons.utilities;
 
-import org.asciidoctor.*;
-import org.jetbrains.annotations.NotNull;
-
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+
+import org.asciidoctor.Asciidoctor;
+import org.asciidoctor.Attributes;
+import org.asciidoctor.AttributesBuilder;
+import org.asciidoctor.Options;
+import org.asciidoctor.OptionsBuilder;
+import org.asciidoctor.SafeMode;
+import org.jetbrains.annotations.NotNull;
 
 public class AsciiDoctorHelper {
     public static final String ASCIIDOC_EXT = ".adoc";

@@ -12,6 +12,9 @@
 
 package net.tangly.erp;
 
+import java.io.IOException;
+import java.nio.file.FileSystem;
+
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.bus.products.ProductsRealm;
@@ -20,9 +23,6 @@ import net.tangly.products.ports.ProductsEntities;
 import net.tangly.products.ports.ProductsHdl;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.nio.file.FileSystem;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

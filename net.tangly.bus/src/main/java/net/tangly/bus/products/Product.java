@@ -12,11 +12,11 @@
  */
 package net.tangly.bus.products;
 
-import net.tangly.core.QualifiedEntityImp;
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Collections;
 import java.util.List;
+
+import net.tangly.core.QualifiedEntityImp;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * An outcome such as a product or a research result which should be produced. An outcome is financed through one or more contracts.

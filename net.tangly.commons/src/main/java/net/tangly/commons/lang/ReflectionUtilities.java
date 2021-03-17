@@ -12,14 +12,14 @@
 
 package net.tangly.commons.lang;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.lang.reflect.Field;
 import java.security.AccessController;
 import java.security.PrivilegedActionException;
 import java.security.PrivilegedExceptionAction;
 import java.util.Arrays;
 import java.util.Optional;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Utility cass to manipulate objects through reflection.

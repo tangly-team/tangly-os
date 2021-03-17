@@ -12,12 +12,12 @@
 
 package net.tangly.bus.crm;
 
+import java.time.LocalDate;
+
 import net.tangly.core.EmailAddress;
 import net.tangly.core.HasDate;
 import net.tangly.core.PhoneNr;
 import org.jetbrains.annotations.NotNull;
-
-import java.time.LocalDate;
 
 /**
  * Defines a lead in the customer relation domain. A lead is also often called a prospect.

@@ -12,10 +12,10 @@
 
 package net.tangly.commons.lang.functional;
 
-import org.jetbrains.annotations.Contract;
-
 import java.util.Objects;
 import java.util.function.Function;
+
+import org.jetbrains.annotations.Contract;
 
 @FunctionalInterface
 public interface TriFunction<T, U, V, R> {

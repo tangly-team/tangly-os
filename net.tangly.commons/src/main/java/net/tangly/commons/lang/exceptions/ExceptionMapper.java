@@ -12,11 +12,11 @@
 
 package net.tangly.commons.lang.exceptions;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * The exception mapper processes an exception and executes associated instructions with the helper. For example a HTTP error code and answer can be generated

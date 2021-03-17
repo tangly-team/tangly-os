@@ -15,7 +15,9 @@ package net.tangly.commons.lang;
 import net.tangly.commons.lang.functional.LList;
 import org.junit.jupiter.api.Test;
 
-import static net.tangly.commons.lang.functional.LList.*;
+import static net.tangly.commons.lang.functional.LList.cons;
+import static net.tangly.commons.lang.functional.LList.list;
+import static net.tangly.commons.lang.functional.LList.nil;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LListTest {

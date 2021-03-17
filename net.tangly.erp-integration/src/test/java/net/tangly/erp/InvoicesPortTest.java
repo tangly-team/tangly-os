@@ -12,6 +12,11 @@
 
 package net.tangly.erp;
 
+import java.io.IOException;
+import java.nio.file.FileSystem;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 import com.google.common.jimfs.Jimfs;
 import net.tangly.invoices.ports.InvoicesAdapter;
 import net.tangly.invoices.ports.InvoicesEntities;
@@ -23,11 +28,6 @@ import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.nio.file.FileSystem;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

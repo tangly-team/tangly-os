@@ -12,14 +12,14 @@
 
 package net.tangly.commons.utilities;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Set;
 import java.util.stream.Stream;
+
+import org.jetbrains.annotations.NotNull;
 
 public final class FileUtilities {
     private FileUtilities() {

@@ -13,12 +13,12 @@
 
 package net.tangly.crm.ports;
 
+import java.nio.file.Path;
+import javax.inject.Inject;
+
 import net.tangly.bus.crm.CrmHandler;
 import net.tangly.bus.crm.CrmRealm;
 import org.jetbrains.annotations.NotNull;
-
-import javax.inject.Inject;
-import java.nio.file.Path;
 
 /**
  * Defines the workflows defined for bounded domain activities in particular the import and export to files.

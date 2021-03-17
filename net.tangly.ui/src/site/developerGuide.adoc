@@ -56,15 +56,16 @@ To build and run the zip file:
 
 [source,bash]
 ----
-./gradle build -PproductionMode=true
+gradle build -PproductionMode=true <1>
 cd build/distributions/
 unzip net.tangly.ui-X.Y.Z.zip
 cd net.tangly.ui-X.Y.Z/bin
-export NET_TANGLY_UI_OPTS=--enable-preview <1>
-./net.tangly.ui-X.Y.Z <2>
+export NET_TANGLY_UI_OPTS=--enable-preview <2>
+./net.tangly.ui <3>
 ----
-<1> enables preview mode for the JVM to support preview features
-<2> head to localhost:8080/
+<1> creates the distribution as a zip file with all dependencies for production
+<2> enables preview mode for the JVM to support preview features
+<3> head to localhost:8080/
 
 If you do not have node installed in your CI environment, you can use Vaadin plugin to download node.js for you beforehand:
 

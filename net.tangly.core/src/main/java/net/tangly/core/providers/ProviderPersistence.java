@@ -12,14 +12,11 @@
 
 package net.tangly.core.providers;
 
-import java.lang.invoke.MethodHandles;
 import java.util.Collections;
 import java.util.List;
 
 import one.microstream.storage.types.EmbeddedStorageManager;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Provider with instances cached in memory and persisted onto the file system or a database.

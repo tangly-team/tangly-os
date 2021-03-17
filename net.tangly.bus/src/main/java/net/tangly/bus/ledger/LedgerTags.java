@@ -13,12 +13,12 @@
 
 package net.tangly.bus.ledger;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 import net.tangly.core.TagType;
 import net.tangly.core.TypeRegistry;
 import org.jetbrains.annotations.NotNull;
-
-import java.math.BigDecimal;
-import java.time.LocalDate;
 
 /**
  * The tags ontology of the ledger bounded domain is defined here.

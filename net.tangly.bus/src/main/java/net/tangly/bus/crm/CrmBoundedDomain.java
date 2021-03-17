@@ -13,16 +13,16 @@
 
 package net.tangly.bus.crm;
 
+import java.util.List;
+import java.util.Map;
+import javax.inject.Inject;
+
 import net.tangly.core.TagType;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.codes.CodeType;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
 import org.jetbrains.annotations.NotNull;
-
-import javax.inject.Inject;
-import java.util.List;
-import java.util.Map;
 
 public class CrmBoundedDomain extends BoundedDomain<CrmRealm, CrmBusinessLogic, CrmHandler, CrmPort> {
     public static final String DOMAIN = "crm";

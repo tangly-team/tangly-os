@@ -13,6 +13,12 @@
 
 package net.tangly.products.ports;
 
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
+import javax.inject.Inject;
+
 import net.tangly.bus.products.Assignment;
 import net.tangly.bus.products.Effort;
 import net.tangly.bus.products.Product;
@@ -26,12 +32,6 @@ import net.tangly.core.providers.ProviderPersistence;
 import one.microstream.storage.types.EmbeddedStorage;
 import one.microstream.storage.types.EmbeddedStorageManager;
 import org.jetbrains.annotations.NotNull;
-
-import javax.inject.Inject;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class ProductsEntities implements ProductsRealm {
     static class Data implements IdGenerator {

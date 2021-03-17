@@ -13,10 +13,10 @@
 
 package net.tangly.bus.products;
 
+import java.time.LocalDate;
+
 import net.tangly.core.HasDate;
 import net.tangly.core.HasOid;
-
-import java.time.LocalDate;
 
 /**
  * An effort defines work performed on a project. It is possible to specify an additional contract to identify the financial link to the duration. An duration

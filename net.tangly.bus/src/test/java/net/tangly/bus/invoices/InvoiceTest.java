@@ -13,15 +13,15 @@
 
 package net.tangly.bus.invoices;
 
-import net.tangly.core.Address;
-import net.tangly.core.BankConnection;
-import org.junit.jupiter.api.Test;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Currency;
 import java.util.List;
+
+import net.tangly.core.Address;
+import net.tangly.core.BankConnection;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

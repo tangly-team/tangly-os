@@ -13,19 +13,25 @@
 
 package net.tangly.commons.ui;
 
+import java.lang.invoke.MethodHandles;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import com.vaadin.flow.server.VaadinServlet;
 import com.vaadin.flow.server.startup.ServletContextListeners;
 import org.eclipse.jetty.annotations.AnnotationConfiguration;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.util.resource.Resource;
-import org.eclipse.jetty.webapp.*;
+import org.eclipse.jetty.webapp.Configuration;
+import org.eclipse.jetty.webapp.JettyWebXmlConfiguration;
+import org.eclipse.jetty.webapp.WebAppContext;
 import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
 import org.jetbrains.annotations.NotNull;
-
-import java.net.MalformedURLException;
-import java.net.URL;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class EmbeddedJetty {
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private static Server server;
 
     public static void main(String[] args) throws Exception {
@@ -34,11 +40,9 @@ public class EmbeddedJetty {
     }
 
     public static void start(String[] args) throws Exception {
-
-        // detect&enable production mode
         if (isProductionMode()) {
             // fixes https://github.com/mvysny/vaadin14-embedded-jetty/issues/1
-            System.out.println("Production mode detected, enforcing");
+            logger.atInfo().log("Production mode detected, enforcing");
             System.setProperty("vaadin.productionMode", "true");
         }
 
@@ -53,20 +57,19 @@ public class EmbeddedJetty {
         WebSocketServerContainerInitializer.initialize(context);
         // fixes IllegalStateException: Unable to configure jsr356 at that stage. ServerContainer is null
 
-        int port = 8080;
-        if (args.length >= 1) {
-            port = Integer.parseInt(args[0]);
-        }
+        int port = (args.length >= 1) ? Integer.parseInt(args[0]) : 8080;
         server = new Server(port);
         server.setHandler(context);
         final Configuration.ClassList classlist = Configuration.ClassList.setServerDefault(server);
         classlist.addBefore(JettyWebXmlConfiguration.class.getName(), AnnotationConfiguration.class.getName());
         server.start();
 
-        System.out.println("\n\n=================================================\n\n" +
-            "Please open http://localhost:" + port + " in your browser\n\n" +
-            "If you see the 'Unable to determine mode of operation' exception, just kill me and run `./gradlew vaadinPrepareFrontend`\n\n" +
-            "=================================================\n\n");
+        logger.atInfo().log("""
+            =================================================
+            Please open http://localhost:" + port + " in your preferred browser
+            If you see the 'Unable to determine mode of operation' exception, just kill me and run `./gradlew vaadinPrepareFrontend`
+            =================================================
+            """);
     }
 
     public static void stop() throws Exception {

@@ -13,9 +13,40 @@
 
 package net.tangly.crm.ports;
 
-import net.tangly.bus.crm.*;
+import java.lang.invoke.MethodHandles;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Currency;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.inject.Inject;
+
+import net.tangly.bus.crm.Activity;
+import net.tangly.bus.crm.ActivityCode;
+import net.tangly.bus.crm.Contract;
+import net.tangly.bus.crm.CrmRealm;
+import net.tangly.bus.crm.CrmTags;
+import net.tangly.bus.crm.Employee;
+import net.tangly.bus.crm.GenderCode;
+import net.tangly.bus.crm.Interaction;
+import net.tangly.bus.crm.InteractionCode;
+import net.tangly.bus.crm.Lead;
+import net.tangly.bus.crm.LeadCode;
+import net.tangly.bus.crm.LegalEntity;
+import net.tangly.bus.crm.NaturalEntity;
+import net.tangly.bus.crm.Subject;
 import net.tangly.commons.lang.ReflectionUtilities;
-import net.tangly.core.*;
+import net.tangly.core.Comment;
+import net.tangly.core.EmailAddress;
+import net.tangly.core.HasComments;
+import net.tangly.core.HasOid;
+import net.tangly.core.HasTags;
+import net.tangly.core.PhoneNr;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.gleam.model.TsvEntity;
@@ -26,16 +57,16 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.inject.Inject;
-import java.lang.invoke.MethodHandles;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
-import static net.tangly.bus.crm.CrmTags.*;
+import static net.tangly.bus.crm.CrmTags.CRM_EMAIL_HOME;
+import static net.tangly.bus.crm.CrmTags.CRM_EMAIL_WORK;
+import static net.tangly.bus.crm.CrmTags.CRM_EMPLOYEE_TITLE;
+import static net.tangly.bus.crm.CrmTags.CRM_IM_LINKEDIN;
+import static net.tangly.bus.crm.CrmTags.CRM_PHONE_MOBILE;
+import static net.tangly.bus.crm.CrmTags.CRM_PHONE_WORK;
+import static net.tangly.bus.crm.CrmTags.CRM_SCHOOL;
+import static net.tangly.bus.crm.CrmTags.CRM_SITE_HOME;
+import static net.tangly.bus.crm.CrmTags.CRM_SITE_WORK;
+import static net.tangly.bus.crm.CrmTags.CRM_VAT_NUMBER;
 import static net.tangly.ports.TsvHdl.*;
 
 /**

@@ -13,11 +13,11 @@
 
 package net.tangly.invoices.ports;
 
-import net.tangly.bus.invoices.Invoice;
-import org.jetbrains.annotations.NotNull;
-
 import java.nio.file.Path;
 import java.util.Map;
+
+import net.tangly.bus.invoices.Invoice;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * The invoice generator abstraction generates a output document based on the provided invoice and optional configuration fields.

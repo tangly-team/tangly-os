@@ -12,13 +12,13 @@
 
 package net.tangly.commons.lang.functional;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Spliterator;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Defines an immutable list structure as used in Lisp or Scheme. The fundamental data structure in many functional languages is the immutable linked list. It

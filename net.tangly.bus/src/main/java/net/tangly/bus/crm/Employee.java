@@ -13,11 +13,11 @@
 
 package net.tangly.bus.crm;
 
+import java.util.Objects;
+
 import net.tangly.core.EntityImp;
 import net.tangly.core.HasName;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Objects;
 
 /**
  * Defines an employee as a temporal work contract between a natural entity meaning a person and a legal entity meaning an organization or a company. The name
