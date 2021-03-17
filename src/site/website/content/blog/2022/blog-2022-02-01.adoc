@@ -20,9 +20,10 @@ New technologies, evolving customer preferences and changing employee expectatio
 It’s time to move beyond a rigid hierarchy, siloed business units, crippling bureaucracy and an increasingly unwieldy matrix.
 Agile organizations combine the efficiencies of scale with the speed, flexibility and resilience to compete and win in today’s world.
 
-[quote, Gunther Verheyen]
+[quote,Gunther Verheyen]
 ____
-Increasing agility is a path. Progressing on that path requires vision, belief, persistence and… hard work.
+Increasing agility is a path.
+Progressing on that path requires vision, belief, persistence and… hard work.
 ____
 
 Companies are asking:
@@ -47,9 +48,24 @@ The new war for talent::
 As creative knowledge- and learning-based tasks become more important, organizations need a distinctive value proposition to acquire—and retain—the best talent, which is often more diverse.
 These “learning workers” often have more diverse origins, thoughts, composition, and experience and may have different desires (for example, millennials).
 
-=== Five Trademarks of Agile Organizations
+=== Trademarks of Agile Organizations
 
-North Star embodied across the organization Network of empowered teams Rapid decision and learning cycles Dynamic people model that ignites passion Next-generation enabling technology
+Agile organizations are working daily to improve.
+There is no substitute for doing hard work.
+They try to figure out solutions to difficult problems as they go along, using Scrum as a canvas to illuminate the way.
+
+Non-agile organizations are talking.
+The illusion of agility is often established in such companies.
+It was one of the findings of thw SwissQ agility report 2020.
+
+[quote,Gunther Verheyen]
+____
+It is not a transformation if it does not change how you work.
+It is not an agile transformation if it does not simplify how you work.
+It is not an agile transformation of Scrum if it does not increase the actual collaboration of people (customers, teams, stakeholders).
+____
+
+Just look at all the companies trying to copycat Spotify ways of working.
 
 === References
 

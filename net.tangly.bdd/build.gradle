@@ -22,6 +22,10 @@ project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '2016'
 project.description = "JUnit 5 BDD - using Java 14 or higher (tangly llc)"
 
+java {
+    modularity.inferModulePath.set(true)
+}
+
 sourceSets {
     test {
         // add the configuration file of slf4j
@@ -37,8 +41,4 @@ dependencies {
     implementation "com.guicedee.services:json:$jsonVersion"
 
     testImplementation "com.networknt:json-schema-validator:$jsonValidatorVersion"
-}
-
-java {
-    modularity.inferModulePath.set(true)
 }

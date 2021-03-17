@@ -23,7 +23,8 @@ module net.tangly.core {
 
     requires org.junit.jupiter.api;
     requires org.slf4j;
+    // TODO waiting on microstream, asciidoctor
     requires storage.embedded;
     requires static org.json;
-    requires static org.jetbrains.annotations;
+    requires static transitive org.jetbrains.annotations;
 }

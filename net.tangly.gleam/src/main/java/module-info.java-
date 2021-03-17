@@ -9,18 +9,13 @@
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for
  * the specific language governing permissions and limitations under the License.
- *
  */
 
-/**
- * Provides classes for a programmer first behavior driven framework build on the features of Junit 5.
- */
-module net.tangly.bdd {
-    exports net.tangly.bdd;
-    exports net.tangly.bdd.engine;
+module tangly.os.net.tangly.gleam.main {
+    exports net.tangly.gleam.model;
 
-    requires transitive org.junit.jupiter.api;
     requires org.slf4j;
-    requires static org.json;
+    requires org.json;
+    // TODO waiting on apache commons csv
     requires static transitive org.jetbrains.annotations;
 }

@@ -26,6 +26,6 @@ module net.tangly.core {
 
     requires org.junit.jupiter.api;
     requires org.slf4j;
-    // asciidoctor still not supporting modules
+    // TODO asciidoctor still not supporting modules
     requires static transitive org.jetbrains.annotations;
 }

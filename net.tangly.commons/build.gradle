@@ -26,6 +26,10 @@ project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
 project.description = "Commons data structures - using Java 14 or higher (tangly llc)"
 
+java {
+    modularity.inferModulePath.set(true)
+}
+
 sourceSets {
     test {
         // add the configuration file of slf4j
@@ -43,5 +47,8 @@ dependencies {
     implementation "com.sun.mail:jakarta.mail:2.0.0"
     implementation "org.asciidoctor:asciidoctorj:$asciidoctorjVersion"
     implementation "org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion"
+
+    implementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+
 }
 

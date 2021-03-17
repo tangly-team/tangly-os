@@ -27,6 +27,10 @@ sourceSets {
     }
 }
 
+java {
+    modularity.inferModulePath.set(true)
+}
+
 dependencies {
     implementation project(':net.tangly.commons')
 
