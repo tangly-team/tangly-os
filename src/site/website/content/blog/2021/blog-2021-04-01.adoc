@@ -3,7 +3,6 @@ title: "JDk 16"
 linkTitle: "JDK 16"
 date: 2021-04-01
 tags: ["java"]
-
 ---
 
 == JDK 16

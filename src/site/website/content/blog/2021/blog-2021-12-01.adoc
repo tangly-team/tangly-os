@@ -1,11 +1,11 @@
 ---
-title: "Integrating Scheme and Java"
-linkTitle: "Integrating Scheme and Java"
+title: "Integrating Scheme, Prolog with Java"
+linkTitle: "Integrating Scheme and Prolog"
 date: 2021-12-01
 tags: ["java", "series-students"]
 ---
 
-== Integrating Scheme and Java
+== Integrating Scheme, Prolog with Java
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/

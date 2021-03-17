@@ -20,6 +20,11 @@ New technologies, evolving customer preferences and changing employee expectatio
 It’s time to move beyond a rigid hierarchy, siloed business units, crippling bureaucracy and an increasingly unwieldy matrix.
 Agile organizations combine the efficiencies of scale with the speed, flexibility and resilience to compete and win in today’s world.
 
+[quote, Gunther Verheyen]
+____
+Increasing agility is a path. Progressing on that path requires vision, belief, persistence and… hard work.
+____
+
 Companies are asking:
 
 * Why does our organization struggle to move quickly and what can we do about it?

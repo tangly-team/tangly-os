@@ -3,7 +3,6 @@ title: "Modern Java Development"
 linkTitle: "Modern Java Development"
 date: 2021-03-01
 tags: ["java"]
-
 ---
 
 == Modern Java Development
