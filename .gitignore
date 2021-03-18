@@ -23,6 +23,8 @@ hs_err_pid*
 **/node_modules/
 **/jspm_packages/
 
+/net.tangly.ui/frontend/generated/
+/net.tangly.ui/frontend/generated/vaadin.ts
 /net.tangly.ui/package.json
 /net.tangly.ui/package-lock.json
 /net.tangly.ui/pnpm-lock.yaml
