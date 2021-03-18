@@ -20,7 +20,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ProviderInMemoryTest {
+class ProviderInMemoryTest {
     static final int SIZE = 10;
 
     static record Entity(String name) {
@@ -43,7 +43,7 @@ public class ProviderInMemoryTest {
         var entities = entities();
         var provider = new ProviderInMemory<>(entities);
         assertThat(provider.items().size()).isEqualTo(SIZE);
-        entities.stream().forEach(provider::update);
+        entities.forEach(provider::update);
         assertThat(provider.items().size()).isEqualTo(SIZE);
         provider.delete(entities.get(0));
         assertThat(provider.items().size()).isEqualTo(SIZE - 1);
@@ -52,10 +52,11 @@ public class ProviderInMemoryTest {
     @Test
     void testFindBy() {
         var provider = new ProviderInMemory<>(entities());
-        assertThat(provider.findBy(o -> o.name(), "name" + (SIZE-1)).isPresent()).isTrue();
-        assertThat(provider.findBy(o -> o.name(), "name" + SIZE).isPresent()).isFalse();
+        assertThat(provider.findBy(o -> o.name(), "name" + (SIZE - 1))).isPresent();
+        assertThat(provider.findBy(o -> o.name(), "name" + SIZE)).isNotPresent();
 
     }
+
     private static List<Entity> entities() {
         return IntStream.range(0, SIZE).mapToObj(o -> new Entity("name" + o)).collect(Collectors.toUnmodifiableList());
     }

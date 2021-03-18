@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * To avoid an error in gradle jacoco task
  */
-public class DummyTest {
+class DummyTest {
     @Test
     void dummyTest() {
         assertThat(true == true).isTrue();

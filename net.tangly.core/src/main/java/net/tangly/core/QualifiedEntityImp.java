@@ -24,7 +24,7 @@ public abstract class QualifiedEntityImp extends EntityImp implements QualifiedE
     /**
      * Default constructor.
      */
-    public QualifiedEntityImp() {
+    protected QualifiedEntityImp() {
     }
 
     @Override

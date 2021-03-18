@@ -20,10 +20,10 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class CommitGitTest {
+class CommitGitTest {
     private static final String COMMIT = "[03c6422] marcelbaumann 2019-03-23 feat - new baseline of the tangly-os repository";
-    private static final String COMMIT_ITEM_1 ="127      11      moduleA/src/main/java/packageA/ClassA.java";
-    private static final String COMMIT_ITEM_2 ="100     200      moduleA/src/main/java/packageA/ClassB.java";
+    private static final String COMMIT_ITEM_1 = "127      11      moduleA/src/main/java/packageA/ClassA.java";
+    private static final String COMMIT_ITEM_2 = "100     200      moduleA/src/main/java/packageA/ClassB.java";
 
     @Test
     void testCommitOf() {

@@ -23,7 +23,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-public class ThrowingTest {
+class ThrowingTest {
     void consumer(Integer value) throws Exception {
         if (value == 100) {
             throw new Exception();
@@ -48,12 +48,11 @@ public class ThrowingTest {
 
     @Test
     void testWrappers() {
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> IntStream.range(1, 101).boxed().forEach(ThrowingConsumer.of(this::consumer)));
         assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> IntStream.range(1, 101).boxed().forEach(ThrowingConsumer.of(this::consumer)));
+            .isThrownBy(() -> IntStream.range(1, 101).boxed().map(ThrowingFunction.of(this::function)).forEach(o -> {
+            }));
         assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> IntStream.range(1, 101).boxed().map(ThrowingFunction.of(this::function)).forEach(o -> {
-                }));
-        assertThatExceptionOfType(RuntimeException.class).isThrownBy(
-                () -> IntStream.range(1, 101).boxed().filter(ThrowingPredicate.of(this::predicate)).forEach(ThrowingConsumer.of(this::consumer)));
+            .isThrownBy(() -> IntStream.range(1, 101).boxed().filter(ThrowingPredicate.of(this::predicate)).forEach(ThrowingConsumer.of(this::consumer)));
     }
 }

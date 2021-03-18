@@ -69,32 +69,32 @@ class CrmHdlTest {
 
     private void verifyNaturalEntities(@NotNull CrmRealm realm) {
         assertThat(realm.naturalEntities().items().isEmpty()).isFalse();
-        assertThat(Provider.findByOid(realm.naturalEntities(), 1).isPresent()).isTrue();
+        assertThat(Provider.findByOid(realm.naturalEntities(), 1)).isPresent();
         Realm.checkEntities(realm.naturalEntities());
     }
 
     private void verifyLegalEntities(@NotNull CrmRealm realm) {
         assertThat(realm.legalEntities().items().isEmpty()).isFalse();
-        assertThat(Provider.findByOid(realm.legalEntities(), 100).isPresent()).isTrue();
-        assertThat(realm.legalEntities().findBy(LegalEntity::id, "UNKNOWN-100").isPresent()).isTrue();
-        assertThat(realm.legalEntities().findBy(LegalEntity::name, "Vaadin GbmH").isPresent()).isTrue();
+        assertThat(Provider.findByOid(realm.legalEntities(), 100)).isPresent();
+        assertThat(realm.legalEntities().findBy(LegalEntity::id, "UNKNOWN-100")).isPresent();
+        assertThat(realm.legalEntities().findBy(LegalEntity::name, "Vaadin GbmH")).isPresent();
         Realm.checkEntities(realm.legalEntities());
     }
 
     private void verifyEmployees(@NotNull CrmRealm realm) {
         assertThat(realm.employees().items().isEmpty()).isFalse();
-        assertThat(Provider.findByOid(realm.employees(), 200).isPresent()).isTrue();
+        assertThat(Provider.findByOid(realm.employees(), 200)).isPresent();
         Realm.checkEntities(realm.employees());
     }
 
     private void verifyContracts(@NotNull CrmRealm realm) {
         assertThat(realm.contracts().items().isEmpty()).isFalse();
-        assertThat(Provider.findByOid(realm.contracts(), 500).isPresent()).isTrue();
+        assertThat(Provider.findByOid(realm.contracts(), 500)).isPresent();
         Realm.checkEntities(realm.contracts());
     }
 
     private void verifyInteractions(@NotNull CrmRealm realm) {
-        assertThat(realm.interactions().items().isEmpty()).isFalse();
+        assertThat(realm.interactions().items()).isNotEmpty();
         Realm.checkEntities(realm.interactions());
     }
 

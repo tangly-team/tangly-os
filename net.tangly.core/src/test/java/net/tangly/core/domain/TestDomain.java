@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TestDomain {
+class TestDomain {
     static class TestRealm implements Realm {
         @Override
         public <T extends HasOid> T registerOid(@NotNull T entity) {

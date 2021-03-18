@@ -25,7 +25,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class InvoicesBusinessLogicTest {
+class InvoicesBusinessLogicTest {
     public static final String CONTRACT_HSLU_2015 = "HSLU-2015";
 
     @Test

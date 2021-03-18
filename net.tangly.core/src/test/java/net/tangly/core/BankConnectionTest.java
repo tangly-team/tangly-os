@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-public class BankConnectionTest {
+class BankConnectionTest {
     public static final String IBAN = "CH88 0900 0000 3064 1768 2";
     public static final String BIC = "POFICHBEXXX";
     static final String CONNECTION = "CH88 0900 0000 3064 1768 2,POFICHBEXXX,Postfinanz Schweiz";
@@ -46,11 +46,9 @@ public class BankConnectionTest {
     @Test
     void testToText() {
         var connection = BankConnection.of(CONNECTION);
-        assertThat(connection).isEqualTo(connection);
         assertThat(connection.text()).isEqualTo(CONNECTION);
 
         connection = BankConnection.of(CONNECTION_WITH_SPACES);
-        assertThat(connection).isEqualTo(connection);
         assertThat(connection.text()).isEqualTo(CONNECTION);
 
         connection = new BankConnection(IBAN, BIC, "Postfinanz Schweiz");

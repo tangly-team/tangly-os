@@ -12,6 +12,13 @@
 
 package net.tangly.commons.generator;
 
+/**
+ * Identifiers generator to create unique object  identifiers.
+ */
 public interface IdGenerator {
+    /**
+     * new identifier for the application usage.
+     * @return new unique identifier
+     */
     long id();
 }

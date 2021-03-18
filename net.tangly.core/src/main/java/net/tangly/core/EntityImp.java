@@ -37,7 +37,7 @@ public abstract class EntityImp implements Entity {
     /**
      * Default constructor.
      */
-    public EntityImp() {
+    protected EntityImp() {
         this.oid = UNDEFINED_OID;
         comments = new ArrayList<>();
         tags = new HashSet<>();

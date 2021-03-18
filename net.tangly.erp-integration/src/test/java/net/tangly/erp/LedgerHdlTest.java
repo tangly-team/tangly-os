@@ -34,17 +34,16 @@ class LedgerHdlTest {
 
             var handler = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
             handler.importEntities();
-            assertThat(
-                handler.realm().accounts().items().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty()).findAny().isEmpty())
-                .isTrue();
+            assertThat(handler.realm().accounts().items().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty()).findAny())
+                .isEmpty();
             assertThat(handler.realm().assets().isEmpty()).isFalse();
-            assertThat(handler.realm().liabilities().isEmpty()).isFalse();
-            assertThat(handler.realm().profitAndLoss().isEmpty()).isFalse();
-            assertThat(handler.realm().accountBy("100").isPresent()).isTrue();
-            assertThat(handler.realm().accountBy("1020").isPresent()).isTrue();
-            assertThat(handler.realm().accountBy("2A").isPresent()).isTrue();
-            assertThat(handler.realm().accountBy("2970").isPresent()).isTrue();
-            assertThat(handler.realm().accountsOwnedBy("29A").isEmpty()).isFalse();
+            assertThat(handler.realm().liabilities()).isNotEmpty();
+            assertThat(handler.realm().profitAndLoss()).isNotEmpty();
+            assertThat(handler.realm().accountBy("100")).isPresent();
+            assertThat(handler.realm().accountBy("1020")).isPresent();
+            assertThat(handler.realm().accountBy("2A")).isPresent();
+            assertThat(handler.realm().accountBy("2970")).isPresent();
+            assertThat(handler.realm().accountsOwnedBy("29A")).isNotEmpty();
         }
     }
 

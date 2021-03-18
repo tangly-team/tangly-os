@@ -35,13 +35,13 @@ class StoreTestStoryRefund extends StoreTest {
         scene.given("A customer bought a black sweater from the store having 4 black and 0 blue sweaters", t -> t.put("store", new Store(4, 0).sellBlack(1))).
                 and("the store has now 3 black sweaters in stock",
                         t -> assertThat(store(t).blacks()).as("the store should carry 3 black sweaters").isEqualTo(3))
-                .and("0 blue sweaters in stock", t -> assertThat(store(t).blues()).as("the store should carry 0 blue sweaters").isEqualTo(0)).
+                .and("0 blue sweaters in stock", t -> assertThat(store(t).blues()).as("the store should carry 0 blue sweaters").isZero()).
 
                 when("The customer returns one black sweater for a refund", t -> store(t).refundBlack(1)).
 
                 then("the store should have 4 black sweaters in stock",
                         t -> assertThat(store(t).blacks()).as("the store should carry 4 black sweaters").isEqualTo(4)).
-                and("0 blue sweaters in stock", t -> assertThat(store(t).blues()).as("the store should carry 0 blue sweaters").isEqualTo(0)).
+                and("0 blue sweaters in stock", t -> assertThat(store(t).blues()).as("the store should carry 0 blue sweaters").isZero()).
                 run();
     }
 }

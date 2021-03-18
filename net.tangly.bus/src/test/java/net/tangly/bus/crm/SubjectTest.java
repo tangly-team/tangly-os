@@ -17,9 +17,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SubjectTest {
+class SubjectTest {
     @Test
-    void subjectPasswordTest() throws Exception {
+    void subjectPasswordTest() {
         String password = "aeon";
         Subject subject = new Subject();
         subject.newPassword("aeon");
@@ -36,6 +36,6 @@ public class SubjectTest {
         subject.user(naturalEntity);
         subject.gravatarEmail("marcel.baumann@tangly.net");
         byte[] avatar = subject.avatar();
-        assertThat(avatar.length).isNotZero();
+        assertThat(avatar).isNotEmpty();
     }
 }

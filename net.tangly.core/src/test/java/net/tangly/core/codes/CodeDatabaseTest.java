@@ -52,20 +52,19 @@ class CodeDatabaseTest {
     void testTestCodes() throws SQLException {
         var type = CodeHelper.build(TestCode.class, TestCode::new, datasource, "tangly.dbCode");
         assertThat(type.activeCodes().size()).isEqualTo(5);
-        assertThat(type.findCode(0).isPresent()).isTrue();
-        assertThat(type.findCode(1).isPresent()).isTrue();
-        assertThat(type.findCode(2).isPresent()).isTrue();
-        assertThat(type.findCode(3).isPresent()).isTrue();
-        assertThat(type.findCode(4).isPresent()).isTrue();
-        assertThat(type.findCode(5).isPresent()).isFalse();
+        assertThat(type.findCode(0)).isPresent();
+        assertThat(type.findCode(1)).isPresent();
+        assertThat(type.findCode(2)).isPresent();
+        assertThat(type.findCode(3)).isPresent();
+        assertThat(type.findCode(4)).isPresent();
+        assertThat(type.findCode(5)).isNotPresent();
 
         // test basic operations
         TestCode code1 = type.findCode(1).orElse(null);
         TestCode code2 = type.findCode(2).orElse(null);
         assertThat(code1).isNotNull();
         assertThat(code2).isNotNull();
-        assertThat(code1.equals(code2)).isFalse();
-        assertThat(code1.hashCode()).isEqualTo(code1.hashCode());
+        assertThat(code1).isNotEqualTo(code2);
         assertThat(code1.hashCode()).isNotEqualTo(code2.hashCode());
         assertThat(code1.toString()).contains("1");
     }

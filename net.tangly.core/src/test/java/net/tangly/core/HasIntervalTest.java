@@ -19,7 +19,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class HasIntervalTest {
+class HasIntervalTest {
     final LocalDate FROM = LocalDate.of(2000, Month.JANUARY, 1);
     final LocalDate TO = LocalDate.of(2000, Month.DECEMBER, 31);
 

@@ -57,8 +57,8 @@ class CodeEnumTest {
         assertThat(type.codes().size()).isEqualTo(5);
         assertThat(type.activeCodes().size()).isEqualTo(4);
         assertThat(type.inactiveCodes().size()).isEqualTo(1);
-        assertThat(type.findCode(1).isPresent()).isTrue();
-        assertThat(type.findCode(EnumCode.CODE_TEST_1.code()).isPresent()).isTrue();
+        assertThat(type.findCode(1)).isPresent();
+        assertThat(type.findCode(EnumCode.CODE_TEST_1.code())).isPresent();
     }
 
     @Test
@@ -67,9 +67,9 @@ class CodeEnumTest {
         var code1 = type.findCode(EnumCode.CODE_TEST_2.id());
         var code2 = type.findCode(EnumCode.CODE_TEST_2.code());
         if (code1.isPresent() && code2.isPresent()) {
-            assertThat(code1.get() == code2.get()).isTrue();
-            assertThat(code1.get().equals(code2.get())).isTrue();
-            assertThat(code1.get().toString()).isEqualTo("CODE_TEST_2");
+            assertThat(code1).containsSame(code2.get());
+            assertThat(code1).containsSame(code2.get());
+            assertThat(code1.get()).hasToString("CODE_TEST_2");
         }
     }
 }

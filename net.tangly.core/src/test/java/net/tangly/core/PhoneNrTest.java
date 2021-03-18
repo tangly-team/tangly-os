@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-public class PhoneNrTest {
+class PhoneNrTest {
     public static final String PHONE_NR = "+41 79 778 86 89";
     public static final String ILLEGAL_PHONE_NR = "+41 XX &A7B";
 

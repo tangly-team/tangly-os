@@ -95,8 +95,8 @@ class EntityTest {
         assertThat(item.tags().size()).isEqualTo(1);
         assertThat(item.tags().contains(tag)).isTrue();
         assertThat(item.findByNamespace("namespace").size()).isEqualTo(1);
-        assertThat(item.findBy("namespace", "tag").isPresent()).isTrue();
-        assertThat(item.findBy("namespace:tag").isPresent()).isTrue();
+        assertThat(item.findBy("namespace", "tag")).isPresent();
+        assertThat(item.findBy("namespace:tag")).isPresent();
         assertThat(item.containsTag("namespace", "tag")).isTrue();
         assertThat(item.containsTag("namespace:tag")).isTrue();
         assertThat(item.value("namespace:tag").orElseThrow()).isEqualTo("format");
@@ -104,10 +104,10 @@ class EntityTest {
         // When
         item.remove(tag);
         // Then
-        assertThat(item.tags().size()).isEqualTo(0);
+        assertThat(item.tags().size()).isZero();
         assertThat(item.findByNamespace("namespace").isEmpty()).isTrue();
-        assertThat(item.findBy("namespace", "tag").isPresent()).isFalse();
-        assertThat(item.value("namespace:tag").isEmpty()).isTrue();
+        assertThat(item.findBy("namespace", "tag")).isNotPresent();
+        assertThat(item.value("namespace:tag")).isEmpty();
     }
 
     @Test
@@ -117,7 +117,7 @@ class EntityTest {
         var tag = new Tag("namespace", "tag", "format");
 
         // When - Then
-        assertThat(item.tags().size()).isEqualTo(0);
+        assertThat(item.tags()).isEmpty();
         item.update(tag);
         assertThat(item.tags().size()).isEqualTo(1);
         item.update(tag);

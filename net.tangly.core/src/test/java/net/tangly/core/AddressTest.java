@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class AddressTest {
+class AddressTest {
     static final String STREET = "STREET";
     static final String EXTENDED = "EXTENDED";
     public static final String POBOX = "POBOX";
@@ -42,15 +42,13 @@ public class AddressTest {
         var original =
             Address.builder().street(STREET).extended(EXTENDED).poBox(POBOX).locality(LOCALITY).postcode(POSTCODE).region(REGION).country(COUNTRY).build();
         Address copy = Address.of(original.text());
-        assertThat(copy).isEqualTo(original);
-        assertThat(copy.hashCode()).isEqualTo(original.hashCode());
+        assertThat(copy).isEqualTo(original).hasSameHashCodeAs(original);
     }
 
     @Test
     void testEmptyAddressTextAndOf() {
         var original = Address.builder().locality(LOCALITY).country(COUNTRY).build();
         var copy = Address.of(original.text());
-        assertThat(copy).isEqualTo(original);
-        assertThat(copy.hashCode()).isEqualTo(original.hashCode());
+        assertThat(copy).isEqualTo(original).hasSameHashCodeAs(original);
     }
 }

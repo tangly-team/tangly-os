@@ -38,7 +38,7 @@ sourceSets {
 dependencies {
     implementation project(':net.tangly.commons')
 
-    implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.19'
+    implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.20'
     implementation 'org.iban4j:iban4j:3.2.2-RELEASE'
     implementation "one.microstream:storage.embedded:$microStreamVersion"
 

@@ -36,7 +36,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class LedgerPortTest {
     @Test
-    public void turnoverEbitAndEarningsTest() throws IOException {
+    void turnoverEbitAndEarningsTest() throws IOException {
         final String filenameWithoutExtension = "2016-period";
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
@@ -60,7 +60,7 @@ class LedgerPortTest {
             var report = new ClosingReportAsciiDoc(handler.ledger());
             var writer = new StringWriter();
             report.create(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31), new PrintWriter(writer), true, true);
-            assertThat(writer.toString().isEmpty()).isFalse();
+            assertThat(writer.toString()).isNotEmpty();
         }
     }
 
