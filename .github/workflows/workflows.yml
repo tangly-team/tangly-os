@@ -10,14 +10,6 @@ jobs:
               with:
                   java-version: '1.15'
                   java-package: 'jdk'
-            - uses: actions/cache@v2
-                with:
-                    path: |
-                        ~/.gradle/caches
-                        ~/.gradle/wrapper
-                    key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-                    restore-keys: |
-                        ${{ runner.os }}-gradle-
             - run: ./gradlew build
                     # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
                     # Restoring these files from a GitHub Actions cache might cause problems for future builds.
