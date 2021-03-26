@@ -149,10 +149,9 @@ tasks.register("jacocoRootReport", JacocoReport) {
 
 subprojects {
     java {
-        // TODO reactivate after new release of Gradle, current version crashes (documented in GitHub)
-//        toolchain {
-//            languageVersion = JavaLanguageVersion.of(16)
-//        }
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(16)
+        }
         withJavadocJar()
         withSourcesJar()
     }
@@ -168,14 +167,14 @@ subprojects {
         guiceVersion = '5.0.1'
         hsqldbVersion = '2.5.1'
         jacksonVersion = '2.12.2'
-        jsonValidatorVersion = '1.0.49'
+        jsonValidatorVersion = '1.0.50'
         jsonVersion = '1.0.19.13'
         jimfsVersion = '1.2'
         junitVersion = '5.7.1'
         slf4jVersion = '2.0.0-alpha1'
         microStreamVersion = '04.01.00-MS-GA'
         mockitoVersion = '3.8.0'
-        vaadinVersion = '19.0.1'
+        vaadinVersion = '19.0.2'
     }
 
     configurations.all {
@@ -207,7 +206,8 @@ subprojects {
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
         options.fork = true
-        options.incremental = true
+        // TODO set back to true once Gradle 7.0 is released, necessary due to a bug in Gradle related to support of JDK 16
+        options.incremental = false
         options.warnings = true
         options.deprecation = true
         options.compilerArgs += ["-parameters", "--enable-preview", "-Xlint:all,-serial,-varargs", "-Xdoclint:none"]
@@ -220,7 +220,7 @@ subprojects {
         options {
             setExcludeTags(['integration'] as Set)
         }
-        jvmArgs += "--enable-preview"
+        jvmArgs.add("--enable-preview")
         maxParallelForks = 8
         failFast = false
     }

@@ -39,5 +39,5 @@ dependencies {
     implementation "one.microstream:storage.embedded:$microStreamVersion"
     implementation "one.microstream:storage.embedded.configuration:$microStreamVersion"
 
-    testImplementation 'org.apache.pdfbox:pdfbox:2.0.22'
+    testImplementation 'org.apache.pdfbox:pdfbox:2.0.23'
 }

@@ -20,7 +20,6 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Mixin indicating the class has the capability to have a date.
  */
-
 public interface HasDate {
     record IntervalFilter<T extends HasDate>(LocalDate from, LocalDate to) implements Predicate<T> {
         public boolean test(@NotNull T entity) {

@@ -17,5 +17,4 @@
  * file in a database. Mechanisms are provided to extend Java enumeration types to emulate code tables. Therefore you can start developing using enumeration
  * values and later migrate to extensible typed value sets.</p>
  */
-
 package net.tangly.core.codes;

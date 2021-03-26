@@ -78,6 +78,8 @@ dependencies {
     implementation("org.eclipse.jetty.websocket:websocket-server:${jettyVersion}")
     implementation("org.eclipse.jetty.websocket:javax-websocket-server-impl:${jettyVersion}") { exclude(module: "javax.websocket-client-api") }
 
+    implementation('org.glassfish.jersey.containers:jersey-container-servlet:3.0.1')
+
 //    implementation("org.eclipse.jetty:jetty-annotations:${jettyVersion}")
 //    implementation ("org.eclipse.jetty.websocket:websocket-jetty-api:${jettyVersion}")
 //    implementation("org.eclipse.jetty.websocket:websocket-jetty-server:${jettyVersion}")
