@@ -43,7 +43,7 @@ dependencies {
     implementation "com.guicedee.services:json:$jsonVersion"
     implementation "org.hsqldb:hsqldb:$hsqldbVersion"
     // added reference to pdfbox to avoid a runtime error with qrbill-generator, the dependency is too open
-    implementation 'org.apache.pdfbox:pdfbox:2.0.22'
+    implementation "org.apache.pdfbox:pdfbox:$pdfboxVersion"
     implementation 'net.codecrete.qrbill:qrbill-generator:2.5.0'
     implementation "org.mustangproject:library:$mustangProjectVersion"
     implementation "org.asciidoctor:asciidoctorj:$asciidoctorjVersion"
