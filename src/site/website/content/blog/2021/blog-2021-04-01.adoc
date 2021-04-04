@@ -29,7 +29,24 @@ Polishing of functional programming approach improved my source code quite stupe
 Java 16 fully support https://en.wikipedia.org/wiki/Algebraic_data_type[Algebraic Data Types] with the https://openjdk.java.net/jeps/395[record] and
 https://openjdk.java.net/jeps/397[sealed types] features.
 
+An immutable data class including constructor, getters, _equals(Object o)_, _hashCode()_, and _toString()_ can be declared in one line:
+
+[source,java]
+----
+public record Person(int id, String firstname, String lastname) {}
+----
+
 The first step with modern pattern matching constructs was provided with https://openjdk.java.net/jeps/394[Pattern Matching for Instanceof].
+
+As a small but nice gain of pattern matching you can now implement the _boolean equals(Object o)_ method in Java in one statement and without if clause.
+An example would be:
+
+[source,java]
+----
+public boolean equals(Object o) {
+    return (o instanceof Key that) && name == that.name && Arrays.equals(ptypes, that.ptypes);
+}
+----
 
 The other new features are more of internal nature.
 
@@ -40,13 +57,21 @@ This port is great new to shrink the size of docker images containing a Java run
 
 MicroStream:: https://microstream.one/[MicroStream] persistence library crashes if you are using records.
 ArchUnit:: https://www.archunit.org/[ArchUnit] crashes if you are using records.
-jacoco:: https://www.eclemma.org/jacoco/index.html[Jacoco] has trouble to handle records.
+Jacoco:: https://www.eclemma.org/jacoco/index.html[Jacoco] has trouble to handle records and generate spurious error messages.
+Gradle:: https://gradle.org/[Gradle] still does not work natively with JDK 16.
+They at least provide a well-documented and workable approach.
+You can run the tool with JDK 15 and compile your components with JDK 16.
+Use the instruction _toolchain { languageVersion = JavaLanguageVersion.of(16) }_.
 
 Records were announced more than a year ago.
-Wake-up call to maintainers of Java libraries.
+It is a wake-up call to maintainers of Java libraries.
 
 Please do not be laggards.
-Did you realize that since Java 8 a new version is release every six months?
+Do not force us to work with legacy Java programming paradigms.
+Support modules, auto-closeable resources, records, sealed classes.
+
+As a maintainer of a successful component or application you should represent modern Java approaches.
+Did you realize that since Java 8 a new version is released every six months?
 
 === Next Changes I am Dreaming Of
 
@@ -54,8 +79,28 @@ Concise Method Body:: Syntactic sugar to write compact delegation classes.
 It provides the same mechanisms for method overwriting as for lambda declarations.
 
 Switch Type Selection:: We can already chain _if else if_ statements with *instanceof* operator and variable declarations.
-I want to do the same in a _switch_ statement.
+I want to do the same in a _switch_ statement. +
+I have good news.
+The JEP for pattern matching for switch statements (JEP 406) and for record and arrays patterns (JEP 405) have candidate status in April 2021.
 
 More Packages Support Modules:: Java modules were introduced with Java 8.
 I really, really, really want to use module in Java 16.
 Therefore, I need a module version for all mainstream Java libraries.
+Until now the Java developers' community has failed us, support for modules is abysmal.
+
+=== Important Remainder
+
+The next long term support Java shall be published in September 2021.
+The evolution between LTS 11 and LTS 17 is huge.
+Quite a lot of companies are still stocked with LTS 8.
+Modern Java code written with current Java version is very different to older coding paradigms.
+
+Companies must now implement modernization approaches if they want to survive in the business world.
+A security flaw with an older Java version moves on thin ice if your customers sue your company.
+
+Especially if do not have one of these *expensive support and security* packages sold by Oracle for legacy Java versions.
+
+It should be a strategic goal for every company to have a clear migration concept for all Java applications to be ported to the LTS Java version 17.
+This LTS version should be removed in September 2021.
+Early releases are already available to support migration initiatives.
+This migration shall be implemented through teams until end of year 2021.

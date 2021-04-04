@@ -12,25 +12,59 @@ tags: ["java","series-students"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2021-04-02-head.jpg[width=420, height=360, role=left]
+image::2021-04-02-head.jpg[width=420,height=360,role=left]
+Often I hear complains the IT department is not reacting to developers' needs.
+They are slow, clumsy and too administrative.
+
+I observe a clear trend in Switzerland since around 2015.
+Standard services such as docker images, database instances or internal domain names are provided through self-service kiosks.
+
+What are the advantages of this approach?
 
 === Advantages
 
-* Improving data quality and reducing the error rate
-* Saving of costs
-* Relief of the personnel department
-* Increased capacity for strategic personnel tasks
-* Involvement of employees in human resource management processes
-* Increased personal responsibility and independence of employees
-* Transparency of the approval channels
-* Access to the system independent of time and place
-* Contribution to employer branding
-* Reduction of printing costs as processes are handled digitally
+The advantages to provide a self-service kiosk for users in an academical or industrial environment are:
+
+* Improving data quality and strongly reducing the error rate,
+* Improving response time and access to resources outside regular office hours without additional human resources,
+* Saving of costs,
+* Relieving the personnel department of repetitive and mundane tasks,
+* Increased capacity for working on strategic tasks,
+* Involvement of employees in human resource management processes,
+* Increased personal responsibility and independence of employees,
+* Transparency and traceability of the approval channels,
+* Access to the system independent of time and place,
+* Contribution to employer branding,
+* Reduction of printing costs as processes are handled digitally.
+
+Similar gains are achievable for employees working for smaller or bigger commercial company.
 
 === Challenges
 
+The provided self-service products shall cover at least 80% of customers' needs.
+This quality of service is achieved through tracking of requests through a ticketing system and application of the
+https://en.wikipedia.org/wiki/Pareto_distribution[Pareto distribution].
+
+You must track and document all requested for services.
+Avoid fulfilling all requests and concentrate to optimize the most often requested services.
+You still need to provide a workable approach for special requests.
+
 === Approaches
 
-Docker images
-Virtual images only exceptionally
+I am realizing software products in academic and small-company environments.
+The needs boil down to * Provide docker images to developers * Provide virtual images only exceptionally.
+Most often virtual images are only needed when the user need a Microsoft or macOS environment.
+All Unix related requests are serviced through docker images.
 
+A need trend is the need to provide GPU capabilities for machine learning, artificial intelligence and visualization products.
+The image approach is still working.
+The current major challenge is the immaturity of the software solutions to share efficiencly physical GPU.
+I expect viable standard solutions will be available in the next two years.
+
+=== Next Steps
+
+Implement a kiosk self-service solution for all regular requests of collaborators and students.
+
+Implement a prototype for self-service access to GPU capabilities.
+
+Track acceptance of provided approaches and implement improvements.

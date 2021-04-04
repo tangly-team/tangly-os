@@ -1,7 +1,7 @@
 ---
 title: "Gleam"
 linkTitle: "Gleam"
-weight: 60
+weight: 40
 ---
 
 The readme, user manual, documentation of the component and architecture consideration of the components.

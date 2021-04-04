@@ -4,13 +4,8 @@ linkTitle: "DI Guice"
 date: 2020-10-01
 weight: 6
 ---
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
 
-== S 007: Persistence with MicroStream
+== OS-007: Persistence with MicroStream
 
 Date: 2020-11-13
 

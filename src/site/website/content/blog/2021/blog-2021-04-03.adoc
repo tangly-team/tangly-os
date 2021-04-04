@@ -1,0 +1,85 @@
+---
+title: "Agile Requirements Engineering"
+linkTitle: "Agile Requirements"
+date: 2021-04-24
+tags: ["agile","series-students"]
+---
+
+== Agile Requirements Engineering
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2021-04-03-head.png[width=420,height=360,role=left]
+Lately I was asked which new approaches should be used for agile requirements engineering, Did we find a new silver bullet to write software specifications the agile way?
+
+The answer is an easy oone.
+We do not need new approaches and complicated processes.
+Start with proven principles and learn.
+
+Impact mapping and story mapping are a successful way to identify and priorize your functions.
+Specifications by examples and stories as a discussion allow you to refine your understanding.
+
+Acceptance testing verifies the implementation fulfills the expected behavior.
+You get for free the mechanism to avoid regression problems when releasing your application.
+
+The associated theory was published in seminal books more than a decade ago.
+Just start doing it.
+You can still later improve your approach based on your learnings.
+
+[quote,Jeff Patton]
+____
+Our job is NOT to develop software, our job is to change the world.
+____
+
+[quote,Gojko Adzic]
+____
+Give 2% of users a 100% of what they need, not 100% of people only 2% of their needs.
+____
+
+=== Approach
+
+==== Specification
+
+Use Impact mapping and story mapping to classify and order your functionality.
+Story mapping works hand in hand with the release plan artifact I cited in the previous post.
+The nice think is that impact mapping and story mapping is quite compatible with design thinking
+We connect the different directions used in development departments.
+Each specification story has acceptance criteria.
+
+==== Validation
+
+Acceptance criteria is a form of specification by example.
+Acceptance tests - see ATDD and BDD - are the automatic check for specification by example.
+
+image::2021-04-03-test-pyramid.png[width=420,height=360,role=left]
+
+The gain of implementing the acceptance criteria as ATDD is guaranteed elimination of regression issues.
+You also get automatic generation of test plan, test results and requirement documents.
+Your documents are always in sync with the source code of your product.
+
+I had success with fitness functions (see thoughtworks) to describe and validate non-functional requirements.
+
+=== Background
+
+You could use following reference books
+
+Specification by example::
+ was published in 2011, twelve year ago,Impact Mapping was published in 2012, ten years ago,
+
+User Story Mapping::
+was published in 2014 eight years ago,
+
+Building Evolutionary Architectures::
+Fitness functions are decribed in this book and a recommended reference of my _SWAT Software Architecture and Techniques_ lecture.
+I taught the course at the department of computer science of the technical university of Lucerne.
+The book was published in 2017, five years ago.
+
+=== Remarks
+
+Scrum community clearly states that product backlog items (also stories in backlog) are not specifications.
+They are work items.
+If you want to use stories to describe your needs instead of specification by example, it is OK, but not in the backlog.
+

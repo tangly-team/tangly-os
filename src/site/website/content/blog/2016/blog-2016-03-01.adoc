@@ -12,10 +12,11 @@ tags: ["organization"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2016-03-01-head.jpg[width=420, height=360, role=left]
-As a young developer I loved Linux, compiled new kernels during evening sessions and struggled days to have the correct drivers for the graphic card and communication components of my notebook.
+image::2016-03-01-head.jpg[width=420,height=360,role=left]
+As a young developer I loved Linux, compiled new kernels during evening sessions.
+I struggled days to have the correct drivers for the graphic card and communication components of my notebook.
 
-I grew older and decided to enjoy my evenings and weekends.
+I grew older and decided to enjoy my evenings and weekends wit my family and friends.
 Surely I would prefer to have no virus, trojan and other evils on my workstation.
 So I went to macOS and Apple notebooks without regrets.
 
@@ -23,12 +24,15 @@ So I went to macOS and Apple notebooks without regrets.
 
 The major gains upon migrating to OS X are
 
-* No virus scanner is necessary, the speed-up during complex programming and development activities are tremendous,
-* No trouble when updating OS, updates are automatic and often no new start is required,
+* No virus scanners are necessary, the speed-up during complex programming and development activities is tremendous,
+* No trouble when updating the operating system, updates are automatic and often no new start is required,
 * Unix Command Line and Tools are available in the console.
 https://brew.sh/[Homebrew] or https://www.macports.org/[MacPorts] projects provide all known and less-known utilities and programs available under Linux,
-* Long Lived Notebook is still working and looking nice after five years of daily usage.
- The performance is more than adequate for software development with Java 8/9/10/11 stack and C++.
+* Long lived notebook is still working and looking nice after five years of daily usage.
+The performance is more than adequate for software development with Java 8/9/10/11 stack and C++.
+
+The last notebooks I had all lasted between six and nine years.
+The first five years these computers were used daily.
 
 === Daily Development
 
@@ -48,7 +52,7 @@ I use these tools to perform administrative work are
 * Google Business for team work in the cloud using collaborative tools,
 * Apple Mail Client with GPG plugin for PGP and S/MIME secure email,
 * A local Swiss article https://www.banana.ch[Banana] for accounting and VAT reports for the federal government.
- I bought it as soon as the company stopped requesting higher prices for OS X than for the other platforms.
+I bought it as soon as the company stopped requesting higher prices for OS X than for the other platforms.
 
 LibreOffice completely replaced Microsoft Office suite.
 I stopped using OpenOffice after the strange behavior of Oracle with the application.

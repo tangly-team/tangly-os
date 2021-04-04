@@ -4,11 +4,6 @@ linkTitle: "Use Modern Java Constructs"
 date: 2018-02-20
 weight: 3
 ---
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
 
 == OS-003 Remove usage of Google Guava Library
 

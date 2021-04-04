@@ -1,7 +1,7 @@
 ---
 title: "Core"
 linkTitle: "Core"
-weight: 40
+weight: 25
 ---
 
 The readme, user manual, documentation of the component and architecture consideration of the components.

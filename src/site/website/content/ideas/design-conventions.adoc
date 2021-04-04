@@ -24,15 +24,8 @@ For example the creation of an invoice document is audited.
 login :: login of a user
 logout :: logout of a user
 
-The _component_ field is one of the tangly component
-
-* net.tangly.bus
-* net.tangly.commons
-* net.tangly.dev
-* net.tangly.fsm
-* net.tangly.gleam
-* net.tangly.ports
-* net.tangly.commons.ui.vaadin
+The _component_ field has the structure _net.tangly_.*component_name*.
+The component field is the Java module name of the design component.
 
 === Java Conventions
 
@@ -40,10 +33,10 @@ The _component_ field is one of the tangly component
 
 Use modern Java constructs in our daily coding
 
-* Prefer record over class construct to promote immutable objects
-* Prefer stream use over explicit control statements to promote functional programming
-* Promote modules for information hiding and reducing coupling between components
-* Experiment with var construct to find out if code is more legible
+* Prefer a record over a class abstraction to promote immutable objects,
+* Prefer stream use over explicit control statements to promote functional programming,
+* Promote modules for information hiding and reducing coupling between components,
+* Experiment with var construct to find out if code is more legible.
 
 ==== toString Method
 

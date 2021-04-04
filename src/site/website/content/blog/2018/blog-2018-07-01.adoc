@@ -12,15 +12,24 @@ tags: ["design"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2018-07-01-head.jpg[width=420, height=360, role=left]
+image::2018-07-01-head.jpg[width=420,height=360,role=left]
 Architecture Decision Record ADR is a compact and traceable documentation of all important decisions taken during the realization of a product.
-Use https://asciidoc.org/[asciidoc] or https://en.wikipedia.org/wiki/Markdown/[Markdown] and Git to have an agile and lean documentation of your major
-decisions.
+Use https://asciidoc.org/[asciidoc] or https://en.wikipedia.org/wiki/Markdown/[Markdown] and Git to have an agile and lean documentation of your major decisions.
 
-The huge advantage of Architecture Design Record _ADR_ is the timeline of the decisions. It tremendously helps to understand the technical changes during the
-product lifecycle.
+The huge advantage of Architecture Design Record _ADR_ is the timeline of the decisions.
+It tremendously helps to understand the technical changes during the product lifecycle.
+
+Please try architecture design records to document your key decisions when developing your software product.
+Feel free to identify better approaches
 
 === Definition
+
+[quote]
+____
+An Architectural Decision (AD) is a software design choice that addresses a functional or non-functional requirement that is architecturally significant.
+A decision can be documented in an architecture design record (ADR).
+____
+
 In each ADR file, write these sections:
 
 Title::
@@ -38,7 +47,8 @@ I use asciidoc format to write all our architecture design records.
 You can add to the same git repository as the product, visualize differences and if desired generate a nice looking document.
 And my IDE IntelliJ IDEA has a nice plugin for this format.
 
-Before using ADR I documented the decision changes as footnote in a word document. The ADR approach is way more legible and easier to trace with the help of git repositories.
+Before using ADR I documented the decision changes as footnote in a Microsoft Word document.
+The ADR approach is way more legible and easier to trace with the help of git repositories.
 
 ==== Title
 
@@ -59,6 +69,7 @@ It is stated in full sentences, with active voice.
 "We will ..."
 
 ==== Status
+
 A decision may be "proposed" if the product stakeholders haven't agreed with it yet, or "accepted" once it is agreed.
 If a later ADR changes or reverses a decision, it may be marked as "deprecated" or "superseded" with a reference to its replacement(s).
 
@@ -79,14 +90,19 @@ We will write each ADR as if it is a conversation with a future developer.
 This requires good writing style, with full sentences organized into paragraphs.
 Bullets are acceptable only for visual style, not as an excuse for writing sentence fragments (Bullets kill people, even PowerPoint bullets).
 
+[quote]
+____
+The cost of undocumented decisions is hard to measure, but the effects usually include duplicated efforts.
+Other engineers try to solve the same problems or competing solutions (two third-party libraries that do the same thing).
+____
+
 The approach is very similar to how you would document a software pattern.
 
 Believe and respect is the prime directive.
 
-[quote, Norman Kerth]
+[quote,Norman Kerth]
 ____
-Regardless of what we discover, we understand and truly believe that everyone did the best job they could,
-given what they knew at the time, their skills and abilities, the resources available, and the situation at hand.
+Regardless of what we discover, we understand and truly believe that everyone did the best job they could, given what they knew at the time, their skills and abilities, the resources available, and the situation at hand.
 ____
 
 
