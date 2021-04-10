@@ -163,19 +163,20 @@ subprojects {
         asciidoctorjVersion = '2.4.3'
         asciidoctorjPdfVersion = '1.5.4'
         assertjVersion = '3.18.1'
-        flyWayVersion = '7.7.1'
+        flyWayVersion = '7.7.3'
         guiceVersion = '5.0.1'
-        hsqldbVersion = '2.5.1'
+        hsqldbVersion = '2.6.0'
         jacksonVersion = '2.12.2'
-        jsonValidatorVersion = '1.0.50'
+        jsonValidatorVersion = '1.0.51'
         jsonVersion = '1.0.19.13'
         jimfsVersion = '1.2'
-        junitVersion = '5.7.1'
+        junitVersion = '5.8.0-M1'
         slf4jVersion = '2.0.0-alpha1'
         microStreamVersion = '04.01.00-MS-GA'
-        mockitoVersion = '3.8.0'
+        mockitoVersion = '3.9.0'
         pdfboxVersion = '2.0.23'
-        vaadinVersion = '19.0.2'
+        sochartsVersion = '1.1.0'
+        vaadinVersion = '19.0.3'
     }
 
     configurations.all {
@@ -207,8 +208,7 @@ subprojects {
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
         options.fork = true
-        // TODO set back to true once Gradle 7.0 is released, necessary due to a bug in Gradle related to support of JDK 16
-        options.incremental = false
+        options.incremental = true
         options.warnings = true
         options.deprecation = true
         options.compilerArgs += ["-parameters", "--enable-preview", "-Xlint:all,-serial,-varargs", "-Xdoclint:none"]
@@ -217,17 +217,17 @@ subprojects {
     tasks.withType(Test) {
         finalizedBy jacocoTestReport
         useJUnitPlatform()
+        jvmArgs += ['--enable-preview']
         reports.junitXml.mergeReruns = true
         options {
             setExcludeTags(['integration'] as Set)
         }
-        jvmArgs.add("--enable-preview")
         maxParallelForks = 8
         failFast = false
     }
 
     tasks.withType(Javadoc) {
-        enabled = false
+        enabled = true
         javadoc.options {
             encoding("UTF-8")
             addBooleanOption('-Xdoclint:none')

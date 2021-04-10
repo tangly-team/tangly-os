@@ -22,15 +22,6 @@ project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '2016'
 project.description = "Business Abstractions - BUS - using Java 14 or higher (tangly llc)"
 
-sourceSets {
-    test {
-        // add the configuration file of slf4j
-        resources {
-            srcDirs = ["src/test/resources", "../src/main/config"]
-        }
-    }
-}
-
 dependencies {
     implementation project(':net.tangly.commons')
     implementation project(':net.tangly.core')

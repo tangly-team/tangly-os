@@ -10,22 +10,12 @@
  *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
  *  under the License.
  */
-
 project.ext.groupId = 'net.tangly'
 project.ext.artifactId = 'ports'
 project.version = "0.2.6"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
 project.description = "ports for the business components (tangly llc)"
-
-sourceSets {
-    test {
-        // add the configuration file of slf4j
-        resources {
-            srcDirs = ["src/test/resources", "../src/main/config"]
-        }
-    }
-}
 
 ext {
     mustangProjectVersion = '2.1.1'

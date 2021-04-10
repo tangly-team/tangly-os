@@ -12,21 +12,13 @@
  */
 
 project.ext.groupId = 'net.tangly'
-project.ext.artifactId ='dev'
+project.ext.artifactId = 'dev'
 project.version = "0.2.6"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
 project.description = "Development Utilities(tangly llc)"
 
-sourceSets {
-    test {
-        // add the configuration file of slf4j
-        resources {
-            srcDirs = ["src/test/resources", "../src/main/config"]
-        }
-    }
-}
-
 dependencies {
-    implementation project (':net.tangly.commons')
+    implementation project(':net.tangly.commons')
+    implementation "org.antlr:ST4:4.3.1"
 }
