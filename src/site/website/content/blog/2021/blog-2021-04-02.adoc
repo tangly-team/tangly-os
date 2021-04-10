@@ -1,11 +1,11 @@
 ---
-title: "Self-Service As Developer Game Changer"
+title: "Self-Service for Developer Game Changer"
 linkTitle: "Self-Service"
 date: 2021-04-20
 tags: ["java","series-students"]
 ---
 
-== Self-Service As Developer Game Changer
+== Self-Service for Developer is a Game Changer
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
@@ -15,9 +15,10 @@ tags: ["java","series-students"]
 image::2021-04-02-head.jpg[width=420,height=360,role=left]
 Often I hear complains the IT department is not reacting to developers' needs.
 They are slow, clumsy and too administrative.
+Harsher words state they are incompetent.
 
-I observe a clear trend in Switzerland since around 2015.
-Standard services such as docker images, database instances or internal domain names are provided through self-service kiosks.
+I observe a clear trend in Switzerland since around 2015 to solve these tensions.
+Standard IT services such as docker images, database instances or internal domain names are provided through self-service kiosks.
 
 What are the advantages of this approach?
 
@@ -38,6 +39,7 @@ The advantages to provide a self-service kiosk for users in an academical or ind
 * Reduction of printing costs as processes are handled digitally.
 
 Similar gains are achievable for employees working for smaller or bigger commercial company.
+The real gains are less animosity and more respect for the IT professionals.
 
 === Challenges
 

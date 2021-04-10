@@ -35,8 +35,8 @@ cp $prjDir/net.tangly.bdd/out/bdd-reports/bdd-report.adoc $siteDir/content/docs/
 copy_module bus
 copy_module commons
 copy_module core
+copy_module dev
 copy_module fsm
 copy_module gleam
 copy_module ports
 copy_module ui
-

@@ -62,9 +62,15 @@ Gradle:: https://gradle.org/[Gradle] still does not work natively with JDK 16.
 They at least provide a well-documented and workable approach.
 You can run the tool with JDK 15 and compile your components with JDK 16.
 Use the instruction _toolchain { languageVersion = JavaLanguageVersion.of(16) }_.
+footnote:[Gradle 7.0 was released 09 April 2021. JDK 16 is now supported as runtime for Gradle.
+You can have a regular build for your application with JDK 16 and Gradle in your CI pipeline.]
+
+The huge drawback of the Gradle workaround is that you need two installed JDKs in your CI image.
+Standard images do not support this configuration.
+You have to create your own images if you are running gradle with a Java version and compiling your applicaiton with another one.
 
 Records were announced more than a year ago.
-It is a wake-up call to maintainers of Java libraries.
+It is a wake-up call to maintainers of Java libraries such as ArchUnit, SonarLint or Jacoco.
 
 Please do not be laggards.
 Do not force us to work with legacy Java programming paradigms.
