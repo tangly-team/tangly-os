@@ -26,41 +26,52 @@ What are the advantages of this approach?
 
 The advantages to provide a self-service kiosk for users in an academical or industrial environment are:
 
-* Improving data quality and strongly reducing the error rate,
+* Improving data quality and strongly reducing the error rate.
+Kiosk services must be standardized before being offered,
 * Improving response time and access to resources outside regular office hours without additional human resources,
 * Saving of costs,
-* Relieving the personnel department of repetitive and mundane tasks,
+* Relieving the personnel of the IT department of repetitive and mundane tasks,
 * Increased capacity for working on strategic tasks,
-* Involvement of employees in human resource management processes,
+* Involvement of employees in human resource management processes.
+The kiosk solution must be connected to the on-boarding and off-boarding processes.
 * Increased personal responsibility and independence of employees,
 * Transparency and traceability of the approval channels,
 * Access to the system independent of time and place,
 * Contribution to employer branding,
 * Reduction of printing costs as processes are handled digitally.
 
-Similar gains are achievable for employees working for smaller or bigger commercial company.
+Similar gains are achievable for employees working for smaller or bigger commercial companies.
 The real gains are less animosity and more respect for the IT professionals.
 
 === Challenges
 
 The provided self-service products shall cover at least 80% of customers' needs.
+The products must be standardized and do not require manual actions for setup and deployment.
 This quality of service is achieved through tracking of requests through a ticketing system and application of the
 https://en.wikipedia.org/wiki/Pareto_distribution[Pareto distribution].
 
-You must track and document all requested for services.
+You must track and document all requests for services.
 Avoid fulfilling all requests and concentrate to optimize the most often requested services.
 You still need to provide a workable approach for special requests.
+The simplest solution is to advocate using a commercial offering.
 
 === Approaches
 
-I am realizing software products in academic and small-company environments.
-The needs boil down to * Provide docker images to developers * Provide virtual images only exceptionally.
-Most often virtual images are only needed when the user need a Microsoft or macOS environment.
+I am working with teams developing software products in academic and small-company environments.
+The needs boil down to
+
+* Provide docker images to developers.
+The images shall be accessible from the company Intranet and often form the Internet,
+* Provide virtual images only exceptionally,
+* Provide git repositories,
+* Provide development tools such as GitHub, GitLab or Bitbucket solutions including Pages for documentation.
+
+Most often virtual images are only needed when the user needs a Microsoft or macOS environment.
 All Unix related requests are serviced through docker images.
 
 A need trend is the need to provide GPU capabilities for machine learning, artificial intelligence and visualization products.
 The image approach is still working.
-The current major challenge is the immaturity of the software solutions to share efficiencly physical GPU.
+The current major challenge is the immaturity of the software solutions to share efficiently physical GPU.
 I expect viable standard solutions will be available in the next two years.
 
 === Next Steps
