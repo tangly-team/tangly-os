@@ -1,0 +1,47 @@
+== Develpment Approach
+
+=== Introduction
+
+=== Values
+
+[plantuml,development-approach,svg]
+....
+@startmindmap
+
++ Scrum
+++ Commitment
++++ Test Automation
++++ Coding Standards
++++ Sustainable Pace
+++ Focus
++++ Simple Design
++++ TDD and ATDD
++++ Pair Programming
+++ Openness
++++ Collective Code Ownership
+-- Respect
+--- Collective Code Ownership
+--- Pair Programming
+-- Courage
+--- Refactoring
+--- Evolutionary Design
+
+@endmindmap
+....
+
+=== Architecture Decisions
+
+https://en.wikipedia.org/wiki/Architectural_decision[Architecture Decisions]
+shall be documented to provide causality and an audit trade why the current solution was chosen.
+The evolution of architecture and the history of decisions is of tremendeous importance to understand the trade-offs built into the solution.
+
+Architecture design records _ADR_ is a promising approach to document the evolution of a solution architecture.
+
+==== Specifications
+
+As a user I want to have all architecture decisions of a component to understand the tradeoffs of the current solution.
+
+As a user I want to have all architecture decisions constraining the design of a component to understand the constraints of the component design.
+
+As a user I want to visualize the history of a specific decision to better understand why the current solution was selected.
+

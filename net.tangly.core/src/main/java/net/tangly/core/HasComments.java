@@ -15,7 +15,6 @@ package net.tangly.core;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -62,7 +61,7 @@ public interface HasComments {
      */
     default List<Comment> findByAuthor(@NotNull String author) {
         Objects.requireNonNull(author);
-        return comments().stream().filter(o -> Objects.equals(author, o.author())).collect(Collectors.toList());
+        return comments().stream().filter(o -> Objects.equals(author, o.author())).toList();
     }
 
     /**
@@ -74,7 +73,7 @@ public interface HasComments {
      */
     default List<Comment> findByTag(String namespace, String name) {
         Objects.requireNonNull(name);
-        return comments().stream().filter(o -> o.containsTag(namespace, name)).collect(Collectors.toList());
+        return comments().stream().filter(o -> o.containsTag(namespace, name)).toList();
     }
 
     /**
@@ -88,6 +87,6 @@ public interface HasComments {
         Objects.requireNonNull(from);
         Objects.requireNonNull(to);
         return comments().stream().filter(o -> (o.created().equals(from) || o.created().isAfter(from)) && (o.created().equals(to) || o.created().isBefore(to)))
-                .collect(Collectors.toList());
+            .toList();
     }
 }

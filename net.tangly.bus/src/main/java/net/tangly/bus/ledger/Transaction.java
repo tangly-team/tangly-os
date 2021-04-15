@@ -64,8 +64,8 @@ public class Transaction implements HasDate {
         }
 
         Transaction build() {
-            List<AccountEntry> debits = splits.stream().filter(AccountEntry::isDebit).collect(Collectors.toList());
-            List<AccountEntry> credits = splits.stream().filter(AccountEntry::isCredit).collect(Collectors.toList());
+            List<AccountEntry> debits = splits.stream().filter(AccountEntry::isDebit).toList();
+            List<AccountEntry> credits = splits.stream().filter(AccountEntry::isCredit).toList();
             BigDecimal amount = (debits.size() == 1) ? debits.get(0).amount() : ((credits.size() == 1) ? credits.get(0).amount() : BigDecimal.ZERO);
             return new Transaction(date, text, reference, amount, (debits.size() == 1) ? debits.get(0) : null, (credits.size() == 1) ? credits.get(0) : null,
                 (debits.size() > 1) ? debits : ((credits.size() > 1) ? credits : null));

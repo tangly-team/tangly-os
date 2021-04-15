@@ -187,7 +187,7 @@ public class PaginatedGrid<T> extends Grid<T> {
         int offset = (newPage > 0) ? (newPage - 1) * this.getPageSize() : 0;
         InnerQuery query = new InnerQuery<>(offset);
         pagination.getTotal(dataProvider.size(query));
-        super.setItems((Collection) dataProvider.fetch(query).collect(Collectors.toList()));
+        super.setItems((Collection) dataProvider.fetch(query).toList());
     }
 
     private class InnerQuery<F> extends Query<T, F> {

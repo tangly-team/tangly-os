@@ -18,7 +18,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import net.tangly.fsm.State;
 import net.tangly.fsm.Transition;
@@ -75,7 +74,7 @@ public class StaticChecker<O, S extends Enum<S>, E extends Enum<E>> implements C
                 values.add(state.id());
             }
         }
-        messages.addAll(allValues.stream().filter(not(values::contains)).map(state -> createError(bundle, "FSM-STAT-002", state)).collect(Collectors.toList()));
+        messages.addAll(allValues.stream().filter(not(values::contains)).map(state -> createError(bundle, "FSM-STAT-002", state)).toList());
         return messages;
     }
 
@@ -86,11 +85,8 @@ public class StaticChecker<O, S extends Enum<S>, E extends Enum<E>> implements C
      * @return the list of detected error messages
      */
     public List<String> checkStateHasAtMostOneInitialState(State<O, S, E> root) {
-        return collectAllSubstates(root).stream()
-            .filter(State::isComposite)
-            .filter(state -> getInitialSubstates(state).size() > 1)
-            .map(state -> createError(bundle, "FSM-STAT-003", state.id(), getInitialSubstates(state).size()))
-            .collect(Collectors.toUnmodifiableList());
+        return collectAllSubstates(root).stream().filter(State::isComposite).filter(state -> getInitialSubstates(state).size() > 1)
+            .map(state -> createError(bundle, "FSM-STAT-003", state.id(), getInitialSubstates(state).size())).toList();
     }
 
     /**
@@ -122,14 +118,8 @@ public class StaticChecker<O, S extends Enum<S>, E extends Enum<E>> implements C
      */
 
     public List<String> checkStateWithAfferentTransitionHasInitialState(State<O, S, E> state) {
-        return collectAllSubstates(state).stream()
-            .flatMap(o -> o.transitions().stream())
-            .map(Transition::target)
-            .distinct()
-            .filter(State::isComposite)
-            .filter(o -> getInitialSubstates(o).size() != 1)
-            .map(o -> createError(bundle, "FSM-STAT-004", o.id(), getInitialSubstates(o).size()))
-            .collect(Collectors.toList());
+        return collectAllSubstates(state).stream().flatMap(o -> o.transitions().stream()).map(Transition::target).distinct().filter(State::isComposite)
+            .filter(o -> getInitialSubstates(o).size() != 1).map(o -> createError(bundle, "FSM-STAT-004", o.id(), getInitialSubstates(o).size())).toList();
     }
 
 

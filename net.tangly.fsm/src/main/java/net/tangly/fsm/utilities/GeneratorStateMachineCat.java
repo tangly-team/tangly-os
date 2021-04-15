@@ -15,7 +15,6 @@ package net.tangly.fsm.utilities;
 import java.io.PrintWriter;
 import java.util.Comparator;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 import net.tangly.fsm.State;
 import net.tangly.fsm.dsl.FsmBuilder;
@@ -53,7 +52,7 @@ public class GeneratorStateMachineCat<O, S extends Enum<S>, E extends Enum<E>> e
             if (state.hasHistory()) {
                 indent(writer, depth + 1).append(state.id().name()).append(".history,").println();
             }
-            var substates = state.substates().stream().sorted(Comparator.comparing(State::id)).collect(Collectors.toList());
+            var substates = state.substates().stream().sorted(Comparator.comparing(State::id)).toList();
             for (var substate : substates) {
                 writeState(substate, depth + 1, writer, (substates.get(substates.size() - 1).equals(substate)) ? ";" : ",");
             }

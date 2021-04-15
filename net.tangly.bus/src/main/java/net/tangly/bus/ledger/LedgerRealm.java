@@ -19,7 +19,6 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import net.tangly.core.HasInterval;
 import net.tangly.core.domain.Realm;
@@ -40,23 +39,23 @@ public interface LedgerRealm extends Realm {
     Provider<Transaction> transactions();
 
     default List<Account> assets() {
-        return accounts().items().stream().filter(o -> Account.AccountGroup.ASSETS == o.group()).collect(Collectors.toUnmodifiableList());
+        return accounts().items().stream().filter(o -> Account.AccountGroup.ASSETS == o.group()).toList();
     }
 
     default List<Account> liabilities() {
-        return accounts().items().stream().filter(o -> Account.AccountGroup.LIABILITIES == o.group()).collect(Collectors.toUnmodifiableList());
+        return accounts().items().stream().filter(o -> Account.AccountGroup.LIABILITIES == o.group()).toList();
     }
 
     default List<Account> profitAndLoss() {
-        return accounts().items().stream().filter(o -> Account.AccountGroup.PROFITS_AND_LOSSES == o.group()).collect(Collectors.toUnmodifiableList());
+        return accounts().items().stream().filter(o -> Account.AccountGroup.PROFITS_AND_LOSSES == o.group()).toList();
     }
 
     default List<Account> bookableAccounts() {
-        return accounts().items().stream().filter(o -> !o.isAggregate()).collect(Collectors.toUnmodifiableList());
+        return accounts().items().stream().filter(o -> !o.isAggregate()).toList();
     }
 
     default List<Transaction> transactions(LocalDate from, LocalDate to) {
-        return transactions().items().stream().filter(o -> HasInterval.isActive(o.date(), from, to)).collect(Collectors.toUnmodifiableList());
+        return transactions().items().stream().filter(o -> HasInterval.isActive(o.date(), from, to)).toList();
     }
 
     default Optional<Account> accountBy(String id) {
@@ -64,7 +63,7 @@ public interface LedgerRealm extends Realm {
     }
 
     default List<Account> accountsOwnedBy(String id) {
-        return accounts().items().stream().filter(o -> id.equals(o.ownedBy())).collect(Collectors.toUnmodifiableList());
+        return accounts().items().stream().filter(o -> id.equals(o.ownedBy())).toList();
     }
 
     void add(@NotNull Account account);
@@ -100,7 +99,7 @@ public interface LedgerRealm extends Realm {
      */
     default void build() {
         accounts().items().stream().filter(Account::isAggregate)
-            .forEach(o -> o.updateAggregatedAccounts(accounts().items().stream().filter(sub -> o.id().equals(sub.ownedBy())).collect(Collectors.toList())));
+            .forEach(o -> o.updateAggregatedAccounts(accounts().items().stream().filter(sub -> o.id().equals(sub.ownedBy())).toList()));
         accounts().items().stream().filter(Account::isAggregate).filter(o -> o.aggregatedAccounts().isEmpty())
             .forEach(o -> logger.atError().log("Aggregate account wrongly defined {}", o.id()));
     }

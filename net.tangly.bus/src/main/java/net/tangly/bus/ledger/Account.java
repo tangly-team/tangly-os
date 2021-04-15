@@ -22,7 +22,6 @@ import java.util.Currency;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import net.tangly.core.HasId;
 import net.tangly.core.HasName;
@@ -197,8 +196,7 @@ public class Account implements HasId, HasName {
     }
 
     public List<AccountEntry> getEntriesFor(LocalDate from, LocalDate to) {
-        return entries.stream().filter(o -> (o.date().isAfter(from) || o.date().equals(from)) && (o.date().isBefore(to) || o.date().isEqual(to)))
-            .collect(Collectors.toList());
+        return entries.stream().filter(o -> (o.date().isAfter(from) || o.date().equals(from)) && (o.date().isBefore(to) || o.date().isEqual(to))).toList();
     }
 
     public void addEntry(AccountEntry entry) {

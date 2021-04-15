@@ -42,7 +42,7 @@ public class ProviderView<T> implements Provider<T> {
 
     @Override
     public List<T> items() {
-        return provider.items().stream().filter(predicate).collect(Collectors.toList());
+        return provider.items().stream().filter(predicate).toList();
     }
 
     @Override

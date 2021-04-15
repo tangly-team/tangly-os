@@ -23,7 +23,6 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 import javax.inject.Inject;
 
 import net.tangly.bus.crm.Activity;
@@ -191,7 +190,7 @@ public class CrmTsvHdl {
     }
 
     static void addActivities(Provider<Interaction> provider, Interaction entity, Provider<Activity> activities) {
-        var items = activities.items().stream().filter(o -> (Long) ReflectionUtilities.get(o, OWNER_FOID) == entity.oid()).collect(Collectors.toList());
+        var items = activities.items().stream().filter(o -> (Long) ReflectionUtilities.get(o, OWNER_FOID) == entity.oid()).toList();
         if (!items.isEmpty()) {
             entity.addAll(items);
             provider.update(entity);
@@ -199,9 +198,8 @@ public class CrmTsvHdl {
     }
 
     static TsvEntity<Comment> createTsvComment() {
-        Function<CSVRecord, Comment> imports =
-            (CSVRecord record) -> Comment.of(LocalDateTime.parse(get(record, CREATED)), Long.parseLong(get(record, OWNER_FOID)), get(record, AUTHOR),
-                get(record, TEXT));
+        Function<CSVRecord, Comment> imports = (CSVRecord record) -> Comment
+            .of(LocalDateTime.parse(get(record, CREATED)), Long.parseLong(get(record, OWNER_FOID)), get(record, AUTHOR), get(record, TEXT));
 
         List<TsvProperty<Comment, ?>> fields = List.of(TsvProperty.of(OID, Comment::oid, (e, v) -> ReflectionUtilities.set(e, OID, v), Long::parseLong),
             TsvProperty.ofLong(OWNER_FOID, (e) -> (long) ReflectionUtilities.get(e, OWNER_FOID), (e, v) -> ReflectionUtilities.set(e, OWNER_FOID, v)),
@@ -247,9 +245,8 @@ public class CrmTsvHdl {
                 TsvProperty.ofString(TEXT, Employee::text, Employee::text),
                 TsvProperty.of("personOid", Employee::person, Employee::person, e -> findNaturalEntityByOid(e).orElse(null), convertFoidTo()),
                 TsvProperty.of("organizationOid", Employee::organization, Employee::organization, e -> findLegalEntityByOid(e).orElse(null), convertFoidTo()),
-                tagProperty(CRM_EMPLOYEE_TITLE), tagProperty(CRM_EMAIL_WORK),
-                TsvProperty.ofString(CRM_PHONE_WORK, e -> e.phoneNr(CrmTags.Type.work).map(PhoneNr::number).orElse(""),
-                    (e, p) -> e.phoneNr(CrmTags.Type.work, p)));
+                tagProperty(CRM_EMPLOYEE_TITLE), tagProperty(CRM_EMAIL_WORK), TsvProperty
+                    .ofString(CRM_PHONE_WORK, e -> e.phoneNr(CrmTags.Type.work).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(CrmTags.Type.work, p)));
         return TsvEntity.of(Employee.class, fields, Employee::new);
     }
 
@@ -280,8 +277,8 @@ public class CrmTsvHdl {
         fields.add(TsvProperty.of("state", Interaction::code, Interaction::code, e -> Enum.valueOf(InteractionCode.class, e.toLowerCase()), Enum::name));
         fields.add(TsvProperty.ofBigDecimal("potential", Interaction::potential, Interaction::potential));
         fields.add(TsvProperty.ofBigDecimal("probability", Interaction::probability, Interaction::probability));
-        fields.add(
-            TsvProperty.of("legalEntity", Interaction::legalEntity, Interaction::legalEntity, e -> findLegalEntityByOid(e).orElse(null), convertFoidTo()));
+        fields
+            .add(TsvProperty.of("legalEntity", Interaction::legalEntity, Interaction::legalEntity, e -> findLegalEntityByOid(e).orElse(null), convertFoidTo()));
         return TsvEntity.of(Interaction.class, fields, Interaction::new);
     }
 
@@ -304,9 +301,9 @@ public class CrmTsvHdl {
             TsvProperty.ofString(FIRSTNAME, Lead::firstname, null), TsvProperty.ofString(LASTNAME, Lead::firstname, null),
             TsvProperty.ofEnum(GenderCode.class, "gender", Lead::gender, null), TsvProperty.ofString("company", Lead::company, null),
             TsvProperty.ofString("phoneNr", o -> Objects.nonNull(o.phoneNr()) ? o.phoneNr().number() : null, null),
-            TsvProperty.ofString("email", o -> Objects.nonNull(o.email()) ? o.email().text() : null, null), TsvProperty.ofString("linkedIn", Lead::linkedIn,
-                null),
-            TsvProperty.ofEnum(ActivityCode.class, "activity", Lead::activity, null), TsvProperty.ofString(TEXT, Lead::text, null));
+            TsvProperty.ofString("email", o -> Objects.nonNull(o.email()) ? o.email().text() : null, null),
+            TsvProperty.ofString("linkedIn", Lead::linkedIn, null), TsvProperty.ofEnum(ActivityCode.class, "activity", Lead::activity, null),
+            TsvProperty.ofString(TEXT, Lead::text, null));
         return TsvEntity.of(Lead.class, fields, imports);
 
     }

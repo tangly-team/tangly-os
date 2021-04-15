@@ -15,7 +15,6 @@ package net.tangly.bus.ledger;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 import javax.inject.Inject;
 
 import net.tangly.core.TagType;
@@ -52,6 +51,6 @@ public class LedgerBoundedDomain extends BoundedDomain<LedgerRealm, LedgerBusine
     }
 
     private Provider<AccountEntry> entries() {
-        return ProviderInMemory.of(realm().accounts().items().stream().flatMap(o -> o.entries().stream()).collect(Collectors.toList()));
+        return ProviderInMemory.of(realm().accounts().items().stream().flatMap(o -> o.entries().stream()).toList());
     }
 }

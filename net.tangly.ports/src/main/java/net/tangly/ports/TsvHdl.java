@@ -27,7 +27,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import net.tangly.bus.crm.CrmEntity;
 import net.tangly.bus.crm.CrmTags;
@@ -175,7 +174,7 @@ public final class TsvHdl {
     }
 
     public static <T extends HasComments & HasOid> void addComments(Provider<T> provider, T entity, Provider<Comment> comments) {
-        var items = comments.items().stream().filter(o -> (long) ReflectionUtilities.get(o, OWNER_FOID) == entity.oid()).collect(Collectors.toList());
+        var items = comments.items().stream().filter(o -> (long) ReflectionUtilities.get(o, OWNER_FOID) == entity.oid()).toList();
         if (!items.isEmpty()) {
             entity.addAll(items);
             provider.update(entity);

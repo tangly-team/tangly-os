@@ -57,7 +57,7 @@ public record CodeType<T extends Code>(@NotNull Class<T> clazz, @NotNull List<T>
      * @return list of active codes of the code table
      */
     public List<T> activeCodes() {
-        return codes().stream().filter(Code::isEnabled).collect(Collectors.toUnmodifiableList());
+        return codes().stream().filter(Code::isEnabled).toList();
     }
 
     /**
@@ -67,7 +67,7 @@ public record CodeType<T extends Code>(@NotNull Class<T> clazz, @NotNull List<T>
      */
 
     public List<T> inactiveCodes() {
-        return codes().stream().filter(item -> !item.isEnabled()).collect(Collectors.toUnmodifiableList());
+        return codes().stream().filter(item -> !item.isEnabled()).toList();
     }
 
     /**

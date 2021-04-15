@@ -20,7 +20,6 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 import net.codecrete.qrbill.canvas.PDFCanvas;
 import net.codecrete.qrbill.generator.Bill;
@@ -85,9 +84,8 @@ public class InvoiceQrCode implements InvoiceGenerator {
         swico.setVatNumber(swicoVatNumber(invoice.invoicingEntity().id()));
         swico.setCustomerReference(invoice.invoicedEntity().id());
 
-        List<SwicoBillInformation.RateDetail> details = invoice.vatAmounts().entrySet().stream().filter(o -> o.getValue().compareTo(BigDecimal.ZERO) != 0).
-            map(o -> new SwicoBillInformation.RateDetail(o.getKey().multiply(HUNDRED).stripTrailingZeros(), o.getValue().stripTrailingZeros()))
-            .collect(Collectors.toList());
+        List<SwicoBillInformation.RateDetail> details = invoice.vatAmounts().entrySet().stream().filter(o -> o.getValue().compareTo(BigDecimal.ZERO) != 0)
+            .map(o -> new SwicoBillInformation.RateDetail(o.getKey().multiply(HUNDRED).stripTrailingZeros(), o.getValue().stripTrailingZeros())).toList();
         if (!details.isEmpty()) {
             swico.setVatRateDetails(details);
         }

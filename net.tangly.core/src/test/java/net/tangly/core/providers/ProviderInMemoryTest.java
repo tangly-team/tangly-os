@@ -58,6 +58,6 @@ class ProviderInMemoryTest {
     }
 
     private static List<Entity> entities() {
-        return IntStream.range(0, SIZE).mapToObj(o -> new Entity("name" + o)).collect(Collectors.toUnmodifiableList());
+        return IntStream.range(0, SIZE).mapToObj(o -> new Entity("name" + o)).toList();
     }
 }

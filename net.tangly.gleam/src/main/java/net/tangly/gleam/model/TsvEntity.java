@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
@@ -46,7 +45,7 @@ public record TsvEntity<T>(Class<T> clazz, List<TsvProperty<T, ?>> fields, Suppl
      * @return ordered list of column header names for the TSV record header
      */
     public List<String> headers() {
-        return fields().stream().flatMap(e -> e.columns().stream()).collect(Collectors.toList());
+        return fields().stream().flatMap(e -> e.columns().stream()).toList();
     }
 
     /**

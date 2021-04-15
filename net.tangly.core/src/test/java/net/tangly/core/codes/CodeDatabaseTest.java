@@ -25,7 +25,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CodeDatabaseTest {
-    private static final String DB_URL = "jdbc:hsqldb:mem:tangly;sql.syntax_mys=true";
+    private static final String DB_URL = "jdbc:hsqldb:mem:tangly";
     private static final String USERNAME = "SA";
     private static final String PASSWORD = "";
     private JDBCDataSource datasource;

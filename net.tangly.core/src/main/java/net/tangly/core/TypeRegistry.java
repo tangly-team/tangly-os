@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import net.tangly.core.codes.CodeType;
 import org.jetbrains.annotations.NotNull;
@@ -55,11 +54,11 @@ public class TypeRegistry {
      * @return List of namespaces
      */
     public List<String> namespaces() {
-        return tagTypes.stream().map(TagType::namespace).distinct().collect(Collectors.toUnmodifiableList());
+        return tagTypes.stream().map(TagType::namespace).distinct().toList();
     }
 
     public List<String> tagNamesForNamespace(@NotNull String namespace) {
-        return tagTypes.stream().filter(o -> Objects.equals(o.namespace(), namespace)).map(TagType::name).distinct().collect(Collectors.toUnmodifiableList());
+        return tagTypes.stream().filter(o -> Objects.equals(o.namespace(), namespace)).map(TagType::name).distinct().toList();
     }
 
     /**

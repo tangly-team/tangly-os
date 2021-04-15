@@ -287,7 +287,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
 
     @Override
     public IZUGFeRDExportableItem[] getZFItems() {
-        return invoice.items().stream().map(Item::new).collect(Collectors.toUnmodifiableList()).toArray(new Item[0]);
+        return invoice.items().stream().map(Item::new).toList().toArray(new Item[0]);
     }
 
     @Override

@@ -34,6 +34,6 @@ public interface InvoicesRealm extends Realm {
     Provider<InvoiceLegalEntity> legalEntities();
 
     default List<Invoice> invoicesFor(@NotNull String contractId) {
-        return invoices().items().stream().filter(o -> contractId.equals(o.contractId())).collect(Collectors.toList());
+        return invoices().items().stream().filter(o -> contractId.equals(o.contractId())).toList();
     }
 }

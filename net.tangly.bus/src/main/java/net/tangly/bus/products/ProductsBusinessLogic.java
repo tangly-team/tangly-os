@@ -16,7 +16,6 @@ package net.tangly.bus.products;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 import javax.inject.Inject;
 
 import net.tangly.commons.utilities.DateUtilities;
@@ -36,6 +35,6 @@ public class ProductsBusinessLogic {
 
     public List<Effort> collect(@NotNull Assignment assignment, LocalDate from, LocalDate to) {
         return realm().efforts().items().stream().filter(o -> Objects.equals(o.assignment(), assignment))
-            .filter(o -> DateUtilities.isWithinRange(o.date(), from, to)).collect(Collectors.toList());
+            .filter(o -> DateUtilities.isWithinRange(o.date(), from, to)).toList();
     }
 }

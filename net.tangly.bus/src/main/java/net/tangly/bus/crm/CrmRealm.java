@@ -58,7 +58,7 @@ public interface CrmRealm extends Realm {
      * @return the list of employees
      */
     default List<Employee> employeesFor(@NotNull LegalEntity entity) {
-        return employees().items().stream().filter(o -> entity.oid() == o.organization().oid()).collect(Collectors.toList());
+        return employees().items().stream().filter(o -> entity.oid() == o.organization().oid()).toList();
     }
 
     /**
@@ -68,14 +68,14 @@ public interface CrmRealm extends Realm {
      * @return the list of employees
      */
     default List<Employee> employeesFor(@NotNull NaturalEntity entity) {
-        return employees().items().stream().filter(o -> entity.oid() == o.person().oid()).collect(Collectors.toList());
+        return employees().items().stream().filter(o -> entity.oid() == o.person().oid()).toList();
     }
 
     default List<Contract> contractsFor(@NotNull LegalEntity entity) {
-        return contracts().items().stream().filter(o -> entity.oid() == o.sellee().oid()).collect(Collectors.toList());
+        return contracts().items().stream().filter(o -> entity.oid() == o.sellee().oid()).toList();
     }
 
     default List<Activity> collectActivities(@NotNull Predicate<Activity> predicate) {
-        return interactions().items().stream().flatMap(o -> o.activities().stream()).filter(predicate).collect(Collectors.toList());
+        return interactions().items().stream().flatMap(o -> o.activities().stream()).filter(predicate).toList();
     }
 }

@@ -155,6 +155,6 @@ public interface HasTags {
     }
 
     static <T extends HasTags> Collection<T> collect(@NotNull Collection<T> items, @NotNull String tag) {
-        return items.stream().filter(o -> o.containsTag(tag)).collect(Collectors.toUnmodifiableList());
+        return items.stream().filter(o -> o.containsTag(tag)).toList();
     }
 }

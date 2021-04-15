@@ -303,7 +303,7 @@ public class Invoice implements HasEditableId, HasDate {
      * @return list of invoice items
      */
     public List<InvoiceItem> items() {
-        return items.stream().filter(InvoiceLine::isItem).map(o -> (InvoiceItem) o).collect(Collectors.toUnmodifiableList());
+        return items.stream().filter(InvoiceLine::isItem).map(o -> (InvoiceItem) o).toList();
     }
 
     public InvoiceLine getAt(int position) {

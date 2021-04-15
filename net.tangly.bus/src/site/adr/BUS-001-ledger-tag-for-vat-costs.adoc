@@ -4,12 +4,6 @@ date:  2017-12-01
 weight: 1
 ---
 
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
-
 == BUS-001 Use Tag for VAT costs computation
 
 Date: 2017-12-01
@@ -38,5 +32,5 @@ The current values are:
 
 === Consequences
 
-* Ontology based on tags are not hard defined through a type system.
+* Ontology based on tags are not validated through a type system.
 * Checks have to be implemented to guaranty adequate level of tracking.

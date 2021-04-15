@@ -3,11 +3,6 @@ title: "BUS 002"
 date: 2017-12-01
 weight: 2
 ---
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
 
 == BUS-002 Use Tag for product costs computation
 

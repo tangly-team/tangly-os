@@ -77,6 +77,6 @@ public class LedgerBusinessLogic {
     }
 
     public List<String> bookableAccountIds() {
-        return ledger().bookableAccounts().stream().map(Account::id).collect(Collectors.toUnmodifiableList());
+        return ledger().bookableAccounts().stream().map(Account::id).toList();
     }
 }

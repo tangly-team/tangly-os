@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import net.tangly.commons.lang.Strings;
 import net.tangly.commons.lang.exceptions.ThrowingIOExceptionConsumer;
@@ -53,7 +52,7 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
     public static final Function<String, LocalDateTime> CONVERT_DATETIME_FROM = e -> (e != null) ? LocalDateTime.parse(e) : null;
 
     public static <T, U> TsvProperty<T, U> of(@NotNull TsvEntity<U> entity, Function<T, U> getter, BiConsumer<T, U> setter) {
-        List<String> columns = entity.fields().stream().map(e -> e.columns().get(0)).collect(Collectors.toList());
+        List<String> columns = entity.fields().stream().map(e -> e.columns().get(0)).toList();
         return of(columns, getter, setter, entity::imports, entity::exports);
     }
 
@@ -123,7 +122,7 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
         Objects.requireNonNull(convertFrom);
         Objects.requireNonNull(convertTo);
         return of(List.of(column), getter, setter, record -> convertFrom.apply(Strings.emptyToNull(record.get(column))),
-                (property, out) -> print(out, convertTo.apply(property)));
+            (property, out) -> print(out, convertTo.apply(property)));
     }
 
     public static <T, U> TsvProperty<T, U> of(@NotNull List<String> columns, Function<T, U> getter, BiConsumer<T, U> setter,
