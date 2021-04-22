@@ -41,7 +41,7 @@ class InvoicesPortTest {
             var port = new InvoicesAdapter(new InvoicesEntities(), store.invoiceReportsRoot());
             var handler = new InvoicesHdl(new InvoicesEntities(), store.invoicesRoot());
             handler.importEntities();
-            port.exportInvoiceDocuments(false, true);
+            port.exportInvoiceDocuments(true, true);
 
             handler.realm().invoices().items().forEach(o -> assertThat(Files.exists(InvoicesUtilities.resolvePath(store.invoicesRoot(), o))).isTrue());
         }

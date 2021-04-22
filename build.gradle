@@ -59,7 +59,6 @@ allprojects {
     repositories {
         mavenLocal()
         mavenCentral()
-        jcenter()
         maven { url "https://maven.vaadin.com/vaadin-addons" }
         maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
         maven { url "https://raw.github.com/ZUGFeRD/mustangproject/mvn-repo" }
@@ -164,7 +163,7 @@ subprojects {
         asciidoctorjVersion = '2.4.3'
         asciidoctorjPdfVersion = '1.5.4'
         assertjVersion = '3.18.1'
-        flyWayVersion = '7.7.3'
+        flyWayVersion = '7.8.1'
         guiceVersion = '5.0.1'
         hsqldbVersion = '2.6.0'
         jacksonVersion = '2.12.3'
@@ -176,8 +175,8 @@ subprojects {
         microStreamVersion = '04.01.00-MS-GA'
         mockitoVersion = '3.9.0'
         pdfboxVersion = '2.0.23'
-        sochartsVersion = '1.1.2'
-        vaadinVersion = '19.0.4'
+        sochartsVersion = '2.0.1'
+        vaadinVersion = '19.0.5'
     }
 
     configurations.all {
