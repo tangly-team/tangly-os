@@ -26,7 +26,7 @@ The Joel Test is slightly outdated.
 Keep his questions and just do the following changes
 
 * Can you replace CVS with Git to reflect the current state of the industry?
-* Move from daily builds to continuous build at checkin.
+* Move from daily builds to continuous build at check-in.
 * Remember "Daily Builds are for Wimps"
 * Do not only fix bugs but also write the associated automated unit and acceptance tests.
 Remember _Defect Driven Development_ to guaranty your customer he will never again see the same issue

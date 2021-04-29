@@ -12,66 +12,68 @@ tags: ["agile", "organization"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2016-11-01-head.jpg[width=420, height=360, role=left]
+image::2016-11-01-head.jpg[width=420,height=360,role=left]
 Lately people often ask me what is an agile company.
 They have an understanding of agile software development techniques such as {ref-scrum}, Lean, Kanban, {ref-xp} but no clue how a company could be agile.
 
-One way to approach this theme is to implement concepts of the above mentioned agile approaches. These are the pillars for iterative incremental improvements.
+One way to approach this theme is to implement concepts of the above mentioned agile approaches.
+These are the pillars for iterative incremental improvements.
 
 === Scrum Pillars
 
 Transparency::
- you trust all collaborators to provide their best when working on the product.
- They need full access to all relevant information: quality, progress, budget, people and financial data.
- They use the data to select the best alternatives to reach the company’s goals
+You trust all collaborators to provide their best when working on the product.
+They need full access to all relevant information: quality, progress, budget, people and financial data.
+They use the data to select the best alternatives to reach the company’s goals.
 Inspection::
- you cherish a failure culture because inspections will find weak points.
- You need a culture where people are never blamed.
- One consequence is that you eliminate management by objectives, and bonuses in your company
+You cherish a failure culture because inspections will find weak points.
+You need a culture where people are never blamed.
+One consequence is that you eliminate management by objectives, and bonuses in your company.
 Adaptation::
- you are ready to learn better approaches and truly believe there is a better solution.
- Processes change regularly bottom-up, company’s budget can only be a rolling indicative budget, and planning has to be _continuously_ updated
+You are ready to learn better approaches and truly believe there is a better solution.
+Processes change regularly bottom-up, company’s budget can only be a rolling indicative budget, and planning has to be _continuously_ updated.
 
-You can also pursue desirable attitudes or values of agile persons
+You can also pursue desirable attitudes or values of agile persons.
 
 === Scrum Values
 
 Commitment::
- as an employee you want to win, you are engaged.
- Every manager truly believes you work best to achieve the goals.
- If not, this manager made a mistake by hiring or keeping you
+As an employee you want to win, you are engaged.
+Every manager truly believes you work best to achieve the goals.
+If not, this manager made a mistake by hiring or keeping you.
 Courage::
- you are ready to say “I am wrong” because being wrong opens the door for improvement
+You are ready to say “I am wrong” because being wrong opens the door for improvement.
 Focus::
- you daily optimise the customers’ value and thrive for excellence.
- As a developer you do not work on projects, you work on excellent products.
- You provide value to your customers
+You daily optimise the customers’ value and thrive for excellence.
+As a developer you do not work on projects, you work on excellent products.
+You provide value to your customers.
 Openness::
- you seek better ideas and ways of doing. Openness requires transparency and respect.
+You seek better ideas and ways of doing.
+Openness requires transparency and respect.
 Respect::
- you truly respect customers, team members, collaborators, persons.
- In your team I will not hear any disrespectful comments about people
+You truly respect customers, team members, collaborators, persons.
+In your team I will not hear any disrespectful comments about people.
 
 === Modern Agile
 
-The http://modernagile.org/[modern agile movement] defines guiding principles
+The http://modernagile.org/[modern agile movement] defines guiding principles.
 
 Make people awesome::
- Dedicated collaborators want to give their best.
- Give them a purpose, a goal, empower them and let them climb the mountain.
- Thriving persons need purpose, excellence and autonomy.
- They are happier, healthier and more productive.
+Dedicated collaborators want to give their best.
+Give them a purpose, a goal, empower them and let them climb the mountain.
+Thriving persons need purpose, excellence and autonomy.
+They are happier, healthier and more productive.
 Deliver value continuously::
- Maintain sustainable pace and stability, all divisions of the organisation should focus on customer value.
- At the end of the day successful products are the only reason you get your paycheck.
+Maintain sustainable pace and stability, all divisions of the organisation should focus on customer value.
+At the end of the day successful products are the only reason you get your paycheck.
 Make safety a prerequisite::
- People do their best in their daily work, you believe in McGregor Y theory.
- Trust them and support them to become excellent.
- You shall develop self-awareness to increase safety.
+People do their best in their daily work, you believe in McGregor Y theory.
+Trust them and support them to become excellent.
+You shall develop self-awareness to increase safety.
 Experiment and learn rapidly::
- you make mistakes, you learn and increase continuously the delivered value.
- You have a learning culture, you inspect and adapt.
- You can react to new opportunities faster than competitors.
+You make mistakes, you learn and increase continuously the delivered value.
+You have a learning culture, you inspect and adapt.
+You can react to new opportunities faster than competitors.
 
 === Self Assessment
 
@@ -80,21 +82,24 @@ How do you know if you are moving in the right direction.
 A few concrete tests help you find out if you are an agile department or company.
 
 * _Be agile_ instead of _do agile_.
- Practice the above attitudes and do not just follow a checklist
+Practice the above attitudes and do not just follow a checklist
 * Nobody micro-manages in your company
 * _Feel accountable_ instead of _be accountable_.
- You want to improve, and your company as a natural part of the daily work.
+You want to improve, and your company as a natural part of the daily work.
 * _Compliment every collaborator_ you are working with at least once a week instead of _evaluating weaknesses and criticising people_.
- o you lead by example?
+Do you lead by example?
 * No management by objectives - MBO - or bonuses are established in your company
 * Every collaborator has access to all company data, every collaborator can request process and tool changes.
- We favour _Individuals and interactions over  tools and processes_
+We favour _Individuals and interactions over tools and processes_
 * You want to be excellent in your work.
- You have a purpose and autonomy in your daily work
+You have a purpose and autonomy in your daily work
 * Team members take the decision to hire or to fire collaborators, not the department responsible or the human resources group.
- Think about collaborators selecting their leaders, about managers being servants, about information available to all collaborators
-* Can you say the most important one word _Sorry_, the most important two words _Thank you_, the most important three words _I was wrong_ and the most
-important four words _Can I help you?_ at least three times a week?
+Think about collaborators selecting their leaders, about managers being servants, about information available to all collaborators
+* Can you say these essential sentences at least three times a week?
+** the most important one word _Sorry_,
+** the most important two words _Thank you_,
+** the most important three words _I was wrong_
+** and the most important four words _Can I help you?_
 
 I truly believe that we all want a fulfilling job which improves our world.
 I cannot understand other reasons to spend 40 hours and more per week for something less valuable.
@@ -119,7 +124,7 @@ Below a list of mind openers (available as Amazon ebooks):
 * Lean Novels
 ** The Lean Manager: A novel of lean transformation;
 ** Lead with Respect: A novel of lean practice;
-** The Gold Mine: A novel of lean turnaround; all three books by  Freddy Balle,
+** The Gold Mine: A novel of lean turnaround; all three books by Freddy Balle,
 * The Lean Mindset: Ask the right questions by Mary Poppendieck,
 * Social Intelligence: The new science of human relationships, by Daniel Goleman
 * Management 3.0: Leading agile developers, developing agile leaders by Jurgen Appelo,

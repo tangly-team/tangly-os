@@ -53,8 +53,8 @@ on a well functioning Agile product the customer, or proxy customer, is called u
 They need to decide requirements, set priorities, scout ahead of the product, align strategy, work with the developers, testers and managers, and may even have their own day job to do.
 In the earliest XP product (“C3”) the first business analyst came close to a nervous breakdown.
 Fall back::
-management may bring in consultants and other experts help switch a team to Agile.
-When the consultants leave some teams return to their old ways of working.
+Management may bring in consultants and other experts help switch a team to Agile.
+Once the consultants leave some teams return to their old ways of working.
 Advisers and consultants can be a great help when introducing Agile but they need to build capacity in the development team to continue learning and evolving when the consultants are gone.
 Failure to go far enough::
 To maximise the benefits of Agile Software Development the people, processes and organization that interface and work with the Agile team need to understand Agile and adjust their expectations and working techniques too.
@@ -74,7 +74,8 @@ In this case teams are better off using Kanban style management than a Scrum bas
 More often hyper change in goals and requirements are a sign that something is wrong beyond the team.
 The organization itself may lack strategy and objectives, or the Product Owner may not be filling their role adequately.
 Fragile, not Agile::
-some of the Agile techniques, like TDD, ATDD, CI or CD, when poorly applied with a lack of understanding can show short term benefits but create long term problems.
+Some Agile techniques, like TDD, ATDD, CI or CD, when poorly applied with a lack of understanding can show short term benefits but create long term
+problems.
 
 Few of these failure modes are unique to Agile approaches, they are reoccurring failure modes for all IT software development projects.
 Neither are they a comprehensive list of the ways in which Agile or traditional application development projects fail.

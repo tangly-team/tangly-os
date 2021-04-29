@@ -22,7 +22,7 @@ _Time to adapt and become agile_.
 
 It was a long journey.
 At the beginning of this millennium I was convincing managers that agile is not evil and could be used in Switzerland.
-And Yes, agile is compatible with Swiss culture - we finally added {ref-scrum} to the national methodology
+Yes, agile is compatible with Swiss culture - we finally added {ref-scrum} to the national methodology
 http://www.hermes.admin.ch/onlinepublikation/index.xhtml?element=supportingmaterial_hinweis_agiles_projektmanagement_mit_hermes_und_scrum.html[Hermes] -.
 The report 2016 patently states that agile projects are more successful for the customer and the company than non-agile ones.
 It is genuinely time to adapt.
@@ -31,7 +31,7 @@ See our previous blogs for the results of link:../../2017/agile-trends-switzerla
 link:../../2016/agile-trends-switzerland-2012[Agile Trends Switzerland 2012], and link:../../2016/agile-trends-switzerland-2013[Agile Trends Switzerland 2013].
 They illustrate the slow gains of agile and lean approaches in our country.
 
-But I have a strong _déjà-vu_.
+I have a strong _déjà-vu_.
 I am now convincing managers that agile approaches for the whole company are not evil and could be used in Europe and Switzerland.
 Yes, agile approaches are compatible with European and Swiss cultures.
 Yes, holistic agile approaches increase the odds of success to deliver tremendous products to our customers.
@@ -60,7 +60,7 @@ Try {ref-bbrt},
 Overall processes not tailored to agile::
 Once you change your structure and hierarchy, the processes will evolve,
 Trust is missing::
-Here again we talk again about trust or the believe your collaborators are competent and do their best to achieve success.
+Here again we talk again about trust, or the beliefs your collaborators are competent and do their best to achieve success.
 As an organization and as a manager it is time to decide.
 Do you truly https://en.wikipedia.org/wiki/Theory_X_and_Theory_Y[trust] your collaborators?
 Customers are not involved or engaged::
@@ -77,12 +77,13 @@ You shall start introducing agile approaches at department and company level.
 Senior management is fully committed to the approach and approves the cultural change.
 Read the book "Reinventing Organizations" from Frederic Laloux to understand the implied changes.
 
-Train your managers to understand agile, lean, and customer centric approaches.
-And training is not half-day introduction, it is days and days of training, workshops, and reading.
+Train your managers to understand agile, lean, and customer-centric approaches.
+Training is not half-day introduction, it is days and days of training, workshops, and reading.
 
 The transition is painful, see the seminal articles of Steve Denning
-https://www.forbes.com/sites/stevedenning/2015/01/26/why-do-managers-hate-agile[Why do managers hate agile?] and
-https://www.forbes.com/sites/stevedenning/2015/01/28/more-on-why-managers-hate-agile[More on why managers hate agile].
+
+* https://www.forbes.com/sites/stevedenning/2015/01/26/why-do-managers-hate-agile[Why do managers hate agile?]
+* https://www.forbes.com/sites/stevedenning/2015/01/28/more-on-why-managers-hate-agile[More on why managers hate agile].
 
 The principles are
 

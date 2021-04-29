@@ -57,7 +57,7 @@ ____
 Learn as much as you can through experiments before considering scaling.
 The invested capital in small experiments with small teams is tremendously cheaper than experimenting with company-wide approaches.
 
-Be gentle and kind with your professional teams.
+Be gentle and kind to your professional teams.
 *Scale once your agile teams are seasoned.*
 
 *It takes time to learn and master* Scrum and Kanban approaches.

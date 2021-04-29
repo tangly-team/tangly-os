@@ -53,9 +53,9 @@ ____
 
 ==== How shall you coach?
 
-You use Minimum Viable Change (MVC).
+You use _Minimum Viable Change_ (MVC).
 So I am using yet another acronym.
-A MVC has a hypothesis how to improve an aspect of your organization or your team.
+Each MVC has a hypothesis how to improve an aspect of your organization or your team.
 It has measurements - often called KPI by management - to decide if the change was a worthy improvement.
 For the savvy readers it is a variant of PDCA, a cornerstone of all agile and lean approaches.
 
@@ -69,9 +69,9 @@ To improve your organization you need these three levels of coaching
 
 Organizational coaching::
 The coach works with multiple teams and the management to improve the organization and its structure
-** Change processes to be customer centric,
+** Change processes to be customer-centric,
 ** Improve organization to see the whole product and the customer,
-** Delegate decision-making processes to teams,
+** Delegate decision-making processes to your teams,
 ** Remove functional silos,
 ** Redefine the roles of product managers, middle managers, quality managers,
 ** Eliminate waste: processes and artefacts not adding any value to the customer products.
@@ -81,7 +81,7 @@ It is common for a coach to take on the Scrum Master role.
 ** Implement MVC,
 ** Improve Scrum approach, teach agile values,
 ** Introduce {ref-xp} practices,
-** Improve decision making, meetings, flow of customer value,
+** Improve decision-making, meetings, flow of customer value,
 ** Learn, teach, coach through the stages of Shu Ha Ri (守破離),
 ** Empower the team to turn into best of breed.
 Technical coaching::

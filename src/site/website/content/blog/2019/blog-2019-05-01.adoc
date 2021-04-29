@@ -100,7 +100,7 @@ Smart money goes in training your collaborators.
 
 The agile architecture track contains the following blogs
 
-. link:../../2019/agile-within-scrum-principles[Agile Architecture Principles]
+. link:../../2019/agile-architecture-principles[Agile Architecture Principles]
 . link:../../2019/agile-code-is-clean-code[Agile Code is Clean Code!]
 . link:../../2019/agile-architecture-within-scrum[Agile Architecture within Scrum]
 . link:../../2020/agile-component-design[Agile Component Design]

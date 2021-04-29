@@ -13,25 +13,34 @@ tags: ["agile","series-students"]
 :copyright: CC-BY-SA 4.0
 
 image::2021-04-03-head.png[width=420,height=360,role=left]
-Lately I was asked which new approaches should be used for agile requirements engineering, Did we find a new silver bullet to write software specifications the agile way?
+Lately I was asked which new approaches should be used for agile requirements engineering.
+Did we find a new silver bullet to write software specifications the agile way?
 
-The answer is an easy oone.
-We do not need new approaches and complicated processes.
+The answer is an easy one.
+We do not need new approaches or complicated processes.
 Start with proven principles and learn.
 
-Impact mapping and story mapping are a successful way to identify and priorize your functions.
-Specifications by examples and stories as a discussion allow you to refine your understanding.
+https://www.impactmapping.org/[Impact Mapping] and https://en.wikipedia.org/wiki/User_story[Story Mapping]
+are successful approaches to identify and prioritize your functions.
+https://en.wikipedia.org/wiki/Specification_by_example[Specification by Example] and https://en.wikipedia.org/wiki/User_story[User Stories]
+as a discussion allow you to refine your understanding of what your customers need.
 
-Acceptance testing verifies the implementation fulfills the expected behavior.
-You get for free the mechanism to avoid regression problems when releasing your application.
+https://en.wikipedia.org/wiki/Acceptance_testing[Acceptance Testing] verifies the implementation fulfills the expected behavior.
+You get the mechanism to avoid regression problems when releasing your application for free.
 
-The associated theory was published in seminal books more than a decade ago.
-Just start doing it.
-You can still later improve your approach based on your learnings.
+The associated theory was published in seminal books more than a *decade* ago.
+Just start applying the principles.
+You can later still improve your approach based on your learnings.
+
+A nice overview was published in the _Professional Product Owner_ <<professionalproductowner>> written by the stewards of the product owner certification path of https://www.scrum.org[Scrum.org].
+
+If you prefer videos, search for Gojko Adzic, Roman Pichler, Mike Cohn or Christian Hassa.
+These experts are often speakers at conferences.
+You will find recordings of their speech on various platforms such as https://www.youtube.com/[YouTube] or https://vimeo.com/[Vimeo].
 
 [quote,Jeff Patton]
 ____
-Our job is NOT to develop software, our job is to change the world.
+Our job is *NOT* to develop software, our job is to change the world.
 ____
 
 [quote,Gojko Adzic]
@@ -44,44 +53,71 @@ ____
 ==== Specification
 
 Use Impact mapping and story mapping to classify and order your functionality.
-Story mapping works hand in hand with the release plan artifact I cited in the previous post.
-The nice think is that impact mapping and story mapping is quite compatible with design thinking
-We connect the different directions used in development departments.
+Story mapping works hand in hand with the release plan artifact I cited in a previous post.
+You have not only the key functionality you want to deliver, but also a tentative plan when you will deliver them.
+
+Vision, roadmap, and release plan are needed artefacts for any product development using Scrum as development approach.
+The mapping identifies the stories to realize in a release to satisfy the customers' needs.
+A nice discussion of these concepts can be found in _Strategize_<<strategize>>.
+
+The nice think is that impact mapping and story mapping are quite compatible with design thinking.
+We can nicely connect the different directions used in agile product development and marketing departments.
+
 Each specification story has acceptance criteria.
+These criteria are the specifications of your product.
+
+The Scrum community clearly states that product backlog items are not specifications, they are work items for the Scrum team.
+If you want to use stories to describe your needs instead of the specification by example approach, it is OK, but please not in the backlog.
 
 ==== Validation
 
 Acceptance criteria is a form of specification by example.
-Acceptance tests - see ATDD and BDD - are the automatic check for specification by example.
+Acceptance tests - see https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD] and
+https://en.wikipedia.org/wiki/Behavior-driven_development[BDD] - are the automatic check for specification by example.
 
 image::2021-04-03-test-pyramid.png[width=420,height=360,role=left]
 
 The gain of implementing the acceptance criteria as ATDD is guaranteed elimination of regression issues.
 You also get automatic generation of test plan, test results and requirement documents.
 Your documents are always in sync with the source code of your product.
+An additional advantage is all these artifacts are under source code management and fully auditable.
 
-I had success with fitness functions (see thoughtworks) to describe and validate non-functional requirements.
+I had success with https://www.thoughtworks.com/insights/articles/fitness-function-driven-development[Fitness Functions]
+to describe and validate non-functional requirements.
+We recommend taking this approach.
+You can extend your automatic validation to non-functional requirements with the same mechanisms as for functional requirements.
 
 === Background
 
-You could use following reference books
+You could use following reference books to bootstrap and strengthen your agile specification process:
 
 Specification by example::
- was published in 2011, twelve year ago,Impact Mapping was published in 2012, ten years ago,
-
+<<specificationbyexample>> was published in 2009, twelve year ago,
+Impact Mapping::
+<<impactmapping>> was published in 2012, ten years ago,
 User Story Mapping::
-was published in 2014 eight years ago,
-
+<<userstorymapping>> was published in 2014 eight years ago,
 Building Evolutionary Architectures::
-Fitness functions are decribed in this book and a recommended reference of my _SWAT Software Architecture and Techniques_ lecture.
-I taught the course at the department of computer science of the technical university of Lucerne.
+Fitness functions are described in this seminal book <<buildingevolutionaryarchtitectures>>.
+It is also a recommended reference of my _SWAT Software Architecture and Techniques_ bachelor lecture taught at technical universities.
 The book was published in 2017, five years ago.
 
-=== Remarks
+I currently teach the _SWAT_ course at the department of computer science of the technical university of Luzerne.
 
-Scrum community clearly states that product backlog items (also stories in backlog) are not specifications.
-They are work items.
-If you want to use stories to describe your needs instead of specification by example, it is OK, but not in the backlog.
+=== Evolution
+
+The probably most effective software architecture appraoch is https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design].
+
+The requirement analysis approach predating DDD is https://en.wikipedia.org/wiki/Event_storming[Event Storming].
+
+Event Storming is a collaborative analysis practice that brings together domain experts and developers for a common understanding of the needs to be realized.
+Conducted in the form of a workshop, its purpose is to quickly discover what is happening in the software domain.
+Compared to other methods, it is extremely light and intentionally does not require any computer support.
+The result is expressed in sticky notes on a wall.
+
+The _SWAT_ course naturally also discuss DDD and event storming.
+This blog also contains an architecture series digging into agile architecture approaches.
+The first article describes link:../../2019/agile-architecture-principles[Agile Architecture Principles].
 
 [bibliography]
 === Literature
@@ -89,13 +125,10 @@ If you want to use stories to describe your needs instead of specification by ex
 - [[[userstorymapping, 1]]] User Story Mapping: Discovering the Whole Story, Build the Right Product, Jeff Patton, O'Reilly, 2014
 - [[[impactmapping, 2]]] Impact Mapping: Making a Big Impact with Software Products and Projects, Gojko Adzik, 2012
 - [[[userstoriesapplied, 3]]] User Stories Applied: For Agile Software Development, Mike Cohn, Addison-Wesley, 2009
-- [[[professionalproductonwer, 4]]] The Professional Product Owner, Don McGreal and Ralph Jocham, Addison-Wesley, 2018
-- [[[valueproposition, 5]]] Value Proposition Desing, Alexander Osterwalder, John Wiley, 2014
+- [[[professionalproductowner, 4]]] The Professional Product Owner, Don McGreal and Ralph Jocham, Addison-Wesley, 2018
+- [[[valueproposition, 5]]] Value Proposition Design, Alexander Osterwalder, John Wiley, 2014
 - [[[agileproductmanagement, 6]]] Agile Product Management with Scrum: Creating Products that Customers Love, Roman Pichler, Addison-Wesley, 2010
 - [[[strategize, 6]]] Strategize: Product Strategy and Product Roadmap Practices for the Digital Age, Roman Pichler, 2016
-- [[[howtoleadinproductmanagement, 7]]] How To Lead in Product Management: Practices to Align Stakeholders, Guide Development Teams and Create Value Together,
- Roman Pichler, 2020
-
-
-
-
+- [[[howtoleadinproductmanagement, 7]]] How To Lead in Product Management: Practices to Align Stakeholders, Guide Development Teams and Create Value Together, Roman Pichler, 2020
+- [[[buildingevolutionaryarchtitectures, 8]]] Building Evolutionary Architectures: Support Constance Change, Neal Ford, Rebecca Parsons & Patrick Kua, O'Reilley, 2017
+- [[[specificationbyexample, 9]]] Bridging the Communication Gap: Specification by Example and Agile Acceptance Testing, Gojko Adzic, 2009

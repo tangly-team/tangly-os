@@ -1,90 +1,72 @@
 ---
-title: "Talk Money"
-linkTitle: "Talk Money"
-date: 2021-05-15
-tags: ["agile"]
+title: "Agile Trends Switzerland 2020"
+linkTitle: "Swiss Agile 2020"
+date: 2021-05-10
+tags: ["agile", "series-swiss-agile-trends"]
 ---
 
-== Talk Money
+== Agile Trends Switzerland 2020
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2021-05-01-head.jpg[width=420, height=360, role=left]
+image::2021-05-01-head.jpg[width=420,height=360,role=left]
+As a modern leader, you are aware of the importance of transforming your organization to become more agile.
+Indeed, you have been successful already in implementing first steps.
+But things are not moving forward as quickly as they should, especially in the current challenging situation.
+The leadership behaviour of your colleagues is only changing slowly.
+While the adjustments and decisions needed to drive the transformation forward get stuck in the cog works of the organization
 
-You have an incredible idea how to improve your company's development process.
-But nobody listens to you.
-It is time to speak management lingua.
+https://www.hermes.admin.ch/de/projektmanagement-2021.html[Hermes 2021] is still the official government method.
+They clearly acknowledged that this
+https://stefanedbrittain.medium.com/the-insidious-institutionalisation-of-water-scrum-fall-4af7de8865b9[Water-Scrum-Fall]
+is only need because administration are strongly hierarchical and unable to adapt to changes over the development of the solution.
 
-Show your organization you understand the financial aspects of your proposal and have analyzed the risks and opportunity costs.
+=== Where we Stand
 
-Here we provide an example with well-known analysis methods.
+The agile approach continues to spread rapidly around the world: 89.8% of all teams have already adopted or are in the process of adopting agile methodology, a considerable number.
+On the other hand, organizations are still struggling to build greater company-wide agility and only a few have already adopted agility on a portfolio (15.3%) or strategic level (8.2%).
+The good news is that many companies have started transformation initiatives or are planning to do so in the near future.
+=== Findings
 
-=== Your Proposal
+Going fully agile is challenging and sticking with waterfall is not an option.
+This has left many, about 40% to be exact, stuck in a hybrid approach, i.e., a combination of waterfall and agile.
+This is not necessarily a bad thing, if you manage to get the best of both worlds.
+Kanban offers an easy start with agile and unlike Scrum is applicable to any process.
+As our numbers show, it is becoming more and more popular.
+But remember, it is not Kanban if it doesn't have WIP limits.
+There is also a trend towards stable product teams that extend their responsibilities beyond those of "just" the development of a solution or service.
 
-Your company spend 40 % of the resources to fix quality issues and errors.
-You postulate that introducing continuous integration, clean code, quality metrics, TDD, and refactoring could improve the situation and diminishes the effort to fix errors by 5% a year during the next five years and culminate with at 25 % less unpaid effort in five years.
+=== Transformation Findings
 
-We assume you have 100 developers, each working productively 1600 hours per year, 8 hours per day and 40 hours per week.
-The internal costs of a hour is 100 and the external income is 150.
-The 100 developers are organized in 15 agile teams.
+* Happening mainly in IT and has not yet reached the Business,
+* Going fully agile is challenging and sticking with waterfall is not an option, Leaving many stuck in a Hybrid Approach,
+* Agile Development is more successful than waterfall,
+* Satisfaction with the agile way of working is high; with the transformation is low,
+* Leadership and culture are the main success factors.
+Yet focus is on Processes over People,
+* Team Accountability needs to be improved.
+Decentralisation of decisions is too hard for many.
+* Higher management has a way more optimistic view of the organization agility then middle management and collaborators.
 
-Your proposal is
+=== Insights
 
-First year::
- 5 days training at a cost of 400 per developer and day and opportunity costs for 5 days
- 2 K per developer for hardware upgrades
- 2 days coaching per team per months therefore we need 1.5 coach, we assume that coaching days are only 50% productive time
- 100 K for server licenses to support the new techniques.
-Second year::
- 2 days coaching per team per month therefore we need 1.5 coach, we assume that coaching days are only 50% productive time
- 100 K for server licenses to support the new techniques.
-Third, fourth and fifth year::
- 1 day coaching per team and per month therefore we need 0.75 coach, we assume that coaching days are only 50% productive time.
- You assume you had know-how transfer the last two years and have grow internal experts.
- You still have 10 days coaching per team per year to discuss new approaches
- 100 K for server licenses to support the new techniques.
+Agile appraoches are steadily making progress in Switzerland.
+We have reach the level where late majority and laggards are slowly looking the approach.
+Progress is slow and resistance is very high.
 
-=== Simple Calculation
+Be positive.
+This is the drawback of becoming a mainstream approach.
 
-K is a shorthand for thousands, M is a shorthand for millions
+I am currently focusing on Software Craftsmanship and key agile values and approaches.
+The more people know about key principles, the better the adoption and the implementation will be.
+One decision was to teach and train bachelor students in these principles to implement a grassroot approach.
 
-=== Investment Costs
+We still advocate and promote
 
-first year
-developer costs: 2 K + 2 K + 5 days * 8 * 100 + 10 days * 8 * 100 = 16 K
-department costs: 100 * 16 K + 550 K = 2150 K
-second year
-developer costs: 10 * 8 * 100 = 8 K
-department costs: 100 * 8 K + 550 K = 1350 K
-third, fourth and fifth year
-developer costs: 5 * * 8 * 100 = 4 K
-department costs: 100 * 8 K + 375 K = 1175 K
-2150 K + 1350 K + 3 * 1175 K = 7025 K (or 7 M)
+[.text-centered]
+_To be agile, not to do agile_
 
-=== Gains through Investment
-
-2.5 % + 7.5 % + 12.5 % + 17.5 % + 22.5 % = 62.5 % * 16000 K = 10 M
-The sums are 0.4 M + 1.2 M + 2.0 M + 2.8 M + 3.6 M
-After end of fifth year the gain is at least 25% or 4 M per year
-Because the improvement of 5% is only reached at the end of the year you have only half the gain in average over the whole year.
-ROI = (Gain of Investment - Cost of Investment ) / Const of Investment
-
-(10 M - 7 M) / 7 M = 43%
-
-See wikipedia ROI article for a detailed discussion.
-
-=== Discounted Cash-Flow
-
-DPV = \sum_{t=0}^{N} \frac{FV_t}{(1+r)^{t}} The discounted present value DPV of the future value FV,  r is the interest rate or discount rate, which reflects the cost of tying up capital and may also allow for the risk that the payment may not be received in full and
-t is the time in years before the future cash flow occurs.
-
-See wikipedia discounted cash-flow article for a detailed discussion.
-
-We assume a risk free interest rate of 5% to compute the present value of future positive and negative cash-flows.
-
-=== Final Words
-
-To be written.
+You can download the https://swissq.it/en/downloads/trends-benchmarks-report-2020/[Trends Benchmark Report 2020] report.

@@ -110,7 +110,7 @@ A rule of thumb we agreed upon is that every line of code has to be approved by 
 
 In trunk based development it is different.
 Since we want to merge our commits into the master branch as quickly as possible, we cannot wait until the complete feature is finished.
-Unlike in the original trunk based development approach we still use feature branches but we have much less divergence from the master branch than in Git Flow.
+Unlike in the original trunk based development approach we still use feature branches, but we have much less divergence from the master branch than in Git Flow.
 We create a pull request as soon as the first commit is pushed into the feature branch.
 Of course that requires that no commit breaks anything or causes tests to fail.
 Remember that unfinished features can always be disabled with feature toggles.
