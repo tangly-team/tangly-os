@@ -34,7 +34,7 @@ dependencies {
     implementation "org.hsqldb:hsqldb:$hsqldbVersion"
     // added reference to pdfbox to avoid a runtime error with qrbill-generator, the dependency is too open
     implementation "org.apache.pdfbox:pdfbox:$pdfboxVersion"
-    implementation 'net.codecrete.qrbill:qrbill-generator:2.5.1'
+    implementation 'net.codecrete.qrbill:qrbill-generator:2.5.2'
     implementation "org.mustangproject:library:$mustangProjectVersion"
     implementation "org.asciidoctor:asciidoctorj:$asciidoctorjVersion"
     implementation "org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion"

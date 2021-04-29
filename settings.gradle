@@ -11,6 +11,8 @@
  *  under the License.
  */
 
+enableFeaturePreview("VERSION_CATALOGS")
+
 include 'net.tangly.bdd'
 include 'net.tangly.bus'
 include 'net.tangly.commons'
