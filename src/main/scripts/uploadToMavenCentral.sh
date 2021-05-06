@@ -1,5 +1,5 @@
 #
-# Copyright 2006-2020 Marcel Baumann
+# Copyright 2006-2021 Marcel Baumann
 #
 #  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
 #  a copy of the License at
@@ -24,6 +24,7 @@ cd $siteRootDir
 upload ./net.tangly.bdd
 upload ./net.tangly.bus
 upload ./net.tangly.commons
+upload ./net.tangly.core
 upload ./net.tangly.dev
 upload ./net.tangly.fsm
 upload ./net.tangly.gleam

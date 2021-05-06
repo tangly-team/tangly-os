@@ -1,3 +1,16 @@
+#
+# Copyright 2006-2021 Marcel Baumann
+#
+#  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
+#  a copy of the License at
+#
+#          http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+#  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
+#  under the License.
+#
+
 prjRootDir=/Users/Shared/Projects/
 prjName=tangly-os
 prjDir=$prjRootDir$prjName
@@ -27,10 +40,10 @@ git clone https://github.com/google/docsy.git
 cd docsy
 git submodule update --init --recursive
 
-# create the layout for the ideas folder under content so that the files are processed
+# create the layout for the ideas folder under content so that the files are processed as a clone of docs folder
 cp -R ./layouts/docs ./layouts/ideas
 
-# improve copyright in the footer and taxonomy display
+# improve copyright in the footer and taxonomy display for blogs
 cp $prjDir/src/site/website/docsy/layouts/_default/* $siteDir/themes/docsy/layouts/_default
 cp $prjDir/src/site/website/docsy/layouts/blog/* $siteDir/themes/docsy/layouts/blog
 cp $prjDir/src/site/website/docsy/layouts/partials/* $siteDir/themes/docsy/layouts/partials
