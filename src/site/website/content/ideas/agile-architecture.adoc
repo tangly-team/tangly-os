@@ -9,8 +9,8 @@ weight: 30
 :email: <marcel.baumann@tangly.net>
 :revnumber: v0.1
 :revdate: 2020-05-31
-:homepage: https://www.tangly.net/
 :description: An introduction to software architecture in agile product development
+:homepage: https://www.tangly.net/
 :keywords: agile, architecture, Scrum, LeSS
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0

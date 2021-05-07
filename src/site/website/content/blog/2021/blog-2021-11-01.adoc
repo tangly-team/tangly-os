@@ -12,16 +12,18 @@ tags: ["java", "series-students"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2021-11-01-head.jpg[width=420, height=360, role=left]
+image::2021-11-01-head.jpg[width=420,height=360,role=left]
 
-[quote, Michael Feathers]
+[quote,Michael Feathers]
 ____
-OO makes code understandable by encapsulating moving parts. FP makes code understandable by minimizing moving parts.
+OO makes code understandable by encapsulating moving parts.
+FP makes code understandable by minimizing moving parts.
 ____
 
 Functional languages have the following properties:
 
-* Functions are first-class objects. That is, functions can be created at runtime, passed around, returned, and in general, used like any other datatype.
+* Functions are first-class objects.
+That is, functions can be created at runtime, passed around, returned, and in general, used like any other datatype.
 * Data is immutable.
 * Functions are pure; that is, they have no side effects.
 
@@ -30,10 +32,13 @@ For many tasks, functional programs are easier to understand, less error prone, 
 
 === Clojure
 
-(require package)
-(doc name)
-(find-doc regular-expression)
-(closure.repl/source symbol)
+[quote]
+____
+Purely functional programs typically operate on immutable data.
+Instead of altering existing values, altered copies are created and the original is preserved.
+Since the unchanged parts of the structure cannot be modified, they can often be shared between the old and new copies, which saves memory.
+____
 
-symbols
-list '(), vector [], set #{}, map {}
+(require package) (doc name) (find-doc regular-expression) (closure.repl/source symbol)
+
+symbols list '(), vector [], set #{}, map {}

@@ -1,0 +1,96 @@
+---
+title: "Functional Programming"
+date: 2022-01-01
+weight: 40
+---
+
+= Functional Programming in Java
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:revnumber: v0.1
+:revdate: 2021-01-01
+:homepage: https://www.tangly.net/
+:description: Functional Programmingin Java
+:keywords: agile, architecture, functional programming
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+:sectnums:
+:toc:
+
+== Introduction
+
+[cols="1,1"]
+|===
+|Functional |Object-Oriented
+
+|Order of execution isn’t always important, it can be asynchronous
+|A specific execution sequence of statements is crucial
+
+|Functions are basic building elements to work with data structures
+|Objects are the main abstractions for data
+
+|Follows the declarative paradigm
+|Follows the imperative paradigm
+
+|Focuses on the result desired and its final conditions
+|Focuses on how the desired result can be achieved
+
+|Ensures immutability; programs should be stateless
+|State changes are an important part of the execution
+
+|Primary activity is writing new functions and https://en.wikipedia.org/wiki/Function_composition_(computer_science)[composing existing ones]
+|Primary activity is building, extending and https://en.wikipedia.org/wiki/Object_composition[composing objects]
+|===
+
+== Concepts
+
+=== Definitions
+
+https://en.wikipedia.org/wiki/Referential_transparency[Referential Transparency]::
+A function, or more generally an expression, is called referentially transparent if a call can be replaced by its value without affecting the behavior of the program.
+Simply spoken, given the same input the output is always the same.
+https://en.wikipedia.org/wiki/Higher-order_function[Higher Order Functions]::
+In computer science, a higher-order function is a function that does at least one of the following:
+
+* takes one or more functions as arguments
+* returns a function as its result
+https://en.wikipedia.org/wiki/Pure_function[Pure Functions]::
+The function return values are identical for identical arguments (no variation with local static variables, non-local variables, mutable reference arguments or input streams).
+The function application has no side effects (no mutation of local static variables, non-local variables, mutable reference arguments or input/output streams).
+https://en.wikipedia.org/wiki/Function_composition_(computer_science)[Functional Composition]::
+In mathematics, function composition is an operation that takes two functions f and g and produces a function h such that h(x) = g(f(x)) Composition requires higher order functions.
+For instance, the functions asciimath:[f(x): X → Y] and asciimath:[g(y): Y → Z] can be composed to yield a function asciimath:[h(x): g(f(x))] which maps
+asciimath:[X → Z].
+https://en.wikipedia.org/wiki/Lambda_lifting[Lambda Lifting]::
+is a meta-process that restructures a computer program so that functions are defined independently of each other in a global scope.
+An individual "lift" transforms a local function into a global function.
+It is a two steps process:
+Eliminating free variables in the function by adding parameters Moving functions from a restricted scope to broader or global scope.
+https://en.wikipedia.org/wiki/Currying[Currying]::
+In computer science, currying is the technique of converting a function that takes multiple arguments into a sequence of functions that each take a single argument.
+
+=== Abstractions
+
+Monad::
+Monoid::
+
+== Streams
+
+== Other Approaches
+
+=== Closure Functional Advantages
+
+=== Groovy Functional Advantages
+
+== Future Java Functional Enhancements
+
+=== Concise Method Bodies
+
+=== Pattern Matching and Deconstruction
+
+[bibliography]
+== References
+
+- [[[effective-java, 1]]] Joshua Bloch.
+Effective Java _Third Edition_.
+Addison-Wesley 2018.

@@ -103,6 +103,7 @@ It is also a recommended reference of my _SWAT Software Architecture and Techniq
 The book was published in 2017, five years ago.
 
 I currently teach the _SWAT_ course at the department of computer science of the technical university of Luzerne.
+footnote:[Lecture videos in German for Spring Semester 2021 are available under https://tube.switch.ch/channels/iHdetJjwR4[Switch Tube]]
 
 === Evolution
 

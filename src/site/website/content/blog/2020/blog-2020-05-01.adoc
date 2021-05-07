@@ -34,6 +34,8 @@ While there is some overlap with Gradle's dependency management features, Java m
 Modularity is enforced at the language level instead of coding conventions or using external tools such as https://www.archunit.org/[ArchUnit].
 
 The only thing you need to configure is module path inference for the Java plugins.
+footnote:[Gradle 7.0 released in Spring 2021 transparently supports Java modules.
+If you use the _java-library_ plugin, the support of Java modules is transparent.]
 
 [source, groovy]
 ----

@@ -1,0 +1,79 @@
+---
+title: "Measurements"
+linkTitle: "ava, Groovy, Cljsure"
+date: 2022-04-01
+tags: ["agile", "java", "students"]
+---
+
+== Three JVM Languages: Java, Groovy, Clojure
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2022-04-01-head.png[width=420,height=360,role=left]
+
+JSR-385 could have saved Mars Orbiter.
+
+Again and again accidents are due to calculation errors in computer applications.
+
+Patriot Missile::
+The cause here was an inaccurate calculation of the time that has passed since the start due to arithmetic errors in the computer system.
+Ariane 5 Explosion::
+A floating point number was converted, which then had a larger value than could be stored using the available 16-bit signed integer value.
+US Air Machine::
+A US airliner nearly crashed on a flight between the United States and Canada, in the Great Lakes area and the greater Chicago area.
+Here, when refueling the machine, the US gallon and British gallon volume units for liquid and fuel were mixed up.
+The actual amount of kerosene available was signifantly reduced.
+The machine ending up on the holding pattern on approach without sufficient fuel.
+
+Numerous, sometimes fatal, incorrect dosages of medication.
+
+
+=== Definitions
+
+The Java classes defined in the JSR-385 specification are not limited to science, physics, or math alone.
+As a result, the terms quantity and unit of measure should be used in their general terminology, such as physical quantity or physical unit of measure, unless otherwise specified.
+This generalization holds true even if the Units of Measurement API was originally designed with scientific or physical quantities as the primary goal.
+The names and terms used in the specification are:
+
+Dimension::
+Dimension is one of the fundamental aspects of quantity, including length, mass, time, or combinations thereof.
+The concept of measure expresses a characteristic without any concept of size.
+So we can talk about length without any implication.
+Quantity::
+Any kind of quantitative property or attribute of a thing.
+Mass, time, distance, heat, longitude or latitude are among the familiar examples of quantitative properties.
+
+* No unit of measure is required to express a quantity, nor does one need specific arithmetic to do so.
+Alice can quantify the size of her shoes by picking them up.
+Alice can add the mass of her left shoe and the mass of her right shoe by placing them both in the bowl of a scale.
+Quantities can be measurable or dimensionless: the number of Alice's shoes is a dimensionless quantity.
+* Units of measure are required to represent measurable quantities in a computer, on paper, on a network, device, etc.
+Two or more of these specifications do not mandate the use of a particular quantity as a standard unit of measure.
+Therefore, SI (System-International) is usually used so that the standard system of units of measurement is suitable for most applications.
+According to the JSR-385 API specification, 7 quantities should be acceptable if they have the same dimensions so that they can be compared with one another in a meaningful way.
+Unit::
+A unit, or unit of measure, is a quantity that is assumed to be the standard with a unique value that can be used to express.
+Units of measurement of the same type can be used as a comparison value.
+For example, one foot corresponds to a quantity of 0.3048 meters.
+Regardless of how this came about, a unit of measure can be expressed as the quantity of other units of measure of the same kind.
+Base-Unit:::
+The base unit is a well-defined unit of measurement that is defined as being dimensionally independent of other basic units of measurement.
+The SI system defines only 7 basic units of measurement (including meters, kilograms and seconds) from which all other SI units of measurement are derived.
+Derived-Unit:::
+Derived-Unit is a unit of measurement formed as the product of the results of basic units of measurement.
+Some derived units of measurement have been given a special name and a symbol for convenience and ease of use.
+In the SI system, special name derived units of measurement include Hz, Newtons, and Volts.
+System-of-Units:::
+A system of units is a set of basic and derived units of measure chosen as standards for specifying measures.
+Examples are the SI (metric) and the imperial (English) system.
+Prefix (prefix or multiplier):::
+A prefix is ​​a leading word that can be applied to a unit of measure to form a decimal multiplication or decrease of the unit of measure.
+Prefixes are mainly used in the SI system, which includes kilo-, centi-, mili- etc.
+Other cultures and regions use multiplier systems of a similar type, some of which differ from the SI system.
+Examples are the separate use of multipliers such as Lakh- (100,000) or Crore- (10 million) in countries like India or parts of the Middle East.
+This can be attributed to the fact that different currency systems exist.
+It can also be traced back to historical number systems, which differ from the Latin or Arabic origin of today's western systems in some areas or are absent in these in the same form.
+On the other hand, the use of others, such as a dozen, is almost unknown there.
