@@ -10,6 +10,7 @@
  *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
  *  under the License.
  */
+
 plugins {
     id 'java-library'
 }
@@ -19,8 +20,4 @@ project.ext.artifactId = 'fsm'
 project.version = "0.2.6"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
-project.description = "Hierarchical finite state machine library - FSM - using Java 14 or higher (tangly llc)"
-
-java {
-    modularity.inferModulePath.set(true)
-}
+project.description = "Hierarchical finite state machine library - FSM - using Java 16 or higher (tangly llc)"

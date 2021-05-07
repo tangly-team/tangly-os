@@ -25,10 +25,8 @@ dependencies {
     implementation project(':net.tangly.gleam')
     implementation project(':net.tangly.ports')
 
-    implementation "com.google.jimfs:jimfs:$jimfsVersion"
+    implementation(libs.jimfs)
+    implementation(libs.microstream.storage)
 
-    implementation "one.microstream:storage.embedded:$microStreamVersion"
-    implementation "one.microstream:storage.embedded.configuration:$microStreamVersion"
-
-    testImplementation "org.apache.pdfbox:pdfbox:$pdfboxVersion"
+    testImplementation(libs.apache.pdfbox)
 }

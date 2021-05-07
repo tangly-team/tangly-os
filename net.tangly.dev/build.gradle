@@ -20,5 +20,5 @@ project.description = "Development Utilities(tangly llc)"
 
 dependencies {
     implementation project(':net.tangly.commons')
-    implementation "org.antlr:ST4:4.3.1"
+    implementation(libs.antrlr.st4)
 }

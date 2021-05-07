@@ -14,6 +14,7 @@
 plugins {
     id "java"
     id "application"
+    // id "com.vaadin" version "20.0.0.alpha6"
     id "com.vaadin" version "0.17.0.1"
 }
 
@@ -28,7 +29,6 @@ ext {
     // don't use Jetty 10 - requires Java 11
     // jettyVersion = "10.0.1"
     // don't use Jetty 11+ - uses jakarta.Servlet instead of javax.Servlet which makes it incompatible with Vaadin
-    jettyVersion = "9.4.38.v20210224"
 }
 
 vaadin {
@@ -48,25 +48,20 @@ dependencies {
 
     implementation enforcedPlatform("com.vaadin:vaadin-bom:$vaadinVersion")
 
-    implementation "one.microstream:storage.embedded:$microStreamVersion"
-    implementation "com.storedobject.chart:so-charts:$sochartsVersion"
-    implementation "org.slf4j:slf4j-simple:$slf4jVersion"
-    implementation 'com.vaadin.componentfactory:tooltip:1.3.5'
-    implementation 'org.vaadin.alejandro:pdf-browser:3.0.1'
-    implementation 'com.vaadin.componentfactory:autocomplete:2.3.1'
-    implementation 'de.f0rce.signaturepad:signature-widget:2.0.0'
+    implementation(libs.microstream.storage)
+    implementation(libs.vaadin.socharts)
+    implementation(libs.vaadin.tooltip)
+    implementation(libs.vaadin.pdfbrowser)
+    implementation(libs.vaadin.autocomplete)
+    implementation(libs.vaadin.signature)
 
     // Embedded Jetty dependencies
-    implementation("org.eclipse.jetty:jetty-continuation:${jettyVersion}")
-    implementation("org.eclipse.jetty:jetty-server:${jettyVersion}")
-    implementation("org.eclipse.jetty.websocket:websocket-server:${jettyVersion}")
-    implementation("org.eclipse.jetty.websocket:javax-websocket-server-impl:${jettyVersion}") { exclude(module: "javax.websocket-client-api") }
-
-    implementation('org.glassfish.jersey.containers:jersey-container-servlet:3.0.1')
+    implementation(libs.bundles.jetty.deps)
+    implementation(libs.jetty.websocketimp) { exclude(module: "javax.websocket-client-api") }
 
 //    implementation("org.eclipse.jetty:jetty-annotations:${jettyVersion}")
 //    implementation ("org.eclipse.jetty.websocket:websocket-jetty-api:${jettyVersion}")
 //    implementation("org.eclipse.jetty.websocket:websocket-jetty-server:${jettyVersion}")
 
-    testImplementation 'com.github.mvysny.kaributesting:karibu-testing-v10:1.2.12'
+    testImplementation (libs.vaadin.test)
 }

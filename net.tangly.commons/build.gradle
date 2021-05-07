@@ -23,22 +23,18 @@ project.ext.artifactId = 'commons'
 project.version = "0.2.6"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
-project.description = "Commons data structures - using Java 14 or higher (tangly llc)"
+project.description = "Commons data structures - using Java 16 or higher (tangly llc)"
 
 java {
     modularity.inferModulePath.set(true)
 }
 
 dependencies {
-    implementation "org.slf4j:slf4j-api:$slf4jVersion"
-    implementation "org.jetbrains:annotations:$annotationsVersion"
-    implementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
-    implementation "com.networknt:json-schema-validator:$jsonValidatorVersion"
-    implementation "com.sun.mail:jakarta.mail:2.0.1"
-    implementation "org.asciidoctor:asciidoctorj:$asciidoctorjVersion"
-    implementation "org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion"
-
-    implementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
-
+    implementation(libs.annotations)
+    implementation(libs.slf4j.api)
+    implementation(libs.json.validator)
+    implementation(libs.jakarta.mail)
+    implementation(libs.asciidoctorj.core)
+    implementation(libs.asciidoctorj.pdf)
 }
 

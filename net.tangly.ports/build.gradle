@@ -17,38 +17,26 @@ project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
 project.description = "ports for the business components (tangly llc)"
 
-ext {
-    mustangProjectVersion = '2.1.1'
-}
-
 dependencies {
     implementation project(':net.tangly.commons')
     implementation project(':net.tangly.core')
     implementation project(':net.tangly.bus')
     implementation project(':net.tangly.gleam')
 
-    implementation "com.networknt:json-schema-validator:$jsonValidatorVersion"
-    implementation "org.apache.commons:commons-csv:$apacheCommonsCvsVersion"
-    // Java 9 module compliant version of https://github.com/stleary/JSON-java
-    implementation "com.guicedee.services:json:$jsonVersion"
-    implementation "org.hsqldb:hsqldb:$hsqldbVersion"
-    // added reference to pdfbox to avoid a runtime error with qrbill-generator, the dependency is too open
-    implementation "org.apache.pdfbox:pdfbox:$pdfboxVersion"
-    implementation 'net.codecrete.qrbill:qrbill-generator:2.5.2'
-    implementation "org.mustangproject:library:$mustangProjectVersion"
-    implementation "org.asciidoctor:asciidoctorj:$asciidoctorjVersion"
-    implementation "org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion"
+    implementation(libs.json.validator)
+    implementation(libs.apache.commons.csv)
+    implementation(libs.json.core)
+    implementation(libs.hsqldb)
+    implementation(libs.apache.pdfbox)
+    implementation(libs.qrbill)
+    implementation(libs.mustang.core)
+    implementation(libs.asciidoctorj.core)
+    implementation(libs.asciidoctorj.pdf)
+    implementation(libs.ical4j.core)
+    implementation(libs.ical4j.vcard)
+    implementation(libs.microstream.storage)
 
-    implementation 'org.mnode.ical4j:ical4j:3.0.19'
-    implementation 'org.mnode.ical4j:ical4j-vcard:1.0.5'
-
-    implementation "one.microstream:storage.embedded:$microStreamVersion"
-    implementation "one.microstream:storage.embedded.configuration:$microStreamVersion"
-
-    testImplementation "org.flywaydb:flyway-core:$flyWayVersion"
     // testImplementation "org.mustangproject:validator:$mustangProjectVersion"
-    testImplementation "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
-    testImplementation "com.fasterxml.jackson.module:jackson-module-parameter-names:$jacksonVersion"
-    testImplementation "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion"
-    testImplementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
+    testImplementation(libs.flyway)
+    testImplementation(libs.bundles.jackson.deps)
 }

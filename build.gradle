@@ -27,7 +27,7 @@ plugins {
     id 'signing'
     id "jacoco"
     id "com.github.spotbugs" version "4.7.1"
-    id "org.sonarqube" version "3.1.1"
+    id "org.sonarqube" version "3.2.0"
     id "info.solidsoft.pitest" version "1.6.0"
     id 'com.google.cloud.tools.jib' version '3.0.0'
     id 'com.github.ben-manes.versions' version '0.38.0'
@@ -157,25 +157,8 @@ subprojects {
     }
 
     ext {
-        annotationsVersion = '20.1.0'
-        apacheCommonsCvsVersion = '1.8'
-        archUnitVersion = '0.18.0'
-        asciidoctorjVersion = '2.5.0'
-        asciidoctorjPdfVersion = '1.5.4'
         assertjVersion = '3.18.1'
-        flyWayVersion = '7.8.2'
-        guiceVersion = '5.0.1'
-        hsqldbVersion = '2.6.0'
-        jacksonVersion = '2.12.3'
-        jsonValidatorVersion = '1.0.52'
-        jsonVersion = '1.0.19.13'
-        jimfsVersion = '1.2'
-        junitVersion = '5.8.0-M1'
         slf4jVersion = '2.0.0-alpha1'
-        microStreamVersion = '04.01.00-MS-GA'
-        mockitoVersion = '3.9.0'
-        pdfboxVersion = '2.0.23'
-        sochartsVersion = '2.1.0'
         vaadinVersion = '19.0.6'
     }
 

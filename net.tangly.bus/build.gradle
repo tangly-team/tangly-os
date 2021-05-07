@@ -26,12 +26,7 @@ dependencies {
     implementation project(':net.tangly.commons')
     implementation project(':net.tangly.core')
 
-    implementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
-
-    implementation 'commons-codec:commons-codec:1.15'
-    implementation 'commons-io:commons-io:2.8.0'
-}
-
-java {
-    modularity.inferModulePath.set(true)
+    implementation (libs.slf4j.api)
+    implementation(libs.apache.commons.codec)
+    implementation(libs.apache.commons.io)
 }

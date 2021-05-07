@@ -26,9 +26,9 @@ java {
 }
 
 dependencies {
-    implementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
-    // Java 9 module compliant version of https://github.com/stleary/JSON-java
-    implementation "com.guicedee.services:json:$jsonVersion"
+    implementation(libs.slf4j.api)
+    implementation(libs.json.core)
+    implementation(libs.junit.api)
 
-    testImplementation "com.networknt:json-schema-validator:$jsonValidatorVersion"
+    testImplementation(libs.json.validator)
 }
