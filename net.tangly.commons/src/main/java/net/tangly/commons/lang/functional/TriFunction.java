@@ -16,6 +16,7 @@ import java.util.Objects;
 import java.util.function.Function;
 
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 @FunctionalInterface
 public interface TriFunction<T, U, V, R> {
@@ -39,7 +40,7 @@ public interface TriFunction<T, U, V, R> {
      * @throws NullPointerException if after is null
      */
     @Contract(pure = true)
-    default <W> TriFunction<T, U, V, W> andThen(Function<? super R, ? extends W> after) {
+    default <W> TriFunction<T, U, V, W> andThen(@NotNull Function<? super R, ? extends W> after) {
         Objects.requireNonNull(after);
         return (T t, U u, V v) -> after.apply(apply(t, u, v));
     }

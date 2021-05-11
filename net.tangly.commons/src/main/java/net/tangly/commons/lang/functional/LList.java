@@ -12,6 +12,7 @@
 
 package net.tangly.commons.lang.functional;
 
+import java.util.NoSuchElementException;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -35,7 +36,7 @@ import org.jetbrains.annotations.NotNull;
  *
  * @param <T> type of the list items
  */
-public sealed interface LList<T> permits Nil, ImmutableList {
+public sealed interface LList<T> permits LList.Nil, LList.ImmutableList {
     /**
      * Defines a split iterator for the immutable persistent list structure. Split iterator is used to provide a {@link Stream} for an instance of the list.
      *
@@ -85,6 +86,7 @@ public sealed interface LList<T> permits Nil, ImmutableList {
         return new ImmutableList<>(head, tail);
     }
 
+    @SafeVarargs
     static <T> LList<T> list(@NotNull T... items) {
         LList<T> list = LList.nil();
         for (int i = items.length - 1; i >= 0; i--) {
@@ -127,5 +129,48 @@ public sealed interface LList<T> permits Nil, ImmutableList {
 
     default Stream<T> stream() {
         return StreamSupport.stream(new LListSplitIterator<>(this), false);
+    }
+
+    final class Nil<T> implements LList<T> {
+        private static final Nil<?> Nil = new Nil<>();
+
+        private Nil() {
+        }
+
+        public static <T> Nil<T> nil() {
+            return (Nil<T>)Nil;
+        }
+
+        @Override
+        public boolean isEmpty() {
+            return true;
+        }
+
+        @Override
+        public T head() {
+            throw new NoSuchElementException("head of empty list");
+        }
+
+        @Override
+        public LList<T> tail() {
+            throw new UnsupportedOperationException("tail of empty list");
+        }
+
+        @Override
+        public String toString() {
+            return "";
+        }
+    }
+
+    record ImmutableList<T>(@NotNull T head, @NotNull LList<T> tail) implements LList<T> {
+        @Override
+        public boolean isEmpty() {
+            return false;
+        }
+
+        @Override
+        public String toString() {
+            return head() + (tail().isEmpty() ? "" : ", " + tail().toString());
+        }
     }
 }

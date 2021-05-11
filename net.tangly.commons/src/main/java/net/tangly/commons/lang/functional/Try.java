@@ -13,63 +13,155 @@
 package net.tangly.commons.lang.functional;
 
 import java.util.Objects;
-import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Defines the try abstraction in Java. Try can be used to return a function result in the context of streams. Streams do not accept methods throwing
- * exceptions.
- * <p>A try instance has either a result or a failure. This invariant is enforced in the constructor.</p>
+ * Functional programming strives to minimize side effects, so throwing exceptions is avoided. Instead, if an operation can fail, it should return a
+ * representation of its outcome including an indication of success or failure, as well as its result (if successful), or some error data otherwise. In other
+ * words, errors in functional progamming are just payload.
+ * <p>Try should be preferred in functional programming approaches in particular in the context of stream pipelines.</p>
  *
- * @param <T> type of the result
+ * @param <T> type of the computed result in the successful case
  */
-public record Try<T>(T result, RuntimeException failure) {
-    public Try {
-        if (Objects.isNull(result) ^ Objects.isNull(failure)) {
-            throw new IllegalArgumentException("Either result or failure are not null");
-        }
+public sealed interface Try<T> permits Try.Success, Try.Failure {
+    boolean isSuccess();
+
+    default boolean isFailure() {
+        return !isSuccess();
     }
 
-    public Try(@NotNull T result) {
-        this(result, null);
+    Try<T> onSuccess(@NotNull Consumer<T> consumer);
+
+    Try<T> onFailure(@NotNull Consumer<Throwable> consumer);
+
+    Throwable getThrown();
+
+    T get();
+
+    <U> Try<U> map(@NotNull Function<? super T, ? extends U> fn);
+
+    <U> Try<U> flatMap(@NotNull Function<? super T, Try<U>> fn);
+
+    static <T> Try<T> failure(@NotNull Throwable t) {
+        Objects.requireNonNull(t);
+        return new Failure<>(t);
     }
 
-    public Try(@NotNull RuntimeException failure) {
-        this(null, failure);
+    static <V> Success<V> success(@NotNull V value) {
+        Objects.requireNonNull(value);
+        return new Success<>(value);
     }
 
-    public static <T, R> Try<R> of(@NotNull Function<T, R> function, T value) {
+    static <T> Try<T> of(@NotNull Supplier<T> fn) {
+        Objects.requireNonNull(fn);
         try {
-            return new Try(function.apply(value));
-        } catch (Exception e) {
-            return new Try(e);
+            return Try.success(fn.get());
+        } catch (Throwable t) {
+            return Try.failure(t);
         }
     }
 
-    public static <R> Try<R> of(@NotNull Supplier<R> supplier) {
-        try {
-            return new Try(supplier.get());
-        } catch (Exception e) {
-            return new Try(e);
+    final class Failure<T> implements Try<T> {
+        private final RuntimeException exception;
+
+        public Failure(@NotNull Throwable t) {
+            this.exception = new RuntimeException(t);
+        }
+
+        @Override
+        public boolean isSuccess() {
+            return false;
+        }
+
+        @Override
+        public T get() {
+            throw this.exception;
+        }
+
+        @Override
+        public Try<T> onSuccess(@NotNull Consumer<T> consumer) {
+            return this;
+        }
+
+        @Override
+        public Try<T> onFailure(@NotNull Consumer<Throwable> consumer) {
+            consumer.accept(getThrown());
+            return this;
+        }
+
+        @Override
+        public <U> Try<U> map(@NotNull Function<? super T, ? extends U> fn) {
+            Objects.requireNonNull(fn);
+            return Try.failure(this.exception);
+        }
+
+        @Override
+        public <U> Try<U> flatMap(@NotNull Function<? super T, Try<U>> fn) {
+            Objects.requireNonNull(fn);
+            return Try.failure(this.exception);
+        }
+
+        @Override
+        public Throwable getThrown() {
+            return this.exception;
         }
     }
 
-    public boolean isFailure() {
-        return failure() != null;
-    }
+    final class Success<T> implements Try<T> {
+        private final T value;
 
-    public boolean isSuccess() {
-        return !isFailure();
-    }
+        public Success(@NotNull T value) {
+            this.value = value;
+        }
 
-    public Optional<T> optional() {
-        return Optional.ofNullable(result);
-    }
+        @Override
+        public boolean isSuccess() {
+            return true;
+        }
 
-    public Optional<RuntimeException> exception() {
-        return Optional.ofNullable(failure);
+        @Override
+        public T get() {
+            return this.value;
+        }
+
+        @Override
+        public Try<T> onSuccess(@NotNull Consumer<T> consumer) {
+            consumer.accept(get());
+            return this;
+        }
+
+        @Override
+        public Try<T> onFailure(@NotNull Consumer<Throwable> consumer) {
+            return this;
+        }
+
+        @Override
+        public <U> Try<U> map(@NotNull Function<? super T, ? extends U> fn) {
+            Objects.requireNonNull(fn);
+            try {
+                return Try.success(fn.apply(this.value));
+            } catch (Throwable t) {
+                return Try.failure(t);
+            }
+        }
+
+        @Override
+        public <U> Try<U> flatMap(@NotNull Function<? super T, Try<U>> fn) {
+            Objects.requireNonNull(fn);
+            try {
+                return fn.apply(this.value);
+            } catch (Throwable t) {
+                return Try.failure(t);
+            }
+        }
+
+        @Override
+        public Throwable getThrown() {
+            throw new IllegalStateException("Success never has an exception");
+        }
     }
 }
