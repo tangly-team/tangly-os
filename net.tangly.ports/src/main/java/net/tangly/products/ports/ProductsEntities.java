@@ -19,10 +19,10 @@ import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 import javax.inject.Inject;
 
-import net.tangly.bus.products.Assignment;
-import net.tangly.bus.products.Effort;
-import net.tangly.bus.products.Product;
-import net.tangly.bus.products.ProductsRealm;
+import net.tangly.products.domain.Assignment;
+import net.tangly.products.domain.Effort;
+import net.tangly.products.domain.Product;
+import net.tangly.products.services.ProductsRealm;
 import net.tangly.commons.generator.IdGenerator;
 import net.tangly.core.HasOid;
 import net.tangly.core.domain.Realm;

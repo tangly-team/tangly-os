@@ -13,8 +13,8 @@
 
 package net.tangly.commons.products.ui;
 
-import net.tangly.bus.products.Product;
-import net.tangly.bus.products.ProductsBoundedDomain;
+import net.tangly.products.domain.Product;
+import net.tangly.products.services.ProductsBoundedDomain;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import org.jetbrains.annotations.NotNull;

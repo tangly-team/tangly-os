@@ -18,11 +18,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import net.tangly.bus.products.Assignment;
-import net.tangly.bus.products.Effort;
-import net.tangly.bus.products.Product;
-import net.tangly.bus.products.ProductsHandler;
-import net.tangly.bus.products.ProductsRealm;
+import net.tangly.products.domain.Assignment;
+import net.tangly.products.domain.Effort;
+import net.tangly.products.domain.Product;
+import net.tangly.products.services.ProductsHandler;
+import net.tangly.products.services.ProductsRealm;
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.core.providers.Provider;
 import net.tangly.gleam.model.TsvEntity;

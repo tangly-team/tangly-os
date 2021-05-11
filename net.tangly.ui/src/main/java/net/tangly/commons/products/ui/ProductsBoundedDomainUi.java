@@ -16,7 +16,7 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
-import net.tangly.bus.products.ProductsBoundedDomain;
+import net.tangly.products.services.ProductsBoundedDomain;
 import net.tangly.commons.domain.ui.CmdExportEntities;
 import net.tangly.commons.domain.ui.CmdImportEntities;
 import net.tangly.commons.domain.ui.DomainView;

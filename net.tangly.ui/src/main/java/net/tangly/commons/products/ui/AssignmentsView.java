@@ -14,8 +14,8 @@
 package net.tangly.commons.products.ui;
 
 import com.vaadin.flow.component.grid.Grid;
-import net.tangly.bus.products.Assignment;
-import net.tangly.bus.products.ProductsBoundedDomain;
+import net.tangly.products.domain.Assignment;
+import net.tangly.products.services.ProductsBoundedDomain;
 import net.tangly.commons.vaadin.EntitiesView;
 import net.tangly.commons.vaadin.InternalEntitiesView;
 import net.tangly.components.grids.GridDecorators;

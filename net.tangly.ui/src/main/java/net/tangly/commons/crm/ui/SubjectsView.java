@@ -19,9 +19,9 @@ import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.server.StreamResource;
-import net.tangly.bus.crm.CrmBoundedDomain;
-import net.tangly.bus.crm.NaturalEntity;
-import net.tangly.bus.crm.Subject;
+import net.tangly.crm.services.CrmBoundedDomain;
+import net.tangly.crm.domain.NaturalEntity;
+import net.tangly.crm.domain.Subject;
 import net.tangly.commons.vaadin.*;
 import org.jetbrains.annotations.NotNull;
 

@@ -17,7 +17,7 @@ import java.nio.file.FileSystem;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
-import net.tangly.bus.products.ProductsRealm;
+import net.tangly.products.services.ProductsRealm;
 import net.tangly.core.domain.Realm;
 import net.tangly.products.ports.ProductsEntities;
 import net.tangly.products.ports.ProductsHdl;

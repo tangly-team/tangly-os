@@ -20,9 +20,7 @@ import java.nio.file.Path;
 
 import org.asciidoctor.Asciidoctor;
 import org.asciidoctor.Attributes;
-import org.asciidoctor.AttributesBuilder;
 import org.asciidoctor.Options;
-import org.asciidoctor.OptionsBuilder;
 import org.asciidoctor.SafeMode;
 import org.jetbrains.annotations.NotNull;
 
@@ -38,8 +36,8 @@ public class AsciiDoctorHelper {
         System.setProperty("jruby.compile.mode", "OFF");
         try (Asciidoctor asciidoctor = Asciidoctor.Factory.create(); OutputStream out = Files.newOutputStream(pdfFilePath)) {
             String asciidoc = Files.readString(asciidocFilePath);
-            Attributes attributes = AttributesBuilder.attributes().get();
-            Options options = OptionsBuilder.options().inPlace(true).attributes(attributes).backend("pdf").safe(SafeMode.UNSAFE).toStream(out).get();
+            Attributes attributes = Attributes.builder().build();
+            Options options = Options.builder().inPlace(true).attributes(attributes).backend("pdf").safe(SafeMode.UNSAFE).toStream(out).build();
             asciidoctor.convert(asciidoc, options);
         } catch (IOException e) {
             throw new UncheckedIOException(e);

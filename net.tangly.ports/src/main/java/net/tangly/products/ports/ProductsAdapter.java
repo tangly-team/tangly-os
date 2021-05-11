@@ -16,9 +16,9 @@ package net.tangly.products.ports;
 import java.nio.file.Path;
 import java.time.LocalDate;
 
-import net.tangly.bus.products.Assignment;
-import net.tangly.bus.products.ProductsBusinessLogic;
-import net.tangly.bus.products.ProductsPort;
+import net.tangly.products.domain.Assignment;
+import net.tangly.products.services.ProductsBusinessLogic;
+import net.tangly.products.services.ProductsPort;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 
 /**

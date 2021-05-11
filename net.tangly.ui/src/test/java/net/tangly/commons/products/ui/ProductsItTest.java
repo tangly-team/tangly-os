@@ -13,8 +13,8 @@
 package net.tangly.commons.products.ui;
 
 import com.github.mvysny.kaributesting.v10.MockVaadin;
-import net.tangly.bus.products.ProductsBoundedDomain;
-import net.tangly.bus.products.ProductsBusinessLogic;
+import net.tangly.products.services.ProductsBoundedDomain;
+import net.tangly.products.services.ProductsBusinessLogic;
 import net.tangly.core.TypeRegistry;
 import net.tangly.products.ports.ProductsAdapter;
 import net.tangly.products.ports.ProductsEntities;

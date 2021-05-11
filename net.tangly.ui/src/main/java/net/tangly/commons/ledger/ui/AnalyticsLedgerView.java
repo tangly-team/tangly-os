@@ -14,8 +14,8 @@
 package net.tangly.commons.ledger.ui;
 
 import com.storedobject.chart.*;
-import net.tangly.bus.ledger.LedgerBoundedDomain;
-import net.tangly.bus.ledger.LedgerBusinessLogic;
+import net.tangly.ledger.services.LedgerBoundedDomain;
+import net.tangly.ledger.services.LedgerBusinessLogic;
 import net.tangly.commons.domain.ui.AnalyticsView;
 import net.tangly.commons.vaadin.VaadinUtils;
 import net.tangly.ledger.ports.LedgerAdapter;
