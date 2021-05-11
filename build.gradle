@@ -159,7 +159,6 @@ subprojects {
     ext {
         assertjVersion = '3.18.1'
         slf4jVersion = '2.0.0-alpha1'
-        vaadinVersion = '19.0.6'
     }
 
     configurations.all {
@@ -212,6 +211,7 @@ subprojects {
         javadoc.options {
             encoding("UTF-8")
             addBooleanOption('-Xdoclint:none')
+            addBooleanOption('-Xdoclint:-missing')
             addBooleanOption('-enable-preview', true)
             addStringOption('-release', '16')
         }

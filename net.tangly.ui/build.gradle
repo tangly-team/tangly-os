@@ -26,13 +26,7 @@ project.ext.inceptionYear = '1996'
 project.description = "Vaadin user interface for the business components (tangly llc)"
 
 ext {
-    // don't use Jetty 10 - requires Java 11
-    // jettyVersion = "10.0.1"
-    // don't use Jetty 11+ - uses jakarta.Servlet instead of javax.Servlet which makes it incompatible with Vaadin
-}
-
-vaadin {
-    pnpmEnable = true
+    vaadinVersion = '19.0.6'
 }
 
 application {
@@ -58,6 +52,8 @@ dependencies {
     // Embedded Jetty dependencies
     implementation(libs.bundles.jetty.deps)
     implementation(libs.jetty.websocketimp) { exclude(module: "javax.websocket-client-api") }
+//    implementation(libs.slf4j.logback)
+    implementation("org.slf4j:slf4j-simple:1.7.30")
 
 //    implementation("org.eclipse.jetty:jetty-annotations:${jettyVersion}")
 //    implementation ("org.eclipse.jetty.websocket:websocket-jetty-api:${jettyVersion}")

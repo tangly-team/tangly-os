@@ -19,11 +19,7 @@ project.ext.artifactId = 'bdd'
 project.version = "0.2.6"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '2016'
-project.description = "JUnit 5 BDD - using Java 14 or higher (tangly llc)"
-
-java {
-    modularity.inferModulePath.set(true)
-}
+project.description = "JUnit 5 BDD - using Java 16 or higher (tangly llc)"
 
 dependencies {
     implementation(libs.slf4j.api)
