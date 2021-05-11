@@ -23,7 +23,8 @@ import net.fortuna.ical4j.vcard.Group;
 import net.fortuna.ical4j.vcard.Parameter;
 import net.fortuna.ical4j.vcard.Property;
 import net.fortuna.ical4j.vcard.VCard;
-import net.tangly.bus.crm.GenderCode;
+import net.tangly.crm.domain.GenderCode;
+import net.tangly.crm.domain.Photo;
 import net.tangly.core.Address;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.PhoneNr;
@@ -107,8 +108,9 @@ public class VCard2 {
         return address(Group.HOME);
     }
 
-    public byte[] photo() {
-        return card.getProperties(Property.Id.PHOTO).stream().map(Property::getValue).map(o -> Base64.getDecoder().decode(o)).findAny().orElse(null);
+    public Optional<Photo> photo() {
+        byte[] data = card.getProperties(Property.Id.PHOTO).stream().map(Property::getValue).map(o -> Base64.getDecoder().decode(o)).findAny().orElse(null);
+        return (data != null) ? Optional.of(Photo.of(data)) : Optional.empty();
     }
 
     private LocalDate date(Property.Id id) {
