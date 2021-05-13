@@ -20,7 +20,7 @@ class SubjectTest {
     @Test
     void subjectPasswordTest() {
         String password = "aeon";
-        Subject subject = new Subject();
+        var subject = new Subject();
         subject.newPassword("aeon");
         assertThat(Subject.encryptPassword(password, subject.passwordSalt())).isEqualTo(subject.passwordHash());
         assertThat(subject.authenticate(password)).isTrue();
@@ -28,10 +28,10 @@ class SubjectTest {
 
     @Test
     void subjectAvatarTest() {
-        NaturalEntity naturalEntity = new NaturalEntity();
+        var naturalEntity = new NaturalEntity();
         naturalEntity.firstname("Marcel");
         naturalEntity.firstname("Baumann");
-        Subject subject = new Subject();
+        var subject = new Subject();
         subject.user(naturalEntity);
         subject.gravatarEmail("marcel.baumann@tangly.net");
         byte[] avatar = subject.avatar();

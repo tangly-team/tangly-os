@@ -13,6 +13,10 @@
 package net.tangly.crm.domain;
 
 
+import java.util.Optional;
+
+import net.tangly.core.Address;
+import net.tangly.core.HasLocation;
 import net.tangly.core.QualifiedEntityImp;
 import net.tangly.core.Strings;
 import net.tangly.core.Tag;
@@ -22,8 +26,12 @@ import net.tangly.core.Tag;
  * legal number of an organization (e.g. zefix UID number in Switzerland, EUID in Europe), and a text describing it.
  */
 public class LegalEntity extends QualifiedEntityImp implements CrmEntity {
-
     public LegalEntity() {
+    }
+
+    @Override
+    public Optional<Address> address() {
+        return findBy(CrmTags.CRM_ADDRESS_WORK).map(Tag::value).map(Address::of);
     }
 
     /**
@@ -32,8 +40,7 @@ public class LegalEntity extends QualifiedEntityImp implements CrmEntity {
      * @return the VAT identifying number
      */
     public String vatNr() {
-        var value = findBy(CrmTags.CRM_VAT_NUMBER);
-        return value.map(Tag::value).orElse(null);
+        return findBy(CrmTags.CRM_VAT_NUMBER).map(Tag::value).orElse(null);
     }
 
     /**
@@ -53,7 +60,7 @@ public class LegalEntity extends QualifiedEntityImp implements CrmEntity {
     @Override
     public String toString() {
         return """
-                LegalEntity[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, vatNr=%s, tags=%s]
-                 """.formatted(oid(), id(), name(), fromDate(), toDate(), text(), vatNr(), tags());
+            LegalEntity[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, vatNr=%s, tags=%s]
+             """.formatted(oid(), id(), name(), fromDate(), toDate(), text(), vatNr(), tags());
     }
 }

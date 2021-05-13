@@ -35,7 +35,7 @@ import net.tangly.core.QualifiedEntityImp;
  *   <li>The currency of the contract amount and the one used in the invoices</li>
  * </ul>
  */
-public class Contract extends QualifiedEntityImp implements CrmEntity {
+public class Contract extends QualifiedEntityImp {
     private Address address;
     private BankConnection bankConnection;
     private BigDecimal amountWithoutVat;

@@ -16,6 +16,7 @@ import java.util.Optional;
 
 import net.tangly.core.Address;
 import net.tangly.core.EmailAddress;
+import net.tangly.core.HasLocation;
 import net.tangly.core.HasTags;
 import net.tangly.core.PhoneNr;
 import net.tangly.core.Tag;
@@ -23,7 +24,20 @@ import net.tangly.core.Tag;
 /**
  * A customer relation management mixin defines a set of operations useful for all customers. All information are stored as tags for future extensions.
  */
-public interface CrmEntity extends HasTags {
+public interface CrmEntity extends HasTags, HasLocation {
+    @Override
+    default Optional<HasLocation.PlusCode> plusCode() {
+        return findBy(CrmTags.GEO_PLUSCODE).map(Tag::value).map(HasLocation.PlusCode::of);
+    }
+
+    @Override
+    default Optional<HasLocation.GeoPosition> position() {
+        var longitude = findBy(CrmTags.GEO_LONGITUDE);
+        var latitude = findBy(CrmTags.GEO_LATITUDE);
+        return (longitude.isPresent() && latitude.isPresent()) ?
+            Optional.of(HasLocation.GeoPosition.of(Double.parseDouble(longitude.get().value()), Double.parseDouble(latitude.get().value()))) : Optional.empty();
+    }
+
     default Optional<PhoneNr> phoneNr(CrmTags.Type type) {
         return findBy(CrmTags.phoneTag(type.name())).map(o -> PhoneNr.of(o.value()));
     }

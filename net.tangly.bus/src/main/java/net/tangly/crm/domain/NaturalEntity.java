@@ -13,8 +13,12 @@
 package net.tangly.crm.domain;
 
 
+import java.util.Optional;
+
+import net.tangly.core.Address;
 import net.tangly.core.EntityImp;
 import net.tangly.core.Strings;
+import net.tangly.core.Tag;
 
 /**
  * A natural entity is a person. A natural entity has an identity defined as the legal number of a person (e.g. the social security number0, a name defined as
@@ -77,6 +81,11 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
 
     public void socialNr(String socialNr) {
         this.socialNr = socialNr;
+    }
+
+    @Override
+    public Optional<Address> address() {
+        return findBy(CrmTags.CRM_ADDRESS_HOME).map(Tag::value).map(Address::of);
     }
 
     @Override

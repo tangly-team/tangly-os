@@ -80,6 +80,10 @@ public final class CrmTags {
     public static final String CRM_EMPLOYEE_TITLE = CRM + ":title";
     public static final String CRM_SCHOOL = CRM + ":school";
 
+    public static final String GEO_LATITUDE = GEO + ":" + LATITUDE;
+    public static final String GEO_LONGITUDE = GEO + ":" + LONGITUDE;
+    public static final String GEO_PLUSCODE = GEO + ":" + PLUSCODE;
+
     /**
      * Private constructor of an utility class.
      */
