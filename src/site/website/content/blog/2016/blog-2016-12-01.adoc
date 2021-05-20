@@ -58,7 +58,7 @@ Experience has shown us that the full-time Scrum master is more effective.
 
 And the {ref-less} framework has a clear rule about product managers
 
-[.text-centered]
+[.text-center]
 https://less.works/less/adoption/getting-started.html[Keep product managers away from the teams!]
 
 === Remarks

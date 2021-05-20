@@ -123,13 +123,15 @@ The first article describes link:../../2019/agile-architecture-principles[Agile 
 [bibliography]
 === Literature
 
-- [[[userstorymapping, 1]]] User Story Mapping: Discovering the Whole Story, Build the Right Product, Jeff Patton, O'Reilly, 2014
-- [[[impactmapping, 2]]] Impact Mapping: Making a Big Impact with Software Products and Projects, Gojko Adzik, 2012
-- [[[userstoriesapplied, 3]]] User Stories Applied: For Agile Software Development, Mike Cohn, Addison-Wesley, 2009
-- [[[professionalproductowner, 4]]] The Professional Product Owner, Don McGreal and Ralph Jocham, Addison-Wesley, 2018
-- [[[valueproposition, 5]]] Value Proposition Design, Alexander Osterwalder, John Wiley, 2014
-- [[[agileproductmanagement, 6]]] Agile Product Management with Scrum: Creating Products that Customers Love, Roman Pichler, Addison-Wesley, 2010
-- [[[strategize, 6]]] Strategize: Product Strategy and Product Roadmap Practices for the Digital Age, Roman Pichler, 2016
-- [[[howtoleadinproductmanagement, 7]]] How To Lead in Product Management: Practices to Align Stakeholders, Guide Development Teams and Create Value Together, Roman Pichler, 2020
-- [[[buildingevolutionaryarchtitectures, 8]]] Building Evolutionary Architectures: Support Constance Change, Neal Ford, Rebecca Parsons & Patrick Kua, O'Reilley, 2017
-- [[[specificationbyexample, 9]]] Bridging the Communication Gap: Specification by Example and Agile Acceptance Testing, Gojko Adzic, 2009
+- [[[userstorymapping, 1]]] User Story Mapping: Discovering the Whole Story. Build the Right Product. Jeff Patton. O'Reilly. 2014
+- [[[impactmapping, 2]]] Impact Mapping: Making a Big Impact with Software Products and Projects. Gojko Adzik. 2012
+- [[[userstoriesapplied, 3]]] User Stories Applied: For Agile Software Development. Mike Cohn. Addison-Wesley. 2009
+- [[[professionalproductowner, 4]]] The Professional Product Owner. Don McGreal and Ralph Jocham. Addison-Wesley. 2018
+- [[[valueproposition, 5]]] Value Proposition Design. Alexander Osterwalder. John Wiley. 2014
+- [[[agileproductmanagement, 6]]] Agile Product Management with Scrum: Creating Products that Customers Love. Roman Pichler. Addison-Wesley. 2010
+- [[[strategize, 6]]] Strategize: Product Strategy and Product Roadmap Practices for the Digital Age. Roman Pichler. 2016
+- [[[howtoleadinproductmanagement, 7]]] How To Lead in Product Management: Practices to Align Stakeholders. Guide Development Teams and Create Value
+Together. Roman Pichler. 2020
+- [[[buildingevolutionaryarchtitectures, 8]]] Building Evolutionary Architectures: Support Constance Change. Neal Ford. Rebecca Parsons & Patrick Kua.
+O'Reilley. 2017
+- [[[specificationbyexample, 9]]] Bridging the Communication Gap: Specification by Example and Agile Acceptance Testing. Gojko Adzic. 2009

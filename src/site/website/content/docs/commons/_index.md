@@ -1,7 +1,7 @@
 ---
 title: "Commons"
 linkTitle: "Commons"
-weight: 20
+weight: 15
 ---
 
 The readme, user manual, documentation of the component and architecture consideration of the components.

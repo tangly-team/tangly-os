@@ -14,51 +14,112 @@ tags: ["agile", "series-swiss-agile-trends"]
 
 image::2021-05-01-head.jpg[width=420,height=360,role=left]
 As a modern leader, you are aware of the importance of transforming your organization to become more agile.
-Indeed, you have been successful already in implementing first steps.
-But things are not moving forward as quickly as they should, especially in the current challenging situation.
+Indeed, you have successfully implemented first steps.
+
+Trouble is brewing.
+Things are not moving forward as quickly as they should, especially in the current challenging situation.
 The leadership behaviour of your colleagues is only changing slowly.
-While the adjustments and decisions needed to drive the transformation forward get stuck in the cog works of the organization
+Your key developers are grumbling you are faking it.
 
-https://www.hermes.admin.ch/de/projektmanagement-2021.html[Hermes 2021] is still the official government method.
-They clearly acknowledged that this
-https://stefanedbrittain.medium.com/the-insidious-institutionalisation-of-water-scrum-fall-4af7de8865b9[Water-Scrum-Fall]
-is only need because administration are strongly hierarchical and unable to adapt to changes over the development of the solution.
+Many companies around the world discover their agile transformation is stalling.
 
-=== Where we Stand
+The https://swissq.it/en/[SwissQ] report provides empirical data where Swiss companies stand in 2020.
 
-The agile approach continues to spread rapidly around the world: 89.8% of all teams have already adopted or are in the process of adopting agile methodology, a considerable number.
-On the other hand, organizations are still struggling to build greater company-wide agility and only a few have already adopted agility on a portfolio (15.3%) or strategic level (8.2%).
-The good news is that many companies have started transformation initiatives or are planning to do so in the near future.
-=== Findings
+=== Where We Stand
 
-Going fully agile is challenging and sticking with waterfall is not an option.
+The agile approach continues to spread rapidly around the world.
+A stunning *89.8%* of all teams have already adopted or are in the process of adopting an agile methodology.
+It is an impressive and considerable number.
+It also shows when you look at the number of people who have a Scrum Master certification.
+Around a million of them are Certified Scrum Master or Professional Scrum Master.
+
+On the other hand, organizations are still struggling to build greater company-wide agility.
+Only a few have already adopted agility on a portfolio (15.3%) or strategic level (8.2%).
+
+The good news is that many companies have started whole transformation initiatives or are planning to do so in the near future.
+
+Creating products with agile approaches is now mainstream.
+Only laggards are clutching on obsolete methods.
+Competitive advantage is now to implement an agile value stream through the whole organization.
+Fast delivery to customers and pivot to disruptive changes are the new key for extraordinary growth and success.
+The raise of digital and Internet affine banking solutions is such a transformative example.
+
+=== Waterfall vs Agile
+
+The collected data clearly shows agile approaches are tremendously more successful by more than 10%.
+The agile approach seems to eliminate catastrophic development failures.
+It means an agile team has 25% higher relative probability to be victorious than classical teams (_50.5% versus 39.5%_).
+
+
+[chart,pie,file="hybrid-methods-success.png",opt="title=Hybrid Methods Success 2020"]
+....
+Successful, 39.5, green
+Challenged, 59.7
+Stopped, 0.9, red
+....
+
+[chart,pie,file="agile-methods-success.png",opt="title=Agile Methods Succes 2020"]
+....
+Successful, 50.5, green
+Challenged, 49.1
+Stopped, 0.0, red
+....
+
+It is time to embrace agile product development.
+Drop waterfall approaches.
+Stop being a laggard.
+
+=== Transformation Drivers
+
+The IT department is still the main driver for agile transformation.
+Going fully agile is challenging and sticking with waterfall is no more an option.
+Leaving many companies stuck in a hybrid approach.
+
+Swiss companies are often embracing Hermes
+footnote:[Hermes is a typical _Water-Scrum-Fall_ approach and most often fails spectacularly.] or {ref-safe}.
+Both approaches are quite a poor choice to achieve a successful agile transformation.
+Read the technology radar of https://www.thoughtworks.com[Thoughworks] for a detailed discussion why SAFe is a poor choice.
+
+Satisfaction with the agile way of working is high; satisfaction with the transformation process is low.
+The focus is still processes over people.
+The JIRA tool is omnipresent and workflows are documented in acribic details.
+
 This has left many, about 40% to be exact, stuck in a hybrid approach, i.e., a combination of waterfall and agile.
-This is not necessarily a bad thing, if you manage to get the best of both worlds.
+This is not necessarily a catastrophic thing, if you manage to get the best of both worlds.
+
 Kanban offers an easy start with agile and unlike Scrum is applicable to any process.
 As our numbers show, it is becoming more and more popular.
-But remember, it is not Kanban if it doesn't have WIP limits.
-There is also a trend towards stable product teams that extend their responsibilities beyond those of "just" the development of a solution or service.
+Remember, it is not Kanban if it doesn't have WIP limits.
 
-=== Transformation Findings
+There is also a trend towards stable product teams that extend their responsibilities beyond those of _just_ the development of a solution or service.
 
-* Happening mainly in IT and has not yet reached the Business,
-* Going fully agile is challenging and sticking with waterfall is not an option, Leaving many stuck in a Hybrid Approach,
-* Agile Development is more successful than waterfall,
-* Satisfaction with the agile way of working is high; with the transformation is low,
-* Leadership and culture are the main success factors.
-Yet focus is on Processes over People,
-* Team Accountability needs to be improved.
-Decentralisation of decisions is too hard for many.
-* Higher management has a way more optimistic view of the organization agility then middle management and collaborators.
+=== Findings
+
+The conclusion of the main article of the report is enlightening.
+
+[cite,SwissQ]
+____
+Agile transformation has stalled during the second wave in many companies.
+Only individual elements of the third wave, such as portfolio management, have been tackled.
+At the same time, transformation has often only occurred on the surface; the company’s DNA and culture have not (yet) adapted to the new era.
+Executives must now take on the hard topics, such as new organizational forms, management behaviour, dedicated agile executives.
+They must make difficult and painful decisions regarding new leadership teams.
+____
 
 === Insights
 
-Agile appraoches are steadily making progress in Switzerland.
-We have reach the level where late majority and laggards are slowly looking the approach.
+Agile approaches are steadily making progress in Switzerland.
+We have reached the level where late majority and laggards are slowly looking the approach.
+Low-hanging fruits were collected.
+The next gains require deeper changes.
 Progress is slow and resistance is very high.
 
-Be positive.
-This is the drawback of becoming a mainstream approach.
+Collaborators are happy with the change and do not want to go back to the old world.
+However, the change often does not go beyond a first application of the methodology.
+The biggest obstacle for employees is at the same time the biggest challenge for leaders.
+A culture that promotes a learning and adaptable organization and its own agile way through the organization.
+
+Be positive and patient.
 
 I am currently focusing on Software Craftsmanship and key agile values and approaches.
 The more people know about key principles, the better the adoption and the implementation will be.
@@ -66,7 +127,7 @@ One decision was to teach and train bachelor students in these principles to imp
 
 We still advocate and promote
 
-[.text-centered]
+[.text-center]
 _To be agile, not to do agile_
 
 You can download the https://swissq.it/en/downloads/trends-benchmarks-report-2020/[Trends Benchmark Report 2020] report.

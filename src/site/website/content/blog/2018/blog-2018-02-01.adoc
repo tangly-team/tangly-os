@@ -39,7 +39,7 @@ They develop, release, operate and sustain the work and work products of thousan
 
 They collaborate and interoperate through sophisticated development architectures and target release environments.
 
-[.text-centered]
+[.text-center]
 _Scrum is a tool to solve complex problems, any kind of complex problem. It is already the industry standard for software projects, it is becoming a major
 standard for all complex products._
 
@@ -115,7 +115,7 @@ The team now provides a *forecast* which stories shall be realized until the end
 
 This change was necessary because people - especially command and control responsible - did not read the official definition of commitment - Oxford Dictionary -.
 
-[.text-centered]
+[.text-center]
 _The state or quality of being dedicated to a cause, an activity._
 
 The second big innovation was the introduction of five Scrum values: Commitment, Focus, Openness, Respect, and Courage.

@@ -12,7 +12,7 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2020-12-01-head.jpg[width=420, height=360, role=left]
+image::2020-12-01-head.jpg[width=420,height=360,role=left]
 At many customer sites I visit, I see a lot of effort being put into classifying and managing bugs.
 
 Their bug list may contain more than a thousand items.
@@ -37,22 +37,30 @@ The solution is elegant and simple: Implement the _Zero Bug Policy_.
 
 Zero-Bug policy does not mean bug-free code in production; it means striving to eradicate all known bugs.
 
-image::2020-12-01-fix-it-or-delete-it.png[width=420, height=360, role=left]
+[cite,Ken Auer,eXtreme Programming]
+____
+When a bug is found, tests are created before the bug is addressed.
+A bug is not an error in logic; it is a test that was not written.
+____
+
+image::2020-12-01-fix-it-or-delete-it.png[width=420,height=360,role=left]
 The rigorous Zero-baseline approach will force us to clean our code.
 
 Let us categorize the bugs you have and deal with them accordingly.
 
 . You have a few critical bugs that crash the system or don’t have a workaround.
- Prioritize and fix those. Your customers will be very thankful.
- Fix at least a handful of these critical problems in each sprint.
-. A big set of bugs that are already in production. They have been in your bug tracking system for quite a while.
- Delete those.
- If it is a costly problem your customers will fill a report.
- Treat such bugs as critical bugs.
+Prioritize and fix those.
+Your customers will be very thankful.
+Fix at least a handful of these critical problems in each sprint.
+. A big set of bugs that are already in production.
+They have been in your bug tracking system for quite a while.
+Delete those.
+If it is a costly problem your customers will fill a report.
+Treat such bugs as critical bugs.
 . Establish a software craftsmanship culture.
- Stop delivering products with known errors.
- Correct them before delivery.
- Your product owner should reject any feature with known errors.
+Stop delivering products with known errors.
+Correct them before delivery.
+Your product owner should reject any feature with known errors.
 
 Bugs have a tendency to become obsolete pretty quickly in applications that are updated frequently.
 The steps to reproduce them become irrelevant, the functionality changes, the impact of the bug often gets lower.
@@ -74,13 +82,13 @@ Finally, to ensure this system works.
 * The bugs that the team decides to fix must be prioritized over regular work and must get fixed now.
 * In the beginning there will be more bugs to work through, as some bugs that were deleted will be reported again.
 * As the team shifts its focus to improved quality there will be fewer of them.
- This is truly a binary system with no wiggle room.
+This is truly a binary system with no wiggle room.
 * Bugs are either fixed now or deleted, there is no severity and no haggling about the classification of a bug!
- Good practice is before fixing the glitch write a unit test to reproduce the problem.
- You guarantee the users will never see again the same error.
- It is called non-regression testing and make your customers very happy.
+Good practice is before fixing the glitch write a unit test to reproduce the problem.
+You guarantee the users will never see again the same error.
+It is called non-regression testing and make your customers very happy.
 * Are you ready to shift your focus from managing bugs to ensuring quality?
- And if not, why should I buy your product?
+And if not, why should I buy your product?
 
 === References
 

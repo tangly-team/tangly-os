@@ -91,6 +91,8 @@ footnote:[https://www.onlyoffice.com/[OnlyOffice] also support PDF/A creation.
 They provide a free local installation package for Linux, macOS, and Windows].
 
 The Mustang library supports the transformation of a PDF/A1 to a PDF/A3 document.
+footnote:[LibreOffice can open and manipulate PDF files. You can easily open a PDF file and export it as PDF from LibreOffice.
+The application supports exporting to PDF/A version 1b, 2b and 3b. It also supports PDF/UA.]
 
 === Approach
 

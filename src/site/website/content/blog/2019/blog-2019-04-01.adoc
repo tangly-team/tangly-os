@@ -114,5 +114,6 @@ scanning your application source code <<xrays>>.
 [bibliography]
 === Literature
 
-- [[[crimescene, 1]]] Your Code as a Crime Scene: Using Forensic Techniques to Arrest Defects, Bottlenecks, and Bad Design in your Programs, Adam Tornhill, 2015
-- [[[xrays, 2]]] Software Design X-Rays, Adam Tornhill, 2018
+- [[[crimescene, 1]]] Your Code as a Crime Scene: Using Forensic Techniques to Arrest Defects, Bottlenecks, and Bad Design in your Programs. Adam Tornhill.
+2015
+- [[[xrays, 2]]] Software Design X-Rays. Adam Tornhill. 2018

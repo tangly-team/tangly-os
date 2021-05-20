@@ -37,7 +37,7 @@ _Wake up!_ You are not a product manager, you shall be a catalyst.
 
 Remember the definition of an agile or Scrum team.
 Ask yourself if your team fulfill this definition.
-If not work hard to improve.
+Work hard to improve if it is not the case.
 Each team is self-managing, cross-functional and customer-focused, co-located, long-lived.
 
 === Scrum Master Tasks
@@ -79,3 +79,11 @@ is an effective way to move your team to technical excellence.
 
 If you are new to the role read "The Great Scrum Master" from Zuzana Šochová.
 A more extensive link:../../2017/list-of-agile-and-lean-books-for-software-engineers-or-students[list of books] can be found here.
+
+[bibliography]
+=== Literature
+
+- [[[greatscrummaster, 1]]] The Great Scrum Master. Zuzana Šochová. Addison-Wesley. 2017
+- [[[scrumpocketguide, 2]]] Scrum A Pocket Guide 3ˆndˆ Edition. Gunther Verheyen. Van Haren Publishing. 2021
+- [[[professionalscrum, 3]]] Mastering Professional Scrum: A Practioner's Guide To Overcome Challenges and Maximize the Benefits of Agility. Stephanie
+Ockerman and Simon Reindl. Addison-Wesley. 2020

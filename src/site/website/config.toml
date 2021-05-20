@@ -65,11 +65,13 @@ guessSyntax = "true"
 
 # rouge is bundled with Asciidoctor 2.0 and should no more be added as extension, the rouge-css style include html marking in the html file (from the
 # Asciidoctor expert Dan Allen). The wroking folder allows asciidoctor-diagram and plantuml to generate diagrams in the correct folder.
+# additional extensions not in the official hugo extensions list can be loaded in safeMode is set to unsafe.
 [markup.asciidocExt]
-extensions = ["asciidoctor-html5s", "asciidoctor-diagram"]
+safeMode = "unsafe"
 workingFolderCurrent = true
 backend = "html5s"
 failureLevel = "fatal"
+extensions = ["asciidoctor-html5s", "asciidoctor-diagram", "asciidoctor-chart"]
 [markup.asciidocExt.attributes]
 imagesdir = "../pics"
 source-highlighter = "rouge"
@@ -88,8 +90,10 @@ ref-flow = "https://en.wikipedia.org/wiki/Flow_(psychology)/[Flow]"
 ref-pdca = "https://en.wikipedia.org/wiki/PDCA/[Plan-Do-Check-Adapt]"
 ref-bbrt = "http://bbrt.org/[Beyond Budgeting Round Table]"
 ref-sociocracy = "https://sociocracy30.org/[Sociocracy]"
+ref-craftsmanship = "https://manifesto.softwarecraftsmanship.org/[Software Craftsmanship]"
 ref-kaizen = "https://en.wikipedia.org/wiki/Kaizen/[Kaizen]"
 ref-safe = "https://www.scaledagileframework.com/[SAFe]"
+ref-hermes = "https://www.hermes.admin.ch/en/[HERMES]"
 ref-tangly = "https://www.tangly.net/[tangly]"
 ref-asciidoc = "https://asciidoc.org/[Asciidoc]"
 ref-asciidoctor = "https://asciidoctor.org/[Asciidoctor]"

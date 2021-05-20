@@ -12,19 +12,23 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2021-06-01-head.jpg[width=420, height=360, role=left]
+image::2021-06-01-head.jpg[width=420,height=360,role=left]
 Agile fluency model is a powerful abstraction to better understand your agile transition.
 It does not matter which flavor of agile you are deploying in your organization; in all cases the agile fluency model can be applied.
 
 The agile fluency model has a powerful message about agile and technical excellence.
 The second zone of the model is all about software craftsmanship and {ref-xp}.
 
+One key lesson of the fluency model is it take time until you are professional at your chosen level.
+
+Time measured in years not in days.
+
 === Zones
 
 The model defines four zones in which your company could thrive.
 You are free to choose the zone best suited for you organization.
 Remember the zones are additive.
-If you target the third zone your teams shall also be fluent in all practices of the first and second zone.
+If you target the third zone your teams shall also be fluent in all practices of the first and second zones.
 
 ==== Shift Team Culture: _Focusing_ teams produce business value (2 - 6 months)
 
@@ -37,11 +41,11 @@ Select team members with appropriate skills, background, and willingness to work
 Allocate them 100% to their team.
 
 * Create a productivity-focused shared workspace, strongly preferring a physical team room.
- If a physical team room is infeasible, provide a richly interactive virtual workspace instead, and accept that this will be less effective.
+If a physical team room is infeasible, provide a richly interactive virtual workspace instead, and accept that this will be less effective.
 * Ensure that someone with expertise on business priorities and customer value is available to act as the team’s business representative.
-*  Remove impediments to effective teamwork such as competitive ranking, individual rewards, and distributed teams.
+* Remove impediments to effective teamwork such as competitive ranking, individual rewards, and distributed teams.
 * Coach and train team members in Focusing proficiencies.
-* Train managers to create an environment that supports teamwork  and how to manage the work system rather than individual contributions.
+* Train managers to create an environment that supports teamwork and how to manage the work system rather than individual contributions.
 
 ==== Shift Team Skills: _Delivering_ teams deliver on the market cadence (3 - 24 months)
 
@@ -72,7 +76,7 @@ They actively work to make that strategy more successful.
 
 === Choose Your Zone
 
-[cols="1,2,2,2,1", options="header"]
+[cols="1,2,2,2,1",options="header"]
 .Table Zones
 |===
 ^|Zone |Benefit |Investment |Learn From |Time to Fluency
@@ -105,26 +109,28 @@ They actively work to make that strategy more successful.
 === Learnings
 
 When Introducing Agile::
- One of the biggest factors affecting team fluency is organizational support. To continue the bus metaphor, the team has to ride the bus to their fluency zone.
- No one can do it for them. But the organization has to buy the bus ticket.
- An organization that expects fluency without providing appropriate support is bound to be disappointed.
- Even worse, insufficient support can cause turnover and create a cynical corporate culture that hinders improvements.
- Before embarking on your fluency journey, be sure your organization is prepared to offer the support the journey needs.
+One of the biggest factors affecting team fluency is organizational support.
+To continue the bus metaphor, the team has to ride the bus to their fluency zone.
+No one can do it for them.
+But the organization has to buy the bus ticket.
+An organization that expects fluency without providing appropriate support is bound to be disappointed.
+Even worse, insufficient support can cause turnover and create a cynical corporate culture that hinders improvements.
+Before embarking on your fluency journey, be sure your organization is prepared to offer the support the journey needs.
 When Sustaining Agile::
- It’s rare for stable teams to lose fluency on their own.
- In our experience, it is an external disruption that causes fluency loss.
- The most common cause of fluency loss is when new management decides that agile approaches do not fit their vision.
- Without organizational support and the ability to continue practicing what they’ve learned, team fluency erodes quickly.
- This is often accompanied by loss of expertise as dissatisfied team members seek new positions.
- Turnover is a related cause of fluency loss.
- A team that gains or loses too many members may have trouble sustaining what it’s learned.
- This is a particular problem for organizations that assemble new teams for every product.
+It’s rare for stable teams to lose fluency on their own.
+In our experience, it is an external disruption that causes fluency loss.
+The most common cause of fluency loss is when new management decides that agile approaches do not fit their vision.
+Without organizational support and the ability to continue practicing what they’ve learned, team fluency erodes quickly.
+This is often accompanied by loss of expertise as dissatisfied team members seek new positions.
+Turnover is a related cause of fluency loss.
+A team that gains or loses too many members may have trouble sustaining what it’s learned.
+This is a particular problem for organizations that assemble new teams for every product.
 Agile Fluency and Scrum::
- Agile and Scrum requires long-living and stable teams.
- Agile at organizational level can only work if the upper and middle management transitioned to agile thinking and handling.
- The {ref-less} community is vocal how destructive wrong management decision can be.
- Agile development is a team sport, so fluency is a trait of the team, not individual team members.
- Fluency is more a matter of habits than skills.
- Discipline is king.
+Agile and Scrum requires long-living and stable teams.
+Agile at organizational level can only work if the upper and middle management transitioned to agile thinking and handling.
+The {ref-less} community is vocal how destructive wrong management decision can be.
+Agile development is a team sport, so fluency is a trait of the team, not individual team members.
+Fluency is more a matter of habits than skills.
+Discipline is king.
 
 You find a detailed description of the model under https://martinfowler.com/articles/agileFluency.html[Agile Fluency].

@@ -59,7 +59,7 @@ The AHV center needed more than two weeks to confirm my registration.
 * Upon foundation you get pseudo-official letters from various companies to sell dubious services. Just throw them away.
 * The industry development office of Kanton Zug has no clues about start-up companies; the ones in Zürich and Luzern seem better.
 
-[.text-centered]
+[.text-center]
 _Now we are ready to create great products with our customers_
 
 Please leave a comment if you know a better or less expensive way to found a Swiss liability company.

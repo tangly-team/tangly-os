@@ -44,7 +44,7 @@ Actively identify impediments and foster their removal.
 Consult the Scrum guide: You must select one impediment after each retrospective and add it as high priority item in the next Sprint backlog.
 This mechanism insure continuous improvement.
 
-[.text-centered]
+[.text-center]
 _To ensure continuous improvement, it includes at least one high priority way in which the team works, identified in the previous Retrospective meeting._
 
 Culture::

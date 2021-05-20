@@ -27,7 +27,7 @@ What are the advantages to take a goal driven approach?
 
 === Advantage of Goals over Prescription
 
-The https://www.pmi.org[Project Managment Institute] has acquired the disciplined agile delivery method and promotes the approach heavily.
+The https://www.pmi.org[Project Management Institute] has acquired the disciplined agile delivery method and promotes the approach heavily.
 I personally prefer the {ref-less} approach to scale agile development.
 Nevertheless, Scott Ambler is an experienced and talented developer.
 Learning from his experiences and analyzing his approaches promotes the essence of {ref-less}.

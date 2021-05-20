@@ -2,7 +2,7 @@
 title: "Support Comments for Static Hugo Website"
 linkTitle: "Support Comments for Static Website"
 date: 2020-12-11
-tags: ["design", "series-students"]
+tags: ["design", "hugo", "series-students"]
 ---
 
 == Support Comments for Static Hugo Website

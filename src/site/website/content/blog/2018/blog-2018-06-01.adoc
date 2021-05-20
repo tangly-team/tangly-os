@@ -130,8 +130,8 @@ Lately I saw Java code of three different commercial products and I am still rec
 [bibliography]
 === Literature
 
-- [[[cleancode, 1]]] Clean Code, Robert C. Martin, 2009
-- [[[cleancoder, 2]]] Clean Coder, Robert C. Martin, 2011
-- [[[cleanarchitecture, 3]]] Clean Architecture, Robert C. Martin, 2018
-- [[[cleanagile, 4]]] Clean Agile, Robert C. Martin, 2020
-- [[[pragmaticprogrammer, 5]]] The pragmatic Programmer: Your Journey to Mastery (20^th^ Anniversary Edition), Andrew Hunt & David Thomas, 2019
+- [[[cleancode, 1]]] Clean Code. Robert C Martin. 2009
+- [[[cleancoder, 2]]] Clean Coder. Robert C Martin. 2011
+- [[[cleanarchitecture, 3]]] Clean Architecture. Robert C Martin. 2018
+- [[[cleanagile, 4]]] Clean Agile, Robert C Martin. 2020
+- [[[pragmaticprogrammer, 5]]] The pragmatic Programmer: Your Journey to Mastery (20^th^ Anniversary Edition). Andrew Hunt & David Thomas. 2019

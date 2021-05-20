@@ -26,4 +26,56 @@ The advanced pattern matching constructs enhance the functional programming capa
 
 Polishing of functional programming approach improved my source code quite stupendously.
 
+=== Why Should You Upgrade?
+
+Why should you actually upgrade your application?
+Every Java version, even minor versions offer performance benefits, but also security fixes.
+Other useful extras that make your application more robust and better maintainable are often part of a new release.
+It includes cool features, for instance, the recently released Java records, sealed types, or the pattern matching functionality.
+
+I have noticed that a lot of applications are still on Java 8 or maybe even older, because upgrading is seen as quite a challenge.
+It is often estimated that it's a lot of work, maybe even weeks or months of work to upgrade from one LTS version to the next LTS version of Java.
+Then, when that information is being sent to the business, they often say, we don't have time to invest so much time now.
+It is seen as a challenge difficult to estimate, and is automatically postponed.
+That's not a good approach.
+
+I try to make it more practical.
+Actually, in the case of the weeks to months' estimation, I managed to do it in a couple of days.
+It is often a matter of simply trying it, and if you're lucky, you manage to upgrade it quite easily.
+Depending on what dependencies you use, or what code bases you use, it might be a bigger challenge.
+
+== Should You Migrate Everytime?
+
+Should we then stick to using LTS versions, or should we use the latest versions of Java?
+If you have the time available, I would recommend using the latest version of Java because you can use the new features and improvements.
+It always increases developer productivity and application reliability.
+You have to do it every six months, because you cannot use the new minor versions.
+
+If you do not have that time available to upgrade every six months, you might opt to using only the long term support versions.
+However, then, each time you need to upgrade your long term support version, that actually might take quite a bit more time as well.
+In the end, I think staying on long term support versions or using the latest version should not differ much in the investment in upgrading.
+
+=== How Big is the Migration Effort?
+
+When we start developing against the new Java version, it's recommended to start with your local machine, get that up and running first.
+Then upgrade your build environment, so it supports the latest version of Java.
+Get everything built and tested over there.
+Then at the end, release it to the other environments, including the production environment.
+When upgrading Java, you might upgrade from 8 to 17 at once.
+If you've encountered any issues, it might be hard to pinpoint what's caused the exact issue.
+Therefore, it might be better to do the migration, step by step.
+Maybe you migrate from 8 to 11 first, or maybe from 8 to 9. Then if you encounter any issues, you can easily see what's changed in that Java version.
+Answers can often by found through Google or StackOverflow.
+That way, it's easier to get the upgrades done instead of in one big bang.
+
+How do we move forward?
+Now we start by compiling the source code on the new Java version, we run it.
+If that succeeds, and we make the necessary fixes, we go to running the unit tests.
+If we fix that as well, we can package the application, and in the end, we can run the application.
+Based on the nice ingredients, we should get a nice result.
+Of course, sometimes you miss some ingredients, or you lack a bit of time and you take some shortcuts.
+That's perfectly fine.
+
 === New Features
+
+

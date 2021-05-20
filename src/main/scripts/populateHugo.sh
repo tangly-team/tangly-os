@@ -26,11 +26,16 @@ siteDir=$siteRootDir$siteName
 
 # copy the documentation of project module into the folders used by Hugo and the theme
 function copy_module() {
-  # content folder contains all the site dynamic content such as markdown and asciidoc documents
   cp $prjDir/net.tangly.$1/readme.* $siteDir/content/docs/$1/
   cp -R $prjDir/net.tangly.$1/src/site/* $siteDir/content/docs/$1/
-  # static folder contains all the site static content such as JavaDoc html for components
   cp -R $prjDir/net.tangly.$1/build/docs/javadoc/* $siteDir/static/docs/$1/api-$1
+}
+
+# copy the documentation of bounded domain project module into the folders used by Hugo and the theme
+function copy_domain_module() {
+  cp $prjDir/net.tangly.erp.$1/readme.* $siteDir/content/docs/domains/$1/
+  cp -R $prjDir/net.tangly.erp.$1/src/site/* $siteDir/content/docs/domains/$1/
+  cp -R $prjDir/net.tangly.erp.$1/build/docs/javadoc/* $siteDir/static/docs/domains/$1/api-$1
 }
 
 # copy whole website to static site structure
@@ -45,11 +50,15 @@ cp $prjDir/src/site/website/logo.svg $siteDir/assets/icons/
 copy_module bdd
 cp $prjDir/net.tangly.bdd/out/bdd-reports/bdd-report.adoc $siteDir/content/docs/bdd/
 
-copy_module bus
 copy_module commons
 copy_module core
 copy_module dev
 copy_module fsm
 copy_module gleam
-copy_module ports
 copy_module ui
+
+copy_domain_module crm
+copy_domain_module invoices
+copy_domain_module ledger
+copy_domain_module products
+copy_domain_module shared

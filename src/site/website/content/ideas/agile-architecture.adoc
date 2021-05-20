@@ -850,7 +850,7 @@ How you do it is up to you.
 The Software Craftsman: Professionalism, Pragmatism, Pride.
 Prentice-Hall 2015.
 
-- [[[clean-code, 2]]] Robert C. Martin.
+- [[[clean-code, 2]]] Robert C Martin.
 Clean Code: A Handbook of Agile Software Craftsmanship.
 Addison-Wesley 2009.
 
@@ -858,11 +858,11 @@ Addison-Wesley 2009.
 Clean Coder: A Code of Conduct for Professional Programmers.
 Addison-Wesley 2011.
 
-- [[[clean-architecture, 4]]] Robert C. Martin.
+- [[[clean-architecture, 4]]] Robert C Martin.
 Clean Architecture: A Craftsmanship's Guide to Software Structure and Design.
 Addison-Wesley 2018.
 
-- [[[clean-agile, 5]]] Robert C. Martin.
+- [[[clean-agile, 5]]] Robert C Martin.
 Clean Agile: Back to the Basics.
 Addison-Wesley 2019.
 

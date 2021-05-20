@@ -62,7 +62,7 @@ The associated events and tools are used.
 The deeper values such as test driven development, acceptance test driven development, clean code or refactoring are often missing.
 The key is:
 
-[.text-centered]
+[.text-center]
 _To be agile, not to do agile_
 
 We wrote in previous blogs that introducing Scrum in the development department or in the whole company is a change process.

@@ -104,14 +104,14 @@ How you do it is up to you.
 [bibliography]
 === Literature
 
-- [[[cleancode, 1]]] Clean Code, Robert C. Martin, 2009
-- [[[cleancoder, 2]]] Clean Coder, Robert C. Martin, 2011
-- [[[cleanarchitecture, 3]]] Clean Architecture, Robert C. Martin, 2018
-- [[[cleanagile, 4]]] Clean Agile, Robert C. Martin, 2020
-- [[[pragmaticprogrammer, 5]]] The pragmatic Programmer: Your Journey to Mastery (20^th^ Anniversary Edition), Andrew Hunt & David Thomas, 2019
-- [[[extremeprogramming, 6]]] eXtreme Programming Explained: Embrace Change, Ken Beck, 2005
-- [[[softwarecraftsman, 7]]] The Software Craftsman: Professionalism Pragmatism Pride, Sandro Mancuso, 2015
-- [[[effectivejava, 8]]] Effective Java: Best Practices for the Java Platform (3^rd^ Edition), Joshua Bloch, 2018
-- [[[refactoring, 9]]] Refactoring: Improving the Design of Existing Code (2^nd^ Edition), Martin Fowler, 2018
+- [[[cleancode, 1]]] Clean Code. Robert C Martin. 2009
+- [[[cleancoder, 2]]] Clean Coder. Robert C Martin. 2011
+- [[[cleanarchitecture, 3]]] Clean Architecture. Robert C. Martin. 2018
+- [[[cleanagile, 4]]] Clean Agile. Robert C Martin. 2020
+- [[[pragmaticprogrammer, 5]]] The pragmatic Programmer: Your Journey to Mastery (20^th^ Anniversary Edition). Andrew Hunt & David Thomas. 2019
+- [[[extremeprogramming, 6]]] eXtreme Programming Explained: Embrace Change. Ken Beck. 2005
+- [[[softwarecraftsman, 7]]] The Software Craftsman: Professionalism Pragmatism Pride. Sandro Mancuso. 2015
+- [[[effectivejava, 8]]] Effective Java: Best Practices for the Java Platform (3^rd^ Edition). Joshua Bloch. 2018
+- [[[refactoring, 9]]] Refactoring: Improving the Design of Existing Code (2^nd^ Edition). Martin Fowler. 2018
 
 An extensive list of books can be found under link:../../ideas/learnings/books[Books].

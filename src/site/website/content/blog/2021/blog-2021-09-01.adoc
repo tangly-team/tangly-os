@@ -1,8 +1,8 @@
 ---
-title: "Improving a Static Web Site Build With Hugo and Docsy Theme"
+title: "Improving a Static Web Site Build With Hugo and Docsy"
 linkTitle: "Improving a Static Web Site"
 date: 2021-09-01
-tags: ["agile", "series-students"]
+tags: ["design", "hugo", "series-students"]
 ---
 
 == Improving a Static Web Site Build With Hugo and Docsy Theme
@@ -11,12 +11,34 @@ tags: ["agile", "series-students"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
-image::2021-09-02-head.jpg[width=420, height=360, role=left]
+image::2021-09-02-head.jpg[width=420,height=360,role=left]
+The static website build tool {ref-hugo} is awesome.
+The Hugo theme {ref-docsy} is ideal to create software documentation site.
+I love to write my documentation and blogs using {ref-asciidoc} notation.
 
-=== Search Function for the Web Site
+=== Search Function for the Website
+
+The theme has multiple search solutions to index your static website.
+I chose the https://lunrjs.com/[Lunr] approach for our site.
+The solution has no strings attached and does not require an external search server.
+The website and the search functionality are self-contained as a static website should be.
 
 === Comment Function for Blog Article
+
+The comment feature is somewhat at odds with the concept of static website.
+The theme has multiple comment solutions to allow readers to publish a question or a test to our site.
+I decided to provide comments only to the blog part of the website.
+I chose the https://utteranc.es/[Utterances] approach for our site.
+The solution has no strings attached and uses the well-known platform GitHub.
+No tracking, no ads and no locking are great.
+The comment author must first login in GitHub before adding her comment therefore spamming or flaming are minimized.
 
 === Tag Function for Blog Article
 
 === Diagrams in articles
+
+== Hugo and Docsy Related Articles
+
+. link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc[Creating a technical Website with Hugo and Asciidoc]
+. link:../../2020/support-comments-for-static-hugo-website[Support Comments for Static Hugo Website]
+. link:../../2021/improving-a-static-web-site-build-with-hugo-and-docsy[Improving a Static Web Site Build With Hugo and Docsy]

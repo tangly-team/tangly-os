@@ -1,7 +1,7 @@
 ---
 title: "tangly OS components"
 linkTitle: "Components"
---- 
+---
 
 {{< blocks/cover title="Welcome to tangly Open Source Components and Blog" image_anchor="top" height="full" color="teal">}}
 <div class="mx-auto">
@@ -25,14 +25,14 @@ The documentation site for open source components published by [tangly llc](http
 
 The current released components are written in _Java_ and released on _Maven Central_ are
 
-* _[BUS](./docs/bus/)_ Customer Relation Business Models,
+* _[BUS](docs/crm/)_ Customer Relation Business Models,
 * _[BDD](./docs/bdd/)_ Behavior Driven Design Test Library based on JUnit 5 (code first approach),
 * _[COMMONS](./docs/commons)_ Internal Common Components to write company internal applications,
 * _[FSM](./docs/fsm/)_ Hierarchical Finite State Machine,
 * _[GLEAM](./docs/gleam/)_ declarative model definition library (map Java objects hierarchy to TSV and JSON format),
 * _[ORM](./docs/orm/)_ simple object to relational models mapping library,
 * _[PORTS](./docs/ports/)_ Ports for the business models (hexagon architecture principles),
-* _[UI](./docs/ui/)_ Vaadin based user interface. 
+* _[UI](./docs/ui/)_ Vaadin based user interface.
 </div>
 {{% /blocks/section %}}
 
