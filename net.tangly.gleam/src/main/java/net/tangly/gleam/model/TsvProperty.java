@@ -28,23 +28,24 @@ import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The TSV property defines the mapping between a Java property and one or multiple cells in a TSV file. Two scenarios should be supported. The simple case is
- * the mapping of a Java property to exactly one cell in a TSV file. For example the mapping of a local date property to the textual ISO conform representation
- * in one TSV cell. The more complex case is the mapping of a Java property to multiple cells in a TSV file. For example a Java address object has to be mapped
- * so that each element of the address is stored in a specific cell. Both scenarios are supported through the same abstraction.
+ * The TSV property defines the mapping between a Java property and one or multiple cells in a TSV file. Two scenarios are supported. The simple case is the
+ * mapping of a Java property to exactly one cell in a TSV file. For example the mapping of a local date property to the textual ISO conform representation in
+ * one TSV cell. The more complex case is the mapping of a Java property to multiple cells in a TSV file. For example a Java address object has to be mapped so
+ * that each element of the address is stored in a specific cell. Both scenarios are supported through the same abstraction.
+ * <p>The decision to use one or multiple cells is delegated to the developer. A TSV cell contains always either a string or a null value.
  *
- * @param columns   ordered list of columns in the TSV file used to encode the property. Simple fields have one column, complex fields mapped on multiple
- *                  columns have multiple values
- * @param getter    getter function to retrieve the property from a Java entity instance
- * @param setter    optional setter function to set the property of a Java entity instance
- * @param extractor extracts function to read and transform the set of TSV columns into a property value. Factory methods are provided to simplify the
- *                  definition of conversion in the case only one TSV column is used.
- * @param writer    inserts function to transform a property value into a set of TSV columns and write them. Factory methods are provided to simplify the *
- *                  definition of conversion in the case only one TSV column is used.
- * @param <T>       class owning the Java property
- * @param <U>       type of the property
+ * @param columns ordered list of columns in the TSV file used to encode the property. Simple fields have one column, complex fields mapped on multiple columns
+ *                have multiple values
+ * @param getter  getter function to retrieve the property from a Java entity instance
+ * @param setter  optional setter function to set the property of a Java entity instance
+ * @param reader  extracts function to read and transform the set of TSV columns into a property value. Factory methods are provided to simplify the definition
+ *                of conversion in the case only one TSV column is used.
+ * @param writer  inserts function to transform a property value into a set of TSV columns and write them. Factory methods are provided to simplify the *
+ *                definition of conversion in the case only one TSV column is used.
+ * @param <T>     class owning the Java property
+ * @param <U>     type of the property
  */
-public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiConsumer<T, U> setter, Function<CSVRecord, U> extractor,
+public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiConsumer<T, U> setter, Function<CSVRecord, U> reader,
                                 BiConsumer<U, CSVPrinter> writer) {
 
     public static final Function<String, BigDecimal> CONVERT_BIG_DECIMAL_FROM = e -> (e == null) ? BigDecimal.ZERO : new BigDecimal(e);
@@ -148,7 +149,7 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
      * @see TsvProperty#exports(Object, CSVPrinter)
      */
     public void imports(@NotNull T entity, @NotNull CSVRecord record) {
-        U property = extractor.apply(record);
+        U property = reader.apply(record);
         setter.accept(entity, property);
     }
 

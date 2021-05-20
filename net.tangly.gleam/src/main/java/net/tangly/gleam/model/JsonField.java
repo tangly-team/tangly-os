@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2021 Marcel Baumann
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  *  a copy of the License at
@@ -25,7 +25,7 @@ import org.json.JSONObject;
  */
 public interface JsonField<T, U> {
     /**
-     * Import the JSON value and set the associated property after an optional conversion. Multiple values can be used if the object is a complex one.
+     * Import the JSON value and set the associated property after an optional conversion. Multiple JSON values can be used if the object is a complex one.
      *
      * @param entity entity which property will be imported and set
      * @param object JSON object containing the values
@@ -34,7 +34,7 @@ public interface JsonField<T, U> {
     void imports(@NotNull T entity, @NotNull JSONObject object);
 
     /**
-     * Export the JSON value from the associated property after an optional conversion. Multiple values can be written if the object is a complex one.
+     * Export the JSON value from the associated property after an optional conversion. Multiple JSON values can be written if the object is a complex one.
      *
      * @param entity entity which property will be exported as TSV value
      * @param object JSON object to write the TSV value(s)
@@ -43,14 +43,13 @@ public interface JsonField<T, U> {
     void exports(@NotNull T entity, @NotNull JSONObject object);
 
     /**
-     * Returns the string value associated with the property key.
+     * Returns the JSON property key name storing the property in a JSON structure.
      *
-     * @param key    key of the property
-     * @param object JSON object containing the property
-     * @return the string value if the property exists otherwise null
+     * @return key of the property
      */
-    static String get(@NotNull String key, @NotNull JSONObject object) {
+    String key();
+
+    static String string(JSONObject object, String key) {
         return object.has(key) ? object.getString(key) : null;
     }
-
 }

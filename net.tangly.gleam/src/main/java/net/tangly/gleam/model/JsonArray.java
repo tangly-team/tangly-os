@@ -24,7 +24,7 @@ import org.json.JSONObject;
 /**
  * Defines a field containing an array of entities. The entities can of different types but must have a common ancestor.
  *
- * @param property       name of the property containing the JSON array
+ * @param key            name of the property containing the JSON array
  * @param getter         getter of the property - returns a collection of items of type U
  * @param setter         setter used to add an item to the collection mapping the JSON array
  * @param importSelector selector to identify the type of the collection item based on any discriminator in the JSON array
@@ -32,7 +32,7 @@ import org.json.JSONObject;
  * @param <T>            type of the entity owning the field
  * @param <U>            type of the common ancestor of the entities stored in the array
  */
-public record JsonArray<T, U>(@NotNull String property, @NotNull Function<T, Collection<U>> getter, @NotNull BiConsumer<T, U> setter,
+public record JsonArray<T, U>(@NotNull String key, @NotNull Function<T, Collection<U>> getter, @NotNull BiConsumer<T, U> setter,
                               Function<JSONObject, JsonEntity<?>> importSelector, Function<Object, JsonEntity<?>> exportSelector) implements JsonField<T, U> {
     @Override
     public void exports(@NotNull T entity, @NotNull JSONObject object) {
@@ -42,13 +42,13 @@ public record JsonArray<T, U>(@NotNull String property, @NotNull Function<T, Col
             JsonEntity jsonEntity = exportSelector.apply(o);
             items.put(jsonEntity.exports(o, entity));
         });
-        object.put(property(), items);
+        object.put(key(), items);
     }
 
     @Override
     public void imports(@NotNull T entity, @NotNull JSONObject object) {
-        if (object.has(property())) {
-            JSONArray items = object.getJSONArray(property());
+        if (object.has(key())) {
+            JSONArray items = object.getJSONArray(key());
             items.forEach(o -> {
                 JsonEntity<?> jsonEntity = importSelector.apply((JSONObject) o);
                 setter().accept(entity, (U) jsonEntity.imports((JSONObject) o, entity));
