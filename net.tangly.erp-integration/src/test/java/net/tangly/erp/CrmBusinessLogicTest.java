@@ -12,8 +12,8 @@
 
 package net.tangly.erp;
 
-import net.tangly.bus.crm.CrmTags;
 import net.tangly.core.TypeRegistry;
+import net.tangly.core.crm.CrmTags;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

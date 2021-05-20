@@ -21,12 +21,12 @@ import java.time.LocalDate;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
-import net.tangly.bus.ledger.LedgerRealm;
-import net.tangly.ledger.ports.ClosingReportAsciiDoc;
-import net.tangly.ledger.ports.LedgerAdapter;
-import net.tangly.ledger.ports.LedgerEntities;
-import net.tangly.ledger.ports.LedgerHdl;
-import net.tangly.ledger.ports.LedgerTsvHdl;
+import net.tangly.erp.ledger.services.LedgerRealm;
+import net.tangly.erp.ledger.ports.ClosingReportAsciiDoc;
+import net.tangly.erp.ledger.ports.LedgerAdapter;
+import net.tangly.erp.ledger.ports.LedgerEntities;
+import net.tangly.erp.ledger.ports.LedgerHdl;
+import net.tangly.erp.ledger.ports.LedgerTsvHdl;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

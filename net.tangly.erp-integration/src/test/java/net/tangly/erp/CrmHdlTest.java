@@ -17,12 +17,12 @@ import java.nio.file.FileSystem;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
-import net.tangly.bus.crm.CrmRealm;
-import net.tangly.bus.crm.LegalEntity;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
-import net.tangly.crm.ports.CrmEntities;
-import net.tangly.crm.ports.CrmHdl;
+import net.tangly.erpr.crm.ports.CrmEntities;
+import net.tangly.erpr.crm.ports.CrmHdl;
+import net.tangly.erp.crm.domain.LegalEntity;
+import net.tangly.erp.crm.services.CrmRealm;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 

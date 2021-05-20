@@ -16,8 +16,8 @@ import java.nio.file.FileSystem;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
-import net.tangly.crm.ports.CrmEntities;
-import net.tangly.crm.ports.CrmHdl;
+import net.tangly.erpr.crm.ports.CrmEntities;
+import net.tangly.erpr.crm.ports.CrmHdl;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 

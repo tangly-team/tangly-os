@@ -1,5 +1,6 @@
+
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2021 Marcel Baumann
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  *  a copy of the License at
@@ -15,18 +16,20 @@ plugins {
     id 'java-library'
 }
 
-project.ext.groupId = 'net.tangly'
-project.ext.artifactId = 'bus'
+project.ext.groupId = 'net.tangly.erp'
+project.ext.artifactId = 'products'
 project.version = "0.2.6"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
-project.ext.inceptionYear = '2016'
-project.description = "Business Abstractions - BUS - using Java 16 or higher (tangly llc)"
+project.ext.inceptionYear = '2019'
+project.description = "Products bounded domain using Java 16 or higher (tangly llc)"
 
 dependencies {
     implementation project(':net.tangly.commons')
     implementation project(':net.tangly.core')
+    implementation project(':net.tangly.erp.shared')
+    implementation project(':net.tangly.gleam')
 
-    implementation (libs.slf4j.api)
-    implementation(libs.apache.commons.codec)
-    implementation(libs.apache.commons.io)
+    implementation(libs.slf4j.api)
+    implementation(libs.microstream.storage)
+    implementation(libs.apache.commons.csv)
 }

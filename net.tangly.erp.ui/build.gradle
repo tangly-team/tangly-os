@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2021 Marcel Baumann
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  *  a copy of the License at
@@ -11,12 +11,32 @@
  *  under the License.
  */
 
-project.ext.groupId = 'net.tangly'
-project.ext.artifactId = 'erp-integration'
+plugins {
+    id "java"
+    id "application"
+    id "com.vaadin" version "0.17.0.1"
+
+}
+
+project.ext.groupId = 'net.tangly.erp'
+project.ext.artifactId = 'ui'
 project.version = "0.2.6"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
-project.description = "integration tests for ERP (tangly llc)"
+project.description = "User Interface ERP - using Java 16 or higher (tangly llc)"
+
+ext {
+    vaadinVersion = '19.0.8'
+}
+
+application {
+    mainClassName = "net.tangly.erp.ui.EmbeddedJetty"
+}
+
+vaadin {
+    pnpmEnable = false  // workaround for https://github.com/vaadin/flow/issues/10571
+}
+
 
 dependencies {
     implementation project(':net.tangly.commons')
@@ -26,9 +46,22 @@ dependencies {
     implementation project(':net.tangly.erp.ledger')
     implementation project(':net.tangly.erp.products')
     implementation project(':net.tangly.gleam')
+    implementation project(':net.tangly.ui')
 
-    implementation(libs.jimfs)
+    implementation enforcedPlatform("com.vaadin:vaadin-bom:$vaadinVersion")
+
     implementation(libs.microstream.storage)
+    implementation(libs.vaadin.socharts)
+    implementation(libs.vaadin.tooltip)
+    implementation(libs.vaadin.pdfbrowser)
+    implementation(libs.vaadin.autocomplete)
+    implementation(libs.vaadin.signature)
 
-    testImplementation(libs.apache.pdfbox)
+    // Embedded Jetty dependencies
+    implementation(libs.bundles.jetty.deps)
+    implementation(libs.jetty.websocketimp) { exclude(module: "javax.websocket-client-api") }
+//    implementation(libs.slf4j.logback)
+    implementation("org.slf4j:slf4j-simple:1.7.30")
+
+    testImplementation (libs.vaadin.test)
 }

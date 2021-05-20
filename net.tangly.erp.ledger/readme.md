@@ -1,7 +1,6 @@
 ---
 title: "Readme"
 date: 2019-05-01
-lastmod: 2020-05-01
 weight: 10
 draft: false
 ---
@@ -9,44 +8,45 @@ draft: false
 # Business Model Types
 
 ![Apache License 2.0](https://img.shields.io/badge/license-Apache%202-blue.svg)
-![Maven Central](https://img.shields.io/maven-central/v/net.tangly/bus.svg)
-[![javadoc](https://javadoc.io/badge2/net.tangly/bus/javadoc.svg)](https://javadoc.io/doc/net.tangly/bus)
+![Maven Central](https://img.shields.io/maven-central/v/net.tangly/erp/crm.svg)
+[![javadoc](https://javadoc.io/badge2/net.tangly/bus/javadoc.svg)](https://javadoc.io/doc/net.tangly.erp/crm)
 ![Bitbucket Pipelines](https://img.shields.io/bitbucket/pipelines/tangly-team/tangly-os.svg)
 ![Sonar Coverage](https://img.shields.io/sonar/https/sonarcloud.io/tangly-os-at-tangly.net/coverage.svg)
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues-raw/tangly/tangly-os.svg)
 
 ## Purpose
 
-The **tangly bus** component provides regular business model abstractions for business applications written in Java.
-The component is using records and requires **Java 14 or higher**.
+The **tangly erp crm** bounded domain component provides regular business model abstractions for business applications written in Java. The component is using records and requires **Java 16 or higher**.
 
+**Try it out**.
 
 ## Download and Documentation
 
 The library can be included in Maven as
 
 ```xml
-    <dependency>
-      <groupId>net.tangly</groupId>
-      <artifactId>bus</artifactId>
-      <version>0.2.6</version>
-    </dependency>
-```    
+
+<dependency>
+    <groupId>net.tangly.erp</groupId>
+    <artifactId>crm</artifactId>
+    <version>0.2.6</version>
+</dependency>
+```
 
 The library can be included in Gradle as
 
 ```groovy
-    implementation "net.tangly:bus:0.2.6"
+    implementation "net.tangly.erp:crm:0.2.6"
 ```
- 
-The documentation can be found under [Business documentation](https://tangly-team.bitbucket.io/docs/bus/)
+
+The documentation can be found under [Business documentation](https://tangly-team.bitbucket.io/docs/erp/crm/)
 
 For any further question and discussion you can use the forum [tangly-OS-Components](https://groups.google.com/g/tangly-os-components)
 
 ## Contribution
 
-You are welcome to contribute to the product with pull requests on Bitbucket. You can download the source files from the 
-[bitbucket git repository](https://bitbucket.org/tangly-team/tangly-os.git) and build  the library with the provided gradle configuration file.
+You are welcome to contribute to the product with pull requests on Bitbucket. You can download the source files from the
+[bitbucket git repository](https://bitbucket.org/tangly-team/tangly-os.git) and build the library with the provided gradle configuration file.
 
 If you find a bug or want to request a feature, please use the [issue tracker](https://bitbucket.org/tangly-team/tangly-os/issues).
 

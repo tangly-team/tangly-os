@@ -16,9 +16,9 @@ import java.io.IOException;
 import java.nio.file.FileSystem;
 
 import com.google.common.jimfs.Jimfs;
-import net.tangly.bus.invoices.InvoicesRealm;
-import net.tangly.invoices.ports.InvoicesEntities;
-import net.tangly.invoices.ports.InvoicesHdl;
+import net.tangly.erp.invoices.ports.InvoicesEntities;
+import net.tangly.erp.invoices.ports.InvoicesHdl;
+import net.tangly.erp.invoices.services.InvoicesRealm;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 

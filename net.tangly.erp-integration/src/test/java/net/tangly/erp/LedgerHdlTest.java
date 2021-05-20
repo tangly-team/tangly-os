@@ -18,9 +18,9 @@ import java.time.LocalDate;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
-import net.tangly.bus.ledger.Account;
-import net.tangly.ledger.ports.LedgerEntities;
-import net.tangly.ledger.ports.LedgerHdl;
+import net.tangly.erp.ledger.domain.Account;
+import net.tangly.erp.ledger.ports.LedgerEntities;
+import net.tangly.erp.ledger.ports.LedgerHdl;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

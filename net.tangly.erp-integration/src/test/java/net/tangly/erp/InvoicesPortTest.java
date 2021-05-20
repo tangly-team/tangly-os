@@ -18,10 +18,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import com.google.common.jimfs.Jimfs;
-import net.tangly.invoices.ports.InvoicesAdapter;
-import net.tangly.invoices.ports.InvoicesEntities;
-import net.tangly.invoices.ports.InvoicesHdl;
-import net.tangly.invoices.ports.InvoicesUtilities;
+import net.tangly.erp.invoices.ports.InvoicesAdapter;
+import net.tangly.erp.invoices.ports.InvoicesEntities;
+import net.tangly.erp.invoices.ports.InvoicesHdl;
+import net.tangly.erp.invoices.ports.InvoicesUtilities;
 import org.apache.pdfbox.cos.COSDocument;
 import org.apache.pdfbox.io.RandomAccessBufferedFileInputStream;
 import org.apache.pdfbox.pdfparser.PDFParser;

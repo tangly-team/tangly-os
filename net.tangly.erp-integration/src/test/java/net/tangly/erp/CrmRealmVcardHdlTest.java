@@ -17,9 +17,9 @@ import java.nio.file.FileSystem;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
-import net.tangly.crm.ports.CrmEntities;
-import net.tangly.crm.ports.CrmHdl;
-import net.tangly.crm.ports.CrmVcardHdl;
+import net.tangly.erpr.crm.ports.CrmEntities;
+import net.tangly.erpr.crm.ports.CrmHdl;
+import net.tangly.erpr.crm.ports.CrmVcardHdl;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

@@ -4,4 +4,4 @@ oid	id	name	fromDate	toDate	text	lastname	firstname	gender	crm:email-home	crm:ph
 3			1950-01-01			Doe	Jane	FEMALE	jane.doe@gmail.com		janedoe		Sunset 103	6330	Berlin	ZG	DE
 4						Doe	Ada	FEMALE	ada.doe@gmail.com		adadoe		Sunset 104	6330	Berlin	ZG	DE
 5						Smith	Neo	MALE					Dawn		Praha		CZ
-6	mb-00		1964-12-12			Baumann	Marcel	MALE	marcelbaumann@gmail.com	+41 79 778 86 89	marcel-baumann	tangly-team.bitbucket.io	Lorzenhof 27	6330	Cham	ZG	CH
+6	mb-00		1964-12-12			Baumann	Marcel	MALE	marcelbaumann@gmail.com	+41 79 778 86 89	marcelbaumann	tangly-team.bitbucket.io	Lorzenhof 27	6330	Cham	ZG	CH

@@ -20,8 +20,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-import net.tangly.crm.ports.CrmHdl;
-import net.tangly.invoices.ports.InvoicesHdl;
+import net.tangly.erp.invoices.ports.InvoicesHdl;
+import net.tangly.erpr.crm.ports.CrmHdl;
 import net.tangly.products.ports.ProductsHdl;
 import org.jetbrains.annotations.NotNull;
 
@@ -36,11 +36,14 @@ public record ErpStore(@NotNull FileSystem fs) {
     private static final String PRODUCTS = "products/";
     private static final String INVOICES = "invoices/";
     private static final String REPORTS = "reports/";
+    private static final String VCARDS = "vcards/";
+    private static final String PICTURES = "pictures/";
     private static final String CRM_PACKAGE_NAME = PACKAGE_NAME + CRM;
     private static final String LEDGER_PACKAGE_NAME = PACKAGE_NAME + LEDGER;
     private static final String PRODUCTS_PACKAGE_NAME = PACKAGE_NAME + PRODUCTS;
     private static final String INVOICES_PACKAGE_NAME = PACKAGE_NAME + INVOICES;
-    private static final String VCARDS_PACKAGE_NAME = CRM_PACKAGE_NAME + "vcards/";
+    private static final String VCARDS_PACKAGE_NAME = CRM_PACKAGE_NAME + VCARDS;
+    private static final String PICTURES_PACKAGE_NAME = CRM_PACKAGE_NAME + PICTURES;
     private static final String REPORTS_PACKAGE_NAME = PACKAGE_NAME + REPORTS;
     private static final String ORGANIZATION = "/organization/";
 
@@ -69,7 +72,11 @@ public record ErpStore(@NotNull FileSystem fs) {
     }
 
     public Path vcardsRoot() {
-        return crmRoot().resolve("vcards/");
+        return crmRoot().resolve(VCARDS);
+    }
+
+    public Path picturesRoot() {
+        return crmRoot().resolve(PICTURES);
     }
 
     public Path reportsRoot() {
@@ -91,7 +98,8 @@ public record ErpStore(@NotNull FileSystem fs) {
         try {
             Files.createDirectory(fs.getPath(ORGANIZATION));
             Files.createDirectory(fs.getPath(ORGANIZATION, CRM));
-            Files.createDirectory(fs.getPath(ORGANIZATION, "crm/vcards/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, CRM, VCARDS));
+            Files.createDirectory(fs.getPath(ORGANIZATION, CRM, PICTURES));
             Files.createDirectory(fs.getPath(ORGANIZATION, LEDGER));
             Files.createDirectory(fs.getPath(ORGANIZATION, PRODUCTS));
             Files.createDirectory(fs.getPath(ORGANIZATION, INVOICES));
@@ -133,6 +141,7 @@ public record ErpStore(@NotNull FileSystem fs) {
             copy(INVOICES_PACKAGE_NAME + "2019/", invoicesRoot().resolve("2019"), "2019-8020-Invoice-HSLU-December.json");
             copy(INVOICES_PACKAGE_NAME + "2020/", invoicesRoot().resolve("2020"), "2020-8001-Invoice-HSLU-May.json");
             copy(VCARDS_PACKAGE_NAME, vcardsRoot(), "1-MarcelBaumann.vcf");
+            copy(PICTURES_PACKAGE_NAME, picturesRoot(), "marcelbaumann.jpeg");
             copy(REPORTS_PACKAGE_NAME, reportsRoot(), "trefoil.svg");
         } catch (IOException e) {
             throw new UncheckedIOException(e);
