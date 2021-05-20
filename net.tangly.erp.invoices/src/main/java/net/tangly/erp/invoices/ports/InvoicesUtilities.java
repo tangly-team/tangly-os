@@ -11,7 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.invoices.ports;
+package net.tangly.erp.invoices.ports;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -19,7 +19,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.regex.Pattern;
 
-import net.tangly.bus.invoices.Invoice;
+import net.tangly.erp.invoices.domain.Invoice;
 import org.jetbrains.annotations.NotNull;
 
 public final class InvoicesUtilities {

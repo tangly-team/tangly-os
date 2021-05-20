@@ -11,23 +11,23 @@
  *  under the License.
  */
 
-package net.tangly.invoices.ports;
+package net.tangly.erp.invoices.ports;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
-import net.tangly.bus.invoices.Article;
-import net.tangly.bus.invoices.Invoice;
-import net.tangly.bus.invoices.InvoiceLegalEntity;
-import net.tangly.bus.invoices.InvoicesRealm;
 import net.tangly.commons.generator.IdGenerator;
 import net.tangly.core.HasOid;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.providers.ProviderPersistence;
+import net.tangly.erp.invoices.domain.Article;
+import net.tangly.erp.invoices.domain.Invoice;
+import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
+import net.tangly.erp.invoices.services.InvoicesRealm;
 import one.microstream.storage.types.EmbeddedStorage;
 import one.microstream.storage.types.EmbeddedStorageManager;
 import org.jetbrains.annotations.NotNull;

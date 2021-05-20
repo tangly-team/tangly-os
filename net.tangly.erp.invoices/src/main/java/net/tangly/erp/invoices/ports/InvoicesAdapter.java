@@ -11,7 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.invoices.ports;
+package net.tangly.erp.invoices.ports;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -20,11 +20,11 @@ import java.nio.file.Path;
 import java.util.Collections;
 import java.util.Map;
 
-import net.tangly.bus.invoices.Invoice;
-import net.tangly.bus.invoices.InvoicesPort;
-import net.tangly.bus.invoices.InvoicesRealm;
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
+import net.tangly.erp.invoices.domain.Invoice;
+import net.tangly.erp.invoices.services.InvoicesPort;
+import net.tangly.erp.invoices.services.InvoicesRealm;
 import org.jetbrains.annotations.NotNull;
 
 /**

@@ -11,7 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.invoices.ports;
+package net.tangly.erp.invoices.ports;
 
 import java.io.IOException;
 import java.lang.invoke.MethodHandles;
@@ -30,9 +30,9 @@ import net.codecrete.qrbill.generator.OutputSize;
 import net.codecrete.qrbill.generator.Payments;
 import net.codecrete.qrbill.generator.QRBill;
 import net.codecrete.qrbill.generator.SwicoBillInformation;
-import net.tangly.bus.invoices.Invoice;
-import net.tangly.bus.invoices.InvoiceLegalEntity;
 import net.tangly.core.Address;
+import net.tangly.erp.invoices.domain.Invoice;
+import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,8 +46,8 @@ public class InvoiceQrCode implements InvoiceGenerator {
         var bill = new Bill();
         bill.setFormat(createBillFormat());
         bill.setVersion(Bill.Version.V2_0);
-        bill.setCreditor(create(invoice.invoicingEntity(), invoice.invoicingAddress()));
-        bill.setDebtor(create(invoice.invoicedEntity(), invoice.invoicedAddress()));
+        bill.setCreditor(create(invoice.invoicingEntity(), invoice.invoicingEntity().address()));
+        bill.setDebtor(create(invoice.invoicedEntity(), invoice.invoicedEntity().address()));
         bill.setAccount(invoice.invoicingConnection().iban());
         bill.setAmount(invoice.amountWithVat());
         bill.setCurrency(invoice.currency().getCurrencyCode());

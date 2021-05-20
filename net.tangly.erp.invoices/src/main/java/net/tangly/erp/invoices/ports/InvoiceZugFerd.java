@@ -11,7 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.invoices.ports;
+package net.tangly.erp.invoices.ports;
 
 import java.io.IOException;
 import java.lang.invoke.MethodHandles;
@@ -20,13 +20,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Date;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-import net.tangly.bus.invoices.Article;
-import net.tangly.bus.invoices.Invoice;
-import net.tangly.bus.invoices.InvoiceItem;
-import net.tangly.bus.invoices.InvoiceLegalEntity;
 import net.tangly.core.Address;
+import net.tangly.erp.invoices.domain.Article;
+import net.tangly.erp.invoices.domain.Invoice;
+import net.tangly.erp.invoices.domain.InvoiceItem;
+import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
 import org.jetbrains.annotations.NotNull;
 import org.mustangproject.ZUGFeRD.IExportableTransaction;
 import org.mustangproject.ZUGFeRD.IZUGFeRDAllowanceCharge;
@@ -221,18 +220,18 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
 
     @Override
     public String getOwnCountry() {
-        return invoice.invoicingAddress().country();
+        return invoice.invoicedEntity().address().country();
     }
 
 
     @Override
     public String getOwnLocation() {
-        return invoice.invoicingAddress().locality();
+        return invoice.invoicingEntity().address().locality();
     }
 
     @Override
     public String getOwnOrganisationFullPlaintextInfo() {
-        return invoice.invoicedEntity().name() + " " + invoice.invoicingAddress().text();
+        return invoice.invoicedEntity().name() + " " + invoice.invoicingEntity().address().text();
     }
 
     @Override
@@ -242,7 +241,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
 
     @Override
     public String getOwnStreet() {
-        return invoice.invoicingAddress().street();
+        return invoice.invoicingEntity().address().street();
     }
 
     @Override
@@ -257,7 +256,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
 
     @Override
     public String getOwnZIP() {
-        return invoice.invoicingAddress().postcode();
+        return invoice.invoicingEntity().address().postcode();
     }
 
     @Override
@@ -267,7 +266,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
 
     @Override
     public IZUGFeRDExportableTradeParty getRecipient() {
-        return new TradeParty(invoice.invoicedEntity(), invoice.invoicedAddress());
+        return new TradeParty(invoice.invoicedEntity(), invoice.invoicedEntity().address());
     }
 
     @Override

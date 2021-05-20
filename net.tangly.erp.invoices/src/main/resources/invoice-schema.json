@@ -3,6 +3,29 @@
     "title": "invoice archive schema",
     "description": "schema to export to other systems or archive invoices",
     "definitions": {
+        "address": {
+            "type": "object",
+            "properties": {
+                "street": {
+                    "type": "string"
+                },
+                "extended": {
+                    "type": "string"
+                },
+                "locality": {
+                    "type": "string"
+                },
+                "postCode": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                }
+            }
+        },
         "legalEntity": {
             "type": "object",
             "properties": {
@@ -13,6 +36,12 @@
                     "type": "string"
                 },
                 "vatNr": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "#/definitions/address"
+                },
+                "email": {
                     "type": "string"
                 }
             },
@@ -137,6 +166,9 @@
         "invoicingEntity": {
             "$ref": "#/definitions/legalEntity"
         },
+        "invoicingAddress": {
+            "$ref": "#/definitions/address"
+        },
         "invoicingConnection": {
             "$ref": "#/definitions/bankConnection"
         },
@@ -145,6 +177,9 @@
         },
         "invoicedEntity": {
             "$ref": "#/definitions/legalEntity"
+        },
+        "invoicedAddress": {
+            "$ref": "#/definitions/address"
         },
         "deliveryDate": {
             "type": "string",
@@ -193,7 +228,9 @@
         "id",
         "contractId",
         "invoicingEntity",
+        "invoicingAddress",
         "invoicedEntity",
+        "invoicedAddress",
         "invoiceDate",
         "dueDate",
         "currency"

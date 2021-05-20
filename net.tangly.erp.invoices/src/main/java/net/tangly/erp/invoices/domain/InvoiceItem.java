@@ -10,37 +10,33 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.commons.lang.functional;
+package net.tangly.erp.invoices.domain;
 
-import java.util.NoSuchElementException;
 
-final class Nil<T> implements LList<T> {
-    private static final Nil Nil = new Nil();
+import java.math.BigDecimal;
 
-    private Nil() {
-    }
 
-    public static <T> Nil<T> nil() {
-        return Nil;
+/**
+ * The invoice item represent a position of sold items defined through a product.
+ */
+public record InvoiceItem(int position, Article article, String text, BigDecimal quantity) implements InvoiceLine {
+    @Override
+    public BigDecimal amount() {
+        return unitPrice().multiply(quantity);
     }
 
     @Override
-    public boolean isEmpty() {
+    public BigDecimal vat() {
+        return amount().multiply(article.vatRate());
+    }
+
+    @Override
+    public BigDecimal unitPrice() {
+        return article.unitPrice();
+    }
+
+    @Override
+    public boolean isItem() {
         return true;
-    }
-
-    @Override
-    public T head() {
-        throw new NoSuchElementException("head of empty list");
-    }
-
-    @Override
-    public LList<T> tail() {
-        throw new UnsupportedOperationException("tail of empty list");
-    }
-
-    @Override
-    public String toString() {
-        return "";
     }
 }

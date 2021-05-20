@@ -11,7 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.invoices.ports;
+package net.tangly.erp.invoices.ports;
 
 import java.io.PrintWriter;
 import java.lang.invoke.MethodHandles;
@@ -26,11 +26,11 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 import net.codecrete.qrbill.generator.Strings;
-import net.tangly.bus.invoices.Invoice;
-import net.tangly.bus.invoices.InvoiceLegalEntity;
-import net.tangly.bus.invoices.InvoiceLine;
 import net.tangly.commons.utilities.AsciiDocHelper;
 import net.tangly.core.Address;
+import net.tangly.erp.invoices.domain.Invoice;
+import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
+import net.tangly.erp.invoices.domain.InvoiceLine;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -66,8 +66,8 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
             helper.header(bundle.getString("invoice"), 2);
 
             helper.tableHeader(null, "frame=\"none\", grid=\"none\", options=\"noheader\", stripes=\"none\", cols=\"3,4,3\"");
-            helper.tableRow(addressText(invoice.invoicingEntity(), invoice.invoicingAddress()), "",
-                addressText(invoice.invoicedEntity(), invoice.invoicedAddress()));
+            helper.tableRow(addressText(invoice.invoicingEntity(), invoice.invoicingEntity().address()), "",
+                addressText(invoice.invoicedEntity(), invoice.invoicedEntity().address()));
             helper.tableEnd();
 
             helper.tableHeader(null, "stripes=\"none\", options=\"noheader\", cols=\"4,2,4,2\"");

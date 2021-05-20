@@ -11,7 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.invoices.ports;
+package net.tangly.erp.invoices.ports;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -25,20 +25,22 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import net.tangly.bus.invoices.Article;
-import net.tangly.bus.invoices.Invoice;
-import net.tangly.bus.invoices.InvoiceItem;
-import net.tangly.bus.invoices.InvoiceLegalEntity;
-import net.tangly.bus.invoices.InvoiceLine;
-import net.tangly.bus.invoices.InvoicesRealm;
-import net.tangly.bus.invoices.Subtotal;
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.JsonUtilities;
 import net.tangly.core.Address;
 import net.tangly.core.BankConnection;
+import net.tangly.core.EmailAddress;
+import net.tangly.erp.invoices.domain.Article;
+import net.tangly.erp.invoices.domain.Invoice;
+import net.tangly.erp.invoices.domain.InvoiceItem;
+import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
+import net.tangly.erp.invoices.domain.InvoiceLine;
+import net.tangly.erp.invoices.domain.Subtotal;
+import net.tangly.erp.invoices.services.InvoicesRealm;
 import net.tangly.gleam.model.JsonArray;
 import net.tangly.gleam.model.JsonEntity;
 import net.tangly.gleam.model.JsonField;
@@ -101,17 +103,31 @@ public class InvoiceJson implements InvoiceGenerator {
             List.of(JsonProperty.ofString("id", Invoice::id, Invoice::id), JsonProperty.ofString("name", Invoice::name, Invoice::name),
                 JsonProperty.ofString("text", Invoice::text, Invoice::text), JsonProperty.ofString("contractId", Invoice::contractId, Invoice::contractId),
                 JsonProperty.ofType("invoicingEntity", Invoice::invoicingEntity, Invoice::invoicingEntity, jsonLegalEntity),
-                JsonProperty.ofType("invoicingAddress", Invoice::invoicingAddress, Invoice::invoicingAddress, jsonAddress),
                 JsonProperty.ofType("invoicingConnection", Invoice::invoicingConnection, Invoice::invoicingConnection, jsonBankConnection),
                 JsonProperty.ofType("invoicedEntity", Invoice::invoicedEntity, Invoice::invoicedEntity, jsonLegalEntity),
-                JsonProperty.ofType("invoicedAddress", Invoice::invoicedAddress, Invoice::invoicedAddress, jsonAddress),
                 JsonProperty.ofLocalDate("deliveryDate", Invoice::deliveryDate, Invoice::deliveryDate),
-                JsonProperty.ofLocalDate("invoiceDate", Invoice::date, Invoice::date),
-                JsonProperty.ofLocalDate("dueDate", Invoice::dueDate, Invoice::dueDate),
+                JsonProperty.ofLocalDate("invoiceDate", Invoice::date, Invoice::date), JsonProperty.ofLocalDate("dueDate", Invoice::dueDate, Invoice::dueDate),
                 JsonProperty.ofLocalDate("paidDate", Invoice::paidDate, Invoice::paidDate),
                 JsonProperty.ofCurrency("currency", Invoice::currency, Invoice::currency), JsonProperty.ofLocale("locale", Invoice::locale, Invoice::locale),
                 JsonProperty.ofString("paymentConditions", Invoice::paymentConditions, Invoice::paymentConditions), createPositions());
         return JsonEntity.of(fields, Invoice::new);
+    }
+
+    public JsonEntity<InvoiceLegalEntity> createJsonLegalEntity() {
+        JsonEntity<Address> jsonAddress = createJsonAddress();
+        JsonProperty<InvoiceLegalEntity, EmailAddress> jsonEmail = ofEmailAddress("email", InvoiceLegalEntity::email, null);
+        Function<JSONObject, InvoiceLegalEntity> imports =
+            object -> new InvoiceLegalEntity(JsonField.get("id", object), JsonField.get("name", object), JsonField.get("vatNr", object),
+                jsonAddress.imports(object.getJSONObject("address")), jsonEmail.imports(object.getJSONObject("email")));
+        List<JsonField<InvoiceLegalEntity, ?>> fields =
+            List.of(JsonProperty.ofString("id", InvoiceLegalEntity::id, null), JsonProperty.ofString("name", InvoiceLegalEntity::name, null),
+                JsonProperty.ofString("vatNr", InvoiceLegalEntity::vatNr, null), JsonProperty.ofType("address", InvoiceLegalEntity::address, null, jsonAddress),
+                jsonEmail);
+        return JsonEntity.of(fields, imports);
+    }
+
+    public static <T> JsonProperty<T, EmailAddress> ofEmailAddress(String property, Function<T, EmailAddress> getter, BiConsumer<T, EmailAddress> setter) {
+        return JsonProperty.of(property, getter, setter, o -> o.has(property) ? EmailAddress.of(o.getString(property)) : null, (u, o) -> o.put(property, u));
     }
 
     public static JsonEntity<BankConnection> createJsonBankConnection() {
@@ -142,15 +158,6 @@ public class InvoiceJson implements InvoiceGenerator {
         return JsonEntity.of(fields, this::importProduct);
     }
 
-    public JsonEntity<InvoiceLegalEntity> createJsonLegalEntity() {
-        Function<JSONObject, InvoiceLegalEntity> imports =
-            object -> new InvoiceLegalEntity(JsonField.get("id", object), JsonField.get("name", object), JsonField.get("vatNr", object));
-        List<JsonField<InvoiceLegalEntity, ?>> fields =
-            List.of(JsonProperty.ofString("id", InvoiceLegalEntity::id, null), JsonProperty.ofString("name", InvoiceLegalEntity::name, null),
-                JsonProperty.ofString("vatNr", InvoiceLegalEntity::vatNr, null));
-        return JsonEntity.of(fields, imports);
-    }
-
     public JsonEntity<InvoiceItem> createJsonInvoiceItem() {
         Function<JSONObject, InvoiceItem> imports =
             object -> new InvoiceItem(object.getInt("position"), importProduct((JSONObject) object.get("product")), object.getString("text"),
@@ -173,7 +180,6 @@ public class InvoiceJson implements InvoiceGenerator {
             }
             return new Subtotal(object.getInt("position"), object.getString("text"), lines);
         };
-
         BiFunction<Subtotal, Object, JSONObject> exports = (subtotal, entity) -> {
             JSONObject subtotalJson = new JSONObject();
             subtotalJson.put("position", (subtotal != null) ? subtotal.position() : null);
@@ -185,13 +191,11 @@ public class InvoiceJson implements InvoiceGenerator {
             subtotalJson.put("items", itemsPosition);
             return subtotalJson;
         };
-
         return JsonEntity.of(imports, exports);
     }
 
-    public Article importProduct(JSONObject object) {
-        String id = JsonField.get("id", object);
-        return realm.articles().items().stream().filter(o -> o.id().equals(id)).findAny().orElse(null);
+    public Article importProduct(@NotNull JSONObject object) {
+        return realm.articles().items().stream().filter(o -> o.id().equals(JsonField.get("id", object))).findAny().orElse(null);
     }
 
     public JsonArray<Invoice, InvoiceLine> createPositions() {
