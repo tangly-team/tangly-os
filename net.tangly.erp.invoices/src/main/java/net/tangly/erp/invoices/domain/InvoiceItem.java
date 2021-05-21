@@ -15,11 +15,13 @@ package net.tangly.erp.invoices.domain;
 
 import java.math.BigDecimal;
 
+import org.jetbrains.annotations.NotNull;
+
 
 /**
  * The invoice item represent a position of sold items defined through a product.
  */
-public record InvoiceItem(int position, Article article, String text, BigDecimal quantity) implements InvoiceLine {
+public record InvoiceItem(int position, @NotNull Article article, String text, @NotNull BigDecimal quantity) implements InvoiceLine {
     @Override
     public BigDecimal amount() {
         return unitPrice().multiply(quantity);

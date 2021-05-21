@@ -18,7 +18,7 @@ import java.math.BigDecimal;
  * The invoice line represents one line or position in an invoice. A line should contain only one kind of sold items so that the quantity and unit price are
  * clearly defined.
  */
-public interface InvoiceLine {
+public sealed interface InvoiceLine permits InvoiceItem, Subtotal {
     /**
      * Returns the line position in the invoice and is used to order the lines on the invoice output.
      *

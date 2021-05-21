@@ -39,7 +39,7 @@
                     "type": "string"
                 },
                 "address": {
-                    "type": "#/definitions/address"
+                    "$ref": "#/definitions/address"
                 },
                 "email": {
                     "type": "string"
@@ -47,8 +47,10 @@
             },
             "required": [
                 "id",
-                "name"
-            ]
+                "name",
+                "address"
+            ],
+            "additionalProperties": false
         },
         "bankConnection": {
             "type": "object",
@@ -93,7 +95,8 @@
                 "unitPrice",
                 "unit",
                 "vatRate"
-            ]
+            ],
+            "additionalProperties": false
         },
         "invoiceLine": {
             "type": "object",
@@ -163,23 +166,20 @@
         "id": {
             "type": "string"
         },
-        "invoicingEntity": {
-            "$ref": "#/definitions/legalEntity"
-        },
-        "invoicingAddress": {
-            "$ref": "#/definitions/address"
-        },
-        "invoicingConnection": {
-            "$ref": "#/definitions/bankConnection"
+        "name": {
+            "type": "string"
         },
         "contractId": {
             "type": "string"
         },
-        "invoicedEntity": {
+        "invoicingEntity": {
             "$ref": "#/definitions/legalEntity"
         },
-        "invoicedAddress": {
-            "$ref": "#/definitions/address"
+        "invoicingConnection": {
+            "$ref": "#/definitions/bankConnection"
+        },
+        "invoicedEntity": {
+            "$ref": "#/definitions/legalEntity"
         },
         "deliveryDate": {
             "type": "string",
@@ -226,14 +226,14 @@
     },
     "required": [
         "id",
+        "name",
         "contractId",
         "invoicingEntity",
-        "invoicingAddress",
         "invoicedEntity",
-        "invoicedAddress",
         "invoiceDate",
         "dueDate",
         "currency"
-    ]
+    ],
+    "additionalProperties": false
 }
 

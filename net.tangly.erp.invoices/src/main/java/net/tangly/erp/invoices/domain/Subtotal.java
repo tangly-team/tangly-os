@@ -16,11 +16,13 @@ import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * The subtotal defines the sum for a set of positions in the invoice. A subtotal groups a set of related positions, such as belonging to the same accounting
  * position or project booking, or to the same amount of VAT percentage for mixed VAT invoices.
  */
-public record Subtotal(int position, String text, List<InvoiceLine> items) implements InvoiceLine {
+public record Subtotal(int position, String text, @NotNull List<InvoiceLine> items) implements InvoiceLine {
     @Override
     public BigDecimal amount() {
         return items.stream().map(InvoiceLine::amount).reduce(BigDecimal.ZERO, BigDecimal::add);
