@@ -1,0 +1,43 @@
+---
+title: "ArchUnit"
+linkTitle: "ArchUnit"
+date: 2022-09-01
+tags: ["agile", "architecture", "scrum"]
+---
+
+== Verifying Software Design Constraints with ArchUnit
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2022-09-01-head.png[width=420,height=360,role=left]
+
+How often have you experienced a well-defined and understood software architecture on paper.
+But then it falls apart when developers start implementing it?
+
+Recently, while re-architecting legacy components in an application, I experienced the same.
+As more and more developers joined the team, it became a constant routine to make them aware of the design and how to adhere to it.
+
+I know some of you may say, "Why not control the implementation during code-review?".
+Well technically you can, but in that case, the reviewer becomes the bottleneck in the whole SDLC process.
+
+What if there was something that could enforce the design constraint in the form of the test cases?
+The violation of the agreed-upon design principles are marked as failed build.
+
+My quest led me to a test library called https://www.archunit.org/[ArchUnit].
+
+=== Idea
+
+ArchUnit is a test library that allows us to validate whether an application adheres to a given set of design consideration or architecture rules.
+The product is a free, simple and extensible library for checking the architecture of your Java code using any plain Java unit test framework.
+That is, ArchUnit can check dependencies between packages and classes, layers and slices, check for cyclic dependencies and more.
+It does so by analyzing given Java bytecode, importing all classes into a Java code structure.
+
+=== Used Constraints
+
+Checking existence of cyclic dependencies in the code
+Enforcing Layered or Onion architecture
+
+=== How to use?

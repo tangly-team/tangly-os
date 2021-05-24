@@ -1,0 +1,75 @@
+---
+title: "How to Detect Fake Scrum?"
+linkTitle: "Fake Scrum"
+date: 2022-08-01
+tags: ["agile", "scrum"]
+---
+
+== How to Detect Fake Scrum?
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2022-08-01-head.jpg[width=420,height=360,role=left]
+Some organisations are adopting agile and Scrum simply because they see competitors doing it.
+In these situations, there is rarely a desire to adopt a new mindset and culture, or motivation for true change.
+A common pattern is the adoption of new nomenclature: Project Managers are renamed as Scrum Masters, Business Analysts as Product Owners etc.
+Very little actually changes.
+Few benefits of agility are actually realised.
+If anything, the situation may actually become worse as some previous structures are lost, yet the discipline for Agile just is not there.
+
+Fake Scrum is around us everywhere we go.
+It is unavoidable.
+
+== Five Scrum Fake Indicators
+
+No goals::
+If a Scrum team has absolutely no goals, what is the purpose of its existence?
+All good teams have goals.
+Scrum bakes the concept of goals right into the framework.
+We have product goals, which are a commitment to the Product Backlog.
+And then we have Sprint Goals, which are a commitment to the Sprint Backlog.
+Those goals are designed to help us achieve focus, get stuff done, and get results.
+If you do not have goals, you have got fake Scrum.
+No Self-management::
+A team that cannot self-manage is a team that cannot be nimble.
+They are not going to be quick.
+They are going to stall.
+They are going to wait to ask questions.
+They will always be asking for their boss's approval.
+Teams like this are very slow and the whole point of being agile is to be nimble, right?
+So, if it does not feel like they are being nimble, I should look a little deeper.
+Self-management is a really common problem.
+It can happen from a lack of trust with the boss or the business.
+It can come from a lack of trust for each other as team members.
+Wherever your problems are, self-management is crucial to have working in order for Scrum to work.
+If you do not have self-managing going on it is probably fake Scrum.
+No deliverables::
+No increment at the end of the Sprint.
+The entire point of Scrum is to have releasable increments for every single Sprint.
+Without that, well, we are just cranking a bunch of levers.
+To get to a deliverable it is sometimes kind of challenging.
+You have to write requirements in such a way that something can be delivered in just a short time frame.
+Now you get to choose the size of your Sprint length.
+Anything less than 30 days is perfectly fine and if you cannot build something in under 30 days, I have to ask you what is going on here?
+Sounds like fake Scrum.
+No transparency::
+Without transparency, I cannot inspect, I cannot adapt… and if I cannot inspect and adapt, well then, the entire empirical process falls apart.
+If the entire empirical process is falling apart, you have fake Scrum.
+Scrum is built upon this engine.
+Scrum is built upon the idea that we make things transparent.
+We inspect and adapt at the appropriate frequency and that is how we manage all the complexity of product development.
+We certainly cannot eliminate complexity, but we can work with it.
+So, if you do not have transparency, you’ve got fake Scrum.
+No results::
+If you have got stakeholders that do not see a difference.
+They do not care if they are not talking to your team they are not talking to your product owner.
+If you are not delivering results then what is the point of your work in the first place if there is no point you are probably doing fake Scrum.
+
+=== Final Thoughts
+
+See also another blog link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit] describing how the department of defense detects agile lies.
+
+

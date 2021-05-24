@@ -1,0 +1,204 @@
+---
+title: "Software Structure with DDD"
+linkTitle: "Structure with DDD"
+date: 2022-06-01
+tags: ["architecture", "java"]
+---
+
+== Software Structure when using Domain Driven Design
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2022-06-01-head.jpg[width=420,height=360,role=left]
+https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Development] is now the preferred software architecture approach for designing new products.
+The method matches nicely with the concepts of micro-services.
+Literature describes the approach and key concepts defining the development method.
+
+The theory and examples are quite sparse how to structure your code.
+How should you structure your namespaces and modules?
+
+We propose a simple and adequate code structure for implementation in modern Java.
+The approach builds on the strengths of the Java packages and modules.
+The visibility rules of the language are used to enforce cohesion and minimize coupling.
+
+The described approach is ideal for small to medium software solutions.
+The source code size of a bounded domain is less than 50'000 lines of code.
+
+[cite,Eric Evans,Domain-Driven Design: Tackling Complexity in the Heart of Software]
+____
+The heart of software is its ability to solve domain-related problems for its user.
+____
+
+=== Layers in DDD
+
+Domain driven design _DDD_ has four layers in the architecture:
+
+Interface::
+This layer is in charge of the interaction with user, whether software presents information or receives information from user.
+Application::
+This is a thin layer between interface and domain, it could call domain services to serve the application purposes.
+Domain::
+The heart of the software, this layer holds domain logic and business knowledge.
+Infrastructure::
+A supporting layer for the other layers.
+This layer contains supporting libraries or external services like database or UI supporting library.
+
+=== Package Structure
+
+A bounded domain shall be configured as a Java module.
+The exported services and entities are explicitly listed with the _exports_ directive.
+A huge advantage is the obligation to list all dependencies with the _requires_ directive.
+
+Services::
+defines the bounded domain context.
+The domain uses the library to implement a bounded domain.
+The ports, handler and realm are declared in the context package for small bounded domains.
+Complex domains can declare these interfaces in separate packages for legibility.
+Logic::
+contains common business logic and features.
+Elaborate domains can contain quite a few business features.
+Use a package structure increasing legibility and enforcing separation of concerns.
+Ports:::
+contains the services receiving data and events from the environment.
+Handlers:::
+contains the services providing data and events to the environment and to other applications.
+Realm:::
+contains the repository functions to persist and create domain entities and object values.
+The current approach uses the https://microstream.one/[MicroStream] approach.
+The amount of code to persist the domain model is minimal.
+Domain::
+contains the abstraction describing the bounded domain.
+Care is taken to define resilient and legible domain abstractions.
+
+[plantuml,bounded-domain-structure,svg]
+....
+@startsalt
+{
+{T
++ net.tangly.bounded-domain
+++ services
++++ ports
++++ handlers
++++ realm
++++ Logic
+++ domain
+}
+}
+@endsalt
+....
+
+The infrastructure support classes are not part of this structure.
+These classes shall be defined in a separate Java module and imported with regular dependency declaration.
+
+We use the https://www.archunit.org/[ArchUnit] tool to insure the expected structure is provided for each bounded domain.
+
+The user interface for a bounded domain is stored in separate package and often in its own Java module.
+The bounded domain implementation shall not constrain the technologies used to provide a user interface.
+Different approaches for user interface realization are available and no clear winner can currently be identified.
+
+I use mainly https://www.vaadin.com[Vaadin] to realize browser or mobile first internal applications.
+
+=== Java Considerations
+
+Entities shall have a well-documented internal or external identifiers.
+Entities visible to other bounded domain shall always have an external identifier.
+Identifiers are always immutable objects.
+
+[cite,Martin Fowler]
+____
+Objects that have a distinct identity that runs through time and different representations.
+You also hear these called _reference objects_.
+____
+
+Value objects shall be expressed as Java value types.
+Record construct is the preferred way to model a value object in Java.
+The record concept provides the expected _equals(Object)_ behavior.
+
+[cite,Martin Fowler]
+____
+Objects that matter only as the combination of their attributes.
+Two value objects with the same values for all their attributes are considered equal.
+____
+
+An aggregate is a set of Entities and Value Objects that do not make sense alone.
+Every aggregate has a root entity, which will be responsible for providing all methods involving business rules that will modify its child entities.
+The first rule is that aggregates reference each other by identity instead of object references.
+Aggregates shall be constructed with the help of factory patterns such as factory method, abstract factory, or builder.
+
+[cite,Martin Fowler]
+____
+A DDD aggregate is a cluster of domain objects that can be treated as a single unit.
+An example may be an order and its line-items, these will be separate objects.
+Tt is useful to treat the order together with its line items as a single aggregate.
+____
+
+Rich domains are models that have full control of their data and do not rely on external objects to manipulate them.
+Anemic domains are models that rely on other classes to validate their data.
+Anemic domains are a smell in the domain driven design world.
+
+Services should be pure functions and be stateless.
+
+[cite]
+____
+Pure functions are functions (or methods) that do not change the value of any object outside it.
+It avoids side effects and guaranteeing the same output for certain inputs, ie it needs to be completely deterministic.
+____
+
+=== Architecture Integrity
+
+A Bounded Context is a logical boundary of a domain where particular terms and rules apply consistently.
+Inside this boundary, all terms, definitions, and concepts form the Ubiquitous Language.
+
+The Java Platform Module System (JPMS) encourages to build more reliable and strongly encapsulated modules.
+As a result, these features can help to isolate our contexts and establish clear boundaries.
+
+A bounded domain is implemented as a Java module.
+
+The domain internal layered architecture is verified with https://www.archunit.org/[ArchUnit] custom validation rules.
+The rules are coded as unit tests and are processed in the continuous integration pipeline.
+
+The advantages of the architecture are
+
+* The whole company talking the same ubiquitous language, reduced risk of misunderstandings.
+Everyone needs to be aligned, both in vocabulary and ownership of the components.
+The engineers have a common understanding and coding guidelines to realize the layers inside a bounded domain.
+* You have a segregated architecture defining a modular monolith application.
+* Smaller and well-defined components are easier to maintain.
+Your services are independent and can more easily be refactored.
+* Development scalability is implicitly provided.
+Teams can develop simulaneoulsy and independantly bounded domain features.
+
+=== Bounded Domain Releations
+
+There are five main types of relationships between Bounded Contexts:
+
+Partnership::
+a relationship between two contexts that cooperate to align the two teams with dependent goals
+Shared Kernel::
+a kind of relationship when common parts of several contexts are extracted to another context/module to reduce code duplication
+Customer-supplier::
+a connection between two contexts, where one context (upstream) produces data, and the other (downstream) consume it.
+In this relationship, both sides are interested in establishing the best possible communication
+Conformist::
+this relationship also has upstream and downstream, however, downstream always conforms to the upstream’s APIs
+Anti-corruption layer::
+this type of relationship is widely used for legacy systems to adapt them to a new architecture and gradually migrate from the legacy codebase.
+The protection layer acts as an adapter to translate data from the upstream and protect from undesired changes
+
+=== Lessons Learnt
+
+[cite,Stefan Tilkov, 2021]
+____
+Domain-driven design (DDD) is a useful approach that provides excellent guidelines for modeling and building systems, but it is a means to an end, not an end in itself.
+While the concepts are valid, you lose a lot if you limit yourself to using them only: There actually is a life beyond DDD.
+____
+
+[bibliography]
+=== Literature
+
+* [[[domaindrivendesign, 1]]] Domain-Driven Design: Tackling Complexity in the Heart of Software. Eric Evans. Addison-Wesley. 2004.
+* [[[implmentingddd, 2]]] Implementing Domain-Driven Design. Vernon Vaughn. Addison-Wesley. 2013.
+* [[[ddddistilled, 3]]] Domain-Driven Design Distilled. Vernon Vaughn. Addison-Wesley. 2016.

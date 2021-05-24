@@ -1,6 +1,6 @@
 ---
 title: "Java, Groovy, Clojure"
-linkTitle: "ava, Groovy, Cljsure"
+linkTitle: "ava, Groovy, Clojsure"
 date: 2022-04-01
 tags: ["agile", "java", "students"]
 ---

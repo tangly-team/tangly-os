@@ -1,0 +1,149 @@
+---
+title: "Agile Trends Switzerland 2021"
+linkTitle: "Swiss Agile 2021"
+date: 2021-06-15
+tags: ["agile", "series-swiss-agile-trends"]
+---
+
+== Agile Trends Switzerland 2021
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2021-06-02-head.jpg[width=420,height=360,role=left]
+As a modern leader, you are aware of the importance of transforming your organization to become more agile.
+Indeed, you have successfully implemented first steps.
+
+Trouble is brewing.
+Things are not moving forward as quickly as they should, especially in the current challenging situation.
+The leadership behaviour of your colleagues is only changing slowly.
+Your key developers are grumbling you are faking it.
+
+Many companies around the world discover their agile transformation is stalling.
+
+{ref-hermes} is still the official Swiss government method.
+They clearly acknowledged that this
+https://stefanedbrittain.medium.com/the-insidious-institutionalisation-of-water-scrum-fall-4af7de8865b9[Water-Scrum-Fall]
+is only needed because administration are strongly hierarchical and unable to adapt to the changes over the development of the solution.
+
+The https://swissq.it/en/[SwissQ] report provides empirical data where Swiss companies stand in 2021.
+
+=== Main Success Factors
+
+The main success factors for an agile transformation are:
+
+* Soft skills such as transparency, collaboration, and trust.
+_These values are part of the {ref-scrum} and of {ref-xp} approaches._
+* Product instead of project focus _The word project is not part of {ref-scrum} guide._
+* Stable teams _Stable long-lived teams are the core of all agile approaches._
+
+A clear majority of 75% of the participants state that agile approaches are more motivating and fulfilling.
+
+The report just states obvious knowledge.
+The participants of the study confirmed this documented facts.
+
+=== Why You Should Not Use Hybrid Methods
+
+It seems that hybrid methods are way less successful.
+
+[chart,pie,file="hybrid-methods-success.png",opt="title=Hybrid Methods Success 2021"]
+....
+Successful, 35.3, green
+Challenged, 63.4, orange
+Stopped, 1.3, red
+....
+
+[chart,pie,file="hybrid-methods-success.png",opt="title=Agile Methods Success 2021"]
+....
+Successful, 55.4, green
+Challenged, 44.6, orange
+Stopped, 0.0, red
+....
+
+The agile approach continues to spread rapidly around the world: 89.8% of all teams have already adopted or are in the process of adopting agile methodology, a considerable number.
+On the other hand, organizations are still struggling to build greater company-wide agility and only a few have already adopted agility on a portfolio (15.3%) or strategic level (8.2%).
+The good news is that many companies have started transformation initiatives or are planning to do so in the near future.
+
+=== Used Methods in Switzerland
+
+[chart,bar,file="hybrid-methods.png",opt="title=Hybrid Methods 2021"]
+....
+// Scrum
+Scrum, 64.7, green
+// Waterfall
+Waterfall, 58.9, red
+// Kanban
+Kanban, 40.2,
+// SAFe
+SAFe, 25.9
+// Hermes
+Hermes, 18.8
+// Scrumban
+Scrumban, 13.8
+// DaD
+DaD, 3.1
+// Unified Process
+Unified Process, 1.8
+// Others
+Others, 11.6, grey
+....
+
+[chart,bar,file="agile-methods.png",opt="title=Agile Methods 2021"]
+....
+// Scrum
+Scrum, 75.1, green
+// SAFe
+SAFe, 46.3
+// Kanban
+Kanban, 42.9
+// Scrumban
+Scrumban, 15.3
+// Hermes
+Hermes 5, 4.5
+// Waterfall
+Waterfall, 3.4, red
+// Dad
+DaD, 1.7
+// Others
+Others, 7.9, grey
+....
+
+=== Findings
+
+The major finding of the agile community is
+
+Co-location is not mandatory for a successful agile approach.
+Remote working and distributed teams can work very successfully on a product.
+You need high-quality tools such as videoconferencing, chat, collabobrative tools and pair working approaches.
+
+The huge gain of 2020 and 2021 was the tremendous improvements of these tools due to the Corona lockdown.
+Companies still need to invest in high-quality headsets, cameras and 4K displays for their collaborators.
+
+=== Insights
+
+Agile approaches are steadily making progress in Switzerland.
+Empirical data indicate agile approaches are more successful than hybrid ones.
+I hope we can get rid of hybrid agile and in particular of the Swiss Hermes method in the next years.
+
+A drawback is that {ref-safe} is the de-facto standard for agile scaling in Switzerland.
+https://www.thoughtworks.com/[Thoughtworks] just stated in the Spring 2021 technology radar you should avoid using {ref-safe}.
+These learnings have not reached our country.
+
+Team accountability is lagging.
+But decentralization of decisions is too hard for the majority.
+
+We have reached the level where late majority and laggards are slowly looking into the agile way of working.
+Change is slow and hybrid solutions are preferred.
+Progress is sedate and resistance is very high.
+
+We still advocate and promote
+
+[.text-center]
+_To be agile, not to do agile_
+
+
+I assume it will take another five years until agile is well-established in product development organizations.
+
+You can download the https://swissq.it/en/downloads/trends-benchmarks-report-2021-in-quality-engineering/[Trends Benchmark Report 2021] report.

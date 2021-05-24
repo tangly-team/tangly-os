@@ -1,0 +1,24 @@
+---
+title: "Mitation Testing with Pitest"
+linkTitle: "Pitest"
+date: 2022-09-01
+tags: ["java", "architecture"]
+---
+
+== Mitation Testing with Pitest
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly ll c]
+:copyright: CC-BY-SA 4.0
+
+image::2022-12-01-head.jpg[width=420,height=360,role=left]
+
+Mutation Testing is a type of software testing in which certain statements of the source code are changed/mutated to check if the test cases are able to find errors in source code.
+The goal of Mutation Testing is ensuring the quality of test cases in terms of robustness that it should fail the mutated source code.
+
+The changes made in the mutant program should be kept extremely small that it does not affect the overall objective of the program.
+Mutation Testing is also called Fault-based testing strategy as it involves creating a fault in the program and it is a type of White Box Testing which is mainly used for Unit Testing.
+
+https://pitest.org/[Pitest] s a state of the art mutation testing system, providing gold standard test coverage for Java and the jvm.
+It's fast, scalable and integrates with modern test and build tooling.

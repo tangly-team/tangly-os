@@ -1,0 +1,148 @@
+---
+title: "Would You Enjoy Being a Scrum master?"
+linkTitle: "Scrum master Capabilities"
+date: 2022-07-01
+tags: ["agile", "scrum"]
+---
+
+== Would You Enjoy Being a Scrum master?
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2022-07-01-head.jpg[width=420,height=360,role=left]
+{ref-scrum} is the most popular approach to create awesome new products.
+Perhaps you are thinking of pursuing a career as a Scrum master.
+Or perhaps you’ve recently been moved into that role and are wondering if being a Scrum master is right for you.
+
+There are plenty of good reasons to become a Scrum master; the job is in demand and pays well.
+The most important the reason to become a Scrum master is that it is the right job for your skills, personality, and interests.
+
+=== What is a Scrum Master?
+
+Here iss a way of considering the role.
+The scrum master is the product owner for organisational change.
+When you introduce Scrum into an organisation, you are focused on the creation of two distinct things: new products and an improved organisation.
+New products have owners.
+The organisation itself also needs an owner, someone to manage the vast backlog of requests.
+Somebody should prioritise, and collaborate with the cross-functional team of makers to deliver incremental value to its stakeholders.
+The stakeholders are all employees and shareholders.
+
+If {ref-scrum} does not ripple through an organisation this way, it is set up for failure, or worse a facade of change, a kind way of saying lies and deceit.
+
+=== Eight Questions
+
+Do You Like Helping Others?::
+Scrum masters need to enjoy helping people.
+This cannot be something a Scrum master does grudgingly.
+Do You Need to Be in the Spotlight?::
+A great Scrum master fades into the background while the team receives the praise.
+Are You a Good Listener?::
+We all know that a Scrum master helps remove impediments to a team’s progress and productivity.
+That often means listening, asking clarifying questions, and then solving the problem.
+But other times it means just listening: letting a team member vent about something.
+Are You Technical Enough?::
+You need to know enough to speak their language fluently and to empathize with the challenges of their work.
+Do You Have a Formal Scrum master Training?::
+You are serious about working as a professional Scrum master the next years.
+You should have formal training and read books describing the various Scrum master stances.
+A reasonable formal training is a professional level certification.
+This certification is your third one.
+First you did the basic training.
+Second you qualified as an advanced Scrum master.
+Now you are ready to become a certified professional Scrum master.
+Consider training in facilitation and coaching.
+Learn the {ref-xp} methods to achieve technical fluency and understand {ref-craftsmanship}.
+Can You Influence Without Authority?::
+Influencing without authority is an important skill for all good Scrum masters.
+If you enjoy leading this way, count that as a point in favor of a career as a Scrum master.
+Are You Comfortable with Uncertainty?::
+If you’re the type who secretly wants to eliminate all uncertainty, you will either be frustrated as a Scrum master or will drive your team crazy in pursuit of an impossible goal.
+Can You Handle Conflict Well?::
+Agile teams are used on an organization’s hardest challenges—the projects that will not succeed any other way.
+Add that to the strong personalities found on many development teams and there will be conflict.
+
+=== Eight Stances
+
+image::2022-07-01-scrum-master-stances.png[width=420,height=360,role=left]
+
+Impediment Remover::
+One of the fundamental responsibilities of the Scrum master is the resolution of impediments.
+Impediments are critical issues that block the team and require external intervention.
+Facilitator::
+The task of the Scrum master is to facilitate the work of the Product Owner and the team.
+Contrary to popular belief, she does not only facilitate events, but the whole Scrum process, ensuring a smooth and sustainable pace.
+Finally, she facilitates relationships, promoting collaboration and creating synergies within the team and with clients.
+Coach::
+Just like a sports coach, the Scrum master focuses on team building.
+He guides and encourages the team to self-organize, stays focused and has a continuous improvement-oriented mindset.
+Not only that, she trains every single team member with a focus on mindset, behavior and organization to collaborate effectively with Scrum Teams.
+Teacher::
+The Scrum master ensures that the Scrum principles and framework are understood and put into practice.
+She guides the Product Owner and the team towards Agile practices and principles whenever they move away from them.
+Servant Leader::
+Servant-leadership focuses on collaboration, trust, empathy and the ethical use of power.
+As a servant leader, the Scrum master is fully aligned with the Scrum values of courage, openness, respect, focus and commitment.
+She focuses on the needs of team members with the aim of achieving results in line with the company's values and goals.
+Manager::
+She is responsible for the process management, with an eye on team health and waste elimination.
+She manages the boundaries of self-organization and promoting the Agile culture.
+Change Agent::
+The Scrum master helps create an environment that allows the Scrum spirit to thrive within the Team and the organization.
+Mentor::
+_A mentor is a wise and trustworthy counselor or teacher_.
+The Scrum master has the task of transferring knowledge and experience to the team, guiding it in the adoption of an Agile mindset.
+
+=== Things Scrum Masters Advocates
+
+image::2022-07-01-house-of-scrum.jpg[width=420,height=360,role=left]
+
+Scrum masters promote, explain, and advocate Scrum values, principles.
+
+Scrum is founded on empiricism and lean thinking.
+Empiricism asserts that knowledge comes from experience and making decisions based on what is observed.
+Lean thinking reduces waste and focuses on the essentials.
+The key elements are
+
+* Transparency
+* Inspection
+* Adaptation
+
+The Scrum values any organization shall live are
+
+. Commitment
+. Focus
+. Openess
+. Respect
+. Courage
+
+Scrum master explain, teach, protect the Scrum values and adapt Scrum rules and tactics to the organization.
+
+As a Scrum master you must strongly identify with these values.
+You must understand empiricism and how a model can be impacted with closed loop approaches.
+Yu should certainly know the official {ref-scrumguide}.
+
+=== Things Scrum Masters Never Do
+
+* She does not take notes during meetings and Scrum ceremonies.
+* She is not a secretary and is not responsible for the team member’s agenda.
+* She does not serve as _Scrum Political Police_.
+* She is not the Team members’ Boss and does not take decisions for them.
+* She is not an administrator, so she does not manage the tools used by the team.
+* She does not act as the chairman during the meetings.
+* She is not a Superhero, and she does not bring the coffee!
+
+=== Over time a Scrum master Fades Away
+
+After a while, team members need less coaching and transition to a high-performing group.
+They learn how to facilitate some of their own meetings.
+Team members work more closely and directly with the product owner and stakeholders.
+The Scrum master is no longer needed to resolve communication roadblocks and resolve issues.
+There are fewer organizational impediments to agility.
+Those that remain can be particularly difficult to resolve, but there are fewer of them.
+
+Even the best Scrum team continues to benefit from the coaching, guiding and mentoring provided by a good Scrum master.
+With that being said, some high-performing teams might find they do not need a Scrummaster full time anymore.
+They might, for example, opt to have a technical team member also function as the Scrum master.
