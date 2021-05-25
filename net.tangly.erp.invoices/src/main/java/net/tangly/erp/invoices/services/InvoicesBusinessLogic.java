@@ -37,8 +37,8 @@ public class InvoicesBusinessLogic {
     }
 
     public BigDecimal expensesForContract(@NotNull String contractId, LocalDate from, LocalDate to) {
-        return realm.invoices().items().stream().filter(o -> (contractId.equals(o.contractId())) && isWithinRange(o.date(), from, to))
-            .map(Invoice::expenses).reduce(BigDecimal.ZERO, BigDecimal::add);
+        return realm.invoices().items().stream().filter(o -> (contractId.equals(o.contractId())) && isWithinRange(o.date(), from, to)).map(Invoice::expenses)
+            .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public BigDecimal invoicedAmountWithoutVatForContract(@NotNull String contractId, LocalDate from, LocalDate to) {
@@ -59,5 +59,25 @@ public class InvoicesBusinessLogic {
     public BigDecimal paidAmountWithoutVatForCustomer(@NotNull String customerId, LocalDate from, LocalDate to) {
         return realm.invoices().items().stream().filter(o -> (customerId.equals(o.invoicedEntity().id())) && isWithinRange(o.dueDate(), from, to))
             .map(Invoice::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    /**
+     * Copy semantically an invoice. The identifier and all invoice dates are not copied.
+     *
+     * @param invoice invoice prototype to copy
+     * @return a new copied invoice instance
+     */
+    public Invoice createWith(@NotNull Invoice invoice) {
+        Invoice copy = new Invoice();
+        copy.name(invoice.name());
+        copy.text(invoice.text());
+        copy.invoicingEntity(invoice.invoicingEntity());
+        copy.invoicedEntity(invoice.invoicedEntity());
+        copy.contractId(invoice.contractId());
+        copy.currency(invoice.currency());
+        copy.locale(invoice.locale());
+        copy.paymentConditions(invoice.paymentConditions());
+        invoice.lines().forEach(copy::add);
+        return copy;
     }
 }

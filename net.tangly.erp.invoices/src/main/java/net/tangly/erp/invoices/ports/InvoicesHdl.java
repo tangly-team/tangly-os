@@ -73,7 +73,7 @@ public class InvoicesHdl implements InvoicesHandler {
                     realm.invoices().update(invoice);
                     EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, "Imported Invoice {}", Map.of("invoice", invoice));
                 } else {
-                    EventData.log(EventData.IMPORT, MODULE, EventData.Status.WARNING, "Invalid Invoice {}", Map.of("invoice", invoice));
+                    EventData.log(EventData.IMPORT, MODULE, EventData.Status.WARNING, "Invalid Invoice {}", Map.of("invoice", o.toString()));
                 }
             });
         } catch (IOException e) {

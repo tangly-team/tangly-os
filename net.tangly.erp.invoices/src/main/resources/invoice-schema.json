@@ -42,7 +42,8 @@
                     "$ref": "#/definitions/address"
                 },
                 "email": {
-                    "type": "string"
+                    "type": "string",
+                    "format" : "email"
                 }
             },
             "required": [
@@ -97,6 +98,7 @@
                 "vatRate"
             ],
             "additionalProperties": false
+
         },
         "invoiceLine": {
             "type": "object",

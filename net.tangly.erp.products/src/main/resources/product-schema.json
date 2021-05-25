@@ -1,0 +1,45 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "product archive schema",
+    "description": "schema to export to other systems or archive products",
+    "definitions": {
+        "qualifiedEntity": {},
+        "product": {},
+        "assignment": {
+        },
+        "expense": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string"
+                },
+                "contractId": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "amount": {
+                    "type": "string"
+                }
+            }
+        },
+        "effort": {
+            "oid": {
+                "type": "string"
+            },
+            "date": {
+                "type": "string"
+            },
+            "durationInMinutes": {
+                "type": "int"
+            },
+            "contractId": {
+                "type": "string"
+            },
+            "text": {
+                "type": "string"
+            }
+        }
+    }
+}
