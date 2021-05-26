@@ -10,7 +10,7 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.crm.domain;
+package net.tangly.core.crm;
 
 import java.util.Optional;
 
@@ -38,11 +38,11 @@ public interface CrmEntity extends HasTags, HasLocation {
             Optional.of(HasLocation.GeoPosition.of(Double.parseDouble(longitude.get().value()), Double.parseDouble(latitude.get().value()))) : Optional.empty();
     }
 
-    default Optional<PhoneNr> phoneNr(CrmTags.Type type) {
+    default Optional<PhoneNr> phoneNr(VcardType type) {
         return findBy(CrmTags.phoneTag(type.name())).map(o -> PhoneNr.of(o.value()));
     }
 
-    default void phoneNr(CrmTags.Type type, String phoneNr) {
+    default void phoneNr(VcardType type, String phoneNr) {
         if (phoneNr != null) {
             update(CrmTags.phoneTag(type.name()), phoneNr);
         } else {
@@ -50,11 +50,11 @@ public interface CrmEntity extends HasTags, HasLocation {
         }
     }
 
-    default Optional<EmailAddress> email(CrmTags.Type type) {
+    default Optional<EmailAddress> email(VcardType type) {
         return findBy(CrmTags.emailTag(type.name())).map(Tag::value).map(EmailAddress::of);
     }
 
-    default void email(CrmTags.Type type, EmailAddress email) {
+    default void email(VcardType type, EmailAddress email) {
         if (email != null) {
             email(type, email.text());
         } else {
@@ -62,7 +62,7 @@ public interface CrmEntity extends HasTags, HasLocation {
         }
     }
 
-    default void email(CrmTags.Type type, String email) {
+    default void email(VcardType type, String email) {
         if (email != null) {
             update(CrmTags.emailTag(type.name()), email);
         } else {
@@ -70,11 +70,11 @@ public interface CrmEntity extends HasTags, HasLocation {
         }
     }
 
-    default Optional<Address> address(CrmTags.Type type) {
+    default Optional<Address> address(VcardType type) {
         return findBy(CrmTags.addressTag(type.name())).map(Tag::value).map(Address::of);
     }
 
-    default void address(CrmTags.Type type, Address address) {
+    default void address(VcardType type, Address address) {
         if (address != null) {
             update(CrmTags.addressTag(type.name()), address.text());
         } else {
@@ -82,19 +82,19 @@ public interface CrmEntity extends HasTags, HasLocation {
         }
     }
 
-    default Optional<String> im(CrmTags.Type type) {
+    default Optional<String> im(VcardType type) {
         return findBy(CrmTags.imTag(type.name())).map(Tag::value);
     }
 
-    default void im(CrmTags.Type type, String reference) {
+    default void im(VcardType type, String reference) {
         update(CrmTags.imTag(type.name()), reference);
     }
 
-    default Optional<String> site(CrmTags.Type type) {
+    default Optional<String> site(VcardType type) {
         return findBy(CrmTags.siteTag(type.name())).map(Tag::value);
     }
 
-    default void site(CrmTags.Type type, String site) {
+    default void site(VcardType type, String site) {
         update(CrmTags.siteTag(type.name()), site);
     }
 }

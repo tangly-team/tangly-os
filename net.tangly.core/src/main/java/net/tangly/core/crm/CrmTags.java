@@ -10,7 +10,7 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.crm.domain;
+package net.tangly.core.crm;
 
 
 import java.net.MalformedURLException;
@@ -32,12 +32,7 @@ import org.jetbrains.annotations.NotNull;
  * standard tags such a location tags.
  */
 public final class CrmTags {
-    /**
-     * Defines the tag categories for tags accordingly to the VCard RFC.
-     */
-    public enum Type {
-        home, work, mobile
-    }
+
 
     public static final String CRM = "crm";
     public static final String GEO = "geo";
@@ -51,21 +46,21 @@ public final class CrmTags {
     private static final String DELIVERY = "delivery";
     private static final String SEGMENT = "segment";
 
-    public static final String CRM_EMAIL_HOME = CRM + ":email-" + Type.home.name();
-    public static final String CRM_EMAIL_WORK = CRM + ":email-" + Type.work.name();
+    public static final String CRM_EMAIL_HOME = CRM + ":email-" + VcardType.home.name();
+    public static final String CRM_EMAIL_WORK = CRM + ":email-" + VcardType.work.name();
 
-    public static final String CRM_PHONE_MOBILE = CRM + ":phone-" + Type.mobile.name();
-    public static final String CRM_PHONE_HOME = CRM + ":phone-" + Type.home.name();
-    public static final String CRM_PHONE_WORK = CRM + ":phone-" + Type.work.name();
+    public static final String CRM_PHONE_MOBILE = CRM + ":phone-" + VcardType.mobile.name();
+    public static final String CRM_PHONE_HOME = CRM + ":phone-" + VcardType.home.name();
+    public static final String CRM_PHONE_WORK = CRM + ":phone-" + VcardType.work.name();
 
-    public static final String CRM_ADDRESS_HOME = CRM + ":address-" + Type.home.name();
-    public static final String CRM_ADDRESS_WORK = CRM + ":address-" + Type.work.name();
+    public static final String CRM_ADDRESS_HOME = CRM + ":address-" + VcardType.home.name();
+    public static final String CRM_ADDRESS_WORK = CRM + ":address-" + VcardType.work.name();
     public static final String CRM_ADDRESS_BILLING = CRM + ":address-" + BILLING;
     public static final String CRM_ADDRESS_DELIVERY = CRM + ":address-" + DELIVERY;
     public static final String CRM_CUSTOMER_SEGMENT = CRM + SEGMENT;
 
-    public static final String CRM_SITE_HOME = CRM + ":site-" + Type.home.name();
-    public static final String CRM_SITE_WORK = CRM + ":site-" + Type.work.name();
+    public static final String CRM_SITE_HOME = CRM + ":site-" + VcardType.home.name();
+    public static final String CRM_SITE_WORK = CRM + ":site-" + VcardType.work.name();
 
     public static final String LINKEDIN = "linkedIn";
     public static final String SKYPE = "skype";
@@ -99,18 +94,18 @@ public final class CrmTags {
     }
 
     public static void registerTags(@NotNull TypeRegistry registry) {
-        registry.register(TagType.ofMandatory(CRM, "email-" + Type.home.name(), EmailAddress.class, EmailAddress::of));
-        registry.register(TagType.ofMandatory(CRM, "email-" + Type.work.name(), EmailAddress.class, EmailAddress::of));
-        registry.register(TagType.ofMandatory(CRM, "phone-" + Type.mobile.name(), PhoneNr.class, PhoneNr::of));
-        registry.register(TagType.ofMandatory(CRM, "phone-" + Type.home.name(), PhoneNr.class, PhoneNr::of));
-        registry.register(TagType.ofMandatory(CRM, "phone-" + Type.work.name(), PhoneNr.class, PhoneNr::of));
-        registry.register(TagType.ofMandatory(CRM, "address-" + Type.home.name(), Address.class, Address::of));
-        registry.register(TagType.ofMandatory(CRM, "address-" + Type.work.name(), Address.class, Address::of));
+        registry.register(TagType.ofMandatory(CRM, "email-" + VcardType.home.name(), EmailAddress.class, EmailAddress::of));
+        registry.register(TagType.ofMandatory(CRM, "email-" + VcardType.work.name(), EmailAddress.class, EmailAddress::of));
+        registry.register(TagType.ofMandatory(CRM, "phone-" + VcardType.mobile.name(), PhoneNr.class, PhoneNr::of));
+        registry.register(TagType.ofMandatory(CRM, "phone-" + VcardType.home.name(), PhoneNr.class, PhoneNr::of));
+        registry.register(TagType.ofMandatory(CRM, "phone-" + VcardType.work.name(), PhoneNr.class, PhoneNr::of));
+        registry.register(TagType.ofMandatory(CRM, "address-" + VcardType.home.name(), Address.class, Address::of));
+        registry.register(TagType.ofMandatory(CRM, "address-" + VcardType.work.name(), Address.class, Address::of));
         registry.register(TagType.ofMandatory(CRM, "address-" + BILLING, Address.class, Address::of));
         registry.register(TagType.ofMandatory(CRM, "address-" + DELIVERY, Address.class, Address::of));
 
-        registry.register(TagType.ofMandatory(CRM, "site-" + Type.home.name(), URL.class, CrmTags::of));
-        registry.register(TagType.ofMandatory(CRM, "site-" + Type.work.name(), URL.class, CrmTags::of));
+        registry.register(TagType.ofMandatory(CRM, "site-" + VcardType.home.name(), URL.class, CrmTags::of));
+        registry.register(TagType.ofMandatory(CRM, "site-" + VcardType.work.name(), URL.class, CrmTags::of));
         registry.register(TagType.ofMandatoryString(CRM, "title"));
         registry.register(TagType.ofMandatoryString(CRM, "im-" + LINKEDIN));
         registry.register(TagType.ofMandatoryString(CRM, "im-" + SKYPE));
@@ -165,15 +160,5 @@ public final class CrmTags {
         var school = entity.findBy(CrmTags.CRM_SCHOOL);
         return entity.findBy(CrmTags.CRM_IM_LINKEDIN).map(Tag::value).map(o -> "https://www.linkedin.com/" + (school.isPresent() ? "school/" : "company/") + o)
             .orElse(null);
-    }
-
-    /**
-     * Create a link to the Zefix page for the organization - makes only sense for Swiss companies -.
-     *
-     * @param entity organization which Zefix information should be displayed
-     * @return link to Zefix information
-     */
-    public static String organizationZefixUrl(@NotNull LegalEntity entity) {
-        return "https://www.zefix.ch/en/search/entity/list?name=" + entity.id() + "&searchType=exact";
     }
 }

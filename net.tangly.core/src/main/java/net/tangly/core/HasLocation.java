@@ -12,6 +12,7 @@
 
 package net.tangly.core;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 /**
