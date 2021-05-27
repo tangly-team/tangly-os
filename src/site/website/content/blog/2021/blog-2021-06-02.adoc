@@ -46,7 +46,7 @@ The participants of the study confirmed this documented facts.
 
 === Why You Should Not Use Hybrid Methods
 
-It seems that hybrid methods are way less successful.
+It seems that hybrid methods are way less successful than agile based on SwissQ data.
 
 [chart,pie,file="hybrid-methods-success.png",opt="title=Hybrid Methods Success 2021"]
 ....
@@ -112,11 +112,10 @@ Others, 7.9, grey
 
 === Findings
 
-The major finding of the agile community is
+The major finding of the agile community during 2020 and 2021 is co-location is not mandatory for a successful agile approach.
 
-Co-location is not mandatory for a successful agile approach.
 Remote working and distributed teams can work very successfully on a product.
-You need high-quality tools such as videoconferencing, chat, collabobrative tools and pair working approaches.
+You need high-quality tools such as videoconferencing, chat, collaborative tools and pair working approaches.
 
 The huge gain of 2020 and 2021 was the tremendous improvements of these tools due to the Corona lockdown.
 Companies still need to invest in high-quality headsets, cameras and 4K displays for their collaborators.
@@ -131,8 +130,7 @@ A drawback is that {ref-safe} is the de-facto standard for agile scaling in Swit
 https://www.thoughtworks.com/[Thoughtworks] just stated in the Spring 2021 technology radar you should avoid using {ref-safe}.
 These learnings have not reached our country.
 
-Team accountability is lagging.
-But decentralization of decisions is too hard for the majority.
+Team accountability is lagging; but decentralization of decisions is too hard for the majority.
 
 We have reached the level where late majority and laggards are slowly looking into the agile way of working.
 Change is slow and hybrid solutions are preferred.
@@ -143,7 +141,41 @@ We still advocate and promote
 [.text-center]
 _To be agile, not to do agile_
 
-
 I assume it will take another five years until agile is well-established in product development organizations.
+Below the staying sane advices of {ref-less} community.
+
+=== https://less.works/less/adoption/staying-sane[Staying Sane]
+
+During an agile, the organization needs to be changed.
+You are involved and probably have no ‘official’ authority to affect the needed changes.
+This is a good thing!
+It requires you to convince people to change because they believe it is the Right Thing to do.
+But influencing change in organizations is far from trivial and frequently, no matter how hard you have tried, it changes in the opposite direction.
+The question then becomes, how do you survive?
+Staying alive and sane in organizations requires:
+
+Patience and low expectations::
+Most organizations change slowly.
+You should better set your expectations low (not your goal!), and remind yourself that you will be working on this for years.
+Do celebrate small changes.
+Persistence::
+Do not expect your change suggestions to be adopted immediately but do expect to explain them a gazillion times (often to the same people).
+Courage::
+Nothing will change without courage.
+Do not be afraid to speak up to higher management or make proposals that are way out of your comfort zone.
+Sense of humor::
+You have worked for a year to convince people to change something.
+They did, and they made it worse.
+What do you do?
+Take it seriously and do not take it seriously.
+Laugh.
+It is the only way to survive.
+Open and humble::
+You must courageously, persistently, and patiently propose change.
+Laugh it off when stupid decisions ruin your work.
+All of this must be done in an open and humble way as otherwise there is no new learning for you.
+Maybe you are wrong and they were right?
+
+Did we mention _patience_? I wish a fruitful and successful transformation to better way of working and of creating awesome products.
 
 You can download the https://swissq.it/en/downloads/trends-benchmarks-report-2021-in-quality-engineering/[Trends Benchmark Report 2021] report.
