@@ -18,6 +18,7 @@ import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.datepicker.DatePicker;
+import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.NumberField;
@@ -81,14 +82,14 @@ public class GridDecorators<T> extends HorizontalLayout implements SelectedItemL
 
     public GridDecorators(@NotNull PaginatedGrid<T> grid, String text, boolean hasItemActions, boolean hasGlobalActions) {
         this.grid = grid;
-        this.setPadding(true);
+        this.setPadding(false);
         menuBar = new MenuBar();
         itemActions = hasItemActions ? new Actions(menuBar, "Actions") : null;
         globalActions = hasGlobalActions ? new Actions(menuBar, "Operations") : null;
         filters = new ArrayList<>();
         selectedItem(null);
         if (!Strings.isNullOrBlank(text)) {
-            add(text);
+            add(new Label(text));
         }
         if (hasItemActions || hasGlobalActions) {
             add(menuBar);

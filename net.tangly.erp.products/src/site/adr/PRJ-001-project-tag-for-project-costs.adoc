@@ -1,0 +1,30 @@
+---
+title: "PRJ 001"
+date: 2017-12-01
+weight: 2
+---
+
+== PRJ-001 Use Tag for product costs computation
+
+Date: 2017-12-01
+
+=== Status
+
+Implemented
+
+=== Context
+
+We would like to compute earnings and costs on per product base.
+Each transaction entry should support tags to identify the associated projects or departments.
+The tag approach supports multiple consolidation of an orthogonal cost structure.
+
+=== Decision
+
+We will support tags at the transaction entry.
+The tags are a triplet *[namespace:]name[=value]* format.
+We recommend the namespace "fin", the name "segment", and a text identifier has value.
+
+=== Consequences
+
+* Ontology based on tags are not hard defined through a type system.
+* Checks have to be implemented to guaranty adequate level of tracking.

@@ -49,8 +49,8 @@ public record TsvEntity<T>(Class<T> clazz, List<TsvProperty<T, ?>> fields, Suppl
     }
 
     /**
-     * Export an entity as a row in a TSV file. Upon completion of the export the caller shall call. If defined the imports lambda is executed, otherwise the
-     * import lambdas for all fields are executed.
+     * Export an entity as a row in a TSV file. Upon completion of the export the caller shall call. If defined the export lambda is executed, otherwise the
+     * exports lambdas for all fields are executed. The exclusive operation modes are due to the constraints of the underlying CSV Apache Commons library.
      *
      * @param entity  entity to be exported as TSV record
      * @param printer printer to write TSV record

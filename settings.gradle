@@ -14,12 +14,17 @@
 enableFeaturePreview("VERSION_CATALOGS")
 
 include 'net.tangly.bdd'
-include 'net.tangly.bus'
 include 'net.tangly.commons'
 include 'net.tangly.core'
 include 'net.tangly.dev'
 include 'net.tangly.erp-integration'
 include 'net.tangly.fsm'
 include 'net.tangly.gleam'
-include 'net.tangly.ports'
 include 'net.tangly.ui'
+
+include 'net.tangly.erp.crm'
+include 'net.tangly.erp.invoices'
+include 'net.tangly.erp.ledger'
+include 'net.tangly.erp.products'
+include 'net.tangly.erp.shared'
+include 'net.tangly.erp.ui'

@@ -1,11 +1,11 @@
 ---
-title: "OS 002: Publish Maven Central Artifacts"
+title: "FSM-002: Publish Maven Central Artifacts"
 linkTitle: "Publish Maven Central Artifacts"
 date: 2020-01-01
 weight: 2
 ---
 
-== OS-00t Publish Artifacts on Public Java Components Repository
+== FSM-002 Publish Artifacts on Public Java Components Repository
 
 Date: 2020-01-01
 

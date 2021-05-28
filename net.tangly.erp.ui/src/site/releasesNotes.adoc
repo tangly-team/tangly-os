@@ -1,0 +1,16 @@
+---
+title: "Release Notes"
+date: 2019-05-01
+weight: 20
+draft: false
+---
+
+== UI Library Change Logs
+
+This document provides a high-level view of the changes introduced in the ERP UI library by release.
+For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] commits.
+
+=== 0.2.6 (2021-06-30)
+
+* First version of the library packed as a DDD bounded domain
+* Requires Java 16 or higher due to extensive usage of _records_ and _sealed_ classes

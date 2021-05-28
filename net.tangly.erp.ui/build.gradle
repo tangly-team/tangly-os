@@ -27,6 +27,7 @@ project.description = "User Interface ERP - using Java 16 or higher (tangly llc)
 
 ext {
     vaadinVersion = '19.0.8'
+    jettyVersion = "9.4.38.v20210224"
 }
 
 application {
@@ -48,20 +49,21 @@ dependencies {
     implementation project(':net.tangly.gleam')
     implementation project(':net.tangly.ui')
 
-    implementation enforcedPlatform("com.vaadin:vaadin-bom:$vaadinVersion")
+    implementation(libs.vaadin.core)
+
+    // Embedded Jetty dependencies
+    implementation("javax.servlet:javax.servlet-api:3.1.0")
+    implementation("org.eclipse.jetty:jetty-continuation:${jettyVersion}")
+    implementation("org.eclipse.jetty:jetty-server:${jettyVersion}")
+    implementation("org.eclipse.jetty.websocket:websocket-server:${jettyVersion}")
+    implementation("org.eclipse.jetty.websocket:javax-websocket-server-impl:${jettyVersion}") {
+        exclude(module: "javax.websocket-client-api")
+    }
 
     implementation(libs.microstream.storage)
     implementation(libs.vaadin.socharts)
-    implementation(libs.vaadin.tooltip)
-    implementation(libs.vaadin.pdfbrowser)
-    implementation(libs.vaadin.autocomplete)
-    implementation(libs.vaadin.signature)
 
-    // Embedded Jetty dependencies
-    implementation(libs.bundles.jetty.deps)
-    implementation(libs.jetty.websocketimp) { exclude(module: "javax.websocket-client-api") }
-//    implementation(libs.slf4j.logback)
     implementation("org.slf4j:slf4j-simple:1.7.30")
 
-    testImplementation (libs.vaadin.test)
+    testImplementation(libs.vaadin.test)
 }

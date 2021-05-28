@@ -55,7 +55,7 @@ public interface BoundedDomainUi {
      */
     void select(@NotNull AppLayout layout, Component view);
 
-    default void addAdministration(@NotNull MenuBar menuBar, @NotNull AppLayout layout, @NotNull BoundedDomain<?, ?, ?, ?> domain,
+    default void addAdministration(@NotNull AppLayout layout, @NotNull MenuBar menuBar, @NotNull BoundedDomain<?, ?, ?, ?> domain,
                                    @NotNull DomainView domainView) {
         MenuItem menuItem = menuBar.addItem(ADMINISTRATION);
         SubMenu subMenu = menuItem.getSubMenu();
@@ -67,7 +67,7 @@ public interface BoundedDomainUi {
         subMenu.addItem(EXPORT, e -> new CmdExportEntities(domain).execute());
     }
 
-    default void addAnalytics(@NotNull MenuBar menuBar, @NotNull AppLayout layout, @NotNull AnalyticsView analyticsView) {
+    default void addAnalytics(@NotNull AppLayout layout, @NotNull MenuBar menuBar, @NotNull AnalyticsView analyticsView) {
         MenuItem menuItem = menuBar.addItem(ANALYTICS);
         SubMenu subMenu = menuItem.getSubMenu();
         subMenu.addItem(ANALYTICS, e -> select(layout, analyticsView));

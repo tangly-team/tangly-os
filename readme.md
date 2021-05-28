@@ -4,13 +4,18 @@ The _tangly_ open source components are a set of open source libraries released 
 The components are
 
 * [*BDD*](net.tangly.bdd/readme.md) behavior driven development library
-* [*BUS*](net.tangly.bus/readme.md) business components library
 * [*COMMONS*](net.tangly.commons/readme.md) commons library
 * [*DEV*](net.tangly.dev/readme.md) development tools library
-* [*FSM*](net.tangly.fsm/readme.md) hierarchical finite state machine library
+  [*FSM*](net.tangly.fsm/readme.md) hierarchical finite state machine library
 * [*GLEAM*](net.tangly.gleam/readme.md) declarative model transformation frameworks library. Approaches for TSV and JSON representations are available.
 * [*PORTS*](net.tangly.ports/readme.md) ports library providing examples to connect a business domain model to external systems
 * [*UI*](net.tangly.ui/readme.md) Vaadin user interface library
+* ERP Components
+    * [*ERP CRM*](net.tangly.erp.crm/readme.md) business components library
+    * [*ERP LEDGER*](net.tangly.erp.ledger/readme.md) business components library
+    * [*ERP INVOICES*](net.tangly.erp.invoices/readme.md) business components library
+    * [*ERP PRODUCTS*](net.tangly.erp.products/readme.md) business components library
+    * [*ERP SHARED*](net.tangly.erp.shared/readme.md) business components library
 
 The documentation is located under [tangly-team](https://tangly-team.bitbucket.io/).
 

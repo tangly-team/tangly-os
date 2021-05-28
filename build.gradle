@@ -17,9 +17,10 @@
  * To publish all module in maven central repository        gradle publishMavenJavaPublicationToMavenRepository -Pmode=prod
  * To generate aggregate code coverage metrics              gradle build jacocoTestReport jacocoRootReport
  * To generate static and aggregate code coverage metrics   gradle build jacocoTestReport jacocoRootReport -Pmode=int
+ * To detect vulnerab=ilities                               gradle ossIndexAudit --info -Pmode=int
  * To detect newer versions of libraries                    gradle dependencyUpdates -Drevision=release
  * To update sonar cloud                                    gradle sonarqube -Dsonar.login=<login token>
- * To create a production release                           gradle build -Pvaadin.productionMode.
+ * To create a production release                           gradle build -Pvaadin.productionMode
  */
 plugins {
     id "java-library"
@@ -28,6 +29,7 @@ plugins {
     id "jacoco"
     id "com.github.spotbugs" version "4.7.1"
     id "org.sonarqube" version "3.2.0"
+    id 'org.sonatype.gradle.plugins.scan' version '2.0.10'
     id "info.solidsoft.pitest" version "1.6.0"
     id 'com.google.cloud.tools.jib' version '3.0.0'
     id 'com.github.ben-manes.versions' version '0.38.0'
@@ -51,6 +53,7 @@ allprojects {
 
     if (mode.equalsIgnoreCase('int')) {
         apply plugin: 'com.github.spotbugs'
+        apply plugin: 'org.sonatype.gradle.plugins.scan'
         apply plugin: 'pmd'
         apply plugin: 'jacoco'
         // apply plugin: 'info.solidsoft.pitest'
@@ -60,13 +63,13 @@ allprojects {
         mavenLocal()
         mavenCentral()
         maven { url "https://maven.vaadin.com/vaadin-addons" }
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
         maven { url "https://raw.github.com/ZUGFeRD/mustangproject/mvn-repo" }
         maven { url "https://repo.microstream.one/repository/maven-public/" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
     }
 
     jacoco {
-        toolVersion = "0.8.6"
+        toolVersion = "0.8.7"
     }
 
     pitest {
@@ -175,13 +178,12 @@ subprojects {
 
     dependencies {
         implementation(libs.slf4j.api)
-        implementation(libs.annotations)
         implementation(libs.guice)
-
+        compileOnly(libs.annotations)
         runtimeOnly(libs.slf4j.logback)
 
         testImplementation(libs.bundles.test.deps)
-
+        testCompileOnly(libs.annotations)
         testRuntimeOnly(libs.junit.engine)
     }
 

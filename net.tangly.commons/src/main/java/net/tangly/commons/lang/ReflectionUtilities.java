@@ -17,6 +17,7 @@ import java.security.AccessController;
 import java.security.PrivilegedActionException;
 import java.security.PrivilegedExceptionAction;
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.jetbrains.annotations.NotNull;
@@ -32,7 +33,8 @@ public final class ReflectionUtilities {
     }
 
     public static <T> void set(@NotNull T entity, @NotNull String name, @NotNull Object value) {
-        set(entity, findField(entity.getClass(), name).orElseThrow(), value);
+        set(entity, findField(entity.getClass(), name)
+            .orElseThrow(() -> new NoSuchElementException("Missing Field From " + entity.getClass().getSimpleName() + " field " + name)), value);
     }
 
     public static <T> void set(@NotNull T entity, @NotNull Field field, @NotNull Object value) {
@@ -74,16 +76,12 @@ public final class ReflectionUtilities {
      * @return the requested field if found otherwise null
      */
     public static <T> Optional<Field> findField(@NotNull Class<T> clazz, @NotNull String name) {
-        Field field = null;
+        Optional<Field> field = Optional.empty();
         Class<?> pointer = clazz;
-        while ((pointer != null) && (field == null)) {
-            Field[] fields = pointer.getDeclaredFields();
-            Optional<Field> result = Arrays.stream(fields).filter(o -> name.equals(o.getName())).findAny();
-            if (result.isPresent()) {
-                field = result.get();
-            }
+        while ((pointer != null) && (field.isEmpty())) {
+            field = Arrays.stream(pointer.getDeclaredFields()).filter(o -> name.equals(o.getName())).findAny();
             pointer = pointer.getSuperclass();
         }
-        return Optional.ofNullable(field);
+        return field;
     }
 }

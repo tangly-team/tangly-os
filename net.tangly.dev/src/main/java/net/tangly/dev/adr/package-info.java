@@ -19,7 +19,7 @@
  * <dt>ADL</dt><dd>architecture decision log defines a history of all architecture decisions</dd>
  * <dt>ADR</dt><dd>architecture decision record document a single architecture decision</dd>
  * <dt>AKM</dt><dd>architecture knowledge management to support team members during evolution of the product</dd>
- * <dt>ASR</dt><dd>architecturally-significant requirement constraining the chosen architectureal solution</dd>
+ * <dt>ASR</dt><dd>architecturally-significant requirement constraining the chosen architectural solution</dd>
  * </dl>
  * <p>If you're considering using decision records with your team, then here's some advice that we've learned by working with many teams.</p>
  * <p>You have an opportunity to lead your teammates, by talking together about the "why", rather than mandating the "what". For example, decision records are a
@@ -32,6 +32,6 @@
  * <p> In theory, immutability is ideal. In practice, mutability has worked better for our teams. We insert the new info the existing ADR, with a date stamp,
  * and a note that the info arrived after the decision. This kind of approach leads to a "living document" that we all can update. Typical updates are when
  * we get information thanks to new teammates, or new offerings, or real-world results of our usages, or after-the-fact third-party changes such as vendor
- * capabilties, pricing plans, license agreements, etc.</p>
+ * capabilities, pricing plans, license agreements, etc.</p>
  */
 package net.tangly.dev.adr;

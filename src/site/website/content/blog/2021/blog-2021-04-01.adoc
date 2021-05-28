@@ -96,7 +96,7 @@ I have good news.
 The JEP for pattern matching for switch statements (JEP 406) and for record and arrays patterns (JEP 405) have candidate status in April 2021.
 
 More Packages Support Modules:: Java modules were introduced with Java 8.
-I really, really, really want to use module in Java 16.
+I really, really, really want to use modules in Java 16.
 Therefore, I need a module version for all mainstream Java libraries.
 Until now the Java developers' community has failed us, support for modules is abysmal.
 

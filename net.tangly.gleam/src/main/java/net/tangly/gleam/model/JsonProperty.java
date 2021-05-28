@@ -61,15 +61,17 @@ public record JsonProperty<T, U>(@NotNull String key, @NotNull Function<T, U> ge
     }
 
     public static <T> JsonProperty<T, LocalDate> ofLocalDate(@NotNull String key, Function<T, LocalDate> getter, BiConsumer<T, LocalDate> setter) {
-        return of(key, getter, setter, o -> (o.getString(key) != null) ? LocalDate.parse(o.getString(key)) : null, (u, o) -> o.put(key, u.toString()));
+        return of(key, getter, setter, o -> hasString(o, key) ? LocalDate.parse(o.getString(key)) : null,
+            (u, o) -> o.put(key, u.toString()));
     }
 
     public static <T> JsonProperty<T, Currency> ofCurrency(@NotNull String key, Function<T, Currency> getter, BiConsumer<T, Currency> setter) {
-        return of(key, getter, setter, o -> (o.getString(key) != null) ? Currency.getInstance(o.getString(key)) : null, (u, o) -> o.put(key, u.getCurrencyCode()));
+        return of(key, getter, setter, o -> hasString(o, key) ? Currency.getInstance(o.getString(key)) : null,
+            (u, o) -> o.put(key, u.getCurrencyCode()));
     }
 
     public static <T> JsonProperty<T, Locale> ofLocale(@NotNull String key, Function<T, Locale> getter, BiConsumer<T, Locale> setter) {
-        return of(key, getter, setter, o -> (o.getString(key) != null) ? Locale.forLanguageTag(o.getString(key)) : null,
+        return of(key, getter, setter, o -> hasString(o, key) ? Locale.forLanguageTag(o.getString(key)) : null,
             (u, o) -> o.put(key, u.toLanguageTag()));
     }
 
@@ -130,5 +132,9 @@ public record JsonProperty<T, U>(@NotNull String key, @NotNull Function<T, U> ge
         if (property != null) {
             inserts().apply(property, object);
         }
+    }
+
+    private static boolean hasString(@NotNull JSONObject object, @NotNull String key) {
+        return (object.has(key) && object.getString(key) != null);
     }
 }

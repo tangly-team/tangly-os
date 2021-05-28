@@ -39,13 +39,16 @@ public class StaticChecker<O, S extends Enum<S>, E extends Enum<E>> implements C
 
     private final ResourceBundle bundle = ResourceBundle.getBundle(BUNDLE_NAME);
 
+    public StaticChecker() {
+        
+    }
+
     /**
      * Checks all static rules on the given final state machine description.
      *
      * @param root the final state machine description to check
      * @return the list of detected error messages
      */
-
     public List<String> check(State<O, S, E> root) {
         List<String> messages = new ArrayList<>();
         messages.addAll(checkStateIdUsedOnce(root));
@@ -61,7 +64,6 @@ public class StaticChecker<O, S extends Enum<S>, E extends Enum<E>> implements C
      * @param root the final state machine description to check
      * @return the list of detected error messages
      */
-
     public List<String> checkStateIdUsedOnce(State<O, S, E> root) {
         List<String> messages = new ArrayList<>();
         Set<State<O, S, E>> states = collectAllSubstates(root);

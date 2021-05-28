@@ -18,6 +18,8 @@ module net.tangly.fsm {
     exports net.tangly.fsm;
     exports net.tangly.fsm.dsl;
     exports net.tangly.fsm.utilities;
+    exports net.tangly.fsm.eventbus;
+    exports net.tangly.fsm.eventbus.imp;
 
     requires org.slf4j;
     requires static transitive org.jetbrains.annotations;

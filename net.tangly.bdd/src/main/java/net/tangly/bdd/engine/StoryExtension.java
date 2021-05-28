@@ -28,14 +28,18 @@ import org.junit.jupiter.api.extension.ParameterResolver;
 import static org.junit.platform.commons.support.AnnotationSupport.isAnnotated;
 
 /**
- * A custom extension that allow test authors to create and run behaviors and stories i.e. BDD specification tests. Jupiter engine will provide an
- * execution context instance under which an extension is to operate. A store is a holder that can be used by custom extensions to save and retrieve
- * arbitrary data––basically a super charged in-memory map. In order to avoid accidental key collisions between multiple extensions, the good folk at
- * JUnit introduced the concept of a namespace. A namespace is a way to scope the data saved by extensions.
+ * A custom extension that allow test authors to create and run behaviors and stories i.e. BDD specification tests. Jupiter engine will provide an execution
+ * context instance under which an extension is to operate. A store is a holder that can be used by custom extensions to save and retrieve arbitrary
+ * data––basically a super charged in-memory map. In order to avoid accidental key collisions between multiple extensions, the good folk at JUnit introduced the
+ * concept of a namespace. A namespace is a way to scope the data saved by extensions.
  */
 public class StoryExtension implements BeforeAllCallback, AfterAllCallback, BeforeEachCallback, ParameterResolver {
 
     private static final Namespace NAMESPACE = Namespace.create(StoryExtension.class);
+
+    public StoryExtension() {
+
+    }
 
     @Override
     public void beforeAll(ExtensionContext context) {

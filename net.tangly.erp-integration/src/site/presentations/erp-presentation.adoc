@@ -1,0 +1,155 @@
+include::_settings_reveal.adoc[]
+
+= Tangly ERP
+:source-highlighter: highlightjs
+
+== Motivation
+
+[quote, H.G. Wells 1945]
+____
+Adapt or perish, now as ever, is Nature's inexorable imperative.
+____
+
+* Experiment with Domain Driven Design
+* Write a business application
+* Have a teaching and experiment application written in Modern Java
+
+[.notes]
+--
+* Experiment with modern Java: record, sealed types, stream, functional Programming
+* Write a small and useful ERP
+* Experiment with digital transformation
+* Concrete example for teaching
+--
+
+== Explorations
+
+* Domain Driven Design Architecture
+* Modern Java functional programming _lambda, streams, algebraic data types_
+* Java User Interface _Vaadin PWA and mobile first_
+* Java Persistance _MicroStreams_
+
+== Domain Driven Design
+
+[plantuml, core-domain, svg]
+----
+interface Handler {}
+interface Realm {}
+class BoundedDomain<R extends Realm, B, H extends Handler, P> {
+  String name;
+  P port;
+  B logic
+}
+BoundedDomain o-- TypeRegistry : registry
+BoundedDomain *-- Realm : realm
+BoundedDomain *-- Handler : handler
+
+class DomainEntity {}
+
+interface Provider<T> {}
+
+class ProviderInMemory<T> {}
+Provider <|-- ProviderInMemory
+
+class ProviderPersistence<T> {}
+Provider <|-- ProviderPersistence
+----
+
+[.notes]
+--
+* Key interfaces and classes to define bounded domains
+* Use to create bounded domain user interfaces
+* Administrative features are available to monitor a bounded domain
+--
+
+== Modern Java
+
+* Current JDK Version _JDK 15_ and _JDK 16_
+* Functional Programming Approaches
+* Good Practices
+
+== https://vaadin.com/[Vaadin]
+
+* Pure Java approach to write the PWA mobile first user interface
+* Support of TypeScript and https://lit-html.polymer-project.org/[lit-html] for special needs
+
+== https://microstream.one/[MicroStream]
+
+* Incredible Efficient Approach to persist models
+* Persistent Store per Bounded Domain support DDD
+* Lessons Learnt
+** Eager Save to store an entity 
+** Application is responsible to manage object identitfiers
+
+== Key Framework Ideas
+
+Mixins:: defines key abstractions in business domains
+Labels or Tags:: defines a user controlled ontology and be processed
+Table Codes:: defines a domain controlled and processed ontology
+Comments:: Human readable information as free form structure
+
+[plantuml, core-mixins, svg]
+----
+interface HasId {}
+interface HadOid {}
+interface HasName {}
+interface HasTags {}
+interface HasComment {}
+interface HasDate {}
+interface HasInterval {}
+interface Code {}
+
+class Tag {}
+class TagType {}
+class TypeRegistry {}
+
+class Comment {}
+
+interface Entity extends HasOid, HasName, HasInterval, HasTags, HasComments {}
+interface QualifiedEntity extends Entity, HasEditableId {}
+----
+
+== Key Abstractions
+
+[plantuml, core-abstractions, svg]
+----
+class PhoneNr {}
+class EmailAddress {}
+class Address {}
+class BankConnection {}
+----
+
+== Identified Bounded Domains
+
+* Customer Relationship Management
+* Products and Efforts
+* Invoices
+* Ledger
+
+== Customer Relationships
+
+* Employee Abstraction
+* Value Objects
+	
+== Products and Efforts
+
+* Agile Product Approach
+
+[plantuml, products, svg]
+----
+
+----
+
+== Invoices
+
+* PDF generated invoices fullfilling Swiss and European legal requirements
+* Swiss QR code digital payment slip
+* Factor-X digital invoice
+
+== Ledger
+
+* BBRT sliding window
+
+== Roadmap
+
+== Lessons Learnt
