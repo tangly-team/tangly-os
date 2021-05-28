@@ -17,13 +17,14 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Currency;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 import javax.inject.Inject;
-
 
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.core.Comment;
@@ -48,9 +49,9 @@ import net.tangly.erp.crm.domain.LegalEntity;
 import net.tangly.erp.crm.domain.NaturalEntity;
 import net.tangly.erp.crm.domain.Subject;
 import net.tangly.erp.crm.services.CrmRealm;
+import net.tangly.erp.ports.TsvHdl;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
-import net.tangly.erp.ports.TsvHdl;
 import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -74,22 +75,29 @@ import static net.tangly.core.crm.CrmTags.CRM_VAT_NUMBER;
  * separated list of the oid of the referenced entities if at least one is defined, otherwise an empty string.
  */
 public class CrmTsvHdl {
-    public static final String FIRSTNAME = "firstname";
-    public static final String LASTNAME = "lastname";
+    private static final String FIRSTNAME = "firstname";
+    private static final String LASTNAME = "lastname";
     private static final String CREATED = "created";
+    private static final String GENDER = "gender";
+    private static final String EMAIL = "email";
     private static final String AUTHOR = "author";
     private static final String TAGS = "tags";
 
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private final CrmRealm realm;
+    private final Map<Long, Comment> importedComments;
+    private final Map<Comment, Long> exportedComments;
 
     @Inject
     public CrmTsvHdl(@NotNull CrmRealm realm) {
         this.realm = realm;
+        this.importedComments = new HashMap<>();
+        this.exportedComments = new HashMap<>();
     }
 
     public void importComments(@NotNull Path path) {
         Provider<Comment> comments = new ProviderInMemory<>();
+        importedComments.clear();
         TsvHdl.importEntities(path, createTsvComment(), comments);
         realm.naturalEntities().items().forEach(e -> TsvHdl.addComments(realm.naturalEntities(), e, comments));
         realm.legalEntities().items().forEach(e -> TsvHdl.addComments(realm.legalEntities(), e, comments));
@@ -101,6 +109,7 @@ public class CrmTsvHdl {
 
     public void exportComments(@NotNull Path path) {
         Provider<Comment> comments = new ProviderInMemory<>();
+        exportedComments.clear();
         realm.naturalEntities().items().forEach(o -> updateAndCollectComments(o, comments));
         realm.legalEntities().items().forEach(o -> updateAndCollectComments(o, comments));
         realm.employees().items().forEach(o -> updateAndCollectComments(o, comments));
@@ -168,8 +177,8 @@ public class CrmTsvHdl {
 
     public void importActivities(@NotNull Path path) {
         Provider<Activity> activities = new ProviderInMemory<>();
-        TsvHdl.importEntities(path, createTsvActivity(), activities);
-        realm.interactions().items().forEach(e -> addActivities(realm.interactions(), e, activities));
+        TsvHdl.importEntities(path, createTsvActivity(), realm.activities());
+        realm.interactions().items().forEach(e -> addActivities(realm.interactions(), e, realm.activities()));
     }
 
     public void exportActivities(@NotNull Path path) {
@@ -198,15 +207,16 @@ public class CrmTsvHdl {
 
     static TsvEntity<Comment> createTsvComment() {
         Function<CSVRecord, Comment> imports = (CSVRecord record) -> Comment
-            .of(LocalDateTime.parse(TsvHdl.get(record, CREATED)), Long.parseLong(TsvHdl.get(record, TsvHdl.OWNER_FOID)), TsvHdl.get(record, AUTHOR), TsvHdl
-                .get(record, TsvHdl.TEXT));
+            .of(LocalDateTime.parse(TsvHdl.get(record, CREATED)), Long.parseLong(TsvHdl.get(record, TsvHdl.OWNER_FOID)), TsvHdl.get(record, AUTHOR),
+                TsvHdl.get(record, TsvHdl.TEXT));
 
-        List<TsvProperty<Comment, ?>> fields = List.of(TsvProperty.of(TsvHdl.OID, Comment::oid, (e, v) -> ReflectionUtilities.set(e, TsvHdl.OID, v), Long::parseLong),
-            TsvProperty.ofLong(
-                TsvHdl.OWNER_FOID, (e) -> (long) ReflectionUtilities.get(e, TsvHdl.OWNER_FOID), (e, v) -> ReflectionUtilities.set(e, TsvHdl.OWNER_FOID, v)),
-            TsvProperty.of(CREATED, Comment::created, null, o -> (o != null) ? LocalDateTime.parse(o) : null),
-            TsvProperty.ofString(AUTHOR, Comment::author, null), TsvProperty.ofString(TsvHdl.TEXT, Comment::text, null),
-            TsvProperty.ofString(TAGS, HasTags::rawTags, HasTags::rawTags));
+        List<TsvProperty<Comment, ?>> fields =
+            List.of(TsvProperty.of(TsvHdl.OID, Comment::oid, (e, v) -> ReflectionUtilities.set(e, TsvHdl.OID, v), Long::parseLong), TsvProperty
+                    .ofLong(TsvHdl.OWNER_FOID, (e) -> (long) ReflectionUtilities.get(e, TsvHdl.OWNER_FOID),
+                        (e, v) -> ReflectionUtilities.set(e, TsvHdl.OWNER_FOID, v)),
+                TsvProperty.of(CREATED, Comment::created, null, o -> (o != null) ? LocalDateTime.parse(o) : null),
+                TsvProperty.ofString(AUTHOR, Comment::author, null), TsvProperty.ofString(TsvHdl.TEXT, Comment::text, null),
+                TsvProperty.ofString(TAGS, HasTags::rawTags, HasTags::rawTags));
         return TsvEntity.of(Comment.class, fields, imports);
     }
 
@@ -214,7 +224,7 @@ public class CrmTsvHdl {
         List<TsvProperty<NaturalEntity, ?>> fields = TsvHdl.createTsvEntityFields();
         fields.add(TsvProperty.ofString(LASTNAME, NaturalEntity::lastname, NaturalEntity::lastname));
         fields.add(TsvProperty.ofString(FIRSTNAME, NaturalEntity::firstname, NaturalEntity::firstname));
-        fields.add(TsvProperty.ofEnum(GenderCode.class, "gender", NaturalEntity::gender, NaturalEntity::gender));
+        fields.add(TsvProperty.ofEnum(GenderCode.class, GENDER, NaturalEntity::gender, NaturalEntity::gender));
         fields.add(TsvHdl.createAddressMapping(VcardType.home));
         fields.add(TsvHdl.emailProperty(CRM_EMAIL_HOME, VcardType.home));
         fields.add(TsvHdl.phoneNrProperty(CRM_PHONE_MOBILE, VcardType.mobile));
@@ -242,13 +252,13 @@ public class CrmTsvHdl {
     TsvEntity<Employee> createTsvEmployee() {
         List<TsvProperty<Employee, ?>> fields =
             List.of(TsvProperty.of(TsvHdl.OID, Employee::oid, (entity, value) -> ReflectionUtilities.set(entity, TsvHdl.OID, value), Long::parseLong),
-                TsvProperty.ofDate(TsvHdl.FROM_DATE, Employee::fromDate, Employee::fromDate), TsvProperty.ofDate(TsvHdl.TO_DATE, Employee::toDate, Employee::toDate),
-                TsvProperty.ofString(TsvHdl.TEXT, Employee::text, Employee::text),
+                TsvProperty.ofDate(TsvHdl.FROM_DATE, Employee::fromDate, Employee::fromDate),
+                TsvProperty.ofDate(TsvHdl.TO_DATE, Employee::toDate, Employee::toDate), TsvProperty.ofString(TsvHdl.TEXT, Employee::text, Employee::text),
                 TsvProperty.of("personOid", Employee::person, Employee::person, e -> findNaturalEntityByOid(e).orElse(null), TsvHdl.convertFoidTo()),
-                TsvProperty.of("organizationOid", Employee::organization, Employee::organization, e -> findLegalEntityByOid(e).orElse(null), TsvHdl
-                    .convertFoidTo()),
-                TsvHdl.tagProperty(CRM_EMPLOYEE_TITLE), TsvHdl.tagProperty(CRM_EMAIL_WORK), TsvProperty
-                    .ofString(CRM_PHONE_WORK, e -> e.phoneNr(VcardType.work).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(VcardType.work, p)));
+                TsvProperty
+                    .of("organizationOid", Employee::organization, Employee::organization, e -> findLegalEntityByOid(e).orElse(null), TsvHdl.convertFoidTo()),
+                TsvHdl.tagProperty(CRM_EMPLOYEE_TITLE), TsvHdl.tagProperty(CRM_EMAIL_WORK),
+                TsvProperty.ofString(CRM_PHONE_WORK, e -> e.phoneNr(VcardType.work).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(VcardType.work, p)));
         return TsvEntity.of(Employee.class, fields, Employee::new);
     }
 
@@ -279,16 +289,14 @@ public class CrmTsvHdl {
         fields.add(TsvProperty.of("state", Interaction::code, Interaction::code, e -> Enum.valueOf(InteractionCode.class, e.toLowerCase()), Enum::name));
         fields.add(TsvProperty.ofBigDecimal("potential", Interaction::potential, Interaction::potential));
         fields.add(TsvProperty.ofBigDecimal("probability", Interaction::probability, Interaction::probability));
-        fields
-            .add(TsvProperty.of("legalEntity", Interaction::entity, Interaction::entity, e -> findLegalEntityByOid(e).orElse(null), TsvHdl
-                .convertFoidTo()));
+        fields.add(TsvProperty.of("legalEntity", Interaction::entity, Interaction::entity, e -> findLegalEntityByOid(e).orElse(null), TsvHdl.convertFoidTo()));
         return TsvEntity.of(Interaction.class, fields, Interaction::new);
     }
 
     static TsvEntity<Activity> createTsvActivity() {
-        List<TsvProperty<Activity, ?>> fields = List.of(
-            TsvProperty.of(TsvHdl.OWNER_FOID, (e) -> ReflectionUtilities.get(e, TsvHdl.OWNER_FOID), (e, v) -> ReflectionUtilities.set(e, TsvHdl.OWNER_FOID, v), Long::parseLong),
-            TsvProperty.of("code", Activity::code, Activity::code, e -> Enum.valueOf(ActivityCode.class, e.toLowerCase()), Enum::name),
+        List<TsvProperty<Activity, ?>> fields = List.of(TsvProperty
+                .of(TsvHdl.OWNER_FOID, (e) -> ReflectionUtilities.get(e, TsvHdl.OWNER_FOID), (e, v) -> ReflectionUtilities.set(e, TsvHdl.OWNER_FOID, v),
+                    Long::parseLong), TsvProperty.of("code", Activity::code, Activity::code, e -> Enum.valueOf(ActivityCode.class, e.toLowerCase()), Enum::name),
             TsvProperty.ofDate("date", Activity::date, Activity::date), TsvProperty.ofInt("durationInMinutes", Activity::duration, Activity::duration),
             TsvProperty.ofString(AUTHOR, Activity::author, Activity::author), TsvProperty.ofString(TsvHdl.TEXT, Activity::text, Activity::text));
         return TsvEntity.of(Activity.class, fields, Activity::new);
@@ -296,29 +304,28 @@ public class CrmTsvHdl {
 
     static TsvEntity<Lead> createTsvLead() {
         Function<CSVRecord, Lead> imports =
-            (CSVRecord record) -> new Lead(LocalDate.parse(TsvHdl.get(record, TsvHdl.DATE)), Enum.valueOf(LeadCode.class, TsvHdl.get(record, TsvHdl.CODE)), TsvHdl
-                .get(record, FIRSTNAME),
-                TsvHdl.get(record, LASTNAME), Enum.valueOf(GenderCode.class, TsvHdl.get(record, TsvHdl.GENDER)), TsvHdl.get(record, "company"), PhoneNr.of(
-                TsvHdl.get(record, "phoneNr")),
-                EmailAddress.of(TsvHdl.get(record, "email")), TsvHdl.get(record, "linkedIn"), Enum.valueOf(ActivityCode.class, TsvHdl.get(record, "activity")), TsvHdl
-                .get(record, TsvHdl.TEXT));
+            (CSVRecord record) -> new Lead(LocalDate.parse(TsvHdl.get(record, TsvHdl.DATE)), Enum.valueOf(LeadCode.class, TsvHdl.get(record, TsvHdl.CODE)),
+                TsvHdl.get(record, FIRSTNAME), TsvHdl.get(record, LASTNAME), Enum.valueOf(GenderCode.class, TsvHdl.get(record, TsvHdl.GENDER)),
+                TsvHdl.get(record, "company"), PhoneNr.of(TsvHdl.get(record, "phoneNr")), EmailAddress.of(TsvHdl.get(record, EMAIL)),
+                TsvHdl.get(record, "linkedIn"), Enum.valueOf(ActivityCode.class, TsvHdl.get(record, "activity")), TsvHdl.get(record, TsvHdl.TEXT));
 
-        List<TsvProperty<Lead, ?>> fields = List.of(TsvProperty.ofDate(TsvHdl.DATE, Lead::date, null), TsvProperty.ofEnum(LeadCode.class, "code", Lead::code, null),
-            TsvProperty.ofString(FIRSTNAME, Lead::firstname, null), TsvProperty.ofString(LASTNAME, Lead::firstname, null),
-            TsvProperty.ofEnum(GenderCode.class, "gender", Lead::gender, null), TsvProperty.ofString("company", Lead::company, null),
-            TsvProperty.ofString("phoneNr", o -> Objects.nonNull(o.phoneNr()) ? o.phoneNr().number() : null, null),
-            TsvProperty.ofString("email", o -> Objects.nonNull(o.email()) ? o.email().text() : null, null),
-            TsvProperty.ofString("linkedIn", Lead::linkedIn, null), TsvProperty.ofEnum(ActivityCode.class, "activity", Lead::activity, null),
-            TsvProperty.ofString(TsvHdl.TEXT, Lead::text, null));
+        List<TsvProperty<Lead, ?>> fields =
+            List.of(TsvProperty.ofDate(TsvHdl.DATE, Lead::date, null), TsvProperty.ofEnum(LeadCode.class, "code", Lead::code, null),
+                TsvProperty.ofString(FIRSTNAME, Lead::firstname, null), TsvProperty.ofString(LASTNAME, Lead::firstname, null),
+                TsvProperty.ofEnum(GenderCode.class, GENDER, Lead::gender, null), TsvProperty.ofString("company", Lead::company, null),
+                TsvProperty.ofString("phoneNr", o -> Objects.nonNull(o.phoneNr()) ? o.phoneNr().number() : null, null),
+                TsvProperty.ofString(EMAIL, o -> Objects.nonNull(o.email()) ? o.email().text() : null, null),
+                TsvProperty.ofString("linkedIn", Lead::linkedIn, null), TsvProperty.ofEnum(ActivityCode.class, "activity", Lead::activity, null),
+                TsvProperty.ofString(TsvHdl.TEXT, Lead::text, null));
         return TsvEntity.of(Lead.class, fields, imports);
 
     }
 
-    public Optional<NaturalEntity> findNaturalEntityByOid(String identifier) {
+    Optional<NaturalEntity> findNaturalEntityByOid(String identifier) {
         return (identifier != null) ? Provider.findByOid(realm.naturalEntities(), Long.parseLong(identifier)) : Optional.empty();
     }
 
-    private Optional<LegalEntity> findLegalEntityByOid(String identifier) {
+    Optional<LegalEntity> findLegalEntityByOid(String identifier) {
         return (identifier != null) ? Provider.findByOid(realm.legalEntities(), Long.parseLong(identifier)) : Optional.empty();
     }
 }

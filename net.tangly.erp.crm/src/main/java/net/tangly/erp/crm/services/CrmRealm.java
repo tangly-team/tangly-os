@@ -54,6 +54,8 @@ public interface CrmRealm extends Realm {
 
     Provider<Interaction> interactions();
 
+    Provider<Activity> activities();
+
     Provider<Subject> subjects();
 
 

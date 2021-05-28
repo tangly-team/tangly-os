@@ -24,6 +24,7 @@ import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.providers.ProviderPersistence;
+import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.Contract;
 import net.tangly.erp.crm.domain.Employee;
 import net.tangly.erp.crm.domain.Interaction;
@@ -58,6 +59,7 @@ public class CrmEntities implements CrmRealm {
         private final List<Employee> employees;
         private final List<Contract> contracts;
         private final List<Interaction> interactions;
+        private final List<Activity> activities;
         private final List<Subject> subjects;
         private long oidCounter;
         private transient final ReentrantLock lock;
@@ -69,6 +71,7 @@ public class CrmEntities implements CrmRealm {
             employees = new ArrayList<>();
             contracts = new ArrayList<>();
             interactions = new ArrayList<>();
+            activities = new ArrayList<>();
             subjects = new ArrayList<>();
             oidCounter = HasOid.UNDEFINED_OID;
             this.lock = new ReentrantLock();
@@ -93,6 +96,7 @@ public class CrmEntities implements CrmRealm {
     private final Provider<Employee> employees;
     private final Provider<Contract> contracts;
     private final Provider<Interaction> interactions;
+    private final Provider<Activity> activities;
     private final Provider<Subject> subjects;
     private final EmbeddedStorageManager storageManager;
 
@@ -107,6 +111,7 @@ public class CrmEntities implements CrmRealm {
         employees = new ProviderPersistence<>(storageManager, data.employees);
         contracts = new ProviderPersistence<>(storageManager, data.contracts);
         interactions = new ProviderPersistence<>(storageManager, data.interactions);
+        activities = new ProviderPersistence<>(storageManager, data.activities);
         subjects = new ProviderPersistence<>(storageManager, data.subjects);
     }
 
@@ -119,6 +124,7 @@ public class CrmEntities implements CrmRealm {
         employees = new ProviderInMemory<>(data.employees);
         contracts = new ProviderInMemory<>(data.contracts);
         interactions = new ProviderInMemory<>(data.interactions);
+        activities = new ProviderInMemory<>(data.activities);
         subjects = new ProviderInMemory<>(data.subjects);
 
         long oidCounter = Realm.maxOid(naturalEntities());
@@ -173,6 +179,11 @@ public class CrmEntities implements CrmRealm {
     @Override
     public Provider<Interaction> interactions() {
         return this.interactions;
+    }
+
+    @Override
+    public Provider<Activity> activities() {
+        return this.activities;
     }
 
     @Override

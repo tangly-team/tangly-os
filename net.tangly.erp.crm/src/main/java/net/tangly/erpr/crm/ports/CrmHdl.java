@@ -23,7 +23,6 @@ import org.jetbrains.annotations.NotNull;
  * Defines the workflows defined for bounded domain activities in particular the import and export to files.
  */
 public final class CrmHdl implements CrmHandler {
-    public static final String MODULE = "net.tangly.ports";
     public static final String COMMENTS_TSV = "comments.tsv";
     public static final String LEADS_TSV = "leads.tsv";
     public static final String LEGAL_ENTITIES_TSV = "legal-entities.tsv";

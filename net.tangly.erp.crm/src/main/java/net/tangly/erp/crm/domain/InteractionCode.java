@@ -19,7 +19,7 @@ import net.tangly.core.codes.Code;
  * completed contract or instead can be lost.
  */
 public enum InteractionCode implements Code {
-    prospect, lead, customer, completed, lost;
+    prospect, lead, ordered, completed, lost;
 
     @Override
     public int id() {

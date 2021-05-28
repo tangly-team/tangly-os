@@ -75,7 +75,7 @@ public class CrmBusinessLogic {
         return switch (code) {
             case lead, prospect, lost -> realm.interactions().items().stream().filter(o -> o.code() == code).filter(new HasInterval.IntervalFilter<>(from, to))
                 .map(Interaction::weightedPotential).reduce(BigDecimal.ZERO, BigDecimal::add);
-            case customer, completed -> realm.interactions().items().stream().filter(o -> o.code() == code)
+            case ordered, completed -> realm.interactions().items().stream().filter(o -> o.code() == code)
                 .flatMap(interaction -> realm.contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.entity().oid()))
                 .filter(new HasInterval.IntervalFilter<>(from, to)).map(Contract::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
         };

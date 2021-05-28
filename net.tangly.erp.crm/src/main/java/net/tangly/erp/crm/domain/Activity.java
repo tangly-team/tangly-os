@@ -22,9 +22,11 @@ import net.tangly.core.Strings;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * An activity is an action between a seller and a potential sellee. Activities are performed in the context of interaction. Activities are only available
+ * An activity is an action between a seller and a potential sellee. Activities are performed in the context of an interaction. Activities are only available
  * through their context, meaning no access to all activities exists.
- * <p>The author of the activity identifies the collaborator interacting with the potential customer.</p>
+ * <p>The author of the activity identifies the collaborator interacting with the potential customer. Consider using documentation templates in the textual
+ * description of the activity to allow structured search over activities. For example you could write @{contact name} in your text to later search all
+ * activities where a specific person was participating.</p>
  */
 public class Activity implements HasDate {
     private long ownerFoid;

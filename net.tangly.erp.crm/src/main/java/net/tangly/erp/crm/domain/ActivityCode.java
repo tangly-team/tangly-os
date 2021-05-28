@@ -16,6 +16,17 @@ import net.tangly.core.codes.Code;
 
 /**
  * Defines the kinds of af activities between natural persons.
+ * <dl>
+ *     <dt>talk</dt><dd>A personal and informal interaction with customer representatives.</dd>
+ *     <dt>meeting</dt><dd>A scheduled meeting with customer representatives. THe activity text can be used as meeting protocol.</dd>
+ *     <dt>email</dt><dd>An electronic message sent to customer representatives.</dd>
+ *     <dt>letter</dt><dd>A physical message sent to customer representatives. Digitalization should reduce letter to a minimum.</dd>
+ *     <dt>audiocall</dt><dd>An audio call such as a phone call or a Slack call with customer representatives.</dd>
+ *     <dt>videocall</dt><dd>An video call such as a team call or a Slack call with customer representatives.</dd>
+ *     <dt>chat</dt><dd>A textual chat interaction through asynchronous communication channel</dd>
+ *     <dt>campaign</dt><dd>A direct communication through a compaign. For example a flier, an event invitation or a whitepater is sent to a group of
+ *     prospects.</dd>
+ * </dl>
  */
 public enum ActivityCode implements Code {
     talk, meeting, email, letter, audiocall, videocall, chat, campaign;
