@@ -54,7 +54,7 @@ public class InvoicesBoundedDomainUi implements BoundedDomainUi {
         subMenu.addItem("Articles", e -> select(layout, articlesView));
         subMenu.addItem("Invoices", e -> select(layout, invoicesView));
 
-        addAdministration(menuBar, layout, domain, domainView);
+        addAdministration(layout, menuBar, domain, domainView);
         select(layout, currentView);
     }
 

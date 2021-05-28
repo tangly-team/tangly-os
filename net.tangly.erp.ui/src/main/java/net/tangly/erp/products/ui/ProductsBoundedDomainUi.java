@@ -57,7 +57,7 @@ public class ProductsBoundedDomainUi implements BoundedDomainUi {
         subMenu.addItem("Assignments", e -> select(layout, assignmentsView));
         subMenu.addItem("Efforts", e -> select(layout, effortsView));
 
-        addAdministration(menuBar, layout, domain, domainView);
+        addAdministration(layout, menuBar, domain, domainView);
         select(layout, currentView);
     }
 

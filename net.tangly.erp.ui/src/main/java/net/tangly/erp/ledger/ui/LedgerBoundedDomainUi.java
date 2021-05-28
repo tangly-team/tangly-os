@@ -56,8 +56,8 @@ public class LedgerBoundedDomainUi implements BoundedDomainUi {
         subMenu.addItem("Accounts", e -> select(layout, accountsView));
         subMenu.addItem("Transactions", e -> select(layout, transactionsView));
 
-        addAnalytics(menuBar, layout, analyticsView);
-        addAdministration(menuBar, layout, domain, domainView);
+        addAnalytics(layout, menuBar, analyticsView);
+        addAdministration(layout, menuBar, domain, domainView);
         select(layout, currentView);
     }
 
