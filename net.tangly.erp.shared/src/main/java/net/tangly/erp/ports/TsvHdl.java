@@ -98,7 +98,7 @@ public final class TsvHdl {
         return fields;
     }
 
-    public static <T> void importEntities(@NotNull Path path, @NotNull TsvEntity<T> tsvEntity, Provider<T> provider) {
+    public static <T> void importEntities(@NotNull Path path, @NotNull TsvEntity<T> tsvEntity, @NotNull Provider<T> provider) {
         try (Reader in = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
             int counter = 0;
             for (CSVRecord record : FORMAT.parse(in)) {
@@ -126,6 +126,8 @@ public final class TsvHdl {
         } catch (IOException e) {
             EventData.log(EventData.IMPORT, MODULE, EventData.Status.FAILURE, "Entities not imported from TSV file", Map.of("filename", path), e);
             throw new UncheckedIOException(e);
+        } catch (Exception e) {
+            EventData.log(EventData.IMPORT, MODULE, EventData.Status.FAILURE, "Entities not imported from TSV file", Map.of("filename", path), e);
         }
     }
 
@@ -145,6 +147,8 @@ public final class TsvHdl {
         } catch (IOException e) {
             EventData.log(EventData.EXPORT, MODULE, EventData.Status.FAILURE, "Entities exported to TSV file", Map.of("filename", path), e);
             throw new UncheckedIOException(e);
+        } catch (Exception e) {
+            EventData.log(EventData.EXPORT, MODULE, EventData.Status.FAILURE, "Entities exported to TSV file", Map.of("filename", path), e);
         }
     }
 

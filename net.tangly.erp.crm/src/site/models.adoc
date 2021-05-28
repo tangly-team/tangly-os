@@ -1,0 +1,137 @@
+---
+title: "Bounded Domain CRM Model"
+date: 2019-05-01
+weight: 50
+draft: false
+---
+
+== Bounded Domain CRM
+
+=== Context
+
+The bounded domain contextCRM implements
+
+* The core domain _Customer Relationship Management_
+* It uses the shared kernel _Core_ providing core abstractions to modeling
+
+=== Bounded Domain Workflow
+
+The workflows describe the regular activities a service company has with their contacts and customers.
+
+.CRM Workflows
+[cols="1,9"]
+|===
+|ID |Description
+
+|CRM-001 |As a salesperson I want to create and modify a legal entity so that I have a record of every organization my company is working with.
+I want to have access to data describing the organization so that I can formally interact with them.
+
+|CRM-002 |As a salesperson I want to create and modify a natural entity so that I have a record of every prospect my company interacts with.
+I want to have access to data describing the person so that I can better interact with her.
+
+|CRM-003 |As a salesperson I want to define when a person is working for an organization so that I have an history of which companies a contact worked for.
+We register the duration when a person is an employee of an organization.
+A person can work for multiple organizations simultaneously.
+
+|CRM-004 |As an employee I want to create and modify an interaction describing how I interact with a legal entity so that an history of all initiatives exists.
+The goal of an interaction is to conclude a contract.
+
+|CRM-005 |As an employee I want to document all activities with entities necessary during an interaction so that an history of all communicaitons exists
+
+|CRM-006 |As a salesperson I want to register all legal contracts with an organization so taht I have a trace of these legal documens.
+
+|CRM-007 |As a salesperson I want to initiate an interaction with a legal entity and actively work to conclude a contract with them.
+I can have multiple activities to interact with the organization before concluding the interaction.
+An interaction can be completed successfully or not.
+During the timeline of the interaction the potential and probability of success can change.
+As a salesperson I am only interested on the current potential and success odds and not on their timely evolution.
+
+|===
+
+A legal and natural entity shall provide links to gather additional information.
+A standard approach is to provide a link to the organization or persson LinkedIn profile.
+
+All entities support tags and comments to add additional information or define orthogonal classifiations.
+
+The following secondary workflows are under evaluation
+
+. As a salesperson I want to create a lead so that A list of potential prospects is available.
+. As a salesperson I want to promote a lead to a legal entity so that I can perform sales activities with this organization.
+
+The non-functional constraints for typical regular small and medium enterprise datasets.
+
+. The legal entities are less than 5'000 organizations.
+. The natural entities are less than 20'000 persons.
+. The contract entities are less than 5'000 a year with a legal retention of the year.
+The total number is less than 50'000.
+. The active employees of the company are less than 200.
+
+==== Shared Features
+
+The bounded domain uses the features provided through the tangly-os shared kernel.
+
+All entities can have human-readable comments and orthogonal tags.
+Comments provide a mechanism to add unstructured human-readable information.
+Tags allow the definition of classification and informal ontologies.
+
+=== Bounded Domain CRM model
+
+[plantuml,crm-model-uml,svg]
+....
+@startuml
+
+class GenderCode <<(C, yellow) Code>> {}
+class ActivityCode <<(C, yellow) Code>> {}
+class InteractionCode <<(C, yellow) Code>> {}
+
+class Address <<(R, green) Record>> {}
+
+class LegalEntity  <<(E,orchid) Entity>> {
+    Address address()
+    String vatNr()
+}
+
+class NaturalEntity <<(E,orchid) Entity>> {
+    String socialNr;
+    String firstname;
+    String lastname;
+    Address address()
+}
+NaturalEntity o-- "0..1" Photo : photo
+NaturalEntity o-- "1" GenderCode : gender
+
+class Employee <<(E,orchid) Entity>> {
+}
+
+Employee o-- "1" NaturalEntity : employee
+Employee o-- "1" LegalEntity : employer
+
+class Activity <<(E,orchid) Entity>> {
+    LocalDate date;
+    int durationInMinutes;
+    String author;
+    String text;
+    String details;
+}
+Activity o-- "1" ActivityCode : code
+
+
+class Interaction <<(E,orchid) Entity>> {
+    BigDecimal potential;
+    BigDecimal probability;
+}
+Interaction *-- "1" LegalEntity : entity
+Interaction o-- "n" Activity : activities
+Interaction o-- "1" InteractionCode : code
+
+class Contract <<(E,orchid) Entity>> {
+  Address address;
+}
+
+Contract *-- "1" LegalEntity : seller
+Contract *-- "1" LegalEntity : sellee
+
+@enduml
+....
+
+

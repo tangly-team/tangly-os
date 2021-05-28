@@ -77,6 +77,9 @@ public class InvoiceJson implements InvoiceGenerator {
     public Invoice imports(@NotNull Path path, @NotNull Map<String, Object> properties) {
         JsonEntity<Invoice> entity = createJsonInvoice();
         Invoice invoice = null;
+        if (path.toString().contains("STGF")) {
+            System.out.println(path.toString());
+        }
         if (JsonUtilities.isValid(path, "invoice-schema.json")) {
             try (Reader in = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
                 var jsonInvoice = new JSONObject(new JSONTokener(in));
