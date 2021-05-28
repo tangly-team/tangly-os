@@ -34,7 +34,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnalyticsCrmView extends AnalyticsView {
+public class  AnalyticsCrmView extends AnalyticsView {
     private static final String CustomersTurnover = "Customers Turnover";
     private static final String ContractsTurnover = "Contracts Turnover";
     private static final String Funnel = "Funnel";
@@ -80,6 +80,7 @@ public class AnalyticsCrmView extends AnalyticsView {
         grid.addColumn(Contract::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::fromDate).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::toDate).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Contract::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(VaadinUtils.coloredRender(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setHeader("Amount").setAutoWidth(true).setResizable(true)
             .setSortable(true);
         grid.addColumn(VaadinUtils.coloredRender(o -> invoicesLogic.invoicedAmountWithoutVatForContract(o.id(), from(), to()), VaadinUtils.FORMAT))
@@ -93,6 +94,9 @@ public class AnalyticsCrmView extends AnalyticsView {
         List<String> contracts = new ArrayList<>();
         List<BigDecimal> amounts = new ArrayList<>();
         crmDomain.realm().contracts().items().forEach(contract -> {
+            if (contract.id().startsWith("ST")) {
+                System.out.println(contract.id());
+            }
             BigDecimal amount = invoicesLogic.invoicedAmountWithoutVatForContract(contract.id(), from(), to());
             if (!amount.equals(BigDecimal.ZERO)) {
                 contracts.add(contract.id());
@@ -116,10 +120,10 @@ public class AnalyticsCrmView extends AnalyticsView {
     }
 
     private void funnelChart(@NotNull SOChart chart) {
-        CategoryData labels = new CategoryData("Prospects", "Leads", "Customers", "Lost", "Completed");
+        CategoryData labels = new CategoryData("Prospects", "Leads", "Ordered", "Lost", "Completed");
         CrmBusinessLogic logic = crmDomain.logic();
         Data data = new Data(logic.funnel(InteractionCode.prospect, from(), to()), logic.funnel(InteractionCode.lead, from(), to()),
-            logic.funnel(InteractionCode.customer, from(), to()), logic.funnel(InteractionCode.lost, from(), to()),
+            logic.funnel(InteractionCode.ordered, from(), to()), logic.funnel(InteractionCode.lost, from(), to()),
             logic.funnel(InteractionCode.completed, from(), to()));
         BarChart barchart = new BarChart(labels, data);
         RectangularCoordinate rc = new RectangularCoordinate(new XAxis(DataType.CATEGORY), new YAxis(DataType.NUMBER));

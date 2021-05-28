@@ -22,6 +22,8 @@ import net.tangly.core.codes.CodeType;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.ActivityCode;
+import net.tangly.erp.crm.domain.Interaction;
+import net.tangly.erp.crm.domain.Lead;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.CodeField;
 import net.tangly.ui.components.EntitiesView;
@@ -38,7 +40,7 @@ class ActivitiesView extends EntitiesView<Activity> {
     private Binder<Activity> binder;
 
     public ActivitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
-        super(Activity.class, mode, ProviderInMemory.of(domain.realm().collectActivities(e -> true)));
+        super(Activity.class, mode, domain.realm().activities());
         this.domain = domain;
         initialize();
     }

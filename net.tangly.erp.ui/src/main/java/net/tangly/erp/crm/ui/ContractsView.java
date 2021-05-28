@@ -24,7 +24,6 @@ import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.erp.crm.domain.Contract;
 import net.tangly.erp.crm.domain.LegalEntity;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
-import net.tangly.erp.invoices.services.InvoicesBusinessLogic;
 import net.tangly.ui.components.BankConnectionField;
 import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.EntityField;
@@ -40,12 +39,10 @@ import org.jetbrains.annotations.NotNull;
 
 class ContractsView extends InternalEntitiesView<Contract> {
     private final transient CrmBoundedDomain domain;
-    private final InvoicesBusinessLogic logicInvoices;
 
-    public ContractsView(@NotNull CrmBoundedDomain domain, InvoicesBusinessLogic logicInvoices, @NotNull Mode mode) {
+    public ContractsView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
         super(Contract.class, mode, domain.realm().contracts(), domain.registry());
         this.domain = domain;
-        this.logicInvoices = logicInvoices;
         initialize();
     }
 
@@ -54,10 +51,9 @@ class ContractsView extends InternalEntitiesView<Contract> {
         PaginatedGrid<Contract> grid = grid();
         InternalEntitiesView.addQualifiedEntityColumns(grid);
         grid.addColumn(e -> e.sellee().name()).setKey("customer").setHeader("Customer").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Contract::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(new NumberRenderer<>(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true)
             .setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
-        grid.addColumn(new NumberRenderer<>(o -> logicInvoices.invoicedAmountWithoutVatForContract(o.id(), null, null), VaadinUtils.FORMAT))
-            .setKey("invoicedAmount").setHeader("Invoiced").setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         addAndExpand(filterCriteria(false, false, InternalEntitiesView::addQualifiedEntityFilters), grid(), gridButtons());
     }
 

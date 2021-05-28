@@ -21,5 +21,6 @@ public record CmdLogout() implements Cmd {
     public void execute() {
         VaadinSession.getCurrent().getSession().invalidate();
         UI.getCurrent().getPage().setLocation("");
+        UI.getCurrent().getPage().reload();
     }
 }

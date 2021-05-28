@@ -48,7 +48,7 @@ public class CrmBoundedDomainUi implements BoundedDomainUi {
         naturalEntitiesView = new NaturalEntitiesView(domain, Crud.Mode.EDITABLE);
         legalEntitiesView = new LegalEntitiesView(domain, Crud.Mode.EDITABLE);
         employeesView = new EmployeesView(domain, Crud.Mode.EDITABLE);
-        contractsView = new ContractsView(domain, invoicesDomain.logic(), Crud.Mode.EDITABLE);
+        contractsView = new ContractsView(domain, Crud.Mode.EDITABLE);
         interactionsView = new InteractionsView(domain, Crud.Mode.EDITABLE);
         activitiesView = new ActivitiesView(domain, Crud.Mode.READONLY);
         subjectsView = new SubjectsView(domain, Crud.Mode.EDITABLE);
@@ -75,8 +75,8 @@ public class CrmBoundedDomainUi implements BoundedDomainUi {
         subMenu.addItem("Activities", e -> select(layout, activitiesView));
         subMenu.addItem("Subjects", e -> select(layout, subjectsView));
 
-        addAnalytics(menuBar, layout, analyticsView);
-        addAdministration(menuBar, layout, domain, domainView);
+        addAnalytics(layout, menuBar, analyticsView);
+        addAdministration(layout, menuBar, domain, domainView);
         select(layout, currentView);
     }
 
