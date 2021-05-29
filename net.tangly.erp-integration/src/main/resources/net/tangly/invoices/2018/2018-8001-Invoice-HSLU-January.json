@@ -42,7 +42,7 @@
     "text": "Experte Prüfung ENAPP fur H 2017/18 am 2017-01-18 / 2017-01-19",
     "items": [
         {
-            "product": {
+            "article": {
                 "unitPrice": 200,
                 "unit": "hour",
                 "vatRate": 0,
@@ -54,7 +54,7 @@
             "text": "Pauschalentschädigung für Expertinnen und Experten (mündliche Modulendprüfung inkl. Spesen)"
         },
         {
-            "product": {
+            "article": {
                 "unitPrice": "25",
                 "unit": "unit",
                 "vatRate": "0",

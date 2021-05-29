@@ -71,9 +71,9 @@
                 "iban"
             ]
         },
-        "product": {
+        "article": {
             "type": "object",
-            "description": "product sold and invoiced with a standard price and VAT rate",
+            "description": "article sold and invoiced with a standard price and VAT rate",
             "properties": {
                 "id": {
                     "type": "string"
@@ -124,14 +124,14 @@
                 },
                 {
                     "properties": {
-                        "product": {
-                            "$ref": "#/definitions/product"
+                        "article": {
+                            "$ref": "#/definitions/article"
                         },
                         "quantity": {
                             "type": "string"
                         },
                         "required": [
-                            "product",
+                            "article",
                             "quantity"
                         ]
                     }

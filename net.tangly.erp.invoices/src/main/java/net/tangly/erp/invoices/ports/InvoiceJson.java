@@ -158,15 +158,16 @@ public class InvoiceJson implements InvoiceGenerator {
         List<JsonField<Article, ?>> fields = List.of(JsonProperty.ofString("id", Article::id, null), JsonProperty.ofString("description", Article::text, null),
             JsonProperty.ofBigDecimal("unitPrice", Article::unitPrice, null), JsonProperty.ofString("unit", Article::unit, null),
             JsonProperty.ofBigDecimal("vatRate", Article::vatRate, null));
-        return JsonEntity.of(fields, this::importProduct);
+        return JsonEntity.of(fields, this::importArticle);
     }
 
     public JsonEntity<InvoiceItem> createJsonInvoiceItem() {
+        final String ARTICLE = "article";
         Function<JSONObject, InvoiceItem> imports =
-            o -> new InvoiceItem(o.getInt("position"), importProduct((JSONObject) o.get("product")), o.getString("text"), o.getBigDecimal("quantity"));
+            o -> new InvoiceItem(o.getInt("position"), importArticle((JSONObject) o.get(ARTICLE)), o.getString("text"), o.getBigDecimal("quantity"));
 
         List<JsonField<InvoiceItem, ?>> fields = List.of(JsonProperty.ofInt("position", InvoiceItem::position, null),
-            JsonProperty.ofType("product", InvoiceItem::article, null, createJsonArticle()), JsonProperty.ofString("text", InvoiceItem::text, null),
+            JsonProperty.ofType(ARTICLE, InvoiceItem::article, null, createJsonArticle()), JsonProperty.ofString("text", InvoiceItem::text, null),
             JsonProperty.ofBigDecimal("quantity", InvoiceItem::quantity, null));
         return JsonEntity.of(fields, imports);
     }
@@ -196,7 +197,7 @@ public class InvoiceJson implements InvoiceGenerator {
         return JsonEntity.of(imports, exports);
     }
 
-    public Article importProduct(@NotNull JSONObject object) {
+    public Article importArticle(@NotNull JSONObject object) {
         return realm.articles().items().stream().filter(o -> o.id().equals(JsonField.string(object, "id"))).findAny().orElse(null);
     }
 

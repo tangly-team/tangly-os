@@ -1,4 +1,4 @@
-oid	id	name	fromDate	toDate	text	personOid	organizationOid	crm:title	crm:email-work	crm:phone-work
+oid	id	name	fromDate	toDate	text	personOid	organizationOid	crm:title	crm:email-work	crm:phone-work	crm:phone-mobile
 200			1990-01-01	1995-12-31		1	100	Software Craftsmanship	john.doe@hope.org	+49 01 1234567
 201			1996-01-01	2000-12-31		1	101	Software Craftsmanship	john.doe@fun.net	+49 02 1234567
 202			2000-01-01	2010-06-30		2	100	Senior Software Engineer	alex.doe@hope.org	+49 01 12345

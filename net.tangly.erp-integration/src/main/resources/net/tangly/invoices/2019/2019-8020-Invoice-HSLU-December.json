@@ -29,7 +29,7 @@
     "invoiceDate": "2019-12-07",
     "items": [
         {
-            "product": {
+            "article": {
                 "unitPrice": "190",
                 "unit": "hour",
                 "vatRate": "0",
