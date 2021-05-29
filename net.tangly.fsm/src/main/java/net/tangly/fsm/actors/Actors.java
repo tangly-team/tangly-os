@@ -12,58 +12,47 @@
 
 package net.tangly.fsm.actors;
 
-import java.util.Set;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.TimeUnit;
 
-import net.tangly.fsm.Event;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * The actor infrastructure enabler is responsible to provide parallel execution for all instantiated and alive actors he is in charge.
  *
- * @param <E> enumeration describing the events handled
+ * @param <T> type of the messages exchanged between actors
  */
-public interface Actors<E extends Enum<E>> {
+public interface Actors<T> {
+    static void awaitTermination(ExecutorService service, long timeout, TimeUnit unit) {
+        try {
+            service.awaitTermination(1, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            new RuntimeException(e);
+        }
+    }
 
     /**
      * Sends an event to the actor with the given name.
      *
-     * @param event event to send
-     * @param name  name of the actor whom the event will be sent
+     * @param message message to send
+     * @param id      identifier of the actor
      */
-    void sendEventTo(@NotNull Event<E> event, @NotNull String name);
+    void sendMsgTo(@NotNull T message, @NotNull UUID id);
 
     /**
      * Returns an actor with the given name.
      *
      * @param name name of the actor to be found
-     * @param <T>  type of the actor extending actor class
      * @return the requested actor if found
      */
-    <T extends Actor<E>> T getActorNamed(@NotNull String name);
+    Optional<Actor<T>> actorNamed(@NotNull String name);
 
     /**
      * Registers the actor in the pool of known actors.
      *
      * @param actor actor to register
-     * @param <T>   type of the actor extending actor class
      */
-    <T extends Actor<E>> void register(@NotNull T actor);
-
-    /**
-     * Awaits the completion of the given actor. An actor has completed his work when it is no more alive.
-     *
-     * @param actor                  actor to wait upon
-     * @param intervalInMilliseconds interval in milliseconds between checking if the actor is alive
-     * @param <T>                    type of the actor extending actor class
-     */
-    <T extends Actor<E>> void awaitCompletion(@NotNull T actor, int intervalInMilliseconds);
-
-    /**
-     * Awaits the completion of a set of actors. An actor has completed his work when it is no more alive.
-     *
-     * @param actors                 set of actors to wait upon
-     * @param intervalInMilliseconds interval in milliseconds between checking if the actor is alive
-     * @param <T>                    type of the actor extending actor class
-     */
-    <T extends Actor<E>> void awaitCompletion(@NotNull Set<T> actors, int intervalInMilliseconds);
+    void register(@NotNull Actor<T> actor);
 }

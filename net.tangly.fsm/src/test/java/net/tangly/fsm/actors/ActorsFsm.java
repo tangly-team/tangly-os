@@ -11,15 +11,15 @@
  *  under the License.
  */
 
-package net.tangly.fsm.actor;
+package net.tangly.fsm.actors;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import net.tangly.fsm.Event;
-import net.tangly.fsm.actors.Actor;
-import net.tangly.fsm.actors.LocalActor;
-import net.tangly.fsm.actors.LocalActors;
 import net.tangly.fsm.dsl.FsmBuilder;
 import org.junit.jupiter.api.Test;
 
@@ -46,9 +46,11 @@ enum Events {
     Inquiry, Request, Response
 }
 
-class Server extends LocalActor<Server, ServerStates, Events> implements Actor<Events> {
+class Server extends ActorFsm<Server, ServerStates, Events> {
 
     int nrRequests;
+    private final Actors<Event<Events>> actors;
+
 
     private static FsmBuilder<Server, ServerStates, Events> buildFsm() {
         FsmBuilder<Server, ServerStates, Events> builder = FsmBuilder.of(ServerStates.Root);
@@ -57,21 +59,23 @@ class Server extends LocalActor<Server, ServerStates, Events> implements Actor<E
         return builder;
     }
 
-    Server(String name) {
+    Server(String name, Actors<Event<Events>> actors) {
         super(buildFsm(), name);
+        this.actors = actors;
     }
 
     private void processRequest(Event<Events> event) {
         nrRequests++;
         var clientName = (String) (event.parameters().get(0));
-        LocalActors.<Events>instance().sendEventTo(Event.of(Events.Response, name(), clientName), clientName);
+        actors.sendMsgTo(Event.of(Events.Response, name(), clientName), actors.actorNamed(clientName).get().id());
     }
 }
 
-class Client extends LocalActor<Client, ClientStates, Events> implements Actor<Events> {
+class Client extends ActorFsm<Client, ClientStates, Events> {
 
     int nrRequests;
     int nrAnswers;
+    private final Actors<Event<Events>> actors;
 
     private static FsmBuilder<Client, ClientStates, Events> buildFsm() {
         FsmBuilder<Client, ClientStates, Events> builder = FsmBuilder.of(ClientStates.Root);
@@ -83,13 +87,14 @@ class Client extends LocalActor<Client, ClientStates, Events> implements Actor<E
         return builder;
     }
 
-    Client(String name) {
+    Client(String name, Actors<Event<Events>> actors) {
         super(buildFsm(), name);
+        this.actors = actors;
     }
 
     private void sendRequestToServer(Event<Events> event) {
         var serverName = (String) (event.parameters().get(1));
-        LocalActors.<Events>instance().sendEventTo(Event.of(Events.Request, name(), serverName), serverName);
+        actors.sendMsgTo(Event.of(Events.Request, name(), serverName), actors.actorNamed(serverName).get().id());
         nrRequests++;
     }
 
@@ -107,13 +112,16 @@ class ActorTest {
      */
     @Test
     void activeFsmTest() {
-        var server = new Server("server");
-        var client = new Client("client");
-        client.receive(new Event<>(Events.Inquiry, List.of("client", "server")));
-        LocalActors.<Events>instance().awaitCompletion(client, 1000);
-        assertThat(client.nrRequests).isEqualTo(1);
-        assertThat(client.nrAnswers).isEqualTo(1);
-        assertThat(server.nrRequests).isEqualTo(1);
+        ExecutorService service = Executors.newCachedThreadPool();
+        Actors<Event<Events>> actors = new ActorsImp<>(service);
+        actors.register(new Server("server", actors));
+        actors.register(new Client("client", actors));
+        actors.actorNamed("client").get().receive(new Event<>(Events.Inquiry, List.of("client", "server")));
+
+        Actors.awaitTermination(service, 10, TimeUnit.SECONDS);
+        assertThat(((Client) actors.actorNamed("client").get()).nrRequests).isEqualTo(1);
+        assertThat(((Client) actors.actorNamed("client").get()).nrAnswers).isEqualTo(1);
+        assertThat(((Server) actors.actorNamed("server").get()).nrRequests).isEqualTo(1);
     }
 
     /**
@@ -121,21 +129,22 @@ class ActorTest {
      */
     @Test
     void activeMultipleFsmTest() {
-        final int nrClients = 10_000;
-        var server = new Server("server");
-        var clients = new HashSet<Client>();
-        for (int i = 0; i < nrClients; i++) {
-            String name = "client" + i;
-            Client client = new Client(name);
-            clients.add(client);
-            client.receive(new Event<>(Events.Inquiry, List.of(name, "server")));
+        ExecutorService service = Executors.newCachedThreadPool();
+        Actors<Event<Events>> actors = new ActorsImp<>(service);
+        final int NR_CLIENTS = 10_000;
+        final String CLIENT_PREFIX = "client-";
+        actors.register(new Server("server", actors));
+        for (int i = 0; i < NR_CLIENTS; i++) {
+            String name = CLIENT_PREFIX + i;
+            actors.register(new Client(name, actors));
+            actors.actorNamed(name).get().receive(new Event<>(Events.Inquiry, List.of(name, "server")));
         }
-        LocalActors.<Events>instance().awaitCompletion(clients, 1);
-        for (int i = 0; i < nrClients; i++) {
-            Client client = LocalActors.<Events>instance().getActorNamed("client" + i);
+        Actors.awaitTermination(service, 1, TimeUnit.SECONDS);
+        for (int i = 0; i < NR_CLIENTS; i++) {
+            Client client = (Client) actors.actorNamed(CLIENT_PREFIX + i).get();
             assertThat(client.nrRequests).isEqualTo(1);
             assertThat(client.nrAnswers).isEqualTo(1);
         }
-        assertThat(server.nrRequests).isEqualTo(nrClients);
+        assertThat(((Server)actors.actorNamed("server").get()).nrRequests).isEqualTo(NR_CLIENTS);
     }
 }

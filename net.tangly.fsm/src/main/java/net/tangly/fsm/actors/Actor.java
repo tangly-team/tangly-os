@@ -12,22 +12,30 @@
 
 package net.tangly.fsm.actors;
 
-import net.tangly.fsm.Event;
+import java.util.UUID;
+
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The actor abstraction provides an active actor object to process events through a finite state machine.
+ * The actor abstraction provides an active actor object to process received messages.
  *
- * @param <E> enumeration describing the events handled
+ * @param <T> message type handle in the actory
  */
-public interface Actor<E extends Enum<E>> {
+public interface Actor<T> extends Runnable {
 
     /**
-     * Returns the unique name of the actor.
+     * Returns the possibly unique human-readable name of the actor.
      *
      * @return unique name of the actor
      */
     String name();
+
+    /**
+     * Returns a unique identifier of the actor.
+     *
+     * @return UUID unique identifier
+     */
+    UUID id();
 
     /**
      * Returns true if the actor is still alive and ready to process received events.
@@ -39,7 +47,7 @@ public interface Actor<E extends Enum<E>> {
     /**
      * Receives an event for further processing.
      *
-     * @param event event to process asynchronously later
+     * @param message message to process asynchronously later
      */
-    void receive(@NotNull Event<E> event);
+    void receive(@NotNull T message);
 }

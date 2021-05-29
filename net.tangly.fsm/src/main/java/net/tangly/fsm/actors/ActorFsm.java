@@ -12,18 +12,10 @@
 
 package net.tangly.fsm.actors;
 
-import java.lang.invoke.MethodHandles;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-
 import net.tangly.fsm.Event;
 import net.tangly.fsm.StateMachine;
 import net.tangly.fsm.dsl.FsmBuilder;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import static net.tangly.fsm.actors.LocalActors.instance;
 
 /**
  * A local actor implements the actor contract as a local thread running in the virtual machine. An actor completes when its finite state machine reaches a
@@ -33,14 +25,7 @@ import static net.tangly.fsm.actors.LocalActors.instance;
  * @param <S> the state enumeration type uniquely identifying a state in the state machine
  * @param <E> the event enumeration type uniquely identifying the event sent to the state machine
  */
-public class LocalActor<O extends LocalActor, S extends Enum<S>, E extends Enum<E>> implements Actor<E>, Runnable {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-
-    /**
-     * Queue of received events waiting to be processed.
-     */
-    private final BlockingQueue<Event<E>> events;
-
+public class ActorFsm<O extends ActorFsm, S extends Enum<S>, E extends Enum<E>> extends ActorImp<Event<E>> {
     /**
      * The final state machine defining the behavior of the actor class.
      */
@@ -53,15 +38,9 @@ public class LocalActor<O extends LocalActor, S extends Enum<S>, E extends Enum<
      * @param name    name of the local actor
      */
     @SuppressWarnings("unchecked")
-    public LocalActor(@NotNull FsmBuilder<O, S, E> builder, @NotNull String name) {
+    public ActorFsm(@NotNull FsmBuilder<O, S, E> builder, @NotNull String name) {
+        super(name);
         this.fsm = builder.machine(name, (O) this);
-        events = new LinkedBlockingQueue<>();
-        ((LocalActors<E>) instance()).register(this);
-    }
-
-    @Override
-    public String name() {
-        return fsm.name();
     }
 
     @Override
@@ -70,26 +49,10 @@ public class LocalActor<O extends LocalActor, S extends Enum<S>, E extends Enum<
     }
 
     @Override
-    public void receive(@NotNull Event<E> event) {
-        try {
-            events.put(event);
-            logger.atInfo().log("Actor {} received event {}", name(), event);
-        } catch (InterruptedException e) {
-            logger.atError().log("Actor {} encountered interrupted exception {}", name(), e);
-            Thread.currentThread().interrupt();
-        }
-    }
-
-    @Override
     public void run() {
-        while (fsm.isAlive()) {
-            try {
-                Event<E> event = events.take();
-                fsm.fire(event);
-            } catch (InterruptedException e) {
-                logger.atError().log("Actor {} encountered interrupted exception {}", name(), e);
-                Thread.currentThread().interrupt();
-            }
+        while (isAlive()) {
+            Event<E> event = message();
+            fsm.fire(event);
         }
     }
 }
