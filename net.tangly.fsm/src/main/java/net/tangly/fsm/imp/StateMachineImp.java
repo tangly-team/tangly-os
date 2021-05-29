@@ -100,6 +100,11 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
         return fired;
     }
 
+    @Override
+    public State<O, S, E> root() {
+        return root;
+    }
+
     private boolean fireLocalTransition(@NotNull Event<E> event) {
         boolean fired = false;
         for (var iter = activeStates.descendingIterator(); iter.hasNext(); ) {
@@ -196,7 +201,7 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
      *
      * @return the active states unmodifiable collection
      */
-    Collection<State<O, S, E>> getActiveStates() {
+    Collection<State<O, S, E>> activeStates() {
         return Collections.unmodifiableCollection(activeStates);
     }
 
@@ -205,7 +210,7 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
      *
      * @return the history states unmodifiable collection
      */
-    Collection<State<O, S, E>> getHistoryStates() {
+    Collection<State<O, S, E>> historyStates() {
         return Collections.unmodifiableCollection(history);
     }
 

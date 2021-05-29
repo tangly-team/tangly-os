@@ -98,6 +98,44 @@ class FsmBbvTest {
     }
 
     @Test
+    void whenHistory() {
+        StateMachineImp fsm = (StateMachineImp) createFsm();
+        fsm.fire(Event.of(FsmBbv.Events.TogglePower));
+        fsm.fire(Event.of(FsmBbv.Events.ToggleMode));
+        fsm.fire(Event.of(FsmBbv.Events.StationLost));
+
+        // Root/On/FM/AutoTune,   []
+        assertThat(fsm.historyStates()).isEmpty();
+        assertThat(fsm.activeStates().size()).isEqualTo(4);
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmBbv.States.Root));
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmBbv.States.On));
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmBbv.States.FM));
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmBbv.States.AutoTune));
+
+        fsm.fire(Event.of(FsmBbv.Events.TogglePower));
+
+        // Root/Off,   [On/FM/AutoTune]
+        assertThat(fsm.activeStates().size()).isEqualTo(2);
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmBbv.States.Root));
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmBbv.States.Off));
+        assertThat(fsm.historyStates().size()).isEqualTo(3);
+        assertThat(fsm.historyStates()).contains(fsm.root().getStateFor(FsmBbv.States.On));
+        assertThat(fsm.historyStates()).contains(fsm.root().getStateFor(FsmBbv.States.FM));
+        assertThat(fsm.historyStates()).contains(fsm.root().getStateFor(FsmBbv.States.AutoTune));
+
+
+        fsm.fire(Event.of(FsmBbv.Events.TogglePower));
+
+        // Root/On/FM/Autotune, []
+        assertThat(fsm.historyStates()).isEmpty();
+        assertThat(fsm.activeStates().size()).isEqualTo(4);
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmBbv.States.Root));
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmBbv.States.On));
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmBbv.States.FM));
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmBbv.States.AutoTune));
+    }
+
+    @Test
     void independentParallelUsageTest() {
         FsmBuilder<FsmBbv, FsmBbv.States, FsmBbv.Events> builder = FsmBbv.build();
         var fsm1 = builder.machine("test-fsm1", new FsmBbv());

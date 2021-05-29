@@ -14,7 +14,6 @@
 package net.tangly.fsm.imp;
 
 import net.tangly.fsm.Event;
-import net.tangly.fsm.State;
 import net.tangly.fsm.dsl.FsmBuilder;
 import org.junit.jupiter.api.Test;
 
@@ -63,20 +62,19 @@ class FsmWasherTest {
 
     @Test
     void testTransitions() {
-        State<FsmWasherTest, States, Events> root = build().definition();
-        StateMachineImp<FsmWasherTest, States, Events> fsm = new StateMachineImp<>("Washer", root, this);
-        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.Running));
-        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.Washing));
-        assertThat(fsm.getHistoryStates()).isEmpty();
+        StateMachineImp<FsmWasherTest, States, Events> fsm = new StateMachineImp<>("Washer", build().definition(), this);
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(States.Running));
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(States.Washing));
+        assertThat(fsm.historyStates()).isEmpty();
         fsm.fire(Event.of(Events.Rinse));
-        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.Rinsing));
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(States.Rinsing));
         fsm.fire(Event.of(Events.CutPower));
-        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.PowerOff));
-        assertThat(fsm.getHistoryStates()).contains(root.getStateFor(States.Rinsing));
-        assertThat(fsm.getHistoryStates()).contains(root.getStateFor(States.Running));
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(States.PowerOff));
+        assertThat(fsm.historyStates()).contains(fsm.root().getStateFor(States.Rinsing));
+        assertThat(fsm.historyStates()).contains(fsm.root().getStateFor(States.Running));
         fsm.fire(Event.of(Events.RestorePower));
-        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.Running));
-        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.Rinsing));
-        assertThat(fsm.getHistoryStates()).isEmpty();
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(States.Running));
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(States.Rinsing));
+        assertThat(fsm.historyStates()).isEmpty();
     }
 }

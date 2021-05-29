@@ -44,6 +44,13 @@ public interface StateMachine<O, S extends Enum<S>, E extends Enum<E>> {
     String name();
 
     /**
+     * Returns the state machine description.
+     *
+     * @return the state machine description
+     */
+    State<O, S, E> root();
+
+    /**
      * Returns the context of the finite state machine instance.
      *
      * @return the context of the state machine

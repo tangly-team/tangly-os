@@ -203,20 +203,19 @@ class FsmTest {
     @Test
     void fireTransitionTest() {
         var action = mock(BiConsumer.class);
-        var root = build(action).definition();
-        var fsm = new StateMachineImp<FsmTest, FsmTest.States, FsmTest.Events>("test-fsm", root, this);
+        var fsm = new StateMachineImp<FsmTest, FsmTest.States, FsmTest.Events>("test-fsm", build(action).definition(), this);
 
-        assertThat(fsm.getHistoryStates()).isEmpty();
-        assertThat(fsm.getActiveStates()).contains(root.getStateFor(FsmTest.States.A));
-        assertThat(fsm.getActiveStates()).contains(root.getStateFor(FsmTest.States.AA));
-        assertThat(fsm.getActiveStates()).doesNotContain(root.getStateFor(FsmTest.States.AB));
+        assertThat(fsm.historyStates()).isEmpty();
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmTest.States.A));
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmTest.States.AA));
+        assertThat(fsm.activeStates()).doesNotContain(fsm.root().getStateFor(FsmTest.States.AB));
         var event = Event.of(FsmTest.Events.AA_AB);
         fsm.fire(event);
-        assertThat(fsm.getHistoryStates()).isEmpty();
-        assertThat(fsm.getActiveStates()).contains(root.getStateFor(FsmTest.States.A));
-        assertThat(fsm.getActiveStates()).doesNotContain(root.getStateFor(FsmTest.States.AA));
-        assertThat(fsm.getActiveStates()).contains(root.getStateFor(FsmTest.States.AB));
-        assertThat(fsm.getHistoryStates()).isEmpty();
+        assertThat(fsm.historyStates()).isEmpty();
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmTest.States.A));
+        assertThat(fsm.activeStates()).doesNotContain(fsm.root().getStateFor(FsmTest.States.AA));
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmTest.States.AB));
+        assertThat(fsm.historyStates()).isEmpty();
         verify(action, times(1)).accept(this, event);
     }
 
@@ -227,17 +226,16 @@ class FsmTest {
     @Test
     void fireFatherTransitionTest() {
         var action = mock(BiConsumer.class);
-        var root = build(action).definition();
-        var fsm = new StateMachineImp<FsmTest, States, Events>("test-fsm", root, this);
-        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.A));
-        assertThat(root.initialStates()).contains(root.getStateFor(States.AA));
-        assertThat(fsm.getHistoryStates()).isEmpty();
+        var fsm = new StateMachineImp<FsmTest, States, Events>("test-fsm", build(action).definition(), this);
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(States.A));
+        assertThat(fsm.root().initialStates()).contains(fsm.root().getStateFor(States.AA));
+        assertThat(fsm.historyStates()).isEmpty();
         var event = Event.of(Events.A_C);
         fsm.fire(event);
-        assertThat(fsm.getActiveStates()).doesNotContain(root.getStateFor(States.A));
-        assertThat(fsm.getActiveStates()).doesNotContain(root.getStateFor(States.AA));
-        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.C));
-        assertThat(fsm.getHistoryStates()).isEmpty();
+        assertThat(fsm.activeStates()).doesNotContain(fsm.root().getStateFor(States.A));
+        assertThat(fsm.activeStates()).doesNotContain(fsm.root().getStateFor(States.AA));
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(States.C));
+        assertThat(fsm.historyStates()).isEmpty();
         verify(action, times(1)).accept(this, event);
     }
 
@@ -247,17 +245,16 @@ class FsmTest {
     @Test
     void fireTransitionToStateWithInitialStatesTest() {
         var action = mock(BiConsumer.class);
-        var root = build(action).definition();
-        var fsm = new StateMachineImp<FsmTest, States, Events>("test-fsm", root, this);
-        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.A));
-        assertThat(root.initialStates()).contains(root.getStateFor(States.AA));
-        assertThat(fsm.getHistoryStates()).isEmpty();
+        var fsm = new StateMachineImp<FsmTest, States, Events>("test-fsm", build(action).definition(), this);
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(States.A));
+        assertThat(fsm.root().initialStates()).contains(fsm.root().getStateFor(States.AA));
+        assertThat(fsm.historyStates()).isEmpty();
         fsm.fire(Event.of(Events.AA_B));
-        assertThat(fsm.getActiveStates()).doesNotContain(root.getStateFor(States.A));
-        assertThat(fsm.getActiveStates()).doesNotContain(root.getStateFor(States.AA));
-        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.B));
-        assertThat(fsm.getActiveStates()).contains(root.getStateFor(States.BB));
-        assertThat(fsm.getHistoryStates()).isEmpty();
+        assertThat(fsm.activeStates()).doesNotContain(fsm.root().getStateFor(States.A));
+        assertThat(fsm.activeStates()).doesNotContain(fsm.root().getStateFor(States.AA));
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(States.B));
+        assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(States.BB));
+        assertThat(fsm.historyStates()).isEmpty();
     }
 
     /**
