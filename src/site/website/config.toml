@@ -13,7 +13,6 @@ defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 enableMissingTranslationPlaceholders = true
 
-# disableKinds = ["taxonomy", "taxonomyTerm"]
 [taxonomies]
 tags = "tags"
 

@@ -1,6 +1,6 @@
 ---
 title: "OS 007: Persistence with MicroStream"
-linkTitle: "DI Guice"
+linkTitle: "Microstream"
 date: 2020-10-01
 weight: 6
 ---

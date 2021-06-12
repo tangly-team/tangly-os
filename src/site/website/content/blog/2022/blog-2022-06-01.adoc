@@ -190,7 +190,16 @@ The protection layer acts as an adapter to translate data from the upstream and 
 
 === Lessons Learnt
 
-[cite,Stefan Tilkov, 2021]
+Great technologies, programming languages and tools are used when building software appliations.
+That is good and right.
+But unfortunately it is often lost that the decisive factor for the success of a project is not the technology, but the solution.
+In order to be able to understand the subject matter or domain, we need a common language with the domain experts and users.
+If we do not map the technical model in the software and its architecture, it will not help our users in their work.
+As a computer scientist, it is easy to fall into the trap of focusing on technology instead of specialist knowledge
+footnoote:[In the modern trend of technology driven curriculum this dreadful approach is often encountered].
+The principle of bounded contexts from DDD can help us here.
+
+[cite,Stefan Tilkov,2021]
 ____
 Domain-driven design (DDD) is a useful approach that provides excellent guidelines for modeling and building systems, but it is a means to an end, not an end in itself.
 While the concepts are valid, you lose a lot if you limit yourself to using them only: There actually is a life beyond DDD.
@@ -199,6 +208,12 @@ ____
 [bibliography]
 === Literature
 
-* [[[domaindrivendesign, 1]]] Domain-Driven Design: Tackling Complexity in the Heart of Software. Eric Evans. Addison-Wesley. 2004.
-* [[[implmentingddd, 2]]] Implementing Domain-Driven Design. Vernon Vaughn. Addison-Wesley. 2013.
-* [[[ddddistilled, 3]]] Domain-Driven Design Distilled. Vernon Vaughn. Addison-Wesley. 2016.
+* [[[domaindrivendesign, 1]]] Domain-Driven Design: Tackling Complexity in the Heart of Software.
+Eric Evans.
+Addison-Wesley. 2004.
+* [[[implmentingddd, 2]]] Implementing Domain-Driven Design.
+Vernon Vaughn.
+Addison-Wesley. 2013.
+* [[[ddddistilled, 3]]] Domain-Driven Design Distilled.
+Vernon Vaughn.
+Addison-Wesley. 2016.

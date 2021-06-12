@@ -43,8 +43,7 @@ git submodule update --init --recursive
 # create the layout for the ideas folder under content so that the files are processed as a clone of docs folder
 cp -R ./layouts/docs ./layouts/ideas
 
-# improve copyright in the footer and taxonomy display for blogs
-cp $prjDir/src/site/website/docsy/layouts/_default/* $siteDir/themes/docsy/layouts/_default
+# improve copyright in the footer and comments in blogs
 cp $prjDir/src/site/website/docsy/layouts/blog/* $siteDir/themes/docsy/layouts/blog
 cp $prjDir/src/site/website/docsy/layouts/partials/* $siteDir/themes/docsy/layouts/partials
 

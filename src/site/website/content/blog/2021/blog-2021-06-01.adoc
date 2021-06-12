@@ -14,7 +14,7 @@ tags: ["agile"]
 
 image::2021-06-01-head.jpg[width=420,height=360,role=left]
 Agile fluency model is a powerful abstraction to better understand your agile transition.
-It does not matter which flavor of agile you are deploying in your organization; in all cases the agile fluency model can be applied.
+It does not matter which flavor of agile you are deploying in your organization; the agile fluency model can be applied in all cases.
 
 The agile fluency model has a powerful message about agile and technical excellence.
 The second zone of the model is all about software craftsmanship and {ref-xp}.
@@ -22,15 +22,17 @@ The second zone of the model is all about software craftsmanship and {ref-xp}.
 One key lesson of the fluency model is it take time until you are professional at your chosen level.
 
 Time measured in years not in days.
+Your organization needs years to transition to more agile ways of working.
+Do not rush it.
 
 === Zones
 
 The model defines four zones in which your company could thrive.
-You are free to choose the zone best suited for you organization.
+You are free to choose the zone best suited for your organization.
 Remember the zones are additive.
 If you target the third zone your teams shall also be fluent in all practices of the first and second zones.
 
-==== Shift Team Culture: _Focusing_ teams produce business value (2 - 6 months)
+==== Shift Team Culture: _Focusing_ teams produce business value (6 months)
 
 The team generates their own day-to-day tasks and plan based on their business representative’s needs.
 Team members consider their plan to be the team’s work, not individuals’ work.
@@ -38,41 +40,68 @@ Team members share accountability for getting their plan done.
 Management considers the plan to be the team’s work rather than assigning accountability to individuals.
 
 Select team members with appropriate skills, background, and willingness to work together.
-Allocate them 100% to their team.
+Allocate them 100% to their single team.
 
 * Create a productivity-focused shared workspace, strongly preferring a physical team room.
-If a physical team room is infeasible, provide a richly interactive virtual workspace instead, and accept that this will be less effective.
+If a physical team room is infeasible, provide a rich interactive virtual workspace
+footnote:[Each team member has a high-resolution camera, a professional headset, and a 4K display.
+Chat and collaboration tools are mandatory for effective working performance.
+Buy enough licenses for all team members for tools such as GitHub, Slack, Mural, collaborative IDE, etc.]
+instead, and accept that this will be less effective.
+
 * Ensure that someone with expertise on business priorities and customer value is available to act as the team’s business representative.
-* Remove impediments to effective teamwork such as competitive ranking, individual rewards, and distributed teams.
-* Coach and train team members in Focusing proficiencies.
+* Remove impediments to effective teamwork such as competitive ranking, individual rewards, and part-time membership to teams.
+* Coach and train team members in focusing proficiencies.
 * Train managers to create an environment that supports teamwork and how to manage the work system rather than individual contributions.
 
-==== Shift Team Skills: _Delivering_ teams deliver on the market cadence (3 - 24 months)
+The {ref-scrumguide} defines roles and events enabling a team to achieve the goals of the first zone.
 
-Increase Productivity The team has low defect rates, so less time is wasted fixing bugs and more time is invested in making improvements.
-Increase Productivity The team’s codebase has low technical debt, which makes changes cheaper and faster.
-Increase ROI The team ships on the market cadence, capturing value as often as the market will bear
+[.text-center]
+_The organization focuses on agile values and fosters the nuturing of agile teams._
+
+==== Shift Team Skills: _Delivering_ teams deliver on the market cadence (24 months)
+
+Increase External Quality Productivity::
+The team has low defect rates, so less time is wasted fixing bugs and more time is invested in making improvements.
+Increase Internal Quality Productivity::
+The team’s codebase has low technical debt, which makes changes cheaper and faster.
+Increase ROI::
+The team ships on the market cadence, capturing value as often as the market will bear.
 
 When working with code and similar artifacts, team members leave its technical quality at least slightly better than they found it.
 Production releases are automated and take no more than ten minutes of manual effort.
 The team produces production-grade code without requiring a manual testing phase.
-All team members are aware of how their professional and technical skills affect their ability to accomplish the team’s goals and decrease their maintenance costs.
-They proactively seek to improve those skills.
+All team members are aware of how their professional and technical skills affect their ability to accomplish the team’s goals.
+They understand these skills decrease their maintenance costs.
+They *proactively* seek to improve those skills.
 
-==== Shift Organizational Structure: _Optimizing_ teams lead their market (1 - 5 years)
+The {ref-less} people have documented a huge set of experiments helping teams to improve their delivery skills and technical excellence.
 
-Fluent Optimizing teams understand what their market wants, what your business needs, and how to meet those needs.
+[.text-center]
+_The organization focuses on technical agility and improves timely delivering of quality applications._
+
+==== Shift Organizational Structure: _Optimizing_ teams lead their market (5 years)
+
+Fluent optimizing teams understand what their market wants, what your business needs, and how to meet those needs.
 Or, as in a startup environment, they know what they need to learn and how to go about learning it.
-In contrast to Delivering teams, Optimizing teams not only have the ability to deliver to market, they also know what to deliver to market.
+In contrast to delivering teams, Optimizing teams not only have the ability to deliver to market, they also know what to deliver to market.
+
+[.text-center]
+_The organization focuses on value and improves the delivery of highly successful applications._
 
 ==== Shift Organizational Culture: _Strengthening_ teams make their organizations stronger (unknown)
 
-Where Optimizing teams have the ability to understand and fulfill the needs of their market, Strengthening teams also play a larger role in their organization.
+Where Optimizing teams have the ability to understand and fulfill the needs of their market.
+Strengthening teams also play a larger role in their organization.
 
 Strengthening teams contribute to their organization in three ways.
 First, they understand how they are part of a larger system.
 They understand how their purpose aligns with other teams’ to achieve a greater strategy.
 They actively work to make that strategy more successful.
+
+[.text-center]
+_The organization is a key player and has no real concurrency.
+Employees, customers and stakeholders satistaction is high._
 
 === Choose Your Zone
 
@@ -112,21 +141,22 @@ When Introducing Agile::
 One of the biggest factors affecting team fluency is organizational support.
 To continue the bus metaphor, the team has to ride the bus to their fluency zone.
 No one can do it for them.
-But the organization has to buy the bus ticket.
+The organization has to buy the bus tickets.
 An organization that expects fluency without providing appropriate support is bound to be disappointed.
 Even worse, insufficient support can cause turnover and create a cynical corporate culture that hinders improvements.
 Before embarking on your fluency journey, be sure your organization is prepared to offer the support the journey needs.
 When Sustaining Agile::
 It’s rare for stable teams to lose fluency on their own.
-In our experience, it is an external disruption that causes fluency loss.
+In our experience, external disruptions cause fluency loss.
 The most common cause of fluency loss is when new management decides that agile approaches do not fit their vision.
-Without organizational support and the ability to continue practicing what they’ve learned, team fluency erodes quickly.
+Without organizational support and the ability to continue practicing what they have learned, team fluency erodes quickly.
 This is often accompanied by loss of expertise as dissatisfied team members seek new positions.
 Turnover is a related cause of fluency loss.
-A team that gains or loses too many members may have trouble sustaining what it’s learned.
-This is a particular problem for organizations that assemble new teams for every product.
+A team that gains or loses too many members may have trouble sustaining what it is learned.
+This is a particular problem for organizations that assemble new teams for every project.
 Agile Fluency and Scrum::
 Agile and Scrum requires long-living and stable teams.
+A team should work over years on one product development and improvements.
 Agile at organizational level can only work if the upper and middle management transitioned to agile thinking and handling.
 The {ref-less} community is vocal how destructive wrong management decision can be.
 Agile development is a team sport, so fluency is a trait of the team, not individual team members.
