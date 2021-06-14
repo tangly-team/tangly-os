@@ -16,7 +16,6 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
-import java.lang.invoke.MethodHandles;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Set;
@@ -35,7 +34,7 @@ import org.jetbrains.annotations.NotNull;
  * Utilities to process and validate JSON files.
  */
 public class JsonUtilities {
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
 
     private JsonUtilities() {
     }

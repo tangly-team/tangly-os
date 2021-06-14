@@ -12,8 +12,6 @@
 
 package net.tangly.core;
 
-import java.lang.invoke.MethodHandles;
-
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber;
@@ -26,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
  * supports worldwide numbers.
  */
 public record PhoneNr(@NotNull String number) {
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
 
     public PhoneNr {
         if (!isValid(number)) {
@@ -46,7 +44,7 @@ public record PhoneNr(@NotNull String number) {
             try {
                 Phonenumber.PhoneNumber googleNr = numberUtil.parse(number, "CH");
                 return new PhoneNr(numberUtil.format(googleNr, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL));
-            } catch (NumberParseException |IllegalArgumentException e) {
+            } catch (NumberParseException | IllegalArgumentException e) {
                 logger.atWarn().withThrowable(e).log("Error creating phone number {}", number);
             }
         }

@@ -1,7 +1,6 @@
 package net.tangly.erp;
 
 import java.io.IOException;
-import java.lang.invoke.MethodHandles;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.Month;
@@ -42,7 +41,7 @@ public class Erp {
     private static final String IMPORTS_DIRECTORY_PROPERTY = "erp.root.imports.directory";
     private static final String REPORTS_DIRECTORY_PROPERTY = "erp.root.reports.directory";
 
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
     private final TypeRegistry registry;
     private final String organization;
     private final String databases;

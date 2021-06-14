@@ -17,7 +17,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.UncheckedIOException;
-import java.lang.invoke.MethodHandles;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -76,7 +75,7 @@ public final class TsvHdl {
     private static final String BIC = "bic";
     private static final String INSTITUTE = "institute";
     public static final String MODULE = "net.tangly.ports";
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
 
 
     private TsvHdl() {

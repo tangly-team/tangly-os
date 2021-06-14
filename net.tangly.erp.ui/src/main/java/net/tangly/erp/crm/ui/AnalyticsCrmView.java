@@ -12,7 +12,6 @@
 
 package net.tangly.erp.crm.ui;
 
-import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +47,7 @@ public class AnalyticsCrmView extends AnalyticsView {
     private static final String ContractsTurnover = "Contracts Turnover";
     private static final String Funnel = "Funnel";
     private static final String SpentOnContracts = "Spent On Contracts";
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
     private final CrmBoundedDomain crmDomain;
     private final InvoicesBusinessLogic invoicesLogic;
     private SOChart contractsSoChart;

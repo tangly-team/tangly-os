@@ -16,7 +16,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.UncheckedIOException;
-import java.lang.invoke.MethodHandles;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -36,7 +35,7 @@ import org.json.JSONTokener;
  * key to the feature. A story is part of exactly one class. Therefore, the class name is the key for the story. A scenario is part of exactly one method.
  */
 public class StoryMerger {
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
     private final JSONArray features;
 
     public StoryMerger() {

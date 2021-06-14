@@ -12,7 +12,6 @@
 
 package net.tangly.erp.ui;
 
-import java.lang.invoke.MethodHandles;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -30,7 +29,7 @@ import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainer
 import org.jetbrains.annotations.NotNull;
 
 public class EmbeddedJetty {
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
     private static Server server;
 
     public static void main(String[] args) throws Exception {

@@ -15,7 +15,6 @@ package net.tangly.erpr.crm.ports;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.UncheckedIOException;
-import java.lang.invoke.MethodHandles;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -47,7 +46,7 @@ public class CrmVcardHdl {
     private static final String PHOTO_EXT = ".jpeg";
     private static final String PICTURES_FOLDER = "pictures";
 
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
     private final CrmRealm realm;
 
     @Inject
@@ -93,8 +92,9 @@ public class CrmVcardHdl {
 
     /**
      * The quality of the linkedin picture is higher rated than the one of the vcard. The stored picture will supersede the vcard picture if found.
-     * @param entity natural entity which picture should be updated
-     * @param card VCard of the natural entity
+     *
+     * @param entity      natural entity which picture should be updated
+     * @param card        VCard of the natural entity
      * @param picturesDir the folder containing linkedin pictures. The name of the picture is the linkedIn profile name
      * @return the best found picture if found otherwise an empty optional
      */

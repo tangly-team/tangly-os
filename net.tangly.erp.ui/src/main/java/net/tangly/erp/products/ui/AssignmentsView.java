@@ -12,7 +12,6 @@
 
 package net.tangly.erp.products.ui;
 
-import java.lang.invoke.MethodHandles;
 import javax.inject.Inject;
 
 import com.vaadin.flow.component.grid.Grid;
@@ -29,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
  * Regular CRUD view on assignments abstraction. The grid and edition dialog wre optimized for usability.
  */
 class AssignmentsView extends InternalEntitiesView<Assignment> {
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
     private final transient ProductsBoundedDomain domain;
 
     @Inject
@@ -44,11 +43,7 @@ class AssignmentsView extends InternalEntitiesView<Assignment> {
         Grid<Assignment> grid = grid();
         InternalEntitiesView.addQualifiedEntityColumns(grid);
         grid.addColumn(Assignment::collaboratorId).setKey("collaboratorId").setHeader("Collaborator").setSortable(true).setAutoWidth(true).setResizable(true);
-        grid.addColumn(e -> (e.product() != null) ? e.product().name() : null)
-            .setKey("project")
-            .setHeader("Project")
-            .setSortable(true)
-            .setAutoWidth(true)
+        grid.addColumn(e -> (e.product() != null) ? e.product().name() : null).setKey("project").setHeader("Project").setSortable(true).setAutoWidth(true)
             .setResizable(true);
         GridDecorators<Assignment> gridFunctions = gridFiltersAndActions(true, false);
         gridFunctions.addItemAction("Add Effort", e -> new CmdCreateEffort(selectedItem(), domain).execute());

@@ -12,7 +12,6 @@
 
 package net.tangly.erp.ledger.ui;
 
-import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -36,7 +35,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class AnalyticsLedgerView extends AnalyticsView {
     private static final String ProfitAndLoss = "Profit & Loss";
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
     private final LedgerBusinessLogic ledgerLogic;
     private SOChart profitAndLossSoChart;
     private SOChart financialSoChart;

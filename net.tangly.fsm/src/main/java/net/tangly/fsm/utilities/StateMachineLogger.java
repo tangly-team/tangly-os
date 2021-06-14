@@ -12,7 +12,6 @@
 
 package net.tangly.fsm.utilities;
 
-import java.lang.invoke.MethodHandles;
 import java.util.Objects;
 import java.util.function.BiConsumer;
 
@@ -29,7 +28,7 @@ import org.apache.logging.log4j.Logger;
  * following structure: machine_name[machine_oid] operation operation parameters
  */
 public record StateMachineLogger<O, S extends Enum<S>, E extends Enum<E>>(StateMachine<O, S, E> machine) implements StateMachineEventHandler<O, S, E> {
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
 
     @Override
     public void processEvent(Event<E> event) {

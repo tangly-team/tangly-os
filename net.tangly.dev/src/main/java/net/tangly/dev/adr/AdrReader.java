@@ -14,7 +14,6 @@ package net.tangly.dev.adr;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
-import java.lang.invoke.MethodHandles;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -33,7 +32,7 @@ import static java.nio.file.Files.readAllLines;
  * Imports architecture design records <em>ADR</em> from asciidoc files.
  */
 public class AdrReader {
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
 
     public AdrReader() {
     }

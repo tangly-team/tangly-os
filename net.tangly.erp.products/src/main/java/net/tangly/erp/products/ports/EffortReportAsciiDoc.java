@@ -15,7 +15,6 @@ package net.tangly.products.ports;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -35,7 +34,7 @@ import org.jetbrains.annotations.NotNull;
 import static java.util.stream.Collectors.groupingBy;
 
 public class EffortReportAsciiDoc {
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
 
     private final ProductsBusinessLogic logic;
 
@@ -69,13 +68,13 @@ public class EffortReportAsciiDoc {
 
     private void generateEffortsForContract(@NotNull List<Effort> efforts, @NotNull AsciiDocHelper helper) {
         efforts.forEach(o -> helper.tableRow(o.date().toString(), o.text(), Integer.toString(o.duration())));
-        helper.tableRow("","","");
+        helper.tableRow("", "", "");
     }
 
     private void generateEffortsTotalForContract(@NotNull List<Effort> efforts, @NotNull String contractId, @NotNull AsciiDocHelper helper) {
         int totalDuration = efforts.stream().map(Effort::duration).reduce(0, Integer::sum);
         BigDecimal totalHours = new BigDecimal(totalDuration).divide(new BigDecimal(60));
         helper.tableRow("Total Time for Contract " + contractId, "(time in minutes " + totalDuration + ")", totalHours.toString());
-        helper.tableRow("","","");
+        helper.tableRow("", "", "");
     }
 }

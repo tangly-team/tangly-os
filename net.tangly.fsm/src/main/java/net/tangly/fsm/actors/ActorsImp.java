@@ -12,13 +12,11 @@
 
 package net.tangly.fsm.actors;
 
-import java.lang.invoke.MethodHandles;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
  * @param <T> the event enumeration type uniquely identifying the event sent to the state machine
  */
 public class ActorsImp<T> implements Actors<T> {
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
     private final Map<UUID, Actor<T>> actors;
     private final ExecutorService executor;
 

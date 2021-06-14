@@ -12,7 +12,6 @@
 
 package net.tangly.core;
 
-import java.lang.invoke.MethodHandles;
 import java.util.Objects;
 
 import org.apache.logging.log4j.LogManager;
@@ -30,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
  * Describes a bank connection with IBAN account number, BIC identification and name of the institute. The class is immutable.
  */
 public record BankConnection(@NotNull String iban, String bic, String institute) {
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
 
     public BankConnection {
         if (Strings.isNullOrBlank(iban) || !validateIban(iban)) {

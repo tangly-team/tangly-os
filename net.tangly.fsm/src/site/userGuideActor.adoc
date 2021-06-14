@@ -16,7 +16,7 @@ A finite state machine actor class is provided to easily create an active class 
 [source,java]
 ----
 class FsmActor<O extends FsmActor<O, S, E>, S extends Enum<S>, E extends Enum<E>> extends Actor<Event<?>, Void> {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LoggerFactory.getLogger();
     private final StateMachine<O, S, E> fsm;
 
     public FsmActor(@Nonnull FsmBuilder<O, S, E> builder, String name) throws SuspendExecution {
@@ -50,11 +50,10 @@ You can find example how to create FSM actor derived classes in the tests in pac
 
 === Messages
 
-The message send to a finite state machine instance is a regular event instance with a generic parameter being the
-enumeration of all event kinds the machine should process.
+The message send to a finite state machine instance is a regular event instance with a generic parameter being the enumeration of all event kinds the machine should process.
 
-You send a message to an quasar actor with the following snippet such as. The run method of the FSM actor will retrieve
-the event from the message queue of the quasar actor instance and dispatch it to the finite state machine instance
+You send a message to an quasar actor with the following snippet such as.
+The run method of the FSM actor will retrieve the event from the message queue of the quasar actor instance and dispatch it to the finite state machine instance
 
 [source,java]
 ----

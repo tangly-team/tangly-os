@@ -12,7 +12,6 @@
 
 package net.tangly.erp.products.ui;
 
-import java.lang.invoke.MethodHandles;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -39,7 +38,7 @@ import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 public class CmdCreateEffort extends Dialog implements Cmd {
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
     private final Binder<Effort> binder;
     private final Effort effort;
     private final transient Assignment assignment;

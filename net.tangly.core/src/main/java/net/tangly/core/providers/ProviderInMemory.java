@@ -12,7 +12,6 @@
 
 package net.tangly.core.providers;
 
-import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -28,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
  * @param <T> type of the instances handled in the provider
  */
 public class ProviderInMemory<T> implements Provider<T> {
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
     private final List<T> items;
 
     public ProviderInMemory() {

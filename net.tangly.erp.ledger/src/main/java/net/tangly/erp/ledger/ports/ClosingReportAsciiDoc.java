@@ -16,7 +16,6 @@ package net.tangly.erp.ledger.ports;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -39,7 +38,7 @@ import static net.tangly.commons.utilities.AsciiDocHelper.format;
  * A complete accounting report for a specific time interval. We suggest you use year, half-year and quarter ports. The output format is AsciiDoc.
  */
 public class ClosingReportAsciiDoc {
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
     private final LedgerRealm ledger;
 
     /**

@@ -14,7 +14,6 @@
 package net.tangly.erp.invoices.ports;
 
 import java.io.IOException;
-import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -178,7 +177,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
         }
     }
 
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
     private static final BigDecimal HUNDRED = new BigDecimal("100");
     private Invoice invoice;
 

@@ -18,7 +18,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.UncheckedIOException;
-import java.lang.invoke.MethodHandles;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -53,7 +52,7 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 public class InvoiceJson implements InvoiceGenerator {
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
     private static final String COMPONENT = "net.tangly.ports";
     private final InvoicesRealm realm;
 

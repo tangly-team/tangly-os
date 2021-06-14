@@ -12,7 +12,6 @@
 
 package net.tangly.ui.components;
 
-import java.lang.invoke.MethodHandles;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -40,7 +39,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public abstract class EntitiesView<T> extends Crud<T> implements CrudForm<T> {
     public static final String DATE_WIDTH = "8em";
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
     protected final transient Provider<T> provider;
 
     /**

@@ -14,7 +14,6 @@ package net.tangly.commons.imap;
 
 import java.io.Closeable;
 import java.io.IOException;
-import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -37,7 +36,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class ImapSession implements Closeable {
     private static final String GMAIL_IMAP_SERVER = "imap.googlemail.com";
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
     private Store store;
     private Session session;
     private IMAPFolder allMail;

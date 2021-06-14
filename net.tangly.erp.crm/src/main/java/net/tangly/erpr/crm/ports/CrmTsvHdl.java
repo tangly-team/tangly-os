@@ -12,7 +12,6 @@
 
 package net.tangly.erpr.crm.ports;
 
-import java.lang.invoke.MethodHandles;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -83,7 +82,7 @@ public class CrmTsvHdl {
     private static final String AUTHOR = "author";
     private static final String TAGS = "tags";
 
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
     private final CrmRealm realm;
     private final Map<Long, Comment> importedComments;
     private final Map<Comment, Long> exportedComments;

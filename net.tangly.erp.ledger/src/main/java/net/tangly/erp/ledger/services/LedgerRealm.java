@@ -12,7 +12,6 @@
 
 package net.tangly.erp.ledger.services;
 
-import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
@@ -34,7 +33,7 @@ import org.jetbrains.annotations.NotNull;
  * related bookings to the VAT related accounts.
  */
 public interface LedgerRealm extends Realm {
-    Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    Logger logger = LogManager.getLogger();
 
     Provider<Account> accounts();
 

@@ -14,7 +14,6 @@ package net.tangly.dev.apps;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.lang.invoke.MethodHandles;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -38,7 +37,7 @@ import org.apache.logging.log4j.Logger;
  * THe parser builds the structure of repository files, committers, commits and individual file changes over a period of time.
  */
 public class ParserGitCommits {
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
     private final Set<Committer> committers;
     private final List<RepositoryFile> files;
     private final List<Commit> commits;

@@ -17,7 +17,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.UncheckedIOException;
-import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -67,7 +66,7 @@ public class LedgerTsvHdl {
     private static final String VAT_CODE = "VatCode";
     private static final String DATE_EXPECTED = "DateExpected";
 
-    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger();
     private final LedgerRealm ledger;
 
     @Inject
@@ -171,8 +170,8 @@ public class LedgerTsvHdl {
                 EventData.log(EventData.EXPORT, TsvHdl.MODULE, EventData.Status.SUCCESS, Account.class.getSimpleName() + " exported to charter of accounts",
                     Map.of("filename", path, "entity", account));
             }
-            EventData
-                .log(EventData.EXPORT, TsvHdl.MODULE, EventData.Status.INFO, "exported to charter of accounts", Map.of("filename", path, "counter", counter));
+            EventData.log(EventData.EXPORT, TsvHdl.MODULE, EventData.Status.INFO, "exported to charter of accounts",
+                Map.of("filename", path, "counter", counter));
         } catch (IOException e) {
             EventData.log(EventData.EXPORT, TsvHdl.MODULE, EventData.Status.FAILURE, "Accounts exported to", Map.of("filename", path), e);
             throw new UncheckedIOException(e);
