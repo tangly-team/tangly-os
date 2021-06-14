@@ -64,3 +64,4 @@ We shall explore if trouble arise from used components which are using other log
 The risk is small because it is already existing wehn using slf4j liberary.
 The difference is only our new preferred library is now the Apache one.
 
+The architecture of log4j2 is described are https://logging.apache.org/log4j/2.x/manual/architecture.html[Main Components].
