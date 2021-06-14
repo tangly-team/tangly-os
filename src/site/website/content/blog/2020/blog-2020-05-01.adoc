@@ -52,7 +52,7 @@ Then you just need to make sure you write a proper Java module by providing An e
    exports net.tangly.fsm;
    exports net.tangly.fsm.dsl;
    exports net.tangly.fsm.utilities;
-   requires org.slf4j;
+   requires org.apache.logging.log4j;
    requires static org.jetbrains.annotations;
  }
 ----
