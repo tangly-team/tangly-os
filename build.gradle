@@ -31,8 +31,8 @@ plugins {
     id "org.sonarqube" version "3.2.0"
     id 'org.sonatype.gradle.plugins.scan' version '2.0.10'
     id "info.solidsoft.pitest" version "1.6.0"
-    id 'com.google.cloud.tools.jib' version '3.0.0'
-    id 'com.github.ben-manes.versions' version '0.38.0'
+    id 'com.google.cloud.tools.jib' version '3.1.0'
+    id 'com.github.ben-manes.versions' version '0.39.0'
 }
 
 ext {
@@ -92,7 +92,7 @@ allprojects {
             ignoreFailures = true
             effort = "max"
             reportLevel = "low"
-            toolVersion = '4.2.2'
+            toolVersion = '4.2.3'
         }
         [spotbugsMain, spotbugsTest].each { task ->
             task.configure {
@@ -161,14 +161,10 @@ subprojects {
 
     ext {
         assertjVersion = '3.18.1'
-        slf4jVersion = '2.0.0-alpha1'
     }
 
     configurations.all {
         resolutionStrategy {
-            // necessary to avoid runtime errors due to older versions without the fluent API functionality until 2.0 is released and used by all components
-            force "org.slf4j:slf4j-api:$slf4jVersion"
-            force "org.slf4j:slf4j-simple:$slf4jVersion"
             // necessary to avoid compile errors with MustangProject library
             force "org.assertj:assertj-core:$assertjVersion"
             // necessary to avoid JRuby errors because Jackson is loading version 1.19 with an API error
@@ -177,13 +173,15 @@ subprojects {
     }
 
     dependencies {
-        implementation(libs.slf4j.api)
+        implementation(libs.apache.log4j2.api)
         implementation(libs.guice)
+
         compileOnly(libs.annotations)
-        runtimeOnly(libs.slf4j.logback)
+        runtimeOnly(libs.apache.log4j2.core)
 
         testImplementation(libs.bundles.test.deps)
         testCompileOnly(libs.annotations)
+        testRuntimeOnly(libs.apache.log4j2.core)
         testRuntimeOnly(libs.junit.engine)
     }
 
