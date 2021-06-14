@@ -14,8 +14,7 @@
 plugins {
     id "java"
     id "application"
-    id "com.vaadin" version "0.17.0.1"
-
+    id "com.vaadin" version "20.0.1"
 }
 
 project.ext.groupId = 'net.tangly.erp'
@@ -26,8 +25,7 @@ project.ext.inceptionYear = '1996'
 project.description = "User Interface ERP - using Java 16 or higher (tangly llc)"
 
 ext {
-    vaadinVersion = '19.0.8'
-    jettyVersion = "9.4.38.v20210224"
+    jettyVersion = "9.4.41.v20210516"
 }
 
 application {
@@ -35,9 +33,8 @@ application {
 }
 
 vaadin {
-    pnpmEnable = false  // workaround for https://github.com/vaadin/flow/issues/10571
+    optimizeBundle = false
 }
-
 
 dependencies {
     implementation project(':net.tangly.commons')
@@ -59,11 +56,8 @@ dependencies {
     implementation("org.eclipse.jetty.websocket:javax-websocket-server-impl:${jettyVersion}") {
         exclude(module: "javax.websocket-client-api")
     }
-
     implementation(libs.microstream.storage)
     implementation(libs.vaadin.socharts)
-
-    implementation("org.slf4j:slf4j-simple:1.7.30")
 
     testImplementation(libs.vaadin.test)
 }

@@ -30,14 +30,14 @@ import jakarta.mail.Session;
 import jakarta.mail.Store;
 import jakarta.mail.internet.MimeMultipart;
 import jakarta.mail.search.MessageIDTerm;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 
 public class ImapSession implements Closeable {
     private static final String GMAIL_IMAP_SERVER = "imap.googlemail.com";
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private Store store;
     private Session session;
     private IMAPFolder allMail;
@@ -52,7 +52,7 @@ public class ImapSession implements Closeable {
             allMail = (IMAPFolder) store.getFolder("[Gmail]/All Mail");
             allMail.open(Folder.READ_ONLY);
         } catch (MessagingException e) {
-            logger.atError().setCause(e).log("Error when creating an IMAP session");
+            logger.atError().withThrowable(e).log("Error when creating an IMAP session");
         }
     }
 
@@ -63,7 +63,7 @@ public class ImapSession implements Closeable {
             Message[] items = allMail.search(messageIDTerm);
             messages = Arrays.asList(items);
         } catch (MessagingException e) {
-            logger.atError().setCause(e).log("Error when searching messages");
+            logger.atError().withThrowable(e).log("Error when searching messages");
         }
         return messages;
     }
@@ -73,7 +73,7 @@ public class ImapSession implements Closeable {
         try {
             allMail.close();
         } catch (MessagingException e) {
-            logger.atError().setCause(e).log("Error when closing folder");
+            logger.atError().withThrowable(e).log("Error when closing folder");
         }
     }
 
@@ -90,7 +90,7 @@ public class ImapSession implements Closeable {
                 }
             }
         } catch (MessagingException | IOException e) {
-            logger.atError().setCause(e).log("Error when selecting MIME multiparts");
+            logger.atError().withThrowable(e).log("Error when selecting MIME multiparts");
         }
         return parts;
     }
@@ -107,7 +107,7 @@ public class ImapSession implements Closeable {
             try {
                 parts = selectTextParts((MimeMultipart) msg.getContent());
             } catch (IOException | MessagingException e) {
-                logger.atError().setCause(e).log("Error when selecting MIME multiparts");
+                logger.atError().withThrowable(e).log("Error when selecting MIME multiparts");
             }
         } else {
             parts = Collections.emptyList();

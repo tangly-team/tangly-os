@@ -15,6 +15,7 @@ package net.tangly.ui.grids;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEventListener;
+import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.datepicker.DatePicker;
@@ -89,7 +90,10 @@ public class GridDecorators<T> extends HorizontalLayout implements SelectedItemL
         filters = new ArrayList<>();
         selectedItem(null);
         if (!Strings.isNullOrBlank(text)) {
-            add(new Label(text));
+            TextField textField = new TextField(text);
+            textField.setReadOnly(true);
+            textField.setEnabled(false);
+            add(textField);
         }
         if (hasItemActions || hasGlobalActions) {
             add(menuBar);

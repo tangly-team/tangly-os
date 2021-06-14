@@ -27,15 +27,15 @@ import com.networknt.schema.JsonSchema;
 import com.networknt.schema.JsonSchemaFactory;
 import com.networknt.schema.SpecVersion;
 import com.networknt.schema.ValidationMessage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Utilities to process and validate JSON files.
  */
 public class JsonUtilities {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
 
     private JsonUtilities() {
     }
@@ -69,7 +69,7 @@ public class JsonUtilities {
             JsonSchema schema = factory.getSchema(is);
             return schema.validate(node);
         } catch (IOException e) {
-            logger.atError().setCause(e).log("IO Exception when processing {}", jsonFile);
+            logger.atError().withThrowable(e).log("IO Exception when processing {}", jsonFile);
             throw new UncheckedIOException(e);
         }
     }

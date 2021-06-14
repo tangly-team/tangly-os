@@ -28,14 +28,14 @@ import net.tangly.commons.utilities.AsciiDocHelper;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static java.util.stream.Collectors.groupingBy;
 
 public class EffortReportAsciiDoc {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
 
     private final ProductsBusinessLogic logic;
 

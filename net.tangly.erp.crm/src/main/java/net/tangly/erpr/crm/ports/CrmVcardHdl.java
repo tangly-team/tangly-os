@@ -35,9 +35,9 @@ import net.tangly.core.crm.VcardType;
 import net.tangly.erp.crm.domain.NaturalEntity;
 import net.tangly.erp.crm.domain.Photo;
 import net.tangly.erp.crm.services.CrmRealm;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Handler to import and export VCard representations of natural entities.
@@ -47,7 +47,7 @@ public class CrmVcardHdl {
     private static final String PHOTO_EXT = ".jpeg";
     private static final String PICTURES_FOLDER = "pictures";
 
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private final CrmRealm realm;
 
     @Inject
@@ -87,7 +87,7 @@ public class CrmVcardHdl {
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         } catch (ParserException e) {
-            logger.atError().setCause(e).log("Error when parsing vcf file {}", path);
+            logger.atError().withThrowable(e).log("Error when parsing vcf file {}", path);
         }
     }
 
@@ -107,7 +107,7 @@ public class CrmVcardHdl {
                 try (var stream = Files.newInputStream(path)) {
                     photo = Optional.of(Photo.of(stream.readAllBytes()));
                 } catch (IOException e) {
-                    logger.atError().addArgument(path).log("Could not read picture from {}");
+                    logger.atError().log("Could not read picture from {}", path);
                 }
             }
         }

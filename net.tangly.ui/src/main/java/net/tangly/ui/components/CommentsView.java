@@ -55,6 +55,7 @@ public class CommentsView extends EntitiesView<Comment> {
     @Override
     protected void initialize() {
         Grid<Comment> grid = grid();
+        grid.setPageSize(5);
         grid.addColumn(Comment::created).setKey("created").setHeader("Created").setSortable(true).setFlexGrow(0).setWidth("200px").setResizable(false)
             .setFrozen(true);
         grid.addColumn(Comment::author).setKey("author").setHeader("Author").setSortable(true).setFlexGrow(0).setWidth("200px").setResizable(false);

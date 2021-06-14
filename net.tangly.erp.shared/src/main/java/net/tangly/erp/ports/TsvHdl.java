@@ -50,9 +50,9 @@ import net.tangly.gleam.model.TsvProperty;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public final class TsvHdl {
     public static final CSVFormat FORMAT =
@@ -76,7 +76,7 @@ public final class TsvHdl {
     private static final String BIC = "bic";
     private static final String INSTITUTE = "institute";
     public static final String MODULE = "net.tangly.ports";
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
 
 
     private TsvHdl() {

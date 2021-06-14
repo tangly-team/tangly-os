@@ -10,28 +10,28 @@ import java.util.Properties;
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.core.HasOid;
 import net.tangly.core.TypeRegistry;
-import net.tangly.erp.invoices.ports.InvoicesAdapter;
-import net.tangly.erp.invoices.ports.InvoicesEntities;
-import net.tangly.erp.invoices.ports.InvoicesHdl;
-import net.tangly.erp.ledger.ports.LedgerAdapter;
-import net.tangly.erp.ledger.ports.LedgerEntities;
-import net.tangly.erp.ledger.ports.LedgerHdl;
-import net.tangly.erpr.crm.ports.CrmEntities;
-import net.tangly.erpr.crm.ports.CrmHdl;
 import net.tangly.erp.crm.domain.Subject;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.crm.services.CrmBusinessLogic;
+import net.tangly.erp.invoices.ports.InvoicesAdapter;
+import net.tangly.erp.invoices.ports.InvoicesEntities;
+import net.tangly.erp.invoices.ports.InvoicesHdl;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesBusinessLogic;
+import net.tangly.erp.ledger.ports.LedgerAdapter;
+import net.tangly.erp.ledger.ports.LedgerEntities;
+import net.tangly.erp.ledger.ports.LedgerHdl;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.services.LedgerBusinessLogic;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
+import net.tangly.erpr.crm.ports.CrmEntities;
+import net.tangly.erpr.crm.ports.CrmHdl;
 import net.tangly.products.ports.ProductsAdapter;
 import net.tangly.products.ports.ProductsEntities;
 import net.tangly.products.ports.ProductsHdl;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * The ERP application instantiating the bounded domain instances. The class implements a modular monolith application.
@@ -42,7 +42,7 @@ public class Erp {
     private static final String IMPORTS_DIRECTORY_PROPERTY = "erp.root.imports.directory";
     private static final String REPORTS_DIRECTORY_PROPERTY = "erp.root.reports.directory";
 
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private final TypeRegistry registry;
     private final String organization;
     private final String databases;

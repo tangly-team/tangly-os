@@ -14,7 +14,7 @@
 module tangly.os.net.tangly.gleam.main {
     exports net.tangly.gleam.model;
 
-    requires org.slf4j;
+    requires org.apache.logging;
     requires org.json;
     // TODO waiting on apache commons csv
     requires static transitive org.jetbrains.annotations;

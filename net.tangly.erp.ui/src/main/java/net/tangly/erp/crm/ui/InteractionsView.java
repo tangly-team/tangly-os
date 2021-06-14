@@ -12,25 +12,34 @@
 
 package net.tangly.erp.crm.ui;
 
+import java.math.BigDecimal;
+
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.select.Select;
+import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.core.codes.CodeType;
+import net.tangly.core.providers.ProviderInMemory;
+import net.tangly.core.providers.ProviderView;
+import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.Interaction;
 import net.tangly.erp.crm.domain.InteractionCode;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
+import net.tangly.ui.components.CommentsView;
 import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.EntityField;
 import net.tangly.ui.components.InternalEntitiesView;
+import net.tangly.ui.components.One2ManyView;
+import net.tangly.ui.components.TabsComponent;
+import net.tangly.ui.components.TagsView;
 import net.tangly.ui.components.VaadinUtils;
 import net.tangly.ui.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
-
-import java.math.BigDecimal;
 
 /**
  * Regular CRUD view on interactions abstraction. The grid and edition dialog wre optimized for usability.
@@ -57,6 +66,24 @@ class InteractionsView extends InternalEntitiesView<Interaction> {
         grid.addColumn(new NumberRenderer<>(e -> e.potential().multiply(e.probability()), VaadinUtils.FORMAT)).setKey("forecast").setHeader("Forecast")
             .setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         addAndExpand(filterCriteria(false, false, InternalEntitiesView::addQualifiedEntityFilters), grid(), gridButtons());
+    }
+
+    @Override
+    protected void registerTabs(@NotNull TabsComponent tabs, @NotNull Mode mode, @NotNull Interaction entity) {
+        tabs.add(new Tab("Overview"), createOverallView(mode, entity));
+        tabs.add(new Tab("Comments"), new CommentsView(mode, entity));
+        tabs.add(new Tab("Tags"), new TagsView(mode, entity, domain.registry()));
+        One2ManyView<Activity> activities = new One2ManyView<>(Activity.class, mode, InteractionsView::defineOne2ManyActivities,
+            ProviderView.of(new ProviderInMemory(entity.activities())), new ActivitiesView(domain, mode));
+        tabs.add(new Tab("Activities"), activities);
+    }
+
+    public static void defineOne2ManyActivities(@NotNull Grid<Activity> grid) {
+        VaadinUtils.initialize(grid);
+        grid.addColumn(Activity::date).setKey("date").setHeader("Date").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Activity::author).setKey("author").setHeader("Author").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Activity::code).setKey("code").setHeader("Code").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Activity::duration).setKey("duration").setHeader("Duration").setAutoWidth(true).setResizable(true).setSortable(true);
     }
 
     @Override

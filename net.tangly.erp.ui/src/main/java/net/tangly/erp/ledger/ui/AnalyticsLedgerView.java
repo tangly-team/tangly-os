@@ -30,13 +30,13 @@ import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.services.LedgerBusinessLogic;
 import net.tangly.ui.app.domain.AnalyticsView;
 import net.tangly.ui.components.VaadinUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class AnalyticsLedgerView extends AnalyticsView {
     private static final String ProfitAndLoss = "Profit & Loss";
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private final LedgerBusinessLogic ledgerLogic;
     private SOChart profitAndLossSoChart;
     private SOChart financialSoChart;

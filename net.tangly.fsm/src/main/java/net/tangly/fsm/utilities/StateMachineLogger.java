@@ -21,15 +21,15 @@ import net.tangly.fsm.State;
 import net.tangly.fsm.StateMachine;
 import net.tangly.fsm.StateMachineEventHandler;
 import net.tangly.fsm.Transition;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * The state machine logger documents all activities performed during the firing of events for a specific finite state machine instance. All logs have the
  * following structure: machine_name[machine_oid] operation operation parameters
  */
 public record StateMachineLogger<O, S extends Enum<S>, E extends Enum<E>>(StateMachine<O, S, E> machine) implements StateMachineEventHandler<O, S, E> {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
 
     @Override
     public void processEvent(Event<E> event) {

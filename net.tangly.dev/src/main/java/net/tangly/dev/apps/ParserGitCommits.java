@@ -29,8 +29,8 @@ import net.tangly.dev.model.Commit;
 import net.tangly.dev.model.CommitItem;
 import net.tangly.dev.model.Committer;
 import net.tangly.dev.model.RepositoryFile;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * <p><code>git log --numstat --pretty=format:'[%h] %an %ad %s' --date=short</code></p>
@@ -38,7 +38,7 @@ import org.slf4j.LoggerFactory;
  * THe parser builds the structure of repository files, committers, commits and individual file changes over a period of time.
  */
 public class ParserGitCommits {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private final Set<Committer> committers;
     private final List<RepositoryFile> files;
     private final List<Commit> commits;
@@ -99,7 +99,7 @@ public class ParserGitCommits {
                 commits.add(commit);
             }
         } catch (IOException e) {
-            logger.atError().setCause(e).log("Error when reading file");
+            logger.atError().withThrowable(e).log("Error when reading file");
         }
     }
 

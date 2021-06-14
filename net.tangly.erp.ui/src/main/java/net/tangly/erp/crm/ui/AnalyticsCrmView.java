@@ -12,7 +12,21 @@
 
 package net.tangly.erp.crm.ui;
 
-import com.storedobject.chart.*;
+import java.lang.invoke.MethodHandles;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.storedobject.chart.BarChart;
+import com.storedobject.chart.CategoryData;
+import com.storedobject.chart.Data;
+import com.storedobject.chart.DataType;
+import com.storedobject.chart.Position;
+import com.storedobject.chart.RectangularCoordinate;
+import com.storedobject.chart.SOChart;
+import com.storedobject.chart.Size;
+import com.storedobject.chart.XAxis;
+import com.storedobject.chart.YAxis;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.data.provider.DataProvider;
@@ -25,21 +39,16 @@ import net.tangly.erp.invoices.services.InvoicesBusinessLogic;
 import net.tangly.ui.app.domain.AnalyticsView;
 import net.tangly.ui.components.VaadinUtils;
 import net.tangly.ui.grids.PaginatedGrid;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import java.lang.invoke.MethodHandles;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
-public class  AnalyticsCrmView extends AnalyticsView {
+public class AnalyticsCrmView extends AnalyticsView {
     private static final String CustomersTurnover = "Customers Turnover";
     private static final String ContractsTurnover = "Contracts Turnover";
     private static final String Funnel = "Funnel";
     private static final String SpentOnContracts = "Spent On Contracts";
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private final CrmBoundedDomain crmDomain;
     private final InvoicesBusinessLogic invoicesLogic;
     private SOChart contractsSoChart;
@@ -94,9 +103,6 @@ public class  AnalyticsCrmView extends AnalyticsView {
         List<String> contracts = new ArrayList<>();
         List<BigDecimal> amounts = new ArrayList<>();
         crmDomain.realm().contracts().items().forEach(contract -> {
-            if (contract.id().startsWith("ST")) {
-                System.out.println(contract.id());
-            }
             BigDecimal amount = invoicesLogic.invoicedAmountWithoutVatForContract(contract.id(), from(), to());
             if (!amount.equals(BigDecimal.ZERO)) {
                 contracts.add(contract.id());

@@ -97,8 +97,8 @@ public class Interaction extends QualifiedEntityImp {
 
     @Override
     public boolean check() {
-        return Objects.nonNull(entity()) && (Objects.requireNonNull(probability).compareTo(BigDecimal.ZERO) > 0) &&
-            (Objects.requireNonNull(probability).compareTo(BigDecimal.ONE) <= 0);
+        return Objects.nonNull(entity()) && (Objects.requireNonNull(potential).compareTo(BigDecimal.ZERO) >= 0) &&
+            (Objects.requireNonNull(probability).compareTo(BigDecimal.ZERO) >= 0) && (Objects.requireNonNull(probability).compareTo(BigDecimal.ONE) <= 0);
     }
 
     @Override

@@ -18,9 +18,9 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import net.tangly.ui.components.TabsComponent;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
@@ -29,7 +29,7 @@ import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
 public abstract class AnalyticsView extends VerticalLayout {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private LocalDate from;
     private LocalDate to;
     protected final TabsComponent tabs;
@@ -105,7 +105,7 @@ public abstract class AnalyticsView extends VerticalLayout {
             populate.accept(chart);
             chart.update();
         } catch (Exception e) {
-            logger.atError().setCause(e).log("Error when updating SO charts");
+            logger.atError().withThrowable(e).log("Error when updating SO charts");
         }
     }
 }

@@ -12,6 +12,10 @@
 
 package net.tangly.erp.products.ui;
 
+import java.lang.invoke.MethodHandles;
+import java.time.LocalDate;
+import java.util.List;
+
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
@@ -30,16 +34,12 @@ import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.VaadinUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.lang.invoke.MethodHandles;
-import java.time.LocalDate;
-import java.util.List;
 
 public class CmdCreateEffort extends Dialog implements Cmd {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private final Binder<Effort> binder;
     private final Effort effort;
     private final transient Assignment assignment;

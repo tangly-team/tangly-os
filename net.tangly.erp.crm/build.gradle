@@ -32,7 +32,6 @@ dependencies {
     implementation(libs.apache.commons.codec)
     implementation(libs.apache.commons.io)
     implementation(libs.apache.commons.csv)
-    implementation(libs.slf4j.api)
     implementation(libs.microstream.storage)
     implementation(libs.ical4j.core)
     implementation(libs.ical4j.vcard)

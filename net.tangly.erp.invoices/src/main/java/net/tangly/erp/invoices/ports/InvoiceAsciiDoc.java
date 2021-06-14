@@ -31,9 +31,9 @@ import net.tangly.core.Address;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
 import net.tangly.erp.invoices.domain.InvoiceLine;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static net.tangly.commons.utilities.AsciiDocHelper.NEWLINE;
 import static net.tangly.commons.utilities.AsciiDocHelper.bold;
@@ -46,7 +46,7 @@ import static net.tangly.commons.utilities.AsciiDocHelper.italics;
  * invoice constraint, the Swiss invoice QR barcode, and the European Zugferd invoice machine readable invoice standard.
  */
 public class InvoiceAsciiDoc implements InvoiceGenerator {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private static final BigDecimal HUNDRED = new BigDecimal("100");
 
     private final ResourceBundle bundle;
@@ -80,8 +80,8 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
 
             helper.tableHeader(null, "options=\"header\", grid=\"none\", frame=\"none\", stripes=\"none\", cols=\"4,^1, >1,>1\"", bundle.getString("position"),
                 bundle.getString("quantity"), bundle.getString("price"), bundle.getString("amount") + " (" + invoice.currency().getCurrencyCode() + ")");
-            invoice.lines().stream().sorted(Comparator.comparingInt(InvoiceLine::position)).forEach(o -> helper
-                .tableRow((o.isAggregate() ? italics(o.text()) : o.text()), o.isItem() ? format(o.quantity()) : "", format(o.unitPrice()),
+            invoice.lines().stream().sorted(Comparator.comparingInt(InvoiceLine::position)).forEach(
+                o -> helper.tableRow((o.isAggregate() ? italics(o.text()) : o.text()), o.isItem() ? format(o.quantity()) : "", format(o.unitPrice()),
                     o.isAggregate() ? italics(format(o.amount())) : format(o.amount())));
             createVatDeclarations(helper, invoice);
             helper.tableEnd();
@@ -102,7 +102,7 @@ public class InvoiceAsciiDoc implements InvoiceGenerator {
                 writer.append(bundle.getString("paymentConditions")).append(" ").append(invoice.paymentConditions()).println();
             }
         } catch (Exception e) {
-            logger.atError().setCause(e).log("Error during invoice asciiDoc generation {}", invoicePath);
+            logger.atError().withThrowable(e).log("Error during invoice asciiDoc generation {}", invoicePath);
         }
     }
 

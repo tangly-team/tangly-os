@@ -40,9 +40,9 @@ import net.tangly.erp.ledger.services.LedgerRealm;
 import net.tangly.erp.ports.TsvHdl;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * The ledger CSV handler can import ledger plans and transactions journal. The import assumes that the program language and ledger template use English.
@@ -67,7 +67,7 @@ public class LedgerTsvHdl {
     private static final String VAT_CODE = "VatCode";
     private static final String DATE_EXPECTED = "DateExpected";
 
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private final LedgerRealm ledger;
 
     @Inject
@@ -219,7 +219,7 @@ public class LedgerTsvHdl {
                         transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
                             new BigDecimal(amount), splits, description, reference);
                     } catch (NumberFormatException e) {
-                        logger.atError().setCause(e).log("{}: not a legal amount {}", date, amount);
+                        logger.atError().withThrowable(e).log("{}: not a legal amount {}", date, amount);
                     }
                 } else {
                     try {
@@ -227,7 +227,7 @@ public class LedgerTsvHdl {
                             Strings.isNullOrEmpty(amount) ? BigDecimal.ZERO : new BigDecimal(amount), record.get(DESCRIPTION), record.get(DOC));
                         defineVat(transaction.creditSplits().get(0), record.get(VAT_CODE));
                     } catch (NumberFormatException e) {
-                        logger.atError().setCause(e).log("{}: not a legal amount {}", date, amount);
+                        logger.atError().withThrowable(e).log("{}: not a legal amount {}", date, amount);
                     }
                     record = records.hasNext() ? records.next() : null;
                 }
@@ -382,7 +382,7 @@ public class LedgerTsvHdl {
                     default -> null;
                 };
             } catch (NumberFormatException e) {
-                logger.atError().setCause(e).log("Format error for account group {}", accountGroup);
+                logger.atError().withThrowable(e).log("Format error for account group {}", accountGroup);
             }
         }
         return null;
@@ -407,7 +407,7 @@ public class LedgerTsvHdl {
                 default -> Account.AccountKind.AGGREGATE;
             };
         } catch (NumberFormatException e) {
-            logger.atError().setCause(e).log("Format error for account kind {}", accountKind);
+            logger.atError().withThrowable(e).log("Format error for account kind {}", accountKind);
             return null;
         }
     }

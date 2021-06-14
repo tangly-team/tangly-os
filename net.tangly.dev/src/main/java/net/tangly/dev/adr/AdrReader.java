@@ -23,9 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static java.nio.file.Files.readAllLines;
 
@@ -33,7 +33,7 @@ import static java.nio.file.Files.readAllLines;
  * Imports architecture design records <em>ADR</em> from asciidoc files.
  */
 public class AdrReader {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
 
     public AdrReader() {
     }
@@ -50,7 +50,6 @@ public class AdrReader {
         };
         AdrReader reader = new AdrReader();
         List<Adr> records = reader.readAll(paths);
-        System.out.println(records.size());
     }
 
 
@@ -87,7 +86,7 @@ public class AdrReader {
             int consequenceStart = skipWhile(lines, index, o -> !o.startsWith("=== Consequence"));
             adr.decision(extractBlock(lines, decisionStart + 1, consequenceStart - 1));
             adr.consequences(extractBlock(lines, consequenceStart + 1, lines.size() - 1));
-            logger.atInfo().addArgument(path).log("ADR from {} imported");
+            logger.atInfo().log("ADR from {} imported", path);
             return adr;
         } catch (IOException e) {
             throw new UncheckedIOException(e);
@@ -99,7 +98,7 @@ public class AdrReader {
         for (Path folderPath : folderPaths) {
             try {
                 if (Files.isDirectory(folderPath)) {
-                    logger.atInfo().addArgument(folderPath).log("Importing ADR from directory {}");
+                    logger.atInfo().log("Importing ADR from directory {}", folderPath);
                     for (Path path : Files.newDirectoryStream(folderPath)) {
                         if (path.toString().endsWith(".adoc")) {
                             records.add(read(path));

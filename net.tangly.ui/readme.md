@@ -52,7 +52,7 @@ The library can be included in Gradle as
     implementation "net.tangly:ui:0.2.6"
 ```
 
-The documentation can be found under [Business documentation](https://tangly-team.bitbucket.io/docs/ui/)
+The documentation can be found under [UI documentation](https://tangly-team.bitbucket.io/docs/ui/)
 
 For any further question and discussion you can use the forum [tangly-OS-Components](https://groups.google.com/g/tangly-os-components)
 

@@ -30,8 +30,8 @@ import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.domain.AccountEntry;
 import net.tangly.erp.ledger.domain.Transaction;
 import net.tangly.erp.ledger.services.LedgerRealm;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import static net.tangly.commons.utilities.AsciiDocHelper.format;
 
@@ -39,7 +39,7 @@ import static net.tangly.commons.utilities.AsciiDocHelper.format;
  * A complete accounting report for a specific time interval. We suggest you use year, half-year and quarter ports. The output format is AsciiDoc.
  */
 public class ClosingReportAsciiDoc {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private final LedgerRealm ledger;
 
     /**

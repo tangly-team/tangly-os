@@ -28,7 +28,6 @@ dependencies {
     implementation project(':net.tangly.erp.shared')
     implementation project(':net.tangly.gleam')
 
-    implementation(libs.slf4j.api)
     implementation(libs.microstream.storage)
     implementation(libs.apache.commons.csv)
 

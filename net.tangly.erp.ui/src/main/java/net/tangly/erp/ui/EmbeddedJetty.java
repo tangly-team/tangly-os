@@ -18,6 +18,8 @@ import java.net.URL;
 
 import com.vaadin.flow.server.VaadinServlet;
 import com.vaadin.flow.server.startup.ServletContextListeners;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.annotations.AnnotationConfiguration;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.util.resource.Resource;
@@ -26,11 +28,9 @@ import org.eclipse.jetty.webapp.JettyWebXmlConfiguration;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class EmbeddedJetty {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private static Server server;
 
     public static void main(String[] args) throws Exception {
@@ -91,11 +91,11 @@ public class EmbeddedJetty {
         if (!url.endsWith("/ROOT")) {
             throw new RuntimeException("Parameter url: invalid value " + url + ": doesn't end with /ROOT");
         }
-        logger.atDebug().addArgument(file).log("/webapp/ROOT is {}");
+        logger.atDebug().log("/webapp/ROOT is {}", file);
 
         // Resolve file to directory
         URL webRoot = new URL(url.substring(0, url.length() - 5));
-        logger.atDebug().addArgument(webRoot).log("WebRoot is {}");
+        logger.atDebug().log("WebRoot is {}", webRoot);
         return Resource.newResource(webRoot);
     }
 }

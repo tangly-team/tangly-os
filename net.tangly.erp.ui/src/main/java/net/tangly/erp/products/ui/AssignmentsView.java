@@ -12,24 +12,24 @@
 
 package net.tangly.erp.products.ui;
 
+import java.lang.invoke.MethodHandles;
+import javax.inject.Inject;
+
 import com.vaadin.flow.component.grid.Grid;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.InternalEntitiesView;
 import net.tangly.ui.grids.GridDecorators;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.inject.Inject;
-import java.lang.invoke.MethodHandles;
 
 /**
  * Regular CRUD view on assignments abstraction. The grid and edition dialog wre optimized for usability.
  */
 class AssignmentsView extends InternalEntitiesView<Assignment> {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private final transient ProductsBoundedDomain domain;
 
     @Inject

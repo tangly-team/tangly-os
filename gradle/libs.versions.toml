@@ -1,11 +1,11 @@
 [versions]
 jackson-version = '2.12.3'
-jetty-version = '9.4.38.v20210224'
+jetty-version = '9.4.41.v20210516'
+jolt-version = '0.1.1'
 junit-version = '5.8.0-M1'
 microstream-version = '04.01.00-MS-GA'
 mustang-version = '2.2.0'
-slf4j-version = '2.0.0-alpha1'
-vaadin-version = '19.0.8'
+vaadin-version = '20.0.1'
 
 [libraries]
 annotations = "org.jetbrains:annotations:21.0.1"
@@ -13,12 +13,15 @@ antrlr-st4 = "org.antlr:ST4:4.3.1"
 apache-commons-csv = "org.apache.commons:commons-csv:1.8"
 apache-commons-codec = "commons-codec:commons-codec:1.15"
 apache-commons-io = "commons-io:commons-io:2.9.0"
+apache-log4j2-api = "org.apache.logging.log4j:log4j-api:2.14.1"
+apache-log4j2-core = "org.apache.logging.log4j:log4j-core:2.14.1"
 apache-pdfbox = "org.apache.pdfbox:pdfbox:2.0.23"
-arch-unit = "com.tngtech.archunit:archunit-junit5-api:0.18.0"
+arch-unit = "com.tngtech.archunit:archunit-junit5-api:0.19.0"
 asciidoctorj-core = "org.asciidoctor:asciidoctorj:2.5.1"
 asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:1.6.0"
 assertj = "org.assertj:assertj-core:3.18.1"
-flyway = "org.flywaydb:flyway-core:7.9.1"
+commonmark = "org.commonmark:commonmark:0.17.2"
+flyway = "org.flywaydb:flyway-core:7.10.0"
 guice = "com.google.inject:guice:5.0.1"
 hsqldb = "org.hsqldb:hsqldb:2.6.0"
 iban4j = "org.iban4j:iban4j:3.2.3-RELEASE"
@@ -31,22 +34,23 @@ jackson-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr
 jakarta-mail = "com.sun.mail:jakarta.mail:2.0.1"
 jimfs = "com.google.jimfs:jimfs:1.2"
 #Java 9 module compliant version of https://github.com/stleary/JSON-java
-json-core = "com.guicedee.services:json:1.0.19.13"
+json-core = "com.guicedee.services:json:1.1.1.7"
 json-validator = "com.networknt:json-schema-validator:1.0.53"
+json-jolt-core = { module = "com.bazaarvoice.jolt:jolt-core", version.ref = "jolt-version" }
+json-jolt-utils = { module = "com.bazaarvoice.jolt:jolt-utils", version.ref = "jolt-version" }
 junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-version" }
 junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-version" }
 mustang-core = { module = "org.mustangproject:library", version.ref = "mustang-version" }
 mustang-validator = { module = "org.mustangproject:validator", version.ref = "mustang-version" }
 google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.12.24"
 qrbill = "net.codecrete.qrbill:qrbill-generator:2.5.2"
-slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j-version" }
-slf4j-logback = "ch.qos.logback:logback-core:1.3.0-alpha5"
 microstream-storage = { module = "one.microstream:storage.embedded", version.ref = "microstream-version" }
 microstream-config = { module = "one.microstream:storage.embedded.configuration", version.ref = "microstream-version" }
-mockito = "org.mockito:mockito-junit-jupiter:3.10.0"
+mockito = "org.mockito:mockito-junit-jupiter:3.11.0"
 
-vaadin-core = "com.vaadin:vaadin-core:19.0.8"
+vaadin-core = { module = "com.vaadin:vaadin-core", version.ref = "vaadin-version" }
 vaadin-autocomplete = "com.vaadin.componentfactory:autocomplete:2.3.1"
+vaadin-daterange = "com.vaadin.componentfactory:vcf-date-range-picker:1.2.1"
 vaadin-pdfbrowser = "org.vaadin.alejandro:pdf-browser:3.1.0"
 vaadin-socharts = "com.storedobject.chart:so-charts:2.1.1"
 vaadin-tooltip = "com.vaadin.componentfactory:tooltip:1.3.5"

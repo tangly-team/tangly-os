@@ -45,15 +45,15 @@ import net.tangly.gleam.model.JsonArray;
 import net.tangly.gleam.model.JsonEntity;
 import net.tangly.gleam.model.JsonField;
 import net.tangly.gleam.model.JsonProperty;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class InvoiceJson implements InvoiceGenerator {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private static final String COMPONENT = "net.tangly.ports";
     private final InvoicesRealm realm;
 
@@ -77,9 +77,6 @@ public class InvoiceJson implements InvoiceGenerator {
     public Invoice imports(@NotNull Path path, @NotNull Map<String, Object> properties) {
         JsonEntity<Invoice> entity = createJsonInvoice();
         Invoice invoice = null;
-        if (path.toString().contains("STGF")) {
-            System.out.println(path.toString());
-        }
         if (JsonUtilities.isValid(path, "invoice-schema.json")) {
             try (Reader in = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
                 var jsonInvoice = new JSONObject(new JSONTokener(in));
@@ -91,6 +88,8 @@ public class InvoiceJson implements InvoiceGenerator {
             } catch (IOException e) {
                 EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.FAILURE, "Error during import of JSON", Map.of("filename", path), e);
                 throw new UncheckedIOException(e);
+            } catch (Exception e) {
+                EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.FAILURE, "Error during import of JSON", Map.of("filename", path), e);
             }
         } else {
             EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.FAILURE, "Invalid JSON schema file", Map.of("filename", path));
@@ -108,8 +107,7 @@ public class InvoiceJson implements InvoiceGenerator {
                 JsonProperty.ofType("invoicingConnection", Invoice::invoicingConnection, Invoice::invoicingConnection, jsonBankConnection),
                 JsonProperty.ofType("invoicedEntity", Invoice::invoicedEntity, Invoice::invoicedEntity, jsonLegalEntity),
                 JsonProperty.ofLocalDate("deliveryDate", Invoice::deliveryDate, Invoice::deliveryDate),
-                JsonProperty.ofLocalDate("invoiceDate", Invoice::date, Invoice::date),
-                JsonProperty.ofLocalDate("dueDate", Invoice::dueDate, Invoice::dueDate),
+                JsonProperty.ofLocalDate("invoiceDate", Invoice::date, Invoice::date), JsonProperty.ofLocalDate("dueDate", Invoice::dueDate, Invoice::dueDate),
                 JsonProperty.ofLocalDate("paidDate", Invoice::paidDate, Invoice::paidDate),
                 JsonProperty.ofCurrency("currency", Invoice::currency, Invoice::currency), JsonProperty.ofLocale("locale", Invoice::locale, Invoice::locale),
                 JsonProperty.ofString("paymentConditions", Invoice::paymentConditions, Invoice::paymentConditions), createPositions());
@@ -130,7 +128,8 @@ public class InvoiceJson implements InvoiceGenerator {
     }
 
     public static <T> JsonProperty<T, EmailAddress> ofEmailAddress(String property, Function<T, EmailAddress> getter, BiConsumer<T, EmailAddress> setter) {
-        return JsonProperty.of(property, getter, setter, o -> o.has(property) ? EmailAddress.of(o.getString(property)) : null, (u, o) -> o.put(property, u.text()));
+        return JsonProperty.of(property, getter, setter, o -> o.has(property) ? EmailAddress.of(o.getString(property)) : null,
+            (u, o) -> o.put(property, u.text()));
     }
 
     public static JsonEntity<BankConnection> createJsonBankConnection() {
@@ -166,9 +165,9 @@ public class InvoiceJson implements InvoiceGenerator {
         Function<JSONObject, InvoiceItem> imports =
             o -> new InvoiceItem(o.getInt("position"), importArticle((JSONObject) o.get(ARTICLE)), o.getString("text"), o.getBigDecimal("quantity"));
 
-        List<JsonField<InvoiceItem, ?>> fields = List.of(JsonProperty.ofInt("position", InvoiceItem::position, null),
-            JsonProperty.ofType(ARTICLE, InvoiceItem::article, null, createJsonArticle()), JsonProperty.ofString("text", InvoiceItem::text, null),
-            JsonProperty.ofBigDecimal("quantity", InvoiceItem::quantity, null));
+        List<JsonField<InvoiceItem, ?>> fields =
+            List.of(JsonProperty.ofInt("position", InvoiceItem::position, null), JsonProperty.ofType(ARTICLE, InvoiceItem::article, null, createJsonArticle()),
+                JsonProperty.ofString("text", InvoiceItem::text, null), JsonProperty.ofBigDecimal("quantity", InvoiceItem::quantity, null));
         return JsonEntity.of(fields, imports);
     }
 

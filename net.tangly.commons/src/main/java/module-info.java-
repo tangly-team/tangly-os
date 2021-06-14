@@ -25,7 +25,7 @@ module net.tangly.core {
     exports net.tangly.commons.utilities;
 
     requires org.junit.jupiter.api;
-    requires org.slf4j;
+    requires org.apache.logging;
     // TODO asciidoctor still not supporting modules
     requires static transitive org.jetbrains.annotations;
 }

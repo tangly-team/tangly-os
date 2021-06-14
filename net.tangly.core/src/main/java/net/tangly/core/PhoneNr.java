@@ -17,16 +17,16 @@ import java.lang.invoke.MethodHandles;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Represents an immutable phone number as a canonical string. Validation and formatting of phone numbers is performed through the phone library of Google which
  * supports worldwide numbers.
  */
 public record PhoneNr(@NotNull String number) {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
 
     public PhoneNr {
         if (!isValid(number)) {
@@ -47,7 +47,7 @@ public record PhoneNr(@NotNull String number) {
                 Phonenumber.PhoneNumber googleNr = numberUtil.parse(number, "CH");
                 return new PhoneNr(numberUtil.format(googleNr, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL));
             } catch (NumberParseException |IllegalArgumentException e) {
-                logger.atWarn().setCause(e).log("Error creating phone number {}", number);
+                logger.atWarn().withThrowable(e).log("Error creating phone number {}", number);
             }
         }
         return null;
@@ -65,7 +65,7 @@ public record PhoneNr(@NotNull String number) {
             Phonenumber.PhoneNumber phoneNumber = numberUtil.parse(number, "CH");
             return numberUtil.isValidNumber(phoneNumber);
         } catch (NumberParseException e) {
-            logger.atWarn().setCause(e).log("Error validating phone number {}", number);
+            logger.atWarn().withThrowable(e).log("Error validating phone number {}", number);
             return false;
         }
     }

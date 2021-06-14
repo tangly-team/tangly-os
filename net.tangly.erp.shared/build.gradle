@@ -27,6 +27,5 @@ dependencies {
     implementation project(':net.tangly.core')
     implementation project(':net.tangly.gleam')
 
-    implementation(libs.slf4j.api)
     implementation(libs.apache.commons.csv)
 }

@@ -12,6 +12,9 @@
 
 package net.tangly.ui.components;
 
+import java.util.Objects;
+import java.util.function.Consumer;
+
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -21,14 +24,10 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
-import net.tangly.ui.grids.PaginatedGrid;
-import net.tangly.core.HasName;
 import net.tangly.core.QualifiedEntity;
 import net.tangly.core.providers.Provider;
+import net.tangly.ui.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Objects;
-import java.util.function.Consumer;
 
 /**
  * Defines a view for a list of referenced entities displayed in a grid. The details of the selected referenced entity can be shown. The following actions are
@@ -46,7 +45,7 @@ import java.util.function.Consumer;
  *
  * @param <T> type of the entities referenced in the one 2 many relationship
  */
-public class One2ManyView<T extends HasName> extends VerticalLayout {
+public class One2ManyView<T> extends VerticalLayout {
     private final Crud.Mode mode;
     private final EntitiesView<T> view;
     private final Provider<T> provider;

@@ -33,12 +33,12 @@ import net.codecrete.qrbill.generator.SwicoBillInformation;
 import net.tangly.core.Address;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class InvoiceQrCode implements InvoiceGenerator {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private static final BigDecimal HUNDRED = new BigDecimal("100");
     private static final Pattern ISO11649ReferenceFormat = Pattern.compile("[^A-Za-z0-9]");
 
@@ -59,7 +59,7 @@ public class InvoiceQrCode implements InvoiceGenerator {
             QRBill.draw(bill, canvas);
             canvas.saveAs(invoicePath);
         } catch (IOException e) {
-            logger.atError().setCause(e).log("Error when generating QR code for {}", invoicePath);
+            logger.atError().withThrowable(e).log("Error when generating QR code for {}", invoicePath);
         }
     }
 

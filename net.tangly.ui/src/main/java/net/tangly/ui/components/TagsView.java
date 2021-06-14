@@ -67,6 +67,7 @@ public class TagsView extends EntitiesView<Tag> {
     @Override
     protected void initialize() {
         PaginatedGrid<Tag> grid = grid();
+        grid.setPageSize(5);
         grid.addColumn(Tag::namespace).setKey("namespace").setHeader("Namespace").setSortable(true).setFlexGrow(0).setWidth("10em").setResizable(false);
         grid.addColumn(Tag::name).setKey("name").setHeader("Name").setSortable(true).setFlexGrow(0).setWidth("10em").setResizable(false);
         grid.addColumn(Tag::value).setKey("value").setHeader("Value").setSortable(false).setFlexGrow(0).setWidth("20em").setResizable(false);

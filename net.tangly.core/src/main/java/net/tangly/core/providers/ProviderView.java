@@ -36,6 +36,10 @@ public class ProviderView<T> implements Provider<T> {
         this.predicate = predicate;
     }
 
+    public static <T> Provider<T> of(@NotNull Provider<T> provider) {
+        return of(provider, o -> true);
+    }
+
     public static <T> Provider<T> of(@NotNull Provider<T> provider, @NotNull Predicate<T> predicate) {
         return new ProviderView<>(provider, predicate);
     }

@@ -20,7 +20,7 @@ module net.tangly.bdd {
     exports net.tangly.bdd.engine;
 
     requires transitive org.junit.jupiter.api;
-    requires org.slf4j;
+    requires org.apache.logging.log4j;
     requires static org.json;
     requires static transitive org.jetbrains.annotations;
 }

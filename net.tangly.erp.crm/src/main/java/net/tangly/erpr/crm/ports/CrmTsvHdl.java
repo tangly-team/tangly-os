@@ -53,9 +53,9 @@ import net.tangly.erp.ports.TsvHdl;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
 import org.apache.commons.csv.CSVRecord;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static net.tangly.core.crm.CrmTags.CRM_EMAIL_HOME;
 import static net.tangly.core.crm.CrmTags.CRM_EMAIL_WORK;
@@ -83,7 +83,7 @@ public class CrmTsvHdl {
     private static final String AUTHOR = "author";
     private static final String TAGS = "tags";
 
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private final CrmRealm realm;
     private final Map<Long, Comment> importedComments;
     private final Map<Comment, Long> exportedComments;
@@ -206,14 +206,14 @@ public class CrmTsvHdl {
     }
 
     static TsvEntity<Comment> createTsvComment() {
-        Function<CSVRecord, Comment> imports = (CSVRecord record) -> Comment
-            .of(LocalDateTime.parse(TsvHdl.get(record, CREATED)), Long.parseLong(TsvHdl.get(record, TsvHdl.OWNER_FOID)), TsvHdl.get(record, AUTHOR),
-                TsvHdl.get(record, TsvHdl.TEXT));
+        Function<CSVRecord, Comment> imports =
+            (CSVRecord record) -> Comment.of(LocalDateTime.parse(TsvHdl.get(record, CREATED)), Long.parseLong(TsvHdl.get(record, TsvHdl.OWNER_FOID)),
+                TsvHdl.get(record, AUTHOR), TsvHdl.get(record, TsvHdl.TEXT));
 
         List<TsvProperty<Comment, ?>> fields =
-            List.of(TsvProperty.of(TsvHdl.OID, Comment::oid, (e, v) -> ReflectionUtilities.set(e, TsvHdl.OID, v), Long::parseLong), TsvProperty
-                    .ofLong(TsvHdl.OWNER_FOID, (e) -> (long) ReflectionUtilities.get(e, TsvHdl.OWNER_FOID),
-                        (e, v) -> ReflectionUtilities.set(e, TsvHdl.OWNER_FOID, v)),
+            List.of(TsvProperty.of(TsvHdl.OID, Comment::oid, (e, v) -> ReflectionUtilities.set(e, TsvHdl.OID, v), Long::parseLong),
+                TsvProperty.ofLong(TsvHdl.OWNER_FOID, (e) -> (long) ReflectionUtilities.get(e, TsvHdl.OWNER_FOID),
+                    (e, v) -> ReflectionUtilities.set(e, TsvHdl.OWNER_FOID, v)),
                 TsvProperty.of(CREATED, Comment::created, null, o -> (o != null) ? LocalDateTime.parse(o) : null),
                 TsvProperty.ofString(AUTHOR, Comment::author, null), TsvProperty.ofString(TsvHdl.TEXT, Comment::text, null),
                 TsvProperty.ofString(TAGS, HasTags::rawTags, HasTags::rawTags));
@@ -255,10 +255,10 @@ public class CrmTsvHdl {
                 TsvProperty.ofDate(TsvHdl.FROM_DATE, Employee::fromDate, Employee::fromDate),
                 TsvProperty.ofDate(TsvHdl.TO_DATE, Employee::toDate, Employee::toDate), TsvProperty.ofString(TsvHdl.TEXT, Employee::text, Employee::text),
                 TsvProperty.of("personOid", Employee::person, Employee::person, e -> findNaturalEntityByOid(e).orElse(null), TsvHdl.convertFoidTo()),
-                TsvProperty
-                    .of("organizationOid", Employee::organization, Employee::organization, e -> findLegalEntityByOid(e).orElse(null), TsvHdl.convertFoidTo()),
-                TsvHdl.tagProperty(CRM_EMPLOYEE_TITLE), TsvHdl.tagProperty(CRM_EMAIL_WORK),
-                TsvProperty.ofString(CRM_PHONE_WORK, e -> e.phoneNr(VcardType.work).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(VcardType.work, p)));
+                TsvProperty.of("organizationOid", Employee::organization, Employee::organization, e -> findLegalEntityByOid(e).orElse(null),
+                    TsvHdl.convertFoidTo()), TsvHdl.tagProperty(CRM_EMPLOYEE_TITLE), TsvHdl.tagProperty(CRM_EMAIL_WORK),
+                TsvProperty.ofString(CRM_PHONE_WORK, e -> e.phoneNr(VcardType.work).map(PhoneNr::number).orElse(""), (e, p) -> e.phoneNr(VcardType.work, p)),
+                TsvHdl.phoneNrProperty(CRM_PHONE_MOBILE, VcardType.mobile));
         return TsvEntity.of(Employee.class, fields, Employee::new);
     }
 
@@ -294,9 +294,9 @@ public class CrmTsvHdl {
     }
 
     static TsvEntity<Activity> createTsvActivity() {
-        List<TsvProperty<Activity, ?>> fields = List.of(TsvProperty
-                .of(TsvHdl.OWNER_FOID, (e) -> ReflectionUtilities.get(e, TsvHdl.OWNER_FOID), (e, v) -> ReflectionUtilities.set(e, TsvHdl.OWNER_FOID, v),
-                    Long::parseLong), TsvProperty.of("code", Activity::code, Activity::code, e -> Enum.valueOf(ActivityCode.class, e.toLowerCase()), Enum::name),
+        List<TsvProperty<Activity, ?>> fields = List.of(
+            TsvProperty.of(TsvHdl.OWNER_FOID, (e) -> ReflectionUtilities.get(e, TsvHdl.OWNER_FOID), (e, v) -> ReflectionUtilities.set(e, TsvHdl.OWNER_FOID, v),
+                Long::parseLong), TsvProperty.of("code", Activity::code, Activity::code, e -> Enum.valueOf(ActivityCode.class, e.toLowerCase()), Enum::name),
             TsvProperty.ofDate("date", Activity::date, Activity::date), TsvProperty.ofInt("durationInMinutes", Activity::duration, Activity::duration),
             TsvProperty.ofString(AUTHOR, Activity::author, Activity::author), TsvProperty.ofString(TsvHdl.TEXT, Activity::text, Activity::text));
         return TsvEntity.of(Activity.class, fields, Activity::new);

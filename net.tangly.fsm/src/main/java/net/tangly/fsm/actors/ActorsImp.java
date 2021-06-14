@@ -20,9 +20,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * The actor infrastructure enabler is responsible to provide parallel execution for all instantiated and alive actors he is in charge.
@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
  * @param <T> the event enumeration type uniquely identifying the event sent to the state machine
  */
 public class ActorsImp<T> implements Actors<T> {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private final Map<UUID, Actor<T>> actors;
     private final ExecutorService executor;
 

@@ -31,7 +31,6 @@ java {
 
 dependencies {
     implementation(libs.annotations)
-    implementation(libs.slf4j.api)
     implementation(libs.json.validator)
     implementation(libs.jakarta.mail)
     implementation(libs.asciidoctorj.core)

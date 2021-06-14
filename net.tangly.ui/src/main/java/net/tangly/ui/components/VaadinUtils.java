@@ -104,6 +104,8 @@ public final class VaadinUtils {
     public static <E> void initialize(@NotNull Grid<E> grid) {
         grid.addThemeVariants(GridVariant.MATERIAL_COLUMN_DIVIDERS);
         grid.setVerticalScrollingEnabled(true);
+        grid.setMinHeight("5em");
+        grid.setHeightFull();
         grid.setWidthFull();
     }
 

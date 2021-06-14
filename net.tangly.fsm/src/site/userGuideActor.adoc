@@ -46,7 +46,7 @@ class FsmActor<O extends FsmActor<O, S, E>, S extends Enum<S>, E extends Enum<E>
 }
 ----
 
-You can find example how to create FSM actor derived classes in the tests in package **net.tangly.fsm.actor**.
+You can find example how to create FSM actor derived classes in the tests in package **net.tangly.fsm.actors**.
 
 === Messages
 

@@ -25,16 +25,16 @@ import net.tangly.core.providers.Provider;
 import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.domain.AccountEntry;
 import net.tangly.erp.ledger.domain.Transaction;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * The ledger implements a ledger with a chart of accounts and a set of transactions. It provides the logic for the automatic processing of VAT amounts and
  * related bookings to the VAT related accounts.
  */
 public interface LedgerRealm extends Realm {
-    Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
 
     Provider<Account> accounts();
 

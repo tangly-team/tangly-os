@@ -15,6 +15,8 @@ package net.tangly.core;
 import java.lang.invoke.MethodHandles;
 import java.util.Objects;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.iban4j.BicFormatException;
 import org.iban4j.BicUtil;
 import org.iban4j.IbanFormat;
@@ -23,14 +25,12 @@ import org.iban4j.IbanUtil;
 import org.iban4j.InvalidCheckDigitException;
 import org.iban4j.UnsupportedCountryException;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Describes a bank connection with IBAN account number, BIC identification and name of the institute. The class is immutable.
  */
 public record BankConnection(@NotNull String iban, String bic, String institute) {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
 
     public BankConnection {
         if (Strings.isNullOrBlank(iban) || !validateIban(iban)) {
@@ -78,7 +78,7 @@ public record BankConnection(@NotNull String iban, String bic, String institute)
         try {
             return new BankConnection(Strings.normalizeToNull(parts[0]), Strings.normalizeToNull(parts[1]), Strings.normalizeToNull(parts[2]));
         } catch (IllegalArgumentException e) {
-            logger.atWarn().setCause(e).log("Error creating bank connection {}", text);
+            logger.atWarn().withThrowable(e).log("Error creating bank connection {}", text);
             return null;
 
         }
@@ -95,7 +95,7 @@ public record BankConnection(@NotNull String iban, String bic, String institute)
             IbanUtil.validate(iban, IbanFormat.Default);
             return true;
         } catch (IbanFormatException | InvalidCheckDigitException | UnsupportedCountryException e) {
-            logger.atWarn().setCause(e).log("Error validating IBAN {}", iban);
+            logger.atWarn().withThrowable(e).log("Error validating IBAN {}", iban);
             return false;
         }
     }
@@ -111,7 +111,7 @@ public record BankConnection(@NotNull String iban, String bic, String institute)
             BicUtil.validate(bic);
             return true;
         } catch (BicFormatException | UnsupportedCountryException e) {
-            logger.atWarn().setCause(e).log("Error validating BIC {}", bic);
+            logger.atWarn().withThrowable(e).log("Error validating BIC {}", bic);
             return false;
         }
     }

@@ -16,12 +16,12 @@ import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Objects;
 
+import org.apache.logging.log4j.LogBuilder;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Marker;
+import org.apache.logging.log4j.MarkerManager;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.slf4j.Marker;
-import org.slf4j.MarkerFactory;
-import org.slf4j.spi.LoggingEventBuilder;
 
 /**
  * Provide a simple approach to create an audit trail for all relevant operations performed in the system. Contextual information such as user, IP address are
@@ -43,7 +43,7 @@ public record EventData(@NotNull String event, @NotNull LocalDateTime timestamp,
     public enum Status {SUCCESS, INFO, WARNING, FAILURE}
 
     private static final String AUDIT_LOGGER = "AuditLogger";
-    private static final Marker MARKER = MarkerFactory.getMarker("AUDIT_EVENT");
+    private static final Marker MARKER = MarkerManager.getMarker("AUDIT_EVENT");
 
     public static void log(@NotNull String event, @NotNull String component, @NotNull Status status, String reason, @NotNull Map<String, Object> data) {
         log(new EventData(event, LocalDateTime.now(), component, status, reason, data, null));
@@ -60,10 +60,10 @@ public record EventData(@NotNull String event, @NotNull LocalDateTime timestamp,
      * @param data event data to add to the audit trail
      */
     public static void log(@NotNull EventData data) {
-        Logger logger = LoggerFactory.getLogger(AUDIT_LOGGER);
-        LoggingEventBuilder builder = logger.atInfo().addMarker(MARKER);
+        final Logger logger = LogManager.getLogger(AUDIT_LOGGER);
+        LogBuilder builder = logger.atInfo().withMarker(MARKER);
         if (Objects.nonNull(data.exception())) {
-            builder.setCause(data.exception());
+            builder.withThrowable(data.exception());
         }
         builder.log("{}-{}-{}-{}:{}:{}", data.event(), data.timestamp(), data.component(), data.status(), data.text(), data.data());
     }

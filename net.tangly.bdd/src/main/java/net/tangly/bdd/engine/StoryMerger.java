@@ -23,20 +23,20 @@ import java.nio.file.Path;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Merges a set of JSON files produced through the execution of BDD JUnit tests. A feature is part of exactly one package. Therefore, the package name is the
  * key to the feature. A story is part of exactly one class. Therefore, the class name is the key for the story. A scenario is part of exactly one method.
  */
 public class StoryMerger {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private final JSONArray features;
 
     public StoryMerger() {
@@ -56,9 +56,10 @@ public class StoryMerger {
                     JSONArray report = new JSONArray(new JSONTokener(reader));
                     merge((JSONObject) report.get(0));
                 } catch (IOException e) {
+                    logger.atError().withThrowable(e).log("File {} IO error ", t);
                     throw new UncheckedIOException(e);
                 } catch (JSONException e) {
-                    logger.atError().log("File {} is incorrect due to parallel writing", e);
+                    logger.atError().withThrowable(e).log("File {} is incorrect due to parallel writing", t);
                 }
             });
         }

@@ -16,15 +16,15 @@ import java.lang.invoke.MethodHandles;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * The abstraction of an email address until the Java JDK provides one..
  */
 public record EmailAddress(@NotNull String recipient, @NotNull String domain) {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private static final String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
     private static final Pattern pattern = Pattern.compile(emailRegex);
 
@@ -46,7 +46,7 @@ public record EmailAddress(@NotNull String recipient, @NotNull String domain) {
                 Objects.checkFromIndexSize(0, parts.length, 2);
                 return new EmailAddress(Strings.normalizeToNull(parts[0]), Strings.normalizeToNull(parts[1]));
             } catch (ArrayIndexOutOfBoundsException | IllegalArgumentException e) {
-                logger.atWarn().setCause(e).log("Error creating email address", email);
+                logger.atWarn().withThrowable(e).log("Error creating email address", email);
                 return null;
             }
         }

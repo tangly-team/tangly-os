@@ -26,6 +26,8 @@ import net.tangly.erp.invoices.domain.Article;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.domain.InvoiceItem;
 import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.mustangproject.ZUGFeRD.IExportableTransaction;
 import org.mustangproject.ZUGFeRD.IZUGFeRDAllowanceCharge;
@@ -35,8 +37,6 @@ import org.mustangproject.ZUGFeRD.IZUGFeRDExportableProduct;
 import org.mustangproject.ZUGFeRD.IZUGFeRDExportableTradeParty;
 import org.mustangproject.ZUGFeRD.IZUGFeRDTradeSettlementPayment;
 import org.mustangproject.ZUGFeRD.ZUGFeRDExporterFromA3;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator {
     static record TradeParty(@NotNull InvoiceLegalEntity entity, @NotNull Address address) implements IZUGFeRDExportableTradeParty {
@@ -178,7 +178,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
         }
     }
 
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private static final BigDecimal HUNDRED = new BigDecimal("100");
     private Invoice invoice;
 
@@ -189,7 +189,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
             exporter.setTransaction(this);
             exporter.export(Files.newOutputStream(invoicePath));
         } catch (IOException e) {
-            logger.atError().setCause(e).log("Could not read or write file {}", invoicePath);
+            logger.atError().withThrowable(e).log("Could not read or write file {}", invoicePath);
         }
     }
 

@@ -20,6 +20,7 @@ import java.nio.file.Path;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 import java.util.stream.Stream;
 import javax.inject.Inject;
@@ -67,14 +68,20 @@ public class InvoicesHdl implements InvoicesHandler {
         var invoiceJson = new InvoiceJson(realm);
         importArticles(invoicesFolder.resolve(ARTICLES_TSV));
         try (Stream<Path> stream = Files.walk(invoicesFolder)) {
+            AtomicInteger nrOfInvoices = new AtomicInteger();
+            AtomicInteger nrOfImportedInvoices = new AtomicInteger();
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(JSON_EXT)).forEach(o -> {
+                nrOfInvoices.getAndIncrement();
                 var invoice = invoiceJson.imports(o, Collections.emptyMap());
                 if ((invoice != null) && invoice.check()) {
+                    nrOfImportedInvoices.getAndIncrement();
                     realm.invoices().update(invoice);
                     EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, "Imported Invoice {}", Map.of("invoice", invoice));
                 } else {
                     EventData.log(EventData.IMPORT, MODULE, EventData.Status.WARNING, "Invalid Invoice {}", Map.of("invoice", o.toString()));
                 }
+                EventData.log(EventData.IMPORT, MODULE, EventData.Status.INFO, "{} invoices were imported out of {}",
+                    Map.of("nrOfImportedInvoices", Integer.toString(nrOfImportedInvoices.get()), "nrOfInvoices", Integer.toString(nrOfInvoices.get())));
             });
         } catch (IOException e) {
             throw new UncheckedIOException(e);

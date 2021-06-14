@@ -22,7 +22,7 @@ module net.tangly.core {
     exports net.tangly.core.providers;
 
     requires org.junit.jupiter.api;
-    requires org.slf4j;
+    requires org.apache.logging;
     // TODO waiting on microstream, asciidoctor
     requires storage.embedded;
     requires static org.json;

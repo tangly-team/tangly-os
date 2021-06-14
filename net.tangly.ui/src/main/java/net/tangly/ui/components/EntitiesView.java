@@ -12,19 +12,19 @@
 
 package net.tangly.ui.components;
 
+import java.lang.invoke.MethodHandles;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.provider.DataProvider;
-import net.tangly.ui.grids.GridDecorators;
 import net.tangly.core.providers.Provider;
+import net.tangly.ui.grids.GridDecorators;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.lang.invoke.MethodHandles;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 /**
  * Defines a generic view for entities. The provider is the connection to the application backend. Classes inheriting entities view shall implement at least
@@ -40,7 +40,7 @@ import java.util.function.Supplier;
  */
 public abstract class EntitiesView<T> extends Crud<T> implements CrudForm<T> {
     public static final String DATE_WIDTH = "8em";
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
     protected final transient Provider<T> provider;
 
     /**
@@ -116,7 +116,7 @@ public abstract class EntitiesView<T> extends Crud<T> implements CrudForm<T> {
         try {
             binder.writeBean(entity);
         } catch (ValidationException e) {
-            logger.atError().setCause(e).log("Validation error for {}", instance);
+            logger.atError().withThrowable(e).log("Validation error for {}", instance);
         }
         return entity;
     }
