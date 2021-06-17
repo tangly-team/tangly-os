@@ -47,7 +47,7 @@ public class StoryWriter {
     public static Path getOrCreateBddReportsFolder(@NotNull Class<?> clazz) {
         URL url = clazz.getResource("");
         Objects.requireNonNull(url);
-        Path targetDir = Paths.get(url.getPath());
+        var targetDir = Paths.get(url.getPath());
         int index = targetDir.getNameCount() - 1;
         while ((index > 0) && (!KNOWN_TARGET_DIRS.contains(targetDir.getName(index).toString()))) {
             --index;
@@ -63,7 +63,7 @@ public class StoryWriter {
 
     void write() {
         // write feature
-        JSONArray features = new JSONArray();
+        var features = new JSONArray();
         JSONObject feature = createFeature(run);
         features.put(feature);
 
@@ -84,7 +84,7 @@ public class StoryWriter {
     }
 
     private static JSONObject createFeature(StoryRun run) {
-        JSONObject feature = new JSONObject();
+        var feature = new JSONObject();
         feature.put(BddConstants.PACKAGE_NAME, run.packages().getName());
         feature.put(BddConstants.NAME, run.featureName());
         feature.put(BddConstants.ID, run.featureId());
@@ -95,7 +95,7 @@ public class StoryWriter {
     }
 
     private static JSONObject createStory(StoryRun run) {
-        JSONObject story = new JSONObject();
+        var story = new JSONObject();
         story.put(BddConstants.CLASS_NAME, run.clazz().getName());
         story.put(BddConstants.NAME, run.name());
         story.put(BddConstants.ID, run.id());
@@ -106,21 +106,21 @@ public class StoryWriter {
     }
 
     private static JSONObject createScenario(@NotNull Scene scene) {
-        JSONObject scenario = new JSONObject();
+        var scenario = new JSONObject();
         scenario.put(BddConstants.METHOD_NAME, scene.methodName());
         scenario.put(BddConstants.NAME, scene.description());
         if (!scene.given().text().isBlank()) {
-            JSONObject given = new JSONObject();
+            var given = new JSONObject();
             given.put(BddConstants.TEXT, scene.given().text());
             addAnds(scene.given().ands(), given);
             scenario.put(BddConstants.GIVEN, given);
         }
         if (!scene.when().text().isBlank()) {
-            JSONObject when = new JSONObject();
+            var when = new JSONObject();
             when.put(BddConstants.TEXT, scene.when().text());
             scenario.put(BddConstants.WHEN, when);
         }
-        JSONObject then = new JSONObject();
+        var then = new JSONObject();
         then.put(BddConstants.TEXT, scene.then().text());
         addAnds(scene.then().ands(), then);
         scenario.put(BddConstants.THEN, then);
@@ -137,7 +137,7 @@ public class StoryWriter {
 
     private static void addList(@NotNull List<String> items, @NotNull JSONObject object, String jsonTag) {
         if (!items.isEmpty()) {
-            JSONArray jsonArray = new JSONArray();
+            var jsonArray = new JSONArray();
             items.forEach(jsonArray::put);
             object.put(jsonTag, jsonArray);
         }

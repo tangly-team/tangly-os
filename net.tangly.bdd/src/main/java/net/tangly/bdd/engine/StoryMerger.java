@@ -52,7 +52,7 @@ public class StoryMerger {
         try (Stream<Path> results = Files.walk(directory)) {
             results.filter(t -> t.toString().endsWith(".json")).forEach(t -> {
                 try (Reader reader = Files.newBufferedReader(t, StandardCharsets.UTF_8)) {
-                    JSONArray report = new JSONArray(new JSONTokener(reader));
+                    var report = new JSONArray(new JSONTokener(reader));
                     merge((JSONObject) report.get(0));
                 } catch (IOException e) {
                     logger.atError().withThrowable(e).log("File {} IO error ", t);
@@ -82,8 +82,8 @@ public class StoryMerger {
         if (mergedFeature.isEmpty()) {
             features.put(feature);
         } else {
-            JSONArray mergedStories = mergedFeature.get().getJSONArray(BddConstants.STORIES);
-            JSONArray stories = feature.getJSONArray(BddConstants.STORIES);
+            var mergedStories = mergedFeature.get().getJSONArray(BddConstants.STORIES);
+            var stories = feature.getJSONArray(BddConstants.STORIES);
             for (var item : stories) {
                 JSONObject story = (JSONObject) item;
                 if (contains(mergedStories, BddConstants.CLASS_NAME, story.getString(BddConstants.CLASS_NAME)).isEmpty()) {

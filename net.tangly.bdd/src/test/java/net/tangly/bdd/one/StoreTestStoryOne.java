@@ -15,11 +15,13 @@ package net.tangly.bdd.one;
 
 import net.tangly.bdd.Scenario;
 import net.tangly.bdd.Scene;
-import net.tangly.bdd.StoreTest;
+import net.tangly.bdd.StoreUtilities;
 import net.tangly.bdd.Story;
 import net.tangly.bdd.engine.StoryExtension;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import static net.tangly.bdd.StoreUtilities.create;
+import static net.tangly.bdd.StoreUtilities.store;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -28,7 +30,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  */
 @ExtendWith(StoryExtension.class)
 @Story(value = "Buy Sweater", description = "As a store owner I want to update the stock when I am selling sweaters to customers.", tags = {"Release 1.0"})
-class StoreTestStoryOne extends StoreTest {
+class StoreTestStoryOne  {
     @Scenario("Sell some black sweaters in stock")
     void sellBlackSweaters(Scene scene) {
         scene.given("The store is stocked with sweaters", t -> create(t, 5, 4)).

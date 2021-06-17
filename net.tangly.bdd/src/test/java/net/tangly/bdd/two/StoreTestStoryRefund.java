@@ -16,11 +16,11 @@ package net.tangly.bdd.two;
 import net.tangly.bdd.Scenario;
 import net.tangly.bdd.Scene;
 import net.tangly.bdd.Store;
-import net.tangly.bdd.StoreTest;
 import net.tangly.bdd.Story;
 import net.tangly.bdd.engine.StoryExtension;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import static net.tangly.bdd.StoreUtilities.store;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -29,19 +29,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(StoryExtension.class)
 @Story(value = "Refunded items go back to the stockpile",
        description = "As a store owner, in order to keep track of stock, I want to add items back to stock when they're refunded.", tags = {"Release 2.0"})
-class StoreTestStoryRefund extends StoreTest {
+class StoreTestStoryRefund {
     @Scenario("Refunded items from the customer should be returned to stock")
     void refundAndRestock(Scene scene) {
-        scene.given("A customer bought a black sweater from the store having 4 black and 0 blue sweaters", t -> t.put("store", new Store(4, 0).sellBlack(1))).
-                and("the store has now 3 black sweaters in stock",
-                        t -> assertThat(store(t).blacks()).as("the store should carry 3 black sweaters").isEqualTo(3))
-                .and("0 blue sweaters in stock", t -> assertThat(store(t).blues()).as("the store should carry 0 blue sweaters").isZero()).
+        scene.given("A customer bought a black sweater from the store having 4 black and 0 blue sweaters", t -> t.put("store", new Store(4, 0).sellBlack(1)))
+            .and("the store has now 3 black sweaters in stock", t -> assertThat(store(t).blacks()).as("the store should carry 3 black sweaters").isEqualTo(3))
+            .and("0 blue sweaters in stock", t -> assertThat(store(t).blues()).as("the store should carry 0 blue sweaters").isZero()).
 
                 when("The customer returns one black sweater for a refund", t -> store(t).refundBlack(1)).
 
                 then("the store should have 4 black sweaters in stock",
-                        t -> assertThat(store(t).blacks()).as("the store should carry 4 black sweaters").isEqualTo(4)).
-                and("0 blue sweaters in stock", t -> assertThat(store(t).blues()).as("the store should carry 0 blue sweaters").isZero()).
-                run();
+                t -> assertThat(store(t).blacks()).as("the store should carry 4 black sweaters").isEqualTo(4))
+            .and("0 blue sweaters in stock", t -> assertThat(store(t).blues()).as("the store should carry 0 blue sweaters").isZero()).run();
     }
 }

@@ -12,11 +12,10 @@
 
 package net.tangly.bdd.engine;
 
-import java.lang.reflect.Parameter;
-
 import net.tangly.bdd.Scenario;
 import net.tangly.bdd.Scene;
 import net.tangly.bdd.Story;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.extension.AfterAllCallback;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
@@ -38,7 +37,6 @@ public class StoryExtension implements BeforeAllCallback, AfterAllCallback, Befo
     private static final Namespace NAMESPACE = Namespace.create(StoryExtension.class);
 
     public StoryExtension() {
-
     }
 
     @Override
@@ -47,7 +45,7 @@ public class StoryExtension implements BeforeAllCallback, AfterAllCallback, Befo
             throw new IllegalStateException("Use @Story annotation to use Story Extension. Class: " + context.getRequiredTestClass());
         }
         Class<?> clazz = context.getRequiredTestClass();
-        StoryRun storyRun = new StoryRun(clazz);
+        var storyRun = new StoryRun(clazz);
         context.getStore(NAMESPACE).put(clazz.getName(), storyRun);
     }
 
@@ -64,14 +62,13 @@ public class StoryExtension implements BeforeAllCallback, AfterAllCallback, Befo
             throw new IllegalStateException("Use @Scenario annotation to use the StoryExtension service. Method: " + context.getRequiredTestMethod());
         }
         // Prepare a scene instance corresponding to the given test method.
-        Scene scene = new Scene(context.getRequiredTestMethod());
+        var scene = new Scene(context.getRequiredTestMethod());
         storyDetails(context).addScene(scene);
     }
 
     @Override
-    public boolean supportsParameter(ParameterContext parameterContext, ExtensionContext extensionContext) {
-        Parameter parameter = parameterContext.getParameter();
-        return Scene.class.equals(parameter.getType());
+    public boolean supportsParameter(@NotNull ParameterContext parameterContext, ExtensionContext extensionContext) {
+        return Scene.class.equals(parameterContext.getParameter().getType());
     }
 
     /**

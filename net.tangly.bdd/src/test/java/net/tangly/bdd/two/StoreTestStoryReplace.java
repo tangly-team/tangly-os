@@ -15,11 +15,12 @@ package net.tangly.bdd.two;
 
 import net.tangly.bdd.Scenario;
 import net.tangly.bdd.Scene;
-import net.tangly.bdd.StoreTest;
 import net.tangly.bdd.Story;
 import net.tangly.bdd.engine.StoryExtension;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import static net.tangly.bdd.StoreUtilities.create;
+import static net.tangly.bdd.StoreUtilities.store;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -29,15 +30,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Story(value = "Replaced are switched form the stockpile",
        description = "As a store owner, in order to keep track of stock, I want to switch items" + "back to stock when they're returned and replaced.",
        tags = {"Release 2.0"})
-class StoreTestStoryReplace extends StoreTest {
+class StoreTestStoryReplace {
     @Scenario("Replaced items should be returned to stock, and the new ones deduced from the stock")
     void replaceAndRestock(Scene scene) {
         scene.given("A customer previously bought a blue garment from the store having 3 black and 3 blue sweaters", t -> create(t, 3, 3).sellBlue(1))
-                .and("the store now has 2 blue garments in stock", t -> assertThat(store(t).blues()).as("Store should carry 2 blue garments").isEqualTo(2))
-                .and("the store has 3 black garments in stock", t -> assertThat(store(t).blacks()).as("Store should carry 3 black garments").isEqualTo(3))
-                .when("The customer returns one blue garment for a replacement with one in black", t -> store(t).refundBlue(1).sellBlack(1))
-                .then("The store should have 3 blue garments in stock", t -> assertThat(store(t).blues()).as("Store should carry 3 blue garments").isEqualTo(3))
-                .and("the store should have 2 black garments in stock",
-                        t -> assertThat(store(t).blacks()).as("Store should carry 2 black garments").isEqualTo(2)).run();
+            .and("the store now has 2 blue garments in stock", t -> assertThat(store(t).blues()).as("Store should carry 2 blue garments").isEqualTo(2))
+            .and("the store has 3 black garments in stock", t -> assertThat(store(t).blacks()).as("Store should carry 3 black garments").isEqualTo(3))
+            .when("The customer returns one blue garment for a replacement with one in black", t -> store(t).refundBlue(1).sellBlack(1))
+            .then("The store should have 3 blue garments in stock", t -> assertThat(store(t).blues()).as("Store should carry 3 blue garments").isEqualTo(3))
+            .and("the store should have 2 black garments in stock", t -> assertThat(store(t).blacks()).as("Store should carry 2 black garments").isEqualTo(2))
+            .run();
     }
 }

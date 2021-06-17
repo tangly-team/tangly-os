@@ -35,12 +35,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Store definitions for unit tests.
  */
-public class StoreTest {
+public class StoreUtilities {
     private static final String BDD_REPORT = "bdd-features.json";
 
     @AfterAll
     public static void mergeStories() throws IOException {
-        Path bddReportsFolder = StoryWriter.getOrCreateBddReportsFolder(StoreTest.class);
+        Path bddReportsFolder = StoryWriter.getOrCreateBddReportsFolder(StoreUtilities.class);
         Path bddReports = bddReportsFolder.resolve(Path.of(BDD_REPORT));
         Files.deleteIfExists(bddReports);
 
@@ -54,13 +54,13 @@ public class StoreTest {
         new StoryAsciiDocPublisher(bddReports, bddPublished);
     }
 
-    public Store create(@NotNull Scene scene, int blackSweaters, int blueSweaters) {
+    public static Store create(@NotNull Scene scene, int blackSweaters, int blueSweaters) {
         Store store = new Store(blackSweaters, blueSweaters);
         scene.put("store", store);
         return store;
     }
 
-    public Store store(@NotNull Scene scene) {
+    public static Store store(@NotNull Scene scene) {
         return (Store) scene.get("store");
     }
 

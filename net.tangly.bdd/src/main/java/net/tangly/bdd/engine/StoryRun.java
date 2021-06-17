@@ -23,10 +23,10 @@ import net.tangly.bdd.Story;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Recall that our custom extension generates BDD reports after executing the tests. Some parts of these reports are pulled from the elements of the
- * “@Story” annotation. We use the beforeAll callback to store these strings. Later, at the end of the execution lifecycle, we retrieve these strings
- * to generate reports. A simple POJO is used for this purpose. We name this class “StoryDetails”. The following code snippet demonstrates the process
- * of creating an instance of this class and save the elements of the annotation into the instance.
+ * Recall that our custom extension generates BDD reports after executing the tests. Some parts of these reports are pulled from the elements of the “@Story”
+ * annotation. We use the beforeAll callback to store these strings. Later, at the end of the execution lifecycle, we retrieve these strings to generate
+ * reports. A simple POJO is used for this purpose. We name this class “StoryDetails”. The following code snippet demonstrates the process of creating an
+ * instance of this class and save the elements of the annotation into the instance.
  */
 public class StoryRun {
     private final Class<?> clazz;
@@ -40,18 +40,15 @@ public class StoryRun {
     // region Story
 
     public String name() {
-        Story story = clazz.getAnnotation(Story.class);
-        return story.value();
+        return clazz.getAnnotation(Story.class).value();
     }
 
     public String id() {
-        Story story = clazz.getAnnotation(Story.class);
-        return story.id();
+        return clazz.getAnnotation(Story.class).id();
     }
 
     public String description() {
-        Story story = clazz.getAnnotation(Story.class);
-        return story.description();
+        return clazz.getAnnotation(Story.class).description();
     }
 
     public List<String> storyTags() {

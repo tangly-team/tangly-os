@@ -33,7 +33,7 @@ public class StoryAsciiDocPublisher {
 
     public StoryAsciiDocPublisher(@NotNull Path bddReport, @NotNull Path report) throws IOException {
         try (Reader reader = Files.newBufferedReader(bddReport, StandardCharsets.UTF_8)) {
-            JSONArray features = new JSONArray(new JSONTokener(reader));
+            var features = new JSONArray(new JSONTokener(reader));
             writer = new PrintWriter(report.toFile(), StandardCharsets.UTF_8);
             documentHeader();
             for (var item : features) {
@@ -96,7 +96,7 @@ public class StoryAsciiDocPublisher {
     private void clause(@NotNull JSONObject scenario, @NotNull String clause) {
         JSONObject segment = (JSONObject) scenario.get(clause);
         writer.append("*").append(clause).append("* ").append(segment.getString(BddConstants.TEXT));
-        JSONArray ands = segment.optJSONArray(BddConstants.AND);
+        var ands = segment.optJSONArray(BddConstants.AND);
         if (ands != null) {
             for (var item : ands) {
                 writer.append(" *and* ").append((String) item);
