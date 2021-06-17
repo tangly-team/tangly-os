@@ -13,12 +13,14 @@
 package net.tangly.erp.crm.ui;
 
 import com.github.mvysny.kaributesting.v10.MockVaadin;
+import com.github.mvysny.kaributesting.v10.Routes;
 import net.tangly.core.TypeRegistry;
-import net.tangly.erpr.crm.ports.CrmEntities;
-import net.tangly.erpr.crm.ports.CrmHdl;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.crm.services.CrmBusinessLogic;
 import net.tangly.erp.crm.services.CrmRealm;
+import net.tangly.erpr.crm.ports.CrmEntities;
+import net.tangly.erpr.crm.ports.CrmHdl;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 class CrmItTest {
@@ -27,9 +29,15 @@ class CrmItTest {
         return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmHdl(realm, null), null, new TypeRegistry());
     }
 
-    @BeforeEach
-    void setup() {
-        MockVaadin.setup();
+    private static Routes routes;
+
+    @BeforeAll
+    public static void createRoutes() {
+        routes = new Routes().autoDiscoverViews("net.tangly.erp.ui");
     }
 
+    @BeforeEach
+    public void setupVaadin() {
+        MockVaadin.setup(routes);
+    }
 }

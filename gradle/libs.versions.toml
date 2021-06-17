@@ -5,7 +5,7 @@ jolt-version = '0.1.1'
 junit-version = '5.8.0-M1'
 microstream-version = '04.01.00-MS-GA'
 mustang-version = '2.2.0'
-vaadin-version = '20.0.2'
+vaadin-version = '20.0.3'
 
 [libraries]
 annotations = "org.jetbrains:annotations:21.0.1"
