@@ -5,14 +5,14 @@ jolt-version = '0.1.1'
 junit-version = '5.8.0-M1'
 microstream-version = '04.01.00-MS-GA'
 mustang-version = '2.2.0'
-vaadin-version = '20.0.1'
+vaadin-version = '20.0.2'
 
 [libraries]
 annotations = "org.jetbrains:annotations:21.0.1"
 antrlr-st4 = "org.antlr:ST4:4.3.1"
 apache-commons-csv = "org.apache.commons:commons-csv:1.8"
 apache-commons-codec = "commons-codec:commons-codec:1.15"
-apache-commons-io = "commons-io:commons-io:2.9.0"
+apache-commons-io = "commons-io:commons-io:2.10.0"
 apache-log4j2-api = "org.apache.logging.log4j:log4j-api:2.14.1"
 apache-log4j2-core = "org.apache.logging.log4j:log4j-core:2.14.1"
 apache-pdfbox = "org.apache.pdfbox:pdfbox:2.0.23"
@@ -42,11 +42,11 @@ junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jun
 junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-version" }
 mustang-core = { module = "org.mustangproject:library", version.ref = "mustang-version" }
 mustang-validator = { module = "org.mustangproject:validator", version.ref = "mustang-version" }
-google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.12.24"
+google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.12.25"
 qrbill = "net.codecrete.qrbill:qrbill-generator:2.5.2"
 microstream-storage = { module = "one.microstream:storage.embedded", version.ref = "microstream-version" }
 microstream-config = { module = "one.microstream:storage.embedded.configuration", version.ref = "microstream-version" }
-mockito = "org.mockito:mockito-junit-jupiter:3.11.0"
+mockito = "org.mockito:mockito-junit-jupiter:3.11.1"
 
 vaadin-core = { module = "com.vaadin:vaadin-core", version.ref = "vaadin-version" }
 vaadin-autocomplete = "com.vaadin.componentfactory:autocomplete:2.3.1"

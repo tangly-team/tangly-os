@@ -14,7 +14,7 @@
 plugins {
     id "java"
     id "application"
-    id "com.vaadin" version "20.0.1"
+    id "com.vaadin" version "20.0.2"
 }
 
 project.ext.groupId = 'net.tangly.erp'
