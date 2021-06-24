@@ -120,6 +120,9 @@ You need high-quality tools such as videoconferencing, chat, collaborative tools
 The huge gain of 2020 and 2021 was the tremendous improvements of these tools due to the Corona lockdown.
 Companies still need to invest in high-quality headsets, cameras and 4K displays for their collaborators.
 
+Do not be penny wise and pound foolish. Invest in professional hardware and buy the adequate number of licenses.
+I always wonder why companies implement communication infrastructure with for example the free version of Slack or Github.
+
 === Insights
 
 Agile approaches are steadily making progress in Switzerland.
@@ -127,7 +130,7 @@ Empirical data indicate agile approaches are more successful than hybrid ones.
 I hope we can get rid of hybrid agile and in particular of the Swiss Hermes method in the next years.
 
 A drawback is that {ref-safe} is the de-facto standard for agile scaling in Switzerland.
-https://www.thoughtworks.com/[Thoughtworks] just stated in the Spring 2021 technology radar you should avoid using {ref-safe}.
+https://www.thoughtworks.com/[Thoughtworks] just stated in Spring 2021 technology radar you should avoid using {ref-safe}.
 These learnings have not reached our country.
 
 Team accountability is lagging; but decentralization of decisions is too hard for the majority.

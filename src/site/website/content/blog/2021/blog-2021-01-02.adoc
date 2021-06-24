@@ -86,6 +86,24 @@ You are responsible to document these identifiers, and the process to create new
 You shall also guaranty that existing identifiers are never recycled.
 If your identifiers are strings, you shall clearly define the supported languages, and character sets.
 
+=== https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design]
+
+Domain Driven Design _DDD_ is a powerful and modern approach to define agile software architecture.
+Some key rules are related to identity.
+
+Entity has a wel-defined identity::
+An entity is an object that is not defined by its attributes, but rather by a thread of continuity and its identity.
+Any instance of an entity abstraction must have a unique identifier.
+Identify aggregate through identity::
+An aggregate is a group of objects that are bound together by a root entity, called the aggregate root.
+Objects outside the aggregate are allowed to hold references to the root but not to any other object of the aggregate.
+The aggregate root is responsible for checking the consistency of changes in the aggregate.
+An aggregate is found and referenced through the identifier of the root entity of the aggregate.
+Reference over aggregate through identity::
+An aggregate shall reference other aggregate through the identity of their root entity instance.
+
+The concept of identity is therefore central the domain driven design approach.
+
 === Lessons Learnt
 
 Always try to find an external well-defined identifier for your entities.
