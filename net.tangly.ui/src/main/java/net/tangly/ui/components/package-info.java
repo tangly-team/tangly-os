@@ -16,6 +16,7 @@
  *     <li>A list displaying a list of entities with selected fields.</li>
  *     <li>A tabbed details view showing simple fields view, comments view, tags view. The comments and tags view display again a list of
  *     values.</li>
+ *     <li>All custom components are extended to support setting a null value. The syntax is set a new value or clear the content.</li>
  * </ul>
  * <p>The composite field abstractions cover two scenarios. Composite fields for immutable entities cannot use a binder. We provide a validator method to return
  * validation logic for all internal fields. Regular beans providing at least getters for fields can be connected with a binder. Here we provide a
