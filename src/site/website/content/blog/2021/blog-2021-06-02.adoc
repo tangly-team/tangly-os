@@ -11,6 +11,7 @@ tags: ["agile", "series-swiss-agile-trends"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
+:mmdc:/usr/local/opt/mermaid-cli/bin/mmdc
 
 image::2021-06-02-head.jpg[width=420,height=360,role=left]
 As a modern leader, you are aware of the importance of transforming your organization to become more agile.
@@ -48,18 +49,22 @@ The participants of the study confirmed this documented facts.
 
 It seems that hybrid methods are way less successful than agile based on SwissQ data.
 
-[chart,pie,file="hybrid-methods-success.png",opt="title=Hybrid Methods Success 2021"]
+[mermaid,hybrid-methods-success-2021,svg,svg-type=interactive]
 ....
-Successful, 35.3, green
-Challenged, 63.4, orange
-Stopped, 1.3, red
+pie
+    title Hybrid Methods Success 2021
+    "Successful" : 35.3
+    "Challenged" : 63.4
+    "Stopped" : 1.3
 ....
 
-[chart,pie,file="hybrid-methods-success.png",opt="title=Agile Methods Success 2021"]
+[mermaid,agile-methods-success-2021,svg,svg-type=interactive]
 ....
-Successful, 55.4, green
-Challenged, 44.6, orange
-Stopped, 0.0, red
+pie
+    title Agile Methods Success 2021
+    "Successful" : 55.4
+    "Challenged" : 44.6
+    "Stopped" : 0.001
 ....
 
 The agile approach continues to spread rapidly around the world: 89.8% of all teams have already adopted or are in the process of adopting agile methodology, a considerable number.
@@ -68,46 +73,33 @@ The good news is that many companies have started transformation initiatives or 
 
 === Used Methods in Switzerland
 
-[chart,bar,file="hybrid-methods.png",opt="title=Hybrid Methods 2021"]
+[mermaid,hybrid-methods-2021,svg]
 ....
-// Scrum
-Scrum, 64.7, green
-// Waterfall
-Waterfall, 58.9, red
-// Kanban
-Kanban, 40.2,
-// SAFe
-SAFe, 25.9
-// Hermes
-Hermes, 18.8
-// Scrumban
-Scrumban, 13.8
-// DaD
-DaD, 3.1
-// Unified Process
-Unified Process, 1.8
-// Others
-Others, 11.6, grey
+pie
+    title Hybrid Methods 2021
+    "Scrum" : 64.7
+    "Waterfall" : 58.9
+    "Kanban" : 40.2
+    "SAFe" : 25.9
+    "Hermes" : 18.8
+    "Scrumban" : 13.8
+    "DaD" : 3.1
+    "Unified Process" : 1.8
+    "Others" : 11.6
 ....
 
-[chart,bar,file="agile-methods.png",opt="title=Agile Methods 2021"]
+[mermaid,agile-methods-2021,svg]
 ....
-// Scrum
-Scrum, 75.1, green
-// SAFe
-SAFe, 46.3
-// Kanban
-Kanban, 42.9
-// Scrumban
-Scrumban, 15.3
-// Hermes
-Hermes 5, 4.5
-// Waterfall
-Waterfall, 3.4, red
-// Dad
-DaD, 1.7
-// Others
-Others, 7.9, grey
+pie
+    title Agile Methods 2021
+    "Scrum" : 75.1
+    "SAFe" : 46.3
+    "Kanban" : 42.9
+    "Scrumban" : 15.3
+    "Hermes 5" : 4.5
+    "Waterfall" : 3.4
+    "DaD" : 1.7
+    "Others" : 7.9
 ....
 
 === Findings
@@ -120,7 +112,8 @@ You need high-quality tools such as videoconferencing, chat, collaborative tools
 The huge gain of 2020 and 2021 was the tremendous improvements of these tools due to the Corona lockdown.
 Companies still need to invest in high-quality headsets, cameras and 4K displays for their collaborators.
 
-Do not be penny wise and pound foolish. Invest in professional hardware and buy the adequate number of licenses.
+Do not be penny wise and pound foolish.
+Invest in professional hardware and buy the adequate number of licenses.
 I always wonder why companies implement communication infrastructure with for example the free version of Slack or Github.
 
 === Insights
@@ -128,6 +121,11 @@ I always wonder why companies implement communication infrastructure with for ex
 Agile approaches are steadily making progress in Switzerland.
 Empirical data indicate agile approaches are more successful than hybrid ones.
 I hope we can get rid of hybrid agile and in particular of the Swiss Hermes method in the next years.
+
+[cite, Henrik Kniberg]
+____
+Don’t scale agile... descale your organization.
+____
 
 A drawback is that {ref-safe} is the de-facto standard for agile scaling in Switzerland.
 https://www.thoughtworks.com/[Thoughtworks] just stated in Spring 2021 technology radar you should avoid using {ref-safe}.
@@ -179,6 +177,7 @@ Laugh it off when stupid decisions ruin your work.
 All of this must be done in an open and humble way as otherwise there is no new learning for you.
 Maybe you are wrong and they were right?
 
-Did we mention _patience_? I wish a fruitful and successful transformation to better way of working and of creating awesome products.
+Did we mention _patience_?
+I wish a fruitful and successful transformation to better way of working and of creating awesome products.
 
 You can download the https://swissq.it/en/downloads/trends-benchmarks-report-2021-in-quality-engineering/[Trends Benchmark Report 2021] report.

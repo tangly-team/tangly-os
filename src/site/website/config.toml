@@ -70,7 +70,7 @@ safeMode = "unsafe"
 workingFolderCurrent = true
 backend = "html5s"
 failureLevel = "fatal"
-extensions = ["asciidoctor-html5s", "asciidoctor-diagram", "asciidoctor-chart"]
+extensions = ["asciidoctor-html5s", "asciidoctor-diagram"]
 [markup.asciidocExt.attributes]
 imagesdir = "../pics"
 source-highlighter = "rouge"

@@ -51,18 +51,22 @@ The collected data clearly shows agile approaches are tremendously more successf
 The agile approach seems to eliminate catastrophic development failures.
 It means an agile team has 25% higher relative probability to be victorious than classical teams (_50.5% versus 39.5%_).
 
-[chart,pie,file="hybrid-methods-success.png",opt="title=Hybrid Methods Success 2020"]
+[mermaid,waterfall-methods-success-2020,svg,svg-type=interactive]
 ....
-Successful, 39.5, green
-Challenged, 59.7
-Stopped, 0.9, red
+pie
+    title Waterfall Methods Success 2020
+    "Successful" : 39.5
+    "Challenged" : 59.7
+    "Stopped" : 0.9
 ....
 
-[chart,pie,file="agile-methods-success.png",opt="title=Agile Methods Succes 2020"]
+[mermaid,agile-methods-success-2020,svg,svg-type=interactive]
 ....
-Successful, 50.5, green
-Challenged, 49.1
-Stopped, 0.0, red
+pie
+    title Agile Methods Success 2020
+    "Successful" : 50.5
+    "Challenged" : 49.1
+    "Stopped" : 0.4
 ....
 
 It is time to embrace agile product development.
@@ -107,6 +111,11 @@ They must make difficult and painful decisions regarding new leadership teams.
 ____
 
 === Insights
+
+[cite, Anthony Mersino]
+____
+It isn’t about changing agile to fit your company, it is changing your organization to achieve business agility.
+____
 
 Agile approaches are steadily making progress in Switzerland.
 We have reached the level where late majority and laggards are slowly looking at the approach.

@@ -47,6 +47,16 @@ We want a professional looking documentation to encourage new users to try our o
 
 {ref-hugo} was selected as static site generator because its support for {ref-asciidoc} is tremendously improving.
 
+Static website generators have strong advantages for technical savy persons:
+
+* Hosting is cheap.
+GitHub, GitLab or Bitbucket pages even hosts static websites for free.
+* The source files go into Git for backup and history.
+* The source files are in plain text:
+** Changes come in as a _Pull Request_ for proper review and CI pipeline validation.
+** The sources are open in our IDEs, which encourages refactoring them alongside the code.
+This results in less stale content.
+
 First I used the https://github.com/thingsym/hugo-theme-techdoc/[hugo-theme-techdoc] to customize {ref-hugo}.
 It worked great for the technical documentation and technical articles but fall short of my wishes for the blog part.
 When I discover the theme {ref-docsy}.
@@ -63,7 +73,8 @@ Another huge gain is that _plantuml_ and other diagrams are generated at the rig
 
 === Install the Tools
 
-My development platform is a MacBookPro and MacOS. I use https://brew.sh/[Homebrew] as a package manager.
+My development platform is a MacBookPro and MacOS.
+I use https://brew.sh/[Homebrew] as a package manager.
 
 The instructions to install hugo and asciidoctor are:
 
