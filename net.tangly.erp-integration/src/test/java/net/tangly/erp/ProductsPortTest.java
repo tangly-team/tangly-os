@@ -12,7 +12,7 @@
 
 package net.tangly.erp;
 
-import net.tangly.products.ports.EffortReportAsciiDoc;
+import net.tangly.ero.products.ports.EffortReportAsciiDoc;
 import org.junit.jupiter.api.Test;
 
 class ProductsPortTest {

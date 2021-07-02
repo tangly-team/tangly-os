@@ -1,6 +1,6 @@
-oid	id	name	fromDate	toDate	text	locale	currency	iban	bic	institute	amountWithoutVat	sellerOid	selleeOid
-500	HSLU-2015	HSLU 2015	2015-01-01	2015-06-30	This is the contract Sundance 01	de	CHF	DE91 1000 0000 0123 4567 89	RAIFCH22E55	Raiffaisen	100000	100	101
-501	HSLU-2020	HSLU 2020	2020-01-01	2020-12-31	This is the contract Sundance 02	de	CHF	DE91 1000 0000 0123 4567 89	RAIFCH22E55	Raiffaisen	100000	100	101
-502	2015-003	Sundance-3	2015-06-01	2015-10-31	This is the contract Sundance 03	en	CHF	DE91 1000 0000 0123 4567 89	RAIFCH22E55	Raiffaisen	100000	100	101
-503	STG-2019	Sundance-4	2018-07-01	2019-12-31	This is the contract Sundance 04	en	CHF	DE91 1000 0000 0123 4567 89	RAIFCH22E55	Raiffaisen	100000	100	101
-504	STG-2020	Sundance-5	2020-05-01	2020-12-31	This is the contract Sundance 05	de	EUR	DE91 1000 0000 0123 4567 89	RAIFCH22E55	Raiffaisen	100000	100	101
+"oid"	"id"	"name"	"fromDate"	"toDate"	"text"	"locale"	"currency"	"iban"	"bic"	"institute"	"amountWithoutVat"	"sellerOid"	"selleeOid"	"street"	"extended"	"postcode"	"locality"	"region"	"country"
+"500"	"HSLU-2015"	"HSLU 2015"	"2015-01-01"	"2015-06-30"	"This is the contract Sundance 01"	"de"	"CHF"	"DE91 1000 0000 0123 4567 89"	"RAIFCH22E55"	"Raiffaisen"	"100000"	"100"	"101"	"Suurstoffi 41b"	""	"6330"	"Rotkreuz"	"ZG"	"CH"
+"501"	"HSLU-2020"	"HSLU 2020"	"2020-01-01"	"2020-12-31"	"This is the contract Sundance 02"	"de"	"CHF"	"DE91 1000 0000 0123 4567 89"	"RAIFCH22E55"	"Raiffaisen"	"100000"	"100"	"101"	"Suurstoffi 41b"	""	"6330"	"Rotkreuz"	"ZG"	"CH"
+"502"	"2015-003"	"Sundance-3"	"2015-06-01"	"2015-10-31"	"This is the contract Sundance 03"	"en"	"CHF"	"DE91 1000 0000 0123 4567 89"	"RAIFCH22E55"	"Raiffaisen"	"100000"	"100"	"101"	"Elsenheimerstrasse 47"	""	"80687"	"München"	"DE-BY"	"DE"
+"503"	"STG-2019"	"Sundance-4"	"2018-07-01"	"2019-12-31"	"This is the contract Sundance 04"	"en"	"CHF"	"DE91 1000 0000 0123 4567 89"	"RAIFCH22E55"	"Raiffaisen"	"100000"	"100"	"101"	"Elsenheimerstrasse 47"	""	"80687"	"München"	"DE-BY"	"DE"
+"504"	"STG-2020"	"Sundance-5"	"2020-05-01"	"2020-12-31"	"This is the contract Sundance 05"	"de"	"EUR"	"DE91 1000 0000 0123 4567 89"	"RAIFCH22E55"	"Raiffaisen"	"100000"	"100"	"101"	"Elsenheimerstrasse 47"	""	"80687"	"München"	"DE-BY"	"DE"

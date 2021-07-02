@@ -136,12 +136,12 @@ public class VCard2 {
         }
     }
 
-    private boolean containsParameterType(Property property, Parameter.Id id, String value) {
+    private boolean containsParameterType(@NotNull Property property, @NotNull Parameter.Id id, @NotNull String value) {
         return property.getParameters(id).stream().anyMatch(o -> value.equals(o.getValue()));
     }
 
-    private String property(Property.Id id) {
-        Property property = card.getProperty(id);
+    private String property(@NotNull Property.Id id) {
+        var property = card.getProperty(id);
         return (property != null) ? property.getValue() : null;
     }
 

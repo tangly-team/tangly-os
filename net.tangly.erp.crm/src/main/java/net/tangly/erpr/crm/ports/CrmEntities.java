@@ -15,13 +15,13 @@ package net.tangly.erpr.crm.ports;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.locks.ReentrantLock;
 import javax.inject.Inject;
 
 import net.tangly.commons.generator.IdGenerator;
-import net.tangly.core.HasOid;
+import net.tangly.commons.generator.LongIdGenerator;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
+import net.tangly.core.providers.ProviderHasOid;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.providers.ProviderPersistence;
 import net.tangly.erp.crm.domain.Activity;
@@ -52,7 +52,7 @@ import org.jetbrains.annotations.NotNull;
  * <p>The class is also the connection point between the CRM domain model and other ones. One such external domain is the invoices domain.</p>
  */
 public class CrmEntities implements CrmRealm {
-    static class Data implements IdGenerator {
+    static class Data {
         private final List<Lead> leads;
         private final List<NaturalEntity> naturalEntities;
         private final List<LegalEntity> legalEntities;
@@ -61,8 +61,6 @@ public class CrmEntities implements CrmRealm {
         private final List<Interaction> interactions;
         private final List<Activity> activities;
         private final List<Subject> subjects;
-        private long oidCounter;
-        private transient final ReentrantLock lock;
 
         Data() {
             leads = new ArrayList<>();
@@ -73,18 +71,6 @@ public class CrmEntities implements CrmRealm {
             interactions = new ArrayList<>();
             activities = new ArrayList<>();
             subjects = new ArrayList<>();
-            oidCounter = HasOid.UNDEFINED_OID;
-            this.lock = new ReentrantLock();
-        }
-
-        @Override
-        public long id() {
-            lock.lock();
-            try {
-                return oidCounter++;
-            } finally {
-                lock.unlock();
-            }
         }
     }
 
@@ -98,42 +84,37 @@ public class CrmEntities implements CrmRealm {
     private final Provider<Interaction> interactions;
     private final Provider<Activity> activities;
     private final Provider<Subject> subjects;
+    private final IdGenerator generator;
     private final EmbeddedStorageManager storageManager;
 
     @Inject
     public CrmEntities(@NotNull Path path) {
         this.data = new Data();
         storageManager = EmbeddedStorage.start(data, path);
+        generator = generator();
 
-        leads = new ProviderPersistence<>(storageManager, data.leads);
-        naturalEntities = new ProviderPersistence<>(storageManager, data.naturalEntities);
-        legalEntities = new ProviderPersistence<>(storageManager, data.legalEntities);
-        employees = new ProviderPersistence<>(storageManager, data.employees);
-        contracts = new ProviderPersistence<>(storageManager, data.contracts);
-        interactions = new ProviderPersistence<>(storageManager, data.interactions);
-        activities = new ProviderPersistence<>(storageManager, data.activities);
-        subjects = new ProviderPersistence<>(storageManager, data.subjects);
+        leads = ProviderPersistence.of(storageManager, data.leads);
+        naturalEntities = ProviderHasOid.of(generator, storageManager, data.naturalEntities);
+        legalEntities = ProviderHasOid.of(generator, storageManager, data.legalEntities);
+        employees = ProviderHasOid.of(generator, storageManager, data.employees);
+        contracts = ProviderHasOid.of(generator, storageManager, data.contracts);
+        interactions = ProviderHasOid.of(generator, storageManager, data.interactions);
+        activities = ProviderPersistence.of(storageManager, data.activities);
+        subjects = ProviderHasOid.of(generator, storageManager, data.subjects);
     }
 
     public CrmEntities() {
         this.data = new Data();
         storageManager = null;
-        leads = new ProviderInMemory<>(data.leads);
-        naturalEntities = new ProviderInMemory<>(data.naturalEntities);
-        legalEntities = new ProviderInMemory<>(data.legalEntities);
-        employees = new ProviderInMemory<>(data.employees);
-        contracts = new ProviderInMemory<>(data.contracts);
-        interactions = new ProviderInMemory<>(data.interactions);
-        activities = new ProviderInMemory<>(data.activities);
-        subjects = new ProviderInMemory<>(data.subjects);
-
-        long oidCounter = Realm.maxOid(naturalEntities());
-        oidCounter = Math.max(oidCounter, Realm.maxOid(legalEntities));
-        oidCounter = Math.max(oidCounter, Realm.maxOid(employees));
-        oidCounter = Math.max(oidCounter, Realm.maxOid(contracts));
-        oidCounter = Math.max(oidCounter, Realm.maxOid(interactions));
-        oidCounter = Math.max(oidCounter, Realm.maxOid(subjects));
-        data.oidCounter = Math.max(oidCounter, OID_SEQUENCE_START);
+        generator = new LongIdGenerator(OID_SEQUENCE_START);
+        leads = ProviderInMemory.of(data.leads);
+        naturalEntities = ProviderHasOid.of(generator, data.naturalEntities);
+        legalEntities = ProviderHasOid.of(generator, data.legalEntities);
+        employees = ProviderHasOid.of(generator, data.employees);
+        contracts = ProviderHasOid.of(generator, data.contracts);
+        interactions = ProviderHasOid.of(generator, data.interactions);
+        activities = ProviderInMemory.of(data.activities);
+        subjects = ProviderHasOid.of(generator, data.subjects);
     }
 
     public void storeRoot() {
@@ -142,13 +123,6 @@ public class CrmEntities implements CrmRealm {
 
     public void shutdown() {
         storageManager.shutdown();
-    }
-
-    @Override
-    public <T extends HasOid> T registerOid(@NotNull T entity) {
-        Realm.setOid(entity, data.id());
-        storeRoot();
-        return entity;
     }
 
     @Override
@@ -194,5 +168,15 @@ public class CrmEntities implements CrmRealm {
     @Override
     public void close() {
         storageManager.close();
+    }
+
+    private IdGenerator generator() {
+        long oidCounter = Realm.maxOid(data.naturalEntities);
+        oidCounter = Math.max(oidCounter, Realm.maxOid(data.legalEntities));
+        oidCounter = Math.max(oidCounter, Realm.maxOid(data.employees));
+        oidCounter = Math.max(oidCounter, Realm.maxOid(data.contracts));
+        oidCounter = Math.max(oidCounter, Realm.maxOid(data.interactions));
+        oidCounter = Math.max(oidCounter, Realm.maxOid(data.subjects));
+        return new LongIdGenerator(Math.max(oidCounter, OID_SEQUENCE_START));
     }
 }

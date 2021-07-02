@@ -21,8 +21,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 import net.tangly.erp.invoices.ports.InvoicesHdl;
+import net.tangly.erp.products.ports.ProductsHdl;
 import net.tangly.erpr.crm.ports.CrmHdl;
-import net.tangly.products.ports.ProductsHdl;
 import org.jetbrains.annotations.NotNull;
 
 /**

@@ -71,11 +71,11 @@ public class CrmVcardHdl {
     public void importVCard(@NotNull Path path) {
         Path picturesFolder = path.getParent().getParent().resolve(PICTURES_FOLDER);
         try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
-            GroupRegistry groupRegistry = new GroupRegistry();
-            PropertyFactoryRegistry propReg = new PropertyFactoryRegistry();
-            ParameterFactoryRegistry parReg = new ParameterFactoryRegistry();
-            VCardBuilder builder = new VCardBuilder(reader, groupRegistry, propReg, parReg);
-            VCard2 card = new VCard2(builder.build());
+            var groupRegistry = new GroupRegistry();
+            var propReg = new PropertyFactoryRegistry();
+            var parReg = new ParameterFactoryRegistry();
+            var builder = new VCardBuilder(reader, groupRegistry, propReg, parReg);
+            var card = new VCard2(builder.build());
             Optional<EmailAddress> homeEmail = card.homeEmail();
             Optional<NaturalEntity> person = Optional.empty();
             if (homeEmail.isPresent()) {

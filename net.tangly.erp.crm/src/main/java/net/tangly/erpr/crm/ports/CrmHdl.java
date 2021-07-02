@@ -50,7 +50,7 @@ public final class CrmHdl implements CrmHandler {
 
     @Override
     public void importEntities() {
-        CrmTsvHdl handler = new CrmTsvHdl(realm());
+        var handler = new CrmTsvHdl(realm());
         handler.importLeads(folder.resolve(LEADS_TSV));
         handler.importLegalEntities(folder.resolve(LEGAL_ENTITIES_TSV));
         handler.importNaturalEntities(folder.resolve(NATURAL_ENTITIES_TSV));
@@ -67,7 +67,7 @@ public final class CrmHdl implements CrmHandler {
 
     @Override
     public void exportEntities() {
-        CrmTsvHdl handler = new CrmTsvHdl(realm);
+        var handler = new CrmTsvHdl(realm);
         handler.exportLeads(folder.resolve(LEADS_TSV));
         handler.exportLegalEntities(folder.resolve(LEGAL_ENTITIES_TSV));
         handler.exportNaturalEntities(folder.resolve(NATURAL_ENTITIES_TSV));
