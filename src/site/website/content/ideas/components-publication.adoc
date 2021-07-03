@@ -111,6 +111,12 @@ git push origin-bitbucket <3>
 <3> Pushes the master branch to the _origin-bitbucket_ remote repository.
 The push shall trigger the continuous integratin pipeline
 
+You must create a token for developer account to be able to push changes and trigger the CI pipeline.
+The username is your account username The password is the generated token
+footnote:[This is necessary if you have enabled two factors authentication.
+The other approach is to generate a SSH key and perform all operations other SSH.].
+Store it in a safe place.
+
 ==== Findings
 
 . We needed to manually publish the public key on http://keys.gnupg.net[keys.gnupg.net]
