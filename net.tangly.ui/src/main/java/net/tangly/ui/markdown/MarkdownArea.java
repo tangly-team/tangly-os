@@ -18,6 +18,7 @@ import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
+import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.component.textfield.TextArea;
 import net.tangly.ui.components.VaadinUtils;
 import org.commonmark.parser.Parser;
@@ -43,14 +44,12 @@ public class MarkdownArea extends CustomField<String> {
         input.setWidth("100%");
         writeView.setVisible(false);
         previewView.setVisible(true);
+        tabs.addThemeVariants(TabsVariant.LUMO_SMALL);
         tabs.setSelectedTab(previewTab);
         add(tabs, writeView, previewView);
         tabs.addSelectedChangeListener(event -> {
             if (tabs.getSelectedTab().getLabel().equals("Preview")) {
-                writeView.setVisible(false);
-                previewView.setVisible(true);
-                String value = getValue().isEmpty() ? "*Nothing to preview*" : getValue();
-                addMarkdown(value);
+                activatePreview();
             } else {
                 writeView.setVisible(true);
                 previewView.setVisible(false);
@@ -73,8 +72,7 @@ public class MarkdownArea extends CustomField<String> {
         super.setReadOnly(readOnly);
         writeTab.setEnabled(!readOnly);
         if (readOnly) {
-            writeView.setVisible(false);
-            previewView.setVisible(true);
+            activatePreview();
         }
     }
 
@@ -82,6 +80,17 @@ public class MarkdownArea extends CustomField<String> {
     public void clear() {
         super.clear();
         input.clear();
+    }
+
+    @Override
+    public void setValue(String value) {
+        VaadinUtils.setValue(input, value);
+        addMarkdown(value);
+    }
+
+    @Override
+    public String getValue() {
+        return input.getValue();
     }
 
     private void addMarkdown(String value) {
@@ -94,16 +103,9 @@ public class MarkdownArea extends CustomField<String> {
         return renderer.render(parser.parse(value));
     }
 
-    public void setValue(String value) {
-        VaadinUtils.setValue(input, value);
-        addMarkdown(value);
-    }
-
-    public String getValue() {
-        return input.getValue();
-    }
-
-    public TextArea getInput() {
-        return input;
+    private void activatePreview() {
+        writeView.setVisible(false);
+        previewView.setVisible(true);
+        addMarkdown(getValue().isEmpty() ? "*Nothing to preview*" : getValue());
     }
 }

@@ -6,7 +6,7 @@ weight: 10
 draft: false
 ---
 
-# Commons Libraries
+# Gleam Library
 
 ![Apache License 2.0](https://img.shields.io/badge/license-Apache%202-blue.svg)
 ![Maven Central](https://img.shields.io/maven-central/v/net.tangly/gleam.svg)
@@ -27,21 +27,21 @@ The library can be included in Maven as
       <artifactId>gleam</artifactId>
       <version>0.2.5</version>
     </dependency>
-```    
+```
 
 The library can be included in Gradle as
 
 ```groovy
     implementation "net.tangly:gleam:0.2.5"
 ```
- 
+
 The documentation can be found under [Commons documentation](https://tangly-team.bitbucket.io/docs/gleam/)
 
 For any further question and discussion you can use the forum [tangly-OS-Components](https://groups.google.com/g/tangly-os-components)
 
 ## Contribution
 
-You are welcome to contribute to the product with pull requests on Bitbucket. You can download the source files from the 
+You are welcome to contribute to the product with pull requests on Bitbucket. You can download the source files from the
 [bitbucket git repository](https://bitbucket.org/tangly-team/tangly-os.git) and build  the library with the provided gradle configuration file.
 
 If you find a bug or want to request a feature, please use the [issue tracker](https://bitbucket.org/tangly-team/tangly-os/issues).

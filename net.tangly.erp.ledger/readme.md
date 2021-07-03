@@ -5,7 +5,7 @@ weight: 10
 draft: false
 ---
 
-# Business Model Types
+# ERP Ledger Component
 
 ![Apache License 2.0](https://img.shields.io/badge/license-Apache%202-blue.svg)
 ![Maven Central](https://img.shields.io/maven-central/v/net.tangly/erp/crm.svg)

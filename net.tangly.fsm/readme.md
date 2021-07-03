@@ -6,7 +6,7 @@ weight: 10
 draft: false
 ---
 
-# Finite State Machine
+# Finite State Machine Library
 
 ![Apache License 2.0](https://img.shields.io/badge/license-Apache%202-blue.svg)
 ![Maven Central](https://img.shields.io/maven-central/v/net.tangly/fsm.svg)
@@ -23,15 +23,15 @@ The component is using records and requires **Java 14 or higher**.
 The library provides
 
 * Definition of hierarchical state machine descriptions. The machine states and transitions are generic classes. You provide an enumeration for the
-  set of states, and an enumeration for the set of events triggering the machine. The builder pattern is used to create complex state machine 
+  set of states, and an enumeration for the set of events triggering the machine. The builder pattern is used to create complex state machine
   definition declaratively,
 * Builder approach to construct finite state machine declaration - either classical state machines or hierarchical state machines -
 * Lambda expressions based on standard API functional interfaces are used for guards and actions
   * Guard are bi-predicate lambda expressions with the context and event as parameters
-  * Actions are bi-function lambda expressions with the context and event as parameters 
-* A runtime engine processing events on a finite state machine description. Multiple instances of the same description can be instantiated. The class 
+  * Actions are bi-function lambda expressions with the context and event as parameters
+* A runtime engine processing events on a finite state machine description. Multiple instances of the same description can be instantiated. The class
   owning the state machine is passed as context to all guards and actions,
-* Support classes to implement listeners and logging are provided. 
+* Support classes to implement listeners and logging are provided.
 * Documentation helper can generate a graphical representation of a state machine using the graph dot language. Various output formats are supported
   * Table representation
   * Dot graph representation
@@ -47,21 +47,21 @@ The library can be included in Maven as
       <artifactId>fsm</artifactId>
       <version>0.2.6</version>
     </dependency>
-```    
+```
 
 The library can be included in Gradle as
 
 ```groovy
     implementation "net.tangly:fsm:0.2.6"
 ```
- 
+
 The documentation can be found under [FSM documentation](https://tangly-team.bitbucket.io/docs/fsm/)
 
 For any further question and discussion you can use the forum [tangly-OS-Components](https://groups.google.com/g/tangly-os-components)
-        
+
 ## Contribution
 
-You are welcome to contribute to the product with pull requests on Bitbucket. You can download the source files from the 
+You are welcome to contribute to the product with pull requests on Bitbucket. You can download the source files from the
 [bitbucket git repository](https://bitbucket.org/tangly-team/tangly-os.git) and build  the library with the provided gradle configuration file.
 
 If you find a bug or want to request a feature, please use the [issue tracker](https://bitbucket.org/tangly-team/tangly-os/issues).
