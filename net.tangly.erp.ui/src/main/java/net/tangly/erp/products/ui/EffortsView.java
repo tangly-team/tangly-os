@@ -16,7 +16,6 @@ import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.IntegerField;
-import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import net.tangly.erp.products.domain.Effort;
@@ -24,6 +23,7 @@ import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.VaadinUtils;
 import net.tangly.ui.grids.GridDecorators;
+import net.tangly.ui.markdown.MarkdownArea;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -70,7 +70,7 @@ class EffortsView extends EntitiesView<Effort> {
         DatePicker date = VaadinUtils.createDatePicker("Date");
         IntegerField duration = new IntegerField("Duration", "duration");
         TextField contractId = new TextField("Contract Id", "contractId");
-        TextArea text = new TextArea("Text", "text");
+        MarkdownArea text = new MarkdownArea("Text");
 
         VaadinUtils.configureOid(operation, oid);
         VaadinUtils.readOnly(operation, date, duration, contractId, text);

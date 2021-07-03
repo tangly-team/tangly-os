@@ -34,6 +34,11 @@ public class MarkdownArea extends CustomField<String> {
     private final Parser parser = Parser.builder().build();
     private final HtmlRenderer renderer = HtmlRenderer.builder().build();
 
+    public MarkdownArea(String label) {
+        this();
+        setLabel(label);
+    }
+
     public MarkdownArea() {
         input.setWidth("100%");
         writeView.setVisible(false);

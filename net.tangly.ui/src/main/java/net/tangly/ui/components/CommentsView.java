@@ -47,7 +47,7 @@ public class CommentsView extends EntitiesView<Comment> {
         author = VaadinUtils.createTextField("Author", "author");
         author.setRequired(true);
         author.setReadOnly(true);
-        text = new MarkdownArea();
+        text = new MarkdownArea("Text");
         initialize();
     }
 
