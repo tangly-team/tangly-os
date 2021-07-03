@@ -61,6 +61,7 @@ public class GridActionsListener<T> implements CrudActionsListener<T> {
         if (Objects.nonNull(provider)) {
             provider.update(entity);
         }
+        dataProvider.refreshAll();
         selection.accept(entity);
     }
 }

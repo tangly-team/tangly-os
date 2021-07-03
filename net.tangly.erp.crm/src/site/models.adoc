@@ -100,13 +100,13 @@ class NaturalEntity <<(E,orchid) Entity>> {
 NaturalEntity o-- "0..1" Photo : photo
 NaturalEntity o-- "1" GenderCode : gender
 
-class Employee <<(E,orchid) Entity>> {
+class Employee {
 }
 
 Employee o-- "1" NaturalEntity : employee
 Employee o-- "1" LegalEntity : employer
 
-class Activity <<(E,orchid) Entity>> {
+class Activity {
     LocalDate date;
     int durationInMinutes;
     String author;

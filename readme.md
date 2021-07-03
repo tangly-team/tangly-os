@@ -11,15 +11,15 @@ The components are
 * [*PORTS*](net.tangly.ports/readme.md) ports library providing examples to connect a business domain model to external systems
 * [*UI*](net.tangly.ui/readme.md) Vaadin user interface library
 * ERP Components
-    * [*ERP CRM*](net.tangly.erp.crm/readme.md) business components library
-    * [*ERP LEDGER*](net.tangly.erp.ledger/readme.md) business components library
-    * [*ERP INVOICES*](net.tangly.erp.invoices/readme.md) business components library
-    * [*ERP PRODUCTS*](net.tangly.erp.products/readme.md) business components library
-    * [*ERP SHARED*](net.tangly.erp.shared/readme.md) business components library
+    * [*ERP CRM*](net.tangly.erp.crm/readme.md) customer relations management business components library
+    * [*ERP INVOICES*](net.tangly.erp.invoices/readme.md) invoices business components library
+    * [*ERP LEDGER*](net.tangly.erp.ledger/readme.md) ledger business components library
+    * [*ERP PRODUCTS*](net.tangly.erp.products/readme.md) products business components library
+    * [*ERP SHARED*](net.tangly.erp.shared/readme.md) shared business components library
 
 The documentation is located under [tangly-team](https://tangly-team.bitbucket.io/).
 
-The repository is hosed under bitbucket [tangly OS bitbucket](https://bitbucket.org/tangly-team/tangly-os.git).
+The repository is hosted under bitbucket [tangly OS bitbucket](https://bitbucket.org/tangly-team/tangly-os.git).
 
 A mirror is also hosted under github [tangly OS github](https://github.com/marcelbaumann/tangly-os.git).
 
@@ -55,6 +55,7 @@ The https://gradle.org/[Gradle] build file can be triggered without any suppleme
 ````
 
 The first run will take time because all dependencies will be downloaded from Maven repositories.
+The next compilations will be much faster.
 Ensure you have enough bandwidth to provide a smooth experience.
 
 All development activities are performed with probably the best Java IDE IntelliJ IDEA.

@@ -17,10 +17,13 @@ import java.math.BigDecimal;
 import java.util.Currency;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.Optional;
 
 import net.tangly.core.Address;
 import net.tangly.core.BankConnection;
 import net.tangly.core.QualifiedEntityImp;
+import net.tangly.core.crm.CrmEntity;
+import net.tangly.core.crm.VcardType;
 
 /**
  * A legal contract between two parties, one being the seller and one being the sellee. The properties of the entity defines the identifiers of the contract and
@@ -35,8 +38,7 @@ import net.tangly.core.QualifiedEntityImp;
  *   <li>The currency of the contract amount and the one used in the invoices</li>
  * </ul>
  */
-public class Contract extends QualifiedEntityImp {
-    private Address address;
+public class Contract extends QualifiedEntityImp implements CrmEntity {
     private BankConnection bankConnection;
     private BigDecimal amountWithoutVat;
     private LegalEntity seller;
@@ -47,12 +49,12 @@ public class Contract extends QualifiedEntityImp {
     public Contract() {
     }
 
-    public Address address() {
-        return address;
+    public Optional<Address> address() {
+        return address(VcardType.work);
     }
 
     public void address(Address address) {
-        this.address = address;
+        address(VcardType.work, address);
     }
 
     public BankConnection bankConnection() {
@@ -107,6 +109,14 @@ public class Contract extends QualifiedEntityImp {
     public boolean check() {
         return Objects.nonNull(bankConnection()) && Objects.nonNull(seller()) && Objects.nonNull(sellee()) &&
             (Objects.requireNonNull(amountWithoutVat()).compareTo(BigDecimal.ZERO) > 0) && Objects.nonNull(currency()) && Objects.nonNull(locale());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof Contract o) && super.equals(o) && Objects.equals(address(), o.address()) &&
+            Objects.equals(bankConnection(), o.bankConnection()) && Objects.equals(amountWithoutVat(), o.amountWithoutVat()) &&
+            Objects.equals(seller(), o.seller()) && Objects.equals(sellee(), o.sellee()) && Objects.equals(locale(), o.locale()) &&
+            Objects.equals(currency(), o.currency());
     }
 
     @Override

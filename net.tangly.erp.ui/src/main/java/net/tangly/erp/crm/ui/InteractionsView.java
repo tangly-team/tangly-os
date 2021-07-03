@@ -74,7 +74,7 @@ class InteractionsView extends InternalEntitiesView<Interaction> {
         tabs.add(new Tab("Comments"), new CommentsView(mode, entity));
         tabs.add(new Tab("Tags"), new TagsView(mode, entity, domain.registry()));
         One2ManyView<Activity> activities = new One2ManyView<>(Activity.class, mode, InteractionsView::defineOne2ManyActivities,
-            ProviderView.of(new ProviderInMemory(entity.activities())), new ActivitiesView(domain, mode));
+            ProviderView.of(ProviderInMemory.of(entity.activities())), new ActivitiesView(domain, mode));
         tabs.add(new Tab("Activities"), activities);
     }
 

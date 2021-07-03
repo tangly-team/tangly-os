@@ -12,6 +12,8 @@
 
 package net.tangly.core.domain;
 
+import java.util.List;
+
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.core.Entity;
 import net.tangly.core.HasOid;
@@ -26,7 +28,11 @@ import org.jetbrains.annotations.NotNull;
  */
 public interface Realm extends AutoCloseable {
     static <T extends HasOid> long maxOid(Provider<T> provider) {
-        return provider.items().stream().mapToLong(HasOid::oid).max().orElse(HasOid.UNDEFINED_OID);
+        return maxOid(provider.items());
+    }
+
+    static <T extends HasOid> long maxOid(List<T> items) {
+        return items.stream().mapToLong(HasOid::oid).max().orElse(HasOid.UNDEFINED_OID);
     }
 
     static <T extends HasOid> T setOid(@NotNull T entity, long oid) {
@@ -41,6 +47,4 @@ public interface Realm extends AutoCloseable {
             }
         });
     }
-
-    <T extends HasOid> T registerOid(@NotNull T entity);
 }

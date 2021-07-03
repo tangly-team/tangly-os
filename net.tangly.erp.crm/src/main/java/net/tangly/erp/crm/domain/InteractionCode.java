@@ -17,6 +17,13 @@ import net.tangly.core.codes.Code;
 /**
  * Defines the phases of an interaction between the seller and sellee organizations. An interaction is first a prospect, can evolve to lead, customer, and
  * completed contract or instead can be lost.
+ * <dl>
+ *     <dt>prospect</dt><dd>a contact was established and activities are initiated.</dd>
+ *     <dt>lead</dt><dd>activities are pursued to create a contract with a legal entity.</dd>
+ *     <dt>ordered</dt><dd>contract was signed and services shall be delivered to fulfill the contract.</dd>
+ *     <dt>completed</dt><dd>All contractual requirements are fulfilled and the artifacts were delivered to the sellee.</dd>
+ *     <dt>lost</dt><dd>No contract could be signed with the interested party and activities to pursue this contract are stopped.</dd>
+ * </dl>
  */
 public enum InteractionCode implements Code {
     prospect, lead, ordered, completed, lost;

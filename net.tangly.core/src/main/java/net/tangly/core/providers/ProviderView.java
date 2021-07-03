@@ -14,7 +14,6 @@ package net.tangly.core.providers;
 
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -32,16 +31,16 @@ public class ProviderView<T> implements Provider<T> {
         this.predicate = predicate;
     }
 
-    public void predicate(Predicate<T> predicate) {
-        this.predicate = predicate;
-    }
-
     public static <T> Provider<T> of(@NotNull Provider<T> provider) {
         return of(provider, o -> true);
     }
 
     public static <T> Provider<T> of(@NotNull Provider<T> provider, @NotNull Predicate<T> predicate) {
         return new ProviderView<>(provider, predicate);
+    }
+
+    public void predicate(Predicate<T> predicate) {
+        this.predicate = predicate;
     }
 
     @Override

@@ -38,7 +38,7 @@ public class EmbeddedJetty {
             logger.atInfo().log("Production mode detected, enforcing");
             System.setProperty("vaadin.productionMode", "true");
         }
-
+        System.setProperty("java.util.logging.manager", "org.apache.logging.log4j.jul.LogManager");
         final WebAppContext context = new WebAppContext();
         context.setBaseResource(findWebRoot());
         context.setContextPath("/");

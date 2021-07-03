@@ -32,4 +32,14 @@ public class LongIdGenerator implements IdGenerator {
             lock.unlock();
         }
     }
+
+    @Override
+    public void set(long externalId) {
+        lock.lock();
+        try {
+            id = Math.max(id, externalId);
+        } finally {
+            lock.unlock();
+        }
+    }
 }

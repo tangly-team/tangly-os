@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class LegalEntityTest {
+class LegalEntityTest {
     @Test
     void testLinkedInUrl() {
         final var PLUSCODE = "8FVC5FM5+Q6G";

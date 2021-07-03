@@ -21,4 +21,10 @@ public interface IdGenerator {
      * @return new unique identifier
      */
     long id();
+
+    /**
+     * Sets the generator based on a new external identifier.
+     * @param externalId new external identifier.
+     */
+    void set(long externalId);
 }

@@ -221,6 +221,6 @@ class BitUtilitiesTest {
             assertThat(toHex(stream)).isEqualTo("0x49, 0x92, 0x24, 0x49");
         }
         byte[] stream = {};
-        assertThat(toHex(stream)).isEqualTo("");
+        assertThat(toHex(stream)).isEmpty();
     }
 }

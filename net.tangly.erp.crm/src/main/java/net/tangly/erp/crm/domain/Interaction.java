@@ -102,6 +102,12 @@ public class Interaction extends QualifiedEntityImp {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof Interaction o) && super.equals(o) && Objects.equals(activities(), o.activities()) && Objects.equals(entity(), o.entity()) &&
+            Objects.equals(code(), o.code()) && Objects.equals(potential(), o.potential()) && Objects.equals(probability(), o.probability());
+    }
+
+    @Override
     public String toString() {
         return """
             Interaction[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, state=%s, potential=%s, probability=%s, tags=%s]

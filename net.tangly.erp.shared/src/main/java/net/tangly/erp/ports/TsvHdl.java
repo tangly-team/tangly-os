@@ -84,8 +84,9 @@ public final class TsvHdl {
     public static <T extends Entity> List<TsvProperty<T, ?>> createTsvEntityFields() {
         List<TsvProperty<T, ?>> fields = new ArrayList<>();
         fields.add(TsvProperty.of(OID, Entity::oid, (entity, value) -> ReflectionUtilities.set(entity, OID, value), Long::parseLong));
-        fields.add(TsvProperty.of(FROM_DATE, Entity::fromDate, Entity::fromDate, TsvProperty.CONVERT_DATE_FROM));
-        fields.add(TsvProperty.of(TO_DATE, Entity::toDate, Entity::toDate, TsvProperty.CONVERT_DATE_FROM));
+        fields.add(TsvProperty.ofString(TEXT, Entity::text, Entity::text));
+        fields.add(TsvProperty.ofDate(FROM_DATE, Entity::fromDate, Entity::fromDate));
+        fields.add(TsvProperty.ofDate(TO_DATE, Entity::toDate, Entity::toDate));
         return fields;
     }
 
@@ -93,7 +94,6 @@ public final class TsvHdl {
         List<TsvProperty<T, ?>> fields = createTsvEntityFields();
         fields.add(TsvProperty.ofString(ID, QualifiedEntity::id, QualifiedEntity::id));
         fields.add(TsvProperty.ofString(NAME, QualifiedEntity::name, QualifiedEntity::name));
-        fields.add(TsvProperty.ofString(TEXT, QualifiedEntity::text, QualifiedEntity::text));
         return fields;
     }
 

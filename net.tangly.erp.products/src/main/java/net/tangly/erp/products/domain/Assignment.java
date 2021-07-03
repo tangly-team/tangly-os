@@ -12,11 +12,16 @@
 
 package net.tangly.erp.products.domain;
 
+import java.util.Objects;
+
 import net.tangly.core.QualifiedEntityImp;
 
 /**
  * An assignment defines the connection of an employee to a project for a duration. The start date shall be equal or greater to the start date of project. The
  * end date is optional, if defined it shall smaller or equal to the end date of the project.
+ * <p>The collaborator identifier uniquely identifies the natural entity performing the work associated with the assignement. The assumption is that we have
+ * a social security number of each collaborator working on a product under our supervision. The collaborator identifier of the assignment is therefore the
+ * social security number of a collaborator.</p>
  */
 public class Assignment extends QualifiedEntityImp {
     private Product product;
@@ -44,6 +49,12 @@ public class Assignment extends QualifiedEntityImp {
     @Override
     public boolean check() {
         return (product() != null) && (collaboratorId() != null);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof Assignment o) && super.equals(o) && Objects.equals(product(), o.product()) &&
+            Objects.equals(collaboratorId(), o.collaboratorId());
     }
 
     @Override

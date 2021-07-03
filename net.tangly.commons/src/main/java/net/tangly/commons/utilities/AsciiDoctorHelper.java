@@ -34,10 +34,10 @@ public class AsciiDoctorHelper {
     public static void createPdf(@NotNull Path asciidocFilePath, @NotNull Path pdfFilePath) {
         System.setProperty("jruby.compat.version", "RUBY1_9");
         System.setProperty("jruby.compile.mode", "OFF");
-        try (Asciidoctor asciidoctor = Asciidoctor.Factory.create(); OutputStream out = Files.newOutputStream(pdfFilePath)) {
+        try (var asciidoctor = Asciidoctor.Factory.create(); OutputStream out = Files.newOutputStream(pdfFilePath)) {
             String asciidoc = Files.readString(asciidocFilePath);
-            Attributes attributes = Attributes.builder().build();
-            Options options = Options.builder().inPlace(true).attributes(attributes).backend("pdf").safe(SafeMode.UNSAFE).toStream(out).build();
+            var attributes = Attributes.builder().build();
+            var options = Options.builder().inPlace(true).attributes(attributes).backend("pdf").safe(SafeMode.UNSAFE).toStream(out).build();
             asciidoctor.convert(asciidoc, options);
         } catch (IOException e) {
             throw new UncheckedIOException(e);

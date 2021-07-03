@@ -36,7 +36,7 @@ public final class FileUtilities {
 
     public static void replaceWithUnixEol(@NotNull Path path) {
         try {
-            String text = Files.readString(path);
+            var text = Files.readString(path);
             text = text.replace("\r\n", "\n");
             text = text.replace("\r", "\n");
             Files.writeString(path, text);

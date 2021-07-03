@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import org.jetbrains.annotations.NotNull;
@@ -28,9 +29,9 @@ import org.jetbrains.annotations.NotNull;
  */
 public abstract class EntityImp implements Entity {
     private final long oid;
-    private String text;
     private LocalDate fromDate;
     private LocalDate toDate;
+    private String text;
     private final List<Comment> comments;
     private final Set<Tag> tags;
 
@@ -125,4 +126,15 @@ public abstract class EntityImp implements Entity {
         tags.clear();
     }
     // endregion
+
+    @Override
+   public int hashCode() {
+        return Objects.hashCode(oid);
+    }
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof EntityImp o) && Objects.equals(oid(), o.oid()) && Objects.equals(fromDate(), o.fromDate()) &&
+            Objects.equals(toDate(), o.toDate()) && Objects.equals(text(), o.text()) && Objects.equals(comments(), o.comments()) &&
+            Objects.equals(tags(), o.tags());
+    }
 }

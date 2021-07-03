@@ -14,19 +14,30 @@ package net.tangly.erp;
 
 import java.io.IOException;
 import java.nio.file.FileSystem;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.Optional;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.core.domain.Realm;
+import net.tangly.erp.products.domain.Assignment;
+import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.ports.ProductsEntities;
 import net.tangly.erp.products.ports.ProductsHdl;
 import net.tangly.erp.products.services.ProductsRealm;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
+import static net.tangly.core.providers.Provider.findById;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ProductsHdlTest {
+    private static final String CONTRACT_ID = "STG-2020";
+    private static final String PRODUCT_ID = "STG-Agile";
+    private static final String ASSIGNMENT_ID = "Assignment-Test-009";
+    private static final String COLLABORATOR_ID = "756.5149.8825.64";
+
     @Test
     void testTsvCrm() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
@@ -36,15 +47,23 @@ class ProductsHdlTest {
             var handler = new ProductsHdl(new ProductsEntities(), store.productsRoot());
             handler.importEntities();
             verifyProducts(handler.realm());
-            verifyAssignements(handler.realm());
-            verifyEfforts(handler.realm());
+            verifyAssignments(handler.realm(), 0, null);
+            verifyEfforts(handler.realm(), 0, null);
+
+            Assignment assignment = createAssignment(handler.realm());
+            handler.realm().assignments().update(assignment);
+            int nrOfAssignments = handler.realm().assignments().items().size();
+            Effort effort = createEffort(handler.realm());
+            handler.realm().efforts().update(effort);
+            int nrOfEfforts = handler.realm().efforts().items().size();
+
             handler.exportEntities();
 
             handler = new ProductsHdl(new ProductsEntities(), store.productsRoot());
             handler.importEntities();
             verifyProducts(handler.realm());
-            verifyAssignements(handler.realm());
-            verifyEfforts(handler.realm());
+            verifyAssignments(handler.realm(), nrOfAssignments, assignment);
+            verifyEfforts(handler.realm(), nrOfEfforts, effort);
         }
     }
 
@@ -53,13 +72,47 @@ class ProductsHdlTest {
         Realm.checkEntities(realm.products());
     }
 
-    private void verifyAssignements(@NotNull ProductsRealm realm) {
+    private void verifyAssignments(@NotNull ProductsRealm realm, int nrOfEntities, Assignment entity) {
         assertThat(realm.assignments().items().isEmpty()).isFalse();
         Realm.checkEntities(realm.assignments());
+        if (entity != null) {
+            assertThat(realm.assignments().items()).hasSize(nrOfEntities);
+            Optional<Assignment> copy = findById(realm.assignments(), entity.id());
+            assertThat(copy).isNotEmpty();
+            assertThat(copy.get()).isEqualTo(entity);
+        }
     }
 
-    private void verifyEfforts(@NotNull ProductsRealm realm) {
+    private void verifyEfforts(@NotNull ProductsRealm realm, int nrOfEntities, Effort entity) {
         assertThat(realm.efforts().items().isEmpty()).isFalse();
         realm.efforts().items().forEach(o -> assertThat(o.check()).isTrue());
+        if (entity != null) {
+            assertThat(realm.efforts().items()).hasSize(nrOfEntities);
+            Optional<Effort> copy = realm.efforts().findBy(Effort::assignment, entity.assignment());
+            assertThat(copy).isNotEmpty();
+            assertThat(copy.get()).isEqualTo(entity);
+        }
+    }
+
+    private Assignment createAssignment(@NotNull ProductsRealm realm) {
+        Assignment entity = new Assignment();
+        entity.id(ASSIGNMENT_ID);
+        entity.name("Assignment_Test");
+        entity.fromDate(LocalDate.of(2020, Month.JANUARY, 1));
+        entity.toDate(LocalDate.of(2020, Month.DECEMBER, 31));
+        entity.text("*This is a markdown comment for an assignment*");
+        entity.collaboratorId(COLLABORATOR_ID);
+        entity.product(findById(realm.products(), PRODUCT_ID).orElseThrow());
+        return entity;
+    }
+
+    private Effort createEffort(@NotNull ProductsRealm realm) {
+        Effort entity = new Effort();
+        entity.date(LocalDate.of(2020, Month.MAY, 15));
+        entity.duration(60);
+        entity.contractId(CONTRACT_ID);
+        entity.assignment(findById(realm.assignments(), ASSIGNMENT_ID).orElseThrow());
+        entity.text("*This is a markdown comment for an effort*");
+        return entity;
     }
 }

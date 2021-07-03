@@ -16,15 +16,12 @@ package net.tangly.erp.ledger.ports;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.locks.ReentrantLock;
 
-import net.tangly.commons.generator.IdGenerator;
-import net.tangly.core.HasOid;
-import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.providers.ProviderPersistence;
 import net.tangly.erp.ledger.domain.Account;
+import net.tangly.erp.ledger.domain.AccountEntry;
 import net.tangly.erp.ledger.domain.Transaction;
 import net.tangly.erp.ledger.services.LedgerRealm;
 import one.microstream.storage.types.EmbeddedStorage;
@@ -32,48 +29,34 @@ import one.microstream.storage.types.EmbeddedStorageManager;
 import org.jetbrains.annotations.NotNull;
 
 public class LedgerEntities implements LedgerRealm {
-    private static class Data implements IdGenerator {
+    private static class Data {
         private final List<Account> accounts;
         private final List<Transaction> transactions;
-        private long oidCounter;
-        private transient final ReentrantLock lock;
 
         Data() {
             accounts = new ArrayList<>();
             transactions = new ArrayList<>();
-            oidCounter = HasOid.UNDEFINED_OID;
-            this.lock = new ReentrantLock();
-        }
-
-        @Override
-        public long id() {
-            lock.lock();
-            try {
-                return oidCounter++;
-            } finally {
-                lock.unlock();
-            }
         }
     }
 
+    private static final long OID_SEQUENCE_START = 1000;
     private final Data data;
     private final Provider<Account> accounts;
     private final Provider<Transaction> transactions;
     private final EmbeddedStorageManager storageManager;
 
-
     public LedgerEntities(Path path) {
         this.data = new Data();
         storageManager = EmbeddedStorage.start(data, path);
-        accounts = new ProviderPersistence<>(storageManager, data.accounts);
-        transactions = new ProviderPersistence<>(storageManager, data.transactions);
+        accounts = ProviderPersistence.of(storageManager, data.accounts);
+        transactions = ProviderPersistence.of(storageManager, data.transactions);
     }
 
     public LedgerEntities() {
         this.data = new Data();
         storageManager = null;
-        accounts = new ProviderInMemory<>(data.accounts);
-        transactions = new ProviderInMemory<>(data.transactions);
+        accounts = ProviderInMemory.of(data.accounts);
+        transactions = ProviderInMemory.of(data.transactions);
     }
 
     public void storeRoot() {
@@ -87,13 +70,6 @@ public class LedgerEntities implements LedgerRealm {
     }
 
     @Override
-    public <T extends HasOid> T registerOid(@NotNull T entity) {
-        Realm.setOid(entity, data.id());
-        storeRoot();
-        return entity;
-    }
-
-    @Override
     public Provider<Account> accounts() {
         return accounts;
     }
@@ -101,6 +77,11 @@ public class LedgerEntities implements LedgerRealm {
     @Override
     public Provider<Transaction> transactions() {
         return transactions;
+    }
+
+    @Override
+    public Provider<AccountEntry> entries() {
+        return ProviderInMemory.of(accounts().items().stream().flatMap(o -> o.entries().stream()).toList());
     }
 
     @Override

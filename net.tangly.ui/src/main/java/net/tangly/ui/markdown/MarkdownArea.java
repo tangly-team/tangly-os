@@ -12,54 +12,40 @@
 
 package net.tangly.ui.markdown;
 
-import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.Tag;
+import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.textfield.TextArea;
-import org.commonmark.node.Node;
+import net.tangly.ui.components.VaadinUtils;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
 
 @Tag("markdown-area")
-public class MarkdownArea extends Composite<Div> {
-
-    private TextArea input = new TextArea();
-    private Link link = new Link("Markdown", "https://vaadin.com/markdown-guide");
-    private Label label = new Label(" supported");
-    private Div writeView = new Div(input, link, label);
-    private Div previewView = new Div();
-    private Tab writeTab = new Tab("Write");
-    private Tab previewTab = new Tab("Preview");
-    private Tabs tabs = new Tabs(writeTab, previewTab);
-    Parser parser = Parser.builder().build();
-    HtmlRenderer renderer = HtmlRenderer.builder().build();
+public class MarkdownArea extends CustomField<String> {
+    private final TextArea input = new TextArea();
+    private final Div writeView = new Div(input);
+    private final Div previewView = new Div();
+    private final Tab writeTab = new Tab("Write");
+    private final Tab previewTab = new Tab("Preview");
+    private final Tabs tabs = new Tabs(writeTab, previewTab);
+    private final Parser parser = Parser.builder().build();
+    private final HtmlRenderer renderer = HtmlRenderer.builder().build();
 
     public MarkdownArea() {
-        init();
-    }
-
-    public MarkdownArea(String text) {
-        if (!text.isBlank()) {
-            setValue(text);
-        }
-        init();
-    }
-
-    private void init() {
         input.setWidth("100%");
-        link.setTarget("_blank");
-        previewView.setVisible(false);
-        getContent().add(tabs, writeView, previewView);
+        writeView.setVisible(false);
+        previewView.setVisible(true);
+        tabs.setSelectedTab(previewTab);
+        add(tabs, writeView, previewView);
         tabs.addSelectedChangeListener(event -> {
             if (tabs.getSelectedTab().getLabel().equals("Preview")) {
                 writeView.setVisible(false);
                 previewView.setVisible(true);
-                String text = getValue().isEmpty() ? "*Nothing to preview*" : getValue();
-                addMarkdown(text);
+                String value = getValue().isEmpty() ? "*Nothing to preview*" : getValue();
+                addMarkdown(value);
             } else {
                 writeView.setVisible(true);
                 previewView.setVisible(false);
@@ -67,20 +53,45 @@ public class MarkdownArea extends Composite<Div> {
         });
     }
 
+    @Override
+    protected String generateModelValue() {
+        return input.getValue();
+    }
+
+    @Override
+    protected void setPresentationValue(String text) {
+        VaadinUtils.setValue(input, text);
+    }
+
+    @Override
+    public void setReadOnly(boolean readOnly) {
+        super.setReadOnly(readOnly);
+        writeTab.setEnabled(!readOnly);
+        if (readOnly) {
+            writeView.setVisible(false);
+            previewView.setVisible(true);
+        }
+    }
+
+    @Override
+    public void clear() {
+        super.clear();
+        input.clear();
+    }
+
     private void addMarkdown(String value) {
-        String html = String.format("<div>%s</div>", parseMarkdown(StringUtil.nullSafeString(value)));
-        Html item = new Html(html);
+        Html item = new Html(String.format("<div>%s</div>", parseMarkdown(StringUtil.nullSafeString(value))));
         previewView.removeAll();
         previewView.add(item);
     }
 
     private String parseMarkdown(String value) {
-        Node text = parser.parse(value);
-        return renderer.render(text);
+        return renderer.render(parser.parse(value));
     }
 
     public void setValue(String value) {
-        input.setValue(value);
+        VaadinUtils.setValue(input, value);
+        addMarkdown(value);
     }
 
     public String getValue() {
@@ -90,9 +101,4 @@ public class MarkdownArea extends Composite<Div> {
     public TextArea getInput() {
         return input;
     }
-
-    public void setMarkdownLink(String markdownLink) {
-        link.setHref(markdownLink);
-    }
-
 }

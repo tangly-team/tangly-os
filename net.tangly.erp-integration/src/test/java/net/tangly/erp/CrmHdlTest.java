@@ -191,7 +191,7 @@ class CrmHdlTest {
         return entity;
     }
 
-    private Contract createContract(CrmRealm realm) {
+    private Contract createContract(@NotNull CrmRealm realm) {
         Contract entity = new Contract();
         entity.id("Contract-009");
         entity.name("Contract 009");

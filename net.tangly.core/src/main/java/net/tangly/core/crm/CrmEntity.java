@@ -20,9 +20,10 @@ import net.tangly.core.HasLocation;
 import net.tangly.core.HasTags;
 import net.tangly.core.PhoneNr;
 import net.tangly.core.Tag;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * A customer relation management mixin defines a set of operations useful for all customers. All information are stored as tags for future extensions.
+ * A customer relation management mixin defines a set of operations useful for all CRM abstractions. All information are stored as tags for future extensions.
  */
 public interface CrmEntity extends HasTags, HasLocation {
     @Override
@@ -39,34 +40,28 @@ public interface CrmEntity extends HasTags, HasLocation {
     }
 
     default Optional<PhoneNr> phoneNr(VcardType type) {
-        return findBy(CrmTags.phoneTag(type.name())).map(o -> PhoneNr.of(o.value()));
+        return findBy(CrmTags.phoneTag(type.name())).map(Tag::value).map(PhoneNr::of);
     }
 
-    default void phoneNr(VcardType type, String phoneNr) {
-        if (phoneNr != null) {
-            update(CrmTags.phoneTag(type.name()), phoneNr);
+    default void phoneNr(@NotNull VcardType type, String phoneNr) {
+        var contact = PhoneNr.of(phoneNr);
+        if (contact == null) {
+            removeTagNamed(CrmTags.phoneTag(type.name()));
         } else {
-            removeTagNamed(CrmTags.emailTag(type.name()));
+            update(CrmTags.phoneTag(type.name()), contact.number());
         }
     }
 
-    default Optional<EmailAddress> email(VcardType type) {
+    default Optional<EmailAddress> email(@NotNull VcardType type) {
         return findBy(CrmTags.emailTag(type.name())).map(Tag::value).map(EmailAddress::of);
     }
 
-    default void email(VcardType type, EmailAddress email) {
-        if (email != null) {
-            email(type, email.text());
-        } else {
-            removeTagNamed(CrmTags.emailTag(type.name()));
-        }
-    }
-
     default void email(VcardType type, String email) {
-        if (email != null) {
-            update(CrmTags.emailTag(type.name()), email);
-        } else {
+        var contact = EmailAddress.of(email);
+        if (contact == null) {
             removeTagNamed(CrmTags.emailTag(type.name()));
+        } else {
+            update(CrmTags.emailTag(type.name()), contact.text());
         }
     }
 

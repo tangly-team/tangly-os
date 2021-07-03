@@ -12,6 +12,8 @@
 
 package net.tangly.core;
 
+import java.util.Objects;
+
 /**
  * Default implementation of the Entity interface.
  *
@@ -45,5 +47,10 @@ public abstract class QualifiedEntityImp extends EntityImp implements QualifiedE
     @Override
     public void name(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof QualifiedEntityImp o) && super.equals(o) && Objects.equals(id(), o.id()) && Objects.equals(name(), o.name());
     }
 }

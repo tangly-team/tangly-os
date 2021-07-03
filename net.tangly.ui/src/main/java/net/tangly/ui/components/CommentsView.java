@@ -12,20 +12,20 @@
 
 package net.tangly.ui.components;
 
+import java.time.LocalDateTime;
+
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.datetimepicker.DateTimePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.server.VaadinSession;
 import net.tangly.core.Comment;
 import net.tangly.core.HasComments;
 import net.tangly.core.providers.ProviderInMemory;
+import net.tangly.ui.markdown.MarkdownArea;
 import org.jetbrains.annotations.NotNull;
-
-import java.time.LocalDateTime;
 
 /**
  * The comments view is a Crud view with all the comments defined for an object implementing the {@link HasComments}. Edition functions are provided to add,
@@ -36,7 +36,7 @@ public class CommentsView extends EntitiesView<Comment> {
     private final transient HasComments hasComments;
     private final DateTimePicker created;
     private final TextField author;
-    private final TextArea text;
+    private final MarkdownArea text;
 
     public CommentsView(@NotNull Mode mode, @NotNull HasComments entity) {
         super(Comment.class, mode, ProviderInMemory.of(entity.comments()));
@@ -47,8 +47,7 @@ public class CommentsView extends EntitiesView<Comment> {
         author = VaadinUtils.createTextField("Author", "author");
         author.setRequired(true);
         author.setReadOnly(true);
-        text = new TextArea("Text", "text");
-        text.setRequired(true);
+        text = new MarkdownArea();
         initialize();
     }
 
@@ -62,7 +61,6 @@ public class CommentsView extends EntitiesView<Comment> {
         grid.addColumn(Comment::text).setKey("text").setHeader("Text").setSortable(true).setFlexGrow(0).setWidth("200px").setResizable(false);
         addAndExpand(grid(), gridButtons());
     }
-
 
     @Override
     protected FormLayout fillForm(@NotNull Operation operation, Comment entity, FormLayout form) {
@@ -80,7 +78,7 @@ public class CommentsView extends EntitiesView<Comment> {
         } else {
             created.setValue(LocalDateTime.now());
             author.setValue(username());
-            text.clear();
+            text.setValue(entity.text());
         }
         return form;
     }

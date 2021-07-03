@@ -13,7 +13,6 @@
 package net.tangly.core.providers;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -34,11 +33,11 @@ public class ProviderInMemory<T> implements Provider<T> {
         items = new ArrayList<>();
     }
 
-    public ProviderInMemory(Collection<T> items) {
-        this.items = new ArrayList<>(items);
+    public static <T> Provider<T> of() {
+        return new ProviderInMemory<>();
     }
 
-    public static <T> Provider<T> of(Iterable<? extends T> items) {
+    public static <T> Provider<T> of(@NotNull Iterable<? extends T> items) {
         Provider<T> provider = new ProviderInMemory<>();
         provider.updateAll(items);
         return provider;

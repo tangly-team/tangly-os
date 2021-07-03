@@ -11,12 +11,13 @@
  *  under the License.
  */
 
-package net.tangly.products.ports;
+package net.tangly.erp.products.ports;
 
 import java.nio.file.Path;
 import java.time.LocalDate;
 
 import net.tangly.commons.utilities.AsciiDoctorHelper;
+import net.tangly.ero.products.ports.EffortReportAsciiDoc;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
 import net.tangly.erp.products.services.ProductsPort;

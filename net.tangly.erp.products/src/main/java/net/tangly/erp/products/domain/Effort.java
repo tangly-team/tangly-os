@@ -13,6 +13,7 @@
 package net.tangly.erp.products.domain;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import net.tangly.core.HasDate;
 import net.tangly.core.HasOid;
@@ -81,6 +82,12 @@ public class Effort implements HasOid, HasDate {
 
     public boolean check() {
         return (date() != null) && (duration() >= 0) && (contractId != null) && (assignment() != null);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof Effort o) && Objects.equals(oid(), o.oid()) && Objects.equals(date(), o.date()) && Objects.equals(duration(), o.duration()) &&
+            Objects.equals(contractId(), o.contractId()) && Objects.equals(text(), o.text()) && Objects.equals(assignment(), o.assignment());
     }
 
     @Override

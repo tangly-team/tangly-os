@@ -25,13 +25,7 @@ import org.jetbrains.annotations.NotNull;
  * Defines a human-readable annotation to an entity. A comment is an immutable object. Comments can be tagged to provide classification. A comment belongs to
  * the entity owning it an is only accessible through this entity.
  */
-public class Comment implements HasOid, HasTags {
-
-    /**
-     * The unique object identifier of the comment instance.
-     */
-    private long oid;
-
+public class Comment implements HasTags {
     /**
      * The foreign identifier of the entity owning the comment.
      */
@@ -65,7 +59,6 @@ public class Comment implements HasOid, HasTags {
      * @param text   text of the comment, we recommend using asciidoc format
      */
     public Comment(@NotNull String author, @NotNull String text) {
-        this.oid = HasOid.UNDEFINED_OID;
         this.created = LocalDateTime.now();
         this.author = Objects.requireNonNull(author);
         this.text = Objects.requireNonNull(text);
@@ -147,13 +140,6 @@ public class Comment implements HasOid, HasTags {
         return text;
     }
 
-    // region HasOid
-
-    @Override
-    public long oid() {
-        return oid;
-    }
-
     // endregion
 
     // region HasTags
@@ -180,7 +166,13 @@ public class Comment implements HasOid, HasTags {
     // endregion
 
     @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof Comment o) && Objects.equals(created(), o.created()) && Objects.equals(author(), o.author()) &&
+            Objects.equals(text(), o.text()) && Objects.equals(tags(), o.tags());
+    }
+
+    @Override
     public String toString() {
-        return String.format(Locale.US, "created=%1$%tF-%1$%tT, author=%2$s, text=%3$s, tags=%4$s", created, author, text, Tag.text(tags));
+        return String.format(Locale.US, "created=%s, author=%s, text=%s, tags=%s", created(), author(), text(), Tag.text(tags));
     }
 }

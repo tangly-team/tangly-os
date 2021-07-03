@@ -39,6 +39,8 @@ public interface LedgerRealm extends Realm {
 
     Provider<Transaction> transactions();
 
+    Provider<AccountEntry> entries();
+
     default List<Account> assets() {
         return accounts().items().stream().filter(o -> Account.AccountGroup.ASSETS == o.group()).toList();
     }

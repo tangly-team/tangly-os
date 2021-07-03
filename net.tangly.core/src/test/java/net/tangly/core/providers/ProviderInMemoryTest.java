@@ -13,9 +13,10 @@
 package net.tangly.core.providers;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
+import net.tangly.commons.generator.LongIdGenerator;
+import net.tangly.core.HasOid;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,17 +24,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ProviderInMemoryTest {
     static final int SIZE = 10;
 
-    static record Entity(String name) {
+    static record Entity(long oid, String name) implements HasOid {
     }
 
     @Test
     void testConstructors() {
-        var provider = new ProviderInMemory<>(entities());
+        var provider = ProviderInMemory.of(entities());
         assertThat(provider.items().size()).isEqualTo(SIZE);
-
         assertThat(ProviderInMemory.of(entities()).items().size()).isEqualTo(SIZE);
 
-        provider = new ProviderInMemory<>();
+        provider = ProviderInMemory.of();
         provider.updateAll(entities());
         assertThat(provider.items().size()).isEqualTo(SIZE);
     }
@@ -41,7 +41,7 @@ class ProviderInMemoryTest {
     @Test
     void testUpdates() {
         var entities = entities();
-        var provider = new ProviderInMemory<>(entities);
+        var provider = ProviderInMemory.of(entities);
         assertThat(provider.items().size()).isEqualTo(SIZE);
         entities.forEach(provider::update);
         assertThat(provider.items().size()).isEqualTo(SIZE);
@@ -51,13 +51,19 @@ class ProviderInMemoryTest {
 
     @Test
     void testFindBy() {
-        var provider = new ProviderInMemory<>(entities());
+        var provider = ProviderInMemory.of(entities());
         assertThat(provider.findBy(o -> o.name(), "name" + (SIZE - 1))).isPresent();
         assertThat(provider.findBy(o -> o.name(), "name" + SIZE)).isNotPresent();
+    }
 
+    @Test
+    void testOidHandling() {
+        var provider = ProviderHasOid.of(new LongIdGenerator(0), entities());
+        assertThat(provider.items().size()).isEqualTo(SIZE);
+        provider.items().forEach(o -> assertThat(o.oid != HasOid.UNDEFINED_OID));
     }
 
     private static List<Entity> entities() {
-        return IntStream.range(0, SIZE).mapToObj(o -> new Entity("name" + o)).toList();
+        return LongStream.range(0, SIZE).mapToObj(o -> new Entity(o, "name" + o)).toList();
     }
 }

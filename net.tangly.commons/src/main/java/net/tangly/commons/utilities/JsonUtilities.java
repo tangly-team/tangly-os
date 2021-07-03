@@ -22,7 +22,6 @@ import java.util.Set;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.networknt.schema.JsonSchema;
 import com.networknt.schema.JsonSchemaFactory;
 import com.networknt.schema.SpecVersion;
 import com.networknt.schema.ValidationMessage;
@@ -64,8 +63,8 @@ public class JsonUtilities {
              InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(resource)) {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode node = mapper.readTree(stream);
-            JsonSchemaFactory factory = JsonSchemaFactory.getInstance(SpecVersion.VersionFlag.V7);
-            JsonSchema schema = factory.getSchema(is);
+            var factory = JsonSchemaFactory.getInstance(SpecVersion.VersionFlag.V7);
+            var schema = factory.getSchema(is);
             return schema.validate(node);
         } catch (IOException e) {
             logger.atError().withThrowable(e).log("IO Exception when processing {}", jsonFile);

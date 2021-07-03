@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class NaturalEntityTest {
+class NaturalEntityTest {
     @Test
     void testPosition() {
         final var pluscode = "8FVC5FM5+Q6G";

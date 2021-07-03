@@ -224,12 +224,12 @@ public class CrmTsvHdl {
         fields.add(TsvProperty.ofString(LASTNAME, NaturalEntity::lastname, NaturalEntity::lastname));
         fields.add(TsvProperty.ofString(FIRSTNAME, NaturalEntity::firstname, NaturalEntity::firstname));
         fields.add(TsvProperty.ofEnum(GenderCode.class, GENDER, NaturalEntity::gender, NaturalEntity::gender));
-        fields.add(TsvHdl.createAddressMapping(VcardType.home));
         fields.add(TsvHdl.emailProperty(CRM_EMAIL_HOME, VcardType.home));
         fields.add(TsvHdl.phoneNrProperty(CRM_PHONE_MOBILE, VcardType.mobile));
         fields.add(TsvHdl.phoneNrProperty(CRM_PHONE_HOME, VcardType.home));
         fields.add(TsvHdl.tagProperty(CRM_IM_LINKEDIN));
         fields.add(TsvHdl.tagProperty(CRM_SITE_HOME));
+        fields.add(TsvHdl.createAddressMapping(VcardType.home));
         return TsvEntity.of(NaturalEntity.class, fields, NaturalEntity::new);
     }
 
@@ -237,7 +237,7 @@ public class CrmTsvHdl {
         List<TsvProperty<LegalEntity, ?>> fields = TsvHdl.createTsvQualifiedEntityFields();
         fields.add(TsvProperty.ofString(CRM_VAT_NUMBER, LegalEntity::vatNr, LegalEntity::vatNr));
         fields.add(TsvHdl.tagProperty(CRM_IM_LINKEDIN));
-        fields.add(TsvHdl.tagProperty(CRM_EMAIL_WORK));
+        fields.add(TsvHdl.emailProperty(CRM_EMAIL_WORK, VcardType.work));
         fields.add(TsvHdl.tagProperty(CRM_SITE_WORK));
         fields.add(TsvHdl.phoneNrProperty(CRM_PHONE_WORK, VcardType.work));
         fields.add(TsvHdl.createAddressMapping(VcardType.work));
@@ -307,8 +307,8 @@ public class CrmTsvHdl {
         Function<CSVRecord, Lead> imports =
             (CSVRecord item) -> new Lead(LocalDate.parse(TsvHdl.get(item, TsvHdl.DATE)), Enum.valueOf(LeadCode.class, TsvHdl.get(item, TsvHdl.CODE)),
                 TsvHdl.get(item, FIRSTNAME), TsvHdl.get(item, LASTNAME), Enum.valueOf(GenderCode.class, TsvHdl.get(item, TsvHdl.GENDER)),
-                TsvHdl.get(item, "company"), PhoneNr.of(TsvHdl.get(item, "phoneNr")), EmailAddress.of(TsvHdl.get(item, EMAIL)),
-                TsvHdl.get(item, "linkedIn"), Enum.valueOf(ActivityCode.class, TsvHdl.get(item, "activity")), TsvHdl.get(item, TsvHdl.TEXT));
+                TsvHdl.get(item, "company"), PhoneNr.of(TsvHdl.get(item, "phoneNr")), EmailAddress.of(TsvHdl.get(item, EMAIL)), TsvHdl.get(item, "linkedIn"),
+                Enum.valueOf(ActivityCode.class, TsvHdl.get(item, "activity")), TsvHdl.get(item, TsvHdl.TEXT));
 
         List<TsvProperty<Lead, ?>> fields =
             List.of(TsvProperty.ofDate(TsvHdl.DATE, Lead::date, null), TsvProperty.ofEnum(LeadCode.class, "code", Lead::code, null),

@@ -16,6 +16,8 @@ import java.util.Collections;
 import java.util.List;
 
 import one.microstream.storage.types.EmbeddedStorageManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -25,7 +27,20 @@ import org.jetbrains.annotations.NotNull;
  *
  * @param <T> type of the instances handled in the provider
  */
-public record ProviderPersistence<T>(@NotNull EmbeddedStorageManager storageManager, @NotNull List<T> items) implements Provider<T> {
+public class ProviderPersistence<T> implements Provider<T> {
+    private static final Logger logger = LogManager.getLogger();
+    private final EmbeddedStorageManager storageManager;
+    private final List<T> items;
+
+    public ProviderPersistence(@NotNull EmbeddedStorageManager storageManager, List<T> items) {
+        this.storageManager = storageManager;
+        this.items = items;
+    }
+
+    public static <T> ProviderPersistence<T> of(@NotNull EmbeddedStorageManager storageManager, List<T> items) {
+        return new ProviderPersistence<>(storageManager, items);
+    }
+
     @Override
     public List<T> items() {
         return Collections.unmodifiableList(items);
@@ -40,6 +55,7 @@ public record ProviderPersistence<T>(@NotNull EmbeddedStorageManager storageMana
             var storage = storageManager.createEagerStorer();
             storage.store(entity);
             storage.commit();
+            items.add(entity);
         }
     }
 

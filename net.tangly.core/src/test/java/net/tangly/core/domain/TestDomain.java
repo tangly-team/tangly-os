@@ -12,8 +12,6 @@
 
 package net.tangly.core.domain;
 
-import net.tangly.core.HasOid;
-import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,13 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class TestDomain {
     static class TestRealm implements Realm {
         @Override
-        public <T extends HasOid> T registerOid(@NotNull T entity) {
-            return entity;
-        }
-
-        @Override
         public void close() throws Exception {
-
         }
     }
 

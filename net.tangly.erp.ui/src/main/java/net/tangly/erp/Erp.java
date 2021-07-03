@@ -22,13 +22,13 @@ import net.tangly.erp.ledger.ports.LedgerEntities;
 import net.tangly.erp.ledger.ports.LedgerHdl;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.services.LedgerBusinessLogic;
+import net.tangly.erp.products.ports.ProductsAdapter;
+import net.tangly.erp.products.ports.ProductsEntities;
+import net.tangly.erp.products.ports.ProductsHdl;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
 import net.tangly.erpr.crm.ports.CrmEntities;
 import net.tangly.erpr.crm.ports.CrmHdl;
-import net.tangly.products.ports.ProductsAdapter;
-import net.tangly.products.ports.ProductsEntities;
-import net.tangly.products.ports.ProductsHdl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

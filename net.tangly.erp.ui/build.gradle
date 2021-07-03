@@ -25,7 +25,7 @@ project.ext.inceptionYear = '1996'
 project.description = "User Interface ERP - using Java 16 or higher (tangly llc)"
 
 ext {
-    jettyVersion = "9.4.41.v20210516"
+    jettyVersion = "9.4.42.v20210604"
 }
 
 application {
@@ -47,6 +47,7 @@ dependencies {
     implementation project(':net.tangly.ui')
 
     implementation(libs.vaadin.core)
+    implementation(libs.apache.log4j2.slf4j)
 
     // Embedded Jetty dependencies
     implementation("javax.servlet:javax.servlet-api:3.1.0")

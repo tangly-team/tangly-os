@@ -11,6 +11,13 @@
  */
 
 /**
- * Provides the provider abstraction to handle a list of items. Update operations are supported.
+ * Provides the provider abstraction to handle a list of items. Update operations are supported. The provided abstractions are
+ * <dl>
+ *     <dt>Provider</dt><dd>defines the interface for all providers. It defines the CRUD operations. The create and update operations are merged.</dd>
+ *     <dt>Provider In Memory</dt><dd>provides an implementation where the items are stored in memory and never persisted.</dd>
+ *     <dt>Provider Persistence</dt><dd>provides an implementation where the items are persisted.</dd>
+ *     <dt>Provider Has Oid</dt><dd>provides a deorator for provider holding items with unique object identifiers. Such objects must implements the HasOid
+ *     interface.</dd>
+ * </dl>
  */
 package net.tangly.core.providers;

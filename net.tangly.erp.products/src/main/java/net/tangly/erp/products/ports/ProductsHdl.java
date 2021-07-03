@@ -11,7 +11,7 @@
  *  under the License.
  */
 
-package net.tangly.products.ports;
+package net.tangly.erp.products.ports;
 
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -20,6 +20,7 @@ import java.util.Optional;
 
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.core.providers.Provider;
+import net.tangly.erp.ports.TsvHdl;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.domain.Product;
@@ -27,7 +28,6 @@ import net.tangly.erp.products.services.ProductsHandler;
 import net.tangly.erp.products.services.ProductsRealm;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
-import net.tangly.erp.ports.TsvHdl;
 import org.jetbrains.annotations.NotNull;
 
 import static net.tangly.erp.ports.TsvHdl.OID;

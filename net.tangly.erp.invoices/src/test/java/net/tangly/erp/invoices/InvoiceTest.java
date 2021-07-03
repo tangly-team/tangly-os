@@ -21,7 +21,6 @@ import java.util.List;
 import net.tangly.core.Address;
 import net.tangly.core.BankConnection;
 import net.tangly.core.EmailAddress;
-import net.tangly.core.HasOid;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.erp.invoices.domain.Article;
@@ -33,7 +32,6 @@ import net.tangly.erp.invoices.domain.Subtotal;
 import net.tangly.erp.invoices.ports.InvoiceJson;
 import net.tangly.erp.invoices.services.InvoicesRealm;
 import net.tangly.gleam.model.JsonEntity;
-import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -46,16 +44,11 @@ class InvoiceTest {
         @Override
         public void close() throws Exception {
         }
-
-        @Override
-        public <T extends HasOid> T registerOid(@NotNull T entity) {
-            return null;
-        }
     }
 
     @Test
     void testRegularInvoiceTotals() {
-        var realm = new Realm(new ProviderInMemory<>(), new ProviderInMemory<>(), new ProviderInMemory<>());
+        var realm = new Realm(ProviderInMemory.of(), ProviderInMemory.of(), ProviderInMemory.of());
         Invoice invoice = newRegularInvoice(realm);
         assertThat(invoice.amountWithoutVat()).isEqualByComparingTo(new BigDecimal("10850.00"));
         assertThat(invoice.amountWithVat()).isEqualByComparingTo(new BigDecimal("11685.45"));
@@ -64,7 +57,7 @@ class InvoiceTest {
 
     @Test
     void testTeachingTotals() {
-        Invoice invoice = newTeachingInvoice();
+        var invoice = newTeachingInvoice();
         assertThat(invoice.amountWithoutVat()).isEqualByComparingTo(new BigDecimal("4000.00"));
         assertThat(invoice.amountWithVat()).isEqualByComparingTo(new BigDecimal("4000.00"));
         assertThat(invoice.vat()).isEqualByComparingTo(BigDecimal.ZERO);
@@ -72,7 +65,7 @@ class InvoiceTest {
 
     @Test
     void testComplexInvoiceTotals() {
-        Invoice invoice = newComplexInvoice();
+        var invoice = newComplexInvoice();
         assertThat(invoice.amountWithoutVat()).isEqualByComparingTo(new BigDecimal("13850.00"));
         assertThat(invoice.amountWithVat()).isEqualByComparingTo(new BigDecimal("14685.45"));
         assertThat(invoice.vat()).isEqualByComparingTo(new BigDecimal("835.45"));
@@ -80,7 +73,7 @@ class InvoiceTest {
 
     @Test
     void testJsonRegualarInvoice() {
-        var realm = new Realm(new ProviderInMemory<>(), new ProviderInMemory<>(), new ProviderInMemory<>());
+        var realm = new Realm(ProviderInMemory.of(), ProviderInMemory.of(), ProviderInMemory.of());
         var invoice = newRegularInvoice(realm);
         var invoiceJson = new InvoiceJson(realm);
         JsonEntity<Invoice> entity = invoiceJson.createJsonInvoice();
@@ -107,7 +100,8 @@ class InvoiceTest {
 
         Invoice invoice = newInvoice("2017-0001", "Coaching contract Planta 20XX-5946 und ARE-20XX-6048");
         invoice.add(new InvoiceItem(1, realm.articles().findBy(Article::id, "0001").orElseThrow(), "GIS goes Agile project", new BigDecimal("4")));
-        invoice.add(new InvoiceItem(2, realm.articles().findBy(Article::id, "0001").orElseThrow(), "Java architecture coaching project", new BigDecimal("1.5")));
+        invoice.add(
+            new InvoiceItem(2, realm.articles().findBy(Article::id, "0001").orElseThrow(), "Java architecture coaching project", new BigDecimal("1.5")));
         invoice.add(new Subtotal(3, "Subtotal Project Leading GEO 2017 83200 Planta 20XX-5946", List.of(invoice.getAt(1), invoice.getAt(2))));
         invoice.add(new InvoiceItem(4, realm.articles().findBy(Article::id, "0002").orElseThrow(), "OGD technical project management", new BigDecimal("2.25")));
         invoice.add(new Subtotal(5, "Subtotal Agile Coaching 3130 0 80000", List.of(invoice.getAt(4))));

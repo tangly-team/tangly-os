@@ -11,18 +11,18 @@
  *  under the License.
  */
 
-package net.tangly.products.ports;
+package net.tangly.erp.products.ports;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.locks.ReentrantLock;
 import javax.inject.Inject;
 
 import net.tangly.commons.generator.IdGenerator;
-import net.tangly.core.HasOid;
+import net.tangly.commons.generator.LongIdGenerator;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
+import net.tangly.core.providers.ProviderHasOid;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.providers.ProviderPersistence;
 import net.tangly.erp.products.domain.Assignment;
@@ -34,29 +34,15 @@ import one.microstream.storage.types.EmbeddedStorageManager;
 import org.jetbrains.annotations.NotNull;
 
 public class ProductsEntities implements ProductsRealm {
-    static class Data implements IdGenerator {
+    static class Data {
         List<Product> products;
         List<Assignment> assignments;
         List<Effort> efforts;
-        private long oidCounter;
-        private transient final ReentrantLock lock;
 
         Data() {
             products = new ArrayList<>();
             assignments = new ArrayList<>();
             efforts = new ArrayList<>();
-            oidCounter = HasOid.UNDEFINED_OID;
-            this.lock = new ReentrantLock();
-        }
-
-        @Override
-        public long id() {
-            lock.lock();
-            try {
-                return oidCounter++;
-            } finally {
-                lock.unlock();
-            }
         }
     }
 
@@ -65,29 +51,27 @@ public class ProductsEntities implements ProductsRealm {
     private final Provider<Product> products;
     private final Provider<Assignment> assignments;
     private final Provider<Effort> efforts;
+    private final IdGenerator generator;
     private final EmbeddedStorageManager storageManager;
 
 
-    public ProductsEntities(Path path) {
+    public ProductsEntities(@NotNull Path path) {
         data = new Data();
         storageManager = EmbeddedStorage.start(data, path);
-        products = new ProviderPersistence<>(storageManager, data.products);
-        assignments = new ProviderPersistence<>(storageManager, data.assignments);
-        efforts = new ProviderPersistence<>(storageManager, data.efforts);
+        generator = generator();
+        products = ProviderHasOid.of(generator, storageManager, data.products);
+        assignments = ProviderHasOid.of(generator, storageManager, data.assignments);
+        efforts = ProviderHasOid.of(generator, storageManager, data.efforts);
     }
 
     @Inject
     public ProductsEntities() {
         data = new Data();
         storageManager = null;
-        this.products = new ProviderInMemory<>(data.products);
-        this.assignments = new ProviderInMemory<>(data.assignments);
-        this.efforts = new ProviderInMemory<>(data.efforts);
-
-        long oidCounter = Realm.maxOid(products());
-        oidCounter = Math.max(oidCounter, Realm.maxOid(assignments()));
-        oidCounter = Math.max(oidCounter, Realm.maxOid(efforts()));
-        data.oidCounter = Math.max(oidCounter, OID_SEQUENCE_START);
+        generator = generator();
+        this.products = ProviderHasOid.of(generator, data.products);
+        this.assignments = ProviderHasOid.of(generator, data.assignments);
+        this.efforts = ProviderHasOid.of(generator, data.efforts);
     }
 
     public void storeRoot() {
@@ -96,13 +80,6 @@ public class ProductsEntities implements ProductsRealm {
 
     public void shutdown() {
         storageManager.shutdown();
-    }
-
-    @Override
-    public <T extends HasOid> T registerOid(@NotNull T entity) {
-        Realm.setOid(entity, data.id());
-        storeRoot();
-        return entity;
     }
 
     @Override
@@ -123,5 +100,12 @@ public class ProductsEntities implements ProductsRealm {
     @Override
     public void close() throws Exception {
         storageManager.close();
+    }
+
+    private IdGenerator generator() {
+        long oidCounter = Realm.maxOid(data.products);
+        oidCounter = Math.max(oidCounter, Realm.maxOid(data.assignments));
+        oidCounter = Math.max(oidCounter, Realm.maxOid(data.efforts));
+        return new LongIdGenerator(Math.max(oidCounter, OID_SEQUENCE_START));
     }
 }

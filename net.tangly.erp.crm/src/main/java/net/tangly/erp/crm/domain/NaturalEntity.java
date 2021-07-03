@@ -13,15 +13,16 @@
 package net.tangly.erp.crm.domain;
 
 
+import java.util.Objects;
 import java.util.Optional;
 
 import net.tangly.core.Address;
 import net.tangly.core.EntityImp;
+import net.tangly.core.PhoneNr;
 import net.tangly.core.Strings;
 import net.tangly.core.Tag;
 import net.tangly.core.crm.CrmEntity;
 import net.tangly.core.crm.CrmTags;
-import net.tangly.core.crm.VcardType;
 
 /**
  * A natural entity is a person. A natural entity has an identity defined as the legal number of a person (e.g. the social security number0, a name defined as
@@ -86,6 +87,14 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
         this.socialNr = socialNr;
     }
 
+    public Optional<PhoneNr> phoneHome() {
+        return findBy(CrmTags.CRM_PHONE_HOME).map(Tag::value).map(PhoneNr::of);
+    }
+
+    public Optional<PhoneNr> phoneMobile() {
+        return findBy(CrmTags.CRM_PHONE_MOBILE).map(Tag::value).map(PhoneNr::of);
+    }
+
     @Override
     public Optional<Address> address() {
         return findBy(CrmTags.CRM_ADDRESS_HOME).map(Tag::value).map(Address::of);
@@ -93,13 +102,19 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
 
     @Override
     public boolean check() {
-        return !Strings.isNullOrBlank(lastname()) && (gender() != null) && phoneNr(VcardType.home).isEmpty();
+        return !Strings.isNullOrBlank(lastname()) && (gender() != null);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof NaturalEntity o) && super.equals(o) && Objects.equals(socialNr(), o.socialNr()) &&
+            Objects.equals(firstname(), o.firstname()) && Objects.equals(lastname(), o.lastname()) && Objects.equals(gender(), o.gender());
     }
 
     @Override
     public String toString() {
         return """
-            NaturalEntity[oid=%s, fromDate=%s, toDate=%s, text=%s, firstname=%s, lastname=%s, gender=%s, tags=%s]
-            """.formatted(oid(), fromDate(), toDate(), text(), firstname(), lastname(), gender(), tags());
+            NaturalEntity[oid=%s, fromDate=%s, toDate=%s, text=%s, socialNr=%s, firstname=%s, lastname=%s, gender=%s, tags=%s, comments=%s]
+            """.formatted(oid(), fromDate(), toDate(), text(), socialNr(), firstname(), lastname(), gender(), tags(), comments());
     }
 }

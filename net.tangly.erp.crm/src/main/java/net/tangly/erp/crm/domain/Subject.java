@@ -130,9 +130,14 @@ public class Subject extends QualifiedEntityImp {
 
     public byte[] avatar() {
         if (avatar == null) {
-            Gravatar gravatar = new Gravatar();
+            var gravatar = new Gravatar();
             avatar = gravatar.avatar(gravatarEmail, 200, GravatarRating.GENERAL_AUDIENCES, GravatarImage.GRAVATAR_ICON);
         }
         return avatar;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof Subject o);
     }
 }

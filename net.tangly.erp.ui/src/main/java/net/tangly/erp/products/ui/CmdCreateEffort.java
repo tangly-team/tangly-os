@@ -90,7 +90,6 @@ public class CmdCreateEffort extends Dialog implements Cmd {
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
             try {
                 binder.writeBean(effort);
-                domain.realm().registerOid(effort);
                 domain.realm().efforts().update(effort);
             } catch (ValidationException validationException) {
                 logger.atError().log("Validation error", e);

@@ -20,8 +20,6 @@ import net.tangly.core.TagType;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
-import net.tangly.core.providers.Provider;
-import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.domain.AccountEntry;
 import net.tangly.erp.ledger.domain.LedgerTags;
@@ -49,11 +47,7 @@ public class LedgerBoundedDomain extends BoundedDomain<LedgerRealm, LedgerBusine
 
     @Override
     public List<DomainEntity<?>> entities() {
-        return List.of(new DomainEntity<>(DOMAIN, Account.class, realm().accounts()), new DomainEntity<>(DOMAIN, AccountEntry.class, entries()),
+        return List.of(new DomainEntity<>(DOMAIN, Account.class, realm().accounts()), new DomainEntity<>(DOMAIN, AccountEntry.class, realm().entries()),
             new DomainEntity<>(DOMAIN, Transaction.class, realm().transactions()));
-    }
-
-    private Provider<AccountEntry> entries() {
-        return ProviderInMemory.of(realm().accounts().items().stream().flatMap(o -> o.entries().stream()).toList());
     }
 }

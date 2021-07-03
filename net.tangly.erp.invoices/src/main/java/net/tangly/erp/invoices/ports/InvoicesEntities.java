@@ -16,11 +16,7 @@ package net.tangly.erp.invoices.ports;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.locks.ReentrantLock;
 
-import net.tangly.commons.generator.IdGenerator;
-import net.tangly.core.HasOid;
-import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.providers.ProviderPersistence;
@@ -30,36 +26,21 @@ import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
 import net.tangly.erp.invoices.services.InvoicesRealm;
 import one.microstream.storage.types.EmbeddedStorage;
 import one.microstream.storage.types.EmbeddedStorageManager;
-import org.jetbrains.annotations.NotNull;
 
 public class InvoicesEntities implements InvoicesRealm {
-    private static class Data implements IdGenerator {
+    private static class Data {
         private final List<Invoice> invoices;
         private final List<Article> articles;
         private final List<InvoiceLegalEntity> legalEntities;
-        private long oidCounter;
-        private transient final ReentrantLock lock;
 
         Data() {
             invoices = new ArrayList<>();
             articles = new ArrayList<>();
             legalEntities = new ArrayList<>();
-            oidCounter = HasOid.UNDEFINED_OID;
-            this.lock = new ReentrantLock();
         }
-
-        @Override
-        public long id() {
-            lock.lock();
-            try {
-                return oidCounter++;
-            } finally {
-                lock.unlock();
-            }
-        }
-
     }
 
+    private static final long OID_SEQUENCE_START = 1000;
     private final Data data;
     private final Provider<Invoice> invoices;
     private final Provider<Article> articles;
@@ -70,17 +51,17 @@ public class InvoicesEntities implements InvoicesRealm {
     public InvoicesEntities(Path path) {
         this.data = new Data();
         storageManager = EmbeddedStorage.start(data, path);
-        invoices = new ProviderPersistence<>(storageManager, data.invoices);
-        articles = new ProviderPersistence<>(storageManager, data.articles);
-        legalEntities = new ProviderPersistence<>(storageManager, data.legalEntities);
+        invoices = ProviderPersistence.of(storageManager, data.invoices);
+        articles = ProviderPersistence.of(storageManager, data.articles);
+        legalEntities = ProviderPersistence.of(storageManager, data.legalEntities);
     }
 
     public InvoicesEntities() {
         data = new Data();
         storageManager = null;
-        invoices = new ProviderInMemory<>(data.invoices);
-        articles = new ProviderInMemory<>(data.articles);
-        legalEntities = new ProviderInMemory<>(data.legalEntities);
+        invoices = ProviderInMemory.of(data.invoices);
+        articles = ProviderInMemory.of(data.articles);
+        legalEntities = ProviderInMemory.of(data.legalEntities);
     }
 
     public void storeRoot() {
@@ -89,13 +70,6 @@ public class InvoicesEntities implements InvoicesRealm {
 
     public void shutdown() {
         storageManager.shutdown();
-    }
-
-    @Override
-    public <T extends HasOid> T registerOid(@NotNull T entity) {
-        Realm.setOid(entity, data.id());
-        storeRoot();
-        return entity;
     }
 
     @Override

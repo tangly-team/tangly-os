@@ -31,7 +31,7 @@ public class DomainEntitiesView extends EntitiesView<DomainEntity> {
     private final BoundedDomain<?, ?, ?, ?> domain;
 
     public DomainEntitiesView(@NotNull BoundedDomain<?, ?, ?, ?> domain) {
-        super(DomainEntity.class, Mode.IMMUTABLE, new ProviderInMemory(domain.entities()));
+        super(DomainEntity.class, Mode.IMMUTABLE, ProviderInMemory.of(domain.entities()));
         this.domain = domain;
         grid = new PaginatedGrid<>();
         initialize();

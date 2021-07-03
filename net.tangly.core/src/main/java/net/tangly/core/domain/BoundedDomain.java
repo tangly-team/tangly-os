@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import net.tangly.core.HasOid;
 import net.tangly.core.HasTags;
 import net.tangly.core.TagType;
 import net.tangly.core.TypeRegistry;
@@ -49,7 +50,7 @@ public class BoundedDomain<R extends Realm, B, H extends Handler<?>, P> {
         initialize();
     }
 
-    protected static <I extends HasTags> void addTagCounts(TypeRegistry registry, Provider<I> provider, Map<TagType<?>, Integer> counts) {
+    protected static <I extends HasOid & HasTags> void addTagCounts(TypeRegistry registry, Provider<I> provider, Map<TagType<?>, Integer> counts) {
         addTagCounts(registry, provider.items(), counts);
     }
 
