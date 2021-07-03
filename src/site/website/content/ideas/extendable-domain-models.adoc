@@ -1,0 +1,44 @@
+---
+title: "Extendable Models"
+date: 2020-05-01
+weight: 60
+draft: false
+---
+
+== Extendable Domain Models
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:description: Design conventions for the open source components of tangly
+:keywords: agile, architecture, design
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+=== Introduction
+
+=== Identifiers
+
+=== Names
+
+=== Codes
+
+=== Tags
+
+=== Comments
+
+=== Lessons Learnt
+
+=== Future Research Themes
+
+To be written
+
+[bibliography]
+=== Literature
+
+- [[[tags, 1]]] link:../../blog/2020/the-power-of-tags-and-comments[The power of Tags and Comments].
+Marcel Baumann. 2020
+- [[[reference-code, 1]]] link:../../blog/2020/reference-codes/[Reference Codes].
+Marcel Baumann. 2020
+- [[[meaningful-identifiers, 1]]] link:../../blog/2021/meaningful-identifiers[Meaningful Identifiers].
+Marcel Baumann. 2021
+- [[[entities-identifiers, 1]]] link:../../blog/2020/entities-identifiers-external-identifiers-and-names[Identifiers and Names].
+Marcel Baumann. 2020

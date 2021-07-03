@@ -1,7 +1,7 @@
 ---
 title: "Components Publication"
 date: 2019-05-01
-weight: 70
+weight: 40
 ---
 
 == Components Publication

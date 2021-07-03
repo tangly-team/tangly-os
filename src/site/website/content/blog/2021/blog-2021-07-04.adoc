@@ -1,0 +1,151 @@
+---
+title: "Product Owner Formation"
+linkTitle: "Product Owner Formation"
+date: 2021-07-02
+tags: ["agile"]
+---
+
+== Product Owner Formation
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2021-07-04-head.jpg[width=420,height=360,role=left]
+
+=== Product Owner Role
+
+Here the official definition of the product owner role taken from the {ref-scrumguide}.
+
+The *Product Owner* is accountable for maximizing the value of the product resulting from the work of the Scrum Team.
+How this is done may vary widely across organizations, Scrum Teams, and individuals.
+
+The Product Owner is also accountable for effective *Product Backlog* management, which includes:
+
+* Developing and explicitly communicating the *Product Goal*;
+* Creating and clearly communicating *Product Backlog* items;
+* Ordering *Product Backlog Items*; and,
+* Ensuring that the *Product Backlog* is transparent, visible and understood.
+
+The Product Owner may do the above work or may delegate the responsibility to others.
+Regardless, the Product Owner remains accountable.
+
+For Product Owners to succeed, the entire organization must respect their decisions.
+These decisions are visible in the content and ordering of the *Product Backlog*, and through the inspectable *Increment* at the *Sprint Review*.
+
+The Product Owner is one person, not a committee.
+The Product Owner may represent the needs of many stakeholders in the *Product Backlog*.
+Those wanting to change the Product Backlog can do so by trying to convince the Product Owner.
+
+How can you become a better product owner?
+The fist steps to become a great product owner are described in this article.
+
+=== Certifications
+
+The two big Scrum organizations https://www.scrumalliance.org/[Scrum Alliance] and https://www.scrum.org[Scrum.org]
+provide a certification path for product owners.
+The certification path has three levels:
+
+Certified Scrum Product Owner::
+Introduction course for those who are closest to the _business side_ of the project. +
+_It is usually a two days training.
+The https://www.scrum.org[Scrum.org] allows taking the certification examination without attending a course._
+Advanced Certified Scrum Product Owner::
+Advanced course for Product Owners who already have one year of experience on a Scrum team. +
+_It is at least two days training.
+You should read the recommended books to have a greater probability to pass the examination._
+Certified Scrum Professional Product Owner::
+Pinnacle course for experts wishing to master the Product Owner track. +
+_The third level requires more training, experience, and reading books.
+You often must participate to workshops before being allowed to graduate.
+Each certification organization has own rules and conditions._
+
+Beware if you select the https://www.scrumalliance.org/[Scrum Alliance], you must renew your certification every two years.
+The conditions are similar to the renewal of a PMI certification.
+You must provide proof of training and pay a fee.
+The https://www.scrum.org[Scrum.org] certifications do not expire.
+
+The _Product Owner_ learning objectives for the first level are:
+
+. _Product Owner Core Competencies_
+.. discuss at least three types of organizational contexts that affect the approach to the Product Owner role.
+.. identify the impact of at least three anti-patterns that might exist for Product Owners.
+.. use at least one technique to provide transparency to stakeholders on progress toward goals.
+.. list at least three techniques to engage stakeholders to gather information or insights.
+.. identify at least two ways of overcoming the challenges of being a Product Owner for multiple teams.
+. _Describing Purpose and Strategy_
+.. practice the creation of a product vision.
+.. list the components of a product plan or forecast with stakeholders.
+.. describe how to plan a product release.
+.. explain at least two approaches to identify small, valuable, and releasable Product Increments.
+. _Understanding Customers and Users describe why a Product Owner performs discovery and validation work_
+.. illustrate at least one approach for segmenting customers and users.
+.. practice at least one technique to prioritize between conflicting customer (or user) needs.
+.. describe at least three aspects of product discovery and identify how each contributes to successful product outcomes.
+.. use one technique to describe users and customers: their jobs, activities, pains, and gains.
+.. list at least three approaches to connect the Development Team directly to customers and users
+.. describe at least three benefits of Development Team direct interactions.
+. _Validating Product Assumptions_
+.. describe how Scrum supports validating product assumptions.
+.. describe at least one approach to validate product assumptions by their cost and quality of learning
+. _Working with the Product Backlog_
+.. describe the relationship between outcome and output
+.. describe at least three attributes of a Product Backlog item that help assess maximizing outcome
+.. define value and list at least two techniques to measure value.
+.. describe value from the perspective of at least three different stakeholder groups.
+.. list at least three terms related to product economics
+.. create at least one Product Backlog item that includes description of desired outcome and value.
+.. describe at least one approach to Product Backlog Refinement.
+.. describe at least three criteria for ordering the Product Backlog.
+
+You can self-study the Scrum Product Owner objective with the official product owner book<<product-owner>>.
+
+A reading list can be found under
+https://www.scrum.org/resources/suggested-reading-professional-scrum-product-owner[Suggested Reading Professional Scrum Product Owner].
+
+I published a list of seminal works for interested product owners under link:../../../ideas/learnings/books/#_product_owner[Books].
+
+=== Requirement Engineering Trainings
+
+The most relevant organization is Europe is the https://www.ireb.org/[International Requirements Engineering Board] _IREB_.
+Professional requirements engineers should be IREB certified.
+
+The requirements engineering community is well on the path to agility.
+
+image::2021-07-04-irep.png[width=420,height=360,role=left]
+
+The certification is often a prerequisite to be hired for requirements engineer job.
+
+The organization offers two certifications for _Certified Professional Requirements Engineering_ with emphasis on agile approaches:
+
+* https://www.ireb.org/en/exams/re-agile/[RE@Agile Primer] - Bridging the gap between RE and Agile
+* https://www.ireb.org/en/exams/advanced/[Advanced Level RE@Agile] - is part of the advanced CPRE AL
+
+=== University Formal Trainings
+
+Technical universities in Switzerland provide formal training in requirements engineering and related fields.
+The formation provides a certificate of advanced study CAS in the field.
+Current available certificates of advanced study offering are for example:
+
+* OST https://www.ost.ch/de/weiterbildung/weiterbildungsangebot/informatik/cas-requirements-engineering[CAS Requirements Engineering]
+* HSLU https://www.hslu.ch/de-ch/informatik/weiterbildung/digital-value-creation/cas-requirements-engineering/[CAS Requirement Engineering]
+* BFH https://www.bfh.ch/de/weiterbildung/cas/requirements-engineering/[CAS Requirements Engineering]
+* ZHAW https://www.zhaw.ch/de/sml/weiterbildung/detail/kurs/cas-agile-requirements-engineering/[CAS Agile Requirements Engineering]
+
+An interesting development is the addition of tailored requirement trainings emphasizing agile approaches.
+
+Similar technical university formations are provided for user interface design and usability engineering.
+See for example https://uxschweiz.ch/weiterbildung/mashcid/[Master Human Computer Interaction Design].
+
+[bibliography]
+=== Literature
+
+- [[[agile-requirements, 1]]] link:../../2021/agile-requirements-engineering/[Agile Requirements Engineering].
+Marcel Baumann. 2020
+- [[[agile-software-architecture, 2]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream].
+Marcel Baumann. 2021
+- [[[product-owner, 3]]]
+https://www.amazon.com//dp/0134686470[The Professional Product Owner: Leveraging Scrum as Competitive Advantage].
+Ralph Jocham & Don McGreal. 2018
+

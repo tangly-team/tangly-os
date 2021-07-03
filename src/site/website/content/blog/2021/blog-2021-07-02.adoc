@@ -1,7 +1,7 @@
 ---
 title: "Why Enterprise Architecture?"
 linkTitle: "Why Enterprise Architecture?"
-date: 2021-07-10
+date: 2021-07-01
 tags: ["agile", "architecture"]
 ---
 
@@ -13,25 +13,56 @@ tags: ["agile", "architecture"]
 :copyright: CC-BY-SA 4.0
 
 image::2021-07-02-head.jpg[width=420,height=360,role=left]
-Enterprise architecture, when performed in an agile manner, is an important enabler of agile software delivery.
+Architecture principles hold true in agile environments.
+The major difference between older traditional approaches and modern agile ones is the way of performing enterprise architecture.
+
+The last years have shown a promising evolution of plan-based, centralist enterprise architecture approaches to more agile, decentralized, meritocracy driven processes.
+
+These new approaches are way more compatible with modern and agile software product development framework such as {ref-scrum}, {ref-xp}, and {ref-less}
+
+Traditional processes use dedicated persons or departments to define architecture princpiples in a top-down approach.
+Thick standards such as https://en.wikipedia.org/wiki/Enterprise_Architecture_Body_of_Knowledge[Enterprise Architecture Body of Knowledge] codifies wisdom.
+
+[cite,EABOK]
+____
+The Guide to the Enterprise Architecture Body of Knowledge (EABOK) organizes and characterizes the knowledge content of the Enterprise Architecture (EA) discipline.
+This organization and characterization promotes a consistent view of EA, establishes the scope and bounds of the EA discipline, and places the discipline in the context of related disciplines.
+The EABOK subdivides EA into knowledge areas and topics within each area, presents an overview of the topic, and provides the reader references for further information.
+The EABOK is a guide to EA, not the body of knowledge itself.
+____
+
+The enterprise architects community has realized over the years that the centralistic approach is too slow and cumbersome for the digital age.
+The https://en.wikipedia.org/wiki/The_Open_Group[Open Group] promotes the official enterprise architecture method
+https://en.wikipedia.org/wiki/The_Open_Group_Architecture_Framework[TOGAF].
+
+The Open Group published a series of white papers <<agile-architecture>>, <<open-agile-architecture>> to bridge the gap between classical enterprise architecture and agile digital product development.
+
+Agile frameworks tend to define and promote agile receipts through collaborative structures.
+Examples are https://en.wikipedia.org/wiki/Community_of_practice[Community of Practice], design workshop, event storming, pair designing.
+
+=== Concepts
+
+image::2021-07-02-togaf.png[width=420,height=360,role=left]
+https://en.wikipedia.org/wiki/Enterprise_architecture[Enterprise Architecture] _EA_ , when performed in an agile manner, is an important enabler of agile software delivery.
+
 This is true for several reasons:
 
-. Common architecture enables agile teams to focus on value creation.
+Common architecture enables agile teams to focus on value creation::
 A common enterprise architecture enables reuse across delivery teams.
 When agile teams have high-quality assets – such as micro-services, legacy data sources, and frameworks – they are able to focus on creating new value.
-They should not on reinventing new versions of existing infrastructure.
-. Common technical guidance enables greater consistency.
+They should not waste money on reinventing new versions of existing infrastructure.
+Common technical guidance enables greater consistency::
 When team follow effective, common conventions it results in greater quality.
 This makes it easier to learn about assets that are new to them, in particular existing source code, and to evolve those assets as needed.
 Greater consistency also makes it easier for people to move between teams.
 It will be easier for them to come up to speed on what the new team is doing and to share their skills with those team members.
-. Agile architectures enable disaggregation.
+Agile architectures enable disaggregation::
 When your solutions are built from loosely coupled, highly cohesive components it is easier to spread development work across smaller teams.
 This reduces overall risk and organizational complexity, which in turn reduces time-to-delivery.
-. Common infrastructure enables continuous delivery.
+Common infrastructure enables continuous delivery::
 A common technical infrastructure empowers delivery teams to deploy into it.
 The easier it is to deploy, the more often it makes sense to deploy.
-. Enterprise architecture scales agile.
+Enterprise architecture scales agile::
 An agile approach to enterprise architecture enables organizations to scale agile strategies “horizontally” across their entire IT department.
 
 === The EA Process
@@ -81,11 +112,12 @@ This is an important activity for enterprise architects as well as for your IT g
 === Team Workflow
 
 The workflow within an agile enterprise architecture team is depicted in the following diagram.
+
 image::2021-07-02-team-workflow.jpg[width=800,height=400,role=center]
 
-There are four major activities
+There are four major activities:
 
-. Envision initial architecture.
+Envision initial architecture::
 The enterprise architects will spend several days developing initial, high-level models of the enterprise architecture.
 This will be a face-to-face, initial architecture envisioning session where the scope is the entire organization, not just a single IT solution.
 Ideally this is done in an agile modelling room to streamline the communication and collaborative modelling efforts.
@@ -94,18 +126,18 @@ The primary purpose of this session is for the EA team to develop a common under
 Secondary outcomes include creating some initial artifacts.
 The enterprise architects will evolve these artifacts over time, meeting one another for the first time, and building bonds between the team members.
 Potential challenges to this activity include getting an agile modeling room, and the logistics of getting the right people together at the same time.
-. Collaborate with business stakeholders.
+Collaborate with business stakeholders::
 On a regular basis enterprise architects work with business stakeholders to understand their needs.
 They work with them to envision the future, and help educate them on the possibilities and constraints of technology.
 This collaboration may be in the form of working sessions, presentations, or one-on-one conversations.
 These sessions occur as needed and at times it can be difficult to gain access to stakeholders as they are often very busy people.
-. Collaborate with IT stakeholders.
+Collaborate with IT stakeholders::
 Disciplined agile EAs will spend the majority of their time, 80 to 90% of it typically, working as members of IT delivery teams.
 By doing this they bring their knowledge, vision, and skills to the team in a pragmatic, hands-on manner.
 The teams will often take on the role of _architecture owners_.
 Enterprise architects will also work with other IT stakeholders, including operations engineers, support staff, the data management team.
 They need to understand their needs.
-. Evolve architecture assets.
+Evolve architecture assets::
 The enterprise architecture team, or at least the portion of the team who is currently available, will meet on a regular basis.
 They evolve the enterprise architecture assets based on their learnings.
 A common pattern we have seen it for the team to meet every Friday afternoon for two hours.
@@ -114,3 +146,24 @@ The result of the meeting is often that the enterprise architects may take on ac
 These artifacts may include EA models, reference architectures, development guidelines, white papers.
 When a new major topic arises, such as the potential adoption of a new platform or a merger with another organization, they schedule agile modelling sessions.
 They explore the newly discovered topics during these sessions.
+
+=== Lessons Learnt
+
+The whole enterprise architecture frameworks are two complicated to be applied in nimble product development.
+
+The techniques used in these frameworks are powerful ones and software designers should master them.
+
+I strongly prefer the architecture work techniques described in {ref-less} and do not use the bloated TOGAF architecture approach.
+
+I recommend using all these proven architecture techniquest and tools and apply them on your software product development using agile approaches like
+{ref-scrum} and {ref-less}.
+Study the rules of {ref-lean} to optimize the value of your product.
+
+[bibliography]
+=== Literature
+
+- [[[agile-architecture, 1]]] Agile Architecture in the Digital Age.
+Open Group. 2018
+- [[[open-agile-architecture, 2]]]
+Open Agile Architecture.
+Open Group. 2019. (ISBN: 1-947754-62-1)

@@ -1,0 +1,86 @@
+---
+title: "Technical Team Lead"
+linkTitle: "Technical Team Lead"
+date: 2021-07-02
+tags: ["agile", "java", "organization"]
+---
+
+== Technical Team Lead
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2021-07-03-head.png[width=420,height=360,role=left]
+I lately had to explain customers what are the responsibilities of a technical team lead.
+Managers often grasp the people aspects embedded in the words *team lead*.
+The understanding of the word *technical* is strangely often missing.
+
+A technical team lead coaches and teaches the subtleties of the used technology stack to his team and organization.
+This person should be able to create or review a software architecture.
+He has a deep understanding of technological concepts.
+
+More importantly he can write productive source code.
+
+[.text-center]
+_A technical team lead must be technically savvy_.
+
+=== Job Description
+
+Here a standard job description for a Java technical team lead as often published on job platforms.
+
+We are looking for an experienced Java technical lead to be responsible for providing solutions for technical issues which may affect product delivery.
+The Java technical lead will facilitate requirement analyses, conduct peer reviews and provide feedback, and enhance frameworks.
+
+To be successful as a Java technical lead, you should demonstrate sound knowledge of industry best practices, good organizational and leadership skills, and proficiency in Java technologies.
+A top-notch Java technical lead should have good analytical skills, the ability to anticipate issues and frame remedial actions, and excellent teamwork skills.
+
+==== Java Technical Lead Responsibilities
+
+* Performing requirement analyses.
+* Developing high-quality and detailed designs.
+* Conducting unit testing using automated unit test frameworks.
+* Identifying risk and conducting mitigation action planning.
+* Conducting configuration of your own work.
+* Reviewing the work of other developers and providing feedback.
+* Using coding standards and best practices to ensure quality.
+
+==== Java Technical Lead Requirements
+
+The candidate has a bachelor or master degree in engineering, information systems or related.
+
+* Extensive experience in the IT industry.
+* Sound knowledge of estimation techniques.
+* Excellent knowledge of Java and web services.
+* Sound knowledge of Java technologies.
+* Good understanding of unit testing methodologies and agile approaches.
+* Excellent analytical skills.
+* Exceptional communication skills.
+
+As an Internet example please see https://www.betterteam.com/java-technical-lead-job-description[Java Technical Lead Job Description].
+You can also find job descriptions under https://www.indeed.com[Indeed] and https://www.glassdoor.com[Glassdoor].
+Similar examples can also be found under https://www.linkedin.com[LinkedIn].
+
+=== Responsibilities
+
+Below a description of the responsibilities of a technical lead.
+A technical lead is responsible for the following tasks:
+
+* Hiring and training technical personnel
+* Delegating work to team members
+* Collaborating with their team to identify and fix technical problems
+* Analyzing users' needs and then finding applications to serve them
+* Creating end goals for their team
+* Checking that software and applications are updated
+* Supervising system modifications
+* Conducting security and governance audits to identify areas of improvement
+* Guiding their team through technical issues and challenges
+
+A technical lead is responsible for helping their team members with the technical aspects of their jobs, such as coding and programming.
+They may also explain new projects to their team and troubleshoot any problems that occur.
+In comparison, an engineering manager is more focused on managing their employees.
+They are responsible for business growth and team deadlines, and they typically serve as their team's representative to the rest of the company.
+
+As an engineering manager, you need to have excellent people management skills and be able to assess your team's long-term goals.
+While you are more likely to work hands-on and focus on day-to-day tasks as a technical lead.

@@ -99,7 +99,7 @@ I hope they will add more material in the future.
 === Agile Requirements Engineering
 
 Interestingly the requirements community is further on the path to agility.
-The most relevant organization is Europe is the https://www.ireb.org/[International Requirements Engineering Borad] _IREB_.
+The most relevant organization is Europe is the https://www.ireb.org/[International Requirements Engineering Board] _IREB_.
 The organization offers two certifications with emphasis on agile approaches:
 
 * RE@Agile Primer - Bridging the gap between RE and Agile

@@ -12,7 +12,7 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2018-08-01-head.jpg[width=420, height=360, role=left]
+image::2018-08-01-head.jpg[width=420,height=360,role=left]
 An agile coach has three main areas of activity:
 
 Foster Autonomy::
@@ -48,16 +48,17 @@ This mechanism insure continuous improvement.
 _To ensure continuous improvement, it includes at least one high priority way in which the team works, identified in the previous Retrospective meeting._
 
 Culture::
-Establish a culture of inspect and adapt for teams , create structure to establish a continuous improvement process - also meaning establish a
-tolerance to failure -, advocate transparency, enlighten the organization of the relation between autonomy and accountability.
+Establish a culture of inspect and adapt for teams , create structure to establish a continuous improvement process - also meaning establish a tolerance to failure -, advocate transparency, enlighten the organization of the relation between autonomy and accountability.
 
 Ask yourself how your organisation handles meritocracy.
 
 === One Approach to Coaching
 
-Agile teams thrive with purpose, autonomy and mastery. One approach to coaching is to set your focus on
+Agile teams thrive with purpose, autonomy and mastery.
+One approach to coaching is to set your focus on
 
-. Understand the domain: Talk with customers and users and understand their needs. Your teams should have business expertise,
+. Understand the domain: Talk with customers and users and understand their needs.
+Your teams should have business expertise,
 . Master Technical Excellence: CI, CD, TDD, ATDD, pair programming, refactoring, lean UX, usability
 . Use Process Excellence and apply {ref-scrum}, XP, {ref-less} by the book:
 .. Discuss the core values of commitment, focus, openness, respect, and courage,
@@ -66,7 +67,7 @@ Agile teams thrive with purpose, autonomy and mastery. One approach to coaching 
 .. Require a vision, a roadmap, a release plan with a story map and a refined backlog for each product and team,
 .. Tell why an impediment resolution backlog item shall be part of each iteration,
 .. Teach the importance of Definition of Done for the internal quality of the product.
- And explain why Definition of Ready is often an anti-pattern,
+And explain why Definition of Ready is often an anti-pattern,
 .. Show why velocity is not a productivity metrics,
 .. Show the difference between product and output,
 .. Extend the agile toolbox with Design Thinking, Lean Factory, Lean UX, DevOps,
@@ -78,3 +79,15 @@ Define hypotheses and verify them empirically.
 
 If you are coaching software development groups acknowledge you shall possess profound understanding of technical excellence and software development practices.
 I never heard of a soccer coach not intimately knowing how the game is played.
+
+[bibliography]
+=== Literature
+
+- [[[greatscrummaster, 1]]] https://www.amazon.com/dp/013465711X[The Great Scrum Master].
+Zuzana Šochová.
+Addison-Wesley. 2017
+- [[[professional-coaching, 2]]
+https://blog.crisp.se/2021/06/30/mikaelbrodd/why-professional-coaching-matters-to-an-agile-coach[Why Professional Coaching Matters to an Agile Coach].
+Mikael Brodd.
+Crisp. 2021
+

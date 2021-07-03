@@ -18,17 +18,18 @@ weight: 50
 .Agile Books
 [%collapsible]
 ====
-* https://www.amazon.com/dp/0134542843[Unlocking Agility: AnInsider's Guide to Agile Enterprise Transformatio],
- Jorgen Hesselberg, 2019
-* https://www.amazon.com/dp/0321437381[Implementing Lean Software Development: From Concept to Cash],
- Mary Poppendieck, 2007
-* https://www.amazon.com/dp/0321482751[Agile Software Development: The Cooperative Game (2nd Edition)],
- Allistair Cockburn, 2007
-* https://www.amazon.com/dp/0321712471[Management 3.0: Leading Agile Developers, Developing Agile Leaders],
- Juergen Appelo, 2011
-* https://www.amazon.com/dp/2960133501[Reinventing Organizations: A Guide to Creating Organizations Inspired by the Next State of Human Consciousness],
-Frederic Laloux, 2014
-* https://www.amazon.com/dp/1422102505[The future of Management], Gary Hamel, 2007
+* https://www.amazon.com/dp/0134542843[Unlocking Agility: AnInsider's Guide to Agile Enterprise Transformatio].
+Jorgen Hesselberg. 2019
+* https://www.amazon.com/dp/0321437381[Implementing Lean Software Development: From Concept to Cash].
+Mary Poppendieck. 2007
+* https://www.amazon.com/dp/0321482751[Agile Software Development: The Cooperative Game (2nd Edition)].
+Allistair Cockburn. 2007
+* https://www.amazon.com/dp/0321712471[Management 3.0: Leading Agile Developers, Developing Agile Leaders].
+Juergen Appelo. 2011
+* https://www.amazon.com/dp/2960133501[Reinventing Organizations: A Guide to Creating Organizations Inspired by the Next State of Human Consciousness].
+Frederic Laloux. 2014
+* https://www.amazon.com/dp/1422102505[The future of Management].
+Gary Hamel. 2007
 ====
 
 === Scrum
@@ -36,18 +37,18 @@ Frederic Laloux, 2014
 .Scrum Books
 [%collapsible]
 ====
-* https://www.amazon.com/dp/1329224272[Scrum and XP from the trenches (2nd Edition)],
- Henrik Kniberg, 2015
-* https://www.amazon.com/dp/0133853624[The Scrum Field Guide: Agile Advice for Your First Year and Beyond],
- Mitchell Lacey, 2016
-* https://www.amazon.com/dp/0321579364[Succeeding with Agile: Software Development using Scrum],
- Mike Cohn, 2013
-* https://www.amazon.com/dp/0137043295[Essential Scrum: A practical Guide for the most popular Agile Process],
- Kenneth Rubin, 2013
-* https://www.amazon.com/dp/0131479415[Agile Estimation and Planning],
- Mike Cohn, 2006
-* https://www.amazon.com/dp/038534645X[The Art of Doing Twice the Work in Half the Time],
- Jeff Sutherland, 2014
+* https://www.amazon.com/dp/1329224272[Scrum and XP from the trenches (2nd Edition)].
+Henrik Kniberg. 2015
+* https://www.amazon.com/dp/0133853624[The Scrum Field Guide: Agile Advice for Your First Year and Beyond].
+Mitchell Lacey. 2016
+* https://www.amazon.com/dp/0321579364[Succeeding with Agile: Software Development using Scrum].
+Mike Cohn. 2013
+* https://www.amazon.com/dp/0137043295[Essential Scrum: A practical Guide for the most popular Agile Process].
+Kenneth Rubin. 2013
+* https://www.amazon.com/dp/0131479415[Agile Estimation and Planning].
+Mike Cohn. 2006
+* https://www.amazon.com/dp/038534645X[The Art of Doing Twice the Work in Half the Time].
+Jeff Sutherland. 2014
 ====
 
 === Lean & Kanban
@@ -55,22 +56,22 @@ Frederic Laloux, 2014
 .Lean & kanban Books
 [%collapsible]
 ====
-* https://www.amazon.com/dp/B00N4HZ6PK[Lean from the Trenches: Managing Large-Scale Projects with Kanban],
- Henrik Kniberg, 2012
-* https://www.amazon.com/dp/0307887898[The lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses],
- Eric Ries, 2011
-* https://www.amazon.com/dp/0321896904[The Lean Mindset: Ask the Right Questions],
- Mary Poppendieck &n Tom Poppendieck, 2014
-* https://www.amazon.com/dp/article/B00HNB3VQE[Implementing Lean Software Development: From Concept to Cash],
- Mary Poppendieck &n Tom Poppendieck, 2007
-* https://www.amazon.com/dp/0974322563[The Gold Mine: a Novel of Lean Turnaround],
- Michael Ballé & Freddy Ballé, 2005
-* https://www.amazon.com/dp/1934109258[The Lean Manager: a Novel of Lean Transformation],
- Michael Ballé & Freddy Ballé, 2009
-* https://www.amazon.com/dp/1934109479[Lead with Respect: a Novel of Lean Practice],
- Michael Ballé & Freddy Ballé, 2014
-* https://www.amazon.com/Lead-Lean-Michael-Balle-ebook/dp/B075GTQHFX[Lead with Lean: On Lean Leadership and Practice],
- Michael Ballé, 2016
+* https://www.amazon.com/dp/B00N4HZ6PK[Lean from the Trenches: Managing Large-Scale Projects with Kanban].
+Henrik Kniberg. 2012
+* https://www.amazon.com/dp/0307887898[The lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses].
+Eric Ries. 2011
+* https://www.amazon.com/dp/0321896904[The Lean Mindset: Ask the Right Questions].
+Mary Poppendieck &n Tom Poppendieck. 2014
+* https://www.amazon.com/dp/article/B00HNB3VQE[Implementing Lean Software Development: From Concept to Cash].
+Mary Poppendieck &n Tom Poppendieck. 2007
+* https://www.amazon.com/dp/0974322563[The Gold Mine: a Novel of Lean Turnaround].
+Michael Ballé & Freddy Ballé. 2005
+* https://www.amazon.com/dp/1934109258[The Lean Manager: a Novel of Lean Transformation].
+Michael Ballé & Freddy Ballé. 2009
+* https://www.amazon.com/dp/1934109479[Lead with Respect: a Novel of Lean Practice].
+Michael Ballé & Freddy Ballé. 2014
+* https://www.amazon.com/Lead-Lean-Michael-Balle-ebook/dp/B075GTQHFX[Lead with Lean: On Lean Leadership and Practice].
+Michael Ballé. 2016
 ====
 
 === Less & Other Scaling Frameworks
@@ -78,14 +79,14 @@ Frederic Laloux, 2014
 .Less & Other Scaling Frameworks Books
 [%collapsible]
 ====
-* https://www.amazon.com/dp/0321985710[Large-Scale Scrum: More with Less],
- Craig Larman & Bas Vodde, 2017
-* https://www.amazon.com/dp/0321480961[Scaling Lean and Agile Development: Thinking Organizational Tools for Large-Scale Scrum],
- Craig Larman & Bas Vodde, 2009
-* https://www.amazon.com/dp/0321636406[Practices for Scaling Lean & Agile Development: Large, Multisite, and Offshore Product Development with Large-Scale Scrum],
- Craig Larmann & Bas Vodde, 2010
-* https://www.amazon.com/dp/0134682661[The Nexus Framework for Scaling Scrum],
- Kurt Bittner, 2018
+* https://www.amazon.com/dp/0321985710[Large-Scale Scrum: More with Less].
+Craig Larman & Bas Vodde. 2017
+* https://www.amazon.com/dp/0321480961[Scaling Lean and Agile Development: Thinking Organizational Tools for Large-Scale Scrum].
+Craig Larman & Bas Vodde. 2009
+* https://www.amazon.com/dp/0321636406[Practices for Scaling Lean & Agile Development: Large, Multisite, and Offshore Product Development with Large-Scale Scrum].
+Craig Larmann & Bas Vodde. 2010
+* https://www.amazon.com/dp/0134682661[The Nexus Framework for Scaling Scrum].
+Kurt Bittner. 2018
 ====
 
 === Teams
@@ -93,16 +94,16 @@ Frederic Laloux, 2014
 .Teams
 [%collapsible]
 ====
-* https://www.amazon.com/dp/013465711X[The Great Scrum Master],
- Zuzana Sochová, 2017
-* https://www.amazon.com/dp/0321637704[Coaching Agile Teams: A companion for Scrum Masters, Agile Coaches, and Project Managers in Transition],
- Lyssa Adkins, 2010
-* https://www.amazon.com/dp/0977616649[Agile Retrospectives: Making Good Teams Great],
- Esther Derby and Diane Larsen, 2012
-* https://www.amazon.com/dp//0787947237[The Skilled Facilitator: A Comprehensive Resource for Consultants, Facilitators, Managers, Trainers and Coaches],
- Roger Schwarz, 2002
-* https://www.amazon.com/dp/03219[Peopleware: Productive Projects and Teams (3rd Edition)],
- Tom DeMarco & Timothy Lister, 2013
+* https://www.amazon.com/dp/013465711X[The Great Scrum Master].
+Zuzana Sochová. 2017
+* https://www.amazon.com/dp/0321637704[Coaching Agile Teams: A companion for Scrum Masters, Agile Coaches, and Project Managers in Transition].
+Lyssa Adkins.2010
+* https://www.amazon.com/dp/0977616649[Agile Retrospectives: Making Good Teams Great].
+Esther Derby and Diane Larsen. 2012
+* https://www.amazon.com/dp//0787947237[The Skilled Facilitator: A Comprehensive Resource for Consultants, Facilitators, Managers, Trainers and Coaches].
+Roger Schwarz. 2002
+* https://www.amazon.com/dp/03219[Peopleware: Productive Projects and Teams (3rd Edition)].
+Tom DeMarco & Timothy Lister. 2013
 ====
 
 === Product Owner
@@ -110,24 +111,26 @@ Frederic Laloux, 2014
 .Product Owner Books
 [%collapsible]
 ====
-* https://www.amazon.com//dp/0134686470[The Professional Product Owner: Leveraging Scrum as Competitve Advantage],
- Ralph Jocham & Don McGreal, 2018
-* https://www.amazon.com/dp/1491904909[User Story Mapping: Discover the Whole Story, Build the Right Product],
- Jeff Patton, 2014
-* https://www.amazon.com/dp/0955683645[Impact Mapping],
- Gojko Adzic, 2012
-* https://www.amazon.com/dp/0993499201[Strategize: Product Strategy and Product Roadmap Practices for the Digital Age],
- Roman Pichler, 2016
-* https://www.amazon.com/dp/0321605780[Agile Product Management with Scrum: Creating Products that Customers Love],
- Roman Pichler, 2010
-* https://www.amazon.com/dp/article/B085L8Z4YS[How to Lead in Product Management: Practices to Align Stakeholders, Guide Development Teams, and Create Value Together],
- Roman Pichler, 2020
-* https://www.amazon.com/dp/0321205685[User Stories Applied for Agile Software Development],
- Mike Cohn, 2004
-* https://www.amazon.com/dp/1118968050[Value Proposition Design: How to Create Products and Services Customers Want],
- Alex Osterwald, 2014
-* https://www.amazon.com/dp/1492023744[Lean Customer Development: Build Products Your Customers Will Buy],
- Cindy Alvarez, 2014
+* https://www.amazon.com//dp/0134686470[The Professional Product Owner: Leveraging Scrum as Competitive Advantage].
+Ralph Jocham & Don McGreal. 2018
+* https://www.amazon.com/dp/1491904909[User Story Mapping: Discover the Whole Story, Build the Right Product].
+Jeff Patton. 2014
+* https://www.amazon.com/dp/0955683645[Impact Mapping].
+Gojko Adzic. 2012
+* https://www.amazon.com/dp/0993499201[Strategize: Product Strategy and Product Roadmap Practices for the Digital Age].
+Roman Pichler. 2016
+* https://www.amazon.com/dp/0321605780[Agile Product Management with Scrum: Creating Products that Customers Love].
+Roman Pichler. 2010
+* https://www.amazon.com/dp/article/B085L8Z4YS[How to Lead in Product Management: Practices to Align Stakeholders, Guide Development Teams, and Create Value Together].
+Roman Pichler. 2020
+* https://www.amazon.com/dp/0321205685[User Stories Applied for Agile Software Development].
+Mike Cohn. 2004
+* https://www.amazon.com/dp/1118968050[Value Proposition Design: How to Create Products and Services Customers Want].
+Alex Osterwald. 2014
+* https://www.amazon.com/dp/1492023744[Lean Customer Development: Build Products Your Customers Will Buy].
+Cindy Alvarez. 2014
+* https://www.amazon.com/dp/B008YZ993W/[Bridging the Communication Gap: Specification by Example and Agile Acceptance Testing].
+Gojko Adzic. 2009
 ====
 
 === Agile Architecture
@@ -135,16 +138,16 @@ Frederic Laloux, 2014
 .Agile Architecture
 [%collapsible]
 ====
-* https://www.amazon.com/dp/1491986360[Building Evolutionary Architectures: Support for constant Change],
- Neal Ford & Rebecca Parson, 2017
-* https://www.amazon.com/dp/0134757599[Refactoring: Improving the Design of Existing Code (2nd Edition)],
- Martin Fowler, 2018
-* https://www.amazon.com/dp/0321125215[Domain-Driven Design: Tackling Complexity in the Heart of Software],
- Eric Evans, 2011
-* https://www.amazon.com/dp/0131177052[Working Effectively with Legacy Code],
- Michael Feathers, 2005
-* https://www.amazon.com/dp/0321213351[Refactoring to Patterns],
- Joshua Kerievsky, 2005
+* https://www.amazon.com/dp/1491986360[Building Evolutionary Architectures: Support for constant Change].
+Neal Ford & Rebecca Parson. 2017
+* https://www.amazon.com/dp/0134757599[Refactoring: Improving the Design of Existing Code (2nd Edition)].
+Martin Fowler. 2018
+* https://www.amazon.com/dp/0321125215[Domain-Driven Design: Tackling Complexity in the Heart of Software].
+Eric Evans. 2011
+* https://www.amazon.com/dp/0131177052[Working Effectively with Legacy Code].
+Michael Feathers. 2005
+* https://www.amazon.com/dp/0321213351[Refactoring to Patterns].
+Joshua Kerievsky. 2005
 ====
 
 === Technical Excellence
@@ -152,24 +155,24 @@ Frederic Laloux, 2014
 .Technical Excellence
 [%collapsible]
 ====
-* https://www.amazon.com/dp/0135957052[The Pragmatic Programmer: Your Journey to Mastery (20th Anniversary Edition)],
- Andrew Hunt & David Thomas, 2019
-* https://www.amazon.com/dp/0134052501[The Software Craftsman: Professionalism, Pragmatism, Pride],
- Sandro Mancuso, 2015
-* https://www.amazon.com/dp/0321278658[Extreme Programming Explained: Embrace Change],
- Ken Beck, 2005
-* https://www.amazon.com/dp/0321534468[Agile Testing: A practical Guide for Testers and Agile Teams],
- Lisa Crispin and Janet Gregory, 2009
-* https://www.amazon.com/dp/0321967054[More Agile Testing: Learning Journeys for the Whole Team],
- Lisa Crispin and Janet Gregory, 2015
-* https://www.amazon.com/dp/0132350882[Clean Code],
- Robert C. Martin, 2009
-* https://www.amazon.com/dp/0137081073[Clean Coder],
- Robert C. Martin, 2011
-* https://www.amazon.com/dp/0134494164[Clean Architecture],
- Robert C. Martin, 2018
-* https://www.amazon.com/dp/0135781868[Clean Agile],
- Robert C. Martin, 2020
+* https://www.amazon.com/dp/0135957052[The Pragmatic Programmer: Your Journey to Mastery (20th Anniversary Edition)].
+Andrew Hunt & David Thomas. 2019
+* https://www.amazon.com/dp/0134052501[The Software Craftsman: Professionalism, Pragmatism, Pride].
+Sandro Mancuso. 2015
+* https://www.amazon.com/dp/0321278658[Extreme Programming Explained: Embrace Change].
+Ken Beck. 2005
+* https://www.amazon.com/dp/0321534468[Agile Testing: A practical Guide for Testers and Agile Teams].
+Lisa Crispin and Janet Gregory. 2009
+* https://www.amazon.com/dp/0321967054[More Agile Testing: Learning Journeys for the Whole Team].
+Lisa Crispin and Janet Gregory. 2015
+* https://www.amazon.com/dp/0132350882[Clean Code].
+Robert C. Martin. 2009
+* https://www.amazon.com/dp/0137081073[Clean Coder].
+Robert C. Martin. 2011
+* https://www.amazon.com/dp/0134494164[Clean Architecture].
+Robert C. Martin. 2018
+* https://www.amazon.com/dp/0135781868[Clean Agile].
+Robert C. Martin. 2020
 ====
 
 === DevOps
@@ -177,10 +180,10 @@ Frederic Laloux, 2014
 .DevOps Books
 [%collapsible]
 ====
-* https://www.amazon.com/dp/0988262592[The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win],
- Gene Kim & Kevin Behr, 2013
-* https://www.amazon.com/dp/0321601912[Continuous Delivery: Reliable Software Releases through Build, Test and Deployment Automation],
- Jez Humble & David Farley, 2011
+* https://www.amazon.com/dp/0988262592[The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win].
+Gene Kim & Kevin Behr. 2013
+* https://www.amazon.com/dp/0321601912[Continuous Delivery: Reliable Software Releases through Build, Test and Deployment Automation].
+Jez Humble & David Farley. 2011
 ====
 
 === Change Process
@@ -188,24 +191,24 @@ Frederic Laloux, 2014
 .Change Process Books
 [%collapsible]
 ====
-* https://www.amazon.com/dp/B019TM4P6Y[Fearless Change: Patterns for Introducing New Ideas],
- Linda Rising, 2005
-* https://www.amazon.com/dp/0133966445[More Fearless Change: Strategies for Making Your Ideas Happen],
- Linda Rising, 2015
-* https://www.amazon.com/dp/1422186431[Leading Change],
- John Kotter, 1996
-* https://www.amazon.com/dp/0399563911[Our Iceberg is Melting: Changing and Succeeding under Any Conditions],
- John Kotter, 2005
-* https://www.amazon.com/dp/1625271743[XLR8: Accelerate],
- John Kotter, 2014
-* https://www.amazon.com/dp/1119212049[Organizational Culture and Leadership (5th Edition)],
- Edgar Schein, 2017
-* https://www.amazon.com//dp/1119212286[The Corporate Culture Survival Guide (3rd Edition)],
- Edgar Schein, 2019
-* https://www.amazon.com/dp/1609949811[Humble Inquiry: The Gentle Art of Asking instead of Telling],
- Edgar Schein, 2013
-* https://www.amazon.com/dp/0385517254[The Fifth Discipline: The Art and Practice of the Learning Organization],
- Peter Senge, 2006
+* https://www.amazon.com/dp/B019TM4P6Y[Fearless Change: Patterns for Introducing New Ideas].
+Linda Rising. 2005
+* https://www.amazon.com/dp/0133966445[More Fearless Change: Strategies for Making Your Ideas Happen].
+Linda Rising. 2015
+* https://www.amazon.com/dp/1422186431[Leading Change].
+John Kotter. 1996
+* https://www.amazon.com/dp/0399563911[Our Iceberg is Melting: Changing and Succeeding under Any Conditions].
+John Kotter. 2005
+* https://www.amazon.com/dp/1625271743[XLR8: Accelerate].
+John Kotter. 2014
+* https://www.amazon.com/dp/1119212049[Organizational Culture and Leadership (5th Edition)].
+Edgar Schein. 2017
+* https://www.amazon.com//dp/1119212286[The Corporate Culture Survival Guide (3rd Edition)].
+Edgar Schein. 2019
+* https://www.amazon.com/dp/1609949811[Humble Inquiry: The Gentle Art of Asking instead of Telling].
+Edgar Schein. 2013
+* https://www.amazon.com/dp/0385517254[The Fifth Discipline: The Art and Practice of the Learning Organization].
+Peter Senge. 2006
 ====
 
 === Java
@@ -213,8 +216,8 @@ Frederic Laloux, 2014
 .Java Books
 [%collapsible]
 ====
-* https://www.amazon.com/dp/B078H61SCH[Effective Java: Best Practices for the Java Platform (3^rd^ Edition)],
- Joshua Bloch, 2018
-* https://www.amazon.com/dp/B07CLFTVZS[Java by Comparison: Become a Java Craftsman in 70 Examples],
- Simon Harrer, 2018
+* https://www.amazon.com/dp/B078H61SCH[Effective Java: Best Practices for the Java Platform (3^rd^ Edition)].
+Joshua Bloch. 2018
+* https://www.amazon.com/dp/B07CLFTVZS[Java by Comparison: Become a Java Craftsman in 70 Examples].
+Simon Harrer. 2018
 ====
