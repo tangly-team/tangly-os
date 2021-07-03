@@ -13,13 +13,13 @@ weight: 40
 The following process is used to publish {ref-tangly} open source component on https://mvnrepository.com/repos/central[Maven Central].
 
 . Publish artifacts of component with the script `uploadToMavenCentral.sh`.
- Do not use the gradle task `gradle publishAllPublicationsToMavenRepository -Pmode=prod`.
- Sonatype cannot handle parallel upload of multiple components and simply close the connections during upload (Status 2020-Q2).
+Do not use the gradle task `gradle publishAllPublicationsToMavenRepository -Pmode=prod`.
+Sonatype cannot handle parallel upload of multiple components and simply close the connections during upload (Status 2020-Q2).
 .. Pre activity: test publishing with `gradle publishToMavenLocal`
 .. Pre activity: check on bitbucket the product compile through the *CI* continuous integration pipeline
 .. Post activity: *tag repository* on git to identify the version of the published packages.
- The tag version semantic part *must* be the same as the package version on https://mvnrepository.com/repos/central[Maven Central]
- The tag is of the form -{AcronymComponent}-MajorVersion-MinorVersion-PatchVersion-
+The tag version semantic part *must* be the same as the package version on https://mvnrepository.com/repos/central[Maven Central]
+The tag is of the form -{AcronymComponent}-MajorVersion-MinorVersion-PatchVersion-
 .. Verify with `git tag label` and `git push origin --tags`
 . Log into https://oss.sonatype.org/#welcome[Sonatype Maven Central Repository]
 .. Go to https://oss.sonatype.org/#stagingRepositories[Staging Repositories]
@@ -27,7 +27,7 @@ The following process is used to publish {ref-tangly} open source component on h
 .. Review the content of the repository
 .. Close the repository -button on tool list-
 .. Close stage is initiated and checks are performed.
- If everything was fine the content is published.
+If everything was fine the content is published.
 .. Release the artifact -button on tool list-
 . See <<website-publication>> to update the website
 
@@ -38,33 +38,21 @@ It takes up to one day until the component is visible in Maven Central website u
 On the positive side, the last publications were performed in less than 30 minutes.
 ====
 
-The acronyms are (the current composite acronym is TANGLY_OS meaning all components are released)
-
-* *BDD* behavior driven development library
-* *BUS* business components library
-* *COMMONS* commons library
-* *DEV* development tools library
-* *FSM* hierarchical finite state machine library
-* *GLEAM* declarative model transformation frameworks library
-* *PORTS* ports library
-* *UI* Vaadin user interface library
-
 Below the dependencies between tangly open source components as defined in the multi-modules {ref-gradle} build file.
 
 [plantuml,tangly-componentsDependencies,svg,svg-type="interactive"]
 ....
 package net.tangly.bdd [[https://tangly-team.bitbucket.io/docs/bdd/]] {
 }
-package net.tangly.bus [[https://tangly-team.bitbucket.io/docs/bus/]] {
-}
 
 package net.tangly.commons [[https://tangly-team.bitbucket.io/docs/commons/]] {
 }
 
-net.tangly.bus --> net.tangly.commons
-package net.tangly.dev [[https://tangly-team.bitbucket.io/docs/dev/]] {
+package net.tangly.core [[https://tangly-team.bitbucket.io/docs/core/]] {
 }
 
+package net.tangly.dev [[https://tangly-team.bitbucket.io/docs/dev/]] {
+}
 net.tangly.dev --> net.tangly.commons
 
 package net.tangly.fsm [[https://tangly-team.bitbucket.io/docs/fsm/]] {
@@ -72,27 +60,38 @@ package net.tangly.fsm [[https://tangly-team.bitbucket.io/docs/fsm/]] {
 
 package net.tangly.gleam [[https://tangly-team.bitbucket.io/docs/gleam/]] {
 }
-
 net.tangly.gleam --> net.tangly.commons
 
 package net.tangly.ports [[https://tangly-team.bitbucket.io/docs/ports/]] {
 }
 
-net.tangly.ports --> net.tangly.commons
-net.tangly.ports --> net.tangly.bus
-net.tangly.ports --> net.tangly.gleam
+package net.tangly.ui [[https://tangly-team.bitbucket.io/docs/ui/]] {
+}
 
-package net.tangly.ui {}
-net.tangly.ui --> net.tangly.commons
-net.tangly.ui --> net.tangly.bus
-net.tangly.ui --> net.tangly.gleam
-net.tangly.ui --> net.tangly.ports
+package net.tangly.erp.crm [[https://tangly-team.bitbucket.io/docs/erp/crm]] {
+}
+
+package net.tangly.erp.invoices [[https://tangly-team.bitbucket.io/docs/erp/invoices]] {
+}
+
+package net.tangly.erp.ledger [[https://tangly-team.bitbucket.io/docs/erp/ledger]] {
+}
+
+package net.tangly.erp.products [[https://tangly-team.bitbucket.io/docs/erp/products]] {
+}
+
+package net.tangly.erp.shared [[https://tangly-team.bitbucket.io/docs/erp/shared]] {
+}
+
+package net.tangly.erp.ui [[https://tangly-team.bitbucket.io/docs/erp/ui]] {
+}
+
 ....
 
 ==== Decisions
 
 . The open source components are stored in a mono repository.
- Each component is declared as a gradle module.
+Each component is declared as a gradle module.
 . We use de facto standard Git.
 . We are hosted at https://bitbucket.org[bibucket].
 . The bitbucket repository is regularly synchronized with a github mirror repository https://github.com/marcelbaumann/tangly-os.git[github].
@@ -101,15 +100,23 @@ The synchronization is performed with the command
 
 [code]
 ----
-git push --prune https://github.com/marcelbaumann/tangly-os.git +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+git push --prune https://github.com/marcelbaumann/tangly-os.git +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/* <1>
+
+git remote <2>
+
+git push origin-bitbucket <3>
 ----
+<1> Pushes the repository with all remotes, references and tags to github specified repository
+<2> List all remotes associated with this git repository
+<3> Pushes the master branch to the _origin-bitbucket_ remote repository.
+The push shall trigger the continuous integratin pipeline
 
 ==== Findings
 
 . We needed to manually publish the public key on http://keys.gnupg.net[keys.gnupg.net]
 . Gradle build file has a condition include to disable the signing plugin on the CI pipeline because keys and associated authentication are not available.
- I decided not to upload private keys to https://bitbucket.org/[bitbucket].
- See the documentation at the beginning of the Gradle build file for details.
+I decided not to upload private keys to https://bitbucket.org/[bitbucket].
+See the documentation at the beginning of the Gradle build file for details.
 
 IMPORTANT: Set the property if you want to sign the component artifacts and publish to Maven Central.
 
@@ -149,11 +156,12 @@ Upon completion the site is published on the web for all.
 
 ==== Set JDK Version under macOS
 
-Install regular Java JDK (Oracle or OpenJDK for example). They will be located under _/Library/Java/JavaVirtualMachines_.
+Install regular Java JDK (Oracle or OpenJDK for example).
+They will be located under _/Library/Java/JavaVirtualMachines_.
 
 If using bash shell, add following commands to your .bash_profile.
 
-[source, shell]
+[source,shell]
 ----
 alias java15 = "export JAVA_HOME=`/usr/libexec/java_home -v 15`; java -version"
 alias java11 = "export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
@@ -165,7 +173,7 @@ After restarting your terminal the command _java15_ will set JDK 15 to default J
 
 The list of JDK can be found with
 
-[source, shell]
+[source,shell]
 ----
 /usr/libexec/java_home -V
 ----
