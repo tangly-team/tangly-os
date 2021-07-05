@@ -13,7 +13,6 @@
 
 package net.tangly.fsm.actors;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -145,6 +144,6 @@ class ActorTest {
             assertThat(client.nrRequests).isEqualTo(1);
             assertThat(client.nrAnswers).isEqualTo(1);
         }
-        assertThat(((Server)actors.actorNamed("server").get()).nrRequests).isEqualTo(NR_CLIENTS);
+        assertThat(((Server) actors.actorNamed("server").get()).nrRequests).isEqualTo(NR_CLIENTS);
     }
 }

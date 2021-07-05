@@ -18,6 +18,6 @@ public interface Consumer<E> {
     void consume(@NotNull E event);
 
     default void register(@NotNull EventBus eventBus, @NotNull Class<E> clazz) {
-        eventBus.register((E e) -> this.consume(e), clazz);
+        eventBus.register(this::consume, clazz);
     }
 }

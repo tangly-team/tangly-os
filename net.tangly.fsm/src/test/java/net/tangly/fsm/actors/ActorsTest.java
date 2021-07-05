@@ -49,8 +49,8 @@ public class ActorsTest {
     }
 
     static class RegisteredActor extends ActorImp<ActorsTest.Message> implements Actor<Message> {
-        private String peerName;
-        private Actors<Message> actors;
+        private final String peerName;
+        private final Actors<Message> actors;
         private int counter;
 
         public RegisteredActor(String name, Actors<Message> actors, String peerName) {

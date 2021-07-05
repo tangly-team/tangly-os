@@ -14,7 +14,6 @@
 package net.tangly.fsm.imp;
 
 import net.tangly.fsm.Event;
-import net.tangly.fsm.State;
 import net.tangly.fsm.dsl.FsmBuilder;
 import org.junit.jupiter.api.Test;
 

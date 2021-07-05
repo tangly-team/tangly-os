@@ -22,7 +22,7 @@ import net.tangly.fsm.eventbus.EventBus;
 import org.jetbrains.annotations.NotNull;
 
 public class EventBusSynchron implements EventBus {
-    private String name;
+    private final String name;
     private final Map<Class<?>, Set<Consumer<?>>> consumers;
 
     public EventBusSynchron(String name) {

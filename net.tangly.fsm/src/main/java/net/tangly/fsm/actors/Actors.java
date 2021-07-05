@@ -29,7 +29,7 @@ public interface Actors<T> {
         try {
             service.awaitTermination(1, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
-            new RuntimeException(e);
+            throw new RuntimeException(e);
         }
     }
 
