@@ -6,7 +6,7 @@ junit-version = '5.8.0-M1'
 log4j2-version = '2.14.1'
 microstream-version = '04.01.00-MS-GA'
 mustang-version = '2.2.0'
-vaadin-version = '20.0.3'
+vaadin-version = '20.0.4'
 
 [libraries]
 annotations = "org.jetbrains:annotations:21.0.1"
@@ -18,7 +18,7 @@ apache-log4j2-api = { module = "org.apache.logging.log4j:log4j-api", version.ref
 apache-log4j2-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "log4j2-version" }
 apache-log4j2-slf4j = { module = "org.apache.logging.log4j:log4j-slf4j-impl", version.ref = "log4j2-version" }
 apache-pdfbox = "org.apache.pdfbox:pdfbox:2.0.23"
-arch-unit = "com.tngtech.archunit:archunit-junit5-api:0.19.0"
+arch-unit = "com.tngtech.archunit:archunit-junit5-api:0.20.0"
 asciidoctorj-core = "org.asciidoctor:asciidoctorj:2.5.1"
 asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:1.6.0"
 assertj = "org.assertj:assertj-core:3.18.1"
@@ -44,7 +44,7 @@ junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jun
 junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-version" }
 mustang-core = { module = "org.mustangproject:library", version.ref = "mustang-version" }
 mustang-validator = { module = "org.mustangproject:validator", version.ref = "mustang-version" }
-google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.12.26"
+google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.12.27"
 qrbill = "net.codecrete.qrbill:qrbill-generator:2.5.2"
 microstream-storage = { module = "one.microstream:storage.embedded", version.ref = "microstream-version" }
 microstream-config = { module = "one.microstream:storage.embedded.configuration", version.ref = "microstream-version" }
