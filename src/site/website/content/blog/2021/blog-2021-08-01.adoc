@@ -14,18 +14,21 @@ tags: ["agile"]
 
 image::2021-08-01-head.jpg[width=420,height=360,role=left]
 
-Everybody is talking about being agile.
+*Everybody is talking about being agile*.
 
 Companies institutionalize agile change programs and send all their collaborators in training to learn the agile way.
 
 What does that mean?
 
 How should I as a manager work the agile way?
-Does this agile way exits or is it simply a fad created by the consulting industry?
+
+Does this agile way exist or is it simply a fad created by the consulting industry?
 
 This article provides some pointers and hypotheses what agile leadership could be?
 
-Fell free to experiment and refine your successful approach to be agile as an organization.
+Feel free to experiment and refine your successful approach to be agile as an organization.
+You must experiment, learn and train to become a successful agile leader.
+It is a job, not a hobby.
 
 [quote]
 ____
@@ -34,23 +37,19 @@ Organizational agility cannot exceed the level of personal leadership agility of
 Because agile leadership involves ongoing personal development, it is not something that can be mastered in a single training course.
 ____
 
-=== Agile Leaders engage, empathize, and serve the team at the place of work
+=== Agile Leaders engage, and serve the team at the place of work
 
 Serving the team is all the rage these days.
 You hear or read about Servant Leadership at every turn.
 But serving the team is too often interpreted as waiting for the team to ask for help.
 
-Rather than wait for the team, go to the Gemba — the actual place of work¹.
+Rather than wait for the team, go to the https://en.wikipedia.org/wiki/Gemba[Gemba] — the actual place of work.
 
-Get out of your office and engage with the team.
-
-Help them as they deliver.
-
-See their problems first hand.
-
-You will know exactly what they are working on.
-
-It will become obvious how you can help.
+* Get out of your office and engage with the team.
+* Help them as they deliver.
+* See their problems first hand.
+* You will know exactly what they are working on.
+* It will become obvious how you can help.
 
 You start helping and playing the part only you as a leader can fill.
 This is true service to the team by being a contributing member of the team.
@@ -62,21 +61,20 @@ As a leader, you can teach them how to navigate complexity.
 
 You must engender an ability in your team members to think using the scientific method.
 It is impossible to teach every possible scenario your teams will encounter.
-Instead of teaching them how to probe, sense, and respond.
+Teach them how to probe, sense, and respond.
 This will give them critical abilities to solve complex problems on their own.
 
 It builds self-organizing skills in your teams.
 
 === Leading by Example to nurture resilient change
 
-Co-select with the teams proficient and experienced agile coaches and Scrum masters
-
-Promote purpose, autonomy, mastery, accountability, strong social connection, small wins
-
-Put emphasis on Information radiators
+* Co-select with the teams proficient and experienced agile coaches and Scrum masters
+* Promote purpose, autonomy, mastery, accountability, strong social connection, small wins
+* Put emphasis on https://en.wikipedia.org/wiki/Agile_software_development[Information Radiators]
 
 Think about
-* Colocation,
+
+* Collocation,
 * Radical transparency,
 * Job rotations,
 * Team liaisons,
@@ -88,23 +86,35 @@ ____
 Management is doing things right; leadership is doing the right things.
 ____
 
-* Is knowledgeable about agile values, approaches and practices Understand and apply the Scrum, Kanban and lean, Spotify model frameworks
+You should
+
+* Be knowledgeable about agile values, approaches and practices Understand and apply the Scrum, Kanban and lean, Spotify model frameworks
 * Develop people and teams - Self organizing teams Leadership styles, coaching and mentoring, facilitation Manage products with agility
 * Forecasting and release planing, product value, business strategy
 * Develop and deliver products professionally Evolve the agile organization - organizational design and structure, emporium, evidence based management
-* Takes a
-collaborative continuous improvement approach to organizational effectiveness
+* Takes a collaborative continuous improvement approach to organizational effectiveness
 
 
-Hinder value stream organizations and cross-functional teams - Please stop defining component teams - Do give tasks to individual collaborators instead of going through the product owner Ask progress or control questions during daily Scrum Ask control questions or systematically participate to retrospectives Promote the mindset that people are exchangeable - see mythical man/months - and anybody can be a good Scrum master Criticize craftsmanship approaches such as TDD, DDD, pair programming, continuous integration and delivery
+You should avoid hindering value stream organizations and cross-functional teams by
 
+* Defining component teams
+* Give tasks to individual collaborators instead of going through the product owner
+* Ask progress or control questions during daily Scrum
+* Ask control questions or systematically participate to retrospectives
+* Promote the mindset that people are exchangeable - see mythical man/months -
+* State anybody can be a good Scrum master
+* Criticize craftsmanship approaches such as TDD, DDD, pair programming, continuous integration and delivery
 
-Trained in agile values and approaches
+Exceptional agile leaders
 
-Advocate technical excellence
+* Are trained in agile values and approaches.
+They hold certifications
+* Advocate technical excellence
+* Trust their teams
+* Work actively to remove impediments by supporting process and structural changes in direction of value streams
 
-Trust their teams
+Please look at the agile leadership program from https://www.scrumalliance.org/[Scrum Alliance] and https://www.scrum.org/[Scrum.org].
 
-Work actively to remove impediments by supporting process and structural changes in direction of value streams
+Read the {ref-manifesto} text and the https://agilemanifesto.org/principles.html[Twelve Principles behind the Agile Manifesto].
 
-Agile leadership program from Scrum Alliance and Scrum.org.
+Beware of the link:../../blog/2021/reflections-on-agile-fluency-model/[Agile Fluency Model]. Be patient. Change takes time, a lot of time.
