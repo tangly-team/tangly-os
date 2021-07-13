@@ -77,35 +77,35 @@ The following diagram overviews the potential activities associated with _Agile 
 image::2021-07-02-entreprise-architecture-process.png[width=800,height=800,role=center]
 The process decision points that you need to consider for enterprise architecture are:
 
-. Support stakeholders.
+Support stakeholders::
 Enterprise architects will work with business and IT stakeholders on a regular basis to understand their needs and to help them develop a vision for the organization.
-. Support delivery teams.
+Support delivery teams::
 Enterprise architects will work with IT delivery teams, and ideally be active members of IT delivery teams, on a regular basis.
 They may guide the teams in the business and technical roadmaps, help them to identify potentially reusable assets, to identify technical debt.
 They should transfer their skills and knowledge to team members.
-. Negotiate technical dependencies.
+Negotiate technical dependencies::
 Like it or not, there are dependencies between the solutions that we create.
 For example, if your system invokes a web service, or calls an API, provided by another system then you have a dependency on that system.
 Enterprise architects will often find that they need to negotiate these dependencies with other teams, either at a high-level in their role of Enterprise Architect or sometimes at a detailed level in their role of Architecture Owner on a delivery team.
-. Explore architectural views.
+Explore architectural views::
 Organizations are complex and as a result they must be understood from a variety of view points.
 It’s not just a matter of writing “architectural epics” on a collection of index cards.
-. Tailor the chosen architecture framework.
 The enterprise architecture team may choose to adopt, and likely tailor, an existing enterprise architecture framework.
+Tailor the chosen architecture framework::
 These frameworks typically suggest a multi-view collection of artifacts to create and techniques for doing so.
-. Evolve enterprise architecture.
+Evolve enterprise architecture::
 Enterprise architects will collaborate with one another, and with their stakeholders, in a variety of ways.
 They may choose to hold architecture envisioning/modeling sessions or regular meetings where they share learnings with one another.
 They will often work together, or with IT delivery teams, to investigate new technologies or identify candidate architecture strategies.
-. Evolve roadmap(s).
+Evolve roadmap(s)::
 An important output of your enterprise architecture effort will be one or more roadmaps.
 They describe your technology strategies and your architectural strategies.
 The roadmaps are updated in a rolling wave approach where the roadmap(s) are updated regularly.
-. Capture enterprise architecture.
+Capture enterprise architecture::
 There are two broad categories for how enterprise architects can capture their work: as documents or as working/executable examples.
 High-level models work well for the documentation.
 Executable artifacts, such as executable reference architectures or architectural runways, are usually preferred over documentation by delivery teams.
-. Govern architecture.
+Govern architecture::
 Architectural activities within your organization should be governed in a lightweight, collaborative manner.
 This is an important activity for enterprise architects as well as for your IT governance team.
 

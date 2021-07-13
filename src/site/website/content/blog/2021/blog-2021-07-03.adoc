@@ -22,13 +22,15 @@ This person should be able to create or review a software architecture.
 He has a deep understanding of technological concepts.
 
 More importantly he can write productive source code.
+Ideally she should https://en.wikipedia.org/wiki/Pair_programming[Pair Program] with team members or
+https://en.wikipedia.org/wiki/Mob_programming[Mob Program] with her whole team.
 
 [.text-center]
 _A technical team lead must be technically savvy_.
 
 === Job Description
 
-Here a standard job description for a Java technical team lead as often published on job platforms.
+Here a standard https://en.wikipedia.org/wiki/Job_description[Job Description] for a Java technical team lead as often published on job platforms.
 
 We are looking for an experienced Java technical lead to be responsible for providing solutions for technical issues which may affect product delivery.
 The Java technical lead will facilitate requirement analyses, conduct peer reviews and provide feedback, and enhance frameworks.
