@@ -27,18 +27,24 @@ logout :: logout of a user
 The _component_ field has the structure _net.tangly_.*component_name*.
 The component field is the Java module name of the design component.
 
+All import and export operations should be audited.
+An import happens each time the system reads data from an external system.
+An export happens each time the system sends data to an external system.
+
+All imported
+
 === Java Conventions
 
 ==== Modern Java Constructs
 
 Use modern Java constructs in our daily coding
 
-* Prefer a record over a class abstraction to promote immutable objects,
-* Prefer stream use over explicit control statements to promote functional programming,
+* Prefer a *record* over a class abstraction to promote immutable objects,
+* Prefer stream approach over explicit control statements to promote functional programming,
 * Promote modules for information hiding and reducing coupling between components,
 * Experiment with var construct to find out if code is more legible.
 
-==== toString Method
+==== _String toString()_ Method
 
 The method implementation uses a _String.format()_ approach.
 We assume that Java will introduce intrinsics support for an efficient implementation of toString method based on _String.format()_.
@@ -46,6 +52,28 @@ As soon as the intrisics is available we will migrate to the supported version a
 
 The _toString_ method is used to create detailed audit and looging messages and support production error searching.
 The format of the message is based on the build-in format defined in the JDK for Java records.
+
+[source,java]
+----
+    @Override
+    public String toString() {
+        return String.format("created=%s, author=%s, text=%s, tags=%s", created(), author(), text(), Tag.text(tags));
+    }
+----
+
+==== _boolean equals(Object)_ Method
+
+The extended _instanceof_ operator allows a compact and legible definition of the equality method.
+The whole method body is written as one statement.
+
+[source,java]
+----
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof Comment o) && Objects.equals(created(), o.created()) && Objects.equals(author(), o.author()) &&
+            Objects.equals(text(), o.text()) && Objects.equals(tags(), o.tags());
+    }
+----
 
 === Design Conventions
 

@@ -24,7 +24,7 @@ All features provided in slf4j are now available in log4j2.
 In particular the fluent interface which is only available in the beta version of slf4j is also supported.
 Additional features are also provided and performnace is better than with other logging frameworks.
 
-The project is active and under the umbrella of the https:www.apache.org[Apache Foundateion].
+The project is active and under the umbrella of the https://www.apache.org[Apache Foundation].
 The library uses well documented Java module names as any modern library shall provide.
 
 This situation raises the question to move our application to the apache logging framework.
@@ -51,7 +51,8 @@ Closing of security issues and support of current JDK versions are not guarantee
 === Consequences
 
 * All source files must be modified to use the new library
-** All logging record creation shall use fluent interface
+** All logging record creation shall use fluent interface.
+As in slf4j no string concatenation shall happen in log record calls, use the message feature of the library.
 ** Logging level is specified using the fluent interface
 ** No conditional statements shall be used to bracket logging statements
 ** Exceptions are always stated through the fluent user interface and are not an argument of the log message
@@ -64,4 +65,4 @@ We shall explore if trouble arise from used components which are using other log
 The risk is small because it is already existing wehn using slf4j liberary.
 The difference is only our new preferred library is now the Apache one.
 
-The architecture of log4j2 is described are https://logging.apache.org/log4j/2.x/manual/architecture.html[Main Components].
+The architecture of log4j2 is described in https://logging.apache.org/log4j/2.x/manual/architecture.html[Log4j2 Main Components].
