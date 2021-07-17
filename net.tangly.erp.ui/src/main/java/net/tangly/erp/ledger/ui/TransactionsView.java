@@ -12,6 +12,8 @@
 
 package net.tangly.erp.ledger.ui;
 
+import java.time.LocalDate;
+
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -26,8 +28,6 @@ import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.VaadinUtils;
 import net.tangly.ui.grids.GridDecorators;
 import org.jetbrains.annotations.NotNull;
-
-import java.time.LocalDate;
 
 /**
  * Regular CRUD view on transactions abstraction. The grid and edition dialog wre optimized for usability.
@@ -53,19 +53,14 @@ class TransactionsView extends EntitiesView<Transaction> {
         grid.addColumn(Transaction::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Transaction::debitAccount).setKey("debit").setHeader("Debit").setAutoWidth(true).setResizable(true);
         grid.addColumn(Transaction::creditAccount).setKey("credit").setHeader("Credit").setAutoWidth(true).setResizable(true);
-        grid.addColumn(new NumberRenderer<>(Transaction::amount, VaadinUtils.FORMAT))
-            .setKey("amount")
-            .setHeader("Amount")
-            .setAutoWidth(true)
-            .setResizable(true)
+        grid.addColumn(new NumberRenderer<>(Transaction::amount, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true).setResizable(true)
             .setTextAlign(ColumnTextAlign.END);
-        GridDecorators<Transaction> functions = gridFiltersAndActions(true, false);
-        functions.addFilter(new GridDecorators.FilterText<>(functions, Transaction::reference, "Reference", "reference"))
-            .addFilter(new GridDecorators.FilterText<>(functions, Transaction::debitAccount, "Debit", "debit"))
-            .addFilter(new GridDecorators.FilterText<>(functions, Transaction::creditAccount, "Credit", "credit"))
-            .addFilter(new GridDecorators.FilterDate<>(functions))
-            .addFilter(new GridDecorators.FilterText<>(functions, Transaction::text, "Text", "text"));
-        addAndExpand(functions, grid(), gridButtons());
+        GridDecorators<Transaction> decorators = gridFiltersAndActions(true, false);
+        decorators.addFilter(new GridDecorators.FilterText<>(decorators, Transaction::reference, "Reference", "reference"))
+            .addFilter(new GridDecorators.FilterText<>(decorators, Transaction::debitAccount, "Debit", "debit"))
+            .addFilter(new GridDecorators.FilterText<>(decorators, Transaction::creditAccount, "Credit", "credit"))
+            .addFilter(new GridDecorators.FilterDate<>(decorators)).addFilter(new GridDecorators.FilterText<>(decorators, Transaction::text, "Text", "text"));
+        addAndExpand(decorators, grid(), gridButtons());
     }
 
     void interval(@NotNull LocalDate from, @NotNull LocalDate to) {

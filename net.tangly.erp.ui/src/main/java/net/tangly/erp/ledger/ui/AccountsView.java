@@ -12,6 +12,8 @@
 
 package net.tangly.erp.ledger.ui;
 
+import java.time.LocalDate;
+
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
@@ -24,8 +26,6 @@ import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.VaadinUtils;
 import net.tangly.ui.grids.GridDecorators;
 import org.jetbrains.annotations.NotNull;
-
-import java.time.LocalDate;
 
 /**
  * Charts of accounts are defined externally as TSV files. Currently the account view is a read-only view on accounts instances.
@@ -62,27 +62,19 @@ class AccountsView extends EntitiesView<Account> {
         grid.addColumn(Account::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::group).setKey("group").setHeader("Group").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true);
-        grid.addColumn(VaadinUtils.coloredRender(o -> o.balance(from), VaadinUtils.FORMAT))
-            .setKey("opening")
-            .setHeader("Opening")
-            .setAutoWidth(true)
-            .setResizable(true)
-            .setTextAlign(ColumnTextAlign.END);
-        grid.addColumn(VaadinUtils.coloredRender(o -> o.balance(to), VaadinUtils.FORMAT))
-            .setKey("balance")
-            .setHeader("Balance")
-            .setAutoWidth(true)
-            .setResizable(true)
-            .setTextAlign(ColumnTextAlign.END);
+        grid.addColumn(VaadinUtils.coloredRender(o -> o.balance(from), VaadinUtils.FORMAT)).setKey("opening").setHeader("Opening").setAutoWidth(true)
+            .setResizable(true).setTextAlign(ColumnTextAlign.END);
+        grid.addColumn(VaadinUtils.coloredRender(o -> o.balance(to), VaadinUtils.FORMAT)).setKey("balance").setHeader("Balance").setAutoWidth(true)
+            .setResizable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(Account::kind).setKey("kind").setHeader("Kind").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true);
         grid.addColumn(Account::ownedBy).setKey("ownedBy").setHeader("Owned By").setAutoWidth(true).setResizable(true);
 
-        GridDecorators<Account> functions = gridFiltersAndActions(true, false);
-        functions.addFilter(new GridDecorators.FilterText<>(functions, Account::id, "Id", "id"))
-            .addFilter(new GridDecorators.FilterText<>(functions, Account::name, "Name", "name"));
-        functions.addItemAction("Print", e -> new CmdCreateLedgerDocument(domain).execute());
-        addAndExpand(functions, grid(), gridButtons());
+        GridDecorators<Account> decorators = gridFiltersAndActions(true, false);
+        decorators.addFilter(new GridDecorators.FilterText<>(decorators, Account::id, "Id", "id"))
+            .addFilter(new GridDecorators.FilterText<>(decorators, Account::name, "Name", "name"));
+        decorators.addItemAction("Print", e -> new CmdCreateLedgerDocument(domain).execute());
+        addAndExpand(decorators, grid(), gridButtons());
     }
 
     @Override

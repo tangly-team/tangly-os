@@ -23,7 +23,7 @@ import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.VaadinUtils;
 import net.tangly.ui.grids.GridDecorators;
-import net.tangly.ui.markdown.MarkdownArea;
+import net.tangly.ui.markdown.MarkdownField;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -49,11 +49,11 @@ class EffortsView extends EntitiesView<Effort> {
         grid.addColumn(Effort::duration).setKey("duration").setHeader("Duration").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Effort::contractId).setKey("contractId").setHeader("ContractId").setAutoWidth(true).setResizable(true).setSortable(true);
 
-        GridDecorators<Effort> functions = gridFiltersAndActions(true, false);
-        functions.addFilter(new GridDecorators.FilterText<>(functions, o -> o.assignment().id(), "Assignment", "assignment"))
-            .addFilter(new GridDecorators.FilterText<>(functions, o -> o.assignment().name(), "Collaborator", "collaborator"))
-            .addFilter(new GridDecorators.FilterDate<>(functions));
-        addAndExpand(functions, grid(), gridButtons());
+        GridDecorators<Effort> decorators = gridFiltersAndActions(true, false);
+        decorators.addFilter(new GridDecorators.FilterText<>(decorators, o -> o.assignment().id(), "Assignment", "assignment"))
+            .addFilter(new GridDecorators.FilterText<>(decorators, o -> o.assignment().name(), "Collaborator", "collaborator"))
+            .addFilter(new GridDecorators.FilterDate<>(decorators));
+        addAndExpand(decorators, grid(), gridButtons());
     }
 
     @Override
@@ -70,7 +70,7 @@ class EffortsView extends EntitiesView<Effort> {
         DatePicker date = VaadinUtils.createDatePicker("Date");
         IntegerField duration = new IntegerField("Duration", "duration");
         TextField contractId = new TextField("Contract Id", "contractId");
-        MarkdownArea text = new MarkdownArea("Text");
+        MarkdownField text = new MarkdownField("Text");
 
         VaadinUtils.configureOid(operation, oid);
         VaadinUtils.readOnly(operation, date, duration, contractId, text);

@@ -48,11 +48,11 @@ class EmployeesView extends InternalEntitiesView<Employee> {
         grid.addColumn(e -> e.organization().name()).setKey("organization").setHeader("Organization").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.value(CrmTags.CRM_EMPLOYEE_TITLE).orElse("")).setKey("title").setHeader("Title").setSortable(true).setAutoWidth(true)
             .setResizable(true);
-        GridDecorators<Employee> functions = gridFiltersAndActions(false, false);
-        functions.addFilter(new GridDecorators.FilterText<>(functions, e -> e.person().name(), "Person", "person"))
-            .addFilter(new GridDecorators.FilterText<>(functions, e -> e.organization().name(), "Organization", "organization"))
-            .addFilter(new GridDecorators.FilterInterval<>(functions));
-        addAndExpand(functions, grid(), gridButtons());
+        GridDecorators<Employee> decorators = gridFiltersAndActions(false, false);
+        decorators.addFilter(new GridDecorators.FilterText<>(decorators, e -> e.person().name(), "Person", "person"))
+            .addFilter(new GridDecorators.FilterText<>(decorators, e -> e.organization().name(), "Organization", "organization"))
+            .addFilter(new GridDecorators.FilterInterval<>(decorators));
+        addAndExpand(decorators, grid(), gridButtons());
     }
 
     @Override

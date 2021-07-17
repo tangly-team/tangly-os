@@ -53,12 +53,12 @@ class InvoicesView extends EntitiesView<Invoice> {
         grid.addColumn(Invoice::dueDate).setKey("dueDate").setHeader("Due Date").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(o -> VaadinUtils.format(o.amountWithoutVat())).setKey("amountWithoutVat").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Invoice::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
-        GridDecorators<Invoice> functions = gridFiltersAndActions(true, false);
-        functions.addFilter(new GridDecorators.FilterText<>(functions, Invoice::id, "Id", "id"))
-            .addFilter(new GridDecorators.FilterText<>(functions, Invoice::name, "Name", "name"))
-            .addFilter(new GridDecorators.FilterDate<>(functions));
-        functions.addItemAction("Print", e -> new CmdCreateInvoiceDocument(selectedItem(), domain).execute());
-        addAndExpand(functions, grid(), gridButtons());
+        GridDecorators<Invoice> decorators = gridFiltersAndActions(true, false);
+        decorators.addFilter(new GridDecorators.FilterText<>(decorators, Invoice::id, "Id", "id"))
+            .addFilter(new GridDecorators.FilterText<>(decorators, Invoice::name, "Name", "name"))
+            .addFilter(new GridDecorators.FilterDate<>(decorators));
+        decorators.addItemAction("Print", e -> new CmdCreateInvoiceDocument(selectedItem(), domain).execute());
+        addAndExpand(decorators, grid(), gridButtons());
     }
 
     @Override
