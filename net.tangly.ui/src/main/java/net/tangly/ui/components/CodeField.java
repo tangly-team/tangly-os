@@ -12,6 +12,7 @@
 
 package net.tangly.ui.components;
 
+import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.select.Select;
 import net.tangly.core.codes.Code;
 import net.tangly.core.codes.CodeType;
@@ -25,6 +26,7 @@ import java.util.Objects;
  * @param <T> reference code to display
  * @see Code
  */
+@Tag("tangly-field-code")
 public class CodeField<T extends Code> extends Select<T> {
     private final CodeType<T> codeType;
 

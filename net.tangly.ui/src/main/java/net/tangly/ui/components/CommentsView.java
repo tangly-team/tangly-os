@@ -24,7 +24,7 @@ import com.vaadin.flow.server.VaadinSession;
 import net.tangly.core.Comment;
 import net.tangly.core.HasComments;
 import net.tangly.core.providers.ProviderInMemory;
-import net.tangly.ui.markdown.MarkdownArea;
+import net.tangly.ui.markdown.MarkdownField;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -36,7 +36,7 @@ public class CommentsView extends EntitiesView<Comment> {
     private final transient HasComments hasComments;
     private final DateTimePicker created;
     private final TextField author;
-    private final MarkdownArea text;
+    private final MarkdownField text;
 
     public CommentsView(@NotNull Mode mode, @NotNull HasComments entity) {
         super(Comment.class, mode, ProviderInMemory.of(entity.comments()));
@@ -47,7 +47,7 @@ public class CommentsView extends EntitiesView<Comment> {
         author = VaadinUtils.createTextField("Author", "author");
         author.setRequired(true);
         author.setReadOnly(true);
-        text = new MarkdownArea("Text");
+        text = new MarkdownField("Text");
         initialize();
     }
 

@@ -14,6 +14,7 @@ package net.tangly.ui.components;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HtmlComponent;
+import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -34,6 +35,7 @@ import java.util.Objects;
  * @param <T> type of the entity referenced in the one 2 one relationship
  * @param <V> type of the component used to display the details or select a new entity
  */
+@Tag("tangly-field-one2one")
 public class One2OneField<T extends HasName, V extends Component & HasIdView<T>> extends CustomField<T> {
     private final TextField name;
     private final Button update;

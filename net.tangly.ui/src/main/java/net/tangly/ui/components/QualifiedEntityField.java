@@ -13,6 +13,7 @@
 package net.tangly.ui.components;
 
 import com.vaadin.flow.component.HtmlComponent;
+import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.details.Details;
@@ -27,6 +28,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
+@Tag("tangly-field-qualified-entity")
 public class QualifiedEntityField<T extends QualifiedEntity> extends CustomField<T> {
     private boolean readonly;
     private final TextField oid;

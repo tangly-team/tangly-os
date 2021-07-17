@@ -12,6 +12,7 @@
 
 package net.tangly.ui.components;
 
+import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -24,6 +25,7 @@ import net.tangly.core.Address;
  *
  * @see Address
  */
+@Tag("tangly-field-address")
 public class AddressField extends CustomField<Address> {
     private final TextField street;
     private final TextField extended;

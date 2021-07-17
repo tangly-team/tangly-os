@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Marcel Baumann
+ * Copyright 2021-2021 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -25,7 +25,7 @@ import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
 
 @Tag("markdown-area")
-public class MarkdownArea extends CustomField<String> {
+public class MarkdownField extends CustomField<String> {
     private final TextArea input = new TextArea();
     private final Div writeView = new Div(input);
     private final Div previewView = new Div();
@@ -35,12 +35,12 @@ public class MarkdownArea extends CustomField<String> {
     private final Parser parser = Parser.builder().build();
     private final HtmlRenderer renderer = HtmlRenderer.builder().build();
 
-    public MarkdownArea(String label) {
+    public MarkdownField(String label) {
         this();
         setLabel(label);
     }
 
-    public MarkdownArea() {
+    public MarkdownField() {
         input.setWidth("100%");
         writeView.setVisible(false);
         previewView.setVisible(true);

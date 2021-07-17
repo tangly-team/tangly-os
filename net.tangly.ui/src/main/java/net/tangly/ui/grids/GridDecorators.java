@@ -12,92 +12,61 @@
 
 package net.tangly.ui.grids;
 
-import com.vaadin.flow.component.ClickEvent;
-import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.ComponentEventListener;
-import com.vaadin.flow.component.Text;
-import com.vaadin.flow.component.contextmenu.MenuItem;
-import com.vaadin.flow.component.contextmenu.SubMenu;
-import com.vaadin.flow.component.datepicker.DatePicker;
-import com.vaadin.flow.component.html.Label;
-import com.vaadin.flow.component.menubar.MenuBar;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.textfield.NumberField;
-import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.data.provider.ListDataProvider;
-import net.tangly.ui.components.CodeField;
-import net.tangly.ui.components.Crud;
-import net.tangly.ui.components.SelectedItemListener;
-import net.tangly.core.HasDate;
-import net.tangly.core.HasInterval;
-import net.tangly.core.HasTags;
-import net.tangly.core.Strings;
-import net.tangly.core.codes.Code;
-import net.tangly.core.codes.CodeType;
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
 
+import com.vaadin.flow.component.ClickEvent;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.ComponentEventListener;
+import com.vaadin.flow.component.contextmenu.MenuItem;
+import com.vaadin.flow.component.datepicker.DatePicker;
+import com.vaadin.flow.component.menubar.MenuBar;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.textfield.NumberField;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.provider.ListDataProvider;
+import net.tangly.core.HasDate;
+import net.tangly.core.HasInterval;
+import net.tangly.core.HasTags;
+import net.tangly.core.codes.Code;
+import net.tangly.core.codes.CodeType;
+import net.tangly.ui.components.CodeField;
+import net.tangly.ui.components.Crud;
+import net.tangly.ui.components.SelectedItemListener;
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Defines the filters and actions specific to a grid. A grid decorator provides
  * <ul>
- *     <li>A text describing the content of the grid. Often it is the name of the displayed entities.</li>
+ *     <li>A text describing the content of the grid as the entry for the menu bar. Often it is the name of the displayed entities.</li>
+ *     <li>An optional submenu for item actions. An item action is an action performed on the selected entity in the grid.</li>
+ *     <li>An optional submenu for global operations on all items. A global action is an action performed on all entities displayed in the grid.</li>
  *     <li>A list of filter fields to filter out relevant instances.</li>
- *     <li>A menu bar with instances specific actions and global actions. The menu bar and the submenus are only displayed if specific or global actions
- *     are defined.</li>
  * </ul>
  *
  * @param <T> type of entities displayed in the grid
  */
 public class GridDecorators<T> extends HorizontalLayout implements SelectedItemListener<T> {
-    /**
-     * Defines the structure for a submenu of context actions associated with entities displayed in a grid.
-     */
-    public static class Actions {
-        private final MenuItem menuItem;
-        private final SubMenu subMenu;
-
-        public Actions(@NotNull MenuBar menuBar, @NotNull String label) {
-            menuItem = menuBar.addItem(label);
-            subMenu = menuItem.getSubMenu();
-        }
-
-        public void addAction(@NotNull String text, @NotNull ComponentEventListener<ClickEvent<MenuItem>> clickListener) {
-            subMenu.addItem(text, clickListener);
-        }
-
-        public void enabled(boolean enabled) {
-            menuItem.setEnabled(enabled);
-        }
-    }
 
     private final PaginatedGrid<T> grid;
-    private final MenuBar menuBar;
-    private final Actions itemActions;
-    private final transient List<GridFilter<T>> filters;
-    private final transient Actions globalActions;
+    private final MenuItem itemActions;
+    private final MenuItem globalActions;
+    private final List<GridFilter<T>> filters;
     private transient T selectedItem;
 
-    public GridDecorators(@NotNull PaginatedGrid<T> grid, String text, boolean hasItemActions, boolean hasGlobalActions) {
+    public GridDecorators(@NotNull PaginatedGrid<T> grid, @NotNull String text, boolean hasItemActions, boolean hasGlobalActions) {
         this.grid = grid;
         this.setPadding(false);
-        menuBar = new MenuBar();
-        itemActions = hasItemActions ? new Actions(menuBar, "Actions") : null;
-        globalActions = hasGlobalActions ? new Actions(menuBar, "Operations") : null;
+        MenuBar menuBar = new MenuBar();
+        MenuItem menuItem = menuBar.addItem(text);
+        menuItem.setEnabled(hasItemActions || hasGlobalActions);
+        itemActions = hasItemActions ? menuItem.getSubMenu().addItem("Item Actions") : null;
+        globalActions = hasGlobalActions ? menuItem.getSubMenu().addItem("Global Actions") : null;
         filters = new ArrayList<>();
         selectedItem(null);
-        if (!Strings.isNullOrBlank(text)) {
-            TextField textField = new TextField(text);
-            textField.setReadOnly(true);
-            textField.setEnabled(false);
-            add(textField);
-        }
-        if (hasItemActions || hasGlobalActions) {
-            add(menuBar);
-        }
+        add(menuBar);
     }
 
     public static <U> GridDecorators<U> of(@NotNull Crud<U> view, @NotNull PaginatedGrid<U> grid, String text, boolean hasItemActions,
@@ -108,17 +77,17 @@ public class GridDecorators<T> extends HorizontalLayout implements SelectedItemL
     }
 
     public void addItemAction(@NotNull String text, @NotNull ComponentEventListener<ClickEvent<MenuItem>> clickListener) {
-        Objects.requireNonNull(itemActions).addAction(text, clickListener);
+        Objects.requireNonNull(itemActions).getSubMenu().addItem(text, clickListener);
     }
 
     public void addGlobalAction(@NotNull String text, @NotNull ComponentEventListener<ClickEvent<MenuItem>> clickListener) {
-        Objects.requireNonNull(globalActions).addAction(text, clickListener);
+        Objects.requireNonNull(globalActions).getSubMenu().addItem(text, clickListener);
     }
 
     public void selectedItem(T entity) {
         selectedItem = entity;
         if (Objects.nonNull(itemActions)) {
-            itemActions.enabled(entity != null);
+            itemActions.setEnabled(entity != null);
         }
     }
 
@@ -185,8 +154,8 @@ public class GridDecorators<T> extends HorizontalLayout implements SelectedItemL
 
         public void addFilter(@NotNull ListDataProvider<E> provider) {
             if (!from.isEmpty() && !to.isEmpty()) {
-                var predicate = new HasDate.IntervalFilter(from.getValue(), to.getValue());
-                provider.addFilter(entity -> predicate.test(entity));
+                var predicate = new HasDate.IntervalFilter<E>(from.getValue(), to.getValue());
+                provider.addFilter(predicate::test);
             }
         }
     }
@@ -260,7 +229,7 @@ public class GridDecorators<T> extends HorizontalLayout implements SelectedItemL
         private final Function<E, C> getter;
 
         public FilterCode(@NotNull GridDecorators<E> container, @NotNull CodeType<C> type, @NotNull Function<E, C> getter, String label) {
-            component = new CodeField<C>(type, label);
+            component = new CodeField<>(type, label);
             component.setEmptySelectionAllowed(true);
             component.addValueChangeListener(e -> container.updateFilters());
             this.getter = getter;

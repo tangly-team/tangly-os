@@ -12,6 +12,7 @@
 
 package net.tangly.ui.components;
 
+import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -26,6 +27,7 @@ import java.util.Objects;
  *
  * @see BankConnection
  */
+@Tag("tangly-field-bank-connection")
 public class BankConnectionField extends CustomField<BankConnection> {
     private final TextField iban;
     private final TextField institute;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Marcel Baumann
+ * Copyright 2021-2021 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -13,9 +13,10 @@
 package net.tangly.ui.markdown;
 
 import com.vaadin.flow.component.html.Anchor;
+import org.jetbrains.annotations.NotNull;
 
 public class Link extends Anchor {
-    public Link(String text, String href) {
+    public Link(@NotNull String text, @NotNull String href) {
         super(href, text);
         setTitle(text);
     }

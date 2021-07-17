@@ -20,7 +20,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import net.tangly.core.Entity;
-import net.tangly.ui.markdown.MarkdownArea;
+import net.tangly.ui.markdown.MarkdownField;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -33,14 +33,14 @@ public class EntityField<T extends Entity> extends CustomField<T> {
     private final TextField oid;
     private final DatePicker fromDate;
     private final DatePicker toDate;
-    private final MarkdownArea text;
+    private final MarkdownField text;
 
     public EntityField() {
         super(null);
         oid = new TextField("Oid", "oid");
         fromDate = new DatePicker("From Date");
         toDate = new DatePicker("To Date");
-        text = new MarkdownArea("Text");
+        text = new MarkdownField("Text");
         text.setWidthFull();
         add(new HorizontalLayout(oid, fromDate, toDate));
         add(text);

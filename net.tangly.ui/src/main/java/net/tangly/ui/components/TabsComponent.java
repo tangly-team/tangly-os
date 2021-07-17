@@ -12,17 +12,19 @@
 
 package net.tangly.ui.components;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Optional;
-
+@Tag("tangly-layout-tabs")
 public class TabsComponent extends VerticalLayout {
     private final Map<Tab, Component> tabsToPages;
     private Tabs tabs;
