@@ -78,4 +78,35 @@ That's perfectly fine.
 
 === New Features
 
+The official list of new features is
+
+https://openjdk.java.net/jeps/306[JEP 306] - Restore Always-Strict Floating-Point Semantics::
+Very useful if you are a mathematical library developer
+https://openjdk.java.net/jeps/306[JEP 356] - Enhanced Pseudo-Random Number Generators::
+Simpler usage of random generators in the API
+https://openjdk.java.net/jeps/306[JEP 382] - New macOS Rendering Pipeline::
+Support of Metal graphics API on MacOS
+https://openjdk.java.net/jeps/306[JEP 391] - macOS/AArch64 Port::
+Support of Apple proprietary processors
+https://openjdk.java.net/jeps/306[JEP 398] - Deprecate the Applet API for Removal::
+Applets are dead for years, now the associated API is deprecated and will be removed in the future
+https://openjdk.java.net/jeps/306[JEP 403] - Strongly Encapsulate JDK Internals::
+Stop using unsafe operations in your libraries
+https://openjdk.java.net/jeps/306[JEP 406] - Pattern Matching for switch (Preview)::
+Pattern matching is the new kid on the block. We have now nice features for the switch expression
+https://openjdk.java.net/jeps/306[JEP 407] - Remove RMI Activation::
+https://openjdk.java.net/jeps/306[JEP 409] - Sealed Classes::
+https://openjdk.java.net/jeps/306[JEP 410] - Remove the Experimental AOT and JIT Compiler::
+https://openjdk.java.net/jeps/306[JEP 411] - Deprecate the Security Manager for Removal::
+https://openjdk.java.net/jeps/306[JEP 412] - Foreign Function & Memory API (Incubator)::
+https://openjdk.java.net/jeps/306[JEP 414] - Vector API (Second Incubator)::
+https://openjdk.java.net/jeps/306[JEP 415] - Context-Specific Deserialization Filters::
+
+
+The new features you can use on a daily basis are the following.
+
+==== Algebraic Types
+
+==== Pattern Matching for Switch
+A preview of pattern matching for switch extends the language of patterns in Java to allow switch expressions and statements to be tested against a number of patterns, each with a specific action. This enables complex data-oriented queries to be expressed concisely and safely. Among the goals of this feature include expanding the expressiveness and application of switch expressions and statements by enabling patterns to appear in case labels, relaxing the historical null-hostility of switch when desired, and introducing two kinds of patterns: guarded patterns, which allow pattern matching logic to be refined with arbitrary Boolean expressions, and parenthesized patterns, which resolve some parsing ambiguities. In JDK 16, the instanceof operator was extended to take a type pattern and perform pattern matching. The modest extension proposed allows the familiar instanceof-and-cast idiom to be simplified.
 

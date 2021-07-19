@@ -18,7 +18,7 @@ weight: 50
 .Agile Books
 [%collapsible]
 ====
-* https://www.amazon.com/dp/0134542843[Unlocking Agility: AnInsider's Guide to Agile Enterprise Transformatio].
+* https://www.amazon.com/dp/0134542843[Unlocking Agility: An Insider's Guide to Agile Enterprise Transformation].
 Jorgen Hesselberg. 2019
 * https://www.amazon.com/dp/0321437381[Implementing Lean Software Development: From Concept to Cash].
 Mary Poppendieck. 2007
@@ -49,6 +49,10 @@ Kenneth Rubin. 2013
 Mike Cohn. 2006
 * https://www.amazon.com/dp/038534645X[The Art of Doing Twice the Work in Half the Time].
 Jeff Sutherland. 2014
+* https://www.amazon.com/dp/B08BW6HP7G[The professional Scrum team: Growing and Empowering Cross-Functionality and Resiliency in a Complex World].
+Peter Götz, Uwe Schirmer, Kurt Bittner.
+Addison-Wesley. 2021
+
 ====
 
 === Lean & Kanban
@@ -96,6 +100,9 @@ Kurt Bittner. 2018
 ====
 * https://www.amazon.com/dp/013465711X[The Great Scrum Master].
 Zuzana Sochová. 2017
+* https://www.amazon.com/dp/B08XWQ7DG9[Scrum A Pocket Guide 3ˆndˆ Edition].
+Gunther Verheyen.
+Van Haren Publishing. 2021
 * https://www.amazon.com/dp/0321637704[Coaching Agile Teams: A companion for Scrum Masters, Agile Coaches, and Project Managers in Transition].
 Lyssa Adkins.2010
 * https://www.amazon.com/dp/0977616649[Agile Retrospectives: Making Good Teams Great].

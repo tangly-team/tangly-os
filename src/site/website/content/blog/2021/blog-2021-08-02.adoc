@@ -116,7 +116,9 @@ This helps speed up communication across developers, operations, and even other 
 
 === DevOps Tools
 
-A DevOps toolchain is a set or combination of tools that aid in the delivery, development, and management of software applications throughout the systems development life cycle, as coordinated by an organisation that uses DevOps practices.
+A DevOps toolchain is a set or combination of tools that aid in the delivery, development, and management of software applications throughout the system development life cycle, as coordinated by an organisation that uses DevOps practices.
+
+image:2021-08-02-ci-cd-pipeline.png[role=center]
 
 Generally, DevOps tools fit into one or more activities, which supports specific DevOps initiatives: Plan, Create, Verify, Package, Release, Configure, Monitor, and Version Control.
 
@@ -125,27 +127,28 @@ Generally, DevOps tools fit into one or more activities, which supports specific
 Java DevOps is simply applying DevOps practices and philosophies to Java app development.
 That means that compartmentalized teams are no longer needed when creating Java applications.
 
-Some of the principles you should know include:
+Some principles you should know include:
 
-Continuous integration::
+https://en.wikipedia.org/wiki/Continuous_integration[Continuous integration]::
 This practice requires developers to periodically merge the code that they have written into a central repository.
 After the merge, tests and automated builds are executed.
-This allows a team to find issues and quickly quash out bugs, improve the application’s quality and then cut the time needed to validate your apps. +
+This allows a team to find issues and quickly quash out bugs, improve the application’s quality and then cut the time needed to validate your apps.
+Often the step of https://en.wikipedia.org/wiki/Continuous_delivery[Continuous Delivery] is added to the pipeline. +
 _Use a platform such as gitLab, gitHub, BitBucket, or Azure DevOps.
 Use Gradle as build tool._
-Continuous delivery::
+https://en.wikipedia.org/wiki/Continuous_deployment[Continuous delivery]::
 This practice requires your team to release into production all code changes after it is written and then automatically built, and tested.
 If continuous integration puts your code changes onto a testing environment, continuous delivery puts it into a production environment.
 What does this mean?
 You will always have a production-ready Java application! +
 _Use Gradle to create your application.
 Use Docker, Ansible to deploy._
-Microservices::
+https://en.wikipedia.org/wiki/Microservices[Microservices]::
 DevOps make use of microservices.
 Instead of having one big monolithic Java application, your application is made up of smaller and independent applications. +
 _Use domain driven design DDD as architecture method.
-Prefer stqndalone appplications embedding your application server._
-Infrastructure as a code::
+Prefer standalone applications embedding your application server._
+https://en.wikipedia.org/wiki/Infrastructure_as_code[Infrastructure as a code]::
 This practice means that infrastructure is allocated and then managed by using code and development techniques.
 Cloud services can help your development and operations teams interact with infrastructure at a scale they are comfortable with.
 With infrastructure as a code, servers and infrastructure are deployed fast, automatically patched and can easily be duplicated. +

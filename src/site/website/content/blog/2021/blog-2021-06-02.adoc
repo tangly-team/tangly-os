@@ -114,7 +114,7 @@ Companies still need to invest in high-quality headsets, cameras and 4K displays
 
 Do not be penny wise and pound foolish.
 Invest in professional hardware and buy the adequate number of licenses.
-I always wonder why companies implement communication infrastructure with for example the free version of Slack or Github.
+I always wonder why companies implement communication infrastructure with for example the free version of Slack or GitHub.
 
 === Insights
 

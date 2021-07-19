@@ -1,5 +1,5 @@
 ---
-title: "UI"
+title: "Vaadin UI"
 linkTitle: "UI"
 lastmod: 2020-08-31
 weight: 50

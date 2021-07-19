@@ -190,3 +190,20 @@ The list of JDK can be found with
 ----
 /usr/libexec/java_home -V
 ----
+
+==== Create Docker Distribution
+
+Generate the ERP application as a production release.
+
+[source, shell]
+----
+gradle install -DproductionMode=true <1>
+gradle install -Pproduction
+unzip ./build/distributions/net.tangly.erp.ui-<version>.zip <2>
+docker build -t erp-docker . <3>
+docker run -ti -p 8080:8080 erp-docker <4>
+----
+<1> Generates a production distribution stored under ./build/distributions
+<2> Unzip the packed distribution because the docker base image does not contain unzip utility
+<3> Build the docker image named _erp-docker_
+<4> Run the docker image _erp-docker_ and map the image port to 8080

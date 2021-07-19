@@ -128,7 +128,7 @@ The _MicroStream_ 4.x releases crash when using record in JDK 15 and JDK 16. It 
 You are forced to use an obsolete JDK no more supported.
 For example IntelliJ IDEA stops to provide support for obsolete JDKs as soon as the new official JDK release is available.
 It hinders you to use the associated preview features
-footnote:[I have reported the bug in the microstream forum and informed them that their clain they support these JDK is plain wrong. The project sadly does not currently have a bug reporting system. I hope the version promised for April 2021 will finally solved these show stoppers.].
+footnote:[I have reported the bug in the microstream forum and informed them that their clain they support these JDK is plain wrong. The project sadly does not currently have a bug reporting system. I hope the version promised for April 2021 will finally solve these showstoppers.].
 
 I have to verify if the library can cope with sealed declarations.
 

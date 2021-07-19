@@ -1,7 +1,7 @@
 ---
 title: "Shared - Shared Kernel"
 linkTitle: "UI"
-weight: 30
+weight: 40
 ---
 
 The readme, user manual, documentation of the component and architecture consideration of the components.

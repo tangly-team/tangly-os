@@ -1,7 +1,7 @@
 ---
 title: "Development"
 linkTitle: "Dev"
-weight: 30
+weight: 25
 ---
 
 The readme, user manual, documentation of the component and architecture consideration of the components.

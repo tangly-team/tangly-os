@@ -101,13 +101,13 @@ The actual industrial standard is https://git-scm.com/[git], a distributed versi
 
 More sophisticated source code management systems based on git with additional agile and DevOps functionalities are:
 
-* https://github.com/[Github] is a closed source solution and most well-known solution.
+* https://github.com/[GitHub] is a closed source solution and most well-known solution.
 Microsoft acquired them in 2020.
-Some Swiss technical universities - ZHAW, University of Bern - use the academic github campus program.
-CI and CD pipelines are not part of the Github product and must be installed separately.
-The academic program means you receive github licenses.
+Some Swiss technical universities - ZHAW, University of Bern - use the academic GitHub campus program.
+CI and CD pipelines are not part of the GitHub product and must be installed separately.
+The academic program means you receive GitHub licenses.
 Your organization is responsible to run the software on premises.
-* https://about.gitlab.com/[Gitlab] is an open source solution and strong contender to github.
+* https://about.gitlab.com/[Gitlab] is an open source solution and strong contender to GitHub.
 CI and CD pipelines are part of the product.
 * https://bitbucket.org/dashboard/overview[Bitbucket] is a closed source solution of Atlassian.
 CI and CD pipelines are part of the product.
@@ -116,10 +116,10 @@ Atlassian also owns JIRA, Confluence and Trello.
 CI and CD pipelines access is under definition by Microsoft.
 They slowly open their product to additional development stacks such as Java, Python.
 * https://gitea.io/[Gitea] is a community managed lightweight code hosting solution written in Go.
-The project is hosed on Github.
+The project is hosed on GitHub.
 It is published under the MIT license.
 * https://gogs.io/[Gogs] is a painless self-hosted Git service.
-The project is hosed on Github.
+The project is hosed on GitHub.
 * https://gitolite.com/[Gitolite] allows you to set up git hosting on a central server.
 It has fine-grained access control and many more powerful features.
 

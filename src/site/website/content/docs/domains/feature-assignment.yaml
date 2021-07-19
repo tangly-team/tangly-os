@@ -1,0 +1,29 @@
+id: FEAT-001
+name: assignment feature
+text: |
+    Assignments defines tha activities of a collaborator working on an assignment for a specific project.
+    The collaborator works on the assignment and generates a set of efforts.
+    An effort has a description and a duration and is associated to an assignment.
+    The assignment defines the collaborator and the project he is working on.
+tags:
+    -   tag: domain
+        value: products
+comments:
+    -   author: marcelbaumann
+        date: 2021-08-01T00:00:00
+        text: |
+            Assignments are the abstraction defining the smallest reporting activity of a collaborator working on a project.
+stories:
+    -   id: assignment-001
+        name: Assignment report import
+        text: |
+            As a project collaborator I want to import all efforts I have worked on for an assignment and a period of time.
+            The time interval is implicitly defined by the date of the first and last effort.
+    -   id: assignment-002
+        name: Assignment bulk import
+        text: |
+            As an administrator I want to import all defined efforts from a TSV file into the system as part of the bounded domain load.
+    -   id: assignment-003
+        name: Assignment monthly report per collaborator and assignment
+        text: |
+            As a user I want to generate a monthly report of all efforts I worked for a selected assignment so that I can inform and bill the customer.

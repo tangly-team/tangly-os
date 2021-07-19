@@ -73,7 +73,7 @@ Gradle engine has been upgraded to use Groovy 3 in Groovy based DSL build script
 
 The huge drawback of the Gradle workaround is that you need two installed JDKs in your CI image.
 Standard images do not support this configuration.
-You have to create your own images if you are running gradle with a Java version and compiling your applicaiton with another one.
+You have to create your own images if you are running gradle with a Java version and compiling your application with another one.
 
 Records were announced more than a year ago.
 It is a wake-up call to maintainers of Java libraries such as ArchUnit, SonarLint or Jacoco.

@@ -60,7 +60,7 @@ _The Booch Ada component library supported internal iterators since 1985_.
 Record::
 Very compact notation to define a data class and transparent handling of properties.
 Records are immutable objects and finally use modern naming for getters
-footnote:algebraic-types[Records and Sealed Types are the Java implementation for https://en.wikipedia.org/wiki/Algebraic_data_type[Algebraic Data Types]].
+footnote:algebraic-types[Records and Sealed Types are the Java implementation for https://en.wikipedia.org/wiki/Algebraic_data_type[Algebraic Data Types].].
 Sealed Types::
 Interesting way to restrict inheritance to a set of selected classes.
 Very helpful for library designers.

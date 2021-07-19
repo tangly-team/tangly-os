@@ -117,4 +117,25 @@ Please look at the agile leadership program from https://www.scrumalliance.org/[
 
 Read the {ref-manifesto} text and the https://agilemanifesto.org/principles.html[Twelve Principles behind the Agile Manifesto].
 
-Beware of the link:../../blog/2021/reflections-on-agile-fluency-model/[Agile Fluency Model]. Be patient. Change takes time, a lot of time.
+Beware of the link:../../2021/reflections-on-agile-fluency-model/[Agile Fluency Model].
+Be patient.
+Change takes time, a lot of time.
+
+[bibliography]
+=== Literature
+
+- [[[great-scrummaster, 1]]] https://www.amazon.com/dp/013465711X[The Great Scrum Master].
+Zuzana Šochová.
+Addison-Wesley. 2017
+- [[[scrum-pocket-guide, 2]]] Scrum A Pocket Guide 3ˆndˆ Edition.
+Gunther Verheyen.
+Van Haren Publishing. 2021
+- [[[agile-bullshit, 3]]] link:../../2019/detecting-agile-bullshit[Detecting Agile Bullshit].
+Marcel Baumann. 2019
+- [[[bill-of-rights, 4]]] link:../../2020/calibrate-your-agile-approach-bill-of-rights[Calibrate Your Agile Approach: Bill of Rights].
+Marcel Baumann. 2020
+- [[[agile-fluency-model, 5]]] link:../../2021/reflections-on-agile-fluency-model/[Agile Fluency Model].
+Marcel Baumann. 2020
+- [[[pragmatic-craftsmanship], 6]] link:../../2018/pragmatic-craftsmanship-professional-software-developer[Pragmatic Craftsmanship - Professional Software Developer].
+Marcel Baumann. 2018
+

@@ -2,7 +2,7 @@
 title: "Agile Architecture Principles"
 linkTitle: "Agile Architecture Principles"
 date: 2019-05-06
-tags: ["agile", "design", "series-agile-design"]
+tags: ["agile", "design", "architecture", "series-agile-design"]
 ---
 
 == Agile Architecture Principles

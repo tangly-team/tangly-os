@@ -57,7 +57,7 @@ instead, and accept that this will be less effective.
 The {ref-scrumguide} defines roles and events enabling a team to achieve the goals of the first zone.
 
 [.text-center]
-_The organization focuses on agile values and fosters the nuturing of agile teams._
+_The organization focuses on agile values and fosters the nurturing of agile teams._
 
 ==== Shift Team Skills: _Delivering_ teams deliver on the market cadence (24 months)
 
@@ -101,7 +101,7 @@ They actively work to make that strategy more successful.
 
 [.text-center]
 _The organization is a key player and has no real concurrency.
-Employees, customers and stakeholders satistaction is high._
+Employees, customers and stakeholders satisfaction is high._
 
 === Choose Your Zone
 

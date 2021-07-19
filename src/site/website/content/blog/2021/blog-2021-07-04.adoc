@@ -99,7 +99,7 @@ The _Product Owner_ learning objectives for the first level are:
 .. describe at least one approach to Product Backlog Refinement.
 .. describe at least three criteria for ordering the Product Backlog.
 
-You can self-study the Scrum Product Owner objectives with the official product owner book <<product-owner>>.
+You can self-study the Scrum Product Owner objectives <<product-owner-learning-objectives>>, <<product-owner-advanced-learning-objectives>> with the official product owner book <<product-owner>>.
 The book is well-written and covers all required topics.
 
 A reading list can be found under
@@ -144,12 +144,21 @@ See for example https://uxschweiz.ch/weiterbildung/mashcid/[Master Human Compute
 [bibliography]
 === Literature
 
-- [[[agile-requirements, 1]]] link:../../2021/agile-requirements-engineering/[Agile Requirements Engineering].
-Marcel Baumann. 2020
-- [[[agile-software-architecture, 2]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream].
+- [[[product-owner-learning-objectives, 1]]]
+https://www.scrumalliance\.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Learning%20Objectives/E_CSPO_LO_5-20-21.pdf[Scrum Alliance Certified Scrum Product Owner Learning Objectives].
+Scrum Alliance. 2021
+- [[[product-owner-advanced-learning-objectives, 2]]]
+https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Certifications/CSPO/CSPO_LearningObjectives_Advanced.pdf[Scrum Alliance Advanced Certified Scrum Product Owner Learning Objectives].
+Scrum Alliance. 2017
+- [[[scrum-master-formation, 3]]]
+link:../../2021/scrum-master-formation/[Scrum Master Formation].
 Marcel Baumann. 2021
-- [[[product-owner, 3]]]
+- [[[agile-requirements, 4]]] link:../../2021/agile-requirements-engineering/[Agile Requirements Engineering].
+Marcel Baumann. 2020
+- [[[agile-software-architecture, 5]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream].
+Marcel Baumann. 2021
+- [[[product-owner, 6]]]
 https://www.amazon.com//dp/0134686470[The Professional Product Owner: Leveraging Scrum as Competitive Advantage].
 Ralph Jocham & Don McGreal. 2018
-- [[[detecting-agile-bullshit, 4]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
+- [[[detecting-agile-bullshit, 7]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
 Marcel Baumann. 2019

@@ -1,0 +1,174 @@
+---
+title: "Scrum Master Formation"
+linkTitle: "Scrum Master Formation"
+date: 2021-08-10
+tags: ["agile"]
+---
+
+== Scrum Master Formation
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2021-08-03-head.png[width=420,height=360,role=left]
+
+=== Scrum Master Role
+
+Here the official definition of the product owner role taken from the {ref-scrumguide}.
+
+The *Scrum Master* is accountable for establishing *Scrum* as defined in the Scrum Guide.
+They do this by helping everyone understand Scrum theory and practice, both within the Scrum Team and the organization.
+
+The Scrum Master is accountable for the Scrum Team’s effectiveness.
+They do this by enabling the Scrum Team to improve its practices, within the Scrum framework.
+
+Scrum Masters are true leaders who serve the Scrum Team and the larger organization.
+
+The Scrum Master serves the Scrum Team in several ways, including:
+
+* Coaching the team members in *self-management* and *cross-functionality*;
+* Helping the Scrum Team focus on creating high-value *Increments* that meet the *Definition of Done*;
+* Causing the removal of impediments to the Scrum Team’s progress; and,
+* Ensuring that all Scrum events take place and are *positive, productive, and kept within the timebox*.
+
+The Scrum Master serves the Product Owner in several ways, including:
+
+* Helping find techniques for effective Product Goal definition and Product Backlog management;
+* Helping the Scrum Team understand the need for clear and concise Product Backlog items;
+* Helping establish empirical product planning for a complex environment; and,
+* Facilitating stakeholder collaboration as requested or needed.
+
+The Scrum Master serves the organization in several ways, including:
+
+* Leading, training, and coaching the organization in its Scrum adoption;
+* Planning and advising Scrum implementations within the organization;
+* Helping employees and stakeholders understand and enact an empirical approach for complex work; and,
+* Removing barriers between stakeholders and Scrum Teams.
+
+=== Certifications
+
+The two big Scrum organizations https://www.scrumalliance.org/[Scrum Alliance] and https://www.scrum.org[Scrum.org]
+provide a certification path for Scrum masters.
+The certification path has three levels:
+
+Certified Scrum Master::
+Introduction course for those who are closest to the _organization_ of the project. +
+_It is usually a two days training.
+The https://www.scrum.org[Scrum.org] allows taking the certification examination without attending a course._
+Advanced Certified Scrum Master::
+Advanced course for Scrum Masters who already have one year of experience on a Scrum team. +
+_It is at least two days training.
+You should read the recommended books to have a greater probability to pass the examination on the first try._
+Certified Scrum Professional Scrum Master::
+Pinnacle course for experts wishing to master the Scrum Master track. +
+_The third level requires more training, experience, and reading books.
+You often must participate to workshops before being allowed to graduate.
+Each certification organization has her own rules and conditions._
+
+Beware if you select the https://www.scrumalliance.org/[Scrum Alliance], you must renew your certification every two years.
+The conditions are similar to the renewal of a PMI certification.
+You must provide proof of training and pay a fee.
+The https://www.scrum.org[Scrum.org] certifications never expire.
+
+The _Scrum Master_ learning objectives for the first level are:
+
+. _Lean, Agile, and Scrum_
+.. list at least three rights and five responsibilities of the Product Owner, Development Team and Scrum Master.
+.. discuss at least two reasons why the Product Owner is a single person and not a group or a committee.
+.. discuss how and why the Product Owner maintains authority over the product while working collaboratively with the Development Team and stakeholders.
+.. list at least five characteristics of the Development Team.
+.. give one example of how a Scrum Team will inspect and adapt and increase transparency at each of the Scrum events.
+.. describe at least three responsibilities for the Development Team, Product Owner, and Scrum Master during Sprint Planning, Daily Scrum, Sprint Review, and Retrospective.
+.. describe why the Sprint Goal does not change during a Sprint.
+.. define the outcome of every Sprint.
+.. discuss at least three reasons why the increment must be brought to the current definition of _Done_ regardless of whether the Product Owner chooses to release the increment.
+.. discuss the focus of the activities of the Product Owner and Development Team during the two topics of Sprint Planning: the ‘What’ and the ‘How.’
+.. practice writing a Sprint Goal.
+.. discuss at least three ways the Daily Scrum differs from a status meeting and why the various constraints exist to support the Development Team.
+.. describe at least three activities that occur during the Sprint Review other than; a demonstration of the increment.
+.. identify at least three potential outcomes for a Sprint Review.
+.. describe at least two approaches to conduct a Sprint Retrospective.
+.. identify at least three essential characteristics of the Product Backlog.
+.. list at least four attributes of a Product Backlog item.
+.. identify at least three essential characteristics of the Sprint Backlog.
+.. demonstrate how the Sprint Backlog can be changed without endangering the Sprint Goal.
+.. explain the importance of a strong definition of “Done” and describe at least two risks associated with a weaker definition of _Done_.
+.. outline at least one way to create a definition of “Done.”
+.. identify at least two reasons why multiple teams working on the same Product Backlog have a shared and consistent definition of _Done_.
+. _Scrum Master Core Competencies_
+.. describe at least three situations in which the Scrum Master could serve the needs of the Scrum Team or organization through facilitation.
+.. demonstrate at least three techniques for facilitating group decision making.
+. Coaching
+.. restate how facilitating, teaching, mentoring, and coaching are different.
+.. apply at least one technique that could help resolve a challenge faced by a Scrum Team.
+. _Scrum Master as Servant-Leader_
+.. define servant-leadership.
+.. describe three scenarios where the Scrum Master acts as the servant-leader for the Development Team.
+.. identify possible violations of Scrum by a Product Owner or stakeholder who is applying excessive time pressure and illustrate how to address them.
+.. define technical debt and explain the impact of accumulating technical debt.
+.. list at least three development practices that will help Scrum Teams deliver a high-quality
+. _Product Increment and reduce technical debt each Sprint_
+.. explain at least three ways the Scrum Master could support the Product Owner.
+.. list at least two benefits that arise if a Product Owner participates in the Sprint Retrospective.
+. _Service to the Organization_
+.. discuss at least two ways that the Scrum Master assists the Scrum Team with impediments.
+.. describe at least three organizational impediments that can affect Scrum Teams.
+.. describe at least one example of an organizational design change caused by adopting Scrum.
+.. discuss why Scrum does not have a a project manager and what happens to traditional project management activities
+
+You can self-study the Scrum Master objectives <<scrum-master-learning-objectives>>, <<scrum-master-advanced-learning-objectives>> with the official scrum team
+book <<professional-scrum-team>>.
+The book is well-written and covers all required topics.
+
+A reading list can be found under
+https://www.scrum.org/resources/suggested-reading-professional-scrum-master[Suggested Reading Professional Scrum Master].
+
+I published a list of seminal works for interested Scrum masters under link:../../../ideas/learnings/books/[Books].
+
+=== Project Leadership Trainings
+
+image::2021-08-03-pmi-talent-triangle.png[width=420,height=360,role=left]
+
+An interesting development is the addition of tailored project management trainings emphasizing agile approaches.
+The biggest organization https://www.pmi.org[PMI] has a whole agile based on https://www.pmi.org/certifications/agile-certifications[Disciplined Agile
+Design] _DAD_.
+
+I expect the emphasis on agile approaches to markantly increase in the next years.
+
+=== University Formal Trainings
+
+Technical universities in Switzerland provide formal training in project leadership, project management and related fields.
+The formation provides a certificate of advanced study CAS in the field.
+Current available certificates of advanced study offering are for example:
+
+* FHNW https://www.fhnw.ch/de/weiterbildung/wirtschaft/cas-agile-leadership[CAS Agile Leadership]
+* FHNW https://www.fhnw.ch/de/weiterbildung/technik/cas-agile-organisation[CAS Agile Organization]
+* FFHS https://www.ffhs.ch/en/degree-programmes/continuing-education/cas-agile-organisation[CAS Agile Organization]
+* ZHAW https://www.zhaw.ch/de/psychologie/weiterbildung/detail/kurs/cas-agile-fuehrung-flex/[CAS Agile Leadership]
+* ZHAW https://www.zhaw.ch/de/sml/weiterbildung/detail/kurs/cas-agiles-it-projektmanagement/[CAS Agile Project Management]
+* IKF https://www.ikf.ch/de/kurse/cas-agiles-leadership-der-digitalen-transformation[CAS Agile Leadership of Digital Transformation]
+
+[bibliography]
+=== Literature
+
+- [[[scrum-master-learning-objectives, 1]]]
+https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Learning%20Objectives/E_CSM_LO_5-20-21.pdf[Scrum Alliance
+Certified Scrum Master Learning Objectives].
+Scrum Alliance. 2021
+- [[[scrum-master-advanced-learning-objectives, 2]]]
+https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Certifications/CSM/csm_learningobjectives_Advanced.pdf[Scrum
+ Alliance Advanced Certified Scrum Master Learning Objectives].
+Scrum Alliance. 2017
+- [[[product-owner-formation, 3]]]
+link:../../2021/product-owner-formation/[Product Owner Formation].
+Marcel Baumann. 2021
+- [[[agile-software-architecture, 4]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream].
+Marcel Baumann. 2021
+- [[[professional-scrum-team, 5]]]
+https://www.amazon.com/dp/B08BW6HP7G[The professional Scrum team: Growing and Empowering Cross-Functionality and Resiliency
+ in a Complex World].
+Peter Götz, Uwe Schirmer, Kurt Bittner.
+Addison-Wesley. 2021
+

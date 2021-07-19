@@ -1,7 +1,7 @@
 ---
 title: "Why Enterprise Architecture?"
 linkTitle: "Why Enterprise Architecture?"
-date: 2021-07-01
+date: 2021-07-05
 tags: ["agile", "architecture"]
 ---
 
@@ -20,7 +20,7 @@ The last years have shown a promising evolution of plan-based, centralist enterp
 
 These new approaches are way more compatible with modern and agile software product development framework such as {ref-scrum}, {ref-xp}, and {ref-less}
 
-Traditional processes use dedicated persons or departments to define architecture princpiples in a top-down approach.
+Traditional processes use dedicated persons or departments to define architecture principles in a top-down approach.
 Thick standards such as https://en.wikipedia.org/wiki/Enterprise_Architecture_Body_of_Knowledge[Enterprise Architecture Body of Knowledge] codifies wisdom.
 
 [cite,EABOK]
@@ -31,7 +31,7 @@ The EABOK subdivides EA into knowledge areas and topics within each area, presen
 The EABOK is a guide to EA, not the body of knowledge itself.
 ____
 
-The enterprise architects community has realized over the years that the centralistic approach is too slow and cumbersome for the digital age.
+The enterprise architects community has realized over the years that the centralist approach is too slow and cumbersome for the digital age.
 The https://en.wikipedia.org/wiki/The_Open_Group[Open Group] promotes the official enterprise architecture method
 https://en.wikipedia.org/wiki/The_Open_Group_Architecture_Framework[TOGAF].
 
@@ -155,7 +155,7 @@ The techniques used in these frameworks are powerful ones and software designers
 
 I strongly prefer the architecture work techniques described in {ref-less} and do not use the bloated TOGAF architecture approach.
 
-I recommend using all these proven architecture techniquest and tools and apply them on your software product development using agile approaches like
+I recommend using all these proven architecture techniques and tools and apply them on your software product development using agile approaches like
 {ref-scrum} and {ref-less}.
 Study the rules of {ref-lean} to optimize the value of your product.
 

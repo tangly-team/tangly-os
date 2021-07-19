@@ -2,7 +2,7 @@
 title: "Architectural Decision Records ADR"
 linkTitle: "Architectural Decision Records"
 date: 2018-07-05
-tags: ["design"]
+tags: ["design", "architecture"]
 ---
 
 == Architectural Decision Records ADR

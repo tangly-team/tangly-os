@@ -1,7 +1,7 @@
 ---
 title: "Technical Team Lead"
 linkTitle: "Technical Team Lead"
-date: 2021-07-02
+date: 2021-07-10
 tags: ["agile", "java", "organization"]
 ---
 
@@ -46,7 +46,7 @@ A top-notch Java technical lead should have good analytical skills, the ability 
 * Identifying risk and conducting mitigation action planning.
 * Conducting configuration of your own work.
 * Reviewing the work of other developers and providing feedback.
-* Using coding standards and best practices to ensure quality.
+* Using coding standards and best practices ensuring quality.
 
 ==== Java Technical Lead Requirements
 

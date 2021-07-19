@@ -1,7 +1,7 @@
 ---
-title: "Gleam"
+title: "Gleam - Library to import and export domain objects to TSV and JSON data files"
 linkTitle: "Gleam"
-weight: 45
+weight: 35
 ---
 
 The readme, user manual, documentation of the component and architecture consideration of the components.

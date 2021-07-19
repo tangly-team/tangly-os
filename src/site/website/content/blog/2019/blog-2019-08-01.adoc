@@ -2,7 +2,7 @@
 title: "Agile Architecture within Scrum"
 linkTitle: "Agile Architecture"
 date: 2019-08-12
-tags: ["agile", "series-agile-design"]
+tags: ["agile", "architecture", "series-agile-design"]
 ---
 
 == Agile Architecture within Scrum

@@ -54,8 +54,9 @@ Efforts booked during the time interval are relevant for the analytics.
 
 === Invoices
 
-The invoices send to the customers or the effectively paid invoices during the selected tiem interval shall be considered and displayed.
-These invoices are relevant for the computaton of the cashflow and the financial success of the associated projects and contracts.
+The invoices send to the customers or the effectively paid invoices during the selected item interval shall be considered and displayed.
+These invoices are relevant for the computation of the https://en.wikipedia.org/wiki/Cash_flow[cash flow] and the financial success of the associated projects
+and contracts.
 
 === Implementation
 

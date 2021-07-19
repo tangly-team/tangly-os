@@ -2,7 +2,7 @@
 title: "Agile Software Architecture is Mainstream"
 linkTitle: "Agile Software Architecture"
 date: 2021-03-15
-tags: ["java","series-students"]
+tags: ["java", "architecture", "series-students"]
 ---
 
 == Agile Software Architecture is Mainstream
