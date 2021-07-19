@@ -1,3 +1,4 @@
+
 /*
  * Copyright 2006-2021 Marcel Baumann
  *
@@ -10,22 +11,17 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-enableFeaturePreview("VERSION_CATALOGS")
+plugins {
+    id 'java-library'
+}
 
-include 'net.tangly.bdd'
-include 'net.tangly.commons'
-include 'net.tangly.core'
-include 'net.tangly.dev'
-include 'net.tangly.erp-integration'
-include 'net.tangly.fsm'
-include 'net.tangly.gleam'
-include 'net.tangly.ui'
+project.ext.groupId = 'net.tangly.erp'
+project.ext.artifactId = 'collaborators'
+project.version = "0.2.6"
+project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
+project.ext.inceptionYear = '2019'
+project.description = "Collaborators bounded domain using Java 16 or higher (tangly llc)"
 
-include 'net.tangly.erp.agile'
-include 'net.tangly.erp.collaborators'
-include 'net.tangly.erp.crm'
-include 'net.tangly.erp.invoices'
-include 'net.tangly.erp.ledger'
-include 'net.tangly.erp.products'
-include 'net.tangly.erp.shared'
-include 'net.tangly.erp.ui'
+dependencies {
+    implementation project(':net.tangly.core')
+}
