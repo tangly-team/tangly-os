@@ -12,7 +12,7 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2016-12-01-head.jpg[width=420, height=360, role=left]
+image::2016-12-01-head.jpg[width=420,height=360,role=left]
 I often hear discussions asking who is performing the _traditional_ product leader tasks in Scrum.
 This is in general an excuse to state that Scrum alone cannot work and classical product leaders are still needed.
 
@@ -26,7 +26,8 @@ Below a list of tasks you do NOT need anymore to do in {ref-scrum}.
 * Step in and determine the solution,
 * Conduct weekly status update and face to face meetings with the team to surface issues and provide direction,
 * Provide motivation and push the team to work harder than they might want to use carrots and sticks,
-* Decide task assignments among the team members and follow up on tasks to verify completion. Force them to work during weekends,
+* Decide task assignments among the team members and follow up on tasks to verify completion.
+Force them to work during weekends,
 * Be responsible for the team doing the right thing at the right time in the right way,
 * Update Gantt charts for the iteration and release planning,
 * Finding out that requirements mean to explain team members what they should implement,
@@ -38,11 +39,11 @@ Below a list of tasks you do NOT need anymore to do in {ref-scrum}.
 
 Now you as Scrum master or agile product manager have to perform important tasks
 
-* Help to remove impediments to increase velocity of team
-* Coach team to implement Scrum and reflect on their activities.
-* {ref-pdca} _PDCA_ principle is built into Scrum with retrospectives and sprint reviews.
-* Coach product owner to deliver a groomed and refined backlog
-* Inform and support all product's stakeholders
+* Help to remove impediments to increase velocity of team,
+* Coach team to implement Scrum and reflect on their activities,
+* {ref-pdca} _Plan Do Check Act_ principle is built into Scrum with retrospectives and sprint reviews,
+* Coach product owner to deliver a groomed and refined backlog,
+* Inform and support all product's stakeholders,
 * If you reflect on these two lists it becomes obvious that the first list describes malfunctions and the second one describes mechanisms how to improve continuously - lean principles -.
 
 Jeff Sutherland gives some interesting insights about the Scrum master
@@ -56,7 +57,7 @@ Jeff Sutherland gives some interesting insights about the Scrum master
 I experimented with the Scrum master being part of the team, or Scrum master working for multiple teams.
 Experience has shown us that the full-time Scrum master is more effective.
 
-And the {ref-less} framework has a clear rule about product managers
+And the {ref-less} framework has a clear rule about product managers.
 
 [.text-center]
 https://less.works/less/adoption/getting-started.html[Keep product managers away from the teams!]
@@ -65,4 +66,6 @@ https://less.works/less/adoption/getting-started.html[Keep product managers away
 
 For all https://www.pmi.org/[Project Management Institute] +PMI_ fans, the institute has acquired _Disciplined Agile Delivery_ _DAD_ in 2019.
 The PMI-ACP is working on integrating agile approaches in the official PMI approach.
+
+An official definition of Scrum and the responsibilities of the team, product owner and Scrum master are documented in {ref-scrumguide}.
 

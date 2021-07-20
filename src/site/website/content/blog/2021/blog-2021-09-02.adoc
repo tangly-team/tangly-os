@@ -2,7 +2,7 @@
 title: "What I Learnt Teaching Agile Software Architecture"
 linkTitle: "Agile Software Architecture"
 date: 2021-09-01
-tags: ["agile", "series-students"]
+tags: ["agile", "architecture", "series-students"]
 ---
 
 == What I Learnt Teaching Agile Software Architecture
@@ -12,5 +12,66 @@ tags: ["agile", "series-students"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2021-09-01-head.png[width=420, height=360, role=left]
+image::2021-09-01-head.png[width=420,height=360,role=left]
+
+=== Craftsmanship as Foundation
+
+=== Design as Basement
+
+=== Domain Driven Design as Walls
+
+=== Validation as Heat Isolation
+
+=== Verification as Ecological Building
+
+=== Documentation as Roof
+
+=== Lecture Content
+
+The lecture description is
+
+* Teaches the basics of systematic agile design of an adequate software architecture for a selected application.
+* Methods of agile quality assurance and software craftsmanship are explored using predefined or self-selected projects of students.
+
+The lecture themes are:
+
+. Why Agile Architecture and Design?
+. Evolution of Software Architecture over the last Decades
+. What is Agile Architecture?
+. Agile Approaches with Scrum, XP, LeSS
+. Refactoring
+. Errors, Vulnerabilities, Smells in Source Code
+. Architecture of Components and Subsystems
+. Verify Functional Features
+. Validate Quality Attributes of Software Architecture
+. Architecture Documentation
+. Architecture Trends I
+. Architecture Trends II
+. Domain Driven Design Workshop
+. Team and Technical Excellence for Architects
+
+=== Lessons Learnt
+
+Principiles need to be taught at the beginning.
+The students know concepts such as KISS, SOLID, NIH.
+They seldom can apply them in their own code or semester projects.
+
+Design concepts must be refined.
+The students understand concepts such as patterns, micro-architecture, layered architecture.
+They seldom formulate the technical and financial tradeoffs associated with a specific concept application.
+
+Almost no student has experience with open source libraries.
+They use them on a daily basis and never looked at the source code, provided an improvement, or read the documentation.
+
+[bibliography]
+=== Literature
+
+- [[[agile-architecture, 1]]] Agile Architecture in the Digital Age.
+Open Group. 2018
+- [[[open-agile-architecture, 2]]]
+Open Agile Architecture.
+Open Group. 2019. (ISBN: 1-947754-62-1)
+- [[[enterprise-architecture, 3]]] link:../../2021/why-enterprise-architecture/[Why Enterprise Architecture?].
+Marcel Baumann. 20221
+
 
