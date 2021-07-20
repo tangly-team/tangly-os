@@ -24,7 +24,7 @@ asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:1.6.0"
 assertj = "org.assertj:assertj-core:3.18.1"
 commonmark = "org.commonmark:commonmark:0.17.2"
 eo-yaml = "com.amihaiemil.web:eo-yaml:5.2.1"
-flyway = "org.flywaydb:flyway-core:7.11.2"
+flyway = "org.flywaydb:flyway-core:7.11.3"
 guice = "com.google.inject:guice:5.0.1"
 hsqldb = "org.hsqldb:hsqldb:2.6.0"
 iban4j = "org.iban4j:iban4j:3.2.3-RELEASE"
@@ -45,7 +45,7 @@ junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jun
 junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-version" }
 mustang-core = { module = "org.mustangproject:library", version.ref = "mustang-version" }
 mustang-validator = { module = "org.mustangproject:validator", version.ref = "mustang-version" }
-google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.12.27"
+google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.12.28"
 qrbill = "net.codecrete.qrbill:qrbill-generator:2.5.3"
 microstream-storage = { module = "one.microstream:storage.embedded", version.ref = "microstream-version" }
 microstream-config = { module = "one.microstream:storage.embedded.configuration", version.ref = "microstream-version" }
