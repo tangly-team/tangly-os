@@ -28,7 +28,7 @@ The study can be downloaded as PDF from their website.
 See a previous blog for the results of link:../../2016/agile-trends-switzerland-2013[Agile Trends Switzerland 2013] and another blog for the results of
 link:../../2016/agile-trends-switzerland-2012[Agile Trends Switzerland 2012].
 
-Below some of the findings of the study.
+Below some findings of the study.
 
 === Major Hurdles When Introducing Agile Approaches
 
@@ -38,7 +38,7 @@ The number left is the value for 2016, the number in parenthesis is the value fo
 * 61% (21%): Management support
 * 42% (28%): The team
 * 30% (-%): Integration of the business
-* 28% (25%): Fokus on business value
+* 28% (25%): Focus on business value
 * 19% (-%): Discipline
 * 17% (28%): Know-how collaborators
 
@@ -68,7 +68,7 @@ You shall start introducing agile approaches
 . Senior management fully committed to the approach and approves the cultural change.
 Read the book "Reinventing Organizations" from Frederic Laloux to understand the implied changes.
 . Products are value driven and quality oriented
-. Teams are focused to master their work and tools - Craftsmanship, eXtreme Programming -
+. Teams are focused to master their work and tools - Craftsmanship, {ref-xp} -
 
 For huge development departments consider using the {ref-less} approach.
 

@@ -23,16 +23,17 @@ linkTitle: "Components"
 
 The documentation site for open source components published by [tangly llc](https://www.tangly.net).
 
-The current released components are written in _Java_ and released on _Maven Central_ are
+The current released components are written in _Modern Java_ and released on _Maven Central_ are
 
-* _[BUS](docs/crm/)_ Customer Relation Business Models,
 * _[BDD](./docs/bdd/)_ Behavior Driven Design Test Library based on JUnit 5 (code first approach),
 * _[COMMONS](./docs/commons)_ Internal Common Components to write company internal applications,
+* _[CORE](./docs/core)_ Internal Core Components to write company business applications,
 * _[FSM](./docs/fsm/)_ Hierarchical Finite State Machine,
 * _[GLEAM](./docs/gleam/)_ declarative model definition library (map Java objects hierarchy to TSV and JSON format),
-* _[ORM](./docs/orm/)_ simple object to relational models mapping library,
-* _[PORTS](./docs/ports/)_ Ports for the business models (hexagon architecture principles),
 * _[UI](./docs/ui/)_ Vaadin based user interface.
+
+The current components for the services ERP are written in _Modern Java_ and released on _Maven Central_ are
+* _[Domains](./docs/domains)_ Enterprise Resources Planning components for service companies
 </div>
 {{% /blocks/section %}}
 

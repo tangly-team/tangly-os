@@ -16,9 +16,9 @@ image::2017-01-01-head.png[width=420,height=360,role=left]
 The post describes a presentation I gave at a company internal technical day.
 It reflects situations we have seen in a lot of agile projects over the last years.
 
-I assume that the Scrum approach is well introduced in your company.
+I assume that the {ref-scrum} approach is well introduced in your company.
 
-You are already proficient with Scrum, eXtreme Programming, Clean Code, Code Refactoring, how to write stories and story maps, and techniques such as TDD, ATDD.
+You are already proficient with {ref-scrum}, {ref-xp}, Clean Code, Code Refactoring, how to write stories and story maps, and techniques such as TDD, ATDD.
 
 You are using Scrum well and can laugh about all these posts about Scrum-But(t).
 
@@ -52,7 +52,8 @@ All decisions in Scrum should be based on Return of Investment ROI.
 
 Each time you doubt how you should do an activity, ask your team what is the ROI of your proposition?
 
-Stakeholders want ROI. Each time you request budget from your stakeholders you should always remember.
+Stakeholders want ROI.
+Each time you request budget from your stakeholders you should always remember.
 
 _you want stakeholders' money, convince them_.
 Show your different solutions to the problem.

@@ -18,3 +18,9 @@ The tangly services ERP provides the functionalities to manage a services compan
 
 The first customer ever using the application is https://www.tangly.net[tangly llc] company.
 The company is an agile consulting and Java stack boutique organization.
+
+A service company has no inventory, production, or logistics departments.
+
+A service company has a strong focus on customers, products, projects and associcated efforts.
+Cash-flow is dictated by the timely invoicing of performed activities.
+The cash drain is mainly salaries and social costs.
