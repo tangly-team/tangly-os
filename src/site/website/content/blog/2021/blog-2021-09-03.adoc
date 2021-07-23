@@ -1,0 +1,196 @@
+---
+title: "Scrum Developer Formation"
+linkTitle: "Scrum Developer Formation"
+date: 2021-09-10
+tags: ["agile"]
+---
+
+== Scrum Developer Formation
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2021-09-03-head.png[width=420,height=360,role=left]
+
+=== Scrum Developer Role
+
+Here the official definition of the product owner role taken from the {ref-scrumguide}.
+
+*Developers* are the people in the Scrum Team that are committed to creating any aspect of a usable Increment each Sprint.
+
+The specific skills needed by the Developers are often broad and will vary with the domain of work.
+However, the Developers are always accountable for:
+
+* Creating a plan for the Sprint, the Sprint Backlog;
+* Instilling quality by adhering to a Definition of Done;
+* Adapting their plan each day toward the Sprint Goal; and,
+* Holding each other accountable as professionals.
+
+=== Certifications
+
+The two big Scrum organizations https://www.scrumalliance.org/[Scrum Alliance] and https://www.scrum.org[Scrum.org]
+provide a certification path for Scrum developers.
+The certification path has three levels:
+
+Certified Scrum Developer::
+Introduction course for those who are closest to the _realization_ of the project. +
+_It is usually a two days training.
+The https://www.scrum.org[Scrum.org] allows taking the certification examination without attending a course._
+Certified Advanced Scrum Developer::
+Advanced course for Scrum developers who already have one year of experience on a Scrum team. +
+_It is at least two days training.
+You should read the recommended books to have a greater probability to pass the examination on the first try._
+Certified Scrum Professional Scrum Developer::
+Pinnacle course for experts wishing to master the Scrum developer track. +
+_The third level requires more training, experience, and reading books.
+You often must participate to workshops before being allowed to graduate.
+Each certification organization has her own rules and conditions._
+
+Beware if you select the https://www.scrumalliance.org/[Scrum Alliance], you must renew your certification every two years.
+The conditions are similar to the renewal of a PMI certification.
+You must provide proof of training and pay a fee.
+The https://www.scrum.org[Scrum.org] certifications never expire.
+
+The _Scrum Developer_ learning objectives for the first level are:
+
+. Lean, Agile & Scrum
+.. practice utilizing a sprint backlog.
+.. describe the responsibility of the Scrum team for turning PBIs in the sprint backlog into increments of value.
+.. organize and demonstrate the daily Scrum.
+.. list at least three attributes of PBIs.
+.. give at least three examples of how a Scrum team will inspect and adapt PBIs during product backlog refinement.
+.. discuss at least five elements of a definition of done that ensure the increment provides information that enhances transparency and focus against which progress can be measured.
+. Collaboration & Team Dynamics
+.. explain at least three differences between a working group and a team.
+.. discuss at least three attributes of effective teams.
+.. demonstrate "working together as one team."
+.. describe at least three benefits of developers interacting directly with customers and users.
+.. restate at least three ways a Scrum team may collaborate with stakeholders, customers, and/or users during the sprint.
+. Architecture & Design
+.. outline at least three benefits of technical excellence.
+.. explain at least one design practice on an agile team.
+.. list at least three principles of architecture in an agile environment.
+. Refactoring
+.. define refactoring.
+.. describe at least three benefits of refactoring to an agile software development effort.
+. Test Driven Development (TDD)
+.. explain test-first as a design and development approach and list three benefits.
+.. list at least three differences between “traditional” and “agile” testing.
+.. explain the importance of refactoring in the TDD cycle.
+.. describe at least three qualities of a good agile testing approach.
+. Integrating Continuously
+.. define continuous integration and list at least three benefits.
+.. describe using three examples of how Scrum supports CI.
+.. describe at least one advantage of an automated build, test, measure pipeline.
+
+The _Scrum Developer_ learning objective example for the first level are:
+
+. _Lean, Agile, and Scrum_
+.. This should include creating a sprint goal, selecting product backlog items (PBIs) with a value orientation in mind and decomposing PBIs into smaller work items.
+.. This emphasizes the collaboration between the members of the Scrum team, especially product owner and developers, for understanding the items and turning them into a valuable stepping stone toward the product goal.
+.. Methods to organize the daily Scrum could be: original three questions, walk the wall, collaborative daily Scrum.
+.. Description, order, size, domain-specific attributes.
+.. This could include asking for clarification, adding acceptance criteria, sizing or estimating items, breaking them down into smaller items.
+.. For software, a definition of done could state that each increment fulfills the acceptance criteria, contains no blocking defects, is integrated into the system, is properly tracked in a version control system, and is documented according to the necessary documentation guidelines.
+There could be other elements, too.
+The point of this LO is to raise the awareness of done, especially “done for whom?”.
+. _ Collaboration & Team Dynamics_
+.. This could include stable membership, reaching a shared goal by working together, self-management.
+.. Example definition of team: small number of people with complementary skills, committed to a common purpose, performance goal and approach, for which they are mutually accountable.Example: T-shaped skill profile.
+.. Pair programming, pair designing, pair working in general.
+Creating something – code or non-technical – in a Scrum simulation.
+.. Shorter feedback loops, less work-in-progress, less mis-interpretation of needs, direct feedback of the working solution, actually trying the built product
+.. During sprint review while obtaining feedback regarding the latest increment, during sprint review while identifying what kind of changes to the product backlog are a helpful response to changing circumstances, during product backlog refinement, during a story mapping workshop, observing users using the product, interview users how the currently solve their problem, “friendly users” actively using the new product and giving feedback, invite the sprint review
+. Architecture and Design
+.. Foster understanding of the work, improve shared ownership and responsibility, improve estimability and reliability, reduce defects, avoid accumulation of technical debt
+.. This could include test first, quick design sessions, using spikes to understand a new technology, constant refactoring, metaphor, conversational modelling, CRC cards, pair programming.
+.. Reversibility, KISS; DRY; YAGNI; decide at the last responsible moment; responsive, resilient, elastic, message-driven (Reactive Manifesto), SOLID.
+. _Refactoring_
+.. Refactoring is the practice of improving a system without changing it’s observable behavior.
+.. Refactoring fosters automated testing, improves readability and maintainability; it can support improving system performance, counter technical debt, and improve extensibility.
+. _Test Driven Development (TDD)_
+.. Test first focuses on the behavior of the system.
+The system design emerges dynamically through the adjustment to additional tests.
+Benefits include simplicity, avoidance of bloating, defect reduction, built-in regression checks with automated tests.
+.. Differences include frequency, inclusion in the development process, being tied to specification versus being tied to code, amount of automation, responsibility, timing.
+.. Point out that it is important to have the simplest possible solution that passes the test in the first place to ensure the test is working, and refactor it to a sensible design that can be verified immediately, refer to the Broken Window metaphor, foster collective stewardships.
+.. Testers are Scrum team members, aka developers, include testing in the sizing discussion, collaborate on PBI refinement and acceptance criteria definition, pair up doing TDD to embed good tests from the beginning, include considerations of load, explorative, and other testing approaches, contribute to definition of done.
+. _Integrating Continuously_
+.. CI is the practice of reducing the feedback time between code creation and integration.
+It can be supported using technical means.
+CI changes habits and behaviors, creates awareness about shared responsibility, is the base for frequent deliveries, reduces defects, reduces risk from late discovery of integration issues.
+..
+... Example 1: The increment is necessarily integrated.
+Using CI is highly recommendable for getting to at least one increment per sprint or more.
+... Example 2: The daily Scrum can provide better transparency about the progress if there is a better measure for progress.
+CI helps to get this transparency about what is working and what isn’t.
+Without CI, the Scrum team might probably not know the actual status of the system for days.
+... Example 3: In the sprint review, only done PBIs are inspected.
+CI improves the probability of having done PBIs at the end of the sprint.
+.. Automation tools reduce manual repetition, single repository acts as document of record, configuration as code for repeatable error-free process and support continuous delivery
+
+You can self-study the Scrum developer objectives <<scrum-developer-learning-objectives>> and <<scrum-developer-advanced-learning-objectives>>.
+Examples for the objectives are provided in <<scrum-developer-learning-objectives-examples>> and <<scrum-developer-advanced-learning-objectives-examples>>.
+
+I published a list of seminal works for interested Scrum developers under link:../../../ideas/learnings/books/[Books].
+
+=== Agile Software Development Trainings
+
+An interesting development is the addition of tailored trainings emphasizing agile approaches.
+The biggest organization https://www.pmi.org[PMI] has a whole agile based on https://www.pmi.org/certifications/agile-certifications[Disciplined Agile
+Design] _DAD_.
+
+I expect the emphasis on agile approaches to significantly increase in the next years.
+
+=== University Formal Trainings
+
+Technical universities in Switzerland provide formal training in project leadership, project management and related fields.
+The formation provides a certificate of advanced study CAS in the field.
+Current available certificates of advanced study offering are for example:
+
+*
+
+[bibliography]
+=== Literature
+
+- [[[scrum-developer-learning-objectives, 1]]]
+https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Learning%20Objectives/E_CSD_LO_2021.pdf[Scrum Alliance
+Certified Scrum Developer Learning Objectives].
+Scrum Alliance. 2021
+- [[[scrum-developer-learning-objectives-examples, 2]]]
+https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Certifications/CSD/E_CSD_LO_examples_2021.pdf[Scrum
+ Alliance Certified Scrum Developer Learning Objectives Examples].
+Scrum Alliance. 2021
+- [[[scrum-developer-advanced-learning-objectives, 3]]]
+https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Learning%20Objectives/E_A_CSD_LO_2021.pdf[Scrum Alliance
+Certified Scrum Advanced Developer Learning Objectives].
+Scrum Alliance. 2021
+- [[[scrum-developer-advanced-learning-objectives-examples, 4]]]
+https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Certifications/CSD/E_A_CSD_LO_examples_2021.pdf[Scrum
+ Alliance Certified Scrum Advanced Developer Learning Objectives Examples].
+Scrum Alliance. 2017
+- [[[agile-software-architecture, 5]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream].
+Marcel Baumann. 2021
+- [[[professional-scrum-team, 6]]]
+https://www.amazon.com/dp/B08BW6HP7G[The professional Scrum team: Growing and Empowering Cross-Functionality and Resiliency in a Complex World].
+Peter Götz, Uwe Schirmer, Kurt Bittner.
+Addison-Wesley. 2021
+- [[[pragmatic-programmer, 6]]] https://www.amazon.com/dp/0135957052[The Pragmatic Programmer: Your Journey to Mastery (20th Anniversary Edition)].
+Andrew Hunt & David Thomas. 2019
+* [[[software-craftsman, 7]]] https://www.amazon.com/dp/0134052501[The Software Craftsman: Professionalism, Pragmatism, Pride].
+Sandro Mancuso. 2015
+* [[[extreme-programming, 8]]] https://www.amazon.com/dp/0321278658[Extreme Programming Explained: Embrace Change].
+Ken Beck. 2005
+- [[[scrum-master-formation, 9]]]
+link:../../2021/scrum-master-formation.
+Marcel Baumann. 2021
+- [[[product-owner-formation, 10]]]
+link:../../2021/product-owner-formation.
+Marcel Baumann. 2021
+- [[[scrum-developer-formation, 11]]]
+link:../../2021/scrum-developer-formation.
+Marcel Baumann. 2021
+
+

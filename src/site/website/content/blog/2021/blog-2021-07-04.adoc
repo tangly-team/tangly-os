@@ -51,7 +51,7 @@ Certified Scrum Product Owner::
 Introduction course for those who are closest to the _business side_ of the project. +
 _It is usually a two days training.
 The https://www.scrum.org[Scrum.org] allows taking the certification examination without attending a course._
-Advanced Certified Scrum Product Owner::
+Certified Advanced Scrum Product Owner::
 Advanced course for Product Owners who already have one year of experience on a Scrum team. +
 _It is at least two days training.
 You should read the recommended books to have a greater probability to pass the examination on the first try._
@@ -150,15 +150,22 @@ Scrum Alliance. 2021
 - [[[product-owner-advanced-learning-objectives, 2]]]
 https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Certifications/CSPO/CSPO_LearningObjectives_Advanced.pdf[Scrum Alliance Advanced Certified Scrum Product Owner Learning Objectives].
 Scrum Alliance. 2017
-- [[[scrum-master-formation, 3]]]
-link:../../2021/scrum-master-formation/[Scrum Master Formation].
-Marcel Baumann. 2021
-- [[[agile-requirements, 4]]] link:../../2021/agile-requirements-engineering/[Agile Requirements Engineering].
+- [[[agile-requirements, ]3]] link:../../2021/agile-requirements-engineering/[Agile Requirements Engineering].
 Marcel Baumann. 2020
-- [[[agile-software-architecture, 5]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream].
+- [[[agile-software-architecture, 4]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream].
 Marcel Baumann. 2021
-- [[[product-owner, 6]]]
+- [[[product-owner, 5]]]
 https://www.amazon.com//dp/0134686470[The Professional Product Owner: Leveraging Scrum as Competitive Advantage].
 Ralph Jocham & Don McGreal. 2018
-- [[[detecting-agile-bullshit, 7]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
+- [[[detecting-agile-bullshit, 6]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
 Marcel Baumann. 2019
+- [[[scrum-master-formation, 7]]]
+link:../../2021/scrum-master-formation.
+Marcel Baumann. 2021
+- [[[product-owner-formation, 8]]]
+link:../../2021/product-owner-formation.
+Marcel Baumann. 2021
+- [[[scrum-developer-formation, 9]]]
+link:../../2021/scrum-developer-formation.
+Marcel Baumann. 2021
+

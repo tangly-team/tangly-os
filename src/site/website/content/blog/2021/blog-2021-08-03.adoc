@@ -57,7 +57,7 @@ Certified Scrum Master::
 Introduction course for those who are closest to the _organization_ of the project. +
 _It is usually a two days training.
 The https://www.scrum.org[Scrum.org] allows taking the certification examination without attending a course._
-Advanced Certified Scrum Master::
+Certified Advanced Scrum Master::
 Advanced course for Scrum Masters who already have one year of experience on a Scrum team. +
 _It is at least two days training.
 You should read the recommended books to have a greater probability to pass the examination on the first try._
@@ -118,8 +118,7 @@ The _Scrum Master_ learning objectives for the first level are:
 .. describe at least one example of an organizational design change caused by adopting Scrum.
 .. discuss why Scrum does not have a a project manager and what happens to traditional project management activities
 
-You can self-study the Scrum Master objectives <<scrum-master-learning-objectives>>, <<scrum-master-advanced-learning-objectives>> with the official scrum team
-book <<professional-scrum-team>>.
+You can self-study the Scrum Master objectives <<scrum-master-learning-objectives>>, <<scrum-master-advanced-learning-objectives>> with the official scrum team book <<professional-scrum-team>>.
 The book is well-written and covers all required topics.
 
 A reading list can be found under
@@ -161,14 +160,20 @@ Scrum Alliance. 2021
 https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Certifications/CSM/csm_learningobjectives_Advanced.pdf[Scrum
  Alliance Advanced Certified Scrum Master Learning Objectives].
 Scrum Alliance. 2017
-- [[[product-owner-formation, 3]]]
-link:../../2021/product-owner-formation/[Product Owner Formation].
+- [[[agile-software-architecture, 3]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream].
 Marcel Baumann. 2021
-- [[[agile-software-architecture, 4]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream].
-Marcel Baumann. 2021
-- [[[professional-scrum-team, 5]]]
+- [[[professional-scrum-team, 4]]]
 https://www.amazon.com/dp/B08BW6HP7G[The professional Scrum team: Growing and Empowering Cross-Functionality and Resiliency
  in a Complex World].
 Peter Götz, Uwe Schirmer, Kurt Bittner.
 Addison-Wesley. 2021
+- [[[scrum-master-formation, 5]]]
+link:../../2021/scrum-master-formation.
+Marcel Baumann. 2021
+- [[[product-owner-formation, 6]]]
+link:../../2021/product-owner-formation.
+Marcel Baumann. 2021
+- [[[scrum-developer-formation, 7]]]
+link:../../2021/scrum-developer-formation.
+Marcel Baumann. 2021
 

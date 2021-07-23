@@ -147,3 +147,8 @@ _BBRT_ and {ref-sociocracy} approaches and tailor them to your specific needs.
 
 I rediscovered the commons rules through a presentation of https://en.wikipedia.org/wiki/Craig_Larman[Craig Larmann] at the {ref-less} conference 2019 in Munich.
 He inspired us to look at agile approaches through the _commons'_ lens.
+
+[bibliography]
+=== Literature
+
+- [[[tragedy-commons, 1]]] https://gosei.fi/blog/tragedy-of-commons-1/[Tragedy of Commons or Self-Management]. Ran Nyman. 2020

@@ -65,6 +65,40 @@ Teach them how to probe, sense, and respond.
 This will give them critical abilities to solve complex problems on their own.
 
 It builds self-organizing skills in your teams.
+{ref-scrum} framework provides hints what the minimal expected behaviors you should expect.
+There are several references to self-management in the {ref-scrumguide} as in the current version of 2020.
+
+[cite,{ref-scrumguide}]
+____
+Adaptation becomes more difficult when the people involved are not empowered or self-managing.
+
+_Scrum Teams_ are also self-managing, meaning they internally decide who does what, when, and how.
+
+They are structured and empowered by the organization to manage their own work.
+
+The Scrum Master serves the Scrum Team in several ways, including coaching the team members in self-management and cross-functionality.
+
+_Sprint Planning: How will the chosen work get done?_ How this is done is at the sole discretion of the Developers.
+No one else tells them how to turn Product Backlog items into Increments of value.
+
+The Developers can select whatever structure and techniques they want, as long as their Daily Scrum focuses on progress toward the Sprint Goal and produces an actionable plan for the next day of work.
+This creates focus and improves self-management.
+
+The Sprint Backlog is a plan by and for the Developers.
+____
+
+You can use various indicators to detect the self-management requirement at the Scrum team level is no more than lip service:
+
+* You assign specific tasks directly to Developers, thus bypassing the Product Owner.
+* Alternatively, you remove a Developer from the Scrum team (temporarily) to work on such a task.
+* Developers are assigned to support other organization members while ignoring their commitment to achieving the Sprint Goal.
+Examples are supporting sales in a pitch, or being an expert in management meetings.
+* Scrum is rolled back in a moment of crisis to a traditional form of command & control, exercised, for example, by dispatching jobs directly to individual Developers.
+
+Ignoring self-management does not only violate Scrum’s first principles.
+It also indicates that a manager cannot let go of command and control practices.
+They continue to micromanage subordinates, although a Scrum team could accomplish the task themselves.
+This behavior demonstrates a level of ignorance that may require support from a higher management level to address.
 
 === Leading by Example to nurture resilient change
 
