@@ -36,7 +36,7 @@ You can find other implementations of in-memory file systems if you want to use 
 
 The approach is ideal to write unit tests working with files.
 You cannot assume to have access to a well-defined file system in a generic continuous integration pipeline.
-Unit tests using a in-memory file system can be deployed in a continuous integration pipeline.
+Unit tests using an in-memory file system can be deployed in a continuous integration pipeline.
 
 When you look at the implementation of _Path.of_ or _Paths.get_, you will see:
 
@@ -54,7 +54,7 @@ Hence, when wanting to make sure your code works against in-memory file systems,
 Instead, you should always use the _FileSystem_ or a _Path_ instance as an anchor.
 
 Depending on your project and your libraries, this is quite a challenge to pull off
-footnote:[I regularly open issues in various open source libraries to request an API extension to support Path.
+footnote:[I regularly open issues in various open-source libraries to request an API extension to support Path.
 Often the maintainer of the library is not aware you need _Path_ to unit test with in-memory file systems.].
 
 === Paths
@@ -118,7 +118,7 @@ Path path = fileSytem.getPath(file.getPath());
 Legacy libraries heavily use _File_ objects in their algorithms and their public interface.
 Such libraries do *not* work with in-memory file systems.
 
-The simplest approach is to always provide an API returning streams in addition of file systems methods.
+The simplest approach is to always provide an API returning streams in addition to file systems methods.
 It is always possible to map a stream to a file system specific streams for read and write operations.
 
 The more complex approach is to replace all _File_ objects with _Path_ objects.

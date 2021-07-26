@@ -44,7 +44,7 @@ Deeper changes are
 
 * New date API simplifying the handling of date and time logic.
 The solution is based on the learnings of the https://www.joda.org/joda-time/[Joda] time library.
-* Support of Lambda constructs greatly eliminates the need of verbose anonymous classes.
+* Support of Lambda constructs greatly eliminates the need for verbose anonymous classes.
 
 === Useful Constructs
 
@@ -55,7 +55,8 @@ Java Modules::
 Dependencies management supported at language level. +
 The https://en.wikipedia.org/wiki/Ada_(programming_language)/[Ada] programming language has support for module since 1985.
 Streams and Lambda::
-Support of functional programming approaches Streams are declarative and support internal iterators. +
+Support of functional programming approaches.
+Streams are declarative and support internal iterators. +
 _The Booch Ada component library supported internal iterators since 1985_.
 Record::
 Very compact notation to define a data class and transparent handling of properties.
@@ -109,6 +110,6 @@ Discussions are underway to extend pattern matching with object deconstruction.
 Value Types::
 Value types would be a huge improvement in performance and support of modern processor architecture if the Valhalla product delivers.
 
-The only drawback we have with modern Java development is the sluggish catch-up of open source tools and libraries.
+The only drawback we have with modern Java development is the sluggish catch-up of open-source tools and libraries.
 For example {ref-gradle} needed five years to provide module support in the Java plugin.
 Gradle 6.4 was the first version really supporting Java modules.

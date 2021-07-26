@@ -33,8 +33,8 @@ Saving a Java Object::
 The library made some strange design decisions.
 If you want to persist an instance having fields based on collections, you must use the _eager_ mode.
 Beware that you must explicitly commit the transaction if using the _eager_ mode.
-The normal mode automatically commit the transaction.
-I hope that the API improves and the behavior is coherent for similar functions.
+The normal mode automatically commits the transaction.
+I hope that the API improves, and the behavior is coherent for similar functions.
 Debugging problems::
 The source code is currently obfuscated.
 Debugging is difficult and cumbersome because variable names are synthetic and all comments are missing.
@@ -42,7 +42,7 @@ The source code documentation is shallow and insufficient to understand the beha
 Saving a collection::
 If you have access to the collection, just call store on the collection.
 If the collection is hidden inside an object, you are forced to use _eager_ store.
-If you use standard object-oriented practices you will have to use the less efficient approach of eager write operations.
+If you use standard object-oriented practices, you will have to use the less efficient approach of eager write operations.
 
 === Design
 
@@ -128,7 +128,9 @@ The _MicroStream_ 4.x releases crash when using record in JDK 15 and JDK 16. It 
 You are forced to use an obsolete JDK no more supported.
 For example IntelliJ IDEA stops to provide support for obsolete JDKs as soon as the new official JDK release is available.
 It hinders you to use the associated preview features
-footnote:[I have reported the bug in the microstream forum and informed them that their clain they support these JDK is plain wrong. The project sadly does not currently have a bug reporting system. I hope the version promised for April 2021 will finally solve these showstoppers.].
+footnote:[I have reported the bug in the microstream forum and informed them that their clain they support these JDK is plain wrong. The project sadly does not currently have a bug reporting system. I hope the version promised for April 2021 will finally solve these showstoppers.]
+footnote:[The version 5.0 was released July 2021 and finally provide support for records. You need to increase access to internal components with the option
+_--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED_ to have a working approach.].
 
 I have to verify if the library can cope with sealed declarations.
 

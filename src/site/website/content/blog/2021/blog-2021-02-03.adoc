@@ -76,7 +76,7 @@ I mean everybody is using Google Drive, DropBox, or Microsoft One Drive.
 The rules to edit a document are:
 
 * Do not assume I am using Microsoft Office. I use and strongly prefer LibreOffice.
-I support open source software and format.
+I support open-source software and format.
 Microsoft Office formal definition is not even implemented in Office.
 * When modifying a shared document, consider using the review mode as being polite to your team members.
 * PDF is the de facto standard to exchange documents in the wide world. Acrobat Reader is free to use on all major platforms.

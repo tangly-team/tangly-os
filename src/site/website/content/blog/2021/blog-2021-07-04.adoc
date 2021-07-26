@@ -156,16 +156,16 @@ Marcel Baumann. 2020
 Marcel Baumann. 2021
 - [[[product-owner, 5]]]
 https://www.amazon.com//dp/0134686470[The Professional Product Owner: Leveraging Scrum as Competitive Advantage].
-Ralph Jocham & Don McGreal. 2018
+Ralph Jocham & Don McGreal. Addison-Wesley. 2018
 - [[[detecting-agile-bullshit, 6]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
 Marcel Baumann. 2019
 - [[[scrum-master-formation, 7]]]
-link:../../2021/scrum-master-formation.
+link:../../2021/scrum-master-formation[Scrum Master Formation].
 Marcel Baumann. 2021
 - [[[product-owner-formation, 8]]]
-link:../../2021/product-owner-formation.
+link:../../2021/product-owner-formation[Product Owner Formation].
 Marcel Baumann. 2021
 - [[[scrum-developer-formation, 9]]]
-link:../../2021/scrum-developer-formation.
+link:../../2021/scrum-developer-formation[Scrum Developer Formation].
 Marcel Baumann. 2021
 

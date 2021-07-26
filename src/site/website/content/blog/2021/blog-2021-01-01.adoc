@@ -18,7 +18,7 @@ This post discusses the value object pattern, and the factory pattern which are 
 https://en.wikipedia.org/wiki/Domain-driven_design[DDD] approach.
 
 Value objects represent typed values, that have no conceptual identity in your domain.
-They can hel you write better code that is less error-prone, more performant and more expressive.
+They can help you write better code that is less error-prone, more performant and more expressive.
 
 Value objects define the second kind of domain objects besides entities.
 Their main characteristic is immutability:
@@ -29,7 +29,7 @@ _Attributes of a value object *never* change_.
 ____
 
 A second characteristic is they do not have external identifiers.
-Unlike an entity two value objects with the exact same properties are considered equal.
+Unlike an entity, two value objects with the exact same properties are considered equal.
 
 A third one is they should be self-validating.
 A value object shall verify the validity of its attributes when being created.
@@ -42,13 +42,13 @@ Throw an _IllegalArgumentException_ if a validation error occurs.
 ====
 
 https://en.wikipedia.org/wiki/Value_object[Value Objects] do have attributes and methods as entities.
-Attributes of value objects are immutable therefore methods of value objects can only be queries without side effects.
+Attributes of value objects are immutable, therefore methods of value objects can only be queries without side effects.
 Operations never command a change to the internal state of a value object.
 We can pass value objects to clients without worrying they change them.
 
 Many objects can be modeled as value objects instead of entities because they are defined through their attributes.
 These objects measure, quantify or describe things in the domain model.
-Because they are so easy to handle we should model domain abstractions as value objects as often as possible.
+Because they are so easy to handle, we should model domain abstractions as value objects as often as possible.
 
 === Addresses, Phone Numbers, Email Addresses
 
@@ -68,7 +68,7 @@ Check your domain model and validate these assumptions.
 * They are always owned by other value objects or more often by entities such as persons, companies, delivery forms.
 * They are immutable objects.
 * Business processes can replace such an object with a new instance without impeding other domain instances.
-* Programmed in modern Java these value objects should be *records* to guaranty immutability at the language level.
+* Programmed in modern Java, these value objects should be *records* to guaranty immutability at the language level.
 As a bonus you get the *hashCode* and *equals* methods for free.
 
 [NOTE]
@@ -89,7 +89,7 @@ An invoice line can also be a subtotal for a set of regular invoice lines.
 [WARNING]
 ====
 VAT definition and computation is often a murky domain.
-The VAT value can be dependant of the article, the company selling it and the client buying it.
+The VAT value can be dependent on the article, the company selling it and the client buying it.
 Often when public administration defines a domain and associated business rules the world becomes quite complicated and ambiguous.
 The VAT administrative laws in Switzerland are more than 2000 pages of illegible text.
 

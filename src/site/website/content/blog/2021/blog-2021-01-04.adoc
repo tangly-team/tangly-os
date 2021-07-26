@@ -73,7 +73,7 @@ Modern approaches with https://en.wikipedia.org/wiki/Markdown[Markdown] and {ref
 
 https://plantuml.com/[PlantUML] is a text based diagramming approach.
 All major syntax and in particular all UML diagram types are supported.
-{ref-asciidoc} has native support for diagrams in general and PlantUMl in particular.
+{ref-asciidoc} has native support for diagrams in general and PlantUML in particular.
 Asciidoc supports additional diagrams and diagramming tools such as https://mermaid-js.github.io/mermaid[Mermaid].
 
 === Agile and Scrum
@@ -84,7 +84,7 @@ Scrum is the most used approach and should be taught to all computer science stu
 
 Students shall understand the agile concepts and main constructs.
 When working in a Scrum environment, they have used the backlog, issues, stories, definition of done.
-They have planed their projects with a vision, a roadmap, epics, and sprints.
+They have planned their projects with a vision, a roadmap, epics, and sprints.
 
 === Gitlab as a Student's Tool
 
@@ -101,7 +101,7 @@ All the source code and artifacts of a student class are available on Gitlab.
 The development history over a project or a semester are visible in Git.
 The lecturers can access the artifacts or use scripts to extract the data necessary to set the grades for the students.
 The grading process can be standardized.
-The decision process is part of the gitlab data and is auditable.
+The decision process is part of the Gitlab data and is auditable.
 
 === Links
 

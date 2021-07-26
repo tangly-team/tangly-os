@@ -119,9 +119,10 @@ Tom DeMarco & Timothy Lister. 2013
 [%collapsible]
 ====
 * https://www.amazon.com//dp/0134686470[The Professional Product Owner: Leveraging Scrum as Competitive Advantage].
-Ralph Jocham & Don McGreal. 2018
+Ralph Jocham & Don McGreal.
+Addison-Wesley. 2018
 * https://www.amazon.com/dp/1491904909[User Story Mapping: Discover the Whole Story, Build the Right Product].
-Jeff Patton. 2014
+Jeff Patton. O'Reilly. 2014
 * https://www.amazon.com/dp/0955683645[Impact Mapping].
 Gojko Adzic. 2012
 * https://www.amazon.com/dp/0993499201[Strategize: Product Strategy and Product Roadmap Practices for the Digital Age].

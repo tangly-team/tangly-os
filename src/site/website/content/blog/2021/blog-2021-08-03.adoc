@@ -168,12 +168,12 @@ https://www.amazon.com/dp/B08BW6HP7G[The professional Scrum team: Growing and Em
 Peter Götz, Uwe Schirmer, Kurt Bittner.
 Addison-Wesley. 2021
 - [[[scrum-master-formation, 5]]]
-link:../../2021/scrum-master-formation.
+link:../../2021/scrum-master-formation[Scrum Master Formation].
 Marcel Baumann. 2021
 - [[[product-owner-formation, 6]]]
-link:../../2021/product-owner-formation.
+link:../../2021/product-owner-formation[Product Owner Formation].
 Marcel Baumann. 2021
 - [[[scrum-developer-formation, 7]]]
-link:../../2021/scrum-developer-formation.
+link:../../2021/scrum-developer-formation[Scrum Developer Formation].
 Marcel Baumann. 2021
 

@@ -51,7 +51,7 @@ This is a core responsibility of your teams and team members.
 You have the retrospectives to identify and plan your improvements.
 You must allocate time for implementing the improvement in every sprint.
 {ref-scrum} is clear, at least one improvement measure is a high priority backlog item in the next sprint
-footnote:[Sadly the Scrum Guide revision of 2020 removed this rule. They deleted this PDCA mechanism.].
+footnote:[Sadly, the Scrum Guide revision of 2020 removed this rule. They deleted this PDCA mechanism.].
 
 If you can choose, do *not* use SAFe.
 I observe organizations struggling with SAFe’s over-standardized, phase-gated processes.
@@ -63,7 +63,7 @@ It can promote silos in the organization, preventing platforms from becoming rea
 ====
 https://www.thoughtworks.com/[Thoughtworks] put SAFe on hold in their https://www.thoughtworks.com/radar[Technology Radar] Volume 24 released in April 2021.
 On hols means proceed with caution.
-Said bluntly just do not use if you can choose.
+Said bluntly, just do not use if you can choose.
 ====
 
 === Ways of working
@@ -115,7 +115,7 @@ A coach works with (or on) a team on their actual codebase in order to improve t
 image::2021-02-01-technical-agility.png[width=800,height=600,role=center]
 
 {ref-less} strongly emphasizes technical agility and promotes associated good practices.
-High-quality products requires well-trained professional developers and mastery.
+High-quality products require well-trained professional developers and mastery.
 
 Examples are simple design, refactoring, unit testing, test-driven development and acceptance test-driven development.
 
@@ -171,7 +171,8 @@ After that reduce (not eliminate!) the external technical coaching or let the ex
 === Remember
 
 {ref-less} is {ref-scrum}, it is Large Scaled Scrum Feature teams are economical.
-Cross-functional Technical excellence is the essence of a quality solution One product owner for the whole product provides focus.
+Cross-functional Technical excellence is the essence of a quality solution.
+One product owner for the whole product provides focus.
 
 The product owner is where the money is.
 Depending on your organization put him where the budget comes from.

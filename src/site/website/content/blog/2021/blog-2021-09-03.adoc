@@ -184,13 +184,13 @@ Sandro Mancuso. 2015
 * [[[extreme-programming, 8]]] https://www.amazon.com/dp/0321278658[Extreme Programming Explained: Embrace Change].
 Ken Beck. 2005
 - [[[scrum-master-formation, 9]]]
-link:../../2021/scrum-master-formation.
+link:../../2021/scrum-master-formation[Scrum Master Formation].
 Marcel Baumann. 2021
 - [[[product-owner-formation, 10]]]
-link:../../2021/product-owner-formation.
+link:../../2021/product-owner-formation[Product Owner Formation].
 Marcel Baumann. 2021
 - [[[scrum-developer-formation, 11]]]
-link:../../2021/scrum-developer-formation.
+link:../../2021/scrum-developer-formation[Scrum Developer Formation].
 Marcel Baumann. 2021
 
 

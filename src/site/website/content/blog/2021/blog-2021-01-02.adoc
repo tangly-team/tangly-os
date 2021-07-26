@@ -15,7 +15,7 @@ tags: ["design", "crm", "series-identifiers"]
 image::2021-01-02-head.jpg[width=420,height=360,role=left]
 
 Identifiers are a key concept to successfully model complex business domains.
-They permeate how our modern civilisation functions.
+They permeate how our modern civilization functions.
 Could you imagine a country without car registration number, internet addresses, postal addresses or social security numbers?
 
 Identifiers are *identifiers*.
@@ -102,11 +102,11 @@ An aggregate is found and referenced through the identifier of the root entity o
 Reference over aggregate through identity::
 An aggregate shall reference other aggregate through the identity of their root entity instance.
 
-The concept of identity is therefore central the domain driven design approach.
+The concept of identity is therefore central to the domain driven design approach.
 
 === Lessons Learnt
 
-Always try to find an external well-defined identifier for your entities.
+Always try to find an external, well-defined identifier for your entities.
 Beware of legal aspects when you are using government defined identifiers such as social security numbers, passport numbers or car numbers.
 
 Avoid by all means to use an internal privately defined identifier as a public one.

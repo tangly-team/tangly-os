@@ -17,7 +17,7 @@ image::2021-07-01-head.jpg[width=420,height=360,role=left]
 Agile approaches advocate dynamic planning and adaptation to new inputs and priority changes.
 The {ref-bbrt} movement promotes rolling planning, budgeting and reporting.
 
-The beyond budgeting techniques recommend complete abolition of traditional budgeting processes.
+The beyond budgeting techniques recommend the complete abolition of traditional budgeting processes.
 They require the implementation of new techniques that will replace them.
 The BB framework does not specify the exact techniques that are applicable to all companies.
 
@@ -38,7 +38,7 @@ Rolling accounting is quite easy.
 You shall display only transactions bocked during the selected time interval.
 You shall be able to generate the balance sheet for the date defining the start of the time interval.
 
-The data is usable only if your accounting department does not tune the accounts at the end of quarter or at the end of the year.
+The data is usable only if your accounting department does not tune the accounts at the end of the quarter or at the end of the year.
 For example, Swiss companies shall separate the rolling accounting from their legal accounting used for VAT or earnings tax purposes.
 A better approach is to define rules avoiding most of the tuning actions.
 
@@ -54,14 +54,14 @@ Efforts booked during the time interval are relevant for the analytics.
 
 === Invoices
 
-The invoices send to the customers or the effectively paid invoices during the selected item interval shall be considered and displayed.
+The invoices sent to the customers or the effectively paid invoices during the selected item interval shall be considered and displayed.
 These invoices are relevant for the computation of the https://en.wikipedia.org/wiki/Cash_flow[cash flow] and the financial success of the associated projects
 and contracts.
 
 === Implementation
 
-The tangly ERP was extended to support rolling analytics based on a user defined time interval.
-THe system shall have all raw data available for the chosen time interval.
+The tangly ERP was extended to support rolling analytics based on a user-defined time interval.
+The system shall have all raw data available for the chosen time interval.
 The approach is similar to an event store.
 Designs based on a yearly reporting structure make the concept of rolling time periods almost impossible to realize.
 
