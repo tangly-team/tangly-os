@@ -24,7 +24,7 @@ How should I as a manager work the agile way?
 
 Does this agile way exist or is it simply a fad created by the consulting industry?
 
-This article provides some pointers and hypotheses what agile leadership could be?
+This article provides some pointers and hypotheses what agile leadership could be.
 
 Feel free to experiment and refine your successful approach to be agile as an organization.
 You must experiment, learn and train to become a successful agile leader.
@@ -112,8 +112,8 @@ Think about
 * Radical transparency,
 * Job rotations,
 * Team liaisons,
-* Community of practices
-* Servant leader
+* Community of practices,
+* Servant leader.
 
 [quote,Peter Drucker]
 ____
@@ -122,30 +122,30 @@ ____
 
 You should
 
-* Be knowledgeable about agile values, approaches and practices Understand and apply the Scrum, Kanban and lean, Spotify model frameworks
-* Develop people and teams - Self organizing teams Leadership styles, coaching and mentoring, facilitation Manage products with agility
-* Forecasting and release planing, product value, business strategy
-* Develop and deliver products professionally Evolve the agile organization - organizational design and structure, emporium, evidence based management
-* Takes a collaborative continuous improvement approach to organizational effectiveness
-
+* Be knowledgeable about agile values, approaches and practices Understand and apply the Scrum, Kanban and lean, Spotify model frameworks,
+* Develop people and teams with self-organizing teams Leadership styles, coaching and mentoring, facilitation Manage products with agility,
+* Forecast and perform release planing based on product value, and business strategy,
+* Develop and deliver products professionally
+* Evolve the agile organization through organizational design and structure, and evidence based management,
+* Take a collaborative continuous improvement approach to organizational effectiveness.
 
 You should avoid hindering value stream organizations and cross-functional teams by
 
-* Defining component teams
-* Give tasks to individual collaborators instead of going through the product owner
-* Ask progress or control questions during daily Scrum
-* Ask control questions or systematically participate to retrospectives
-* Promote the mindset that people are exchangeable - see mythical man/months -
-* State anybody can be a good Scrum master
-* Criticize craftsmanship approaches such as TDD, DDD, pair programming, continuous integration and delivery
+* Defining component teams,
+* Give tasks to individual collaborators instead of going through the product owner,
+* Ask progress or control questions during daily Scrum,
+* Ask control questions or systematically participate to ,
+* Promote the mindset that people are exchangeable - see mythical man/months -,
+* State anybody can be a good Scrum master,
+* Criticize craftsmanship approaches such as TDD, DDD, pair programming, continuous integration and delivery.
 
 Exceptional agile leaders
 
-* Are trained in agile values and approaches.
-They hold certifications
-* Advocate technical excellence
-* Trust their teams
-* Work actively to remove impediments by supporting process and structural changes in direction of value streams
+* Are trained in agile values and approaches,
+* They hold certifications,
+* Advocate technical excellence,
+* Trust their teams,
+* Work actively to remove impediments by supporting process and structural changes in direction of value streams.
 
 Please look at the agile leadership program from https://www.scrumalliance.org/[Scrum Alliance] and https://www.scrum.org/[Scrum.org].
 
@@ -161,7 +161,7 @@ Change takes time, a lot of time.
 - [[[great-scrummaster, 1]]] https://www.amazon.com/dp/013465711X[The Great Scrum Master].
 Zuzana Šochová.
 Addison-Wesley. 2017
-- [[[scrum-pocket-guide, 2]]] Scrum A Pocket Guide 3ˆndˆ Edition.
+- [[[scrum-pocket-guide, 2]]] https://www.amazon.com/dp/B08XWQ7DG9[Scrum A Pocket Guide 3ˆndˆ Edition].
 Gunther Verheyen.
 Van Haren Publishing. 2021
 - [[[agile-bullshit, 3]]] link:../../2019/detecting-agile-bullshit[Detecting Agile Bullshit].
@@ -170,6 +170,6 @@ Marcel Baumann. 2019
 Marcel Baumann. 2020
 - [[[agile-fluency-model, 5]]] link:../../2021/reflections-on-agile-fluency-model/[Agile Fluency Model].
 Marcel Baumann. 2020
-- [[[pragmatic-craftsmanship], 6]] link:../../2018/pragmatic-craftsmanship-professional-software-developer[Pragmatic Craftsmanship - Professional Software Developer].
+- [[[pragmatic-craftsmanship, 6]]] link:../../2018/pragmatic-craftsmanship-professional-software-developer[Pragmatic Craftsmanship - Professional Software
+Developer].
 Marcel Baumann. 2018
-

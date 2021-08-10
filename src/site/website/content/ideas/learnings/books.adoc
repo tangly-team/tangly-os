@@ -37,6 +37,9 @@ Gary Hamel. 2007
 .Scrum Books
 [%collapsible]
 ====
+* [[[scrum-pocket-guide, 2]]] https://www.amazon.com/dp/B08XWQ7DG9[Scrum A Pocket Guide 3ˆndˆ Edition].
+Gunther Verheyen.
+Van Haren Publishing. 2021
 * https://www.amazon.com/dp/1329224272[Scrum and XP from the trenches (2nd Edition)].
 Henrik Kniberg. 2015
 * https://www.amazon.com/dp/0133853624[The Scrum Field Guide: Agile Advice for Your First Year and Beyond].
@@ -122,7 +125,8 @@ Tom DeMarco & Timothy Lister. 2013
 Ralph Jocham & Don McGreal.
 Addison-Wesley. 2018
 * https://www.amazon.com/dp/1491904909[User Story Mapping: Discover the Whole Story, Build the Right Product].
-Jeff Patton. O'Reilly. 2014
+Jeff Patton.
+O'Reilly. 2014
 * https://www.amazon.com/dp/0955683645[Impact Mapping].
 Gojko Adzic. 2012
 * https://www.amazon.com/dp/0993499201[Strategize: Product Strategy and Product Roadmap Practices for the Digital Age].
@@ -188,6 +192,12 @@ Robert C. Martin. 2020
 .DevOps Books
 [%collapsible]
 ====
+* https://www.amazon.com/dp/B07B9F83WM[Accelerate: Building and Scaling High Performing Technology Organizations].
+Nicole Forsgren & Jez Humble & Gene Kene.
+IT Revolution. 2018
+* https://www.amazon.com/dp/B01M9ASFQ3[The DevOps Handbook: How to create World-Class Agility, Reliability, Security in Technology Organizations].
+Gene Kim & Jez Humble & Patrick Debois & John Willis.
+IT Revolution. 2016
 * https://www.amazon.com/dp/0988262592[The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win].
 Gene Kim & Kevin Behr. 2013
 * https://www.amazon.com/dp/0321601912[Continuous Delivery: Reliable Software Releases through Build, Test and Deployment Automation].

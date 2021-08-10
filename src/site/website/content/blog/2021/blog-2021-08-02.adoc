@@ -13,7 +13,7 @@ tags: ["agile"]
 :copyright: CC-BY-SA 4.0
 
 image::2021-08-02-head.png[width=420,height=360,role=left]
-DevOps is the combination of cultural philosophies, practices, and tools that increases an organization’s ability to deliver at high velocity.
+https://en.wikipedia.org/wiki/DevOps[DevOps] is the combination of cultural philosophies, practices, and tools that increases an organization’s ability to deliver at high velocity.
 
 It evolves and improves products at a faster pace than organizations using traditional software development and infrastructure management processes.
 This speed enables organizations to better serve their customers.
@@ -35,18 +35,25 @@ They use a technology stack and tooling which help them operate and evolve appli
 These tools also help engineers independently accomplish tasks that normally would have required help from other teams.
 This increases a team’s velocity.
 
+[IMPORTANT]
+====
+You will automate every workflow in the long term to achieve speed and reliability.
+
+You will merge your Scrum software development teams, quality assurance groups, operations teams and testing groups into single product teams.
+====
+
 === Benefits
 
 Speed::
-Move at high velocity so you can innovate for customers faster, adapt to changing markets better, and grow more efficient at driving business results.
+Move at high velocity, so you can innovate for customers faster, adapt to changing markets better, and grow more efficient at driving business results.
 The DevOps model enables your developers and operations teams to achieve these results.
 For example, microservices and continuous delivery let teams take ownership of services and then release updates to them quicker.
 Rapid Delivery::
-Increase the frequency and pace of releases so you can innovate and improve your product faster.
+Increase the frequency and pace of releases, so you can innovate and improve your product faster.
 The quicker you can release new features and fix bugs, the faster you can respond to your customers’ needs and build competitive advantage.
 Continuous integration and continuous delivery are practices that automate the software release process, from build to deploy.
 Reliability::
-Ensure the quality of application updates and infrastructure changes so you can reliably deliver at a more rapid pace while maintaining a positive experience.
+Ensure the quality of application updates and infrastructure changes, so you can reliably deliver at a more rapid pace while maintaining a positive experience.
 Use practices like continuous integration and continuous delivery to test that each change is functional and safe.
 Monitoring and logging practices help you stay informed of performance in real-time.
 Scale::
@@ -127,7 +134,7 @@ Generally, DevOps tools fit into one or more activities, which supports specific
 Java DevOps is simply applying DevOps practices and philosophies to Java app development.
 That means that compartmentalized teams are no longer needed when creating Java applications.
 
-Some principles you should know include:
+You should understand these principles:
 
 https://en.wikipedia.org/wiki/Continuous_integration[Continuous integration]::
 This practice requires developers to periodically merge the code that they have written into a central repository.
@@ -166,3 +173,33 @@ You must continuously monitor your infrastructure, network and application.
 
 Although it is possible to practice DevOps with any architectural style, the microservices architectural style is becoming the standard for building continuously deployed systems.
 Small size service allows the architecture of an individual service to emerge through continuous refactoring,[69] hence reducing the need for a big upfront design, allows for releasing the software early[citation needed] and continuously.
+
+[CAUTION]
+====
+You need a cultural change to implement successfully DevOps workflows.
+
+Bigger companies often have trouble with the changes.
+Command and control cultures always fail.
+It boils down if your culture trusts your collaborators - often called https://en.wikipedia.org/wiki/Theory_X_and_Theory_Y[Theory X and Theory Y] beliefs.
+
+Interestingly the DevOps transformation is similar to an agile transformation.
+The approaches, recipes, and failures are very similar.
+
+Smaller organizations are regularly more affine with trust.
+====
+
+[bibliography]
+=== Literature
+
+- [[[accelerate, 1]]] https://www.amazon.com/dp/B07B9F83WM[Accelerate: Building and Scaling High Performing Technology Organizations].
+Nicole Forsgren & Jez Humble & Gene Kene.
+IT Revolution. 2018
+- [[[devops-handbook, 2]]]  https://www.amazon.com/dp/B01M9ASFQ3[The DevOps Handbook: How to create World-Class Agility, Reliability, Security in Technology
+Organizations].
+Gene Kim & Jez Humble & Patrick Debois & John Willis.
+IT Revolution. 2016
+- [[[phoenix-project, 3]]] https://www.amazon.com/dp/0988262592[The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win].
+Gene Kim & Kevin Behr. 2013
+- [[[continuous-delivery, 4]]] https://www.amazon.com/dp/0321601912[Continuous Delivery: Reliable Software Releases through Build, Test and Deployment
+Automation].
+Jez Humble & David Farley. 2011
