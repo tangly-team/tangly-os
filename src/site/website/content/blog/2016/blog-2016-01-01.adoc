@@ -16,7 +16,9 @@ image::2016-01-01-head.jpg[width=420,height=360,role=left]
 The {ref-scrum} and agile mantra is to have a _ready to ship_ product each time a sprint is completed.
 You must avoid any incomplete activities at any price.
 
-Incomplete activities are also called _Undone Work_; they are technical debts in your software, hindering its delivery to customers.
+Incomplete activities are also called _Undone Work_.
+They are technical debts in your software, hindering its delivery to users.
+Financially they are expended money you cannot invoice to your customers.
 
 Regulatory and traditional quality insurance departments requests all kinds of documents such as review, test results, risk analysis matrix.
 They want insurance that their view of quality is fulfilled.
@@ -34,7 +36,8 @@ We use the following approaches to handle the needs of the regulatory department
 * Use static analysis tools such as https://pmd.github.io/[PMD], https://checkstyle.sourceforge.io/[Checkstyle], http://findbugs.sourceforge.net/[Findbugs]
 footnote:[The successor of FindBugs is https://spotbugs.github.io/[SpotBugs]] to create quality gate reports for your QA department.
 Thousands of checks and hundreds of pages of reports will satisfy any QA department.
-Plugins exist for Eclipse and continuous integration servers.
+Plugins exist for https://www.eclipse.org/[Eclipse]
+footnote:[A more popular IDE is https://www.jetbrains.com/idea/[IntelliJ IDEA] with similar plugins.] and continuous integration servers.
 * Use review plugin such as Eclipse Jupiter to create these still mandatory review reports on the source code.
 These reports are useless in an agile team working with techniques such as refactoring and pair programming.
 But they are still mandatory for the majority of traditional QA departments.
@@ -45,14 +48,14 @@ Add some annotations to your test cases, and you have full traceability to your 
 With a small amount of work you can generate thousands of pages of information and provide the PDF documents to the regulatory department.
 These documents are also TUV and FDA compliant.
 * Use https://en.wikipedia.org/wiki/Behavior-driven_development[Behavior Driven Development] approach and create acceptance criteria for all your stories.
-Using the reporting features of https://easyb.io/v1/index.html[easyb] you can create acceptance test reports for all your stories.
+Using the reporting features of https://easyb.io/[easyb] you can create acceptance test reports for all your stories.
 It generates hundreds of pages of information and provide the PDF documents to the regulatory department.
 These documents are also TUV and FDA compliant
 * Use continuous integration servers to run all the above measures and generate the documentation at the end of each sprint or release.
 * Link you version control system with your continuous server, issue tracking system and unit tests.
 So you can generate release notes stating the list of closed issues with the associated source code and unit tests verifying the correctness of the change.
 
-Similar tools are available in the .NET and C++ community.
+Similar tools are available in the Python .NET, or C++ communities.
 
 You can easily satisfy your QA and regulatory stakeholders with a lot of reports nobody will ever read.
 A real {ref-scrum} team corrects weaknesses during the development process and always deliver a software of the highest quality.

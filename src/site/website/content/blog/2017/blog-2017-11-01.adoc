@@ -73,7 +73,7 @@ You have a serious problem
 * If you do not solve at least one impediment each sprint - it is now a mandatory part in the {ref-scrumguide} 2018 version -.
 
 As a Scrum coach, Scrum master or Scrum team member you should reflect upon the above statements at least monthly.
-Otherwise you are just pretending.
+Otherwise, you are just pretending.
 Remember
 
 [.text-center]

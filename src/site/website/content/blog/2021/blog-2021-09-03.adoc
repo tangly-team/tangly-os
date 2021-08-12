@@ -120,8 +120,8 @@ Benefits include simplicity, avoidance of bloating, defect reduction, built-in r
 . _Integrating Continuously_
 .. CI is the practice of reducing the feedback time between code creation and integration.
 It can be supported using technical means.
-CI changes habits and behaviors, creates awareness about shared responsibility, is the base for frequent deliveries, reduces defects, reduces risk from late discovery of integration issues.
-..
+CI changes habits and behaviors, creates awareness about shared responsibility.
+It is the base for frequent deliveries, reduces defects, reduces risk from late discovery of integration issues.
 ... Example 1: The increment is necessarily integrated.
 Using CI is highly recommendable for getting to at least one increment per sprint or more.
 ... Example 2: The daily Scrum can provide better transparency about the progress if there is a better measure for progress.
@@ -192,5 +192,3 @@ Marcel Baumann. 2021
 - [[[scrum-developer-formation, 11]]]
 link:../../2021/scrum-developer-formation[Scrum Developer Formation].
 Marcel Baumann. 2021
-
-

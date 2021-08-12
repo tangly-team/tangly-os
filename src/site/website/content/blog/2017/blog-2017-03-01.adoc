@@ -15,9 +15,9 @@ tags: ["agile"]
 image::2017-03-01-head.jpg[width=420,height=360,role=left]
 === Purpose
 
-I am regularly asked by practitioners and technical universities which books I shall recommend to learn more about agile developers, agile projects, and agile companies.
+I am regularly asked by practitioners and technical universities which books I shall recommend learning more about agile developers, agile projects, and agile companies.
 
-Below a selection of books I read and found really interesting.
+Below a selection of books I read and found fascinating.
 The selection is certainly not exhaustive.
 The criteria are
 
@@ -38,10 +38,11 @@ You are a programmer, you know this book
 
 === Agile Management Aspects
 
-* Agile Management: Leadership in an agile environment, Angel Medinilla An overview about agile management at company level, you should also read the "Leader's Dilemma" and see the BBRT Beyond Budgeting Round Table ideas.
+* Agile Management: Leadership in an agile environment, Angel Medinilla An overview about agile management at company level, you should also read the _Leader's Dilemma_ and see the {ref-bbrt} ideas.
 * Leading Lean Software Development: Results Are Not the Point, Mary Poppendieck & Tom Poppendieck Lean means often to change your point of view to better understand the system
 * The Lean Mindset: Ask the Right Questions, Mary Poppendieck & Tom Poppendieck What does lean means?
-* Fearless Change: Patterns for Introducing New Ideas, Mary Lynn Manns Ph.d. & Linda Rising Ph.d. When introducing changes you have to understand change management.
+* Fearless Change: Patterns for Introducing New Ideas, Mary Lynn Manns & Linda Rising Ph.d.
+When introducing changes you have to understand change management.
 You call later read the works of John P. Kotter
 * Agile Retrospective: Making Good Teams Great, Esther Derby & Diana Larsen & Ken Schwaber The major place where improvements are identified is during retrospectives, often the less well-managed meeting in a Scrum team
 * Practices for Scaling Lean and Agile Development, Craig Larman & Bas Vodde A set of practices and ideas how to do big agile projects, the guys behind {ref-less}

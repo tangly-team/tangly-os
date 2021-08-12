@@ -32,7 +32,8 @@ Below some findings of the study.
 
 === Major Hurdles When Introducing Agile Approaches
 
-The number left is the value for 2016, the number in parenthesis is the value found in the study for year 2013. Bold items are new in the 2016 study and have no 2013 values.
+The number left is the value for 2016, the number in parentheses is the value found in the study for year 2013. Bold items are new in the 2016 study and have
+no 2013 values.
 
 * 63% (72%): Culture change
 * 61% (21%): Management support

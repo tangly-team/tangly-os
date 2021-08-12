@@ -37,7 +37,7 @@ Do you think about tester and quality as roles and not persons?
 * Do new candidates code and perform refactoring to achieve clean code during their interview?
 
 http://www.codypowell.com/taods/2009/12/the-codypo-test-aka-8-questions-to-identify-a-lame-programming-job.html[8 Questions to identify a lame programming job].
-The questions are up to date.
+The questions are up-to-date.
 His final remark is worth remembering
 
 No matter how great the potential projects and teammates might be, I don't think you can do truly meaningful work in an environment where you, the developer, aren't empowered to succeed.

@@ -5,7 +5,7 @@ date: 2021-09-01
 tags: ["design", "hugo", "series-students"]
 ---
 
-== Improving a Static Web Site Build With Hugo and Docsy Theme
+== Improving a Static Website Build With Hugo and Docsy Theme
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
@@ -13,8 +13,47 @@ tags: ["design", "hugo", "series-students"]
 :copyright: CC-BY-SA 4.0
 image::2021-09-02-head.jpg[width=420,height=360,role=left]
 The static website build tool {ref-hugo} is awesome.
+With the extensive built-in feature set of Hugo and the feature-rich text formatting options that Asciidoctor offers, it creates a blogging experience composed of easy content management and fun writing experience.
+
+In most static site generators including Hugo, Markdown is the one and only first-class citizen when it comes to creating posts.
+However, in recent Hugo versions, there exists external helpers feature which calls appropriate external programs to certain type of files.
+Fortunately, Asciidoctor based files are automatically compiled with Asciidoctor, so we do not need to do anything.
+Just have it installed and you are ready to go.
+
 The Hugo theme {ref-docsy} is ideal to create software documentation site.
-I love to write my documentation and blogs using {ref-asciidoc} notation.
+This theme is currently the best match I found to combine documentation with blogging.
+
+I love to write my documentation and blogs using {ref-asciidoc} notation
+footnote:[If you are new to asciidoc, you can experiment https://asciidoclive.com/[online].].
+The official site is https://asciidoc.org/[AsciiDoc].
+A major tool chain can be found under https://docs.asciidoctor.org/home/[AsciiDoctor].].
+
+[INFORMATION]
+----
+Hugo supports Asciidoctor through external helpers.
+External helpers are relatively new and more like an experimental feature.
+There is a proposal on improving it by adding user configurations so at least there is hope for this particular feature to expand.
+----
+
+The features of https://en.wikipedia.org/wiki/AsciiDoc[AsciiDoc] set is equivalent to https://en.wikipedia.org/wiki/DocBook[DocBook].
+The readers with grey hair probably remember https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language[SGML], the ancestor of DocBook.
+The librarians could remember https://en.wikipedia.org/wiki/LaTeX[LaTeX] created by https://en.wikipedia.org/wiki/Leslie_Lamport[Leslie Lamport].
+He created it to describe https://en.wikipedia.org/wiki/Temporal_logic[temporal logic] aspects of cluster communication for the
+https://en.wikipedia.org/wiki/Digital_Equipment_Corporation[Digital Equipment Corporation] _DEC_ solution.
+These highly qualified experts and their solutions paved the way to legible documentation and professional typography.
+
+=== Source Code Highlight
+
+Asciidoctor supports rouge source code highlighting per default
+footnote:[Beware the Hugo documentation stating you have to import an extension for syntax highlighting is plain wrong if you are using
+https://docs.asciidoctor.org/asciidoctor/latest/syntax-highlighting/rouge/[rouge].].
+You do need to add any extension to Hugo.
+Just select the style you prefer such as:
+
+[source,yaml]
+----
+rouge-style = "github"
+----
 
 === Search Function for the Website
 
@@ -33,12 +72,49 @@ The solution has no strings attached and uses the well-known platform GitHub.
 No tracking, no ads and no locking are great.
 The comment author must first login in GitHub before adding her comment therefore spamming or flaming are minimized.
 
+You have to create a partial in docsy to use Utterances.
+
+[source,html]
+----
+<div class="page-blank">
+    <div id="utterancers_thread"></div>
+    <script src="https://utteranc.es/client.js"
+            repo= {{ .Site.Params.comments_utterances_repo }}
+            issue-term= {{ .Site.Params.comments_utterances_issue_term }}
+            theme= {{ .Site.Params.comments_utterances_theme }}
+            crossorigin="anonymous"
+            async>
+    </script>
+----
+
 === Tag Function for Blog Article
 
+Docsy has finally merged the change request for taxonomies during the first semester of 2021.
+Tags for articles are now natively supported without tinkering with the code of the plugin.
+
+Our https://tangly-team.bitbucket.io/blog/[blog] displays the tags on the right side of the window.
+Give it a try.
+
 === Diagrams in articles
+
+Diagrams in blog articles are currently a more complex issue.
+Hugo seems to be quite restrictive which extensions can be loaded when generating a static site.
+No reasonable reasons exit for the above mentioned restrictions.
+On-going pull requests try to improve the situation.
+
+I had success with:
+
+https://plantuml.com/[plantUML] diagrams::
+See for example following blogs link:../../2021/gitlab-for-bachelor-students[GitLab for Students]
+https://mermaid-js.github.io/[mermaid] diagrams::
+See for example following blogs link:../../2021/agile-trends-switzerland-2021[Agile Trend 2021] or
+link:../../2021/agile-trends-switzerland-2020[Agile Trend 2020].
+
+The generated HTML code does not respect all AsciiDoc parameters.
+Text flow configurations are not enforced.
 
 == Hugo and Docsy Related Articles
 
 . link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc[Creating a technical Website with Hugo and Asciidoc]
 . link:../../2020/support-comments-for-static-hugo-website[Support Comments for Static Hugo Website]
-. link:../../2021/improving-a-static-web-site-build-with-hugo-and-docsy[Improving a Static Web Site Build With Hugo and Docsy]
+. link:../../2021/improving-a-static-web-site-build-with-hugo-and-docsy[Improving a Static Website Build With Hugo and Docsy]

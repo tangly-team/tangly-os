@@ -75,12 +75,16 @@ The agile manifesto states
 
 [quote,Agile Manifesto]
 ____
-Individuals and interactions over processes and tools
+*Individuals and interactions* over processes and tools
 
-Customer collaboration over contract negotiation.
+*Customer collaboration* over contract negotiation.
 ____
 
-Perhaps too often we interpret these sentences as * Respect people, have nice interactions and avoid any hard discussions, * Collaborate with the customer, never disagree and avoid harsh truths.
+Perhaps too often we interpret these sentences as
+
+* Respect people, have nice interactions and avoid any hard discussions,
+* Collaborate with the customer, never disagree and avoid harsh truths.
+
 Swiss people are well-educated.
 They always empty their glasses in the restaurant and have trouble leaving some wine in the glass.
 They also do not like conflict.
@@ -92,7 +96,7 @@ A meeting with 8 persons and of a duration of 30 minutes costs in Switzerland ar
 
 [TIP]
 ====
-_ROI is Avoid meetings_
+_ROI is Avoiding meetings_
 
 Prefer a team gathering or a pair session.
 Instead of calling for a meeting use instant messaging and collaborative tools.
@@ -104,7 +108,7 @@ Do the same for additional meetings, Remember two ground rules Once you have rea
 
 Compute your ROI.
 
-=== You shall have a cross functional team
+=== You shall have a cross-functional team
 
 image:2017-01-01-A-Team.jpg[width=420,height=360,role=left]
 Scrum teams try to be fully cross-functional and invest a lot of effort to reach this goal.
@@ -122,7 +126,7 @@ A T person is a master in one technical area - this is the leg of the T - and kn
 In fact Square-shaped team members would be better but are very hard to find.
 To increase ROI the specialist of the team should perform the tasks it is best suited for.
 
-But a good team also do risk management to insure that another person can do the job if the main specialist is not available.
+But a good team also do risk management to ensure that another person can do the job if the main specialist is not available.
 See risk management theory how the cost of a risk is evaluated to calculate the ROI of training additional team members.
 
 The simplest way to distribute knowledge is the four-eyes principles exemplified through pair programming and peer checkin.
@@ -136,7 +140,7 @@ As a rule of thumb a good T-shape person Is master in one technical area, Has a 
 
 image:2017-01-01-Change-Ahead.jpg[width=420,height=360,role=left]
 Scrum is about agility.
-Therefore you have the right to change anything at any time, isn't it?
+Therefore, you have the right to change anything at any time, isn't it?
 Your stakeholders need the changes now.
 They cannot wait until the end of the Sprint, a mere ten working days or two weeks of elapsed time.
 But Scrum also states we have a vision, features, a minimum viable product and a potentially shippable product.
@@ -182,7 +186,7 @@ Often teams forget about non-functional requirements such as scalability, reliab
 These features cannot be added later, you have to write the application twice.
 ====
 
-As a rule of thumb Be honest: our systems are complex but they are no ground breaking work.
+As a rule of thumb Be honest: our systems are complex, but they are no groundbreaking work.
 Similar solutions already exist.
 I expect a talented team to provide an architecture with some prototyping in less than a sprint.
 
@@ -222,7 +226,8 @@ It cures all illnesses and makes you immortal, For the older ones, do you rememb
 
 Do you really believe in snake oil?
 
-Do you think that a collaborator can win a competition just be respecting a process.
+Do you think that a collaborator can win a competition just be respecting a process?
+
 He must train every week to achieve and maintain a given level of skills.
 
 [TIP]

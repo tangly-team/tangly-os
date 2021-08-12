@@ -29,20 +29,49 @@ Polishing of functional programming approach improved my source code quite stupe
 === Why Should You Upgrade?
 
 Why should you actually upgrade your application?
-Every Java version, even minor versions offer performance benefits, but also security fixes.
-Other useful extras that make your application more robust and better maintainable are often part of a new release.
-It includes cool features, for instance, the recently released Java records, sealed types, or the pattern matching functionality.
 
-I have noticed that a lot of applications are still on Java 8 or maybe even older, because upgrading is seen as quite a challenge.
-It is often estimated that it's a lot of work, maybe even weeks or months of work to upgrade from one LTS version to the next LTS version of Java.
+* Every Java version, even minor versions offer performance benefits, but also security fixes,
+* Other useful extras that make your application more robust and better maintainable are often part of a new release,
+* It includes cool features, for instance, the recently released Java records, sealed types, or the pattern matching functionality,
+* Reduce attack surface by updating project dependencies proactively,
+* Reduce technical debt and most importantly, prepare your project for the new and dynamic Java world,
+* Take advantage of performance improvements on new JVM version,
+* Take advantage from improvements of Java as programming language,
+* Sleep better by having a more secure, efficient and quality product.
+
+I have noticed that a lot of applications are still on Java 8.
 Then, when that information is being sent to the business, they often say, we don't have time to invest so much time now.
+It is often estimated that it is a lot of work, maybe even weeks or months of work to upgrade from one LTS version to the next LTS version of Java.
 It is seen as a challenge difficult to estimate, and is automatically postponed.
 That's not a good approach.
+
+[WARNING]
+====
+If you are on Java 8, your licensing situation is more problematic.
+Like all JDKs past their end-of-public-updates, you now have to pay for support, or use a free OpenJDK 8u build which
+
+. only contains backported patches that do not cover the entire JDK.
+. predates the full open-sourcing, so is not identical to the old Oracle JDK.
+So not only is the license for versions past 11 better than ever in Java's history, the licensing situation for 8 is not that good.
+Java 8 is well past its free support period.
+
+Licensing alone is a reason to update.
+====
 
 I try to make it more practical.
 Actually, in the case of the weeks to months' estimation, I managed to do it in a couple of days.
 It is often a matter of simply trying it, and if you're lucky, you manage to upgrade it quite easily.
 Depending on what dependencies you use, or what code bases you use, it might be a bigger challenge.
+
+[INFORMATION]
+====
+The usual discussion about Oracle Java licensing is the typical https://en.wikipedia.org/wiki/Fear,_uncertainty,_and_doubt[FUD] regarding Java and Oracle.
+OpenJDK and Oracle Java are as different as Red Hat Fedora and Red Hat Enterprise Linux.
+
+If you don't want to pay for Red Hat Enterprise Linux support, just go with Fedora, or any other Linux distribution.
+
+It is exactly the same with Java distributions.
+====
 
 == Should You Migrate Everytime?
 
@@ -54,6 +83,20 @@ You have to do it every six months, because you cannot use the new minor version
 If you do not have that time available to upgrade every six months, you might opt to using only the long term support versions.
 However, then, each time you need to upgrade your long term support version, that actually might take quite a bit more time as well.
 In the end, I think staying on long term support versions or using the latest version should not differ much in the investment in upgrading.
+
+[INFORMATION]
+====
+JDK 17 *is* a LTS version.
+You must anyway migrate to JDK 17.
+The only discussion point is *when* and certainly *not if*.
+Decide
+
+You are a laggard organization:: Start to plan your migration and allocate needed resources and budget to the migration.
+You should hope your competition will not release new features and beat you.
+You are a modern organization:: You are already migrating to JDk 17 and the discussion is moot.
+You are a DevOps organization:: You have already completed migration.
+Congratulations, you can focuss on business value and beat your competitors.
+====
 
 === How Big is the Migration Effort?
 
@@ -93,7 +136,8 @@ Applets are dead for years, now the associated API is deprecated and will be rem
 https://openjdk.java.net/jeps/306[JEP 403] - Strongly Encapsulate JDK Internals::
 Stop using unsafe operations in your libraries
 https://openjdk.java.net/jeps/306[JEP 406] - Pattern Matching for switch (Preview)::
-Pattern matching is the new kid on the block. We have now nice features for the switch expression
+Pattern matching is the new kid on the block.
+We have now nice features for the switch expression
 https://openjdk.java.net/jeps/306[JEP 407] - Remove RMI Activation::
 https://openjdk.java.net/jeps/306[JEP 409] - Sealed Classes::
 https://openjdk.java.net/jeps/306[JEP 410] - Remove the Experimental AOT and JIT Compiler::
@@ -108,5 +152,9 @@ The new features you can use on a daily basis are the following.
 ==== Algebraic Types
 
 ==== Pattern Matching for Switch
-A preview of pattern matching for switch extends the language of patterns in Java to allow switch expressions and statements to be tested against a number of patterns, each with a specific action. This enables complex data-oriented queries to be expressed concisely and safely. Among the goals of this feature include expanding the expressiveness and application of switch expressions and statements by enabling patterns to appear in case labels, relaxing the historical null-hostility of switch when desired, and introducing two kinds of patterns: guarded patterns, which allow pattern matching logic to be refined with arbitrary Boolean expressions, and parenthesized patterns, which resolve some parsing ambiguities. In JDK 16, the instanceof operator was extended to take a type pattern and perform pattern matching. The modest extension proposed allows the familiar instanceof-and-cast idiom to be simplified.
 
+A preview of pattern matching for switch extends the language of patterns in Java to allow switch expressions and statements to be tested against a number of patterns, each with a specific action.
+This enables complex data-oriented queries to be expressed concisely and safely.
+Among the goals of this feature include expanding the expressiveness and application of switch expressions and statements by enabling patterns to appear in case labels, relaxing the historical null-hostility of switch when desired, and introducing two kinds of patterns: guarded patterns, which allow pattern matching logic to be refined with arbitrary Boolean expressions, and parenthesized patterns, which resolve some parsing ambiguities.
+In JDK 16, the instanceof operator was extended to take a type pattern and perform pattern matching.
+The modest extension proposed allows the familiar instanceof-and-cast idiom to be simplified.

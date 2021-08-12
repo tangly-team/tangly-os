@@ -36,7 +36,7 @@ The scaling approaches I encounter at customer sites in Switzerland and Europe a
  The banking group ING adopted the approach and made it fashionable.
 * Scrum@Scale defined by Jeff Sutherland and Scrum Alliance.
  Henrik Kniberg has written an interesting article stating Spotify Model is a kind of Scrum@Scale.
-* Nexus defined by Ken Schwaber and Scrum.org.
+* Nexus defined by https://en.wikipedia.org/wiki/Ken_Schwaber[Ken Schwaber] and Scrum.org.
 * {ref-less} defined by Craig Larman and Bas Vodde. It is also supported by Scrum Alliance.
 * {ref-safe} 5.0 defined by the RUP aficionados and often trashed by Kniberg, Sutherland, Schwaber, Larmann and Vodde.
  At the same it is the most popular approach in quite a few countries.

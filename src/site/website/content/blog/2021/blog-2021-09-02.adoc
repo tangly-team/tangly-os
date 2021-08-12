@@ -73,5 +73,3 @@ Open Agile Architecture.
 Open Group. 2019. (ISBN: 1-947754-62-1)
 - [[[enterprise-architecture, 3]]] link:../../2021/why-enterprise-architecture/[Why Enterprise Architecture?].
 Marcel Baumann. 20221
-
-

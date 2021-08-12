@@ -16,7 +16,7 @@ image::2016-12-01-head.jpg[width=420,height=360,role=left]
 I often hear discussions asking who is performing the _traditional_ product leader tasks in Scrum.
 This is in general an excuse to state that Scrum alone cannot work and classical product leaders are still needed.
 
-Below a list of tasks you do NOT need anymore to do in {ref-scrum}.
+Below a list of tasks you do *NOT* need anymore to do in {ref-scrum}.
 
 * Make commitments on behalf of the team about how much they can get done by a certain date or estimate effort for the team,
 * Coerce the team that the commitments made on their behalf are attainable,
@@ -46,7 +46,7 @@ Now you as Scrum master or agile product manager have to perform important tasks
 * Inform and support all product's stakeholders,
 * If you reflect on these two lists it becomes obvious that the first list describes malfunctions and the second one describes mechanisms how to improve continuously - lean principles -.
 
-Jeff Sutherland gives some interesting insights about the Scrum master
+https://en.wikipedia.org/wiki/Jeff_Sutherland[Jeff Sutherland] gives some interesting insights about the Scrum master
 
 * The Scrum master enforces Scrum practices _Coaching rather than command and control_
 * The Scrum master effort is

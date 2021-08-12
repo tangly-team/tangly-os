@@ -37,7 +37,7 @@ A lot of servers support keywords such _fix #42_ to automatically close the tick
 
 The described approach is optimal for small teams.
 The approach is compatible to pull requests if you introduce such a workflow later.
-You do not need pull requests when you are working collocated .
+You do not need pull requests when you are working collocated.
 I prefer pair programming and pair check-in sessions against the trunk.
 
 For a short introduction how to start using Git in software projects see the blog

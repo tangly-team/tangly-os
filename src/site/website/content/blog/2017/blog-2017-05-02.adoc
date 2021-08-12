@@ -21,7 +21,7 @@ The actual industrial standard is https://git-scm.com/[git], a distributed versi
 https://en.wikipedia.org/wiki/Distributed_version_control[DVCS] -.
 
 Install git on your development machine.
-In case you are using IntelliJ IDEA configure git in the IDE through the preferences' pane.
+In case you are using IntelliJ IDEA configure git in the IDE through the preferences pane.
 
 To put your product under git version management, go to the root of the product and perform the command
 
@@ -55,7 +55,8 @@ To commit your changes you simply
 git commit -m "commit message, should be clear and legible"
 ----
 
-You can perform these operation directly in IntelliJ IDEA (VCS functions) as follow . Switch to the Version Control tool window and switch to the Local Changes tab.
+You can perform these operations directly in IntelliJ IDEA (VCS functions) with these instructions.
+Switch to the Version Control tool window and switch to the Local Changes tab.
 . Expand the Un-versioned Files node, and select the files to be added.
 From the context menu, chooseAdd to VCS, or press ⌥⌘A.
 . Switch to the Project tool window and select the files to be added.

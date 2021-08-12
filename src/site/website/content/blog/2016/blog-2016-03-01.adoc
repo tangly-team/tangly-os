@@ -27,34 +27,36 @@ The major gains upon migrating to OS X are
 * No virus scanners are necessary, the speed-up during complex programming and development activities is tremendous,
 * No trouble when updating the operating system, updates are automatic and often no new start is required,
 * Unix Command Line and Tools are available in the console.
-https://brew.sh/[Homebrew] or https://www.macports.org/[MacPorts] projects provide all known and less-known utilities and programs available under Linux,
-* Long lived notebook is still working and looking nice after five years of daily usage.
+https://brew.sh/[Homebrew] or https://www.macports.org/[MacPorts] projects provide all known and less-known utilities and programs available under Linux
+footnote:[Currently I use Homebrew. The available packages and the handling are excellent.],
+* Long-lived notebook is still working and looking nice after five years of daily usage.
 The performance is more than adequate for software development with Java 8/9/10/11 stack and C++.
 
 The last notebooks I had all lasted between six and nine years.
-The first five years these computers were used daily.
+These computers were used daily the first five years.
 
 === Daily Development
 
 The tools I really enjoy and use on a daily basis for software development - mainly Java - are
 
-* IntelliJ IDEA IDE,
+* https://www.jetbrains.com/idea/[IntelliJ IDEA] IDE,
 * Atlassian Cloud applications - BitBucket, HipChat, CI pipeline -,
 * https://brew.sh/[Homebrew] as package manager for utilities,
 * Docker as container manager,
-* VirtualBox when I need a full-fledged virtual machine.
+* VirtualBox when I need a full-fledged virtual machine
+footnote:[The need of virtual machines for daily work is fading away].
 
 === Daily Work
 
 I use these tools to perform administrative work are
 
-* LibreOffice,
+* https://www.libreoffice.org/[LibreOffice],
 * Google Business for team work in the cloud using collaborative tools,
-* Apple Mail Client with GPG plugin for PGP and S/MIME secure email,
-* A local Swiss article https://www.banana.ch[Banana] for accounting and VAT reports for the federal government.
+* Apple Mail Client with https://gpgtools.org/[GPG] plugin for PGP and S/MIME secure email,
+* A local Swiss application https://www.banana.ch[Banana] for accounting and VAT reports for the federal government.
 I bought it as soon as the company stopped requesting higher prices for OS X than for the other platforms.
 
 LibreOffice completely replaced Microsoft Office suite.
 I stopped using OpenOffice after the strange behavior of Oracle with the application.
 
-I never really regretted leaving Linux or Ubuntu behind me.
+I never really regretted leaving Linux or https://ubuntu.com/[Ubuntu] behind me.

@@ -20,7 +20,7 @@ What are the main hurdles to introduce agile approaches in Swiss companies.
 * Doubt that lean or agile works, doubt you can find agile experts, doubt that your projects can be realised with agile approaches,
 * At the end what matters is collaborator purpose, customer satisfaction,  business value.
 
-http://www.swissq.it/[SwissQ] has published a "SwissQ Agile Trends & Benchmarks Switzerland 2012".
+http://www.swissq.it/[SwissQ] has published a _SwissQ Agile Trends & Benchmarks Switzerland 2012_.
 The study can be downloaded as PDF from their website.
 
 Below some findings of the study.
@@ -51,14 +51,14 @@ Do not try to introduce Scrum at company level without such an approach.
 * 45%: Company culture clash with agile principles
 * 41%: External pressure to use traditional approaches (Agile 51%, Waterfall 40%, Iterative 22%, RUP 16%, and HERMES 12%)
 * The used agile approaches are:
-** Scrum 84.5%,
-** Kanban 16.9%,
+** {ref-scrum} 84.5%,
+** {ref-kanban} 16.9%,
 ** Own Approach 15.5%,
-** XP 14.1%,
-** Agile Unified Process 11.3%,
+** {ref-xp} 14.1%,
+** https://en.wikipedia.org/wiki/Agile_Unified_Process[Agile Unified Process] 11.3%,
 ** Others 9.9%,
-** SCRUMBAN 8.5%,
-** Feature Driven Development FDD 0%
+** https://en.wikipedia.org/wiki/Scrumban[Scrumban] 8.5%,
+** https://en.wikipedia.org/wiki/Feature-driven_development[Feature Driven Development] FDD 0%
 * 38%: Missing support from senior management
 * 37%: Missing or insufficient training and coaching
 * 35%: Missing communication between departments

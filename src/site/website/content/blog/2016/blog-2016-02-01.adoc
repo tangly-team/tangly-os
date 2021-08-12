@@ -26,7 +26,7 @@ A whisper can still be heard:
 [.text-center]
 _Yes, it is not without consequences for the organization_.
 
-Say your team is developing software products with Scrum. We have the following roles:
+Say your team is developing software products with {ref-scrum}. We have the following roles:
 
 * the stakeholders
 * the developers (Development Team)
@@ -42,7 +42,14 @@ Every two weeks they have a new application version they can use, test, and get 
 This is the dream of every key account manager.
 
 Because a new release is available every two weeks the stakeholders should also provide feedback every two weeks.
-They sometimes hate the pressure of agile and Scrum.
+They sometimes hate the pressure of agile and Scrum
+
+[CAUTION]
+====
+Some organizations struggle with high delivery rhythm.
+Explain your stakeholders a new release is available every two weeks.
+The stakeholders decide how often the solution is deployed into production.
+====
 
 === Developers Team
 
@@ -78,7 +85,7 @@ This version must be evaluated, accepted or a list of improvements must be provi
 This rhythm is fast, really fast.
 Once you are up to this speed you will enjoy the flow.
 
-=== Cautious Words
+=== Lessons Learnt
 
 Middle management often struggles with the agile approach at the beginning.
 See for example the discussion about https://less.works/less/management/index.html[manager role in an agile environment] in the {ref-less} approach.

@@ -88,7 +88,7 @@ Agile approaches state you should work at a sustainable pace, forty hours a week
 
 Enjoy family time, practice sport, give back to the community.
 
-Work with your team, ideally colocated in a team room. Face2Face exchanges and pair working - pair design, pair review, pair programming, pair checkin - are training on the job occasions.
+Work with your team, ideally collocated in a team room. Face2Face exchanges and pair working - pair design, pair review, pair programming, pair checkin - are training on the job occasions.
 
 ==== Hone your Craftsmanship
 

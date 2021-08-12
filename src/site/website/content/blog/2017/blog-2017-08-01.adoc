@@ -39,7 +39,7 @@ The text with the regular font is the job description. I wrote down my comments 
  You do need a quality assurance team. Dissolve the quality assurance  department.
  Move their specialists to the teams and get rid of the vice president of quality assurance.__
 ** __The Scrum master does neither administrate flow of information nor implement processes.
- He trusts and coaches his teams to deliver best quality.__
+ He trusts and coaches his teams to deliver the best quality.__
 * Coordinate with QA, IT Operations, and Database Administrators on testing. l
  Launch planning, launch, and troubleshooting/optimization of features post-launch.
 ** __The product owner plans the release schedule with the team.

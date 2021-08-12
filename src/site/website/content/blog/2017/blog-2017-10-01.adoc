@@ -71,7 +71,7 @@ The delivered product is the output of the service contract but not the sole ite
 Signing a contract is the easy part.
 Now you must track progress, manage changes, and reach the agreed goals in a timely and economical way.
 
-* Commit in trust, training, and decision making. Train your people and customer's representatives,
+* Commit in trust, training, and decision-making. Train your people and customer's representatives,
 * Deliver incrementally every few weeks to prove progress and cement trust,
 * The more trust you build, the less escalation you will have during the product,
 * Have rolling planning, budgeting, and tracking. You shall gain visibility of progress, transparent costs, and tentative end for fulfilling the contract,
@@ -79,7 +79,7 @@ Now you must track progress, manage changes, and reach the agreed goals in a tim
 * How do you inform your stakeholders about contract changes?
 
 The later questions are solved differently based on the level of trust between the contractor and the customer.
-Try to avoid a full fledged change management process and systematic escalations.
+Try to avoid a full-fledged change management process and systematic escalations.
 
 === Work Approach
 
@@ -111,7 +111,7 @@ Please remember the manifesto, it is all about collaboration and responding to c
 ** Talk about business value and implementation risks,
 * Finalize the contract,
  What happens if costs overruns happen -.
- We suggest to share the costs and define the percentage each party shall pay, if the supplier pays 0% it is a time and material contract.
+ We suggest sharing the costs and define the percentage each party shall pay, if the supplier pays 0% it is a time and material contract.
  If the supplier pays 100% it is a fix price contract. Aim for 50% -,
 ** Define a checkpoint to validate the estimates and hypotheses,
 ** Define exit criteria and exit points for both parties,
