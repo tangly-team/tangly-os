@@ -19,7 +19,7 @@ The main advantage of having it is that you no more need to argue with PMI certi
 
 The main interest of PMI-ACP certification is their collection of concepts taken from Agile, eXtreme Programming, Scrum and Lean.
 
-It could worth your money to buy the book "The PMI-ACP Exam: How to pass on Your First Try", Andy Crowe, First Edition 2012.
+It could be worth your money to buy the book "The PMI-ACP Exam: How to pass on Your First Try", Andy Crowe, First Edition 2012.
 The book itself is not rocket science but it contains two hundreds questions which are similar to the ones you will encounter during the examination.
 
 To get your 21 PDUs necessary for the examination you must attend a training course.

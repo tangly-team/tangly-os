@@ -21,7 +21,7 @@ Here the official definition of the product owner role taken from the {ref-scrum
 The *Product Owner* is accountable for maximizing the value of the product resulting from the work of the Scrum Team.
 How this is done may vary widely across organizations, Scrum Teams, and individuals.
 
-The Product Owner is also accountable for effective *Product Backlog* management, which includes:
+The https://scrumguides.org/scrum-guide.html#product-owner[Product Owner] is also accountable for effective *Product Backlog* management, which includes:
 
 * Developing and explicitly communicating the *Product Goal*;
 * Creating and clearly communicating *Product Backlog* items;
@@ -78,7 +78,7 @@ The _Product Owner_ learning objectives for the first level are:
 .. practice the creation of a product vision.
 .. list the components of a product plan or forecast with stakeholders.
 .. describe how to plan a product release.
-.. explain at least two approaches to identify small, valuable, and releasable Product Increments.
+.. explain at least two approaches to identify small, valuable, and releasable https://scrumguides.org/scrum-guide.html#increment[Product Increments].
 . _Understanding Customers and Users describe why a Product Owner performs discovery and validation work_
 .. illustrate at least one approach for segmenting customers and users.
 .. practice at least one technique to prioritize between conflicting customer (or user) needs.
@@ -89,21 +89,22 @@ The _Product Owner_ learning objectives for the first level are:
 . _Validating Product Assumptions_
 .. describe how Scrum supports validating product assumptions.
 .. describe at least one approach to validate product assumptions by their cost and quality of learning
-. _Working with the Product Backlog_
+. _Working with the https://scrumguides.org/scrum-guide.html#product-backlog[Product Backlog]_
 .. describe the relationship between outcome and output
-.. describe at least three attributes of a Product Backlog item that help assess maximizing outcome
+.. describe at least three attributes of a https://scrumguides.org/scrum-guide.html#product-backlog[Product Backlog] item that help assess maximizing outcome
 .. define value and list at least two techniques to measure value.
 .. describe value from the perspective of at least three different stakeholder groups.
 .. list at least three terms related to product economics
-.. create at least one Product Backlog item that includes description of desired outcome and value.
-.. describe at least one approach to Product Backlog Refinement.
-.. describe at least three criteria for ordering the Product Backlog.
+.. create at least one https://scrumguides.org/scrum-guide.html#product-backlog[Product Backlog] item that includes description of desired outcome and value.
+.. describe at least one approach to https://scrumguides.org/scrum-guide.html#product-backlog[Product Backlog] Refinement.
+.. describe at least three criteria for ordering the https://scrumguides.org/scrum-guide.html#product-backlog[Product Backlog].
 
 You can self-study the Scrum Product Owner objectives <<product-owner-learning-objectives>>, <<product-owner-advanced-learning-objectives>> with the official product owner book <<product-owner>>.
 The book is well-written and covers all required topics.
+Be a professional knowledge worker and support your organization on the agile path <<detecting-agile-bullshit>>.
 
 A reading list can be found under
-https://www.scrum.org/resources/suggested-reading-professional-scrum-product-owner[Suggested Reading Professional Scrum Product Owner].
+https://www.scrum.org/resources/suggested-reading-professional-scrum-product-owner[Suggested Reading for Professional Scrum Product Owner].
 
 I published a list of seminal works for interested product owners under link:../../../ideas/learnings/books/#_product_owner[Books].
 
@@ -125,7 +126,7 @@ The organization offers two certifications for _Certified Professional Requireme
 
 === University Formal Trainings
 
-Technical universities in Switzerland provide formal training in requirements engineering and related fields.
+Technical universities in Switzerland provide formal training in requirements engineering and related fields <<agile-requirements>>.
 The formation provides a certificate of advanced study CAS in the field.
 Current available certificates of advanced study offering are for example:
 
@@ -150,22 +151,21 @@ Scrum Alliance. 2021
 - [[[product-owner-advanced-learning-objectives, 2]]]
 https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Certifications/CSPO/CSPO_LearningObjectives_Advanced.pdf[Scrum Alliance Advanced Certified Scrum Product Owner Learning Objectives].
 Scrum Alliance. 2017
-- [[[agile-requirements, ]3]] link:../../2021/agile-requirements-engineering/[Agile Requirements Engineering].
+- [[[agile-requirements, 3]]] link:../../2021/agile-requirements-engineering/[Agile Requirements Engineering].
 Marcel Baumann. 2020
 - [[[agile-software-architecture, 4]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream].
 Marcel Baumann. 2021
 - [[[product-owner, 5]]]
 https://www.amazon.com//dp/0134686470[The Professional Product Owner: Leveraging Scrum as Competitive Advantage].
-Ralph Jocham & Don McGreal. Addison-Wesley. 2018
+Ralph Jocham & Don McGreal.
+Addison-Wesley. 2018
 - [[[detecting-agile-bullshit, 6]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
 Marcel Baumann. 2019
-- [[[scrum-master-formation, 7]]]
-link:../../2021/scrum-master-formation[Scrum Master Formation].
+- [[[scrum-master-formation, 7]]] link:../../2021/scrum-master-formation[Scrum Master Formation].
 Marcel Baumann. 2021
-- [[[product-owner-formation, 8]]]
-link:../../2021/product-owner-formation[Product Owner Formation].
+- [[[product-owner-formation, 8]]] link:../../2021/product-owner-formation[Product Owner Formation].
 Marcel Baumann. 2021
-- [[[scrum-developer-formation, 9]]]
-link:../../2021/scrum-developer-formation[Scrum Developer Formation].
-Marcel Baumann. 2021
-
+- [[[scrum-developer-formation, 9]]] link:../../2021/scrum-developer-formation[Scrum Developer Formation].
+Marcel Baumann. 2021 -
+- [[[scrum-guide, 10]]] https://scrumguides.org/scrum-guide.html[Scrum Guide]
+Jeff Sutherland, Ken Schwaber. 2020

@@ -113,7 +113,16 @@ link:../../2021/agile-trends-switzerland-2020[Agile Trend 2020].
 The generated HTML code does not respect all AsciiDoc parameters.
 Text flow configurations are not enforced.
 
-== Hugo and Docsy Related Articles
+=== Layout and Appearance
+
+The docsy theme is regularly improving.
+The provided features are good and very stable.
+
+The Hugo integration of {ref-asciidoc} is subpar.
+The CSS styling files of {ref-asciidoc} are not integrated with Hugo and themes.
+Often the appearance of the generated HTML could be improved.
+
+=== Hugo and Docsy Related Articles
 
 . link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc[Creating a technical Website with Hugo and Asciidoc]
 . link:../../2020/support-comments-for-static-hugo-website[Support Comments for Static Hugo Website]

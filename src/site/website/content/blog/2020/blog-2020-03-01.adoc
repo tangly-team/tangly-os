@@ -46,6 +46,7 @@ The huge advantage of the approach against IDE code generation is the guaranty t
 === Advantages
 
 Key benefits of immutable objects are:
+
 * *Thread safety*
 * Atomicity of failure
 * Absence of hidden side-effects

@@ -64,7 +64,9 @@ I know quite a few developers shocked by his requirements
 
 === Change Management
 
-* Fearless Change: Patterns for Introducing New Ideas, Mary Lynn Manns & Linda Rising, Addison-Wesley 2005 The introduction of Scrum and agile principles means change in the organization and the teams.
+* Fearless Change: Patterns for Introducing New Ideas.
+Mary Lynn Manns & Linda . Addison-Wesley 2005. +
+The introduction of Scrum and agile principles means change in the organization and the teams.
 Linda Rising shows how changes are introduced with success in existing organizations.
 
 === Books everybody should have read

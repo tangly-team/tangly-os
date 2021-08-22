@@ -24,7 +24,7 @@ Here the steps for the impatient.
  Six hours after the first phone call they sent me the electronic documents.
  The next day the documents were delivered in paper form.
  It was really impressive.
-. Before you can found a company you must deposit the capital to a special account.
+. Before you can find a company you must deposit the capital to a special account.
  I choose https://www.postfinance.ch/[Postfinance].
  It is a well-known Swiss institute and their fee is only CHF 145.
  They insisted I meet one of their collaborators to fill their forms – probably never heard about web forms -.
@@ -56,7 +56,7 @@ The AHV center needed more than two weeks to confirm my registration.
  On the bright side their collaborators are very supportive.
 * Public or big private companies such as insurance firms are incapable to send documents or invoices electronically.
  They only use paper mail. Upon inquiry their collaborators told me their processes are incapable of handling modern communication ways.
-* Upon foundation you get pseudo-official letters from various companies to sell dubious services. Just throw them away.
+* Upon foundation, you get pseudo-official letters from various companies to sell dubious services. Just throw them away.
 * The industry development office of Kanton Zug has no clues about start-up companies; the ones in Zürich and Luzern seem better.
 
 [.text-center]

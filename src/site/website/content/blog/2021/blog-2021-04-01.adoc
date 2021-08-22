@@ -26,7 +26,7 @@ Polishing of functional programming approach improved my source code quite stupe
 
 === New Features
 
-Java 16 fully support https://en.wikipedia.org/wiki/Algebraic_data_type[Algebraic Data Types] with the https://openjdk.java.net/jeps/395[record] and
+Java 16 fully supports https://en.wikipedia.org/wiki/Algebraic_data_type[Algebraic Data Types] with the https://openjdk.java.net/jeps/395[record] and
 https://openjdk.java.net/jeps/397[sealed types] features.
 
 An immutable data class including constructor, getters, _equals(Object o)_, _hashCode()_, and _toString()_ can be declared in one line:
@@ -88,12 +88,14 @@ Did you realize that since Java 8 a new version is released every six months?
 === Next Changes I am Dreaming Of
 
 Concise Method Body:: Syntactic sugar to write compact delegation classes.
-It provides the same mechanisms for method overwriting as for lambda declarations.
+It provides the same mechanisms for method overwriting as for lambda declarations
+footnote:[I had to accept that this feature will not be part of the LTS release Java 17.].
 
 Switch Type Selection:: We can already chain _if else if_ statements with *instanceof* operator and variable declarations.
 I want to do the same in a _switch_ statement. +
 I have good news.
-The JEP for pattern matching for switch statements (JEP 406) and for record and arrays patterns (JEP 405) have candidate status in April 2021.
+The JEP for pattern matching for switch statements (JEP 406) and for record and arrays patterns (JEP 405) have candidate status in April 2021
+footnote:[First extensions for pattern matching will be part as preview functionality of the LTS release Java 17.].
 
 More Packages Support Modules:: Java modules were introduced with Java 8.
 I really, really, really want to use modules in Java 16.
@@ -110,7 +112,7 @@ Modern Java code written with current Java version is very different to older co
 Companies must now implement modernization approaches if they want to survive in the business world.
 A security flaw with an older Java version moves on thin ice if your customers sue your company.
 
-Especially if do not have one of these *expensive support and security* packages sold by Oracle for legacy Java versions.
+Especially if you do not have one of these *expensive support and security* packages sold by Oracle for legacy Java versions.
 
 It should be a strategic goal for every company to have a clear migration concept for all Java applications to be ported to the LTS Java version 17.
 This LTS version should be removed in September 2021.

@@ -1,0 +1,123 @@
+---
+title: "Agile and Nearshore Development"
+linkTitle: "Agile and Nearshore Development"
+date: 2022-02-05
+tags: ["agile"]
+---
+
+== Agile and Nearshore Development
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+image::2022-02-02-head.jpg[width=420,height=360,role=left]
+The majority of software product development initiatives uses an agile approach.
+It is natural that organizations would gravitate towards the many benefits agile realizes.
+
+The outsourcing market is undergoing constant evolution.
+Traditionally, cost reduction was the key driver for software development outsourcing, but now it doesn't even make the top five, according to Deloitte's 2018 Global Outsourcing Survey.
+
+Instead, the top five reasons organizations opt for IT outsourcing are:
+
+* Catalyst for innovation (64%)
+* Improvement of speed and time to market (63%)
+* Improvement of performance (54%)
+* Enhancement of scalability and rapid elasticity (54%)
+* Access to new tech (51%)
+
+Communication is essential to agile software development.
+And not just any form of communication.
+It has to be in real-time.
+Your team needs to have access to you, and vice versa, throughout the workday so that you can work through issues immediately.
+
+=== Team Models
+
+[cols="1,3,3,3",options="header"]
+|===
+^|Needs
+^|Extended Team
+^|Managed Team
+^|Outsourced Team
+
+|Needs
+|Get additional development capacity for an existing team
+|Build a core development team to take over a product development
+|Team develops a custom solution for you, you get a finished product
+
+|Risk and Responsibility
+|Stay fully in charge of product development and team management
+|Share the risks and responsibility with the team and maintain some flexibility
+|External team fully responsible for building the team and developing the product from discovery to final release
+
+|Flexibility
+|Get maximum flexibility: interview the candidates, take all decisions, setup processes and policies.
+|Share hour product vision and product roadmap, make key technology decisions.
+The team ensures technology allignment, team training and motivation, professional growth and overall team management.
+|You providd ideas and requirements and the team delivers the product.
+Take full advantage of the team's expertise
+
+|Team Composition
+|Developers and a senior engineer to coach and support the developers
+|Full Scrum team with cross-functional team developers including senior designers, quality specialists, and architects.
+A Scrum master coaches the team and takes over member development and admnistrationt tasks
+|Full Scrum team with cross-functional team developers including designers, quality specialists, architects and DevOps.
+A Scrum master and product owner round up the team capabilities.
+
+|Choose
+|Distributed team with smaller size
+|Local development team and remote product owner.
+You keep product responsibility
+|Local product development team You delegate product responsibility to the local team.
+|===
+
+=== Nearshore advantages
+
+Geographical and Cultural Proximity::
+Nearshore locations are located in or near Europe, making it easy to reach from most European cities via air connectio As a European nation.
+We share the same mentality, values, and business culture as our clients.
+It provides an excellent foundation for a long-lasting and productive nearshore partnership.
+Convenient time zone and no jet lag::
+A time difference of zero to two hours between nearshore locations and EU countries allows for setting up convenient cooperation.
+It avoids exhausting jet lag.
+Software engineers can engage with our clients during their business hours, maximizing efficiency while enhancing productivity.
+Intellectual property protection::
+European security and privacy requirements such as those imposed by ISO, GDPR, PCI, and HIPAA are understood.
+Compliance with European legislation can be achieved.
+
+=== Risks
+
+Language::
+All documents and comments in the source code shall legible for all team members.
+Discussions and remote conference shall be held in a language availabe to all members.
+A shoring strategy implicates that this language must International English.
+All documents, emails, and chats must be written in English
+Cultural Barriers::
+The shored team collaborators shall be integrated in the company as respected and valuable colleagues.
+Avoid any statements containing _we versus they_.
+Meeting times should be good for all participants.
+Location of documents, source code, and artifacts should have the same availability and comfort for all members.
+Company Binding::
+Effort must be put in the integration of the nearshore teams.
+Churn-rates can be as high as 30% per year.
+Agile Approaches::
+The various departments and locations should have similar approaches to agile frameworks and processes.
+A good solution is to standardize on {ref-scrum}.
+Train and certify all collaborations in {ref-scrum} and your technology stack to create common ground and vocabulary.
+
+[bibliography]
+=== Literature
+
+- [[[scrum-master, 1]]] link:../../2021/scrum-master-formation/[Scrum Master Formation].
+Marcel Baumann. 2021
+- [[[product-owner, 2]]] link:../../2021/product-owner-formation/[Product Owner Formation].
+Marcel Baumann. 2021
+- [[[developer, 3]]] link:../../2021/scrum-developer-formation/[Scrum Developer Formation].
+Marcel Baumann. 2021
+- [[[agile-fluency, 4]]] link:../../2021/reflections-on-agile-fluency-model/[Agile Fluency Model].
+Marcel Baumann. 2021
+- [[[detecting-agile-bullshit, 5]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
+Marcel Baumann. 2019
+- [[[agile-architecture, 6]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream].
+Marcel Baumann. 2021

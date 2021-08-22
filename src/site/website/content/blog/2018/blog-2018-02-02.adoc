@@ -64,7 +64,7 @@ Co-location ensures lean coordination processes as well as speed and quality.
 
 Co-location also means: You are moving.
 The teams move into a room and work focused together on their product.
-There are no phones, no other projects, no outside distractions.
+There are no phones, no other projects, and no outside distractions.
 They use collaboration tools - chats, wikis, Scrum boards -.
 Scrum teams are wholly focused on their product,
 

@@ -133,12 +133,12 @@ UML: Sometimes I would like to draw some UML diagrams to explain a design soluti
 
 Analog Board::
  Nothing beats a big analog board in the team room as the ideal information radiator.
- If you want your colocated to work effectively and solve problems as team, you shall provide an analog board.
+ If you want your collocated to work effectively and solve problems as team, you shall provide an analog board.
 Trello, Stride, BitBucket, Hipchat and others Atlassian tools for distributed teams::
  The first advice is to have a collocated team.
  The productivity and performance gains are unachievable in a distributed environment.
  We have very good experience with Atlassian and Google App solutions to mitigate the drawback of distributed teams and establish a team work atmosphere.
- But a colocated team still rocks.
+ But a collocated team still rocks.
 IntelliJ IDEA::
  This IDE is the choice for refactoring, powerful context suggestions and efficient programming.
  If you use Eclipse or Netbeans just try a friendly refactoring competition with an IDEA convert.

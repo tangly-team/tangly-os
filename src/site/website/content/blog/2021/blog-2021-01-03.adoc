@@ -126,6 +126,17 @@ It has fine-grained access control and many more powerful features.
 School often select https://about.gitlab.com/[GitLab] due to his open source license and the tremendous DevOps functionality.
 The gitlab solution supports source code versioning, DevOps pipelines, agile development approaches, and quality insurance for the produced artifacts.
 
+[NOTE]
+====
+The technical university of Lucerne https://www.hslu.ch/en/[HSLU] has selected https://about.gitlab.com/[GitLab] platform as standard DevOps environment.
+
+Well-known companies in Switzerland such as Roche Diagnostics, UBS<<ubs-gitlab>>, Siemens<<siemens-gitlab>> have also standardized on this platform.
+
+Our students can more easily bridge between academical teachings and industrial practices and acquire deeper understanding of DevOps and agile practices.
+Semester and bachelor theses are easier to realize through the use of known software development tool chains.
+Students can concentrate on the content of their thesis.
+====
+
 === Basic Git Knowledge for Students
 
 Studying the history of software development practices shows the raise and fall of https://en.wikipedia.org/wiki/Source_Code_Control_System[SCCS],
@@ -158,6 +169,7 @@ Repository::
 Where Git permanently stores the changes you have made as different versions of the project
 
 [source,shell]
+
 ----
 git init // <1>
 git clone https://gitlab.enterpriselab.ch/tangly/tangly-os.git // <2>
@@ -173,6 +185,7 @@ git status // <8>
 git remote // <9>
 git --version // <10>
 ----
+
 <1>  *Create* a new repository for the root folder of your project, the folder _.git_ is created and contains all the git tracking information.
 <2>  *Clone* the repository _tangly-os_ and copy all files into the current folder.
 <3>  Add the README file to git.
@@ -221,6 +234,7 @@ gradle test // <2>
 gradle check // <3>
 gradle clean // <4>
 ----
+
 <1> Compile the simple or multi-module Java project.
 <2> Execute the unit tests of the project.
 <3> Perform static analysis checks if you define them.
@@ -274,7 +288,8 @@ You will be more efficient and avoid all the problems related to virus scanners,
 ====
 
 . Install the latest LTS JDK and latest JDK on your workstation.
-. Install IntelliJ IDEA IDE. Students can request a student license and work with the Ultimate edition.
+. Install IntelliJ IDEA IDE.
+Students can request a student license and work with the Ultimate edition.
 The community edition is free for everybody.
 . Use the static analysis function of IntelliJ IDEA has a static analysis feature.
 .. Select the file or package to inspect in the project view.
@@ -341,12 +356,13 @@ Once you master the basic commands, consider learning advanced commands like:
 
 Merge your branch _my-branch_ back into _trunk_
 
-[source, shell]
+[source,shell]
 ----
 git commit –m "Some commit message" // <1>
 git checkout trunk // <2>
 $ git merge my-branch // <3>
 ----
+
 <1> ...develop some code and commit it in the currently selected my-branch
 <2> switched to branch _trunk_
 <3> merge the branch _my-branch_ into _trunk_
@@ -358,10 +374,11 @@ Note that after a rebase, the commit ids of the rebased branch are new.
 A rebase is not simply a moving of commits around in the history.
 Git actually creates brand-new commits with new commit ids and permanently deletes the old commits.
 
-You should prefer to rebase only with local branches. Avoid rebasing shared branches.
+You should prefer to rebase only with local branches.
+Avoid rebasing shared branches.
 If you rebase a branch that was pulled from GitHub or GitLab, and then push it back, the server will reject it.
 
-[source, shell]
+[source,shell]
 ----
 git rebase my-branch trunk
 ----
@@ -372,14 +389,14 @@ Git squash is a technique that helps you to take a series of commits and condens
 
 So let’s see how to squash the last three commits to a single commit.
 
-[source, shell]
+[source,shell]
 ----
 git rebase -i HEAD~3
 ----
 
 The following content will be shown:
 
-[source, shell]
+[source,shell]
 ----
 pick 474bfdc2 3rd last commit
 pick 1bffc15c 2nd last commit
@@ -388,7 +405,7 @@ pick 474bf0c2 last commit
 
 For the commits that you want to squash, replace the pick instruction with fixup, so it becomes:
 
-[source, shell]
+[source,shell]
 ----
 fixup 474bfdc2 3rd last commit
 fixup 1bffc15c 2nd last commit
@@ -402,14 +419,14 @@ This is in contrast with other ways such as _merge_ and _rebase_ which normally 
 
 You can display the hashes of your commits in _trunk_ with the command
 
-[source, shell]
+[source,shell]
 ----
 git log --oneline trunk
 ----
 
 Now you can cherry-pick the commit you are interested in and apply it into your branch.
 
-[source, shell]
+[source,shell]
 ----
 git checkout my-branch
 git cherry-pick <commit-hash>
@@ -423,9 +440,13 @@ Read the post link:../../2016/git-branches-for-the-impatient[Git Branches for th
 
 Read the documentation of GitLab, BitBucket or GitHub.
 
+[bibliography]
 === References
 
-. link:../../2017/git-local-repositories-for-the-impatient[Git Local Repositories for the Impatient]
-. link:../../2016/git-branches-for-the-impatient[Git Branches for the Impatient]
-. link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc[Creating a Technical Website with Hugo and AsciiDoc]
-. link:../../2020/support-comments-for-static-hugo-website[Support Comments For Static Hugo Website]
+* link:../../2017/git-local-repositories-for-the-impatient[Git Local Repositories for the Impatient]
+* link:../../2016/git-branches-for-the-impatient[Git Branches for the Impatient]
+* link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc[Creating a Technical Website with Hugo and AsciiDoc]
+* link:../../2020/support-comments-for-static-hugo-website[Support Comments For Static Hugo Website]
+* [[[ubs-gitlab, 1]]] https://www.inside-it.ch/de/post/ubs-schliesst-den-umzug-in-die-devcloud-ab-20210813[UBS schliesst Umzug auf GitLab].
+https://www.inside-it.ch/[inside-it]. 2021-08-13.
+* [[[siemens-gitlab, 2]]] https://about.gitlab.com/customers/siemens/[Siemens GitLab]

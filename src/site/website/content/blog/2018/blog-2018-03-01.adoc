@@ -12,8 +12,9 @@ tags: ["java"]
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-image::2018-03-01-head.png[width=420, height=360, role=left]
-[quote, Mark Reinhold]
+image::2018-03-01-head.png[width=420,height=360,role=left]
+
+[quote,Mark Reinhold]
 ____
 For Java to remain competitive it must not just continue to move forward — it must move forward faster.
 ____
@@ -30,7 +31,7 @@ Java 11 will also be a long term support _LTS_ release.
 === The Visible Change
 
 The visible change is the dawn of the keyword *var*.
-Now instead of typing the type of a local variable - local to a method, a block or an instruction - you can just use the keyword var.
+Now instead of typing the type declaration of a local variable - local to a method, a block or an instruction - you can just use the keyword var.
 The constraint being that the variable is initialized at declaration.
 Stay tune for more support in JDK 11.
 
@@ -40,7 +41,7 @@ When the type is a class name I got the impression the benefit is less clear.
 
 As an exercise I updated the source code of open source libraries I have written and the associated tests as in
 
-[source, java]
+[source,java]
 ----
 Event <Events> event = new Event<>(Events.AA_AB);
 var event = new Event<>(Events.AA_AB);
@@ -54,7 +55,8 @@ Perhaps it takes time until I am accustomed to the new way of writing Java code.
 The source code of the JDK is consolidated in one repository.
 It makes development work more efficient.
 
-The garbage collector shall have a clear and documented API. Developing and adding new garbage collectors is easier.
+The garbage collector shall have a clear and documented API.
+Developing and adding new garbage collectors is easier.
 
 Various updates such as Unicode newest version.
 The extensions are used in library classes to better support locales.
@@ -65,11 +67,8 @@ For example CA certificates will be provided to OpenJDK by Oracle.
 === Outlook
 
 The rhythm of releases is staggering higher.
-Starting Spring 2018 we will have
-* The new rule as blogged by Mark Reinhold https://mreinhold.org/blog/forward-faster[Moving Java Forward Faster].
-* You will get a new JDK every six months
-* You will get security updates every three months
-* You will get a long term support release every three years.
+Starting Spring 2018 we will have * The new rule as blogged by Mark Reinhold https://mreinhold.org/blog/forward-faster[Moving Java Forward Faster].
+* You will get a new JDK every six months * You will get security updates every three months * You will get a long term support release every three years.
 
 This means that you shall update your JDK in development environment six times a year if you want to install the new JDK and the security releases.
 We recommend automating the process in your environment.

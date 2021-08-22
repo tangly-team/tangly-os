@@ -28,6 +28,8 @@ Polishing of functional programming approach improved my source code quite stupe
 
 === Why Should You Upgrade?
 
+Be honest. It is more a question of when, rather than if you will upgrade.
+
 Why should you actually upgrade your application?
 
 * Every Java version, even minor versions offer performance benefits, but also security fixes,

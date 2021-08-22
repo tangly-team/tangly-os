@@ -16,16 +16,16 @@ image::2021-09-03-head.png[width=420,height=360,role=left]
 
 === Scrum Developer Role
 
-Here the official definition of the product owner role taken from the {ref-scrumguide}.
+Here the official definition of the developer team member role taken from the {ref-scrumguide}.
 
 *Developers* are the people in the Scrum Team that are committed to creating any aspect of a usable Increment each Sprint.
 
-The specific skills needed by the Developers are often broad and will vary with the domain of work.
+The specific skills needed by the https://scrumguides.org/scrum-guide.html#developers[Developers] are often broad and will vary with the domain of work.
 However, the Developers are always accountable for:
 
-* Creating a plan for the Sprint, the Sprint Backlog;
-* Instilling quality by adhering to a Definition of Done;
-* Adapting their plan each day toward the Sprint Goal; and,
+* Creating a plan for the Sprint, the Sprint Backlog,
+* Instilling quality by adhering to a Definition of Done,
+* Adapting their plan each day toward the Sprint Goal,
 * Holding each other accountable as professionals.
 
 === Certifications
@@ -56,16 +56,16 @@ The https://www.scrum.org[Scrum.org] certifications never expire.
 The _Scrum Developer_ learning objectives for the first level are:
 
 . Lean, Agile & Scrum
-.. practice utilizing a sprint backlog.
+.. practice utilizing a https://scrumguides.org/scrum-guide.html#sprint-backlog[sprint backlog].
 .. describe the responsibility of the Scrum team for turning PBIs in the sprint backlog into increments of value.
-.. organize and demonstrate the daily Scrum.
+.. organize and demonstrate the https://scrumguides.org/scrum-guide.html#daily-scrum[daily Scrum].
 .. list at least three attributes of PBIs.
 .. give at least three examples of how a Scrum team will inspect and adapt PBIs during product backlog refinement.
 .. discuss at least five elements of a definition of done that ensure the increment provides information that enhances transparency and focus against which progress can be measured.
 . Collaboration & Team Dynamics
 .. explain at least three differences between a working group and a team.
 .. discuss at least three attributes of effective teams.
-.. demonstrate "working together as one team."
+.. demonstrate _working together as one team_.
 .. describe at least three benefits of developers interacting directly with customers and users.
 .. restate at least three ways a Scrum team may collaborate with stakeholders, customers, and/or users during the sprint.
 . Architecture & Design
@@ -77,7 +77,7 @@ The _Scrum Developer_ learning objectives for the first level are:
 .. describe at least three benefits of refactoring to an agile software development effort.
 . Test Driven Development (TDD)
 .. explain test-first as a design and development approach and list three benefits.
-.. list at least three differences between “traditional” and “agile” testing.
+.. list at least three differences between _traditional_ and _agile_ testing.
 .. explain the importance of refactoring in the TDD cycle.
 .. describe at least three qualities of a good agile testing approach.
 . Integrating Continuously
@@ -95,18 +95,20 @@ The _Scrum Developer_ learning objective example for the first level are:
 .. This could include asking for clarification, adding acceptance criteria, sizing or estimating items, breaking them down into smaller items.
 .. For software, a definition of done could state that each increment fulfills the acceptance criteria, contains no blocking defects, is integrated into the system, is properly tracked in a version control system, and is documented according to the necessary documentation guidelines.
 There could be other elements, too.
-The point of this LO is to raise the awareness of done, especially “done for whom?”.
+The point of this LO is to raise the awareness of done, especially _done for whom?_.
 . _ Collaboration & Team Dynamics_
 .. This could include stable membership, reaching a shared goal by working together, self-management.
 .. Example definition of team: small number of people with complementary skills, committed to a common purpose, performance goal and approach, for which they are mutually accountable.Example: T-shaped skill profile.
 .. Pair programming, pair designing, pair working in general.
 Creating something – code or non-technical – in a Scrum simulation.
 .. Shorter feedback loops, less work-in-progress, less mis-interpretation of needs, direct feedback of the working solution, actually trying the built product
-.. During sprint review while obtaining feedback regarding the latest increment, during sprint review while identifying what kind of changes to the product backlog are a helpful response to changing circumstances, during product backlog refinement, during a story mapping workshop, observing users using the product, interview users how the currently solve their problem, “friendly users” actively using the new product and giving feedback, invite the sprint review
+.. During https://scrumguides.org/scrum-guide.html#sprint-review[sprint review] while obtaining feedback regarding the latest increment, during sprint review while identifying what kind of changes to the product backlog are a helpful response to changing circumstances, during product backlog refinement, during a story mapping workshop, observing users using the product, interview users how they currently solve their problem, _friendly users_ actively using the new product and giving feedback, invite the sprint review
 . Architecture and Design
 .. Foster understanding of the work, improve shared ownership and responsibility, improve estimability and reliability, reduce defects, avoid accumulation of technical debt
 .. This could include test first, quick design sessions, using spikes to understand a new technology, constant refactoring, metaphor, conversational modelling, CRC cards, pair programming.
-.. Reversibility, KISS; DRY; YAGNI; decide at the last responsible moment; responsive, resilient, elastic, message-driven (Reactive Manifesto), SOLID.
+.. Reversibility, https://en.wikipedia.org/wiki/KISS_principle[KISS]; https://en.wikipedia.org/wiki/Don%27t_repeat_yourself[DRY];
+https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI]; decide at the last responsible moment; responsive, resilient, elastic, message-driven (Reactive Manifesto),
+https://en.wikipedia.org/wiki/SOLID[SOLID].
 . _Refactoring_
 .. Refactoring is the practice of improving a system without changing it’s observable behavior.
 .. Refactoring fosters automated testing, improves readability and maintainability; it can support improving system performance, counter technical debt, and improve extensibility.
@@ -128,7 +130,7 @@ Using CI is highly recommendable for getting to at least one increment per sprin
 CI helps to get this transparency about what is working and what isn’t.
 Without CI, the Scrum team might probably not know the actual status of the system for days.
 ... Example 3: In the sprint review, only done PBIs are inspected.
-CI improves the probability of having done PBIs at the end of the sprint.
+CI improves the probability of having done PBIs at the end of the https://scrumguides.org/scrum-guide.html#the-sprint[sprint].
 .. Automation tools reduce manual repetition, single repository acts as document of record, configuration as code for repeatable error-free process and support continuous delivery
 
 You can self-study the Scrum developer objectives <<scrum-developer-learning-objectives>> and <<scrum-developer-advanced-learning-objectives>>.
@@ -150,7 +152,10 @@ Technical universities in Switzerland provide formal training in project leaders
 The formation provides a certificate of advanced study CAS in the field.
 Current available certificates of advanced study offering are for example:
 
-*
+* HSLU https://www.hslu.ch/de-ch/informatik/weiterbildung/digital-value-creation/cas-devops/[CAS DevOps Leadership and Agile Methods]
+* ZHAW https://www.zhaw.ch/de/engineering/weiterbildung/detail/kurs/cas-software-engineering/[CAS Software Engineering]
+* BFH https://www.bfh.ch/de/weiterbildung/cas/agiles-software-engineering-projektmanagement/[CAS Agile Software Engineering]
+* Ost FH https://www.ost.ch/de/weiterbildung/weiterbildungsangebot/informatik/mas-software-engineering[MAS Software Engineering]
 
 [bibliography]
 === Literature
@@ -171,24 +176,29 @@ Scrum Alliance. 2021
 https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Certifications/CSD/E_A_CSD_LO_examples_2021.pdf[Scrum
  Alliance Certified Scrum Advanced Developer Learning Objectives Examples].
 Scrum Alliance. 2017
-- [[[agile-software-architecture, 5]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream].
+- [[[agile-software-architecture, 5]]]
+link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream].
 Marcel Baumann. 2021
 - [[[professional-scrum-team, 6]]]
 https://www.amazon.com/dp/B08BW6HP7G[The professional Scrum team: Growing and Empowering Cross-Functionality and Resiliency in a Complex World].
 Peter Götz, Uwe Schirmer, Kurt Bittner.
 Addison-Wesley. 2021
-- [[[pragmatic-programmer, 6]]] https://www.amazon.com/dp/0135957052[The Pragmatic Programmer: Your Journey to Mastery (20th Anniversary Edition)].
+- [[[pragmatic-programmer, 7]]]
+https://www.amazon.com/dp/0135957052[The Pragmatic Programmer: Your Journey to Mastery (20th Anniversary Edition)].
 Andrew Hunt & David Thomas. 2019
-* [[[software-craftsman, 7]]] https://www.amazon.com/dp/0134052501[The Software Craftsman: Professionalism, Pragmatism, Pride].
+- [[[software-craftsman, 8]]]
+https://www.amazon.com/dp/0134052501[The Software Craftsman: Professionalism, Pragmatism, Pride].
 Sandro Mancuso. 2015
-* [[[extreme-programming, 8]]] https://www.amazon.com/dp/0321278658[Extreme Programming Explained: Embrace Change].
+- [[[extreme-programming, 9]]]
+https://www.amazon.com/dp/0321278658[Extreme Programming Explained: Embrace Change].
 Ken Beck. 2005
-- [[[scrum-master-formation, 9]]]
-link:../../2021/scrum-master-formation[Scrum Master Formation].
+- [[[scrum-master-formation, 10]]] link:../../2021/scrum-master-formation[Scrum Master Formation].
 Marcel Baumann. 2021
-- [[[product-owner-formation, 10]]]
-link:../../2021/product-owner-formation[Product Owner Formation].
+- [[[product-owner-formation, 11]]] link:../../2021/product-owner-formation[Product Owner Formation].
 Marcel Baumann. 2021
-- [[[scrum-developer-formation, 11]]]
-link:../../2021/scrum-developer-formation[Scrum Developer Formation].
+- [[[scrum-developer-formation, 12]]] link:../../2021/scrum-developer-formation[Scrum Developer Formation].
 Marcel Baumann. 2021
+- [[[detecting-agile-bullshit, 13]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
+Marcel Baumann. 2019
+- [[[scrum-guide, 13]]] https://scrumguides.org/scrum-guide.html[Scrum Guide]
+Jeff Sutherland, Ken Schwaber. 2020

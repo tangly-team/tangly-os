@@ -25,7 +25,7 @@ http://www.swissq.it/[SwissQ] has published a "SwissQ Agile Trends & Benchmarks 
 The study can be downloaded as PDF from their website.
 See link:../../2016/agile-trends-switzerland-2012[Agile Trends Switzerland 2012].
 
-Below some of the findings of the study.
+Below some findings of the study.
 
 === Major Hurdles When Introducing Agile Approaches
 

@@ -21,7 +21,7 @@ Here the official definition of the product owner role taken from the {ref-scrum
 The *Scrum Master* is accountable for establishing *Scrum* as defined in the Scrum Guide.
 They do this by helping everyone understand Scrum theory and practice, both within the Scrum Team and the organization.
 
-The Scrum Master is accountable for the Scrum Team’s effectiveness.
+The https://scrumguides.org/scrum-guide.html#scrum-master[Scrum Master] is accountable for the Scrum Team’s effectiveness.
 They do this by enabling the Scrum Team to improve its practices, within the Scrum framework.
 
 Scrum Masters are true leaders who serve the Scrum Team and the larger organization.
@@ -80,23 +80,26 @@ The _Scrum Master_ learning objectives for the first level are:
 .. discuss how and why the Product Owner maintains authority over the product while working collaboratively with the Development Team and stakeholders.
 .. list at least five characteristics of the Development Team.
 .. give one example of how a Scrum Team will inspect and adapt and increase transparency at each of the Scrum events.
-.. describe at least three responsibilities for the Development Team, Product Owner, and Scrum Master during Sprint Planning, Daily Scrum, Sprint Review, and Retrospective.
-.. describe why the Sprint Goal does not change during a Sprint.
+.. describe at least three responsibilities for the Development Team, Product Owner, and Scrum Master during
+https://scrumguides.org/scrum-guide.html#sprint-planning[Sprint Planning], https://scrumguides.org/scrum-guide.html#daily-scrum[Daily Scrum],
+https://scrumguides.org/scrum-guide.html#sprint-review[Sprint Review], and https://scrumguides.org/scrum-guide.html#sprint-retrospective[Sprint Retrospective].
+.. describe why the Sprint Goal does not change during a https://scrumguides.org/scrum-guide.html#the-sprint[Sprint].
 .. define the outcome of every Sprint.
 .. discuss at least three reasons why the increment must be brought to the current definition of _Done_ regardless of whether the Product Owner chooses to release the increment.
-.. discuss the focus of the activities of the Product Owner and Development Team during the two topics of Sprint Planning: the ‘What’ and the ‘How.’
+.. discuss the focus of the activities of the Product Owner and Development Team during the two topics of Sprint Planning: the _What_ and the _How_.
 .. practice writing a Sprint Goal.
 .. discuss at least three ways the Daily Scrum differs from a status meeting and why the various constraints exist to support the Development Team.
-.. describe at least three activities that occur during the Sprint Review other than; a demonstration of the increment.
+.. describe at least three activities that occur during the Sprint Review other than; a demonstration of the
+https://scrumguides.org/scrum-guide.html#increment[increment].
 .. identify at least three potential outcomes for a Sprint Review.
 .. describe at least two approaches to conduct a Sprint Retrospective.
-.. identify at least three essential characteristics of the Product Backlog.
-.. list at least four attributes of a Product Backlog item.
-.. identify at least three essential characteristics of the Sprint Backlog.
+.. identify at least three essential characteristics of the https://scrumguides.org/scrum-guide.html#product-backlog[Product Backlog].
+.. list at least four attributes of a https://scrumguides.org/scrum-guide.html#product-backlog[Product Backlog] item.
+.. identify at least three essential characteristics of the https://scrumguides.org/scrum-guide.html#sprint-backlog[Sprint Backlog].
 .. demonstrate how the Sprint Backlog can be changed without endangering the Sprint Goal.
-.. explain the importance of a strong definition of “Done” and describe at least two risks associated with a weaker definition of _Done_.
-.. outline at least one way to create a definition of “Done.”
-.. identify at least two reasons why multiple teams working on the same Product Backlog have a shared and consistent definition of _Done_.
+.. explain the importance of a strong definition of _Done_ and describe at least two risks associated with a weaker definition of _Done_.
+.. outline at least one way to create a definition of _Done_.
+.. identify at least two reasons why multiple teams working on the same https://scrumguides.org/scrum-guide.html#product-backlog[Product Backlog] have a shared and consistent definition of _Done_.
 . _Scrum Master Core Competencies_
 .. describe at least three situations in which the Scrum Master could serve the needs of the Scrum Team or organization through facilitation.
 .. demonstrate at least three techniques for facilitating group decision making.
@@ -120,6 +123,7 @@ The _Scrum Master_ learning objectives for the first level are:
 
 You can self-study the Scrum Master objectives <<scrum-master-learning-objectives>>, <<scrum-master-advanced-learning-objectives>> with the official scrum team book <<professional-scrum-team>>.
 The book is well-written and covers all required topics.
+Be a professional knowledge worker and support your organization on the agile path <<detecting-agile-bullshit>>.
 
 A reading list can be found under
 https://www.scrum.org/resources/suggested-reading-professional-scrum-master[Suggested Reading Professional Scrum Master].
@@ -131,8 +135,8 @@ I published a list of seminal works for interested Scrum masters under link:../.
 image::2021-08-03-pmi-talent-triangle.png[width=420,height=360,role=left]
 
 An interesting development is the addition of tailored project management trainings emphasizing agile approaches.
-The biggest organization https://www.pmi.org[PMI] has a whole agile based on https://www.pmi.org/certifications/agile-certifications[Disciplined Agile
-Design] _DAD_.
+The biggest organization https://www.pmi.org[PMI] has a whole set of agile certifications based on
+https://www.pmi.org/certifications/agile-certifications[Disciplined AgileDesign] _DAD_.
 
 I expect the emphasis on agile approaches to markantly increase in the next years.
 
@@ -167,12 +171,13 @@ https://www.amazon.com/dp/B08BW6HP7G[The professional Scrum team: Growing and Em
  in a Complex World].
 Peter Götz, Uwe Schirmer, Kurt Bittner.
 Addison-Wesley. 2021
-- [[[scrum-master-formation, 5]]]
-link:../../2021/scrum-master-formation[Scrum Master Formation].
+- [[[scrum-master-formation, 5]]] link:../../2021/scrum-master-formation[Scrum Master Formation].
 Marcel Baumann. 2021
-- [[[product-owner-formation, 6]]]
-link:../../2021/product-owner-formation[Product Owner Formation].
+- [[[product-owner-formation, 6]]] link:../../2021/product-owner-formation[Product Owner Formation].
 Marcel Baumann. 2021
-- [[[scrum-developer-formation, 7]]]
-link:../../2021/scrum-developer-formation[Scrum Developer Formation].
+- [[[scrum-developer-formation, 7]]] link:../../2021/scrum-developer-formation[Scrum Developer Formation].
 Marcel Baumann. 2021
+- [[[detecting-agile-bullshit, 8]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
+Marcel Baumann. 2019
+- [[[scrum-guide, 9]]] https://scrumguides.org/scrum-guide.html[Scrum Guide]
+Jeff Sutherland, Ken Schwaber. 2020

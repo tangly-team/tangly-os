@@ -29,6 +29,9 @@ They clearly acknowledged that this
 https://stefanedbrittain.medium.com/the-insidious-institutionalisation-of-water-scrum-fall-4af7de8865b9[Water-Scrum-Fall]
 is only needed because administration are strongly hierarchical and unable to adapt to the changes over the development of the solution.
 
+Bachelors in Swiss technical universities are still trained with obsolete methodologies such as
+https://www.hslu.ch/de-ch/informatik/studium/soda/[SoDa], a variation of the dead https://en.wikipedia.org/wiki/Rational_Unified_Process[RUP] method.
+
 The https://swissq.it/en/[SwissQ] report provides empirical data where Swiss companies stand in 2021.
 
 === Main Success Factors
@@ -122,7 +125,7 @@ Agile approaches are steadily making progress in Switzerland.
 Empirical data indicate agile approaches are more successful than hybrid ones.
 I hope we can get rid of hybrid agile and in particular of the Swiss Hermes method in the next years.
 
-[cite, Henrik Kniberg]
+[cite,Henrik Kniberg]
 ____
 Don’t scale agile... descale your organization.
 ____

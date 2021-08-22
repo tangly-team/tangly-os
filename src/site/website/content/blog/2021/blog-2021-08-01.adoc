@@ -147,6 +147,15 @@ Exceptional agile leaders
 * Trust their teams,
 * Work actively to remove impediments by supporting process and structural changes in direction of value streams.
 
+Remember
+
+[quote,Adam Grant]
+____
+First Rule of Leadership:: Put your mission above your ego.
+Second Rule of Leadership:: If you do not care about your people, they will not care about your mission.
+Third Rule of Leadership:: If someone has to tell you the first two rules, you are not ready to lead yet.
+____
+
 Please look at the agile leadership program from https://www.scrumalliance.org/[Scrum Alliance] and https://www.scrum.org/[Scrum.org].
 
 Read the {ref-manifesto} text and the https://agilemanifesto.org/principles.html[Twelve Principles behind the Agile Manifesto].
@@ -173,3 +182,6 @@ Marcel Baumann. 2020
 - [[[pragmatic-craftsmanship, 6]]] link:../../2018/pragmatic-craftsmanship-professional-software-developer[Pragmatic Craftsmanship - Professional Software
 Developer].
 Marcel Baumann. 2018
+- [[[detecting-agile-bullshit, 7]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
+Marcel Baumann. 2019
+

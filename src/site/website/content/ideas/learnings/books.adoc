@@ -13,16 +13,14 @@ weight: 50
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 
-=== Agile
-
-.Agile Books
+.*Agile*
 [%collapsible]
 ====
 * https://www.amazon.com/dp/0134542843[Unlocking Agility: An Insider's Guide to Agile Enterprise Transformation].
 Jorgen Hesselberg. 2019
 * https://www.amazon.com/dp/0321437381[Implementing Lean Software Development: From Concept to Cash].
 Mary Poppendieck. 2007
-* https://www.amazon.com/dp/0321482751[Agile Software Development: The Cooperative Game (2nd Edition)].
+* https://www.amazon.com/dp/0321482751[Agile Software Development: The Cooperative Game, 2nd Edition].
 Allistair Cockburn. 2007
 * https://www.amazon.com/dp/0321712471[Management 3.0: Leading Agile Developers, Developing Agile Leaders].
 Juergen Appelo. 2011
@@ -32,15 +30,13 @@ Frederic Laloux. 2014
 Gary Hamel. 2007
 ====
 
-=== Scrum
-
-.Scrum Books
+.*Scrum*
 [%collapsible]
 ====
-* [[[scrum-pocket-guide, 2]]] https://www.amazon.com/dp/B08XWQ7DG9[Scrum A Pocket Guide 3ˆndˆ Edition].
+* https://www.amazon.com/dp/B08XWQ7DG9[Scrum A Pocket Guide, 3rd Edition].
 Gunther Verheyen.
 Van Haren Publishing. 2021
-* https://www.amazon.com/dp/1329224272[Scrum and XP from the trenches (2nd Edition)].
+* https://www.amazon.com/dp/1329224272[Scrum and XP from the trenches, 2nd Edition].
 Henrik Kniberg. 2015
 * https://www.amazon.com/dp/0133853624[The Scrum Field Guide: Agile Advice for Your First Year and Beyond].
 Mitchell Lacey. 2016
@@ -55,12 +51,9 @@ Jeff Sutherland. 2014
 * https://www.amazon.com/dp/B08BW6HP7G[The professional Scrum team: Growing and Empowering Cross-Functionality and Resiliency in a Complex World].
 Peter Götz, Uwe Schirmer, Kurt Bittner.
 Addison-Wesley. 2021
-
 ====
 
-=== Lean & Kanban
-
-.Lean & kanban Books
+.*Lean & kanban*
 [%collapsible]
 ====
 * https://www.amazon.com/dp/B00N4HZ6PK[Lean from the Trenches: Managing Large-Scale Projects with Kanban].
@@ -81,9 +74,7 @@ Michael Ballé & Freddy Ballé. 2014
 Michael Ballé. 2016
 ====
 
-=== Less & Other Scaling Frameworks
-
-.Less & Other Scaling Frameworks Books
+.*Less & Other Scaling Frameworks*
 [%collapsible]
 ====
 * https://www.amazon.com/dp/0321985710[Large-Scale Scrum: More with Less].
@@ -96,14 +87,12 @@ Craig Larmann & Bas Vodde. 2010
 Kurt Bittner. 2018
 ====
 
-=== Teams
-
-.Teams
+.*Teams*
 [%collapsible]
 ====
 * https://www.amazon.com/dp/013465711X[The Great Scrum Master].
 Zuzana Sochová. 2017
-* https://www.amazon.com/dp/B08XWQ7DG9[Scrum A Pocket Guide 3ˆndˆ Edition].
+* https://www.amazon.com/dp/B08XWQ7DG9[Scrum A Pocket Guide 3nd Edition].
 Gunther Verheyen.
 Van Haren Publishing. 2021
 * https://www.amazon.com/dp/0321637704[Coaching Agile Teams: A companion for Scrum Masters, Agile Coaches, and Project Managers in Transition].
@@ -112,13 +101,11 @@ Lyssa Adkins.2010
 Esther Derby and Diane Larsen. 2012
 * https://www.amazon.com/dp//0787947237[The Skilled Facilitator: A Comprehensive Resource for Consultants, Facilitators, Managers, Trainers and Coaches].
 Roger Schwarz. 2002
-* https://www.amazon.com/dp/03219[Peopleware: Productive Projects and Teams (3rd Edition)].
+* https://www.amazon.com/dp/03219[Peopleware: Productive Projects and Teams, 3rd Edition].
 Tom DeMarco & Timothy Lister. 2013
 ====
 
-=== Product Owner
-
-.Product Owner Books
+.*Product Owner*
 [%collapsible]
 ====
 * https://www.amazon.com//dp/0134686470[The Professional Product Owner: Leveraging Scrum as Competitive Advantage].
@@ -145,29 +132,38 @@ Cindy Alvarez. 2014
 Gojko Adzic. 2009
 ====
 
-=== Agile Architecture
-
-.Agile Architecture
+.*Agile Architecture*
 [%collapsible]
 ====
 * https://www.amazon.com/dp/1491986360[Building Evolutionary Architectures: Support for constant Change].
-Neal Ford & Rebecca Parson. 2017
-* https://www.amazon.com/dp/0134757599[Refactoring: Improving the Design of Existing Code (2nd Edition)].
-Martin Fowler. 2018
+Neal Ford, Rebecca Parson.
+O'Reilly. 2017. ISBN 978-1491986363
+* https://www.amazon.com/dp/0134757599[Refactoring: Improving the Design of Existing Code, 2nd Edition].
+Martin Fowler.
+Addison Wesley. 2018. ISBN 978-0134757599
 * https://www.amazon.com/dp/0321125215[Domain-Driven Design: Tackling Complexity in the Heart of Software].
-Eric Evans. 2011
+Eric Evans.
+Addison-Wesley. 2004. ISBN 978-0321125217
 * https://www.amazon.com/dp/0131177052[Working Effectively with Legacy Code].
-Michael Feathers. 2005
+Michael Feathers.
+Addison-Wesley. 2005. ISBN 978-0131177055
 * https://www.amazon.com/dp/0321213351[Refactoring to Patterns].
 Joshua Kerievsky. 2005
+* https://www.amazon.com/dp/B000SEIBB8[Design Patterns: Element of Reusable Object-Oriented Software].
+Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides.
+Addison-Wesley. 1995. ISBN 0-201-63361-2
+* https://www.amazon.com/dp/B09B5L4NVT[Building Microservices: Designing Fine-Grained Systems, 2nd Edition].
+Sam Newman.
+O'Reilly. 2021. ISBN 978-1492034025
+* https://www.amazon.com//dp/B00T3N7XB4[Building Microservices: Designing Fine-Grained Systems, 2nd Edition].
+Sam Newman.
+O'Reilly. 2015. ISBN 978-1491950357
 ====
 
-=== Technical Excellence
-
-.Technical Excellence
+.*Technical Excellence*
 [%collapsible]
 ====
-* https://www.amazon.com/dp/0135957052[The Pragmatic Programmer: Your Journey to Mastery (20th Anniversary Edition)].
+* https://www.amazon.com/dp/0135957052[The Pragmatic Programmer: Your Journey to Mastery, 20th Anniversary Edition].
 Andrew Hunt & David Thomas. 2019
 * https://www.amazon.com/dp/0134052501[The Software Craftsman: Professionalism, Pragmatism, Pride].
 Sandro Mancuso. 2015
@@ -176,20 +172,22 @@ Ken Beck. 2005
 * https://www.amazon.com/dp/0321534468[Agile Testing: A practical Guide for Testers and Agile Teams].
 Lisa Crispin and Janet Gregory. 2009
 * https://www.amazon.com/dp/0321967054[More Agile Testing: Learning Journeys for the Whole Team].
-Lisa Crispin and Janet Gregory. 2015
+Lisa Crispin, Janet Gregory. 2015
 * https://www.amazon.com/dp/0132350882[Clean Code].
-Robert C. Martin. 2009
+Robert Martin.
+Addison-Wesley. 2009. ISBN 978-0132350884
 * https://www.amazon.com/dp/0137081073[Clean Coder].
-Robert C. Martin. 2011
+Robert Martin.
+Addison-Wesley. 2011. ISBN 978-0137081073
 * https://www.amazon.com/dp/0134494164[Clean Architecture].
-Robert C. Martin. 2018
+Robert Martin.
+Addison Wesley. 2018. ISDN 978-0134494166
 * https://www.amazon.com/dp/0135781868[Clean Agile].
-Robert C. Martin. 2020
+Robert Martin.
+Addison-Wesley. 2020. ISDN 978-0135781869
 ====
 
-=== DevOps
-
-.DevOps Books
+.*DevOps*
 [%collapsible]
 ====
 * https://www.amazon.com/dp/B07B9F83WM[Accelerate: Building and Scaling High Performing Technology Organizations].
@@ -204,9 +202,7 @@ Gene Kim & Kevin Behr. 2013
 Jez Humble & David Farley. 2011
 ====
 
-=== Change Process
-
-.Change Process Books
+.*Change Process*
 [%collapsible]
 ====
 * https://www.amazon.com/dp/B019TM4P6Y[Fearless Change: Patterns for Introducing New Ideas].
@@ -219,9 +215,9 @@ John Kotter. 1996
 John Kotter. 2005
 * https://www.amazon.com/dp/1625271743[XLR8: Accelerate].
 John Kotter. 2014
-* https://www.amazon.com/dp/1119212049[Organizational Culture and Leadership (5th Edition)].
+* https://www.amazon.com/dp/1119212049[Organizational Culture and Leadership, 5th Edition].
 Edgar Schein. 2017
-* https://www.amazon.com//dp/1119212286[The Corporate Culture Survival Guide (3rd Edition)].
+* https://www.amazon.com//dp/1119212286[The Corporate Culture Survival Guide, 3rd Edition].
 Edgar Schein. 2019
 * https://www.amazon.com/dp/1609949811[Humble Inquiry: The Gentle Art of Asking instead of Telling].
 Edgar Schein. 2013
@@ -229,13 +225,22 @@ Edgar Schein. 2013
 Peter Senge. 2006
 ====
 
-=== Java
-
-.Java Books
+.*Java*
 [%collapsible]
 ====
-* https://www.amazon.com/dp/B078H61SCH[Effective Java: Best Practices for the Java Platform (3^rd^ Edition)].
-Joshua Bloch. 2018
+* https://www.amazon.com/dp/B078H61SCH[Effective Java: Best Practices for the Java Platform, 3rd Edition].
+Joshua Bloch.
+Addison-Wesley. 2017. ISBN 9780134685991.
+* https://www.amazon.com/dp/B078H61SCH[Effective Java: Best Practices for the Java Platform, 2nd Edition].
+Joshua Bloch.
+Addison-Wesley. 2008. ISBN 9780132778046.
+* https://www.amazon.com/dp/032133678X[Java Puzzlers: Traps, Pitfalls, and Corner Cases, 1st Edition]
+Joshua Bloch, Neal Gafter.
+Addison-Wesley. 2005. ISBN 032133678X
 * https://www.amazon.com/dp/B07CLFTVZS[Java by Comparison: Become a Java Craftsman in 70 Examples].
-Simon Harrer. 2018
+Simon Harrer.
+The Pragmatic Programmers. 2018
+* https://www.amazon.com/dp/B075FZK9DC[Java 9 Modularity: Patterns and Practices For Developing Maintainable applications].
+Sander Mark, Paul Bakker.
+O'Reilly. 2017
 ====

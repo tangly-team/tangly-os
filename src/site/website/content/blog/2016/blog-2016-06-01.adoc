@@ -72,7 +72,7 @@ Each Increment is additive to all prior Increments and thoroughly tested, ensuri
 As Scrum Teams mature, it is expected that their _Definition of Done_ will expand to include more stringent criteria for higher quality.
 
 The Increment is the sum of all the Product Backlog items completed during a Sprint and all previous Sprints.
-At the end of a Sprint, the new Increment must be ““Done””, which means it must be in useable condition and meet the Scrum Team’s Definition of “Done”.
+At the end of a Sprint, the new Increment must be ““Done””, which means it must be in usable condition and meet the Scrum Team’s Definition of “Done”.
 
 _It must be in useable condition regardless of whether the Product Owner decides to actually release it._
 ____

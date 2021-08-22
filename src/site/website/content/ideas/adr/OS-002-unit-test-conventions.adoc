@@ -25,6 +25,13 @@ Additional file systems can only be used in Java if all operations are performed
 Path objects have a reference to the file system; File objects always referenced the default file system.
 . When writing to the default file system use the root directory ``/tmp/`` available in all Unix like operating systems.
 
+[CAUTION]
+====
+Avoid writing files to a local file system.
+This approach is slow, cumbersome and errorprone.
+Use in-memory file systems.
+====
+
 === Consequences
 
 * We have a dependency to an open source product currently managed by Google.

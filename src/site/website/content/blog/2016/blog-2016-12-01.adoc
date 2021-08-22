@@ -37,7 +37,12 @@ Force them to work during weekends,
 * Attend weekly progress and escalation meetings to explain in details the status of your product,
 * Define the priority of the next activities.
 
-Now you as Scrum master or agile product manager have to perform important tasks
+image::2016-12-01-scrum-anti-patterns.jpg[role=center]
+The above Scrum anti-patterns picture show more common misunderstandings about the Scrum framework.
+
+As a Scrum practitioner, you should regularly read material, attend formal trainings, and seek advanced certifications.
+
+You as Scrum master or agile product manager have to perform important and useful tasks:
 
 * Help to remove impediments to increase velocity of team,
 * Coach team to implement Scrum and reflect on their activities,
@@ -64,7 +69,7 @@ https://less.works/less/adoption/getting-started.html[Keep product managers away
 
 === Remarks
 
-For all https://www.pmi.org/[Project Management Institute] +PMI_ fans, the institute has acquired _Disciplined Agile Delivery_ _DAD_ in 2019.
+For all https://www.pmi.org/[Project Management Institute] _PMI_ fans, the institute has acquired _Disciplined Agile Delivery_ _DAD_ in 2019.
 The PMI-ACP is working on integrating agile approaches in the official PMI approach.
 
 An official definition of Scrum and the responsibilities of the team, product owner and Scrum master are documented in {ref-scrumguide}.

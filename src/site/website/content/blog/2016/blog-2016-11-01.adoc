@@ -77,6 +77,8 @@ You can react to new opportunities faster than competitors.
 
 === Self Assessment
 
+image::2016-10-01-transformation-values.jpg[width=420,height=360,role=left]
+
 The above concepts are comprehensible.
 How do you know if you are moving in the right direction.
 A few concrete tests help you find out if you are an agile department or company.
