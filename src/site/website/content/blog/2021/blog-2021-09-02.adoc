@@ -1,7 +1,7 @@
 ---
 title: "What I Learnt Teaching Agile Software Architecture"
 linkTitle: "Agile Software Architecture"
-date: 2021-09-05
+date: 2021-09-02
 tags: ["agile", "architecture", "series-students"]
 ---
 
@@ -10,7 +10,6 @@ tags: ["agile", "architecture", "series-students"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
 
 image::2021-09-01-head.png[width=420,height=360,role=left]
 I am teaching agile software architecture and techniques _SWAT_ as advanced bachelor level lecture weighted with 3 ECTS.

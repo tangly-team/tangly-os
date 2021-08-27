@@ -10,7 +10,6 @@ tags: ["java"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
 
 image::2021-10-02-head.png[width=420,height=360,role=left]
 I truly love the new release rhythm of the Java ecosystem.
@@ -65,7 +64,7 @@ Actually, in the case of the weeks to months' estimation, I managed to do it in 
 It is often a matter of simply trying it, and if you're lucky, you manage to upgrade it quite easily.
 Depending on what dependencies you use, or what code bases you use, it might be a bigger challenge.
 
-[INFORMATION]
+[NOTE]
 ====
 The usual discussion about Oracle Java licensing is the typical https://en.wikipedia.org/wiki/Fear,_uncertainty,_and_doubt[FUD] regarding Java and Oracle.
 OpenJDK and Oracle Java are as different as Red Hat Fedora and Red Hat Enterprise Linux.
@@ -86,7 +85,7 @@ If you do not have that time available to upgrade every six months, you might op
 However, then, each time you need to upgrade your long term support version, that actually might take quite a bit more time as well.
 In the end, I think staying on long term support versions or using the latest version should not differ much in the investment in upgrading.
 
-[INFORMATION]
+[IMPORTANT]
 ====
 JDK 17 *is* a LTS version.
 You must anyway migrate to JDK 17.
@@ -108,8 +107,10 @@ Get everything built and tested over there.
 Then at the end, release it to the other environments, including the production environment.
 When upgrading Java, you might upgrade from 8 to 17 at once.
 If you've encountered any issues, it might be hard to pinpoint what's caused the exact issue.
+
 Therefore, it might be better to do the migration, step by step.
 Maybe you migrate from 8 to 11 first, or maybe from 8 to 9. Then if you encounter any issues, you can easily see what's changed in that Java version.
+
 Answers can often by found through Google or StackOverflow.
 That way, it's easier to get the upgrades done instead of in one big bang.
 
@@ -127,26 +128,27 @@ The official list of new features is
 
 https://openjdk.java.net/jeps/306[JEP 306] - Restore Always-Strict Floating-Point Semantics::
 Very useful if you are a mathematical library developer
-https://openjdk.java.net/jeps/306[JEP 356] - Enhanced Pseudo-Random Number Generators::
+https://openjdk.java.net/jeps/356[JEP 356] - Enhanced Pseudo-Random Number Generators::
 Simpler usage of random generators in the API
-https://openjdk.java.net/jeps/306[JEP 382] - New macOS Rendering Pipeline::
+https://openjdk.java.net/jeps/382[JEP 382] - New macOS Rendering Pipeline::
 Support of Metal graphics API on MacOS
-https://openjdk.java.net/jeps/306[JEP 391] - macOS/AArch64 Port::
+https://openjdk.java.net/jeps/391[JEP 391] - macOS/AArch64 Port::
 Support of Apple proprietary processors
-https://openjdk.java.net/jeps/306[JEP 398] - Deprecate the Applet API for Removal::
+https://openjdk.java.net/jeps/398[JEP 398] - Deprecate the Applet API for Removal::
 Applets are dead for years, now the associated API is deprecated and will be removed in the future
-https://openjdk.java.net/jeps/306[JEP 403] - Strongly Encapsulate JDK Internals::
+https://openjdk.java.net/jeps/403[JEP 403] - Strongly Encapsulate JDK Internals::
 Stop using unsafe operations in your libraries
-https://openjdk.java.net/jeps/306[JEP 406] - Pattern Matching for switch (Preview)::
+https://openjdk.java.net/jeps/406[JEP 406] - Pattern Matching for switch (Preview)::
 Pattern matching is the new kid on the block.
 We have now nice features for the switch expression
-https://openjdk.java.net/jeps/306[JEP 407] - Remove RMI Activation::
-https://openjdk.java.net/jeps/306[JEP 409] - Sealed Classes::
-https://openjdk.java.net/jeps/306[JEP 410] - Remove the Experimental AOT and JIT Compiler::
-https://openjdk.java.net/jeps/306[JEP 411] - Deprecate the Security Manager for Removal::
-https://openjdk.java.net/jeps/306[JEP 412] - Foreign Function & Memory API (Incubator)::
-https://openjdk.java.net/jeps/306[JEP 414] - Vector API (Second Incubator)::
-https://openjdk.java.net/jeps/306[JEP 415] - Context-Specific Deserialization Filters::
+https://openjdk.java.net/jeps/407[JEP 407] - Remove RMI Activation::
+https://openjdk.java.net/jeps/409[JEP 409] - Sealed Classes::
+Sealed class release completes the implementation of https://en.wikipedia.org/wiki/Algebraic_data_type[algebraic data types]
+https://openjdk.java.net/jeps/410[JEP 410] - Remove the Experimental AOT and JIT Compiler::
+https://openjdk.java.net/jeps/411[JEP 411] - Deprecate the Security Manager for Removal::
+https://openjdk.java.net/jeps/412[JEP 412] - Foreign Function & Memory API (Incubator)::
+https://openjdk.java.net/jeps/414[JEP 414] - Vector API (Second Incubator)::
+https://openjdk.java.net/jeps/415[JEP 415] - Context-Specific Deserialization Filters::
 
 
 The new features you can use on a daily basis are the following.

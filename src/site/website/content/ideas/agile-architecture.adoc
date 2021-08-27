@@ -13,8 +13,7 @@ weight: 20
 :homepage: https://www.tangly.net/
 :keywords: agile, architecture, Scrum, LeSS
 :company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
-:sectnums:
+-:sectnums:
 :toc:
 
 == Agile Architecture Principles

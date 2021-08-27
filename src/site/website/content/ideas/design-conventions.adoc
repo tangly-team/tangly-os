@@ -11,8 +11,7 @@ draft: false
 :description: Design conventions for the open source components of tangly
 :keywords: agile, architecture, design
 :company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
-
+-
 === Audit Event Conventions
 
 The _event_ field is one of of the following values

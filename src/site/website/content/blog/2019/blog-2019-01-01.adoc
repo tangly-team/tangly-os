@@ -10,9 +10,8 @@ tags: ["agile"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
 
-image::2019-01-01-head.jpg[[width=420, height=360, role=left]
+image::2019-01-01-head.jpg[width=420, height=360, role=left]
 The Defense Innovation Board https://innovation.defense.gov/[DIB] advises the secretary of defense of the United States of America.
 
 Members of the board are recognizable names like Eric Schmidt who was CEO of Google and Alphabet, or Instagram COO Marne Levine.
@@ -117,6 +116,8 @@ For a team truly working agile, the answer to all of these questions should be a
 The above questions are taken directly from the document
 https://media.defense.gov/2018/Oct/09/2002049591/-1/-1/0/DIB_DETECTING_AGILE_BS_2018.10.05.PDF[Detecting Agile Bullshit].
 Evaluate organization to find out if they or you are agile.
+
+image::2019-01-01-agile-bullshit.jpg[role=center]
 
 Read my related set of blogs How Healthy is Your Product?
 

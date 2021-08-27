@@ -11,8 +11,7 @@ weight: 50
 :revdate: 2020-05-31
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
-
+-
 .*Agile*
 [%collapsible]
 ====

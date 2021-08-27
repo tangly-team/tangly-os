@@ -10,7 +10,6 @@ tags: ["agile", "series-swiss-agile-trends"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
 
 image::2016-10-01-head.jpg[width=420,height=360,role=left]
 What are the main hurdles to introduce agile approaches in Swiss companies

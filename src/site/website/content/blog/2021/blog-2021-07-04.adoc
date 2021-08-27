@@ -10,9 +10,17 @@ tags: ["agile"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
 
 image::2021-07-04-head.jpg[width=420,height=360,role=left]
+You are acting as product owner in your organization.
+
+Congratulations, working as a professional https://scrumguides.org/scrum-guide.html#product-owner[product owner] is a fulfilling and exciting job.
+
+You should attend professional training.
+
+Being a product owner and requirements engineer is a profession, not a hobby!
+
+Formal training is often the difference between being a professional instead of just pretending to be one.
 
 === Product Owner Role
 
@@ -166,6 +174,6 @@ Marcel Baumann. 2021
 - [[[product-owner-formation, 8]]] link:../../2021/product-owner-formation[Product Owner Formation].
 Marcel Baumann. 2021
 - [[[scrum-developer-formation, 9]]] link:../../2021/scrum-developer-formation[Scrum Developer Formation].
-Marcel Baumann. 2021 -
+Marcel Baumann. 2021
 - [[[scrum-guide, 10]]] https://scrumguides.org/scrum-guide.html[Scrum Guide]
 Jeff Sutherland, Ken Schwaber. 2020

@@ -10,8 +10,6 @@ tags: ["agile", "series-swiss-agile-trends"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
-:mmdc:/usr/local/opt/mermaid-cli/bin/mmdc
 
 image::2021-06-02-head.jpg[width=420,height=360,role=left]
 As a modern leader, you are aware of the importance of transforming your organization to become more agile.

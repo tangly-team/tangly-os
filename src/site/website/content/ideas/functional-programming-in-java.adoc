@@ -13,8 +13,7 @@ weight: 70
 :description: Functional Programmingin Java
 :keywords: agile, architecture, functional programming
 :company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
-:sectnums:
+-:sectnums:
 :toc:
 
 == Introduction

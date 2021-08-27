@@ -10,7 +10,6 @@ tags: ["design", "series-agile-design"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
 
 image::2020-06-01-head.jpg[width=420,height=360,role=left]
 In computer programming and software design, code refactoring is the process of restructuring existing computer code without changing its external behavior.

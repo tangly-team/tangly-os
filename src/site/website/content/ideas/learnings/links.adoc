@@ -11,8 +11,7 @@ weight: 60
 :revdate: 2020-05-31
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
-
+-
 === Scrum Food For Thoughts Links
 
 We are continuously looking for fresh approaches and implementing continuous improvements.

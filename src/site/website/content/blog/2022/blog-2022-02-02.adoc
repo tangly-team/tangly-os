@@ -10,27 +10,52 @@ tags: ["agile"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
 
 image::2022-02-02-head.jpg[width=420,height=360,role=left]
 The majority of software product development initiatives uses an agile approach.
+The most popular framework is {ref-scrum}.
+
 It is natural that organizations would gravitate towards the many benefits agile realizes.
 
-The outsourcing market is undergoing constant evolution.
-Traditionally, cost reduction was the key driver for software development outsourcing, but now it doesn't even make the top five, according to Deloitte's 2018 Global Outsourcing Survey.
+Scarce resources and time-to-market constraints have driven the implementation of shoring development initiatives.
+Awareness that talent can be found at any location speed-up the trend.
 
-Instead, the top five reasons organizations opt for IT outsourcing are:
+The outsourcing market is undergoing constant evolution.
+Traditionally, cost reduction was the key driver for software development outsourcing, but now it doesn't even make the top five, according to
+https://www2.deloitte.com/content/dam/Deloitte/us/Documents/process-and-operations/us-cons-global-outsourcing-survey.pdf[Deloitte's 2018 Global Outsourcing
+Survey].
+
+CAUTION
+
+====
+Cost is back as the major driver in 2020. The COVID-19 pandemy had a huge impact in 2020.
+====
+
+Instead, the top five reasons organizations opt for IT outsourcing in 2018 are:
 
 * Catalyst for innovation (64%)
 * Improvement of speed and time to market (63%)
 * Improvement of performance (54%)
 * Enhancement of scalability and rapid elasticity (54%)
-* Access to new tech (51%)
+* Access to new technology (51%)
 
-Communication is essential to agile software development.
+The top five reasons organizations opt for IT outsourcing in 2020 are:
+
+* Cost (70%)
+* Flexibility (40%)
+* Speed to market (20%)
+* Access to tools and processes (15%)
+* Agility (15%)
+
+Communication is essential to successfully implement agile software development.
 And not just any form of communication.
 It has to be in real-time.
-Your team needs to have access to you, and vice versa, throughout the workday so that you can work through issues immediately.
+Your team needs to have access to you, and vice versa, throughout the workday so that you and your team can work through issues immediately.
+
+An agile shoring approach can be very successful.
+
+Your organization needs to take the transformation seriously.
+You must invest in cultural changes and adapt your processes to realize the full potential.
 
 === Team Models
 
@@ -41,31 +66,31 @@ Your team needs to have access to you, and vice versa, throughout the workday so
 ^|Managed Team
 ^|Outsourced Team
 
-|Needs
+|_Needs_
 |Get additional development capacity for an existing team
 |Build a core development team to take over a product development
 |Team develops a custom solution for you, you get a finished product
 
-|Risk and Responsibility
+|_Risk and Responsibility_
 |Stay fully in charge of product development and team management
 |Share the risks and responsibility with the team and maintain some flexibility
 |External team fully responsible for building the team and developing the product from discovery to final release
 
-|Flexibility
+|_Flexibility_
 |Get maximum flexibility: interview the candidates, take all decisions, setup processes and policies.
 |Share hour product vision and product roadmap, make key technology decisions.
-The team ensures technology allignment, team training and motivation, professional growth and overall team management.
-|You providd ideas and requirements and the team delivers the product.
+The team ensures technology alignment, team training and motivation, professional growth and overall team management.
+|You provided ideas and requirements and the team delivers the product.
 Take full advantage of the team's expertise
 
-|Team Composition
+|_Team Composition_
 |Developers and a senior engineer to coach and support the developers
 |Full Scrum team with cross-functional team developers including senior designers, quality specialists, and architects.
-A Scrum master coaches the team and takes over member development and admnistrationt tasks
+A Scrum master coaches the team and takes over member development and administration tasks
 |Full Scrum team with cross-functional team developers including designers, quality specialists, architects and DevOps.
 A Scrum master and product owner round up the team capabilities.
 
-|Choose
+|_Choose_
 |Distributed team with smaller size
 |Local development team and remote product owner.
 You keep product responsibility
@@ -75,7 +100,7 @@ You keep product responsibility
 === Nearshore advantages
 
 Geographical and Cultural Proximity::
-Nearshore locations are located in or near Europe, making it easy to reach from most European cities via air connectio As a European nation.
+Nearshore locations are located in or near Europe, making it easy to reach from most European cities via air connection As a European nation.
 We share the same mentality, values, and business culture as our clients.
 It provides an excellent foundation for a long-lasting and productive nearshore partnership.
 Convenient time zone and no jet lag::
@@ -89,13 +114,13 @@ Compliance with European legislation can be achieved.
 === Risks
 
 Language::
-All documents and comments in the source code shall legible for all team members.
-Discussions and remote conference shall be held in a language availabe to all members.
-A shoring strategy implicates that this language must International English.
-All documents, emails, and chats must be written in English
+All documents and comments in the source code shall be legible for all team members.
+Discussions and remote conference shall be held in a language available to all members. +
+A shoring strategy implies this language must be International English.
+All documents, emails, and chats must therefore be written in English.
 Cultural Barriers::
 The shored team collaborators shall be integrated in the company as respected and valuable colleagues.
-Avoid any statements containing _we versus they_.
+Avoid any statements containing _we versus they_. +
 Meeting times should be good for all participants.
 Location of documents, source code, and artifacts should have the same availability and comfort for all members.
 Company Binding::
@@ -105,6 +130,23 @@ Agile Approaches::
 The various departments and locations should have similar approaches to agile frameworks and processes.
 A good solution is to standardize on {ref-scrum}.
 Train and certify all collaborations in {ref-scrum} and your technology stack to create common ground and vocabulary.
+
+=== Checklist
+
+Ask yourself if your company culture and processes treat all collaborators fairly.
+Is our company willing to:
+
+. write all project documentation, source code, emails, and chats in English?
+. hold all meetings, workshops and discussions in English?
+. train all collaborators in cultural aspects?
+. host physical meetings using round-robin on all locations?
+. schedule all meetings so that all locations have similar constraints for early or late work?
+. share financial and strategic information to allign all collaborators?
+. set up the infrastructure to not differentiate between company offices and nearshore locations?
+. buy all licenses so that all developers are using the same tools?
+. provide the same trainings, certifications and conference access to all developers?
+. support meritocracy?
+Any role can be held by a local or a remote collaborator?
 
 [bibliography]
 === Literature

@@ -3,6 +3,7 @@ title: "Contributing Guidelines"
 linkTitle: "Contributing Guidelines"
 weight: 1000
 date: 2020-09-10
+description: Contributing guidelines for the open source components of tangly OS product
 ---
 
 == Contribution Guidelines
@@ -10,7 +11,6 @@ date: 2020-09-10
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
 
 === How to contribute to {ref-tangly} Open Source Components
 

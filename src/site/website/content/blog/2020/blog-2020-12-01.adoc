@@ -10,13 +10,13 @@ tags: ["agile"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
 
 image::2020-12-01-head.jpg[width=420,height=360,role=left]
 At many customer sites I visit, I see a lot of effort being put into classifying and managing bugs.
 
 Their bug list may contain more than a thousand items.
 All are neatly documented with screenshots, ways to reproduce the problem and a severity and impact classification.
+In the worst case, a specialist has worked hard and estimated the effort to correct each of these bugs.
 
 A change management board meets every few weeks and decide which bugs have now a higher priority and should urgently be fixed.
 It means an angry customer called someone at C level and now his request must be handled.
@@ -39,7 +39,7 @@ Zero-Bug policy does not mean bug-free code in production; it means striving to 
 
 [cite,Ken Auer,eXtreme Programming]
 ____
-When a bug is found, tests are created before the bug is addressed.
+When a bug is found, tests are created before the bug is addressed. +
 A bug is not an error in logic; it is a test that was not written.
 ____
 
@@ -49,24 +49,24 @@ The rigorous Zero-baseline approach will force us to clean our code.
 Let us categorize the bugs you have and deal with them accordingly.
 
 . You have a few critical bugs that crash the system or don’t have a workaround.
-Prioritize and fix those.
+*Prioritize and fix those*.
 Your customers will be very thankful.
 Fix at least a handful of these critical problems in each sprint.
-. A big set of bugs that are already in production.
+. You own a big set of bugs that are already in production.
 They have been in your bug tracking system for quite a while.
-Delete those.
-If it is a costly problem your customers will fill a report.
+*Delete those*.
+If it is a costly problem your customers will fill a new report.
 Treat such bugs as critical bugs.
 . Establish a software craftsmanship culture.
 Stop delivering products with known errors.
 Correct them before delivery.
-Your product owner should reject any feature with known errors.
+Your https://scrumguides.org/scrum-guide.html#product-owner[product owner] should reject any feature with known errors.
 
 Bugs have a tendency to become obsolete pretty quickly in applications that are updated frequently.
 The steps to reproduce them become irrelevant, the functionality changes, the impact of the bug often gets lower.
 
 Please, don’t waste your time trying to update the documentation related to these bugs.
-You may lose a few valid ones, but trust me, someone will report it again if it’s still happening.
+You may lose a few valid ones, but trust me, someone will report it again if it is still happening.
 
 === Clean Code and Happy Customers
 
@@ -77,22 +77,23 @@ Bugs are like water leaks.
 If you leave them for too long, they can spoil your merchandise and slow down your business.
 ____
 
-Finally, to ensure this system works.
+Follow these steps to ensure this system works.
 
-* The bugs that the team decides to fix must be prioritized over regular work and must get fixed now.
+* The bugs that the team decides to fix must be prioritized over regular work and must get fixed *now*.
+In Scrum the https://scrumguides.org/scrum-guide.html#product-backlog[product backlog item] containing the bug has the highest priority.
 * In the beginning there will be more bugs to work through, as some bugs that were deleted will be reported again.
 * As the team shifts its focus to improved quality there will be fewer of them.
 This is truly a binary system with no wiggle room.
 * Bugs are either fixed now or deleted, there is no severity and no haggling about the classification of a bug!
-Good practice is before fixing the glitch write a unit test to reproduce the problem.
-You guarantee the users will never see again the same error.
-It is called non-regression testing and make your customers very happy.
+Good practice is before fixing the glitch to write a https://en.wikipedia.org/wiki/Unit_testing[unit test] to reproduce the problem.
+You guarantee your users will never see again the same error.
+It is called https://en.wikipedia.org/wiki/Regression_testing[non-regression testing] and make your customers very happy.
 * Are you ready to shift your focus from managing bugs to ensuring quality?
 And if not, why should I buy your product?
 
 === References
 
-See the excellent articles from Yassal Sundman working for the crisp company.
+See the excellent articles from https://www.linkedin.com/in/yassal-sundman/[Yassal Sundman] working for the crisp company.
 
 * https://blog.crisp.se/2018/08/27/yassalsundman/the-story-of-how-to-implement-a-zero-bug-policy[The Story of How to Implement a Zero Bug Policy]
 * https://blog.crisp.se/2018/02/05/yassalsundman/stop-managing-bugs-start-focusing-on-quality[Stop Managing Bugs, Start Focusing on Quality]

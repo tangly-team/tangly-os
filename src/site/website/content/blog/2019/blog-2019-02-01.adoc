@@ -10,15 +10,16 @@ tags: ["agile", "series-how-healthy"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
 
-image::2019-02-01-head.png[[width=420, height=360, role=left]
+image::2019-02-01-head.png[width=420, height=360, role=left]
 You are developing your application using agile and lean approaches.
 
 How can you check your approach and distill improvements?
+
 A health check of your product and your development approach is certainly a good solution.
 
 This post is the fourth and last of a set of articles identifying health checks with different focus.
+
 We will identify strengths, potential weaknesses and hopefully find room for improvement.
 
 What is your company culture and how does it focus collaborators to delight your customers.
@@ -38,14 +39,18 @@ ____
 
 A short check with a feedback workshop presenting the insights requires around two work days.
 A deeper and more intensive check requests more effort, between one and four weeks.
+
 Upon completion, you can also hire a coach to implement selected findings and improve durably the health of your application.
 The findings are often clear and the measures straightforward.
+
+image::2019-02-01-daily-learnings.jpg[]
 The real work is to implement consistently the measures.
+
+Understand how powerful daily small improvements can be.
+Small improvements accumulate earnings over time.
 
 I have the same personal challenge when trying to lose weight or improve my running form.
 The long term implementation is the crux.
-
-=== Company Culture Checks
 
 The biggest flag to identify a learning and improvement focused culture is perhaps this statement
 
@@ -55,6 +60,8 @@ I get better and lasting improvements with organizations who invest in training 
 
 Not only training on the job, but they send them to courses, exhibitions and buy them books.
 ____
+
+=== Company Culture Checks
 
 A set of questions to detect cultural flaws for a lean and agile focused company are
 
@@ -82,11 +89,17 @@ A set of questions to detect cultural flaws for a lean and agile focused company
 .. Do they have access to fast and stable continuous integration and deployment pipelines?
 .. Do they develop and document in English?
 . Can you work on refactoring and clean code without a product backlog item or task?
-. Do your managers knows the most important sentences and practice them daily?
-.. _Sorry_
-.. _Thank you_
-.. _I am sorry_
-.. _Can I help you?_
+
+=== Simple Look-See
+
+A very powerful check is to reflect on the behavior of your managers. Ask yourself:
+
+Do your managers knows the four most important sentences and practice them daily?
+
+. _Sorry_
+. _Thank you_
+. _I am sorry_ or _I am wrong_
+. _Can I help you?_
 
 === Posts in the Health Check Series
 

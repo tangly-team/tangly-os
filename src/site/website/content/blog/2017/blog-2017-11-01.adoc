@@ -1,7 +1,7 @@
 ---
 title: "Impediment List is of Tremendous Importance"
 linkTitle: "Impediment List"
-date: 2017-09-23
+date: 2017-11-23
 tags: ["agile"]
 ---
 
@@ -10,16 +10,18 @@ tags: ["agile"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-:copyright: CC-BY-SA 4.0
 
 image::2017-11-01-head.jpg[width=420, height=360, role=left]
 An impediment is any aspect hindering the team or a company to deliver value and higher quality to the customers.
+
 An agile organization continuously removes impediments, it is one of her major activities.
 This activity is ongoing and can never be completed.
 
 Impediments resolution is {ref-kaizen} 改善, a key technique to lean, agile and Scrum approaches.
-The translation is change for better.
+The translation is _change for better_.
+
 Often agile organizations forget to aggressively identify and resolve impediments.
+
 We provide hints to improve your {ref-kaizen} process.
 
 === Identify Impediments
@@ -48,8 +50,13 @@ You shall
 === Solve Impediments
 
 The real work of the agile coach is eliminating impediments.
-The goal of resolving impediments is often higher internal quality - internal quality is the sole responsibility of the Scrum Team -.
-Work on improving external quality - a delighted customer will order more -, and improved effectivity.
+
+The goal of resolving impediments is often higher internal quality.
+Internal quality is the sole responsibility of the Scrum Team.
+
+Work on improving external quality and improved effectivity.
+A delighted customer will order more.
+
 
 Start with short-term wins to prove the organization that it is worth the effort.
 
@@ -70,7 +77,8 @@ You have a serious problem
 * If your impediment backlog is empty,
 * If you have an impediment backlog with a growing number of active impediments,
 * If the Scrum master resolves all impediments himself,
-* If you do not solve at least one impediment each sprint - it is now a mandatory part in the {ref-scrumguide} 2018 version -.
+* If you do not solve at least one impediment each sprint.
+It is a mandatory part in the {ref-scrumguide} 2018 version.
 
 As a Scrum coach, Scrum master or Scrum team member you should reflect upon the above statements at least monthly.
 Otherwise, you are just pretending.
