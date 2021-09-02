@@ -63,7 +63,7 @@ style = "tango"
 guessSyntax = "true"
 
 # rouge is bundled with Asciidoctor 2.0 and should no more be added as extension, the rouge-css style include html marking in the html file (from the
-# Asciidoctor expert Dan Allen). The wroking folder allows asciidoctor-diagram and plantuml to generate diagrams in the correct folder.
+# Asciidoctor expert Dan Allen). The working folder allows asciidoctor-diagram and plantuml to generate diagrams in the correct folder.
 # additional extensions not in the official hugo extensions list can be loaded in safeMode is set to unsafe.
 [markup.asciidocExt]
 safeMode = "unsafe"

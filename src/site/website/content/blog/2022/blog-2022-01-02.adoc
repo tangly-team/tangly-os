@@ -87,6 +87,8 @@ Use the builder in the body to write the creation code in one Java statement.
 Read-only interface pattern is an alternative to the Immutable object pattern.
 It allows some objects to modify a value object while other objects can only fetch its values.
 
+=== Traits
+
 [bibliography]
 === Literature
 

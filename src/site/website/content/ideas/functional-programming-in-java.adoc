@@ -2,6 +2,7 @@
 title: "Functional Programming"
 date: 2022-01-01
 weight: 70
+description: functional programming in modern Java
 ---
 
 = Functional Programming in Java
@@ -10,7 +11,6 @@ weight: 70
 :revnumber: v0.1
 :revdate: 2021-01-01
 :homepage: https://www.tangly.net/
-:description: Functional Programmingin Java
 :keywords: agile, architecture, functional programming
 :company: https://www.tangly.net/[tangly llc]
 -:sectnums:

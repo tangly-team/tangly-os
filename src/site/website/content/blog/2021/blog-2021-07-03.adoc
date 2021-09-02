@@ -2,6 +2,7 @@
 title: "Technical Team Lead"
 linkTitle: "Technical Team Lead"
 date: 2021-07-10
+description: formal training and expectations for a technical team lead responsible e.g. for a modern Java development group
 tags: ["agile", "java", "organization"]
 ---
 

@@ -182,3 +182,5 @@ He is responsible to teach others how to adapt and evolve the component.
 === References
 
 . link:../../2018/agile-introduction-success-criteria-through-the-less-lens[Agile Introduction Success Criteria Through The LeSS Lens]
+. https://fansofless.com/[Fans of LeSS]
+. https://scrumteamsurvey.org/[Scrum Teams Survey]

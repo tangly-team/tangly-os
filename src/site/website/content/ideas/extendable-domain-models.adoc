@@ -2,7 +2,7 @@
 title: "Extendable Models"
 date: 2020-05-01
 weight: 60
-draft: false
+description: extension mechanisms to domain driven models with the modern Java technology stack
 ---
 
 == Extendable Domain Models

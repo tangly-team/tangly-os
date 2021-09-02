@@ -2,6 +2,7 @@
 title: "Links"
 date: 2019-05-01
 weight: 60
+description: links to agile and technical excellence themes such as Scrum, XP, LeSS, Software Craftsmanship
 ---
 
 == Agile and Technical Excellence Links

@@ -2,6 +2,7 @@
 title: "What I Learnt Teaching Agile Software Architecture"
 linkTitle: "Agile Software Architecture"
 date: 2021-09-02
+description: agile software architecture course for computer science bachelors
 tags: ["agile", "architecture", "series-students"]
 ---
 
@@ -12,9 +13,14 @@ tags: ["agile", "architecture", "series-students"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2021-09-01-head.png[width=420,height=360,role=left]
-I am teaching agile software architecture and techniques _SWAT_ as advanced bachelor level lecture weighted with 3 ECTS.
+I am teaching agile software architecture and techniques _SWAT_ as advanced bachelor level lecture weighted with 3
+https://en.wikipedia.org/wiki/European_Credit_Transfer_and_Accumulation_System[ECTS].
 
-I gave this training the last three years at a technical university in Switzerland.
+I gave this training the last three years at https://www.hslu.ch/en[Lucerne University of Applied Sciences and Arts] _HSLU_ in Switzerland.
+
+All course materials are released under https://creativecommons.org/[Creative Commons] copyright.
+
+The course contents is aligned with the big software architecture programs.
 
 The https://www.opengroup.org/[Open Group] organization is the steward of https://publications.opengroup.org/standards/togaf[TOGAF] standard.
 https://publications.opengroup.org/standards/togaf[TOGAF] is the worldwide industrial standard for software enterprise architecture.
@@ -22,13 +28,13 @@ The group has realized that software and enterprise architecture must incorporat
 
 All students had formal training in Java, object-oriented programming and design, and agile software project approaches.
 The school is still teaching waterfall and hybrid methods.
-The consequence is that students have a shallow understanding of more modern frameworks such as Scrum or DevOps.
+One consequence is that students have a shallow understanding of more modern frameworks such as Scrum or DevOps.
 
 The official proficiencies for the Scrum roles Scrum Master<<scrum-master-formation>>, Product Owner<<product-owner-formation>>, and Developer<<scrum-developer-formation>> are not achieved with the current curriculum.
 
 === Lecture Content
 
-The lecture description is
+The lecture description is:
 
 * Teaches the basics of systematic agile design of an adequate software architecture for a selected application.
 * Methods of agile quality assurance and software craftsmanship are explored using predefined or self-selected projects of students.
@@ -43,7 +49,7 @@ The lecture themes are:
 . [[chapter-6, Errors and Smells]]Errors, Vulnerabilities, Smells in Source Code
 . [[chapter-7, Component Architecture]]Architecture of Components and Subsystems
 . [[chapter-8, Functional Features]]Verify Functional Features
-. [[chapter-9, Non-functional Features]]Validate Quality Attributes of Software Architecture
+. [[chapter-9, Non-functional Features]]Validate Quality Attributes of a Software Architecture
 . [[chapter-10, Architecture Documentation]]Architecture Documentation
 . [[chapter-11, Trends I]]Architecture Trends I
 . [[chapter-12, Trends II]]Architecture Trends II
@@ -52,63 +58,74 @@ The lecture themes are:
 
 The reference texts are <<domain-driven-design>>, <<refactoring>>, <<evolutionary-architectures>>, and <<working-with-legacy-code>>.
 
-=== arc42
+=== arc42 Architecture Approach
 
-The course discusses the chapters defined in approaches such as https://arc42.org/[arc42].
+The course discusses the key points defined in approaches such as https://arc42.org/[arc42].
 The same concepts can naturally be found in TOGAF with a slight different terminology.
+The main sections in the arc42 documentation:
 
 Introduction and Goals::
 Short description of the requirements, driving forces, extract (or abstract) of requirements.
-Top three (max five) quality goals for the architecture which have highest priority for the major stakeholders.
+Top three (max five) quality goals for the architecture which have the highest priority for the major stakeholders.
 A table of important stakeholders with their expectation regarding architecture. +
 _Agile defines the product vision, goals, and roadmap.
 Stakeholder management has a strong emphasis and is the responsibility of the product owner._ +
-_See  <<chapter-1>>, <<chapter-2>>._
++
+_See  <<chapter-1>>, <<chapter-2>>, <<chapter-4>>_
 Constraints::
 Anything that constrains teams in design and implementation decisions or decision about related processes.
 Can sometimes go beyond individual systems and are valid for whole organizations and companies. +
 _Define, track and verified through fitness functions._ +
++
 _See  <<chapter-9>>_
 Context and Scope::
 Delimits your system from its (external) communication partners (neighboring systems and users).
 Specifies the external interfaces.
 Shown from a business/domain perspective (always) or a technical perspective (optional) +
 _Define and document using UML or C4 approach._ +
++
 _See  <<chapter-10>>_
 Solution Strategy::
 Summary of the fundamental decisions and solution strategies that shape the architecture.
 Can include technology, top-level decomposition, approaches to achieve top quality goals and relevant organizational decisions. +
 _Document through architecture document, architecture workshops and diagrams._ +
++
 _See  <<chapter-10>>, <<chapter-11>>, <<chapter-12>>_
 Building Block View::
 Static decomposition of the system, abstractions of source-code, shown as hierarchy of white boxes (containing black boxes), up to the appropriate level of detail.
 _Document through architecture document, architecture workshops and diagrams.
 Complex UML models are useless and not maintainable._ +
++
 _See  <<chapter-7>>, <<chapter-10>>_
 Runtime View::
 Behavior of building blocks as scenarios, covering important use cases or features, interactions at critical external interfaces, operation and administration plus error and exception behavior.+ _Documented through automated tests and if necessary diagrams.
 Complex UML models are useless and not maintainable._ +
++
 _See  <<chapter-7>>, <<chapter-10>>_
 Deployment View::
 Technical infrastructure with environments, computers, processors, topologies.
 Mapping of (software) building blocks to infrastructure elements. +
 _Infrastructure as code document the infrastructure and the solution deployment.
 Usually deployment diagrams are useless._ +
++
 _See <<chapter-7>>, <<chapter-10>>_
 Cross Cutting Concepts::
 Overall, principal regulations and solution approaches relevant in multiple parts (→ cross-cutting) of the system.
 Concepts are often related to multiple building blocks.
 Include different topics like domain models, architecture patterns and -styles, rules for using specific technology and implementation rules. +
 _Should be documented as architecture decisions._ +
++
 _See <<chapter-9>>, <<chapter-10>>_
 Architecture Decisions::
 Important, expensive, critical, large scale or risky architecture decisions including rationales. +
 _It is an important aspect of any software architecture._ +
++
 _See  <<chapter-10>>_
 Quality Requirements::
 Quality requirements as scenarios, with quality tree to provide high-level overview.
 The most important quality goals should have been described in section 1.2. (quality goals). +
 _Should be documented as fitness functions and realized as automated tests._ +
++
 _See  <<chapter-9>>, <<chapter-10>>_
 Risk and Technical Debt::
 Known technical risks or technical debt.
@@ -116,21 +133,33 @@ What potential problems exist within or around the system?
 What does the development team feel miserable about? +
 _Risk management is part of any professional product development and shall be documented.
 Ideally a good product developed with professionals has a very low technical debt._ +
++
 _See  <<chapter-3>>, <<chapter-5>>, <<chapter-9>>, <<chapter-14>>._
 Glossary::
 Important domain and technical terms that stakeholders use when discussing the system.
 Also: translation reference if you work in a multi-language environment. +
 _Static web page generator approaches create more legible, searchable and usable documentation.
 Paper based documentation or wikis are a suboptimal way of describing a software product._ +
-_See <<chapter-10>>
++
+_See <<chapter-10>>_
 
-=== ISAQB Program
+The arc42 approach is heavily influenced though their https://en.wikipedia.org/wiki/Unified_Modeling_Language[UML] and
+https://en.wikipedia.org/wiki/Rational_Unified_Process[RUP] roots.
+This heritage is one major reason why this approach is not extensively taught in the course.
+
+Bachelor students have attended formal training in UML and scientific diagramming notations such as https://c4model.com/[C4] or
+https://en.wikipedia.org/wiki/Business_Process_Model_and_Notation[BPMN].
+They are able to produce these artifacts before attending the SWAT course.
+
+=== ISAQB Architecture Program
 
 image::2021-09-02-cspa-foundation.png[width=420,height=360,role=left]
-The SWAT lecture has similar theme weights as the https://www.isaqb.org/[ISAQB] _International Software Architecture Qualification Board_ foundation level training and certification.
+The SWAT lecture has similar theme weights as the https://www.isaqb.org/[ISAQB] _International Software Architecture Qualification Board_ foundation level training and certification
+footnote:[The main difference is the course has weighted more heavily examples and exercises. Students learn better when the theory is practiced].
+
 The foundation is kind of a laggard.
 Most of their trainings are for classical software and enterprise architecture.
-They have finally understood that agile is won
+They have finally lately understood that agile is won.
 
 THe ISAQB programs teach skills in three areas: technological competence, methodical competence, and communicative competence.
 
@@ -143,9 +172,9 @@ The key points are:
 
 The taught skills are:
 
-* How you can coordinate essential software architecture decisions with other project participants from the fields of requirements management, project management, testing, and development.
-* How you can document and communicate software architectures based on architecture patterns and technical concepts.
-* How you can independently carry out the essential steps in designing software architectures for small and medium-sized systems.
+* How can you coordinate essential software architecture decisions with other project participants from the fields of requirements management, project management, testing, and development?
+* How can you document and communicate software architectures based on architecture patterns and technical concepts?
+* How can you independently carry out the essential steps in designing software architectures for small and medium-sized systems?
 
 image::2021-09-02-cspa-agile.png[width=420,height=360,role=left]
 They have a specific module for agile software architecture:
@@ -164,39 +193,51 @@ These in turn cover technical as well as methodical and also communicative aspec
 
 The learning goals for the ISQAB agile certification are:
 
-1 Introduction to agile software architecture::
+Introduction to agile software architecture::
 * Knowing and being able to explain the significance of agile ideas for architecture work
 * Knowing the tasks involved in architecture development and how they are modified in the agile environment
 * Being able to appropriately align architecture work to the specific problem and project
 * Knowledge of agile tools for architecture work
 * Knowledge of the capabilities of anchoring architecture as a cross-cutting aspect in agile organisations
-2 The agile architecture approach::
+* _See <<chapter-3>>, <<chapter-4>>_
+The agile architecture approach::
 * Being able to iteratively and agilely structure architecture work
 * Knowledge of role models for architects in agile projects
 * Knowledge of ways of involving stakeholders in architecture work
-3 Architecture requirements in agile projects::
+* _See <<chapter-4>>, <<chapter-14>>_
+Architecture requirements in agile projects::
 * Being able to formulate quality requirements appropriately for specific target groups
 * Being able to use agile concepts for architecture requirements
 * Being able to use iterative approaches for continuous definition of architecture requirements
 * Being able to effectively organise joint management, evaluation and prioritisation of requirements
 * Knowing and being able to explain urgency as a driving factor for architecture work
-4 Designing and developing architectures in a team::
+* _See <<chapter-4>>, <<chapter-8>>_
+Designing and developing architectures in a team::
 * Being able to use methods for making decisions in groups
 * Being able to support groups and teams in reaching decisions
 * Being able to create the necessary prerequisites for team decisions
 * Being familiar with architecture concepts for promoting local decision-making capabilities
 * Being familiar with methods for just-in-time architecture decisions
 * Being familiar with ways of communicating architecture decisions in agile projects
+* _See <<chapter-4>>, <<chapter-14>>_
 Reflection and feedback on architecture work in the agile context::
 * Being familiar with techniques for joint reflection on architecture decisions
 * Being able to find the reasons for specific architecture problems
 * Being familiar with feedback capabilities from the implementation and able to attribute results to architecture objectives
+* _See <<chapter-6>>, <<chapter-7>>_
 Examples of agile architecture work::
 * Being familiar with and understanding examples for decision-making procedures in agile projects
 * Being familiar with and understanding examples for agile architecture requirements
 * Being familiar with physical characteristics of agile communication concepts
 * Being able to understand the postponement of architecture decisions
 * Being familiar with and understanding examples of agilely organised architecture groups
+* _See <<chapter-14>>_
+
+Care was taken that all the above aspects are handled over the SWAT course.
+The main difference is the SWAT course has a more technical approach to agile architecture.
+Communication, team findings techniques and documentation are discussed in <<chapter-4>>, <<chapter-10>> and <<chapter-14>>.
+
+Bachelor students have attended formal training in {ref-scrum} and had extensive team workshop to foster communication techniques.
 
 === Lessons Learnt
 
@@ -210,8 +251,9 @@ They seldom can apply them in their own code or semester projects.
 Understanding why certain https://en.wikipedia.org/wiki/Anti-pattern[anti-patterns] are often wrong is seldom observable.
 
 You can only become a professional software architect if you are proficient in a technology stack.
-You shall be a craftsman how to write industrial grade source code, test it, deploy it, run it and maintain it.
-You shall have knowledge of the idioms of your programming language and software design patterns at the compoenent level.
+You shall be a craftsman how to write industrial grade source code.
+You know how to test it, deploy it, run it and maintain it.
+You shall have knowledge of the idioms of your programming language and software design patterns at the component level.
 
 The students are motivated and eager to learn.
 It takes time to establish the capabilities of a professional programmer and component designer.
@@ -250,18 +292,20 @@ Marcel Baumann. 2021
 Marcel Baumann. 2021
 - [[[agile-architecture-principles, 7]]] link:../../2019/agile-architecture-principles/[Agile Architecture Principles].
 Marcel Baumann. 2019
-- [[[refactoring, 8]]] https://www.amazon.com/dp/0134757599[Refactoring: Improving the Design of Existing Code, 2nd Edition].
+- [[[agile-software-architecture, 8]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream]
+Marcel Baumann, 2021
+- [[[refactoring, 9]]] https://www.amazon.com/dp/0134757599[Refactoring: Improving the Design of Existing Code, 2nd Edition].
 Martin Fowler.
 Addison Wesley. 2018. ISBN 978-0134757599
-- [[[evolutionary-architectures, 9]]]
+- [[[evolutionary-architectures, 10]]]
 https://www.amazon.com/dp/1491986360[Building Evolutionary Architectures: Support for constant Change].
 Neal Ford, Rebecca Parson.
 O'Reilly. 2017. ISBN 978-1491986363
-- [[[domain-driven-design, 10]]]
+- [[[domain-driven-design, 11]]]
 https://www.amazon.com/dp/0321125215[Domain-Driven Design: Tackling Complexity in the Heart of Software].
 Eric Evans.
 Addison-Wesley. 2004. ISBN 978-0321125217
-- [[[working-with-legacy-code, 11]]]
+- [[[working-with-legacy-code, 12]]]
 https://www.amazon.com/dp/0131177052[Working Effectively with Legacy Code].
 Michael Feathers.
 Addison-Wesley. 2005. ISBN 978-0131177055

@@ -148,14 +148,23 @@ They explore the newly discovered topics during these sessions.
 
 === Lessons Learnt
 
-The whole enterprise architecture frameworks are two complicated to be applied in nimble product development.
+The regular enterprise architecture frameworks are too complicated to be applied in nimble product development.
+The approach is cumbersome and slow.
+The processes are based on the assumption documents are written and later a group of experts review them.
+Agile approaches are too nimble and fast to mesh with such workflows.
 
-The techniques used in these frameworks are powerful ones and software designers should master them.
+The techniques used in these frameworks are powerful ones.
+Software designers should master and use them accordingly.
 
-I strongly prefer the architecture work techniques described in {ref-less} and do not use the bloated TOGAF architecture approach.
+I strongly prefer the architecture work techniques described in {ref-less}.
+The {ref-less} framework uses good practices to improve architecture and design.
+Their approach is highly compatible with agile practices and speed of development.
+
+I do not use the bloated TOGAF architecture standard.
 
 I recommend using all these proven architecture techniques and tools and apply them on your software product development using agile approaches like
 {ref-scrum} and {ref-less}.
+
 Study the rules of {ref-lean} to optimize the value of your product.
 
 [bibliography]

@@ -2,6 +2,7 @@
 title: "Agile Architecture"
 date: 2019-05-01
 weight: 20
+description: an introduction to software architecture in agile product development
 ---
 
 = Agile Architecture
@@ -9,7 +10,6 @@ weight: 20
 :email: <marcel.baumann@tangly.net>
 :revnumber: v0.1
 :revdate: 2020-05-31
-:description: An introduction to software architecture in agile product development
 :homepage: https://www.tangly.net/
 :keywords: agile, architecture, Scrum, LeSS
 :company: https://www.tangly.net/[tangly llc]

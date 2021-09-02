@@ -27,7 +27,8 @@ Polishing of functional programming approach improved my source code quite stupe
 
 === Why Should You Upgrade?
 
-Be honest. It is more a question of when, rather than if you will upgrade.
+Be honest.
+It is more a question of when, rather than if you will upgrade.
 
 Why should you actually upgrade your application?
 
@@ -112,7 +113,11 @@ Therefore, it might be better to do the migration, step by step.
 Maybe you migrate from 8 to 11 first, or maybe from 8 to 9. Then if you encounter any issues, you can easily see what's changed in that Java version.
 
 Answers can often by found through Google or StackOverflow.
-That way, it's easier to get the upgrades done instead of in one big bang.
+That way, it is easier to get the upgrades done instead of in one big bang.
+
+However, even after years of experience, I cannot estimate how long an upgrade will take without having in-depth information about the project.
+A lot depends on how many dependencies your application has.
+Often, upgrading your dependencies to the latest version resolves many of the issues that would occur during a Java upgrade.
 
 How do we move forward?
 Now we start by compiling the source code on the new Java version, we run it.

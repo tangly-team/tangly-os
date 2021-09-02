@@ -2,6 +2,7 @@
 title: "Talks"
 date: 2019-05-01
 weight: 70
+description: links to public talks of Marcel Baumann discussing agile, Scrum, technical excellence
 ---
 
 == Talks

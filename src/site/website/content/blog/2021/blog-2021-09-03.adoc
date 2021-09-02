@@ -2,6 +2,7 @@
 title: "Scrum Developer Formation"
 linkTitle: "Scrum Developer Formation"
 date: 2021-09-03
+description: formal training and expectations for a Scrum developer part of a Scrum team
 tags: ["agile"]
 ---
 

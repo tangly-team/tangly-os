@@ -2,6 +2,7 @@
 title: "Improving a Static Web Site Build With Hugo and Docsy"
 linkTitle: "Improving a Static Web Site"
 date: 2021-09-01
+description: improving a static website build with Hugo tool, Docsy theme, asciidoc content, and plantUML and Mermaid diagrams
 tags: ["design", "hugo", "series-students"]
 ---
 
@@ -14,17 +15,17 @@ tags: ["design", "hugo", "series-students"]
 
 image::2021-09-02-head.jpg[width=420,height=360,role=left]
 The static website build tool {ref-hugo} is awesome.
-With the extensive built-in feature set of Hugo and the feature-rich text formatting options that Asciidoctor offers, it creates a blogging experience composed of easy content management and fun writing experience.
+With the extensive built-in feature set of Hugo and the feature-rich text formatting options that https://asciidoc.org/[Asciidoc] offers, it creates a blogging experience composed of easy content management and fun writing experience.
 
-In most static site generators including Hugo, Markdown is the one and only first-class citizen when it comes to creating posts.
+In most static site generators including Hugo, https://en.wikipedia.org/wiki/Markdown[Markdown] is the one and only first-class citizen when it comes to creating posts.
 
-However, in recent Hugo versions, external helpers are a supported feature.
+However, in recent Hugo versions, external helpers are an official feature.
 It calls appropriate external programs to certain type of files.
-Fortunately, Asciidoctor based files are automatically compiled with Asciidoctor, so we do not need to do anything.
+Fortunately, Asciidoc based files are automatically compiled with https://asciidoctor.org/[Asciidoctor], so we do not need to do anything.
 Just have it installed and you are ready to go.
 
 The Hugo theme {ref-docsy} is ideal to create a good-looking software documentation site.
-This theme is currently the best match I found to combine documentation with blogging.
+This theme is currently the best match I found to combine product documentation with blogging.
 
 I love to write my documentation and blogs using {ref-asciidoc} notation
 footnote:[If you are new to asciidoc, you can experiment https://asciidoclive.com/[online].].

@@ -2,6 +2,7 @@
 title: "Books"
 date: 2019-05-01
 weight: 50
+description: bibliography agile and technical excellence books
 ---
 
 == Agile and Technical Excellence Books
@@ -11,8 +12,8 @@ weight: 50
 :revdate: 2020-05-31
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
--
-.*Agile*
+- .*Agile*
+
 [%collapsible]
 ====
 * https://www.amazon.com/dp/0134542843[Unlocking Agility: An Insider's Guide to Agile Enterprise Transformation].
@@ -143,6 +144,11 @@ Addison Wesley. 2018. ISBN 978-0134757599
 * https://www.amazon.com/dp/0321125215[Domain-Driven Design: Tackling Complexity in the Heart of Software].
 Eric Evans.
 Addison-Wesley. 2004. ISBN 978-0321125217
+* https://www.amazon.com/dp/B01JJSGE5S/[Domain-Driven Design Distilled].
+Vernon Vaughn.
+Addison-Welsey. 2016. ISBN 978-0134434421
+* https://www.amazon.com/dp/B00BCLEBN8[Implementing Domain-Driven Design. Vernon Vaughn].
+Addison-Wesley. 2103. ISBN 978-0321834577
 * https://www.amazon.com/dp/0131177052[Working Effectively with Legacy Code].
 Michael Feathers.
 Addison-Wesley. 2005. ISBN 978-0131177055
@@ -154,7 +160,7 @@ Addison-Wesley. 1995. ISBN 0-201-63361-2
 * https://www.amazon.com/dp/B09B5L4NVT[Building Microservices: Designing Fine-Grained Systems, 2nd Edition].
 Sam Newman.
 O'Reilly. 2021. ISBN 978-1492034025
-* https://www.amazon.com//dp/B00T3N7XB4[Building Microservices: Designing Fine-Grained Systems, 2nd Edition].
+* https://www.amazon.com//dp/B00T3N7XB4[Building Microservices: Designing Fine-Grained Systems, 1st Edition].
 Sam Newman.
 O'Reilly. 2015. ISBN 978-1491950357
 ====
