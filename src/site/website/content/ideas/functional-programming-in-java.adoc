@@ -2,7 +2,7 @@
 title: "Functional Programming"
 date: 2022-01-01
 weight: 70
-description: functional programming in modern Java
+description: Functional programming in modern Java
 ---
 
 = Functional Programming in Java

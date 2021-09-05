@@ -2,7 +2,7 @@
 title: "Architecture Code Scene"
 date: 2019-05-01
 weight: 30
-description: analysis of source code as a code scene with specialized tools
+description: Analysis of source code as a code scene with specialized tools
 ---
 == Architecture Code Scene
 :author: Marcel Baumann

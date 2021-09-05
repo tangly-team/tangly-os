@@ -2,7 +2,7 @@
 title: "Design Conventions"
 date: 2020-05-01
 weight: 50
-description: design conventions for open source components
+description: Design conventions for open source components
 ---
 
 == Design Conventions

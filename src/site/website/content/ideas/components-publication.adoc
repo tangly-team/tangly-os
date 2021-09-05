@@ -2,7 +2,7 @@
 title: "Components Publication"
 date: 2019-05-01
 weight: 40
-description: workflow to publish open source components
+description: Workflow to publish open source components
 ---
 
 == Components Publication

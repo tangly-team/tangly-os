@@ -26,7 +26,8 @@ Formal training is often the difference between being a professional instead of 
 
 Here the official definition of the developer team member role taken from the {ref-scrumguide}.
 
-*Developers* are the people in the Scrum Team that are committed to creating any aspect of a usable Increment each Sprint.
+*Developers* are the people in the https://scrumguides.org/scrum-guide.html#scrum-team[Scrum Team] that are committed to creating any aspect of a usable
+https://scrumguides.org/scrum-guide.html#increment[Increment] each https://scrumguides.org/scrum-guide.html#the-sprint[Sprint].
 
 The specific skills needed by the https://scrumguides.org/scrum-guide.html#developers[Developers] are often broad and will vary with the domain of work.
 However, the Developers are always accountable for:
@@ -71,7 +72,8 @@ The _Scrum Developer_ learning objectives for the first level are:
 
 . Lean, Agile & Scrum
 .. practice utilizing a https://scrumguides.org/scrum-guide.html#sprint-backlog[sprint backlog].
-.. describe the responsibility of the Scrum team for turning PBIs in the sprint backlog into increments of value.
+.. describe the responsibility of the https://scrumguides.org/scrum-guide.html#scrum-team[Scrum team]
+for turning PBIs in the sprint backlog into increments of value.
 .. organize and demonstrate the https://scrumguides.org/scrum-guide.html#daily-scrum[daily Scrum].
 .. list at least three attributes of PBIs.
 .. give at least three examples of how a Scrum team will inspect and adapt PBIs during product backlog refinement.
@@ -99,7 +101,7 @@ The _Scrum Developer_ learning objectives for the first level are:
 .. describe using three examples of how Scrum supports CI.
 .. describe at least one advantage of an automated build, test, measure pipeline.
 
-The _Scrum Developer_ learning objective example for the first level are:
+The _Scrum Developer_ learning objective examples for the first level are:
 
 . _Lean, Agile, and Scrum_
 .. This should include creating a sprint goal, selecting product backlog items (PBIs) with a value orientation in mind and decomposing PBIs into smaller work items.
@@ -110,14 +112,14 @@ The _Scrum Developer_ learning objective example for the first level are:
 .. For software, a definition of done could state that each increment fulfills the acceptance criteria, contains no blocking defects, is integrated into the system, is properly tracked in a version control system, and is documented according to the necessary documentation guidelines.
 There could be other elements, too.
 The point of this LO is to raise the awareness of done, especially _done for whom?_.
-. _ Collaboration & Team Dynamics_
+. _Collaboration & Team Dynamics_
 .. This could include stable membership, reaching a shared goal by working together, self-management.
 .. Example definition of team: small number of people with complementary skills, committed to a common purpose, performance goal and approach, for which they are mutually accountable.Example: T-shaped skill profile.
 .. Pair programming, pair designing, pair working in general.
 Creating something – code or non-technical – in a Scrum simulation.
 .. Shorter feedback loops, less work-in-progress, less mis-interpretation of needs, direct feedback of the working solution, actually trying the built product
 .. During https://scrumguides.org/scrum-guide.html#sprint-review[sprint review] while obtaining feedback regarding the latest increment, during sprint review while identifying what kind of changes to the product backlog are a helpful response to changing circumstances, during product backlog refinement, during a story mapping workshop, observing users using the product, interview users how they currently solve their problem, _friendly users_ actively using the new product and giving feedback, invite the sprint review
-. Architecture and Design
+. _Architecture and Design_
 .. Foster understanding of the work, improve shared ownership and responsibility, improve estimability and reliability, reduce defects, avoid accumulation of technical debt
 .. This could include test first, quick design sessions, using spikes to understand a new technology, constant refactoring, metaphor, conversational modelling, CRC cards, pair programming.
 .. Reversibility, https://en.wikipedia.org/wiki/KISS_principle[KISS]; https://en.wikipedia.org/wiki/Don%27t_repeat_yourself[DRY];

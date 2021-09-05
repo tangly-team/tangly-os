@@ -10,7 +10,7 @@ date: 2020-09-10
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
--
+
 === Idea
 
 The tangly services ERP provides the functionalities to manage a services company offerings and legal documents.

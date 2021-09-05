@@ -2,7 +2,7 @@
 title: "Agile Architecture"
 date: 2019-05-01
 weight: 20
-description: an introduction to software architecture in agile product development
+description: An introduction to software architecture in agile product development
 ---
 
 = Agile Architecture
