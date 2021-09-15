@@ -11,6 +11,6 @@
  */
 
 /**
- * The package provides utilities to validate and to generate description in textual and graphical forms of finite state machine descriptions.
+ * Provides utilities to validate and to generate description in textual and graphical forms of finite state machine descriptions.
  */
 package net.tangly.fsm.utilities;

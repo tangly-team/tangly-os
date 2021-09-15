@@ -11,6 +11,6 @@
  */
 
 /**
- * The model of a set of source code artifacts stored in a version configuration management system.
+ * Provides the model of a set of source code artifacts stored in a version configuration management system.
  */
 package net.tangly.dev.model;

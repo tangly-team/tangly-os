@@ -11,8 +11,8 @@
  */
 
 /**
- * The package provides core abstractions used in any commercial application in need of invoice handling. The defined information forms the basis to create an
- * output invoice legible for human beings and fulfilling the European requirements for a legal invoice document.
+ * Provides core abstractions used in any commercial application in need of invoice handling. The defined information forms the basis to create an output
+ * invoice legible for human beings and fulfilling the European requirements for a legal invoice document.
  * <h2>Abstractions</h2>
  * <p>The invoices package is designed as a bounded domain.</p>
  * <p>Articles define the items being sold and are referred in invoice lines.</p>

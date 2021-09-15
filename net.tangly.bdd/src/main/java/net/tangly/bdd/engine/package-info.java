@@ -11,6 +11,6 @@
  */
 
 /**
- * <p>The package provides the implementation of a behaviour driven design library based on the extension model of JUnit 5.</p>
+ * <p>Provides the implementation of a behaviour driven design library based on the extension model of JUnit 5.</p>
  */
 package net.tangly.bdd.engine;

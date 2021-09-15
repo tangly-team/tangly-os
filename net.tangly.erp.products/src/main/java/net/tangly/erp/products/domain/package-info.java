@@ -11,7 +11,8 @@
  */
 
 /**
- * The package provides core abstractions used in any commercial application in need product and project handling.
- * <p>The products package is designed as a bounded domain.</p>
+ * Provides core abstractions used in any commercial application in need product and project handling.
+ * <p>The products package is designed as a bounded domain. All texts shall follow asciidoc conventions. The reason is that asciidoc provides a tool chain
+ * to generate PDF, ebook or LateX documents. Markdown environment does not provide currently similar functionalities</p>
  */
 package net.tangly.erp.products.domain;

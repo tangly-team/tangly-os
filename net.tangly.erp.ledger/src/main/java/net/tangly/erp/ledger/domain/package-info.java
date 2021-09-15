@@ -11,7 +11,7 @@
  */
 
 /**
- * The package provides core abstractions used in any commercial application in need of technical ledger.
+ * Provides core abstractions used in any commercial application in need of technical ledger.
  * <p>The ledger package is designed as a bounded domain.</p>
  */
 package net.tangly.erp.ledger.domain;
