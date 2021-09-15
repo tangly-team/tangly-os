@@ -148,6 +148,12 @@ They explore the newly discovered topics during these sessions.
 
 === Lessons Learnt
 
+image::2021-07-02-aeaf.png[]
+Various organizations are trying to redefine enteprise architecture in the context of agile approaches.
+Such an example would be the _Agile Enterprise Architecture Framework_.
+
+Often you see the tension between more agility and the drag of traditional complex enterprise architecture frameworks.
+
 The regular enterprise architecture frameworks are too complicated to be applied in nimble product development.
 The approach is cumbersome and slow.
 The processes are based on the assumption documents are written and later a group of experts review them.
@@ -161,9 +167,10 @@ The {ref-less} framework uses good practices to improve architecture and design.
 Their approach is highly compatible with agile practices and speed of development.
 
 I do not use the bloated TOGAF architecture standard.
+I also avoid bloated agile methodologies such as https://www.scaledagileframework.com/[SAFe].
 
-I recommend using all these proven architecture techniques and tools and apply them on your software product development using agile approaches like
-{ref-scrum} and {ref-less}.
+I recommend using all these proven architecture techniques and tools.
+Apply them on your software product development using agile approaches like {ref-scrum} and {ref-less}.
 
 Study the rules of {ref-lean} to optimize the value of your product.
 
@@ -173,5 +180,5 @@ Study the rules of {ref-lean} to optimize the value of your product.
 - [[[agile-architecture, 1]]] Agile Architecture in the Digital Age.
 Open Group. 2018
 - [[[open-agile-architecture, 2]]]
-Open Agile Architecture.
+https://pubs.opengroup.org/architecture/o-aa-standard-single/[Open Agile Architecture].
 Open Group. 2019. (ISBN: 1-947754-62-1)

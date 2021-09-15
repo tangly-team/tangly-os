@@ -1,0 +1,62 @@
+---
+title: "Modern Java with Spring"
+linkTitle: "Modern Java with Spring"
+date: 2022-03-20
+tags: ["agile", "java"]
+---
+
+== Modern Java Constructs with Spring Boot Framework
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2022-03-03-head.png[width=420,height=360,role=left]
+
+=== Minimize Boilerplate Code
+
+Lombok
+
+Deploy as an executable application. You do not need an application server.
+
+Package the whole application in a docker image for integration and testing activities.
+
+=== Lightweight Database
+
+hsqldb
+schema per domain
+schema.sql and data.sql
+Views for read-only objects
+Business logic should be in services
+
+
+=== Fluent Getter and Setter
+
+Spring Persistence and JPA
+Extends persistence to support Java abstractions such as enumeration sets
+
+Use record construct for immutable entities
+
+Configure Jackson
+
+=== Eliminate DTO
+
+JSON objects are your data transfer objects
+JSON schema define the data model and validate it
+Use annotation to remove AOT artifacts generated through JPA enhancements.
+Use annotation to coerce Jackson to not request old fashion property getters and setters.
+Configure Jackson to support records
+
+=== Schedulers in Spring
+
+Easy to use
+
+=== User Interface
+
+Use Vaadin for internal applications and B2B applications
+
+Use Thymeleaf and Bootstrap for B2C applications
+
+Use AngularJS or VueJS if you have a lot of budget
+
+=== Test Driven Development

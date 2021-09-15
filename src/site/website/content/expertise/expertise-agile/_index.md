@@ -14,7 +14,7 @@ Relaunch Your Agile Project
 
 Ad-Interim Agile Product Coordinator
 
-Senior Coach for C-Level
+Senior Coach for Upper Management
 {{< /card >}}
 
 {{< card header="**Agile Digitalization**" >}}
@@ -38,7 +38,7 @@ Scaling Agile and Scrum
 
 Agile, Scrum and LeSS Coach
 
-Agile Architecture and Refactoring
+[Agile Architecture and Refactoring](../../blog/2019/agile-architecture-principles)
 
 Pair Programming
 

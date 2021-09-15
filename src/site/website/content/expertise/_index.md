@@ -6,6 +6,8 @@ menu:
   main:
     weight: 60
 ---
+
+# Ambitious Missions need Disruptive Thinking
 ![Think Big, Start Small, Learn Fast](pics/ThinkBig-StartSmall-LearnFast.png)
 
 We are passionate **coaches** and **engineers**. We provide **agile transformation**, **technical excellence**, and **agile product** development.

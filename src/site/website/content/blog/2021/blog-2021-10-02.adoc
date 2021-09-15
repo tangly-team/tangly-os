@@ -5,7 +5,7 @@ date: 2021-10-10
 tags: ["java"]
 ---
 
-== JDK 17
+== JDK 17 LTS
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
@@ -13,56 +13,62 @@ tags: ["java"]
 
 image::2021-10-02-head.png[width=420,height=360,role=left]
 I truly love the new release rhythm of the Java ecosystem.
-The new release JDK 17 is the next long term support _LTS_ release.
+Every six months a new JDK is delivered.
 Being able to use new features every six months is awesome.
+
+The new release JDK 17 <<jdk-17>> is the next long term support _LTS_ release.
 The migration overhead is held to a minimum thanks to the incredible backward compatibility.
-The early-access builds give more than enough opportunity and time to migrate all your applications on time.
+The early-access builds give more than enough opportunities and time to migrate all your applications on time.
 
-The new features greatly simplify existing code and tremendously increase legibility.
+The new features greatly simplify existing code and tremendously increase code legibility.
 
-Algebraic data types are now complete with the official release of _records_ and _sealed types_.
-The advanced pattern matching constructs enhance the functional programming capabilities in Java.
+https://en.wikipedia.org/wiki/Algebraic_data_type[Algebraic data types] are now complete with the official release of _records_ and _sealed types_.
+The advanced https://en.wikipedia.org/wiki/Pattern_matching[pattern matching] constructs enhance the functional programming capabilities in Java.
 
-Polishing of functional programming approach improved my source code quite stupendously.
+Polishing of the https://en.wikipedia.org/wiki/Functional_programming[functional programming] approach improved my source code quite stupendously.
 
 === Why Should You Upgrade?
 
 Be honest.
-It is more a question of when, rather than if you will upgrade.
+It is more a question of *when*, rather than *if* you will upgrade.
 
 Why should you actually upgrade your application?
 
-* Every Java version, even minor versions offer performance benefits, but also security fixes,
+* Every Java version, even minor versions offer performance benefits, but also _security fixes_,
 * Other useful extras that make your application more robust and better maintainable are often part of a new release,
-* It includes cool features, for instance, the recently released Java records, sealed types, or the pattern matching functionality,
+* It includes cool features.
+For instance, the recently released Java records, sealed types, or the pattern matching functionality,
 * Reduce attack surface by updating project dependencies proactively,
 * Reduce technical debt and most importantly, prepare your project for the new and dynamic Java world,
-* Take advantage of performance improvements on new JVM version,
+* Take advantage of _performance improvements_ on new JVM version,
 * Take advantage from improvements of Java as programming language,
 * Sleep better by having a more secure, efficient and quality product.
 
 I have noticed that a lot of applications are still on Java 8.
-Then, when that information is being sent to the business, they often say, we don't have time to invest so much time now.
-It is often estimated that it is a lot of work, maybe even weeks or months of work to upgrade from one LTS version to the next LTS version of Java.
+Java 8 was released in March 2014.
+Businesses often say, we do not have time to invest so much time now.
+
+Non-experts often estimate that it is a lot of work, maybe even weeks or months of work to upgrade from one LTS version to the next LTS version of Java.
 It is seen as a challenge difficult to estimate, and is automatically postponed.
-That's not a good approach.
+That is not a good approach.
 
 [WARNING]
 ====
-If you are on Java 8, your licensing situation is more problematic.
-Like all JDKs past their end-of-public-updates, you now have to pay for support, or use a free OpenJDK 8u build which
+If you are still on Java 8, your licensing situation is problematic.
+Like all JDKs past their end of public updates, you now have to pay for support, or you must use a free OpenJDK 8u build which
 
-. only contains backported patches that do not cover the entire JDK.
+. only contains backport patches that do not cover the entire JDK.
 . predates the full open-sourcing, so is not identical to the old Oracle JDK.
-So not only is the license for versions past 11 better than ever in Java's history, the licensing situation for 8 is not that good.
+
+So not only is the license for versions starting with 11 better than ever in Java's history, the licensing situation for 8 is not that good.
 Java 8 is well past its free support period.
 
 Licensing alone is a reason to update.
 ====
 
 I try to make it more practical.
-Actually, in the case of the weeks to months' estimation, I managed to do it in a couple of days.
-It is often a matter of simply trying it, and if you're lucky, you manage to upgrade it quite easily.
+Actually, in the case of the weeks to months' estimation, I often managed to migrate the application in a couple of days.
+It is often a matter of simply trying it, and if you are lucky, you manage to upgrade it quite easily.
 Depending on what dependencies you use, or what code bases you use, it might be a bigger challenge.
 
 [NOTE]
@@ -70,14 +76,16 @@ Depending on what dependencies you use, or what code bases you use, it might be 
 The usual discussion about Oracle Java licensing is the typical https://en.wikipedia.org/wiki/Fear,_uncertainty,_and_doubt[FUD] regarding Java and Oracle.
 OpenJDK and Oracle Java are as different as Red Hat Fedora and Red Hat Enterprise Linux.
 
-If you don't want to pay for Red Hat Enterprise Linux support, just go with Fedora, or any other Linux distribution.
+If you do not want to pay for Red Hat Enterprise Linux support, just go with Fedora, or any other Linux distribution.
 
 It is exactly the same with Java distributions.
 ====
 
 == Should You Migrate Everytime?
 
-Should we then stick to using LTS versions, or should we use the latest versions of Java?
+Should we stick to using LTS versions, or should we use the latest versions of Java
+footnote:[Beware the Java architects announced with the release of Java 17 that LTS releases will be released every two years.
+Until now the release cycle was three years]?
 If you have the time available, I would recommend using the latest version of Java because you can use the new features and improvements.
 It always increases developer productivity and application reliability.
 You have to do it every six months, because you cannot use the new minor versions.
@@ -97,7 +105,7 @@ You are a laggard organization:: Start to plan your migration and allocate neede
 You should hope your competition will not release new features and beat you.
 You are a modern organization:: You are already migrating to JDk 17 and the discussion is moot.
 You are a DevOps organization:: You have already completed migration.
-Congratulations, you can focuss on business value and beat your competitors.
+Congratulations, you can focus on business value and beat your competitors.
 ====
 
 === How Big is the Migration Effort?
@@ -106,13 +114,15 @@ When we start developing against the new Java version, it's recommended to start
 Then upgrade your build environment, so it supports the latest version of Java.
 Get everything built and tested over there.
 Then at the end, release it to the other environments, including the production environment.
+
 When upgrading Java, you might upgrade from 8 to 17 at once.
-If you've encountered any issues, it might be hard to pinpoint what's caused the exact issue.
+If you have encountered any issues, it might be hard to pinpoint what's caused the exact issue.
 
 Therefore, it might be better to do the migration, step by step.
-Maybe you migrate from 8 to 11 first, or maybe from 8 to 9. Then if you encounter any issues, you can easily see what's changed in that Java version.
+Maybe you migrate from 8 to 11 first, or maybe from 8 to 9.
+If you encounter any issues, you can easily see what's changed in that Java version.
 
-Answers can often by found through Google or StackOverflow.
+Answers can often be found through Google or StackOverflow.
 That way, it is easier to get the upgrades done instead of in one big bang.
 
 However, even after years of experience, I cannot estimate how long an upgrade will take without having in-depth information about the project.
@@ -124,8 +134,6 @@ Now we start by compiling the source code on the new Java version, we run it.
 If that succeeds, and we make the necessary fixes, we go to running the unit tests.
 If we fix that as well, we can package the application, and in the end, we can run the application.
 Based on the nice ingredients, we should get a nice result.
-Of course, sometimes you miss some ingredients, or you lack a bit of time and you take some shortcuts.
-That's perfectly fine.
 
 === New Features
 
@@ -136,34 +144,70 @@ Very useful if you are a mathematical library developer
 https://openjdk.java.net/jeps/356[JEP 356] - Enhanced Pseudo-Random Number Generators::
 Simpler usage of random generators in the API
 https://openjdk.java.net/jeps/382[JEP 382] - New macOS Rendering Pipeline::
-Support of Metal graphics API on MacOS
+Support of Metal graphics API on https://en.wikipedia.org/wiki/MacOS[macOS]
 https://openjdk.java.net/jeps/391[JEP 391] - macOS/AArch64 Port::
-Support of Apple proprietary processors
+Support of Apple proprietary processors based on the ARM architecture
 https://openjdk.java.net/jeps/398[JEP 398] - Deprecate the Applet API for Removal::
 Applets are dead for years, now the associated API is deprecated and will be removed in the future
 https://openjdk.java.net/jeps/403[JEP 403] - Strongly Encapsulate JDK Internals::
-Stop using unsafe operations in your libraries
+Stop using unsafe operations in your libraries.
+Use the JDK tools to identify suitable supported classes with the same functionality
 https://openjdk.java.net/jeps/406[JEP 406] - Pattern Matching for switch (Preview)::
 Pattern matching is the new kid on the block.
-We have now nice features for the switch expression
+We have now nice features for the switch expression.
 https://openjdk.java.net/jeps/407[JEP 407] - Remove RMI Activation::
 https://openjdk.java.net/jeps/409[JEP 409] - Sealed Classes::
 Sealed class release completes the implementation of https://en.wikipedia.org/wiki/Algebraic_data_type[algebraic data types]
 https://openjdk.java.net/jeps/410[JEP 410] - Remove the Experimental AOT and JIT Compiler::
+Nobody uses them.
 https://openjdk.java.net/jeps/411[JEP 411] - Deprecate the Security Manager for Removal::
 https://openjdk.java.net/jeps/412[JEP 412] - Foreign Function & Memory API (Incubator)::
 https://openjdk.java.net/jeps/414[JEP 414] - Vector API (Second Incubator)::
+Cool feature supporting https://en.wikipedia.org/wiki/SIMD[SIMD] hardware.
 https://openjdk.java.net/jeps/415[JEP 415] - Context-Specific Deserialization Filters::
+Increase security.
 
-
-The new features you can use on a daily basis are the following.
+The new features you should use on a daily basis are the following.
+They will impact the appearance and legibility of your source code.
 
 ==== Algebraic Types
 
+Records <<java-records>> are immutable classes.
+A record and all associated operations are defined in one statement.
+
+[source,java]
+----
+public record Person(String lastname, String firstname, LocalDate birthday) {}
+----
+
+Sealed classes are a powerful constructs to constrain your inheritance hierarchy.
+
 ==== Pattern Matching for Switch
 
-A preview of pattern matching for switch extends the language of patterns in Java to allow switch expressions and statements to be tested against a number of patterns, each with a specific action.
+A preview of pattern matching for switch extends the language of patterns in Java.
+It allows switch expressions and statements to be tested against a number of patterns, each with a specific action.
 This enables complex data-oriented queries to be expressed concisely and safely.
-Among the goals of this feature include expanding the expressiveness and application of switch expressions and statements by enabling patterns to appear in case labels, relaxing the historical null-hostility of switch when desired, and introducing two kinds of patterns: guarded patterns, which allow pattern matching logic to be refined with arbitrary Boolean expressions, and parenthesized patterns, which resolve some parsing ambiguities.
-In JDK 16, the instanceof operator was extended to take a type pattern and perform pattern matching.
+
+Among the goals of this feature include expanding the expressiveness and application of switch expressions and statements by enabling patterns to appear for labels, relaxing the historical null-hostility of switch when desired, and introducing two kinds of patterns: guarded patterns, which allow pattern matching logic to be refined with arbitrary Boolean expressions, and parenthesized patterns, which resolve some parsing ambiguities.
+
+In JDK 16 <<jdk-16>>, the _instanceof_ operator was extended to take a type pattern and perform pattern matching.
 The modest extension proposed allows the familiar instanceof-and-cast idiom to be simplified.
+The implementation of the _boolean equals(Object o)_ method is reduced to one expression without any conditional statement.
+
+[TIP]
+====
+You should use Streams in all your code fragments.
+Stream concepts were introduced with Java 8.
+
+The majority of your loops and conditional statements shall be replaced with stream pipelines and operations.
+
+Your methods should not return null values.
+The specialized stream _Optional<T>_ was added to provide a better approach.
+====
+
+[bibliography]
+=== Literature
+
+- [[[java-records, 1]]] link:../../blog/2020/java-records-are-here-available-in-jdk-14/[Java Records Are Here]
+- [[[jdk-16, 2]]] https://openjdk.java.net/projects/jdk/17/[Open JDK 16]
+- [[[jdk-17, 3]]] https://openjdk.java.net/projects/jdk/17/[Open JDK 17]

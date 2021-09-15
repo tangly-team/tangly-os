@@ -15,7 +15,7 @@ image::2018-10-02-head.jpg[width=420, height=360, role=left]
 An agile team is sole responsible for the internal quality of the product they build and maintain.
 
 And the developers shall be accountable to produce the expected quality and optimize long terms goals of the organization.
-They provide the answer to the seminal question
+They provide the answer to the seminal question:
 
 _Did we build it right?_
 
@@ -27,7 +27,7 @@ https://www.scrumguides.org/scrum-guide.html[Scrum] and {ref-less} have a string
 The key question is
 
 [.text-center]
-_Considering our current context and capability, what activities can be completed each Sprint?
+_Considering our current context and capability, what activities can be completed each Sprint?_
 
 [.text-center]
 _This subset is the initial Definition of Done._
@@ -46,9 +46,8 @@ _Potentially Shippable - Definition of Done = Undone Work_
 The Sprint is planned according to the _Definition of Done_ and thus the _Undone Work_ is excluded.
 It is planned to be left undone.
 
-The terms Potentially Shippable and Definition of Done are often not used consistently.
+The terms _Potentially Shippable_ and _Definition of Done_ are often not used consistently.
 To clarify the terms:
-
 
 _Potentially Shippable_::
  All activities that must be performed before the product can be shipped._
@@ -61,7 +60,7 @@ _Undone Work_::
  When the Definition of Done is perfect then there is no Undone Work.
  If this isn’t the case then the organization has to decide, first how do we deal with the Undone Work, and second how do we improve so that there is less
  _Undone Work_ in the future.
-_Unfinished, not finished, or not done—Work_::
+_Unfinished, not finished, or not done—work_::
  that was planned in a Sprint but was not completed.
  This is often confused with Undone Work.
  _Unfinished_::
@@ -80,6 +79,7 @@ If they forecast too much work, they need to remove complete items which they ha
 * The external quality is verified (we have built the right thing?),
 * The internal quality is verified, you wrote unit tests – and all tests are green,
 * The code is checked in, if necessary the branch was closed and deleted,
+* Coding standards are enforced through static check tools and integrated in the continuous delivery pipeline,
 * The code review was completed,
 * All improvements from the code review were implemented,
 * All existing unit tests remain green,

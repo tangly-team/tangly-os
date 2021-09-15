@@ -11,4 +11,88 @@ tags: ["agile", "architecture", "series-students"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2021-10-01-head.jpg[width=420, height=360, role=left]
+image::2021-10-01-head.jpg[width=420,height=360,role=left]
+The line between software development and software architecture is a tricky one.
+Some people will tell you that it does not exist and that architecture is simply an extension of the design process undertaken by developers.
+Others will make out it is a massive gaping chasm that can only be crossed by lofty developers.
+They believe you must always abstract your abstractions and not get bogged down by those pesky implementation details.
+
+As always, there is a pragmatic balance somewhere in the middle, but it does raise the interesting question of how you move from one to the other.
+
+=== Key Takeaways
+
+* Understanding the basics of software architecture is more important than ever before, given the distributed nature of the software systems we are now building, and the distributed nature of the teams building them.
+* The sweet spot of up front design, between too much and none at all, should focus on understanding the significant decisions and trade-offs that influence the shape of a software system.
+* Good architects are active members of the development team, from collaborating on code to coaching and providing technical leadership to the team.
+* Communicating about software architecture is challenging.
+The C4 model can help structure the communication, starting with a context diagram, and working down to more technical aspects of the system.
+* Contrary to some popular assumptions, putting effort towards good architecture actually enables agility.
+
+We could state the definition of software design and architecture is
+
+. Management of non-functional requirements
+. Architecture definition
+. Technology selection
+. Architecture evaluation
+. Architecture collaboration
+
+=== Good Practices
+
+Domain-Driven Design::
+I would postulate if your agile design follow domain-driven principles, you are safe for the next five years.
+Just do it.
+Evolutive Architecture::
+Features and non-functional requirements will change over time.
+Define an architecture which will evolve with these changes.
+Domain-driven design approach is highly evolutive Refactoring and Clean Code Fitness Functions Continuous Integration and Delivery Software Craftsmanship
+Refactoring::
+Evolutive architecture means you will regularly refactor your code base.
+Refactoring implies you have extensive integration and unit tests available.
+
+=== Ideas
+
+Principle 1:: Architect products, evolve from projects to products
+Principle 2:: Focus on quality attributes, not on functional requirements
+Principle 3:: Delay design decisions until they are absolutely necessary
+Principle 4:: Architect for change, leverage the _power of small_
+Principle 5:: Architect for build, test, deploy, and operate
+Principle 6:: Model the organization of your teams after the design of the system you are working on
+
+image::2021-10-01-agile-design.png[width=420,height=360,role=left]
+
+. Allow architecture to emerge,
+. Software architecture is *not* about big design up front,
+. A picture is worth thousand words,
+. You do not need to use UML See also https://c4model.com/[C4 Model],
+. Every software team needs to consider software architecture,
+. Everyone is an architect and everyone owns the architecture,
+. The software architecture role is about coding, coaching and collaboration,
+. A good software architecture enables agility.
+
+[bibliography]
+=== Literature
+
+* [[[evolutionary-architecture, 1]]] https://www.amazon.com/dp/1491986360[Building Evolutionary Architectures: Support for constant Change].
+Neal Ford, Rebecca Parson.
+O'Reilly. 2017
+* [[[refactoring, 2]]] https://www.amazon.com/dp/0134757599[Refactoring: Improving the Design of Existing Code, 2nd Edition].
+Martin Fowler.
+Addison Wesley. 2018
+* [[[domain-driven-design, 3]]] https://www.amazon.com/dp/0321125215[Domain-Driven Design: Tackling Complexity in the Heart of Software].
+Eric Evans.
+Addison-Wesley. 2004
+* [[[domain-driven-design-distilled, 4]]] https://www.amazon.com/dp/B01JJSGE5S/[Domain-Driven Design Distilled].
+Vernon Vaughn.
+Addison-Welsey. 2016
+* [[[implementing-domain-driven-desing, 5]]] https://www.amazon.com/dp/B00BCLEBN8[Implementing Domain-Driven Design. Vernon Vaughn].
+Addison-Wesley. 2103
+* [[[working-legacy-code, 6]]] https://www.amazon.com/dp/0131177052[Working Effectively with Legacy Code].
+Michael Feathers.
+Addison-Wesley. 2005
+* [[[refactoring-patterns, 7]]] https://www.amazon.com/dp/0321213351[Refactoring to Patterns].
+Joshua Kerievsky. 2005
+* [[[design-patterns, 8]]] https://www.amazon.com/dp/B000SEIBB8[Design Patterns: Element of Reusable Object-Oriented Software].
+Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides.
+Addison-Wesley. 1995
+* [[[building-microservices, 9]]] https://www.amazon.com/dp/B09B5L4NVT[Building Microservices: Designing Fine-Grained Systems, 2nd Edition].
+Sam Newman.

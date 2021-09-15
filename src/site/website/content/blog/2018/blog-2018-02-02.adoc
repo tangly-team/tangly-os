@@ -11,7 +11,7 @@ tags: ["agile"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2018-02-02-head.jpg[width=420, height=360, role=left]
+image::2018-02-02-head.jpg[width=420,height=360,role=left]
 How can you create better products and services?
 
 How can you delight your customers, your collaborators, and your stakeholders?
@@ -79,12 +79,13 @@ Work is done according to proven agile methods.
 Software development relies on modern and agile techniques such as pair programming, refactoring, test driven development, continuous integration, and Scrum.
 For bigger product development we use {ref-less} approach.
 
-Read this {url-articles}2018/blog-2018-01-01[blog] for a description of modern agile development procedures.
+Read this link:../../2018/one-way-to-improve-your-scrum-approach/[One Way to Improve Your Scrum Approach]
+for a description of modern agile development procedures.
 
 === Elastic Infrastructure
 
 We shall use state of the industry technology.
-This enables test-driven development - ATDD, TDD -,  meaning predefined automated software tests that run in real-time.
+This enables test-driven development - ATDD, TDD -, meaning predefined automated software tests that run in real-time.
 
 Cloud infrastructure provides unlimited processing capabilities for development, test, and deployment of software artifacts.
 
@@ -94,10 +95,13 @@ The goal is to deliver a software release in production every few hours if neede
 
 ===  Learnt Lessons
 
-. The power of co-location is tremendous. The work atmosphere is focused, friendly and productive.
- Team members are continuously working on the solution without spurious task switches in their team room,
+. The power of co-location is tremendous.
+The work atmosphere is focused, friendly and productive.
+Team members are continuously working on the solution without spurious task switches in their team room,
 . Establish stable and long living teams,
 . Realize the importance of training and coaching,
 . Embed your teams and processes in the organization,
-. Change processes for beyond budgeting approaches and lean enterprise. The organization has to stop requiring exact budgets and detailed yearly planning,
-. Reflect on the impact on the whole organization. See also my blog discussing what agile companies are.
+. Change processes for beyond budgeting approaches and lean enterprise.
+The organization has to stop requiring exact budgets and detailed yearly planning,
+. Reflect on the impact on the whole organization.
+See also my blog discussing what agile companies are.

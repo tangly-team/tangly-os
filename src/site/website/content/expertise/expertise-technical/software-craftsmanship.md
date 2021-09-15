@@ -5,7 +5,7 @@ description: Methods and tools your teams need to achieve technical excellence a
 weight: 20
 ---
 {{< cardpane >}}
-{{< card header="**Technical Agile Coach**" >}}
+{{< card header="**Agile Technical Coach**" >}}
 Improving software design and construction is our passion. The goal is to help you become a more productive developer—and that does not stop at the end of
 your training and coaching sessions. Your success is important to us.
 

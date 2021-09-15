@@ -29,13 +29,13 @@ Cost Effective Internal Applications
 
 [Acceptance Test Driven Development ATDD](../../blog/2018/why-is-it-so-cool-to-develop-with-java)
 
-Atlassian, GitLab and JetBrain Tool Stacks
+GitLab, GitHub, Atlassian and JetBrain Tool Stacks
 {{< /card >}}
 {{< /cardpane >}}
 
 {{< cardpane >}}
 {{< card header="**Java Technology Stack**" >}}
-Java expert (11, 17, 18)
+Java Expert (11, 17, 18)
 
 [Migrate to lambda and streams](../../blog/2021/modern-java-development/)
 
@@ -48,13 +48,13 @@ Enterprise application with Spring
 {{< /card >}}
 
 {{< card header="**Java Application Modernization**" >}}
-Upgrade your Java product to current technologies
+[Upgrade your Java Product to current Technologies](../../blog/2017/why-use-current-software-components/)
 
-Remove security weaknesses
+Remove Security Weaknesses
 
-Harden your product against hacking
+Harden your Product against Hacking
 
-Outsource modernization and maintenance of Java applications
+Outsource Modernization and Maintenance of Java Applications
 
 {{< /card >}}
 {{< /cardpane >}}

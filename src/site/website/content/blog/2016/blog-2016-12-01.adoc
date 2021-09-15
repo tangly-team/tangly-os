@@ -73,3 +73,5 @@ The PMI-ACP is working on integrating agile approaches in the official PMI appro
 
 An official definition of Scrum and the responsibilities of the team, product owner and Scrum master are documented in {ref-scrumguide}.
 
+A https://www.agilealliance.org/agile101/agile-glossary/[glossary of agile terms] is provided by the agile alliance.
+

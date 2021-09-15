@@ -280,7 +280,7 @@ We shall either build these concepts in the project management lectures or in th
 
 - [[[agile-architecture, 1]]] Agile Architecture in the Digital Age.
 Open Group. 2018
-- [[[open-agile-architecture, 2]]] Open Agile Architecture.
+- [[[open-agile-architecture, 2]]] https://pubs.opengroup.org/architecture/o-aa-standard-single/[Open Agile Architecture].
 Open Group. 2019. (ISBN: 1-947754-62-1)
 - [[[enterprise-architecture, 3]]] link:../../2021/why-enterprise-architecture/[Why Enterprise Architecture?].
 Marcel Baumann. 20221
