@@ -13,6 +13,7 @@
 prjRootDir=/Users/Shared/Projects/
 prjName=tangly-os
 prjDir=$prjRootDir$prjName
+websiteDir=$prjDir/src/site/website
 
 siteRootDir=/Users/Shared/Projects/
 siteName=tangly-os-site
@@ -38,12 +39,12 @@ function copy_domain_module() {
 }
 
 # copy whole website to static site structure
-cp -R $prjDir/src/site/website/static $siteDir/
-cp -R $prjDir/src/site/website/content $siteDir/
-cp -R $prjDir/src/site/website/config.toml $siteDir/
+cp -R $websiteDir/static $siteDir/
+cp -R $websiteDir/content $siteDir/
+cp -R $websiteDir/config.toml $siteDir/
 
 # copy site icon to requested location
-cp $prjDir/src/site/website/logo.svg $siteDir/assets/icons/
+cp $websiteDir/logo.svg $siteDir/assets/icons/
 
 # you need to run gradle build on the whole project to generate the javadoc for modules. The directories containing javadoc seems to need unique names due to
 # hugo strange behavior.

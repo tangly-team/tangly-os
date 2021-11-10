@@ -1,0 +1,167 @@
+---
+title: "Certified Java Developer"
+linkTitle: "Certified Java Developer"
+date: 2021-05-15
+tags: ["agile", "java"]
+---
+
+== Java Certified Professional - Java SE 11 Developer
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2021-05-02-head.png[width=420,height=360,role=left]
+Java is celebrating 25 years of existence.
+
+I discovered the anniversary offer to certify for Java SE 11 Developer.
+
+This special certification has a cool logo with a remainder of the anniversary.
+Oracle offers this certification for only 25 dollars footnote:[The regular price is around 250 dollars.] and provide free access to their learning platform.
+The offer and logo availability are time limited.
+
+The free learning subscription includes:
+
+- The Java Explorer learning path for basic Java skills
+- The _Java SE 11 Developer OCP – Java 25 Years_ learning path for advanced programming skills
+- Practice questions for customers to review as they prepare for the exam
+
+I could not resist and decided to get the cool logo and the associated certification.
+
+=== Certification goals
+
+The official goals of the certification cover:
+
+Working with Java data types::
+- Use primitives and wrapper classes, including, operators, parentheses, type promotion and casting
+- Handle text using String and StringBuilder classes
+- Use local variable type inference, including as lambda parameters
+Controlling Program Flow::
+- Create and use loops, if/else, and switch statements
+Java Object-Oriented Approach::
+- Declare and instantiate Java objects including nested class objects, and explain objects' lifecycles (including creation, dereferencing by reassignment, and garbage collection)
+- Define and use fields and methods, including instance, static and overloaded methods
+- Initialize objects and their members using instance and static initialiser statements and constructors
+- Understand variable scopes, apply encapsulation and make objects immutable
+- Create and use subclasses and superclasses, including abstract classes
+- Utilize polymorphism and casting to call methods, differentiate object type versus reference type
+- Create and use interfaces, identify functional interfaces, and utilize private, static, and default methods
+- Create and use enumerations
+Exception Handling::
+- Handle exceptions using try/catch/finally clauses, try-with-resource, and multi-catch statements
+- Create and use custom exceptions
+Working with Arrays and Collections::
+- Use generics, including wildcards
+- Use a Java array and List, Set, Map and Deque collections, including convenience methods
+- Sort collections and arrays using Comparator and Comparable interfaces
+Working with Streams and Lambda expressions::
+- Implement functional interfaces using lambda expressions, including interfaces from the java.util.function package
+- Use Java Streams to filter, transform and process data
+- Perform decomposition and reduction, including grouping and partitioning on sequential and parallel streams
+Java Platform Module System::
+- Deploy and execute modular applications, including automatic modules
+- Declare, use, and expose modules, including the use of services
+Concurrency::
+- Create worker threads using Runnable and Callable, and manage concurrency using an ExecutorService and java.util.concurrent API
+- Develop thread-safe code, using different locking mechanisms and java.util.concurrent API
+Java I/O API::
+- Read and write console and file data using I/O Streams
+- Implement serialization and deserialization techniques on Java objects
+- Handle file system objects using java.nio.file API
+Secure Coding in Java SE Application::
+- Develop code that mitigates security threats such as denial of service, code injection, input validation and ensure data integrity
+- Secure resource access including filesystems, manage policies and execute privileged code
+Database Applications with JDBC::
+- Connect to and perform database SQL operations, process query results using JDBC API
+Localization::
+- Implement Localization using Locale, resource bundles, and Java APIs to parse and format messages, dates, and numbers
+Annotations::
+- Create, apply, and process annotations
+
+=== E-learning Platform
+
+I gave a try to the Oracle online training platform.
+
+The material is basic and do not always reflect the current state of the Jasva ecosystem.
+The questionnaire at the end of each lection is fun to test your understanding.
+
+At the end I skipped most of the recordings and just answered the questions.
+
+I would *not* recommend the learning platform as efficient learning approach.
+
+=== Book
+
+I used the book https://www.amazon.com/dp/B08DF4R2V9[OCP Oracle Certified Professional Java SE 11 Programming Study Guide]
+written by Scott Selikoff and Jeanne Boyarsky.
+
+The book contains questions at the end of each chapter.
+The authors also offer a practice examination of their platform.
+
+I found all needed information and the practice questions were a good drill.
+The material is terse to read.
+This should be expected from such material but makes concentration more challenging.
+
+Invest time for lambdas, streams, annotations and the module system.
+I was surprised how many questions about these themes I needed to answer during the examination.
+The questions sometimes asked details you are not aware when writing regular Java code in regular products
+footnote:[Regular developers seldom defines their own annotations.
+I need to know the details how to declare an annotations to answer examination questions.].
+
+=== Practice Examinations
+
+Udemy provides https://www.udemy.com/course/java-se-11-certification-exam-1z0-819-practice-tests/[practice tests].
+The set contains 250 questions and costs between 15 and 90 dollars.
+Just look for rebates.
+
+You can find a set of links to https://blogs.oracle.com/oracleuniversity/post/test-your-java-knowledge-with-free-sample-questions[free sample questions] in an Oracle blog.
+
+A lot of resources are available online.
+Here is an
+https://javarevisited.blogspot.com/2019/07/top-4-java-11-certification-free-mock-exams-practice-tests-ocajp11-ocpjp11-1z0-815-16-questions.html[example].
+
+I only used free offering in addition to the practice questions of the bought book.
+
+=== Examination
+
+The examination was acceptable.
+
+I decided to pass the examination at an accredited partner site.
+I read quite a few posts how challenging it is to use the online examination mode and did not want to be stressed with trivialities.
+
+[CAUTION]
+====
+Do not forget to bring two identification documents.
+Regulations are tailored for USA and do not consider that any European citizen has a legal identification document.
+
+Your second document can a driver license or a credit card.
+====
+
+I passed the examination in April during Corona restrictions.
+I had to wear a mask during the whole time.
+It did not really improve my concentration.
+
+[TIP]
+====
+Check if writing material is available at your seat.
+Otherwise, request a pen and something to write on, Regulations officially allows it.
+
+Writing down ideas or which options are plausible as answer helps me a lot.
+====
+
+The rules I use are:
+
+Manage and track time::
+- The examination is time limited.
+- You need to steadily progress and answer all questions in 90 minutes.
+- The number of questions is 50.
+You have *less* than 2 minutes for each question.
+Do not get stuck in one question::
+- Each question has the same weight for the result.
+- The provided program has a function to identify unanswered questions or questions you would like to look at again.
+- _If you do not know an answer, mark the question and go to the next one_.
+Answer all questions::
+- No penalty exists if you answer a question wrong.
+- The passing rate for the examination is 68%.
+
+
+I wish you interesting learning and succesful certification.

@@ -1,11 +1,11 @@
 ---
-title: "Teaching Scheme"
-linkTitle: "Teaching Scheme"
-date: 2021-11-01
-tags: ["java", "series-students"]
+title: "Choice is Good"
+linkTitle: "Choice is Good"
+date: 2021-11-02
+tags: ["agile", "architecture"]
 ---
 
-== Teaching Scheme
+== Choice is Good
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
@@ -13,31 +13,79 @@ tags: ["java", "series-students"]
 
 image::2021-11-01-head.jpg[width=420,height=360,role=left]
 
-[quote,Michael Feathers]
-____
-OO makes code understandable by encapsulating moving parts.
-FP makes code understandable by minimizing moving parts.
-____
+First and foremost, our primary goal is to develop successful products and delight users.
+We are always looking for good practices to improve our odds.
 
-Functional languages have the following properties:
+*Product development is a risky business*.
 
-* Functions are first-class objects.
-That is, functions can be created at runtime, passed around, returned, and in general, used like any other datatype.
-* Data is immutable.
-* Functions are pure; that is, they have no side effects.
+We want to expand our toolbox with proven approaches.
+We use these tools to experiment when confronted with new problems.
+There is https://en.wikipedia.org/wiki/No_Silver_Bullet[No Silver Bullet] to solve our specific challenges.
 
-For many tasks, functional programs are easier to understand, less error prone, and much easier to reuse.
+Using a goal-driven approach that guides people through process-related options is one powerful approach.
+We need to take decisions to tailor and scale agile strategies to address the context of the situations we face.
+Approaches such as {ref-scrum} have a minimal set of instructions.
+You are responsible to add the missing pieces to improve your development organization and remove your specific impediments.
+
+What are the advantages to take a goal-driven approach?
+How can you tailor your product development process?
 
 
-=== Clojure
+=== Goals over Prescription
 
-[quote]
-____
-Purely functional programs typically operate on immutable data.
-Instead of altering existing values, altered copies are created and the original is preserved.
-Since the unchanged parts of the structure cannot be modified, they can often be shared between the old and new copies, which saves memory.
-____
+The https://www.pmi.org[Project Management Institute] has acquired the disciplined agile delivery method and heavily promotes the approach.
+I personally prefer the {ref-less} approach to scale agile product development.
+Nevertheless, Scott Ambler is an experienced and talented developer.
+Learning from his experiences and analyzing his approaches promotes the essence of {ref-less}.
+We want to experiment with new approaches and add the successful ones in our toolbox.
 
-(require package) (doc name) (find-doc regular-expression) (closure.repl/source symbol)
+Our philosophy is to look for great ideas regardless of their source and to recognize there ar no best practices.
+When we learn a new technique, we strive to understand what its strengths and weaknesses are and in what situations to apply it.
 
-symbols list '(), vector [], set #{}, map {}
+The diagram shows a potential approach for scope exploration.
+For each facet of the exploration we have set of methods to work with.
+The context of the product development and the identified goals should allow us to select the most effective approach.
+
+image::2021-11-01-explore-scope.jpg[width=800,height=600,role=center]
+
+. *Supports process tailoring*.
+I think that figures below make it very clear how people are enabled to make intelligent process decisions.
+I think that this is a huge improvement over previous process frameworks, particularly Rational Unified Process _RUP_.
+_RUP_ provides great process advice regardless of what some agilists may claim but struggled to provide consumable process tailoring advice.
+. *Enables effective scaling*.  {ref-less} is our preferred scaling approach.
+An important part of scaling agile is to tailor your strategy to reflect the realities of the scaling factors which you face.
+For example, consider your approach to exploring the initial scope of your effort (the goal captured in Figure 2).
+A large agile team or a geographically distributed team will make different tailoring decisions than a small co-located team.
+A team in a regulatory environment will make different decisions, particularly around amount of detail, than teams in non-regulatory environments.
+These are just three of several scaling factors (more on this in a future blog posting, although you may postings in my agility at scale blog to be of interest).
+. *Makes your process options very clea*.
+Figure 4, in combination with the more detailed goals diagrams (such as in Figures 2 and 3) make it very clear what you need to consider when tailoring an agile solution delivery process to meet the unique needs of the situation faced by your team.
+. *Takes the guesswork out of extending agile methods*.
+Although it makes for wonderful marketing rhetoric, it’s disingenuous for people to claim that simple methods such as Scrum can be tailored to meet your actual needs.
+Yes, we suppose this claim is true but how do you do so?
+Shouldn’t you start with a full delivery lifecycle, not just a construction lifecycle?
+Shouldn’t the toolkit cover a wider range of issues, such as leadership and requirements management as Scrum does, technical issues as XP does, modeling and documentation as Agile Modeling does, and many other issues?
+In short, shouldn’t it be a hybrid?
+Finally, shouldn’t you be given some context-sensitive advice for tailoring the details, as we do with the goal-driven approach described here?
+. *Makes it clear what risks you’re taking on*.
+By making your process decision options clear, and by describing the trade-offs associated with those options, we make it very clear what risks you’re taking on.
+Want to write a detailed requirement specification up front then the approach is going to make it very clear what risks you’ve just taken on by doing so.
+It also makes clear when this decision is appropriate, so if you’re not in this situation then it is likely time to rethink your approach.
+Although we cannot prevent challenges such as a Water-Scrum-Fall approach.
+Such when a heavy approach is taken to _Inception_ and _Transition_ and an agile approach to Construction.
+We still can certainly make it very clear what the impact is of the decisions that led you to that approach.
+We have spoken with several people who have used the decision tables in it to argue against inappropriate process decisions on their projects.
+In many situations the argument _that isn’t agile_ falls on deaf ears.
+Whereas _that will take longer and here’s why_, _that will be more expensive and here’s why_ will be listened to.
+. *It hints at an agile maturity model*.
+We suggest that in the case of issues where the options are ordered there is a clearly an indication of agile maturity or sophistication.
+Having said that I have no desire to wade into the agile maturity model morass, but I think it is an important observation nonetheless.
+
+== Change and Adapt
+
+Acknowledge that goals and priorities will shift during the product lifetime.
+
+image::2021-11-01-change-scope.jpg[width=600,height=600,role=left]
+
+The palette of approaches for a facet of your process was exemplary showed above.
+You should explore solutions for all your process steps to continuously improve.

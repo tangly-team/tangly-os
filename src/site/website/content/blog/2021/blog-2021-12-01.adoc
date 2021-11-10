@@ -1,14 +1,176 @@
 ---
-title: "Integrating Scheme, Prolog with Java"
-linkTitle: "Integrating Scheme and Prolog"
-date: 2021-12-01
-tags: ["java", "series-students"]
+title: "Spotify Cultural Elements"
+linkTitle: "Spotify Cultural Elements"
+date: 2021-12-12
+tags: ["agile"]
 ---
 
-== Integrating Scheme and Prolog with Java
+== Spotify Cultural Elements
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2021-12-01-head.png[width=420, height=360, role=left]
+image::2021-12-01-head.png[width=420,height=360,role=left]
+Recently a client told me that they were adopting the Spotify Model.
+This statement sounded great for him.
+
+Spotify has published some great articles and videos about how they have grown and transformed their organization to be agile.
+Then it occurred to me that what my customer was saying was completely wrong.
+
+I don’t think you can really understand what it is like to work at Spotify without actually living it.
+You see, most of us are working from our own paradigm and belief system.
+We have a hard time imagining how it really works at Spotify.
+
+As you review the below list, do a gut check.
+
+Are you doing this today?
+
+Would these approaches even fly at your company?
+
+What would it take to implement them?
+
+That may be the best test of whether you are anywhere near the _Spotify model_.
+
+[cite,Henrik Kniberg]
+____
+In articles or talks like this it may come across that Spotify is some sort of agile nirvana where everything just works and that is simply not true.
+____
+
+If you are not familiar with the so-called Spotify model, check out https://blog.crisp.se/[Kniberg’s blog posts] at Crisp as well as these popular videos many people refer to Spotify Engineering Culture https://www.youtube.com/watch?v=4GK1NDTWbkY&t=207s[Part 1] and https://www.youtube.com/watch?v=vOt4BbWLWQw&t[Part 2].
+
+Do not scale agile…descale your organization::
+Henrik starts with this quote which directly conflicts with the 5% of people who claim to be scaling agile using Spotify.
+It isn’t about changing agile to fit your company, it is changing your organization to achieve business agility. +
+_Have you considered descaling your organization before scaling agile?_
+Your Company is *not* Spotify::
+Spotify was born agile in 2006, so it is not even 20 years old.
+And Spotify is small at roughly 1,500 people. +
+_Is your company new, do you have thousands of people and a rich history of success doing things a certain way?_ _Do you have layers and layers of rules and bureaucracy for the right way to do things, as well as plenty of checks and balances?_
+Spotify was on a Mission::
+The stated Spotify mission is to turn the music business upside down. +
+_Does your company have a compelling purpose that aligns and motivates people?_
+Squad is equivalent to Scrum Team::
+Like Scrum teams, squads are cross-functional and self-organizing and they are responsible for end-to-end delivery of a complete project. +
+_Are your “squads” self-organizing?_ _Are they capable of end to end delivery or do you have handoffs to other teams or departments?_
+Squads are Autonomous::
+Autonomy is the key to the company.
+It includes not just what to work on next or how to complete their work.
+Autonomy helps to scale because they don’t need as much central function.
+Autonomy is fun and motivating. +
+_Are the squads you created autonomous?_
+Motivation is Essential for Productivity::
+Kniberg talks about how important employee motivation is to resolving the inevitable environmental issues.
+Motivation has a higher impact on productivity than any other factor.
+Kniberg has a simple formula showing that Productivity = Effort X Competence X Environment X Motivation^2. +
+_Is your company focused on increasing the motivation of each employee?_
+Balance alignment and autonomy::
+Spotify strives to strike a balance between alignment (central direction) and autonomy (team self-organization).
+Managers paint the big picture but don’t tell people how to solve it.
+This is probably one of the biggest sticking points for most organizations – managers are directly involved in telling people how to solve problems. +
+_Who makes decisions in your organization?_ _What is the balance of power between team members and managers?_
+Shape the Environment::
+Physical space supports informal collaboration and coordination.
+At Spotify, Squads sit and work together.
+Tribes sit near each other and there are plenty of spaces for informal meetings without having to schedule a conference room. +
+_Has your company made an effort to co-locate people working together on the same team or tribe?_ _Does your physical space support informal meetings without going to the trouble to schedule a conference room?_
+No Magic in the terms Squads and Tribes::
+Henrik said he wasn’t sure why they used weird words like Squads and Tribes.
+The label itself means nothing.
+Each tribe is a cross-functional team that is vertically aligned for delivery. +
+_Did you change your existing team to a squad without changing anything else?_
+Guilds are cross-cutting areas of Expertise::
+Guilds are the equivalent of Communities of Practice.
+They are not functional departments, they are volunteer-led communities based around a particular expertise. +
+_Are your guilds communities based on expertise, or are they organized around key managers or existing functional departments?_
+Emphasis on face 2 face communications::
+That is the purpose of the structure of Tribes, Squads, and Guilds.
+They were formed based on the need to coordinate and collaborate.
+Tribes and Squads were organized so that they can sit together. +
+_Does your organization put a priority on face to face communications?_
+Boring Releases::
+Long release cycles are scary and risky.
+Frequent releases are less scary, less risky and easy.
+They become routine and boring. +
+_How often are you releasing to Production?
+Are your releases scary or are they boring?_
+Decoupled Releases and CI/CD Reduces Cycle Time::
+Spotify focused on changing the architecture to decouple dependencies and make releases easier.
+Dependencies are reduced and teams can release to production independent of each other.
+Spotify has also invested heavily in continuous delivery to automate getting code to production in minutes, not days or weeks. +
+_On average, how long does it take to get from a changed line of code to that code live in production?
+Do you measure and track this?_
+Trust and the Self-Service Model::
+Spotify empowers and trusts people so that where possible, teams make decisions that involve risks.
+Kniberg uses the example of the difference in control between a roundabout and a typical traffic light.
+Where possible, Spotify trusts people and does not try to control them because they believe that most people are doing what is best for the organization. +
+_What is the level of trust you place on your employees and teams?_ _Are they empowered with opportunities for self-service, or are there checks and balances and delays due to waiting for approvals that slow them down?_
+Transparency & short feedback loops::
+Transparency is one of the pillars of Scrum and essential for all agility.
+Transparency is also an enabler for self-organization.
+Similarly, short feedback loops provide opportunities for inspection and adaptation and they ensure teams are building the most valuable features. +
+_How long are your sprints?_ _What is the time between when a team builds something and when a real customer uses or provides feedback on that feature?_
+Managers are Servant Leaders::
+Spotify believes that managers are servant leaders, focused on serving the highest needs of the team.
+They think it is better for managers to ask teams how then can help, rather than asking people what they are working on or when they will be done. +
+_What is the posture of your managers to your teams?
+Do they serve the teams, or do they think that the teams serve them?_
+Lean Startup::
+The Spotify mantra seems to be _Think it, Build it, Tweak it, Ship it_ based on Eric Ries and the Lean Startup approach.
+Teams establish a hypothesis and then run experiments and A/B tests and measure the results.
+They strive to get lots of feedback, tweak what they implement and maximize the value. +
+They know the difference between maximizing value and not just output (i.e. more user stories completed).
+_Are you set up to run small experiments?_ _Or are your products/projects the result of a long list of requirements that are all built before deploying to production in a big bang?_
+Spotify Hack Week::
+Twice a year Spotify hosts a hack week where they let everyone work for a week on whatever they want.
+The approach unleashes creativity and improves cross-organizational collaboration They celebrate with a party on Friday. +
+_How comfortable would your company be with a one-week hackathon that allows people to do whatever they want?_ _What controls do you think your leaders would demand for that week (e.g. assigned work, time reporting, must show results, etc)._
+Experiment-friendly Culture::
+More data-driven decisions, not decisions made by the highest paid person.
+Teams are encouraged to develop a hypothesis and run an experiment.
+Teams establish “Keep List” which may include things like: Retros, daily standups, Google Drives, GIT, and Guild UnConferences.
+They also have a “Dump List”: Time Reports, Handoffs, Separate Test Teams or Test Phases, Task Estimates, Useless Meeting. +
+_Do you allow teams the freedom to really change how they work?_ _Which on the dump list above do you require your teams to do and why?_
+Healthy Cultures Heals Broken Process::
+Process breaks left and right but a healthy culture will lead to people fixing those problems. +
+_How heavy is your process?_ _Are teams allowed to change process or is the process dictated by a central Agile CoE or standards group?_
+Balance between Chaos and Bureaucracy::
+Like the balance between autonomy and alignment, Spotify is striking a balance between chaos and bureaucracy.
+Of the two, Kniberg believes it is easier to fix chaos than bureaucracy.
+Similar to Alistair Cockburn’s “barely sufficient” process guidance, Spotify came up with the concept of “minimum viable bureaucracy” or MVB.
+It is the smallest amount of bureaucracy that an organization can have without chaos. +
+_What is the level of bureaucracy in your organization?_ _Do your managers actively work to reduce or eliminate overhead so that teams can focus on being productive?_
+Team Definition of Awesome::
+Spotify encourages teams to talk about and decide what would make them awesome.
+After all, without a vision for awesomeness, you likely won’t get there.
+Spotify teams use regular team health checks.
+They track improvements over time. +
+_Do your teams have a definition of awesome?
+Do you track team health and strive for continuous improvement?_
+Culture Beats Process::
+As we have outlined in this post, the obvious and observable processes you have are not nearly as important as the culture which may be nearly invisible.
+Culture is the behavior that is rewarded or what succeeds.
+Culture cannot be delegated by managers and leaders.
+Leaders need to model the behavior they want to see in an organization. +
+_What are the behaviors that are rewarded in your organization?
+What are the behaviors that are modeled?_
+Employee Satisfaction::
+Kniberg tells the story of an email from the head of people operations about the results of a recent employee satisfaction survey.
+The head claimed that 91% of employees enjoyed working at Spotify, which he said was “of course not satisfactory”. +
+_Do your leaders ask if people enjoy working at your company?_ _What % satisfaction do you think your leadership and HR department consider acceptable?_
+Mistakes are OK::
+How mistakes are treated may be one of the best indicators of your culture.
+Mistakes are expected when you are pushing for innovation.
+
+image::2021-12-01-failure-culture.png[width=420,height=360,role=left]
+
+[cite,Daniel Ek,Founder of Spotify]
+____
+We aim to make mistakes faster than anyone else.
+____
+
+[.text-center]
+Please do not blindly copy.
+Apply the above principles in your environment.
+Learn and adapt.
+This is the essence of the agile empirical approach.

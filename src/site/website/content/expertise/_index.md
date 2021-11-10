@@ -4,7 +4,7 @@ linkTitle: "Expertise"
 weight: 60
 menu:
   main:
-    weight: 60
+    weight: 50
 ---
 
 # Ambitious Missions need Disruptive Thinking
@@ -23,8 +23,8 @@ The most effective approaches so far to improve are **Lean** and **Agile** appro
 We truly believe agile approaches are a huge improvement in the workplace and the competitiveness in the marketplace.
 We promote
 
-- Software craftsmanship at the individual level,
-- Scrum, sometimes Kanban or XP at the team level,
-- LeSS at the product and departmental level,
+- [Software craftsmanship](https://manifesto.softwarecraftsmanship.org/) at the individual level,
+- [Scrum](https://scrumguides.org/scrum-guide.html), sometimes Kanban or XP at the team level,
+- [LeSS](https://less.works/less/framework) at the product and departmental level,
 - Lean, Beyond Budgeting, Sociocracy at the organization level,
 - Our technical expertise is in the modern Java stack.

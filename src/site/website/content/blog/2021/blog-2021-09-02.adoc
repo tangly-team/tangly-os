@@ -18,12 +18,12 @@ https://en.wikipedia.org/wiki/European_Credit_Transfer_and_Accumulation_System[E
 
 I gave this training the last three years at https://www.hslu.ch/en[Lucerne University of Applied Sciences and Arts] _HSLU_ in Switzerland.
 
-All course materials are released under https://creativecommons.org/[Creative Commons] copyright.
+All course materials are released under the https://creativecommons.org/[Creative Commons] copyright.
 
 The course contents is aligned with the big software architecture programs.
 
 The https://www.opengroup.org/[Open Group] organization is the steward of https://publications.opengroup.org/standards/togaf[TOGAF] standard.
-https://publications.opengroup.org/standards/togaf[TOGAF] is the worldwide industrial standard for software enterprise architecture.
+https://publications.opengroup.org/standards/togaf[TOGAF] is the worldwide industrial standard for enterprise software architecture.
 The group has realized that software and enterprise architecture must incorporate the agile principles <<agile-architecture>>, <<open-agile-architecture>>.
 
 All students had formal training in Java, object-oriented programming and design, and agile software project approaches.

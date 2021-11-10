@@ -48,6 +48,8 @@ cp $prjDir/src/site/website/docsy/layouts/blog/* $siteDir/themes/docsy/layouts/b
 cp $prjDir/src/site/website/docsy/layouts/partials/* $siteDir/themes/docsy/layouts/partials
 cp $prjDir/src/site/website/docsy/assets/scss/* $siteDir/themes/docsy/assets/scss
 
+cp $prjDir/src/site/website/docsy/layouts/shortcodes/* $siteDir/themes/docsy/layouts/shortcodes
+
 # install postcss (https://postcss.org/)) for final generation of site
 cd $siteDir
 sudo npm install -D autoprefixer

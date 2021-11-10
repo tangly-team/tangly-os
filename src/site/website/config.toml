@@ -119,6 +119,10 @@ section = ["HTML", "RSS", "print"]
 [params.print]
 disable_toc = true
 
+# Shortcodes
+[sc_attachments]
+other = "Attachments"
+
 # Everything below this are Site Params
 
 [params]
@@ -177,7 +181,7 @@ offlineSearchMaxResults = 50
 
 [[menu.main]]
 name = "Bitbucket"
-weight = 50
+weight = 70
 url = "https://bitbucket.org/tangly-team/tangly-os/"
 
 # User interface configuration

@@ -2,7 +2,7 @@
 title: Community
 menu:
   main:
-    weight: 50
+    weight: 60
 ---
 
 {{% blocks/section %}}

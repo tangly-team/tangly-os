@@ -1,81 +1,129 @@
 ---
-title: "Choice is Good"
-linkTitle: "Choice is Good"
-date: 2021-11-10
-tags: ["agile", "architecture"]
+title: "Gradle 7"
+linkTitle: "Gradle 7"
+date: 2021-11-03
+tags: ["java", "agile", "architecture"]
 ---
 
-== Choice is Good
+== Gradle 7 Goodies
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
 image::2021-11-02-head.jpg[width=420,height=360,role=left]
+{ref-gradle} is my preferred build tool for all Java applications I am developing.
 
-First and foremost, our goal is to develop successful products and delight users.
-We are looking for good practices to improve our odds.
-Product development is a risky business.
-We want to expand our toolbox with proven approaches.
-We can use these tools to experiment when confronting with new problems.
+Google chose Gradle as the official build tool for Android.
+Not only because build scripts are code, but because Gradle is modeled in a way that is extensible in the most fundamental ways.
+Gradle's model also allows it to be used for native development with C/C++ and can be expanded to cover any ecosystem.
+For example, Gradle is designed with embedding in mind using its Tooling API.
 
-One aspect to achieve this is using goal-driven approach that guides people through the process-related options.
-They need to take decisions to tailor and scale agile strategies to address the context of the situation that they face.
+What are my preferred goodies with the major version 7?
 
-What are the advantages to take a goal driven approach?
+=== Java Module Native Support
 
-=== Advantage of Goals over Prescription
+Java modules were introduced with Java 9 in September 2017.
+Adoption was slow.
+Developers needed time to understand the tremendeous advantages of language and compiler support of modules.
+Tooling was also a problem.
+It was cumbersome and error prone to create Java modules either using the command line and experimental plugins.
 
-The https://www.pmi.org[Project Management Institute] has acquired the disciplined agile delivery method and promotes the approach heavily.
-I personally prefer the {ref-less} approach to scale agile development.
-Nevertheless, Scott Ambler is an experienced and talented developer.
-Learning from his experiences and analyzing his approaches promotes the essence of {ref-less}.
-We want to experiment with new approaches and add the successful ones in our toolbox.
+{ref-gradle} version 7 finally supports Java modules natively.
+Just use the _java-library_ plugin.
 
-Our philosophy is to look for great ideas regardless of their source and to recognize there ar no best practices.
-When we learn a new technique, we strive to understand what its strengths and weaknesses are and in what situations to apply it.
+The plugin will detect the presence of a _module-info.java_ module declaration file and transparently switch to module compilation.
 
-The diagram shows a potential approach for scope exploration.
-For each facet of the exploration we have set of methods to work with.
-The context of the product development and the identified goals should allow us to select the most effective approach.
+=== Dependencies Semantic Declaration
 
-image::2021-11-02-explore-scope.jpg[width=800,height=600,role=center]
+The Gradle team has decided to introduce semantic support for the declaration of dependencies.
 
-. *Supports process tailoring*.
-I think that figures below make it very clear how people are enabled to make intelligent process decisions.
-I think that this is a huge improvement over previous process frameworks, particularly Rational Unified Process _RUP_.
-_RUP_ provides great process advice regardless of what some agilists may claim but struggled to provide consumable process tailoring advice.
-. *Enables effective scaling*.  {ref-less} is our preferred scaling approach.
-An important part of scaling agile is to tailor your strategy to reflect the realities of the scaling factors which you face.
-For example, consider your approach to exploring the initial scope of your effort (the goal captured in Figure 2).
-A large agile team or a geographically distributed team will make different tailoring decisions than a small co-located team.
-A team in a regulatory environment will make different decisions, particularly around amount of detail, than teams in non-regulatory environments.
-These are just three of several scaling factors (more on this in a future blog posting, although you may postings in my agility at scale blog to be of interest).
-. *Makes your process options very clea*.
-Figure 4, in combination with the more detailed goals diagrams (such as in Figures 2 and 3) make it very clear what you need to consider when tailoring an agile solution delivery process to meet the unique needs of the situation faced by your team.
-. *Takes the guesswork out of extending agile methods*.
-Although it makes for wonderful marketing rhetoric, it’s disingenuous for people to claim that simple methods such as Scrum can be tailored to meet your actual needs.
-Yes, we suppose this claim is true but how do you do so?
-Shouldn’t you start with a full delivery lifecycle, not just a construction lifecycle?
-Shouldn’t the toolkit cover a wider range of issues, such as leadership and requirements management as Scrum does, technical issues as XP does, modeling and documentation as Agile Modeling does, and many other issues?
-In short, shouldn’t it be a hybrid?
-Finally, shouldn’t you be given some context-sensitive advice for tailoring the details, as we do with the goal-driven approach described here?
-. *Makes it clear what risks you’re taking on*.
-By making your process decision options clear, and by describing the trade-offs associated with those options, we make it very clear what risks you’re taking on.
-Want to write a detailed requirement specification up front then the approach is going to make it very clear what risks you’ve just taken on by doing so.
-It also makes clear when this decision is appropriate, so if you’re not in this situation then it is likely time to rethink your approach.
-Although we cannot prevent challenges such as a Water-Scrum-Fall approach.
-Such when a heavy approach is taken to _Inception_ and _Transition_ and an agile approach to Construction.
-We still can certainly make it very clear what the impact is of the decisions that led you to that approach.
-We have spoken with several people who have used the decision tables in it to argue against inappropriate process decisions on their projects.
-In many situations the argument _that isn’t agile_ falls on deaf ears.
-Whereas _that will take longer and here’s why_, _that will be more expensive and here’s why_ will be listened to.
-. *It hints at an agile maturity model*.
-We suggest that in the case of issues where the options are ordered there is a clearly an indication of agile maturity or sophistication.
-Having said that I have no desire to wade into the agile maturity model morass, but I think it is an important observation nonetheless.
+All dependencies of a multi-module Java application are declared in a central file.
+The _libs.versions.toml_ file under the gradle subdirectory of the root build can contain all plugin and library dependencies.
+The declarations can be used in all sub-projects.
 
-== Change and Adapt
+Support is provided to group a set of related dependencies and use the alias in the various Gradle modules.
 
-Acknowledge that goals and priorities will shift during the product lifetime.
+=== IntelliJ Support
 
-image::2021-11-02-change-scope.jpg[width=600,height=600,role=left]
+Jetbrains has improved support of Gradle in their new releases of IntelliJ.
+The 2021 versions offer native support of Gradle.
+Native support means IntelliJ finally uses Gradle for compilation and unit testing inside the IDE.
+You just need to take care of one build configuration and no more need to delve in the mysteries of IntelliJ build process.
+
+The only glitch is that IntelliJ has its own concept of modules no synchronzied with the Gradle modules.
+You have to be careful to allign both structures to avoid surprises.
+
+=== Jacoco Aggregated Test Coverage Reports
+
+The support for coverage reports over multiple gradle subprojects is still limited.
+I use the following configuration to generate aggregated coverage report over all gradle modules.
+
+[source,groovy]
+----
+apply plugin: 'jacoco'      // <1>
+
+jacoco {                    // <2>
+    toolVersion = "0.8.7"
+}
+
+jacocoTestReport {          // <3>
+    dependsOn test
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
+}
+
+
+tasks.register("jacocoRootReport", JacocoReport) {      // <4>
+    subprojects { subproject ->
+        subproject.plugins.withType(JacocoPlugin).configureEach {
+            subproject.tasks.matching({ t -> t.extensions.findByType(JacocoTaskExtension) }).configureEach { testTask ->
+                sourceSets subproject.sourceSets.main
+                executionData(testTask)
+            }
+            subproject.tasks.matching({ t -> t.extensions.findByType(JacocoTaskExtension) }).forEach {
+                rootProject.tasks.jacocoRootReport.dependsOn(it)
+            }
+        }
+    }
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
+}
+
+
+tasks.withType(Test) {
+    finalizedBy jacocoTestReport        // <5>
+    useJUnitPlatform()
+    jvmArgs += ['--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED', '--enable-preview', '-XX:+ShowCodeDetailsInExceptionMessages']
+    reports.junitXml.mergeReruns = true
+    options {
+        setExcludeTags(['integration'] as Set)
+    }
+    maxParallelForks = 8
+    failFast = false
+}
+----
+
+<1> Import the Jacoco plugin in the project
+<2> Allows the selection of the Jacoco version.
+I found it useful when using the latest JDK version.
+JaCoCo developers have a slow release rythm.
+<3> Configure JaCoCo to generate an html and an XML report.
+The binary report is no more supported by external tool.
+<4> -
+<5> Configure JaCoCo test report to be generated after the running of a test task
+
+=== Wishes
+
+I would greatly appreciate if the the JaCoCo Gradle plugin is improved and align with the features of the Maven plugin.
+The process to aggregate the coverage reports on a multi-module project is cumbersome and brittle.
+
+I am waiting for the Gradle 7.3 release to have native support of JDK 17.
+footnote:[Gradle 7.3 was released in the first half of November 2021.
+JDK 17 is now natively supported.
+As usual the early version of the next JDK - in this case JDK 18 - is only currently supported through the toolchain feature.]
+The tool chain supports the newer JDKs without trouble but Gradle can only run with JDK 16 or older versions.

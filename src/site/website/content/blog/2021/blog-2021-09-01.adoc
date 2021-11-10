@@ -129,6 +129,14 @@ The CSS styling files of {ref-asciidoc} are not integrated with Hugo and themes.
 Often the appearance of the generated HTML could be improved.
 I am currently exploring venues to improve the integration of nice looking asciidoc styling sheets with the docsy universe.
 
+=== Future Features
+
+I have integrated an extension to provide access to files through a Hugo/Docsy site.
+For example the presentation of a speech is made available directly in the static website.
+
+This feature is currently experimental and queued as a pull request in the Docsy github repository
+footnote:[This feature removed my dependency to Google drive to host downloadable artifacts.].
+
 === Hugo and Docsy Related Articles
 
 . link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc[Creating a technical Website with Hugo and Asciidoc]

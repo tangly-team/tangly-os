@@ -18,7 +18,7 @@ Being able to use new features every six months is awesome.
 
 The new release JDK 17 <<jdk-17>> is the next long term support _LTS_ release.
 The migration overhead is held to a minimum thanks to the incredible backward compatibility.
-The early-access builds give more than enough opportunities and time to migrate all your applications on time.
+The early-access builds give you more than enough opportunities and time to migrate all your applications on time.
 
 The new features greatly simplify existing code and tremendously increase code legibility.
 
@@ -39,14 +39,14 @@ Why should you actually upgrade your application?
 * It includes cool features.
 For instance, the recently released Java records, sealed types, or the pattern matching functionality,
 * Reduce attack surface by updating project dependencies proactively,
-* Reduce technical debt and most importantly, prepare your project for the new and dynamic Java world,
+* Reduce technical debt and most importantly, prepare your project for the new and dynamic modern Java world,
 * Take advantage of _performance improvements_ on new JVM version,
 * Take advantage from improvements of Java as programming language,
 * Sleep better by having a more secure, efficient and quality product.
 
 I have noticed that a lot of applications are still on Java 8.
 Java 8 was released in March 2014.
-Businesses often say, we do not have time to invest so much time now.
+Businesses often say, we do not have time to invest now. _They are saying we prefer to accumulate technical debt_.
 
 Non-experts often estimate that it is a lot of work, maybe even weeks or months of work to upgrade from one LTS version to the next LTS version of Java.
 It is seen as a challenge difficult to estimate, and is automatically postponed.
@@ -87,7 +87,8 @@ Should we stick to using LTS versions, or should we use the latest versions of J
 footnote:[Beware the Java architects announced with the release of Java 17 that LTS releases will be released every two years.
 Until now the release cycle was three years]?
 If you have the time available, I would recommend using the latest version of Java because you can use the new features and improvements.
-It always increases developer productivity and application reliability.
+It always increases developer productivity and application reliability
+footnote:[Do not underestimate how more motivated developers are if they can use actual techniques and language features.].
 You have to do it every six months, because you cannot use the new minor versions.
 
 If you do not have that time available to upgrade every six months, you might opt to using only the long term support versions.
@@ -103,7 +104,8 @@ Decide
 
 You are a laggard organization:: Start to plan your migration and allocate needed resources and budget to the migration.
 You should hope your competition will not release new features and beat you.
-You are a modern organization:: You are already migrating to JDk 17 and the discussion is moot.
+You are a modern organization:: You are already migrating to JDk 17 and will complete it in the next months.
+The discussion is moot.
 You are a DevOps organization:: You have already completed migration.
 Congratulations, you can focus on business value and beat your competitors.
 ====
@@ -167,7 +169,7 @@ Cool feature supporting https://en.wikipedia.org/wiki/SIMD[SIMD] hardware.
 https://openjdk.java.net/jeps/415[JEP 415] - Context-Specific Deserialization Filters::
 Increase security.
 
-The new features you should use on a daily basis are the following.
+The new features you should use on a daily basis are described bellow.
 They will impact the appearance and legibility of your source code.
 
 ==== Algebraic Types
@@ -193,10 +195,11 @@ Among the goals of this feature include expanding the expressiveness and applica
 In JDK 16 <<jdk-16>>, the _instanceof_ operator was extended to take a type pattern and perform pattern matching.
 The modest extension proposed allows the familiar instanceof-and-cast idiom to be simplified.
 The implementation of the _boolean equals(Object o)_ method is reduced to one expression without any conditional statement.
+_Try the new implementation in your code_.
 
 [TIP]
 ====
-You should use Streams in all your code fragments.
+You should use _Streams_ in all your code fragments.
 Stream concepts were introduced with Java 8.
 
 The majority of your loops and conditional statements shall be replaced with stream pipelines and operations.

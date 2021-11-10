@@ -25,14 +25,15 @@ As always, there is a pragmatic balance somewhere in the middle, but it does rai
 * The sweet spot of up front design, between too much and none at all, should focus on understanding the significant decisions and trade-offs that influence the shape of a software system.
 * Good architects are active members of the development team, from collaborating on code to coaching and providing technical leadership to the team.
 * Communicating about software architecture is challenging.
-The C4 model can help structure the communication, starting with a context diagram, and working down to more technical aspects of the system.
+The https://c4model.com/[C4] model can help structure the communication, starting with a context diagram, and working down to more technical aspects of the
+system.
 * Contrary to some popular assumptions, putting effort towards good architecture actually enables agility.
 
 We could state the definition of software design and architecture is
 
-. Management of non-functional requirements
-. Architecture definition
-. Technology selection
+. Management of non-functional requirements, see https://www.thoughtworks.com/en-es/insights/articles/fitness-function-driven-development/[Fitness Functions]
+. Architecture definition, see https://c4model.com/[C4 Models]
+. Technology selection, see https://en.wikipedia.org/wiki/Architectural_decision[ADR]
 . Architecture evaluation
 . Architecture collaboration
 
@@ -51,12 +52,12 @@ Refactoring implies you have extensive integration and unit tests available.
 
 === Ideas
 
-Principle 1:: Architect products, evolve from projects to products
-Principle 2:: Focus on quality attributes, not on functional requirements
-Principle 3:: Delay design decisions until they are absolutely necessary
-Principle 4:: Architect for change, leverage the _power of small_
-Principle 5:: Architect for build, test, deploy, and operate
-Principle 6:: Model the organization of your teams after the design of the system you are working on
+. Architect products, evolve from projects to products,
+. Focus on quality attributes, not on functional requirements,
+. Delay design decisions until they are absolutely necessary,
+. Architect for change, leverage the _power of small_,
+. Architect for build, test, deploy, and operate,
+. Model the organization of your teams after the design of the system you are working on.
 
 image::2021-10-01-agile-design.png[width=420,height=360,role=left]
 

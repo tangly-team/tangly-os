@@ -21,7 +21,7 @@ Cost Effective Internal Applications
 {{< card header="**Effective Agile Techniques**" >}}
 [Clean Code](../../blog/2018/why-is-it-so-cool-to-develop-with-java)
 
-[Continuous Integration CI](../../blog/2018/01/why-is-it-so-cool-to-develop-with-java)
+[Continuous Integration CI](../../blog/2018/why-is-it-so-cool-to-develop-with-java)
 
 [Continuous Deployment and Delivery CD](../../blog/2018/why-is-it-so-cool-to-develop-with-java)
 

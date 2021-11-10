@@ -16,6 +16,7 @@ You are responsible to create or modify a component in your current application.
 This is a *design* activity.
 
 How can you create a good, legible, maintainable component architecture?
+
 How can you validate your functional and non-functional requirements?
 
 Yes you are right.
@@ -34,7 +35,9 @@ The way to solve the same problem is different in Java, Scala, C++, Python or C#
 You should know all regular structural, behavioral and creational patterns.
 Explore your programming language and discover how idioms and patterns have evolved between major releases.
 For example lambda expressions and streams introduced in Java 8 - released Spring 2014 - completely transform the solution for regular business logic.
-Records introduced in Java 14 - released Spring 2020 - have a huge impact how your architecture deals with data transfer objects - DTO - and immutability.
+
+Records introduced in Java 14 - released Spring 2020 - have a huge impact how your architecture deals with data transfer objects - DTO - and immutability
+footnote:[Java 17 LTS added full support for https://en.wikipedia.org/wiki/Algebraic_data_type[algebraic data types] with the record and sealed concepts.].
 
 ==== Read Open Source Code
 
@@ -73,15 +76,24 @@ Clean architecture build up on clean code.
 Promote clean code in your agile team.
 Agile code is clean code.
 
-Do not fall to the fallacy to draw beautiful and useless UML diagram and write thick
+[TIP]
+====
+Modern IDE provide static code analysis tools to detect smells in your source code.
+https://www.sonarlint.org/[SonarLint] is available for all major IDE.
+
+Use these tools to steadily improve the quality of your code and remove well-known smells.
+====
+
+Do not fall to the fallacy to draw beautiful and useless https://en.wikipedia.org/wiki/Unified_Modeling_Language[UML] diagram and write thick
 https://en.wikipedia.org/wiki/Software_architecture_description[Software Architecture Design] documents.
+
 The real architecture is hidden in the source code of your product.
 You still should document all major https://en.wikipedia.org/wiki/Architectural_decision[Architectural Decisions].
 
 ==== Know Your Programming Language
 
 If you are developing in Java, you should use the current features of the programming language.
-For example with with Java 14
+For example with Java 14
 
 * Try with resources and _closeable_ resources,
 * Immutable collections,
@@ -89,7 +101,8 @@ For example with with Java 14
 * Predicates and functions to define lambda expressions,
 * Records and immutability for objects,
 * Pattern matching syntactic sugar as for _instanceof_ operator,
-* Switch expressions Text strings.
+* Switch expressions,
+* Text blocks to write legible multi-line text expression.
 
 ==== Aggressive Refactoring
 

@@ -76,6 +76,6 @@ The whole method body is written as one statement.
 
 === Design Conventions
 
-Use plantUML to document all design decisions with diagrams.
+Use https://plantuml.com/[plantUML] to document all design decisions with diagrams.
 Diagrams shall be defined to explain specific aspects of a component.
 Do not try to model the whole source code.

@@ -12,8 +12,8 @@ description: bibliography agile and technical excellence books
 :revdate: 2020-05-31
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-- .*Agile*
 
+.*Agile*
 [%collapsible]
 ====
 * https://www.amazon.com/dp/0134542843[Unlocking Agility: An Insider's Guide to Agile Enterprise Transformation].
@@ -178,18 +178,21 @@ Ken Beck. 2005
 Lisa Crispin and Janet Gregory. 2009
 * https://www.amazon.com/dp/0321967054[More Agile Testing: Learning Journeys for the Whole Team].
 Lisa Crispin, Janet Gregory. 2015
-* https://www.amazon.com/dp/0132350882[Clean Code].
+* https://www.amazon.com/dp/0132350882[Clean Code: A Handbook of Agile Software Craftsmanship].
 Robert Martin.
 Addison-Wesley. 2009. ISBN 978-0132350884
-* https://www.amazon.com/dp/0137081073[Clean Coder].
+* https://www.amazon.com/dp/0137081073[Clean Coder: A Code of Conduct for Professional Programmers].
 Robert Martin.
 Addison-Wesley. 2011. ISBN 978-0137081073
-* https://www.amazon.com/dp/0134494164[Clean Architecture].
+* https://www.amazon.com/dp/0134494164[Clean Architecture: A Craftsman's Guide to Software Structure and Design].
 Robert Martin.
 Addison Wesley. 2018. ISDN 978-0134494166
-* https://www.amazon.com/dp/0135781868[Clean Agile].
+* https://www.amazon.com/dp/0135781868[Clean Agile: Back to Basics].
 Robert Martin.
 Addison-Wesley. 2020. ISDN 978-0135781869
+* https://www.amazon.com/dp/B095C16LSW[Clean Craftsmanship: Disciplines, Standards, and Ethics]
+Robert Martin.
+Addison-Wesley. 2021. ISDN 978-0136915713
 ====
 
 .*DevOps*
