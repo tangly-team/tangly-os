@@ -1,0 +1,257 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'signing'
+    id "jacoco"
+    id 'jacoco-report-aggregation'
+
+    id 'com.github.spotbugs'
+    id 'org.sonarqube' apply false
+    id 'info.solidsoft.pitest' apply false
+    id 'com.github.ben-manes.versions'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://maven.vaadin.com/vaadin-addons" }
+    maven { url "https://raw.github.com/ZUGFeRD/mustangproject/mvn-repo" }
+    maven { url "https://repo.microstream.one/repository/maven-public/" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+}
+
+dependencies {
+    compileOnly(libs.lombok)
+    annotationProcessor(libs.lombok)
+    compileOnly(libs.annotations)
+    implementation(libs.apache.log4j2.api)
+    implementation(libs.guice)
+    runtimeOnly(libs.apache.log4j2.core)
+    runtimeOnly(libs.apache.log4j2.slf4j)
+
+    testCompileOnly(libs.annotations)
+    testImplementation(libs.bundles.test.deps)
+    testImplementation(libs.apache.log4j2.core)
+    testRuntimeOnly(libs.apache.log4j2.slf4j)
+    testRuntimeOnly(libs.junit.engine)
+}
+
+ext {
+    // support conditional gradle script execution for dev, int, prod. Used for example to disable slow reporting plugins
+    mode = "dev"
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+    withJavadocJar()
+    withSourcesJar()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.fork = true
+    options.incremental = true
+    options.warnings = true
+    options.deprecation = true
+    options.compilerArgs += ["-parameters", "--enable-preview", "-Xlint:all,-serial,-varargs,-processing,-try", "-Xdoclint:none"]
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+    jvmArgs += ['--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED', '--enable-preview', '-XX:+ShowCodeDetailsInExceptionMessages']
+    reports.junitXml.mergeReruns = true
+    options {
+        setExcludeTags(['integration'] as Set)
+    }
+    maxParallelForks = 8
+    failFast = false
+}
+
+tasks.withType(Javadoc) {
+    enabled = true
+    javadoc.options {
+        encoding("UTF-8")
+        addBooleanOption('-Xdoclint:none')
+        addBooleanOption('-enable-preview', true)
+        addStringOption('-release', '17')
+        addBooleanOption('quiet')
+    }
+}
+
+tasks.withType(JavaExec) {
+    jvmArgs += ['--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED', '--enable-preview', '-XX:+ShowCodeDetailsInExceptionMessages']
+}
+
+jar {
+    doFirst {
+        manifest {
+            attributes(
+                'Name': project.name,
+                'Automatic-Module-Name': project.ext.moduleName,
+                'Specification-Title': "tangly open source library $project.ext.artifactId",
+                'Specification-Version': project.version,
+                'Specification-Vendor': "tangyly llc, Switzerland (https://www.tangly.net)",
+                'License': 'Apache License v2.0',
+                'Implementation-Title': project.name,
+                'Implementation-Version': project.version,
+                'Implementation-Vendor': "tangyly llc, Switzerland (https://www.tangly.net)",
+                'Build-Jdk': "${System.properties['java.version']}",
+                "Class-Path": configurations.runtimeClasspath.files.collect { it.getName() }.join(' ')
+            )
+        }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            afterEvaluate {
+                groupId = project.ext.groupId
+                artifactId = project.ext.artifactId
+                version = project.version
+            }
+            from components.java
+            pom {
+                afterEvaluate {
+                    name = project.ext.moduleName
+                    description = project.description
+                    url = 'https://tangly-team.bitbucket.io/'
+                    inceptionYear = project.ext.inceptionYear
+                }
+                versionMapping {
+                    usage('java-api') {
+                        fromResolutionOf('runtimeClasspath')
+                    }
+                    usage('java-runtime') {
+                        fromResolutionResult()
+                    }
+                }
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'marcelbaumann'
+                        name = 'Marcel Baumann'
+                        email = 'marcel.baumann@tangly.net'
+                        organization = 'tangly llc'
+                        organizationUrl = 'https://www.tangly.net'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:https://bitbucket.org/tangly-team/tangly-os.git'
+                    developerConnection = 'scm:git:https://bitbucket.org/tangly-team/tangly-os.git'
+                    url = 'https://bitbucket.org/tangly-team/tangly-os.git'
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+            if (mode.equalsIgnoreCase('prod')) {
+                credentials {
+                    // credentials are stored under ~/.gradle/gradle.properties and are first copied in local variables to avoid error if not defined fpr
+                    // example in CI pipeline (private keys should not be uploaded to a cloud CI)
+                    credentials {
+                        username mavenCentralUsername
+                        password mavenCentralPassword
+                    }
+                }
+            }
+        }
+    }
+}
+
+if (mode.equalsIgnoreCase('prod')) {
+    // currently credentials are not available in the CI pipeline therefore the configuration parameter to avoid spurious execution errors.
+    signing {
+        // credentials for signing are stored under ~/.gradle/gradle.properties
+        // gpg --export-secret-keys > secring.gpg
+        // gpg --no-default-keyring --keyring ./secring.gpg --list-keys --keyid-format short
+        sign publishing.publications.mavenJava
+    }
+}
+
+configurations.all {
+    resolutionStrategy {
+//        force "org.yaml:snakeyaml:1.27"
+    }
+}
+
+jacoco {
+    toolVersion = "0.8.7"
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
+}
+
+pitest {
+    junit5PluginVersion.set('0.12')
+    targetClasses.set(['net.tangly.*'])
+    threads.set(8)
+    outputFormats.set(['XML', 'HTML'])
+    timestampedReports.set(false)
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "tangly-os-at-tangly.net"
+        property "sonar.organization", "tangly-os"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.language", "java"
+        property "sonar.java.source", "1"
+        property "sonar.coverage.jacoco.reportPath5s", "**/build/reports/jacoco/test/jacocoTestReport.xml"
+    }
+}
+
+if (mode.equalsIgnoreCase('int')) {
+    apply plugin: 'com.github.spotbugs'
+    apply plugin: 'org.sonatype.gradle.plugins.scan'
+    apply plugin: 'pmd'
+    apply plugin: 'info.solidsoft.pitest'
+}
+
+if (mode.equalsIgnoreCase('int')) {
+    pmd {
+        ruleSetFiles = files(rootProject.file('src/main/resources/pmd-tangly.xml'))
+        toolVersion = "6.33.0"
+        ignoreFailures = true
+        incrementalAnalysis = true
+        rulesMinimumPriority = 3
+    }
+    spotbugs {
+        ignoreFailures = true
+        effort = "max"
+        reportLevel = "low"
+        toolVersion = '4.4.2'
+    }
+    [spotbugsMain, spotbugsTest].each { task ->
+        task.configure {
+            reports {
+                html {
+                    enabled = true
+                    stylesheet = 'fancy-hist.xsl'
+                }
+            }
+        }
+    }
+    tasks.withType(Pmd) {
+        reports {
+            xml.enabled false
+            html.enabled true
+        }
+    }
+}
+
