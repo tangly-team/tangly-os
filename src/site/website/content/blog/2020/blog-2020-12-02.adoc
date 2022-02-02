@@ -30,13 +30,13 @@ I wanted to store comments in a personally owned repository and protect my reade
 Some information on the Internet about {ref-utterances} is wrong.
 Facts are:
 
-* Utterances uses a github repository to store comments associated with your website articles and pages.
+* Utterances uses a GitHub repository to store comments associated with your website articles and pages.
 * Your website can be hosted *anywhere*.
-You do *not* need to host your static website repository on github; but you can.
-* Readers wanting to comment *must* login once with their github account to authorize the {ref-utterances} application.
+You do *not* need to host your static website repository on GitHub; but you can.
+* Readers wanting to comment *must* login once with their GitHub account to authorize the {ref-utterances} application.
 Anonymous commenting is not supported.
-_This restriction is reasonable for a technical website which readers are technical affine and already have a github account._
-* Utterances is free.
+_This restriction is reasonable for a technical website which readers are technical affine and already have a GitHub account._
+* Utterances product is free.
 It claims to have no tracking, no advertisement, and no lock-in.
 The comments are stored in your repository as GitHub issues.
 * Utterances layout looks nice and can be styled.
@@ -88,7 +88,7 @@ In my case it would be _marcelbaumann/tangly-team-comments_.
 === Configure Docsy Theme
 
 I use the Hugo theme https://www.docsy.dev/[Docsy] to style the {ref-site}.
-I put some effort to have a configurable extension through site prameters.
+I put some effort to have a configurable extension through site parameters.
 
 ==== Create the comments partial for utterances
 

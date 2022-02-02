@@ -1,0 +1,203 @@
+---
+title: "Evaluate Technical CVs"
+linkTitle: "Evaluate CVs"
+date: 2022-01-10
+tags: ["agile"]
+---
+
+== Evaluate Technical Curriculum Vitae
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:company: https://www.tangly.net/[tangly llc]
+
+image::2022-01-03-head.jpg[width=420,height=360,role=left]
+
+The goal of a _curriculum vitae_ is to get an invitation to a job interview.
+I review hundreds of CVs and must select a few candidates we should invite.
+
+Each interview will cost hundreds of Euros to the company.
+I must minimize the number of interviews and increase the probability of a match.
+
+Over the years I developed a checklist to select promising candidates.
+
+The below checklist is biased to the Java technology check.
+When I use the verb *explain* in a list item I mean that I got a hint the candidate is aware of the concept and has used it in his applications.
+
+Similar lists can be created for Javascript/Typescript, Python, Ruby, C++, or .NET developers.
+
+=== What Do I Check?
+
+Formal Training:: I expect a software developer to have a formal training in computer science or related fields.
+A formal training is given by an accredited institution.
+The student receives a recognized certificate.
+* The following information should be available:
+** Title of the formation and information if it is a bachelor, a master, or an alternative title,
+** Time interval when the formation was attended and year when you graduated. +
+_The regular bachelor study is three years, the master study is an additional one and half year_,
+** Name of the school where the formation was attended.
+I regularly look at the curriculum and the ranking of the institute to bette understand your training.
+A link to the school is always welcome.
+* Checks are:
+** Did the candidate study computer science? +
+_If not you should pursue an additional formation in computer related fields.
+I want to hire a computer specialist not an all-rounder_,
+** How long did the candidate study and when did he graduate? +
+_It defines the potential years of experience_,
+** What is the ranking of the school delivering the title? +
+_I often want to know the overall ranking of the institute and their curriculum strengths_,
+Continuous Formation:: I expect a professional engineer to regularly pursue formal continuous training.
+The following information should be available:
+** What formation did he attend? +
+_I am checking if the candidate pursued training in the areas she applies for.
+A team leader should train in soft skills and product management methods.
+An agile specialist should train in agile, Scrum and DevOps.
+A software architect should train in architecture and software design themes.
+A user interface developer should know about usability, accessibility, design and corporate interface standards._
+** When did he attend the continuous formation and year when the title was received?
+** Link to an authority providing proof of the certificate of the formation.
+Spoken Languages::
+The workplace is international and all relevant computer science documentation is in English.
+* The candidate shall be fluent in English in written and spoken forms +
+_A software specialist not being fluent in English is an imposter because he cannot read actual technical information_,
+* The organization can request specific languages.
+German and Spanish companies are keen to have candidates speaking the national language.
+Programming Capabilities::
+A software developer shall be a proficient and trained programmer.
+Here some examples of capabilities I look for if the candidate is a Java developer:
+* Java versions he has experience with. +
+_If his current projects use older versions of the language, I expect a professional to study the current version on his own_,
+* Build tool he has experience with - https://maven.apache.org/[maven], https://gradle.org/[gradle] -,
+* If he is a junior developer I check if he has an official Java developer certificate,
+* Which libraries did he use?
+I expect https://junit.org/junit5/[JUnit], https://site.mockito.org/[Mockito], https://assertj.github.io/doc/[AssertJ],
+http://www.slf4j.org/[slf4j], https://flywaydb.org/[flyway], https://github.com/FasterXML/jackson[Jackson].
+More capable developers often cite https://projectlombok.org/[lombok], https://github.com/google/jimfs[jimfs], http://hsqldb.org/[hsqldb],
+* Does he have experience with JSON, HTML, CSS, SQL, or script languages?
+Design Capabilities::
+A professional developer shall be able to design software components.
+I am looking for:
+* Knowledge of design patterns and Java idioms,
+* Explain object-oriented approaches - abstraction, https://en.wikipedia.org/wiki/SOLID[SOLID], https://en.wikipedia.org/wiki/KISS_principle[KISS],
+https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI], https://en.wikipedia.org/wiki/Algebraic_data_type[algebraic data types],
+* Explain functional approaches - Optional<T>, Streams, immutability, idempotence, Functor, Monad,
+* Explain application concepts such as internationalization _i18n_, localization _l16n_, or accessibility _a11y_,
+* Explain exception handling approaches in backend and frontend applications,
+* Explain test driven development build on JUnit 5, Mockito and AssertJ and the variants TDD, BDD, ATDD,
+* Explain continuous integration, continuous delivery, and continuous deployment, infrastructure as code, DevOps,
+* Explain refactoring triggered through https://www.sonarlint.org/[SonarLint], https://pmd.github.io/[PMD], https://spotbugs.github.io/[SpotBugs].
+Architecture Capabilities::
+A professional software architect shall be able to define an application architecture.
+I am looking for:
+* Explain architecture patterns such as monolith, modular monolith, modular application, layered application,
+* Show knowledge of architecture approach such as domain driven design, Traditional approaches such as https://en.wikipedia.org/wiki/Rational_Unified_Process[RUP],
+https://en.wikipedia.org/wiki/Zachman_Framework[Zachmann] can be mentioned but are no more relevant,
+* Explain the different facets of the architect role: Teacher, Coach, Mentor, Developer,
+* Explain how architecture is documented (https://adr.github.io/[ADR], https://c4model.com/[C4]), static websites (Pages in GitHub, GitLab, or Bitbucket); and which notations (https://www.omg.org/spec/UML/[UML]) or approaches can be used,
+* Explain continuous architecture improvements and how it is performed - see e.g. refactoring legacy systems -,
+* Explain technical debt concepts and how to mitigate technical debt in an application,
+* Check if the candidate knows about https://adr.github.io/[ADR] _Architecture Design Record_, https://www.archunit.org/[ArchUnit],
+* Check if a formal architecture training was performed such as https://en.wikipedia.org/wiki/Domain-driven_design[DDD], https://www.opengroup.org/togaf[TOGAF],
+https://arc42.org/[arc42].
+Agile Work Capabilities::
+A professional developers should know agile methods which around since this millennium:
+* Check if Scrum, Kanban, Lean approaches were used in projects.
+Often they only pretend because they hold a daily meeting and a retrospective,
+* Check if CI/CD/CD and DevOps practices were used in projects,
+* Check if understanding of refactoring and automated tests is visible and if techniques were used in projects.
+Teamwork Capabilities::
+* What does teamwork mean for the candidate?
+* Explain pair programming, mob programming, merge requests
+* Explain feature branch versus trunk based development
+* Check if community of practice, coding dojo, design workshops are known concepts
+* Does the candidates show a sensibility to soft factors and team building instruments
+
+=== Goodies
+
+LinkedIn Profile::
+Digital professionals publish their career and achievements on a platform.
+I like to visit your LinkedIn profile or your personal career website.
+Open Source Activities::
+Modern software application development relies heavily on open source libraries and frameworks.
+Developers who understand how to communicate with the teams behind these projects and how to contribute improvements are worth a lot in any project.
+Community Activities::
+Engineers working in communities and user groups are often open, enthusiast and have a wider network of professional acquaintances.
+Blogs and Articles::
+Developers taking time to write public blogs or articles show a genuine interest to help others in their learning.
+I also find very interesting to learn which technical books a candidate has read.
+Other Programming Languages::
+Java developers interested in Groovy, Kotlin, Scala, Clojure are often more knowledgeable and open to new approaches.
+
+=== Game Rules
+
+Provide a short text describing yourself and your interests::
+I want to understand who the person behind the CV is and the type of work she is interested in.
+Embellish, do not lie::
+It is normal to show the bright side of your work experience.
+Feel free to embellish your CV.
+But please do not lie to me and invent capabilities you do not have.
+Such a fault is a killer during the interview.
+I always cross-check the CV during an interview.
+Explain gaps in CV::
+I truly respect people taking off time or having encountered problems during their careers.
+And I expect from you a hint to understand gaps in your career.
+Experience section::
+Use this section to discuss what you achieved in each of your previous roles.
+Using data and numbers can help a hiring manager get a better sense of how you performed, especially because this information is verifiable.
+Please add more details for the last five years.
+I am not deeply interested to know details about a project ten years old. +
+_I do not fully count experience when the project duration was below half a year.
+You need time to learn the application, the team and the constraints.
+Therefore, the first six months your personal learning in new approaches and technologies is quite shallow._
+Explain why you apply for a specific job position::
+Either you have the needed capabilities through past and current experiences or explain why you think you could take over the responsibility.
+Use a spell checker::
+A computer specialist not being able to use a spell checker is automatically disqualified.
+Interest to improve::
+You are doomed if you did not learn or formally train the last ten years.
+This learning and training shall be visible in your resume.
+_I look for Oracle Java Developer (developer), advanced or professional Scrum, iSAQB (senior designer), TOGAF, and JEE (architect) certifications._
+Personal information::
+Personally I like to see a picture of the candidate.
+I also expect some information about the location of the candidate such as city and state.
+I have a strong emphasis to build diverse teams because I am fully aware of the improved productivity.
+Women must have a higher chance to get an interview and the job.
+We want to equilibrate our development teams.
+And I fully understand candidates not providing one due to anxiety of toxic selection processes.
+
+=== Tips
+
+I have the following checks to assess how current the knowledge of a candidate is.
+If a candidate cites obsolete approaches I become cautious.
+
+* SVN is dead for 10 years.
+Everybody uses Git.
+* RUP is dead for 20 years.
+* Waterfall is dead for 25 years.
+* Extensive front-end requirement definition is dead for 10 years.
+* Big front-end architecture and design activities are dead for 15 years.
+* Technologies such as NetBeans, Ant, or XML are obsolete.
+
+=== NodeJS Candidates
+
+A NodeJS developer shall know domain-driven design, clean, refactoring, TDD, CI/CD and agile approaches.
+General information, computer science, design, software architecture and agile approaches requirements are the similar.
+
+The technical questions for a NodeJS person are slightly different from a Java developer:
+
+* Which https://nodejs.org/en/[NodeJS] version is he working with?
+How experienced is she with the packet manager _npm_?
+* Does he have a Typescript certification?
+Which version of Typescript is she using?
+* Which tools did she used for quality conformance and refactoring in projects?
+* Does he know standard https://owasp.org/[OWASP] approaches and why they are important in a NodeJS environment?
+* Examples of object-oriented, functional programming, asynchronous and reactive approaches in Typescript code
+* Can senior developers discuss and explain threading, thread library, async design approaches?
+* Which development environment does he use to develop NodeJS code - e.g. JetBrain WebStorm -?
+* Does he master https://en.wikipedia.org/wiki/MEAN_(solution_stack)[MEAN] stack - MongoDB, Express.JS, Angular, NodeJS -?
+* Which experience and certification does she have with Angular or React?
+* Which training or certificates does she have in user interface design, usability, or accessibility?
+* Does he have experience and training in MongoDB, Mongoose, Meteor, express.js, socket.io?
+* Is she experienced with integrating relational database in NodeJS backend solutions?
+* Are advanced topics such as https://webassembly.org/[WebAssembly] or https://deno.land/[Deno] known?
+
+Use hints in the project experience sections to cover the above topics.

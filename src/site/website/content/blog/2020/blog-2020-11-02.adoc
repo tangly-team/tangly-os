@@ -56,7 +56,7 @@ Culture will follow::
 image::2020-11-02-waisfisz-levels-of-culture.png[role=center]
 
 To Waisfisz, an organization’s culture is defined by how its parts relate to each other.
-Moreover, it refutes the _the way we do things here_ model by reinforcing that your internal culture is defined by its differences from other organizations.
+Moreover, it refutes _the way we do things here_ model by reinforcing that your internal culture is defined by its differences from other organizations.
 This model lends from group dynamics where groups are not only defined by their internal identity but also by their differences to other groups.
 
 Clearly recognize not changing the structure and just renaming roles and processes will not trigger any change. See the Larman laws:
@@ -99,7 +99,7 @@ Attempting to change an organization’s culture is a folly, it always fails.
 Peoples’ behavior _the culture_ is a product of the system; *when you change the system, peoples’ behavior changes.*"
 ____
 
-* The major anti-pattern is the refusal to change structure of your organization.
+* The major anti-patern is the refusal to change structure of your organization.
  Without changing structure you will fail.
 * Your organization is unique but not esoteric.
  The actual approaches will work.
@@ -111,7 +111,7 @@ ____
  The https://martinfowler.com/articles/agileFluency.html[Agile Fluency Model] provides a potential roadmap.
 * Agile transformation works only if your organization thrives to satisfy customer's needs and achieve technical excellence.
 
-Please compare your change process against these anti-patterns. Correct if needed.
+Please compare your change process against these anti-atterns. Correct if needed.
 
 === Lessons Learnt
 

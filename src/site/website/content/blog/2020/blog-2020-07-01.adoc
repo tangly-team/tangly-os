@@ -12,7 +12,7 @@ tags: ["java", "design", "crm"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2020-07-01-head.png[width=420,height=360,role=left]
-Our company has the ambition to digitalize all our workflows since our inception.
+Our company has the ambition to digitize all our workflows since our inception.
 We proudly state we never bought a printer or a fax machine.
 Analog machines should become obsolete in the digital age.
 Companies should be more environment aware and save some trees.

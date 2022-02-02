@@ -124,6 +124,20 @@ You should not add it to the extensions because since {ref-asciidoctor} version 
 <4> Icons provide better looking icons for various {ref-asciidoc}} constructs.
 <5> Define document attributes which are accessible to all processed documents (DRY concept for the whole site).
 
+CAUTION
+====
+Newer versions of hugo have stricter security restrictions.
+You must explicitly enable asciidoctor support by adding following statements in your configuration file
+
+[source,yaml]
+----
+[security]
+[security.exec]
+allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^asciidoctor$']
+----
+
+====
+
 ==== Docsy Configuration
 
 ===== Add First Level Folders

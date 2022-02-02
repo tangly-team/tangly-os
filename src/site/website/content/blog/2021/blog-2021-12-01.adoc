@@ -75,7 +75,7 @@ At Spotify, Squads sit and work together.
 Tribes sit near each other and there are plenty of spaces for informal meetings without having to schedule a conference room. +
 _Has your company made an effort to co-locate people working together on the same team or tribe?_ _Does your physical space support informal meetings without going to the trouble to schedule a conference room?_
 No Magic in the terms Squads and Tribes::
-Henrik said he wasn’t sure why they used weird words like Squads and Tribes.
+Henrik said he was not sure why they used weird words like Squads and Tribes.
 The label itself means nothing.
 Each tribe is a cross-functional team that is vertically aligned for delivery. +
 _Did you change your existing team to a squad without changing anything else?_
@@ -128,7 +128,7 @@ _How comfortable would your company be with a one-week hackathon that allows peo
 Experiment-friendly Culture::
 More data-driven decisions, not decisions made by the highest paid person.
 Teams are encouraged to develop a hypothesis and run an experiment.
-Teams establish “Keep List” which may include things like: Retros, daily standups, Google Drives, GIT, and Guild UnConferences.
+Teams establish “Keep List” which may include things like: Retros, daily stand-ups, Google Drives, GIT, and Guild UnConferences.
 They also have a “Dump List”: Time Reports, Handoffs, Separate Test Teams or Test Phases, Task Estimates, Useless Meeting. +
 _Do you allow teams the freedom to really change how they work?_ _Which on the dump list above do you require your teams to do and why?_
 Healthy Cultures Heals Broken Process::

@@ -38,7 +38,7 @@ A tag has three parts:
 
 * an _optional namespace_ to classify the tag in the overall ontology,
 * a _mandatory name_ to uniquely identify the tag in the context of its optional namespace,
-* an _optional value_ providing a specific information to the tag
+* an _optional value_ providing a details to the tag
 
 For example, we could define a tag such as _geo:longitude=50.167958_ to provide the meta information of longitude to an entity.
 This tag has a namespace _geo_, a name _longitude_ and a double value _50.167958_.
@@ -59,7 +59,7 @@ The ontology enforcement allows consistent reporting and data drilling over depa
 
 === Comments
 
-Comments provide human readable information and hints for entities.
+Comments provide human readable inf-rmation and hints for entities.
 
 An author writes a comment at a specific time.
 Usually comments shall be immutable.

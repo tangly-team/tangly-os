@@ -163,6 +163,9 @@ O'Reilly. 2021. ISBN 978-1492034025
 * https://www.amazon.com//dp/B00T3N7XB4[Building Microservices: Designing Fine-Grained Systems, 1st Edition].
 Sam Newman.
 O'Reilly. 2015. ISBN 978-1491950357
+* https://www.amazon.com/dp/B09GG6XKS4[Modern Software Engineering: Doing What Works to Build Better Software Faster].
+David Farley.
+Addison-Welsey. 2020. ISBN 978-0137314911
 ====
 
 .*Technical Excellence*

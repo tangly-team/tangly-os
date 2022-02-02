@@ -1,0 +1,198 @@
+/*!
+ * Copyright 2022-2022 Marcel Baumann
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ *          http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ */
+
+.left {
+    float: left !important;
+}
+
+.right {
+    float: right !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-justify {
+    text-align: justify !important;
+}
+
+.admonition-block {
+    td.content {
+        > .title {
+            text-align: left;
+            font-size: 1rem;
+            font-style: italic;
+            line-height: 1.45;
+            color: #7a2518;
+            font-weight: 400;
+            margin-top: 0;
+            margin-bottom: .25rem;
+        }
+    }
+
+    td.icon {
+        .icon-note {
+            &:before {
+                content: "\e801" !important;
+            }
+        }
+
+        .icon-tip {
+            &:before {
+                content: "\e800" !important;
+            }
+        }
+
+        .icon-warning {
+            &:before {
+                content: "\e802" !important;
+            }
+        }
+
+        .icon-caution {
+            &:before {
+                content: "\e804" !important;
+            }
+        }
+
+        .icon-important {
+            &:before {
+                content: "\e803" !important;
+            }
+        }
+    }
+}
+
+.image-block {
+    > .title {
+        text-align: left;
+        font-size: 1rem;
+        font-style: italic;
+        line-height: 1.45;
+        color: #7a2518;
+        font-weight: 400;
+        margin-top: 0;
+        margin-bottom: .25rem;
+        margin-bottom: 0;
+    }
+}
+
+.quote-block {
+    > .title {
+        text-align: left;
+        font-size: 1rem;
+        font-style: italic;
+        line-height: 1.45;
+        color: #7a2518;
+        font-weight: 400;
+        margin-top: 0;
+        margin-bottom: .25rem;
+    }
+
+    margin: 0 1em 1.25em 1.5em;
+    display: table;
+}
+
+.admonition-block {
+    > table {
+        border-collapse: separate;
+        border: 0;
+        background: none;
+        width: 100%;
+
+        td.icon {
+            text-align: center;
+
+            img {
+                max-width: none;
+            }
+
+            .title {
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+        }
+
+        td.content {
+            font-size: 1.0625rem;
+            margin: 0;
+            padding: 0;
+            padding-left: 1.125rem;
+            padding-right: 1.25rem;
+            border-left: 1px solid #ddddd8;
+            color: rgba(0, 0, 0, 0.6);
+            word-wrap: anywhere;
+
+            > :last-child > :last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.image-block.left {
+    margin: 0.25em 0.625em 1.25em 0;
+}
+
+.image-block.right {
+    margin: 0.25em 0 1.25em 0.625em;
+}
+
+.image-block.thumb {
+    border-width: 6px;
+
+    > .title {
+        padding: 0 0.125em;
+    }
+}
+
+.image-block.th {
+    border-width: 6px;
+
+    > .title {
+        padding: 0 0.125em;
+    }
+}
+
+.image.left {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+    display: inline-block;
+    line-height: 0;
+    margin-right: 0.625em;
+}
+
+.image.right {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+    display: inline-block;
+    line-height: 0;
+    margin-left: 0.625em;
+}
+
+a.image {
+    text-decoration: none;
+    display: inline-block;
+
+    object {
+        pointer-events: none;
+    }
+}

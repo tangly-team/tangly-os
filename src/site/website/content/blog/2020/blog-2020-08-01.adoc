@@ -33,13 +33,13 @@ An entity is a user domain model abstraction and is mapped to a software type.
 * Any entity has a _unique mandatory internal_ object identifier *_oid_*, we recommend the use of numeric values to improve performance.
 * Public and _external identifier_ *_id_*, we recommend the use of text to adequately support various external identification scheme.
 An example is the European enterprise identifier EUID identifying a company or a certified natural person in Europe
-* Human readable _name_.
+* Human-readable _name_.
 
 A more sophisticated variant provides additional features.
 
 * A set of tags to classify the instance through a crowd based ontology.
 Tags are often called labels.
-* A list of comments to add human readable information to the instance.
+* A list of comments to add human-readable information to the instance.
 Comments have a timeline and can be sorted by creation date.
 The comments can be extended to add audit information such as functional change information or activities related to the instance.
 
@@ -89,7 +89,7 @@ This process is part of the enterprise architecture activities of your ecosystem
 
 External identifier ownership is often a murky situation when working with legacy systems.
 You often have multiple source of external identifiers, sometimes overlapping and sometimes no covering all instances.
-You have to formulate a long-term strategy to clean-up your landscape and handle the problems until these clean-up activities are completed.
+You have to formulate a long-term strategy to clean up your landscape and handle the problems until these clean-up activities are completed.
 By handling we mean administrative and import rules matching the various external identifiers to the same object.
 
 One possible solution is to use tags.
@@ -106,7 +106,7 @@ As soon as you modify identifiers they are per definition no more real identifie
 
 === Names _name_
 
-The entity name is a human readable name to distinguish between entity instances.
+The entity name is a human-readable name to distinguish between entity instances.
 Ideally it should be almost unique.
 The fallback is to use the external unique identifier _id_ known to all external systems.
 The drawback is that we have no guarantees it is legible for users.
@@ -122,7 +122,7 @@ An internal identifier is used as primary key in the persistence storage.
 . Internal object identifiers are identifiers.
 An identifier is immutable and should be numerical for performance reasons.
 . External object identifiers have exactly one application in charge to create them.
-. Names are human readable and improve the legibility and usability of user interface and reports.
+. Names are human-readable and improve the legibility and usability of user interface and reports.
 
 External identifiers can be tricky.
 In Switzerland, we had an old social security number which is still referenced in a lot of legal systems.
@@ -137,7 +137,7 @@ We have a new social security number which is used in social insurance workflows
 _The same number is also used in medical insurance workflows._
 
 We have also a federal identity card number, a federal passport number, a federal driver license number, additional medical card insurance numbers, a state tax personal identification number, and more external identifiers.
-All these external identifiers shall referenced the same natural person.
+All these external identifiers shall reference the same natural person.
 
 More interesting is that a tourist living in the European zone has none of these numbers.
 

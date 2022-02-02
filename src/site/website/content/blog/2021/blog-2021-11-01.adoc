@@ -57,7 +57,7 @@ An important part of scaling agile is to tailor your strategy to reflect the rea
 For example, consider your approach to exploring the initial scope of your effort (the goal captured in Figure 2).
 A large agile team or a geographically distributed team will make different tailoring decisions than a small co-located team.
 A team in a regulatory environment will make different decisions, particularly around amount of detail, than teams in non-regulatory environments.
-These are just three of several scaling factors (more on this in a future blog posting, although you may postings in my agility at scale blog to be of interest).
+These are just three of several scaling factors (more on this in a future blog posting, although you may find my agility at scale blog to be of interest).
 . *Makes your process options very clea*.
 Figure 4, in combination with the more detailed goals diagrams (such as in Figures 2 and 3) make it very clear what you need to consider when tailoring an agile solution delivery process to meet the unique needs of the situation faced by your team.
 . *Takes the guesswork out of extending agile methods*.

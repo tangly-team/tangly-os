@@ -1,0 +1,40 @@
+---
+title: "Contact"
+linkTitle: "Contact"
+weight: 90
+---
+
+*Contact Information*
+
+[%noheader, frame=none, grid=none, width=75%, cols="1,4"]
+|===
+| *Postal Address:* | tangly llc +
+Lorzenhof 27 +
+6330 *Cham* +
+Switzerland
+| *Plus Code:*      | 8FVC5FM5+Q6G
+| *Email:*          | info@tangly.net
+| *Phone:*          | +41 79 778 86 89
+| *LinkedIn:*       | https://www.linkedin.com/company/tangly-llc/[tangly llc]
+|===
+
+---
+
+*Company Identification*
+
+[%noheader, frame=none, grid=none, width=75%, cols="1,4"]
+|===
+| *Company ID:* | https://www.zefix.ch/en/search/entity/list/firm/1244145[CHE-357-875.339]
+| *VAT Number:* | CHE-357-875.339 MWST
+|===
+
+---
+
+
+*Bank Connection*
+
+[%noheader, frame=none, grid=none, width=75%, cols="1,4"]
+|===
+| *IBAN Number:* | CH88 0900 0000 3064 1768 2
+| *Bank BIC:*    | POFICHBEXXX _(Postfinanz Schweiz)_
+|===

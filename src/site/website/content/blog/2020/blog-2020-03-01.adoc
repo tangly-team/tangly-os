@@ -48,7 +48,7 @@ Key benefits of immutable objects are:
 
 * *Thread safety*
 * Atomicity of failure
-* Absence of hidden side-effects
+* Absence of hidden side effects
 * Protection against null reference errors
 * *Ease of caching*
 * Prevention of identity mutation - _see contract for API standard collections_ -

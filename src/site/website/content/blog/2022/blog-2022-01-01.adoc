@@ -1,7 +1,7 @@
 ---
 title: "Technical Debt"
 linkTitle: "Technical Debt"
-date: 2022-01-01
+date: 2022-01-03
 tags: ["design", "java"]
 ---
 
@@ -11,4 +11,163 @@ tags: ["design", "java"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2022-01-01-head.png[width=420,height=360,role=left]
+image::2022-01-03-head.png[width=420,height=360,role=left]
+
+https://en.wikipedia.org/wiki/Technical_debt[Technical debt] or code debt is a concept in software development that reflects the implied cost of additional rework.
+The rework is caused by choosing an easy limited solution now instead of using a better approach that would take longer to realize.
+Another source of technical debt is natural technology obsolescence.
+
+As with monetary debt, if technical debt is not repaid, it will accumulate _interest_, making it harder and harder to implement changes.
+Unaddressed technical debt increases software entropy.
+Spiraling out of control entropy is the death of countless software solutions over the last century.
+
+Similarly to monetary debt, technical debt is not necessarily a bad thing, and sometimes as e.g. a proof-of-concept is required to move projects forward.
+
+Some experts claim that the _technical debt_ metaphor tends to minimize the ramifications, resulting in insufficient prioritization of the necessary work to correct it.
+
+[cite,Ward Cunningham,1992]
+____
+Shipping first time code is like going into debt.
+A little debt speeds development so long as it is paid back promptly with a rewrite...
+
+The danger occurs when the debt is not repaid.
+Every minute spent on not-quite-right code counts as interest on that debt.
+
+Entire engineering organizations can be brought to a stand-still under the debt load of an unconsolidated implementation, object-oriented or otherwise.
+____
+
+=== How to Eliminate Technical Debt
+
+* Use static analysis tools to detect technical debt in your source code,
+* Use your IDE
+footnote:[IntelliJ IDEA IDE has a powerful set of functions to detect code smells and perform automatically standard refactoring activities.]
+to perform simple refactoring and improve the quality of your code,
+* Use your IDE to find all TODO comments,
+* Use gradle plugin
+footnote:[I use the https://github.com/ben-manes/gradle-versions-plugin[com.github.ben-manes.versions] plugin for this purpose.
+The plugin handles nicely multi-modules projects.]
+to update your library and remove technological obsolesce,
+* Update your Java version when the next one is coming out.
+You have access to better libraries, interfaces, and runtime engines.
+Know security flaws are corrected and some bugs were removed.
+
+=== Should You Reimburse?
+
+We learnt this lesson during our economical training in the college.
+A little debt is OK.
+Big debts will poison your life and source code.
+Big debts are cumbersome to repay.
+You need efforts and time for payback.
+
+image::2022-01-03-technical-debt.png[width=420,height=360,role=left]
+
+The lesson is to close your debts before they are too big to be managed.
+You will otherwise bankrupt either your bank account or the source code of your application.
+
+=== How to Measure Technical Debt
+
+Here some approaches to quantify the technical debt of a product.
+
+New Bugs versus Closed Bugs::
+Every known bug is essentially a tiny sliver of technical debt.
+If you want to know your total debt, it’s important for your engineers to keep a tally.
+Assuming your engineers make a note in git when bugs are fixed, you can calculate how effectively you are managing your technical debt.
+If new bugs are outnumbering closed bugs, you need to make some changes. +
+_Zero bug policy <<zerodefect>> nicely reimburse this technical debt._
+Code Quality::
+Complex code is a sure sign of growing technical debt.
+At some point, someone is going to have to unravel that mess.
+Code quality is an aggregation of several metrics that quantify the overall quality and complexity of your code:
+* Smells and potential errors detected through static analysis tools
+* Cyclomatic complexity, method size, class size
+* Class and package coupling
+* Depth of inheritance +
+_Continuous fitness functions <<evolutionaryarchitecture>> based on static code analyzers are the way to detect this technical debt <<cleancode>>, <<cleancoder>>._
+Cycle Time::
+This measures the amount of time that passes between the definition of the change, the first commit, and deployment.
+You need to study the time it takes to make changes to existing code and to solve problems without using quick fixes.
+If your engineers are spending hours fixing small bugs, you know that there is some technical debt lurking in your code. +
+_Your agile and Scrum tool provides cycle time data <<metricsandkip>>._
+Code Coverage::
+In a sense, the code coverage metric looks at the same issue from the opposite direction.
+In this case, you are measuring how much of your code is executed when you run your testing suite.
+The more lines that are unused, the more likely it is that you have poorly written code. +
+_Code coverage tools such as Jacoco provides these values <<agilecode>>._
+Code Ownership::
+If you get too many people working on the same tasks, you can easily end up with a steaming pile of cruft.
+That said, you do not want only one engineer taking ownership of an entire project.
+If they get sick or leave your organization, it is game over. +
+_Social aspects can easily be measured in a code repository <<codecrimescene>>._
+
+=== How to Continuously Improve
+
+A powerful approach is zero defect source code <<zerodefect>> approach.
+
+You can start very simply.
+Track locations of technical debts with _TODO_ and _FIXME_ comments as a first step.
+Next time you have to modify source code in a package use your IDE features to find all _TODO_ in the package you are working on.
+Fix at least one such comment and improve the code.
+Repeat and over time your technical debt will slowly diminish.
+
+image::2022-01-03-retrospective.png[width=420,height=360,role=left]
+
+Fixing technical debt is not rocket science.
+It means to have discipline and behave like a professional software developer.
+
+=== Lessons Learnt
+
+Technical debt does not appear overnight.
+Debt increases slowly but steadily.
+Big debt clearly shows the organization was unprofessional.
+
+Investing a small amount for continuously improving your source code base is the most effective approach to avoid technical debt.
+
+* Use an actual version of your technology stack,
+* Update monthly the libraries you are using.
+Updates often close security vulnerabilities in your code.
+You have a legal responsibility to secure your code and protect your users,
+* Use the static quality checkers and refactoring features of your development environment,
+* Only refactor code you have to change,
+* Apply the boy scout rule.
+Leave the code in a better state as it was when you started,
+* Train your developer in refactoring and clean code practices.
+Beware technical debt is also created through:
+** Lack of knowledge, when the developer doesn't know how to write elegant code,
+** Lack of ownership, when outsourced software efforts result in in-house engineering being required to refactor or rewrite outsourced code.
+
+IMPORTANT: Professional software developers are well aware of the impacts of technical debt.
+Amateurs just ignore the consequences and hop to the next product before they go bankrupt.
+
+[bibliography]
+=== References
+
+* [[[zerodefect, 1]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Advocate Zero Bug Policy in Your Projects]
+* [[[cleancode, 2]]] https://www.amazon.com/dp/0132350882[Clean Code: A Handbook of Agile Software Craftsmanship].
+Robert Martin.
+Addison-Wesley. 2009. _ISBN 978-0132350884_
+* [[[cleancoder, 3]]] https://www.amazon.com/dp/0137081073[Clean Coder: A Code of Conduct for Professional Programmers].
+Robert Martin.
+Addison-Wesley. 2011. _ISBN 978-0137081073_
+* [[[cleanarchitecture, 4]]] https://www.amazon.com/dp/0134494164[Clean Architecture: A Craftsman's Guide to Software Structure and Design].
+Robert Martin.
+Addison Wesley. 2018. _ISDN 978-0134494166_
+* [[[cleanagile, 5]]] https://www.amazon.com/dp/0135781868[Clean Agile: Back to Basics].
+Robert Martin.
+Addison-Wesley. 2020. _ISDN 978-0135781869_
+* [[[cleancraftsmanship, 6]]] https://www.amazon.com/dp/B095C16LSW[Clean Craftsmanship: Disciplines, Standards, and Ethics]
+Robert Martin.
+Addison-Wesley. 2021. _ISDN 978-0136915713_
+* [[[evolutionaryarchitecture, 7]]] https://www.amazon.com/dp/1491986360[Building Evolutionary Architectures: Support for constant Change].
+Neal Ford, Rebecca Parson.
+O'Reilly. 2017. _ISBN 978-1491986363_
+* [[[refactoring, 8]]] https://www.amazon.com/dp/0134757599[Refactoring: Improving the Design of Existing Code, 2nd Edition].
+Martin Fowler.
+Addison Wesley. 2018. _ISBN 978-0134757599_
+* [[[refactoringpatterns, 9]]] https://www.amazon.com/dp/0321213351[Refactoring to Patterns].
+Joshua Kerievsky. 2005
+* [[[codecrimescene, 10]]] link:../../2019/code-scene-as-crime-scene/[Code Scene as Crime Scene]].
+Marcel Baumann. 2019
+* [[[agilecode, 11]]] link:../../2019/agile-code-is-clean-code/[Agile Code is Clean Code]
+Marcel Baumann, 2019
+* [[[metricsandkip, 12]]] link:../../2018/why-do-you-need-metrics-and-kpi-in-agile-product-development/[Why Do You Need Metrics and KPI in Agile Product Development].
+Marcel Baumann. 2018

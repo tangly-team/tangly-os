@@ -1,17 +1,43 @@
 ---
-title: "SODA's Successor"
-linkTitle: "ODA's Successor"
-date: 2022-03-01
+title: "Doing Agile"
+linkTitle: "Doing Agile"
+date: 2022-03-10
 tags: ["agile", "students"]
 ---
 
-== The Successor of SODA Approach
+== Is your Team _Pretending_ to be Agile?
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2022-03-01-head.jpg[width=420,height=360,role=left]
+image::2022-03-01-head.png[width=420,height=360,role=left]
+In the midst of this agile explosion, many teams are experiencing difficulties.
+According to the
+https://stateofagile.com/[15th Annual State of Agile report], 46% of survey respondents report struggles with inconsistent practices and 43% report cultural classes.
 
+=== Common Symptoms
 
-image::2022-03-01-agile-vs-waterfall.png[width=420,height=360,role=left]
+Below are some common symptoms of teams who are “pretending” to be agile:
+
+* Teams are not delivering a _done_, usable increment each Sprint.
+By usable we mean that the product is fully tested and provides a fully usable increment of valuable functionality.
+* The Daily Scrum is a status update instead of a mini planning session.
+* The Sprint Review meeting is merely a demo, and not an opportunity for collaboration.
+* The Sprint Retrospective does not result in actionable improvement ideas that the Scrum Team addresses proactively.
+* The quality of the product resulting from the Scrum Team’s work is not increasing.
+* The Scrum Master is not coaching the Scrum Team or the parent organization in techniques to improve the use of the Scrum framework.
+* Developers don’t self-manage or collaborate with the Product Owner on ways to maximize the product’s value.
+* The organization does not respect the Product Owner’s decisions.
+* Resource managers do not know how to support agile teams.
+
+=== Dark Agile
+
+The problem is when a team begins to use an Agile framework incorrectly.
+The team begins to focus more on their adherence to the process than they do to staying true to Agile values.
+This is Dark Agile.
+The team presents itself as Agile and believes it is practicing Agile, but it is not.
+It is practicing a framework without the support of Agile values.
+This can lead to micromanagement, a squashing of adaptability toward customers’ changing needs, and an extreme lessening of the benefits gained from an Agile practice.
+
+image::2022-03-01-scrum-empirism.png[width=420,height=360,role=left]

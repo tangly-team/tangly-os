@@ -13,6 +13,18 @@ defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 enableMissingTranslationPlaceholders = true
 
+# new security restrictions in hugo
+[security]
+enableInlineShortcodes = false
+[security.exec]
+allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^asciidoctor$', '^lunr$']
+osEnv = ['(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$']
+[security.funcs]
+getenv = ['^HUGO_']
+[security.http]
+methods = ['(?i)GET|POST']
+urls = ['.*']
+
 [taxonomies]
 tags = "tags"
 
@@ -72,12 +84,14 @@ backend = "html5s"
 failureLevel = "fatal"
 extensions = ["asciidoctor-html5s", "asciidoctor-diagram"]
 [markup.asciidocExt.attributes]
+experimental = true
+icons = "image"
+icontype = "svg"
+iconsdir = "assets/icons"
 imagesdir = "../pics"
 source-highlighter = "rouge"
 rouge-style = "github"
 rouge-css = "style"
-experimental = "true"
-icons = "font"
 copyright = "CC-BY-SA 4.0"
 ref-manifesto = "http://agilemanifesto.org/[Agile Manifesto]"
 ref-less = "https://less.works/[LeSS]"
@@ -108,7 +122,6 @@ ref-site = "https://tangly-team.bitbucket.io/[Open Source Components]"
 languageCode = "en-us"
 defaultContentLanguage = "en"
 title = "tangly Open Source Components"
-theme = "docsy"
 
 pygmentsCodeFences = true
 pygmentsUseClasses = true

@@ -45,7 +45,6 @@ description: Functional programming in modern Java
 
 === Definitions
 
-
 https://en.wikipedia.org/wiki/Referential_transparency[Referential Transparency]::
 A function, or more generally an expression, is called referentially transparent if a call can be replaced by its value without affecting the behavior of the program.
 Simply spoken, given the same input the output is always the same.
@@ -76,7 +75,7 @@ In computer science, currying is the technique of converting a function that tak
 
 [cite,Saunders Mac Lane]
 ____
-Monad is just a monoid in the category of endofunctors
+_Monad_ is just a _monoid_ in the category of _endofunctors_.
 ____
 
 Examples of monads in modern day Java programming language:

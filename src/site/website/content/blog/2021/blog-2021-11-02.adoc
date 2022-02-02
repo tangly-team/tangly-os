@@ -25,9 +25,9 @@ What are my preferred goodies with the major version 7?
 
 Java modules were introduced with Java 9 in September 2017.
 Adoption was slow.
-Developers needed time to understand the tremendeous advantages of language and compiler support of modules.
+Developers needed time to understand the tremendous advantages of language and compiler support of modules.
 Tooling was also a problem.
-It was cumbersome and error prone to create Java modules either using the command line and experimental plugins.
+It was cumbersome and error-prone to create Java modules either using the command line and experimental plugins.
 
 {ref-gradle} version 7 finally supports Java modules natively.
 Just use the _java-library_ plugin.
@@ -40,7 +40,7 @@ The Gradle team has decided to introduce semantic support for the declaration of
 
 All dependencies of a multi-module Java application are declared in a central file.
 The _libs.versions.toml_ file under the gradle subdirectory of the root build can contain all plugin and library dependencies.
-The declarations can be used in all sub-projects.
+The declarations can be used in all subprojects.
 
 Support is provided to group a set of related dependencies and use the alias in the various Gradle modules.
 
@@ -51,8 +51,8 @@ The 2021 versions offer native support of Gradle.
 Native support means IntelliJ finally uses Gradle for compilation and unit testing inside the IDE.
 You just need to take care of one build configuration and no more need to delve in the mysteries of IntelliJ build process.
 
-The only glitch is that IntelliJ has its own concept of modules no synchronzied with the Gradle modules.
-You have to be careful to allign both structures to avoid surprises.
+The only glitch is that IntelliJ has its own concept of modules and are not synchronized with the Gradle modules.
+You have to be careful to align both structures to avoid surprises.
 
 === Jacoco Aggregated Test Coverage Reports
 
@@ -111,7 +111,7 @@ tasks.withType(Test) {
 <1> Import the Jacoco plugin in the project
 <2> Allows the selection of the Jacoco version.
 I found it useful when using the latest JDK version.
-JaCoCo developers have a slow release rythm.
+JaCoCo developers have a slow release rhythm.
 <3> Configure JaCoCo to generate an html and an XML report.
 The binary report is no more supported by external tool.
 <4> -
@@ -119,7 +119,7 @@ The binary report is no more supported by external tool.
 
 === Wishes
 
-I would greatly appreciate if the the JaCoCo Gradle plugin is improved and align with the features of the Maven plugin.
+I would greatly appreciate if the JaCoCo Gradle plugin is improved and align with the features of the Maven plugin.
 The process to aggregate the coverage reports on a multi-module project is cumbersome and brittle.
 
 I am waiting for the Gradle 7.3 release to have native support of JDK 17.

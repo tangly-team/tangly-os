@@ -1,0 +1,49 @@
+---
+title: "Agile Experiences"
+linkTitle: "Agile Experiences"
+date: 2022-09-01
+tags: ["agile"]
+---
+
+== Agile Experiences
+
+=== Context
+
+Scrum is the industrial standard to create and develop awesome digital products.
+
+=== Scrum
+
+* Plain Scrum is an additive framework
+** Roles: Product Owner, Scrum Master, Team Member
+** Events: Sprint, Sprint Planning, Daily Scrum, Review, Retrospective, Backlog Refinement
+** Artifacts: Product Increment, Product Backlog, Spring Backlog, Definition of Done
+* Technical Agile and Scrum
+* Product Development
+* Good Practices
+* Anti Patterns: Definition of Ready, Project Leader, Milestones, Quality Group, Undone Work
+
+=== Product Development
+
+* Roadmap
+* Release Plan
+* Stakeholder Map
+* Risk Management
+* Customer Journey and Design Thinking
+* Story Mapping
+* Usability
+* Legal Aspects
+
+=== Technical Agility
+
+* Software Craftsmanship
+* Software Engineering
+* DevOps: Continuous Integration, Continuous Delivery,  Continuous Deployment, Git, Living Documentation, Automated Quality Insurance
+* Clean Programmer
+* Evolutive Architectures
+* Fitness Functions
+* Documentation Good Practices
+
+=== Continuous Improvements
+
+[bibliography]
+=== Literature

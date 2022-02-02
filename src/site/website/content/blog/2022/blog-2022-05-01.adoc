@@ -1,17 +1,17 @@
 ---
-title: "Measurements"
-linkTitle: "Measurements and Units"
+title: "Measurements and Units"
+linkTitle: "Measurements"
 date: 2022-05-01
 tags: ["java", "architecture", "students"]
 ---
 
-== Three JVM Languages: Java, Groovy, Clojure
+== Measurements and Units
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2022-04-01-head.png[width=420,height=360,role=left]
+image::2022-05-01-head.png[width=420,height=360,role=left]
 
 JSR-385 could have saved Mars Orbiter.
 
@@ -28,7 +28,6 @@ The actual amount of kerosene available was signifantly reduced.
 The machine ending up on the holding pattern on approach without sufficient fuel.
 
 Numerous, sometimes fatal, incorrect dosages of medication.
-
 
 === Definitions
 

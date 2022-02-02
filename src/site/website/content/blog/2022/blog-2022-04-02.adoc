@@ -1,0 +1,81 @@
+---
+title: "Yet Another Hybrid Method"
+linkTitle: "Yet Another Hybrid Method"
+date: 2022-04-20
+tags: ["design", "java"]
+---
+
+== Yet Another Hybrid Method
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+=== SODA Hybrid Method
+
+image::2022-04-02-head.jpg[width=420,height=360,role=left]
+
+SoDa _Software Development Agile_ is a homebrew project development method created at the https://www.hslu.ch[technical university of Lucerne].
+It is a mixture of Waterfall, RUP and Scrum. It uses a distorted Scrum for the concept and implementation phase.
+
+A similar approach also exists with the official governmental Swiss project method {ref-hermes}.
+At least the documentation of https://www.hermes.admin.ch/en/starting-page.html[Hermes] is better than SoDa.
+
+Both approaches are quite similar.
+They mix a phase based Waterfall approach with the four phases of the old https://en.wikipedia.org/wiki/Rational_Unified_Process[RUP] project life-cycle approach.
+RUP belongs to the family of https://en.wikipedia.org/wiki/Unified_Process[unified process methods].
+
+These approaches are obsolete.
+Almost no industrial of services companies are explicitly using Waterfall or unified process approaches.
+
+[quote, Malcom Isaacs]
+____
+For most of these organizations that take a hybrid approach, this is an interim step.
+They intend to gradually expand their agile activities beyond the development and testing stages to the rest of the software development lifecycle.
+____
+
+=== HERMES Swiss Hybrid Method
+
+If you are forced to use a hybrid method in Switzerland, please use Hermes. Never try to use SoDa.
+It is obsolete and sparingly documented.
+
+If you want to be a professional developer, please use an agile approach.
+Scrum is currently the most used agile approach in the industry.
+
+[quote,Hermes FAQ]
+____
+HERMES 2021
+footnote:[ https://www.hermes.admin.ch/de/faq/projektmanagement-2021/umfeld.html[Hermes FAQ]]corresponds to the current requirements of the administrations, which are mainly organized *hierarchically* and have to handle projects taking governance into account.
+____
+
+The major problem is that Hermes is mandatory for a set of governmental projects.
+You are forced to use this method as a software company if you want to work on some government initiatives.
+
+The method is Swiss and completely unknown in Europe or abroad.
+Industry development initiatives never use Hermes as a development approach.
+
+=== Why Hybrid Methods are Hindering
+
+In his mind-expanding book The Beginning of Infinity, physicist David Deutsch describes science and the enlightenment as the quest for _good explanations_.
+He explains how various ideas in human history represent a _beginning of infinity_ that allow us to cope with any conceivable relevant application of these good explanations.
+
+This idea of infinite reach or scope is true of an agile approach to development and not true of a waterfall-based approach.
+
+An agile approach to software development actively encourages us to start work on solving problems in smaller pieces.
+It encourages us to begin work before we know the answer to everything.
+This approach allows us to make progress, maybe sometimes in suboptimal or even bad directions, but nevertheless, after each step, we learn something new.
+
+This does not mean that agile thinking is perfect or the final answer.
+Rather, it is an important, significant, enabling step in the direction of better performance.
+
+=== Lessons Learnt
+
+image::2022-04-02-agile-vs-waterfall.png[width=420,height=360,role=left]
+
+If you have choice do not use any hybrid method.
+Various studies found out that agile initiatives are three times more successful than Waterfall approaches.
+
+Business agility is not compatible with hybrid approaches.
+
+The majority of hybrid methods I still encounter are bad rehearsal of the RUP development approach.
+The unified process was defined in the nineties and is now obsolete.

@@ -1,5 +1,5 @@
 /*!
- * Copyright 2021-2021 Marcel Baumann
+ * Copyright 2021-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -228,33 +228,5 @@ section.attachments {
         a.link-exe[href]:before {
             content: "\f570"; /*Executable*/
         }
-
-        // a[href$=".com" i]:before,
-        // a[href$=".net" i]:before,
-        // a[href$=".org" i]:before,
-        // a[href$=".edu" i]:before,
-        // a[href$=".gov" i]:before,
-        // a[href$=".mil" i]:before,
-        // a[href$="/" i]:before,
-        // a[href$=".html" i]:before,
-        // a[href$=".htm" i]:before,
-        // a[href$=".xhtml" i]:before,
-        // a[href$=".jhtml" i]:before,
-        // a[href$=".php" i]:before,
-        // a[href$=".php3" i]:before,
-        // a[href$=".php4" i]:before,
-        // a[href$=".php5" i]:before,
-        // a[href$=".phtml" i]:before,
-        // a[href$=".asp" i]:before,
-        // a[href$=".aspx" i]:before,
-        // a[href$=".cfm" i]:before,
-        // a[href*="?" i]:before,
-        // a[href*="#" i]:before,
-        // a:not([href*='.']):before,
-        // a.link[href]:before {
-        //     content: "\f0c1"; /*link*/
-        // }
-
     }
-
 }

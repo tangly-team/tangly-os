@@ -1,5 +1,5 @@
 #
-# Copyright 2006-2021 Marcel Baumann
+# Copyright 2006-2022 Marcel Baumann
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
 # the License at
@@ -50,7 +50,7 @@ cp $websiteDir/logo.svg $siteDir/assets/icons/
 # hugo strange behavior.
 
 copy_module bdd
-cp $prjDir/net.tangly.bdd/out/bdd-reports/bdd-report.adoc $siteDir/content/docs/bdd/
+cp $prjDir/net.tangly.bdd/build/bdd-reports/bdd-report.adoc $siteDir/content/docs/bdd/
 
 copy_module commons
 copy_module core

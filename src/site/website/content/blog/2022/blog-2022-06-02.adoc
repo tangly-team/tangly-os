@@ -1,0 +1,75 @@
+---
+title: "Modular Monoliths are the new Graal"
+linkTitle: "Modular Monoliths"
+date: 2022-06-01
+tags: ["architecture", "java"]
+---
+
+== Modular Monoliths are the new Graal
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2022-06-02-head.svg[width=420,height=360,role=left]
+
+A modular monolith is a software design approach in which a monolith is designed with an emphasis on interchangeable (and potentially reusable) modules.
+
+=== Benefits of Modular Monoliths
+
+Adopting the modular approach for monolithic applications can have benefits in a few key areas, including better-organized dependencies, increased code reusability, and increased code observability.
+
+Increased Reusability::
+For large development teams, developing modular components of an application helps to increase reusability.
+Modular components can be reused and repurposed and can help teams establish a single source of truth.
+This can lead to faster and more consistent development.
+Better-Organized Dependencies::
+Because modular monoliths make individual functions more independent, they, by nature, make dependencies more organized and visible.
+This makes it easier for developers to easily assess which parts of the application require which dependencies.
+Increased Observability::
+Developing with modularity in mind means code is more accessible to developers.
+For Java developers in particular, interface classes and their requisite javadoc comments helps to enhance accessibility and interoperability for developers who may need to work with the modularized function.
+
+[cols="1,1",options="header"]
+|===
+^|Monolith Benefits    ^|Modular Monolith Benefits
+
+|Low operational complexity.
+|Low operational complexity.
+
+|Can be more secure than microservices application
+|Can be more secure than microservices application
+
+|Easy to manage database consistency
+|Easy to manage database consistency
+
+|Less complex than microservices application
+|Less complex than microservices application.
+
+|
+|Developed code is reusable.
+
+|
+|Has better-organized dependencies than standard monolith.
+
+|
+|Better code observability than standard monolith.
+|===
+
+=== When to Use a Modular Monolith
+
+Essentially any time a developer is working on a monolithic application, using principles of modularity can help them to improve the processes for their team.
+Whether that means making dependencies more manageable within the application, improving developer interoperability on the modular components of that application, or adding modular components to the house repository, embracing modularity can have a positive impact on teams.
+
+For the application itself, embracing modularity can help to organize dependencies, making it easier and less time-consuming to change components within the system.
+
+=== When Not to Use a Modular Monolith
+
+Of course, just as microservices aren’t a one size fits all solution, neither is modularity.
+For developers working on small projects with small development teams, developing their code in a modular way may not be worth the added time, or formality.
+
+=== Final Thoughts
+
+If you’re like many Java developers who are still working on a monolithic application, then employing modularization best practices can help make your application achieve some of the benefits of microservices without the associated cost of refactoring.
+
+However, modular monoliths have significant shortcomings when compared to microservices -- especially in terms of continuous testing, integration, and deployment.

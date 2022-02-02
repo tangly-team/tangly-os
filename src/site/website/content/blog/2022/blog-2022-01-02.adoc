@@ -13,35 +13,45 @@ tags: ["design", "java"]
 
 image::2022-01-02-head.jpg[width=420,height=360,role=left]
 
-Immutability is a powerful and simple concept in programming that is really underused.
+https://en.wikipedia.org/wiki/Immutable_object[Immutability] is a powerful and simple concept in programming theory that is strangely underused.
 
-An immutable class is simply a class whose instances cannot be modified.
+An https://en.wikipedia.org/wiki/Immutable_object[immutable object] is simply a class whose instances cannot be modified.
 All the information contained in each instance is provided when it is created and is fixed for the lifetime of the object.
 
-Why are immutable objects, so good then?
-There are many reasons for sure, here are the three main ones
+An example of immutable objects in Java is the _String_ class.
 
-Protection::
-We can send an immutable object to any class without worrying about it being altered by that class, and we never have to make a defensive copy.
-Same when we get one for local storage in your class or cache.
+Why are immutable objects so good?
+
+=== Advantages
+
+There are many reasons for sure, here are the three main ones:
+
+Protection Against Programming Errors::
+We can send an immutable object to any class without worrying about it being altered by that class.
+We never have to make a defensive copy.
+Same applies when we get an instance for local storage in a cache.
 We do not have to worry about whether the provider will hold on to a reference and change it later, invalidating our cache without our knowledge.
-Performance::
-As we do not have to make defensive copies all the time.
-This means that we save some work on the garbage collector which intern increases performance and decreases memory overhead, and we all want that don't we?
-Thread Safe::
-After creation any number of threads can access them simultaneously, without any synchronization.
+Increased Performance::
+We do not have to make defensive copies all the time.
+This means that we save some work on the garbage collector which increases performance and decreases memory overhead.
+We all want that, don't we?
+Thread Safety::
+After creation any number of threads can access immutable objects simultaneously, without any synchronization mechanism.
+In the modern world of multicore processors it is a huge advantage.
 
 === Immutable Classes
 
-* The class must be declared as final.
-So that child classes cannot be created.
-* Data members in the class must be declared as private.
-So that direct access is not allowed.
-* Data members in the class must be declared as final.
-So that we cannot change the value of it after object creation.
-* No setters to not have the option to change the value of the instance variable.
+* The class must be declared as _final_.
+So that mutable child classes cannot be created.
+* Data members in the class must be declared as _private_.
+Direct access to member variables is prohibited.
+* Data members in the class must be declared as _final_.
+We cannot change the value of it after object creation.
+Java requires that all final properties must be initialized in the constructor.
+* No setters are provided to change the value of an instance variable.
 * A parameterized constructor should initialize all the fields performing a deep copy.
-So that data members cannot be modified with object reference.
+Data members cannot be modified through external object reference.
+This is also called reference https://en.wikipedia.org/wiki/Aliasing_(computing)[aliasing].
 * If the instance fields include references to mutable objects, do not allow those objects to be changed:
 ** Do not provide methods that modify the mutable objects.
 ** Do not share references to the mutable objects.
@@ -49,25 +59,31 @@ Never store references to external, mutable objects passed to the constructor.
 If necessary, create copies, and store references to the copies.
 Similarly, create copies of your internal mutable objects when necessary to avoid returning the originals in your methods.
 
-Java record construct <<java-record>> implements most of the above constraints.
-Java records do not perform deep copies.
+Java _record_ construct <<java-record>> implements most of the above constraints.
+The major limitation is that Java records do not perform any deep copies.
+
 Therefore, Java records are shallow immutable objects.
 If you pass immutable objects to the constructor you will achieve deep immutability.
 
+TIP: Records provide secure serialization and deserialization mechanisms.
+Use records as Java DTO objects and automatically improve the security of your application.
+
 === Immutable API Classes
 
-* All wrapper classes in java.lang are immutable.
-These are String, Character, Boolean, Byte, Short, Integer, Long, Float, Double.
-* The class java.awt.Rectangle encapsulates the position and dimension of a rectangle.
-* java.lang.StackTraceElement (used in building exception stacktraces)
+Java already has an extended and expanding set of immutable classes.
+
+* All wrapper classes in _java.lang_ package are immutable.
+These are String, Character, Boolean, Byte, Short, Integer, Long, Float, Double,
+* The class java.awt.Rectangle encapsulates the position and dimension of a rectangle,
+* java.lang.StackTraceElement (used in building exception stack traces),
 * Most enum classes are immutable, but this in fact depends on the concrete case.
 Do not implement mutable enums, this will screw.
-All enum classes in the standard API are in fact immutable.
-* java.math.BigInteger and java.math.BigDecimal
+All enum classes are in fact immutable in the standard API,
+* java.math.BigInteger and java.math.BigDecimal,
 * java.io.File represents a file in a local or remote file system.
 A file may or may not exist, and has some methods modifying and querying the state of this external object.
-But the File object itself stays immutable.
-* java.util.Locale - representing a specific geographical, political, or cultural region.
+But the File object itself stays immutable,
+* java.util.Locale - representing a specific geographical, political, or cultural region,
 
 === Builder Pattern
 
@@ -77,9 +93,9 @@ The builder pattern is ideal to create immutable instances through legible and m
 
 Writing builders is a tedious and repetitive activity.
 Consider using the https://projectlombok.org/[Lombok Project] to generate builder.
-The lombok annotations _@Builder_ and _Superbuilder_ are a time saver.
+The lombok annotations _@Builder_ and _@Superbuilder_ are time savers.
 
-Create factory methods to create often used immutable objects.
+Provide factory methods to create often used immutable objects.
 Use the builder in the body to write the creation code in one Java statement.
 
 === Read-only interface pattern
@@ -87,10 +103,10 @@ Use the builder in the body to write the creation code in one Java statement.
 Read-only interface pattern is an alternative to the Immutable object pattern.
 It allows some objects to modify a value object while other objects can only fetch its values.
 
-=== Traits
-
 [bibliography]
 === Literature
 
 * [[[java-record, 1]]] link:../../2020/java-records-are-here-available-in-jdk-14/[Java Records are Here].
 Marcel Baumann. 2020
+* [[[oracle-record, 2]]] link:https://docs.oracle.com/en/java/javase/16/language/records.html[Record Classes].
+Oracle

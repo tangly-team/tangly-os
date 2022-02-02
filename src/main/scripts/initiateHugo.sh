@@ -1,5 +1,5 @@
 #
-# Copyright 2006-2021 Marcel Baumann
+# Copyright 2006-2022 Marcel Baumann
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
 # the License at
@@ -34,20 +34,21 @@ git clone --no-checkout https://marcel-baumann@bitbucket.org/tangly-team/tangly-
 
 cd themes
 
-# download docsy themes and the submodules it depends on
+# download docsy theme and the submodules they depend on
 git clone https://github.com/google/docsy.git
 cd docsy
 git submodule update --init --recursive
 
-# create the layout for the ideas folder under content so that the files are processed as a clone of docs folder
+# create the layout for the ideas  and expertise folders so that the files are processed as a clone of docs folder
 cp -R ./layouts/docs ./layouts/ideas
 cp -R ./layouts/docs ./layouts/expertise
 
-# improve copyright in the footer and comments in blogs
-cp $prjDir/src/site/website/docsy/layouts/blog/* $siteDir/themes/docsy/layouts/blog
-cp $prjDir/src/site/website/docsy/layouts/partials/* $siteDir/themes/docsy/layouts/partials
+# improve copyright in the footer and comments in blogs, support attachments as files
+cp $prjDir/src/site/website/docsy/assets/icons/* $siteDir/themes/docsy/assets/icons
 cp $prjDir/src/site/website/docsy/assets/scss/* $siteDir/themes/docsy/assets/scss
 
+cp $prjDir/src/site/website/docsy/layouts/blog/* $siteDir/themes/docsy/layouts/blog
+cp $prjDir/src/site/website/docsy/layouts/partials/* $siteDir/themes/docsy/layouts/partials
 cp $prjDir/src/site/website/docsy/layouts/shortcodes/* $siteDir/themes/docsy/layouts/shortcodes
 
 # install postcss (https://postcss.org/)) for final generation of site

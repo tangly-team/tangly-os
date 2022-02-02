@@ -26,5 +26,5 @@ We promote
 - [Software craftsmanship](https://manifesto.softwarecraftsmanship.org/) at the individual level,
 - [Scrum](https://scrumguides.org/scrum-guide.html), sometimes Kanban or XP at the team level,
 - [LeSS](https://less.works/less/framework) at the product and departmental level,
-- Lean, Beyond Budgeting, Sociocracy at the organization level,
+- Lean, [Beyond Budgeting](https://bbrt.org/), [Sociocracy](https://sociocracy30.org/) at the organization level,
 - Our technical expertise is in the modern Java stack.

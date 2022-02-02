@@ -1,0 +1,39 @@
+---
+title: "Modernize Your Java Landscape"
+linkTitle: "Modernize Your Java Landscape"
+date: 2022-02-15
+tags: ["agile"]
+---
+
+== Modernize Your Java Landscape
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:company: https://www.tangly.net/[tangly llc]
+
+image::2022-02-03-head.jpg[width=420,height=360,role=left]
+
+=== Wake-Up Call
+
+=== Update Your JDK and JVM
+
+=== Update Your Libraries
+
+=== Beware of Technical Debt
+
+=== Monitor, Log, Audit
+
+=== Use Static Code Analyzers
+
+=== What We learnt
+
+Fallacy of maintenance costs::
+Ignorance of legal consequences::
+Lacking professional ethics::
+
+Be proud to create effective and secure products
+
+[bibliography]
+=== Literature
+
+* link:../../2021/modern-java-development[Modern Java Development]
+* link:../../2019/time-to-migrate-to-a-modern-jdk-laggards[Time to Migrate to a Modern JDK, Laggards!]

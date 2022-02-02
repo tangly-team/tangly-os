@@ -126,15 +126,16 @@ Creating something – code or non-technical – in a Scrum simulation.
 https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI]; decide at the last responsible moment; responsive, resilient, elastic, message-driven (Reactive Manifesto),
 https://en.wikipedia.org/wiki/SOLID[SOLID].
 . _Refactoring_
-.. Refactoring is the practice of improving a system without changing it’s observable behavior.
+.. Refactoring is the practice of improving a system without changing its observable behavior.
 .. Refactoring fosters automated testing, improves readability and maintainability; it can support improving system performance, counter technical debt, and improve extensibility.
 . _Test Driven Development (TDD)_
 .. Test first focuses on the behavior of the system.
 The system design emerges dynamically through the adjustment to additional tests.
 Benefits include simplicity, avoidance of bloating, defect reduction, built-in regression checks with automated tests.
 .. Differences include frequency, inclusion in the development process, being tied to specification versus being tied to code, amount of automation, responsibility, timing.
-.. Point out that it is important to have the simplest possible solution that passes the test in the first place to ensure the test is working, and refactor it to a sensible design that can be verified immediately, refer to the Broken Window metaphor, foster collective stewardships.
-.. Testers are Scrum team members, aka developers, include testing in the sizing discussion, collaborate on PBI refinement and acceptance criteria definition, pair up doing TDD to embed good tests from the beginning, include considerations of load, explorative, and other testing approaches, contribute to definition of done.
+.. Point out that it is important to have the simplest possible solution that passes the test in the first place to ensure the test is working, and refactor it to a sensible design that can be verified immediately, refer to the Broken Window metaphor, foster collective stewardship.
+.. Testers are Scrum team members, aka developers, include testing in the sizing discussion, collaborate on PBI refinement and acceptance criteria definition, pair up doing TDD
+to embed good tests from the beginning, include considerations of load, exploratory, and other testing approaches, contribute to definition of done.
 . _Integrating Continuously_
 .. CI is the practice of reducing the feedback time between code creation and integration.
 It can be supported using technical means.

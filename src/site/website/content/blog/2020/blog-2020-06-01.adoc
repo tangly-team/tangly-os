@@ -29,7 +29,7 @@ This might be achieved by reducing large monolithic routines into a set of indiv
 It might be achieved by moving a method to a more appropriate class, or by removing misleading comments.
 Extensibility::
 It is easier to extend the capabilities of the application if it uses recognizable design patterns.
-It provides flexibility where none before may have existed.
+It provides flexibility where none before May have existed.
 
 [quote,Martin Fowler]
 ____

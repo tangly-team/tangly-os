@@ -15,7 +15,7 @@ image::2022-02-02-head.jpg[width=420,height=360,role=left]
 The majority of software product development initiatives uses an agile approach.
 The most popular framework is {ref-scrum}.
 
-It is natural that organizations would gravitate towards the many benefits agile realizes.
+It is natural that organizations would gravitate towards the many benefits agile ideas provides.
 
 Scarce resources and time-to-market constraints have driven the implementation of shoring development initiatives.
 Awareness that talent can be found at any location speed-up the trend.
@@ -25,26 +25,22 @@ Traditionally, cost reduction was the key driver for software development outsou
 https://www2.deloitte.com/content/dam/Deloitte/us/Documents/process-and-operations/us-cons-global-outsourcing-survey.pdf[Deloitte's 2018 Global Outsourcing
 Survey].
 
-CAUTION
-
-====
-Cost is back as the major driver in 2020. The COVID-19 pandemy had a huge impact in 2020.
-====
+CAUTION: Cost is back as the major driver in 2020. The COVID-19 pandemic had a huge impact in 2020.
 
 Instead, the top five reasons organizations opt for IT outsourcing in 2018 are:
 
-* Catalyst for innovation (64%)
-* Improvement of speed and time to market (63%)
-* Improvement of performance (54%)
-* Enhancement of scalability and rapid elasticity (54%)
-* Access to new technology (51%)
+* Catalyst for innovation (64%) _means internal department cannot innovate fast enough_
+* Improvement of speed and time to market (63%) _means internal teams are slow_
+* Improvement of performance (54%) _means company does not perform_
+* Enhancement of scalability and rapid elasticity (54%) _means organization is slow to react_
+* Access to new technology (51%) _means company is stuck with obsolete technologies and processes_
 
 The top five reasons organizations opt for IT outsourcing in 2020 are:
 
 * Cost (70%)
 * Flexibility (40%)
 * Speed to market (20%)
-* Access to tools and processes (15%)
+* Access to professional tools and processes (15%)
 * Agility (15%)
 
 Communication is essential to successfully implement agile software development.
@@ -136,16 +132,16 @@ Train and certify all collaborations in {ref-scrum} and your technology stack to
 Ask yourself if your company culture and processes treat all collaborators fairly.
 Is our company willing to:
 
-. write all project documentation, source code, emails, and chats in English?
-. hold all meetings, workshops and discussions in English?
-. train all collaborators in cultural aspects?
-. host physical meetings using round-robin on all locations?
-. schedule all meetings so that all locations have similar constraints for early or late work?
-. share financial and strategic information to allign all collaborators?
-. set up the infrastructure to not differentiate between company offices and nearshore locations?
-. buy all licenses so that all developers are using the same tools?
-. provide the same trainings, certifications and conference access to all developers?
-. support meritocracy?
+. Write all project documentation, source code, emails, and chats in English?
+. Hold all meetings, workshops and discussions in English?
+. Train all collaborators in cultural aspects?
+. Host physical meetings using round-robin on all locations?
+. Schedule all meetings so that all locations have similar constraints for early or late work?
+. Share financial and strategic information to align all collaborators?
+. Set up the infrastructure to not differentiate between company offices and nearshore locations?
+. Buy all licenses so that all developers are using the same tools?
+. Provide the same trainings, certifications and conference access to all developers?
+. Support meritocracy?
 Any role can be held by a local or a remote collaborator?
 
 [bibliography]

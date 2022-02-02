@@ -1,5 +1,5 @@
 /*!
- * Copyright 2021-2021 Marcel Baumann
+ * Copyright 2021-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -41,6 +41,8 @@
 @import "taxonomy";
 // styling for attachments
 @import "shortcodes";
+// styling for asciidoc
+@import 'asciidoctor';
 
 
 @if $td-enable-google-fonts {

@@ -54,7 +54,7 @@ That is not a good approach.
 
 [WARNING]
 ====
-If you are still on Java 8, your licensing situation is problematic.
+If you are still on Java 8, your licensing situation is may be problematic.
 Like all JDKs past their end of public updates, you now have to pay for support, or you must use a free OpenJDK 8u build which
 
 . only contains backport patches that do not cover the entire JDK.
