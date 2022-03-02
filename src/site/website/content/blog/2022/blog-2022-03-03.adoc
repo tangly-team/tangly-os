@@ -1,0 +1,56 @@
+---
+title: "Modernize Your Java Landscape"
+linkTitle: "Modernize Your Java Landscape"
+date: 2022-03-15
+tags: ["agile"]
+---
+
+== Modernize Your Java Landscape
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:company: https://www.tangly.net/[tangly llc]
+
+image::2022-03-03-head.jpg[width=420,height=360,role=left]
+
+=== Wake-Up Call
+
+=== Update Your JDK and JVM
+
+=== Update Your Libraries
+
+Gradles versions catalog is new feature in modern versions of Gradle that allows you to centralise your projects dependencies, plugins and their respective versions into a single location.
+Plugins are available to check if new versions of your libraries and plugin are available.
+I simply execute the following command to detect new versions
+
+[source, gradle]
+----
+gradle dependencyUpdates -Drevision=release // <1>
+----
+<1> Check that any libraries or plugins in the project have a newer available version. A
+
+=== Beware of Technical Debt
+
+=== Monitor, Log, Audit
+
+=== Use Static Code Analyzers
+
+=== What We learnt
+
+Fallacy of maintenance costs::
+Regular technical maintenance is a well-know approach to optimize the value of product.
+Why does the software industry think that maintenance is a cost point and not an investment?
+Ignorance of legal consequences::
+Your company and yourself are legally responsible to protect customers and stakeholders against known dangers and flaws.
+You are liable to losses of money and reputation for your customers.
+The big economic blocks have strengthened their protection laws and have introduced heavy fines and potential prison penalties for convicts.
+Lacking professional ethics::
+I will never go a physician not following hygiene and prevention good practices and regulation.
+Why should I acknowledge a software developer ignoring documented and accepted approaches to improve quality and reduce risks.
+
+Be proud to create effective and secure products
+
+[bibliography]
+=== Literature
+
+* link:../../2021/modern-java-development[Modern Java Development]
+* link:../../2019/time-to-migrate-to-a-modern-jdk-laggards[Time to Migrate to a Modern JDK, Laggards!]

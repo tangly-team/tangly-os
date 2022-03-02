@@ -12,8 +12,9 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2022-02-02-head.jpg[width=420,height=360,role=left]
+
 The majority of software product development initiatives uses an agile approach.
-The most popular framework is {ref-scrum}.
+The most popular framework is currently {ref-scrum}.
 
 It is natural that organizations would gravitate towards the many benefits agile ideas provides.
 
@@ -25,7 +26,7 @@ Traditionally, cost reduction was the key driver for software development outsou
 https://www2.deloitte.com/content/dam/Deloitte/us/Documents/process-and-operations/us-cons-global-outsourcing-survey.pdf[Deloitte's 2018 Global Outsourcing
 Survey].
 
-CAUTION: Cost is back as the major driver in 2020. The COVID-19 pandemic had a huge impact in 2020.
+CAUTION: Cost was back as the major driver in 2020. The COVID-19 pandemic had a huge impact in 2020.
 
 Instead, the top five reasons organizations opt for IT outsourcing in 2018 are:
 
@@ -57,10 +58,7 @@ You must invest in cultural changes and adapt your processes to realize the full
 
 [cols="1,3,3,3",options="header"]
 |===
-^|Needs
-^|Extended Team
-^|Managed Team
-^|Outsourced Team
+^|Needs ^|Extended Team ^|Managed Team ^|Outsourced Team
 
 |_Needs_
 |Get additional development capacity for an existing team
@@ -114,6 +112,7 @@ All documents and comments in the source code shall be legible for all team memb
 Discussions and remote conference shall be held in a language available to all members. +
 A shoring strategy implies this language must be International English.
 All documents, emails, and chats must therefore be written in English.
+Your organization has to recognize this profound change and train all your collaborators to become fluent in written and spoken English.
 Cultural Barriers::
 The shored team collaborators shall be integrated in the company as respected and valuable colleagues.
 Avoid any statements containing _we versus they_. +
@@ -121,7 +120,12 @@ Meeting times should be good for all participants.
 Location of documents, source code, and artifacts should have the same availability and comfort for all members.
 Company Binding::
 Effort must be put in the integration of the nearshore teams.
-Churn-rates can be as high as 30% per year.
+Churn-rates can be as high as 50% per year.
+Capabilities::
+Talent is a precious resource.
+Companies are fighting to acquire talented developers all over the world.
+You should have a clear strategy to acquire and retain talented engineers.
+The strategy should blend together why you are actractive for talents and why they should stay in your organization.
 Agile Approaches::
 The various departments and locations should have similar approaches to agile frameworks and processes.
 A good solution is to standardize on {ref-scrum}.

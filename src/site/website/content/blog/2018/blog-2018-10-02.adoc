@@ -11,12 +11,20 @@ tags: ["agile"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2018-10-02-head.jpg[width=420, height=360, role=left]
+image::2018-10-02-head.jpg[width=420,height=360,role=left]
+
 An agile team is sole responsible for the internal quality of the product they build and maintain.
 
-And the developers shall be accountable to produce the expected quality and optimize long terms goals of the organization.
-They provide the answer to the seminal question:
+The developers shall be accountable to produce the expected quality and optimize long terms goals of the organization.
 
+You as a developer have an ethical, professional and legal responsibility to insure adequate quality for your products.
+
+Laws protect the confidentiality of their personal and financial data.
+It is a potential crime to leak credit card information, geolocation data or worst personal documents.
+
+Scrum as a clear concept to answer to the seminal question:
+
+[.text-center]
 _Did we build it right?_
 
 https://less.works/less/framework/definition-of-done.html[Definition of Done] _DoD_ is a major building block to answer this question with a sounding *yes*.
@@ -50,22 +58,21 @@ The terms _Potentially Shippable_ and _Definition of Done_ are often not used co
 To clarify the terms:
 
 _Potentially Shippable_::
- All activities that must be performed before the product can be shipped._
-_Definition of Done_::
- An agreement between the teams and their Product Owner on which activities are performed inside the Sprint.
- A _Definition of Done_ is perfect when it equals to Potentially Shippable.
- Teams strive to improve towards a ideal Definition of Done.
+All activities that must be performed before the product can be shipped._ _Definition of Done_::
+An agreement between the teams and their Product Owner on which activities are performed inside the Sprint.
+A _Definition of Done_ is perfect when it equals to Potentially Shippable.
+Teams strive to improve towards a ideal Definition of Done.
 _Undone Work_::
- The difference between the Definition of Done and Potentially Shippable.
- When the Definition of Done is perfect then there is no Undone Work.
- If this isn’t the case then the organization has to decide, first how do we deal with the Undone Work, and second how do we improve so that there is less
- _Undone Work_ in the future.
+The difference between the Definition of Done and Potentially Shippable.
+When the Definition of Done is perfect then there is no Undone Work.
+If this isn’t the case then the organization has to decide, first how do we deal with the Undone Work, and second how do we improve so that there is less
+_Undone Work_ in the future.
 _Unfinished, not finished, or not done—work_::
- that was planned in a Sprint but was not completed.
- This is often confused with Undone Work.
- _Unfinished_::
- is work that the team planned for but did not finish whereas Undone Work was never even planned for.
- When a team has work that was not finished then they ought to feel anxious and discuss improvement actions during their retrospective.
+that was planned in a Sprint but was not completed.
+This is often confused with Undone Work.
+_Unfinished_::
+is work that the team planned for but did not finish whereas Undone Work was never even planned for.
+When a team has work that was not finished then they ought to feel anxious and discuss improvement actions during their retrospective.
 
 Teams should never leave work-in-progress at the end of the Sprint and “carry over” to the next one.
 This causes a lack of transparency and reduces scope flexibility.

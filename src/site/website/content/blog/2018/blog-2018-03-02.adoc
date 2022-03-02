@@ -46,7 +46,7 @@ The whole organization and all involved managers shall
 
 * trust the team will solve adequately and pragmatically the customer needs.
  Trust your team and create a work environment to support them.
- For example you should
+ For example, you should
 ** Promote technical excellence,
 ** Provide approaches for face 2 face communication,
 ** Publish Kanban board to increase transparency,

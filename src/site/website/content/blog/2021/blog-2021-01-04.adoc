@@ -14,6 +14,7 @@ tags: ["java", "git", "series-students"]
 image::2021-01-04-head.jpg[width=420,height=360,role=left]
 Computer science students shall achieve technical excellence when reaching bachelor level.
 They should be proficient with industry good practices.
+
 Students understand the theory and principles behind these practices.
 Experience with one of the best of breed tools enforces learning and automatism.
 

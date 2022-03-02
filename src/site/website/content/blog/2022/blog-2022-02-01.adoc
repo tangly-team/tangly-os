@@ -68,6 +68,11 @@ Agile organizations are working daily to improve.
 There is no substitute for doing hard work.
 They try to figure out solutions to difficult problems as they go along, using Scrum as a canvas to illuminate the way.
 
+[quote, Kierkegaard]
+____
+Life can only be understood backwards; but it must be lived forwards.
+____
+
 Non-agile organizations are only talking.
 The illusion of agility is often established in such companies.
 Internal working groups are drafting transformation plans, updated processes, and guidelines.
@@ -136,26 +141,28 @@ No organization which purposefully and systematically abandons the unproductive 
 ____
 
 Social Advantages::
-We love to work in a kind and supportive organization.
-We are proud not to have political games and power struggles.
-We stand to our collaborators and love to see them growth.
+* We love to work in a kind and supportive organization.
+* We are proud not to have political games and power struggles.
+* We stand to our collaborators and love to see them growth.
 Financial Advantages::
-* Timely invoicing process allows us to send all monthly invoices the first day of the following month.
+* Timely invoicing process allows us to send all monthly invoices the first day of the following month
 footnote:[I regularly interact with companies forgetting to invoice you delivered services.
-They are often quite thankful when I remember them to send the invoice for their work!],
+They are often quite thankful when I remember them to send the invoice for their work!].
+* Our company can finally process all federal, local and VAT taxes electronically.
+The local government systems now support digital sending and processing for tax declarations.
 * Realtime financial cockpit
-** Cash-flow overview provides security how our company is doing and how our liquidity is evolving,
+** Cash-flow overview provides security how our company is doing and how our liquidity is evolving.
 ** Rolling budgeting optimizes investments when the market shifts
-footnote:[The Corona catastrophe was a huge test we successfully mastered.],
-** Sales pipeline provides indicators how we should perform the next months,
+footnote:[The Corona catastrophe was a huge test we successfully mastered.].
+** Sales pipeline provides indicators how we should perform the next months.
 ** Paperless processes remove scanning, archiving and printing activities.
 Technological Advantages::
 * Agile software development approaches with technical focus provides as strong market proposition.
-Motivated collaborators love to work on such initiatives
-footnote:[To be honest, the biggest problem we have is to find collaborators with the required skill set.],
-* Technological leadership for the Java technology stack delights our collaborators and is a huge market advantage,
+Motivated collaborators love to work on such initiatives.
+footnote:[To be honest, the biggest problem we have is to find collaborators with the required skill set.].
+* Technological leadership for the Java technology stack delights our collaborators and is a huge market advantage.
 Business Advantages::
-* Leadership how to develop successful software products
+* Leadership how to develop successful software products.
 
 === References
 

@@ -40,12 +40,14 @@ ____
 
 * Use static analysis tools to detect technical debt in your source code,
 * Use your IDE
-footnote:[IntelliJ IDEA IDE has a powerful set of functions to detect code smells and perform automatically standard refactoring activities.]
+footnote:[https://www.jetbrains.com/idea/[IntelliJ IDEA] IDE has a powerful set of functions to detect code smells and perform automatically standard refactoring activities.
+The https://www.sonarlint.org/[Sonar Lint] plugin for various IDE to detect quality and security issues in your code.]
 to perform simple refactoring and improve the quality of your code,
 * Use your IDE to find all TODO comments,
 * Use gradle plugin
 footnote:[I use the https://github.com/ben-manes/gradle-versions-plugin[com.github.ben-manes.versions] plugin for this purpose.
-The plugin handles nicely multi-modules projects.]
+The plugin handles nicely multi-modules projects.
+The plugin also support the central declaration of dependencies feature in Gradle.]
 to update your library and remove technological obsolesce,
 * Update your Java version when the next one is coming out.
 You have access to better libraries, interfaces, and runtime engines.

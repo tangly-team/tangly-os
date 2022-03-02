@@ -57,7 +57,7 @@ At https://www.tangly.net[tangly] we use internally
 * Google Business Apps administration console to manage our technical infrastructure such as workstations, mobile devices, DNS record,
 * Bitbucket and continuous integration, delivery and deployment pipelines for software development,
 * Trello for activities management and our electronic Scrum or Kanban board.
- We use analog boards if the team members are collocated - we are trying to avoid JIRA, for us it is just overkill -,
+ We use analog boards if the team members are collocated - we are trying to avoid JIRA. It would be just overkill for us -,
 * Slack is our preferred chat platform,
 * https://www.banana.ch/[Banana] is our accounting solution.
 
@@ -71,7 +71,7 @@ We use an impressive set of tools to collaborate with our customers and partners
 * https://www.bitbucket.org/[Bitbucket] and continuous integration, delivery and deployment pipelines for software development,
 * Maven Central to distribute public binary software artifacts,
 * Slack is our preferred chat platform,
-* Google groups for technical discussion,
+* Google Groups for technical discussion,
 * Blogger to publish articles to our community,
 * LinkedIn for marketing,
 * GPG and S/MIME to securely exchange confidential documentation or protect sensitive emails.

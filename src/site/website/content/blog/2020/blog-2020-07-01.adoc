@@ -29,7 +29,7 @@ Beware our solutions are based on the Java stack.
 
 === Swiss QR Code
 
-The https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf[Swiss QR-bill] standard is based on a 2D barcode and associated human readable text mirroring the data encoded in the barcode.
+The https://www.paymentstandards.ch/dam/downloads/ig-qr-bill-en.pdf[Swiss QR-bill] standard is based on a 2D barcode and associated human-readable text mirroring the data encoded in the barcode.
 The barcode approach assumes the invoice will be printed by the buyer.
 The interested parties have to scan the barcode to digitize the invoice information.
 This approach clearly breaks digitalization efforts.
@@ -40,7 +40,7 @@ The generation of the invoice and associated barcode is fully digital.
 
 This approach works well only if the issuer fills the so-called SWICO field of the QR code with needed information.
 For example the due date of the invoice and the enumeration of different VAT tax percentages and corresponding VAT taxes are only stored in this field.
-In other words the standard does not foreseen that the due date of the invoice should be a mandatory field.
+In other words the standard does not foresee that the due date of the invoice should be a mandatory field.
 Stated bluntly the committee in charge of the standard realized they missed and stuck all missing elements in the so-called SWICO field.
 It is clear that it is impossible to define a digital payment workflow without information such a due date, and the VAT percentages and amounts.
 

@@ -15,6 +15,7 @@ image::2021-01-02-head.jpg[width=420,height=360,role=left]
 
 Identifiers are a key concept to successfully model complex business domains.
 They permeate how our modern civilization functions.
+
 Could you imagine a country without car registration number, internet addresses, postal addresses or social security numbers?
 
 Identifiers are *identifiers*.

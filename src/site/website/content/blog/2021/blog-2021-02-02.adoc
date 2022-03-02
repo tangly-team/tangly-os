@@ -15,7 +15,8 @@ image::2021-02-02-head.jpg[width=420,height=360,role=left]
 
 === File System NIO
 
-Java NIO _New Input Output_ is an alternative IO API for Java, meaning alternative to the standard Java IO and Java Networking API's.
+Java NIO _New Input Output_ is an alternative IO API for Java, meaning alternative to the standard Java IO and Java Networking APIs.
+
 Java NIO offers a different IO programming model than the traditional IO APIs.
 
 [NOTE]

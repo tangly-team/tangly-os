@@ -27,7 +27,8 @@ Similar lists can be created for Javascript/Typescript, Python, Ruby, C++, or .N
 
 === What Do I Check?
 
-Formal Training:: I expect a software developer to have a formal training in computer science or related fields.
+Education:: Which kind of education did the candidate pursue during his career?
+Formal Training::: I expect a software developer to have a formal training in computer science or related fields.
 A formal training is given by an accredited institution.
 The student receives a recognized certificate.
 * The following information should be available:
@@ -45,7 +46,7 @@ I want to hire a computer specialist not an all-rounder_,
 _It defines the potential years of experience_,
 ** What is the ranking of the school delivering the title? +
 _I often want to know the overall ranking of the institute and their curriculum strengths_,
-Continuous Formation:: I expect a professional engineer to regularly pursue formal continuous training.
+Continuous Formation::: I expect a professional engineer to regularly pursue formal continuous training.
 The following information should be available:
 ** What formation did he attend? +
 _I am checking if the candidate pursued training in the areas she applies for.
@@ -55,7 +56,7 @@ A software architect should train in architecture and software design themes.
 A user interface developer should know about usability, accessibility, design and corporate interface standards._
 ** When did he attend the continuous formation and year when the title was received?
 ** Link to an authority providing proof of the certificate of the formation.
-Spoken Languages::
+Spoken Languages:::
 The workplace is international and all relevant computer science documentation is in English.
 * The candidate shall be fluent in English in written and spoken forms +
 _A software specialist not being fluent in English is an imposter because he cannot read actual technical information_,
@@ -109,7 +110,9 @@ Teamwork Capabilities::
 * Explain pair programming, mob programming, merge requests
 * Explain feature branch versus trunk based development
 * Check if community of practice, coding dojo, design workshops are known concepts
-* Does the candidates show a sensibility to soft factors and team building instruments
+* Does the candidate shows a sensibility to soft factors and team building instruments?
+
+If the position is for a team lead position I use the criteria discussed in link:../..//2021/technical-team-lead/[Techincal Team Lead] blog.
 
 === Goodies
 

@@ -16,6 +16,7 @@ image::2022-01-02-head.jpg[width=420,height=360,role=left]
 https://en.wikipedia.org/wiki/Immutable_object[Immutability] is a powerful and simple concept in programming theory that is strangely underused.
 
 An https://en.wikipedia.org/wiki/Immutable_object[immutable object] is simply a class whose instances cannot be modified.
+
 All the information contained in each instance is provided when it is created and is fixed for the lifetime of the object.
 
 An example of immutable objects in Java is the _String_ class.

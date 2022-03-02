@@ -13,6 +13,10 @@ tags: ["agile", "students"]
 
 image::2022-03-01-head.png[width=420,height=360,role=left]
 In the midst of this agile explosion, many teams are experiencing difficulties.
+
+Teams often try hard to use new ways of working and learning.
+The challenge is to explore the new approaches and not to fall back to traditional processes.
+
 According to the
 https://stateofagile.com/[15th Annual State of Agile report], 46% of survey respondents report struggles with inconsistent practices and 43% report cultural classes.
 

@@ -50,7 +50,7 @@ If you are a Java developer you will
 Clean code applies to productive and test code.
 
 The described approach is a good practice since the beginning of this millennium.
-All above mentioned tools are open source and free to use.
+All above-mentioned tools are open source and free to use.
 Your organization has no excuse to write crap code.
 
 Just write well engineered, legible and maintainable source code.

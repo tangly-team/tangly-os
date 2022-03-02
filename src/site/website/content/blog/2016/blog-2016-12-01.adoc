@@ -13,7 +13,15 @@ tags: ["agile"]
 
 image::2016-12-01-head.jpg[width=420,height=360,role=left]
 I often hear discussions asking who is performing the _traditional_ product leader tasks in Scrum.
-This is in general an excuse to state that Scrum alone cannot work and classical product leaders are still needed.
+
+This is in general an excuse to state that {ref-scrum} alone cannot work and classical product leaders are still needed.
+
+I encourage you to classify these so-called regular product manager activities.
+Often these jobs are plain reporting progress to various boards and micromanaging the development team.
+
+I truly acknowledge the importance and value of a line manager caring his collaborators and nurturing the success of the products they develop.
+
+But be honest these activities are implemented by good people and technical leaders and almost never by some product managers.
 
 Below a list of tasks you do *NOT* need anymore to do in {ref-scrum}.
 

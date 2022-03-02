@@ -19,7 +19,8 @@ Talking about values and mental models you must have to successfully introduce a
 A new revision was published end of year 2017, just a year after the values addition.
 
 What has changed?
-What have the community learnt and committed to the new version of the guide.
+
+What have the community learnt and committed to the new version of the guide?
 
 === Scrum is not only for Software
 

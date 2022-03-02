@@ -17,7 +17,7 @@ Your teams use Scrum or Kanban to deliver running software every two weeks.
 The product market introduction is a success and you will successfully sell the solution for the next ten years.
 
 How shall you define the software architecture of your product and insure a long living and high quality solution?
-The experts tell you the design is emergent, what does it means?
+The experts tell you the design is emergent, what does it mean?
 
 === LeSS Architecture Observations
 

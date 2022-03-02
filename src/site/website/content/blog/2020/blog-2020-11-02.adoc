@@ -105,7 +105,7 @@ ____
  The actual approaches will work.
  You need to tailor them.
 * Agile is around for a quarter of a century.
- Accept that if you changing now, you are late.
+ Accept that if you are changing now, you are late.
  You will find thousands of experience reports.
 * Accept it will take time.
  The https://martinfowler.com/articles/agileFluency.html[Agile Fluency Model] provides a potential roadmap.

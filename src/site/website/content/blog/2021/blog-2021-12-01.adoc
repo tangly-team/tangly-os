@@ -52,7 +52,7 @@ The stated Spotify mission is to turn the music business upside down. +
 _Does your company have a compelling purpose that aligns and motivates people?_
 Squad is equivalent to Scrum Team::
 Like Scrum teams, squads are cross-functional and self-organizing and they are responsible for end-to-end delivery of a complete project. +
-_Are your “squads” self-organizing?_ _Are they capable of end to end delivery or do you have handoffs to other teams or departments?_
+_Are your “squads” self-organizing?_ _Are they capable of end to end delivery or do you have hand-offs to other teams or departments?_
 Squads are Autonomous::
 Autonomy is the key to the company.
 It includes not just what to work on next or how to complete their work.
@@ -129,7 +129,7 @@ Experiment-friendly Culture::
 More data-driven decisions, not decisions made by the highest paid person.
 Teams are encouraged to develop a hypothesis and run an experiment.
 Teams establish “Keep List” which may include things like: Retros, daily stand-ups, Google Drives, GIT, and Guild UnConferences.
-They also have a “Dump List”: Time Reports, Handoffs, Separate Test Teams or Test Phases, Task Estimates, Useless Meeting. +
+They also have a “Dump List”: Time Reports, Hand-offs, Separate Test Teams or Test Phases, Task Estimates, Useless Meeting. +
 _Do you allow teams the freedom to really change how they work?_ _Which on the dump list above do you require your teams to do and why?_
 Healthy Cultures Heals Broken Process::
 Process breaks left and right but a healthy culture will lead to people fixing those problems. +

@@ -13,6 +13,12 @@ tags: ["organization"]
 
 image::2016-11-02-head.jpg[width=420, height=360, role=left]
 I left the company I founded 20 years ago and needed a new home to work and have access to social insurances.
+
+The best legal construct in Switzerland and in Europe is to found a limited liability company.
+
+You need such a construct in Switzerland to work as a software specialist.
+The legal Swiss institutions such as taxes, social insurances, and accident insurances are challenging and almost unfair with freelancers.
+
 I had to found a limited liability company with a capital of CHF 20'000.
 
 Here the steps for the impatient.

@@ -35,3 +35,10 @@ I will strongly fight against proprietary solutions.
 * Tooling is slightly more britle because {ref-asciidoctor} integration in {ref-hugo} is work in progress.
  {ref-asciidoctor} is also undergoing changes such as the native support of rouge syntax highlighter.
  The improvements in both tools were impressive the last year but we have to update regularly our toochain and update all {ref-asciidoc} documents.
+
+=== Learnings
+
+* Hugo themes styling for AsciiDoc is sketchy.
+The visual quality is currently hindered due to faulty support of the standard or custom AsciiDoc stylesheet.
+* AsciiDoc supports natively rouge code highlighting module.
+All source code fragments are nicely displayed without special support from Hugo.

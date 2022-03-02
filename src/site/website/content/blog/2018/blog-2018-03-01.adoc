@@ -79,10 +79,10 @@ I use Gradle as build tool and also to wait until JDK 10 was at least partially 
 And I am still waiting for the update of code coverage plugin.
 Before that I was back to stone age, writing software with a text editor and compiling it with the command line.
 
-The library landscape is often behind and regularly they are incompatible with the newest version of the JDK.
+The library landscape is often behind. They are regularly incompatible with the newest version of the JDK.
 
 JavaFX will be removed from the regular JDK distribution in Fall 2018.
 
-The cloud landscape does not support latest JDK as SAAS.
+The cloud landscape does not support the latest JDK as SAAS.
 You must provide your custom docker images with the expected JDK or JRE.
 So we are back to IAAS.

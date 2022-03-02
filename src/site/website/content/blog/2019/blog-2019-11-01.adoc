@@ -64,7 +64,7 @@ Be gentle and kind to your professional teams.
 *Recognize that organizational agility is constrained by technical agility.*
 Focus the first years on technical excellence, software craftsmanship and clean development.
 
-All the above mentioned methods emphasize the importance of technical excellence for durable success.
+All the above-mentioned methods emphasize the importance of technical excellence for durable success.
 
 *Simplify* your processes, roles and structures. Reflect if you really need scaling.
 
@@ -91,7 +91,7 @@ Now you are ready to experiment with scaling.
 === Avoid Common Errors
 
 Study the history and evolution of the various scaling approaches.
-In particular the changes in {ref-safe} are an archaeological treasury what they wrongly stated and how they corrected some of the identified flaws.
+In particular the changes in {ref-safe} are an archaeological treasury what they wrongly stated and how they corrected some identified flaws.
 
 * Continuous delivery is the new approach.
 Eliminate hardening iterations, integration phases, milestones when software should be integrated.
@@ -100,7 +100,7 @@ Your teams shall deliver a workable software on demand, multiple times a week or
 Customers buy products.
 Eliminate product based organizations.
 *b _Have one backlog for the whole product_.
-Otherwise multiple backlogs must be synchronized and local optimization is de facto applied.
+Multiple backlogs must be otherwise synchronized and local optimization is de facto applied.
 This approach is against all lean principles.
 * _Customer and users talks directly with the development team_.
 Product owners, product managers enterprise architects should never be filtering the information flow between customers and engineers.

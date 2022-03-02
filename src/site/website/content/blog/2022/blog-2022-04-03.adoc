@@ -1,0 +1,195 @@
+---
+title: "Digital Product Manager"
+linkTitle: "Digital Product Manager"
+date: 2022-04-27
+tags: ["agile"]
+---
+
+== Being a Digital Product Manager
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2022-04-03-head.jpg[width=420,height=360,role=left]
+
+Effective https://en.wikipedia.org/wiki/Product_management[product management] is driven by a customer-centric mindset in which the customer is placed at the center of every decision.
+
+Supported by tools and techniques such as https://en.wikipedia.org/wiki/Design_thinking[design thinking], this mindset focuses the entire organization on creating desirable, viable, feasible, and sustainable solutions.
+
+Good https://en.wikipedia.org/wiki/Product_manager[product managers] balance customer needs, adequate technologies, product delivery, and governance or legal constraints.
+
+They shall master project management approaches, financing mechanisms and collaborator nurturing.
+
+=== Responsibilities
+
+The primary responsibilities of product management often fall into the following areas.
+
+image::2022-04-03-product-line-manager.png[width=420,height=360,role=left]
+
+==== Meet Business Objectives
+
+Products and solutions must meet the economic business goals established by the organization.
+You should:
+
+* Develop a clear model of how the solution provides value to customers.
+* Understand the cost structure and in-license models of all components and suppliers.
+* Create any necessary pricing or revenue-generating elements and out-licensing models.
+* Develop customer-centric ROI models that align with the value provided.
+* Identify financing models to create and maintain the product line.
+Often you shall acquire and retain the team in charge of the development and support of your product.
+
+_Assume you need formal training in marketing, sales, finances, accounting and controlling.
+This is typically achieved with an executive master education during your career._
+
+==== Hire and retain qualified collaborators
+
+Great products are always developed with the help of great teams.
+You should:
+
+* Acquire and retain professional collaborators.
+* Nurture agile teams with the right set of capabilities.
+* Develop true partnerships with other companies.
+
+_Interestingly product managers often neglect this responsibility.
+They are fully aware of logistics and production issues.
+Seldom do they put similar effort in the development teams in charge of their products._
+
+==== Get the Product Built and Meet Market
+
+Product managers collaborate with agile functional teams to build the required functionality.
+
+Understand customer needs::
+As the representative of the customer, product management leverages market research and continuous exploration to continually understand customer and market needs.
+Design thinking tools, ranging from personas, empathy maps, journey maps, and story maps are used to communicate these to the development teams.
+Ensure product completeness::
+Product management is responsible for ensuring the product is considered _whole and complete_ from a defined customer’s perspective.
+Products that serve multiple market segments may have different considerations of _whole and complete_ and of
+https://en.wikipedia.org/wiki/Minimum_viable_product[minimum viable products].
+Develop and communicate the program vision and roadmap::
+Product management continuously develops and communicates the vision to the agile teams, while defining the features of the system.
+Collaborating with system architect and engineering experts, they also define and maintain the https://en.wikipedia.org/wiki/Non-functional_requirement[non-functional
+requirements] _NFRs_ to ensure that the solution meets relevant standards and other system quality requirements.
+They are responsible for the roadmap, which illustrates how features are intended to be implemented over time.
+Manage and prioritize the flow of work::
+Product management supports the flow of work through the program Kanban and into the program backlog, responsible for ensuring enough features are ready in the backlog at all times.
+Because judicious selection and sequencing of features is a key economic driver for each https://en.wikipedia.org/wiki/Value_stream[value stream], the backlog is regularly prioritized.
+Participate in release and sprint planning::
+Product Management presents the vision, which highlights the proposed features of the solution, along with any relevant upcoming milestones.
+They also participate as sprint planning and are responsible for approving objectives and establishing business value.
+Define releases and program increments::
+Owning the _what_ means that product management is primarily responsible for release definition as well, including new features, architecture, and allocations for technical debt.
+This is accomplished through a series of releases, whose definition and business objectives are also determined by product management.
+Work with System Architect/Engineering to understand Enabler work::
+While Product Management is not expected to drive technological decisions, they are expected to understand the scope of upcoming enabler work.
+They collaborate with System and Solution Engineering to jointly sequence the releases that will host new business functionality.
+Participate in reviews and Inspect and Adapt (I&A)::
+Product management is an active participant in biweekly demonstrations and reviews.
+They also participate in assessing metrics, including the evaluation of business value achieved versus planned, and are active participants in the Inspect and Adapt workshop.
+
+_Digital products are now almost exclusively created with https://en.wikipedia.org/wiki/Agile_software_development[agile approaches].
+The https://scrumguides.org/scrum-guide.html[Scrum framework] is the most popular variant over the world.
+A product manager shall be proficient with agile techniques and hold some certification._
+
+NOTE: https://www.scrumalliance.org/[Scrum Alliance], https://www.scrum.org/[Scrum.org] and https://www.pmi.org/disciplined-agile/process/introduction-to-dad[PMI DAD] have extensive agile training and certification offerings.
+
+==== Amplify Learnings
+
+Product managers ensure their offerings are supported and enhanced to create a continuous flow of value in the organization.
+
+Collaborating with customer experience and support::
+While customer-centric enterprises seek to create positive customer experiences, the implementation of customer experience and product support practices varies considerably based on the product.
+A B2C offering may only provide email support, while a B2B offering may provide a wide range of dedicated support options. +
+Product management is responsible for working with customer experience and support professionals to design the right offerings.
+Once designed, product management is responsible for helping customer experience and support manage these offerings, including creating features designed to improve support functions.
+Manage supported versions::
+Customers of complex solutions have a right to know how long they will be supported once deployed in production.
+Therefore, product management is responsible for defining support policies, including https://en.wikipedia.org/wiki/End-of-life_product[End-of-Life] _EOL_.
+Manage legal and compliance::
+Product management is responsible for working with legal and compliance professionals to ensure the product meets all necessary requirements.
+https://en.wikipedia.org/wiki/Corporate_governance[Corporate governance] is mandatory in professional organizations.
+
+=== Challenges
+
+* You need to understand business techniques and financial language to fund your product development.
+* You need to understand agile HR to nurture your collaborators.
+* You should be savvy with product development processes and project controlling tools to deliver on time and on budget.
+* You need to chop your target markets to identify your customers and products.
+Beware of the challenges of internal customers, business to business _B2B_, business to professional _B2P_, business to consumer _B2C_, and business to government _B2G_.
+* You need to deeply understand technologies to Manage your technology stack.
+Successful companies such as Apple, Microsoft, Twitter, Facebook have senior top executives with deep knowledge and practical experience with software technologies.
+
+=== Capabilities
+
+You are responsible for the successful development of products.
+You shall possess a set of capabilities related to this role.
+
+image::2022-04-03-product-management.png[width=420,height=360,role=left]
+
+* Product portfolio responsibility toward customers and organization
+** Product portfolio and life-cycle management.
+** Roadmap, release plan, and requirement analysis.
+** Technical and user support is a must for satisfied customers.
+The legal aspects of security, accessibility, data privacy and user protection are now a central success factor for any digital product.
+Internationalization and localization are regular aspects of an application.
+* Line manager responsibility toward collaborators
+* Department financial responsibility toward organization
+* Technical responsibility
+** Technology stack selection to optimize development and training costs.
+Strategical aspects must be considered to optimize long-term revenues and minimize risks.
+** Provide interoperability to public interfaces.
+In the health sector it could be the Health https://en.wikipedia.org/wiki/Health_Level_7[Level 7] _HL7_ set of standards.
+Each government defines their API to provide mandatory information for social security, value added tax reporting, cyberattacks alarming, or statistics.
+** Avoid technology obsolescence and define cost-effective migration paths.
+** Motivate collaborators and be an attractive company for professional engineers.
+
+=== Continuous Training
+
+Training on the job is certainly a good approach to learn some required skills.
+Be honest.
+You still need formal continuous training to master the whole set of capabilities.
+The landscape of potential formal training is heterogeneous.
+
+image::2022-04-03-PM-dependencies.png[width=420,height=360,role=left]
+
+Product management and marketing is one specialization::
+The offerings are mature and well-structured.
+Beware that modern product and project management approaches based on agile principles are often missing in the offering. +
+Big organizations such as https://www.pmi.org/[PMI] have realized the need and are now focusing on more agile approaches.
+Digital transformation and technology awareness is a second specialization::
+The available trainings either emphasize business and culture or technology.
+The integration of the product, organization and technology dimensions is currently not available in regular education.
+I assume this dichotomy reflects the silo structure of the majority of companies.
+
+[IMPORTANT]
+====
+The most successful digital companies such as Microsoft, Twitter, Apple, Goggle, and Facebook have such profiles in their highest senior positions.
+These leaders master product development, collaborators nurturing, financial acumen, and technological savviness.
+
+Successful executives shall master culture, market and technology to launch awesome product lines.
+====
+
+Leadership and collaborator management is a third specialization::
+Modern and agile approaches are still very young.
+The offerings are still quite old school and not well-tailored for digital companies.
+The still ill used term _human resources_ is quite the indicator how collaborators hiring and retainment is done wrong in old-fashioned organizations. +
+Persons never can be considered as resources, they are unique individuals to be nurtured and respected.
+
+The following formal trainings are available through academic institutions:
+
+* https://fh-hwz.ch/produkt/mas-digital-business/#MDVC[MAS Digital Business FH HWZ]
+* https://www.zhaw.ch/de/sml/weiterbildung/detail/kurs/mas-it-leadership-und-techmanagement/#objectives-content[MAS IT-Leadership and TechManagement ZHAW]
+is one of the first approaches to combine technology, business and organizational aspects.
+* https://www.epfl.ch/education/master/programs/management-technology-and-entrepreneurship/[MAS Management, Technology and Entrepreneurship EPFL]
+* https://fh-hwz.ch/produkt/cas-digital-product-lead/[CAS Digital Product Lead FH HWZ]
+* https://mas-at.ethz.ch/cas-programs/cas1.html[CAS Applied Information Technology ETHZ]
+* https://www.hslu.ch/de-ch/informatik/weiterbildung/digital-business-and-innovation/cas-digital-architect/[CAS Digital Architect FH HSLU]
+* https://www.hslu.ch/de-ch/informatik/weiterbildung/digital-business-and-innovation/cas-modern-software-engineering-development/[CAS Modern Software Engineering & Development
+FH HSLU]
+* https://www.zhaw.ch/de/sml/weiterbildung/detail/kurs/cas-digital-product-management/[CAS Digital Product Management FH ZHAW]
+
+I strongly recommend evaluating the offerings and exhaustively discussing the content with the program director.
+The offerings are slowly moving to a more holistic and agile approaches.
+Too often the institutes still cling to obsolete practices and are not aware of all facets of digital product development.
+
+In particular technological factors and agile collaborator approaches are sorely missing in many curriculums.
