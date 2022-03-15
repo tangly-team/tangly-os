@@ -77,17 +77,16 @@ guessSyntax = "true"
 # rouge is bundled with Asciidoctor 2.0 and should no more be added as extension, the rouge-css style include html marking in the html file (from the
 # Asciidoctor expert Dan Allen). The working folder allows asciidoctor-diagram and plantuml to generate diagrams in the correct folder.
 # additional extensions not in the official hugo extensions list can be loaded in safeMode is set to unsafe.
+# use html5 output because we could not find any useable stylesheet for html5s backend.
 [markup.asciidocExt]
 safeMode = "unsafe"
 workingFolderCurrent = true
-backend = "html5s"
+backend = "html5"
 failureLevel = "fatal"
-extensions = ["asciidoctor-html5s", "asciidoctor-diagram"]
+extensions = ["asciidoctor-diagram"]
 [markup.asciidocExt.attributes]
 experimental = true
-icons = "image"
-icontype = "svg"
-iconsdir = "assets/icons"
+icons = "font"
 imagesdir = "../pics"
 source-highlighter = "rouge"
 rouge-style = "github"

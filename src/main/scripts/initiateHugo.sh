@@ -30,7 +30,7 @@ mkdir icons
 cd ..
 
 # initiate public folder with git to enable optional completion step and publishing in bitbucket
-git clone --no-checkout git clone git@bitbucket.org:tangly-team/tangly-team.bitbucket.io.git public
+git clone --no-checkout git@bitbucket.org:tangly-team/tangly-team.bitbucket.io.git public
 
 cd themes
 

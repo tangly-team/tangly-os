@@ -95,6 +95,9 @@ Zuzana Sochová. 2017
 * https://www.amazon.com/dp/B08XWQ7DG9[Scrum A Pocket Guide 3nd Edition].
 Gunther Verheyen.
 Van Haren Publishing. 2021
+* https://www.amazon.com/dp/B07XTLNPTC[Mastering Professional Scrum: A Practitioner's Guide To Overcome Challenges and Maximize the Benefits of Agility].
+Stephanie Ockerman and Simon Reindl.
+Addison-Wesley. 2020
 * https://www.amazon.com/dp/0321637704[Coaching Agile Teams: A companion for Scrum Masters, Agile Coaches, and Project Managers in Transition].
 Lyssa Adkins.2010
 * https://www.amazon.com/dp/0977616649[Agile Retrospectives: Making Good Teams Great].

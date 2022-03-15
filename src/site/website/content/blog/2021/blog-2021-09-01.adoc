@@ -2,7 +2,6 @@
 title: "Improving a Static Web Site Build With Hugo and Docsy"
 linkTitle: "Improving a Static Web Site"
 date: 2021-09-01
-description: improving a static website build with Hugo tool, Docsy theme, asciidoc content, and plantUML and Mermaid diagrams
 tags: ["design", "hugo", "series-students"]
 ---
 
@@ -139,6 +138,6 @@ footnote:[This feature removed my dependency to Google drive to host downloadabl
 
 === Hugo and Docsy Related Articles
 
-. link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc[Creating a technical Website with Hugo and Asciidoc]
-. link:../../2020/support-comments-for-static-hugo-website[Support Comments for Static Hugo Website]
-. link:../../2021/improving-a-static-web-site-build-with-hugo-and-docsy[Improving a Static Website Build With Hugo and Docsy]
+- link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc[Creating a technical Website with Hugo and Asciidoc]
+- link:../../2020/support-comments-for-static-hugo-website[Support Comments for Static Hugo Website]
+- link:../../2021/improving-a-static-web-site-build-with-hugo-and-docsy[Improving a Static Website Build With Hugo and Docsy]

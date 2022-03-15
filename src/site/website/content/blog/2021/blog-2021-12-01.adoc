@@ -39,6 +39,8 @@ ____
 
 If you are not familiar with the so-called Spotify model, check out https://blog.crisp.se/[Kniberg’s blog posts] at Crisp as well as these popular videos many people refer to Spotify Engineering Culture https://www.youtube.com/watch?v=4GK1NDTWbkY&t=207s[Part 1] and https://www.youtube.com/watch?v=vOt4BbWLWQw&t[Part 2].
 
+image::2021-12-01-failure-culture.png[width=420,height=360,role=text-center]
+
 Do not scale agile…descale your organization::
 Henrik starts with this quote which directly conflicts with the 5% of people who claim to be scaling agile using Spotify.
 It isn’t about changing agile to fit your company, it is changing your organization to achieve business agility. +
@@ -51,7 +53,8 @@ Spotify was on a Mission::
 The stated Spotify mission is to turn the music business upside down. +
 _Does your company have a compelling purpose that aligns and motivates people?_
 Squad is equivalent to Scrum Team::
-Like Scrum teams, squads are cross-functional and self-organizing and they are responsible for end-to-end delivery of a complete project. +
+Like Scrum teams, squads are cross-functional and self-organizing.
+They are responsible for end-to-end delivery of a complete project. +
 _Are your “squads” self-organizing?_ _Are they capable of end to end delivery or do you have hand-offs to other teams or departments?_
 Squads are Autonomous::
 Autonomy is the key to the company.
@@ -108,7 +111,8 @@ _What is the level of trust you place on your employees and teams?_ _Are they em
 Transparency & short feedback loops::
 Transparency is one of the pillars of Scrum and essential for all agility.
 Transparency is also an enabler for self-organization.
-Similarly, short feedback loops provide opportunities for inspection and adaptation and they ensure teams are building the most valuable features. +
+Similarly, short feedback loops provide opportunities for inspection and adaptation.
+Fast feedback ensures teams are building the most valuable features. +
 _How long are your sprints?_ _What is the time between when a team builds something and when a real customer uses or provides feedback on that feature?_
 Managers are Servant Leaders::
 Spotify believes that managers are servant leaders, focused on serving the highest needs of the team.
@@ -122,7 +126,7 @@ They strive to get lots of feedback, tweak what they implement and maximize the 
 They know the difference between maximizing value and not just output (i.e. more user stories completed).
 _Are you set up to run small experiments?_ _Or are your products/projects the result of a long list of requirements that are all built before deploying to production in a big bang?_
 Spotify Hack Week::
-Twice a year Spotify hosts a hack week where they let everyone work for a week on whatever they want.
+Twice a year Spotify hosts a hack week when they let everyone work for a week on whatever they want.
 The approach unleashes creativity and improves cross-organizational collaboration They celebrate with a party on Friday. +
 _How comfortable would your company be with a one-week hackathon that allows people to do whatever they want?_ _What controls do you think your leaders would demand for that week (e.g. assigned work, time reporting, must show results, etc)._
 Experiment-friendly Culture::
@@ -161,8 +165,6 @@ _Do your leaders ask if people enjoy working at your company?_ _What % satisfact
 Mistakes are OK::
 How mistakes are treated may be one of the best indicators of your culture.
 Mistakes are expected when you are pushing for innovation.
-
-image::2021-12-01-failure-culture.png[width=420,height=360,role=left]
 
 [cite,Daniel Ek,Founder of Spotify]
 ____

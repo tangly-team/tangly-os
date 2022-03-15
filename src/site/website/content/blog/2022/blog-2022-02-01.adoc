@@ -68,12 +68,12 @@ Agile organizations are working daily to improve.
 There is no substitute for doing hard work.
 They try to figure out solutions to difficult problems as they go along, using Scrum as a canvas to illuminate the way.
 
-[quote, Kierkegaard]
+[quote,Kierkegaard]
 ____
 Life can only be understood backwards; but it must be lived forwards.
 ____
 
-Non-agile organizations are only talking.
+Non-agile organizations are only talking <<agile-bullshit>>.
 The illusion of agility is often established in such companies.
 Internal working groups are drafting transformation plans, updated processes, and guidelines.
 Where is the doing?
@@ -121,7 +121,7 @@ The eight tips are:
 . Keep your https://en.wikipedia.org/wiki/Continuous_integration[pipelines] in great shape.
 You shall deploy your software product multiple times a day to an integration staging area.
 . https://en.wikipedia.org/wiki/Technical_debt/[Technical Debt] should be zero at all times.
-A powerful practice is link:../../2020/advocate-zero-bug-policy-in-your-projects/[Zero Bug Policy].
+A powerful practice is zero bug policy <<zero-bug-policy>>.
 . Drop rituals that give you no added value.
 Avoid https://en.wikipedia.org/wiki/Cargo_cult/[Cargo Cult].
 . Have a good mix of experience and personality in your team.
@@ -129,9 +129,20 @@ Promote continuous training and when adequate certification in key technologies.
 Establish a strong learning culture in your organization.
 Encourage your collaborators to work on open source projects and publish on blogs.
 
+[WARNING]
+====
+Fight to avoid becoming a feature factory <<twelve-signs-feature-factory>> <<twelve-signs-feature-factory-three-years-later>>.
+Warning signs are:
+
+* Your sprints do not have a written and published goal.
+The content of a sprint is just a bunch of product backlog items.
+* Your teams just implement stories during an interaction.
+They never adjust the Sprint backlog content to increase the odds of achieving the spring goal
+====
+
 === tangly Agility Advantages
 
-We found out being an agile company bring us concrete and gratifying advantages.
+We found out being an agile company bring us concrete and gratifying advantages <<tangly-five-years>> <<tangly-one-year>> <<tangly-zero-years>> .
 
 [quote,Peter Drucker,Age of Discontinuity]
 ____
@@ -144,6 +155,7 @@ Social Advantages::
 * We love to work in a kind and supportive organization.
 * We are proud not to have political games and power struggles.
 * We stand to our collaborators and love to see them growth.
+* Motivation, ownership and accountability are high.
 Financial Advantages::
 * Timely invoicing process allows us to send all monthly invoices the first day of the following month
 footnote:[I regularly interact with companies forgetting to invoice you delivered services.
@@ -163,12 +175,22 @@ footnote:[To be honest, the biggest problem we have is to find collaborators wit
 * Technological leadership for the Java technology stack delights our collaborators and is a huge market advantage.
 Business Advantages::
 * Leadership how to develop successful software products.
+* Clear understanding and extensive experience with digitalization.
+We discarded paper artifacts for years.
+Your company does not possess any paper archive, printer or fax machine.
+* Expertise how to remove waste and streamline digital processes through a whole organization.
 
-=== References
+[bibliography]
+=== Literature
 
-. link:../../2022/the-quest-for-an-agile-company-six-years-tangly-llc[The Quest for an Agile Company: Six Years tangly llc]
-. link:../../2020/the-quest-for-an-agile-company-five-years-tangly-llc[The Quest for an Agile Company: Five Years tangly llc]
-. link:../../2019/a-journey-to-be-a-digital-company-tangly-llc[A Journey To Be a Digital Company]
-. link:../../2016/found-a-limited-liability-company-in-switzerland/[Found a Limited Liability Company]
-. link:../../2020/advocate-zero-bug-policy-in-your-projects/[Zero Bug Policy]
-. link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit]
+- [[[tangly-five-years, 1]]] link:../../2020/the-quest-for-an-agile-company-five-years-tangly-llc[The Quest for an Agile Company: Five Years tangly llc]
+- [[[tangly-one-year, 2]]] link:../../2019/a-journey-to-be-a-digital-company-tangly-llc[A Journey To Be a Digital Company]
+- [[[tangly-zero-years, 3]]] link:../../2016/found-a-limited-liability-company-in-switzerland/[Found a Limited Liability Company]
+- [[[zero-bug-policy, 4]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Zero Bug Policy]
+- [[[agile-bullshit, 5]]]link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit]
+- [[[twelve-signs-feature-factory, 6]]] https://cutle.fish/blog/12-signs-youre-working-in-a-feature-factory[12 Signs You are Working in a Feature Factory]
+John Cutler. 2016
+- [[[twelve-signs-feature-factory-three-years-later, 7]]]
+https://amplitude.com/blog/12-signs-youre-working-in-a-feature-factory-3-years-later[12 Signs You are Working in a Feature Factory (three Years Later)]
+John Cutler. 2019
+

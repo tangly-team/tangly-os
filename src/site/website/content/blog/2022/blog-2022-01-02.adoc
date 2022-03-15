@@ -16,6 +16,10 @@ image::2022-01-02-head.jpg[width=420,height=360,role=left]
 https://en.wikipedia.org/wiki/Immutable_object[Immutability] is a powerful and simple concept in programming theory that is strangely underused.
 
 An https://en.wikipedia.org/wiki/Immutable_object[immutable object] is simply a class whose instances cannot be modified.
+This is in contrast to a mutable object or changeable object, which can be modified after it is created.
+
+Immutable objects are also useful because they are inherently thread-safe.
+Other benefits are that they are simpler to understand and reason about and offer higher security than mutable objects
 
 All the information contained in each instance is provided when it is created and is fixed for the lifetime of the object.
 
@@ -63,11 +67,11 @@ Similarly, create copies of your internal mutable objects when necessary to avoi
 Java _record_ construct <<java-record>> implements most of the above constraints.
 The major limitation is that Java records do not perform any deep copies.
 
-Therefore, Java records are shallow immutable objects.
-If you pass immutable objects to the constructor you will achieve deep immutability.
-
 TIP: Records provide secure serialization and deserialization mechanisms.
 Use records as Java DTO objects and automatically improve the security of your application.
+
+Therefore, Java records are shallow immutable objects.
+If you pass immutable objects to the constructor you will achieve deep immutability.
 
 === Immutable API Classes
 

@@ -15,10 +15,12 @@ image::2022-01-03-head.png[width=420,height=360,role=left]
 
 https://en.wikipedia.org/wiki/Technical_debt[Technical debt] or code debt is a concept in software development that reflects the implied cost of additional rework.
 The rework is caused by choosing an easy limited solution now instead of using a better approach that would take longer to realize.
-Another source of technical debt is natural technology obsolescence.
+
+Another source of technical debt is natural https://en.wikipedia.org/wiki/Obsolescence[technical obsolescence].
 
 As with monetary debt, if technical debt is not repaid, it will accumulate _interest_, making it harder and harder to implement changes.
 Unaddressed technical debt increases software entropy.
+
 Spiraling out of control entropy is the death of countless software solutions over the last century.
 
 Similarly to monetary debt, technical debt is not necessarily a bad thing, and sometimes as e.g. a proof-of-concept is required to move projects forward.
@@ -75,7 +77,7 @@ Every known bug is essentially a tiny sliver of technical debt.
 If you want to know your total debt, it’s important for your engineers to keep a tally.
 Assuming your engineers make a note in git when bugs are fixed, you can calculate how effectively you are managing your technical debt.
 If new bugs are outnumbering closed bugs, you need to make some changes. +
-_Zero bug policy <<zerodefect>> nicely reimburse this technical debt._
+_Zero bug policy <<zero-defect>> nicely reimburse this technical debt._
 Code Quality::
 Complex code is a sure sign of growing technical debt.
 At some point, someone is going to have to unravel that mess.
@@ -103,7 +105,7 @@ _Social aspects can easily be measured in a code repository <<codecrimescene>>._
 
 === How to Continuously Improve
 
-A powerful approach is zero defect source code <<zerodefect>> approach.
+A powerful approach is zero defect source code <<zero-defect>> approach.
 
 You can start very simply.
 Track locations of technical debts with _TODO_ and _FIXME_ comments as a first step.
@@ -143,7 +145,7 @@ Amateurs just ignore the consequences and hop to the next product before they go
 [bibliography]
 === References
 
-* [[[zerodefect, 1]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Advocate Zero Bug Policy in Your Projects]
+* [[[zero-defect, 1]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Advocate Zero Bug Policy in Your Projects]
 * [[[cleancode, 2]]] https://www.amazon.com/dp/0132350882[Clean Code: A Handbook of Agile Software Craftsmanship].
 Robert Martin.
 Addison-Wesley. 2009. _ISBN 978-0132350884_

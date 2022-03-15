@@ -1,7 +1,7 @@
 ---
 title: "Modern Java with Spring"
 linkTitle: "Modern Java with Spring"
-date: 2022-03-20
+date: 2022-03-25
 tags: ["agile", "java"]
 ---
 
@@ -13,47 +13,141 @@ tags: ["agile", "java"]
 
 image::2022-03-02-head.png[width=420,height=360,role=left]
 
+https://spring.io/[Spring] and https://spring.io/projects/spring-boot[Spring Boot] frameworks are the standard for enterprise Java applications.
+
+Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can just run.
+They take an opinionated view of the Spring platform and third-party libraries, so you can get started with minimum fuss.
+Most Spring Boot applications need minimal Spring configuration.
+
 === Minimize Boilerplate Code
 
-Lombok
+One of the key reasons for the success of Spring is convention over configuration.
+You want to minimize boilerplate code and never have to write XML configuration files.
 
-Deploy as an executable application. You do not need an application server.
+Still a lot of approaches such as https://en.wikipedia.org/wiki/Data_transfer_object[DTO] force developers to write useless boilerplate code.
+Try to avoid these cumbersome tasks.
+
+Use https://projectlombok.org/[Lombok] to create Java bean accessors methods and provide a builder to create instances.
+Always consider to use modern constructs such as _record_ and _sealed class_ to improve the legibility of your design.
+
+Transform your objects with https://mapstruct.org/[MapStruct] library or similar ones.
+Better minimize the usage of https://en.wikipedia.org/wiki/Data_transfer_object[data transfer objects] _DTO_.
+
+Deploy as an executable application.
+You do not need an application server.
 
 Package the whole application in a docker image for integration and testing activities.
 
 === Lightweight Database
 
-hsqldb
-schema per domain
-schema.sql and data.sql
-Views for read-only objects
-Business logic should be in services
+Your services need to store persistent information in a database.
+Spring framework promotes a SQL database and JPA as object mapper.
 
+A lightweight approach simplifies local development and speed-up the integration testing through your CI/CD pipeline.
+
+Our current approach is:
+
+- use http://hsqldb.org/[HyperSQL] embedded database for local development and continuous integration pipeline.
+No need to install database software and fast turnaround during development.
+- isolate domain persistent data in separate databases or schemas.
+- control your persistent design using the Spring _schema.sql_ and _data.sql_ description files.
+- use views for read-only complex models.
+Always implement business logic in Java.
+Prohibit integrity constraints between schemas to respect the principles of domain-driven design.
+- use https://flywaydb.org/[Flyway] to update database schema and migrate persistent information into the new database schema.
+- use Spring mechanisms to load technical test data into the database before running automated integration tests.
+Professional software development requires the creation and maintenance of a technical test database.
+
+Define a schema per domain to isolate your domain model in the database.
+Use the Spring files _schema.sql_ to define a clean database model.
+Do not define any integrity rules between schema to insure modularity of your bounded domains down to the persistence layer.
+
+JPA supports schemas through a standard annotation.
+[source,java]
+
+----
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Appointments", schema = "Calendar") // <1>
+public class Appointments {}
+----
+
+<1> The name field defines the name of the table for all appointments, the schema field defines the schema containing the table.
+
+Views for read-only objects Business logic should be in services
 
 === Fluent Getter and Setter
 
-Spring Persistence and JPA
-Extends persistence to support Java abstractions such as enumeration sets
+Spring Persistence and JPA Extends persistence to support Java abstractions such as enumeration sets
 
 Use record construct for immutable entities
 
 Configure Jackson
 
+[source,java]
+----
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+public class Appointments {}
+----
+
+Configure lombok through _lombok.config_ configuration file in the root of your project.
+
+[source]
+----
+lombok.accessors.chain=false // <1>
+lombok.accessors.fluent=true // <2>
+config.stopBubbling = true
+----
+<1> traditional accessors without chaining feature.
+It is fully compatible with the approach provided by records.
+<2> discard legacy get and set verbs for getters and setters
+
+[TIP]
+====
+Libraries such as Lombok, Jackson, JOOQ, Hibernate, MapStruct, Spring, Spring Boot have support for abstractions using the fluent approach.
+
+Fluent getters are standard with the official Java record feature.
+====
+
 === Eliminate DTO
 
-JSON objects are your data transfer objects
-JSON schema define the data model and validate it
-Use annotation to remove AOT artifacts generated through JPA enhancements.
-Use annotation to coerce Jackson to not request old fashion property getters and setters.
-Configure Jackson to support records
+JSON objects are your data transfer objects JSON schema define the data model and validate it.
+
+* Use annotation to remove AOT artifacts generated through JPA enhancements.
+* Use annotation to coerce Jackson to not request old fashion property getters and setters.
+* Configure Jackson to support records.
+
+Use plain old Java objects POJO to exchange information between layers inside a Java application.
+
+If you have to return complex aggregate objects for a persistence store, use views, persistent layer queries to populate read-only objects.
+Java provides the _record_ construct for such situations.
+The need to define often queries to generate aggregate views is a smell that your design has flaws.
 
 === Schedulers in Spring
 
 Easy to use
 
+Please do not use homebrew solutions or cron jobs.
+The Spring scheduler component is sufficient for most of the scenarios.
+
+[code,java]
+----
+
+----
+
 === User Interface
 
-Use Vaadin for internal applications and B2B applications
+Use Vaadin for internal applications and B2B applications: Vaadin is a very good approach up to a few thousand active users.
 
 Use Thymeleaf and Bootstrap for B2C applications
 

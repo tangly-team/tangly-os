@@ -1,6 +1,6 @@
 ---
 title: "Java, Groovy, Clojure"
-linkTitle: "ava, Groovy, Clojsure"
+linkTitle: "ava, Groovy, Clojure"
 date: 2022-04-01
 tags: ["agile", "java", "students"]
 ---
@@ -15,5 +15,5 @@ image::2022-04-01-head.png[width=420,height=360,role=left]
 Professional software developers shall master their primary technology stack and programming language.
 I am a proficient and experienced programmer in Java.
 I have written production code in Java for the last twenty years.
-I decided to study the language in depth and acquired various Java developer bcertifications.
+I decided to study the language in depth and acquired various Java developer certifications.
 And I love the language and environment.

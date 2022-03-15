@@ -19,7 +19,7 @@ The whole configuration of comments and modification of the {ref-docsy} theme to
 
 === Motivation
 
-I wanted to add a comments section to this blog for a while.
+I wanted to add a comment section to this blog for a while.
 I was reluctant to implement one myself the classical way, using an external service such as disqus.
 This blog is a static website created with {ref-hugo} and does not use a database.
 All pages are written with {ref-asciidoc}, stored in a Git repository and rendered using {ref-hugo}.
@@ -30,7 +30,7 @@ I wanted to store comments in a personally owned repository and protect my reade
 Some information on the Internet about {ref-utterances} is wrong.
 Facts are:
 
-* Utterances uses a GitHub repository to store comments associated with your website articles and pages.
+* Utterances library uses a GitHub repository to store comments associated with your website articles and pages.
 * Your website can be hosted *anywhere*.
 You do *not* need to host your static website repository on GitHub; but you can.
 * Readers wanting to comment *must* login once with their GitHub account to authorize the {ref-utterances} application.
@@ -62,7 +62,7 @@ The steps are:
 
 . Create a public GitHub repository.
 . Install the {ref-utterances} app on the repo you would like to host comments on.
-You can used the repository of your blog, or setup a dedicated repository.
+You can use the repository of your blog, or setup a dedicated repository.
 This option means your blog or website does not need to be hosted on GitHub.
 . Configure the code snippet on the {ref-utterances} website and copy it.
 
@@ -112,7 +112,7 @@ I named my partial _comments-utterances.html_ and add the following snippet.
 </div>
 
 ----
-<1> Github repository where the issues are stored
+<1> GitHub repository where the issues are stored
 <2> See {ref-utterances} documentation how the reference to a page, or an article can be tailored
 <3> See {ref-utterances} documentation about supported themes
 
@@ -151,7 +151,7 @@ Currently, Hugo and Docsy only provide out of the box support for Disqus._
 === Add four site variables to config.toml
 
 The above changes try to be generic and are configured through site variables in the site configuration file under the _[params]_ block.
-Therefore you do not need to edit partial files to tailor them.
+You do not need to edit partial files to tailor them.
 
 [source,toml]
 ----
@@ -170,5 +170,5 @@ comments_utterances_theme = "github-light"
 
 == Hugo and Docsy Related Articles
 
-. link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc[Creating a technical Website with Hugo and Asciidoc]
-. link:../../2020/support-comments-for-static-hugo-website[Support Comments for Static Hugo Website]
+- link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc[Creating a technical Website with Hugo and Asciidoc]
+- link:../../2020/support-comments-for-static-hugo-website[Support Comments for Static Hugo Website]

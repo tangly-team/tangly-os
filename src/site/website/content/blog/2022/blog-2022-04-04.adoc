@@ -76,6 +76,16 @@ Development in an agile and DevOps environment means:
 
 image::2022-04-04-Ci-pipeline.png[width=420,height=360,role=left]
 
+Your development teams shall have an automatic continuous integration.
+This pipeline builds the software, runs static code analyzer and executes a reasonable set of unit and integration.
+If not they are pretending to do DevOps and lying to you.
+
+The next step is to configure an automatic continuous delivery.
+This pipeline packages the complete solution and delivers as an installation package.
+This package can be deployed on staging area without manual configuration.
+
+Only professional DevOps teams shall dare to implement continuous delivery.
+
 The areas that a DevOps engineer must be competent are:
 
 Version Control Systems::
@@ -131,20 +141,22 @@ The results during software development as well as post-delivery must be continu
 
 You are starting your journey with DevOps and you can at least provide following capabilities for all your teams and products:
 
-Development::
+Development:: Focus on automation and repeatability.
 * Each product can be checked out locally from a git repository and build with less than five commands.
 * Each product can be build in a continuous delivery pipeline and packaged for deployment on a staging area or on production.
 Static code analysis and automated tests are executed in the pipeline.
-They provide an automated quality gate.
+They provide an automated, tracked and documented quality gate.
 * Each production version is tagged in the repository including associated documentation and technical instructions.
 Running:: Focus is on time to repair rather than time between issues
 * Each instance has a monitoring feature enabled to provide realtime information about resource usage, heartbeat, health status and warnings.
+You can rely on an automated alert and response system to troubleshoot and monitor your enterprise servers.
+The developing team can quickly rectify errors or hiccups in the workflow without disturbing the operations teams.
 * Each instance monitor view is accessible to all involved collaborators.
 * Each deployed product has a set of targets and the associated metrics to track them.
 * You have a documented process to handle security issues in a timely manner.
 * You have a documented process to mitigate proactively potential security, performance and governance issues.
 Empiricism and data are the building block to quality and sustainable improvements.
-Continuous Improvement::
+Continuous Improvement:: Take small steps.
 * Each product has a continuous improvement initiative.
 The measures for the next releases are documented and progress is tracked.
 * Each measure is regularly evaluated to adequacy and success.
@@ -178,6 +190,25 @@ Microsoft has published a checklist for https://docs.microsoft.com/en-us/azure/a
 
 A vendor-agnostic checklist is https://devopschecklist.com/[the DevOps checklist].
 
+Here are some of the most critical DevOps metrics
+footnote:[The DevOps Research and assessment DORA has defined these four key metrics and a strong correlation with high-performance organizations.]:
+
+[horizontal]
+Deployment Frequency::
+It analyzes how frequently you are deploying the current release of software into production.
+Deployment automation is covered through https://en.wikipedia.org/wiki/Continuous_deployment[continuous deployment] and
+https://en.wikipedia.org/wiki/Continuous_delivery[continuous delivery].
+Higher frequencies correlates with high-performance teams.
+Deployment Speed::
+It suggests how quickly you can deploy a new software version into the production environment.
+https://en.wikipedia.org/wiki/Mean_time_to_recovery[Mean-Time To Recover] _MTTR_::
+It shows how long an application would take to recover from a failure or crash.
+https://en.wikipedia.org/wiki/Failure_rate[Production Failure Rate]::
+It analyses how frequently your software crashes in production for a particular period.
+Average Lead Time::
+It identifies how long it takes to develop, examine, deliver, and deploy a brand-new requirement.
+https://en.wikipedia.org/wiki/Value_stream[Value stream] approaches emphasize optimizing lead time.
+
 === Cultural change
 
 DevOps initiatives create cultural changes in companies by transforming the way operations, developers, and testers collaborate during the development and delivery processes.
@@ -206,7 +237,7 @@ The 2015 State of DevOps Report discovered that the top seven measures with the 
 DevOps will only be successful if your organization adopt agile values.
 
 Support transparency, inspection and adaption.
-These concepts are central to empiricism and lean thinking.
+These pillars are central to empiricism and lean thinking.
 Nurture commitment, focus, openness, respect and courage.
 These are the official values of {ref-scrum}.
 
@@ -214,3 +245,12 @@ Be honest with yourself.
 
 If you do not have concrete and visible initiatives in the areas of development _Dev_, running _Ops_ and continuous improvement, you are just pretending to be a professional.
 But in reality you are just an amateur.
+
+[bibliography]
+=== References
+
+* [[[devops-sme, 1]]] link:../../blog/2021/devops-for-small-applications/[DevOps for Small Applications]
+Marcel Baumann. 2021
+* [[[zero-defect, 2]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Advocate Zero Bug Policy in Your Projects]
+Marcel Baumann. 2020
+

@@ -41,3 +41,8 @@ Languages Lectures {{< /attachments >}}
 
 {{< attachments folder="moja-literature" recursive=false exclude=".md,.adoc" title="Modern Java Recommended Literature" >}} Recommended readings
 for the Modern Java and selected JVM languages lectures {{< /attachments >}}
+
+## User Interfaces with Vaadin
+
+{{< attachments folder="ui-books" recursive=false exclude=".md,.adoc" title="User Interface Books" >}} Modern Java User Interfaces {{< /attachments >}}
+

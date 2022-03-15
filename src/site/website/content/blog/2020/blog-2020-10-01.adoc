@@ -12,6 +12,7 @@ tags: ["design", "hugo", "series-students"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2020-10-01-head.jpg[width=420,height=360,role=left]
+
 I hosted my technical blogs on https://www.blogger.com/[blogger] for years.
 If I correctly remember I started to use blogger ten years ago.
 It is a great tool with some drawbacks.
@@ -46,7 +47,7 @@ We want a professional looking documentation to encourage new users to try our o
 
 {ref-hugo} was selected as static site generator because its support for {ref-asciidoc} is tremendously improving.
 
-Static website generators have strong advantages for technical savy persons:
+Static website generators have strong advantages for technical savvy persons:
 
 * Hosting is cheap.
 GitHub, GitLab or Bitbucket pages even hosts static websites for free.
@@ -64,7 +65,7 @@ It supports the technical documentation, technical articles, and blogging.
 The best part is that {ref-hugo} now supports {ref-asciidoctor} natively.
 No more strange manipulation to load _gem_ modules you need.
 And diagrams through asciidoc-diagram and plantUml are generated in the expected folders.
-The documentation is still on the light side but you find the needed information in the various pull requests.
+The documentation is still on the light side, but you find the needed information in the various pull requests.
 
 The bonus is that {ref-asciidoctor} newer versions have native support for _rouge_ syntax highlighter.
 It is no more necessary to load _pygment_ highlighter and configure CSS files.
@@ -72,7 +73,7 @@ Another huge gain is that _plantuml_ and other diagrams are generated at the rig
 
 === Install the Tools
 
-My development platform is a MacBookPro and MacOS.
+My development platform is a MacBookPro and macOS.
 I use https://brew.sh/[Homebrew] as a package manager.
 
 The instructions to install hugo and asciidoctor are:
@@ -94,6 +95,7 @@ sudo npm install -D --save autoprefixer   # <4>
 sudo npm install -D --save postcss-cli
 sudo npm install -D --save postcss
 ----
+
 <1> Install https://gohugo.io/[hugo] application
 <2> Install https://asciidoctor.org/[asciidoctor] and additional asciidoctor packages
 <3> Install https://plantuml.com/[plantuml] and https://graphviz.org/[graphviz] for diagrams, in particular UML sketches
@@ -117,6 +119,7 @@ Below the configuration of asciidoctor in the _config.toml_ file.
     icons = "font"                          // <4>
     ref-less = "https://less.works/[LeSS]"  // <5>
 ----
+
 <1> Select https://rouge-ruby.github.io/docs/[rouge] as source highlighter.
 You should not add it to the extensions because since {ref-asciidoctor} version 2.0 rouge is included.
 <2> Define the style used to highlight source code.
@@ -125,6 +128,7 @@ You should not add it to the extensions because since {ref-asciidoctor} version 
 <5> Define document attributes which are accessible to all processed documents (DRY concept for the whole site).
 
 CAUTION
+
 ====
 Newer versions of hugo have stricter security restrictions.
 You must explicitly enable asciidoctor support by adding following statements in your configuration file
@@ -144,7 +148,7 @@ allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^asciidoctor$']
 
 Each time you add your own first level folder - meaning at the same level as docs, blog, about, or community you need to extend the layout to support it.
 For example, I store technical articles in the folder ideas and use the standard template.
-So I need to add (if not, no items are visible in the side bar).
+So I need to add (if not, no items are visible in the sidebar).
 
 [source,shell]
 ----
@@ -187,6 +191,18 @@ For advanced cases you can define the layout of the printed document.
 
 You can use relative links in your {ref-asciidoc} documents.
 Beware where the file are located by {ref-hugo} engine and the naming conventions shall follow {ref-hugo} rules.
+
+Avoid the _html5s_ backend and use instead the _html5_ backend.
+I was not able to find good examples of stylesheets for the semantic backend.
+The _html5s_ backend uses new names for classification and sometimes different HTML structures.
+The regular available stylesheets will not style correctly the generated website.
+
+The Docsy theme does not explicitly support asciidoc documents and the associated stylesheets.
+I had to extend the Docsy stylesheets with styling for admonition blocks, quote blocks, and embedded images to improve the quality of the texts.
+
+NOTE: The Hugo theme community is slow to better support asciidoc documents.
+The Hugo developers clearly stated that styling for asciidoc documents is the responsibility of theme authors.
+All Hugo users shall be aware that asciidoc is an officially supported input format.
 
 Funny is that the blogger software and the docsy theme are from the same company *Google*.
 

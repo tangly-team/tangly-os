@@ -2,7 +2,6 @@
 title: "What I Learnt Teaching Agile Software Architecture"
 linkTitle: "Agile Software Architecture"
 date: 2021-09-02
-description: agile software architecture course for computer science bachelors
 tags: ["agile", "architecture", "series-students"]
 ---
 

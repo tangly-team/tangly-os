@@ -12,36 +12,7 @@
 
 // Attachments
 section.attachments {
-    // margin-top: 1rem;
-    // margin-bottom: 1.5rem;
-    // border-style: solid;
-    // border-color: $primary;
-    // padding: 0;
-
-
-    // border-width: 0 0 0 2px;
-    // margin-left: 3em;
-
-    // .attachments-icon{
-    //   // position: absolute;
-    //   left: -1.5em;
-    //   font-size: 1.5em;
-    // }
-
     .attachments-label {
-        // margin-bottom: 0;
-        // font-family: $headings-font-family;
-        // font-weight: $headings-font-weight;
-        // line-height: $headings-line-height;
-        // color: $headings-color;
-        // @include font-size($h5-font-size);
-        // display: block;
-        // background-color: $td-sidebar-bg-color;
-        // padding: 0.5em;
-        // border-style: solid;
-        // border-color: $primary;
-        // border-width: 0 0 1px 0;
-        // font-size: 3em;
     }
 
     .attachments-icon {
@@ -74,7 +45,7 @@ section.attachments {
 
         a:before {
             font-family: "Font Awesome\ 5 Free";
-            font-weight:400;
+            font-weight: 400;
             font-size: 1.2em;
             margin-right: 0.2em;
             content: "\f15b"; /* generic file icon */
@@ -88,32 +59,38 @@ section.attachments {
         a.link-text[href]:before {
             content: "\f15c"; /*Text*/
         }
+
         a[href$=".pdf" i]:before,
         a.link-pdf[href]:before {
             content: "\f1c1"; /*PDF*/
         }
+
         a[href$=".doc" i]:before,
         a[href$=".docx" i]:before,
         a[href$=".odt" i]:before,
         a.link-word[href]:before {
             content: "\f1c2"; /*Word*/
         }
+
         a[href$=".xls" i]:before,
         a[href$=".xlsx" i]:before,
         a[href$=".ods" i]:before,
         a.link-excel[href]:before {
             content: "\f1c3"; /*Excel*/
         }
+
         a[href$=".csv" i]:before,
         a.link-csv[href]:before {
             content: "\f6dd"; /*Excel*/
         }
+
         a[href$=".ppt" i]:before,
         a[href$=".pptx" i]:before,
         a[href$=".odp" i]:before,
         a.link-powerpoint[href]:before {
             content: "\f1c4"; /*Powerpoint*/
         }
+
         a[href$=".gif" i]:before,
         a[href$=".jpg" i]:before,
         a[href$=".jpeg" i]:before,
@@ -124,6 +101,7 @@ section.attachments {
         a.link-image[href]:before {
             content: "\f1c5"; /*Image*/
         }
+
         a[href$=".zip" i]:before,
         a[href$=".zipx" i]:before,
         a[href$=".rar" i]:before,
@@ -135,6 +113,7 @@ section.attachments {
         a.link-archive[href]:before {
             content: "\f1c6"; /*Archive*/
         }
+
         a[href$=".wav" i]:before,
         a[href$=".mp3" i]:before,
         a[href$=".fla" i]:before,
@@ -166,6 +145,7 @@ section.attachments {
         a.link-audio[href]:before {
             content: "\f1c7"; /*Audio*/
         }
+
         a[href$=".avi" i]:before,
         a[href$=".mpg" i]:before,
         a[href$=".mp4" i]:before,
@@ -190,6 +170,7 @@ section.attachments {
         a.link-video[href]:before {
             content: "\f1c8"; /*Video*/
         }
+
         a[href$=".css" i]:before,
         a[href$=".less" i]:before,
         a[href$=".sass" i]:before,
@@ -211,6 +192,7 @@ section.attachments {
         a.link-code[href]:before {
             content: "\f1c9"; /*code*/
         }
+
         a[href$=".exe" i]:before,
         a[href$=".jar" i]:before,
         a[href$=".dll" i]:before,
