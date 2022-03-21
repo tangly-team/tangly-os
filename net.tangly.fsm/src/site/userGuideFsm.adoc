@@ -27,7 +27,7 @@ This is because operational rules are written in stone when the machine is start
 The idea is that your application may exist in a finite number of states and certain predefined events can take your application from one state to the next.
 Such triggers can be based on either events or timers.
 
-It is much easier to define high-level logic outside of your application and then rely on the state machine to manage state.
+It is much easier to define high-level logic outside your application and then rely on the state machine to manage state.
 You can interact with the state machine by sending an event, listening for changes or simply request a current state.
 
 === Scenarios
@@ -42,7 +42,7 @@ You are already trying to implement a finite state machine if you:
 
 * Use of boolean flags or enums to model situations and states.
 * Have variables which only have meaning for some part of your application lifecycle.
-* Loop through if/else structure and check if a particular flag or enum is set and then making further exceptions what to do when certain combination of your flags and enums exists or doesn’t exist together.
+* Loop through if/else structure and check if a particular flag or enum is set and then making further exceptions what to do when certain combination of your flags and enums exists or does not exist together.
 
 Finite state machines provide a clear and well-documented approach for complex logic with states.
 
@@ -71,14 +71,14 @@ This may proceed to any depth.
 When a hierarchical state is active, one and only one of its child states is active
 ** Initial state is the state selected when entering a composite state no having active history states
 ** Final state is a state with only inferent transitions and no afferent transitions
-** State with history allows a a composite state to remember its configuration.
+** State with history allows a composite state to remember its configuration.
 A transition taking the history composite state as its target will return the child state stored in the history as the last active state last time the target composite state was exited
 * **Transitions** represent a possible change from a start state to a destination state.
 ** Normal transition moving from a source state to a destination state
 ** Internal transition means after transition complete, no state is exited or entered.
-Therefore no entry or exit actions are executed
+Therefore, no entry or exit actions are executed
 * **Guards** is implemented as an extension of a standard Java *BiPrediction* functional interface.
-The paramenters are the event triggering the guard and the context.
+The parameters are the event triggering the guard and the context.
 ** boolean expression lambda expression deciding if the transition shall be fired or not.
 * **Actions** is implemented as an extension of a standard Java *BiFunction* functional interface.
 The parameters are the event triggering the guard and the context.
@@ -213,7 +213,7 @@ builder.machine("name of the machine", owner); // <4>
 <1> Defines the set of states for the finite state machine
 <2> Defines the set of events processed by the finite state machine
 <3> Creates a builder instance
-<4> Returns a finite state machine instance with the given human readable name and the given owning object, ready to process events
+<4> Returns a finite state machine instance with the given human rea-able name and the given owning object, ready to process events
 
 The above finite state machine description will generate the following machine.
 
@@ -278,7 +278,7 @@ The implemented checks are
 
 * Each value of the state identifier enumeration is used exactly once in the declaration,
 * A state has at most one initial substate,
-* A state with a inferrent transition has an initial substate,
+* A state with an inferrent transition has an initial substate,
 * The hierarchy of initial states allows a clean identification of the first state when the machine is reset to default,
 * A final state cannot have efferent transitions.
 

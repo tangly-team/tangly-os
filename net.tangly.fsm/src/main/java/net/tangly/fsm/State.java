@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -198,6 +198,12 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
         return getHierarchyFor(new ArrayDeque<>(), this, substate);
     }
 
+    /**
+     * Returns the state with the given identifier.
+     *
+     * @param stateId identifier of the state to be found
+     * @return the state if found
+     */
     default Optional<State<O, S, E>> findBy(@NotNull S stateId) {
         Optional<State<O, S, E>> result = Optional.empty();
         if (id() == stateId) {
