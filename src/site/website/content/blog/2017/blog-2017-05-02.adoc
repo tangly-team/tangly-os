@@ -20,7 +20,7 @@ The actual industrial standard is https://git-scm.com/[git], a distributed versi
 https://en.wikipedia.org/wiki/Distributed_version_control[DVCS] -.
 
 Install git on your development machine.
-In case you are using IntelliJ IDEA configure git in the IDE through the preferences pane.
+In case you are using the IntelliJ IDEA configure git in the IDE through the preferences pane.
 
 To put your product under git version management, go to the root of the product and perform the command
 
@@ -37,7 +37,7 @@ git add [filename]
 git add *
 ----
 
-You can perform these operations to add a product to a local Git repository directly in IntelliJ IDEA as follow
+You shall perform these operations to add a product to a local Git repository directly in IntelliJ IDEA:
 
 . Open the product you want to store in a repository.
 . On the main menu, choose VCS | Import into Version Control | Create Git Repository.
@@ -57,11 +57,11 @@ git commit -m "commit message, should be clear and legible"
 You can perform these operations directly in IntelliJ IDEA (VCS functions) with these instructions.
 Switch to the Version Control tool window and switch to the Local Changes tab.
 . Expand the Un-versioned Files node, and select the files to be added.
-From the context menu, chooseAdd to VCS, or press ⌥⌘A.
+From the context menu, choose _Add to VCS_, or press ⌥⌘A.
 . Switch to the Project tool window and select the files to be added.
 From the context menu, choose Git | Add or press⌥⌘A.
 
-Each time you commit your changes you gain the ability to reverse to exactly this state.
+Each time you commit your changes, you gain the ability to reverse back to exactly this state.
 Each time you made a modification and tested it, just commit it.
 The cost of a commit is marginal.
 When working with Git, TDD, and ATDD it is normal to commit every few minutes.
@@ -89,8 +89,8 @@ The same information is available in IntelliJ IDEA under
 
 === Always Work with Trunk
 
-Ideally you shall always work against trunk also called main branch.
-Because you develop using TDD and ATTD approaches you know your source code is always working.
+Ideally you shall always work against trunk, also called the main branch.
+Because you develop using TDD and ATTD approaches, you know your source code is always working.
 This approach is deeply compatible with lean and agile values.
 It is also the one with the least waste of effort.
 
@@ -119,8 +119,8 @@ git checkout --[filename]
 
 === Configuration Tips
 
-You shall avoid end of line character warnings by configuring git to handle them.
-The situation arises because Microsoft OS uses CRLF for end of lines instead of CR.
+You shall avoid the end of online character warnings by configuring git to handle them.
+The situation arises because Microsoft OS uses CRLF for the end of lines instead of CR.
 
 You can configure git to handle it by running on Windows.
 
@@ -136,4 +136,4 @@ or on Linux and macOS
 git config --global core.autocrlf input
 ----
 
-When using an IDE consider the https://editorconfig.org[Editor Configuration] approach for end of line, indentation and tabs versus spaces.
+When using an IDE consider the https://editorconfig.org[Editor Configuration] approach for the end of line, indentation and tabs versus spaces.

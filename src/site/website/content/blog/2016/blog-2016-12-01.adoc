@@ -19,9 +19,9 @@ This is in general an excuse to state that {ref-scrum} alone cannot work and cla
 I encourage you to classify these so-called regular product manager activities.
 Often these jobs are plain reporting progress to various boards and micromanaging the development team.
 
-I truly acknowledge the importance and value of a line manager caring his collaborators and nurturing the success of the products they develop.
+I truly acknowledge the importance and value of a line manager caring for his collaborators and nurturing the success of the products they develop.
 
-But be honest these activities are implemented by good people and technical leaders and almost never by some product managers.
+But to be honest, these activities are implemented by good people and technical leaders and almost never by some product managers.
 
 Below a list of tasks you do *NOT* need anymore to do in {ref-scrum}.
 
@@ -37,7 +37,7 @@ Below a list of tasks you do *NOT* need anymore to do in {ref-scrum}.
 Force them to work during weekends,
 * Be responsible for the team doing the right thing at the right time in the right way,
 * Update Gantt charts for the iteration and release planning,
-* Finding out that requirements mean to explain team members what they should implement,
+* Finding out those requirements means to explain to team members what they should implement,
 * Review the documents and code to guaranty quality,
 * Explain upper management why the product is late and why you need additional resources,
 * Explain upper management why you cannot transfer a team member to another product,
@@ -45,7 +45,7 @@ Force them to work during weekends,
 * Define the priority of the next activities.
 
 image::2016-12-01-scrum-anti-patterns.jpg[role=center]
-The above Scrum anti-patterns picture show more common misunderstandings about the Scrum framework.
+The above Scrum antipatterns picture shows more common misunderstandings about the Scrum framework.
 
 As a Scrum practitioner, you should regularly read material, attend formal trainings, and seek advanced certifications.
 
@@ -63,7 +63,7 @@ https://en.wikipedia.org/wiki/Jeff_Sutherland[Jeff Sutherland] gives some intere
 * The Scrum master enforces Scrum practices _Coaching rather than command and control_
 * The Scrum master effort is
 ** Few problems: for a small team 10%, for a large team 50% of your working time,
-** Many problems: for a small team 50%, for a large team 100% of your working time until the team reaches a flow status,
+** Many problems: for a small team 50%, for a large team 100% of your working time until the team reaches flow status,
 ** A Scrum master is a change agent and supports the organization to become more agile.
 
 I experimented with the Scrum master being part of the team, or Scrum master working for multiple teams.
@@ -76,7 +76,7 @@ https://less.works/less/adoption/getting-started.html[Keep product managers away
 
 === Remarks
 
-For all https://www.pmi.org/[Project Management Institute] _PMI_ fans, the institute has acquired _Disciplined Agile Delivery_ _DAD_ in 2019.
+For all https://www.pmi.org/[Project Management Institute] _PMI_ fans, the institute acquired _Disciplined Agile Delivery_ _DAD_ in 2019.
 The PMI-ACP is working on integrating agile approaches in the official PMI approach.
 
 An official definition of Scrum and the responsibilities of the team, product owner and Scrum master are documented in {ref-scrumguide}.

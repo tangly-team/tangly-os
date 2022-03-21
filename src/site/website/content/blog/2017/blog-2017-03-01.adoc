@@ -21,28 +21,31 @@ The selection is certainly not exhaustive.
 The criteria are
 
 * I read the book and learnt something
-* I have bought the book to have it as reference, I mean a real reference opened at least monthly
+* I have bought this book to have it as reference.
+I mean a real reference opened at least monthly
 * The book is available as ebook - I only read ebooks and save trees -
 
 === Software Engineering
 
-* Scrum and XP From the Trenches: How We Do Scrum, Henrik Kniberg A short and very good introduction to Scrum and XP, worth to look again and again, Kniberg is also the guy behind the Spotify Way
+* Scrum and XP From the Trenches: How We Do Scrum, Henrik Kniberg A short and very good introduction to Scrum and XP, worth looking again and again, Kniberg is also the guy behind the Spotify Way
 * Clean Code: A Handbook of Agile Software Craftsmanship, Robert C. Martin The reference book about clean code and XP practices.
 You are a programmer, you know this book
 * The Clean Coder: A Code of Conduct for Professional Programmers, Robert C. Martin Are you a coder doing clean code (or are a looser)?
-* Refactoring: Improving the Design of Existing Code, Martin Fowler You cannot be agile and not doing refactoring, see also XP practices, You shall refactor daily or you are lying to yourself
+* Refactoring: Improving the Design of Existing Code, Martin Fowler You cannot be agile and not do refactoring, see also XP practices, You shall refactor daily or you are lying to yourself
 * Agile Project Management with Scrum, Ken Schwaber A seminal work from one of the founders of Scrum
 * Agile Product Management With Scrum: Creating Products That Customers Love, Roman Pichler From the expert for product owner role and activities, Make the shift from project to product
 * Agile Testing: A Practical Guide for Testers and Agile Teams, Lisa Crispin and Janet Gregory What does it mean to test and insure quality in an agile environment?
 
 === Agile Management Aspects
 
-* Agile Management: Leadership in an agile environment, Angel Medinilla An overview about agile management at company level, you should also read the _Leader's Dilemma_ and see the {ref-bbrt} ideas.
-* Leading Lean Software Development: Results Are Not the Point, Mary Poppendieck & Tom Poppendieck Lean means often to change your point of view to better understand the system
-* The Lean Mindset: Ask the Right Questions, Mary Poppendieck & Tom Poppendieck What does lean means?
-* Fearless Change: Patterns for Introducing New Ideas, Mary Lynn Manns & Linda Rising Ph.d.
+* Agile Management: Leadership in an agile environment, Angel Medinilla:
+An overview about agile management at company level, you should also read the _Leader's Dilemma_ and see the {ref-bbrt} ideas.
+* Leading Lean Software Development: Results Are Not the Point, Mary Poppendieck & Tom Poppendieck:
+Lean often means to change your point of view to better understand the system.
+* The Lean Mindset: Ask the Right Questions, Mary Poppendieck & Tom Poppendieck: What does lean mean?
+* Fearless Change: Patterns for Introducing New Ideas, Mary Lynn Manns & Linda Rising:
 When introducing changes you have to understand change management.
-You call later read the works of John P. Kotter
+You can later read the works of John P. Kotter.
 * Agile Retrospective: Making Good Teams Great, Esther Derby & Diana Larsen & Ken Schwaber The major place where improvements are identified is during retrospectives, often the less well-managed meeting in a Scrum team
 * Practices for Scaling Lean and Agile Development, Craig Larman & Bas Vodde A set of practices and ideas how to do big agile projects, the guys behind {ref-less}
 * Scaling Lean & Agile Development: Thinking and Organizational Tools for Large-Scale {ref-scrum}, Craig Larman and Bas Vodde A second set of practices and ideas how to do big agile projects, still the guys behind {ref-less}

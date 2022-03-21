@@ -11,24 +11,28 @@ tags: ["agile", "series-swiss-agile-trends"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2018-05-02-head.jpg[width=420, height=360, role=left]
-What are the main hurdles to introduce agile approaches in Swiss companies.
+image::2018-05-02-head.jpg[width=420,height=360,role=left]
+
+What are the main hurdles to introduce agile approaches in Swiss companies?
 The Swiss agile trends report was published for the last ten years and learn us the difficulties and successes of agile transformations.
 
 SwissQ has published a "SwissQ Software Development Switzerland 2018", the tenth version of this report.
 
 Introducing agile company-wide was and is a cultural change process.
-Such a change takes time and sometimes hurts. Too often organizations stop the process and revert to all command and control approaches with Waterfall product management.
+Such a change takes time and sometimes hurts.
+Too often, organizations stop the process and revert to all command and control approaches with Waterfall product management.
 
-Without commitment of senior management, the initiative will fail. In other words _Walk the talk_.
+Without commitment of senior management, the initiative will fail.
+In other words _Walk the talk_.
 
 You must teach, coach, and support your collaborators through the transition.
 You need to believe in them and provide an environment where they can safely learn and experiment.
 
-At the end what matters is collaborator purpose, customer satisfaction,  and business value.
+At the end, collaborator purpose, customer satisfaction, and business value matter.
 
-The study can be downloaded as PDF from their web site. See previous blogs for the results of years 2016, 2013 and 2012.
-Below some of the findings of the study.
+The study can be downloaded as PDF from their website.
+See previous blogs for the results of years 2016, 2013 and 2012.
+Below some findings of the study.
 
 === Slower Adoption of Agile Approaches
 
@@ -45,14 +49,15 @@ Less than 25% of employees are satisfied with the development process of their c
 The list of hurdles for a successful introduction of agile approaches was updated.
 
 69%:: Culture change and you need senior management support
-54%:: Non adapted overall processes because local optimizations have limited effect
+54%:: Non adapted overall processes because local optimizations have a limited effect
 42%:: Missing product overview because a company sells products
-42%:: Focus on business value  because a company shall earn money
+42%:: Focus on business value because a company shall earn money
 25%:: Missing agile know-how of collaborators and you shall train your collaborators
 
-We reached a major threshold. The majority of interviewed companies have more than 500 IT collaborators.
+We reached a major threshold.
+The majority of interviewed companies have more than 500 IT collaborators.
 These big companies are struggling to introduce agile approaches company-wide.
-Interestingly 75% of all companies plan to increase investment in the agile introduction and transition projects.
+Interestingly, 75% of all companies plan to increase investment in the agile introduction and transition projects.
 
 One interesting consequence is the company compiling the report is actively poaching potential agile candidates from these big laggard companies!
 
@@ -66,4 +71,4 @@ _To be agile, not to do agile_
 
 We wrote in previous blogs that introducing Scrum in the development department or in the whole company is a change process.
 The coaches should be trained in change management and have experiences with resistance to changes.
-Our experience shows senior management are often not ready to move along the cultural change path.
+Our experience shows senior management is often not ready to move along the cultural change path.

@@ -16,7 +16,7 @@ image::2022-02-02-head.jpg[width=420,height=360,role=left]
 The majority of software product development initiatives uses an agile approach.
 The most popular framework is currently {ref-scrum}.
 
-It is natural that organizations would gravitate towards the many benefits agile ideas provides.
+It is natural that organizations would gravitate towards the many benefits agile ideas provide.
 
 Scarce resources and time-to-market constraints have driven the implementation of shoring development initiatives.
 Awareness that talent can be found at any location speed-up the trend.
@@ -32,9 +32,9 @@ Instead, the top five reasons organizations opt for IT outsourcing in 2018 are:
 
 * Catalyst for innovation (64%) _means internal department cannot innovate fast enough_
 * Improvement of speed and time to market (63%) _means internal teams are slow_
-* Improvement of performance (54%) _means company does not perform_
+* Improvement of performance (54%) _means the company does not perform_
 * Enhancement of scalability and rapid elasticity (54%) _means organization is slow to react_
-* Access to new technology (51%) _means company is stuck with obsolete technologies and processes_
+* Access to new technology (51%) _means the company is stuck with obsolete technologies and processes_
 
 The top five reasons organizations opt for IT outsourcing in 2020 are:
 
@@ -44,7 +44,7 @@ The top five reasons organizations opt for IT outsourcing in 2020 are:
 * Access to professional tools and processes (15%)
 * Agility (15%)
 
-Communication is essential to successfully implement agile software development.
+Communication is essential to successfully implementing agile software development.
 And not just any form of communication.
 It has to be in real-time.
 Your team needs to have access to you, and vice versa, throughout the workday so that you and your team can work through issues immediately.
@@ -63,7 +63,7 @@ You must invest in cultural changes and adapt your processes to realize the full
 |_Needs_
 |Get additional development capacity for an existing team
 |Build a core development team to take over a product development
-|Team develops a custom solution for you, you get a finished product
+|Team develops a custom solution for you. You get a finished product
 
 |_Risk and Responsibility_
 |Stay fully in charge of product development and team management
@@ -72,9 +72,9 @@ You must invest in cultural changes and adapt your processes to realize the full
 
 |_Flexibility_
 |Get maximum flexibility: interview the candidates, take all decisions, setup processes and policies.
-|Share hour product vision and product roadmap, make key technology decisions.
+|Share our product vision and product roadmaps, make key technology decisions.
 The team ensures technology alignment, team training and motivation, professional growth and overall team management.
-|You provided ideas and requirements and the team delivers the product.
+|You provided ideas and requirements. The team delivers the product.
 Take full advantage of the team's expertise
 
 |_Team Composition_
@@ -109,7 +109,7 @@ Compliance with European legislation can be achieved.
 
 Language::
 All documents and comments in the source code shall be legible for all team members.
-Discussions and remote conference shall be held in a language available to all members. +
+Discussions and remote conferences shall be held in a language available to all members. +
 A shoring strategy implies this language must be International English.
 All documents, emails, and chats must therefore be written in English.
 Your organization has to recognize this profound change and train all your collaborators to become fluent in written and spoken English.
@@ -125,7 +125,7 @@ Capabilities::
 Talent is a precious resource.
 Companies are fighting to acquire talented developers all over the world.
 You should have a clear strategy to acquire and retain talented engineers.
-The strategy should blend together why you are actractive for talents and why they should stay in your organization.
+The strategy should blend together why you are attractive for talents and why they should stay in your organization.
 Agile Approaches::
 The various departments and locations should have similar approaches to agile frameworks and processes.
 A good solution is to standardize on {ref-scrum}.

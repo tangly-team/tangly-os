@@ -25,7 +25,7 @@ We are not talking about complex design activities or complex patterns; we are d
 
 Most of the programmers have no formal training in the technology stack they are using daily.
 Their best friend is the Internet.
-And therefore many agile projects are now, steadily and iteratively producing mediocre software.
+And as a consequence, many agile projects are now, steadily and iteratively producing mediocre software.
 
 You shall be a proud software craftsman.
 You shall work as a professional and deliver professional results.
@@ -47,7 +47,7 @@ For example you should consider a Java Programmer certification for the current 
 
 A software developer not knowing the above items is almost certainly not a professional person, just a more or less talented amateur.
 See the blog of Mike Cohn
-https://www.mountaingoatsoftware.com/blog/the-difference-between-a-professional-and-an-amateur[the difference between aprofessional and an amateur] for a similar point of view.
+https://www.mountaingoatsoftware.com/blog/the-difference-between-a-professional-and-an-amateur[the difference between a professional and an amateur] for a similar point of view.
 
 === Improve Continuously You shall strive for mastery.
 
@@ -80,7 +80,7 @@ Their manifesto is
 
 [quote]
 ____
-Craftsmanship is not enough to guarantee the success of a product but the lack of it can be the main cause of its failure.
+Craftsmanship is not enough to guarantee the success of a product, but the lack of it can be the main cause of its failure.
 
 Agile and Craftsmanship complement each other and both are necessary
 
@@ -94,7 +94,7 @@ Software craftsmanship
 
 * Is not a church, trying to convert all developers,
 * Is about leading by example and showing how we can be better,
-* Is about well written and designed code - and the customer stays in the center -,
+* It Is about well-written and designed code - and the customer stays in the center -,
 * Is about continuously delivering value not writing crap code.
 
 Your goal shall to become a professional developer and reach mastery.

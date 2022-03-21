@@ -40,24 +40,24 @@ ____
 
 === How to Eliminate Technical Debt
 
-* Use static analysis tools to detect technical debt in your source code,
+* Use static analysis tools to detect technical debt in your source code.
 * Use your IDE
 footnote:[https://www.jetbrains.com/idea/[IntelliJ IDEA] IDE has a powerful set of functions to detect code smells and perform automatically standard refactoring activities.
-The https://www.sonarlint.org/[Sonar Lint] plugin for various IDE to detect quality and security issues in your code.]
-to perform simple refactoring and improve the quality of your code,
-* Use your IDE to find all TODO comments,
+The https://www.sonarlint.org/[Sonar Lint] plugin for various IDEs to detect quality and security issues in your code.]
+to perform simple refactoring and improve the quality of your code.
+* Use your IDE to find all TODO comments.
 * Use gradle plugin
 footnote:[I use the https://github.com/ben-manes/gradle-versions-plugin[com.github.ben-manes.versions] plugin for this purpose.
 The plugin handles nicely multi-modules projects.
-The plugin also support the central declaration of dependencies feature in Gradle.]
-to update your library and remove technological obsolesce,
+The plugin also supports the central declaration of dependencies feature in Gradle.]
+to update your library and remove technologically obsolesce.
 * Update your Java version when the next one is coming out.
 You have access to better libraries, interfaces, and runtime engines.
 Know security flaws are corrected and some bugs were removed.
 
 === Should You Reimburse?
 
-We learnt this lesson during our economical training in the college.
+We learnt this lesson during our economic training in college.
 A little debt is OK.
 Big debts will poison your life and source code.
 Big debts are cumbersome to repay.
@@ -74,7 +74,7 @@ Here some approaches to quantify the technical debt of a product.
 
 New Bugs versus Closed Bugs::
 Every known bug is essentially a tiny sliver of technical debt.
-If you want to know your total debt, it’s important for your engineers to keep a tally.
+If you want to know your total debt, it is important for your engineers to keep a tally.
 Assuming your engineers make a note in git when bugs are fixed, you can calculate how effectively you are managing your technical debt.
 If new bugs are outnumbering closed bugs, you need to make some changes. +
 _Zero bug policy <<zero-defect>> nicely reimburse this technical debt._
@@ -96,7 +96,7 @@ Code Coverage::
 In a sense, the code coverage metric looks at the same issue from the opposite direction.
 In this case, you are measuring how much of your code is executed when you run your testing suite.
 The more lines that are unused, the more likely it is that you have poorly written code. +
-_Code coverage tools such as Jacoco provides these values <<agilecode>>._
+_Code coverage tools such as Jacoco provide these values <<agilecode>>._
 Code Ownership::
 If you get too many people working on the same tasks, you can easily end up with a steaming pile of cruft.
 That said, you do not want only one engineer taking ownership of an entire project.
@@ -111,7 +111,7 @@ You can start very simply.
 Track locations of technical debts with _TODO_ and _FIXME_ comments as a first step.
 Next time you have to modify source code in a package use your IDE features to find all _TODO_ in the package you are working on.
 Fix at least one such comment and improve the code.
-Repeat and over time your technical debt will slowly diminish.
+Repeat and over time, your technical debt will slowly diminish.
 
 image::2022-01-03-retrospective.png[width=420,height=360,role=left]
 
@@ -126,14 +126,14 @@ Big debt clearly shows the organization was unprofessional.
 
 Investing a small amount for continuously improving your source code base is the most effective approach to avoid technical debt.
 
-* Use an actual version of your technology stack,
-* Update monthly the libraries you are using.
+* Use an actual version of your technology stack.
+* Update monthly the libraries you use.
 Updates often close security vulnerabilities in your code.
-You have a legal responsibility to secure your code and protect your users,
-* Use the static quality checkers and refactoring features of your development environment,
-* Only refactor code you have to change,
+You have a legal responsibility to secure your code and protect your users.
+* Use the static quality checkers and refactoring features of your development environment.
+* Only refactor code you have to change.
 * Apply the boy scout rule.
-Leave the code in a better state as it was when you started,
+Leave the code in a better state as it was when you started.
 * Train your developer in refactoring and clean code practices.
 Beware technical debt is also created through:
 ** Lack of knowledge, when the developer doesn't know how to write elegant code,
@@ -173,5 +173,5 @@ Joshua Kerievsky. 2005
 Marcel Baumann. 2019
 * [[[agilecode, 11]]] link:../../2019/agile-code-is-clean-code/[Agile Code is Clean Code]
 Marcel Baumann, 2019
-* [[[metricsandkip, 12]]] link:../../2018/why-do-you-need-metrics-and-kpi-in-agile-product-development/[Why Do You Need Metrics and KPI in Agile Product Development].
+* [[[metricsandkip, 12]]] link:../../2018/why-do-you-need-metrics-and-kpi-in-agile-product-development/[Why Do You Need Metrics and KPI in Agile Product Development?].
 Marcel Baumann. 2018

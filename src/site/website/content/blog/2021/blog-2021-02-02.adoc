@@ -55,7 +55,7 @@ Instead, you should always use the _FileSystem_ or a _Path_ instance as an ancho
 
 Depending on your project and your libraries, this is quite a challenge to pull off
 footnote:[I regularly open issues in various open-source libraries to request an API extension to support Path.
-Often the maintainer of the library is not aware you need _Path_ to unit test with in-memory file systems.].
+The maintainer of the library is often not aware you need _Path_ to unit test with in-memory file systems.].
 
 === Paths
 
@@ -79,7 +79,7 @@ Files.copy("myFile", fs.getPath(ORGANIZATION, "crm/")), StandardCopyOption.REPLA
 Consider the Java _java.io.File_ class as a legacy abstraction.
 Avoid using it and move over to the Java path abstraction.
 
-Remember the _java.nio.Path_ class has a reference to a file system, the _java.io.File_ class only use the default file system.
+Remember the _java.nio.Path_ class has a reference to a file system, the _java.io.File_ class only uses the default file system.
 
 The javadoc definition states that a file is
 
@@ -104,7 +104,7 @@ Path path = file.toPath();
 FileSystems.getDefault().getPath(this.getPath());
 ----
 
-If you need to convert a file instance to a path instance hosed in the desired file system please write
+If you need to convert a file instance to a path instance hosed in the desired file system, please write
 
 [source,java]
 ----
@@ -118,10 +118,10 @@ Path path = fileSytem.getPath(file.getPath());
 Legacy libraries heavily use _File_ objects in their algorithms and their public interface.
 Such libraries do *not* work with in-memory file systems.
 
-The simplest approach is to always provide an API returning streams in addition to file systems methods.
+The simplest approach is to always provide an API returning streams in addition to file system methods.
 It is always possible to map a stream to a file system specific streams for read and write operations.
 
 The more complex approach is to replace all _File_ objects with _Path_ objects.
-Ideally the Java community should declare the _File_ class as a deprecated one.
+Ideally, the Java community should declare the _File_ class as a deprecated one.
 Another solution would be to extend File with an internal path instance.
 This approach could break backward compatibility.

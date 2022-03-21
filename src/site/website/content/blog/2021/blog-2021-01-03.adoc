@@ -20,7 +20,7 @@ Computer science students shall be proficient with a basic set of software devel
 * _DevOps_ approaches are used in modern organizations.
 They predate agile development approaches.
 
-Technical schools should provide in-depth experience in these areas to prepare their students to their future activities after completing their bachelor.
+Technical schools should provide in-depth experience in these areas to prepare their students for their future activities after completing their bachelor.
 
 The below mind map consolidates concepts, tools and approaches based on the https://about.gitlab.com/[GitLab] tooling established in some universities.
 The approach emphasizes *agile* and *DevOps* concepts and approaches.
@@ -105,13 +105,13 @@ Microsoft acquired them in 2020.
 Some Swiss technical universities - ZHAW, University of Bern - use the academic GitHub campus program.
 CI and CD pipelines are not part of the GitHub product and must be installed separately.
 The academic program means you receive GitHub licenses.
-Your organization is responsible to run the software on premises.
+Your organization is responsible for running the software on the premises.
 * https://about.gitlab.com/[Gitlab] is an open source solution and strong contender to GitHub.
 CI and CD pipelines are part of the product.
 * https://bitbucket.org/dashboard/overview[Bitbucket] is a closed source solution of Atlassian.
 CI and CD pipelines are part of the product.
 Atlassian also owns JIRA, Confluence and Trello.
-* https://azure.microsoft.com/en-us/services/devops/[Azure Devops] is a closed source solution and Microsoft answer for .NET development.
+* https://azure.microsoft.com/en-us/services/devops/[Azure Devops] is a closed source solution and Microsoft answers to .NET development.
 CI and CD pipelines access is under definition by Microsoft.
 They slowly open their product to additional development stacks such as Java, Python.
 * https://gitea.io/[Gitea] is a community managed lightweight code hosting solution written in Go.
@@ -150,8 +150,8 @@ Any software developer or web designer can create a git hosted project with a fe
 Linux distributions often include the git application.
 If not use the package manager to download and install the git tools.
 
-MacOS users should use https://brew.sh/[homebrew] as package manager.
-Homebrew can download and install a huge set of Unix packages.To install git you just have to execute _brew install git_.
+MacOS users should use https://brew.sh/[homebrew] as a package manager.
+Homebrew can download and install a huge set of Unix packages.To install git, you just have to execute _brew install git_.
 
 The huge advantage of package managers is the update function to install new versions of your applications without any configuration activities.
 
@@ -281,16 +281,16 @@ test:
 
 [WARNING]
 ====
-Please prefer a workstation powered with Linux or macOS if you are developing in Java, Groovy or Python.
+Please prefer workstation powered with Linux or macOS if you are developing in Java, Groovy or Python.
 
 You will be more efficient and avoid all the problems related to virus scanners, missing packages or arcane path length problems.
 ====
 
-. Install the latest LTS JDK and latest JDK on your workstation.
+. Install the latest LTS JDK and the latest JDK on your workstation.
 . Install IntelliJ IDEA IDE.
 Students can request a student license and work with the Ultimate edition.
 The community edition is free for everybody.
-. Use the static analysis function of IntelliJ IDEA has a static analysis feature.
+. Use the static analysis function of the IntelliJ IDEA has a static analysis feature.
 .. Select the file or package to inspect in the project view.
 .. Click the right mouse button to display the context menu and select the menu item _Analyze/Inspect Code..._.
 The findings will teach you how to write better Java code and eliminate common errors.
@@ -317,7 +317,7 @@ You should write unit and integration tests for your Java application using
 
 Static code generators are becoming the standard approach for technical documentation.
 One huge advantage is you can check the whole documentation into your git repository.
-You have now a synchronisation between a released version of your application and the corresponding documentation.
+You have a synchronisation between a released version of your application and the corresponding documentation.
 Both are stored in the same repository and can be marked with a version label You can use
 
 * https://www.markdownguide.org/[Markdown]
@@ -338,7 +338,7 @@ The tool is compatible with git philosophy and static website generators.
 The IntelliJ Asciidoc is used to write technical documentation and to display embedded PlantUML diagrams.
 Asciidoc format has native support for PlantUML diagrams.
 
-Students have training in technical notations such as UML, BPNM, C4 and others.
+Students have training in technical notation such as UML, BPNM, C4 and others.
 They can now apply these notations to their projects using plantUML.
 
 === Agile and Scrum
@@ -370,7 +370,7 @@ $ git merge my-branch // <3>
 
 Rebase trunk into your branch _my-branch_.
 Note that after a rebase, the commit ids of the rebased branch are new.
-A rebase is not simply a moving of commits around in the history.
+A rebase is not simply a moving of commits around in history.
 Git actually creates brand-new commits with new commit ids and permanently deletes the old commits.
 
 You should prefer to rebase only with local branches.
@@ -413,7 +413,7 @@ pick 474bf0c2 last commit
 
 ==== Cherry Picking
 
-Cherry-picking in Git means to choose a commit from one branch and apply it onto another.
+Cherry-picking in Git means choosing a commit from one branch and applying it onto another.
 This is in contrast with other ways such as _merge_ and _rebase_ which normally apply many commits onto another branch.
 
 You can display the hashes of your commits in _trunk_ with the command

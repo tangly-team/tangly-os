@@ -15,12 +15,12 @@ image::2021-03-01-head.png[width=420,height=360,role=left]
 Java development won traction since the decision to release every six months a new version to the community.
 Preview and incubator features promote feedback from the community and users.
 
-Some tool builders such as https://www.jetbrains.com/[JetBrains] are working proactively and provide support for JDK in developments.
+Some tool builders, such as JetBrains,https://www.jetbrains.com/[] are working proactively and provide support for JDK in developments.
 Other tool maintainers such as https://www.eclemma.org/jacoco/[JaCoCo] are dreadfully behind the release cycle.
 
 We learnt to deal with the new speed and how to tackle the laggards.
 Some experiences were quite painful.
-Below our findings and our current focus to develop.
+Below our findings and our current focus on developing software products.
 
 === Legibility Matters
 
@@ -33,7 +33,7 @@ Examples of improvements are
 
 * Diamond operators _to avoid writing two times the same generic parameter declarations_,
 * Try with resources _to avoid complicated finally blocks to close resources_,
-* Multiple catch of exceptions _to avoid writing multiple time the same error handling block_,
+* Multiple catch of exceptions _to avoid writing multiple times the same error handling block_,
 * *var* local variables _to avoid complex declarations of local variables_,
 * *default* methods in interfaces _to avoid declaring the same method in multiple classes_,
 * Strings as switch selector _to write readable code instead of huge if statements_,
@@ -41,7 +41,7 @@ Examples of improvements are
 
 Deeper changes are
 
-* New date API simplifying the handling of date and time logic.
+* New date API is simplifying the handling of date and time logic.
 The solution is based on the learnings of the https://www.joda.org/joda-time/[Joda] time library.
 * Support of Lambda constructs greatly eliminates the need for verbose anonymous classes.
 
@@ -71,18 +71,18 @@ The _LambdaMetafactory_ class allows you to create a reference at runtime.
 The reflection operations can be replaced by lambda expressions.
 The code is more performant and has security issues.
 Text Blocks::
-Finally we can write legible multi-lines strings.
+We can finally write legible multi-lines strings.
 
 === Cumbersome Aspects
 
-We have still open wounds in the legibility and elegance of the Java programming languages.
+We still have open wounds in the legibility and elegance of the Java programming languages.
 
-* Unsolved legibility problems through annotations polluting your domain model,
+* Unsolved legibility problems through annotations polluting your domain model.
 * Null values (and the missing of an https://en.wikipedia.org/wiki/Elvis_operator[Elvis Operator] or a
-https://en.wikipedia.org/wiki/Null_coalescing_operator[Null Coalescing Operator]),
-* Fluent interface when setting multiple properties in an instance,
-* Missing support for modifiable properties (read-only properties have initial support in the record construct),
-* Missing logging interface similar to http://www.slf4j.org/[slf4j],
+https://en.wikipedia.org/wiki/Null_coalescing_operator[Null Coalescing Operator]).
+* Fluent interface when setting multiple properties in an instance.
+* Missing support for modifiable properties (read-only properties have initial support in the record construct).
+* Missing logging interface similar to http://www.slf4j.org/[slf4j].
 * Reified generics to have access to generic types during runtime.
 
 === Next Improvements?
@@ -102,7 +102,7 @@ void property(Type property);
 Stop using checked exceptions and replace them with runtime exception::
 Lambda expressions cannot handle checked exceptions.
 Only runtime exceptions can be thrown in a lambda expression.
-Experience with other programming languages show that checked exceptions do not provide gains in the quality of delivered code.
+Experience with other programming languages shows that checked exceptions do not provide gains in the quality of delivered code.
 Pattern matching with deconstruction::
 First pattern matching constructs are available in switch and if statements.
 Discussions are underway to extend pattern matching with object deconstruction.

@@ -20,7 +20,7 @@ The main advantage of having it is that you no more need to argue with PMI certi
 The main interest of PMI-ACP certification is their collection of concepts taken from Agile, eXtreme Programming, Scrum and Lean.
 
 It could be worth your money to buy the book "The PMI-ACP Exam: How to pass on Your First Try", Andy Crowe, First Edition 2012.
-The book itself is not rocket science but it contains two hundreds questions which are similar to the ones you will encounter during the examination.
+The book itself is not rocket science but it contains two hundred questions which are similar to the ones you will encounter during the examination.
 
 To get your 21 PDUs necessary for the examination you must attend a training course.
 I booked an online course at Simplilearn for a reasonable price.
@@ -28,7 +28,7 @@ The content was reasonable.
 The test questions were good.
 
 The renewal of the certification again requires PDUs.
-I took an online training in interesting areas such as coaching techniques, how to manage effective and efficient meetings or how to write good protocols.
+I took online training in interesting areas such as coaching techniques, how to manage effective and efficient meetings or how to write good protocols.
 Some online videos of https://www.mountaingoatsoftware.com/blog[Mike Cohn] also count for PDUs.
 
 === Chapter List
@@ -124,7 +124,7 @@ image:2016-08-01-active-listening.png[float="right"]
 ** SPI (Schedule Performance Index) = PV / AC indicates if we are early or late
 ** ETC (Cost Required) = (BAC - EV) / CPI - This metric is the forecast amount to complete the remaining work -
 ** EAC (Forecast Cost for the total planned work) = BAC / CPI = AC + ETC
-* Five Level of Conflicts
+* Five Levels of Conflicts
 .. Problem to Solve (Good Teams) -> Collaboration, consensus
  Collaboration- Seeking a win-win situation. Consensus- Learning where every team member’s head is with regard to the issue and, in time, arriving at a decision everyone can back.
 .. Disagreement -> Negotiate, support
@@ -133,8 +133,8 @@ image:2016-08-01-active-listening.png[float="right"]
 .. World War -> Protect to avoid injuries
 * JBGE Just Barely Good Enough
 * http://en.wikipedia.org/wiki/INVEST_(mnemonic)[INVEST] Independent Negotiable Valuable Estimable Small (Sized appropriately) Testable
-* http://en.wikipedia.org/wiki/Internal_rate_of_return[Internal Rate of Return] _IRR_, the higher the better.
- Internal Rate of Return (IRR) is used to express the return on product in % terms when comparing two different cash flow streams.
+* http://en.wikipedia.org/wiki/Internal_rate_of_return[Internal Rate of Return] _IRR_, the higher, the better.
+ The internal Rate of Return (IRR) is used to express the return on product in % terms when comparing two different cash flow streams.
 * JIT Just In Time
 * http://en.wikipedia.org/wiki/Kano_model[Kano Model]: Must have, Linear feature, Delight
 ** Threshold or basic attributes are must have attributes otherwise the product is incomplete.

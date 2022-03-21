@@ -12,11 +12,11 @@ tags: ["agile", "organization"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2016-11-01-head.jpg[width=420,height=360,role=left]
-Lately people often ask me what is an agile company.
+Lately, people often ask me what is an agile company.
 
 They have an understanding of agile software development techniques such as {ref-scrum}, {ref-lean}, {ref-kanban}, {ref-xp} but no clue how a company could be agile.
 
-One way to approach this theme is to implement concepts of the above mentioned agile approaches.
+One way to approach this theme is to implement concepts of the above-mentioned agile approaches.
 
 These are the pillars for iterative incremental improvements.
 
@@ -46,14 +46,14 @@ Courage::
 You are ready to say “I am wrong” because being wrong opens the door for improvement.
 Focus::
 You daily optimise the customers’ value and thrive for excellence.
-As a developer you do not work on projects, you work on excellent products.
+As a developer, you do not work on projects, you work on excellent products.
 You provide value to your customers.
 Openness::
 You seek better ideas and ways of doing.
 Openness requires transparency and respect.
 Respect::
-You truly respect customers, team members, collaborators, persons.
-In your team I will not hear any disrespectful comments about people.
+You truly respect customers, team members, collaborators, and people.
+In your team, I will not hear any disrespectful comments about people.
 
 === Modern Agile
 
@@ -62,7 +62,7 @@ The http://modernagile.org/[modern agile movement] defines guiding principles.
 Make people awesome::
 Dedicated collaborators want to give their best.
 Give them a purpose, a goal, empower them and let them climb the mountain.
-Thriving persons need purpose, excellence and autonomy.
+Thriving people need purpose, excellence and autonomy.
 They are happier, healthier and more productive.
 Deliver value continuously::
 Maintain sustainable pace and stability, all divisions of the organisation should focus on customer value.
@@ -81,12 +81,12 @@ You can react to new opportunities faster than competitors.
 image::2016-10-01-transformation-values.jpg[width=420,height=360,role=left]
 
 The above concepts are comprehensible.
-How do you know if you are moving in the right direction.
+How do you know if you are moving in the right direction?
 A few concrete tests help you find out if you are an agile department or company.
 
 * _Be agile_ instead of _do agile_.
 Practice the above attitudes and do not just follow a checklist
-* Nobody micro-manages in your company
+* Nobody micromanages in your company
 * _Feel accountable_ instead of _be accountable_.
 You want to improve, and your company as a natural part of the daily work.
 * _Compliment every collaborator_ you are working with at least once a week instead of _evaluating weaknesses and criticising people_.
@@ -138,6 +138,6 @@ Excellence Novels::
 Build to Last::: Successful habits of visionary companies;
 Good to Great::: Why some companies make the leap… and others don’t;
 How the Mighty Fall::: And why some companies never give in; all three books by Jim Collins,
-Google re:work:: Google blog about work environements and work techniques
+Google re:work:: Google blog about work environment and work techniques
 
 (this https://www.linkedin.com/pulse/what-agile-company-marcel-baumann[post] was also published on LinkedIn)

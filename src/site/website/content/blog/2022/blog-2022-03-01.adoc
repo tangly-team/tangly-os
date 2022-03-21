@@ -15,6 +15,19 @@ image::2022-03-01-head.png[width=420,height=360,role=left]
 
 In the midst of the agile adoption explosion, many teams are experiencing difficulties.
 
+Organizations often mix agile with Scrum.
+
+One of the most common misconceptions about {ref-scrum} is that it is synonymous with agile.
+{ref-manifesto} is an umbrella term that refers to a family of approaches that share common values and principles.
+
+Scrum is a commonly used agile framework that offers suggestions for how work can be organized to maximize value to the end-user.
+
+While Scrum is implemented at a product development team level, agile has a focus on the entire organization including its leadership and company culture.
+Both are relatively easy to start down the path but difficult to master.
+
+Many organizations use Scrum in combination with other agile principles and practices.
+Even if Scrum seems like a relatively easy framework to implement, there are changes needed on the individual and organizational level that scrum does not address.
+
 Teams often try hard to use new ways of working and learning.
 The challenge is to explore the new approaches and not to fall back to traditional processes.
 
@@ -27,11 +40,11 @@ What are signs your teams are struggling with agile and lean adoption?
 
 Below are some common symptoms of teams who are _pretending_ to be agile:
 
-* Teams are not delivering a _done_, usable increment each sprint.
+* Teams are not delivering a _done_, a usable increment at the end of each sprint.
 By usable we mean that the product is fully tested and provides a fully usable increment of valuable functionality.
 The product increment must be deployed on a server for internal or external use.
 * The daily Scrum is a status update instead of a small planning session.
-Reporting to attending managers is clear sign of distrust and micromanagement.
+Reporting to attending managers is a clear sign of distrust and micromanagement.
 * The sprint review meeting is merely a demonstration, and not an opportunity for collaboration.
 A clear sign of dysfunctional Scrum is when the content and the priority of backlog items is never updated during a sprint review.
 * The sprint retrospective does not result in actionable improvement ideas that the Scrum team addresses proactively.
@@ -55,7 +68,7 @@ This is Dark Agile <<detecting-agile-bullshit>>.
 The team presents itself as agile and believes it is practicing agile, but it is not.
 It is practicing a framework without the support of agile values.
 
-This can lead to micromanagement, a squashing of adaptability toward customers’ changing needs, and an extreme lessening of the benefits gained from an Agile practice.
+This can lead to micromanagement, a squashing of adaptability toward customers’ changing needs, and an extreme lessening of the benefits gained from Agile practice.
 
 Remember that Scrum, Lean, and agile approaches are tools to improve the quality and effectiveness of your product development.
 
@@ -71,7 +84,7 @@ Emphasizes key values and principles over blindly applying a method <<cargo-cult
 Delve in documented experiences <<great-scrummaster>>, <<scrum-pocket-guide>>, <<professional-scrum>>.
 * Empiricism and lean thinking are the foundations of {ref-scrum}.
 Measure your work to find out if your improvement measures are successful.
-Drop all initiatives not providing measurable improvements in quality, effectiveness and productivity.
+Drop all initiatives which do not provide measurable improvements in quality, effectiveness and productivity.
 * Train your collaborators <<scrum-master-formation>>, <<product-owner-formation>>, <<scrum-developer-formation>>.
 * Visualize your initiatives and their metrics.
 I want to see typical lean diagrams on the walls of your project space.
@@ -82,7 +95,7 @@ Agile means you always trust all your collaborators.
 Your ways of working emphasize transparency, inspection and adaptation. +
 Therefore, all information is available to all collaborators!
 * Hire for cultural agile fit.
-Recognize not everybody wants to develop products the agile way.
+Recognize not everybody wants to develop products in the agile way.
 Please hire collaborators who are comfortable with agile approaches, autonomy and accountability.
 
 [bibliography]

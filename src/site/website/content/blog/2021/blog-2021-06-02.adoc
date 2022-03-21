@@ -25,7 +25,7 @@ Many companies around the world discover their agile transformation is stalling.
 {ref-hermes} is still the official Swiss government method.
 They clearly acknowledged that this
 https://stefanedbrittain.medium.com/the-insidious-institutionalisation-of-water-scrum-fall-4af7de8865b9[Water-Scrum-Fall]
-is only needed because administration are strongly hierarchical and unable to adapt to the changes over the development of the solution.
+is only needed because administration is strongly hierarchical and unable to adapt to the changes over the development of the solution.
 
 Bachelors in Swiss technical universities are still trained with obsolete methodologies such as
 https://www.hslu.ch/de-ch/informatik/studium/soda/[SoDa], a variation of the dead https://en.wikipedia.org/wiki/Rational_Unified_Process[RUP] method.
@@ -44,7 +44,7 @@ _These values are part of the {ref-scrum} and of {ref-xp} approaches._
 A clear majority of 75% of the participants state that agile approaches are more motivating and fulfilling.
 
 The report just states obvious knowledge.
-The participants of the study confirmed this documented facts.
+The participants of the study confirmed these documented facts.
 
 === Why You Should Not Use Hybrid Methods
 
@@ -69,7 +69,8 @@ pie
 ....
 
 The agile approach continues to spread rapidly around the world: 89.8% of all teams have already adopted or are in the process of adopting agile methodology, a considerable number.
-On the other hand, organizations are still struggling to build greater company-wide agility and only a few have already adopted agility on a portfolio (15.3%) or strategic level (8.2%).
+On the other hand, organizations are still struggling to build greater company-wide agility.
+Only a few have already adopted agility on a portfolio level (15.3%) or strategic level (8.2%).
 The good news is that many companies have started transformation initiatives or are planning to do so in the near future.
 
 === Used Methods in Switzerland
@@ -115,13 +116,14 @@ Companies still need to invest in high-quality headsets, cameras and 4K displays
 
 Do not be penny wise and pound foolish.
 Invest in professional hardware and buy the adequate number of licenses.
-I always wonder why companies implement communication infrastructure with for example the free version of Slack or GitHub.
+I always wonder why companies implement communication infrastructure with the free version of Slack or GitHub.
 
 === Insights
 
 Agile approaches are steadily making progress in Switzerland.
 Empirical data indicate agile approaches are more successful than hybrid ones.
-I hope we can get rid of hybrid agile and in particular of the Swiss Hermes method in the next years.
+I hope we can get rid of hybrid agile in the next years.
+The Swiss Hermes method is a dreadful obligation in Switzerland.
 
 [cite,Henrik Kniberg]
 ____
@@ -152,7 +154,8 @@ During an agile, the organization needs to be changed.
 You are involved and probably have no ‘official’ authority to affect the needed changes.
 This is a good thing!
 It requires you to convince people to change because they believe it is the Right Thing to do.
-But influencing change in organizations is far from trivial and frequently, no matter how hard you have tried, it changes in the opposite direction.
+But influencing change in organizations is far from trivial.
+Frequently, no matter how hard you have tried, it changes in the opposite direction.
 The question then becomes, how do you survive?
 Staying alive and sane in organizations requires:
 
@@ -175,7 +178,7 @@ It is the only way to survive.
 Open and humble::
 You must courageously, persistently, and patiently propose change.
 Laugh it off when stupid decisions ruin your work.
-All of this must be done in an open and humble way as otherwise there is no new learning for you.
+All of this must be done in an open and humble way, as otherwise there is no new learning for you.
 Maybe you are wrong and they were right?
 
 Did we mention _patience_?

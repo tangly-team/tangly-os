@@ -14,9 +14,9 @@ tags: ["java"]
 image::2021-04-01-head.png[width=420,height=360,role=left]
 I truly love the new release rhythm of the Java ecosystem.
 Being able to use new features every six months is awesome.
-The migration overhead is held to a minimum thanks to the incredible backward compatibility.
+The migration overhead is held to a minimum thanks to incredible backward compatibility.
 
-The new features greatly simplify existing code and tremendously increase legibility.
+The new features greatly simplify the existing code and tremendously increase legibility.
 
 Features like _records_, _sealed types_, or _switch expressions_ are wonderful.
 The promise of advanced pattern matching constructs is sweet.
@@ -56,9 +56,9 @@ This port is great new to shrink the size of docker images containing a Java run
 
 MicroStream:: https://microstream.one/[MicroStream] persistence library crashes if you are using records.
 ArchUnit:: https://www.archunit.org/[ArchUnit] crashes if you are using records.
-footnote:[ArchUnit 0.18.0 was released 14 April 2021. Records are now supported.
+footnote:[ArchUnit 0.18.0 was released on 14 April 2021. Records are now supported.
 They are still working on supporting sealed types.]
-Jacoco:: https://www.eclemma.org/jacoco/index.html[Jacoco] has trouble to handle records and generate spurious error messages.
+Jacoco:: https://www.eclemma.org/jacoco/index.html[Jacoco] has trouble handling records and generating spurious error messages.
 Gradle:: https://gradle.org/[Gradle] still does not work natively with JDK 16.
 They at least provide a well-documented and workable approach.
 You can run the tool with JDK 15 and compile your components with JDK 16.
@@ -68,7 +68,7 @@ You can now build, test, and run Java modules via Gradle with the _java library_
 The mere presence of _module-info.java_ will let Gradle infer that your jar is a module and has to be put on the _module path_.
 footnote:[Gradle 7.0 was released 09 April 2021. JDK 16 is now supported as runtime for Gradle.
 You can have a regular build for your application with JDK 16 and Gradle in your CI pipeline.
-Gradle engine has been upgraded to use Groovy 3 in Groovy based DSL build scripts to fully support JDK 16.]
+Gradle engine has been upgraded to using Groovy 3 in Groovy based DSL build scripts to fully support JDK 16.]
 
 The huge drawback of the Gradle workaround is that you need two installed JDKs in your CI image.
 Standard images do not support this configuration.
@@ -81,7 +81,7 @@ Please do not be laggards.
 Do not force us to work with legacy Java programming paradigms.
 Support modules, auto-closeable resources, records, sealed classes.
 
-As a maintainer of a successful component or application you should represent modern Java approaches.
+As a maintainer of a successful component or application, you should represent modern Java approaches.
 Did you realize that since Java 8 a new version is released every six months?
 
 === Next Changes I am Dreaming Of
@@ -93,20 +93,20 @@ footnote:[I had to accept that this feature will not be part of the LTS release 
 Switch Type Selection:: We can already chain _if else if_ statements with *instanceof* operator and variable declarations.
 I want to do the same in a _switch_ statement. +
 I have good news.
-The JEP for pattern matching for switch statements (JEP 406) and for record and arrays patterns (JEP 405) have candidate status in April 2021
+The JEP for pattern matching for switch statements (JEP 406) and for record and array patterns (JEP 405) have candidate status in April 2021
 footnote:[First extensions for pattern matching will be part as preview functionality of the LTS release Java 17.].
 
 More Packages Support Modules:: Java modules were introduced with Java 8.
 I really, really, really want to use modules in Java 16.
 Therefore, I need a module version for all mainstream Java libraries.
-Until now the Java developers' community has failed us, support for modules is abysmal.
+Until now, the Java developers' community has failed us; support for modules is abysmal.
 
 === Important Remainder
 
-The next long term support Java shall be published in September 2021.
+The next long term supported Java shall be published in September 2021.
 The evolution between LTS 11 and LTS 17 is huge.
 Quite a lot of companies are still stocked with LTS 8.
-Modern Java code written with current Java version is very different to older coding paradigms.
+Modern Java code written with current the Java version is very different to older coding paradigms.
 
 Companies must now implement modernization approaches if they want to survive in the business world.
 A security flaw with an older Java version moves on thin ice if your customers sue your company.
@@ -116,4 +116,4 @@ Especially if you do not have one of these *expensive support and security* pack
 It should be a strategic goal for every company to have a clear migration concept for all Java applications to be ported to the LTS Java version 17.
 This LTS version should be removed in September 2021.
 Early releases are already available to support migration initiatives.
-This migration shall be implemented through teams until end of year 2021.
+This migration shall be implemented through teams until the end of year 2021.

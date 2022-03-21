@@ -16,14 +16,14 @@ Decision makers and waterfall aficionados loudly ask if agile approaches are wor
 
 Does the approach really promote team work?
 
-Well my current experience is that the answer is a sounding *YES*.
+Well, my current experience is that the answer is a sounding *YES*.
 
 Developers love to develop software products  using {ref-scrum}.
-The motivation and positive energy just explodes.
+The motivation and positive energy just explode.
 
 People talk together, build as a team better products and enjoy the daily activities.
 
-Stakeholders and in particular customers or users embraces the advantages they get.
+Stakeholders and customers or users embrace the advantages they get.
 
 A whisper can still be heard:
 
@@ -45,49 +45,49 @@ Stakeholders love Scrum.
 Every two weeks they have a new application version they can use, test, and get feedback from all users.
 This is the dream of every key account manager.
 
-Because a new release is available every two weeks the stakeholders should also provide feedback every two weeks.
+Because a new release is available every two weeks, the stakeholders should also provide feedback every two weeks.
 They sometimes hate the pressure of agile and Scrum
 
 [CAUTION]
 ====
 Some organizations struggle with high delivery rhythm.
-Explain your stakeholders a new release is available every two weeks.
+Explain to your stakeholders a new release is available every two weeks.
 The stakeholders decide how often the solution is deployed into production.
 ====
 
 === Developers Team
 
 Agile methods - Scrum, XP - are fun for all developers.
-Suddenly everyone can see your code, so at the beginning you as a developer must cope with different views how good code should be written.
-Suddenly you must master Test Driven Development TDD, mocking, unit test, legible documents.
+Suddenly, everyone can see your code, so at the beginning you as a developer must cope with different views how good code should be written.
+Suddenly, you must master Test Driven Development TDD, mocking, unit test, legible documents.
 But, once you have it, you start to experience the "flow" and enjoy the atmosphere and to deliver at the end of each sprint a new software.
 
-Later you realize that Scrum says the team is responsible.
-You must acknowledge that the product success is also your success.
+Later, you realize that Scrum says the team is responsible.
+You must acknowledge that product success is also your success.
 Each design decision is now also driven by ROI considerations.
-If you master these responsibilities you suddenly discover the world of engineering.
+If you master these responsibilities, you suddenly discover the world of engineering.
 It is creating great products with an optimal balance of external quality and costs without ever jeopardizing the quality of the core.
-You can never again deny that you as developer are in charge.
+You can never again deny that you as a developer are in charge.
 
 === Scrum Master
 
-Scrum master is cool with a team enjoying Scrum and the flow of success. You just have to realize you are not a master but the enabler of a team of talented engineer.
+The Scrum master is cool with a team enjoying Scrum and the flow of success. You just have to realize you are not a master but the enabler of a team of talented engineers.
 
-So you need to discover your "the lonely cowboy riding in the sun" song why this job is so rewarding.
+So you need to discover your _the lonely cowboy riding in the sun_ song why this job is so rewarding.
 
 === Product Owner
 
-As a product owner you control the budget of the product, the priorities and at the end of each iteration you can change all priorities and goals.
+As a product owner, you control the budget of the product, the priorities and at the end of each iteration you can change all priorities and goals.
 Cool isn't it.
-But wait as a product owner I am responsible for the budget and product success and each time a member of the team asks me something I must have an answer
+But wait as a product owner, I am responsible for the budget and product success and each time a member of the team asks me something I must have an answer
 ready.
 
 Scrum is cool and we enjoy it.
 And Scrum makes everything transparent and fast.
-Every two weeks a new version is delivered.
+Every two weeks, a new version is delivered.
 This version must be evaluated, accepted or a list of improvements must be provided in the next days.
 This rhythm is fast, really fast.
-Once you are up to this speed you will enjoy the flow.
+Once you are up to this speed, you will enjoy the flow.
 
 === Lessons Learnt
 

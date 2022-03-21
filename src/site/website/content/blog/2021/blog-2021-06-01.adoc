@@ -18,7 +18,7 @@ It does not matter which flavor of agile you are deploying in your organization;
 The agile fluency model has a powerful message about agile and technical excellence.
 The second zone of the model is all about software craftsmanship and {ref-xp}.
 
-One key lesson of the fluency model is it take time until you are professional at your chosen level.
+One key lesson of the fluency model is it takes time until you are professional at your chosen level.
 
 Time measured in years not in days.
 Your organization needs years to transition to more agile ways of working.
@@ -29,7 +29,7 @@ Do not rush it.
 The model defines four zones in which your company could thrive.
 You are free to choose the zone best suited for your organization.
 Remember the zones are additive.
-If you target the third zone your teams shall also be fluent in all practices of the first and second zones.
+If you target the third zone, your teams shall also be fluent in all practices of the first and second zones.
 
 ==== Shift Team Culture: _Focusing_ teams produce business value (6 months)
 
@@ -77,13 +77,14 @@ They *proactively* seek to improve those skills.
 The {ref-less} people have documented a huge set of experiments helping teams to improve their delivery skills and technical excellence.
 
 [.text-center]
-_The organization focuses on technical agility and improves timely delivering of quality applications._
+_The organization focuses on technical agility and improves timely delivering quality applications._
 
 ==== Shift Organizational Structure: _Optimizing_ teams lead their market (5 years)
 
 Fluent optimizing teams understand what their market wants, what your business needs, and how to meet those needs.
 Or, as in a startup environment, they know what they need to learn and how to go about learning it.
-In contrast to delivering teams, Optimizing teams not only have the ability to deliver to market, they also know what to deliver to market.
+In contrast to delivering teams, Optimizing teams not only have the ability to deliver to the market.
+They also know what to deliver to the market.
 
 [.text-center]
 _The organization focuses on value and improves the delivery of highly successful applications._
@@ -110,7 +111,7 @@ Employees, customers and stakeholders satisfaction is high._
 ^|Zone |Benefit |Investment |Learn From |Time to Fluency
 
 |Focusing
-|Greater visibility into teams’ work; ability to redirect.
+|Greater visibility into teams’ works; ability to redirect.
 |Team development and work process design.
 |Scrum, Kanban, non-technical XP
 |2-6 months
@@ -123,7 +124,7 @@ Employees, customers and stakeholders satisfaction is high._
 
 |Optimizing
 |Higher-value deliveries and better product decisions.
-|Social capital expended on moving business decisions and expertise into team.
+|Social capital expended on moving business decisions and expertise into the team.
 |Lean Software Development, Lean Startup, Beyond Budgeting
 |+1-5 years
 
@@ -137,7 +138,7 @@ Employees, customers and stakeholders satisfaction is high._
 === Learnings
 
 When Introducing Agile::
-One of the biggest factors affecting team fluency is organizational support.
+One of the biggest factors affecting team fluency is an organizational support.
 To continue the bus metaphor, the team has to ride the bus to their fluency zone.
 No one can do it for them.
 The organization has to buy the bus tickets.
@@ -145,7 +146,7 @@ An organization that expects fluency without providing appropriate support is bo
 Even worse, insufficient support can cause turnover and create a cynical corporate culture that hinders improvements.
 Before embarking on your fluency journey, be sure your organization is prepared to offer the support the journey needs.
 When Sustaining Agile::
-It’s rare for stable teams to lose fluency on their own.
+It is rare for stable teams to lose fluency on their own.
 In our experience, external disruptions cause fluency loss.
 The most common cause of fluency loss is when new management decides that agile approaches do not fit their vision.
 Without organizational support and the ability to continue practicing what they have learned, team fluency erodes quickly.

@@ -12,15 +12,15 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2017-02-01-head.jpg[width=420,height=360,role=left]
-What are the main hurdles to introduce agile approaches in Swiss companies.
+What are the main hurdles to introduce agile approaches in Swiss companies?
 The last five years learn us that
 
 * Introducing agile company-wide is a cultural change process.
 Such a change takes time and sometimes hurts,
-* Without commitment of senior management, the initiative will fail,
+* Without commitment of senior management, the initiative will fail.
 * You must teach, coach, support your collaborators through the transition.
-You need to believe in them and provide an environment where they can safely learn and experiment,
-* At the end what matters is collaborator purpose, customer satisfaction, business value.
+You need to believe in them and provide an environment where they can safely learn and experiment.
+* At the end, what matters is collaborator purpose, customer satisfaction, business value.
 
 http://www.swissq.it/[SwissQ]  has published a "SwissQ Software Development Switzerland 2016".
 The study can be downloaded as PDF from their website.
@@ -31,8 +31,8 @@ Below some findings of the study.
 
 === Major Hurdles When Introducing Agile Approaches
 
-The number left is the value for 2016, the number in parentheses is the value found in the study for year 2013. Bold items are new in the 2016 study and have
-no 2013 values.
+The number left is the value for 2016.
+The number in parentheses is the value found in the study for year 2013. Bold items are new in the 2016 study and have no 2013 values.
 
 * 63% (72%): Culture change
 * 61% (21%): Management support
@@ -50,7 +50,7 @@ Major opponents such as senior managers or internal and external customers more 
 
 The majority of teams use Scrum or Kanban.
 The associated events and tools are used.
-The deeper values such as test driven development, acceptance test driven development, clean code or refactoring are often missing.
+Values such as test driven development, acceptance test driven development, clean code or refactoring are often missing.
 The key is
 
 [.text-center]
@@ -59,15 +59,15 @@ _To be agile, Not to do agile._
 We wrote in previous blogs that introducing Scrum in the development department or in the whole company is a
 http://en.wikipedia.org/wiki/Change_management[change process].
 The coaches should be trained in change management and have experiences with resistance to changes.
-Our experience shows senior management are often not ready to move along the cultural change path.
+Our experience shows senior management is often not ready to move along the cultural change path.
 
 === Recommendations
 
 You shall start introducing agile approaches
 
-. Senior management fully committed to the approach and approves the cultural change.
+. Senior management is fully committed to the approach and approves the cultural change.
 Read the book "Reinventing Organizations" from Frederic Laloux to understand the implied changes.
-. Products are value driven and quality oriented
+. Products are value-driven and quality oriented
 . Teams are focused to master their work and tools - Craftsmanship, {ref-xp} -
 
 For huge development departments consider using the {ref-less} approach.
@@ -78,8 +78,8 @@ Psychological safety:: Can we take risks on this team without feeling insecure o
 Dependability:: Can we count on each other to do high quality work on time?
 Structure & clarity:: Are goals, roles, and execution plans on our team clear?
 Meaning of work:: Are we working on something that is personally important for each of us?
-Impact of work:: Do we fundamentally believe that the work we’re doing matters?
+Impact of work:: Do we fundamentally believe that the work we are doing matters?
 
-If you have doubts please refrain using of agile methods.
-Introducing agile approaches in product development is similar to introduce lean principles in a production environment.
+If you have doubts, please refrain from using agile methods.
+Introducing agile approaches in product development is similar to introducing lean principles in a production environment.
 Either you do it fully or the benefits are marginal.

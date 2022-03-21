@@ -18,11 +18,11 @@ Here an example of a GIS open data portal successfully developed using agile app
 
 === GIS Open Data Initiative
 
-Swiss government has initiated an open government data strategy to provide data at federal and state level to all citizens and interested parties.
+The Swiss government has initiated an open government data strategy to provide data at federal and state level to all citizens and interested parties.
 The aims are
 
 Release of official data::
- The Confederation will make data which is suitable for OGD available to the public in machine-readable and open formats to be freely reused.
+ The Confederation will make data which are suitable for OGD available to the public in machine-readable and open formats to be freely reused.
  The individual administrative units must review and, where necessary, adapt the legal, organizational, financial and technical framework of data production
 to make this possible.
 Coordinated publication and provision of official data::
@@ -39,7 +39,7 @@ The solution realized with agile approaches is a GIS open data portal supporting
 
 === Agile Approach
 
-The solution was implemented during year 2017 and released to public end of year.
+The solution was implemented during year 2017 and released to the public end of the year.
 
 We identified these key elements to explain the success of the whole product development.
 The whole organization and all involved managers shall
@@ -62,7 +62,7 @@ The delivered solution was
 * Integrated in existing GIS portal of Zürich state to minimize barrier to interested parties,
 * Self-service approach to minimize running costs,
 * Private cloud approach due to regulatory aspects,
-* REST service to provide human readable and machine readable maps in various formats,
+* REST service to provide human-readable and machine-readable maps in various formats,
 * Build on existing approaches to generate GIS data to minimize risks and respect ambitious timeline.
 
 A description of the technical solution in German can be found https://www.inser.ch/en/node/393[here]. The REST API is described

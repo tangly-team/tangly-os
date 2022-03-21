@@ -26,12 +26,12 @@ So I went to macOS and Apple notebooks without regrets.
 
 The major gains upon migrating to OS X are:
 
-* No virus scanners are necessary, the speed-up during complex programming and development activities is tremendous,
-* No trouble when updating the operating system, updates are automatic and often no new start is required,
+* No virus scanners are necessary, the speed-up during complex programming and development activities is tremendous.
+* No trouble when updating the operating system, updates are automatic and often no new start is required.
 * Unix Command Line and Tools are available in the console.
 https://brew.sh/[Homebrew] or https://www.macports.org/[MacPorts] projects provide all known and less-known utilities and programs available under Linux
-footnote:[I use currently Homebrew. The available packages and the handling are excellent.],
-* Long-lived notebook is still working and looking nice after five years of daily usage.
+footnote:[I use currently Homebrew. The available packages and the handling are excellent.].
+* A long-lived notebook is still working and looking nice after five years of daily usage.
 The performance is more than adequate for software development with Java 8/9/10/11 stack and C++.
 
 The last notebooks I had all lasted between six and nine years.
@@ -45,7 +45,7 @@ The tools I really enjoy and use on a daily basis for software development - mai
 * Atlassian Cloud applications - BitBucket, HipChat, CI pipeline -,
 * https://brew.sh/[Homebrew] as package manager for utilities,
 * Docker as container manager,
-* VirtualBox when I need a full-fledged virtual machine
+* VirtualBox when I need a full-fledged virtual machine,
 footnote:[The need of virtual machines for daily work is fading away].
 
 === Daily Work

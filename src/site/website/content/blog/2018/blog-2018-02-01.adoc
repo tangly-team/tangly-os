@@ -16,11 +16,11 @@ The Scrum guide was revised in 2016 and got clarification concerning the core va
 I was thrilled.
 Talking about values and mental models you must have to successfully introduce and be agile is awesome.
 
-A new revision was published end of year 2017, just a year after the values addition.
+A new revision was published at the end of year 2017, just a year after the values addition.
 
 What has changed?
 
-What have the community learnt and committed to the new version of the guide?
+What has the community learnt and committed to the new version of the guide?
 
 === Scrum is not only for Software
 
@@ -41,8 +41,8 @@ They develop, release, operate and sustain the work and work products of thousan
 They collaborate and interoperate through sophisticated development architectures and target release environments.
 
 [.text-center]
-_Scrum is a tool to solve complex problems, any kind of complex problem. It is already the industry standard for software projects, it is becoming a major
-standard for all complex products._
+_Scrum is a tool to solve complex problems, any kind of complex problem. It is already the industry standard for software projects.
+It is becoming a major standard for all complex products._
 
 === What does a Scrum Master?
 
@@ -68,11 +68,11 @@ Ensuring that _goals, scope, and product domain_ are understood by everyone on t
 ____
 
 *Scrum master is a servant leader and promotes Scrum and agile approaches.*
-*The whole team work on a product.*
+*The whole team works on a product.*
 *They understand the vision, goals, scope, and have extensive domain knowledge.*
 
 *This means the whole team talks with stakeholders and users.*
-*The team members have a genuine interest to learn more about the product domain.*
+*The team members have a genuine interest in learning more about the product domain.*
 
 === Scrum Events
 
@@ -106,7 +106,7 @@ Added clarity to the Increment section::
 
 *The guide emphasizes the learning and improvements process. One root of the agile manifesto is lean thinking.*
 
-*For slow learners you inspect the result of the increment and put at least one improvement measure in the next sprint backlog.*
+*For slow learners, you inspect the result of the increment and put at least one improvement measure in the next sprint backlog.*
 
 === Previous Changes
 

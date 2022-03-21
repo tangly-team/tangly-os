@@ -17,7 +17,7 @@ Java is celebrating 25 years of existence.
 I discovered the anniversary offer to certify for Java SE 11 Developer.
 
 This special certification has a cool logo with a remainder of the anniversary.
-Oracle offers this certification for only 25 dollars footnote:[The regular price is around 250 dollars.] and provide free access to their learning platform.
+Oracle offers this certification for only 25 dollars footnote:[The regular price is around 250 dollars.] and provides free access to their learning platform.
 The offer and logo availability are time limited.
 
 The free learning subscription includes:
@@ -35,13 +35,14 @@ The official goals of the certification cover:
 Working with Java data types::
 - Use primitives and wrapper classes, including, operators, parentheses, type promotion and casting
 - Handle text using String and StringBuilder classes
-- Use local variable type inference, including as lambda parameters
+- Use local variable type inference, including lambda parameters
 Controlling Program Flow::
 - Create and use loops, if/else, and switch statements
 Java Object-Oriented Approach::
-- Declare and instantiate Java objects including nested class objects, and explain objects' lifecycles (including creation, dereferencing by reassignment, and garbage collection)
+- Declare and instantiate Java objects including nested class objects, and explain the lifecycle of an object (including creation, dereferencing by reassignment, and garbage
+collection)
 - Define and use fields and methods, including instance, static and overloaded methods
-- Initialize objects and their members using instance and static initialiser statements and constructors
+- Initialize objects and their members using instance and static initializer statements and constructors
 - Understand variable scopes, apply encapsulation and make objects immutable
 - Create and use subclasses and superclasses, including abstract classes
 - Utilize polymorphism and casting to call methods, differentiate object type versus reference type
@@ -82,12 +83,12 @@ Annotations::
 
 I gave a try to the Oracle online training platform.
 
-The material is basic and do not always reflect the current state of the Jasva ecosystem.
-The questionnaire at the end of each lection is fun to test your understanding.
+The material is basic and do not always reflect the current state of the Java ecosystem.
+The questionnaire at the end of each lecture is fun to test your understanding.
 
-At the end I skipped most of the recordings and just answered the questions.
+At the end, I skipped most of the recordings and just answered the questions.
 
-I would *not* recommend the learning platform as efficient learning approach.
+I would *not* recommend the learning platform as an efficient learning approach.
 
 === Book
 
@@ -104,8 +105,8 @@ This should be expected from such material but makes concentration more challeng
 Invest time for lambdas, streams, annotations and the module system.
 I was surprised how many questions about these themes I needed to answer during the examination.
 The questions sometimes asked details you are not aware when writing regular Java code in regular products
-footnote:[Regular developers seldom defines their own annotations.
-I need to know the details how to declare an annotations to answer examination questions.].
+footnote:[Regular developers seldom define their own annotations.
+I need to know the details of how to declare annotations to answer examination questions.].
 
 === Practice Examinations
 
@@ -131,9 +132,9 @@ I read quite a few posts how challenging it is to use the online examination mod
 [CAUTION]
 ====
 Do not forget to bring two identification documents.
-Regulations are tailored for USA and do not consider that any European citizen has a legal identification document.
+Regulations are tailored for the USA and do not consider that any European citizen has a legal identification document.
 
-Your second document can a driver license or a credit card.
+Your second document can be a driver's license or a credit card.
 ====
 
 I passed the examination in April during Corona restrictions.
@@ -142,17 +143,17 @@ It did not really improve my concentration.
 
 [TIP]
 ====
-Check if writing material is available at your seat.
+Check if writing material is available in your seat.
 Otherwise, request a pen and something to write on, Regulations officially allows it.
 
-Writing down ideas or which options are plausible as answer helps me a lot.
+Writing down ideas or which options are plausible as an answer helps me a lot.
 ====
 
 The rules I use are:
 
 Manage and track time::
 - The examination is time limited.
-- You need to steadily progress and answer all questions in 90 minutes.
+- You need to steadily progress and answer the questions in 90 minutes.
 - The number of questions is 50.
 You have *less* than 2 minutes for each question.
 Do not get stuck in one question::
@@ -164,4 +165,4 @@ Answer all questions::
 - The passing rate for the examination is 68%.
 
 
-I wish you interesting learning and succesful certification.
+I hope you interesting learning and successful certification.

@@ -16,13 +16,13 @@ image::2020-10-01-head.jpg[width=420,height=360,role=left]
 I hosted my technical blogs on https://www.blogger.com/[blogger] for years.
 If I correctly remember I started to use blogger ten years ago.
 It is a great tool with some drawbacks.
-Over the years the drawbacks sting more and more:
+Over the years, the drawbacks sting more and more:
 
 * Their editor is brittle, with limited functionality and unreliable.
 The generated HTML is not legible and does not support concepts such a micro fragments, meta information or simple functions such as source code highlighting.
 * The last quarters they started to tinker with their editor and output format.
 My older posts are now a mess and can only be open in HTML mode.
-If I switch to their WYSIWYG editor the layout is destroyed and random fonts family and sizes are displayed.
+If I switch to their WYSIWYG editor, the layout is destroyed and random fonts family and sizes are displayed.
 Worse the blogs are also displayed mangled to the readers even if I do not edit them.
 This destruction of all older blogs and the missing migration path were killer criteria.
 * Blogger does not support modern markup language such https://www.markdownguide.org/[Markdown] or {ref-asciidoc}.
@@ -50,7 +50,7 @@ We want a professional looking documentation to encourage new users to try our o
 Static website generators have strong advantages for technical savvy persons:
 
 * Hosting is cheap.
-GitHub, GitLab or Bitbucket pages even hosts static websites for free.
+GitHub, GitLab or Bitbucket pages even host static websites for free.
 * The source files go into Git for backup and history.
 * The source files are in plain text:
 ** Changes come in as a _Pull Request_ for proper review and CI pipeline validation.
@@ -58,14 +58,14 @@ GitHub, GitLab or Bitbucket pages even hosts static websites for free.
 This results in less stale content.
 
 First I used the https://github.com/thingsym/hugo-theme-techdoc/[hugo-theme-techdoc] to customize {ref-hugo}.
-It worked great for the technical documentation and technical articles but fall short of my wishes for the blog part.
+It worked great for the technical documentation and technical articles but fell short of my wishes for the blog part.
 When I discover the theme {ref-docsy}.
 It supports the technical documentation, technical articles, and blogging.
 
 The best part is that {ref-hugo} now supports {ref-asciidoctor} natively.
 No more strange manipulation to load _gem_ modules you need.
 And diagrams through asciidoc-diagram and plantUml are generated in the expected folders.
-The documentation is still on the light side, but you find the needed information in the various pull requests.
+The documentation is still on the light side, but you find the need information on the various pull requests.
 
 The bonus is that {ref-asciidoctor} newer versions have native support for _rouge_ syntax highlighter.
 It is no more necessary to load _pygment_ highlighter and configure CSS files.
@@ -187,7 +187,7 @@ The source of the whole website is available under https://bitbucket.org/tangly-
 
 Printing of a single article is supported through your browser.
 You can configure printing a whole section with or without a table of contents through https://www.docsy.dev/docs/adding-content/print/[configuration options].
-For advanced cases you can define the layout of the printed document.
+For advanced cases, you can define the layout of the printed document.
 
 You can use relative links in your {ref-asciidoc} documents.
 Beware where the file are located by {ref-hugo} engine and the naming conventions shall follow {ref-hugo} rules.

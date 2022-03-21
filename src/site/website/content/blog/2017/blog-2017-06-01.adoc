@@ -12,13 +12,14 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2017-06-01-head.jpg[width=420,height=360,role=left]
+
 Agile will never guarantee product success.
 All projects, especially application development, entail risk.
-If a product was risk-free it is unlikely to provide significant benefits or competitive advantages.
-There are however, a number of ways in which Agile Scrum projects repeatedly fail which are worth examining.
+If a product was risk-free, it is unlikely to provide significant benefits or competitive advantages.
+There are a number of ways in which Agile Scrum projects repeatedly fail which are worth examining.
 
 Agile approaches and Scrum framework can reduce risks in projects and increase the return on investment.
-https://www.infoq.com/articles/standish-chaos-2015[Standish Group report] is a proof for this statement.
+https://www.infoq.com/articles/standish-chaos-2015[Standish Group report] is a proof of this statement.
 One picture shows it all - look at the failed column -
 
 image::2017-06-01-agile-vs-waterfall.jpg[role=center]
@@ -28,7 +29,7 @@ Below are common patterns and errors when doing agile instead of being agile
 Wagile::
 is a team which continues to follow basically a Waterfall product but uses the language of Agile and adds a few agile practices.
 For example, the team may present burn-down charts together with Gantt charts.
-Or the team compute individual resource allocation for the next three months.
+Or the team computes individual resource allocation for the next three months.
 You can also replace Waterfall with V-Model, http://www.hermes.admin.ch/onlinepublikation/index.xhtml[HERMES], RUP, and even sometimes {ref-safe}.
 ScrumBut::
 describes a team which claims to follow Scrum but misses various practices; for example _We do Scrum but we don’t have a Product Owner_.
@@ -45,21 +46,22 @@ occurs when a team declares itself Agile and blames everyone else for their fail
 Such a group typically stops writing documentation, listening to business analysts, product managers and other customers, and dictates its own delivery schedule.
 Meanwhile the team do not improve quality, does not adopt test driven development or any other practice they dislike.
 Potemkin Agile::
-occurs when an a team adopts and applies an Agile method well but does not deliver business value.
+occurs when a team adopts and applies an Agile method well but does not deliver business value.
 This is a form of goal deferment were the team consider adhering to the process rather than delivering business value as the success criteria.
 Customer (Business Analyst, Product Manager, Product Owner) overload::
-on a well functioning Agile product the customer, or proxy customer, is called upon to do a lot.
+on a well-functioning Agile product the customer, or proxy customer, is called upon to do a lot.
 They need to decide requirements, set priorities, scout ahead of the product, align strategy, work with the developers, testers and managers, and may even have their own day job to do.
 In the earliest XP product (“C3”) the first business analyst came close to a nervous breakdown.
 Fall back::
 Management may bring in consultants and other experts help switch a team to Agile.
 Once the consultants leave some teams return to their old ways of working.
-Advisers and consultants can be a great help when introducing Agile but they need to build capacity in the development team to continue learning and evolving when the consultants are gone.
+Advisers and consultants can be a great help when introducing Agile.
+They need to build capacity in the development team to continue learning and evolving when the consultants are gone.
 Failure to go far enough::
-To maximise the benefits of Agile Software Development the people, processes and organization that interface and work with the Agile team need to understand Agile and adjust their expectations and working techniques too.
+To maximise the benefits of Agile Software Development the people, processes and organization that interface and work with the Agile team needs to understand Agile and adjust their expectations and working techniques too.
 Agile is not a drop-in technology that can be swapped in to replace another failing method.
 Isolated Agile teams will find it difficult to be completely Agile.
-When other groups adapt the benefits of Agile can spread beyond Software Development.
+When other groups adopt agile approaches, the benefits of Agile can spread beyond Software Development.
 Exploding cards::
 happens when teams do not sufficiently understand the technology they are working with – either in the solution or problem domain.
 Small work packages suddenly turn out to be large tasks in their own right.
@@ -73,8 +75,7 @@ In this case teams are better off using Kanban style management than a Scrum bas
 More often hyper change in goals and requirements are a sign that something is wrong beyond the team.
 The organization itself may lack strategy and objectives, or the Product Owner may not be filling their role adequately.
 Fragile, not Agile::
-Some Agile techniques, like TDD, ATDD, CI or CD, when poorly applied with a lack of understanding can show short term benefits but create long term
-problems.
+Some Agile techniques, like TDD, ATDD, CI or CD, when poorly applied with a lack of understanding can show short-term benefits but create long-term problems.
 
 Few of these failure modes are unique to Agile approaches, they are reoccurring failure modes for all IT software development projects.
 Neither are they a comprehensive list of the ways in which Agile or traditional application development projects fail.
@@ -82,21 +83,21 @@ Neither are they a comprehensive list of the ways in which Agile or traditional 
 We can state that (see the {ref-scrumguide})
 
 * Team process improvement is a major focus for the Scrum Master or the Scrum Coach
-** Coaching the Development Team in self-organization and cross-functionality,
-** Teaching and leading the Development Team to create high value products,
+** Coaching the Development Team in self-organization and cross-functionality.
+** Teaching and leading the Development Team to create high value products.
 ** Removing impediments to the Development Team’s progress,
-** Facilitating Scrum events as requested or needed,
+** Facilitating Scrum events as requested or needed.
 ** Coaching the Development Team in organizational environments in which Scrum is not yet fully adopted and understood.
-* Company process improvement is a major task for the Scrum Master or the Scrum Coach
-** Leading and coaching the organization in Agile and Scrum adoption
-** Planning Scrum implementations within the organization;
-** Helping employees and stakeholders understand and enact Scrum and empirical product development;
-** Causing change that increases the productivity of the Scrum Team; and,
+* Company process improvement is a major task for the Scrum Master or the Scrum Coach.
+** Leading and coaching the organization in Agile and Scrum adoption.
+** Planning Scrum implementations within the organization.
+** Helping employees and stakeholders understand and enact Scrum and empirical product development.
+** Causing change that increases the productivity of the Scrum Team.
 ** Working with other Scrum Masters to increase the effectiveness of the application of Scrum in the organization.
 
 The essence of succeeding with Agile, Lean and {ref-scrum} is
 
-* It is a http://en.wikipedia.org/wiki/Change_management[change process] with well known and discussed aspects,
-* You must have a strong and experienced Scrum Master and Scrum Coach to maximise success,
-* Do not tinker with the Scrum process before you really master it,
+* It is a http://en.wikipedia.org/wiki/Change_management[change process] with well known and discussed aspects.
+* You must have a strong and experienced Scrum Master and Scrum Coach to maximise success.
+* Do not tinker with the Scrum process before you really master it.
 * If you have to scale your process, please consider {ref-less}.

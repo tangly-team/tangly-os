@@ -26,7 +26,7 @@ I would also state an obvious fact.
 My infrastructure at home is better.
 I have a better Internet connection.
 My display is a high-end 4K screen instead of a cheap HD version.
-The coffee is also really better.
+Coffee is also really better.
 
 My life would be more productive and fun if more people did better understand how to work in a digital world.
 
@@ -34,22 +34,23 @@ Here a few advices to improve our work experience.
 
 === Schedule an Appointment
 
-If you are responsible for the meeting preparation please:
+If you are responsible for the meeting preparation, please:
 
 * Send me a calendar invitation in the https://en.wikipedia.org/wiki/ICalendar[icalendar] format.
 The file extension should be _ics_ or _ical_. +
 Never email me asking for an appointment, please provide directly the invitation. +
-Do not send invitations in Outlook proprietary format, I use macOS and Linux, not Microsoft and Office.
+Do not send invitations in the Outlook proprietary format.
+I use macOS and Linux, not Microsoft and Office.
 * Send me a meaningful invitation.
 Provide
 ** Purpose and goals of the meeting,
 ** an agenda - ideally each item has a tentative duration -,
 ** an attendee list - normally visible in the ICS invitation -,
-** attach all documents I shall read before the meeting in the invitation.
+** attach the documents I shall read before the meeting in the invitation.
 You can also provide links to the documents.
 Please do not require a login to access the document.
 * add the link and password for the online conference such as Zoom, Google Hangouts, Webex, Slack, or Microsoft Teams. +
-For a physical meeting please provide the room identification and some information how to get to the location.
+For a physical meeting, please provide room identification and some information about how to get to the location.
 I do not know where the meeting room _Dijkstra-R1-8.815_ is.
 
 You are responsible that all mandatory invitees will attend the meeting.
@@ -65,13 +66,13 @@ The newer versions of major tools from Microsoft, Google, Cisco now include work
 
 === Write a Meeting Protocol
 
-If you a responsible for the meeting event please:
+If you are responsible for the meeting event, please:
 
 . Check at the beginning of the meeting, that all attendees have studied the provided documentation.
 You should politely asked unprepared attendees to leave the meeting
 footnote:[If meeting preparation is difficult in your organization, implement the Amazon meeting rules.
-Amazon add a silent half a hour block at the beginning of the meeting to allow attendees to read the documentaion.
-It is silent time, everybody reads, nobody talks.].
+Amazon adds a silent half an hour block at the beginning of the meeting to allow attendees to read the documentation.
+It is silent time, everybody reads; nobody talks.].
 
 . Write a protocol describing the activities during the meeting.
 A well-written protocol has the following sections:
@@ -83,12 +84,12 @@ Each task has a description, a due date and one responsible.
 . Please send the link to the protocol for review to all attendees.
 Define the deadline when the protocol will be released.
 . Track the implementation of all tasks defined during the meeting and documented in the protocol
-footnote:[In a digital world please use a task tracking tool for this activity.].
+footnote:[In a digital world, please use a task tracking tool for this activity.].
 
 Any meeting without such a protocol was in fact just a gathering to eat donuts and drink coffee.
 
 Modern organizations have coffee breaks for such gatherings.
-With some luck the organization provides high-grade coffee or tee, and perhaps a barista.
+With some luck, the organization provides high-grade coffee or tee, and perhaps a barista.
 
 [TIP]
 ====
@@ -99,11 +100,11 @@ We read those memos, silently, during the meeting.
 It is like a study hall.
 Everybody sits around the table, and we read silently, for usually about half an hour, however long it takes us to read the document.
 And then we discuss it.
-No powerpoint presentation::
-No PowerPoints are used inside of Amazon.
-Somebody for the meeting has prepared a six-page narratively structured memo.
+No PowerPoint presentation::
+No PowerPoints are used inside Amazon.
+Somebody for the meeting has prepared a six-page narrative structured memo.
 It has real sentences, and topic sentences, and verbs, and nouns. it is not just bullet points.
-Two pizzas size team::
+Two pizza sized teams::
 We try to create teams that are no larger than can be fed by two pizzas.
 ====
 
@@ -114,7 +115,7 @@ The rules to share a document are:
 * Avoid sending me a document per email.
 Send me the link to the document in a shared repository I have access to.
 I mean everybody is using Google Drive, DropBox, or Microsoft One Drive
-footnote:[Beware you cannot search on such repositories, especially if you are using proprietary document formats such as Microsoft Office.
+footnote:[Beware you cannot search for such repositories, especially if you are using proprietary document formats such as Microsoft Office.
 The sole exception being Google Drive from the search engine company.].
 
 The rules to edit a document are:
@@ -122,7 +123,7 @@ The rules to edit a document are:
 * Do not assume I am using Microsoft Office.
 I use and strongly prefer LibreOffice.
 I support open-source software and formats.
-Microsoft Office formal ISO/IEC 29500 definition is not even implemented in Office.
+The Microsoft Office formal ISO/IEC 29500 definition is not even implemented in Office.
 * When modifying a shared document, consider using the review mode as being polite to your team members.
 * https://en.wikipedia.org/wiki/PDF[PDF] is the de facto standard to exchange documents in the wide world.
 Acrobat Reader is free to use on all major platforms.

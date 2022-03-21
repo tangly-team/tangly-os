@@ -1,6 +1,6 @@
 ---
 title: "Java, Groovy, Clojure"
-linkTitle: "ava, Groovy, Clojure"
+linkTitle: "Java, Groovy, Clojure"
 date: 2022-04-01
 tags: ["agile", "java", "students"]
 ---
@@ -12,8 +12,117 @@ tags: ["agile", "java", "students"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2022-04-01-head.png[width=420,height=360,role=left]
+
 Professional software developers shall master their primary technology stack and programming language.
 I am a proficient and experienced programmer in Java.
 I have written production code in Java for the last twenty years.
 I decided to study the language in depth and acquired various Java developer certifications.
 And I love the language and environment.
+
+I want to understand the strengths and weaknesses of Java as well.
+A good approach is to learn more about Groovy and Clojure.
+I want to understand various strenghts in different languages.
+One major focus is functional programming approaches and hwo they impact design and development activities.
+
+=== Clojure
+
+Clojure is the functional programming language and a Lisp(1) dialect.
+The language compiles to and runs on the JVM and interfaces to Java and API libraries.
+
+[quote,Alan J. Perlis]
+____
+It is better to have 100 functions operate on one data structure than to have 10 functions operate on 10 data structures.
+____
+
+Clojure is a Lisp dialect not constrained by backward compatibility.
+
+* Extends the code-as-data paradigm to maps and vectors
+* Defaults to immutability
+* Core data structures are extensible abstractions
+* Embraces the JVM platform
+
+==== Expressions and Statements
+
+[source,clojure]
+----
+(def <name> <value>)
+(if (<condition>) (<true-expression>) (<false-expression)) ;; else is optional
+(when (<condition>) (<true-expression>))
+(cond
+  (<condition-1) (expression-1)
+  (condition-2) (expression-2)
+  :else (expression-else))
+(case <value>
+ <value-1> <expression>
+ <value-2> <expression>
+ <expression-else>)
+(loop [] (expression-loop))
+(do {expression})
+----
+
+Number tower
+Truth
+
+==== Functions and Closures
+
+Functions are a key construct for a functional language.
+You can define functions and closures using:
+
+defn, fn,  let, letn
+
+===== Higher-order Functions and Sequences
+
+Sequence abstraction permeates the design and API of Clojure.
+Functional programming emphasizes the design of functions working on generic data structures.
+
+===== Recursion, Tail Recursion, Currying, Memoization
+
+loop
+recur
+partial
+memoize
+
+=== Thoughts
+
+Type hints
+Spec
+
+
+=== Java
+
+==== Expressions and Statements
+
+[source,java]
+----
+
+----
+
+==== Functions and Lambdas
+
+You can define functions and lambdas using:
+
+===== Higher-order Functions and Streams
+
+===== Recursion, Tail Recursion, Currying, Memoization
+
+=== Thoughts
+
+=== Groovy
+
+==== Expressions and Statements
+
+[source,groovy]
+----
+
+----
+
+==== Functions and Lambdas
+
+You can define functions and lambdas using:
+
+===== Higher-order Functions and Sequences
+
+===== Recursion, Tail Recursion, Currying, Memoization
+
+=== Thoughts
+

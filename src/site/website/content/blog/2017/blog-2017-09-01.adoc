@@ -11,13 +11,13 @@ tags: ["agile"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2017-09-01-head.jpg[width=420, height=360, role=left]
+image::2017-09-01-head.jpg[width=420,height=360,role=left]
 === Introduction
 
 You develop your software products using agile approaches.
 You are doing {ref-scrum}, {ref-kanban}, https://en.wikipedia.org/wiki/Scrumban/[Scrumban], {ref-lean}, or {ref-less}.
 
-Your collaborators start asking questions about organisation, management roles, and critique the internal processes.
+Your collaborators start asking questions about their organisation, management roles, and critique the internal processes.
 How employee yearly evaluation, bonus evaluation - work?
 You hear strange statements such _Be agile, do not do agile_.
 
@@ -25,36 +25,37 @@ You as a manager realise you have to describe your role in an agile environment.
 What does it mean?
 Please read first this blog post describing What is an link:../../2016/what-is-an-agile-company[Agile Company]?
 
-If you have time read the post link:../../2017/scrum-masters-are-not-administrators[Why Scrum Masters are not Administrators]?
+If you have time, read the post link:../../2017/scrum-masters-are-not-administrators[Why Scrum Masters are not Administrators]?
 
-Another one is about link:../../2017/so-called-agile-and-scrum-failures[So Calle Agile and Scrum Failures].
-Upon reading, you shall have a deeper understanding how to describe your role as a manager in an agile environment.
+Another one is about link:../../2017/so-called-agile-and-scrum-failures[So Called Agile and Scrum Failures].
+Upon reading, you shall have a deeper understanding of how to describe your role as a manager in an agile environment.
 
-We will first discuss your work environment, and second characteristics of people you are working with.
-Finally we will sketch your job description.
+We will first discuss your work environment.
+Second, the characteristics of people you are working with shall be sketched.
+Finally, we will sketch your job description.
 
 === Complex Systems and Empiricism
 
 The development organization of a software solution is a complex system.
 This means that nobody understands the rules.
 You cannot implement a measure and be certain it will improve the whole system.
-If you want to implement lasting improvements you must
+If you want to implement lasting improvements, you must:
 
 Provide transparency::
- The more you and your collaborators know the better your decisions are.
- All information shall be available to all participants, including financial and marketing data,
+The more you and your collaborators know the better your decisions are.
+All information shall be available to all participants, including financial and marketing data,
 Experiment with improvement::
- Inspection and adaptation are keys; processes and value streams shall constantly be improved,
- Take the lean approach: Relentlessly eliminate waste and increase the value stream,
-Establish long living teams::
- Teams are the backbone of your company; people are human beings not resources.
+Inspection and adaptation are keys; processes and value streams shall constantly be improved.
+Take the lean approach: Relentlessly eliminate waste and increase the value stream,
+Establish long-living teams::
+Teams are the backbone of your company; people are human beings not resources.
 
 === Collaborators and their Needs
 
 Knowledge workers are the collaborators you hire in this millennium.
 They are smart, motivated and better qualified than you are.
 
-[quote, Steve Jobs]
+[quote,Steve Jobs]
 ____
 It doesn't make sense to hire smart people and then tell them what to do; we hire smart people so they can tell us what to do.
 ____
@@ -62,13 +63,13 @@ ____
 A manager working with knowledge workers has understood the above quotes and
 
 * Believe in the X vs Y theory.
- You provide safety to all your people and truly respect them.
- People only perform if you provide psychological safety.
- The test is _Do you compliment every collaborator you are working with at least once a week_,
+You provide safety to all your people and truly respect them.
+People only perform if you provide psychological safety.
+The test is _Do you compliment every collaborator you are working with at least once a week_.
 * Provide a _purpose_, give _autonomy_, and let them _achieve mastery_.
- The test is _Continuous learning and improvement through trial and error_,
+The test is _Continuous learning and improvement through trial and error_.
 * Promote exclusively _intrinsic_ motivators.
- The test is _No bonus or monetary incentive system exits in the company_,
+The test is _No bonus or monetary incentive system exits in the company_.
 * Establish a work environment where collaborators work in flow.
 The test is _No email or phone answering rules in the company; no mandatory overtime_.
 
@@ -90,14 +91,14 @@ As a manager you shall reconsider which activities are your responsibility.
 An agile team must at least be self-organized and ideally self-designed.
 
 manager lead::
- The team performs the work,
+The team performs the work,
 self-organised / self-managed::
- The team organises and performs its own activities and work,
+The team organises and performs its own activities and work.
 self-designed / self-selected::
- The team creates, selects and removes new members and maintains itself.
- Logically they are also in charge of evaluation, rewards, and career development,
+The team creates, selects and removes new members and maintains itself.
+Logically they are also in charge of evaluation, rewards, and career development.
 self-directed / self-governed::
- The team has no outside management.
+The team has no outside management.
 
 image::2017-09-02-types-of-authority.png[]
 
@@ -108,14 +109,15 @@ https://www.mountaingoatsoftware.com/blog/two-types-of-authority-leaders-must-gi
 === Job Description
 
 Champion the Agile Process::
- as a manager, you will be expected to get behind the move to agile and support it in both your words and your actions.
- Create an awesome work environment to attract smart collaborators,
+as a manager, you will be expected to get behind the move to agile and support it in both your words and your actions.
+Create an awesome work environment to attract smart collaborators.
 Mentor Teams to Solve Problems::
- Their confidence, learning, and the level of respect they earn from their teams will depend to a large extent on how you treat them,
+Their confidence, learning, and the level of respect they earn from their teams will depend to a large extent on how you treat them.
 Participate in transition planning::
- Agile transformation promotes self-organized teams that work efficiently on their own, which involves strategic planning,
+Agile transformation promotes self-organized teams that work efficiently on their own, which involves strategic planning.
 Find ways to reduce waste::
- as an agile manager, you will be expected to continually improve workflow and maximize efficiency by eliminating impediments.
- This key activitiy may not be part of your current role as a manager,
+as an agile manager, you will be expected to continually improve workflow and maximize efficiency by eliminating impediments.
+This key activity may not be part of your current role as a manager,
 
-You will have more than enough work as a manager in an agile company. Only the content will be different.
+You will have more than enough work as a manager in an agile company.
+Only the content will be different.

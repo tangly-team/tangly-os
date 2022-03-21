@@ -44,7 +44,7 @@ The above points in italics are all related to change processes.
 You can handle two thirds of the hurdles with adequate change management training and a clear change product definition.
 Do not try to introduce Scrum at company level without such an approach.
 
-=== Main Reasons Why Agile Projects are Cancelled
+=== The main Reasons Why Agile Projects are Cancelled
 
 * 52%: Missing experience with agile approaches
 * 45%: Company culture clash with agile principles
@@ -61,7 +61,7 @@ Do not try to introduce Scrum at company level without such an approach.
 * 38%: Missing support from senior management
 * 37%: Missing or insufficient training and coaching
 * 35%: Missing communication between departments
-* 23%: Team does not want to learn new approach
+* 23%: Team does not want to learn a new approach
 
 We wrote in previous link:../../2016/scrum-master-is-a-full-time-role[Scrum master is a full time job] that the Scrum Master is of tremendous importance.
 You need a skilled and enthusiastic Scrum Master; avoid Scrum Administrator.
@@ -80,4 +80,4 @@ The Scrum Master serves the organization in several ways, including:
 ____
 
 So the Scrum Master is a main driver for the introduction of Scrum in all departments and levels in the company.
-He needs indeed senior management support but the Scrum Master daily job is to spread Scrum in the company.
+He needs indeed senior management support but the Scrum Master's daily job is to spread Scrum in the company.

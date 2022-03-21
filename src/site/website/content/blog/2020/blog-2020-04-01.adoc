@@ -12,7 +12,7 @@ tags: ["agile", "design", "java", "series-agile-design"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2020-04-01-head.jpg[width=420,height=360,role=left]
-You are responsible to create or modify a component in your current application.
+You are responsible for creating or modifying a component in your current application.
 This is a *design* activity.
 
 How can you create a good, legible, maintainable component architecture?
@@ -34,7 +34,7 @@ The way to solve the same problem is different in Java, Scala, C++, Python or C#
 
 You should know all regular structural, behavioral and creational patterns.
 Explore your programming language and discover how idioms and patterns have evolved between major releases.
-For example lambda expressions and streams introduced in Java 8 - released Spring 2014 - completely transform the solution for regular business logic.
+For example, lambda expressions and streams introduced in Java 8 - released Spring 2014 - completely transform the solution for regular business logic.
 
 Records introduced in Java 14 - released Spring 2020 - have a huge impact how your architecture deals with data transfer objects - DTO - and immutability
 footnote:[Java 17 LTS added full support for https://en.wikipedia.org/wiki/Algebraic_data_type[algebraic data types] with the record and sealed concepts.].
@@ -106,7 +106,7 @@ For example with Java 14
 
 ==== Aggressive Refactoring
 
-The entropy of source code increases over time.
+The entropy of the source code increases over time.
 Only continuous and aggressive refactoring mitigates the degenerescence of your application.
 Each time you correct an error or add a new functionality refactor your code.
 Remove smells, compiler warnings and migrate older code to use newer and better features of your programming language.
@@ -128,7 +128,7 @@ Test driven development is a proven approach to fulfill these requirements and v
 Continuous integration and delivery are the mechanisms to continuously validate and verify all functional and non-functional requirements are correctly implemented.
 You guarantee your users and customers that any software delivery they get is compliant and correct.
 
-Each time you find a discrepancy, add an additional test validating the requirement behind this fault.
+Each time you find a discrepancy, add a test validating the requirement behind this fault.
 The same error will never happen again.
 
 === Good Practices

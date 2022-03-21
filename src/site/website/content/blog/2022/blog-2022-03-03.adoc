@@ -12,42 +12,96 @@ tags: ["agile"]
 
 image::2022-03-03-head.jpg[width=420,height=360,role=left]
 
-=== Wake-Up Call
+The dreaded attack through the log4j logging library was a wake-up call for all companies using obsolete libraries.
+Many organizations found out the hard way they cannot update the library and deploy the new version in a matter of minutes as professional developers should do.
+They needed weeks to perform such a simple activity.
+
+They also found out that they had no process for such regular situations when a critical flaw is detected in some software they are using.
+Seldom did they have the expertise how to upgrade or improve open source artifacts they are using on a daily basis.
+They preferred to use free software and not to invest any thoughts or efforts to support the community.
 
 === Update Your JDK and JVM
 
+A new version of the Java development kit is released every six months.
+Early adaptors versions are always available to migrate and test your solutions.
+Each new version fixes hundreds of bugs and provides new productive features.
+
+*Update your JDK in a timely manner*.
+
+Do not be a laggard as most of the big companies are.
+Most of these organizations are still using Java 8 beginning of year 2022.
+Java 8 was officially released in March 2014.
+
+[WARNING]
+Do not say you cannot update your JDK every six months.
+If your organization is not able to plan and execute such simple updates for mission-critical products, you have acute problems.
+Solve them now.
+
 === Update Your Libraries
 
-Gradles versions catalog is new feature in modern versions of Gradle that allows you to centralise your projects dependencies, plugins and their respective versions into a single location.
+Gradle versions catalog is a new feature in modern versions of Gradle that allows you to centralise your project dependencies, plugins and their respective versions into a single location.
 Plugins are available to check if new versions of your libraries and plugin are available.
-I simply execute the following command to detect new versions
+I simply execute the following command to detect new versions.
 
-[source, gradle]
+[source,gradle]
 ----
 gradle dependencyUpdates -Drevision=release // <1>
 ----
-<1> Check that any libraries or plugins in the project have a newer available version. A
+
+<1> Check that any libraries or plugins in the project have a newer available version.
+
+I still have to decide if you shall update the library.
+The usual approach is to simply update, and run all unit and integration tests.
+If all tests passed successfully, I shall simply upgrade to the newer version otherwise I simply roll back the changes or start a debugging session to find out why some tests failed.
+
+[NOTE]
+The Linux community is not better.
+Timely updates are not common in quite a few organizations.
+They decided in 2022 to migrate from the C 89 standard to the C 11 standard.
+Instead of using a version created thirty-five years ago, they will now program with a solution specified eleven years ago.
 
 === Beware of Technical Debt
 
+Growing technical debt is the death of any application.
+No company can afford to invest huge amounts of money for small changes in the application.
+
+Use static code analyzers to detect traditional security issues and legacy programming constructs.
+
+Constantly remove technical debt from your application.
+Each time you have to edit a specific source code, remove some smells in the same file.
+
+[IMPORTANT]
+====
+IntelliJ IDEA IDE provides static code analysis and improvements suggestion out of the box.
+
+Plugins such as SonarLint, SpotBugs, PMD, Checkstyle provide different sets of checks.
+You can run these analyses directly in the IDE.
+Add these checks to your continuous integration pipeline to introduce a quality gate into your development process.
+====
+
 === Monitor, Log, Audit
 
-=== Use Static Code Analyzers
+Professional teams constantly monitor their applications.
+Activities are logged for regular assessments and in case of troubleshooting.
+Critical information is audited to respect corporate governance and legal requirements as well.
 
 === What We learnt
 
+[horizontal]
 Fallacy of maintenance costs::
-Regular technical maintenance is a well-know approach to optimize the value of product.
+Regular technical maintenance is a well-known approach to optimizing the value of the product.
 Why does the software industry think that maintenance is a cost point and not an investment?
 Ignorance of legal consequences::
-Your company and yourself are legally responsible to protect customers and stakeholders against known dangers and flaws.
+Your company and you are legally responsible for protecting customers and stakeholders against known dangers and flaws.
 You are liable to losses of money and reputation for your customers.
 The big economic blocks have strengthened their protection laws and have introduced heavy fines and potential prison penalties for convicts.
 Lacking professional ethics::
-I will never go a physician not following hygiene and prevention good practices and regulation.
-Why should I acknowledge a software developer ignoring documented and accepted approaches to improve quality and reduce risks.
+I will never go to a physician not following hygiene and prevention good practices and regulation.
+Why should I acknowledge a software developer ignoring documented and accepted approaches to improve quality and reduce risks?
 
-Be proud to create effective and secure products
+Be proud to create effective and secure products.
+You are a professional software engineer.
+You shall behave ethically and take responsibility for failures.
 
 [bibliography]
 === Literature

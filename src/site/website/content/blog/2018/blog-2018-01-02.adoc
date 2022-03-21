@@ -30,7 +30,7 @@ Perform an agile assessment with an external expert from another company or depa
 === Effort
 
 You want to take a fresh view on your process and practices.
-The external person shall provide hints that he observed in your team and how other groups solved similar problems.
+The external person shall provide hints that she observed in your team and how other groups solved similar problems.
 The assessment lasts approximately 2 days per team including the finding workshop with the team members, Scrum Master, and Product Owner.
 This workshop has around half a day duration.
 
@@ -43,7 +43,7 @@ The Scrum Assessment speeds up your Scrum mastery and let you collect low-hangin
 * Where do you deviate from the Scrum theory and what are the consequences for you?
 * Are your structures and practices for coordinating dependent teams effective, meaning scale agile?
 * What potential for improvement do you have?
-* Which measures make sense so you can benefit more from Scrum?
+* Which measures make sense, so you can benefit more from Scrum?
 * Could you introduce agile techniques to increase the quality and to enhance outcomes?
 
 We work on these themes in the _Scrum Assessment_.
@@ -65,8 +65,9 @@ We typically proceed as follow for the analysis:
 
 After this analysis, we do a debriefing in a half-day workshop.
 We present our observations, conclusions and recommendations.
-The Scrum team uses our findings to reinitiate their agile transformation journey.
+The Scrum team uses our findings to calibrate and adapt their agile transformation journey.
 
-Through the workshop approach, we tailor the recommendations together with the team members to specific needs and we can clarify any ambiguities.
+Through the workshop approach, we tailor the recommendations together with the team members to specific needs.
+We can clarify any ambiguities.
 
 Upon request, we will also prepare a written report.

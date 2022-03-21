@@ -18,7 +18,7 @@ You enjoy our long conversations with the enterprise data architect and find out
 
 How do you relate with external systems and communicate with other companies?
 
-How do you define internal identifiers which grow with the application success?
+How do you define internal identifiers which grow with application success?
 
 How can you bridge the customer world with your software solution?
 

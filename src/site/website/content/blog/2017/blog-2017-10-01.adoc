@@ -15,8 +15,8 @@ image::2017-10-01-head.gif[width=420, height=360, role=left]
 The difficulty with contracts is that it is about trust.
 Here lays the roots for success or disaster.
 
-If no trust exists the henceforth dread process is established.
-After tough negotiations the development team starts but does not collaborate with the customer.
+If no trust exists, the henceforth dreaded process is established.
+After tough negotiations, the development team starts but does not collaborate with the customer.
 They just build what is written in outdated requirements.
 A subpar solution is shipped and the relationship with the customer is deeply damaged.
 We can do better.
@@ -28,15 +28,15 @@ By contractual I mean no time and material approach.
 We shall
 
 * Define and rapidly realize the minimum viable product _MVP_.
- It defines success and build trust.
+ This product defines success and builds trust.
  Use this MVP as anchor during contract negotiation.
 * Prioritize _Money, Time, and Scope_.
  The most important item - and it can only be one - is the basis for the agile contract,
 * Service is the essence of software application development.
  So your agile contract shall be a _service contract_.
- Select a rolling contract approach to deeply involve both sides,
+ Select a rolling contract approach to deeply involve both sides.
 * _Fail early and learn_.
- The disputes between contractor and customer shall stay reasonable due to the smaller amounts in play.
+ The disputes between contractors and customers shall stay reasonable due to the smaller amounts in play.
 
 === Contract
 
@@ -47,7 +47,7 @@ Use rolling contracts to extend the product.
 Priority on Money::
  Frame cost as investment and discuss value with the customer, not just money. +
  _Fix the budget - money dimension - and have some tentative milestones.
- Therefore we must invest to prioritize the stories and talk about your MVP.
+ We must invest to prioritize the stories and talk about your MVP.
  Often nice to have functions are never realized._
 Priority on Time::
  Sometimes, it is not about the cost.

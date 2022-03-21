@@ -21,7 +21,7 @@ Best to communicate a lot, strengthen your teams and have total support of upper
 Technical agile coaching usefully describes the work I do.
 Agile coaching helps your business to become more successful, often improve the way you plan and deliver software.
 
-Technical agile coaching focuses on how people design products, write code and deliver high quality products.
+Technical agile coaching focuses on how people design products, write code and deliver high-quality products.
 
 My aim is the same as other agile coaches.
 I improve the agility of the organizations I work with.
@@ -109,7 +109,7 @@ A team coach typically focuses on:
 A coach works with (or on) a team on their actual codebase in order to improve the technical practices and adopt agile development techniques.
 
 [.text-center]
-*A technical coach is an expert in software development techniques*
+*A technical coach is an expert on software development techniques*
 
 image::2021-02-01-technical-agility.png[width=800,height=600,role=center]
 
@@ -131,7 +131,7 @@ A coach typically focuses on:
 * Efficient and effective working practices (IDE, automation),
 * Applying design patterns.
 
-In all our mandates one major activity is improving legacy code.
+In all our mandates one major activity is improving the legacy code.
 
 [.text-center]
 Legacy code is *Code without tests*
@@ -164,8 +164,8 @@ After that reduce (not eliminate!) the external technical coaching or let the ex
 * Thrive for craftsmanship,
 * Let the team use internal social pressure,
 * Eliminate specialization, push mastery,
-* At the beginning follow the LeSS rules,
-* Extended responsibility, rounded products provides a room and freedom for better decisions.
+* At the beginning, follow the LeSS rules,
+* Extended responsibility, rounded products provide a room and freedom for better decisions.
 
 === Remember
 
@@ -177,7 +177,7 @@ The product owner is where the money is.
 Depending on your organization put him where the budget comes from.
 
 Move from a component owner to become a component mentor.
-He is responsible to teach others how to adapt and evolve the component.
+He is responsible for teaching others how to adapt and evolve the component.
 
 === References
 

@@ -16,14 +16,14 @@ image::2021-07-01-head.jpg[width=420,height=360,role=left]
 Agile approaches advocate dynamic planning and adaptation to new inputs and priority changes.
 The {ref-bbrt} movement promotes rolling planning, budgeting and reporting.
 
-The beyond budgeting techniques recommend the complete abolition of traditional budgeting processes.
+The _beyond budgeting_ techniques recommend the complete abolition of traditional budgeting processes.
 They require the implementation of new techniques that will replace them.
 The BB framework does not specify the exact techniques that are applicable to all companies.
 
 However, there are some techniques that have proven to be effective in real cases in the past.
 These techniques include the following:
 
-* Rolling forecasts are created monthly or quarterly rather than annually.
+* Rolling forecasts are created monthly or quarterly rather than on an annual interval.
 * Company’s targets are based on key performance indicators _KPI_.
 * The performance of the company’s managers is evaluated based on external benchmarks rather than their past performance.
 * Operational managers are empowered to react to the changes in the business environment and can dynamically coordinate their actions.
@@ -37,14 +37,14 @@ Rolling accounting is quite easy.
 You shall display only transactions bocked during the selected time interval.
 You shall be able to generate the balance sheet for the date defining the start of the time interval.
 
-The data is usable only if your accounting department does not tune the accounts at the end of the quarter or at the end of the year.
+The data are usable only if your accounting department does not tune the accounts at the end of the quarter or at the end of the year.
 For example, Swiss companies shall separate the rolling accounting from their legal accounting used for VAT or earnings tax purposes.
 A better approach is to define rules avoiding most of the tuning actions.
 
 === Customers, Activities and Offers
 
 No special effort is necessary.
-Customer relationships activities just need to be timely registered.
+Customer relationship activities just need to be timely registered.
 
 === Contracts and Projects
 
@@ -70,11 +70,11 @@ The analytics time interval is independent of the system overall interval.
 
 === Lessons Learnt
 
-https://en.wikipedia.org/wiki/Event-driven_architecture[Event sourcing] concepts are very powerful to implement an ERP providing time interval based visualization and analysis.
+https://en.wikipedia.org/wiki/Event-driven_architecture[Event sourcing] concepts are very powerful to implement an ERP providing time-interval based visualization and analysis.
 The concept works well with the https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design] concepts.
 
 The responsiveness of the application is impressive for data volume compatible with small and medium enterprises.
-We do not have empirical data for international big companies.
+We do not have empirical data for international companies.
 The approach works well if all data are based on true and fair booking.
 
 Legal aspects in countries like Switzerland often imply that accounting reflects tax view instead of a true and fair view of the finances.

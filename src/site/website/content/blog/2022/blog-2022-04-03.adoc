@@ -37,7 +37,8 @@ You should:
 * Create any necessary pricing or revenue-generating elements and out-licensing models.
 * Develop customer-centric ROI models that align with the value provided.
 * Identify financing models to create and maintain the product line.
-Often you shall acquire and retain the team in charge of the development and support of your product.
+Often you shall acquire and retain the team in charge.
+Their expertise lowers the cost of the development and support of your product.
 
 _Assume you need formal training in marketing, sales, finances, accounting and controlling.
 This is typically achieved with an executive master education during your career._
@@ -51,7 +52,7 @@ You should:
 * Nurture agile teams with the right set of capabilities.
 * Develop true partnerships with other companies.
 
-_Interestingly product managers often neglect this responsibility.
+_Interestingly, product managers often neglect this responsibility.
 They are fully aware of logistics and production issues.
 Seldom do they put similar effort in the development teams in charge of their products._
 
@@ -61,19 +62,20 @@ Product managers collaborate with agile functional teams to build the required f
 
 Understand customer needs::
 As the representative of the customer, product management leverages market research and continuous exploration to continually understand customer and market needs.
-Design thinking tools, ranging from personas, empathy maps, journey maps, and story maps are used to communicate these to the development teams.
+Design thinking tools, ranging from personas, empathy maps, journey maps, and story maps are used to communicating these to the development teams.
 Ensure product completeness::
 Product management is responsible for ensuring the product is considered _whole and complete_ from a defined customer’s perspective.
 Products that serve multiple market segments may have different considerations of _whole and complete_ and of
 https://en.wikipedia.org/wiki/Minimum_viable_product[minimum viable products].
 Develop and communicate the program vision and roadmap::
 Product management continuously develops and communicates the vision to the agile teams, while defining the features of the system.
-Collaborating with system architect and engineering experts, they also define and maintain the https://en.wikipedia.org/wiki/Non-functional_requirement[non-functional
+Collaborating with system architects and engineering experts, they also define and maintain the https://en.wikipedia.org/wiki/Non-functional_requirement[non-functional
 requirements] _NFRs_ to ensure that the solution meets relevant standards and other system quality requirements.
 They are responsible for the roadmap, which illustrates how features are intended to be implemented over time.
 Manage and prioritize the flow of work::
 Product management supports the flow of work through the program Kanban and into the program backlog, responsible for ensuring enough features are ready in the backlog at all times.
-Because judicious selection and sequencing of features is a key economic driver for each https://en.wikipedia.org/wiki/Value_stream[value stream], the backlog is regularly prioritized.
+Because judicious selection and sequencing of features are a key economic driver for each https://en.wikipedia.org/wiki/Value_stream[value stream], the backlog is regularly
+prioritized.
 Participate in release and sprint planning::
 Product Management presents the vision, which highlights the proposed features of the solution, along with any relevant upcoming milestones.
 They also participate as sprint planning and are responsible for approving objectives and establishing business value.
@@ -138,28 +140,28 @@ Internationalization and localization are regular aspects of an application.
 ** Technology stack selection to optimize development and training costs.
 Strategical aspects must be considered to optimize long-term revenues and minimize risks.
 ** Provide interoperability to public interfaces.
-In the health sector it could be the Health https://en.wikipedia.org/wiki/Health_Level_7[Level 7] _HL7_ set of standards.
+In the health sector, it could be the Health https://en.wikipedia.org/wiki/Health_Level_7[Level 7] _HL7_ set of standards.
 Each government defines their API to provide mandatory information for social security, value added tax reporting, cyberattacks alarming, or statistics.
 ** Avoid technology obsolescence and define cost-effective migration paths.
 ** Motivate collaborators and be an attractive company for professional engineers.
 
 === Continuous Training
 
-Training on the job is certainly a good approach to learn some required skills.
+Training on the job is certainly a good approach to learning some required skills.
 Be honest.
 You still need formal continuous training to master the whole set of capabilities.
 The landscape of potential formal training is heterogeneous.
 
 image::2022-04-03-PM-dependencies.png[width=420,height=360,role=left]
 
-Product management and marketing is one specialization::
+Product management and marketing are one area of specialization::
 The offerings are mature and well-structured.
 Beware that modern product and project management approaches based on agile principles are often missing in the offering. +
 Big organizations such as https://www.pmi.org/[PMI] have realized the need and are now focusing on more agile approaches.
-Digital transformation and technology awareness is a second specialization::
+Digital transformation and technology awareness are a second area of specialization::
 The available trainings either emphasize business and culture or technology.
 The integration of the product, organization and technology dimensions is currently not available in regular education.
-I assume this dichotomy reflects the silo structure of the majority of companies.
+I assume this dichotomy reflects the silo structure of many companies.
 
 [IMPORTANT]
 ====
@@ -169,11 +171,12 @@ These leaders master product development, collaborators nurturing, financial acu
 Successful executives shall master culture, market and technology to launch awesome product lines.
 ====
 
-Leadership and collaborator management is a third specialization::
+Leadership and collaborator management are a third specialization::
 Modern and agile approaches are still very young.
 The offerings are still quite old school and not well-tailored for digital companies.
 The still ill used term _human resources_ is quite the indicator how collaborators hiring and retainment is done wrong in old-fashioned organizations. +
-Persons never can be considered as resources, they are unique individuals to be nurtured and respected.
+Persons can never be considered as resources.
+They are unique individuals to be nurtured and respected.
 
 The following formal trainings are available through academic institutions:
 
@@ -190,6 +193,6 @@ FH HSLU]
 
 I strongly recommend evaluating the offerings and exhaustively discussing the content with the program director.
 The offerings are slowly moving to a more holistic and agile approaches.
-Too often the institutes still cling to obsolete practices and are not aware of all facets of digital product development.
+Too often, the institutes still cling to obsolete practices and are not aware of all facets of digital product development.
 
-In particular technological factors and agile collaborator approaches are sorely missing in many curriculums.
+technological factors and agile collaborator approaches are sorely missing in many curriculums.

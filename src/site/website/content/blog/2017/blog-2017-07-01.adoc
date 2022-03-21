@@ -20,7 +20,7 @@ Too often Scrum masters become Scrum administrators.
 They schedule meetings, moderate discussions, write progress reports and draw beautiful slides how to improve the organization.
 Or worst they collect extensive statistics about velocity, planned versus delivered story points or how precise story estimation was.
 
-At the end of the day your job is to mentor your team to be champions and build awesome products.
+At the end of the day, your job is to mentor your team to be champions and build awesome products.
 _Wake up!_ You are not a product manager, you shall be a catalyst.
 
 === Facets of a Scrum Master
@@ -58,19 +58,19 @@ Do not create head sinks in documents, * Holding meetings with one person projec
 
 [quote,Geoff Watts,Scrum Mastery]
 ____
-A good Scrum Master helps a Scrum Team survive in an organizations’ culture.
+A good Scrum Master helps a Scrum Team survive in an organization's culture.
 A great Scrum Master helps change the culture so Scrum Teams can thrive.
 ____
 
 Face 2 Face::
 Prefer physical meetings to all other communication medium.
-Use video conference and chatting tools to feel the mood of your team,
+Use video conference and chatting tools to feel the mood of your team.
 Emergent::
 Good enough to try it, Safe enough to do it.
-Do not look for the perfect solution before trying a new approach,
+Do not look for the perfect solution before trying a new approach.
 https://en.wikipedia.org/wiki/PDCA[Plan Do Check Act] _PDCA_::
 Embrace complex systems and try new approaches to improve your team.
-F focus on external and internal quality,
+F focus on external and internal quality.
 Process Ownership to Keep It Alive::
 You are not in charge of the team processes, the team is,
 https://en.wikipedia.org/wiki/Community_of_practice[Community of Practice] _PoC_::

@@ -70,7 +70,7 @@ ____
 . As a corollary to (1), any change initiative will be derided as *purist*, *theoretical*, *revolutionary*, *religion*,
 and *needing pragmatic customization for local concerns* — which deflects from addressing weaknesses and manager/specialist status quo.
 
-. As a corollary to (1), if after changing the change some managers and single-specialists are still displaced, they become *coaches/trainers* for the
+. As a corollary to (1), if after changing the change, some managers and single-specialists are still displaced, they become *coaches/trainers* for the
 change, frequently reinforcing (2) and (3).
 
 . Culture follows structure.
@@ -111,7 +111,7 @@ ____
  The https://martinfowler.com/articles/agileFluency.html[Agile Fluency Model] provides a potential roadmap.
 * Agile transformation works only if your organization thrives to satisfy customer's needs and achieve technical excellence.
 
-Please compare your change process against these anti-atterns. Correct if needed.
+Please compare your change process against these anti-patterns. Correct if needed.
 
 === Lessons Learnt
 
@@ -137,7 +137,7 @@ Embrace reality. At least eighty percent of all software and research activities
 This war is won. We are moping the last islands of resistance.
 
 _For me, it is similar to the introduction of object-oriented approaches in analysis, design, and realisation of software projects.
-In the late nineties of last century the war was won. It took more than ten years to take care of the last luddites._
+In the late nineties of last century, the object-oriented movement won. It took more than ten years to take care of the last luddites._
 
 _Our company https://wwww.tangly.net/[tangly llc] works steadily and continuously to advance agile and lean values.
 Our structure and processes actively support agile values. We are very happy with the current results._

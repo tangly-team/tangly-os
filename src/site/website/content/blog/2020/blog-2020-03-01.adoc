@@ -12,22 +12,22 @@ tags: ["java"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2020-03-01-head.jpg[width=420, height=360, role=left]
-We need *justification* not to use immutable objects in ours solutions, rather than an *affirmative reason* to use them.
+We need *justification* not to use immutable objects in our solutions, rather than an *affirmative reason* to use them.
 Records provide a first-class means for modeling data-only aggregates.
-They are available in Java since release of JDK 14.
+They have been available in Java since the release of JDK 14.
 
 Records are often seen as _syntactic sugar_ to easily create _immutable objects_ without having to write a lot of boilerplate code.
 Records as a clean definition of immutable objects can have a tremendous impact on your component design.
 
 You as a designer have to reflect why your abstractions are not immutable and what is the rationale behind.
-From experience, it improves greatly the quality of your design.
+From experience, it improves the quality of your design.
 
 Records guarantee:
 
-* An immutable class concept which is the strongest argument for the use of record,
-* Cannot change their state after construction,
-* Don’t change the state of the whole system in any way,
-* Don’t do side effects, like inputs and outputs for example.
+* An immutable class concept which is the strongest argument for the use of record.
+* Cannot change their state after construction.
+* Don’t change the state of the whole system in any way.
+* Don’t do side effects, like inputs and outputs.
 
 Records provide
 
@@ -61,7 +61,7 @@ Key benefits of immutable objects are:
 I updated my open source projects to use the record abstraction.
 What a surprise!
 I found regularly undocumented trade-offs why a class was not implemented as an immutable type.
-Quite often I was just lazy and took a shortcut.
+Quite often, I was just lazy and took a shortcut.
 
 Records motivate you as a clean coder and designer to decide why a class should be mutable or not.
 This pressure had a tremendous impact on the quality of my subsystem design.
@@ -89,13 +89,13 @@ This validation block is automatically inserted at the beginning of the generate
  }
 ----
 
-As soon as the record has more than a few instance variables calling the constructor with various set of default values can become cumbersome.
+As soon as the record has more than a few instance variables calling the constructor with various sets of default values can become cumbersome.
 
 Two approaches easily mitigate this problem.
 
-* For a simple situation create static factory methods taking care of default parameter values.
-For examples look at the standard API List class and the set of static of methods.
-* For more complex situation implement the builder patten to provide full flexibility to the consumers of your class.
+* Create static factory methods taking care of default parameter values for simple situations.
+Look at the standard API List class and the set of static methods _of_.
+* Implement the builder pattern to provide full flexibility to the consumers of your class.
 
 Start using the new concept of record in your source code and implicitly improve the quality of your design.
-At the same time write less boilerplate code and enjoy coding.
+At the same time, write less boilerplate code and enjoy coding.

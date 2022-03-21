@@ -32,7 +32,7 @@ _Put the ticket number into the branch name and messages for future searches._
 
 [TIP]
 ====
-A lot of servers support keywords such _fix #42_ to automatically close the ticket 42.
+A lot of servers support keywords such as _fix #42_ to automatically close the ticket 42.
 ====
 
 The described approach is optimal for small teams.
@@ -40,7 +40,7 @@ The approach is compatible to pull requests if you introduce such a workflow lat
 You do not need to pull requests when you are working collocated.
 I prefer pair programming and pair check-in sessions against the trunk.
 
-For a short introduction how to start using Git in software projects see the blog
+For a short introduction to how to start using Git in software projects, see the blog
 link:../../2017/git-local-repositories-for-impatient[Git Local Repositories for the Impatient].
 
 === Create the Branch
@@ -95,7 +95,7 @@ Merge to master. The option --no-ff will always keep branch information.
 git merge --no-ff feat_#42
 ----
 
-Or if you want a single commit for the complete branch.
+Or if you want a single commit to the complete branch.
 
 [source, shell]
 ----
@@ -131,7 +131,7 @@ You are done. Now you are ready to implement the next feature.
 
 === View local and remote Branches
 
-If you want to view branches use the following commands for the local branches.
+If you want to view branches, use the following commands for the local branches.
 
 [source, shell]
 ----
@@ -167,7 +167,7 @@ The nifty-gritty details can be found in the official https://git-scm.com/book/e
 
 [WARNING]
 ====
-Beware that for example http://gitolite.com/[gitolite] does not support special characters such as # in branch names.
+Beware that http://gitolite.com/[gitolite] does not support special characters such as # in branch names.
 Use them only in the commit messages.
 ====
 

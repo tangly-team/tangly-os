@@ -28,7 +28,7 @@ Can you as a designer govern the ontology defined through labels?
 
 Tags add semantic information to business entities.
 Tags are often defined as a crowd ontology without enforced schemas.
-Invest in domain modeling to define and maintain tags and you will move tags to a full-fledged ontology other your domain models.
+Invest in domain modeling to define and maintain tags and you will move tags to full-fledged ontology other your domain models.
 This ontology supports meaningful search, segmentation and reporting over historical and geographical raw data.
 
 Tags with associated values are also used to decorate unrelated entities with orthogonal information.
@@ -38,12 +38,12 @@ A tag has three parts:
 
 * an _optional namespace_ to classify the tag in the overall ontology,
 * a _mandatory name_ to uniquely identify the tag in the context of its optional namespace,
-* an _optional value_ providing a details to the tag
+* an _optional value_ providing details to the tag
 
 For example, we could define a tag such as _geo:longitude=50.167958_ to provide the meta information of longitude to an entity.
 This tag has a namespace _geo_, a name _longitude_ and a double value _50.167958_.
 
-Additional information are available under link:../../docs/bus/businessmodels/ Below the source code in modern Java is
+Additional information is available under link:../../docs/bus/businessmodels/ Below the source code in modern Java is
 
 [source,java]
 ----
@@ -53,18 +53,18 @@ public record Tag(String namespace, @NotNull String name, String value) {}
 You should strongly consider the introduction of tag types to constrain the possible values of a specific tag.
 For example, you can define that the namespace geo contains only the tags longitude and latitude.
 Both these tags have mandatory values of type double.
-Once your design supports tag types you can add generic validation rules in the user interface and in the business logic for all existing tags.
+Once your design supports tag types, you can add generic validation rules in the user interface and in business logic for all existing tags.
 
 The ontology enforcement allows consistent reporting and data drilling over departments in your company and over time.
 
 === Comments
 
-Comments provide human readable inf-rmation and hints for entities.
+Comments provide human-readable information and hints for entities.
 
 An author writes a comment at a specific time.
-Usually comments shall be immutable.
-To respect human fallibility a correction mode can be supported.
-If changed the new comment replaces the older one and is marked as edited.
+Comments shall usually be immutable.
+To respect human fallibility, a correction mode can be supported.
+If changed, the new comment replaces the older one and is marked as edited.
 The edition feature is part of the workflow and not part of the domain model.
 
 An author can be another computer system.

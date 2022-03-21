@@ -14,7 +14,7 @@ tags: ["design"]
 image::2018-06-01-head.jpg[width=420, height=360, role=left]
 Lately I was asked how many bugs and smells detected through SonarQube were acceptable for a software product.
 And a Scrum master inquired which organizational changes are necessary to empower software developers to write good code.
-Speechless and dumbfounded I was unable to answer these questions.
+Speechless and dumbfounded, I was unable to answer these questions.
 
 After quite some time I realized these persons believe tools can measure the quality of software.
 But tools can only measure _non-quality_.
@@ -56,15 +56,15 @@ automatic tests the feature behave how your customer requested,
 * Defect driven development - You insure through automatic tests your customer will never encounter this exact error again,
 * Fast release and deployment cycle
 - You give your customer a way to detect bad behavior early and have an opportunity to ask for improvement.
-By fast we mean daily or perhaps weekly.
+By fast, we mean daily or perhaps weekly.
 
 ==== Intrinsic Quality - Technical Quality
 
 _Is why you can daily drive your car and not have to weekly repair it. And, later be able to add a charger for your mobile phone without spending a fortune._
 
-* Static code analysis - Known weaknesses are removed from your source code,
-* Test driven development TDD - You can change the code without changing the behavior or outputs, see also ATDD,
-* Clean code - You guarantee the source code is maintainable,
+* Static code analysis - Known weaknesses are removed from your source code.
+* Test driven development TDD - You can change the code without changing the behavior or outputs, see also ATDD.
+* Clean code - You guarantee the source code is maintainable.
 * Clean architecture and domain driven development - You guarantee the product is extendable.
 
 === Accountability
@@ -73,10 +73,10 @@ The Scrum Team - Development Team, Product Owner and Scrum Master - are responsi
 of the delivered products.
 Insufficient quality is always a collective failure.
 
-Truly if the intrinsic quality of the source code is low, it is undeniably a failure.
+Truly, if the intrinsic quality of the source code is low, it is undeniably a failure.
 A failure of the development team and of each software developer writing the code; and a failure of the Scrum master holding and teaching agile and Scrum values.
 
-When there is high pressure on delivery people have a tendency to pay less attention to processes and standards.
+When there is high pressure on delivery, people have a tendency to pay less attention to processes and standards.
 That is one of the reasons why in Scrum we have the role of Scrum master responsible for understanding and enacting agile practices and rules.
 
 And no physician will ever cut corners just because he is in a stressful situation.
@@ -88,7 +88,7 @@ Continuous attention to technical excellence and good design enhances agility.
 ____
 
 Developers please read the seminal book _Clean Coder_ <<cleancoder>> from Robert Martin.
-As a professional you are responsible and accountable for the quality of the software you produce.
+As a professional, you are responsible and accountable for the quality of the software you produce.
 
 I find intolerable to hear software professionals stating they are not in charge of the intrinsic quality of the product they write.
 They cowardly try to push the responsibility to the internal quality assurance department or to the whole organization.
@@ -99,12 +99,12 @@ The above ideas are keys for https://tangly-blog.blogspot.com/2018/04/pragmatic-
 
 The first steps to improve your product are quite simple are around for at least twenty years.
 
-* Eliminate all compiler errors and warnings,
-* Use static checkers,
+* Eliminate all compiler errors and warnings.
+* Use static checkers.
 * Activate the checkers of the IDE you are working with.
- For example, I am using IntelliJ IDEA and they have extensive checkers,
+ For example, I am using IntelliJ IDEA and they have extensive checkers.
 * If using https://www.sonarqube.org/[SonarQube], download {url-articles}/2018/blog-2018-05-01]SonarLint plugin and simply use it -.
- This tool is best of breed, do not argument and just use it -,
+ This tool is best of breed, do not argument and just use it -.
 * Write tests with JUnit5, Mockito, AssertJ, Cucumber.
 
 I am _ashamed_ to see software developers not implementing the above measures on a daily basis.
@@ -117,14 +117,14 @@ Your goal is simply zero warnings at the end of the spring.
 Later tighten it to zero warnings in the trunk of your git repository.
 Just do it - and stop arguing about the merits and costs -!
 
-And if you do not agree with one of the warnings just disable the rule and document the reason in an architecture design record ADR.
+And if you do not agree with one of the warnings just disable the rule and document the reason for an architecture design record ADR.
 
 Agile and Scrum are all about learning and continuous improvement.
 Please stop talking about quality and just start improving it!
 I do not want to hear any lame excuses why a software developer is not continuously doing the above activities.
 
 _I acknowledge I am emotionally involved and not fully objective.
-Lately I saw Java code of three different commercial products and I am still recovering from the missing quality._
+Lately, I saw a Java code of three different commercial products and I am still recovering from the missing quality._
 
 [bibliography]
 === Literature

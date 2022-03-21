@@ -15,7 +15,8 @@ image::2017-11-01-head.jpg[width=420,height=360,role=left]
 
 An impediment is any aspect hindering the team or a company to deliver value and higher quality to the customers.
 
-An agile organization continuously removes impediments, it is one of her major activities.
+An agile organization continuously removes impediments.
+It is one of her major activities.
 This activity is ongoing and can never be completed.
 
 Impediments resolution is {ref-kaizen} 改善, a key technique to lean, agile and Scrum approaches.
@@ -34,16 +35,16 @@ You shall
 * Make impediments visible.
 Publish them on the Scrum board for all to be seen.
 Use diagrams and colors.
-Do not hide them in an issue tracker or a spreadsheet,
+Do not hide them in an issue tracker or a spreadsheet.
 * Raise issues early and often.
 The daily stand-up meeting is an ideal platform.
-Ask each day if impediments jeopardize the sprint goal,
+Ask each day if impediments jeopardize the sprint goal.
 * Feelings matter.
 Let everybody identify impediments.
-An impediment is a dysfunction of the organization, never a flaw in an individual,
+An impediment is a dysfunction of the organization, never a flaw in an individual.
 * Aim for effectivity and quality.
-Efficiency is less important,
-* Find out the root causes, discuss the https://en.wikipedia.org/wiki/5_Whys[5 Whys] over the how,
+Efficiency is less important.
+* Find out the root causes, discuss the https://en.wikipedia.org/wiki/5_Whys[5 Whys] over the how.
 * Provide safe to fail environment.
 Use the {ref-pdca} loop to implement your experiments to improve,
 * Life the https://www.scrumalliance.org/why-scrum/core-scrum-values-roles[Scrum values].
@@ -73,11 +74,11 @@ The Scrum master is responsible to coach the team and help solve overall impedim
 The identification step is the easy one, do not forget to track impediments and their resolution.
 You have a serious problem
 
-* If the impediment backlog lives in the mysterious black book of the Scrum master,
-* If your impediment backlog does not change,
-* If your impediment backlog is empty,
-* If you have an impediment backlog with a growing number of active impediments,
-* If the Scrum master resolves all impediments himself,
+* If the impediment backlog lives in the mysterious black book of the Scrum master.
+* If your impediment backlog does not change.
+* If your impediment backlog is empty.
+* If you have an impediment backlog with a growing number of active impediments.
+* If the Scrum master resolves all the impediments himself.
 * If you do not solve at least one impediment each sprint.
 It is a mandatory part in the {ref-scrumguide} 2018 version.
 

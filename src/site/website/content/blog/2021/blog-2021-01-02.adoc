@@ -33,15 +33,15 @@ ____
 === External Well-Defined Identifiers
 
 The best identifiers are externally well-defined identifiers.
-A unique and well-defined authority is responsible to define and publish them.
-Ideally the authority should only create new identifiers and never delete existing ones.
+A unique and well-defined authority is responsible for defining and publishing them.
+Ideally, the authorities should only create new identifiers and never delete existing ones.
 The published information is available to all interested parties.
 
 Examples are
 
-* Currency names as defined in https://en.wikipedia.org/wiki/ISO_4217[ISO standard 4217],
-* Country abbreviations as define in https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes[ISO standard 3166],
-* Social security numbers are well documented in the country they are used,
+* Currency names as defined in https://en.wikipedia.org/wiki/ISO_4217[ISO standard 4217].
+* Country abbreviations as defined in https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes[ISO standard 3166].
+* Social security numbers are well documented in the country they are used.
 * Car numbers are well-known and documented.
 
 Try to use global externally defined identifiers as much as possible.
@@ -49,12 +49,12 @@ Always document the authority in charge to create these identifiers.
 
 Examples you are using are
 
-* IBAN account numbers are defined worldwide through https://en.wikipedia.org/wiki/International_Bank_Account_Number[ISO 13616],
+* IBAN account numbers are defined worldwide through https://en.wikipedia.org/wiki/International_Bank_Account_Number[ISO 13616].
 * Bank connections are defined as Business Identifier Codes through https://en.wikipedia.org/wiki/ISO_9362[BIC ISO 9362].
-The registration authority is https://en.wikipedia.org/wiki/Society_for_Worldwide_Interbank_Financial_Telecommunication[SWIFT],
-* Car numbers and country acronyms are defined worldwide,
+The registration authority is https://en.wikipedia.org/wiki/Society_for_Worldwide_Interbank_Financial_Telecommunication[SWIFT].
+* Car numbers and country acronyms are defined worldwide.
 * Passport numbers are defined worldwide.
-Each country has its own structure and conventions,
+Each country has its own structure and conventions.
 * Social security numbers are a counter-example.
 There are currently only defined locally.
 
@@ -78,11 +78,11 @@ An example of such an identifier would be
 
 Variations are
 
-* A full date as prefix, our system uses this convention to name invoices,
+* A full date as prefix, our system uses this convention to name invoices.
 * A more readable acronym, our ERP system uses the word invoice to name invoices.
 
-Beware if you export internal managed identifiers you become a source of truth.
-You are responsible to document these identifiers, and the process to create new ones.
+Beware if you export internal managed identifiers, you become a source of truth.
+You are responsible for documenting these identifiers, and the process to create new ones.
 You shall also guaranty that existing identifiers are never recycled.
 If your identifiers are strings, you shall clearly define the supported languages, and character sets.
 
@@ -110,7 +110,7 @@ Always try to find an external, well-defined identifier for your entities.
 Beware of legal aspects when you are using government defined identifiers such as social security numbers, passport numbers or car numbers.
 
 Avoid by all means to use an internal privately defined identifier as a public one.
-You will bear the burden to document, manage and evolve the scheme as soon as you do this.
+You will bear the burden of documenting, manage and evolve the scheme as soon as you do this.
 
 Related concepts are discussed in our blog series
 

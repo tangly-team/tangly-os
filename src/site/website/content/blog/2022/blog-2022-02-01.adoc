@@ -60,7 +60,7 @@ A digital document can automatically be processed by partners' applications.
 A PDF document is *not* an electronic slipper.].
 The new war for talent::
 As creative knowledge- and learning-based tasks become more important, organizations need a distinctive value proposition to acquire and retain the best talent.
-These _knowledge workers_ often have more diverse origins, thoughts, composition, and experience and may have different desires (for example, millennials).
+These _knowledge workers_ often have more diverse origins, thoughts, composition, and experience and may have different desires, (for example, millennials).
 
 === Trademarks of Agile Organizations
 
@@ -70,7 +70,7 @@ They try to figure out solutions to difficult problems as they go along, using S
 
 [quote,Kierkegaard]
 ____
-Life can only be understood backwards; but it must be lived forwards.
+Life can only be understood backwards; but it must be lived forward.
 ____
 
 Non-agile organizations are only talking <<agile-bullshit>>.
@@ -94,13 +94,13 @@ Agile is not magic nor a https://en.wikipedia.org/wiki/No_Silver_Bullet[silver b
 
 Fully understand that:
 
-* Agile does not fix poor leadership, poor management, or command-and-control culture,
-* Agile does not fix lack of engagement or company political games,
-* Agile does not fix people's ego or lack of motivation,
-* Agile does not fix poor behaviors, culture and mindset,
-* Agile does not fix over-allocation of people or lack of focus,
-* Agile does not fix poor customer focus Agile does not fix poor process workflow or poor collaboration,
-* Agile does not fix poor HR compensation process that does not set the right people's behavior.
+* Agile does not fix poor leadership, poor management, or command-and-control culture.
+* Agile does not fix lack of engagement or company political games.
+* Agile does not fix people's ego or lack of motivation.
+* Agile does not fix poor behaviors, culture and mindset.
+* Agile does not fix over-allocation of people or lack of focus.
+* Agile does not fix poor customer focus Agile does not fix poor process workflow or poor collaboration.
+* Agile does not fix poor HR compensation processes that do not set the right people's behavior.
 
 Agile makes it all visible and transparent.
 Beware being transparent can be very painful and induce distress.
@@ -111,17 +111,17 @@ A huge intentional effort needs to be taken by those in the process, willing to 
 === Agile Teams
 
 Here a set of capabilities strongly improving the throughput of an agile team.
-Our company is proud how cool, professional and effective our development teams are.
+Our company is proud of how cool, professional and effective our development teams are.
 The eight tips are:
 
-. Do Just In-Time kickoffs,
-. Have at least one https://scrumguides.org/scrum-guide.html#product-owner[Product Owner] that is always available,
-. Create https://en.wikipedia.org/wiki/T-shaped_skills[T-shaped] developers by pairing different disciplines,
-. Do team https://en.wikipedia.org/wiki/Code_review[code reviews], better promote https://en.wikipedia.org/wiki/Pair_programming[Pair Programming],
+. Do Just In-Time kickoffs.
+. Have at least one https://scrumguides.org/scrum-guide.html#product-owner[Product Owner] that is always available.
+. Create https://en.wikipedia.org/wiki/T-shaped_skills[T-shaped] developers by pairing different disciplines.
+. Do team https://en.wikipedia.org/wiki/Code_review[code reviews], better promote https://en.wikipedia.org/wiki/Pair_programming[Pair Programming].
 . Keep your https://en.wikipedia.org/wiki/Continuous_integration[pipelines] in great shape.
 You shall deploy your software product multiple times a day to an integration staging area.
 . https://en.wikipedia.org/wiki/Technical_debt/[Technical Debt] should be zero at all times.
-A powerful practice is zero bug policy <<zero-bug-policy>>.
+A powerful practice is the zero bug policy <<zero-bug-policy>>.
 . Drop rituals that give you no added value.
 Avoid https://en.wikipedia.org/wiki/Cargo_cult/[Cargo Cult].
 . Have a good mix of experience and personality in your team.
@@ -166,13 +166,13 @@ The local government systems now support digital sending and processing for tax 
 ** Cash-flow overview provides security how our company is doing and how our liquidity is evolving.
 ** Rolling budgeting optimizes investments when the market shifts
 footnote:[The Corona catastrophe was a huge test we successfully mastered.].
-** Sales pipeline provides indicators how we should perform the next months.
+** The sales pipeline provides indicators how we should perform the next months.
 ** Paperless processes remove scanning, archiving and printing activities.
 Technological Advantages::
 * Agile software development approaches with technical focus provides as strong market proposition.
 Motivated collaborators love to work on such initiatives.
 footnote:[To be honest, the biggest problem we have is to find collaborators with the required skill set.].
-* Technological leadership for the Java technology stack delights our collaborators and is a huge market advantage.
+* Technological leadership for Java technology stack delights our collaborators and is a huge market advantage.
 Business Advantages::
 * Leadership how to develop successful software products.
 * Clear understanding and extensive experience with digitalization.

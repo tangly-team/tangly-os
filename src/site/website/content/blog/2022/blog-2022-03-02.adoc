@@ -1,7 +1,7 @@
 ---
 title: "Modern Java with Spring"
 linkTitle: "Modern Java with Spring"
-date: 2022-03-25
+date: 2022-03-15
 tags: ["agile", "java"]
 ---
 
@@ -15,20 +15,21 @@ image::2022-03-02-head.png[width=420,height=360,role=left]
 
 https://spring.io/[Spring] and https://spring.io/projects/spring-boot[Spring Boot] frameworks are the standard for enterprise Java applications.
 
-Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can just run.
+Spring Boot makes it easy to create stand-alone, production-grade Spring-based Applications that you can just run.
+
 They take an opinionated view of the Spring platform and third-party libraries, so you can get started with minimum fuss.
 Most Spring Boot applications need minimal Spring configuration.
 
 === Minimize Boilerplate Code
 
-One of the key reasons for the success of Spring is convention over configuration.
+One of the key reasons for the success of Spring is the approach of _convention over configuration_.
 You want to minimize boilerplate code and never have to write XML configuration files.
 
-Still a lot of approaches such as https://en.wikipedia.org/wiki/Data_transfer_object[DTO] force developers to write useless boilerplate code.
+A lot of approaches, such as https://en.wikipedia.org/wiki/Data_transfer_object[DTO] force developers to write useless boilerplate code.
 Try to avoid these cumbersome tasks.
 
 Use https://projectlombok.org/[Lombok] to create Java bean accessors methods and provide a builder to create instances.
-Always consider to use modern constructs such as _record_ and _sealed class_ to improve the legibility of your design.
+Always consider using modern constructs such as _record_ and _sealed class_ to improve the legibility of your design.
 
 Transform your objects with https://mapstruct.org/[MapStruct] library or similar ones.
 Better minimize the usage of https://en.wikipedia.org/wiki/Data_transfer_object[data transfer objects] _DTO_.
@@ -41,7 +42,7 @@ Package the whole application in a docker image for integration and testing acti
 === Lightweight Database
 
 Your services need to store persistent information in a database.
-Spring framework promotes a SQL database and JPA as object mapper.
+Spring framework promotes an SQL database and JPA as object mapper.
 
 A lightweight approach simplifies local development and speed-up the integration testing through your CI/CD pipeline.
 
@@ -63,8 +64,8 @@ Use the Spring files _schema.sql_ to define a clean database model.
 Do not define any integrity rules between schema to insure modularity of your bounded domains down to the persistence layer.
 
 JPA supports schemas through a standard annotation.
-[source,java]
 
+[source,java]
 ----
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -100,7 +101,7 @@ import lombok.NoArgsConstructor;
 public class Appointments {}
 ----
 
-Configure lombok through _lombok.config_ configuration file in the root of your project.
+Configure lombok through _lombok.config_ configuration file at the root of your project.
 
 [source]
 ----
@@ -108,7 +109,8 @@ lombok.accessors.chain=false // <1>
 lombok.accessors.fluent=true // <2>
 config.stopBubbling = true
 ----
-<1> traditional accessors without chaining feature.
+
+<1> traditional accessors without a chaining feature.
 It is fully compatible with the approach provided by records.
 <2> discard legacy get and set verbs for getters and setters
 
@@ -131,7 +133,7 @@ Use plain old Java objects POJO to exchange information between layers inside a 
 
 If you have to return complex aggregate objects for a persistence store, use views, persistent layer queries to populate read-only objects.
 Java provides the _record_ construct for such situations.
-The need to define often queries to generate aggregate views is a smell that your design has flaws.
+The need to define frequent queries to generate aggregate views is a smell that your design has flaws.
 
 === Schedulers in Spring
 
@@ -139,18 +141,50 @@ Easy to use
 
 Please do not use homebrew solutions or cron jobs.
 The Spring scheduler component is sufficient for most of the scenarios.
+It builds up on the features of _ScheduledExecutorService_ provided in the standard Java API.
 
-[code,java]
+[source,java]
 ----
+@Slf4j
+@Service
+@Transactional
+public class AppointmentScheduler {
+    private final AppointmentService service;
 
+    public AppointmentScheduler(AppointmentService service) {
+        this.service = service;
+    }
+
+    @Scheduled(fixedDelay = 1000)
+    public void sendAppointmentRatingEmails() {
+        log.debug("Scheduled task to send appointment rating emails {}", LocalDateTime.now());
+        service.sendRatingPendingEmails();
+    }
+}
 ----
 
 === User Interface
 
-Use Vaadin for internal applications and B2B applications: Vaadin is a very good approach up to a few thousand active users.
+Use Vaadin for internal applications and B2B applications.
+Vaadin is a very good approach up to a few thousand active users.
+Vaadin is a Java solution based on the same technology stack used in Spring.
 
-Use Thymeleaf and Bootstrap for B2C applications
+Use Thymeleaf and Bootstrap for B2C applications.
+These frameworks introduce new technologies.
+Developers shall be trained to avoid bad solutions.
 
-Use AngularJS or VueJS if you have a lot of budget
+Use AngularJS or VueJS if you have a lot of budget.
+These frameworks introduced a new technology stack based on JavaScript or ideally on Typescript.
+New versions of the Typescript language and of the user interface framework are released every few months.
+Experience shows that a major rework of the source code and design decisions is necessary at least every eighteen months.
 
-=== Test Driven Development
+=== Tips and Tricks
+
+* Use the Spring mechanisms to streamline unit and integration tests.
+* Train all the developers in Spring.
+The organization shall encourage certification in key technologies used in their mission-critical applications.
+* Use the latest Java version.
+Motivate your experts with current environments.
+Professional developers do not like to work with obsolete tools.
+* Use IntelliJ IDEA as an integrated development environment.
+The environment increases the productivity of your development teams.

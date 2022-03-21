@@ -12,7 +12,7 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2017-08-01-head.png[width=420, height=360, role=left]
-Lately I was asked if I was interested to work as Scrum master.
+Lately I was asked if I was interested in working as a Scrum master.
 The below job description was handed me over. What an experience it was.
 
 The text with the regular font is the job description. I wrote down my comments in italics.
@@ -22,27 +22,27 @@ The text with the regular font is the job description. I wrote down my comments 
 ** __A Scrum master empowers a development team. The team schedules the work during each Sprint.
  The team members select the stories they will implement next.
  The Scrum master advices best practices, but he really should not perform code reviews and police the team.__
-** __He does not manage and certainly not micro-manage engineers.
- He shall never evaluate performance of team members. He shall not police the team by reviewing code.__
+** __He does not manage and certainly not micromanage engineers.
+ He shall never evaluate the performance of team members. He shall not police the team by reviewing the source code.__
 * Analyze requirements and provide time estimates: consume non-technical functional requirements documentation.
  Provide feedback when necessary, translating into the technical documentation when necessary.
  Provide feasibility assessment and estimate level of effort to implement
-** __The product owner and the team writes and refines stories.
+** __The product owner and the team write and refine stories.
  Avoid requirements and move to stories and epics.
  Technical documentation and feasibility assessments shall be done by the team.
  Only the team has the right to estimate the effort needed to implement a story.__
 ** __The Scrum master is neither a business analyst defining requirements, nor a product manager creating schedules and time estimates.__
 * Help develop, communicate and enforce workflows.
- Work with Development department head and QA to assure that clear workflows are established and followed within the team
+ Work with the development department head and QA to assure that clear workflows are established and followed within the team
 ** __An agile team has quality assurance roles as cross-functional capabilities.
  You do need a quality assurance team. Dissolve the quality assurance  department.
  Move their specialists to the teams and get rid of the vice president of quality assurance.__
-** __The Scrum master does neither administrate flow of information nor implement processes.
+** __The Scrum master does neither administrate the flow of information nor implement processes.
  He trusts and coaches his teams to deliver the best quality.__
-* Coordinate with QA, IT Operations, and Database Administrators on testing. l
+* Coordinate with QA, IT Operations, and Database Administrators on testing.
  Launch planning, launch, and troubleshooting/optimization of features post-launch.
 ** __The product owner plans the release schedule with the team.
- A high quality product does not need a troubleshooting process.
+ A high-quality product does not need a troubleshooting process.
  The above nicely describes an organization based on functional silos.
  No cross-functionality is ensured and product focus is an unknown concept.__
 ** __The Scrum master is neither an administrator nor an overall coordinator.

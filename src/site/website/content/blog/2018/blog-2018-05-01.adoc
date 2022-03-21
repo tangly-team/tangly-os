@@ -45,16 +45,16 @@ Both SonarLint and SonarQube rely on the same static source code analyzers - mos
 === How to use It?
 
 .  the SonarLint in your favorite IDE
-.. configure the SonarCube instance to synchronize the rule set used in your product
-. Configure the plugin to access your SonarCube instance
-. Run it,
-.. See the messages in the next few seconds
-.. Jump to the source and correct the problem
-.. Iterate until all issues are solved
-. Run your unit tests and acceptance tests - TDD and ATDD -
-. Commit your changes
+.. configure the SonarCube instance to synchronize the rule set used in your product.
+. Configure the plugin to access your SonarCube instance.
+. Run it.
+.. See the messages in the next few seconds.
+.. Jump to the source and correct the problem.
+.. Iterate until all issues are solved.
+. Run your unit tests and acceptance tests - TDD and ATDD -.
+. Commit your changes.
 
 This approach guarantees you always release source code with less SonarCube issues, therefore SonarCube always show no findings for new code and for refactored
 code.
 
-And you have made a step to the journey to become a professional software developer and achieve {url-articles}2018/blog-2018-04-01[craftsmanship].
+And you have made a step to the journey to become a professional software developer and achieve link:../../2018/blog-2018-04-01[craftsmanship].

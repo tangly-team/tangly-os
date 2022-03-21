@@ -16,8 +16,8 @@ image::2021-01-01-head.png[width=420,height=360,role=left]
 This post discusses the value object pattern, and the factory pattern which are tactical patterns in the domain driven design
 https://en.wikipedia.org/wiki/Domain-driven_design[DDD] approach.
 
-Value objects represent typed values, that have no conceptual identity in your domain.
-They can help you write better code that is less error-prone, more performant and more expressive.
+Value objects represent typed values that have no conceptual identity in your domain.
+They can help you write better codes that are less error-prone, more performant and more expressive.
 
 Value objects define the second kind of domain objects besides entities.
 Their main characteristic is immutability:
@@ -27,7 +27,7 @@ ____
 _Attributes of a value object *never* change_.
 ____
 
-A second characteristic is they do not have external identifiers.
+A second characteristic is that they do not have external identifiers.
 Unlike an entity, two value objects with the exact same properties are considered equal.
 
 A third one is they should be self-validating.
@@ -41,7 +41,8 @@ Throw an _IllegalArgumentException_ if a validation error occurs.
 ====
 
 https://en.wikipedia.org/wiki/Value_object[Value Objects] do have attributes and methods as entities.
-Attributes of value objects are immutable, therefore methods of value objects can only be queries without side effects.
+Attributes of value objects are immutable.
+Methods of value objects can only be queries without side effects.
 Operations never command a change to the internal state of a value object.
 We can pass value objects to clients without worrying they change them.
 
@@ -53,9 +54,9 @@ Because they are so easy to handle, we should model domain abstractions as value
 
 Some value objects are part of any commercial application domain.
 Postal addresses, phone numbers and email addresses are canonical value objects.
-Other candidates are bank account IBAN numbers, job titles, job descriptions, company legal statuses.
+Other candidates are bank account IBAN numbers, job titles, job descriptions, company legal status.
 
-This means that these objects do not have an object identifier and should not be stored in a separate table if stored in a SQL database.
+This means that these objects do not have an object identifier and should not be stored in a separate table if stored in an SQL database.
 Value objects shall be embedded objects and be part of an object such as a person.
 
 A person is an entity.
@@ -64,11 +65,11 @@ It should have an external identifier and has a postal address, multiple phone n
 Check your domain model and validate these assumptions.
 
 * Postal address, phone numbers, email addresses are value objects and have no external or internal identifiers.
-* They are always owned by other value objects or more often by entities such as persons, companies, delivery forms.
+* They are always owned by other value objects or more often by entities such as people, companies, delivery forms.
 * They are immutable objects.
 * Business processes can replace such an object with a new instance without impeding other domain instances.
 * Programmed in modern Java, these value objects should be *records* to guaranty immutability at the language level.
-As a bonus you get the *hashCode* and *equals* methods for free.
+As a bonus, you get the *hashCode* and *equals* methods for free.
 
 [NOTE]
 ====
@@ -81,7 +82,7 @@ Often it is a one liner.
 Invoice lines are lines containing details in an invoice.
 Invoice lines are always value objects belonging to exactly one invoice.
 
-To complicate matter, invoice lines have different types such as a regular line with a specific article, quantity, unit price and computed price.
+To complicate matter, invoice lines have different types, such as a regular line with a specific article, quantity, unit price and computed price.
 Often VAT aspects must be considered and computed for the overall invoice.
 An invoice line can also be a subtotal for a set of regular invoice lines.
 
@@ -89,8 +90,8 @@ An invoice line can also be a subtotal for a set of regular invoice lines.
 ====
 VAT definition and computation is often a murky domain.
 The VAT value can be dependent on the article, the company selling it and the client buying it.
-Often when public administration defines a domain and associated business rules the world becomes quite complicated and ambiguous.
-The VAT administrative laws in Switzerland are more than 2000 pages of illegible text.
+When public administration defines a domain and associated business rules, the world often becomes quite complicated and ambiguous.
+The VAT administrative laws in Switzerland are more than 2000 pages of an illegible text.
 
 The complete definition of this business domain is not part of this article.
 ====
@@ -100,9 +101,9 @@ The following design challenges exist
 * Serialization libraries such as JSON Jackson library cannot handle invoice lines with multiple Java class types.
 A workable approach is described and implemented with the open source component https://tangly-team.bitbucket.io/docs/gleam/[Gleam].
 The solution is to define selectors to instantiate the correct Java class.
-* Invoices are complex objects and ideal candidates for a document oriented persistent approach.
-Invoices should not be stored in a relation based persistence store, meaning a SQL database.
-To store them in a table you have to model the various type of lines and add a technical identifier to each invoice line instance.
+* Invoices are complex objects and ideal candidates for a document-oriented persistent approach.
+Invoices should not be stored in a relation based persistence store, meaning an SQL database.
+To store them in a table, you have to model the various types of lines and add a technical identifier to each invoice line instance.
 
 === Factories
 
@@ -125,11 +126,12 @@ The prototype method uses an existing instance to derive a new object.
 [TIP]
 ====
 The prototype method is supported with the keyword *with* in C#.
-The JEPs for deconstruction and construction of objects in *switch* statement could provide a similar approach in the future for Java.
+The JEPs for deconstruction and construction of objects in a *switch* statement could provide a similar approach in the future for Java.
 The current version of Java _JDK 16_ does not support this feature.
 ====
 
-When the creation logic is complex or has dependencies that are not needed by the created object it is best to create a separate factory.
+When the creation logic is complex or has dependencies that are not needed by the created object.
+It is best to create a separate factory.
 This factory could provide multiple ways to create new instances.
 
 === Value Objects in Persistent Store
@@ -137,7 +139,7 @@ This factory could provide multiple ways to create new instances.
 We encourage experimenting with the https://microstream.one/[MicroStream] approach for small projects.
 The effort to persist a Java object graph is very small.
 
-You can always move to a no SQL solution when your application is successful and time is come to harden it.
+You can always move to a no SQL solution when your application is successful and time comes to hardening it.
 Another standard but cumbersome approach is to move to JPA.
 
 Related concepts are discussed in our blog series

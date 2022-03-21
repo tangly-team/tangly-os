@@ -23,7 +23,7 @@ I wanted to add a comment section to this blog for a while.
 I was reluctant to implement one myself the classical way, using an external service such as disqus.
 This blog is a static website created with {ref-hugo} and does not use a database.
 All pages are written with {ref-asciidoc}, stored in a Git repository and rendered using {ref-hugo}.
-I wanted to store comments in a personally owned repository and protect my readers from advertisement and personal information collection.
+I wanted to store comments in a personally owned repository and protect my readers from an advertisement and personal information collection.
 
 === Meeting Utteranc.es
 
@@ -35,8 +35,8 @@ Facts are:
 You do *not* need to host your static website repository on GitHub; but you can.
 * Readers wanting to comment *must* login once with their GitHub account to authorize the {ref-utterances} application.
 Anonymous commenting is not supported.
-_This restriction is reasonable for a technical website which readers are technical affine and already have a GitHub account._
-* Utterances product is free.
+_This restriction is reasonable for a technical website whose readers are technically affine and already have a GitHub account._
+* Utterance products are free.
 It claims to have no tracking, no advertisement, and no lock-in.
 The comments are stored in your repository as GitHub issues.
 * Utterances layout looks nice and can be styled.
@@ -53,7 +53,7 @@ In other words, each page gets its own issue with a comment feed, and so you ben
 _These functions are great for moderation._
 * If you are watching the repository, you will get email notifications when comments are posted to your site.
 
-The other wonderful aspect about Utterances is how simple the entire setup really is.
+The other wonderful aspect of Utterances is how simple the entire setup really is.
 
 === Setting Up Utterances
 

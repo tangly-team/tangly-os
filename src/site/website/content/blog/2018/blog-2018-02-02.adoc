@@ -26,17 +26,17 @@ You solve customer problems through intuitive services and products.
 Customers' expectations should fit with their experience with your products.
 That is why they should be involved in the whole definition and realization process.
 At the beginning, to understand the need and to test first ideas.
-During the implementation, they are directly asked for feedback, which then flows into the further development steps.
+During the implementation, they are directly asked for feedback, which then flows into further development steps.
 
 Go out with your _incomplete_ product as soon as possible.
 Each iteration should deliver an upgraded version of the product.
-The pressure to deliver is huge, a design thinking iteration has a duration of at most one week.
+The pressure to deliver is huge. A design thinking iteration has a duration of at most one week.
 
 === Lean Startup and Lean UX
 
 Minimum viable products - MVP - are first developed as minimally functional products.
 Within 60 days, a physical prototype will be created that customers can test during this time.
-The software component shall be delivered after the first or second iteration, that means in less than one month.
+The software component shall be delivered after the first or second iteration, which means in less than one month.
 
 New technologies such as 3D printing, cheap hardware and IoT boards, continuous delivery, simulation enable your teams to deliver on time.
 These are not pure mockups but executable applications.
@@ -46,13 +46,13 @@ The focus is always on adding customer value.
 === Beyond Budgeting Approaches
 
 There is no long-term budget plan for products and projects.
-After each cycle of customer feedback the goals and budget are evaluated again.
+After each cycle of customer feedback, the goals and budget are evaluated again.
 The value streams have agile teams that work like small companies.
 
 Each team has a Product Owner - PO - who has overall responsibility for their respective product.
 Realizations are further funded, modified or canceled on the basis of initial results, meaning after customer and technical tests.
 
-The product financing is following a start-up approach and not based on yearly budget as usual in larger companies.
+The product financing is following a start-up approach and not based on the yearly budget as usual in larger companies.
 
 === Co-location and Team ownership
 
@@ -67,7 +67,7 @@ There are no phones, no other projects, and no outside distractions.
 They use collaboration tools - chats, wikis, Scrum boards -.
 Scrum teams are wholly focused on their product,
 
-People checks three times a day their emails; otherwise the email client is closed and inactive.
+People check three times a day their emails; otherwise the email client is closed and inactive.
 All phones have voicemail.
 
 === Agile Methods and Craftsmanship
@@ -84,7 +84,7 @@ for a description of modern agile development procedures.
 
 === Elastic Infrastructure
 
-We shall use state of the industry technology.
+We shall use the state of industry technology.
 This enables test-driven development - ATDD, TDD -, meaning predefined automated software tests that run in real-time.
 
 Cloud infrastructure provides unlimited processing capabilities for development, test, and deployment of software artifacts.

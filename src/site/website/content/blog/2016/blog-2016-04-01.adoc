@@ -12,9 +12,9 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2016-04-01-head.jpg[width=420,height=360,role=left]
-Often I am told that it is difficult to use Agile/Scrum approaches for brown field projects or for big projects or for distributed projects or for in other situations.
+I am often told that it is difficult to use Agile/Scrum approaches for brown field projects or for big projects or for distributed projects or for in other situations.
 
-Interestingly these persons also state that the same problems exist with traditional approaches such as https://en.wikipedia.org/wiki/OpenUP[RUP/OpenUP],
+Interestingly, these people also state that the same problems exist with traditional approaches such as https://en.wikipedia.org/wiki/OpenUP[RUP/OpenUP],
 https://en.wikipedia.org/wiki/Waterfall_model[Waterfall Model], https://en.wikipedia.org/wiki/V-Model_(software_development)[V Model] defined as a formal standard in Germany https://de.wikipedia.org/wiki/V-Modell_(Entwicklungsstandard)[V-Modell Entwicklungsstandard], and the Swiss variant called https://www.hermes.admin.ch/en[Hermes].
 
 Agile approaches are currently the standard for new projects and are thought in technical universities.
@@ -33,9 +33,9 @@ Not always an easy reading but worth the effort
 * Agile Testing: A Practical Guide for Testers and Agile Teams, Lisa Crispin and Janet Gregory, Addison-Wesley 2009 The seminal reference book how to blend testing with agile projects.
 Lisa Crispin and Janet Gregory provides insights and a proven track how to guaranty agile quality assurance and agile testing.
 A must-read book for everyone seriously developing agile projects
-* Agile Estimating and Planning, Mike Cohn, Prentice-Hall 2006 The seminal reference about estimating agile projects.
+* Agile Estimating and Planning, Mike Cohn, Prentice-Hall, 2006 The seminal reference about estimating agile projects.
 The experienced readers will understand why Mike Cohn used the words estimating and planning instead of estimates and plan.
-* The Enterprise and Scrum, Ken Schwaber, Microsoft Press 2007 The work of one of the Scrum founders how a company can adopt Scrum.
+* The Enterprise and Scrum, Ken Schwaber, Microsoft Press, 2007 The work of one of the Scrum founders how a company can adopt Scrum.
 You should read the standard works of Scrum to understand the concepts.
 * Agile Project Management with Scrum, Ken Schwaber, Microsoft Press 2003 The work of one of the Scrum founders how Scrum influence product organization and management.
 You should read the standard works of Scrum to understand the concepts.
@@ -45,7 +45,7 @@ You should read the standard works of Scrum to understand the concepts.
 * Refactoring Improving the Design of Existing code, Martin Fowler, Addison-Wesley 1999 How to implement continuous improvement on the code level.
 If you are not refactoring you are not agile.
 * Working Effectively with Legacy Code, Michael C. Feathers, Prentice-Hall 2005 Most of us work on existing code bases.
-Based on the above statement you have to find a way to unit test and refactor legacy code if you want to be agile.
+Based on the above statement, you have to find a way to unit test and refactor legacy code if you want to be agile.
 
 === Extreme Programming
 

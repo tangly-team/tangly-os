@@ -12,7 +12,7 @@ tags: ["agile","series-students"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2021-04-03-head.png[width=420,height=360,role=left]
-Lately I was asked which new approaches should be used for agile requirements engineering.
+Lately, I was asked which new approaches should be used for agile requirements engineering.
 Did we find a new silver bullet to write software specifications the agile way?
 
 The answer is an easy one.
@@ -39,12 +39,13 @@ You will find recordings of their speech on various platforms such as https://ww
 
 [quote,Jeff Patton]
 ____
-Our job is *NOT* to develop software, our job is to change the world.
+Our job is *NOT* to develop software.
+Our job is to change the world.
 ____
 
 [quote,Gojko Adzic]
 ____
-Give 2% of users a 100% of what they need, not 100% of people only 2% of their needs.
+Give 2% of users 100% of what they need, not 100% of people get only 2% of their needs.
 ____
 
 === Approach
@@ -55,8 +56,8 @@ Use Impact mapping and story mapping to classify and order your functionality.
 Story mapping works hand in hand with the release plan artifact I cited in a previous post.
 You have not only the key functionality you want to deliver, but also a tentative plan when you will deliver them.
 
-Vision, roadmap, and release plan are needed artefacts for any product development using Scrum as development approach.
-The mapping identifies the stories to realize in a release to satisfy the customers' needs.
+Vision, roadmap, and release plan are needed artefacts for any product development using Scrum as a development approach.
+The mapping identifies the stories to realize in a release to satisfy the customer's needs.
 A nice discussion of these concepts can be found in _Strategize_<<strategize>>.
 
 The nice think is that impact mapping and story mapping are quite compatible with design thinking.
@@ -65,7 +66,8 @@ We can nicely connect the different directions used in agile product development
 Each specification story has acceptance criteria.
 These criteria are the specifications of your product.
 
-The Scrum community clearly states that product backlog items are not specifications, they are work items for the Scrum team.
+The Scrum community clearly states that product backlog items are not specifications.
+They are work items for the Scrum team.
 If you want to use stories to describe your needs instead of the specification by example approach, it is OK, but please not in the backlog.
 
 ==== Validation
@@ -77,7 +79,7 @@ https://en.wikipedia.org/wiki/Behavior-driven_development[BDD] - are the automat
 image::2021-04-03-test-pyramid.png[width=420,height=360,role=left]
 
 The gain of implementing the acceptance criteria as ATDD is guaranteed elimination of regression issues.
-You also get automatic generation of test plan, test results and requirement documents.
+You also get automatic generation of test plans, test results and requirement documents.
 Your documents are always in sync with the source code of your product.
 An additional advantage is all these artifacts are under source code management and fully auditable.
 
@@ -91,7 +93,7 @@ You can extend your automatic validation to non-functional requirements with the
 You could use following reference books to bootstrap and strengthen your agile specification process:
 
 Specification by example::
-<<specificationbyexample>> was published in 2009, twelve year ago,
+<<specificationbyexample>> was published in 2009, twelve years ago,
 Impact Mapping::
 <<impactmapping>> was published in 2012, ten years ago,
 User Story Mapping::
@@ -106,7 +108,7 @@ footnote:[Lecture videos in German for Spring Semester 2021 are available under 
 
 === Evolution
 
-The probably most effective software architecture appraoch is https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design].
+The most effective software architecture approach is https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design].
 
 The requirement analysis approach predating DDD is https://en.wikipedia.org/wiki/Event_storming[Event Storming].
 
@@ -115,7 +117,7 @@ Conducted in the form of a workshop, its purpose is to quickly discover what is 
 Compared to other methods, it is extremely light and intentionally does not require any computer support.
 The result is expressed in sticky notes on a wall.
 
-The _SWAT_ course naturally also discuss DDD and event storming.
+The _SWAT_ course naturally also discusses DDD and event storming.
 This blog also contains an architecture series digging into agile architecture approaches.
 The first article describes link:../../2019/agile-architecture-principles[Agile Architecture Principles].
 

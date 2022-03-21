@@ -1,6 +1,9 @@
 acribic
 asciidoc
 ATAM
+ATTD
+BPNM
+backporting
 Baumann
 baumann
 BBRT
@@ -27,6 +30,7 @@ firstname
 foid
 functors
 gemba
+graal
 haben
 handoff
 harel
@@ -44,6 +48,7 @@ marcel
 millennial
 millennials
 multiparts
+MTTR
 MWST
 onboarding
 ownee
@@ -55,6 +60,7 @@ retainment
 SAQB
 SWICO
 savviness
+scribus
 Scrumban
 sellee
 skype
@@ -65,10 +71,12 @@ substate
 substates
 superbuilder
 tangly
+TDD
 TOGAF
 utterances
 UML
 VAT
+wagile
 YAGNI
 ZHAW
 Zürich
