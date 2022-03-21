@@ -57,7 +57,7 @@ backlog refinement before the next planning meeting.
 A mature organization has acceptance criteria for each story and automated verification of the criteria at any time.
 Early and regular delivery of an increment of the product::
 You get feedback on the delivered and installed product increment.
-This goal is only achievable if your organization has implemented {url-articles}2018/blog-2018-11-01[Delivery Pipeline Check],
+This goal is only achievable if your organization has implemented link:../../2018/blog-2018-11-01[Delivery Pipeline Check],
 Risk List::
 You have a documented risk lists with description of risks, probability of occurrence and cost per event, and mitigation
 measures,
@@ -70,7 +70,7 @@ Non functional requirements::
 You have identified your non functional requirements and constraints and have fitness measures in place.
 The measures guarantee the continuous achievement of the constraints - often defined as -ility requirements -.
 
-See the {url-articles}2018/blog-2018-11-01[Delivery Pipeline Check] to enable your organization to provide realtime feedback
+See the link:../../2018/blog-2018-11-01[Delivery Pipeline Check] to enable your organization to provide realtime feedback
 how well the above constraints are correctly implemented in the product.
 
 === Posts in the Health Check Series

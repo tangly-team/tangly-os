@@ -103,7 +103,7 @@ The first steps to improve your product are quite simple are around for at least
 * Use static checkers.
 * Activate the checkers of the IDE you are working with.
  For example, I am using IntelliJ IDEA and they have extensive checkers.
-* If using https://www.sonarqube.org/[SonarQube], download {url-articles}/2018/blog-2018-05-01]SonarLint plugin and simply use it -.
+* If using https://www.sonarqube.org/[SonarQube], download link:../..//2018/blog-2018-05-01]SonarLint plugin and simply use it -.
  This tool is best of breed, do not argument and just use it -.
 * Write tests with JUnit5, Mockito, AssertJ, Cucumber.
 
