@@ -8,7 +8,6 @@ plugins {
     id 'com.github.spotbugs'
     id 'org.sonarqube' apply false
     id 'info.solidsoft.pitest' apply false
-    id 'com.github.ben-manes.versions'
 }
 
 repositories {
@@ -43,7 +42,7 @@ ext {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(18)
     }
     withJavadocJar()
     withSourcesJar()
@@ -75,7 +74,7 @@ tasks.withType(Javadoc) {
         encoding("UTF-8")
         addBooleanOption('-Xdoclint:none')
         addBooleanOption('-enable-preview', true)
-        addStringOption('-release', '17')
+        addStringOption('-release', '18')
         addBooleanOption('quiet')
     }
 }
