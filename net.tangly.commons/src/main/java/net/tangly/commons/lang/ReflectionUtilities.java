@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -13,9 +13,6 @@
 package net.tangly.commons.lang;
 
 import java.lang.reflect.Field;
-import java.security.AccessController;
-import java.security.PrivilegedActionException;
-import java.security.PrivilegedExceptionAction;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -33,20 +30,16 @@ public final class ReflectionUtilities {
     }
 
     public static <T> void set(@NotNull T entity, @NotNull String name, @NotNull Object value) {
-        set(entity, findField(entity.getClass(), name)
-            .orElseThrow(() -> new NoSuchElementException("Missing Field From " + entity.getClass().getSimpleName() + " field " + name)), value);
+        set(entity, findField(entity.getClass(), name).orElseThrow(
+            () -> new NoSuchElementException("Missing Field From " + entity.getClass().getSimpleName() + " field " + name)), value);
     }
 
     public static <T> void set(@NotNull T entity, @NotNull Field field, @NotNull Object value) {
-        PrivilegedExceptionAction<Void> action = (() -> {
-            field.setAccessible(true);
-            field.set(entity, value);
-            return null;
-        });
+        field.setAccessible(true);
         try {
-            AccessController.doPrivileged(action);
-        } catch (PrivilegedActionException e) {
-            throw new IllegalArgumentException("Privileged Action Exception encountered", e);
+            field.set(entity, value);
+        } catch (IllegalAccessException e) {
+            throw new UnsupportedOperationException(e);
         }
     }
 
@@ -55,16 +48,12 @@ public final class ReflectionUtilities {
     }
 
     public static <T> Object get(@NotNull T entity, @NotNull Field field) {
-        final PrivilegedExceptionAction<Object> action = (() -> {
-            field.setAccessible(true);
-            return field.get(entity);
-        });
+        field.setAccessible(true);
         try {
-            return AccessController.doPrivileged(action);
-        } catch (PrivilegedActionException e) {
-            throw new IllegalArgumentException("Privileged Action Exception encountered", e);
+            return field.get(entity);
+        } catch (IllegalAccessException e) {
+            throw new UnsupportedOperationException(e);
         }
-
     }
 
     /**

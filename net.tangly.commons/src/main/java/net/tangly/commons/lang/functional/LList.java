@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -26,7 +26,7 @@ import org.jetbrains.annotations.NotNull;
  * is constructed from two building blocks:
  * <dl>
  * <dt>Nil</dt><dd>The empty list</dd>
- * <dt>Cons</dt><dd>A cell containing an element also known as head; and a pointer to the rest of the list also known as tail.</dd>
+ * <dt>Cons</dt><dd>A cell containing an element also known as first; and a pointer to the rest of the list also known as tail.</dd>
  * </dl>
  * <p>The term <em>cons</em> comes from functional programming language <em>Lisp</em> or <em>Scheme</em>. These kind of data structures are called persistent
  * data structures. Since the data structure is immutable, one might think that a lot of memory would be consumed since a new list would be created when we try
@@ -54,8 +54,8 @@ public sealed interface LList<T> permits LList.Nil, LList.ImmutableList {
         @Override
         public boolean tryAdvance(@NotNull Consumer<? super T> action) {
             if (!pointer.isEmpty()) {
-                action.accept(pointer.head());
-                pointer = pointer.tail();
+                action.accept(pointer.first());
+                pointer = pointer.rest();
                 return true;
             } else {
                 return false;
@@ -82,8 +82,8 @@ public sealed interface LList<T> permits LList.Nil, LList.ImmutableList {
         return Nil.nil();
     }
 
-    static <T> LList<T> cons(@NotNull T head, @NotNull LList<T> tail) {
-        return new ImmutableList<>(head, tail);
+    static <T> LList<T> cons(@NotNull T first, @NotNull LList<T> tail) {
+        return new ImmutableList<>(first, tail);
     }
 
     @SafeVarargs
@@ -98,33 +98,33 @@ public sealed interface LList<T> permits LList.Nil, LList.ImmutableList {
     boolean isEmpty();
 
     /**
-     * Returns the head of the list. Is equivalent to the <em>car</em> Scheme operation.
+     * Returns the first of the list. Is equivalent to the <em>car</em> Scheme operation.
      *
-     * @return head item of the list
+     * @return first item of the list
      */
-    T head();
+    T first();
 
     /**
      * Returns the tail of the list. Is equivalent to the <em>cdr</em> Scheme operation.
      *
      * @return tail of the list
      */
-    LList<T> tail();
+    LList<T> rest();
 
     default int length() {
-        return isEmpty() ? 0 : 1 + tail().length();
+        return isEmpty() ? 0 : 1 + rest().length();
     }
 
     default LList<T> copy() {
-        return isEmpty() ? LList.nil() : cons(head(), tail().copy());
+        return isEmpty() ? LList.nil() : cons(first(), rest().copy());
     }
 
     default LList<T> append(@NotNull LList<T> list) {
-        return cons(this.head(), tail().isEmpty() ? list : tail().append(list));
+        return cons(this.first(), rest().isEmpty() ? list : rest().append(list));
     }
 
     default <R> LList<R> map(@NotNull Function<T, ? extends R> function) {
-        return cons(function.apply(this.head()), tail().isEmpty() ? nil() : tail().map(function));
+        return cons(function.apply(this.first()), rest().isEmpty() ? nil() : rest().map(function));
     }
 
     default Stream<T> stream() {
@@ -137,8 +137,9 @@ public sealed interface LList<T> permits LList.Nil, LList.ImmutableList {
         private Nil() {
         }
 
+        @SuppressWarnings("unchecked")
         public static <T> Nil<T> nil() {
-            return (Nil<T>)Nil;
+            return (Nil<T>) Nil;
         }
 
         @Override
@@ -147,12 +148,12 @@ public sealed interface LList<T> permits LList.Nil, LList.ImmutableList {
         }
 
         @Override
-        public T head() {
-            throw new NoSuchElementException("head of empty list");
+        public T first() {
+            throw new NoSuchElementException("first of empty list");
         }
 
         @Override
-        public LList<T> tail() {
+        public LList<T> rest() {
             throw new UnsupportedOperationException("tail of empty list");
         }
 
@@ -162,7 +163,7 @@ public sealed interface LList<T> permits LList.Nil, LList.ImmutableList {
         }
     }
 
-    record ImmutableList<T>(@NotNull T head, @NotNull LList<T> tail) implements LList<T> {
+    record ImmutableList<T>(@NotNull T first, @NotNull LList<T> rest) implements LList<T> {
         @Override
         public boolean isEmpty() {
             return false;
@@ -170,7 +171,7 @@ public sealed interface LList<T> permits LList.Nil, LList.ImmutableList {
 
         @Override
         public String toString() {
-            return head() + (tail().isEmpty() ? "" : ", " + tail().toString());
+            return first() + (rest().isEmpty() ? "" : ", " + rest().toString());
         }
     }
 }

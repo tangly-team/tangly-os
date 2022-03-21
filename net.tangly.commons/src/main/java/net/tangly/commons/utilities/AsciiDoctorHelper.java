@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -24,6 +24,9 @@ import org.asciidoctor.Options;
 import org.asciidoctor.SafeMode;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * defines helper functions to transform a asciidoc document into a PDF document.
+ */
 public class AsciiDoctorHelper {
     public static final String ASCIIDOC_EXT = ".adoc";
     public static final String PDF_EXT = ".pdf";
@@ -31,14 +34,19 @@ public class AsciiDoctorHelper {
     private AsciiDoctorHelper() {
     }
 
-    public static void createPdf(@NotNull Path asciidocFilePath, @NotNull Path pdfFilePath) {
+    public static void createPdf(@NotNull String asciidoc, @NotNull OutputStream out) {
         System.setProperty("jruby.compat.version", "RUBY1_9");
         System.setProperty("jruby.compile.mode", "OFF");
-        try (var asciidoctor = Asciidoctor.Factory.create(); OutputStream out = Files.newOutputStream(pdfFilePath)) {
-            String asciidoc = Files.readString(asciidocFilePath);
+        try (var asciidoctor = Asciidoctor.Factory.create()) {
             var attributes = Attributes.builder().build();
             var options = Options.builder().inPlace(true).attributes(attributes).backend("pdf").safe(SafeMode.UNSAFE).toStream(out).build();
             asciidoctor.convert(asciidoc, options);
+        }
+    }
+
+    public static void createPdf(@NotNull Path asciidocFilePath, @NotNull Path pdfFilePath) {
+        try (OutputStream out = Files.newOutputStream(pdfFilePath)) {
+            createPdf(Files.readString(asciidocFilePath), out);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -24,23 +24,23 @@ class LListTest {
     @Test
     void testCreateCons() {
         LList<Integer> list = cons(1, cons(2, cons(3, cons(4, cons(5, nil())))));
-        assertThat(list.head()).isEqualTo(1);
-        assertThat(list.tail().head()).isEqualTo(2);
-        assertThat(list.tail().tail().head()).isEqualTo(3);
-        assertThat(list.tail().tail().tail().head()).isEqualTo(4);
-        assertThat(list.tail().tail().tail().tail().head()).isEqualTo(5);
-        assertThat(list.tail().tail().tail().tail().tail()).isEqualTo(nil());
+        assertThat(list.first()).isEqualTo(1);
+        assertThat(list.rest().first()).isEqualTo(2);
+        assertThat(list.rest().rest().first()).isEqualTo(3);
+        assertThat(list.rest().rest().rest().first()).isEqualTo(4);
+        assertThat(list.rest().rest().rest().rest().first()).isEqualTo(5);
+        assertThat(list.rest().rest().rest().rest().rest()).isEqualTo(nil());
     }
 
     @Test
     void testCreateList() {
         LList<Integer> list = list(1, 2, 3, 4, 5);
-        assertThat(list.head()).isEqualTo(1);
-        assertThat(list.tail().head()).isEqualTo(2);
-        assertThat(list.tail().tail().head()).isEqualTo(3);
-        assertThat(list.tail().tail().tail().head()).isEqualTo(4);
-        assertThat(list.tail().tail().tail().tail().head()).isEqualTo(5);
-        assertThat(list.tail().tail().tail().tail().tail()).isEqualTo(nil());
+        assertThat(list.first()).isEqualTo(1);
+        assertThat(list.rest().first()).isEqualTo(2);
+        assertThat(list.rest().rest().first()).isEqualTo(3);
+        assertThat(list.rest().rest().rest().first()).isEqualTo(4);
+        assertThat(list.rest().rest().rest().rest().first()).isEqualTo(5);
+        assertThat(list.rest().rest().rest().rest().rest()).isEqualTo(nil());
     }
 
     @Test
@@ -53,29 +53,29 @@ class LListTest {
     @Test
     void testCopy() {
         LList<Integer> list = list(1, 2, 3, 4, 5).copy();
-        assertThat(list.head()).isEqualTo(1);
-        assertThat(list.tail().head()).isEqualTo(2);
-        assertThat(list.tail().tail().head()).isEqualTo(3);
-        assertThat(list.tail().tail().tail().head()).isEqualTo(4);
-        assertThat(list.tail().tail().tail().tail().head()).isEqualTo(5);
-        assertThat(list.tail().tail().tail().tail().tail()).isEqualTo(nil());
+        assertThat(list.first()).isEqualTo(1);
+        assertThat(list.rest().first()).isEqualTo(2);
+        assertThat(list.rest().rest().first()).isEqualTo(3);
+        assertThat(list.rest().rest().rest().first()).isEqualTo(4);
+        assertThat(list.rest().rest().rest().rest().first()).isEqualTo(5);
+        assertThat(list.rest().rest().rest().rest().rest()).isEqualTo(nil());
     }
 
     @Test
     void testAppend() {
         LList<Integer> list = list(1, 2, 3, 4, 5).append(list(6, 7, 8, 9, 10));
         assertThat(list.length()).isEqualTo(10);
-        assertThat(list.head()).isEqualTo(1);
-        assertThat(list.tail().head()).isEqualTo(2);
-        assertThat(list.tail().tail().head()).isEqualTo(3);
-        assertThat(list.tail().tail().tail().head()).isEqualTo(4);
-        assertThat(list.tail().tail().tail().tail().head()).isEqualTo(5);
-        assertThat(list.tail().tail().tail().tail().tail().head()).isEqualTo(6);
-        assertThat(list.tail().tail().tail().tail().tail().tail().head()).isEqualTo(7);
-        assertThat(list.tail().tail().tail().tail().tail().tail().tail().head()).isEqualTo(8);
-        assertThat(list.tail().tail().tail().tail().tail().tail().tail().tail().head()).isEqualTo(9);
-        assertThat(list.tail().tail().tail().tail().tail().tail().tail().tail().tail().head()).isEqualTo(10);
-        assertThat(list.tail().tail().tail().tail().tail().tail().tail().tail().tail().tail()).isEqualTo(nil());
+        assertThat(list.first()).isEqualTo(1);
+        assertThat(list.rest().first()).isEqualTo(2);
+        assertThat(list.rest().rest().first()).isEqualTo(3);
+        assertThat(list.rest().rest().rest().first()).isEqualTo(4);
+        assertThat(list.rest().rest().rest().rest().first()).isEqualTo(5);
+        assertThat(list.rest().rest().rest().rest().rest().first()).isEqualTo(6);
+        assertThat(list.rest().rest().rest().rest().rest().rest().first()).isEqualTo(7);
+        assertThat(list.rest().rest().rest().rest().rest().rest().rest().first()).isEqualTo(8);
+        assertThat(list.rest().rest().rest().rest().rest().rest().rest().rest().first()).isEqualTo(9);
+        assertThat(list.rest().rest().rest().rest().rest().rest().rest().rest().rest().first()).isEqualTo(10);
+        assertThat(list.rest().rest().rest().rest().rest().rest().rest().rest().rest().rest()).isEqualTo(nil());
     }
 
     @Test
@@ -94,10 +94,10 @@ class LListTest {
     }
 
     private int sum(LList<Integer> list) {
-        return list.isEmpty() ? 0 : list.head() + sum(list.tail());
+        return list.isEmpty() ? 0 : list.first() + sum(list.rest());
     }
 
     private LList<Integer> squared(LList<Integer> list) {
-        return list.isEmpty() ? list : cons(list.head() * list.head(), squared(list.tail()));
+        return list.isEmpty() ? list : cons(list.first() * list.first(), squared(list.rest()));
     }
 }
