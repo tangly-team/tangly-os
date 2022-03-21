@@ -17,8 +17,8 @@ draft: false
 
 ## Purpose
 
-A behavior driven development library that provides a custom extension based on JUnit 5 Jupiter Extension Model. This library can be used to create
-and run stories and behaviors a.k.a BDD specification tests.
+A behavior driven development library that provides a custom extension based on JUnit 5 Jupiter Extension Model.
+This library can be used to create and run stories and behaviors as BDD specification tests.
 
 The library is developer first approach. Developers write acceptance tests to validate the functions they have implemented. The generated
 report provides a living documentation of the features and allow customers to validate the acceptance criteria.
@@ -38,7 +38,7 @@ The library can be included in Maven as
       <artifactId>bdd</artifactId>
       <version>0.2.6</version>
     </dependency>
-```    
+```
 
 The library can be included in Gradle as
 
@@ -52,7 +52,7 @@ For any further question and discussion you can use the forum [tangly-OS-Compone
 
 ## Contribution
 
-You are welcome to contribute to the product with pull requests on Bitbucket. You can download the source files from the 
+You are welcome to contribute to the product with pull requests on Bitbucket. You can download the source files from the
 [bitbucket git repository](https://bitbucket.org/tangly-team/tangly-os.git) and build  the library with the provided gradle configuration file.
 
 If you find a bug or want to request a feature, please use the [issue tracker](https://bitbucket.org/tangly-team/tangly-os/issues).

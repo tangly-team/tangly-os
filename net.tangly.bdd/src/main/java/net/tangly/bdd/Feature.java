@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -28,14 +28,14 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Feature {
     /**
-     * Returns the name of the feature as human readable information for living documentation.
+     * Returns the name of the feature as human-readable information for living documentation.
      *
      * @return short summary of the feature in a plain human language
      */
     String value();
 
     /**
-     * Returns the detailed description of the story as human readable information for living documentation. One could describe a story in this
+     * Returns the detailed description of the story as human-readable information for living documentation. One could describe a story in this
      * format: As a {user-defined string}, in order to {user-defined string}, I want to {user-defined string}.
      *
      * @return the story in a plain human language.

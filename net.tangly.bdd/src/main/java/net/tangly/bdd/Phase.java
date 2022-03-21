@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -25,17 +25,17 @@ import org.jetbrains.annotations.NotNull;
  */
 public class Phase {
     /**
-     * Human readable description of the phase. The text is used to create a living documentation of the stories.
+     * Human-readable description of the phase. The text is used to create a living documentation of the stories.
      */
     private final String text;
 
     /**
-     * Code fragment associated with the phase. The lambda fragments are daisy chained to emulate and connections.
+     * Code fragment associated with the phase. The lambda fragments are daisy-chained to emulate and connections.
      */
     private Consumer<Scene> lambda;
 
     /**
-     * The list of phases daisy chained as and conditions. The aggregation of text descriptions is used in the living documentation.
+     * The list of phases daisy-chained as and conditions. The aggregation of text descriptions is used in the living documentation.
      */
     private final List<String> ands;
 

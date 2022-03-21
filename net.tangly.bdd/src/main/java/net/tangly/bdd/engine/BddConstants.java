@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -39,7 +39,7 @@ public final class BddConstants {
     public static final String TAGS = "tags";
 
     /**
-     * Private constructor of an utility class.
+     * Private constructor of a utility class.
      */
     private BddConstants() {
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -45,7 +45,7 @@ public class StoryMerger {
     /**
      * Merges all BDD reports in the given directory into one file.
      *
-     * @param directory directory containing all feature reports to merge
+     * @param directory directory containing all feature reports to be merged
      * @throws IOException if access to the file system encountered a problem
      */
     public void merge(@NotNull Path directory) throws IOException {
