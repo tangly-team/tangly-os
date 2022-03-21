@@ -11,6 +11,10 @@
  *  under the License.
  */
 
+plugins {
+    id 'java-library-conventions'
+}
+
 project.ext.groupId = 'net.tangly'
 project.ext.artifactId = 'dev'
 project.version = "0.2.6"
