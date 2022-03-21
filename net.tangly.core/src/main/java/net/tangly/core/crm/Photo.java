@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -10,28 +10,14 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.erp.crm.domain;
-
-import net.tangly.core.codes.Code;
+package net.tangly.core.crm;
 
 /**
- * Defines the gender of a natural person. Gender is mainly used to define how the address the person in written communication.
+ * Defines the photography of a natural entity. Photographies are powerful helpers for personal interactions.
+ * @param data binary data of the photography
  */
-public enum GenderCode implements Code {
-    male, female, other, unspecified;
-
-    @Override
-    public int id() {
-        return this.ordinal();
-    }
-
-    @Override
-    public String code() {
-        return this.name();
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
+public record Photo(byte[] data) {
+    public static Photo of(byte[] data) {
+        return new Photo(data);
     }
 }

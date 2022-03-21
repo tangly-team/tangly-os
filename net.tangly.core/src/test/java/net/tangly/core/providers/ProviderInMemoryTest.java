@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -25,6 +25,10 @@ class ProviderInMemoryTest {
     static final int SIZE = 10;
 
     static record Entity(long oid, String name) implements HasOid {
+    }
+
+    static List<Entity> entities() {
+        return LongStream.range(0, SIZE).mapToObj(o -> new Entity(o, "name" + o)).toList();
     }
 
     @Test
@@ -61,9 +65,5 @@ class ProviderInMemoryTest {
         var provider = ProviderHasOid.of(new LongIdGenerator(0), entities());
         assertThat(provider.items().size()).isEqualTo(SIZE);
         provider.items().forEach(o -> assertThat(o.oid != HasOid.UNDEFINED_OID));
-    }
-
-    private static List<Entity> entities() {
-        return LongStream.range(0, SIZE).mapToObj(o -> new Entity(o, "name" + o)).toList();
     }
 }

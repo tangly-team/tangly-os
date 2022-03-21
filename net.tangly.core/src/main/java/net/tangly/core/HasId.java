@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -11,6 +11,8 @@
  */
 
 package net.tangly.core;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Mixin indicating the class has the capability to be uniquely identified through an external object identifier.
@@ -25,6 +27,15 @@ public interface HasId {
      * Returns the unique external identifier of the instance.
      *
      * @return unique external identifier
+     * @see #id(String)
      */
     String id();
+
+    /**
+     * Sets the identifier of the instance.
+     * @param id new ID of the instance.
+     */
+    default void id(@NotNull String id) {
+        throw new IllegalCallerException("Trait is in immutable form");
+    }
 }

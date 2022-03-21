@@ -1,5 +1,5 @@
 /*
- * Copyright 2021-2021 Marcel Baumann
+ * Copyright 2021-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -11,6 +11,8 @@
  */
 
 /**
- * Provides regular abstractions for CRM domain and associated abstractractions.
+ * Provides regular abstractions for CRM domain and associated abstractions. The key entities are natural entities to represent human beings and legal
+ * entities to represent various types of organizations with a recognized legal standing.
+ * <p>A natural entity represents a human being with a photo displaying the physical appearance.</p>
  */
 package net.tangly.core.crm;

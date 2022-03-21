@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -15,7 +15,6 @@ package net.tangly.core;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
 
@@ -150,13 +149,13 @@ public class Comment implements HasTags {
     }
 
     @Override
-    public void add(@NotNull Tag tag) {
-        tags.add(tag);
+    public boolean add(@NotNull Tag tag) {
+        return tags.add(tag);
     }
 
     @Override
-    public void remove(@NotNull Tag tag) {
-        tags.remove(tag);
+    public boolean remove(@NotNull Tag tag) {
+        return tags.remove(tag);
     }
 
     @Override
@@ -164,7 +163,10 @@ public class Comment implements HasTags {
         tags.clear();
     }
     // endregion
-
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(this);
+    }
     @Override
     public boolean equals(Object obj) {
         return (obj instanceof Comment o) && Objects.equals(created(), o.created()) && Objects.equals(author(), o.author()) &&
@@ -173,6 +175,6 @@ public class Comment implements HasTags {
 
     @Override
     public String toString() {
-        return String.format(Locale.US, "created=%s, author=%s, text=%s, tags=%s", created(), author(), text(), Tag.text(tags));
+        return String.format("created=%s, author=%s, text=%s, tags=%s", created(), author(), text(), Tag.text(tags));
     }
 }

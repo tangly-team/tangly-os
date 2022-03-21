@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Marcel Baumann
+ * Copyright 2021-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -18,7 +18,7 @@ import java.util.Optional;
 import net.tangly.commons.generator.IdGenerator;
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.core.HasOid;
-import one.microstream.storage.types.EmbeddedStorageManager;
+import one.microstream.storage.embedded.types.EmbeddedStorageManager;
 import org.jetbrains.annotations.NotNull;
 
 /**

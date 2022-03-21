@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -15,9 +15,11 @@ package net.tangly.core.providers;
 import java.util.Collections;
 import java.util.List;
 
-import one.microstream.storage.types.EmbeddedStorageManager;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import one.microstream.persistence.binary.jdk17.types.BinaryHandlersJDK17;
+import one.microstream.persistence.binary.jdk8.types.BinaryHandlersJDK8;
+import one.microstream.storage.embedded.types.EmbeddedStorage;
+import one.microstream.storage.embedded.types.EmbeddedStorageFoundation;
+import one.microstream.storage.embedded.types.EmbeddedStorageManager;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -28,11 +30,13 @@ import org.jetbrains.annotations.NotNull;
  * @param <T> type of the instances handled in the provider
  */
 public class ProviderPersistence<T> implements Provider<T> {
-    private static final Logger logger = LogManager.getLogger();
     private final EmbeddedStorageManager storageManager;
     private final List<T> items;
 
     public ProviderPersistence(@NotNull EmbeddedStorageManager storageManager, List<T> items) {
+        final EmbeddedStorageFoundation<?> foundation = EmbeddedStorage.Foundation();
+        foundation.onConnectionFoundation(BinaryHandlersJDK8::registerJDK8TypeHandlers);
+        foundation.onConnectionFoundation(BinaryHandlersJDK17::registerJDK17TypeHandlers);
         this.storageManager = storageManager;
         this.items = items;
     }
@@ -55,7 +59,6 @@ public class ProviderPersistence<T> implements Provider<T> {
             var storage = storageManager.createEagerStorer();
             storage.store(entity);
             storage.commit();
-            items.add(entity);
         }
     }
 

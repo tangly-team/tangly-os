@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2021-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -22,36 +22,42 @@ import java.util.Set;
 
 import org.jetbrains.annotations.NotNull;
 
-/**
- * Default implementation of the Entity interface.
- *
- * @see QualifiedEntity
- */
-public abstract class EntityImp implements Entity {
-    private final long oid;
-    private LocalDate fromDate;
-    private LocalDate toDate;
+public class ExternalEntityImp implements ExternalEntity {
+    private String id;
     private String name;
+    private LocalDate date;
     private String text;
     private final List<Comment> comments;
     private final Set<Tag> tags;
 
-    protected EntityImp() {
-        this.oid = UNDEFINED_OID;
+    protected ExternalEntityImp(@NotNull String id) {
+        this();
+        this.id = id;
+    }
+
+    protected ExternalEntityImp() {
         comments = new ArrayList<>();
         tags = new HashSet<>();
     }
 
-    // region HasOid
-
     @Override
-    public long oid() {
-        return oid;
+    public String id() {
+        return id;
     }
 
-    // endregion
+    @Override
+    public void id(String id) {
+        this.id = id;
+    }
 
-    // region HasText
+    @Override
+    public String name() {
+        return name;
+    }
+
+    public void name(String name) {
+        this.name = name;
+    }
 
     @Override
     public String text() {
@@ -63,31 +69,14 @@ public abstract class EntityImp implements Entity {
         this.text = text;
     }
 
-    // endregion
-
-    // region HasInterval
-
     @Override
-    public LocalDate fromDate() {
-        return fromDate;
+    public LocalDate date() {
+        return date;
     }
 
-    @Override
-    public void fromDate(LocalDate fromDate) {
-        this.fromDate = fromDate;
+    public void date(LocalDate date) {
+        this.date = date;
     }
-
-    @Override
-    public LocalDate toDate() {
-        return toDate;
-    }
-
-    @Override
-    public void toDate(LocalDate toDate) {
-        this.toDate = toDate;
-    }
-
-    // endregion
 
     // region Comments
 
@@ -132,13 +121,12 @@ public abstract class EntityImp implements Entity {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(oid);
+        return Objects.hashCode(id);
     }
 
     @Override
     public boolean equals(Object obj) {
-        return (obj instanceof EntityImp o) && Objects.equals(oid(), o.oid()) && Objects.equals(fromDate(), o.fromDate()) &&
-            Objects.equals(toDate(), o.toDate()) && Objects.equals(text(), o.text()) && Objects.equals(comments(), o.comments()) &&
-            Objects.equals(tags(), o.tags());
+        return (obj instanceof ExternalEntityImp o) && Objects.equals(id(), o.id()) && Objects.equals(date(), o.date()) && Objects.equals(text(), o.text()) &&
+            Objects.equals(comments(), o.comments()) && Objects.equals(tags(), o.tags());
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -10,25 +10,24 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.erp.crm.domain;
+package net.tangly.core.crm;
 
 
 import java.util.Objects;
 import java.util.Optional;
 
 import net.tangly.core.Address;
-import net.tangly.core.EntityImp;
+import net.tangly.core.NamedEntityImp;
 import net.tangly.core.PhoneNr;
 import net.tangly.core.Strings;
 import net.tangly.core.Tag;
-import net.tangly.core.crm.CrmEntity;
-import net.tangly.core.crm.CrmTags;
 
 /**
  * A natural entity is a person. A natural entity has an identity defined as the legal number of a person (e.g. the social security number0, a name defined as
  * the last name and the first name separated by a comma, a life duration and a text describing it.
+ * <p>A potential approach for a natural person identification is ISO 24366.</p>
  */
-public class NaturalEntity extends EntityImp implements CrmEntity {
+public class NaturalEntity extends NamedEntityImp implements CrmEntity {
     private String socialNr;
     private String firstname;
     private String lastname;
@@ -36,11 +35,6 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
     private Photo photo;
 
     public NaturalEntity() {
-    }
-
-    @Override
-    public String name() {
-        return lastname() + ", " + firstname();
     }
 
     public String firstname() {
@@ -57,6 +51,10 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
 
     public void lastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public String name() {
+        return lastname() + ((firstname() != null) ? ", " + firstname() : "");
     }
 
     public GenderCode gender() {
@@ -107,8 +105,8 @@ public class NaturalEntity extends EntityImp implements CrmEntity {
 
     @Override
     public boolean equals(Object obj) {
-        return (obj instanceof NaturalEntity o) && super.equals(o) && Objects.equals(socialNr(), o.socialNr()) &&
-            Objects.equals(firstname(), o.firstname()) && Objects.equals(lastname(), o.lastname()) && Objects.equals(gender(), o.gender());
+        return (obj instanceof NaturalEntity o) && super.equals(o) && Objects.equals(socialNr(), o.socialNr()) && Objects.equals(firstname(), o.firstname()) &&
+            Objects.equals(lastname(), o.lastname()) && Objects.equals(gender(), o.gender());
     }
 
     @Override

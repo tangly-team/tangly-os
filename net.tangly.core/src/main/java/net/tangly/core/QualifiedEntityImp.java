@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -19,15 +19,8 @@ import java.util.Objects;
  *
  * @see QualifiedEntity
  */
-public abstract class QualifiedEntityImp extends EntityImp implements QualifiedEntity {
+public abstract class QualifiedEntityImp extends NamedEntityImp implements QualifiedEntity {
     private String id;
-    private String name;
-
-    /**
-     * Default constructor.
-     */
-    protected QualifiedEntityImp() {
-    }
 
     @Override
     public String id() {
@@ -40,17 +33,7 @@ public abstract class QualifiedEntityImp extends EntityImp implements QualifiedE
     }
 
     @Override
-    public String name() {
-        return name;
-    }
-
-    @Override
-    public void name(String name) {
-        this.name = name;
-    }
-
-    @Override
     public boolean equals(Object obj) {
-        return (obj instanceof QualifiedEntityImp o) && super.equals(o) && Objects.equals(id(), o.id()) && Objects.equals(name(), o.name());
+        return (obj instanceof QualifiedEntityImp o) && super.equals(o) && Objects.equals(id(), o.id());
     }
 }

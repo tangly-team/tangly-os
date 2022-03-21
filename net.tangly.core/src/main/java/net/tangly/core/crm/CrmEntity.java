@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -24,6 +24,9 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * A customer relation management mixin defines a set of operations useful for all CRM abstractions. All information are stored as tags for future extensions.
+ * Key attributes are address or locations, phone numbers, social channels and internet presence.
+ * <p>The tag approach provides flexibility required by the evolution of values to represent similar information. For example an address, a geographical
+ * location or an universal Plus code model similar information. Examples of CRM entities are natural and legal entities.</p>
  */
 public interface CrmEntity extends HasTags, HasLocation {
     @Override

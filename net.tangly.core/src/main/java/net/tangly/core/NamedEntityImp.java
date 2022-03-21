@@ -12,13 +12,32 @@
 
 package net.tangly.core;
 
-/**
- * Mixin indicating the class has a name. A name is a human-readable identifier of an entity.
- */
-public interface HasName {
-    String name();
+import java.util.Objects;
 
-    default void name(String name) {
-        throw new IllegalCallerException("Trait is in immutable form");
+/**
+ * Default implementation of the Entity interface.
+ *
+ * @see QualifiedEntity
+ */
+public abstract class NamedEntityImp extends EntityImp implements NamedEntity {
+    private String name;
+
+    // region HasName
+
+    @Override
+    public String name() {
+        return name;
+    }
+
+    @Override
+    public void name(String name) {
+        this.name = name;
+    }
+
+    // endregion
+
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof NamedEntityImp o) && super.equals(obj) && Objects.equals(name(), o.name());
     }
 }

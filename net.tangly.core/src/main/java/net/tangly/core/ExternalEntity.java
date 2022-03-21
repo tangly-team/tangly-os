@@ -13,18 +13,14 @@
 package net.tangly.core;
 
 /**
- * The named interface defines a powerful abstraction for entities in a domain model. The features are
+ * The named interface defines a powerful abstraction for external entities in a domain model. The features are
  * <ul>
- * <li>oid: an optional internal identifier, an internal identifier is never visible to external systems or users. It
- * is optional because the domain model decides if it is needed or not.</li>
+ * <li>oid: a mandatory external identifier, an external identifier is visible to external systems or users. </li>
  * <li>text: a human readable documentation of the instance. We recommend using markdown syntax for the text.</li>
  * <li>comments: human readable comments describing aspects of an instance.</li>
  * <li>tags: human readable and machine processable tags defining an ontology to classify instance in the domain model.
  * Orthogonal information can therefore be attached to instances.</li>
  * </ul>
  */
-public interface Entity extends HasOid, HasText, HasInterval, HasTags, HasComments {
-    default boolean check() {
-        return true;
-    }
+public interface ExternalEntity extends HasId, HasName, HasText, HasDate, HasTags, HasComments {
 }

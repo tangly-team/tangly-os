@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -10,7 +10,7 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.erp.crm.domain;
+package net.tangly.core.crm;
 
 
 import java.util.Optional;
@@ -19,8 +19,6 @@ import net.tangly.core.Address;
 import net.tangly.core.QualifiedEntityImp;
 import net.tangly.core.Strings;
 import net.tangly.core.Tag;
-import net.tangly.core.crm.CrmEntity;
-import net.tangly.core.crm.CrmTags;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -73,6 +71,6 @@ public class LegalEntity extends QualifiedEntityImp implements CrmEntity {
     public String toString() {
         return """
             LegalEntity[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, vatNr=%s, tags=%s, comments=%s]
-             """.formatted(oid(), id(), name(), fromDate(), toDate(), text(), vatNr(), tags(), comments());
+            """.formatted(oid(), id(), name(), fromDate(), toDate(), text(), vatNr(), tags(), comments());
     }
 }

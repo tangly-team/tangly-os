@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2021-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,21 +12,22 @@
 
 package net.tangly.core;
 
-public interface HasEditableId extends HasId, HasName {
+public interface HasText {
     /**
-     * Sets the unique external identifier of the instance.
+     * Returns the human-readable text description of the instance.
      *
-     * @param id external identifier
-     * @see HasId#id()
+     * @return human readable text description of the instance
+     * @see #text(String)
      */
-    void id(String id);
+    String text();
 
     /**
-     * Sets the name of the entity.
+     * Sets the text description of the entity.
      *
-     * @param name human readable name of the entity
-     * @see HasName#name()
+     * @param text human readable text description
+     * @see #text()
      */
-    void name(String name);
-
+    default void text(String text) {
+        throw new IllegalCallerException("Trait is in immutable form");
+    }
 }

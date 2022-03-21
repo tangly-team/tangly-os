@@ -11,7 +11,7 @@
  */
 
 plugins {
-    id 'java-library'
+    id 'java-library-conventions'
 }
 
 project.ext.groupId = 'net.tangly'
@@ -26,10 +26,11 @@ dependencies {
 
     implementation(libs.google.libphonenumber)
     implementation(libs.iban4j)
-    implementation(libs.microstream.storage)
+    implementation(libs.bundles.microstream.deps)
     implementation(libs.json.core)
 
     testImplementation(libs.json.validator)
     testImplementation(libs.flyway)
     testImplementation(libs.hsqldb)
+    testImplementation(libs.jimfs)
 }

@@ -13,7 +13,7 @@
  */
 
 /**
- * Provides classes for a programmer first behavior driven framework build on the features of Junit 5.
+ * Provides shared core abstractions for Java business applications.
  */
 module net.tangly.core {
     exports net.tangly.core;

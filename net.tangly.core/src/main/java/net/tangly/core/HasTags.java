@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -35,8 +35,9 @@ public interface HasTags {
      * Adds the tag to the set of tags.
      *
      * @param tag tag to be added
+     * @return {@code true} if this set did not already contain the specified element
      */
-    void add(Tag tag);
+    boolean add(Tag tag);
 
     default void addTags(@NotNull Iterable<Tag> tags) {
         tags.forEach(this::add);
@@ -70,8 +71,9 @@ public interface HasTags {
      * Removes the tag from the set of tags.
      *
      * @param tag tag to remove
+     * @return {@code true} if this set contained the specified element
      */
-    void remove(Tag tag);
+    boolean remove(Tag tag);
 
     /**
      * Removes the tag with the given tag identification containing optional namespace and tag name.
