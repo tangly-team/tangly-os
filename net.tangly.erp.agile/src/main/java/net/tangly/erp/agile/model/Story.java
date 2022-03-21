@@ -1,6 +1,5 @@
-
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2021-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -11,17 +10,22 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-plugins {
-    id 'java-library-conventions'
-}
+package net.tangly.erp.agile.model;
 
-project.ext.groupId = 'net.tangly.erp'
-project.ext.artifactId = 'agile'
-project.version = "0.2.6"
-project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
-project.ext.inceptionYear = '2019'
-project.description = "Agile bounded domain using Java 17 or higher (tangly llc)"
+import java.math.BigDecimal;
 
-dependencies {
-    implementation project(':net.tangly.core')
+import net.tangly.core.ExternalEntity;
+import net.tangly.core.ExternalEntityImp;
+import org.jetbrains.annotations.NotNull;
+
+public class Story extends ExternalEntityImp implements ExternalEntity {
+    private int priority;
+    private int estimate;
+    private BigDecimal effort;
+    private String featureId;
+    private String sprintId;
+
+    public Story(@NotNull String id) {
+        super(id);
+    }
 }
