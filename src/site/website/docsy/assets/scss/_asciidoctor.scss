@@ -43,7 +43,7 @@
     td {
         &.icon {
             text-align: center;
-            width: 2em;
+            width: 80px;
 
             img {
                 max-width: none;
@@ -51,6 +51,7 @@
 
             .title {
                 font-weight: bold;
+                color: rgba(0, 0, 0, 0.6);
                 text-transform: uppercase;
             }
         }
@@ -210,7 +211,7 @@ a.image {
 }
 
 .conum[data-value] {
-    display: inline-flex;
+    display: inline-block;
     justify-content: center;
     align-items: center;
     vertical-align: text-bottom;

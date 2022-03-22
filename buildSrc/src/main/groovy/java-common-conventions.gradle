@@ -42,7 +42,7 @@ ext {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(18)
     }
     withJavadocJar()
     withSourcesJar()
@@ -74,7 +74,7 @@ tasks.withType(Javadoc) {
         encoding("UTF-8")
         addBooleanOption('-Xdoclint:none')
         addBooleanOption('-enable-preview', true)
-        addStringOption('-release', '17')
+        addStringOption('-release', '18')
         addBooleanOption('quiet')
     }
 }
@@ -184,7 +184,7 @@ configurations.all {
 }
 
 jacoco {
-    toolVersion = "0.8.7"
+    toolVersion = "0.8.8-SNAPSHOT"
 }
 
 jacocoTestReport {

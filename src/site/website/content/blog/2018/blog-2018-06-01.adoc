@@ -11,17 +11,18 @@ tags: ["design"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2018-06-01-head.jpg[width=420, height=360, role=left]
+image::2018-06-01-head.jpg[width=420,height=360,role=left]
+
 Lately I was asked how many bugs and smells detected through SonarQube were acceptable for a software product.
 And a Scrum master inquired which organizational changes are necessary to empower software developers to write good code.
 Speechless and dumbfounded, I was unable to answer these questions.
 
-After quite some time I realized these persons believe tools can measure the quality of software.
+After quite some time, I realized these people believe tools can measure the quality of software.
 But tools can only measure _non-quality_.
 
 They tell you when you are doing it wrong, only your heart can tell you when you are doing it right.
 
-But first that does it means to have a quality software product?
+But first that does it mean to have a quality software product?
 
 [quote]
 ____
@@ -36,7 +37,7 @@ The second part is called intrinsic quality and is why customers buy your produc
 Criteria such as test code coverage, static analyzers, coding guidelines are just tools to detect missing quality.
 They help your team produce higher quality and nothing else.
 
-I encounter organizations stating that zero defects as measured with SonarQube is the ultimate goal - and they find normal to have hundred of thousands of smells -.
+I encounter organizations stating that zero defects as measured with SonarQube is the ultimate goal - and they find normal to have a hundred of thousands of smells -.
 Time for a reality check.
 
 Tools such as SonarQube, unit test coverage are just instruments to support your teams to detect _known non-quality_.
@@ -51,8 +52,7 @@ I encourage you to extend your practices with additional procedures based on you
 
 _Is why you buy a specific car_
 
-* Acceptance criteria and behavior test driven development ATDD - You insure through
-automatic tests the feature behave how your customer requested,
+* Acceptance criteria and behavior test driven development ATDD - You insure through automatic tests that the feature behaves how your customer requested,
 * Defect driven development - You insure through automatic tests your customer will never encounter this exact error again,
 * Fast release and deployment cycle
 - You give your customer a way to detect bad behavior early and have an opportunity to ask for improvement.
@@ -60,7 +60,8 @@ By fast, we mean daily or perhaps weekly.
 
 ==== Intrinsic Quality - Technical Quality
 
-_Is why you can daily drive your car and not have to weekly repair it. And, later be able to add a charger for your mobile phone without spending a fortune._
+_Is why you can daily drive your car and not have to weekly repair it.
+And, later be able to add a charger for your mobile phone without spending a fortune._
 
 * Static code analysis - Known weaknesses are removed from your source code.
 * Test driven development TDD - You can change the code without changing the behavior or outputs, see also ATDD.
@@ -69,8 +70,7 @@ _Is why you can daily drive your car and not have to weekly repair it. And, late
 
 === Accountability
 
-The Scrum Team - Development Team, Product Owner and Scrum Master - are responsible and accountable for the intrinsic and extrinsic quality
-of the delivered products.
+The Scrum Team - Development Team, Product Owner and Scrum Master - are responsible and accountable for the intrinsic and extrinsic quality of the delivered products.
 Insufficient quality is always a collective failure.
 
 Truly, if the intrinsic quality of the source code is low, it is undeniably a failure.
@@ -82,7 +82,7 @@ That is one of the reasons why in Scrum we have the role of Scrum master respons
 And no physician will ever cut corners just because he is in a stressful situation.
 So please be a professional and read again the principles of the http://agilemanifesto.org/principles.html[agile manifesto] such as
 
-[quote, Agile Manifesto]
+[quote,Agile Manifesto]
 ____
 Continuous attention to technical excellence and good design enhances agility.
 ____
@@ -102,9 +102,9 @@ The first steps to improve your product are quite simple are around for at least
 * Eliminate all compiler errors and warnings.
 * Use static checkers.
 * Activate the checkers of the IDE you are working with.
- For example, I am using IntelliJ IDEA and they have extensive checkers.
+For example, I am using IntelliJ IDEA and they have extensive checkers.
 * If using https://www.sonarqube.org/[SonarQube], download link:../..//2018/blog-2018-05-01]SonarLint plugin and simply use it -.
- This tool is best of breed, do not argument and just use it -.
+This tool is best of breed, do not argument and just use it -.
 * Write tests with JUnit5, Mockito, AssertJ, Cucumber.
 
 I am _ashamed_ to see software developers not implementing the above measures on a daily basis.
@@ -117,20 +117,25 @@ Your goal is simply zero warnings at the end of the spring.
 Later tighten it to zero warnings in the trunk of your git repository.
 Just do it - and stop arguing about the merits and costs -!
 
-And if you do not agree with one of the warnings just disable the rule and document the reason for an architecture design record ADR.
+And if you do not agree with one of the warnings, just disable the rule and document the reason for an architecture design record ADR.
 
 Agile and Scrum are all about learning and continuous improvement.
 Please stop talking about quality and just start improving it!
 I do not want to hear any lame excuses why a software developer is not continuously doing the above activities.
 
 _I acknowledge I am emotionally involved and not fully objective.
-Lately, I saw a Java code of three different commercial products and I am still recovering from the missing quality._
+Lately, I saw a Java code of three different commercial products.
+I am still recovering from the missing quality._
 
 [bibliography]
 === Literature
 
-- [[[cleancode, 1]]] Clean Code. Robert C Martin. 2009
-- [[[cleancoder, 2]]] Clean Coder. Robert C Martin. 2011
-- [[[cleanarchitecture, 3]]] Clean Architecture. Robert C Martin. 2018
+- [[[cleancode, 1]]] Clean Code.
+Robert C Martin. 2009
+- [[[cleancoder, 2]]] Clean Coder.
+Robert C Martin. 2011
+- [[[cleanarchitecture, 3]]] Clean Architecture.
+Robert C Martin. 2018
 - [[[cleanagile, 4]]] Clean Agile, Robert C Martin. 2020
-- [[[pragmaticprogrammer, 5]]] The pragmatic Programmer: Your Journey to Mastery (20^th^ Anniversary Edition). Andrew Hunt & David Thomas. 2019
+- [[[pragmaticprogrammer, 5]]] The pragmatic Programmer: Your Journey to Mastery (20^th^ Anniversary Edition).
+Andrew Hunt & David Thomas. 2019
