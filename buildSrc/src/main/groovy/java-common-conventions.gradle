@@ -35,11 +35,6 @@ dependencies {
     testRuntimeOnly(libs.junit.engine)
 }
 
-ext {
-    // support conditional gradle script execution for dev, int, prod. Used for example to disable slow reporting plugins
-    mode = "dev"
-}
-
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(18)
@@ -153,7 +148,7 @@ publishing {
     repositories {
         maven {
             url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-            if (mode.equalsIgnoreCase('prod')) {
+            if (project.hasProperty('mode') && project.property('mode').equals('prod')) {
                 credentials {
                     // credentials are stored under ~/.gradle/gradle.properties and are first copied in local variables to avoid error if not defined fpr
                     // example in CI pipeline (private keys should not be uploaded to a cloud CI)
@@ -167,7 +162,7 @@ publishing {
     }
 }
 
-if (mode.equalsIgnoreCase('prod')) {
+if (project.hasProperty('mode') && project.property('mode').equals('prod')) {
     // currently credentials are not available in the CI pipeline therefore the configuration parameter to avoid spurious execution errors.
     signing {
         // credentials for signing are stored under ~/.gradle/gradle.properties
@@ -215,8 +210,8 @@ sonarqube {
     }
 }
 
-if (properties.hasProperty('mode') || mode.equalsIgnoreCase('int')) {
-    // apply plugin: 'com.github.spotbugs'
+if (project.hasProperty('mode') && project.property('mode').equals('int')) {
+    apply plugin: 'com.github.spotbugs'
     apply plugin: 'org.sonatype.gradle.plugins.scan'
     apply plugin: 'pmd'
     apply plugin: 'info.solidsoft.pitest'
@@ -228,23 +223,25 @@ if (properties.hasProperty('mode') || mode.equalsIgnoreCase('int')) {
         incrementalAnalysis = true
         rulesMinimumPriority = 3
     }
-//    spotbugs {
-//        ignoreFailures = true
-//        effort = "default"
-//        reportLevel = "low"
-//        omitVisitors = []
-//        toolVersion = '4.6.0'
-//    }
-//    [spotbugsMain, spotbugsTest].each { task ->
-//        task.configure {
-//            reports {
-//                html {
-//                    enabled = true
-//                    stylesheet = 'fancy-hist.xsl'
-//                }
-//            }
-//        }
-//    }
+
+    spotbugs {
+        ignoreFailures = true
+        effort = "default"
+        reportLevel = "low"
+        omitVisitors = []
+        toolVersion = '4.6.0'
+    }
+    [spotbugsMain, spotbugsTest].each { task ->
+        task.configure {
+            reports {
+                html {
+                    enabled = true
+                    stylesheet = 'fancy-hist.xsl'
+                }
+            }
+        }
+    }
+
     tasks.withType(Pmd) {
         reports {
             xml.enabled false
