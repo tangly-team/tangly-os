@@ -28,11 +28,11 @@ You can create the set of git remotes with the following instructions.
 ----
 git remote set-url origin-bitbucket git@bitbucket.org:tangly-team/tangly-os.git // <1>
 git remote set-url origin-github git@github.com:marcelbaumann/tangly-os.git // <2>
-git remote set-url origin-hslu git@gitlab.enterpriselab.ch:tangly/tangly-os.git // <3>
+git remote set-url origin-hslu https://gitlab.enterpriselab.ch/tangly/tangly-os.git // <3>
 ----
 <1> primary git repository of the project
 <2> secondary mirrored git repository of the project
-<3> repositoy for the lectures at the technical university of Luzern, Switzerland
+<3> repository for the lectures at the technical university of Luzern, Switzerland (https due to limitations of their server)
 
 === Contributor License Agreement
 
