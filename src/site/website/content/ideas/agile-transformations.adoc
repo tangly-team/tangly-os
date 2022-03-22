@@ -14,42 +14,42 @@ The Agile Manifesto values and principles can be taught and exercised throughout
 The entire organization needs to understand the values and principles of an agile transformation to benefit from the rewards of achieving healthy agility.
 The cultural and organizational mindset shall change to one that embraces a culture of self-organization and collaboration.
 
-Our approach to initiate and support an agile transformation is
+Our approach to initiating and supporting an agile transformation is
 
 Establish leadership situation awareness, discovery of weaknesses and kickoff of transformation::
-* Conduct a _Go And See_ - https://en.wikipedia.org/wiki/Gemba[Gemba] - to assess and understand your organization’s context and specific challenges,
-* Work with leadership to make those challenges visible and define steps to address them,
-* Identify urgency and core champions actively supporting the transformation,
-* Launch leadership teams and communities of practices to guide your organization’s transformation,
-* Enable leadership to deploy transformation incrementally and guide the scope and pace of change,
+* Conduct a _Go And See_ - https://en.wikipedia.org/wiki/Gemba[Gemba] - to assess and understand your organization’s context and specific challenges.
+* Work with leadership to make those challenges visible and define steps to address them.
+* Identify urgency and core champions actively supporting the transformation.
+* Launch leadership teams and communities of practices to guide your organization’s transformation.
+* Enable leadership to deploy transformation incrementally and guide the scope and pace of change.
 Organize your collaborators and workflow around your products and strategy::
-* Design a custom transformation approach with immediately actionable steps,
-* Select a few pilot groups for launch and involve all participants - open space meeting, information radiators -,
-* Create a coherent, actionable backlog which connects strategy to execution so the entire organization is aligned around shared goals,
-* Identify indicators to measure progress,
-* Build team level backlogs so the entire organization is aligned around shared goals,
-* Work with leadership to discover and address organizational pain points and challenges,
+* Design a custom transformation approach with immediately actionable steps.
+* Select a few pilot groups for launch and involve all participants - open space meeting, information radiators -.
+* Create a coherent, actionable backlog which connects strategy to execution, so the entire organization is aligned around shared goals.
+* Identify indicators to measure progress.
+* Build team level backlogs so the entire organization is aligned around shared goals.
+* Work with leadership to discover and address organizational pain points and challenges.
 Launch your teams::
-* Train your pilot teams in the roles, artifacts, and events of {ref-scrum} and {ref-less},
-* Embed coaches to support your teams become high-performing,
-* Establish team excellence and technical craftsmanship,
-* Use specific, demonstrable success to train, launch, and coach additional teams,
+* Train your pilot teams in the roles, artifacts, and events of {ref-scrum} and {ref-less}.
+* Embed coaches to support your teams become high-performing.
+* Establish team excellence and technical craftsmanship.
+* Use specific, demonstrable success to train, launch, and coach additional teams.
 Build team sustainability::
-* Build and extend communities of practice,
-* Nurture internal coaching capabilities to sustain your agile practice beyond the pilot,
-* Establish continuous improvement as culture in the organization,
-* Provide additional follow-up as needed to continue to build business agility,
+* Build and extend communities of practice.
+* Nurture internal coaching capabilities to sustain your agile practice beyond the pilot.
+* Establish continuous improvement as culture in the organization.
+* Provide additional follow-up as needed to continue to build business agility.
 Focus on product delivery::
-* Value stream mapping and https://en.wikipedia.org/wiki/Lean_software_development[waste elimination],
-* Amplify learning,
-* Late decision-making,
-* Fast delivery - continuous integration, continuous delivery, continuous deployment, DevOps -,
-* Team empowerment,
-* Built-in integrity,
+* Value stream mapping and https://en.wikipedia.org/wiki/Lean_software_development[waste elimination].
+* Amplify learning.
+* Late decision-making.
+* Fast delivery - continuous integration, continuous delivery, continuous deployment, DevOps -.
+* Team empowerment.
+* Built-in integrity.
 * View applications as a whole.
 
-We reinforce learnt theory, streamline how to apply agile principles and experiments, help you to develop routine, promote awareness, boost ownership, facilitate barrier removal, and avoid painful or costly dead ends.
-Our goal is to shorten the learning curve and optimize the human and financial investments.
+We reinforce learning theory, streamline how to apply agile principles and experiments, help you to develop a routine, promote awareness, boost ownership, facilitate barrier removal, and avoid painful or costly dead ends.
+Our goal is to shorten the learning curve and optimize human and financial investments.
 We truly believe in the first directive
 
 [quotem Norm Kerth]

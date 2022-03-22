@@ -17,20 +17,20 @@ description: Analysis of source code as a code scene with specialized tools
 Agile development teams shall manage and diminish their technical debt. We provide instruments to increase the pay-off of refactoring measures. The
 most relevant source code parts should be refactored first. But how can we identify them?
 
-Git is the de facto standard for version management systems. Git contains the whole evolution story of our source code. We use this data to identify
-areas under repetitive change or often needing fixing. In parallel the evolution of the source code hints us for complexity hotspots.
+Git is the de facto standard for version management systems. Git contains the whole evolution story of our source code. We use these data to identify
+areas under repetitive change or often needing fixing. In parallel, the evolution of the source code hints us for complexity hotspots.
 
-The three area of statistical data are combined to identify the most promising area for refactoring.
+The three areas of statistical data are combined to identify the most promising area for refactoring.
 * History of commits reflecting the behavior and priorities of team members over time
 * Evolution of source code artifacts reflecting changes in complexity and legibility
 * Corrections of identified defects and their location identify non-quality hotspots
 
-The provided tools extract the requested indicators and presents them graphically. The findings are used to support refactoring priorzsation.
+The provided tools extract the requested indicators and present them graphically. The findings are used to support refactoring prioritization.
 
 === Requirements
 
 . Gather changes in the repository artifacts over a specified time interval
-  .. the gathered data are date of change, author of change, number of added lines and of removed lines
+  .. the gathered data are date of change, the author of change, number of added lines and of removed lines
   .. each file change is gathered
   .. only the version management system __git__ is supported
 . Gather complexity metrics over source code artifacts - classes and packages - over a specified time interval

@@ -18,13 +18,14 @@ description: An introduction to software architecture in agile product developme
 
 == Agile Architecture Principles
 
-You are applying successfully the agile and lean approach to your software products development.
+You are applying the agile and lean approach to your software products development.
 Your teams use https://www.scrumguides.org/scrum-guide.html[Scrum] or https://en.wikipedia.org/wiki/Kanban_(development)[Kanban] to deliver running software at least every two weeks.
 The product launch is a tremendous success.
 You will likely sell the solution for the next ten years.
 
-How shall you define and nurture the software architecture of your product and insure a long living and high quality solution?
-The experts tell you the design is emergent, what does it mean?
+How shall you define and nurture the software architecture of your product and insure a long living and high-quality solution?
+The experts tell you the design is emergent.
+What does it mean?
 
 [quote,Anonymous]
 ____
@@ -37,20 +38,20 @@ The _Large-Scaled Scrum_ https://less.works[LeSS] authors have written quite a f
 Their opinionated observations are true for any software product.
 It is irrelevant if the product was developed using agile approaches or traditional older ones.
 
-. The sum of all source code is the *true* design blueprint or software architecture,
-. The real software architecture evolves (better or worse) every day of the product, as people are *programming*,
-. The real living architecture needs to be grown every day through acts of programming by *master programmers*,
-. A software architect who is not in touch with the evolving source code of the product is out of touch with reality,
+. The sum of the source code is the *true* design blueprint or software architecture.
+. The real software architecture evolves (better or worse) every day of the product, as people are *programming*.
+. The real living architecture needs to be grown every day through acts of programming by *master programmers*.
+. A software architect who is not in touch with the evolving source code of the product is out of touch with reality.
 . *Every programmer is some kind of architect* — whether wanted or not.
 Every act of programming is some kind of architectural act — good or bad, small or large, intended or not.
 
 Agile architecture comes from the behavior of agile _architecting_.
 
-* Hands-on _master-programmer_ architects are key for resilient systems; avoid powerpoint architects no writing any source code,
-* A culture of _excellence_ in code and professionalism for the developers,
-* An emphasis on _pair-programming_ coaching for high-quality code and design,
-* Agile modeling design workshops using collaborative peer approaches,
-* _Test-driven development_ and _refactoring_ to continuously and aggressively remove technical debt,
+* Hands-on _master-programmer_ architects are key for resilient systems; avoid PowerPoint architects no writing any source code.
+* A culture of _excellence_ in code and professionalism for the developers.
+* An emphasis on _pair-programming_ coaching for high-quality code and design.
+* Agile modeling design workshops using collaborative peer approaches.
+* _Test-driven development_ and _refactoring_ to continuously and aggressively remove technical debt.
 * And other _hands-on-the-code_ and _good practice_ behaviors.
 
 These statements reflect the agile and modern approach to software design and architecture.
@@ -62,7 +63,7 @@ https://en.wikipedia.org/wiki/Community_of_practice[Communities of practice] are
 
 === Quality of Your Architecture
 
-You shall measure the adequacy and quality of your design and created software artifacts.
+You shall measure the adequacy and quality of your design and create software artifacts.
 Avoid opinions and collect empirical data.
 The scientific approach is key for professionalism.
 
@@ -84,7 +85,7 @@ https://checkstyle.sourceforge.io[Checkstyle]_
 
 The above validation activities shall always be backed through tools and integrated in your continuous delivery pipeline.
 Beware these tools can only detect non-quality and never provide a proof you achieved your expected quality.
-Qualified and experienced engineers is your best guaranty to achieve and sustain high quality in architecture and software products.
+Qualified and experienced engineers are your best guaranty to achieve and sustain high quality in architecture and software products.
 
 Implement the above measures to gather data and publish the actual state of your source code.
 You find more advanced approaches in https://tangly-blog.blogspot.com/2019/04/code-scene-as-crime-scene.html[Code Scene as Crime Scene],
@@ -145,20 +146,21 @@ Your architects are talented developers and are full members of your Scrum teams
 @endmindmap
 ----
 
-The key for professional software development are good teams.
+The key for professional software development is good teams.
 Your development team members are
 
 * Expert in the used programming languages and technology stacks,
-* Understand object-oriented, functional and rule based programming,
-* Known all major patterns and idioms of the used development stack,
-* Practice https://en.wikipedia.org/wiki/Test-driven_development[TDD], https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD], clean code, refactoring,
-* Embrace continuous integration _CI_, continuous delivery _CD_, continuous development _CD_,
-* Automate everything and establish DevOps,
+* Understand object-oriented, functional and rule-based programming.
+* Known all major patterns and idioms of the used development stack.
+* Practice https://en.wikipedia.org/wiki/Test-driven_development[TDD], https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD], clean code, refactoring.
+* Embrace continuous integration _CI_, continuous delivery _CD_, continuous development _CD_.
+* Automate everything and establish DevOps.
 ** _https://www.jenkins.io/[Jenkins], https://bitbucket.org/article/features/pipelines[bitbucket pipeline]_
-* Study source code from open source projects to learn better ways,
-* Know https://en.wikipedia.org/wiki/SMART_criteria[SMART], https://en.wikipedia.org/wiki/INVEST_(mnemonic)[INVEST], https://de.wikipedia.org/wiki/Solid_(Software)[SOLID], https://en.wikipedia.org/wiki/KISS_principle[KISS], https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI],
-* hold weekly design workshops with _huge_ whiteboards,
-* Use domain driven design <<domain-driven-design>> and event storming,
+* Study source code from open source projects to learn better ways.
+* Know https://en.wikipedia.org/wiki/SMART_criteria[SMART], https://en.wikipedia.org/wiki/INVEST_(mnemonic)[INVEST], https://de.wikipedia.org/wiki/Solid_(Software)[SOLID],
+https://en.wikipedia.org/wiki/KISS_principle[KISS], https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI].
+* hold weekly design workshops with _huge_ whiteboards.
+* Use domain driven design <<domain-driven-design>> and event storming.
 * Avoid https://en.wikipedia.org/wiki/Big_Design_Up_Front[BDUF].
 
 You shall keep it simple, make it valuable, and build it piece by piece.
@@ -181,12 +183,12 @@ Start early writing clean code, do it continuously and soon your code will be cl
 === Architecture versus Code
 
 Be honest.
-Having a huge class with thousands of lines of code plainly demonstrate that your organization worked unprofessionally over months in the past.
+Having a huge class with thousands of lines of code plainly demonstrates that your organization worked unprofessionally over months in the past.
 Such monsters are not born over a night coding session or a weekend hack session.
 It takes time and unwavering incompetence to create such maintenance nightmares.
 
-And as long as your product contains such code monsters it is worthless to pretend to have a nice and thought through architecture.
-Team discipline and early warning systems are the key to avoid such blunders and kill the monster in the egg.
+And as long as your product contains such code monsters, it is worthless to pretend to have a nice and thought through architecture.
+Team discipline and early warning systems are the key to avoiding such blunders and kill the monster in the egg.
 
 === Clean Code and Refactoring
 
@@ -201,21 +203,21 @@ ____
 image::tdd-cycle.png[TDD cycle,500,700,role="left"]
 
 . [red]*Red* - Write a test and run it, validating the test harness.
-_I recommend acceptance tests and unit tests_,
+_I recommend acceptance tests and unit tests_.
 . [green]*Green* - Write the minimum amount of code to implement the functionality validated in the previously developed test.
-Update the code and run the tests until the test suite shows successful execution,
+Update the code and run the tests until the test suite shows successful execution.
 . [teal]*Refactor* the code to reach clean code level.
 _Use static analysis tools to achieve faster and better success_.
 
-Continuously run the tests to guaranty compliant changes.
+Continuously run the tests for guaranty compliant changes.
 So you avoid any regression problem.
 Good practice is to integrate the test suite execution in a continuous integration pipeline.
 
-If you are a Java developer you will:
+If you are a Java developer, you will:
 
 * Use JUnit 5 and Mockito 2 to implement the first step.
-Evaluate AssertJ to write more legible conditions,
-* Use a powerful IDE such IntelliJ IDEA to write and enhance functional code,
+Evaluate AssertJ to write more legible conditions.
+* Use a powerful IDE such IntelliJ IDEA to write and enhance functional code.
 * Use tools such as SonarLint, Jacoco, Spotbugs, ArchUnit to refactor your functional code and test cases.
 * Clean code applies to productive and test code.
 * The described approach is a good practice since the beginning of this millennium.
@@ -264,15 +266,15 @@ ____
 The cost of automating acceptance tests is so small in comparison to the cost of executing manual test plans that it makes no economic sense to write scripts for humans to execute.
 ____
 
-To implement this approach you need
+To implement this approach you need:
 
 * Acceptance criteria formulated for each functionality.
-It implies https://en.wikipedia.org/wiki/Specification_by_example[specifications by example] - you need to train your business analysts and article owners,
-* Cucumber for Java (or equivalent tools) - to write acceptance tests,
-* Mock all external systems and the database - to have fast build and test time and avoid external dependencies,
+It implies https://en.wikipedia.org/wiki/Specification_by_example[specifications by example] - you need to train your business analysts and article owners.
+* Cucumber for Java (or equivalent tools) - to write acceptance tests.
+* Mock all external systems and the database - to have fast build and test time and avoid external dependencies.
 * A continuous build and delivery pipeline to automatically run your acceptance validation tests upon each application change,
-* Avoid user interface tests - because they are slow and brittle,
-* Use in memory database only if you have to - they are a fast solution to write acceptance tests but are intrinsically slower than mocks.
+* Avoid user interface tests - because they are slow and brittle.
+* Use an in-memory database only if you have to - they are a fast solution to write acceptance tests but are intrinsically slower than mocks.
 
 [CAUTION]
 ====
@@ -280,7 +282,7 @@ Never access file on the disk or use a database writing to a disk inside tests.
 This approach is way too slow and destroy fast continuous integration cycles.
 
 You can put your file system is memory with https://github.com/google/jimfs[jimfs].
-Use for example http://hsqldb.org/[hsqldb] for in-memory database and https://flywaydb.org/[flywaydb] to setup the database tables.
+Use for example http://hsqldb.org/[hsqldb] for in-memory database and https://flywaydb.org/[flywaydb] to set up the database tables.
 ====
 
 === Code Sociology
@@ -295,7 +297,7 @@ Simple engineering practices are the most powerful ones.
 Practice consolidates changes in behavior of your development organization.
 Exercising new approaches enforces culture change and implicit modify the organization approaches.
 
-* Pair Programming - is a training on the job and crowd wisdom approach to steadily improve knowledge and quality.
+* Pair Programming - is a training on the job and crowd wisdom approach to steadily improving knowledge and quality.
 *TDD and ATDD - are safety net to guaranty quality attributes in your source code\.
 * DevOps starting with git, docker, continuous integration, delivery and deployment - to speed up development and eliminate tedious manual errors.
 * Lack of accountability equates to lack of trust - your teams are accountable for the quality of your product and you should trust them.
@@ -360,9 +362,9 @@ A key component is to find out how to create great architecture within the Scrum
 
 An agile architecture shall have four characteristics.
 
-. _Allow change quickly_ - because we cannot foreseen the future -,
-. _Always verifiable_ - because we want changes without impeding integrity -,
-. _Support rapid development_ - because we want effective and efficient implementation of new features,
+. _Allow change quickly_ - because we cannot foreseen the future -.
+. _Always verifiable_ - because we want changes without impeding integrity -.
+. _Support rapid development_ - because we want effective and efficient implementation of new features.
 . _Always working_ - because we want continuous deployment to have customers' feedback - These characteristics are essential for successful agile development of great software products.
 
 === What Is The Scrum Approach?
@@ -386,18 +388,18 @@ Interestingly {ref-less} is more opinionated and describe successful approaches 
 === How Do You Perform Agile Design?
 
 Scrum is silent about technical practices.
-The Scrum fathers and community strongly emphasize to adopt eXtreme Programming practices.
+The Scrum fathers and community strongly emphasize adopting eXtreme Programming practices.
 For bigger systems use the good practices described in LeSS.
 
 An actual very good practice is to use event storming and domain driven design to model the application domain and partition the system.
 
 Use fitness functions to monitor and validate continuously all non-functional requirements.
 
-The well established practices from the object-oriented and DevOps communities are
+The well-established practices from the object-oriented and DevOps communities are
 
-* Develop very early a working skeleton,
-* Clean architecture implies clean code and requires clean coders in your team (see our post clean code),
-* Aggressive refactoring and understand technical debt,
+* Develop very early a working skeleton.
+* Clean architecture implies clean code and requires clean coders in your team (see our post clean code).
+* Aggressive refactoring and understand technical debt.
 * Continuous integration, continuous delivery, and continuous deployment.
 
 For a detailed discussion consult the post link:../../2018/pragmatic-craftsmanship-professional-software-developer[Pragmatic Craftsmanship].
@@ -406,13 +408,13 @@ For a detailed discussion consult the post link:../../2018/pragmatic-craftsmansh
 
 The architect shall
 
-* Be part of the team, work daily with team members and attend all team events,
-* Maintain the pace of development,
-* Often and early communicate as a coach and mentor - we mean pair programming and design sessions -,
-* Be fluent in the domain driven development, hexagonal architecture, refactoring, and clean code,
-* Use architecture design record ADR and light documentation to describe architecture decisions - meaning no lengthy Software Architecture Document SAD or overwhelming UML models -,
+* Be part of the team, work daily with team members and attend all team events.
+* Maintain the pace of development.
+* Often and early communicate as a coach and mentor - we mean pair programming and design sessions -.
+* Be fluent in the domain driven development, hexagonal architecture, refactoring, and clean code.
+* Use architecture design record ADR and light documentation to describe architecture decisions - meaning no lengthy Software Architecture Document SAD or overwhelming UML models -.
 * Be a master programmer and writes code in the application technological stack.
-He writes actual source code as current good practices are,
+He writes actual source code as current good practices are.
 * Have rich knowledge of architecture and design.
 
 [quote,Dave Farley]
@@ -493,12 +495,12 @@ Agile code is clean code.
 Do not fall to the fallacy to draw beautiful and useless UML diagram and write thick software architecture documents.
 The real architecture is hidden in the source code of your article.
 
-You still should document all major design decisions and should use UML to enlighten important architecture decisions.
+You still document all major design decisions and should use UML to enlighten important architecture decisions.
 
 ==== Know Your Language
 
 If you are developing in Java, you should use the current features of the programming language.
-For example with with Java 14
+You use Java 14 for example:
 
 * Try with resources and closeable resources
 * Immutable collections
@@ -516,7 +518,7 @@ A good example is the support of immutable objects at language level.
 
 ==== Aggressive Refactoring
 
-The entropy of source code increases over time.
+The entropy of the source code increases over time.
 Only continuous and aggressive refactoring mitigates the degenerescence of your application.
 Study the https://refactoring.com/catalog/[refactoring catalog] and apply daily to your source code.
 Each time you correct an error or add a new functionality refactor your code.
@@ -546,7 +548,7 @@ Therefore the same error will never happen again.
 
 Publish your components on a central repository such as Maven Central.
 Your users have easy and standardized access to your components and their latest version.
-Build tools such as Gradle and Maven or IDE such as IntelliJ IDEA fetch the component with out of the box mechanisms.
+Build tools such as Gradle and Maven or IDE such as IntelliJ IDEA fetch transparently the components.
 
 Javadoc is the standard and hugely helpful approach to document classes and component public interfaces in Java.
 Similar tools exist for other programming languages.
@@ -556,7 +558,7 @@ Your users can better understand the path you follow and the selected tradeoffs.
 They do not have to agree but they can understand the arguments why you choose so.
 
 Static code generator is an actual good practice to provide the current documentation and tutorials for your components.
-We write all our documentation in the asciidoc format - including plantUML and highlighted source code - and generate our web site using hugo tool suite.
+We write all our documentation in the asciidoc format - including plantUML and highlighted source code - and generate our website using hugo tool suite.
 
 Start small and improve your approach every day.
 
@@ -668,7 +670,7 @@ Most products are developed by a team, and these achievements are the fruit of t
 
 Software article development is now agile, and most often uses the Scrum approach.
 
-Just putting a bunch of people together will not produce a high performance agile team.
+Just putting a bunch of people together will not produce a high-performance agile team.
 Quite a few companies find that out the hard way.
 
 How can you increase the odds to create an environment where agile teams bloom and perform?
@@ -680,7 +682,7 @@ If you want to make your business better, invest in your people.
 They’ll get the job done.
 
 Learn and pass on development good practices through pair programming and coding dojos.
-Promote communities of practice,
+Promote communities of practice.
 
 It is not enough that management commit themselves to quality and productivity, they must know what it is they must do.
 Such a responsibility cannot be delegated
@@ -746,7 +748,7 @@ The major responsibility of senior management is
 * Respectfully off-board departing collaborators
 * Move collaborators to the learning zone and let them thrive.
 
-Nurture a culture of learning through training on the job, learning from external sources - such as reading high quality blogs - and formal education - such as bachelor or master courses for example agile architecture -.
+Nurture a culture of learning through training on the job, learning from external sources - such as reading high quality blogs - and formal education - such as bachelor or master courses, for example, agile architecture -.
 Learning means trying and failing.
 Your culture should embrace small-scale failure to accelerate learning.
 
@@ -781,13 +783,13 @@ You shall work as a professional and deliver professional results.
 I recommend for any Java developer to
 
 * Have formal training in the Java language and library.
-For example, you should consider a Java Programmer certification for the current JDK you are working daily with,
-* Learn the new features in Java e.g. Streams, Lambdas, Reactive Programming, LocalDate, Modules, packaging with jlink,
-* Read and understand _Effective Java_ <<effective-java>> from Joshua Bloch,
+For example, you should consider a Java Programmer certification for the current JDK you are working daily with.
+* Learn the new features in Java e.g. Streams, Lambdas, Reactive Programming, LocalDate, Modules, packaging with jlink.
+* Read and understand _Effective Java_ <<effective-java>> from Joshua Bloch.
 * Read and understand _Clean Code_ <<clean-code>>, _Clean Coder_ <<clean-coder>>, _Clean Architecture_ <<clean-architecture>>, and _Clean Agile_<<clean-agile>> from Robert C. Martin,
-* Read and understand _Refactoring_ <<refactoring>> from Martin Fowler, And read Refactoring not on the backlog post from Ron Jeffries
-* Learn modern practices such as logging with slf4j, TDD with JUnit5, Mockito and AssertJ, ATDD with Cucumber, Lean DevOps, continuous integration, continuous delivery, continuous deployment, monitoring,
-* Be aware of famous Java libraries such as Guava, Apache Commons, Use SonarQube - and the SonarLint plugin for your preferred IDE - to catch well-known weaknesses in your source code and improve your coding skills,
+* Read and understand _Refactoring_ <<refactoring>> from Martin Fowler, And read Refactoring not on the backlog post from Ron Jeffries.
+* Learn modern practices such as logging with slf4j, TDD with JUnit5, Mockito and AssertJ, ATDD with Cucumber, Lean DevOps. continuous integration, continuous delivery, continuous deployment, monitoring.
+* Be aware of famous Java libraries such as Guava, Apache Commons, Use SonarQube - and the SonarLint plugin for your preferred IDE - to catch well-known weaknesses in your source code and improve your coding skills.
 
 A software developer not knowing the above items is almost certainly not a professional person, just a more or less talented amateur.
 See the blog of Mike Cohn https://www.mountaingoatsoftware.com/blog/the-difference-between-a-professional-and-an-amateur[the difference between a
@@ -804,11 +806,11 @@ The feeling you reached mastery level is truly awesome.
 ====
 
 * Read a technical book each quarter,
-* Learn a new language or framework every two years,
+* Learn a new language or framework every two years.
 * Read books such as _The Software Craftsman_ <<software-craftsman>>, _Refactoring_ <<refactoring>>, _Agile Code_ <<clean-code>>, _Agile Coder_ <<clean-coder>>, _Clean Architecture_ <<clean-architecture>>, _Clean Agile_ <<clean-agile>>
-* Know approaches such eXtreme Programming,
-* Work with Scrum, Kanban, LeSS - Agile approaches are definitively state of the industry techniques -,
-* Master container approaches with Docker - containers are here to stay and will replace virtual machines -,
+* Know approaches such eXtreme Programming.
+* Work with Scrum, Kanban, LeSS - Agile approaches are definitively state of the industry techniques -.
+* Master container approaches with Docker - containers are here to stay and will replace virtual machines -.
 * Technical leaders teach during coding dojos and pair programming sessions.
 
 You shall write good enough software without errors and using best practices of the industry.
@@ -834,9 +836,9 @@ Take everything you read with a grain of salt.
 
 Software craftsmanship
 
-* Is not a church, trying to convert all developers,
-* Is about leading by example and showing how we can be better,
-* Is about well written and designed code - and the customer stays in the center -,
+* Is not a church, trying to convert all developers.
+* Is about leading by example and showing how we can be better.
+* Is about well-written and designed code - and the customer stays in the center -.
 * Is about continuously delivering value not writing crap code.
 
 Your goal shall to become a professional developer and reach mastery.
