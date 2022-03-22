@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -18,7 +18,7 @@ import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import net.tangly.ui.grids.GridDecorators;
-import net.tangly.core.Entity;
+import net.tangly.core.NamedEntity;
 import net.tangly.core.QualifiedEntity;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.providers.Provider;
@@ -35,7 +35,7 @@ import java.util.Objects;
  *    <li>The tags panel shows all tags associated with the entity. This panel is a Crud&lt;Tag&gt; instance.</li>
  * </ul>
  */
-public abstract class InternalEntitiesView<T extends Entity> extends EntitiesView<T> implements CrudForm<T>, HasIdView<T> {
+public abstract class InternalEntitiesView<T extends NamedEntity> extends EntitiesView<T> implements CrudForm<T>, HasIdView<T> {
     public static final String OID_WIDTH = "5em";
     public static final String ID_WIDTH = "12em";
     public static final String NAME_WIDTH = "20em";
@@ -56,7 +56,7 @@ public abstract class InternalEntitiesView<T extends Entity> extends EntitiesVie
         this.registry = registry;
     }
 
-    protected static <T extends Entity> void addEntityFilters(GridDecorators<T> filters) {
+    protected static <T extends NamedEntity> void addEntityFilters(GridDecorators<T> filters) {
         filters.addFilter(new GridDecorators.FilterText<>(filters, T::name, "Name", "name")).addFilter(new GridDecorators.FilterInterval<>(filters))
             .addFilter(new GridDecorators.FilterTags<>(filters));
     }

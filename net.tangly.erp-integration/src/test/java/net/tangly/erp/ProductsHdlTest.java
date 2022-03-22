@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -42,7 +42,7 @@ class ProductsHdlTest {
     void testTsvCrm() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
-            store.createCrmAndLedgerRepository();
+            store.createRepository();
 
             var handler = new ProductsHdl(new ProductsEntities(), store.productsRoot());
             handler.importEntities();

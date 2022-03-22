@@ -12,7 +12,7 @@
  */
 
 plugins {
-    id 'java-library'
+    id 'java-library-conventions'
 }
 
 project.ext.groupId = 'net.tangly.erp'
@@ -24,4 +24,6 @@ project.description = "Collaborators bounded domain using Java 17 or higher (tan
 
 dependencies {
     implementation project(':net.tangly.core')
+    implementation project(':net.tangly.gleam')
+    implementation(libs.apache.commons.csv)
 }

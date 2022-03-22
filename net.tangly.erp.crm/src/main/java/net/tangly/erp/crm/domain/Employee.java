@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -14,9 +14,10 @@ package net.tangly.erp.crm.domain;
 
 import java.util.Objects;
 
-import net.tangly.core.EntityImp;
-import net.tangly.core.HasName;
+import net.tangly.core.NamedEntityImp;
 import net.tangly.core.crm.CrmEntity;
+import net.tangly.core.crm.LegalEntity;
+import net.tangly.core.crm.NaturalEntity;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -24,15 +25,18 @@ import org.jetbrains.annotations.NotNull;
  * property of the employee is the name property of the natural person of this employee. The from and to date defines the duration of the employment . if the to
  * date is empty the employee is still legally working for the organization.
  */
-public class Employee extends EntityImp implements CrmEntity {
+public class Employee extends NamedEntityImp implements CrmEntity {
     private NaturalEntity person;
     private LegalEntity organization;
 
     public Employee() {
     }
 
+    @Override
     public String name() {
-        return inferName(person) + " - " + inferName(organization) + " : " + fromDate();
+        String personName = (person != null) ? person.lastname() + ", " + person.firstname() : "UNKNOWN";
+        String organizationName = (organization != null) ? organization.name() : "UNKNOWN";
+        return personName + " - " + organizationName + " : " + fromDate();
     }
 
     public NaturalEntity person() {
@@ -59,11 +63,7 @@ public class Employee extends EntityImp implements CrmEntity {
     @Override
     public String toString() {
         return """
-                Employee[oid=%s, fromDate=%s, toDate=%s, text=%s, person=%s, organization=%s, tags=%s]
-                """.formatted(oid(), fromDate(), toDate(), text(), person(), organization(), tags());
-    }
-
-    private static String inferName(HasName entity) {
-        return (entity != null) ? entity.name() : "UNKNOWN";
+            Employee[oid=%s, fromDate=%s, toDate=%s, text=%s, person=%s, organization=%s, tags=%s]
+            """.formatted(oid(), fromDate(), toDate(), text(), person(), organization(), tags());
     }
 }

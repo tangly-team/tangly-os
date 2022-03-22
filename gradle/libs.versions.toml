@@ -1,65 +1,98 @@
 [versions]
 jackson-version = '2.12.3'
 jersey-version = '2.35'
-
-jetty-version = '9.4.43.v20210629'
+jetty-version = '9.4.45.v20220203'
 jolt-version = '0.1.1'
-junit-version = '5.8.0'
-log4j2-version = '2.14.1'
-microstream-version = '05.00.02-MS-GA'
-mustang-version = '2.2.1'
-vaadin-version = '21.0.0'
+junit-version = '5.8.2'
+log4j2-version = '2.17.2'
+microstream-version = '06.01.00-MS-GA'
+mustang-version = '2.4.0'
+vaadin-version = '23.0.1'
+assertj-version = '3.22.0'
+
+[plugins]
+vaadin = { id = "com.vaadin", version.ref = "vaadin-version" }
+spotbugs = "com.github.spotbugs:5.0.5"
+sonarqube = "org.sonarqube:3.3"
+sonatype = "org.sonatype.gradle.plugins.scan:2.2.2"
+pitest = "info.solidsoft.pitest:1.7.0"
+jib = "com.google.cloud.tools.jib:3.2.0"
+mannes = "com.github.ben-manes.versions:0.41.0"
 
 [libraries]
-annotations = "org.jetbrains:annotations:22.0.0"
+annotations = "org.jetbrains:annotations:23.0.0"
 antrlr-st4 = "org.antlr:ST4:4.3.1"
+apache-commons-cli = "commons-cli:commons-cli:1.5.0"
 apache-commons-csv = "org.apache.commons:commons-csv:1.9.0"
 apache-commons-codec = "commons-codec:commons-codec:1.15"
 apache-commons-io = "commons-io:commons-io:2.11.0"
+
 apache-log4j2-api = { module = "org.apache.logging.log4j:log4j-api", version.ref = "log4j2-version" }
 apache-log4j2-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "log4j2-version" }
 apache-log4j2-slf4j = { module = "org.apache.logging.log4j:log4j-slf4j-impl", version.ref = "log4j2-version" }
+
 apache-pdfbox = "org.apache.pdfbox:pdfbox:2.0.23"
-arch-unit = "com.tngtech.archunit:archunit-junit5-api:0.21.0"
-asciidoctorj-core = "org.asciidoctor:asciidoctorj:2.5.2"
-asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:1.6.0"
-assertj = "org.assertj:assertj-core:3.18.1"
-commonmark = "org.commonmark:commonmark:0.17.2"
+arch-unit = "com.tngtech.archunit:archunit-junit5-api:0.23.1"
+
+asciidoctorj-core = "org.asciidoctor:asciidoctorj:2.5.3"
+asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:1.6.2"
+
+assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
+commonmark = "org.commonmark:commonmark:0.18.2"
 eo-yaml = "com.amihaiemil.web:eo-yaml:5.2.1"
-flyway = "org.flywaydb:flyway-core:7.15.0"
-guice = "com.google.inject:guice:5.0.1"
-hsqldb = "org.hsqldb:hsqldb:2.6.0"
+flyway = "org.flywaydb:flyway-core:8.5.4"
+guice = "com.google.inject:guice:5.1.0"
+hsqldb = "org.hsqldb:hsqldb:2.6.1"
 iban4j = "org.iban4j:iban4j:3.2.3-RELEASE"
+
 ical4j-core = "org.mnode.ical4j:ical4j:3.0.19"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.6"
+
+google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.12.45"
+
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson-version" }
 jackson-parameters = { module = "com.fasterxml.jackson.module:jackson-module-parameter-names", version.ref = "jackson-version" }
 jackson-datatype = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jdk8", version.ref = "jackson-version" }
 jackson-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson-version" }
+
 jakarta-mail = "com.sun.mail:jakarta.mail:2.0.1"
 jimfs = "com.google.jimfs:jimfs:1.2"
+
 #Java 9 module compliant version of https://github.com/stleary/JSON-java
-json-core = "com.guicedee.services:json:1.1.1.7"
-json-validator = "com.networknt:json-schema-validator:1.0.59"
+json-core = "com.guicedee.services:json:1.2.1.2-jre17"
+json-validator = "com.networknt:json-schema-validator:1.0.67"
+json-assert = "org.skyscreamer:jsonassert:1.5.0"
 json-jolt-core = { module = "com.bazaarvoice.jolt:jolt-core", version.ref = "jolt-version" }
 json-jolt-utils = { module = "com.bazaarvoice.jolt:jolt-utils", version.ref = "jolt-version" }
+
 junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-version" }
 junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-version" }
+
+lanterna = "com.googlecode.lanterna:lanterna:3.1.1"
+lombok = "org.projectlombok:lombok:1.18.22"
 mustang-core = { module = "org.mustangproject:library", version.ref = "mustang-version" }
 mustang-validator = { module = "org.mustangproject:validator", version.ref = "mustang-version" }
-google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.12.32"
-qrbill = "net.codecrete.qrbill:qrbill-generator:2.5.3"
+
+neo4j = "org.neo4j:neo4j:4.3.7"
+
+qrbill = "net.codecrete.qrbill:qrbill-generator:3.0.2"
+
 microstream-storage = { module = "one.microstream:microstream-storage-embedded", version.ref = "microstream-version" }
-mockito = "org.mockito:mockito-junit-jupiter:3.12.4"
+microstream-jdk8 = { module = "one.microstream:microstream-persistence-binary-jdk8", version.ref = "microstream-version" }
+microstream-jdk17 = { module = "one.microstream:microstream-persistence-binary-jdk17", version.ref = "microstream-version" }
+
+mockito = "org.mockito:mockito-junit-jupiter:4.4.0"
 
 vaadin-core = { module = "com.vaadin:vaadin-core", version.ref = "vaadin-version" }
 vaadin-autocomplete = "com.vaadin.componentfactory:autocomplete:2.3.1"
 vaadin-daterange = "com.vaadin.componentfactory:vcf-date-range-picker:1.2.1"
+vaadin-pdfviewer = "org.vaadin.addons.componentfactory:vcf-pdf-viewer</artifactId:2.0.0"
+
 vaadin-pdfbrowser = "org.vaadin.alejandro:pdf-browser:3.1.0"
-vaadin-socharts = "com.storedobject.chart:so-charts:2.3.0"
+vaadin-socharts = "com.storedobject.chart:so-charts:2.3.7"
 vaadin-tooltip = "com.vaadin.componentfactory:tooltip:1.3.5"
 vaadin-signature = "de.f0rce.signaturepad:signature-widget:2.0.0"
-vaadin-test = "com.github.mvysny.kaributesting:karibu-testing-v10:1.3.2"
+vaadin-test = "com.github.mvysny.kaributesting:karibu-testing-v10:1.3.11"
 
 javax-servlet = "javax.servlet:javax.servlet-api:3.1.0"
 jetty-continuation = { module = "org.eclipse.jetty:jetty-continuation", version.ref = "jetty-version" }
@@ -69,7 +102,7 @@ jetty-websocketimp = { module = "org.eclipse.jetty.websocket:javax-websocket-ser
 
 jersey-servlet = { module = "org.glassfish.jersey.containers:jersey-container-servlet", version.ref = "jersey-version" }
 jersey-core = { module = "org.glassfish.jersey.core:jersey-server", version.ref = "jersey-version" }
-jersey-inject = {module = "org.glassfish.jersey.inject:jersey-hk2", version.ref = "jersey-version" }
+jersey-inject = { module = "org.glassfish.jersey.inject:jersey-hk2", version.ref = "jersey-version" }
 jersey-jetty = { module = "org.glassfish.jersey.containers:jersey-container-jetty-http", version.ref = "jersey-version" }
 
 jersey-swagger = "io.swagger:swagger-jersey2-jaxrs:1.5.0"
@@ -82,3 +115,4 @@ test-deps = ["junit-api", "assertj", "mockito", "arch-unit"]
 jackson-deps = ["jackson-databind", "jackson-parameters", "jackson-datatype", "jackson-jsr310"]
 jersey-deps = ["jersey-jetty", "jersey-core", "jersey-servlet", "jersey-inject"]
 jetty-deps = ["javax-servlet", "jetty-continuation", "jetty-server", "jetty-websocket"]
+microstream-deps = ["microstream-storage", "microstream-jdk8", "microstream-jdk17"]

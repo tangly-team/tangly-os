@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -14,8 +14,8 @@ package net.tangly.ui.components;
 
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import com.github.mvysny.kaributesting.v10.Routes;
-import net.tangly.core.Entity;
-import net.tangly.erp.crm.domain.LegalEntity;
+import net.tangly.core.NamedEntity;
+import net.tangly.core.crm.LegalEntity;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -40,8 +40,8 @@ class EntityFieldTest {
 
     @Test
     void testAddressField() {
-        Entity entity = null;
-        final EntityField<Entity> entityField = new EntityField<>();
+        NamedEntity entity = null;
+        final EntityField<NamedEntity> entityField = new EntityField<>();
         entityField.setValue(entity);
         assertThat(entityField.getValue()).isNull();
 

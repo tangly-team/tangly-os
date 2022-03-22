@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -17,13 +17,13 @@ import java.util.function.Predicate;
 
 import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.Lead;
-import net.tangly.erp.crm.domain.LegalEntity;
+import net.tangly.core.crm.LegalEntity;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.crm.domain.Contract;
 import net.tangly.erp.crm.domain.Employee;
 import net.tangly.erp.crm.domain.Interaction;
-import net.tangly.erp.crm.domain.NaturalEntity;
+import net.tangly.core.crm.NaturalEntity;
 import net.tangly.erp.crm.domain.Subject;
 import org.jetbrains.annotations.NotNull;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -25,7 +25,7 @@ import org.jetbrains.annotations.NotNull;
  * @param <S> the state enumeration type uniquely identifying a state in the state machine
  * @param <E> the event enumeration type uniquely identifying the event sent to the state machine
  */
-public class ActorFsm<O extends ActorFsm, S extends Enum<S>, E extends Enum<E>> extends ActorImp<Event<E>> {
+public class ActorFsm<O extends ActorFsm<O, S, E>, S extends Enum<S>, E extends Enum<E>> extends ActorImp<Event<E>> {
     /**
      * The final state machine defining the behavior of the actor class.
      */

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -31,8 +31,8 @@ import net.tangly.core.EmailAddress;
 import net.tangly.core.Tag;
 import net.tangly.core.crm.CrmTags;
 import net.tangly.core.crm.VcardType;
-import net.tangly.erp.crm.domain.NaturalEntity;
-import net.tangly.erp.crm.domain.Photo;
+import net.tangly.core.crm.NaturalEntity;
+import net.tangly.core.crm.Photo;
 import net.tangly.erp.crm.services.CrmRealm;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

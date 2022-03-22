@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -19,6 +19,7 @@ import java.util.Collections;
 import java.util.List;
 
 import net.tangly.core.HasDate;
+import net.tangly.core.HasText;
 
 /**
  * A simple transaction is a money transfer between a debit and a credit accounts. A split transaction is a money transfer between a debit account and a set of
@@ -27,7 +28,7 @@ import net.tangly.core.HasDate;
  * <p>A transaction is an event in the ledger domain. The whole sequence of transactions fully describes the state of the ledger and all accounts defined
  * inside.</p>
  */
-public class Transaction implements HasDate {
+public class Transaction implements HasDate, HasText {
     public static class Builder {
         private LocalDate date;
         private String reference;

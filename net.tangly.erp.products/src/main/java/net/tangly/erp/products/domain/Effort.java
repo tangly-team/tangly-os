@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -88,6 +88,11 @@ public class Effort implements HasOid, HasDate {
     public boolean equals(Object obj) {
         return (obj instanceof Effort o) && Objects.equals(oid(), o.oid()) && Objects.equals(date(), o.date()) && Objects.equals(duration(), o.duration()) &&
             Objects.equals(contractId(), o.contractId()) && Objects.equals(text(), o.text()) && Objects.equals(assignment(), o.assignment());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(oid);
     }
 
     @Override

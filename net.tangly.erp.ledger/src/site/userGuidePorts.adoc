@@ -16,7 +16,7 @@ draft: false
 
 The CRM ports provide a bidirectional interface to persistent file storage.
 
-CRM entitites can be stored to and retrieved from tab separated values _TSV_ files.
+CRM entities can be stored to and retrieved from tab separated values _TSV_ files.
 
 == Invoices Ports
 
@@ -30,18 +30,25 @@ _To be written_
 
 ==== Importing Ledger Structure
 
+The following steps export the information from the banana application:
+
 * Select the accounts tab displaying all the accounts and their structure of the period
 * Goto Data > Export Rows > Export Rows to txt
 * Select the destination file
-* If necessary change the extension to _csv_
+* If necessary change the extension to _tsv_
 
 The generated file is a CSV file containing the whole ledger account plan. The separator is TAB.
 
 ==== Importing Transactions
 
+The following steps export the information from the banana application:
+
 * Select the transaction tab displaying all the transactions of the period
 * Goto Data > Export Rows > Export Rows to txt
 * Select the destination file
-* If necessary change the extension to _csv_
+* If necessary change the extension to _tsv_
 
 The generated file is a CSV file containing the transaction details. The separator is TAB.
+It is a good practice to generate a file per fiscal year.
+
+All imported transactions should use the same ledger structure to support benchmarking and reporting over multiple periods.

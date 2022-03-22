@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -94,7 +94,7 @@ public record ErpStore(@NotNull FileSystem fs) {
     /**
      * Sets up the test environment for integration tests of the CRM domain: CRM entities, invoices, and ledger.
      */
-    public void createCrmAndLedgerRepository() {
+    public void createRepository() {
         try {
             Files.createDirectory(fs.getPath(ORGANIZATION));
             Files.createDirectory(fs.getPath(ORGANIZATION, CRM));

@@ -1,14 +1,13 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
- *  a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
- *  under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
 package net.tangly.erp.invoices.ports;
@@ -26,6 +25,8 @@ import java.util.stream.Stream;
 import javax.inject.Inject;
 
 import net.tangly.commons.logger.EventData;
+import net.tangly.erp.invoices.artifacts.InvoiceJson;
+import net.tangly.erp.invoices.artifacts.InvoicesUtilities;
 import net.tangly.erp.invoices.domain.Article;
 import net.tangly.erp.invoices.domain.ArticleCode;
 import net.tangly.erp.invoices.services.InvoicesHandler;
@@ -50,6 +51,10 @@ public class InvoicesHdl implements InvoicesHandler {
     public static final String ARTICLES_TSV = "articles.tsv";
     public static final String JSON_EXT = ".json";
     private final InvoicesRealm realm;
+
+    /**
+     * Path to the root folder of all invoices and product description. Invoices should be grouped by year.
+     */
     private final Path invoicesFolder;
 
     @Inject
@@ -76,13 +81,13 @@ public class InvoicesHdl implements InvoicesHandler {
                 if ((invoice != null) && invoice.check()) {
                     nrOfImportedInvoices.getAndIncrement();
                     realm.invoices().update(invoice);
-                    EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, "Imported Invoice {}", Map.of("invoice", invoice));
+                    EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, "Imported Invoice", Map.of("invoice", invoice));
                 } else {
-                    EventData.log(EventData.IMPORT, MODULE, EventData.Status.WARNING, "Invalid Invoice {}", Map.of("invoice", o.toString()));
+                    EventData.log(EventData.IMPORT, MODULE, EventData.Status.WARNING, "Invalid Invoice", Map.of("invoice", o.toString()));
                 }
-                EventData.log(EventData.IMPORT, MODULE, EventData.Status.INFO, "{} invoices were imported out of {}",
-                    Map.of("nrOfImportedInvoices", Integer.toString(nrOfImportedInvoices.get()), "nrOfInvoices", Integer.toString(nrOfInvoices.get())));
             });
+            EventData.log(EventData.IMPORT, MODULE, EventData.Status.INFO, "Invoices were imported out of",
+                Map.of("nrOfImportedInvoices", Integer.toString(nrOfImportedInvoices.get()), "nrOfInvoices", Integer.toString(nrOfInvoices.get())));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -18,11 +18,11 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import net.tangly.core.crm.CrmTags;
 import net.tangly.core.crm.VcardType;
 import net.tangly.core.providers.ProviderView;
-import net.tangly.core.crm.CrmTags;
 import net.tangly.erp.crm.domain.Employee;
-import net.tangly.erp.crm.domain.LegalEntity;
+import net.tangly.core.crm.LegalEntity;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.CommentsView;
 import net.tangly.ui.components.EntitiesView;
@@ -64,7 +64,7 @@ class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
     public static void defineOne2ManyEmployees(@NotNull Grid<Employee> grid) {
         VaadinUtils.initialize(grid);
         grid.addColumn(Employee::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
-        grid.addColumn(o -> o.person().name()).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Employee::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(o -> o.value(CrmTags.CRM_EMPLOYEE_TITLE).orElse(null)).setKey("title").setHeader("Title").setAutoWidth(true).setResizable(true)
             .setSortable(true);
         grid.addColumn(Employee::fromDate).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);

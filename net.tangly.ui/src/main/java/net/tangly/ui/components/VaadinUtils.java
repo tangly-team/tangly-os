@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -27,7 +27,7 @@ import com.vaadin.flow.data.renderer.ComponentRenderer;
 import net.tangly.core.HasTags;
 import net.tangly.core.Tag;
 import net.tangly.core.crm.CrmTags;
-import net.tangly.erp.crm.domain.LegalEntity;
+import net.tangly.core.crm.LegalEntity;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;

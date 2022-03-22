@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -101,7 +101,7 @@ public class Canvas extends Component implements HasStyle, HasSize, KeyNotifier 
      * @param src the path to the image resource
      */
     public void loadImage(String src) {
-        getElement().executeJavaScript(
+        getElement().executeJs(
             "var img = new Image();" + "var self = this;" + "img.onload = function () {" + "if (!self.images) self.images = {};" + "self.images[$0] = img;" +
                 "self.$server.imageLoaded($0);" + "};" + "img.src=$0;", src);
     }

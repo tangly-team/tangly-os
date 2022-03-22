@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -50,9 +50,9 @@ public class DomainEntitiesView extends EntitiesView<DomainEntity> {
         grid.addColumn(DomainEntity::hasId).setKey("hasId").setHeader("Has Id").setSortable(true).setAutoWidth(true);
         grid.addColumn(DomainEntity::hasComments).setKey("hasComments").setHeader("Has Comments").setSortable(true).setAutoWidth(true);
         grid.addColumn(DomainEntity::hasTags).setKey("hasTags").setHeader("Has Tags").setSortable(true).setAutoWidth(true);
-        grid.addColumn(DomainEntity::EntitiesCount).setKey("entitiesCount").setHeader("#Entities").setSortable(true).setAutoWidth(true);
-        grid.addColumn(o -> o.hasComments() ? o.CommentsCount() : 0).setKey("commentsCount").setHeader("#Comments").setSortable(true).setAutoWidth(true);
-        grid.addColumn(o -> o.hasTags() ? o.TagsCount() : 0).setKey("tagsCount").setHeader("#Tags").setSortable(true).setAutoWidth(true);
+        grid.addColumn(DomainEntity::entitiesCount).setKey("entitiesCount").setHeader("#Entities").setSortable(true).setAutoWidth(true);
+        grid.addColumn(o -> o.hasComments() ? o.commentsCount() : 0).setKey("commentsCount").setHeader("#Comments").setSortable(true).setAutoWidth(true);
+        grid.addColumn(o -> o.hasTags() ? o.tagsCount() : 0).setKey("tagsCount").setHeader("#Tags").setSortable(true).setAutoWidth(true);
         grid.setHeightFull();
         grid.setMinHeight("5em");
         grid.setWidthFull();

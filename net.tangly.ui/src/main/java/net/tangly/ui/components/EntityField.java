@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -19,7 +19,7 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import net.tangly.core.Entity;
+import net.tangly.core.NamedEntity;
 import net.tangly.ui.markdown.MarkdownField;
 import org.jetbrains.annotations.NotNull;
 
@@ -28,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
  *
  * @param <T> Type of instances to be displayed
  */
-public class EntityField<T extends Entity> extends CustomField<T> {
+public class EntityField<T extends NamedEntity> extends CustomField<T> {
     private boolean readonly;
     private final TextField oid;
     private final DatePicker fromDate;
@@ -67,11 +67,11 @@ public class EntityField<T extends Entity> extends CustomField<T> {
         binder.bind(oid, o -> Long.toString(o.oid()), null);
         binder.forField(fromDate)
             .withValidator(from -> (from == null) || (toDate.getValue() == null) || (from.isBefore(toDate.getValue())), "From date must be before to date")
-            .bind(Entity::fromDate, Entity::fromDate);
+            .bind(NamedEntity::fromDate, NamedEntity::fromDate);
         binder.forField(toDate)
             .withValidator(to -> (to == null) || (fromDate.getValue() == null) || (to.isAfter(fromDate.getValue())), "To date must be after from date")
-            .bind(Entity::toDate, Entity::toDate);
-        binder.bind(text, Entity::text, Entity::text);
+            .bind(NamedEntity::toDate, NamedEntity::toDate);
+        binder.bind(text, NamedEntity::text, NamedEntity::text);
     }
 
     @Override

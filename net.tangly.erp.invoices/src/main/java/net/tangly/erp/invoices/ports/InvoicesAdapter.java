@@ -1,14 +1,13 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
- *  a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
- *  under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
 package net.tangly.erp.invoices.ports;
@@ -17,11 +16,17 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Map;
 
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
+import net.tangly.core.HasInterval;
+import net.tangly.erp.invoices.artifacts.InvoiceAsciiDoc;
+import net.tangly.erp.invoices.artifacts.InvoiceQrCode;
+import net.tangly.erp.invoices.artifacts.InvoiceZugFerd;
+import net.tangly.erp.invoices.artifacts.InvoicesUtilities;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.services.InvoicesPort;
 import net.tangly.erp.invoices.services.InvoicesRealm;
@@ -42,19 +47,12 @@ public class InvoicesAdapter implements InvoicesPort {
         this.realm = realm;
         this.folder = folder;
     }
-
-    public void exportInvoiceDocuments(boolean withQrCode, boolean withEN16931) {
-        realm.invoices().items().forEach(o -> exportInvoiceDocument(o, withQrCode, withEN16931));
+    @Override
+    public void exportInvoiceDocuments(boolean withQrCode, boolean withEN16931, LocalDate from, LocalDate to) {
+        final var filter = new HasInterval.DateFilter(from, to);
+        realm.invoices().items().stream().filter(o -> filter.test(o.date())).forEach(o -> exportInvoiceDocument(o, withQrCode, withEN16931));
     }
 
-    /**
-     * Export an invoice to a file. The method is responsible to infer the path to the generated invoice document.
-     * <p><em>implNote</em> The asciidoc document is deleted upon creation of the pdf document.</p>
-     *
-     * @param invoice     invoice to be exported
-     * @param withQrCode  flag if the Swiss QR cde should be added to the invoice document
-     * @param withEN16931 flag if the EN16931 digital invoice should be added to the invoice document
-     */
     @Override
     public void exportInvoiceDocument(@NotNull Invoice invoice, boolean withQrCode, boolean withEN16931) {
         var asciiDocGenerator = new InvoiceAsciiDoc(invoice.locale());
@@ -68,7 +66,6 @@ public class InvoicesAdapter implements InvoicesPort {
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
-        // currently need to be performed in the default filesystem to work due to external libraries
         if (withQrCode) {
             var qrGenerator = new InvoiceQrCode();
             qrGenerator.exports(invoice, invoicePdfPath, Collections.emptyMap());

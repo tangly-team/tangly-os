@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -18,18 +18,16 @@ import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.erpr.crm.ports.CrmEntities;
 import net.tangly.erpr.crm.ports.CrmHdl;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CrmPersistenceTest {
     @Test
-    @Disabled
-    void persistCrmRealLocalTest() throws Exception {
+    void persistCrmRealmLocalTest() throws Exception {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
-            store.createCrmAndLedgerRepository();
+            store.createRepository();
 
             var handler = new CrmHdl(new CrmEntities(store.crmRoot()), store.crmRoot());
             handler.importEntities();

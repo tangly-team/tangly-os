@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -22,7 +22,7 @@ import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.erp.crm.domain.Contract;
-import net.tangly.erp.crm.domain.LegalEntity;
+import net.tangly.core.crm.LegalEntity;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.BankConnectionField;
 import net.tangly.ui.components.EntitiesView;

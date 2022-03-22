@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -46,15 +46,15 @@ public record DomainEntity<T>(@NotNull String domain, @NotNull Class<T> clazz, P
         return clazz().getSimpleName();
     }
 
-    public long EntitiesCount() {
+    public long entitiesCount() {
         return provider().items().size();
     }
 
-    public <U extends HasTags> long TagsCount() {
+    public <U extends HasTags> long tagsCount() {
         return provider().items().stream().map(o -> ((HasTags) o).tags().size()).reduce(0, Integer::sum);
     }
 
-    public <U extends HasComments> long CommentsCount() {
+    public <U extends HasComments> long commentsCount() {
         return provider().items().stream().map(o -> ((HasComments) o).comments().size()).reduce(0, Integer::sum);
     }
 }

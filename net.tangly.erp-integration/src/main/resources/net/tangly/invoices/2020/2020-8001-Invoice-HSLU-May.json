@@ -32,7 +32,10 @@
             "region": "ZG",
             "extended": "z.H. John Doe"
         },
-        "email" : "finances@hslu.ch"
+        "email": "finances@hslu.ch",
+        "emailccs": [
+            "john.doe@hslu.ch"
+        ]
     },
     "name": "2020-8001-Invoice-HSLU-May",
     "contractId": "HSLU-2020",

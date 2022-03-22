@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -39,13 +39,13 @@ import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.ActivityCode;
 import net.tangly.erp.crm.domain.Contract;
 import net.tangly.erp.crm.domain.Employee;
-import net.tangly.erp.crm.domain.GenderCode;
+import net.tangly.core.crm.GenderCode;
 import net.tangly.erp.crm.domain.Interaction;
 import net.tangly.erp.crm.domain.InteractionCode;
 import net.tangly.erp.crm.domain.Lead;
 import net.tangly.erp.crm.domain.LeadCode;
-import net.tangly.erp.crm.domain.LegalEntity;
-import net.tangly.erp.crm.domain.NaturalEntity;
+import net.tangly.core.crm.LegalEntity;
+import net.tangly.core.crm.NaturalEntity;
 import net.tangly.erp.crm.domain.Subject;
 import net.tangly.erp.crm.services.CrmRealm;
 import net.tangly.erp.ports.TsvHdl;
@@ -100,12 +100,12 @@ public class CrmTsvHdl {
         Provider<Comment> comments = ProviderInMemory.of();
         importedComments.clear();
         TsvHdl.importEntities(path, createTsvComment(), comments);
-        realm.naturalEntities().items().forEach(e -> TsvHdl.addComments(realm.naturalEntities(), e, comments));
-        realm.legalEntities().items().forEach(e -> TsvHdl.addComments(realm.legalEntities(), e, comments));
-        realm.employees().items().forEach(e -> TsvHdl.addComments(realm.employees(), e, comments));
-        realm.contracts().items().forEach(e -> TsvHdl.addComments(realm.contracts(), e, comments));
-        realm.subjects().items().forEach(e -> TsvHdl.addComments(realm.subjects(), e, comments));
-        realm.interactions().items().forEach(e -> TsvHdl.addComments(realm.interactions(), e, comments));
+        TsvHdl.addComments(realm.naturalEntities(), comments);
+        TsvHdl.addComments(realm.legalEntities(), comments);
+        TsvHdl.addComments(realm.employees(), comments);
+        TsvHdl.addComments(realm.contracts(), comments);
+        TsvHdl.addComments(realm.subjects(), comments);
+        TsvHdl.addComments(realm.interactions(), comments);
     }
 
     public void exportComments(@NotNull Path path) {

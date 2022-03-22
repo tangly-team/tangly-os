@@ -1,3 +1,15 @@
+/*
+ * Copyright 2022 Marcel Baumann
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ *          http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ */
+
 package net.tangly.erp;
 
 import java.io.IOException;
@@ -36,55 +48,45 @@ import org.apache.logging.log4j.Logger;
  * The ERP application instantiating the bounded domain instances. The class implements a modular monolith application.
  */
 public class Erp {
-    private static final String ROOT_DIRECTORY_PROPERTY = "erp.root.directory";
     private static final String DATABASES_DIRECTORY_PROPERTY = "erp.root.db.directory";
     private static final String IMPORTS_DIRECTORY_PROPERTY = "erp.root.imports.directory";
     private static final String REPORTS_DIRECTORY_PROPERTY = "erp.root.reports.directory";
 
     private static final Logger logger = LogManager.getLogger();
     private final TypeRegistry registry;
-    private final String organization;
-    private final String databases;
-    private final String imports;
-    private final String reports;
     private final Properties properties;
 
     public Erp() {
         this.registry = new TypeRegistry();
         this.properties = new Properties();
         load();
-        organization = properties.getProperty(ROOT_DIRECTORY_PROPERTY);
-        databases = properties.getProperty(DATABASES_DIRECTORY_PROPERTY);
-        imports = properties.getProperty(IMPORTS_DIRECTORY_PROPERTY);
-        reports = properties.getProperty(REPORTS_DIRECTORY_PROPERTY);
-
     }
 
     public InvoicesBoundedDomain ofInvoicesDomain() {
-        var realm = (databases == null) ? new InvoicesEntities() : new InvoicesEntities(Path.of(databases, InvoicesBoundedDomain.DOMAIN));
-        return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesHdl(realm, Path.of(imports, InvoicesBoundedDomain.DOMAIN)),
-            new InvoicesAdapter(realm, Path.of(reports, InvoicesBoundedDomain.DOMAIN)), registry);
+        var realm = (databases() == null) ? new InvoicesEntities() : new InvoicesEntities(Path.of(databases(), InvoicesBoundedDomain.DOMAIN));
+        return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesHdl(realm, Path.of(imports(), InvoicesBoundedDomain.DOMAIN)),
+            new InvoicesAdapter(realm, Path.of(reports(), InvoicesBoundedDomain.DOMAIN)), registry);
     }
 
     public CrmBoundedDomain ofCrmDomain() {
-        var realm = (databases == null) ? new CrmEntities() : new CrmEntities(Path.of(databases, CrmBoundedDomain.DOMAIN));
+        var realm = (databases() == null) ? new CrmEntities() : new CrmEntities(Path.of(databases(), CrmBoundedDomain.DOMAIN));
         if (realm.subjects().items().isEmpty()) {
             realm.subjects().update(createAdminSubject());
         }
-        return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmHdl(realm, Path.of(imports, CrmBoundedDomain.DOMAIN)), null, registry);
+        return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmHdl(realm, Path.of(imports(), CrmBoundedDomain.DOMAIN)), null, registry);
     }
 
     public ProductsBoundedDomain ofProductsDomain() {
-        var realm = (databases == null) ? new ProductsEntities() : new ProductsEntities(Path.of(databases, ProductsBoundedDomain.DOMAIN));
+        var realm = (databases() == null) ? new ProductsEntities() : new ProductsEntities(Path.of(databases(), ProductsBoundedDomain.DOMAIN));
         var logic = new ProductsBusinessLogic(realm);
-        return new ProductsBoundedDomain(realm, logic, new ProductsHdl(realm, Path.of(imports, ProductsBoundedDomain.DOMAIN)),
-            new ProductsAdapter(logic, Path.of(reports, ProductsBoundedDomain.DOMAIN)), registry);
+        return new ProductsBoundedDomain(realm, logic, new ProductsHdl(realm, Path.of(imports(), ProductsBoundedDomain.DOMAIN)),
+            new ProductsAdapter(logic, Path.of(reports(), ProductsBoundedDomain.DOMAIN)), registry);
     }
 
     public LedgerBoundedDomain ofLedgerDomain() {
-        var realm = (databases == null) ? new LedgerEntities() : new LedgerEntities(Path.of(databases, LedgerBoundedDomain.DOMAIN));
-        return new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), new LedgerHdl(realm, Path.of(imports, LedgerBoundedDomain.DOMAIN)),
-            new LedgerAdapter(realm, Path.of(reports, LedgerBoundedDomain.DOMAIN)), registry);
+        var realm = (databases() == null) ? new LedgerEntities() : new LedgerEntities(Path.of(databases(), LedgerBoundedDomain.DOMAIN));
+        return new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), new LedgerHdl(realm, Path.of(imports(), LedgerBoundedDomain.DOMAIN)),
+            new LedgerAdapter(realm, Path.of(reports(), LedgerBoundedDomain.DOMAIN)), registry);
     }
 
     private void load() {
@@ -102,5 +104,17 @@ public class Erp {
         subject.newPassword("aeon");
         subject.fromDate(LocalDate.of(2000, Month.JANUARY, 1));
         return subject;
+    }
+
+    private String databases() {
+        return properties.getProperty(DATABASES_DIRECTORY_PROPERTY);
+    }
+
+    private String imports() {
+        return properties.getProperty(IMPORTS_DIRECTORY_PROPERTY);
+    }
+
+    private String reports() {
+        return properties.getProperty(REPORTS_DIRECTORY_PROPERTY);
     }
 }

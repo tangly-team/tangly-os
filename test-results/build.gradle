@@ -1,0 +1,16 @@
+plugins {
+    id 'base'
+    id 'test-report-aggregation'
+}
+
+dependencies {
+    testReportAggregation project(':application')
+}
+
+reporting {
+    reports {
+        testAggregateTestReport(AggregateTestReport) {
+            testType = TestSuiteType.UNIT_TEST
+        }
+    }
+}

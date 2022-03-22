@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -37,18 +37,17 @@ public class CanvasRenderingContext2D {
      * Set a pattern to use as a fill style. Must reference an image source previously loaded
      * with Canvas.loadImage().
      *
-     * @param src the path to the image resource
+     * @param src  the path to the image resource
      * @param type the pattern repeat type (see the Canvas API)
      */
-    public void setPatternFillStyle(String src, String type)
-    {
+    public void setPatternFillStyle(String src, String type) {
         runScript(String.format(
             "if ($0.images) {"
                 + "var img = $0.images['%s'];"
                 + "if (img) {"
-                +   "var ctx = $0.getContext('2d');"
-                +   "var pat = ctx.createPattern(img, '%s');"
-                +   "ctx.fillStyle = pat;"
+                + "var ctx = $0.getContext('2d');"
+                + "var pat = ctx.createPattern(img, '%s');"
+                + "ctx.fillStyle = pat;"
                 + "}"
                 + "}", src, type));
     }
@@ -61,18 +60,17 @@ public class CanvasRenderingContext2D {
      * Set a pattern to use as a strok -style. Must reference an image source previously loaded
      * with Canvas.loadImage().
      *
-     * @param src the path to the image resource
+     * @param src  the path to the image resource
      * @param type the pattern repeat type (see the Canvas API)
      */
-    public void setPatternStrokeStyle(String src, String type)
-    {
+    public void setPatternStrokeStyle(String src, String type) {
         runScript(String.format(
             "if ($0.images) {"
                 + "var img = $0.images['%s'];"
                 + "if (img) {"
-                +   "var ctx = $0.getContext('2d');"
-                +   "var pat = ctx.createPattern(img, '%s');"
-                +   "ctx.strokeStyle = pat;"
+                + "var ctx = $0.getContext('2d');"
+                + "var pat = ctx.createPattern(img, '%s');"
+                + "ctx.strokeStyle = pat;"
                 + "}"
                 + "}", src, type));
     }
@@ -108,12 +106,9 @@ public class CanvasRenderingContext2D {
      * <b>NOTE:</b> Unless you have previously loaded the image with Canvas.loadImage, the
      * drawing will happen asynchronously after the browser has retrieved the image.
      *
-     * @param src
-     *            the url of the image to draw
-     * @param x
-     *            the x-coordinate of the top-left corner of the image
-     * @param y
-     *            the y-coordinate of the top-left corner of the image
+     * @param src the url of the image to draw
+     * @param x   the x-coordinate of the top-left corner of the image
+     * @param y   the y-coordinate of the top-left corner of the image
      */
     public void drawImage(String src, double x, double y) {
         runScript(String.format(
@@ -139,32 +134,29 @@ public class CanvasRenderingContext2D {
      * <b>NOTE:</b> Unless you have previously loaded the image with Canvas.loadImage, the
      * drawing will happen asynchronously after the browser has retrieved the image.
      *
-     * @param src
-     *            the url of the image to draw
-     * @param x
-     *            the x-coordinate of the top-left corner of the image
-     * @param y
-     *            the y-coordinate of the top-left corner of the image
-     * @param width
-     *            the width for the image
-     * @param height
-     *            the height for the image
+     * @param src    the url of the image to draw
+     * @param x      the x-coordinate of the top-left corner of the image
+     * @param y      the y-coordinate of the top-left corner of the image
+     * @param width  the width for the image
+     * @param height the height for the image
      */
     public void drawImage(String src, double x, double y, double width,
                           double height) {
         runScript(String.format(
-            //@formatter:off
-            "var img = null;"
-                + "if ($0.images) img = $0.images['%s'];"
-                + "if (img != null)"
-                + "  $0.getContext('2d').drawImage(img, %s, %s, %s, %s);"
-                + "else {"
-                + "  img = new Image();"
-                + "  img.onload = function () {"
-                + "    $0.getContext('2d').drawImage(img, %s, %s, %s, %s);"
-                + "  };"
-                + "  img.src='%s';"
-                + "}",
+            """
+                //@formatter:off
+                var img = null;
+                if ($0.images) img = $0.images['%s'];
+                if (img != null)
+                    $0.getContext('2d').drawImage(img, %s, %s, %s, %s);
+                else {
+                    img = new Image();
+                    img.onload = function () {
+                        $0.getContext('2d').drawImage(img, %s, %s, %s, %s);
+                    };
+                    img.src='%s';
+                }
+                """,
             src, x, y, width, height, x, y, width, height, src));
         //@formatter:on
     }
@@ -226,8 +218,7 @@ public class CanvasRenderingContext2D {
     }
 
     protected void setProperty(String propertyName, Serializable value) {
-        runScript(String.format("$0.getContext('2d').%s='%s'", propertyName,
-            value));
+        runScript(String.format("$0.getContext('2d').%s='%s'", propertyName, value));
     }
 
     /**
@@ -238,15 +229,11 @@ public class CanvasRenderingContext2D {
         canvas.getElement().getNode().runWhenAttached(
             // This structure is needed to make the execution order work
             // with Element.callFunction() which is used in callJsMethod()
-            ui -> ui.getInternals().getStateTree().beforeClientResponse(
-                canvas.getElement().getNode(),
-                context -> ui.getPage().executeJavaScript(script,
-                    canvas.getElement())));
+            ui -> ui.getInternals().getStateTree().beforeClientResponse(canvas.getElement().getNode(), context -> ui.getPage().executeJs(script, canvas.getElement())));
     }
 
     protected void callJsMethod(String methodName, Serializable... parameters) {
-        canvas.getElement().callFunction("getContext('2d')." + methodName,
-            parameters);
+        canvas.getElement().callJsFunction("getContext('2d')." + methodName, parameters);
     }
 
 }

@@ -34,3 +34,4 @@ hs_err_pid*
 /net.tangly.erp.ui/webpack.config.js
 /net.tangly.erp.ui/webpack.generated.js
 /net.tangly.erp.ui/.npmrc
+/net.tangly.erp.ui/frontend/index.html

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -14,14 +14,16 @@ package net.tangly.erp.crm.ui;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.textfield.PasswordField;
-import net.tangly.erp.crm.domain.NaturalEntity;
+import net.tangly.core.crm.NaturalEntity;
 import net.tangly.erp.crm.domain.Subject;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static com.github.mvysny.kaributesting.v10.LocatorJ.*;
 import static net.tangly.erp.crm.ui.CmdChangePassword.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Disabled
 class CmdChangePasswordItTest extends CrmItTest {
     @Test
     void testChangePasswordCorrectly() {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -21,7 +21,7 @@ import com.google.common.jimfs.Jimfs;
 import net.tangly.erp.invoices.ports.InvoicesAdapter;
 import net.tangly.erp.invoices.ports.InvoicesEntities;
 import net.tangly.erp.invoices.ports.InvoicesHdl;
-import net.tangly.erp.invoices.ports.InvoicesUtilities;
+import net.tangly.erp.invoices.artifacts.InvoicesUtilities;
 import org.apache.pdfbox.cos.COSDocument;
 import org.apache.pdfbox.io.RandomAccessBufferedFileInputStream;
 import org.apache.pdfbox.pdfparser.PDFParser;
@@ -36,12 +36,12 @@ class InvoicesPortTest {
     void testInvoiceDocuments() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(com.google.common.jimfs.Configuration.unix())) {
             var store = new ErpStore(fs);
-            store.createCrmAndLedgerRepository();
+            store.createRepository();
 
             var port = new InvoicesAdapter(new InvoicesEntities(), store.invoiceReportsRoot());
             var handler = new InvoicesHdl(new InvoicesEntities(), store.invoicesRoot());
             handler.importEntities();
-            port.exportInvoiceDocuments(true, true);
+            port.exportInvoiceDocuments(true, true, null, null);
 
             handler.realm().invoices().items().forEach(o -> assertThat(Files.exists(InvoicesUtilities.resolvePath(store.invoicesRoot(), o))).isTrue());
         }

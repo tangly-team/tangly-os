@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -33,9 +33,9 @@ import net.tangly.core.crm.VcardType;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.crm.domain.Contract;
-import net.tangly.erp.crm.domain.GenderCode;
-import net.tangly.erp.crm.domain.LegalEntity;
-import net.tangly.erp.crm.domain.NaturalEntity;
+import net.tangly.core.crm.GenderCode;
+import net.tangly.core.crm.LegalEntity;
+import net.tangly.core.crm.NaturalEntity;
 import net.tangly.erp.crm.services.CrmRealm;
 import net.tangly.erpr.crm.ports.CrmEntities;
 import net.tangly.erpr.crm.ports.CrmHdl;
@@ -54,7 +54,7 @@ class CrmHdlTest {
     void testTsvCrm() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
-            store.createCrmAndLedgerRepository();
+            store.createRepository();
 
             var handler = new CrmHdl(new CrmEntities(), store.crmRoot());
             handler.importEntities();
@@ -111,7 +111,7 @@ class CrmHdlTest {
         assertThat(realm.legalEntities().items().isEmpty()).isFalse();
         assertThat(Provider.findByOid(realm.legalEntities(), 100)).isPresent();
         assertThat(realm.legalEntities().findBy(LegalEntity::id, "UNKNOWN-100")).isPresent();
-        assertThat(realm.legalEntities().findBy(LegalEntity::name, "Vaadin GbmH")).isPresent();
+        assertThat(realm.legalEntities().findBy(LegalEntity::name, "Vaadin GmbH")).isPresent();
         Realm.checkEntities(realm.legalEntities());
         if (entity != null) {
             assertThat(realm.legalEntities().items()).hasSize(nrOfEntities);

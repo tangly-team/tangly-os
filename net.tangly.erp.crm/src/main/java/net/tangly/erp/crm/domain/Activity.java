@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Objects;
 
 import net.tangly.core.HasDate;
+import net.tangly.core.HasText;
 import net.tangly.core.Strings;
 import org.jetbrains.annotations.NotNull;
 
@@ -28,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
  * description of the activity to allow structured search over activities. For example you could write @{contact name} in your text to later search all
  * activities where a specific person was participating.</p>
  */
-public class Activity implements HasDate {
+public class Activity implements HasDate, HasText {
     private long ownerFoid;
     private LocalDate date;
     private ActivityCode code;

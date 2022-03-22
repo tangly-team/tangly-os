@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -30,7 +30,7 @@ class LedgerHdlTest {
     void testTsvLedgerImport() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
-            store.createCrmAndLedgerRepository();
+            store.createRepository();
 
             var handler = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
             handler.importEntities();
@@ -51,7 +51,7 @@ class LedgerHdlTest {
     void testTsvLedgerImportExport() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
-            store.createCrmAndLedgerRepository();
+            store.createRepository();
 
             var handler = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
             handler.importEntities();
@@ -74,7 +74,7 @@ class LedgerHdlTest {
     void testTsvTransactionsImport() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
-            store.createCrmAndLedgerRepository();
+            store.createRepository();
             var handler = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
             handler.importEntities();
             assertThat(handler.realm().transactions(LocalDate.of(2015, 1, 1), LocalDate.of(2016, 12, 31)).isEmpty()).isFalse();
@@ -85,7 +85,7 @@ class LedgerHdlTest {
     void testTsvTransactionsImportExport() throws IOException {
         try (FileSystem fs = Jimfs.newFileSystem(Configuration.unix())) {
             var store = new ErpStore(fs);
-            store.createCrmAndLedgerRepository();
+            store.createRepository();
             var handler = new LedgerHdl(new LedgerEntities(), store.ledgerRoot());
             handler.importEntities();
             int nrOfTransactions = handler.realm().transactions().items().size();

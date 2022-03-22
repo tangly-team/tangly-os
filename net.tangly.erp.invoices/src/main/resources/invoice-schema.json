@@ -43,7 +43,14 @@
                 },
                 "email": {
                     "type": "string",
-                    "format" : "email"
+                    "format": "email"
+                },
+                "emailccs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "email"
+                    }
                 }
             },
             "required": [
@@ -98,7 +105,6 @@
                 "vatRate"
             ],
             "additionalProperties": false
-
         },
         "invoiceLine": {
             "type": "object",

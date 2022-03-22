@@ -5,8 +5,8 @@ plugins {
     id "jacoco"
     id 'jacoco-report-aggregation'
 
-    id 'com.github.spotbugs'
-    id 'org.sonarqube' apply false
+    // id 'com.github.spotbugs' apply false
+    id 'org.sonarqube'
     id 'info.solidsoft.pitest' apply false
 }
 
@@ -42,7 +42,7 @@ ext {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(18)
+        languageVersion = JavaLanguageVersion.of(17)
     }
     withJavadocJar()
     withSourcesJar()
@@ -74,7 +74,7 @@ tasks.withType(Javadoc) {
         encoding("UTF-8")
         addBooleanOption('-Xdoclint:none')
         addBooleanOption('-enable-preview', true)
-        addStringOption('-release', '18')
+        addStringOption('-release', '17')
         addBooleanOption('quiet')
     }
 }
@@ -130,7 +130,7 @@ publishing {
                 licenses {
                     license {
                         name = 'The Apache License, Version 2.0'
-                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
                     }
                 }
                 developers {
@@ -215,14 +215,12 @@ sonarqube {
     }
 }
 
-if (mode.equalsIgnoreCase('int')) {
-    apply plugin: 'com.github.spotbugs'
+if (properties.hasProperty('mode') || mode.equalsIgnoreCase('int')) {
+    // apply plugin: 'com.github.spotbugs'
     apply plugin: 'org.sonatype.gradle.plugins.scan'
     apply plugin: 'pmd'
     apply plugin: 'info.solidsoft.pitest'
-}
 
-if (mode.equalsIgnoreCase('int')) {
     pmd {
         ruleSetFiles = files(rootProject.file('src/main/resources/pmd-tangly.xml'))
         toolVersion = "6.33.0"
@@ -230,22 +228,23 @@ if (mode.equalsIgnoreCase('int')) {
         incrementalAnalysis = true
         rulesMinimumPriority = 3
     }
-    spotbugs {
-        ignoreFailures = true
-        effort = "max"
-        reportLevel = "low"
-        toolVersion = '4.4.2'
-    }
-    [spotbugsMain, spotbugsTest].each { task ->
-        task.configure {
-            reports {
-                html {
-                    enabled = true
-                    stylesheet = 'fancy-hist.xsl'
-                }
-            }
-        }
-    }
+//    spotbugs {
+//        ignoreFailures = true
+//        effort = "default"
+//        reportLevel = "low"
+//        omitVisitors = []
+//        toolVersion = '4.6.0'
+//    }
+//    [spotbugsMain, spotbugsTest].each { task ->
+//        task.configure {
+//            reports {
+//                html {
+//                    enabled = true
+//                    stylesheet = 'fancy-hist.xsl'
+//                }
+//            }
+//        }
+//    }
     tasks.withType(Pmd) {
         reports {
             xml.enabled false
@@ -253,4 +252,3 @@ if (mode.equalsIgnoreCase('int')) {
         }
     }
 }
-

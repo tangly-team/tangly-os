@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -14,11 +14,13 @@ package net.tangly.erp.invoices.domain;
 
 import java.math.BigDecimal;
 
+import net.tangly.core.HasText;
+
 /**
  * The invoice line represents one line or position in an invoice. A line should contain only one kind of sold items so that the quantity and unit price are
  * clearly defined.
  */
-public sealed interface InvoiceLine permits InvoiceItem, Subtotal {
+public sealed interface InvoiceLine extends HasText permits InvoiceItem, Subtotal {
     /**
      * Returns the line position in the invoice and is used to order the lines on the invoice output.
      *

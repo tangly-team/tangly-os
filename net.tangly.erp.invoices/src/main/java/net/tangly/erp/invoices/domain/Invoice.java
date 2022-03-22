@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -15,7 +15,6 @@ package net.tangly.erp.invoices.domain;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Currency;
 import java.util.List;
@@ -27,7 +26,9 @@ import java.util.TreeMap;
 
 import net.tangly.core.BankConnection;
 import net.tangly.core.HasDate;
-import net.tangly.core.HasEditableId;
+import net.tangly.core.HasId;
+import net.tangly.core.HasName;
+import net.tangly.core.HasText;
 
 /**
  * <p>The abstraction of an invoice with a set of positions, subtotals, and a total. The items and the subtotals have a position
@@ -37,14 +38,15 @@ import net.tangly.core.HasEditableId;
  * quite a lot of businesses, in particular in the service industry. Often an invoice references only one VAT rate, convenience methods are provided to
  * streamline this scenario.</p>
  */
-public class Invoice implements HasEditableId, HasDate {
+public class Invoice implements HasId, HasName, HasDate, HasText {
     /**
-     * The identifier is the unique external identifier of the invoice used in the accounting and tracking systems.
+     * The identifier is the unique external identifier of the invoice used in the accounting, banking and tracking systems.
      */
     private String id;
 
     /**
-     * The name is a human readable identifier of the invoice. The name is also used as file name if the invoice is stored in a JSON file
+     * The name is a human-readable identifier of the invoice. The name is also used as file name if the invoice is stored in a JSON file or an artifact is generated.
+     * Humans can associate the invoice with the various artifacts generated out of it.
      */
     public String name;
     private String text;
@@ -55,21 +57,34 @@ public class Invoice implements HasEditableId, HasDate {
     private LocalDate deliveryDate;
 
     /**
-     * The date is the invoiced date of the invoice.
+     * The date is the invoiced date of the invoice, meaning when the invoice was created.
      */
     private LocalDate date;
+
+    /**
+     * The date when the invoice should be paid by the invoiced party.
+     */
     private LocalDate dueDate;
+
+    /**
+     * The date when the invoice was paid. This information can be used for debtor analysis.
+     */
     private LocalDate paidDate;
 
     /**
-     * Currency of the invoice. Currently we do support multi-currency invoices. Please create one invoice for each currency.
+     * Currency of the invoice. We do not support multi-currency invoices. Please create one invoice for each currency.
+     * The decision is logical due to the complexities of handling value added taxes and exchange rates.
      */
     private Currency currency;
 
     /**
-     * Locale of the invoice. It is used for the localization of the invoice text.
+     * Locale of the invoice. It is used for the localization of the invoice text and the selection of the most accurate template.
      */
     private Locale locale;
+
+    /**
+     * Human-readable text describing the payment conditions of the infoice.
+     */
     private String paymentConditions;
     private final List<InvoiceLine> items;
 
@@ -299,7 +314,7 @@ public class Invoice implements HasEditableId, HasDate {
     public String toString() {
         return """
             Invoice[id=%s, name=%s, text=%s, invoicingEntity=%s, invoicedEntity=%s, invoicingConnection=%s, contractId=%s, deliveryDate=%s, invoicedDate=%s, dueDate=%s, currency=%s, locale=%s, paymentConditions=%s, items=%s]
-             """.formatted(id(), name(), text(), invoicingEntity(), invoicedEntity(), invoicingConnection(), contractId(), deliveryDate(), date(), dueDate(),
+            """.formatted(id(), name(), text(), invoicingEntity(), invoicedEntity(), invoicingConnection(), contractId(), deliveryDate(), date(), dueDate(),
             currency(), locale(), paymentConditions(), items());
     }
 }

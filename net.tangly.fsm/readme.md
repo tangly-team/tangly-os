@@ -61,6 +61,12 @@ For any further question and discussion you can use the forum [tangly-OS-Compone
 
 ## Contribution
 
+The library can be build with Gradle
+
+```shell
+    gradle build
+```
+
 You are welcome to contribute to the product with pull requests on Bitbucket. You can download the source files from the
 [bitbucket git repository](https://bitbucket.org/tangly-team/tangly-os.git) and build  the library with the provided gradle configuration file.
 

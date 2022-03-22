@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -29,7 +29,7 @@ import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.domain.InvoiceItem;
 import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
 import net.tangly.erp.invoices.domain.Subtotal;
-import net.tangly.erp.invoices.ports.InvoiceJson;
+import net.tangly.erp.invoices.artifacts.InvoiceJson;
 import net.tangly.erp.invoices.services.InvoicesRealm;
 import net.tangly.gleam.model.JsonEntity;
 import org.junit.jupiter.api.Test;

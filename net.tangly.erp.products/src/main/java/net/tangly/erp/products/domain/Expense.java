@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -15,12 +15,14 @@ package net.tangly.erp.products.domain;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import net.tangly.core.HasDate;
+import net.tangly.core.HasText;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * An expense defines a monetary cost associated with a contract and implictly a product.
  */
-public record Expense(@NotNull LocalDate date, @NotNull String contractId, String text, @NotNull BigDecimal amount) {
+public record Expense(@NotNull LocalDate date, @NotNull String contractId, String text, @NotNull BigDecimal amount) implements HasDate, HasText {
     public Expense {
         if (amount.compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("amount cannot be negative " + amount);

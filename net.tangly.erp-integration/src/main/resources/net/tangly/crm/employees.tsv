@@ -1,6 +1,6 @@
-"oid"	"fromDate"	"toDate"	"text"	"personOid"	"organizationOid"	"crm:title"	"crm:email-work"	"crm:phone-work"	"crm:phone-mobile"
-"200"	"1990-01-01"	"1995-12-31"	""	"1"	"100"	"Software Craftsmanship"	"john.doe@hope.org"	+49 30 53212430	""
-"201"	"1996-01-01"	"2000-12-31"	""	"1"	"101"	"Software Craftsmanship"	"john.doe@fun.net"	+49 30 53212430	""
-"202"	"2000-01-01"	"2010-06-30"	""	"2"	"100"	"Senior Software Engineer"	"alex.doe@hope.org"	+49 30 53212430	""
-"203"	"2000-01-01"	""	""	"5"	"101"	"CEO"	"neo.smith@fun.net"	+49 30 53212430	""
-"204"	"2016-01-01"	""	""	"6"	"102"	"Scrum Master"	"marcel.baumann@tangly.net"	"+41 79 778 8689 "	+41 79 778 8689
+"oid"	"fromDate"	"toDate"	"text"	"personOid"	"organizationOid"	"crm:title"	"crm:email-work"	"crm:phone-work"	"crm:phone-mobile"	"tags"
+"200"	"1990-01-01"	"1995-12-31"	""	"1"	"100"	"Software Craftsmanship"	"john.doe@hope.org"	"+49 30 53212430"	""	""
+"201"	"1996-01-01"	"2000-12-31"	""	"1"	"101"	"Software Craftsmanship"	"john.doe@fun.net"	"+49 30 53212430"	""	""
+"202"	"2000-01-01"	"2010-06-30"	""	"2"	"100"	"Senior Software Engineer"	"alex.doe@hope.org"	"+49 30 53212430"	""	""
+"203"	"2000-01-01"	""	""	"5"	"101"	"CEO"	"neo.smith@fun.net"	"+49 30 53212430"	""	""
+"204"	"2016-01-01"	""	""	"6"	"102"	"Scrum Master"	"marcel.baumann@tangly.net"	"+41 79 778 8689 "	"+41 79 778 8689"	""

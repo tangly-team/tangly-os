@@ -1,14 +1,13 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
- *  a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
- *  under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
 package net.tangly.erp.ports;
@@ -35,6 +34,7 @@ import net.tangly.core.BankConnection;
 import net.tangly.core.Comment;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.Entity;
+import net.tangly.core.NamedEntity;
 import net.tangly.core.HasComments;
 import net.tangly.core.HasId;
 import net.tangly.core.HasOid;
@@ -49,13 +49,13 @@ import net.tangly.gleam.model.TsvProperty;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 public final class TsvHdl {
     public static final CSVFormat FORMAT =
-        CSVFormat.TDF.withFirstRecordAsHeader().withIgnoreHeaderCase(true).withIgnoreEmptyLines(true).withRecordSeparator('\n');
+        CSVFormat.Builder.create().setDelimiter('\t').setQuote('"').setRecordSeparator('\n').setIgnoreSurroundingSpaces(true).setHeader().setSkipHeaderRecord(true).setIgnoreHeaderCase(true)
+            .setIgnoreEmptyLines(true).build();
+
     public static final String OWNER_FOID = "ownerFoid";
     public static final String OID = HasOid.OID;
     public static final String ID = HasId.ID;
@@ -75,8 +75,6 @@ public final class TsvHdl {
     private static final String BIC = "bic";
     private static final String INSTITUTE = "institute";
     public static final String MODULE = "net.tangly.ports";
-    private static final Logger logger = LogManager.getLogger();
-
 
     private TsvHdl() {
     }
@@ -102,7 +100,7 @@ public final class TsvHdl {
             int counter = 0;
             for (CSVRecord record : FORMAT.parse(in)) {
                 T object = tsvEntity.imports(record);
-                if (object instanceof Entity entity) {
+                if (object instanceof NamedEntity entity) {
                     if (entity.check()) {
                         provider.update(object);
                         ++counter;
@@ -174,6 +172,10 @@ public final class TsvHdl {
 
     public static String get(@NotNull CSVRecord record, @NotNull String column) {
         return Strings.emptyToNull(record.get(column));
+    }
+
+    public static <T extends HasComments & HasOid> void addComments(Provider<T> provider, Provider<Comment> comments) {
+        provider.items().forEach(e -> TsvHdl.addComments(provider, e, comments));
     }
 
     public static <T extends HasComments & HasOid> void addComments(Provider<T> provider, T entity, Provider<Comment> comments) {

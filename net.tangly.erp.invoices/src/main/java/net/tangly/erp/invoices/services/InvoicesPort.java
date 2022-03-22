@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -15,16 +15,31 @@ package net.tangly.erp.invoices.services;
 import net.tangly.erp.invoices.domain.Invoice;
 import org.jetbrains.annotations.NotNull;
 
+import java.time.LocalDate;
+
 /**
  * Defines the export port for the invoices bounded domain. It is the secondary port in the DDD terminology.
  */
 public interface InvoicesPort {
     /**
-     * Exports the document form of the invoice.
+     * Export an invoice to a file. The method is responsible to infer the path to the generated invoice document.
+     * <p><em>implNote</em> The asciidoc document is deleted upon creation of the pdf document.</p>
      *
-     * @param invoice     invoice to export=
-     * @param withQrCode  flag indicating if a Swiss QR code payment slip should be generated
-     * @param withEN16931 flag indicating if digital invoice data based on standard EN 16931 should be generated
+     * @param invoice     invoice to be exported
+     * @param withQrCode  flag if the Swiss QR cde should be added to the invoice document
+     * @param withEN16931 flag if the EN16931 digital invoice should be added to the invoice document
      */
     void exportInvoiceDocument(@NotNull Invoice invoice, boolean withQrCode, boolean withEN16931);
+
+    /**
+     * Exports all selected invoices as artifact to a file. The method is responsible to infer the path to the generated invoice document.
+     * <p><em>implNote</em> The asciidoc document is deleted upon creation of the pdf document.</p>
+     *
+     * @param withQrCode  flag if the Swiss QR cde should be added to the invoice document
+     * @param withEN16931 flag if the EN16931 digital invoice should be added to the invoice document
+     * @param from        optional start of the relevant time interval for the invoiced date
+     * @param to          optional end of the relevant time interval for the invoiced date
+     */
+    void exportInvoiceDocuments(boolean withQrCode, boolean withEN16931, LocalDate from, LocalDate to);
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -21,11 +21,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.annotations.AnnotationConfiguration;
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.DefaultServlet;
+import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.util.resource.Resource;
 import org.eclipse.jetty.webapp.Configuration;
 import org.eclipse.jetty.webapp.JettyWebXmlConfiguration;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
+import org.glassfish.jersey.servlet.ServletContainer;
 import org.jetbrains.annotations.NotNull;
 
 public class EmbeddedJetty {
@@ -39,21 +43,34 @@ public class EmbeddedJetty {
             System.setProperty("vaadin.productionMode", "true");
         }
         System.setProperty("java.util.logging.manager", "org.apache.logging.log4j.jul.LogManager");
-        final WebAppContext context = new WebAppContext();
-        context.setBaseResource(findWebRoot());
-        context.setContextPath("/");
-        context.addServlet(VaadinServlet.class, "/*");
-        context.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern", ".*\\.jar|.*/classes/.*");
-        context.setConfigurationDiscovered(true);
-        context.getServletContext().setExtendedListenerTypes(true);
-        context.addEventListener(new ServletContextListeners());
+        final WebAppContext webAppContext = new WebAppContext();
+        webAppContext.setBaseResource(findWebRoot());
+        webAppContext.setContextPath("/");
+        webAppContext.addServlet(VaadinServlet.class, "/erp/*");
 
-        WebSocketServerContainerInitializer.initialize(context);
+//        ServletHolder jerseyServlet = webAppContext.addServlet(org.glassfish.jersey.servlet.ServletContainer.class, "/webapi/*");
+//        jerseyServlet.setInitOrder(0);
+//        jerseyServlet.setInitParameter("jersey.config.server.provider.packages","net.tangly.erp.crm.ports;io.swagger.jaxrs.json;io.swagger.jaxrs.listing");
+
+//         Setup Swagger servlet
+//        ServletHolder swaggerServlet = context.addServlet(DefaultJaxrsConfig.class, "/swagger-core");
+//        swaggerServlet.setInitOrder(2);
+//        swaggerServlet.setInitParameter("api.version", "1.0.0");
+
+
+        webAppContext.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern", ".*\\.jar|.*/classes/.*");
+        webAppContext.setConfigurationDiscovered(true);
+        // OWASP mitigating the Most Common XSS attack using HttpOnly
+        webAppContext.getSessionHandler().setHttpOnly(true);
+        webAppContext.getServletContext().setExtendedListenerTypes(true);
+        webAppContext.addEventListener(new ServletContextListeners());
+
+        WebSocketServerContainerInitializer.initialize(webAppContext);
         // fixes IllegalStateException: Unable to configure jsr356 at that stage. ServerContainer is null
 
         int port = (args.length >= 1) ? Integer.parseInt(args[0]) : 8080;
         server = new Server(port);
-        server.setHandler(context);
+        server.setHandler(webAppContext);
         final Configuration.ClassList classes = Configuration.ClassList.setServerDefault(server);
         classes.addBefore(JettyWebXmlConfiguration.class.getName(), AnnotationConfiguration.class.getName());
         server.start();

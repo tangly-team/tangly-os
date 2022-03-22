@@ -1,4 +1,4 @@
-image: openjdk:16
+image: openjdk:17
 clone:
   depth: full
 pipelines:
