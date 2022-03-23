@@ -23,7 +23,6 @@ import java.nio.file.FileSystem;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Disabled
 public class LedgerPersistenceTest {
     @Test
     void persistLedgerRealmLocalTest() throws Exception {
@@ -37,7 +36,7 @@ public class LedgerPersistenceTest {
             assertThat(handler.realm().transactions().items().isEmpty()).isFalse();
             handler.realm().close();
 
-            handler = new LedgerHdl(new LedgerEntities(store.invoicesRoot()), store.ledgerRoot());
+            handler = new LedgerHdl(new LedgerEntities(store.ledgerRoot()), store.ledgerRoot());
             assertThat(handler.realm().accounts().items().isEmpty()).isFalse();
             assertThat(handler.realm().transactions().items().isEmpty()).isFalse();
             handler.realm().close();

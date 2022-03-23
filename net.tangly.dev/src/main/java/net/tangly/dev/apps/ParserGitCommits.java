@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -30,6 +30,7 @@ import net.tangly.dev.model.Committer;
 import net.tangly.dev.model.RepositoryFile;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * <p><code>git log --numstat --pretty=format:'[%h] %an %ad %s' --date=short</code></p>
@@ -83,9 +84,9 @@ public class ParserGitCommits {
         return Collections.unmodifiableList(commits);
     }
 
-    public void parseGitLog(Path logs) throws IOException {
+    public void parseGitLog(@NotNull Path logs) throws IOException {
         try (BufferedReader reader = Files.newBufferedReader(logs, StandardCharsets.UTF_8)) {
-            String line = null;
+            String line;
             while ((line = reader.readLine()) != null) {
                 while (line.isBlank()) {
                     line = reader.readLine();

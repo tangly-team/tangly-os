@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -18,9 +18,8 @@ import net.tangly.dev.model.Packages;
 public class ParseJavaApplication {
 
     /**
-     * A module is identified as [module]/src/main/java/**. The java source files are located in the module under [module]/src/main/java, the java
-     * test source files are located in the module under [module]/src/test/java. The package name is identified as
-     * [module]/src/main/java/[package]/[class].java
+     * A module is identified as [module]/src/main/java/**. The java source files are located in the module under [module]/src/main/java, the java test source files are located
+     * in the module under [module]/src/test/java. The package name is identified as[module]/src/main/java/[package]/[class].java
      */
     public void arseModules() {
 
