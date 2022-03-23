@@ -12,6 +12,8 @@
 
 package net.tangly.core;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 /**
@@ -28,7 +30,7 @@ public abstract class QualifiedEntityImp extends NamedEntityImp implements Quali
     }
 
     @Override
-    public void id(String id) {
+    public void id(@NotNull String id) {
         this.id = id;
     }
 

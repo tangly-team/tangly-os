@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -20,7 +20,7 @@ import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The abstraction of an email address until the Java JDK provides one..
+ * The abstraction of an email address until the Java JDK provides one.
  */
 public record EmailAddress(@NotNull String recipient, @NotNull String domain) {
     private static final Logger logger = LogManager.getLogger();
@@ -45,7 +45,7 @@ public record EmailAddress(@NotNull String recipient, @NotNull String domain) {
                 Objects.checkFromIndexSize(0, parts.length, 2);
                 return new EmailAddress(Strings.normalizeToNull(parts[0]), Strings.normalizeToNull(parts[1]));
             } catch (ArrayIndexOutOfBoundsException | IllegalArgumentException e) {
-                logger.atWarn().withThrowable(e).log("Error creating email address", email);
+                logger.atWarn().withThrowable(e).log("Error creating email address {}", email);
                 return null;
             }
         }

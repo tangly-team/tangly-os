@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -22,7 +22,7 @@ public interface HasOid {
     String OID = "oid";
 
     /**
-     * Place holder to identify an illegal or undefined internal identifier. It is also the default value if a developer forget to set the value.
+     * placeholder to identify an illegal or undefined internal identifier. It is also the default value if a developer forgets to set the value.
      */
     long UNDEFINED_OID = 0;
 

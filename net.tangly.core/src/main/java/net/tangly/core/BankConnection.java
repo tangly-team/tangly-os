@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -87,7 +87,7 @@ public record BankConnection(@NotNull String iban, String bic, String institute)
      * Validates a string representing a formatted iban number.
      *
      * @param iban iban number to validate
-     * @return true if the iban is valid otherwise false
+     * @return true, if iban is valid otherwise false
      */
     public static boolean validateIban(@NotNull String iban) {
         try {
@@ -103,7 +103,7 @@ public record BankConnection(@NotNull String iban, String bic, String institute)
      * Validates a string representing a formatted bic number.
      *
      * @param bic bic number to validate
-     * @return true if the bic is valid otherwise false
+     * @return true, if the bic is valid otherwise false
      */
     public static boolean validateBic(String bic) {
         try {
@@ -118,7 +118,7 @@ public record BankConnection(@NotNull String iban, String bic, String institute)
     /**
      * Returns a comma separated representation of a bank connection. Null values are shown as empty strings. The {@link Object#toString()} method is not used
      * because the implementation is defined in the API implementation of record construct. The generated string can be feed to the {@link
-     * BankConnection#of(String)} to create an bank connection object.
+     * BankConnection#of(String)} to create a bank connection object.
      *
      * @return comma separated representation
      * @see BankConnection#of(String)

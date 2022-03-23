@@ -46,7 +46,7 @@ public class ExternalEntityImp implements ExternalEntity {
     }
 
     @Override
-    public void id(String id) {
+    public void id(@NotNull String id) {
         this.id = id;
     }
 

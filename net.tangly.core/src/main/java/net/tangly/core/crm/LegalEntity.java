@@ -13,16 +13,16 @@
 package net.tangly.core.crm;
 
 
-import java.util.Optional;
-
 import net.tangly.core.Address;
 import net.tangly.core.QualifiedEntityImp;
 import net.tangly.core.Strings;
 import net.tangly.core.Tag;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Optional;
+
 /**
- * A legal entity is legally recognized organization able to underwrite contracts and hire employees. A legal entity has a name, an identity defined as the
+ * A legal entity is a legally recognized organization able to underwrite contracts and hire employees. A legal entity has a name, an identity defined as the
  * legal number of an organization (e.g. zefix UID number in Switzerland, EUID in Europe), and a text describing it.
  */
 public class LegalEntity extends QualifiedEntityImp implements CrmEntity {

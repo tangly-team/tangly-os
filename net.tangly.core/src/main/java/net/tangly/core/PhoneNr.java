@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -20,7 +20,7 @@ import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Represents an immutable phone number as a canonical string. Validation and formatting of phone numbers is performed through the phone library of Google which
+ * Represents an immutable phone number as a canonical string. Validation and formatting of phone numbers are performed through the phone library of Google which
  * supports worldwide numbers.
  */
 public record PhoneNr(@NotNull String number) {
@@ -35,7 +35,7 @@ public record PhoneNr(@NotNull String number) {
     /**
      * Factory method to of a new phone number. The number is formatted based on the international format standard.
      *
-     * @param number phone number in raw format
+     * @param number phone number in a raw format
      * @return the newly created phone number if the raw format contained a number otherwise null
      */
     public static PhoneNr of(@NotNull String number) {
@@ -55,7 +55,7 @@ public record PhoneNr(@NotNull String number) {
      * Validates a phone number using the Google phone library.
      *
      * @param number phone number to validate
-     * @return true if the phone number is valid otherwise false
+     * @return true, if the phone number is valid otherwise false
      */
     public static boolean isValid(String number) {
         PhoneNumberUtil numberUtil = PhoneNumberUtil.getInstance();

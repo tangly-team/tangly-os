@@ -16,7 +16,7 @@ public interface HasText {
     /**
      * Returns the human-readable text description of the instance.
      *
-     * @return human readable text description of the instance
+     * @return human-readable text description of the instance
      * @see #text(String)
      */
     String text();

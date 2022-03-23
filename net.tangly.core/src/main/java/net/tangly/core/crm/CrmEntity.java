@@ -23,7 +23,7 @@ import net.tangly.core.Tag;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A customer relation management mixin defines a set of operations useful for all CRM abstractions. All information are stored as tags for future extensions.
+ * A customer relation management mixin defines a set of operations useful for all CRM abstractions. All information is stored as tags for future extensions.
  * Key attributes are address or locations, phone numbers, social channels and internet presence.
  * <p>The tag approach provides flexibility required by the evolution of values to represent similar information. For example an address, a geographical
  * location or an universal Plus code model similar information. Examples of CRM entities are natural and legal entities.</p>

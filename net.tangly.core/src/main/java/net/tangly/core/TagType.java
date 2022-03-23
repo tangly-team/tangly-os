@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -20,14 +20,14 @@ import java.util.function.UnaryOperator;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Implements the conceptual type of a set of related tags, all of the same class. The tag type also provides support to convert the text format of a tag into a
+ * Implements the conceptual type of set of related tags, all the same class. The tag type also provides support to convert the text format of a tag into a
  * Java object and to validate acceptable tag values.
  * <p>A tag should be associated at most once with an entity. If multiple values are needed, the tag value should be a comma separated list of all values.
  * The conversion method shall transform the comma separated string into a list of objects if needed.</p>
  *
  * @param namespace namespace of the tags defined through the tag type
  * @param name      name of the tags defined through the tag type
- * @param clazz     class of the type of the values stored in the tag
+ * @param clazz     class of the type of values stored in the tag
  * @param kind      kind of the tag specifying if a value exists and if it is mandatory
  * @param convert   mapping function between a string to a Java object representation of the string value. if multiple values are supported, the mapping
  *                  function shall return a list of Java objects.

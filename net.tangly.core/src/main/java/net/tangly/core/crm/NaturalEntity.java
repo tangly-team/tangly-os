@@ -23,7 +23,7 @@ import net.tangly.core.Strings;
 import net.tangly.core.Tag;
 
 /**
- * A natural entity is a person. A natural entity has an identity defined as the legal number of a person (e.g. the social security number0, a name defined as
+ * A natural entity is a person. A natural entity has an identity defined as the legal number of a person (e.g. the social security number, a name defined as
  * the last name and the first name separated by a comma, a life duration and a text describing it.
  * <p>A potential approach for a natural person identification is ISO 24366.</p>
  */

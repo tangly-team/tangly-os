@@ -14,8 +14,6 @@ package net.tangly.commons.lang.functional;
 
 import org.jetbrains.annotations.Contract;
 
-import java.util.Collection;
-
 public interface Sequence<T> {
     /**
      * Returns the first element of the sequence.

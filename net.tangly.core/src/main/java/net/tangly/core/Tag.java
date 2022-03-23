@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The immutable class tag models a tag with a name and a format. Tags provide a powerful approach for multi-dimensional classifications of values. All fields
+ * The immutable class tag models a tag with a name and a format. Tags provide a powerful approach for multidimensional classifications of values. All fields
  * of a tag are strings. We provide the tag type to support conversions from string values to Java objects.
  *
  * @param namespace the optional namespace in which the tag is defined

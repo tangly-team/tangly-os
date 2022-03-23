@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -17,9 +17,9 @@ import java.util.Objects;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Defines the abstraction of a postal address without the recipient. The structure should model all existing postal address. An address is an immutable object
- * - now enforced through a record construct -. The street represents the international concept of house identifier often meaning street name and street number.
- * It can also be street name and house name such as in Ireland or Great Britain.
+ * Defines the abstraction of a postal address without the recipient. The structure should model alls existing postal addresses. An address is an immutable object
+ * - now enforced through a record construct -. The street represents the international concept of house identifier often means street name and street number.
+ * It can also be the street name and house name such as in Ireland or Great Britain.
  *
  * @param street   street and street number of the address
  * @param extended extended address line of the address
@@ -32,7 +32,7 @@ import org.jetbrains.annotations.NotNull;
 public record Address(String street, String extended, String poBox, String postcode, String locality, String region, String country) {
     public Address {
         if (Strings.isNullOrBlank(country)) {
-            throw new IllegalArgumentException("Ilegal country " + country);
+            throw new IllegalArgumentException("Illegal country " + country);
         }
         if (Strings.isNullOrBlank(locality)) {
             throw new IllegalArgumentException("Illegal locality " + locality);

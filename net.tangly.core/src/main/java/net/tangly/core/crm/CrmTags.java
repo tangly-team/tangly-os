@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -80,7 +80,7 @@ public final class CrmTags {
     public static final String GEO_PLUSCODE = GEO + ":" + PLUSCODE;
 
     /**
-     * Private constructor of an utility class.
+     * Private constructor of a utility class.
      */
     private CrmTags() {
     }
@@ -141,19 +141,19 @@ public final class CrmTags {
     }
 
     /**
-     * Create the linkedIn profile link for a natural entity
+     * Create the LinkedIn profile link for a natural entity
      *
-     * @param entity person which linkedIn profile should be displayed
-     * @return link to the linkedIn profile
+     * @param entity person which LinkedIn profile should be displayed
+     * @return link to the LinkedIn profile
      */
     public static String individualLinkedInUrl(@NotNull HasTags entity) {
         return entity.findBy(CrmTags.CRM_IM_LINKEDIN).map(Tag::value).map(o -> "https://www.linkedin.com/in/" + o).orElse(null);
     }
 
     /**
-     * Create the linkedIn company profile lik for a legal entity. LinkedIn handles regular organizations and schools in different ways.
+     * Create the LinkedIn company profile lik for a legal entity. LinkedIn handles regular organizations and schools in different ways.
      *
-     * @param entity organization which linkedIn profile should be displayed
+     * @param entity organization which LinkedIn profile should be displayed
      * @return link to the linkedIn profile
      */
     public static String organizationLinkedInUrl(@NotNull HasTags entity) {

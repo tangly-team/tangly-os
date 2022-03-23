@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -25,7 +25,7 @@ public abstract class CodeImp implements Code {
     private final int id;
 
     /**
-     * Human readable format of the code.
+     * Human-readable format of the code.
      */
     private final String code;
 
@@ -38,7 +38,7 @@ public abstract class CodeImp implements Code {
      * Constructor of the immutable class.
      *
      * @param id      code identifier of the instance
-     * @param code    human readable code text of the instance
+     * @param code    human-readable code text of the instance
      * @param enabled flag indicating if the code is enabled
      */
     protected CodeImp(int id, String code, boolean enabled) {

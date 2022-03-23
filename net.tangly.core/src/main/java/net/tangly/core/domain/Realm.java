@@ -12,17 +12,16 @@
 
 package net.tangly.core.domain;
 
-import java.util.List;
-
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.core.Entity;
-import net.tangly.core.NamedEntity;
 import net.tangly.core.HasOid;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+
 /**
- * Realm is responsible for the handling of entities and value objects part of the domain model.
+ * The realm is responsible for the handling of entities and value objects part of the domain model.
  * <p>The realm abstracts the repository and factory concepts defined in the domain driven approach for small bounded domains.</p>
  * <p>One key feature of entities is their unique object identifier defined in the context of the bounded domain. The realm provides functions to generate
  * unique object identifiers and set them in the entities in need of them. The object identifiers are created in the application.</p>

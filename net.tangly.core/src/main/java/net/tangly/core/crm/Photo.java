@@ -13,7 +13,7 @@
 package net.tangly.core.crm;
 
 /**
- * Defines the photography of a natural entity. Photographies are powerful helpers for personal interactions.
+ * Defines the photography of a natural entity. Pictures are powerful helpers for personal interactions.
  * @param data binary data of the photography
  */
 public record Photo(byte[] data) {

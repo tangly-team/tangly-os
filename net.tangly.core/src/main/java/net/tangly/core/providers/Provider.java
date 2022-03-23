@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,17 +12,16 @@
 
 package net.tangly.core.providers;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-
-import net.tangly.commons.generator.IdGenerator;
 import net.tangly.core.HasId;
 import net.tangly.core.HasOid;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+
 /**
- * Defines the provider abstraction responsible to handle all instances of a specific type.
+ * Defines the provider abstraction responsible for handling all instances of a specific type.
  *
  * @param <T> type of the instances
  */
@@ -43,7 +42,7 @@ public interface Provider<T> {
     List<T> items();
 
     /**
-     * Updates the data associated with the entity. If the entity is new the update is handled as a create operation. The update is transitive and all
+     * Updates the data associated with the entity. If the entity is new, the update is handled as a create operation. The update is transitive and all
      * referenced entities are also updated. The entity given as parameter becomes the instance managed through the provider.
      *
      * @param entity entity to update

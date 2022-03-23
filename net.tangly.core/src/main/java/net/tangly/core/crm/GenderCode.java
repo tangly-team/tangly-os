@@ -15,7 +15,7 @@ package net.tangly.core.crm;
 import net.tangly.core.codes.Code;
 
 /**
- * Define the gender of a natural person. Gender is mainly used to define how yo address the person in written communication.
+ * Define the gender of a natural person. Gender is mainly used to define how you address the person in written communication.
  */
 public enum GenderCode implements Code {
     male, female, other, unspecified;

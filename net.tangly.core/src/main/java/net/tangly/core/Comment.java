@@ -41,7 +41,7 @@ public class Comment implements HasTags {
     private final String author;
 
     /**
-     * The comment as a markdown text.
+     * The comment as a Markdown text.
      */
     private final String text;
 
@@ -54,7 +54,7 @@ public class Comment implements HasTags {
     /**
      * Default constructor to create an immutable instance.
      *
-     * @param author of the comment instance as human readable field
+     * @param author of the comment instance as human-readable field
      * @param text   text of the comment, we recommend using asciidoc format
      */
     public Comment(@NotNull String author, @NotNull String text) {

@@ -7,27 +7,23 @@ draft: false
 
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
-:revnumber: v0.1
-:revdate: 2020-05-31
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
-:icons: font
-:source-highlighter: pygments
-:pygments-style: manni
 
 == Reference Codes
 
 === Design Considerations
 
-* The application is sole and exclusive owner of the database instance. Therefore instances can never be changed from another system when the
-application is running.
-* The domain model shall not be tainted with active records interfaces or forced inheritance structure. This decision reflect the hexagon
-architecture.
+* The application is the sole and exclusive owner of the database instance.
+Instances can never be changed from another system when the application is running.
+* The domain model shall not be tainted with active record interfaces or forced inheritance structure.
+This decision reflects the hexagon architecture.
 * Unique object identifiers are necessary to identify instances outside the Java virtual machine, such as databases, CSV files or JSON files.
-Object identifiers shall be managed and allocated through the active records library. The domain model
-shall not be burden to manage internal identity tokens.
-* Extensions shall be provided to support common models concepts. Currently extensions supporting reference codes, tags and comments are provided.
-* We are enthusiast to follow functional programming paradigm and object immutability. Therefore the
-active record library should provide support for classes enforcing immutability.
+Object identifiers shall be managed and allocated through the active record library.
+The domain model shall not be burden to manage internal identity tokens.
+* Extensions shall be provided to support common model concepts.
+Extensions supporting reference codes, tags and comments are provided.
+* We are enthusiasts to follow functional programming paradigm and object immutability.
+Therefore, the active record library should provide support for classes enforcing immutability.
 
