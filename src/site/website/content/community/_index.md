@@ -11,7 +11,7 @@ menu:
 
 Find the description of the release and publication process under [ideas](../ideas/components-publication).
 
-Architecture design record for the whole projects are also located under [ideas](../ideas/adr).
+Architecture design record _ADR_ for the whole projects are also located under [ideas](../ideas/adr).
 </div>
 {{% /blocks/section %}}
 

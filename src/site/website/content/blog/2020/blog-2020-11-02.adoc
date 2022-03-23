@@ -59,7 +59,7 @@ To Waisfisz, an organization’s culture is defined by how its parts relate to e
 Moreover, it refutes _the way we do things here_ model by reinforcing that your internal culture is defined by its differences from other organizations.
 This model lends from group dynamics where groups are not only defined by their internal identity but also by their differences to other groups.
 
-Clearly recognize not changing the structure and just renaming roles and processes will not trigger any change. See the Larman laws:
+Recognize clearly that not changing the structure and just renaming roles and processes will not trigger any change. See the Larman laws:
 
 [quote, Craig Larman]
 ____
@@ -91,15 +91,16 @@ ____
 
 You have to acknowledge you must change the structure of your company.
 The current approach is to remove functional silos and reorganize along value streams.
-A stream is in charge of s set of related products and directly communicates with the users of these products.
+A stream is in charge of a set of related products and directly communicates with the users of these products.
 
 [quote, John Seddon]
 ____
-Attempting to change an organization’s culture is a folly, it always fails.
+Attempting to change an organization’s culture is a folly.
+It always fails.
 Peoples’ behavior _the culture_ is a product of the system; *when you change the system, peoples’ behavior changes.*"
 ____
 
-* The major anti-patern is the refusal to change structure of your organization.
+* The major anti-pattern is the refusal to change the structure of your organization.
  Without changing structure you will fail.
 * Your organization is unique but not esoteric.
  The actual approaches will work.
@@ -130,7 +131,7 @@ Beware that laggards will fight against any change. I still hear upper managemen
  And, agile is anyway chaos.
 
 Find a champion and get rid of the most vocal laggards.
-If no champion can be found either move to another company or renounce agile approaches.
+If no champion can be found, either move to another company or renounce agile approaches.
 Be realistic, you will fail to have any lasting success in such an environment.
 
 Embrace reality. At least eighty percent of all software and research activities claim to follow agile approaches.

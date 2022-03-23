@@ -28,11 +28,11 @@ Can you as a designer govern the ontology defined through labels?
 
 Tags add semantic information to business entities.
 Tags are often defined as a crowd ontology without enforced schemas.
-Invest in domain modeling to define and maintain tags and you will move tags to full-fledged ontology other your domain models.
+Invest in domain modeling to define and maintain tags, and you will move tags to full-fledged ontology other your domain models.
 This ontology supports meaningful search, segmentation and reporting over historical and geographical raw data.
 
 Tags with associated values are also used to decorate unrelated entities with orthogonal information.
-For example you can associate geographical coordinates - GIS - to pictures, meetings, or addresses.
+For example, you can associate geographical coordinates - GIS - to pictures, meetings, or addresses.
 
 A tag has three parts:
 

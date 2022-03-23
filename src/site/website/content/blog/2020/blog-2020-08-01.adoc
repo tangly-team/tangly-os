@@ -31,7 +31,7 @@ We need an approach to model customer domain entities and map them to a legible 
 An entity is a user domain model abstraction and is mapped to a software type.
 
 * Any entity has a _unique mandatory internal_ object identifier *_oid_*, we recommend the use of numeric values to improve performance.
-* Public and _external identifier_ *_id_*, we recommend the use of text to adequately support various external identification scheme.
+* Public and _external identifier_ *_id_*, we recommend the use of text to adequately support various external identification schemes.
 An example is the European enterprise identifier EUID identifying a company or a certified natural person in Europe
 * Human-readable _name_.
 
@@ -48,12 +48,12 @@ These entity features should be defined as a set of https://en.wikipedia.org/wik
 === Internal Object Identifiers _oid_
 
 The object identifier _oid_ uniquely identifies an instance in a given context.
-This identifier shall be a numerical value to increase performance of persistent solutions.
+This identifier shall be a numerical value to increase the performance of persistent solutions.
 It is used as an internal identifier in the application.
 It should never be visible outside the system or published through an API.
 
-Ideally the identifier is universally valid and uniquely identifies an instance in all contexts.
-For example the concept of UUID tries to provide such an identifier.
+Ideally, the identifier is universally valid and uniquely identifies an instance in all contexts.
+For example, the concept of UUID tries to provide such an identifier.
 The drawback is that UUID is not a numerical value and cumbersome for a developer to memorize.
 
 [NOTE]
@@ -70,7 +70,7 @@ History has taught developers not to spare on the size of identifiers.
 Please use a long value meaning 64 bits.
 
 Avoid using the internal identifier to communicate with external systems.
-If you respect this rule you are free to migrate your objects to another identification scheme in the future.
+If you respect this rule, you are free to migrate your objects to another identification scheme in the future.
 New schemes are often helpful when the application grows, or you have later to import and take over a lot of legacy data.
 
 === External Object Identifiers _id_
@@ -88,7 +88,7 @@ This information shall be documented and accessible to all involved parties.
 This process is part of the enterprise architecture activities of your ecosystem.
 
 External identifier ownership is often a murky situation when working with legacy systems.
-You often have multiple source of external identifiers, sometimes overlapping and sometimes no covering all instances.
+You often have multiple sources of external identifiers, sometimes overlapping and sometimes no covering all instances.
 You have to formulate a long-term strategy to clean up your landscape and handle the problems until these clean-up activities are completed.
 By handling we mean administrative and import rules matching the various external identifiers to the same object.
 
@@ -97,32 +97,32 @@ Store externally defined identifiers as tags.
 Document these tags as specific for the external system.
 This approach scales to multiple external identifiers, and multiple systems managing the same external identifier.
 So you have a scalable approach and do not pollute your domain model with spurious information defined in external systems.
-Upon completion of the refactoring these tags document historical information and could safely be removed.
+Upon completion of refactoring these tags document historical information and could safely be removed.
 
 Multiple external object identifiers imply the existence of mapping functions to identify the object referenced.
-Because the ownership of external identifiers is outside your system, you are dependent to these systems and have to hope they are good citizens.
+Because the ownership of external identifiers is outside your system, you are dependent on these systems and have to hope they are good citizens.
 The key rule of good systems is that they never change external identifiers.
-As soon as you modify identifiers they are per definition no more real identifiers.
+As soon as you modify identifiers, they are per definition no more real identifiers.
 
 === Names _name_
 
 The entity name is a human-readable name to distinguish between entity instances.
-Ideally it should be almost unique.
+Ideally, it should be almost unique.
 The fallback is to use the external unique identifier _id_ known to all external systems.
-The drawback is that we have no guarantees it is legible for users.
+The drawback is that we have no guarantee it is legible for users.
 Names are essential for well-designed user interfaces.
-Never require from your users to memorize external identifiers, please provide names.
+Never require from your users memorizing external identifiers, please provide names.
 
-For example first and last names of a person is the name for a natural entity.
+For example, first and last names of a person is the name for a natural entity.
 Social security number is a possible external identifier.
-An internal identifier is used as primary key in the persistence storage.
+An internal identifier is used as a primary key in the persistence storage.
 
 === Advices
 
 . Internal object identifiers are identifiers.
 An identifier is immutable and should be numerical for performance reasons.
 . External object identifiers have exactly one application in charge to create them.
-. Names are human-readable and improve the legibility and usability of user interface and reports.
+. Names are human-readable and improve the legibility and usability of the user interface and reports.
 
 External identifiers can be tricky.
 In Switzerland, we had an old social security number which is still referenced in a lot of legal systems.
@@ -136,15 +136,15 @@ Identifiers are a key element to model entities using the domain driven design _
 We have a new social security number which is used in social insurance workflows.
 _The same number is also used in medical insurance workflows._
 
-We have also a federal identity card number, a federal passport number, a federal driver license number, additional medical card insurance numbers, a state tax personal identification number, and more external identifiers.
+We also have a federal identity card number, a federal passport number, a federal driver license number, additional medical card insurance numbers, a state tax personal identification number, and more external identifiers.
 All these external identifiers shall reference the same natural person.
 
 More interesting is that a tourist living in the European zone has none of these numbers.
 
 Please implement the internal identifier feature as an interface marker.
-The external identifier and name features can be grouped in one interface.
+The external identifier and name features can be grouped into one interface.
 
-Additional information are available under link:../../docs/bus/businessmodels/.
+Additional information is available under link:../../docs/bus/businessmodels/.
 Below the source code in modern Java is:
 
 [source,java]

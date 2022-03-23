@@ -12,6 +12,7 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2020-12-01-head.jpg[width=420,height=360,role=left]
+
 At many customer sites I visit, I see a lot of effort being put into classifying and managing bugs.
 
 Their bug list may contain more than a thousand items.
@@ -19,7 +20,8 @@ All are neatly documented with screenshots, ways to reproduce the problem and a 
 In the worst case, a specialist has worked hard and estimated the effort to correct each of these bugs.
 
 A change management board meets every few weeks and decides which bugs have a higher priority and should urgently be fixed.
-It means an angry customer called someone at C level and now his request must be handled.
+It means an angry customer called someone at C level.
+Now his request must be handled.
 Some of these bugs were discovered years ago.
 The discussion can take hours and involve up to ten people.
 Clearly, many expensive hours have been invested to properly administering these bugs.
@@ -44,6 +46,7 @@ A bug is not an error in logic; it is a test that was not written.
 ____
 
 image::2020-12-01-fix-it-or-delete-it.png[width=420,height=360,role=left]
+
 The rigorous Zero-baseline approach will force us to clean our code.
 
 Let us categorize the bugs you have and deal with them accordingly.

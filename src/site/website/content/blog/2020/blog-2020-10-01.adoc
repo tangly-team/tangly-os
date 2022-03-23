@@ -21,9 +21,9 @@ Over the years, the drawbacks sting more and more:
 * Their editor is brittle, with limited functionality and unreliable.
 The generated HTML is not legible and does not support concepts such a micro fragments, meta information or simple functions such as source code highlighting.
 * The last quarters they started to tinker with their editor and output format.
-My older posts are now a mess and can only be open in HTML mode.
+My older posts are now a mess and can only be open in the HTML mode.
 If I switch to their WYSIWYG editor, the layout is destroyed and random fonts family and sizes are displayed.
-Worse the blogs are also displayed mangled to the readers even if I do not edit them.
+Worse, the blogs are also displayed mangled to the readers even if I do not edit them.
 This destruction of all older blogs and the missing migration path were killer criteria.
 * Blogger does not support modern markup language such https://www.markdownguide.org/[Markdown] or {ref-asciidoc}.
 Blogger uses a proprietary and not easy to port format.
@@ -42,12 +42,12 @@ The blog platform should support multiple years of publishing and referencing be
 Our projects and our collaborators put effort to regularly publish articles.
 . I shall be able to write technical articles and publish them on the same site.
 The articles are naturally written in {ref-asciidoc}.
-We want a professional looking documentation to encourage new users to try our open source components.
+We want professional looking documentation to encourage new users to try our open source components.
 . I shall publish the technical documentation of the open source components I develop on the same site.
 
 {ref-hugo} was selected as static site generator because its support for {ref-asciidoc} is tremendously improving.
 
-Static website generators have strong advantages for technical savvy persons:
+Static website generators have strong advantages for technical savvy people:
 
 * Hosting is cheap.
 GitHub, GitLab or Bitbucket pages even host static websites for free.
@@ -125,13 +125,13 @@ You should not add it to the extensions because since {ref-asciidoctor} version 
 <2> Define the style used to highlight source code.
 <3> Configure rouge to generate all formatting data into the generated html file, avoiding any css file configuration.
 <4> Icons provide better looking icons for various {ref-asciidoc}} constructs.
-<5> Define document attributes which are accessible to all processed documents (DRY concept for the whole site).
+<5> Define document attributes which are accessible to all processed documents (DRY concepts for the whole site).
 
 CAUTION
 
 ====
 Newer versions of hugo have stricter security restrictions.
-You must explicitly enable asciidoctor support by adding following statements in your configuration file
+You must explicitly enable asciidoctor support by adding the following statements in your configuration file
 
 [source,yaml]
 ----
@@ -190,7 +190,7 @@ You can configure printing a whole section with or without a table of contents t
 For advanced cases, you can define the layout of the printed document.
 
 You can use relative links in your {ref-asciidoc} documents.
-Beware where the file are located by {ref-hugo} engine and the naming conventions shall follow {ref-hugo} rules.
+Beware where the files are located by {ref-hugo} engine and the naming conventions shall follow {ref-hugo} rules.
 
 Avoid the _html5s_ backend and use instead the _html5_ backend.
 I was not able to find good examples of stylesheets for the semantic backend.
@@ -204,7 +204,7 @@ NOTE: The Hugo theme community is slow to better support asciidoc documents.
 The Hugo developers clearly stated that styling for asciidoc documents is the responsibility of theme authors.
 All Hugo users shall be aware that asciidoc is an officially supported input format.
 
-Funny is that the blogger software and the docsy theme are from the same company *Google*.
+Funny is that the blogger software and the docsy theme are from the same company as *Google*.
 
 _This blog article is naturally written in {ref-asciidoc} syntax_.
 

@@ -1,7 +1,7 @@
 ---
 title: "Agile Architecture"
 linkTitle: "Agile Architecture"
-description: Methods and tools to define and implement agile architecture in software based products
+description: Methods and tools to define and implement agile architecture in software-based products
 weight: 10
 ---
 {{< cardpane >}}
@@ -21,7 +21,7 @@ We have extensive experience defining architectures empowering multiple teams to
 
 * Implement domain-driven development and architecture
 * Use event storming to identify domain ubiquitous language
-* Establish DDD as an architectural approach to micro-services solutions
+* Establish DDD as an architectural approach to microservice solutions
 * Identify bounded contexts to promote parallel development
 {{< /card >}}
 {{< /cardpane >}}

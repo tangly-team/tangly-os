@@ -61,7 +61,7 @@ public enum EnumCode implements Code {
 ----
 
 The above approach is a low impact transformation of your application.
-Once your enumeration types implements the code interface, you are free to migrate selected types to external persistent and extensible solutions.
+Once your enumeration types implement the code interface, you are free to migrate selected types to external persistent and extensible solutions.
 
 === Persistent Codes
 

@@ -21,7 +21,7 @@ Our intensive workshops will help your agile teams become highly effective.
 * Nurture high-performance teams
 * Establish a DevOps culture
 * Merge agile teams and software craftsmanship techniques
-* Help  your Scrum masters and product owners become talented change agents
+* Help your Scrum masters and product owners become talented change agents
 * Define work approaches between agile teams and the organization
 {{< /card >}}
 {{< /cardpane >}}

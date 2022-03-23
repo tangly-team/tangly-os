@@ -30,7 +30,7 @@ I wanted to store comments in a personally owned repository and protect my reade
 Some information on the Internet about {ref-utterances} is wrong.
 Facts are:
 
-* Utterances library uses a GitHub repository to store comments associated with your website articles and pages.
+* The Utterances library uses a GitHub repository to store comments associated with your website articles and pages.
 * Your website can be hosted *anywhere*.
 You do *not* need to host your static website repository on GitHub; but you can.
 * Readers wanting to comment *must* login once with their GitHub account to authorize the {ref-utterances} application.
