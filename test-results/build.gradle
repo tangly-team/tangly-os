@@ -1,15 +1,35 @@
 plugins {
     id 'base'
     id 'test-report-aggregation'
+    id 'jacoco-report-aggregation'
 }
 
 dependencies {
-    testReportAggregation project(':application')
+    testReportAggregation project(':net.tangly.bdd')
+    testReportAggregation project(':net.tangly.commons')
+    testReportAggregation project(':net.tangly.core')
+    testReportAggregation project(':net.tangly.dev')
+    testReportAggregation project(':net.tangly.erp.agile')
+    testReportAggregation project(':net.tangly.erp.apps')
+    testReportAggregation project(':net.tangly.erp.collaborators')
+    testReportAggregation project(':net.tangly.erp.crm')
+    testReportAggregation project(':net.tangly.erp.invoices')
+    testReportAggregation project(':net.tangly.erp.ledger')
+    testReportAggregation project(':net.tangly.erp.products')
+    testReportAggregation project(':net.tangly.erp.shared')
+    testReportAggregation project(':net.tangly.erp.ui')
+    testReportAggregation project(':net.tangly.erp-integration')
+    testReportAggregation project(':net.tangly.fsm')
+    testReportAggregation project(':net.tangly.gleam')
+    testReportAggregation project(':net.tangly.ui')
 }
 
 reporting {
     reports {
         testAggregateTestReport(AggregateTestReport) {
+            testType = TestSuiteType.UNIT_TEST
+        }
+        testCodeCoverageReport(JacocoCoverageReport) {
             testType = TestSuiteType.UNIT_TEST
         }
     }

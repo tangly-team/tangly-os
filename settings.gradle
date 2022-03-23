@@ -20,6 +20,7 @@ include 'net.tangly.erp-integration'
 include 'net.tangly.fsm'
 include 'net.tangly.gleam'
 include 'net.tangly.ui'
+include 'test-results'
 
 include 'net.tangly.erp.apps'
 include 'net.tangly.erp.agile'
