@@ -19,7 +19,7 @@ Incomplete activities are also called _Undone Work_.
 They are technical debts in your software, hindering its delivery to users.
 They are expended money you cannot invoice to your customers.
 
-Regulatory and traditional quality insurance departments request all kinds of documents such as review, test results, risk analysis matrix.
+Regulatory and traditional quality insurance departments request all kinds of documents, such as review, test results, risk analysis matrix.
 They want insurance that their view of quality is fulfilled.
 
 Scrum sees quality similar to the lean production approach.

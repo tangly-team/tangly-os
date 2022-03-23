@@ -41,15 +41,15 @@ More important is that you have real Scrum Masters, and not only Scrum administr
 Find out if you are a real professional Scrum master.
 Do you perform each sprint the top things a Scrum Master usually forgets to focus on?
 
-. Do Gemba. Redefine career paths, incentives, organization to be more Scrum focused,
-. Identify with the product owner and the development team missing product backlog items,
-. State team issues not being discussed because they are too uncomfortable,
-. Find out an appropriate balance between end-to-end system tests and unit tests,
-. Play back the team's progress against the proposed release plan,
-. Integrate all tests into continuous integration, delivery and deployment,
-. Coach team members to understand the benefits of refactoring, removing waste and focus on quality,
-. Teach Kaizen. Coach team to peer review and continuously improve towards perfection,
-. Teach pair programming on a daily basis,
+. Do Gemba. Redefine career paths, incentives, organization to be more Scrum focused.
+. Identify with the product owner and the development team missing product backlog items.
+. State team issues not being discussed because they are too uncomfortable.
+. Find out an appropriate balance between end-to-end system tests and unit tests.
+. Play back the team's progress against the proposed release plan.
+. Integrate all tests into continuous integration, delivery and deployment.
+. Coach your team members to understand the benefits of refactoring, removing waste and focus on quality.
+. Teach Kaizen. Coach team to peer review and continuously improve towards perfection.
+. Teach pair programming on a daily basis.
 . Expand with the team and the organization the definition of done. Beware it can trigger an organizational change.
 
 I hope the discussion what a successful Scrum master does stay active.

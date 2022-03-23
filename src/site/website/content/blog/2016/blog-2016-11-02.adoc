@@ -14,10 +14,10 @@ tags: ["organization"]
 image::2016-11-02-head.jpg[width=420, height=360, role=left]
 I left the company I founded 20 years ago and needed a new home to work and have access to social insurance.
 
-The best legal construct in Switzerland and in Europe is to found a limited liability company.
+The best legal construct in Switzerland and in Europe is to establish a limited liability company.
 
 You need such a construct in Switzerland to work as a software specialist.
-The legal Swiss institutions such as taxes, social insurances, and accident insurances are challenging and almost unfair with freelancers.
+The legal Swiss institutions, such as taxes, social insurances, and accident insurances are challenging and almost unfair with freelancers.
 
 I had to found a limited liability company with a capital of CHF 20'000.
 
@@ -36,9 +36,9 @@ Here the steps for the impatient.
  I had bad luck and they needed three weeks to create the account and send payment confirmation.
  They were aware of the problem and very helpful, but it still took three weeks.
 . Upon reception of the payment confirmation, I sent all signed documents to https://www.swissregistration.ch/[Swissregistration].
- The next day the company was founded and I received the official paper documents a few hours later.
+ The next day the company was founded, and I received the official paper documents a few hours later.
 . I went to https://www.zg.ch/behoerden/volkswirtschaftsdirektion/handelsregisteramt[Handelsregisteramt Zug] to register the company.
- They were very nice but told me they have a lot of work.
+ They were very nice but told me they had a lot of work.
  Two weeks later they finally registered the company and sent me the papers and an invoice of CHF 780.
 . A few phone calls later http://www.postfinance.ch/[Postfinance] converted the account into a regular account.
  They give me access to the founding capital minus their fee
@@ -59,7 +59,7 @@ The AHV center needed more than two weeks to confirm my registration.
 * The costs of founding my limited company in Switzerland are CHF 1'705 or 8.5% of the capital of the company.
 * The state-owned companies and state services are very slow; in my case 20 times slower than the private ones.
  On the bright side, their collaborators are very supportive.
-* Public or big private companies such as insurance firms, are incapable of sending documents or invoices electronically.
+* Public or big private companies, such as insurance firms, are incapable of sending documents or invoices electronically.
  They only use paper mail. Upon inquiry, their collaborators told me their processes are incapable of handling modern communication ways.
 * Upon foundation, you get pseudo-official letters from various companies to sell dubious services. Just throw them away.
 * The industry development office of Kanton Zug has no clues about start-up companies; the ones in Zürich and Luzern seem better.

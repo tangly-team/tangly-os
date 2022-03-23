@@ -17,7 +17,7 @@ You are working in a small collocated development team and decided to use branch
 Here the cookbook to create, edit, merge and delete local and remote branches in Git (version 2.x).
 Git branches have two important qualities.
 
-* A branch is like an idea. Once you implemented the idea, feature or fix you just merge back to trunk and delete the branch,
+* A branch is like an idea. Once you implemented the idea, feature or fix you just merge back to trunk and delete the branch.
 * The history of the branch commits is still visible upon deletion of the branch.
 
 [NOTE]
@@ -32,7 +32,7 @@ _Put the ticket number into the branch name and messages for future searches._
 
 [TIP]
 ====
-A lot of servers support keywords such as _fix #42_ to automatically close the ticket 42.
+A lot of servers support keywords such as _fix #42_ to automatically close ticket 42.
 ====
 
 The described approach is optimal for small teams.
@@ -109,7 +109,7 @@ Push the changes.
 git push
 ----
 
-For advanced users you can first rebase your branch and squash superfluous commits before merging the branch back to trunk.
+For advanced users, you can first rebase your branch and squash superfluous commits before merging the branch back to trunk.
 
 === Delete the Branch
 

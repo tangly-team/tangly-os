@@ -42,9 +42,9 @@ You should read the standard works of Scrum to understand the concepts.
 
 === Brown-Field Projects
 
-* Refactoring Improving the Design of Existing code, Martin Fowler, Addison-Wesley 1999 How to implement continuous improvement on the code level.
-If you are not refactoring you are not agile.
-* Working Effectively with Legacy Code, Michael C. Feathers, Prentice-Hall 2005 Most of us work on existing code bases.
+* Refactoring Improving the Design of Existing code, Martin Fowler, Addison-Wesley 1999, How to implement continuous improvement on the code level.
+If you are not refactoring, you are not agile.
+* Working Effectively with Legacy Code, Michael C. Feathers, Prentice-Hall 2005, Most of us work on existing code bases.
 Based on the above statement, you have to find a way to unit test and refactor legacy code if you want to be agile.
 
 === Extreme Programming

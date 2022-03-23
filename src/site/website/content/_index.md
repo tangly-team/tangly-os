@@ -21,7 +21,7 @@ linkTitle: "Components"
 <div class="col">
 <h1 class="text-center">Open Source Components</h1>
 
-The documentation site for open source components published by [tangly llc](https://www.tangly.net).
+The documentation site for open source components is published under [tangly llc](https://www.tangly.net).
 
 The current released components are written in _Modern Java_ and released on _Maven Central_ are
 
@@ -29,7 +29,7 @@ The current released components are written in _Modern Java_ and released on _Ma
 * _[COMMONS](./docs/commons)_ Internal Common Components to write company internal applications,
 * _[CORE](./docs/core)_ Internal Core Components to write company business applications,
 * _[FSM](./docs/fsm/)_ Hierarchical Finite State Machine,
-* _[GLEAM](./docs/gleam/)_ declarative model definition library (map Java objects hierarchy to TSV and JSON format),
+* _[GLEAM](./docs/gleam/)_ declarative model definition library (map Java objects hierarchy to the TSV and JSON format),
 * _[UI](./docs/ui/)_ Vaadin based user interface.
 
 The current components for the services ERP are written in _Modern Java_ and released on _Maven Central_ are
@@ -49,13 +49,13 @@ The _[ideas](./ideas/)_ area is a collection of articles about our journey throu
 <div class="col">
 <h1 class="text-center">tangly llc Company Blog</h1>
 
-Our company [blog](./blog/) hosts articles in the topics of
+Our company [blog](./blog/) hosts articles on the topics of
 
 * Agile, Scrum, Lean and Less
 * Java stack experiences
 * Private opinions about technological aspects
 
-A classificaton accordingly to [topics](./tags/) is available.
+A classification accordingly to [topics](./tags/) is available.
 We publish regularly new articles. The goal is to publish at least one article per month. **Stay tuned**.
 </div>
 {{% /blocks/section %}}

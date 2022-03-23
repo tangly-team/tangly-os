@@ -17,7 +17,7 @@ menu:
 
 Our technology stack is Modern Java.
 
-As a strong supporter of open source we published our open source components.
+As a strong supporter of the open source approach, we published our open source components.
 {{% /blocks/lead %}}
 
 {{< blocks/section >}}
@@ -35,6 +35,7 @@ As a strong supporter of open source we published our open source components.
 
 <h2 class="text-center">Run a Sustainable Business</h2>
 <div style="text-align: center;">Great companies are not in business to make money, they make money to stay in business and accomplish an important purpose</div>
+</div>
 {{< /blocks/section >}}
 
 {{% blocks/section %}}

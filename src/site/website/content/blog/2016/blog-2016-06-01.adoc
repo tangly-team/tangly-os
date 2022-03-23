@@ -12,15 +12,15 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2016-06-01-head.jpg[width=420, height=360, role=left]
-The new version of the Scrum Guide written by https://en.wikipedia.org/wiki/Ken_Schwaber[Ken Schwaber] and https://en.wikipedia.org/wiki/Jeff_Sutherland[Jeff Sutherland] is available since July 2011.
+The new version of the Scrum Guide written by https://en.wikipedia.org/wiki/Ken_Schwaber[Ken Schwaber] and https://en.wikipedia.org/wiki/Jeff_Sutherland[Jeff Sutherland] has been available since July 2011.
 The older version was published in May 2009.
 I found quite interesting the precisions of the Scrum Master's responsibility.
 
-I have often discussions with the customers and companies I coach about the responsibility of the Scrum Master.
+I have discussions with the customers and companies I coach about the responsibility of the Scrum Master.
 
 === Who is responsible for the introduction of the Scrum approach in the company?
 
-Often people state that the management should spread Scrum in the company.
+People often state that management should spread Scrum in the company.
 Ken and Jeff have a clear idea who is in charge of this.
 
 [quote]
@@ -35,7 +35,7 @@ The Scrum Master serves the organization in several ways, including:
 ____
 
 The Scrum Master is a main driver for the introduction of Scrum in all departments and levels in the company.
-He needs indeed senior management support but the Scrum Master daily job is to spread Scrum in the company.
+He needs senior management support, but the Scrum Master daily job is to spread Scrum in the company.
 
 === Who should coach the product owner to write a better backlog and clarify the vision?
 
@@ -43,11 +43,11 @@ He needs indeed senior management support but the Scrum Master daily job is to s
 ____
 The Scrum Master serves the Product Owner in several ways, including:
 
-* _Finding_ techniques for effective Product Backlog management;
-* _Clearly communicating vision_, goals, and Product Backlog items to the Development Team;
-* Teaching the Development Team to create clear and concise Product Backlog items;
-* _Understanding long-term product planning_ in an empirical environment;
-* Understanding and practicing agility; and,
+* _Finding_ techniques for effective Product Backlog management.
+* _Clearly, communicating vision_, goals, and Product Backlog items to the Development Team;.
+* Teaching the Development Team to create clear and concise Product Backlog items.
+* _Understanding long-term product planning_ in an empirical environment.
+* Understanding and practicing agility.
 * _Facilitating_ Scrum events as requested or needed.
 ____
 

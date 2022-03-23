@@ -27,7 +27,7 @@ So I went to macOS and Apple notebooks without regrets.
 The major gains upon migrating to OS X are:
 
 * No virus scanners are necessary, the speed-up during complex programming and development activities is tremendous.
-* No trouble when updating the operating system, updates are automatic and often no new start is required.
+* No trouble when updating the operating system, updates are automatic, and often no new start is required.
 * Unix Command Line and Tools are available in the console.
 https://brew.sh/[Homebrew] or https://www.macports.org/[MacPorts] projects provide all known and less-known utilities and programs available under Linux
 footnote:[I use currently Homebrew. The available packages and the handling are excellent.].

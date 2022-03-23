@@ -60,7 +60,7 @@ The stakeholders decide how often the solution is deployed into production.
 Agile methods - Scrum, XP - are fun for all developers.
 Suddenly, everyone can see your code, so at the beginning you as a developer must cope with different views how good code should be written.
 Suddenly, you must master Test Driven Development TDD, mocking, unit test, legible documents.
-But, once you have it, you start to experience the "flow" and enjoy the atmosphere and to deliver at the end of each sprint a new software.
+But, once you have it, you start to experience the "flow" and enjoy the atmosphere and to deliver at the end of each sprint a new software artifact.
 
 Later, you realize that Scrum says the team is responsible.
 You must acknowledge that product success is also your success.
@@ -77,7 +77,8 @@ So you need to discover your _the lonely cowboy riding in the sun_ song why this
 
 === Product Owner
 
-As a product owner, you control the budget of the product, the priorities and at the end of each iteration you can change all priorities and goals.
+As a product owner, you control the budget of the product, the priorities.
+At the end of each iteration you can change all priorities and goals.
 Cool isn't it.
 But wait as a product owner, I am responsible for the budget and product success and each time a member of the team asks me something I must have an answer
 ready.
@@ -85,7 +86,7 @@ ready.
 Scrum is cool and we enjoy it.
 And Scrum makes everything transparent and fast.
 Every two weeks, a new version is delivered.
-This version must be evaluated, accepted or a list of improvements must be provided in the next days.
+This version must be evaluated, accepted or a list of improvements must be provided in the next few days.
 This rhythm is fast, really fast.
 Once you are up to this speed, you will enjoy the flow.
 
@@ -95,4 +96,4 @@ Middle management often struggles with the agile approach at the beginning.
 See for example the discussion about https://less.works/less/management/index.html[manager role in an agile environment] in the {ref-less} approach.
 Be assured the results are worth the effort.
 
-Reading experience report or digging in the findings of Kotter you realize success or failure goes through how you handle middle management.
+Reading experience report or digging in the findings of Kotter, you realize success or failure goes through how you handle middle management.
