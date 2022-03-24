@@ -61,10 +61,11 @@ Show your different solutions to the problem.
 
 [TIP]
 ====
-* As a stakeholder I want to see
-** at least three approaches.
-** Show your ROI estimation for each approach.
-** Present you preferred solution and explain why it is the best solution.
+As a stakeholder I want to see:
+
+* at least three approaches.
+* Show your ROI estimation for each approach.
+* Present you preferred solution and explain why it is the best solution.
 ====
 
 In other words, we want to _Bang for the Buck_
@@ -92,19 +93,31 @@ They also do not like conflict.
 
 We often forget the Pareto rule, 80% of all solutions are found in 20% of the time.
 Is it worth the time to find a slightly better solution for the remaining 20% of the problems?
-In Scrum terminology, "it is also the 20% less important" Tips "ROI: Meeting costs versus solved issues" Meetings cost money.
-A meeting with 8 persons and of a duration of 30 minutes costs in Switzerland around 600 Swiss Francs or 500 Euro.
+In Scrum terminology,
+
+" it is also the 20% less important.
+" Meeting costs versus solved issues. Meetings cost money.
+A meeting with eight people and of a duration of 30 minutes costs in Switzerland around 600 Swiss Francs or 500 Euro.
 
 [TIP]
 ====
 _ROI is Avoiding meetings_
 
-Prefer a team gathering or a pair working session.
-Instead of calling for a meeting, use instant messaging and collaborative tools.
+* Prefer a team gathering or a pair working session.
+* Instead of calling for a meeting, use instant messaging and collaborative tools.
 This advice is very efficient in bigger or older companies.
-Such companies tend to develop a meeting culture, people do not work anymore, they just sit in meetings, For each meeting you should have an agenda, a moderator, a protocol of the meeting, and as a result a list of decisions and a list of tasks - who must do what until when -.
+Such companies tend to develop a meeting culture.
+People do not work anymore, they just sit in meetings.
+* For each meeting you should have
+** an agenda,
+** a moderator,
+** a protocol of the meeting,
+** as a result a list of decisions and a list of tasks - who must do what until when -.
+
 Interesting enough, all Scrum meetings have a clear agenda, a moderator and a documented result.
-Do the same for additional meetings, Remember two ground rules Once you have reached the goals of the meeting, stop the meeting, A team decision is about 20% better than a qualified individual decision.
+
+Do the same for additional meetings, Remember two ground rules Once you have reached the goals of the meeting, stop the meeting.
+A team decision is about 20% better than a qualified individual decision.
 ====
 
 Compute your ROI.
@@ -119,13 +132,17 @@ It is like a soccer team where each team member can play all roles.
 
 [TIP]
 ====
-_ROI: Learning costs versus cost of errors_ You need T-shaped team members.
+_ROI: Learning costs to cost of errors_ You need T-shaped team members.
 
 This concept was described in the mythical man-month book by Fredericks Brook Junior and later by Grady Booch before most of you were born.
 
-A T person is a master in one technical area - this is the leg of the T - and knows about a lot of domains - this is the roof of the T -.
+A T person is a master in one technical area
+
+- this is the leg of the T
+- and knows about a lot of domains. This is the roof of the T.
+
 In fact, Square-shaped team members would be better but are very hard to find.
-To increase ROI the specialist of the team should perform the tasks it is best suited for.
+To increase ROI, the specialist of the team should perform the tasks it is best suited for.
 
 But a good team also do risk management to ensure that another person can do the job if the main specialist is not available.
 See risk management theory how the cost of a risk is evaluated to calculate the ROI of training additional team members.
@@ -148,7 +165,7 @@ image:2017-01-01-Change-Ahead.jpg[width=420,height=360,role=left]
 Scrum is about agility.
 Therefore, you have the right to change anything at any time, isn't it?
 Your stakeholders need the changes now.
-They cannot wait until the end of the Sprint, a mere ten working days or two weeks of elapsed time.
+They cannot wait until the end of the sprint, a mere ten working days or two weeks of elapsed time.
 But Scrum also states we have a vision, features, a minimum viable product and a potentially shippable product.
 How often can you change these key concepts?
 What is the balance between agility and chaos?
@@ -157,63 +174,70 @@ What is the balance between agility and chaos?
 ====
 _ROI: New value versus cost of development and associated errors_
 
-First let me state some concepts deeply entrenched in Scrum Sprint backlog cannot be changed during a sprint.
+First, let me state some concepts deeply entrenched in Scrum Sprint backlog cannot be changed during a sprint.
 This is Scrum.
 
 Bend it with Kanban - for maintenance activities -, Agile approach is about a minimum viable product release as soon as possible.
 This definition is part of the vision and the initial release planning, Release planning is a must in real Scrum projects.
 
-So you have the right to change everything at the end of each sprint but the costs are enormous.
+So you have the right to change everything at the end of each sprint, but the costs are enormous.
 ====
 
 Here again we are back to ROI computations.
 
-As a rule of thumb to test your decision Uncle Bob stated in the "Clean Coder" book if you deliver an application with errors the only professional approach is to sign personally a check to the customer for the lost of income.
-In other words are you ready to change the user interface two hours before the sprint demonstration will be held?
+As a rule of thumb to test your decision, Uncle Bob stated in the "Clean Coder" book if you deliver an application with errors.
+The only professional approach is to sign personally a check to the customer for the lost of income.
+In other words, are you ready to change the user interface two hours before the sprint demonstration will be held?
 
 === You shall not perform up-front design Architecture emerge during the coding of the solution.
 
 image:2017-01-01-Indian-Village.jpg[width=420,height=360,role=left]
 So teams state that - No architecture is needed before starting coding, - No enterprise architecture should be defined or look at, - No non-functional considerations are needed.
 Look at the picture.
-Could you design a village without knowing about the ground, the kind of population, do you need school, do they have flood in the area?
-They believe that refactoring will solve all problems.
+Could you design a village without knowing about the ground, the kind of population, do you need school, do they have a flood in the area?
+They believe that refactoring will solve all the problems.
 Architects are no more needed, we are all talented hackers.
 
 [TIP]
 ====
 _ROI: Architecture work versus write it twice_
 
-You start once you have a vision, an initial plan, and a set of initial decisions.
-You should not have a complete and detailed plan.
-Major assumptions should be identified; if they change - see above "You shall allow change any time" - you should reevaluate the architecture.
-You should understand the application domain, the technology, known similar examples and calculate the ROI of the variants you propose.
-Often teams forget about non-functional requirements such as scalability, reliability, multiple sites.
+* You start once you have a vision, an initial plan, and a set of initial decisions.
+* You should not have a complete and detailed plan.
+* Major assumptions should be identified; if they change - see above "You shall allow change any time" - you should reevaluate the architecture.
+* You should understand the application domain, the technology, known similar examples and calculate the ROI of the variants you propose.
+* Often teams forget about non-functional requirements such as scalability, reliability, multiple sites.
 These features cannot be added later, you have to write the application twice.
 ====
 
 As a rule of thumb Be honest: our systems are complex, but they are no groundbreaking work.
 Similar solutions already exist.
-I expect a talented team to provide an architecture with some prototyping in less than a sprint.
+I expect a talented team to provide architecture with some prototyping in less than a sprint.
 
 === You shall write user stories during coffee breaks
 
 image:2017-01-01-Meeting.jpg[width=420,height=360,role=left]
-Writing user stories is easy and anyway nobody has time for - The product owner has better to do.
+Writing user stories is easy, and anyway nobody has time for - The product owner has better to do.
 He writes the stories during a coffee break or just before the start of the planning meeting, - Anyway just read the requirements, it is all written down, - The developers want to code, they have no time to write some user stories or improve them.
 
 Scrum states the product backlog is the most important document in a Scrum product.
 
 [TIP]
 ====
-_ROI: New features with the most value_ To create a new successful product is a full time job.
+_ROI: New features with the most value_ Creating a new successful product is a full-time job.
 
-You cannot define a vision and key features during a coffee break.
-The product owner must create a vision, an initial release plan, identify the key features and define a minimal shippable product - see above "You shall not perform up-front design" -, Either the product owner has a team of requirement engineers to elicit the use cases, Or the role of requirement engineering is part of the team, The team provide technical feedback and input about potential technologies for all stories, discuss the non-functional requirements and refine the acceptance criteria, As a simple check, the team guaranty together with the product owner that each story is INVEST - Independent, Negotiable, Valuable (ROI), Estimable, Size appropriately, Testable -.
+* You cannot define a vision and key features during a coffee break.
+The product owner must create a vision, an initial release plan, identify the key features and define a minimal shippable product.
+*  _You shall not perform up-front design_
+* Either the product owner has a team of requirement engineers to elicit the use cases.
+Or the role of requirement engineering is part of the team.
+* The team provides technical feedback and input about potential technologies for all stories, discuss the non-functional requirements and refine the acceptance criteria.
+* As a simple check, the team guaranty together with the product owner that each story is valuable.
+Use INVEST - Independent, Negotiable, Valuable (ROI), Estimable, Size appropriately, Testable -.
 ====
 
 If not why?
-As a rule of thumb Writing quality user stories is as tough as writing requirements.
+As a rule of thumb, Writing quality user stories is as tough as writing requirements.
 
 It is the same job!
 
@@ -225,7 +249,7 @@ image:2017-01-01-Rope.jpg[width=420,height=360,role=left]
 You shall not train engineering practices
 
 * The process solves all problems.
-* I want to code, I do not have time to become a craftsman.
+* I want to code. I do not have time to become a craftsman.
 * Scrum is snake oil.
 It cures all illnesses and makes you immortal, For the older ones, do you remember CASE, CMM and ISO-9000.
 * The PROCESS promises that you will deliver high quality software on time, on budget with unqualified and cheap collaborators.
@@ -240,11 +264,12 @@ He must train every week to achieve and maintain a given level of skills.
 ====
 _ROI: Engineering versus bureaucracy_
 
-To build quality solutions you have to have craftsmen and craftswomen as team members.
-A craftsman master his work techniques, is experienced, knows his limits and master his tools.
-You must be a craftsman: You are expert in XP, clean code, TDD, ATDD, Mocking, CI, CD, refactoring, etc.
+* To build quality solutions, you have to have craftsmen and craftswomen as team members.
+* A craftsman master his work techniques, is experienced, knows his limits and master his tools.
+* You must be a craftsman: You are expert in XP, clean code, TDD, ATDD, Mocking, CI, CD, refactoring, etc.
 And you must train, train, train.
-As an example use the concept of coding dojo.
+
+Use the concept of coding dojo as an approach to improve.
 ====
 
 === You shall worship Scrum as the PROCESS
@@ -277,9 +302,9 @@ What is the risk?
 
 The truth is complex, more blurred.
 The answer for your product cannot be stated in one standard rule set.
-We are talking about agile quality assurance, lean approaches and best practices.
+We are talking about agile quality assurance, lean approaches and the best practices.
 
-A best practice should only be selected through its ROI.
+The best practice should only be selected through its ROI.
 
 Please look at the http://manifesto.softwarecraftsmanship.org/[Software Craftsmanship Manifesto].
 
