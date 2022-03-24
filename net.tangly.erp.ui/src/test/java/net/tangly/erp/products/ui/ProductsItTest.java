@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -14,11 +14,13 @@ package net.tangly.erp.products.ui;
 
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import net.tangly.core.TypeRegistry;
+import net.tangly.erp.Erp;
 import net.tangly.erp.products.ports.ProductsAdapter;
 import net.tangly.erp.products.ports.ProductsEntities;
 import net.tangly.erp.products.ports.ProductsHdl;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 class ProductsItTest {
@@ -26,6 +28,11 @@ class ProductsItTest {
         var realm = new ProductsEntities();
         var logic = new ProductsBusinessLogic(realm);
         return new ProductsBoundedDomain(realm, logic, new ProductsHdl(realm, null), new ProductsAdapter(logic, null), new TypeRegistry());
+    }
+
+    @BeforeAll
+    public static void createModel() {
+        Erp.inMemoryErp();
     }
 
     @BeforeEach

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -11,11 +11,12 @@
  */
 package net.tangly.erp.products.domain;
 
-import java.util.Collections;
-import java.util.List;
-
 import net.tangly.core.QualifiedEntityImp;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * An outcome such as a product or a research result which should be produced. An outcome is financed through one or more contracts.
@@ -37,6 +38,11 @@ public class Product extends QualifiedEntityImp {
 
     public boolean check() {
         return !contractIds().isEmpty();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof Product o) && super.equals(o) && Objects.equals(id(), o.id());
     }
 
     @Override

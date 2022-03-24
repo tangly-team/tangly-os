@@ -12,27 +12,27 @@
 
 package net.tangly.erp.crm.services;
 
-import java.util.List;
-import java.util.Map;
-import javax.inject.Inject;
-
 import net.tangly.core.TagType;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.codes.CodeType;
+import net.tangly.core.crm.CrmTags;
+import net.tangly.core.crm.GenderCode;
+import net.tangly.core.crm.LegalEntity;
+import net.tangly.core.crm.NaturalEntity;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
 import net.tangly.erp.crm.domain.ActivityCode;
 import net.tangly.erp.crm.domain.Contract;
-import net.tangly.core.crm.CrmTags;
 import net.tangly.erp.crm.domain.Employee;
-import net.tangly.core.crm.GenderCode;
 import net.tangly.erp.crm.domain.Interaction;
 import net.tangly.erp.crm.domain.InteractionCode;
 import net.tangly.erp.crm.domain.LeadCode;
-import net.tangly.core.crm.LegalEntity;
-import net.tangly.core.crm.NaturalEntity;
 import net.tangly.erp.crm.domain.Subject;
 import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Inject;
+import java.util.List;
+import java.util.Map;
 
 public class CrmBoundedDomain extends BoundedDomain<CrmRealm, CrmBusinessLogic, CrmHandler, CrmPort> {
     public static final String DOMAIN = "crm";
@@ -63,9 +63,11 @@ public class CrmBoundedDomain extends BoundedDomain<CrmRealm, CrmBusinessLogic, 
 
     @Override
     public List<DomainEntity<?>> entities() {
-        return List.of(new DomainEntity<>("crm", NaturalEntity.class, realm().naturalEntities()),
-            new DomainEntity<>(DOMAIN, LegalEntity.class, realm().legalEntities()), new DomainEntity<>(DOMAIN, Employee.class, realm().employees()),
-            new DomainEntity<>(DOMAIN, Interaction.class, realm().interactions()), new DomainEntity<>(DOMAIN, Contract.class, realm().contracts()),
+        return List.of(new DomainEntity<>(DOMAIN, NaturalEntity.class, realm().naturalEntities()),
+            new DomainEntity<>(DOMAIN, LegalEntity.class, realm().legalEntities()),
+            new DomainEntity<>(DOMAIN, Employee.class, realm().employees()),
+            new DomainEntity<>(DOMAIN, Interaction.class, realm().interactions()),
+            new DomainEntity<>(DOMAIN, Contract.class, realm().contracts()),
             new DomainEntity<>(DOMAIN, Subject.class, realm().subjects()));
     }
 }

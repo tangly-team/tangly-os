@@ -12,6 +12,38 @@
 
 package net.tangly.erpr.crm.ports;
 
+import net.tangly.commons.lang.ReflectionUtilities;
+import net.tangly.core.Comment;
+import net.tangly.core.EmailAddress;
+import net.tangly.core.HasComments;
+import net.tangly.core.HasOid;
+import net.tangly.core.HasTags;
+import net.tangly.core.PhoneNr;
+import net.tangly.core.crm.GenderCode;
+import net.tangly.core.crm.LegalEntity;
+import net.tangly.core.crm.NaturalEntity;
+import net.tangly.core.crm.VcardType;
+import net.tangly.core.providers.Provider;
+import net.tangly.core.providers.ProviderInMemory;
+import net.tangly.erp.crm.domain.Activity;
+import net.tangly.erp.crm.domain.ActivityCode;
+import net.tangly.erp.crm.domain.Contract;
+import net.tangly.erp.crm.domain.Employee;
+import net.tangly.erp.crm.domain.Interaction;
+import net.tangly.erp.crm.domain.InteractionCode;
+import net.tangly.erp.crm.domain.Lead;
+import net.tangly.erp.crm.domain.LeadCode;
+import net.tangly.erp.crm.domain.Subject;
+import net.tangly.erp.crm.services.CrmRealm;
+import net.tangly.erp.ports.TsvHdl;
+import net.tangly.gleam.model.TsvEntity;
+import net.tangly.gleam.model.TsvProperty;
+import org.apache.commons.csv.CSVRecord;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Inject;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -23,50 +55,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
-import javax.inject.Inject;
 
-import net.tangly.commons.lang.ReflectionUtilities;
-import net.tangly.core.Comment;
-import net.tangly.core.EmailAddress;
-import net.tangly.core.HasComments;
-import net.tangly.core.HasOid;
-import net.tangly.core.HasTags;
-import net.tangly.core.PhoneNr;
-import net.tangly.core.crm.VcardType;
-import net.tangly.core.providers.Provider;
-import net.tangly.core.providers.ProviderInMemory;
-import net.tangly.erp.crm.domain.Activity;
-import net.tangly.erp.crm.domain.ActivityCode;
-import net.tangly.erp.crm.domain.Contract;
-import net.tangly.erp.crm.domain.Employee;
-import net.tangly.core.crm.GenderCode;
-import net.tangly.erp.crm.domain.Interaction;
-import net.tangly.erp.crm.domain.InteractionCode;
-import net.tangly.erp.crm.domain.Lead;
-import net.tangly.erp.crm.domain.LeadCode;
-import net.tangly.core.crm.LegalEntity;
-import net.tangly.core.crm.NaturalEntity;
-import net.tangly.erp.crm.domain.Subject;
-import net.tangly.erp.crm.services.CrmRealm;
-import net.tangly.erp.ports.TsvHdl;
-import net.tangly.gleam.model.TsvEntity;
-import net.tangly.gleam.model.TsvProperty;
-import org.apache.commons.csv.CSVRecord;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.jetbrains.annotations.NotNull;
-
-import static net.tangly.core.crm.CrmTags.CRM_EMAIL_HOME;
-import static net.tangly.core.crm.CrmTags.CRM_EMAIL_WORK;
-import static net.tangly.core.crm.CrmTags.CRM_EMPLOYEE_TITLE;
-import static net.tangly.core.crm.CrmTags.CRM_IM_LINKEDIN;
-import static net.tangly.core.crm.CrmTags.CRM_PHONE_HOME;
-import static net.tangly.core.crm.CrmTags.CRM_PHONE_MOBILE;
-import static net.tangly.core.crm.CrmTags.CRM_PHONE_WORK;
-import static net.tangly.core.crm.CrmTags.CRM_SCHOOL;
-import static net.tangly.core.crm.CrmTags.CRM_SITE_HOME;
-import static net.tangly.core.crm.CrmTags.CRM_SITE_WORK;
-import static net.tangly.core.crm.CrmTags.CRM_VAT_NUMBER;
+import static net.tangly.core.crm.CrmTags.*;
 
 /**
  * Provides import and export functions for CRM entities persisted in comma separated tabs files. These files are often defined for integration testing or

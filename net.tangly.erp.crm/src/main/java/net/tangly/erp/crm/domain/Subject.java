@@ -17,6 +17,7 @@ import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.Base64;
+import java.util.Objects;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
@@ -139,6 +140,6 @@ public class Subject extends QualifiedEntityImp {
 
     @Override
     public boolean equals(Object obj) {
-        return (obj instanceof Subject o);
+        return (obj instanceof Subject o) && super.equals(o) && Objects.equals(id(), o.id());
     }
 }

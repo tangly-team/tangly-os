@@ -15,16 +15,20 @@ package net.tangly.erp.ui;
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import com.github.mvysny.kaributesting.v10.Routes;
 import com.vaadin.flow.component.UI;
-import org.junit.jupiter.api.*;
+import net.tangly.erp.Erp;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Disabled
 class MainLayoutTest {
     private static Routes routes;
 
     @BeforeAll
     static void createRoutes() {
+        Erp.inMemoryErp();
         routes = new Routes().autoDiscoverViews("net.tangly.erp.ui");
     }
 

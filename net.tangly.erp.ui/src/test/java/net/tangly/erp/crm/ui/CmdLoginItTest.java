@@ -15,7 +15,6 @@ package net.tangly.erp.crm.ui;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-@Disabled
 class CmdLoginItTest extends CrmItTest {
     @Test
     void testLogin() {

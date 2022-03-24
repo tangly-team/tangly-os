@@ -12,6 +12,11 @@
 
 package net.tangly.erp;
 
+import net.tangly.erp.invoices.ports.InvoicesHdl;
+import net.tangly.erp.products.ports.ProductsHdl;
+import net.tangly.erpr.crm.ports.CrmHdl;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.FileSystem;
@@ -19,11 +24,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-
-import net.tangly.erp.invoices.ports.InvoicesHdl;
-import net.tangly.erp.products.ports.ProductsHdl;
-import net.tangly.erpr.crm.ports.CrmHdl;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Creates a CRM and ledger domain model store with all persistent values of all involved entities. The entities are stored in TSV and JSON file as resources of
@@ -46,6 +46,7 @@ public record ErpStore(@NotNull FileSystem fs) {
     private static final String PICTURES_PACKAGE_NAME = CRM_PACKAGE_NAME + PICTURES;
     private static final String REPORTS_PACKAGE_NAME = PACKAGE_NAME + REPORTS;
     private static final String ORGANIZATION = "/organization/";
+    private static final String DATABASE = "db/";
 
     public Path organizationRoot() {
         return fs.getPath(ORGANIZATION);
@@ -113,7 +114,7 @@ public record ErpStore(@NotNull FileSystem fs) {
             Files.createDirectory(fs.getPath(ORGANIZATION, REPORTS));
             Files.createDirectory(fs.getPath(ORGANIZATION, REPORTS, LEDGER));
             Files.createDirectory(fs.getPath(ORGANIZATION, REPORTS, INVOICES));
-            Files.createDirectory(fs.getPath(ORGANIZATION, "db/"));
+            Files.createDirectory(fs.getPath(ORGANIZATION, DATABASE));
             Files.createDirectory(crmDb());
 
             copy(CRM_PACKAGE_NAME, crmRoot(), CrmHdl.LEADS_TSV);

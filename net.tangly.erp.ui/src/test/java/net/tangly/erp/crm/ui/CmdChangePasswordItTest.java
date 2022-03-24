@@ -16,14 +16,18 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.textfield.PasswordField;
 import net.tangly.core.crm.NaturalEntity;
 import net.tangly.erp.crm.domain.Subject;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import static com.github.mvysny.kaributesting.v10.LocatorJ.*;
-import static net.tangly.erp.crm.ui.CmdChangePassword.*;
+import static com.github.mvysny.kaributesting.v10.LocatorJ._click;
+import static com.github.mvysny.kaributesting.v10.LocatorJ._get;
+import static com.github.mvysny.kaributesting.v10.LocatorJ._setValue;
+import static net.tangly.erp.crm.ui.CmdChangePassword.CANCEL;
+import static net.tangly.erp.crm.ui.CmdChangePassword.CONFIRM_PASSWORD;
+import static net.tangly.erp.crm.ui.CmdChangePassword.CURRENT_PASSWORD;
+import static net.tangly.erp.crm.ui.CmdChangePassword.EXECUTE;
+import static net.tangly.erp.crm.ui.CmdChangePassword.NEW_PASSWORD;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Disabled
 class CmdChangePasswordItTest extends CrmItTest {
     @Test
     void testChangePasswordCorrectly() {

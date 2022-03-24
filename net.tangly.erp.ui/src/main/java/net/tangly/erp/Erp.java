@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Marcel Baumann
+ * Copyright 2016-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -11,12 +11,6 @@
  */
 
 package net.tangly.erp;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.Properties;
 
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.core.HasOid;
@@ -44,6 +38,14 @@ import net.tangly.erpr.crm.ports.CrmHdl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.Properties;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * The ERP application instantiating the bounded domain instances. The class implements a modular monolith application.
  */
@@ -53,13 +55,47 @@ public class Erp {
     private static final String REPORTS_DIRECTORY_PROPERTY = "erp.root.reports.directory";
 
     private static final Logger logger = LogManager.getLogger();
+    private static Erp self;
+    private static Lock lock = new ReentrantLock();
     private final TypeRegistry registry;
     private final Properties properties;
 
-    public Erp() {
+    private Erp() {
         this.registry = new TypeRegistry();
         this.properties = new Properties();
         load();
+        assert (self == null);
+        self = this;
+    }
+
+    public static Erp instance() {
+        return self;
+    }
+
+    public static Erp propertiesConfiguredErp() {
+        lock.lock();
+        try {
+            if (self == null) {
+                self = new Erp();
+                self.properties.remove(DATABASES_DIRECTORY_PROPERTY);
+            }
+        } finally {
+            lock.unlock();;
+        }
+        return self;
+    }
+
+    public static Erp inMemoryErp() {
+        lock.lock();
+        try {
+            if (self == null) {
+                self = new Erp();
+                self.properties.remove(DATABASES_DIRECTORY_PROPERTY);
+            }
+        } finally {
+            lock.unlock();;
+        }
+        return self;
     }
 
     public InvoicesBoundedDomain ofInvoicesDomain() {

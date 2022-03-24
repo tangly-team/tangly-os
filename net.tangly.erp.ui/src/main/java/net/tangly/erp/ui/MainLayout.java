@@ -13,13 +13,6 @@
 
 package net.tangly.erp.ui;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
@@ -51,6 +44,13 @@ import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
 @CssImport("./styles/shared-styles.css")
 @CssImport(value = "./styles/override-overlay.css", themeFor = "vaadin-dialog-overlay")
 @CssImport(value = "./styles/override-negative.css", themeFor = "vaadin-grid")
@@ -58,28 +58,15 @@ import org.jetbrains.annotations.NotNull;
 @PageTitle("tangly ERP")
 @Route("")
 public class MainLayout extends AppLayout {
-    private static final CrmBoundedDomain crmDomain;
-    private static final LedgerBoundedDomain ledgerDomain;
-    private static final InvoicesBoundedDomain invoicesDomain;
-    private static final ProductsBoundedDomain productsDomain;
-
     private final Map<String, BoundedDomainUi> domains;
     private final MenuBar menuBar;
 
-    static {
-        Erp erp = new Erp();
-        crmDomain = erp.ofCrmDomain();
-        invoicesDomain = erp.ofInvoicesDomain();
-        productsDomain = erp.ofProductsDomain();
-        ledgerDomain = erp.ofLedgerDomain();
-    }
-
     public MainLayout() {
         domains = new HashMap<>();
-        put(new CrmBoundedDomainUi(crmDomain, invoicesDomain));
-        put(new ProductsBoundedDomainUi(productsDomain));
-        put(new InvoicesBoundedDomainUi(invoicesDomain));
-        put(new LedgerBoundedDomainUi(ledgerDomain));
+        put(new CrmBoundedDomainUi(Erp.instance().ofCrmDomain(), Erp.instance().ofInvoicesDomain()));
+        put(new ProductsBoundedDomainUi(Erp.instance().ofProductsDomain()));
+        put(new InvoicesBoundedDomainUi(Erp.instance().ofInvoicesDomain()));
+        put(new LedgerBoundedDomainUi(Erp.instance().ofLedgerDomain()));
 
         Image image;
         try {
@@ -101,7 +88,7 @@ public class MainLayout extends AppLayout {
     protected void onAttach(@NotNull AttachEvent attachEvent) {
         super.onAttach(attachEvent);
         if (Objects.isNull(VaadinUtils.getAttribute(this, "subject"))) {
-            new CmdLogin(crmDomain).execute();
+            new CmdLogin(crmDomain()).execute();
         }
     }
 
@@ -111,7 +98,7 @@ public class MainLayout extends AppLayout {
         MenuItem admin = menuBar.addItem("Admin");
         SubMenu adminSubmenu = admin.getSubMenu();
         adminSubmenu.addItem("Logout", e -> new CmdLogout().execute());
-        adminSubmenu.addItem("Change Password ...", e -> new CmdChangePassword(crmDomain, (Subject) VaadinUtils.getAttribute(this, "subject")).execute());
+        adminSubmenu.addItem("Change Password ...", e -> new CmdChangePassword(crmDomain(), (Subject) VaadinUtils.getAttribute(this, "subject")).execute());
         return menuBar;
     }
 
@@ -130,5 +117,9 @@ public class MainLayout extends AppLayout {
 
     private void put(@NotNull BoundedDomainUi domainUi) {
         domains.put(domainUi.name(), domainUi);
+    }
+
+    private CrmBoundedDomain crmDomain() {
+        return Erp.instance().ofCrmDomain();
     }
 }

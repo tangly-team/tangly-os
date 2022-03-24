@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -14,25 +14,24 @@ package net.tangly.erp.crm.ui;
 
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import com.github.mvysny.kaributesting.v10.Routes;
-import net.tangly.core.TypeRegistry;
+import net.tangly.erp.Erp;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
-import net.tangly.erp.crm.services.CrmBusinessLogic;
-import net.tangly.erp.crm.services.CrmRealm;
-import net.tangly.erpr.crm.ports.CrmEntities;
-import net.tangly.erpr.crm.ports.CrmHdl;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
+/**
+ * Defines basic infrastructure for integration tests of the bounded domain with karibu testing framewwork and in-memory database without persistence.
+ */
 class CrmItTest {
-    static CrmBoundedDomain ofDomain() {
-        CrmRealm realm = new CrmEntities();
-        return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmHdl(realm, null), null, new TypeRegistry());
-    }
-
     private static Routes routes;
 
+    static CrmBoundedDomain ofDomain() {
+        return Erp.instance().ofCrmDomain();
+    }
+
     @BeforeAll
-    public static void createRoutes() {
+    public static void createModelAndRoutes() {
+        Erp.inMemoryErp();
         routes = new Routes().autoDiscoverViews("net.tangly.erp.ui");
     }
 

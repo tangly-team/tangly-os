@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -13,12 +13,15 @@
 package net.tangly.erp.invoices.ui;
 
 import com.github.mvysny.kaributesting.v10.MockVaadin;
+import com.github.mvysny.kaributesting.v10.Routes;
 import net.tangly.core.TypeRegistry;
+import net.tangly.erp.Erp;
 import net.tangly.erp.invoices.ports.InvoicesAdapter;
 import net.tangly.erp.invoices.ports.InvoicesEntities;
 import net.tangly.erp.invoices.ports.InvoicesHdl;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesBusinessLogic;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 class InvoicesItTest {
@@ -26,6 +29,11 @@ class InvoicesItTest {
         var realm = new InvoicesEntities();
         return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesHdl(realm, null), new InvoicesAdapter(realm, null),
             new TypeRegistry());
+    }
+
+    @BeforeAll
+    public static void createModel() {
+        Erp.inMemoryErp();
     }
 
     @BeforeEach

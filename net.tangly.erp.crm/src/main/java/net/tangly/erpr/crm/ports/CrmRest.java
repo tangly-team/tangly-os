@@ -12,16 +12,16 @@
 
 package net.tangly.erpr.crm.ports;
 
-import java.util.Collections;
-import java.util.List;
+import net.tangly.core.crm.LegalEntity;
+import net.tangly.core.crm.NaturalEntity;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
-import net.tangly.core.crm.LegalEntity;
-import net.tangly.core.crm.NaturalEntity;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Note that JAXB annotations like @XmlRootElement are required only if XML support is needed in addition to JSON. JSON is supported through the Jackson

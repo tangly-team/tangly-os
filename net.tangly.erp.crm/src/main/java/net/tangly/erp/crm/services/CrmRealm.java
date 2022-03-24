@@ -12,20 +12,20 @@
 
 package net.tangly.erp.crm.services;
 
-import java.util.List;
-import java.util.function.Predicate;
-
-import net.tangly.erp.crm.domain.Activity;
-import net.tangly.erp.crm.domain.Lead;
 import net.tangly.core.crm.LegalEntity;
+import net.tangly.core.crm.NaturalEntity;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
+import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.Contract;
 import net.tangly.erp.crm.domain.Employee;
 import net.tangly.erp.crm.domain.Interaction;
-import net.tangly.core.crm.NaturalEntity;
+import net.tangly.erp.crm.domain.Lead;
 import net.tangly.erp.crm.domain.Subject;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+import java.util.function.Predicate;
 
 /**
  * Handles the customer relationship management <i>CRM</i> subsystem entities. A realm provides access to the instances of the CRM abstractions. The major

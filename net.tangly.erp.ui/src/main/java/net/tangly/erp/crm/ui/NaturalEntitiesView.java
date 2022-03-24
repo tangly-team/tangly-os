@@ -12,9 +12,6 @@
 
 package net.tangly.erp.crm.ui;
 
-import java.io.ByteArrayInputStream;
-import java.time.format.DateTimeFormatter;
-
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
@@ -31,12 +28,12 @@ import com.vaadin.flow.server.StreamResource;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.PhoneNr;
 import net.tangly.core.codes.CodeType;
-import net.tangly.core.crm.VcardType;
-import net.tangly.core.providers.ProviderView;
 import net.tangly.core.crm.CrmTags;
-import net.tangly.erp.crm.domain.Employee;
 import net.tangly.core.crm.GenderCode;
 import net.tangly.core.crm.NaturalEntity;
+import net.tangly.core.crm.VcardType;
+import net.tangly.core.providers.ProviderView;
+import net.tangly.erp.crm.domain.Employee;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.CodeField;
 import net.tangly.ui.components.CommentsView;
@@ -49,6 +46,9 @@ import net.tangly.ui.components.TagsView;
 import net.tangly.ui.components.VaadinUtils;
 import net.tangly.ui.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
+
+import java.io.ByteArrayInputStream;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Regular CRUD view on natural entities abstraction. The grid and edition dialog wre optimized for usability.

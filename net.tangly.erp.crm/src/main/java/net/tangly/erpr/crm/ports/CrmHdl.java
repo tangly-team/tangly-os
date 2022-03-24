@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,12 +12,12 @@
 
 package net.tangly.erpr.crm.ports;
 
-import java.nio.file.Path;
-import javax.inject.Inject;
-
 import net.tangly.erp.crm.services.CrmHandler;
 import net.tangly.erp.crm.services.CrmRealm;
 import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Inject;
+import java.nio.file.Path;
 
 /**
  * Defines the workflows defined for bounded domain activities in particular the import and export to files.

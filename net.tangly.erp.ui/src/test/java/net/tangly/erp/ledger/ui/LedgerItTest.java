@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -14,17 +14,24 @@ package net.tangly.erp.ledger.ui;
 
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import net.tangly.core.TypeRegistry;
+import net.tangly.erp.Erp;
 import net.tangly.erp.ledger.ports.LedgerAdapter;
 import net.tangly.erp.ledger.ports.LedgerEntities;
 import net.tangly.erp.ledger.ports.LedgerHdl;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.erp.ledger.services.LedgerBusinessLogic;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 class LedgerItTest {
     static LedgerBoundedDomain ofDomain() {
         var realm = new LedgerEntities();
         return new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), new LedgerHdl(realm, null), new LedgerAdapter(realm, null), new TypeRegistry());
+    }
+
+    @BeforeAll
+    public static void createModel() {
+        Erp.inMemoryErp();
     }
 
     @BeforeEach

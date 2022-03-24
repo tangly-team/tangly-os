@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,19 +12,15 @@
 
 package net.tangly.erp.crm.services;
 
+import net.tangly.core.HasInterval;
+import net.tangly.erp.crm.domain.*;
+import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.Optional;
-import javax.inject.Inject;
-
-import net.tangly.erp.crm.domain.Activity;
-import net.tangly.erp.crm.domain.Contract;
-import net.tangly.erp.crm.domain.Interaction;
-import net.tangly.erp.crm.domain.InteractionCode;
-import net.tangly.core.HasInterval;
-import net.tangly.erp.crm.domain.Subject;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * The business logic and rules of the bounded domain of CRM entities.
