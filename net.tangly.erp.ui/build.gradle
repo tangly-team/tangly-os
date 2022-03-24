@@ -22,10 +22,6 @@ project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
 project.description = "User Interface ERP - using Java 17 or higher (tangly llc)"
 
-ext {
-    jettyVersion = "9.4.44.v20210927"
-}
-
 application {
     applicationDefaultJvmArgs = ['--enable-preview', '--add-exports java.base/jdk.internal.misc=ALL_UNNAMED']
     mainClassName = "net.tangly.erp.ui.EmbeddedJetty"
@@ -48,16 +44,8 @@ dependencies {
     implementation(libs.vaadin.core)
     implementation(libs.apache.log4j2.slf4j)
 
-    // Embedded Jetty dependencies
-    implementation("javax.servlet:javax.servlet-api:3.1.0")
-    implementation("org.eclipse.jetty:jetty-continuation:${jettyVersion}")
-    implementation("org.eclipse.jetty:jetty-server:${jettyVersion}")
-    implementation("org.eclipse.jetty.websocket:websocket-server:${jettyVersion}")
-    implementation("org.eclipse.jetty.websocket:javax-websocket-server-impl:${jettyVersion}") {
-        exclude(module: "javax.websocket-client-api")
-    }
+    implementation(libs.bundles.jetty.deps)
     implementation(libs.vaadin.socharts)
-
     implementation(libs.bundles.microstream.deps)
     implementation(libs.bundles.jersey.deps)
 

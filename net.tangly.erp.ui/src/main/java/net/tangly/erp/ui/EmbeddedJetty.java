@@ -16,13 +16,9 @@ import com.vaadin.flow.server.VaadinServlet;
 import com.vaadin.flow.server.startup.ServletContextListeners;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.eclipse.jetty.annotations.AnnotationConfiguration;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.util.resource.Resource;
-import org.eclipse.jetty.webapp.Configuration;
-import org.eclipse.jetty.webapp.JettyWebXmlConfiguration;
 import org.eclipse.jetty.webapp.WebAppContext;
-import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
 import org.jetbrains.annotations.NotNull;
 
 import java.net.MalformedURLException;
@@ -46,7 +42,6 @@ public class EmbeddedJetty {
         context.setConfigurationDiscovered(true);
         context.getServletContext().setExtendedListenerTypes(true);
         context.addEventListener(new ServletContextListeners());
-        WebSocketServerContainerInitializer.initialize(context); // fixes IllegalStateException: Unable to configure jsr356 at that stage. ServerContainer is null
 
         int port = 8080;
         if (args.length >= 1) {
@@ -54,8 +49,6 @@ public class EmbeddedJetty {
         }
         server = new Server(port);
         server.setHandler(context);
-        final Configuration.ClassList classlist = Configuration.ClassList.setServerDefault(server);
-        classlist.addBefore(JettyWebXmlConfiguration.class.getName(), AnnotationConfiguration.class.getName());
         server.start();
     }
 

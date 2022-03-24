@@ -12,6 +12,8 @@
 
 package net.tangly.erp.ui;
 
+import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.server.PWA;
@@ -20,6 +22,10 @@ import com.vaadin.flow.theme.material.Material;
 
 @PWA(name = "Tangly ERP", shortName = "ERP")
 @Theme(themeClass = Material.class)
+@CssImport("./styles/shared-styles.css")
+@CssImport(value = "./styles/override-overlay.css", themeFor = "vaadin-dialog-overlay")
+@CssImport(value = "./styles/override-negative.css", themeFor = "vaadin-grid")
+@JsModule("prefers-color-scheme.js")
 @Push
 public class AppShell implements AppShellConfigurator {
 }

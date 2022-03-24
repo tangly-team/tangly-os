@@ -18,8 +18,6 @@ import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
-import com.vaadin.flow.component.dependency.CssImport;
-import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.tabs.Tab;
@@ -27,9 +25,6 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
-import com.vaadin.flow.theme.Theme;
-import com.vaadin.flow.theme.lumo.Lumo;
-import com.vaadin.flow.theme.material.Material;
 import net.tangly.erp.Erp;
 import net.tangly.erp.crm.domain.Subject;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
@@ -51,10 +46,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-@CssImport("./styles/shared-styles.css")
-@CssImport(value = "./styles/override-overlay.css", themeFor = "vaadin-dialog-overlay")
-@CssImport(value = "./styles/override-negative.css", themeFor = "vaadin-grid")
-@JsModule("prefers-color-scheme.js")
 @PageTitle("tangly ERP")
 @Route("")
 public class MainLayout extends AppLayout {
