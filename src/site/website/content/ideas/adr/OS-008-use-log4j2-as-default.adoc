@@ -15,6 +15,8 @@ Implemented
 
 === Context
 
+image::OS-008-head.png[width=420,height=360,role=left]
+
 The logging library https://en.wikipedia.org/wiki/SLF4J[slf4j] seems to be a dead project for at least one year.
 The last commit in the https://github.com/qos-ch/slf4j[GitHub slf4j repository] was performed two years ago.
 Version 2.0 of the library is an alpha release on https://mvnrepository.com/artifact/org.slf4j/slf4j-api[Maven Central] dating back to October 2019.

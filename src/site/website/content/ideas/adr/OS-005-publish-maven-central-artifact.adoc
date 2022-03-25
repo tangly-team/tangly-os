@@ -19,9 +19,14 @@ Supersede: link:../../../../docs/fsm/adr/fsm-002-publish-maven-central-artifact[
 
 === Context
 
+image::OS-005-head.png[width=420,height=360,role=left]
 The {ref-tangly} open source libraries are mature enough to be used in public commercial and academic projects.
+
 The libraries were used in internal projects and  refined to  fulfill these requirements.
 More customers will validate the usefulness of the library and identify extensions for further releases.
+
+We want to provide a standard and well-known approach for our customers.
+They shall have access to our libraries through official and well-documented channels.
 
 === Decision
 

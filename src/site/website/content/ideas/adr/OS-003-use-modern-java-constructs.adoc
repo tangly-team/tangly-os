@@ -15,12 +15,19 @@ Implemented
 
 === Context
 
+image::OS-003-head.jpg[width=420,height=360,role=left]
 JDK is released every six months to all Java developers.
+The latest approach is to release a long-term supported version every two years.
+
 Better approaches support clean code, less verbose source code and reduce programming errors.
 These constructs shall be used in our modules as soon as they are released to the developers.
 
 The advantage is better integration, always synchronized with the current release of the JDK and no incompatibilities.
 The drawback is that our clients have to use the current JDK released version.
+
+The major advantage is that you are using the latest version you do not need to pay license fees for each server you have running.
+Older Oracle versions always require a support contract and associated fees.
+The other approach is to use an alternate distribution such as https://openjdk.java.net/[OpenJDK].
 
 === Decision
 
@@ -28,7 +35,7 @@ We use the current released JDK and all constructs provided in this JDK.
 We use preview features and incubating functionality present in this JDK.
 The main advantages are
 
-. Current JDK versions provide performant and elegant implementation. See, for example, the record construct provided since JDK 14.
+. Current JDK versions provide efficient and elegant implementation. See, for example, the record construct provided since JDK 14.
 . The source code is legible and has fewer errors.
 . Our developers are up-to-date with Java evolution and enjoy writing modern code.
 
@@ -41,4 +48,4 @@ The main advantages are
 
 * The _instanceof_ operator supports in conditional statement deconstruction.
 * The _record_ construct simplifies data objects and encourages immutability.
-* The _UncheckedIOExcepiton_ encourages the use of non-checked exceptions.
+* The _UncheckedIOException_ encourages the use of non-checked exceptions.

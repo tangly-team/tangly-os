@@ -15,6 +15,12 @@ Implemented
 
 === Context
 
+image::OS-001-head.jpg[width=420,height=360,role=left]
+Guava is an historical effort to provide much needed functionalities to the Java community.
+The Java ecosystem evolves quite slowly at the beginning of the millennium.
+Later, stewardship clearly improved with six months release schedule approach.
+Preview and incubator initiatives allowed timely evaluation of new features and idioms in the Java language and ecosystem.
+
 JDK versions from release 8 often provide better replacement methods for a lot of Guava functions.
 New JDKs are released every six months and provide regular improvements to the API.
 These improvements make Guava functions more and more obsolete.
@@ -26,7 +32,7 @@ We consider Guava has a legacy library.
 We are dedicated to writing modern Java using the latest official releases of the language and runtime environment.
 
 The advantage is better integration, always synchronized with a new release of the JDK and no incompatibilities.
-The drawback is sometimes a slightly more cumbersome syntax or solution
+The drawback is sometimes a slightly more cumbersome syntax or solution.
 footnote:[If a specific function is only available in Guava and your project strongly relies on it, feel free to continue using Guava].
 
 === Decision
