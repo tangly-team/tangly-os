@@ -25,7 +25,7 @@ This blog is a static website created with {ref-hugo} and does not use a databas
 All pages are written with {ref-asciidoc}, stored in a Git repository and rendered using {ref-hugo}.
 I wanted to store comments in a personally owned repository and protect my readers from an advertisement and personal information collection.
 
-=== Meeting Utteranc.es
+=== Meeting Utterances
 
 Some information on the Internet about {ref-utterances} is wrong.
 Facts are:
@@ -62,7 +62,7 @@ The steps are:
 
 . Create a public GitHub repository.
 . Install the {ref-utterances} app on the repo you would like to host comments on.
-You can use the repository of your blog, or setup a dedicated repository.
+You can use the repository of your blog, or set up a dedicated repository.
 This option means your blog or website does not need to be hosted on GitHub.
 . Configure the code snippet on the {ref-utterances} website and copy it.
 
@@ -83,7 +83,7 @@ You can skip the code snippet step if you are using Docsy and follow the below i
 </script>
 ----
 <1> <OWNER>/<NAME> is the name of your repository.
-In my case it would be _marcelbaumann/tangly-team-comments_.
+In my case, it would be _marcelbaumann/tangly-team-comments_.
 
 === Configure Docsy Theme
 

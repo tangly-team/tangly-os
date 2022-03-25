@@ -113,7 +113,7 @@ The drawback is that we have no guarantee it is legible for users.
 Names are essential for well-designed user interfaces.
 Never require from your users memorizing external identifiers, please provide names.
 
-For example, first and last names of a person is the name for a natural entity.
+For example, the first and last names of a person is the name for a natural entity.
 Social security number is a possible external identifier.
 An internal identifier is used as a primary key in the persistence storage.
 

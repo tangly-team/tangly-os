@@ -61,8 +61,8 @@ It can promote silos in the organization, preventing platforms from becoming rea
 [WARNING]
 ====
 https://www.thoughtworks.com/[Thoughtworks] put SAFe on hold in their https://www.thoughtworks.com/radar[Technology Radar] Volume 24 released in April 2021.
-On hols means proceed with caution.
-Said bluntly, just do not use if you can choose.
+On hols means proceeding with caution.
+Said bluntly, just do not use it if you can choose.
 ====
 
 === Ways of working
@@ -93,15 +93,15 @@ A coach works with at most a few teams to improve their team-working and LeSS pr
 It is common for a coach to take on the Scrum Master role.
 A team coach typically focuses on:
 
-* Team responsibilities with self-managing teams,
-* Facilitation,
-* Improving the team’s decision-making and conflict resolution,
-* Transparency in the team,
-* Making organizational impediments visible,
-* Improving the relationship between the _Development Team_ and the _Product Owner_,
-* Product Ownership (of both the team, the PO, and other stakeholders),
-* Role and contribution of the team’s management,
-* Improve Scrum practices (and technical practices),
+* Team responsibilities with self-managing teams.
+* Facilitation.
+* Improving the team’s decision-making and conflict resolution.
+* Transparency in the team.
+* Making organizational impediments visible.
+* Improving the relationship between the _Development Team_ and the _Product Owner_.
+* Product Ownership (of both the team, the PO, and other stakeholders).
+* Role and contribution of the team’s management.
+* Improve Scrum practices (and technical practices).
 * Educate and coach the team’s (future) Scrum Master.
 
 ==== Technical Practices Coaching
@@ -120,18 +120,18 @@ Examples are simple design, refactoring, unit testing, test-driven development a
 
 A coach typically focuses on:
 
-* Discovering “code/design smells”,
-* Places where code/design could be improved,
-* Explaining modern, “clean” code that is simple and easier to change and maintain,
-* Refactoring “smells” into clean code,
-* Writing unit tests,
-* Test-driven development,
-* Test Automation Continuous integration and continuous delivery,
-* Specification by Example (Acceptance Test-Driven Development),
-* Efficient and effective working practices (IDE, automation),
+* Discovering “code/design smells”.
+* Places where code/design could be improved.
+* Explaining modern, “clean” code that is simple and easier to change and maintain.
+* Refactoring “smells” into clean code.
+* Writing unit tests.
+* Test-driven development.
+* Test Automation Continuous integration and continuous delivery.
+* Specification by Example (Acceptance Test-Driven Development).
+* Efficient and effective working practices (IDE, automation).
 * Applying design patterns.
 
-In all our mandates one major activity is improving the legacy code.
+In all our mandates, one major activity is improving the legacy code.
 
 [.text-center]
 Legacy code is *Code without tests*
@@ -147,7 +147,8 @@ The most successful LeSS adoptions we have seen had the following structure:
 *One internal and one external coach*
 
 This pair provides the overview of the {ref-less} adoption.
-They both coach management but are also involved with team and technical coaching.
+They together coach management.
+They are also involved with team and technical coaching.
 
 External team coaches who help the teams become better and focus on training the Scrum Masters.
 
@@ -158,13 +159,13 @@ After that reduce (not eliminate!) the external technical coaching or let the ex
 
 === Be Patient, The Time Horizon is Years
 
-* Trust your people,
-* Create opportunities,
-* Establish a learning culture,
-* Thrive for craftsmanship,
-* Let the team use internal social pressure,
-* Eliminate specialization, push mastery,
-* At the beginning, follow the LeSS rules,
+* Trust your people.
+* Create opportunities.
+* Establish a learning culture.
+* Thrive for craftsmanship.
+* Let the team use internal social pressure.
+* Eliminate specialization, push mastery.
+* At the beginning, follow the LeSS rules.
 * Extended responsibility, rounded products provide a room and freedom for better decisions.
 
 === Remember

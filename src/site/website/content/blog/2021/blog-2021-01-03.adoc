@@ -114,7 +114,7 @@ Atlassian also owns JIRA, Confluence and Trello.
 * https://azure.microsoft.com/en-us/services/devops/[Azure Devops] is a closed source solution and Microsoft answers to .NET development.
 CI and CD pipelines access is under definition by Microsoft.
 They slowly open their product to additional development stacks such as Java, Python.
-* https://gitea.io/[Gitea] is a community managed lightweight code hosting solution written in Go.
+* https://gitea.io/[Gitea] is a community-managed lightweight code hosting solution written in Go.
 The project is hosed on GitHub.
 It is published under the MIT license.
 * https://gogs.io/[Gogs] is a painless self-hosted Git service.
@@ -155,7 +155,7 @@ Homebrew can download and install a huge set of Unix packages.To install git, yo
 
 The huge advantage of package managers is the update function to install new versions of your applications without any configuration activities.
 
-You are a Windows user you can find a Windows package on the : https://git-scm.com/downloads[git home page].
+You are a Windows user you can find a Windows package on the https://git-scm.com/downloads[git home page].
 ====
 
 Git has 3 different _areas_ for your code:

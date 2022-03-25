@@ -19,7 +19,7 @@ How can you create a good, legible, maintainable component architecture?
 
 How can you validate your functional and non-functional requirements?
 
-Yes you are right.
+Yes, you are right.
 You are responsible for *architecture decisions* at component or subsystem level.
 Below a set of tools to improve the quality of your design.
 
@@ -29,14 +29,14 @@ Below a set of tools to improve the quality of your design.
 
 The pattern movement was started last millennium.
 Very talented and experienced developers have documented how to solve common problems elegantly and effectively.
-Depending on the programming language you are using different idioms are preferred.
+Depending on the programming language, you are using different idioms are preferred.
 The way to solve the same problem is different in Java, Scala, C++, Python or C#.
 
 You should know all regular structural, behavioral and creational patterns.
 Explore your programming language and discover how idioms and patterns have evolved between major releases.
 For example, lambda expressions and streams introduced in Java 8 - released Spring 2014 - completely transform the solution for regular business logic.
 
-Records introduced in Java 14 - released Spring 2020 - have a huge impact how your architecture deals with data transfer objects - DTO - and immutability
+Records introduced in Java 14 - released Spring 2020 - have a huge impact on how your architecture deals with data transfer objects – DTO – and immutability
 footnote:[Java 17 LTS added full support for https://en.wikipedia.org/wiki/Algebraic_data_type[algebraic data types] with the record and sealed concepts.].
 
 ==== Read Open Source Code
@@ -48,7 +48,7 @@ Explore open source solutions, read posts, study books.
 Select the most adequate solution and fill free to adapt and improve it.
 
 Instead of searching for a solution for days, post your question on an adequate forum or on https://stackoverflow.com/[Stack Overflow].
-Again fill free to improve the suggested solutions.
+Fill free to improve the suggested solutions.
 
 Become more efficient and use the wisdom of all these developers accessible through the Internet.
 Always verify the quality and adequacy of their proposed solutions.
@@ -60,11 +60,11 @@ Wisdom is coded in this code.
 Standard patterns are implemented in almost all packages.
 Idioms are encoded everywhere.
 
-See how Java deals with human and machine time with the https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/time/package-summary.html[java.time]
+See how Java deals with human and machine time with https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/time/package-summary.html[java.time]
 package.
 Decades of trials and errors were needed to finally create a balanced and simple to use time abstractions.
-The author of https://www.joda.org/joda-time/[Joda Time] experimented years before he wrote the java time package - JSR 310 - introduced in Java 8.
-All these decisions and learnings are encoded in this code.
+The author of https://www.joda.org/joda-time/[Joda Time] experimented years before he wrote the java time package – JSR 310 – introduced in Java 8.
+All these decisions and learning are encoded in this code.
 
 === Clean Architecture
 
@@ -93,7 +93,7 @@ You still should document all major https://en.wikipedia.org/wiki/Architectural_
 ==== Know Your Programming Language
 
 If you are developing in Java, you should use the current features of the programming language.
-For example with Java 14
+For example, with Java 14
 
 * Try with resources and _closeable_ resources,
 * Immutable collections,
@@ -115,7 +115,7 @@ Remove smells, compiler warnings and migrate older code to use newer and better 
 
 Your users want a working application.
 Write acceptance tests insuring all relevant functions are tested through your continuous integration pipeline.
-Therefore you guarantee your users the application behaves as specified.
+You guarantee your users the application behaves as specified.
 
 ==== Test Driven Development
 

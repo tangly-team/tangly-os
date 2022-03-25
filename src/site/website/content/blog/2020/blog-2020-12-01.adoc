@@ -58,7 +58,7 @@ Fix at least a handful of these critical problems in each sprint.
 . You own a big set of bugs that are already in production.
 They have been in your bug tracking system for quite a while.
 *Delete those*.
-If it is a costly problem your customers will fill a new report.
+If it is a costly problem, your customers will fill a new report.
 Treat such bugs as critical bugs.
 . Establish a software craftsmanship culture.
 Stop delivering products with known errors.
@@ -68,7 +68,7 @@ Your https://scrumguides.org/scrum-guide.html#product-owner[product owner] shoul
 Bugs have a tendency to become obsolete pretty quickly in applications that are updated frequently.
 The steps to reproduce them become irrelevant, the functionality changes, the impact of the bug often gets lower.
 
-Please, don’t waste your time trying to update the documentation related to these bugs.
+Please, do not waste your time trying to update the documentation related to these bugs.
 You may lose a few valid ones, but trust me, someone will report it again if it is still happening.
 
 === Clean Code and Happy Customers
@@ -84,7 +84,7 @@ Follow these steps to ensure this system works.
 
 * The bugs that the team decides to fix must be prioritized over regular work and must get fixed *now*.
 In Scrum the https://scrumguides.org/scrum-guide.html#product-backlog[product backlog item] containing the bug has the highest priority.
-* In the beginning there will be more bugs to work through, as some bugs that were deleted will be reported again.
+* In the beginning, there will be more bugs to work through, as some bugs that were deleted will be reported again.
 * As the team shifts its focus to improved quality, there will be fewer of them.
 This is truly a binary system with no wiggle room.
 * Bugs are either fixed now or deleted, there is no severity and no haggling about the classification of a bug!

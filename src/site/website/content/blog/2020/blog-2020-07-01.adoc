@@ -39,7 +39,7 @@ The workflow can open the digitally received document and parse programmatically
 The generation of the invoice and associated barcode is fully digital.
 
 This approach works well only if the issuer fills the so-called SWICO field of the QR code with needed information.
-For example the due date of the invoice and the enumeration of different VAT tax percentages and corresponding VAT taxes are only stored in this field.
+For example, the due date of the invoice and the enumeration of different VAT tax percentages and corresponding VAT taxes are only stored in this field.
 In other words, the standard does not foresee that the due date of the invoice should be a mandatory field.
 Stated bluntly, the committee in charge of the standard realized they missed and stuck all missing elements in the so-called SWICO field.
 It is clear that it is impossible to define a digital payment workflow without information on such a due date, and the VAT percentages and amounts.
@@ -80,7 +80,7 @@ The library is naturally under https://en.wikipedia.org/wiki/Apache_License[Apac
 
 But no open source products are available for high-level functions.
 In particular, support for the creation of archive formats is non-existent.
-The famous _iText_ library provides all these features but sadly is no more open source.
+The famous _iText_ library provides all these features, but sadly is no more open source.
 
 https://ghostscript.com/[Ghostscript] provides command line support to transform a PDF document in a PDF/A version.
 
@@ -98,7 +98,7 @@ The application supports exporting to PDF/A version 1b, 2b and 3b. It also suppo
 
 We decided to extend our open source library to create digital invoices.
 The extensions support the Swiss QR Code and the ZUGFeRD 2.1 standards.
-All the information are stored in one PDF document.
+All the information is stored in one PDF document.
 This document is sent electronically to the customer.
 
 Our current approach is
@@ -112,7 +112,7 @@ Our current approach is
 ----
 
 Currently, we do not generate PDF/A1 documents as required in the ZUGFeRD standard.
-PDFBox could provide the tool box to generate in this format but it would be quite an endeavor.
+PDFBox could provide the tool box to generate in this format, but it would be quite an endeavor.
 An extension to PDFBox with similar functionality to iText would ideally become available in the future.
 Otherwise, we have to write the missing code; in particular the embedding of fonts, pictures and files into the PDF document.
 
@@ -131,7 +131,7 @@ The generator code for the Swiss QR bill and ZUGFeRD data is available as Java p
 The developer was very supportive to improve the component.
 For example, it is now possible to write unit tests using in-memory file systems.
 
-The Facture-X component also support unit tests using in-memory file systems.
+The Facture-X component also supports unit tests using in-memory file systems.
 
 [WARNING]
 ====

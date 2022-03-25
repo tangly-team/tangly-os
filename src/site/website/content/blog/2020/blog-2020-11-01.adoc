@@ -20,7 +20,7 @@ Reference codes are dynamic enumeration values.
 By dynamic, we mean you can add values without recompiling the source code.
 
 In modern DevOps environments where deployment of a new version is performed in minutes, this advantage is somewhat shallow.
-We view reference codes more as strongly typed and performant tags.
+We view reference codes more as strongly typed and efficient tags.
 
 How can you easily add the concept of reference codes in your application?
 We provide an initial setup approach requiring mere minutes to add codes to your application.

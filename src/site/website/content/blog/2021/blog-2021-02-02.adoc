@@ -27,7 +27,7 @@ Also, parts of the NIO APIs are actually blocking - e.g. the file APIs - so the 
 ====
 
 One major feature of interest is the support of alternate file systems.
-An in-memory file system is ideal to test file related operations in unit and integration tests.
+An in-memory file system is ideal for test file related operations in unit and integration tests.
 
 === Unit Tests
 
@@ -50,7 +50,7 @@ public static Path of(String first, String... more) {
 So, while this method and similar ones are very convenient, using them will imply you want to access your default file system.
 The one your JVM is running on, not your in-memory file system.
 
-Hence, when wanting to make sure your code works against in-memory file systems, you must make sure to never call these helpers methods.
+Hence, when wanting to make sure your code works against in-memory file systems, you must make sure to never call these helper methods.
 Instead, you should always use the _FileSystem_ or a _Path_ instance as an anchor.
 
 Depending on your project and your libraries, this is quite a challenge to pull off
@@ -59,7 +59,7 @@ The maintainer of the library is often not aware you need _Path_ to unit test wi
 
 === Paths
 
-Alternative file system operations require all methods should use path objects instead of file objects.
+Alternative file system operations require all methods to use path objects instead of file objects.
 File objects contain the name of the accessed file but loose all references to the underlying file system.
 All operations using file objects implicitly use the default file system.
 
@@ -73,20 +73,21 @@ FileSystem fs;  // <1>
 Files.createDirectory(fs.getPath(ORGANIZATION, "crm/"));  // <2>
 Files.copy("myFile", fs.getPath(ORGANIZATION, "crm/")), StandardCopyOption.REPLACE_EXISTING);
 ----
+
 <1> Define a file system
-<2> Work with file system to create paths and avoid using helper methods using the default file system
+<2> Work with the file system to create paths and avoid using helper methods using the default file system
 
-Consider the Java _java.io.File_ class as a legacy abstraction.
-Avoid using it and move over to the Java path abstraction.
+Consider Java _java.io.File_ class as a legacy abstraction.
+Avoid using it and moving over to the Java path abstraction.
 
-Remember the _java.nio.Path_ class has a reference to a file system, the _java.io.File_ class only uses the default file system.
+Remember _java.nio.Path_ class has a reference to a file system, the _java.io.File_ class only uses the default file system.
 
 The javadoc definition states that a file is
 
 * An abstract representation of file and directory path names.
 * User interfaces and operating systems use system-dependent pathname strings to name files and directories.
 The javadoc definition states that * The java.nio.file package defines interfaces and classes for the Java virtual machine to access files, file attributes, and file systems.
-* This API may be used to overcome many of the limitations of the java.io.File class.
+* This API may be used to overcome the limitations of the java.io.File class.
 
 Use file instances to manipulate abstract file path names.
 Use path instances to manipulate files.

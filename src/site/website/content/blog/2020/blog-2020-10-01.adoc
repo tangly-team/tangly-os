@@ -146,7 +146,7 @@ allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^asciidoctor$']
 
 ===== Add First Level Folders
 
-Each time you add your own first level folder - meaning at the same level as docs, blog, about, or community you need to extend the layout to support it.
+Each time you add your own first level folder – meaning at the same level as docs, blog, about, or community you need to extend the layout to support it.
 For example, I store technical articles in the folder ideas and use the standard template.
 So I need to add (if not, no items are visible in the sidebar).
 
@@ -192,7 +192,7 @@ For advanced cases, you can define the layout of the printed document.
 You can use relative links in your {ref-asciidoc} documents.
 Beware where the files are located by {ref-hugo} engine and the naming conventions shall follow {ref-hugo} rules.
 
-Avoid the _html5s_ backend and use instead the _html5_ backend.
+Avoid the specialized but uncompleted _html5s_ backend and use instead the _html5_ backend.
 I was not able to find good examples of stylesheets for the semantic backend.
 The _html5s_ backend uses new names for classification and sometimes different HTML structures.
 The regular available stylesheets will not style correctly the generated website.

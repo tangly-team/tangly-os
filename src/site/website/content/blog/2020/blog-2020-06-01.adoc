@@ -16,7 +16,7 @@ In computer programming and software design, code refactoring is the process of 
 
 Refactoring is intended to improve the design, structure, or implementation of the software (its non-functional attributes), while preserving its functionality.
 
-With refactoring you can take a bad design, even chaos software, and rework it into well-designed code.
+With refactoring you can take bad design, even chaos software, and rework it into well-designed code.
 Most often, it is cheaper to refactoring a legacy application instead of rewriting it from scratch.
 
 Simply put, refactoring is a way of decreasing https://en.wikipedia.org/wiki/Technical_debt[Technical Debt].
@@ -33,9 +33,10 @@ It provides flexibility where none before May have existed.
 
 [quote,Martin Fowler]
 ____
-Refactoring is the process of changing a software system in such a way that it does not alter the external behavior of the code yet improves its internal structure.
+Refactoring is the process of changing a software system in such a way that it does not alter the external behavior of the code.
+Yet the internal structure improves.
 It is a disciplined way to clean up code that minimizes the chances of introducing bugs.
-In essence when you refactor you are improving the design of the code after it has been written.
+In essence, when you refactor you are improving the design of the code after it has been written.
 ____
 
 === Introduction
@@ -45,7 +46,7 @@ He must determine the extent of source code and architectural decay, and identif
 
 Legacy applications are often critical to business and have been in use for years, sometimes decades.
 Since business is evolving, there is constant pressure to support additional requirements.
-However, changing these applications is difficult and you end up spending an increasing amount of resources maintaining the software.
+However, changing these applications is difficult and you end up spending an increasing number of resources maintaining the software.
 
 There are many reasons why maintaining legacy software is a difficult problem.
 Often, most, if not all, of the original developers are gone, and no one understands how the application is implemented.
@@ -62,7 +63,7 @@ These scenarios define the acceptance tests you need to start creating a set of 
 And you will better understand how your users are working with your product.
 * _Understand how it is deployed_.
 You need a reproducible and in the long-run automated process to deploy a new version of your application.
-We are talking continuous delivery and even continuous deployment.
+We are talking about continuous delivery and even continuous deployment.
 * _Understand how it is build_.
 You need a reproducible and automated build process.
 This process must be integrated into your continuous integration and delivery pipeline.
@@ -81,11 +82,11 @@ Each refactoring step is simple, even simplistic.
 Yet the cumulative effect of these small changes can radically improve the design.
 ____
 
-If you are new to refactoring it is worth having a coach to smooth the learning curve.
+If you are new to refactoring, it is worth having a coach to smooth the learning curve.
 
 . Extract one big service, refactor, test, and deploy.
 *Iterate*.
-_If you are not successful discard your failure and checkout the current working version of git.
+_If you are not successful, discard your failure and checkout the current working version of git.
 You should have learnt enough so that the next try will be successful._
 . https://refactoring.com/[Refactor code].
 Use static analysis tools to detect the flaws in your source code.
@@ -97,7 +98,7 @@ Your senior design specialists already know the flaws.
 Now it is time to correct them.
 . Increase code coverage.
 Code coverage is the security net when you are refactoring code.
-. Slowly add https://www.thoughtworks.com/insights/articles/fitness-function-driven-development[fitness functions] to continuously validate your non- functional requirements.
+. Slowly add https://www.thoughtworks.com/insights/articles/fitness-function-driven-development[fitness functions] to continuously validate your non-functional requirements.
 
 Beware of good practices how to write good software products and refactor successfully applications.
 

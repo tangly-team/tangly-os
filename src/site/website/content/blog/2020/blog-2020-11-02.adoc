@@ -31,7 +31,7 @@ The organization should provide vision, understanding, courage and adaptability.
 
 [quote, Gary Hamel, 2007]
 ____
-There is simply no way to build tomorrow's essential organizational capabilities - resilience, innovation and employee engagement -
+There is simply no way to build tomorrow's essential organizational capabilities – resilience, innovation and employee engagement –
 atop the scaffolding of 20^th^ century management principles.
 ____
 
@@ -118,7 +118,7 @@ Please compare your change process against these anti-patterns. Correct if neede
 
 image::2020-11-02-agile-digital-architecture.png[width=480, height=480, role=left]
 Agile is now mainstream. More than 80% of all software development initiatives claim to be agile.
-Digital and agile enterprise are two sides of the same coin.
+A digital and agile enterprise is two sides of the same coin.
 Almost all research and development departments are implementing agile processes to achieve faster and better results.
 The organizations moving now to agile approaches are laggards.
 

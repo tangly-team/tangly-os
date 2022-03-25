@@ -27,9 +27,9 @@ The tools are used to practice and to increase student learning.
 https://git-scm.com/[Git] is the standard tool for the distributed source code management system.
 It is supported by all major development IDE and continuous integration environments.
 
-First year students shall master the basic git commands to write their semester projects.
+First year undergraduates shall master the basic git commands to write their semester projects.
 
-Second year students shall master the git commands used to work in teams.
+Second year sophomores shall master the git commands used to work in teams.
 Pull requests are a standard approach to review team colleague works and to consolidate new functions into the application.
 
 === Modern Java Software Development
@@ -45,7 +45,7 @@ Since JDK 16 Java provides https://en.wikipedia.org/wiki/Algebraic_data_type[Alg
 Records implement https://en.wikipedia.org/wiki/Product_type[Product Types].
 Sealed classes implement https://en.wikipedia.org/wiki/Tagged_union[Tagged Unions] also called sum types.
 
-The https://www.jetbrains.com/idea/[IntelliJ IDEA IDE] is now the industrial standard for the Java and often Python world.
+The https://www.jetbrains.com/idea/[IntelliJ IDEA IDE] is now the industrial standard for a Java and often Python world.
 The IDEA environment promotes the use of modern Java constructs.
 Currently, constructs such as records, sealed classes, closeable resources, switch instructions as expressions are new approaches to write legible Java code.
 Concepts such as Optional, Streams, immutable objects, and unchecked expressions promote more functional programming styles.
@@ -63,16 +63,16 @@ Students shall be fluent with
 
 * Static code analysis.
 The Intellij IDEA provides an _analysis_ function for static code analysis.
-The IDE is free for students.
+The IDE environment is free for students.
 * Unit tests and integration tests Use the seminal libraries _JUnit5_, _Mockito_, and _AssertJ_
-* Continuous integration pipeline Use the CI pipeline of your product management tool; either _GitLab_, _GitHub_, _Bitbucket_, or _Azure DevOps_.
+* Continuous integration pipeline uses the CI pipeline of your product management tool; either _GitLab_, _GitHub_, _Bitbucket_, or _Azure DevOps_.
 
 === Documentation
 
 You should only check text artifacts into a git repository.
 Modern approaches with https://en.wikipedia.org/wiki/Markdown[Markdown] and {ref-asciidoc} syntax promote this axiom.
 
-https://plantuml.com/[PlantUML] is a text based diagramming approach.
+https://plantuml.com/[PlantUML] is a text-based diagramming approach.
 All major syntax and in particular all UML diagram types are supported.
 {ref-asciidoc} has native support for diagrams in general and PlantUML in particular.
 Asciidoc supports additional diagrams and diagramming tools such as https://mermaid-js.github.io/mermaid[Mermaid].

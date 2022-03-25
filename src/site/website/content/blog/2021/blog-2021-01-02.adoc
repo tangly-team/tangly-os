@@ -16,7 +16,7 @@ image::2021-01-02-head.jpg[width=420,height=360,role=left]
 Identifiers are a key concept to successfully model complex business domains.
 They permeate how our modern civilization functions.
 
-Could you imagine a country without car registration number, internet addresses, postal addresses or social security numbers?
+Could you imagine a country without car registration number of a vehicle, internet addresses, postal addresses or social security numbers?
 
 Identifiers are *identifiers*.
 
@@ -98,7 +98,7 @@ Identify aggregate through identity::
 An aggregate is a group of objects that are bound together by a root entity, called the aggregate root.
 Objects outside the aggregate are allowed to hold references to the root but not to any other object of the aggregate.
 The aggregate root is responsible for checking the consistency of changes in the aggregate.
-An aggregate is found and referenced through the identifier of the root entity of the aggregate.
+An aggregate is found and referenced through the identifier of the aggregate root entity.
 Reference over aggregate through identity::
 An aggregate shall reference other aggregate through the identity of their root entity instance.
 

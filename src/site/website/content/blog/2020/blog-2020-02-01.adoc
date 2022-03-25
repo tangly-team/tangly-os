@@ -78,7 +78,7 @@ You should expect from a person working forty hours a week for the next forty ye
 
 You should expect regular certifications in the used technology stack or development approaches.
 A Scrum master two days training does not make somebody an expert.
-A specialist refusing to invest in a two day training is probably not a member you want in a high performing team.
+A specialist refusing to invest in a two-day training is probably not a member you want in a high performing team.
 
 A professional engineer should read multiple technical books each year.
 
@@ -95,8 +95,8 @@ The major responsibility of senior management is hire the best collaborators, re
 * Off-boarding of collaborators,
 * Move collaborators to the learning zone and let them thrive.
 
-Nurture a culture of learning through training on the job, learning from external sources - such as reading
-link:../../../ideas/learnings/links\[ high-quality blogs] - and formal education - such as bachelor or master courses for example
+Nurture a culture of learning through training on the job, learning from external sources – such as reading
+link:../../../ideas/learnings/links\[ high-quality blogs] – and formal education – such as bachelor or master courses, for example,
 https://www.tangly.net/insights/continuous-learning/agile-architecture-course[agile architecture] -.
 
 Please reflect how you encourage continuous learning in your organization.
