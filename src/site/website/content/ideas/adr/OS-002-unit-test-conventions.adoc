@@ -16,27 +16,28 @@ Implemented
 === Context
 
 Some libraries need to create files on a file system.
-For example you want to generate human-readable paper invoices.
+For example, you want to generate human-readable paper invoices.
 
 === Decision
 
-We recommend the following conventions when writing unit tests creating files . Use Google Java in memory file system https://github.com/google/jimfs[Jimfs].
+We recommend the following conventions when writing unit tests creating files.
+Use Google Java in memory file system https://github.com/google/jimfs[Jimfs].
 Additional file systems can only be used in Java if all operations are performed through Path objects.
 Path objects have a reference to the file system; File objects always referenced the default file system.
-. When writing to the default file system use the root directory ``/tmp/`` available in all Unix like operating systems.
+When you are writing to the default file system use the root directory ``/tmp/`` available in all Unix like operating systems.
 
 [CAUTION]
 ====
 Avoid writing files to a local file system.
-This approach is slow, cumbersome and errorprone.
+This approach is slow, cumbersome and error-prone.
 Use in-memory file systems.
 ====
 
 === Consequences
 
-* We have a dependency to an open source product currently managed by Google.
+* We have a dependency on an open source product currently managed by Google.
 * Use of https://github.com/google/jimfs[Jimfs] requires use of Path instances.
 We shall remove all references to File instances.
 File instances do not support alternative file systems.
 Therefore, we shall use libraries providing a workaround File instances either by using Path instances or reader and writer to access files.
-* Operations to physical file system have the risk that rights problems could rise in some continuous integration environements.
+* Operations to physical file system have the risk that rights problems could rise in some continuous integration environment.

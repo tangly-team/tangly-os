@@ -21,9 +21,9 @@ These improvements make Guava functions more and more obsolete.
 
 https://github.com/google/guava[Guava] is an external library of high quality but still an additional dependency in the application.
 We always follow the rule to use language and standard library constructs over using external libraries.
-Guava tries to support older JDKs and therefore do not use more modern approaches defined in new API versions.
+Guava tries to support older JDKs and, therefore does not use more modern approaches defined in new API versions.
 We consider Guava has a legacy library.
-We are dedicated to write modern Java using the latest official releases of the language and runtime environment.
+We are dedicated to writing modern Java using the latest official releases of the language and runtime environment.
 
 The advantage is better integration, always synchronized with a new release of the JDK and no incompatibilities.
 The drawback is sometimes a slightly more cumbersome syntax or solution
@@ -34,13 +34,13 @@ footnote:[If a specific function is only available in Guava and your project str
 All Guava usages shall be replaced by JDK standard functions.
 The main advantages are:
 
-. Current JDK versions provide own implementation e.g. in the Objects class,
-. Guava dependency is removed from our source code and compiled artifacts,
+. Current JDK versions provide own implementation e.g. in the Objects class.
+. Guava dependency is removed from our source code and compiled artifacts.
 . Guava is not optimized for idioms used in current JDK such as streams and extensive use of lambdas.
-Guava need years to support new concepts such as algebraic data types.
+Guava needs years to support new concepts such as algebraic data types.
 
 === Consequences
 
 * Some operations are more complicated to implement because a solution is already provided in Guava.
-* We have the huge advantage to be able to use the current approaches provided in JDK and associated standard API.
-* Code uses often the current constructs provided through last released JDK.
+* We have the huge advantage of being able to use the current approaches provided in JDK and associated standard API.
+* Code uses the current constructs provided through last released JDK.

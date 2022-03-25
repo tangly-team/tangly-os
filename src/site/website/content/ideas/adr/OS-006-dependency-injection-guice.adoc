@@ -20,12 +20,12 @@ These applications often use dependency injection frameworks to construct and in
 
 === Decision
 
-Guice is selected as dependency injection framework.
+Guice is selected as a dependency injection framework.
 
-. Guice is one of the industrial standard with Dagger and Sprint DI.
-. Guicce supports JDK standard _@inject_ annotation used in other dependency frameworks.
-. GUice supports the definition of modules to describe dependencies.
- The modules are also used as documentation mechanism.
+. Guice is one of the industrial standards with Dagger and Sprint DI.
+. Guice supports JDK standard _@inject_ annotation used in other dependency frameworks.
+. Guice supports the definition of modules to describe dependencies.
+ The modules are also used as a documentation mechanism.
 
 Care will be taken to allow users to use a different dependency injection framework.
 
@@ -35,5 +35,5 @@ Care will be taken to allow users to use a different dependency injection framew
 
 === Conventions
 
-. Constructor injection is the preferred mechanism. In the long term it should be the only approach.
+. Constructor injection is the preferred mechanism. In the long term, it should be the only approach.
 . Please avoid field injection as an injection approach.
