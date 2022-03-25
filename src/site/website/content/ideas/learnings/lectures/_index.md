@@ -8,7 +8,7 @@ description: Lectures and associated literatures
 ## Software Architecture and Techniques Lectures
 
 [Software Architecture](https://en.wikipedia.org/wiki/Software_architecture) and Techniques *SWAT* discuss approaches, methods and tools taught in the context
-of agile development approaches. It reflects current trends where more than 80 % of all new software development is performed using
+of agile development approaches. It reflects current trends where more than 80 % of new software development is performed using
 [agile software development](https://en.wikipedia.org/wiki/Agile_software_development) approaches.
 
 The depth of the concepts shall be modulated to the knowledge of the participants. Primary goals are to establish comprehension on agile architecture and master
@@ -22,7 +22,7 @@ the Software Architecture and Techniques SWAT lectures {{< /attachments >}}
 
 ## Modern Java and Selected JVM Languages Lectures
 
-Modern Java and Selected JVM languages *PCP* discuss programing paradigms to write legible, performant source code. Theory is mapped to programming language
+Modern Java and Selected JVM languages *PCP* discuss programming paradigms to write legible, performant source code. Theory is mapped to programming language
 features. The participants learn how to create modern design concepts and implement them in JVM languages such as Java, Clojure, and Groovy.
 
 Key themes are:

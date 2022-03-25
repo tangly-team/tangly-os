@@ -31,10 +31,10 @@ These sites and blogs are a source of knowledge and experience.
 * https://ronjeffries.com/[Ron Jeffries Blog]
 * https://guntherverheyen.com/[Gunther Verheyen Blog] A Scrum caretaker
 * Crisp
-** https://blog.crisp.se/[Crisp Blog] Henrik Kniberg works at Crisp and they are often the coaches at Spotify and initiators of the Spotify Model -
-** Kniberg books https://drive.google.com/open?id=11aGDqP5zc4UlTyg87HzpEPaj2hHJ0xVl[crum and XP from the trenches] and
+** https://blog.crisp.se/[Crisp Blog] Henrik Kniberg works at Crisp, and they are often the coaches at Spotify and initiators of the Spotify Model -
+** Kniberg books https://drive.google.com/open?id=11aGDqP5zc4UlTyg87HzpEPaj2hHJ0xVl[Scrum and XP from the trenches] and
  https://drive.google.com/open?id=11aGDqP5zc4UlTyg87HzpEPaj2hHJ0xVl[Kanban and Scrum]
-** Kniberg has also very professional and interesting youtube presentations
+** Kniberg has also very professional and interesting YouTube presentations
 * https://martinfowler.com[Martin Fowler Blog] Martin Fowler is working at Thoughtworks and has written seminal books
 * https://leanarch.eu/[Viktor Grgic Blog]
 * Stefan Wolpers https://age-of-product.com/[Age of Product Blog] tons of materials and a weekly newsletter with links to interesting articles
@@ -42,13 +42,13 @@ These sites and blogs are a source of knowledge and experience.
 
 === Seminal references are found under
 
-* https://agilemanifesto.org/[Agile Manifesto] - also read the https://agilemanifesto.org/principles.html[12 principles] of the manifesto
+* https://agilemanifesto.org/[Agile Manifesto] – also read the https://agilemanifesto.org/principles.html[12 principles] of the manifesto
 * https://scrumguides.org/[Scrum Guide] - the seminal work defining what Scrum is from https://en.wikipedia.org/wiki/Jeff_Sutherland[Jeff Sutherland] and
 https://en.wikipedia.org/wiki/Ken_Schwaber[KenSchwaber] - _Read the history section to understand the evolution of the guide over the years_
 
 === Knowledge Facts
 
-Analyze facts and act on them - Lean and Agile are rooted in empirical methods and scientific approaches -.
-Facinating how our civilisation lost the belief in facts and science.
+Analyze facts and act on them – Lean and Agile are rooted in empirical methods and scientific approaches -.
+Fascinating how our civilisation lost the belief in facts and science.
 
-The https://ourworldindata.org[Our World in Data] is an initiative to decide based on facts and empirical approaches.
+The https://ourworldindata.org[World in Data] is an initiative to decide based on facts and empirical approaches.
