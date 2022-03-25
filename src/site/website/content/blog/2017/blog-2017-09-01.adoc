@@ -43,10 +43,10 @@ If you want to implement lasting improvements, you must:
 
 Provide transparency::
 The more you and your collaborators know the better your decisions are.
-All information shall be available to all participants, including financial and marketing data,
+All information shall be available to all participants, including financial and marketing data.
 Experiment with improvement::
 Inspection and adaptation are keys; processes and value streams shall constantly be improved.
-Take the lean approach: Relentlessly eliminate waste and increase the value stream,
+Take the lean approach: Relentlessly eliminate waste and increase the value stream.
 Establish long-living teams::
 Teams are the backbone of your company; people are human beings not resources.
 
@@ -57,7 +57,8 @@ They are smart, motivated and better qualified than you are.
 
 [quote,Steve Jobs]
 ____
-It doesn't make sense to hire smart people and then tell them what to do; we hire smart people so they can tell us what to do.
+It doesn't make sense to hire smart people and then tell them what to do.
+We hire smart people, so they can tell us what to do.
 ____
 
 A manager working with knowledge workers has understood the above quotes and
@@ -87,7 +88,7 @@ The agile and lean principle {ref-pdca} applies to agile managers as well.
 === Let Go and Delegate
 
 Delegate and empower your team.
-As a manager you shall reconsider which activities are your responsibility.
+As a manager, you shall reconsider which activities are your responsibility.
 An agile team must at least be self-organized and ideally self-designed.
 
 manager lead::
@@ -96,7 +97,7 @@ self-organised / self-managed::
 The team organises and performs its own activities and work.
 self-designed / self-selected::
 The team creates, selects and removes new members and maintains itself.
-Logically they are also in charge of evaluation, rewards, and career development.
+Logically, they are also in charge of evaluation, rewards, and career development.
 self-directed / self-governed::
 The team has no outside management.
 

@@ -29,7 +29,7 @@ We provide hints to improve your {ref-kaizen} process.
 === Identify Impediments
 
 The first step is to identify and classify your impediments.
-There are always impediments; solving them will increase effectivity of your department.
+There are always impediments; solving them will increase the effectivity of your department.
 You shall
 
 * Make impediments visible.
@@ -44,7 +44,7 @@ Let everybody identify impediments.
 An impediment is a dysfunction of the organization, never a flaw in an individual.
 * Aim for effectivity and quality.
 Efficiency is less important.
-* Find out the root causes, discuss the https://en.wikipedia.org/wiki/5_Whys[5 Whys] over the how.
+* Find out the root causes, discuss the https://en.wikipedia.org/wiki/5_Whys[5 Whys] over how.
 * Provide safe to fail environment.
 Use the {ref-pdca} loop to implement your experiments to improve,
 * Life the https://www.scrumalliance.org/why-scrum/core-scrum-values-roles[Scrum values].
@@ -66,8 +66,8 @@ Allocate time and resources in each sprint to resolve a few high prioritized imp
 Please define measurements https://en.wikipedia.org/wiki/Performance_indicator[Key Performance Indicators _KPI_].
 Find out if the solution solves the root cause of the problem.
 
-All team members are responsible to solve team impediments.
-The Scrum master is responsible to coach the team and help solve overall impediments rooted in the organization.
+All team members are responsible for solving team impediments.
+The Scrum master is responsible for coaching the team and helps solve overall impediments rooted in the organization.
 
 === Track Impediments
 

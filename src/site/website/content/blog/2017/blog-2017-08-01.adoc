@@ -18,13 +18,13 @@ The below job description was handed me over. What an experience it was.
 The text with the regular font is the job description. I wrote down my comments in italics.
 
 * Manage team of software engineers: provide technical direction, schedule and delegate work, evaluate performance.
-  Advise on best practices and developing practice, review code.
+  Advise on the best practices and developing practice, review code.
 ** __A Scrum master empowers a development team. The team schedules the work during each Sprint.
  The team members select the stories they will implement next.
  The Scrum master advices best practices, but he really should not perform code reviews and police the team.__
 ** __He does not manage and certainly not micromanage engineers.
  He shall never evaluate the performance of team members. He shall not police the team by reviewing the source code.__
-* Analyze requirements and provide time estimates: consume non-technical functional requirements documentation.
+* Analyze requirements and provide time estimates: consume non-technical functional requirement documentation.
  Provide feedback when necessary, translating into the technical documentation when necessary.
  Provide feasibility assessment and estimate level of effort to implement
 ** __The product owner and the team write and refine stories.
@@ -56,7 +56,7 @@ The text with the regular font is the job description. I wrote down my comments 
 I clearly decided not to apply for this position.
 I was fascinated that companies still believe that such alibi positions will not be detected.
 The above position is a flag for me.
-As an agile developer, Scrum master or product owner I shall never work for this company.
+As an agile developer, Scrum master or product owner, I shall never work for this company.
 I will not have link:../../2017/fun-at-workplace[Fun at Work].
 
 They were looking for an administrator and a classical project manager.

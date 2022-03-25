@@ -16,9 +16,9 @@ What does a Scrum master the whole day?
 Are you just a fancy administrator or are you actively removing impediments?
 Do you coach your teams toward mastery?
 
-Too often Scrum masters become Scrum administrators.
+Too often, Scrum masters become Scrum administrators.
 They schedule meetings, moderate discussions, write progress reports and draw beautiful slides how to improve the organization.
-Or worst they collect extensive statistics about velocity, planned versus delivered story points or how precise story estimation was.
+Or worst, they collect extensive statistics about velocity, planned versus delivered story points or how precise story estimation was.
 
 At the end of the day, your job is to mentor your team to be champions and build awesome products.
 _Wake up!_ You are not a product manager, you shall be a catalyst.
@@ -28,21 +28,21 @@ _Wake up!_ You are not a product manager, you shall be a catalyst.
 * Be a https://en.wikipedia.org/wiki/Servant_leadership[servant leader] whose focus is on the needs of the team members and those they serve (the customer), with the goal of achieving results in line with the organization’s values, principles, and business objectives,
 * Teach ensuring agile, lean, Scrum and other approaches are understood and enacted,
 * Mentor to transfer agile knowledge and experience to the team, and concentrate on continuous improvement,
-* Coach the individual with a focus on their mindset and behaviour,
-* Help the organization to truly collaborate with the Scrum team,
-* Be an impediment remover solving blocking issues to the team’s progress, taking into account the self-organizing capabilities of the development team,
-* Facilitate by setting the stage and providing clear boundaries in which the team can collaborate,
-* Be a change agent to enable a culture in which Scrum teams can flourish,
+* Coach the individual with a focus on their mindset and behaviour.
+* Help the organization to truly collaborate with the Scrum team.
+* Be an impediment remover solving blocking issues to the team’s progress, taking into account the self-organizing capabilities of the development team.
+* Facilitate by setting the stage and providing clear boundaries in which the team can collaborate.
+* Be a change agent to enable a culture in which Scrum teams can flourish.
 
 Remember the definition of an agile or Scrum team.
-Ask yourself if your team fulfill this definition.
+Ask yourself if your team fulfils this definition.
 Work hard to improve if it is not the case.
 Each team is self-managing, cross-functional and customer-focused, co-located, long-lived.
 
 === Scrum Master Tasks
 
 * Help your teams to remove impediments.
-From time to time you could also remove a specific impediment.
+From time to time, you could also remove a specific impediment.
 * Evangelise agile, lean values and principles
 * Moderate Scrum meetings - do not forget to regulate delegate moderation to your team -
 * Gently transform your department and organization to become more agile
@@ -59,11 +59,11 @@ Do not create head sinks in documents, * Holding meetings with one person projec
 [quote,Geoff Watts,Scrum Mastery]
 ____
 A good Scrum Master helps a Scrum Team survive in an organization's culture.
-A great Scrum Master helps change the culture so Scrum Teams can thrive.
+A great Scrum Master helps change the culture, so Scrum Teams can thrive.
 ____
 
 Face 2 Face::
-Prefer physical meetings to all other communication medium.
+Prefer physical meetings to all other communication mediums.
 Use video conference and chatting tools to feel the mood of your team.
 Emergent::
 Good enough to try it, Safe enough to do it.
@@ -76,7 +76,7 @@ You are not in charge of the team processes, the team is,
 https://en.wikipedia.org/wiki/Community_of_practice[Community of Practice] _PoC_::
 is an effective way to move your team to technical excellence.
 
-If you are new to the role read "The Great Scrum Master" from Zuzana Šochová.
+If you are new to the role, read "The Great Scrum Master" from Zuzana Šochová.
 A more extensive link:../../2017/list-of-agile-and-lean-books-for-software-engineers-or-students[list of books] can be found here.
 
 [bibliography]

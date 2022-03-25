@@ -49,13 +49,13 @@ Restart your brown bag training program.
 A Friday beer event is always a welcome event.
 
 Celebrate success after each major release of your products.
-Another gain is a lot of tensions just disappear when people talk around snacks and drink together a glass of wine.
+Another gain is tension just disappear when people talk around snacks and drink together a glass of wine.
 
 === Upgrade your Toolbox
 
-As a Java developer it is time to use state of the industry tools and improve your daily work
+As a Java developer, it is time to use state of the industry tools and improve your daily work
 
-. Java 9 JDK - If you are still working with Java 7 or earlier you are a laggard
+. Java 9 JDK - If you are still working with Java 7 or earlier, you are a laggard
 .. Java 8 public support will end middle of next year.
 .. Java 10 shall be available next year.
  The early releases are already online.
@@ -67,7 +67,7 @@ As a Java developer it is time to use state of the industry tools and improve yo
 . Continuous integration, delivery and deployment pipelines.
 .. Never again configure manually a deployment by hand.
 . Test environments with Docker
-.. Never say again "it is working on my machine".
+.. Never say again, _it is working on my machine_.
 . Modern IDE such as IntelliJ IDEA
 .. Very good Gradle support.
 .. Very good JUnit 5 support.
@@ -75,7 +75,7 @@ As a Java developer it is time to use state of the industry tools and improve yo
  Run a test, create a test, create subclass, convert to closure, generate missing test methods, remove explicit type, split into declaration and assignment, introduce local variable.
  The suggestions are limitless.
 .. Great Java 8 support, suggesting lambda notation where appropriate!
-.. Even displaying anonymous inner class usage (collapsed) as if it was written using a lambda expression,
+.. Even displaying anonymous inner class usage (collapsed) as if it was written using a lambda expression.
 . Quality with PMD, FindBugs, SonarLint, or the build-in rules of IntelliJ
 . Banish Flash from your workstation
 
@@ -83,7 +83,7 @@ As a Java developer it is time to use state of the industry tools and improve yo
 
 ==== Sustainable Pace
 
-Agile approaches state you should work at a sustainable pace, forty hours a week. Avoid working overtime during evenings or weekends.
+Agile approaches state you should work at a sustainable pace, forty hours a week. Avoid working overtime during the evenings or weekends.
 
 Enjoy family time, practice sport, give back to the community.
 
@@ -91,7 +91,7 @@ Work with your team, ideally collocated in a team room. Face2Face exchanges and 
 
 ==== Hone your Craftsmanship
 
-Here some suggestions to hone your craftsmanship
+Here are some suggestions to hone your craftsmanship
 
 * Practice coding dojos to improve your programming skills.
 * Read good technical books, at least one book per quarter.
