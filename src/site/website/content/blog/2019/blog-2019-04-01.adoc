@@ -13,7 +13,7 @@ tags: ["design"]
 
 image::2019-04-01-head.jpg[width=420, height=360, role=left]
 You have a successful product and happy users.
-Slowly the cost adding new features is creeping up and product margins are shrinking.
+Slowly, the cost of adding new features is creeping up and product margins are shrinking.
 Which crimes did put us in this dreaded situation?
 
 How can you analyze the history of your product's source code?
@@ -24,14 +24,14 @@ How can you find good approaches to increase time to market and improve developm
 This article presents a set of tools you can use to better understand the alternatives and select the best approach for your product.
 
 Our approach is based on the de facto standard for source code version management https://git-scm.com/[git].
-If your development department is using another tool you should consider moving to another company.
+If your development department is using another tool, you should consider moving to another company.
 
 === First Steps
 
 We want to investigate various contexts in our source code history and identify suspects.
 A context can be a single file, a class, a package or a module.
 
-Gather overall information concerning your repository - use the optionals --before and --after to restrict the time range you are interested in -
+Gather overall information concerning your repository – use the optionals --before and --after to restrict the time range you are interested in -
 
 [source, bash]
 ----
@@ -58,7 +58,7 @@ Find out how many times a specific context was modified
 git log -- contextPath --pretty=format:'%an' | grep 'Author' | sed -e 's/Author: \(.*\) <\(.*\)/\1/' | sort -rg | uniq -c | sort -rg
 ----
 
-Find out how many errors were fixed in a specific context - e.g. identified through close #TicketId -
+Find out how many errors were fixed in a specific context – e.g. identified through close #TicketId -
 
 [source, bash]
 ----
@@ -77,18 +77,18 @@ Simply use the above described approach to identify the most often changed files
 
 ==== Identify team and social metrics
 
-To understand team dynamics you should group individual developers to their team.
+To understand team dynamics, you should group individual developers to their team.
 Simply replace the name of the team member with the team name at the command line using grep or sed.
 Now you can analyze the set of files the team mainly modifies and maintains.
-If none can be found you have a diffuse code ownership and will have quality issues.
+If none can be found, you have diffuse code ownership and will have quality issues.
 
-Using the https://en.wikipedia.org/wiki/Domain-driven_design[domain driven design] _DDD_ terminology, bounded domains are developed and maintain through one team.
+Using the https://en.wikipedia.org/wiki/Domain-driven_design[domain driven design] _DDD_ terminology, bounded domains are developed and maintained through one team.
 This approach encourages architectural purity, continuous refactoring, and accountability.
 
 ==== Manage Off-boarding Risks
 
 Each time you find a set of source code artifacts only modified by a single individual you have identified a major off-boarding risk.
-When this developer will leave the department or the company all knowledge associated with the development and the maintenance of these components will immediately be lost.
+When this developer will leave the department or the company, all knowledge associated with the development and the maintenance of these components will immediately be lost.
 
 === Visualize
 

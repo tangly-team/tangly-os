@@ -11,11 +11,12 @@ tags: ["agile", "series-agile-design"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2019-06-01-head.png[width=420, height=360, role=left]
+image::2019-06-01-head.png[width=420,height=360,role=left]
+
 You are applying the agile, lean approach to your software product development.
 Your teams use Scrum or Kanban to deliver running software every two weeks.
 
-To create an agile architecture you must write agile worthy code.
+To create an agile architecture, you must write agile worthy code.
 Agile code is always clean code.
 
 Start early, do it continuously and soon your code will be clean, legible and free of defects.
@@ -23,11 +24,11 @@ Start early, do it continuously and soon your code will be clean, legible and fr
 === Architecture versus Code
 
 Be honest.
-Having a huge class with thousands of lines of code plainly demonstrate that your organization worked unprofessionally over months in the past.
+Having a huge class with thousands of lines of code plainly demonstrates that your organization worked unprofessionally over months in the past.
 Such monsters are not born over one night coding session.
 It takes time and incompetence to create such maintenance nightmares.
 
-As long as your product contains such code monsters it is worthless to pretend to have a nice and thought through architecture.
+As long as your product contains such code monsters, it is worthless to pretend to have a nice and thought through architecture.
 
 Team discipline and early warning systems are the keys to avoid such blunders and kill the monster in the egg.
 
@@ -37,19 +38,16 @@ The clean code https://en.wikipedia.org/wiki/Test-driven_development[test driven
 Professional developers adopted this approach to deliver high quality, legible and maintainable code artifacts.
 
 image::2019-06-01-red-green-refactor.png[float="left]
-. *Red* - Write a test and run it, validating the test harness,
+. *Red* - Write a test and run it, validating the test harness.
 . *Green* - Write the minimum amount of code to implement the functionality validated in the previously developed test.
-Update the code and run the tests until the test suite shows successful execution,
-. *Refactor* the code to reach clean code level.
-Continuously run the tests to guaranty compliant changes.
+Update the code and run the tests until the test suite shows successful execution.
+. *Refactor* the code to reach a clean code level.
+Continuously run the tests for guaranty compliant changes.
 
-If you are a Java developer you will
-* Use JUnit 5 and Mockito 2 to implement the first step,
-* Use a powerful IDE such IntelliJ IDEA to write and enhance the functional code,
-* Use tools such as SonarLint, Jacoco, Spotbugs, ArchUnit to refactor your functional code and test cases.
+If you are a Java developer you will * Use JUnit 5 and Mockito 2 to implement the first step, * Use a powerful IDE such an IntelliJ IDEA to write and enhance the functional code, * Use tools such as SonarLint, Jacoco, Spotbugs, ArchUnit to refactor your functional code and test cases.
 Clean code applies to productive and test code.
 
-The described approach is a good practice since the beginning of this millennium.
+The described approach has good practice since the beginning of this millennium.
 All above-mentioned tools are open source and free to use.
 Your organization has no excuse to write crap code.
 
@@ -60,10 +58,10 @@ It is also a prerequisite to agile architecture.
 === Acceptance Test Driven Development
 
 How do you know what are the requirements of a specific feature?
-Either write huge amount of outdated documentation or find a better way.
+Either write a huge amount of outdated documentation or find a better way.
 The better way is https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[acceptance test driven development] _ATDD_.
 
-For each feature you need acceptance criteria; this approach is also called _specification by example_.
+For each feature, you need acceptance criteria; this approach is also called _specification by example_.
 For each acceptance criteria write an acceptance test which is executed each time the application is updated in the continuous delivery pipeline.
 The acceptance tests are the living documentation of the behavior of your product.
 
@@ -71,55 +69,53 @@ To implement this approach you need
 
 * Acceptance criteria which imply specifications by example - you need to train your business analysts and product owners,
 * Cucumber for Java (or equivalent tools) - to write acceptance tests, Mock all external systems including the database.
-You want to have fast build and test time and avoid external dependencies,
+You want to have fast build and test time and avoid external dependencies.
 * A continuous build and delivery pipeline to automatically run your acceptance validation tests upon each application change,
-* Avoid user interface tests - because they are slow and brittle,
-* Use in memory database only if you have to - they are a fast solution to write acceptance tests but are intrinsically slower than mocks.
+* Avoid user interface tests - because they are slow and brittle.
+* Use an in-memory database only if you have to - they are a fast solution to write acceptance tests but are intrinsically slower than mocks.
 
 === Code Sociology
 
 The most simple engineering practices are the most powerful.
 Practice consolidates changes in behavior of your development organization.
 
-* https://en.wikipedia.org/wiki/Pair_programming[Pair Programming] - is a training on the job and crowd wisdom approach to steadily improve knowledge and
-quality -,
-* https://en.wikipedia.org/wiki/Test-driven_development[TDD] and https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD] - are safety
-net to guaranty quality attributes in your source code,
-* https://en.wikipedia.org/wiki/DevOps[DevOps] starting with git, docker, continuous integration, delivery and deployment - to speed up development and
-eliminate tedious manual errors,
+* https://en.wikipedia.org/wiki/Pair_programming[Pair Programming] - is a training on the job and crowd wisdom approach to steadily improving knowledge and quality -.
+* https://en.wikipedia.org/wiki/Test-driven_development[TDD] and https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD] - are safety net to guaranty quality attributes in your source code.
+* https://en.wikipedia.org/wiki/DevOps[DevOps] starting with git, docker, continuous integration, delivery and deployment - to speed up development and eliminate tedious manual errors.
 * Lack of accountability equates to lack of trust - your teams are accountable for the quality of your product.
 You should trust them.
 
-Once good practices are established you can move to more sophisticated tools - such as git history code analysis - to uncover weaknesses in your development department.
+Once good practices are established, you can move to more sophisticated tools - such as git history code analysis - to uncover weaknesses in your development department.
 
-Teams ready to learn from the like of Google could evaluate https://trunkbaseddevelopment.com/[Trunk Based Development] and consider long-lived branches as
-waste.
+Teams ready to learn from the like of Google could evaluate https://trunkbaseddevelopment.com/[Trunk Based Development] and consider long-lived branches as waste.
 
 ==== Code Review
 
-A code review can be done different ways.
-Many teams use GitHub, Bitbucket or GitLab. So a very common approach for our code reviews are pull requests.
+A code review can be done in different ways.
+Many teams use GitHub, Bitbucket or GitLab.
+A very common approach for our code reviews is using merge requests.
 However, there are situations where pull requests are not necessary.
 For example, if a feature is implemented in pair programming or mob programming then the code is already reviewed while it is written.
 
 We decided that it does not have to be reviewed again but of course, everybody may look at the commits later on in GitHub and add comments.
 A rule of thumb we agreed upon is that every line of code has to be approved by at least one other developer before it is pushed into our master branch.
 
-==== Pull Requests in Trunk Based Development
+==== Pull Requests in Trunk-Based Development
 
-In trunk based development it is different.
+In trunk-based development it is different.
 Since we want to merge our commits into the master branch as quickly as possible, we cannot wait until the complete feature is finished.
-Unlike in the original trunk based development approach we still use feature branches, but we have much less divergence from the master branch than in Git Flow.
+Unlike in the original trunk-based development approach we still use feature branches, but we have much less divergence from the master branch than in Git Flow.
 We create a pull request as soon as the first commit is pushed into the feature branch.
-Of course that requires that no commit breaks anything or causes tests to fail.
+Of course, that requires that no commit breaks anything or causes tests to fail.
 Remember that unfinished features can always be disabled with feature toggles.
 
 Now, with part of the new feature committed and the pull request created, another developer from the team can review it.
-In most cases that does not happen immediately because the developers don’t want to interrupt their work every time a team member pushes a commit.
+In most cases, that does not happen immediately because the developers don’t want to interrupt their work every time a team member pushes a commit.
 Instead, the code reviews are done when another developer is open for it.
 Meanwhile, the pull request might grow by a few commits.
 
-The code is not always reviewed immediately after the commit but in most cases it reaches the master branch much quicker than in Git Flow.
+The code is not always reviewed immediately after the commit.
+In most cases it reaches the master branch much quicker than in Git Flow.
 
 === Agile Architecture Series
 
@@ -132,5 +128,4 @@ The agile architecture track contains the following blogs
 . link:../../2020/legacy-systems-refactoring[Legacy Systems Refactoring]
 . link:../../2020/how-agile-collaborators-learn[How Agile Collaborators Learn]
 
-We also published our https://www.tangly.net/insights/continuous-learning/agile-architecture-course[agile architecture course] (3 ECTS) used for teaching
-computer science students at bachelor level at Swiss technical universities.
+We also published our https://www.tangly.net/insights/continuous-learning/agile-architecture-course[agile architecture course] (3 ECTS) used for teaching computer science students at bachelor level at Swiss technical universities.

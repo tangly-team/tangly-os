@@ -11,24 +11,26 @@ tags: ["agile", "design", "architecture", "series-agile-design"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2019-05-01-head.jpg[width=420, height=360, role=left]
+image::2019-05-01-head.jpg[width=420,height=360,role=left]
+
 You are applying the agile, lean approach to your software product development.
 Your teams use Scrum or Kanban to deliver running software every two weeks.
 The product market introduction is a success.
 You will successfully sell the solution for the next ten years.
 
-How shall you define the software architecture of your product and insure a long living and high quality solution?
-The experts tell you the design is emergent, what does it mean?
+How shall you define the software architecture of your product and insure a long living and high-quality solution?
+The experts tell you the design is emergent.
+What does it mean?
 
 === LeSS Architecture Observations
 
 The following observations are true for any software product.
 It is irrelevant if developed using agile approaches or traditional older ones.
 
-. _The sum of all source code is the true design blueprint or software architecture_,
-. The real software architecture evolves (better or worse) every day of the product, as people do programming,
-. The _real living architecture needs to be grown every day_ through acts of programming by master programmers,
-. A software architect who is not in touch with the evolving source code of the product is out of touch with reality,
+. _The sum of all source code artifacts is the true design blueprint or software architecture_.
+. The real software architecture evolves (better or worse) every day of the product, as people do programming.
+. The _real living architecture needs to be grown every day_ through acts of programming by master programmers.
+. A software architect who is not in touch with the evolving source code of the product is out of touch with reality.
 . _Every programmer is some kind of architect_ — whether wanted or not.
 Every act of programming is some kind of architectural act — good or bad, small or large, intended or not.
 
@@ -53,7 +55,7 @@ You shall measure the quality of your design and produced software artifacts.
 
 The above validation activities are backed through tools.
 But these tools can only detect non-quality and never provide a proof you achieved quality.
-Qualified and experienced engineers is your best guaranty to achieve and sustain high quality in architecture and software products.
+Qualified and experienced engineers are your best guaranty to achieve and sustain high quality in architecture and software products.
 
 Implement the above measures to gather data and publish the actual state of your source code.
 You find further information in Code Scene as Crime Scene, SonarLint for the Impatient, and Pragmatic Craftsmanship articles.
@@ -73,17 +75,16 @@ ____
 
 Your development teams
 
-* are expert in the used programming language and stack,
-* understand object-oriented, functional and rule based programming,
-* known all major patterns and idioms of the used development stack,
-* practice https://en.wikipedia.org/wiki/Test-driven_development[TDD], https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD], clean
- code, refactoring, embrace CI/CD and DevOps,
-* read source code from open source projects to learn better ways,
+* are experts in the used programming language and stack.
+* understand object-oriented, functional and rule-based programming.
+* known all major patterns and idioms of the used development stack.
+* practice https://en.wikipedia.org/wiki/Test-driven_development[TDD], https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD], clean code, refactoring, embrace CI/CD and DevOps,
+* read source code from open source projects to learn better ways.
 * know https://en.wikipedia.org/wiki/SMART_criteria[SMART], https://en.wikipedia.org/wiki/INVEST_(mnemonic)[INVEST],
- https://de.wikipedia.org/wiki/Solid_(Software)[SOLID], https://en.wikipedia.org/wiki/KISS_principle[KISS],
- https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI],
-* hold weekly design workshops with huge whiteboards,
-* use https://en.wikipedia.org/wiki/Domain-driven_design[domain driven design] and https://en.wikipedia.org/wiki/Event_storming[event storming],
+https://de.wikipedia.org/wiki/Solid_(Software)[SOLID], https://en.wikipedia.org/wiki/KISS_principle[KISS],
+https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI].
+* hold weekly design workshops with huge whiteboards.
+* use https://en.wikipedia.org/wiki/Domain-driven_design[domain driven design] and https://en.wikipedia.org/wiki/Event_storming[event storming].
 * avoid https://en.wikipedia.org/wiki/Big_Design_Up_Front[BDUF].
 
 [quote]
@@ -106,5 +107,4 @@ The agile architecture track contains the following blogs
 . link:../../2020/legacy-systems-refactoring[Legacy Systems Refactoring]
 . link:../../2020/how-agile-collaborators-learn[How Agile Collaborators Learn]
 
-We also published our https://www.tangly.net/insights/continuous-learning/agile-architecture-course[agile architecture course] (3 ECTS) used for teaching
-computer science students at bachelor level at Swiss technical universities.
+We also published our https://www.tangly.net/insights/continuous-learning/agile-architecture-course[agile architecture course] (3 ECTS) used for teaching computer science students at bachelor level at Swiss technical universities.

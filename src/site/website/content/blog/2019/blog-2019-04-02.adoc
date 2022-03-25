@@ -13,7 +13,7 @@ tags: ["organization"]
 
 image::2019-04-02-head.jpg[width=420,height=360,role=left]
 
-As a young developer I loved Linux, compiled new kernels during evening sessions and struggled days to have the correct drivers for the graphic card and communication components of my notebook.
+As a young developer, I loved Linux, compiled new kernels during evening sessions and struggled days to have the correct drivers for the graphic card and communication components of my notebook.
 
 I grew older and decided to enjoy my weekends, family and outdoor activities.
 
@@ -24,13 +24,17 @@ So I went to macOS and Apple notebooks without regrets.
 
 The major gains using macOS are * Still no virus scanner is necessary, the speed-up during complex programming and development activities is tremendous, * No trouble when updating OS, updates are automatic and often no new start is required, Unix command line and tools are available in the console.
 Homebrew provides all known and less-known utilities and programs available under Linux.
+
 * My previous MacBook is now six years old and still used as a development backup platform.
-The performance is still very good, * My preferred IDE Intellij IDEA works flawlessly on macOS, * My new MacBookPro is perfect for Java development, database integration and running multiple Docker images locally.
+The performance is still very good.
+* My preferred IDE Intellij IDEA works flawlessly on macOS.
+* My new MacBookPro is perfect for Java development, database integration and running multiple Docker images locally.
 The 32 GB RAM goes a long way to run multiple docker images and databases.
 
 No virus scanner is still important.
-I was lately at a customer site and the whole deployment just crashed because IT department decided to update the virus scanner and associated options.
-Suddenly the generated artifacts were considered harmful.
+I was lately at a customer site.
+The whole deployment just crashed because IT department decided to update the virus scanner and associated options.
+Suddenly, the generated artifacts were considered harmful.
 This decision just broke the CI/CD pipeline for hours.
 
 https://brew.sh/[Homebrew] easily downloads and installs newer versions of favorite applications and utilities.
@@ -43,16 +47,16 @@ Just use Homebrew and forget about Apple slow updates.
 The tools I really enjoy and use on a daily basis for software development - mainly Java - are
 
 * https://www.jetbrains.com/idea/[IntelliJ IDEA] IDE is still a dream.
-It could sometimes be slightly snappier but still the best Java IDE under the sky,
-** UML diagrams are created with https://plantuml.com/[plantUML] and the provided plugin,
-** Documents are written in {ref-asciidoc} with the existing plugin,
-** https://git-scm.com/[Git] is kept up to date with homebrew,
-** {ref-gradle} is kept up to date either with homebrew or gradlew,
-* Atlassian Cloud applications - https://bitbucket.org/[BitBucket], https://trello.com/[Trello] and CI pipeline - and SourceTree for some git operations,
-* https://brew.sh/[Homebrew] as package manager for utilities,
-* https://www.docker.com/[Docker] as container manager - for complex product you can run locally kubernetes,
+It could sometimes be slightly snappier but still the best Java IDE under the sky.
+** UML diagrams are created with https://plantuml.com/[plantUML] and the provided plugin.
+** Documents are written in {ref-asciidoc} with the existing plugin.
+** https://git-scm.com/[Git] is kept up to date with homebrew.
+** {ref-gradle} is kept up to date either with homebrew or gradlew.
+* Atlassian Cloud applications - https://bitbucket.org/[BitBucket], https://trello.com/[Trello] and CI pipeline - and SourceTree for some git operations.
+* https://brew.sh/[Homebrew] as package manager for utilities.
+* https://www.docker.com/[Docker] as container manager - for complex product you can run locally kubernetes.
 * _https://www.google.com/chrome/[Chrome] is my default browser.
-I almost never use _Safari_ or _Firefox_,
+I almost never use _Safari_ or _Firefox_.
 
 I retired https://www.virtualbox.org/[VirtualBox] because I do not need any virtual machines.
 They were replaced with Docker images, I stopped using MacPorts.

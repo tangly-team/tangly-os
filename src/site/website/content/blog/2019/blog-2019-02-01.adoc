@@ -16,18 +16,19 @@ You are developing your application using agile and lean approaches.
 
 How can you check your approach and distill improvements?
 
-A health check of your product and your development approach is certainly a good solution.
+Health check of your product and your development approach are certainly a good solution.
 
 This post is the fourth and last of a set of articles identifying health checks with different focus.
 
 We will identify strengths, potential weaknesses and hopefully find room for improvement.
 
-What is your company culture and how does it focus collaborators to delight your customers.
+What is your company culture?
+How are collaborators focused to delight your customers?
 
 === Rules
 
 The patient solely decides if a health check shall be performed.
-The effort and depth of a health check is defined together with the patient.
+The effort and depth of a health check are defined together with the patient.
 The findings are considered confidential.
 
 [quote, Jurgen Appelo]
@@ -41,7 +42,7 @@ A short check with a feedback workshop presenting the insights requires around t
 A deeper and more intensive check requests more effort, between one and four weeks.
 
 Upon completion, you can also hire a coach to implement selected findings and improve durably the health of your application.
-The findings are often clear and the measures straightforward.
+The findings are often clear and the measures are straightforward.
 
 image::2019-02-01-daily-learnings.jpg[]
 The real work is to implement consistently the measures.
@@ -52,7 +53,7 @@ Small improvements accumulate earnings over time.
 I have the same personal challenge when trying to lose weight or improve my running form.
 The long term implementation is the crux.
 
-The biggest flag to identify a learning and improvement focused culture is perhaps this statement
+The biggest flag to identifying a learning and improvement focused culture is perhaps this statement
 
 [quote]
 ____
@@ -66,7 +67,7 @@ ____
 A set of questions to detect cultural flaws for a lean and agile focused company are
 
 . Do you still have individual bonuses?
-. Do the organization provides feedback to each employee at least on a monthly basis?
+. Does the organization provide feedback to each employee at least on a monthly basis?
 . How complex is your travel expenses regulation?
 . Are all C-level managers trained and certified in lean agile leadership and agile approaches?
 . Are the human resources department collaborators trained in agile approaches and agile HR?
@@ -74,7 +75,7 @@ A set of questions to detect cultural flaws for a lean and agile focused company
 . Are all collaborators and managers working in the development organization trained in software development techniques?
 . Is there a product charter that lays out the mission and strategic goals?
 . Do all members of the team understand both, and are they able to see how their work contributes to both?
-. Do you release your products at least monthly?
+. Do you release your products at least once a month?
 . Do software developers have local administrator rights on their workstation?
 . Can software developers install tools and libraries on their workstation?
 . How is the working environment of your talented developers?
@@ -94,11 +95,11 @@ A set of questions to detect cultural flaws for a lean and agile focused company
 
 A very powerful check is to reflect on the behavior of your managers. Ask yourself:
 
-Do your managers knows the four most important sentences and practice them daily?
+Do your managers know the four most important sentences and practice them daily?
 
 . _Sorry_
 . _Thank you_
-. _I am sorry_ or _I am wrong_
+. _I am sorry_, or _I am wrong_
 . _Can I help you?_
 
 === Posts in the Health Check Series
