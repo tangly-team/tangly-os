@@ -40,7 +40,7 @@ The software component shall be delivered after the first or second iteration, w
 
 New technologies such as 3D printing, cheap hardware and IoT boards, continuous delivery, simulation enable your teams to deliver on time.
 These are not pure mockups but executable applications.
-If it appeals to the customer, the MVP will evolve gradually to a minimum marketable product - MMP -.
+If it appeals to the customer, the MVP will evolve gradually to a minimum marketable product – MMP –.
 The focus is always on adding customer value.
 
 === Beyond Budgeting Approaches
@@ -65,7 +65,7 @@ Co-location also means: You are moving.
 The teams move into a room and work focused together on their product.
 There are no phones, no other projects, and no outside distractions.
 They use collaboration tools - chats, wikis, Scrum boards -.
-Scrum teams are wholly focused on their product,
+Scrum teams are wholly focused on their product.
 
 People check three times a day their emails; otherwise the email client is closed and inactive.
 All phones have voicemail.
@@ -97,11 +97,11 @@ The goal is to deliver a software release in production every few hours if neede
 
 . The power of co-location is tremendous.
 The work atmosphere is focused, friendly and productive.
-Team members are continuously working on the solution without spurious task switches in their team room,
-. Establish stable and long living teams,
-. Realize the importance of training and coaching,
-. Embed your teams and processes in the organization,
+Team members are continuously working on the solution without spurious task switches in their team room.
+. Establish stable and long living teams.
+. Realize the importance of training and coaching.
+. Embed your teams and processes in the organization.
 . Change processes for beyond budgeting approaches and lean enterprise.
-The organization has to stop requiring exact budgets and detailed yearly planning,
+The organization has to stop requiring exact budgets and detailed yearly planning.
 . Reflect on the impact on the whole organization.
 See also my blog discussing what agile companies are.

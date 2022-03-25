@@ -14,7 +14,7 @@ tags: ["agile"]
 image::2018-02-01-head.jpg[width=420, height=360, role=left]
 The Scrum guide was revised in 2016 and got clarification concerning the core values.
 I was thrilled.
-Talking about values and mental models you must have to successfully introduce and be agile is awesome.
+Talking about values and mental models, you must have to successfully introduce and be agile is awesome.
 
 A new revision was published at the end of year 2017, just a year after the values addition.
 
@@ -27,10 +27,10 @@ What has the community learnt and committed to the new version of the guide?
 Scrum was initially developed for managing and developing products.
 Starting in the early 1990s, Scrum has been used extensively, worldwide, to:
 
-. Research and identify viable markets, technologies, and product capabilities,
-. Develop products and enhancements,
-. Release products and enhancements, as frequently as many times per day,
-. Develop and sustain Cloud (online, secure, on-demand) and other operational environments for application use,
+. Research and identify viable markets, technologies, and product capabilities.
+. Develop products and enhancements.
+. Release products and enhancements, as frequently as many times per day.
+. Develop and sustain Cloud (online, secure, on-demand) and other operational environments for application use.
 . Sustain and renew products.
 
 The essence of Scrum is a small team of people.
@@ -94,7 +94,7 @@ Added clarity around time-boxes::
 
 *The guide clarifies the daily Scrum event. It establishes a daily feedback loop for improvement.*
 
-*For slow learners time-box means maximum duration.*
+*For slow learners, time-box means maximum duration.*
 
 === Scrum Artifacts
 
@@ -104,13 +104,13 @@ Added clarity to the Increment section::
  An increment is a body of inspectable, "Done" work that supports empiricism at the end of the Sprint.
  The increment is a step toward a vision or goal.
 
-*The guide emphasizes the learning and improvements process. One root of the agile manifesto is lean thinking.*
+*The guide emphasizes the learning and improvement process. One root of the agile manifesto is lean thinking.*
 
 *For slow learners, you inspect the result of the increment and put at least one improvement measure in the next sprint backlog.*
 
 === Previous Changes
 
-The biggest change for the daily work was introduced in the previous revision - read previous blog -.
+The biggest change for the daily work was introduced in the previous revision – read previous blog -.
 The word _commitment_ is no more used in the description of the planning event.
 The team now provides a *forecast* which stories shall be realized until the end of the sprint.
 

@@ -39,11 +39,11 @@ Write regularly together source code.
 Decide that all complex code parts shall always be developed through pair programming.
 If you feel adventurous, give a try to mob programming.
 Pair Programmers learn:
-* To perform a form of continuous review,
-* To provide a measurable increase of quality,
-* To evaluate more options than solo programmers,
-* To smooth the low points of your partner and level-up the high points,
-* To produce simpler solutions,
+* To perform a form of continuous review.
+* To provide a measurable increase of quality.
+* To evaluate more options than solo programmers.
+* To smooth the low points of your partner and level-up the high points.
+* To produce simpler solutions.
 Use Refactoring::
 Before pushing your code to the Git repository, always take a look and refactor your code.
 You are a craftsman and shall be proud of your result,
@@ -59,8 +59,8 @@ Use the actual constructs to write solid and resilient code.
 
 [NOTE]
 ====
-Pairs complete a task in 60% of time taken by solo programmer.
-So two people are nearly but not quite twice as fast.
+Pairs complete a task in 60% of time taken by a solo programmer.
+So two people are almost but not quite twice as fast.
 
 Programmers working in pairs produce higher-quality output.
 Teams with high scores in stability and throughput spend 44% more time on new work.
@@ -81,7 +81,8 @@ The successor of the wildly popular FindBugs tool can be integrated in your buil
 PMD::
 Is another tool to automatically detect potential quality problems,
 IntelliJ IDEA build-in Checks::
-You are lazy and do not want to use additional tools, please use at least the build-in checkers of IntelliJ IDEA to improve your code.
+You are lazy and do not want to use additional tools.
+Please use at least the build-in checkers of the IntelliJ IDEA to improve your code.
 It is very unprofessional to have equality problems or boolean condition errors in modern code.
 
 === Test Quality
@@ -101,7 +102,8 @@ Mockito::
 Tests must be lightening fast, thousands of unit tests shall run in a few seconds.
 Remove all dependencies to external components from your source code, mock these elements with Mockito.
 Hamcrest::
-Your test conditions are complexer and you want to have legible code, start using hamcrest to write clear assertions in your tests.
+Your test conditions are complex.
+You want to have a legible code, start using hamcrest to write clear assertions in your tests.
 
 Please never access a database or a file system when running unit tests.
 If you low-level tests with files, just use an
@@ -113,9 +115,9 @@ This approach guarantees the same error will never again occur.
 
 ==== Acceptance Test Driven Development - ATDD
 
-You are serious about delivering the functions your customer need.
+You are serious about delivering the functions your customer needs.
 Each story you implement has acceptance criteria.
-These acceptance criteria defines your requirements - see https://en.wikipedia.org/wiki/Specification_by_example[specification by example] -.
+These acceptance criteria define your requirements – see https://en.wikipedia.org/wiki/Specification_by_example[specification by example] – .
 Your acceptance tests document and validate these requirements.
 
 Cucumber::
@@ -131,10 +133,10 @@ Lean means build-in quality.
 Your continuous pipeline certifies after each change that your solution is correct and has the correct behavior.
 
 Gradle:: Is the new standard for building your artifacts.
-Jenkins:: Is the regular tool for local build pipeline.
+Jenkins:: Is the regular tool for a local build pipeline.
 
-If you a choice, use cloud continuous integration for team activities.
-Decide if you prefer the cloud approach - e.g. with TravisCI or Bitbucket Pipelines - or Jenkins within Docker for your local integration activities.
+If you have a choice, use cloud continuous integration for team activities.
+Decide if you prefer the cloud approach – e.g. with TravisCI or Bitbucket Pipelines – or Jenkins within Docker for your local integration activities.
 
 A smooth running CI pipeline is a boost for team morale and motivation.
 To know your application compiles and runs through all your automated tests anytime is such a good feeling.
@@ -145,7 +147,7 @@ Agile means react fast the changes.
 You need to deliver and deploy your new solution to your customers in minutes or hours.
 
 Docker::
-Virtual machines were a powerful construct but they are slow and require a lot of resources.
+Virtual machines were a powerful construct, but they are slow and require a lot of resources.
 Docker is the answer.
 Start a testing instance in 300 milliseconds.
 Tomcat and TomEE::
@@ -161,7 +163,7 @@ To deploy various integration environments
 === Design Quality
 
 Important decisions and overall structure shall be documented for new team members.
-Architecture Decision Record: A lightweight approach to document architecture decisions using markdown documents and traceability through the decision history.
+Architecture Decision Record: A lightweight approach to document architecture decisions using Markdown documents and traceability through the decision history.
 UML: Sometimes I would like to draw some UML diagrams to explain a design solution.
 I am currently using a textual tool to define such diagrams.
 
@@ -192,7 +194,7 @@ I decided to collect all these hints in the same long post.
 They belong together.
 Every day you design a solution, you code it, test it, improve it and guarantee its quality.
 
-These activities are tangled together to produce a product you are proud of.
+These activities are tangled together to producing a product you are proud of.
 
-And yes, I know about Github, Gitlab, Slack, Ant, Maven, Jetty, Amazon Cloud, AssertJ, Subversion, Eclipse, Netbeans and other good tools.
+And yes, I know about GitHub, Gitlab, Slack, Ant, Maven, Jetty, Amazon Cloud, AssertJ, Subversion, Eclipse, Netbeans and other good tools.
 But I still prefer the ones above; I am convinced to be more productive with them.

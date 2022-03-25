@@ -29,10 +29,10 @@ A metric is a measure or a combination of measures for quantitatively assessing 
 
 A _key performance indicator_ is a metric that
 
-* is tied to a strategic objective,
+* is tied to a strategic objective.
 * have at least one defined time-bound target value - a number, a trend, a variation, etc. -
 
-Therefore, you must defined your strategic objectives before you can use KPIs.
+Therefore, you must define your strategic objectives before you can use KPIs.
 
 Lean approaches have an imperative to reduce cycle-time, eliminate waste and tend to zero-defect products.
 The last one is a corollary because defects are waste. Please use this imperative to define your agile and lean KPIs.
@@ -67,11 +67,11 @@ A high quality software artifact has no code smell issues, no compiler warnings,
 ** Code Smells,
 * Product quality
 ** continuous integration successful build trends,
-** test coverage trends for unit tests, integration tests and -ility tests. This metric implies the development team uses unit testing, TDD, ATDD, and automatic -ility testing,
+** test coverage trends for unit tests, integration tests and -ility tests. This metric implies the development team uses unit testing, TDD, ATDD, and automatic -ility testing.
 * Architecture
 ** Separation of API and implementation - can only be inferred on modern technology stacks -,
 * Work techniques
-** Refactoring trends - sometimes need to be evaluated manually in some projects -,
+** Refactoring trends – sometimes need to be evaluated manually in some projects —,
 ** Emergent Architecture documentation trends - probably needs to be evaluated manually in most projects.
 
 These metrics shall be automatically provided through your quality tracking and continuous integration systems.
