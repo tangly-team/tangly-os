@@ -49,7 +49,7 @@ Current company culture::
 http://www.craiglarman.com/wiki/index.php?title=Larman%27s_Laws_of_Organizational_Behavior[First change the structure], it enables
 http://www.craiglarman.com/wiki/index.php?title=Larman%27s_Laws_of_Organizational_Behavior[cultural change].
 Quite a few companies try to change their culture without altering their structure.
-It is doomed to fail,
+It is doomed to fail.
 Existing company structure and frozen hierarchies::
 It is time to rethink your structure and move decision power to the teams, near to the customers,
 Controlling not tailored to agile approaches::

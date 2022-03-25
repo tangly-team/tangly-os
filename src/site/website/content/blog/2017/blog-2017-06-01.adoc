@@ -20,7 +20,7 @@ There are a number of ways in which Agile Scrum projects repeatedly fail which a
 
 Agile approaches and Scrum framework can reduce risks in projects and increase the return on investment.
 https://www.infoq.com/articles/standish-chaos-2015[Standish Group report] is a proof of this statement.
-One picture shows it all - look at the failed column -
+One picture shows it all – look at the failed column -
 
 image::2017-06-01-agile-vs-waterfall.jpg[role=center]
 
@@ -32,14 +32,15 @@ For example, the team may present burn-down charts together with Gantt charts.
 Or the team computes individual resource allocation for the next three months.
 You can also replace Waterfall with V-Model, http://www.hermes.admin.ch/onlinepublikation/index.xhtml[HERMES], RUP, and even sometimes {ref-safe}.
 ScrumBut::
-describes a team which claims to follow Scrum but misses various practices; for example _We do Scrum but we don’t have a Product Owner_.
+describes a team which claims to follow Scrum but misses various practices.
+For example, _We do Scrum but we don’t have a Product Owner_.
 Or _We do {ref-scrum} but the Project Manager allocates tasks_.
 Such teams normally have a long list of “buts” and show little progress of removing them.
 Hitting The Scrum Wall::
 The most popular Agile method is Scrum which is a product management technique.
 Scrum is normally used with a number of other Agile techniques, typically user stories redaction and the technical practices from {ref-xp} – such as TDD, ATDD, code refactoring, continuous integration and delivery CI/CD, pair programming, etc.
 Teams that adopt the Scrum framework initially see an improvement in productivity and customer satisfaction.
-However without the technical practices quality is low, and the team hit the wall.
+However, without the technical practices quality is low, and the team hit the wall.
 The quality gap makes it impossible to maintain the pace in the long run.
 Fake Agile::
 occurs when a team declares itself Agile and blames everyone else for their failure to interact correctly with the group.
@@ -69,15 +70,16 @@ Hyper changing requirements::
 Most Agile methods, especially Scrum, hold the iteration goals fixed for a few weeks.
 An exception is Kanban.
 Most businesses should be able to hold to goals for such short periods of time.
-If it proves impossible to hold requirements and goals fixed for even one week then something is wrong.
-In a few cases the business is genuinely changing extremely rapidly.
-In this case teams are better off using Kanban style management than a Scrum based approach.
-More often hyper change in goals and requirements are a sign that something is wrong beyond the team.
+If it proves impossible to hold requirements and goals fixed for even one week, then something is wrong.
+In a few cases, business is genuinely changing extremely rapidly.
+In this case, teams are better off using Kanban style management than a Scrum-based approach.
+More often, hyper change in goals and requirements are a sign that something is wrong beyond the team.
 The organization itself may lack strategy and objectives, or the Product Owner may not be filling their role adequately.
 Fragile, not Agile::
 Some Agile techniques, like TDD, ATDD, CI or CD, when poorly applied with a lack of understanding can show short-term benefits but create long-term problems.
 
-Few of these failure modes are unique to Agile approaches, they are reoccurring failure modes for all IT software development projects.
+Few of these failure modes are unique to Agile approaches.
+They are reoccurring failure modes for all IT software development projects.
 Neither are they a comprehensive list of the ways in which Agile or traditional application development projects fail.
 
 We can state that (see the {ref-scrumguide})
@@ -93,7 +95,7 @@ We can state that (see the {ref-scrumguide})
 ** Planning Scrum implementations within the organization.
 ** Helping employees and stakeholders understand and enact Scrum and empirical product development.
 ** Causing change that increases the productivity of the Scrum Team.
-** Working with other Scrum Masters to increase the effectiveness of the application of Scrum in the organization.
+** Working with other Scrum Masters to increase the effectiveness of the framework application in the organization.
 
 The essence of succeeding with Agile, Lean and {ref-scrum} is
 

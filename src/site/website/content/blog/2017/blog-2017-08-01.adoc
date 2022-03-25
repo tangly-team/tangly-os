@@ -21,7 +21,7 @@ The text with the regular font is the job description. I wrote down my comments 
   Advise on the best practices and developing practice, review code.
 ** __A Scrum master empowers a development team. The team schedules the work during each Sprint.
  The team members select the stories they will implement next.
- The Scrum master advices best practices, but he really should not perform code reviews and police the team.__
+ The Scrum master advices the best practices, but he really should not perform code reviews and police the team.__
 ** __He does not manage and certainly not micromanage engineers.
  He shall never evaluate the performance of team members. He shall not police the team by reviewing the source code.__
 * Analyze requirements and provide time estimates: consume non-technical functional requirement documentation.

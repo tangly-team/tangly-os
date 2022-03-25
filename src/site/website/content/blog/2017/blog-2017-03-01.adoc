@@ -44,7 +44,7 @@ An overview about agile management at company level, you should also read the _L
 Lean often means to change your point of view to better understand the system.
 * The Lean Mindset: Ask the Right Questions, Mary Poppendieck & Tom Poppendieck: What does lean mean?
 * Fearless Change: Patterns for Introducing New Ideas, Mary Lynn Manns & Linda Rising:
-When introducing changes you have to understand change management.
+When introducing changes, you have to understand change management.
 You can later read the works of John P. Kotter.
 * Agile Retrospective: Making Good Teams Great, Esther Derby & Diana Larsen & Ken Schwaber The major place where improvements are identified is during retrospectives, often the less well-managed meeting in a Scrum team
 * Practices for Scaling Lean and Agile Development, Craig Larman & Bas Vodde A set of practices and ideas how to do big agile projects, the guys behind {ref-less}
@@ -60,10 +60,10 @@ You have to make beautiful presentation to make a difference!
 
 === History
 
-You have to know history or you will repeat the errors of the past generations.
+You have to know history, or you will repeat the errors of the past generations.
 
 * All books of Tom deMarco e.g. Peopleware, The deadline, Slack, Waltzing with Bears
-* All books of Gerry Weinberg e.g. Becoming a Technical Leader, Are your Lights on?, The Psychology of Computer Programming
+* All books of Gerry Weinberg, such as Becoming a Technical Leader, Are your Lights on?, The Psychology of Computer Programming
 * The Mythical Man-Month: Essays on Software Engineering, Anniversary Edition, Frederick P. Brooks Jr.
 * Good To Great, Jim Collins
 
@@ -74,7 +74,7 @@ You have to know history or you will repeat the errors of the past generations.
 * The Ender Quintet, Orson Scott Card
 * The Art of War, Sun Tzu
 
-Enjoy the reading.
+Enjoy reading.
 Please enjoy life and your family.
 
 Please leave a comment to improve this list.

@@ -16,11 +16,11 @@ What are the main hurdles to introduce agile approaches in Swiss companies?
 The last five years learn us that
 
 * Introducing agile company-wide is a cultural change process.
-Such a change takes time and sometimes hurts,
+Such a change takes time and sometimes hurts.
 * Without commitment of senior management, the initiative will fail.
 * You must teach, coach, support your collaborators through the transition.
 You need to believe in them and provide an environment where they can safely learn and experiment.
-* At the end, what matters is collaborator purpose, customer satisfaction, business value.
+* At the end, what matters are collaborator purpose, customer satisfaction, business value.
 
 http://www.swissq.it/[SwissQ]  has published a "SwissQ Software Development Switzerland 2016".
 The study can be downloaded as PDF from their website.
@@ -43,7 +43,7 @@ The number in parentheses is the value found in the study for year 2013. Bold it
 * 17% (28%): Know-how collaborators
 
 The trend is a clear move toward agile approaches.
-Companies seem less reluctant to introduce agile approaches, but often compromise using for example bimodal IT.
+Companies seem less reluctant to introduce agile approaches, but often compromise using bimodal IT.
 A typical Swiss example is the government Hermes method mixing Scrum with Waterfall.
 
 Major opponents such as senior managers or internal and external customers more and more acknowledge the success of agile approaches.

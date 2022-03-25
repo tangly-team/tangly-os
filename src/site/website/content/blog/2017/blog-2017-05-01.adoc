@@ -22,7 +22,7 @@ I am convinced to achieve ingrained success an agile coach shall
 
 * Coach team members how to reach technical excellence.
 They build your solution, it shall fulfill the user's requirements, be of high quality and affordable.
-* Learn them to attain https://en.wikipedia.org/wiki/Software_craftsmanship/[mastery] and build awesome products,
+* Learn them to attain https://en.wikipedia.org/wiki/Software_craftsmanship/[mastery] and build awesome products.
 * Coach the team how to improve, focus and enjoy the work on a daily basis. https://en.wikipedia.org/wiki/Flow_(psychology)[Flow] shall be natural for them,
 * Coach the organisation how to adapt, provide the ground to have the best collaborators and become most successful in the market.
 Use a https://en.wikipedia.org/wiki/Lean_startup[lean approach].
@@ -30,12 +30,12 @@ Use a https://en.wikipedia.org/wiki/Lean_startup[lean approach].
 In other words, you need technical coaching, team coaching and organization coaching.
 Avoid hiring management consultants with agile painting, coaches should understand software and product development.
 
-At the end of the day your products shall improve.
+At the end of the day, your products shall improve.
 Your customers shall be delighted.
 How your highly qualified teams develop software shall become more effective and efficient.
 
 First comes quality, effectiveness and only later efficiency.
-Look at https://en.wikipedia.org/wiki/Lean_software_development[lean methods], first we improve the quality - effectiveness for the customer - than the productivity - efficiency for the company -.
+Look at https://en.wikipedia.org/wiki/Lean_software_development[lean methods], first we improve the quality-effectiveness for the customer – than the productivity - efficiency for the company -.
 
 === Minimum Viable Change
 
@@ -55,7 +55,7 @@ ____
 You use _Minimum Viable Change_ (MVC).
 So I am using yet another acronym.
 Each MVC has a hypothesis about how to improve an aspect of your organization or your team.
-It has measurements - often called KPI by management - to decide if the change was a worthy improvement.
+It has measurements – often called KPI by management – to decide if the change was a worthy improvement.
 For the savvy readers, it is a variant of PDCA, a cornerstone of all agile and lean approaches.
 
 Our core strength at {ref-tangly} is we truly understand software technology and software craftsmen.
@@ -68,11 +68,11 @@ To improve your organization, you need these three levels of coaching.
 
 Organizational coaching::
 The coach works with multiple teams and the management to improve the organization and its structure
-** Change processes to be customer-centric,
-** Improve organization to see the whole product and the customer,
-** Delegate decision-making processes to your teams,
-** Remove functional silos,
-** Redefine the roles of product managers, middle managers, quality managers,
+** Change processes to be customer-centric.
+** Improve organization to see the whole product and the customer.
+** Delegate decision-making processes to your teams.
+** Remove functional silos.
+** Redefine the roles of product managers, middle managers, quality managers.
 ** Eliminate waste: processes and artefacts not adding any value to the customer products.
 Team coaching::
 The coach works with one or a few teams to improve their team-working and LeSS practices.

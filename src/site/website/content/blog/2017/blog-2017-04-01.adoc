@@ -49,7 +49,7 @@ If a company doesn't get that, then they don't get the software.
 My personal list is:
 
 * Is respect a key value of your organization and your team?
-* Are you creating a meaningful product and improve quality of the life of mankind?
+* Are you creating a meaningful product and improving the quality of life?
 * Are you working in an agile team, preferably a Scrum team?
 * Has your team as sustainable development rhythm?
 * Are you using good software practice daily, such as TDD, ATDD, refactoring, check-in in Git master, CI/CD, deliver each day?

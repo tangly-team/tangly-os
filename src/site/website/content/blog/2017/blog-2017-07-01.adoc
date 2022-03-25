@@ -50,7 +50,7 @@ From time to time, you could also remove a specific impediment.
 ** Remove any individual bonus, either introduce team bonuses or better remove extrinsic motivators
 ** Remove test and quality department, move the specialists to the Scrum teams
 
-You shall by all means avoid administrative waste such as * Writing information in Word documents or in Wiki that nobody actively uses, * Writing multiple times the same information, * Writing status information instead of publishing it on the team board.
+You shall by all means avoid administrative waste, such as * Writing information in Word documents or in Wiki that nobody actively uses, * Writing multiple times the same information, * Writing status information instead of publishing it on the team board.
 The board shall be the information radiator of your product development.
 Do not create head sinks in documents, * Holding meetings with one person projecting their notebook screen content and all other attendees looking at it -.
 

@@ -18,7 +18,7 @@ You develop your software products using agile approaches.
 You are doing {ref-scrum}, {ref-kanban}, https://en.wikipedia.org/wiki/Scrumban/[Scrumban], {ref-lean}, or {ref-less}.
 
 Your collaborators start asking questions about their organisation, management roles, and critique the internal processes.
-How employee yearly evaluation, bonus evaluation - work?
+How employee yearly evaluation, bonus evaluation – work?
 You hear strange statements such _Be agile, do not do agile_.
 
 You as a manager realise you have to describe your role in an agile environment.

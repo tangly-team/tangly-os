@@ -20,7 +20,7 @@ The actual industrial standard is https://git-scm.com/[git], a distributed versi
 https://en.wikipedia.org/wiki/Distributed_version_control[DVCS] -.
 
 Install git on your development machine.
-In case you are using the IntelliJ IDEA configure git in the IDE through the preferences pane.
+In case you are using the IntelliJ IDEA configure git in the IDE through the preference pane.
 
 To put your product under git version management, go to the root of the product and perform the command
 
@@ -64,7 +64,7 @@ From the context menu, choose Git | Add or press⌥⌘A.
 Each time you commit your changes, you gain the ability to reverse back to exactly this state.
 Each time you made a modification and tested it, just commit it.
 The cost of a commit is marginal.
-When working with Git, TDD, and ATDD it is normal to commit every few minutes.
+When working with Git, TDD, and ATDD, it is normal to commit every few minutes.
 By few minutes we mean 5 or 10 minutes.
 
 Observe yourself.
@@ -89,7 +89,7 @@ The same information is available in IntelliJ IDEA under
 
 === Always Work with Trunk
 
-Ideally you shall always work against trunk, also called the main branch.
+Ideally, you shall always work against trunk, also called the main branch.
 Because you develop using TDD and ATTD approaches, you know your source code is always working.
 This approach is deeply compatible with lean and agile values.
 It is also the one with the least waste of effort.
@@ -107,7 +107,7 @@ No problem, with
 git reset --hard
 ----
 
-You revert to the last save committed set of files.
+You revert to the last save-committed set of files.
 Resetting with the hard option recursively discards all of your currently uncommitted (unstaged or staged) changes.
 
 You want to restore just one file to its previous committed state.

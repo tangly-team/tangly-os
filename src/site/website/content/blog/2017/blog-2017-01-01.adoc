@@ -56,7 +56,7 @@ Each time you doubt how you should do an activity, ask your team what is the ROI
 Stakeholders want ROI.
 Each time you request budget from your stakeholders, you should always remember.
 
-_you want stakeholders' money, convince them_.
+_you want stakeholder's money, convince them_.
 Show your different solutions to the problem.
 
 [TIP]
@@ -97,11 +97,11 @@ In Scrum terminology,
 
 " it is also the 20% less important.
 " Meeting costs versus solved issues. Meetings cost money.
-A meeting with eight people and of a duration of 30 minutes costs in Switzerland around 600 Swiss Francs or 500 Euro.
+Meeting with eight people and of a duration of 30 minutes cost in Switzerland around 600 Swiss Francs or 500 Euro.
 
 [TIP]
 ====
-_ROI is Avoiding meetings_
+_ROI is Avoiding meetings._
 
 * Prefer a team gathering or a pair working session.
 * Instead of calling for a meeting, use instant messaging and collaborative tools.
@@ -112,7 +112,7 @@ People do not work anymore, they just sit in meetings.
 ** an agenda,
 ** a moderator,
 ** a protocol of the meeting,
-** as a result a list of decisions and a list of tasks - who must do what until when -.
+** as a result, a list of decisions and a list of tasks - who must do what until when -.
 
 Interesting enough, all Scrum meetings have a clear agenda, a moderator and a documented result.
 
@@ -186,7 +186,7 @@ So you have the right to change everything at the end of each sprint, but the co
 Here again we are back to ROI computations.
 
 As a rule of thumb to test your decision, Uncle Bob stated in the "Clean Coder" book if you deliver an application with errors.
-The only professional approach is to sign personally a check to the customer for the lost of income.
+The only professional approach is to sign personally a check to the customer for the loss of income.
 In other words, are you ready to change the user interface two hours before the sprint demonstration will be held?
 
 === You shall not perform up-front design Architecture emerge during the coding of the solution.
@@ -204,13 +204,13 @@ _ROI: Architecture work versus write it twice_
 
 * You start once you have a vision, an initial plan, and a set of initial decisions.
 * You should not have a complete and detailed plan.
-* Major assumptions should be identified; if they change - see above "You shall allow change any time" - you should reevaluate the architecture.
+* Major assumptions should be identified; if they change - see above, "You shall allow change any time" – you should reevaluate the architecture.
 * You should understand the application domain, the technology, known similar examples and calculate the ROI of the variants you propose.
 * Often teams forget about non-functional requirements such as scalability, reliability, multiple sites.
 These features cannot be added later, you have to write the application twice.
 ====
 
-As a rule of thumb Be honest: our systems are complex, but they are no groundbreaking work.
+As a rule of thumb Be honest: our systems are complex, but there is no groundbreaking work.
 Similar solutions already exist.
 I expect a talented team to provide architecture with some prototyping in less than a sprint.
 
@@ -218,7 +218,7 @@ I expect a talented team to provide architecture with some prototyping in less t
 
 image:2017-01-01-Meeting.jpg[width=420,height=360,role=left]
 Writing user stories is easy, and anyway nobody has time for - The product owner has better to do.
-He writes the stories during a coffee break or just before the start of the planning meeting, - Anyway just read the requirements, it is all written down, - The developers want to code, they have no time to write some user stories or improve them.
+He writes the stories during a coffee break or just before the start of the planning meeting, – Anyway just read the requirements, it is all written down, - The developers want to code, they have no time to write some user stories or improve them.
 
 Scrum states the product backlog is the most important document in a Scrum product.
 
@@ -237,7 +237,7 @@ Use INVEST - Independent, Negotiable, Valuable (ROI), Estimable, Size appropriat
 ====
 
 If not why?
-As a rule of thumb, Writing quality user stories is as tough as writing requirements.
+As a rule of thumb, Writing quality user stories are as tough as writing requirements.
 
 It is the same job!
 
@@ -304,7 +304,7 @@ The truth is complex, more blurred.
 The answer for your product cannot be stated in one standard rule set.
 We are talking about agile quality assurance, lean approaches and the best practices.
 
-The best practice should only be selected through its ROI.
+Best practice should only be selected through its ROI.
 
 Please look at the http://manifesto.softwarecraftsmanship.org/[Software Craftsmanship Manifesto].
 

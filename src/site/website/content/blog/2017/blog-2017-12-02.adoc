@@ -35,20 +35,20 @@ Social responsibility and liability considerations require your product to be im
 Your company shall provide reasonable protection to all your customers.
 Therefore, you always include security patches in your product in a timely manner.
 Other approaches are deeply unprofessional and unethical.
-In quite a few countries you are liable if you do not update your software to avoid known security attacks.
+In quite a few countries, you are liable if you do not update your software to avoid known security attacks.
 
 You should use actual Java JDK and JVM version because the community is concentrating their effort on the latest version.
 Oracle only provides public support for the latest two Java versions, e.g. in January 2018, Java 9 and Java 8 are officially supported.
 Java 8 support will stop end of September 2018, older versions are no more publicly maintained.
 
 If, for some reasons, you are using an older commercially but no more publicly supported JDK, you must sign a support contract with the Oracle company and pay for it.
-You cannot use deprecated JDK versions because nobody provides security fixes on these versions - e.g. Java 6 commercial support ended in December 2017 - .
+You cannot use deprecated JDK versions because nobody provides security fixes on these versions - e.g. Java 6 commercial support ended in December 2017 – .
 
 If you include a deprecated JDK / JVM in your product, you willingly endanger your users and shall be liable for their losses.
 
 Governments started to realize how unprofessional organizations are working.
 Recommendations and laws are grafted to force better security
-footnote:[The White House in the USA initiated an _Executive Order on Improving the Nation's Cybersecurity_ in 2021.
+footnote:[The White House in the USA initiated an _Executive Order on Improving the Nation's Cyber-security_ in 2021.
 The goal seems to the definition of minimal rules for software products to minimize known security risks.].
 
 === Upgrades and Genuine Improvements
@@ -70,7 +70,7 @@ So you are on your own for support or code examples for older versions of librar
 
 === Hidden Cost of Backports
 
-Writing code for older versions of libraries, frameworks, or runtimes means https://en.wikipedia.org/wiki/Backporting[backporting] to older API and features.
+Writing code for older versions of libraries, frameworks, or runtimes means https://en.wikipedia.org/wiki/Backporting[backporting] to older aplication interfaces and features.
 For example, if you do not have access to auto-closable resources, you have to write your own framework and software checks guarantying closing system resources.
 You should always free system resources in your application.
 The literature states this is neither easy nor error free.
