@@ -36,7 +36,7 @@ Starting in the early 1990s, Scrum has been used extensively, worldwide, to:
 The essence of Scrum is a small team of people.
 The individual team is highly flexible and adaptive.
 These strengths continue operating in single, several, and networks of teams.
-They develop, release, operate and sustain the work and work products of thousands of people.
+They develop, release, operate and sustain the work and work products for thousands of people.
 
 They collaborate and interoperate through sophisticated development architectures and target release environments.
 
@@ -57,7 +57,7 @@ Scrum Masters do this by helping everyone understand Scrum theory, practices, ru
 The Scrum Master is a _servant-leader_ for the Scrum Team.
 The Scrum Master helps those outside the Scrum Team understand which of their interactions with the Scrum Team are helpful and which are not.
 
-The Scrum Master helps everyone change these interactions to maximize the value created by the Scrum Team.
+The Scrum Master helps everyone changes these interactions to maximize the value created by the Scrum Team.
 ____
 
 Added to the section Scrum Master Service to the Product Owner

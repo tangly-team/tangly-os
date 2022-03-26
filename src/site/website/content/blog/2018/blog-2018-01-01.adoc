@@ -117,7 +117,7 @@ This approach guarantees the same error will never again occur.
 
 You are serious about delivering the functions your customer needs.
 Each story you implement has acceptance criteria.
-These acceptance criteria define your requirements – see https://en.wikipedia.org/wiki/Specification_by_example[specification by example] – .
+These acceptance criteria define your requirements – see https://en.wikipedia.org/wiki/Specification_by_example[specification by example] –.
 Your acceptance tests document and validate these requirements.
 
 Cucumber::

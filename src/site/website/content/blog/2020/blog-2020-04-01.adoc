@@ -60,8 +60,7 @@ Wisdom is coded in this code.
 Standard patterns are implemented in almost all packages.
 Idioms are encoded everywhere.
 
-See how Java deals with human and machine time with https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/time/package-summary.html[java.time]
-package.
+See how Java deals with human and machine time with https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/time/package-summary.html[java.time] package.
 Decades of trials and errors were needed to finally create a balanced and simple to use time abstractions.
 The author of https://www.joda.org/joda-time/[Joda Time] experimented years before he wrote the java time package – JSR 310 – introduced in Java 8.
 All these decisions and learning are encoded in this code.
@@ -71,7 +70,7 @@ All these decisions and learning are encoded in this code.
 ==== Clean Code
 
 You want to create a clean architecture you are proud of.
-You must first write clean code.
+You must first write a clean code.
 Clean architecture build up on clean code.
 Promote clean code in your agile team.
 Agile code is clean code.
@@ -79,7 +78,7 @@ Agile code is clean code.
 [TIP]
 ====
 Modern IDE provide static code analysis tools to detect smells in your source code.
-https://www.sonarlint.org/[SonarLint] is available for all major IDE.
+https://www.sonarlint.org/[SonarLint] is available for all major integrated development environments.
 
 Use these tools to steadily improve the quality of your code and remove well-known smells.
 ====
@@ -88,7 +87,7 @@ Do not fall to the fallacy to draw beautiful and useless https://en.wikipedia.or
 https://en.wikipedia.org/wiki/Software_architecture_description[Software Architecture Design] documents.
 
 The real architecture is hidden in the source code of your product.
-You still should document all major https://en.wikipedia.org/wiki/Architectural_decision[Architectural Decisions].
+You still document all major https://en.wikipedia.org/wiki/Architectural_decision[Architectural Decisions].
 
 ==== Know Your Programming Language
 

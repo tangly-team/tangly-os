@@ -39,7 +39,7 @@ Use these criteria as a checklist to evaluate your current agile transformation
 ** A strong definition of done supports organizational changes, see the {ref-less} metaphor of the _Undone Department_.
 ** Check the team can implement the current definition of done or expand cross-functionality and training.
 * Have appropriately structured teams
-** A team is stable, *long-lived, colocated, cross-functional* and implement end to end features for the solution.
+** A team is stable, *long-lived, collocated, cross-functional* and implement end to end features for the solution.
  Avoid component teams specialized for the database, user interface or communication layer.
 * Team members are dedicated to the team.
  They do not work in other projects and do not report to a matrix structure.

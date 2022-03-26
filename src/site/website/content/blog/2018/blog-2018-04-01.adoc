@@ -5,7 +5,7 @@ date: 2018-04-12
 tags: ["agile", "design"]
 ---
 
-== Pragmatic Craftsmanship - Professional Software Developer
+== Pragmatic Craftsmanship – Professional Software Developer
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
@@ -32,18 +32,16 @@ You shall work as a professional and deliver professional results.
 I recommend for any Java developer
 
 * Have formal training in the Java language and library.
-For example you should consider a Java Programmer certification for the current JDK you are working daily with,
-* Learn the new features in Java e.g. Streams, Lambdas, Reactive Programming, LocalDate, Modules, packaging with jlink,
-* Read and understand _Effective Java_ <<[effectivejava>> from Joshua Bloch,
-* Read and understand _Clean Code_ <<cleancode>>, _Clean Coder_ <<cleancoder>>, _Clean Architecture_ <<cleanarchitecture>> and _Clean Agile_ <<cleanagile>>,
-* Read and understand _Refactoring_ <<refactoring>> from Martin Fowler,
-* And read https://ronjeffries.com/xprog/articles/refactoring-not-on-the-backlog/[Refactoring not on the backlog] article from Ron Jeffries
-* Learn modern practices such as logging with https://www.slf4j.org/[slf4j], TDD with https://junit.org/junit5/[JUnit5], http://site.mockito.org/[Mockito] and
- http://joel-costigliola.github.io/assertj/[AssertJ], ATDD with https://cucumber.io/[Cucumber],
-* Lean DevOps, continuous integration, continuous delivery, continuous deployment, monitoring,
-* Be aware of famous Java libraries such as https://github.com/google/guava[Guava], https://commons.apache.org/[Apache Commons],
-* Use https://www.sonarqube.org/[SonarQube] - and the https://www.sonarlint.org/[SonarLint] plugin for your preferred IDE - to catch well-known weaknesses in
- your source code and improve your coding skills,
+For example you should consider a Java Programmer certification for the current JDK you are working daily with.
+* Learn the new features in Java e.g. Streams, Lambdas, Reactive Programming, LocalDate, Modules, packaging with jlink.
+* Read and understand _Effective Java_ <<[effectivejava>> from Joshua Bloch.
+* Read and understand _Clean Code_ <<cleancode>>, _Clean Coder_ <<cleancoder>>, _Clean Architecture_ <<cleanarchitecture>> and _Clean Agile_ <<cleanagile>>.
+* Read and understand _Refactoring_ <<refactoring>> from Martin Fowler.
+* And read https://ronjeffries.com/xprog/articles/refactoring-not-on-the-backlog/[Refactoring not on the backlog] article from Ron Jeffries.
+* Learn modern practices such as logging with https://www.slf4j.org/[slf4j], TDD with https://junit.org/junit5/[JUnit5], http://site.mockito.org/[Mockito] and http://joel-costigliola.github.io/assertj/[AssertJ], ATDD with https://cucumber.io/[Cucumber].
+* Lean DevOps, continuous integration, continuous delivery, continuous deployment, monitoring.
+* Be aware of famous Java libraries such as https://github.com/google/guava[Guava], https://commons.apache.org/[Apache Commons].
+* Use https://www.sonarqube.org/[SonarQube] - and the https://www.sonarlint.org/[SonarLint] plugin for your preferred IDE - to catch well-known weaknesses in your source code and improve your coding skills.
 
 A software developer not knowing the above items is almost certainly not a professional person, just a more or less talented amateur.
 See the blog of Mike Cohn
@@ -69,7 +67,7 @@ See my blog post about technical debt discussing the consequences of missing mas
 https://en.wikipedia.org/wiki/Software_craftsmanship[Software craftsmanship] is an initiative to improve the professionalism of software developers.
 You do not have to agree with them, just look what they are doing.
 
-For a detailed discussion read for example the book The Software Craftsman: Professionalism, Pragmatism, Pride by Sandro Mancuso.
+For a detailed discussion, read the book The Software Craftsman: Professionalism, Pragmatism, Pride by Sandro Mancuso.
 
 [quote]
 ____
@@ -84,18 +82,18 @@ Craftsmanship is not enough to guarantee the success of a product, but the lack 
 
 Agile and Craftsmanship complement each other and both are necessary
 
-Agile processes assumes technical excellence and a professional attitude
+Agile processes assume technical excellence and a professional attitude
 
 Software craftsmanship takes technical excellence and professionalism to a whole new level
 ____
 
 Take everything you read with a grain of salt.
-Software craftsmanship
+Software craftsmanship is
 
-* Is not a church, trying to convert all developers,
-* Is about leading by example and showing how we can be better,
-* It Is about well-written and designed code - and the customer stays in the center -,
-* Is about continuously delivering value not writing crap code.
+* not a church, trying to convert all developers,
+* about leading by example and showing how we can be better,
+* about well-written and designed code - and the customer stays in the center -,
+* about continuously delivering value not writing crap code.
 
 Your goal shall to become a professional developer and reach mastery.
 How you do it is up to you.

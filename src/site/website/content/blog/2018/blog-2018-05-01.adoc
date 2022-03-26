@@ -18,7 +18,7 @@ No quality problems shall reach your Git master branch.
 === What is Sonar?
 
 https://www.sonarqube.org/[SonarQube] is a central server that processes full analyses (triggered by the various SonarQube Scanners).
-Its purpose is to give a 360° vision of the quality of your code base.
+Its purpose is to give a 360° vision about the quality of your code base.
 For this, it analyzes all the source lines of your product on a regular basis.
 
 It should be added that SonarQube also performs scans with well-known third party analyzers (https://spotbugs.github.io/[SpotBugs] - previously FindBugs -,

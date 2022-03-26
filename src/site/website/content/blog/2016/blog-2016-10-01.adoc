@@ -49,7 +49,7 @@ The trend is a clear move toward agile approaches.
 Companies seem less reluctant to introduce agile approaches.
 Major opponents such as senior managers or internal and external customers more and more acknowledge the success of agile approaches.
 The two first identified hurdles still reflect the difficulty of changes at company level.
-They are also the main reasons why Scrum introduction fails in Swiss companies for my experience.
+They are also the main reasons why a Scrum introduction fails in Swiss companies for my experience.
 Too often, companies revert to some Waterfall/Hermes process or worst to a so-called internal ad-hoc method.
 
 We wrote in previous blogs that introducing Scrum in the development department or in the whole company is a

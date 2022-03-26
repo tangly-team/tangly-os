@@ -37,7 +37,7 @@ The second part is called intrinsic quality and is why customers buy your produc
 Criteria such as test code coverage, static analyzers, coding guidelines are just tools to detect missing quality.
 They help your team produce higher quality and nothing else.
 
-I encounter organizations stating that zero defects as measured with SonarQube is the ultimate goal - and they find normal to have a hundred of thousands of smells -.
+I encounter organizations stating that zero defects as measured with SonarQube is the ultimate goal – and they find normal to have thousands of smells -.
 Time for a reality check.
 
 Tools such as SonarQube, unit test coverage are just instruments to support your teams to detect _known non-quality_.

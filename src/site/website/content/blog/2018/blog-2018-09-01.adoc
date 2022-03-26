@@ -28,7 +28,7 @@ These workshops provide the platform to identify the company’s needs and strat
 Try the https://en.wikipedia.org/wiki/Open_Space_Technology[open space] format to involve all collaborators and identify their needs.
 
 Below we provide an approach which must be later tailored to the specific needs of the Company during the above-mentioned workshops.
-The organizational needs for feature oriented planning and development of a portfolio of applications should be considered.
+The organizational needs for feature oriented planning and development of an application portfolio should be considered.
 
 === Approach
 
@@ -107,7 +107,7 @@ The motto is
 
 [.text-center]
 _Most difficulties in Scrum don't arise from learning the Scrum framework._
-_Rather they arise in applying the framework on an existing organizational structure and culture._
+_Rather, they arise in applying the framework on an existing organizational structure and culture._
 
 This requires hands-on experienced guidance, and not just at the team level, but at the leadership and organizational level.
 See below the discussion about enterprise transformation.

@@ -57,7 +57,7 @@ git commit -m "commit message, should be clear and legible"
 You can perform these operations directly in IntelliJ IDEA (VCS functions) with these instructions.
 Switch to the Version Control tool window and switch to the Local Changes tab.
 . Expand the Un-versioned Files node, and select the files to be added.
-From the context menu, choose _Add to VCS_, or press ⌥⌘A.
+From the context menu, choose _to Add to VCS_, or press ⌥⌘A.
 . Switch to the Project tool window and select the files to be added.
 From the context menu, choose Git | Add or press⌥⌘A.
 

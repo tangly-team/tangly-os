@@ -5,7 +5,7 @@ date: 2018-10-02
 tags: ["agile"]
 ---
 
-== How Should You handle Definition of Done?
+== How Should You handle the Definition of Done?
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
@@ -57,20 +57,21 @@ It is planned to be left undone.
 The terms _Potentially Shippable_ and _Definition of Done_ are often not used consistently.
 To clarify the terms:
 
-_Potentially Shippable_::
-All activities that must be performed before the product can be shipped._ _Definition of Done_::
+[horizontal]
+Potentially Shippable::
+All activities that must be performed before the product can be shipped.
+Definition of Done::
 An agreement between the teams and their Product Owner on which activities are performed inside the Sprint.
 A _Definition of Done_ is perfect when it equals Potentially Shippable.
 Teams strive to improve towards an ideal Definition of Done.
-_Undone Work_::
+Undone Work::
 The difference between the Definition of Done and Potentially Shippable.
 When the Definition of Done is perfect, then there is no Undone Work.
-If this is not the case then the organization has to decide, first how we deal with the Undone Work, and second how do we improve so that there is less
-_Undone Work_ in the future.
-_Unfinished, not finished, or not done—work_::
+If this is not the case then the organization has to decide, first how we deal with the Undone Work, and second how we improve so that there is less _Undone Work_ in the future.
+Unfinished, or not done—work::
 that was planned in a sprint but was not completed.
 This is often confused with Undone Work.
-_Unfinished_::
+Unfinished::
 is work that the team planned for but did not finish whereas Undone Work was never even planned for.
 When a team has work that was not finished, then they ought to feel anxious and discuss improvement actions during their retrospective.
 
@@ -85,7 +86,7 @@ If they forecast too much work, they need to remove complete items which they ha
 * The fitness for use is evident (enough value was built to justify releasing?).
 * The external quality is verified (we have built the right thing?).
 * The internal quality is verified, you wrote unit tests – and all tests are green.
-* The code is checked in, if necessary the branch was closed and deleted.
+* The code is checked in. The branch was merged and deleted.
 * Coding standards are enforced through static check tools and integrated in the continuous delivery pipeline.
 * The code review was completed.
 * All improvements from the code review were implemented.
