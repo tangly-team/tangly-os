@@ -20,7 +20,7 @@ java {
 
 project.ext.groupId = 'net.tangly'
 project.ext.artifactId = 'commons'
-project.version = "0.2.6"
+project.version = "0.2.7"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
 project.description = "Commons data structures - using Java 17 or higher (tangly llc)"

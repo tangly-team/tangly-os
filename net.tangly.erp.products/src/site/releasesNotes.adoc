@@ -10,7 +10,11 @@ draft: false
 This document provides a high-level view of the changes introduced in the ERP Products library by release.
 For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] commits.
 
+=== 0.2.7 (2022-05-31)
+
+* Update of library dependencies, update to JDK-18, and modern Gradle approach to build solutions
+
 === 0.2.6 (2021-08-31)
 
-* First version of the library packed as a DDD bounded domain
+* Initial version of the library packed as a DDD bounded domain
 * Requires Java 16 or higher due to extensive usage of _records_ and _sealed_ classes

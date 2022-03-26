@@ -16,7 +16,7 @@ plugins {
 
 project.ext.groupId = 'net.tangly'
 project.ext.artifactId = 'fsm'
-project.version = "0.2.6"
+project.version = "0.2.7"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
 project.description = "Hierarchical finite state machine library - FSM - using Java 17 or higher (tangly llc)"

@@ -16,7 +16,7 @@ plugins {
 
 project.ext.groupId = 'net.tangly'
 project.ext.artifactId = 'bdd'
-project.version = "0.2.6"
+project.version = "0.2.7"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '2016'
 project.description = "JUnit 5 BDD - using Java 17 or higher (tangly llc)"

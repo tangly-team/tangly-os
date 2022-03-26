@@ -29,14 +29,14 @@ The library can be included in Maven as
     <dependency>
       <groupId>net.tangly</groupId>
       <artifactId>core</artifactId>
-      <version>0.2.6</version>
+      <version>0.2.7</version>
     </dependency>
 ```
 
 The library can be included in Gradle as
 
 ```groovy
-    implementation "net.tangly:core:0.2.6"
+    implementation "net.tangly:core:0.2.7"
 ```
 
 The documentation can be found under [Business documentation](https://tangly-team.bitbucket.io/docs/core/)

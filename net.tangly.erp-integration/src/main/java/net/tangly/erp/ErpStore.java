@@ -26,8 +26,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 /**
- * Creates a CRM and ledger domain model store with all persistent values of all involved entities. The entities are stored in TSV and JSON file as resources of
- * the test component. The store copies all the resources in an in-memory file system for efficient tests.
+ * Creates a CRM and ledger domain model store with all persistent values of all involved entities.
+ * The entities are stored in TSV and JSON file as resources of the test component. The store copies all the resources in an in-memory file system for efficient tests.
  */
 public record ErpStore(@NotNull FileSystem fs) {
     private static final String PACKAGE_NAME = "net/tangly/";

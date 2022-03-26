@@ -16,7 +16,7 @@ plugins {
 
 project.ext.groupId = 'net.tangly.erp'
 project.ext.artifactId = 'invoices'
-project.version = "0.2.6"
+project.version = "0.2.7"
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '2019'
 project.description = "Invoices bounded domain using Java 17 or higher (tangly llc)"
