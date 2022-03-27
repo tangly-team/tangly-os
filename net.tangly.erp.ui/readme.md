@@ -42,7 +42,33 @@ The library can be included in Gradle as
 
 The documentation can be found under [Business documentation](https://tangly-team.bitbucket.io/docs/erp/ui/)
 
-For any further question and discussion you can use the forum [tangly-OS-Components](https://groups.google.com/g/tangly-os-components)
+For any further questions and discussion, you can use the forum [tangly-OS-Components](https://groups.google.com/g/tangly-os-components)
+
+## Run as an Application
+
+### Run Locally
+
+The gradle script compiles, packages, and runs the application with an embedded web server.
+
+```shell
+    gradle run
+```
+
+### Run in a Docker Image
+
+THe first step is to build the Docker image with the provided configuration.
+
+```shell
+  DOCKER_BUILDKIT=0 docker build --no-cache -t tangly-erp:latest .
+```
+
+To run the built image use the following commands.
+
+```shell
+  docker run --rm -t -i -e JAVA_OPTS='--enable-preview --add-exports java.base/jdk.internal.misc=ALL_UNNAMED' -p8080:8080 tangly-erp:latest
+```
+
+### Run in the Cloud
 
 ## Contribution
 

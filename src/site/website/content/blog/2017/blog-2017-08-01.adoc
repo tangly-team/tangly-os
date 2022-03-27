@@ -18,7 +18,7 @@ The below job description was handed me over. What an experience it was.
 The text with the regular font is the job description. I wrote down my comments in italics.
 
 * Manage team of software engineers: provide technical direction, schedule and delegate work, evaluate performance.
-  Advise on best practices and developing practice, review code.
+  Advise on good practices and developing practice, review code.
 ** __A Scrum master empowers a development team. The team schedules the work during each Sprint.
  The team members select the stories they will implement next.
  The Scrum master advices good practices, but he really should not perform code reviews and police the team.__

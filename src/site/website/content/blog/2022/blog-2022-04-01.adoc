@@ -17,17 +17,22 @@ Professional software developers shall master their primary technology stack and
 I am a proficient and experienced programmer in Java.
 I have written production code in Java for the last twenty years.
 I decided to study the language in depth and acquired various Java developer certifications.
-And I love the language and environment.
+I truly love the modern Java language and the available development environments.
 
 I want to understand the strengths and weaknesses of Java as well.
-A good approach is to learn more about Groovy and Clojure.
-I want to understand various strenghts in different languages.
-One major focus is functional programming approaches and hwo they impact design and development activities.
+Knowing the weaknesses of my technology stack empowers me to select alternative design approaches to mitigate the drawbacks.
+
+An approach to gathering data is to learn more about Groovy and Clojure.
+I want to understand the various strengths of different programming languages.
+I still want to stay in the Java ecosystem to better apply my learnings.
+Both Groovy and Clojure are available on the Java virtual machine and have good interoperability with it.
+
+One major focus is the functional programming approach and hwo it impacts design and development activities.
 
 === Clojure
 
 Clojure is the functional programming language and a Lisp(1) dialect.
-The language compiles to and runs on the JVM and interfaces to Java and API libraries.
+The language compiles to and runs on the JVM and interfaces nicely with Java and API libraries.
 
 [quote,Alan J. Perlis]
 ____
@@ -36,39 +41,61 @@ ____
 
 Clojure is a Lisp dialect not constrained by backward compatibility.
 
-* Extends the code-as-data paradigm to maps and vectors
+* Extends the code-as-data paradigm to maps, sets and vectors
 * Defaults to immutability
 * Core data structures are extensible abstractions
+* Provides approaches to concurrent programming
 * Embraces the JVM platform
 
 ==== Expressions and Statements
 
 [source,clojure]
 ----
+; binds a name to a value. If value is an expression it is first evaluated.
 (def <name> <value>)
-(if (<condition>) (<true-expression>) (<false-expression)) ;; else is optional
+
+; else is optional, if not present the expression returns null in the false case
+(if (<condition>) (<true-expression>) (<false-expression))
+
+; when is conceptually an if with only a true path
 (when (<condition>) (<true-expression>))
+
+; when not is conceptually an if with only a false path
+(when-not (<condition>) (<false-expression>))
+
+; cond process on condition after another, the expression of the first condition being true is executed and the expression completes.
 (cond
   (<condition-1) (expression-1)
   (condition-2) (expression-2)
   :else (expression-else))
+
 (case <value>
  <value-1> <expression>
  <value-2> <expression>
  <expression-else>)
+
 (loop [] (expression-loop))
+
 (do {expression})
 ----
 
-Number tower
-Truth
+Number tower Truth
 
 ==== Functions and Closures
 
 Functions are a key construct for a functional language.
 You can define functions and closures using:
 
-defn, fn,  let, letn
+[source,clojure]
+----
+(def <name> (fn [] (<expressions)))
+
+(defn name [] (<expression>))
+
+let [{<name> <expression}] (<expression>))
+
+letfn[] (<expression>)
+----
 
 ===== Higher-order Functions and Sequences
 
@@ -77,16 +104,11 @@ Functional programming emphasizes the design of functions working on generic dat
 
 ===== Recursion, Tail Recursion, Currying, Memoization
 
-loop
-recur
-partial
-memoize
+loop recur partial memoize
 
 === Thoughts
 
-Type hints
-Spec
-
+Type hints Spec
 
 === Java
 
@@ -110,6 +132,11 @@ You can define functions and lambdas using:
 === Groovy
 
 ==== Expressions and Statements
+
+One cool feature of Groovy is the support of operators as syntactic sugar.
+I would welcome this feature in Java.
+I dream of writing legible expressions with _BigInt_ or _BigDecimal_ types.
+The current method call approach destroys the legibility of the source code.
 
 [source,groovy]
 ----

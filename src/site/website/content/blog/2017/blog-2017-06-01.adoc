@@ -40,12 +40,12 @@ Hitting The Scrum Wall::
 The most popular Agile method is Scrum which is a product management technique.
 Scrum is normally used with a number of other Agile techniques, typically user stories redaction and the technical practices from {ref-xp} – such as TDD, ATDD, code refactoring, continuous integration and delivery CI/CD, pair programming, etc.
 Teams that adopt the Scrum framework initially see an improvement in productivity and customer satisfaction.
-However, without the technical practices quality is low, and the team hit the wall.
+Without technical practices, quality is low, and the team hit the wall.
 The quality gap makes it impossible to maintain the pace in the long run.
 Fake Agile::
 occurs when a team declares itself Agile and blames everyone else for their failure to interact correctly with the group.
 Such a group typically stops writing documentation, listening to business analysts, product managers and other customers, and dictates its own delivery schedule.
-Meanwhile the team do not improve quality, does not adopt test driven development or any other practice they dislike.
+Meanwhile, the team does not improve quality, does not adopt test driven development or any other practice they dislike.
 Potemkin Agile::
 occurs when a team adopts and applies an Agile method well but does not deliver business value.
 This is a form of goal deferment were the team consider adhering to the process rather than delivering business value as the success criteria.

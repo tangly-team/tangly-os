@@ -52,20 +52,20 @@ I encourage you to extend your practices with additional procedures based on you
 
 _Is why you buy a specific car_
 
-* Acceptance criteria and behavior test driven development ATDD - You insure through automatic tests that the feature behaves how your customer requested,
-* Defect driven development - You insure through automatic tests your customer will never encounter this exact error again,
-* Fast release and deployment cycle
+* Acceptance criteria and behavior test driven development ATDD – You insure through automatic tests that the feature behaves how your customer requested.
+* Defect driven development – You insure through automatic tests your customer will never encounter this exact error again.
+* Fast release and deployment cycle.
 - You give your customer a way to detect bad behavior early and have an opportunity to ask for improvement.
 By fast, we mean daily or perhaps weekly.
 
-==== Intrinsic Quality - Technical Quality
+==== Intrinsic Quality – Technical Quality
 
 _Is why you can daily drive your car and not have to weekly repair it.
 And, later be able to add a charger for your mobile phone without spending a fortune._
 
 * Static code analysis - Known weaknesses are removed from your source code.
-* Test driven development TDD - You can change the code without changing the behavior or outputs, see also ATDD.
-* Clean code - You guarantee the source code is maintainable.
+* Test driven development TDD – You can change the code without changing the behavior or outputs, see also ATDD.
+* Clean code – You guarantee the source code is maintainable.
 * Clean architecture and domain driven development - You guarantee the product is extendable.
 
 === Accountability
@@ -115,7 +115,7 @@ https://www.leadingagile.com/2018/09/software-developers-dont-need-permission-or
 
 Your goal is simply zero warnings at the end of the spring.
 Later tighten it to zero warnings in the trunk of your git repository.
-Just do it - and stop arguing about the merits and costs -!
+Just do it – and stop arguing about the merits and costs -!
 
 And if you do not agree with one of the warnings, just disable the rule and document the reason for an architecture design record ADR.
 

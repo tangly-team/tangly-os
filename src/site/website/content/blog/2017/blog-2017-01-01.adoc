@@ -95,7 +95,7 @@ We often forget the Pareto rule, 80% of all solutions are found in 20% of the ti
 Is it worth the time to find a slightly better solution for the remaining 20% of the problems?
 In Scrum terminology,
 
-" it is also the 20% less important.
+" it is also 20% less important.
 " Meeting costs versus solved issues. Meetings cost money.
 Meeting with eight people and of a duration of 30 minutes cost in Switzerland around 600 Swiss Francs or 500 Euro.
 
@@ -112,7 +112,7 @@ People do not work anymore, they just sit in meetings.
 ** an agenda,
 ** a moderator,
 ** a protocol of the meeting,
-** as a result, a list of decisions and a list of tasks - who must do what until when -.
+** as a result, a list of decisions and a list of tasks – who must do what until when -.
 
 Interesting enough, all Scrum meetings have a clear agenda, a moderator and a documented result.
 

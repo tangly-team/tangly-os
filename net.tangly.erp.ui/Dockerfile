@@ -11,5 +11,5 @@ FROM openjdk:18
 COPY build/distributions/net.tangly.erp.ui-0.2.7/ /app/
 WORKDIR /app/bin
 EXPOSE 8080
-ENV JAVA_OPTS="--enable-preview"
+ENV JAVA_OPTS="--enable-preview --add-exports java.base/jdk.internal.misc=ALL_UNNAMED"
 ENTRYPOINT ./net.tangly.erp.ui

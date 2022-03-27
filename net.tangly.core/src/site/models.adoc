@@ -11,7 +11,7 @@ draft: false
 The abstraction of a reference table or reference codes.
 A code table is an extensible set of values.
 You can add values when needed and extend the model with temporal activation if desired.
-For example currencies are typical code values with a temporal duration; well-known retired currencies are the European Currency Unit _ECU_ or the German deutsche mark _DM_.
+For example, currencies are typical code values with a temporal duration; well-known retired currencies are the European Currency Unit _ECU_ or the German deutsche mark _DM_.
 New values can be added without recompiling the application.
 A code can have an optional validity period or simply a flag stating it is active or not.
 To guaranty consistency with exported datasets, a code format shall never be deleted, only be disabled.
@@ -64,17 +64,17 @@ id::
 identifier of the entity instance as a string.
 The value is optional.
 name::
-human readable name of the entity instance as a string.
+human-readable name of the entity instance as a string.
 The value is optional.
 text::
-human readable description of the entity instance as a long string.
+human-readable description of the entity instance as a long string.
 The value is optional.
 fromDate::
 start date when the entity instance is active.
 The value is optional.
 toDate::
 end date when the entity instance is active.
-Upon end date, the entity should be read-only and no more editied in the system.
+Upon the end date, the entity should be read-only and no more edited in the system.
 The value is optional.
 
 [plantuml,bus-core-uml,svg]
@@ -129,7 +129,7 @@ class EmailAddress << (R,orchid) >>
 @enduml
 ....
 
-See our blogs for a discussion of the cornerstone abstractions of the business core model:
+See our blogs for a discussion concerning the cornerstone abstractions of the business core model:
 
 * link:../../../blob/2020/entities-identifiers-external-identifiers-and-names[Entities, internal Identifiers, external Identifiers, and Names],
 * link:../../../blog/2020/the-power-of-tags-and-comments[The Power of Tags and Comments],
@@ -338,12 +338,12 @@ External entities can provide hints to streamline the creation of regular invoic
 The invoice article identifier is available as an external identifier to the article bounded domain.
 Similar identifiers are available for legal entities.
 
-VAT rates are defined within a article definition.
+VAT rates are defined within an article definition.
 Therefore, different VAT rates require different article definitions.
-For example in Switzerland a service company has two VAT rates.
+For example, in Switzerland a service company has two VAT rates.
 One for regular services and one for services exempted from VAT taxes.
 
-The currency is defined at the invoice level meaning all invoice items and subtotals should use the same currency.
+The currency is defined at the invoice level, meaning all invoice items and subtotals should use the same currency.
 
 === Archiving
 
@@ -351,7 +351,7 @@ An invoice contains all the information to create a legally binding document and
 Invoices should have a unique identifier for accounting purposes.
 A good practice is to use the identifier as part of the archived file to streamline traceability.
 Invoices can be stored in a database, exported as a PDF file or as a JSON file.
-The PDF file is human readable and adequate for document archiving and legal auditing.
+The PDF file is human-readable and adequate for document archiving and legal auditing.
 The JSON file is an adequate archive format which can digitally be processed.
 
 [plantuml,bus-invoice-uml,svg]
@@ -390,7 +390,7 @@ class Invoice {
     String paymentConditions
 }
 
-note right: contractId is the identifier to\nthe contract instance in the CRM package
+note right: contractId is the identifier for the contract instance in the CRM package.
 
 Invoice *-- InvoiceLine : lines
 Invoice o--> LegalEntity : invoicingEntity

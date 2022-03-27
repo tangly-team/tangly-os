@@ -43,12 +43,13 @@ Each team is self-managing, cross-functional and customer-focused, co-located, l
 
 * Help your teams to remove impediments.
 From time to time, you could also remove a specific impediment.
-* Evangelise agile, lean values and principles
-* Moderate Scrum meetings - do not forget to regulate delegate moderation to your team -
-* Gently transform your department and organization to become more agile
-** Remove yearly evaluation, practice bi-weekly face2face meetings
-** Remove any individual bonus, either introduce team bonuses or better remove extrinsic motivators
-** Remove test and quality department, move the specialists to the Scrum teams
+* Evangelise agile, lean values and principles.
+* Moderate Scrum meetings – do not forget to regulate delegate moderation to your team -.
+* Gently transform your department and organization to become more agile.
+** Remove yearly evaluation, practice bi-weekly face2face meetings.
+** Remove any individual bonus, either introduce team bonuses.
+Better remove extrinsic motivators.
+** Remove test and quality department, move the specialists to the Scrum teams.
 
 You shall by all means avoid administrative waste, such as * Writing information in Word documents or in Wiki that nobody actively uses, * Writing multiple times the same information, * Writing status information instead of publishing it on the team board.
 The board shall be the information radiator of your product development.

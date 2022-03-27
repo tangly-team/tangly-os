@@ -7,12 +7,12 @@ draft: false
 
 === Features
 
-A behavior driven development __BDD__ library that provides a custom extension based on JUnit 5 Jupiter Extension Model.
+A behavior driven development __BDD__ library that provides a custom extension based on the JUnit 5 Jupiter Extension Model.
 This library can be used to create and run features, stories and behaviors as BDD specification tests.
 
 The library promotes a test engineer approach.
 The test cases are programmed against the system under development.
-Upon execution the living documentation of all features, and their associated stories are generated.
+Upon execution, the living documentation of all features, and their associated stories are generated.
 This document describes the behavior of the system as it is tested.
 
 [WARNING]
@@ -69,11 +69,11 @@ public class StoreTestStoryOne {
 . Write your scenarios as test methods as shown in the above examples
 . Run your JUnit 5 tests
 
-The provided utilities generates JSON and AsciiDoc reports as living documentation.
+The provided utilities generate JSON and AsciiDoc reports as living documentation.
 
 === Concepts
 
-The behavior driven development library defines following concepts
+The behavior driven development library defines the following concepts:
 
 * A _feature_ describes a high-level functionality of the system.
 A feature annotation `@feature` allows the textual description of a feature and supports additional information such as an identifier or a set of tags.
@@ -93,7 +93,7 @@ We believe that the three level hierarchy *feature - story - scenario* is enough
 
 [CAUTION]
 ====
-Beware that feature and story as used in agile development approaches such as Scrum are work break-down structures.
+Beware that feature and story as used in agile development approaches, such as Scrum are work break-down structures.
 They are not a requirement repository.
 
 You can change the content and the acceptance criteria of stories over the development cycle.

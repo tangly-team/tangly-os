@@ -21,7 +21,7 @@ Instances can never be changed from another system when the application is runni
 This decision reflects the hexagon architecture.
 * Unique object identifiers are necessary to identify instances outside the Java virtual machine, such as databases, CSV files or JSON files.
 Object identifiers shall be managed and allocated through the active record library.
-The domain model shall not be burden to manage internal identity tokens.
+The domain model shall not be a burden to managing internal identity tokens.
 * Extensions shall be provided to support common model concepts.
 Extensions supporting reference codes, tags and comments are provided.
 * We are enthusiasts to follow functional programming paradigm and object immutability.

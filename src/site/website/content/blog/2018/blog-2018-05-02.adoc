@@ -37,7 +37,7 @@ Below some findings of the study.
 === Slower Adoption of Agile Approaches
 
 The adoption of agile frameworks has markedly slowed down in Switzerland.
-And often hybrid methods based on Waterfall methodology are used.
+And hybrid methods based on Waterfall methodology are often used.
 It is fascinating to see companies trying to merge a linear approach with highly iterative and incremental approaches.
 It shall be clear that success will only be elusive.
 

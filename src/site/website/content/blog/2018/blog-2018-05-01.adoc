@@ -40,7 +40,7 @@ It then uses the same code analyzers, rules and settings locally that are used o
 
 Issues marked as Won’t Fix or False Positive in SonarQube or SonarCloud disappear from your IDE.
 
-Both SonarLint and SonarQube rely on the same static source code analyzers - most of them being written using SonarSource technology.
+Both SonarLint and SonarQube rely on the same static source code analyzers – most of them being written using SonarSource technology.
 
 === How to use It?
 
@@ -51,7 +51,7 @@ Both SonarLint and SonarQube rely on the same static source code analyzers - mos
 .. See the messages in the next few seconds.
 .. Jump to the source and correct the problem.
 .. Iterate until all issues are solved.
-. Run your unit tests and acceptance tests - TDD and ATDD -.
+. Run your unit tests and acceptance tests – TDD and ATDD -.
 . Commit your changes.
 
 This approach guarantees you always release source code with less SonarCube issues, therefore SonarCube always show no findings for new code and for refactored
