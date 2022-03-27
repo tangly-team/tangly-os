@@ -9,14 +9,14 @@ draft: false
 
 == Features
 
-The FSM library aims to provide following features:
+The FSM library aims to provide the following features:
 
 * Easy to use flat state machine for simple use cases.
-This type of FSM are taught in bachelor engineering courses,
+This type of FSM is taught in bachelor engineering courses.
 * Hierarchical state machine structure to ease complex state configuration.
 Hierarchical type of FSM is part of the UML notation,
 * Usage of events, transitions, guards and actions.
-Transition actions, state entry actions, and state exit actions are supported,
+Transition actions, state entry actions, and state exit actions are supported.
 * Builder pattern for easy creation of a complete state machine declaration using a fluent approach,
 * Recipes for usual use cases,
 * State machine event listeners,
@@ -32,7 +32,7 @@ You can interact with the state machine by sending an event, listening for chang
 
 === Scenarios
 
-Applications are a good candidate to use finite state machine if:
+Applications are a good candidate to use a finite state machine if:
 
 * Application or part of its structure can be represented as states.
 * You want to split complex logic into smaller manageable tasks.
@@ -42,7 +42,7 @@ You are already trying to implement a finite state machine if you:
 
 * Use of boolean flags or enums to model situations and states.
 * Have variables which only have meaning for some part of your application lifecycle.
-* Loop through if/else structure and check if a particular flag or enum is set and then making further exceptions what to do when certain combination of your flags and enums exists or does not exist together.
+* Loop through if/else structure and check if a particular flag or enum is set and then making further exceptions what to do when a certain combination of your flags and enums exists or does not exist together.
 
 Finite state machines provide a clear and well-documented approach for complex logic with states.
 
@@ -51,8 +51,9 @@ Finite state machines provide a clear and well-documented approach for complex l
 **FSM finite state machine** module supports both a fluent API and a more declarative manner to define a state machine, and also enable a user to define the action methods in a straightforward manner.
 Lambda constructs support a compact and legible notation.
 
-Actions and guards declarations use the lambda feature of Java 8. Guard is a boolean function, and an action is a method without return value.
-Once a finite state machine is declared you can execute multiple instances of the declaration in your application.
+Actions and guards declarations use the lambda feature of Java 8.
+Guard is a boolean function, and an action is a method without return value.
+Once a finite state machine is declared, you can execute multiple instances of the declaration in your application.
 
 * **StateMachine** interface takes free generic type parameters.
 ** **E** stands for the type of implemented event.
@@ -62,25 +63,25 @@ The enumeration type defines all the different event values
 The state values must be a Java enumeration type.
 The enumeration type defines the possible states of the finite state machine
 ** **C** stands for the class owning the state machine and defining the *context* in which the machine is executed.
-* **States** represent a stable status of the system existing for a time duration.
-** Simple state is as state without children and therefore without history
+* **States** represent the system state available for some time.
+** A simple state is as state without children and without history.
 ** Composite state is a hierarchical state.
 It may contain nested simple or composite states.
 The composite children states may themselves have nested children.
 This may proceed to any depth.
 When a hierarchical state is active, one and only one of its child states is active
-** Initial state is the state selected when entering a composite state no having active history states
-** Final state is a state with only inferent transitions and no afferent transitions
+** The initial state is the state selected when entering a composite state no having active history states
+** The final state is a state with only inferent transitions and no afferent transitions
 ** State with history allows a composite state to remember its configuration.
 A transition taking the history composite state as its target will return the child state stored in the history as the last active state last time the target composite state was exited
 * **Transitions** represent a possible change from a start state to a destination state.
 ** Normal transition moving from a source state to a destination state
-** Internal transition means after transition complete, no state is exited or entered.
+** Internal transition means after the transition completes, no state is excited or entered.
 Therefore, no entry or exit actions are executed
-* **Guards** is implemented as an extension of a standard Java *BiPrediction* functional interface.
+* **Guards** are implemented as an extension of a standard Java *BiPrediction* functional interface.
 The parameters are the event triggering the guard and the context.
 ** boolean expression lambda expression deciding if the transition shall be fired or not.
-* **Actions** is implemented as an extension of a standard Java *BiFunction* functional interface.
+* **Actions** are implemented as an extension of a standard Java *BiFunction* functional interface.
 The parameters are the event triggering the guard and the context.
 ** Entry actions are executed upon activation of the state, when the fired transition enters the state
 ** Exit actions are executed upon deactivation of the state, when the fired transition leaves the state
@@ -89,7 +90,8 @@ The parameters are the event triggering the guard and the context.
 [NOTE]
 ====
 The design requires that the set of states and the set of events are declared as enumeration types.
-Enumeration types allow static checking at compile time and diminish runtime errors.
+Enumeration types allow static checking at compile time.
+They diminish runtime errors.
 
 Modern development environments allow fast round trip changes therefore static type declarations should not slow your development speed.
 ====
@@ -102,7 +104,7 @@ Below the UML diagram of the public interface of the finite state machine compon
 
 ==== How to create the state machine builder
 
-In order to create a state machine, you need to create state machine builder first.
+In order to create a state machine, you need to create a state machine builder first.
 For example:
 
 [source,java]
@@ -143,7 +145,7 @@ builder.in(States.On).add(States.DAB).isInitial().onEntry(Fsm::logDabEntry).onEx
 
 ==== How to create transitions
 
-Below how to create a transition between two states with an event and an action - without a guard -.
+Below how to create a transition between two states with an event and an action – without a guard -.
 The transition starts on state __Maintenance__ when the event __TogglePower__ is received and finishes in state __Off_.
 The action __logTransitionFromMaintenanceToOff__ is executed when the transition is traversed.
 
@@ -153,7 +155,8 @@ builder.in(States.Maintenance).on(Events.TogglePower).to(States.Off).execute(Fsm
 ----
 
 Below how to create a transition between two states with an event, a guard and an action.
-The first statement uses a lambda expression calling a method of the owner object, the second statement uses a lambda expression with a code block.
+The first statement uses a lambda expression calling a method of the owner object.
+The second statement uses a lambda expression with a code block.
 
 [source,java]
 ----
@@ -173,7 +176,8 @@ builder.in(States.On).onLocal(Events.StoreStation).execute(Fsm::logIgnoreStoreOp
 ==== An example of a complete finite state machine definition
 
 The example below declares a complete state machine.
-The enumeration __States__ defines the states, the enumeration __Events__ defines the events recognized and processed through the finite state machine.
+The enumeration __States__ defines the states.
+The enumeration __Events__ defines the events recognized and processed through the finite state machine.
 
 [source,java]
 ----
@@ -210,6 +214,7 @@ builder.in(States.AutoTune).on(Events.StationFound).to(States.Play).execute(Fsm:
 
 builder.machine("name of the machine", owner); // <4>
 ----
+
 <1> Defines the set of states for the finite state machine
 <2> Defines the set of events processed by the finite state machine
 <3> Creates a builder instance
@@ -262,7 +267,7 @@ The initial state of the machine is inferred from the definition of the state ma
 StateMachine<Fsm, States, Events> fsm = builder.machine("name-of-fsm", ownerInstance);
 ----
 
-You can fire events as follow
+You can fire events with the statement:
 
 [source,java]
 ----
@@ -276,15 +281,15 @@ fsm.fire(new Event<Events>(Events.TogglePower));
 The static validator verifies the syntax of finite state machine declaration.
 The implemented checks are
 
-* Each value of the state identifier enumeration is used exactly once in the declaration,
-* A state has at most one initial substate,
-* A state with an inferrent transition has an initial substate,
-* The hierarchy of initial states allows a clean identification of the first state when the machine is reset to default,
+* Each value of the state identifier enumeration is used exactly once in the declaration.
+* A state has at most one initial substate.
+* A state with a different transition has an initial substate.
+* The hierarchy of initial states allows a clean identification of the first state when the machine is reset to default.
 * A final state cannot have efferent transitions.
 
 === Dynamic Validation
 
-The static validator verifies the semantic of a finite state machine during execution.
+The static validator verifies the semantics of a finite state machine during execution.
 The implemented checks are
 
 * To be written
@@ -297,11 +302,11 @@ To be written
 
 You can document your state machine declaration by
 
-* Generate a diagram in the dot language and visualize your state machine as a hierarchical graph,
-* Generate a plantUML state machine diagram following UML notation,
+* Generate a diagram in the dot language and visualize your state machine as a hierarchical graph.
+* Generate a plantUML state machine diagram following UML notation.
 * Add description to states, actions and guards directly in the builder.
 These descriptions are used to enrich the hierarchical graph.
 
-We provide the finite state machines diagrams of the builder FSM and the Washer FSM as complete examples.
+We provide the finite state machine diagrams of the builder FSM and the Washer FSM as complete examples.
 Please consult the unit tests for the complete source code.
 Use JUnit to run the state machine programs.

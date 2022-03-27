@@ -27,7 +27,7 @@ Another open source implementation can be found under https://github.com/j-easy/
 
 A state is a description of the status of a system that is waiting to execute a transition.
 A transition is a set of actions to be executed when an event is received.
-For example, when using an audio system to listen to the radio, receiving a "next" stimulus results in moving to the next station.
+For example, when using an audio system to listen to the radio, receiving the _next_ stimulus results in moving to the next station.
 When the system is in the "CD" state, the "next" stimulus results in moving to the next track.
 Identical stimuli trigger different actions depending on the current state.
 
@@ -36,16 +36,16 @@ It is also possible to associate actions with a state:
 * an __entry action__ performed when entering the state, and
 * an __exit action__ performed when exiting the state.
 
-__The set of possible states are defined as an enumeration type in our library.__
+__The set of possible states is defined as an enumeration type in our library.__
 
 States can contain substates.
 A state containing a set of substates is called a hierarchical state.
 
 When you enter a hierarchical state, it is possible to define an initial state which is activated when a transition terminates on the border of the hierarchical state and no history is active.
 
-A hierarchical state can have an history.
-When a transition terminates on the border of the hierarchical state and it has an history the latest active state is automatically activated.
-If no history is available the default state is activated.
+A hierarchical state can have a history.
+When a transition terminates on the border of the hierarchical state and it has a history, the latest active state is automatically activated.
+If no history is available, the default state is activated.
 If none is defined, an illegal state error occurs.
 
 ==== Events
@@ -53,12 +53,12 @@ If none is defined, an illegal state error occurs.
 An event is an external trigger processed in the finite state machine.
 The trigger can induce the firing of one transition.
 
-__The set of possible events are defined as an enumeration type in our library.__
+__The set of possible events is defined as an enumeration type in our library.__
 
 ==== Transitions
 
 A transition defines a potential change from one state to another one.
-A transition has a mandatory event triggering the firing of transition and a optional guard evaluation as a boolean condition.
+A transition has a mandatory event triggering the firing of transition and an optional guard evaluation as a boolean condition.
 
 A local transition is a transition starting and ending in the same state.
 When fired the exit and entry actions of the state are not executed.
@@ -90,7 +90,7 @@ The second is the event being processed.__
 The event class triggering transitions in the finite state machine must be an enumeration type.
 
 The state class defining the set of possible states in the finite state machine must be an enumeration type.
-By convention the root state enclosing the whole machine is called __Root__.
+The root state enclosing the whole machine is called _Root_ by convention.
 
 [plantuml,fsm-design-machine_model,svg]
 ....

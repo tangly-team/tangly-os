@@ -15,19 +15,19 @@ Implemented
 
 === Context
 
-We need a legible data model for finite state machine definitions. New users should easily understand the finite state machine abstractions and map
-them to their domain.
+We need a legible data model for finite state machine definitions.
+New users should easily understand the finite state machine abstractions and map them to their domain.
 
 === Decision
 
-We use standard classes of the JDK to minimize contextual complexity when learning and using the FSM library. We will evaluate if the loss of
-domain names for classes could have a negative impact of the legibility of the library.
+We use standard classes of the JDK to minimize contextual complexity when learning and using the FSM library.
+We will evaluate if the loss of domain names for classes has a negative impact on the legibility of the library.
 
 === Consequences
 
-We have a cleaner and simpler interface and have increase dependency to regular JDK classes. The generic names of the guard predicate and functional
-action should not diminish the legibility of the source code. The role of the type is defined through the name of the parameter in the method
-signature.
+We have a cleaner and simpler interface and have increased dependency to regular JDK classes.
+The generic names of the guard predicate and functional action should not diminish the legibility of the source code.
+The role of the type is defined through the name of the parameter in the method signature.
 
-Care was taken to use explicit parameter names and document them accordingly in JavaDoc. Modern IDE such as IntelliJ IDEA display formatted JavaDoc
-as hints to the developer.
+Care was taken to use explicit parameter names and document them accordingly in JavaDoc.
+Modern IDE such as IntelliJ IDEA display formatted JavaDoc as hints to the developer.

@@ -19,13 +19,14 @@ Superseded by: link:../../../../ideas/adr/os-005-publish-maven-central-artifact[
 
 === Context
 
-The library is mature enough to be used in public commercial and academic projects. The library was used in internal projects and refined to
-fulfill these requirements. More customers will validate the usefulness of the library and identify extensions for further releases.
+The library is mature enough to be used in commercial and academic projects.
+The library was used in internal projects and refined to fulfill these requirements.
+More customers will validate the usefulness of the library and identify extensions for further releases.
 
 === Decision
 
-The library shall be published on maven central and be accessible to a wide range of developers and organizations. A website shall be set up to
-provide an adequate documentation for users.
+The library shall be published on maven central and be accessible to a wide range of developers and organizations.
+A website shall be set up to provide an adequate documentation for users.
 
 The https://tangly-team.bitbucket.io/docs/fsm/[FSM website] will use a static web approach to minimize costs and provide good legibility.
 
@@ -36,5 +37,5 @@ The ADR FSM-001 supports this evolution.
 === Consequences
 
 * We have to establish a publishing process at the company level to deploy signed artifacts to maven central repository.
-* We have to establish a public website to host the documentation of public published libraries
-* We have to support semantic versioning for all future releases of public published libraries
+* We have to establish a public website to host the documentation of public published libraries.
+* We have to support semantic versioning of all future published releases.
