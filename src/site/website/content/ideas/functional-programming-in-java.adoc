@@ -22,7 +22,7 @@ description: Functional programming in modern Java
 |===
 |Functional |Object-Oriented
 
-|Order of execution isn’t always important, it can be asynchronous
+|Order of execution isn’t always important. It can be asynchronous
 |A specific execution sequence of statements is crucial
 
 |Functions are basic building elements to work with data structures
@@ -47,7 +47,7 @@ description: Functional programming in modern Java
 
 https://en.wikipedia.org/wiki/Referential_transparency[Referential Transparency]::
 A function, or more generally an expression, is called referentially transparent if a call can be replaced by its value without affecting the behavior of the program.
-Simply spoken, given the same input the output is always the same.
+Simply spoken, given the same input implies the output is always the same.
 https://en.wikipedia.org/wiki/Persistent_data_structure[Persistent Data Structure]::
 A persistent data structure is a data structure that always preserves the previous version of itself when it is modified.
 Such data structures are effectively immutable, as their operations do not visibly update the structure in-place, but instead yield a new updated structure.
@@ -86,11 +86,11 @@ Examples of monads in modern day Java programming language:
 
 ==== Monad Laws
 
-The last thing that needs mentioning while speaking of monads are their laws.
+The last thing that needs to mention while speaking of monads is their laws.
 If we want to consider our implementation a real monad, we must obey them.
 There are three laws: left identity, right identity and associativity.
 In my opinion, it can be somewhat hard to understand what they actually mean.
-Now with the help of Optional I will try to explain above laws in a more detailed way.
+With the help of _Optional<T>_, I will try to explain the above laws in a more detailed way.
 
 First a few assumptions:
 
@@ -153,4 +153,6 @@ Of course, in the case of Optional, type boundaries allow us to use more complex
 [bibliography]
 == References
 
-- [[[effective-java, 1]]] Effective Java _Third Edition_. Joshua Bloch. Addison-Wesley. 2018
+- [[[effective-java, 1]]] Effective Java _Third Edition_.
+Joshua Bloch.
+Addison-Wesley. 2018

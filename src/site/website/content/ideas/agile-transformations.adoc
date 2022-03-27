@@ -24,7 +24,7 @@ Establish leadership situation awareness, discovery of weaknesses and kickoff of
 * Enable leadership to deploy transformation incrementally and guide the scope and pace of change.
 Organize your collaborators and workflow around your products and strategy::
 * Design a custom transformation approach with immediately actionable steps.
-* Select a few pilot groups for launch and involve all participants - open space meeting, information radiators -.
+* Select a few pilot groups for launch and involve all participants – open space meeting, information radiators -.
 * Create a coherent, actionable backlog which connects strategy to execution, so the entire organization is aligned around shared goals.
 * Identify indicators to measure progress.
 * Build team level backlogs so the entire organization is aligned around shared goals.

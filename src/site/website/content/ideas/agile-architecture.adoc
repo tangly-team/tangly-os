@@ -266,7 +266,7 @@ ____
 The cost of automating acceptance tests is so small in comparison to the cost of executing manual test plans that it makes no economic sense to write scripts for humans to execute.
 ____
 
-To implement this approach you need:
+To implement this approach, you need:
 
 * Acceptance criteria formulated for each functionality.
 It implies https://en.wikipedia.org/wiki/Specification_by_example[specifications by example] – you need to train your business analysts and article owners.

@@ -33,7 +33,7 @@ The provided tools extract the requested indicators and present them graphically
   .. the gathered data are date of change, the author of change, number of added lines and of removed lines
   .. each file change is gathered
   .. only the version management system __git__ is supported
-. Gather complexity metrics over source code artifacts - classes and packages - over a specified time interval
+. Gather complexity metrics over source code artifacts – classes and packages – over a specified time interval
 . Gather location and time when identified defects were fixed in the source code repository
   .. use the official conventions to identify a closed ticket in a commit comment
 

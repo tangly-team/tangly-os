@@ -11,17 +11,17 @@ description: Design conventions for open source components
 :description: Design conventions for the open source components of tangly
 :keywords: agile, architecture, design
 :company: https://www.tangly.net/[tangly llc]
--
-=== Audit Event Conventions
 
-The _event_ field is one of of the following values
+- === Audit Event Conventions
 
-import :: any entity imported from an external source is audited
-export :: any entity exported to an external source is audited
-create :: each time a file is generated and exported shall be audited.
-For example the creation of an invoice document is audited.
-login :: login of a user
-logout :: logout of a user
+The _event_ field is one of the following values
+
+import:: any entity imported from an external source is audited
+export:: any entity exported to an external source is audited
+create:: each time a file is generated and exported shall be audited.
+For example, the creation of an invoice document is audited.
+login:: login of a user
+logout:: logout of a user
 
 The _component_ field has the structure _net.tangly_.*component_name*.
 The component field is the Java module name of the design component.
@@ -38,18 +38,18 @@ All imported
 
 Use modern Java constructs in our daily coding
 
-* Prefer a *record* over a class abstraction to promote immutable objects,
-* Prefer stream approach over explicit control statements to promote functional programming,
-* Promote modules for information hiding and reducing coupling between components,
+* Prefer a *record* over a class abstraction to promote immutable objects.
+* Prefer stream approach over explicit control statements to promote functional programming.
+* Promote modules for information hiding and reducing coupling between components.
 * Experiment with var construct to find out if code is more legible.
 
 ==== _String toString()_ Method
 
 The method implementation uses a _String.format()_ approach.
-We assume that Java will introduce intrinsics support for an efficient implementation of toString method based on _String.format()_.
-As soon as the intrisics is available we will migrate to the supported version as stated in JEP 348.
+We assume that Java will introduce intrinsic support for an efficient implementation of toString method based on _String.format()_.
+As soon as the intrinsics is available, we will migrate to the supported version as stated in JEP 348.
 
-The _toString_ method is used to create detailed audit and looging messages and support production error searching.
+The _toString_ method is used to create detailed audit and logging messages and support production error searching.
 The format of the message is based on the build-in format defined in the JDK for Java records.
 
 [source,java]

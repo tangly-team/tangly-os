@@ -22,8 +22,9 @@ the Software Architecture and Techniques SWAT lectures {{< /attachments >}}
 
 ## Modern Java and Selected JVM Languages Lectures
 
-Modern Java and Selected JVM languages *PCP* discuss programming paradigms to write legible, performant source code. Theory is mapped to programming language
-features. The participants learn how to create modern design concepts and implement them in JVM languages such as Java, Clojure, and Groovy.
+Modern Java and Selected JVM languages *PCP* discuss programming paradigms to write legible, efficient source code.
+Theory is mapped to programming language features.
+The participants learn how to create modern design concepts and implement them in JVM languages such as Java, Clojure, and Groovy.
 
 Key themes are:
 
