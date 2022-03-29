@@ -54,6 +54,7 @@ public class MainLayout extends AppLayout {
 
     public MainLayout() {
         domains = new HashMap<>();
+        Erp.propertiesConfiguredErp();
         put(new CrmBoundedDomainUi(Erp.instance().ofCrmDomain(), Erp.instance().ofInvoicesDomain()));
         put(new ProductsBoundedDomainUi(Erp.instance().ofProductsDomain()));
         put(new InvoicesBoundedDomainUi(Erp.instance().ofInvoicesDomain()));
