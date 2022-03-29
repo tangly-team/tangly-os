@@ -12,20 +12,21 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2019-09-01-head.jpg[width=420,height=360,role=left]
+
 Agile approaches encourage common ownership of artifacts during product development.
-Historically https://en.wikipedia.org/wiki/Commons[commons] is the term used for shared resources.
+Historically, the https://en.wikipedia.org/wiki/Commons[commons] is the term used for shared resources.
 Can we apply the commons learnings to agile and Scrum approaches?
 
-Interestingly economists were kind to state common ownership is doomed to fail through the
+Interestingly, economists were kind to state common ownership is doomed to fail through the
 https://en.wikipedia.org/wiki/Tragedy_of_the_commons[tragedy of commons] theory published end of the sixties.
 
-Thirty years later https://en.wikipedia.org/wiki/Elinor_Ostrom[Elinor Ostrom] showed that commons can indeed work well if you follow a small set of rules.
-She found century old examples scattered around the world.
+Thirty years later, https://en.wikipedia.org/wiki/Elinor_Ostrom[Elinor Ostrom] showed that commons can indeed work well if you follow a small set of rules.
+She found century-old examples scattered around the world.
 She was awarded the Nobel Prize in economics for her findings in 2009 and dissipated the previous fake news.
 
 The picture shows a https://de.wikipedia.org/wiki/Suone[Suone] in Wallis, Switzerland.
 The constructions bring water to arid regions and are build and maintained by communities.
-It is example of commons in place for hundreds of years and is one of the concrete implementation studied by Elinor.
+It is an example of commons in place for hundreds of years and is one of the concrete implementation studied by Elinor.
 Mountain pastures are also managed as commons in Switzerland.
 You will find a drawing of Suone on the
 https://en.wikipedia.org/wiki/Banknotes_of_the_Swiss_franc#/media/File:CHF_100_9_back.jpg[hundred Swiss Francs note].
@@ -36,7 +37,7 @@ A resource arrangement that works in practice can work in theory.
 ----
 
 Elinor Ostrom identified eight design principles of stable local common pool resource management through the world.
-These principles have a wider range of application than common resource pool groups.
+These principles have a wider range of applications than common resource pool groups.
 They are relevant to nearly any situation where people - such as Scrum teams - must cooperate and coordinate to achieve shared goals.
 
 Below the eight principles are presented with a mapping to Scrum aspects.
@@ -44,8 +45,8 @@ Below the eight principles are presented with a mapping to Scrum aspects.
 === A clear definition of the contents of the common pool resource and effective exclusion of external un-entitled parties
 
 The Scrum teams define the artifacts and processes exclusively owned by the team.
-Teams take easily ownership of items such as source code, Scrum board, pull process.
-Other items such as refactoring process, incident tickets produce more infighting.
+Teams take ownership of items such as source code, Scrum board, pull process.
+Other items, such as refactoring process, incident tickets produce more infighting.
 You can measure the maturity of your team accordingly to the clarity which resources they own exclusively.
 The first step shall often be _collective ownership of source code_ and _common coding style_.
 
@@ -64,8 +65,10 @@ They truly own the source code and its quality.
 {ref-scrum} or {ref-less} have quite a few platforms to support decision-making process * Daily Scrum, * Retrospective, * Review, * Backlog refinement, * Planning.
 
 The decision-making process works only if the organization grants psychological security to their teams.
-In my experience it takes years until an organization discards command and control reflexes and delegates responsibility and accountability to the Scrum team members.
-Often daily Scrum are reporting meetings - either to SM or PO or to the development team - and seldom a platform to collaborate - discussing options and experimenting -.
+In my experience, it takes years until an organization discards command and control reflexes and delegates responsibility and accountability to the Scrum team members.
+Daily Scrum events are often reporting meetings.
+The developers report either to the Scrum master, or the product owner, or a manager.
+The events are seldom a platform to collaborate, discuss options and experiment with variants.
 
 Consensus or consent approaches are widely more successful than majority decisions is one of the findings of Elinor.
 
@@ -87,15 +90,15 @@ Often it is painful to realize how difficult transparency is.
 Rules are only respected if sanctions are implemented upon violations of the agreement.
 Scrum teams can rule that
 
-* You must repair the broken build,
-* You must immediately correct your coding violations,
-* You lose your source code management system check-in rights,
-* You are excluded from team.
+* You must repair the broken build.
+* You must immediately correct your coding violations.
+* You lose your source code management system check-in rights.
+* You are excluded from the team.
 
-Most teams need counseling before they can tackle with the concept of sanctions.
+Most teams need counseling before they can tackle the concept of sanctions.
 As a Scrum master you must gently empower them to sanction.
-If this rule is not implemented you will always land in the https://en.wikipedia.org/wiki/Tragedy_of_the_commons[tragedy of commons] and utterly fail in your agile journey.
-Worse your product will probably also fail.
+If this rule is not implemented, you will always land in the https://en.wikipedia.org/wiki/Tragedy_of_the_commons[tragedy of commons] and utterly fail in your agile journey.
+Worse, your product will probably also fail.
 
 === Mechanisms of conflict resolution that are cheap and of easy access
 
@@ -115,12 +118,12 @@ The Scrum master must facilitate the discussion until the team members have deve
 Self-determination works only if recognized by the overall authorities and organization.
 Here we leave the team level and need department recognition - for a LeSS approach - or company level recognition - for example to have ownership to remove a team member -.
 
-* Self-organizing of Scrum team,
+* Self-organizing of the Scrum team,
 * Ownership of internal quality,
 * Ownership of estimations.
 
 Scrum master shall coach and counsel the organization and the team.
-It takes time until management understand the dependencies between delegation, accountability, ownership, and autonomy.
+It takes time until management understands the dependencies between delegation, accountability, ownership, and autonomy.
 You shall remember https://www.craiglarman.com/wiki/index.php?title=Larman%27s_Laws_of_Organizational_Behavior[Larman's Laws]
 
 [quote,Craig Larman]
@@ -134,10 +137,10 @@ Please be gentle and patient.
 In the case of larger common-pool resources, organization isin the form of multiple layers of nested enterprises.
 Small local CPRs at the base level.
 
-Scaling agile practices at the organization level require multiple levels.
+Scaling agile practices at the organization level requires multiple levels.
 
 * Transparency through Scrum board,
-* Definition of Dome as contract between team and organization,
+* Definition of Dome as contract between a team and their organization,
 * Visibility of source code, continuous integration, delivery and deployment of artifacts,
 * Scale to product level using {ref-less}.
 
@@ -150,4 +153,5 @@ He inspired us to look at agile approaches through the _commons'_ lens.
 [bibliography]
 === Literature
 
-- [[[tragedy-commons, 1]]] https://gosei.fi/blog/tragedy-of-commons-1/[Tragedy of Commons or Self-Management]. Ran Nyman. 2020
+- [[[tragedy-commons, 1]]] https://gosei.fi/blog/tragedy-of-commons-1/[Tragedy of Commons or Self-Management].
+Ran Nyman. 2020

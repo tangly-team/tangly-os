@@ -1,7 +1,7 @@
 ---
 title: "Introducing DevOps Ideas"
 linkTitle: "Introducing DevOps Ideas"
-date: 2022-04-27
+date: 2022-04-20
 tags: ["agile"]
 ---
 

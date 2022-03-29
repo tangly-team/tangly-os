@@ -94,8 +94,7 @@ When this developer will leave the department or the company, all knowledge asso
 
 The above scripts provide information in textual forms.
 Over time, you will become more sophisticated with your inquiries and need better tools.
-Either visualize your findings with https://d3js.org/[d3js] or https://plot.ly/javascript/[plotly.js] or buy a commercial tool such as
-https://codescene.io/[code scene].
+Either visualize your findings with https://d3js.org/[d3js] or https://plot.ly/javascript/[plotly.js] or buy a commercial tool such as the https://codescene.io/[code scene].
 
 Another approach is to write a small framework to analyze the data and to implement more complex queries in your preferred environment.
 

@@ -10,10 +10,6 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-plugins {
-    id 'java-library-conventions'
-}
-
 project.ext.groupId = 'net.tangly'
 project.ext.artifactId = 'fsm'
 project.version = "0.2.7"

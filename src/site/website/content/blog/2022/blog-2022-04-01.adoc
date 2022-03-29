@@ -1,7 +1,7 @@
 ---
 title: "Java, Groovy, Clojure"
 linkTitle: "Java, Groovy, Clojure"
-date: 2022-04-01
+date: 2022-04-05
 tags: ["agile", "java", "students"]
 ---
 
@@ -51,16 +51,16 @@ Clojure is a Lisp dialect not constrained by backward compatibility.
 
 [source,clojure]
 ----
-; binds a name to a value. If value is an expression it is first evaluated.
+; binds a name to a value. If value is an expression, it is first evaluated.
 (def <name> <value>)
 
 ; else is optional, if not present the expression returns null in the false case
 (if (<condition>) (<true-expression>) (<false-expression))
 
-; when is conceptually an if with only a true path
+; conceptually when is an if with only a true path
 (when (<condition>) (<true-expression>))
 
-; when not is conceptually an if with only a false path
+; conceptually when not is an if with only a false path
 (when-not (<condition>) (<false-expression>))
 
 ; cond process on condition after another, the expression of the first condition being true is executed and the expression completes.
@@ -101,6 +101,9 @@ letfn[] (<expression>)
 
 Sequence abstraction permeates the design and API of Clojure.
 Functional programming emphasizes the design of functions working on generic data structures.
+
+The powerful advandage of dynamic typed language is that algorithms just work with various parameters.
+As long as the parameters support the required functions, there is no need to provide a specific interface.
 
 ===== Recursion, Tail Recursion, Currying, Memoization
 
@@ -153,3 +156,34 @@ You can define functions and lambdas using:
 
 === Thoughts
 
+Clojure is brilliant in the support of dynamic dispatch at runtime.
+The refined design of their collections is a proof of their support for functional approaches.
+I am not convinced that dynamic inheritance and protocols promote maintainability of software products.
+
+Java is slowly moving to improve their support:
+
+- Switch expressions are now way more functional.
+In Spring 2022 deconstruction of records, objects and arrays is still not available.
+- First class citizen status for functions is still ongoing.
+You still not define the implementation of a virtual method using the lambda notation or a method reference.
+I agree it is a detail.
+But it is a signal if you want to truly support functional approaches.
+- Nice is the effort to improve the collections.
+The sequence interface would improve the legibility of the standard collections.
+It is still a hack that unmodifiable collection throws an exception if your code calls a modifier.
+It is time to introduce a unmodifiable interface for the various collections.
+
+Groovy is awesome in how operator support enhances the legibility of the source code.
+The implementation is syntactic sugar.
+
+Java libraries are best of breed.
+Backward compatibility and static type checks are a must for enterprise applications developed over decades.
+You do not want to throw away such a huge investment.
+
+I like properties and the elegance of grouping the declaration of the field with the methods.
+I am still not certain it makes the code quite more legible or maintainable.
+
+If you want to write a functional code with immutable objects, the availability of a with construct is a huge improvement.
+
+And as engineer, I truly acknowledge the performance edge of Java against Clojure or Groovy.
+Newer approaches based on GraalVM should close the performance gap in the future.

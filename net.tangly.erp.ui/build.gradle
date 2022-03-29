@@ -29,6 +29,7 @@ application {
 
 vaadin {
     optimizeBundle = false
+    pnpmEnable = true
 }
 
 dependencies {

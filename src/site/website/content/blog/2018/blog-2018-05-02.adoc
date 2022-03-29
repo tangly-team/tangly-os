@@ -63,7 +63,8 @@ One interesting consequence is the company compiling the report is actively poac
 
 The majority of teams use Scrum or Kanban.
 The associated events and tools are used.
-The deeper values, such as test driven development, acceptance test driven development, clean code or refactoring are often missing.
+Deeper values are often missing.,
+Observable examples are test driven development, acceptance test driven development, clean code or refactoring.
 The key is:
 
 [.text-center]

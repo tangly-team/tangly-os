@@ -1,7 +1,7 @@
 ---
 title: "Digital Product Manager"
 linkTitle: "Digital Product Manager"
-date: 2022-04-27
+date: 2022-04-15
 tags: ["agile"]
 ---
 
@@ -165,7 +165,7 @@ I assume this dichotomy reflects the silo structure of many companies.
 
 [IMPORTANT]
 ====
-The most successful digital companies such as Microsoft, Twitter, Apple, Goggle, and Facebook have such profiles in their highest senior positions.
+The most successful digital companies, such as Microsoft, Twitter, Apple, Goggle, and Facebook have such profiles in their highest senior positions.
 These leaders master product development, collaborators nurturing, financial acumen, and technological savviness.
 
 Successful executives shall master culture, market and technology to launch awesome product lines.

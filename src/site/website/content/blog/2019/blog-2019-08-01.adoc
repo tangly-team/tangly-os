@@ -26,9 +26,9 @@ An agile architecture shall have four characteristics.
 
 image::2019-08-01-architecture.jpg[width=420,height=360,role=left]
 
-. _Allow change quickly_ because we cannot foresee the future,
-. _Always verifiable_ because we want changes without impeding integrity,
-. _Support rapid development_ because we want effective and efficient implementation of new features,
+. _Allow change quickly_ because we cannot foresee the future.
+. _Always verifiable_ because we want changes without impeding integrity.
+. _Support rapid development_ because we want effective and efficient implementation of new features.
 . _Always working_ because we want continuous deployment to have customers' feedback -.
 
 These characteristics are essential for successful agile development of great software products.
@@ -41,11 +41,11 @@ https://agilemanifesto.org/principles.html[Agile Manifesto Principles] to infer 
 
 The architect shall be part of the Scrum development team.
 This is the most embedded way an architect would fit into a Scrum team.
-It may not even be an individual who has the title of architect.
+It may not even be an individual who has the title of an architect.
 The big idea behind Scrum teams is that team members have different skills.
 Their roles may change to deliver what is required for a particular sprint.
 
-So it could be that senior developers within the team got architecture skill.
+So it could be that senior developers within the team got architecture skills.
 They are in the best position, or have the best knowledge, to make those architectural decisions.
 Those team members with architectural skills are involved in the sprint on a day-to-day basis.
 They attend the daily Scrum meetings, take items off the backlog, and work on them.
@@ -56,35 +56,35 @@ https://less.works/less/technical-excellence/architecture-design.html[Successful
 === How Do You Perform Agile Design?
 
 Scrum is quite silent about technical practices.
-The Scrum fathers and community strongly emphasize to adopt https://en.wikipedia.org/wiki/Extreme_programming[eXtreme Programming] practices.
+The Scrum fathers and community strongly emphasize adopting https://en.wikipedia.org/wiki/Extreme_programming[eXtreme Programming] practices.
 For bigger systems use the good practices described in {ref-less}.
 
 An actual very good practice is to use https://en.wikipedia.org/wiki/Event_storming[Event Storming] and
 https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design] _DDD_ to model the application domain and partition the system.
 
 Use https://www.thoughtworks.com/insights/blog/fitness-function-driven-development[fitness functions]
-to monitor and validate continuously all non-functional requirements.
+to monitor and validate all non-functional requirements.
 
 The well-established practices from the object-oriented and DevOps communities are:
 
-* Develop very early a working skeleton,
+* Develop very early a working skeleton.
 * Clean architecture implies clean code and requires clean coders in your team.
 See our post link:../../2019/agile-code-is-clean-code/[Clean Code],
 * Aggressive refactoring and understand technical debt, Continuous integration, continuous delivery, and continuous deployment.
 
-For a detailed discussion consult the post link:../../2018/pragmatic-craftsmanship-professional-software-developer/[Pragmatic Craftsmanship].
+For a detailed discussion, consult the post link:../../2018/pragmatic-craftsmanship-professional-software-developer/[Pragmatic Craftsmanship].
 
 === What is the Architect Role?
 
 The architect shall
 
-* Be part of the team, work daily with team members and attend all team events,
-* Maintain the pace of development,
-* Often Communicate and early as a coach and mentor - _meaning pair programming and design sessions_ -,
-* Be fluent in domain driven development, hexagonal architecture, refactoring, and clean code,
-* Use architecture design record ADR and light documentation to describe architecture decisions - meaning no lengthy Software Architecture Document SAD or overwhelming UML models -,
+* Be part of the team, work daily with team members and attend all team events.
+* Maintain the pace of development.
+* Often Communicate and early as a coach and mentor - _meaning pair programming and design sessions_ -.
+* Be fluent in domain-driven development, hexagonal architecture, refactoring, and clean code.
+* Use architecture design record ADR and light documentation to describe architecture decisions - meaning no lengthy Software Architecture Document SAD or overwhelming UML models -.
 * Be a master programmer and writes code in the application technological stack.
-He writes actual source code as current good practices are,
+He writes actual source code as current good practices are.
 * Have rich knowledge of architecture and design.
 
 We have mentioned refactoring, which is how we evolve an ever-improving design and architecture while building the product incrementally.
