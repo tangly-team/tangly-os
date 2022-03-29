@@ -83,6 +83,7 @@ microstream-jdk17 = { module = "one.microstream:microstream-persistence-binary-j
 
 mockito = "org.mockito:mockito-junit-jupiter:4.4.0"
 
+vaadin-bom = { module = "com.vaadin:vaadin-bom", version.ref = "vaadin-version" }
 vaadin-core = { module = "com.vaadin:vaadin-core", version.ref = "vaadin-version" }
 vaadin-autocomplete = "com.vaadin.componentfactory:autocomplete:2.3.2"
 vaadin-daterange = "com.vaadin.componentfactory:vcf-date-range-picker:2.0.0"

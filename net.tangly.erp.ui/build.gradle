@@ -29,7 +29,6 @@ application {
 
 vaadin {
     optimizeBundle = false
-    pnpmEnable = true
 }
 
 dependencies {
@@ -42,6 +41,7 @@ dependencies {
     implementation project(':net.tangly.gleam')
     implementation project(':net.tangly.ui')
 
+    implementation enforcedPlatform(libs.vaadin.bom)
     implementation(libs.vaadin.core)
     implementation(libs.apache.log4j2.slf4j)
 

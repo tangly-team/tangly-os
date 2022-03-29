@@ -30,6 +30,7 @@ dependencies {
     implementation project(':net.tangly.erp.products')
     implementation project(':net.tangly.gleam')
 
+    implementation enforcedPlatform(libs.vaadin.bom)
     implementation(libs.vaadin.core)
 
     implementation("javax.servlet:javax.servlet-api:3.1.0")
