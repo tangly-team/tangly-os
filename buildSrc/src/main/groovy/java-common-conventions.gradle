@@ -47,7 +47,8 @@ tasks.withType(JavaCompile) {
     options.incremental = true
     options.warnings = true
     options.deprecation = true
-    options.compilerArgs += ["-parameters", "--enable-preview", "-Xlint:all,-serial,-varargs,-processing,-try", "-Xdoclint:none"]
+    // removed "--enable-preview",
+    options.compilerArgs += ["-parameters", "-Xlint:all,-serial,-varargs,-processing,-try", "-Xdoclint:none"]
 }
 
 tasks.withType(Test) {

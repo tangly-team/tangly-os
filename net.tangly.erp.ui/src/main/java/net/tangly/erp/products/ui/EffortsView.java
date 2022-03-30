@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -41,7 +41,7 @@ class EffortsView extends EntitiesView<Effort> {
 
     @Override
     protected void initialize() {
-        Grid<Effort> grid = grid();
+        var grid = grid();
         grid.addColumn(Effort::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(o -> o.assignment().id()).setKey("assignment").setHeader("Assignment").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(o -> o.assignment().name()).setKey("collaborator").setHeader("Collaborator").setAutoWidth(true).setResizable(true).setSortable(true);

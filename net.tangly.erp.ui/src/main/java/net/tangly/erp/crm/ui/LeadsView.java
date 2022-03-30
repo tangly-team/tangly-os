@@ -63,7 +63,7 @@ class LeadsView extends EntitiesView<Lead> {
 
     @Override
     protected void initialize() {
-        PaginatedGrid<Lead> grid = grid();
+        var grid = grid();
         grid.addColumn(Lead::date).setKey("date").setHeader("Date").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Lead::code).setKey("code").setHeader("Code").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Lead::firstname).setKey("firstname").setHeader("Firstname").setAutoWidth(true).setResizable(true).setSortable(true);

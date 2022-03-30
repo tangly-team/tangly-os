@@ -14,24 +14,27 @@ tags: ["agile", "java", "students"]
 image::2022-04-01-head.png[width=420,height=360,role=left]
 
 Professional software developers shall master their primary technology stack and programming language.
+
 I am a proficient and experienced programmer in Java.
 I have written production code in Java for the last twenty years.
 I decided to study the language in depth and acquired various Java developer certifications.
 I truly love the modern Java language and the available development environments.
 
-I want to understand the strengths and weaknesses of Java as well.
+I want to understand the strengths and weaknesses of Java.
 Knowing the weaknesses of my technology stack empowers me to select alternative design approaches to mitigate the drawbacks.
 
-An approach to gathering data is to learn more about Groovy and Clojure.
+A learning approach is to learn more about Groovy and Clojure.
 I want to understand the various strengths of different programming languages.
 I still want to stay in the Java ecosystem to better apply my learnings.
-Both Groovy and Clojure are available on the Java virtual machine and have good interoperability with it.
 
-One major focus is the functional programming approach and hwo it impacts design and development activities.
+Groovy and Clojure are available on the Java virtual machine and have good interoperability with it.
+One major focus is the functional programming approach and how it impacts design and development activities.
 
 === Clojure
 
-Clojure is the functional programming language and a Lisp(1) dialect.
+image::2022-04-01-clojure.png[width=240,height=240,role=text-center]
+
+Clojure is a functional programming language and a Lisp(1) dialect.
 The language compiles to and runs on the JVM and interfaces nicely with Java and API libraries.
 
 [quote,Alan J. Perlis]
@@ -48,6 +51,12 @@ Clojure is a Lisp dialect not constrained by backward compatibility.
 * Embraces the JVM platform
 
 ==== Expressions and Statements
+
+Expressions are as expected in a programming language.
+
+The _and_ and _or_ operators provide shortcut evaluation.
+Beware that they are implemented as macros and do not always behave as functions.
+You will realize it when you try to pass them as function parameters.
 
 [source,clojure]
 ----
@@ -79,7 +88,12 @@ Clojure is a Lisp dialect not constrained by backward compatibility.
 (do {expression})
 ----
 
-Number tower Truth
+The truth axioms in Clojure are a refreshing view of the programming world.
+The numerical tower and implicit type conversions are well-thought and minimize boilerplate code.
+
+Languages with implicit conversion function support have similar quality.
+Sadly, Java does not support an extensible numerical tower or implicit type conversions.
+The dreadful way to use _BigInteger_, _BigDecimal_, and the missing complex type are proofs.
 
 ==== Functions and Closures
 
@@ -92,7 +106,7 @@ You can define functions and closures using:
 
 (defn name [] (<expression>))
 
-let [{<name> <expression}] (<expression>))
+(let [{<name> <expression}] (<expression>))
 
 letfn[] (<expression>)
 ----
@@ -100,39 +114,124 @@ letfn[] (<expression>)
 ===== Higher-order Functions and Sequences
 
 Sequence abstraction permeates the design and API of Clojure.
-Functional programming emphasizes the design of functions working on generic data structures.
+Functional programming and https://clojure.org/guides/higher_order_functions[higher order functions] emphasize the design of functions working on generic data structures.
 
-The powerful advandage of dynamic typed language is that algorithms just work with various parameters.
+The powerful advantage of dynamic typed language is that algorithms just work with various parameters.
 As long as the parameters support the required functions, there is no need to provide a specific interface.
 
-===== Recursion, Tail Recursion, Currying, Memoization
+===== Recursion, Tail Recursion, Currying, Memoization, Destructuring
 
-loop recur partial memoize
+Recursion is implemented as expected.
+Recursion is preferred over loops.
 
-=== Thoughts
+You can explicitly optimize tail recursion with the https://clojuredocs.org/clojure.core/recur[recur] operator.
 
-Type hints Spec
+https://en.wikipedia.org/wiki/Currying[Currying] approach is the https://clojuredocs.org/clojure.core/partial[partial] operator.
+The operator maps a set of parameters to value and return a function which arity is the number of free parameters.
+
+Memoization is provided with the https://clojuredocs.org/clojure.core/memoize[memoize] operator wrapping the function in need of.
+The documentation is very shallow about the costs of memoization and the behavior of the cache.
+No functions are provided to influence or clear the cached data.
+
+https://clojure.org/guides/destructuring[Destructuring] is well-supported for sequences, structures, and in keyword arguments.
+
+==== Thoughts
+
+Clojure provides https://clojure.org/reference/java_interop[type hints] to help the compiler to find the correct method.
+This feature is necessary to cleanly interface with Java and support edge cases.
+
+Clojure has a https://clojure.org/guides/spec[spec] library to express constraints on the parameters and return types.
+This approach allows you to define a dynamic type system over your abstractions.
+You are in charge of maintaining and verifying the coherence of this type system.
+
+_I prefer to delegate such verification and validation to the compiler._
+_I would postulate that if your type system grows in complexity, it is type to reflect and start using object-orientation and object modelization._
 
 === Java
 
+image::2022-04-01-java.png[width=240,height=240,role=text-center]
+
+Java is the work horse for implementing enterprise and departmental software solutions.
+The language and libraries are regularly improved and a new version is currently delivered every six months.
+Early adaptor distributions are provided to smooth the migration of your code.
+
+Too many Java developers did not realize that their programming language is evolving.
+They still write archaic and plainly suboptimal code instead of using the new syntax and constructs.
+
 ==== Expressions and Statements
+
+The newer and rediscovered features are:
 
 [source,java]
 ----
+<boolean-expression) ? <true-expression> : <false expression> // <1>
+
+switch <value> {    // <2>
+    case null -> expression;
+    case value instanceof <type> && <condition> -> <expression>;
+    case value instanceof <type> -> <expression>;
+    default -> <expression>
+}
+----
+
+<1> The ternary operator always provided a conditional expression in the Java language.
+<2> The switch expression return a value upon completion.
+
+A better idiom for _equals_ without any conditional statement is now recommended:
+
+[source,java]
+----
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof MyType o) && super.equals(o) && Objects.equals(someValue(), o.someValue());
+    }
 
 ----
 
 ==== Functions and Lambdas
 
-You can define functions and lambdas using:
+Lambda expressions are well-supported in Java.
+The _java.util.function_ package provides the expected abstractions.
+Function composition is supported through the provided abstractions.
+
+Transparent support of functions as a first-class citizen is still not completed.
+The concise method bodies proposal is still not implemented in year 2022.
 
 ===== Higher-order Functions and Streams
 
-===== Recursion, Tail Recursion, Currying, Memoization
+Lambdas and streams were introduced in Java 8 and released in March 2014.
+The newer versions of Java have refined the abstractions and added methods to simplify frequent use cases.
+
+===== Recursion, Tail Recursion, Currying, Memoization, Destructuring
+
+Recursion is well-supported in Java.
+The environment still does not support tail recursion optimization.
+I almost feel sorry that a modern programming language is missing such a well-known optimization.
+The Java community somewhat promised us that in the future we could get this optimization through the project https://openjdk.java.net/projects/loom/[Loom].
+
+Currying is cumbersome to implement in Java.
+
+Memoization and destructuring are currently not supported.
 
 === Thoughts
 
+Java roots are object-orientation and mutability.
+
+Lambda and stream features are the first serious effort to support functional programming idioms.
+The approach is well-designed and powerful enough to handle all algorithms manipulating sequences and collections.
+
+Functions and expressions are still not handled as first-class citizens.
+The current improvements in the switch expression acknowledge the cliff.
+These improvements also slowly empower us to write a more functional code.
+
 === Groovy
+
+image::2022-04-01-groovy.png[width=240,height=240,role=text-center]
+
+Of course, Groovy is not a perfect tool for every application.
+Great in script-like, Groovy is not necessarily equally useful in normal, production coding.
+While dynamic typing gives you a productivity boost, it slows down refactoring afterwards when writing code.
+That is a huge drawback if you have dozens of classes in a project tangled by dependencies.
 
 ==== Expressions and Statements
 
@@ -143,16 +242,26 @@ The current method call approach destroys the legibility of the source code.
 
 [source,groovy]
 ----
-
+assert 3.2 == 1.2G + 2G   // <1>
+assert 10 == 10.1g - 0.1G
 ----
+
+<1> To create a BigDecimal, we can use the _G_ suffix.
 
 ==== Functions and Lambdas
 
-You can define functions and lambdas using:
+https://groovy-lang.org/closures.html[Closures] are built-in abstractions.
 
 ===== Higher-order Functions and Sequences
 
+https://docs.groovy-lang.org/next/html/documentation/working-with-collections.html[Sequences and higher-order functions] are built-in constructs.
+Groovy syntax is certainly groovy and less verbose than Java.
+But Groovy is not functional style friendly.
+
 ===== Recursion, Tail Recursion, Currying, Memoization
+
+Functional programming prefers recursion to iteration.
+Clojure provides a tail recursion optimization mechanism the programmer has to explicitly call.
 
 === Thoughts
 
@@ -162,8 +271,8 @@ I am not convinced that dynamic inheritance and protocols promote maintainabilit
 
 Java is slowly moving to improve their support:
 
-- Switch expressions are now way more functional.
-In Spring 2022 deconstruction of records, objects and arrays is still not available.
+- Switch expressions are now more functional.
+In Spring 2022, deconstruction of records, objects and arrays is still not available.
 - First class citizen status for functions is still ongoing.
 You still not define the implementation of a virtual method using the lambda notation or a method reference.
 I agree it is a detail.
@@ -171,13 +280,13 @@ But it is a signal if you want to truly support functional approaches.
 - Nice is the effort to improve the collections.
 The sequence interface would improve the legibility of the standard collections.
 It is still a hack that unmodifiable collection throws an exception if your code calls a modifier.
-It is time to introduce a unmodifiable interface for the various collections.
+It is time to introduce an unmodifiable interface for the various collections.
 
 Groovy is awesome in how operator support enhances the legibility of the source code.
 The implementation is syntactic sugar.
 
 Java libraries are best of breed.
-Backward compatibility and static type checks are a must for enterprise applications developed over decades.
+Backward compatibility and static type checks are immensely helpful for enterprise applications developed over decades.
 You do not want to throw away such a huge investment.
 
 I like properties and the elegance of grouping the declaration of the field with the methods.
@@ -185,5 +294,35 @@ I am still not certain it makes the code quite more legible or maintainable.
 
 If you want to write a functional code with immutable objects, the availability of a with construct is a huge improvement.
 
-And as engineer, I truly acknowledge the performance edge of Java against Clojure or Groovy.
+Functional programming with sequences is well-supported in all three environments.
+Clojure has the edge.
+The language is dynamically typed and provides sequence handling for all collections.
+
+Java is statically type.
+You need first to convert a collection into a stream.
+Easy to do, but you have to write the code.
+
+And as an engineer, I truly acknowledge the performance edge of Java against Clojure or Groovy.
 Newer approaches based on GraalVM should close the performance gap in the future.
+
+=== Recommendations for A Java Developer
+
+Java 8 and functional features were introduced in March 2014.
+Every Java programmer should now be a functional programming expert.
+Here are some idioms you should use:
+
+* Embrace functional programming and use the stream approach for all collection traversals.
+* Stop using iterations to process sequences.
+Please use streams.
+Declare your intent, do not describe the implementation.
+* Return _Optional<T>_ or an empty list _Collections.emptyList()_.
+Please do not return null values.
+* Create predicates using _java.util.function.Predicate<T>_ instead of complex boolean conditions.
+* Learn to compose functions through the helper methods of the _java.util.function_ package.
+* Use the _switch_ expression and the ternary operator _?:_.
+Please avoid _if_ and _switch_ statements.
+* Throw only unchecked exceptions.
+Stop creating and throwing checked exceptions.
+Beware that stream and lambda expressions cannot handle checked exceptions.
+* Embrace immutability and the _record_ construct.
+* Understand deconstruction patterns and how you could apply them in our code.

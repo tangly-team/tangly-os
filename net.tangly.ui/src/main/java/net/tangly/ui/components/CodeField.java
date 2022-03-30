@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -35,6 +35,9 @@ public class CodeField<T extends Code> extends Select<T> {
         this.codeType = codeType;
         setItemLabelGenerator(o -> (Objects.isNull(o) ? "" : o.code()));
         setItems(codeType.codes());
+        setEmptySelectionAllowed(true);
+        setPlaceholder("select item");
+        setEmptySelectionCaption("no item selected");
         setItemEnabledProvider(o -> (Objects.isNull(o) ? true : o.isEnabled()));
     }
 }

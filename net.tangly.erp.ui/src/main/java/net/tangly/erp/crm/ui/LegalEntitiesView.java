@@ -49,7 +49,7 @@ class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
 
     @Override
     protected void initialize() {
-        PaginatedGrid<LegalEntity> grid = grid();
+        var grid = grid();
         grid.addColumn(LegalEntity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(VaadinUtils.zefixComponentRenderer()).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(LegalEntity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);

@@ -48,7 +48,7 @@ class ContractsView extends InternalEntitiesView<Contract> {
 
     @Override
     protected void initialize() {
-        PaginatedGrid<Contract> grid = grid();
+        var grid = grid();
         InternalEntitiesView.addQualifiedEntityColumns(grid);
         grid.addColumn(e -> e.sellee().name()).setKey("customer").setHeader("Customer").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true).setSortable(true);

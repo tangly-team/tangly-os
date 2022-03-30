@@ -77,7 +77,6 @@ public class Erp {
         try {
             if (self == null) {
                 self = new Erp();
-                self.properties.remove(DATABASES_DIRECTORY_PROPERTY);
             }
         } finally {
             lock.unlock();;

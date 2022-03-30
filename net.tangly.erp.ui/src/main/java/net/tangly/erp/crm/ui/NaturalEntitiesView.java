@@ -16,7 +16,6 @@ import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.textfield.EmailField;
@@ -44,7 +43,6 @@ import net.tangly.ui.components.One2ManyView;
 import net.tangly.ui.components.TabsComponent;
 import net.tangly.ui.components.TagsView;
 import net.tangly.ui.components.VaadinUtils;
-import net.tangly.ui.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.ByteArrayInputStream;
@@ -64,7 +62,7 @@ class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
 
     @Override
     protected void initialize() {
-        PaginatedGrid<NaturalEntity> grid = grid();
+        var grid = grid();
         grid.addColumn(NaturalEntity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(NaturalEntity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(new LocalDateRenderer<>(NaturalEntity::fromDate, DateTimeFormatter.ISO_DATE)).setKey("from").setHeader("From").setAutoWidth(true)
@@ -73,7 +71,7 @@ class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
             .setResizable(true).setSortable(true);
         grid.addColumn(NaturalEntity::lastname).setKey("lastname").setHeader("Last Name").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(NaturalEntity::firstname).setKey("firstname").setHeader("First Name").setSortable(true).setAutoWidth(true).setResizable(true);
-        grid.addColumn(new ComponentRenderer<>(person -> (person.gender() == GenderCode.male) ? new Icon(VaadinIcon.MALE) : new Icon(VaadinIcon.FEMALE)))
+        grid.addColumn(new ComponentRenderer<>(person -> (person.gender() == GenderCode.male) ? VaadinIcon.MALE.create() : VaadinIcon.FEMALE.create()))
             .setHeader("Gender").setAutoWidth(true).setResizable(true);
         grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::individualLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
         addAndExpand(filterCriteria(false, false, InternalEntitiesView::addEntityFilters), grid(), gridButtons());

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -40,7 +40,7 @@ class AssignmentsView extends InternalEntitiesView<Assignment> {
 
     @Override
     protected void initialize() {
-        Grid<Assignment> grid = grid();
+        var grid = grid();
         InternalEntitiesView.addQualifiedEntityColumns(grid);
         grid.addColumn(Assignment::collaboratorId).setKey("collaboratorId").setHeader("Collaborator").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> (e.product() != null) ? e.product().name() : null).setKey("project").setHeader("Project").setSortable(true).setAutoWidth(true)

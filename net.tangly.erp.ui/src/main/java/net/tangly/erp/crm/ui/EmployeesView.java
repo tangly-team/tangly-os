@@ -42,7 +42,7 @@ class EmployeesView extends InternalEntitiesView<Employee> {
 
     @Override
     protected void initialize() {
-        PaginatedGrid<Employee> grid = grid();
+        var grid = grid();
         grid.addColumn(Employee::name).setKey("employee").setHeader("Employee").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.person().name()).setKey("person").setHeader("Person").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.organization().name()).setKey("organization").setHeader("Organization").setSortable(true).setAutoWidth(true).setResizable(true);

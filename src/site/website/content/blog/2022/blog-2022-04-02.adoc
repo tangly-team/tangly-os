@@ -16,19 +16,20 @@ tags: ["design", "java"]
 image::2022-04-02-head.jpg[width=420,height=360,role=left]
 
 SoDa _Software Development Agile_ is a homebrew project development method created at the https://www.hslu.ch[technical university of Lucerne].
-It is a mixture of Waterfall, RUP and Scrum. It uses a distorted Scrum for the concept and implementation phase.
+It is a mixture of Waterfall, RUP and Scrum approaches.
+It uses a distorted Scrum for the concept and implementation phase.
 
 A similar approach also exists with the official governmental Swiss project method {ref-hermes}.
 At least the documentation of https://www.hermes.admin.ch/en/starting-page.html[Hermes] is better than SoDa.
 
 Both approaches are quite similar.
-They mix a phase based Waterfall approach with the four phases of the old https://en.wikipedia.org/wiki/Rational_Unified_Process[RUP] project life-cycle approach.
+They mix a phase-based Waterfall approach with the four phases of the old https://en.wikipedia.org/wiki/Rational_Unified_Process[RUP] project life-cycle approach.
 RUP belongs to the family of https://en.wikipedia.org/wiki/Unified_Process[unified process methods].
 
 These approaches are obsolete.
-Almost no industrial of services companies are explicitly using Waterfall or unified process approaches.
+Almost no industrial service companies are explicitly using Waterfall or unified process approaches.
 
-[quote, Malcom Isaacs]
+[quote,Malcom Isaacs]
 ____
 For most of these organizations that take a hybrid approach, this is an interim step.
 They intend to gradually expand their agile activities beyond the development and testing stages to the rest of the software development lifecycle.
@@ -36,7 +37,8 @@ ____
 
 === HERMES Swiss Hybrid Method
 
-If you are forced to use a hybrid method in Switzerland, please use Hermes. Never try to use SoDa.
+If you are forced to use a hybrid method in Switzerland, please use Hermes.
+Never try to use SoDa.
 It is obsolete and sparingly documented.
 
 If you want to be a professional developer, please use an agile approach.
@@ -45,19 +47,20 @@ Scrum is currently the most used agile approach in the industry.
 [quote,Hermes FAQ]
 ____
 HERMES 2021
-footnote:[ https://www.hermes.admin.ch/de/faq/projektmanagement-2021/umfeld.html[Hermes FAQ]]corresponds to the current requirements of the administrations, which are mainly organized *hierarchically* and have to handle projects taking governance into account.
+footnote:[ https://www.hermes.admin.ch/de/faq/projektmanagement-2021/umfeld.html[Hermes FAQ]]corresponds to the current requirements of federal and state administration, which are mainly organized *hierarchically* and have to handle projects taking governance into account.
 ____
 
 The major problem is that Hermes is mandatory for a set of governmental projects.
-You are forced to use this method as a software company if you want to work on some government initiatives.
+You are forced to use this method as a software company if you want to work on some government initiatives
+footnote:[The fact the method is only used in Switzerland and only when it is a mandatory requirement is a testament to its lack of success.].
 
 The method is Swiss and completely unknown in Europe or abroad.
-Industry development initiatives never use Hermes as a development approach.
+Swiss commercial or industrial software development initiatives never use Hermes as a development approach.
 
 === Why Hybrid Methods are Hindering
 
 In his mind-expanding book The Beginning of Infinity, physicist David Deutsch describes science and the enlightenment as the quest for _good explanations_.
-He explains how various ideas in human history represent a _beginning of infinity_ that allow us to cope with any conceivable relevant application of these good explanations.
+He explains how various ideas in human history represent a _beginning of infinity_ that allows us to cope with any conceivable relevant application of these good explanations.
 
 This idea of infinite reach or scope is true of an agile approach to development and not true of a waterfall-based approach.
 
@@ -68,11 +71,43 @@ This approach allows us to make progress, maybe sometimes in suboptimal or even 
 This does not mean that agile thinking is perfect or the final answer.
 Rather, it is an important, significant, enabling step in the direction of better performance.
 
+=== Future Work
+
+I strongly advocate discarding all hybrid methods.
+No empirical evidence is available that they work is available.
+Anecdotal evidence shows that they regularly fail.
+
+We shall use the Scrum approach as a preferred approach for developing software application.
+Scrum and various Scrum scaling frameworks provide approaches for teams up to eighty developers working on the same product.
+I strongly state that 99.9% of all software initiatives have smaller teams.
+
+WARNING: One of the founders of Scrum strongly stated the same in a famous post https://kenschwaber.wordpress.com/2013/08/06/unsafe-at-any-speed/[Unsafe at any Speed].
+
+I strongly recommend avoiding SAFe for the following reasons:
+
+* SAFe is complex and less agile.
+It contains waterfall elements.
+Their approach to software architecture is outdated and does not reflect the findings of OpenGroup, the steward of TOGAF.
+* https://www.scaledagileframework.com/agile-release-train/[Agile release trains] should align teams to a shared business and technology mission.
+The ideal size of a train is between 50 and 125 people working on the same product family.
+Most product development initiatives are smaller.
+ALl members of a train shall work on the same products.
+Using the same technology stack is not a criteria to belong to the same train.
+* SAFe is not based or using Scrum.
+Their definition of Scrum master and product owner is quite different to the ones in {ref-scrumguide}.
+Their key roles of release train engineer _RTE_ and product management do not exist in Scrum.
+They are more traditional project management roles.
+All synergy effects are lost.
+You must retrain your collaborators into SAFe if you go down this path.
+* The planning and release cycle is a program increment.
+The duration is typically 8 to 12 weeks long.
+This is too long for agile, DevOps, or Design Thinking approaches.
+
 === Lessons Learnt
 
 image::2022-04-02-agile-vs-waterfall.png[width=420,height=360,role=left]
 
-If you have choice do not use any hybrid method.
+If you have a choice, do not use any hybrid method.
 Various studies found out that agile initiatives are three times more successful than Waterfall approaches.
 
 Business agility is not compatible with hybrid approaches.
