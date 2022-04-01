@@ -32,6 +32,7 @@ import net.tangly.erp.crm.ui.CmdChangePassword;
 import net.tangly.erp.crm.ui.CmdLogin;
 import net.tangly.erp.crm.ui.CmdLogout;
 import net.tangly.erp.crm.ui.CrmBoundedDomainUi;
+import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.erp.invoices.ui.InvoicesBoundedDomainUi;
 import net.tangly.erp.ledger.ui.LedgerBoundedDomainUi;
 import net.tangly.erp.products.ui.ProductsBoundedDomainUi;
@@ -49,15 +50,20 @@ import java.util.Objects;
 @PageTitle("tangly ERP")
 @Route("")
 public class MainLayout extends AppLayout {
-    private final Map<String, BoundedDomainUi> domains;
+    private final Map<String, BoundedDomainUi> uiDomains;
     private final MenuBar menuBar;
 
+    private InvoicesBoundedDomain invoicesDomain;
+    private CrmBoundedDomain crmDomain;
+
     public MainLayout() {
-        domains = new HashMap<>();
+        uiDomains = new HashMap<>();
         Erp.propertiesConfiguredErp();
-        put(new CrmBoundedDomainUi(Erp.instance().ofCrmDomain(), Erp.instance().ofInvoicesDomain()));
+        invoicesDomain = Erp.instance().ofInvoicesDomain();
+        crmDomain = Erp.instance().ofCrmDomain();
+        put(new CrmBoundedDomainUi(crmDomain, invoicesDomain));
         put(new ProductsBoundedDomainUi(Erp.instance().ofProductsDomain()));
-        put(new InvoicesBoundedDomainUi(Erp.instance().ofInvoicesDomain()));
+        put(new InvoicesBoundedDomainUi(invoicesDomain));
         put(new LedgerBoundedDomainUi(Erp.instance().ofLedgerDomain()));
 
         Image image;
@@ -73,7 +79,7 @@ public class MainLayout extends AppLayout {
         menuBar.setOpenOnHover(true);
         addToNavbar(new DrawerToggle(), image, menuBar, menuBar());
         drawerMenu();
-        domains.get("Customers").select(this, menuBar);
+        uiDomains.get("Customers").select(this, menuBar);
     }
 
     @Override
@@ -99,7 +105,7 @@ public class MainLayout extends AppLayout {
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         addToDrawer(tabs);
         tabs.addSelectedChangeListener(event -> {
-            BoundedDomainUi domainUi = domains.get(event.getSelectedTab().getLabel());
+            BoundedDomainUi domainUi = uiDomains.get(event.getSelectedTab().getLabel());
             if (domainUi != null) {
                 menuBar.removeAll();
                 domainUi.select(this, menuBar);
@@ -108,10 +114,10 @@ public class MainLayout extends AppLayout {
     }
 
     private void put(@NotNull BoundedDomainUi domainUi) {
-        domains.put(domainUi.name(), domainUi);
+        uiDomains.put(domainUi.name(), domainUi);
     }
 
     private CrmBoundedDomain crmDomain() {
-        return Erp.instance().ofCrmDomain();
+        return crmDomain;
     }
 }
