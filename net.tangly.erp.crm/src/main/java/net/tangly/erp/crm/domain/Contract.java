@@ -50,6 +50,7 @@ public class Contract extends QualifiedEntityImp implements CrmEntity {
     public Contract() {
     }
 
+    @Override
     public Optional<Address> address() {
         return address(VcardType.work);
     }

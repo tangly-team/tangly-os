@@ -60,6 +60,7 @@ public class Effort implements HasOid, HasDate {
         return date;
     }
 
+    @Override
     public void date(LocalDate date) {
         this.date = date;
     }

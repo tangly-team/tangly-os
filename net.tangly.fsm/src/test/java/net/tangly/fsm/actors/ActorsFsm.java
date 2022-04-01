@@ -1,14 +1,13 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
- *  a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
- *  under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
 package net.tangly.fsm.actors;
@@ -106,6 +105,9 @@ class Client extends ActorFsm<Client, ClientStates, Events> {
  * The class shows how to implement a finite state machine context using the quasar library to exchange events between active state machine instances.
  */
 class ActorTest {
+    static final String SERVER = "server";
+    static final String CLIENT = "client";
+
     /**
      * Sends a request from a client to the server and waits for the answer.
      */
@@ -113,14 +115,14 @@ class ActorTest {
     void activeFsmTest() {
         ExecutorService service = Executors.newCachedThreadPool();
         Actors<Event<Events>> actors = new ActorsImp<>(service);
-        actors.register(new Server("server", actors));
-        actors.register(new Client("client", actors));
-        actors.actorNamed("client").get().receive(new Event<>(Events.Inquiry, List.of("client", "server")));
+        actors.register(new Server(SERVER, actors));
+        actors.register(new Client(CLIENT, actors));
+        actors.actorNamed(CLIENT).get().receive(new Event<>(Events.Inquiry, List.of(CLIENT, SERVER)));
 
         Actors.awaitTermination(service, 10, TimeUnit.SECONDS);
-        assertThat(((Client) actors.actorNamed("client").get()).nrRequests).isEqualTo(1);
-        assertThat(((Client) actors.actorNamed("client").get()).nrAnswers).isEqualTo(1);
-        assertThat(((Server) actors.actorNamed("server").get()).nrRequests).isEqualTo(1);
+        assertThat(((Client) actors.actorNamed(CLIENT).get()).nrRequests).isEqualTo(1);
+        assertThat(((Client) actors.actorNamed(CLIENT).get()).nrAnswers).isEqualTo(1);
+        assertThat(((Server) actors.actorNamed(SERVER).get()).nrRequests).isEqualTo(1);
     }
 
     /**
@@ -132,11 +134,11 @@ class ActorTest {
         Actors<Event<Events>> actors = new ActorsImp<>(service);
         final int NR_CLIENTS = 10_000;
         final String CLIENT_PREFIX = "client-";
-        actors.register(new Server("server", actors));
+        actors.register(new Server(SERVER, actors));
         for (int i = 0; i < NR_CLIENTS; i++) {
             String name = CLIENT_PREFIX + i;
             actors.register(new Client(name, actors));
-            actors.actorNamed(name).get().receive(new Event<>(Events.Inquiry, List.of(name, "server")));
+            actors.actorNamed(name).get().receive(new Event<>(Events.Inquiry, List.of(name, SERVER)));
         }
         Actors.awaitTermination(service, 1, TimeUnit.SECONDS);
         for (int i = 0; i < NR_CLIENTS; i++) {
@@ -144,6 +146,6 @@ class ActorTest {
             assertThat(client.nrRequests).isEqualTo(1);
             assertThat(client.nrAnswers).isEqualTo(1);
         }
-        assertThat(((Server) actors.actorNamed("server").get()).nrRequests).isEqualTo(NR_CLIENTS);
+        assertThat(((Server) actors.actorNamed(SERVER).get()).nrRequests).isEqualTo(NR_CLIENTS);
     }
 }

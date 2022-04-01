@@ -114,9 +114,9 @@ public class InvoicesHdl implements InvoicesHandler {
     }
 
     static TsvEntity<Article> createTsvArticle() {
-        Function<CSVRecord, Article> imports = (CSVRecord record) -> new Article(get(record, ID), get(record, NAME), get(record, TEXT),
-            Enum.valueOf(ArticleCode.class, get(record, "code").toLowerCase()), TsvProperty.CONVERT_BIG_DECIMAL_FROM.apply(get(record, "unitPrice")),
-            get(record, "unit"), TsvProperty.CONVERT_BIG_DECIMAL_FROM.apply(get(record, "vatRate")));
+        Function<CSVRecord, Article> imports = (CSVRecord obj) -> new Article(get(obj, ID), get(obj, NAME), get(obj, TEXT),
+            Enum.valueOf(ArticleCode.class, get(obj, "code").toLowerCase()), TsvProperty.CONVERT_BIG_DECIMAL_FROM.apply(get(obj, "unitPrice")),
+            get(obj, "unit"), TsvProperty.CONVERT_BIG_DECIMAL_FROM.apply(get(obj, "vatRate")));
 
         List<TsvProperty<Article, ?>> fields = List.of(TsvProperty.ofString(ID, Article::id, null), TsvProperty.ofString(NAME, Article::name, null),
             TsvProperty.ofString(TEXT, Article::text, null), TsvProperty.ofEnum(ArticleCode.class, "code", Article::code, null),

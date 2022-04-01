@@ -12,18 +12,11 @@
 
 package net.tangly.erp.products.ports;
 
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import javax.inject.Inject;
-
 import net.tangly.commons.generator.IdGenerator;
 import net.tangly.commons.generator.LongIdGenerator;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderHasOid;
-import net.tangly.core.providers.ProviderInMemory;
-import net.tangly.core.providers.ProviderPersistence;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.domain.Product;
@@ -31,6 +24,11 @@ import net.tangly.erp.products.services.ProductsRealm;
 import one.microstream.storage.embedded.types.EmbeddedStorage;
 import one.microstream.storage.embedded.types.EmbeddedStorageManager;
 import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Inject;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductsEntities implements ProductsRealm {
     static class Data {

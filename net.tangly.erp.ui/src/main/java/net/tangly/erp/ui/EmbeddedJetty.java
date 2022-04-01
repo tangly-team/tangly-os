@@ -31,7 +31,7 @@ public class EmbeddedJetty {
     public static void main(@NotNull String[] args) throws Exception {
         final String contextRoot = "/erp";
         if (isProductionMode()) {
-            System.out.println("Production mode detected, enforcing");
+            logger.info("Production mode detected, enforcing");
             System.setProperty("vaadin.productionMode", "true");
         }
         final WebAppContext context = new WebAppContext();

@@ -15,9 +15,9 @@ package net.tangly.erp.crm.ui;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import net.tangly.core.crm.CrmTags;
-import net.tangly.erp.crm.domain.Employee;
 import net.tangly.core.crm.LegalEntity;
 import net.tangly.core.crm.NaturalEntity;
+import net.tangly.erp.crm.domain.Employee;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.EntityField;
@@ -25,7 +25,6 @@ import net.tangly.ui.components.InternalEntitiesView;
 import net.tangly.ui.components.One2OneField;
 import net.tangly.ui.components.VaadinUtils;
 import net.tangly.ui.grids.GridDecorators;
-import net.tangly.ui.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
 
 /**

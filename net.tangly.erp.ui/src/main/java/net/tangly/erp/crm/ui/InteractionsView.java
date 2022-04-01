@@ -12,8 +12,6 @@
 
 package net.tangly.erp.crm.ui;
 
-import java.math.BigDecimal;
-
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
@@ -38,8 +36,9 @@ import net.tangly.ui.components.One2ManyView;
 import net.tangly.ui.components.TabsComponent;
 import net.tangly.ui.components.TagsView;
 import net.tangly.ui.components.VaadinUtils;
-import net.tangly.ui.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
+
+import java.math.BigDecimal;
 
 /**
  * Regular CRUD view on interactions abstraction. The grid and edition dialog wre optimized for usability.

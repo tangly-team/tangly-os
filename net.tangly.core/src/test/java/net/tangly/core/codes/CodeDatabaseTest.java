@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -51,7 +51,7 @@ class CodeDatabaseTest {
     @Test
     void testTestCodes() throws SQLException {
         var type = CodeHelper.build(TestCode.class, TestCode::new, datasource, "tangly.dbCode");
-        assertThat(type.activeCodes().size()).isEqualTo(5);
+        assertThat(type.activeCodes()).hasSize(5);
         assertThat(type.findCode(0)).isPresent();
         assertThat(type.findCode(1)).isPresent();
         assertThat(type.findCode(2)).isPresent();

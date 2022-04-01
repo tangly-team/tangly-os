@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -62,8 +62,7 @@ class GuiceTest {
         void testAbstractClassConcreteSubclassBinding() {
             Injector injector = Guice.createInjector(new TestModule());
             AbstractExample instance = injector.getInstance(AbstractExample.class);
-            assertThat(instance).isNotNull().isInstanceOf(AbstractExample.class);
-            assertThat(instance).isNotNull().isInstanceOf(Example.class);
+            assertThat(instance).isNotNull().isInstanceOf(AbstractExample.class).isInstanceOf(Example.class);
         }
     }
 }

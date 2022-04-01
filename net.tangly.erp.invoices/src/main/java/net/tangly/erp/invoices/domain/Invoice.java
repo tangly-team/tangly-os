@@ -120,6 +120,7 @@ public class Invoice implements HasId, HasName, HasDate, HasText {
         return text;
     }
 
+    @Override
     public void text(String text) {
         this.text = text;
     }
@@ -235,6 +236,7 @@ public class Invoice implements HasId, HasName, HasDate, HasText {
         return date;
     }
 
+    @Override
     public void date(LocalDate invoicedDate) {
         this.date = invoicedDate;
     }
@@ -298,7 +300,7 @@ public class Invoice implements HasId, HasName, HasDate, HasText {
      * @return list of invoice items
      */
     public List<InvoiceItem> items() {
-        return items.stream().filter(InvoiceLine::isItem).map(o -> (InvoiceItem) o).toList();
+        return items.stream().filter(InvoiceLine::isItem).map(InvoiceItem.class::cast).toList();
     }
 
     public InvoiceLine getAt(int position) {

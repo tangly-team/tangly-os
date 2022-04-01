@@ -15,7 +15,6 @@ package net.tangly.erp.invoices.ui;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.erp.invoices.domain.Invoice;

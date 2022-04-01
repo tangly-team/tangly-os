@@ -1,14 +1,13 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
- *  a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
- *  under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
 package net.tangly.fsm.imp;
@@ -36,11 +35,15 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Test set for the generation of various format descriptions of finite state machines.
  */
 class GeneratorsTest {
+    private static final String BBV = "fsm-bbv";
+    private static final String TEST = "fsm-test";
+    private static final String WASHER = "fsm-washer";
+
     @Test
     void generateGraphLocalTest() {
-        generateLocalTest(new GeneratorPlantUml<>(FsmBbv.build(), "fsm-bbv"));
-        generateLocalTest(new GeneratorGraphDot<>(FsmTest.build(), "fsm-test"));
-        generateLocalTest(new GeneratorAsciiDoc<>(FsmWasherTest.build(), "fsm-washer"));
+        generateLocalTest(new GeneratorPlantUml<>(FsmBbv.build(), BBV));
+        generateLocalTest(new GeneratorGraphDot<>(FsmTest.build(), TEST));
+        generateLocalTest(new GeneratorAsciiDoc<>(FsmWasherTest.build(), WASHER));
     }
 
     /**
@@ -50,9 +53,9 @@ class GeneratorsTest {
      */
     @Test
     void generatePlantUmlTest() throws IOException {
-        generateTest(new GeneratorPlantUml<>(FsmBbv.build(), "fsm-bbv"));
-        generateTest(new GeneratorPlantUml<>(FsmTest.build(), "fsm-test"));
-        generateTest(new GeneratorPlantUml<>(FsmWasherTest.build(), "fsm-washer"));
+        generateTest(new GeneratorPlantUml<>(FsmBbv.build(), BBV));
+        generateTest(new GeneratorPlantUml<>(FsmTest.build(), TEST));
+        generateTest(new GeneratorPlantUml<>(FsmWasherTest.build(), WASHER));
     }
 
     /**
@@ -62,9 +65,9 @@ class GeneratorsTest {
      */
     @Test
     void generateDotTest() throws IOException {
-        generateTest(new GeneratorGraphDot<>(FsmBbv.build(), "fsm-bbv"));
-        generateTest(new GeneratorGraphDot<>(FsmTest.build(), "fsm-test"));
-        generateTest(new GeneratorGraphDot<>(FsmWasherTest.build(), "fsm-washer"));
+        generateTest(new GeneratorGraphDot<>(FsmBbv.build(), BBV));
+        generateTest(new GeneratorGraphDot<>(FsmTest.build(), TEST));
+        generateTest(new GeneratorGraphDot<>(FsmWasherTest.build(), WASHER));
     }
 
     /**
@@ -74,9 +77,9 @@ class GeneratorsTest {
      */
     @Test
     void generateStateMachineCatTest() throws IOException {
-        generateTest(new GeneratorStateMachineCat<>(FsmBbv.build(), "fsm-bbv"));
-        generateTest(new GeneratorStateMachineCat<>(FsmTest.build(), "fsm-test"));
-        generateTest(new GeneratorStateMachineCat<>(FsmWasherTest.build(), "fsm-washer"));
+        generateTest(new GeneratorStateMachineCat<>(FsmBbv.build(), BBV));
+        generateTest(new GeneratorStateMachineCat<>(FsmTest.build(), TEST));
+        generateTest(new GeneratorStateMachineCat<>(FsmWasherTest.build(), WASHER));
     }
 
     /**
@@ -86,9 +89,9 @@ class GeneratorsTest {
      */
     @Test
     void generateAsciiDocTest() throws IOException {
-        generateTest(new GeneratorAsciiDoc<>(FsmBbv.build(), "fsm-bbv"));
-        generateTest(new GeneratorAsciiDoc<>(FsmTest.build(), "fsm-test"));
-        generateTest(new GeneratorAsciiDoc<>(FsmWasherTest.build(), "fsm-washer"));
+        generateTest(new GeneratorAsciiDoc<>(FsmBbv.build(), BBV));
+        generateTest(new GeneratorAsciiDoc<>(FsmTest.build(), TEST));
+        generateTest(new GeneratorAsciiDoc<>(FsmWasherTest.build(), WASHER));
     }
 
     /**

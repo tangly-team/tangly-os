@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -37,10 +37,7 @@ public class EventBusSynchron implements EventBus {
 
     @Override
     public <E> void register(@NotNull Consumer<E> consumer, @NotNull Class<? extends E> eventType) {
-        if (!consumers.containsKey(eventType)) {
-            consumers.put(eventType, new HashSet<>());
-        }
-        consumers.get(eventType).add(consumer);
+        consumers.computeIfAbsent(eventType, HashSet::new).add(consumer);
     }
 
     @Override

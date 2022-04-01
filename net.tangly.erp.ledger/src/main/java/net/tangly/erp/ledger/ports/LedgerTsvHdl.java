@@ -1,14 +1,13 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
- *  a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
- *  under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
 package net.tangly.erp.ledger.ports;
@@ -98,17 +97,17 @@ public class LedgerTsvHdl {
         try (Reader in = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
             int counter = 0;
             Account.AccountGroup currentSection = null;
-            for (CSVRecord record : TsvHdl.FORMAT.parse(in)) {
-                String section = record.get(SECTION);
+            for (CSVRecord csv : TsvHdl.FORMAT.parse(in)) {
+                String section = csv.get(SECTION);
                 if (!Strings.isNullOrBlank(section)) {
                     currentSection = ofGroup(section);
                 }
-                String accountGroup = record.get(GROUP);
-                String id = record.get(ACCOUNT);
-                String text = record.get(DESCRIPTION);
-                String accountKind = record.get(BCLASS);
-                String ownedByGroupId = record.get(GR);
-                String currency = record.get(CURRENCY);
+                String accountGroup = csv.get(GROUP);
+                String id = csv.get(ACCOUNT);
+                String text = csv.get(DESCRIPTION);
+                String accountKind = csv.get(BCLASS);
+                String ownedByGroupId = csv.get(GR);
+                String currency = csv.get(CURRENCY);
                 if (Strings.isNullOrBlank(currency)) {
                     currency = "CHF";
                 }
@@ -199,21 +198,21 @@ public class LedgerTsvHdl {
         try (Reader in = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
             Iterator<CSVRecord> records = TsvHdl.FORMAT.parse(in).iterator();
             int counter = 0;
-            var record = records.hasNext() ? records.next() : null;
-            while (record != null) {
-                String date = record.get(DATE);
-                String debitAccount = record.get(ACCOUNT_DEBIT);
-                String creditAccount = record.get(ACCOUNT_CREDIT);
+            var csv = records.hasNext() ? records.next() : null;
+            while (csv != null) {
+                String date = csv.get(DATE);
+                String debitAccount = csv.get(ACCOUNT_DEBIT);
+                String creditAccount = csv.get(ACCOUNT_CREDIT);
                 String[] debitValues = debitAccount.split("-");
                 String[] creditValues = creditAccount.split("-");
-                String amount = record.get(AMOUNT);
-                String dateExpected = record.get(DATE_EXPECTED);
+                String amount = csv.get(AMOUNT);
+                String dateExpected = csv.get(DATE_EXPECTED);
                 Transaction transaction = null;
-                if (isPartOfSplitTransaction(record)) {
-                    String description = record.get(DESCRIPTION);
-                    String reference = record.get(DOC);
+                if (isPartOfSplitTransaction(csv)) {
+                    String description = csv.get(DESCRIPTION);
+                    String reference = csv.get(DOC);
                     List<AccountEntry> splits = new ArrayList<>();
-                    record = importSplits(records, splits);
+                    csv = importSplits(records, splits);
                     try {
                         transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
                             new BigDecimal(amount), splits, description, reference);
@@ -223,12 +222,12 @@ public class LedgerTsvHdl {
                 } else {
                     try {
                         transaction = new Transaction(LocalDate.parse(date), Strings.emptyToNull(debitValues[0]), Strings.emptyToNull(creditValues[0]),
-                            Strings.isNullOrEmpty(amount) ? BigDecimal.ZERO : new BigDecimal(amount), record.get(DESCRIPTION), record.get(DOC));
-                        defineVat(transaction.creditSplits().get(0), record.get(VAT_CODE));
+                            Strings.isNullOrEmpty(amount) ? BigDecimal.ZERO : new BigDecimal(amount), csv.get(DESCRIPTION), csv.get(DOC));
+                        defineVat(transaction.creditSplits().get(0), csv.get(VAT_CODE));
                     } catch (NumberFormatException e) {
                         logger.atError().withThrowable(e).log("{}: not a legal amount {}", date, amount);
                     }
-                    record = records.hasNext() ? records.next() : null;
+                    csv = records.hasNext() ? records.next() : null;
                 }
                 if (transaction != null) {
                     if (transaction.debitSplits().size() == 1) {
@@ -289,26 +288,26 @@ public class LedgerTsvHdl {
     }
 
     private static CSVRecord importSplits(@NotNull Iterator<CSVRecord> records, List<AccountEntry> splits) {
-        var record = records.hasNext() ? records.next() : null;
-        while (isPartOfSplitTransaction(record)) {
-            String debitAccount = record.get(ACCOUNT_DEBIT);
-            String creditAccount = record.get(ACCOUNT_CREDIT);
+        var csv = records.hasNext() ? records.next() : null;
+        while (isPartOfSplitTransaction(csv)) {
+            String debitAccount = csv.get(ACCOUNT_DEBIT);
+            String creditAccount = csv.get(ACCOUNT_CREDIT);
             AccountEntry entry = null;
             if (!Strings.isNullOrEmpty(debitAccount)) {
                 String[] debitValues = debitAccount.split("-");
-                entry = AccountEntry.debit(debitValues[0], record.get(DATE), record.get(AMOUNT), record.get(DESCRIPTION));
+                entry = AccountEntry.debit(debitValues[0], csv.get(DATE), csv.get(AMOUNT), csv.get(DESCRIPTION));
                 defineSegments(entry, debitAccount);
-                defineVat(entry, record.get(VAT_CODE));
+                defineVat(entry, csv.get(VAT_CODE));
             } else if (!Strings.isNullOrEmpty(creditAccount)) {
                 String[] creditValues = creditAccount.split("-");
-                entry = AccountEntry.credit(creditValues[0], record.get(DATE), record.get(AMOUNT), record.get(DESCRIPTION));
+                entry = AccountEntry.credit(creditValues[0], csv.get(DATE), csv.get(AMOUNT), csv.get(DESCRIPTION));
                 defineSegments(entry, creditAccount);
-                defineVat(entry, record.get(VAT_CODE));
+                defineVat(entry, csv.get(VAT_CODE));
             }
             splits.add(entry);
-            record = records.hasNext() ? records.next() : null;
+            csv = records.hasNext() ? records.next() : null;
         }
-        return record;
+        return csv;
     }
 
     /**
@@ -442,7 +441,7 @@ public class LedgerTsvHdl {
         }
     }
 
-    private static boolean isPartOfSplitTransaction(CSVRecord record) {
-        return (record != null) && (Strings.isNullOrEmpty(record.get(ACCOUNT_DEBIT)) || Strings.isNullOrEmpty(record.get(ACCOUNT_CREDIT)));
+    private static boolean isPartOfSplitTransaction(CSVRecord csv) {
+        return (csv != null) && (Strings.isNullOrEmpty(csv.get(ACCOUNT_DEBIT)) || Strings.isNullOrEmpty(csv.get(ACCOUNT_CREDIT)));
     }
 }

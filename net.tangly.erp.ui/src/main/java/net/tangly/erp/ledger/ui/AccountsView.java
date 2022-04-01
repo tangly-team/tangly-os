@@ -12,11 +12,8 @@
 
 package net.tangly.erp.ledger.ui;
 
-import java.time.LocalDate;
-
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
-import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
@@ -26,6 +23,8 @@ import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.VaadinUtils;
 import net.tangly.ui.grids.GridDecorators;
 import org.jetbrains.annotations.NotNull;
+
+import java.time.LocalDate;
 
 /**
  * Charts of accounts are defined externally as TSV files. Currently the account view is a read-only view on accounts instances.
@@ -94,8 +93,8 @@ class AccountsView extends EntitiesView<Account> {
         binder = new Binder<>();
         binder.bind(id, Account::id, null);
         binder.bind(name, Account::name, null);
-        binder.bind(kind, o -> o.kind(), null);
-        binder.bind(group, o -> o.group(), null);
+        binder.bind(kind, Account::kind, null);
+        binder.bind(group, Account::group, null);
         binder.bind(currency, o -> o.currency().getCurrencyCode(), null);
         binder.bind(ownedBy, Account::ownedBy, null);
         form.add(id, name, kind, group, currency, ownedBy);

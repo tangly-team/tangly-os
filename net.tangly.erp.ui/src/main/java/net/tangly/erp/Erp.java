@@ -79,7 +79,7 @@ public class Erp {
                 self = new Erp();
             }
         } finally {
-            lock.unlock();;
+            lock.unlock();
         }
         return self;
     }
@@ -92,7 +92,7 @@ public class Erp {
                 self.properties.remove(DATABASES_DIRECTORY_PROPERTY);
             }
         } finally {
-            lock.unlock();;
+            lock.unlock();
         }
         return self;
     }

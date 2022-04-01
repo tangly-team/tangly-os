@@ -12,15 +12,7 @@
 
 package net.tangly.erp.invoices.artifacts;
 
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Date;
-import java.util.Map;
-
 import net.tangly.core.Address;
-import net.tangly.erp.invoices.artifacts.InvoiceGenerator;
 import net.tangly.erp.invoices.domain.Article;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.domain.InvoiceItem;
@@ -36,6 +28,13 @@ import org.mustangproject.ZUGFeRD.IZUGFeRDExportableProduct;
 import org.mustangproject.ZUGFeRD.IZUGFeRDExportableTradeParty;
 import org.mustangproject.ZUGFeRD.IZUGFeRDTradeSettlementPayment;
 import org.mustangproject.ZUGFeRD.ZUGFeRDExporterFromA3;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Date;
+import java.util.Map;
 
 public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator {
     static record TradeParty(@NotNull InvoiceLegalEntity entity, @NotNull Address address) implements IZUGFeRDExportableTradeParty {

@@ -36,6 +36,7 @@ public class Product extends QualifiedEntityImp {
         this.contractIds = List.copyOf(contractIds);
     }
 
+    @Override
     public boolean check() {
         return !contractIds().isEmpty();
     }

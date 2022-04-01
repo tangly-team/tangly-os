@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -60,8 +60,8 @@ public sealed interface Try<T> permits Try.Success, Try.Failure {
         Objects.requireNonNull(fn);
         try {
             return Try.success(fn.get());
-        } catch (Throwable t) {
-            return Try.failure(t);
+        } catch (Exception e) {
+            return Try.failure(e);
         }
     }
 
@@ -144,8 +144,8 @@ public sealed interface Try<T> permits Try.Success, Try.Failure {
             Objects.requireNonNull(fn);
             try {
                 return Try.success(fn.apply(this.value));
-            } catch (Throwable t) {
-                return Try.failure(t);
+            } catch (Exception e) {
+                return Try.failure(e);
             }
         }
 
@@ -154,8 +154,8 @@ public sealed interface Try<T> permits Try.Success, Try.Failure {
             Objects.requireNonNull(fn);
             try {
                 return fn.apply(this.value);
-            } catch (Throwable t) {
-                return Try.failure(t);
+            } catch (Exception e) {
+                return Try.failure(e);
             }
         }
 

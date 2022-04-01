@@ -98,8 +98,8 @@ public final class TsvHdl {
     public static <T> void importEntities(@NotNull Path path, @NotNull TsvEntity<T> tsvEntity, @NotNull Provider<T> provider) {
         try (Reader in = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
             int counter = 0;
-            for (CSVRecord record : FORMAT.parse(in)) {
-                T object = tsvEntity.imports(record);
+            for (CSVRecord csv : FORMAT.parse(in)) {
+                T object = tsvEntity.imports(csv);
                 if (object instanceof NamedEntity entity) {
                     if (entity.check()) {
                         provider.update(object);
@@ -150,7 +150,7 @@ public final class TsvHdl {
     }
 
     public static TsvEntity<BankConnection> createTsvBankConnection() {
-        Function<CSVRecord, BankConnection> imports = (CSVRecord record) -> BankConnection.of(get(record, IBAN), get(record, BIC), get(record, INSTITUTE));
+        Function<CSVRecord, BankConnection> imports = (CSVRecord csv) -> BankConnection.of(get(csv, IBAN), get(csv, BIC), get(csv, INSTITUTE));
         List<TsvProperty<BankConnection, ?>> fields =
             List.of(TsvProperty.ofString("iban", BankConnection::iban, null), TsvProperty.ofString("bic", BankConnection::bic, null),
                 TsvProperty.ofString(INSTITUTE, BankConnection::institute, null));
@@ -158,9 +158,9 @@ public final class TsvHdl {
     }
 
     public static TsvEntity<Address> createTsvAddress() {
-        Function<CSVRecord, Address> imports = (CSVRecord record) -> (Objects.isNull(get(record, LOCALITY)) || Objects.isNull(get(record, COUNTRY))) ? null :
-            Address.builder().street(get(record, STREET)).postcode(get(record, POSTCODE)).locality(get(record, LOCALITY)).region(get(record, REGION))
-                .country(get(record, COUNTRY)).build();
+        Function<CSVRecord, Address> imports = (CSVRecord csv) -> (Objects.isNull(get(csv, LOCALITY)) || Objects.isNull(get(csv, COUNTRY))) ? null :
+            Address.builder().street(get(csv, STREET)).postcode(get(csv, POSTCODE)).locality(get(csv, LOCALITY)).region(get(csv, REGION))
+                .country(get(csv, COUNTRY)).build();
 
         List<TsvProperty<Address, ?>> fields =
             List.of(TsvProperty.ofString(STREET, Address::street, null), TsvProperty.ofString("extended", Address::extended, null),
@@ -170,8 +170,8 @@ public final class TsvHdl {
         return TsvEntity.of(Address.class, fields, imports);
     }
 
-    public static String get(@NotNull CSVRecord record, @NotNull String column) {
-        return Strings.emptyToNull(record.get(column));
+    public static String get(@NotNull CSVRecord csv, @NotNull String column) {
+        return Strings.emptyToNull(csv.get(column));
     }
 
     public static <T extends HasComments & HasOid> void addComments(Provider<T> provider, Provider<Comment> comments) {

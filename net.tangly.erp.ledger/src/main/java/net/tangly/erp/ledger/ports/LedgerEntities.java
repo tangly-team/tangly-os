@@ -12,10 +12,6 @@
 
 package net.tangly.erp.ledger.ports;
 
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.providers.ProviderPersistence;
@@ -26,6 +22,10 @@ import net.tangly.erp.ledger.services.LedgerRealm;
 import one.microstream.storage.embedded.types.EmbeddedStorage;
 import one.microstream.storage.embedded.types.EmbeddedStorageManager;
 import org.jetbrains.annotations.NotNull;
+
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LedgerEntities implements LedgerRealm {
     private static class Data {
@@ -38,7 +38,6 @@ public class LedgerEntities implements LedgerRealm {
         }
     }
 
-    private static final long OID_SEQUENCE_START = 1000;
     private final Data data;
     private final Provider<Account> accounts;
     private final Provider<Transaction> transactions;

@@ -50,6 +50,7 @@ public class Activity implements HasDate, HasText {
         return date;
     }
 
+    @Override
     public void date(LocalDate date) {
         this.date = date;
     }
@@ -78,10 +79,12 @@ public class Activity implements HasDate, HasText {
         this.author = author;
     }
 
+    @Override
     public String text() {
         return text;
     }
 
+    @Override
     public void text(String text) {
         this.text = text;
     }

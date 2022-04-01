@@ -16,7 +16,6 @@ import net.tangly.core.Address;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.HasId;
 import net.tangly.core.HasName;
-import net.tangly.core.HasText;
 import org.jetbrains.annotations.NotNull;
 
 /**

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -54,9 +54,9 @@ class CodeEnumTest {
     void testCodeTest() {
         final var type = CodeType.of(EnumCode.class);
         assertThat(type.codes()).isNotEmpty();
-        assertThat(type.codes().size()).isEqualTo(5);
-        assertThat(type.activeCodes().size()).isEqualTo(4);
-        assertThat(type.inactiveCodes().size()).isEqualTo(1);
+        assertThat(type.codes()).hasSize(5);
+        assertThat(type.activeCodes()).hasSize(4);
+        assertThat(type.inactiveCodes()).hasSize(1);
         assertThat(type.findCode(1)).isPresent();
         assertThat(type.findCode(EnumCode.CODE_TEST_1.code())).isPresent();
     }
