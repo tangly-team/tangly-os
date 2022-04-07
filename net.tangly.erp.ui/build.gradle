@@ -24,7 +24,10 @@ project.ext.inceptionYear = '1996'
 project.description = "User Interface ERP - using Java 17 or higher (tangly llc)"
 
 application {
-    applicationDefaultJvmArgs = ['--enable-preview', '--add-exports java.base/jdk.internal.misc=ALL_UNNAMED', '-XX:+ShowCodeDetailsInExceptionMessages']
+    applicationDefaultJvmArgs = ['--enable-preview',
+                                 '--add-exports=java.base/jdk.internal.misc=ALL_UNNAMED',
+                                 '--add-opens=java.base/jdk.internal.misc=ALL-UNNAMED',
+                                 '-XX:+ShowCodeDetailsInExceptionMessages']
     mainClassName = "net.tangly.erp.ui.EmbeddedJetty"
 }
 
