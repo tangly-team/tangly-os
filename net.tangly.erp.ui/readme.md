@@ -54,6 +54,17 @@ The gradle script compiles, packages, and runs the application with an embedded 
     gradle run
 ```
 
+You can run the generated application locally.
+
+```shell
+  ./gradle build -Pvaadin.productionMode
+  cd build/distributions/
+  unzip net.tangly.erp.ui-0.2.7.zip
+  cd net.tangly.erp.ui-0.2.7/bin
+  ./vaadin14-embedded-jetty-gradle  // <1>
+```
+<1> Head to http://localhost:8080/erp/
+
 ### Run in a Docker Image
 
 THe first step is to build the Docker image with the provided configuration.

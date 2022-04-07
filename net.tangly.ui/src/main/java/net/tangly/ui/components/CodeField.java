@@ -16,6 +16,7 @@ import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.select.Select;
 import net.tangly.core.codes.Code;
 import net.tangly.core.codes.CodeType;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -30,14 +31,15 @@ import java.util.Objects;
 public class CodeField<T extends Code> extends Select<T> {
     private final CodeType<T> codeType;
 
-    public CodeField(CodeType<T> codeType, String label) {
-        setLabel(label);
+    public CodeField(@NotNull CodeType<T> codeType, String label) {
         this.codeType = codeType;
+        setLabel(label);
         setItemLabelGenerator(o -> (Objects.isNull(o) ? "" : o.code()));
+        setItemEnabledProvider(o -> (Objects.isNull(o) ? true : o.isEnabled()));
         setItems(codeType.codes());
         setEmptySelectionAllowed(true);
         setPlaceholder("select item");
         setEmptySelectionCaption("no item selected");
-        setItemEnabledProvider(o -> (Objects.isNull(o) ? true : o.isEnabled()));
+        setOpened(false);
     }
 }

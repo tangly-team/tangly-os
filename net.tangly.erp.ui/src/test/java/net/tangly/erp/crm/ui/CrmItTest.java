@@ -25,10 +25,6 @@ import org.junit.jupiter.api.BeforeEach;
 class CrmItTest {
     private static Routes routes;
 
-    static CrmBoundedDomain ofDomain() {
-        return Erp.instance().ofCrmDomain();
-    }
-
     @BeforeAll
     public static void createModelAndRoutes() {
         Erp.inMemoryErp();

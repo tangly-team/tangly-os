@@ -27,12 +27,10 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
 import net.tangly.erp.Erp;
 import net.tangly.erp.crm.domain.Subject;
-import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.crm.ui.CmdChangePassword;
 import net.tangly.erp.crm.ui.CmdLogin;
 import net.tangly.erp.crm.ui.CmdLogout;
 import net.tangly.erp.crm.ui.CrmBoundedDomainUi;
-import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.erp.invoices.ui.InvoicesBoundedDomainUi;
 import net.tangly.erp.ledger.ui.LedgerBoundedDomainUi;
 import net.tangly.erp.products.ui.ProductsBoundedDomainUi;
@@ -53,18 +51,14 @@ public class MainLayout extends AppLayout {
     private final Map<String, BoundedDomainUi> uiDomains;
     private final MenuBar menuBar;
 
-    private InvoicesBoundedDomain invoicesDomain;
-    private CrmBoundedDomain crmDomain;
 
     public MainLayout() {
         uiDomains = new HashMap<>();
         Erp.propertiesConfiguredErp();
-        invoicesDomain = Erp.instance().ofInvoicesDomain();
-        crmDomain = Erp.instance().ofCrmDomain();
-        put(new CrmBoundedDomainUi(crmDomain, invoicesDomain));
-        put(new ProductsBoundedDomainUi(Erp.instance().ofProductsDomain()));
-        put(new InvoicesBoundedDomainUi(invoicesDomain));
-        put(new LedgerBoundedDomainUi(Erp.instance().ofLedgerDomain()));
+        put(new CrmBoundedDomainUi(Erp.instance().crmBoundedDomain(), Erp.inMemoryErp().invoicesBoundedDomain()));
+        put(new ProductsBoundedDomainUi(Erp.instance().productsBoundedDomain()));
+        put(new InvoicesBoundedDomainUi(Erp.instance().invoicesBoundedDomain()));
+        put(new LedgerBoundedDomainUi(Erp.instance().ledgerBoundedDomain()));
 
         Image image;
         try {
@@ -86,7 +80,7 @@ public class MainLayout extends AppLayout {
     protected void onAttach(@NotNull AttachEvent attachEvent) {
         super.onAttach(attachEvent);
         if (Objects.isNull(VaadinUtils.getAttribute(this, "subject"))) {
-            new CmdLogin(crmDomain()).execute();
+            new CmdLogin(Erp.instance().crmBoundedDomain()).execute();
         }
     }
 
@@ -96,7 +90,7 @@ public class MainLayout extends AppLayout {
         MenuItem admin = menuBar.addItem("Admin");
         SubMenu adminSubmenu = admin.getSubMenu();
         adminSubmenu.addItem("Logout", e -> new CmdLogout().execute());
-        adminSubmenu.addItem("Change Password ...", e -> new CmdChangePassword(crmDomain(), (Subject) VaadinUtils.getAttribute(this, "subject")).execute());
+        adminSubmenu.addItem("Change Password ...", e -> new CmdChangePassword(Erp.instance().crmBoundedDomain(), (Subject) VaadinUtils.getAttribute(this, "subject")).execute());
         return menuBar;
     }
 
@@ -115,9 +109,5 @@ public class MainLayout extends AppLayout {
 
     private void put(@NotNull BoundedDomainUi domainUi) {
         uiDomains.put(domainUi.name(), domainUi);
-    }
-
-    private CrmBoundedDomain crmDomain() {
-        return crmDomain;
     }
 }

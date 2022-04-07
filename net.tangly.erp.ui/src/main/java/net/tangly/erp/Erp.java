@@ -59,6 +59,10 @@ public class Erp {
     private static Lock lock = new ReentrantLock();
     private final TypeRegistry registry;
     private final Properties properties;
+    private CrmBoundedDomain crmBoundedDomain;
+    private ProductsBoundedDomain productsBoundedDomain;
+    private InvoicesBoundedDomain invoicesBoundedDomain;
+    private LedgerBoundedDomain ledgerBoundedDomain;
 
     private Erp() {
         this.registry = new TypeRegistry();
@@ -77,6 +81,7 @@ public class Erp {
         try {
             if (self == null) {
                 self = new Erp();
+                self.createDomains();
             }
         } finally {
             lock.unlock();
@@ -90,6 +95,7 @@ public class Erp {
             if (self == null) {
                 self = new Erp();
                 self.properties.remove(DATABASES_DIRECTORY_PROPERTY);
+                self.createDomains();
             }
         } finally {
             lock.unlock();
@@ -97,13 +103,36 @@ public class Erp {
         return self;
     }
 
-    public InvoicesBoundedDomain ofInvoicesDomain() {
+    public CrmBoundedDomain crmBoundedDomain() {
+        return crmBoundedDomain;
+    }
+
+    public ProductsBoundedDomain productsBoundedDomain() {
+        return productsBoundedDomain;
+    }
+
+    public InvoicesBoundedDomain invoicesBoundedDomain() {
+        return invoicesBoundedDomain;
+    }
+
+    public LedgerBoundedDomain ledgerBoundedDomain() {
+        return ledgerBoundedDomain;
+    }
+
+    private void createDomains() {
+        crmBoundedDomain = ofCrmDomain();
+        productsBoundedDomain = ofProductsDomain();
+        invoicesBoundedDomain = ofInvoicesDomain();
+        ledgerBoundedDomain = ofLedgerDomain();
+    }
+
+    private InvoicesBoundedDomain ofInvoicesDomain() {
         var realm = (databases() == null) ? new InvoicesEntities() : new InvoicesEntities(Path.of(databases(), InvoicesBoundedDomain.DOMAIN));
         return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesHdl(realm, Path.of(imports(), InvoicesBoundedDomain.DOMAIN)),
             new InvoicesAdapter(realm, Path.of(reports(), InvoicesBoundedDomain.DOMAIN)), registry);
     }
 
-    public CrmBoundedDomain ofCrmDomain() {
+    private CrmBoundedDomain ofCrmDomain() {
         var realm = (databases() == null) ? new CrmEntities() : new CrmEntities(Path.of(databases(), CrmBoundedDomain.DOMAIN));
         if (realm.subjects().items().isEmpty()) {
             realm.subjects().update(createAdminSubject());
@@ -111,14 +140,14 @@ public class Erp {
         return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmHdl(realm, Path.of(imports(), CrmBoundedDomain.DOMAIN)), null, registry);
     }
 
-    public ProductsBoundedDomain ofProductsDomain() {
+    private ProductsBoundedDomain ofProductsDomain() {
         var realm = (databases() == null) ? new ProductsEntities() : new ProductsEntities(Path.of(databases(), ProductsBoundedDomain.DOMAIN));
         var logic = new ProductsBusinessLogic(realm);
         return new ProductsBoundedDomain(realm, logic, new ProductsHdl(realm, Path.of(imports(), ProductsBoundedDomain.DOMAIN)),
             new ProductsAdapter(logic, Path.of(reports(), ProductsBoundedDomain.DOMAIN)), registry);
     }
 
-    public LedgerBoundedDomain ofLedgerDomain() {
+    private LedgerBoundedDomain ofLedgerDomain() {
         var realm = (databases() == null) ? new LedgerEntities() : new LedgerEntities(Path.of(databases(), LedgerBoundedDomain.DOMAIN));
         return new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), new LedgerHdl(realm, Path.of(imports(), LedgerBoundedDomain.DOMAIN)),
             new LedgerAdapter(realm, Path.of(reports(), LedgerBoundedDomain.DOMAIN)), registry);

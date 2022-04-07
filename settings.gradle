@@ -32,4 +32,4 @@ include 'net.tangly.erp.products'
 include 'net.tangly.erp.shared'
 include 'net.tangly.erp.ui'
 
-//include 'test-results'
+include 'test-results'

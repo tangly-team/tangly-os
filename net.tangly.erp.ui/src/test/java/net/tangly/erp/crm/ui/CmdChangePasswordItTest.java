@@ -15,6 +15,7 @@ package net.tangly.erp.crm.ui;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.textfield.PasswordField;
 import net.tangly.core.crm.NaturalEntity;
+import net.tangly.erp.Erp;
 import net.tangly.erp.crm.domain.Subject;
 import org.junit.jupiter.api.Test;
 
@@ -32,9 +33,8 @@ class CmdChangePasswordItTest extends CrmItTest {
     @Test
     void testChangePasswordCorrectly() {
         var subject = createSubject();
-        var domain = ofDomain();
-        domain.realm().subjects().update(subject);
-        var cmd = new CmdChangePassword(domain, subject);
+        Erp.instance().crmBoundedDomain().realm().subjects().update(subject);
+        var cmd = new CmdChangePassword(Erp.instance().crmBoundedDomain(), subject);
         var form = cmd.form();
         assertThat(form).isNotNull();
         assertThat(subject.authenticate("old-password")).isTrue();
@@ -48,9 +48,8 @@ class CmdChangePasswordItTest extends CrmItTest {
     @Test
     void testChangePasswordWrongly() {
         var subject = createSubject();
-        var domain = ofDomain();
-        domain.realm().subjects().update(subject);
-        var cmd = new CmdChangePassword(domain, subject);
+        Erp.instance().crmBoundedDomain().realm().subjects().update(subject);
+        var cmd = new CmdChangePassword(Erp.instance().crmBoundedDomain(), subject);
         var form = cmd.form();
         assertThat(subject.authenticate("old-password")).isTrue();
         _setValue(_get(form, PasswordField.class, spec -> spec.withCaption(CURRENT_PASSWORD)), "dummy-password");
@@ -64,9 +63,8 @@ class CmdChangePasswordItTest extends CrmItTest {
     @Test
     void testChangePasswordCanceled() {
         var subject = createSubject();
-        var domain = ofDomain();
-        domain.realm().subjects().update(subject);
-        var cmd = new CmdChangePassword(domain, subject);
+        Erp.instance().crmBoundedDomain().realm().subjects().update(subject);
+        var cmd = new CmdChangePassword(Erp.instance().crmBoundedDomain(), subject);
         var form = cmd.form();
         assertThat(subject.authenticate("old-password")).isTrue();
         _setValue(_get(form, PasswordField.class, spec -> spec.withCaption(CURRENT_PASSWORD)), "dummy-password");

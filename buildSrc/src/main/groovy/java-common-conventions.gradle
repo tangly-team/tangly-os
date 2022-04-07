@@ -47,8 +47,7 @@ tasks.withType(JavaCompile) {
     options.incremental = true
     options.warnings = true
     options.deprecation = true
-    // removed "--enable-preview",
-    options.compilerArgs += ["-parameters", "-Xlint:all,-serial,-varargs,-processing,-try", "-Xdoclint:none"]
+    options.compilerArgs += ["-parameters", "--enable-preview", "-Xlint:all,-serial,-varargs,-processing,-try", "-Xdoclint:none"]
 }
 
 tasks.withType(Test) {
@@ -178,7 +177,7 @@ configurations.all {
 }
 
 jacoco {
-    toolVersion = "0.8.8-SNAPSHOT"
+    toolVersion = "0.8.8"
 }
 
 jacocoTestReport {

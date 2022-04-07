@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2022-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -10,16 +10,8 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.erp.crm.ui;
-
-import net.tangly.erp.Erp;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-
-class CmdLoginItTest extends CrmItTest {
-    @Test
-    void testLogin() {
-        var login = new CmdLogin(Erp.instance().crmBoundedDomain());
-        login.execute();
-    }
-}
+/**
+ * Declare integration tests for the tangly open source ERP application.
+ * At leat one test shall exist otherwise jacoco plugin does not behave as expected.
+ */
+package net.tangly.erp;

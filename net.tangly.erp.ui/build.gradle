@@ -13,6 +13,7 @@
 plugins {
     id 'java-app-conventions'
     alias(libs.plugins.vaadin)
+    id 'jacoco-report-aggregation'
 }
 
 project.ext.groupId = 'net.tangly.erp'
@@ -23,7 +24,7 @@ project.ext.inceptionYear = '1996'
 project.description = "User Interface ERP - using Java 17 or higher (tangly llc)"
 
 application {
-    applicationDefaultJvmArgs = ['--enable-preview', '--add-exports java.base/jdk.internal.misc=ALL_UNNAMED']
+    applicationDefaultJvmArgs = ['--enable-preview', '--add-exports java.base/jdk.internal.misc=ALL_UNNAMED', '-XX:+ShowCodeDetailsInExceptionMessages']
     mainClassName = "net.tangly.erp.ui.EmbeddedJetty"
 }
 
@@ -52,3 +53,4 @@ dependencies {
 
     testImplementation(libs.vaadin.test)
 }
+
