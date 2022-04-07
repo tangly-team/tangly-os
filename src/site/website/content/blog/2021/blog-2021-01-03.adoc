@@ -122,12 +122,12 @@ The project is hosed on GitHub.
 * https://gitolite.com/[Gitolite] allows you to set up git hosting on a central server.
 It has fine-grained access control and many more powerful features.
 
-School often select https://about.gitlab.com/[GitLab] due to his open source license and the tremendous DevOps functionality.
+Schools often select https://about.gitlab.com/[GitLab] due to his open source license and the tremendous DevOps functionality.
 The gitlab solution supports source code versioning, DevOps pipelines, agile development approaches, and quality insurance for the produced artifacts.
 
 [NOTE]
 ====
-The technical university of Lucerne https://www.hslu.ch/en/[HSLU] has selected https://about.gitlab.com/[GitLab] platform as standard DevOps environment.
+The technical university of Lucerne https://www.hslu.ch/en/[HSLU] has selected https://about.gitlab.com/[the GitLab] platform as the standard DevOps environment.
 
 Well-known companies in Switzerland such as Roche Diagnostics, UBS<<ubs-gitlab>>, Siemens<<siemens-gitlab>> have also standardized on this platform.
 

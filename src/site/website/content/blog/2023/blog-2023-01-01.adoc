@@ -1,0 +1,153 @@
+---
+title: "Select An Agile Software Development Partner"
+linkTitle: "Select A Partner"
+date: 2023-01-10
+tags: ["agile"]
+---
+
+== Select An Agile Software Development Partner
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly ll c]
+
+image::2023-01-01-head.png[width=420,height=360,role=left]
+
+It is not unusual for businesses to turn to third-party companies when they want to help accomplish their goals without increasing internal overhead.
+
+This type of outsourcing is especially common for projects that require tremendous amounts of effort or a very specific skill set.
+
+Partnering up with another business to help meet your needs is a viable solution.
+It often makes sense for businesses trying to tackle a massive software development project while focusing on the current needs of their clients.
+
+A professional and planned approach greatly improves the odds of success:
+
+Identify Criteria::
+Decide on your internal team that will help with making and supporting the decision.
+Put together a _must haves_ checklist for the capabilities required from a custom software solution company. +
++
+Research different approaches and methodologies to discuss with your potential business partner.
+For instance, will you use Agile and should your partner need to practice it as well? +
++
+Think about the services your business will need.
+Will you require an entire development team, including help with product support?
+Consider the types of roles required to build your solution and note those you can fulfill with internal staff and which you will need to fill with experts provided by your new partner.
+Evaluate Candidates::
+Ultimately, you want to choose a partner with the right experience to help you achieve your goals.
+Avoid choosing a company just because they work with trendy technologies or because they list tons of services on their website. +
++
+The length of time they have been in business can be important.
+The length of time they have worked with their own clients can be more telling of the level of expertise they provide.
+Evaluate Costs, Processes, and Tools::
+You may be tempted to select the lowest cost option but be cautious.
+The software company with the lowest bid might not necessarily be the most cost-effective.
+You risk choosing a partner that will go fast but make mistakes, or one that will complete chunks of the work and then need to redo them to match your standards. +
++
+Don’t risk quality for a good price.
+Ask about change orders—many companies will underbid a project and then add on new charges throughout the project, resulting in a dramatic increase to the overall cost of development. +
++
+While it is true that aspects of your project will change during the development process, experienced software development companies should help you understand how they will handle changes while protecting both your budget and your timeline.
+- Scale up and down
+
+Consider the Location::
+Where will you want your external development partner to be?
+If it is important that they can integrate with your team and work onsite frequently, you might want to only look at local software companies. +
++
+If you are open to working remotely with an onshore company, hold early conversations using the potential businesses’ conferencing system.
+You will want to ensure your development team can provide help by video as much is lost in exclusively email team communications. +
++
+Do not forget to account for travel in your budget if you shall expect it from your software development team.
+If you’re thinking of offshoring the work, be sure you consider how you will handle the difference in time zones and communication styles.
+Many companies offer low-cost solutions that include working with offshore teams to handle services like the help desk, product support, and simple development.
+Start Searching::
+Do not forget to keep track of your search as you go.
+Create a document that records potential companies, their attributes, who you’ve talked to, what you’ve learned, and any decisions you’ve made.
+Ask Tough Questions::
+Learn what challenges they have faced with previous clients and what they did to overcome them.
+If there is something you are particularly worried about, ask about their experience dealing with your prospective challenges to helping their other clients with similar solutions in the past.
+Ask about both their best clients and the ones that did not stick around. +
++
+Be sure they can clearly outline what you can expect from working with their team, how you will measure progress, and how they help define success. +
++
+Be wary of any potential development partner that struggles to answer these questions or does not provide stories of failure or follow them up with concrete ways they’ve adapted to ensure future success for their clients.
+
+=== Evaluation Approach
+
+You shall implement a clear and founded evaluation approach:
+
+. Research
+. Pick agile
+. Characterize why you need a software development partner
+. Shortlist the companies you can find to be promising
+. Assess the company experience in your industry
+. Adaptability
+. Think about cultural compatibility and communications skills
+. Thin about time zone differences
+. Check for technologies
+. Cost-effective
+. Consider and evaluate the future of your relationships
+. Meet the employees that will be working with you
+
+=== Checklist
+
+Here our checklist we use to discuss a potential partnership:
+
+Hosting and Operations::
+* How and where are the servers hosted?
+Self-hosted or external provider - has an impact on applicable legal context
+* Which are the locations of server instances?
+* Backup and restore policy including location of backup and how they are protected
+* DevOps aspects: monitoring, alarming, logging, audit logs, security policy.
+Is the deployment on the various staging areas automated?
+How is the process of deploying a new version?
+* How is the process of updating a productive application when security alarms are issued?
+* SLA document
+Software Development::
+** Where are the team members located?
+Are they collocated, in the same area, in the same timezone, distributed over multiple timezones?
+* Which training and certification do they have in the technical stack, programming languages and used tools?
+* Which training and certification do they have in agile and Scrum approaches?
+* Which training and certification do the senior developers and architects have to perform their work?
+* Which languages are the team members proficient in?
+* Which approaches are used for source code management?
+Where are the source artifacts stored?
+Governance and Methods::
+* Which approaches are used for insuring the quality of the written source code?
+* How is technical documentation such as installation scripts, design decisions, component documents written and managed?
+* Could you provide your coding guidelines and documentation guidelines?
+* Are modern approaches such as domain-driven design, unit testing, acceptance testing, continuous integration, continuous delivery in place?
+* How can involved people have read-access to all artifacts?
+* How do you trace requirements to deliver versions of the product?
+* How do you upgrade an application to a newer version of the technology stack or newer libraries?
+* Which approaches do you use to continuously improve?
+Build Partnership::
+* How would like to initiate partnership between your company and ours.
+
+=== Lessons Learnt
+
+Respect your partner.
+You will work together for years.
+Both parties shall be interested in improving the delivered solutions and increasing product success.
+
+All involved companies and people shall harvest the fruits of success.
+
+Agile approaches are the approach for developing software products in the twenty-first century.
+Your organizations shall be proficient with agile, lean approaches.
+These frameworks are the most successful approaches for software product development.
+
+[bibliography]
+=== References
+
+- [[[agile-near-shore]]] link:../../2022/agile-and-nearshore-development/[Agile and Nearshore Development]
+Marcel Baumann. 2022
+- [[[evaluate-cv]]] link:../../2022/evaluate-technical-cvs/[Evaluate Technical CVs].
+Marcel Baumann. 2022
+- [[[scrum-master, 1]]] link:../../2021/scrum-master-formation/[Scrum Master Formation].
+Marcel Baumann. 2021
+- [[[product-owner, 2]]] link:../../2021/product-owner-formation/[Product Owner Formation].
+Marcel Baumann. 2021
+- [[[developer, 3]]] link:../../2021/scrum-developer-formation/[Scrum Developer Formation].
+Marcel Baumann. 2021
+- [[[detecting-agile-bullshit, 5]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
+Marcel Baumann. 2019
+

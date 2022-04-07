@@ -89,7 +89,7 @@ image::2021-02-01-coaching.png[width=420,height=360,role=left]
 
 ==== Team LeSS Coaching
 
-A coach works with at most a few teams to improve their team-working and LeSS practices.
+A coach works with at most a few teams to improve their team-working and {ref-less} practices.
 It is common for a coach to take on the Scrum Master role.
 A team coach typically focuses on:
 
@@ -141,7 +141,7 @@ Legacy code is *Profitable code that we feel afraid to change*
 
 === How Much Coaching?
 
-The most successful LeSS adoptions we have seen had the following structure:
+The most successful {ref-less} adoptions we have seen had the following structure:
 
 [.text-center]
 *One internal and one external coach*
@@ -165,7 +165,7 @@ After that reduce (not eliminate!) the external technical coaching or let the ex
 * Thrive for craftsmanship.
 * Let the team use internal social pressure.
 * Eliminate specialization, push mastery.
-* At the beginning, follow the LeSS rules.
+* At the beginning, follow the {ref-less} rules.
 * Extended responsibility, rounded products provide a room and freedom for better decisions.
 
 === Remember

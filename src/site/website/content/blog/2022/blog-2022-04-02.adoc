@@ -59,7 +59,7 @@ Swiss commercial or industrial software development initiatives never use Hermes
 
 === Why Hybrid Methods are Hindering
 
-In his mind-expanding book The Beginning of Infinity, physicist David Deutsch describes science and the enlightenment as the quest for _good explanations_.
+In his mind-expanding book _The Beginning of Infinity_, physicist David Deutsch describes science and the enlightenment as the quest for _good explanations_.
 He explains how various ideas in human history represent a _beginning of infinity_ that allows us to cope with any conceivable relevant application of these good explanations.
 
 This idea of infinite reach or scope is true of an agile approach to development and not true of a waterfall-based approach.

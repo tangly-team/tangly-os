@@ -42,6 +42,7 @@
 
     td {
         &.icon {
+            font-size: 2rem;
             text-align: center;
             width: 80px;
 
@@ -60,7 +61,7 @@
             padding-left: 1.125em;
             padding-right: 1.25em;
             color: rgba(0, 0, 0, 0.6);
-            background:#fafafa;
+            background: #fafafa;
             word-wrap: anywhere;
 
             > :last-child > :last-child {
@@ -70,13 +71,13 @@
     }
 }
 
-admonitionblock td.icon [class^="fa icon-"] {
-    font-size: 2.5em !important;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    cursor: default;
-}
+admonitionblock td.icon {
+    [class^="fa icon-"] {
+        font-size: 2.5em !important;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        cursor: default;
+    }
 
-.admonitionblock td.icon {
     .icon-note::before {
         content: "\f05a";
         color: #19407c;

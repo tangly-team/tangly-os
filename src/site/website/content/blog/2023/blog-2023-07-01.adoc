@@ -1,0 +1,181 @@
+---
+title: "Corporate Governance for Software Products"
+linkTitle: "Corporate Governance"
+date: 2023-06-10
+tags: [""agile", "series-students"]
+---
+
+== Corporate Governance for Software Products
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2023-07-01-head.jpg[width=420,height=360,role=left]
+
+Since good governance is about the processes for making and implementing decisions, then effective governance and accountability structures are vital.
+Particularly if organizations are to successfully use an agile approach to deliver business change through the investment of programmes and projects.
+
+The four guiding principles to enable successful governance of Agile delivery are:
+
+. Governance should mirror the Agile manifesto principles, particularly the art of simplicity – maximizing the work not done is essential-.
+. Agile delivery teams decide on the empirical performance metrics they will use and self-monitor.
+. Collaboration is an essential change in mindset.
+. Independent reviews of Agile delivery should focus on the teams’ behaviours and practices and not just processes and documentation.
+
+Agile governance is about defining the fastest route that brings the most value.
+By focusing on the things that matter, we apply an agile focus on governance and how to manage programme and project risks effectively.
+Agile works best when processes are clearly defined and transparent to everyone.
+Good governance for programmes and projects, regardless if agile is applied, requires a defined structure, ways of working, processes and systems to operate succinctly.
+As a result, enabling programmes and projects the ability to scale up and down to adapt quickly to an organization’s changing needs and environment.
+
+TOGAF defines architecture governance as the practice and orientation by which software products architectures are managed and controlled at an enterprise-wide level.
+
+Architecture governance does not operate in isolation, but within a hierarchy of governance structures, which, can include following as distinct domains with their own disciplines and processes:
+
+* Corporate Governance
+* Technology Governance
+* IT Governance
+* Architecture Governance
+
+These domains of governance may exist at multiple geographic levels - global, regional, and local - within the overall enterprise.
+
+Corporate governance is thus a broad topic, beyond the scope of an enterprise architecture framework such as the TOGAF framework.
+
+image::2023-07-01-process.png[width=420,height=360,role=left]
+
+=== Agile Corporate Governance PMI
+
+Your governance team - which may be called an oversight, audit, or control team/tribe/group/function - will monitor and guide teams throughout your organization.
+The aim is to enable them to succeed by removing or at least reducing any barriers that they may experience, to motivate them to do “the right thing” for your organization and your customers, and to ensure that they remain compliant with appropriate legal regulations and guidance.
+
+Governance typically addresses areas such as:
+
+* The evolution and support of roles and responsibilities to streamline how people work together
+* Definition of decision rights and decision-making processes to streamline interactions between people
+* The evolution and support of common procedures and guidelines to ensure appropriate commonality of activities and artifacts
+* The evolution and support of common guidance to motivate the efforts of teams across your organization
+* Promotion of ethics and social responsibility
+* Effective and timely investment to sustain and extend the organization over the long term
+* The monitoring of activities to provide insight into their effectiveness
+* Formation of a governing body that is responsible for guiding governance activities
+* Definition of exceptions and escalation processes to streamline critical interactions
+* Creation of a knowledge sharing strategy to grow individuals, teams, and the organization as a whole
+* The support and monitoring of risk mitigation strategies across your organization
+* Adoption of a reward and compensation structure to support the attraction and retention of excellent staff
+* Strategies to share information throughout the organization
+
+Disciplined Agile® (DA™) promotes a lean approach to governance.
+Lean governance is the leadership, organizational structures and streamlined processes to enable everyone to work together effectively in sustaining and extending the organization’s ability to produce meaningful value for its customers.
+There are several reasons why a lean governance strategy is important for your organization’s success.
+Lean governance strives to ensure that:
+
+Your organization’s investment is spent wisely::
+Organizations make investments in their people, in their infrastructure, and in their processes to enable them to better serve their customers.
+From a financial point of view, your goals should be to regularly and consistently create real business value and to provide an appropriate return on investment (ROI).
+To do this, you must determine how you will execute your strategy by selecting and prioritizing the most valuable initiatives to undertake.
+You must also monitor these initiatives to ensure that they fulfill their promise, and if not then remediate them appropriately.
+Your teams are empowered to carry out their work::
+An important aspect of lean governance is to ensure that people and teams have the authority to fulfill their responsibilities.
+Many agile transformations run into trouble when the roles and responsibilities of people are not agreed upon, or when they are they are not properly supported by senior management.
+Another important strategy is to empower teams to choose their own way of working (WoW), to self-determine how they will work together, enabling them to tailor their approach to meet the needs of the situation that they face.
+People are motivated to work together effectively::
+There are two aspects to this.
+First, teams need to work effectively with their stakeholders.
+Second, teams also need to work effectively with their colleagues.
+To do this, you must adopt processes and organizational structures that encourage people to collaborate together and to learn from one another.
+Risks are monitored and mitigated at appropriate organizational levels::
+Although addressing risk at the team-level is a good start it isn’t sufficient from an organizational point of view.
+Many small risks that are acceptable individually can add up to a very large risk for your organization.
+For example, one team using a new technology platform is an experiment.
+Fifty teams adopting that new platform at the same time is a significant risk if the platform proves to be problematic.
+Someone must be looking at risks from a portfolio perspective and guide teams accordingly.
+Your organizational ecosystem is sound::
+Your organization isn’t just a collection of teams.
+It is an ecosystem of teams working together, supported by culture, ways of working, organizational structures, and technologies.
+All aspects of your ecosystem need to be healthy for your organization to thrive.
+Everyone works in an open and collaborative manner::
+There are several ways that the DA™ tool kit promotes this.
+First, work is performed in an agile manner that is inherently open and collaborative.
+Second, all teams should present accurate and timely information to their stakeholders.
+For example, enterprise architects can make their work available to everyone, as can your portfolio management team, your data management team, and so on.
+Third, everyone should be motivated to learn more about your organization, its strategy, its values, and how you intend to work together to achieve the outcomes you’ve set out for yourselves.
+All of these things will continue to be true now and in the future::
+Lean governance balances your short-term and long-term needs.
+Too many organizations have allowed technical debt to grow in recent years, for the skills of their staff to stagnate, and to continue to tolerate traditional strategies that are well past their prime.
+
+There are two fundamental reasons why individuals should be interested in lean governance:
+
+You’re being governed, like it or not::
+Regardless of the size or your organization, the length of time it’s been in operation, or the sector(s) in which you work, someone is keeping an eye on and guiding your overall efforts.
+You deserve to be governed effectively::
+Sadly, many governance strategies prove to be ineffective in practice due to application of traditional strategies and ways of thinking.
+
+=== Security
+
+Minimal set of security checks for regular compliance.
+
+OWASP::
+Penetration Tests::
+
+=== Legal Requirements
+
+Respect the legal framework of your country and the contries in which your solution is deployed:
+
+Customer Protection::
+Customer Data Confidentiallity::
+Accessibility::
+Lawfull Respect (misogyny, xenophoby, racism, religious intelorance)
+
+=== Technical Good Practices
+
+Professional software engineers have a set of non-functional requirements to improve the adequacy of your software products.
+These requirements shall be part of the architecture of corporate governance.
+
+Management fo used libraries:: Libraries have to check for licences, support organization.
+Regular checks for security flaws or published attacks must be implemented.
+A timely mitigation process must be in place
+Tracking of potential security risks and timely update process::
+Potential vulnerabilities should be detected, documented.
+The mitigation process shall be triggered in accordance with the corporate governance.
+traceability and Logging::
+All systems shall have adequate traceability and logging features.
+Logging data shall be archived accordingly with corporate governance and legal constraints.
+Auditability::
+Auditability is legally mandatory for some systems.
+An adequate audit solution shall be implemented at corporate level.
+The architecture trend of distributed systems and services makes an overall solution the sole source of information.
+Resilience::
+Resilience shall part of governance to insure customer satisfaction and survival of the organization.
+Communication to Users::
+Transparent and open communication to end users and stakeholders is a must in modern organizations.
+The communication approach shall be unified at corporate level.
+Interfaces to external systems::
+Interfaces to external systems shall logged and audited in full.
+This approach is mandatory to verify service level agrements.
+The data is also necessary if exteranl partners initiate legal cases
+Input validation::
+Input validation of all interfaces is a mandatory security and quality requirements.
+Enterprise data is a high-value asset.
+Care should be taken to guarantee long-term quality and usability of strategic data.
+This information is often used over decades.
+
+=== Lessons Learnt
+
+Corporate governance requirements are non-functional requirements.
+They impact the architecture and design of the solution.
+The selected solutions are often constrained.
+Highly secure systems cannot for example used NodeJS due to known flaws in the security area.
+
+Awareness of corporate governance issues and legal consequences are often overlooked and not well-understood in many organizations.
+Education and sensibilitation campaigns are necessary to increase professionalism
+footnote:[In Switzerland multiple organizations had to shut down operations in 2021 and 2022 due to blatant security and governance issues.
+Beware non-compliance can be extremely costly and endanger the survival of your company.].
+
+[bibliography]
+=== Literature
+
+- https://pubs.opengroup.org/architecture/togaf9-doc/arch/chap44.html[TOGAF 9 Architecture Governance].
+https://www.opengroup.org/[THe Open Group]. 2022.
+- https://www.pmi.org/disciplined-agile/process/governance[PMI Disciplined Agile Corporate Governance].
+https://pmi.org[PMI]. 2022

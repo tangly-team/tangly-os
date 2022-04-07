@@ -23,12 +23,12 @@ I truly love the modern Java language and the available development environments
 I want to understand the strengths and weaknesses of Java.
 Knowing the weaknesses of my technology stack empowers me to select alternative design approaches to mitigate the drawbacks.
 
-A learning approach is to learn more about Groovy and Clojure.
+An exploring approach is to learn more about Groovy and Clojure.
 I want to understand the various strengths of different programming languages.
 I still want to stay in the Java ecosystem to better apply my learnings.
 
 Groovy and Clojure are available on the Java virtual machine and have good interoperability with it.
-One major focus is the functional programming approach and how it impacts design and development activities.
+One major interest is the functional programming approach and how it impacts design and development activities.
 
 === Clojure
 
@@ -63,6 +63,9 @@ You will realize it when you try to pass them as function parameters.
 ; binds a name to a value. If value is an expression, it is first evaluated.
 (def <name> <value>)
 
+; binds a name to a function.
+(defn <name>[{<parameter} ] (<expression>))
+
 ; else is optional, if not present the expression returns null in the false case
 (if (<condition>) (<true-expression>) (<false-expression))
 
@@ -83,9 +86,9 @@ You will realize it when you try to pass them as function parameters.
  <value-2> <expression>
  <expression-else>)
 
-(loop [] (expression-loop))
+(loop [] (<expression-loop>))
 
-(do {expression})
+(do {<expression>})
 ----
 
 The truth axioms in Clojure are a refreshing view of the programming world.
@@ -116,6 +119,19 @@ letfn[] (<expression>)
 Sequence abstraction permeates the design and API of Clojure.
 Functional programming and https://clojure.org/guides/higher_order_functions[higher order functions] emphasize the design of functions working on generic data structures.
 
+[source,clojure]
+----
+filter    // <1>
+
+map // <2>
+
+reduce // <3>
+
+apply // <4>
+----
+
+<1> <2> <3> <4>
+
 The powerful advantage of dynamic typed language is that algorithms just work with various parameters.
 As long as the parameters support the required functions, there is no need to provide a specific interface.
 
@@ -124,7 +140,8 @@ As long as the parameters support the required functions, there is no need to pr
 Recursion is implemented as expected.
 Recursion is preferred over loops.
 
-You can explicitly optimize tail recursion with the https://clojuredocs.org/clojure.core/recur[recur] operator.
+You can explicitly optimize tail recursion with the https://clojuredocs.org/clojure.core/recur[recur] operator
+footnote:[The trampoline operator is available for indirect recursion cases.].
 
 https://en.wikipedia.org/wiki/Currying[Currying] approach is the https://clojuredocs.org/clojure.core/partial[partial] operator.
 The operator maps a set of parameters to value and return a function which arity is the number of free parameters.
@@ -164,13 +181,13 @@ The newer and rediscovered features are:
 
 [source,java]
 ----
-<boolean-expression) ? <true-expression> : <false expression> // <1>
+<boolean-expression) ? true-expression : false-expression // <1>
 
-switch <value> {    // <2>
+switch value  {    // <2>
     case null -> expression;
-    case value instanceof <type> && <condition> -> <expression>;
-    case value instanceof <type> -> <expression>;
-    default -> <expression>
+    case value instanceof Type && boolean-condition -> expression;
+    case value instanceof Type -> expression;
+    default -> expression;
 }
 ----
 
@@ -201,6 +218,8 @@ The concise method bodies proposal is still not implemented in year 2022.
 
 Lambdas and streams were introduced in Java 8 and released in March 2014.
 The newer versions of Java have refined the abstractions and added methods to simplify frequent use cases.
+
+The stream library is a well-implemented approach to manipulate sequences with higher-order functions.
 
 ===== Recursion, Tail Recursion, Currying, Memoization, Destructuring
 
@@ -261,7 +280,40 @@ But Groovy is not functional style friendly.
 ===== Recursion, Tail Recursion, Currying, Memoization
 
 Functional programming prefers recursion to iteration.
-Clojure provides a tail recursion optimization mechanism the programmer has to explicitly call.
+Groovy provides a tail recursion optimization mechanism the programmer has to explicitly call.
+The approach eliminates stack overflow exceptions.
+The performance of the generated code is still below regular recursive Java solutions.
+
+[source,groovy]
+----
+@TailRecursive  // <`>
+static BigInteger factorial(int number, BigInteger acc = 1) {
+    if (number == 1) {
+        return acc
+    }
+    return factorial(number - 1, acc.multiply(BigInteger.valueOf(number)))
+}
+
+def last // <2>
+last = { it.size() == 1 ? it.head() : last.trampoline(it.tail()) }
+
+last = last.trampoline()
+----
+
+<1> The annotation is used for tail-recursion optimization of methods.
+<2> The trampoline operator is used for tail-recursion optimization of closures.
+The transformation avoids stack overflow but makes the code slightly slower.
+
+Memoization is also supported through an operator.
+
+[source,groovy]
+----
+def fib = { n ->
+    if(n == 0) 0
+    else if(n == 1) 1
+    else fib(n-1) + fib(n-2)
+}.memoize()
+----
 
 === Thoughts
 
