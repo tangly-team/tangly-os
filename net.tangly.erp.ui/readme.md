@@ -1,8 +1,6 @@
 ---
 title: "Readme"
-date: 2019-05-01
-weight: 10
-draft: false
+date: 2019-05-01 weight: 10 draft: false
 ---
 
 # ERP User Interface Component
@@ -16,8 +14,8 @@ draft: false
 
 ## Purpose
 
-The **tangly erp ui** bounded domain component provides regular business model abstractions for business applications written in Java. The component is using
-records and requires **Java 16 or higher**.
+The **tangly erp ui** bounded domain component provides regular business model abstractions for business applications written in Java. The component is using records and
+requires **Java 16 or higher**.
 
 **Try it out**.
 
@@ -63,20 +61,22 @@ You can run the generated application locally.
   cd net.tangly.erp.ui-0.2.7/bin
   ./net.tangly.erp.ui // <1>
 ```
+
 <1> Head to http://localhost:8080/erp/.
 
 ### Run in a Docker Image
 
-THe first step is to build the Docker image with the provided configuration.
+The prerequisite is that the application was build locally for production mode as described above.
+The first step is to build the Docker image with the provided configuration.
 
 ```shell
-  DOCKER_BUILDKIT=0 docker build --no-cache -t tangly-erp:latest .
+  docker build --no-cache -t tangly-erp:latest .
 ```
 
 To run the built image use the following commands.
 
 ```shell
-  docker run --rm -t -i -e JAVA_OPTS='--enable-preview --add-exports java.base/jdk.internal.misc=ALL_UNNAMED' -p8080:8080 tangly-erp:latest
+docker run --rm -ti -p 8080:8080 --mount type=bind,source=/Users/Shared/tangly,target=/Users/Shared/tangly tangly-erp:latest
 ```
 
 ### Run in the Cloud
