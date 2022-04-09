@@ -2,7 +2,7 @@
 title: "Corporate Governance for Software Products"
 linkTitle: "Corporate Governance"
 date: 2023-06-10
-tags: [""agile", "series-students"]
+tags: ["agile", "series-students"]
 ---
 
 == Corporate Governance for Software Products

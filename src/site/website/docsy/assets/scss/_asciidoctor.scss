@@ -42,7 +42,6 @@
 
     td {
         &.icon {
-            font-size: 2rem;
             text-align: center;
             width: 80px;
 
@@ -218,11 +217,12 @@ a.image {
     vertical-align: text-bottom;
     color: #fff !important;
     background-color: rgba(0, 0, 0, 0.8);
+    -webkit-border-radius:100px;
     border-radius: 150px;
     text-align: center;
     font-size: 0.75em;
-    width: 1.5em;
-    height: 1.5em;
+    width: 1.67em;
+    height: 1.67em;
     line-height: 1.67em;
     font-family: "Open Sans", "DejaVu Sans", sans-serif;
     font-style: normal;

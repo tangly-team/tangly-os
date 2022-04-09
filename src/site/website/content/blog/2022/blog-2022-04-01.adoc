@@ -111,7 +111,7 @@ You can define functions and closures using:
 
 (let [{<name> <expression}] (<expression>))
 
-letfn[] (<expression>)
+letfn[{(fn <name> [<parameters>] (<expression>))}] (<expression>)
 ----
 
 ===== Higher-order Functions and Sequences
@@ -121,16 +121,27 @@ Functional programming and https://clojure.org/guides/higher_order_functions[hig
 
 [source,clojure]
 ----
-filter    // <1>
+(filter predicate collection)    ; <1>
 
-map // <2>
+(map f)(map f collection)(map f c1 c2)(map f c1 c2 c3)(map f c1 c2 c3 & collections) ; <2>
 
-reduce // <3>
+(reduce f collection)(reduce f value collection) ; <3>
 
-apply // <4>
+(apply f args)(apply f x args)(apply f x y args) (apply f a b c d & arguments) ; <4>
 ----
 
-<1> <2> <3> <4>
+<1> Returns a lazy sequence of the items in coll for which (predicate item) returns logical true. predicate must be free of side effects.
+Returns a transducer when no collection is provided.
+<2> Returns a lazy sequence consisting of the result of applying f to the set of first items of each collection, followed by applying f to the set of second items in each collection, until any one of the collections is exhausted.
+Any remaining items in other collections are ignored.
+Function f should accept number-of-collections arguments.
+<3> f should be a function of 2 arguments.
+If value is not supplied, returns the result of applying f to the first 2 items in coll, then applying f to that result and the 3rd item, etc.
+If collection contains no items, f must accept no arguments as well, and reduce returns the result of calling f with no arguments.
+If collection has only 1 item, it is returned and f is not called.
+If value is supplied, returns the result of applying f to val and the first item in collection, then applying f to that result and the 2nd item, etc.
+If collection contains no items, returns value and f is not called.
+<4> Applies fn f to the argument list formed by prepending intervening arguments to args.
 
 The powerful advantage of dynamic typed language is that algorithms just work with various parameters.
 As long as the parameters support the required functions, there is no need to provide a specific interface.
@@ -140,7 +151,7 @@ As long as the parameters support the required functions, there is no need to pr
 Recursion is implemented as expected.
 Recursion is preferred over loops.
 
-You can explicitly optimize tail recursion with the https://clojuredocs.org/clojure.core/recur[recur] operator
+You can explicitly optimize tail recursion with the https://clojuredocs.org/clojure.core/recur[operator recur].
 footnote:[The trampoline operator is available for indirect recursion cases.].
 
 https://en.wikipedia.org/wiki/Currying[Currying] approach is the https://clojuredocs.org/clojure.core/partial[partial] operator.
@@ -181,7 +192,7 @@ The newer and rediscovered features are:
 
 [source,java]
 ----
-<boolean-expression) ? true-expression : false-expression // <1>
+(<boolean-expression>) ? true-expression : false-expression // <1>
 
 switch value  {    // <2>
     case null -> expression;
@@ -286,7 +297,7 @@ The performance of the generated code is still below regular recursive Java solu
 
 [source,groovy]
 ----
-@TailRecursive  // <`>
+@TailRecursive  // <1>
 static BigInteger factorial(int number, BigInteger acc = 1) {
     if (number == 1) {
         return acc
@@ -369,7 +380,7 @@ Please use streams.
 Declare your intent, do not describe the implementation.
 * Return _Optional<T>_ or an empty list _Collections.emptyList()_.
 Please do not return null values.
-* Create predicates using _java.util.function.Predicate<T>_ instead of complex boolean conditions.
+* Create predicates using _java.util.function.predicate<T>_ instead of complex boolean conditions.
 * Learn to compose functions through the helper methods of the _java.util.function_ package.
 * Use the _switch_ expression and the ternary operator _?:_.
 Please avoid _if_ and _switch_ statements.
