@@ -55,19 +55,18 @@ The gradle script compiles, packages, and runs the application with an embedded 
 You can run the generated application locally.
 
 ```shell
-  gradle build -Pvaadin.productionMode
-  cd build/distributions/
-  unzip net.tangly.erp.ui-0.2.7.zip
-  cd net.tangly.erp.ui-0.2.7/bin
-  ./net.tangly.erp.ui // <1>
+  build applicaton docker gradle build installDist -Pvaadin.productionMode <1>
+  cd build/install/net.tangly.erp.ui/bin
+  ./net.tangly.erp.ui // <2>
 ```
 
+<1> The production mode parameter is mandatory.
+Otherwise, the distribution frontend is not build and the application cannot run without JavaScript build tools.
 <1> Head to http://localhost:8080/erp/.
 
 ### Run in a Docker Image
 
-The prerequisite is that the application was build locally for production mode as described above.
-The first step is to build the Docker image with the provided configuration.
+The prerequisite is that the application was build locally for production mode as described above. The first step is to build the Docker image with the provided configuration.
 
 ```shell
   docker build --no-cache -t tangly-erp:latest .

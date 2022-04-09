@@ -39,7 +39,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Properties;
@@ -159,6 +161,11 @@ public class Erp {
         } catch (IOException e) {
             logger.atError().log("Application Configuration Load Error", e);
         }
+    }
+
+    private boolean isPersistenceStoreAvailable() {
+        String rootPersistenceFolder = properties.getProperty("erp.root.directory");
+        return (rootPersistenceFolder != null) && Files.exists(Paths.get(rootPersistenceFolder));
     }
 
     private static Subject createAdminSubject() {
