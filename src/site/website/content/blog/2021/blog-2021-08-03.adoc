@@ -41,7 +41,7 @@ The Scrum Master serves the Scrum Team in several ways, including:
 * Coaching the team members in *self-management* and *cross-functionality*;
 * Helping the Scrum Team focus on creating high-value *Increments* that meet the *Definition of Done*;
 * Causing the removal of impediments to the Scrum Team’s progress; and,
-* Ensuring that all Scrum events take place and are *positive, productive, and kept within the timebox*.
+* Ensuring that all Scrum events take place and are *positive, productive, and kept within the time box*.
 
 The Scrum Master serves the Product Owner in several ways, including:
 
@@ -112,7 +112,7 @@ https://scrumguides.org/scrum-guide.html#increment[increment].
 .. identify at least two reasons why multiple teams working on the same https://scrumguides.org/scrum-guide.html#product-backlog[Product Backlog] have a shared and consistent definition of _Done_.
 . _Scrum Master Core Competencies_
 .. describe at least three situations in which the Scrum Master could serve the needs of the Scrum Team or organization through facilitation.
-.. demonstrate at least three techniques for facilitating group decision making.
+.. demonstrate at least three techniques for facilitating group decision-making.
 . Coaching
 .. restate how facilitating, teaching, mentoring, and coaching are different.
 .. apply at least one technique that could help resolve a challenge faced by a Scrum Team.
@@ -129,7 +129,7 @@ https://scrumguides.org/scrum-guide.html#increment[increment].
 .. discuss at least two ways that the Scrum Master assists the Scrum Team with impediments.
 .. describe at least three organizational impediments that can affect Scrum Teams.
 .. describe at least one example of an organizational design change caused by adopting Scrum.
-.. discuss why Scrum does not have a a project manager and what happens to traditional project management activities
+.. discuss why Scrum does not have a project manager and what happens to traditional project management activities
 
 You can self-study the Scrum Master objectives <<scrum-master-learning-objectives>>, <<scrum-master-advanced-learning-objectives>> with the official scrum team book <<professional-scrum-team>>.
 The book is well-written and covers all required topics.

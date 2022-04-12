@@ -17,7 +17,10 @@ image::2022-04-02-head.jpg[width=420,height=360,role=left]
 
 SoDa _Software Development Agile_ is a homebrew project development method created at the https://www.hslu.ch[technical university of Lucerne].
 It is a mixture of Waterfall, RUP and Scrum approaches.
-It uses a distorted Scrum for the concept and implementation phase.
+It uses a distorted Scrum for the concept and implementation phase<<detecting-agile-bullshit>>.
+
+The documentation was not updated the last ten years.
+The approach is clinically dead and should not be promoted for active software development efforts.
 
 A similar approach also exists with the official governmental Swiss project method {ref-hermes}.
 At least the documentation of https://www.hermes.admin.ch/en/starting-page.html[Hermes] is better than SoDa.
@@ -46,8 +49,8 @@ Scrum is currently the most used agile approach in the industry.
 
 [quote,Hermes FAQ]
 ____
-HERMES 2021
-footnote:[ https://www.hermes.admin.ch/de/faq/projektmanagement-2021/umfeld.html[Hermes FAQ]]corresponds to the current requirements of federal and state administration, which are mainly organized *hierarchically* and have to handle projects taking governance into account.
+HERMES 2021footnote:[ https://www.hermes.admin.ch/de/faq/projektmanagement-2021/umfeld.html[Hermes FAQ]] corresponds to the current requirements of federal and state administration.
+They are mainly organized *hierarchically* and have to handle projects taking governance into account.
 ____
 
 The major problem is that Hermes is mandatory for a set of governmental projects.
@@ -71,6 +74,22 @@ This approach allows us to make progress, maybe sometimes in suboptimal or even 
 This does not mean that agile thinking is perfect or the final answer.
 Rather, it is an important, significant, enabling step in the direction of better performance.
 
+[IMPORTANT]
+====
+The software product development method war is won.
+
+Agile approaches as described in {ref-manifesto} and {ref-scrum} are the winners
+footnote:[https://www.pmi.org/[PMI] has adopted disciplined agile.
+https://www.opengroup.org/[OpenGroup] has updated TOGAF to support agile approaches.
+Major certifications authorities such as https://www.isaqb.org/[ISAQB], https://www.ireb.org/[IREB], https://www.istqb.org/[ISTQB] offer a track of agile certifications.
+You as a responsible organization shall train your collaborators in agile approaches. Stop clinching to obsolete approaches used in the last millennium.].
+Eighty percent of all new software development initiatives are based on an agile approach.
+The most used agile approach is {ref-scrum}.
+
+Stop being a laggard.
+Start using agile approaches and the Scrum framework.
+====
+
 === Future Work
 
 I strongly advocate discarding all hybrid methods.
@@ -81,7 +100,8 @@ We shall use the Scrum approach as a preferred approach for developing software 
 Scrum and various Scrum scaling frameworks provide approaches for teams up to eighty developers working on the same product.
 I strongly state that 99.9% of all software initiatives have smaller teams.
 
-WARNING: One of the founders of Scrum strongly stated the same in a famous post https://kenschwaber.wordpress.com/2013/08/06/unsafe-at-any-speed/[Unsafe at any Speed].
+WARNING: One of the founders of Scrum strongly stated the same in a famous post
+https://kenschwaber.wordpress.com/2013/08/06/unsafe-at-any-speed/[Unsafe at any Speed].
 
 I strongly recommend avoiding SAFe for the following reasons:
 
@@ -111,6 +131,44 @@ If you have a choice, do not use any hybrid method.
 Various studies found out that agile initiatives are three times more successful than Waterfall approaches.
 
 Business agility is not compatible with hybrid approaches.
+Use Lean startup or design thinking frameworks to increase your business agility and adapt to market changes.
+Design thinking advocates iterations of one week duration.
+Therefore, product increments of three months or worst RUP phases over half a year are truly incompatible with weekly cycle-time.
+
+We train our students and collaborators in Design Thinking, Lean approaches, and Scrum framework.
+We should not force them to use later obsolete methods such as V-Model, RUP, HERMES or unsupported approaches such as SODA.
+
+[IMPORTANT]
+====
+Be responsible.
+Train adequately your collaborators<<scrum-master-formation>>, <<product-owner-formation>>, <<scrum-developer-formation>> in the Scrum approach.
+====
 
 The majority of hybrid methods I still encounter are bad rehearsal of the RUP development approach.
 The unified process was defined in the nineties and is now obsolete.
+
+[bibliography]
+=== References
+
+- [[[professional-scrum, 1]]] https://www.amazon.com/dp/B07XTLNPTC[Mastering Professional Scrum: A Practitioner's Guide To Overcome Challenges and Maximize the Benefits of
+Agility].
+Stephanie Ockerman and Simon Reindl.
+Addison-Wesley. 2020
+- [[[detecting-agile-bullshit, 2]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
+Marcel Baumann. 2019
+- [[[scrum-master-formation, 3]]] link:../../2021/scrum-master-formation[Scrum Master Formation].
+Marcel Baumann. 2021
+- [[[product-owner-formation, 4]]] link:../../2021/product-owner-formation[Product Owner Formation].
+Marcel Baumann. 2021
+- [[[scrum-developer-formation, 5]]] link:../../2021/scrum-developer-formation[Scrum Developer Formation].
+Marcel Baumann. 2021
+- [[[scrum-guide, 6]]] link:https://scrumguides.org/scrum-guide.html[Scrum Guide].
+Jeff Sutherland, Ken Schwaber. 2020
+- [[[cargo-cult, 7]]] link:https://en.wikipedia.org/wiki/Cargo_cult[Cargo Cult].
+Wikipedia
+- [[[devops-sme, 8]]] link:../../blog/2021/devops-for-small-applications/[DevOps for Small Applications].
+Marcel Baumann. 2021
+- [[[zero-defect, 9]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Advocate Zero Bug Policy in Your Projects].
+Marcel Baumann. 2020
+- [[[agile-software-architecture, 10]]] link:../..//2021/what-i-learnt-teaching-agile-software-architecture/[What I learnt Teaching Agile Software Architecture].
+Marcel Baumann. 2021

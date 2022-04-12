@@ -172,7 +172,7 @@ Addison-Wesley. 2017
 - [[[scrum-pocket-guide, 2]]] https://www.amazon.com/dp/B08XWQ7DG9[Scrum A Pocket Guide 3ˆndˆ Edition].
 Gunther Verheyen.
 Van Haren Publishing. 2021
-- [[[agile-bullshit, 3]]] link:../../2019/detecting-agile-bullshit[Detecting Agile Bullshit].
+- [[[detecting-agile-bullshit, 3]]] link:../../2019/detecting-agile-bullshit[Detecting Agile Bullshit].
 Marcel Baumann. 2019
 - [[[bill-of-rights, 4]]] link:../../2020/calibrate-your-agile-approach-bill-of-rights[Calibrate Your Agile Approach: Bill of Rights].
 Marcel Baumann. 2020

@@ -73,7 +73,7 @@ ____
 Life can only be understood backwards; but it must be lived forward.
 ____
 
-Non-agile organizations are only talking <<agile-bullshit>>.
+Non-agile organizations are only talking <<detecting-agile-bullshit>>.
 The illusion of agility is often established in such companies.
 Internal working groups are drafting transformation plans, updated processes, and guidelines.
 Where is the doing?
@@ -187,7 +187,7 @@ Your company does not possess any paper archive, printer or fax machine.
 - [[[tangly-one-year, 2]]] link:../../2019/a-journey-to-be-a-digital-company-tangly-llc[A Journey To Be a Digital Company]
 - [[[tangly-zero-years, 3]]] link:../../2016/found-a-limited-liability-company-in-switzerland/[Found a Limited Liability Company]
 - [[[zero-bug-policy, 4]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Zero Bug Policy]
-- [[[agile-bullshit, 5]]]link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit]
+- [[[detecting-agile-bullshit, 5]]]link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit]
 - [[[twelve-signs-feature-factory, 6]]] https://cutle.fish/blog/12-signs-youre-working-in-a-feature-factory[12 Signs You are Working in a Feature Factory]
 John Cutler. 2016
 - [[[twelve-signs-feature-factory-three-years-later, 7]]]

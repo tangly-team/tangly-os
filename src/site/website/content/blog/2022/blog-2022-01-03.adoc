@@ -161,7 +161,7 @@ A computer specialist not being able to use a spell checker is automatically dis
 Interest in improving::
 You are doomed if you did not learn or formally train the last ten years.
 This learning and training shall be visible in your resume.
-_I look for Oracle Java Developer (developer), advanced or professional Scrum, iSAQB (senior designer), TOGAF, and JEE (architect) certifications._
+_I look for Oracle Java Developer, advanced or professional Scrum, iSAQB (senior designer), TOGAF, and JEE (architect) certifications._
 Personal information::
 I like to see a picture of the candidate.
 I also expect some information about the location of the candidate such as city and state.

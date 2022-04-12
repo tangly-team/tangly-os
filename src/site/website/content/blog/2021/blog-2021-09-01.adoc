@@ -75,7 +75,7 @@ I chose the https://utteranc.es/[Utterances] approach for our site.
 The solution has no strings attached and uses the well-known platform GitHub.
 No tracking, no ads and no locking are great.
 
-The comment author must first login in GitHub before adding her comment therefore spamming or flaming are minimized.
+The comment author must first log in GitHub before adding her comment therefore spamming or flaming are minimized.
 
 You have to create a partial in docsy to use Utterances.
 
@@ -104,8 +104,8 @@ Give it a try.
 
 Diagrams in blog articles are currently a more complex issue.
 Hugo seems to be quite restrictive which extensions can be loaded when generating a static site.
-No reasonable reasons exit for the above mentioned restrictions.
-On-going pull requests try to improve the situation.
+No reasonable reasons exit for the above-mentioned restrictions.
+Ongoing pull requests try to improve the situation.
 
 I had success with:
 
@@ -130,10 +130,10 @@ I am currently exploring venues to improve the integration of nice looking ascii
 
 === Future Features
 
-I have integrated an extension to provide access to files through a Hugo/Docsy site.
+I have integrated an extension to provide access to static files through a Hugo/Docsy site.
 For example the presentation of a speech is made available directly in the static website.
 
-This feature is currently experimental and queued as a pull request in the Docsy github repository
+This feature is currently experimental and queued as a pull request in the Docsy GitHub repository
 footnote:[This feature removed my dependency to Google drive to host downloadable artifacts.].
 
 === Hugo and Docsy Related Articles

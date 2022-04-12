@@ -50,15 +50,17 @@ gradle dependencyUpdates -Drevision=release // <1>
 
 <1> Check that any libraries or plugins in the project have a newer available version.
 
-I still have to decide if you shall update the library.
+I still have to decide if I shall update the library.
 The usual approach is to simply update, and run all unit and integration tests.
 If all tests passed successfully, I shall simply upgrade to the newer version otherwise I simply roll back the changes or start a debugging session to find out why some tests failed.
 
 [NOTE]
+====
 The Linux community is not better.
 Timely updates are not common in quite a few organizations.
-They decided in 2022 to migrate from the C 89 standard to the C 11 standard.
+The Linux core developers decided in 2022 to migrate from the C89 standard to the C11 standard.
 Instead of using a version created thirty-five years ago, they will now program with a solution specified eleven years ago.
+====
 
 === Beware of Technical Debt
 

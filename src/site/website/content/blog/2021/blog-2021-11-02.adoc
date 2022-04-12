@@ -112,7 +112,7 @@ tasks.withType(Test) {
 <2> Allows the selection of the Jacoco version.
 I found it useful when using the latest JDK version.
 JaCoCo developers have a slow release rhythm.
-<3> Configure JaCoCo to generate an html and an XML report.
+<3> Configure JaCoCo to generate a html and an XML report.
 The binary report is no more supported by external tool.
 <4> -
 <5> Configure JaCoCo test report to be generated after the running of a test task
