@@ -4,15 +4,25 @@ clone:
 pipelines:
   default:
   - step:
-      name: build java components
+      name: build Java components
       caches:
       - gradle
       - gradlewrapper
       script:
-        - ./gradlew build -Pmode=build
-      # simplified version of CI pipeline due to out of memory errors in bitbucket pipeline
-      # - ./gradlew build jacocoTestReport jacocoRootReport -Pmode=int
-      # - ./gradlew sonarqube -Pmode=int -Dsonar.projectKey=tangly-os-at-tangly.net -Dsonar.organization=tangly-os -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+        - ./gradlew build
+        - ./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode
+      artifacts:
+          - dist/**
+          - net.tangly.erp.ui/dist/**
+          - net.tangly.erp.ui/install/**
+  - step:
+        name: build docker image
+        script:
+            - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
+            - docker build -t tanglyllc/tangly-erp:latest net.tangly.erp.ui/
+            - docker push tanglyllc/tangly-erp:latest
+        services:
+            - docker
 definitions:
   caches:
     gradlewrapper: ~/.gradle/wrapper

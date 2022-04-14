@@ -55,7 +55,7 @@ The gradle script compiles, packages, and runs the application with an embedded 
 You can run the generated application locally.
 
 ```shell
-  build applicaton docker gradle build installDist -Pvaadin.productionMode <1>
+  gradle build installDist -Pvaadin.productionMode <1>
   cd build/install/net.tangly.erp.ui/bin
   ./net.tangly.erp.ui // <2>
 ```
@@ -69,7 +69,9 @@ Otherwise, the distribution frontend is not build and the application cannot run
 The prerequisite is that the application was build locally for production mode as described above. The first step is to build the Docker image with the provided configuration.
 
 ```shell
-  docker build --no-cache -t tangly-erp:latest .
+  ./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode
+  docker build -t tanglyllc/tangly-erp:latest net.tangly.erp.ui/
+  docker push tanglyllc/tangly-erp:latest
 ```
 
 To run the built image use the following commands.

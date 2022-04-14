@@ -7,7 +7,7 @@ junit-version = '5.8.2'
 log4j2-version = '2.17.2'
 microstream-version = '06.01.00-MS-GA'
 mustang-version = '2.5.0'
-vaadin-version = '23.0.4'
+vaadin-version = '23.0.5'
 assertj-version = '3.22.0'
 
 [plugins]
@@ -21,7 +21,7 @@ mannes = "com.github.ben-manes.versions:0.41.0"
 
 [libraries]
 annotations = "org.jetbrains:annotations:23.0.0"
-antrlr-st4 = "org.antlr:ST4:4.3.2"
+antrlr-st4 = "org.antlr:ST4:4.3.3"
 apache-commons-cli = "commons-cli:commons-cli:1.5.0"
 apache-commons-csv = "org.apache.commons:commons-csv:1.9.0"
 apache-commons-codec = "commons-codec:commons-codec:1.15"

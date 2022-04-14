@@ -5,9 +5,32 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-java@v1
-              with:
-                  java-version: '1.18'
-                  java-package: 'jdk'
-            - run: ./gradlew build
+        -
+            name: checkout
+            uses: actions/checkout@v2
+        -
+            name: setup and build Java components
+            uses: actions/setup-java@v1
+            with:
+                java-version: '1.18'
+                java-package: 'jdk'
+            run: |
+                ./gradlew build
+                ./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode
+        -
+            name: Login to Docker Hub
+            uses: docker/login-action@v1
+            with:
+                username: ${{ secrets.DOCKER_HUB_USERNAME }}
+                password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+        -
+            name: Set up Docker Buildx
+            uses: docker/setup-buildx-action@v1
+        -
+            name: Build and push
+            uses: docker/build-push-action@v2
+            with:
+                context: .
+                file: ./net.tangly.erp.ui/Dockerfile
+                push: true
+                tags: ${{ secrets.DOCKER_HUB_USERNAME }}/tangly-erp:latest
