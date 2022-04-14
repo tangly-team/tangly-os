@@ -181,6 +181,3 @@ Marcel Baumann. 2020
 - [[[pragmatic-craftsmanship, 6]]] link:../../2018/pragmatic-craftsmanship-professional-software-developer[Pragmatic Craftsmanship - Professional Software
 Developer].
 Marcel Baumann. 2018
-- [[[detecting-agile-bullshit, 7]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
-Marcel Baumann. 2019
-

@@ -173,6 +173,13 @@ Technological Advantages::
 Motivated collaborators love to work on such initiatives.
 footnote:[To be honest, the biggest problem we have is to find collaborators with the required skill set.].
 * Technological leadership for Java technology stack delights our collaborators and is a huge market advantage.
+Our delivered solutions are deployed in hybrid clouds and scale to match our customer needs.
+* We are digital affine and project our experience and workflows into the applications we develop.
+Our company does not own any fax machine, landline phones, or printers.
+Our workflows are digitized and all our artifacts are stored on secure servers.
+The information is available worldwide to all involved parties.
+Sensible artifacts are cryptographically protected.
+All emails are digitally authenticated and signed.
 Business Advantages::
 * Leadership how to develop successful software products.
 * Clear understanding and extensive experience with digitalization.

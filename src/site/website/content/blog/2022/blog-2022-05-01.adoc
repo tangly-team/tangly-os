@@ -24,7 +24,7 @@ A floating point number was converted, which then had a larger value than could 
 US Air Machine::
 A US airliner nearly crashed on a flight between the United States and Canada, in the Great Lakes area and the greater Chicago area.
 Here, when refueling the machine, the US gallon and British gallon volume units for liquid and fuel were mixed up.
-The actual amount of kerosene available was signifantly reduced.
+The actual amount of kerosene available was significantly reduced.
 The machine ending up on the holding pattern on approach without sufficient fuel.
 
 Numerous, sometimes fatal, incorrect dosages of medication.
@@ -67,11 +67,95 @@ In the SI system, special name derived units of measurement include Hz, Newtons,
 System-of-Units:::
 A system of units is a set of basic and derived units of measure chosen as standards for specifying measures.
 Examples are the SI (metric) and the imperial (English) system.
-Prefix (prefix or multiplier):::
-A prefix is ​​a leading word that can be applied to a unit of measure to form a decimal multiplication or decrease of the unit of measure.
+Prefix (multiplier):::
+A prefix is a leading word that can be applied to a unit of measure to form a decimal multiplication or decrease of the unit of measure.
 Prefixes are mainly used in the SI system, which includes kilo-, centi-, mili- etc.
 Other cultures and regions use multiplier systems of a similar type, some of which differ from the SI system.
 Examples are the separate use of multipliers such as Lakh- (100,000) or Crore- (10 million) in countries like India or parts of the Middle East.
 This can be attributed to the fact that different currency systems exist.
 It can also be traced back to historical number systems, which differ from the Latin or Arabic origin of today's western systems in some areas or are absent in these in the same form.
 On the other hand, the use of others, such as a dozen, is almost unknown there.
+
+=== Measurement
+
+In May 2019 all units are defined by constants of nature.
+
+=== How to Use the API
+
+JSR-385 defines the API 2.x.
+Historically JSR-363 defined the API 1.0 and is now superseded by the newer definitions.
+
+[source,groovy]
+----
+    implementation("javax.measure:unit-api:2.1.3")
+    implementation("tech.units:indriya:2.1.3")
+    implementation("tec.units:unit-ri:1.0.3")
+----
+
+=== Examples
+
+[source,java]
+----
+    Quantity<Length> distance = Quantities.getQuantity(10, MILLI(Units.METRE));
+
+    Quantity<Volume> cubicMetre = Quantities.getQuantity(1, Units.CUBIC_METRE);
+    Quantity<Volume> litres = Quantities.getQuantity(1000, Units.LITRE);
+
+    ComparableQuantity<Volume> cubicMetre = Quantities.getQuantity(1, Units.CUBIC_METRE);
+    ComparableQuantity<Volume> litres  = Quantities.getQuantity(1000, Units.LITRE);
+    assertTrue(cubicMetre.compareTo(litres) == 0);
+
+    Quantity<Speed> velocity = Quantities.getQuantity(1, Units.METRE).divide(Quantities.getQuantity(1, Units.SECOND))=.asType(Speed.class);
+----
+
+The power of the approach is in the object-oriented abstractions.
+
+[source,java]
+----
+public class WaterTank {
+    public void setCapacityMeasure(Quantity<Volume> capacityMeasure);
+}
+
+class WaterTankTest {
+    @Test
+    void givenQuantity_whenGetUnitAndConvertValue_thenSuccess() {
+        WaterTank waterTank = new WaterTank();
+        waterTank.setCapacityMeasure(Quantities.getQuantity(9.2, LITRE));
+        assertEquals(LITRE, waterTank.getCapacityMeasure().getUnit());
+
+        Quantity<Volume> waterCapacity = waterTank.getCapacityMeasure();
+        double volumeInLitre = waterCapacity.getValue().doubleValue();
+        assertEquals(9.2, volumeInLitre, 0.0f);
+    }
+
+    @Test
+    void conversionTest() {
+        double volumeInMilliLitre = waterCapacity.to(MetricPrefix.MILLI(LITRE)).getValue().doubleValue();
+        assertEquals(9200.0, volumeInMilliLitre, 0.0f);
+    }
+}
+----
+
+The abstractions allow compilation time detection of errors.
+
+[source, java]
+----
+    waterCapacity.to(MetricPrefix.MILLI(KILOGRAM));         // compilation error
+
+    Unit<Length> Kilometer = MetricPrefix.KILO(METRE);
+    Unit<Length> Centimeter = MetricPrefix.CENTI(LITRE);    // compilation error
+----
+
+=== Recommendations
+
+- Keep your unit definitions in a single place.
+- Encapsulate your own _Quantities_ by delegation.
+- Create converters when storing units into a JPA based persistent store.
+- In any case, if a unit does not exist in the system of units, you can create new units with new symbols:
+-- _AlternateUnit_ is a new unit with the same dimension but different symbol and nature.
+-- _ProductUnit_ is a new unit created as the product of rational powers of other units.
+
+[bibliography]
+=== References
+
+- [[[unitsofmeasurement,1 ]]] https://unitsofmeasurement.github.io/[Units of Measurement

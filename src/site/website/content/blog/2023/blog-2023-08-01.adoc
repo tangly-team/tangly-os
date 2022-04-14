@@ -1,0 +1,62 @@
+---
+title: "Cloud Java Applications"
+linkTitle: "Cloud Applications"
+date: 2023-08-01
+tags: ["agile", "series-students"]
+---
+
+== Deploy Your Java Applications in the Cloud
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2023-07-01-head.jpg[width=420,height=360,role=left]
+
+=== Choose a Primary Cloud Provider
+
+The selection criteria are:
+
+* The latest release of the Java version is supported.
+* A file system integration approach is documented.
+* Docker images can be deployed on the cloud.
+* Java application can be deployed on the cloud.
+* DevOps concepts are supported.
+The deployment is performed with command line tools.
+No user interface interaction or manual login activities are required.
+
+https://www.heroku.com/[Heroku] is one of the seldom providers supporting the current released version of Java.
+
+=== Set up Your Environment
+
+I recommend a step-by-step approach
+
+Set up your development environment::
+I developed all Java solutions with top-notch tools.
+My IDE is the IntelliJ IDEA and supports modern Java, Groovy and Clojure.
+Plugins support agile software engineering practices such documentation as code, architecture design records, and diagrams as text.
+Git integration is optimal.
+Development platforms such as GitHub, BitBucket, or GitLab are well-supported.
+Set up your continuous integration and delivery pipeline::
+Development platforms provide good pipeline solutions.
+I would order the simplicity of the solutions as BitBucket being the best, GitHub being usable, and GitLab solutions being too complex to reach a goal.
+This judgement is reflected in the complexity of the scripts.
+Take a look at the scripts of the tangly open source components
+Set up your continuous deployment pipeline::
+Test locally the building and publishing process of your application.
+I currently provide a dual approach.
+First, a docker image is provided for simple deployment to Cloud provider or interested parties.
+They can run the solution in their local Docker environment.
+Second, a regular Java application is provided for SaaS environments.
+The solution can be run in any environment supporting the current released Java JDK.
+The complexity is located in the persistence requirements of the application.
+How persistence solutions are provided is quite heterogeneous in the current cloud offerings.
+Set up your monitoring solution::
+
+=== Thoughts
+
+I already have a continuous integration and continuous delivery pipeline setup for the application.
+I am not really interested in setting up it again on a proprietary cloud provider solution.
+GitHub, GitLab, and BitBucket are well-known platforms for agile software development and application packaging.
+
+The cloud solution shall concentrate on the functions of deploying an application and monitoring it.
