@@ -12,9 +12,8 @@ pipelines:
         - ./gradlew build
         - ./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode
       artifacts:
-          - dist/**
-          - net.tangly.erp.ui/dist/**
-          - net.tangly.erp.ui/install/**
+          - net.tangly.erp.ui/build/distributions/**
+          - net.tangly.erp.ui/build/install/**
   - step:
         name: build docker image
         script:
