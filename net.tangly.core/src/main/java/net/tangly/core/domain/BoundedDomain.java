@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -50,11 +50,11 @@ public class BoundedDomain<R extends Realm, B, H extends Handler<?>, P> {
         initialize();
     }
 
-    protected static <I extends HasOid & HasTags> void addTagCounts(TypeRegistry registry, Provider<I> provider, Map<TagType<?>, Integer> counts) {
+    protected static <I extends HasOid & HasTags> void addTagCounts(@NotNull TypeRegistry registry, @NotNull Provider<I> provider, Map<TagType<?>, Integer> counts) {
         addTagCounts(registry, provider.items(), counts);
     }
 
-    protected static <I extends HasTags> void addTagCounts(TypeRegistry registry, List<I> entities, Map<TagType<?>, Integer> counts) {
+    protected static <I extends HasTags> void addTagCounts(@NotNull TypeRegistry registry, @NotNull List<I> entities, Map<TagType<?>, Integer> counts) {
         entities.stream().flatMap(e -> e.tags().stream()).map(registry::find).flatMap(Optional::stream).forEach(e ->
             counts.merge(e, 1, (oldValue, _$) -> oldValue++));
     }

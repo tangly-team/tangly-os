@@ -48,6 +48,7 @@ dependencies {
     implementation enforcedPlatform(libs.vaadin.bom)
     implementation(libs.vaadin.core)
     implementation(libs.apache.log4j2.slf4j)
+    implementation(libs.apache.commons.cli)
 
     implementation(libs.bundles.jetty.deps)
     implementation(libs.vaadin.socharts)

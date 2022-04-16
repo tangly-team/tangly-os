@@ -56,13 +56,12 @@ You can run the generated application locally.
 
 ```shell
   gradle build installDist -Pvaadin.productionMode <1>
-  cd build/install/net.tangly.erp.ui/bin
-  ./net.tangly.erp.ui // <2>
+  net.tangly.erp.ui/build/install/net.tangly.erp.ui/bin/net.tangly.erp.ui // <2>
 ```
-
 <1> The production mode parameter is mandatory.
 Otherwise, the distribution frontend is not build and the application cannot run without JavaScript build tools.
-<1> Head to http://localhost:8080/erp/.
+
+<2> Head to http://localhost:8080/erp/. The default port is 8080 and application starts with persistent storage.
 
 ### Run in a Docker Image
 
@@ -74,13 +73,33 @@ The prerequisite is that the application was build locally for production mode a
   docker push tanglyllc/tangly-erp:latest
 ```
 
+We currently push to [Docker Hub](https://hub.docker.com/).
+
 To run the built image use the following commands.
 
 ```shell
-docker run --rm -ti -p 8080:8080 --mount type=bind,source=/Users/Shared/tangly,target=/Users/Shared/tangly tangly-erp:latest
+  docker run --rm -ti -p 8080:8080 -e PORT=8080  --mount type=bind,source=/var/tangly-erp,target=/var/tangly-erp tangly-erp:latest
 ```
 
+The user under which the erp application shall not have root privileges.
+
+The port of the application is configured through the port environment variable.
+This approach is mandatory if the image is deployed in [Heroku](https://www.heroku.com/).
+
 ### Run in the Cloud
+
+#### Heroku Cloud
+
+The erp application can be access over [tangly-erp](https://tangly-erp.herokuapp.com/).
+
+```shell
+  docker login --username=_ --password=$(heroku auth:token) registry.heroku.com // <1>
+  docker tag tanglyllc/tangly-erp:latest registry.heroku.com/tangly-erp/web // <3>
+  docker push registry.heroku.com/<app>/<process-type> // <2>
+```
+<1> login in the heroy docker image registry using docker CLI
+<2> tag teh image a
+<3> push an existing image to the heroku registry
 
 ## Contribution
 

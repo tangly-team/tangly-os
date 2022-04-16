@@ -1,6 +1,6 @@
 ## Introduction
 
-The *docsy* theme was custmomized to support specific needs of the tangly OS documentation static website.
+The *docsy* theme was customized to support specific needs of the tangly OS documentation static website.
 
 ## Footer
 
@@ -11,7 +11,7 @@ The open source copyright of our site is not well displayed in the standard foot
 
 ## Attachments
 
-For the attachments feature we added
+For the attachment feature we added:
 
 - docsy/assets/scss/shortcodes.scss
 - docsy/assets/scss/main.scss _added import of the shortcodes.scss styling
@@ -19,15 +19,13 @@ For the attachments feature we added
 
 ## Comments
 
-For the comments feature we added
+For the comment feature we added:
 
 - docsy/layouts/blog/content.html _added utterances code for comments_
 - docsy/layouts/partials/comments-utterances.html _partial for comment template_
 
 ## Asciidoc Stylesheet
 
-Exploration was started to improve the styling of asciidoc documents.
-
-Currently, the exploration has no success
+Exploration was started to improve the styling of [asciidoc](https://asciidoc.org) documents:
 
 - docsy/assets/scss/_styles_project.scss

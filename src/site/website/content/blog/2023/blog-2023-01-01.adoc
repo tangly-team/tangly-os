@@ -25,7 +25,7 @@ A professional and planned approach greatly improves the odds of success for the
 
 Identify Decision Criteria::
 Decide on your internal team that will help with making and supporting the decision.
-Put together a _must haves_ checklist for the capabilities required from a custom software solution company. +
+Put together a _must-have_ checklist for the capabilities required from a custom software solution company. +
 +
 Research different approaches and methodologies to discuss with your potential business partner.
 For instance, will you use Agile and should your partner need to practice it as well?
@@ -34,7 +34,7 @@ Should you emphasize corporate governance or technology agility? +
 Think about the services your business will need in the next few years.
 Will you require an entire development team, including help with product support?
 Consider the types of roles required to build your solution and note those you can fulfill with internal staff.
-Which positions will you need to fill with experts or dedicated persons provided by your new partner.
+Which positions will you need to fill with experts or dedicated people provided by your new partner?
 Evaluate Candidates::
 Ultimately, you want to choose a partner with the right experience to help you achieve your goals<<evaluate-cv>>.
 Avoid choosing a company just because they work with trendy technologies or because they list tons of services on their website. +
@@ -49,7 +49,7 @@ You risk choosing a partner that will go fast but make mistakes, or one that wil
 Do not risk quality and reputation for a good price.
 Ask about change orders.
 Many companies will underbid a project and later add on new charges throughout the project.
-It results a dramatic increase to the overall cost of development. +
+It results a dramatic increase in the overall cost of development. +
 +
 While it is true that aspects of your project will change during the development process, experienced software development companies should help you understand how they will handle changes while protecting both your budget and your timeline. +
 +
@@ -70,7 +70,7 @@ If you’re thinking of offshoring the work, be sure you consider how you will h
 Many companies offer low-cost solutions that include working with offshore teams to handle services like the help desk, product support, and simple development.
 Start Searching::
 Do not forget to keep track of your search as you go.
-Create a document that records potential companies, their attributes, who you’ve talked to, what you’ve learned, and any decisions you’ve made.
+Create a document that records potential companies, their attributes, who you are talked to, what you’ve learned, and any decisions you’ve made.
 Ask Tough Questions::
 Learn what challenges they have faced with previous clients and what they did to overcome them.
 If there is something you are particularly worried about, ask about their experience dealing with your prospective challenges to helping their other clients with similar solutions in the past<<detecting-agile-bullshit>>.

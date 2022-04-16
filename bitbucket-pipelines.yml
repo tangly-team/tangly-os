@@ -6,8 +6,8 @@ pipelines:
   - step:
       name: build Java components
       caches:
-      - gradle
-      - gradlewrapper
+          - gradle
+          - gradlewrapper
       script:
         - ./gradlew build
         - ./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode
@@ -16,6 +16,8 @@ pipelines:
           - net.tangly.erp.ui/build/install/**
   - step:
         name: build docker image
+        caches:
+            - docker
         script:
             - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
             - docker build -t tanglyllc/tangly-erp:latest net.tangly.erp.ui/

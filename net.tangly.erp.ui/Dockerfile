@@ -4,14 +4,19 @@
 # build applicaton docker gradle build installDist -Pvaadin.productionMode
 # docker build --no-cache -t tangly-erp:latest .
 # To run the image use:
-# docker run --rm -ti -p 8080:8080 --mount type=bind,source=/Users/Shared/tangly,target=/Users/Shared/tangly tangly-erp:latest
-
-
+# docker run --rm -ti -p 8080:8080 --mount type=bind,source=/var/tangly-erp,target=/var/tangly-erp tangly-erp:latest
+# chmod o+rwx
 FROM openjdk:18
 RUN microdnf install findutils
+
+RUN mkdir -p /var/tangly-erp
+RUN mkdir -p /var/tangly-erp/import
+RUN mkdir -p /var/tangly-erp/db
+RUN mkdir -p /var/tangly-erp/reports
+
 COPY build/install/net.tangly.erp.ui/ /app/
 WORKDIR /app/bin
 RUN useradd -m erp
 USER erp
 EXPOSE 8080
-ENTRYPOINT ./net.tangly.erp.ui
+ENTRYPOINT ./net.tangly.erp.ui -p $PORT -m true

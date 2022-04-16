@@ -14,6 +14,13 @@ package net.tangly.erp.ui;
 
 import com.vaadin.flow.server.VaadinServlet;
 import com.vaadin.flow.server.startup.ServletContextListeners;
+import net.tangly.erp.Erp;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.server.Server;
@@ -24,16 +31,31 @@ import org.jetbrains.annotations.NotNull;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+/**
+ * Entry point to start the application as regular Java SE application with an embedded Jetty server.
+ * The application parameters are:
+ * <dl>
+ *     <dt>port</dt>
+ *     <dd>The parameter defines the listening port of the Jetty embedded server.</dd>
+ *     <dt>mode</dt>
+ *     <dd>The parameter defines the mode of the application.
+ *     The application is either using an in-memory data or has a persistent storage where import data can be provided and updated stored in the database.</dd>
+ * </dl>
+ */
 public class EmbeddedJetty {
     private static final Logger logger = LogManager.getLogger();
     private static Server server;
+    private static int port;
+    private static boolean isInMemory;
 
     public static void main(@NotNull String[] args) throws Exception {
         final String contextRoot = "/erp";
+
         if (isProductionMode()) {
             logger.info("Production mode detected, enforcing");
             System.setProperty("vaadin.productionMode", "true");
         }
+        parse(args);
         final WebAppContext context = new WebAppContext();
         context.setBaseResource(findWebRoot());
         context.setContextPath(contextRoot);
@@ -43,11 +65,12 @@ public class EmbeddedJetty {
         context.getServletContext().setExtendedListenerTypes(true);
         context.addEventListener(new ServletContextListeners());
 
-        int port = 8080;
-        if (args.length >= 1) {
-            port = Integer.parseInt(args[0]);
-        }
         server = new Server(port);
+        if (isInMemory) {
+            Erp.inMemoryErp();
+        } else {
+            Erp.propertiesConfiguredErp();
+        }
         server.setHandler(context);
         server.start();
     }
@@ -81,5 +104,23 @@ public class EmbeddedJetty {
         URL webRoot = new URL(url.substring(0, url.length() - 5));
         logger.atDebug().log("WebRoot is {}", webRoot);
         return Resource.newResource(webRoot);
+    }
+
+    private static Options options() {
+        var options = new Options();
+        options.addOption(Option.builder("p").longOpt("port").type(Integer.TYPE).argName("port").hasArg().desc("listening port of the embedded server").build());
+        options.addOption(Option.builder("m").longOpt("mode").argName("mode").hasArg().desc("mode of the application").build());
+        return options;
+    }
+
+    private static void parse(String[] args) {
+        CommandLineParser parser = new DefaultParser();
+        try {
+            CommandLine line = parser.parse(options(), args);
+            port = (line.hasOption("p")) ? Integer.parseInt(line.getOptionValue("port")) : 8080;
+            isInMemory = (line.hasOption("m")) ? Boolean.parseBoolean(line.getOptionValue("mode")) : false;
+        } catch (ParseException e) {
+            logger.atError().log("Parsing failed.  Reason: {}", e.getMessage());
+        }
     }
 }
