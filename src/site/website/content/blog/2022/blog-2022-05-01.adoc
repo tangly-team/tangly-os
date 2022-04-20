@@ -54,7 +54,7 @@ Therefore, SI (System-International) is usually used so that the standard system
 According to the JSR-385 API specification, 7 quantities should be acceptable if they have the same dimensions so that they can be compared with one another in a meaningful way.
 Unit::
 A unit, or unit of measure, is a quantity that is assumed to be the standard with a unique value that can be used to express.
-Units of measurement of the same type can be used as a comparison value.
+Same type units of measurement can be used as a comparison value.
 For example, one foot corresponds to a quantity of 0.3048 meters.
 Regardless of how this came about, a unit of measure can be expressed as the quantity of other units of measure of the same kind.
 Base-Unit:::
@@ -78,12 +78,13 @@ On the other hand, the use of others, such as a dozen, is almost unknown there.
 
 === Measurement
 
-In May 2019 all units are defined by constants of nature.
+image::2022-05-01-si-units.png[width=420,height=360,role=left]
+In May 2019, all units are defined by constants of nature in the world-wide https://en.wikipedia.org/wiki/International_System_of_Units[international system of units].
 
 === How to Use the API
 
 JSR-385 defines the API 2.x.
-Historically JSR-363 defined the API 1.0 and is now superseded by the newer definitions.
+Historically, JSR-363 defined the API 1.0 and is now superseded by the newer definitions.
 
 [source,groovy]
 ----
@@ -138,7 +139,7 @@ class WaterTankTest {
 
 The abstractions allow compilation time detection of errors.
 
-[source, java]
+[source,java]
 ----
     waterCapacity.to(MetricPrefix.MILLI(KILOGRAM));         // compilation error
 
@@ -150,7 +151,7 @@ The abstractions allow compilation time detection of errors.
 
 - Keep your unit definitions in a single place.
 - Encapsulate your own _Quantities_ by delegation.
-- Create converters when storing units into a JPA based persistent store.
+- Create converters when storing units into a JPA-based persistent store.
 - In any case, if a unit does not exist in the system of units, you can create new units with new symbols:
 -- _AlternateUnit_ is a new unit with the same dimension but different symbol and nature.
 -- _ProductUnit_ is a new unit created as the product of rational powers of other units.

@@ -1,5 +1,5 @@
 /*
- * Copyright 2021-2021 Marcel Baumann
+ * Copyright 2021-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -44,11 +44,11 @@ public class MarkdownField extends CustomField<String> {
         input.setWidth("100%");
         writeView.setVisible(false);
         previewView.setVisible(true);
-        tabs.addThemeVariants(TabsVariant.LUMO_SMALL);
+        tabs.addThemeVariants(TabsVariant.MATERIAL_FIXED);
         tabs.setSelectedTab(previewTab);
         add(tabs, writeView, previewView);
         tabs.addSelectedChangeListener(event -> {
-            if (tabs.getSelectedTab().getLabel().equals("Preview")) {
+            if (tabs.getSelectedTab().getLabel().equals("Pre view")) {
                 activatePreview();
             } else {
                 writeView.setVisible(true);

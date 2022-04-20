@@ -55,11 +55,11 @@ The gradle script compiles, packages, and runs the application with an embedded 
 You can run the generated application locally.
 
 ```shell
-  gradle build installDist -Pvaadin.productionMode <1>
+  gradle build installDist -Pvaadin.productionMode // <1>
   net.tangly.erp.ui/build/install/net.tangly.erp.ui/bin/net.tangly.erp.ui // <2>
 ```
 <1> The production mode parameter is mandatory.
-Otherwise, the distribution frontend is not build and the application cannot run without JavaScript build tools.
+Otherwise, the distribution frontend is not built and the application cannot run without JavaScript build tools.
 
 <2> Head to http://localhost:8080/erp/. The default port is 8080 and application starts with persistent storage.
 
@@ -78,7 +78,7 @@ We currently push to [Docker Hub](https://hub.docker.com/).
 To run the built image use the following commands.
 
 ```shell
-  docker run --rm -ti -p 8080:8080 -e PORT=8080  --mount type=bind,source=/var/tangly-erp,target=/var/tangly-erp tangly-erp:latest
+  docker run --rm -ti -p 8080:8080 -e PORT=8080  --mount type=bind,source=/var/tangly-erp,target=/var/tangly-erp tanglyllc/tangly-erp:latest
 ```
 
 The user under which the erp application shall not have root privileges.
@@ -90,16 +90,42 @@ This approach is mandatory if the image is deployed in [Heroku](https://www.hero
 
 #### Heroku Cloud
 
-The erp application can be access over [tangly-erp](https://tangly-erp.herokuapp.com/).
+An application must once be created to host the docker image.
 
 ```shell
-  docker login --username=_ --password=$(heroku auth:token) registry.heroku.com // <1>
-  docker tag tanglyllc/tangly-erp:latest registry.heroku.com/tangly-erp/web // <3>
-  docker push registry.heroku.com/<app>/<process-type> // <2>
+   heroku create tangly-erp --region eu
 ```
-<1> login in the heroy docker image registry using docker CLI
-<2> tag teh image a
+
+The erp application can be access over [tangly-erp](https://tangly-erp.herokuapp.com/erp/).
+The git repository is [git](https://git.heroku.com/tangly-erp.git).
+Update the heroku remote in git to point to this heroku git repository.
+
+The following instructions build the docker image locally and publish it onto the heroku application using heroku commands.
+
+```shell
+  heroku login
+  heroku container:login // <1>
+  cd net.tangly.erp.ui
+  heroku container:push web // <2>
+  heroku container:release web // <3>
+```
+<1> login in the heroku docker image registry using docker CLI
+<2> build the docker image locally and push it to heroku
+<3> Release the image
+
+The following instructions the docker image and publish using docker commands.
+```shell
+  heroku login
+  heroku container:login // <1>
+  docker build -t tanglyllc/tangly-erp:latest net.tangly.erp.ui/
+  docker tag tanglyllc/tangly-erp:latest registry.heroku.com/tangly-erp/web // <2>
+  docker push registry.heroku.com/tangly-erp/web // <3>
+  heroku container:release web
+```
+<1> login in the heroku docker image registry using docker CLI
+<2> tag the docker image
 <3> push an existing image to the heroku registry
+
 
 ## Contribution
 

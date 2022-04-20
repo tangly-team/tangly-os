@@ -1,0 +1,75 @@
+---
+title: "Are Certifications Useful?"
+linkTitle: "Are Certifications Useful?"
+date: 2023-10-01
+tags: ["agile", "series-students"]
+---
+
+== Are Certifications Useful?
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2023-08-01-head.jpg[width=420,height=360,role=left]
+
+There are several benefits to getting an IT certification—but several costs too.
+Certifications can give you the chance to learn needed skills, and be a quick way to show employers you have those skills.
+On the other hand, certifications can require studying or coursework, and cost up to several hundred dollars to take.
+So how do you know that the benefits will outweigh the costs for you?
+
+Certification or no certification, in the end what matters most is your actual ability to do the job.
+Here are a few things to consider as you decide whether to get an IT certification.
+
+=== Java Certifications
+
+If you are a young and ambitious Java developer, ypu must acquire the Oracle certified Java developer certification.
+I do not think you will be a better programmer after being certitifed.
+The certification program will push you to learn the details of the programming language ant the details of the standard libraries.
+This knowledge is the difference between a professional engineer and an amateur one.
+
+The question is if you wan to update your certification each time a new long-term solution is delivered.
+Over the years, I acquired the certification for Java 2, 7,8, and 11 releases.
+The exam objectives certainly forced me to learn the new features of the language and libraries.
+I also discovered some arcane idioms I never used in productive code.
+
+I think a young developer should be certified for her main programming language and technology stack she is using daily.
+I also acquired the https://vaadin.com/learn?version=v14[Vaadin certification] because I regularly developed full-stack applicaitons with Java and https://vaadin.com/[Vaadin].
+
+=== Agile Certifications
+
+Agile approaches and Scrum framework are the regular approach to successfully developer software and digital products.
+I expect a professional software developer to have a formal training how to apply correctly the Scrum approach.
+
+The two biggest Scrum associations https://www.scrumalliance.org/[Scrum Alliance] and https://www.scrum.org/[Scrum org] provide similar certification paths for Scrum.
+For each role you can progress from beginner, over advanced and finally professional certification level.
+You should at least pursue the beginner and advanced level to reflect your professionalism.
+
+I often suggest to pursue the certifications of https://www.scrum.org/[Scrum org] because you do need to renew them.
+https://www.scrumalliance.org/[Scrum Alliance] requests you to renew your certification every two years and provide proof of continuous training.
+This approach is similiar to PMI.
+
+You can find more information in these articles about Scrum master <<scrum-master-formation>>, product owner <<[product-owner-certificaion>> and developer <<scrum-developer-formation>>
+certification paths.
+
+I strongly advocate to avoid {ref-safe} trainings because this approach is flawed.
+I recognize that sadly {ref-safe} is very popular in big companies.
+
+If you are interested in scaling agile, please consider first a formation and certification in {ref-less}.
+I strongly recommend to first master Scrum and lean approaches before tackling scaling approaches in software product development.
+
+
+PMI-ACP
+
+=== Software Architecture Certifications
+
+TOGAG
+
+[bibliography]
+=== References
+
+- [[[scrum-master-certification, 1] link:../../2021/scrum-master-formation/[Scrum Master Certification]
+- [[[product-owner-certificaion, 2]] link: ../../2021/product-owner-formation/[Product Owner Certification]]
+- [[[developer-certificaion, 3] link: ../../2021/scrum-developer-formation/[Scrum Developer Certification]
+- [[[pmi-acp-cetification, 4]] link:../../2016/pmi-acp-certification/[PMI ACP Certification]
+

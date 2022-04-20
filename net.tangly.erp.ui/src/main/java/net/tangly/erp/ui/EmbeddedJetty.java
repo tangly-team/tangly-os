@@ -55,7 +55,9 @@ public class EmbeddedJetty {
             logger.info("Production mode detected, enforcing");
             System.setProperty("vaadin.productionMode", "true");
         }
+        logger.info("command line arguments are {}", args);
         parse(args);
+        logger.info("port is {} and inMemoryMode is {}", port, isInMemory);
         final WebAppContext context = new WebAppContext();
         context.setBaseResource(findWebRoot());
         context.setContextPath(contextRoot);
@@ -117,8 +119,8 @@ public class EmbeddedJetty {
         CommandLineParser parser = new DefaultParser();
         try {
             CommandLine line = parser.parse(options(), args);
-            port = (line.hasOption("p")) ? Integer.parseInt(line.getOptionValue("port")) : 8080;
-            isInMemory = (line.hasOption("m")) ? Boolean.parseBoolean(line.getOptionValue("mode")) : false;
+            port = (line.hasOption("p")) ? Integer.parseInt(line.getOptionValue("p")) : 8080;
+            isInMemory = (line.hasOption("m")) ? Boolean.parseBoolean(line.getOptionValue("m")) : false;
         } catch (ParseException e) {
             logger.atError().log("Parsing failed.  Reason: {}", e.getMessage());
         }

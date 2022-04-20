@@ -27,7 +27,8 @@ application {
     applicationDefaultJvmArgs = ['--enable-preview',
                                  '--add-exports=java.base/jdk.internal.misc=ALL_UNNAMED',
                                  '--add-opens=java.base/jdk.internal.misc=ALL-UNNAMED',
-                                 '-XX:+ShowCodeDetailsInExceptionMessages']
+                                 '-XX:+ShowCodeDetailsInExceptionMessages',
+                                 '-Xmx256m']
     mainClassName = "net.tangly.erp.ui.EmbeddedJetty"
 }
 

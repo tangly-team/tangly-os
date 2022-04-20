@@ -1,7 +1,7 @@
 ---
 title: "Select An Agile Software Development Partner"
 linkTitle: "Select A Partner"
-date: 2023-01-10
+date: 2022-04-10
 tags: ["agile"]
 ---
 
@@ -13,9 +13,10 @@ tags: ["agile"]
 
 image::2023-01-01-head.png[width=420,height=360,role=left]
 
-It is not unusual for businesses to turn to third-party companies when they want to help accomplish their goals without increasing internal overhead.
+It is not unusual for businesses to turn to third-party companies when they want help to accomplish their goals without increasing internal overhead.
 
-This type of outsourcing is especially common for projects that require tremendous amounts of effort or a very specific skill set.
+This type of outsourcing is especially common for projects that require tremendous amounts of effort or specific skill sets.
+
 Time constraints are often an additional factor.
 
 Partnering up with another business to help meet your needs is a viable solution.
@@ -25,14 +26,14 @@ A professional and planned approach greatly improves the odds of success for the
 
 Identify Decision Criteria::
 Decide on your internal team that will help with making and supporting the decision.
-Put together a _must-have_ checklist for the capabilities required from a custom software solution company. +
+Put together a _must-have_ checklist for the capabilities required from a software solution company. +
 +
 Research different approaches and methodologies to discuss with your potential business partner.
 For instance, will you use Agile and should your partner need to practice it as well?
 Should you emphasize corporate governance or technology agility? +
 +
 Think about the services your business will need in the next few years.
-Will you require an entire development team, including help with product support?
+Will you require an entire development team, including help with product support? +
 Consider the types of roles required to build your solution and note those you can fulfill with internal staff.
 Which positions will you need to fill with experts or dedicated people provided by your new partner?
 Evaluate Candidates::
@@ -53,11 +54,11 @@ It results a dramatic increase in the overall cost of development. +
 +
 While it is true that aspects of your project will change during the development process, experienced software development companies should help you understand how they will handle changes while protecting both your budget and your timeline. +
 +
-Discuss the thorny aspect of scale up and down your external development team.
+Discuss the thorny aspect of scale up and down your external development team. +
 What are the consequences for you and your partner?
 
 Consider the Location::
-Where will you want your external development partner to be? <<agile-near-shore>> +
+Where will you want your external development partner to be <<agile-near-shore>>? +
 +
 If it is important that they can integrate with your team and work onsite frequently, you might want to only look at local software companies.
 Evaluate travel time and not the distance to your partner offices. +
@@ -103,8 +104,8 @@ Here our checklist we use to discuss a potential partnership:
 
 Hosting and Operations::
 * How and where are the servers hosted?
-Self-hosted or external provider - has an impact on applicable legal context
-* Which are the locations of server instances?
+Self-hosted or external providers have an impact on the applicable legal context.
+* Where are the server instances physically located?
 * Backup and restore policy including location of backup and how they are protected
 * DevOps aspects: monitoring, alarming, logging, audit logs, security policy.
 Is the deployment on the various staging areas automated?
@@ -119,7 +120,7 @@ Are they collocated, in the same area, in the same timezone, distributed over mu
 * Which training and certification do the senior developers and architects have to perform their work?
 * Which languages are the team members proficient in?
 * Which approaches are used for source code management?
-Where are the source artifacts stored?
+Where are the source artifacts stored? Can our collaborators have read access to all artifacts under source code management?
 Governance and Methods::
 * Which approaches are used for insuring the quality of the written source code?
 * How is technical documentation such as installation scripts, design decisions, component documents written and managed?
@@ -130,7 +131,7 @@ Governance and Methods::
 * How do you upgrade an application to a newer version of the technology stack or newer libraries?
 * Which approaches do you use to continuously improve?
 Build Partnership::
-* How would like to initiate partnership between your company and ours.
+* How would you like to initiate the partnership between your company and ours?
 
 === Lessons Learnt
 

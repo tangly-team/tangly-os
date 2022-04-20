@@ -13,7 +13,7 @@ tags: ["architecture", "java"]
 
 image::2022-06-01-head.jpg[width=420,height=360,role=left]
 https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Development] is now the preferred software architecture approach for designing new products.
-The method matches nicely with the concepts of micro-services.
+The method matches nicely with the concepts of microservices.
 Literature describes the approach and key concepts defining the development method.
 
 The theory and examples are quite sparse how to structure your code.
@@ -36,14 +36,14 @@ ____
 Domain driven design _DDD_ has four layers in the architecture:
 
 Interface::
-This layer is in charge of the interaction with user, whether software presents information or receives information from user.
+This layer is in charge of the interaction with the user, whether software presents information or receives information from the user.
 Application::
 This is a thin layer between interface and domain, it could call domain services to serve the application purposes.
 Domain::
 The heart of the software, this layer holds domain logic and business knowledge.
 Infrastructure::
 A supporting layer for the other layers.
-This layer contains supporting libraries or external services like database or UI supporting library.
+This layer contains supporting libraries or external services like a database or UI supporting library.
 
 === Package Structure
 
@@ -94,7 +94,7 @@ These classes shall be defined in a separate Java module and imported with regul
 
 We use the https://www.archunit.org/[ArchUnit] tool to insure the expected structure is provided for each bounded domain.
 
-The user interface for a bounded domain is stored in separate package and often in its own Java module.
+The user interface for a bounded domain is stored in a separate package and often in its own Java module.
 The bounded domain implementation shall not constrain the technologies used to provide a user interface.
 Different approaches for user interface realization are available and no clear winner can currently be identified.
 
@@ -163,7 +163,7 @@ The advantages of the architecture are
 
 * The whole company talking the same ubiquitous language, reduced risk of misunderstandings.
 Everyone needs to be aligned, both in vocabulary and ownership of the components.
-The engineers have a common understanding and coding guidelines to realize the layers inside a bounded domain.
+The engineers have common understanding and coding guidelines to realize the layers inside a bounded domain.
 * You have a segregated architecture defining a modular monolith application.
 * Smaller and well-defined components are easier to maintain.
 Your services are independent and can more easily be refactored.
@@ -175,7 +175,7 @@ Teams can develop simulaneoulsy and independantly bounded domain features.
 There are five main types of relationships between Bounded Contexts:
 
 Partnership::
-a relationship between two contexts that cooperate to align the two teams with dependent goals
+a relationship between two contexts that cooperates to align the two teams with dependent goals
 Shared Kernel::
 a kind of relationship when common parts of several contexts are extracted to another context/module to reduce code duplication
 Customer-supplier::
@@ -191,7 +191,7 @@ The protection layer acts as an adapter to translate data from the upstream and 
 
 Great technologies, programming languages and tools are used when building software appliations.
 That is good and right.
-But unfortunately it is often lost that the decisive factor for the success of a project is not the technology, but the solution.
+But unfortunately, it is often lost that the decisive factor for the success of a project is not the technology, but the solution.
 In order to be able to understand the subject matter or domain, we need a common language with the domain experts and users.
 If we do not map the technical model in the software and its architecture, it will not help our users in their work.
 As a computer scientist, it is easy to fall into the trap of focusing on technology instead of specialist knowledge

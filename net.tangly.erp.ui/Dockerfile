@@ -2,9 +2,9 @@
 # See https://github.com/mvysny/vaadin14-embedded-jetty-gradle/README.md for more details.
 # To build the image use:
 # build applicaton docker gradle build installDist -Pvaadin.productionMode
-# docker build --no-cache -t tangly-erp:latest .
+# docker tanglyllc/tangly-erp:latest .
 # To run the image use:
-# docker run --rm -ti -p 8080:8080 --mount type=bind,source=/var/tangly-erp,target=/var/tangly-erp tangly-erp:latest
+# docker run --rm -ti -p 8080:8080 --env PORT=8080 --mount type=bind,source=/var/tangly-erp,target=/var/tangly-erp tanglyllc/tangly-erp:latest
 # chmod o+rwx
 FROM openjdk:18
 RUN microdnf install findutils
@@ -18,5 +18,5 @@ COPY build/install/net.tangly.erp.ui/ /app/
 WORKDIR /app/bin
 RUN useradd -m erp
 USER erp
-EXPOSE 8080
-ENTRYPOINT ./net.tangly.erp.ui -p $PORT -m true
+EXPOSE $PORT
+ENTRYPOINT ["./net.tangly.erp.ui",  "-p $PORT -m true"]

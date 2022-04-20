@@ -3,18 +3,18 @@ clone:
   depth: full
 pipelines:
   default:
-  - step:
-      name: build Java components
-      caches:
+    - step:
+        name: build Java components
+        caches:
           - gradle
           - gradlewrapper
-      script:
-        - ./gradlew build
-        - ./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode
-      artifacts:
-          - net.tangly.erp.ui/build/distributions/**
-          - net.tangly.erp.ui/build/install/**
-  - step:
+        script:
+            - ./gradlew build
+            - ./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode
+        artifacts:
+            - net.tangly.erp.ui/build/distributions/**
+            - net.tangly.erp.ui/build/install/**
+    - step:
         name: build docker image
         caches:
             - docker
@@ -24,6 +24,15 @@ pipelines:
             - docker push tanglyllc/tangly-erp:latest
         services:
             - docker
+  custom:
+      heroku-docker-deployment:
+        - step:
+            script:
+                - echo "deployment of docker image on heroku"
+      heroku-java-app-deployment:
+        - step:
+            script:
+                - echo "deployment of java standalone application on heroku"
 definitions:
   caches:
     gradlewrapper: ~/.gradle/wrapper
