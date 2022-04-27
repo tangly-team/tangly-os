@@ -18,7 +18,7 @@ The rework is caused by choosing an easy limited solution now instead of using a
 
 Another source of technical debt is natural https://en.wikipedia.org/wiki/Obsolescence[technical obsolescence].
 
-As with monetary debt, if technical debt is not repaid, it will accumulate _interest_, making it harder and harder to implement changes.
+As with monetary debt, if technical debt is not repaid, it accumulates _interest_, making it harder and harder to implement changes.
 Unaddressed technical debt increases software entropy.
 
 Spiraling out of control entropy is the death of countless software solutions over the last century.

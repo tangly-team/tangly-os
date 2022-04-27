@@ -14,6 +14,7 @@ plugins {
     id 'java-app-conventions'
     alias(libs.plugins.vaadin)
     id 'jacoco-report-aggregation'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 project.ext.groupId = 'net.tangly.erp'

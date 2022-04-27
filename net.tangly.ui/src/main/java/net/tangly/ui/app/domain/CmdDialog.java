@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,6 +12,7 @@
 
 package net.tangly.ui.app.domain;
 
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -34,5 +35,5 @@ public abstract class CmdDialog extends Dialog implements Cmd {
         open();
     }
 
-    protected abstract FormLayout form();
+    protected abstract Component form();
 }

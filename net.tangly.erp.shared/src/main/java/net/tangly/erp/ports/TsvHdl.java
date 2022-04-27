@@ -14,6 +14,8 @@ package net.tangly.erp.ports;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
@@ -95,8 +97,8 @@ public final class TsvHdl {
         return fields;
     }
 
-    public static <T> void importEntities(@NotNull Path path, @NotNull TsvEntity<T> tsvEntity, @NotNull Provider<T> provider) {
-        try (Reader in = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
+    public static <T> void importEntities(@NotNull Reader in, String source, @NotNull TsvEntity<T> tsvEntity, @NotNull Provider<T> provider) {
+        try (in) {
             int counter = 0;
             for (CSVRecord csv : FORMAT.parse(in)) {
                 T object = tsvEntity.imports(csv);
@@ -105,26 +107,35 @@ public final class TsvHdl {
                         provider.update(object);
                         ++counter;
                         EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, tsvEntity.clazz().getSimpleName() + " imported",
-                            Map.of("filename", path, "object", object));
+                            Map.of("filename", source, "object", object));
                     } else {
                         EventData.log(EventData.IMPORT, MODULE, EventData.Status.WARNING, tsvEntity.clazz().getSimpleName() + " invalid entity",
-                            Map.of("filename", path, "object", object));
+                            Map.of("filename", source, "object", object));
 
                     }
                 } else {
                     provider.update(object);
                     ++counter;
                     EventData.log(EventData.IMPORT, MODULE, EventData.Status.INFO, tsvEntity.clazz().getSimpleName() + " imported",
-                        Map.of("filename", path, "object", object));
+                        Map.of("filename", source, "object", object));
                 }
             }
             EventData.log(EventData.IMPORT, MODULE, EventData.Status.INFO, tsvEntity.clazz().getSimpleName() + " imported objects",
-                Map.of("filename", path, "count", counter));
+                Map.of("filename", source, "count", counter));
         } catch (IOException e) {
-            EventData.log(EventData.IMPORT, MODULE, EventData.Status.FAILURE, "Entities not imported from TSV file", Map.of("filename", path), e);
+            EventData.log(EventData.IMPORT, MODULE, EventData.Status.FAILURE, "Entities not imported from TSV file", Map.of("filename", source), e);
             throw new UncheckedIOException(e);
         } catch (Exception e) {
-            EventData.log(EventData.IMPORT, MODULE, EventData.Status.FAILURE, "Entities not imported from TSV file", Map.of("filename", path), e);
+            EventData.log(EventData.IMPORT, MODULE, EventData.Status.FAILURE, "Entities not imported from TSV file", Map.of("filename", source), e);
+        }
+    }
+
+    public static <T> void importEntities(@NotNull Path path, @NotNull TsvEntity<T> tsvEntity, @NotNull Provider<T> provider) {
+        try (Reader reader = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
+            importEntities(reader, path.toString(), tsvEntity, provider);
+        } catch (IOException e) {
+            EventData.log(EventData.IMPORT, MODULE, EventData.Status.FAILURE, "Entities not imported from TSV file", Map.of("filename", path.toString()), e);
+            throw new UncheckedIOException(e);
         }
     }
 

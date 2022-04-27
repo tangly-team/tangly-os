@@ -4,7 +4,7 @@
 # build applicaton docker gradle build installDist -Pvaadin.productionMode
 # docker tanglyllc/tangly-erp:latest .
 # To run the image use:
-# docker run --rm -ti -p 8080:8080 --env PORT=8080 --mount type=bind,source=/var/tangly-erp,target=/var/tangly-erp tanglyllc/tangly-erp:latest
+# docker run --rm -ti -p 8080:8080 -e PORT=8080  -v /var/tangly-erp:/var/tangly-erp tanglyllc/tangly-erp:latest
 # chmod o+rwx
 FROM openjdk:18
 RUN microdnf install findutils

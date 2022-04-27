@@ -44,6 +44,7 @@ import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
+import java.io.Reader;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -86,10 +87,10 @@ public class CrmTsvHdl {
         this.exportedComments = new HashMap<>();
     }
 
-    public void importComments(@NotNull Path path) {
+    public void importComments(@NotNull Reader reader, String source) {
         Provider<Comment> comments = ProviderInMemory.of();
         importedComments.clear();
-        TsvHdl.importEntities(path, createTsvComment(), comments);
+        TsvHdl.importEntities(reader, source, createTsvComment(), comments);
         TsvHdl.addComments(realm.naturalEntities(), comments);
         TsvHdl.addComments(realm.legalEntities(), comments);
         TsvHdl.addComments(realm.employees(), comments);
@@ -110,64 +111,64 @@ public class CrmTsvHdl {
         TsvHdl.exportEntities(path, createTsvComment(), comments);
     }
 
-    public void importLeads(@NotNull Path path) {
-        TsvHdl.importEntities(path, createTsvLead(), realm.leads());
+    public void importLeads(@NotNull Reader reader, String source) {
+        TsvHdl.importEntities(reader, source, createTsvLead(), realm.leads());
     }
 
     public void exportLeads(@NotNull Path path) {
         TsvHdl.exportEntities(path, createTsvLead(), realm.leads());
     }
 
-    public void importNaturalEntities(@NotNull Path path) {
-        TsvHdl.importEntities(path, createTsvNaturalEntity(), realm.naturalEntities());
+    public void importNaturalEntities(@NotNull Reader reader, String source) {
+        TsvHdl.importEntities(reader, source, createTsvNaturalEntity(), realm.naturalEntities());
     }
 
     public void exportNaturalEntities(@NotNull Path path) {
         TsvHdl.exportEntities(path, createTsvNaturalEntity(), realm.naturalEntities());
     }
 
-    public void importLegalEntities(@NotNull Path path) {
-        TsvHdl.importEntities(path, createTsvLegalEntity(), realm.legalEntities());
+    public void importLegalEntities(@NotNull Reader reader, String source) {
+        TsvHdl.importEntities(reader, source, createTsvLegalEntity(), realm.legalEntities());
     }
 
     public void exportLegalEntities(@NotNull Path path) {
         TsvHdl.exportEntities(path, createTsvLegalEntity(), realm.legalEntities());
     }
 
-    public void importEmployees(@NotNull Path path) {
-        TsvHdl.importEntities(path, createTsvEmployee(), realm.employees());
+    public void importEmployees(@NotNull Reader reader, String source) {
+        TsvHdl.importEntities(reader, source, createTsvEmployee(), realm.employees());
     }
 
     public void exportEmployees(@NotNull Path path) {
         TsvHdl.exportEntities(path, createTsvEmployee(), realm.employees());
     }
 
-    public void importContracts(@NotNull Path path) {
-        TsvHdl.importEntities(path, createTsvContract(), realm.contracts());
+    public void importContracts(@NotNull Reader reader, String source) {
+        TsvHdl.importEntities(reader, source, createTsvContract(), realm.contracts());
     }
 
     public void exportContracts(@NotNull Path path) {
         TsvHdl.exportEntities(path, createTsvContract(), realm.contracts());
     }
 
-    public void importSubjects(@NotNull Path path) {
-        TsvHdl.importEntities(path, createTsvSubject(), realm.subjects());
+    public void importSubjects(@NotNull Reader reader, String source) {
+        TsvHdl.importEntities(reader, source, createTsvSubject(), realm.subjects());
     }
 
     public void exportSubjects(@NotNull Path path) {
         TsvHdl.exportEntities(path, createTsvSubject(), realm.subjects());
     }
 
-    public void importInteractions(@NotNull Path path) {
-        TsvHdl.importEntities(path, createTsvInteraction(), realm.interactions());
+    public void importInteractions(@NotNull Reader reader, String source) {
+        TsvHdl.importEntities(reader, source, createTsvInteraction(), realm.interactions());
     }
 
     public void exportInteractions(@NotNull Path path) {
         TsvHdl.exportEntities(path, createTsvInteraction(), realm.interactions());
     }
 
-    public void importActivities(@NotNull Path path) {
-        TsvHdl.importEntities(path, createTsvActivity(), realm.activities());
+    public void importActivities(@NotNull Reader reader, String source) {
+        TsvHdl.importEntities(reader, source, createTsvActivity(), realm.activities());
         realm.interactions().items().forEach(e -> addActivities(realm.interactions(), e, realm.activities()));
     }
 

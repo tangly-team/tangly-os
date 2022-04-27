@@ -1,7 +1,7 @@
 ---
 title: "Introducing DevOps Ideas"
 linkTitle: "Introducing DevOps Ideas"
-date: 2021-04-20
+date: 2022-04-21
 tags: ["agile"]
 ---
 
@@ -15,10 +15,10 @@ image::2022-04-04-head.png[width=420,height=360,role=left]
 
 Your organization heard of https://en.wikipedia.org/wiki/DevOps[DevOps], and your developers clamour you should adopt the approach.
 
-Every customer organization I talk with has some DevOps initiative.
+Each customer organization I talk with has some Dex`vOps initiative.
 Often because they read that DevOps puts customers and end-user satisfaction at the center.
 
-Does DevOps really improve the quality of your digital products and customer satisfaction?
+Does DevOps improve the quality of your digital products and customer satisfaction?
 
 Or is it only the next https://en.wikipedia.org/wiki/No_Silver_Bullet[silver bullet] fad used to increase the bonus of consultants and managers?
 

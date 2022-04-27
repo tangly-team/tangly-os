@@ -44,11 +44,11 @@ public class MarkdownField extends CustomField<String> {
         input.setWidth("100%");
         writeView.setVisible(false);
         previewView.setVisible(true);
-        tabs.addThemeVariants(TabsVariant.MATERIAL_FIXED);
+        tabs.addThemeVariants(TabsVariant.LUMO_SMALL);
         tabs.setSelectedTab(previewTab);
         add(tabs, writeView, previewView);
         tabs.addSelectedChangeListener(event -> {
-            if (tabs.getSelectedTab().getLabel().equals("Pre view")) {
+            if (tabs.getSelectedTab().getLabel().equals("Preview")) {
                 activatePreview();
             } else {
                 writeView.setVisible(true);

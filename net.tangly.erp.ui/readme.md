@@ -21,7 +21,7 @@ requires **Java 16 or higher**.
 
 ## Download and Documentation
 
-The library can be included in Maven as
+Include the library in your Maven configuration as:
 
 ```xml
 
@@ -32,7 +32,7 @@ The library can be included in Maven as
 </dependency>
 ```
 
-The library can be included in Gradle as
+Include the library in your Gradle configuration as:
 
 ```groovy
     implementation "net.tangly.erp:ui:0.2.7"
@@ -65,7 +65,7 @@ Otherwise, the distribution frontend is not built and the application cannot run
 
 ### Run in a Docker Image
 
-The prerequisite is that the application was build locally for production mode as described above. The first step is to build the Docker image with the provided configuration.
+The prerequisite is that the application was built locally for production mode as described above. The first step is to build the Docker image with the provided configuration.
 
 ```shell
   ./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode
@@ -78,7 +78,7 @@ We currently push to [Docker Hub](https://hub.docker.com/).
 To run the built image use the following commands.
 
 ```shell
-  docker run --rm -ti -p 8080:8080 -e PORT=8080  --mount type=bind,source=/var/tangly-erp,target=/var/tangly-erp tanglyllc/tangly-erp:latest
+  docker run --rm -ti -p 8080:8080 -e PORT=8080  -v /var/tangly-erp:/var/tangly-erp tanglyllc/tangly-erp:latest
 ```
 
 The user under which the erp application shall not have root privileges.
@@ -96,11 +96,11 @@ An application must once be created to host the docker image.
    heroku create tangly-erp --region eu
 ```
 
-The erp application can be access over [tangly-erp](https://tangly-erp.herokuapp.com/erp/).
+The erp application can be accessed over [tangly-erp](https://tangly-erp.herokuapp.com/erp/).
 The git repository is [git](https://git.heroku.com/tangly-erp.git).
 Update the heroku remote in git to point to this heroku git repository.
 
-The following instructions build the docker image locally and publish it onto the heroku application using heroku commands.
+The following instructions build the docker image locally and publish it into the heroku application using heroku commands.
 
 ```shell
   heroku login
@@ -113,7 +113,7 @@ The following instructions build the docker image locally and publish it onto th
 <2> build the docker image locally and push it to heroku
 <3> Release the image
 
-The following instructions the docker image and publish using docker commands.
+These instructions create the docker image and publish it using docker commands.
 ```shell
   heroku login
   heroku container:login // <1>
@@ -132,7 +132,7 @@ The following instructions the docker image and publish using docker commands.
 You are welcome to contribute to the product with pull requests on Bitbucket. You can download the source files from the
 [bitbucket git repository](https://bitbucket.org/tangly-team/tangly-os.git) and build the library with the provided gradle configuration file.
 
-If you find a bug or want to request a feature, please use the [issue tracker](https://bitbucket.org/tangly-team/tangly-os/issues).
+If you find a bug or request a new feature, please use the [issue tracker](https://bitbucket.org/tangly-team/tangly-os/issues).
 
 ## License
 

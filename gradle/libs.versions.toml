@@ -5,9 +5,9 @@ jetty-version = '10.0.9'
 jolt-version = '0.1.1'
 junit-version = '5.8.2'
 log4j2-version = '2.17.2'
-microstream-version = '06.01.00-MS-GA'
+microstream-version = '07.00.00-MS-GA'
 mustang-version = '2.5.0'
-vaadin-version = '23.0.6'
+vaadin-version = '23.0.7'
 assertj-version = '3.22.0'
 
 [plugins]
@@ -40,7 +40,7 @@ asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:1.6.2"
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
 commonmark = "org.commonmark:commonmark:0.18.2"
 eo-yaml = "com.amihaiemil.web:eo-yaml:5.2.1"
-flyway = "org.flywaydb:flyway-core:8.5.8"
+flyway = "org.flywaydb:flyway-core:8.5.9"
 guice = "com.google.inject:guice:5.1.0"
 hsqldb = "org.hsqldb:hsqldb:2.6.1"
 iban4j = "org.iban4j:iban4j:3.2.3-RELEASE"
@@ -75,13 +75,13 @@ mustang-validator = { module = "org.mustangproject:validator", version.ref = "mu
 
 neo4j = "org.neo4j:neo4j:4.3.7"
 
-qrbill = "net.codecrete.qrbill:qrbill-generator:3.0.2"
+qrbill = "net.codecrete.qrbill:qrbill-generator:3.0.3"
 
 microstream-storage = { module = "one.microstream:microstream-storage-embedded", version.ref = "microstream-version" }
 microstream-jdk8 = { module = "one.microstream:microstream-persistence-binary-jdk8", version.ref = "microstream-version" }
 microstream-jdk17 = { module = "one.microstream:microstream-persistence-binary-jdk17", version.ref = "microstream-version" }
 
-mockito = "org.mockito:mockito-junit-jupiter:4.5.0"
+mockito = "org.mockito:mockito-junit-jupiter:4.5.1"
 
 scribe = "com.github.scribejava:scribejava-apis:8.3.1"
 

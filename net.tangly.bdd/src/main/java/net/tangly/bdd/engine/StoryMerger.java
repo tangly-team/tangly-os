@@ -67,7 +67,7 @@ public class StoryMerger {
     /**
      * Writes the features to the provided file.
      *
-     * @param path path of the file where the features will be written to
+     * @param path path of the file where the features are archived
      */
     public void write(Path path) {
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
