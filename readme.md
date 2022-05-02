@@ -60,6 +60,17 @@ Ensure you have enough bandwidth to provide a smooth experience.
 
 All development activities are performed with probably the best Java IDE IntelliJ IDEA.
 
+## Hosted cntinuous integration, continuous deployment, and continuous delivery _CI/CD/CD_.
+
+These instructions are for project committers.
+The continuous deployment is a manual step to limit the usage of pipeline minutes and diminish associated costs.
+
+### BitBucket
+
+. Go to the [Commits](https://bitbucket.org/tangly-team/tangly-os/commits/)
+. Select the commit you want to deploy
+. On the displayed screen select the _Run pipeline_ operation. You are presented with a selection of deployment options.
+
 ## Awesome Sponsors and Developers
 
 Corporate sponsors are
