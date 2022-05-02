@@ -64,10 +64,12 @@ You can build and run the generated Java Vaadin application as fat jar locally.
 ```shell
   ./gradlew build installShadowDist -Pvaadin.productionMode // <3>
   net.tangly.erp.ui/build/install/net.tangly.erp.ui-shadow/bin/net.tangly.erp.ui // <2>
+  java -jar net.tangly.erp.ui/build/install/net.tangly.erp.ui-shadow/lib/net.tangly.erp.ui-all.jar // <3>
 ```
 <1> The production mode parameter is mandatory.
 Otherwise, the distribution frontend is not built, and the application cannot run without JavaScript build tools.
 <2> Head to http://localhost:8080/erp/. The default port is 8080, and the application starts with persistent storage.
+<3> Start the application with java command.
 
 The JVM options are
 
@@ -86,7 +88,7 @@ The prerequisite is that the application was built locally for production mode a
   docker push tanglyllc/tangly-erp:latest
 ```
 
-We currently push to [Docker Hub](https://hub.docker.com/).
+We currently push to [Docker Hub](https://hub.docker.com/) repository.
 
 To run the built image use the following commands.
 

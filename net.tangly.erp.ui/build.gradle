@@ -45,6 +45,8 @@ jar {
 }
 
 shadowJar {
+    // the merge provides the required configuration files for Jetty, the archive version is removed to have a stable generated jar filename.
+    mergeServiceFiles()
     transform(com.github.jengelman.gradle.plugins.shadow.transformers.Log4j2PluginsCacheFileTransformer)
     archiveVersion.set('')
 }
