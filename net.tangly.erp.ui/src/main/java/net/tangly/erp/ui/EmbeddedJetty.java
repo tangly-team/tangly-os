@@ -45,8 +45,8 @@ import java.net.URL;
 public class EmbeddedJetty {
     private static final Logger logger = LogManager.getLogger();
     private static Server server;
-    private static int port;
-    private static boolean isInMemory;
+    private static int port =8080;
+    private static boolean isInMemory = true;
 
     public static void main(@NotNull String[] args) throws Exception {
         final String contextRoot = "/erp";
@@ -120,8 +120,8 @@ public class EmbeddedJetty {
         try {
             CommandLine line = parser.parse(options(), args);
             port = (line.hasOption("p")) ? Integer.parseInt(line.getOptionValue("p")) : 8080;
-            isInMemory = (line.hasOption("m")) ? Boolean.parseBoolean(line.getOptionValue("m")) : false;
-        } catch (ParseException e) {
+            isInMemory = (line.hasOption("m")) ? Boolean.parseBoolean(line.getOptionValue("m")) : true;
+        } catch (NumberFormatException | ParseException e) {
             logger.atError().log("Parsing failed.  Reason: {}", e.getMessage());
         }
     }
