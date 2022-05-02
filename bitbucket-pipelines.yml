@@ -10,9 +10,7 @@ pipelines:
           - gradlewrapper
           - node
         script:
-            - apt-get update
-            - apt-get -y install nodejs
-            - apt-get -y install npm
+            - microdnf install nodejs npm
             - ./gradlew build
             - ./gradlew net.tangly.erp.ui:installDist net.tangly.erp.ui:installShadowDist -Pvaadin.productionMode
         artifacts:
