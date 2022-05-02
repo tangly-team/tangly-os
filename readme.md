@@ -71,6 +71,8 @@ The continuous deployment is a manual step to limit the usage of pipeline minute
 . Select the commit you want to deploy
 . On the displayed screen select the _Run pipeline_ operation. You are presented with a selection of deployment options.
 
+The variable _BB_AUTH_STRING_ is defined through _REPOSITORY-OWNER-NAME_:_APP-PASSWORD_.
+
 ## Awesome Sponsors and Developers
 
 Corporate sponsors are
