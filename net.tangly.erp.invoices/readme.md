@@ -16,7 +16,7 @@ draft: false
 
 ## Purpose
 
-The **tangly erp invoices** bounded domain component provides regular business model abstractions for business applications written in Java. The component is using records and requires **Java 16 or higher**.
+The **tangly erp invoices** bounded domain component provides regular business model abstractions for business applications written in Java. The component is using records and requires **Java 17 or higher**.
 
 **Try it out**.
 

@@ -17,7 +17,7 @@ draft: false
 ## Purpose
 
 The **tangly erp agile** bounded domain component provides regular business model abstractions for business applications written in Java. The component is
-using records and requires **Java 16 or higher**.
+using records and requires **Java 17 or higher**.
 
 **Try it out**.
 

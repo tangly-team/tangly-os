@@ -15,7 +15,7 @@ date: 2019-05-01 weight: 10 draft: false
 ## Purpose
 
 The **tangly erp ui** bounded domain component provides regular business model abstractions for business applications written in Java. The component is using records and
-requires **Java 16 or higher**.
+requires **Java 17 or higher**.
 
 **Try it out**.
 
@@ -44,34 +44,40 @@ For any further questions and discussion, you can use the forum [tangly-OS-Compo
 
 ## Run as an Application
 
-### Run Locally
+### Run Locally with Gradle
 
-The gradle script compiles, packages, and runs the application with an embedded web server.
+The gradle script compiles, packages, and runs the application with an embedded web server. _Run from the project root_.
 
 ```shell
     gradle run
 ```
 
-You can build and run the generated Java Vaadin application locally.
+### Run locally as compiled application
+
+You can build and run the generated Java Vaadin application locally. _Run from the project root_.
 
 ```shell
   ./gradlew build installDist -Pvaadin.productionMode // <1>
   net.tangly.erp.ui/build/install/net.tangly.erp.ui/bin/net.tangly.erp.ui  // <2>
 ```
 
-You can build and run the generated Java Vaadin application as fat jar locally.
+### Run locally as fatjar application
+
+You can build and run the generated Java Vaadin application as fat jar locally. _Run from the project root_.
 
 ```shell
   ./gradlew build installShadowDist -Pvaadin.productionMode // <3>
   net.tangly.erp.ui/build/install/net.tangly.erp.ui-shadow/bin/net.tangly.erp.ui // <2>
-  java -jar net.tangly.erp.ui/build/install/net.tangly.erp.ui-shadow/lib/net.tangly.erp.ui-all.jar // <3>
+  java $JVM_OPTS -jar net.tangly.erp.ui/build/install/net.tangly.erp.ui-shadow/lib/net.tangly.erp.ui-all.jar // <3>
 ```
-<1> The production mode parameter is mandatory.
-Otherwise, the distribution frontend is not built, and the application cannot run without JavaScript build tools.
-<2> Head to http://localhost:8080/erp/. The default port is 8080, and the application starts with persistent storage.
-<3> Start the application with java command.
 
-The JVM options are
+- <1> The production mode parameter is mandatory.
+  Otherwise, the distribution frontend is not built, and the application cannot run without JavaScript build tools.
+- <2> Head to http://localhost:8080/erp/. The default port is 8080, and the application starts with in-memory storage.
+  The environment variables are set in the run script.
+- <3> Start the application with java command. You are responsible to provide the JVM options as define below.
+
+The JVM options to run the application are
 
 ```shell
 JVM_OPTS="--enable-preview --add-exports=java.base/jdk.internal.misc=ALL_UNNAMED \
@@ -81,6 +87,7 @@ JVM_OPTS="--enable-preview --add-exports=java.base/jdk.internal.misc=ALL_UNNAMED
 ### Run in a Docker Image
 
 The prerequisite is that the application was built locally for production mode as described above. The first step is to build the Docker image with the provided configuration.
+_Run from the project root_.
 
 ```shell
   ./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode
@@ -89,6 +96,7 @@ The prerequisite is that the application was built locally for production mode a
 ```
 
 We currently push to [Docker Hub](https://hub.docker.com/) repository.
+The image is accessible unde [tangly-erp Docker Image](https://hub.docker.com/r/tanglyllc/tangly-erp).
 
 To run the built image use the following commands.
 
@@ -124,11 +132,13 @@ These instructions build the docker image locally and publish it into the heroku
   heroku container:push web // <2>
   heroku container:release web // <3>
 ```
-<1> login in the heroku docker image registry using docker CLI
-<2> build the docker image locally and push it to heroku
-<3> Release the image
+
+- <1> login in the heroku docker image registry using docker CLI
+- <2> build the locally build docker image to heroku. You can also download an image from a repository and push it to Heroku.
+- <3> Release the image to deploy it on Heroku Cloud.
 
 These instructions create and publish the docker image using docker commands.
+
 ```shell
   heroku login
   heroku container:login // <1>
@@ -137,9 +147,10 @@ These instructions create and publish the docker image using docker commands.
   docker push registry.heroku.com/tangly-erp/web // <3>
   heroku container:release web
 ```
-<1> login in the heroku docker image registry using docker command line interface CLI
-<2> tag the docker image
-<3> push an existing image to the heroku registry
+
+- <1> login in the heroku docker image registry using docker command line interface CLI
+- <2> tag the docker image
+- <3> push an existing image to the heroku registry
 
 We deliberately decided not to provide the instructions to deploy a fat jar in docker.
 Fat jar applications are inherently bloaded executable files.
