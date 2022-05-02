@@ -17,7 +17,7 @@ pipelines:
     - step:
           name: deploy artifacts to Bitbucket downloads section
           script:
-              - export ERP_VER=$(awk -F "=" '/project.version/ {gsub("\"","");print $2}' net.tangly.erp.ui/build.gradle)
+              - export ERP_VER=$(awk -F "=" '/project.version/ {gsub("\"/ ","");print $2}' net.tangly.erp.ui/build.gradle)
               - >-
                 curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories//tangly-team/tangly-os/downloads"
                 --form files=@"net.tangly.erp.ui/build/distributions/net.tangly.erp.ui-${ERP_VER}/net.tangly.erp.ui-${ERP_VER}.zip"
