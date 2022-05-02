@@ -37,6 +37,18 @@ vaadin {
     optimizeBundle = false
 }
 
+jar {
+    // needed for the shadow jar otherwise get a runtime error in LogManager.getLogger() when starting the application
+    manifest {
+        attributes 'Multi-Release': 'true'
+    }
+}
+
+shadowJar {
+    transform(com.github.jengelman.gradle.plugins.shadow.transformers.Log4j2PluginsCacheFileTransformer)
+    archiveVersion.set('')
+}
+
 dependencies {
     implementation project(':net.tangly.commons')
     implementation project(':net.tangly.core')
@@ -59,4 +71,3 @@ dependencies {
 
     testImplementation(libs.vaadin.test)
 }
-

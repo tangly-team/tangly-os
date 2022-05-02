@@ -52,16 +52,29 @@ The gradle script compiles, packages, and runs the application with an embedded 
     gradle run
 ```
 
-You can run the generated application locally.
+You can build and run the generated Java Vaadin application locally.
 
 ```shell
-  gradle build installDist -Pvaadin.productionMode // <1>
-  net.tangly.erp.ui/build/install/net.tangly.erp.ui/bin/net.tangly.erp.ui // <2>
+  ./gradlew build installDist -Pvaadin.productionMode // <1>
+  net.tangly.erp.ui/build/install/net.tangly.erp.ui/bin/net.tangly.erp.ui  // <2>
+```
+
+You can build and run the generated Java Vaadin application as fat jar locally.
+
+```shell
+  ./gradlew build installShadowDist -Pvaadin.productionMode // <3>
+  net.tangly.erp.ui/build/install/net.tangly.erp.ui-shadow/bin/net.tangly.erp.ui // <2>
 ```
 <1> The production mode parameter is mandatory.
-Otherwise, the distribution frontend is not built and the application cannot run without JavaScript build tools.
+Otherwise, the distribution frontend is not built, and the application cannot run without JavaScript build tools.
+<2> Head to http://localhost:8080/erp/. The default port is 8080, and the application starts with persistent storage.
 
-<2> Head to http://localhost:8080/erp/. The default port is 8080 and application starts with persistent storage.
+The JVM options are
+
+```shell
+JVM_OPTS="--enable-preview --add-exports=java.base/jdk.internal.misc=ALL_UNNAMED \
+          --add-opens=java.base/jdk.internal.misc=ALL-UNNAMED -XX:+ShowCodeDetailsInExceptionMessages -Xmx256m"
+```
 
 ### Run in a Docker Image
 
@@ -78,7 +91,7 @@ We currently push to [Docker Hub](https://hub.docker.com/).
 To run the built image use the following commands.
 
 ```shell
-  docker run --rm -ti -p 8080:8080 -e PORT=8080  -v /var/tangly-erp:/var/tangly-erp tanglyllc/tangly-erp:latest
+  docker run --rm -ti -p 8080:8080 -e PORT=8080 -e m=true  -v /var/tangly-erp:/var/tangly-erp tanglyllc/tangly-erp:latest
 ```
 
 The user under which the erp application shall not have root privileges.
@@ -100,7 +113,7 @@ The erp application can be accessed over [tangly-erp](https://tangly-erp.herokua
 The git repository is [git](https://git.heroku.com/tangly-erp.git).
 Update the heroku remote in git to point to this heroku git repository.
 
-The following instructions build the docker image locally and publish it into the heroku application using heroku commands.
+These instructions build the docker image locally and publish it into the heroku application using heroku commands.
 
 ```shell
   heroku login
@@ -113,7 +126,7 @@ The following instructions build the docker image locally and publish it into th
 <2> build the docker image locally and push it to heroku
 <3> Release the image
 
-These instructions create the docker image and publish it using docker commands.
+These instructions create and publish the docker image using docker commands.
 ```shell
   heroku login
   heroku container:login // <1>
@@ -122,10 +135,19 @@ These instructions create the docker image and publish it using docker commands.
   docker push registry.heroku.com/tangly-erp/web // <3>
   heroku container:release web
 ```
-<1> login in the heroku docker image registry using docker CLI
+<1> login in the heroku docker image registry using docker command line interface CLI
 <2> tag the docker image
 <3> push an existing image to the heroku registry
 
+Tbese instructions deploys a fat jar java application using Heroku commands.
+
+heroku plugins:install java
+
+```shell
+  heroku login
+  heroku plugins:install heroku-cli-deploy
+- heroku deploy:jar net.tangly.erp.ui/build/install/xx.jar --app $HEROKU_JAVA_APP_NAME --jdk 18 --options
+```
 
 ## Contribution
 
@@ -149,4 +171,3 @@ Corporate sponsors are
 Individual developers are
 
 * [Marcel Baumann](https://linkedin.com/in/marcelbaumann)
-
