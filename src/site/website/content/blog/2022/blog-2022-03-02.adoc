@@ -61,7 +61,7 @@ Professional software development requires the creation and maintenance of a tec
 
 Define a schema per domain to isolate your domain model in the database.
 Use the Spring files _schema.sql_ to define a clean database model.
-Do not define any integrity rules between schema to insure modularity of your bounded domains down to the persistence layer.
+Do not define any integrity rules between schemas to insure modularity of your bounded domains down to the persistence layer.
 
 JPA supports schemas through a standard annotation.
 
@@ -77,7 +77,7 @@ public class Appointments {}
 
 <1> The name field defines the name of the table for all appointments, the schema field defines the schema containing the table.
 
-Views for read-only objects Business logic should be in services
+Views for read-only objects Business logic should be in services.
 
 === Fluent Getter and Setter
 
@@ -129,18 +129,18 @@ JSON objects are your data transfer objects JSON schema define the data model an
 * Use annotation to coerce Jackson to not request old fashion property getters and setters.
 * Configure Jackson to support records.
 
-Use plain old Java objects POJO to exchange information between layers inside a Java application.
+Use plain old Java objects _POJO_ to exchange information between layers inside a Java application.
 
-If you have to return complex aggregate objects for a persistence store, use views, persistent layer queries to populate read-only objects.
+If you have to return complex aggregated objects for a persistence store, use views, persistent layer queries to populate read-only objects.
 Java provides the _record_ construct for such situations.
-The need to define frequent queries to generate aggregate views is a smell that your design has flaws.
+The need to define frequent queries to generate aggregate views are a smell that your design has flaws.
 
 === Schedulers in Spring
 
-Easy to use
+Scheduled jobs are easy to defined and use with Spring.
 
 Please do not use homebrew solutions or cron jobs.
-The Spring scheduler component is sufficient for most of the scenarios.
+The Spring scheduler component is powerful enough for most of the scenarios.
 It builds up on the features of _ScheduledExecutorService_ provided in the standard Java API.
 
 [source,java]
@@ -166,25 +166,95 @@ public class AppointmentScheduler {
 === User Interface
 
 Use Vaadin for internal applications and B2B applications.
-Vaadin is a very good approach up to a few thousand active users.
+Vaadin is a good approach up to a few thousand active users.
 Vaadin is a Java solution based on the same technology stack used in Spring.
+Support libraries and tutorials are provided by Vaadin to integrateh the Spring framework.
 
 Use Thymeleaf and Bootstrap for B2C applications.
 These frameworks introduce new technologies.
 Developers shall be trained to avoid bad solutions.
 
 Use AngularJS or VueJS if you have a lot of budget.
-These frameworks introduced a new technology stack based on JavaScript or ideally on Typescript.
+These frameworks introduced a technology stack based on JavaScript or ideally on Typescript.
 New versions of the Typescript language and of the user interface framework are released every few months.
 Experience shows that a major rework of the source code and design decisions is necessary at least every eighteen months.
+
+=== Master Advanced JPA Concepts
+
+We had to find ways to support standard API classes in the Spring and JPA worlds.
+We had an enumeration set property we needed to persist.
+
+[source, java]
+----
+@Data
+@Entity
+@Table(name = "Ratings", schema = "Calendar")
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+public class Rating implements Serializable {
+    @Converter
+    public static class RatingTagsConverter extends EnumSetConverter<RatingTags> {
+        @Override
+        protected Class<RatingTags> clazz() {
+            return RatingTags.class;
+        }
+    }
+
+    @Column(name = "tags")
+    @Convert(converter = RatingTagsConverter.class)
+    private EnumSet<RatingTags> tags;
+}
+----
+
+The generic converter for the regular enumeration set Java class is:
+
+[source, java]
+----
+/**
+* Provides an enumeration set converter to enable storing and retrieving enumeration sets for the persistent store.
+*
+* @param <T> Enumeration type of the set
+*/
+@Converter
+public abstract class EnumSetConverter<T extends Enum<T>> implements AttributeConverter<EnumSet<T>, String> {
+private final static String SEPARATOR = ",";
+
+    @Override
+    public String convertToDatabaseColumn(EnumSet<T> set) {
+        return set.stream().map(Enum::name).collect(Collectors.joining(SEPARATOR));
+    }
+
+    @Override
+    public EnumSet<T> convertToEntityAttribute(String values) {
+        return Strings.isBlank(values) ?
+                EnumSet.noneOf(clazz()) :
+                Arrays.stream(values.split(SEPARATOR)).map(o -> Enum.valueOf(clazz(), o.trim()))
+                .collect(Collectors.toCollection(() -> EnumSet.noneOf(clazz())));
+    }
+
+    /**
+     * Return the class of the enumeration type stored in the enumeration set.
+     * The method is necessary due to type erasure in Java generics.
+     *
+     * @return class of the enumeration type
+     */
+    protected abstract Class<T> clazz();
+}
+----
+
+Different approaches found on Stackoverflow or Spring blogs did not work.
+I was stunned by the amount of code that I needed to write to persist a standard Java API collection class.
 
 === Tips and Tricks
 
 * Use the Spring mechanisms to streamline unit and integration tests.
-* Train all the developers in Spring.
+Please, write unit and integration tests.
+* Train all the developers in Spring framework
+footnote:[https://spring.io/[Spring organization] provides https://spring.io/training[certification path].].
 The organization shall encourage certification in key technologies used in their mission-critical applications.
+You need at least one professional Spring developer to smooth the learning curve.
 * Use the latest Java version.
-Motivate your experts with current environments.
+Motivate your experts and allow them to work with current environments and libraries.
 Professional developers do not like to work with obsolete tools.
-* Use IntelliJ IDEA as an integrated development environment.
+* Use https://www.jetbrains.com/idea/[IntelliJ IDEA] as an integrated development environment.
 The environment increases the productivity of your development teams.

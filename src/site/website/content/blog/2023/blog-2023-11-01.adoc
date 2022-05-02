@@ -1,0 +1,52 @@
+---
+title: "Java Certification"
+linkTitle: "Java Certification"
+date: 2023-11-01
+tags: ["agile", "java", "series-students"]
+---
+
+== Java Certification
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2023-11-01-head.png[width=420,height=360,role=left]
+
+You will find that Java expertise is in high demand for all kinds of projects, ranging from big enterprise software implementations down to little web projects.
+But will those employers want you to have related certifications?
+
+Even if you are not looking to move any time soon, getting certified boosts the value that you can bring to your organization.
+Certifications can be a great bargaining chip when it comes to negotiating a raise or a promotion.
+
+=== Preparing for the certification
+
+The preparation shall be tailored how you prefer to learn.
+You can attend a course or read a book.
+
+The https://www.amazon.com//dp/B09WJP11JL/[OCP Oracle Certified Professional Java SE 17 Developer Study Guide: Exam 1Z0-829] is a great and cost effective resource.
+You have access to all materials for less than forty dollars.
+
+=== Mockup Questions
+
+Try the various online mockup questions to get a grasp of the certification examination.
+The OCP book contains a full set of questions and answers.
+
+=== Taking the examination
+
+I strongly recommend attending an onsite examination.
+The setup is more convenient than the online version of the test.
+
+=== Lessons Learnt
+
+- Reat the whole book to prepare for the examination
+- Train with mockup questions.
+Do not focus on memorizing the questions.
+- Try to relax during the examination.
+Do not stay to long on one question.
+Each question has the same weight for passing the examination.
+
+[bibliography]
+=== References
+
+- [[[ocp-study-guide-java-17, 1]]] https://www.amazon.com//dp/B09WJP11JL/[OCP Oracle Certified Professional Java SE 17 Developer Study Guide: Exam 1Z0-829]

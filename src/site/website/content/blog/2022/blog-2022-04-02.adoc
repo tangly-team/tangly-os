@@ -16,13 +16,14 @@ tags: ["design", "java"]
 image::2022-04-02-head.jpg[width=420,height=360,role=left]
 
 SoDa _Software Development Agile_ is a homebrew project development method created at the https://www.hslu.ch[technical university of Lucerne].
-It is a mixture of Waterfall, RUP and Scrum approaches.
+It is a mixture of https://en.wikipedia.org/wiki/Waterfall_model[Waterfall], https://en.wikipedia.org/wiki/Rational_Unified_Process[RUP]
+and https://en.wikipedia.org/wiki/Scrum_(software_development)[Scrum] approaches.
 It uses a distorted Scrum for the concept and implementation phase<<detecting-agile-bullshit>>.
 
 The documentation was not updated the last ten years.
 The approach is clinically dead and should not be promoted for active software development efforts.
 
-A similar approach also exists with the official governmental Swiss project method {ref-hermes}.
+A similar approach exists with the official governmental Swiss project method {ref-hermes}.
 At least the documentation of https://www.hermes.admin.ch/en/starting-page.html[Hermes] is better than SoDa.
 
 Both approaches are quite similar.
@@ -67,7 +68,7 @@ He explains how various ideas in human history represent a _beginning of infinit
 
 This idea of infinite reach or scope is true of an agile approach to development and not true of a waterfall-based approach.
 
-An agile approach to software development actively encourages us to start work on solving problems in smaller pieces.
+An agile approach to software development encourages us to start work on solving problems in smaller pieces.
 It encourages us to begin work before we know the answer to everything.
 This approach allows us to make progress, maybe sometimes in suboptimal or even bad directions, but nevertheless, after each step, we learn something new.
 
@@ -114,8 +115,8 @@ Most product development initiatives are smaller.
 ALl members of a train shall work on the same products.
 Using the same technology stack is not a criteria to belong to the same train.
 * SAFe is not based or using Scrum.
-Their definition of Scrum master and product owner is quite different to the ones in {ref-scrumguide}.
-Their key roles of release train engineer _RTE_ and product management do not exist in Scrum.
+Their definition of Scrum master and product owner is different to the ones in {ref-scrumguide}.
+Their key roles of a release train engineer _RTE_ and product management do not exist in Scrum.
 They are more traditional project management roles.
 All synergy effects are lost.
 You must retrain your collaborators into SAFe if you go down this path.
@@ -142,6 +143,8 @@ We should not force them to use later obsolete methods such as V-Model, RUP, HER
 ====
 Be responsible.
 Train adequately your collaborators<<scrum-master-formation>>, <<product-owner-formation>>, <<scrum-developer-formation>> in the Scrum approach.
+
+Advocate the https://agilemanifesto.org/[agile manifesto] and the https://agilemanifesto.org/principles.html[twelve principles] behind the manifesto.
 ====
 
 The majority of hybrid methods I still encounter are bad rehearsal of the RUP development approach.

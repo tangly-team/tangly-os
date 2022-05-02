@@ -1,7 +1,7 @@
 ---
 title: "Measurements and Units"
 linkTitle: "Measurements"
-date: 2022-05-10
+date: 2022-05-01
 tags: ["java", "architecture", "students"]
 ---
 
@@ -13,9 +13,20 @@ tags: ["java", "architecture", "students"]
 
 image::2022-05-01-head.png[width=420,height=360,role=left]
 
-JSR-385 could have saved Mars Orbiter.
+JSR-385 could have saved Mars Climate Orbiter<<[mars-climate-orbiter>> in year 1999.
 
-Again and again accidents are due to calculation errors in computer applications.
+Accidents in computer applications happen again and again due to calculation errors.
+
+The International System of Units _SI_, commonly known as the metric system, is the international standard for measurement.
+
+The https://en.wikipedia.org/wiki/Metre_Convention[International Treaty of the Mete] was signed in Paris on May 20, 1875, by seventeen countries, including the United States.
+
+In May 2019, the system of units was updated.
+All units are defined by constants of nature.
+
+Still various countries use alternate conventions to complicate our lives.
+
+Here some well-documented and expensive catastrophes originating from wrong approaches to measurements.
 
 Patriot Missile::
 The cause here was an inaccurate calculation of the time that has passed since the start due to arithmetic errors in the computer system.
@@ -31,13 +42,18 @@ Numerous, sometimes fatal, incorrect dosages of medication.
 
 === Definitions
 
-The Java classes defined in the JSR-385 specification are not limited to science, physics, or math alone.
+image::2022-05-01-si-units.png[width=200,height=200,role=left]
+
+The Java classes defined in the https://unitsofmeasurement.github.io/[JSR-385] specification are not limited to science, physics or math alone.
+
 As a result, the terms quantity and unit of measure should be used in their general terminology, such as physical quantity or physical unit of measure, unless otherwise specified.
+
 This generalization holds true even if the Units of Measurement API was originally designed with scientific or physical quantities as the primary goal.
+
 The names and terms used in the specification are:
 
 Dimension::
-Dimension is one of the fundamental aspects of quantity, including length, mass, time, or combinations thereof.
+Dimension is one of the fundamental aspects of quantity, including length, mass, time or combinations thereof.
 The concept of measure expresses a characteristic without any concept of size.
 So we can talk about length without any implication.
 Quantity::
@@ -48,13 +64,13 @@ Mass, time, distance, heat, longitude or latitude are among the familiar example
 Alice can quantify the size of her shoes by picking them up.
 Alice can add the mass of her left shoe and the mass of her right shoe by placing them both in the bowl of a scale.
 Quantities can be measurable or dimensionless: the number of Alice's shoes is a dimensionless quantity.
-* Units of measure are required to represent measurable quantities in a computer, on paper, on a network, device, etc.
+* Units of measure are required to represent measurable quantities on a computer, on paper, on a network, device, etc.
 Two or more of these specifications do not mandate the use of a particular quantity as a standard unit of measure.
 Therefore, SI (System-International) is usually used so that the standard system of units of measurement is suitable for most applications.
 According to the JSR-385 API specification, 7 quantities should be acceptable if they have the same dimensions so that they can be compared with one another in a meaningful way.
 Unit::
 A unit, or unit of measure, is a quantity that is assumed to be the standard with a unique value that can be used to express.
-Same type units of measurement can be used as a comparison value.
+The same type units of measurement are used as a comparison value.
 For example, one foot corresponds to a quantity of 0.3048 meters.
 Regardless of how this came about, a unit of measure can be expressed as the quantity of other units of measure of the same kind.
 Base-Unit:::
@@ -63,13 +79,14 @@ The SI system defines only 7 basic units of measurement (including meters, kilog
 Derived-Unit:::
 Derived-Unit is a unit of measurement formed as the product of the results of basic units of measurement.
 Some derived units of measurement have been given a special name and a symbol for convenience and ease of use.
-In the SI system, special name derived units of measurement include Hz, Newtons, and Volts.
+In the SI system, special name derived units of measurement include https://en.wikipedia.org/wiki/Hertz[Hertz], https://en.wikipedia.org/wiki/Newton_(unit)[Newtons]
+and https://en.wikipedia.org/wiki/Volt[Volts].
 System-of-Units:::
 A system of units is a set of basic and derived units of measure chosen as standards for specifying measures.
 Examples are the SI (metric) and the imperial (English) system.
 Prefix (multiplier):::
 A prefix is a leading word that can be applied to a unit of measure to form a decimal multiplication or decrease of the unit of measure.
-Prefixes are mainly used in the SI system, which includes kilo-, centi-, mili- etc.
+Prefixes are used in the SI system, which includes kilo-, centi-, mili- etc.
 Other cultures and regions use multiplier systems of a similar type, some of which differ from the SI system.
 Examples are the separate use of multipliers such as Lakh- (100,000) or Crore- (10 million) in countries like India or parts of the Middle East.
 This can be attributed to the fact that different currency systems exist.
@@ -78,8 +95,8 @@ On the other hand, the use of others, such as a dozen, is almost unknown there.
 
 === Measurement
 
-image::2022-05-01-si-units.png[width=420,height=360,role=left]
 In May 2019, all units are defined by constants of nature in the world-wide https://en.wikipedia.org/wiki/International_System_of_Units[international system of units].
+These changes are incorporated in the newer verison of the RFC and the reference implementation.
 
 === How to Use the API
 
@@ -106,7 +123,9 @@ Historically, JSR-363 defined the API 1.0 and is now superseded by the newer def
     ComparableQuantity<Volume> litres  = Quantities.getQuantity(1000, Units.LITRE);
     assertTrue(cubicMetre.compareTo(litres) == 0);
 
-    Quantity<Speed> velocity = Quantities.getQuantity(1, Units.METRE).divide(Quantities.getQuantity(1, Units.SECOND))=.asType(Speed.class);
+    Quantity<Speed> velocity = Quantities.getQuantity(1, Units.METRE)
+                                         .divide(Quantities.getQuantity(1, Units.SECOND))
+                                         .asType(Speed.class);
 ----
 
 The power of the approach is in the object-oriented abstractions.
@@ -131,7 +150,8 @@ class WaterTankTest {
 
     @Test
     void conversionTest() {
-        double volumeInMilliLitre = waterCapacity.to(MetricPrefix.MILLI(LITRE)).getValue().doubleValue();
+        double volumeInMilliLitre = waterCapacity.to(MetricPrefix.MILLI(LITRE))
+                                                 .getValue().doubleValue();
         assertEquals(9200.0, volumeInMilliLitre, 0.0f);
     }
 }
@@ -159,4 +179,5 @@ The abstractions allow compilation time detection of errors.
 [bibliography]
 === References
 
-- [[[unitsofmeasurement,1 ]]] https://unitsofmeasurement.github.io/[Units of Measurement
+- [[[units-of-measurement,1]]] https://unitsofmeasurement.github.io/[Units of Measurement]
+-[[[mars-climate-orbiter,2]]] https://en.wikipedia.org/wiki/Mars_Climate_Orbiter[Mars Climate Orbiter]

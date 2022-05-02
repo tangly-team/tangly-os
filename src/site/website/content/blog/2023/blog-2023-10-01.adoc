@@ -25,9 +25,39 @@ While proven useful, these do not replace the importance of empiricism.
 In complex environments, what will happen is unknown.
 Only what has already happened may be used for forward-looking decision making.
 
+[quote,Peter Drucker]
+____
+You cannot manage what you cannot measure.
+____
+
 === Scrum Visual Aids
 
+Burn-down and burn-up diagrams The diagrams are available for sprints, epics, releases and products.
+Burndown chart is a visual representation of a graph that assesses how much work a development team has done through a user story.
+Because of its appealing visual format, your team members can understand this chart easily.
+It is used to summarize a thorough description of a feature from an end-user perspective.
+That’s why you can update the chart only after the completion of a user story.
+
+Sprint Burndown Chart::
+The sprint burndown charts depict how much task is completed and how much remains in the ongoing sprints.
+Sprint burndown chart displays user stories, which are selected by the team in the sprint planning session.
+
+Product Burndown Chart::
+Product burndown charts can visualize the entire project; in short, it looks at the big picture.
+It shows how much work is remaining for your team to match the product goals.
+The vertical axis displays the product backlog items in the product burndown chart, while the horizontal axis implies the sprint numbers.
+Release Burndown Chart::
+This burndown chart is responsible for tracking all the progress made by your scrum team during an iteration or product development.
+The vertical axis of the chart depicts the hours or story points.
+On the other hand, the horizontal axis represents the time your team members spent.
+
+Cumulative flow diagrams The diagram are available for sprints, epics, releases and products.
+
+Other diagrams Velocity visualization Effective work effort per Sprint Issues Flow diagrams
+
 === DevOps Visual Aids
+
+DORA diagrams Average age of issues Cumulative flow diagrams for issues
 
 === GitHub Tools
 
@@ -43,8 +73,15 @@ The main features are:
 * Store all your code in one place.
 The platform with its 100+ million hosted projects provides repositories equipped with tools to help you host, version, and release private, public, or open-source code.
 
+The updated projects functions better support agile approaches such as Scrum or Kanban.
+
 === Lessons Learnt
+
+Visual aids to check the state of your product development support teams to take improvements as a daily activity.
+https://en.wikipedia.org/wiki/PDCA[PDCA] is easier to implement with realtime visual checks.
 
 [bibliography]
 === References
+
+- [[[scrum-guide]]] https://scrumguides.org/scrum-guide.html[Scrum Guide]
 

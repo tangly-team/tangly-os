@@ -308,7 +308,7 @@ Unit testing frameworks are Xunit or NUnit for C# and .Net, Junit for Java, PyUn
 [bibliography]
 === References
 
-* [[[devops-sme, 1]]] link:../../blog/2021/devops-for-small-applications/[DevOps for Small Applications]
+* [[[devops-sme, 1]]] link:../../2021/devops-for-small-applications/[DevOps for Small Applications]
 Marcel Baumann. 2021
 * [[[zero-defect, 2]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Advocate Zero Bug Policy in Your Projects]
 Marcel Baumann. 2020

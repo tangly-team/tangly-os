@@ -2,6 +2,12 @@
 
 The *docsy* theme was customized to support specific needs of the tangly OS documentation static website.
 
+## Header
+
+The headr template was adapted to support AsciiMath typesetting in the browser.
+
+- docsy/layouts/partials/header.html
+
 ## Footer
 
 The footer template was adapted to support the specific needs of the tangly OS documentation static website.
@@ -28,4 +34,5 @@ For the comment feature we added:
 
 Exploration was started to improve the styling of [asciidoc](https://asciidoc.org) documents:
 
-- docsy/assets/scss/_styles_project.scss
+- docsy/assets/scss/_asciidoctor.scss
+- docsy/assets/scss/main.scss _added import of the asccidoctor.scss styling

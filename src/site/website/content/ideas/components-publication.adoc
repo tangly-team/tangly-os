@@ -7,7 +7,7 @@ description: Workflow to publish open source components
 
 == Components Publication
 :company: https://www.tangly.net/[tangly llc]
--
+
 === Regular Git Repository Update
 
 . Push the changes to the Bitbucket repository
