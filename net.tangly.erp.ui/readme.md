@@ -141,15 +141,9 @@ These instructions create and publish the docker image using docker commands.
 <2> tag the docker image
 <3> push an existing image to the heroku registry
 
-Tbese instructions deploys a fat jar java application using Heroku commands.
-
-heroku plugins:install java
-
-```shell
-  heroku login
-  heroku plugins:install heroku-cli-deploy
-- heroku deploy:jar net.tangly.erp.ui/build/install/xx.jar --app $HEROKU_JAVA_APP_NAME --jdk 18 --options
-```
+We deliberately decided not to provide the instructions to deploy a fat jar in docker.
+Fat jar applications are inherently bloaded executable files.
+You should always pursue small executable size when working with images, especially if the images are executed in a public cloud.
 
 ## Contribution
 

@@ -10,29 +10,35 @@ pipelines:
           - gradlewrapper
         script:
             - ./gradlew build
-            - ./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode
+            - ./gradlew net.tangly.erp.ui:installDist net.tangly.erp.ui:installShadowDist -Pvaadin.productionMode
         artifacts:
             - net.tangly.erp.ui/build/distributions/**
             - net.tangly.erp.ui/build/install/**
-    - step:
-        name: build docker image
-        caches:
-            - docker
-        script:
-            - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
-            - docker build -t tanglyllc/tangly-erp:latest net.tangly.erp.ui/
-            - docker push tanglyllc/tangly-erp:latest
-        services:
-            - docker
   custom:
+      docker-hub-deployment:
+        - step:
+            script:
+              - docker build -t tanglyllc/tangly-erp:latest net.tangly.erp.ui/
+              - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
+              - docker push tanglyllc/tangly-erp:latest
+            services:
+              - docker
       heroku-docker-deployment:
         - step:
             script:
-                - echo "deployment of docker image on heroku"
+                - docker build -t tanglyllc/tangly-erp:latest net.tangly.erp.ui/
+                - curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+                - heroku container:login
+                - heroku container:push web -a $HEROKU_DOCKER_APP_NAME
+                - heroku container:release web -a $HEROKU_DOCKER_APP_NAME
+            services:
+                - docker
       heroku-java-app-deployment:
         - step:
             script:
-                - echo "deployment of java standalone application on heroku"
+                - curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+                - heroku plugins:install java
+                - heroku deploy:jar net.tangly.erp.ui/build/install/xx.jar --app $HEROKU_JAVA_APP_NAME
 definitions:
   caches:
     gradlewrapper: ~/.gradle/wrapper
