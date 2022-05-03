@@ -21,6 +21,9 @@ Certifications can be a great bargaining chip when it comes to negotiating a rai
 
 === Preparing for the certification
 
+THe current https://education.oracle.com/java-se-17-developer/pexam_1Z0-829[Java SE 17 Developer] examination process and examination goals are well-documented.
+Beware that two examinations exist, one for developers without actual certifications for 11 or 8, and one for the developers upgrading to the current LTS version.
+
 The preparation shall be tailored how you prefer to learn.
 You can attend a course or read a book.
 
@@ -30,12 +33,18 @@ You have access to all materials for less than forty dollars.
 === Mockup Questions
 
 Try the various online mockup questions to get a grasp of the certification examination.
+
 The OCP book contains a full set of questions and answers.
 
 === Taking the examination
 
 I strongly recommend attending an onsite examination.
 The setup is more convenient than the online version of the test.
+The cost of the test in Switzerland is around CHF 225.
+
+You will receive a public badge upon succesfull completion.
+Interested parties can confirm your certification when provided with the link.
+You can for example publish your certifiction badge on LinkedIn platform.
 
 === Lessons Learnt
 

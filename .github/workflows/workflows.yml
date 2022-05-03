@@ -7,16 +7,28 @@ jobs:
         steps:
         -
             name: checkout
-            uses: actions/checkout@v2
+            uses: actions/checkout@v3
         -
-            name: setup and build Java components
-            uses: actions/setup-java@v1
+            name: setup and build Java and NodeJS components
+            uses: actions/setup-java@v3
             with:
                 java-version: '1.18'
                 java-package: 'jdk'
+            uses: actions/setup-node@v3
+                nodejs
+            with:
+                node-version: 16
             run: |
+                npm install
                 ./gradlew build
-                ./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode
+                ./gradlew net.tangly.erp.ui:installDist net.tangly.erp.ui:installShadowDist -Pvaadin.productionMode
+        -
+            name: Archive production artifacts
+            uses: actions/upload-artifact@v3
+            with:
+                name: distributions
+                path: net.tangly.erp.ui/build/distributions/*.zip
+                if-no-files-found: warn
         -
             name: Login to Docker Hub
             uses: docker/login-action@v1

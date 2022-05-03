@@ -24,6 +24,7 @@ The set of gradle command line special commands we seldom use:
 * To detect newer versions of libraries                    `gradle dependencyUpdates -Drevision=release`
 * To update sonar cloud                                    `gradle sonarqube -Dsonar.login=<login token>`
 * To create a production release                           `gradle build -Pvaadin.productionMode`
+* To check licenses of dependencies                        `gradle checkLicense`
 
 # Tips
 

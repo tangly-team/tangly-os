@@ -1,0 +1,80 @@
+{
+    "bundles": [
+        {
+            "bundleName": "apache1",
+            "licenseName": "Apache Software License, Version 1.1",
+            "licenseUrl": "http://www.apache.org/licenses/LICENSE-1.1"
+        },
+        {
+            "bundleName": "apache2",
+            "licenseName": "Apache License, Version 2.0",
+            "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0"
+        },
+        {
+            "bundleName": "mit",
+            "licenseName": "Apache License, Version 2.0",
+            "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0"
+        },
+        {
+            "bundleName": "bsd",
+            "licenseName": "BSD-3-Clause",
+            "licenseUrl": "https://opensource.org/licenses/BSD-3-Clause"
+        },
+        {
+            "bundleName": "epl",
+            "licenseName": "Eclipse Public License v. 2.0",
+            "licenseUrl": "https://opensource.org/licenses/BSD-3-Clause"
+        },
+        {
+            "bundleName": "cddl1",
+            "licenseName": "COMMON DEVELOPMENT AND DISTRIBUTION LICENSE Version 1.0 (CDDL-1.0)",
+            "licenseUrl": "http://opensource.org/licenses/CDDL-1.0"
+        }
+    ],
+    "transformationRules": [
+        {
+            "bundleName": "apache2",
+            "licenseNamePattern": ".*The Apache Software License, Version 2.0.*"
+        },
+        {
+            "bundleName": "apache2",
+            "licenseNamePattern": "Apache[ -]2*"
+        },
+        {
+            "bundleName": "apache2",
+            "licenseNamePattern": "Apache[ -]2.0*"
+        },
+        {
+            "bundleName": "apache2",
+            "licenseUrlPattern": "http[s]?://www.apache.org/licenses/LICENSE-2.0.txt"
+        },
+        {
+            "bundleName": "mit",
+            "licenseNamePattern": ".The MIT License*"
+        },
+        {
+            "bundleName": "mit",
+            "licenseNamePattern": ".MIT License*"
+        },
+        {
+            "bundleName": "mit",
+            "licenseNamePattern": ".MIT"
+        },
+        {
+            "bundleName": "bsd",
+            "licenseNamePattern": ".*BSD 3-[cC]]lause*"
+        },
+        {
+            "bundleName": "bsd",
+            "licenseNamePattern": ".*BSD-3-[cC]lause*"
+        },
+        {
+            "bundleName": "epl",
+            "licenseNamePattern": ".*Eclipse Public License v. 2.0*"
+        },
+        {
+            "bundleName": "epl",
+            "licenseUrlPattern": "http[s]?://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt"
+        }
+    ]
+}

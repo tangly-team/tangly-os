@@ -30,18 +30,22 @@ ____
 You cannot manage what you cannot measure.
 ____
 
+[quote,Marcel Baumann]
+____
+Criticism and critics are welcome.
+Bring and sell better solutions.
+____
+
 === Scrum Visual Aids
 
 Burn-down and burn-up diagrams The diagrams are available for sprints, epics, releases and products.
 Burndown chart is a visual representation of a graph that assesses how much work a development team has done through a user story.
 Because of its appealing visual format, your team members can understand this chart easily.
 It is used to summarize a thorough description of a feature from an end-user perspective.
-That’s why you can update the chart only after the completion of a user story.
-
+That is why you can update the chart only after the completion of a user story.
 Sprint Burndown Chart::
 The sprint burndown charts depict how much task is completed and how much remains in the ongoing sprints.
 Sprint burndown chart displays user stories, which are selected by the team in the sprint planning session.
-
 Product Burndown Chart::
 Product burndown charts can visualize the entire project; in short, it looks at the big picture.
 It shows how much work is remaining for your team to match the product goals.
@@ -50,10 +54,11 @@ Release Burndown Chart::
 This burndown chart is responsible for tracking all the progress made by your scrum team during an iteration or product development.
 The vertical axis of the chart depicts the hours or story points.
 On the other hand, the horizontal axis represents the time your team members spent.
+Cumulative flow diagrams::
+The diagram are available for sprints, epics, releases and products.
 
-Cumulative flow diagrams The diagram are available for sprints, epics, releases and products.
-
-Other diagrams Velocity visualization Effective work effort per Sprint Issues Flow diagrams
+Other diagrams are:
+* Velocity visualization * Effective work effort per Sprint * Issues Flow diagrams
 
 === DevOps Visual Aids
 
@@ -75,10 +80,18 @@ The platform with its 100+ million hosted projects provides repositories equippe
 
 The updated projects functions better support agile approaches such as Scrum or Kanban.
 
+Various addons are available for more complex diagrams and visualizations.
+Start small, learn, and adapt your development tools.
+
 === Lessons Learnt
 
-Visual aids to check the state of your product development support teams to take improvements as a daily activity.
+Visual aids to check the state of your product development support teams to take improvements as a daily activity
 https://en.wikipedia.org/wiki/PDCA[PDCA] is easier to implement with realtime visual checks.
+
+A picture is worth a thousand words.
+The visualization of facts often help to identify improvement potential.
+The same diagrams measure the success of specific improvement measures.
+One well-documented successful approach are the four DORA metrics and associated graphs.
 
 [bibliography]
 === References
