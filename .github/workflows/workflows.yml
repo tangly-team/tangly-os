@@ -4,43 +4,44 @@ on: [push]
 jobs:
     build:
         runs-on: ubuntu-latest
+
         steps:
-        -
-            name: checkout
-            uses: actions/checkout@v3
-        -
-            name: setup and build Java and NodeJS components
-            uses: actions/setup-java@v3
-            with:
-                java-version: '1.18'
-                java-package: 'jdk'
-            run: |
-                apt update
-                apt install nodejs npm
-                npm install
-                ./gradlew build
-                ./gradlew net.tangly.erp.ui:installDist net.tangly.erp.ui:installShadowDist -Pvaadin.productionMode
-        -
-            name: Archive production artifacts
-            uses: actions/upload-artifact@v3
-            with:
-                name: distributions
-                path: net.tangly.erp.ui/build/distributions/*.zip
-                if-no-files-found: warn
-        -
-            name: Login to Docker Hub
-            uses: docker/login-action@v1
-            with:
-                username: ${{ secrets.DOCKER_HUB_USERNAME }}
-                password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-        -
-            name: Set up Docker Buildx
-            uses: docker/setup-buildx-action@v1
-        -
-            name: Build and push
-            uses: docker/build-push-action@v2
-            with:
-                context: .
-                file: ./net.tangly.erp.ui/Dockerfile
-                push: true
-                tags: ${{ secrets.DOCKER_HUB_USERNAME }}/tangly-erp:latest
+        - uses: actions/checkout@v3
+        - name: Set up JDK
+          uses: actions/setup-java@v3
+          with:
+            java-version: '18'
+            distribution: 'adopt'
+        - name: Set up NodeJS and npm
+          uses: actions/setup-node@v3
+          with:
+            node-version: 16
+            cache: 'npm'
+        - name: Build artifacts
+          run: |
+            ./gradlew build
+            ./gradlew net.tangly.erp.ui:installDist net.tangly.erp.ui:installShadowDist -Pvaadin.productionMode
+        - name: Archive production artifacts
+          uses: actions/upload-artifact@v3
+          with:
+            name: distributions
+            path: net.tangly.erp.ui/build/distributions/*.zip
+            if-no-files-found: warn
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Login to Docker Hub
+          uses: docker/login-action@v1
+          with:
+            username: ${{ secrets.DOCKER_HUB_USERNAME }}
+            password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+        - name: Set up Docker Buildx
+          uses: docker/setup-buildx-action@v1
+        - name: Build and push
+          uses: docker/build-push-action@v2
+          with:
+            context: .
+            file: ./net.tangly.erp.ui/Dockerfile
+            push: true
+            tags: ${{ secrets.DOCKER_HUB_USERNAME }}/tangly-erp:latest
