@@ -14,11 +14,9 @@ jobs:
             with:
                 java-version: '1.18'
                 java-package: 'jdk'
-            uses: actions/setup-node@v3
-                nodejs
-            with:
-                node-version: 16
             run: |
+                apt update
+                apt install nodejs npm
                 npm install
                 ./gradlew build
                 ./gradlew net.tangly.erp.ui:installDist net.tangly.erp.ui:installShadowDist -Pvaadin.productionMode
