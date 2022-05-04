@@ -13,6 +13,8 @@ tags: ["agile", "series-students"]
 
 image::2023-10-01-head.png[width=420,height=360,role=left]
 
+Why is visibility so important in scrum / any agile team?
+
 When you are running an Agile project, your ultimate goal is customer satisfaction with the delivered product.
 However, the project coordination responsibilities are not limited to this.
 The product owner shall nurture the vision, roadmap, and the release plan.
@@ -38,11 +40,34 @@ ____
 
 === Scrum Visual Aids
 
+image::2023-10-01-visibility-accountability.png[width=420,height=360,role=left]
+
+Visibility ensures that the trust, reliability, and accountability exist in a team.
+
+If your team, Scrum Master or Product Owner can’t see what you are doing, it creates the impression that you are doing lots of nothing!
+Or doing lots of a lot of things completely wrong!
+This is one of the fastest ways to find yourself in a quagmire of unfinished work.
+
+Making your work visible raises expectation and luckily (if you really are working) it also raises opinions of you!
+
+The time wasted extracting progress status out of a team-mate or following up on interdependent tasks WILL make you risk failing your sprint.
+Working at a sustainable pace can only be achieved if you make proper use of the time available.
+
+Your team and anyone else for that matter cannot trust someone who keeps his progress hidden.
+They are in the dark (which leads to uncertainty), they tend to assume something is either being done or not being done and either get stuck into it themselves (or worse) they don’t do it….. So if you are not busy with it – well – it just does not get done!
+
+How reliable you are depends on how transparent you are about what you have taken responsibility for and how much your team can trust you to handle it to completion without causing stress to the team.
+
 Burn-down and burn-up diagrams The diagrams are available for sprints, epics, releases and products.
-Burndown chart is a visual representation of a graph that assesses how much work a development team has done through a user story.
+This is not a measure of work done but work which is STILL TO BE DONE.
+It is a valuable tool to use as a thermometer or symptom checker.
+Flatlining is a symptom of a few things – one of which is working on too many stories at a time – lots of nothing gets done very slowly.
+Another is that tasks are not granular enough.
+One of the things which we tried in the last sprint is not to accept any 6 hour tasks and on agreeing to decompose the 6 hour tasks further, one of them actually amounted to three more stickies which were in fact more than 6 hours in total (10 hours to be exact).
 Because of its appealing visual format, your team members can understand this chart easily.
 It is used to summarize a thorough description of a feature from an end-user perspective.
 That is why you can update the chart only after the completion of a user story.
+
 Sprint Burndown Chart::
 The sprint burndown charts depict how much task is completed and how much remains in the ongoing sprints.
 Sprint burndown chart displays user stories, which are selected by the team in the sprint planning session.
@@ -58,7 +83,10 @@ Cumulative flow diagrams::
 The diagram are available for sprints, epics, releases and products.
 
 Other diagrams are:
-* Velocity visualization * Effective work effort per Sprint * Issues Flow diagrams
+
+Velocity visualization::
+Business can envision and calculate when they can potentially release a product or subset of a product based on how fast the team is working.  If the backlog has been estimated and grooming done properly, the number of story points it contains should be comparable to the velocity the team has been achieving sprint after sprint and an average velocity can be applied to the total number of story points in the backlog.  With this information the business can plan on a release date.
+* Effective work effort per Sprint * Issues Flow diagrams
 
 === DevOps Visual Aids
 
@@ -96,5 +124,5 @@ One well-documented successful approach are the four DORA metrics and associated
 [bibliography]
 === References
 
-- [[[scrum-guide]]] https://scrumguides.org/scrum-guide.html[Scrum Guide]
+- [[[scrum-guide, 1]]] https://scrumguides.org/scrum-guide.html[Scrum Guide]
 

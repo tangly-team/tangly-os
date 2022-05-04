@@ -22,13 +22,16 @@ Certifications can be a great bargaining chip when it comes to negotiating a rai
 === Preparing for the certification
 
 THe current https://education.oracle.com/java-se-17-developer/pexam_1Z0-829[Java SE 17 Developer] examination process and examination goals are well-documented.
-Beware that two examinations exist, one for developers without actual certifications for 11 or 8, and one for the developers upgrading to the current LTS version.
+Beware that only one examination exists.
+The same certification applies for developers pursuing a frist certification, and for the developers upgrading to the current LTS version.
 
-The preparation shall be tailored how you prefer to learn.
+Your preparation approach shall be tailored how you prefer to learn.
 You can attend a course or read a book.
 
 The https://www.amazon.com//dp/B09WJP11JL/[OCP Oracle Certified Professional Java SE 17 Developer Study Guide: Exam 1Z0-829] is a great and cost effective resource.
 You have access to all materials for less than forty dollars.
+
+This book is for anyone from high school students to those beginning their programming journey to experienced professionals who need a review for the certification.
 
 === Mockup Questions
 
