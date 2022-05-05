@@ -13,19 +13,23 @@ tags: ["agile", "series-students"]
 
 image::2023-10-01-head.png[width=420,height=360,role=left]
 
-Why is visibility so important in scrum / any agile team?
+Why is visibility so important for any agile or Scrum team?
 
 When you are running an Agile project, your ultimate goal is customer satisfaction with the delivered product.
-However, the project coordination responsibilities are not limited to this.
-The product owner shall nurture the vision, roadmap, and the release plan.
-You must coordinate the workflow of your team, refine the product backlog, control identified riks, track deadlines, and complete additional tasks to complete the project.
+
+The project coordination responsibilities are however not limited to this.
+The product owner shall nurture the vision, roadmap, the release plan and customer journey.
+
+You must coordinate the workflow of your team, refine the product backlog, control identified risks, track deadlines.
 
 === Why Visual Tools?
 
-Various practices exist to forecast progress, like burn-downs, burn-ups, or cumulative flows.
-While proven useful, these do not replace the importance of empiricism.
+Various practices exist to forecast product development progress, like burn-downs, burn-ups, or cumulative flow diagrams.
+
+While proven useful, these do not replace the importance of *empiricism.
 In complex environments, what will happen is unknown.
 Only what has already happened may be used for forward-looking decision making.
+Visual aids optimally implement the Scrum pillars of transparency, inspection, and adaptation.
 
 [quote,Peter Drucker]
 ____
@@ -42,55 +46,93 @@ ____
 
 image::2023-10-01-visibility-accountability.png[width=420,height=360,role=left]
 
-Visibility ensures that the trust, reliability, and accountability exist in a team.
+Visibility ensures that trust, reliability, and accountability exist in a team.
+Diagrams are information radiators.
+They provide easy and legible access to progress information.
 
-If your team, Scrum Master or Product Owner can’t see what you are doing, it creates the impression that you are doing lots of nothing!
-Or doing lots of a lot of things completely wrong!
-This is one of the fastest ways to find yourself in a quagmire of unfinished work.
+If your team, Scrum Master, Product Owner or stakeholders cannot see what the team is doing, it creates the impression that you are doing lots of _nothing_.
+Or doing lots of things completely _wrong_.
 
-Making your work visible raises expectation and luckily (if you really are working) it also raises opinions of you!
+This kind of doubt is one of the fastest ways to find yourself in a quagmire of unfinished work.
 
-The time wasted extracting progress status out of a team-mate or following up on interdependent tasks WILL make you risk failing your sprint.
+Making your work visible raises expectation and luckily it also raises opinions of you.
+
+The time wasted extracting progress status out of a teammate or following up on interdependent tasks *will* make you risk failing your sprint.
+
 Working at a sustainable pace can only be achieved if you make proper use of the time available.
 
 Your team and anyone else for that matter cannot trust someone who keeps his progress hidden.
-They are in the dark (which leads to uncertainty), they tend to assume something is either being done or not being done and either get stuck into it themselves (or worse) they don’t do it….. So if you are not busy with it – well – it just does not get done!
+They are in the dark _which leads to uncertainty_.
+They tend to assume something is either being done or not being done and either get stuck into it themselves.
 
-How reliable you are depends on how transparent you are about what you have taken responsibility for and how much your team can trust you to handle it to completion without causing stress to the team.
+How reliable you are depends on how transparent you are about what you have taken responsibility for.
+And how much your team can trust you to handle it to completion without causing stress to the team.
 
-Burn-down and burn-up diagrams The diagrams are available for sprints, epics, releases and products.
-This is not a measure of work done but work which is STILL TO BE DONE.
+The agile community experiments with various approches to visualize what is going on.
+
+image::2023-10-01-burndown-diagrams.png[width=420,height=360,role=left]
+
+Burn-down and burn-up diagrams are available for sprints, epics, releases and products.
+This is not a measure of work done but work which is *still to be done*.
 It is a valuable tool to use as a thermometer or symptom checker.
-Flatlining is a symptom of a few things – one of which is working on too many stories at a time – lots of nothing gets done very slowly.
-Another is that tasks are not granular enough.
-One of the things which we tried in the last sprint is not to accept any 6 hour tasks and on agreeing to decompose the 6 hour tasks further, one of them actually amounted to three more stickies which were in fact more than 6 hours in total (10 hours to be exact).
+
+Flatlining is a symptom of a few things:
+
+- You are working on too many stories at a time – lots of nothing gets done very slowly.
+We recommend to introduce https://en.wikipedia.org/wiki/Work_in_process[WIP] limits.
+- Your team hast too many started but unfinished stories at the end of the sprint.
+We recommend institutionalizing https://en.wikipedia.org/wiki/Pair_programming[pair programming] and https://en.wikipedia.org/wiki/Mob_programming[mob programming].
+- Your tasks are not granular enough.
+Progress is slow and initial estimation does not reflect effective effort.
+One of the things which we tried is not to accept any six hour tasks and on agreeing to decompose these tasks further.
+
 Because of its appealing visual format, your team members can understand this chart easily.
 It is used to summarize a thorough description of a feature from an end-user perspective.
 That is why you can update the chart only after the completion of a user story.
 
 Sprint Burndown Chart::
-The sprint burndown charts depict how much task is completed and how much remains in the ongoing sprints.
+The sprint burndown charts depict how much stories are completed and how much work remains in the ongoing sprint.
 Sprint burndown chart displays user stories, which are selected by the team in the sprint planning session.
 Product Burndown Chart::
 Product burndown charts can visualize the entire project; in short, it looks at the big picture.
 It shows how much work is remaining for your team to match the product goals.
 The vertical axis displays the product backlog items in the product burndown chart, while the horizontal axis implies the sprint numbers.
 Release Burndown Chart::
-This burndown chart is responsible for tracking all the progress made by your scrum team during an iteration or product development.
-The vertical axis of the chart depicts the hours or story points.
+This burndown chart is responsible for tracking all the progress made by your scrum team during to reach a release point.
+The vertical axis of the chart depicts the stories.
 On the other hand, the horizontal axis represents the time your team members spent.
 Cumulative flow diagrams::
 The diagram are available for sprints, epics, releases and products.
-
-Other diagrams are:
-
+These diagrams show the bottlenecks due to team member specializations or dependencies to external actors.
 Velocity visualization::
-Business can envision and calculate when they can potentially release a product or subset of a product based on how fast the team is working.  If the backlog has been estimated and grooming done properly, the number of story points it contains should be comparable to the velocity the team has been achieving sprint after sprint and an average velocity can be applied to the total number of story points in the backlog.  With this information the business can plan on a release date.
+Business can envision and calculate when they can potentially release a product or subset of a product based on how fast the team is working.
+If the backlog has been estimated and refinement done properly, the number of story points it contains should be comparable to the velocity the team has been achieving sprint after sprint.
+Remember estimation cannot be a single value.
+It must be a set of values with a success probability for each value.
+You did learn gaussian curves during your school time.
+An average velocity can be applied to the total number of story points in the backlog.
+With this information, the business can plan on tentative release dates.
+
+[.float-group]
+--
+[.left]
+image::2023-10-01-cumulative-diagrams-scrum.jpg[width=420,height=360]
+[.right]
+image::2023-10-01-cumulative-diagrams.jpg[width=420,height=360]
+--
+
 * Effective work effort per Sprint * Issues Flow diagrams
 
 === DevOps Visual Aids
 
-DORA diagrams Average age of issues Cumulative flow diagrams for issues
+DORA diagrams are similar visual aids focused of https://en.wikipedia.org/wiki/DevOps[DevOps] activities
+
+image::2023-10-01-dora-metrics.png[width=640,height=360,role=text-center]
+
+* Deployment frequency (DF)
+* https://en.wikipedia.org/wiki/Lead_time[Lead time] for changes (LT), you can also compute the average age of issues and cumulative flow diagrams for issues
+* https://en.wikipedia.org/wiki/Mean_time_to_recovery[Mean time to recovery] _MTTR_
+* Change failure rate (CFR)
 
 === GitHub Tools
 
@@ -124,5 +166,8 @@ One well-documented successful approach are the four DORA metrics and associated
 [bibliography]
 === References
 
-- [[[scrum-guide, 1]]] https://scrumguides.org/scrum-guide.html[Scrum Guide]
+- [[[scrum-guide, 1]]] https://scrumguides.org/scrum-guide.html[Scrum Guide].
+Ken Schwaber and Jeff Sutherland. 2020.
+- [[[devops-ideas, 2]]] link:../../2022/introducing-devops-ideas/[Introducing DevOps Ideas].
+Marcel Baumann. 2022.
 

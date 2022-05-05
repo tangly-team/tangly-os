@@ -40,11 +40,11 @@ Companies are asking themselves:
 
 === Challenges of Agile Companies
 
-Now, we find the machine paradigm shifting in the face of the organizational challenges brought by the _digital revolution_ that is transforming industries, economies, and societies.
+Now, we find the machine paradigm shifting in the face of the organizational challenges brought by the _digital revolution_ that is transforming industries, economies and societies.
 This is expressed in four current trends:
 
 Quickly evolving environment::
-All stakeholders’ demand patterns are evolving rapidly: customers, partners, and regulators have pressing needs; investors are demanding growth, which results in acquisitions and restructuring; and competitors and collaborators demand action to accommodate fast-changing priorities
+Stakeholders’ demand patterns are evolving rapidly: customers, partners and regulators have pressing needs; investors are demanding growth, which results in acquisitions and restructuring; and competitors and collaborators demand action to accommodate fast-changing priorities
 footnote:[An agile organization has partners and not suppliers.
 Your purchase department is not a sadistic group trying to pressure rebates out of your vendors and forgetting all about quality and supply chains.].
 Constant introduction of disruptive technology::
@@ -54,13 +54,13 @@ footnote:[Evaluate your own company.
 A digital organization should not possess fax machines, paper archive rooms, landlines.
 You should finish the phase-out of printers, scanners, and virtual private networks.].
 Accelerating digitization and democratization of information::
-The increased volume, transparency, and distribution of information require organizations to rapidly engage in multi-directional communication and complex collaboration with customers, partners, and colleagues
+The increased volume, transparency and distribution of information require organizations to rapidly engage in multi-directional communication and complex collaboration with customers, partners and colleagues
 footnote:[Check if your company issues electronic invoices.
 A digital document can automatically be processed by partners' applications.
 A PDF document is *not* an electronic slipper.].
 The new war for talent::
 As creative knowledge- and learning-based tasks become more important, organizations need a distinctive value proposition to acquire and retain the best talent.
-These _knowledge workers_ often have more diverse origins, thoughts, composition, and experience and may have different desires, (for example, millennials).
+These _knowledge workers_ often have more diverse origins, thoughts, composition and experience and may have different desires, (for example, millennials).
 
 === Trademarks of Agile Organizations
 
@@ -85,7 +85,7 @@ It is not a transformation if it does not change how you work.
 
 It is not an agile transformation if it does not simplify how you work.
 
-It is not an agile transformation of Scrum if it does not increase the actual collaboration of people (customers, teams, stakeholders).
+It is not an agile transformation of Scrum if it does not increase the actual collaboration between customers, teams and stakeholders.
 ____
 
 Just look at all these companies trying to copycat Spotify ways of working.
@@ -151,12 +151,12 @@ The decision about what to abandon is by far the most important and most neglect
 No organization which purposefully and systematically abandons the unproductive and obsolete ever wants for opportunities.
 ____
 
-Social Advantages::
+Social and Cultural Advantages::
 * We love to work in a kind and supportive organization.
 * We are proud not to have political games and power struggles.
 * We stand to our collaborators and love to see them growth.
 * Motivation, ownership and accountability are high.
-Financial Advantages::
+Financial Advantages and Enhanced Operational Efficiency::
 * Timely invoicing process allows us to send all monthly invoices the first day of the following month
 footnote:[I regularly interact with companies forgetting to invoice you delivered services.
 They are often quite thankful when I remember them to send the invoice for their work!].
@@ -168,19 +168,20 @@ The local government systems now support digital sending and processing for tax 
 footnote:[The Corona catastrophe was a huge test we successfully mastered.].
 ** The sales pipeline provides indicators how we should perform the next months.
 ** Paperless processes remove scanning, archiving and printing activities.
-Technological Advantages::
+Technological Advantages and Increased Developer Productivity::
 * Agile software development approaches with technical focus provides as strong market proposition.
 Motivated collaborators love to work on such initiatives.
 footnote:[To be honest, the biggest problem we have is to find collaborators with the required skill set.].
-* Technological leadership for Java technology stack delights our collaborators and is a huge market advantage.
-Our delivered solutions are deployed in hybrid clouds and scale to match our customer needs.
+* Technological leadership for the Java technology stack delights our collaborators and is a huge market advantage.
+Our delivered solutions are deployed in hybrid clouds and scale to match customer needs.
+We leverage automation, DevOps, and emerging technologies to create better experiences and increase work productivity.
 * We are digital affine and project our experience and workflows into the applications we develop.
 Our company does not own any fax machine, landline phones, or printers.
 Our workflows are digitized and all our artifacts are stored on secure servers.
 The information is available worldwide to all involved parties.
 Sensible artifacts are cryptographically protected.
 All emails are digitally authenticated and signed.
-Business Advantages::
+Business Advantages and Faster Time to Market::
 * Leadership how to develop successful software products.
 * Clear understanding and extensive experience with digitalization.
 We discarded paper artifacts for years.

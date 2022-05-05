@@ -23,12 +23,39 @@ Certifications can be a great bargaining chip when it comes to negotiating a rai
 
 THe current https://education.oracle.com/java-se-17-developer/pexam_1Z0-829[Java SE 17 Developer] examination process and examination goals are well-documented.
 Beware that only one examination exists.
-The same certification applies for developers pursuing a frist certification, and for the developers upgrading to the current LTS version.
+The same certification applies for developers pursuing a first certification, and for the developers upgrading to the current LTS version.
 
-Your preparation approach shall be tailored how you prefer to learn.
+[cols="1,1",options="header"]
+|===
+^|Exam Details
+^|Syllabus
+
+|Code: 1Z0-829
+
+Duration: 90 minutes
+
+Passing score: 68%
+
+Prerequisites: None
+
+Number of questions: 50
+
+Type: multiple choice
+
+Cost: $244 - CHF 225
+
+a|- Controlling program flow
+- Utilizing Java object-oriented approach
+- Exceptions
+- Managing concurrent code execution
+- Using Java I/O API
+- Accessing databases using JDBC
+|===
+
+Your preparation approach shall be tailored to how you prefer to learn.
 You can attend a course or read a book.
 
-The https://www.amazon.com//dp/B09WJP11JL/[OCP Oracle Certified Professional Java SE 17 Developer Study Guide: Exam 1Z0-829] is a great and cost effective resource.
+The https://www.amazon.com//dp/B09WJP11JL/[OCP Oracle Certified Professional Java SE 17 Developer Study Guide: Exam 1Z0-829] is a great and cost-effective resource.
 You have access to all materials for less than forty dollars.
 
 This book is for anyone from high school students to those beginning their programming journey to experienced professionals who need a review for the certification.
@@ -39,24 +66,30 @@ Try the various online mockup questions to get a grasp of the certification exam
 
 The OCP book contains a full set of questions and answers.
 
+You will often find answers to Java questions on https://coderanch.com/[Code Ranch].
+The authors of the book are providing hints on the discussion panel.
+
 === Taking the examination
 
 I strongly recommend attending an onsite examination.
 The setup is more convenient than the online version of the test.
 The cost of the test in Switzerland is around CHF 225.
 
-You will receive a public badge upon succesfull completion.
+You will receive a public badge upon successful completion.
 Interested parties can confirm your certification when provided with the link.
-You can for example publish your certifiction badge on LinkedIn platform.
+You can for example publish your certification badge on the LinkedIn platform.
 
 === Lessons Learnt
 
-- Reat the whole book to prepare for the examination
+- Read all chapters of the book to prepare for the examination.
 - Train with mockup questions.
 Do not focus on memorizing the questions.
 - Try to relax during the examination.
-Do not stay to long on one question.
+Do not stay too long on one question.
 Each question has the same weight for passing the examination.
+Answer the questions you find easier.
+At the end of the test, reconsider the answered questions and either find or guess an answer.
+With some luck, you get a few more points.
 
 [bibliography]
 === References

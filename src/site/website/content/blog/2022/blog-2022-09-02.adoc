@@ -12,3 +12,58 @@ tags: ["agile", ]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2022-09-02-head.jpg[width=420,height=360,role=left]
+
+In an increasingly technology-focused world, the demand for businesses to digitize has grown dramatically.
+So, what does it mean to digitize your business?
+Essentially, it means incorporating technology into your business operations to increase efficiency, enhance customer experience, and boost sales.
+
+This could mean developing a mobile application for your startup, transitioning into ecommerce, offering mobile payment options, and more.
+The goal of digitizing your business is to keep up with the rapidly changing economy by offering your customers more ways to access your business, and streamline daily operations.
+Therefore, the methods you choose to digitize your business can vary based on your startup’s needs.
+
+Start small.
+Optimze your internal process with technology.
+I challenge you.
+Your company does not need printers, fax machines or landlines.
+
+=== Eliminate Your Printer
+
+You do not need a printer in your company.
+Send your documents as PDF documents.
+Archive the PDF electronically.
+
+Printers are not ecological and have a price tag.
+
+=== Fax Machines are obsolete
+
+I cannot understand why anybody wants to send information using a fax machine.
+Electronic communication, PDF documents and digital photography are better solutions.
+
+=== Landlines were used in the last millenium
+
+Teams are distributed over the world.
+Collaborators often work at home or at co-working offices.
+Why should you use a landline.
+Mobile first is the answer.
+
+=== Eliminate Your Paper Archive
+
+I always found very strange that people print their documents and store them in cabinets.
+You never heard about digital backup with redudancy to avoid loss through incidents.
+
+=== Lessons Learnt
+
+- Printers and fax machines are really obsolete.
+We never add a true need to buy one in the last eight years.
+- Paper archive can now slowly be destroyed.
+Finally the federeal and state laws were adapted to acknowledge that digital archives are legally allowed.
+- We never had any landline.
+Mobile phones are now fully accepted since telecommunication companies offer flatrate contracts.
+More and more communications are now held over internet communication solutions.
+- All contracts and invoices are sent as electronic signed PDF documents.
+- Native digitals ofen do not anymore possess paper books, CD, or printed photos.
+Instead they use the digital equivalent.
+It is more ecological, cost-effective and is additional features.
+- Physical money has disapeard in the context of companies.
+All financial transactions are electronic.
+

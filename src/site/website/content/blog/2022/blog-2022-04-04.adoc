@@ -208,6 +208,9 @@ A vendor-agnostic checklist is https://devopschecklist.com/[the DevOps checklist
 Here are some of the most critical DevOps metrics
 footnote:[The DevOps Research and assessment DORA has defined these key metrics and a strong correlation with high-performance organizations.]:
 
+image::2022-04-04-elite-dora-success.png[width=480,height=360,role=text-center]
+Elite teams have tremendeous overall performance when improving in the areas tracked through these metrics.
+
 [horizontal]
 Deployment Frequency::
 It analyzes how frequently you are deploying the current release of software into production.

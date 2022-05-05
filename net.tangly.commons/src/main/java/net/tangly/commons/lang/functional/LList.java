@@ -38,7 +38,27 @@ import org.jetbrains.annotations.NotNull;
  */
 public sealed interface LList<T> permits LList.Nil, LList.ImmutableList {
     /**
-     * Defines a split iterator for the immutable persistent list structure. Split iterator is used to provide a {@link Stream} for an instance of the list.
+     * Return an empty list
+     * @return empty list
+     * @param <T> Type of the items in the list
+     */
+    static <T> LList<T> nil() {
+        return Nil.nil();
+    }
+
+    /**
+     * Return a new immutable list with a new item inserted in the front.
+     * @param first new item to add at the beginning of the list
+     * @param tail list to which the item is added
+     * @return immutable list with the new item at the beginning
+     * @param <T> Type of the items in the list
+     */
+    static <T> LList<T> cons(@NotNull T first, @NotNull LList<T> tail) {
+        return new ImmutableList<>(first, tail);
+    }
+
+    /**
+     * Define a split iterator for the immutable persistent list structure. Split iterator is used to provide a {@link Stream} for an instance of the list.
      *
      * @param <T> type of the list items
      */
@@ -76,14 +96,6 @@ public sealed interface LList<T> permits LList.Nil, LList.ImmutableList {
         public int characteristics() {
             return Spliterator.IMMUTABLE | Spliterator.SIZED;
         }
-    }
-
-    static <T> LList<T> nil() {
-        return Nil.nil();
-    }
-
-    static <T> LList<T> cons(@NotNull T first, @NotNull LList<T> tail) {
-        return new ImmutableList<>(first, tail);
     }
 
     @SafeVarargs

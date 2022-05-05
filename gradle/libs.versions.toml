@@ -88,12 +88,13 @@ scribe = "com.github.scribejava:scribejava-apis:8.3.1"
 vaadin-bom = { module = "com.vaadin:vaadin-bom", version.ref = "vaadin-version" }
 vaadin-core = { module = "com.vaadin:vaadin-core", version.ref = "vaadin-version" }
 vaadin-autocomplete = "com.vaadin.componentfactory:autocomplete:2.3.2"
+vaadin-browser-storage = "org.vaadin.componentfactory:browserstorage:1.0.0"
 vaadin-daterange = "com.vaadin.componentfactory:vcf-date-range-picker:2.0.0"
+vaadin-tooltip = "com.vaadin.componentfactory:tooltip:1.3.7"
 vaadin-pdfviewer = "org.vaadin.addons.componentfactory:vcf-pdf-viewer:2.0.1"
 
 vaadin-pdfbrowser = "org.vaadin.alejandro:pdf-browser:3.1.0"
 vaadin-socharts = "com.storedobject.chart:so-charts:2.4.1"
-vaadin-tooltip = "com.vaadin.componentfactory:tooltip:1.3.7"
 vaadin-signature = "de.f0rce.signaturepad:signature-widget:2.0.1"
 vaadin-test = "com.github.mvysny.kaributesting:karibu-testing-v10:1.3.12"
 
