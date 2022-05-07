@@ -52,6 +52,7 @@ cp $websiteDir/logo.svg $siteDir/assets/icons/
 copy_module bdd
 cp $prjDir/net.tangly.bdd/build/bdd-reports/bdd-report.adoc $siteDir/content/docs/bdd/
 
+copy_module bdd
 copy_module commons
 copy_module core
 copy_module dev
@@ -59,8 +60,12 @@ copy_module fsm
 copy_module gleam
 copy_module ui
 
+copy_domain_module agile
+copy_domain_module apps
+copy_domain_module collaborators
 copy_domain_module crm
 copy_domain_module invoices
 copy_domain_module ledger
 copy_domain_module products
 copy_domain_module shared
+copy_domain_module ui

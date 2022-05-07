@@ -49,7 +49,8 @@ https://www.mountaingoatsoftware.com/blog/the-difference-between-a-professional-
 
 === Improve Continuously You shall strive for mastery.
 
-The feeling when you reached a certain mastery level is truly awesome.
+The feeling having reached a certain mastery level is truly awesome.
+
 * Read a technical book each quarter,
 * Lean a new language or framework every two years,
 * Read books such as The pragmatic Programmer <<pragmaticprogrammer>>
@@ -111,4 +112,4 @@ How you do it is up to you.
 - [[[effectivejava, 8]]] Effective Java: Best Practices for the Java Platform (3^rd^ Edition). Joshua Bloch. 2018
 - [[[refactoring, 9]]] Refactoring: Improving the Design of Existing Code (2^nd^ Edition). Martin Fowler. 2018
 
-An extensive list of books can be found under link:../../ideas/learnings/books[Books].
+An extensive list of books can be found under link:../../../ideas/learnings/books/[Books].

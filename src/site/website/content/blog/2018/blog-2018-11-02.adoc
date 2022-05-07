@@ -69,7 +69,8 @@ Employ professional software craftsmen and deliver quality products.
 Follow your {ref-safe} approach, respect one of the https://v46.scaledagileframework.com/safe-core-values/[four core values] and one of the
 https://v46\.scaledagileframework.com/[five core competencies] of your method.
 
-See also my blogs link:../../2018/blog-2018-04-01[Pragmatic Craftsmanship], link:../../2018/blog-2018-06-01[Software Quality Graal], and
+See also my blogs link:../../2018/pragmatic-craftsmanship-professional-software-developer/[Pragmatic Craftsmanship],
+link:../../2018/blog-2018-06-01[Software Quality Graal], and
 _How healthy is your Product?_ article series for information about technical excellence.
 
 . link:../../2018/how-healthy-is-your-prodcut-source-code-check[Source Code Check]

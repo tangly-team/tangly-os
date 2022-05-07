@@ -211,6 +211,6 @@ The specialized stream _Optional<T>_ was added to provide a better approach.
 [bibliography]
 === Literature
 
-- [[[java-records, 1]]] link:../../blog/2020/java-records-are-here-available-in-jdk-14/[Java Records Are Here]
+- [[[java-records, 1]]] link:../../2020/java-records-are-here-available-in-jdk-14/[Java Records Are Here]
 - [[[jdk-16, 2]]] https://openjdk.java.net/projects/jdk/17/[Open JDK 16]
 - [[[jdk-17, 3]]] https://openjdk.java.net/projects/jdk/17/[Open JDK 17]

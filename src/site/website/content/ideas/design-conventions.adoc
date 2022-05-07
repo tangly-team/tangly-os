@@ -12,7 +12,7 @@ description: Design conventions for open source components
 :keywords: agile, architecture, design
 :company: https://www.tangly.net/[tangly llc]
 
-- === Audit Event Conventions
+=== Audit Event Conventions
 
 The _event_ field is one of the following values
 

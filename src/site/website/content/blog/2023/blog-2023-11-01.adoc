@@ -58,6 +58,10 @@ You can attend a course or read a book.
 The https://www.amazon.com//dp/B09WJP11JL/[OCP Oracle Certified Professional Java SE 17 Developer Study Guide: Exam 1Z0-829] is a great and cost-effective resource.
 You have access to all materials for less than forty dollars.
 
+The book provides a registration to a wiley account where you will have access to a test bank.
+Once activated, access to the test questions is available for one year for free
+footnote:[The registration process will verify that you own a copy of the book.].
+
 This book is for anyone from high school students to those beginning their programming journey to experienced professionals who need a review for the certification.
 
 === Mockup Questions

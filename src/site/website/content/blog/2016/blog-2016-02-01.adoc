@@ -32,10 +32,10 @@ _Yes, it is not without consequences for the organization_.
 
 Say your team is developing software products with {ref-scrum}. We have the following roles:
 
-* the stakeholders
-* the developers (Development Team)
-* the Scrum master (SM)
-* the product owner (PO)
+* The stakeholders
+* The developers (Development Team)
+* The Scrum master (SM)
+* The product owner (PO)
 
 The Scrum Team is the composition of the development team, Scrum master, and the product owner.
 
@@ -46,7 +46,7 @@ Every two weeks they have a new application version they can use, test, and get 
 This is the dream of every key account manager.
 
 Because a new release is available every two weeks, the stakeholders should also provide feedback every two weeks.
-They sometimes hate the pressure of agile and Scrum
+They sometimes hate the pressure of agile and Scrum.
 
 [CAUTION]
 ====

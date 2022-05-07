@@ -209,6 +209,7 @@ Here are some of the most critical DevOps metrics
 footnote:[The DevOps Research and assessment DORA has defined these key metrics and a strong correlation with high-performance organizations.]:
 
 image::2022-04-04-elite-dora-success.png[width=480,height=360,role=text-center]
+
 Elite teams have tremendeous overall performance when improving in the areas tracked through these metrics.
 
 [horizontal]
@@ -300,7 +301,7 @@ managing constraints on software development via techniques, individual skills, 
 Generally, this includes test-driven development, collective code ownership, continuous integration, _ego-less programming_ (Gerald Weinberg).
 Personal commitment to self-improvement in pursuit of software development as a craft is the driver for technical excellence.
 Test-Driven Development::
-Beck, 2014 - development driven by automated tests.
+development driven by automated tests _published by Beck, 2014_:
 . Red: Write a test that does not work.
 . Green: Make the test work quickly.
 . Refactor: Clear up all duplications made in the process to make the test work.
@@ -311,7 +312,13 @@ Unit testing frameworks are Xunit or NUnit for C# and .Net, Junit for Java, PyUn
 [bibliography]
 === References
 
-* [[[devops-sme, 1]]] link:../../2021/devops-for-small-applications/[DevOps for Small Applications]
+- [[[technical-debt, 1]]] link:../../2022/technical-debt/[Technical Debt]
+Marcel Baumann. 2022
+- [[[devops-sme, 2]]] link:../../2021/devops-for-small-applications/[DevOps for Small Applications]
 Marcel Baumann. 2021
-* [[[zero-defect, 2]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Advocate Zero Bug Policy in Your Projects]
+- [[[zero-defect, 3]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Advocate Zero Bug Policy in Your Projects]
 Marcel Baumann. 2020
+- [[[legacy-system-refactoring, 4]]] link:../../2020/legacy-systems-refactoring/[Legacy System Refactoring]
+Marcel Baumann. 2020
+- [[[how-healthy-is-your-product, 5]]] link:../../2018/how-healthy-is-your-product-delivery-pipeline-check/[How Healty is Your Product Delivery Pipeline]
+Marcel Baumann. 2018

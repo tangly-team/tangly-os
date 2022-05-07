@@ -169,7 +169,7 @@ Marcel Baumann. 2021
 Jeff Sutherland, Ken Schwaber. 2020
 - [[[cargo-cult, 7]]] link:https://en.wikipedia.org/wiki/Cargo_cult[Cargo Cult].
 Wikipedia
-- [[[devops-sme, 8]]] link:../../blog/2021/devops-for-small-applications/[DevOps for Small Applications].
+- [[[devops-sme, 8]]] link:../../2021/devops-for-small-applications/[DevOps for Small Applications].
 Marcel Baumann. 2021
 - [[[zero-defect, 9]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Advocate Zero Bug Policy in Your Projects].
 Marcel Baumann. 2020

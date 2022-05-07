@@ -14,10 +14,10 @@ of agile development approaches. It reflects current trends where more than 80 %
 The depth of the concepts shall be modulated to the knowledge of the participants. Primary goals are to establish comprehension on agile architecture and master
 a small set of techniques enabling the participant to define a component or a small application architecture.
 
-{{< attachments folder="swat-lectures" recursive=false exclude=".md,.adoc" title="SWAT Lectures" >}} Software Architecture and Techniques SWAT
+{{< attachments folder="swat-lectures" recursive=false exclude=".md,.adoc,.DS_Store" title="SWAT Lectures" >}} Software Architecture and Techniques SWAT
 lectures {{< /attachments >}}
 
-{{< attachments folder="swat-literature" recursive=false exclude=".md,.adoc" title="SWAT Recommended Literature" >}} Recommended readings for
+{{< attachments folder="swat-literature" recursive=false exclude=".md,.adoc,.DS_Store" title="SWAT Recommended Literature" >}} Recommended readings for
 the Software Architecture and Techniques SWAT lectures {{< /attachments >}}
 
 ## Modern Java and Selected JVM Languages Lectures
@@ -37,13 +37,13 @@ Key themes are:
   [Panama](https://openjdk.java.net/projects/panama/), and [Amber](https://openjdk.java.net/projects/amber/) and their impact on JVM programming
 - [Clojure](https://clojure.org/) and [Groovy](https://groovy-lang.org/) are extensively used to explain better implementations of the above concepts.
 
-{{< attachments folder="moja-lectures" recursive=false exclude=".md,.adoc" title="Modern Java Lectures" >}} Modern Java and Selected JVM
+{{< attachments folder="moja-lectures" recursive=false exclude=".md,.adoc,.DS_Store" title="Modern Java Lectures" >}} Modern Java and Selected JVM
 Languages Lectures {{< /attachments >}}
 
-{{< attachments folder="moja-literature" recursive=false exclude=".md,.adoc" title="Modern Java Recommended Literature" >}} Recommended readings
+{{< attachments folder="moja-literature" recursive=false exclude=".md,.adoc,.DS_Store" title="Modern Java Recommended Literature" >}} Recommended readings
 for the Modern Java and selected JVM languages lectures {{< /attachments >}}
 
 ## User Interfaces with Vaadin
 
-{{< attachments folder="ui-books" recursive=false exclude=".md,.adoc" title="User Interface Books" >}} Modern Java User Interfaces {{< /attachments >}}
+{{< attachments folder="ui-books" recursive=false exclude=".md,.adoc,.DS_Store" title="User Interface Books" >}} Modern Java User Interfaces {{< /attachments >}}
 

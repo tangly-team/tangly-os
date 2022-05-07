@@ -41,7 +41,7 @@ You do not need to pull requests when you are working collocated.
 I prefer pair programming and pair check-in sessions against the trunk.
 
 For a short introduction to how to start using Git in software projects, see the blog
-link:../../2017/git-local-repositories-for-impatient[Git Local Repositories for the Impatient].
+link:../../2017/git-local-repositories-for-the-impatient/[Git Local Repositories for the Impatient].
 
 === Create the Branch
 
