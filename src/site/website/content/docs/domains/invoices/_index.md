@@ -1,7 +1,7 @@
 ---
 title: "Invoices - Invoices Bounded Domain"
 linkTitle: "Invoices"
-weight: 25
+weight: 30
 ---
 
 The readme, user manual, documentation of the component and architecture consideration of the components.

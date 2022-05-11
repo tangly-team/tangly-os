@@ -30,11 +30,11 @@ CAUTION: Cost was back as the major driver in 2020. The COVID-19 pandemic had a 
 
 Instead, the top five reasons organizations opt for IT outsourcing in 2018 are:
 
-* Catalyst for innovation (64%) _means internal department cannot innovate fast enough_
-* Improvement of speed and time to market (63%) _means internal teams are slow_
-* Improvement of performance (54%) _means the company does not perform_
-* Enhancement of scalability and rapid elasticity (54%) _means organization is slow to react_
-* Access to new technology (51%) _means the company is stuck with obsolete technologies and processes_
+* Catalyst for innovation (64%) _means internal department cannot innovate fast enough_.
+* Improvement of speed and time to market (63%) _means internal teams are slow_.
+* Improvement of performance (54%) _means the company does not perform_.
+* Enhancement of scalability and rapid elasticity (54%) _means organization is slow to react_.
+* Access to new technology (51%) _means the company is stuck with obsolete technologies and processes_.
 
 The top five reasons organizations opt for IT outsourcing in 2020 are:
 
@@ -61,33 +61,33 @@ You must invest in cultural changes and adapt your processes to realize the full
 ^|Needs ^|Extended Team ^|Managed Team ^|Outsourced Team
 
 |_Needs_
-|Get additional development capacity for an existing team
-|Build a core development team to take over a product development
-|Team develops a custom solution for you. You get a finished product
+|Get additional development capacity for an existing team.
+|Build a core development team to take over a product development.
+|Team develops a custom solution for you. You get a finished product.
 
 |_Risk and Responsibility_
-|Stay fully in charge of product development and team management
-|Share the risks and responsibility with the team and maintain some flexibility
-|External team fully responsible for building the team and developing the product from discovery to final release
+|Stay fully in charge of product development and team management.
+|Share the risks and responsibility with the team and maintain some flexibility.
+|External team fully responsible for building the team and developing the product from discovery to final release.
 
 |_Flexibility_
 |Get maximum flexibility: interview the candidates, take all decisions, setup processes and policies.
 |Share our product vision and product roadmaps, make key technology decisions.
 The team ensures technology alignment, team training and motivation, professional growth and overall team management.
 |You provided ideas and requirements. The team delivers the product.
-Take full advantage of the team's expertise
+Take full advantage of the team's expertise.
 
 |_Team Composition_
-|Developers and a senior engineer to coach and support the developers
+|Developers and a senior engineer to coach and support the developers.
 |Full Scrum team with cross-functional team developers including senior designers, quality specialists, and architects.
-A Scrum master coaches the team and takes over member development and administration tasks
+A Scrum master coaches the team and takes over member development and administration tasks.
 |Full Scrum team with cross-functional team developers including designers, quality specialists, architects and DevOps.
 A Scrum master and product owner round up the team capabilities.
 
 |_Choose_
 |Distributed team with smaller size
 |Local development team and remote product owner.
-You keep product responsibility
+You keep product responsibility.
 |Local product development team You delegate product responsibility to the local team.
 |===
 
@@ -102,7 +102,7 @@ A time difference of zero to two hours between nearshore locations and EU countr
 It avoids exhausting jet lag.
 Software engineers can engage with our clients during their business hours, maximizing efficiency while enhancing productivity.
 Intellectual property protection::
-European security and privacy requirements such as those imposed by ISO, GDPR, PCI, and HIPAA are understood.
+European security and privacy requirements such as those imposed by ISO, GDPR, PCI and HIPAA are understood.
 Compliance with European legislation can be achieved.
 
 === Risks
@@ -111,7 +111,7 @@ Language::
 All documents and comments in the source code shall be legible for all team members.
 Discussions and remote conferences shall be held in a language available to all members. +
 A shoring strategy implies this language must be International English.
-All documents, emails, and chats must therefore be written in English.
+All documents, emails and chats must therefore be written in English.
 Your organization has to recognize this profound change and train all your collaborators to become fluent in written and spoken English.
 Cultural Barriers::
 The shored team collaborators shall be integrated in the company as respected and valuable colleagues.
@@ -125,7 +125,7 @@ Capabilities::
 Talent is a precious resource.
 Companies are fighting to acquire talented developers all over the world.
 You should have a clear strategy to acquire and retain talented engineers.
-The strategy should blend together why you are attractive for talents and why they should stay in your organization.
+The strategy blends together why you are attractive for talents and why they should stay in your organization.
 Agile Approaches::
 The various departments and locations should have similar approaches to agile frameworks and processes.
 A good solution is to standardize on {ref-scrum}.
@@ -136,7 +136,7 @@ Train and certify all collaborations in {ref-scrum} and your technology stack to
 Ask yourself if your company culture and processes treat all collaborators fairly.
 Is our company willing to:
 
-. Write all project documentation, source code, emails, and chats in English?
+. Write all project documentation, source code, emails and chats in English?
 . Hold all meetings, workshops and discussions in English?
 . Train all collaborators in cultural aspects?
 . Host physical meetings using round-robin on all locations?
@@ -147,6 +147,29 @@ Is our company willing to:
 . Provide the same trainings, certifications and conference access to all developers?
 . Support meritocracy?
 Any role can be held by a local or a remote collaborator?
+
+=== Next Development
+
+The Corona crisis has pushed collaborators to work from home over a long period.
+I also observe that quite a few team are heavily distributed geographically and often live in different countries.
+
+This constellation is not more a nearshore team.
+The organization has moved to an all-remote setup without common office location
+footnote:[Companies such as GitLab, SonarCloud, Attlassian adopted this model years ago.].
+
+All-remote work promotes:
+
+* Hiring and working from all over the world _instead of from a central location_.
+* Flexible working hours _over set working hours_.
+* Writing down and recording knowledge _over verbal explanations_.
+* Written processes _over on-the-job training_.
+* Public sharing of information _over need-to-know access_.
+* Opening up documents for editing by anyone _over top-down control of documents_.
+* Asynchronous communication _over synchronous communication_.
+* The results of work _over the hours put in_.
+* Formal communication channels _over informal communication channels_.
+
+Beware that all-remote approach is a disruptive cultural change for a traditional organization with offices.
 
 [bibliography]
 === Literature

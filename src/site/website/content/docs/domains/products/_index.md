@@ -1,7 +1,7 @@
 ---
 title: "Products - Products Bounded Domain"
 linkTitle: "Products"
-weight: 35
+weight: 40
 ---
 
 The readme, user manual, documentation of the component and architecture consideration of the components.

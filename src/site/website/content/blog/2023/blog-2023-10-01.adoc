@@ -15,7 +15,7 @@ image::2023-10-01-head.png[width=420,height=360,role=left]
 
 Why is visibility so important for any agile or Scrum team?
 
-When you are running an Agile project, your ultimate goal is customer satisfaction with the delivered product.
+When you are running an agile product development initiative, your ultimate goal is customer satisfaction with the delivered solution.
 
 The project coordination responsibilities are however not limited to this.
 The product owner shall nurture the vision, roadmap, the release plan and customer journey.
@@ -26,10 +26,11 @@ You must coordinate the workflow of your team, refine the product backlog, contr
 
 Various practices exist to forecast product development progress, like burn-downs, burn-ups, or cumulative flow diagrams.
 
-While proven useful, these do not replace the importance of *empiricism.
+While proven useful, these do not replace the importance of *empiricism*.
+
 In complex environments, what will happen is unknown.
 Only what has already happened may be used for forward-looking decision making.
-Visual aids optimally implement the Scrum pillars of transparency, inspection, and adaptation.
+Visual aids optimally implement the Scrum pillars of _transparency_, _inspection_ and _adaptation_.
 
 [quote,Peter Drucker]
 ____
@@ -46,7 +47,8 @@ ____
 
 image::2023-10-01-visibility-accountability.png[width=420,height=360,role=left]
 
-Visibility ensures that trust, reliability, and accountability exist in a team.
+Visibility ensures that trust, reliability and accountability exist in a team.
+
 Diagrams are information radiators.
 They provide easy and legible access to progress information.
 
@@ -55,7 +57,7 @@ Or doing lots of things completely _wrong_.
 
 This kind of doubt is one of the fastest ways to find yourself in a quagmire of unfinished work.
 
-Making your work visible raises expectation and luckily it also raises opinions of you.
+Making your work visible raises expectation and luckily it raises opinions of you.
 
 The time wasted extracting progress status out of a teammate or following up on interdependent tasks *will* make you risk failing your sprint.
 
@@ -66,9 +68,10 @@ They are in the dark _which leads to uncertainty_.
 They tend to assume something is either being done or not being done and either get stuck into it themselves.
 
 How reliable you are depends on how transparent you are about what you have taken responsibility for.
+
 And how much your team can trust you to handle it to completion without causing stress to the team.
 
-The agile community experiments with various approches to visualize what is going on.
+The agile community experiments with various approaches to visualize what is going on.
 
 image::2023-10-01-burndown-diagrams.png[width=420,height=360,role=left]
 
@@ -78,7 +81,7 @@ It is a valuable tool to use as a thermometer or symptom checker.
 
 Flatlining is a symptom of a few things:
 
-- You are working on too many stories at a time – lots of nothing gets done very slowly.
+- You are working on too many stories at a time. You are doing lots of nothing, progress gets done very slowly.
 We recommend to introduce https://en.wikipedia.org/wiki/Work_in_process[WIP] limits.
 - Your team hast too many started but unfinished stories at the end of the sprint.
 We recommend institutionalizing https://en.wikipedia.org/wiki/Pair_programming[pair programming] and https://en.wikipedia.org/wiki/Mob_programming[mob programming].
@@ -106,12 +109,12 @@ The diagram are available for sprints, epics, releases and products.
 These diagrams show the bottlenecks due to team member specializations or dependencies to external actors.
 Velocity visualization::
 Business can envision and calculate when they can potentially release a product or subset of a product based on how fast the team is working.
-If the backlog has been estimated and refinement done properly, the number of story points it contains should be comparable to the velocity the team has been achieving sprint after sprint.
+If the backlog has been estimated and refinement done properly, the number of story points it contains should be comparable to the velocity the team has been achieving sprint after sprint. +
 Remember estimation cannot be a single value.
 It must be a set of values with a success probability for each value.
-You did learn gaussian curves during your school time.
-An average velocity can be applied to the total number of story points in the backlog.
-With this information, the business can plan on tentative release dates.
+You did learn gaussian curves during your school time. +
+An average velocity can be applied to the total of story points in the backlog.
+With this information, business can plan on tentative release dates.
 
 [.float-group]
 --
@@ -121,32 +124,36 @@ image::2023-10-01-cumulative-diagrams-scrum.jpg[width=420,height=360]
 image::2023-10-01-cumulative-diagrams.jpg[width=420,height=360]
 --
 
-* Effective work effort per Sprint * Issues Flow diagrams
+Experienced teams sometimes use additional visual aids to improve effectivity:
+
+* Effective work effort per Sprint
+* Issues Flow diagrams
 
 === DevOps Visual Aids
 
 DORA diagrams are similar visual aids focused of https://en.wikipedia.org/wiki/DevOps[DevOps] activities
 
-image::2023-10-01-dora-metrics.png[width=640,height=360,role=text-center]
+image::2023-10-01-dora-metrics.png[width=80%,height=360,role=text-center]
 
-* Deployment frequency (DF)
-* https://en.wikipedia.org/wiki/Lead_time[Lead time] for changes (LT), you can also compute the average age of issues and cumulative flow diagrams for issues
-* https://en.wikipedia.org/wiki/Mean_time_to_recovery[Mean time to recovery] _MTTR_
-* Change failure rate (CFR)
+* Deployment frequency (DF).
+* https://en.wikipedia.org/wiki/Lead_time[Lead time] for changes (LT), you can also compute the average age of issues and cumulative flow diagrams for issues.
+* Change failure rate (CFR).
+* https://en.wikipedia.org/wiki/Mean_time_to_recovery[Meantime to recovery] _MTTR_
+_Called time to restore service in the above dashboard_.
 
 === GitHub Tools
 
-GitHub is a web development platform that is inspired by your work style.
+https://github.com[GitHub] is a web development platform that is inspired by your work style.
 It enables you to handle software development projects side-by-side with 40 million developers.
 
 The main features are:
 
-* The tool features built-in review options to host and review code.
-* Integrate with apps you can find on GitHub Marketplace.
+* The tool features built-in review options for hosting code and review changes.
+* Integrate with apps you can find in GitHub Marketplace.
 * Coordinate tasks, stay tuned, and optimize output whatever the size of the team.
 * Write up comprehensive documents specifying all the awesome features of the software you develop.
 * Store all your code in one place.
-The platform with its 100+ million hosted projects provides repositories equipped with tools to help you host, version, and release private, public, or open-source code.
+The platform with its 100+ million hosted projects provides repositories equipped with tools to help you host, version and release private, public, or open-source code.
 
 The updated projects functions better support agile approaches such as Scrum or Kanban.
 
@@ -155,11 +162,15 @@ Start small, learn, and adapt your development tools.
 
 === Lessons Learnt
 
-Visual aids to check the state of your product development support teams to take improvements as a daily activity
+Visual aids improve your understanding of your product state.
+They support teams to take improvements as a regular activity.
 https://en.wikipedia.org/wiki/PDCA[PDCA] is easier to implement with realtime visual checks.
 
+Lean approaches strongly advocate visual aids to display process state and identify areas of improvements.
+Time-based diagrams show changes over time.
+
 A picture is worth a thousand words.
-The visualization of facts often help to identify improvement potential.
+The visualization of facts often helps to identify improvement potential.
 The same diagrams measure the success of specific improvement measures.
 One well-documented successful approach are the four DORA metrics and associated graphs.
 

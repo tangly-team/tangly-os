@@ -204,6 +204,9 @@ Addison-Wesley. 2021. ISDN 978-0136915713
 .*DevOps*
 [%collapsible]
 ====
+* https://www.amazon.com/dp/B01DCPXKZ6[Site Realibility Engineering: How Google Runs Production Systems].
+Niall Richard Murphy, Betsy Meyer, Chris Jones.
+O'Reilly. 2016
 * https://www.amazon.com/dp/B07B9F83WM[Accelerate: Building and Scaling High Performing Technology Organizations].
 Nicole Forsgren & Jez Humble & Gene Kene.
 IT Revolution. 2018

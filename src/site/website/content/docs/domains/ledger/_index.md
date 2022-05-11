@@ -1,7 +1,7 @@
 ---
 title: "Ledger - Ledger Bounded Domain"
 linkTitle: "Ledger"
-weight: 30
+weight: 35
 ---
 
 The readme, user manual, documentation of the component and architecture consideration of the components.

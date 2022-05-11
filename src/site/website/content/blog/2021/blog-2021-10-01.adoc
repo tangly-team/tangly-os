@@ -53,6 +53,8 @@ Refactoring implies you have extensive integration and unit tests available.
 
 === Ideas
 
+Explore approaches to improve the qaulity and adequacy of your architecture:
+
 . Architect products, evolve from projects to products,
 . Focus on quality attributes, not on functional requirements,
 . Delay design decisions until they are absolutely necessary,
@@ -60,7 +62,13 @@ Refactoring implies you have extensive integration and unit tests available.
 . Architect for build, test, deploy, and operate,
 . Model the organization of your teams after the design of the system you are working on.
 
-image::2021-10-01-agile-design.png[width=420,height=360,role=left]
+[quote, Melvin E. Conway]
+____
+Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization’s communication structure.
+____
+
+image::2021-10-01-agile-design.png[width=90%,height=360,role=text-center]
+Agile digital product architects are aware of:
 
 . Allow architecture to emerge,
 . Software architecture is *not* about big design up front,

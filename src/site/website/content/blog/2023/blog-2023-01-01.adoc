@@ -13,7 +13,7 @@ tags: ["agile"]
 
 image::2023-01-01-head.png[width=420,height=360,role=left]
 
-It is not unusual for businesses to turn to third-party companies when they want help to accomplish their goals without increasing internal overhead.
+It is not unusual for businesses to turn to third-party companies when they want help to achieve their goals without increasing internal overhead.
 
 This type of outsourcing is especially common for projects that require tremendous amounts of effort or specific skill sets.
 
@@ -25,7 +25,7 @@ It often makes sense for businesses trying to tackle a massive software developm
 A professional and planned approach greatly improves the odds of success for the partnership:
 
 Identify Decision Criteria::
-Decide on your internal team that will help with making and supporting the decision.
+Decide on your internal team, which help with making and supporting the decision.
 Put together a _must-have_ checklist for the capabilities required from a software solution company. +
 +
 Research different approaches and methodologies to discuss with your potential business partner.
@@ -42,17 +42,18 @@ Avoid choosing a company just because they work with trendy technologies or beca
 +
 The length of time they have been in business can be important.
 The length of time they have worked with their own clients can be more telling of the level of expertise they provide.
-Evaluate Costs, Processes, and Tools::
+Evaluate Costs, Processes and Tools::
 You may be tempted to select the lowest cost option but be cautious.
 The software company with the lowest bid might not be the most cost-effective.
-You risk choosing a partner that will go fast but make mistakes, or one that will complete chunks of the work and then need to redo them to match your standards. +
+You risk choosing a partner that will go fast but make mistakes, or complete chunks of the work and then need to redo them to match your standards. +
 +
 Do not risk quality and reputation for a good price.
 Ask about change orders.
 Many companies will underbid a project and later add on new charges throughout the project.
 It results a dramatic increase in the overall cost of development. +
 +
-While it is true that aspects of your project will change during the development process, experienced software development companies should help you understand how they will handle changes while protecting both your budget and your timeline. +
+It is true that aspects of your project will change during the development process.
+Experienced software development companies should help you understand how they will handle changes while protecting both your budget and your timeline. +
 +
 Discuss the thorny aspect of scale up and down your external development team. +
 What are the consequences for you and your partner?
@@ -60,7 +61,7 @@ What are the consequences for you and your partner?
 Consider the Location::
 Where will you want your external development partner to be <<agile-near-shore>>? +
 +
-If it is important that they can integrate with your team and work onsite frequently, you might want to only look at local software companies.
+If it is important that they can integrate with your team and frequently work onsite, you might want to only look at local software companies.
 Evaluate travel time and not the distance to your partner offices. +
 +
 If you are open to working remotely with an onshore company, hold early conversations using the potential conferencing, documentation and chat systems.
@@ -106,12 +107,12 @@ Hosting and Operations::
 * How and where are the servers hosted?
 Self-hosted or external providers have an impact on the applicable legal context.
 * Where are the server instances physically located?
-* Backup and restore policy including location of backup and how they are protected
+* Backup and restore policy including location of backup and how they are protected.
 * DevOps aspects: monitoring, alarming, logging, audit logs, security policy.
 Is the deployment on the various staging areas automated?
 How is the process of deploying a new version?
 * How is the process of updating a productive application when security alarms are issued?
-* SLA document
+* Document your decisions with a formal SLA document.
 Software Development::
 ** Where are the team members located?
 Are they collocated, in the same area, in the same timezone, distributed over multiple timezones?
@@ -120,10 +121,11 @@ Are they collocated, in the same area, in the same timezone, distributed over mu
 * Which training and certification do the senior developers and architects have to perform their work?
 * Which languages are the team members proficient in?
 * Which approaches are used for source code management?
-Where are the source artifacts stored? Can our collaborators have read access to all artifacts under source code management?
+* Where are the source artifacts stored?
+* Can our collaborators have read access to all artifacts under source code management?
 Governance and Methods::
 * Which approaches are used for insuring the quality of the written source code?
-* How is technical documentation such as installation scripts, design decisions, component documents written and managed?
+* How is the technical documentation such as installation scripts, design decisions, component documents written and managed?
 * Could you provide your coding guidelines and documentation guidelines?
 * Are modern approaches such as domain-driven design, unit testing, acceptance testing, continuous integration, continuous delivery in place?
 * How can involved people have read-access to all artifacts?
@@ -138,6 +140,8 @@ Build Partnership::
 Respect your partner.
 You will work together for years.
 Both parties shall be interested in improving the delivered solutions and increasing product success.
+
+Challenge yourself and your partner to improve the quality and efficiency of delivered digital solutions.
 
 All involved companies and people shall harvest the fruits of success.
 

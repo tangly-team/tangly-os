@@ -61,11 +61,11 @@ Logic::
 contains common business logic and features.
 Elaborate domains can contain quite a few business features.
 Use a package structure increasing legibility and enforcing separation of concerns.
-Ports:::
+Ports::
 contains the services receiving data and events from the environment.
-Handlers:::
+Handlers::
 contains the services providing data and events to the environment and to other applications.
-Realm:::
+Realm::
 contains the repository functions to persist and create domain entities and object values.
 The current approach uses the https://microstream.one/[MicroStream] library.
 The amount of code to persist the domain model is minimal and non-intrusive

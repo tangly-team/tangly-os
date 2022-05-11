@@ -13,7 +13,8 @@ tags: ["agile"]
 
 image::2022-04-03-head.jpg[width=420,height=360,role=left]
 
-Effective https://en.wikipedia.org/wiki/Product_management[product management] is driven by a customer-centric mindset in which the customer is placed at the center of every decision.
+Effective https://en.wikipedia.org/wiki/Product_management[product management] is driven by a customer-centric mindset.
+The customer is placed at the center of every decision.
 
 Supported by tools and techniques such as https://en.wikipedia.org/wiki/Design_thinking[design thinking], this mindset focuses the entire organization on creating desirable, viable, feasible, and sustainable solutions.
 
@@ -61,7 +62,7 @@ Seldom do they put similar effort in the development teams in charge of their pr
 Product managers collaborate with agile functional teams to build the required functionality.
 
 Understand customer needs::
-As the representative of the customer, product management leverages market research and continuous exploration to continually understand customer and market needs.
+As the representative of the customer, product management leverages market research and continuous exploration to continually understand your customer and market needs.
 Design thinking tools, ranging from personas, empathy maps, journey maps, and story maps are used to communicating these to the development teams.
 Ensure product completeness::
 Product management is responsible for ensuring the product is considered _whole and complete_ from a defined customer’s perspective.

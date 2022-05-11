@@ -39,7 +39,7 @@ ____
 
 If you are not familiar with the so-called Spotify model, check out https://blog.crisp.se/[Kniberg’s blog posts] at Crisp as well as these popular videos many people refer to Spotify Engineering Culture https://www.youtube.com/watch?v=4GK1NDTWbkY&t=207s[Part 1] and https://www.youtube.com/watch?v=vOt4BbWLWQw&t[Part 2].
 
-image::2021-12-01-failure-culture.png[width=420,height=360,role=text-center]
+image::2021-12-01-failure-culture.png[width=90%,height=360,role=text-center]
 
 Do not scale agile…descale your organization::
 Henrik starts with this quote which directly conflicts with the 5% of people who claim to be scaling agile using Spotify.

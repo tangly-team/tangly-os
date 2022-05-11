@@ -30,7 +30,7 @@ Your sole goal is to optimize the process to produce the best products, not to r
 It is the sole responsibility of the Scrum team to guaranty the quality of their product.
 Scrum teams also learnt you cannot win against big corporations.
 So you have to define solutions satisfying the QA departments with minimal overhead and almost no undone work.
-We have experience working with quality insurance and TUV or FDA driven regulatory departments.
+We have experience working with quality insurance and https://en.wikipedia.org/wiki/Technischer_%C3%9Cberwachungsverein[TUV] or https://en.wikipedia.org/wiki/Food_and_Drug_Administration[FDA] driven regulatory departments.
 We use the following approaches to handle the needs of the regulatory departments, seen as stakeholders in the Scrum terminology.
 
 * Use static analysis tools such as https://pmd.github.io/[PMD], https://checkstyle.sourceforge.io/[Checkstyle], http://findbugs.sourceforge.net/[Findbugs]
@@ -46,11 +46,11 @@ The plugin allows you to generate nice looking reports and to implement the find
 By slightly extending the logging features of JUnit and by using code coverage tools you can create reports showing which source code was tested.
 Add some annotations to your test cases, and you have full traceability to your stories and associated software requirements.
 With a small amount of work you can generate thousands of pages of information and provide the PDF documents to the regulatory department.
-These documents are also TUV and FDA compliant.
+These documents are also https://en.wikipedia.org/wiki/Technischer_%C3%9Cberwachungsverein[TUV] and https://en.wikipedia.org/wiki/Food_and_Drug_Administration[FDA] compliant.
 * Use https://en.wikipedia.org/wiki/Behavior-driven_development[Behavior Driven Development] approach and create acceptance criteria for all your stories.
 Using the reporting features of https://easyb.io/[easyb], you can create acceptance test reports for all your stories.
 It generates hundreds of pages of information and provides the PDF documents to the regulatory department.
-These documents are also TUV and https://en.wikipedia.org/wiki/Food_and_Drug_Administration[FDA] compliant.
+These documents are also https://en.wikipedia.org/wiki/Technischer_%C3%9Cberwachungsverein[TUV] and https://en.wikipedia.org/wiki/Food_and_Drug_Administration[FDA] compliant.
 * Use continuous integration servers to run all the above measures and generate the documentation at the end of each sprint or release.
 * Link you version control system with your continuous server, issue tracking system and unit tests.
 So you can generate release notes stating the list of closed issues with the associated source code and unit tests verifying the correctness of the change.

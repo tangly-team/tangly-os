@@ -2,7 +2,7 @@
 title: "Introducing DevOps Ideas"
 linkTitle: "Introducing DevOps Ideas"
 date: 2022-04-21
-tags: ["agile"]
+tags: ["agile", "devops"]
 ---
 
 == Introducing DevOps Ideas
@@ -46,7 +46,8 @@ These toolchains are expected to fit into one or more of the following categorie
 
 [NOTE]
 ====
-Major product development platforms https://gitlab.com/[GitLab], https://github.com/[GitHub], or https://bitbucket.org/dashboard/overview[BitBucket] are classical examples of complete toolchains integration.
+Major product development platforms https://gitlab.com/[GitLab], https://github.com/[GitHub] or https://bitbucket.org/dashboard/overview[BitBucket]
+are classical examples of toolchains integration.
 ====
 
 DevOps teams practice daily:
@@ -95,7 +96,7 @@ Any DevOps engineer's has expertise in Git, and platforms such as GitHub, GitLab
 Infrastructure as Code _IaC_ is used to build and deploy digital products.
 Documentation is always synchronized with the source artifacts.
 Approaches such as static websites are preferred.
-Continuous Integration and Delivery (CI/CD)::
+https://en.wikipedia.org/wiki/Continuous_integration[Continuous Integration], https://en.wikipedia.org/wiki/Continuous_deployment[Continuous Deployment], https://en.wikipedia.org/wiki/Continuous_delivery[Continuous Delivery] (CI/CD/CD)::
 As for this one, you should look for Jenkins, TeamCity, GitHub, GitLab, or Bitbucket.
 All products are built and packaged using continuous integration and continuous delivery approaches.
 No manual steps are required to package a release for production.
@@ -104,7 +105,7 @@ Testing and Automation Tools::
 One of the duties of a DevOps engineer is to speed up the delivery of software to the clients.
 Most companies care about the quality of their software and testing has become an essential part of DevOps engineers' job.
 Functional and non-functional testing techniques and tools are used to guaranty quality of the installed solutions.
-It provides the obvious benefits of automation, and also helps DevOps engineers save a lot of time.
+It provides the obvious benefits of automation, and helps DevOps engineers save a lot of time.
 Containers and Cloud Services::
 Containers such as Docker and Kubernetes are used to deploy digital solutions.
 Microsoft Azure, Google Cloud, Amazon Web Services are some examples.
@@ -130,8 +131,8 @@ Collaboration and Integration::
 Security can only be achieved through collaboration, not confrontation.
 Pragmatic Implementation::
 They focus on application development to ensure safety, privacy and trust in the digital society.
-Organizations shall be able to approach security in DevOps in a pragmatic manner.
-Bridging the divide between Compliance and Development::
+Organizations shall be able to pragmatically approach security in DevOps.
+Bridge the Divide between Compliance and Development::
 The key to addressing the gap between compliance and development is to identify applicable controls, translating them to appropriate software measures and identifying inflection points within the software lifecycle where these controls can be automated and measured.
 Automation::
 Software quality can be better by improving the thoroughness, timeliness and frequency of testing.
@@ -170,7 +171,7 @@ The developing team can quickly rectify errors or hiccups in the workflow withou
 * You have a documented process to mitigate proactively potential security, performance and governance issues.
 A governance goal could be to always update libraries once a security defect is corrected.
 Empiricism and data are the building block to quality and sustainable improvements.
-Continuous Improvement:: Take small steps.
+https://en.wikipedia.org/wiki/Continual_improvement_process[Continuous Improvement]:: Take small steps.
 Measure number of improvements, average lead time, and improvement impact.
 * Each product development team has a continuous improvement initiative.
 The measures for the next releases are documented and progress is tracked.
@@ -208,7 +209,7 @@ A vendor-agnostic checklist is https://devopschecklist.com/[the DevOps checklist
 Here are some of the most critical DevOps metrics
 footnote:[The DevOps Research and assessment DORA has defined these key metrics and a strong correlation with high-performance organizations.]:
 
-image::2022-04-04-elite-dora-success.png[width=480,height=360,role=text-center]
+image::2022-04-04-elite-dora-success.png[width=90%,height=360,role=text-center]
 
 Elite teams have tremendeous overall performance when improving in the areas tracked through these metrics.
 

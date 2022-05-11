@@ -2,7 +2,7 @@
 title: "Corporate Governance for Software Products"
 linkTitle: "Corporate Governance"
 date: 2023-07-10
-tags: ["agile", "series-students"]
+tags: ["agile", "devops"]
 ---
 
 == Corporate Governance for Software Products
@@ -14,14 +14,20 @@ tags: ["agile", "series-students"]
 image::2023-07-01-head.jpg[width=420,height=360,role=left]
 
 Since good governance is about the processes for making and implementing decisions, then effective governance and accountability structures are vital.
-Particularly if organizations are to successfully use an agile approach to deliver business change through the investment of programmes and projects.
 
-The four guiding principles to enable successful governance of Agile delivery are:
+Organizations shall successfully use an agile approach to deliver business change through the investment of programmes and projects.
 
-. Governance should mirror the Agile manifesto principles, particularly the art of simplicity – maximizing the work not done is essential-.
-. Agile delivery teams decide on the empirical performance metrics they will use and self-monitor.
-. Collaboration is an essential change in mindset.
-. Independent reviews of Agile delivery should focus on the teams’ behaviours and practices and not just processes and documentation.
+Agile approaches are the most used frameworks to develop successfully digital products.
+Our corporate governance processes shall support agile values and development methods.
+
+The four guiding principles to enable successful governance of agile delivery are:
+
+. Governance should mirror the Agile manifesto principles, particularly the art of simplicity.
+_You shall maximize the work not done_.
+. Agile delivery teams decide on the empirical performance metrics they will use.
+They shall self-monitor to learn.
+. Collaboration is an essential change in your mindset.
+. Independent reviews of agile delivery should focus on the behaviours and practices and not just the processes and documentation.
 
 Agile governance is about defining the fastest route that brings the most value.
 By focusing on the things that matter, we apply an agile focus on governance and how to manage programme and project risks effectively.
@@ -65,7 +71,7 @@ Governance typically addresses areas such as:
 * Adoption of a reward and compensation structure to support the attraction and retention of excellent staff
 * Strategies to share information throughout the organization
 
-Disciplined Agile® (DA™) promotes a lean approach to governance.
+https://www.pmi.org/disciplined-agile[Disciplined Agile] promotes a lean approach to governance.
 Lean governance is the leadership, organizational structures and streamlined processes to enable everyone to work together effectively in sustaining and extending the organization’s ability to produce meaningful value for its customers.
 There are several reasons why a lean governance strategy is important for your organization’s success.
 Lean governance strives to ensure that:
@@ -95,10 +101,10 @@ Your organization isn’t just a collection of teams.
 It is an ecosystem of teams working together, supported by culture, ways of working, organizational structures, and technologies.
 All aspects of your ecosystem need to be healthy for your organization to thrive.
 Everyone works in an open and collaborative manner::
-There are several ways that the DA™ tool kit promotes this.
-First, work is performed in an agile manner that is inherently open and collaborative.
+There are several ways that the DA toolkit promotes this. +
+First, work is performed in an agile manner that is inherently open and collaborative. +
 Second, all teams should present accurate and timely information to their stakeholders.
-For example, enterprise architects can make their work available to everyone, as can your portfolio management team, your data management team, and so on.
+For example, enterprise architects can make their work available to everyone, as can your portfolio management team, your data management team. +
 Third, everyone should be motivated to learn more about your organization, its strategy, its values, and how you intend to work together to achieve the outcomes you’ve set out for yourselves.
 All of these things will continue to be true now and in the future::
 Lean governance balances your short-term and long-term needs.
@@ -115,17 +121,21 @@ Sadly, many governance strategies prove to be ineffective in practice due to app
 
 Minimal set of security checks for regular compliance.
 
-OWASP::
-Penetration Tests::
+https://owasp.org/[OWASP]::
+Ensure compliance to https://owasp.org/www-project-top-ten/[OWASP Top Ten] and best practices.
+https://en.wikipedia.org/wiki/Penetration_test[Penetration Tests]::
+Implement regular penetration tests for all exposed solutions.
+https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures[CVE Mitigation Process]::
+Have a process to track and mitigate all published common vulnerabilities and exposures _CVE_ alerts relevant to your digital products.
 
 === Legal Requirements
 
 Respect the legal framework of your country and the contries in which your solution is deployed:
 
-Customer Protection::
-Customer Data Confidentiallity::
-Accessibility::
-Lawfull Respect (misogyny, xenophoby, racism, religious intelorance)
+- Customer Protection
+- Customer Data Confidentiallity
+- Accessibility
+- Lawfull Respect (misogyny, xenophoby, racism, religious intelorance)
 
 === Technical Good Practices
 

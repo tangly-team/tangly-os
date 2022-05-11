@@ -2,7 +2,7 @@
 title: "DevOps for Small Applications"
 linkTitle: "DevOps for SME"
 date: 2021-08-05
-tags: ["agile"]
+tags: ["agile", "devops"]
 ---
 
 == DevOps for Small Applications
@@ -12,7 +12,7 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2021-08-02-head.png[width=420,height=360,role=left]
-https://en.wikipedia.org/wiki/DevOps[DevOps] is the combination of cultural philosophies, practices, and tools that increases an organization’s ability to deliver at high velocity.
+https://en.wikipedia.org/wiki/DevOps[DevOps] is the combination of cultural philosophies, practices and tools that increase an organization’s ability to deliver at high velocity.
 
 It evolves and improves products at a faster pace than organizations using traditional software development and infrastructure management processes.
 This speed enables organizations to better serve their customers.
@@ -31,12 +31,12 @@ image::2021-08-02-devops-cycle.png[width=420,height=360,role=left]
 
 These teams practice automating processes that historically have been manual and slow.
 They use a technology stack and tooling which help them operate and evolve applications quickly and reliably.
-These tools also help engineers independently accomplish tasks that normally would have required help from other teams.
+These tools also help engineers independently carry out tasks that normally would have required help from other teams.
 This increases a team’s velocity.
 
 [IMPORTANT]
 ====
-You will automate every workflow in the long term to achieve speed and reliability.
+You will *automate* every workflow in the long term to achieve speed and *reliability*.
 
 You will merge your Scrum software development teams, quality assurance groups, operations teams and testing groups into single product teams.
 ====
@@ -58,7 +58,7 @@ Monitoring and logging practices help you stay informed of performance in real-t
 Scale::
 Operate and manage your infrastructure and development processes at scale.
 Automation and consistency help you manage complex or changing systems efficiently and with reduced risk.
-For example, infrastructure as code helps you manage your development, testing, and production environments in a repeatable and more efficient manner.
+For example, infrastructure as code helps you manage your development, testing and production environments in a repeatable and more efficient manner.
 Improved Collaboration::
 Build more effective teams under a DevOps cultural model, which emphasizes values such as ownership and accountability.
 Developers and operations teams collaborate closely, share many responsibilities, and combine their workflows.
@@ -100,7 +100,7 @@ Each service runs in its own process and communicates with other services throug
 Microservices are built around business capabilities; each service is scoped to a single purpose.
 You can use different frameworks or programming languages to write microservices and deploy them independently, as a single service, or as a group of services.
 
-Infrastructure as Code::
+https://en.wikipedia.org/wiki/Infrastructure_as_code[Infrastructure as Code]::
 Infrastructure as code is a practice in which infrastructure is provisioned and managed using code and software development techniques.
 Examples are version control and continuous integration.
 The cloud’s API-driven model enables developers and system administrators to interact with infrastructure programmatically.
@@ -126,7 +126,7 @@ A DevOps toolchain is a set or combination of tools that aid in the delivery, de
 
 image:2021-08-02-ci-cd-pipeline.png[role=center]
 
-Generally, DevOps tools fit into one or more activities, which supports specific DevOps initiatives: Plan, Create, Verify, Package, Release, Configure, Monitor, and Version Control.
+Generally, DevOps tools fit into one or more activities, which support specific DevOps initiatives: Plan, Create, Verify, Package, Release, Configure, Monitor, and Version Control.
 
 === What is Java DevOps?
 
@@ -141,7 +141,7 @@ After the merge, tests and automated builds are executed.
 This allows a team to find issues and quickly quash out bugs, improve the application’s quality and then cut the time needed to validate your apps.
 Often the step of https://en.wikipedia.org/wiki/Continuous_delivery[Continuous Delivery] is added to the pipeline. +
 _Use a platform such as gitLab, gitHub, BitBucket, or Azure DevOps.
-Use Gradle as build tool._
+Use Gradle as your build tool._
 https://en.wikipedia.org/wiki/Continuous_deployment[Continuous delivery]::
 This practice requires your team to release into production all code changes after it is written and then automatically built, and tested.
 If continuous integration puts your code changes onto a testing environment, continuous delivery puts it into a production environment.
@@ -152,7 +152,7 @@ Use Docker, Ansible to deploy._
 https://en.wikipedia.org/wiki/Microservices[Microservices]::
 DevOps make use of microservices.
 Instead of having one big monolithic Java application, your application is made up of smaller and independent applications. +
-_Use domain driven design DDD as architecture method.
+_Use domain driven design DDD as your architecture method.
 Prefer standalone applications embedding your application server._
 https://en.wikipedia.org/wiki/Infrastructure_as_code[Infrastructure as a code]::
 This practice means that infrastructure is allocated and then managed by using code and development techniques.
@@ -170,9 +170,6 @@ Because {ref-scrum} emerged as the dominant Agile framework in the early 2000s, 
 To practice DevOps effectively, software applications have to meet a set of architecturally significant requirements such as: deployability, modifiability, testability, and monitorability.
 You must continuously monitor your infrastructure, network and application.
 
-Although it is possible to practice DevOps with any architectural style, the microservices architectural style is becoming the standard for building continuously deployed systems.
-Small size service allows the architecture of an individual service to emerge through continuous refactoring,[69] hence reducing the need for a big upfront design, allows for releasing the software early[citation needed] and continuously.
-
 [CAUTION]
 ====
 You need a cultural change to implement successfully DevOps workflows.
@@ -181,11 +178,14 @@ Bigger companies often have trouble with the changes.
 Command and control cultures always fail.
 It boils down if your culture trusts your collaborators - often called https://en.wikipedia.org/wiki/Theory_X_and_Theory_Y[Theory X and Theory Y] beliefs.
 
-Interestingly the DevOps transformation is similar to an agile transformation.
-The approaches, recipes, and failures are very similar.
+Interestingly, the DevOps transformation is similar to an agile transformation.
+The approaches, recipes and failures are similar.
 
-Smaller organizations are regularly more affine with trust.
+Smaller organizations are often more affine with trust.
 ====
+
+Although it is possible to practice DevOps with any architectural style, the microservices architectural style is becoming the standard for building continuously deployed systems.
+Small size service allows the architecture of an individual service to emerge through continuous refactoring,[69] hence reducing the need for a big upfront design, allows for releasing the software early[citation needed] and continuously.
 
 [bibliography]
 === Literature

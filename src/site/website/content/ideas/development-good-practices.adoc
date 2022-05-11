@@ -28,12 +28,15 @@ description: good practices
 
 - Documentation
 -- JavaDoc
+-- Diagrams as Code
+--- plantUML [plantuml,diagram-name,svg,svg-type="interactive"]
 -- Code Snippets
 -- Integration Tests
 -- Hugo Docsy
 
 - Solutions
 -- Vaadin
+--- Vaadin session is 10 MB, 1000 parallel users are 10 GB
 -- Standalone Application
 -- Micro Stream
 

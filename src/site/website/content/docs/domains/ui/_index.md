@@ -1,7 +1,7 @@
 ---
 title: "ERP-UI - UI for ERP Bounded Domains"
 linkTitle: "ERP-UI"
-weight: 45
+weight: 50
 ---
 
 The readme, user manual, documentation of the component and architecture consideration of the components.
