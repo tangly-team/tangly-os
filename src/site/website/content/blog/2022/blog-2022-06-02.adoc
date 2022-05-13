@@ -73,3 +73,21 @@ For developers working on small projects with small development teams, developin
 If you are like many Java developers who are still working on a monolithic application, then employing modularization best practices can help make your application achieve some benefits of microservices without the associated cost of refactoring.
 
 However, modular monoliths have significant shortcomings when compared to microservices -- especially in terms of continuous testing, integration, and deployment.
+
+[bibliography]
+=== References
+
+- [[[domain-driven-design, 1]]] Domain-Driven Design: Tackling Complexity in the Heart of Software.
+Eric Evans.
+Addison-Wesley. 2004.
+- [[[implementing-ddd, 2]]] Implementing Domain-Driven Design.
+Vernon Vaughn.
+Addison-Wesley. 2013.
+- [[[ddd-distilled, 3]]] Domain-Driven Design Distilled.
+Vernon Vaughn.
+Addison-Wesley. 2016.
+- [[[clean-architecture, 4]]] https://www.amazon.com/dp/0132350882[Clean Code: A Handbook of Agile Software Craftsmanship].
+Robert C. Martin. 2018
+- [[[refactoring-database, 5]]] https://www.amazon.com/dp/B001QAP36E[Refactoring Databases: Evolutionary Database Design].
+Scott W. Ambler.
+Addison-Wesley. 2006

@@ -848,42 +848,33 @@ How you do it is up to you.
 [bibliography]
 == References
 
-- [[[software-craftsman,1]]] Sandro Mancuso.
-The Software Craftsman: Professionalism, Pragmatism, Pride.
+- [[[software-craftsman,1]]] https://www.amazon.com/dp/0134052501[The Software Craftsman: Professionalism, Pragmatism, Pride].
+Sandro Mancuso.
 Prentice-Hall 2015.
-
-- [[[clean-code, 2]]] Robert C Martin.
-Clean Code: A Handbook of Agile Software Craftsmanship.
+- [[[clean-code, 2]]] https://www.amazon.com/dp/0132350882[Clean Code: A Handbook of Agile Software Craftsmanship].
+Robert C Martin.
 Addison-Wesley 2009.
-
-- [[[clean-coder, 3]]] Robert C. Martin.
-Clean Coder: A Code of Conduct for Professional Programmers.
+- [[[clean-coder, 3]]] https://www.amazon.com/dp/0137081073[Clean Coder: A Code of Conduct for Professional Programmers].
+Robert C. Martin.
 Addison-Wesley 2011.
-
-- [[[clean-architecture, 4]]] Robert C Martin.
-Clean Architecture: A Craftsmanship's Guide to Software Structure and Design.
+- [[[clean-architecture, 4]]] https://www.amazon.com/dp/0134494164[Clean Architecture: A Craftsman's Guide to Software Structure and Design].
+Robert C Martin.
 Addison-Wesley 2018.
-
-- [[[clean-agile, 5]]] Robert C Martin.
-Clean Agile: Back to the Basics.
+- [[[clean-agile, 5]]] https://www.amazon.com/dp/0135781868[Clean Agile: Back to Basics].
+Robert C Martin.
 Addison-Wesley 2019.
-
-- [[[evolutionary-architecture, 6]]] Neal Ford, Rebecca Parsons, Patrick Kua.
-Building Evolutionary Architectures: Support Constant Change.
+- [[[evolutionary-architecture, 6]]] https://www.amazon.com/dp/1491986360[Building Evolutionary Architectures: Support for constant Change].
+Neal Ford, Rebecca Parsons, Patrick Kua.
 O'Reilly 2017.
-
-- [[[domain-driven-design, 7]]] Eric Evans.
-Domain-Driven Design: Tackling Complexity in the Heart of Software.
+- [[[domain-driven-design, 7]]] https://www.amazon.com/dp/0321125215[Domain-Driven Design: Tackling Complexity in the Heart of Software].
+Eric Evans.
 Addison-Wesley 2004.
-
-- [[[refactoring, 8]]] Martin Fowler.
-Refactoring: Improving the Design of Existing Code.
+- [[[refactoring, 8]]] https://www.amazon.com/dp/0134757599[Refactoring: Improving the Design of Existing Code, 2nd Edition].
+Martin Fowler.
 Addison-Wesley 1999.
-
-- [[[effective-java, 9]]] Joshua Bloch.
-Effective Java _Third Edition_.
+- [[[effective-java, 9]]] https://www.amazon.com/dp/B078H61SCH[Effective Java: Best Practices for the Java Platform, 3rd Edition].
+Joshua Bloch.
 Addison-Wesley 2018.
-
-- [[[java-by-comparison,10]]] Simon Harrer, Jörg Lenhard, Linus Dietz.
-Java By Comparison: Become a Java Craftsman in 70 Examples.
+- [[[java-by-comparison,10]]] https://www.amazon.com/dp/B07CLFTVZS[Java by Comparison: Become a Java Craftsman in 70 Examples].
+Simon Harrer, Jörg Lenhard, Linus Dietz.
 The Pragmatic Programmers 2018.

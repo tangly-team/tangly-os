@@ -59,7 +59,7 @@ Your teams should have business expertise.
 . Use Process Excellence and apply {ref-scrum}, XP, {ref-less} by the book:
 .. Discuss the core values of commitment, focus, openness, respect, and courage.
 .. Present again the agile manifesto and the twelve principles.
-.. Show the organization why commitment in the planning was replaced by forecast in the official Scrum guide.
+.. Show the organization why commitment in the planning was replaced by forecast in the official Scrum guide cite:[scrum-pocket-guide-3rd].
 .. Require a vision, a roadmap, a release plan with a story map and a refined backlog for each product and team.
 .. Tell why an impediment resolution backlog item shall be part of each iteration.
 .. Teach the importance of the definition of done for the internal quality of the product.
@@ -70,7 +70,7 @@ And explain why the definition of ready is often an anti-pattern.
 .. Pair Scrum master and technical master to implement a craftsmanship path and achieve product quality.
 .. Explore Center of Competencies to nurture your product development group.
 
-Once you are a master fell free to break the rules, experiment with new rules, approaches.
+Once you are a master fell free to break the rules, experiment with new rules, approaches cite:[great-scrum-master,succeeding-with-agile].
 Define hypotheses and verify them empirically.
 
 If you are coaching software development groups, acknowledge you shall possess a profound understanding of technical excellence and software development practices.
@@ -111,14 +111,11 @@ As a leader, you are capable of catalyzing growth and inspiring others to realiz
 Transforming::
 transforming is guiding sustainable change that will allow the individual teams and the organization to be more effective and learn how to change for themselves through leading, facilitation, coaching, facilitating learning, and advising.
 
-[bibliography]
-=== Literature
+=== References
 
-- [[[greatscrummaster, 1]]] https://www.amazon.com/dp/013465711X[The Great Scrum Master].
-Zuzana Šochová.
-Addison-Wesley. 2017
-- [[[professional-coaching, 2]]]
-https://blog.crisp.se/2021/06/30/mikaelbrodd/why-professional-coaching-matters-to-an-agile-coach[Why Professional Coaching Matters to an Agile Coach].
+bibliography::[]
+
+- https://blog.crisp.se/2021/06/30/mikaelbrodd/why-professional-coaching-matters-to-an-agile-coach[Why Professional Coaching Matters to an Agile Coach].
 Mikael Brodd.
 Crisp. 2021
 

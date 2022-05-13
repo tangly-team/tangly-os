@@ -17,7 +17,7 @@ Lately I was asked how many bugs and smells detected through SonarQube were acce
 And a Scrum master inquired which organizational changes are necessary to empower software developers to write good code.
 Speechless and dumbfounded, I was unable to answer these questions.
 
-After quite some time, I realized these people believe tools can measure the quality of software.
+After some time, I realized these people believe tools can measure the quality of software.
 But tools can only measure _non-quality_.
 
 They tell you when you are doing it wrong, only your heart can tell you when you are doing it right.
@@ -26,7 +26,7 @@ But first that does it mean to have a quality software product?
 
 [quote]
 ____
-A high quality software product has no catastrophic failures, and seldom bad behavior.
+A high-quality software product has no catastrophic failures, and seldom bad behavior.
 
 It is maintainable and extendable with new technologies and new features.
 ____
@@ -65,12 +65,12 @@ And, later be able to add a charger for your mobile phone without spending a for
 
 * Static code analysis - Known weaknesses are removed from your source code.
 * Test driven development TDD – You can change the code without changing the behavior or outputs, see also ATDD.
-* Clean code – You guarantee the source code is maintainable.
-* Clean architecture and domain driven development - You guarantee the product is extendable.
+* Clean code – You guarantee the source code is maintainable cite:[clean-code,clean-coder].
+* Clean architecture and domain driven development - You guarantee the product is extendable cite:[clean-architecture,domain-driven-design,implementing-domain-driven-design].
 
 === Accountability
 
-The Scrum Team - Development Team, Product Owner and Scrum Master - are responsible and accountable for the intrinsic and extrinsic quality of the delivered products.
+The Scrum Team - Development Team, Product Owner and Scrum Master - are responsible and accountable for the intrinsic and extrinsic quality of the delivered products cite:[clean-agile,succeeding-with-agile].
 Insufficient quality is always a collective failure.
 
 Truly, if the intrinsic quality of the source code is low, it is undeniably a failure.
@@ -87,7 +87,7 @@ ____
 Continuous attention to technical excellence and good design enhances agility.
 ____
 
-Developers please read the seminal book _Clean Coder_ <<cleancoder>> from Robert Martin.
+Developers please read the seminal book _Clean Coder_ from Robert Martin cite:[clean-coder].
 As a professional, you are responsible and accountable for the quality of the software you produce.
 
 I find intolerable to hear software professionals stating they are not in charge of the intrinsic quality of the product they write.
@@ -97,7 +97,7 @@ The above ideas are keys for https://tangly-blog.blogspot.com/2018/04/pragmatic-
 
 === Kaizen - Small Steps bring First Successes
 
-The first steps to improve your product are quite simple are around for at least twenty years.
+The first steps to improve your product are quite simple are around for at least twenty years cite:[pragmatic-programmer-2nd].
 
 * Eliminate all compiler errors and warnings.
 * Use static checkers.
@@ -127,15 +127,5 @@ _I acknowledge I am emotionally involved and not fully objective.
 Lately, I saw a Java code of three different commercial products.
 I am still recovering from the missing quality._
 
-[bibliography]
-=== Literature
+=== References
 
-- [[[cleancode, 1]]] Clean Code.
-Robert C Martin. 2009
-- [[[cleancoder, 2]]] Clean Coder.
-Robert C Martin. 2011
-- [[[cleanarchitecture, 3]]] Clean Architecture.
-Robert C Martin. 2018
-- [[[cleanagile, 4]]] Clean Agile, Robert C Martin. 2020
-- [[[pragmaticprogrammer, 5]]] The pragmatic Programmer: Your Journey to Mastery (20^th^ Anniversary Edition).
-Andrew Hunt & David Thomas. 2019

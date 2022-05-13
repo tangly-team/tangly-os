@@ -65,30 +65,31 @@ Personnel loss and Productivity variation.
 
 The examination reference list of PMI ACP is (the titles in italics are also part of the CAT reference list)
 
-.Agile Retrospectives: Making Good Teams Great, Esther Derby, Diana Larsen
-. Agile Software Development: The Cooperative Game – 2nd Edition, Alistair Cockburn
-. The Software Project Manager’s Bridge to Agility, Michele Sliger, Stacia Broderick
-. Coaching Agile Teams, Lyssa Adkins
-. Agile Project Management: Creating Innovative Products – 2nd Edition, Jim Highsmith
-. Becoming Agile: ...in an imperfect world, Greg Smith, Ahmed Sidky
-. Agile Estimating and Planning , Mike Cohn
-. The Art of Agile Development, James Shore
-. User Stories Applied: For Agile Software Development , Mike Cohn
-. Agile Project Management with Scrum, Ken Schwaber
-. Lean-Agile Software Development: Achieving Enterprise Agility, Alan Shalloway, Guy Beaver, James R
+. bibitem:[agile-retrospectives]
+. bibitem:[agile-sw-development]
+. bibitem:[software-project-manager-bridge]
+. bibitem:[coaching-agile-teams]
+. bibitem:[agile-project-management]
+. bibitem:[becoming-agile]
+. bibitem:[agile-estimation-and-planning]
+. bibitem:[art-of-agile-development]
+. bibitem:[user-stories-applied]
+. bibitem:[agile-project-management-with-scrum]
+. bibitem:[lean-agile-software-develpment]
 
 It is interesting to compare the above list with the reference list of the Certified Agile Tester CAT
 
-. Agile Testing – A Practical Guide for Testers and Agile Teams by Lisa Crispin and Janet Gregory
-. Succeeding with Agile: Software Development Using Scrum by Mike Cohn
-. Agile and Iterative Development: A Manager's Guide by Craig Larman
-. Agile Project Management with Scrum by Ken Schwaber
-. Agile Retrospectives: Making Good Teams Great by Esther Derby and Diana Larsen
-. User Stories Applied: For Agile Software Development by Mike Cohn
-. The Deadline by Tom de Marco
-. Peopleware: Productive Projects and Teams by Tom de Marco & Timothy Lister
+. bibitem:[agile-testing]
+. bibitem:[succeeding-with-agile]
+. bibitem:[agile-and-iterative-development]
+. bibitem:[agile-project-management-with-scrum]
+. bibitem:[agile-retrospectives]
+. bibitem:[user-stories-applied]
+. bibitem:[the-deadline]
+. bibitem:[peopleware]
+. bibitem:[extreme-programmking-explained]
 . Kanban by David J. Anderson
-. eXtreme Programming explained: Embrace Change by Kent Beck
+
 
 === Terminology and Acronyms
 

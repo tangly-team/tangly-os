@@ -2,7 +2,7 @@
 title: "Software Structure with DDD"
 linkTitle: "Structure with DDD"
 date: 2022-06-01
-tags: ["architecture", "java"]
+tags: ["architecture", "domain-driven-design", "java"]
 ---
 
 == Software Structure when using Domain Driven Design
@@ -12,11 +12,13 @@ tags: ["architecture", "java"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2022-06-01-head.jpg[width=420,height=360,role=left]
-https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Development] is now the preferred software architecture approach for designing new products.
-The method nicely matches with the concepts of microservices.
-Literature describes the approach and key concepts defining the development method.
 
-The theory and examples are quite sparse how to structure your code.
+https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Development] is the preferred software architecture approach for designing new digital products.
+The method nicely matches with the operational concepts of microservices.
+
+Seminal books <<domain-driven-design>> <<implementing-ddd>> <<ddd-distilled>> describes the approach and key concepts defining the development method.
+
+Concrete recipes and examples of code structure are sparse.
 How should you structure your namespaces and modules?
 
 We propose a simple and adequate code structure for implementation in modern Java.
@@ -25,7 +27,7 @@ The approach builds on the strengths of the Java packages and modules.
 The visibility rules of the language are used to enforce cohesion and minimize coupling.
 
 The described approach is ideal for small to medium software solutions.
-The source code size of a bounded domain is less than 50'000 lines of code.
+The source code size of a bounded domain is often less than 50'000 lines of code.
 
 [cite,Eric Evans,Domain-Driven Design: Tackling Complexity in the Heart of Software]
 ____
@@ -34,12 +36,13 @@ ____
 
 === Layers in DDD
 
-Domain driven design _DDD_ has four layers in the architecture:
+Domain-driven design _DDD_ has four layers in the architecture:
 
+[horizontal]
 Interface::
-This layer is in charge of the interaction with the user, whether software presents information or receives information from the user.
+This layer is in charge of the interaction with the user, whether software presents information to the user or receives information from the user.
 Application::
-This is a thin layer between interface and domain, it could call domain services to serve the application purposes.
+This is a thin layer between interface and domain, it could call domain services to serve the solution purposes.
 Domain::
 The heart of the software, this layer holds domain logic and business knowledge.
 Infrastructure::
@@ -52,6 +55,9 @@ A bounded domain shall be configured as a Java module.
 The exported services and entities are explicitly listed with the _exports_ directive.
 A huge advantage is the obligation to list all dependencies with the _requires_ directive.
 
+Modules dependencies and interfaces are validated by the Java compiler.
+
+[horizontal]
 Services::
 defines the bounded domain context.
 The domain uses the library to implement a bounded domain.
@@ -176,6 +182,7 @@ Teams can develop simulaneoulsy and independantly bounded domain features.
 
 There are five main types of relationships between Bounded Contexts:
 
+[horizontal]
 Partnership::
 a relationship between two contexts that cooperates to align the two teams with dependent goals
 Shared Kernel::
@@ -209,14 +216,21 @@ While the concepts are valid, you lose a lot if you limit yourself to using them
 ____
 
 [bibliography]
-=== Literature
+=== References
 
-* [[[domaindrivendesign, 1]]] Domain-Driven Design: Tackling Complexity in the Heart of Software.
+ [[[domain-driven-design, 1]]] Domain-Driven Design: Tackling Complexity in the Heart of Software.
 Eric Evans.
 Addison-Wesley. 2004.
-* [[[implmentingddd, 2]]] Implementing Domain-Driven Design.
+- [[[implementing-ddd, 2]]] Implementing Domain-Driven Design.
 Vernon Vaughn.
 Addison-Wesley. 2013.
-* [[[ddddistilled, 3]]] Domain-Driven Design Distilled.
+- [[[ddd-distilled, 3]]] Domain-Driven Design Distilled.
 Vernon Vaughn.
 Addison-Wesley. 2016.
+- [[[clean-architecture, 4]]] https://www.amazon.com/dp/0132350882[Clean Code: A Handbook of Agile Software Craftsmanship].
+Robert C. Martin. 2018
+- [[[refactoring-database, 5]]] https://www.amazon.com/dp/B001QAP36E[Refactoring Databases: Evolutionary Database Design].
+Scott W. Ambler.
+Addison-Wesley. 2006
+
+

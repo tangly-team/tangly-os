@@ -15,7 +15,7 @@ image::2018-04-01-head.png[width=420, height=360, role=left]
 The last months I was often confronted with software products having insufficient quality.
 
 Insufficient means late delivery, and few new features.
-The effort to correct errors in the field eats *30% to 50%* away from the whole development budget.
+The effort to correct errors in the field eats *30% to 50%* away from the development budget.
 How can such a dreadful situation occur?
 
 One root cause is the low quality of the source code and ignorance of basic coding design approaches.
@@ -27,23 +27,23 @@ Most of the programmers have no formal training in the technology stack they are
 Their best friend is the Internet.
 And as a consequence, many agile projects are now, steadily and iteratively producing mediocre software.
 
-You shall be a proud software craftsman.
+You shall be a proud software craftsman cite:[software-craftsman].
 You shall work as a professional and deliver professional results.
-I recommend for any Java developer
+I recommend any Java developer:
 
-* Have formal training in the Java language and library.
+* Have formal training in the Java language and library cite:[java-puzzlers].
 For example you should consider a Java Programmer certification for the current JDK you are working daily with.
 * Learn the new features in Java e.g. Streams, Lambdas, Reactive Programming, LocalDate, Modules, packaging with jlink.
-* Read and understand _Effective Java_ <<[effectivejava>> from Joshua Bloch.
-* Read and understand _Clean Code_ <<cleancode>>, _Clean Coder_ <<cleancoder>>, _Clean Architecture_ <<cleanarchitecture>> and _Clean Agile_ <<cleanagile>>.
-* Read and understand _Refactoring_ <<refactoring>> from Martin Fowler.
+* Read and understand _Effective Java_ cite:[effective-java-2nd] from Joshua Bloch.
+* Read and understand the clean series cite:[clean-code, clean-coder, clean-architecture,clean-agile, clean-craftsmanship].
+* Read and understand _Refactoring_ from Martin Fowler cite:[refactoring].
 * And read https://ronjeffries.com/xprog/articles/refactoring-not-on-the-backlog/[Refactoring not in the backlog] article from Ron Jeffries.
 * Learn modern practices such as logging with https://www.slf4j.org/[slf4j], TDD with https://junit.org/junit5/[JUnit5], http://site.mockito.org/[Mockito] and http://joel-costigliola.github.io/assertj/[AssertJ], ATDD with https://cucumber.io/[Cucumber].
 * Lean DevOps, continuous integration, continuous delivery, continuous deployment, monitoring.
 * Be aware of famous Java libraries such as https://github.com/google/guava[Guava], https://commons.apache.org/[Apache Commons].
 * Use https://www.sonarqube.org/[SonarQube] - and the https://www.sonarlint.org/[SonarLint] plugin for your preferred IDE - to catch well-known weaknesses in your source code and improve your coding skills.
 
-A software developer not knowing the above items is almost certainly not a professional person, just a more or less talented amateur.
+A software developer not knowing the above items is almost certainly not a professional person, just a more or less talented amateur cite:[clean-code,clean-coder].
 For a similar point of view, see the blog of Mike Cohn
 https://www.mountaingoatsoftware.com/blog/the-difference-between-a-professional-and-an-amateur[the difference between a professional and an amateur].
 
@@ -51,12 +51,12 @@ https://www.mountaingoatsoftware.com/blog/the-difference-between-a-professional-
 
 The feeling having reached a certain mastery level is truly awesome.
 
-* Read a technical book each quarter,
-* Lean a new language or framework every two years,
-* Read books such as The pragmatic Programmer <<pragmaticprogrammer>>
-* Know approaches such http://www.extremeprogramming.org/[eXtreme Programming], and read the book <<[extremeprogramming>>
+* Read a technical book each quarter.
+* Lean a new language or framework every two years.
+* Read books such as The pragmatic Programmer cite:[pragmatic-programmer-2nd].
+* Know approaches such http://www.extremeprogramming.org/[eXtreme Programming], and read the book cite:[extreme-programmking-explained].
 * Work with https://www.scrumguides.org/[Scrum], https://en.wikipedia.org/wiki/Kanban[Kanban], {ref-less} -.
-Agile approaches are definitively state of the industry techniques -,
+Agile approaches are definitively state of the industry techniques -.
 * Master container approaches with https://www.docker.com/[Docker] - containers are here to stay and will replace virtual machines -.
 
 You shall write good enough software without errors and using best practices of the industry.
@@ -81,35 +81,26 @@ Their manifesto is
 ____
 Craftsmanship is not enough to guarantee the success of a product, but the lack of it can be the main cause of its failure.
 
-Agile and Craftsmanship complement each other and both are necessary
+Agile and Craftsmanship complement each other and both are necessary cite:[clean-agile, clean-craftsmanship].
 
 Agile processes assume technical excellence and a professional attitude
 
-Software craftsmanship takes technical excellence and professionalism to a whole new level
+Software craftsmanship takes technical excellence and professionalism to a whole new level cite:[pragmatic-programmer-1st, pragmatic-programmer-2nd].
 ____
 
 Take everything you read with a grain of salt.
 Software craftsmanship is
 
-* not a church, trying to convert all developers,
-* about leading by example and showing how we can be better,
-* about well-written and designed code - and the customer stays in the center -,
-* about continuously delivering value not writing crap code.
+* Not a church, trying to convert all developers.
+* About leading by example and showing how we can be better.
+* About well-written and designed code - and the customer stays in the center -.
+* About continuously delivering value not writing crap code.
 
 Your goal shall to become a professional developer and reach mastery.
 How you do it is up to you.
 
-[bibliography]
-=== Literature
+=== References
 
-- [[[cleancode, 1]]] Clean Code. Robert C Martin. 2009
-- [[[cleancoder, 2]]] Clean Coder. Robert C Martin. 2011
-- [[[cleanarchitecture, 3]]] Clean Architecture. Robert C. Martin. 2018
-- [[[cleanagile, 4]]] Clean Agile. Robert C Martin. 2020
-- [[[pragmaticprogrammer, 5]]] The pragmatic Programmer: Your Journey to Mastery (20^th^ Anniversary Edition). Andrew Hunt & David Thomas. 2019
-- [[[extremeprogramming, 6]]] eXtreme Programming Explained: Embrace Change. Ken Beck. 2005
-- [[[softwarecraftsman, 7]]] The Software Craftsman: Professionalism Pragmatism Pride. Sandro Mancuso. 2015
-- [[[effectivejava, 8]]] Effective Java: Best Practices for the Java Platform (3^rd^ Edition). Joshua Bloch. 2018
-- [[[refactoring, 9]]] Refactoring: Improving the Design of Existing Code (2^nd^ Edition). Martin Fowler. 2018
+bibliography::[]
 
 An extensive list of books can be found under link:../../../ideas/learnings/books/[Books].

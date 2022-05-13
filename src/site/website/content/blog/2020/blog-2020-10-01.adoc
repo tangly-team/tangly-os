@@ -85,7 +85,7 @@ brew install hugo                         # <1>
 brew install asciidoctor                  # <2>
 gem install asciidoctor-diagram
 gem install asciidoctor-rouge
-gem install asciidoctor-html5s
+gem install asciidoctor-bibtex
 gem install asciimath
 
 brew install plantuml                     # <3>

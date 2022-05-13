@@ -145,6 +145,7 @@ We still need to install the referenced packages.
 [source,shell]
 ----
 sudo gem install asciidoctor-diagram
+sudo gem install asciidoctor-bibtex
 sudo gem install asciidoctor-rouge
 sudo gem install asciidoctor-html5s
 sudo gem install asciimath

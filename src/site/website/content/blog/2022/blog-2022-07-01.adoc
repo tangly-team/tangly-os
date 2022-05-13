@@ -12,6 +12,7 @@ tags: ["agile", "scrum"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2022-07-01-head.jpg[width=420,height=360,role=left]
+
 {ref-scrum} is the most popular approach to create awesome new products.
 Perhaps you are thinking of pursuing a career as a Scrum master.
 Or perhaps you’ve recently been moved into that role and are wondering if being a Scrum master is right for you.
@@ -145,3 +146,14 @@ Those that remain can be particularly difficult to resolve, but there are fewer 
 Even the best Scrum team continues to benefit from the coaching, guiding and mentoring provided by a good Scrum master.
 With that being said, some high-performing teams might find they do not need a Scrummaster full time anymore.
 They might, for example, opt to have a technical team member also function as the Scrum master.
+
+[bibliography]
+=== References
+
+- [[[scrum-master-certification, 1]]] link:../../2021/scrum-master-formation/[Scrum Master Certification]
+- [[[product-owner-certification, 2]]] link: ../../2021/product-owner-formation/[Product Owner Certification]]
+- [[[developer-certificaion, 3]]] link: ../../2021/scrum-developer-formation/[Scrum Developer Certification]
+- [[[pmi-acp-certification, 4]]] link:../../2016/pmi-acp-certification/[PMI ACP Certification]
+- [[[what-does-scrum-master, 5]]] link:../../2017/what-does-a-scrum-master/[What Does A Scrum Master?]
+- [[[what-do-not-need-to-do-in-scrum, 6]]] link:../../2016/what-you-do-not-need-to-do-in-scrum/[What You Do Not Need to Do in Scrum]
+

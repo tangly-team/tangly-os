@@ -332,7 +332,7 @@ Jez Humble & David Farley. 2011
 - [[[site-realibility-engineering, 5]]] https://www.amazon.com/dp/B01DCPXKZ6[Site Reliability Engineering: How Google Runs Production Systems].
 Niall Richard Murphy, Betsy Meyer, Chris Jones.
 O'Reilly. 2016
-- [[[refactoring-database, 6]]] https://www.amazon.com//dp/B001QAP36E[Refactoring Databases: Evolutionary Database Design].
+- [[[refactoring-database, 6]]] https://www.amazon.com/dp/B001QAP36E[Refactoring Databases: Evolutionary Database Design].
 Scott W. Ambler.
 Addison-Wesley. 2006
 - [[[devops-sme, 7]]] http://blog.tangly.net/blog/2021/devops-for-small-applications/[DevOps for Small Applications]

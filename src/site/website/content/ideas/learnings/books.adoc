@@ -16,123 +16,74 @@ description: bibliography agile and technical excellence books
 .*Agile*
 [%collapsible]
 ====
-* https://www.amazon.com/dp/0134542843[Unlocking Agility: An Insider's Guide to Agile Enterprise Transformation].
-Jorgen Hesselberg. 2019
-* https://www.amazon.com/dp/0321437381[Implementing Lean Software Development: From Concept to Cash].
-Mary Poppendieck. 2007
-* https://www.amazon.com/dp/0321482751[Agile Software Development: The Cooperative Game, 2nd Edition].
-Allistair Cockburn. 2007
-* https://www.amazon.com/dp/0321712471[Management 3.0: Leading Agile Developers, Developing Agile Leaders].
-Juergen Appelo. 2011
-* https://www.amazon.com/dp/2960133501[Reinventing Organizations: A Guide to Creating Organizations Inspired by the Next State of Human Consciousness].
-Frederic Laloux. 2014
-* https://www.amazon.com/dp/1422102505[The future of Management].
-Gary Hamel. 2007
+* bibitem:[unlocking-agility]
+* bibitem:[implementing-lean-sw-development]
+* bibitem:[management-30]
+* bibitem:[reinventing-organizations]
+* bibitem:[future-of-management]
 ====
 
 .*Scrum*
 [%collapsible]
 ====
-* https://www.amazon.com/dp/B08XWQ7DG9[Scrum A Pocket Guide, 3rd Edition].
-Gunther Verheyen.
-Van Haren Publishing. 2021
-* https://www.amazon.com/dp/1329224272[Scrum and XP from the trenches, 2nd Edition].
-Henrik Kniberg. 2015
-* https://www.amazon.com/dp/0133853624[The Scrum Field Guide: Agile Advice for Your First Year and Beyond].
-Mitchell Lacey. 2016
-* https://www.amazon.com/dp/0321579364[Succeeding with Agile: Software Development using Scrum].
-Mike Cohn. 2013
-* https://www.amazon.com/dp/0137043295[Essential Scrum: A practical Guide for the most popular Agile Process].
-Kenneth Rubin. 2013
-* https://www.amazon.com/dp/0131479415[Agile Estimation and Planning].
-Mike Cohn. 2006
-* https://www.amazon.com/dp/038534645X[The Art of Doing Twice the Work in Half the Time].
-Jeff Sutherland. 2014
-* https://www.amazon.com/dp/B08BW6HP7G[The professional Scrum team: Growing and Empowering Cross-Functionality and Resiliency in a Complex World].
-Peter Götz, Uwe Schirmer, Kurt Bittner.
-Addison-Wesley. 2021
+* bibitem:[scrum-pocket-guide-3rd]
+* bibitem:[scrum-xp-from-trenches-2nd]
+* bibitem:[scrum-field-guide]
+* bibitem:[succeeding-with-agile]
+* bibitem:[essential-scrum]
+* bibitem:[agile-estimation-and-planning]
+* bibitem:[doing-twice-in-half-time]
+* bibitem:[mastering-professional-scrum]
 ====
 
 .*Lean & kanban*
 [%collapsible]
 ====
-* https://www.amazon.com/dp/B00N4HZ6PK[Lean from the Trenches: Managing Large-Scale Projects with Kanban].
-Henrik Kniberg. 2012
-* https://www.amazon.com/dp/0307887898[The lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses].
-Eric Ries. 2011
-* https://www.amazon.com/dp/0321896904[The Lean Mindset: Ask the Right Questions].
-Mary Poppendieck &n Tom Poppendieck. 2014
-* https://www.amazon.com/dp/article/B00HNB3VQE[Implementing Lean Software Development: From Concept to Cash].
-Mary Poppendieck &n Tom Poppendieck. 2007
-* https://www.amazon.com/dp/0974322563[The Gold Mine: a Novel of Lean Turnaround].
-Michael Ballé & Freddy Ballé. 2005
-* https://www.amazon.com/dp/1934109258[The Lean Manager: a Novel of Lean Transformation].
-Michael Ballé & Freddy Ballé. 2009
-* https://www.amazon.com/dp/1934109479[Lead with Respect: a Novel of Lean Practice].
-Michael Ballé & Freddy Ballé. 2014
-* https://www.amazon.com/Lead-Lean-Michael-Balle-ebook/dp/B075GTQHFX[Lead with Lean: On Lean Leadership and Practice].
-Michael Ballé. 2016
+* bibitem:[lean-from-the-trenches]
+* bibitem:[lean-startup]
+* bibitem:[lean-mindset]
+* bibitem:[gold-mine]
+* bibitem:[lean-manager]
+* bibitemm:[lead-with-respect]
+* bibitem:[lead-with-lean]
+* bibitem:[implementing-lean-sw-development]
 ====
 
 .*Less & Other Scaling Frameworks*
 [%collapsible]
 ====
-* https://www.amazon.com/dp/0321985710[Large-Scale Scrum: More with Less].
-Craig Larman & Bas Vodde. 2017
-* https://www.amazon.com/dp/0321480961[Scaling Lean and Agile Development: Thinking Organizational Tools for Large-Scale Scrum].
-Craig Larman & Bas Vodde. 2009
-* https://www.amazon.com/dp/0321636406[Practices for Scaling Lean & Agile Development: Large, Multisite, and Offshore Product Development with Large-Scale Scrum].
-Craig Larmann & Bas Vodde. 2010
-* https://www.amazon.com/dp/0134682661[The Nexus Framework for Scaling Scrum].
-Kurt Bittner. 2018
+* bibitem:[large-scale-scrum]
+* bibitem:[scaling-lean-and-agile-development]
+* bibitem:[practices-for-scaling-lean-and-agile-development]
+* bibitem:[nexus-framework]
 ====
 
 .*Teams*
 [%collapsible]
 ====
-* https://www.amazon.com/dp/013465711X[The Great Scrum Master].
-Zuzana Sochová. 2017
-* https://www.amazon.com/dp/B08XWQ7DG9[Scrum A Pocket Guide 3nd Edition].
-Gunther Verheyen.
-Van Haren Publishing. 2021
-* https://www.amazon.com/dp/B07XTLNPTC[Mastering Professional Scrum: A Practitioner's Guide To Overcome Challenges and Maximize the Benefits of Agility].
-Stephanie Ockerman and Simon Reindl.
-Addison-Wesley. 2020
-* https://www.amazon.com/dp/0321637704[Coaching Agile Teams: A companion for Scrum Masters, Agile Coaches, and Project Managers in Transition].
-Lyssa Adkins.2010
-* https://www.amazon.com/dp/0977616649[Agile Retrospectives: Making Good Teams Great].
-Esther Derby and Diane Larsen. 2012
-* https://www.amazon.com/dp//0787947237[The Skilled Facilitator: A Comprehensive Resource for Consultants, Facilitators, Managers, Trainers and Coaches].
-Roger Schwarz. 2002
-* https://www.amazon.com/dp/03219[Peopleware: Productive Projects and Teams, 3rd Edition].
-Tom DeMarco & Timothy Lister. 2013
+* bibitem:[great-scrum-master]
+* bibitem:[scrum-pocket-guide-3rd]
+* bibitem:[mastering-professional-scrum]
+* bibitem:[coaching-agile-teams]
+* bibitem:[agile-retrospectives]
+* bibitem:[skilled-facilitator]
+* bibitem:[skilled-facilitator-resoruce]
+* bibitem:[peopleware]
 ====
 
 .*Product Owner*
 [%collapsible]
 ====
-* https://www.amazon.com//dp/0134686470[The Professional Product Owner: Leveraging Scrum as Competitive Advantage].
-Ralph Jocham & Don McGreal.
-Addison-Wesley. 2018
-* https://www.amazon.com/dp/1491904909[User Story Mapping: Discover the Whole Story, Build the Right Product].
-Jeff Patton.
-O'Reilly. 2014
-* https://www.amazon.com/dp/0955683645[Impact Mapping].
-Gojko Adzic. 2012
-* https://www.amazon.com/dp/0993499201[Strategize: Product Strategy and Product Roadmap Practices for the Digital Age].
-Roman Pichler. 2016
-* https://www.amazon.com/dp/0321605780[Agile Product Management with Scrum: Creating Products that Customers Love].
-Roman Pichler. 2010
-* https://www.amazon.com/dp/article/B085L8Z4YS[How to Lead in Product Management: Practices to Align Stakeholders, Guide Development Teams, and Create Value Together].
-Roman Pichler. 2020
-* https://www.amazon.com/dp/0321205685[User Stories Applied for Agile Software Development].
-Mike Cohn. 2004
-* https://www.amazon.com/dp/1118968050[Value Proposition Design: How to Create Products and Services Customers Want].
-Alex Osterwald. 2014
-* https://www.amazon.com/dp/1492023744[Lean Customer Development: Build Products Your Customers Will Buy].
-Cindy Alvarez. 2014
-* https://www.amazon.com/dp/B008YZ993W/[Bridging the Communication Gap: Specification by Example and Agile Acceptance Testing].
-Gojko Adzic. 2009
+* bibitem:[professional-product-owner]
+* bibitem:[user-story-mapping]
+* bibitem:[impact-mapping]
+* bibitem:[strategize]
+* bibitem:[agile-produt-management]
+* bibitem:[how-to-lead-product-management]
+* bibitem:[user-stories-applied]
+* bibitem:[value-proposition-design]
+* bibitem:[lean-customer-development]
+* bibitem:[bridging-communication-gapx]
 ====
 
 .*Agile Architecture*
@@ -245,19 +196,9 @@ Peter Senge. 2006
 .*Java*
 [%collapsible]
 ====
-* https://www.amazon.com/dp/B078H61SCH[Effective Java: Best Practices for the Java Platform, 3rd Edition].
-Joshua Bloch.
-Addison-Wesley. 2017. ISBN 9780134685991.
-* https://www.amazon.com/dp/B078H61SCH[Effective Java: Best Practices for the Java Platform, 2nd Edition].
-Joshua Bloch.
-Addison-Wesley. 2008. ISBN 9780132778046.
-* https://www.amazon.com/dp/032133678X[Java Puzzlers: Traps, Pitfalls, and Corner Cases, 1st Edition]
-Joshua Bloch, Neal Gafter.
-Addison-Wesley. 2005. ISBN 032133678X
-* https://www.amazon.com/dp/B07CLFTVZS[Java by Comparison: Become a Java Craftsman in 70 Examples].
-Simon Harrer.
-The Pragmatic Programmers. 2018
-* https://www.amazon.com/dp/B075FZK9DC[Java 9 Modularity: Patterns and Practices For Developing Maintainable applications].
-Sander Mark, Paul Bakker.
-O'Reilly. 2017
+* bibitem:[effective-java-3rd]
+* bibitem:[effective-java-2nd]
+* bibitem:[java-puzzlers]
+* bibitem:[java-by-comparison]
+* bibitem:[java-9-modularity]
 ====
