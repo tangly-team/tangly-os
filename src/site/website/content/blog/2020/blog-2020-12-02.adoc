@@ -11,7 +11,8 @@ tags: ["design", "hugo", "series-students"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2020-12-02-head.png[width=420, height=360, role=left]
+image::2020-12-02-head.png[width=420,height=360,role=left]
+
 There are times in software when you are facing a problem, you find an off-the-shelf solution, and a few lines of code later it just works.
 
 Today I lived one of those moments.
@@ -71,7 +72,7 @@ This option means your blog or website does not need to be hosted on GitHub.
 You can skip the code snippet step if you are using Docsy and follow the below instructions to configure your theme.
 ====
 
-[source, html]
+[source,html]
 ----
 <script
   async
@@ -82,6 +83,7 @@ You can skip the code snippet step if you are using Docsy and follow the below i
   crossorigin="anonymous"
 </script>
 ----
+
 <1> <OWNER>/<NAME> is the name of your repository.
 In my case, it would be _marcelbaumann/tangly-team-comments_.
 
@@ -98,7 +100,7 @@ It is a modified version of the snippet you can generate on the {ref-utterances}
 Create a partial in _docsy/layout/partial_.
 I named my partial _comments-utterances.html_ and add the following snippet.
 
-[source, html]
+[source,html]
 ----
 <div class="page-blank">
     <div id="utterancers_thread"></div>
@@ -112,6 +114,7 @@ I named my partial _comments-utterances.html_ and add the following snippet.
 </div>
 
 ----
+
 <1> GitHub repository where the issues are stored
 <2> See {ref-utterances} documentation how the reference to a page, or an article can be tailored
 <3> See {ref-utterances} documentation about supported themes
@@ -125,7 +128,7 @@ _Perhaps {ref-docsy} will introduce a more generic mechanism in the future to in
 I assume they are waiting on {ref-hugo} to first provide such a mechanism.
 Currently, Hugo and Docsy only provide out of the box support for Disqus._
 
-[source, html]
+[source,html]
 ----
 <div class="td-content">
 	<h1>{{ .Title }}</h1>

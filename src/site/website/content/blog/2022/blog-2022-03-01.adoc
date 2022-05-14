@@ -2,7 +2,7 @@
 title: "Doing Agile"
 linkTitle: "Doing Agile"
 date: 2022-03-10
-tags: ["agile", "students"]
+tags: ["agile", "series-students"]
 ---
 
 == Is your Team _Pretending_ to be Agile?

@@ -16,7 +16,7 @@ image::2022-06-01-head.jpg[width=420,height=360,role=left]
 https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Development] is the preferred software architecture approach for designing new digital products.
 The method nicely matches with the operational concepts of microservices.
 
-Seminal books <<domain-driven-design>> <<implementing-ddd>> <<ddd-distilled>> describes the approach and key concepts defining the development method.
+Seminal books cite:[domain-driven-design,domain-driven-design-distilled,implementing-domain-driven-design] describes the approach and key concepts defining the development method.
 
 Concrete recipes and examples of code structure are sparse.
 How should you structure your namespaces and modules?
@@ -51,7 +51,7 @@ This layer contains supporting libraries or external services like a database or
 
 === Package Structure
 
-A bounded domain shall be configured as a Java module.
+A bounded domain shall be configured as a Java module cite:[{java-9-modularity].
 The exported services and entities are explicitly listed with the _exports_ directive.
 A huge advantage is the obligation to list all dependencies with the _requires_ directive.
 
@@ -61,11 +61,11 @@ Modules dependencies and interfaces are validated by the Java compiler.
 Services::
 defines the bounded domain context.
 The domain uses the library to implement a bounded domain.
-The ports, handler and realm are declared in the context package for small bounded domains.
+The ports, handlers and realms are declared in the context package for small bounded domains.
 Complex domains can declare these interfaces in separate packages for legibility.
 Logic::
 contains common business logic and features.
-Elaborate domains can contain quite a few business features.
+Elaborate domains can contain more business features.
 Use a package structure increasing legibility and enforcing separation of concerns.
 Ports::
 contains the services receiving data and events from the environment.
@@ -97,7 +97,7 @@ Care is taken to define resilient and legible domain abstractions.
 @endsalt
 ....
 
-The infrastructure support classes are not part of this structure.
+The infrastructure supports classes are not part of this structure.
 These classes shall be defined in a separate Java module and imported with regular dependency declaration.
 
 We use the https://www.archunit.org/[ArchUnit] tool to insure the expected structure is provided for each bounded domain.
@@ -110,8 +110,8 @@ I use mainly https://www.vaadin.com[Vaadin] to realize browser or mobile first i
 
 === Java Considerations
 
-Entities shall have a well-documented internal or external identifiers.
-Entities visible to other bounded domain shall always have an external identifier.
+Entities shall have well-documented internal or external identifiers.
+Entities visible to other bounded domains shall always have an external identifier.
 Identifiers are always immutable objects.
 
 [cite,Martin Fowler]
@@ -137,29 +137,31 @@ Aggregates shall be constructed with the help of factory patterns such as factor
 
 [cite,Martin Fowler]
 ____
-A DDD aggregate is a cluster of domain objects that can be treated as a single unit.
+A DDD aggregate is a cluster of domain objects that can be treated as a unit.
 An example may be an order and its line-items, these will be separate objects.
 Tt is useful to treat the order together with its line items as a single aggregate.
 ____
 
 Rich domains are models that have full control of their data and do not rely on external objects to manipulate them.
 Anemic domains are models that rely on other classes to validate their data.
-Anemic domains are a smell in the domain driven design world.
+Anemic domains are a smell in the domain-driven design world.
 
 Services should be pure functions and be stateless.
 
 [cite]
 ____
 Pure functions are functions (or methods) that do not change the value of any object outside it.
-It avoids side effects and guaranteeing the same output for certain inputs, ie it needs to be completely deterministic.
+It avoids side effects and guarantees the same output for certain inputs, meaning it needs to be completely deterministic.
 ____
 
 === Architecture Integrity
 
 A Bounded Context is a logical boundary of a domain where particular terms and rules apply consistently.
-Inside this boundary, all terms, definitions, and concepts form the Ubiquitous Language.
+Inside this boundary, all terms, definitions and concepts form the Ubiquitous Language.
 
-The Java Platform Module System (JPMS) encourages to build more reliable and strongly encapsulated modules.
+Good practices shall be applied to ensure the quality of the bounded domain software architecture cite:[clean-architecture,refactoring,refactoring-databases]
+
+The Java Platform Module System (JPMS) encourages us to build more reliable and strongly encapsulated modules.
 As a result, these features can help to isolate our contexts and establish clear boundaries.
 
 A bounded domain is implemented as a Java module.
@@ -176,24 +178,24 @@ The engineers have common understanding and coding guidelines to realize the lay
 * Smaller and well-defined components are easier to maintain.
 Your services are independent and can more easily be refactored.
 * Development scalability is implicitly provided.
-Teams can develop simulaneoulsy and independantly bounded domain features.
+Teams can develop simultaneous and independently bounded domain features.
 
-=== Bounded Domain Releations
+=== Bounded Domain Relations
 
 There are five main types of relationships between Bounded Contexts:
 
 [horizontal]
 Partnership::
-a relationship between two contexts that cooperates to align the two teams with dependent goals
+a relationship between two contexts that cooperates to align the two teams with dependent goals.
 Shared Kernel::
-a kind of relationship when common parts of several contexts are extracted to another context/module to reduce code duplication
+a kind of relationship when common parts of several contexts are extracted to another context/module to reduce code duplication.
 Customer-supplier::
 a connection between two contexts, where one context (upstream) produces data, and the other (downstream) consume it.
-In this relationship, both sides are interested in establishing the best possible communication
+In this relationship, both sides are interested in establishing the best possible communication.
 Conformist::
-this relationship also has upstream and downstream, however, downstream always conforms to the upstream’s APIs
+this relationship also has upstream and downstream, however, downstream always conforms to the upstream’s APIs.
 Anti-corruption layer::
-this type of relationship is widely used for legacy systems to adapt them to a new architecture and gradually migrate from the legacy codebase.
+this relationship kind is widely used for legacy systems to adapt them to a new architecture and gradually migrate from the legacy codebase.
 The protection layer acts as an adapter to translate data from the upstream and protect from undesired changes
 
 === Lessons Learnt
@@ -201,7 +203,7 @@ The protection layer acts as an adapter to translate data from the upstream and 
 Great technologies, programming languages and tools are used when building software applications.
 That is good and right.
 
-But unfortunately, it is often lost that the decisive factor for the success of a project is not the technology, but the solution.
+But unfortunately, it is often lost that the decisive factor for the success of a project is not technology, but the solution.
 In order to be able to understand the subject matter or domain, we need a common language with the domain experts and users.
 If we do not map the technical model in the software and its architecture, it will not help our users in their work.
 
@@ -215,22 +217,6 @@ Domain-driven design (DDD) is a useful approach that provides excellent guidelin
 While the concepts are valid, you lose a lot if you limit yourself to using them only: There actually is a life beyond DDD.
 ____
 
-[bibliography]
 === References
 
- [[[domain-driven-design, 1]]] Domain-Driven Design: Tackling Complexity in the Heart of Software.
-Eric Evans.
-Addison-Wesley. 2004.
-- [[[implementing-ddd, 2]]] Implementing Domain-Driven Design.
-Vernon Vaughn.
-Addison-Wesley. 2013.
-- [[[ddd-distilled, 3]]] Domain-Driven Design Distilled.
-Vernon Vaughn.
-Addison-Wesley. 2016.
-- [[[clean-architecture, 4]]] https://www.amazon.com/dp/0132350882[Clean Code: A Handbook of Agile Software Craftsmanship].
-Robert C. Martin. 2018
-- [[[refactoring-database, 5]]] https://www.amazon.com/dp/B001QAP36E[Refactoring Databases: Evolutionary Database Design].
-Scott W. Ambler.
-Addison-Wesley. 2006
-
-
+bibliography::[]

@@ -44,7 +44,7 @@ description: bibliography agile and technical excellence books
 * bibitem:[lean-mindset]
 * bibitem:[gold-mine]
 * bibitem:[lean-manager]
-* bibitemm:[lead-with-respect]
+* bibitem:[lead-with-respect]
 * bibitem:[lead-with-lean]
 * bibitem:[implementing-lean-sw-development]
 ====
@@ -83,114 +83,62 @@ description: bibliography agile and technical excellence books
 * bibitem:[user-stories-applied]
 * bibitem:[value-proposition-design]
 * bibitem:[lean-customer-development]
-* bibitem:[bridging-communication-gapx]
+* bibitem:[bridging-communication-gap]
 ====
 
 .*Agile Architecture*
 [%collapsible]
 ====
-* https://www.amazon.com/dp/1491986360[Building Evolutionary Architectures: Support for constant Change].
-Neal Ford, Rebecca Parson.
-O'Reilly. 2017. ISBN 978-1491986363
-* https://www.amazon.com/dp/0134757599[Refactoring: Improving the Design of Existing Code, 2nd Edition].
-Martin Fowler.
-Addison Wesley. 2018. ISBN 978-0134757599
-* https://www.amazon.com/dp/0321125215[Domain-Driven Design: Tackling Complexity in the Heart of Software].
-Eric Evans.
-Addison-Wesley. 2004. ISBN 978-0321125217
-* https://www.amazon.com/dp/B01JJSGE5S/[Domain-Driven Design Distilled].
-Vernon Vaughn.
-Addison-Welsey. 2016. ISBN 978-0134434421
-* https://www.amazon.com/dp/B00BCLEBN8[Implementing Domain-Driven Design. Vernon Vaughn].
-Addison-Wesley. 2103. ISBN 978-0321834577
-* https://www.amazon.com/dp/0131177052[Working Effectively with Legacy Code].
-Michael Feathers.
-Addison-Wesley. 2005. ISBN 978-0131177055
-* https://www.amazon.com/dp/0321213351[Refactoring to Patterns].
-Joshua Kerievsky. 2005
-* https://www.amazon.com/dp/B000SEIBB8[Design Patterns: Element of Reusable Object-Oriented Software].
-Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides.
-Addison-Wesley. 1995. ISBN 0-201-63361-2
-* https://www.amazon.com/dp/B09B5L4NVT[Building Microservices: Designing Fine-Grained Systems, 2nd Edition].
-Sam Newman.
-O'Reilly. 2021. ISBN 978-1492034025
-* https://www.amazon.com//dp/B00T3N7XB4[Building Microservices: Designing Fine-Grained Systems, 1st Edition].
-Sam Newman.
-O'Reilly. 2015. ISBN 978-1491950357
-* https://www.amazon.com/dp/B09GG6XKS4[Modern Software Engineering: Doing What Works to Build Better Software Faster].
-David Farley.
-Addison-Welsey. 2020. ISBN 978-0137314911
+* bibitem:[building-evolutionary-architectures]
+* bibitem:[refactoring]
+* bibitem:[domain-driven-design]
+* bibitem:[domain-driven-design-distilled]
+* bibitem:[implementing-domain-driven-design]
+* bibitem:[working-effectively-with-legacy-code]
+* bibitem:[refactoring-to-patterns]
+* bibitem:[design-patterns]
+* bibitem:[building-microservices-2nd]
+* bibitem:[building-microservices-1st]
+* bibitem:[modern-software-engineering]
 ====
 
 .*Technical Excellence*
 [%collapsible]
 ====
-* https://www.amazon.com/dp/0135957052[The Pragmatic Programmer: Your Journey to Mastery, 20th Anniversary Edition].
-Andrew Hunt & David Thomas. 2019
-* https://www.amazon.com/dp/0134052501[The Software Craftsman: Professionalism, Pragmatism, Pride].
-Sandro Mancuso. 2015
-* https://www.amazon.com/dp/0321278658[Extreme Programming Explained: Embrace Change].
-Ken Beck. 2005
-* https://www.amazon.com/dp/0321534468[Agile Testing: A practical Guide for Testers and Agile Teams].
-Lisa Crispin and Janet Gregory. 2009
-* https://www.amazon.com/dp/0321967054[More Agile Testing: Learning Journeys for the Whole Team].
-Lisa Crispin, Janet Gregory. 2015
-* https://www.amazon.com/dp/0132350882[Clean Code: A Handbook of Agile Software Craftsmanship].
-Robert Martin.
-Addison-Wesley. 2009. ISBN 978-0132350884
-* https://www.amazon.com/dp/0137081073[Clean Coder: A Code of Conduct for Professional Programmers].
-Robert Martin.
-Addison-Wesley. 2011. ISBN 978-0137081073
-* https://www.amazon.com/dp/0134494164[Clean Architecture: A Craftsman's Guide to Software Structure and Design].
-Robert Martin.
-Addison Wesley. 2018. ISDN 978-0134494166
-* https://www.amazon.com/dp/0135781868[Clean Agile: Back to Basics].
-Robert Martin.
-Addison-Wesley. 2020. ISDN 978-0135781869
-* https://www.amazon.com/dp/B095C16LSW[Clean Craftsmanship: Disciplines, Standards, and Ethics]
-Robert Martin.
-Addison-Wesley. 2021. ISDN 978-0136915713
+* bibitem:[pragmatic-programmer-2nd]
+* bibitem:[software-craftsman]
+* bibitem:[extreme-programmking-explained]
+* bibitem:[agile-testing]
+* bibitem:[more-agile-testing]
+* bibitem:[clean-code]
+* bibitem:[clean-coder]
+* bibitem:[clean-architecture]
+* bibitem:[clean-agile]
+* bibitem:[clean-craftsmanship]
 ====
 
 .*DevOps*
 [%collapsible]
 ====
-* https://www.amazon.com/dp/B01DCPXKZ6[Site Realibility Engineering: How Google Runs Production Systems].
-Niall Richard Murphy, Betsy Meyer, Chris Jones.
-O'Reilly. 2016
-* https://www.amazon.com/dp/B07B9F83WM[Accelerate: Building and Scaling High Performing Technology Organizations].
-Nicole Forsgren & Jez Humble & Gene Kene.
-IT Revolution. 2018
-* https://www.amazon.com/dp/B01M9ASFQ3[The DevOps Handbook: How to create World-Class Agility, Reliability, Security in Technology Organizations].
-Gene Kim & Jez Humble & Patrick Debois & John Willis.
-IT Revolution. 2016
-* https://www.amazon.com/dp/0988262592[The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win].
-Gene Kim & Kevin Behr. 2013
-* https://www.amazon.com/dp/0321601912[Continuous Delivery: Reliable Software Releases through Build, Test and Deployment Automation].
-Jez Humble & David Farley. 2011
+* bibitem:[site-reliability-engineering]
+* bibitem:[accelerate]
+* bibitem:[devops-handbook]
+* bibitem:[phoenix-project]
+* bibitem:[continuous-delivery]
 ====
 
 .*Change Process*
 [%collapsible]
 ====
-* https://www.amazon.com/dp/B019TM4P6Y[Fearless Change: Patterns for Introducing New Ideas].
-Linda Rising. 2005
-* https://www.amazon.com/dp/0133966445[More Fearless Change: Strategies for Making Your Ideas Happen].
-Linda Rising. 2015
-* https://www.amazon.com/dp/1422186431[Leading Change].
-John Kotter. 1996
-* https://www.amazon.com/dp/0399563911[Our Iceberg is Melting: Changing and Succeeding under Any Conditions].
-John Kotter. 2005
-* https://www.amazon.com/dp/1625271743[XLR8: Accelerate].
-John Kotter. 2014
-* https://www.amazon.com/dp/1119212049[Organizational Culture and Leadership, 5th Edition].
-Edgar Schein. 2017
-* https://www.amazon.com//dp/1119212286[The Corporate Culture Survival Guide, 3rd Edition].
-Edgar Schein. 2019
-* https://www.amazon.com/dp/1609949811[Humble Inquiry: The Gentle Art of Asking instead of Telling].
-Edgar Schein. 2013
-* https://www.amazon.com/dp/0385517254[The Fifth Discipline: The Art and Practice of the Learning Organization].
-Peter Senge. 2006
+* bibitem:[fearless-change]
+* bibitem:[more-fearless-change]
+* bibitem:[leading-change]
+* bibitem:[our-iceberg-is-melting]
+* bibitem:[xlr8]
+* bibitem:[organizational-leadership-culture]
+* bibitem:[corporate-culture-survival-guide]
+* bibitem:[humble-inquiry]
+* bibitem:[fifth-discipline]
 ====
 
 .*Java*

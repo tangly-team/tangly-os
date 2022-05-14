@@ -2,7 +2,7 @@
 title: "Measurements and Units"
 linkTitle: "Measurements"
 date: 2022-05-01
-tags: ["java", "architecture", "students"]
+tags: ["java", "architecture", "series-students"]
 ---
 
 == Measurements and Units
@@ -180,4 +180,4 @@ The abstractions allow compilation time detection of errors.
 === References
 
 - [[[units-of-measurement,1]]] https://unitsofmeasurement.github.io/[Units of Measurement]
--[[[mars-climate-orbiter,2]]] https://en.wikipedia.org/wiki/Mars_Climate_Orbiter[Mars Climate Orbiter]
+- [[[mars-climate-orbiter,2]]] https://en.wikipedia.org/wiki/Mars_Climate_Orbiter[Mars Climate Orbiter]
