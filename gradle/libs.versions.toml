@@ -6,7 +6,7 @@ jolt-version = '0.1.1'
 junit-version = '5.8.2'
 log4j2-version = '2.17.2'
 microstream-version = '07.00.00-MS-GA'
-mustang-version = '2.5.0'
+mustang-version = '2.5.1'
 vaadin-version = '23.0.8'
 assertj-version = '3.22.0'
 
@@ -21,7 +21,7 @@ mannes = "com.github.ben-manes.versions:0.41.0"
 
 [libraries]
 annotations = "org.jetbrains:annotations:23.0.0"
-antrlr-st4 = "org.antlr:ST4:4.3.3"
+antlr-st4 = "org.antlr:ST4:4.3.3"
 apache-commons-cli = "commons-cli:commons-cli:1.5.0"
 apache-commons-csv = "org.apache.commons:commons-csv:1.9.0"
 apache-commons-codec = "commons-codec:commons-codec:1.15"
@@ -48,7 +48,7 @@ iban4j = "org.iban4j:iban4j:3.2.3-RELEASE"
 ical4j-core = "org.mnode.ical4j:ical4j:3.2.1"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.7"
 
-google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.12.47"
+google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.12.48"
 
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson-version" }
 jackson-parameters = { module = "com.fasterxml.jackson.module:jackson-module-parameter-names", version.ref = "jackson-version" }

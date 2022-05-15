@@ -39,8 +39,9 @@ import org.jetbrains.annotations.NotNull;
 public sealed interface LList<T> permits LList.Nil, LList.ImmutableList {
     /**
      * Return an empty list
-     * @return empty list
+     *
      * @param <T> Type of the items in the list
+     * @return empty list
      */
     static <T> LList<T> nil() {
         return Nil.nil();
@@ -48,10 +49,11 @@ public sealed interface LList<T> permits LList.Nil, LList.ImmutableList {
 
     /**
      * Return a new immutable list with a new item inserted in the front.
+     *
      * @param first new item to add at the beginning of the list
-     * @param tail list to which the item is added
+     * @param tail  list to which the item is added
+     * @param <T>   Type of the items in the list
      * @return immutable list with the new item at the beginning
-     * @param <T> Type of the items in the list
      */
     static <T> LList<T> cons(@NotNull T first, @NotNull LList<T> tail) {
         return new ImmutableList<>(first, tail);
@@ -183,7 +185,7 @@ public sealed interface LList<T> permits LList.Nil, LList.ImmutableList {
 
         @Override
         public String toString() {
-            return first() + (rest().isEmpty() ? "" : ", " + rest().toString());
+            return first() + (rest().isEmpty() ? "" : ", " + rest());
         }
     }
 }

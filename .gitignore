@@ -20,7 +20,6 @@ hs_err_pid*
 **/.asciidoctor/
 
 # Covers vaadin specifics
-**/node_modules/
 **/jspm_packages/
 
 /net.tangly.erp.ui/frontend/generated/
@@ -35,3 +34,5 @@ hs_err_pid*
 /net.tangly.erp.ui/webpack.generated.js
 /net.tangly.erp.ui/.npmrc
 /net.tangly.erp.ui/frontend/index.html
+/src/main/resources/references.bib.bak
+/src/main/resources/references.bib.sav.tmp

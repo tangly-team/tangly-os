@@ -131,7 +131,7 @@ class EmailAddress << (R,orchid) >>
 
 See our blogs for a discussion concerning the cornerstone abstractions of the business core model:
 
-* link:../../../blob/2020/entities-identifiers-external-identifiers-and-names[Entities, internal Identifiers, external Identifiers, and Names],
+* link:../../../blog/2020/entities-identifiers-external-identifiers-and-names[Entities, internal Identifiers, external Identifiers, and Names],
 * link:../../../blog/2020/the-power-of-tags-and-comments[The Power of Tags and Comments],
 * link:../../../blog/2020/reference-codes[Reference Codes].
 

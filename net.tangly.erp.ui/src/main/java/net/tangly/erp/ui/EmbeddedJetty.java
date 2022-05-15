@@ -18,6 +18,7 @@ import net.tangly.erp.Erp;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
@@ -32,7 +33,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Entry point to start the application as regular Java SE application with an embedded Jetty server.
+ * Entry point to the start of the regular Java SE application with an embedded Jetty server.
  * The application parameters are:
  * <dl>
  *     <dt>port</dt>
@@ -45,7 +46,7 @@ import java.net.URL;
 public class EmbeddedJetty {
     private static final Logger logger = LogManager.getLogger();
     private static Server server;
-    private static int port =8080;
+    private static int port = 8080;
     private static boolean isInMemory = true;
 
     public static void main(@NotNull String[] args) throws Exception {
@@ -90,8 +91,8 @@ public class EmbeddedJetty {
 
     @NotNull
     private static Resource findWebRoot() throws MalformedURLException {
-        // don't look up directory as a resource, it's unreliable: https://github.com/eclipse/jetty.project/issues/4173#issuecomment-539769734
-        // instead we'll look up the /webapp/ROOT and retrieve the parent folder from that.
+        // do not look up directory as a resource. It is unreliable: https://github.com/eclipse/jetty.project/issues/4173#issuecomment-539769734
+        // instead we look up the /webapp/ROOT and retrieve the parent folder from that.
         final URL file = EmbeddedJetty.class.getResource("/webapp/ROOT");
         if (file == null) {
             throw new IllegalStateException("Invalid state: the resource /webapp/ROOT doesn't exist, has webapp been packaged in as a resource?");
@@ -110,6 +111,7 @@ public class EmbeddedJetty {
 
     private static Options options() {
         var options = new Options();
+        options.addOption(Option.builder("h").longOpt("help").hasArg(false).desc("print this help message").build());
         options.addOption(Option.builder("p").longOpt("port").type(Integer.TYPE).argName("port").hasArg().desc("listening port of the embedded server").build());
         options.addOption(Option.builder("m").longOpt("mode").argName("mode").hasArg().desc("mode of the application").build());
         return options;
@@ -117,10 +119,15 @@ public class EmbeddedJetty {
 
     private static void parse(String[] args) {
         CommandLineParser parser = new DefaultParser();
+        Options options = options();
         try {
-            CommandLine line = parser.parse(options(), args);
+            CommandLine line = parser.parse(options, args);
+            if (line.hasOption("h")) {
+                HelpFormatter formatter = new HelpFormatter();
+                formatter.printHelp("tangly ERP", options);
+            }
             port = (line.hasOption("p")) ? Integer.parseInt(line.getOptionValue("p")) : 8080;
-            isInMemory = (line.hasOption("m")) ? Boolean.parseBoolean(line.getOptionValue("m")) : true;
+            isInMemory = line.hasOption("m") || Boolean.parseBoolean(line.getOptionValue("m"));
         } catch (NumberFormatException | ParseException e) {
             logger.atError().log("Parsing failed.  Reason: {}", e.getMessage());
         }

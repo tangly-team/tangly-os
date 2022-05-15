@@ -51,7 +51,7 @@ Agile architecture comes from the behavior of agile _architecting_.
 * A culture of _excellence_ in code and professionalism for the developers.
 * An emphasis on _pair-programming_ coaching for high-quality code and design.
 * Agile modeling design workshops using collaborative peer approaches.
-* _Test-driven development_ and _refactoring_ to continuously and aggressively remove technical debt.
+* _Test-driven development_ and _refactoring_ cite:[refactoring] to continuously and aggressively remove technical debt.
 * And other _hands-on-the-code_ and _good practice_ behaviors.
 
 These statements reflect the agile and modern approach to software design and architecture.
@@ -160,7 +160,7 @@ Your development team members are
 * Know https://en.wikipedia.org/wiki/SMART_criteria[SMART], https://en.wikipedia.org/wiki/INVEST_(mnemonic)[INVEST], https://de.wikipedia.org/wiki/Solid_(Software)[SOLID],
 https://en.wikipedia.org/wiki/KISS_principle[KISS], https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI].
 * hold weekly design workshops with _huge_ whiteboards.
-* Use domain driven design <<domain-driven-design>> and event storming.
+* Use domain driven design cite:[domain-driven-design,omain-driven-design-distilled,implementing-domain-driven-design] and event storming.
 * Avoid https://en.wikipedia.org/wiki/Big_Design_Up_Front[BDUF].
 
 You shall keep it simple, make it valuable, and build it piece by piece.
@@ -786,9 +786,9 @@ I recommend any Java developer to
 * Have formal training in the Java language and library.
 For example, you should consider a Java Programmer certification for the current JDK you are working daily with.
 * Learn the new features in Java e.g. Streams, Lambdas, Reactive Programming, LocalDate, Modules, packaging with _jlink_.
-* Read and understand _Effective Java_ <<effective-java>> from Joshua Bloch.
-* Read and understand _Clean Code_ <<clean-code>>, _Clean Coder_ <<clean-coder>>, _Clean Architecture_ <<clean-architecture>>, and _Clean Agile_<<clean-agile>> from Robert C. Martin,
-* Read and understand _Refactoring_ <<refactoring>> from Martin Fowler, And read Refactoring not on the backlog post from Ron Jeffries.
+* Read and understand _Effective Java_ cite:[effective-java-3rd] from Joshua Bloch.
+* Read and understand _Clean Code_ cite:[clean-code], _Clean Coder_ cite:[clean-coder], _Clean Architecture_ cite:[clean-architecture], _Clean Agile_ cite:[clean-agile],
+* Read and understand _Refactoring_ cite:[refactoring] from Martin Fowler, And read Refactoring not on the backlog post from Ron Jeffries.
 * Learn modern practices such as logging with slf4j, TDD with JUnit5, Mockito and AssertJ, ATDD with Cucumber, Lean DevOps. continuous integration, continuous delivery, continuous deployment, monitoring.
 * Be aware of famous Java libraries such as Guava, Apache Commons, Use SonarQube - and the SonarLint plugin for your preferred IDE – to catch well-known weaknesses in your source code and improve your coding skills.
 
@@ -808,7 +808,8 @@ The feeling you reached mastery level is truly awesome.
 
 * Read a technical book each quarter,
 * Learn a new language or framework every two years.
-* Read books such as _The Software Craftsman_ <<software-craftsman>>, _Refactoring_ <<refactoring>>, _Agile Code_ <<clean-code>>, _Agile Coder_ <<clean-coder>>, _Clean Architecture_ <<clean-architecture>>, _Clean Agile_ <<clean-agile>>
+* Read books such as _The Software Craftsman_ cite:[software-craftsman], _Refactoring_ cite:[refactoring], _Agile Code_ cite:[clean-code], _Agile Coder_ cite:[clean-coder]
+  _Clean Architecture_ cite:[clean-architecture], _Clean Agile_ cite:[clean-agile]
 * Know approaches such eXtreme Programming.
 * Work with Scrum, Kanban, LeSS - Agile approaches are definitively state of the industry techniques -.
 * Master container approaches with Docker - containers are here to stay and will replace virtual machines -.
@@ -822,7 +823,7 @@ See my blog post about https://tangly-blog.blogspot.com/2018/03/how-should-you-h
 
 Software craftsmanship is an initiative to improve the professionalism of software developers.
 You do not have to agree with them, just look what they are doing.
-For a detailed discussion read for example the book The Software Craftsman: Professionalism, Pragmatism, Pride by Sandro Mancuso <<software-craftsman>>.
+For a detailed discussion read for example the book The Software Craftsman: Professionalism, Pragmatism, Pride by Sandro Mancuso cite:[software-craftsman].
 
 Don’t discuss practices, discuss value.
 
@@ -845,36 +846,6 @@ Software craftsmanship
 Your goal shall to become a professional developer and reach mastery.
 How you do it is up to you.
 
-[bibliography]
 == References
 
-- [[[software-craftsman,1]]] https://www.amazon.com/dp/0134052501[The Software Craftsman: Professionalism, Pragmatism, Pride].
-Sandro Mancuso.
-Prentice-Hall 2015.
-- [[[clean-code, 2]]] https://www.amazon.com/dp/0132350882[Clean Code: A Handbook of Agile Software Craftsmanship].
-Robert C Martin.
-Addison-Wesley 2009.
-- [[[clean-coder, 3]]] https://www.amazon.com/dp/0137081073[Clean Coder: A Code of Conduct for Professional Programmers].
-Robert C. Martin.
-Addison-Wesley 2011.
-- [[[clean-architecture, 4]]] https://www.amazon.com/dp/0134494164[Clean Architecture: A Craftsman's Guide to Software Structure and Design].
-Robert C Martin.
-Addison-Wesley 2018.
-- [[[clean-agile, 5]]] https://www.amazon.com/dp/0135781868[Clean Agile: Back to Basics].
-Robert C Martin.
-Addison-Wesley 2019.
-- [[[evolutionary-architecture, 6]]] https://www.amazon.com/dp/1491986360[Building Evolutionary Architectures: Support for constant Change].
-Neal Ford, Rebecca Parsons, Patrick Kua.
-O'Reilly 2017.
-- [[[domain-driven-design, 7]]] https://www.amazon.com/dp/0321125215[Domain-Driven Design: Tackling Complexity in the Heart of Software].
-Eric Evans.
-Addison-Wesley 2004.
-- [[[refactoring, 8]]] https://www.amazon.com/dp/0134757599[Refactoring: Improving the Design of Existing Code, 2nd Edition].
-Martin Fowler.
-Addison-Wesley 1999.
-- [[[effective-java, 9]]] https://www.amazon.com/dp/B078H61SCH[Effective Java: Best Practices for the Java Platform, 3rd Edition].
-Joshua Bloch.
-Addison-Wesley 2018.
-- [[[java-by-comparison,10]]] https://www.amazon.com/dp/B07CLFTVZS[Java by Comparison: Become a Java Craftsman in 70 Examples].
-Simon Harrer, Jörg Lenhard, Linus Dietz.
-The Pragmatic Programmers 2018.
+bibliography::[]

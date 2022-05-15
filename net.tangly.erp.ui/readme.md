@@ -1,6 +1,7 @@
 ---
 title: "Readme"
-date: 2019-05-01 weight: 10 draft: false
+date: 2019-05-01
+weight: 10
 ---
 
 # ERP User Interface Component
@@ -90,10 +91,15 @@ The prerequisite is that the application was built locally for production mode a
 _Run from the project root_.
 
 ```shell
-  ./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode
-  docker build -t tanglyllc/tangly-erp:latest net.tangly.erp.ui/
-  docker push tanglyllc/tangly-erp:latest
+  ./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode  // <1>
+  docker build -t tanglyllc/tangly-erp:latest net.tangly.erp.ui/   // <2>
+  docker push tanglyllc/tangly-erp:latest                          // <3>
 ```
+
+- <1> Build the Java application and create a binary distribution of the application.
+- <2> Generate a Docker image containing the binary application generated in the previous step.
+- <3> Push the Docker image to the repository.
+Customers can retrieve the published Docker image and execute it in a container.
 
 We currently push to [Docker Hub](https://hub.docker.com/) repository.
 The image is accessible unde [tangly-erp Docker Image](https://hub.docker.com/r/tanglyllc/tangly-erp).
