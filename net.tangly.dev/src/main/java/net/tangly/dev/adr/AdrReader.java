@@ -71,7 +71,7 @@ public class AdrReader {
             index = skipWhile(lines, index, o -> !o.startsWith("=== Status"));
             index++;
             index = skipWhile(lines, index, String::isBlank);
-            adr.status(lines.get(index).trim());
+            adr.status(lines.get(index).strip());
 
             // [optional] === Links (one link per line)
             index = skipWhile(lines, index, o -> !o.startsWith("==="));
@@ -112,17 +112,17 @@ public class AdrReader {
     }
 
     private String extractId(@NotNull String line) {
-        String id = line.substring(line.indexOf("==") + 2).trim();
+        String id = line.substring(line.indexOf("==") + 2).strip();
         return id.substring(0, id.indexOf(" "));
     }
 
     private String extractTitle(@NotNull String line) {
-        var title = line.substring(line.indexOf("==") + 2).trim();
+        var title = line.substring(line.indexOf("==") + 2).strip();
         return title.substring(title.indexOf(" ")).trim();
     }
 
     private LocalDate extractDate(@NotNull String line) {
-        var date = line.substring(line.indexOf("Date:") + 5).trim();
+        var date = line.substring(line.indexOf("Date:") + 5).strip();
         return LocalDate.parse(date);
     }
 

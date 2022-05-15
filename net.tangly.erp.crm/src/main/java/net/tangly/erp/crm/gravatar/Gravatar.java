@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -44,7 +44,7 @@ public final class Gravatar {
     }
 
     private String getUrl(String email, int sizeInPixels, GravatarRating rating, GravatarImage image) {
-        return GRAVATAR_URL + DigestUtils.md5Hex(email.toLowerCase(Locale.US).trim()) + ".jpg" + formatUrlParameters(sizeInPixels, rating, image);
+        return GRAVATAR_URL + DigestUtils.md5Hex(email.toLowerCase(Locale.US).strip()) + ".jpg" + formatUrlParameters(sizeInPixels, rating, image);
     }
 
     private static String formatUrlParameters(int sizeInPixels, GravatarRating rating, GravatarImage image) {

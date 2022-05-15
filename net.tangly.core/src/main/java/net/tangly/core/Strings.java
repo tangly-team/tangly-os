@@ -42,10 +42,10 @@ public final class Strings {
     }
 
     public static String trim(String string) {
-        return (string == null) ? null : string.trim();
+        return (string == null) ? null : string.strip();
     }
 
     public static String normalizeToNull(String string) {
-        return isNullOrEmpty(string) ? null : string.trim();
+        return isNullOrEmpty(string) ? null : string.strip();
     }
 }
