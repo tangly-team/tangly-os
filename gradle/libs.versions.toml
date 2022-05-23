@@ -7,7 +7,7 @@ junit-version = '5.8.2'
 log4j2-version = '2.17.2'
 microstream-version = '07.00.00-MS-GA'
 mustang-version = '2.5.1'
-vaadin-version = '23.0.8'
+vaadin-version = '23.0.9'
 assertj-version = '3.22.0'
 
 [plugins]
@@ -40,7 +40,7 @@ asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:1.6.2"
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
 commonmark = "org.commonmark:commonmark:0.18.2"
 eo-yaml = "com.amihaiemil.web:eo-yaml:5.2.1"
-flyway = "org.flywaydb:flyway-core:8.5.10"
+flyway = "org.flywaydb:flyway-core:8.5.11"
 guice = "com.google.inject:guice:5.1.0"
 hsqldb = "org.hsqldb:hsqldb:2.6.1"
 iban4j = "org.iban4j:iban4j:3.2.3-RELEASE"
@@ -56,6 +56,7 @@ jackson-datatype = { module = "com.fasterxml.jackson.datatype:jackson-datatype-j
 jackson-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson-version" }
 
 jakarta-mail = "com.sun.mail:jakarta.mail:2.0.1"
+jbibtext = "org.jbibtex:jbibtex:1.0.20"
 jimfs = "com.google.jimfs:jimfs:1.2"
 
 #Java 9 module compliant version of https://github.com/stleary/JSON-java
@@ -94,7 +95,7 @@ vaadin-tooltip = "com.vaadin.componentfactory:tooltip:1.3.7"
 vaadin-pdfviewer = "org.vaadin.addons.componentfactory:vcf-pdf-viewer:2.0.1"
 
 vaadin-pdfbrowser = "org.vaadin.alejandro:pdf-browser:3.1.0"
-vaadin-socharts = "com.storedobject.chart:so-charts:2.4.1"
+vaadin-socharts = "com.storedobject.chart:so-charts:3.0.0"
 vaadin-signature = "de.f0rce.signaturepad:signature-widget:2.0.1"
 vaadin-test = "com.github.mvysny.kaributesting:karibu-testing-v10:1.3.12"
 
