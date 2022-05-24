@@ -1,0 +1,70 @@
+/*
+ * Copyright 2022-2022 Marcel Baumann
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ *          http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ */
+
+package net.tangly.erp.crm.ui;
+
+import net.tangly.erp.crm.services.CrmBoundedDomain;
+import net.tangly.erp.crm.services.CrmBusinessLogic;
+import net.tangly.erp.crm.services.CrmHandler;
+import net.tangly.erp.crm.services.CrmPort;
+import net.tangly.erp.crm.services.CrmRealm;
+import net.tangly.erpr.crm.ports.CrmHdl;
+import net.tangly.erpr.crm.ports.CrmTsvHdl;
+import net.tangly.ui.app.domain.CmdFilesUpload;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Set;
+
+/**
+ * Command to upload a set of files containing entities. The domain imports the provided entities.
+ * The current supported format is TSV. The entity type is encoded with the filename.
+ * The logic takes care of the correct order to process the uploaded files.
+ */
+public class CmdFilesUploadCrm extends CmdFilesUpload<CrmRealm, CrmBusinessLogic, CrmHandler, CrmPort> {
+    CmdFilesUploadCrm(@NotNull CrmBoundedDomain domain) {
+        super(domain, TSV_MIME);
+        registerAllFinishedListener(
+            (event -> {
+                var handler = new CrmTsvHdl(domain.realm());
+                Set<String> files = buffer().getFiles();
+                if (files.contains(CrmHdl.LEADS_TSV)) {
+                    handler.importLeads(createReader(CrmHdl.LEADS_TSV), CrmHdl.LEADS_TSV);
+                }
+                if (files.contains(CrmHdl.NATURAL_ENTITIES_TSV)) {
+                    handler.importNaturalEntities(createReader(CrmHdl.NATURAL_ENTITIES_TSV), CrmHdl.NATURAL_ENTITIES_TSV);
+                }
+                if (files.contains(CrmHdl.LEGAL_ENTITIES_TSV)) {
+                    handler.importLegalEntities(createReader(CrmHdl.LEGAL_ENTITIES_TSV), CrmHdl.LEGAL_ENTITIES_TSV);
+                }
+                if (files.contains(CrmHdl.EMPLOYEES_TSV)) {
+                    handler.importEmployees(createReader(CrmHdl.EMPLOYEES_TSV), CrmHdl.EMPLOYEES_TSV);
+                }
+                if (files.contains(CrmHdl.CONTRACTS_TSV)) {
+                    handler.importContracts(createReader(CrmHdl.CONTRACTS_TSV), CrmHdl.CONTRACTS_TSV);
+                }
+                if (files.contains(CrmHdl.INTERACTIONS_TSV)) {
+                    handler.importInteractions(createReader(CrmHdl.INTERACTIONS_TSV), CrmHdl.INTERACTIONS_TSV);
+                }
+                if (files.contains(CrmHdl.ACTIVITIES_TSV)) {
+                    handler.importActivities(createReader(CrmHdl.ACTIVITIES_TSV), CrmHdl.ACTIVITIES_TSV);
+                }
+                if (files.contains(CrmHdl.SUBJECTS_TSV)) {
+                    handler.importSubjects(createReader(CrmHdl.SUBJECTS_TSV), CrmHdl.SUBJECTS_TSV);
+                }
+                if (files.contains(CrmHdl.COMMENTS_TSV)) {
+                    handler.importComments(createReader(CrmHdl.COMMENTS_TSV), CrmHdl.COMMENTS_TSV);
+                }
+                close();
+            }));
+    }
+}
+

@@ -12,22 +12,6 @@
 
 package net.tangly.erp.ledger.ports;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.UncheckedIOException;
-import java.math.BigDecimal;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import javax.inject.Inject;
-
 import net.tangly.commons.lang.Strings;
 import net.tangly.commons.logger.EventData;
 import net.tangly.core.Tag;
@@ -42,8 +26,23 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
+import javax.inject.Inject;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.UncheckedIOException;
+import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
 /**
- * The ledger CSV handler can import ledger plans and transactions journal. The import assumes that the program language and ledger template use English.
+ * The ledger CSV handler can import ledger plans and journal of transactions. The import assumes that the program language and ledger template use English.
  * <p>The ledger structure CSV file has the columns id, account kind, account group, description, owned by group id. The handler reads a ledger structure
  * description from a CSV file and update a full ledger structure. </p>
  * <p>The transaction CSV file has the columns date, doc, description, account debit, account credit, amount, defineVat code, and date expected.</p>
@@ -64,6 +63,8 @@ public class LedgerTsvHdl {
     private static final String ACCOUNT_CREDIT = "AccountCredit";
     private static final String VAT_CODE = "VatCode";
     private static final String DATE_EXPECTED = "DateExpected";
+
+    private static final String SOURCE = "source";
 
     private static final Logger logger = LogManager.getLogger();
     private final LedgerRealm ledger;
@@ -90,14 +91,15 @@ public class LedgerTsvHdl {
      *     <dt>Currency</dt><dd>Defines the currency of the account.</dd>
      * </dl>
      *
-     * @param path path to the file containing the chart of accounts
+     * @param reader reader to the file containing the chart of accounts
+     * @param source name of the source of the chart of accounts
      * @see #exportChartOfAccounts(Path)
      */
-    public void importChartOfAccounts(@NotNull Path path) {
-        try (Reader in = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
+    public void importChartOfAccounts(@NotNull Reader reader, String source) {
+        try {
             int counter = 0;
             Account.AccountGroup currentSection = null;
-            for (CSVRecord csv : TsvHdl.FORMAT.parse(in)) {
+            for (CSVRecord csv : TsvHdl.FORMAT.parse(reader)) {
                 String section = csv.get(SECTION);
                 if (!Strings.isNullOrBlank(section)) {
                     currentSection = ofGroup(section);
@@ -121,14 +123,14 @@ public class LedgerTsvHdl {
                     ledger.add(account);
                     ++counter;
                     EventData.log(EventData.IMPORT, TsvHdl.MODULE, EventData.Status.INFO, Account.class.getSimpleName() + " imported",
-                        Map.of("filename", path, "object", account));
+                        Map.of(SOURCE, source, "object", account));
 
                 }
                 EventData.log(EventData.IMPORT, TsvHdl.MODULE, EventData.Status.INFO, Account.class.getSimpleName() + " imported objects",
-                    Map.of("filename", path, "count", counter));
+                    Map.of(SOURCE, source, "count", counter));
             }
         } catch (IOException e) {
-            EventData.log(EventData.IMPORT, TsvHdl.MODULE, EventData.Status.FAILURE, "Entities not imported from", Map.of("filename", path), e);
+            EventData.log(EventData.IMPORT, TsvHdl.MODULE, EventData.Status.FAILURE, "Entities not imported from", Map.of(SOURCE, source), e);
             throw new UncheckedIOException(e);
         }
     }
@@ -137,9 +139,9 @@ public class LedgerTsvHdl {
      * Exports the chart of accounts to the provided file.
      *
      * @param path path to the file
-     * @see #importChartOfAccounts(Path)
+     * @see #importChartOfAccounts(Reader, String)
      */
-    public void exportChartOfAccounts(@NotNull Path path) {
+    public void exportChartOfAccounts(Path path) {
         try (CSVPrinter out = new CSVPrinter(Files.newBufferedWriter(path, StandardCharsets.UTF_8), TsvHdl.FORMAT)) {
             out.printRecord(SECTION, GROUP, ACCOUNT, DESCRIPTION, BCLASS, GR, CURRENCY);
             int counter = 0;
@@ -167,12 +169,13 @@ public class LedgerTsvHdl {
                 }
                 ++counter;
                 EventData.log(EventData.EXPORT, TsvHdl.MODULE, EventData.Status.SUCCESS, Account.class.getSimpleName() + " exported to charter of accounts",
-                    Map.of("filename", path, "entity", account));
+                    Map.of(SOURCE, path, "entity", account));
             }
             EventData.log(EventData.EXPORT, TsvHdl.MODULE, EventData.Status.INFO, "exported to charter of accounts",
-                Map.of("filename", path, "counter", counter));
+                Map.of(SOURCE, path, "counter", counter));
         } catch (IOException e) {
-            EventData.log(EventData.EXPORT, TsvHdl.MODULE, EventData.Status.FAILURE, "Accounts exported to", Map.of("filename", path), e);
+            EventData.log(EventData.EXPORT, TsvHdl.MODULE, EventData.Status.FAILURE, "Accounts exported to", Map.of(SOURCE, path), e);
+
             throw new UncheckedIOException(e);
         }
     }
@@ -191,12 +194,13 @@ public class LedgerTsvHdl {
      *     <dt>VAT code</dt><dd>optional VAT code associated with the transaction or the split part of a transaction.</dd>
      * </dl>
      *
-     * @param path path to the file containing the list of transactions
+     * @param reader reader to the file containing the chart of accounts
+     * @param source name of the source of the chart of accounts
      * @see #exportJournal(Path, LocalDate, LocalDate)
      */
-    public void importJournal(@NotNull Path path) {
-        try (Reader in = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
-            Iterator<CSVRecord> records = TsvHdl.FORMAT.parse(in).iterator();
+    public void importJournal(@NotNull Reader reader, String source) {
+        try {
+            Iterator<CSVRecord> records = TsvHdl.FORMAT.parse(reader).iterator();
             int counter = 0;
             var csv = records.hasNext() ? records.next() : null;
             while (csv != null) {
@@ -239,12 +243,12 @@ public class LedgerTsvHdl {
                     ledger.addVat(transaction);
                     ++counter;
                     EventData.log(EventData.IMPORT, TsvHdl.MODULE, EventData.Status.SUCCESS, Transaction.class.getSimpleName() + " imported to journal",
-                        Map.of("filename", path, "entity", transaction));
+                        Map.of(SOURCE, source, "entity", transaction));
                 }
             }
-            EventData.log(EventData.IMPORT, TsvHdl.MODULE, EventData.Status.INFO, "imported to journal", Map.of("filename", path, "counter", counter));
+            EventData.log(EventData.IMPORT, TsvHdl.MODULE, EventData.Status.INFO, "imported to journal", Map.of(SOURCE, source, "counter", counter));
         } catch (IOException e) {
-            EventData.log(EventData.IMPORT, TsvHdl.MODULE, EventData.Status.FAILURE, "Transactions imported from", Map.of("filename", path), e);
+            EventData.log(EventData.IMPORT, TsvHdl.MODULE, EventData.Status.FAILURE, "Transactions imported from", Map.of(SOURCE, source), e);
             throw new UncheckedIOException(e);
         }
     }
@@ -281,7 +285,7 @@ public class LedgerTsvHdl {
                 }
                 ++counter;
             }
-            EventData.log(EventData.EXPORT, TsvHdl.MODULE, EventData.Status.INFO, "exported from journal", Map.of("filename", path, "counter", counter));
+            EventData.log(EventData.EXPORT, TsvHdl.MODULE, EventData.Status.INFO, "exported from journal", Map.of(SOURCE, path, "counter", counter));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

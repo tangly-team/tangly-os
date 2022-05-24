@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2022-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,91 +12,67 @@
 
 package net.tangly.erp.products.ports;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.ports.TsvHdl;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.domain.Product;
-import net.tangly.erp.products.services.ProductsHandler;
 import net.tangly.erp.products.services.ProductsRealm;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
 import org.jetbrains.annotations.NotNull;
+
+import java.io.Reader;
+import java.nio.file.Path;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 import static net.tangly.erp.ports.TsvHdl.OID;
 import static net.tangly.erp.ports.TsvHdl.TEXT;
 import static net.tangly.erp.ports.TsvHdl.convertFoidTo;
 import static net.tangly.erp.ports.TsvHdl.createTsvQualifiedEntityFields;
 
-public class ProductsHdl implements ProductsHandler {
+public class ProductsTsvHdl {
     public static final String PRODUCTS_TSV = "products.tsv";
     public static final String ASSIGNMENTS_TSV = "assignments.tsv";
     public static final String EFFORTS_TSV = "efforts.tsv";
 
     private final ProductsRealm realm;
-    private final Path folder;
 
-    public ProductsHdl(@NotNull ProductsRealm realm, @NotNull Path folder) {
+    public ProductsTsvHdl(@NotNull ProductsRealm realm) {
         this.realm = realm;
-        this.folder = folder;
     }
 
-    @Override
-    public ProductsRealm realm() {
-        return realm;
-    }
-
-    @Override
-    public void importEntities() {
-        var handler = new ProductsTsvHdl(realm());
-        try {
-            handler.importProducts(Files.newBufferedReader(folder.resolve(PRODUCTS_TSV), StandardCharsets.UTF_8), folder.resolve(PRODUCTS_TSV).toString());
-            handler.importAssignments(Files.newBufferedReader(folder.resolve(ASSIGNMENTS_TSV), StandardCharsets.UTF_8), folder.resolve(ASSIGNMENTS_TSV).toString());
-            handler.importEfforts(Files.newBufferedReader(folder.resolve(EFFORTS_TSV), StandardCharsets.UTF_8), folder.resolve(EFFORTS_TSV).toString());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public void exportEntities() {
-        var handler = new ProductsTsvHdl(realm());
-        handler.exportProducts(folder.resolve(PRODUCTS_TSV));
-        handler.exportAssignments(folder.resolve(ASSIGNMENTS_TSV));
-        handler.exportEfforts(folder.resolve(EFFORTS_TSV));
-    }
-
-    TsvEntity<Product> createTsvProduct() {
+    private static TsvEntity<Product> createTsvProduct() {
         List<TsvProperty<Product, ?>> fields = createTsvQualifiedEntityFields();
         fields.add(TsvProperty.of("contractIds", Product::contractIds, Product::contractIds, e -> Arrays.asList(e.split(",", -1)), e -> String.join(",", e)));
         return TsvEntity.of(Product.class, fields, Product::new);
     }
 
-    TsvEntity<Assignment> createTsvAssignment() {
-        List<TsvProperty<Assignment, ?>> fields = createTsvQualifiedEntityFields();
-        fields.add(TsvProperty.ofString("collaboratorId", Assignment::collaboratorId, Assignment::collaboratorId));
-        fields.add(TsvProperty.of("productOid", Assignment::product, Assignment::product, e -> findProductByOid(e).orElse(null), convertFoidTo()));
-        return TsvEntity.of(Assignment.class, fields, Assignment::new);
+    public void importProducts(@NotNull Reader reader, String source) {
+        TsvHdl.importEntities(reader, source, createTsvProduct(), realm.products());
     }
 
-    TsvEntity<Effort> createTsvEffort() {
-        List<TsvProperty<Effort, ?>> fields =
-            List.of(TsvProperty.of(OID, Effort::oid, (entity, value) -> ReflectionUtilities.set(entity, OID, value), Long::parseLong),
-                TsvProperty.of("date", Effort::date, Effort::date, TsvProperty.CONVERT_DATE_FROM),
-                TsvProperty.ofInt("durationInMinutes", Effort::duration, Effort::duration), TsvProperty.ofString(TEXT, Effort::text, Effort::text),
-                TsvProperty.of("assignmentOid", Effort::assignment, Effort::assignment, e -> findAssignmentByOid(e).orElse(null), convertFoidTo()),
-                TsvProperty.ofString("contractId", Effort::contractId, Effort::contractId));
-        return TsvEntity.of(Effort.class, fields, Effort::new);
+    public void exportProducts(@NotNull Path path) {
+        TsvHdl.exportEntities(path, createTsvProduct(), realm.products());
+    }
+
+    public void importAssignments(@NotNull Reader reader, String source) {
+        TsvHdl.importEntities(reader, source, createTsvAssignment(), realm.assignments());
+    }
+
+    public void exportAssignments(@NotNull Path path) {
+        TsvHdl.exportEntities(path, createTsvAssignment(), realm.assignments());
+    }
+
+    public void importEfforts(@NotNull Reader reader, String source) {
+        TsvHdl.importEntities(reader, source, createTsvEffort(), realm.efforts());
+    }
+
+    public void exportEfforts(@NotNull Path path) {
+        TsvHdl.exportEntities(path, createTsvEffort(), realm.efforts());
     }
 
     public Optional<Product> findProductByOid(String identifier) {
@@ -107,4 +83,20 @@ public class ProductsHdl implements ProductsHandler {
         return (identifier != null) ? Provider.findByOid(realm.assignments(), Long.parseLong(identifier)) : Optional.empty();
     }
 
+    private TsvEntity<Assignment> createTsvAssignment() {
+        List<TsvProperty<Assignment, ?>> fields = createTsvQualifiedEntityFields();
+        fields.add(TsvProperty.ofString("collaboratorId", Assignment::collaboratorId, Assignment::collaboratorId));
+        fields.add(TsvProperty.of("productOid", Assignment::product, Assignment::product, e -> findProductByOid(e).orElse(null), convertFoidTo()));
+        return TsvEntity.of(Assignment.class, fields, Assignment::new);
+    }
+
+    private TsvEntity<Effort> createTsvEffort() {
+        List<TsvProperty<Effort, ?>> fields =
+            List.of(TsvProperty.of(OID, Effort::oid, (entity, value) -> ReflectionUtilities.set(entity, OID, value), Long::parseLong),
+                TsvProperty.of("date", Effort::date, Effort::date, TsvProperty.CONVERT_DATE_FROM),
+                TsvProperty.ofInt("durationInMinutes", Effort::duration, Effort::duration), TsvProperty.ofString(TEXT, Effort::text, Effort::text),
+                TsvProperty.of("assignmentOid", Effort::assignment, Effort::assignment, e -> findAssignmentByOid(e).orElse(null), convertFoidTo()),
+                TsvProperty.ofString("contractId", Effort::contractId, Effort::contractId));
+        return TsvEntity.of(Effort.class, fields, Effort::new);
+    }
 }

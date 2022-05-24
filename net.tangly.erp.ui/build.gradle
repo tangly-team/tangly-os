@@ -29,7 +29,8 @@ application {
                                  '--add-exports=java.base/jdk.internal.misc=ALL_UNNAMED',
                                  '--add-opens=java.base/jdk.internal.misc=ALL-UNNAMED',
                                  '-XX:+ShowCodeDetailsInExceptionMessages',
-                                 '-Xmx256m']
+                                 '-Xmx256m',
+                                 '-ea']
     mainClassName = "net.tangly.erp.ui.EmbeddedJetty"
 }
 

@@ -1,0 +1,94 @@
+/*
+ * Copyright 2022-2022 Marcel Baumann
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ *          http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ */
+
+package net.tangly.ui.app.domain;
+
+import com.vaadin.flow.component.ComponentEventListener;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.dialog.Dialog;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.upload.AllFinishedEvent;
+import com.vaadin.flow.component.upload.Upload;
+import com.vaadin.flow.component.upload.receivers.MultiFileMemoryBuffer;
+import net.tangly.core.domain.BoundedDomain;
+import net.tangly.core.domain.Handler;
+import net.tangly.core.domain.Realm;
+import org.jetbrains.annotations.NotNull;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.Reader;
+
+/**
+ * Command to upload a set of files containing entities. The domain will import the provided entities.
+ * The current supported format is TSV. The entity type is encoded with the filename.
+ * The mime type <code>text/tab-separated-values</code>is documented under <a href="https://en.wikipedia.org/wiki/Tab-separated_values">TSV Mime Type</a>.
+ * The mime type <code>application/json</code> is documented under <a href="https://en.wikipedia.org/wiki/Media_type">Mime types</a>.
+ */
+public abstract class CmdFilesUpload<R extends Realm, B, H extends Handler<?>, P> implements Cmd {
+    public static final String TSV_MIME = "text/tab-separated-values";
+    public static final String JSON_MIME = "application/json";
+    public static final String CANCEL = "Cancel";
+    protected final BoundedDomain<R, B, H, P> domain;
+    private final MultiFileMemoryBuffer buffer;
+    private final Upload multiFileUpload;
+    private Dialog dialog;
+
+    /**
+     * Construct an upload command for files.
+     *
+     * @param domain            damain to which entities and aggregates are updated
+     * @param acceptedFileTypes the allowed file types to be uploaded
+     */
+    protected CmdFilesUpload(@NotNull BoundedDomain<R, B, H, P> domain, String... acceptedFileTypes) {
+        this.domain = domain;
+        buffer = new MultiFileMemoryBuffer();
+        multiFileUpload = new Upload(buffer);
+        multiFileUpload.setAcceptedFileTypes();
+    }
+
+    public void execute() {
+        dialog = new Dialog();
+        dialog.setWidth("2oem");
+        var cancel = new Button(CANCEL, e -> dialog.close());
+        var component = new VerticalLayout();
+        component.add(multiFileUpload, cancel);
+        dialog.add(component);
+        // TODO 23.1 move button to footer
+        // dialog.getFooter().add(concel);
+        dialog.open();
+    }
+
+    protected MultiFileMemoryBuffer buffer() {
+        return buffer;
+    }
+
+    protected void close() {
+        dialog.close();
+        multiFileUpload.clearFileList();
+        dialog = null;
+    }
+
+    protected void registerAllFinishedListener(ComponentEventListener<AllFinishedEvent> listener) {
+        multiFileUpload.addAllFinishedListener(listener);
+    }
+
+    /**
+     * Return a newly created reader on a upladoed file with the given filename available in the buffer.
+     *
+     * @param filename name of the uploaded file
+     * @return a new reader to the content of the uploaded file
+     */
+    protected Reader createReader(@NotNull String filename) {
+        return new BufferedReader(new InputStreamReader(buffer.getInputStream(filename)));
+    }
+}

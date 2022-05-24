@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -54,7 +54,7 @@ public class InvoicesBoundedDomainUi implements BoundedDomainUi {
         subMenu.addItem("Articles", e -> select(layout, articlesView));
         subMenu.addItem("Invoices", e -> select(layout, invoicesView));
 
-        addAdministration(layout, menuBar, domain, domainView);
+        addAdministration(layout, menuBar, domain, domainView, new CmdFilesUploadInvoices(domain));
         select(layout, currentView);
     }
 

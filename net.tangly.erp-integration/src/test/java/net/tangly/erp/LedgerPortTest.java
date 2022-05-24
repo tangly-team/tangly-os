@@ -15,6 +15,7 @@ package net.tangly.erp;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.time.LocalDate;
@@ -54,8 +55,10 @@ class LedgerPortTest {
             store.createRepository();
 
             var handler = new LedgerTsvHdl(new LedgerEntities());
-            handler.importJournal(store.ledgerRoot().resolve(LedgerHdl.journalForYear(2015)));
-            handler.importJournal(store.ledgerRoot().resolve(LedgerHdl.journalForYear(2016)));
+            var path = store.ledgerRoot().resolve(LedgerHdl.journalForYear(2015));
+            handler.importJournal(Files.newBufferedReader(path, StandardCharsets.UTF_8), path.toString());
+            path = store.ledgerRoot().resolve(LedgerHdl.journalForYear(2016));
+            handler.importJournal(Files.newBufferedReader(path, StandardCharsets.UTF_8), path.toString());
 
             var report = new ClosingReportAsciiDoc(handler.ledger());
             var writer = new StringWriter();

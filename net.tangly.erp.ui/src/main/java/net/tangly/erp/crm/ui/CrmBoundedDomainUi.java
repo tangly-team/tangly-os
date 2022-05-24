@@ -76,7 +76,7 @@ public class CrmBoundedDomainUi implements BoundedDomainUi {
         subMenu.addItem("Subjects", e -> select(layout, subjectsView));
 
         addAnalytics(layout, menuBar, analyticsView);
-        addAdministration(layout, menuBar, domain, domainView);
+        addAdministration(layout, menuBar, domain, domainView, new CmdFilesUploadCrm(domain));
         select(layout, currentView);
     }
 

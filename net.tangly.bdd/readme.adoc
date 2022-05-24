@@ -5,16 +5,16 @@ weight: 10
 draft: false
 ---
 
-# Behavior Driven Development _BDD_ JUnit 5 Library
+= Behavior Driven Development _BDD_ JUnit 5 Library
 
-![Apache License 2.0](https://img.shields.io/badge/license-Apache%202-blue.svg)
-![Maven Central](https://img.shields.io/maven-central/v/net.tangly/bdd.svg)
-[![javadoc](https://javadoc.io/badge2/net.tangly/bdd/javadoc.svg)](https://javadoc.io/doc/net.tangly/bdd)
-![Bitbucket Pipelines](https://img.shields.io/bitbucket/pipelines/tangly-team/tangly-os.svg)
-![Sonar Coverage](https://img.shields.io/sonar/https/sonarcloud.io/tangly-os-at-tangly.net/coverage.svg)
-![Bitbucket open issues](https://img.shields.io/bitbucket/issues-raw/tangly/tangly-os.svg)
+image:https://img.shields.io/badge/license-Apache%202-blue.svg[Apache License 2.0]
+image:https://img.shields.io/maven-central/v/net.tangly/bdd.svg[Maven Central]
+https://javadoc.io/doc/net.tangly/bdd[image:https://javadoc.io/badge2/net.tangly/bdd/javadoc.svg[javadoc]]
+image:https://img.shields.io/bitbucket/pipelines/tangly-team/tangly-os.svg[Bitbucket Pipelines]
+image:https://img.shields.io/sonar/https/sonarcloud.io/tangly-os-at-tangly.net/coverage.svg[Sonar Coverage]
+image:https://img.shields.io/bitbucket/issues-raw/tangly/tangly-os.svg[Bitbucket open issues]
 
-## Purpose
+== Purpose
 
 A behavior driven development library that provides a custom extension based on the JUnit 5 Jupiter Extension Model.
 This library can be used to create and run stories and behaviors as BDD specification tests.
@@ -24,51 +24,53 @@ report provides a living documentation of the features and allows customers to v
 
 The library is compact and integrated with JUnit 5 without disrupting TDD approaches and continuous integration pipelines.
 
-## Download and Documentation
+== Download and Documentation
 
 You need to add JUnit 5 dependencies before using this library. If you are using Maven or Gradle, add the following dependency after declaring the
  JUnit 5 dependency. We recommend using __assertJ__ assertion library to write more legible conditions.
 
 The library can be included in Maven as
 
-```xml
+[source,xml]
+----
     <dependency>
       <groupId>net.tangly</groupId>
       <artifactId>bdd</artifactId>
       <version>0.2.7</version>
     </dependency>
-```
+----
 
 The library can be included in Gradle as
 
-```groovy
+[source,groovy]
+----
     testImplementation "net.tangly:bdd:0.2.7"
-```
+----
 
 The documentation can be found under [BDD documentation](https://tangly-team.bitbucket.io/docs/bdd/)
 
 For any further question and discussion, you can use the forum [tangly-OS-Components](https://groups.google.com/g/tangly-os-components)
 
-## Contribution
+== Contribution
 
 You are welcome to contribute to the product with pull requests on Bitbucket. You can download the source files from the
 [bitbucket git repository](https://bitbucket.org/tangly-team/tangly-os.git) and build the library with the provided gradle configuration file.
 
 If you find a bug or want to request a feature, please use the [issue tracker](https://bitbucket.org/tangly-team/tangly-os/issues).
 
-## License
+== License
 
-The source code is licensed under [Apache license 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+The source code is licensed under https://www.apache.org/licenses/LICENSE-2.0[Apache license 2.0].
 
-The documentation and examples are licensed under [Creative Common (CC Attribution 4.0 International)](https://creativecommons.org/licenses/by/4.0/).
+The documentation and examples are licensed under https://creativecommons.org/licenses/by/4.0/[Creative Common (CC Attribution 4.0 International)].
 
-## Awesome Sponsors and Developers
+== Awesome Sponsors and Developers
 
 Corporate sponsors are
 
-* [tangly llc](https://www.tangly.net)
+* https://www.tangly.net[tangly llc]
 
 Individual developers are
 
-* [Marcel Baumann](https://linkedin.com/in/marcelbaumann)
+* https://linkedin.com/in/marcelbaumann[Marcel Baumann]
 

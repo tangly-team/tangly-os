@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,10 +12,9 @@
 
 package net.tangly.erp.crm.ui;
 
-import java.util.Objects;
-
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -25,11 +24,13 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
 import net.tangly.erp.crm.domain.Subject;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
-import net.tangly.ui.app.domain.CmdDialog;
+import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class CmdChangePassword extends CmdDialog {
+import java.util.Objects;
+
+public class CmdChangePassword implements Cmd {
     public static final String USERNAME = "Username";
     public static final String CURRENT_PASSWORD = "Current Password";
     public static final String NEW_PASSWORD = "New Password";
@@ -84,7 +85,6 @@ public class CmdChangePassword extends CmdDialog {
     private final PasswordField confirmPassword;
 
     public CmdChangePassword(@NotNull CrmBoundedDomain domain, @NotNull Subject subject) {
-        super("2oem");
         this.domain = domain;
         changePassword = new ChangePassword(subject);
         username = new TextField(USERNAME, "username");
@@ -98,7 +98,9 @@ public class CmdChangePassword extends CmdDialog {
     }
 
     @Override
-    protected FormLayout form() {
+    public void execute() {
+        Dialog dialog = new Dialog();
+        dialog.setWidth("40em");
         FormLayout form = new FormLayout();
         VaadinUtils.set1ResponsiveSteps(form);
         Binder<ChangePassword> binder = new Binder<>();
@@ -112,12 +114,13 @@ public class CmdChangePassword extends CmdDialog {
             try {
                 binder.writeBean(changePassword);
                 domain.logic().changePassword(changePassword.subject().id(), changePassword.oldPassword(), changePassword.newPassword());
-                close();
+                dialog.close();
             } catch (ValidationException e) {
             }
         });
-        Button cancel = new Button(CANCEL, e -> close());
+        Button cancel = new Button(CANCEL, e -> dialog.close());
         form.add(username, oldPassword, newPassword, confirmPassword, new HtmlComponent("br"), new HorizontalLayout(execute, cancel));
-        return form;
+        dialog.add(form);
+        dialog.open();
     }
 }

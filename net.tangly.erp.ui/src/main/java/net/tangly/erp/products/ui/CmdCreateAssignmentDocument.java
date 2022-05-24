@@ -15,17 +15,18 @@ package net.tangly.erp.products.ui;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.datepicker.DatePicker;
+import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
-import net.tangly.ui.app.domain.CmdDialog;
+import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class CmdCreateAssignmentDocument extends CmdDialog {
+public class CmdCreateAssignmentDocument implements Cmd {
     private final TextField assignmentName;
     private final TextField collaboratorName;
     private final DatePicker fromDate;
@@ -34,7 +35,6 @@ public class CmdCreateAssignmentDocument extends CmdDialog {
     private final transient ProductsBoundedDomain domain;
 
     public CmdCreateAssignmentDocument(@NotNull Assignment assignment, @NotNull ProductsBoundedDomain domain) {
-        super("4oem");
         this.assignment = assignment;
         this.domain = domain;
         assignmentName = VaadinUtils.createTextField("Assignment", "assignment name", true);
@@ -46,15 +46,18 @@ public class CmdCreateAssignmentDocument extends CmdDialog {
     }
 
     @Override
-    protected FormLayout form() {
+    public void execute() {
+        Dialog dialog = new Dialog();
+        dialog.setWidth("40em");
         FormLayout form = new FormLayout();
         VaadinUtils.set3ResponsiveSteps(form);
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
             domain.port().exportEffortsDocument(assignment, fromDate.getValue(), toDate.getValue());
-            this.close();
+            dialog.close();
         });
-        Button cancel = new Button("Cancel", e -> this.close());
+        Button cancel = new Button("Cancel", e -> dialog.close());
         form.add(assignmentName, collaboratorName, new HtmlComponent("br"), fromDate, toDate, new HtmlComponent("br"), new HorizontalLayout(execute, cancel));
-        return form;
+        dialog.add(form);
+        dialog.open();
     }
 }

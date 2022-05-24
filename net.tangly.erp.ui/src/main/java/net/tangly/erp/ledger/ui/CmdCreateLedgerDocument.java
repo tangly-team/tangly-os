@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -16,15 +16,18 @@ import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.datepicker.DatePicker;
+import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
-import net.tangly.ui.app.domain.CmdDialog;
+import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.VaadinUtils;
 
-public class CmdCreateLedgerDocument extends CmdDialog {
+public class CmdCreateLedgerDocument implements
+    Cmd {
     private final TextField name;
     private final DatePicker fromDate;
     private final DatePicker toDate;
@@ -33,7 +36,6 @@ public class CmdCreateLedgerDocument extends CmdDialog {
     private final transient LedgerBoundedDomain domain;
 
     public CmdCreateLedgerDocument(LedgerBoundedDomain domain) {
-        super("40em");
         this.domain = domain;
         name = new TextField("Name", "document name");
         fromDate = VaadinUtils.createDatePicker("From");
@@ -43,15 +45,18 @@ public class CmdCreateLedgerDocument extends CmdDialog {
     }
 
     @Override
-    protected FormLayout form() {
+    public void execute() {
+        Dialog dialog = new Dialog();
+        dialog.setWidth("40em");
         FormLayout form = new FormLayout();
         VaadinUtils.set3ResponsiveSteps(form);
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
             domain.port().exportLedgerDocument(name.getValue(), fromDate.getValue(), toDate.getValue(), withVat.getValue(), withTransactions.getValue());
-            this.close();
+            dialog.close();
         });
-        Button cancel = new Button("Cancel", e -> this.close());
+        Button cancel = new Button("Cancel", e -> dialog.close());
         form.add(name, new HtmlComponent("br"), fromDate, toDate, withVat, withTransactions, new HtmlComponent("br"), new HorizontalLayout(execute, cancel));
-        return form;
+        dialog.add(form);
+        dialog.open();
     }
 }

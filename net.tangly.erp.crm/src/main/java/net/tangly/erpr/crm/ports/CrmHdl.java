@@ -17,14 +17,13 @@ import net.tangly.erp.crm.services.CrmRealm;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
- * Defines the workflows defined for bounded domain activities in particular the import and export to files.
+ * Define the workflows defined for bounded domain activities in particular the import and export to files.
  */
 public final class CrmHdl implements CrmHandler {
     public static final String COMMENTS_TSV = "comments.tsv";
@@ -56,15 +55,15 @@ public final class CrmHdl implements CrmHandler {
     public void importEntities() {
         var handler = new CrmTsvHdl(realm());
         try {
-            handler.importLeads(new BufferedReader(Files.newBufferedReader(folder.resolve(LEADS_TSV), StandardCharsets.UTF_8)), folder.resolve(LEADS_TSV).toString());
-            handler.importLegalEntities(new BufferedReader(Files.newBufferedReader(folder.resolve(LEGAL_ENTITIES_TSV), StandardCharsets.UTF_8)), folder.resolve(LEADS_TSV).toString());
-            handler.importNaturalEntities(new BufferedReader(Files.newBufferedReader(folder.resolve(NATURAL_ENTITIES_TSV), StandardCharsets.UTF_8)), folder.resolve(LEADS_TSV).toString());
-            handler.importEmployees(new BufferedReader(Files.newBufferedReader(folder.resolve(EMPLOYEES_TSV), StandardCharsets.UTF_8)), folder.resolve(LEADS_TSV).toString());
-            handler.importContracts(new BufferedReader(Files.newBufferedReader(folder.resolve(CONTRACTS_TSV), StandardCharsets.UTF_8)), folder.resolve(LEADS_TSV).toString());
-            handler.importInteractions(new BufferedReader(Files.newBufferedReader(folder.resolve(INTERACTIONS_TSV), StandardCharsets.UTF_8)), folder.resolve(LEADS_TSV).toString());
-            handler.importActivities(new BufferedReader(Files.newBufferedReader(folder.resolve(ACTIVITIES_TSV), StandardCharsets.UTF_8)), folder.resolve(LEADS_TSV).toString());
-            handler.importSubjects(new BufferedReader(Files.newBufferedReader(folder.resolve(SUBJECTS_TSV), StandardCharsets.UTF_8)), folder.resolve(LEADS_TSV).toString());
-            handler.importComments(new BufferedReader(Files.newBufferedReader(folder.resolve(COMMENTS_TSV), StandardCharsets.UTF_8)), folder.resolve(LEADS_TSV).toString());
+            handler.importLeads(Files.newBufferedReader(folder.resolve(LEADS_TSV), StandardCharsets.UTF_8), folder.resolve(LEADS_TSV).toString());
+            handler.importLegalEntities(Files.newBufferedReader(folder.resolve(LEGAL_ENTITIES_TSV), StandardCharsets.UTF_8), folder.resolve(LEADS_TSV).toString());
+            handler.importNaturalEntities(Files.newBufferedReader(folder.resolve(NATURAL_ENTITIES_TSV), StandardCharsets.UTF_8), folder.resolve(LEADS_TSV).toString());
+            handler.importEmployees(Files.newBufferedReader(folder.resolve(EMPLOYEES_TSV), StandardCharsets.UTF_8), folder.resolve(LEADS_TSV).toString());
+            handler.importContracts(Files.newBufferedReader(folder.resolve(CONTRACTS_TSV), StandardCharsets.UTF_8), folder.resolve(LEADS_TSV).toString());
+            handler.importInteractions(Files.newBufferedReader(folder.resolve(INTERACTIONS_TSV), StandardCharsets.UTF_8), folder.resolve(LEADS_TSV).toString());
+            handler.importActivities(Files.newBufferedReader(folder.resolve(ACTIVITIES_TSV), StandardCharsets.UTF_8), folder.resolve(LEADS_TSV).toString());
+            handler.importSubjects(Files.newBufferedReader(folder.resolve(SUBJECTS_TSV), StandardCharsets.UTF_8), folder.resolve(LEADS_TSV).toString());
+            handler.importComments(Files.newBufferedReader(folder.resolve(COMMENTS_TSV), StandardCharsets.UTF_8), folder.resolve(LEADS_TSV).toString());
 
             CrmVcardHdl crmVcardHdl = new CrmVcardHdl(realm());
             crmVcardHdl.importVCards(folder.resolve(VCARDS_FOLDER));

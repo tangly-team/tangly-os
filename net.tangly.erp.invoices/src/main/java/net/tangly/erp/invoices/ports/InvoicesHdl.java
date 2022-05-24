@@ -12,39 +12,31 @@
 
 package net.tangly.erp.invoices.ports;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Function;
 import java.util.stream.Stream;
 import javax.inject.Inject;
 
 import net.tangly.commons.logger.EventData;
 import net.tangly.erp.invoices.artifacts.InvoiceJson;
 import net.tangly.erp.invoices.artifacts.InvoicesUtilities;
-import net.tangly.erp.invoices.domain.Article;
-import net.tangly.erp.invoices.domain.ArticleCode;
+import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.services.InvoicesHandler;
 import net.tangly.erp.invoices.services.InvoicesRealm;
-import net.tangly.erp.ports.TsvHdl;
-import net.tangly.gleam.model.TsvEntity;
-import net.tangly.gleam.model.TsvProperty;
-import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
 
-import static net.tangly.erp.ports.TsvHdl.ID;
 import static net.tangly.erp.ports.TsvHdl.MODULE;
-import static net.tangly.erp.ports.TsvHdl.NAME;
-import static net.tangly.erp.ports.TsvHdl.TEXT;
-import static net.tangly.erp.ports.TsvHdl.get;
 
 /**
- * Defines the workflow defined for bounded domain activities in particular the import and export of files.
+ * Define the workflow defined for bounded domain activities in particular the import and export of files.
  */
 public class InvoicesHdl implements InvoicesHandler {
     public static final String REPORTS = "reports";
@@ -55,12 +47,12 @@ public class InvoicesHdl implements InvoicesHandler {
     /**
      * Path to the root folder of all invoices and product description. Invoices should be grouped by year.
      */
-    private final Path invoicesFolder;
+    private final Path folder;
 
     @Inject
     public InvoicesHdl(@NotNull InvoicesRealm realm, @NotNull Path invoicesFolder) {
         this.realm = realm;
-        this.invoicesFolder = invoicesFolder;
+        this.folder = invoicesFolder;
     }
 
     @Override
@@ -70,20 +62,26 @@ public class InvoicesHdl implements InvoicesHandler {
 
     @Override
     public void importEntities() {
+        var handler = new InvoicesTsvJsonHdl(realm());
+        try {
+            handler.importArticles(new BufferedReader(Files.newBufferedReader(folder.resolve(ARTICLES_TSV), StandardCharsets.UTF_8)), folder.resolve(ARTICLES_TSV).toString());
+            ;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         var invoiceJson = new InvoiceJson(realm);
-        importArticles(invoicesFolder.resolve(ARTICLES_TSV));
-        try (Stream<Path> stream = Files.walk(invoicesFolder)) {
+        try (Stream<Path> stream = Files.walk(folder)) {
             AtomicInteger nrOfInvoices = new AtomicInteger();
             AtomicInteger nrOfImportedInvoices = new AtomicInteger();
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(JSON_EXT)).forEach(o -> {
                 nrOfInvoices.getAndIncrement();
-                var invoice = invoiceJson.imports(o, Collections.emptyMap());
-                if ((invoice != null) && invoice.check()) {
-                    nrOfImportedInvoices.getAndIncrement();
-                    realm.invoices().update(invoice);
-                    EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, "Imported Invoice", Map.of("invoice", invoice));
-                } else {
-                    EventData.log(EventData.IMPORT, MODULE, EventData.Status.WARNING, "Invalid Invoice", Map.of("invoice", o.toString()));
+                try {
+                    var invoice = handler.importInvoice(Files.newBufferedReader(folder.resolve(o)), o.toString());
+                    if ((invoice != null)) {
+                        nrOfImportedInvoices.getAndIncrement();
+                    }
+                } catch (IOException e) {
+                    throw new UncheckedIOException(e);
                 }
             });
             EventData.log(EventData.IMPORT, MODULE, EventData.Status.INFO, "Invoices were imported out of",
@@ -95,33 +93,14 @@ public class InvoicesHdl implements InvoicesHandler {
 
     @Override
     public void exportEntities() {
-        exportArticles(invoicesFolder.resolve(ARTICLES_TSV));
+        var handler = new InvoicesTsvJsonHdl(realm());
+        handler.exportArticles(folder.resolve(ARTICLES_TSV));
         var invoiceJson = new InvoiceJson(realm);
         realm.invoices().items().forEach(o -> {
-            var invoiceFolder = InvoicesUtilities.resolvePath(invoicesFolder, o);
+            var invoiceFolder = InvoicesUtilities.resolvePath(folder, o);
             var invoicePath = invoiceFolder.resolve(o.name() + JSON_EXT);
             invoiceJson.exports(o, invoicePath, Collections.emptyMap());
             EventData.log(EventData.EXPORT, MODULE, EventData.Status.SUCCESS, "Invoice exported to JSON {}", Map.of("invoice", o, "invoicePath", invoicePath));
         });
-    }
-
-    public void exportArticles(@NotNull Path path) {
-        TsvHdl.exportEntities(path, createTsvArticle(), realm.articles());
-    }
-
-    public void importArticles(@NotNull Path path) {
-        TsvHdl.importEntities(path, createTsvArticle(), realm.articles());
-    }
-
-    static TsvEntity<Article> createTsvArticle() {
-        Function<CSVRecord, Article> imports = (CSVRecord obj) -> new Article(get(obj, ID), get(obj, NAME), get(obj, TEXT),
-            Enum.valueOf(ArticleCode.class, get(obj, "code").toLowerCase()), TsvProperty.CONVERT_BIG_DECIMAL_FROM.apply(get(obj, "unitPrice")),
-            get(obj, "unit"), TsvProperty.CONVERT_BIG_DECIMAL_FROM.apply(get(obj, "vatRate")));
-
-        List<TsvProperty<Article, ?>> fields = List.of(TsvProperty.ofString(ID, Article::id, null), TsvProperty.ofString(NAME, Article::name, null),
-            TsvProperty.ofString(TEXT, Article::text, null), TsvProperty.ofEnum(ArticleCode.class, "code", Article::code, null),
-            TsvProperty.ofBigDecimal("unitPrice", Article::unitPrice, null), TsvProperty.ofString("unit", Article::unit, null),
-            TsvProperty.ofBigDecimal("vatRate", Article::vatRate, null));
-        return TsvEntity.of(Article.class, fields, imports);
     }
 }

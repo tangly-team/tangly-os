@@ -12,21 +12,6 @@
 
 package net.tangly.erp.invoices.artifacts;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.JsonUtilities;
 import net.tangly.core.Address;
@@ -43,12 +28,29 @@ import net.tangly.gleam.model.JsonArray;
 import net.tangly.gleam.model.JsonEntity;
 import net.tangly.gleam.model.JsonField;
 import net.tangly.gleam.model.JsonProperty;
+import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
 public class InvoiceJson implements InvoiceGenerator {
     private static final Logger logger = LogManager.getLogger();
@@ -72,26 +74,33 @@ public class InvoiceJson implements InvoiceGenerator {
         }
     }
 
-    public Invoice imports(@NotNull Path path, @NotNull Map<String, Object> properties) {
+    /**
+     * Import a JSON invoice into the domain.
+     *
+     * @param reader reader for the character stream of the JSON file. JSON files are always character based. Reader is closed upon use.
+     * @param source name of the JSON source
+     * @return the newly created domain invoice object
+     */
+    public Invoice imports(@NotNull Reader reader, @NotNull String source) {
         JsonEntity<Invoice> entity = createJsonInvoice();
         Invoice invoice = null;
-        if (JsonUtilities.isValid(path, "invoice-schema.json")) {
-            try (Reader in = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
-                var jsonInvoice = new JSONObject(new JSONTokener(in));
+        try {
+            String jsonString = IOUtils.toString(reader);
+            reader.close();
+            if (JsonUtilities.isValid(new StringReader(jsonString), "invoice-schema.json")) {
+                var jsonInvoice = new JSONObject(new JSONTokener(new StringReader(jsonString)));
                 invoice = entity.imports(jsonInvoice);
                 if (!invoice.check()) {
                     logger.atInfo().log("Invoice {} is invalid", invoice.name());
                 }
-                EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.SUCCESS, "Invoice imported", Map.of("filename", path, "entity", invoice));
-            } catch (IOException e) {
-                EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.FAILURE, "Error during import of JSON", Map.of("filename", path), e);
-                throw new UncheckedIOException(e);
-            } catch (Exception e) {
-                EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.FAILURE, "Error during import of JSON", Map.of("filename", path), e);
+                EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.SUCCESS, "Invoice imported", Map.of("filename", source, "entity", invoice));
+            } else {
+                EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.FAILURE, "Invalid JSON schema file", Map.of("filename", source));
             }
-        } else {
-            EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.FAILURE, "Invalid JSON schema file", Map.of("filename", path));
+        } catch (Exception e) {
+            EventData.log(EventData.IMPORT, COMPONENT, EventData.Status.FAILURE, "Error during import of JSON", Map.of("filename", source), e);
         }
+
         return invoice;
     }
 

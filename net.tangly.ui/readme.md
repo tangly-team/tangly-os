@@ -18,7 +18,7 @@ draft: false
 ## Purpose
 
 The **tangly ui erp** component provides a Vaadin based user interfaces for enterprise applications written in Java.
-The component is using records and requires **Java 14 or higher**.
+The component is using records and requires **Java 17 or higher**.
 
 
 Currently, we are moving at the bleeding edge of our components. Therefore to build and execute the ERP application please

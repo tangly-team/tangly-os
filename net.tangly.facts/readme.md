@@ -1,43 +1,48 @@
 ---
 title: "Readme"
 date: 2019-05-01
-lastmod: 2020-05-01
 weight: 10
 draft: false
 ---
 
-# Commons Libraries
+# ERP Shared Component Library
 
 ![Apache License 2.0](https://img.shields.io/badge/license-Apache%202-blue.svg)
-![Maven Central](https://img.shields.io/maven-central/v/net.tangly/commons.svg)
-[![javadoc](https://javadoc.io/badge2/net.tangly/commons/javadoc.svg)](https://javadoc.io/doc/net.tangly/commons)
+![Maven Central](https://img.shields.io/maven-central/v/net.tangly/facts.svg)
+[![javadoc](https://javadoc.io/badge2/net.tangly/bus/javadoc.svg)](https://javadoc.io/doc/net.tangly.facts/)
 ![Bitbucket Pipelines](https://img.shields.io/bitbucket/pipelines/tangly-team/tangly-os.svg)
 ![Sonar Coverage](https://img.shields.io/sonar/https/sonarcloud.io/tangly-os-at-tangly.net/coverage.svg)
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues-raw/tangly/tangly-os.svg)
 
 ## Purpose
 
+The **tangly facts** bounded domain component provides regular business model abstractions for facts applications written in Java.
+The component is using records and requires **Java 17 or higher**.
+
+**Try it out**.
+
 ## Download and Documentation
 
 The library can be included in Maven as
 
 ```xml
-    <dependency>
-      <groupId>net.tangly</groupId>
-      <artifactId>commons</artifactId>
-      <version>0.2.7</version>
-    </dependency>
+
+<dependency>
+    <groupId>net.tangly</groupId>
+    <artifactId>facts</artifactId>
+    <version>0.2.7</version>
+</dependency>
 ```
 
 The library can be included in Gradle as
 
 ```groovy
-    implementation "net.tangly:commons:0.2.7"
+    implementation "net.tangly.facts:0.2.7"
 ```
 
-The documentation can be found under [Commons documentation](https://tangly-team.bitbucket.io/docs/commons/)
+The documentation can be found under [Business documentation](https://tangly-team.bitbucket.io/docs/erp/shared/)
 
-For any further question and discussion, you can use the forum [tangly-OS-Components](https://groups.google.com/g/tangly-os-components)
+For any further question and discussion you can use the forum [tangly-OS-Components](https://groups.google.com/g/tangly-os-components)
 
 ## Contribution
 

@@ -1,0 +1,70 @@
+---
+title: "Readme"
+date: 2019-05-01
+lastmod: 2020-05-01
+weight: 10
+draft: false
+---
+
+# Core Libraries
+
+image:https://img.shields.io/badge/license-Apache%202-blue.svg[Apache License 2.0]
+image:https://img.shields.io/maven-central/v/net.tangly/core.svg[Maven Central]
+https://javadoc.io/doc/net.tangly/core[image:https://javadoc.io/badge2/net.tangly/core/javadoc.svg[javadoc]]
+image:https://img.shields.io/bitbucket/pipelines/tangly-team/tangly-os.svg[Bitbucket Pipelines]
+image:https://img.shields.io/sonar/https/sonarcloud.io/tangly-os-at-tangly.net/coverage.svg[Sonar Coverage]
+image:https://img.shields.io/bitbucket/issues-raw/tangly/tangly-os.svg[Bitbucket open issues]
+
+== Purpose
+
+The **tangly core** component provides key abstraction for domain driven development approach and entities with tags and comments.
+It requires **Java 17 or higher**.
+
+
+== Download and Documentation
+
+The library can be included in Maven as
+
+[source,xml]
+----
+ <dependency>
+ <groupId>net.tangly</groupId>
+ <artifactId>core</artifactId>
+ <version>0.2.7</version>
+ </dependency>
+----
+
+The library can be included in Gradle as
+
+[source,groovy]
+----
+ implementation "net.tangly:core:0.2.7"
+----
+
+The documentation can be found under https://tangly-team.bitbucket.io/docs/core/[Core]
+
+For any further question and discussion you can use the forum https://groups.google.com/g/tangly-os-components[tangly-OS-Components]
+
+== Contribution
+
+You are welcome to contribute to the product with pull requests on Bitbucket. You can download the source files from the
+https://bitbucket.org/tangly-team/tangly-os.git[bitbucket git repository] and build the library with the provided gradle configuration file.
+
+If you find a bug or want to request a feature, please use the https://bitbucket.org/tangly-team/tangly-os/issues[issue tracker].
+
+== License
+
+The source code is licensed under https://www.apache.org/licenses/LICENSE-2.0[Apache license 2.0].
+
+The documentation and examples are licensed under https://creativecommons.org/licenses/by/4.0/[Creative Common (CC Attribution 4.0 International)].
+
+== Awesome Sponsors and Developers
+
+Corporate sponsors are
+
+* https://www.tangly.net[tangly llc]
+
+Individual developers are
+
+* https://linkedin.com/in/marcelbaumann[Marcel Baumann]
+

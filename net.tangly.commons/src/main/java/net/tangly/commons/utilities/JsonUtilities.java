@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -15,7 +15,10 @@ package net.tangly.commons.utilities;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Reader;
 import java.io.UncheckedIOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Set;
@@ -46,28 +49,34 @@ public class JsonUtilities {
      * @return true if no validation error was found otherwise false
      */
     public static boolean isValid(@NotNull Path jsonFile, @NotNull String resource) {
-        Set<ValidationMessage> messages = validateSchema(jsonFile, resource);
+        try {
+            return isValid(Files.newBufferedReader(jsonFile, StandardCharsets.UTF_8), resource);
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+    }
+
+    public static boolean isValid(@NotNull Reader reader, @NotNull String resource) {
+        Set<ValidationMessage> messages = validateSchema(reader, resource);
         messages.forEach(o -> logger.atDebug().log("JSON validation error: {}", o));
-        return validateSchema(jsonFile, resource).isEmpty();
+        return messages.isEmpty();
     }
 
     /**
      * Validate the JSON file against the JSON schema describing the structure of the JSON file.
      *
-     * @param jsonFile JSON file which structure should be validated
      * @param resource name of the resource containing the JSON schema to validate against
      * @return set of validation messages if validation errors were found otherwise empty set
      */
-    public static Set<ValidationMessage> validateSchema(@NotNull Path jsonFile, @NotNull String resource) {
-        try (InputStream stream = new BufferedInputStream(Files.newInputStream(jsonFile));
-             InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(resource)) {
+    public static Set<ValidationMessage> validateSchema(@NotNull Reader reader, @NotNull String resource) {
+        try (InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(resource)) {
             ObjectMapper mapper = new ObjectMapper();
-            JsonNode node = mapper.readTree(stream);
+            JsonNode node = mapper.readTree(reader);
             var factory = JsonSchemaFactory.getInstance(SpecVersion.VersionFlag.V7);
             var schema = factory.getSchema(is);
             return schema.validate(node);
         } catch (IOException e) {
-            logger.atError().withThrowable(e).log("IO Exception when processing {}", jsonFile);
+            logger.atError().withThrowable(e).log("IO Exception when processing");
             throw new UncheckedIOException(e);
         }
     }

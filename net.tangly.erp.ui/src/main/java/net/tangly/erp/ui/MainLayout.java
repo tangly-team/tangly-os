@@ -84,10 +84,10 @@ public class MainLayout extends AppLayout {
     }
 
     private MenuBar menuBar() {
-        MenuBar menuBar = new MenuBar();
+        var menuBar = new MenuBar();
         menuBar.setOpenOnHover(true);
-        MenuItem admin = menuBar.addItem("Admin");
-        SubMenu adminSubmenu = admin.getSubMenu();
+        var admin = menuBar.addItem("Admin");
+        var adminSubmenu = admin.getSubMenu();
         adminSubmenu.addItem("Logout", e -> new CmdLogout().execute());
         adminSubmenu.addItem("Change Password ...", e -> new CmdChangePassword(Erp.instance().crmBoundedDomain(), (Subject) VaadinUtils.getAttribute(this, "subject")).execute());
         return menuBar;

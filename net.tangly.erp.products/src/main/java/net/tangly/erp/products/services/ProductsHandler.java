@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -14,8 +14,13 @@ package net.tangly.erp.products.services;
 
 import net.tangly.core.domain.Handler;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 /**
  * Defines the import port for the products bounded domain. It is the primary port in the DDD terminology.
  */
-public interface ProductsHandler extends Handler<ProductsRealm> {
-}
+public interface ProductsHandler extends Handler<ProductsRealm> { }

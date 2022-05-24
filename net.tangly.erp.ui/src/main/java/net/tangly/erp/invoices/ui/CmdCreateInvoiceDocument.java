@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -15,17 +15,18 @@ package net.tangly.erp.invoices.ui;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.checkbox.Checkbox;
+import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
-import net.tangly.ui.app.domain.CmdDialog;
+import net.tangly.ui.app.domain.Cmd;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class CmdCreateInvoiceDocument extends CmdDialog {
+public class CmdCreateInvoiceDocument implements Cmd {
     private final Checkbox withQrCode;
     private final Checkbox withEN16931;
     private final TextField name;
@@ -33,7 +34,6 @@ public class CmdCreateInvoiceDocument extends CmdDialog {
     private final transient Invoice invoice;
 
     public CmdCreateInvoiceDocument(@NotNull Invoice invoice, @NotNull InvoicesBoundedDomain domain) {
-        super("40em");
         this.invoice = invoice;
         this.domain = domain;
         name = new TextField("Name");
@@ -43,16 +43,19 @@ public class CmdCreateInvoiceDocument extends CmdDialog {
         withEN16931 = new Checkbox("with EN 16931");
     }
 
-    protected FormLayout form() {
+    @Override
+    public void execute() {
+        Dialog dialog = new Dialog();
+        dialog.setWidth("40em");
         FormLayout form = new FormLayout();
         VaadinUtils.set3ResponsiveSteps(form);
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
             domain.port().exportInvoiceDocument(invoice, withQrCode.getValue(), withEN16931.getValue());
-            this.close();
+            dialog.close();
         });
-        Button cancel = new Button("Cancel", e -> this.close());
-
+        Button cancel = new Button("Cancel", e -> dialog.close());
         form.add(name, new HtmlComponent("br"), withQrCode, withEN16931, new HtmlComponent("br"), new HorizontalLayout(execute, cancel));
-        return form;
+        dialog.add(form);
+        dialog.open();
     }
 }

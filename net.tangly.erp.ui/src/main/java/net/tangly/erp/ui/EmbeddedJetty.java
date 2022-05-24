@@ -59,7 +59,7 @@ public class EmbeddedJetty {
         logger.info("command line arguments are {}", args);
         parse(args);
         logger.info("port is {} and inMemoryMode is {}", port, isInMemory);
-        final WebAppContext context = new WebAppContext();
+        var context = new WebAppContext();
         context.setBaseResource(findWebRoot());
         context.setContextPath(contextRoot);
         context.addServlet(VaadinServlet.class, "/*");
