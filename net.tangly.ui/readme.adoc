@@ -4,20 +4,34 @@ date: 2019-05-01
 weight: 10
 ---
 
-# Core Libraries
+= Business Model Types
 
 image:https://img.shields.io/badge/license-Apache%202-blue.svg[Apache License 2.0]
-image:https://img.shields.io/maven-central/v/net.tangly/core.svg[Maven Central]
-https://javadoc.io/doc/net.tangly/core[image:https://javadoc.io/badge2/net.tangly/core/javadoc.svg[javadoc]]
+image:https://img.shields.io/maven-central/v/net.tangly/ui.svg[Maven Central]
+https://javadoc.io/badge2/net.tangly/ports/javadoc.svg[image://javadoc.io/doc/net.tangly/ui[javadoc]]
 image:https://img.shields.io/bitbucket/pipelines/tangly-team/tangly-os.svg[Bitbucket Pipelines]
 image:https://img.shields.io/sonar/https/sonarcloud.io/tangly-os-at-tangly.net/coverage.svg[Sonar Coverage]
 image:https://img.shields.io/bitbucket/issues-raw/tangly/tangly-os.svg[Bitbucket open issues]
 
 == Purpose
 
-The **tangly core** component provides key abstraction for domain driven development approach and entities with tags and comments.
-It requires **Java 17 or higher**.
+The *tangly ui erp* component provides a Vaadin based user interfaces for enterprise applications written in Java.
+The component is using records and requires *Java 17 or higher*.
 
+Currently, we are moving at the bleeding edge of our components. Therefore to build and execute the ERP application please
+
+[source,shell]
+----
+    mvn jetty:run
+
+----
+
+The initial username and password are 'administrator' and 'aeon'.
+
+The file _application.properties_ in _…/main/resources_ directory tailors the configuration of the application, mainly the location of data.
+The file contains comments for new users.
+
+The Maven POM file is used to build the application and run it because the Gradle Jetty plugin crashes.
 
 == Download and Documentation
 
@@ -25,21 +39,21 @@ The library can be included in Maven as
 
 [source,xml]
 ----
- <dependency>
- <groupId>net.tangly</groupId>
- <artifactId>core</artifactId>
- <version>0.2.7</version>
- </dependency>
+    <dependency>
+      <groupId>net.tangly</groupId>
+      <artifactId>ui</artifactId>
+      <version>0.2.7</version>
+    </dependency>
 ----
 
 The library can be included in Gradle as
 
 [source,groovy]
 ----
- implementation "net.tangly:core:0.2.7"
+    implementation "net.tangly:ui:0.2.7"
 ----
 
-The documentation can be found under https://tangly-team.bitbucket.io/docs/core/[Core]
+The documentation can be found under https://tangly-team.bitbucket.io/docs/ui/[UI documentation]
 
 For any further question and discussion you can use the forum https://groups.google.com/g/tangly-os-components[tangly-OS-Components]
 
@@ -65,4 +79,3 @@ Corporate sponsors are
 Individual developers are
 
 * https://linkedin.com/in/marcelbaumann[Marcel Baumann]
-

@@ -22,7 +22,6 @@ import net.tangly.erp.invoices.services.InvoicesRealm;
 import net.tangly.ui.app.domain.CmdFilesUpload;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.InputStreamReader;
 import java.util.Set;
 
 /**
@@ -37,10 +36,10 @@ public class CmdFilesUploadInvoices extends CmdFilesUpload<InvoicesRealm, Invoic
             var handler = new InvoicesTsvJsonHdl(domain.realm());
             Set<String> files = buffer().getFiles();
             if (files.contains(InvoicesHdl.ARTICLES_TSV)) {
-                handler.importArticles(createReader(InvoicesHdl.ARTICLES_TSV), InvoicesHdl.ARTICLES_TSV);
+                processInputStream(InvoicesHdl.ARTICLES_TSV, handler::importArticles);
             }
             files.stream().filter(o -> o.endsWith(InvoicesHdl.JSON_EXT)).forEach(o -> {
-                handler.importInvoice(new InputStreamReader(buffer().getInputStream(o)), o);
+                processInputStream(o, handler::importInvoice);
             });
             close();
         });

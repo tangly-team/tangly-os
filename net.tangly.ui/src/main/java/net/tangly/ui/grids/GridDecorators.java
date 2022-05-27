@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -230,7 +230,6 @@ public class GridDecorators<T> extends HorizontalLayout implements SelectedItemL
 
         public FilterCode(@NotNull GridDecorators<E> container, @NotNull CodeType<C> type, @NotNull Function<E, C> getter, String label) {
             component = new CodeField<>(type, label);
-            component.setEmptySelectionAllowed(true);
             component.addValueChangeListener(e -> container.updateFilters());
             this.getter = getter;
         }

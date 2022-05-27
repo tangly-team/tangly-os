@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,8 +12,11 @@
 
 package net.tangly.ui.app.domain;
 
+import java.util.Collections;
+import java.util.List;
+
 /**
- * Defines the interface for the command pattern. A command is an action mostly executed through the user interface as client. A command is an object whose role
+ * Define the interface for the command pattern. A command is an action mostly executed through the user interface as client. A command is an object whose role
  * is to store all the information required for executing an action, including the method to call, the method arguments, and the object (known as the receiver)
  * that implements the method.
  */
@@ -23,4 +26,17 @@ public interface Cmd {
      * Executes the command.
      */
     void execute();
+
+    /**
+     * Indicates if the command is enabled or not. A command availability is dependant on the application and roles the user has.
+     *
+     * @return true if enabled otherwise false
+     */
+    default boolean isAllowed() {
+        return true;
+    }
+
+    default List<String> roles() {
+        return Collections.emptyList();
+    }
 }

@@ -224,7 +224,7 @@ public class CrmTsvHdl {
         return TsvEntity.of(NaturalEntity.class, fields, NaturalEntity::new);
     }
 
-   private  static TsvEntity<LegalEntity> createTsvLegalEntity() {
+    private static TsvEntity<LegalEntity> createTsvLegalEntity() {
         List<TsvProperty<LegalEntity, ?>> fields = TsvHdl.createTsvQualifiedEntityFields();
         fields.add(TsvProperty.ofString(CRM_VAT_NUMBER, LegalEntity::vatNr, LegalEntity::vatNr));
         fields.add(TsvHdl.tagProperty(CRM_IM_LINKEDIN));

@@ -25,8 +25,11 @@ import net.tangly.core.domain.Realm;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.UncheckedIOException;
+import java.util.function.BiConsumer;
 
 /**
  * Command to upload a set of files containing entities. The domain will import the provided entities.
@@ -83,12 +86,16 @@ public abstract class CmdFilesUpload<R extends Realm, B, H extends Handler<?>, P
     }
 
     /**
-     * Return a newly created reader on a upladoed file with the given filename available in the buffer.
+     * Process the input stream with the provided consumer.
      *
-     * @param filename name of the uploaded file
-     * @return a new reader to the content of the uploaded file
+     * @param filename name of the file uploaded in the buffer which will be processed
+     * @param consumer consumer processing the input file
      */
-    protected Reader createReader(@NotNull String filename) {
-        return new BufferedReader(new InputStreamReader(buffer.getInputStream(filename)));
+    protected void processInputStream(@NotNull String filename, @NotNull BiConsumer<Reader, String> consumer) {
+        try (Reader reader = new BufferedReader(new InputStreamReader(buffer.getInputStream(filename)))) {
+            consumer.accept(reader, filename);
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
     }
 }

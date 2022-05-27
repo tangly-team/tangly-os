@@ -37,31 +37,31 @@ public class CmdFilesUploadCrm extends CmdFilesUpload<CrmRealm, CrmBusinessLogic
                 var handler = new CrmTsvHdl(domain.realm());
                 Set<String> files = buffer().getFiles();
                 if (files.contains(CrmHdl.LEADS_TSV)) {
-                    handler.importLeads(createReader(CrmHdl.LEADS_TSV), CrmHdl.LEADS_TSV);
+                    processInputStream(CrmHdl.LEADS_TSV, handler::importLeads);
                 }
                 if (files.contains(CrmHdl.NATURAL_ENTITIES_TSV)) {
-                    handler.importNaturalEntities(createReader(CrmHdl.NATURAL_ENTITIES_TSV), CrmHdl.NATURAL_ENTITIES_TSV);
+                    processInputStream(CrmHdl.NATURAL_ENTITIES_TSV, handler::importNaturalEntities);
                 }
                 if (files.contains(CrmHdl.LEGAL_ENTITIES_TSV)) {
-                    handler.importLegalEntities(createReader(CrmHdl.LEGAL_ENTITIES_TSV), CrmHdl.LEGAL_ENTITIES_TSV);
+                    processInputStream(CrmHdl.LEGAL_ENTITIES_TSV, handler::importLegalEntities);
                 }
                 if (files.contains(CrmHdl.EMPLOYEES_TSV)) {
-                    handler.importEmployees(createReader(CrmHdl.EMPLOYEES_TSV), CrmHdl.EMPLOYEES_TSV);
+                    processInputStream(CrmHdl.EMPLOYEES_TSV, handler::importEmployees);
                 }
                 if (files.contains(CrmHdl.CONTRACTS_TSV)) {
-                    handler.importContracts(createReader(CrmHdl.CONTRACTS_TSV), CrmHdl.CONTRACTS_TSV);
+                    processInputStream(CrmHdl.CONTRACTS_TSV, handler::importContracts);
                 }
                 if (files.contains(CrmHdl.INTERACTIONS_TSV)) {
-                    handler.importInteractions(createReader(CrmHdl.INTERACTIONS_TSV), CrmHdl.INTERACTIONS_TSV);
+                    processInputStream(CrmHdl.INTERACTIONS_TSV, handler::importInteractions);
                 }
                 if (files.contains(CrmHdl.ACTIVITIES_TSV)) {
-                    handler.importActivities(createReader(CrmHdl.ACTIVITIES_TSV), CrmHdl.ACTIVITIES_TSV);
+                    processInputStream(CrmHdl.ACTIVITIES_TSV, handler::importActivities);
                 }
                 if (files.contains(CrmHdl.SUBJECTS_TSV)) {
-                    handler.importSubjects(createReader(CrmHdl.SUBJECTS_TSV), CrmHdl.SUBJECTS_TSV);
+                    processInputStream(CrmHdl.SUBJECTS_TSV, handler::importSubjects);
                 }
                 if (files.contains(CrmHdl.COMMENTS_TSV)) {
-                    handler.importComments(createReader(CrmHdl.COMMENTS_TSV), CrmHdl.COMMENTS_TSV);
+                    processInputStream(CrmHdl.COMMENTS_TSV, handler::importComments);
                 }
                 close();
             }));

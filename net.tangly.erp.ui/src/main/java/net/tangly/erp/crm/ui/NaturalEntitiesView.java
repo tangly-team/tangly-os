@@ -16,6 +16,7 @@ import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.textfield.EmailField;
@@ -71,8 +72,8 @@ class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
             .setResizable(true).setSortable(true);
         grid.addColumn(NaturalEntity::lastname).setKey("lastname").setHeader("Last Name").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(NaturalEntity::firstname).setKey("firstname").setHeader("First Name").setSortable(true).setAutoWidth(true).setResizable(true);
-        grid.addColumn(new ComponentRenderer<>(o -> (o.gender() == GenderCode.male) ? VaadinIcon.MALE.create() : VaadinIcon.FEMALE.create())).setHeader("Gender")
-            .setAutoWidth(true).setResizable(true);
+        grid.addColumn(new ComponentRenderer<>(o -> (o.gender() == GenderCode.male) ? new Icon(VaadinIcon.MALE) : new Icon(VaadinIcon.FEMALE)))
+            .setKey("gender").setHeader("Gender").setResizable( true).setResizable(true);
         grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::individualLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
         addAndExpand(filterCriteria(false, false, InternalEntitiesView::addEntityFilters), grid(), gridButtons());
     }

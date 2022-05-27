@@ -6,19 +6,19 @@ weight: 10
 draft: false
 ---
 
-# Finite State Machine Library
+= Finite State Machine Library
 
-![Apache License 2.0](https://img.shields.io/badge/license-Apache%202-blue.svg)
-![Maven Central](https://img.shields.io/maven-central/v/net.tangly/fsm.svg)
-[![javadoc](https://javadoc.io/badge2/net.tangly/fsm/javadoc.svg)](https://javadoc.io/doc/net.tangly/fsm)
-![Bitbucket Pipelines](https://img.shields.io/bitbucket/pipelines/tangly-team/tangly-os.svg)
-![Sonar Coverage](https://img.shields.io/sonar/https/sonarcloud.io/tangly-os-at-tangly.net/coverage.svg)
-![Bitbucket open issues](https://img.shields.io/bitbucket/issues-raw/tangly/tangly-os.svg)
+image:https://img.shields.io/badge/license-Apache%202-blue.svg[Apache License 2.0]
+image:https://img.shields.io/maven-central/v/net.tangly/fsm.svg)[Maven Central]
+https://javadoc.io/doc/net.tangly/fsm[image:https://javadoc.io/badge2/net.tangly/fsm/javadoc.svg[javadoc]]
+image:https://img.shields.io/bitbucket/pipelines/tangly-team/tangly-os.svg[Bitbucket Pipelines]
+image:https://img.shields.io/sonar/https/sonarcloud.io/tangly-os-at-tangly.net/coverage.svg)[Sonar Coverage]
+image:https://img.shields.io/bitbucket/issues-raw/tangly/tangly-os.svg[Bitbucket open issues]
 
-## Purpose
+== Purpose
 
-The **tangly fsm** is a finite state machine library. You can use it in productive projects and academic assignments.
-The component is using records and requires **Java 14 or higher**.
+The *tangly fsm* is a finite state machine library. You can use it in productive projects and academic assignments.
+The component is using records and requires *Java 17 or higher*.
 
 The library provides
 
@@ -37,53 +37,56 @@ The library provides
   * Dot graph representation
   * PlantUML UML finite hierarchical state machine representation
 
-## Download and Documentation
+== Download and Documentation
 
 The library can be included in Maven as
 
-```xml
+[source,xml]
+----
     <dependency>
       <groupId>net.tangly</groupId>
       <artifactId>fsm</artifactId>
       <version>0.2.7</version>
     </dependency>
-```
+----
 
 The library can be included in Gradle as
 
-```groovy
+[source,groovy]
+----
     implementation "net.tangly:fsm:0.2.7"
-```
+----
 
 The documentation can be found under [FSM documentation](https://tangly-team.bitbucket.io/docs/fsm/)
 
 For any further question and discussion you can use the forum [tangly-OS-Components](https://groups.google.com/g/tangly-os-components)
 
-## Contribution
+== Contribution
 
 The library can be build with Gradle
 
-```shell
+[source,shell]
+----
     gradle build
-```
+----
 
 You are welcome to contribute to the product with pull requests on Bitbucket. You can download the source files from the
 [bitbucket git repository](https://bitbucket.org/tangly-team/tangly-os.git) and build  the library with the provided gradle configuration file.
 
 If you find a bug or want to request a feature, please use the [issue tracker](https://bitbucket.org/tangly-team/tangly-os/issues).
 
-## License
+== License
 
-The source code is licensed under [Apache license 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+The source code is licensed under https://www.apache.org/licenses/LICENSE-2.0[Apache license 2.0].
 
-The documentation and examples are licensed under [Creative Common (CC Attribution 4.0 International)](https://creativecommons.org/licenses/by/4.0/).
+The documentation and examples are licensed under https://creativecommons.org/licenses/by/4.0/[Creative Common (CC Attribution 4.0 International)].
 
-## Awesome Sponsors and Developers
+== Awesome Sponsors and Developers
 
 Corporate sponsors are
 
-* [tangly llc](https://www.tangly.net)
+* https://www.tangly.net[tangly llc]
 
 Individual developers are
 
-* [Marcel Baumann](https://linkedin.com/in/marcelbaumann)
+* https://linkedin.com/in/marcelbaumann[Marcel Baumann]

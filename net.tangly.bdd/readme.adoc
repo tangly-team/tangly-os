@@ -2,7 +2,6 @@
 title: "Readme"
 date: 2019-05-01
 weight: 10
-draft: false
 ---
 
 = Behavior Driven Development _BDD_ JUnit 5 Library

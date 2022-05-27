@@ -6,12 +6,11 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-        - uses: actions/checkout@v3
+        - uses: oracle-actions/setup-java@v1
         - name: Set up JDK
-          uses: actions/setup-java@v3
-          with:
-            java-version: '18'
-            distribution: 'temerium'
+        - with:
+            website: oracle.com
+            release: 18
         - name: Set up NodeJS and npm
           uses: actions/setup-node@v3
           with:

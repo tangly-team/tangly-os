@@ -22,7 +22,6 @@ import net.tangly.erp.ledger.services.LedgerRealm;
 import net.tangly.ui.app.domain.CmdFilesUpload;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.InputStreamReader;
 import java.util.Set;
 
 /**
@@ -37,10 +36,10 @@ public class CmdFilesUploadLedger extends CmdFilesUpload<LedgerRealm, LedgerBusi
             var handler = new LedgerTsvHdl(domain.realm());
             Set<String> files = buffer().getFiles();
             if (files.contains(LedgerHdl.LEDGER)) {
-                handler.importChartOfAccounts(createReader(LedgerHdl.LEDGER), LedgerHdl.LEDGER);
+                processInputStream(LedgerHdl.LEDGER, handler::importChartOfAccounts);
             }
             files.stream().filter(o -> o.endsWith(LedgerHdl.JOURNAL)).forEach(o -> {
-                handler.importJournal(new InputStreamReader(buffer().getInputStream(o)), o);
+                processInputStream(o, handler::importJournal);
             });
             close();
         });

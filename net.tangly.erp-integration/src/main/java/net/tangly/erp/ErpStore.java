@@ -129,7 +129,7 @@ public record ErpStore(@NotNull FileSystem fs) {
             copy(PRODUCTS_PACKAGE_NAME, productsRoot(), ProductsHdl.PRODUCTS_TSV);
             copy(PRODUCTS_PACKAGE_NAME, productsRoot(), ProductsHdl.ASSIGNMENTS_TSV);
             copy(PRODUCTS_PACKAGE_NAME, productsRoot(), ProductsHdl.EFFORTS_TSV);
-            copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "swiss-ledger.tsv");
+            copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "ledger.tsv");
             copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "2015-journal.tsv");
             copy(LEDGER_PACKAGE_NAME, ledgerRoot(), "2016-journal.tsv");
             copy(INVOICES_PACKAGE_NAME, invoicesRoot(), InvoicesHdl.ARTICLES_TSV);

@@ -37,13 +37,13 @@ public class CmdFilesUploadProducts extends CmdFilesUpload<ProductsRealm, Produc
                 var handler = new ProductsTsvHdl(domain.realm());
                 Set<String> files = buffer().getFiles();
                 if (files.contains(ProductsHdl.PRODUCTS_TSV)) {
-                    handler.importProducts(createReader(ProductsHdl.PRODUCTS_TSV), ProductsHdl.PRODUCTS_TSV);
+                    processInputStream(ProductsHdl.PRODUCTS_TSV, handler::importProducts);
                 }
                 if (files.contains(ProductsHdl.ASSIGNMENTS_TSV)) {
-                    handler.importAssignments(createReader(ProductsHdl.ASSIGNMENTS_TSV), ProductsHdl.ASSIGNMENTS_TSV);
+                    processInputStream(ProductsHdl.ASSIGNMENTS_TSV, handler::importAssignments);
                 }
                 if (files.contains(ProductsHdl.EFFORTS_TSV)) {
-                    handler.importEfforts(createReader(ProductsHdl.EFFORTS_TSV), ProductsHdl.EFFORTS_TSV);
+                    processInputStream(ProductsHdl.EFFORTS_TSV, handler::importEfforts);
                 }
                 close();
             }));
