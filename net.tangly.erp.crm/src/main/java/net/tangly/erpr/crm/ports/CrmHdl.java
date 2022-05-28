@@ -12,14 +12,12 @@
 
 package net.tangly.erpr.crm.ports;
 
+import net.tangly.core.domain.Handler;
 import net.tangly.erp.crm.services.CrmHandler;
 import net.tangly.erp.crm.services.CrmRealm;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
@@ -54,22 +52,17 @@ public final class CrmHdl implements CrmHandler {
     @Override
     public void importEntities() {
         var handler = new CrmTsvHdl(realm());
-        try {
-            handler.importLeads(Files.newBufferedReader(folder.resolve(LEADS_TSV), StandardCharsets.UTF_8), folder.resolve(LEADS_TSV).toString());
-            handler.importLegalEntities(Files.newBufferedReader(folder.resolve(LEGAL_ENTITIES_TSV), StandardCharsets.UTF_8), folder.resolve(LEADS_TSV).toString());
-            handler.importNaturalEntities(Files.newBufferedReader(folder.resolve(NATURAL_ENTITIES_TSV), StandardCharsets.UTF_8), folder.resolve(LEADS_TSV).toString());
-            handler.importEmployees(Files.newBufferedReader(folder.resolve(EMPLOYEES_TSV), StandardCharsets.UTF_8), folder.resolve(LEADS_TSV).toString());
-            handler.importContracts(Files.newBufferedReader(folder.resolve(CONTRACTS_TSV), StandardCharsets.UTF_8), folder.resolve(LEADS_TSV).toString());
-            handler.importInteractions(Files.newBufferedReader(folder.resolve(INTERACTIONS_TSV), StandardCharsets.UTF_8), folder.resolve(LEADS_TSV).toString());
-            handler.importActivities(Files.newBufferedReader(folder.resolve(ACTIVITIES_TSV), StandardCharsets.UTF_8), folder.resolve(LEADS_TSV).toString());
-            handler.importSubjects(Files.newBufferedReader(folder.resolve(SUBJECTS_TSV), StandardCharsets.UTF_8), folder.resolve(LEADS_TSV).toString());
-            handler.importComments(Files.newBufferedReader(folder.resolve(COMMENTS_TSV), StandardCharsets.UTF_8), folder.resolve(LEADS_TSV).toString());
-
-            CrmVcardHdl crmVcardHdl = new CrmVcardHdl(realm());
-            crmVcardHdl.importVCards(folder.resolve(VCARDS_FOLDER));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        Handler.importEntities(folder, LEADS_TSV, handler::importLeads);
+        Handler.importEntities(folder, LEGAL_ENTITIES_TSV, handler::importLegalEntities);
+        Handler.importEntities(folder, NATURAL_ENTITIES_TSV, handler::importNaturalEntities);
+        Handler.importEntities(folder, EMPLOYEES_TSV, handler::importEmployees);
+        Handler.importEntities(folder, CONTRACTS_TSV, handler::importContracts);
+        Handler.importEntities(folder, INTERACTIONS_TSV, handler::importInteractions);
+        Handler.importEntities(folder, ACTIVITIES_TSV, handler::importActivities);
+        Handler.importEntities(folder, SUBJECTS_TSV, handler::importSubjects);
+        Handler.importEntities(folder, COMMENTS_TSV, handler::importComments);
+        CrmVcardHdl crmVcardHdl = new CrmVcardHdl(realm());
+        crmVcardHdl.importVCards(folder.resolve(VCARDS_FOLDER));
     }
 
     @Override

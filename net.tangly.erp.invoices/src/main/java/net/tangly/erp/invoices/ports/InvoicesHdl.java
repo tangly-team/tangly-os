@@ -15,6 +15,7 @@ package net.tangly.erp.invoices.ports;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Reader;
 import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -26,6 +27,7 @@ import java.util.stream.Stream;
 import javax.inject.Inject;
 
 import net.tangly.commons.logger.EventData;
+import net.tangly.core.domain.Handler;
 import net.tangly.erp.invoices.artifacts.InvoiceJson;
 import net.tangly.erp.invoices.artifacts.InvoicesUtilities;
 import net.tangly.erp.invoices.domain.Invoice;
@@ -63,20 +65,15 @@ public class InvoicesHdl implements InvoicesHandler {
     @Override
     public void importEntities() {
         var handler = new InvoicesTsvJsonHdl(realm());
-        try {
-            handler.importArticles(new BufferedReader(Files.newBufferedReader(folder.resolve(ARTICLES_TSV), StandardCharsets.UTF_8)), folder.resolve(ARTICLES_TSV).toString());
-            ;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        Handler.importEntities(folder, ARTICLES_TSV, handler::importArticles);
         var invoiceJson = new InvoiceJson(realm);
         try (Stream<Path> stream = Files.walk(folder)) {
             AtomicInteger nrOfInvoices = new AtomicInteger();
             AtomicInteger nrOfImportedInvoices = new AtomicInteger();
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(JSON_EXT)).forEach(o -> {
                 nrOfInvoices.getAndIncrement();
-                try {
-                    var invoice = handler.importInvoice(Files.newBufferedReader(folder.resolve(o)), o.toString());
+                try (Reader reader = Files.newBufferedReader(folder.resolve(o))) {
+                    var invoice = handler.importInvoice(reader, o.toString());
                     if ((invoice != null)) {
                         nrOfImportedInvoices.getAndIncrement();
                     }

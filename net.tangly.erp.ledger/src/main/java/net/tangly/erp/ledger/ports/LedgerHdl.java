@@ -26,6 +26,7 @@ import java.util.stream.Stream;
 import javax.inject.Inject;
 
 import net.tangly.commons.logger.EventData;
+import net.tangly.core.domain.Handler;
 import net.tangly.erp.ledger.domain.Transaction;
 import net.tangly.erp.ledger.services.LedgerHandler;
 import net.tangly.erp.ledger.services.LedgerRealm;
@@ -64,12 +65,11 @@ public class LedgerHdl implements LedgerHandler {
     public void importEntities() {
         try (Stream<Path> stream = Files.walk(folder)) {
             var handler = new LedgerTsvHdl(ledger);
-            var chartOfAccounts = folder.resolve(LEDGER);
-            handler.importChartOfAccounts(Files.newBufferedReader(chartOfAccounts, StandardCharsets.UTF_8), chartOfAccounts.toString());
+            Handler.importEntities(folder, LEDGER, handler::importChartOfAccounts);
             ledger.build();
             stream.filter(file -> !Files.isDirectory(file) && file.getFileName().toString().endsWith(JOURNAL)).forEach(o -> {
-                try {
-                    handler.importJournal(Files.newBufferedReader(o, StandardCharsets.UTF_8), o.toString());
+                try (Reader reader = Files.newBufferedReader(o, StandardCharsets.UTF_8)) {
+                    handler.importJournal(reader, o.toString());
                     EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, "Journal imported {}", Map.of("journalPath", o));
                 } catch (IOException e) {
                     EventData.log(EventData.IMPORT, MODULE, EventData.Status.FAILURE, "Journal import failed {}", Map.of("journalPath", o));

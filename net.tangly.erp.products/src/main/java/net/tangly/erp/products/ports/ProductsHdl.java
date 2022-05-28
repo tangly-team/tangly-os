@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 import net.tangly.commons.lang.ReflectionUtilities;
+import net.tangly.core.domain.Handler;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.ports.TsvHdl;
 import net.tangly.erp.products.domain.Assignment;
@@ -59,13 +60,9 @@ public class ProductsHdl implements ProductsHandler {
     @Override
     public void importEntities() {
         var handler = new ProductsTsvHdl(realm());
-        try {
-            handler.importProducts(Files.newBufferedReader(folder.resolve(PRODUCTS_TSV), StandardCharsets.UTF_8), folder.resolve(PRODUCTS_TSV).toString());
-            handler.importAssignments(Files.newBufferedReader(folder.resolve(ASSIGNMENTS_TSV), StandardCharsets.UTF_8), folder.resolve(ASSIGNMENTS_TSV).toString());
-            handler.importEfforts(Files.newBufferedReader(folder.resolve(EFFORTS_TSV), StandardCharsets.UTF_8), folder.resolve(EFFORTS_TSV).toString());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        Handler.importEntities(folder, PRODUCTS_TSV, handler::importProducts);
+        Handler.importEntities(folder, ASSIGNMENTS_TSV, handler::importAssignments);
+        Handler.importEntities(folder, EFFORTS_TSV, handler::importEfforts);
     }
 
     @Override
