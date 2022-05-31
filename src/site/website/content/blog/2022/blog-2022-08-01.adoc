@@ -24,6 +24,8 @@ It is unavoidable.
 
 == Five Scrum Fake Indicators
 
+image::2022-08-01-values-principles-practices.png[width=60%,height=360,role=text-center]
+
 No goals::
 If a Scrum team has absolutely no goals, what is the purpose of its existence?
 All good teams have goals.
@@ -69,6 +71,11 @@ If you are not delivering results then what is the point of your work in the fir
 
 === Final Thoughts
 
+Become a professional Scrum master cite:[professional-scrum-master], product owenr cite:[professional-product-owner], or team developer.
+
 See also another blog link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit] describing how the department of defense detects agile lies.
 
+=== References
+
+bibliography[]
 

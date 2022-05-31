@@ -209,7 +209,7 @@ The specialized stream _Optional<T>_ was added to provide a better approach.
 ====
 
 [bibliography]
-=== Literature
+=== Links
 
 - [[[java-records, 1]]] link:../../2020/java-records-are-here-available-in-jdk-14/[Java Records Are Here]
 - [[[jdk-16, 2]]] https://openjdk.java.net/projects/jdk/17/[Open JDK 16]

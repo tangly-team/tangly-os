@@ -18,7 +18,7 @@ image::2022-10-01-head.jpg[width=420,height=360,role=left]
 === Tesing with Karibu
 
 [bibliography]
-=== Literature
+=== Links
 
 - https://blog.frankel.ch/why-love-vaadin/[Wny I (still) love Vaadin].
 Nicolas Fränkel. 2020

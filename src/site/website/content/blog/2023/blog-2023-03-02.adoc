@@ -18,9 +18,10 @@ footnote:[Development organizations had around fifteen years to practice DevOps 
 
 The approach aims to shorten the system development life-cycle and to provide continuous delivery with high software quality.
 DevOps is complementary with https://en.wikipedia.org/wiki/Agile_software_development[agile software development] approaches.
-Several DevOps aspects came from the Agile methodology.
 
-Seminal books<<accelerate>> <<devops-handbook>> <<phoenix-project>> <<site-realibility-engineering>> and good practices were published around the same time.
+Several DevOps aspects came from the Agile method.
+
+Seminal books cite:[accelerate,devops-handbook,phoenix-project,site-realibility-engineering] and good practices were published around the same time.
 
 The DevOps approach belongs to the regular instruments of professional software developers.
 Major development platforms, https://github.com/[GitHub], https://gitlab.com/[GitLab], https://bitbucket.org/[BitBucket]
@@ -121,7 +122,7 @@ Manual steps can only be performed if a trained collaborator is available.
 Manual activities are expensive, automated activities are cheap.
 What should you do if a deployment fails?::
 The environment should perform an automatic rollback to the last working configuration.
-It is the reason why DORA metrics measure _mean time to recover_  and _change failure rate_.
+It is the reason why DORA metrics <<dora-metrics>> <<dora-google>> measure _mean time to recover_  and _change failure rate_.
 Are commercial platforms available for continuous deployment?::
 Major cloud services https://aws.amazon.com/[Amazon AWS], https://cloud.google.com/[Google Cloud], https://azure.microsoft.com/[Microsoft Azure],
 https://www.heroku.com/[Heroku], etc. provide continuous deployment pipelines and integration with product development platforms.
@@ -138,14 +139,27 @@ Classical questions and answers _FAQ_ are:
 [qanda]
 What should be logged?::
 The software architecture document of your solution should document how and what information you are logging.
+Mapped diagnostic contexts are used to track session and user related actions and log records
+footnote:[odoo.sh provides logging support for a deployed solution.
+Corporate governance often requires that log files are archived in a separate location.
+These files are needed when a forensic analysis of a security situation shall be investigated.]
+footnote:[odoo has an audit module supporting auditing of critical actions initiated throug user interactions or external systems.
+The audit module is somethat primitive.
+The audit configuration is performed at the database level and not at functional level.
+The configuration responsible needs deep understanding which modules perform specific operations on the database.].
 Should logging information be archived?::
 The corporate governance guidelines shall prescribe how long logging information is stored and who can access the data. +
 Logging information should be available to protect your company against legal complaints.
-The information is also invaluable for security incident analysis.
+The information is also invaluable for security incident analysis
+footnote:[The logging files and audit traces shall be stored on company premises to fulfill legal and corporate governance rules.].
 Should applications be monitored?::
 All productive installations should be monitored through a professional solution.
 The monitoring approach should detect issues before they impede user processes.
 You shall document the alarming and recovery process.
+footnote:[odoo.sh provides monitoring for deployed solutions.
+The monitoring is currently based on https://www.elastic.co/kibana/[Kibana].
+All productive servers shall be monitored with a similar approach.
+The monitoring approach shall be tuned based on production incidents.]
 
 === GitHub, GitLab, BitBucket
 
@@ -177,6 +191,17 @@ Actual Java JDK Releases::
 - Bitbucket supports all officially released Java versions.
 ====
 
+You need a platform and automatisation expert in your development team to harvest the advantages.
+
+[IMPORTANT]
+====
+odoo.sh has selected GitHub as their preferred platform.
+We shall use GitHub CI/CD/CD approach as defined in odoo.sh to develop and deploy all our application development.
+
+Github provides initial support for Security, DevOps, and agile approaches.
+We shall evaluate these tools and, if relevant, use them as standard tooling for our Odoo software tailoring and development.
+====
+
 === Legacy System Variations
 
 Legacy systems must compromise how they implement their pipelines.
@@ -188,7 +213,7 @@ Modern systems have fully adopted the https://en.wikipedia.org/wiki/Continuous_c
 and https://en.wikipedia.org/wiki/Infrastructure_as_code[infrastructure as code] approach.
 Migrate your approach to automated configuration scripts to configure and initialize your products.
 
-Incremental migration of database schema and productive data is a well-understood software engineering problem <<refactoring-database>> for decades.
+Incremental migration of database schema and productive data is a well-understood software engineering problem cite:[refactoring-databases] for decades.
 Tools such as https://flywaydb.org/[FlyWay] or https://www.liquibase.org/[LiquidBase] provide enterprise grade productive solutions.
 
 [INFO]
@@ -208,29 +233,30 @@ Any configuration changes you made in the staging databases are not passed to th
 
 If you test configuration changes in staging branches, and you want them to be applied in the production, you have to either:
 
-* Write the configuration changes in XML data files overriding the default configuration or views in your branches, and then increase the version of your module in its manifest (__manifest__.py) to trigger the update of the module when you merge your staging branch in your production branch.
+- *Write the configuration changes in XML data files overriding the default configuration or views in your branches, and then increase the version of your module in its manifest (__manifest__.py) to trigger the update of the module when you merge your staging branch in your production branch.
 This is the best practice for a better scalability of your developments as you use the Git versioning features for all your configuration changes.
-Therefore, you have traceability for your changes.
+Therefore, you have traceability for your changes.*
 _This approach is compatible to clean code and DevOps_.
-* Pass them manually from your staging to your production database, by copying and pasting them.
-_This approach is probably a motive to fire the developer because auditability and reproducibility are not enforced_.
+- Pass them manually from your staging to your production database, by copying and pasting them.
+_This approach is probably a motive to fire the developer because traceability, auditability and reproducibility are not enforced_.
+_Regular corporate governance rules are neglected and could have legal consequences in case of incidents on the production server._
 
 When you want to test the changes of your development branches with the production data, you can either:
 
-* Merge the development branch into your staging branch, by drag and dropping it onto the desired staging branch.
-* Drag and dropping the development branch on the staging section title, to make it become a staging branch.
+- Merge the development branch into your staging branch, by drag and dropping it onto the desired staging branch.
+- Drag and dropping the development branch on the staging section title, to make it become a staging branch.
 
 When your latest changes are ready for production, you can merge the staging branch onto your production branch to deploy in production your newest features.
 ====
 
-The above process is documented for odoo version 15 under https://www.odoo.com/documentation/15.0/administration/odoo_sh/getting_started/branches.html[branches].
+The above process is documented for odoo version 15 under https://www.odoo.com/documentation/15.0/administration/odoo_sh/getting_started/branches.html[branches] section.
 
 ==== Unprofessional odoo Approach
 
 Beware that the odoo.sh environment does not hinder amateur developers to do foolish things with git.
 
 The quote below is from the official website of https://www.odoo.sh/[Odoo.sh].
-The statement violates all rules of clean code, DevOps and professional software development.
+The statement violates all the rules of clean code, DevOps and professional software development.
 
 I wishfully hope odoo organization will mature and remove these misleading statements.
 
@@ -253,17 +279,17 @@ The environment will automatically provide a copy of the production database in 
 You can test your new functions with production data without impeding the production server.
 . Once you are satisfied with the behavior of the new application with the copy of the production data, you can merge to production.
 A new production server will be deployed.
-If the deployment is unsuccessful, it will be rolled back to minimise downtime and to improve mean time to recover.
+If the deployment is unsuccessful, it will be rolled back to minimise downtime and to improve mean-time to recover.
 
 === Tips and Tricks
 
 Professional developers perform only code changes in the development branches.
 A development branch is often a *feature* branch.
 
-Staging and production branches are effectively deployment triggers in odoo.sh world.
+Staging and production branches are effectively deployment triggers in the _odoo.sh_ world.
 Staging branches shall only be used to *validate* a new version of your product.
 
-Logically only *one* production branch is available.
+Logically, only *one* production branch is available.
 
 _odoo.sh abuses git branches as triggers for deployment to staging and production_.
 This approach could historically be justified due to the clumsy way database changes were done in the past.
@@ -298,46 +324,35 @@ It is time to read the documentation.
 Please train and read the documentation.
 Do not be a https://en.wikipedia.org/wiki/Newbie[noob].
 
-We politely ask you to read books and documentation. Avoid receiving a https://en.wikipedia.org/wiki/RTFM[RTFM] injunction.
+We politely ask you to read books and documentation.
+Avoid receiving a https://en.wikipedia.org/wiki/RTFM[RTFM] injunction.
 ====
 
 You need some expertise in Docker, Kubernetes and in your development platform <<devops-sme>>.
-We recommend to initally use GitHub.
+We recommend initially using GitHub.
 It is the most used platform and most developers are versed how to use the provided features.
 
 If your company is missing experienced DevOps and agile professionals, it is time to improve your recruitment process <<detecting-agile-bullshit>>.
 
 All development platforms have extensive support for continuous integration, delivery and deployment.
-DevOps approaches are well supported.
+DevOps approaches are well-supported.
 Often, advanced concepts such as monitoring, DevSecOps, license management are supported.
 Extensive tutorials and good practices are available.
 
 Just use the provided tools and approaches to professionally develop and operate your digital platforms.
 
 [bibliography]
+=== Links
+
+- [[[dora-metrics, 1]]] https://devops.com/how-dora-metrics-can-measure-and-improve-performance/[How DORA metrics can measure and improve performance]
+- [[[dora-google, 2]]] https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance[Using The Four Keys to Measure Your Devops Performance]
+- [[[devops-sme, 3]]] link:../../blog/2021/devops-for-small-applications/[DevOps for Small Applications]
+Marcel Baumann. 2021
+- [[[code-as-crime-scene, 4]]] link:../../2019/code-scene-as-crime-scene/[Code Scene as a Crime Scene]
+Marcel Baumann, 2019
+- [[[detecting-agile-bullshit, 5]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit]
+Marcel Baumann, 2019
+
 === References
 
-- [[[accelerate, 1]]] https://www.amazon.com/dp/B07B9F83WM[Accelerate: Building and Scaling High Performing Technology Organizations].
-Nicole Forsgren & Jez Humble & Gene Kene.
-IT Revolution. 2018
-- [[[devops-handbook, 2]]] https://www.amazon.com/dp/B01M9ASFQ3[The DevOps Handbook: How to create World-Class Agility, Reliability, Security in Technology
-Organizations].
-Gene Kim & Jez Humble & Patrick Debois & John Willis.
-IT Revolution. 2016
-- [[[phoenix-project, 3]]] https://www.amazon.com/dp/0988262592[The Phoenix Project: A Novel about IT, DevOps and Helping Your Business Win].
-Gene Kim & Kevin Behr. 2013
-- [[[continuous-delivery, 4]]] https://www.amazon.com/dp/0321601912[Continuous Delivery: Reliable Software Releases through Build, Test and Deployment
-Automation].
-Jez Humble & David Farley. 2011
-- [[[site-realibility-engineering, 5]]] https://www.amazon.com/dp/B01DCPXKZ6[Site Reliability Engineering: How Google Runs Production Systems].
-Niall Richard Murphy, Betsy Meyer, Chris Jones.
-O'Reilly. 2016
-- [[[refactoring-database, 6]]] https://www.amazon.com/dp/B001QAP36E[Refactoring Databases: Evolutionary Database Design].
-Scott W. Ambler.
-Addison-Wesley. 2006
-- [[[devops-sme, 7]]] http://blog.tangly.net/blog/2021/devops-for-small-applications/[DevOps for Small Applications]
-Marcel Baumann. 2021
-- [[[code-as-crime-scene, 8]]] link:../../2019/code-scene-as-crime-scene/[Code Scene as a Crime Scene]
-Marcel Baumann, 2019
-- [[[detecting-agile-bullshit, 9]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit]
-Marcel Baumann, 2019
+bibliography::[]]

@@ -71,7 +71,8 @@ Linda Rising shows how changes are introduced with success in existing organizat
 === Books everybody should have read
 
 * Peopleware: Productive Projects and Teams, Tom DeMarco & Timothy Lister, Dorset House 1987 How to growth teams and lead successful projects
-* The Mythical Man-Month 2nd Edition, Frederick P. Brooks, Addison-Wesley 1995 The first version was published in 1975. The rules postulated by Brooks are still actual.
+* The Mythical Man-Month 2nd Edition, Frederick P. Brooks, Addison-Wesley 1995 cite:[mythical-man-month].
+The first version was published in 1975. The rules postulated by Brooks are still actual.
 Sad is that a lot of product leaders have no clue of these rules.
 * Becoming a Technical Leader: An organic Problem-Solving Approach, Gerald M. Weingartner, Dorset House 1986 How a gifted technical engineer can become a manager.
 * Slack: Getting past burnout, busywork, and the myth of total efficiency, Tom DeMarco, Broadway Books 2001 In one sentence, the tremendous difference between efficiency and effectivity.

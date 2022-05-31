@@ -11,14 +11,15 @@ tags: ["agile"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2016-02-01-head.jpg[width=420, height=360, role=left]
+image::2016-02-01-head.jpg[width=420,height=360,role=left]
+
 Decision makers and waterfall aficionados loudly ask if agile approaches are worth the hype.
 
 Does the approach really promote team work?
 
 Well, my current experience is that the answer is a sounding *YES*.
 
-Developers love to develop software products  using {ref-scrum}.
+Developers love to develop software products using {ref-scrum}.
 The motivation and positive energy just explode.
 
 People talk together, build as a team better products and enjoy the daily activities.
@@ -30,7 +31,8 @@ A whisper can still be heard:
 [.text-center]
 _Yes, it is not without consequences for the organization_.
 
-Say your team is developing software products with {ref-scrum}. We have the following roles:
+Say your team is developing software products with {ref-scrum}.
+We have the following roles:
 
 * The stakeholders
 * The developers (Development Team)
@@ -71,17 +73,17 @@ You can never again deny that you as a developer are in charge.
 
 === Scrum Master
 
-The Scrum master is cool with a team enjoying Scrum and the flow of success. You just have to realize you are not a master but the enabler of a team of talented engineers.
+The Scrum master cite:[mastering-professional-scrum] is cool with a team enjoying Scrum and the flow of success.
+You just have to realize you are not a master but the enabler of a team of talented engineers.
 
 So you need to discover your _the lonely cowboy riding in the sun_ song why this job is so rewarding.
 
 === Product Owner
 
-As a product owner, you control the budget of the product, the priorities.
+As a product owner cite:[professional-product-owner], you control the budget of the product, the priorities.
 At the end of each iteration you can change all priorities and goals.
 Cool isn't it.
-But wait as a product owner, I am responsible for the budget and product success and each time a member of the team asks me something I must have an answer
-ready.
+But wait as a product owner, I am responsible for the budget and product success and each time a member of the team asks me something I must have an answer ready.
 
 Scrum is cool and we enjoy it.
 And Scrum makes everything transparent and fast.
@@ -97,3 +99,7 @@ See for example the discussion about https://less.works/less/management/index.ht
 Be assured the results are worth the effort.
 
 Reading experience report or digging in the findings of Kotter, you realize success or failure goes through how you handle middle management.
+
+=== References
+
+bibliography[]

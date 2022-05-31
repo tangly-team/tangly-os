@@ -109,7 +109,7 @@ Read-only interface pattern is an alternative to the Immutable object pattern.
 It allows some objects to modify a value object while other objects can only fetch its values.
 
 [bibliography]
-=== Literature
+=== Links
 
 * [[[java-record, 1]]] link:../../2020/java-records-are-here-available-in-jdk-14/[Java Records are Here].
 Marcel Baumann. 2020

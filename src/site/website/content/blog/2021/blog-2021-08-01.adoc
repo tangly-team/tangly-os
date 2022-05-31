@@ -134,7 +134,7 @@ You should avoid hindering value stream organizations and cross-functional teams
 * Give tasks to individual collaborators instead of going through the product owner,
 * Ask progress or control questions during daily Scrum,
 * Ask control questions or systematically participate to ,
-* Promote the mindset that people are exchangeable - see mythical man/months -,
+* Promote the mindset that people are exchangeable - see mythical man month cite:[mythical-man-month],
 * State anybody can be a good Scrum master,
 * Criticize craftsmanship approaches such as TDD, DDD, pair programming, continuous integration and delivery.
 

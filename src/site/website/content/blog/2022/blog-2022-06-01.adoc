@@ -5,7 +5,7 @@ date: 2022-06-01
 tags: ["architecture", "domain-driven-design", "java"]
 ---
 
-== Software Structure when using Domain Driven Design
+== Software Structure when using Domain-Driven Design
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
@@ -15,6 +15,8 @@ image::2022-06-01-head.jpg[width=420,height=360,role=left]
 
 https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Development] is the preferred software architecture approach for designing new digital products.
 The method nicely matches with the operational concepts of microservices.
+
+Domain-driven design is a holistic approach to understanding, designing and building software applications.
 
 Seminal books cite:[domain-driven-design,domain-driven-design-distilled,implementing-domain-driven-design] describes the approach and key concepts defining the development method.
 
@@ -41,13 +43,22 @@ Domain-driven design _DDD_ has four layers in the architecture:
 [horizontal]
 Interface::
 This layer is in charge of the interaction with the user, whether software presents information to the user or receives information from the user.
+_I use vaadin to increase productivity.
+Vaadin allows us to use the single technology stack Java to develop all backend and frontend functionalities._
 Application::
-This is a thin layer between interface and domain, it could call domain services to serve the solution purposes.
+This is a thin layer between the interface and the domain, it could call domain services to serve the solution purposes.
 Domain::
 The heart of the software, this layer holds domain logic and business knowledge.
+_A major gaal is to avoid any taintinng of the core domain model from other layers._
+_Try avoiding extending domain entities with implementation specific root classes or to a lesser degree annotations._
 Infrastructure::
 A supporting layer for the other layers.
 This layer contains supporting libraries or external services like a database or UI supporting library.
+_I use libraries to minimize effort in support functions such as persistence, JSON transformation, archiving and reporting.
+The microstream library is a good example of this approach.
+The persistence functionality is less than fifty lines of codes.
+No changes in the domain model was necessary.
+We did not had to add a root persistent class or use annotations._
 
 === Package Structure
 
@@ -75,7 +86,7 @@ Realm::
 contains the repository functions to persist and create domain entities and object values.
 The current approach uses the https://microstream.one/[MicroStream] library.
 The amount of code to persist the domain model is minimal and non-intrusive
-footnote:[You do *not* need modifying your domain model. No inheritance from a special persistence class, no annotations are required.].
+footnote:[You do *not* need to modify your domain model. No inheritance from a special persistence class, no annotations are required.].
 Domain::
 contains the abstraction describing the bounded domain.
 Care is taken to define resilient and legible domain abstractions.

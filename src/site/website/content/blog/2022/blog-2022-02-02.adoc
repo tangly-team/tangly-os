@@ -172,7 +172,7 @@ All-remote work promotes:
 Beware that all-remote approach is a disruptive cultural change for a traditional organization with offices.
 
 [bibliography]
-=== Literature
+=== Links
 
 - [[[scrum-master, 1]]] link:../../2021/scrum-master-formation/[Scrum Master Formation].
 Marcel Baumann. 2021

@@ -31,7 +31,7 @@ description: Extension mechanisms to domain driven models with the modern Java t
 To be written
 
 [bibliography]
-=== Literature
+=== Links
 
 - [[[tags, 1]]] link:../../blog/2020/the-power-of-tags-and-comments[The power of Tags and Comments].
 Marcel Baumann. 2020

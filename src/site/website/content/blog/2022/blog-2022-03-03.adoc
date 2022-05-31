@@ -106,7 +106,7 @@ You are a professional software engineer.
 You shall behave ethically and take responsibility for failures.
 
 [bibliography]
-=== Literature
+=== Links
 
 * link:../../2021/modern-java-development[Modern Java Development]
 * link:../../2019/time-to-migrate-to-a-modern-jdk-laggards[Time to Migrate to a Modern JDK, Laggards!]

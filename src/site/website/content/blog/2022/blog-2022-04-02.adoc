@@ -151,7 +151,7 @@ The majority of hybrid methods I still encounter are bad rehearsal of the RUP de
 The unified process was defined in the nineties and is now obsolete.
 
 [bibliography]
-=== References
+=== Links
 
 - [[[professional-scrum, 1]]] https://www.amazon.com/dp/B07XTLNPTC[Mastering Professional Scrum: A Practitioner's Guide To Overcome Challenges and Maximize the Benefits of
 Agility].

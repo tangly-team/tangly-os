@@ -88,7 +88,8 @@ It is interesting to compare the above list with the reference list of the Certi
 . bibitem:[the-deadline]
 . bibitem:[peopleware]
 . bibitem:[extreme-programmking-explained]
-. Kanban by David J. Anderson
+. bibitem:[lean-from-the-trenches]
+. bibitem:[kanban]
 
 
 === Terminology and Acronyms

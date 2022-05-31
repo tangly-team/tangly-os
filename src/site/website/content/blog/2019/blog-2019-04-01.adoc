@@ -106,12 +106,8 @@ It helps you to avoid the invasion of gangs and eradicate crime in your neighbor
 
 Find similar ideas in our blogs Pragmatic Craftsmanship, SonarLint for the impatient, and You need an Engineering Culture.
 
-Two books published in the pragmatic programmer's series are a wonderful deep analysis of source code as a crime scene <<crimescene>> and
-scanning your application source code <<xrays>>.
+Two books published in the pragmatic programmer's series are a wonderful deep analysis of source code as a crime scene cite:[your-code-as-crime-scene] and scanning your application source code cite:[software-design-x-rays].
 
-[bibliography]
-=== Literature
+=== References
 
-- [[[crimescene, 1]]] Your Code as a Crime Scene: Using Forensic Techniques to Arrest Defects, Bottlenecks, and Bad Design in your Programs. Adam Tornhill.
-2015
-- [[[xrays, 2]]] Software Design X-Rays. Adam Tornhill. 2018
+bibliography[]

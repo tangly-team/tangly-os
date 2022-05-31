@@ -169,26 +169,12 @@ We also published our https://www.tangly.net/insights/continuous-learning/agile-
 Stefan Tilkov.2021.
 * https://tilkov.com/post/2021/03/01/ddd-is-overrated/[DDD is overrated].
 Stefan Tilkov. 2021.
-* https://www.amazon.com/dp/1491986360[Building Evolutionary Architectures: Support for constant Change].
-Neal Ford, Rebecca Parson.
-O'Reilly. 2017.
-* https://www.amazon.com/dp/0321125215[Domain-Driven Design: Tackling Complexity in the Heart of Software].
-Eric Evans.
-Addison-Wesley. 2004.
-* https://www.amazon.com/dp/B01JJSGE5S/[Domain-Driven Design Distilled].
-Vernon Vaughn.
-Addison-Welsey. 2016.
-* https://www.amazon.com/dp/B00BCLEBN8[Implementing Domain-Driven Design. Vernon Vaughn].
-Addison-Wesley. 2103.
-* https://www.amazon.com/dp/0131177052[Working Effectively with Legacy Code].
-Michael Feathers.
-Addison-Wesley. 2005.
-* https://www.amazon.com/dp/0321213351[Refactoring to Patterns].
-Joshua Kerievsky. 2005
-* https://www.amazon.com/dp/B000SEIBB8[Design Patterns: Element of Reusable Object-Oriented Software].
-Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides.
-Addison-Wesley. 1995.
-* https://www.amazon.com/dp/B09B5L4NVT[Building Microservices: Designing Fine-Grained Systems, 2nd Edition].
-Sam Newman.
-O'Reilly. 2021.
+* bibitem:[building-evolutionary-architectures]
+* bibitem:[domain-driven-design]
+* bibitem:[domain-driven-design-distilled]
+* bibitem:[implementing-domain-driven-design]
+* bibitem:[working-effectively-with-legacy-code]
+* bibitem:[efactoring-to-patterns]
+* bibitem:[design-patterns]
+* bibitem:[{building-microservices-2nd]
 

@@ -440,7 +440,7 @@ Read the post link:../../2016/git-branches-for-the-impatient[Git Branches for th
 Read the documentation of GitLab, BitBucket or GitHub.
 
 [bibliography]
-=== References
+=== Links
 
 * link:../../2017/git-local-repositories-for-the-impatient[Git Local Repositories for the Impatient]
 * link:../../2016/git-branches-for-the-impatient[Git Branches for the Impatient]

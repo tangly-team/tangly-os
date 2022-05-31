@@ -189,7 +189,7 @@ Your company does not possess any paper archive, printer or fax machine.
 * Expertise how to remove waste and streamline digital processes through a whole organization.
 
 [bibliography]
-=== Literature
+=== Links
 
 - [[[tangly-five-years, 1]]] link:../../2020/the-quest-for-an-agile-company-five-years-tangly-llc[The Quest for an Agile Company: Five Years tangly llc]
 - [[[tangly-one-year, 2]]] link:../../2019/a-journey-to-be-a-digital-company-tangly-llc[A Journey To Be a Digital Company]

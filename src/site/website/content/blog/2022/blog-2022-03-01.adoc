@@ -99,7 +99,7 @@ Recognize not everybody wants to develop products in the agile way.
 Please hire collaborators who are comfortable with agile approaches, autonomy and accountability.
 
 [bibliography]
-=== Literature
+=== Links
 
 - [[[great-scrummaster, 1]]] https://www.amazon.com/dp/013465711X[The Great Scrum Master].
 Zuzana Šochová, Addison-Wesley. 2017

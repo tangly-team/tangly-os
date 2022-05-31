@@ -132,7 +132,7 @@ Luckily, the check will find out you are really being agile instead of pretendin
 I wish good luck and success with your agile transformation.
 
 [bibliography]
-=== Literature
+=== References
 
 - [[[detecting-agile-bullshit, 1]]] https://media.defense.gov/2018/Oct/09/2002049591/-1/-1/0/DIB_DETECTING_AGILE_BS_2018.10.05.PDF
 

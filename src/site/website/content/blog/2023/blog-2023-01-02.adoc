@@ -1,7 +1,7 @@
 ---
 title: "SME IT Responsible"
 linkTitle: "SME IT Responsible"
-date: 2023-11-01
+date: 2022-11-01
 tags: ["agile", "devops"]
 ---
 
@@ -47,7 +47,7 @@ GitHub, GitLab, Attlassian have academic programs to support universities.
 === Areas of Works
 
 Every company is now a technology and software development company.
-Your organization needs an infrastructure to build, deliver and deploy digital software solutions.
+Your organization needs an infrastructure to build, deliver and deploy digital software solutions cite:[accelerate,site-reliability-engineering].
 
 [quote,Marc Andreesen,2011]
 ____
@@ -87,6 +87,7 @@ An IT director can help the manager of an SME to respond to many problems, such 
 * How to choose a suitable tool?
 * Is the security of installations and computer access guaranteed?
 * Is a backup procedure in place?
+Did you test the restore process?
 * Are maintenance contracts being followed?
 * Are IT budgets optimized?
 * Are the IT teams properly sized and supported?
@@ -111,16 +112,24 @@ The only wrong approach is to deploy a local solution without maintenance contra
 
 Most of the decisions are constrained by the trend to outsource hardware and applications to professional companies.
 A typical scenario is as follow.
-Do we deploy our own storage solution, do we use the services of Switch or do we use commercial solutions of hyperscalers?
+Do we deploy our own storage solution?
+Do we use the services of Switch or Amazon?
+Or do we use commercial solutions of other hyperscalers?
 
 [bibliography]
-=== Literature
+=== Links
 
-- [[[devops-ideas, 1]]] link:../../../2022/introducing-devops-ideas/[Introdcuing DevOps Ideas]
+- [[[first-steps-devops,1]]] link:../../2023/first-stps-devops/[First Steps DevOps]
+Marcel Baumann. 2023
+- [[[devops-ideas, 2]]] link:../../2022/introducing-devops-ideas/[Introdcuing DevOps Ideas]
 Marcel Baumann. 2022
-- [[[devops-sme, 2]]] link:../../2021/devops-for-small-applications/[DevOps for Small Applications]
+- [[[devops-sme, 3]]] link:../../2021/devops-for-small-applications/[DevOps for Small Applications]
 Marcel Baumann. 2021
-- [[[technical-debt, 3]]] link:../../2022/technical-debt/[Technical Debt]
+- [[[technical-debt, 4]]] link:../../2022/technical-debt/[Technical Debt]
 Marcel Baumann. 2022
-- [[[zero-defect, 4]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Advocate Zero Bug Policy in Your Projects]
+- [[[zero-defect, 5]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Advocate Zero Bug Policy in Your Projects]
 Marcel Baumann. 2020
+
+=== References
+
+bibliography[]

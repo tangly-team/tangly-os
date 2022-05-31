@@ -22,12 +22,12 @@ They are expended money you cannot invoice to your customers.
 Regulatory and traditional quality insurance departments request all kinds of documents, such as review, test results, risk analysis matrix.
 They want insurance that their view of quality is fulfilled.
 
-Scrum sees the importance of quality like the lean production approach.
+Scrum sees the importance of quality like the lean production approach cite:[scrum-pocket-guide-3rd].
 Quality is built into the product.
 You do not need any documents proving you have fulfilled this goal.
 Your sole goal is to optimize the process to produce the best products, not to repair them after production.
 
-It is the sole responsibility of the Scrum team to guaranty the quality of their product.
+It is the sole responsibility of the Scrum team to guaranty the quality of their product cite:[mastering-professional-scrum].
 Scrum teams also learnt you cannot win against big corporations.
 So you have to define solutions satisfying the QA departments with minimal overhead and almost no undone work.
 We have experience working with quality insurance and https://en.wikipedia.org/wiki/Technischer_%C3%9Cberwachungsverein[TUV] or https://en.wikipedia.org/wiki/Food_and_Drug_Administration[FDA] driven regulatory departments.
@@ -62,3 +62,7 @@ A real {ref-scrum} team corrects weaknesses during the development process and a
 The reports can only show the inherent quality of the software and are not worth the paper they are printed on.
 But you satisfy powerful stakeholder groups and can more freely work on the most important goal.
 Deliver on time and in budget the best software the customer wants to have.
+
+=== References
+
+bibliography[]

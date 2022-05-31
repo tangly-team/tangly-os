@@ -148,7 +148,7 @@ With that being said, some high-performing teams might find they do not need a S
 They might, for example, opt to have a technical team member also function as the Scrum master.
 
 [bibliography]
-=== References
+=== Links
 
 - [[[scrum-master-certification, 1]]] link:../../2021/scrum-master-formation/[Scrum Master Certification]
 - [[[product-owner-certification, 2]]] link: ../../2021/product-owner-formation/[Product Owner Certification]]

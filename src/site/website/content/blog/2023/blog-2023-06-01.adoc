@@ -102,5 +102,24 @@ Here are a few simple practices for successful onboarding:
 
 === Lessons Learnt
 
+Advanced approaches can reduce training and improve cultural match.
+
+[[TIP]
+
+====
+InnerSource <<[inner-source>> <<inner-source-patterns>> is a software development strategy that applies open source best practices to proprietary code.
+InnerSource can help establish an open source culture within an organization while retaining software for internal use.
+Teams use InnerSource to increase visibility, strengthen collaboration, and break down silos.
+====
+
 [bibliography]
-=== Literature
+=== Links
+
+[[[inner-source, 1]]] https://about.gitlab.com/topics/version-control/what-is-innersource/[What is Inner Source?]
+Gitlab. 2022
+[[[inner-source-patterns, 2]]] https://patterns.innersourcecommons.org/[Inner Source Patterns]
+Gitlab. 2022
+
+=== References
+
+bibliography[]

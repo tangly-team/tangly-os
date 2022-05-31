@@ -134,7 +134,7 @@ It is like a soccer team where each team member can play all roles.
 ====
 _ROI: Learning costs to cost of errors_ You need T-shaped team members.
 
-This concept was described in the mythical man-month book by Fredericks Brook Junior and later by Grady Booch before most of you were born.
+This concept was described in the mythical man-month book by Fredericks Brook Junior cite:[mythical-man-month] and later by Grady Booch before most of you were born.
 
 A T person is a master in one technical area
 

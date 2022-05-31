@@ -111,11 +111,13 @@ As a leader, you are capable of catalyzing growth and inspiring others to realiz
 Transforming::
 transforming is guiding sustainable change that will allow the individual teams and the organization to be more effective and learn how to change for themselves through leading, facilitation, coaching, facilitating learning, and advising.
 
-=== References
+[bibliography]
+=== Links
 
-bibliography::[]
-
-- https://blog.crisp.se/2021/06/30/mikaelbrodd/why-professional-coaching-matters-to-an-agile-coach[Why Professional Coaching Matters to an Agile Coach].
+- [[[professional-coaching, 1]]] https://blog.crisp.se/2021/06/30/mikaelbrodd/why-professional-coaching-matters-to-an-agile-coach[Why Professional Coaching Matters to an Agile Coach].
 Mikael Brodd.
 Crisp. 2021
 
+=== References
+
+bibliography::[]

@@ -23,14 +23,14 @@ Unaddressed technical debt increases software entropy.
 
 Spiraling out of control entropy is the death of countless software solutions over the last century.
 
-Similarly to monetary debt, technical debt is not necessarily a bad thing, and sometimes as e.g. a proof-of-concept is required to move projects forward.
+Similarly to monetary debt, technical debt is not necessarily a bad thing, and sometimes as e.g., a proof-of-concept is required to move projects forward.
 
 Some experts claim that the _technical debt_ metaphor tends to minimize the ramifications, resulting in insufficient prioritization of the necessary work to correct it.
 
 [cite,Ward Cunningham,1992]
 ____
 Shipping first time code is like going into debt.
-A little debt speeds development so long as it is paid back promptly with a rewrite...
+A little debt speed development so long as it is paid back promptly with a rewrite...
 
 The danger occurs when the debt is not repaid.
 Every minute spent on not-quite-right code counts as interest on that debt.
@@ -86,7 +86,7 @@ Code quality is an aggregation of several metrics that quantify the overall qual
 * Cyclomatic complexity, method size, class size
 * Class and package coupling
 * Depth of inheritance +
-_Continuous fitness functions <<evolutionaryarchitecture>> based on static code analyzers are the way to detect this technical debt <<cleancode>>, <<cleancoder>>._
+_Continuous fitness functions cite:[building-evolutionary-architectures] based on static code analyzers are the way to detect this technical debt cite:clean-code,clean-coder,clean-architecture]._
 Cycle Time::
 This measures the amount of time that passes between the definition of the change, the first commit, and deployment.
 You need to study the time it takes to make changes to existing code and to solve problems without using quick fixes.
@@ -132,46 +132,28 @@ Updates often close security vulnerabilities in your code.
 You have a legal responsibility to secure your code and protect your users.
 * Use the static quality checkers and refactoring features of your development environment.
 * Only refactor code you have to change.
-* Apply the boy scout rule.
+* Apply the boy scout rule cite:[clean-coder,clean-craftsmanship].
 Leave the code in a better state as it was when you started.
-* Train your developer in refactoring and clean code practices.
+* Train your developer in refactoring and clean code practices cite:[refactoring,refactoring-to-patterns,refactoring-databases].
 Beware technical debt is also created through:
 ** Lack of knowledge, when the developer doesn't know how to write elegant code,
-** Lack of ownership, when outsourced software efforts result in in-house engineering being required to refactor or rewrite outsourced code.
+** Lack of ownership, when outsourced software efforts result of in-house engineering being required to refactor or rewrite outsourced code.
 
-IMPORTANT: Professional software developers are well aware of the impacts of technical debt.
+IMPORTANT: Professional software developers understand deeply the impacts of technical debt.
 Amateurs just ignore the consequences and hop to the next product before they go bankrupt.
 
 [bibliography]
+=== Links
+
+* [[[zero-defect, 1]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Advocate Zero Bug Policy in Your Projects].
+Marcel Baumann. 2020.
+* [[[codecrimescene, 2]]] link:../../2019/code-scene-as-crime-scene/[Code Scene as Crime Scene]].
+Marcel Baumann. 2019.
+* [[[agilecode, 3]]] link:../../2019/agile-code-is-clean-code/[Agile Code is Clean Code].
+Marcel Baumann, 2019.
+* [[[metricsandkpi, 4]]] link:../../2018/why-do-you-need-metrics-and-kpi-in-agile-product-development/[Why Do You Need Metrics and KPI in Agile Product Development?].
+Marcel Baumann. 2018.
+
 === References
 
-* [[[zero-defect, 1]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Advocate Zero Bug Policy in Your Projects]
-* [[[cleancode, 2]]] https://www.amazon.com/dp/0132350882[Clean Code: A Handbook of Agile Software Craftsmanship].
-Robert Martin.
-Addison-Wesley. 2009. _ISBN 978-0132350884_
-* [[[cleancoder, 3]]] https://www.amazon.com/dp/0137081073[Clean Coder: A Code of Conduct for Professional Programmers].
-Robert Martin.
-Addison-Wesley. 2011. _ISBN 978-0137081073_
-* [[[cleanarchitecture, 4]]] https://www.amazon.com/dp/0134494164[Clean Architecture: A Craftsman's Guide to Software Structure and Design].
-Robert Martin.
-Addison Wesley. 2018. _ISDN 978-0134494166_
-* [[[cleanagile, 5]]] https://www.amazon.com/dp/0135781868[Clean Agile: Back to Basics].
-Robert Martin.
-Addison-Wesley. 2020. _ISDN 978-0135781869_
-* [[[cleancraftsmanship, 6]]] https://www.amazon.com/dp/B095C16LSW[Clean Craftsmanship: Disciplines, Standards, and Ethics]
-Robert Martin.
-Addison-Wesley. 2021. _ISDN 978-0136915713_
-* [[[evolutionaryarchitecture, 7]]] https://www.amazon.com/dp/1491986360[Building Evolutionary Architectures: Support for constant Change].
-Neal Ford, Rebecca Parson.
-O'Reilly. 2017. _ISBN 978-1491986363_
-* [[[refactoring, 8]]] https://www.amazon.com/dp/0134757599[Refactoring: Improving the Design of Existing Code, 2nd Edition].
-Martin Fowler.
-Addison Wesley. 2018. _ISBN 978-0134757599_
-* [[[refactoringpatterns, 9]]] https://www.amazon.com/dp/0321213351[Refactoring to Patterns].
-Joshua Kerievsky. 2005
-* [[[codecrimescene, 10]]] link:../../2019/code-scene-as-crime-scene/[Code Scene as Crime Scene]].
-Marcel Baumann. 2019
-* [[[agilecode, 11]]] link:../../2019/agile-code-is-clean-code/[Agile Code is Clean Code]
-Marcel Baumann, 2019
-* [[[metricsandkip, 12]]] link:../../2018/why-do-you-need-metrics-and-kpi-in-agile-product-development/[Why Do You Need Metrics and KPI in Agile Product Development?].
-Marcel Baumann. 2018
+bibliography[]

@@ -15,10 +15,10 @@ image::2022-04-04-head.png[width=420,height=360,role=left]
 
 Your organization heard of https://en.wikipedia.org/wiki/DevOps[DevOps], and your developers clamour you should adopt the approach.
 
-Each customer organization I talk with has some Dex`vOps initiative.
-Often because they read that DevOps puts customers and end-user satisfaction at the center.
+Each organization I talk with has some DevOps initiative.
+Often because they read that DevOps approach puts customers and end-user satisfaction at the center.
 
-Does DevOps improve the quality of your digital products and customer satisfaction?
+Does DevOps really improve the quality of your digital products and customer satisfaction?
 
 Or is it only the next https://en.wikipedia.org/wiki/No_Silver_Bullet[silver bullet] fad used to increase the bonus of consultants and managers?
 
@@ -40,24 +40,24 @@ DevOps is *complementary* with https://en.wikipedia.org/wiki/Agile_software_deve
 Several DevOps aspects came from the agile methodology.
 ____
 
-DevOps is intended to be a cross-functional mode of working.
+DevOps is intended to be a cross-functional mode of working cite:[accelerate,devops-handbook,phoenix-project].
 Practitioners use different toolchains rather than a single one.
 These toolchains are expected to fit into one or more of the following categories, reflective of key aspects of the development and delivery process.
 
 [NOTE]
 ====
-Major product development platforms https://gitlab.com/[GitLab], https://github.com/[GitHub] or https://bitbucket.org/dashboard/overview[BitBucket]
+The major software product development platforms https://gitlab.com/[GitLab], https://github.com/[GitHub] or https://bitbucket.org/dashboard/overview[BitBucket]
 are classical examples of toolchains integration.
 ====
 
 DevOps teams practice daily:
 
 [horizontal]
-Coding:: Code development and review, source code management tools, code merging.
+Coding:: Code development and review, source code management tools, code merging cite:[clean-code, clean-architecture, refactoring].
 Emphasize continuous development and testing.
 Continuous testing can only be fully automated.
 Building:: Continuous integration tools, build status.
-Emphasize continuous integration, continuous delivery, and continuous deployment.
+Emphasize continuous integration, continuous delivery, and continuous deployment cite:[continuous-delivery,continuous-delivery-pipelines].
 Testing:: Continuous testing tools that provide quick and timely feedback on business risks.
 Supports continuous development activities.
 Packaging:: Artifact repository, application pre-deployment staging.
@@ -77,7 +77,7 @@ Development in an agile and DevOps environment means:
 * https://en.wikipedia.org/wiki/Continuous_delivery[Continuous delivery], which includes continuous integration but mainly focuses on product delivery.
 * https://en.wikipedia.org/wiki/Continuous_deployment[Continuous deployment], which aims at automating project deliveries.
 
-image::2022-04-04-Ci-pipeline.png[width=420,height=360,role=left]
+image::2022-04-04-Ci-pipeline.png[width=480,height=360,role=left]
 
 Your development teams shall have automatic continuous integration.
 This pipeline builds the software, runs static code analyzer and executes a reasonable set of unit and integration.
@@ -114,6 +114,8 @@ DevOps is not isolated to a specific role or to a specific team in your organiza
 A DevOps specialist must have well-developed empathy because their job implies communication with other people.
 Conflicts are not going to help them.
 Deep understanding of empiricism and transparency of all available information and measurements is a must for successful communication in an agile and DevOps environment.
+
+Google has published exhaustive insights how they implement DevOps mindset cite:[site-reliability-engineering].
 
 === DevSecOps
 
@@ -185,7 +187,7 @@ Do the actions measurably improve the associated metrics?
 I can check out the whole project and build it locally with one command.+
 _I shall install the needed development tools based on written instruction available in the repository._
 . You give access to a product repository.
-I can initiate a full build and delivery in a continuous integration and delivery pipeline.+
+I can initiate a complete build and delivery action in a continuous integration and delivery pipeline.+
 _I shall use the CI/CD tool chosen for the product._
 . I can check out, build and deploy the two last releases on a staging area with less than ten commands.
 . You give me access to the list of all issues and changes ongoing in the repository.
@@ -193,7 +195,7 @@ The list is specific to one product.
 I see the information such as priority, cycle-time of these issues and in which release the issue was fixed.
 . You give me read-only access to the health dashboard of any test and productive server on which the product runs.
 I see
-* Uptime, availability, last down events with time of occurrence, duration, and explanation.
+* Uptime, availability, last down events with time of occurrence, duration and explanation.
 * Database, memory, CPU, etc. usage and trends,
 * List of alarms with the involved components and resolution status.
 . You give a list of improvements to continuously improve the quality of the product.
@@ -209,9 +211,9 @@ A vendor-agnostic checklist is https://devopschecklist.com/[the DevOps checklist
 Here are some of the most critical DevOps metrics
 footnote:[The DevOps Research and assessment DORA has defined these key metrics and a strong correlation with high-performance organizations.]:
 
-image::2022-04-04-elite-dora-success.png[width=90%,height=360,role=text-center]
+image::2022-04-04-elite-dora-success.png[width=70%,height=360,role=text-center]
 
-Elite teams have tremendeous overall performance when improving in the areas tracked through these metrics.
+Elite teams have tremendous overall performance when improving in the areas tracked through these metrics.
 
 [horizontal]
 Deployment Frequency::
@@ -241,7 +243,7 @@ https://en.wikipedia.org/wiki/Failure_rate[failure rate].
 
 === Cultural change
 
-DevOps initiatives create cultural changes in companies by transforming the way operations, developers, and testers collaborate during the development and delivery processes.
+DevOps initiatives create cultural changes in companies by transforming the way operations, developers and testers collaborate during the development and delivery processes.
 Getting these groups to work cohesively is a critical challenge in enterprise adoption.
 DevOps is as much about culture, the toolchains are only instruments to implement the approach.
 
@@ -257,7 +259,7 @@ The 2015 State of DevOps Report discovered that the top seven measures with the 
 . Organizational investment,
 . Team leaders' experience and effectiveness,
 . Continuous delivery,
-. The ability of different disciplines _development, operations, and security_ to achieve win-win outcomes,
+. The ability of different disciplines _development, operations and security_ to achieve win-win outcomes,
 . Organizational performance,
 . Deployment pain,
 . Lean management practices.
@@ -285,7 +287,7 @@ Fowler, 2006 - a software development practice where members of a team integrate
 Multiple integrations per day shall be possible.
 Each integration is verified by an automated build including tests to quickly detect errors.
 Pair Programming::
-Williams & Kessler, 2003 – style of programming in which two programmers work side by side at one computer, continually collaborating on the same design, algorithm, code, or test.
+Williams & Kessler, 2003 – style of programming in which two programmers work side by side at one computer, continually collaborating on the same design, algorithm, code or test.
 The *driver* types and writes the design.
 The *navigator* observes the driver and looks for defects.
 Refactoring::
@@ -311,7 +313,7 @@ testing the smallest units possible to prove what was written is true.
 Unit testing frameworks are Xunit or NUnit for C# and .Net, Junit for Java, PyUnit for Python, Cppunit for C++.
 
 [bibliography]
-=== References
+=== Links
 
 - [[[technical-debt, 1]]] link:../../2022/technical-debt/[Technical Debt]
 Marcel Baumann. 2022
@@ -321,5 +323,9 @@ Marcel Baumann. 2021
 Marcel Baumann. 2020
 - [[[legacy-system-refactoring, 4]]] link:../../2020/legacy-systems-refactoring/[Legacy System Refactoring]
 Marcel Baumann. 2020
-- [[[how-healthy-is-your-product, 5]]] link:../../2018/how-healthy-is-your-product-delivery-pipeline-check/[How Healty is Your Product Delivery Pipeline]
+- [[[how-healthy-is-your-product, 5]]] link:../../2018/how-healthy-is-your-product-delivery-pipeline-check/[How Healthy is Your Product Delivery Pipeline]
 Marcel Baumann. 2018
+
+=== References
+
+bibliography::[]

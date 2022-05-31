@@ -177,7 +177,7 @@ The abstractions allow compilation time detection of errors.
 -- _ProductUnit_ is a new unit created as the product of rational powers of other units.
 
 [bibliography]
-=== References
+=== Links
 
 - [[[units-of-measurement,1]]] https://unitsofmeasurement.github.io/[Units of Measurement]
 - [[[mars-climate-orbiter,2]]] https://en.wikipedia.org/wiki/Mars_Climate_Orbiter[Mars Climate Orbiter]

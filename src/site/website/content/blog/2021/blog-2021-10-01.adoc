@@ -79,30 +79,17 @@ Agile digital product architects are aware of:
 . The software architecture role is about coding, coaching and collaboration,
 . A good software architecture enables agility.
 
-[bibliography]
-=== Literature
+=== References
 
-* [[[evolutionary-architecture, 1]]] https://www.amazon.com/dp/1491986360[Building Evolutionary Architectures: Support for constant Change].
-Neal Ford, Rebecca Parson.
-O'Reilly. 2017
-* [[[refactoring, 2]]] https://www.amazon.com/dp/0134757599[Refactoring: Improving the Design of Existing Code, 2nd Edition].
-Martin Fowler.
-Addison Wesley. 2018
-* [[[domain-driven-design, 3]]] https://www.amazon.com/dp/0321125215[Domain-Driven Design: Tackling Complexity in the Heart of Software].
-Eric Evans.
-Addison-Wesley. 2004
-* [[[domain-driven-design-distilled, 4]]] https://www.amazon.com/dp/B01JJSGE5S/[Domain-Driven Design Distilled].
-Vernon Vaughn.
-Addison-Welsey. 2016
-* [[[implementing-domain-driven-desing, 5]]] https://www.amazon.com/dp/B00BCLEBN8[Implementing Domain-Driven Design. Vernon Vaughn].
-Addison-Wesley. 2103
-* [[[working-legacy-code, 6]]] https://www.amazon.com/dp/0131177052[Working Effectively with Legacy Code].
-Michael Feathers.
-Addison-Wesley. 2005
-* [[[refactoring-patterns, 7]]] https://www.amazon.com/dp/0321213351[Refactoring to Patterns].
-Joshua Kerievsky. 2005
-* [[[design-patterns, 8]]] https://www.amazon.com/dp/B000SEIBB8[Design Patterns: Element of Reusable Object-Oriented Software].
-Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides.
-Addison-Wesley. 1995
-* [[[building-microservices, 9]]] https://www.amazon.com/dp/B09B5L4NVT[Building Microservices: Designing Fine-Grained Systems, 2nd Edition].
-Sam Newman.
+bibliography[]
+
+* bibitem:[building-evolutionary-architectures]
+* bibitem:[refactoring]
+* bibitem:[refactoring-databases]
+* bibitem:[domain-driven-design]
+* bibitem:[domain-driven-design-distilled]
+* bibitem:[implementing-domain-driven-desing]
+* bibitem:[working-effectively-with-legacy-code]
+* bibitem:[refactoring-patterns]
+* bibitem:[design-patterns]
+* bibitem:[building-microservices-2nd]

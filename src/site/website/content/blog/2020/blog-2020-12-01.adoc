@@ -94,7 +94,7 @@ It is called https://en.wikipedia.org/wiki/Regression_testing[non-regression tes
 * Are you ready to shift your focus from managing bugs to ensuring quality?
 And if not, why should I buy your product?
 
-=== References
+=== Links
 
 See the excellent articles from https://www.linkedin.com/in/yassal-sundman/[Yassal Sundman] working for the crisp company.
 

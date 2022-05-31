@@ -66,7 +66,7 @@ You have to know history, or you will repeat the errors of the past generations.
 
 * All books of Tom deMarco e.g. Peopleware, The deadline, Slack, Waltzing with Bears
 * All books of Gerry Weinberg, such as Becoming a Technical Leader, Are your Lights on?, The Psychology of Computer Programming
-* The Mythical Man-Month: Essays on Software Engineering, Anniversary Edition, Frederick P. Brooks Jr.
+* The Mythical Man-Month: Essays on Software Engineering, Anniversary Edition, Frederick P. Brooks Jr cite:[mythical-man-month].
 * Good To Great, Jim Collins
 
 === Free Time

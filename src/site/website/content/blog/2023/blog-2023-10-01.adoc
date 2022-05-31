@@ -2,7 +2,7 @@
 title: "Agile Visual Tools"
 linkTitle: "Agile Visual Tools"
 date: 2023-10-01
-tags: ["agile", "series-students"]
+tags: ["agile", "devops", "series-students"]
 ---
 
 == Agile Visual Tools
@@ -17,20 +17,24 @@ Why is visibility so important for any agile or Scrum team?
 
 When you are running an agile product development initiative, your ultimate goal is customer satisfaction with the delivered solution.
 
-The project coordination responsibilities are however not limited to this.
-The product owner shall nurture the vision, roadmap, the release plan and customer journey.
+The project coordination responsibilities are however not limited to this single goal.
 
+The product owner shall nurture the vision, roadmap, the release plan and customer journey.
 You must coordinate the workflow of your team, refine the product backlog, control identified risks, track deadlines.
+
+The development team shall inform about progress, incremental deliveries, technical debt, impediments and risks.
 
 === Why Visual Tools?
 
-Various practices exist to forecast product development progress, like burn-downs, burn-ups, or cumulative flow diagrams.
+Various practices exist to forecast product development progress, like burn-downs, burn-ups, or cumulative flow, velocity diagrams.
 
 While proven useful, these do not replace the importance of *empiricism*.
 
 In complex environments, what will happen is unknown.
 Only what has already happened may be used for forward-looking decision making.
-Visual aids optimally implement the Scrum pillars of _transparency_, _inspection_ and _adaptation_.
+Visual aids optimally support the Scrum pillars of _transparency_, _inspection_ and _adaptation_.
+
+Most of these diagrams naturally provide the time dimension necessary for forecasting.
 
 [quote,Peter Drucker]
 ____
@@ -53,7 +57,7 @@ Diagrams are information radiators.
 They provide easy and legible access to progress information.
 
 If your team, Scrum Master, Product Owner or stakeholders cannot see what the team is doing, it creates the impression that you are doing lots of _nothing_.
-Or doing lots of things completely _wrong_.
+Or do lots of things completely _wrong_.
 
 This kind of doubt is one of the fastest ways to find yourself in a quagmire of unfinished work.
 
@@ -81,32 +85,36 @@ It is a valuable tool to use as a thermometer or symptom checker.
 
 Flatlining is a symptom of a few things:
 
-- You are working on too many stories at a time. You are doing lots of nothing, progress gets done very slowly.
+- You are working on too many stories at a time.
+You are doing lots of nothing, progress gets done very slowly.
 We recommend to introduce https://en.wikipedia.org/wiki/Work_in_process[WIP] limits.
 - Your team hast too many started but unfinished stories at the end of the sprint.
 We recommend institutionalizing https://en.wikipedia.org/wiki/Pair_programming[pair programming] and https://en.wikipedia.org/wiki/Mob_programming[mob programming].
 - Your tasks are not granular enough.
 Progress is slow and initial estimation does not reflect effective effort.
-One of the things which we tried is not to accept any six hour tasks and on agreeing to decompose these tasks further.
+One of the things which we tried is not to accept any six-hour tasks and on agreeing to decompose these tasks further.
 
 Because of its appealing visual format, your team members can understand this chart easily.
 It is used to summarize a thorough description of a feature from an end-user perspective.
 That is why you can update the chart only after the completion of a user story.
 
 Sprint Burndown Chart::
-The sprint burndown charts depict how much stories are completed and how much work remains in the ongoing sprint.
-Sprint burndown chart displays user stories, which are selected by the team in the sprint planning session.
+The sprint burndown charts depict how many stories are completed and how much work remains in the ongoing sprint.
+Sprint burndown chart displays user stories, which are selected by the team in the sprint planning session. +
+_You measure finished stories providing value to the customer.
+You shall not track hours or task completion._
 Product Burndown Chart::
 Product burndown charts can visualize the entire project; in short, it looks at the big picture.
 It shows how much work is remaining for your team to match the product goals.
 The vertical axis displays the product backlog items in the product burndown chart, while the horizontal axis implies the sprint numbers.
 Release Burndown Chart::
-This burndown chart is responsible for tracking all the progress made by your scrum team during to reach a release point.
+This burndown chart is responsible for tracking all the progress made by your scrum team during reaching a release point.
 The vertical axis of the chart depicts the stories.
-On the other hand, the horizontal axis represents the time your team members spent.
+The horizontal axis represents the time your team members spent.
 Cumulative flow diagrams::
-The diagram are available for sprints, epics, releases and products.
-These diagrams show the bottlenecks due to team member specializations or dependencies to external actors.
+The diagrams are available for sprints, epics, releases and products.
+These diagrams show the bottlenecks due to team member specializations or dependencies to external actors. +
+_Lean approaches request to identify and implement corrective measures to remove identified bottlenecks._
 Velocity visualization::
 Business can envision and calculate when they can potentially release a product or subset of a product based on how fast the team is working.
 If the backlog has been estimated and refinement done properly, the number of story points it contains should be comparable to the velocity the team has been achieving sprint after sprint. +
@@ -127,7 +135,8 @@ image::2023-10-01-cumulative-diagrams.jpg[width=420,height=360]
 Experienced teams sometimes use additional visual aids to improve effectivity:
 
 * Effective work effort per Sprint
-* Issues Flow diagrams
+* Issues flow diagrams
+* Cycle-time of stories or cycle-time of errors
 
 === DevOps Visual Aids
 
@@ -173,12 +182,16 @@ A picture is worth a thousand words.
 The visualization of facts often helps to identify improvement potential.
 The same diagrams measure the success of specific improvement measures.
 One well-documented successful approach are the four DORA metrics and associated graphs.
+, Experienced teams can improve effectivity and efficiency with more advanced techniques cite:[site-reliability-engineering,devops-handbook,your-code-as-crime-scene,software-design-x-rays]
 
 [bibliography]
-=== References
+=== Links
 
 - [[[scrum-guide, 1]]] https://scrumguides.org/scrum-guide.html[Scrum Guide].
 Ken Schwaber and Jeff Sutherland. 2020.
 - [[[devops-ideas, 2]]] link:../../2022/introducing-devops-ideas/[Introducing DevOps Ideas].
 Marcel Baumann. 2022.
 
+=== References
+
+bibliography::[]
