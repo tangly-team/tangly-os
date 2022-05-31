@@ -40,5 +40,4 @@ class InvoicesItTest {
     void setup() {
         MockVaadin.setup();
     }
-
 }

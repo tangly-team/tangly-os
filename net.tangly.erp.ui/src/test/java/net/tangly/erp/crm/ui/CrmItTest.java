@@ -14,10 +14,17 @@ package net.tangly.erp.crm.ui;
 
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import com.github.mvysny.kaributesting.v10.Routes;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.dialog.Dialog;
+import com.vaadin.flow.component.formlayout.FormLayout;
 import net.tangly.erp.Erp;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
+import net.tangly.ui.app.domain.Cmd;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+
+import static com.github.mvysny.kaributesting.v10.LocatorJ._get;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Defines basic infrastructure for integration tests of the bounded domain with karibu testing framewwork and in-memory database without persistence.
@@ -34,5 +41,19 @@ class CrmItTest {
     @BeforeEach
     public void setupVaadin() {
         MockVaadin.setup(routes);
+    }
+
+    /**
+     * Return the form layout of the dialog associated with the command. This method is provided because currently find all dialogs karibu functionality is not working as exepcted.
+     *
+     * @param cmd command which form should be returned
+     * @return requested form layout of the command dialog
+     */
+    protected Component form(Cmd cmd) {
+        Dialog dialog = cmd.dialog();
+        assertThat(dialog).isNotNull();
+        Component form = _get(dialog, FormLayout.class);
+        assertThat(form).isNotNull();
+        return form;
     }
 }

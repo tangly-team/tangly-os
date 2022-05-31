@@ -12,6 +12,8 @@
 
 package net.tangly.ui.app.domain;
 
+import com.vaadin.flow.component.dialog.Dialog;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -28,7 +30,7 @@ public interface Cmd {
     void execute();
 
     /**
-     * Indicates if the command is enabled or not. A command availability is dependant on the application and roles the user has.
+     * Indicate if the command is enabled or not. A command availability is dependant on the application and roles the user has.
      *
      * @return true if enabled otherwise false
      */
@@ -39,4 +41,6 @@ public interface Cmd {
     default List<String> roles() {
         return Collections.emptyList();
     }
+
+    default Dialog dialog() { return null; }
 }

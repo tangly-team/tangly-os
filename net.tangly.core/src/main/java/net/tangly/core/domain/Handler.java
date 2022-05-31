@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,8 +12,18 @@
 
 package net.tangly.core.domain;
 
+import org.apache.logging.log4j.util.BiConsumer;
+import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 /**
  * Define the import port for the bounded domain. It is a primary port in the DDD terminology.
+ *
  * @param <R> Realm of the bounded domain
  */
 public interface Handler<R extends Realm> {
@@ -37,4 +47,13 @@ public interface Handler<R extends Realm> {
      * @return realm of the bounded domain
      */
     R realm();
+
+    static void importEntities(@NotNull Path folder, @NotNull String filename, @NotNull BiConsumer<Reader, String> consumer) {
+        Path path = folder.resolve(filename);
+        try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
+            consumer.accept(reader, path.toString());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

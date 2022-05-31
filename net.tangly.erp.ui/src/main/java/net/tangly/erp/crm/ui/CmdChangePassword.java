@@ -84,6 +84,8 @@ public class CmdChangePassword implements Cmd {
     private final PasswordField newPassword;
     private final PasswordField confirmPassword;
 
+    private Dialog dialog;
+
     public CmdChangePassword(@NotNull CrmBoundedDomain domain, @NotNull Subject subject) {
         this.domain = domain;
         changePassword = new ChangePassword(subject);
@@ -99,7 +101,7 @@ public class CmdChangePassword implements Cmd {
 
     @Override
     public void execute() {
-        Dialog dialog = new Dialog();
+        dialog = new Dialog();
         dialog.setWidth("40em");
         FormLayout form = new FormLayout();
         VaadinUtils.set1ResponsiveSteps(form);
@@ -115,12 +117,20 @@ public class CmdChangePassword implements Cmd {
                 binder.writeBean(changePassword);
                 domain.logic().changePassword(changePassword.subject().id(), changePassword.oldPassword(), changePassword.newPassword());
                 dialog.close();
+                this.dialog = null;
+
             } catch (ValidationException e) {
+                // TODO
             }
         });
         Button cancel = new Button(CANCEL, e -> dialog.close());
         form.add(username, oldPassword, newPassword, confirmPassword, new HtmlComponent("br"), new HorizontalLayout(execute, cancel));
         dialog.add(form);
         dialog.open();
+    }
+
+    @Override
+    public Dialog dialog() {
+        return dialog;
     }
 }
