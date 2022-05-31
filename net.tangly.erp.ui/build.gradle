@@ -52,6 +52,15 @@ shadowJar {
     archiveVersion.set('')
 }
 
+distributions {
+    main {
+        contents {
+            from "src/main/config/app-in-memory-no-imports.properties"
+            from "../src/main/licenses/apache-2-0-license"
+        }
+    }
+}
+
 dependencies {
     implementation project(':net.tangly.commons')
     implementation project(':net.tangly.core')

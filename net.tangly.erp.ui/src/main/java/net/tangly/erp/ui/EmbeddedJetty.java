@@ -111,8 +111,13 @@ public class EmbeddedJetty {
 
     private static Options options() {
         var options = new Options();
-        options.addOption(Option.builder("h").longOpt("help").hasArg(false).desc("print this help message").build());
-        options.addOption(Option.builder("p").longOpt("port").type(Integer.TYPE).argName("port").hasArg().desc("listening port of the embedded server").build());
+        options.addOption(Option.builder("h").longOpt("help").hasArg(false)
+            .desc("print this help message").build());
+        options.addOption(Option.builder("p").longOpt("port").type(Integer.TYPE).argName("port").hasArg()
+            .desc("listening port of the embedded server").build());
+        options.addOption(Option.builder("c").longOpt("configuration").type(String.class).argName("configuration-file").hasArg()
+            .desc("path to the applicaiton configuration file").build())
+        ;
         options.addOption(Option.builder("m").longOpt("mode").argName("mode").hasArg().desc("mode of the application").build());
         return options;
     }

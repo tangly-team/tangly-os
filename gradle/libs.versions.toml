@@ -7,7 +7,7 @@ junit-version = '5.8.2'
 log4j2-version = '2.17.2'
 microstream-version = '07.00.00-MS-GA'
 mustang-version = '2.5.1'
-vaadin-version = '23.0.9'
+vaadin-version = '23.0.10'
 assertj-version = '3.22.0'
 
 [plugins]
@@ -34,13 +34,13 @@ apache-log4j2-slf4j = { module = "org.apache.logging.log4j:log4j-slf4j-impl", ve
 apache-pdfbox = "org.apache.pdfbox:pdfbox:2.0.25"
 arch-unit = "com.tngtech.archunit:archunit-junit5-api:0.23.1"
 
-asciidoctorj-core = "org.asciidoctor:asciidoctorj:2.5.3"
-asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.0.3"
+asciidoctorj-core = "org.asciidoctor:asciidoctorj:2.5.4"
+asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.0.6"
 
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
 commonmark = "org.commonmark:commonmark:0.18.2"
 eo-yaml = "com.amihaiemil.web:eo-yaml:5.2.1"
-flyway = "org.flywaydb:flyway-core:8.5.11"
+flyway = "org.flywaydb:flyway-core:8.5.12"
 guice = "com.google.inject:guice:5.1.0"
 hsqldb = "org.hsqldb:hsqldb:2.6.1"
 iban4j = "org.iban4j:iban4j:3.2.3-RELEASE"
