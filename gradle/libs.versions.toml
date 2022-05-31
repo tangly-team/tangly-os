@@ -48,7 +48,7 @@ iban4j = "org.iban4j:iban4j:3.2.3-RELEASE"
 ical4j-core = "org.mnode.ical4j:ical4j:3.2.1"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.7"
 
-google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.12.48"
+google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.12.49"
 
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson-version" }
 jackson-parameters = { module = "com.fasterxml.jackson.module:jackson-module-parameter-names", version.ref = "jackson-version" }
@@ -82,7 +82,7 @@ microstream-storage = { module = "one.microstream:microstream-storage-embedded",
 microstream-jdk8 = { module = "one.microstream:microstream-persistence-binary-jdk8", version.ref = "microstream-version" }
 microstream-jdk17 = { module = "one.microstream:microstream-persistence-binary-jdk17", version.ref = "microstream-version" }
 
-mockito = "org.mockito:mockito-junit-jupiter:4.5.1"
+mockito = "org.mockito:mockito-junit-jupiter:4.6.0"
 
 scribe = "com.github.scribejava:scribejava-apis:8.3.1"
 
