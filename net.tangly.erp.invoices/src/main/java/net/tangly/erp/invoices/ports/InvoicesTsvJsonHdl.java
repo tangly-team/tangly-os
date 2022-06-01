@@ -78,10 +78,10 @@ public class InvoicesTsvJsonHdl {
         var invoice = invoiceJson.imports(reader, source);
         if ((invoice != null) && invoice.check()) {
             realm.invoices().update(invoice);
-            EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, "Imported Invoice", Map.of("invoice", invoice));
+            EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, "Imported Invoice", Map.ofEntries(Map.entry("invoice", invoice)));
             return invoice;
         } else {
-            EventData.log(EventData.IMPORT, MODULE, EventData.Status.WARNING, "Invalid Invoice", Map.of("invoice", source));
+            EventData.log(EventData.IMPORT, MODULE, EventData.Status.WARNING, "Invalid Invoice", Map.ofEntries(Map.entry("invoice", source)));
             return null;
         }
     }
