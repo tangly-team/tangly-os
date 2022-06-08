@@ -15,10 +15,16 @@ image::2022-06-02-head.svg[width=420,height=360,role=left]
 
 A modular monolith is a software design approach in which a monolith is designed with an emphasis on interchangeable and potentially reusable modules.
 
+A modular monolith can be splitted in the future into a set of microservices.
+
+Delay the split as long as you can.
+Microservices have a steep price tag during operations.
+
 A modular monolith provides:
 
 - Independent and parallel development approach
-- Diminish coupling and improve cohesion. The interfaces are better documented and thinner.
+- Diminish coupling and improve cohesion.
+The interfaces are better documented and thinner.
 - Better observability
 
 
@@ -44,23 +50,23 @@ For Java developers in particular, interface classes and their requisite javadoc
 |Low operational complexity.
 |Low operational complexity.
 
-|Can be more secure than microservice application
-|Can be more secure than microservice application
+|Can be more secure than microservice application.
+|Can be more secure than microservice application.
 
-|Easy to manage database consistency
-|Easy to manage database consistency
+|Easy to manage database consistency.
+|Easy to manage database consistency.
 
-|Less complex than microservice application
+|Less complex than microservice application.
 |Less complex than microservice application.
 
-|
+|_Monoliths are usually a nightmare to maintain._
 |Developed code is reusable.
 
-|
-|Has better-organized dependencies than standard monolith.
+|_Often called big ball of mud._
+|Has better-organized dependencies than a standard monolith.
 
-|
-|Better code observability than standard monolith.
+|_Observability is often low._
+|Better code observability than a standard monolith.
 |===
 
 === When to Use a Modular Monolith
@@ -75,6 +81,7 @@ Good practices shall be applied to refactor the application cite:[clean-code,cle
 === When Not to Use a Modular Monolith
 
 Of course, just as microservices are not one size fits all solutions, neither is modularity.
+
 For developers working on small projects with small development teams, developing their code in a modular way may not be worth the added time, or formality.
 
 === Final Thoughts
@@ -85,6 +92,12 @@ cite:[domain-driven-design,domain-driven-design-distilled,implementing-domain-dr
 If you are like many Java developers who are still working on a monolithic application, then employing modularization best practices can help make your application achieve some benefits of microservices without the associated cost of refactoring.
 
 However, modular monoliths have significant shortcomings when compared to microservices -- especially in terms of continuous testing, integration, and deployment.
+
+[bibliography]
+=== Links
+
+- [[[software-structure-with-ddd, 1]]] link:../../2022/software-structure-with-dd[Software Structure with DDD]
+Marcel Baumann. 2022.
 
 === References
 

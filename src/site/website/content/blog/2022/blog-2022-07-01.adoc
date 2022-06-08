@@ -17,12 +17,13 @@ image::2022-07-01-head.jpg[width=420,height=360,role=left]
 Perhaps you are thinking of pursuing a career as a Scrum master.
 Or perhaps you’ve recently been moved into that role and are wondering if being a Scrum master is right for you.
 
-There are plenty of good reasons to become a Scrum master; the job is in demand and pays well.
+There are plenty of good reasons to become a Scrum master.
+The job is in demand and pays well.
 The most important the reason to become a Scrum master is that it is the right job for your skills, personality, and interests.
 
 === What is a Scrum Master?
 
-Here iss a way of considering the role.
+Here is a way of considering the role.
 The scrum master is the product owner for organisational change.
 When you introduce Scrum into an organisation, you are focused on the creation of two distinct things: new products and an improved organisation.
 New products have owners.
@@ -99,7 +100,7 @@ The Scrum master has the task of transferring knowledge and experience to the te
 
 image::2022-07-01-house-of-scrum.jpg[width=420,height=360,role=left]
 
-Scrum masters promote, explain, and advocate Scrum values, principles.
+Scrum masters promote, explain, and advocate Scrum values, principles cite:[great-scrum-master,mastering-professional-scrum].
 
 Scrum is founded on empiricism and lean thinking.
 Empiricism asserts that knowledge comes from experience and making decisions based on what is observed.
@@ -157,3 +158,6 @@ They might, for example, opt to have a technical team member also function as th
 - [[[what-does-scrum-master, 5]]] link:../../2017/what-does-a-scrum-master/[What Does A Scrum Master?]
 - [[[what-do-not-need-to-do-in-scrum, 6]]] link:../../2016/what-you-do-not-need-to-do-in-scrum/[What You Do Not Need to Do in Scrum]
 
+=== References
+
+bibliography::[]

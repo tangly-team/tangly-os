@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  - Copyright 2022 Marcel Baumann
+  -
+  - Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+  - the License at
+  -
+  -          http://www.apache.org/licenses/LICENSE-2.0
+  -
+  - Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+  - OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+  -->
+
 <!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="347px" height="178px" viewBox="0 0 347 178" enable-background="new 0 0 347 178" xml:space="preserve">
+<svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+     width="347px" height="178px" viewBox="0 0 347 178" enable-background="new 0 0 347 178" xml:space="preserve">
 <g>
 	<path fill="#25408F" d="M215.6,78.6c0,1.2,0,2.4,0,3.6v7.9l7.6-2.4l8.5-2.6l4.1-1.3v-4.3v-1.4c0-13.9-6.1-20.1-19.7-20.1h-31.5
 		c-13.9,0-19.6,6.1-19.6,21.2v5.7c0,15,5.7,21.2,19.6,21.2c10.4,0,20.9,0,31.3,0c0,2.6,0,5.2,0,7.8c-10.8,0-21.6,0-32.3,0

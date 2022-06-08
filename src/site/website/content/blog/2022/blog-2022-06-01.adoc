@@ -13,20 +13,21 @@ tags: ["architecture", "domain-driven-design", "java"]
 
 image::2022-06-01-head.jpg[width=420,height=360,role=left]
 
-https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Development] is the preferred software architecture approach for designing new digital products.
+https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Development] _DDD_ is the preferred software architecture approach for designing digital products.
 The method nicely matches with the operational concepts of microservices.
 
 Domain-driven design is a holistic approach to understanding, designing and building software applications.
 
 Seminal books cite:[domain-driven-design,domain-driven-design-distilled,implementing-domain-driven-design] describes the approach and key concepts defining the development method.
 
-Concrete recipes and examples of code structure are sparse.
+Concrete recipes and examples of code structure are still sparse.
+
 How should you structure your namespaces and modules?
 
-We propose a simple and adequate code structure for implementation in modern Java.
+We propose a simple and adequate code structure for implementation using modern Java constructs.
 The approach builds on the strengths of the Java packages and modules.
 
-The visibility rules of the language are used to enforce cohesion and minimize coupling.
+The language visibility rules enforce cohesion and minimize coupling.
 
 The described approach is ideal for small to medium software solutions.
 The source code size of a bounded domain is often less than 50'000 lines of code.
@@ -42,31 +43,33 @@ Domain-driven design _DDD_ has four layers in the architecture:
 
 [horizontal]
 Interface::
-This layer is in charge of the interaction with the user, whether software presents information to the user or receives information from the user.
+This layer is in charge of the interaction with the user, whether software presents information to the user or receives information from the user. +
 _I use vaadin to increase productivity.
 Vaadin allows us to use the single technology stack Java to develop all backend and frontend functionalities._
 Application::
 This is a thin layer between the interface and the domain, it could call domain services to serve the solution purposes.
 Domain::
-The heart of the software, this layer holds domain logic and business knowledge.
-_A major gaal is to avoid any taintinng of the core domain model from other layers._
-_Try avoiding extending domain entities with implementation specific root classes or to a lesser degree annotations._
+The heart of the software, this layer holds domain logic and business knowledge. +
+_A major gaal is to avoid any tainting of the core domain model from other layers._
+_Try to avoid extending domain entities with implementation specific root classes or to a lesser degree annotations._
 Infrastructure::
 A supporting layer for the other layers.
-This layer contains supporting libraries or external services like a database or UI supporting library.
+This layer contains supporting libraries or external services like a database or UI supporting library. +
 _I use libraries to minimize effort in support functions such as persistence, JSON transformation, archiving and reporting.
 The microstream library is a good example of this approach.
-The persistence functionality is less than fifty lines of codes.
+The persistence capability is less than fifty lines of codes.
 No changes in the domain model was necessary.
-We did not had to add a root persistent class or use annotations._
+We did not have to add a root persistent class or use annotations._
 
 === Package Structure
 
-A bounded domain shall be configured as a Java module cite:[{java-9-modularity].
+A bounded domain shall be configured as a Java module cite:[java-9-modularity].
 The exported services and entities are explicitly listed with the _exports_ directive.
 A huge advantage is the obligation to list all dependencies with the _requires_ directive.
 
-Modules dependencies and interfaces are validated by the Java compiler.
+image::2022-06-01-hexagonal-architecture.png[width=420,height=360,role=text-center]
+
+The Java compiler validates the module dependencies and interfaces.
 
 [horizontal]
 Services::
@@ -96,17 +99,25 @@ Care is taken to define resilient and legible domain abstractions.
 @startsalt
 {
 {T
-+ net.tangly.bounded-domain
-++ services
-+++ ports
-+++ handlers
-+++ realm
-+++ Logic
-++ domain
++ net.tangly.**bounded-domain**
+++ net.tangly.**bounded-domain**.domain
++++ //classes describing the abstractions of the domain//
+++ net.tangly.**bounded-domain**.ports
++++ //**bounded-domain**-Entities//
++++ //**bounded-domain**-Hdl//
+++ net.tangly.**bounded-domain**.services
++++ //**bounded-domain**-Domain//
++++ //**bounded-domain**-BusinessLogic//
++++ //**bounded-domain**-Handler//
++++ //**bounded-domain**-Port//
++++ //**bounded-domain**-Realm//
 }
 }
 @endsalt
 ....
+
+The above diagram shows the package structure for a bounded domain named *bounded-domain*.
+The names with the regular font are package names, the ones in italics are class names.
 
 The infrastructure supports classes are not part of this structure.
 These classes shall be defined in a separate Java module and imported with regular dependency declaration.
@@ -215,7 +226,7 @@ Great technologies, programming languages and tools are used when building softw
 That is good and right.
 
 But unfortunately, it is often lost that the decisive factor for the success of a project is not technology, but the solution.
-In order to be able to understand the subject matter or domain, we need a common language with the domain experts and users.
+In order to understand the subject matter or domain, we need a common language with the domain experts and users.
 If we do not map the technical model in the software and its architecture, it will not help our users in their work.
 
 As a computer scientist, it is easy to fall into the trap of focusing on technology instead of specialist knowledge
@@ -225,6 +236,7 @@ The principle of bounded contexts from DDD can help us here.
 [cite,Stefan Tilkov,2021]
 ____
 Domain-driven design (DDD) is a useful approach that provides excellent guidelines for modeling and building systems, but it is a means to an end, not an end in itself.
+
 While the concepts are valid, you lose a lot if you limit yourself to using them only: There actually is a life beyond DDD.
 ____
 

@@ -253,3 +253,27 @@ b.conum * {
 .conum:not([data-value]):empty {
     display: none;
 }
+
+.hdlist > table,
+.colist > table {
+    border: 0;
+    background: none;
+    > tbody > tr {
+        background: none;
+    }
+}
+
+td.hdlist1,
+td.hdlist2 {
+    vertical-align: top;
+    padding: 0.625em;
+}
+
+td.hdlist1 {
+    font-weight: bold;
+    padding-bottom: 1.25em;
+}
+
+td.hdlist2 {
+    word-wrap: anywhere;
+}

@@ -18,38 +18,19 @@ siteRootDir=/Users/Shared/Projects/
 siteName=tangly-os-site
 siteDir=$siteRootDir$siteName
 
-
 cd $siteRootDir
 rm -rf $siteName
 hugo new site $siteName
 cd $siteDir
 
-mkdir assets
-cd assets
-mkdir icons
-cd ..
-
 # initiate public folder with git to enable optional completion step and publishing in bitbucket
 git clone --no-checkout git@bitbucket.org:tangly-team/tangly-team.bitbucket.io.git public
 
-cd themes
-
 # download docsy theme and the submodules they depend on
+cd themes
 git clone https://github.com/google/docsy.git
 cd docsy
 git submodule update --init --recursive
-
-# create the layout for the ideas  and expertise folders so that the files are processed as a clone of docs folder
-cp -R ./layouts/docs ./layouts/ideas
-cp -R ./layouts/docs ./layouts/expertise
-
-# improve copyright in the footer and comments in blogs, support attachments as files
-cp $prjDir/src/site/website/docsy/assets/icons/* $siteDir/themes/docsy/assets/icons
-cp $prjDir/src/site/website/docsy/assets/scss/* $siteDir/themes/docsy/assets/scss
-
-cp $prjDir/src/site/website/docsy/layouts/blog/* $siteDir/themes/docsy/layouts/blog
-cp $prjDir/src/site/website/docsy/layouts/partials/* $siteDir/themes/docsy/layouts/partials
-cp $prjDir/src/site/website/docsy/layouts/shortcodes/* $siteDir/themes/docsy/layouts/shortcodes
 
 # install postcss (https://postcss.org/)) for final generation of site
 cd $siteDir

@@ -5,6 +5,9 @@ weight: 60
 menu:
   main:
     weight: 50
+
+cascade:
+- type: "docs"
 ---
 
 # Ambitious Missions need Disruptive Thinking

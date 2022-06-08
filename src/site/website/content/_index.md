@@ -12,18 +12,17 @@ linkTitle: "Components"
 		Download <i class="fab fa-github ml-2 "></i>
 	</a>
 	<p class="lead mt-5">Open Source Components for Technical and Business Applications</p>
-    	{{< blocks/link-down color="info" >}}
+    <div class="mx-auto mt-5">{{< blocks/link-down color="info" >}}</div>
 </div>
 {{< /blocks/cover >}}
 
-
-{{% blocks/section %}}
+{{% blocks/section color="Gray 200" %}}
 <div class="col">
 <h1 class="text-center">Open Source Components</h1>
 
-The documentation site for open source components is published under [tangly llc](https://www.tangly.net).
+The documentation site for open source components is published under [tangly OS components](./docs/).
 
-The current released components are written in _Modern Java_ and released on _Maven Central_ are
+The current released components are written in _Modern Java_ and released on _Maven Central_.
 
 * _[BDD](./docs/bdd/)_ Behavior Driven Design Test Library based on JUnit 5 (code first approach),
 * _[COMMONS](./docs/commons)_ Internal Common Components to write company internal applications,
@@ -32,22 +31,17 @@ The current released components are written in _Modern Java_ and released on _Ma
 * _[GLEAM](./docs/gleam/)_ declarative model definition library (map Java objects hierarchy to the TSV and JSON format),
 * _[UI](./docs/ui/)_ Vaadin based user interface.
 
-The current components for the services ERP are written in _Modern Java_ and released on _Maven Central_ are
+The current components for the services ERP are written in _Modern Java_ and released on _Maven Central_ .
 * _[Domains](./docs/domains)_ Enterprise Resources Planning components for service companies
+
 </div>
 {{% /blocks/section %}}
 
-{{% blocks/section %}}
+{{% blocks/section color="Gray 200" %}}
 <div class="col">
-<h1 class="text-center">Ideas and In-Depth Articles</h1>
+<h1 class="text-center">tangly llc Company Articles and Blog</h1>
 
-The _[ideas](./ideas/)_ area is a collection of articles about our journey through agile product development, digitalization, and software craftsmanship.
-</div>
-{{% /blocks/section %}}
-
-{{% blocks/section %}}
-<div class="col">
-<h1 class="text-center">tangly llc Company Blog</h1>
+The _[ideas](./ideas/)_ area is a collection of articles about our journey through agile product development, digitalization and software craftsmanship.
 
 Our company [blog](./blog/) hosts articles on the topics of
 

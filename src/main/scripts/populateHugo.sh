@@ -19,11 +19,6 @@ siteRootDir=/Users/Shared/Projects/
 siteName=tangly-os-site
 siteDir=$siteRootDir$siteName
 
-# using the docsy theme means that
-# docs is for pages in your site’s Documentation section
-# blog is for pages in your site’s Blog
-# community is for your site’s Community page
-
 # copy the documentation of project module into the folders used by Hugo and the theme
 function copy_module() {
   cp $prjDir/net.tangly.$1/readme.* $siteDir/content/docs/$1/
@@ -39,12 +34,11 @@ function copy_domain_module() {
 }
 
 # copy whole website to static site structure
-cp -R $websiteDir/static $siteDir/
+cp -R $websiteDir/assets $siteDir/
 cp -R $websiteDir/content $siteDir/
+cp -R $websiteDir/layouts $siteDir/
+cp -R $websiteDir/static $siteDir/
 cp -R $websiteDir/config.toml $siteDir/
-
-# copy site icon to requested location
-cp $websiteDir/logo.svg $siteDir/assets/icons/
 
 # you need to run gradle build on the whole project to generate the javadoc for modules. The directories containing javadoc seems to need unique names due to
 # hugo strange behavior.
