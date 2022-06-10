@@ -174,7 +174,7 @@ Current available certificates of advanced study offering are for example:
 * Ost FH https://www.ost.ch/de/weiterbildung/weiterbildungsangebot/informatik/mas-software-engineering[MAS Software Engineering]
 
 [bibliography]
-=== Literature
+=== Links
 
 - [[[scrum-developer-learning-objectives, 1]]]
 https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Learning%20Objectives/E_CSD_LO_2021.pdf[Scrum Alliance

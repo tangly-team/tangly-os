@@ -163,7 +163,7 @@ The agile architecture track contains the following blogs
 We also published our https://www.tangly.net/insights/continuous-learning/agile-architecture-course[agile architecture course] (3 ECTS) used for teaching computer science students at bachelor level at Swiss technical universities.
 
 [bibliography]
-=== Literature
+=== Links
 
 * https://www.innoq.com/en/blog/is-domain-driven-design-overrated/[Is Domain Driven Design Overrated?].
 Stefan Tilkov.2021.

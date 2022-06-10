@@ -2,7 +2,7 @@
 title: "Modular Monoliths are the new Graal"
 linkTitle: "Modular Monoliths"
 date: 2022-06-10
-tags: ["architecture", "java"]
+tags: ["architecture", "domain-driven-design", "java"]
 ---
 
 == Modular Monoliths are the new Graal
@@ -96,7 +96,7 @@ However, modular monoliths have significant shortcomings when compared to micros
 [bibliography]
 === Links
 
-- [[[software-structure-with-ddd, 1]]] link:../../2022/software-structure-with-dd[Software Structure with DDD]
+- [[[software-structure-with-ddd, 1]]] link:../../2022/software-structure-with-ddd/[Software Structure with DDD]
 Marcel Baumann. 2022.
 
 === References

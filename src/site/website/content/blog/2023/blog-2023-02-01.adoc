@@ -49,7 +49,7 @@ Please elaborate.
 Why is she a software engineer?::
 Please tell us your story.
 
-The areas are similar to the ones I check when receiving a CV <<evaluate-tecnical-cvs>>.
+The areas are similar to the ones I check when receiving a CV <<evaluate-technical-cvs>>.
 
 === Write-down Your Findings and Recommendations
 
@@ -73,7 +73,7 @@ The areas are similar to the ones I check when receiving a CV <<evaluate-tecnica
 [bibliography]
 === Links
 
-[[[evaluate-tecnical-cvs, 1]]] link:../../2022/evaluate-technical-cvs/[Evaluate Technical CVs]
+[[[evaluate-technical-cvs, 1]]] link:../../2022/evaluate-technical-cvs/[Evaluate Technical CVs]
 
 === References
 

@@ -161,4 +161,4 @@ Waisfisz Bob. 2015. Hofstede Culture Center Strategy, ITIM International
 
 === References
 
-bibliography[]
+bibliography::[]

@@ -6,38 +6,37 @@ The _docsy_ theme was customized to support specific needs of the tangly OS docu
 
 Each section has a configuration in the front matter in the index file. The type of the section is specified to allow Hugo to retrieve the corresponding templates.
 
-== Header
+Use https://linkchecker.github.io/linkchecker/[Link Checker] to validate all links on the web site.
 
-The headr template was adapted to support AsciiMath typesetting in the browser.
+== Header and Footer
 
-* docsy/layouts/partials/header.html
-
-== Footer
+The header template was adapted to support AsciiMath typesetting in the browser.
 
 The footer template was adapted to support the specific needs of the tangly OS documentation static website.
 The open source copyright of our site is not well displayed in the standard footer template
 
-* docsy/layouts/partials/footer.html
+* layouts/partials/header.html
+* layouts/partials/footer.html
 
 == Attachments
 
 For the attachment feature we added:
 
-* docsy/assets/scss/shortcodes.scss
-* docsy/assets/scss/main.scss _added import of the shortcodes.scss styling
-
-* docsy/layouts/shortcodes/attachments.html
+* assets/scss/shortcodes.scss
+* assets/scss/main.scss _added import of the shortcodes.scss styling
+* layouts/shortcodes/attachments.html
 
 == Comments
 
 For the comment feature we added:
 
-* docsy/layouts/blog/content.html _added utterances code for comments_
-* docsy/layouts/partials/comments-utterances.html _partial for comment template_
+* layouts/blog/content.html _added utterances code for comments_
+* layouts/partials/comments-utterances.html _partial for comment template_
 
 == Asciidoc Stylesheet
 
 Exploration was started to improve the styling of https://asciidoc.org[asciidoc] documents:
 
-* docsy/assets/scss/_asciidoctor.scss
-* docsy/assets/scss/main.scss _added import of the asccidoctor.scss styling
+* assets/scss/_asciidoctor.scss _used to better style asciidoc documents_
+* assets/scss/_shortcodes_.scss _used by the attachment extension_
+* assets/scss/_styles_projects.scss _regular extension hook for Hugo Docsy template_

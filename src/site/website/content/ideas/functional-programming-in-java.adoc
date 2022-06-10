@@ -147,9 +147,6 @@ Of course, in the case of Optional, type boundaries allow us to use more complex
 
 === Pattern Matching and Deconstruction
 
-[bibliography]
 == References
 
-- [[[effective-java, 1]]] Effective Java _Third Edition_.
-Joshua Bloch.
-Addison-Wesley. 2018
+bibliography::[]

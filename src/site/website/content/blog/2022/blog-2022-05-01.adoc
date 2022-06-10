@@ -13,7 +13,7 @@ tags: ["java", "architecture", "series-students"]
 
 image::2022-05-01-head.png[width=420,height=360,role=left]
 
-JSR-385 could have saved Mars Climate Orbiter<<[mars-climate-orbiter>> in year 1999.
+JSR-385 could have saved Mars Climate Orbiter<<mars-climate-orbiter>> in year 1999.
 
 Accidents in computer applications happen again and again due to calculation errors.
 

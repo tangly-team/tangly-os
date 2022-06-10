@@ -164,7 +164,7 @@ Current available certificates of advanced study offering are for example:
 * IKF https://www.ikf.ch/de/kurse/cas-agiles-leadership-der-digitalen-transformation[CAS Agile Leadership of Digital Transformation]
 
 [bibliography]
-=== Literature
+=== Links
 
 - [[[scrum-master-learning-objectives, 1]]]
 https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Learning%20Objectives/E_CSM_LO_5-20-21.pdf[Scrum Alliance

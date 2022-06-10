@@ -96,7 +96,7 @@ At the end of the test, reconsider the answered questions and either find or gue
 With some luck, you get a few more points.
 
 [bibliography]
-=== References
+=== Links
 
 - [[[ocp-study-guide-java-17, 1]]] https://www.amazon.com//dp/B09WJP11JL/[OCP Oracle Certified Professional Java SE 17 Developer Study Guide: Exam 1Z0-829]
 Scott Selikoff, Jeanne Boyarsky.

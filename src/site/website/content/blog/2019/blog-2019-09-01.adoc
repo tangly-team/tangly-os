@@ -17,8 +17,7 @@ Agile approaches encourage common ownership of artifacts during product developm
 Historically, the https://en.wikipedia.org/wiki/Commons[commons] is the term used for shared resources.
 Can we apply the commons learnings to agile and Scrum approaches?
 
-Interestingly, economists were kind to state common ownership is doomed to fail through the
-https://en.wikipedia.org/wiki/Tragedy_of_the_commons[tragedy of commons] theory published end of the sixties.
+Interestingly, economists were kind to state common ownership is doomed to fail through the theory published end of the sixties <<tradegy-commons>>.
 
 Thirty years later, https://en.wikipedia.org/wiki/Elinor_Ostrom[Elinor Ostrom] showed that commons can indeed work well if you follow a small set of rules.
 She found century-old examples scattered around the world.
@@ -153,5 +152,5 @@ He inspired us to look at agile approaches through the _commons'_ lens.
 [bibliography]
 === Links
 
-- [[[tragedy-commons, 1]]] https://gosei.fi/blog/tragedy-of-commons-1/[Tragedy of Commons or Self-Management].
+- [[[tradegy-commons, 1]]] https://gosei.fi/blog/tragedy-of-commons-1/[Tragedy of Commons or Self-Management].
 Ran Nyman. 2020

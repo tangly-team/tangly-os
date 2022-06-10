@@ -31,7 +31,7 @@ The associated theory was published in seminal books more than a *decade* ago.
 Just start applying the principles.
 You can later still improve your approach based on your learnings.
 
-A nice overview was published in the _Professional Product Owner_ <<professionalproductowner>> written by the stewards of the product owner certification path of https://www.scrum.org[Scrum.org].
+A nice overview was published in the _Professional Product Owner_ cite:[professional-product-owner] written by the stewards of the product owner certification path of https://www.scrum.org[Scrum.org].
 
 If you prefer videos, search for Gojko Adzic, Roman Pichler, Mike Cohn or Christian Hassa.
 These experts are often speakers at conferences.
@@ -58,7 +58,7 @@ You have not only the key functionality you want to deliver, but also a tentativ
 
 Vision, roadmap, and release plan are needed artefacts for any product development using Scrum as a development approach.
 The mapping identifies the stories to realize in a release to satisfy the customer's needs.
-A nice discussion of these concepts can be found in _Strategize_<<strategize>>.
+A nice discussion of these concepts can be found in _Strategize_ cite:[strategize].
 
 The nice think is that impact mapping and story mapping are quite compatible with design thinking.
 We can nicely connect the different directions used in agile product development and marketing departments.
@@ -93,18 +93,22 @@ You can extend your automatic validation to non-functional requirements with the
 You could use following reference books to bootstrap and strengthen your agile specification process:
 
 Specification by example::
-<<specificationbyexample>> was published in 2009, twelve years ago,
+was published in 2009, twelve years ago cite:[bridging-communication-gap].
 Impact Mapping::
-<<impactmapping>> was published in 2012, ten years ago,
+was published in 2012, ten years ago cite:[impact-mapping],
 User Story Mapping::
-<<userstorymapping>> was published in 2014 eight years ago,
+ was published in 2014 eight years ago cite:[user-story-mapping].
+Mike Cohn did also write about user stories cite:[user-stories-applied].
 Building Evolutionary Architectures::
-Fitness functions are described in this seminal book <<buildingevolutionaryarchtitectures>>.
+Fitness functions are described in this seminal book cite:[building-evolutionary-architectures].
 It is also a recommended reference of my _SWAT Software Architecture and Techniques_ bachelor lecture taught at technical universities.
 The book was published in 2017, five years ago.
 
 I currently teach the _SWAT_ course at the department of computer science of the technical university of Luzerne.
 footnote:[Lecture videos in German for Spring Semester 2021 are available under https://tube.switch.ch/channels/iHdetJjwR4[Switch Tube]]
+
+Agile requirements engineers can found valuable information in seminal books
+cite:[value-proposition-design,agile-product-management,strategize,how-to-lead-product-management,building-evolutionary-architectures].
 
 === Evolution
 
@@ -121,33 +125,6 @@ The _SWAT_ course naturally also discusses DDD and event storming.
 This blog also contains an architecture series digging into agile architecture approaches.
 The first article describes link:../../2019/agile-architecture-principles[Agile Architecture Principles].
 
-[bibliography]
-=== Literature
+=== References
 
-- [[[userstorymapping, 1]]] https://www.amazon.com/dp/1491904909[User Story Mapping: Discovering the Whole Story, Build the Right Product].
-Jeff Patton.
-O'Reilly. 2014
-- [[[impactmapping, 2]]] https://www.amazon.com/dp/0955683645[Impact Mapping: Making a Big Impact with Software Products and Projects].
-Gojko Adzik. 2012
-- [[[userstoriesapplied, 3]]] https://www.amazon.com/dp/0321205685[User Stories Applied: For Agile Software Development].
-Mike Cohn.
-Addison-Wesley. 2009
-- [[[professionalproductowner, 4]]] https://www.amazon.com//dp/0134686470[The Professional Product Owner].
-Don McGreal and Ralph Jocham.
-Addison-Wesley. 2018
-- [[[valueproposition, 5]]] https://www.amazon.com/dp/1118968050[Value Proposition Design].
-Alexander Osterwalder.
-John Wiley. 2014
-- [[[agileproductmanagement, 6]]] https://www.amazon.com/dp/0321605780[Agile Product Management with Scrum: Creating Products that Customers Love].
-Roman Pichler.
-Addison-Wesley. 2010
-- [[[strategize, 6]]] https://www.amazon.com/dp/0993499201[Strategize: Product Strategy and Product Roadmap Practices for the Digital Age].
-Roman Pichler. 2016
-- [[[howtoleadinproductmanagement, 7]]] https://www.amazon.com/dp/article/B085L8Z4YS[How To Lead in Product Management: Practices to Align Stakeholders].
-Guide Development Teams and Create Value Together.
-Roman Pichler. 2020
-- [[[buildingevolutionaryarchtitectures, 8]]] https://www.amazon.com/dp/1491986360[Building Evolutionary Architectures: Support Constance Change].
-Neal Ford, Rebecca Parsons & Patrick Kua.
-O'Reilley. 2017
-- [[[specificationbyexample, 9]]] https://www.amazon.com/dp/B008YZ993W/[Bridging the Communication Gap: Specification by Example and Agile Acceptance Testing].
-Gojko Adzic. 2009
+bibliography::[]

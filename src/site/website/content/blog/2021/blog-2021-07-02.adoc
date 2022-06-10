@@ -175,7 +175,7 @@ Apply them on your software product development using agile approaches like {ref
 Study the rules of {ref-lean} to optimize the value of your product.
 
 [bibliography]
-=== Literature
+=== Links
 
 - [[[agile-architecture, 1]]] Agile Architecture in the Digital Age.
 Open Group. 2018

@@ -67,7 +67,7 @@ TOGAG is still the reference for software enterprise architecture activities.
 On the bright side, the steward https://www.opengroup.org/togaf[Open Group] of the TOGAF certification has realized that agile is the way to develop digital products.
 
 [bibliography]
-=== References
+=== Links
 
 - [[[scrum-master-certification, 1]]] link:../../2021/scrum-master-formation/[Scrum Master Certification]
 - [[[product-owner-certification, 2]]] link: ../../2021/product-owner-formation/[Product Owner Certification]]

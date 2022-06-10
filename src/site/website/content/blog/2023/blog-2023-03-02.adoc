@@ -249,16 +249,16 @@ When you want to test the changes of your development branches with the producti
 When your latest changes are ready for production, you can merge the staging branch onto your production branch to deploy in production your newest features.
 ====
 
-The above process is documented for odoo version 15 under https://www.odoo.com/documentation/15.0/administration/odoo_sh/getting_started/branches.html[branches] section.
+The above process is documented for Odoo version 15 under https://www.odoo.com/documentation/15.0/administration/odoo_sh/getting_started/branches.html[branches] section.
 
-==== Unprofessional odoo Approach
+==== Unprofessional Odoo Approach
 
 Beware that the odoo.sh environment does not hinder amateur developers to do foolish things with git.
 
 The quote below is from the official website of https://www.odoo.sh/[Odoo.sh].
 The statement violates all the rules of clean code, DevOps and professional software development.
 
-I wishfully hope odoo organization will mature and remove these misleading statements.
+I wishfully hope Odoo organization will mature and remove these misleading statements.
 
 [quote,odoo.sh,2022]
 ____
@@ -266,7 +266,7 @@ If you are bold enough, you can merge your development branches into your produc
 It just means you skip the validation of your changes with the production data through a staging branch.
 ____
 
-==== Professional odoo Approach
+==== Professional Odoo Approach
 
 On the bright side, odoo.sh supports and advocates the following clean code compatible workflow:
 
@@ -305,7 +305,7 @@ footnote:[Manual editions through copy and paste are a violation of sound engine
 You lose reproducibility, versioning of a single source of truth, and auditability.
 Assume that you violate development guidelines and corporate governance.].
 
-As stated by odoo, you shall write the configuration changes in XML data files overriding the default configuration or views in your branches.
+As stated by Odoo, you shall write the configuration changes in XML data files overriding the default configuration or views in your branches.
 This is the best practice for a better scalability of your developments as you will use the Git versioning features for all your configuration changes.
 
 === Lessons Learnt

@@ -58,7 +58,8 @@ The certification path has three levels:
 Certified Scrum Product Owner::
 Introduction course for those who are closest to the _business side_ of the project. +
 _It is usually a two days training.
-The https://www.scrum.org[Scrum.org] allows taking the certification examination without attending a course._
+The https://www.scrum.org[Scrum.org] allows taking the certification examination without attending a course.
+They also published a reference book cite:[professional-product-owner]._
 Certified Advanced Scrum Product Owner::
 Advanced course for Product Owners who already have one year of experience on a Scrum team. +
 _It is at least two days training.
@@ -151,7 +152,7 @@ https://en.wikipedia.org/wiki/Usability_engineering[Usability Engineering].
 See for example https://uxschweiz.ch/weiterbildung/mashcid/[Master Human Computer Interaction Design].
 
 [bibliography]
-=== Literature
+=== LInks
 
 - [[[product-owner-learning-objectives, 1]]]
 https://www.scrumalliance\.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Learning%20Objectives/E_CSPO_LO_5-20-21.pdf[Scrum Alliance Certified Scrum Product Owner Learning Objectives].
@@ -163,10 +164,6 @@ Scrum Alliance. 2017
 Marcel Baumann. 2020
 - [[[agile-software-architecture, 4]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream].
 Marcel Baumann. 2021
-- [[[product-owner, 5]]]
-https://www.amazon.com//dp/0134686470[The Professional Product Owner: Leveraging Scrum as Competitive Advantage].
-Ralph Jocham & Don McGreal.
-Addison-Wesley. 2018
 - [[[detecting-agile-bullshit, 6]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
 Marcel Baumann. 2019
 - [[[scrum-master-formation, 7]]] link:../../2021/scrum-master-formation[Scrum Master Formation].
@@ -177,3 +174,7 @@ Marcel Baumann. 2021
 Marcel Baumann. 2021
 - [[[scrum-guide, 10]]] https://scrumguides.org/scrum-guide.html[Scrum Guide]
 Jeff Sutherland, Ken Schwaber. 2020
+
+=== References
+
+bibliography::[]

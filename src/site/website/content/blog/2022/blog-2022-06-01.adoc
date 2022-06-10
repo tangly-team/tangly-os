@@ -128,7 +128,7 @@ The user interface for a bounded domain is stored in a separate package and ofte
 The bounded domain implementation shall not constrain the technologies used to provide a user interface.
 Different approaches for user interface realization are available and no clear winner can currently be identified.
 
-I use mainly https://www.vaadin.com[Vaadin] to realize browser or mobile first internal applications.
+I mainly use https://www.vaadin.com[Vaadin] to realize browser or mobile first internal applications.
 
 === Java Considerations
 
@@ -239,6 +239,9 @@ Domain-driven design (DDD) is a useful approach that provides excellent guidelin
 
 While the concepts are valid, you lose a lot if you limit yourself to using them only: There actually is a life beyond DDD.
 ____
+
+The DDD approach emphasizes systematic refactoring and code improvements cite:[refactoring,clean-code,clean-coder,clean-architecture].
+It recommends test driven approach for bounded domain development cite:[agile-testing,more-agile-testing,bridging-communication-gap].
 
 === References
 

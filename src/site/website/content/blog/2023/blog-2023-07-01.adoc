@@ -183,7 +183,7 @@ footnote:[In Switzerland multiple organizations had to shut down operations in 2
 Beware non-compliance can be extremely costly and endanger the survival of your company.].
 
 [bibliography]
-=== Literature
+=== Links
 
 - https://pubs.opengroup.org/architecture/togaf9-doc/arch/chap44.html[TOGAF 9 Architecture Governance].
 https://www.opengroup.org/[THe Open Group]. 2022.

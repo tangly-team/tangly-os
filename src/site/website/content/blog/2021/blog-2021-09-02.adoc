@@ -275,7 +275,7 @@ We are trying to formulate an approach to improve achieved goals.
 We shall either build these concepts in the project management lectures or in the semester theses.
 
 [bibliography]
-=== Literature
+=== Links
 
 - [[[agile-architecture, 1]]] Agile Architecture in the Digital Age.
 Open Group. 2018
