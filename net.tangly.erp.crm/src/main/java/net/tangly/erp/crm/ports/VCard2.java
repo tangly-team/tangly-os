@@ -10,13 +10,7 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.erpr.crm.ports;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
-import java.util.Base64;
-import java.util.Objects;
-import java.util.Optional;
+package net.tangly.erp.crm.ports;
 
 import net.fortuna.ical4j.vcard.Group;
 import net.fortuna.ical4j.vcard.Parameter;
@@ -29,6 +23,12 @@ import net.tangly.core.Strings;
 import net.tangly.core.crm.GenderCode;
 import net.tangly.core.crm.Photo;
 import org.jetbrains.annotations.NotNull;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.Base64;
+import java.util.Objects;
+import java.util.Optional;
 
 public class VCard2 {
     private final VCard card;

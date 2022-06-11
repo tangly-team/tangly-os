@@ -77,4 +77,4 @@ The areas are similar to the ones I check when receiving a CV <<evaluate-technic
 
 === References
 
-bibliography[]
+bibliography::[]

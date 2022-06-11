@@ -132,4 +132,4 @@ Marcel Baumann. 2020
 
 === References
 
-bibliography[]
+bibliography::[]

@@ -10,17 +10,7 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.erpr.crm.ports;
-
-import java.io.IOException;
-import java.io.Reader;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.stream.Stream;
-import javax.inject.Inject;
+package net.tangly.erp.crm.ports;
 
 import net.fortuna.ical4j.data.ParserException;
 import net.fortuna.ical4j.vcard.GroupRegistry;
@@ -30,13 +20,23 @@ import net.fortuna.ical4j.vcard.VCardBuilder;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.Tag;
 import net.tangly.core.crm.CrmTags;
-import net.tangly.core.crm.VcardType;
 import net.tangly.core.crm.NaturalEntity;
 import net.tangly.core.crm.Photo;
+import net.tangly.core.crm.VcardType;
 import net.tangly.erp.crm.services.CrmRealm;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Inject;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 /**
  * Handler to import and export VCard representations of natural entities.

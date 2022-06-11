@@ -28,13 +28,13 @@ I want to understand the various strengths of different programming languages.
 I still want to stay in the Java ecosystem to better apply my learnings.
 
 Groovy and Clojure are available on the Java virtual machine and have good interoperability with it.
-One major interest is the functional programming approach and how it impacts design and development activities.
+One major interest is the functional programming approach cite:[functional-thinking] and how it impacts design and development activities.
 
 === Clojure
 
 image::2022-04-01-clojure.png[width=240,height=240,role=text-center]
 
-Clojure is a functional programming language and a Lisp(1) dialect.
+Clojure is a functional programming language and a Lisp(1) dialect cite:[programming-clojure].
 The language compiles to and runs on the JVM and interfaces nicely with Java and API libraries.
 
 [quote,Alan J. Perlis]
@@ -180,7 +180,7 @@ _I would postulate that if your type system grows in complexity, it is type to r
 image::2022-04-01-java.png[width=240,height=240,role=text-center]
 
 Java is the work horse for implementing enterprise and departmental software solutions.
-The language and libraries are regularly improved and a new version is currently delivered every six months.
+The language and libraries are regularly improved and a new version is currently delivered every six months cite:[ocp-java-17].
 Early adaptor distributions are provided to smooth the migration of your code.
 
 Too many Java developers did not realize that their programming language is evolving.
@@ -389,3 +389,7 @@ Stop creating and throwing checked exceptions.
 Beware that stream and lambda expressions cannot handle checked exceptions.
 * Embrace immutability and the _record_ construct.
 * Understand deconstruction patterns and how you could apply them in our code.
+
+=== References
+
+bibliography::[]

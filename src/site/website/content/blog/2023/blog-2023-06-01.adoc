@@ -122,4 +122,4 @@ Gitlab. 2022
 
 === References
 
-bibliography[]
+bibliography::[]

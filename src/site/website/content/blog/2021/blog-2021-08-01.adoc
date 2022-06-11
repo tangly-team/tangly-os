@@ -166,12 +166,11 @@ Change takes time, a lot of time.
 [bibliography]
 === Links
 
-Marcel Baumann. 2019
-- [[[bill-of-rights, 4]]] link:../../2020/calibrate-your-agile-approach-bill-of-rights[Calibrate Your Agile Approach: Bill of Rights].
+- [[[bill-of-rights, 1]]] link:../../2020/calibrate-your-agile-approach-bill-of-rights[Calibrate Your Agile Approach: Bill of Rights].
 Marcel Baumann. 2020
-- [[[agile-fluency-model, 5]]] link:../../2021/reflections-on-agile-fluency-model/[Agile Fluency Model].
+- [[[agile-fluency-model, 2]]] link:../../2021/reflections-on-agile-fluency-model/[Agile Fluency Model].
 Marcel Baumann. 2020
-- [[[pragmatic-craftsmanship, 6]]] link:../../2018/pragmatic-craftsmanship-professional-software-developer[Pragmatic Craftsmanship - Professional Software
+- [[[pragmatic-craftsmanship, 3]]] link:../../2018/pragmatic-craftsmanship-professional-software-developer[Pragmatic Craftsmanship - Professional Software
 Developer].
 Marcel Baumann. 2018
 

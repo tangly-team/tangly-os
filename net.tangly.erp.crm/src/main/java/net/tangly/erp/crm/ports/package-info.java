@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -18,4 +18,4 @@
  * methods to import all semantically related entities of a domain.</p>
  * <p>The business logic classes publish domain methods spanning multiple domain entities.</p>
  */
-package net.tangly.erpr.crm.ports;
+package net.tangly.erp.crm.ports;

@@ -65,4 +65,4 @@ Deliver on time and in budget the best software the customer wants to have.
 
 === References
 
-bibliography[]
+bibliography::[]

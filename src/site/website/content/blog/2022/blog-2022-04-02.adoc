@@ -97,7 +97,7 @@ I strongly advocate discarding all hybrid methods.
 No empirical evidence is available that they work is available.
 Anecdotal evidence shows that they regularly fail.
 
-We shall use the Scrum approach as a preferred approach for developing software application.
+We shall use the Scrum approach as a preferred approach for developing software application cite:[professional-scrum-master-guide,professional-product-owner,mastering-professional-scrum].
 Scrum and various Scrum scaling frameworks provide approaches for teams up to eighty developers working on the same product.
 I strongly state that 99.9% of all software initiatives have smaller teams.
 
@@ -153,10 +153,6 @@ The unified process was defined in the nineties and is now obsolete.
 [bibliography]
 === Links
 
-- [[[professional-scrum, 1]]] https://www.amazon.com/dp/B07XTLNPTC[Mastering Professional Scrum: A Practitioner's Guide To Overcome Challenges and Maximize the Benefits of
-Agility].
-Stephanie Ockerman and Simon Reindl.
-Addison-Wesley. 2020
 - [[[detecting-agile-bullshit, 2]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
 Marcel Baumann. 2019
 - [[[scrum-master-formation, 3]]] link:../../2021/scrum-master-formation[Scrum Master Formation].
@@ -175,3 +171,7 @@ Marcel Baumann. 2021
 Marcel Baumann. 2020
 - [[[agile-software-architecture, 10]]] link:../..//2021/what-i-learnt-teaching-agile-software-architecture/[What I learnt Teaching Agile Software Architecture].
 Marcel Baumann. 2021
+
+=== References
+
+bibliography::[]

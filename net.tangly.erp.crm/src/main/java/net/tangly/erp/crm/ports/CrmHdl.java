@@ -10,7 +10,7 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.erpr.crm.ports;
+package net.tangly.erp.crm.ports;
 
 import net.tangly.core.domain.Handler;
 import net.tangly.erp.crm.services.CrmHandler;

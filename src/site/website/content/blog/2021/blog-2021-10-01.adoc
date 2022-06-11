@@ -81,7 +81,7 @@ Agile digital product architects are aware of:
 
 === References
 
-bibliography[]
+bibliography::[]
 
 * bibitem:[building-evolutionary-architectures]
 * bibitem:[refactoring]

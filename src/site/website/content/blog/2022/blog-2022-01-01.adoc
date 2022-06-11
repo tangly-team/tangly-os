@@ -156,4 +156,4 @@ Marcel Baumann. 2018.
 
 === References
 
-bibliography[]
+bibliography::[]

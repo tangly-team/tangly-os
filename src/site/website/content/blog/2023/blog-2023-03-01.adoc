@@ -54,8 +54,8 @@ The Agile counselor works with the leadership team, which requires business mast
 A team coach preferably supports the team by offering technical support and coach on the process and Agile mindset.
 Being part of the coaches’ team, he/she will actively participate in the transformation as well.
 
-Links
-=== References
+[bibliography]
+=== Links
 
 * [[[adriaans, 2]]] Adriaans, C. Agile Marcom Interview: Catharina Adriaans.
 Agile Consortium. 2020
@@ -64,6 +64,6 @@ Agile Consortium. 2020
 https://www.accenture.com/us-en/insights/technology/business-agility-report-2020[The Business Agility Report, 3rd Edition].
 Accenture. 2020
 
-=== Bibliography
+=== Referendes
 
-bibliography[]
+bibliography::[]

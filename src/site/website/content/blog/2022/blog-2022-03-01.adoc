@@ -38,6 +38,8 @@ What are signs your teams are struggling with agile and lean adoption?
 
 === Common Symptoms
 
+image::2022-03-01-resistence.png[width=420,height=360,role=text-center]
+
 Below are some common symptoms of teams who are _pretending_ to be agile:
 
 * Teams are not delivering a _done_, a usable increment at the end of each sprint.

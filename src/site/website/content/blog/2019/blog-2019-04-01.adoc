@@ -110,4 +110,4 @@ Two books published in the pragmatic programmer's series are a wonderful deep an
 
 === References
 
-bibliography[]
+bibliography::[]

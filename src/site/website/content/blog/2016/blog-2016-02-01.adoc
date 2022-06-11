@@ -102,4 +102,4 @@ Reading experience report or digging in the findings of Kotter, you realize succ
 
 === References
 
-bibliography[]
+bibliography::[]
