@@ -1,11 +1,11 @@
 ---
-title: "Would You Enjoy Being a Scrum master?"
+title: "Would You Enjoy Being a Scrum Master?"
 linkTitle: "Scrum master Capabilities"
 date: 2022-07-01
 tags: ["agile", "scrum"]
 ---
 
-== Would You Enjoy Being a Scrum master?
+== Would You Enjoy Being a Scrum Master?
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
@@ -14,60 +14,74 @@ tags: ["agile", "scrum"]
 image::2022-07-01-head.jpg[width=420,height=360,role=left]
 
 {ref-scrum} is the most popular approach to create awesome new products.
+
 Perhaps you are thinking of pursuing a career as a Scrum master.
-Or perhaps you’ve recently been moved into that role and are wondering if being a Scrum master is right for you.
+
+Perhaps you have recently been moved into that role and are wondering if being a Scrum master is right for you.
 
 There are plenty of good reasons to become a Scrum master.
 The job is in demand and pays well.
-The most important the reason to become a Scrum master is that it is the right job for your skills, personality, and interests.
+
+The most important reason to become a Scrum master is that it is the right job for your skills, personality and interests.
 
 === What is a Scrum Master?
 
 Here is a way of considering the role.
+
 The scrum master is the product owner for organisational change.
+
 When you introduce Scrum into an organisation, you are focused on the creation of two distinct things: new products and an improved organisation.
-New products have owners.
-The organisation itself also needs an owner, someone to manage the vast backlog of requests.
+New products have product owners.
+
+The organization needs an owner, someone to manage the vast backlog of requests.
 Somebody should prioritise, and collaborate with the cross-functional team of makers to deliver incremental value to its stakeholders.
 The stakeholders are all employees and shareholders.
 
-If {ref-scrum} does not ripple through an organisation this way, it is set up for failure, or worse a facade of change, a kind way of saying lies and deceit.
+If {ref-scrum} does not ripple through an organisation this way, it is set up for failure.
+Or worse a facade of change, a kind way of saying lies and deceit.
 
 === Eight Questions
 
+Find out if the role suits your interests:
+
 Do You Like Helping Others?::
 Scrum masters need to enjoy helping people.
-This cannot be something a Scrum master does grudgingly.
+This cannot be something a Scrum master does grudgingly cite:[fearless-change,more-fearless-change,skilled-facilitator].
 Do You Need to Be in the Spotlight?::
-A great Scrum master fades into the background while the team receives the praise.
+A great Scrum master fades into the background while the team receives the praise cite:[great-scrum-master,people-scrum].
 Are You a Good Listener?::
 We all know that a Scrum master helps remove impediments to a team’s progress and productivity.
 That often means listening, asking clarifying questions, and then solving the problem.
-But other times it means just listening: letting a team member vent about something.
+But other times it means just listening: letting a team member vent about something cite:[skilled-facilitator,skilled-facilitator-resource,the-art-and-science-of-facilitation].
 Are You Technical Enough?::
-You need to know enough to speak their language fluently and to empathize with the challenges of their work.
+You need to know enough to speak their language fluently and to empathize with the challenges of their work
+cite:[modern-software-engineering,software-craftsman].
 Do You Have a Formal Scrum master Training?::
 You are serious about working as a professional Scrum master the next years.
-You should have formal training and read books describing the various Scrum master stances.
-A reasonable formal training is a professional level certification.
+You should have formal training and read books describing the various Scrum master stances. +
+A reasonable formal training is a professional level certification cite:[professional-scrum-master-guide,mastering-professional-scrum].
 This certification is your third one.
-First you did the basic training.
+First you did the basic training and became a Scrum master.
 Second you qualified as an advanced Scrum master.
-Now you are ready to become a certified professional Scrum master.
+Now you are ready to become a certified professional Scrum master. +
 Consider training in facilitation and coaching.
 Learn the {ref-xp} methods to achieve technical fluency and understand {ref-craftsmanship}.
 Can You Influence Without Authority?::
 Influencing without authority is an important skill for all good Scrum masters.
-If you enjoy leading this way, count that as a point in favor of a career as a Scrum master.
+If you enjoy leading this way, count that as a point in favor of a career as a Scrum master cite:[management-30].
 Are You Comfortable with Uncertainty?::
-If you’re the type who secretly wants to eliminate all uncertainty, you will either be frustrated as a Scrum master or will drive your team crazy in pursuit of an impossible goal.
+If you’re the type who secretly wants to eliminate all uncertainty, you will either be frustrated as a Scrum master or will drive your team crazy in pursuit of an impossible goal
+cite:[future-of-management,reinventing-organizations].
 Can You Handle Conflict Well?::
 Agile teams are used on an organization’s hardest challenges—the projects that will not succeed any other way.
-Add that to the strong personalities found on many development teams and there will be conflict.
+Add that to the strong personalities found on many development teams and there will be conflict
+cite:[how-to-lead-product-management,beyond-performance-management,leader-dilemna-empowered-organizations,leading-quietly,smart-leaders-smarter-teams].
 
 === Eight Stances
 
-image::2022-07-01-scrum-master-stances.png[width=420,height=360,role=left]
+Are you ready to work as:
+
+image::2022-07-01-scrum-master-stances.png[width=420,height=360,role=text-center]
 
 Impediment Remover::
 One of the fundamental responsibilities of the Scrum master is the resolution of impediments.
@@ -98,13 +112,14 @@ The Scrum master has the task of transferring knowledge and experience to the te
 
 === Things Scrum Masters Advocates
 
-image::2022-07-01-house-of-scrum.jpg[width=420,height=360,role=left]
-
 Scrum masters promote, explain, and advocate Scrum values, principles cite:[great-scrum-master,mastering-professional-scrum].
 
 Scrum is founded on empiricism and lean thinking.
 Empiricism asserts that knowledge comes from experience and making decisions based on what is observed.
 Lean thinking reduces waste and focuses on the essentials.
+
+image::2022-07-01-house-of-scrum.jpg[width=420,height=360,role=text-center]
+
 The key elements are
 
 * Transparency
@@ -152,8 +167,8 @@ They might, for example, opt to have a technical team member also function as th
 === Links
 
 - [[[scrum-master-certification, 1]]] link:../../2021/scrum-master-formation/[Scrum Master Certification]
-- [[[product-owner-certification, 2]]] link: ../../2021/product-owner-formation/[Product Owner Certification]]
-- [[[developer-certificaion, 3]]] link: ../../2021/scrum-developer-formation/[Scrum Developer Certification]
+- [[[product-owner-certification, 2]]] link:../../2021/product-owner-formation/[Product Owner Certification]
+- [[[developer-certificaion, 3]]] link:../../2021/scrum-developer-formation/[Scrum Developer Certification]
 - [[[pmi-acp-certification, 4]]] link:../../2016/pmi-acp-certification/[PMI ACP Certification]
 - [[[what-does-scrum-master, 5]]] link:../../2017/what-does-a-scrum-master/[What Does A Scrum Master?]
 - [[[what-do-not-need-to-do-in-scrum, 6]]] link:../../2016/what-you-do-not-need-to-do-in-scrum/[What You Do Not Need to Do in Scrum]
