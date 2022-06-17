@@ -125,7 +125,7 @@ They are released under Apache 2.0 license.
 === Learnings
 
 The source code for the invoice component is available as a Java package.
-More information is available under https://tangly-team.bitbucket.io/[tangly open source components].
+More information is available under http://blog.tangly.net/[tangly open source components].
 
 The generator code for the Swiss QR bill and ZUGFeRD data is available as Java package.
 The developer was very supportive to improve the component.

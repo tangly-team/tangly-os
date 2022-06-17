@@ -2,7 +2,7 @@
 title: "Fun at Workplace"
 linkTitle: "Fun at Workplace"
 date: 2017-04-05
-tags: ["organization"]
+tags: ["organization", "tangly"]
 ---
 
 == Fun at Workplace

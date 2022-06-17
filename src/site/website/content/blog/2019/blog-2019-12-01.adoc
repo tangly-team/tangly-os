@@ -2,7 +2,7 @@
 title: "A Journey to be a Digital Company - tangly llc"
 linkTitle: "A Journey to be a Digital Company"
 date: 2019-12-02
-tags: ["organization"]
+tags: ["organization", "tangly"]
 ---
 
 == A Journey to be a Digital Company - tangly llc

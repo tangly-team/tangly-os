@@ -97,7 +97,7 @@ You have to create a partial in docsy to use Utterances.
 Docsy has finally merged the change request for taxonomies during the first semester of 2021.
 Tags for articles are now natively supported without tinkering with the code of the plugin.
 
-Our https://tangly-team.bitbucket.io/blog/[blog] displays the tags on the right side of the window.
+Our http://blog.tangly.net/blog/[blog] displays the tags on the right side of the window.
 Give it a try.
 
 === Diagrams in articles

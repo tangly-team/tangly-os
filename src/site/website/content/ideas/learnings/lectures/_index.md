@@ -2,7 +2,7 @@
 title: "Lectures"
 date: 2019-05-01
 weight: 40
-description: Lectures and associated literatures
+description: Lectures and associated literature
 ---
 
 ## Software Architecture and Techniques Lectures
@@ -46,4 +46,3 @@ for the Modern Java and selected JVM languages lectures {{< /attachments >}}
 ## User Interfaces with Vaadin
 
 {{< attachments folder="ui-books" recursive=false exclude=".md,.adoc,.DS_Store" title="User Interface Books" >}} Modern Java User Interfaces {{< /attachments >}}
-

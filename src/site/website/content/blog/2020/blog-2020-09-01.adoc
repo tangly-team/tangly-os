@@ -110,7 +110,7 @@ Tag types are a medium to define an ontology and defines valid tag instances.
 A set of tag types shall always be associated with a specific domain of the application.
 
 We provide a Java library link:../../docs/crm[BUS] implementing these constructs.
-More information is available under https://tangly-team.bitbucket.io/[tangly open source components].
+More information is available under http://blog.tangly.net/[tangly open source components].
 
 Related concepts are discussed in our blog series
 

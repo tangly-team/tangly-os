@@ -99,7 +99,7 @@ The complete definition of this business domain is not part of this article.
 The following design challenges exist
 
 * Serialization libraries such as JSON Jackson library cannot handle invoice lines with multiple Java class types.
-A workable approach is described and implemented with the open source component https://tangly-team.bitbucket.io/docs/gleam/[Gleam].
+A workable approach is described and implemented with the open source component http://blog.tangly.net/docs/gleam/[Gleam].
 The solution is to define selectors to instantiate the correct Java class.
 * Invoices are complex objects and ideal candidates for a document-oriented persistent approach.
 Invoices should not be stored in a relation based persistence store, meaning an SQL database.

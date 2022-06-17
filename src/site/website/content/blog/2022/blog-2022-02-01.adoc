@@ -2,7 +2,7 @@
 title: "The Quest for an Agile Company: Six Years tangly llc"
 linkTitle: "Six Years tangly"
 date: 2022-02-01
-tags: ["agile"]
+tags: ["agile", "tangly"]
 ---
 
 == The Quest for an Agile Company: Six Years tangly llc
@@ -201,4 +201,3 @@ John Cutler. 2016
 - [[[twelve-signs-feature-factory-three-years-later, 7]]]
 https://amplitude.com/blog/12-signs-youre-working-in-a-feature-factory-3-years-later[12 Signs You are Working in a Feature Factory (three Years Later)]
 John Cutler. 2019
-

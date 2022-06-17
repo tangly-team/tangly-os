@@ -7,6 +7,8 @@ menu:
     weight: 20
 ---
 
+![Components Documentation](pics/documentation.jpg)
+
 The current released components are written in _Java_ and released on _Maven Central_.
 The code uses modern Java constructs and requires the current released JDK.
 

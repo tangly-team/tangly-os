@@ -23,7 +23,7 @@ rm -rf $siteName
 hugo new site $siteName
 cd $siteDir
 
-# initiate public folder with git to enable optional completion step and publishing in bitbucket
+# initiate public folder with git to enable optional completion step and publishing in our pages repository (GitHub, GitLab, orBitBucket)
 git clone --no-checkout git@bitbucket.org:tangly-team/tangly-team.bitbucket.io.git public
 
 # download docsy theme and the submodules they depend on

@@ -162,7 +162,7 @@ public interface HasId extends HasOid {
 ----
 
 We provide a Java library BUS implementing these constructs.
-More information is available under https://tangly-team.bitbucket.io/[tangly open source components].
+More information is available under http://blog.tangly.net/[tangly open source components].
 
 === Extensions
 

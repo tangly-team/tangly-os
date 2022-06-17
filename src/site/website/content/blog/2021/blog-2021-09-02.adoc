@@ -18,7 +18,7 @@ https://en.wikipedia.org/wiki/European_Credit_Transfer_and_Accumulation_System[E
 
 I gave this training the last three years at https://www.hslu.ch/en[Lucerne University of Applied Sciences and Arts] _HSLU_ in Switzerland.
 
-All course materials are released under the https://creativecommons.org/[Creative Commons] copyright.
+All materials are released under the https://creativecommons.org/[Creative Commons] copyright.
 
 The course contents are aligned with the big software architecture programs.
 
@@ -41,22 +41,25 @@ The lecture description is:
 * Teaches the basics of systematic agile design of an adequate software architecture for a selected application.
 * Methods of agile quality assurance and software craftsmanship are explored using predefined or self-selected projects of students.
 
-The lecture themes are:
+The fourteen lecture themes are:
 
-. [[chapter-1, Why Agile Architecture and Design]]Why Agile Architecture and Design?
-. [[chapter-2, Evolution of Software Architecture]]Evolution of Software Architecture over the last Decades
-. [[chapter-3, What is Agile Architecture]]What is Agile Architecture?
-. [[chapter-4, Agile Approaches]]Agile Approaches with Scrum, XP, LeSS
-. [[chapter-5, Refactoring]]Refactoring
-. [[chapter-6, Errors and Smells]]Errors, Vulnerabilities, Smells in Source Code
-. [[chapter-7, Component Architecture]]Architecture of Components and Subsystems
-. [[chapter-8, Functional Features]]Verify Functional Features
-. [[chapter-9, Non-functional Features]]Validate Quality Attributes of a Software Architecture
-. [[chapter-10, Architecture Documentation]]Architecture Documentation
-. [[chapter-11, Trends I]]Architecture Trends I
-. [[chapter-12, Trends II]]Architecture Trends II
-. [[chapter-13, Domain Driven Design]]Domain Driven Design Workshop
-. [[chapter-14, Excellence for Architects]]Team and Technical Excellence for Architects
+. _Traditional and Agile Approaches for software product architecture_
+.. [[chapter-1, Why Agile Architecture and Design]]Why Agile Architecture and Design?
+.. [[chapter-2, Evolution of Software Architecture]]Evolution of Software Architecture over the last Decades
+.. [[chapter-3, What is Agile Architecture]]What is Agile Architecture?
+.. [[chapter-4, Agile Approaches]]Agile Approaches with Scrum, XP, LeSS
+. _Agile Components and Subsystem Design and Continuous Improvements_
+.. [[chapter-5, Refactoring]]Refactoring
+.. [[chapter-6, Errors and Smells]]Errors, Vulnerabilities, Smells in Source Code
+.. [[chapter-7, Component Architecture]]Architecture of Components and Subsystems
+.. [[chapter-8, Functional Features]]Verify Functional Features
+.. [[chapter-9, Non-functional Features]]Validate Quality Attributes of a Software Architecture
+. _Agile Application Architecture and Domain Driven Design_
+.. [[chapter-10, Architecture Documentation]]Architecture Documentation
+.. [[chapter-11, Trends I]]Architecture Trends I
+.. [[chapter-12, Trends II]]Architecture Trends II
+.. [[chapter-13, Domain Driven Design]]Domain Driven Design Workshop
+.. [[chapter-14, Excellence for Architects]]Team and Technical Excellence for Architects
 
 The link:../../../ideas/learnings/lectures[slides of the SWAT course] are available for all interested parties.
 
@@ -67,7 +70,7 @@ The reference texts are cite:[domain-driven-design,refactoring,building-evolutio
 The following books are recommended for interested students cite:[clean-code,clean-coder,clean-architecture,clean-agile,clean-craftsmanship].
 Each book is quite compact and can read over a weekend.
 
-The lecturer can also use cite:[domain-driven-design-distilled,implementing-domain-driven-design].
+The lecturer can also use cite:[domain-driven-design-distilled,implementing-domain-driven-design] for the workshop parts.
 
 === arc42 Architecture Approach
 
@@ -134,7 +137,7 @@ _It is an important aspect of any software architecture._ +
 _See  <<chapter-10>>_
 Quality Requirements::
 Quality requirements as scenarios, with quality tree to provide a high-level overview.
-The most important quality goals should have been described in section 1.2. (quality goals). +
+The most important quality goals should have been described in section 1.2 (quality goals). +
 _Should be documented as fitness functions and realized as automated tests._ +
 +
 _See  <<chapter-9>>, <<chapter-10>>_
@@ -185,7 +188,7 @@ The key points are:
 
 The taught skills are:
 
-* How can you coordinate essential software architecture decisions with other project participants from the fields of requirements management, project management, testing, and development?
+* How can you coordinate essential software architecture decisions with other project participants from the fields of requirements management, project management, testing and development?
 * How can you document and communicate software architectures based on architecture patterns and technical concepts?
 * How can you independently carry out the essential steps in designing software architectures for small and medium-sized systems?
 
@@ -202,51 +205,51 @@ They have a specific module for agile software architecture:
 
 In this module, the participants learn how to design, develop and further develop software systems and architectures in accordance with agile principles.
 On the one hand, the module covers the application of agile principles and concepts to architecture work.
-On the other hand expedient anchoring of architecture practices in an agile approach.
+On the other hand, expedient anchoring of architecture practices in an agile approach.
 
 The development of architectures in projects with self-sufficient teams or shared responsibilities demands new skills and capabilities on the part of developers and architects.
-These in turn cover technical as well as methodical and also communicative aspects, which are addressed here all theoretically and in practical exercises.
+These in turn cover technical as well as methodical and communicative aspects, which are addressed here all theoretically and in practical exercises.
 
-The learning goals for the ISQAB agile certification are:
+The learning goals for the ISAQB agile certification are:
 
 Introduction to agile software architecture::
-* Knowing and being able to explain the significance of agile ideas for architecture work
-* Knowing the tasks involved in architecture development and how they are modified in the agile environment
-* Being able to appropriately align architecture work to the specific problem and project
-* Knowledge of agile tools for architecture work
-* Knowledge of the capabilities of anchoring architecture as a cross-cutting aspect in agile organisations
+* Knowing and being able to explain the significance of agile ideas for architecture work.
+* Knowing the tasks involved in architecture development and how they are modified in the agile environment.
+* Being able to appropriately align architecture work to the specific problem and project.
+* Knowledge of agile tools for architecture work.
+* Knowledge of the capabilities of anchoring architecture as a cross-cutting aspect in agile organisations.
 * _See <<chapter-3>>, <<chapter-4>>_
 The agile architecture approach::
-* Being able to iteratively and agilely structure architecture work
-* Knowledge of role models for architects in agile projects
-* Knowledge of ways of involving stakeholders in architecture work
+* Being able to iteratively and agilely structure architecture work.
+* Knowledge of role models for architects in agile projects.
+* Knowledge of ways of involving stakeholders in architecture work.
 * _See <<chapter-4>>, <<chapter-14>>_
 Architecture requirements in agile projects::
-* Being able to formulate quality requirements appropriately for specific target groups
-* Being able to use agile concepts for architecture requirements
-* Being able to use iterative approaches for continuous definition of architecture requirements
-* Being able to effectively organise joint management, evaluation and prioritisation of requirements
-* Knowing and being able to explain urgency as a driving factor for architecture work
+* Being able to formulate quality requirements appropriately for specific target groups.
+* Being able to use agile concepts for architecture requirements.
+* Being able to use iterative approaches for continuous definition of architecture requirements.
+* Being able to effectively organise joint management, evaluation and prioritisation of requirements.
+* Knowing and being able to explain urgency as a driving factor for architecture work.
 * _See <<chapter-4>>, <<chapter-8>>_
 Designing and developing architectures in a team::
-* Being able to use methods for making decisions in groups
-* Being able to support groups and teams in reaching decisions
-* Being able to create the necessary prerequisites for team decisions
-* Being familiar with architecture concepts for promoting local decision-making capabilities
-* Being familiar with methods for just-in-time architecture decisions
-* Being familiar with ways of communicating architecture decisions in agile projects
+* Being able to use methods for making decisions in groups.
+* Being able to support groups and teams in reaching decisions.
+* Being able to create the necessary prerequisites for team decisions.
+* Being familiar with architecture concepts for promoting local decision-making capabilities.
+* Being familiar with methods for just-in-time architecture decisions.
+* Being familiar with ways of communicating architecture decisions in agile projects.
 * _See <<chapter-4>>, <<chapter-14>>_
 Reflection and feedback on architecture work in the agile context::
-* Being familiar with techniques for joint reflection on architecture decisions
-* Being able to find the reasons for specific architecture problems
-* Being familiar with feedback capabilities from the implementation and able to attribute results to architecture objectives
+* Being familiar with techniques for joint reflection on architecture decisions.
+* Being able to find the reasons for specific architecture problems.
+* Being familiar with feedback capabilities from the implementation and able to attribute results to architecture objectives.
 * _See <<chapter-6>>, <<chapter-7>>_
 Examples of agile architecture work::
-* Being familiar with and understanding examples for decision-making procedures in agile projects
-* Being familiar with and understanding examples for agile architecture requirements
-* Being familiar with physical characteristics of agile communication concepts
-* Being able to understand the postponement of architecture decisions
-* Being familiar with and understanding examples of agilely organised architecture groups
+* Being familiar with and understanding examples for decision-making procedures in agile projects.
+* Being familiar with and understanding examples for agile architecture requirements.
+* Being familiar with physical characteristics of agile communication concepts.
+* Being able to understand the postponement of architecture decisions.
+* Being familiar with and understanding examples of agilely organised architecture groups.
 * _See <<chapter-14>>_
 
 Care was taken that all the above aspects are handled over the SWAT course.
@@ -263,7 +266,7 @@ Principles need to be taught at the beginning.
 The students already know concepts such as https://en.wikipedia.org/wiki/KISS_principle[KISS], https://en.wikipedia.org/wiki/SOLID[SOLID],
 https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI] from previous lectures.
 
-They seldom can apply these principle in their own code or semester projects.
+They can seldom apply these principles in their own code or semester projects.
 Understanding why certain https://en.wikipedia.org/wiki/Anti-pattern[anti-patterns] are often wrong is seldom observable.
 
 You can only become a professional software architect if you are proficient in a technology stack.
@@ -279,7 +282,7 @@ This time is missing in our SWAT lecture for the discussion of product software 
 
 We are now defining an overall path for all students to achieve craftsmanship over their bachelor curriculum.
 Students must write professional source code, master design at the component level, and understand agile techniques.
-Approaches such as clean code, test-driven development, refactoring, and infrastructure as code shall be studied material.
+Approaches such as clean code, test-driven development, refactoring and infrastructure as code shall be studied material.
 
 ==== Design and Architecture
 
@@ -287,13 +290,13 @@ Design concepts must be refined.
 The students understand concepts such as patterns, micro-architecture, layered architecture.
 They seldom formulate the technical and financial tradeoffs associated with a specific concept application
 footnote:[Chosing a technical and financial tradeoff is the essence of an engineer work.
-These tradeoffs are often formulated in architecture design records.].
+These tradeoffs are often formulated in architecture design records _ADR_.].
 
 Almost no student has experience with open source libraries.
 They use them on a daily basis and never looked at the source code, provided an improvement, or read the documentation.
 
 We are trying to formulate an approach to improve achieved goals.
-We shall either build these concepts into the project management lectures or in the semester theses.
+We shall either build these concepts into project management lectures or in the semester theses.
 
 [bibliography]
 === Links

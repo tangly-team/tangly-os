@@ -2,7 +2,7 @@
 title: "What is Our Specialty as Agile Coaches at tangly?"
 linkTitle: "tangly Agile Coaches"
 date: 2017-05-01
-tags: ["organization"]
+tags: ["organization", "tangly"]
 ---
 
 == What is Our Specialty as Agile Coaches at tangly?

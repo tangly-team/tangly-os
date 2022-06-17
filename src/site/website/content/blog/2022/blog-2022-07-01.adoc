@@ -13,22 +13,22 @@ tags: ["agile", "scrum"]
 
 image::2022-07-01-head.jpg[width=420,height=360,role=left]
 
-{ref-scrum} is the most popular approach to create awesome new products.
+{ref-scrum} is the most popular approach to create awesome new digital products.
 
 Perhaps you are thinking of pursuing a career as a Scrum master.
 
 Perhaps you have recently been moved into that role and are wondering if being a Scrum master is right for you.
 
 There are plenty of good reasons to become a Scrum master.
-The job is in demand and pays well.
+The job is faschinating, in demand and pays well.
 
-The most important reason to become a Scrum master is that it is the right job for your skills, personality and interests.
+The most important reason to become a Scrum master is that it is the right job for your personality, interests and skills.
 
 === What is a Scrum Master?
 
 Here is a way of considering the role.
 
-The scrum master is the product owner for organisational change.
+_The scrum master is the product owner for organisational change._
 
 When you introduce Scrum into an organisation, you are focused on the creation of two distinct things: new products and an improved organisation.
 New products have product owners.
@@ -38,7 +38,7 @@ Somebody should prioritise, and collaborate with the cross-functional team of ma
 The stakeholders are all employees and shareholders.
 
 If {ref-scrum} does not ripple through an organisation this way, it is set up for failure.
-Or worse a facade of change, a kind way of saying lies and deceit.
+Or worse a facade of change, a kind way of saying lies and deceit <<detecting-agile-bullshit>> <<what-do-not-need-to-do-in-scrum>>.
 
 === Eight Questions
 
@@ -50,7 +50,7 @@ This cannot be something a Scrum master does grudgingly cite:[fearless-change,mo
 Do You Need to Be in the Spotlight?::
 A great Scrum master fades into the background while the team receives the praise cite:[great-scrum-master,people-scrum].
 Are You a Good Listener?::
-We all know that a Scrum master helps remove impediments to a team’s progress and productivity.
+We all know that a Scrum master helps remove impediments to a team's progress and productivity.
 That often means listening, asking clarifying questions, and then solving the problem.
 But other times it means just listening: letting a team member vent about something cite:[skilled-facilitator,skilled-facilitator-resource,the-art-and-science-of-facilitation].
 Are You Technical Enough?::
@@ -61,8 +61,8 @@ You are serious about working as a professional Scrum master the next years.
 You should have formal training and read books describing the various Scrum master stances. +
 A reasonable formal training is a professional level certification cite:[professional-scrum-master-guide,mastering-professional-scrum].
 This certification is your third one.
-First you did the basic training and became a Scrum master.
-Second you qualified as an advanced Scrum master.
+First, you did the basic training and became a Scrum master.
+Second, you qualified as an advanced Scrum master.
 Now you are ready to become a certified professional Scrum master. +
 Consider training in facilitation and coaching.
 Learn the {ref-xp} methods to achieve technical fluency and understand {ref-craftsmanship}.
@@ -70,10 +70,10 @@ Can You Influence Without Authority?::
 Influencing without authority is an important skill for all good Scrum masters.
 If you enjoy leading this way, count that as a point in favor of a career as a Scrum master cite:[management-30].
 Are You Comfortable with Uncertainty?::
-If you’re the type who secretly wants to eliminate all uncertainty, you will either be frustrated as a Scrum master or will drive your team crazy in pursuit of an impossible goal
+If you’re the type who secretly wants to eliminate all uncertainties, you will either be frustrated as a Scrum master or will drive your team crazy in pursuit of an impossible goal
 cite:[future-of-management,reinventing-organizations].
 Can You Handle Conflict Well?::
-Agile teams are used on an organization’s hardest challenges—the projects that will not succeed any other way.
+Agile teams are used on an organization's hardest challenges—the projects that will not succeed any other way.
 Add that to the strong personalities found on many development teams and there will be conflict
 cite:[how-to-lead-product-management,beyond-performance-management,leader-dilemna-empowered-organizations,leading-quietly,smart-leaders-smarter-teams].
 
@@ -92,8 +92,8 @@ Contrary to popular belief, she does not only facilitate events, but the whole S
 Finally, she facilitates relationships, promoting collaboration and creating synergies within the team and with clients.
 Coach::
 Just like a sports coach, the Scrum master focuses on team building.
-He guides and encourages the team to self-organize, stays focused and has a continuous improvement-oriented mindset.
-Not only that, she trains every single team member with a focus on mindset, behavior and organization to collaborate effectively with Scrum Teams.
+She guides and encourages the team to self-organize, stays focused and has a continuous improvement-oriented mindset.
+She trains every single team member with a focus on mindset, behavior and organization to collaborate effectively with Scrum Teams.
 Teacher::
 The Scrum master ensures that the Scrum principles and framework are understood and put into practice.
 She guides the Product Owner and the team towards Agile practices and principles whenever they move away from them.
@@ -102,7 +102,7 @@ Servant-leadership focuses on collaboration, trust, empathy and the ethical use 
 As a servant leader, the Scrum master is fully aligned with the Scrum values of courage, openness, respect, focus and commitment.
 She focuses on the needs of team members with the aim of achieving results in line with the company's values and goals.
 Manager::
-She is responsible for the process management, with an eye on team health and waste elimination.
+She is responsible for process management, with an eye on team health and waste elimination.
 She manages the boundaries of self-organization and promoting the Agile culture.
 Change Agent::
 The Scrum master helps create an environment that allows the Scrum spirit to thrive within the Team and the organization.
@@ -130,14 +130,14 @@ The Scrum values any organization shall live are
 
 . Commitment
 . Focus
-. Openess
+. Openness
 . Respect
 . Courage
 
 Scrum master explain, teach, protect the Scrum values and adapt Scrum rules and tactics to the organization.
 
 As a Scrum master you must strongly identify with these values.
-You must understand empiricism and how a model can be impacted with closed loop approaches.
+You must understand empiricism and how a model can be impacted with closed-loop approaches.
 Yu should certainly know the official {ref-scrumguide}.
 
 === Things Scrum Masters Never Do
@@ -150,7 +150,7 @@ Yu should certainly know the official {ref-scrumguide}.
 * She does not act as the chairman during the meetings.
 * She is not a Superhero, and she does not bring the coffee!
 
-=== Over time a Scrum master Fades Away
+=== Over time, a Scrum master Fades Away
 
 After a while, team members need less coaching and transition to a high-performing group.
 They learn how to facilitate some of their own meetings.
@@ -160,18 +160,26 @@ There are fewer organizational impediments to agility.
 Those that remain can be particularly difficult to resolve, but there are fewer of them.
 
 Even the best Scrum team continues to benefit from the coaching, guiding and mentoring provided by a good Scrum master.
-With that being said, some high-performing teams might find they do not need a Scrummaster full time anymore.
+With that being said, some high-performing teams might find they do not need a Scrum master full-time anymore.
 They might, for example, opt to have a technical team member also function as the Scrum master.
 
 [bibliography]
 === Links
 
-- [[[scrum-master-certification, 1]]] link:../../2021/scrum-master-formation/[Scrum Master Certification]
-- [[[product-owner-certification, 2]]] link:../../2021/product-owner-formation/[Product Owner Certification]
-- [[[developer-certificaion, 3]]] link:../../2021/scrum-developer-formation/[Scrum Developer Certification]
-- [[[pmi-acp-certification, 4]]] link:../../2016/pmi-acp-certification/[PMI ACP Certification]
-- [[[what-does-scrum-master, 5]]] link:../../2017/what-does-a-scrum-master/[What Does A Scrum Master?]
-- [[[what-do-not-need-to-do-in-scrum, 6]]] link:../../2016/what-you-do-not-need-to-do-in-scrum/[What You Do Not Need to Do in Scrum]
+- [[[scrum-master-certification, 1]]] link:../../2021/scrum-master-formation/[Scrum Master Certification].
+Marcel Baumann. 2021
+- [[[product-owner-certification, 2]]] link:../../2021/product-owner-formation/[Product Owner Certification].
+Marcel Baumann. 2021
+- [[[developer-certificaion, 3]]] link:../../2021/scrum-developer-formation/[Scrum Developer Certification].
+Marcel Baumann. 2021
+- [[[what-does-scrum-master, 4]]] link:../../2017/what-does-a-scrum-master/[What Does A Scrum Master?].
+Marcel Baumann. 2017
+- [[[pmi-acp-certification, 5]]] link:../../2016/pmi-acp-certification/[PMI ACP Certification].
+Marcel Baumann. 2016
+- [[[what-do-not-need-to-do-in-scrum, 6]]] link:../../2016/what-you-do-not-need-to-do-in-scrum/[What You Do Not Need to Do in Scrum].
+Marcel Baumann. 2016
+- [[[detecting-agile-bullshit, 7]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
+Marcel Baumann. 2019
 
 === References
 
