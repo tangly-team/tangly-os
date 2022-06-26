@@ -23,12 +23,9 @@ rm -rf $siteName
 hugo new site $siteName
 cd $siteDir
 
-# initiate public folder with git to enable optional completion step and publishing in our pages repository (GitHub, GitLab, orBitBucket)
-git clone --no-checkout git@bitbucket.org:tangly-team/tangly-team.bitbucket.io.git public
-
 # download docsy theme and the submodules they depend on
 cd themes
-git clone https://github.com/google/docsy.git
+git clone --branch v0.3.0 https://github.com/google/docsy.git
 cd docsy
 git submodule update --init --recursive
 
@@ -37,5 +34,8 @@ cd $siteDir
 sudo npm install -D autoprefixer
 sudo npm install -D postcss-cli
 sudo npm install -D postcss
+
+# initiate empty public folder with git to enable optional completion step and publishing in our pages repository (GitHub, GitLab, orBitBucket)
+git clone --no-checkout git@github.com:tangly-team/tangly-team.github.io.git public
 
 echo "start server with hugo server --destination public --disableFastRender -> site is accessible under localhost:1313"

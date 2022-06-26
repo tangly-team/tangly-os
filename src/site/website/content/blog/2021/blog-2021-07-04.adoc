@@ -51,8 +51,7 @@ The first steps to become a great product owner are described in this article.
 
 === Certifications
 
-The two big Scrum organizations https://www.scrumalliance.org/[Scrum Alliance] and https://www.scrum.org[Scrum.org]
-provide a certification path for product owners.
+The two big Scrum organizations {ref-scrum-alliance} and {ref-scrum-org} provide a certification path for product owners.
 The certification path has three levels:
 
 Certified Scrum Product Owner::

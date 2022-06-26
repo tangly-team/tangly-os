@@ -41,11 +41,11 @@ I also acquired the https://vaadin.com/learn?version=v14[Vaadin certification] b
 Agile approaches and Scrum framework are the regular approach to successfully developer software and digital products.
 I expect a professional software developer to have a formal training how to apply correctly the Scrum approach.
 
-The two biggest Scrum associations https://www.scrumalliance.org/[Scrum Alliance] and https://www.scrum.org/[Scrum org] provide similar certification paths for Scrum.
+The two biggest Scrum associations {ref-scrum-alliance} and {ref-scrum-org} provide similar certification paths for Scrum.
 For each role you can progress from beginner, over advanced and finally professional certification level.
 You should at least pursue the beginner and advanced level to reflect your professionalism.
 
-I often suggest to pursue the certifications of https://www.scrum.org/[Scrum org] because you do need to renew them.
+I often suggest to pursue the certifications of {ref-scrum-org} because you do need to renew them.
 https://www.scrumalliance.org/[Scrum Alliance] requests you to renew your certification every two years and provide proof of continuous training.
 This approach is similiar to PMI.
 
@@ -74,4 +74,3 @@ On the bright side, the steward https://www.opengroup.org/togaf[Open Group] of t
 - [[[developer-certificaion, 3]]] link: ../../2021/scrum-developer-formation/[Scrum Developer Certification]
 - [[[pmi-acp-certification, 4]]] link:../../2016/pmi-acp-certification/[PMI ACP Certification]
 - [[[java-certification, 5]]] link:../../2023/java-certification/[Java Certification]
-

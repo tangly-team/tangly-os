@@ -1,0 +1,187 @@
+---
+title: "Transfer a Software Project"
+linkTitle: "Transfer Software Project"
+date: 2022-08-15
+tags: ["agile", "scrum"]
+---
+
+== Transfer a Software Project
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2022-08-02-head.jpg[width=420,height=360,role=left]
+
+You developed a new digital product for an internal or external customer.
+Your solution is awesome.
+The product is released to the users.
+Your users love your solution.
+
+The project is now winding down and closing activities are initiated.
+The customer organization shall take ownership of all product related artifacts.
+They paid for the development and own the produced artifacts.
+
+You are legally bound to deliver source code, binary artifacts and documentation to your customer.
+The ownership transfer is either part of your contract or implicit through the contract type you are working with.
+
+Remember, a product development is a work contract.
+
+Work contractsfootnote:[The German term is _Werkvertrag_. The French term is _contrat de travail_.] are a legal and rather well-defined contractual item in Europe.
+Expected deliveries are already defined in legal texts or through jurisprudence.
+Your customer has the right to refuse final payment until delivery.
+
+How can you cleanly transfer your results to your customers?
+
+Which steps shall you implement to delight your clients?
+
+=== Migration Steps
+
+You should deliver a consistent repository to your client.
+
+. Verify that the repository contains the final state of your solution. +
+_Talk with your developers to insure all changes are checked into the git repository_.
+. Update your licenses and copyright. +
+_Verify if you have to talk with your legal department_.
+. Validate continuous integration and delivery pipeline. +
+_Run your CI/CD pipeline and check the deliverables_.
+. Validate static documentation website creation. +
+_Generate your static website.
+Use a spellchecker for orthography, and a link checker for your links_.
+. Tag to artifacts to insure traceability between your delivery and the source code. +
+You still need an official acceptance form from your client. +
+_Do not forget to document your tagging conventions.
+Are you using semantic versioning?_.
+. Transfer your repository to the new organization. +
+_Formally ownership of the repository and relinquish responsibility to your customer_.
+. Celebrate the successful completion of your project.
+
+=== Update Copyrights
+
+The chosen copyrights shall allow the new owner to take over and change all artifacts.
+
+Repository Copyright::
+GitHub and GitLab strongly support the definition and publishing of the license under which the whole project is published.
+Examples of open source and closed source licenses are available on the Internet.
+Please never write your own license text.
+You are not a lawyer and your text will most certainly contain legal errors or miss required statements.
+Source Code Copyright::
+Beware that source code is often under similar copyright rules as books and pieces of art.
+Regular infringement laws apply if you use, copy or modify source code.
+Therefore any source code file has an implicit or an explicit copyright.
+Good practice is to have a banner in each source file stating the short version of your copyright.
+Documentation Copyright::
+Documentation, drawings and sketches are also under copyright legislation.
+Please add your copyright to all your documents <<creative-commons>>.
+
+=== Update Documentation
+
+I strongly suggest using actual good practice documentation as static websites to publish your documentation.
+The huge gain is git based tracking which documentation set belongs to a specific release of your application.
+Auditability and tracing are implicitly provided through version management system features.
+
+[WARNING]
+====
+The transfer is more complex if your website is published under an owned domain.
+
+You must remove your _CNAME_ redirection in your domain record.
+The receiving party can create a new _CNAME_ redirection in their domain record.
+
+Additional steps to validate the newly configured domain and enable _SSL_ are well-described on the GitHub site.
+
+. Register your custom domain in the {ref-github} pages repository.
+. Reserve your custom domain in {ref-github} to block other users to steel your domain if it is once down <<configuring-custom-domain>>.
+Beware you need to add a https://en.wikipedia.org/wiki/TXT_record[TXT] record in your domain.
+Bigger companies are quite slow to process such a request.
+. Enable HTTPS to be compliant with good practices <<configuring-custom-domain>>.
+{ref-github} will generate and deploy at no costs a certificate for your custom domain.
+. Once you have created a https://en.wikipedia.org/wiki/CNAME_record[CNAME] record mapping your custom domain to the GitHub pages address, validate your custom domain in GitHub.
+. Test your new site to check that all configuration changes are working.
+Upon successful deployment, add a redirect page on your old website to support all your users who stored an old link
+footnote:[You also need to update your Google analytics properties if you are using Google as a site usage analysis tool.].
+
+Beware that DNS modifications need up to 24 hours to propagate.
+I strongly advocate performing such changes during a weekend.
+====
+
+Here a simple example of a redirect page for your old website.
+
+[source, html]
+----
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="refresh" content="0; URL=https://blog.tangly.net" />
+  <title>Redirect to Our New tangly OS-Components Website</title>
+</head>
+<body>
+  <p>This page has been moved. If you are not redirected within 3 seconds,
+     click <a href="https://blog.tangly.net">Redirect to our new tangly OS-Components website</a></p>
+</body>
+</html>
+----
+
+=== Update CI/CD Pipeline
+
+The continuous integration and delivery pipelines cite:[continuous-delivery] shall build all expected artifacts associated with the product.
+
+=== Transfer GitHub Repository
+
+The transfer of a repository from one organization to another one is well-supported in GitHub <<transferring-a-repository>>.
+The whole transfer process is completed in less than five minutes.
+
+You need your credentials to log into GitHub and confirm the transfer action.
+The onwer of the receiving organization must confirm the transfer to complete the process.
+
+[WARNING]
+====
+Developers shall update their git repository remote definition in their local repository.
+
+[source,shell]
+----
+  git remote -v <1>
+  git remote set-url origin-github git@github.com:repository-name.git <2>
+----
+
+<1> List all the remotes of your local git repository.
+<2> Sets the new URL of the origin-github using _ssh_ as transfer protocol.
+Now you can pull from and push to the new location.
+Your remote can have a different name such as _origin_.
+Look at the URL to identify the adequate remote.
+====
+
+=== Good Practices
+
+Do not transfer a product with known security flaws to another party.
+Please correct the issues.
+
+GitHub, SonarQube <<sonarqube>> and other tools provide convenient ways to detect vulnerabilities.
+Integrate these tools to support the delivery of an application without known vulnerabilities or OWASP smells
+footnote:[GitHub provides DependaBot <<dependabot>> to handle dependency updates for various ecosystems including Python technology stack.].
+
+=== Lessons Learnt
+
+Development teams seldom understand the legal implications of copyright infringements.
+All source code files must have a clear copyright banner.
+Documentation artifacts shall also have an explicit copyright notice.
+Any files without a copyright will legally be handled as implicitly owned by the authors of the source code or documentation.
+The whole repository shall also carry an overall license files.
+
+The copyright files for used components shall be made available in the repository as requested by the authors of these components.
+Care should be taken to avoid mixing non-compatible licenses in the same product.
+Beware especially of the consequences of using a GPL or AGPL library in your product.
+
+Tools such as GitHub or GitLab increase efficiency if you are adopting DevOps practices when working with them cite:[accelerate,devops-handbook,site-reliability-engineering].
+
+[bibliography]
+=== Links
+
+- [[[transferring-a-repository, 1]]] https://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository[Transferring a GitHub Repository]
+- [[[configuring-custom-domain, 2]]] https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site[Configuring Custom Domain]
+- [[[creative-commons, 3]]] https://creativecommons.org/[Creative Commons]
+- [[[sonarqube, 4]]] https://www.sonarqube.org/[SonarQube]
+- [[[dependabot, 5]]] https://github.com/dependabot/dependabot-core[GitHub Dependabot]
+
+=== References
+
+bibliography::[]

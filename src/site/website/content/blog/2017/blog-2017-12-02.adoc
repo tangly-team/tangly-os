@@ -13,11 +13,14 @@ tags: ["design"]
 
 image::2017-12-02-head.jpg[width=420,height=360,role=left]
 
-Often, teams discuss if their product should upgrade to the current version of used components, development tools and programming languages.
+Often, teams discuss if their digital product should upgrade to the current version of open-source or commercial used components.
+
+The same discussion arises for development tools and programming language versions.
 
 I have a *strong opinion* about upgrades.
 You should always use the current version of all components included in your product.
 The only discussion is the timely *when* and never the *if*.
+
 Be realist, if your product is successful, you have to upgrade before the components are obsolete.
 Otherwise, your application will become a geriatric solution.
 
@@ -27,7 +30,7 @@ Companies and executives can be sued, sentenced to pay huge fines, and in the wo
 Such an entry can destroy your career potential.
 For example, you are banned to become a board of directors members of a lot of companies.].
 
-Below I show you arguments why you should always update all components in a timely fashion.
+Below I provide you with arguments why you should always update all components in a timely fashion.
 
 === Security and Governance
 
@@ -35,14 +38,14 @@ Social responsibility and liability considerations require your product to be im
 Your company shall provide reasonable protection to all your customers.
 Therefore, you always include security patches in your product in a timely manner.
 Other approaches are deeply unprofessional and unethical.
-In quite a few countries, you are liable if you do not update your software to avoid known security attacks.
+In some countries, you are liable if you do not update your software to avoid known security attacks.
 
 You should use actual Java JDK and JVM version because the community is concentrating their effort on the latest version.
 Oracle only provides public support for the latest two Java versions, e.g. in January 2018, Java 9 and Java 8 are officially supported.
 Java 8 support will stop end of September 2018, older versions are no more publicly maintained.
 
 If, for some reasons, you are using an older commercially but no more publicly supported JDK, you must sign a support contract with the Oracle company and pay for it.
-You cannot use deprecated JDK versions because nobody provides security fixes on these versions - e.g. Java 6 commercial support ended in December 2017 – .
+You cannot use deprecated JDK versions because nobody provides security fixes on these versions - e.g. Java 6 commercial support ended in December 2017 –.
 
 If you include a deprecated JDK / JVM in your product, you willingly endanger your users and shall be liable for their losses.
 
@@ -68,9 +71,9 @@ You will not find any training for Ada, Apache server 1.x, or any object-oriente
 The articles in Stack Overflow and the community always cover the current version of components.
 So you are on your own for support or code examples for older versions of libraries.
 
-=== Hidden Cost of Backports
+=== Hidden Cost of Backport
 
-Writing code for older versions of libraries, frameworks, or runtimes means https://en.wikipedia.org/wiki/Backporting[backporting] to older application interfaces and features.
+Writing code for older versions of libraries, frameworks or runtimes means https://en.wikipedia.org/wiki/Backporting[backporting] to older application interfaces and features.
 For example, if you do not have access to auto-closable resources, you have to write your own framework and software checks guarantying closing system resources.
 You should always free system resources in your application.
 The literature states this is neither easy nor error free.

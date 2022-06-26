@@ -18,10 +18,10 @@ description: links to agile and technical excellence themes such as Scrum, XP, L
 We are continuously looking for fresh approaches and implementing continuous improvements.
 These sites and blogs are a source of knowledge and experience.
 
-* https://www.scrumalliance.org/[Scrum Alliance]
+* {ref-scrum-alliance}
 ** https://www.scrumalliance.org/agilematters/home/[Scrum Alliance Blog]
 ** https://www.scrumalliance.org/labs/[Scrum Alliance Labs videos]
-* https://www.scrum.org/[Scrum org]
+* {ref-scrum-org}
 ** https://www.scrum.org/resources/blog/[Scrum.org Blog]
 ** https://www.scrum.org/resources/suggested-reading-professional-scrum-master-ii/[Scrum Master Reading List]
  Scrum masters shall read these books to achieve proficiency

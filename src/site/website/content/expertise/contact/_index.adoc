@@ -30,7 +30,6 @@ Switzerland
 
 ---
 
-
 *Bank Connection*
 
 [%noheader, frame=none, grid=none, width=75%, cols="1,4"]
@@ -38,3 +37,17 @@ Switzerland
 | *IBAN Number:* | CH88 0900 0000 3064 1768 2
 | *Bank BIC:*    | POFICHBEXXX _(Postfinanz Schweiz)_
 |===
+
+---
+
+*Company Location*
+
++++++
+<div class="mapouter">
+<div class="gmap_canvas">
+<iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Lorzenhof%2027,%206330%20Cham,%20Switzerland&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+<a href="https://123movies-to.org">123movies</a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style>
+<a href="https://www.embedgooglemap.net">google maps widget html</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style>
+</div>
+</div>
++++++

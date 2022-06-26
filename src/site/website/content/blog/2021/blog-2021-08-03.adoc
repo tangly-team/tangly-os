@@ -59,8 +59,7 @@ The Scrum Master serves the organization in several ways, including:
 
 === Certifications
 
-The two big Scrum organizations https://www.scrumalliance.org/[Scrum Alliance] and https://www.scrum.org[Scrum.org]
-provide a certification path for Scrum masters.
+The two big Scrum organizations {ref-scrum-alliance} and {ref-scrum-org} provide a certification path for Scrum masters.
 The certification path has three levels:
 
 Certified Scrum Master::

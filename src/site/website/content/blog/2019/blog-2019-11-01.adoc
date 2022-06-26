@@ -33,10 +33,11 @@ The scaling approaches I encounter at customer sites in Switzerland and Europe a
 * Spotify Model was popularized by Henrik Kniberg.
  His YouTube videos are worth watching.
  The banking group ING adopted the approach and made it fashionable.
-* Scrum@Scale defined by Jeff Sutherland and Scrum Alliance.
+* Scrum@Scale defined by Jeff Sutherland and {ref-scrum-alliance}.
  Henrik Kniberg has written an interesting article stating Spotify Model is a kind of Scrum@Scale.
-* Nexus defined by https://en.wikipedia.org/wiki/Ken_Schwaber[Ken Schwaber] and Scrum.org.
-* {ref-less} defined by Craig Larman and Bas Vodde. It is also supported by Scrum Alliance.
+* Nexus defined by https://en.wikipedia.org/wiki/Ken_Schwaber[Ken Schwaber] and {ref-scrum-org} cite:[nexus-framework].
+* {ref-less} defined by Craig Larman and Bas Vodde. It is also supported by {ref-scrum-alliance}
+cite:[scaling-lean-and-agile-development,large-scale-scrum,practices-for-scaling-lean-and-agile-development].
 * {ref-safe} 5.0 defined by the RUP aficionados and often trashed by Kniberg, Sutherland, Schwaber, Larmann and Vodde.
  At the same it is the most popular approach in quite a few countries.
  _And I would never state it is the most successful_.
@@ -73,19 +74,19 @@ Now you are ready to experiment with scaling.
 === Understand the Principles of Scaling
 
 * Create a _learning organization_. It is the building block for agile approaches
-** Train your collaborators,
-** Experiment with new approaches and measure success,
-* Organize around up to eight teams, _one backlog for one product_
-** Avoid team backlogs,
-** Have one product owner in charge of the whole product,
-* Pull, do not push
-** Collaborators and teams select workload,
-** All information are available to all collaborators,
-* DevOps is king
-** _Automate aggressively_,
-** Put all artifacts under version control,
-* Focus on outcomes and impact, not on outputs
-** Customer features are product only when used by users,
+** Train your collaborators.
+** Experiment with new approaches and measure success.
+* Organize around up to eight teams, _one backlog for one product_.
+** Avoid team backlogs.
+** Have one product owner in charge of the whole product.
+* Pull, do not push.
+** Collaborators and teams select workload.
+** All information are available to all collaborators.
+* DevOps is king.
+** _Automate aggressively_.
+** Put all artifacts under version control.
+* Focus on outcomes and impact, not on outputs.
+** Customer features are product only when used by users.
 ** Velocity and burn-down charts are output.
 
 === Avoid Common Errors
@@ -122,3 +123,7 @@ Therefore, it could be necessary to change your initial scaling approach and ada
 I wish you successful scaling of agile approaches.
 And I have to warn you the path to success is long and risky.
 Personally I had some successes with Large Scale Scrum - {ref-less}.
+
+=== References
+
+bibliography::[]

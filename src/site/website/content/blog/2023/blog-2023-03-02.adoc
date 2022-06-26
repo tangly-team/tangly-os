@@ -314,6 +314,11 @@ Clean code and DevOps good practices are around for almost two decades.
 Senior developers in your team should have read the seminal books in this area.
 These experienced senior designers shall coach younger team members.
 
+The InfoQ DevOps and cloud graph shows DevOps themes investigated in companies during 2022.
+Your experts shall apply most or all the approaches documented in the two columns on the right side.
+
+image::2023-03-02-devops-cloud-graph.png[width=780,height=360,role=text-center]
+
 A professional organization shall have a continuous formation and training path for all collaborators.
 I currently often have to answer basic questions about DevOps, clean code or Scrum.
 Quite a few developers do not know basic definitions or how to use Git or GitHub.
@@ -328,7 +333,7 @@ We politely ask you to read books and documentation.
 Avoid receiving a https://en.wikipedia.org/wiki/RTFM[RTFM] injunction.
 ====
 
-You need some expertise in Docker, Kubernetes and in your development platform <<devops-sme>>.
+You need expertise in Docker, Kubernetes and in your development platform <<devops-sme>>.
 We recommend initially using GitHub.
 It is the most used platform and most developers are versed how to use the provided features.
 
@@ -336,7 +341,7 @@ If your company is missing experienced DevOps and agile professionals, it is tim
 
 All development platforms have extensive support for continuous integration, delivery and deployment.
 DevOps approaches are well-supported.
-Often, advanced concepts such as monitoring, DevSecOps, license management are supported.
+Often, advanced concepts such as monitoring, DevSecOps or license management are supported.
 Extensive tutorials and good practices are available.
 
 Just use the provided tools and approaches to professionally develop and operate your digital platforms.

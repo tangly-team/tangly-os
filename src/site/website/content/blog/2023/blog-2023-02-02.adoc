@@ -1,0 +1,81 @@
+---
+title: "The Quest for an Agile Company: Seven Years tangly llc"
+linkTitle: "Seven Years tangly"
+date: 2023-02-15
+tags: ["agile", "tangly"]
+---
+
+== The Quest for an Agile Company: Seven Years tangly llc
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2023-02-02-head.png[width=420,height=360,role=left]
+
+=== Agile Organization
+
+=== Digital Company
+
+All our internal processes are digital.
+The trend towards digital documents, QR Code and digital exchange standards for invoices helps us to extend our digital approaches to our partners and customers.
+
+We still have manual or paper interactions with government platforms and insurance companies.
+Swiss government departments provide web portal access to their services.
+At least we do not need to send paper documents.
+But none of the solutions for social insurances, VAT declaration or salary documents have an API.
+Swiss government solutions are still stuck in the last millennium and have missed the API integration approach.
+
+Big insurance companies are iller than the federal government.
+Pension fund and accident insurances still request paper correspondence for standardized processes such as mutation or yearly salary structure information.
+Improvements are visible but incredibly slow.
+
+We used Google as our main provider of digital applications for daily work.
+We have a company account and contract since the inception of our company.
+We had to painfully acknowledge that Google has slow innovation and outdated solutions.
+Try to publish our Internet sites with their Sites application.
+It is cumbersome, no support for {ref-asciidoc} or Markdown is available.
+Static website concepts and infrastructure as version managed artifacts are sorely missing.
+We initiated a slow withdrawal from their digital offerings.
+
+=== Websites
+
+=== Lessons Learnt
+
+==== BitBucket Platform
+
+The BitBucket offered functionalities are archaic.
+Their wiki-based approach with Confluence and Jira is the wrong approach for modern digital product development.
+The platform does not support {ref-asciidoc}, CI offerings and https://en.wikipedia.org/wiki/CNAME_record[CNAME] support for our static website.
+The community requests such improvements for years.
+
+We decided to phase out the usage of BitBucket and use more modern platforms.
+We use currently GitHub as our primary platform and GitLab as a fallback solution.
+
+GitHub supports {ref-asciidoc}, has a reasonable CI offering, and their _CNAME_ support is awesome <<cname-github-pages>>.
+
+==== Internet Platforms
+
+Take ownership of the URL for all the cites you own.
+Your blogs and documentation often link to articles or pages on various organization websites.
+Use your organization domain for all internal links to simplify migration of your sites to another provider
+footnote:[We decided to move our static websites from BitBucket to GitHub.
+We were surprised how many links had to be changed.].
+
+[bibliography]
+=== Links
+
+- [[[six-years-tangly, 1]]] link:../../2022/the-quest-for-an-agile-company-six-years-tangly-llc/[Six Year tangly llc]
+Marcel Baumann. 2022.
+- [[[five-years-tangly, 2]]] link:../../2020/2020/the-quest-for-an-agile-company-five-years-tangly-llc/[Five Year tangly llc]
+Marcel Baumann. 2020.
+- [[[four-years-tangly, 3]]] link:../../2019/a-journey-to-be-a-digital-company-tangly-llc/[Four Year tangly llc]
+Marcel Baumann. 2019.
+- [[[founding-tangly, 3]]] link:../../2016/found-a-limited-liability-company-in-switzerland/[Founding tangly llc]
+Marcel Baumann. 2016.
+- [[[cname-github-pages, 4]]] https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages
+GitHub. 2022-12-01.
+
+=== References
+
+bibliography::[]

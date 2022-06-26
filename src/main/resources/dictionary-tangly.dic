@@ -1,3 +1,4 @@
+AGPL
 ATAM
 ATTD
 BBRT
@@ -63,6 +64,7 @@ firstname
 foid
 frontend
 functors
+GPL
 gemba
 graal
 haben
@@ -104,5 +106,7 @@ substate
 substates
 superbuilder
 tangly
+URI
+URL
 utterances
 wagile

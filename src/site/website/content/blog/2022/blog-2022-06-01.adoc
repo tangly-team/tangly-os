@@ -94,7 +94,7 @@ Domain::
 contains the abstraction describing the bounded domain.
 Care is taken to define resilient and legible domain abstractions.
 
-[plantuml,bounded-domain-structure,svg]
+[plantuml,bounded-domain-structure,svg,align="center"]
 ....
 @startsalt
 {
