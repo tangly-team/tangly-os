@@ -74,7 +74,7 @@ tasks.withType(Javadoc) {
 }
 
 tasks.withType(JavaExec) {
-    jvmArgs += ['--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED', '--enable-preview', '-XX:+ShowCodeDetailsInExceptionMessages']
+    jvmArgs += ['--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED', '--enable-preview']
 }
 
 jar {
@@ -110,7 +110,7 @@ publishing {
                 afterEvaluate {
                     name = project.ext.moduleName
                     description = project.description
-                    url = 'https://tangly-team.bitbucket.io/'
+                    url = 'https://blog.tangly.net'
                     inceptionYear = project.ext.inceptionYear
                 }
                 versionMapping {
