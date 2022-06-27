@@ -12,7 +12,7 @@ pipelines:
         script:
             - microdnf install nodejs npm
             - ./gradlew build
-            - ./gradlew net.tangly.erp.ui:installDist net.tangly.erp.ui:installShadowDist -Pvaadin.productionMode
+            - ./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode
         artifacts:
             - net.tangly.erp.ui/build/distributions/**
             - net.tangly.erp.ui/build/install/**
@@ -23,7 +23,6 @@ pipelines:
               - >-
                 curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories//tangly-team/tangly-os/downloads"
                 --form files=@"net.tangly.erp.ui/build/distributions/net.tangly.erp.ui-${ERP_VER}.zip"
-                --form files=@"net.tangly.erp.ui/build/distributions/net.tangly.erp.ui-shadow-${ERP_VER}.zip"
   custom:
       docker-hub-deployment:
         - step:
