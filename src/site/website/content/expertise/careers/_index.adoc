@@ -1,0 +1,28 @@
+---
+title: "Careers"
+linkTitle: "Careers"
+weight: 70
+---
+
+[.text-center]
+=== Come to work with us at tangly and start changing the world
+
+[.text-left]
+We are working following agile values and principles since the beginning of this millennium.
+Join our team.
+
+[.text-left]
+You are a passionate software professional who strives to create new products with our customers.
+
+[.text-left]
+You thrive for purpose, mastery and autonomy.
+
+[.text-left]
+* You are agile, you feel responsible and accountable.
+* You know how to provide maximum product value to our customers.
+* You love to work in an agile team.
+* You advocate agile approaches, DevOps, interactive design and continuous delivery.
+* You are an expert in the Java technology stack.
+
+[.text-center]
+_Please apply under info@tangly.net or call +41 79 778 8689 and join our team._
