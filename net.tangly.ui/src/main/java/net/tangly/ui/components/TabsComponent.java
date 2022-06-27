@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,10 +12,6 @@
 
 package net.tangly.ui.components;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Optional;
-
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.html.Div;
@@ -23,6 +19,10 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
 
 @Tag("tangly-layout-tabs")
 public class TabsComponent extends VerticalLayout {

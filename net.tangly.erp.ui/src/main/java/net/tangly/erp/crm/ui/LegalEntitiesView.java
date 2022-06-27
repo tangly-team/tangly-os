@@ -18,6 +18,7 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.router.PageTitle;
 import net.tangly.core.crm.CrmTags;
 import net.tangly.core.crm.LegalEntity;
 import net.tangly.core.crm.VcardType;
@@ -37,6 +38,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Regular CRUD view on legal entities abstraction. The grid and edition dialog wre optimized for usability.
  */
+@PageTitle("crm-legal entities")
 class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
     private final transient CrmBoundedDomain domain;
 
@@ -46,28 +48,28 @@ class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
         initialize();
     }
 
-    @Override
-    protected void initialize() {
-        var grid = grid();
-        grid.addColumn(LegalEntity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
-        grid.addColumn(VaadinUtils.zefixComponentRenderer()).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(LegalEntity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(LegalEntity::fromDate).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(LegalEntity::toDate).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::organizationLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
-        grid.addColumn(VaadinUtils.urlComponentRenderer(CrmTags.CRM_SITE_WORK)).setKey("webSite").setHeader("Web Site").setAutoWidth(true);
-        grid.addColumn(o -> o.value(CrmTags.CRM_RESPONSIBLE).orElse(null)).setKey("responsible").setHeader("Responsible").setAutoWidth(true).setSortable(true);
-        addAndExpand(filterCriteria(false, false, InternalEntitiesView::addQualifiedEntityFilters), grid(), gridButtons());
-    }
-
     public static void defineOne2ManyEmployees(@NotNull Grid<Employee> grid) {
         VaadinUtils.initialize(grid);
         grid.addColumn(Employee::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(Employee::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(o -> o.value(CrmTags.CRM_EMPLOYEE_TITLE).orElse(null)).setKey("title").setHeader("Title").setAutoWidth(true).setResizable(true)
             .setSortable(true);
-        grid.addColumn(Employee::fromDate).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Employee::toDate).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Employee::from).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Employee::to).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
+    }
+
+    @Override
+    protected void initialize() {
+        var grid = grid();
+        grid.addColumn(LegalEntity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
+        grid.addColumn(VaadinUtils.zefixComponentRenderer()).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(LegalEntity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(LegalEntity::from).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(LegalEntity::to).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::organizationLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
+        grid.addColumn(VaadinUtils.urlComponentRenderer(CrmTags.CRM_SITE_WORK)).setKey("webSite").setHeader("Web Site").setAutoWidth(true);
+        grid.addColumn(o -> o.value(CrmTags.CRM_RESPONSIBLE).orElse(null)).setKey("responsible").setHeader("Responsible").setAutoWidth(true).setSortable(true);
+        addAndExpand(filterCriteria(false, false, InternalEntitiesView::addQualifiedEntityFilters), grid(), gridButtons());
     }
 
     @Override

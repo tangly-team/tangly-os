@@ -12,10 +12,10 @@
 
 package net.tangly.core;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.time.LocalDate;
 import java.util.function.Predicate;
-
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Mixin indicating the class has the capability to have a date.

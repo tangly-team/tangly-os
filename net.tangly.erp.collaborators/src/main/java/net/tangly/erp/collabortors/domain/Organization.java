@@ -12,11 +12,11 @@
 
 package net.tangly.erp.collabortors.domain;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.jetbrains.annotations.NotNull;
 
 public class Organization {
     private final long legalEntityOid;
@@ -31,7 +31,7 @@ public class Organization {
         socialInsurances = new ArrayList<>();
     }
 
-     SwissWageCard computeYearlyWageCard(@NotNull Contract contract, int year) {
+    SwissWageCard computeYearlyWageCard(@NotNull Contract contract, int year) {
         return null;
     }
 

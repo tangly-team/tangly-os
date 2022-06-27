@@ -43,7 +43,7 @@ Include the library in your Gradle configuration as:
 
 ----
 
-The documentation can be found under https://tangly-team.bitbucket.io/docs/erp/ui/[Business documentation]
+The documentation can be found under https://blog.tangly.net/docs/erp/ui/[Business documentation]
 
 For any further questions and discussion, you can use the forum https://groups.google.com/g/tangly-os-components[tangly-OS-Components]
 

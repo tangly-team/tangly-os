@@ -20,7 +20,7 @@ import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Defines the meta information describing the characteristics of a domain entity. Helper methods are provided to collect statistical information on the
+ * Define the meta-information describing the characteristics of a domain entity. Helper methods are provided to collect statistical information on the
  * instances of the domain entity.
  *
  * @param <T> type of the domain entity.

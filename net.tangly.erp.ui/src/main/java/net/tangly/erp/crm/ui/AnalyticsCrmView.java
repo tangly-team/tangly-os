@@ -12,20 +12,7 @@
 
 package net.tangly.erp.crm.ui;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.storedobject.chart.BarChart;
-import com.storedobject.chart.CategoryData;
-import com.storedobject.chart.Data;
-import com.storedobject.chart.DataType;
-import com.storedobject.chart.Position;
-import com.storedobject.chart.RectangularCoordinate;
-import com.storedobject.chart.SOChart;
-import com.storedobject.chart.Size;
-import com.storedobject.chart.XAxis;
-import com.storedobject.chart.YAxis;
+import com.storedobject.chart.*;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.data.provider.DataProvider;
@@ -41,6 +28,10 @@ import net.tangly.ui.grids.PaginatedGrid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AnalyticsCrmView extends AnalyticsView {
     private static final String CustomersTurnover = "Customers Turnover";
@@ -86,8 +77,8 @@ public class AnalyticsCrmView extends AnalyticsView {
         grid.dataProvider(DataProvider.ofCollection(crmDomain.realm().contracts().items()));
         grid.addColumn(Contract::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Contract::fromDate).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Contract::toDate).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Contract::from).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Contract::to).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(VaadinUtils.coloredRender(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setHeader("Amount").setAutoWidth(true).setResizable(true)
             .setSortable(true);

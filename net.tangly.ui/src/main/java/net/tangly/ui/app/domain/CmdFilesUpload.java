@@ -32,8 +32,8 @@ import java.io.UncheckedIOException;
 import java.util.function.BiConsumer;
 
 /**
- * Command to upload a set of files containing entities. The domain will import the provided entities.
- * The current supported format is TSV. The entity type is encoded with the filename.
+ * The command to upload a set of files containing entities is delcared. The bounded domain shall import the provided entities.
+ * The current supported format is tab seperated values TSV. The entity type is encoded with the filename.
  * The mime type <code>text/tab-separated-values</code>is documented under <a href="https://en.wikipedia.org/wiki/Tab-separated_values">TSV Mime Type</a>.
  * The mime type <code>application/json</code> is documented under <a href="https://en.wikipedia.org/wiki/Media_type">Mime types</a>.
  */
@@ -41,13 +41,14 @@ public abstract class CmdFilesUpload<R extends Realm, B, H extends Handler<?>, P
     public static final String TSV_MIME = "text/tab-separated-values";
     public static final String JSON_MIME = "application/json";
     public static final String CANCEL = "Cancel";
+    public static final String TITLE = "Upload Files";
     protected final BoundedDomain<R, B, H, P> domain;
     private final MultiFileMemoryBuffer buffer;
     private final Upload multiFileUpload;
     private Dialog dialog;
 
     /**
-     * Construct an upload command for files.
+     * Constructs an upload command for files.
      *
      * @param domain            damain to which entities and aggregates are updated
      * @param acceptedFileTypes the allowed file types to be uploaded
@@ -59,15 +60,15 @@ public abstract class CmdFilesUpload<R extends Realm, B, H extends Handler<?>, P
         multiFileUpload.setAcceptedFileTypes();
     }
 
+    @Override
     public void execute() {
         dialog = new Dialog();
         dialog.setWidth("2oem");
-        var cancel = new Button(CANCEL, e -> dialog.close());
         var component = new VerticalLayout();
-        component.add(multiFileUpload, cancel);
+        component.add(multiFileUpload);
         dialog.add(component);
-        // TODO 23.1 move button to footer
-        // dialog.getFooter().add(concel);
+        dialog.setHeaderTitle(TITLE);
+        dialog.getFooter().add(new Button(CANCEL, e -> dialog.close()));
         dialog.open();
     }
 
@@ -81,14 +82,20 @@ public abstract class CmdFilesUpload<R extends Realm, B, H extends Handler<?>, P
         dialog = null;
     }
 
-    protected void registerAllFinishedListener(ComponentEventListener<AllFinishedEvent> listener) {
+    /**
+     * Registers the listener in charge to load and update the provided entities for the domain. The listene shall define the correct import order and handle missing files.
+     * The method could be called in the constructor of the subclass.
+     *
+     * @param listener listener to register.
+     */
+    protected void registerAllFinishedListener(@NotNull ComponentEventListener<AllFinishedEvent> listener) {
         multiFileUpload.addAllFinishedListener(listener);
     }
 
     /**
-     * Process the input stream with the provided consumer.
+     * Processes the input stream with the provided consumer.
      *
-     * @param filename name of the file uploaded in the buffer which will be processed
+     * @param filename name of the file uploaded in the buffer, which is processed
      * @param consumer consumer processing the input file
      */
     protected void processInputStream(@NotNull String filename, @NotNull BiConsumer<Reader, String> consumer) {

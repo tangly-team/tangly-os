@@ -12,6 +12,7 @@
 
 package net.tangly.erp.products.ui;
 
+import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.components.EntitiesView;
@@ -26,6 +27,7 @@ import javax.inject.Inject;
 /**
  * Regular CRUD view on assignments abstraction. The grid and edition dialog wre optimized for usability.
  */
+@PageTitle("products-assignements")
 class AssignmentsView extends InternalEntitiesView<Assignment> {
     private static final Logger logger = LogManager.getLogger();
     private final transient ProductsBoundedDomain domain;

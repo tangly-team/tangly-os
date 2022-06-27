@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,14 +12,14 @@
 
 package net.tangly.erp.invoices.services;
 
-import java.util.List;
-
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.invoices.domain.Article;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 /**
  * Handles the invoices subsystem entities. A realm provides access to the instances of the CRM abstractions. The major abstractions are:

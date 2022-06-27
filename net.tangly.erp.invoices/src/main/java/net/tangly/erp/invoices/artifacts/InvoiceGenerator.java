@@ -12,11 +12,11 @@
 
 package net.tangly.erp.invoices.artifacts;
 
-import java.nio.file.Path;
-import java.util.Map;
-
 import net.tangly.erp.invoices.domain.Invoice;
 import org.jetbrains.annotations.NotNull;
+
+import java.nio.file.Path;
+import java.util.Map;
 
 /**
  * The invoice generator abstraction generates a output document based on the provided invoice and optional configuration fields.

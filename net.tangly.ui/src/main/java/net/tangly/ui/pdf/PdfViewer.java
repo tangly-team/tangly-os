@@ -12,11 +12,11 @@
 
 package net.tangly.ui.pdf;
 
-import java.io.InputStream;
-
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.server.StreamResource;
 import org.vaadin.alejandro.PdfBrowserViewer;
+
+import java.io.InputStream;
 
 public class PdfViewer extends Dialog {
     /**

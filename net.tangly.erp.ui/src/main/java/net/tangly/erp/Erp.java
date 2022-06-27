@@ -33,8 +33,8 @@ import net.tangly.erp.products.ports.ProductsEntities;
 import net.tangly.erp.products.ports.ProductsHdl;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
-import net.tangly.erpr.crm.ports.CrmEntities;
-import net.tangly.erpr.crm.ports.CrmHdl;
+import net.tangly.erp.crm.ports.CrmEntities;
+import net.tangly.erp.crm.ports.CrmHdl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -66,6 +66,9 @@ public class Erp {
     private InvoicesBoundedDomain invoicesBoundedDomain;
     private LedgerBoundedDomain ledgerBoundedDomain;
 
+    /**
+     * Defines a private constructor to provide singleton approach.
+     */
     private Erp() {
         this.registry = new TypeRegistry();
         this.properties = new Properties();
@@ -173,7 +176,7 @@ public class Erp {
         ReflectionUtilities.set(subject, HasOid.OID, 900);
         subject.id("administrator");
         subject.newPassword("aeon");
-        subject.fromDate(LocalDate.of(2000, Month.JANUARY, 1));
+        subject.from(LocalDate.of(2000, Month.JANUARY, 1));
         return subject;
     }
 

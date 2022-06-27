@@ -12,25 +12,16 @@
 
 package net.tangly.erp.collabortors.domain;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.function.BiFunction;
-
+import lombok.Builder;
 import net.tangly.core.HasInterval;
 
-public class Insurances implements HasInterval {
-    private LocalDate fromDate;
-    private LocalDate toDate;
-    private BigDecimal nbuPercentage;
-    private BigDecimal buPercentage;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
-    @Override
-    public LocalDate fromDate() {
-        return fromDate;
-    }
-
-    @Override
-    public LocalDate toDate() {
-        return toDate;
-    }
+@Builder
+public record SwissInsurances(LocalDate from,
+                              LocalDate to,
+                              BigDecimal nbuPercentage,
+                              BigDecimal buPercentage,
+                              BigDecimal illnessPercentage) implements HasInterval {
 }

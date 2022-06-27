@@ -67,10 +67,10 @@ public class EntityField<T extends NamedEntity> extends CustomField<T> {
         binder.bind(oid, o -> Long.toString(o.oid()), null);
         binder.forField(fromDate)
             .withValidator(from -> (from == null) || (toDate.getValue() == null) || (from.isBefore(toDate.getValue())), "From date must be before to date")
-            .bind(NamedEntity::fromDate, NamedEntity::fromDate);
+            .bind(NamedEntity::from, NamedEntity::from);
         binder.forField(toDate)
             .withValidator(to -> (to == null) || (fromDate.getValue() == null) || (to.isAfter(fromDate.getValue())), "To date must be after from date")
-            .bind(NamedEntity::toDate, NamedEntity::toDate);
+            .bind(NamedEntity::to, NamedEntity::to);
         binder.bind(text, NamedEntity::text, NamedEntity::text);
     }
 

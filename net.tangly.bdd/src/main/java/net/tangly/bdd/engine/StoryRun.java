@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,15 +12,15 @@
 
 package net.tangly.bdd.engine;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 import net.tangly.bdd.Feature;
 import net.tangly.bdd.Scene;
 import net.tangly.bdd.Story;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Recall that our custom extension generates BDD reports after executing the tests. Some parts of these reports are pulled from the elements of the “@Story”

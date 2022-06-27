@@ -12,13 +12,13 @@
 
 package net.tangly.erp.products.ports;
 
-import java.nio.file.Path;
-import java.time.LocalDate;
-
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
 import net.tangly.erp.products.services.ProductsPort;
+
+import java.nio.file.Path;
+import java.time.LocalDate;
 
 /**
  * Products adapter is an adapter for the products port defined as a secondary port. The port has access to

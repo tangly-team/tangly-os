@@ -21,6 +21,7 @@ import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.NumberRenderer;
+import com.vaadin.flow.router.PageTitle;
 import net.tangly.core.codes.CodeType;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.providers.ProviderView;
@@ -43,6 +44,7 @@ import java.math.BigDecimal;
 /**
  * Regular CRUD view on interactions abstraction. The grid and edition dialog wre optimized for usability.
  */
+@PageTitle("crm-interactions")
 class InteractionsView extends InternalEntitiesView<Interaction> {
     public static final BigDecimal HUNDRED = new BigDecimal("100");
     private final transient CrmBoundedDomain domain;
@@ -108,6 +110,7 @@ class InteractionsView extends InternalEntitiesView<Interaction> {
         entityField.bind(binder);
         binder.bind(potential, e -> VaadinUtils.format(e.potential()), (e, v) -> e.potential(VaadinUtils.toBigDecimal(v)));
         binder.bind(probability, e -> VaadinUtils.format(e.probability()), (e, v) -> e.probability(VaadinUtils.toBigDecimal(v)));
+        binder.forField(code).bind(Interaction::code, Interaction::code);
         binder.readBean(entity);
         return form;
     }

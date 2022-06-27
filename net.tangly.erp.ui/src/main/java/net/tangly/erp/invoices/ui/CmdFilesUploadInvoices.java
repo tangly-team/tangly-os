@@ -25,9 +25,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Set;
 
 /**
- * Command to upload a set of files containing entities. The domain imports the provided entities.
- * The current supported format is TSV and JSON. The entity type is encoded with the filename.
- * The logic takes care of the correct order to process the uploaded files.
+ * The command defines how to upload entities provided as a set of TSV files onto the domain.
  */
 public class CmdFilesUploadInvoices extends CmdFilesUpload<InvoicesRealm, InvoicesBusinessLogic, InvoicesHandler, InvoicesPort> {
     CmdFilesUploadInvoices(@NotNull InvoicesBoundedDomain domain) {

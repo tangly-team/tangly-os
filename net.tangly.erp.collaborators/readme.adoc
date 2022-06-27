@@ -41,7 +41,7 @@ The library can be included in Gradle as
     implementation "net.tangly.erp:collaborators:0.2.7"
 ----
 
-The documentation can be found under https://tangly-team.bitbucket.io/docs/erp/collaborators/[Business documentation]
+The documentation can be found under https://blog.tangly.net/docs/erp/collaborators/[Business documentation]
 
 For any further question and discussion you can use the forum https://groups.google.com/g/tangly-os-components[tangly-OS-Components]
 

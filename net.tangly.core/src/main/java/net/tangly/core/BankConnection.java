@@ -12,8 +12,6 @@
 
 package net.tangly.core;
 
-import java.util.Objects;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.iban4j.BicFormatException;
@@ -24,6 +22,8 @@ import org.iban4j.IbanUtil;
 import org.iban4j.InvalidCheckDigitException;
 import org.iban4j.UnsupportedCountryException;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 /**
  * Describes a bank connection with IBAN account number, BIC identification and name of the institute. The class is immutable.

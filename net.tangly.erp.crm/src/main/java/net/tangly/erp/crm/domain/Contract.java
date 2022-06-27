@@ -13,18 +13,18 @@
 package net.tangly.erp.crm.domain;
 
 
-import java.math.BigDecimal;
-import java.util.Currency;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Optional;
-
 import net.tangly.core.Address;
 import net.tangly.core.BankConnection;
 import net.tangly.core.QualifiedEntityImp;
 import net.tangly.core.crm.CrmEntity;
 import net.tangly.core.crm.LegalEntity;
 import net.tangly.core.crm.VcardType;
+
+import java.math.BigDecimal;
+import java.util.Currency;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * A legal contract between two parties, one being the seller and one being the sellee. The properties of the entity defines the identifiers of the contract and
@@ -126,7 +126,7 @@ public class Contract extends QualifiedEntityImp implements CrmEntity {
         return """
             Contract[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, locale=%s, currency=%s, address=%s, bankConnection=%s, amountWithoutVat=%s, \
             seller=%s, sellee=%s, tags=%s]
-            """.formatted(oid(), id(), name(), fromDate(), toDate(), text(), locale(), currency(), address(), bankConnection(), amountWithoutVat(), seller(),
+            """.formatted(oid(), id(), name(), from(), to(), text(), locale(), currency(), address(), bankConnection(), amountWithoutVat(), seller(),
             sellee(), tags());
     }
 }

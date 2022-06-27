@@ -12,17 +12,18 @@
 
 package net.tangly.commons.utilities;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.UncheckedIOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-
 import org.asciidoctor.Asciidoctor;
 import org.asciidoctor.Attributes;
 import org.asciidoctor.Options;
 import org.asciidoctor.SafeMode;
 import org.jetbrains.annotations.NotNull;
+
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.UncheckedIOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 /**
  * defines helper functions to transform a asciidoc document into a PDF document.
@@ -45,7 +46,7 @@ public class AsciiDoctorHelper {
     }
 
     public static void createPdf(@NotNull Path asciidocFilePath, @NotNull Path pdfFilePath) {
-        try (OutputStream out = Files.newOutputStream(pdfFilePath)) {
+        try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(pdfFilePath))) {
             createPdf(Files.readString(asciidocFilePath), out);
         } catch (IOException e) {
             throw new UncheckedIOException(e);

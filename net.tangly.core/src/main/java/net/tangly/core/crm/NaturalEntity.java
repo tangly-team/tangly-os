@@ -13,14 +13,14 @@
 package net.tangly.core.crm;
 
 
-import java.util.Objects;
-import java.util.Optional;
-
 import net.tangly.core.Address;
 import net.tangly.core.NamedEntityImp;
 import net.tangly.core.PhoneNr;
 import net.tangly.core.Strings;
 import net.tangly.core.Tag;
+
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * A natural entity is a person. A natural entity has an identity defined as the legal number of a person (e.g. the social security number, a name defined as
@@ -113,6 +113,6 @@ public class NaturalEntity extends NamedEntityImp implements CrmEntity {
     public String toString() {
         return """
             NaturalEntity[oid=%s, fromDate=%s, toDate=%s, text=%s, socialNr=%s, firstname=%s, lastname=%s, gender=%s, tags=%s, comments=%s]
-            """.formatted(oid(), fromDate(), toDate(), text(), socialNr(), firstname(), lastname(), gender(), tags(), comments());
+            """.formatted(oid(), from(), to(), text(), socialNr(), firstname(), lastname(), gender(), tags(), comments());
     }
 }

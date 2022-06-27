@@ -29,6 +29,7 @@ import org.mustangproject.ZUGFeRD.IZUGFeRDExportableTradeParty;
 import org.mustangproject.ZUGFeRD.IZUGFeRDTradeSettlementPayment;
 import org.mustangproject.ZUGFeRD.ZUGFeRDExporterFromA3;
 
+import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
@@ -185,7 +186,7 @@ public class InvoiceZugFerd implements IExportableTransaction, InvoiceGenerator 
         try (ZUGFeRDExporterFromA3 exporter = new ZUGFeRDExporterFromA3().setProducer("tangly ERP").setCreator(invoice.invoicingEntity().name())
             .setZUGFeRDVersion(2).setProfile("EN16931").load(Files.newInputStream(invoicePath))) {
             exporter.setTransaction(this);
-            exporter.export(Files.newOutputStream(invoicePath));
+            exporter.export(new BufferedOutputStream(Files.newOutputStream(invoicePath)));
         } catch (IOException e) {
             logger.atError().withThrowable(e).log("Could not read or write file {}", invoicePath);
         }

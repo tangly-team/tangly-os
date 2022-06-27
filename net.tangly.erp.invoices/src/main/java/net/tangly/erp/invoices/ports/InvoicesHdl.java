@@ -12,28 +12,24 @@
 
 package net.tangly.erp.invoices.ports;
 
-import java.io.BufferedReader;
+import net.tangly.commons.logger.EventData;
+import net.tangly.core.domain.Handler;
+import net.tangly.erp.invoices.artifacts.InvoiceJson;
+import net.tangly.erp.invoices.artifacts.InvoicesUtilities;
+import net.tangly.erp.invoices.services.InvoicesHandler;
+import net.tangly.erp.invoices.services.InvoicesRealm;
+import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Inject;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.Reader;
 import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collections;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
-import javax.inject.Inject;
-
-import net.tangly.commons.logger.EventData;
-import net.tangly.core.domain.Handler;
-import net.tangly.erp.invoices.artifacts.InvoiceJson;
-import net.tangly.erp.invoices.artifacts.InvoicesUtilities;
-import net.tangly.erp.invoices.domain.Invoice;
-import net.tangly.erp.invoices.services.InvoicesHandler;
-import net.tangly.erp.invoices.services.InvoicesRealm;
-import org.jetbrains.annotations.NotNull;
 
 import static net.tangly.erp.ports.TsvHdl.MODULE;
 

@@ -39,7 +39,7 @@ The library can be included in Gradle as
  implementation "net.tangly:core:0.2.7"
 ----
 
-The documentation can be found under https://tangly-team.bitbucket.io/docs/core/[Core]
+The documentation can be found under https://blog.tangly.net/docs/core/[Core]
 
 For any further question and discussion you can use the forum https://groups.google.com/g/tangly-os-components[tangly-OS-Components]
 
@@ -65,4 +65,3 @@ Corporate sponsors are
 Individual developers are
 
 * https://linkedin.com/in/marcelbaumann[Marcel Baumann]
-

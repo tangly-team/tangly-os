@@ -14,12 +14,6 @@ package net.tangly.erp.products.services;
 
 import net.tangly.core.domain.Handler;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-
 /**
  * Defines the import port for the products bounded domain. It is the primary port in the DDD terminology.
  */

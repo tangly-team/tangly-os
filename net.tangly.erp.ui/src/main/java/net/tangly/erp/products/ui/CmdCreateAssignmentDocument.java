@@ -18,7 +18,6 @@ import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
@@ -27,12 +26,14 @@ import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class CmdCreateAssignmentDocument implements Cmd {
+    public final String TITLE = "Create Assignment Document";
     private final TextField assignmentName;
     private final TextField collaboratorName;
     private final DatePicker fromDate;
     private final DatePicker toDate;
     private final transient Assignment assignment;
     private final transient ProductsBoundedDomain domain;
+    private Dialog dialog;
 
     public CmdCreateAssignmentDocument(@NotNull Assignment assignment, @NotNull ProductsBoundedDomain domain) {
         this.assignment = assignment;
@@ -47,17 +48,29 @@ public class CmdCreateAssignmentDocument implements Cmd {
 
     @Override
     public void execute() {
-        Dialog dialog = new Dialog();
+        dialog = new Dialog();
+        dialog.setHeaderTitle(TITLE);
         dialog.setWidth("40em");
         FormLayout form = new FormLayout();
         VaadinUtils.set3ResponsiveSteps(form);
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
             domain.port().exportEffortsDocument(assignment, fromDate.getValue(), toDate.getValue());
-            dialog.close();
+            close();
         });
         Button cancel = new Button("Cancel", e -> dialog.close());
-        form.add(assignmentName, collaboratorName, new HtmlComponent("br"), fromDate, toDate, new HtmlComponent("br"), new HorizontalLayout(execute, cancel));
+        form.add(assignmentName, collaboratorName, new HtmlComponent("br"), fromDate, toDate, new HtmlComponent("br"));
         dialog.add(form);
+        dialog.getFooter().add(execute, cancel);
         dialog.open();
+    }
+
+    @Override
+    public Dialog dialog() {
+        return dialog;
+    }
+
+    protected void close() {
+        dialog.close();
+        dialog = null;
     }
 }

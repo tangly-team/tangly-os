@@ -12,11 +12,11 @@
 
 package net.tangly.erp.agile.model;
 
-import java.math.BigDecimal;
-
 import net.tangly.core.ExternalEntity;
 import net.tangly.core.ExternalEntityImp;
 import org.jetbrains.annotations.NotNull;
+
+import java.math.BigDecimal;
 
 public class Story extends ExternalEntityImp implements ExternalEntity {
     private int priority;

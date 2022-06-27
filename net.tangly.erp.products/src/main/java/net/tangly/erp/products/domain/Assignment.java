@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,9 +12,9 @@
 
 package net.tangly.erp.products.domain;
 
-import java.util.Objects;
-
 import net.tangly.core.QualifiedEntityImp;
+
+import java.util.Objects;
 
 /**
  * An assignment defines the connection of an employee to a project for a duration. The start date shall be equal or greater to the start date of project. The
@@ -61,8 +61,6 @@ public class Assignment extends QualifiedEntityImp {
     public String toString() {
         return """
             Assignment[oid=%s, id=%s, fromDate=%s, toDate=%s, text=%s, product=%s, collaboratorId=%s, tags=%s]
-            """.formatted(oid(), id(), fromDate(), toDate(), text(), product(), collaboratorId(), tags());
+            """.formatted(oid(), id(), from(), to(), text(), product(), collaboratorId(), tags());
     }
 }
-
-

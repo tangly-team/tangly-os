@@ -12,13 +12,13 @@
 
 package net.tangly.erp.crm.domain;
 
-import java.util.Objects;
-
 import net.tangly.core.NamedEntityImp;
 import net.tangly.core.crm.CrmEntity;
 import net.tangly.core.crm.LegalEntity;
 import net.tangly.core.crm.NaturalEntity;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 /**
  * Defines an employee as a temporal work contract between a natural entity meaning a person and a legal entity meaning an organization or a company. The name
@@ -36,7 +36,7 @@ public class Employee extends NamedEntityImp implements CrmEntity {
     public String name() {
         String personName = (person != null) ? person.lastname() + ", " + person.firstname() : "UNKNOWN";
         String organizationName = (organization != null) ? organization.name() : "UNKNOWN";
-        return personName + " - " + organizationName + " : " + fromDate();
+        return personName + " - " + organizationName + " : " + from();
     }
 
     public NaturalEntity person() {
@@ -64,6 +64,6 @@ public class Employee extends NamedEntityImp implements CrmEntity {
     public String toString() {
         return """
             Employee[oid=%s, fromDate=%s, toDate=%s, text=%s, person=%s, organization=%s, tags=%s]
-            """.formatted(oid(), fromDate(), toDate(), text(), person(), organization(), tags());
+            """.formatted(oid(), from(), to(), text(), person(), organization(), tags());
     }
 }

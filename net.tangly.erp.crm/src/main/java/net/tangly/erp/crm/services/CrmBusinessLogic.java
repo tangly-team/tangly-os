@@ -13,7 +13,11 @@
 package net.tangly.erp.crm.services;
 
 import net.tangly.core.HasInterval;
-import net.tangly.erp.crm.domain.*;
+import net.tangly.erp.crm.domain.Activity;
+import net.tangly.erp.crm.domain.Contract;
+import net.tangly.erp.crm.domain.Interaction;
+import net.tangly.erp.crm.domain.InteractionCode;
+import net.tangly.erp.crm.domain.Subject;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
@@ -52,11 +56,11 @@ public class CrmBusinessLogic {
      * state. Set the end date property of interaction to the end date of the last activity associated with the interaction in the case of lost state.
      */
     public void updateInteractions() {
-        realm().interactions().items().forEach(interaction -> interaction.toDate(
-            realm().contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.entity().oid()).map(Contract::toDate)
+        realm().interactions().items().forEach(interaction -> interaction.to(
+            realm().contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.entity().oid()).map(Contract::to)
                 .max(Comparator.comparing(LocalDate::toEpochDay)).orElseThrow()));
         realm().interactions().items().stream().filter(o -> o.code() == InteractionCode.lost).forEach(interaction -> interaction
-            .toDate(interaction.activities().stream().map(Activity::date).max(Comparator.comparing(LocalDate::toEpochDay)).orElseThrow()));
+            .to(interaction.activities().stream().map(Activity::date).max(Comparator.comparing(LocalDate::toEpochDay)).orElseThrow()));
     }
 
     /**

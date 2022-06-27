@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,15 +12,16 @@
 
 package net.tangly.ui.app.domain;
 
-import javax.validation.constraints.NotNull;
-
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.ui.components.TabsComponent;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Provides a view on the domain with tabs monitoring the instances of domain specific entities and tags used in the bounded domain.
+ * The list of domain entities is provided with statistics. Similar information is available for tag usage in the domain.
  */
 public class DomainView extends VerticalLayout {
     private static final String ENTITIES = "Entities";

@@ -1,5 +1,5 @@
 /*
- * Copyright 2021-2021 Marcel Baumann
+ * Copyright 2021-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -11,6 +11,6 @@
  */
 
 /**
- * defines the abstraction to compute the salary, social deductions and legal salary documents for collaborators.
+ * defines the abstractions to compute the salary, social deductions and legal salary documents for collaborators.
  */
 package net.tangly.erp.collabortors.domain;

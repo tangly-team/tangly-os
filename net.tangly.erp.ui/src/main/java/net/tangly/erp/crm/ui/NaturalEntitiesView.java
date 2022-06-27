@@ -24,6 +24,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.server.StreamResource;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.PhoneNr;
@@ -52,6 +53,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * Regular CRUD view on natural entities abstraction. The grid and edition dialog wre optimized for usability.
  */
+@PageTitle("crm-natural entities")
 class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
     private final transient CrmBoundedDomain domain;
 
@@ -61,14 +63,24 @@ class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
         initialize();
     }
 
+    public static void defineOne2ManyEmployees(@NotNull Grid<Employee> grid) {
+        VaadinUtils.initialize(grid);
+        grid.addColumn(Employee::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
+        grid.addColumn(o -> o.organization().name()).setKey("organization").setHeader("Organization").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(o -> o.value(CrmTags.CRM_EMPLOYEE_TITLE).orElse(null)).setKey("title").setHeader("Title").setAutoWidth(true).setResizable(true)
+            .setSortable(true);
+        grid.addColumn(Employee::from).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Employee::to).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
+    }
+
     @Override
     protected void initialize() {
         var grid = grid();
         grid.addColumn(NaturalEntity::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(NaturalEntity::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(new LocalDateRenderer<>(NaturalEntity::fromDate, DateTimeFormatter.ISO_DATE)).setKey("from").setHeader("From").setAutoWidth(true)
+        grid.addColumn(new LocalDateRenderer<>(NaturalEntity::from, DateTimeFormatter.ISO_DATE)).setKey("from").setHeader("From").setAutoWidth(true)
             .setResizable(true).setSortable(true);
-        grid.addColumn(new LocalDateRenderer<>(NaturalEntity::toDate, DateTimeFormatter.ISO_DATE)).setKey("to").setHeader("To").setAutoWidth(true)
+        grid.addColumn(new LocalDateRenderer<>(NaturalEntity::to, DateTimeFormatter.ISO_DATE)).setKey("to").setHeader("To").setAutoWidth(true)
             .setResizable(true).setSortable(true);
         grid.addColumn(NaturalEntity::lastname).setKey("lastname").setHeader("Last Name").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(NaturalEntity::firstname).setKey("firstname").setHeader("First Name").setSortable(true).setAutoWidth(true).setResizable(true);
@@ -76,16 +88,6 @@ class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
             .setKey("gender").setHeader("Gender").setResizable( true).setResizable(true);
         grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::individualLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
         addAndExpand(filterCriteria(false, false, InternalEntitiesView::addEntityFilters), grid(), gridButtons());
-    }
-
-    public static void defineOne2ManyEmployees(@NotNull Grid<Employee> grid) {
-        VaadinUtils.initialize(grid);
-        grid.addColumn(Employee::oid).setKey("oid").setHeader("Oid").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
-        grid.addColumn(o -> o.organization().name()).setKey("organization").setHeader("Organization").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(o -> o.value(CrmTags.CRM_EMPLOYEE_TITLE).orElse(null)).setKey("title").setHeader("Title").setAutoWidth(true).setResizable(true)
-            .setSortable(true);
-        grid.addColumn(Employee::fromDate).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(Employee::toDate).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
     }
 
     @Override

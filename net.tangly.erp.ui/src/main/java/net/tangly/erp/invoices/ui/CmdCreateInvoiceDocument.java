@@ -18,7 +18,6 @@ import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
@@ -32,6 +31,7 @@ public class CmdCreateInvoiceDocument implements Cmd {
     private final TextField name;
     private final transient InvoicesBoundedDomain domain;
     private final transient Invoice invoice;
+    private Dialog dialog;
 
     public CmdCreateInvoiceDocument(@NotNull Invoice invoice, @NotNull InvoicesBoundedDomain domain) {
         this.invoice = invoice;
@@ -45,17 +45,30 @@ public class CmdCreateInvoiceDocument implements Cmd {
 
     @Override
     public void execute() {
-        Dialog dialog = new Dialog();
-        dialog.setWidth("40em");
-        FormLayout form = new FormLayout();
-        VaadinUtils.set3ResponsiveSteps(form);
+        dialog = Cmd.createDialog("40em", create());
         Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
             domain.port().exportInvoiceDocument(invoice, withQrCode.getValue(), withEN16931.getValue());
-            dialog.close();
+            close();
         });
         Button cancel = new Button("Cancel", e -> dialog.close());
-        form.add(name, new HtmlComponent("br"), withQrCode, withEN16931, new HtmlComponent("br"), new HorizontalLayout(execute, cancel));
-        dialog.add(form);
+        dialog.getFooter().add(execute, cancel);
         dialog.open();
+    }
+
+    @Override
+    public Dialog dialog() {
+        return dialog;
+    }
+
+    protected void close() {
+        dialog.close();
+        dialog = null;
+    }
+
+    private FormLayout create() {
+        FormLayout form = new FormLayout();
+        VaadinUtils.set3ResponsiveSteps(form);
+        form.add(name, new HtmlComponent("br"), withQrCode, withEN16931);
+        return form;
     }
 }

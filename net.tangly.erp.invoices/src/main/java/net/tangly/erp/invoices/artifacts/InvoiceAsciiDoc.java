@@ -12,6 +12,16 @@
 
 package net.tangly.erp.invoices.artifacts;
 
+import net.codecrete.qrbill.generator.Strings;
+import net.tangly.commons.utilities.AsciiDocHelper;
+import net.tangly.core.Address;
+import net.tangly.erp.invoices.domain.Invoice;
+import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
+import net.tangly.erp.invoices.domain.InvoiceLine;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
@@ -22,16 +32,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
-
-import net.codecrete.qrbill.generator.Strings;
-import net.tangly.commons.utilities.AsciiDocHelper;
-import net.tangly.core.Address;
-import net.tangly.erp.invoices.domain.Invoice;
-import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
-import net.tangly.erp.invoices.domain.InvoiceLine;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.jetbrains.annotations.NotNull;
 
 import static net.tangly.commons.utilities.AsciiDocHelper.NEWLINE;
 import static net.tangly.commons.utilities.AsciiDocHelper.bold;

@@ -13,7 +13,6 @@
 package net.tangly.erp.invoices.ui;
 
 import com.github.mvysny.kaributesting.v10.MockVaadin;
-import com.github.mvysny.kaributesting.v10.Routes;
 import net.tangly.core.TypeRegistry;
 import net.tangly.erp.Erp;
 import net.tangly.erp.invoices.ports.InvoicesAdapter;

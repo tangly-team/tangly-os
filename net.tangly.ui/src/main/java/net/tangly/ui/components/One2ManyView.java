@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -11,9 +11,6 @@
  */
 
 package net.tangly.ui.components;
-
-import java.util.Objects;
-import java.util.function.Consumer;
 
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
@@ -28,6 +25,9 @@ import net.tangly.core.QualifiedEntity;
 import net.tangly.core.providers.Provider;
 import net.tangly.ui.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
+import java.util.function.Consumer;
 
 /**
  * Defines a view for a list of referenced entities displayed in a grid. The details of the selected referenced entity can be shown. The following actions are
@@ -99,8 +99,8 @@ public class One2ManyView<T> extends VerticalLayout {
         dialog.setResizable(true);
         FormLayout form = view.createForm(operation, operation != CrudForm.Operation.CREATE ? selectedItem : null);
         CrudActionsListener<T> actionsListener = new GridActionsListener<>(provider, grid.getDataProvider(), this::selectItem);
-        dialog.add(
-            new VerticalLayout(form, new HtmlComponent("br"), view.createFormButtons(dialog, operation, mode.isCancellable(), selectedItem, actionsListener)));
+        dialog.add(new VerticalLayout(form, new HtmlComponent("br")));
+        view.addFormButtons(dialog, operation, mode.isCancellable(), selectedItem, actionsListener);
         dialog.open();
     }
 

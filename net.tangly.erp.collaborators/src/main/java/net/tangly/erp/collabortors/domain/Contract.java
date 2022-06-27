@@ -12,28 +12,19 @@
 
 package net.tangly.erp.collabortors.domain;
 
+import lombok.Builder;
+import net.tangly.core.HasInterval;
+import org.jetbrains.annotations.NotNull;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import net.tangly.core.HasInterval;
-
-public class Contract implements HasInterval {
-    private long legalEntityOid;
-    private long naturalEntityOid;
-    private LocalDate fromDate;
-    private LocalDate toDate;
-    private BigDecimal yearlySalary;
-    private BigDecimal workPercentage;
-    private int nrOfPayments;
-
-    @Override
-    public LocalDate fromDate() {
-        return fromDate;
-    }
-
-    @Override
-    public LocalDate toDate() {
-        return toDate;
-    }
-
+@Builder
+public record Contract(@NotNull Organization organization,
+                       @NotNull long naturalEntityOid,
+                       @NotNull LocalDate from,
+                       LocalDate to,
+                       @NotNull BigDecimal yearlySalary,
+                       @NotNull BigDecimal workPercentage,
+                       int nrOfPayments) implements HasInterval {
 }

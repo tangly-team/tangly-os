@@ -13,7 +13,7 @@
 package net.tangly.ui.components;
 
 import com.vaadin.flow.component.Tag;
-import com.vaadin.flow.component.select.Select;
+import com.vaadin.flow.component.combobox.ComboBox;
 import net.tangly.core.codes.Code;
 import net.tangly.core.codes.CodeType;
 import org.jetbrains.annotations.NotNull;
@@ -22,24 +22,20 @@ import java.util.Objects;
 
 /**
  * Selection field for a reference code and all its values.
- * <p>Beware that the selected item can be null when {@link com.vaadin.flow.component.select.Select#setEmptySelectionAllowed(boolean)} is set to true.</p>
  *
  * @param <T> reference code to display
  * @see Code
  */
 @Tag("tangly-field-code")
-public class CodeField<T extends Code> extends Select<T> {
+public class CodeField<T extends Code> extends ComboBox<T> {
     private final CodeType<T> codeType;
 
     public CodeField(@NotNull CodeType<T> codeType, String label) {
         this.codeType = codeType;
         setLabel(label);
         setItemLabelGenerator(o -> (Objects.isNull(o) ? "" : o.code()));
-        setItemEnabledProvider(o -> (Objects.isNull(o) ? true : o.isEnabled()));
         setItems(codeType.codes());
-        setEmptySelectionAllowed(true);
         setPlaceholder("select item");
-        setEmptySelectionCaption("no item selected");
         setOpened(false);
     }
 }

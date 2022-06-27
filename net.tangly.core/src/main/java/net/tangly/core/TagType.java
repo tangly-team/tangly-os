@@ -12,12 +12,12 @@
 
 package net.tangly.core;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 import java.util.function.BiPredicate;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
-
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Implements the conceptual type of set of related tags, all the same class. The tag type also provides support to convert the text format of a tag into a

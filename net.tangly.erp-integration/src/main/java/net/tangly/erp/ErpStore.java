@@ -14,7 +14,7 @@ package net.tangly.erp;
 
 import net.tangly.erp.invoices.ports.InvoicesHdl;
 import net.tangly.erp.products.ports.ProductsHdl;
-import net.tangly.erpr.crm.ports.CrmHdl;
+import net.tangly.erp.crm.ports.CrmHdl;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;

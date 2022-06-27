@@ -12,13 +12,13 @@
 
 package net.tangly.core;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Collection;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import org.jetbrains.annotations.NotNull;
 
 /**
  * The interface defines a mixin and abstracts an entity with tags.

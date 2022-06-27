@@ -12,12 +12,12 @@
 
 package net.tangly.core;
 
-import java.util.Objects;
-import java.util.regex.Pattern;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
+import java.util.regex.Pattern;
 
 /**
  * The abstraction of an email address until the Java JDK provides one.

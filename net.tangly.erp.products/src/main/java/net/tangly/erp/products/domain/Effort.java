@@ -12,11 +12,11 @@
 
 package net.tangly.erp.products.domain;
 
-import java.time.LocalDate;
-import java.util.Objects;
-
 import net.tangly.core.HasDate;
 import net.tangly.core.HasOid;
+
+import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * An effort defines work performed on a project. It is possible to specify an additional contract to identify the financial link to the duration. An duration

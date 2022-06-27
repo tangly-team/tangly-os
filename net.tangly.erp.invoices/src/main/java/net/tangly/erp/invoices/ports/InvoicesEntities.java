@@ -12,10 +12,6 @@
 
 package net.tangly.erp.invoices.ports;
 
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.core.providers.ProviderPersistence;
@@ -25,6 +21,10 @@ import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
 import net.tangly.erp.invoices.services.InvoicesRealm;
 import one.microstream.storage.embedded.types.EmbeddedStorage;
 import one.microstream.storage.embedded.types.EmbeddedStorageManager;
+
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InvoicesEntities implements InvoicesRealm {
     private static class Data {

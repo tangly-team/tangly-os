@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -11,8 +11,6 @@
  */
 
 package net.tangly.ui.components;
-
-import java.time.LocalDateTime;
 
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.datetimepicker.DateTimePicker;
@@ -26,6 +24,8 @@ import net.tangly.core.HasComments;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.ui.markdown.MarkdownField;
 import org.jetbrains.annotations.NotNull;
+
+import java.time.LocalDateTime;
 
 /**
  * The comments view is a Crud view with all the comments defined for an object implementing the {@link HasComments}. Edition functions are provided to add,

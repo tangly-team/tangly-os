@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,11 +12,11 @@
 
 package net.tangly.core;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
-
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Defines a mixin and abstracts an entity with comments.

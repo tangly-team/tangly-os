@@ -71,6 +71,6 @@ public class LegalEntity extends QualifiedEntityImp implements CrmEntity {
     public String toString() {
         return """
             LegalEntity[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, vatNr=%s, tags=%s, comments=%s]
-            """.formatted(oid(), id(), name(), fromDate(), toDate(), text(), vatNr(), tags(), comments());
+            """.formatted(oid(), id(), name(), from(), to(), text(), vatNr(), tags(), comments());
     }
 }

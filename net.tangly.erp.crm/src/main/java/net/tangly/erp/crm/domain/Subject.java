@@ -12,21 +12,21 @@
 
 package net.tangly.erp.crm.domain;
 
+import net.tangly.core.QualifiedEntityImp;
+import net.tangly.core.crm.NaturalEntity;
+import net.tangly.erp.crm.gravatar.Gravatar;
+import net.tangly.erp.crm.gravatar.GravatarImage;
+import net.tangly.erp.crm.gravatar.GravatarRating;
+import org.jetbrains.annotations.NotNull;
+
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.Base64;
 import java.util.Objects;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
-
-import net.tangly.core.crm.NaturalEntity;
-import net.tangly.erp.crm.gravatar.Gravatar;
-import net.tangly.erp.crm.gravatar.GravatarImage;
-import net.tangly.erp.crm.gravatar.GravatarRating;
-import net.tangly.core.QualifiedEntityImp;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Defines the abstraction of a registered subject entitled to use the application and associated services. The id of the subject is the human readable unique

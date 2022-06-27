@@ -12,6 +12,7 @@
 
 package net.tangly.erp.products.ui;
 
+import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.products.domain.Product;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.components.EntitiesView;
@@ -20,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 
+@PageTitle("products-products")
 class ProductsView extends InternalEntitiesView<Product> {
     private final ProductsBoundedDomain domain;
 

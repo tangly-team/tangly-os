@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,14 +12,14 @@
 
 package net.tangly.commons.utilities;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Set;
 import java.util.stream.Stream;
-
-import org.jetbrains.annotations.NotNull;
 
 public final class FileUtilities {
     private FileUtilities() {

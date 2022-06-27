@@ -12,16 +12,15 @@
 
 package net.tangly.erp;
 
+import com.google.common.jimfs.Jimfs;
+import net.tangly.erp.crm.ports.CrmAdapter;
+import net.tangly.erp.crm.ports.CrmEntities;
+import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
 import java.nio.file.FileSystem;
 
-import com.google.common.jimfs.Jimfs;
-import net.tangly.erpr.crm.ports.CrmAdapter;
-import net.tangly.erpr.crm.ports.CrmEntities;
-import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
-
 
 class CrmPortTest {
     @Test

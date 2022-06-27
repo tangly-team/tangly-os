@@ -13,7 +13,6 @@
 package net.tangly.erp.crm.ui;
 
 import net.tangly.erp.Erp;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 class CmdLoginItTest extends CrmItTest {

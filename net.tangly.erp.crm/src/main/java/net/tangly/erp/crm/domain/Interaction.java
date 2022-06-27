@@ -12,6 +12,10 @@
 
 package net.tangly.erp.crm.domain;
 
+import net.tangly.core.QualifiedEntityImp;
+import net.tangly.core.crm.LegalEntity;
+import org.jetbrains.annotations.NotNull;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,10 +23,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-
-import net.tangly.core.QualifiedEntityImp;
-import net.tangly.core.crm.LegalEntity;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Defines an interaction between your company and a legal entity and a group of natural entities. The legal entity is the organization you want a contract
@@ -38,7 +38,7 @@ public class Interaction extends QualifiedEntityImp {
 
     public Interaction() {
         activities = new ArrayList<>();
-        fromDate(LocalDate.now());
+        from(LocalDate.now());
         this.code = InteractionCode.prospect;
         this.potential = BigDecimal.ZERO;
         this.probability = BigDecimal.ZERO;
@@ -112,6 +112,6 @@ public class Interaction extends QualifiedEntityImp {
     public String toString() {
         return """
             Interaction[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, state=%s, potential=%s, probability=%s, tags=%s]
-            """.formatted(oid(), id(), name(), fromDate(), toDate(), text(), code(), potential(), probability(), tags());
+            """.formatted(oid(), id(), name(), from(), to(), text(), code(), potential(), probability(), tags());
     }
 }

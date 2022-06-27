@@ -12,10 +12,22 @@
 
 package net.tangly.erp.ports;
 
+import net.tangly.commons.lang.ReflectionUtilities;
+import net.tangly.commons.lang.Strings;
+import net.tangly.commons.logger.EventData;
+import net.tangly.core.*;
+import net.tangly.core.crm.CrmEntity;
+import net.tangly.core.crm.VcardType;
+import net.tangly.core.providers.Provider;
+import net.tangly.gleam.model.TsvEntity;
+import net.tangly.gleam.model.TsvProperty;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
+import org.apache.commons.csv.CSVRecord;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
@@ -27,31 +39,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
-
-import net.tangly.commons.lang.ReflectionUtilities;
-import net.tangly.commons.lang.Strings;
-import net.tangly.commons.logger.EventData;
-import net.tangly.core.Address;
-import net.tangly.core.BankConnection;
-import net.tangly.core.Comment;
-import net.tangly.core.EmailAddress;
-import net.tangly.core.Entity;
-import net.tangly.core.NamedEntity;
-import net.tangly.core.HasComments;
-import net.tangly.core.HasId;
-import net.tangly.core.HasOid;
-import net.tangly.core.HasTags;
-import net.tangly.core.PhoneNr;
-import net.tangly.core.QualifiedEntity;
-import net.tangly.core.crm.CrmEntity;
-import net.tangly.core.crm.VcardType;
-import net.tangly.core.providers.Provider;
-import net.tangly.gleam.model.TsvEntity;
-import net.tangly.gleam.model.TsvProperty;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVPrinter;
-import org.apache.commons.csv.CSVRecord;
-import org.jetbrains.annotations.NotNull;
 
 public final class TsvHdl {
     public static final CSVFormat FORMAT =
@@ -85,8 +72,8 @@ public final class TsvHdl {
         List<TsvProperty<T, ?>> fields = new ArrayList<>();
         fields.add(TsvProperty.of(OID, Entity::oid, (entity, value) -> ReflectionUtilities.set(entity, OID, value), Long::parseLong));
         fields.add(TsvProperty.ofString(TEXT, Entity::text, Entity::text));
-        fields.add(TsvProperty.ofDate(FROM_DATE, Entity::fromDate, Entity::fromDate));
-        fields.add(TsvProperty.ofDate(TO_DATE, Entity::toDate, Entity::toDate));
+        fields.add(TsvProperty.ofDate(FROM_DATE, Entity::from, Entity::from));
+        fields.add(TsvProperty.ofDate(TO_DATE, Entity::to, Entity::to));
         return fields;
     }
 

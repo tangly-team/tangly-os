@@ -271,8 +271,8 @@ public class CrmTsvHdl {
     private TsvEntity<Employee> createTsvEmployee() {
         List<TsvProperty<Employee, ?>> fields =
             List.of(TsvProperty.of(TsvHdl.OID, Employee::oid, (entity, value) -> ReflectionUtilities.set(entity, TsvHdl.OID, value), Long::parseLong),
-                TsvProperty.ofDate(TsvHdl.FROM_DATE, Employee::fromDate, Employee::fromDate),
-                TsvProperty.ofDate(TsvHdl.TO_DATE, Employee::toDate, Employee::toDate), TsvProperty.ofString(TsvHdl.TEXT, Employee::text, Employee::text),
+                TsvProperty.ofDate(TsvHdl.FROM_DATE, Employee::from, Employee::from),
+                TsvProperty.ofDate(TsvHdl.TO_DATE, Employee::to, Employee::to), TsvProperty.ofString(TsvHdl.TEXT, Employee::text, Employee::text),
                 TsvProperty.of("personOid", Employee::person, Employee::person, e -> findNaturalEntityByOid(e).orElse(null), TsvHdl.convertFoidTo()),
                 TsvProperty.of("organizationOid", Employee::organization, Employee::organization, e -> findLegalEntityByOid(e).orElse(null),
                     TsvHdl.convertFoidTo()), TsvHdl.tagProperty(CRM_EMPLOYEE_TITLE), TsvHdl.tagProperty(CRM_EMAIL_WORK),

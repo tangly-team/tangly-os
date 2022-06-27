@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,6 +12,9 @@
 
 package net.tangly.core;
 
+import net.tangly.core.codes.CodeType;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -19,9 +22,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-
-import net.tangly.core.codes.CodeType;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Registry of tag types defined for a domain model.

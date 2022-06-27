@@ -18,7 +18,6 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import net.tangly.erp.Erp;
-import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.app.domain.Cmd;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;

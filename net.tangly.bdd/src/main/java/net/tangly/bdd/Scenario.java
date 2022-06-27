@@ -12,12 +12,12 @@
 
 package net.tangly.bdd;
 
+import org.junit.jupiter.api.Test;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
-import org.junit.jupiter.api.Test;
 
 /**
  * Represents a use case in a {@link Story}. The annotation is meta-annotated with JUnit 5 Jupiter's built-in "@Test" annotation. When IDEs and test

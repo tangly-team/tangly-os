@@ -14,20 +14,15 @@ package net.tangly.erp.crm.ui;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.dialog.Dialog;
-import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
 import net.tangly.core.crm.NaturalEntity;
 import net.tangly.erp.Erp;
 import net.tangly.erp.crm.domain.Subject;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static com.github.mvysny.kaributesting.v10.LocatorJ._click;
 import static com.github.mvysny.kaributesting.v10.LocatorJ._get;
 import static com.github.mvysny.kaributesting.v10.LocatorJ._setValue;
-import static com.github.mvysny.kaributools.DialogUtilsKt.getAllDialogs;
 import static net.tangly.erp.crm.ui.CmdChangePassword.CANCEL;
 import static net.tangly.erp.crm.ui.CmdChangePassword.CONFIRM_PASSWORD;
 import static net.tangly.erp.crm.ui.CmdChangePassword.CURRENT_PASSWORD;

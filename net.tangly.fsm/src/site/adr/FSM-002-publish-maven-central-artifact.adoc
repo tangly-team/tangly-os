@@ -28,7 +28,7 @@ More customers will validate the usefulness of the library and identify extensio
 The library shall be published on maven central and be accessible to a wide range of developers and organizations.
 A website shall be set up to provide an adequate documentation for users.
 
-The https://tangly-team.bitbucket.io/docs/fsm/[FSM website] will use a static web approach to minimize costs and provide good legibility.
+The https://blog.tangly.net/docs/fsm/[FSM website] will use a static web approach to minimize costs and provide good legibility.
 
 The library will be published on Maven Central to maximize potential usage.
 

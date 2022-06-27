@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -15,7 +15,6 @@ package net.tangly.ui.components;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import org.jetbrains.annotations.NotNull;
 
 public interface CrudForm<T> {
@@ -43,10 +42,8 @@ public interface CrudForm<T> {
     default void formCancelled(@NotNull Operation operation, T entity) {
     }
 
-    default HorizontalLayout createFormButtons(@NotNull Dialog dialog, @NotNull CrudForm.Operation operation, boolean isCancellable, @NotNull T entity,
-                                               @NotNull CrudActionsListener<T> actionsListener) {
-        HorizontalLayout actions = new HorizontalLayout();
-        actions.setSpacing(true);
+    default void addFormButtons(@NotNull Dialog dialog, @NotNull CrudForm.Operation operation, boolean isCancellable, @NotNull T entity,
+                                @NotNull CrudActionsListener<T> actionsListener) {
         Button cancel = new Button("Cancel", event -> {
             formCancelled(CrudForm.Operation.CANCEL, entity);
             dialog.close();
@@ -54,47 +51,41 @@ public interface CrudForm<T> {
         Button action;
         switch (operation) {
             case VIEW:
-                action = new Button("Close");
-                actions.add(action);
-                action.addClickListener(event -> {
+                action = new Button("Close", event -> {
                     formCompleted(CrudForm.Operation.VIEW, entity);
                     dialog.close();
                 });
+                dialog.getFooter().add(action);
                 break;
             case UPDATE:
-                action = new Button("Ok");
-                if (isCancellable) {
-                    actions.add(action, cancel);
-                } else {
-                    actions.add(action);
-                }
-                action.addClickListener(event -> {
+                action = new Button("Ok", event -> {
                     formCompleted(CrudForm.Operation.UPDATE, entity);
                     actionsListener.entityUpdated(entity);
                     dialog.close();
                 });
+                if (isCancellable) {
+                    dialog.getFooter().add(cancel, action);
+                } else {
+                    dialog.getFooter().add(action);
+                }
                 break;
             case CREATE:
-                action = new Button("Create");
-                actions.add(action, cancel);
-                action.addClickListener(event -> {
+                action = new Button("Create", event -> {
                     T created = formCompleted(CrudForm.Operation.CREATE, null);
                     actionsListener.entityAdded(created);
                     dialog.close();
                 });
+                dialog.getFooter().add(cancel, action);
                 break;
             case DELETE:
-                action = new Button("Delete");
-                actions.add(action, cancel);
-                action.addClickListener(event -> {
+                action = new Button("Delete", event -> {
                     formCompleted(CrudForm.Operation.DELETE, entity);
                     actionsListener.entityDeleted(entity);
                     dialog.close();
                 });
+                dialog.getFooter().add(cancel, action);
                 break;
             default:
         }
-        return actions;
     }
 }
-

@@ -17,6 +17,7 @@ import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.ui.components.EntitiesView;
@@ -29,6 +30,7 @@ import java.time.LocalDate;
 /**
  * Charts of accounts are defined externally as TSV files. Currently the account view is a read-only view on accounts instances.
  */
+@PageTitle("ledger-accounts")
 class AccountsView extends EntitiesView<Account> {
     private final transient LedgerBoundedDomain domain;
     private LocalDate from;

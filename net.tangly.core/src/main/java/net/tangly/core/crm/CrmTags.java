@@ -13,10 +13,6 @@
 package net.tangly.core.crm;
 
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Objects;
-
 import net.tangly.core.Address;
 import net.tangly.core.BankConnection;
 import net.tangly.core.EmailAddress;
@@ -26,6 +22,10 @@ import net.tangly.core.Tag;
 import net.tangly.core.TagType;
 import net.tangly.core.TypeRegistry;
 import org.jetbrains.annotations.NotNull;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Objects;
 
 /**
  * A taxonomy of tags for a customer relationship management system. The namespace is naturally <i>crm</i>. Additional namespaces were added to introduce

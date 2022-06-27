@@ -12,15 +12,15 @@
 
 package net.tangly.erp.agile.model;
 
+import net.tangly.core.ExternalEntity;
+import net.tangly.core.ExternalEntityImp;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-
-import net.tangly.core.ExternalEntity;
-import net.tangly.core.ExternalEntityImp;
-import org.jetbrains.annotations.NotNull;
 
 public class Product extends ExternalEntityImp implements ExternalEntity {
     private final List<Feature> features;

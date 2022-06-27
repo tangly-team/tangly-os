@@ -12,6 +12,14 @@
 
 package net.tangly.erp.products.ports;
 
+import net.tangly.commons.utilities.AsciiDocHelper;
+import net.tangly.erp.products.domain.Assignment;
+import net.tangly.erp.products.domain.Effort;
+import net.tangly.erp.products.services.ProductsBusinessLogic;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.io.Writer;
 import java.math.BigDecimal;
@@ -21,14 +29,6 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
-
-import net.tangly.commons.utilities.AsciiDocHelper;
-import net.tangly.erp.products.domain.Assignment;
-import net.tangly.erp.products.domain.Effort;
-import net.tangly.erp.products.services.ProductsBusinessLogic;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.jetbrains.annotations.NotNull;
 
 import static java.util.stream.Collectors.groupingBy;
 

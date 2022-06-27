@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,15 +12,15 @@
 
 package net.tangly.erp.products.services;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Objects;
-import javax.inject.Inject;
-
 import net.tangly.commons.utilities.DateUtilities;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Inject;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Objects;
 
 public class ProductsBusinessLogic {
     private final ProductsRealm realm;

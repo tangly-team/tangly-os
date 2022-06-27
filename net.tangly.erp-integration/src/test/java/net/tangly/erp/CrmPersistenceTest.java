@@ -12,13 +12,13 @@
 
 package net.tangly.erp;
 
-import java.nio.file.FileSystem;
-
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
-import net.tangly.erpr.crm.ports.CrmEntities;
-import net.tangly.erpr.crm.ports.CrmHdl;
+import net.tangly.erp.crm.ports.CrmEntities;
+import net.tangly.erp.crm.ports.CrmHdl;
 import org.junit.jupiter.api.Test;
+
+import java.nio.file.FileSystem;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

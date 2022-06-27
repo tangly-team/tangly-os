@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -14,10 +14,10 @@ package net.tangly.ui.app.domain;
 
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
-import net.tangly.ui.grids.GridDecorators;
-import net.tangly.ui.grids.PaginatedGrid;
 import net.tangly.core.TagType;
 import net.tangly.core.domain.BoundedDomain;
+import net.tangly.ui.grids.GridDecorators;
+import net.tangly.ui.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;

@@ -12,9 +12,6 @@
 
 package net.tangly.erp.ledger.ui;
 
-import java.util.Objects;
-import javax.inject.Inject;
-
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
@@ -25,6 +22,9 @@ import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
 import net.tangly.ui.components.Crud;
 import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Inject;
+import java.util.Objects;
 
 public class LedgerBoundedDomainUi implements BoundedDomainUi {
     private final LedgerBoundedDomain domain;

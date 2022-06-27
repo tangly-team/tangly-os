@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,11 +12,11 @@
 
 package net.tangly.commons.lang.exceptions;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
-
-import org.jetbrains.annotations.NotNull;
 
 /**
  * The exception mapper processes an exception and executes associated instructions with the helper. For example a HTTP error code and answer can be generated

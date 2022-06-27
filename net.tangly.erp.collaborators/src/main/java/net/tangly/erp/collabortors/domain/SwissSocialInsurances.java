@@ -12,29 +12,24 @@
 
 package net.tangly.erp.collabortors.domain;
 
+import lombok.Builder;
+import net.tangly.core.HasInterval;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Month;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import net.tangly.core.HasInterval;
-
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
-public class SwissSocialInsurances implements HasInterval {
+@Builder
+public record SwissSocialInsurances(LocalDate from,
+                                    LocalDate to,
+                                    BigDecimal ahvPercentage,
+                                    BigDecimal ahvAdministrationPercentage,
+                                    BigDecimal ivPercentage,
+                                    BigDecimal eoPercentage,
+                                    BigDecimal alvPercentage,
+                                    BigDecimal fakPercentage
+) implements HasInterval {
     static final BigDecimal HALF = new BigDecimal("0.5");
-    private LocalDate fromDate;
-    private LocalDate toDate;
-    private BigDecimal ahvPercentage;
-    private BigDecimal ahvAdministrationPercentage;
-    private BigDecimal ivPercentage;
-    private BigDecimal eoPercentage;
-    private BigDecimal alvPercentage;
-    private BigDecimal fakPercentage;
-
 
     public static SwissSocialInsurances of(int year) {
         return switch (year) {
@@ -53,16 +48,6 @@ public class SwissSocialInsurances implements HasInterval {
     static SwissSocialInsurances of2016_2018() {
         return new SwissSocialInsurances(LocalDate.of(2021, Month.JANUARY, 1), LocalDate.of(2021, Month.DECEMBER, 31), new BigDecimal("8.4"),
             new BigDecimal("5.0"), new BigDecimal("1.4"), new BigDecimal("0.45"), new BigDecimal("2.2"), new BigDecimal("1.7"));
-    }
-
-    @Override
-    public LocalDate fromDate() {
-        return fromDate;
-    }
-
-    @Override
-    public LocalDate toDate() {
-        return toDate;
     }
 
     public BigDecimal computeEmployeeSocialInsurances(BigDecimal amount) {

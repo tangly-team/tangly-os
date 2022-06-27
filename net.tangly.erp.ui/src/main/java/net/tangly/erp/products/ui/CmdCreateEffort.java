@@ -12,17 +12,12 @@
 
 package net.tangly.erp.products.ui;
 
-import java.time.LocalDate;
-import java.util.List;
-
-import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
@@ -37,12 +32,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
-public class CmdCreateEffort extends Dialog implements Cmd {
+import java.time.LocalDate;
+import java.util.List;
+
+public class CmdCreateEffort implements Cmd {
     private static final Logger logger = LogManager.getLogger();
     private final Binder<Effort> binder;
     private final Effort effort;
     private final transient Assignment assignment;
     private final transient ProductsBoundedDomain domain;
+    private Dialog dialog;
 
     public CmdCreateEffort(@NotNull Assignment assignment, @NotNull ProductsBoundedDomain domain) {
         this.assignment = assignment;
@@ -59,15 +58,34 @@ public class CmdCreateEffort extends Dialog implements Cmd {
 
     @Override
     public void execute() {
-        setResizable(true);
-        add(create(domain));
-        open();
+        dialog = Cmd.createDialog("40em", create(domain));
+        Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
+            try {
+                binder.writeBean(effort);
+                domain.realm().efforts().update(effort);
+            } catch (ValidationException validationException) {
+                logger.atError().log("Validation error", e);
+            }
+            close();
+        });
+        Button cancel = new Button("Cancel", e -> this.close());
+        dialog.getFooter().add(execute, cancel);
+        dialog.open();
+    }
+
+    @Override
+    public Dialog dialog() {
+        return dialog;
+    }
+
+    protected void close() {
+        dialog.close();
+        dialog = null;
     }
 
     private FormLayout create(@NotNull ProductsBoundedDomain domain) {
         FormLayout form = new FormLayout();
         VaadinUtils.set3ResponsiveSteps(form);
-
         TextField assignment = VaadinUtils.createTextField("Assignment", "assignment", true, false);
         TextField collaborator = VaadinUtils.createTextField("Collaborator", "collaborator", true, false);
         TextField collaboratorId = VaadinUtils.createTextField("Collaborator ID", "collaborator id", true, false);
@@ -87,20 +105,8 @@ public class CmdCreateEffort extends Dialog implements Cmd {
         }
         TextArea text = new TextArea("Text", "text");
 
-        Button execute = new Button("Execute", VaadinIcon.COGS.create(), e -> {
-            try {
-                binder.writeBean(effort);
-                domain.realm().efforts().update(effort);
-            } catch (ValidationException validationException) {
-                logger.atError().log("Validation error", e);
-            }
-            this.close();
-        });
-        Button cancel = new Button("Cancel", e -> this.close());
-
         form.add(assignment, collaborator, collaboratorId, date, (contract != null) ? contract : contracts, duration);
         form.add(text, 3);
-        form.add(new HtmlComponent("br"), new HorizontalLayout(execute, cancel));
 
         binder.bind(assignment, o -> o.assignment().id(), null);
         binder.bind(collaborator, o -> o.assignment().name(), null);

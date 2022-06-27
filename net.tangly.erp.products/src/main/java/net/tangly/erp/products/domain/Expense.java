@@ -12,12 +12,12 @@
 
 package net.tangly.erp.products.domain;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-
 import net.tangly.core.HasDate;
 import net.tangly.core.HasText;
 import org.jetbrains.annotations.NotNull;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 /**
  * An expense defines a monetary cost associated with a contract and implictly a product.

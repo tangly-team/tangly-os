@@ -12,8 +12,6 @@
 
 package net.tangly.erp.crm.ui;
 
-import java.util.Objects;
-
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.Icon;
@@ -22,25 +20,31 @@ import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
+import com.vaadin.flow.router.PageTitle;
+import com.vaadin.flow.router.Route;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.PhoneNr;
 import net.tangly.core.codes.CodeType;
-import net.tangly.erp.crm.domain.ActivityCode;
 import net.tangly.core.crm.GenderCode;
+import net.tangly.erp.crm.domain.ActivityCode;
 import net.tangly.erp.crm.domain.Lead;
 import net.tangly.erp.crm.domain.LeadCode;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
+import net.tangly.erp.ui.MainLayout;
 import net.tangly.ui.components.CodeField;
 import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.VaadinUtils;
 import net.tangly.ui.grids.GridDecorators;
-import net.tangly.ui.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 /**
  * Regular CRUD view on leads abstraction. The grid and edition dialog wre optimized for usability.
  */
-class LeadsView extends EntitiesView<Lead> {
+
+@PageTitle("crm-leads")
+public class LeadsView extends EntitiesView<Lead> {
     private final transient CrmBoundedDomain domain;
     private DatePicker date;
     private CodeField<LeadCode> code;

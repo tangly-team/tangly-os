@@ -17,6 +17,7 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.NumberRenderer;
+import com.vaadin.flow.router.PageTitle;
 import net.tangly.core.codes.CodeType;
 import net.tangly.erp.invoices.domain.Article;
 import net.tangly.erp.invoices.domain.ArticleCode;
@@ -30,6 +31,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Regular CRUD view on articles abstraction. The grid and edition dialog wre optimized for usability.
  */
+@PageTitle("invoices-activities")
 class ArticlesView extends EntitiesView<Article> {
     private final transient InvoicesBoundedDomain domain;
     private final TextField id;

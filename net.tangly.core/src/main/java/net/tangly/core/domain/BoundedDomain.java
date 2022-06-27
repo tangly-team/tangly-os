@@ -12,17 +12,17 @@
 
 package net.tangly.core.domain;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
 import net.tangly.core.HasOid;
 import net.tangly.core.HasTags;
 import net.tangly.core.TagType;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * A bounded domain as defined in the DDD approach has a domain specific model and a set of adapters.
@@ -40,7 +40,7 @@ public class BoundedDomain<R extends Realm, B, H extends Handler<?>, P> {
     private final B logic;
     private final transient TypeRegistry registry;
 
-    public BoundedDomain(String name, R realm, B logic, H handler, P port, TypeRegistry registry) {
+    public BoundedDomain(@NotNull String name, @NotNull R realm, @NotNull B logic, @NotNull H handler, @NotNull P port, TypeRegistry registry) {
         this.name = name;
         this.realm = realm;
         this.logic = logic;

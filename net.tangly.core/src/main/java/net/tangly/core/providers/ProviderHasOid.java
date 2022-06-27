@@ -12,14 +12,14 @@
 
 package net.tangly.core.providers;
 
-import java.util.List;
-import java.util.Optional;
-
 import net.tangly.commons.generator.IdGenerator;
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.core.HasOid;
 import one.microstream.storage.embedded.types.EmbeddedStorageManager;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+import java.util.Optional;
 
 /**
  * The class is a decorator for a provider with entities having a unique object identifier which should be handled through the provider.

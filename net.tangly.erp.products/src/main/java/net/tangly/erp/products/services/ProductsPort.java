@@ -12,10 +12,10 @@
 
 package net.tangly.erp.products.services;
 
-import java.time.LocalDate;
-
 import net.tangly.erp.products.domain.Assignment;
 import org.jetbrains.annotations.NotNull;
+
+import java.time.LocalDate;
 
 /**
  * Defines the export port for the products bounded domain. It is the secondary port in the DDD terminology.

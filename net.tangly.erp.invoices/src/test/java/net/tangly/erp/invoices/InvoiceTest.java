@@ -12,27 +12,27 @@
 
 package net.tangly.erp.invoices;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.Currency;
-import java.util.List;
-
 import net.tangly.core.Address;
 import net.tangly.core.BankConnection;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
+import net.tangly.erp.invoices.artifacts.InvoiceJson;
 import net.tangly.erp.invoices.domain.Article;
 import net.tangly.erp.invoices.domain.ArticleCode;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.domain.InvoiceItem;
 import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
 import net.tangly.erp.invoices.domain.Subtotal;
-import net.tangly.erp.invoices.artifacts.InvoiceJson;
 import net.tangly.erp.invoices.services.InvoicesRealm;
 import net.tangly.gleam.model.JsonEntity;
 import org.junit.jupiter.api.Test;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.Currency;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,9 +12,6 @@
 
 package net.tangly.ui.components;
 
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
@@ -25,9 +22,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+
 /**
- * Defines a generic view for entities. The provider is the connection to the application backend. Classes inheriting entities view shall implement at least
- * following methods
+ * Defines a generic view for entities. The provider is the connection to the application backend. Classes inheriting entities view shall implement at least the following methods.
  * <ul>
  *     <li>{@link #initialize()} and define the columns of the grid used to display the entities.</li>
  *     <li>{@link #fillForm(Operation, Object, FormLayout)}  and define the fields for the details view of the entity.</li>
@@ -101,7 +100,7 @@ public abstract class EntitiesView<T> extends Crud<T> implements CrudForm<T> {
     }
 
     protected GridButtons<T> gridButtons() {
-        GridButtons<T> buttons = new GridButtons<>(mode(), this, new GridActionsListener<>(provider, grid().getDataProvider(), this::selectedItem));
+        GridButtons<T> buttons = new GridButtons<>(entityClass(), mode(), this, new GridActionsListener<>(provider, grid().getDataProvider(), this::selectedItem));
         addSelectedItemListener(buttons);
         return buttons;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,16 +12,17 @@
 
 package net.tangly.ui.components;
 
-import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
 public class GridButtons<T> extends HorizontalLayout implements SelectedItemListener<T> {
+    private final Class<T> clazz;
     private final Crud.Mode mode;
     private final CrudForm<T> form;
     private final CrudActionsListener<T> actionsListener;
@@ -31,7 +32,8 @@ public class GridButtons<T> extends HorizontalLayout implements SelectedItemList
     private final Button delete;
     private T selectedItem;
 
-    public GridButtons(Crud.Mode mode, CrudForm<T> form, CrudActionsListener<T> actionsListener) {
+    public GridButtons(Class<T> clazz, Crud.Mode mode, CrudForm<T> form, CrudActionsListener<T> actionsListener) {
+        this.clazz = clazz;
         this.mode = mode;
         this.form = form;
         this.actionsListener = actionsListener;
@@ -76,8 +78,9 @@ public class GridButtons<T> extends HorizontalLayout implements SelectedItemList
         }
     }
 
-    void displayDialog(CrudForm.Operation operation) {
+    private void displayDialog(@NotNull CrudForm.Operation operation) {
         Dialog dialog = new Dialog();
+        dialog.setHeaderTitle(clazz.getSimpleName());
         dialog.setCloseOnEsc(true);
         dialog.setCloseOnOutsideClick(false);
         dialog.setModal(false);
@@ -85,8 +88,8 @@ public class GridButtons<T> extends HorizontalLayout implements SelectedItemList
         dialog.setHeight("70vh");
         dialog.setResizable(true);
         dialog.setDraggable(true);
-        dialog.add(new VerticalLayout(form.createForm(operation, operation != CrudForm.Operation.CREATE ? selectedItem : null), new HtmlComponent("br"),
-            form.createFormButtons(dialog, operation, mode.isCancellable(), selectedItem(), actionsListener)));
+        dialog.add(new VerticalLayout(form.createForm(operation, operation != CrudForm.Operation.CREATE ? selectedItem : null)));
+        form.addFormButtons(dialog, operation, mode.isCancellable(), selectedItem(), actionsListener);
         dialog.open();
     }
 }

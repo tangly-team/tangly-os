@@ -12,15 +12,15 @@
 
 package net.tangly.erp.crm.domain;
 
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-
 import net.tangly.core.HasDate;
 import net.tangly.core.HasText;
 import net.tangly.core.Strings;
 import org.jetbrains.annotations.NotNull;
+
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * An activity is an action between a seller and a potential sellee. Activities are performed in the context of an interaction. Activities are only available

@@ -12,6 +12,12 @@
 
 package net.tangly.erp.invoices.domain;
 
+import net.tangly.core.BankConnection;
+import net.tangly.core.HasDate;
+import net.tangly.core.HasId;
+import net.tangly.core.HasName;
+import net.tangly.core.HasText;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,12 +29,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.TreeMap;
-
-import net.tangly.core.BankConnection;
-import net.tangly.core.HasDate;
-import net.tangly.core.HasId;
-import net.tangly.core.HasName;
-import net.tangly.core.HasText;
 
 /**
  * <p>The abstraction of an invoice with a set of positions, subtotals, and a total. The items and the subtotals have a position

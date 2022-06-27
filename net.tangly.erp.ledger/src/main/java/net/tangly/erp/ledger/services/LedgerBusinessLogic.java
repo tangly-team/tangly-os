@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,13 +12,13 @@
 
 package net.tangly.erp.ledger.services;
 
+import net.tangly.erp.ledger.domain.Account;
+import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-import javax.inject.Inject;
-
-import net.tangly.erp.ledger.domain.Account;
-import org.jetbrains.annotations.NotNull;
 
 public class LedgerBusinessLogic {
     public static final String TURNOVER_ACCOUNT = "3";

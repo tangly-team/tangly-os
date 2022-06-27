@@ -12,13 +12,15 @@
 
 package net.tangly.erp.collabortors.domain;
 
+import lombok.Builder;
+import net.tangly.core.Address;
+import org.jetbrains.annotations.NotNull;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
-import net.tangly.core.Address;
-import org.jetbrains.annotations.NotNull;
-
+@Builder
 public record SwissWageCard(@NotNull String socialNumber, String oldSocialNumber, LocalDate birthday, @NotNull LocalDate fromDate, @NotNull LocalDate toDate,
                             Boolean freeTransportToWork, Boolean mealChecks, BigDecimal grossSalary, BigDecimal netSalary, BigDecimal pensionFund,
                             BigDecimal pensionFundPayment, boolean effectiveExpenses, LocalDate createdAt, Address createdBy) {

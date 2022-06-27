@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,10 +12,6 @@
 
 package net.tangly.erp.ledger.services;
 
-import java.util.List;
-import java.util.Map;
-import javax.inject.Inject;
-
 import net.tangly.core.TagType;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
@@ -25,6 +21,10 @@ import net.tangly.erp.ledger.domain.AccountEntry;
 import net.tangly.erp.ledger.domain.LedgerTags;
 import net.tangly.erp.ledger.domain.Transaction;
 import org.jetbrains.annotations.NotNull;
+
+import javax.inject.Inject;
+import java.util.List;
+import java.util.Map;
 
 public class LedgerBoundedDomain extends BoundedDomain<LedgerRealm, LedgerBusinessLogic, LedgerHandler, LedgerPort> {
     public static final String DOMAIN = "ledger";

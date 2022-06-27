@@ -36,7 +36,7 @@ The library can be included in Gradle as
     implementation "net.tangly:gleam:0.2.5"
 ----
 
-The documentation can be found under https://tangly-team.bitbucket.io/docs/gleam/[Commons documentation]
+The documentation can be found under https://blog.tangly.net/docs/gleam/[Commons documentation]
 
 For any further question and discussion you can use the forum https://groups.google.com/g/tangly-os-components[tangly-OS-Components]
 

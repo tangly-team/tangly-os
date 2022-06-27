@@ -12,9 +12,6 @@
 
 package net.tangly.erp.ledger.ui;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-
 import com.storedobject.chart.DataType;
 import com.storedobject.chart.DateData;
 import com.storedobject.chart.LineChart;
@@ -32,6 +29,9 @@ import net.tangly.ui.components.VaadinUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class AnalyticsLedgerView extends AnalyticsView {
     private static final String ProfitAndLoss = "Profit & Loss";

@@ -12,13 +12,6 @@
 
 package net.tangly.erp.invoices.artifacts;
 
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Map;
-import java.util.regex.Pattern;
-
 import net.codecrete.qrbill.canvas.PDFCanvas;
 import net.codecrete.qrbill.generator.Bill;
 import net.codecrete.qrbill.generator.BillFormat;
@@ -34,6 +27,13 @@ import net.tangly.erp.invoices.domain.InvoiceLegalEntity;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Pattern;
 
 public class InvoiceQrCode implements InvoiceGenerator {
     private static final Logger logger = LogManager.getLogger();

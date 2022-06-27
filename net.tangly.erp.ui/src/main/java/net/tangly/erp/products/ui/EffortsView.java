@@ -14,10 +14,10 @@ package net.tangly.erp.products.ui;
 
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.components.EntitiesView;
@@ -29,6 +29,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Regular CRUD view on efforts abstraction. The grid and edition dialog wre optimized for usability.
  */
+@PageTitle("products-efforts")
 class EffortsView extends EntitiesView<Effort> {
     private final transient ProductsBoundedDomain domain;
     private Binder<Effort> binder;

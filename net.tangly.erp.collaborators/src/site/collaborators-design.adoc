@@ -1,0 +1,95 @@
+---
+title: "Collaborators Design"
+date: 2022-01-01
+weight: 10
+draft: false
+---
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+== Collaborators Bounded Domain
+
+=== Domain Model
+
+[plantuml,collaborators-domain,svg]
+....
+
+interface HasInterval {
+  LocalDate fromDate();
+  LocalDate toDate();
+}
+
+class SwissInsurancesYearlyCorrections {
+  Year year();
+}
+
+class SwissWageCard {
+  Year year();
+}
+
+class Collaborator {
+  -long naturalEntityOid;
+}
+note left of Collaborator::naturalEntityOid
+  Reference to the associated natural entity
+  in the CRM bounded domain.
+end note
+
+Collaborator *-- "n" SwissInsurancesYearlyCorrections
+Collaborator *-- "n" SwissWageCard
+
+
+class Contract {}
+Contract <|-- HasInterval
+Contract *-- "1" Collaborator
+
+
+class SwissInsurances {}
+SwissInsurances <|-- HasInterval
+
+class SwissPensionFunds {}
+SwissPensionFunds <|-- HasInterval
+
+class SwissSocialInsurances {}
+SwissSocialInsurances <|-- HasInterval
+
+class Organization {
+   -long legalEntityOid;
+}
+note left of Organization::legalEntityOid
+  Reference to the associated legal entity
+  in the CRM bounded domain.
+end note
+
+Organization *-- "n" Contract
+Organization *-- "n" SwissInsurances
+Organization *-- "n" SwissPensionFunds
+Organization *-- "n" SwissSocialInsurances
+
+....
+
+=== Scenario
+
+==== Yearly Legal Salary Form
+
+As a collaborator I have a work contract with an organization.
+The organization provides legal insurances, social insurances and pension funds.
+The minimal coverage is defined by law in Switzerland.
+Companies are free to provide additional services.
+
+I shall receive a yearly legal salary form documenting my salary and paid insurances.
+The form is a key document for the Swiss tax declaration.
+
+==== Pension Fund Individual Rebate
+
+Pension funds can offer a rebate for each collaborator based on non-documented rules.
+The pension funds must provide a rebate based on legal requirements to ease the burden of cotisations for older collaborators.
+
+Our domain model shall provide a mechanism to track these yearly individual rebates.
+The rebates have an impact to some positions in the yearly legal salary form.
+
+==== Social Insurances
+
+Social insurances are a percentage deducation of the salary of each collaborator.
+The percentages can be modified on a yearly basis.
+The percentages are dependant of the salary of the collaborator.

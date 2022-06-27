@@ -12,13 +12,13 @@
 
 package net.tangly.erp.crm.domain;
 
-import java.time.LocalDate;
-
 import net.tangly.core.EmailAddress;
 import net.tangly.core.HasDate;
 import net.tangly.core.PhoneNr;
 import net.tangly.core.crm.GenderCode;
 import org.jetbrains.annotations.NotNull;
+
+import java.time.LocalDate;
 
 /**
  * Defines a lead in the customer relation domain. A lead is also often called a prospect. Once a lead was contacted it should either be qualified and

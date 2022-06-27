@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -11,11 +11,6 @@
  */
 
 package net.tangly.ui.app.domain;
-
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
 
 import com.storedobject.chart.CategoryData;
 import com.storedobject.chart.Data;
@@ -34,6 +29,11 @@ import net.tangly.ui.components.TabsComponent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
 public abstract class AnalyticsView extends VerticalLayout {
     private static final Logger logger = LogManager.getLogger();

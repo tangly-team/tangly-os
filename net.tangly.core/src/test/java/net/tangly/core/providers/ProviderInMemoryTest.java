@@ -12,12 +12,12 @@
 
 package net.tangly.core.providers;
 
-import java.util.List;
-import java.util.stream.LongStream;
-
 import net.tangly.commons.generator.LongIdGenerator;
 import net.tangly.core.HasOid;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+import java.util.stream.LongStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -12,12 +12,6 @@
 
 package net.tangly.erp;
 
-import java.io.IOException;
-import java.nio.file.FileSystem;
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.Optional;
-
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.core.domain.Realm;
@@ -28,6 +22,12 @@ import net.tangly.erp.products.ports.ProductsHdl;
 import net.tangly.erp.products.services.ProductsRealm;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+import java.nio.file.FileSystem;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.Optional;
 
 import static net.tangly.core.providers.Provider.findById;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -98,8 +98,8 @@ class ProductsHdlTest {
         Assignment entity = new Assignment();
         entity.id(ASSIGNMENT_ID);
         entity.name("Assignment_Test");
-        entity.fromDate(LocalDate.of(2020, Month.JANUARY, 1));
-        entity.toDate(LocalDate.of(2020, Month.DECEMBER, 31));
+        entity.from(LocalDate.of(2020, Month.JANUARY, 1));
+        entity.to(LocalDate.of(2020, Month.DECEMBER, 31));
         entity.text("*This is a markdown comment for an assignment*");
         entity.collaboratorId(COLLABORATOR_ID);
         entity.product(findById(realm.products(), PRODUCT_ID).orElseThrow());

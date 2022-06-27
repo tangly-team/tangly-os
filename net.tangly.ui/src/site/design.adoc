@@ -121,3 +121,30 @@ CRUD forms are programmatically defined to offer full content and layout control
 The programmer populates a form layout and provides it to the CRUD class.
 The buttons of the form and associated actions are handled by the CRUD class.
 Callbacks are provided to inform the entity form class defining the form layout if the user accepted or cancelled his changes in the form.
+
+==== Crud List View and Details Form
+
+[plantuml, crud-view, svg]
+....
+@startuml
+
+interface SelectedItemListener<T> << (V,orchid) >> {}
+
+interface HasIdView<T> {}
+
+interface CrudForm<T> {}
+
+class Crud<T> {}
+VerticalLayout <|-- Crud
+SelectedItemListener <|-- Crud
+
+abstract class EntitiesView<T> {}
+Crud <|-- EntitiesView
+CrudForm <|-- EntitiesView
+
+abstract class InternalEntitiesView<T extends NamedEntity> {}
+EntitiesView <|-- InternalEntitiesView
+HasIdView <|-- InternalEntitiesView
+
+@enduml
+....

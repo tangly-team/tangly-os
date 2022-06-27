@@ -12,6 +12,8 @@
 
 package net.tangly.core;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,8 +21,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Default implementation of the Entity interface.
@@ -68,22 +68,22 @@ public abstract class EntityImp implements Entity {
     // region HasInterval
 
     @Override
-    public LocalDate fromDate() {
+    public LocalDate from() {
         return fromDate;
     }
 
     @Override
-    public void fromDate(LocalDate fromDate) {
+    public void from(LocalDate fromDate) {
         this.fromDate = fromDate;
     }
 
     @Override
-    public LocalDate toDate() {
+    public LocalDate to() {
         return toDate;
     }
 
     @Override
-    public void toDate(LocalDate toDate) {
+    public void to(LocalDate toDate) {
         this.toDate = toDate;
     }
 
@@ -137,8 +137,8 @@ public abstract class EntityImp implements Entity {
 
     @Override
     public boolean equals(Object obj) {
-        return (obj instanceof EntityImp o) && Objects.equals(oid(), o.oid()) && Objects.equals(fromDate(), o.fromDate()) &&
-            Objects.equals(toDate(), o.toDate()) && Objects.equals(text(), o.text()) && Objects.equals(comments(), o.comments()) &&
+        return (obj instanceof EntityImp o) && Objects.equals(oid(), o.oid()) && Objects.equals(from(), o.from()) &&
+            Objects.equals(to(), o.to()) && Objects.equals(text(), o.text()) && Objects.equals(comments(), o.comments()) &&
             Objects.equals(tags(), o.tags());
     }
 }

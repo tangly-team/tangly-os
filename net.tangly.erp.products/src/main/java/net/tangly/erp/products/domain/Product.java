@@ -50,6 +50,6 @@ public class Product extends QualifiedEntityImp {
     public String toString() {
         return """
             Product[oid=%s, id=%s, fromDate=%s, toDate=%s, text=%s, contractIds=%s, tags=%s]
-            """.formatted(oid(), id(), fromDate(), toDate(), text(), contractIds(), tags());
+            """.formatted(oid(), id(), from(), to(), text(), contractIds(), tags());
     }
 }

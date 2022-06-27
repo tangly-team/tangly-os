@@ -12,8 +12,6 @@
 
 package net.tangly.erp.ledger.ui;
 
-import java.time.LocalDate;
-
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -22,6 +20,7 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.NumberRenderer;
+import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.ledger.domain.Transaction;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.ui.components.EntitiesView;
@@ -29,9 +28,12 @@ import net.tangly.ui.components.VaadinUtils;
 import net.tangly.ui.grids.GridDecorators;
 import org.jetbrains.annotations.NotNull;
 
+import java.time.LocalDate;
+
 /**
  * Regular CRUD view on transactions abstraction. The grid and edition dialog wre optimized for usability.
  */
+@PageTitle("ledger-transactions")
 class TransactionsView extends EntitiesView<Transaction> {
     private final transient LedgerBoundedDomain domain;
     private LocalDate from;

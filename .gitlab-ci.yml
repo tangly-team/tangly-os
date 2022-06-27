@@ -1,9 +1,11 @@
 image: openjdk:18
 
 variables:
+    GRADLE_OPTS: "-Dorg.gradle.daemon=false"
 
 before_script:
-  - export GRADLE_USER_HOME=`pwd`/.grade
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+  - export GRADLE_USER_HOME
 
 stages:
   - build
@@ -11,7 +13,10 @@ stages:
 
 build:
   stage: build
-  script: ./gradlew --build-cache assemble
+  script:
+      - microdnf install nodejs npm
+      - ./gradlew build
+      - ./gradlew net.tangly.erp.ui:installDist net.tangly.erp.ui:installShadowDist -Pvaadin.productionMode
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push

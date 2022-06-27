@@ -12,12 +12,12 @@
 
 package net.tangly.bdd;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
-
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Represents a phase in a scene such as a given, when or then phase for the acceptance test modeled within the scene. Optionally, a phase holds
@@ -62,4 +62,3 @@ public class Phase {
         return Collections.unmodifiableList(ands);
     }
 }
-

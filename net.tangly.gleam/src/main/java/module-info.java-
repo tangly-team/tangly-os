@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,8 +14,8 @@
 module tangly.os.net.tangly.gleam.main {
     exports net.tangly.gleam.model;
 
-    requires org.apache.logging;
+    requires org.apache.csv;
+    requires org.apache.logging.log4j;
     requires org.json;
-    // TODO waiting on apache commons csv
     requires static transitive org.jetbrains.annotations;
 }

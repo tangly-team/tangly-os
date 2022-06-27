@@ -12,11 +12,6 @@
 
 package net.tangly.ui.grids;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Function;
-
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEventListener;
@@ -36,6 +31,11 @@ import net.tangly.ui.components.CodeField;
 import net.tangly.ui.components.Crud;
 import net.tangly.ui.components.SelectedItemListener;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.Function;
 
 /**
  * Defines the filters and actions specific to a grid. A grid decorator provides

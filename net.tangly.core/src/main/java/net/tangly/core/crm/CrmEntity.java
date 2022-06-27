@@ -12,8 +12,6 @@
 
 package net.tangly.core.crm;
 
-import java.util.Optional;
-
 import net.tangly.core.Address;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.HasLocation;
@@ -21,6 +19,8 @@ import net.tangly.core.HasTags;
 import net.tangly.core.PhoneNr;
 import net.tangly.core.Tag;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Optional;
 
 /**
  * A customer relation management mixin defines a set of operations useful for all CRM abstractions. All information is stored as tags for future extensions.

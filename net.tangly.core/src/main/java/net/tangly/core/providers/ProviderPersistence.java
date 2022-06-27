@@ -12,15 +12,15 @@
 
 package net.tangly.core.providers;
 
-import java.util.Collections;
-import java.util.List;
-
 import one.microstream.persistence.binary.jdk17.types.BinaryHandlersJDK17;
 import one.microstream.persistence.binary.jdk8.types.BinaryHandlersJDK8;
 import one.microstream.storage.embedded.types.EmbeddedStorage;
 import one.microstream.storage.embedded.types.EmbeddedStorageFoundation;
 import one.microstream.storage.embedded.types.EmbeddedStorageManager;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Provider with instances cached in memory and persisted onto the file system or a database.

@@ -12,14 +12,14 @@
 
 package net.tangly.bdd;
 
+import net.tangly.bdd.engine.StoryExtension;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.platform.commons.annotation.Testable;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
-import net.tangly.bdd.engine.StoryExtension;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.platform.commons.annotation.Testable;
 
 /**
  * Represents a story in BDD or specification by example style of writing tests. Notice that the annotation is meta-annotated with JUnit 5 built-in

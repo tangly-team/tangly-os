@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -76,10 +76,10 @@ public class QualifiedEntityField<T extends QualifiedEntity> extends CustomField
         binder.bind(name, QualifiedEntity::name, QualifiedEntity::name);
         binder.forField(fromDate)
                 .withValidator(from -> (from == null) || (toDate.getValue() == null) || (from.isBefore(toDate.getValue())), "From date must be before to date")
-                .bind(QualifiedEntity::fromDate, QualifiedEntity::fromDate);
+                .bind(QualifiedEntity::from, QualifiedEntity::from);
         binder.forField(toDate)
                 .withValidator(to -> (to == null) || (fromDate.getValue() == null) || (to.isAfter(fromDate.getValue())), "To date must be after from date")
-                .bind(QualifiedEntity::toDate, QualifiedEntity::toDate);
+                .bind(QualifiedEntity::to, QualifiedEntity::to);
         binder.bind(text, QualifiedEntity::text, QualifiedEntity::text);
     }
 

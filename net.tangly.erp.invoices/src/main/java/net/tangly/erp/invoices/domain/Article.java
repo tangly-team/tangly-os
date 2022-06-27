@@ -13,13 +13,13 @@
 package net.tangly.erp.invoices.domain;
 
 
-import java.math.BigDecimal;
-
 import net.tangly.core.HasId;
 import net.tangly.core.HasName;
 import net.tangly.core.HasOid;
 import net.tangly.core.HasText;
 import org.jetbrains.annotations.NotNull;
+
+import java.math.BigDecimal;
 
 /**
  * A product sold by a legal entity and referenced in an invoice or an invoice line. An article is a {@link HasId} mixin because the identifier is external and

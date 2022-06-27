@@ -14,6 +14,7 @@ package net.tangly.erp.crm.ui;
 
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.router.PageTitle;
 import net.tangly.core.crm.CrmTags;
 import net.tangly.core.crm.LegalEntity;
 import net.tangly.core.crm.NaturalEntity;
@@ -30,6 +31,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Regular CRUD view on employees abstraction. The grid and edition dialog wre optimized for usability.
  */
+@PageTitle("crm-employees")
 class EmployeesView extends InternalEntitiesView<Employee> {
     private final transient CrmBoundedDomain domain;
 

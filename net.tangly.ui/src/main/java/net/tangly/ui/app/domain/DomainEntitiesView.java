@@ -14,12 +14,12 @@ package net.tangly.ui.app.domain;
 
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.data.provider.ListDataProvider;
-import net.tangly.ui.components.EntitiesView;
-import net.tangly.ui.grids.GridDecorators;
-import net.tangly.ui.grids.PaginatedGrid;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
 import net.tangly.core.providers.ProviderInMemory;
+import net.tangly.ui.components.EntitiesView;
+import net.tangly.ui.grids.GridDecorators;
+import net.tangly.ui.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
 
 /**

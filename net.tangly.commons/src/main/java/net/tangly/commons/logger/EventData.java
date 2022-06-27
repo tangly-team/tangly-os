@@ -12,16 +12,16 @@
 
 package net.tangly.commons.logger;
 
-import java.time.LocalDateTime;
-import java.util.Map;
-import java.util.Objects;
-
 import org.apache.logging.log4j.LogBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
 import org.jetbrains.annotations.NotNull;
+
+import java.time.LocalDateTime;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * Provide a simple approach to create an audit trail for all relevant operations performed in the system. Contextual information such as user, IP address are

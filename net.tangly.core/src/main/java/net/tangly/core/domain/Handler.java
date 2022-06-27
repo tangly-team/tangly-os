@@ -48,6 +48,13 @@ public interface Handler<R extends Realm> {
      */
     R realm();
 
+    /**
+     * Import the entities from a resource specified through a path to a folder. The method takes care of releasing all used resources.
+     *
+     * @param folder   folder containing the file with the entities
+     * @param filename name of the file containing the entities stored as TSV values
+     * @param consumer consumer of the entities
+     */
     static void importEntities(@NotNull Path folder, @NotNull String filename, @NotNull BiConsumer<Reader, String> consumer) {
         Path path = folder.resolve(filename);
         try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {

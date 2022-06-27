@@ -12,9 +12,9 @@
 
 package net.tangly.core;
 
-import java.util.Objects;
-
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 /**
  * Defines the abstraction of a postal address without the recipient. The structure should model alls existing postal addresses. An address is an immutable object

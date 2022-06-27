@@ -57,7 +57,7 @@ The library can be included in Gradle as
     implementation "net.tangly:fsm:0.2.7"
 ----
 
-The documentation can be found under [FSM documentation](https://tangly-team.bitbucket.io/docs/fsm/)
+The documentation can be found under [FSM documentation](https://blog.tangly.net/docs/fsm/)
 
 For any further question and discussion you can use the forum [tangly-OS-Components](https://groups.google.com/g/tangly-os-components)
 

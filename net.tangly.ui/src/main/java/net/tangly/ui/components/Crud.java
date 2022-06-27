@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,17 +12,17 @@
 
 package net.tangly.ui.components;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
 import net.tangly.ui.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
- * <p>The CRUD provides a grid view to a set of entities and views to view, update, create and delete an entity. The core view is the same for all
- * operations. Tailoring is supported to determine if a property is visible, read-only, or editable. The view operation can be either confirmed or canceled. The
+ * <p>The CRUD provides a grid view to a set of entities and views to view, update, create and delete an entity. The core view is the same for all operations. Tailoring is
+ * supported to determine if a property is visible, read-only, or editable. The view operation can be either confirmed or canceled. The
  * operations semantics require single select operation on the list of entities.</p>
  * <p>The configuration of the components has two dimensions.</p>
  * <ul>

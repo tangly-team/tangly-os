@@ -12,14 +12,6 @@
 
 package net.tangly.erp.invoices.ports;
 
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.Collections;
-import java.util.Map;
-
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
 import net.tangly.core.HasInterval;
@@ -31,6 +23,14 @@ import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.services.InvoicesPort;
 import net.tangly.erp.invoices.services.InvoicesRealm;
 import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.Collections;
+import java.util.Map;
 
 /**
  * Invoice adapter is an adapter for the invoice port defined as a secondary port. The port has access to

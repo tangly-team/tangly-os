@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2022-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -10,19 +10,15 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.core.codes;
+package net.tangly.erp.collabortors.domain;
 
-import org.junit.jupiter.api.Test;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
-import java.io.IOException;
-import java.nio.file.Paths;
+public sealed interface ContractExtension permits ContractExtension.SwissPensionFundsYearlyCorrection {
+    LocalDate date();
 
-import static org.assertj.core.api.Assertions.assertThat;
+    BigDecimal amount();
 
-class CodeJsonTest {
-    @Test
-    void testCodeType() throws IOException {
-        var type = CodeHelper.build(TestCode.class, TestCode::new, Paths.get(getClass().getClassLoader().getResource("json/TestCodes.json").getPath()));
-        assertThat(type.codes()).hasSize(5);
-    }
+    record SwissPensionFundsYearlyCorrection(LocalDate date, BigDecimal amount) implements ContractExtension {}
 }

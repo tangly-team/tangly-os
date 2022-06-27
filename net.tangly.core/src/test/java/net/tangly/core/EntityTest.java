@@ -12,12 +12,12 @@
 
 package net.tangly.core;
 
+import org.junit.jupiter.api.Test;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Set;
-
-import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -51,8 +51,8 @@ class EntityTest {
     @Test
     void testHasInterval() {
         var entity = NamedEntity.of();
-        entity.fromDate(LocalDate.of(2000, Month.JANUARY, 1));
-        entity.toDate(LocalDate.of(2000, Month.DECEMBER, 31));
+        entity.from(LocalDate.of(2000, Month.JANUARY, 1));
+        entity.to(LocalDate.of(2000, Month.DECEMBER, 31));
 
         assertThat(entity.isActive(LocalDate.of(1999, Month.DECEMBER, 31))).isFalse();
         assertThat(entity.isActive(LocalDate.of(2000, Month.JANUARY, 1))).isTrue();

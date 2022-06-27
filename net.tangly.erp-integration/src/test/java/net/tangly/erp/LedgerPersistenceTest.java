@@ -16,7 +16,6 @@ import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.erp.ledger.ports.LedgerEntities;
 import net.tangly.erp.ledger.ports.LedgerHdl;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.FileSystem;

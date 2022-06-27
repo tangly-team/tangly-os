@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -31,6 +31,10 @@
  *     <li>extensible thorough event handlers simplify logging, auditing and debugging</li> <li>state machine ports as text, csv or yEd
  *     diagram</li>
  * </ul>
+ *
+ * <h2>Create a FSM description with Builder</h2>
+ * <p>Below an snippet showing how to construct a finites state machine decscription using the FSM builder.</p>
+ * {@snippet file = "FsnWasherTest.java" region = "declare-fsm-washer-with-builder"}
  */
 
 package net.tangly.fsm.dsl;

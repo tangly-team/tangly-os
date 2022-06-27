@@ -12,12 +12,12 @@
 
 package net.tangly.commons.lang.functional;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
-
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Functional programming strives to minimize side effects, so throwing exceptions is avoided. Instead, if an operation can fail, it should return a

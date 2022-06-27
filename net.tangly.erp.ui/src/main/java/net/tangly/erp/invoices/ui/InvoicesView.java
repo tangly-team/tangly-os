@@ -17,6 +17,7 @@ import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.invoices.domain.Invoice;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.components.EntitiesView;
@@ -24,6 +25,7 @@ import net.tangly.ui.components.VaadinUtils;
 import net.tangly.ui.grids.GridDecorators;
 import org.jetbrains.annotations.NotNull;
 
+@PageTitle("invoices-invoices")
 class InvoicesView extends EntitiesView<Invoice> {
     private final InvoicesBoundedDomain domain;
     private final TextField id;

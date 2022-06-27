@@ -12,15 +12,6 @@
 
 package net.tangly.erp;
 
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.nio.file.FileSystem;
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.Currency;
-import java.util.Locale;
-import java.util.Optional;
-
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import net.tangly.core.Address;
@@ -29,18 +20,27 @@ import net.tangly.core.Comment;
 import net.tangly.core.PhoneNr;
 import net.tangly.core.Tag;
 import net.tangly.core.crm.CrmTags;
+import net.tangly.core.crm.GenderCode;
+import net.tangly.core.crm.LegalEntity;
+import net.tangly.core.crm.NaturalEntity;
 import net.tangly.core.crm.VcardType;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.crm.domain.Contract;
-import net.tangly.core.crm.GenderCode;
-import net.tangly.core.crm.LegalEntity;
-import net.tangly.core.crm.NaturalEntity;
 import net.tangly.erp.crm.services.CrmRealm;
-import net.tangly.erpr.crm.ports.CrmEntities;
-import net.tangly.erpr.crm.ports.CrmHdl;
+import net.tangly.erp.crm.ports.CrmEntities;
+import net.tangly.erp.crm.ports.CrmHdl;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.nio.file.FileSystem;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.Currency;
+import java.util.Locale;
+import java.util.Optional;
 
 import static net.tangly.core.providers.Provider.findById;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -162,8 +162,8 @@ class CrmHdlTest {
 
     private NaturalEntity createNaturalEntity() {
         NaturalEntity entity = new NaturalEntity();
-        entity.fromDate(LocalDate.of(1900, Month.JANUARY, 1));
-        entity.toDate(LocalDate.of(2000, Month.DECEMBER, 31));
+        entity.from(LocalDate.of(1900, Month.JANUARY, 1));
+        entity.to(LocalDate.of(2000, Month.DECEMBER, 31));
         entity.text("*This is a markdown text*");
         entity.add(Comment.of("administrator", "*This is a markdown comment for natural entity*"));
         entity.socialNr("social-security-number");
@@ -180,7 +180,7 @@ class CrmHdlTest {
         LegalEntity entity = new LegalEntity();
         entity.id("CHE-487.951.218");
         entity.name("bbv Group AG");
-        entity.fromDate(LocalDate.of(1995, Month.NOVEMBER, 1));
+        entity.from(LocalDate.of(1995, Month.NOVEMBER, 1));
         entity.text("*This is a markdown text*");
         entity.add(Comment.of("administrator", "*This is a markdown comment for legal entity*"));
         entity.add(Tag.of(CrmTags.CRM_SITE_WORK, "www.bbv.ch"));
@@ -195,8 +195,8 @@ class CrmHdlTest {
         Contract entity = new Contract();
         entity.id("Contract-009");
         entity.name("Contract 009");
-        entity.fromDate(LocalDate.of(2010, Month.MARCH, 1));
-        entity.toDate(LocalDate.of(2010, Month.DECEMBER, 31));
+        entity.from(LocalDate.of(2010, Month.MARCH, 1));
+        entity.to(LocalDate.of(2010, Month.DECEMBER, 31));
         entity.text("*This is a markdown text for a contract*");
         entity.address(Address.builder().country("CH").region("LU").locality("Lucerne").postcode("6002").street("Blumenrain 10").build());
         entity.bankConnection(BankConnection.of("CH88 0900 0000 3064 1768 2", "POFICHBEXXX", "Postfinanz Schweiz"));

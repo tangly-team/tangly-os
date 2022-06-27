@@ -36,6 +36,7 @@ application {
 
 vaadin {
     optimizeBundle = false
+    pnpmEnable = false
 }
 
 jar {

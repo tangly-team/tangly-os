@@ -13,14 +13,15 @@
 package net.tangly.ui.app.domain;
 
 import com.vaadin.flow.component.dialog.Dialog;
+import com.vaadin.flow.component.formlayout.FormLayout;
 
 import java.util.Collections;
-import java.util.List;
+import java.util.Set;
 
 /**
- * Define the interface for the command pattern. A command is an action mostly executed through the user interface as client. A command is an object whose role
- * is to store all the information required for executing an action, including the method to call, the method arguments, and the object (known as the receiver)
- * that implements the method.
+ * The interface defines the abstraction for the command pattern. A command is an action mostly executed through the user interface as client. A command is an object whose role
+ * is to store all the information required for executing an action, including the method to call, the method arguments, and the object (known as the receiver) that implements
+ * the method.
  */
 @FunctionalInterface
 public interface Cmd {
@@ -29,8 +30,16 @@ public interface Cmd {
      */
     void execute();
 
+    static Dialog createDialog(String width, FormLayout form) {
+        Dialog dialog = new Dialog();
+        dialog.setWidth(width);
+        dialog.setResizable(true);
+        dialog.add(form);
+        return dialog;
+    }
+
     /**
-     * Indicate if the command is enabled or not. A command availability is dependant on the application and roles the user has.
+     * Indicates if the command is enabled or not. A command availability is dependent on the application and roles the user has.
      *
      * @return true if enabled otherwise false
      */
@@ -38,9 +47,21 @@ public interface Cmd {
         return true;
     }
 
-    default List<String> roles() {
-        return Collections.emptyList();
+    /**
+     * Returns the roles requested to execute the command.
+     *
+     * @return roles allowed to execute the command
+     */
+    default Set<String> roles() {
+        return Collections.emptySet();
     }
 
-    default Dialog dialog() { return null; }
+    /**
+     * Returns the dialog associated with the command if existing.
+     *
+     * @return associated dialog if defined othwrwise null
+     */
+    default Dialog dialog() {
+        return null;
+    }
 }

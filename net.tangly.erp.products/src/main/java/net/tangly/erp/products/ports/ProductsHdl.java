@@ -12,19 +12,9 @@
 
 package net.tangly.erp.products.ports;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.core.domain.Handler;
 import net.tangly.core.providers.Provider;
-import net.tangly.erp.ports.TsvHdl;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.domain.Product;
@@ -33,6 +23,11 @@ import net.tangly.erp.products.services.ProductsRealm;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
 import org.jetbrains.annotations.NotNull;
+
+import java.nio.file.Path;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 import static net.tangly.erp.ports.TsvHdl.OID;
 import static net.tangly.erp.ports.TsvHdl.TEXT;
