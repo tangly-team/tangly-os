@@ -27,7 +27,7 @@ jobs:
               ~/.pnpm-store
             key: pnpm-${{ hashFiles('**/pnpm-lock.yaml', '**/package.json') }}
         - name: Build with Gradle
-          run: ./gradlew net.tangly.erp.ui:installDist '-Pvaadin.productionMode' --no-daemon
+          run: ./gradlew build net.tangly.erp.ui:installDist '-Pvaadin.productionMode' --no-daemon
         - name: Archive production artifacts
           uses: actions/upload-artifact@v3
           with:
