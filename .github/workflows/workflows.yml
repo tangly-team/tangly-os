@@ -14,9 +14,7 @@ jobs:
         - name: Setup Gradle
           uses: gradle/gradle-build-action@v2
         - name: Build artifacts
-          run: |
-            ./gradlew build
-            ./gradlew net.tangly.erp.ui:installDist net.tangly.erp.ui:installShadowDist -Pvaadin.productionMode
+          run: ./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode
         - name: Archive production artifacts
           uses: actions/upload-artifact@v3
           with:
