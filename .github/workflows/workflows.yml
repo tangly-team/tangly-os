@@ -11,6 +11,8 @@ jobs:
           with:
               website: oracle.com
               release: 18
+        - name: Setup Gradle
+          uses: gradle/gradle-build-action@v2
         - name: Build artifacts
           run: |
             ./gradlew build
