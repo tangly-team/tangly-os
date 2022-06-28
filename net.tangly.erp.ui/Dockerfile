@@ -15,7 +15,7 @@ RUN mkdir -p /var/tangly-erp/db
 RUN mkdir -p /var/tangly-erp/reports
 
 COPY build/install/net.tangly.erp.ui/ /app/
-COPY src/main/config/app-in-memory-without-imports.properties /app/
+COPY src/main/config/app-in-memory-no-imports.properties /app/
 WORKDIR /app/bin
 RUN useradd -m erp
 USER erp

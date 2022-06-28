@@ -66,7 +66,8 @@ tasks.withType(Javadoc) {
     enabled = true
     javadoc.options {
         encoding("UTF-8")
-        addBooleanOption('-Xdoclint:none')
+        addBooleanOption('Xdoclint:none', true)
+        addStringOption("Xmaxwarns", "1")
         addBooleanOption('-enable-preview', true)
         addStringOption('-release', '18')
         addBooleanOption('quiet')
