@@ -11,6 +11,10 @@ build:
   stage: build
   script:
       - ./gradlew build net.tangly.erp.ui:installDist net.tangly.erp.ui:installShadowDist -Pvaadin.productionMode
+  artifacts:
+      paths:
+          - net.tangly.erp.ui/build/distributions/*.zip
+      expire_in: 2 week
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
