@@ -9,10 +9,18 @@ jobs:
         - name: 'Set up Java'
           uses: oracle-actions/setup-java@v1
           with:
-              website: oracle.com
-              release: 18
+            website: oracle.com
+            release: 18
         - name: Setup Gradle
           uses: gradle/gradle-build-action@v2
+        - name: Set up NodeJS and npm
+          uses: actions/setup-node@v3
+          with:
+            node-version: 18
+            cache: 'npm'
+            cache-dependency-path: '**/package-lock.json'
+        - run: npm ci
+        - run: npm test
         - name: Build artifacts
           run: ./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode
         - name: Archive production artifacts
