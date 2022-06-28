@@ -2,7 +2,7 @@
 title: "Transfer a Software Project"
 linkTitle: "Transfer Software Project"
 date: 2022-08-15
-tags: ["agile", "scrum"]
+tags: ["agile", "devops"]
 ---
 
 == Transfer a Software Project
@@ -14,7 +14,7 @@ tags: ["agile", "scrum"]
 image::2022-08-02-head.jpg[width=420,height=360,role=left]
 
 You developed a new digital product for an internal or external customer.
-Your solution is awesome.
+= Your solution is awesome.
 The product is released to the users.
 Your users love your solution.
 
@@ -106,7 +106,7 @@ I strongly advocate performing such changes during a weekend.
 
 Here a simple example of a redirect page for your old website.
 
-[source, html]
+[source,html]
 ----
 <!DOCTYPE html>
 <html>
