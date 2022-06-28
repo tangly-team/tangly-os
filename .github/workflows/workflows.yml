@@ -11,12 +11,6 @@ jobs:
           with:
               website: oracle.com
               release: 18
-        - name: Set up NodeJS and npm
-          uses: actions/setup-node@v3
-          with:
-            node-version: 18
-            cache: 'npm'
-            cache-dependency-path: '**/package-lock.json'
         - name: Build artifacts
           run: |
             ./gradlew build
