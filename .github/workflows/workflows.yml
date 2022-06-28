@@ -16,9 +16,10 @@ jobs:
           with:
             node-version: 18
             cache: 'npm'
-            cache-dependency-path: net.tangly.erp.ui/package-lock.json
+            cache-dependency-path: '**/package-lock.json'
         - name: Build artifacts
           run: |
+            npm install
             ./gradlew build
             ./gradlew net.tangly.erp.ui:installDist net.tangly.erp.ui:installShadowDist -Pvaadin.productionMode
         - name: Archive production artifacts

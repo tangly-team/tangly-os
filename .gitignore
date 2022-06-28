@@ -24,11 +24,8 @@ hs_err_pid*
 
 /net.tangly.erp.ui/frontend/generated/
 /net.tangly.erp.ui/frontend/generated/vaadin.ts
-/net.tangly.erp.ui/package.json
 /net.tangly.erp.ui/pnpm-lock.yaml
 /net.tangly.erp.ui/pnpmfile.js
-/net.tangly.erp.ui/tsconfig.json
-/net.tangly.erp.ui/types.d.ts
 /net.tangly.erp.ui/webpack.config.js
 /net.tangly.erp.ui/webpack.generated.js
 /net.tangly.erp.ui/.npmrc
