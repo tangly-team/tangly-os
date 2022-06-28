@@ -19,7 +19,6 @@ jobs:
             cache-dependency-path: '**/package-lock.json'
         - name: Build artifacts
           run: |
-            npm install
             ./gradlew build
             ./gradlew net.tangly.erp.ui:installDist net.tangly.erp.ui:installShadowDist -Pvaadin.productionMode
         - name: Archive production artifacts
