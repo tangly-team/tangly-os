@@ -35,7 +35,7 @@ apache-pdfbox = "org.apache.pdfbox:pdfbox:2.0.25"
 arch-unit = "com.tngtech.archunit:archunit-junit5-api:0.23.1"
 
 asciidoctorj-core = "org.asciidoctor:asciidoctorj:2.5.4"
-asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.1.4"
+asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.1."
 
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
 commonmark = "org.commonmark:commonmark:0.19.0"

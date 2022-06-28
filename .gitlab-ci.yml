@@ -4,32 +4,18 @@ variables:
     GRADLE_OPTS: "-Dorg.gradle.daemon=false"
 
 before_script:
-  - export GRADLE_USER_HOME=`pwd`/.gradle
+  - GRADLE_USER_HOME=`pwd`/.gradle
   - export GRADLE_USER_HOME
-
-stages:
-  - build
-  - test
 
 build:
   stage: build
   script:
-      - microdnf install nodejs npm
-      - ./gradlew build
-      - ./gradlew net.tangly.erp.ui:installDist net.tangly.erp.ui:installShadowDist -Pvaadin.productionMode
+      - ./gradlew build net.tangly.erp.ui:installDist net.tangly.erp.ui:installShadowDist -Pvaadin.productionMode
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
     paths:
       - build
       - .gradle
-
-test:
-  stage: test
-  script: ./gradlew check
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: pull
-    paths:
-      - build
-      - .gradle
+    artifacts:
+      paths:- net.tangly.erp.ui/build/distributions/*.zip
