@@ -14,8 +14,9 @@ jobs:
         - name: Set up NodeJS and npm
           uses: actions/setup-node@v3
           with:
-            node-version: 16
+            node-version: 18
             cache: 'npm'
+            cache-dependency-path: net.tangly.erp.ui/package-lock.json
         - name: Build artifacts
           run: |
             ./gradlew build
