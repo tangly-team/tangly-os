@@ -6,15 +6,26 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
+        - uses: actions/checkout@v1
         - name: 'Set up Java'
           uses: oracle-actions/setup-java@v1
           with:
             website: oracle.com
             release: 18
-        - name: Setup Gradle
-          uses: gradle/gradle-build-action@v2
-        - name: Build artifacts
-          run: ./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode
+        - name: Cache Gradle packages
+          uses: actions/cache@v2
+          with:
+            path: |
+              ~/.gradle/caches
+              ~/.gradle/wrapper
+        - name: Cache pnpm packages
+          uses: actions/cache@v2
+          with:
+            path: |
+              ~/.vaadin
+              ~/.pnpm-store
+        - name: Build with Gradle
+          run: ./gradlew net.tangly.erp.ui:installDist '-Pvaadin.productionMode' --no-daemon
         - name: Archive production artifacts
           uses: actions/upload-artifact@v3
           with:
