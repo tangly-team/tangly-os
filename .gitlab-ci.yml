@@ -17,5 +17,3 @@ build:
     paths:
       - build
       - .gradle
-    artifacts:
-      paths:- net.tangly.erp.ui/build/distributions/*.zip
