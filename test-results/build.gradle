@@ -35,6 +35,26 @@ dependencies {
     testReportAggregation project(':net.tangly.fsm')
     testReportAggregation project(':net.tangly.gleam')
     testReportAggregation project(':net.tangly.ui')
+
+    jacocoAggregation project(':net.tangly.bdd')
+    jacocoAggregation project(':net.tangly.commons')
+    jacocoAggregation project(':net.tangly.core')
+    jacocoAggregation project(':net.tangly.dev')
+    jacocoAggregation project(':net.tangly.erp.agile')
+    jacocoAggregation project(':net.tangly.erp.apps')
+    jacocoAggregation project(':net.tangly.erp.collaborators')
+    jacocoAggregation project(':net.tangly.erp.crm')
+    jacocoAggregation project(':net.tangly.erp.invoices')
+    jacocoAggregation project(':net.tangly.erp.ledger')
+    jacocoAggregation project(':net.tangly.erp.products')
+    jacocoAggregation project(':net.tangly.erp.shared')
+    jacocoAggregation project(':net.tangly.erp.ui')
+    jacocoAggregation project(':net.tangly.erp-integration')
+    // TODO find out why gradle plugin does not accept the fsm sub projedt
+    // jacocoAggregation project(':net.tangly.fsm')
+    jacocoAggregation project(':net.tangly.gleam')
+    jacocoAggregation project(':net.tangly.ui')
+
 }
 
 application {
