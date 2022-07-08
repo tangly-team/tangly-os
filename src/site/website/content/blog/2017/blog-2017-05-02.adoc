@@ -45,6 +45,14 @@ You shall perform these operations to add a product to a local Git repository di
 . Put the required files under Git version control.
 The files appear in the Local Changes tab of the Version Control tool window, under the Default change list.
 
+[TIP]
+====
+You can define the set of files which should be ignored by git in the _.gitignore_ configuration file.
+See https://git-scm.com/docs/gitignore[gitignore] for details.
+
+Your IDE shall support this feature and would add files or folder to ignore through its user interface.
+====
+
 === Commit Changes
 
 To commit your changes you simply

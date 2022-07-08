@@ -26,22 +26,22 @@ To that end, https://en.wikipedia.org/wiki/Extreme_programming[eXtreme Programmi
 
 You have the right
 
-* to an _overall plan_, to know what can be accomplished when and at what cost.
-* to get the _most possible value out of every programming week_.
-* to see _progress in a running system_, proven to work by passing _repeatable tests_ that you specify.
-* to _change your mind_, to substitute functionality, and to change priorities _without paying exorbitant costs_.
-* to be informed of _schedule changes_, in time to choose how to reduce the scope to restore the original date.
-* _to cancel at any time and be left with a useful working system_ reflecting investment to date.
+* To an _overall plan_, to know what can be accomplished when and at what cost.
+* To get the _most possible value out of every programming week_.
+* To see _progress in a running system_, proven to work by passing _repeatable tests_ that you specify.
+* To _change your mind_, to substitute functionality, and to change priorities _without paying exorbitant costs_.
+* To be informed of _schedule changes_, in time to choose how to reduce the scope to restore the original date.
+* _To cancel at any time and be left with a useful working system_ reflecting investment to date.
 
 === Developer Bill of Rights
 
 You have the right
 
-* to know _what is needed_, with clear declarations of priority.
-* to produce _quality work at all times_.
-* _to ask for and receive help from peers, managers, and customers_.
-* _to make and update your own estimates_.
-* _to accept your responsibilities_ instead of having them assigned to you.
+* To know _what is needed_, with clear declarations of priority.
+* To produce _quality work at all times_.
+* _To ask for and receive help from peers, managers, and customers_.
+* _To make and update your own estimates_.
+* _To accept your responsibilities_ instead of having them assigned to you.
 
 === Calibration
 
@@ -64,5 +64,9 @@ Dysfunctions are easy to detect
 . Management force responsibilities upon collaborators.
 
 Observe your organization and start to improve.
-The above rules are here to detect link:../../2019/detecting-agile-bullshit/[Agile Bullshit] and truly improve your organization toward building products
-which delight the customers.
+The above rules are here to detect and truly improve your organization toward building products which delight the customers <<detecting-agile-bullshit>>.
+
+[bibliography]
+=== Links
+
+- [[[detecting-agile-bullshit, 1]]] link:../../2019/detecting-agile-bullshit/[Agile Bullshit]

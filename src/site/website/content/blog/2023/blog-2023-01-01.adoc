@@ -87,7 +87,7 @@ Be wary of any potential development partner that struggles to answer these ques
 You shall implement a clear and founded evaluation approach:
 
 . Research, learn, classify.
-. Pick agile as a development mantra cite:[clean-agile,agile-sw-development].
+. Pick agile and DevOps as a development mantra cite:[clean-agile,agile-sw-development,accelerate,continuous-delivery-pipelines].
 . Characterize why you need a software development partner.
 . Shortlist the companies you can find to be promising.
 . Assess the company experience in your industry.
@@ -106,6 +106,7 @@ Here our checklist we use to discuss a potential partnership:
 Hosting and Operations::
 * How and where are the servers hosted?
 Self-hosted or external providers have an impact on the applicable legal context.
+Update policy and monitoring shall be compatible with corporate governance.
 * Where are the server instances physically located?
 * Backup and restore policy including location of backup and how they are protected.
 * DevOps aspects: monitoring, alarming, logging, audit logs, security policy.

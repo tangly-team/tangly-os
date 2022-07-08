@@ -11,7 +11,8 @@ tags: ["java"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2020-05-01-head.jpg[width=420, height=360, role=left]
+image::2020-05-01-head.jpg[width=420,height=360,role=left]
+
 Java 9 release introduced the concept of https://www.oracle.com/corporate/features/understanding-java-9-modules.html[modules] within the Java language.
 Java 9 was released in September 2017.
 
@@ -36,16 +37,17 @@ The only thing you need to configure is module path inference for the Java plugi
 footnote:[Gradle 7.0 released in Spring 2021 transparently supports Java modules.
 If you use the _java-library_ plugin, the support of Java modules is transparent.]
 
-[source, groovy]
+[source,groovy]
 ----
  java {
    modularity.inferModulePath.set(true)
  }
 ----
 
-Then you just need to make sure you write a proper Java module by providing An example of a module information file is
+Then you just need to make sure you write a proper Java module by providing a module information file.
+An example of a module information file is
 
-[source, java]
+[source,java]
 ----
  module net.tangly.fsm {
    exports net.tangly.fsm;
@@ -59,7 +61,7 @@ Then you just need to make sure you write a proper Java module by providing An e
 Java 14 in Gradle Java 14 was also released in Spring 2020. It is worth experimenting with the new preview features.
 The following configuration is needed in Gradle to compile, test, execute and generate JavaDoc when using Java 14 preview features.
 
-[source, groovy]
+[source,groovy]
 ----
  tasks.withType(JavaCompile) {
      options.encoding = 'UTF-8'

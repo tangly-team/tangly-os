@@ -44,10 +44,10 @@
     integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
     src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 {{ if .Site.Params.offlineSearch -}}
-<script
-    crossorigin="anonymous"
-    integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
-    src="https://unpkg.com/lunr@2.3.9/lunr.min.js"></script>
+<script crossorigin="anonymous"
+        defer
+        integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+        src="https://unpkg.com/lunr@2.3.9/lunr.min.js"></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   messageStyle: "none",
@@ -62,9 +62,7 @@ MathJax.Hub.Config({
   },
   TeX: { equationNumbers: { autoNumber: "none" } }
 });
-
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 {{ end -}}
 
 {{ if .Site.Params.prism_syntax_highlighting -}}
@@ -75,9 +73,9 @@ MathJax.Hub.Config({
 
 {{/* To comply with GDPR, cookie consent scripts places in head-end must execute before Google Analytics is enabled */ -}}
 {{ if hugo.IsProduction -}}
-{{ if hasPrefix .Site.GoogleAnalytics "G-" -}}
-{{ template "_internal/google_analytics.html" . -}}
-{{ else -}}
-{{ template "_internal/google_analytics_async.html" . -}}
-{{ end -}}
+  {{ if hasPrefix .Site.GoogleAnalytics "G-" -}}
+    {{ template "_internal/google_analytics.html" . -}}
+  {{ else -}}
+    {{ template "_internal/google_analytics_async.html" . -}}
+  {{ end -}}
 {{ end -}}

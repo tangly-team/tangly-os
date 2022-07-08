@@ -23,11 +23,11 @@ rm -rf $siteName
 hugo new site $siteName
 cd $siteDir
 
-# download docsy theme and the submodules they depend on
+# download docsy theme and the submodules they depend on using npm
 cd themes
-git clone --branch v0.3.0 https://github.com/google/docsy.git
+git clone --branch v0.4.0 https://github.com/google/docsy.git
 cd docsy
-git submodule update --init --recursive
+npm install
 
 # install postcss (https://postcss.org/)) for final generation of site
 cd $siteDir

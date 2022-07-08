@@ -23,7 +23,7 @@ Business Analysts as Product Owners.
 Very little actually changes.
 Few benefits of agility are realised.
 
-If anything, the situation may actually become worse as some previous structures are lost, yet the discipline for Agile just is not there.
+If anything, the situation may become worse as some previous structures are lost, yet the discipline for Agile just is not there.
 
 Fake Scrum is around us everywhere we go.
 This dreadful situation is unavoidable.
@@ -46,30 +46,32 @@ Those goals are designed to help us achieve focus, get stuff done, and get resul
 If you do not have goals, you have got fake Scrum.
 
 ==== No Self-management
+
 A team that cannot self-manage is a team that cannot be nimble.
 They are not going to be quick.
 They are going to stall.
 They are going to wait to ask questions.
 They will always be asking for their boss's approval.
 
-Teams like this are very slow and the whole point of being agile is to be nimble, right? +
+Teams like this are very slow.
+The whole point of being agile is to be nimble, right? +
 So, if it does not feel like they are being nimble, I should look a little deeper. +
 
 Self-management is a really common problem.
 
-It can happen from a lack of trust with the boss or the business.
+It can happen from a lack of trust with the boss or your business stakeholders.
 It can come from a lack of trust for each other as team members.
 
 Wherever your problems are, self-management is crucial to have working in order for Scrum to work.
-If you do not have self-managing going on it is probably fake Scrum.
+If you do not have self-managing going on, it is probably fake Scrum.
 
 ==== No deliverables
 
-No increment at the end of the Sprint.
-The entire point of Scrum is to have releasable increments for every single Sprint.
+No increment at the end of the sprint.
+The entire point of Scrum is to have releasable increments for every single sprint.
 Without that, well, we are just cranking a bunch of levers.
 
-To get to a deliverable can sometimes kind of challenging.
+To get to a deliverable can sometimes be kind of challenging.
 You have to write requirements in such a way that something can be delivered in just a short timeframe.
 
 ==== No transparency
@@ -89,32 +91,63 @@ So, if you do not have transparency, you’ve got fake Scrum.
 If you have got stakeholders that do not see a difference.
 They do not care if they are not talking to your team they are not talking to your product owner.
 
-If you are not delivering results then what is the point of your work in the first place if there is no point you are probably doing fake Scrum.
+If you are not delivering results then what is the point of your work in the first place.
+If there is no point you are probably doing _fake Scrum_.
 
 === Digital Software Product Development
 
 The software industry has created and promoted agile and Scrum approaches.
-A development department is responsible to deliver working software each sprint.
+A development department is responsible for delivering working software each sprint.
 Accordingly to the {ref-scrumguide} a potentially shippable product is the increment result produced multiple times per week.
 
 You can easily detect fake Scrum and incompetent software development teams:
 
 Git commit multiple times per day per developer::
-Deliver working applications multiple time a a week::
-cite:[accelerate]
-Continuous integration and delivery pipeline::
+All your software development teams are working with git.
+Each developer creates multiple well-commented commits per day.
+Just use git history to check this hypothesis. +
+_Here some links to how you can use git_ <<git-local-repositories-for-the-impatient>><<git-branches-for-the-impatient>> <<code-scene>>.
+Deliver working applications multiple time a week::
+All teams deploy their digital increment multiple time per week.
+DevOps practices
+footnote:[Continuous integration and continuous delivery is _Dev_ practices.
+Continuous deploymnet and infrastructure as code are _Ops_ practices.] are lively in our organization cite:[accelerate,continuous-delivery-pipelines].
 No open errors older than a few days::
-Static tools to detect security issues and quality smells::
+Quality and craftsmanship are cornerstones of agile approaches.
+A way to check these good practices is to study errors reports <<zero-bug-policy>>.
+Another test is to look at the OWASP static analysis and the obsolete libraries reports.
 Living documentation::
-Domain driven design approaches::
+Professional developers provide adequate and actual documentation for their solution.
+Does the team have a living documentation.
+This documentation is often a generated static website <<static-website>>.
+Agile software architecture regularly uses domain driven design ideas <<domain-driven-design>>.
+Ask the team how they do software design activities?
 
 === Final Thoughts
 
-Become a professional Scrum master cite:[professional-scrum-master], product owenr cite:[professional-product-owner], or team developer.
+Become a professional Scrum master cite:[professional-scrum-master], product owner cite:[professional-product-owner], or team developer.
 
 A digital product development team shall be DevOps affine cite:[continuous-delivery,continuous-delivery-pipelines,devops-handbook].
 
-See also another blog link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit] describing how the department of defense detects agile lies.
+See also another blog <<detecting-agile-bullshit>> describing how the department of defense detects agile lies.
+
+[bibliography]
+=== Links
+
+- [[[detecting-agile-bullshit, 1]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit]
+Marcel Baumann. 2019.
+- [[[git-local-repositories-for-the-impatient, 2]]] link:../../2017/git-local-repositories-for-the-impatient/[Git local repositories for the impatient]
+Marcel Baumann. 2017.
+- [[[git-branches-for-the-impatient, 3]]] link:../../2016/git-branches-for-the-impatient/[Git branches for the impatient]
+Marcel Baumann. 2016.
+- [[[code-scene, 4]]] link:../../2019/code-scene-as-crime-scene/[Code Scene as Crime Scene]
+Marcel Baumann. 2019.
+- [[[zero-bug-policy, 5]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Advocate Zero Bug Policy in Your Projects]
+Marcel Baumann. 2020.
+- [[[static-website, 6]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Techincal Website with Hugo and Asciidoc]
+Marcel Baumann. 2020.
+- [[[domain-driven-design, 7]]] link:../../2022/software-structure-with-ddd/[Software Structure with DDD]
+Marcel Baumann. 2022.
 
 === References
 

@@ -44,7 +44,7 @@ How reproducible, fast and economic is your product deliver pipeline?
 At the end of the day, you deliver regularly a reproducible and trackable product version to your customers.
 
 One nice aspect about delivery pipeline checks is that a whole set of tools and methods emerged with the https://en.wikipedia.org/wiki/DevOps[DevOps] movement.
-You still need an expert to tune the diagnostic to your company specific needs but the approach is well documented.
+You still need an expert to tune the diagnostic to your company specific needs, but the approach is well-documented.
 
 Below a list of capabilities we have build-up over time for delivery pipeline checks.
 Use common sense and strategic goals to identify the objectives you want to measure.
@@ -54,9 +54,9 @@ Expertise is needed to define values to measure if the source code of your produ
 . Continuous delivery pipeline packaging the same binary to all your environments.
 . Continuous deployment if adequate for your solution, certainly it is adequate for the test and integration stages.
 . Automatic source code quality checks and mandatory quality gates.
-. Automatic unit tests, integration tests and end to end tests.
+. Automatic unit tests, integration tests and end-to-end tests.
 . https://trunkbaseddevelopment.com/[Golden Trunk] in Git.
-. No branches or only short-lived branches policy.
+. No branches or only short-lived branches shall be the policy.
 . https://blog.crisp.se/2018/08/27/yassalsundman/the-story-of-how-to-implement-a-zero-bug-policy[Zero bug policy] -
 eliminates the change management processes and board for errors -.
 . Traceability of specifications to delivered features and product versions
@@ -66,7 +66,7 @@ eliminates the change management processes and board for errors -.
 . Monitoring and alarming
 . DevOps pipeline analysis provides another look at your processes
 .. Code development and Review, Continuous integration and build status
-.. Continuous testings and business risks feedback
+.. Continuous testing and business risks feedback
 .. Artifact repository and pre-deployment staging
 .. Release automation including change management and release approvals
 .. Infrastructure configuration and management and infrastructure as code
@@ -82,18 +82,18 @@ Stop evaluating, start implementing!
 
 Check your process to see which continuous practices you are really mastering
 
-* Maintain a single source repository - no long-lived branches
-* Automate the build - no manual inputs, no manual configuration, automatically triggered
-* Make your build self testing - TDD, ATDD, static metrics, semantic checks
-* Everyone commits to trunk every day
-* Every commit should build trunk on an integration machine
-* Fix broken build immediately - _lean red button stopping production, everybody helps fix the broken build_
-Keep the build fast - _We are talking of minutes, not hours_
-* Test in an integration staging area which is a clone of the production environment - the goal is to have docker images, virtual network, and in-memory
-database to be fast
-* Make it easy for anyone to get the latest packaged release
-* Everyone can see the build status - _transparency, information radiator_
-* Automate deployment
+* Maintain a single source repository - no long-lived branches.
+* Automate the build - no manual inputs, no manual configuration, automatically triggered.
+* Make your build self testing - TDD, ATDD, static metrics, semantic checks.
+* Everyone commits to trunk every day.
+* Every commit should build trunk on an integration machine.
+* Fix broken build immediately - _lean red button stopping production, everybody helps fix the broken build_.
+Keep the build fast - _We are talking of minutes, not hours_.
+* Test within an integration staging area which is a clone of the production environment.
+The goal is to have docker images, virtual network, and in-memory database to be fast.
+* Make it easy for anyone to get the latest packaged release.
+* Everyone can see the build status - _transparency, information radiator_.
+* Automate deployment.
 
 === Posts in the Health Check Series
 

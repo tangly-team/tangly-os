@@ -40,12 +40,12 @@ Controlling Program Flow::
 - Create and use loops, if/else, and switch statements.
 Java Object-Oriented Approach::
 - Declare and instantiate Java objects including nested class objects.
-Explain the lifecycle of an object (including creation, dereferencing by reassignment, and garbage collection).
+Explain the lifecycle of an object (including creation, dereferencing by a reassignment and garbage collection).
 - Define and use fields and methods, including instance, static and overloaded methods.
 - Initialize objects and their members using instance and static initializer statements and constructors.
 - Understand variable scopes, apply encapsulation and make objects immutable.
 - Create and use subclasses and superclasses, including abstract classes.
-- Utilize polymorphism and casting to call methods, differentiate object type versus reference type.
+- Utilize polymorphism and casting to call methods, differentiate an object type versus a reference type.
 - Create and use interfaces, identify functional interfaces, and utilize private, static and default methods.
 - Create and use enumerations.
 Exception Handling::
@@ -66,7 +66,7 @@ Concurrency::
 - Create worker threads using Runnable and Callable, and manage concurrency using an ExecutorService and java.util.concurrent API.
 - Develop thread-safe code, using different locking mechanisms and java.util.concurrent API.
 Java I/O API::
-- Read and write console and file data using I/O Streams.
+- Read from and write to the console and file data using I/O Streams.
 - Implement serialization and deserialization techniques on Java objects.
 - Handle file system objects using java.nio.file API.
 Secure Coding in Java SE Application::
@@ -98,7 +98,7 @@ written by Scott Selikoff and Jeanne Boyarsky.
 The book contains questions at the end of each chapter.
 The authors also offer a practice examination of their platform.
 
-I found all needed information and the practice questions were a good drill.
+I found all needed the information, and the practice questions were a good drill.
 The material is terse to read.
 This should be expected from such material but makes concentration more challenging.
 
@@ -144,7 +144,8 @@ It did not really improve my concentration.
 [TIP]
 ====
 Check if writing material is available in your seat.
-Otherwise, request a pen and something to write on, Regulations officially allows it.
+Otherwise, request a pen and something to write on.
+Regulations officially allow it.
 
 Writing down ideas or which options are plausible as an answer helps me a lot.
 ====

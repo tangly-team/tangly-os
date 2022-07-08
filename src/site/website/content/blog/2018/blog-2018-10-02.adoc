@@ -13,7 +13,7 @@ tags: ["agile"]
 
 image::2018-10-02-head.jpg[width=420,height=360,role=left]
 
-An agile team is sole responsible for the internal quality of the product they build and maintain.
+An agile team is sole-responsible for the internal quality of the product they build and maintain.
 
 The developers shall be accountable for producing the expected quality and optimize long terms goals of the organization.
 
@@ -35,14 +35,14 @@ https://www.scrumguides.org/scrum-guide.html[Scrum] and {ref-less} have a string
 The key question is
 
 [.text-center]
-_Considering our current context and capability, what activities can be completed each Sprint?_
+_Considering our current context and capability, what activities can be completed each sprint?_
 
 [.text-center]
 _This subset is the initial Definition of Done._
 
 A _Definition of Done_ is weak when it is a small subset and strong when it almost equals _Potentially Shippable_.
 
-In huger organizations, the development teams discuss their context and select the subset of the activities that all teams think they realistically can do during the Sprint.
+In huger organizations, the development teams discuss their context and select the subset of the activities that all teams think they realistically can do during the sprint.
 This is their initial Definition of Done.
 The teams that can do more will expand this product _Definition of Done_ within their members.
 
@@ -66,8 +66,10 @@ A _Definition of Done_ is perfect when it equals Potentially Shippable.
 Teams strive to improve towards an ideal Definition of Done.
 Undone Work::
 The difference between the Definition of Done and Potentially Shippable.
-When the Definition of Done is perfect, then there is no Undone Work.
-If this is not the case then the organization has to decide, first how we deal with the Undone Work, and second how we improve so that there is less _Undone Work_ in the future.
+When the _Definition of Done_ is perfect, then there is no _Undone Work_.
+If this is not the case, the organization has to decide.
+First, how we deal with the _Undone Work_.
+Second, how we improve so that there is less _Undone Work_ in the future.
 Unfinished, or not done—work::
 that was planned in a sprint but was not completed.
 This is often confused with Undone Work.
@@ -75,9 +77,9 @@ Unfinished::
 is work that the team planned for but did not finish whereas Undone Work was never even planned for.
 When a team has work that was not finished, then they ought to feel anxious and discuss improvement actions during their retrospective.
 
-Teams should never leave work-in-progress at the end of the Sprint and “carry over” to the next one.
+Teams should never leave work-in-progress at the end of the sprint and _carry over_ to the next one.
 This causes a lack of transparency and reduces scope flexibility.
-If they forecast too much work, they need to remove complete items which they haven’t started yet.
+If they forecast too much work, they need to remove completed items, which they have not started yet.
 
 === Items of a Definition of Done
 
@@ -93,7 +95,7 @@ If they forecast too much work, they need to remove complete items which they ha
 * All existing unit tests remain green.
 * The acceptance tests were verified by the development team.
 * All integration tests were passed.
-* and the Status of “done” was confirmed by the product owner.
+* And the Status of _done_ was confirmed by the product owner.
 
 The following criteria are often overlooked and also need to be checked:
 
