@@ -39,7 +39,16 @@ I will strongly fight against proprietary solutions.
 
 === Learnings
 
-* Hugo themes styling for AsciiDoc is sketchy.
+* (ref-hugo) themes styling for AsciiDoc is sketchy.
 The visual quality is currently hindered due to faulty support of the standard or custom AsciiDoc stylesheet.
 * AsciiDoc supports native rouge code highlighting module.
-All source code fragments are nicely displayed without special support from Hugo.
+All source code fragments are nicely displayed without special support from {ref-hugo}.
+
+We documented our experience in various blogs <<creating-technical-website>> <<support-comments>>>.
+We use currently the Google sponsored theme {ref-docsy} for our static website.
+
+[bibliography]
+=== Links
+
+- [[[creating-technical-website, 1]]] link:../../../blog/2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and AsciiDoc]
+- [[[support-comments, 2]]] link:../../../blog/2020/support-comments-for-static-hugo-website/[Support Comments for Static Hugo Website]

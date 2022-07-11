@@ -15,9 +15,10 @@ description: Functional programming in modern Java
 
 == Introduction
 
-[cols="1,1"]
+[cols="1,1",options="header"]
 |===
-|Functional |Object-Oriented
+^|Functional
+^|Object-Oriented
 
 |Order of execution is not always important. It can be asynchronous.
 |A specific execution sequence of statements is crucial
@@ -34,8 +35,10 @@ description: Functional programming in modern Java
 |Ensures immutability; programs should be stateless.
 |State changes are an important part of the execution.
 
-|Primary activity is writing new functions and https://en.wikipedia.org/wiki/Function_composition_(computer_science)[composing existing ones]
-|Primary activity is building, extending and https://en.wikipedia.org/wiki/Object_composition[composing objects]
+|Primary activity is writing new functions and +
+https://en.wikipedia.org/wiki/Function_composition_(computer_science)[composing existing ones]
+|Primary activity is building, extending and +
+https://en.wikipedia.org/wiki/Object_composition[composing objects]
 |===
 
 == Concepts

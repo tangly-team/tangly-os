@@ -16,6 +16,7 @@ Implemented
 === Context
 
 image::OS-001-head.jpg[width=420,height=360,role=left]
+
 Guava is an historical effort to provide much needed functionalities to the Java community.
 The Java ecosystem evolves quite slowly at the beginning of the millennium.
 Later, stewardship clearly improved with six months release schedule approach.
@@ -44,6 +45,16 @@ The main advantages are:
 . Guava dependency is removed from our source code and compiled artifacts.
 . Guava is not optimized for idioms used in current JDK such as streams and extensive use of lambdas.
 Guava needs years to support new concepts such as algebraic data types.
+
+[CAUTION]
+====
+This decision is against good practices documented in the first decade of this millenium.
+The Guava library did not evolve as rapidly as the new Java versions released in the second and third decades.
+
+We strongly advocate timely evolution.
+Try to avoid becoming laggards in your technology stack.
+As rule use the current Java release, or as minimal version the latest long term supported version of Java.
+====
 
 === Consequences
 

@@ -42,7 +42,7 @@ Care will be taken to provide a fallback to another persistence solution if perf
 
 === Consequences
 
-* Knowledge in MicroStream library must be build-up.
+* Knowledge in MicroStream library <<microstream-4>> must be build-up.
 * Software design must be slightly adapted to the MicroStream approach.
 ** A clear separation of data from functions is required.
 ** Lambdas cannot currently be persisted.
@@ -58,3 +58,9 @@ This approach minimizes the costs for this functionality without impeding the qu
 . Realm shall have a private data class to store all data to be persisted
 . The application must generate unique object identifiers.
 MicroStream does not provide functions in this area.
+
+
+[bibliography]
+=== Links
+
+- [[[microstream-4, 1]]] link:../../../blog/2021/microstream-4.x/[MicroStream 4.x]
