@@ -65,7 +65,7 @@ As an organization and as a manager, it is time to decide.
 Do you truly https://en.wikipedia.org/wiki/Theory_X_and_Theory_Y[trust] your collaborators?
 Customers are not involved or engaged::
 Customers are the center in the new world.
-Please involve them, talk to them, find out what they need
+Please involve them, talk to them, find out what they need.
 
 You could also say organizations are still struggling with _Being agile, not doing agile_.
 Avoid https://en.wikipedia.org/wiki/Cargo_cult[cargo cult].
@@ -80,7 +80,7 @@ Read the book "Reinventing Organizations" from Frederic Laloux to understand the
 Train your managers to understand agile, lean, and customer-centric approaches.
 Training is not a half-day introduction, it is days and days of training, workshops, and reading.
 
-The transition is painful, see the seminal articles of Steve Denning
+The transition is painful, see the seminal articles of Steve Denning:
 
 * https://www.forbes.com/sites/stevedenning/2015/01/26/why-do-managers-hate-agile[Why do managers hate agile?]
 * https://www.forbes.com/sites/stevedenning/2015/01/28/more-on-why-managers-hate-agile[More on why managers hate agile].
@@ -88,11 +88,11 @@ The transition is painful, see the seminal articles of Steve Denning
 The principles are
 
 * Products are value-driven and quality oriented
-* Teams are focused to master their work and tools - Craftsmanship, {ref-xp} -
+* Teams are focused to master their work and tools – Craftsmanship, {ref-xp} -
 * For huge development departments consider using the {ref-less} approach.
 * Teams work best if you can answer with a deafening yes to these five questions.
 ** Psychological safety: Can we take risks on this team without feeling insecure or embarrassed?
-** Dependability: Can we count on each other to do high quality work on time?
+** Dependability: Can we count on each other to do high-quality work on time?
 ** Structure & clarity: Are goals, roles, and execution plans on our team clear?
 ** Meaning of work: Are we working on something that is personally important for each of us?
 ** Impact of work: Do we fundamentally believe that the work we are doing matters?

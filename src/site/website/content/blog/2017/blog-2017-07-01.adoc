@@ -21,7 +21,7 @@ Too often, Scrum masters become Scrum administrators.
 They schedule meetings, moderate discussions, write progress reports and draw beautiful slides how to improve the organization.
 Or worst, they collect extensive statistics about velocity, planned versus delivered story points or how precise story estimation was.
 
-At the end of the day, your job is to mentor your team to be champions and build awesome products :cite[great-scrum-master,scrum-pocket-guide-3rd,mastering-professional-scrum].
+At the end of the day, your job is to mentor your team to be champions and build awesome products cite:[great-scrum-master,scrum-pocket-guide-3rd,mastering-professional-scrum].
 
 _Wake up!_ You are not a product manager, you shall be a catalyst.
 

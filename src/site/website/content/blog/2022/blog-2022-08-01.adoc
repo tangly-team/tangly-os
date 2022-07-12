@@ -16,7 +16,7 @@ image::2022-08-01-head.jpg[width=420,height=360,role=left]
 Some organisations are adopting agile and Scrum approaches simply because they see competitors doing it.
 In these situations, there is rarely a desire to adopt a new mindset and culture, or motivation for true change.
 
-A common pattern is the adoption of new nomenclature.
+A common pattern is the adoption of a new nomenclature.
 Project Managers are renamed as Scrum Masters.
 Business Analysts as Product Owners.
 
@@ -24,6 +24,25 @@ Very little actually changes.
 Few benefits of agility are realised.
 
 If anything, the situation may become worse as some previous structures are lost, yet the discipline for Agile just is not there.
+
+[quote,Craig Larman]
+____
+Organizations are implicitly optimized to avoid changing the status quo middle- and first-level manager and “specialist” positions & power structures.
+
+. Any change initiative will be reduced to redefining or overloading the new terminology to mean basically the same as status quo.
+
+. Any change initiative will be derided as _purist_, _theoretical_, _revolutionary_, _religion_ and _needing pragmatic customization for local concerns_.
+It deflects from addressing weaknesses and manager/specialist status quo.
+
+. If after changing the change some managers and single-specialists are still displaced, they become _coaches/trainers”_ for the change.
+They frequently reinforce (1) and (2).
+
+. (in large established orgs) Culture follows structure.
+And in tiny young orgs, structure follows culture
+footnote:[In big established groups, culture/behavior/mindset follows and is influenced by changes in the organizational system and design.
+In large established organizations, if you want to really change culture, you have to start with changing the organizational system because culture does not really change otherwise.
+Said another way, the organizational system is strongly influential on mindset and behavior.].
+____
 
 Fake Scrum is around us everywhere we go.
 This dreadful situation is unavoidable.
@@ -76,7 +95,8 @@ You have to write requirements in such a way that something can be delivered in 
 
 ==== No transparency
 
-Without transparency, I cannot inspect, I cannot adapt… and if I cannot inspect and adapt, well then, the entire empirical process falls apart.
+Without transparency, I cannot inspect, I cannot adapt.
+If I cannot inspect and adapt, the entire empirical process falls apart.
 If the entire empirical process is falling apart, you have fake Scrum.
 Scrum is built upon this engine.
 
@@ -88,8 +108,11 @@ So, if you do not have transparency, you’ve got fake Scrum.
 
 ==== No results
 
-If you have got stakeholders that do not see a difference.
-They do not care if they are not talking to your team they are not talking to your product owner.
+If you got stakeholders that do not see a difference.
+They do not care if they are not talking to your team.
+They are not talking to your product owner
+footnote:[Your product owner is not doing her job.
+One key reponsibility of a product owner is to involve and inform all stakeholders.].
 
 If you are not delivering results then what is the point of your work in the first place.
 If there is no point you are probably doing _fake Scrum_.

@@ -29,7 +29,7 @@ To put your product under git version management, go to the root of the product 
 git init
 ----
 
-To add a specific file or all your source files to git
+To add a specific file or all your source files to git.
 
 [source,shell]
 ----
@@ -130,14 +130,14 @@ git checkout --[filename]
 You shall avoid the end of online character warnings by configuring git to handle them.
 The situation arises because Microsoft OS uses CRLF for the end of lines instead of CR.
 
-You can configure git to handle it by running on Windows.
+You can configure git to handle it by running on Windows:
 
 [source,shell]
 ----
 git config --global core.autocrlf true
 ----
 
-or on Linux and macOS
+Or on Linux and macOS:
 
 [source,shell]
 ----
