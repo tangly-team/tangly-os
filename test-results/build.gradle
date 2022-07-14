@@ -1,6 +1,7 @@
 /*
     gradle testAggregateTestReport generates an aggregate report over all unit tests. Run first gradle test.
     gradle testCodeCoverageReport  generates a code coverage aggregate report over all unit tests. Run first gradle jacocoTestReport
+    Remark: application plugin and configuration are necessary for the correct working of the coverage plugin.
  */
 
 plugins {
@@ -50,7 +51,7 @@ dependencies {
     jacocoAggregation project(':net.tangly.erp.shared')
     jacocoAggregation project(':net.tangly.erp.ui')
     jacocoAggregation project(':net.tangly.erp-integration')
-    // TODO find out why gradle plugin does not accept the fsm sub projedt
+    // TODO find out why gradle plugin does not accept the fsm sub project
     // jacocoAggregation project(':net.tangly.fsm')
     jacocoAggregation project(':net.tangly.gleam')
     jacocoAggregation project(':net.tangly.ui')
