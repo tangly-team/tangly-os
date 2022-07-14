@@ -25,18 +25,23 @@ Few benefits of agility are realised.
 
 If anything, the situation may become worse as some previous structures are lost, yet the discipline for Agile just is not there.
 
+
+=== Larman's Laws
+
+Craig Larman is one of the founder of {ref-less}.
+He has formulated laws based on his observations.
+
 [quote,Craig Larman]
 ____
-Organizations are implicitly optimized to avoid changing the status quo middle- and first-level manager and “specialist” positions & power structures.
+Organizations are implicitly optimized to avoid changing the status quo of middle- and first-level manager and _specialist_ positions or power structures.
+
+The corollaries are:
 
 . Any change initiative will be reduced to redefining or overloading the new terminology to mean basically the same as status quo.
-
 . Any change initiative will be derided as _purist_, _theoretical_, _revolutionary_, _religion_ and _needing pragmatic customization for local concerns_.
 It deflects from addressing weaknesses and manager/specialist status quo.
-
-. If after changing the change some managers and single-specialists are still displaced, they become _coaches/trainers”_ for the change.
+. If after changing the change some managers and single-specialists are still displaced, they become _coaches or trainers_ for the change.
 They frequently reinforce (1) and (2).
-
 . (in large established orgs) Culture follows structure.
 And in tiny young orgs, structure follows culture
 footnote:[In big established groups, culture/behavior/mindset follows and is influenced by changes in the organizational system and design.

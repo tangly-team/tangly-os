@@ -7,7 +7,8 @@ description: Recipes for agile transformation initatives
 
 == Agile Transformations
 
-Agile transformation is as an act of transforming an organization’s form or nature gradually to one that is able to thrive in a flexible, collaborative, self-organizing, fast changing environment.
+Agile transformation is as an act of transforming an organization’s form or nature gradually.
+The new form is able to thrive in a flexible, collaborative, self-organizing, fast changing environment.
 
 The Agile Manifesto values and principles can be taught and exercised throughout any type of organization as it is not limited to development teams.
 
@@ -44,7 +45,8 @@ Focus on product delivery::
 * Amplify learning.
 * Late decision-making.
 * Fast delivery - continuous integration, continuous delivery, continuous deployment, DevOps -.
-* Team empowerment.
+* Team empowerment and technical fluency.
+Professional teams are required for awesome products.
 * Built-in integrity.
 * View applications as a whole.
 

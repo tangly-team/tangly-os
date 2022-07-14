@@ -1,7 +1,7 @@
 ---
 title: "Components Publication"
 date: 2019-05-01
-weight: 40
+weight: 35
 description: Workflow to publish open source components
 ---
 
@@ -101,12 +101,15 @@ package net.tangly.erp.ui [[http://blog.tangly.net/docs/erp/ui]] {
 
 ....
 
-==== Decisions
+=== Decisions
 
 . The open source components are stored in a mono repository.
 Each component is declared as a gradle module.
 . We use de facto standard Git.
-. We are hosted at https://bitbucket.org[bitbucket].
+. We are hosted at {ref-github}
+footnote:[We moved from {ref-github} to {ref-github} in 2022.
+The reasons were that the new platform supports publishing of static website with a lot more functionalities.
+The new agile project management functionality with Scrum boards, sprint iterations and insights report is very interesting.].
 . The bitbucket repository is regularly synchronized with a GitHub mirror repository https://github.com/marcelbaumann/tangly-os.git[GitHub].
 
 The synchronization is performed with the command

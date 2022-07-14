@@ -13,7 +13,10 @@ Scrum is the industrial standard to create and develop awesome digital products.
 
 === Scrum
 
-* Plain Scrum is an additive framework
+Scrum is a minimalist framework empowering your organization to deliver digital products.
+
+* Scrum is an additive framework.
+Please be pragmatic and professional.
 ** Roles: Product Owner, Scrum Master, Team Member
 ** Events: Sprint, Sprint Planning, Daily Scrum, Review, Retrospective, Backlog Refinement
 ** Artifacts: Product Increment, Product Backlog, Spring Backlog, Definition of Done
@@ -22,11 +25,15 @@ Scrum is the industrial standard to create and develop awesome digital products.
 * Good Practices
 * Anti Patterns: Definition of Ready, Project Leader, Milestones, Quality Group, Undone Work
 
+{ref-scrum} and {ref-less} provide proven approaches and good practices how to efficiently work on one product line with five to hundred product deelopers.
+
 === Product Development
 
-* Roadmap
-* Release Plan
-* Stakeholder Map
+A successful digital product shall fulfill customers' expectations.
+
+* Roadmap with a horizon of maximum 2 years
+* Release Plan with a horizon of maximum 1 year
+* Stakeholder Map is crucial for onboarding
 * Risk Management
 * Customer Journey and Design Thinking
 * Story Mapping
@@ -35,15 +42,19 @@ Scrum is the industrial standard to create and develop awesome digital products.
 
 === Technical Agility
 
-* Software Craftsmanship
-* Software Engineering
-* DevOps: Continuous Integration, Continuous Delivery,  Continuous Deployment, Git, Living Documentation, Automated Quality Insurance
-* Clean Programmer
-* Evolutive Architectures
-* Fitness Functions
+Success with Scrum is often determined how fluent your software development teams are with technical agility.
+At the end you shall deliver a working piece of software delighting your customers.
+
+* Software Craftsmanship cite:[software-craftsman,clean-craftsmanship]
+* Software Engineering cite:[modern-software-engineering,software-engineering-at-google,facts-and-fallacies-software-engineering]
+* DevOps: Continuous Integration, Continuous Delivery, Continuous Deployment, Git, Living Documentation, Automated Quality Insurance
+* Clean Programmer cite:[clean-code,clean-coder,clean-agile,clean-architecture,clean-craftsmanship]
+* Evolutive Architectures cite:[building-evolutionary-architectures,working-effectively-with-legacy-code,beyond-software-architecture]
+* Fitness Functions cite:[building-evolutionary-architectures]
 * Documentation Good Practices
 
 === Continuous Improvements
 
-[bibliography]
-=== Links
+=== References
+
+bibliography:[]

@@ -2,7 +2,7 @@
 title: "Gradle 7"
 linkTitle: "Gradle 7"
 date: 2021-11-03
-tags: ["java", "agile", "architecture"]
+tags: ["java","gradle"]
 ---
 
 == Gradle 7 Goodies
@@ -12,6 +12,7 @@ tags: ["java", "agile", "architecture"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2021-11-02-head.jpg[width=420,height=360,role=left]
+
 {ref-gradle} is my preferred build tool for all Java applications I am developing.
 
 Google chose Gradle as the official build tool for Android.

@@ -2,7 +2,7 @@
 title: "Gradle 6.4 Finally Supports Java Modules"
 linkTitle: "Gradle Supports Modules"
 date: 2020-05-01
-tags: ["java"]
+tags: ["java","gradle"]
 ---
 
 == Gradle 6.4 Finally Supports Java Modules

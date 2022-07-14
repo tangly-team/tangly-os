@@ -11,7 +11,7 @@ weight: 60
 | *Postal Address:* | tangly llc +
 Lorzenhof 27 +
 6330 *Cham* +
-Switzerland
+_Switzerland_
 | *Plus Code:*      | 8FVC5FM5+Q6G
 | *Email:*          | info@tangly.net
 | *Phone:*          | +41 79 778 86 89

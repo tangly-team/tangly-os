@@ -1,0 +1,99 @@
+---
+title: "Multi-Module Test Reporting with Gradle 7.x"
+linkTitle: "BDD"
+date: 2022-09-01
+tags: ["java", "gradle"]
+---
+
+== Multi-Module Test Reporting with Gradle 7.x
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly ll c]
+
+image::2022-11-02-head.jpg[width=420,height=360,role=left]
+
+I love Gradle as a build solution for all my Java projects.
+
+But sometimes I was discouraged how spotty or cumbersome the support for multi-module proejct is.
+
+I struggled for years to generate test and code overage reports over modules part of a {ref-gradle} project.
+
+Gradle finally provides a better approach to generate aggregated test and code coverage reports over multiple modules belonging to the sam project.
+
+Two plugins nicely solve this daunting problem for all Java developers preferring {ref-gradle} over {ref-maven}.
+
+I hope similasr solutions will be provided for static code analysers such as SoptBugs, PMD or Checkstyle.
+
+=== Selected Approach
+
+We use the documented approach to define a seperate module to generate the aggregation reports.
+
+[source, groovy]
+----
+plugins {                                           // <1>
+    id 'test-report-aggregation'
+    id 'jacoco-report-aggregation'
+}
+
+dependencies {                                      // <2>
+    testReportAggregation project(':net.tangly.bdd')
+    testReportAggregation project(':net.tangly.commons')
+    testReportAggregation project(':net.tangly.core')
+    testReportAggregation project(':net.tangly.dev')
+
+   jacocoAggregation project(':net.tangly.bdd')
+    jacocoAggregation project(':net.tangly.commons')
+    jacocoAggregation project(':net.tangly.core')
+    jacocoAggregation project(':net.tangly.dev')
+ }
+
+reporting {                                         // <3>
+    reports {
+        testAggregateTestReport(AggregateTestReport) {
+            testType = TestSuiteType.UNIT_TEST
+        }
+        testCodeCoverageReport(JacocoCoverageReport) {
+            testType = TestSuiteType.UNIT_TEST
+        }
+    }
+----
+<1> load the plugin for test aggregation report and the test coverage aggregation report.
+<2> declare the modules which results should be aggregated. We have to declare the same subprojects for each plugin seperately.
+<3> configure the aggregation reports.
+
+To generate the aggregation resuls we call
+
+[source, shell]
+----
+./gradlew testAggregateTestReport <1>
+./gradlew testCodeCoverageReport  <2>
+----
+<1> generates an aggregate report over all unit tests. Run first gradle test.
+<2> generates a code coverage aggregate report over all unit tests. Run first gradle jacocoTestReport.
+
+=== Learnings
+
+Gradle provides test results aggregation and test coverage aggregation as two seperate plugins.
+The drawback is that we have to configure both plugins with the same information.
+
+The plugins make the assumption that modules are called from an application subproject.
+The scenario of a mono repository containing a set of libraries is not covered.
+
+[CAUTION]
+====
+We would encourage the plugin authors to provide a default configuration option based on the gradle settings defined in _settings.gradle_.
+The modules are defined in the file and could be retrieved by the plugin using the Gradle API.
+
+_Aoply the cardinal rule of good user interface design.
+Do not ask the user to give information already available to the application._
+====
+
+The new plugins are a huge simplification over the cumbersome and almost magic statements we needed before to create these reports.
+Gradle ecosystem is still work in progress to support multi-module Java projects <<gradle-7>> <<gradle-6>>.
+
+[bibliography]
+=== Links
+
+- [[[gradle-7, 1]]] link:../../2021/gradle-7/[Gradle 7]
+- [[[gradle-6, 2]]] link:../..2020/gradle-6.4-finally-supports-java-modules/[Gradle 6.4 Finally Supports Java Modules]

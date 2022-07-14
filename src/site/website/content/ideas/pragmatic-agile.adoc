@@ -1,0 +1,10 @@
+---
+title: "Pragmatic Agile"
+date: 2022-01-01
+weight: 85
+description: Recipes for daily agile and successful product development
+---
+
+== Pragmatic Agile
+
+_To be written_
