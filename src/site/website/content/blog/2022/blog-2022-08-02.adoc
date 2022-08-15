@@ -15,16 +15,19 @@ image::2022-08-02-head.jpg[width=420,height=360,role=left]
 
 You developed a new digital product for an internal or external customer.
 Your solution is awesome.
-The product is released to the users.
 
+The product is released to delighted users.
 Your users love your solution.
 
 The project is now winding down and closing activities are initiated.
 The customer organization shall take ownership of all product related artifacts.
-They paid for the development and own the produced artifacts.
+The handover is a vital part of closing a project
+footnote:[The handover is most of the time implied through the contract or the corporate governance processes of your customer.].
 
-You are legally bound to deliver source code, binary artifacts and documentation to your customer.
-The ownership transfer is either part of your contract or implicit through the contract type you are working with.
+Your customer paid for the development and own the produced artifacts.
+
+You are legally bound to deliver source code, binary artifacts defining the executable application, credentials and documentation to your customer.
+The ownership transfer is either an explicit part of your contract or implicit through the contract type you are working with.
 
 Remember, a product development is a work contract.
 
@@ -33,14 +36,18 @@ Expected deliveries are already defined in legal texts or through jurisprudence.
 Your customer has the right to refuse final payment until delivery.
 
 How can you cleanly transfer your results to your customers?
+How can you document the transfer process and provide an acceptance protocol?
 
 Which steps shall you implement to delight your clients?
 
 === Migration Steps
 
+Most development initiatives are using  {ref-github}, {ref-gitlab} or {ref-bitbucket}.
+The steps are the same for all these platforms.
+
 You should deliver a consistent
-footnote:[The project does not contain merge conflicts or merge requests.
-All development branches are merged and deleted.] repository to your client.
+footnote:[The project does not contain any merge conflicts or merge requests.
+All development branches are merged into the main branch and closed.] repository to your client.
 
 . Verify that the repository contains the final state of your solution. +
 _Talk with your developers to insure all changes are checked into the git repository_.
@@ -59,7 +66,8 @@ Use a spellchecker for orthography, and a link checker for your links_.
 You still need an official acceptance form from your client. +
 _Do not forget to document your tagging conventions.
 Are you using semantic versioning?_.
-. Transfer your repository to the new organization. +
+. Transfer your repository to the new organization. You should formally document the acceptance of the produced artifacts and handover of all results.
+Good practice is to sign the transfer protocol. +
 _Relinquish formally ownership of the repository and responsibility to your customer_.
 . Celebrate the successful completion of your project.
 
@@ -70,7 +78,8 @@ The chosen copyrights shall allow the new owner to take over and change all arti
 Repository Copyright::
 GitHub and GitLab strongly support the definition and publishing of the license under which the whole project is published.
 Examples of open source and closed source licenses are available on the Internet.
-Please never write your own license text.
+Please never write your own license text for source code or documents
+footnote:[Use an official license reviewed by professional copyright lawyers.].
 You are not a lawyer and your text will most certainly contain legal errors or miss required statements.
 Source Code Copyright::
 Beware that source code is often under similar copyright rules as books and pieces of art.
@@ -93,7 +102,8 @@ Avoid loosing your reputation and money for infringing copyrights.
 
 I strongly suggest using actual good practice documentation as static websites to publish your documentation.
 The huge gain is git based tracking to map a documentation set to a specific release of your solution.
-Auditability and tracing are implicitly provided through version management system features.
+Auditability and tracing of the documents are implicitly provided through version management system features
+footnote:[You should easily identify and retrieve the source code, binary artifacts and documentation for a specific release.].
 
 [WARNING]
 ====
@@ -139,6 +149,9 @@ Here is a simple example of a redirect page for your old website.
 === Update Your CI/CD Pipeline
 
 The continuous integration and delivery pipelines cite:[continuous-delivery] shall build all expected artifacts associated with the product.
+Ideally the process shall follow DevOps good practices and be automated.
+
+If not document thoroughly the manual steps.
 
 === Transfer Your GitHub Repository
 

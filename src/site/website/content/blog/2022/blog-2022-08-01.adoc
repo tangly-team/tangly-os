@@ -18,31 +18,31 @@ In these situations, there is rarely a desire to adopt a new mindset and culture
 
 A common pattern is the adoption of a new nomenclature.
 Project Managers are renamed as Scrum Masters.
-Business Analysts as Product Owners.
+Business Analysts become Product Owners.
 
 Very little actually changes.
 Few benefits of agility are realised.
 
-If anything, the situation may become worse as some previous structures are lost, yet the discipline for Agile just is not there.
-
+If anything, the situation may become worse as some previous structures are lost, yet the discipline for Agile is just not there.
 
 === Larman's Laws
 
 Craig Larman is one of the founder of {ref-less}.
 He has formulated laws based on his observations.
+The laws reflect the difficulty of a sucessfull transformation.
 
 [quote,Craig Larman]
 ____
-Organizations are implicitly optimized to avoid changing the status quo of middle- and first-level manager and _specialist_ positions or power structures.
+Organizations are implicitly optimized to avoid changing the status quo of middle- and first-level manager and _specialist_ positions.
 
 The corollaries are:
 
 . Any change initiative will be reduced to redefining or overloading the new terminology to mean basically the same as status quo.
 . Any change initiative will be derided as _purist_, _theoretical_, _revolutionary_, _religion_ and _needing pragmatic customization for local concerns_.
-It deflects from addressing weaknesses and manager/specialist status quo.
+It deflects from addressing weaknesses, and manager or specialist status quo.
 . If after changing the change some managers and single-specialists are still displaced, they become _coaches or trainers_ for the change.
 They frequently reinforce (1) and (2).
-. (in large established orgs) Culture follows structure.
+. In large established organizations, culture follows structure.
 And in tiny young orgs, structure follows culture
 footnote:[In big established groups, culture/behavior/mindset follows and is influenced by changes in the organizational system and design.
 In large established organizations, if you want to really change culture, you have to start with changing the organizational system because culture does not really change otherwise.
@@ -54,20 +54,23 @@ This dreadful situation is unavoidable.
 
 === Five Scrum Fake Indicators
 
-Indicators you are in a fake agile or Scrum environment.
+How to find out you are in a fake agile environment?
+Indicators you are in a fake agile or Scrum environment often are:
 
 image::2022-08-01-values-principles-practices.png[width=60%,height=360,role=text-center]
 
 ==== No goals
 
 If a Scrum team has absolutely no goals, what is the purpose of its existence?
+
 All good teams have goals.
 Scrum bakes the concept of goals right into the framework.
 
 We have product goals, which are a commitment to the Product Backlog.
 And then we have Sprint Goals, which are a commitment to the Sprint Backlog.
 Those goals are designed to help us achieve focus, get stuff done, and get results.
-If you do not have goals, you have got fake Scrum.
+
+If you do not have goals, you got fake Scrum.
 
 ==== No Self-management
 
@@ -102,14 +105,14 @@ You have to write requirements in such a way that something can be delivered in 
 
 Without transparency, I cannot inspect, I cannot adapt.
 If I cannot inspect and adapt, the entire empirical process falls apart.
-If the entire empirical process is falling apart, you have fake Scrum.
+If the entire empirical process is falling apart, you got fake Scrum.
 Scrum is built upon this engine.
 
 Scrum is built upon the idea that we make things transparent.
 
 We inspect and adapt at the appropriate frequency and that is how we manage all the complexity of product development.
 We certainly cannot eliminate complexity, but we can work with it.
-So, if you do not have transparency, you’ve got fake Scrum.
+So, if you do not have transparency, you got fake Scrum.
 
 ==== No results
 
@@ -120,7 +123,7 @@ footnote:[Your product owner is not doing her job.
 One key reponsibility of a product owner is to involve and inform all stakeholders.].
 
 If you are not delivering results then what is the point of your work in the first place.
-If there is no point you are probably doing _fake Scrum_.
+You are probably doing _fake Scrum_.
 
 === Digital Software Product Development
 
@@ -135,12 +138,12 @@ All your software development teams are working with git.
 Each developer creates multiple well-commented commits per day.
 Just use git history to check this hypothesis. +
 _Here some links to how you can use git_ <<git-local-repositories-for-the-impatient>><<git-branches-for-the-impatient>> <<code-scene>>.
-Deliver working applications multiple time a week::
+Deliver working applications multiple times a week::
 All teams deploy their digital increment multiple time per week.
 DevOps practices
 footnote:[Continuous integration and continuous delivery is _Dev_ practices.
 Continuous deploymnet and infrastructure as code are _Ops_ practices.] are lively in our organization cite:[accelerate,continuous-delivery-pipelines].
-No open errors older than a few days::
+No errors older than a few days::
 Quality and craftsmanship are cornerstones of agile approaches.
 A way to check these good practices is to study errors reports <<zero-bug-policy>>.
 Another test is to look at the OWASP static analysis and the obsolete libraries reports.
@@ -153,11 +156,12 @@ Ask the team how they do software design activities?
 
 === Final Thoughts
 
-Become a professional Scrum master cite:[professional-scrum-master], product owner cite:[professional-product-owner], or team developer.
+Walk the talk.
+Become a professional Scrum master cite:[mastering-professional-scrum], product owner cite:[professional-product-owner], or team developer.
 
 A digital product development team shall be DevOps affine cite:[continuous-delivery,continuous-delivery-pipelines,devops-handbook].
 
-See also another blog <<detecting-agile-bullshit>> describing how the department of defense detects agile lies.
+See also another blog <<detecting-agile-bullshit>> describing how the department of defense of USA detects agile lies.
 
 [bibliography]
 === Links

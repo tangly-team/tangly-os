@@ -1,0 +1,22 @@
+---
+title: "OS 010: Archive as TSV Files"
+linkTitle: "Archive Data as TSV Files"
+date: 2022-01-01
+weight: 10
+---
+
+== OS-010 Archive Data as TSV Files
+
+Date: 2022-01-01
+
+=== Status
+
+Implemented
+
+=== Context
+
+image::OS-010-head.jpg[width=420,height=360,role=left]
+
+=== Decision
+
+=== Consequences

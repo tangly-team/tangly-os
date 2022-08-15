@@ -2,7 +2,7 @@
 title: "OS 008: Use log4j2 as default logging framework"
 linkTitle: "Log4j2"
 date: 2021-06-15
-weight: 1
+weight: 8
 ---
 
 == OS-008 Use log4j2 as default logging framework

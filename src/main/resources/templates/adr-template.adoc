@@ -1,0 +1,22 @@
+---
+title: "OS 0XX: To Be Written"
+linkTitle: "To Be Written"
+date: YYYY-MM-DD
+weight: XX
+---
+
+== OS-0XX To be written
+
+Date: YYYY-MM-DD
+
+=== Status
+
+Draft|Implemented|Superseeded
+
+=== Context
+
+image::OS-0XX-head.jpg[width=420,height=360,role=left]
+
+=== Decision
+
+=== Consequences

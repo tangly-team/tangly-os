@@ -1,0 +1,22 @@
+---
+title: "OS 009: Use HSQLDB as SQL DB"
+linkTitle: "Use HSQLDB as SQL store"
+date: 2022-01-01
+weight: 9
+---
+
+== OS-009 Use HSQLDB as SQL store
+
+Date: 2022-01-01
+
+=== Status
+
+Implemented
+
+=== Context
+
+image::OS-009-head.jpg[width=420,height=360,role=left]
+
+=== Decision
+
+=== Consequences

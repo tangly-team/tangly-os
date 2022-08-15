@@ -2,7 +2,7 @@
 title: "OS 007: Persistence with MicroStream"
 linkTitle: "MicroStream"
 date: 2020-10-01
-weight: 6
+weight: 7
 ---
 
 == OS-007: Persistence with MicroStream
