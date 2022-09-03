@@ -20,11 +20,25 @@ import java.util.function.Predicate;
 /**
  * Defines a mixin with an absolute time interval.
  */
-public interface HasInterval {
-    record DateFilter(LocalDate from, LocalDate to) implements Predicate<LocalDate> {
-        public boolean test(@NotNull LocalDate date) {
-            return (from == null || !from.isAfter(date)) && (to == null || !to.isBefore(date));
-        }
+public interface HasTimeInterval {
+    /**
+     * Sets the from date when the entity is existing and active.
+     *
+     * @param fromDate the new start of the existing period of the entity
+     * @see #from()
+     */
+    default void from(LocalDate fromDate) {
+        throw new IllegalCallerException("Trait is in immutable form");
+    }
+
+    /**
+     * Sets the end date when the entity is existing and active.
+     *
+     * @param toDate the new end of the existing period of the entity
+     * @see #to() ()
+     */
+    default void to(LocalDate toDate) {
+        throw new IllegalCallerException("Trait is in immutable form");
     }
 
     /**
@@ -36,12 +50,15 @@ public interface HasInterval {
     LocalDate from();
 
     /**
-     * Sets the from date when the entity is existing and active.
-     * @param fromDate the new start of the existing period of the entity
-     * @see #from()
+     * Tests if the date is inside the time interval specified in the filter.
+     *
+     * @param from start of the time interval
+     * @param to   end of the time interval
      */
-    default void from(LocalDate fromDate) {
-        throw new IllegalCallerException("Trait is in immutable form");
+    record DateFilter(LocalDate from, LocalDate to) implements Predicate<LocalDate> {
+        public boolean test(@NotNull LocalDate date) {
+            return (from == null || !from.isAfter(date)) && (to == null || !to.isBefore(date));
+        }
     }
 
     /**
@@ -53,12 +70,16 @@ public interface HasInterval {
     LocalDate to();
 
     /**
-     * Sets the end date when the entity is existing and active.
-     * @param toDate the new end of the existing period of the entity
-     * @see #to() ()
+     * Tests if the time interval is inside the time interval specified in the filter.
+     *
+     * @param from start of the time interval
+     * @param to   end of the time interval
+     * @param <T>  type of instances to test
      */
-    default void to(LocalDate toDate) {
-        throw new IllegalCallerException("Trait is in immutable form");
+    record IntervalFilter<T extends HasTimeInterval>(LocalDate from, LocalDate to) implements Predicate<T> {
+        public boolean test(@NotNull T entity) {
+            return (from == null || !from.isAfter(entity.from())) && (to == null || !to.isBefore(entity.to()));
+        }
     }
 
     /**
@@ -79,12 +100,6 @@ public interface HasInterval {
      */
     default boolean isActive() {
         return isActive(LocalDate.now());
-    }
-
-    record IntervalFilter<T extends HasInterval>(LocalDate from, LocalDate to) implements Predicate<T> {
-        public boolean test(@NotNull T entity) {
-            return (from == null || !from.isAfter(entity.from())) && (to == null || !to.isBefore(entity.to()));
-        }
     }
 
     static boolean isActive(@NotNull LocalDate date, LocalDate fromDate, LocalDate toDate) {

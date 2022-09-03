@@ -18,6 +18,7 @@ import com.vaadin.flow.component.textfield.PasswordField;
 import net.tangly.core.crm.NaturalEntity;
 import net.tangly.erp.Erp;
 import net.tangly.erp.crm.domain.Subject;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.github.mvysny.kaributesting.v10.LocatorJ._click;
@@ -30,7 +31,8 @@ import static net.tangly.erp.crm.ui.CmdChangePassword.EXECUTE;
 import static net.tangly.erp.crm.ui.CmdChangePassword.NEW_PASSWORD;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class CmdChangePasswordItTest extends CrmItTest {
+@Tag("IntegrationTest")
+class CmdChangePasswordTest extends CrmTest {
     @Test
     void testChangePasswordCorrectly() {
         var subject = createSubject();
@@ -40,7 +42,7 @@ class CmdChangePasswordItTest extends CrmItTest {
         assertThat(subject.authenticate("old-password")).isTrue();
         cmd.execute();
         Component form = form(cmd);
-       _setValue(_get(form, PasswordField.class, spec -> spec.withCaption(CURRENT_PASSWORD)), "old-password");
+        _setValue(_get(form, PasswordField.class, spec -> spec.withCaption(CURRENT_PASSWORD)), "old-password");
         _setValue(_get(form, PasswordField.class, spec -> spec.withCaption(NEW_PASSWORD)), "new-password");
         _setValue(_get(form, PasswordField.class, spec -> spec.withCaption(CONFIRM_PASSWORD)), "new-password");
         _click(_get(form, Button.class, spec -> spec.withCaption(EXECUTE)));

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2022-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -10,15 +10,20 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.erp.crm;
+package net.tangly.commons.lang;
 
-import com.tngtech.archunit.junit.AnalyzeClasses;
-import com.tngtech.archunit.junit.ArchTest;
-import com.tngtech.archunit.junit.ArchTests;
-import net.tangly.core.validation.DomainRules;
+import net.tangly.commons.lang.functional.Pair;
+import org.junit.jupiter.api.Test;
 
-@AnalyzeClasses(packages = "net.tangly.erp.crm")
-class ArchitectureTest {
-    @ArchTest
-    static final ArchTests domainRules = ArchTests.in(DomainRules.class);
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class PairTest {
+    @Test
+    void pairTest() {
+        final String leftValue = "leftValue";
+        final Integer rightValue = 42;
+        Pair<String, Integer> pair = Pair.of(leftValue, rightValue);
+        assertThat(pair.left()).isEqualTo(leftValue);
+        assertThat(pair.right()).isEqualTo(rightValue);
+    }
 }

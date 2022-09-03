@@ -28,7 +28,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Defines basic infrastructure for integration tests of the bounded domain with karibu testing framewwork and in-memory database without persistence.
  */
-class CrmItTest {
+class CrmTest {
     private static Routes routes;
 
     @BeforeAll

@@ -10,18 +10,15 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.erp.crm.ui;
+package net.tangly.erp.invoices.ui;
 
-import com.vaadin.flow.server.VaadinSession;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-class CmdLogoutItTest extends CrmItTest {
+@Tag("IntegrationTest")
+class CmdCreateInvoiceDocumentTest extends InvoicesTest {
     @Test
-    void testLogout() {
-        var logout = new CmdLogout();
-        logout.execute();
-        assertThat(VaadinSession.getCurrent().getSession()).isNotNull();
+    void testCreateInvoiceDocument() {
+
     }
 }

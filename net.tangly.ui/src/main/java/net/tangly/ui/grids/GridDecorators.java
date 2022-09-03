@@ -23,7 +23,7 @@ import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.provider.ListDataProvider;
 import net.tangly.core.HasDate;
-import net.tangly.core.HasInterval;
+import net.tangly.core.HasTimeInterval;
 import net.tangly.core.HasTags;
 import net.tangly.core.codes.Code;
 import net.tangly.core.codes.CodeType;
@@ -160,7 +160,7 @@ public class GridDecorators<T> extends HorizontalLayout implements SelectedItemL
         }
     }
 
-    public static class FilterInterval<E extends HasInterval> implements GridFilter<E> {
+    public static class FilterInterval<E extends HasTimeInterval> implements GridFilter<E> {
         private final DatePicker component;
 
         public FilterInterval(@NotNull GridDecorators<E> container) {

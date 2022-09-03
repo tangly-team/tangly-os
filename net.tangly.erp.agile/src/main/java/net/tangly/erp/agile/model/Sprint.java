@@ -14,12 +14,12 @@ package net.tangly.erp.agile.model;
 
 import net.tangly.core.ExternalEntity;
 import net.tangly.core.ExternalEntityImp;
-import net.tangly.core.HasInterval;
+import net.tangly.core.HasTimeInterval;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 
-public class Sprint extends ExternalEntityImp implements ExternalEntity, HasInterval {
+public class Sprint extends ExternalEntityImp implements ExternalEntity, HasTimeInterval {
     private LocalDate fromDate;
     private LocalDate toDate;
 

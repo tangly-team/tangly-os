@@ -12,7 +12,7 @@
 
 package net.tangly.erp.crm.services;
 
-import net.tangly.core.HasInterval;
+import net.tangly.core.HasTimeInterval;
 import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.Contract;
 import net.tangly.erp.crm.domain.Interaction;
@@ -73,11 +73,11 @@ public class CrmBusinessLogic {
      */
     public BigDecimal funnel(@NotNull InteractionCode code, LocalDate from, LocalDate to) {
         return switch (code) {
-            case lead, prospect, lost -> realm.interactions().items().stream().filter(o -> o.code() == code).filter(new HasInterval.IntervalFilter<>(from, to))
+            case lead, prospect, lost -> realm.interactions().items().stream().filter(o -> o.code() == code).filter(new HasTimeInterval.IntervalFilter<>(from, to))
                 .map(Interaction::weightedPotential).reduce(BigDecimal.ZERO, BigDecimal::add);
             case ordered, completed -> realm.interactions().items().stream().filter(o -> o.code() == code)
                 .flatMap(interaction -> realm.contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.entity().oid()))
-                .filter(new HasInterval.IntervalFilter<>(from, to)).map(Contract::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
+                .filter(new HasTimeInterval.IntervalFilter<>(from, to)).map(Contract::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
         };
     }
 }

@@ -37,7 +37,7 @@ dependencies {
 
     implementation(libs.microstream.storage)
     implementation(libs.vaadin.socharts)
-    implementation(libs.vaadin.pdfbrowser)
+    implementation(libs.vaadin.pdfviewer)
     implementation(libs.commonmark)
 
     testImplementation(libs.vaadin.test)

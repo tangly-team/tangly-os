@@ -10,15 +10,15 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.erp.crm.ui;
+package net.tangly.erp.products.ui;
 
-import net.tangly.erp.Erp;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-class CmdLoginItTest extends CrmItTest {
+@Tag("IntegrationTest")
+class CmdCreateEffortTest extends ProductsTest {
     @Test
-    void testLogin() {
-        var login = new CmdLogin(Erp.instance().crmBoundedDomain());
-        login.execute();
+    void testCreateAssignmentDocument() {
     }
+
 }

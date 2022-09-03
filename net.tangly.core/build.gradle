@@ -28,6 +28,7 @@ dependencies {
     implementation(libs.iban4j)
     implementation(libs.bundles.microstream.deps)
     implementation(libs.json.core)
+    implementation(libs.arch.unit)
 
     testImplementation(libs.json.validator)
     testImplementation(libs.flyway)

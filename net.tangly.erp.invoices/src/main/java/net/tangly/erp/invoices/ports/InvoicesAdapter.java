@@ -14,7 +14,7 @@ package net.tangly.erp.invoices.ports;
 
 import net.tangly.commons.logger.EventData;
 import net.tangly.commons.utilities.AsciiDoctorHelper;
-import net.tangly.core.HasInterval;
+import net.tangly.core.HasTimeInterval;
 import net.tangly.erp.invoices.artifacts.InvoiceAsciiDoc;
 import net.tangly.erp.invoices.artifacts.InvoiceQrCode;
 import net.tangly.erp.invoices.artifacts.InvoiceZugFerd;
@@ -49,7 +49,7 @@ public class InvoicesAdapter implements InvoicesPort {
     }
     @Override
     public void exportInvoiceDocuments(boolean withQrCode, boolean withEN16931, LocalDate from, LocalDate to) {
-        final var filter = new HasInterval.DateFilter(from, to);
+        final var filter = new HasTimeInterval.DateFilter(from, to);
         realm.invoices().items().stream().filter(o -> filter.test(o.date())).forEach(o -> exportInvoiceDocument(o, withQrCode, withEN16931));
     }
 

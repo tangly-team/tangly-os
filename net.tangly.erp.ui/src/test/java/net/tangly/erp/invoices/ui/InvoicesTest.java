@@ -22,8 +22,10 @@ import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesBusinessLogic;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 
-class InvoicesItTest {
+@Tag("IntegrationTest")
+class InvoicesTest {
     static InvoicesBoundedDomain ofDomain() {
         var realm = new InvoicesEntities();
         return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesHdl(realm, null), new InvoicesAdapter(realm, null),

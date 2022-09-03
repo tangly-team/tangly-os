@@ -14,17 +14,19 @@ package net.tangly.ui.pdf;
 
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.server.StreamResource;
-import org.vaadin.alejandro.PdfBrowserViewer;
+
+import com.vaadin.componentfactory.pdfviewer.*;
 
 import java.io.InputStream;
 
-public class PdfViewer extends Dialog {
+public class PdfViewerDialog extends Dialog {
     /**
      * Create a PDF viewer for a PDF file s
+     *
      * @param name         name of the resource in the Vaadin environment
      * @param resourcePath name of the resource relative to src/main/resources
      */
-    public PdfViewer(String name, String resourcePath) {
+    public PdfViewerDialog(String name, String resourcePath) {
         this(new StreamResource(name, () -> PdfViewer.class.getResourceAsStream(resourcePath)));
     }
 
@@ -32,12 +34,15 @@ public class PdfViewer extends Dialog {
      * @param name   name of the resource in the Vaadin environment
      * @param stream input stream containing the pdf data to display
      */
-    public PdfViewer(String name, InputStream stream) {
+    public PdfViewerDialog(String name, InputStream stream) {
         this(new StreamResource(name, () -> stream));
     }
 
-    public PdfViewer(StreamResource resource) {
-        PdfBrowserViewer viewer = new PdfBrowserViewer(resource);
+    public PdfViewerDialog(StreamResource resource) {
+
+        PdfViewer viewer = new PdfViewer();
+        viewer.setSrc(resource);
+
         viewer.setHeight("100%");
         setWidth("400px");
         setHeight("150px");

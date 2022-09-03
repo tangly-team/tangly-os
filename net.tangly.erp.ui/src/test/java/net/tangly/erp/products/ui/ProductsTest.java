@@ -10,23 +10,26 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.erp.ledger.ui;
+package net.tangly.erp.products.ui;
 
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import net.tangly.core.TypeRegistry;
 import net.tangly.erp.Erp;
-import net.tangly.erp.ledger.ports.LedgerAdapter;
-import net.tangly.erp.ledger.ports.LedgerEntities;
-import net.tangly.erp.ledger.ports.LedgerHdl;
-import net.tangly.erp.ledger.services.LedgerBoundedDomain;
-import net.tangly.erp.ledger.services.LedgerBusinessLogic;
+import net.tangly.erp.products.ports.ProductsAdapter;
+import net.tangly.erp.products.ports.ProductsEntities;
+import net.tangly.erp.products.ports.ProductsHdl;
+import net.tangly.erp.products.services.ProductsBoundedDomain;
+import net.tangly.erp.products.services.ProductsBusinessLogic;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 
-class LedgerItTest {
-    static LedgerBoundedDomain ofDomain() {
-        var realm = new LedgerEntities();
-        return new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), new LedgerHdl(realm, null), new LedgerAdapter(realm, null), new TypeRegistry());
+@Tag("IntegrationTest")
+class ProductsTest {
+    static ProductsBoundedDomain ofDomain() {
+        var realm = new ProductsEntities();
+        var logic = new ProductsBusinessLogic(realm);
+        return new ProductsBoundedDomain(realm, logic, new ProductsHdl(realm, null), new ProductsAdapter(logic, null), new TypeRegistry());
     }
 
     @BeforeAll

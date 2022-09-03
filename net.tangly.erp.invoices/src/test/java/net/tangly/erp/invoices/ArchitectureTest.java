@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -14,22 +14,11 @@ package net.tangly.erp.invoices;
 
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
-import com.tngtech.archunit.lang.ArchRule;
-
-import static com.tngtech.archunit.library.Architectures.layeredArchitecture;
+import com.tngtech.archunit.junit.ArchTests;
+import net.tangly.core.validation.DomainRules;
 
 @AnalyzeClasses(packages = "net.tangly.erp.invoices")
 class ArchitectureTest {
-    static final String SERVICE = "Service";
-    static final String PORTS = "Ports";
-    static final String DOMAIN = "Domain";
-
     @ArchTest
-    static final ArchRule layersRule =
-        layeredArchitecture().layer(DOMAIN).definedBy("..domain..").layer(SERVICE).definedBy("..services..").layer(PORTS).definedBy("..ports..")
-            .whereLayer(DOMAIN).mayOnlyBeAccessedByLayers(SERVICE, PORTS).whereLayer(SERVICE).mayOnlyBeAccessedByLayers(PORTS).whereLayer(PORTS)
-            .mayNotBeAccessedByAnyLayer();
+    static final ArchTests domainRules = ArchTests.in(DomainRules.class);
 }
-
-
-

@@ -15,10 +15,13 @@ package net.tangly.commons.lang;
 import net.tangly.commons.lang.functional.LList;
 import org.junit.jupiter.api.Test;
 
+import java.util.NoSuchElementException;
+
 import static net.tangly.commons.lang.functional.LList.cons;
 import static net.tangly.commons.lang.functional.LList.list;
 import static net.tangly.commons.lang.functional.LList.nil;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 class LListTest {
     @Test
@@ -91,6 +94,12 @@ class LListTest {
         assertThat(sum(squared(list)) / list.length()).isEqualTo(11);
         assertThat(sum(list.map(o -> o * o)) / list.length()).isEqualTo(11);
         assertThat(list.map(o -> o * o).stream().mapToInt(Integer::intValue).sum() / list.length()).isEqualTo(11);
+    }
+
+    @Test
+    void testEmpytList() {
+        assertThatThrownBy(() -> LList.nil().first()).isInstanceOf(NoSuchElementException.class);
+        assertThatThrownBy(() -> LList.nil().rest()).isInstanceOf(UnsupportedOperationException.class);
     }
 
     private int sum(LList<Integer> list) {

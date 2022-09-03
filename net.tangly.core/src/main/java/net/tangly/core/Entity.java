@@ -23,7 +23,7 @@ package net.tangly.core;
  * Orthogonal information can therefore be attached to instances.</li>
  * </ul>
  */
-public interface Entity extends HasOid, HasText, HasInterval, HasTags, HasComments {
+public interface Entity extends HasOid, HasText, HasTimeInterval, HasTags, HasComments {
     /**
      * Check if the entity is consistent based on the fields values and business rules.
      *

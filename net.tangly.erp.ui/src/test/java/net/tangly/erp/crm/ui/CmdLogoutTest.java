@@ -10,15 +10,20 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.erp.crm;
+package net.tangly.erp.crm.ui;
 
-import com.tngtech.archunit.junit.AnalyzeClasses;
-import com.tngtech.archunit.junit.ArchTest;
-import com.tngtech.archunit.junit.ArchTests;
-import net.tangly.core.validation.DomainRules;
+import com.vaadin.flow.server.VaadinSession;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 
-@AnalyzeClasses(packages = "net.tangly.erp.crm")
-class ArchitectureTest {
-    @ArchTest
-    static final ArchTests domainRules = ArchTests.in(DomainRules.class);
+import static org.assertj.core.api.Assertions.assertThat;
+
+@Tag("IntegrationTest")
+class CmdLogoutTest extends CrmTest {
+    @Test
+    void testLogout() {
+        var logout = new CmdLogout();
+        logout.execute();
+        assertThat(VaadinSession.getCurrent().getSession()).isNotNull();
+    }
 }

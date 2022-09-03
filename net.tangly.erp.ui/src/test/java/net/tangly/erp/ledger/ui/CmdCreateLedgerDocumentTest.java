@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2022 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,9 +12,11 @@
 
 package net.tangly.erp.ledger.ui;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-class CmdCreateLedgerDocumentItTest extends LedgerItTest {
+@Tag("IntegrationTest")
+class CmdCreateLedgerDocumentTest extends LedgerTest {
     @Test
     void testCreateLedgerDocument() {
     }
