@@ -1,6 +1,6 @@
 ---
-title: "Agile Introduction Success Criteria through the LeSS lens"
-linkTitle: "LeSS lens"
+title: "Agile Introduction Success Criteria through the LeSS Lens"
+linkTitle: "LeSS Lens"
 date: 2018-04-18
 tags: ["agile", "LeSS"]
 ---
@@ -55,7 +55,8 @@ Further Reading Read the https://less.works/less/rules/index.html[LeSS Rules] fo
 
 As you found out now, I am convinced that {ref-less} approach is one of the best ways to truly transform into an agile organization.
 And less truly and deeply advocate technical excellence for all collaborators.
-You need an agile mindset and technical excellence to develop awesome products - see link:../../2018/pragmatic-craftsmanship[Software Craftsmanship] blog.
+You need an agile mindset and technical excellence to develop awesome products -
+see link:../../2018/pragmatic-craftsmanship-professional-software-developer/[Software Craftsmanship] blog.
 
 A huge advantage of https://less.works[LeSS] is that it is https://www.scrumguides.org/[Scrum].
 You do not need to learn new methodologies, terminology or processes.

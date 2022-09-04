@@ -43,7 +43,7 @@ A tag has three parts:
 For example, we could define a tag such as _geo:longitude=50.167958_ to provide the meta information of longitude to an entity.
 This tag has a namespace _geo_, a name _longitude_ and a double value _50.167958_.
 
-Additional information is available under link:../../docs/bus/businessmodels/ Below the source code in modern Java is
+Additional information is available under link:../../../docs/core/models/ Below the source code in modern Java is
 
 [source,java]
 ----
@@ -109,7 +109,7 @@ The search features of the underlying database can be applied for selecting inst
 Tag types are a medium to define an ontology and defines valid tag instances.
 A set of tag types shall always be associated with a specific domain of the application.
 
-We provide a Java library link:../../docs/crm[BUS] implementing these constructs.
+We provide a Java library link:../../../docs/domains/crm/[CRM] implementing these constructs.
 More information is available under http://blog.tangly.net/[tangly open source components].
 
 Related concepts are discussed in our blog series

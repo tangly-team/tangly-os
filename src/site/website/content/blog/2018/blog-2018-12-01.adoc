@@ -56,9 +56,9 @@ You have customer interaction in every sprint.
 Not only during the review event, but also during the planning meeting and architecture discussion.
 Review with customer involvement:: Realized stories are discussed during the review and demonstration meeting and timely feedback is provided to allow backlog refinement before the next planning meeting.
 A mature organization has acceptance criteria for each story and automated verification of the criteria at any time.
-Early and regular delivery of an increment of the product::
+Early and regular delivery of a product increment::
 You get feedback on the delivered and installed product increment.
-This goal is only achievable if your organization has implemented link:../../2018/blog-2018-11-01[Delivery Pipeline Check].
+This goal is only achievable if your organization has implemented a delivery pipeline.
 Risk List::
 You have a documented risk lists with description of risks, probability of occurrence and cost per event, and mitigation measures,
 Solution architecture::
@@ -69,11 +69,11 @@ Non-functional requirements::
 You have identified your non-functional requirements and constraints and have fitness measures in place.
 The measures guarantee the continuous achievement of the constraints - often defined as -ility requirements -.
 
-See the link:../../2018/blog-2018-11-01[Delivery Pipeline Check] to enable your organization to provide realtime feedback how well the above constraints are correctly implemented in the product.
+See the link:../../2018/how-healthy-is-your-product-delivery-pipeline-check/[Delivery Pipeline Check] to enable your organization to provide realtime feedback how well the above constraints are correctly implemented in the product.
 
 === Posts in the Health Check Series
 
-. link:../../2018/how-healthy-is-your-product-source-code-check[Source Code Check]
-. link:../../2018/how-healthy-is-your-product-delivery-pipeline-check[Delivery Pipeline Check]
-. link:../../2018/how-healthy-is-your-product-strategy-check[Product Strategy Check Company]
+. link:../../2018/how-healthy-is-your-product-source-code-check/[Source Code Check]
+. link:../../2018/how-healthy-is-your-product-delivery-pipeline-check/[Delivery Pipeline Check]
+. link:../../2018/how-healthy-is-your-product-product-strategy-check/[Product Strategy Check]
 . link:../../2019/how-healthy-is-your-product-company-culture-check/[Company Culture Check]

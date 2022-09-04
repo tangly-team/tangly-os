@@ -2,7 +2,7 @@
 title: "Gitlab for Bachelor Students"
 linkTitle: "Gitlab for Students"
 date: 2021-01-18
-tags: ["java", "git", "series-students"]
+tags: ["java", "git", "devops", "series-students"]
 ---
 
 == Gitlab for Bachelor Students
@@ -20,7 +20,7 @@ Computer science students shall be proficient with a basic set of software devel
 * _DevOps_ approaches are used in modern organizations.
 They predate agile development approaches.
 
-Technical schools should provide in-depth experience in these areas to prepare their students for their future activities after completing their bachelor.
+Technical schools should provide an in-depth experience in these areas to prepare their students for their future activities after completing their bachelor.
 
 The below mind map consolidates concepts, tools and approaches based on the https://about.gitlab.com/[GitLab] tooling established in some universities.
 The approach emphasizes *agile* and *DevOps* concepts and approaches.
@@ -161,11 +161,11 @@ You are a Windows user you can find a Windows package on the https://git-scm.com
 Git has 3 different _areas_ for your code:
 
 Working directory::
-The area that you will be doing all of your work in (creating, editing, deleting, and organizing files)
+The area that you will be doing all of your work in (creating, editing, deleting, and organizing files).
 Staging area::
-The area where you will list the changes that you have made to the working directory
+The area where you will list the changes that you have made to the working directory.
 Repository::
-Where Git permanently stores the changes you have made as different versions of the project
+Where Git permanently stores the changes you have made as different versions of the project.
 
 [source,shell]
 
@@ -224,7 +224,7 @@ include 'net.tangly.commons'
 ----
 
 The initial build file for each module is the same as for a minimal gradle project.
-You can now compile, test and check your application
+You can now compile, test and check your application.
 
 [source,shell]
 ----
@@ -307,7 +307,7 @@ More advanced scenarios use https://spotbugs.github.io/[SpotBugs] and the associ
 
 === How to Write Unit Tests for a Java Application
 
-You should write unit and integration tests for your Java application using
+You should write unit and integration tests for your Java application using:
 
 * https://junit.org/junit5/[JUnit 5]
 * https://site.mockito.org/[Mockito]
@@ -318,7 +318,7 @@ You should write unit and integration tests for your Java application using
 Static code generators are becoming the standard approach for technical documentation.
 One huge advantage is you can check the whole documentation into your git repository.
 You have a synchronisation between a released version of your application and the corresponding documentation.
-Both are stored in the same repository and can be marked with a version label You can use
+Both are stored in the same repository and can be marked with a version label You can use:
 
 * https://www.markdownguide.org/[Markdown]
 * https://asciidoc.org/[AsciiDoc]
@@ -362,9 +362,9 @@ git checkout trunk // <2>
 $ git merge my-branch // <3>
 ----
 
-<1> ...develop some code and commit it in the currently selected my-branch
-<2> switched to branch _trunk_
-<3> merge the branch _my-branch_ into _trunk_
+<1> Develop some code and commit it in the currently selected my-branch.
+<2> Switched to branch _trunk_.
+<3> Merge the branch _my-branch_ into _trunk_.
 
 ==== Rebase
 
@@ -416,7 +416,7 @@ pick 474bf0c2 last commit
 Cherry-picking in Git means choosing a commit from one branch and applying it onto another.
 This is in contrast with other ways such as _merge_ and _rebase_ which normally apply many commits onto another branch.
 
-You can display the hashes of your commits in _trunk_ with the command
+You can display the hashes of your commits in the _trunk_ with the command:
 
 [source,shell]
 ----
@@ -438,6 +438,8 @@ Read the post link:../../2016/git-branches-for-the-impatient[Git Branches for th
 ==== Pull Request
 
 Read the documentation of GitLab, BitBucket or GitHub.
+You will use pull requests if you are working in a team for a project.
+Sadly, students rareley work teams during their studies.
 
 [bibliography]
 === Links

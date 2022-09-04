@@ -70,12 +70,12 @@ Follow your {ref-safe} approach, respect one of the https://v46.scaledagileframe
 https://v46\.scaledagileframework.com/[five core competencies] of your method.
 
 See also my blogs link:../../2018/pragmatic-craftsmanship-professional-software-developer/[Pragmatic Craftsmanship],
-link:../../2018/blog-2018-06-01[Software Quality Graal], and
+link:../../2018/how-to-reach-the-software-quality-graal/[Software Quality Graal], and
 _How healthy is your Product?_ article series for information about technical excellence.
 
-. link:../../2018/how-healthy-is-your-prodcut-source-code-check[Source Code Check]
-. link:../../2018/how-healthy-is-your-product-delivery-pipeline-check[Delivery Pipeline Check]
-. link:../../2018/how-healthy-is-your-product-strategy-check[Product Strategy Check Company]
+. link:../../2018/how-healthy-is-your-product-source-code-check/[Source Code Check]
+. link:../../2018/how-healthy-is-your-product-delivery-pipeline-check/[Delivery Pipeline Check]
+. link:../../2018/how-healthy-is-your-product-product-strategy-check/[Product Strategy Check]
 . link:../../2019/how-healthy-is-your-product-company-culture-check/[Company Culture Check]
 
 The other big improvement is that the PI horizon is now _limited_ to 8 or 12 weeks.

@@ -63,3 +63,6 @@ copy_domain_module ledger
 copy_domain_module products
 copy_domain_module shared
 copy_domain_module ui
+
+cd $siteDir
+rm -v **/.DS_Store

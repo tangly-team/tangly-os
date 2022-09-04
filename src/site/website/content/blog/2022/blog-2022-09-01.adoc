@@ -2,7 +2,7 @@
 title: "ArchUnit"
 linkTitle: "ArchUnit"
 date: 2022-09-01
-tags: ["agile", "architecture", "scrum"]
+tags: ["agile", "architecture"]
 ---
 
 == Verifying Software Design Constraints with ArchUnit
@@ -13,30 +13,92 @@ tags: ["agile", "architecture", "scrum"]
 
 image::2022-09-01-head.png[width=420,height=360,role=left]
 
-How often have you experienced a well-defined and understood software architecture on paper.
-But then it falls apart when developers start implementing it?
+How often have you experienced a well-defined and understood software architecture on paper?
+And it falls apart when developers start implementing it?
 
-Recently, while re-architecting legacy components in an application, I experienced the same.
+While re-architecting recently legacy components in an application, I experienced the same.
 As more and more developers joined the team, it became a constant routine to make them aware of the design and how to adhere to it.
 
-I know some of you may say, "Why not control the implementation during code-review?".
-Well technically you can, but in that case, the reviewer becomes the bottleneck in the whole SDLC process.
+I know some of you may say, _Why not control the implementation during code-review sessions?_.
+Technically you can, but in that case, the reviewer becomes the bottleneck in the whole https://en.wikipedia.org/wiki/Systems_development_life_cycle[SDLC] process.
 
-What if there was something that could enforce the design constraint in the form of the test cases?
-The violation of the agreed-upon design principles are marked as failed build.
+What if there was something that could enforce design constraints in the form of the test cases?
+The violation of the agreed-upon design principles is marked as a failed build.
 
-My quest led me to a test library called https://www.archunit.org/[ArchUnit].
+My quest led me to a test library for architecture called https://www.archunit.org/[ArchUnit].
+It enforces architectural constraints in Java projects.
 
 === Idea
 
-ArchUnit is a test library that allows us to validate whether an application adheres to a given set of design consideration or architecture rules.
+ArchUnit is a test library and allows us to validate whether a solution adheres to a given set of design considerations or architecture rules.
+
 The product is a free, simple and extensible library for checking the architecture of your Java code using any plain Java unit test framework.
-That is, ArchUnit can check dependencies between packages and classes, layers and slices, check for cyclic dependencies and more.
-It does so by analyzing given Java bytecode, importing all classes into a Java code structure.
+The license is the open source https://www.apache.org/licenses/LICENSE-2.0[Apache 2.0].
+The support for https://junit.org/junit5/docs/current/user-guide/[JUnit 5] is very good.
 
-=== Used Constraints
+ArchUnit can check dependencies between packages and classes, layers and slices, detect cyclic dependencies and more.
+It does so by analyzing the given Java bytecode after importing all classes into a Java code structure.
 
-Checking existence of cyclic dependencies in the code
-Enforcing Layered or Onion architecture
+=== Use Architectural Constraints
 
-=== How to use?
+You first need to import the library in Gradle.
+
+[source,groovy]
+----
+implementation com.tngtech.archunit:archunit:1.0.0                             // <1>
+----
+<1> For real projects you should describe your dependencies in a https://docs.gradle.org/current/userguide/platforms.html[catalog file].
+
+The definition of a validation test is easy.
+
+Below an architectural rule to respect the _Domain-Driven Design_ concepts in our project <<software-structure-with-ddd>>.
+
+[source,java]
+----
+
+@AnalyzeClasses(packages = "net.tangly.erp.collaborators")                     // <1>
+public class DomainRules {                                                     // <2>
+    static final String SERVICES = "Services";
+    static final String PORTS = "Ports";
+    static final String DOMAIN = "Domain";
+
+    @ArchTest
+    static final ArchRule layersRule = layeredArchitecture().consideringAllDependencies()
+        .layer(DOMAIN).definedBy("..domain..")
+        .layer(SERVICES).definedBy("..services..")
+        .layer(PORTS).definedBy("..ports..")
+        .whereLayer(DOMAIN).mayOnlyBeAccessedByLayers(SERVICES, PORTS)
+        .whereLayer(SERVICES).mayOnlyBeAccessedByLayers(PORTS)
+        .whereLayer(PORTS).mayNotBeAccessedByAnyLayer();
+}
+----
+<1> Declare the root package for the bounded domain classes.
+The bounded domain should be defined as a Java module.
+<2> The domain rules class shall be declared as part of the domain library of your application.
+
+These rules are defined in the library component and enforced in all the _Bounded Domains_ we implement through the following unit tests.
+
+[source,java]
+----
+@AnalyzeClasses(packages = "net.tangly.erp.collaborators")
+public class ArchitectureTest {                                                // <1>
+    @ArchTest
+    static final ArchTests domainRules = ArchTests.in(DomainRules.class);      // <2>
+}
+
+----
+<1> The class is located in the unit test folder and will be executed with JUnit 5 as part of the unit test CI step.
+<2> Import all the rules defined in the domain rules class and apply them to the bounded domain _collaborators_.
+
+We can insure architectural constraints to all bounded domains defined in a product.
+The constraints are defined only once in a common module.
+
+The huge advantage is the integration of architectural validations in the continuous integration pipeline <<introducing-devops-ideas>> <<devops-for-sme>>.
+No expensive human activities are required to enforce these rules.
+
+[bibliography]
+=== Links
+
+- [[[software-structure-with-ddd, 1]]] link:../../2022/software-structure-with-ddd/[Software Structure with DDD]
+- [[[introducing-devops-ideas, 2]]] link:../../2022/introducing-devops-ideas/[Introducing DevOps Ideas]
+- [[[devops-for-sme, 3]]] link:../../2021/devops-for-small-applications/[DevOps for Small Applications]

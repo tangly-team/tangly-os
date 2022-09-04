@@ -81,6 +81,20 @@ Teams should never leave work-in-progress at the end of the sprint and _carry ov
 This causes a lack of transparency and reduces scope flexibility.
 If they forecast too much work, they need to remove completed items, which they have not started yet.
 
+=== Scrum Guide Definition
+
+The Scrum guide characterizes the _Definition of Done_ as follows:
+
+* The _Definition of Done_ is a *formal description* of the state of the _Increment_ when it meets the *quality measures required for the product*.
+* The moment a _Product Backlog Item_ meets the _Definition of Done_, an _Increment_ is born.
+* The _Definition of Done_ creates *transparency* by providing everyone a shared understanding of what work was completed as part of the _Increment_.
+If a _Product Backlog Item_ does not meet the _Definition of Done_, *it cannot be released or even presented* at the _Sprint Review_.
+Instead, it returns to the _Product Backlog_ for future consideration.
+* If the _Definition of Done_ for an increment is part of the standards of the organization, all _Scrum Teams_ must follow it as *a minimum*.
+If it is not an organizational standard, the _Scrum Team_ *must* create a _Definition of Done_ appropriate for the product.
+* The _Developers_ are *required to conform* to the _Definition of Done_.
+If there are multiple _Scrum Teams working_ together on a product, they must mutually define and comply with the samex _Definition of Done_.
+
 === Items of a Definition of Done
 
 * A delivery standard as defined by the team.

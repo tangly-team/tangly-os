@@ -63,7 +63,7 @@ The fourteen lecture themes are:
 
 The link:../../../ideas/learnings/lectures[slides of the SWAT course] are available for all interested parties.
 
-The course provides link:../../../ideas/learnings/lectures/swat-literature[mandatory and optional literature] for studying.
+The course provides link:../../../ideas/learnings/lectures/#software-architecture-and-techniques-lectures[mandatory and optional literature] for studying.
 
 The reference texts are cite:[domain-driven-design,refactoring,building-evolutionary-architectures,working-effectively-with-legacy-code].
 

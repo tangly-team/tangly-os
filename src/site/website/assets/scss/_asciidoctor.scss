@@ -263,6 +263,20 @@ b.conum * {
     }
 }
 
+.colist td:not([class]) {
+    &:first-child {
+        padding: 0.4em 0.75em 0 0.75em;
+        line-height: 1;
+        vertical-align: top;
+        img {
+            max-width: none;
+        }
+    }
+    &:last-child {
+        padding: 0.25em 0;
+    }
+}
+
 td.hdlist1,
 td.hdlist2 {
     vertical-align: top;

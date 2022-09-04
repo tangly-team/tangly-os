@@ -57,4 +57,5 @@ Both SonarLint and SonarQube rely on the same static source code analyzers – m
 This approach guarantees you always release source code with less SonarCube issues, therefore SonarCube always show no findings for new code and for refactored
 code.
 
-And you have made a step to the journey to become a professional software developer and achieve link:../../2018/blog-2018-04-01[craftsmanship].
+And you have made a step to the journey to become a professional software developer and achieve
+link:../../2018/pragmatic-craftsmanship-professional-software-developer/[craftsmanship].

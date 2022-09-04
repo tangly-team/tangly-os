@@ -92,7 +92,7 @@ You still document all major https://en.wikipedia.org/wiki/Architectural_decisio
 ==== Know Your Programming Language
 
 If you are developing in Java, you should use the current features of the programming language.
-For example, with Java 14
+For example, with Java 14 you have access to:
 
 * Try with resources and _closeable_ resources,
 * Immutable collections,
@@ -153,12 +153,12 @@ Start small and improve your approach every day.
 
 The agile architecture track contains the following blogs
 
-. link:../../2019/agile-architecture-principles[Agile Architecture Principles]
-. link:../../2019/agile-code-is-clean-code[Agile Code is Clean Code!]
-. link:../../2019/agile-architecture[Agile Architecture within Scrum]
-. link:../../2020/agile-component-design[Agile Component Design]
-. link:../../2020/legacy-systems-refactoring[Legacy Systems Refactoring]
-. link:../../2020/how-agile-collaborators-learn[How Agile Collaborators Learn]
+. link:../../2019/agile-architecture-principles/[Agile Architecture Principles]
+. link:../../2019/agile-code-is-clean-code/[Agile Code is Clean Code!]
+. link:../../2019/agile-architecture-within-scrum/[Agile Architecture within Scrum]
+. link:../../2020/agile-component-design/[Agile Component Design]
+. link:../../2020/legacy-systems-refactoring/[Legacy Systems Refactoring]
+. link:../../2020/how-agile-collaborators-learn/[How Agile Collaborators Learn]
 
 We also published our https://www.tangly.net/insights/continuous-learning/agile-architecture-course[agile architecture course] (3 ECTS) used for teaching computer science students at bachelor level at Swiss technical universities.
 
@@ -177,4 +177,3 @@ Stefan Tilkov. 2021.
 * bibitem:[efactoring-to-patterns]
 * bibitem:[design-patterns]
 * bibitem:[{building-microservices-2nd]
-

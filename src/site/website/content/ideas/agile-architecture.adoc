@@ -402,7 +402,7 @@ The well-established practices from the object-oriented and DevOps communities a
 * Aggressive refactoring and understand technical debt.
 * Continuous integration, continuous delivery, and continuous deployment.
 
-For a detailed discussion, consult the post link:../../2018/pragmatic-craftsmanship-professional-software-developer[Pragmatic Craftsmanship].
+For a detailed discussion, consult the post :link../../blog/2018/pragmatic-craftsmanship-professional-software-developer/[Pragmatic Craftsmanship].
 
 === What is the Architect Role?
 
@@ -817,7 +817,7 @@ The feeling you reached mastery level is truly awesome.
 
 You shall write good enough software without errors and using best practices of the industry.
 If not consider changing your profession.
-See my blog post about https://tangly-blog.blogspot.com/2018/03/how-should-you-handle-technical-debt.html[technical debt] discussing the consequences of missing mastery.
+See my blog post about link:../../blog/2022/technical-debt/[technical debt] discussing the consequences of missing mastery.
 
 === Software Craftsmanship
 

@@ -82,6 +82,6 @@ Either these managers are criminals or so plain stupid that they cannot be held 
 I am still unsure
 
 I am curious about books you recommend for agile or other approaches.
-You find a more complete book list under link:../../ideas/learnings/books[Books].
+You find a more complete book list under link:../../../ideas/learnings/books[Books].
 
 Just drop me an email or leave a comment.

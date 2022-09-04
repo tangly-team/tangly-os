@@ -1,5 +1,5 @@
 ---
-title: Why I still love to use a MacBookPro and MacOS in 2019"
+title: "Why I still love to use a MacBookPro and MacOS in 2019"
 linkTitle: "MacBookPro Love"
 date: 2019-04-15
 tags: ["organization"]
@@ -68,7 +68,7 @@ The tools I used to perform administrative work are * https://www.libreoffice.or
 I bought it as soon as the company stopped requesting higher prices for macOS than for the other platforms.
 
 I still have no need to use any Microsoft applications.
-My findings are inline with the ones in my link:../../2016/macbook-pro-love[older blog] in March 2016.
+My findings are inline with the ones in my link:../../2016/why-i-use-a-macbookpro-and-os-x/[older blog] in March 2016.
 I hope Apple will still produce high-quality hardware and software in the future.
 
 The only big macOS improvement I am waiting for from Apple is that Apple delegate the installation and update of Unix applications and utilities to Homebrew.

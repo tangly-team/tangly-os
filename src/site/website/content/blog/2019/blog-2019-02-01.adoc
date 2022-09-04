@@ -104,7 +104,7 @@ Do your managers know the four most important sentences and practice them daily?
 
 === Posts in the Health Check Series
 
-. link:../../2018/how-healthy-is-your-product-source-code-check[Source Code Check]
-. link:../../2018/how-healthy-is-your-product-delivery-pipeline-check[Delivery Pipeline Check]
-. link:../../2018/how-healthy-is-your-product-strategy-check[Product Strategy Check Company]
+. link:../../2018/how-healthy-is-your-product-source-code-check/[Source Code Check]
+. link:../../2018/how-healthy-is-your-product-delivery-pipeline-check/[Delivery Pipeline Check]
+. link:../../2018/how-healthy-is-your-product-product-strategy-check/[Product Strategy Check]
 . link:../../2019/how-healthy-is-your-product-company-culture-check/[Company Culture Check]

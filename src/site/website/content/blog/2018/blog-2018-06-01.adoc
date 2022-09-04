@@ -1,11 +1,11 @@
 ---
-link: "How to reach the Software Quality Graal?"
+title: "How to Reach the Software Quality Graal?"
 linkTitle: "Quality Graal"
 date: 2018-06-19
 tags: ["design"]
 ---
 
-== How to reach the Software Quality Graal?
+== How to Reach the Software Quality Graal?
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/

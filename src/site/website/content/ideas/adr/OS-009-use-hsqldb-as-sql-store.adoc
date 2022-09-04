@@ -15,7 +15,7 @@ Implemented
 
 === Context
 
-image::OS-009-head.jpg[width=420,height=360,role=left]
+image::OS-009-head.png[width=420,height=360,role=left]
 
 === Decision
 

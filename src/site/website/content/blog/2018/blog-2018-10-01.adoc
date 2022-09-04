@@ -70,15 +70,15 @@ Expertise is needed to define values to measure if the source code of your produ
 . User Experience and UI design.
 
 My blogs link:../../2018/pragmatic-craftsmanship-professional-software-developer[Pragmatic Craftsmanship] and How to Reach the
-link:../../2018/how-to-reach-the-software-quality-graal[Software Quality Graal] provides insights why source code quality is of tremendous importance for any company.
+link:../../2018/how-to-reach-the-software-quality-graal[Software Quality Graal] provide insights why source code quality is of tremendous importance for any company.
 
-And the blog link:../../2018/blog-2018-05-01[SonarLint] for the Impatient would be a pragmatic first measure to measure and improve your source code health.
+The blog link:../../2018/sonar-lint-for-the-impatient/[SonarLint] for the Impatient would be a pragmatic first measure to measure and improve your source code health.
 
 Any product should have a battery of measures deployed to continuously monitor the source code and detects trends over time.
 
 === Posts in the Health Check Series
 
-. link:../../2018/how-healthy-is-your-product-source-code-check[Source Code Check],
-. link:../../2018/how-healthy-is-your-product-delivery-pipeline-check[Delivery Pipeline Check],
-. link:../../2018/how-healthy-is-your-product-strategy-check[Product Strategy Check Company],
-. link:../../2019/how-healthy-is-your-product-company-culture-check/[Company Culture Check].
+. link:../../2018/how-healthy-is-your-product-source-code-check/[Source Code Check]
+. link:../../2018/how-healthy-is-your-product-delivery-pipeline-check/[Delivery Pipeline Check]
+. link:../../2018/how-healthy-is-your-product-product-strategy-check/[Product Strategy Check]
+. link:../../2019/how-healthy-is-your-product-company-culture-check/[Company Culture Check]

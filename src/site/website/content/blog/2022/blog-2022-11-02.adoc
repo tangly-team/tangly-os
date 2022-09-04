@@ -1,7 +1,7 @@
 ---
 title: "Multi-Module Test Reporting with Gradle 7.x"
-linkTitle: "BDD"
-date: 2022-09-01
+linkTitle: "Test Reporting"
+date: 2022-11-15
 tags: ["java", "gradle"]
 ---
 
@@ -19,11 +19,12 @@ But sometimes I was discouraged how spotty or cumbersome the support for multi-m
 
 I struggled for years to generate test and code overage reports over modules part of a {ref-gradle} project.
 
-Gradle finally provides a better approach to generate aggregated test and code coverage reports over multiple modules belonging to the sam project.
+Gradle finally provides a better approach to generate aggregated test and code coverage reports over multiple modules belonging to the same project.
+The solution is a huge improvement against the previous quite cumbersome approach described in <<gradle-7>>.
 
 Two plugins nicely solve this daunting problem for all Java developers preferring {ref-gradle} over {ref-maven}.
 
-I hope similasr solutions will be provided for static code analysers such as SoptBugs, PMD or Checkstyle.
+I hope similar solutions will be provided for static code analysers such as SoptBugs, PMD or Checkstyle.
 
 === Selected Approach
 

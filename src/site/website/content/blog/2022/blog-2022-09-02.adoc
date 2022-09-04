@@ -1,8 +1,8 @@
 ---
 title: "Eliminate Your Printer"
 linkTitle: "No Printers"
-date: 2022-09-01
-tags: ["agile", ]
+date: 2022-09-15
+tags: ["agile"]
 ---
 
 == Eliminate Your Printer
@@ -24,26 +24,33 @@ This could mean developing a mobile application for your startup, transitioning 
 The goal of digitizing your business is to keep up with the rapidly changing economy by offering your customers more ways to access your business, and streamline daily operations.
 Therefore, the methods you choose to digitize your business can vary based on your startup’s needs.
 
+As a consumer, we know digital approaches work.
+I can buy an airplane ticket and travel through the world without any paper documents.
+I can book hotel rooms and museum visits without any paper recipes.
+I can buy a household and an ebook library without printing out any paper forms.
+Paper disappeared in the ecommerce world.
+
 Start small.
 Optimize your internal process with technology.
-I challenge you.
 
-Your company does not need any printers, fax machines or landlines.
+_I challenge you._
+_Your company does not need any printers, fax machines or landlines._
 
 === Eliminate Your Printer
 
 You do not need a printer in your company.
 Send your documents as PDF documents.
-Archive the PDF electronically.
+Archive these PDF files electronically.
 
-Printers are not ecological and have a price tag.
+Printers are not ecological.
+They are costly in natural and human resources.
 
 [TIP]
 ====
-Our company {ref-tangly} never possessed any printer, fax machine or phone landlines.
+Our company {ref-tangly} never possessed any printer, fax machine or phone landline.
 
-On average, we need to print three documents per year.
-These documents were always required by governmental authorities.
+On average, we need to print around three documents each year.
+Governmental authorities always required these documents.
 
 We did not print any documents in the years 2021 and 2022.
 ====
@@ -54,15 +61,20 @@ I cannot understand why anybody wants to send information using a fax machine.
 
 Electronic communication, PDF documents and digital photography are better solutions.
 
+Simply use emails or chat solutions.
+
 === Landlines were used in the last millennium
 
 Teams are distributed over the world.
 Collaborators often work at home or at co-working offices.
 Why should you use a landline?
 
-Mobile first is the answer.
+Mobile first is the sole logical answer
+footnote:[The cost of mobile connectivity has tremendously decreased the last years.
+Often the cost of a mobile subscription is lower than the cost of a landline.].
+
 Use a mobile phone for your work interactions.
-Better is to setup channels on Slack or Discord applications.
+Better is to set up channels on Slack or Discord applications.
 
 === Eliminate Your Paper Archive
 
@@ -71,32 +83,46 @@ I always found very strange that people print their documents and store them in 
 They never heard about digital backup with redundancy to avoid loss through incidents.
 Store your files in the cloud to implement a disaster recovery process.
 
-Naturally, all confidential information shall be encrypted with a company key.
-We are using GPG as a simple and secure approach to hide confidential information from prying eyes.
+Naturally, all confidential information shall be encrypted with a company encryption key.
+We are using https://www.gnupg.org/[GPG] as a simple and secure approach to hide confidential information from prying eyes.
 
 [IMPORTANT]
 ====
 You can exchange documents and emails securely with collaborators and customers using GPG and S/Mime solutions.
 
-{ref-tangly} uses MacOS and we bought the GPG email extension to sign and cipher all communication.
-The S/Mime based approach is also available.
+{ref-tangly} uses macOS. We bought the GPG email extension to sign and cipher all communications.
+We also support the S/Mime-based approach.
 ====
 
 === Lessons Learnt
 
 - Printers and fax machines are really obsolete.
-We never add a true need to buy one in the last eight years.
+We never add a true need to buy one in the last eight years
+footnote:[if a partner or a customer insists receiving a paper form, just send him a PDF document and let him print it out.
+Ask yourself if a company requesting paper documents is an organization you want to work with.].
 - A paper archive can now slowly be destroyed.
-Finally the federal and state laws were adapted to acknowledge that digital archives are legally allowed.
-- We never had any landline.
+Swiss federal and state laws were finally adapted to acknowledge that digital archives are legally allowed.
+- We never own any landlines.
 Mobile phones are now fully accepted since telecommunication companies offer flat rate contracts.
 More and more communication is now held over internet communication solutions.
 - All contracts and invoices
-footnote:[Digital fist approach allowed us to implement Swiss QR Code for invoicing with an investment of one working day.
-The support of FacturX for B2G processes was around two days effort.]
-are sent as electronic signed PDF documents.
-- Native digital persons often do not anymore possess paper books, CD, or printed photos.
-Instead they use the digital equivalent.
+footnote:[Digital first approach allowed us to implement
+https://www.kmu.admin.ch/kmu/en/home/concrete-know-how/finances/accounting-and-auditing/introduction-of-the-qr-bill.html[Swiss QR Code] for invoicing with an investment of one
+working day.
+The support of https://fnfe-mpe.org/factur-x/factur-x_en/[Factur-X] for B2G processes was around two days effort.]
+are sent as electronic signed PDF documents
+footnote:[We do not digitally sign our documents.
+Recognized digital certificates are currently way to expensive in Switzerland.
+Therefore, almost nobody is using this approach.].
+- Native digital people often do not anymore possess paper books, CD, or printed photos.
+Instead, they use the digital equivalent.
 It is more ecological, cost-effective and is additional features.
-- Physical money has disapeard in the context of companies.
+- Physical money has disappeared in the context of companies.
 All financial transactions are electronic.
+
+[NOTE]
+====
+Everytime you use a printer, a fax or a scanner, you have identified a process you should digitize.
+
+Analog paper and digital processes are not compatible.
+====
