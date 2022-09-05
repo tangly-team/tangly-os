@@ -20,7 +20,7 @@ Records are often seen as _syntactic sugar_ to easily create _immutable objects_
 Records as a clean definition of immutable objects can have a tremendous impact on your component design.
 
 You as a designer have to reflect why your abstractions are not immutable and what is the rationale behind.
-From experience, it improves the quality of your design.
+From my experience, it improves the quality of your design.
 
 Records guarantee:
 
@@ -54,7 +54,7 @@ The key benefits of immutable objects are:
 * Prevention of identity mutation - _see contract for API standard collections_ -
 * Avoidance of temporal coupling between methods
 * Support for referential transparency
-*Protection from instantiating logically-invalid objects Protection from inadvertent corruption of existing objects
+* Protection from instantiating logically-invalid objects Protection from inadvertent corruption of existing objects.
 
 === Design Impact
 

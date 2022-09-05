@@ -94,7 +94,7 @@ We can insure architectural constraints to all bounded domains defined in a prod
 The constraints are defined only once in a common module.
 
 The huge advantage is the integration of architectural validations in the continuous integration pipeline <<introducing-devops-ideas>> <<devops-for-sme>>.
-No expensive human activities are required to enforce these rules.
+No expensive human activities are required to enforce these rules <<agile-architecture>>.
 
 [bibliography]
 === Links
@@ -102,3 +102,4 @@ No expensive human activities are required to enforce these rules.
 - [[[software-structure-with-ddd, 1]]] link:../../2022/software-structure-with-ddd/[Software Structure with DDD]
 - [[[introducing-devops-ideas, 2]]] link:../../2022/introducing-devops-ideas/[Introducing DevOps Ideas]
 - [[[devops-for-sme, 3]]] link:../../2021/devops-for-small-applications/[DevOps for Small Applications]
+- [[[agile-architecture, 4]]] link:../../2019/agile-architecture-within-scrum/[Agile Architecture]

@@ -24,7 +24,7 @@ The European Union is more innovative and mandates that invoices to government p
 Our company exchanges contracts and invoices with partners and customers using the standardized and well-known PDF format.
 It is time to explore extensions to support the new legal requirements in Switzerland and in Europe.
 
-We show open source based solutions and the trade-offs we had to accept.
+We show open source based solutions, and the tradeoffs we had to accept.
 Beware our solutions are based on the Java stack.
 
 === Swiss QR Code

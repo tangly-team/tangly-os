@@ -1,7 +1,7 @@
 ---
 title: "Eliminate Your Printer"
 linkTitle: "No Printers"
-date: 2022-09-15
+date: 2022-09-08
 tags: ["agile"]
 ---
 
@@ -126,3 +126,11 @@ Everytime you use a printer, a fax or a scanner, you have identified a process y
 
 Analog paper and digital processes are not compatible.
 ====
+
+[bibliography]
+=== Links
+
+- [[[tangly-six-years, 1]] link:../../2022/the-quest-for-an-agile-company-six-years-tangly-llc/[tangly Six Years]
+- [[[tangly-five-years, 2]]] link:../../2020/the-quest-for-an-agile-company-five-years-tangly-llc/[tangly Five Years]
+- [[[tangly-digital-company, 3]]] link:../../2019/a-journey-to-be-a-digital-company-tangly-llc/[tangly Digital Company]
+- [[[tangly-founded, 4]]] link:../../2016/found-a-limited-liability-company-in-switzerland/[Found a Limited Liability Company]

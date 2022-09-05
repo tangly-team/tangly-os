@@ -77,7 +77,7 @@ Agile code is clean code.
 
 [TIP]
 ====
-Modern IDE provide static code analysis tools to detect smells in your source code.
+Modern integrated development environments _IDE_ provide static code analysis tools to detect smells in your source code.
 https://www.sonarlint.org/[SonarLint] is available for all major integrated development environments.
 
 Use these tools to steadily improve the quality of your code and remove well-known smells.
