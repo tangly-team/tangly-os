@@ -2,6 +2,7 @@ baseURL = "https://blog.tangly.net/"
 title = "tangly Open Source Components"
 
 enableRobotsTXT = true
+timeout = 60000
 
 # Hugo allows theme composition (and inheritance). The precedence is from left to right.
 theme = ["docsy"]

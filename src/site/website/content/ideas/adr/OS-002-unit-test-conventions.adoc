@@ -41,4 +41,4 @@ Use in-memory file systems.
 We shall remove all references to File instances.
 File instances do not support alternative file systems.
 Therefore, we shall use libraries providing a workaround File instances either by using Path instances or reader and writer to access files.
-* Operations to physical file system have the risk that rights problems could rise in some continuous integration environment.
+* Operations to the physical file system have the risk that rights problems could rise in some continuous integration environment.

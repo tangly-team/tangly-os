@@ -23,7 +23,7 @@ Version 2.0 of the library is an alpha release on https://mvnrepository.com/arti
 
 The apache project log4j has made tremendous progress with the creation of the log4j2 library.
 All features provided in slf4j are now available in log4j2.
-In particular, the fluent interface which is only available in the beta version of slf4j is also supported.
+In particular, the fluent interface, which is only available in the beta version of slf4j is also supported.
 Additional features are also provided and performance is better than with other logging frameworks.
 
 The project is active and under the umbrella of the https://www.apache.org[Apache Foundation].
@@ -31,7 +31,7 @@ The library uses well-documented Java module names as any modern library shall p
 
 This situation raises the question to move our application to the apache logging framework.
 Both APIs are very similar in style and naming.
-the effort to migrate is quite reasonable.
+The effort to migrate is quite reasonable.
 Usually, only the logger declaration needs a modification.
 The creation of logging records uses exactly the same syntax and calling conventions.
 

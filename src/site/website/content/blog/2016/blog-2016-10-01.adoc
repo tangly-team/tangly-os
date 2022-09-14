@@ -1,7 +1,7 @@
 ---
 title: "Agile Trends Switzerland 2013"
 linkTitle: "Swiss Agile Trends 2013"
-date: 2016-03-12
+date: 2016-10-12
 tags: ["agile", "series-swiss-agile-trends"]
 ---
 

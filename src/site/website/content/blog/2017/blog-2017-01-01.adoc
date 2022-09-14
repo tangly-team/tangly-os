@@ -63,9 +63,10 @@ Show your different solutions to the problem.
 ====
 As a stakeholder I want to see:
 
-* at least three approaches.
+* At least three approaches.
 * Show your ROI estimation for each approach.
-* Present you preferred solution and explain why it is the best solution.
+* Present your preferred solution.
+Explain why it is the best solution.
 ====
 
 In other words, we want to _Bang for the Buck_
@@ -112,7 +113,7 @@ People do not work anymore, they just sit in meetings.
 ** an agenda,
 ** a moderator,
 ** a protocol of the meeting,
-** as a result, a list of decisions and a list of tasks – who must do what until when -.
+** as a result, a list of decisions, and a list of tasks – who must do what until when -.
 
 Interesting enough, all Scrum meetings have a clear agenda, a moderator and a documented result.
 
@@ -177,7 +178,7 @@ _ROI: New value versus cost of development and associated errors_
 First, let me state some concepts deeply entrenched in Scrum Sprint backlog cannot be changed during a sprint.
 This is Scrum.
 
-Bend it with Kanban - for maintenance activities -, Agile approach is about a minimum viable product release as soon as possible.
+Bend it with Kanban - for maintenance activities -, agile approach is about a minimum viable product release as soon as possible.
 This definition is part of the vision and the initial release planning, Release planning is a must in real Scrum projects.
 
 So you have the right to change everything at the end of each sprint, but the costs are enormous.
@@ -266,7 +267,7 @@ _ROI: Engineering versus bureaucracy_
 
 * To build quality solutions, you have to have craftsmen and craftswomen as team members.
 * A craftsman master his work techniques, is experienced, knows his limits and master his tools.
-* You must be a craftsman: You are expert in XP, clean code, TDD, ATDD, Mocking, CI, CD, refactoring, etc.
+* You must be a craftsman: You are an expert in XP, clean code, TDD, ATDD, Mocking, CI, CD, refactoring, etc.
 And you must train, train, train.
 
 Use the concept of coding dojo as an approach to improve.

@@ -55,7 +55,7 @@ Such processes can and should be automated (e.g. automated testing, continuous i
 === Questions to Ask Programming Teams
 
 * How do you test your code? +
-_Wrong answer: “we have a testing organization responsible for testing”_
+_Wrong answer: “we have a testing organization responsible for testing”_.
 ** What tool suite are you using for unit tests, regression testing, functional tests, security scans, and deployment certification?
 * How automated are your development, testing, security, and deployment pipelines?
 ** What tool suite are you using for continuous integration CI, continuous deployment CD, regression testing, program documentation?
@@ -135,6 +135,3 @@ I wish good luck and success with your agile transformation.
 === Links
 
 - [[[detecting-agile-bullshit, 1]]] https://media.defense.gov/2018/Oct/09/2002049591/-1/-1/0/DIB_DETECTING_AGILE_BS_2018.10.05.PDF
-
-
-

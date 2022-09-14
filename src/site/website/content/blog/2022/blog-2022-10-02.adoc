@@ -13,7 +13,7 @@ tags: ["java", "architecture"]
 
 image::2022-10-02-head.jpg[width=420,height=360,role=left]
 
-=== Try with Resources
+=== Try with Closeable Resources
 
 Automatic resource management was introduced in Java 7 in 2011.
 Better handling of final variables was added in Java 9 in 2017.
@@ -21,6 +21,22 @@ Better handling of final variables was added in Java 9 in 2017.
 The _AutoCloseable_ interface is the API extension you should use to declare any resource type in your solution.
 
 === Streams
+
+Use streams to manipulate data collections.
+Stream operators support similar functionality as SQL dialects.
+
+Sequences of values are also streams. Therefore, a for loop is easily transformed in a stream of operations.
+
+[IMPORTANT]
+====
+
+Most of imperative operations such as conditional and loop statements can be rewritten as streams.
+
+Streams are often more legible and compact.
+The approach moves the developers from imperative programming to a more functional programming style.
+
+Modern Java code has seldom loops and conditional statements.
+====
 
 === Functional Programming
 

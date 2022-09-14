@@ -30,7 +30,7 @@ Some experts claim that the _technical debt_ metaphor tends to minimize the rami
 [cite,Ward Cunningham,1992]
 ____
 Shipping first time code is like going into debt.
-A little debt speed development so long as it is paid back promptly with a rewrite...
+A little debt speeds development as long as it is paid back promptly with a rewrite.
 
 The danger occurs when the debt is not repaid.
 Every minute spent on not-quite-right code counts as interest on that debt.
@@ -44,7 +44,7 @@ ____
 * Use your IDE
 footnote:[https://www.jetbrains.com/idea/[IntelliJ IDEA] IDE has a powerful set of functions to detect code smells and perform automatically standard refactoring activities.
 The https://www.sonarlint.org/[Sonar Lint] plugin for various IDEs to detect quality and security issues in your code.]
-to perform simple refactoring and improve the quality of your code.
+to perform simple refactorings and improve the quality of your code.
 * Use your IDE to find all TODO comments.
 * Use gradle plugin
 footnote:[I use the https://github.com/ben-manes/gradle-versions-plugin[com.github.ben-manes.versions] plugin for this purpose.
@@ -61,7 +61,7 @@ We learnt this lesson during our economic training in college.
 A little debt is OK.
 Big debts will poison your life and source code.
 Big debts are cumbersome to repay.
-You need efforts and time for payback.
+You need efforts and time for a payback.
 
 image::2022-01-03-technical-debt.png[width=420,height=360,role=left]
 
@@ -139,7 +139,7 @@ Beware technical debt is also created through:
 ** Lack of knowledge, when the developer doesn't know how to write elegant code,
 ** Lack of ownership, when outsourced software efforts result of in-house engineering being required to refactor or rewrite outsourced code.
 
-IMPORTANT: Professional software developers understand deeply the impacts of technical debt.
+IMPORTANT: Professional software developers deeply understand the impacts of technical debt.
 Amateurs just ignore the consequences and hop to the next product before they go bankrupt.
 
 [bibliography]

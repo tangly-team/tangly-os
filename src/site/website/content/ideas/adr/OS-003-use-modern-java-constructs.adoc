@@ -42,10 +42,12 @@ See, for example, the record construct provided since JDK 14.
 . The source code is legible and has fewer errors.
 . Our developers are up-to-date with Java evolution and enjoy writing modern code.
 
+JDK 18 and 19 give improvements in pattern matching and thread programming.
+
 === Consequences
 
 * Clients are forced to use the current JDK version.
-* Tooling is more brittle because a lot of tool maintainers are late to adapt actual version of JDK.
+* Tooling is more brittle because a lot of tool maintainers are late to adapt the actual version of JDK.
 
 === Examples of New Features
 

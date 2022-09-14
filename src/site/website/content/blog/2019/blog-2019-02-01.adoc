@@ -83,7 +83,7 @@ A set of questions to detect cultural flaws for a lean and agile focused company
 .. Do they have multiple high-resolution displays to work with - high-resolution means 4K or higher -?
 .. Do they have root access - admin rights - to their development workstation?
 .. Do they have access to technical books and articles?
-.. Do they have height adjustable desk?
+.. Do they have a height adjustable desk?
 .. Do they have big whiteboard and flip charts to work on in the team area?
 .. Do they have rooms to meet and work as a team in the vicinity and available?
 .. Do they use the best development tools of trade - and not only the basic and cheap version -?

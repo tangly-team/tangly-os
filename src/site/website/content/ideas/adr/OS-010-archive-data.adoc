@@ -1,0 +1,53 @@
+---
+title: "OS 010: Archive Data using TSV and JSON"
+linkTitle: "Archive Data"
+date: 2022-01-01
+weight: 10
+---
+
+== OS-010 Archive Data using TSV and JSON
+
+Date: 2022-01-01
+
+=== Status
+
+Implemented
+
+=== Context
+
+image::OS-010-head.jpg[width=420,height=360,role=left]
+
+Contrary to XML or JSON, TSV is perfectly suited to represent records with the least possible overhead.
+There are a lot of tools, like spreadsheet editors, which can read and modify TSV files.
+The file’s size is at the possible minimum, and the performance of the converter is significantly better than with the other formats.
+
+=== Decision
+
+TSV is the preferred to import data into the application or export information from the solution.
+The format is also the preferred solution to import data into or export data from the solution.
+
+=== Consequences
+
+TSV files cannot express complex nested structures.
+Regular business models are often quite flat and translate well to a set of TSV files.
+
+We recommend JSON format for complex nested documents.
+
+The solution _tangly ERP_ is a well-constructed solution using TSV format for import and export of bounded domain persistent data.
+
+The complex documents defining invoices are exported as imported using a JSON format.
+
+[TIP]
+====
+We use the https://commons.apache.org/proper/commons-csv/[Apache Commons CSV Library] to parse and write TSV files.
+
+The libray functions are good enough for our designs.
+The library is well-maintained and under Apache 2.0 open source license.
+====
+
+[TIP]
+====
+We use the https://github.com/stleary/JSON-java[JSON Library] to parse and write JSON files.
+
+We use the https://github.com/networknt/json-schema-validator[JSON Validator Library] to validate JSON files against a https://json-schema.org/[JSON schema].
+====

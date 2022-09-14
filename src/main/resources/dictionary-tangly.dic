@@ -76,6 +76,7 @@ ISAQB
 iban
 inspectable
 iter
+JOOQL
 jimfs
 kaizen
 lastname
@@ -88,6 +89,7 @@ modelization
 multiparts
 onboarding
 ownee
+PostgreSQL
 peopleware
 postamble
 preamble
@@ -98,6 +100,7 @@ savviness
 scribus
 sellee
 skype
+slf4j
 soll
 sprint
 subgoal

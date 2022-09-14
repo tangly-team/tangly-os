@@ -32,13 +32,18 @@ Conversions are inefficient, lead to enormous loss of performance and latencies,
 
 https://microstream.one/[MicroStream] was selected as persistence approach for the first versions of the ERP solution.
 
-. Almost no impedance mismatch between the Java application and persistence store
-. Elegant approach to provide one persistence container per bounded domain the same application
-. MicroStream has formally announced their software library will be published under an open source license
-. The library supports current versions of the JDK and all constructs of the language including preview constructs
-. The support of the company is good and the answers professional
+. Almost no impedance mismatch between the Java application and persistence store.
+. An elegant approach to provide one persistence container for each bounded domain the same application.
+. MicroStream has formally announced their software library will be published under an open source license.
+. The library supports current versions of the JDK and all constructs of the language including preview constructs.
+. The support of the company is good.
+The answers are fast and professional.
 
 Care will be taken to provide a fallback to another persistence solution if performance or licensing problems occur.
+
+A huge advantage is the ease of migrating a java model from Microstream to JPA.
+Experience shows that the effort is often less than five working days
+footnote:[Under the assumption that enough unit and integration tests are available to validate the migrated solution.].
 
 === Consequences
 
@@ -55,10 +60,10 @@ This approach minimizes the costs for this functionality without impeding the qu
 
 === Conventions
 
-. Realm shall have a private data class to store all data to be persisted
+. Realm shall have a private data class to store all data to be persisted.
 . The application must generate unique object identifiers.
 MicroStream does not provide functions in this area.
-
+. Use specialized features of the library to implement link:../os-003-use-modern-java-constructs/[Modern Java Constructs ADR].
 
 [bibliography]
 === Links

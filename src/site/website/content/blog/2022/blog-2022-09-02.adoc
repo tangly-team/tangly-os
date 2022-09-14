@@ -1,7 +1,7 @@
 ---
 title: "Eliminate Your Printer"
 linkTitle: "No Printers"
-date: 2022-09-08
+date: 2022-09-10
 tags: ["agile"]
 ---
 
@@ -53,6 +53,7 @@ On average, we need to print around three documents each year.
 Governmental authorities always required these documents.
 
 We did not print any documents in the years 2021 and 2022.
+This is a powerful contribution to *sustainability*.
 ====
 
 === Fax Machines are obsolete
@@ -107,14 +108,13 @@ Mobile phones are now fully accepted since telecommunication companies offer fla
 More and more communication is now held over internet communication solutions.
 - All contracts and invoices
 footnote:[Digital first approach allowed us to implement
-https://www.kmu.admin.ch/kmu/en/home/concrete-know-how/finances/accounting-and-auditing/introduction-of-the-qr-bill.html[Swiss QR Code] for invoicing with an investment of one
-working day.
-The support of https://fnfe-mpe.org/factur-x/factur-x_en/[Factur-X] for B2G processes was around two days effort.]
-are sent as electronic signed PDF documents
+https://www.kmu.admin.ch/kmu/en/home/concrete-know-how/finances/accounting-and-auditing/introduction-of-the-qr-bill.html[Swiss QR Code]
+for invoicing with an investment of one working day.
+The support of https://fnfe-mpe.org/factur-x/factur-x_en/[Factur-X] for B2G processes was around two days effort.] are sent as electronic signed PDF documents
 footnote:[We do not digitally sign our documents.
 Recognized digital certificates are currently way to expensive in Switzerland.
 Therefore, almost nobody is using this approach.].
-- Native digital people often do not anymore possess paper books, CD, or printed photos.
+- Native digital people often do not anymore possess paper books, CDs, or printed photos.
 Instead, they use the digital equivalent.
 It is more ecological, cost-effective and is additional features.
 - Physical money has disappeared in the context of companies.
@@ -122,7 +122,7 @@ All financial transactions are electronic.
 
 [NOTE]
 ====
-Everytime you use a printer, a fax or a scanner, you have identified a process you should digitize.
+Every time you use a printer, a fax machine or a scanner, you have identified a process you should digitize.
 
 Analog paper and digital processes are not compatible.
 ====
@@ -130,7 +130,7 @@ Analog paper and digital processes are not compatible.
 [bibliography]
 === Links
 
-- [[[tangly-six-years, 1]] link:../../2022/the-quest-for-an-agile-company-six-years-tangly-llc/[tangly Six Years]
+- [[[tangly-six-years, 1]]] link:../../2022/the-quest-for-an-agile-company-six-years-tangly-llc/[tangly Six Years]
 - [[[tangly-five-years, 2]]] link:../../2020/the-quest-for-an-agile-company-five-years-tangly-llc/[tangly Five Years]
 - [[[tangly-digital-company, 3]]] link:../../2019/a-journey-to-be-a-digital-company-tangly-llc/[tangly Digital Company]
 - [[[tangly-founded, 4]]] link:../../2016/found-a-limited-liability-company-in-switzerland/[Found a Limited Liability Company]

@@ -20,12 +20,13 @@ image::OS-006-head.png[width=420,height=360,role=left]
 The modules provided as {ref-tangly} open source components are used in more complex applications.
 
 These applications often use dependency injection frameworks to construct and initialize their instances.
-https://en.wikipedia.org/wiki/Dependency_injection[Dependency injection] is is a technique in which an object receives other objects that it depends on, called dependencies.
+https://en.wikipedia.org/wiki/Dependency_injection[Dependency injection] is a technique in which an object receives other objects that it depends on, called dependencies.
 
-Typically, the receiving object is called a client and the passed-in _injected_ object is called a service.
+Typically, the receiving object is called a client.
+The passed-in _injected_ object is called a service.
 The code that passes the service to the client is called the injector.
 
-Instead of the client specifying which service it will use, the injector tells the client what service to use.
+Instead of the client specifying that service it will use, the injector tells the client what service should be used.
 The _injection_ refers to the passing of a dependency into the client that uses it.
 
 === Decision
@@ -41,7 +42,7 @@ Care will be taken to allow users to use a different dependency injection framew
 
 === Consequences
 
-* A dependency injection module shall be provided for each relevant module
+* A dependency injection module shall be provided for each relevant module.
 
 === Conventions
 
