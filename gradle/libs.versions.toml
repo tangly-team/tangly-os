@@ -7,7 +7,7 @@ junit-version = '5.9.0'
 log4j2-version = '2.18.0'
 microstream-version = '07.00.00-MS-GA'
 mustang-version = '2.5.4'
-vaadin-version = '23.1.7'
+vaadin-version = '23.2.0'
 assertj-version = '3.23.1'
 
 [plugins]
@@ -40,7 +40,7 @@ asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.3.0"
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
 commonmark = "org.commonmark:commonmark:0.19.0"
 eo-yaml = "com.amihaiemil.web:eo-yaml:5.2.1"
-flyway = "org.flywaydb:flyway-core:9.2.2"
+flyway = "org.flywaydb:flyway-core:9.3.0"
 guice = "com.google.inject:guice:5.1.0"
 hsqldb = "org.hsqldb:hsqldb:2.7.0"
 iban4j = "org.iban4j:iban4j:3.2.3-RELEASE"
@@ -48,7 +48,7 @@ iban4j = "org.iban4j:iban4j:3.2.3-RELEASE"
 ical4j-core = "org.mnode.ical4j:ical4j:3.2.1"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.7"
 
-google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.12.54"
+google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.12.55"
 
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson-version" }
 jackson-parameters = { module = "com.fasterxml.jackson.module:jackson-module-parameter-names", version.ref = "jackson-version" }
@@ -60,7 +60,7 @@ jbibtext = "org.jbibtex:jbibtex:1.0.20"
 jimfs = "com.google.jimfs:jimfs:1.2"
 
 #Java 9 module compliant version of https://github.com/stleary/JSON-java
-json-core = "com.guicedee.services:json:1.2.1.2-jre17"
+json-core = "com.guicedee.services:json:1.2.2.1"
 json-validator = "com.networknt:json-schema-validator:1.0.72"
 json-assert = "org.skyscreamer:jsonassert:1.5.0"
 json-jolt-core = { module = "com.bazaarvoice.jolt:jolt-core", version.ref = "jolt-version" }
@@ -82,7 +82,7 @@ microstream-storage = { module = "one.microstream:microstream-storage-embedded",
 microstream-jdk8 = { module = "one.microstream:microstream-persistence-binary-jdk8", version.ref = "microstream-version" }
 microstream-jdk17 = { module = "one.microstream:microstream-persistence-binary-jdk17", version.ref = "microstream-version" }
 
-mockito = "org.mockito:mockito-junit-jupiter:4.7.0"
+mockito = "org.mockito:mockito-junit-jupiter:4.8.0"
 
 scribe = "com.github.scribejava:scribejava-apis:8.3.1"
 
