@@ -1,7 +1,7 @@
 ---
 title: "Contact"
 linkTitle: "Contact"
-weight: 60
+weight: 80
 ---
 
 *Contact Information*
@@ -13,7 +13,7 @@ Lorzenhof 27 +
 6330 *Cham* +
 _Switzerland_
 | *Plus Code:*      | 8FVC5FM5+Q6G
-| *Email:*          | info@tangly.net
+| *Email:*          | mailto:info@tangly.net[email contact]
 | *Phone:*          | +41 79 778 86 89
 | *LinkedIn:*       | https://www.linkedin.com/company/tangly-llc/[tangly llc]
 |===

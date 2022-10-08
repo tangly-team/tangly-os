@@ -2,7 +2,7 @@
 title: "Would You Enjoy Being a Scrum Master?"
 linkTitle: "Scrum master Capabilities"
 date: 2022-07-04
-tags: ["agile", "scrum"]
+tags: ["agile"]
 ---
 
 == Would You Enjoy Being a Scrum Master?

@@ -1,0 +1,26 @@
+---
+title: "Commercial Support"
+linkTitle: "Commercial Support"
+weight: 60
+---
+
+tangly llc company provides commercial support for the tangly open source components.
+
+We do product development and consulting for European companies.
+Onsite coaching is limited to the German part of Switzerland.
+
+mailto:info@tangly.net[Contact us, Commercial support] for inquiries on commercial support for tangly OS components, Modern Java, DevOps and Vaadin.
+
+*Contact Information*
+
+[%noheader,frame=none,grid=none,width=75%,cols="1,4"]
+|===
+| *Postal Address:* | tangly llc +
+Lorzenhof 27 +
+6330 *Cham* +
+_Switzerland_
+| *Plus Code:*      | 8FVC5FM5+Q6G
+| *Email:*          | mailto:info@tangly.net[email contact]
+| *Phone:*          | +41 79 778 86 89
+| *LinkedIn:*       | https://www.linkedin.com/company/tangly-llc/[tangly llc]
+|===

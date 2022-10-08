@@ -91,7 +91,7 @@ Cycle Time::
 This measures the amount of time that passes between the definition of the change, the first commit, and deployment.
 You need to study the time it takes to make changes to existing code and to solve problems without using quick fixes.
 If your engineers are spending hours fixing small bugs, you know that there is some technical debt lurking in your code. +
-_Your agile and Scrum tool provides cycle time data <<metricsandkip>>._
+_Your agile and Scrum tool provides cycle time data <<metricsandkpi>>._
 Code Coverage::
 In a sense, the code coverage metric looks at the same issue from the opposite direction.
 In this case, you are measuring how much of your code is executed when you run your testing suite.

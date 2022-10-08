@@ -16,7 +16,7 @@ Java is celebrating 25 years of existence.
 
 I discovered the anniversary offer to certify for Java SE 11 Developer.
 
-This special certification has a cool logo with a remainder of the Java 25 years anniversary.
+This special certification has a cool logo with a remainder of the Java 25-year anniversary.
 Oracle offers this certification for only 25 dollars footnote:[The regular price is around 250 dollars.] and provides free access to their learning platform.
 The offer and logo availability are time limited.
 

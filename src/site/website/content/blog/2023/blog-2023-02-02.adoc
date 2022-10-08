@@ -26,6 +26,10 @@ At least we do not need to send paper documents.
 But none of the solutions for social insurances, VAT declaration or salary documents have an API.
 Swiss government solutions are still stuck in the last millennium and have missed the API integration approach.
 
+The Swiss federal government deployed a new https://www.estv.admin.ch/estv/en/home.html[Swiss Federal Tax Administration Portal] end of last year.
+The various services are now located under one portal.
+The solution is still missing a public API to enable the digital transformation of company's processes.
+
 Big insurance companies are iller than the federal government.
 Pension fund and accident insurances still request paper correspondence for standardized processes such as mutation or yearly salary structure information.
 Improvements are visible but incredibly slow.
@@ -71,9 +75,11 @@ Marcel Baumann. 2022.
 Marcel Baumann. 2020.
 - [[[four-years-tangly, 3]]] link:../../2019/a-journey-to-be-a-digital-company-tangly-llc/[Four Year tangly llc]
 Marcel Baumann. 2019.
-- [[[founding-tangly, 3]]] link:../../2016/found-a-limited-liability-company-in-switzerland/[Founding tangly llc]
+- [[[no-printer, 4]]] link:../../2022/eliminate-your-printer/[Eliminate Your Printer]
+Marcel Baumann. 2022.
+- [[[founding-tangly, 5]]] link:../../2016/found-a-limited-liability-company-in-switzerland/[Founding tangly llc]
 Marcel Baumann. 2016.
-- [[[cname-github-pages, 4]]] https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages
+- [[[cname-github-pages, 6]]] https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages
 GitHub. 2022-12-01.
 
 === References

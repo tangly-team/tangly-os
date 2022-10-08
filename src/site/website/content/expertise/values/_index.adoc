@@ -1,7 +1,7 @@
 ---
 title: "Values"
 linkTitle: "Values"
-weight: 60
+weight: 30
 ---
 
 [.text-center]

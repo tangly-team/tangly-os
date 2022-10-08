@@ -19,5 +19,5 @@ The goal of Mutation Testing is ensuring the quality of test cases in terms of r
 The changes made in the mutant program should be kept extremely small that it does not affect the overall objective of the program.
 Mutation Testing is also called Fault-based testing strategy as it involves creating a fault in the program and it is a type of White Box Testing which is mainly used for Unit Testing.
 
-https://pitest.org/[Pitest] s a state of the art mutation testing system, providing gold standard test coverage for Java and the jvm.
+https://pitest.org/[Pitest] is a state of the art mutation testing system, providing gold standard test coverage for Java and the jvm.
 It's fast, scalable and integrates with modern test and build tooling.

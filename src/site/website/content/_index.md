@@ -39,7 +39,7 @@ The current components for the services ERP are written in _Modern Java_ and rel
 
 {{% blocks/section color="Gray 200" %}}
 <div class="col">
-<h1 class="text-center">tangly llc Company Articles and Blog</h1>
+<h1 class="text-center">tangly llc Articles and Blog</h1>
 
 The _[ideas](./ideas/)_ area is a collection of articles about our journey through agile product development, digitalization and software craftsmanship.
 

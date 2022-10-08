@@ -62,7 +62,7 @@ This goal is only achievable if your organization has implemented a delivery pip
 Risk List::
 You have a documented risk lists with description of risks, probability of occurrence and cost per event, and mitigation measures,
 Solution architecture::
-You have an emergent solution architecture with prototype and support the team to refine the architecture proposal and to implement it in the solution.
+You have an emergent solution architecture with a prototype and support the team to refine the architecture proposal and to implement it in the solution.
 Do not forget an agile product needs an https://en.wikipedia.org/wiki/Agile_Architecture[agile architecture].
 See also the {ref-less} approach for creating an https://less.works/less/technical-excellence/architecture-design.html[agile architecture].
 Non-functional requirements::

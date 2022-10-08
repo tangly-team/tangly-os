@@ -2,7 +2,7 @@
 title: "LeSS Lessons Learnt"
 linkTitle: "LeSS Lessons"
 date: 2021-02-01
-tags: ["agile", "LeSS"]
+tags: ["agile"]
 ---
 
 == LeSS Lessons Learnt

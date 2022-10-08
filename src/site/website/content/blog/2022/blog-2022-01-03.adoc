@@ -97,7 +97,7 @@ https://en.wikipedia.org/wiki/Zachman_Framework[Zachmann] can be mentioned but a
 * Explain the different facets of the architect role: Teacher, Coach, Mentor, Developer.
 * Explain how architecture is documented (https://adr.github.io/[ADR], https://c4model.com/[C4]), static websites (Pages in GitHub, GitLab, or Bitbucket); and which notation
 (https://www.omg.org/spec/UML/[UML]) or approaches can be used.
-* Explain continuous architecture improvements and how it is performed - see e.g. refactoring legacy systems -.
+* Explain continuous architecture improvements and how it is performed - see e.g., refactoring legacy systems -.
 * Explain technical debt concepts and how to mitigate technical debt in an application.
 * Check if the candidate knows about https://adr.github.io/[ADR] _Architecture Design Record_, https://www.archunit.org/[ArchUnit].
 * Check if a formal architecture training was performed such as https://en.wikipedia.org/wiki/Domain-driven_design[DDD],
@@ -143,7 +143,7 @@ Feel free to embellish your CV.
 But please do not lie to me and invent capabilities you do not have.
 Such a fault is a killer during the interview.
 I always cross-check the CV during an interview.
-Explain gaps in CV::
+Explain gaps in your CV::
 I truly respect people taking off time or having encountered problems during their careers.
 And I expect from you a hint to understand gaps in your career.
 Experience section::
@@ -196,7 +196,7 @@ How experienced is she with the packet manager _npm_?
 Which version of Typescript is she using?
 * Which tools did she use for quality conformance and refactoring in projects?
 * Does he know standard https://owasp.org/[OWASP] approaches and why they are important in a NodeJS environment?
-* Examples of object-oriented, functional programming, asynchronous and reactive approaches in Typescript code
+* Examples of object-oriented, functional programming, asynchronous and reactive approaches in Typescript code.
 * Can senior developers discuss and explain threading, thread library, or async design approaches?
 * Which development environment does he use to develop NodeJS code - e.g. JetBrain WebStorm -?
 * Does he master https://en.wikipedia.org/wiki/MEAN_(solution_stack)[MEAN] stack - MongoDB, Express.JS, Angular, NodeJS -?

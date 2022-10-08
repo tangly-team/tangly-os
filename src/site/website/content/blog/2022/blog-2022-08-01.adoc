@@ -2,7 +2,7 @@
 title: "How to Detect Fake Scrum?"
 linkTitle: "Fake Scrum"
 date: 2022-08-01
-tags: ["agile", "scrum"]
+tags: ["agile"]
 ---
 
 == How to Detect Fake Scrum?

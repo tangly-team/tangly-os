@@ -2,7 +2,7 @@
 title: "Value Objects as Embedded Entities"
 linkTitle: "Embedded Value Objects"
 date: 2021-01-04
-tags: ["design", "crm", "series-identifiers"]
+tags: ["design", "domain-driven-design", "crm", "series-identifiers"]
 ---
 
 == Value Objects as Embedded Entities

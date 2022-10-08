@@ -7,4 +7,6 @@ description: Recipes for daily agile and successful product development
 
 == Pragmatic Agile
 
-_To be written_
+Never forget the {ref-manifesto}.
+
+Read the second page. The {ref-manifesto-principles} identify your focus and improvement areas.

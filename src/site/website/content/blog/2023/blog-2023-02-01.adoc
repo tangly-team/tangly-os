@@ -2,7 +2,7 @@
 title: "Technical Interviews"
 linkTitle: "Technical Interviews"
 date: 2023-02-10
-tags: ["agile", "scrum"]
+tags: ["agile"]
 ---
 
 == Technical Interviews
@@ -13,9 +13,11 @@ tags: ["agile", "scrum"]
 
 image::2023-02-01-head.jpg[width=420,height=360,role=left]
 
-=== What is Your Goal?
-
 Your sole goal is to hire a qualified collaborator with potential.
+
+Hiring is like dating.
+Both parties shall be motivated to deepen the relationship.
+Both parties are willing to invest and believe it will be beneficial for them.
 
 === Prepare Your Interview
 
@@ -55,16 +57,16 @@ The areas are similar to the ones I check when receiving a CV <<evaluate-technic
 
 === Have an onboarding Program
 
--> avoid checklist, avoid predeclared correct answers
--> aim to uncover reasons why you should hire a candidate
--> to not say: we want developers who can exchanged
--> you want to hire good people that can learn and improve
--> your organization should promote that people can learn and evolve
--> Be clear what you are looking for: make team better, bring new things, what do they value in code and architecture
--> how do they solve problems (architecture, design, process, code, bug)
--> open ended questions, to start a discussion
--> make criteria clear, if a criteria is not reached, inform them that you expect to reach the criteria
--> an interviewee should also interview the interviewers
+- Avoid checklist, avoid predeclared correct answers
+- Aim to uncover reasons why you should hire a candidate
+- Do not say: we want developers who can exchanged
+- You want to hire good people that can learn and improve
+- Your organization should promote that people can learn and evolve
+- Be clear what you are looking for: make team better, bring new things, what do they value in code and architecture
+- How do they solve problems (architecture, design, process, code, bug)
+- Open ended questions, to start a discussion
+- Make criteria clear, if a criteria is not reached, inform them that you expect to reach the criteria
+- An interviewee should also interview the interviewers
 
 -> complement with pair programming, pair design during probe time
 

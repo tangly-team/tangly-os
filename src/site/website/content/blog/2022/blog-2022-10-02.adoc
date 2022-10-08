@@ -1,11 +1,11 @@
 ---
-title: "Modern Java"
+title: "Modern Java Constructs"
 linkTitle: "Modern Java"
 date: 2022-10-15
 tags: ["java", "architecture"]
 ---
 
-== Modern Java
+== Modern Java Constructs
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
@@ -19,6 +19,8 @@ Automatic resource management was introduced in Java 7 in 2011.
 Better handling of final variables was added in Java 9 in 2017.
 
 The _AutoCloseable_ interface is the API extension you should use to declare any resource type in your solution.
+
+A nice feature of the solution is the support of suppressed exception hierarchy to access all exceptions potentially thrown during the closing operations.
 
 === Streams
 
@@ -40,23 +42,56 @@ Modern Java code has seldom loops and conditional statements.
 
 === Functional Programming
 
-Optional<T> and monads
+Null values are acknowledged as a language design fault in modern software engineering.
 
-map and flatmap
+You should never return a null value from any method.
+Either you give back an empty collection or an optional object for single values.
+
+Streams provide the _flatmaap_ operator to elegantly handle optional values in collection processing.
+
+Remember that _Optional<T>_ is almost an implementation of a monad.
+Time to study the concepts of functional programming and lambda calculus.
 
 === Pattern Matching
 
-Record deconstruction
+Pattern matching is another approach for functional programming.
+New versions of Java support more related constructs.
+
+The extension of the _switch_ statement into a powerful _switch_ *expression* was a game changer.
+
+Pattern matching supports:
+
+* Select an transformation based on the type of the variable using the _instanceof_ operator.
+The simplified and type aware variable declaration is provided.
+* Refine the selection though _when_ clause to differenciate the transformation.
+* Record deconstruction gives access to field variables without having to call accessor methods.
+
+[source, java]
+----
+
+----
 
 === Records and Sealed Types
 
+Sealed types perfectly model a closed inherintance hierarchy.
+You can control your bounded domain and inhibit any client to change it.
+
+Records are immutable objects.
+Records are the perfect construct to implement value objects as described in domain-driven design.
+
+Business logic is implemented as additional methods.
+The fact that the value objects are also immutable makes the business operations both thread-safe and side-effect free.
+
+Factory methods can automatically be created using https://projectlombok.org/[Lombok] annotations.
+
 === Modules
 
-==== Goodies
+=== Goodies
 
-JavaDoc snippets
-
-JShell
+Loom Threads:: to be written
+JavaDoc snippets:: to be written
+JShell:: to be written
+Vector Optimizations:: to be written
 
 === References
 
