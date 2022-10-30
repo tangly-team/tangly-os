@@ -12,10 +12,14 @@ tags: ["agile", "devops"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2021-08-02-head.png[width=420,height=360,role=left]
+
 https://en.wikipedia.org/wiki/DevOps[DevOps] is the combination of cultural philosophies, practices and tools that increase an organization’s ability to deliver at high velocity.
 
 It evolves and improves products at a faster pace than organizations using traditional software development and infrastructure management processes.
+
 This speed enables organizations to better serve their customers.
+
+A suprising side-effect of this speed-up is a documented improvement of the delivered quality.
 
 === How It Works
 
@@ -39,6 +43,8 @@ This increases a team’s velocity.
 You will *automate* every workflow in the long term to achieve speed and *reliability*.
 
 You will merge your Scrum software development teams, quality assurance groups, operations teams and testing groups into single product teams.
+
+_You will define cross-functional teams as documented in the {ref-scrumguide}._
 ====
 
 === Benefits
@@ -63,7 +69,7 @@ Improved Collaboration::
 Build more effective teams under a DevOps cultural model, which emphasizes values such as ownership and accountability.
 Developers and operations teams collaborate closely, share many responsibilities, and combine their workflows.
 This reduces handover inefficiencies and diminishes cycle-time.
-It reduces for example handover periods between developers and operations, writing code that takes into account the environment in which it is run.
+It reduces, for example, handover periods between developers and operations, writing code that takes into account the environment in which it is run.
 Security::
 Move quickly while retaining control and preserving compliance.
 You can adopt a DevOps model without sacrificing security by using automated compliance policies.
@@ -162,10 +168,11 @@ _Use Docker and Ansible to automate your deployment._
 
 === Lessons Learnt
 
-The motivations for what has become modern _DevOps_ and several standard DevOps practices such as automated build and test, continuous integration, and continuous delivery originated in the Agile world, which dates to the 1990s.
-Agile development teams using methods such as {ref-xp} could not _satisfy the customer through early and continuous delivery of valuable software_ unless they subsumed the operations responsibilities associated with their applications, many of which they automated.
+The motivations for what has become modern _DevOps_ and several standard DevOps practices, such as automated build and test, continuous integration, and continuous delivery originated in the Agile world, which dates to the 1990s.
+Agile development teams using methods such as {ref-xp} could not _satisfy the customer through early and continuous delivery of valuable software_ unless they subsumed the operation responsibilities associated with their applications, many of which they automated.
 
-Because {ref-scrum} emerged as the dominant Agile framework in the early 2000s, and it omitted the engineering practices that were part of many Agile teams, the movement to automate operations functions splintered from Agile and expanded into what has become modern DevOps.[11] Today, DevOps focuses on the deployment of developed software, whether it is developed via Agile or other methodologies
+Because {ref-scrum} emerged as the dominant Agile framework in the early 2000s, and it omitted the engineering practices that were part of many Agile teams, the movement to automate operations functions splintered from Agile and expanded into what has become modern DevOps <<accelerate>>.
+Today, DevOps focuses on the deployment of developed software, whether it is developed via Agile or other methodologies.
 
 To practice DevOps effectively, software applications have to meet a set of architecturally significant requirements such as: deployability, modifiability, testability, and monitorability.
 You must continuously monitor your infrastructure, network and application.
@@ -185,7 +192,7 @@ Smaller organizations are often more affine with trust.
 ====
 
 Although it is possible to practice DevOps with any architectural style, the microservices architectural style is becoming the standard for building continuously deployed systems.
-Small size service allows the architecture of an individual service to emerge through continuous refactoring,[69] hence reducing the need for a big upfront design, allows for releasing the software early[citation needed] and continuously.
+Small size service allows the architecture of an individual service to emerge through continuous refactoring <<continuous-delivery>>  hence reducing the need for a big upfront design, allows for releasing the software early[citation needed] and continuously.
 
 [bibliography]
 === Literature

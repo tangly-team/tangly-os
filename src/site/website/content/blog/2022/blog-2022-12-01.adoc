@@ -1,23 +1,367 @@
 ---
-title: "Mutation Testing with Pitest"
-linkTitle: "Pitest"
-date: 2022-12-01
-tags: ["java", "architecture"]
+title: "First Steps DevOps"
+linkTitle: "First Steps DevOps"
+date: 2022-11-10
+tags: ["agile", "devops"]
 ---
 
-== Mutation Testing with Pitest
+== First Steps DevOps
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly ll c]
+:company: https://www.tangly.net/[tangly llc]
 
-image::2022-12-01-head.jpg[width=420,height=360,role=left]
+image::2022-12-01-head.png[width=420,height=360,role=left]
 
-Mutation Testing is a type of software testing in which certain statements of the source code are changed/mutated to check if the test cases are able to find errors in source code.
-The goal of Mutation Testing is ensuring the quality of test cases in terms of robustness that it should fail the mutated source code.
+The https://en.wikipedia.org/wiki/DevOps[DevOps] movement started to gather momentum with the first DevOps conference held in Ghent, Belgium in 2009
+footnote:[Development organizations had around fifteen years to practice DevOps and adapt their application lifecycle management processes.].
 
-The changes made in the mutant program should be kept extremely small that it does not affect the overall objective of the program.
-Mutation Testing is also called Fault-based testing strategy as it involves creating a fault in the program and it is a type of White Box Testing which is mainly used for Unit Testing.
+The approach aims to shorten the system development life-cycle and to provide continuous delivery with high software quality.
+DevOps is complementary with https://en.wikipedia.org/wiki/Agile_software_development[agile software development] approaches.
 
-https://pitest.org/[Pitest] is a state of the art mutation testing system, providing gold standard test coverage for Java and the jvm.
-It's fast, scalable and integrates with modern test and build tooling.
+Several DevOps aspects came from the Agile method.
+
+Seminal books cite:[accelerate,devops-handbook,phoenix-project,site-reliability-engineering] and good practices were published around the same time.
+
+The DevOps approach belongs to the regular instruments of professional software developers.
+Major development platforms, https://github.com/[GitHub], https://gitlab.com/[GitLab], https://bitbucket.org/[BitBucket]
+and https://azure.microsoft.com/de-de/services/devops/[Microsoft Azure DevOps] do support continuous integration, delivery and deployments for years.
+
+The DORA metrics define a standard approach to measure the quality and efficiency of a DevOps or agile process implementation in an organization.
+They were published in 2016.
+The metrics for throughput are _deployment frequency, lead time for changes_.
+The metrics for stability are _mean time to recover, change failure rate_.
+
+They define a standard approach to measure the quality and efficiency of a DevOps or agile process implementation in an organization.
+An agile team shall be able to deploy a version of their digital platform multiple times per day.
+Frequent and economical deployments require the full automation of integration, delivery and deployment steps.
+
+Below, we provide a detailed possible approach to deploying DevOps concepts in your organization.
+These recipes are helpful for companies with little knowledge and experience in agile and DevOps approaches for digital product development <<detecting-agile-bullshit>>.
+
+=== https://en.wikipedia.org/wiki/Continuous_integration/[Continuous integration]
+
+In software engineering, continuous integration _CI_ is the practice of merging all developers' working copies to a shared mainline *several times* a day
+footnote:[https://en.wikipedia.org/wiki/Grady_Booch[Grady Booch] first proposed the term Continuous Integration _CI_ in 1991.
+Analyze your git logs and find out if your developers are truly merging working copies to a shared mainlines several times a day.
+Laggard programmers use git as a backup tool and not as a collaborative development platform.].
+
+The workflow is:
+
+. Write some code, compile and run test locally using a script. +
+_No manual activities shall be required to compile the solution and run all tests._
+. Commit, push, and compile code in the continuous integration environment. +
+_A continuous integration pipeline shall be available._
+_The environment is a clean new one each time the pipeline is triggered._
+. Run static code analyzers, unit tests and integration in this integration environment.
+. _Optionally, trigger continuous delivery if the earlier steps were successful_.
+
+Classical questions and answers _FAQ_ are:
+
+[qanda]
+How often shall a developer push new code to the shared repository?::
+Laggard developers should push multiple times a week.
+Professional developers push multiple times a day <<code-as-crime-scene>>.
+What steps are part of a continuous integration script?::
+The script shall at least compile the solution.
+Static code checkers shall be called to validate the changes and ensure minimal code quality. +
+Modern checkers detect syntactic, semantic or security violations.
+OWASP are readily available to start implementing DevSecOps.
+Unit tests and if reasonable integration shall be executed automatically to verify the changes.
+When should the continuous integration script be executed?::
+Each time a git push is registered and the repository is updated
+footnote:[You can either use https://trunkbaseddevelopment.com/[trunk based development] or configure the build trigger for all your feature branches.].
+You want to guaranty that the repository is in a consistent state. +
+Any developer should be able to check out the repository and start working.
+Can you add manual steps to your continuous integration script?::
+No, manual steps are the death of continuous integration and automation.
+It is called *continuous* because it is *automated*.
+
+=== https://en.wikipedia.org/wiki/Continuous_delivery[Continuous delivery]
+
+Continuous delivery _CD_ is a software engineering approach in which teams produce software in short cycles.
+It ensures that the software can be reliably released at any time and, when releasing the software, *without doing so manually*.
+It aims at building, testing, and releasing software with greater speed and frequency.
+
+The approach helps reduce the cost, time and risk of delivering changes by allowing for more incremental updates to applications in production.
+A straightforward and repeatable deployment process is important for continuous delivery.
+
+Classical questions and answers _FAQ_ are:
+
+[qanda]
+How can a new delivery package be generated?::
+Your continuous integration pipeline should have a delivery step and produce an executable artifact.
+Your hosting platform provides a service to upload versioned artifacts to a repository.
+Java artifacts are often stored in Maven Central.
+Docker images are often uploaded to Docker Hub.
+Where should we store the migration scripts?::
+Migration and configuration scripts are part of the delivery.
+The installation process shall perform an unattended migration of the configuration and databases.
+*Manual steps are not allowed*.
+When is a new delivery package created?::
+Upon completion of compilation, static verification, unit tests and integration tests, you should create the delivery package.
+Which preferred format should you use?::
+For complex solutions, the preferred format is a https://www.docker.com/[docker] image or a https://kubernetes.io/[kubernetes] pod.
+How do you identify a specific version of a package?::
+https://semver.org/[Semantic versioning] is the standard approach to generating legible package identifiers.
+You are free to adopt another naming scheme for https://en.wikipedia.org/wiki/Software_versioning[software versioning].
+Just document your approach. +
+Implement a function so that your users can find out the version of the product they are using.
+
+=== https://en.wikipedia.org/wiki/Continuous_deployment[Continuous deployment]
+
+Continuous deployment _CD_ is a software engineering approach in which software functionalities are delivered frequently through automated deployments.
+Continuous deployment contrasts with continuous delivery.
+It is a similar approach in which software functionalities are also frequently delivered and deemed to be potentially capable of being deployed.
+
+[qanda]
+Are manual steps good practice for continuous deployment?::
+*Never* perform manual steps.
+Continuous activities require full automation.
+Manual steps can only be performed if a trained collaborator is available.
+Manual activities are expensive, automated activities are cheap.
+What should you do if a deployment fails?::
+The environment should perform an automatic rollback to the last working configuration.
+It is the reason why DORA metrics <<dora-metrics>> <<dora-google>> measure _mean time to recover_  and _change failure rate_.
+Are commercial platforms available for continuous deployment?::
+Major cloud services https://aws.amazon.com/[Amazon AWS], https://cloud.google.com/[Google Cloud], https://azure.microsoft.com/[Microsoft Azure],
+https://www.heroku.com/[Heroku], etc. provide continuous deployment pipelines and integration with product development platforms.
+
+=== Logging and Monitoring
+
+https://en.wikipedia.org/wiki/Site_reliability_engineering[Site reliability engineering]
+and https://en.wikipedia.org/wiki/DevOps[DevOps] practices are standard approaches in any professional organization running digital products productively.
+
+Monitoring is used as a https://en.wikipedia.org/wiki/PDCA[PDCA] loop to continuously improve the construction and delivery process of a productive solution.
+
+Classical questions and answers _FAQ_ are:
+
+[qanda]
+What should be logged?::
+The software architecture document of your solution should document how and what information you are logging.
+Mapped diagnostic contexts are used to track session and user related actions and log records
+footnote:[odoo.sh provides logging support for a deployed solution.
+Corporate governance often requires that log files are archived in a separate location.
+These files are needed when a forensic analysis of a security situation shall be investigated.]
+footnote:[odoo has an audit module supporting auditing of critical actions initiated throug user interactions or external systems.
+The audit module is somethat primitive.
+The audit configuration is performed at the database level and not at functional level.
+The configuration responsible needs deep understanding which modules perform specific operations on the database.].
+Should logging information be archived?::
+The corporate governance guidelines shall prescribe how long logging information is stored and who can access the data. +
+Logging information should be available to protect your company against legal complaints.
+The information is also invaluable for security incident analysis
+footnote:[The logging files and audit traces shall be stored on company premises to fulfill legal and corporate governance rules.].
+Should applications be monitored?::
+All productive installations should be monitored through a professional solution.
+The monitoring approach should detect issues before they impede user processes.
+You shall document the alarming and recovery process.
+footnote:[odoo.sh provides monitoring for deployed solutions.
+The monitoring is currently based on https://www.elastic.co/kibana/[Kibana].
+All productive servers shall be monitored with a similar approach.
+The monitoring approach shall be tuned based on production incidents.]
+
+=== GitHub, GitLab, BitBucket
+
+Modern software development departments use these platforms for collaboration and implementation.
+
+image::2022-12-01-ci-vs-cd.png[width=90%,height=360,role=text-center]
+
+As stated on GitHub website, we have the following definitions.
+
+*Automation* is a core principle for achieving DevOps success and CI/CD is a critical component.
+CI/CD consists of continuous integration and continuous delivery or continuous deployment.
+Put together, they form a _CI/CD/CD pipeline_.
+*Automated* workflows that help DevOps teams cut down on manual tasks:
+
+- Continuous integration (CI) automatically builds, tests and integrates code changes within a shared repository.
+- Continuous delivery (CD) automatically delivers code changes to production-ready environments for a final approval.
+- Continuous deployment (CD) automatically deploys code changes to customers directly.
+
+[TIP]
+====
+Multiple Toolchains::
+- GitHub supports multiple toolchain installation through successive steps in the pipeline.
+- BitBucket can only install one toolchain for a pipeline.
+Additional toolchains must be installed using package management of the operating system of your Docker image.
+Beware that package managers are dependant of the used distribution.
+The openjdk regular image uses, for example, _microdnf_ as package manager.
+Actual Java JDK Releases::
+- GitHub does not support the latest official Java releases on time.
+- Bitbucket supports all officially released Java versions.
+====
+
+You need a platform and automatisation expert in your development team to harvest the advantages.
+
+[IMPORTANT]
+====
+odoo.sh has selected GitHub as their preferred platform.
+We shall use GitHub CI/CD/CD approach as defined in odoo.sh to develop and deploy all our application development.
+
+Github provides initial support for Security, DevOps, and agile approaches.
+We shall evaluate these tools and, if relevant, use them as standard tooling for our Odoo software tailoring and development.
+
+The CI tools of GitHub are ideal to implement DevSecOps approaches on odoo modules and internal Python application development.
+The Sonar scanners verify for example compliance to OWASP vulnerabilitities.
+This verification step can be executed on a repository update to remove vulnerabilities in deployed oddo instances.
+====
+
+=== Legacy System Variations
+
+Legacy systems must compromise how they implement their pipelines.
+Source code shall always follow the clean code and DevOps principles.
+Configuration information stored in the database must often be migrated between staging areas.
+Please document your *automated* process and rules.
+
+Modern systems have fully adopted the https://en.wikipedia.org/wiki/Continuous_configuration_automation[configuration]
+and https://en.wikipedia.org/wiki/Infrastructure_as_code[infrastructure as code] approach.
+Migrate your approach to automated configuration scripts to configure and initialize your products.
+
+Incremental migration of database schema and productive data is a well-understood software engineering problem cite:[refactoring-databases] for decades.
+Tools such as https://flywaydb.org/[FlyWay] or https://www.liquibase.org/[LiquidBase] provide enterprise grade productive solutions.
+
+[INFO]
+====
+The open ERP Odoo platform uses https://github.com/[GitHub] to offer a clean DevOps process for the https://www.odoo.sh/[Odoo.sh] cloud platform.
+The approach has two components:
+
+- Source code and modules updates follow clean code and DevOps principles.
+You create new functions in the development branches, merge them in staging branches to test them and release the changes to the production branch for deployment.
+The approach is like the staging process of the Linux kernel.
+- Database updates are performed slightly differently between development and the other staging area.
+The staging area either gets a copy of the production database or a migrated version of the previous staging area database.
+This behavior can be configured.
+
+Merging a staging branch in the production branch only merges the source code.
+Any configuration changes you made in the staging databases are not passed to the production database.
+
+If you test configuration changes in staging branches, and you want them to be applied in the production, you have to either:
+
+- *Write the configuration changes in XML data files overriding the default configuration or views in your branches, and then increase the version of your module in its manifest (__manifest__.py) to trigger the update of the module when you merge your staging branch in your production branch.
+This is the best practice for a better scalability of your developments as you use the Git versioning features for all your configuration changes.
+Therefore, you have traceability for your changes.*
+_This approach is compatible to clean code and DevOps_.
+- Pass them manually from your staging to your production database, by copying and pasting them.
+_This approach is probably a motive to fire the developer because traceability, auditability and reproducibility are not enforced_.
+_Regular corporate governance rules are neglected and could have legal consequences in case of incidents on the production server._
+
+When you want to test the changes of your development branches with the production data, you can either:
+
+- Merge the development branch into your staging branch, by drag and dropping it onto the desired staging branch.
+- Drag and dropping the development branch on the staging section title, to make it become a staging branch.
+
+When your latest changes are ready for production, you can merge the staging branch onto your production branch to deploy in production your newest features.
+====
+
+The above process is documented for Odoo version 15 under https://www.odoo.com/documentation/15.0/administration/odoo_sh/getting_started/branches.html[branches] section.
+
+==== Unprofessional Odoo Approach
+
+Beware that the odoo.sh environment does not hinder amateur developers to do foolish things with git.
+
+The quote below is from the official website of https://www.odoo.sh/[Odoo.sh].
+The statement violates all the rules of clean code, DevOps and professional software development.
+
+I wishfully hope Odoo organization will mature and remove these misleading statements.
+
+[quote,odoo.sh,2022]
+____
+If you are bold enough, you can merge your development branches into your production branch as well. +
+It just means you skip the validation of your changes with the production data through a staging branch.
+____
+
+==== Professional Odoo Approach
+
+On the bright side, odoo.sh supports and advocates the following clean code compatible workflow:
+
+. Source code is developed and tested in the development branch.
+Good practice is to write unit tests and have demonstration data.
+Each time you push changes, a clean instance is created, the demonstration data loaded and all unit tests are executed. +
+_odoo.sh good practices implement TDD, ATDD, and quality gates as expected from a professional approach_.
+. Once you are successful, you merge your development branch to the staging branch.
+The environment will automatically provide a copy of the production database in the staging area.
+You can test your new functions with production data without impeding the production server.
+. Once you are satisfied with the behavior of the new application with the copy of the production data, you can merge to production.
+A new production server will be deployed.
+If the deployment is unsuccessful, it will be rolled back to minimise downtime and to improve mean-time to recover.
+
+=== Tips and Tricks
+
+Professional developers perform only code changes in the development branches.
+A development branch is often a *feature* branch.
+
+Staging and production branches are effectively deployment triggers in the _odoo.sh_ world.
+Staging branches shall only be used to *validate* a new version of your product.
+
+Logically, only *one* production branch is available.
+
+_odoo.sh abuses git branches as triggers for deployment to staging and production_.
+This approach could historically be justified due to the clumsy way database changes were done in the past.
+
+Migration scripts shall be robust and test their constraints
+footnote:[If you write, for example, an SQL database schema migration script, you use clauses such *DROP IF EXISTS*.].
+For example, if the script expects the existence of a value or an identifier in the database, it should test this integrity rule and abort if an error happens.
+The goal is to avoid inconsistent states after an update or a migration.
+
+The new good practice is finally compatible with clean code, infrastructure as code and DevOps.
+This approach is promoted in the official odoo.sh documentation.
+footnote:[Manual editions through copy and paste are a violation of sound engineering development practices.
+You lose reproducibility, versioning of a single source of truth, and auditability.
+Assume that you violate development guidelines and corporate governance.].
+
+As stated by Odoo, you shall write the configuration changes in XML data files overriding the default configuration or views in your branches.
+This is the best practice for a better scalability of your developments as you will use the Git versioning features for all your configuration changes.
+
+=== Lessons Learnt
+
+Clean code and DevOps good practices are around for almost two decades.
+Senior developers in your team should have read the seminal books in this area.
+These experienced senior designers shall coach younger team members.
+
+The InfoQ DevOps and cloud graph shows DevOps themes investigated in companies during 2022.
+Your experts shall apply most or all the approaches documented in the two columns on the right side.
+
+image::2022-12-01-devops-cloud-graph.png[width=780,height=360,role=text-center]
+
+A professional organization shall have a continuous formation and training path for all collaborators.
+I currently often have to answer basic questions about DevOps, clean code or Scrum.
+Quite a few developers do not know basic definitions or how to use Git or GitHub.
+It is time to read the documentation.
+
+[WARNING]
+====
+Please train and read the documentation.
+Do not be a https://en.wikipedia.org/wiki/Newbie[noob].
+
+We politely ask you to read books and documentation.
+Avoid receiving a https://en.wikipedia.org/wiki/RTFM[RTFM] injunction.
+====
+
+You need expertise in Docker, Kubernetes and in your development platform <<devops-sme>>.
+We recommend initially using GitHub.
+It is the most used platform and most developers are versed how to use the provided features.
+
+If your company is missing experienced DevOps and agile professionals, it is time to improve your recruitment process <<detecting-agile-bullshit>>.
+
+All development platforms have extensive support for continuous integration, delivery and deployment.
+DevOps approaches are well-supported.
+Often, advanced concepts such as monitoring, DevSecOps or license management are supported.
+Extensive tutorials and good practices are available.
+
+Just use the provided tools and approaches to professionally develop and operate your digital platforms.
+
+[bibliography]
+=== Links
+
+- [[[dora-metrics, 1]]] https://devops.com/how-dora-metrics-can-measure-and-improve-performance/[How DORA metrics can measure and improve performance]
+- [[[dora-google, 2]]] https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance[Using The Four Keys to Measure Your Devops Performance]
+- [[[devops-sme, 3]]] link:../../blog/2021/devops-for-small-applications/[DevOps for Small Applications]
+Marcel Baumann. 2021
+- [[[code-as-crime-scene, 4]]] link:../../2019/code-scene-as-crime-scene/[Code Scene as a Crime Scene]
+Marcel Baumann, 2019
+- [[[detecting-agile-bullshit, 5]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit]
+Marcel Baumann, 2019
+
+=== References
+
+bibliography::[]

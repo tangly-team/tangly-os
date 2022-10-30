@@ -26,7 +26,7 @@ You can use them in pure functions to avoid unwanted side effects.].
 Functional programming is also a natural fit for multicore parallel programming.
 The paradigm is the best way to squeeze more performance out of modern CPUs.
 
-Java Streams library allows algorithms to be coded declaratively meaning the developer specifies what they want, not how they want it.
+The _Java Streams_ library allows algorithms to be coded declaratively meaning the developer specifies what they want, not how they want it.
 This improves code quality because all the plumbing code is handled by the library itself.
 The fluent interface style is just a way to express streams algorithm in one continuous line.
 
@@ -109,7 +109,7 @@ Collection<Split> splites{
 
 <1> Returns an optional with a value if found or an empty optional.
 The optional can be processed as a stream instead of using a conditional statement.
-<2> returns either a list of items or an empty list.
+<2> Returns either a list of items or an empty list.
 The result can be processed as a stream instead of using a conditional statement.
 
 Streams provide the _flatmap_ operator to elegantly handle optional values in collection processing.
@@ -121,8 +121,8 @@ Time to study the concepts of functional programming and lambda calculus cite:[f
 ====
 You are really starting to program using functional programming idioms if you:
 
-- pass lambda expressions or single abstract method _SAM_ instances as parameters of some methods.
-- return lambda expressions or single abstract method _SAM_ instances in some methods.
+- Pass lambda expressions or single abstract method _SAM_ instances as parameters of some methods.
+- Return lambda expressions or single abstract method _SAM_ instances in some methods.
 
 Just scan your code and find out how often you write such constructs.
 

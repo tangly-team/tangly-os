@@ -52,6 +52,8 @@ The solution can be run in any environment supporting the current released Java 
 The complexity is located in the persistence requirements of the application.
 How persistence solutions are provided is quite heterogeneous in the current cloud offerings.
 Set up your monitoring solution::
+Monitor your application.
+Find out the response times your users encounter.
 
 === Thoughts
 

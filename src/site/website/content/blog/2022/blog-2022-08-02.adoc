@@ -29,7 +29,7 @@ Your customer paid for the development and own the produced artifacts.
 You are legally bound to deliver source code, binary artifacts defining the executable application, credentials and documentation to your customer.
 The ownership transfer is either an explicit part of your contract or implicit through the contract type you are working with.
 
-Remember, a product development is a work contract.
+_Remember, a product development is a work contract._
 
 Work contractsfootnote:[The German term is _Werkvertrag_. The French term is _contrat de travail_.] are a legal and rather well-defined contractual item in Europe.
 Expected deliveries are already defined in legal texts or through jurisprudence.

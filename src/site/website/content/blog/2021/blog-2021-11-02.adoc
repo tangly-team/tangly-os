@@ -118,6 +118,16 @@ The binary report is no more supported by external tool.
 <4> -
 <5> Configure JaCoCo test report to be generated after the running of a test task
 
+[IMPORTANT]
+====
+Gradle has finally new plugins to better generate unit tests and test coverage reports for a multi-module project.
+
+- test-report-aggregation
+- jacoco-report-aggregation
+
+The new approach to create aggregated reports is discribed in link:../../2022/multi-module-test-reporting-with-gradle-7.x/[Multi-module Test Reporting with Gradle 7].
+====
+
 === Wishes
 
 I would greatly appreciate if the JaCoCo Gradle plugin is improved and align with the features of the Maven plugin.

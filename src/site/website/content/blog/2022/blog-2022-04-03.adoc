@@ -116,7 +116,7 @@ https://en.wikipedia.org/wiki/Corporate_governance[Corporate governance] is mand
 
 * You need to understand business techniques and financial language to fund your product development.
 * You need to understand agile HR to nurture your collaborators.
-* You should be savvy with product development processes and project controlling tools to deliver on time and on budget.
+* You should be savvy with product development processes and project-controlling tools to deliver on time and on budget.
 * You need to chop your target markets to identify your customers and products.
 Beware of the challenges of internal customers, business to business _B2B_, business to professional _B2P_, business to consumer _B2C_, and business to government _B2G_.
 * You need to deeply understand technologies to Manage your technology stack.
@@ -142,7 +142,7 @@ Internationalization and localization are regular aspects of an application.
 Strategical aspects must be considered to optimize long-term revenues and minimize risks.
 ** Provide interoperability to public interfaces.
 In the health sector, it could be the Health https://en.wikipedia.org/wiki/Health_Level_7[Level 7] _HL7_ set of standards.
-Each government defines their API to provide mandatory information for social security, value added tax reporting, cyberattacks alarming, or statistics.
+Each government defines her API to provide mandatory information for social security, value-added tax reporting, cyberattacks alarming, or statistics.
 ** Avoid technology obsolescence and define cost-effective migration paths.
 ** Motivate collaborators and be an attractive company for professional engineers.
 
@@ -175,7 +175,7 @@ Successful executives shall master culture, market and technology to launch awes
 Leadership and collaborator management are a third specialization::
 Modern and agile approaches are still very young.
 The offerings are still quite old school and not well-tailored for digital companies.
-The still ill used term _human resources_ is quite the indicator how collaborators hiring and retainment is done wrong in old-fashioned organizations. +
+The still used term _human resources_ is quite the indicator how collaborators hiring and retainment is done wrong in old-fashioned organizations. +
 Persons can never be considered as resources.
 They are unique individuals to be nurtured and respected.
 

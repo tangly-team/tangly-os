@@ -8,8 +8,8 @@ description: Functional programming in modern Java
 = Functional Programming in Java
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
 :keywords: agile, architecture, functional programming
+:company: https://www.tangly.net/[tangly llc]
 -:sectnums:
 :toc:
 

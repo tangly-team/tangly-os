@@ -12,23 +12,42 @@ tags: ["java", "architecture"]
 :company: https://www.tangly.net/[tangly ll c]
 
 image::2022-11-01-head.jpg[width=420,height=360,role=left]
-= Domain-Driven Design (DDD) has been around since Eric Evans published his book about the subject in 2003.
 
-BDD inversion - acceptance criteria are coded as acceptance test and documentation is automatically generated.
-Acceptance criteria are discussed with the product owner and users
+Domain-Driven Design _DDD_ has been around since Eric Evans published his book about the subject in 2003 cite:[domain-driven-design].
+Vernon Vaugh published powerful approaches how to implement DDD concepts cite:[implementing-domain-driven-design,domain-driven-design-distilled].
 
-A developer writes the acceptance tests and generates automatically legible description of the tests.
+Behavior Driven Design _BDD_ is an inversion how systems are often developed.
+In some ways, it is an extension of Test Driven Development _TDD_ approach to the whole application.
+
+Acceptance criteria are coded as automated acceptance tests.
+The software is written to fulfill these acceptance tests.
+
+This approach integrates well with agile frameworks.
+footnote:[Scrum advocates recognize the compatibility with their framework.
+Each story in the product backlog shall have acceptance criteria defined under the product owner's responsibility.
+The key is to formulate the acceptance criteria so that they can be coded as automated tests.].
 The product owner can accept the story based on the test description enforcing his acceptance criteria.
 
-https://martinfowler.com/bliki/DomainDrivenDesign.html[Domain Driven Design]
+The documentation describing the acceptance tests is automatically generated.
+These documented acceptance tests are the requirements of the application.
+This approach is often called specification by example cite:[bridging-communication-gap].
 
-https://martinfowler.com/bliki/BoundedContext.html[Bounded Context]
+I strongly advocate that the developers write the acceptance tests and generate the legible description of the tests.
 
-https://martinfowler.com/bliki/AnemicDomainModel.html[Anemic Domain Model]
+=== Constraints
+
+image::2022-11-01-ddd-clean-architecture.png[width=420,height=360,role=left]
+
+The BDD approach works well when https://martinfowler.com/bliki/DomainDrivenDesign.html[Domain Driven Design] is applied as described in the seminal reference texts.
+
+The acceptance tests are often specified against a https://martinfowler.com/bliki/BoundedContext.html[Bounded Context].
+
+It is cumbersome and difficult to test https://martinfowler.com/bliki/AnemicDomainModel.html[Anemic Domain Model].
 Rich Domains are models that have full control of their data and do not rely on external objects to manipulate them.
 Anemic Domains are models that rely on other classes to validate their data.
 
-https://martinfowler.com/bliki/CQRS.html[CQRS]
+An elegant design approach such as https://martinfowler.com/bliki/CQRS.html[CQRS] hugely simplifies the definition and implementation of acceptance tests.
+
 I want to keep the understanding of the strategies simple.
 The Domain Events strategy is nothing more than an event fired from a Context X microservice with information that may interest other contexts.
 
@@ -36,6 +55,21 @@ This strategy is used when we would like to have asynchronous behavior between o
 For instance, the action that the consumer will take based on this event does not matter to him.
 For it is always important to think about notifying past actions.
 
-https://martinfowler.com/bliki/DDD_Aggregate.html[Aggregate]
+=== Evolution
 
-image::2022-11-01-ddd-clean-architecture.png[width=420,height=360,role=left]
+A tension exists who is in charge to write the acceptance tests.
+Experts initially advocated that the product owner or the business analysts should write the tests to validate the work of the development team.
+Solutions such as Gherkin and Fitnesse were developed to support this approach.
+
+Experience showed the difficulty of maintaining and refactor test sets written by non-developers.
+I strongly advocate product owners shall formulate the acceptance criteria.
+Developers shall always write the acceptance tests and guarantee a reasonable quality of the created code.
+Use frameworks based on a programming language instead of structured text approaches.
+Modern development platforms provide powerful refactoring tools for source code but almost none for a regular text.
+
+Refactoring and clean code principles shall permeate a modern software development approach.
+Avoid archaic solutions requiring expensive manual activities.
+
+=== References
+
+bibliography::[]

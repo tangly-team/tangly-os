@@ -8,9 +8,6 @@ description: An introduction to software architecture in agile product developme
 = Agile Architecture
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
-:revnumber: v0.1
-:revdate: 2020-05-31
-:homepage: https://www.tangly.net/
 :keywords: agile, architecture, Scrum, LeSS
 :company: https://www.tangly.net/[tangly llc]
 -:sectnums:
@@ -160,7 +157,7 @@ Your development team members are
 * Know https://en.wikipedia.org/wiki/SMART_criteria[SMART], https://en.wikipedia.org/wiki/INVEST_(mnemonic)[INVEST], https://de.wikipedia.org/wiki/Solid_(Software)[SOLID],
 https://en.wikipedia.org/wiki/KISS_principle[KISS], https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI].
 * hold weekly design workshops with _huge_ whiteboards.
-* Use domain driven design cite:[domain-driven-design,omain-driven-design-distilled,implementing-domain-driven-design] and event storming.
+* Use domain driven design cite:[domain-driven-design,domain-driven-design-distilled,implementing-domain-driven-design] and event storming.
 * Avoid https://en.wikipedia.org/wiki/Big_Design_Up_Front[BDUF].
 
 You shall keep it simple, make it valuable, and build it piece by piece.

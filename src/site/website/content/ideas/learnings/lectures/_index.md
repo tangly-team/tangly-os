@@ -20,6 +20,9 @@ lectures {{< /attachments >}}
 {{< attachments folder="swat-literature" recursive=false exclude=".md,.adoc,.DS_Store" title="SWAT Recommended Literature" >}} Recommended readings for
 the Software Architecture and Techniques SWAT lectures {{< /attachments >}}
 
+{{< attachments folder="swat-historical-papers" recursive=false exclude=".md,.adoc,.DS_Store" title="SWAT Optional Historical Papers" >}} Readings to explore the history of
+software development and architecture {{</attachments >}}
+
 ## Modern Java and Selected JVM Languages Lectures
 
 Modern Java and Selected JVM languages *PCP* discuss programming paradigms to write legible, efficient source code.

@@ -22,7 +22,7 @@ Does DevOps really improve the quality of your digital products and customer sat
 
 Or is it only the next https://en.wikipedia.org/wiki/No_Silver_Bullet[silver bullet] fad used to increase the bonus of consultants and managers?
 
-You also find a simple way to boostrap your <<bootstrap-devops-adoption, DevOps adoption>>.
+You also find a simple way to boostrap your DevOps adoption <<bootstrap-devops-adoption>>.
 
 === What is DevOps?
 
@@ -80,7 +80,7 @@ Development in an agile and DevOps environment means:
 image::2022-04-04-Ci-pipeline.png[width=480,height=360,role=left]
 
 Your development teams shall have automatic continuous integration.
-This pipeline builds the software, runs static code analyzer and executes a reasonable set of unit and integration.
+This pipeline builds the software, runs static code analyzer and executes a reasonable set of unit and integration tests.
 If not, they are pretending to do DevOps and lying to you.
 
 The next step is to configure an automatic continuous delivery.
@@ -164,7 +164,7 @@ They provide an automated, tracked and documented quality gate.
 * Each production version is tagged in the repository including associated documentation and technical instructions.
 Running:: Focus is on time to repair rather than time between issues.
 Measure mean-time to recovery, production failure rate and change failure rate.
-* Each instance has a monitoring feature which enabled us to provide realtime information about resource usage, heartbeat, health status and warnings.
+* Each instance has a monitoring feature, which enabled us to provide realtime information about resource usage, heartbeat, health status and warnings.
 You can rely on an automated alert and response system to troubleshoot and monitor your enterprise servers.
 The developing team can quickly rectify errors or hiccups in the workflow without disturbing the operations teams.
 * Each instance monitor view is accessible to all involved collaborators.
@@ -194,7 +194,7 @@ _I shall use the CI/CD tool chosen for the product._
 The list is specific to one product.
 I see the information such as priority, cycle-time of these issues and in which release the issue was fixed.
 . You give me read-only access to the health dashboard of any test and productive server on which the product runs.
-I see
+I see:
 * Uptime, availability, last down events with time of occurrence, duration and explanation.
 * Database, memory, CPU, etc. usage and trends,
 * List of alarms with the involved components and resolution status.
