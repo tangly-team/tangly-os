@@ -36,7 +36,7 @@ dependencies {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(18)
+        languageVersion = JavaLanguageVersion.of(19)
     }
     withJavadocJar()
     withSourcesJar()
@@ -69,13 +69,14 @@ tasks.withType(Javadoc) {
         addBooleanOption('Xdoclint:none', true)
         addStringOption("Xmaxwarns", "1")
         addBooleanOption('-enable-preview', true)
-        addStringOption('-release', '18')
+        addStringOption('-release', '19')
+        addStringOption('-snippet-path', "${projectDir}/src/test/java")
         addBooleanOption('quiet')
     }
 }
 
 tasks.withType(JavaExec) {
-    jvmArgs += ['--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED', '--enable-preview']
+    jvmArgs += ['--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED', '--enable-preview', '-XX:+ShowCodeDetailsInExceptionMessages']
 }
 
 jar {
@@ -214,6 +215,7 @@ if (project.hasProperty('mode') && project.property('mode').equals('int')) {
     apply plugin: 'com.github.spotbugs'
     apply plugin: 'org.sonatype.gradle.plugins.scan'
     apply plugin: 'pmd'
+    apply plugine: 'checkstyle'
     apply plugin: 'info.solidsoft.pitest'
 
     pmd {
@@ -222,6 +224,10 @@ if (project.hasProperty('mode') && project.property('mode').equals('int')) {
         ignoreFailures = true
         incrementalAnalysis = true
         rulesMinimumPriority = 3
+    }
+
+    checkstyle {
+        configFile file("src/main/resources/checkstyle/checkstyle.xml")
     }
 
     spotbugs {
