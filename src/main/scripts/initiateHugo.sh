@@ -38,4 +38,5 @@ sudo npm install -D postcss
 # initiate empty public folder with git to enable optional completion step and publishing in our pages repository (GitHub, GitLab, orBitBucket)
 git clone --no-checkout git@github.com:tangly-team/tangly-team.github.io.git public
 
+# beware that the content uses bibliography, plantuml, and mermaid to generate references and diagrams
 echo "start server with hugo server --destination public --disableFastRender -> site is accessible under localhost:1313"

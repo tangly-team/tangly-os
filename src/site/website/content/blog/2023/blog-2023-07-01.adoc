@@ -130,7 +130,7 @@ Have a process to track and mitigate all published common vulnerabilities and ex
 
 === Legal Requirements
 
-Respect the legal framework of your country and the contries in which your solution is deployed:
+Respect the legal framework of your country and the foreign contries in which your solution is deployed:
 
 - Customer Protection
 - Customer Data Confidentiallity

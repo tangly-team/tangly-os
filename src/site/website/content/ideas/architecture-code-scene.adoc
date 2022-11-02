@@ -11,7 +11,7 @@ description: Analysis of source code as a code scene with specialized tools
 :revdate: 2020-05-31
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
--
+
 === Purpose
 
 Agile development teams shall manage and diminish their technical debt. We provide instruments to increase the pay-off of refactoring measures. The

@@ -13,20 +13,20 @@ tags: ["java", "architecture", "series-students"]
 
 image::2023-04-01-head.jpg[width=420,height=360,role=left]
 
-Software development topics I have become to like after 40 years in the industry.
+Software development topics I learnt to like after 40 years in the industry.
 
 === Strongly Agree
 
 * Typed languages are better when you're working on a team of people with various experience levels
 * Standups are actually useful for keeping an eye on the newbies.
-* Sprint retrospectives have their place so long as they're for actual course correction (i.e. _holy shit, well that went poorly!_) and not some god awful scrum master driven waste of everyone's time
-* Developers shouldn't be isolated or left to just code.
+* Sprint retrospectives have their place so long as they're for actual course correction (i.e., _holy shit, well that went poorly!_) and not some god awful scrum master driven waste of everyone's time.
+* Developers should not be isolated or left to just code.
 Bypassing TPMs, PMs, and talking directly to the customer always reveals more about the problem, in less time, and with higher accuracy
 * Software architecture matters probably more than anything else.
 A shitty implementation of a good abstraction causes no net harm to the code base.
 A bad abstraction or missing layer causes everything to rot.
 * Java is quite a cool language.
-* clever code isn't usually good code.
+* clever code is not usually good code.
 Clarity trumps all other concerns.
 * Bad code can be written in any paradigm
 * So-called _best practices_ are contextual and not broadly applicable.
