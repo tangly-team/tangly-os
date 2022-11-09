@@ -1,7 +1,7 @@
 ---
 title: "First Steps DevOps"
 linkTitle: "First Steps DevOps"
-date: 2022-11-10
+date: 2022-11-08
 tags: ["agile", "devops"]
 ---
 
@@ -29,12 +29,12 @@ and https://azure.microsoft.com/de-de/services/devops/[Microsoft Azure DevOps] d
 
 The DORA metrics define a standard approach to measure the quality and efficiency of a DevOps or agile process implementation in an organization.
 They were published in 2016.
-The metrics for throughput are _deployment frequency, lead time for changes_.
-The metrics for stability are _mean time to recover, change failure rate_.
+The metrics for throughput are _deployment frequency, and lead time for changes_.
+The metrics for stability are _mean time to recover, and change failure rate_.
 
 They define a standard approach to measure the quality and efficiency of a DevOps or agile process implementation in an organization.
 An agile team shall be able to deploy a version of their digital platform multiple times per day.
-Frequent and economical deployments require the full automation of integration, delivery and deployment steps.
+Frequent and economical deployments require the full automation of the integration, delivery and deployment steps.
 
 Below, we provide a detailed possible approach to deploying DevOps concepts in your organization.
 These recipes are helpful for companies with little knowledge and experience in agile and DevOps approaches for digital product development <<detecting-agile-bullshit>>.
@@ -141,10 +141,10 @@ What should be logged?::
 The software architecture document of your solution should document how and what information you are logging.
 Mapped diagnostic contexts are used to track session and user related actions and log records
 footnote:[odoo.sh provides logging support for a deployed solution.
-Corporate governance often requires that log files are archived in a separate location.
+Corporate governance often requires that the log files be archived in a separate location.
 These files are needed when a forensic analysis of a security situation shall be investigated.]
-footnote:[odoo has an audit module supporting auditing of critical actions initiated throug user interactions or external systems.
-The audit module is somethat primitive.
+footnote:[odoo has an audit module supporting auditing of critical actions initiated through user interactions or external systems.
+The audit module is somewhat primitive.
 The audit configuration is performed at the database level and not at functional level.
 The configuration responsible needs deep understanding which modules perform specific operations on the database.].
 Should logging information be archived?::
@@ -191,18 +191,18 @@ Actual Java JDK Releases::
 - Bitbucket supports all officially released Java versions.
 ====
 
-You need a platform and automatisation expert in your development team to harvest the advantages.
+You need a platform and automation expert in your development team to harvest the advantages.
 
 [IMPORTANT]
 ====
 odoo.sh has selected GitHub as their preferred platform.
-We shall use GitHub CI/CD/CD approach as defined in odoo.sh to develop and deploy all our application development.
+We shall use the GitHub CI/CD/CD approach as defined in odoo.sh to develop and deploy all our application development.
 
 Github provides initial support for Security, DevOps, and agile approaches.
 We shall evaluate these tools and, if relevant, use them as standard tooling for our Odoo software tailoring and development.
 
 The CI tools of GitHub are ideal to implement DevSecOps approaches on odoo modules and internal Python application development.
-The Sonar scanners verify for example compliance to OWASP vulnerabilitities.
+The Sonar scanners verify for example compliance to OWASP vulnerabilities.
 This verification step can be executed on a repository update to remove vulnerabilities in deployed oddo instances.
 ====
 
@@ -240,14 +240,14 @@ If you test configuration changes in staging branches, and you want them to be a
 - *Write the configuration changes in XML data files overriding the default configuration or views in your branches, and then increase the version of your module in its manifest (__manifest__.py) to trigger the update of the module when you merge your staging branch in your production branch.
 This is the best practice for a better scalability of your developments as you use the Git versioning features for all your configuration changes.
 Therefore, you have traceability for your changes.*
-_This approach is compatible to clean code and DevOps_.
+_This approach is compatible with clean code and DevOps_.
 - Pass them manually from your staging to your production database, by copying and pasting them.
 _This approach is probably a motive to fire the developer because traceability, auditability and reproducibility are not enforced_.
 _Regular corporate governance rules are neglected and could have legal consequences in case of incidents on the production server._
 
 When you want to test the changes of your development branches with the production data, you can either:
 
-- Merge the development branch into your staging branch, by drag and dropping it onto the desired staging branch.
+- Merge the development branch into your staging branch, by dragging and dropping it onto the desired staging branch.
 - Drag and dropping the development branch on the staging section title, to make it become a staging branch.
 
 When your latest changes are ready for production, you can merge the staging branch onto your production branch to deploy in production your newest features.
@@ -299,7 +299,7 @@ _odoo.sh abuses git branches as triggers for deployment to staging and productio
 This approach could historically be justified due to the clumsy way database changes were done in the past.
 
 Migration scripts shall be robust and test their constraints
-footnote:[If you write, for example, an SQL database schema migration script, you use clauses such *DROP IF EXISTS*.].
+footnote:[If you write, for example, an SQL database schema migration script, you use clauses such as *DROP IF EXISTS*.].
 For example, if the script expects the existence of a value or an identifier in the database, it should test this integrity rule and abort if an error happens.
 The goal is to avoid inconsistent states after an update or a migration.
 
@@ -318,7 +318,7 @@ Clean code and DevOps good practices are around for almost two decades.
 Senior developers in your team should have read the seminal books in this area.
 These experienced senior designers shall coach younger team members.
 
-The InfoQ DevOps and cloud graph shows DevOps themes investigated in companies during 2022.
+The InfoQ DevOps and cloud graph show DevOps themes investigated in companies during 2022.
 Your experts shall apply most or all the approaches documented in the two columns on the right side.
 
 image::2022-12-01-devops-cloud-graph.png[width=780,height=360,role=text-center]
@@ -334,12 +334,13 @@ Please train and read the documentation.
 Do not be a https://en.wikipedia.org/wiki/Newbie[noob].
 
 We politely ask you to read books and documentation.
-Avoid receiving a https://en.wikipedia.org/wiki/RTFM[RTFM] injunction.
+Avoid receiving an https://en.wikipedia.org/wiki/RTFM[RTFM] injunction.
 ====
 
 You need expertise in Docker, Kubernetes and in your development platform <<devops-sme>>.
 We recommend initially using GitHub.
-It is the most used platform and most developers are versed how to use the provided features.
+It is the most used platform.
+Most developers are versed how to use the provided features.
 
 If your company is missing experienced DevOps and agile professionals, it is time to improve your recruitment process <<detecting-agile-bullshit>>.
 

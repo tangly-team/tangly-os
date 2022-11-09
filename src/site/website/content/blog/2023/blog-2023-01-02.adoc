@@ -13,7 +13,7 @@ tags: ["agile", "devops"]
 
 image::2023-01-02-head.jpg[width=420,height=360,role=left]
 
-What does a responsible in information technology?
+What does a senior manager in charge of information technology?
 
 An IT director is the IT right-hand man of the company's manager.
 He sometimes has the shiny title of https://en.wikipedia.org/wiki/Chief_information_officer[CIO].
@@ -23,10 +23,11 @@ He intervenes at different levels in the management and optimization of the comp
 This encompasses hardware and software infrastructures, information architecture, business tools, dedicated internal or external human resources, old technology.
 
 The size of small and medium companies does not justify a full-time role.
-The IT manager shall be a part-time role and he shall also work in other roles.
+The IT manager shall be a part-time role.
+He shall also work in other roles.
 Ideally, he performs the financial and technical tasks associated with the IT department responsibilities.
 
-A modern IT responsible works mainly on the tactical level.
+A modern IT leader works mainly on the tactical level.
 He identifies and deploys solutions optimizing the cost structure and reducing organizational risks.
 
 [NOTE]
@@ -36,12 +37,12 @@ The computer department of a technical university has regular variants to deploy
 . Buy own hardware.
 Install and support applications with an internal team.
 . Delegate installation and support to the IT department of the technical university.
-Success is dependent on the affinitity of the department to digital tools.
-Experience shows user statisfaction is low due to lack of technical expertise in the support group.
+Success is dependent on the affinity of the department to digital tools.
+Experience shows user satisfaction is low due to lack of technical expertise in the support group.
 . Delegate installation and support to a specialized academic support institution.
-Switch or the computing center of Ticino are examples in Switzerland.
+Switch provider or the computing center of Ticino are examples in Switzerland.
 . Use a commercial solution provided by a hyperscaler or tool provider.
-GitHub, GitLab, Attlassian have academic programs to support universities.
+GitHub, GitLab, Atlassian have academic programs to support universities.
 ====
 
 === Areas of Works
@@ -59,8 +60,8 @@ GitLab, GitHub, Bitbucket or Microsoft Azure platforms are the industrial standa
 Choose the most adequate for your developers.
 Deployment Platform::
 Kubernetes is the industrial standard for deploying software solutions.
-The major discussion is how do you deploy your applications: locally, in the cloud or in a hybrid environment.
-The decision is tactical and shall regularly revised to optimize running costs and fulfill corporate governance.
+The major discussion is how you deploy your applications: locally, in the cloud or in a hybrid environment.
+The decision is tactical and shall regularly be revised to optimize running costs and fulfill corporate governance.
 Storage Solution::
 Your organization must store data in persistent storage.
 The information shall be backed up and protected against incidents.
@@ -70,7 +71,7 @@ Authentication and Authorization::
 Modern distributed organizations shall provide a secure and standardized approach to authentication and authorization.
 Single sign-on and federated solution (FIDO, Edu ID) are current best practices.
 Machine Learning and Graphical Resources::
-Currently graphic processors are the only approach to computing machine learning and big data problems and provide usable solutions.
+ Currently, graphic processors are the only approach to computing machine learning and big data problems and provide usable solutions.
 Security and Firewalls::
 Security and associated firewalls are mandatory to respect corporate governance and laws.
 Monitoring is a must for all enterprise relevant applications.
@@ -98,7 +99,7 @@ Did you test the restore process?
 The ideal candidate shall have experience and training in:
 
 - Technical support of a virtual computing solution.
-The candidate shall have at least a bachelor degree in computer science or related fiels.
+The candidate shall have at least a bachelor degree in computer science or related fields.
 - Corporate governance and digital solutions legal aspects.
 - Financial understanding to select solutions and drafting the contracts.
 - Team leadership to nurture a competent small group of specialists.
@@ -111,17 +112,19 @@ The only wrong approach is to deploy a local solution without maintenance contra
 ====
 
 Most of the decisions are constrained by the trend to outsource hardware and applications to professional companies.
-A typical scenario is as follow.
-Do we deploy our own storage solution?
-Do we use the services of Switch or Amazon?
-Or do we use commercial solutions of other hyperscalers?
+
+A typical scenario is:
+
+* Do we deploy our own storage solution?
+* Do we use the services of Switch or Amazon?
+* Do we use commercial solutions of other hyperscalers?
 
 [bibliography]
 === Links
 
 - [[[first-steps-devops,1]]] link:../../2023/first-stps-devops/[First Steps DevOps]
 Marcel Baumann. 2023
-- [[[devops-ideas, 2]]] link:../../2022/introducing-devops-ideas/[Introdcuing DevOps Ideas]
+- [[[devops-ideas, 2]]] link:../../2022/introducing-devops-ideas/[Introducing DevOps Ideas]
 Marcel Baumann. 2022
 - [[[devops-sme, 3]]] link:../../2021/devops-for-small-applications/[DevOps for Small Applications]
 Marcel Baumann. 2021

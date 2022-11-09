@@ -67,13 +67,19 @@ We shall explore if trouble arise from used components which are using other log
 The risk is small because it is already existing wehn using slf4j liberary.
 The difference is only our new preferred library is now the Apache one.
 
+[IMPORTANT]
+====
+Configure slf4j API to use the log4j2 backend to write logging statements.
+This configuration is important if some of your libraries are using slf4j.
+====
+
 The architecture of log4j2 is described in https://logging.apache.org/log4j/2.x/manual/architecture.html[Log4j2 Main Components].
 
 === Learnings
 
 * The log4j2 community reacted professionally and fast in 2022 to correct a security attack in the library.
 The update of all libraries and applications with the patched version was done in a few minutes.
-A gradle plugin was used to infer which version of the library was used.
+A gradle plugin was used to infer, which version of the library was used.
 The continuous implementation and delivery pipeline were used to generate hardened versions.
 * A new feature of Gradle supports the definition of dependencies in a central file for all submodules.
 The project uses _libs.version.toml_ configuration file to unify library usage through all components.

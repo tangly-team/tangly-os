@@ -1,45 +1,51 @@
 ---
-title: "Development Good Practices for Enterprise Java Solutions"
-date: 20123-01-01
+title: "Good Practices for Enterprise Java Solutions"
+date: 2021-01-01
 weight: 25
 description: good practices
 ---
 
-== Development Good Practices for Enterprise Java Solutions"
+==  Good Practices for Enterprise Java Solutions"
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :description: Design conventions for the open source components of tangly
 :keywords: agile, architecture, design
 :company: https://www.tangly.net/[tangly llc]
 
-! IDEA: one mindmap per theme and specific text
-
+[plantuml,development-good-practices-mindmap,svg]
+----
+@startmindmap
 - DevOps
--- Gradle
---- Central dependencies management
---- Project plugin
--- CI
--- CD BitBucket (GitHub, GitLab)
--- CD Heroku
-- Current JDK
+-- CI/CD/CD
+--- Gradle
+---- Current JDK
+---- Central dependencies management
+---- Project plugin
+--- CI/ CD (GitHub, GitLab, BitBucket)
+--- CD (Heroku)
+-- IntelliJ IDEA IDE
+--- Vulnerabilities Detection
+--- Refactoring and clean code
+--- Mob Programming
 
-- IntelliJ IDEA IDE
--- Vulnerabilities Detection
+++ Documentation
++++ JavaDoc
+++++ Code Snippets
++++ Diagrams as Code
+++++ plantUML
+++++ Mermaid
++++ Hugo Docsy and AsciiDoc
+++++ Integration Tests as AsciiDoc requirements by Example
 
-- Documentation
--- JavaDoc
--- Diagrams as Code
---- plantUML [plantuml,diagram-name,svg,svg-type="interactive"]
--- Code Snippets
--- Integration Tests
--- Hugo Docsy
 
-- Solutions
--- Vaadin
---- Vaadin session is 10 MB, 1000 parallel users are 10 GB
--- Standalone Application
--- Micro Stream
+-- Solutions
+--- Vaadin
+---- Vaadin session is 10 MB, 1000 parallel users are 10 GB
+--- Standalone Application without J2EE server
+--- MicroStream instead of relational database
+@endmindmap
+----
 
 === Knowledge Database
 
-=== Agile Framework with Public Project Platforms
+Todo FAQ in Asciidoc

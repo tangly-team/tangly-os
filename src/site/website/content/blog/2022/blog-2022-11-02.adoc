@@ -1,7 +1,7 @@
 ---
 title: "Multi-Module Test Reporting with Gradle 7.x"
 linkTitle: "Test Reporting"
-date: 2022-11-15
+date: 2022-11-07
 tags: ["java", "gradle"]
 ---
 
@@ -43,7 +43,7 @@ dependencies {                                      // <2>
     testReportAggregation project(':net.tangly.core')
     testReportAggregation project(':net.tangly.dev')
 
-   jacocoAggregation project(':net.tangly.bdd')
+    jacocoAggregation project(':net.tangly.bdd')
     jacocoAggregation project(':net.tangly.commons')
     jacocoAggregation project(':net.tangly.core')
     jacocoAggregation project(':net.tangly.dev')
@@ -97,5 +97,5 @@ Gradle ecosystem is still work in progress to support multi-module Java projects
 [bibliography]
 === Links
 
-- [[[gradle-7, 1]]] link:../../2021/gradle-7/[Gradle 7]
+- [[[gradle-7, 1]]] link:../../2021/gradle-7/[Gradle 7 Goodies]
 - [[[gradle-6, 2]]] link:../..2020/gradle-6.4-finally-supports-java-modules/[Gradle 6.4 Finally Supports Java Modules]
