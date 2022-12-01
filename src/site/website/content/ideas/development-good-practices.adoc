@@ -46,6 +46,12 @@ description: good practices
 @endmindmap
 ----
 
+=== Bounded Domain Development
+
+
+
 === Knowledge Database
 
-Todo FAQ in Asciidoc
+[qanda]
+Todo::
+Write FAQ in Asciidoc

@@ -20,7 +20,7 @@ image::2023-02-02-head.png[width=420,height=360,role=left]
 All our internal processes are digital.
 The trend towards digital documents, QR Code and digital exchange standards for invoices helps us to extend our digital approaches to our partners and customers.
 
-We still have manual or paper interactions with government platforms and insurance companies.
+We have almost no manual or paper interactions with government platforms and insurance companies.
 Swiss government departments provide web portal access to their services.
 At least we do not need to send paper documents.
 But none of the solutions for social insurances, VAT declaration or salary documents have an API.
@@ -30,7 +30,7 @@ The Swiss federal government deployed a new https://www.estv.admin.ch/estv/en/ho
 The various services are now located under one portal.
 The solution is still missing a public API to enable the digital transformation of company's processes.
 
-Big insurance companies are iller than the federal government.
+Big insurance companies are worse than the federal government.
 Pension fund and accident insurances still request paper correspondence for standardized processes such as mutation or yearly salary structure information.
 Improvements are visible but incredibly slow.
 
@@ -42,7 +42,35 @@ It is cumbersome, no support for {ref-asciidoc} or Markdown is available.
 Static website concepts and infrastructure as version managed artifacts are sorely missing.
 We initiated a slow withdrawal from their digital offerings.
 
-=== Websites
+=== Social Responsibility
+
+image::2023-02-02-transport-co2.png[width=480,height=380,role=left]
+Our collaborators are active as part-time lecturers in technical universities.
+We teach digital and software engineering courses at bachelor level.
+The training material is often released under https://creativecommons.org/[Creative Commons] license.
+
+Find our _Agile Software Architecture and Techniques_ and _Programming Concepts and Paradigms_ under link:../../../ideas/learnings/lectures/[Lectures].
+
+We support Swiss initiatives such as https://www.nationalerzukunftstag.ch/informationen-fuer-eltern/englisch[Future Day] to nurture
+https://en.wikipedia.org/wiki/Science,_technology,_engineering,_and_mathematics[STEM] interests of kids and young adults.
+
+An article of last year future day can be found under https://hub.hslu.ch/informatik/ava-und-talena-11-informatik-ist-cool-zukunftstag/[HSLU Future Day].
+
+Our collaborators systematically use climate-friendly transportation.
+Most of our travels are using domestic rail.
+Home office is encouraged to reduce commute traffic.
+
+Office emissions are minimal.
+We acquire notebooks to minimise power consumption.
+Our company does not possess printers, faxes, or landlines.
+
+All our documents and correspondance are digital.
+
+=== Website
+
+Our main website with this blog is a static website.
+We use tools to generate new content and deploy the result.
+All texts are stored in a git repository.
 
 === Lessons Learnt
 
@@ -60,7 +88,7 @@ GitHub supports {ref-asciidoc}, has a reasonable CI offering, and their _CNAME_ 
 
 ==== Internet Platforms
 
-Take ownership of the URL for all the cites you own.
+Take ownership of the URL for all the sites you own.
 Your blogs and documentation often link to articles or pages on various organization websites.
 Use your organization domain for all internal links to simplify migration of your sites to another provider
 footnote:[We decided to move our static websites from BitBucket to GitHub.

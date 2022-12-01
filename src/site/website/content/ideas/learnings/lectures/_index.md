@@ -5,7 +5,7 @@ weight: 40
 description: Lectures and associated literature
 ---
 
-## Software Architecture and Techniques Lectures
+## Agile Software Architecture and Techniques Lectures
 
 [Software Architecture](https://en.wikipedia.org/wiki/Software_architecture) and Techniques *SWAT* discuss approaches, methods and tools taught in the context
 of agile development approaches. It reflects current trends where more than 80 % of new software development is performed using

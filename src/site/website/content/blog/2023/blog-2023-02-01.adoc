@@ -55,6 +55,9 @@ The areas are similar to the ones I check when receiving a CV <<evaluate-technic
 
 === Write-down Your Findings and Recommendations
 
+You should perform a technical interview with a colleague.
+Compare your findings to diminish biases and misunderstandings.
+
 === Have an onboarding Program
 
 - Avoid checklist, avoid predeclared correct answers

@@ -54,6 +54,14 @@ The Agile counselor works with the leadership team, which requires business mast
 A team coach preferably supports the team by offering technical support and coach on the process and Agile mindset.
 Being part of the coaches’ team, he/she will actively participate in the transformation as well.
 
+=== Shall a Coach Be Saavy in Technology?
+
+It certainly helps to understand the technology your teams are using.
+I assume it is quite difficult to be a soccer coach if you have no clue what soccer is and how it is played.
+
+Realize that smaller companies can seldom afford an agile coach and a technology coach for one team.
+So it is really helpful to at least be able to discuss technical aspects with your coachees.
+
 [bibliography]
 === Links
 
