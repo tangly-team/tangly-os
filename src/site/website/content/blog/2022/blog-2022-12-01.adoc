@@ -356,12 +356,13 @@ Just use the provided tools and approaches to professionally develop and operate
 
 - [[[dora-metrics, 1]]] https://devops.com/how-dora-metrics-can-measure-and-improve-performance/[How DORA metrics can measure and improve performance]
 - [[[dora-google, 2]]] https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance[Using The Four Keys to Measure Your Devops Performance]
-- [[[devops-sme, 3]]] link:../../blog/2021/devops-for-small-applications/[DevOps for Small Applications]
+- [[[devops-sme, 3]]] link:../../2021/devops-for-small-applications/[DevOps for Small Applications]
 Marcel Baumann. 2021
 - [[[code-as-crime-scene, 4]]] link:../../2019/code-scene-as-crime-scene/[Code Scene as a Crime Scene]
 Marcel Baumann, 2019
 - [[[detecting-agile-bullshit, 5]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit]
 Marcel Baumann, 2019
+- [[[introducing-devops-ideas,6]]] link:../../2022/introducing-devops-ideas/[Introducing DevOps Ideas]
 
 === References
 

@@ -137,7 +137,7 @@ defaultContentLanguage = "en"
 title = "tangly Open Source Components"
 
 [outputs]
-section = ["HTML", "RSS", "print"]
+section = ["HTML", "RSS"]
 
 [params.print]
 disable_toc = true
