@@ -39,8 +39,9 @@ Install and support applications with an internal team.
 . Delegate installation and support to the IT department of the technical university.
 Success is dependent on the affinity of the department to digital tools.
 Experience shows user satisfaction is low due to lack of technical expertise in the support group.
-. Delegate installation and support to a specialized academic support institution.
-Switch provider or the computing center of Ticino are examples in Switzerland.
+. Delegate the installation.
+Support to a specialized academic support institution.
+Switch the provider or the computing center of Ticino are examples in Switzerland.
 . Use a commercial solution provided by a hyperscaler or tool provider.
 GitHub, GitLab, Atlassian have academic programs to support universities.
 ====
@@ -84,7 +85,7 @@ An IT director can help the manager of an SME to respond to many problems, such 
 * Are IT purchases carried out optimally?
 * How to choose an IT supplier or service provider?
 * Can multiple encodings of the same information be avoided?
-* Is an integrated management software necessary?
+* Is integrated management software necessary?
 * How to choose a suitable tool?
 * Is the security of installations and computer access guaranteed?
 * Is a backup procedure in place?
@@ -99,7 +100,7 @@ Did you test the restore process?
 The ideal candidate shall have experience and training in:
 
 - Technical support of a virtual computing solution.
-The candidate shall have at least a bachelor degree in computer science or related fields.
+The candidate shall have at least a bachelor's degree in computer science or related fields.
 - Corporate governance and digital solutions legal aspects.
 - Financial understanding to select solutions and drafting the contracts.
 - Team leadership to nurture a competent small group of specialists.

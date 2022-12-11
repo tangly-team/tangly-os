@@ -18,7 +18,7 @@ You enjoy our long conversations with the enterprise data architect and find out
 
 How do you relate with external systems and communicate with other companies?
 
-How do you define internal identifiers which grow with application success?
+How do you define internal identifiers, which grow with application success?
 
 How can you bridge the customer world with your software solution?
 
@@ -125,7 +125,7 @@ An identifier is immutable and should be numerical for performance reasons.
 . Names are human-readable and improve the legibility and usability of the user interface and reports.
 
 External identifiers can be tricky.
-In Switzerland, we had an old social security number which is still referenced in a lot of legal systems.
+In Switzerland, we had an old social security number, which is still referenced in a lot of legal systems.
 For example, it is still part of your tax salary yearly form.
 
 [NOTE]
@@ -133,7 +133,7 @@ For example, it is still part of your tax salary yearly form.
 Identifiers are a key element to model entities using the domain driven design _DDD_ approach.
 ====
 
-We have a new social security number which is used in social insurance workflows.
+We have a new social security number, which is used in social insurance workflows.
 _The same number is also used in medical insurance workflows._
 
 We also have a federal identity card number, a federal passport number, a federal driver license number, additional medical card insurance numbers, a state tax personal identification number, and more external identifiers.

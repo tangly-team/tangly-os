@@ -10,6 +10,33 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
+// Blockquotes
+
+$blockquote-cite-font-color: rgba(0,0,0,0.6);
+
+// Tables
+
+ $table-bg: #fff;
+ $table-even-row-bg: #f9f9f9;
+
+ $table-border-style: solid;
+ $table-border-size: 1px;
+ $table-border-color: #ddd;
+
+ $table-head-bg: #f5f5f5;
+ $table-head-font-size: 14px;
+ $table-head-font-color: #222;
+ $table-head-font-weight: bold;
+ $table-head-padding: 8px 10px 10px;
+
+ $table-row-padding: 9px 10px;
+ $table-row-font-size: 14px;
+ $table-row-font-color: #222;
+ $table-line-height: 18px;
+
+ $table-display: table-cell;
+ $table-margin-bottom: 20px;
+
 .left {
     float: left !important;
 }
@@ -71,7 +98,7 @@
 }
 
 admonitionblock td.icon [class^="fa icon-"] {
-    font-size: 2.5em !important;
+    font-size: 2.5em;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     cursor: default;
 }
@@ -114,7 +141,7 @@ admonitionblock td.icon [class^="fa icon-"] {
     }
 
     blockquote, p {
-        color: #5d5d5d;
+        color: $blockquote-cite-font-color;
         line-height: 1.5;
         word-spacing: 0.1em;
         letter-spacing: 0;
@@ -290,4 +317,32 @@ td.hdlist1 {
 
 td.hdlist2 {
     word-wrap: anywhere;
+}
+
+table.tableblock, th.tableblock, td.tableblock {
+    border: 0 solid $table-border-color;
+}
+
+table.grid-all > * > tr > * {
+    border-width: $table-border-size;
+}
+
+table.grid-cols > * > tr > * {
+    border-width: 0 $table-border-size;
+}
+
+table.grid-rows > * > tr > * {
+    border-width: $table-border-size 0;
+}
+
+table.frame-all {
+    border-width: $table-border-size;
+}
+
+table.frame-ends {
+    border-width: $table-border-size 0;
+}
+
+table.frame-sides {
+    border-width: 0 $table-border-size;
 }

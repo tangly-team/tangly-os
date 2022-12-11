@@ -145,7 +145,7 @@ image::2021-08-03-pmi-talent-triangle.png[width=420,height=360,role=left]
 
 An interesting development is the addition of tailored project management trainings emphasizing agile approaches.
 The biggest organization https://www.pmi.org[PMI] has a whole set of agile certifications based on
-https://www.pmi.org/certifications/agile-certifications[Disciplined AgileDesign] _DAD_.
+https://www.pmi.org/certifications/agile-certifications[Disciplined Agile Design] _DAD_.
 
 I expect the emphasis on agile approaches to markantly increase in the next years.
 

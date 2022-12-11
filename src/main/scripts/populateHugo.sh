@@ -33,7 +33,7 @@ function copy_domain_module() {
   cp -R $prjDir/net.tangly.erp.$1/build/docs/javadoc/* $siteDir/static/docs/domains/$1/api-$1
 }
 
-# copy whole website to static site structure
+# copy whole website to static site structure and tailoring of docsy template
 cp -R $websiteDir/assets $siteDir/
 cp -R $websiteDir/content $siteDir/
 cp -R $websiteDir/layouts $siteDir/

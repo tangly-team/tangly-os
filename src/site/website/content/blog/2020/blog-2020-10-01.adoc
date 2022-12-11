@@ -123,7 +123,7 @@ Below the configuration of asciidoctor in the _config.toml_ file.
 <1> Select https://rouge-ruby.github.io/docs/[rouge] as source highlighter.
 You should not add it to the extensions because since {ref-asciidoctor} version 2.0 rouge is included.
 <2> Define the style used to highlight source code.
-<3> Configure rouge to generate all formatting data into the generated html file, avoiding any css file configuration.
+<3> Configure rouge to generate all formatting data into the generated HTML file, avoiding any CSS file configuration.
 <4> Icons provide better looking icons for various {ref-asciidoc}} constructs.
 <5> Define document attributes which are accessible to all processed documents (DRY concepts for the whole site).
 
@@ -158,7 +158,7 @@ cp -R ./layouts/docs ./layouts/ideas
 ===== Change layouts
 
 We had to change the partial _footer.html_ to display a better looking copyright clause.
-The original version has hard coded text not really compatible with the commons creative license we are using.
+The original version has hard coded text not really compatible with the creative commons license we are using.
 The layout is updated by overwriting the involved partial file.
 
 [source,shell]

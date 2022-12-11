@@ -8,7 +8,7 @@ linkTitle: "Components"
 	<a class="btn btn-lg btn-primary mr-3 mb-4" href="{{< relref "/about" >}}">
 		Learn More <i class="fas fa-arrow-alt-circle-right ml-2"></i>
 	</a>
-	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="https://bitbucket.org/tangly-team/tangly-os/">
+	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="https://github.com/tangly-team/tangly-os">
 		Download <i class="fab fa-github ml-2 "></i>
 	</a>
 	<p class="lead mt-5">Open Source Components for Technical and Business Applications</p>

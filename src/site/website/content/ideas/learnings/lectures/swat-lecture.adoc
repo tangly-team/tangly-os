@@ -1,0 +1,128 @@
+---
+title: "SWAT Lectures"
+date: 2019-05-01
+weight: 40
+---
+
+== SWAT Lectures
+
+=== Introduction
+
+The software architecture and techniques _SWAT_ lecture conveys the basics of systematic agile design of a software architecture.
+The approach is adequate for the problem of (agile architectural thinking) as well as methods of agile quality assurance.
+Students apply the learnt principles of their semester or private software projects.
+
+It is particularly suitable for students who are working on a larger software project at the same time.
+The course with 3 https://en.wikipedia.org/wiki/European_Credit_Transfer_and_Accumulation_System[ECTS] was taught at Swiss technical universities during this and the last decade.
+The themes are regularly updated to reflect actual trends and technical possibilities.
+
+Slides and reference literature are in English and published under link:../learnings/lectures/[Slides and Literature].
+
+=== Description
+
+stem:[2/3] of the lecture is the presentation of new concepts.
+stem:[1/3] of the lecture is used to discuss the literature and support the students in the application of the concepts of their software project.
+
+The reference books are cite:[clean-architecture,building-evolutionary-architectures,refactoring].
+
+Recommended books are cite:[clean-code,clean-coder,clean-architecture,clean-agile,clean-craftsmanship].
+
+[cols="2,3,5",frame=all,grid=all]
+|====
+|Lecture|Content|Details
+
+|Lecture 1
+|Why agile architecture and design?
+a| - Introduction and administrative information
+- Why is software architecture and design a needed discipline?
+- Architecture Styles
+- OOP Anti-Patterns
+- _Setup environment for exercises and portfolio_
+
+|Lecture 2
+|Evolution of Software Architecture and Design over the last Decades
+a|- Evolution of software architecture
+- UML and TOGAF
+- Agile approaches
+
+|Lecture 3
+|What is Agile Architecture?
+a|- Agile architecture principles
+- Developer vs Architects
+- Domain Driven Design _DDD_
+
+|Lecture 4
+|Agile Approaches with Scrum, eXtreme Programming, LeSS
+a|- Architect roles
+- Technology stacks
+- DevOps impact with continuous integration _CI_, continuous delivery _CD_, and continuous deployment _CD_.
+
+|Lecture 5
+|Refactoring
+a|- Why refactor?
+- How to refactor?
+- Test driven design _TDD_, acceptance test driven development _ATDD_
+- Clean code and clean architecture
+
+|Lecture 6
+|Errors, Vulnerabilities, and Smells in Source Code
+a|-Definition of smells and how to remove smells.
+- Refactoring process with TDD.
+- Evolve architecture to newer versions of programming languages or more modular architecture.
+
+- Tools to detect non-quality
+- Component quality
+
+|Lecture 7
+|Architecture of Components and Subsystems
+a|- Patterns, idioms, paradigms
+- SOLID principles
+- Onion architecture
+- Bounded domains
+
+|Lecture 8
+|Verify functional features
+a|- Functional and non-functional requirements
+- Metrics and Automation
+
+|Lecture 9
+|Validate Quality attributes of Software Architecture
+a|- Non-functional requirement _NFR_ measurement
+- Fitness functions
+- DevOps and DORA metrics
+- Compliance and corporate governance
+
+|Lecture 10
+|Architecture Documentation
+a|- Why document?
+- Living documentation, architecture document record _ADR_
+- Documentation as a managed source published in a static website
+
+
+|Lecture 11
+|Software Architectural Trends (1/2)
+a|- Functional Programming
+
+
+|Lecture 12
+|Software Architectural Trends (2/2)
+a|- Security
+- Monitoring and Auditing
+- Realtime Data Warehouse _DWH_
+
+|Lecture 13
+|Domain-Driven Design Workshop
+a| - Domain-Driven Development, ubiquitous language
+- Bounded domains, entities, aggregates
+- Event Storming
+- Connection to modular monoliths and microservices based architecture
+- Agile and DevOps affiliation
+
+|Lecture 14
+|Team and Technical Excellence for Architects
+a|- Daily work of architects in agile environment
+|====
+
+References
+
+bibliography:[]

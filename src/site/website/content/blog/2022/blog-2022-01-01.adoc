@@ -23,7 +23,8 @@ Unaddressed technical debt increases software entropy.
 
 Spiraling out of control entropy is the death of countless software solutions over the last century.
 
-Similarly to monetary debt, technical debt is not necessarily a bad thing, and sometimes as e.g., a proof-of-concept is required to move projects forward.
+Similarly to monetary debt, technical debt is not necessarily a bad thing.
+Sometimes, as e.g., a proof-of-concept is required to move projects forward.
 
 Some experts claim that the _technical debt_ metaphor tends to minimize the ramifications, resulting in insufficient prioritization of the necessary work to correct it.
 
@@ -53,7 +54,7 @@ The plugin also supports the central declaration of dependencies feature in Grad
 to update your library and remove technologically obsolesce.
 * Update your Java version when the next one is coming out.
 You have access to better libraries, interfaces, and runtime engines.
-Know security flaws are corrected and some bugs were removed.
+Know security flaws are corrected, and some bugs were removed.
 
 === Should You Reimburse?
 

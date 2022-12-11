@@ -36,9 +36,9 @@ For example, you can associate geographical coordinates – GIS – to pictures,
 
 A tag has three parts:
 
-* an _optional namespace_ to classify the tag in the overall ontology,
-* a _mandatory name_ to uniquely identify the tag in the context of its optional namespace,
-* an _optional value_ providing details to the tag
+* An _optional namespace_ to classify the tag in the overall ontology.
+* A _mandatory name_ to uniquely identify the tag in the context of its optional namespace.
+* An _optional value_ providing details to the tag.
 
 For example, we could define a tag such as _geo:longitude=50.167958_ to provide the meta information of longitude to an entity.
 This tag has a namespace _geo_, a name _longitude_ and a double value _50.167958_.
@@ -51,7 +51,7 @@ public record Tag(String namespace, @NotNull String name, String value) {}
 ----
 
 You should strongly consider the introduction of tag types to constrain the possible values of a specific tag.
-For example, you can define that the namespace geo contains only the tags longitude and latitude.
+For example, you can define that the namespace geo contains only the longitude and latitude tags.
 Both these tags have mandatory values of type double.
 Once your design supports tag types, you can add generic validation rules in the user interface and in business logic for all existing tags.
 

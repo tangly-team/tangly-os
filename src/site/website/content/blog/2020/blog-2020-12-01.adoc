@@ -19,7 +19,7 @@ Their bug list may contain more than a thousand items.
 All are neatly documented with screenshots, ways to reproduce the problem and a severity and impact classification.
 In the worst case, a specialist has worked hard and estimated the effort to correct each of these bugs.
 
-A change management board meets every few weeks and decides which bugs have a higher priority and should urgently be fixed.
+A change management board meets every few weeks and decides, which bugs have a higher priority and should urgently be fixed.
 It means an angry customer called someone at C level.
 Now his request must be handled.
 Some of these bugs were discovered years ago.
@@ -82,8 +82,8 @@ ____
 
 Follow these steps to ensure this system works.
 
-* The bugs that the team decides to fix must be prioritized over regular work and must get fixed *now*.
-In Scrum the https://scrumguides.org/scrum-guide.html#product-backlog[product backlog item] containing the bug has the highest priority.
+* The bugs that the team decide to fix must be prioritized over regular work and must get fixed *now*.
+In Scrum, the https://scrumguides.org/scrum-guide.html#product-backlog[product backlog item] containing the bug has the highest priority.
 * In the beginning, there will be more bugs to work through, as some bugs that were deleted will be reported again.
 * As the team shifts its focus to improved quality, there will be fewer of them.
 This is truly a binary system with no wiggle room.

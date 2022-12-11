@@ -28,6 +28,8 @@ Expect a good candidate will also interview you to find out more about your orga
 It is almost like a dating meeting.
 Both parties shall have an opportunity to find out if we are a match.
 
+Google provides hints how to work with creative software collaborators cite:[work-rules].
+
 === Perform the Interview
 
 I want to find out how the candidate performs tasks and interacts with his team.
@@ -44,9 +46,9 @@ What do you think about design and architecture approaches cite:[design-patterns
 What are your approaches with existing and legacy solutions cite:[working-effectively-with-legacy-code,refactoring]
 Agile approaches::
 What do you think about agile approaches cite:[clean-agile]
-Teamwork, softskills, teaching and mentoring::
+Teamwork, soft skills, teaching and mentoring::
 How do you teach and mentor team members? cite:[ing-technical-leader,skilled-facilitator,humble-inquiry]
-Why do he wants to work in our company?::
+Why does he want to work in our company?::
 Please elaborate.
 Why is she a software engineer?::
 Please tell us your story.
@@ -60,16 +62,16 @@ Compare your findings to diminish biases and misunderstandings.
 
 === Have an onboarding Program
 
-- Avoid checklist, avoid predeclared correct answers
-- Aim to uncover reasons why you should hire a candidate
-- Do not say: we want developers who can exchanged
-- You want to hire good people that can learn and improve
-- Your organization should promote that people can learn and evolve
-- Be clear what you are looking for: make team better, bring new things, what do they value in code and architecture
-- How do they solve problems (architecture, design, process, code, bug)
-- Open ended questions, to start a discussion
-- Make criteria clear, if a criteria is not reached, inform them that you expect to reach the criteria
-- An interviewee should also interview the interviewers
+- Avoid a checklist, avoid predeclared correct answers.
+- Aim to uncover reasons why you should hire a candidate.
+- Do not say: we want developers who can be exchanged.
+- You want to hire good people that can learn and improve.
+- Your organization should promote that people can learn and evolve.
+- Be clear what you are looking for: make team better, bring new things, what do they value in code and architecture.
+- How do they solve their problems (architecture, design, process, code, bug).
+- Open-ended questions, to start a discussion.
+- Make criteria clear, if a criteria is not reached, inform them that you expect to reach the criteria.
+- An interviewee should also interview the interviewers.
 
 -> complement with pair programming, pair design during probe time
 
@@ -78,7 +80,8 @@ Compare your findings to diminish biases and misunderstandings.
 [bibliography]
 === Links
 
-[[[evaluate-technical-cvs, 1]]] link:../../2022/evaluate-technical-cvs/[Evaluate Technical CVs]
+- [[[evaluate-technical-cvs, 1]]] link:../../2022/evaluate-technical-cvs/[Evaluate Technical CVs]
+- [[[google-rework, 2]]] link:https://rework.withgoogle.com/[Rework with Google]
 
 === References
 

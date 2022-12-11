@@ -80,9 +80,9 @@ Create a document that records potential companies, their attributes, who you ar
 Ask Tough Questions::
 Learn what challenges they have faced with previous clients and what they did to overcome them.
 If there is something you are particularly worried about, ask about their experience dealing with your prospective challenges to helping their other clients with similar solutions in the past<<detecting-agile-bullshit>>.
-Ask about both their best clients and the ones that did not stick around. +
+Ask about their best clients, and the ones that did not stick around. +
 +
-Be sure they can clearly outline what you can expect from working with their team, how you will measure progress, and how they help define success. +
+Be sure they have clearly outlined what you can expect from working with their team, how you will measure progress, and how they help define success. +
 +
 Be wary of any potential development partner that struggles to answer these questions or does not provide stories of failure or follow them up with concrete ways they’ve adapted to ensure future success for their clients.
 
@@ -140,7 +140,8 @@ Governance and Methods::
 * How do you upgrade an application to a newer version of the technology stack or newer libraries?
 * Which approaches do you use to continuously improve?
 Build Partnership::
-* How would you like to initiate the partnership between your company and ours?
+* What is your understanding of a partnership?
+* How would you like to start the partnership between your company and ours?
 
 === Lessons Learnt
 
@@ -152,7 +153,7 @@ Challenge yourself and your partner to improve the quality and efficiency of del
 
 All involved companies and people shall harvest the fruits of success.
 
-Agile approaches are the approach for developing software products in the twenty-first century.
+Agile approaches are the process for developing software products in the twenty-first century.
 Your organizations shall be proficient with agile, lean approaches.
 These frameworks are the most successful approaches for software product development.
 
