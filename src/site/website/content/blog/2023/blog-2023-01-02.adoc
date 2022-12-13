@@ -20,6 +20,7 @@ He sometimes has the shiny title of https://en.wikipedia.org/wiki/Chief_informat
 He proposes and implements the IT strategy of the company.
 
 He intervenes at different levels in the management and optimization of the company's information system.
+
 This encompasses hardware and software infrastructures, information architecture, business tools, dedicated internal or external human resources, old technology.
 
 The size of small and medium companies does not justify a full-time role.
@@ -36,14 +37,15 @@ The computer department of a technical university has regular variants to deploy
 
 . Buy own hardware.
 Install and support applications with an internal team.
+The challenge is to convince team members to stay.
 . Delegate installation and support to the IT department of the technical university.
 Success is dependent on the affinity of the department to digital tools.
 Experience shows user satisfaction is low due to lack of technical expertise in the support group.
 . Delegate the installation.
-Support to a specialized academic support institution.
-Switch the provider or the computing center of Ticino are examples in Switzerland.
+Use a specialized academic support institution.
+Examples in Switzerland are https://www.switch.ch/[Switch] or the https://www.cscs.ch/[computing center of Ticino].
 . Use a commercial solution provided by a hyperscaler or tool provider.
-GitHub, GitLab, Atlassian have academic programs to support universities.
+https://github.com/[Microsoft GitHub], https://about.gitlab.com/[GitLab], https://bitbucket.org/[Atlassian BitBucket] have academic programs to support universities.
 ====
 
 === Areas of Works

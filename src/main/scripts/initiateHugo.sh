@@ -25,7 +25,7 @@ cd $siteDir
 
 # download docsy theme and the submodules they depend on using npm
 cd themes
-git clone --branch v0.5.1 https://github.com/google/docsy.git
+git clone --branch v0.6.0 https://github.com/google/docsy.git
 cd docsy
 npm install
 

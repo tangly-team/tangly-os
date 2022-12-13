@@ -30,18 +30,20 @@ All import and export operations should be audited.
 An import happens each time the system reads data from an external system.
 An export happens each time the system sends data to an external system.
 
-All imported
-
 === Java Conventions
 
 ==== Modern Java Constructs
 
 Use modern Java constructs in our daily coding
 
-* Prefer a *record* over a class abstraction to promote immutable objects.
+* Prefer a _record_ over a class abstraction to promote immutable objects.
 * Prefer stream approach over explicit control statements to promote functional programming.
+* Avoid returning a null value. Return either an optional or an empty collection.
+* Return immutable collections.
+* Parameters are per default non-null. Use the _@Nullable_ annotation to mark nullable parameters.
 * Promote modules for information hiding and reducing coupling between components.
-* Experiment with var construct to find out if code is more legible.
+* Use var construct to have more legible code
+footnote:[Upon using the _var_ cosntruct for a few years, we are convinced the resulting code is more legible and compact.].
 
 ==== _String toString()_ Method
 

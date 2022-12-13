@@ -123,9 +123,9 @@ How is the process of deploying a new version?
 Software Development::
 ** Where are the team members located?
 Are they collocated, in the same area, in the same timezone, distributed over multiple timezones?
-* Which training and certification do they have in the technical stack, programming languages and used tools?
-* Which training and certification do they have in agile and Scrum approaches <<scrum-master>>, <<product-owner>>, <<developer>>?
-* Which training and certification do the senior developers and architects have to perform their work?
+* Which training or certification do they have in the technical stack, programming languages and used tools?
+* Which training or certification do they have in agile and Scrum approaches <<scrum-master>>, <<product-owner>>, <<developer>>?
+* Which training or certification do the senior developers and architects have to perform their work?
 * Which languages are the team members proficient in?
 * Which approaches are used for source code management?
 * Where are the source artifacts stored?
