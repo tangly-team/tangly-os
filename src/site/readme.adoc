@@ -1,14 +1,23 @@
-== Introduction
+== Docsy Theme for Hugo
 
 The _docsy_ theme was customized to support specific needs of the tangly OS documentation static website.
 
-== Tips
+=== Tips
 
 Each section has a configuration in the front matter in the index file. The type of the section is specified to allow Hugo to retrieve the corresponding templates.
 
 Use https://linkchecker.github.io/linkchecker/[Link Checker] to validate all links on the web site.
 
-== Header and Footer
+How to kill the hugo process hanging in a port:
+
+[source, bash]
+----
+ kill -9 $(lsof -t -i:1313)
+----
+
+=== Customisation
+
+==== Header and Footer
 
 The header template was adapted to support AsciiMath typesetting in the browser.
 
@@ -18,7 +27,7 @@ The open source copyright of our site is not well displayed in the standard foot
 * layouts/partials/header.html
 * layouts/partials/footer.html
 
-== Attachments
+==== Attachments
 
 For the attachment feature we added:
 
@@ -26,14 +35,14 @@ For the attachment feature we added:
 * assets/scss/main.scss _added import of the shortcodes.scss styling
 * layouts/shortcodes/attachments.html
 
-== Comments
+==== Comments
 
 For the comment feature we added:
 
 * layouts/blog/content.html _added utterances code for comments_
 * layouts/partials/comments-utterances.html _partial for comment template_
 
-== Asciidoc Stylesheet
+==== Asciidoc Stylesheet
 
 Exploration was started to improve the styling of https://asciidoc.org[asciidoc] documents:
 
