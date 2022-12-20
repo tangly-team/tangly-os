@@ -13,6 +13,7 @@
 rootProject.name = 'tangly'
 
 include 'net.tangly.bdd'
+include 'net.tangly.bib'
 include 'net.tangly.commons'
 include 'net.tangly.core'
 include 'net.tangly.dev'
@@ -33,3 +34,4 @@ include 'net.tangly.erp.ui'
 include 'net.tangly.erp-integration'
 
 include 'test-results'
+include 'net.tangly.bib'

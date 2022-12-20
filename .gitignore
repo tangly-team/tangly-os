@@ -33,3 +33,6 @@ hs_err_pid*
 /src/main/resources/references.bib.bak
 /src/main/resources/references.bib.sav.tmp
 /net.tangly.erp.ui/.pnpmfile.cjs
+/net.tangly.erp.ui/vite.config.ts
+/net.tangly.erp.ui/vite.generated.ts
+/storage/
