@@ -135,7 +135,8 @@ The book is well-written and covers all required topics.
 Be a professional knowledge worker and support your organization on the agile path <<detecting-agile-bullshit>>.
 
 A reading list can be found under
-https://www.scrum.org/resources/suggested-reading-professional-scrum-master[Suggested Reading Professional Scrum Master].
+https://www.scrum.org/resources/suggested-reading-professional-scrum-master[Suggested Reading Professional Scrum Master]. Seminal cited books are
+cite:[scrum-managing-for-results,scrum-pocket-guide-3rd].
 
 I published a list of seminal works for interested Scrum masters under link:../../../ideas/learnings/books/[Books].
 
@@ -190,3 +191,7 @@ Marcel Baumann. 2021
 Marcel Baumann. 2019
 - [[[scrum-guide, 9]]] https://scrumguides.org/scrum-guide.html[Scrum Guide]
 Jeff Sutherland, Ken Schwaber. 2020
+
+=== References
+
+bibliography:[]

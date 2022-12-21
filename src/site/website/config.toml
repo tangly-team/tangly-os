@@ -131,6 +131,8 @@ ref-sociocracy = "https://sociocracy30.org/[Sociocracy]"
 ref-tangly = "https://www.tangly.net/[tangly]"
 ref-utterances = "https://utteranc.es/[utteranc.es]"
 ref-xp = "http://www.extremeprogramming.org/[eXtreme Programming]"
+var-current-ver = "0.2.7"
+var-current-release-date = "2022-12-31"
 
 languageCode = "en-us"
 defaultContentLanguage = "en"

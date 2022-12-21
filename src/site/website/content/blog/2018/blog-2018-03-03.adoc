@@ -17,7 +17,7 @@ Why do we define metrics and KPI?
 First, we want to find out how good the build-in quality of our software artifacts is.
 Second, we want to improve the build-in quality through experiments and use the metrics to judge the success of these experiments.
 
-And the Key Performance Indicators - KPI - provide plausibility checks by qualifying the intrinsic quality of software artifacts against quantifiable strategic objectives.
+And the Key Performance Indicators _KPI_ provide plausibility checks by qualifying the intrinsic quality of software artifacts against quantifiable strategic objectives.
 
 Measurements shall be cheap to gather and as much as possible generated automatically through the tooling landscape.
 
@@ -58,7 +58,7 @@ For example, the “best of breed” JIRA tool has build-in reports for all the 
 
 === Technical quality
 
-A high quality software artifact has no code smell issues, no compiler warnings, always compile, and all tests are successfully processed.
+A high-quality software artifact has no code smell issues, no compiler warnings, always compile, and all tests are successfully processed.
 
 * Code quality
 ** Method length distribution,
@@ -66,8 +66,8 @@ A high quality software artifact has no code smell issues, no compiler warnings,
 ** Cyclomatic complexity distribution,
 ** Code Smells,
 * Product quality
-** continuous integration successful build trends,
-** test coverage trends for unit tests, integration tests and -ility tests. This metric implies the development team uses unit testing, TDD, ATDD, and automatic -ility testing.
+** Continuous integration successful build trends,
+** Test coverage trends for unit tests, integration tests and -ility tests. This metric implies the development team uses unit testing, TDD, ATDD, and automatic -ility testing.
 * Architecture
 ** Separation of API and implementation - can only be inferred on modern technology stacks -,
 * Work techniques

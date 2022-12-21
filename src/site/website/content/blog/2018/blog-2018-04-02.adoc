@@ -23,11 +23,11 @@ All my experiences confirm these conditions are essential for success.
 
 === LeSS Criteria
 
-Use these criteria as a checklist to evaluate your current agile transformation
+Use these criteria as a checklist to evaluate your current agile transformation.
 
 * Educate everyone
 ** Train all involved collaborators extensively, train them multiple times.
-** let them apply the learnt to their daily activities.
+** Let them apply the learnt to their daily activities.
 ** Select an experienced coach understanding organization, team, and technical excellence.
 ** Plan for a long-term engagement of the coach.
  The journey will take years.

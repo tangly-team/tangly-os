@@ -23,7 +23,7 @@ Each time you check some code into your Git repository, all configured checks sh
 
 Liberated your team works adding functions and no more spend unaccounted hours in setting up infrastructure.
 
-This trend is propagating to other technology stack such as Python or C#, but less for PHP or Javascript/NodeJS worlds.
+This trend is propagating to other technology stacks such as Python or C#, but less for PHP or Javascript/NodeJS worlds.
 I still experience higher maturity in the Java toolchain.
 
 Below our current set of techniques and tools to multiply our results and bring earlier a product to your customers.
@@ -136,7 +136,7 @@ Gradle:: Is the new standard for building your artifacts.
 Jenkins:: Is the regular tool for a local build pipeline.
 
 If you have a choice, use cloud continuous integration for team activities.
-Decide if you prefer the cloud approach – e.g. with TravisCI or Bitbucket Pipelines – or Jenkins within Docker for your local integration activities.
+Decide if you prefer the cloud approach – e.g., with TravisCI or Bitbucket Pipelines – or Jenkins within Docker for your local integration activities.
 
 A smooth running CI pipeline is a boost for team morale and motivation.
 To know your application compiles and runs through all your automated tests anytime is such a good feeling.
@@ -181,13 +181,13 @@ IntelliJ IDEA::
 This IDE is the choice for refactoring, powerful context suggestions and efficient programming.
 If you use Eclipse or Netbeans just try a friendly refactoring competition with an IDEA convert.
 Git::
-Please stop using Subversion, CVS, TFS or other geriatric tools.
+Stop using Subversion, CVS, TFS or other geriatric tools.
 Agile development, efficient integration in delivery pipelines, and extensive refactoring require Git.
 Just migrate now to Git and leave dreaded message _Tree conflict detected, please solve manually_ behind you.
 
 These tools shall be used in the agile way.
 You do not have long-lived branches in your source code management tool.
-Either you have only short-lived local branches or better, you just work against trunk.
+Either you have only short-lived local branches or better, you just work against the trunk.
 Complex branching strategies are just waste for a lean practitioner.
 
 I decided to collect all these hints in the same long post.
