@@ -22,6 +22,8 @@ import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.select.Select;
+import com.vaadin.flow.component.tabs.Tab;
+import com.vaadin.flow.component.tabs.TabSheet;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import net.tangly.core.HasTags;
@@ -44,6 +46,10 @@ public final class VaadinUtils {
     public static final DecimalFormat FORMAT = new DecimalFormat("###,##0.00", new DecimalFormatSymbols(Locale.US));
 
     private VaadinUtils() {
+    }
+
+    public static void selectTabByName(@NotNull TabSheet tabSheet, @NotNull String name) {
+        tabSheet.getChildren().filter(o -> name.equals(((Tab)o).getLabel())).findAny().ifPresent(o -> tabSheet.setSelectedTab((Tab)o));
     }
 
     public static TextField createTextField(String label, String placeholder) {

@@ -25,7 +25,7 @@ import com.vaadin.flow.theme.material.Material;
 @CssImport("./styles/shared-styles.css")
 @CssImport(value = "./styles/override-overlay.css", themeFor = "vaadin-dialog-overlay")
 @CssImport(value = "./styles/override-negative.css", themeFor = "vaadin-grid")
-@JsModule("./prefers-color-scheme.js")
+@JsModule("./src/prefers-color-scheme.js")
 @Push
 public class AppShell implements AppShellConfigurator {
 }

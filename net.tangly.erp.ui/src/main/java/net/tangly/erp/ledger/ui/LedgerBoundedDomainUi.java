@@ -23,7 +23,6 @@ import net.tangly.ui.app.domain.DomainView;
 import net.tangly.ui.components.Crud;
 import org.jetbrains.annotations.NotNull;
 
-import javax.inject.Inject;
 import java.util.Objects;
 
 public class LedgerBoundedDomainUi implements BoundedDomainUi {
@@ -34,7 +33,6 @@ public class LedgerBoundedDomainUi implements BoundedDomainUi {
     private final DomainView domainView;
     private Component currentView;
 
-    @Inject
     public LedgerBoundedDomainUi(@NotNull LedgerBoundedDomain domain) {
         this.domain = domain;
         accountsView = new AccountsView(domain, Crud.Mode.EDITABLE);

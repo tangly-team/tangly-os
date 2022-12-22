@@ -22,8 +22,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
-import javax.inject.Inject;
-
 /**
  * Regular CRUD view on assignments abstraction. The grid and edition dialog wre optimized for usability.
  */
@@ -32,7 +30,6 @@ class AssignmentsView extends InternalEntitiesView<Assignment> {
     private static final Logger logger = LogManager.getLogger();
     private final transient ProductsBoundedDomain domain;
 
-    @Inject
     public AssignmentsView(@NotNull ProductsBoundedDomain domain, @NotNull Mode mode) {
         super(Assignment.class, mode, domain.realm().assignments(), domain.registry());
         this.domain = domain;

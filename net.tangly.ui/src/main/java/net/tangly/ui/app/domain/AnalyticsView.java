@@ -24,8 +24,7 @@ import com.storedobject.chart.Size;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.tabs.Tab;
-import net.tangly.ui.components.TabsComponent;
+import com.vaadin.flow.component.tabs.TabSheet;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -39,12 +38,12 @@ public abstract class AnalyticsView extends VerticalLayout {
     private static final Logger logger = LogManager.getLogger();
     private LocalDate from;
     private LocalDate to;
-    protected final TabsComponent tabs;
+    protected final TabSheet tabSheet;
 
     public AnalyticsView() {
         from = LocalDate.of(2015, 11, 1);
         to = LocalDate.of(LocalDate.now().getYear(), 12, 31);
-        tabs = new TabsComponent();
+        tabSheet = new TabSheet();
         DatePicker fromDate = new DatePicker("From Date");
         fromDate.setValue(from);
         fromDate.addValueChangeListener(e -> {
@@ -58,7 +57,7 @@ public abstract class AnalyticsView extends VerticalLayout {
             update();
         });
         setSizeFull();
-        add(new HorizontalLayout(fromDate, toDate), tabs);
+        add(new HorizontalLayout(fromDate, toDate), tabSheet);
     }
 
     public LocalDate from() {
@@ -85,7 +84,7 @@ public abstract class AnalyticsView extends VerticalLayout {
         chart.setSize("1200px", "600px");
         HorizontalLayout layout = new HorizontalLayout(chart);
         layout.setSizeFull();
-        tabs.add(new Tab(label), layout);
+        tabSheet.add(label, layout);
         return chart;
     }
 

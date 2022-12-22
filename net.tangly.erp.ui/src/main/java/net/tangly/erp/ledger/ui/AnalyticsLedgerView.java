@@ -50,7 +50,6 @@ public class AnalyticsLedgerView extends AnalyticsView {
         profitAndLossSoChart = createAndRegisterChart(ProfitAndLoss);
         financialSoChart = createAndRegisterChart("Assets");
         setSizeFull();
-        tabs.initialize(tabs.tabByName(ProfitAndLoss).orElseThrow());
     }
 
     @Override

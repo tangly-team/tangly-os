@@ -14,7 +14,6 @@ package net.tangly.erp.crm.ui;
 
 import com.storedobject.chart.*;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.data.provider.DataProvider;
 import net.tangly.erp.crm.domain.Contract;
 import net.tangly.erp.crm.domain.InteractionCode;
@@ -58,8 +57,7 @@ public class AnalyticsCrmView extends AnalyticsView {
         contractsSoChart = createAndRegisterChart(ContractsTurnover);
         funnelSoChart = createAndRegisterChart(Funnel);
         contractsGrid = contractsTable();
-        tabs.add(new Tab(SpentOnContracts), new VerticalLayout(contractsGrid));
-        tabs.initialize(tabs.tabByName(CustomersTurnover).orElseThrow());
+        tabSheet.add(SpentOnContracts, new VerticalLayout(contractsGrid));
     }
 
     @Override

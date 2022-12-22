@@ -126,7 +126,7 @@ public class Crud<T> extends VerticalLayout implements SelectedItemListener<T> {
         return mode;
     }
 
-    public void mode(Mode mode) {
+    public void mode(@NotNull Mode mode) {
         this.mode = mode;
     }
 

@@ -17,7 +17,6 @@ import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
-import com.vaadin.flow.router.RouterLink;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
@@ -25,7 +24,6 @@ import net.tangly.ui.app.domain.DomainView;
 import net.tangly.ui.components.Crud;
 import org.jetbrains.annotations.NotNull;
 
-import javax.inject.Inject;
 import java.util.Objects;
 
 public class CrmBoundedDomainUi implements BoundedDomainUi {
@@ -42,7 +40,6 @@ public class CrmBoundedDomainUi implements BoundedDomainUi {
     private final DomainView domainView;
     private Component currentView;
 
-    @Inject
     public CrmBoundedDomainUi(@NotNull CrmBoundedDomain crmDomain, @NotNull InvoicesBoundedDomain invoicesDomain) {
         this.domain = crmDomain;
         leadsView = new LeadsView(domain, Crud.Mode.EDITABLE);

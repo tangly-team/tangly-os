@@ -37,6 +37,7 @@ import net.tangly.erp.crm.ports.CrmEntities;
 import net.tangly.erp.crm.ports.CrmHdl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -131,31 +132,46 @@ public class Erp {
         ledgerBoundedDomain = ofLedgerDomain();
     }
 
+    private static Subject createAdminSubject() {
+        var subject = new Subject();
+        ReflectionUtilities.set(subject, HasOid.OID, 900);
+        subject.id("aeon");
+        subject.newPassword("aeon");
+        subject.from(LocalDate.of(2000, Month.JANUARY, 1));
+        return subject;
+    }
+
     private InvoicesBoundedDomain ofInvoicesDomain() {
-        var realm = (databases() == null) ? new InvoicesEntities() : new InvoicesEntities(Path.of(databases(), InvoicesBoundedDomain.DOMAIN));
-        return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesHdl(realm, Path.of(imports(), InvoicesBoundedDomain.DOMAIN)),
-            new InvoicesAdapter(realm, Path.of(reports(), InvoicesBoundedDomain.DOMAIN)), registry);
+        if (isEnabled(InvoicesBoundedDomain.DOMAIN)) {
+            return null;
+        } else {
+            var realm = (databases() == null) ? new InvoicesEntities() : new InvoicesEntities(Path.of(databases(), InvoicesBoundedDomain.DOMAIN));
+            return new InvoicesBoundedDomain(realm, new InvoicesBusinessLogic(realm), new InvoicesHdl(realm, Path.of(imports(), InvoicesBoundedDomain.DOMAIN)),
+                new InvoicesAdapter(realm, Path.of(reports(), InvoicesBoundedDomain.DOMAIN)), registry);
+        }
     }
 
     private CrmBoundedDomain ofCrmDomain() {
-        var realm = (databases() == null) ? new CrmEntities() : new CrmEntities(Path.of(databases(), CrmBoundedDomain.DOMAIN));
-        if (realm.subjects().items().isEmpty()) {
-            realm.subjects().update(createAdminSubject());
+        if (isEnabled(CrmBoundedDomain.DOMAIN)) {
+            return null;
+        } else {
+            var realm = (databases() == null) ? new CrmEntities() : new CrmEntities(Path.of(databases(), CrmBoundedDomain.DOMAIN));
+            if (realm.subjects().items().isEmpty()) {
+                realm.subjects().update(createAdminSubject());
+            }
+            return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmHdl(realm, Path.of(imports(), CrmBoundedDomain.DOMAIN)), null, registry);
         }
-        return new CrmBoundedDomain(realm, new CrmBusinessLogic(realm), new CrmHdl(realm, Path.of(imports(), CrmBoundedDomain.DOMAIN)), null, registry);
     }
 
     private ProductsBoundedDomain ofProductsDomain() {
-        var realm = (databases() == null) ? new ProductsEntities() : new ProductsEntities(Path.of(databases(), ProductsBoundedDomain.DOMAIN));
-        var logic = new ProductsBusinessLogic(realm);
-        return new ProductsBoundedDomain(realm, logic, new ProductsHdl(realm, Path.of(imports(), ProductsBoundedDomain.DOMAIN)),
-            new ProductsAdapter(logic, Path.of(reports(), ProductsBoundedDomain.DOMAIN)), registry);
-    }
-
-    private LedgerBoundedDomain ofLedgerDomain() {
-        var realm = (databases() == null) ? new LedgerEntities() : new LedgerEntities(Path.of(databases(), LedgerBoundedDomain.DOMAIN));
-        return new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), new LedgerHdl(realm, Path.of(imports(), LedgerBoundedDomain.DOMAIN)),
-            new LedgerAdapter(realm, Path.of(reports(), LedgerBoundedDomain.DOMAIN)), registry);
+        if (isEnabled(ProductsBoundedDomain.DOMAIN)) {
+            return null;
+        } else {
+            var realm = (databases() == null) ? new ProductsEntities() : new ProductsEntities(Path.of(databases(), ProductsBoundedDomain.DOMAIN));
+            var logic = new ProductsBusinessLogic(realm);
+            return new ProductsBoundedDomain(realm, logic, new ProductsHdl(realm, Path.of(imports(), ProductsBoundedDomain.DOMAIN)),
+                new ProductsAdapter(logic, Path.of(reports(), ProductsBoundedDomain.DOMAIN)), registry);
+        }
     }
 
     private void load() {
@@ -171,13 +187,18 @@ public class Erp {
         return (rootPersistenceFolder != null) && Files.exists(Paths.get(rootPersistenceFolder));
     }
 
-    private static Subject createAdminSubject() {
-        var subject = new Subject();
-        ReflectionUtilities.set(subject, HasOid.OID, 900);
-        subject.id("administrator");
-        subject.newPassword("aeon");
-        subject.from(LocalDate.of(2000, Month.JANUARY, 1));
-        return subject;
+    private LedgerBoundedDomain ofLedgerDomain() {
+        if (isEnabled(LedgerBoundedDomain.DOMAIN)) {
+            return null;
+        } else {
+            var realm = (databases() == null) ? new LedgerEntities() : new LedgerEntities(Path.of(databases(), LedgerBoundedDomain.DOMAIN));
+            return new LedgerBoundedDomain(realm, new LedgerBusinessLogic(realm), new LedgerHdl(realm, Path.of(imports(), LedgerBoundedDomain.DOMAIN)),
+                new LedgerAdapter(realm, Path.of(reports(), LedgerBoundedDomain.DOMAIN)), registry);
+        }
+    }
+
+    private boolean isEnabled(@NotNull String domain) {
+        return Boolean.valueOf(properties.getProperty(domain + ".enabled", "false"));
     }
 
     private String databases() {

@@ -18,7 +18,7 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.tabs.Tab;
+import com.vaadin.flow.component.tabs.TabSheet;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
@@ -42,7 +42,6 @@ import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.EntityField;
 import net.tangly.ui.components.InternalEntitiesView;
 import net.tangly.ui.components.One2ManyView;
-import net.tangly.ui.components.TabsComponent;
 import net.tangly.ui.components.TagsView;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
@@ -85,19 +84,19 @@ class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
         grid.addColumn(NaturalEntity::lastname).setKey("lastname").setHeader("Last Name").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(NaturalEntity::firstname).setKey("firstname").setHeader("First Name").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(new ComponentRenderer<>(o -> (o.gender() == GenderCode.male) ? new Icon(VaadinIcon.MALE) : new Icon(VaadinIcon.FEMALE)))
-            .setKey("gender").setHeader("Gender").setResizable( true).setResizable(true);
+            .setKey("gender").setHeader("Gender").setResizable(true).setResizable(true);
         grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::individualLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
         addAndExpand(filterCriteria(false, false, InternalEntitiesView::addEntityFilters), grid(), gridButtons());
     }
 
     @Override
-    protected void registerTabs(@NotNull TabsComponent tabs, @NotNull Mode mode, @NotNull NaturalEntity entity) {
-        tabs.add(new Tab("Overview"), createOverallView(mode, entity));
-        tabs.add(new Tab("Comments"), new CommentsView(mode, entity));
-        tabs.add(new Tab("Tags"), new TagsView(mode, entity, domain.registry()));
+    protected void registerTabs(@NotNull TabSheet tabSheet, @NotNull Mode mode, @NotNull NaturalEntity entity) {
+        tabSheet.add("Overview", createOverallView(mode, entity));
+        tabSheet.add("Comments", new CommentsView(mode, entity));
+        tabSheet.add("Tags", new TagsView(mode, entity, domain.registry()));
         One2ManyView<Employee> employees = new One2ManyView<>(Employee.class, mode, NaturalEntitiesView::defineOne2ManyEmployees,
             ProviderView.of(domain.realm().employees(), o -> entity.oid() == o.person().oid()), new EmployeesView(domain, mode));
-        tabs.add(new Tab("Employees"), employees);
+        tabSheet.add("Employees", employees);
     }
 
     @Override

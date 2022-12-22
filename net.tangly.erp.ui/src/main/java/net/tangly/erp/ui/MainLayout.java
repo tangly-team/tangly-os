@@ -52,10 +52,18 @@ public class MainLayout extends AppLayout {
 
     public MainLayout() {
         uiDomains = new HashMap<>();
-        put(new CrmBoundedDomainUi(Erp.instance().crmBoundedDomain(), Erp.instance().invoicesBoundedDomain()));
-        put(new ProductsBoundedDomainUi(Erp.instance().productsBoundedDomain()));
-        put(new InvoicesBoundedDomainUi(Erp.instance().invoicesBoundedDomain()));
-        put(new LedgerBoundedDomainUi(Erp.instance().ledgerBoundedDomain()));
+        if (Erp.instance().invoicesBoundedDomain() != null) {
+            put(new CrmBoundedDomainUi(Erp.instance().crmBoundedDomain(), Erp.instance().invoicesBoundedDomain()));
+        }
+        if (Erp.instance().productsBoundedDomain() != null) {
+            put(new ProductsBoundedDomainUi(Erp.instance().productsBoundedDomain()));
+        }
+        if (Erp.instance().invoicesBoundedDomain() != null) {
+            put(new InvoicesBoundedDomainUi(Erp.instance().invoicesBoundedDomain()));
+        }
+        if (Erp.instance().ledgerBoundedDomain() != null) {
+            put(new LedgerBoundedDomainUi(Erp.instance().ledgerBoundedDomain()));
+        }
 
         Image image;
         try {
@@ -76,7 +84,8 @@ public class MainLayout extends AppLayout {
     @Override
     protected void onAttach(@NotNull AttachEvent attachEvent) {
         super.onAttach(attachEvent);
-        if (Objects.isNull(VaadinUtils.getAttribute(this, "subject"))) {
+        if (Objects.isNull(VaadinUtils.getAttribute(this, "subject"))
+            && Objects.nonNull(Erp.instance().crmBoundedDomain())) {
             new CmdLogin(Erp.instance().crmBoundedDomain()).execute();
         }
     }

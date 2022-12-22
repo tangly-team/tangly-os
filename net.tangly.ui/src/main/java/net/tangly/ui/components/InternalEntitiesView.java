@@ -14,7 +14,7 @@ package net.tangly.ui.components;
 
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.tabs.Tab;
+import com.vaadin.flow.component.tabs.TabSheet;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
 import net.tangly.core.NamedEntity;
@@ -79,10 +79,10 @@ public abstract class InternalEntitiesView<T extends NamedEntity> extends Entiti
     @Override
     public FormLayout fillForm(@NotNull Operation operation, T entity, FormLayout form) {
         if (Objects.nonNull(entity)) {
-            TabsComponent tabs = new TabsComponent();
-            registerTabs(tabs, of(operation), entity);
-            tabs.tabByName("Overview").ifPresent(tabs::initialize);
-            form.add(tabs);
+            TabSheet tabSheet = new TabSheet();
+            registerTabs(tabSheet, of(operation), entity);
+            VaadinUtils.selectTabByName(tabSheet, "Overview");
+            form.add(tabSheet);
             form.setSizeFull();
         } else {
             form.add(createOverallView(of(operation), entity));
@@ -90,10 +90,10 @@ public abstract class InternalEntitiesView<T extends NamedEntity> extends Entiti
         return form;
     }
 
-    protected void registerTabs(@NotNull TabsComponent tabs, @NotNull Mode mode, @NotNull T entity) {
-        tabs.add(new Tab("Overview"), createOverallView(mode, entity));
-        tabs.add(new Tab("Comments"), new CommentsView(mode, entity));
-        tabs.add(new Tab("Tags"), new TagsView(mode, entity, registry));
+    protected void registerTabs(@NotNull TabSheet tabSheet, @NotNull Mode mode, @NotNull T entity) {
+        tabSheet.add("Overview", createOverallView(mode, entity));
+        tabSheet.add("Comments", new CommentsView(mode, entity));
+        tabSheet.add("Tags", new TagsView(mode, entity, registry));
     }
 
     protected Binder<T> binder() {

@@ -17,7 +17,7 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.select.Select;
-import com.vaadin.flow.component.tabs.Tab;
+import com.vaadin.flow.component.tabs.TabSheet;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.renderer.NumberRenderer;
@@ -34,7 +34,6 @@ import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.EntityField;
 import net.tangly.ui.components.InternalEntitiesView;
 import net.tangly.ui.components.One2ManyView;
-import net.tangly.ui.components.TabsComponent;
 import net.tangly.ui.components.TagsView;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
@@ -70,13 +69,13 @@ class InteractionsView extends InternalEntitiesView<Interaction> {
     }
 
     @Override
-    protected void registerTabs(@NotNull TabsComponent tabs, @NotNull Mode mode, @NotNull Interaction entity) {
-        tabs.add(new Tab("Overview"), createOverallView(mode, entity));
-        tabs.add(new Tab("Comments"), new CommentsView(mode, entity));
-        tabs.add(new Tab("Tags"), new TagsView(mode, entity, domain.registry()));
+    protected void registerTabs(@NotNull TabSheet tabSheet, @NotNull Mode mode, @NotNull Interaction entity) {
+        tabSheet.add("Overview", createOverallView(mode, entity));
+        tabSheet.add("Comments", new CommentsView(mode, entity));
+        tabSheet.add("Tags", new TagsView(mode, entity, domain.registry()));
         One2ManyView<Activity> activities = new One2ManyView<>(Activity.class, mode, InteractionsView::defineOne2ManyActivities,
             ProviderView.of(ProviderInMemory.of(entity.activities())), new ActivitiesView(domain, mode));
-        tabs.add(new Tab("Activities"), activities);
+        tabSheet.add("Activities", activities);
     }
 
     public static void defineOne2ManyActivities(@NotNull Grid<Activity> grid) {

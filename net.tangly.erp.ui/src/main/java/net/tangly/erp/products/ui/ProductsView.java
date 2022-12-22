@@ -19,13 +19,10 @@ import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.InternalEntitiesView;
 import org.jetbrains.annotations.NotNull;
 
-import javax.inject.Inject;
-
 @PageTitle("products-products")
 class ProductsView extends InternalEntitiesView<Product> {
     private final ProductsBoundedDomain domain;
 
-    @Inject
     public ProductsView(@NotNull ProductsBoundedDomain domain, @NotNull Mode mode) {
         super(Product.class, mode, domain.realm().products(), domain.registry());
         this.domain = domain;

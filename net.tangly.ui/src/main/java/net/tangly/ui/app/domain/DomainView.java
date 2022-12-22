@@ -13,9 +13,8 @@
 package net.tangly.ui.app.domain;
 
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.tabs.Tab;
+import com.vaadin.flow.component.tabs.TabSheet;
 import net.tangly.core.domain.BoundedDomain;
-import net.tangly.ui.components.TabsComponent;
 
 import javax.validation.constraints.NotNull;
 
@@ -26,19 +25,18 @@ import javax.validation.constraints.NotNull;
 public class DomainView extends VerticalLayout {
     private static final String ENTITIES = "Entities";
     private static final String TAGS = "Tags";
-    private final TabsComponent tabs;
+    private final TabSheet tabSheet;
     private final transient BoundedDomain<?, ?, ?, ?> domain;
 
     public DomainView(@NotNull BoundedDomain<?, ?, ?, ?> domain) {
         this.domain = domain;
-        tabs = new TabsComponent();
+        tabSheet = new TabSheet();
         initialize();
     }
 
     protected void initialize() {
-        tabs.add(new Tab(ENTITIES), new DomainEntitiesView(domain));
-        tabs.add(new Tab(TAGS), new TagTypesView(domain));
-        tabs.initialize(tabs.tabByName(ENTITIES).orElseThrow());
-        add(tabs);
+        tabSheet.add(ENTITIES, new DomainEntitiesView(domain));
+        tabSheet.add(TAGS, new TagTypesView(domain));
+        add(tabSheet);
     }
 }

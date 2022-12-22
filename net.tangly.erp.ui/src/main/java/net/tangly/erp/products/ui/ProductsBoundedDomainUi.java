@@ -23,7 +23,6 @@ import net.tangly.ui.app.domain.DomainView;
 import net.tangly.ui.components.Crud;
 import org.jetbrains.annotations.NotNull;
 
-import javax.inject.Inject;
 import java.util.Objects;
 
 public class ProductsBoundedDomainUi implements BoundedDomainUi {
@@ -34,7 +33,6 @@ public class ProductsBoundedDomainUi implements BoundedDomainUi {
     private final DomainView domainView;
     private Component currentView;
 
-    @Inject
     public ProductsBoundedDomainUi(@NotNull ProductsBoundedDomain domain) {
         this.domain = domain;
         productsView = new ProductsView(domain, Crud.Mode.EDITABLE);
