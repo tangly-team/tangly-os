@@ -18,7 +18,7 @@ They all promise the holly grail of agile product development, highly productive
 Why should any sane customer hire us to deploy or perfect their agile approach?
 
 Your overall goal is to continuously improve the products delivered to customers.
-I am convinced to achieve ingrained success an agile coach shall
+I am convinced to achieve ingrained success an agile coach shall:
 
 * Coach team members how to reach technical excellence.
 They build your solution, it shall fulfill the user's requirements, be of high quality and affordable.
@@ -35,7 +35,8 @@ Your customers shall be delighted.
 How your highly qualified teams develop software shall become more effective and efficient.
 
 First comes quality, effectiveness and only later efficiency.
-Look at https://en.wikipedia.org/wiki/Lean_software_development[lean methods], first we improve the quality-effectiveness for the customer – than the productivity - efficiency for the company -.
+Look at https://en.wikipedia.org/wiki/Lean_software_development[lean methods].
+First we improve the quality-effectiveness for the customer, then the productivity and efficiency for the company.
 
 === Minimum Viable Change
 
@@ -67,7 +68,7 @@ This is our special recipe for deep-rooted and lasting success.
 To improve your organization, you need these three levels of coaching.
 
 Organizational coaching::
-The coach works with multiple teams and the management to improve the organization and its structure
+The coach works with multiple teams and the management to improve the organization and its structure.
 ** Change processes to be customer-centric.
 ** Improve organization to see the whole product and the customer.
 ** Delegate decision-making processes to your teams.
@@ -91,14 +92,14 @@ Places where code/design could be improved.
 ** Refactoring “smells” into clean code.
 ** Test-driven development and test automation.
 ** Continuous integration and continuous delivery.
-** Specification by Example (Acceptance Test-Driven Development).
+** _Specification by Example_ (Acceptance Test-Driven Development).
 ** Efficient and effective working practices (IDE, automation).
 ** Applying design patterns.
 
 === Thoughts
 
 I believe that the right mindset is boosted by good practice, just as good practice cannot be achieved without the correct mindset.
-When advising others, I spend much of my time trying to connect practice with mindset, as they are symbiotic.
+When advising others, I spend much of my time trying to connect practice with a mindset, as they are symbiotic.
 You truly need both.
 
 Choose wisely your coaches.

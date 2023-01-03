@@ -16,8 +16,15 @@ image::2023-02-01-head.jpg[width=420,height=360,role=left]
 Your sole goal is to hire a qualified collaborator with potential.
 
 Hiring is like dating.
-Both parties shall be motivated to deepen the relationship.
+
+Both parties shall be motivated to deepen their relationship.
+
 Both parties are willing to invest and believe it will be beneficial for them.
+
+Dating also means you have competition.
+Do your best to convince your potential partner.
+
+It is worth investing time and effort to succeed.
 
 === Prepare Your Interview
 
@@ -37,27 +44,32 @@ I am very curious how he learnt new skills.
 The area of interests are:
 
 Coding::
-How do you write source code?
-What do you think about technical excellence cite:[clean-code,clean-coder,clean-craftsmanship,refactoring,refactoring-databases]
+How do you write source code? +
+What do you think about technical excellence cite:[clean-code,clean-coder,clean-craftsmanship,refactoring,refactoring-databases]?
 Software design and architecture::
-How do you design your components?
-Which techniques do you use for evolving your software architecture?
-What do you think about design and architecture approaches cite:[design-patterns,clean-architecture,domain-driven-design,building-evolutionary-architectures]
-What are your approaches with existing and legacy solutions cite:[working-effectively-with-legacy-code,refactoring]
+How do you design your components? +
+Which techniques do you use for evolving your software architecture? +
+What do you think about design and architecture approaches cite:[design-patterns,clean-architecture,domain-driven-design,building-evolutionary-architectures]? +
+What are your approaches with existing and legacy solutions cite:[working-effectively-with-legacy-code,refactoring]?
 Agile approaches::
-What do you think about agile approaches cite:[clean-agile]
+What do you think about agile approaches cite:[clean-agile,clean-code,clean-architecture]
 Teamwork, soft skills, teaching and mentoring::
-How do you teach and mentor team members? cite:[ing-technical-leader,skilled-facilitator,humble-inquiry]
-Why does he want to work in our company?::
+How do you teach and mentor team members? cite:[being-technical-leader,skilled-facilitator,humble-inquiry]
+Why does she want to work in our company?::
 Please elaborate.
+What do you find interesting about our company, our vision, and our products?
 Why is she a software engineer?::
-Please tell us your story.
+Please tell us your story. +
+Being an engineer is also a passion. +
+Professional engineers have ethics and are aware of their social responsibilities.
 
 The areas are similar to the ones I check when receiving a CV <<evaluate-technical-cvs>>.
 
 === Write-down Your Findings and Recommendations
 
 You should perform a technical interview with a colleague.
+Try to write your impressions and findings using the same template for all candidates.
+
 Compare your findings to diminish biases and misunderstandings.
 
 === Have an onboarding Program
@@ -68,14 +80,23 @@ Compare your findings to diminish biases and misunderstandings.
 - You want to hire good people that can learn and improve.
 - Your organization should promote that people can learn and evolve.
 - Be clear what you are looking for: make team better, bring new things, what do they value in code and architecture.
-- How do they solve their problems (architecture, design, process, code, bug).
+- How do they solve problems (architecture, design, process, code, bug)?
 - Open-ended questions, to start a discussion.
 - Make criteria clear, if a criteria is not reached, inform them that you expect to reach the criteria.
 - An interviewee should also interview the interviewers.
 
--> complement with pair programming, pair design during probe time
+A powerful technique is extensive pair programming and pair design in particular during probation time.
+Your new collaborator leans how her team is working and the specifics of the product.
+The team understands the strengths of the trainee.
+They identify improvement areas to improve her effectiveness when working on the product.
 
-=> always the best, no the free-es Voice, Screen-Sharing, Continuous Integration
+Show your best as a modern development shop.
+Your collaborators have access to 4K displays and professional keyboards, mice, headsets and desks
+footnote:[I am regularly depressed that professional developers still do not have access to high-resolution displays or high-quality headsets.].
+
+The employees are using state of the industry platform to create the products and to collaborate as teams
+footnote:[I still encounter teams without tools like Slack.
+Worst some still cannot use development platforms such as GitHub, GitLab, BitBucket or Azure.].
 
 [bibliography]
 === Links

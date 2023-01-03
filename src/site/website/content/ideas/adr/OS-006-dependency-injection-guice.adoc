@@ -44,6 +44,20 @@ Care will be taken to allow users to use a different dependency injection framew
 
 * A dependency injection module shall be provided for each relevant module.
 
+Honestly we are not providing the module for our modules.
+Our applications are quite simple and use a handful of services.
+This simple solution of a static repository works fine.
+This approach is muchj simpler to reason about, much faster to start, much easier to debug and to maintain.
+
+[source,java]
+----
+public final class Services {
+    private Services() {}
+    public static LoginService getLoginService() {}
+    public static ThatService getThatService() {}
+}
+----
+
 === Conventions
 
 . Constructor injection is the preferred mechanism.

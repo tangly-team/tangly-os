@@ -26,7 +26,7 @@ It often makes sense for businesses trying to tackle a massive software developm
 
 A professional and planned approach greatly improves the odds of success for the partnership:
 
-image::2023-01-01-evaluation-approach.png[width=480,height=360,role=text-center]
+image::2023-01-01-evaluation-approach.png[width=480,height=400,role=text-center]
 
 Identify Decision Criteria::
 Decide on your internal team, which help with making and supporting the decision.
@@ -107,9 +107,10 @@ You shall implement a clear and founded evaluation approach:
 
 Here our checklist we use to discuss a potential partnership:
 
+==== Hosting and Operations
+
 image::2023-01-01-checklist.png[width=480,height=360,role=left]
 
-Hosting and Operations::
 * How and where are the servers hosted?
 Self-hosted or external providers have an impact on the applicable legal context.
 Update policy and monitoring shall be compatible with corporate governance.
@@ -120,8 +121,10 @@ Is the deployment on the various staging areas automated?
 How is the process of deploying a new version?
 * How is the process of updating a productive application when security alarms are issued?
 * Document your decisions with a formal SLA document.
-Software Development::
-** Where are the team members located?
+
+==== Software Development
+
+* Where are the team members located?
 Are they collocated, in the same area, in the same timezone, distributed over multiple timezones?
 * Which training or certification do they have in the technical stack, programming languages and used tools?
 * Which training or certification do they have in agile and Scrum approaches <<scrum-master>>, <<product-owner>>, <<developer>>?
@@ -130,7 +133,9 @@ Are they collocated, in the same area, in the same timezone, distributed over mu
 * Which approaches are used for source code management?
 * Where are the source artifacts stored?
 * Can our collaborators have read access to all artifacts under source code management?
-Governance and Methods::
+
+==== Governance and Methods
+
 * Which approaches are used for insuring the quality of the written source code?
 * How is the technical documentation such as installation scripts, design decisions, component documents written and managed?
 * Could you provide your coding guidelines and documentation guidelines?
@@ -139,13 +144,15 @@ Governance and Methods::
 * How do you trace requirements to deliver versions of the product?
 * How do you upgrade an application to a newer version of the technology stack or newer libraries?
 * Which approaches do you use to continuously improve?
-Build Partnership::
+
+==== Build Partnership
+
 * What is your understanding of a partnership?
 * How would you like to start the partnership between your company and ours?
 
 === Lessons Learnt
 
-Respect your partner cite:[lead-with-respect].
+Respect your partner cite:[lead-with-respect, leading-quietly].
 You will work together for years.
 Both parties shall be interested in improving the delivered solutions and increasing product success.
 
