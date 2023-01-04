@@ -1,0 +1,31 @@
+/*
+ * Copyright 2022-2023 Marcel Baumann
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ *          http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ */
+
+package net.tangly.bib.model;
+
+import lombok.Builder;
+import org.jbibtex.BibTeXEntry;
+import org.jbibtex.Key;
+import org.jetbrains.annotations.NotNull;
+
+@Builder
+public record Book(@NotNull BibTeXEntry entry) {
+    public static final Key AUTHOR = new Key("author");
+
+    public String type() {
+        return entry.getKey().toString();
+    }
+
+    public String author() {
+        return (entry.getField(AUTHOR) == null) ? null : entry.getField(AUTHOR).toUserString();
+    }
+}

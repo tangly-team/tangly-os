@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -17,8 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 /**
- * Defines the abstraction of a postal address without the recipient. The structure should model alls existing postal addresses. An address is an immutable object
- * - now enforced through a record construct -. The street represents the international concept of house identifier often means street name and street number.
+ * Address immutability is enforced through a record construct. The street represents the international concept of house identifier often means street name and street number.
  * It can also be the street name and house name such as in Ireland or Great Britain.
  *
  * @param street   street and street number of the address
@@ -49,6 +48,31 @@ public record Address(String street, String extended, String poBox, String postc
     }
 
     /**
+     * Returns a comma separated representation of an address. Null values are shown as empty strings. The {@link Object#toString()} method is not used because
+     * the implementation is defined in the API implementation of record construct. The generated string can be feed to the {@link Address#of(String)} to create
+     * an address object.
+     *
+     * @return comma separated representation
+     * @see Address#of(String)
+     */
+    public String text() {
+        return String.format("%s,%s,%s,%s,%s,%s,%s", Strings.nullToEmpty(street), Strings.nullToEmpty(extended), Strings.nullToEmpty(poBox), Strings.nullToEmpty(postcode), Strings.nullToEmpty(locality), Strings.nullToEmpty(region), Strings.nullToEmpty(country));
+    }
+
+    /**
+     * Build an address object from a comma separated string representation.
+     *
+     * @param text comma separated representation of the address instance
+     * @return new address object
+     * @see Address#text()
+     */
+    public static Address of(@NotNull String text) {
+        var parts = Objects.requireNonNull(text).split(",", -1);
+        Objects.checkFromIndexSize(0, parts.length, 7);
+        return builder().street(parts[0]).extended(parts[1]).poBox(parts[2]).postcode(parts[3]).locality(parts[4]).region(parts[5]).country(parts[6]).build();
+    }
+
+    /**
      * Defines the builder for the address class with a fluent interface. The builder supports the creation of multiple address objects. A canonical
      * transformation is used to transform empty or blank {@link String#isBlank} string fields into null values.
      */
@@ -69,7 +93,7 @@ public record Address(String street, String extended, String poBox, String postc
         private String poBox;
 
         /**
-         * Postal number of the address.
+         * Postal number for the address.
          */
         private String postcode;
 
@@ -126,31 +150,5 @@ public record Address(String street, String extended, String poBox, String postc
         public Address build() {
             return new Address(street, extended, poBox, postcode, locality, region, country);
         }
-    }
-
-    /**
-     * Build an address object from a comma separated string representation.
-     *
-     * @param text comma separated representation of the address instance
-     * @return new address object
-     * @see Address#text()
-     */
-    public static Address of(@NotNull String text) {
-        var parts = Objects.requireNonNull(text).split(",", -1);
-        Objects.checkFromIndexSize(0, parts.length, 7);
-        return builder().street(parts[0]).extended(parts[1]).poBox(parts[2]).postcode(parts[3]).locality(parts[4]).region(parts[5]).country(parts[6]).build();
-    }
-
-    /**
-     * Returns a comma separated representation of an address. Null values are shown as empty strings. The {@link Object#toString()} method is not used because
-     * the implementation is defined in the API implementation of record construct. The generated string can be feed to the {@link Address#of(String)} to create
-     * an address object.
-     *
-     * @return comma separated representation
-     * @see Address#of(String)
-     */
-    public String text() {
-        return String.format("%s,%s,%s,%s,%s,%s,%s", Strings.nullToEmpty(street), Strings.nullToEmpty(extended), Strings.nullToEmpty(poBox),
-            Strings.nullToEmpty(postcode), Strings.nullToEmpty(locality), Strings.nullToEmpty(region), Strings.nullToEmpty(country));
     }
 }

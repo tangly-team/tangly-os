@@ -1,7 +1,7 @@
 ---
 title: "Collaborators Design"
 date: 2022-01-01
-weight: 10
+weight: 40
 draft: false
 ---
 :company: https://www.tangly.net/[tangly llc]
@@ -19,10 +19,6 @@ interface HasInterval {
   LocalDate toDate();
 }
 
-class SwissInsurancesYearlyCorrections {
-  Year year();
-}
-
 class SwissWageCard {
   Year year();
 }
@@ -35,7 +31,6 @@ note left of Collaborator::naturalEntityOid
   in the CRM bounded domain.
 end note
 
-Collaborator *-- "n" SwissInsurancesYearlyCorrections
 Collaborator *-- "n" SwissWageCard
 
 
@@ -60,6 +55,12 @@ note left of Organization::legalEntityOid
   Reference to the associated legal entity
   in the CRM bounded domain.
 end note
+
+note right of Organization
+  All required information for a wage card
+  shall be available in the domain model.
+end note
+
 
 Organization *-- "n" Contract
 Organization *-- "n" SwissInsurances

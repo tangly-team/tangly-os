@@ -1,5 +1,5 @@
 /*
- * Copyright 2021-2022 Marcel Baumann
+ * Copyright 2021-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,50 +12,73 @@
 
 package net.tangly.erp.collabortors.ports;
 
+import net.tangly.core.providers.Provider;
+import net.tangly.erp.collabortors.domain.Collaborator;
 import net.tangly.erp.collabortors.domain.Contract;
-import net.tangly.erp.collabortors.domain.SwissInsurances;
-import net.tangly.erp.collabortors.domain.SwissPensionFunds;
-import net.tangly.erp.collabortors.domain.SwissSocialInsurances;
+import net.tangly.erp.collabortors.domain.Organization;
+import net.tangly.erp.collabortors.domain.SwissAccidentInsurance;
+import net.tangly.erp.collabortors.domain.SwissPensionFund;
+import net.tangly.erp.collabortors.domain.SwissSocialInsurance;
+import net.tangly.erp.collabortors.services.CollaboratorsRealm;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
 import org.apache.commons.csv.CSVRecord;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class CollaboratorsTsvHdl {
+
+    private CollaboratorsRealm realm;
+
+    public CollaboratorsTsvHdl(CollaboratorsRealm realm) {
+        this.realm = realm;
+    }
+
+    static TsvEntity<Collaborator> createTsvCollaborator() {
+        Function<CSVRecord, Collaborator> of = (csv) -> new Collaborator(TsvEntity.get(csv, "id"), TsvEntity.get(csv, "oldSocialSecurityNumber"),
+            null, TsvEntity.get(csv, "fullname"), null);
+        List<TsvProperty<Collaborator, ?>> fields =
+            List.of(TsvProperty.ofString("id", Collaborator::id, null), TsvProperty.ofString("oldSocialSecurityNumber", Collaborator::oldSocialSecurityNumber, null),
+                TsvProperty.ofDate("birthday", Collaborator::birthday, null));
+        return TsvEntity.of(Collaborator.class, fields, of);
+    }
+
     static TsvEntity<Contract> createTsvContract() {
         Function<CSVRecord, Contract> of = null;
-        List<TsvProperty<Contract, ?>> fields =
-            List.of(
-                TsvProperty.ofDate("fromDate", Contract::from, null),
-                TsvProperty.ofDate("toDate", Contract::to, null),
-                TsvProperty.ofLong("collaboratorOid", Contract::naturalEntityOid, null),
-                TsvProperty.ofLong("toDate", Contract::naturalEntityOid, null));
+        List<TsvProperty<Contract, ?>> fields = null;
+//            List.of(TsvProperty.ofDate("fromDate", Contract::from, null),
+//                TsvProperty.ofDate("toDate", Contract::to, null),
+//                TsvProperty.ofLong("collaboratorOid", Contract::naturalEntityOid, null));
         return TsvEntity.of(Contract.class, fields, of);
     }
 
-    static TsvEntity<SwissInsurances> createTsvSwissInsurances() {
-        Function<CSVRecord, SwissInsurances> of = null;
-        List<TsvProperty<SwissInsurances, ?>> fields =
-            List.of(TsvProperty.ofDate("fromDate", SwissInsurances::from, null),
-                TsvProperty.ofDate("toDate", SwissInsurances::to, null));
-        return TsvEntity.of(SwissInsurances.class, fields, of);
+    static TsvEntity<SwissAccidentInsurance> createTsvSwissInsurances() {
+        Function<CSVRecord, SwissAccidentInsurance> of = null;
+        List<TsvProperty<SwissAccidentInsurance, ?>> fields =
+            List.of(TsvProperty.ofDate("fromDate", SwissAccidentInsurance::from, null),
+                TsvProperty.ofDate("toDate", SwissAccidentInsurance::to, null));
+        return TsvEntity.of(SwissAccidentInsurance.class, fields, of);
     }
 
-    static TsvEntity<SwissPensionFunds> createTsvSwissPensionFunds() {
-        Function<CSVRecord, SwissPensionFunds> of = null;
-        List<TsvProperty<SwissPensionFunds, ?>> fields =
-            List.of(TsvProperty.ofDate("fromDate", SwissPensionFunds::from, null),
-                TsvProperty.ofDate("toDate", SwissPensionFunds::to, null));
-        return TsvEntity.of(SwissPensionFunds.class, fields, of);
+    static TsvEntity<SwissPensionFund> createTsvSwissPensionFunds() {
+        Function<CSVRecord, SwissPensionFund> of = null;
+        List<TsvProperty<SwissPensionFund, ?>> fields =
+            List.of(TsvProperty.ofDate("fromDate", SwissPensionFund::from, null),
+                TsvProperty.ofDate("toDate", SwissPensionFund::to, null));
+        return TsvEntity.of(SwissPensionFund.class, fields, of);
     }
 
-    static TsvEntity<SwissSocialInsurances> createTsvSwissSocialInsurances() {
-        Function<CSVRecord, SwissSocialInsurances> of = null;
-        List<TsvProperty<SwissSocialInsurances, ?>> fields =
-            List.of(TsvProperty.ofDate("fromDate", SwissSocialInsurances::from, null),
-                TsvProperty.ofDate("toDate", SwissSocialInsurances::to, null));
-        return TsvEntity.of(SwissSocialInsurances.class, fields, of);
+    static TsvEntity<SwissSocialInsurance> createTsvSwissSocialInsurances() {
+        Function<CSVRecord, SwissSocialInsurance> of = null;
+        List<TsvProperty<SwissSocialInsurance, ?>> fields =
+            List.of(TsvProperty.ofDate("fromDate", SwissSocialInsurance::from, null),
+                TsvProperty.ofDate("toDate", SwissSocialInsurance::to, null));
+        return TsvEntity.of(SwissSocialInsurance.class, fields, of);
+    }
+
+    private Optional<Organization> findOrganizationById(String identifier) {
+        return (identifier != null) ? Provider.findById(realm.organizations(), identifier) : Optional.empty();
     }
 }

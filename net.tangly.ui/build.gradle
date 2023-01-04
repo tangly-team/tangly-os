@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -22,17 +22,10 @@ project.ext.inceptionYear = '1996'
 project.description = "Vaadin user interface for the business components (tangly llc)"
 
 dependencies {
-    implementation project(':net.tangly.commons')
     implementation project(':net.tangly.core')
-    implementation project(':net.tangly.erp.crm')
-    implementation project(':net.tangly.erp.invoices')
-    implementation project(':net.tangly.erp.ledger')
-    implementation project(':net.tangly.erp.products')
-    implementation project(':net.tangly.gleam')
 
-    implementation enforcedPlatform(libs.vaadin.bom)
     implementation(libs.vaadin.core)
-
+    implementation(libs.vaadin.embedded.jetty)
     implementation("javax.servlet:javax.servlet-api:3.1.0")
 
     implementation(libs.microstream.storage)

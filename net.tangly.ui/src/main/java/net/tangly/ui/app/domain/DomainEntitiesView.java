@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -59,7 +59,7 @@ public class DomainEntitiesView extends EntitiesView<DomainEntity> {
         setSizeFull();
 
         // TODO why create decorator
-        GridDecorators<DomainEntity<?>> decorator = new GridDecorators(grid, entityClass().getSimpleName(),false, false);
+        GridDecorators<DomainEntity<?>> decorator = new GridDecorators<>(grid, entityClass().getSimpleName(),false, false);
         decorator.addFilter(new GridDecorators.FilterText<>(decorator, DomainEntity::name, "Name", "name"));
         addAndExpand(decorator, grid);
     }

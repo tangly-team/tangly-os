@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,7 +12,7 @@
 
 package net.tangly.erp.ledger.services;
 
-import net.tangly.core.HasInterval;
+import net.tangly.core.HasTimeInterval;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.ledger.domain.Account;
@@ -58,7 +58,7 @@ public interface LedgerRealm extends Realm {
     }
 
     default List<Transaction> transactions(LocalDate from, LocalDate to) {
-        return transactions().items().stream().filter(o -> HasInterval.isActive(o.date(), from, to)).toList();
+        return transactions().items().stream().filter(o -> HasTimeInterval.isActive(o.date(), from, to)).toList();
     }
 
     default Optional<Account> accountBy(String id) {

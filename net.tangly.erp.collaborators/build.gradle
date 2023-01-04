@@ -1,4 +1,3 @@
-
 /*
  * Copyright 2006-2021 Marcel Baumann
  *
@@ -23,7 +22,15 @@ project.ext.inceptionYear = '2019'
 project.description = "Collaborators bounded domain using Java 17 or higher (tangly llc)"
 
 dependencies {
+    implementation project(':net.tangly.commons')
     implementation project(':net.tangly.core')
     implementation project(':net.tangly.gleam')
     implementation(libs.apache.commons.csv)
+    implementation(libs.microstream.storage)
+
+    testImplementation project(':net.tangly.core')
+    testImplementation(libs.javalin)
+    implementation(libs.javalin.openapi.plugin)
+    implementation(libs.javalin.swagger.plugin)
+    implementation(libs.javalin.redoc.plugin)
 }

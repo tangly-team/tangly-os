@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -17,10 +17,10 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.io.Writer;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -72,11 +72,11 @@ public class StoryWriter {
         feature.getJSONArray(BddConstants.STORIES).put(story);
 
         // write scenario
-        for (Scene scene : run.scenes()) {
+        for (var scene : run.scenes()) {
             story.getJSONArray(BddConstants.SCENARIOS).put(createScenario(scene));
         }
 
-        try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
+        try (Writer writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
             writer.write(features.toString(4));
         } catch (IOException e) {
             throw new UncheckedIOException(e);

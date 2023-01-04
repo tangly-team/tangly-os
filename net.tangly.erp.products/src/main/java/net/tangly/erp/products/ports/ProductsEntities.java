@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -25,7 +25,6 @@ import one.microstream.storage.embedded.types.EmbeddedStorage;
 import one.microstream.storage.embedded.types.EmbeddedStorageManager;
 import org.jetbrains.annotations.NotNull;
 
-import javax.inject.Inject;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +60,6 @@ public class ProductsEntities implements ProductsRealm {
         efforts = ProviderHasOid.of(generator, storageManager, data.efforts);
     }
 
-    @Inject
     public ProductsEntities() {
         data = new Data();
         storageManager = null;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -17,7 +17,6 @@ import net.tangly.erp.crm.services.CrmHandler;
 import net.tangly.erp.crm.services.CrmRealm;
 import org.jetbrains.annotations.NotNull;
 
-import javax.inject.Inject;
 import java.nio.file.Path;
 
 /**
@@ -38,7 +37,6 @@ public final class CrmHdl implements CrmHandler {
     private final CrmRealm realm;
     private final Path folder;
 
-    @Inject
     public CrmHdl(@NotNull CrmRealm realm, @NotNull Path folder) {
         this.realm = realm;
         this.folder = folder;

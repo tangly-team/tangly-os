@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -52,7 +52,7 @@ public class PaginatedGrid<T> extends Grid<T> {
         pagination = new LitPagination();
         pagination.addPageChangeListener(e -> doCalculations(e.newPage()));
         paginationLocation = PaginationLocation.BOTTOM;
-        setHeightByRows(true);
+        setAllRowsVisible(true);
         addSortListener(e -> doCalculations(pagination.getPage()));
         setHeightFull();
     }
@@ -122,8 +122,8 @@ public class PaginatedGrid<T> extends Grid<T> {
     }
 
     @Override
-    public void setHeightByRows(boolean heightByRows) {
-        super.setHeightByRows(true);
+    public void setAllRowsVisible(boolean heightByRows) {
+        super.setAllRowsVisible(true);
     }
 
     /**

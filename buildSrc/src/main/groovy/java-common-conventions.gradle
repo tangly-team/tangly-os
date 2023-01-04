@@ -23,7 +23,6 @@ dependencies {
     annotationProcessor(libs.lombok)
     compileOnly(libs.annotations)
     implementation(libs.apache.log4j2.api)
-    implementation(libs.guice)
     runtimeOnly(libs.apache.log4j2.core)
     runtimeOnly(libs.apache.log4j2.slf4j)
 

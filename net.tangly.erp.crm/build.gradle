@@ -26,7 +26,6 @@ dependencies {
     implementation project(':net.tangly.core')
     implementation project(':net.tangly.erp.shared')
     implementation project(':net.tangly.gleam')
-    implementation(libs.bundles.jersey.deps)
     implementation(libs.apache.commons.codec)
     implementation(libs.apache.commons.io)
     implementation(libs.apache.commons.csv)

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2022 Marcel Baumann
+ * Copyright 2022-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static net.tangly.erp.ports.TsvHdl.OID;
-import static net.tangly.erp.ports.TsvHdl.TEXT;
+import static net.tangly.core.tsv.TsvHdlCore.TEXT;
 import static net.tangly.erp.ports.TsvHdl.convertFoidTo;
 import static net.tangly.erp.ports.TsvHdl.createTsvQualifiedEntityFields;
 

@@ -23,9 +23,11 @@ project.description = "Core Abstractions - Core - using Java 17 or higher (tangl
 
 dependencies {
     implementation project(':net.tangly.commons')
+    implementation project(':net.tangly.gleam')
 
     implementation(libs.google.libphonenumber)
     implementation(libs.iban4j)
+    implementation(libs.apache.commons.csv)
     implementation(libs.bundles.microstream.deps)
     implementation(libs.json.core)
     implementation(libs.arch.unit)

@@ -34,11 +34,6 @@ application {
     mainClassName = "net.tangly.erp.ui.EmbeddedJetty"
 }
 
-vaadin {
-    optimizeBundle = false
-    pnpmEnable = false
-}
-
 jar {
     // needed for the shadow jar otherwise get a runtime error in LogManager.getLogger() when starting the application
     manifest {
@@ -73,15 +68,13 @@ dependencies {
     implementation project(':net.tangly.gleam')
     implementation project(':net.tangly.ui')
 
-    implementation enforcedPlatform(libs.vaadin.bom)
     implementation(libs.vaadin.core)
+    implementation(libs.vaadin.embedded.jetty)
+    implementation(libs.vaadin.socharts)
+    implementation(libs.apache.log4j2.core)
     implementation(libs.apache.log4j2.slf4j)
     implementation(libs.apache.commons.cli)
-
-    implementation(libs.bundles.jetty.deps)
-    implementation(libs.vaadin.socharts)
     implementation(libs.bundles.microstream.deps)
-    implementation(libs.bundles.jersey.deps)
 
     testImplementation(libs.vaadin.test)
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -15,7 +15,6 @@ package net.tangly.erp.invoices.services;
 import net.tangly.erp.invoices.domain.Invoice;
 import org.jetbrains.annotations.NotNull;
 
-import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -27,7 +26,6 @@ import static net.tangly.commons.utilities.DateUtilities.isWithinRange;
 public class InvoicesBusinessLogic {
     private final InvoicesRealm realm;
 
-    @Inject
     public InvoicesBusinessLogic(@NotNull InvoicesRealm realm) {
         this.realm = realm;
     }

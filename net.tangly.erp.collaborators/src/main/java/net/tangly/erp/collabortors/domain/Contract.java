@@ -1,5 +1,5 @@
 /*
- * Copyright 2021-2022 Marcel Baumann
+ * Copyright 2021-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -13,18 +13,21 @@
 package net.tangly.erp.collabortors.domain;
 
 import lombok.Builder;
-import net.tangly.core.HasInterval;
+import net.tangly.core.HasId;
+import net.tangly.core.HasTimeInterval;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Builder
-public record Contract(@NotNull Organization organization,
-                       @NotNull long naturalEntityOid,
+public record Contract(@NotNull String id,
+                       @NotNull Organization organization,
+                       @NotNull Collaborator collaborator,
                        @NotNull LocalDate from,
                        LocalDate to,
                        @NotNull BigDecimal yearlySalary,
                        @NotNull BigDecimal workPercentage,
-                       int nrOfPayments) implements HasInterval {
-}
+                       int nrOfPayments,
+                       @NotNull List<SwissPensionFund> pensionFunds) implements HasId, HasTimeInterval {}

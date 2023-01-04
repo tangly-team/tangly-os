@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -20,10 +20,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.UncheckedIOException;
+import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -64,13 +64,23 @@ public class StoryMerger {
         }
     }
 
+    private static Optional<JSONObject> contains(JSONArray list, String key, String value) {
+        for (var item : list) {
+            var object = (JSONObject) item;
+            if (object.has(key) && (object.getString(key).equals(value))) {
+                return Optional.of(object);
+            }
+        }
+        return Optional.empty();
+    }
+
     /**
      * Writes the features to the provided file.
      *
      * @param path path of the file where the features are archived
      */
     public void write(Path path) {
-        try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
+        try (Writer writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
             writer.write(features.toString(4));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
@@ -85,21 +95,11 @@ public class StoryMerger {
             var mergedStories = mergedFeature.get().getJSONArray(BddConstants.STORIES);
             var stories = feature.getJSONArray(BddConstants.STORIES);
             for (var item : stories) {
-                JSONObject story = (JSONObject) item;
+                var story = (JSONObject) item;
                 if (contains(mergedStories, BddConstants.CLASS_NAME, story.getString(BddConstants.CLASS_NAME)).isEmpty()) {
                     mergedStories.put(story);
                 }
             }
         }
-    }
-
-    private static Optional<JSONObject> contains(JSONArray list, String key, String value) {
-        for (var item : list) {
-            JSONObject object = (JSONObject) item;
-            if (object.has(key) && (object.getString(key).equals(value))) {
-                return Optional.of(object);
-            }
-        }
-        return Optional.empty();
     }
 }

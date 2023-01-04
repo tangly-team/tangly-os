@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,5 +12,9 @@
 
 /**
  * Defines the core abstractions for a bounded domain implementation. Entities defined in the domain can have oid, id, name, tags and comments.
+ * The realm interface is the entry point for the repository and factory abstractions.
+ * Repositories retrieve domain objects from persistence technologies.
+ * Factories create new object trees. The regular persistence approach is based on Microstream.
+ * The solution is well integrated in Java so that retrieval and creation operations are simple to implement.
  */
 package net.tangly.core.domain;

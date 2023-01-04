@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -13,12 +13,12 @@
 package net.tangly.erp.ports;
 
 import net.tangly.commons.lang.ReflectionUtilities;
-import net.tangly.commons.lang.Strings;
 import net.tangly.commons.logger.EventData;
 import net.tangly.core.*;
 import net.tangly.core.crm.CrmEntity;
 import net.tangly.core.crm.VcardType;
 import net.tangly.core.providers.Provider;
+import net.tangly.core.tsv.TsvHdlCore;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
 import org.apache.commons.csv.CSVFormat;
@@ -37,32 +37,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.Function;
+
+import static net.tangly.core.tsv.TsvHdlCore.ID;
+import static net.tangly.core.tsv.TsvHdlCore.NAME;
+import static net.tangly.core.tsv.TsvHdlCore.TEXT;
+import static net.tangly.core.tsv.TsvHdlCore.FROM_DATE;
+import static net.tangly.core.tsv.TsvHdlCore.TO_DATE;
 
 public final class TsvHdl {
     public static final CSVFormat FORMAT =
         CSVFormat.Builder.create().setDelimiter('\t').setQuote('"').setRecordSeparator('\n').setIgnoreSurroundingSpaces(true).setHeader().setSkipHeaderRecord(true).setIgnoreHeaderCase(true)
-            .setIgnoreEmptyLines(true).build();
+                         .setIgnoreEmptyLines(true).build();
 
     public static final String OWNER_FOID = "ownerFoid";
     public static final String OID = HasOid.OID;
-    public static final String ID = HasId.ID;
     public static final String CODE = "code";
     public static final String GENDER = "gender";
-    public static final String NAME = "name";
-    public static final String DATE = "date";
-    public static final String FROM_DATE = "fromDate";
-    public static final String TO_DATE = "toDate";
-    public static final String TEXT = "text";
-    private static final String STREET = "street";
-    private static final String POSTCODE = "postcode";
-    private static final String LOCALITY = "locality";
-    private static final String REGION = "region";
-    private static final String COUNTRY = "country";
-    private static final String IBAN = "iban";
-    private static final String BIC = "bic";
-    private static final String INSTITUTE = "institute";
     public static final String MODULE = "net.tangly.ports";
 
     private TsvHdl() {
@@ -147,31 +138,6 @@ public final class TsvHdl {
         }
     }
 
-    public static TsvEntity<BankConnection> createTsvBankConnection() {
-        Function<CSVRecord, BankConnection> imports = (CSVRecord csv) -> BankConnection.of(get(csv, IBAN), get(csv, BIC), get(csv, INSTITUTE));
-        List<TsvProperty<BankConnection, ?>> fields =
-            List.of(TsvProperty.ofString("iban", BankConnection::iban, null), TsvProperty.ofString("bic", BankConnection::bic, null),
-                TsvProperty.ofString(INSTITUTE, BankConnection::institute, null));
-        return TsvEntity.of(BankConnection.class, fields, imports);
-    }
-
-    public static TsvEntity<Address> createTsvAddress() {
-        Function<CSVRecord, Address> imports = (CSVRecord csv) -> (Objects.isNull(get(csv, LOCALITY)) || Objects.isNull(get(csv, COUNTRY))) ? null :
-            Address.builder().street(get(csv, STREET)).postcode(get(csv, POSTCODE)).locality(get(csv, LOCALITY)).region(get(csv, REGION))
-                .country(get(csv, COUNTRY)).build();
-
-        List<TsvProperty<Address, ?>> fields =
-            List.of(TsvProperty.ofString(STREET, Address::street, null), TsvProperty.ofString("extended", Address::extended, null),
-                TsvProperty.ofString(POSTCODE, Address::postcode, null), TsvProperty.ofString(LOCALITY, Address::locality, null),
-
-                TsvProperty.ofString(REGION, Address::region, null), TsvProperty.ofString(COUNTRY, Address::country, null));
-        return TsvEntity.of(Address.class, fields, imports);
-    }
-
-    public static String get(@NotNull CSVRecord csv, @NotNull String column) {
-        return Strings.emptyToNull(csv.get(column));
-    }
-
     public static <T extends HasComments & HasOid> void addComments(Provider<T> provider, Provider<Comment> comments) {
         provider.items().forEach(e -> TsvHdl.addComments(provider, e, comments));
     }
@@ -201,7 +167,7 @@ public final class TsvHdl {
     }
 
     public static <T extends CrmEntity> TsvProperty<T, Address> createAddressMapping(@NotNull VcardType type) {
-        return TsvProperty.of(createTsvAddress(), (T e) -> e.address(type).orElse(null), (e, p) -> e.address(type, p));
+        return TsvProperty.of(TsvHdlCore.createTsvAddress(), (T e) -> e.address(type).orElse(null), (e, p) -> e.address(type, p));
     }
 
     public static <T extends HasOid> Function<T, Object> convertFoidTo() {

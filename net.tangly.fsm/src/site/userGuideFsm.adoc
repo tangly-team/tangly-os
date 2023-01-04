@@ -9,7 +9,7 @@ draft: false
 
 == Features
 
-The FSM library aims to provide the following features:
+The https://en.wikipedia.org/wiki/Finite-state_machine/[FSM] library aims to provide the following features:
 
 * Easy to use flat state machine for simple use cases.
 This type of FSM is taught in bachelor engineering courses.

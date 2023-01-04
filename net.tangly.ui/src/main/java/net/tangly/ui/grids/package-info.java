@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -13,6 +13,7 @@
 /**
  * The paginated grid adds pagination feature to the Vaadin 14+ Grid component. To do so, it extends the existing Vaadin 14 Grid and creates a custom
  * PaginatedGrid.
+ * Inspiration can be found under <a href="https://github.com/parttio/grid-pagination">Grid Pagination</a>.
  * <p>An internal LitPagination component is created which handles the pagination and navigation through pages. To use the pagination feature on the grid you
  * just have to use @link{net.tangly.components.grids.PaginatedGrid} component instead of the standard Vaadin 14+ Grid as follows:</p>
  *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2021-2022 Marcel Baumann
+ * Copyright 2021-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -21,10 +21,11 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Builder
-public record SwissWageCard(@NotNull String socialNumber, String oldSocialNumber, LocalDate birthday, @NotNull LocalDate fromDate, @NotNull LocalDate toDate,
+public record SwissWageCard(@NotNull String socialNumber, String oldSocialNumber, @NotNull LocalDate birthday, @NotNull LocalDate fromDate, @NotNull LocalDate toDate,
                             Boolean freeTransportToWork, Boolean mealChecks, BigDecimal grossSalary, BigDecimal netSalary, BigDecimal pensionFund,
                             BigDecimal pensionFundPayment, boolean effectiveExpenses, LocalDate createdAt, Address createdBy) {
     public SwissWageCard {
+        Objects.requireNonNull(birthday);
         Objects.requireNonNull(fromDate);
         Objects.requireNonNull(toDate);
         assert Objects.equals(fromDate.getYear(), toDate.getYear());

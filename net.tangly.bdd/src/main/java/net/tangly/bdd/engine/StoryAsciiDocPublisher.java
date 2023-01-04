@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -94,7 +94,7 @@ public class StoryAsciiDocPublisher {
     }
 
     private void clause(@NotNull JSONObject scenario, @NotNull String clause) {
-        JSONObject segment = (JSONObject) scenario.get(clause);
+        var segment = (JSONObject) scenario.get(clause);
         writer.append("*").append(clause).append("* ").append(segment.getString(BddConstants.TEXT));
         var ands = segment.optJSONArray(BddConstants.AND);
         if (ands != null) {

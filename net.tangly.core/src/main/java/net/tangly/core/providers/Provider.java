@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -22,6 +22,15 @@ import java.util.function.Function;
 
 /**
  * Defines the provider abstraction responsible for handling all instances of a specific type.
+ * The provider declares the regular CRUD operations: <i>Create, Read, Update, and Delete</i>.
+ * The provider is the repository and often the factory in the domain-driven design terminology.
+ * <dl>
+ *     <dt>Create</dt><dd>The creation operation is integrated with the update operation {@link Provider#update(Object)}</dd>
+ *     <dt>Read</dt><dd>The read all items operation maps to the {@link Provider#items()} operation.
+ *     The read an item with a unique key operation maps to {@link Provider#findBy(Function, Object)}. </dd>
+ *     <dt>Update</dt><dd>The update operation maps to the operation {@link Provider#update(Object)}. </dd>
+ *     <dt>Delete</dt><dd>The delete operation maps to the operation {@link Provider#delete(Object)}.</dd>
+ * </dl>
  *
  * @param <T> type of the instances
  */
@@ -30,7 +39,7 @@ public interface Provider<T> {
         return provider.findBy(E::oid, oid);
     }
 
-    static <E extends HasId, String> Optional<E> findById(@NotNull Provider<E> provider, String id) {
+    static <E extends HasId, String> Optional<E> findById(@NotNull Provider<E> provider, @NotNull String id) {
         return provider.findBy(E::id, id);
     }
 
@@ -73,7 +82,7 @@ public interface Provider<T> {
      * @param <U>    type of the property
      * @return optional of the first matching entity otherwise empty
      */
-    default <U> Optional<T> findBy(Function<T, U> getter, U value) {
+    default <U> Optional<T> findBy(@NotNull Function<T, U> getter, U value) {
         return items().stream().filter(o -> value.equals(getter.apply(o))).findAny();
     }
 }

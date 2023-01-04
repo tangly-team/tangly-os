@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2022 Marcel Baumann
+ * Copyright 2022-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -24,18 +24,17 @@ import net.tangly.gleam.model.TsvProperty;
 import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
 
-import javax.inject.Inject;
 import java.io.Reader;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
-import static net.tangly.erp.ports.TsvHdl.ID;
+import static net.tangly.core.tsv.TsvHdlCore.ID;
+import static net.tangly.core.tsv.TsvHdlCore.NAME;
+import static net.tangly.core.tsv.TsvHdlCore.TEXT;
 import static net.tangly.erp.ports.TsvHdl.MODULE;
-import static net.tangly.erp.ports.TsvHdl.NAME;
-import static net.tangly.erp.ports.TsvHdl.TEXT;
-import static net.tangly.erp.ports.TsvHdl.get;
+import static net.tangly.gleam.model.TsvEntity.get;
 
 /**
  * Provide import and export functions for invoice entities persisted in tab separated files.
@@ -43,7 +42,6 @@ import static net.tangly.erp.ports.TsvHdl.get;
 public class InvoicesTsvJsonHdl {
     private final InvoicesRealm realm;
 
-    @Inject
     public InvoicesTsvJsonHdl(@NotNull InvoicesRealm realm) {
         this.realm = realm;
     }

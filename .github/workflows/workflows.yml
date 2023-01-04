@@ -11,7 +11,7 @@ jobs:
           uses: oracle-actions/setup-java@v1
           with:
             website: oracle.com
-            release: 18
+            release: 19
         - name: Cache Gradle packages
           uses: actions/cache@v2
           with:
@@ -48,7 +48,6 @@ jobs:
         - name: Build and push
           uses: docker/build-push-action@v3
           with:
-            context: .
-            file: ./net.tangly.erp.ui/Dockerfile
+            context: "{{defaultContext}}:net.tangly.erp.ui"
             push: true
             tags: ${{ secrets.DOCKER_HUB_USERNAME }}/tangly-erp:latest

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,6 +12,7 @@
 
 package net.tangly.gleam.model;
 
+import net.tangly.commons.lang.Strings;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
@@ -36,6 +37,10 @@ public record TsvEntity<T>(Class<T> clazz, List<TsvProperty<T, ?>> fields, Suppl
 
     public static <T> TsvEntity<T> of(Class<T> clazz, List<TsvProperty<T, ?>> properties, Function<CSVRecord, T> imports) {
         return new TsvEntity<>(clazz, properties, null, imports, null);
+    }
+
+    public static String get(@NotNull CSVRecord csv, @NotNull String column) {
+        return Strings.emptyToNull(csv.get(column));
     }
 
     /**

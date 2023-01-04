@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -19,7 +19,6 @@ import net.tangly.erp.ledger.services.LedgerHandler;
 import net.tangly.erp.ledger.services.LedgerRealm;
 import org.jetbrains.annotations.NotNull;
 
-import javax.inject.Inject;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.UncheckedIOException;
@@ -49,7 +48,6 @@ public class LedgerHdl implements LedgerHandler {
     private final LedgerRealm ledger;
     private final Path folder;
 
-    @Inject
     public LedgerHdl(@NotNull LedgerRealm ledger, @NotNull Path folder) {
         this.ledger = ledger;
         this.folder = folder;
