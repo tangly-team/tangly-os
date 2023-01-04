@@ -1,5 +1,5 @@
 /*
- * Copyright 2021-2022 Marcel Baumann
+ * Copyright 2022-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -10,17 +10,17 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.erp.collabortors.domain;
+package net.tangly.ui.app;
 
-import lombok.Builder;
-import net.tangly.core.HasInterval;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.router.Route;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
+@Route("")
+public class MainView extends VerticalLayout {
 
-@Builder
-public record SwissPensionFunds(LocalDate from,
-                                LocalDate to,
-                                BigDecimal bvgPercentage,
-                                BigDecimal employerPercentage) implements HasInterval {
+    public MainView() {
+        TextField textField = new TextField("Your name");
+        add(textField);
+    }
 }
