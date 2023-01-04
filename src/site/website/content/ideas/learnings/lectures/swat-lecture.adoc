@@ -16,7 +16,7 @@ It is particularly suitable for students who are working on a larger software pr
 The course with 3 https://en.wikipedia.org/wiki/European_Credit_Transfer_and_Accumulation_System[ECTS] was taught at Swiss technical universities during this and the last decade.
 The themes are regularly updated to reflect actual trends and technical possibilities.
 
-Slides and reference literature are in English and published under link:../learnings/lectures/[Slides and Literature].
+Slides and reference literature are in English and published under link:../#agile-software-architecture-and-techniques-lectures[Slides and Literature].
 
 === Description
 
@@ -123,6 +123,6 @@ a| - Domain-Driven Development, ubiquitous language
 a|- Daily work of architects in agile environment
 |====
 
-References
+=== References
 
-bibliography:[]
+bibliography::[]

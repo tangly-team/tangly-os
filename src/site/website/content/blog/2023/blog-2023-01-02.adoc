@@ -21,11 +21,12 @@ He proposes and implements the IT strategy of the company.
 
 He intervenes at different levels in the management and optimization of the company's information system.
 
-This encompasses hardware and software infrastructures, information architecture, business tools, dedicated internal or external human resources, old technology.
+This encompasses hardware and software infrastructures, information architecture, business tools, dedicated internal or external human resources, and often old technology.
 
 The size of small and medium companies does not justify a full-time role.
 The IT manager shall be a part-time role.
 He shall also work in other roles.
+
 Ideally, he performs the financial and technical tasks associated with the IT department responsibilities.
 
 A modern IT leader works mainly on the tactical level.
@@ -46,11 +47,14 @@ Use a specialized academic support institution.
 Examples in Switzerland are https://www.switch.ch/[Switch] or the https://www.cscs.ch/[computing center of Ticino].
 . Use a commercial solution provided by a hyperscaler or tool provider.
 https://github.com/[Microsoft GitHub], https://about.gitlab.com/[GitLab], https://bitbucket.org/[Atlassian BitBucket] have academic programs to support universities.
+
+The IT responsible shall select the best alternative for his organization. Best means technically adequate and financially sound.
 ====
 
 === Areas of Works
 
 Every company is now a technology and software development company.
+
 Your organization needs an infrastructure to build, deliver and deploy digital software solutions cite:[accelerate,site-reliability-engineering].
 
 [quote,Marc Andreesen,2011]
@@ -59,10 +63,11 @@ Software is eating the world.
 ____
 
 Continuous Integration, Delivery and Deployment Pipeline::
-GitLab, GitHub, Bitbucket or Microsoft Azure platforms are the industrial standards for digital product development.
+https://about.gitlab.com/[GitLab], https://github.com/[GitHub], https://bitbucket.org/[Bitbucket] or https://azure.microsoft.com/[Microsoft Azure] platforms are the industrial
+standards for digital product development.
 Choose the most adequate for your developers.
 Deployment Platform::
-Kubernetes is the industrial standard for deploying software solutions.
+https://kubernetes.io/[Kubernetes] is the industrial standard for deploying software solutions.
 The major discussion is how you deploy your applications: locally, in the cloud or in a hybrid environment.
 The decision is tactical and shall regularly be revised to optimize running costs and fulfill corporate governance.
 Storage Solution::
@@ -75,7 +80,7 @@ Modern distributed organizations shall provide a secure and standardized approac
 Single sign-on and federated solution (FIDO, Edu ID) are current best practices.
 Machine Learning and Graphical Resources::
  Currently, graphic processors are the only approach to computing machine learning and big data problems and provide usable solutions.
-Security and Firewalls::
+Security, Audit, and Firewalls::
 Security and associated firewalls are mandatory to respect corporate governance and laws.
 Monitoring is a must for all enterprise relevant applications.
 Special solutions are seldom needed and shall be provided on a case basis.
@@ -88,10 +93,11 @@ An IT director can help the manager of an SME to respond to many problems, such 
 * How to choose an IT supplier or service provider?
 * Can multiple encodings of the same information be avoided?
 * Is integrated management software necessary?
-* How to choose a suitable tool?
-* Is the security of installations and computer access guaranteed?
+* How to choose a suitable tool or toolchain?
+* Is the security of installations and computer accesses guaranteed?
 * Is a backup procedure in place?
 Did you test the restore process?
+Is the restore process timely?
 * Are maintenance contracts being followed?
 * Are IT budgets optimized?
 * Are the IT teams properly sized and supported?
