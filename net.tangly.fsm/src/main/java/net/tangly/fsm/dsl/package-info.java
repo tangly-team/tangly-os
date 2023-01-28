@@ -34,7 +34,7 @@
  *
  * <h2>Create a FSM description with Builder</h2>
  * <p>Below an snippet showing how to construct a finites state machine decscription using the FSM builder.</p>
- * {@snippet file = "FsnWasherTest.java" region = "declare-fsm-washer-with-builder"}
+ * {@snippet file = "net/tangly/fsm/imp/FsmWasherTest.java" region = "declare-fsm-washer-with-builder"}
  */
 
 package net.tangly.fsm.dsl;

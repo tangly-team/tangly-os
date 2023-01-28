@@ -12,6 +12,11 @@
 
 package net.tangly.fsm.utilities;
 
+import net.tangly.fsm.State;
+import net.tangly.fsm.Transition;
+import net.tangly.fsm.dsl.FsmBuilder;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -22,11 +27,6 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
-
-import net.tangly.fsm.State;
-import net.tangly.fsm.Transition;
-import net.tangly.fsm.dsl.FsmBuilder;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Abstract generator to create a human-readable description of a finite state machine description.

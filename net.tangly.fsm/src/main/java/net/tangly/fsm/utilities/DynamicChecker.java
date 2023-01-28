@@ -12,13 +12,9 @@
 
 package net.tangly.fsm.utilities;
 
-import java.util.function.BiConsumer;
+import net.tangly.fsm.*;
 
-import net.tangly.fsm.Event;
-import net.tangly.fsm.State;
-import net.tangly.fsm.StateMachine;
-import net.tangly.fsm.StateMachineEventHandler;
-import net.tangly.fsm.Transition;
+import java.util.function.BiConsumer;
 
 /**
  * The finite state machine dynamic checker verifies the correctness of a state machine description. The following rules are applied. <uL> <li>Only one

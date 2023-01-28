@@ -13,9 +13,6 @@
 
 package net.tangly.fsm.imp;
 
-import java.util.Objects;
-import java.util.function.BiConsumer;
-
 import net.tangly.fsm.Event;
 import net.tangly.fsm.StateMachineEventHandler;
 import net.tangly.fsm.dsl.FsmBuilder;
@@ -24,12 +21,13 @@ import net.tangly.fsm.utilities.StateMachineLogger;
 import net.tangly.fsm.utilities.StaticChecker;
 import org.junit.jupiter.api.Test;
 
+import java.util.Objects;
+import java.util.function.BiConsumer;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 /**
  * The test class verifies the expected behavior of hierarchical machine declaration, instantiation of finite state machines, and firing of various

@@ -12,9 +12,9 @@
 
 package net.tangly.fsm.actors;
 
-import java.util.UUID;
-
 import org.jetbrains.annotations.NotNull;
+
+import java.util.UUID;
 
 /**
  * The actor abstraction provides an active actor object to process received messages.

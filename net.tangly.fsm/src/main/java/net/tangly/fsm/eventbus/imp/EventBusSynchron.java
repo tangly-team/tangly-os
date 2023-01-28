@@ -12,14 +12,14 @@
 
 package net.tangly.fsm.eventbus.imp;
 
+import net.tangly.fsm.eventbus.EventBus;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
-
-import net.tangly.fsm.eventbus.EventBus;
-import org.jetbrains.annotations.NotNull;
 
 public class EventBusSynchron implements EventBus {
     private final String name;
@@ -37,7 +37,7 @@ public class EventBusSynchron implements EventBus {
 
     @Override
     public <E> void register(@NotNull Consumer<E> consumer, @NotNull Class<? extends E> eventType) {
-        consumers.computeIfAbsent(eventType, HashSet::new).add(consumer);
+        consumers.computeIfAbsent(eventType, k -> new HashSet<Consumer<?>>()).add(consumer);
     }
 
     @Override

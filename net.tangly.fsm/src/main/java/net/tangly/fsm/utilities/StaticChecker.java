@@ -12,15 +12,10 @@
 
 package net.tangly.fsm.utilities;
 
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.HashSet;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.Set;
-
 import net.tangly.fsm.State;
 import net.tangly.fsm.Transition;
+
+import java.util.*;
 
 import static java.util.function.Predicate.not;
 
@@ -40,7 +35,7 @@ public class StaticChecker<O, S extends Enum<S>, E extends Enum<E>> implements C
     private final ResourceBundle bundle = ResourceBundle.getBundle(BUNDLE_NAME);
 
     public StaticChecker() {
-        
+
     }
 
     /**

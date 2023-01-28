@@ -47,7 +47,7 @@ public class EventBusAsynchron implements EventBus {
 
     @Override
     public <E> void register(Consumer<E> consumer, Class<? extends E> eventType) {
-        consumers.computeIfAbsent(eventType, ConcurrentSkipListSet::new).add(consumer);
+        consumers.computeIfAbsent(eventType, k -> new ConcurrentSkipListSet<Consumer<?>>()).add(consumer);
     }
 
     @Override

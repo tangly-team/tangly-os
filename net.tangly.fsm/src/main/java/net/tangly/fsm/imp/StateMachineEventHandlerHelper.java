@@ -12,14 +12,14 @@
 
 package net.tangly.fsm.imp;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.BiConsumer;
-
 import net.tangly.fsm.Event;
 import net.tangly.fsm.State;
 import net.tangly.fsm.StateMachineEventHandler;
 import net.tangly.fsm.Transition;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.BiConsumer;
 
 /**
  * Helper class to manage a set of state machine event handler implemented as a classical facade.

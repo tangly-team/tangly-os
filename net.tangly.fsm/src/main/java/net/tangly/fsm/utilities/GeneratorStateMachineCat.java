@@ -12,13 +12,13 @@
 
 package net.tangly.fsm.utilities;
 
-import java.io.PrintWriter;
-import java.util.Comparator;
-import java.util.Objects;
-
 import net.tangly.fsm.State;
 import net.tangly.fsm.dsl.FsmBuilder;
 import org.jetbrains.annotations.NotNull;
+
+import java.io.PrintWriter;
+import java.util.Comparator;
+import java.util.Objects;
 
 public class GeneratorStateMachineCat<O, S extends Enum<S>, E extends Enum<E>> extends Generator<O, S, E> {
     /**

@@ -12,12 +12,12 @@
 
 package net.tangly.fsm.utilities;
 
-import java.io.PrintWriter;
-import java.util.Comparator;
-
 import net.tangly.fsm.State;
 import net.tangly.fsm.dsl.FsmBuilder;
 import org.jetbrains.annotations.NotNull;
+
+import java.io.PrintWriter;
+import java.util.Comparator;
 
 /**
  * The generator creates graphical graph representations of a finite state machine in the graphical language of <a href="http://www.graphviz.org/">Graphviz

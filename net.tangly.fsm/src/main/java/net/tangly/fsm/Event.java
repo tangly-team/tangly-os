@@ -12,10 +12,10 @@
 
 package net.tangly.fsm;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Collections;
 import java.util.List;
-
-import org.jetbrains.annotations.NotNull;
 
 /**
  * The event is an immutable class containing the event with payload sent to the finite state machine. The event contains all the context information necessary

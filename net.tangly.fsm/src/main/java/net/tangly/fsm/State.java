@@ -12,14 +12,10 @@
 
 package net.tangly.fsm;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiConsumer;
-
 import org.jetbrains.annotations.NotNull;
+
+import java.util.*;
+import java.util.function.BiConsumer;
 
 /**
  * The state abstraction of a hierarchical finite state machine.

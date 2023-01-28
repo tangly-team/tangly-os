@@ -12,12 +12,12 @@
 
 package net.tangly.fsm.dsl;
 
+import net.tangly.fsm.Event;
+
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
-
-import net.tangly.fsm.Event;
 
 /**
  * Domain specific language fluent interface to configure a new transition.

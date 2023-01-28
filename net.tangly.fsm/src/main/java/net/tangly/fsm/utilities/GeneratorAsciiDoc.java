@@ -12,13 +12,13 @@
 
 package net.tangly.fsm.utilities;
 
-import java.io.PrintWriter;
-import java.util.Comparator;
-
 import net.tangly.fsm.State;
 import net.tangly.fsm.Transition;
 import net.tangly.fsm.dsl.FsmBuilder;
 import org.jetbrains.annotations.NotNull;
+
+import java.io.PrintWriter;
+import java.util.Comparator;
 
 /**
  * Generates a AsciiDoc description of the finite state machine declaration. A state has a name, a context, description, final flag, initial flag, composite

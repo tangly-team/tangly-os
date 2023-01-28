@@ -12,19 +12,17 @@
 
 package net.tangly.fsm.imp;
 
-import java.util.function.BiConsumer;
-
 import net.tangly.fsm.Event;
 import net.tangly.fsm.State;
 import net.tangly.fsm.dsl.FsmBuilder;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
+import java.util.function.BiConsumer;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 class FsmActionsTest {
     enum States {

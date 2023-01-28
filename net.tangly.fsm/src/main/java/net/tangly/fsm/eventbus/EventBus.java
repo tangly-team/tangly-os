@@ -12,10 +12,10 @@
 
 package net.tangly.fsm.eventbus;
 
-import java.util.function.Consumer;
-
 import net.tangly.fsm.eventbus.imp.EventBusAsynchron;
 import net.tangly.fsm.eventbus.imp.EventBusSynchron;
+
+import java.util.function.Consumer;
 
 public interface EventBus {
     record EventConsumer<E>(Object target, Class<E> eventType, Consumer<E> consume) {
