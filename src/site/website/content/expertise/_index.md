@@ -32,3 +32,5 @@ We promote
 - [LeSS](https://less.works/less/framework) at the product and departmental level,
 - Lean, [Beyond Budgeting](https://bbrt.org/), [Sociocracy](https://sociocracy30.org/) at the organization level,
 - Our technical expertise is in domain-driven design _DDD_ and the modern Java stack.
+
+We provide onsite trainings, workshops and coaching of agile software development teams.

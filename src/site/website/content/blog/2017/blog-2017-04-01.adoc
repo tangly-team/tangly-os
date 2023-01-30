@@ -22,7 +22,7 @@ Just go through the questions and ask yourself if the current product provides t
 === Joel Test
 
 The Joel Test is slightly outdated.
-Keep his questions and just do the following changes
+Keep his questions and just do the following changes:
 
 * Can you replace CVS with Git to reflect the current state of the industry?
 * Move from daily builds to continuous builds at check-in.
@@ -34,11 +34,11 @@ He will never again see the same issue.
 * For Microsoft developers, are you forced to use TFS instead of tools of your choice and why?
 * Are you testers and quality experts integrated into your Scrum team and sitting in the same room?
 Do you think about tester and quality as roles and not people?
-* Do new candidates code and perform refactoring to achieve clean code during their interview?
+* Do new candidates code and perform a refactoring to achieve clean code during their interview?
 
 http://www.codypowell.com/taods/2009/12/the-codypo-test-aka-8-questions-to-identify-a-lame-programming-job.html[8 Questions to identify a lame programming job].
 The questions are up-to-date.
-His final remark is worth remembering
+His final remark is worth remembering.
 
 No matter how great the potential projects and teammates might be, I don't think you can do truly meaningful work in an environment where you, the developer, aren't empowered to succeed.
 

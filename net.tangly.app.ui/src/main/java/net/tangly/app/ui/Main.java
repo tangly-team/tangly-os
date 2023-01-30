@@ -10,13 +10,13 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.ui.app;
+package net.tangly.app.ui;
 
-import com.vaadin.flow.component.dependency.CssImport;
-import com.vaadin.flow.component.page.AppShellConfigurator;
-import com.vaadin.flow.server.PWA;
+import com.github.mvysny.vaadinboot.VaadinBoot;
+import org.jetbrains.annotations.NotNull;
 
-@PWA(name = "Vaadin tangly Base Project", shortName = "Vaadin tangly")
-@CssImport("./styles/shared-styles.css")
-public class AppShell implements AppShellConfigurator {
+public final class Main {
+    public static void main(@NotNull String[] args) throws Exception {
+        new VaadinBoot().withArgs(args).run();
+    }
 }

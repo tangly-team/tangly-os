@@ -11,13 +11,15 @@ tags: ["agile", "git", "series-students"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2016-07-01-head.jpg[width=420, height=360, role=left]
+image::2016-07-01-head.jpg[width=420,height=360,role=left]
+
 You are working in a small collocated development team and decided to use branches to implement new features or fix errors.
 
 Here the cookbook to create, edit, merge and delete local and remote branches in Git (version 2.x).
 Git branches have two important qualities.
 
-* A branch is like an idea. Once you implemented the idea, feature or fix you just merge back to trunk and delete the branch.
+* A branch is like an idea.
+Once you implemented the idea, feature or fix you just merge back to trunk and delete the branch.
 * The history of the branch commits is still visible upon deletion of the branch.
 
 [NOTE]
@@ -47,14 +49,14 @@ link:../../2017/git-local-repositories-for-the-impatient/[Git Local Repositories
 
 Create new branch feat_#42 locally
 
-[source, shell]
+[source,shell]
 ----
 git checkout -b feat_#42
 ----
 
 Create the remote branch with the same name and initiate tracking, assuming your remote uses the standard default name origin.
 
-[source, shell]
+[source,shell]
 ----
 git push -u origin feat_#42
 ----
@@ -63,14 +65,14 @@ git push -u origin feat_#42
 
 Add your changes and commit them regularly.
 
-[source, shell]
+[source,shell]
 ----
 git commit -a -m “commit message describing activities for feat_#42“
 ----
 
-Upon running the unit tests locally, push the changes to repository
+Upon running the unit tests locally, push the changes to repository.
 
-[source, shell]
+[source,shell]
 ----
 git push
 ----
@@ -79,32 +81,33 @@ _Now you can test the branch from the central repository and deploy it to your c
 
 === Merge the Branch
 
-Switch to master and synchronize with your remote repository, the _-p_ parameter means __--prune__
+Switch to master and synchronize with your remote repository, the _-p_ parameter means __--prune__.
 
-[source, shell]
+[source,shell]
 ----
 git checkout master
 git fetch --all -p
 git pull
 ----
 
-Merge to master. The option --no-ff will always keep branch information.
+Merge to master.
+The option --no-ff will always keep branch information.
 
-[source, shell]
+[source,shell]
 ----
 git merge --no-ff feat_#42
 ----
 
 Or if you want a single commit to the complete branch.
 
-[source, shell]
+[source,shell]
 ----
 git merge —squash —no-ff feat_#42
 ----
 
 Push the changes.
 
-[source, shell]
+[source,shell]
 ----
 git push
 ----
@@ -115,25 +118,26 @@ For advanced users, you can first rebase your branch and squash superfluous comm
 
 Delete the remote branch (also _git branch -dr origin/feat_#42_).
 
-[source, shell]
+[source,shell]
 ----
 git push origin --delete feat_#42
 ----
 
 Delete the local branch.
 
-[source, shell]
+[source,shell]
 ----
 git branch -d feat_#42
 ----
 
-You are done. Now you are ready to implement the next feature.
+You are done.
+Now you are ready to implement the next feature.
 
 === View local and remote Branches
 
 If you want to view branches, use the following commands for the local branches.
 
-[source, shell]
+[source,shell]
 ----
 git branch
 git branch --no-merged
@@ -141,7 +145,7 @@ git branch --no-merged
 
 If you want to view remote branches.
 
-[source, shell]
+[source,shell]
 ----
 git branch -r
 git branch -r --no-merged
@@ -151,7 +155,7 @@ Checkout remote Branch.
 
 The -p parameter means --prune
 
-[source, shell]
+[source,shell]
 ----
 git fetch --all -p
 git checkout #feat_42

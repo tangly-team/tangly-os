@@ -14,13 +14,7 @@ package net.tangly.core;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.iban4j.BicFormatException;
-import org.iban4j.BicUtil;
-import org.iban4j.IbanFormat;
-import org.iban4j.IbanFormatException;
-import org.iban4j.IbanUtil;
-import org.iban4j.InvalidCheckDigitException;
-import org.iban4j.UnsupportedCountryException;
+import org.iban4j.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;

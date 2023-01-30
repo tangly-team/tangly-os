@@ -35,7 +35,7 @@ GitLab, GitHub, Atlassian and JetBrain Tool Stacks
 
 {{< cardpane >}}
 {{< card header="**Java Technology Stack**" >}}
-Java Expert (11, 17, 18)
+Java Expert (11, 17, 19)
 
 [Migrate to lambda and streams](../../blog/2021/modern-java-development/)
 

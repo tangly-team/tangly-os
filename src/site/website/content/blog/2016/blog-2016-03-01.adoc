@@ -48,11 +48,11 @@ The tools I really enjoy and use on a daily basis for software development – m
 * https://brew.sh/[Homebrew] as package manager for utilities,
 * Docker as container manager,
 * VirtualBox when I need a full-fledged virtual machine,
-footnote:[The need of virtual machines for daily work is fading away].
+footnote:[The need of virtual machines for daily work is fading away.].
 
 === Daily Work
 
-I use these tools to perform administrative work are
+The tools I use to perform administrative work are:
 
 * https://www.libreoffice.org/[LibreOffice],
 * Google Business for team work in the cloud using collaborative tools,

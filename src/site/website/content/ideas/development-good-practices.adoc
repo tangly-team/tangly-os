@@ -5,7 +5,7 @@ weight: 25
 description: good practices
 ---
 
-==  Good Practices for Enterprise Java Solutions"
+==  Good Practices for Enterprise Java Solutions
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :description: Design conventions for the open source components of tangly

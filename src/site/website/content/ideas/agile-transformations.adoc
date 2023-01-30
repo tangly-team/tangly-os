@@ -2,7 +2,7 @@
 title: "Agile Transformations"
 date: 2019-05-01
 weight: 80
-description: Recipes for agile transformation initatives
+description: Recipes for agile transformation initiatives
 ---
 
 == Agile Transformations
@@ -21,11 +21,11 @@ We are pragmatic engineers.
 
 We collect first the low-hanging fruits.
 
-First digital steps are often straightforwad to implement.
+First digital steps are often straightforward to implement.
 
 First steps in the agile journey feel natural.
 
-Developing digital products with DevOps, Scrum and DecSecOps approaches are industry standard appraoaches.
+Developing digital products with DevOps, Scrum and DecSecOps approaches are industry standard approaches.
 
 The next iterations are often more challenging.
 ====
@@ -41,7 +41,7 @@ Establish leadership situation awareness, discovery of weaknesses and kickoff of
 Organize your collaborators and workflow around your products and strategy::
 * Design a custom transformation approach with immediately actionable steps.
 * Select a few pilot groups for launch and involve all participants – open space meeting, information radiators -.
-* Create a coherent, actionable backlog which connects strategy to execution, so the entire organization is aligned around shared goals.
+* Create a coherent, actionable backlog, which connects strategy to execution, so the entire organization is aligned around shared goals.
 * Identify indicators to measure progress.
 * Build team level backlogs so the entire organization is aligned around shared goals.
 * Work with leadership to discover and address organizational pain points and challenges.
@@ -67,7 +67,7 @@ Professional teams are required for awesome products.
 
 We reinforce learning theory, streamline how to apply agile principles and experiments, help you to develop a routine, promote awareness, boost ownership, facilitate barrier removal, and avoid painful or costly dead ends.
 Our goal is to shorten the learning curve and optimize human and financial investments.
-We truly believe in the first directive
+We truly believe in the first directive.
 
 [quotem Norm Kerth]
 ____

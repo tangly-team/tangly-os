@@ -120,7 +120,7 @@ It is published under the MIT license.
 * https://gogs.io/[Gogs] is a painless self-hosted Git service.
 The project is hosed on GitHub.
 * https://gitolite.com/[Gitolite] allows you to set up git hosting on a central server.
-It has fine-grained access control and many more powerful features.
+It has fine-grained access control, and many more powerful features.
 
 Schools often select https://about.gitlab.com/[GitLab] due to his open source license and the tremendous DevOps functionality.
 The gitlab solution supports source code versioning, DevOps pipelines, agile development approaches, and quality insurance for the produced artifacts.
@@ -207,7 +207,7 @@ See our blog link:../../2016/git-branches-for-the-impatient[Git Branches for the
 
 image::2021-01-03-cicd_pipeline.png[720,480,role=left]
 
-The minimal gradle build file of a Java project is very simple and compact
+The minimal gradle build file of a Java project is very simple and compact.
 
 [source,gradle]
 ----
@@ -315,7 +315,7 @@ You should write unit and integration tests for your Java application using:
 
 === How to Document Your Project
 
-Static code generators are becoming the standard approach for technical documentation.
+Static code generators are becoming the standard approach for the technical documentation.
 One huge advantage is you can check the whole documentation into your git repository.
 You have a synchronisation between a released version of your application and the corresponding documentation.
 Both are stored in the same repository and can be marked with a version label You can use:
@@ -439,7 +439,7 @@ Read the post link:../../2016/git-branches-for-the-impatient[Git Branches for th
 
 Read the documentation of GitLab, BitBucket or GitHub.
 You will use pull requests if you are working in a team for a project.
-Sadly, students rareley work teams during their studies.
+Sadly, students rarely work teams during their studies.
 
 [bibliography]
 === Links

@@ -2,7 +2,7 @@
 title: "Select An Agile Software Development Partner"
 linkTitle: "Select A Partner"
 date: 2023-01-01
-tags: ["agile"]
+tags: ["agile", "organization"]
 ---
 
 == Select An Agile Software Development Partner
@@ -15,11 +15,16 @@ image::2023-01-01-head.png[width=420,height=360,role=left]
 
 It is not unusual for businesses to turn to third-party companies when they want help to achieve their goals without increasing internal overhead.
 
-This type of outsourcing is especially common for projects that require tremendous amounts of effort or specific skill sets.
+This type of outsourcing is especially common for projects that require tremendous amounts of effort or specific skill sets
+footnote:[The demography change and the low unemployment rate make timely recruiting of professional engineers an almost impossible task.].
 
 Time constraints are often a supplemental driving factor.
 
-Partnering up with another business to help meet your needs is a viable and widespread solution.
+Partnering up with another business to help meet your needs is a viable and widespread solution
+footnote:[Another approach is to build an internal group and develop the solution.
+The costs of a team with ten collaborators and an investment horizon of five years would be at least 10 MCHF in Switzerland.
+It is a steep investment that takes time to be planned in a regular organization.
+The time and the readiness to invest are often not available in a timely manner.].
 It often makes sense for businesses trying to tackle a massive software development project while focusing on the current needs of their clients.
 
 === Evaluation

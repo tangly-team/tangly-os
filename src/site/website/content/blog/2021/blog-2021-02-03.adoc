@@ -20,7 +20,7 @@ We share documents and results through digital platforms.
 
 I truly hope we continue to work online in the future.
 I would like to mix home office, local coworking space, and regular office attendance.
-I am convinced less commute time and a greener approach to work are certainly great improvements.
+I am convinced less commute time, and a greener approach to work are certainly great improvements.
 
 I would also state an obvious fact.
 My infrastructure at home is better.
@@ -43,14 +43,14 @@ Do not send invitations in the Outlook proprietary format.
 I use macOS and Linux, not Microsoft and Office.
 * Send me a meaningful invitation.
 Provide
-** Purpose and goals of the meeting,
-** an agenda - ideally each item has a tentative duration -,
-** an attendee list - normally visible in the ICS invitation -,
+** Purpose and goals of the meeting.
+** an agenda - ideally each item has a tentative duration -.
+** an attendee list - normally visible in the ICS invitation -.
 ** attach the documents I shall read before the meeting in the invitation.
 You can also provide links to the documents.
 Please do not require a login to access the document.
 * add the link and password for the online conference such as Zoom, Google Hangouts, Webex, Slack, or Microsoft Teams. +
-For a physical meeting, please provide room identification and some information about how to get to the location.
+For a physical meeting, please provide room identification, and some information about how to get to the location.
 I do not know where the meeting room _Dijkstra-R1-8.815_ is.
 
 You are responsible that all mandatory invitees will attend the meeting.
@@ -69,7 +69,7 @@ The newer versions of major tools from Microsoft, Google, Cisco now include work
 If you are responsible for the meeting event, please:
 
 . Check at the beginning of the meeting, that all attendees have studied the provided documentation.
-You should politely asked unprepared attendees to leave the meeting
+You should politely ask unprepared attendees to leave the meeting
 footnote:[If meeting preparation is difficult in your organization, implement the Amazon meeting rules.
 Amazon adds a silent half an hour block at the beginning of the meeting to allow attendees to read the documentation.
 It is silent time, everybody reads; nobody talks.].

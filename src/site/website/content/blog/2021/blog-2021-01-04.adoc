@@ -62,7 +62,7 @@ image::2021-01-04-devOps.png[720,480,role=left]
 Students shall be fluent with
 
 * Static code analysis.
-The Intellij IDEA provides an _analysis_ function for static code analysis.
+The IntelliJ IDEA provides an _analysis_ function for static code analysis.
 The IDE environment is free for students.
 * Unit tests and integration tests Use the seminal libraries _JUnit5_, _Mockito_, and _AssertJ_
 * Continuous integration pipeline uses the CI pipeline of your product management tool; either _GitLab_, _GitHub_, _Bitbucket_, or _Azure DevOps_.

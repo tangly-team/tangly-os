@@ -66,19 +66,19 @@ The scientific approach is key for professionalism.
 
 Use the findings to improve through small experiments.footnote:[Tool examples for the Java stack are provided to bootstrap your empirical approach.]
 
-* Static analysis tools – validate your source code against good practice rules -,
+* Static analysis tools: validate your source code against good practice rules,
 ** _https://www.sonarlint.org[SonarLint], https://sonarcloud.io[SonarCloud], https://spotbugs.github.io/[Spotbugs], https://pmd.github.io/[PMD],
 https://checkstyle.sourceforge.io[Checkstyle]_
-* Test driven development - validate your design with TDD -.
+* Test driven development: validate your design with TDD.
 ** _https://junit.org/junit5[Junit5], https://joel-costigliola.github.io/assertj[AssertJ], https://site.mockito.org[Mockito]_
 * Acceptance test driven development - validate your functional requirements with ATDD -.
 ** _https://jbehave.org/[JBehave], {company} BDD_
-* Fitness functions - validate your non-functional requirements automatically -.
+* Fitness functions: validate your non-functional requirements automatically.
 ** _Micro Profile, VisualVM, ELK_
-* Pair programming – improve the produced artifacts through the wisdom of the crowd —.
+* Pair programming: improve the produced artifacts through the wisdom of the crowd.
 ** _No tools_, it is a practice
-* Pair review and pull requests – validate your developers' work -.].
-** _Bitbucket, Github, IntelliJ IDEA Git Pull Support_.
+* Pair review and pull requests: validate your developers' work.
+** _Github, GitLab, Bitbucket, IntelliJ IDEA Git Pull Support_.
 
 The above validation activities shall always be backed through tools and integrated in your continuous delivery pipeline.
 Beware these tools can only detect non-quality and never provide a proof you achieved your expected quality.
@@ -399,7 +399,7 @@ The well-established practices from the object-oriented and DevOps communities a
 * Aggressive refactoring and understand technical debt.
 * Continuous integration, continuous delivery, and continuous deployment.
 
-For a detailed discussion, consult the post :link../../blog/2018/pragmatic-craftsmanship-professional-software-developer/[Pragmatic Craftsmanship].
+For a detailed discussion, consult the post link.././blog/2018/pragmatic-craftsmanship-professional-software-developer/[Pragmatic Craftsmanship].
 
 === What is the Architect Role?
 

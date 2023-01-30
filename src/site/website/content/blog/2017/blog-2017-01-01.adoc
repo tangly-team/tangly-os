@@ -44,7 +44,8 @@ This article is not about http://www.scrum.org/ScrumBut[Scrum But] impediments d
 
 We are talking about misunderstandings once you have reached this first level of mastership.
 Before talking about misunderstandings, we should remember the most important facet of Scrum.
-*Scrum is all about ROI.* Scrum was defined because the founders were convinced you could develop more effectively better products with higher value.
+*Scrum is all about ROI.*
+Scrum was defined because the founders were convinced you could develop more effectively better products with higher value.
 
 === The essence of Scrum is ROI
 
@@ -96,7 +97,7 @@ We often forget the Pareto rule, 80% of all solutions are found in 20% of the ti
 Is it worth the time to find a slightly better solution for the remaining 20% of the problems?
 In Scrum terminology,
 
-" it is also 20% less important.
+" It is also 20% less important.
 " Meeting costs versus solved issues. Meetings cost money.
 Meeting with eight people and of a duration of 30 minutes cost in Switzerland around 600 Swiss Francs or 500 Euro.
 
@@ -139,8 +140,8 @@ This concept was described in the mythical man-month book by Fredericks Brook Ju
 
 A T person is a master in one technical area
 
-- this is the leg of the T
-- and knows about a lot of domains. This is the roof of the T.
+- This is the leg of the T
+- And knows about a lot of domains. This is the roof of the T.
 
 In fact, Square-shaped team members would be better but are very hard to find.
 To increase your ROI, the specialist of the team should perform the tasks it is best suited for.

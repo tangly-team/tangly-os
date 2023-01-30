@@ -32,14 +32,14 @@ public interface Handler<R extends Realm> {
      *
      * @see #exportEntities()
      */
-    void importEntities();
+    default void importEntities() {}
 
     /**
      * Export all entities of the bounded domain to the file system.
      *
      * @see #importEntities()
      */
-    void exportEntities();
+    default void exportEntities() {}
 
     /**
      * Return the realm containing all the entities of the bounded domain.

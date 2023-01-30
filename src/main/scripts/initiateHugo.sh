@@ -31,9 +31,9 @@ npm install
 
 # install postcss (https://postcss.org/)) for final generation of site
 cd $siteDir
-sudo npm install -D autoprefixer
-sudo npm install -D postcss-cli
-sudo npm install -D postcss
+npm install -D autoprefixer
+npm install -D postcss-cli
+npm install -D postcss
 
 # initiate empty public folder with git to enable optional completion step and publishing in our pages repository (GitHub, GitLab, orBitBucket)
 git clone --no-checkout git@github.com:tangly-team/tangly-team.github.io.git public

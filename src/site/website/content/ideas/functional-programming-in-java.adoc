@@ -32,7 +32,7 @@ description: Functional programming in modern Java
 |Focuses on the result desired and its final conditions.
 |Focuses on how the desired result can be achieved.
 
-|Ensures immutability; programs should be stateless.
+|Ensure immutability; programs should be stateless.
 |State changes are an important part of the execution.
 
 |Primary activity is writing new functions and +
@@ -54,8 +54,8 @@ Such data structures are effectively immutable, as their operations do not visib
 https://en.wikipedia.org/wiki/Higher-order_function[Higher Order Functions]::
 In computer science, a higher-order function is a function that does at least one of the following:
 
-* takes one or more functions as arguments
-* returns a function as its result
+* Takes one or more functions as arguments
+* Returns a function as its result
 https://en.wikipedia.org/wiki/Pure_function[Pure Functions]::
 The function return values are identical for identical arguments (no variation with local static variables, non-local variables, mutable reference arguments or input streams).
 The function application has no side effects (no mutation of local static variables, non-local variables, mutable reference arguments or input/output streams).
@@ -66,7 +66,7 @@ asciimath:[X → Z].
 https://en.wikipedia.org/wiki/Lambda_lifting[Lambda Lifting]::
 is a meta-process that restructures a computer program so that functions are defined independently of each other in a global scope.
 An individual "lift" transforms a local function into a global function.
-It is a two steps process:
+It is a two-steps process:
 Eliminating free variables in the function by adding parameters Moving functions from a restricted scope to broader or global scope.
 https://en.wikipedia.org/wiki/Currying[Currying]::
 In computer science, currying is the technique of converting a function that takes multiple arguments into a sequence of functions that each take a single argument.
@@ -125,9 +125,9 @@ assert(left.equals(right));
 
 The first thing we need is a parameterized type M<T>, which is a wrapper for our value of type T. Our type must implement two functions:
 
-* unit which is used to wrap our value and has a following signature asciimath:[(T) = M<T>].
-* bind is responsible for performing operations.
-Here we pass a function which operates on value in our context and returns it with other type already wrapped in context.
+* Unit which is used to wrap our value and has a following signature asciimath:[(T) = M<T>].
+* Bind is responsible for performing operations.
+Here we pass a function, which operates on value in our context and returns it with another type already wrapped in context.
 This method should have the following signature asciimath:[(T -> M<U>) = M<U>].
 
 To make it more understandable, I will use Optional one more time and show what the above structure looks like in its case.

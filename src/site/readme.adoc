@@ -22,7 +22,7 @@ How to kill the hugo process hanging in a port:
 The header template was adapted to support AsciiMath typesetting in the browser.
 
 The footer template was adapted to support the specific needs of the tangly OS documentation static website.
-The open source copyright of our site is not well displayed in the standard footer template
+The open source copyright of our site is not well displayed in the standard footer template.
 
 * layouts/partials/header.html
 * layouts/partials/footer.html
@@ -32,7 +32,7 @@ The open source copyright of our site is not well displayed in the standard foot
 For the attachment feature we added:
 
 * assets/scss/shortcodes.scss
-* assets/scss/main.scss _added import of the shortcodes.scss styling
+* assets/scss/main.scss _added import of the shortcodes.scss styling.
 * layouts/shortcodes/attachments.html
 
 ==== Comments
@@ -46,6 +46,6 @@ For the comment feature we added:
 
 Exploration was started to improve the styling of https://asciidoc.org[asciidoc] documents:
 
-* assets/scss/_asciidoctor.scss _used to better style asciidoc documents_
-* assets/scss/_shortcodes_.scss _used by the attachment extension_
-* assets/scss/_styles_projects.scss _regular extension hook for Hugo Docsy template_
+* assets/scss/_asciidoctor.scss _used to better style asciidoc documents_.
+* assets/scss/_shortcodes_.scss _used by the attachment extension_.
+* assets/scss/_styles_projects.scss _regular extension hook for Hugo Docsy template_.

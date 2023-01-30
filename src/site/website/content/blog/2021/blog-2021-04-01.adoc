@@ -28,7 +28,7 @@ Polishing of functional programming approach improved my source code quite stupe
 Java 16 fully supports https://en.wikipedia.org/wiki/Algebraic_data_type[Algebraic Data Types] with the https://openjdk.java.net/jeps/395[record] and
 https://openjdk.java.net/jeps/397[sealed types] features.
 
-An immutable data class including constructor, getters, _equals(Object o)_, _hashCode()_, and _toString()_ can be declared in one line:
+An immutable data class including a constructor, getters, _equals(Object o)_, _hashCode()_, and _toString()_ can be declared in one line:
 
 [source,java]
 ----

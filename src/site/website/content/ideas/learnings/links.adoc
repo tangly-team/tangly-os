@@ -24,7 +24,7 @@ These sites and blogs are a source of knowledge and experience.
 * {ref-scrum-org}
 ** https://www.scrum.org/resources/blog/[Scrum.org Blog]
 ** https://www.scrum.org/resources/suggested-reading-professional-scrum-master-ii/[Scrum Master Reading List]
- Scrum masters shall read these books to achieve proficiency
+ Scrum masters shall read these books to achieve proficiency.
 * https://less.works/[LeSS] - extensive documentation on important aspects using Large Scaled Scrum approach -
 * https://www.mountaingoatsoftware.com/blog[Mike Cohn Blog]
 * https://www.romanpichler.com/blog/[Roman Pichler Blog] especially for product owners
@@ -37,14 +37,14 @@ These sites and blogs are a source of knowledge and experience.
 ** Kniberg has also very professional and interesting YouTube presentations
 * https://martinfowler.com[Martin Fowler Blog] Martin Fowler is working at Thoughtworks and has written seminal books
 * https://leanarch.eu/[Viktor Grgic Blog]
-* Stefan Wolpers https://age-of-product.com/[Age of Product Blog] tons of materials and a weekly newsletter with links to interesting articles
+* Stefan Wolpers https://age-of-product.com/[Age of Product Blog] tons of materials, and a weekly newsletter with links to interesting articles
 ** link:../../../blog/[tangly Blog] our learnings over the years with the support of our customers -
 
 === Seminal references are found under
 
 * https://agilemanifesto.org/[Agile Manifesto] – also read the https://agilemanifesto.org/principles.html[12 principles] of the manifesto
 * https://scrumguides.org/[Scrum Guide] - the seminal work defining what Scrum is from https://en.wikipedia.org/wiki/Jeff_Sutherland[Jeff Sutherland] and
-https://en.wikipedia.org/wiki/Ken_Schwaber[KenSchwaber] - _Read the history section to understand the evolution of the guide over the years_
+https://en.wikipedia.org/wiki/Ken_Schwaber[KenSchwaber] - _Read the history section to understand the evolution of the guide over the years_.
 
 === Knowledge Facts
 

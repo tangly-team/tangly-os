@@ -16,10 +16,6 @@ The talk _Why Organizational Agility Depends on Technical Excellence!_ was held 
 * Scrum User Group Zürich, 2020-02-19
 * .NET User Group Bern, 2020-03-09
 
-{{< attachments folder="usergroups" recursive=false exclude=".md,.adoc" title="Talks" >}}
+{{< attachments folder="talks-slides" recursive=false exclude=".md,.adoc" title="Talks" >}}
 Agile and Technical Excellence Talks
 {{< /attachments >}}
-
-
-
-

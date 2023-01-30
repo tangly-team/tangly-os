@@ -137,7 +137,7 @@ In all our mandates, one major activity is improving the legacy code.
 Legacy code is *Code without tests*
 
 [.text-center]
-Legacy code is *Profitable code that we feel afraid to change*
+Legacy code is *Profitable code that we feel afraid to change*.
 
 === How Much Coaching?
 
@@ -155,7 +155,7 @@ External team coaches who help the teams become better and focus on training the
 External technical coaches who focus on training internal technical coaches
 
 Have some technical coaches work with the teams, but let them focus on training internal coaches.
-After that reduce (not eliminate!) the external technical coaching or let the external coach move to a new area.
+After that reduce _not eliminate!_ the external technical coaching or let the external coach move to a new area.
 
 === Be Patient, The Time Horizon is Years
 

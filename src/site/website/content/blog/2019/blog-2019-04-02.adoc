@@ -22,9 +22,11 @@ So I went to macOS and Apple notebooks without regrets.
 
 === Gains
 
-The major gains using macOS are * Still no virus scanner is necessary, the speed-up during complex programming and development activities is tremendous, * No trouble when updating OS, updates are automatic and often no new start is required, Unix command line and tools are available in the console.
-Homebrew provides all known and less-known utilities and programs available under Linux.
+The major gains using macOS are
 
+* Still no virus scanner is necessary, the speed-up during complex programming and development activities is tremendous,
+* No trouble when updating OS, updates are automatic and often no new start is required, Unix command line and tools are available in the console.
+Homebrew provides all known and less-known utilities and programs available under Linux.
 * My previous MacBook is now six years old and still used as a development backup platform.
 The performance is still very good.
 * My preferred IDE Intellij IDEA works flawlessly on macOS.

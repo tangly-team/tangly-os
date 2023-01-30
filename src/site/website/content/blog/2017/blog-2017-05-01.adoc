@@ -36,7 +36,7 @@ How your highly qualified teams develop software shall become more effective and
 
 First comes quality, effectiveness and only later efficiency.
 Look at https://en.wikipedia.org/wiki/Lean_software_development[lean methods].
-First we improve the quality-effectiveness for the customer, then the productivity and efficiency for the company.
+First, we improve the quality-effectiveness for the customer, then the productivity and efficiency for the company.
 
 === Minimum Viable Change
 

@@ -13,11 +13,7 @@
 package net.tangly.core.crm;
 
 
-import net.tangly.core.Address;
-import net.tangly.core.NamedEntityImp;
-import net.tangly.core.PhoneNr;
-import net.tangly.core.Strings;
-import net.tangly.core.Tag;
+import net.tangly.core.*;
 
 import java.util.Objects;
 import java.util.Optional;

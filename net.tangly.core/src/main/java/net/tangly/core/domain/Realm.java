@@ -47,4 +47,7 @@ public interface Realm extends AutoCloseable {
             }
         });
     }
+
+    @Override
+    public default void close() throws Exception {};
 }

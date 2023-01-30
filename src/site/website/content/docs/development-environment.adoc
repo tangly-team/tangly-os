@@ -1,0 +1,136 @@
+
+---
+title: "Development Environment"
+linkTitle: "Development Environment"
+weight: 1050
+date: 2020-09-10
+description: Development Environment for tangly OS
+---
+
+== Development Environment
+
+The development environment is MacOS
+footnote:[It is nonsense to use Microsoft Windows to develop applications in Java.
+Use macOS or Linux operating systems.
+You do not need to install a virus scanner or a special personal firewall.].
+
+=== Java JDKs
+
+Install Java development kits. You should at least install the last released version and the last LTS version.
+We use the distributions of Oracle.
+
+[source, bash]
+----
+alias java17 = "export JAVA_HOME=`/usr/libexec/java_home -v 17`; java -version"
+alias java19 = "export JAVA_HOME=`/usr/libexec/java_home -v 19`; java -version"
+alias java20 = "export JAVA_HOME=`/usr/libexec/java_home -v 20`; java -version"
+----
+
+=== Tools
+
+We use https://brew.sh/[brew] to install. The following tools shall be installed:
+
+- asciidoctor
+- hugo
+- git
+- ghostscript
+- gradle
+- graphviz
+- maven
+- graphviz
+- hugo
+- mermaid-cli
+- node
+- plantuml
+- rsync
+- wget
+
+=== IntelliJ IDEA
+
+All development activities are performed with IntelliJ IDEA IDE.
+
+The following plugins shall be installed
+
+- Antlr
+- AsciiDoc
+- Grazie Professional
+- SonarLint
+- Statistics
+
+=== Git and ssh keys
+
+You can generate an SSH key with the following commands
+
+[source, bash]
+----
+ssh-keygen -t ed25519 -C "marcel.baumann@tangly.net" <1>
+----
+<1> Replace with your email address you are registered with in your GitHub or GitLab account.
+
+The _config_ file stored in your _~/.ssh_ directory to select the key accordingly to the host.
+
+[source, yaml]
+----
+Host bitbucket.org
+  HostName bitbucket.org
+  IdentityFile ~/.ssh/marcel-baumann-tangly              <1>
+Host github.com
+  HostName github.com
+  IdentityFile ~/.ssh/marcel-baumann-tangly              <1>
+Host gitlab.com
+  Hostname gitlab.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/marcel-baumann-tangly              <1>
+Host gitlab.enterprise.ch
+  HostName gitlab.enterprise.ch
+  IdentityFile ~/.ssh/marcel-baumann-hslu                <1>
+----
+<1> Replace with the name of the file containing your ssh key.
+
+[source, bash]
+----
+git config --global user.name "marcelbaumann"
+git config --global user.email "marcel.baumann@tangly.net"
+----
+
+=== Static website
+
+Install the following additional packages for asciidoctor to work without errors.
+
+[source, bash]
+----
+gem install asciidoctor-diagram
+gem install asciidoctor-bibtex
+gem install rouge
+----
+
+=== Tricks
+
+==== Backup of Local Development Artifacts
+Local Git repositories cannot be stored on a local cloud drive.
+You will get repository corruptions due to the way the could drive performs synchronization.
+
+It would be nice to have a way to back up local changes to the cloud to avoid losses.
+Please, do not use your remote git repository as a backup medium.
+
+The following approach works nicely for us:
+
+* create a bare git repository on a local cloud drive.
+* add a remote to your project to store changes into the local bare repository.
+* now you can just commit and push changes to your _git backup repository_.
+* once you have completed a feature, push the changes as usual to your regular remote git repository.
+
+[source, bash]
+----
+git init -bare                                                                          <1>
+git add remote backup /Volumes/GoogleDrive/My Drive/tangly/08-Data/git/tangly-os.git    <2>
+git push backup master                                                                  <3>
+----
+<1> Create a bare repository
+<2> Add a remote for the backup repository to the tangly-os project
+<3> Pushes the changes to the backup repository. The cloud folder will be replicated to the cloud for backup.
+
+==== npm Troubles
+
+* Do not use _sudo_ when installing _node_ or _npm_.
+* Delete _~/.npm_ to enable updates if you once used _sudo_ to install extensions for node.

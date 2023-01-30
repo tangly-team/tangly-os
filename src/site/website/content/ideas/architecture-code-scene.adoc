@@ -21,21 +21,21 @@ Git is the de facto standard for version management systems. Git contains the wh
 areas under repetitive change or often needing fixing. In parallel, the evolution of the source code hints us for complexity hotspots.
 
 The three areas of statistical data are combined to identify the most promising area for refactoring.
-* History of commits reflecting the behavior and priorities of team members over time
-* Evolution of source code artifacts reflecting changes in complexity and legibility
-* Corrections of identified defects and their location identify non-quality hotspots
+* History of commits reflecting the behavior and priorities of team members over time.
+* Evolution of source code artifacts reflecting changes in complexity and legibility.
+* Corrections of identified defects and their location identify non-quality hotspots.
 
 The provided tools extract the requested indicators and present them graphically. The findings are used to support refactoring prioritization.
 
 === Requirements
 
-. Gather changes in the repository artifacts over a specified time interval
-  .. the gathered data are date of change, the author of change, number of added lines and of removed lines
-  .. each file change is gathered
-  .. only the version management system __git__ is supported
-. Gather complexity metrics over source code artifacts – classes and packages – over a specified time interval
-. Gather location and time when identified defects were fixed in the source code repository
-  .. use the official conventions to identify a closed ticket in a commit comment
+. Gather changes in the repository artifacts over a specified time interval.
+  .. The gathered data are date of change, the author of change, number of added lines and of removed lines.
+  .. Each file change is gathered.
+  .. Only the version management system __git__ is supported.
+. Gather complexity metrics over source code artifacts – classes and packages – over a specified time interval.
+. Gather location and time when identified defects were fixed in the source code repository.
+  .. use the official conventions to identify a closed ticket in a commit comment.
 
 
 === Modules, Packages, Classes and Files

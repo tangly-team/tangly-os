@@ -42,15 +42,15 @@ a| - Single abstract method _SAM_ interface and abstract class
 |Lecture 3
 |Modules
 a| - Module concepts and declarations cite:[java-9-modularity]
-- Create services
-- Migrate Java legacy applications to a module structure
+- Create and deploy services
+- Modernize Java legacy applications and migrate them to a module structure
 
 |Lecture 4
-|Structured Programming with Loom
+|Structured Concurrency with Loom
 a|- Virtual threads
 - Executors
-- Structured programming
-- Do we still need asynchronous programming?
+- Structured concurrency
+- Do we still need asynchronous programming or asynchronous frameworks?
 |====
 
 === References

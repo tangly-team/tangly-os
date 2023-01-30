@@ -22,14 +22,14 @@ I worked with quite a few Scrum Masters, Product Owners, and Scrum teams.
 My experience shows it is more productive and effective when the Scrum Master works full-time as (see
 http://www.barryovereem.com/the-8-stances-of-a-scrum-master/[white paper of Barry Overeem])
 
-. a servant leader
-. a coach
-. a facilitator
-. a teacher
-. a mentor
-. an impediment remover
-. a change agent
-. a manager (please restrain yourself)
+. A servant leader
+. A coach
+. A facilitator
+. A teacher
+. A mentor
+. An impediment remover
+. A change agent
+. A manager (please restrain yourself)
 
 He should not implement stories.
 A Scrum Master is under huge stress being a development team member and having to balance their Scrum Master responsibilities against the commitment of the sprint goals.

@@ -190,7 +190,7 @@ Scrum Alliance. 2021
 - [[[scrum-developer-advanced-learning-objectives-examples, 4]]]
 https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Certifications/CSD/E_A_CSD_LO_examples_2021.pdf[Scrum
  Alliance Certified Scrum Advanced Developer Learning Objectives Examples].
-Scrum Alliance. 2017
+Scrum Alliance. 2017-2021
 - [[[scrum-developer-professional-learning-objectives, 5]]]
 https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Learning%20Objectives/E_CSP_D_LO_2021.pdf[Scrum Alliance
 Certified Scrum Professional Developer Learning Objectives].

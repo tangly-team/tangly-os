@@ -13,7 +13,6 @@
 rootProject.name = 'tangly'
 
 include 'net.tangly.app.ui'
-
 include 'net.tangly.bdd'
 include 'net.tangly.bib'
 include 'net.tangly.commons'

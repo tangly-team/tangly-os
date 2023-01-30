@@ -2,7 +2,7 @@
 title: "Scrum Masters and Agile Coaches"
 linkTitle: "Masters vs Coaches"
 date: 2023-03-15
-tags: ["java", "architecture"]
+tags: ["scrum"]
 ---
 
 == Scrum Masters and Agile Coaches
@@ -31,7 +31,7 @@ But the delivery coach will also explain the importance of this to the leadershi
 ==== Team Coach
 
 We have experienced that despite the remark made by my manager, “the teams will do their thing”, teams still need help to grow their agile maturity and business impact.
-Therefor we distinguish the role of the Team coach.
+Therefore, we distinguish the role of the Team coach.
 The team coach works close with the team citee:[clean-code,clean-coder], PO cite:[professional-product-owner] and the Scrum master cite:[great-scrum-master,mastering-professional-scrum].
 The team coach helps the different teams to identify improvements.
 He supports the scrum masters in their ambition to help the teams forward cite:[agile-retrospectives].
@@ -39,22 +39,23 @@ He supports the scrum masters in their ambition to help the teams forward cite:[
 ==== Agile Counselor
 
 The role of leadership is often seen as the biggest challenge in having a successful agile transformation.
-A leader sets the tone for the entire organization.
+A leader sets the tone for the entire organization cite:[lead-with-lean,lean-manager,lead-with-respect,gold-mine].
 Leaders should communicate what agility means for their organization and be an example by adopting agile values and practices.
 The agile counselor does not focus that much on the development process as the Delivery Coach but aims to empower leadership.
-He or she has an eye for the health of the teams and will address _bad smell_ with the leadership team.
-The counselor coaches the leaders on their agile mindset, e.g., by pointing out when old-school thinking and behavior has a negative impact on the performance and delivery.
+She has an eye for the health of the teams and will address _bad smell_ with the leadership team.
+The counselor coaches the leaders on their agile mindset.
+He poinst out, for example, when old-school thinking and behavior hurt on the performance and delivery.
 
 These three profiles bear similarities with Adkin’s areas of mastery.
 Both distinguish between technical and transformational support.
-The delivery coach has some commonalities with the technical mastery, but rather than having a team focus, he/she will also act on leadership level to create awareness and commitment for technical excellence.
-While doing this, he/she plays a crucial part in the Agile transformation.
+The delivery coach has some commonalities with technical mastery but rather than having a team focus, she will also act on leadership level to create awareness and commitment for technical excellence.
+While doing this, she plays a crucial part in the Agile transformation.
 The Agile counselor works with the leadership team, which requires business mastery as well as transformational skills.
 
 A team coach preferably supports the team by offering technical support and coach on the process and Agile mindset.
-Being part of the coaches’ team, he/she will actively participate in the transformation as well.
+Being part of the coaches’ team, she will actively participate in the transformation as well.
 
-=== Shall a Coach Be Saavy in Technology?
+=== Shall a Coach Be Savvy in Technology?
 
 It certainly helps to understand the technology your teams are using.
 I assume it is quite difficult to be a soccer coach if you have no clue what soccer is and how it is played.
@@ -65,13 +66,14 @@ So it is really helpful to at least be able to discuss technical aspects with yo
 [bibliography]
 === Links
 
-* [[[adriaans, 2]]] Adriaans, C. Agile Marcom Interview: Catharina Adriaans.
+* [[[adriaans, 1]]] Agile Marcom Interview: Catharina Adriaans.
 Agile Consortium. 2020
-* [[[butkus, 3]]] Butkus, V. https://www.toptal.com/project-managers/agile/what-is-an-agile-coach[What Does an Agile Coach Do and How Can You Become One]
-* [[[businessreport, 4]]]
+* [[[butkus, 2]]] https://www.toptal.com/project-managers/agile/what-is-an-agile-coach[What Does an Agile Coach Do and How Can You Become One].
+Butkus, V.
+* [[[businessreport, 3]]]
 https://www.accenture.com/us-en/insights/technology/business-agility-report-2020[The Business Agility Report, 3rd Edition].
 Accenture. 2020
 
-=== Referendes
+=== References
 
 bibliography::[]

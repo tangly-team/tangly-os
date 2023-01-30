@@ -21,7 +21,7 @@ Agile approaches are currently the standard for new projects and are thought in 
 
 Scrum is the main agile method and state of the industry approach for the implementation of software projects.
 
-To open the discussion and bring the discussion back to objective arguments I often recommend the following books
+To open the discussion and bring the discussion back to objective arguments, I often recommend the following books
 
 === Big Projects and Distributed Projects
 
@@ -31,8 +31,8 @@ Don't expect pre-cocked solutions but a tool set how to lead successfully such p
 Not always an easy reading but worth the effort
 * Practices for Scaling Lean and Agile Development: Large, Multi-side, and Offshore Product Development with Large-Scale Scrum, Craig Larman and Bas Vodde, Addison-Wesley 2010 See above for a review of the book
 * Agile Testing: A Practical Guide for Testers and Agile Teams, Lisa Crispin and Janet Gregory, Addison-Wesley 2009 The seminal reference book how to blend testing with agile projects.
-Lisa Crispin and Janet Gregory provides insights and a proven track how to guaranty agile quality assurance and agile testing.
-A must-read book for everyone seriously developing agile projects
+Lisa Crispin and Janet Gregory provide insights, and a proven track how to guaranty agile quality assurance and agile testing.
+A must-read book for everyone seriously developing agile projects.
 * Agile Estimating and Planning, Mike Cohn, Prentice-Hall, 2006 The seminal reference about estimating agile projects.
 The experienced readers will understand why Mike Cohn used the words estimating and planning instead of estimates and plan.
 * The Enterprise and Scrum, Ken Schwaber, Microsoft Press, 2007 The work of one of the Scrum founders how a company can adopt Scrum.
@@ -42,7 +42,7 @@ You should read the standard works of Scrum to understand the concepts.
 
 === Brown-Field Projects
 
-* Refactoring Improving the Design of Existing code, Martin Fowler, Addison-Wesley 1999, How to implement continuous improvement on the code level.
+* Refactoring Improving the Design of Existing Code, Martin Fowler, Addison-Wesley 1999, How to implement continuous improvement on the code level.
 If you are not refactoring, you are not agile.
 * Working Effectively with Legacy Code, Michael C. Feathers, Prentice-Hall 2005, Most of us work on existing code bases.
 Based on the above statement, you have to find a way to unit test and refactor legacy code if you want to be agile.

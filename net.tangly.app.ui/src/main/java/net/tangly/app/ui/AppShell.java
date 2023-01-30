@@ -10,17 +10,16 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.ui.app;
+package net.tangly.app.ui;
 
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.router.Route;
+import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.page.AppShellConfigurator;
+import com.vaadin.flow.server.PWA;
+import com.vaadin.flow.theme.Theme;
+import com.vaadin.flow.theme.lumo.Lumo;
 
-@Route("")
-public class MainView extends VerticalLayout {
-
-    public MainView() {
-        TextField textField = new TextField("Your name");
-        add(textField);
-    }
+@PWA(name = "Vaadin tangly Base Project", shortName = "Vaadin tangly")
+@CssImport("./styles/shared-styles.css")
+@Theme(themeClass = Lumo.class)
+public class AppShell implements AppShellConfigurator {
 }

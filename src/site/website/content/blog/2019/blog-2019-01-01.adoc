@@ -16,7 +16,7 @@ The Defense Innovation Board https://innovation.defense.gov/[DIB] advises the se
 
 Members of the board are recognizable names like Eric Schmidt who was CEO of Google and Alphabet, or Instagram COO Marne Levine.
 
-So I was quite surprised that a government committee was so straightforward to publish a document called _Detecting Agile Bullshit_ <<etecting-agile-bullshit>>.
+So I was quite surprised that a government committee was so straightforward to publish a document called _Detecting Agile Bullshit_ <<detecting-agile-bullshit>>.
 
 Simple questions are used as a bullshit detector to identify organizations faking agile.
 Worth your time, if the government has this problem, you probably also encounter it in the private sector.
@@ -47,7 +47,7 @@ Development teams are silos instead of feature teams::
 * Participants act like _it is not my job_
 * Technical Excellence
 ** DevOps or DevSecOps culture is lacking if manual processes are tolerated.
-Such processes can and should be automated (e.g. automated testing, continuous integration, continuous delivery).
+Such processes can and should be automated using e.g., automated testing, continuous integration, continuous delivery.
 ** Distributed version control management systems - Git - are not used.
 ** Continuous integration and delivery - Jenkins - are not used.
 ** Modern deployment platforms - Docker, Kubernetes - are not used.
@@ -109,7 +109,7 @@ Do all members of the team understand both, and are they able to see how their w
 * Is the full ecosystem of your product agile?
 _Agile programming teams followed by linear, bureaucratic deployment is a failure_.
 
-For a team truly working agile, the answer to all of these questions should be a form of “yes”.
+For a team to truly work the agile way, the answer to these questions should be a form of _yes_.
 
 === Conclusion
 

@@ -1,8 +1,8 @@
 ---
 title: "SME IT Responsible"
 linkTitle: "SME IT Responsible"
-date: 2023-01-15
-tags: ["agile", "devops"]
+date: 2023-01-08
+tags: ["agile", "devops", "organization"]
 ---
 
 == SME IT Responsible
@@ -121,6 +121,10 @@ The only wrong approach is to deploy a local solution without maintenance contra
 ====
 
 Most of the decisions are constrained by the trend to outsource hardware and applications to professional companies.
+
+The political activities should not be underestimated.
+As an IT leader, you have to convince the organization to adopt and support the selected solutions.
+This process is often tiring and full of traps cite:[death-by-meeting,getting-naked,silos-politics-turf-wars].
 
 A typical scenario is:
 

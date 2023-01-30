@@ -12,11 +12,7 @@
 
 package net.tangly.commons.logger;
 
-import org.apache.logging.log4j.LogBuilder;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.Marker;
-import org.apache.logging.log4j.MarkerManager;
+import org.apache.logging.log4j.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDateTime;

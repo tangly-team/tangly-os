@@ -1,0 +1,27 @@
+---
+title: "Java 20"
+linkTitle: "Java 20"
+date: 2023-05-20
+tags: ["java", "series-students"]
+---
+
+== Java 20
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2023-05-02-head.png[width=420,height=360,role=left]
+
+image::2023-05-02-java-trends.png[role=center]
+
+bibliography]
+=== Links
+
+- [[[java-19,1]]] link:../../2021/jdk-17/[Java 17], Marcel Baumann, 2021
+- [[[java-16, 2]]] link:../../2021/jdk-16/[Java 16], Marcel Baumann, 2021
+- [[[java-10, 3]]] link:../../2018/java-10-aka-18.3-changes/[Java 10 aka 18.3 Changes], Marcel Baumann, 2018
+
+=== References
+
+bibliography::[]

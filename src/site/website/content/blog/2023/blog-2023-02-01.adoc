@@ -2,7 +2,7 @@
 title: "Technical Interviews"
 linkTitle: "Technical Interviews"
 date: 2023-02-10
-tags: ["agile"]
+tags: ["agile", "organization"]
 ---
 
 == Technical Interviews
@@ -15,64 +15,81 @@ image::2023-02-01-head.jpg[width=420,height=360,role=left]
 
 Your sole goal is to hire a qualified collaborator with potential.
 
-Hiring is like dating.
+For example, you need a great software engineer with social competence.
+He is a professional developer and has knowledge of the technology stack
+footnote:[The singular form is wanted.
+A small or medium company SMC should minimize the technologies they used to build their digital products.]
+your company is using.
+The candidate naturally understands agile and DevOps approaches.
 
-Both parties shall be motivated to deepen their relationship.
+_Hiring is like dating._
 
+Both parties shall be motivated to deepen their relationship and enter a binding agreement.
 Both parties are willing to invest and believe it will be beneficial for them.
 
-Dating also means you have competition.
+Dating means you have competition.
 Do your best to convince your potential partner.
 
-It is worth investing time and effort to succeed.
+Ask yourself why should a candidate decide to work in your company and develop this awesome digital product?
 
-=== Prepare Your Interview
+It is worth investing time and effort to succeed
+footnote:[Once you found your partner, invest time and effort to keep your relationship healthy.].
 
-You should be prepared for the interview.
+=== Before the Interview
+
+You *must* prepare for the interview.
 You have read the CV of your candidate and visited her LinkedIn profile.
+
+Try to find out if the candidate worked on open source projects.
+Look at the documentation and source code the candidate has written.
+Read the articles and blog entries published by your candidate.
 
 Expect a good candidate will also interview you to find out more about your organization and culture.
 It is almost like a dating meeting.
-Both parties shall have an opportunity to find out if we are a match.
+Both parties shall have an opportunity to find out if they are a match.
 
 Google provides hints how to work with creative software collaborators cite:[work-rules].
 
 === Perform the Interview
 
 I want to find out how the candidate performs tasks and interacts with his team.
-I am very curious how he learnt new skills.
+I am very curious how she learnt new skills.
 The area of interests are:
 
 Coding::
 How do you write source code? +
-What do you think about technical excellence cite:[clean-code,clean-coder,clean-craftsmanship,refactoring,refactoring-databases]?
+What do you think about technical excellence cite:[clean-code,clean-coder,clean-craftsmanship,refactoring,refactoring-databases]? +
+What approaches do you use to refactor or improve source code?
 Software design and architecture::
 How do you design your components? +
 Which techniques do you use for evolving your software architecture? +
 What do you think about design and architecture approaches cite:[design-patterns,clean-architecture,domain-driven-design,building-evolutionary-architectures]? +
 What are your approaches with existing and legacy solutions cite:[working-effectively-with-legacy-code,refactoring]?
 Agile approaches::
-What do you think about agile approaches cite:[clean-agile,clean-code,clean-architecture]
+What do you think about agile approaches cite:[clean-agile,clean-code,clean-architecture,accelerate]
 Teamwork, soft skills, teaching and mentoring::
 How do you teach and mentor team members? cite:[being-technical-leader,skilled-facilitator,humble-inquiry]
 Why does she want to work in our company?::
 Please elaborate.
 What do you find interesting about our company, our vision, and our products?
 Why is she a software engineer?::
-Please tell us your story. +
+Tell us your story, please. +
 Being an engineer is also a passion. +
 Professional engineers have ethics and are aware of their social responsibilities.
 
-The areas are similar to the ones I check when receiving a CV <<evaluate-technical-cvs>>.
+The areas are like the ones I check when receiving a CV <<evaluate-technical-cvs>>.
 
-=== Write-down Your Findings and Recommendations
+=== Write-Down Your Findings and Recommendations
 
 You should perform a technical interview with a colleague.
 Try to write your impressions and findings using the same template for all candidates.
 
 Compare your findings to diminish biases and misunderstandings.
 
-=== Have an onboarding Program
+Inform the candidate about your decision.
+Communication shall be timely and respectful.
+
+=== Have An Onboarding Program
 
 - Avoid a checklist, avoid predeclared correct answers.
 - Aim to uncover reasons why you should hire a candidate.
@@ -80,13 +97,14 @@ Compare your findings to diminish biases and misunderstandings.
 - You want to hire good people that can learn and improve.
 - Your organization should promote that people can learn and evolve.
 - Be clear what you are looking for: make team better, bring new things, what do they value in code and architecture.
-- How do they solve problems (architecture, design, process, code, bug)?
+- How do they solve various problems in areas such architecture, design, process, code, bug?
 - Open-ended questions, to start a discussion.
 - Make criteria clear, if a criteria is not reached, inform them that you expect to reach the criteria.
 - An interviewee should also interview the interviewers.
 
 A powerful technique is extensive pair programming and pair design in particular during probation time.
 Your new collaborator leans how her team is working and the specifics of the product.
+
 The team understands the strengths of the trainee.
 They identify improvement areas to improve her effectiveness when working on the product.
 
@@ -103,6 +121,7 @@ Worst some still cannot use development platforms such as GitHub, GitLab, BitBuc
 
 - [[[evaluate-technical-cvs, 1]]] link:../../2022/evaluate-technical-cvs/[Evaluate Technical CVs]
 - [[[google-rework, 2]]] link:https://rework.withgoogle.com/[Rework with Google]
+- [[[select-a-partner, 3]]] link:../../2023/select-an-agile-software-development-partner/[Select an Agile Software Development Partner], Marcel Baumann, 2023
 
 === References
 

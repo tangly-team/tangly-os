@@ -29,10 +29,11 @@ application {
                                  '-XX:+ShowCodeDetailsInExceptionMessages',
                                  '-Xmx256m',
                                  '-ea']
-    mainClassName = "net.tangly.ui.app.Main"
+    mainClassName = "net.tangly.app.ui.Main"
 }
 
 dependencies {
+    implementation project(':net.tangly.core')
 
     implementation("org.slf4j:slf4j-simple:2.0.4")
 
