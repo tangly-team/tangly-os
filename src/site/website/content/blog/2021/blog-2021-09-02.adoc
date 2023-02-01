@@ -289,7 +289,7 @@ Approaches such as clean code, test-driven development, refactoring and infrastr
 Design concepts must be refined.
 The students understand concepts such as patterns, micro-architecture, layered architecture.
 They seldom formulate the technical and financial tradeoffs associated with a specific concept application
-footnote:[Chosing a technical and financial tradeoff is the essence of an engineer work.
+footnote:[Choosing a technical and financial tradeoff is the essence of an engineer work.
 These tradeoffs are often formulated in architecture design records _ADR_.].
 
 Almost no student has experience with open source libraries.

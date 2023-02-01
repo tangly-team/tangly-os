@@ -54,8 +54,8 @@ This is the whole concept of the lean movement.
 And I welcome the fact that {ref-safe} now explicitly mention https://v46.scaledagileframework.com/built-in-quality/[Cost of Delay].
 
 One of the strengths of {ref-safe} is their clear statement that an agile organization transformation is only successful with lean-agile leadership.
-All C-level managers are trained in lean and agile, they advocates these approaches and are visible champions.
-Therefore all managers shall be advocate technical excellence on a daily basis.
+All C-level managers are trained in lean and agile, they advocate these approaches and are visible champions.
+Therefore, all managers shall be advocate technical excellence on a daily basis.
 
 If not the seminal work of John Kotter clearly states the transformation will fail.
 You will have a bunch of Scrum teams in your development department, but have none of the expected synergies at the product or company level.
@@ -79,7 +79,7 @@ _How healthy is your Product?_ article series for information about technical ex
 . link:../../2019/how-healthy-is-your-product-company-culture-check/[Company Culture Check]
 
 The other big improvement is that the PI horizon is now _limited_ to 8 or 12 weeks.
-No more semesterly or hopefully quarterly cadence.
+No more semester or hopefully quarter cadence.
 
 It still does not make sense to plan for three months and at the same time advocate DevOps and design thinking.
 

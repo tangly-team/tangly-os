@@ -125,7 +125,7 @@ Gradle has finally new plugins to better generate unit tests and test coverage r
 - test-report-aggregation
 - jacoco-report-aggregation
 
-The new approach to create aggregated reports is discribed in link:../../2022/multi-module-test-reporting-with-gradle-7.x/[Multi-module Test Reporting with Gradle 7].
+The new approach to create aggregated reports is described in link:../../2022/multi-module-test-reporting-with-gradle-7.x/[Multi-module Test Reporting with Gradle 7].
 ====
 
 === Wishes

@@ -29,7 +29,7 @@ If anything, the situation may become worse as some previous structures are lost
 
 Craig Larman is one of the founder of {ref-less}.
 He has formulated laws based on his observations.
-The laws reflect the difficulty of a sucessfull transformation.
+The laws reflect the difficulty of a successful transformation.
 
 [quote,Craig Larman]
 ____
@@ -120,7 +120,7 @@ If you got stakeholders that do not see a difference.
 They do not care if they are not talking to your team.
 They are not talking to your product owner
 footnote:[Your product owner is not doing her job.
-One key reponsibility of a product owner is to involve and inform all stakeholders.].
+One key responsibility of a product owner is to involve and inform all stakeholders.].
 
 If you are not delivering results then what is the point of your work in the first place.
 You are probably doing _fake Scrum_.
@@ -129,7 +129,7 @@ You are probably doing _fake Scrum_.
 
 The software industry has created and promoted agile and Scrum approaches.
 A development department is responsible for delivering working software each sprint.
-Accordingly to the {ref-scrumguide} a potentially shippable product is the increment result produced multiple times per week.
+Accordingly to the {ref-scrumguide}, a potentially shippable product is the increment result produced multiple times per week.
 
 You can easily detect fake Scrum and incompetent software development teams:
 
@@ -142,7 +142,7 @@ Deliver working applications multiple times a week::
 All teams deploy their digital increment multiple time per week.
 DevOps practices
 footnote:[Continuous integration and continuous delivery is _Dev_ practices.
-Continuous deploymnet and infrastructure as code are _Ops_ practices.] are lively in our organization cite:[accelerate,continuous-delivery-pipelines].
+Continuous deployment and infrastructure as code are _Ops_ practices.] are lively in our organization cite:[accelerate,continuous-delivery-pipelines].
 No errors older than a few days::
 Quality and craftsmanship are cornerstones of agile approaches.
 A way to check these good practices is to study errors reports <<zero-bug-policy>>.
@@ -161,7 +161,7 @@ Become a professional Scrum master cite:[mastering-professional-scrum], product 
 
 A digital product development team shall be DevOps affine cite:[continuous-delivery,continuous-delivery-pipelines,devops-handbook].
 
-See also another blog <<detecting-agile-bullshit>> describing how the department of defense of USA detects agile lies.
+See also another blog <<detecting-agile-bullshit>> describing how the department of defense of the USA detects agile lies.
 
 [bibliography]
 === Links
@@ -176,7 +176,7 @@ Marcel Baumann. 2016.
 Marcel Baumann. 2019.
 - [[[zero-bug-policy, 5]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Advocate Zero Bug Policy in Your Projects]
 Marcel Baumann. 2020.
-- [[[static-website, 6]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Techincal Website with Hugo and Asciidoc]
+- [[[static-website, 6]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and Asciidoc]
 Marcel Baumann. 2020.
 - [[[domain-driven-design, 7]]] link:../../2022/software-structure-with-ddd/[Software Structure with DDD]
 Marcel Baumann. 2022.

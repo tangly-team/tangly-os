@@ -1,7 +1,7 @@
 ---
 title: "Technical Interviews"
 linkTitle: "Technical Interviews"
-date: 2023-02-10
+date: 2023-02-01
 tags: ["agile", "organization"]
 ---
 
@@ -21,6 +21,8 @@ footnote:[The singular form is wanted.
 A small or medium company SMC should minimize the technologies they used to build their digital products.]
 your company is using.
 The candidate naturally understands agile and DevOps approaches.
+
+How can you convince him to sign the contract and start working on your cool product?
 
 _Hiring is like dating._
 

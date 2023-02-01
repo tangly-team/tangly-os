@@ -73,7 +73,7 @@ A decision may be "proposed" if the product stakeholders haven't agreed with it 
 If a later ADR changes or reverses a decision, it may be marked as "deprecated" or "superseded" with a reference to its replacement(s).
 
 The status and the graph of related decisions can be tracked and visualize using tools.
-You can also track your decisions without any tools, a regular product has often less than hundred decisions.
+You can also track your decisions without any tools, a regular product has often less than a hundred decisions.
 And you can always write a small parse utility to extract your dependency graph.
 
 ==== Consequences

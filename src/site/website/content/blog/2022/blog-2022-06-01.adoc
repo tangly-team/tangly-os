@@ -50,7 +50,7 @@ Application::
 This is a thin layer between the interface and the domain, it could call domain services to serve the solution purposes.
 Domain::
 The heart of the software, this layer holds domain logic and business knowledge. +
-_A major gaal is to avoid any tainting of the core domain model from other layers._
+_A major goal is to avoid any tainting of the core domain model from other layers._
 _Try to avoid extending domain entities with implementation specific root classes or to a lesser degree annotations._
 Infrastructure::
 A supporting layer for the other layers.

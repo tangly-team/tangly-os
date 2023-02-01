@@ -12,7 +12,7 @@ tags: ["organization"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2017-12-01-head.png[width=420, height=360, role=left]
-It is Christmas time.
+It is Christmastime.
 Clean your desk and the content of your workstation.
 Upgrade your tools and your development environment to the actual version.
 
@@ -36,7 +36,7 @@ Have a professional handset and a good camera for video conferences.
 Put all your documents on your company drive and index all this information.
 Finding relevant data by keyword searching is a huge gain of time.
 Another advantage is no more backup of workstations and notebooks.
-All mission critical information is always on the company's drives.
+All mission-critical information is always on the company's drives.
 
 ==== Socialize with your Team
 

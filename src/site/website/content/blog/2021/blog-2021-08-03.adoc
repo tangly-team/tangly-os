@@ -148,7 +148,7 @@ An interesting development is the addition of tailored project management traini
 The biggest organization https://www.pmi.org[PMI] has a whole set of agile certifications based on
 https://www.pmi.org/certifications/agile-certifications[Disciplined Agile Design] _DAD_.
 
-I expect the emphasis on agile approaches to markantly increase in the next years.
+I expect the emphasis on agile approaches to markedly increase in the next years.
 
 === University Formal Trainings
 

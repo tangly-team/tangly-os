@@ -12,7 +12,7 @@ tags: ["agile","series-students"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2021-04-03-head.png[width=420,height=360,role=left]
-Lately, I was asked, which new approaches should be used for agile requirements engineering.
+Lately, I was asked which new approaches should be used for agile requirements engineering.
 Did we find a new silver bullet to write software specifications the agile way?
 
 The answer is an easy one.
@@ -107,7 +107,7 @@ The book was published in 2017, five years ago.
 I currently teach the _SWAT_ course at the department of computer science of the technical university of Luzerne.
 footnote:[Lecture videos in German for Spring Semester 2021 are available under https://tube.switch.ch/channels/iHdetJjwR4[Switch Tube]]
 
-Agile requirements engineers can found valuable information in seminal books
+Agile requirements engineers can find valuable information in seminal books
 cite:[value-proposition-design,agile-product-management,strategize,how-to-lead-product-management,building-evolutionary-architectures].
 
 === Evolution

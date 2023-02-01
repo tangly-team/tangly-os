@@ -96,7 +96,7 @@ On the other hand, the use of others, such as a dozen, is almost unknown there.
 === Measurement
 
 In May 2019, all units are defined by constants of nature in the world-wide https://en.wikipedia.org/wiki/International_System_of_Units[international system of units].
-These changes are incorporated in the newer verison of the RFC and the reference implementation.
+These changes are incorporated in the newer version of the RFC and the reference implementation.
 
 === How to Use the API
 

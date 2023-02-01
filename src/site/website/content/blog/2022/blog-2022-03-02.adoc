@@ -168,7 +168,7 @@ public class AppointmentScheduler {
 Use Vaadin for internal applications and B2B applications.
 Vaadin is a good approach up to a few thousand active users.
 Vaadin is a Java solution based on the same technology stack used in Spring.
-Support libraries and tutorials are provided by Vaadin to integrateh the Spring framework.
+Support libraries and tutorials are provided by Vaadin to integrate the Spring framework.
 
 Use Thymeleaf and Bootstrap for B2C applications.
 These frameworks introduce new technologies.

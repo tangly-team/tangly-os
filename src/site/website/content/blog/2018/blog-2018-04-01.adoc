@@ -32,7 +32,7 @@ You shall work as a professional and deliver professional results.
 I recommend any Java developer:
 
 * Have formal training in the Java language and library cite:[java-puzzlers].
-For example you should consider a Java Programmer certification for the current JDK you are working daily with.
+For example, you should consider a Java Programmer certification for the current JDK you are working daily with.
 * Learn the new features in Java e.g. Streams, Lambdas, Reactive Programming, LocalDate, Modules, packaging with jlink.
 * Read and understand _Effective Java_ cite:[effective-java-2nd] from Joshua Bloch.
 * Read and understand the clean series cite:[clean-code, clean-coder, clean-architecture,clean-agile, clean-craftsmanship].

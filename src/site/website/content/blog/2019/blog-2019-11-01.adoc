@@ -42,7 +42,7 @@ cite:[scaling-lean-and-agile-development,large-scale-scrum,practices-for-scaling
  At the same it is the most popular approach in quite a few countries.
  _And I would never state it is the most successful_.
 
-Additional approaches exist but I did not encounter them lately.
+Additional approaches exist, but I did not encounter them lately.
 
 === Delay Scaling
 

@@ -198,7 +198,7 @@ You need a platform and automation expert in your development team to harvest th
 odoo.sh has selected GitHub as their preferred platform.
 We shall use the GitHub CI/CD/CD approach as defined in odoo.sh to develop and deploy all our application development.
 
-Github provides initial support for Security, DevOps, and agile approaches.
+GitHub provides initial support for Security, DevOps, and agile approaches.
 We shall evaluate these tools and, if relevant, use them as standard tooling for our Odoo software tailoring and development.
 
 The CI tools of GitHub are ideal to implement DevSecOps approaches on odoo modules and internal Python application development.

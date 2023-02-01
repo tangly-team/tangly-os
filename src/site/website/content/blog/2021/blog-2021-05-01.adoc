@@ -82,7 +82,7 @@ Leaving many companies stuck in a hybrid approach.
 Swiss companies are often embracing Hermes
 footnote:[Hermes is a typical _Water-Scrum-Fall_ approach and most often fails spectacularly.] or {ref-safe}.
 Both approaches are quite a poor choice to achieve a successful agile transformation.
-Read the technology radar of https://www.thoughtworks.com[Thoughworks] for a detailed discussion why SAFe is a poor choice.
+Read the technology radar of https://www.thoughtworks.com[Thoughtworks] for a detailed discussion why SAFe is a poor choice.
 
 Satisfaction with the agile way of working is high; satisfaction with the transformation process is low.
 The focus is still processes over people.

@@ -33,7 +33,7 @@ Or the team computes individual resource allocation for the next three months.
 You can also replace Waterfall with V-Model, http://www.hermes.admin.ch/onlinepublikation/index.xhtml[HERMES], RUP, and even sometimes {ref-safe}.
 ScrumBut::
 describes a team which claims to follow Scrum but misses various practices.
-For example, _We do Scrum but we don’t have a Product Owner_.
+For example, _We do Scrum, but we don’t have a Product Owner_.
 Or _We do {ref-scrum} but the Project Manager allocates tasks_.
 Such teams normally have a long list of “buts” and show little progress of removing them.
 Hitting The Scrum Wall::

@@ -37,7 +37,7 @@ Upon completion, you can also hire a coach to implement selected findings and im
 The findings are often clear and the measures are straightforward.
 The real work is to implement consistently the measures.
 
-I have the same personal challenge when trying to loose weight or improve my running form.
+I have the same personal challenge when trying to lose weight or improve my running form.
 The long term implementation is the crux.
 
 === Product Strategy Checks

@@ -77,7 +77,7 @@ We are using a small framework to write acceptance criteria automated tests and 
 The library is available as a Java _net.tangly:bdd:<version>_ Java distribution.
 It is published on maven central.
 
-A documentation is available under link:../../../docs/bdd/[BDD Documenation].
+A documentation is available under link:../../../docs/bdd/[BDD Documentation].
 
 A test uses the _given, when, then_ structure and has the following form:
 
@@ -130,7 +130,7 @@ We are experimenting with projects to find out if this approach nurtures legibil
 The results are mixed.
 The integration tests are not easier to write with the library instead of regular {ref-junit5} tests.
 The generated documentation and available JSON reports are valuable.
-The question is how valueable are they?
+The question is how valuable are they?
 
 We still try to define metrics to valuate the usefulness of living documentation describing the requirements of the product.
 The usual approach is either to write a huge Microsoft Word document or use a specification tool storing the information in a database.

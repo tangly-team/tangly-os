@@ -93,7 +93,7 @@ Instead, it returns to the _Product Backlog_ for future consideration.
 * If the _Definition of Done_ for an increment is part of the standards of the organization, all _Scrum Teams_ must follow it as *a minimum*.
 If it is not an organizational standard, the _Scrum Team_ *must* create a _Definition of Done_ appropriate for the product.
 * The _Developers_ are *required to conform* to the _Definition of Done_.
-If there are multiple _Scrum Teams working_ together on a product, they must mutually define and comply with the samex _Definition of Done_.
+If there are multiple _Scrum Teams working_ together on a product, they must mutually define and comply with the same _Definition of Done_.
 
 === Items of a Definition of Done
 

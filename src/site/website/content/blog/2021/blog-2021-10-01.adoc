@@ -53,7 +53,7 @@ Refactoring implies you have extensive integration and unit tests available.
 
 === Ideas
 
-Explore approaches to improve the qaulity and adequacy of your architecture:
+Explore approaches to improve the quality and adequacy of your architecture:
 
 . Architect products, evolve from projects to products,
 . Focus on quality attributes, not on functional requirements,

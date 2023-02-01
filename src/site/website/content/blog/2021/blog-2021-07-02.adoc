@@ -48,7 +48,7 @@ This is true for several reasons:
 
 Common architecture enables agile teams to focus on value creation::
 A common enterprise architecture enables reuse across delivery teams.
-When agile teams have high-quality assets – such as micro-services, legacy data sources, and frameworks – they are able to focus on creating new value.
+When agile teams have high-quality assets – such as microservices, legacy data sources, and frameworks – they are able to focus on creating new value.
 They should not waste money on reinventing new versions of existing infrastructure.
 Common technical guidance enables greater consistency::
 When team follow effective, common conventions it results in greater quality.
@@ -73,7 +73,7 @@ A goal-driven approach that indicates the process decision points you need to co
 Have a range of techniques or strategies for you to address each decision point, and the advantages and disadvantages of each technique.
 
 The following diagram overviews the potential activities associated with _Agile Enterprise Architecture_.
-image::2021-07-02-entreprise-architecture-process.png[width=800,height=800,role=center]
+image::2021-07-02-enterprise-architecture-process.png[width=800,height=800,role=center]
 The process decision points that you need to consider for enterprise architecture are:
 
 Support stakeholders::

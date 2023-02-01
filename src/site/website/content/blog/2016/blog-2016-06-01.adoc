@@ -77,7 +77,7 @@ _It must be in usable condition regardless of whether the Product Owner decides 
 ____
 
 So at the end of sprint all stories realized since the start of the product must be correct.
-Therefore you need automated acceptance tests to guaranty their correctness.
+Therefore, you need automated acceptance tests to guaranty their correctness.
 The Scrum team must guaranty that at the end of each sprint all functions of the product work as specified and accepted by the product owner in the current and previous sprint reviews.
 
 Higher quality is reached through extreme programming approach: test driven development, clean code, pair programming, pair check-in, coding dojo, static analysis tools.

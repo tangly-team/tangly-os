@@ -141,12 +141,12 @@ image:2016-08-01-active-listening.png[float="right"]
 * http://en.wikipedia.org/wiki/Kano_model[Kano Model]: Must have, Linear feature, Delight
 ** Threshold or basic attributes must have attributes, otherwise the product is incomplete.
  Threshold features are those that must be present in the product  for it to be successful. They are often referred to as must-have features.
-** Performance attributes are linear, the more the better
+** Performance attributes are linear, the more, the better
 ** Excitement attributes are delights
 * MMF Minimally Marketable Feature
 * http://en.wikipedia.org/wiki/MoSCoW_Method[MoSCoW] Must, Should, Could, Won't
 * http://en.wikipedia.org/wiki/Net_present_value[Net Present Value] _NPV_ -> FV = PV * (1+i)^n, FV is future value, PV is the present value. n is the number of periods/years; you can interpret as the higher, the better
-* Payback Period, you can interpret as the lower the better
+* Payback Period, you can interpret as the lower, the better
 * PESTLE Political, Environmental, Societal, Technological, Legal, Economical
 * http://www.pmi.org/Certification/New-PMI-Agile-Certification.aspx[PMI-ACP] Project Management Institute Agile Certified Practitioner
 * Product Owner: Committed, Responsible, Authorized, Collaborative, and Knowledgeable

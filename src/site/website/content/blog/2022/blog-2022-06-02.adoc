@@ -15,7 +15,7 @@ image::2022-06-02-head.svg[width=420,height=360,role=left]
 
 A modular monolith is a software design approach in which a monolith is designed with an emphasis on interchangeable and potentially reusable modules.
 
-A modular monolith can be splitted in the future into a set of microservices.
+A modular monolith can be split in the future into a set of microservices.
 
 Delay the split as long as you can.
 Microservices have a steep price tag during operations.
