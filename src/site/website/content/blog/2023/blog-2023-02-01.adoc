@@ -70,7 +70,7 @@ What are your approaches with existing and legacy solutions cite:[working-effect
 Agile approaches::
 What do you think about agile approaches cite:[clean-agile,clean-code,clean-architecture,accelerate]
 Teamwork, soft skills, teaching and mentoring::
-How do you teach and mentor team members? cite:[being-technical-leader,skilled-facilitator,humble-inquiry]
+How do you teach and mentor team members? cite:[becoming-technical-leader,skilled-facilitator,humble-inquiry]
 Why does she want to work in our company?::
 Please elaborate.
 What do you find interesting about our company, our vision, and our products?
