@@ -26,18 +26,18 @@ import net.tangly.core.providers.ProviderInMemory;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class AppBoundedDomainOne extends BoundedDomain<AppBoundedDomainOne.AppRealm, AppBoundedDomainOne.AppBusinessLogic, AppBoundedDomainOne.AppHandler, AppBoundedDomainOne.AppPort> {
-    public static final String DOMAIN = "App";
+public class AppBoundedDomainB extends BoundedDomain<AppBoundedDomainB.AppRealm, AppBoundedDomainB.AppBusinessLogic, AppBoundedDomainB.AppHandler, AppBoundedDomainB.AppPort> {
+    public static final String DOMAIN = "App-B";
 
-    public record EntityOne(String id, String name, String text) implements HasId, HasName, HasText {
+    public record EntityThree(String id, String name, String text) implements HasId, HasName, HasText {
     }
 
-    public record EntityTwo(String id, String name, String text) implements HasId, HasName, HasText {
+    public record EntityFour(String id, String name, String text) implements HasId, HasName, HasText {
     }
 
     public static class AppRealm implements Realm {
-        private ProviderInMemory<EntityOne> providerOne;
-        private ProviderInMemory<EntityTwo> providerTwo;
+        private ProviderInMemory<EntityThree> providerOne;
+        private ProviderInMemory<EntityFour> providerTwo;
 
         public AppRealm() {
             providerOne = new ProviderInMemory<>();
@@ -45,19 +45,19 @@ public class AppBoundedDomainOne extends BoundedDomain<AppBoundedDomainOne.AppRe
             load();
         }
 
-        public Provider<EntityOne> oneEntities() {
+        public Provider<EntityThree> oneEntities() {
             return providerOne;
         }
 
-        public Provider<EntityTwo> twoEntities() {
+        public Provider<EntityFour> twoEntities() {
             return providerTwo;
         }
 
         private void load() {
             IntStream.rangeClosed(1, 100).forEach(o -> oneEntities().update(
-                new EntityOne(Integer.toString(o), "entity one-" + o, "entity one text-" + o)));
+                new EntityThree(Integer.toString(o), "entity three-" + o, "entity three text-" + o)));
             IntStream.rangeClosed(1, 100).forEach(o -> twoEntities().update(
-                new EntityTwo(Integer.toString(o), "entity two-" + o, "entity one text-" + o)));
+                new EntityFour(Integer.toString(o), "entity four-" + o, "entity four text-" + o)));
         }
     }
 
@@ -77,17 +77,17 @@ public class AppBoundedDomainOne extends BoundedDomain<AppBoundedDomainOne.AppRe
 
     public static class AppPort {}
 
-    public static AppBoundedDomainOne create() {
+    public static AppBoundedDomainB create() {
         AppRealm realm = new AppRealm();
-        return new AppBoundedDomainOne(realm, new AppBusinessLogic(), new AppHandler(realm), new AppPort(), new TypeRegistry());
+        return new AppBoundedDomainB(realm, new AppBusinessLogic(), new AppHandler(realm), new AppPort(), new TypeRegistry());
     }
 
-    private AppBoundedDomainOne(AppRealm realm, AppBusinessLogic logic, AppHandler handler, AppPort port, TypeRegistry registry) {
+    private AppBoundedDomainB(AppRealm realm, AppBusinessLogic logic, AppHandler handler, AppPort port, TypeRegistry registry) {
         super(DOMAIN, realm, logic, handler, port, registry);
     }
 
     @Override
     public List<DomainEntity<?>> entities() {
-        return List.of(new DomainEntity<>(DOMAIN, EntityOne.class, realm().oneEntities()), new DomainEntity<>(DOMAIN, EntityTwo.class, realm().twoEntities()));
+        return List.of(new DomainEntity<>(DOMAIN, EntityThree.class, realm().oneEntities()), new DomainEntity<>(DOMAIN, EntityFour.class, realm().twoEntities()));
     }
 }

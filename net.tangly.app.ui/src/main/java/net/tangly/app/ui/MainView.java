@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  *  a copy of the License at
@@ -22,9 +22,7 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
-import net.tangly.app.domain.ui.AppBoundedDomainOne;
-import net.tangly.app.domain.ui.AppBoundedDomainOneUi;
-import net.tangly.app.domain.ui.BoundedDomainUi;
+import net.tangly.app.domain.ui.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.ByteArrayInputStream;
@@ -38,14 +36,14 @@ import java.util.Map;
 @Route("")
 public class MainView extends AppLayout {
     private static final String IMAGE_NAME = "tangly70x70.png";
-    private static final List<String> TAB_NAMES = List.of(AppBoundedDomainOneUi.DOMAIN_NAME);
-
+    private static final List<String> TAB_NAMES = List.of(AppBoundedDomainAUi.DOMAIN_NAME, AppBoundedDomainBUi.DOMAIN_NAME);
     private final Map<String, BoundedDomainUi> uiDomains;
     private final MenuBar menuBar;
 
     public MainView() {
         uiDomains = new HashMap<>();
-        put(new AppBoundedDomainOneUi(AppBoundedDomainOne.create()));
+        put(new AppBoundedDomainAUi(AppBoundedDomainA.create()));
+        put(new AppBoundedDomainBUi(AppBoundedDomainB.create()));
         setPrimarySection(Section.NAVBAR);
         menuBar = new MenuBar();
         menuBar.setOpenOnHover(true);
@@ -58,7 +56,7 @@ public class MainView extends AppLayout {
             throw new UncheckedIOException(e);
         }
         drawerMenu();
-        uiDomains.get(AppBoundedDomainOneUi.DOMAIN_NAME).select(this, menuBar);
+        uiDomains.get(AppBoundedDomainAUi.DOMAIN_NAME).select(this, menuBar);
     }
 
     public void put(@NotNull BoundedDomainUi domainUi) {

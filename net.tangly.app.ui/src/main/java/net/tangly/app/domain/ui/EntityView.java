@@ -63,7 +63,7 @@ import java.util.function.Consumer;
  * @param <T>
  */
 public abstract class EntityView<T> extends VerticalLayout {
-    public static enum Mode {
+    public enum Mode {
         VIEW(Mode.VIEW_TEXT), EDIT(Mode.EDIT_TEXT), CREATE(Mode.CREATE_TEXT), DUPLICATE(Mode.DUPLICATE_TEXT), DELETE(Mode.DELETE_TEXT);
 
         public static final String VIEW_TEXT = "View";
@@ -191,14 +191,17 @@ public abstract class EntityView<T> extends VerticalLayout {
         protected void display(@NotNull T entity, @NotNull Mode mode) {
             this.mode = mode;
             nameActionButton(mode);
+            this.selectedItem = entity;
+            clear();
             fillForm(entity);
             parent.add(formLayout);
         }
 
-        protected void fillForm(@NotNull T entity) {
-            this.selectedItem = entity;
-            clear();
-        }
+        /**
+         * Fill the form with the properties of the entity.
+         * @param entity entity to display in the form
+         */
+        protected abstract void fillForm(@NotNull T entity);
 
         /**
          * Clear the content of the form. All property fields are reset to empty or a default value.
@@ -265,8 +268,8 @@ public abstract class EntityView<T> extends VerticalLayout {
     private final Provider<T> provider;
     private final Grid<T> grid;
     private final GridListDataView<T> dataView;
-    protected transient T selectedItem;
-    protected transient EntityForm<T> form;
+    private transient T selectedItem;
+    protected EntityForm<T> form;
 
     public EntityView(@NotNull Class<T> entityClass, @NotNull Provider<T> provider) {
         this.entityClass = entityClass;
@@ -305,7 +308,6 @@ public abstract class EntityView<T> extends VerticalLayout {
         SingleSelect<Grid<T>, T> selection = grid.asSingleSelect();
         selection.addValueChangeListener(e -> form.fillForm(e.getValue()));
     }
-
 
     protected void addFilter(@NotNull HeaderRow headerRow, @NotNull String key, @NotNull String label, @NotNull Consumer<String> attribute) {
         headerRow.getCell(grid().getColumnByKey(key)).setComponent(createFilterHeader(label, attribute));

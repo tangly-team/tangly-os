@@ -35,7 +35,7 @@ application {
 dependencies {
     implementation project(':net.tangly.core')
 
-    implementation("org.slf4j:slf4j-simple:2.0.4")
+    implementation(libs.slf4j.simple)
 
     implementation(libs.vaadin.core)
     implementation(libs.vaadin.embedded.jetty)
