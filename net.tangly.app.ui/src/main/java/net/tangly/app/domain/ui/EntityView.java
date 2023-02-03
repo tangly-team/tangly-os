@@ -13,21 +13,29 @@
 package net.tangly.app.domain.ui;
 
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.grid.HeaderRow;
+import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import com.vaadin.flow.component.grid.dataview.GridListDataView;
+import com.vaadin.flow.component.html.Hr;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.textfield.TextFieldVariant;
+import com.vaadin.flow.data.provider.DataProvider;
+import com.vaadin.flow.data.selection.SingleSelect;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
 import java.util.function.Consumer;
 
 /**
- * THe entity view displays a list of entities in a grid. Following operations are available through a pop-up menu:
+ * <p>The entity view displays a list of entities in a grid. Following operations are available through a pop-up menu:</p>
  * <dl>
  *    <dt>View</dt><dd>Display a read-only form with the entity properties. If the form is displayed and another grid item is selected, the falues of the selected entity are
  *    displayed in the form. </dd>
@@ -37,7 +45,19 @@ import java.util.function.Consumer;
  *    selected property values are speciffic to the entity type.</dd>
  *    <dt>Delete</dt><dd>Display a read-only form with the entity properties. If delete operation is selected the entity is removed from the underlying list and from the grid.</dd>
  * </dl>
- * The cancel oeration closes the form without any changes in the underlying list or the grid.
+ * <p>The operations on the entity through the form are:</p>
+ * <dl>
+ *     <dt>Cancel</dt><dd>Closes the form without any changes in the underlying list or the grid. All changes in the user interface are discarded.</dd>
+ *     <dt>Close</dt><dd>Updates the underlying entity with the new field values and closes the form.</dd>
+ *     <dt>Fill Form</dt><dd>Fills the form fields with the properties.</dd>
+ *     <dt>Clear Form</dt><dd>Clears the form fields.</dd>
+ * </dl>
+ * <p>The operation on the backend storing the entities are:</p>
+ * <dl>
+ *     <dt>Create or Update Entity</dt><dd>Creates a new entity or update an existing entity with the field values and stores it in the backend.
+ *     The values of the fields are from the user and optionally from an entity being duplicated or updated.</dd>
+ *     <dt>Delete Entity</dt><dd>Delete the entity from the backend.</dd>
+ * </dl>
  * <p>The entity view contains a grid and a form which both access the same underlying data model and entity provider.</p>
  *
  * @param <T>
@@ -79,15 +99,45 @@ public abstract class EntityView<T> extends VerticalLayout {
 
     public static abstract class EntityForm<T> {
         protected final EntityView<T> parent;
-        protected T selectedItem;
-        protected VerticalLayout form;
+        private T selectedItem;
+        private VerticalLayout formLayout;
+        private final Button cancel;
+        private final Button action;
+
+        private Mode mode;
 
         public EntityForm(@NotNull EntityView<T> parent) {
             this.parent = parent;
+            formLayout = new VerticalLayout();
+            cancel = new Button("Cancel");
+            cancel.addClickListener(event -> cancel());
+            action = new Button();
+            action.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+            action.addClickListener(event -> {
+                switch (mode) {
+                    case VIEW -> cancel();
+                    case EDIT, CREATE, DUPLICATE -> updateEntity();
+                    case DELETE -> deleteEntity();
+                }
+            });
         }
 
-        // region CRUD operation
+        // region CRUD operations available through the popup menu
 
+        /**
+         * Display an entity with properties for viewing.
+         *
+         * @param entity entity to view
+         */
+        public void display(@NotNull T entity) {
+            display(entity, Mode.VIEW);
+        }
+
+        /**
+         * Display an entity with properties for modification.
+         *
+         * @param entity entity to modify
+         */
         public void edit(@NotNull T entity) {
             display(entity, Mode.EDIT);
         }
@@ -95,7 +145,7 @@ public abstract class EntityView<T> extends VerticalLayout {
         /**
          * Create a new entity form.
          */
-        public void create(@NotNull Mode mode) {
+        public void create() {
             display(null, Mode.CREATE);
         }
 
@@ -108,13 +158,64 @@ public abstract class EntityView<T> extends VerticalLayout {
             display(entity, Mode.DUPLICATE);
         }
 
+        /**
+         * Display an entity with properties for deletion.
+         *
+         * @param entity entity to delete.
+         */
         public void delete(@NotNull T entity) {
             display(entity, Mode.DELETE);
         }
 
         // endregion
 
-        // region form functions
+        // region Form functions
+
+        /**
+         * Cancel the current form operation. All changes are discarded and the form is closed.
+         * It is a close operation without propagating any changes.
+         */
+        void cancel() {
+            selectedItem = null;
+            clear();
+            parent.remove(formLayout);
+
+        }
+
+        /**
+         * Display the entity in the form. The form is revealed in the user interface.
+         *
+         * @param entity entity to display
+         * @param mode   display mode of the entity
+         */
+        protected void display(@NotNull T entity, @NotNull Mode mode) {
+            this.mode = mode;
+            nameActionButton(mode);
+            fillForm(entity);
+            parent.add(formLayout);
+        }
+
+        protected void fillForm(@NotNull T entity) {
+            this.selectedItem = entity;
+            clear();
+        }
+
+        /**
+         * Clear the content of the form. All property fields are reset to empty or a default value.
+         */
+        protected abstract void clear();
+
+        protected VerticalLayout form() {
+            return formLayout;
+        }
+
+        protected Component createButtonsBar() {
+            return new HorizontalLayout(cancel, action);
+        }
+
+        // endregion
+
+        // region Entity related functions
 
         /**
          * Update the entity upon modification. THe properties are validated before storing the data.
@@ -124,66 +225,57 @@ public abstract class EntityView<T> extends VerticalLayout {
          */
         protected abstract T updateEntity();
 
-
         /**
-         * Display the entity in the form.
+         * Delete the entity from the backend and refreshes the grid.
          *
-         * @param entity entity to display
-         * @param mode   display mode of the entity
+         * @return
          */
-        protected void display(@NotNull T entity, @NotNull Mode mode) {
-            mode(mode);
-            displayEntity(entity);
-            parent.add(form);
-        }
-
-        /**
-         * Discard all changes in the form.
-         */
-        protected void discard() {
-            selectedItem = null;
-            clear();
-            parent.remove(form);
-        }
-
-        protected abstract void clear();
-
-        protected Component form() {
-            return form;
+        protected T deleteEntity() {
+            T deletedItem = selectedItem();
+            if (Objects.nonNull(deletedItem)) {
+                parent.provider().delete(deletedItem);
+                parent.dataView().refreshAll();
+            }
+            cancel();
+            return deletedItem;
         }
 
         // endregion
 
-        // region entity functions
-
-        protected abstract void displayEntity(@NotNull T entity);
-
-        // endregion
-
-        protected abstract void mode(@NotNull Mode mode);
+        protected void nameActionButton(@NotNull Mode mode) {
+            switch (mode) {
+                case VIEW -> {
+                    action.setText("Close");
+                }
+                case EDIT, CREATE, DUPLICATE -> {
+                    action.setText("Save");
+                }
+                case DELETE -> {
+                    action.setText("Delete");
+                }
+            }
+        }
 
         protected T selectedItem() {
             return selectedItem;
         }
-
-        // endregion
     }
 
     private final Class<T> entityClass;
     private final Provider<T> provider;
     private final Grid<T> grid;
     private final GridListDataView<T> dataView;
-    private transient T selectedItem;
-    private transient EntityForm<T> form;
+    protected transient T selectedItem;
+    protected transient EntityForm<T> form;
 
     public EntityView(@NotNull Class<T> entityClass, @NotNull Provider<T> provider) {
         this.entityClass = entityClass;
         this.provider = provider;
         grid = new Grid<>();
+        dataView = grid.setItems(DataProvider.ofCollection(provider.items()));
         grid.setSelectionMode(Grid.SelectionMode.SINGLE);
-        grid.addThemeVariants(GridVariant.MATERIAL_COLUMN_DIVIDERS);
-        grid.setHeight("30em");
-        dataView = grid.setItems(provider.items());
+        grid.addThemeVariants(GridVariant.LUMO_COMPACT);
+        grid.setHeight("24em");
         add(grid);
     }
 
@@ -200,6 +292,20 @@ public abstract class EntityView<T> extends VerticalLayout {
     }
 
     protected abstract void init();
+
+    protected void initMenu() {
+        GridContextMenu<T> menu = grid().addContextMenu();
+        menu.addItem(Mode.VIEW_TEXT, event -> form.display(event.getItem().orElse(null)));
+        menu.add(new Hr());
+        menu.addItem(Mode.EDIT_TEXT, event -> form.edit(event.getItem().orElse(null)));
+        menu.addItem(Mode.CREATE_TEXT, event -> form.create());
+        menu.addItem(Mode.DUPLICATE_TEXT, event -> form.duplicate(event.getItem().orElse(null)));
+        menu.addItem(Mode.DELETE_TEXT, event -> form.delete(event.getItem().orElse(null)));
+
+        SingleSelect<Grid<T>, T> selection = grid.asSingleSelect();
+        selection.addValueChangeListener(e -> form.fillForm(e.getValue()));
+    }
+
 
     protected void addFilter(@NotNull HeaderRow headerRow, @NotNull String key, @NotNull String label, @NotNull Consumer<String> attribute) {
         headerRow.getCell(grid().getColumnByKey(key)).setComponent(createFilterHeader(label, attribute));

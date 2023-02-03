@@ -14,22 +14,14 @@ package net.tangly.app.domain.ui;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
-import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.HeaderRow;
-import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import com.vaadin.flow.component.grid.dataview.GridListDataView;
-import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.menubar.MenuBar;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import com.vaadin.flow.data.selection.SingleSelect;
 import net.tangly.core.HasId;
 import net.tangly.core.HasName;
 import net.tangly.core.HasText;
@@ -41,7 +33,6 @@ import java.util.Objects;
 public class AppBoundedDomainOneUi implements BoundedDomainUi {
     static class AppEntityFilter<T extends HasId & HasName & HasText> {
         private final GridListDataView<T> dataView;
-
         private String id;
         private String name;
         private String text;
@@ -110,8 +101,6 @@ public class AppBoundedDomainOneUi implements BoundedDomainUi {
     }
 
     public static class EntityTwoView extends AppEntityView<AppBoundedDomainOne.EntityTwo> {
-        private EntityTwoForm form;
-
         public EntityTwoView(@NotNull Class<AppBoundedDomainOne.EntityTwo> entityClass, @NotNull Provider<AppBoundedDomainOne.EntityTwo> provider) {
             super(entityClass, provider);
             form = new EntityTwoForm(this);
@@ -123,7 +112,6 @@ public class AppBoundedDomainOneUi implements BoundedDomainUi {
             TextField id;
             TextField name;
             TextField text;
-            Button action;
 
             public EntityTwoForm(@NotNull EntityTwoView parent) {
                 super(parent);
@@ -131,17 +119,8 @@ public class AppBoundedDomainOneUi implements BoundedDomainUi {
             }
 
             @Override
-            public void display(AppBoundedDomainOne.EntityTwo entity, Mode mode) {
-                mode(mode);
-                displayEntity(entity);
-                parent.add(form);
-            }
-
-
-            @Override
-            public void displayEntity(AppBoundedDomainOne.EntityTwo entity) {
-                this.selectedItem = entity;
-                clear();
+            public void fillForm(AppBoundedDomainOne.EntityTwo entity) {
+                super.fillForm(entity);
                 if (entity != null) {
                     binder.readBean(entity);
                 }
@@ -159,17 +138,16 @@ public class AppBoundedDomainOneUi implements BoundedDomainUi {
                 } else {
                     parent.dataView().refreshAll();
                 }
-                discard();
+                cancel();
                 return entity;
             }
 
-            protected void mode(@NotNull Mode mode) {
+            @Override
+            protected void nameActionButton(@NotNull Mode mode) {
+                super.nameActionButton(mode);
                 id.setReadOnly(mode.readonly());
                 name.setReadOnly(mode.readonly());
                 text.setReadOnly(mode.readonly());
-                action.setText(mode.readonly() ? "Close" : "Save");
-                action.addClickListener(event -> discard());
-
             }
 
             protected void clear() {
@@ -190,17 +168,12 @@ public class AppBoundedDomainOneUi implements BoundedDomainUi {
                     new FormLayout.ResponsiveStep("320px", 2),
                     new FormLayout.ResponsiveStep("500px", 3));
 
-                form = new VerticalLayout();
-                Button cancel = new Button("Cancel");
-                cancel.addClickListener(event -> discard());
-                Button action = new Button();
-                action.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-                HorizontalLayout buttons = new HorizontalLayout(cancel, action);
-                Binder<AppBoundedDomainOne.EntityTwo> binder = new Binder<>(AppBoundedDomainOne.EntityTwo.class);
+                binder = new Binder<>(AppBoundedDomainOne.EntityTwo.class);
                 binder.forField(id).bind(AppBoundedDomainOne.EntityTwo::id, null);
                 binder.forField(name).bind(AppBoundedDomainOne.EntityTwo::name, null);
                 binder.forField(text).bind(AppBoundedDomainOne.EntityTwo::text, null);
-                form.add(fieldsLayout, buttons);
+
+                form().add(fieldsLayout, createButtonsBar());
             }
         }
 
@@ -210,20 +183,7 @@ public class AppBoundedDomainOneUi implements BoundedDomainUi {
             grid.addColumn(AppBoundedDomainOne.EntityTwo::name).setKey(NAME).setHeader(ENTITY_NAME_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
             grid.addColumn(AppBoundedDomainOne.EntityTwo::text).setKey(TEXT).setHeader(ENTITY_TEXT_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
             super.init();
-
-            SingleSelect<Grid<AppBoundedDomainOne.EntityTwo>, AppBoundedDomainOne.EntityTwo> selection = grid.asSingleSelect();
-            selection.addValueChangeListener(e -> {
-                AppBoundedDomainOne.EntityTwo selectedItem = e.getValue();
-                form.display(selectedItem, Mode.VIEW);
-            });
-
-            GridContextMenu<AppBoundedDomainOne.EntityTwo> menu = grid.addContextMenu();
-            menu.addItem(Mode.VIEW_TEXT, event -> form.display(event.getItem().orElse(null), Mode.VIEW));
-            menu.add(new Hr());
-            menu.addItem(Mode.EDIT_TEXT, event -> form.display(event.getItem().orElse(null), Mode.EDIT));
-            menu.addItem(Mode.CREATE_TEXT, event -> form.create(Mode.CREATE));
-            menu.addItem(Mode.DUPLICATE_TEXT, event -> form.create(Mode.DUPLICATE));
-            menu.addItem(Mode.DELETE_TEXT, event -> form.display(event.getItem().orElse(null), Mode.DELETE));
+            initMenu();
         }
     }
 
