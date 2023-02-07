@@ -1,7 +1,7 @@
 ---
 title: "The Quest for an Agile Company: Seven Years tangly llc"
 linkTitle: "Seven Years tangly"
-date: 2023-02-15
+date: 2023-02-10
 tags: ["agile", "tangly", "organization"]
 ---
 
@@ -13,10 +13,10 @@ tags: ["agile", "tangly", "organization"]
 
 image::2023-02-02-head.png[width=420,height=360,role=left]
 
-We are an agile software coaching and digital product development company.
+We are an agile software coaching and digital product development boutique.
 
 Since our inception, we co-create digital products using agile approaches.
-Our preferred tools are {ref-scrum}, {ref-lean}, DevOps, {ref-less}.
+Our preferred tools are {ref-scrum}, {ref-lean}, {ref-devops}, {ref-less}.
 
 The created digital products are successful in the market.
 
@@ -32,6 +32,14 @@ What is the meaning of being agile and being digital for our company?
 image::2023-02-02-being-agile.png[width=420,height=360,role=left]
 
 Agile organizations combine the efficiencies of scale with the speed, flexibility and resilience to compete and win in today’s world.
+
+Practices are the structural framework to cement your principles.
+We live {ref-devops}, {ref-scrum} and {ref-less}.
+
+Principles guide your daily decisions.
+We believe in the {ref-manifesto} and the {ref-manifesto-principles}.
+
+The difficult parts are values and mindset.
 
 _Empower your collaborators.
 Informed people make better trade-offs._
@@ -72,7 +80,7 @@ We support Swiss initiatives such as https://www.nationalerzukunftstag.ch/inform
 https://en.wikipedia.org/wiki/Science,_technology,_engineering,_and_mathematics[STEM] interests of kids and young adults
 footnote:[The percentage of MINT female students in Switzerland is around 11% (statistics from http://www.ictswitzerland.ch/[ICT Switzerland], Position Paper, 2020-02-25).
 This is a cultural and gender equality catastrophe.
-Neither the federal nor state governments have a MINT program with goals and budgets.
+Neither the Swiss federal nor state governments have a MINT program with goals and budgets.
 Volunteer initiatives try to improve this shameful situation for decades.].
 
 An article about last year's future day can be found under https://hub.hslu.ch/informatik/ava-und-talena-11-informatik-ist-cool-zukunftstag/[HSLU Future Day].
@@ -83,14 +91,19 @@ Home office work is encouraged to reduce commute traffic.
 
 Office emissions are minimal.
 We acquire notebooks to minimise power consumption.
-Our company does not possess printers, faxes, or phone landlines.
+Our company does not possess any printers, faxes, or phone landlines.
 
-All our documents and correspondence are digital.
+All our documents and correspondence materials are digital.
 Our technical library is solely composed of ebooks.
 
 === Being Digital
 
 All our internal processes are digital.
+
+[quote,Warren Buffett]
+____
+When people tell me they've learned from experience, I tell them the trick is to learn from other people's experience.
+____
 
 The trend towards digital documents, https://www.six-group.com/en/products-services/banking-services/payment-standardization/standards/qr-bill.html[QR Code]
 and https://fnfe-mpe.org/factur-x/factur-x_en/[digital exchange] standards for invoices helps us to extend our digital approaches to our partners and customers.
@@ -99,18 +112,21 @@ We have almost no manual or paper interactions with government platforms and ins
 Swiss government departments provide web portal access to their services.
 At least we do not need to send paper documents.
 
-But none of the solutions for social insurances, VAT declarations or salary documents have an API.
+But none of the government provided solutions for social insurances, VAT declarations or salary documents have a published API.
 Swiss government solutions are still stuck in the last millennium and have missed the API integration approach.
 
 The Swiss federal government deployed a new https://www.estv.admin.ch/estv/en/home.html[Swiss Federal Tax Administration Portal] last year.
 The various services are now located under one portal.
-The solution is still missing a public API to enable the digital transformation of company's processes.
+The solution is still missing a public API to enable the digital transformation of company's processes
+footnote:[Having a collaborator inputting data on a Web form is certainly not the definition of a digital process.].
 
 Big insurance companies are worse than the federal government.
 Pension fund and accident insurances still ask for paper correspondence for standardized processes such as mutation or yearly salary structure information.
 Improvements are visible but incredibly slow
 footnote:[In 2022, we could handle most of our communication with insurance companies electronically.
-Pension funds still regularly require printed communication.].
+Pension funds still regularly require printed communication.
+They finally accept that we scan their forms and send them per email.
+Their own collaborators are very helpful and are not proud of their company's approach.].
 
 We used Google as our main provider of digital applications for daily work.
 We have a company account and associated contract since the inception of our company.
@@ -126,7 +142,7 @@ We initiated a slow withdrawal from their digital offerings.
 
 ==== Website
 
-You want a quality website.
+You want a quality and lively website.
 Collaborators should be empowered to modify content in a timely and cost-effective manner.
 
 _Use a static website.
@@ -140,7 +156,7 @@ Simple scripts create a new version of the site and publish it into the Internet
 
 All texts and the configuration are stored in a git repository.
 All collaborators have the rights to enhance the content of our site
-footnote:[Take it easy. Git approach easily supports rollback if a change was catastrophic.].
+footnote:[Take it easy. Git easily supports fast rollback if a change was catastrophic.].
 
 ==== BitBucket Platform
 
@@ -162,9 +178,12 @@ Take ownership of the URL for all the sites you own.
 Your blogs and documentation often link to articles or pages on various organization websites
 footnote:[The hosting company can disappear or change their business model.
 Avoid location dependency.
-Nothing is  more unpleasant than a dead link or a link to outdated information.].
+Nothing is more unpleasant than a dead link or a link to outdated information.].
 
 _Publish under your domain name._
+
+The domain name is your identity in the Internet.
+Prospects and interested parties will find you through your name.
 
 Use your organization domain for all internal links to simplify migration of your sites to another provider
 footnote:[We decided to move our static websites from BitBucket to GitHub.

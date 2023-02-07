@@ -11,7 +11,8 @@ tags: ["agile"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2016-08-01-head.jpg[width=420, height=360, role=left]
+image::2016-08-01-head.jpg[width=420,height=360,role=left]
+
 I learnt quite a few new acronyms and techniques when studying for the PMI-ACP certification program.
 In this post I collected these acronyms, some definition and the bibliography you should know before attending the examination.
 
@@ -37,17 +38,15 @@ Some online videos of https://www.mountaingoatsoftware.com/blog[Mike Cohn] also 
 . http://en.wikipedia.org/wiki/Agile_software_development[Agile product management] __APM __Framework, agile product lifecycle
 .. Envision
 .. Speculate (During the speculate phase, the product stories are delivered.
- This phase involves planning and delivering tested stories in a short iteration, constantly seeking to reduce the risk and uncertainty of the product).
+This phase involves planning and delivering tested stories in a short iteration, constantly seeking to reduce the risk and uncertainty of the product).
 .. Explore,
 .. Adapt,
 .. Close.
 .. Scope, Costs, Time
-.. http://jimhighsmith.com/2010/11/14/beyond-scope-schedule-and-cost-the-agile-triangle/[The agile triangle]: Value (releasable product),
- Quality (reliable, adaptable product),  Constraints (cost, schedule, scope)
+.. http://jimhighsmith.com/2010/11/14/beyond-scope-schedule-and-cost-the-agile-triangle/[The agile triangle]: Value (releasable product), Quality (reliable, adaptable product), Constraints (cost, schedule, scope)
 . People, Products and Processes
 . http://jimhighsmith.com/2010/11/14/beyond-scope-schedule-and-cost-the-agile-triangle/[Value, Quality and Constraints]
- The five identified core risk areas for a product are: Intrinsic schedule flaw, Specification breakdown, Scope creep,
-Personnel loss and Productivity variation.
+The five identified core risk areas for a product are: Intrinsic schedule flaw, Specification breakdown, Scope creep, Personnel loss and Productivity variation.
 . Planning, monitoring, adapting
 . Estimation in agile projects
 . Communication on agile projects
@@ -91,7 +90,6 @@ It is interesting to compare the above list with the reference list of the Certi
 . bibitem:[lean-from-the-trenches]
 . bibitem:[kanban]
 
-
 === Terminology and Acronyms
 
 The more terms and acronyms you know, the easier the examination will be.
@@ -100,24 +98,23 @@ image:2016-08-01-active-listening.png[float="right"]
 
 * http://en.wikipedia.org/wiki/Active_listening[Active Listening]
 * ARCS - Attention Relevance Confidence Satisfaction - relevant for motivational theory and process for systematic motivational design
-* Affinity Estimation - e.g. story points or tee-shirt sizes -. The Affinity Estimating exercise is best conducted on Product Backlogs larger than 20 items.
- It is best when you have at least 40 items which allows for groupings to easily become apparent.
-* ATDD Acceptance Test Driven Development - Discuss, Distill, Develop, and Demo -
- see also http://en.wikipedia.org/wiki/Behavior_Driven_Development[Behaviour Driven Development] _BDD_
+* Affinity Estimation - e.g. story points or tee-shirt sizes -.
+The Affinity Estimating exercise is best conducted on Product Backlogs larger than 20 items.
+It is best when you have at least 40 items which allows for groupings to easily become apparent.
+* ATDD Acceptance Test Driven Development - Discuss, Distill, Develop, and Demo - see also http://en.wikipedia.org/wiki/Behavior_Driven_Development[Behaviour Driven Development] _BDD_
 * http://agile2009.agilealliance.org/node/2153/[Boundary, Authority, Role and Task] _BART_
 * CD Continuous Deployment (CD as Continuous Delivery is not part of the examination)
 * http://en.wikipedia.org/wiki/Cumulative_flow_diagram[Cumulative Flow Diagrams] _CFD_
 * CI Continuous Integration: multistage integration is running additional tests for performance, load or stability
 * Collaboration versus Coordination: Work Together versus Share Information
 * Cycle Time = Flow Time
-* DEEP Detailed Appropriately, Estimable, Emergent, Prioritised
-*Disaggregation: split story into smaller stories
+* DEEP Detailed Appropriately, Estimable, Emergent, Prioritised *Disaggregation: split story into smaller stories
 * DRY Don't Repeat Yourself
 * EI Emotional Intelligence
 * EISA Emotional Intelligence Skills Assessment _Perceiving, Managing, Decision Making, Achieving, Influencing_
 * EQ Emotional Intelligence Quotient
 * Error-feedback ratio: is the number of new defects injected when fixing existing defects.
- Several years ago, Jerry Weinberg conducted studies on the error-feedback ratio and found that a 20% difference in feedback ratio leads to an 88% difference in completion time (bad enough), but the next 10% increase leads to a 112% increase.
+Several years ago, Jerry Weinberg conducted studies on the error-feedback ratio and found that a 20% difference in feedback ratio leads to an 88% difference in completion time (bad enough), but the next 10% increase leads to a 112% increase.
 * http://en.wikipedia.org/wiki/Earned_value_management[Earned Value Management] _EVM_ - this is standard PMI theory -
 ** PV (Planned Value) = BAC (Budget At Completion) \* Planned Percentage Completed Budget Cost of Work Scheduled
 ** AC (Actual Cost) - Budget Cost of Work Performed
@@ -127,8 +124,8 @@ image:2016-08-01-active-listening.png[float="right"]
 ** ETC (Cost Required) = (BAC - EV) / CPI - This metric is the forecast amount to complete the remaining work -
 ** EAC (Forecast Cost for the total planned work) = BAC / CPI = AC + ETC
 * Five Levels of Conflicts
-.. Problem to Solve (Good Teams) -> Collaboration, consensus
- Collaboration- Seeking a win-win situation. Consensus- Learning where every team member’s head is with regard to the issue and, in time, arriving at a decision everyone can back.
+.. Problem to Solve (Good Teams) -> Collaboration, consensus Collaboration- Seeking a win-win situation.
+Consensus-Learning where every team member’s head is with regard to the issue and, in time, arriving at a decision everyone can back.
 .. Disagreement -> Negotiate, support
 .. Contest -> Accommodate
 .. Crusade -> Shuttle between parties
@@ -136,11 +133,12 @@ image:2016-08-01-active-listening.png[float="right"]
 * JBGE Just Barely Good Enough
 * http://en.wikipedia.org/wiki/INVEST_(mnemonic)[INVEST] Independent Negotiable Valuable Estimable Small (Sized appropriately) Testable
 * http://en.wikipedia.org/wiki/Internal_rate_of_return[Internal Rate of Return] _IRR_, the higher, the better.
- The internal Rate of Return (IRR) is used to express the return on product in % terms when comparing two different cash flow streams.
+The internal Rate of Return (IRR) is used to express the return on product in % terms when comparing two different cash flow streams.
 * JIT Just In Time
 * http://en.wikipedia.org/wiki/Kano_model[Kano Model]: Must have, Linear feature, Delight
 ** Threshold or basic attributes must have attributes, otherwise the product is incomplete.
- Threshold features are those that must be present in the product  for it to be successful. They are often referred to as must-have features.
+Threshold features are those that must be present in the product for it to be successful.
+They are often referred to as must-have features.
 ** Performance attributes are linear, the more, the better
 ** Excitement attributes are delights
 * MMF Minimally Marketable Feature
@@ -158,23 +156,27 @@ image:2016-08-01-active-listening.png[float="right"]
 ** Risk Exposure (Risk Sensus) -> Risk Probability * Risk Cost = Risk Exposure
 ** Risk Management Process: Identify, Assess, Respond, Review of risks
 ** Strategies: Avoid, Mitigate, Transfer, Accept
-* ROI Return On Investment (Benefits - Costs) / Costs in percent. The higher the better
+* ROI Return On Investment (Benefits - Costs) / Costs in percent.
+The higher, the better
 * http://java.dzone.com/articles/60-second-agility-roti[ROTI] Return On Time Invested (done in 60 seconds)
-** 0 = "I'd have been better off making a Starbucks run. Complete waste of time" or Lost Principle: No Benefit Received for Time Invested Break-Even
+** 0 = "I'd have been better off making a Starbucks run.
+Complete waste of time" or Lost Principle: No Benefit Received for Time Invested Break-Even
 ** 1 = "You really should have let me stay at my desk and code"
-** 2 = "This was an OK meeting. About as valuable as if I'd been coding" or Received Benefit Equal to Time Invested High Return on Investment
+** 2 = "This was an OK meeting.
+About as valuable as if I'd been coding" or Received Benefit Equal to Time Invested High Return on Investment
 ** 3 = "Surprisingly, this was more valuable than if I'd been writing code"
-** 4 = "Wow, this meeting saved me tons of time. Thank goodness I didn't skip it to code" or Received Benefit Greater than Time Invested
+** 4 = "Wow, this meeting saved me tons of time.
+Thank goodness I didn't skip it to code" or Received Benefit Greater than Time Invested
 * RUP Rational Unified Process: Inception, Elaboration, Construction, Transition phases
 * Staging: The process of defining and prioritizing the nonfunctional requirements for scaling is called staging.
- Staging occurs prior to the start of the first sprint and takes just one day.
- During this day, the nonfunctional scaling requirements for this particular product are determined and placed in the Product Backlog.
+Staging occurs prior to the start of the first sprint and takes just one day.
+During this day, the nonfunctional scaling requirements for this particular product are determined and placed in the Product Backlog.
 * http://en.wikipedia.org/wiki/Shuhari[Shu Ha Ri]: can be considered as concentric circles, with Shu within Ha, and both Shu and Ha within Ri.
- The fundamental techniques and knowledge do not change.
+The fundamental techniques and knowledge do not change.
 ** "protect", "obey" — traditional wisdom — learning fundamentals, techniques, heuristics, proverbs
 ** "detach", "digress" — breaking with tradition — detachment from the illusions of self
 ** "leave", "separate" — transcendence — there are no techniques or proverbs, all moves are natural.
- Becoming one with spirit alone without clinging to forms; transcending the physical
+Becoming one with spirit alone without clinging to forms; transcending the physical
 * {ref-scrum}
 ** pillars: Transparency, Inspection, Adaptation
 ** Scrum of Scrums = Meta Scrum
@@ -187,16 +189,16 @@ image:2016-08-01-active-listening.png[float="right"]
 * http://en.wikipedia.org/wiki/Extreme_programming[Extreme Programming] _XP_
 * http://en.wikipedia.org/wiki/Wideband_delphi[Wideband Delphi]
 * Wave: Wave is the Product Planning structure with a Medium-range time frame (3 months) with story level capability and capability commitment.
- Waves, or milestones, are intermediate points, usually from one month to three months apart.
- Waves can have both a product management and a technical function. From a product management perspective, they provide a chance to review progress and make adjustments.
+Waves, or milestones, are intermediate points, usually from one month to three months apart.
+Waves can have both a product management and a technical function.
+From a product management perspective, they provide a chance to review progress and make adjustments.
 * http://en.wikipedia.org/wiki/Work_breakdown_structure[Work Breakdown Structure] _WBS_
 
 Below some additional definitions
 
-[quote, Norm Kerth's Prime Directive (should be used in review and retrospective) ]
+[quote,Norm Kerth's Prime Directive (should be used in review and retrospective) ]
 ____
-Regardless of what we discover, we understand and truly believe that everyone did the best job they could, given what they knew at the time, their skills
-and abilities, the resources available, and the situation at hand.
+Regardless of what we discover, we understand and truly believe that everyone did the best job they could, given what they knew at the time, their skills and abilities, the resources available, and the situation at hand.
 ____
 
 * Story Points versus Ideal Days - and Elapsed Days -
@@ -214,16 +216,16 @@ ____
 * Root-causing a defect or testing the feasibility of an algorithm or a third party solution is an example of a spike
 * Measure: ascertain the size, amount, or degree of (something) by using an instrument or device marked in standard units or by comparing it with an object of known size
 * Dysfunctional teams pyramid: absence of trust, fear of conflict, lack of commitment, avoidance of accountability, inattention to results
-* According to DeMarco, Fragmented knowledge workers may look busy but a lot of their business is just thrashing. The minimum cost penalty is 15%
+* According to DeMarco, Fragmented knowledge workers may look busy but a lot of their business is just thrashing.
+The minimum cost penalty is 15%
 * The declaration milestone is a verbal notice from one person to another, or to multiple people, that a milestone was reached.
 * The three coach styles are Teaching, Coaching, and Advising.
 * The quantity of function is, scope, measured in terms of user stories, use cases, requirements, or features (depending on a particular situation).
- In software, these may be measured ultimately as objects, modules, classes, or lines of code.
+In software, these may be measured ultimately as objects, modules, classes, or lines of code.
 
 === Questions
 
-* Which of the following correctly defines the team members themselves managing assignment of the day-to-day tasks required to deliver stories at the end of
-each iteration? _Workload Management_
+* Which of the following correctly defines the team members themselves managing assignment of the day-to-day tasks required to deliver stories at the end of each iteration? _Workload Management_
 * Which of the following technique can be used to apply to bring down the Lost Opportunity Cost within your team? _Team Collocation_
 * When should the Product Owner provide feedback on the work results? _Just in time reviews_
 * Who is the most appropriate person to monitor all the risks in an Agile product? _The product manager_
@@ -236,46 +238,44 @@ _Business case realization -The PMO can help the teams to enable timely decision
 * Which is the communication technique where you repeat back a summary of what the other person just said to you to confirm understanding?
 _Reflective Listening is a communication technique where you repeat back a summary of what the other person just said to you to confirm understanding._
 _Another benefit in this situation is that having the person hear their own ideas in another person’s voice/words may make it easier for them to be objective._
-* Adaptation depends upon understanding a wide range of information, including an assessment of the product's progress, technical risks, the requirements
-evolution, and ongoing competitive market analysis. Which are the areas where every team needs to constantly evaluate and make appropriate adaptations?
+* Adaptation depends upon understanding a wide range of information, including an assessment of the product's progress, technical risks, the requirements evolution, and ongoing competitive market analysis.
+Which are the areas where every team needs to constantly evaluate and make appropriate adaptations?
 _Product Value, Product quality, Product status, Team performance -Every team needs to constantly evaluate and make appropriate adaptations in the following four areas - Product Value, Product quality, Product status, Team performance-_
 * A standard for measuring or evaluating something. _Metric - A metric is a standard for measuring or evaluating something.-_
 * What BEST describes the characteristics of a Learner at Level 3 or in the Fluent stage of learning?
- Learners in the Fluent stage are experts -The Stage 3 Learner is at the stage of mastery.
- He is able to figure out the end effect of any procedure and to make his way to that end.-
+Learners in the Fluent stage are experts -The Stage 3 Learner is at the stage of mastery.
+He is able to figure out the end effect of any procedure and to make his way to that end.-
 * Scrum uses the sashimi technique to require that every slice of functionality created by the developers be complete.
- All the requirements gathering and analysis, design work, coding, testing, and documentation that constitute a complete product are required to be completed
- in every Sprint and demonstrated in the Sprint increment of functionality. Sprints are kept short enough that the stakeholders don’t lose interest in the
- product before the Sprints are completed. And stakeholders can see that they have an opportunity to redirect the product at the start of every Sprint to
- optimize the value they derive from the product. At the end of every Sprint, stakeholders see new functionality. Models, requirements, and internal
- artefacts might be of use to the developers, but they are never shown to the stakeholders.
-* Feature X has a value of 12 and the total value of all features is 35. If the feature is estimated to cost 56%, what is the priority of this feature using
- relative weighting?
- _Correct Answer is B. The priority of the feature is determined by dividing the relative value by the cost %. Hence the answer = (12/35)/(0.56) = 0.61._
+All the requirements gathering and analysis, design work, coding, testing, and documentation that constitute a complete product are required to be completed in every Sprint and demonstrated in the Sprint increment of functionality.
+Sprints are kept short enough that the stakeholders don’t lose interest in the product before the Sprints are completed.
+And stakeholders can see that they have an opportunity to redirect the product at the start of every Sprint to optimize the value they derive from the product.
+At the end of every Sprint, stakeholders see new functionality.
+Models, requirements, and internal artefacts might be of use to the developers, but they are never shown to the stakeholders.
+* Feature X has a value of 12 and the total value of all features is 35. If the feature is estimated to cost 56%, what is the priority of this feature using relative weighting?
+_Correct Answer is B. The priority of the feature is determined by dividing the relative value by the cost %.
+Hence the answer = (12/35)/(0.56) = 0.61._
 * The 100-Point Method was originally developed by Dean Leffingwell and Don Widrig for use cases and is used for prioritization as well.
- It is a voting scheme where each stakeholder is given 100 points that he or she can use for voting in favour of the most important requirements.
- How they distribute the 100 points is up to them: 20 here, 10 there or even all 100 on a single requirement if that is their sole priority.
+It is a voting scheme where each stakeholder is given 100 points that he or she can use for voting in favour of the most important requirements.
+How they distribute the 100 points is up to them: 20 here, 10 there or even all 100 on a single requirement if that is their sole priority.
 * When a team member approaches the Coach with a complaint about another team member, what conflict resolution technique should the Coach use?
- _Three-step intervention path_
- Every team needs to constantly evaluate and make appropriate adaptations in the following four areas: Product value, Product quality, Team performance,
- Project status.
+_Three-step intervention path_
+Every team needs to constantly evaluate and make appropriate adaptations in the following four areas: Product value, Product quality, Team performance, Project status.
 * Normative methodologies are based on solutions or sequences of steps known to work for the discipline.
- Electrical and other building codes in house wiring are examples.
- In software development, one would include state diagram verification in this category.
-* Iterative development means that we build a partial version of a product and then expand that version through successive short time periods of development
- followed by reviews and adaptations. Feature-based delivery means that the engineering team builds features of the final product or, particularly with
- industrial products. At least a close representation of the final product (such as a simulation model). Iterations are constrained to produce a result within
- a certain period of time—a time box (as short as 1–4 weeks for software). Time boxes force closure; they force us to make something concrete, often before
- we are quite ready. Incremental development means that we build these products such that they could be deployed at the end of one or more of the iterations.
-* Forecasting the financial value of a theme is the responsibility of the product owner, but it is a responsibility shared with all other team
- members—programmers, testers, analysts, product managers, and so on.
+Electrical and other building codes in house wiring are examples.
+In software development, one would include state diagram verification in this category.
+* Iterative development means that we build a partial version of a product and then expand that version through successive short time periods of development followed by reviews and adaptations.
+Feature-based delivery means that the engineering team builds features of the final product or, particularly with industrial products.
+At least a close representation of the final product (such as a simulation model).
+Iterations are constrained to produce a result within a certain period of time—a time box (as short as 1–4 weeks for software).
+Time boxes force closure; they force us to make something concrete, often before we are quite ready.
+Incremental development means that we build these products such that they could be deployed at the end of one or more of the iterations.
+* Forecasting the financial value of a theme is the responsibility of the product owner, but it is a responsibility shared with all other team members—programmers, testers, analysts, product managers, and so on.
 * Decision Framing focuses majorly on,
 _Decision framing focuses on who gets involved in the decision process._
 _Managers who make decisions without input from subordinates and peers make poor decisions._
 _Engineers who make decisions without input from managers and peers make poor decisions._
 _Who makes the decision is less important than getting the right people involved in the decision process._
 * Which of the following charts shows the total number of story points completed through the end of each iteration? _Cumulative story point burn-down chart_
-* During a critical problem-solving, you can ask probing questions, use active and reflective listening, Lead to an answer, but one should avoid injecting their
-own ideas.
+* During a critical problem-solving, you can ask probing questions, use active and reflective listening, Lead to an answer, but one should avoid injecting their own ideas.
 
 I wish you success for your certification.
