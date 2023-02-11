@@ -30,6 +30,11 @@ Both approaches are quite similar.
 They mix a phase-based Waterfall approach with the four phases of the old https://en.wikipedia.org/wiki/Rational_Unified_Process[RUP] project life-cycle approach.
 RUP belongs to the family of https://en.wikipedia.org/wiki/Unified_Process[unified process methods].
 
+image::2022-04-02-rup-phases.jpg[width=480,height=380,role=text-center]
+
+The four phases or gates are inception, elaboration, construction, and transition.
+If you are using {ref-devops} approaches, you certainly do not need an inception or a transition phase.
+
 These approaches are obsolete.
 Almost no industrial service companies are explicitly using Waterfall or unified process approaches.
 

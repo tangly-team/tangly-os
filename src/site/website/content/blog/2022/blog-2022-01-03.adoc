@@ -177,7 +177,7 @@ If a candidate cites obsolete approaches, I become cautious.
 
 * SVN has died for 10 years.
 Everybody uses Git.
-* RUP has died for 20 years.
+* https://en.wikipedia.org/wiki/Rational_Unified_Process[RUP] has died for 20 years.
 * The Waterfall has died for 25 years.
 * Extensive front-end requirement definition has died for 10 years.
 * Big front-end architecture and design activities have died for 15 years.

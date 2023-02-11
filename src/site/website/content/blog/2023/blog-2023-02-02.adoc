@@ -133,7 +133,7 @@ We have a company account and associated contract since the inception of our com
 
 We had to painfully acknowledge that Google has slow innovation and outdated solutions.
 Try to publish Internet sites with their https://sites.google.com/[Sites] application.
-It is cumbersome, no support for {ref-asciidoc} or Markdown is available.
+It is cumbersome, and no support for {ref-asciidoc} or https://daringfireball.net/projects/markdown/syntax[Markdown] is available.
 
 Static website concepts and infrastructure as version managed artifacts are sorely missing.
 We initiated a slow withdrawal from their digital offerings.
@@ -152,7 +152,7 @@ Deploy in minutes._
 Our main website with this blog is a static website based on {ref-hugo} and the {ref-docsy} theme <<improving-hugo>><<comments-hugo>>.
 
 We use tools to generate new content and deploy the result.
-Simple scripts create a new version of the site and publish it into the Internet.
+Simple scripts create a new version of the site and publish it to the Internet.
 
 All texts and the configuration are stored in a git repository.
 All collaborators have the rights to enhance the content of our site
@@ -207,7 +207,3 @@ Marcel Baumann. 2016.
 Marcel Baumann, 2021
 - [[[comments-hugo, 8]]] link:../../2020/support-comments-for-static-hugo-website/[Support Comments for Static Hugo Website]
 Marcel Baumann, 2020
-
-=== References
-
-bibliography::[]

@@ -167,7 +167,7 @@ About as valuable as if I'd been coding" or Received Benefit Equal to Time Inves
 ** 3 = "Surprisingly, this was more valuable than if I'd been writing code"
 ** 4 = "Wow, this meeting saved me tons of time.
 Thank goodness I didn't skip it to code" or Received Benefit Greater than Time Invested
-* RUP Rational Unified Process: Inception, Elaboration, Construction, Transition phases
+* https://en.wikipedia.org/wiki/Rational_Unified_Process[RUP] Rational Unified Process: Inception, Elaboration, Construction, Transition phases
 * Staging: The process of defining and prioritizing the nonfunctional requirements for scaling is called staging.
 Staging occurs prior to the start of the first sprint and takes just one day.
 During this day, the nonfunctional scaling requirements for this particular product are determined and placed in the Product Backlog.
