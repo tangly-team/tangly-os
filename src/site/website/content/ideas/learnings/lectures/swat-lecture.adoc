@@ -23,9 +23,12 @@ Slides and reference literature are in English and published under link:../#agil
 stem:[2/3] of the lecture is the presentation of new concepts.
 stem:[1/3] of the lecture is used to discuss the literature and support the students in the application of the concepts of their software project.
 
-The reference books are cite:[clean-architecture,building-evolutionary-architectures,refactoring].
+The reference books are cite:[building-evolutionary-architectures-2nd,building-evolutionary-architectures,refactoring].
 
 Recommended books are cite:[clean-code,clean-coder,clean-architecture,clean-agile,clean-craftsmanship].
+
+The basics of the domain-driven design approach are presented in the third part of the training
+cite:[domain-driven-design,implementing-domain-driven-design,domain-driven-design-distilled].
 
 [cols="2,3,5",frame=all,grid=all]
 |====
@@ -42,14 +45,14 @@ a| - Introduction and administrative information
 |Lecture 2
 |Evolution of Software Architecture and Design over the last Decades
 a|- Evolution of software architecture
-- UML and TOGAF
+- UML, RUP and TOGAF
 - Agile approaches
 
 |Lecture 3
 |What is Agile Architecture?
 a|- Agile architecture principles
 - Developer vs Architects
-- Domain Driven Design _DDD_
+- Domain-Driven Design _DDD_
 
 |Lecture 4
 |Agile Approaches with Scrum, eXtreme Programming, LeSS
@@ -87,9 +90,9 @@ a|- Functional and non-functional requirements
 - TDD, ATDD, BDD approaches
 
 |Lecture 9
-|Validate Quality attributes of Software Architecture
+|Validate Architecture Characteristics
 a|- Non-functional requirement _NFR_ measurement
-- Fitness functions
+- Architecture Characteristics and fitness functions
 - DevOps and DORA metrics
 - Metrics and Automation
 - Compliance and corporate governance
@@ -104,6 +107,7 @@ a|- Why document?
 |Lecture 11
 |Software Architectural Trends (1/2)
 a|- Functional Programming
+- Reactive Programming
 
 
 |Lecture 12

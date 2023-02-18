@@ -1,0 +1,42 @@
+---
+title: "Agile Software Architecture"
+linkTitle: "Agile Software Architecture"
+date: 2023-09-10
+tags: ["agile", "architecture"]
+---
+
+== Agile Software Architecture
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2023-09-02-head.jpg[width=420,height=360,role=left]
+
+=== Agile Digital and Software Product Development
+
+Product development and not project
+
+Scrum de-facto standard
+
+technical agility
+
+=== Functional Requirements
+
+traceability through TDD and ATDD
+
+Continuous integration and delivery
+
+Translation and user manual
+
+=== Architecture Characteristics
+
+cite:[building-evolutionary-architectures-2nd,building-evolutionary-architectures]
+
+cite:[refactoring]
+
+cite:[modern-software-engineering]
+
+=== References
+
+bibliography::[]

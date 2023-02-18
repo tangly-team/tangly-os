@@ -13,6 +13,15 @@ tags: ["scrum"]
 
 image::2023-03-01-head.png[width=420,height=360,role=left]
 
+Scrum is the most popular agile approach used to develop digital products.
+
+The Scrum master role is well-documented in the {ref-scrumguide}.
+There is probably more than a million of certified Scrum masters in the world.
+
+To differentiate themselves from the numerous Scrum masters, consultants call themselves agile coaches.
+
+Does a difference exists between a Scrum master and an agile coach?
+
 [cite,Vyras Butkus]
 ____
 A Scrum master is a type of Agile coach.
@@ -21,35 +30,62 @@ ____
 
 === Agile Coaches Profiles
 
+Here some profiles of agile coaches.
+If you read the {ref-scrumguide} you understand these profiles are facets of the Scrum master role.
+
+A Scrum master is always an agile coach cite:[art-agile-development-2nd,mastering-professional-scrum].
+
+image::2023-03-01-agile-fluency-model.png[width=640,height=400,role=text-center]
+
 ==== Delivery Coach
 
-The Delivery Coach has a strong focus on optimizing the flow of the development process.
+The delivery coach has a strong focus on optimizing the flow of the development process.
+She is the advisor to empower the team to reach delivery fluency in the agile fluency model.
+
 In order to increase the delivered business value, the Delivery Coach will identify bottlenecks, replace local optimizations for more generic solutions and build quality into the software development lifecycle.
-He or She sits with the team to help them automate deployments and testing and to embrace development practices like BDD and TDD.
+
+She sits with the team to help them automate deployments and testing and to embrace development practices like BDD and TDD.
+
 But the delivery coach will also explain the importance of this to the leadership teams, so they support the teams towards their technical excellence.
+
+_I expect a technical Scrum master to possess the above capabilities.
+If not he must hire a technical delivery coach to support his Scrum team.
+Most organizations cannot afford multiple coaches for one team._
 
 ==== Team Coach
 
 We have experienced that despite the remark made by my manager, “the teams will do their thing”, teams still need help to grow their agile maturity and business impact.
+
 Therefore, we distinguish the role of the Team coach.
 The team coach works close with the team citee:[clean-code,clean-coder], PO cite:[professional-product-owner] and the Scrum master cite:[great-scrum-master,mastering-professional-scrum].
 The team coach helps the different teams to identify improvements.
 He supports the scrum masters in their ambition to help the teams forward cite:[agile-retrospectives].
 
+She is the advisor to empower the team to reach focusing fluency in the agile fluency model.
+
+_I expect a professional Scrum master to possess the above capabilities.
+Teaching, coaching, and mentoring the Scrum team to grasp agility is one of her main responsibilities.
+Scrum masters in an organization shall exchange ideas and tips through a community of practice._
+
 ==== Agile Counselor
 
 The role of leadership is often seen as the biggest challenge in having a successful agile transformation.
 A leader sets the tone for the entire organization cite:[lead-with-lean,lean-manager,lead-with-respect,gold-mine].
+
 Leaders should communicate what agility means for their organization and be an example by adopting agile values and practices.
-The agile counselor does not focus that much on the development process as the Delivery Coach but aims to empower leadership.
+
+The agile counselor does not focus that much on the development process as the delivery coach but aims to empower leadership.
 She has an eye for the health of the teams and will address _bad smell_ with the leadership team.
-The counselor coaches the leaders on their agile mindset.
-He poinst out, for example, when old-school thinking and behavior hurt on the performance and delivery.
+The counselor coaches the leaders on their agile mindset cite:[lean-software-development,lean-mindset,implementing-lean-sw-development].
+
+She points out, for example, when old-school thinking and behavior hurt on the performance and delivery.
 
 These three profiles bear similarities with Adkin’s areas of mastery.
 Both distinguish between technical and transformational support.
+
 The delivery coach has some commonalities with technical mastery but rather than having a team focus, she will also act on leadership level to create awareness and commitment for technical excellence.
 While doing this, she plays a crucial part in the Agile transformation.
+
 The Agile counselor works with the leadership team, which requires business mastery as well as transformational skills.
 
 A team coach preferably supports the team by offering technical support and coach on the process and Agile mindset.
@@ -63,6 +99,9 @@ I assume it is quite difficult to be a soccer coach if you have no clue what soc
 Realize that smaller companies can seldom afford an agile coach and a technology coach for one team.
 So it is really helpful to at least be able to discuss technical aspects with your coachees.
 
+_So yes, a Scrum master shall understand the domain and the technology her team needs to create an awesome product.
+She does not need to be an expert, but certainly she should be savvy._
+
 [bibliography]
 === Links
 
@@ -73,6 +112,12 @@ Butkus, V.
 * [[[businessreport, 3]]]
 https://www.accenture.com/us-en/insights/technology/business-agility-report-2020[The Business Agility Report, 3rd Edition].
 Accenture. 2020
+* [[[what-does-scrum-master, 4]]] link:../../2017/what-does-a-scrum-master/[What Does A Scrum Master?].
+Marcel Baumann. 2020
+* [[[what-not-need, 5]]] link:../../2016/what-you-do-not-need-to-do-in-scrum/[what You Do Not Need To Do in Scrum].
+Marcel Baumann. 2016
+* [[[scrum-master-formation, 6]]] link:../../2021/scrum-master-formation/[Scrum Master Formation].
+Marcel Baumann. 2021
 
 === References
 
