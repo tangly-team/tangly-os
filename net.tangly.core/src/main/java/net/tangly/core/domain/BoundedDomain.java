@@ -63,6 +63,9 @@ public class BoundedDomain<R extends Realm, B, H extends Handler<?>, P> {
         return counts;
     }
 
+    public String name() {
+        return name;
+    }
     public R realm() {
         return realm;
     }

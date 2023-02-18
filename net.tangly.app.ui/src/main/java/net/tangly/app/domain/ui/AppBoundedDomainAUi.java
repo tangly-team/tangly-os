@@ -32,40 +32,35 @@ import java.util.Objects;
 
 public class AppBoundedDomainAUi implements BoundedDomainUi {
     public static abstract class AppEntityView<T extends HasId & HasName & HasText> extends EntityView<T> {
-        static class AppEntityFilter<T extends HasId & HasName & HasText> {
-            private final GridListDataView<T> dataView;
+        static class AppEntityFilter<T extends HasId & HasName & HasText> extends EntityView.EntityFilter<T>{
             private String id;
             private String name;
             private String text;
 
             public AppEntityFilter(@NotNull GridListDataView<T> dataView) {
-                this.dataView = dataView;
-                this.dataView.addFilter(this::test);
+                super(dataView);
             }
 
             public void id(String id) {
                 this.id = id;
-                this.dataView.refreshAll();
+                refresh();
             }
 
             public void name(String name) {
                 this.name = name;
-                this.dataView.refreshAll();
+                refresh();
             }
 
             public void text(String text) {
                 this.text = text;
-                this.dataView.refreshAll();
+                refresh();
             }
 
+            @Override
             public boolean test(@NotNull T entity) {
                 return matches(entity.id(), id) && matches(entity.name(), name) && matches(entity.text(), text);
             }
 
-            private boolean matches(String value, String searchTerm) {
-                boolean searchTermUndefined = (searchTerm == null) || (searchTerm.isBlank());
-                return searchTermUndefined || ((value == null) || value.toLowerCase().contains(searchTerm.toLowerCase()));
-            }
         }
 
         public static abstract class AppEntityForm<T extends HasId & HasName & HasText> extends EntityForm<T> {
@@ -216,6 +211,7 @@ public class AppBoundedDomainAUi implements BoundedDomainUi {
             }
         }
 
+        @Override
         protected void init() {
             var grid = grid();
             grid.addColumn(AppBoundedDomainA.EntityTwo::id).setKey(ID).setHeader(ENTITY_ID_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);

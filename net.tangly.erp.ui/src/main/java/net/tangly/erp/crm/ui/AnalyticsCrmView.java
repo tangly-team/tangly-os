@@ -13,6 +13,7 @@
 package net.tangly.erp.crm.ui;
 
 import com.storedobject.chart.*;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
 import net.tangly.erp.crm.domain.Contract;
@@ -43,7 +44,7 @@ public class AnalyticsCrmView extends AnalyticsView {
     private SOChart contractsSoChart;
     private SOChart customersSoChart;
     private SOChart funnelSoChart;
-    private PaginatedGrid<Contract> contractsGrid;
+    private Grid<Contract> contractsGrid;
 
     public AnalyticsCrmView(@NotNull CrmBoundedDomain crmDomain, @NotNull InvoicesBoundedDomain invoicesDomain) {
         this.crmDomain = crmDomain;
@@ -68,7 +69,7 @@ public class AnalyticsCrmView extends AnalyticsView {
         contractsGrid.getDataProvider().refreshAll();
     }
 
-    private PaginatedGrid<Contract> contractsTable() {
+    private Grid<Contract> contractsTable() {
         PaginatedGrid<Contract> grid = new PaginatedGrid<>();
         grid.setPageSize(8);
         grid.setHeightFull();

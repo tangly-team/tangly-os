@@ -20,10 +20,8 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.data.provider.DataProvider;
 import net.tangly.core.QualifiedEntity;
 import net.tangly.core.providers.Provider;
-import net.tangly.ui.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -46,10 +44,10 @@ import java.util.function.Consumer;
  * @param <T> type of the entities referenced in the one 2 many relationship
  */
 public class One2ManyView<T> extends VerticalLayout {
-    private final Crud.Mode mode;
-    private final EntitiesView<T> view;
+    private final EntityView.Mode mode;
+    private final EntityView<T> view;
     private final Provider<T> provider;
-    private final PaginatedGrid<T> grid;
+    private final Grid<T> grid;
     private T selectedItem;
 
     private Button details;
@@ -57,13 +55,13 @@ public class One2ManyView<T> extends VerticalLayout {
     private Button insert;
     private Button remove;
 
-    public One2ManyView(@NotNull Class<T> entityClass, @NotNull Crud.Mode mode, @NotNull Consumer<Grid<T>> gridConfigurator, @NotNull Provider<T> provider,
-                        EntitiesView<T> view) {
+    public One2ManyView(@NotNull Class<T> entityClass, @NotNull EntityView.Mode mode, @NotNull Consumer<Grid<T>> gridConfigurator, @NotNull Provider<T> provider,
+                        EntityView<T> view) {
         this.mode = mode;
         this.view = view;
         this.provider = provider;
-        this.grid = new PaginatedGrid<>();
-        grid.dataProvider(DataProvider.ofCollection(provider.items()));
+        this.grid = new Grid<>();
+// TODO clean-up        grid.dataProvider(DataProvider.ofCollection(provider.items()));
         grid.asSingleSelect().addValueChangeListener(event -> selectItem(event.getValue()));
         gridConfigurator.accept(grid);
         setSizeFull();

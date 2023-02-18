@@ -36,3 +36,6 @@ hs_err_pid*
 /net.tangly.erp.ui/vite.config.ts
 /net.tangly.erp.ui/vite.generated.ts
 /storage/
+/src/main/resources/references.bib.bak
+/src/main/resources/references.bib.sav
+/src/main/resources/references.bib.sav.tmp

@@ -10,7 +10,7 @@
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 
-package net.tangly.app.domain.ui;
+package net.tangly.ui.components;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEventListener;
@@ -66,11 +66,7 @@ import java.util.function.Consumer;
  * <p>The entity view contains a grid and a form which both access the same underlying data model and entity provider.</p>
  * <h2>Menu Extensions</h2>
  * <p>Views can add menu options to perform an action on the selected item or on the whole list. A set of related actions are
- * added to the popup menu with a separation. Multiple blocks can be added.</p>
- * <code>
- *     var items = List.of(new AbstractMap.SimpleImmutableEntry(Mode.EDIT_TEXT,
- *                 (ComponentEventListener<GridContextMenu.GridContextMenuItemClickEvent<T>>) ((e) -> form.edit(e.getItem().orElse(null)))));
- * </code>
+ * added to the popup menu with a separation. Multiple blocks can be added</p>
  *
  * @param <T> Type of the displayed entities
  */
@@ -329,8 +325,6 @@ public abstract class EntityView<T> extends VerticalLayout {
         add(grid);
     }
 
-    protected abstract void init();
-
     protected Provider<T> provider() {
         return provider;
     }
@@ -342,6 +336,8 @@ public abstract class EntityView<T> extends VerticalLayout {
     protected GridListDataView<T> dataView() {
         return dataView;
     }
+
+    protected abstract void init();
 
     protected void initMenu() {
         if (hasForm) {
@@ -361,7 +357,6 @@ public abstract class EntityView<T> extends VerticalLayout {
     /**
      * Add a menu section with entries for custom menu actions. Please use a naming convention to distinguish actions performed on a seclect item and
      * actions performed on the whole list.
-     *
      * @param entries menu entries for a section
      */
     protected void addMenuSection(@NotNull List<AbstractMap.SimpleImmutableEntry<String, ComponentEventListener<GridContextMenu.GridContextMenuItemClickEvent<T>>>> entries) {

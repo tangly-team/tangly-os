@@ -28,7 +28,8 @@ import org.jetbrains.annotations.NotNull;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.UncheckedIOException;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,14 +37,13 @@ import java.util.Map;
 @Route("")
 public class MainView extends AppLayout {
     private static final String IMAGE_NAME = "tangly70x70.png";
-    private static final List<String> TAB_NAMES = List.of(AppBoundedDomainAUi.DOMAIN_NAME, AppBoundedDomainBUi.DOMAIN_NAME);
     private final Map<String, BoundedDomainUi> uiDomains;
     private final MenuBar menuBar;
 
     public MainView() {
-        uiDomains = new HashMap<>();
-        put(new AppBoundedDomainAUi(AppBoundedDomainA.create()));
-        put(new AppBoundedDomainBUi(AppBoundedDomainB.create()));
+        uiDomains = new LinkedHashMap<>();
+        add(new AppBoundedDomainAUi(AppBoundedDomainA.create()));
+        add(new AppBoundedDomainBUi(AppBoundedDomainB.create()));
         setPrimarySection(Section.NAVBAR);
         menuBar = new MenuBar();
         menuBar.setOpenOnHover(true);
@@ -59,7 +59,7 @@ public class MainView extends AppLayout {
         uiDomains.get(AppBoundedDomainAUi.DOMAIN_NAME).select(this, menuBar);
     }
 
-    public void put(@NotNull BoundedDomainUi domainUi) {
+    public void add(@NotNull BoundedDomainUi domainUi) {
         uiDomains.put(domainUi.name(), domainUi);
     }
 
@@ -71,7 +71,7 @@ public class MainView extends AppLayout {
     }
 
     private void drawerMenu() {
-        Tabs tabs = create(TAB_NAMES);
+        Tabs tabs = create(uiDomains);
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         addToDrawer(tabs);
         tabs.addSelectedChangeListener(this::selectBoundedDomainUi);
@@ -85,7 +85,9 @@ public class MainView extends AppLayout {
         }
     }
 
-    private static Tabs create(List<String> tabNames) {
-        return new Tabs(tabNames.stream().map(Tab::new).toArray(Tab[]::new));
+    private static Tabs create(Map<String, BoundedDomainUi> uiDomains) {
+        List<Tab> tabs = new ArrayList<>();
+        uiDomains.forEach((key, value) -> tabs.add(new Tab(key)));
+        return new Tabs(tabs.toArray(new Tab[tabs.size()]));
     }
 }

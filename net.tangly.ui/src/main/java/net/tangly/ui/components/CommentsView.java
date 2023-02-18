@@ -38,7 +38,7 @@ public class CommentsView extends EntitiesView<Comment> {
     private final TextField author;
     private final MarkdownField text;
 
-    public CommentsView(@NotNull Mode mode, @NotNull HasComments entity) {
+    public CommentsView(@NotNull EntityView.Mode mode, @NotNull HasComments entity) {
         super(Comment.class, mode, ProviderInMemory.of(entity.comments()));
         this.hasComments = entity;
         created = new DateTimePicker("Created");

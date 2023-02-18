@@ -29,13 +29,7 @@ import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.Interaction;
 import net.tangly.erp.crm.domain.InteractionCode;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
-import net.tangly.ui.components.CommentsView;
-import net.tangly.ui.components.EntitiesView;
-import net.tangly.ui.components.EntityField;
-import net.tangly.ui.components.InternalEntitiesView;
-import net.tangly.ui.components.One2ManyView;
-import net.tangly.ui.components.TagsView;
-import net.tangly.ui.components.VaadinUtils;
+import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;

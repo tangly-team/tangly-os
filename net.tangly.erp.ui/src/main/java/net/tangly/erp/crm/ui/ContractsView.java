@@ -21,12 +21,7 @@ import com.vaadin.flow.data.renderer.NumberRenderer;
 import net.tangly.core.crm.LegalEntity;
 import net.tangly.erp.crm.domain.Contract;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
-import net.tangly.ui.components.BankConnectionField;
-import net.tangly.ui.components.EntitiesView;
-import net.tangly.ui.components.EntityField;
-import net.tangly.ui.components.InternalEntitiesView;
-import net.tangly.ui.components.One2OneField;
-import net.tangly.ui.components.VaadinUtils;
+import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Currency;

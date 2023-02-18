@@ -3,9 +3,9 @@ plugins {
     id 'maven-publish'
     id 'signing'
     id 'jacoco'
-    // id 'com.github.spotbugs' apply false
     id 'org.sonarqube'
-    id 'info.solidsoft.pitest' apply false
+    // id 'com.github.spotbugs' apply false
+    // id 'info.solidsoft.pitest' apply false
 }
 
 repositories {
@@ -41,7 +41,7 @@ java {
     withSourcesJar()
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
     options.fork = true
     options.incremental = true
@@ -50,7 +50,7 @@ tasks.withType(JavaCompile) {
     options.compilerArgs += ["-parameters", "--enable-preview", "-Xlint:all,-serial,-varargs,-processing,-try", "-Xdoclint:none"]
 }
 
-tasks.withType(Test) {
+tasks.withType(Test).configureEach {
     useJUnitPlatform()
     jvmArgs += ['--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED', '--enable-preview', '-XX:+ShowCodeDetailsInExceptionMessages']
     reports.junitXml.mergeReruns = true
@@ -61,8 +61,7 @@ tasks.withType(Test) {
     failFast = false
 }
 
-tasks.withType(Javadoc) {
-    enabled = true
+tasks.withType(Javadoc).configureEach {
     javadoc.options {
         encoding("UTF-8")
         addBooleanOption('Xdoclint:none', true)
@@ -74,7 +73,7 @@ tasks.withType(Javadoc) {
     }
 }
 
-tasks.withType(JavaExec) {
+tasks.withType(JavaExec).configureEach {
     jvmArgs += ['--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED', '--enable-preview', '-XX:+ShowCodeDetailsInExceptionMessages']
 }
 
@@ -185,17 +184,9 @@ jacoco {
 jacocoTestReport {
     dependsOn test
     reports {
-        xml.enabled true
-        html.enabled true
+        xml.required = true
+        html.required = true
     }
-}
-
-pitest {
-    junit5PluginVersion.set('0.12')
-    targetClasses.set(['net.tangly.*'])
-    threads.set(8)
-    outputFormats.set(['XML', 'HTML'])
-    timestampedReports.set(false)
 }
 
 sonarqube {
@@ -215,7 +206,6 @@ if (project.hasProperty('mode') && project.property('mode').equals('int')) {
     apply plugin: 'org.sonatype.gradle.plugins.scan'
     apply plugin: 'pmd'
     apply plugine: 'checkstyle'
-    apply plugin: 'info.solidsoft.pitest'
 
     pmd {
         ruleSetFiles = files(rootProject.file('src/main/resources/pmd-tangly.xml'))

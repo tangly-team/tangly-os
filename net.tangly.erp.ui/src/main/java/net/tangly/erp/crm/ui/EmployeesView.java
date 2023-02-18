@@ -20,7 +20,6 @@ import net.tangly.core.crm.LegalEntity;
 import net.tangly.core.crm.NaturalEntity;
 import net.tangly.erp.crm.domain.Employee;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
-import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.EntityField;
 import net.tangly.ui.components.InternalEntitiesView;
 import net.tangly.ui.components.One2OneField;

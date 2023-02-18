@@ -21,7 +21,6 @@ import net.tangly.core.NamedEntity;
 import net.tangly.core.QualifiedEntity;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.providers.Provider;
-import net.tangly.ui.grids.GridDecorators;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.format.DateTimeFormatter;

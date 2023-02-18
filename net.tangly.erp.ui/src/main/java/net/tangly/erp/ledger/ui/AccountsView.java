@@ -20,7 +20,6 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
-import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.VaadinUtils;
 import net.tangly.ui.grids.GridDecorators;
 import org.jetbrains.annotations.NotNull;

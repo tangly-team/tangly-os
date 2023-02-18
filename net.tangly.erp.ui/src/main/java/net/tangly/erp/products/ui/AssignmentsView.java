@@ -15,7 +15,6 @@ package net.tangly.erp.products.ui;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
-import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.InternalEntitiesView;
 import net.tangly.ui.grids.GridDecorators;
 import org.apache.logging.log4j.LogManager;

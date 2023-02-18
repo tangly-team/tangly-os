@@ -23,7 +23,6 @@ import com.vaadin.flow.data.renderer.NumberRenderer;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.ledger.domain.Transaction;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
-import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.VaadinUtils;
 import net.tangly.ui.grids.GridDecorators;
 import org.jetbrains.annotations.NotNull;

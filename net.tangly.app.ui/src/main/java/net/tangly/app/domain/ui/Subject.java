@@ -33,12 +33,15 @@ import java.util.Objects;
 public class Subject {
     private static final String ALGORITHM = "PBKDF2WithHmacSHA512";
     private final long naturalEntityId;
+    private final String username;
+
     private String gravatarEmail;
     private String passwordSalt;
     private String passwordHash;
     private transient byte[] avatar;
 
-    public Subject(long naturalEntityId) {
+    public Subject(String username, long naturalEntityId) {
+        this.username = username;
         this.naturalEntityId = naturalEntityId;
     }
 
@@ -71,6 +74,10 @@ public class Subject {
 
     public long naturalEntityId() {
         return naturalEntityId;
+    }
+
+    public String username() {
+        return username;
     }
 
     public String gravatarEmail() {
@@ -116,7 +123,12 @@ public class Subject {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return (obj instanceof Subject o) && Objects.equals(naturalEntityId(), o.naturalEntityId());
+    public boolean equals(Object o) {
+        return (o instanceof Subject subject) && (Objects.equals(username(), subject.username()));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(naturalEntityId, username);
     }
 }

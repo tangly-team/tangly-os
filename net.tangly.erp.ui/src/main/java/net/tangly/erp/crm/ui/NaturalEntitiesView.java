@@ -36,14 +36,7 @@ import net.tangly.core.crm.VcardType;
 import net.tangly.core.providers.ProviderView;
 import net.tangly.erp.crm.domain.Employee;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
-import net.tangly.ui.components.CodeField;
-import net.tangly.ui.components.CommentsView;
-import net.tangly.ui.components.EntitiesView;
-import net.tangly.ui.components.EntityField;
-import net.tangly.ui.components.InternalEntitiesView;
-import net.tangly.ui.components.One2ManyView;
-import net.tangly.ui.components.TagsView;
-import net.tangly.ui.components.VaadinUtils;
+import net.tangly.ui.components.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.ByteArrayInputStream;

@@ -21,7 +21,6 @@ import com.vaadin.flow.server.StreamResource;
 import net.tangly.core.crm.NaturalEntity;
 import net.tangly.erp.crm.domain.Subject;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
-import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.EntityField;
 import net.tangly.ui.components.InternalEntitiesView;
 import net.tangly.ui.components.One2OneField;

@@ -23,7 +23,6 @@ import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.ActivityCode;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.CodeField;
-import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.VaadinUtils;
 import net.tangly.ui.grids.GridDecorators;
 import org.jetbrains.annotations.NotNull;

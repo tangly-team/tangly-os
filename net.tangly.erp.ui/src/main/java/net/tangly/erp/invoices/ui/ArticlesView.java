@@ -15,6 +15,7 @@ package net.tangly.erp.invoices.ui;
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import com.vaadin.flow.router.PageTitle;
@@ -23,9 +24,7 @@ import net.tangly.erp.invoices.domain.Article;
 import net.tangly.erp.invoices.domain.ArticleCode;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.components.CodeField;
-import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.VaadinUtils;
-import net.tangly.ui.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -58,7 +57,7 @@ class ArticlesView extends EntitiesView<Article> {
 
     @Override
     protected void initialize() {
-        PaginatedGrid<Article> grid = grid();
+        Grid<Article> grid = grid();
         grid.addColumn(Article::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Article::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Article::code).setKey("code").setHeader("Code").setAutoWidth(true).setResizable(true).setSortable(true);

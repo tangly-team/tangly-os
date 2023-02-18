@@ -14,6 +14,7 @@ package net.tangly.ui.components;
 
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import net.tangly.core.HasTags;
@@ -21,7 +22,6 @@ import net.tangly.core.Tag;
 import net.tangly.core.TagType;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.providers.ProviderInMemory;
-import net.tangly.ui.grids.PaginatedGrid;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -66,7 +66,7 @@ public class TagsView extends EntitiesView<Tag> {
 
     @Override
     protected void initialize() {
-        PaginatedGrid<Tag> grid = grid();
+        Grid<Tag> grid = grid();
         grid.setPageSize(5);
         grid.addColumn(Tag::namespace).setKey("namespace").setHeader("Namespace").setSortable(true).setFlexGrow(0).setWidth("10em").setResizable(false);
         grid.addColumn(Tag::name).setKey("name").setHeader("Name").setSortable(true).setFlexGrow(0).setWidth("10em").setResizable(false);

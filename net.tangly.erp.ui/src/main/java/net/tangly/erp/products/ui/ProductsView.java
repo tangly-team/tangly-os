@@ -15,7 +15,6 @@ package net.tangly.erp.products.ui;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.products.domain.Product;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
-import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.InternalEntitiesView;
 import org.jetbrains.annotations.NotNull;
 

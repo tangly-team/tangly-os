@@ -20,7 +20,6 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.products.domain.Effort;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
-import net.tangly.ui.components.EntitiesView;
 import net.tangly.ui.components.VaadinUtils;
 import net.tangly.ui.grids.GridDecorators;
 import net.tangly.ui.markdown.MarkdownField;
