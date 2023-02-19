@@ -59,7 +59,7 @@ anchor = "smart"
 
 [services]
 [services.googleAnalytics]
-id = "UA-90395055-5"
+id = "G-EYDTXKRW9J"
 
 [languages]
 [languages.en]
