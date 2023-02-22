@@ -46,7 +46,7 @@ asciidoc-converter = "nl.jworks.markdown_to_asciidoc:markdown_to_asciidoc:1.0"
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
 commonmark = "org.commonmark:commonmark:0.21.0"
 eo-yaml = "com.amihaiemil.web:eo-yaml:5.2.1"
-flyway = "org.flywaydb:flyway-core:9.14.1"
+flyway = "org.flywaydb:flyway-core:9.15.0"
 hsqldb = "org.hsqldb:hsqldb:2.7.1"
 iban4j = "org.iban4j:iban4j:3.2.4-RELEASE"
 
