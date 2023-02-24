@@ -2,6 +2,7 @@ AGPL
 ATAM
 ATTD
 BBRT
+BDD
 BDUF
 BPML
 BPNM
@@ -115,6 +116,7 @@ subgraph
 substate
 substates
 superbuilder
+TDD
 tangly
 Ticino
 URI

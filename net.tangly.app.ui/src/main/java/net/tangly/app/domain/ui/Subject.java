@@ -12,9 +12,9 @@
 
 package net.tangly.app.domain.ui;
 
-import net.tangly.core.gravatar.gravatar.Gravatar;
-import net.tangly.core.gravatar.gravatar.GravatarImage;
-import net.tangly.core.gravatar.gravatar.GravatarRating;
+import net.tangly.core.gravatar.Gravatar;
+import net.tangly.core.gravatar.GravatarImage;
+import net.tangly.core.gravatar.GravatarRating;
 import org.jetbrains.annotations.NotNull;
 
 import javax.crypto.SecretKeyFactory;

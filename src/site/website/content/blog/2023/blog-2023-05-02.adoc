@@ -13,6 +13,13 @@ tags: ["java", "series-students"]
 
 image::2023-05-02-head.png[width=420,height=360,role=left]
 
+Java 20 was released on time to the public.
+Interestingly, the new release contains only incubating or preview JEP proposals.
+
+Project https://openjdk.org/projects/amber/[Amber] provided improvements in pattern matching features.
+Project https://openjdk.org/projects/loom/[Loom] provided refinements in virtual threads and structured concurrency.
+Project https://openjdk.org/projects/panama/[Panama] refined accessed to functions and data provided by external libraries written in non-JVM languages.
+
 image::2023-05-02-java-trends.png[role=center]
 
 bibliography]
