@@ -86,7 +86,7 @@ Volunteer initiatives try to improve this shameful situation for decades.].
 An article about last year's future day can be found under https://hub.hslu.ch/informatik/ava-und-talena-11-informatik-ist-cool-zukunftstag/[HSLU Future Day].
 
 Our collaborators systematically use climate-friendly transportation.
-Most of our travels use domestic rail.
+Most of our travels use the domestic rail.
 Home office work is encouraged to reduce commute traffic.
 
 Office emissions are minimal.
@@ -112,13 +112,13 @@ We have almost no manual or paper interactions with government platforms and ins
 Swiss government departments provide web portal access to their services.
 At least we do not need to send paper documents.
 
-But none of the government provided solutions for social insurances, VAT declarations or salary documents have a published API.
+But none of the governments provided solutions for social insurances, VAT declarations or salary documents have a published API.
 Swiss government solutions are still stuck in the last millennium and have missed the API integration approach.
 
 The Swiss federal government deployed a new https://www.estv.admin.ch/estv/en/home.html[Swiss Federal Tax Administration Portal] last year.
 The various services are now located under one portal.
 The solution is still missing a public API to enable the digital transformation of company's processes
-footnote:[Having a collaborator inputting data on a Web form is certainly not the definition of a digital process.].
+footnote:[Having collaborator inputting data on a Web form is certainly not the definition of a digital process.].
 
 Big insurance companies are worse than the federal government.
 Pension fund and accident insurances still ask for paper correspondence for standardized processes such as mutation or yearly salary structure information.
@@ -182,7 +182,7 @@ Nothing is more unpleasant than a dead link or a link to outdated information.].
 
 _Publish under your domain name._
 
-The domain name is your identity in the Internet.
+The domain name is your identity on the Internet.
 Prospects and interested parties will find you through your name.
 
 Use your organization domain for all internal links to simplify migration of your sites to another provider
@@ -203,7 +203,7 @@ Marcel Baumann. 2022.
 - [[[founding-tangly, 5]]] link:../../2016/found-a-limited-liability-company-in-switzerland/[Founding tangly llc]
 Marcel Baumann. 2016.
 - [[[cname-github-pages, 6]]] https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-page[Configure a Custom Domain for your GitHub Pages Site] GitHub. 2022-12-01.
-- [[[improving-hugo, 7]]] link:../../2021/improving-a-static-web-site-build-with-hugo-and-docsy/[Improving a Static Website build with Hugo and Docsy]
+- [[[improving-hugo, 7]]] link:../../2021/improving-a-static-web-site-build-with-hugo-and-docsy/[Improving a Static Website Build with Hugo and Docsy]
 Marcel Baumann, 2021.
 - [[[comments-hugo, 8]]] link:../../2020/support-comments-for-static-hugo-website/[Support Comments for Static Hugo Website]
 Marcel Baumann, 2020.

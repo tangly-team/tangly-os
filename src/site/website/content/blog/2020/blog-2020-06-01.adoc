@@ -12,6 +12,7 @@ tags: ["design", "series-agile-design"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2020-06-01-head.jpg[width=420,height=360,role=left]
+
 In computer programming and software design, code refactoring is the process of restructuring existing computer code without changing its external behavior.
 
 Refactoring is intended to improve the design, structure, or implementation of the software (its non-functional attributes), while preserving its functionality.
@@ -109,8 +110,22 @@ It works either for micro architecture or for modular monolith approaches.
 * Modularize one big service extraction one after the other Avoid using dead architectural techniques.
 TOGAF, UML, PMI, CMMI are obsolete - various activities they recommend are good, do them in your sprints.
 Avoid lengthy, slow and expensive review approach.
-* https://en.wikipedia.org/wiki/Architecture_tradeoff_analysis_method[ATAM] is dead.
-The quality tree technique is wonderful, use fitness functions to implement your quality tree.
+* https://en.wikipedia.org/wiki/Architecture_tradeoff_analysis_method[ATAM] is dead The quality tree technique is wonderful, use fitness functions to implement your quality tree.
+
+[NOTE]
+====
+The Architecture Tradeoff Analysis Method _ATAM_ is hosted under the Carnage Mellon University _CMU_ Software Engineering Institute _SEI_.
+The latest revision of the method was published in August 2000, almost a quarter of a century.
+
+The approach relies heavily on human review activities.
+The execution of these tasks is expensive and slow.
+The time horizon of an ATAM review is between one and two weeks.
+The results are heavily document centric.
+No formal or programmatic validation of the findings are usually provided.
+
+This process is too slow in the context of a DevOps or Scrum development approach.
+Agile product development wants to deliver updates with a hourly or daily rhythm.
+====
 
 If you are running legacy technology, this not only becomes a threat to your business but also to your hiring and employer branding efforts.
 As fewer and fewer programmers and operation managers will have the knowledge of those systems, you’ll face a dwindling talent pool.

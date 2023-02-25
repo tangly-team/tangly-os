@@ -79,7 +79,7 @@ Authentication and Authorization::
 Modern distributed organizations shall provide a secure and standardized approach to authentication and authorization.
 Single sign-on and federated solution (FIDO, Edu ID) are current best practices.
 Machine Learning and Graphical Resources::
- Currently, graphic processors are the only approach to computing machine learning and big data problems and provide usable solutions.
+Currently, graphic processors are the only approach to computing machine learning and big data problems and provide usable solutions.
 Security, Audit, and Firewalls::
 Security and associated firewalls are mandatory to respect corporate governance and laws.
 Monitoring is a must for all enterprise relevant applications.

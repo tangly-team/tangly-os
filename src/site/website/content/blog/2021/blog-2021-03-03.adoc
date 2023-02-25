@@ -58,7 +58,7 @@ The founder of DAD https://en.wikipedia.org/wiki/Scott_Ambler[Scott W. Ambler] h
 
 Anyway, it is a huge step for PMI to move away from traditional heavy project development methods and embrace somehow agile product development.
 
-=== Open Group and Open Agile Architecture Initiative
+=== Open Group and The Open Agile Architecture Initiative TOGAF
 
 image::2021-03-03-open-group-agile.png[width=420,height=360,role=left]
 
@@ -70,6 +70,14 @@ They published a first potential approach to https://pubs.opengroup.org/architec
 The approach is quite rough.
 It is more a collection of ideas available in various approaches and ideas picked from the Internet.
 The fact they recognized the necessity to have an agile solution is encouraging.
+
+[NOTE]
+====
+The Open Group Architecture Framework TOGAF is the industrial standard for enterprise software and digital architecture.
+TOGAF provides techniques to model and analyze the various aspects such as enterprise architect, business architect, data architect, application architect, and technology architect.
+
+The Open Group has started to integrate agile paradigms into their approach.
+====
 
 image::2021-03-03-open-agile-architecture.png[width=420,height=360,role=left]
 

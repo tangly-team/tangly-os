@@ -11,7 +11,8 @@ tags: ["agile"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2019-01-01-head.jpg[width=420, height=360, role=left]
+image::2019-01-01-head.jpg[width=420,height=360,role=left]
+
 The Defense Innovation Board https://innovation.defense.gov/[DIB] advises the secretary of defense of the United States of America.
 
 Members of the board are recognizable names like Eric Schmidt who was CEO of Google and Alphabet, or Instagram COO Marne Levine.
@@ -21,7 +22,15 @@ So I was quite surprised that a government committee was so straightforward to p
 Simple questions are used as a bullshit detector to identify organizations faking agile.
 Worth your time, if the government has this problem, you probably also encounter it in the private sector.
 
-=== Tips to Identify Fake Agile Organizations
+[quote,Albert Einstein]
+____
+Learn from yesterday, live for today, hope for tomorrow.
+The important thing is not to stop questioning.
+____
+
+=== Indentifying Fake Agile Organizations
+
+Agile development has become such a holy grail that some organizations or product teams wave the agile flag whether they are true believers or not.
 
 [quote,Jurgen Appelo]
 ____
@@ -32,7 +41,6 @@ Fake Agile is a signal to do better.
 Fake agile is a *treatable* disorder.
 ____
 
-Agile development has become such a holy grail that some organizations or product teams wave the agile flag whether they are true believers or not.
 They throw around talk of sprints, stories and Scrum without meaning it.
 Signs of this behavior are
 
