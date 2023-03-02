@@ -15,6 +15,12 @@ image::2023-04-01-head.jpg[width=420,height=360,role=left]
 
 Software development topics I learnt to like after 40 years in the industry.
 
+The systems that modern engineers create are increasingly complex and sophisticated.
+
+So as well as focusing on learning, modern engineering in general, but certainly modern software engineering, needs to focus us on managing complexity.
+
+We need to focus our tools, techniques and mindset on dealing with the complexity cite:[modern-software-engineering].
+
 === Strongly Agree
 
 * Typed languages are better when you're working on a team of people with various experience levels
@@ -41,8 +47,8 @@ They only advocate _good practices_ and emphasize the importance of the context 
 
 === Possitive Experience
 
-* YAGNI, SOLID, DRY.
-In that order.
+* https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI], https://en.wikipedia.org/wiki/SOLID[SOLID],
+https://en.wikipedia.org/wiki/Don%27t_repeat_yourself[DRY], https://en.wikipedia.org/wiki/KISS_principle[KISS].
 * Pencil and paper are the best programming tools and vastly under used
 * Trading purity in exchange for practicality is usually a good call
 * Adding more technology in response to a minor problem is rarely a good call.
@@ -62,3 +68,7 @@ The learning effect is not always huge but as a team member I have security that
 * Code coverage has absolutely nothing to do with code quality
 * Monoliths are pretty good in most circumstances
 * Micro-services require justification
+
+=== References
+
+bibliography::[]
