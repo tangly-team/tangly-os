@@ -42,7 +42,7 @@ ____
 
 === Introduction
 
-For a developer new to a legacy software solution, it is often hard to understand the existing application.
+For a developer, new to a legacy software solution, it is often hard to understand the existing application.
 He must determine the extent of source code and architectural decay, and identify smells and metric violations.
 
 Legacy applications are often critical to business and have been in use for years, sometimes decades.
@@ -121,10 +121,10 @@ The approach relies heavily on human review activities.
 The execution of these tasks is expensive and slow.
 The time horizon of an ATAM review is between one and two weeks.
 The results are heavily document centric.
-No formal or programmatic validation of the findings are usually provided.
+No formal or programmatic validation of the findings is usually provided.
 
 This process is too slow in the context of a DevOps or Scrum development approach.
-Agile product development wants to deliver updates with a hourly or daily rhythm.
+Agile product development wants to deliver updates with an hourly or daily rhythm.
 ====
 
 If you are running legacy technology, this not only becomes a threat to your business but also to your hiring and employer branding efforts.

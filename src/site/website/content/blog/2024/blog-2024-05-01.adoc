@@ -1,0 +1,38 @@
+---
+title: "How to Document Software Architecture"
+linkTitle: "Document Software Architecture"
+date: 2024-05-01
+tags: ["java", "architecture", "agile"]
+---
+
+== How to Document Software Architecture?
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2024-05-01-head.png[width=420,height=360,role=left]
+
+A solution architecture document is a document that describes the structure of a software solution, including the architecture of its components, the relationships between those components, and the principles that guide its design.
+The solution architecture document is typically used as a reference for designing, building, and maintaining a software system.
+It is used by developers, architects, and other stakeholders to understand the overall design of the system and how it fits into the larger business or technical environment.
+
+image:2024-05-01-architecture-doc.png[width=420,height=360,role=text-centered]
+
+cite:[modern-software-engineering,effective-java-3rd]
+cite:[building-evolutionary-architectures-2nd,building-evolutionary-architectures]
+cite:[large-scale-scrum,practices-for-scaling-lean-and-agile-development,scaling-lean-and-agile-development]
+
+store in a git repository
+static website
+asciidoc
+diagrams as code
+link to ADR
+link to source code documentation
+
+[bibliography]
+=== Links
+
+=== References
+
+bibliography::[]
