@@ -36,9 +36,7 @@ public class StoryAsciiDocPublisher {
             var features = new JSONArray(new JSONTokener(reader));
             writer = new PrintWriter(report.toFile(), StandardCharsets.UTF_8);
             documentHeader();
-            for (var item : features) {
-                publishFeature((JSONObject) item);
-            }
+            features.forEach(item -> publishFeature((JSONObject) item));
             writer.flush();
             writer.close();
         }
@@ -58,26 +56,20 @@ public class StoryAsciiDocPublisher {
         header("Feature: " + feature.getString(BddConstants.NAME), 2);
         paragraph(feature.getString(BddConstants.DESCRIPTION));
         publishTags(feature);
-        for (var item : feature.getJSONArray(BddConstants.STORIES)) {
-            publishStory((JSONObject) item);
-        }
+        feature.getJSONArray(BddConstants.STORIES).forEach(item ->publishStory((JSONObject) item));
     }
 
     private void publishStory(@NotNull JSONObject story) {
         header("Story: " + story.getString(BddConstants.NAME), 3);
         paragraph(story.getString(BddConstants.DESCRIPTION));
         publishTags(story);
-        for (var item : story.getJSONArray(BddConstants.SCENARIOS)) {
-            publishScenario((JSONObject) item);
-        }
+        story.getJSONArray(BddConstants.SCENARIOS).forEach(item -> publishScenario((JSONObject) item));
     }
 
     private void publishTags(@NotNull JSONObject object) {
         if (!object.isNull(BddConstants.TAGS)) {
             writer.append("*tags:*");
-            for (var tag : object.getJSONArray(BddConstants.TAGS)) {
-                writer.append(" '").append((String) tag).append("'");
-            }
+            object.getJSONArray(BddConstants.TAGS).forEach(tag -> writer.append(" '").append((String) tag).append("'"));
             writer.println();
             writer.println();
         }
@@ -98,9 +90,7 @@ public class StoryAsciiDocPublisher {
         writer.append("*").append(clause).append("* ").append(segment.getString(BddConstants.TEXT));
         var ands = segment.optJSONArray(BddConstants.AND);
         if (ands != null) {
-            for (var item : ands) {
-                writer.append(" *and* ").append((String) item);
-            }
+            ands.forEach(item -> writer.append(" *and* ").append((String) item));
         }
         writer.println();
     }

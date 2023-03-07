@@ -72,9 +72,7 @@ public class StoryWriter {
         feature.getJSONArray(BddConstants.STORIES).put(story);
 
         // write scenario
-        for (var scene : run.scenes()) {
-            story.getJSONArray(BddConstants.SCENARIOS).put(createScenario(scene));
-        }
+        run.scenes().forEach(scene -> story.getJSONArray(BddConstants.SCENARIOS).put(createScenario(scene)));
 
         try (Writer writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
             writer.write(features.toString(4));
