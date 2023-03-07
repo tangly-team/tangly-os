@@ -15,7 +15,10 @@ image::2022-11-01-head.jpg[width=420,height=360,role=left]
 
 https://en.wikipedia.org/wiki/Domain-driven_design[Domain-Driven Design] _DDD_ has been around since Eric Evans published his book about the subject in 2003
 cite:[domain-driven-design].
+
 Vernon Vaugh published powerful approaches how to implement DDD concepts into a software solution cite:[implementing-domain-driven-design,domain-driven-design-distilled].
+
+How do you validate and test your DDD digital solutions?
 
 https://en.wikipedia.org/wiki/Behavior-driven_development[Behavior Driven Development] _BDD_ is an inversion how systems are often developed.
 In some ways, it is an extension of Test Driven Development _TDD_ approach to the whole application.

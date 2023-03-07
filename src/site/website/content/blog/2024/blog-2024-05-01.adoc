@@ -22,13 +22,60 @@ image:2024-05-01-architecture-doc.png[width=420,height=360,role=text-centered]
 cite:[modern-software-engineering,effective-java-3rd]
 cite:[building-evolutionary-architectures-2nd,building-evolutionary-architectures]
 cite:[large-scale-scrum,practices-for-scaling-lean-and-agile-development,scaling-lean-and-agile-development]
+cite:[documenting-software-architectures]
 
-store in a git repository
-static website
-asciidoc
-diagrams as code
-link to ADR
-link to source code documentation
+store in a git repository static website asciidoc diagrams as code link to ADR link to source code documentation
+
+Software architecture documentation creates a common understanding.
+Software architecture documentation creates a common understanding of the solution behind the system for various stakeholders.
+The documentation makes it possible to evaluate the software architecture from the perspective of the various stakeholders.
+Software architecture documentation supports architectural work.
+Software architecture documentation guides the development team in implementing new product features.
+
+image:2024-05-01-C4-5-things.png[width=420,height=360,role=text-centered]
+
+You should understand as a software architect:
+
+- The essence of software architecture.
+- Why the software architecture role should include coding, coaching and collaboration?
+- The things that you really need to think about before coding.
+- How to visualise your software architecture using {ref-c4}?
+- A lightweight approach to documenting your software.
+- Why there is no conflict between agile and architecture?
+- What "just enough" up front design means?
+- How to identify risks with risk-storming?
+
+=== Documentation Rules
+
+These are the rules for any technical documentation, including software architecture documentation:
+
+. Write documentation from the reader’s point of view.
+. Avoid unnecessary repetition.
+. Avoid ambiguity.
+. Use a standard organization.
+. Record rationale.
+. Keep documentation current but not too current.
+. Review documentation for fitness of purpose.
+
+[quote, Frederick Brooks jr., 1995]
+____
+It is far better to be explicit and wrong than to be vague.
+____
+
+=== Possible Pitfalls
+
+image:2024-05-01-arc42-c4.png[width=420,height=360,role=text-centered]
+
+Upfront document everything::
+Don't document everything in advance.
+Think of the arc42 template as a cabinet for documentation.
+You put something on a shelf as you work on it.
+This is how software architecture documentation emerges, evolves, and stays current.
+Don't includes Tutorials or Q&A sections::
+The most important thing in arc42 is the structure.
+The structure doesn’t provide a space for guides or Q&A sections.
+Don't put any specific things like customer names or similar::
+Don't write customer-specific things in the software architecture documentation, unless your building blocks are structured in a customer-oriented way.
 
 [bibliography]
 === Links

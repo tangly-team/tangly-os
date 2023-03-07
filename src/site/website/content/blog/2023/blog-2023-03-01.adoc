@@ -140,11 +140,13 @@ Butkus, V.
 * [[[businessreport, 3]]]
 https://www.accenture.com/us-en/insights/technology/business-agility-report-2020[The Business Agility Report, 3rd Edition].
 Accenture. 2020
-* [[[what-does-scrum-master, 4]]] link:../../2017/what-does-a-scrum-master/[What Does A Scrum Master?].
+* [[[scrum-master-as-technical-coach, 4]]] https://less.works/blog/2019/12/05/scrum-master-as-technical-coach.html[Scrum Master as Technical Coach].
+Bas Vodde, 2019-12-05
+* [[[what-does-scrum-master, 5]]] link:../../2017/what-does-a-scrum-master/[What Does A Scrum Master?].
 Marcel Baumann. 2020
-* [[[what-not-need, 5]]] link:../../2016/what-you-do-not-need-to-do-in-scrum/[What You Do Not Need To Do in Scrum].
+* [[[what-not-need, 6]]] link:../../2016/what-you-do-not-need-to-do-in-scrum/[What You Do Not Need To Do in Scrum].
 Marcel Baumann. 2016
-* [[[scrum-master-formation, 6]]] link:../../2021/scrum-master-formation/[Scrum Master Formation].
+* [[[scrum-master-formation, 7]]] link:../../2021/scrum-master-formation/[Scrum Master Formation].
 Marcel Baumann. 2021
 
 === References

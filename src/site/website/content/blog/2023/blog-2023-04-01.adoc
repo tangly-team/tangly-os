@@ -13,7 +13,7 @@ tags: ["java", "architecture", "series-students"]
 
 image::2023-04-01-head.jpg[width=420,height=360,role=left]
 
-Software development topics I learnt to like after 40 years in the industry.
+Here are some software development topics I have learnt to like after 40 years in the industry.
 
 I worked at quite a few industrial and commercial digital product development initiatives.
 I truly enjoyed creating successful solutions.
@@ -23,8 +23,7 @@ Over the years, I encountered similar architecture and design patterns when crea
 Again and again, our teams had to find ways to learn, tackle complexity, improve cohesion, and master coupling.
 
 Modern engineers create increasingly complex and sophisticated systems.
-
-So as well as focusing on learning and modern engineering, we need to focus on managing complexity cite:[modern-software-engineering].
+So as well as focusing on learning and modern engineering, we need to focus on managing complexity.
 
 We need to focus our tools, techniques and mindset on dealing with the complexity
 cite:[modern-software-engineering,building-evolutionary-architectures-2nd,clean-architecture].
@@ -34,9 +33,10 @@ cite:[modern-software-engineering,building-evolutionary-architectures-2nd,clean-
 I strongly agree with these statements:
 
 * Typed languages are better when you are working on a team of people with various experience levels.
+The bigger your application, the more helpful is compiler support.
 * Stand-ups are actually useful for keeping an eye on the newbies.
 They help to detect a team member stuck in a loop.
-* Sprint retrospectives have their place so long as they are for actual course correction.
+* Sprint retrospectives have their place so long as they are for actual improvements.
 They are the _holy shit, well that went poorly!_, and not some awful scrum master driven waste of everyone's time.
 * Developers should not be isolated or left to just code.
 Bypassing TPMs, PMs, and talking directly to the customer always reveals more about the problem, in less time, and with higher accuracy.
@@ -44,6 +44,7 @@ Bypassing TPMs, PMs, and talking directly to the customer always reveals more ab
 A shitty implementation of a good abstraction causes no net harm to the code base.
 A bad abstraction or missing layer causes everything to rot.
 * Java is quite a cool language.
+Modern Java with streams, modules, pattern matching, or structured concurrency is fun to use.
 * Clever code is not usually good code.
 Clarity trumps all other concerns.
 * Bad code can be written in any paradigm.
@@ -52,8 +53,9 @@ Call them _good practices_.
 Blindly following them makes you a fool.
 The agile community recognized the dangers.
 They only advocate _good practices_ and emphasize the importance of the context in which they are applied.
-* Designing scalable systems when you do not need to makes you a bad engineer.
+* Designing scalable systems when you do not need to make you a bad engineer.
 * Static analysis is actually useful.
+Scanners like SpotBugs or SonarLint find regularly errors and smells.
 * DRY is about avoiding a specific problem, not an end goal unto itself.
 * In general, RDBMS are better and simpler than NoSql solutions.
 * Functional programming is another tool, not a panacea.
@@ -66,6 +68,7 @@ I learnt to appreciate these approaches:
 * https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it[YAGNI], https://en.wikipedia.org/wiki/SOLID[SOLID],
 https://en.wikipedia.org/wiki/Don%27t_repeat_yourself[DRY], https://en.wikipedia.org/wiki/KISS_principle[KISS].
 * Pencil and paper are the best programming tools and vastly underused.
+Better are whiteboards to exchange ideas in a team.
 * Trading purity in exchange for practicality is usually a good call.
 * Adding more technology in response to a minor problem is rarely a good call.
 * Design is driven from requirements cite:[domain-driven-design].
@@ -75,19 +78,22 @@ Building anything beyond those requirements puts you into the world of speculati
 Technical interviewing and peer interviewing work way better and is more accurate.
 * Agile approaches are more successful and more fun.
 Waterfall approaches suck.
+* DevOps advantages are worth the effort. Deliver frequently and automate.
 * Static websites with Asciidoc are the solution how to document your architecture and technical product.
 
 === Old Beliefs
 
-I still think these statements should be applied:
+I still think these statements should still be applied in current teams:
 
 * A software developer shall have formal training in computer science and software engineering.
 She should hold at least a bachelor degree.
+A software developer should be understand theory such as e.g., https://en.wikipedia.org/wiki/CAP_theorem[CAP theorem].
 * A junior Java developer shall pursue a formal Java programmer certification.
 The learning effect is not always huge, but as a team member, I have security that they know all basic concepts.
 * People who stress over code style, linting rules, or other minutia are insane weirdos.
 * Code coverage has absolutely nothing to do with code quality.
-* Monoliths are pretty good in most circumstances.
+* Monoliths are pretty good in most circumstances. The key is to write *modular* monoliths.
+footnote:[The spring framework finally recognized that with https://spring.io/projects/spring-modulith[Modulith].].
 * Micro-services require justification.
 
 === References

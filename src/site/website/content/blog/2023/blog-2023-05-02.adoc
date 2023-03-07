@@ -17,10 +17,27 @@ Java 20 was released on time to the public.
 Interestingly, the new Java release contains only incubating or preview JEP proposals.
 
 Project https://openjdk.org/projects/amber/[Amber] provided improvements in pattern matching features.
+
 Project https://openjdk.org/projects/loom/[Loom] provided refinements in virtual threads and structured concurrency.
+
 Project https://openjdk.org/projects/panama/[Panama] refined accessed to functions and data provided by external libraries written in non-JVM languages.
 
-image::2023-05-02-java-trends.png[role=center]
+=== Algebraic Types and Pattern Matching
+
+=== Virtual Threads and Structured Concurrency
+
+=== Interfaces to external libraries and memory structures
+
+=== Thoughts
+
+Java is improving steadily if sometimes slowly.
+
+The diagram shows the hot topics in the Java ecosystem.
+The adoption takes time before a majority of development organizations jump on the train.
+The adoption of the Java 17 LTS edition is still in the early adoption phase after two years.
+We should rather state that the mojority of Java teams are laggards.
+
+image::2023-05-02-java-trends.png[role=text-center]
 
 bibliography]
 === Links
