@@ -39,9 +39,9 @@ I will strongly fight against proprietary solutions.
 
 === Learnings
 
-* (ref-hugo) themes styling for AsciiDoc is sketchy.
+* (ref-hugo) themes styling for {ref-asciidoc} is sketchy.
 The visual quality is currently hindered due to faulty support of the standard or custom AsciiDoc stylesheet.
-* AsciiDoc supports native rouge code highlighting module.
+* {ref-asciidoc} supports native rouge code highlighting module.
 All source code fragments are nicely displayed without special support from {ref-hugo}.
 
 We documented our experience in various blogs <<creating-technical-website>> <<support-comments>>>.

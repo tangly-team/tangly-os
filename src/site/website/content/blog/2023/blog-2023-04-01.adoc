@@ -1,7 +1,7 @@
 ---
 title: "Software Developer Assumptions"
 linkTitle: "Software Developer Assumptions"
-date: 2023-04-10
+date: 2023-04-01
 tags: ["java", "architecture", "series-students"]
 ---
 
@@ -55,7 +55,7 @@ The agile community recognized the dangers.
 They only advocate _good practices_ and emphasize the importance of the context in which they are applied.
 * Designing scalable systems when you do not need to make you a bad engineer.
 * Static analysis is actually useful.
-Scanners like SpotBugs or SonarLint find regularly errors and smells.
+Scanners like SpotBugs or SonarLint regularly find errors and smells.
 * DRY is about avoiding a specific problem, not an end goal unto itself.
 * In general, RDBMS are better and simpler than NoSql solutions.
 * Functional programming is another tool, not a panacea.
@@ -75,11 +75,19 @@ Better are whiteboards to exchange ideas in a team.
 Building anything beyond those requirements puts you into the world of speculative, self-indulgent invention.
 * 90%, maybe 95%, of project managers, could probably disappear tomorrow to either no effect or a net gain in efficiency cite:[large-scale-scrum].
 * After performing over 2000 interviews, I can say that standard human resources interviewing is thoroughly broken.
-Technical interviewing and peer interviewing work way better and is more accurate.
+Technical interviewing and peer interviewing work way better and are more accurate.
 * Agile approaches are more successful and more fun.
-Waterfall approaches suck.
-* DevOps advantages are worth the effort. Deliver frequently and automate.
-* Static websites with Asciidoc are the solution how to document your architecture and technical product.
+Waterfall approaches suck
+footnote:[It is time to retire the V-Model, Hermes method, and similar geriatric methodologies.
+They have served their time.
+They can rest in peace.
+The same could be said about SAFe.].
+* DevOps advantages are worth the effort.
+Deliver frequently and automate.
+Each project should have a continuous integration, a continuous delivery, and a continuous deployment pipeline.
+The deployement can also be triggered manually.
+The deployment steps shall still be fully automated.
+* Static websites with {ref-asciidoc} are the solution how to document your architecture and technical product.
 
 === Old Beliefs
 
@@ -87,12 +95,13 @@ I still think these statements should still be applied in current teams:
 
 * A software developer shall have formal training in computer science and software engineering.
 She should hold at least a bachelor degree.
-A software developer should be understand theory such as e.g., https://en.wikipedia.org/wiki/CAP_theorem[CAP theorem].
+A software developer should understand theory such as e.g., https://en.wikipedia.org/wiki/CAP_theorem[CAP theorem].
 * A junior Java developer shall pursue a formal Java programmer certification.
 The learning effect is not always huge, but as a team member, I have security that they know all basic concepts.
-* People who stress over code style, linting rules, or other minutia are insane weirdos.
+* People who stress over code style, linting rules, or another minutia are insane weirdos.
 * Code coverage has absolutely nothing to do with code quality.
-* Monoliths are pretty good in most circumstances. The key is to write *modular* monoliths.
+* Monoliths are pretty good in most circumstances.
+The key is to write *modular* monoliths.
 footnote:[The spring framework finally recognized that with https://spring.io/projects/spring-modulith[Modulith].].
 * Micro-services require justification.
 

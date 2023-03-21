@@ -14,19 +14,46 @@ tags: ["java", "series-students"]
 image::2023-05-02-head.png[width=420,height=360,role=left]
 
 Java 20 was released on time to the public.
-Interestingly, the new Java release contains only incubating or preview JEP proposals.
+The release is available for download on 21^st^ March 2023.
+Interestingly, the new Java release contains only incubating or preview https://openjdk.org/jeps/0[JEP] proposals.
 
-Project https://openjdk.org/projects/amber/[Amber] provided improvements in pattern matching features.
+The project https://openjdk.org/projects/amber/[Amber] provided improvements in pattern matching features.
 
-Project https://openjdk.org/projects/loom/[Loom] provided refinements in virtual threads and structured concurrency.
+- https://openjdk.org/jeps/432[Record Patterns] _Second Preview_
+- https://openjdk.org/jeps/433[Pattern Matching for Switch] _Fourth Preview_
 
-Project https://openjdk.org/projects/panama/[Panama] refined accessed to functions and data provided by external libraries written in non-JVM languages.
+The project https://openjdk.org/projects/loom/[Loom] provided refinements in virtual threads and structured concurrency.
+
+- https://openjdk.org/jeps/429[Scoped Values] _Incubator_
+- https://openjdk.org/jeps/436[Virtual Threads] _Second Preview_
+- https://openjdk.org/jeps/437[Structured Concurrency] _Second Incubator_
+
+The project https://openjdk.org/projects/panama/[Panama] refined accessed to functions and data provided by external libraries written in non-JVM languages.
+
+- https://openjdk.org/jeps/434[Foreign Functions and Memory API] _Second Preview_
+- https://openjdk.org/jeps/438[Vector API] _Fifth Incubator_
 
 === Algebraic Types and Pattern Matching
 
+Brian Goetz and his team are adding syntactic sugar constructs to the language.
+Step by stem the algebraic types with records and sealed types and the pattern matching tools are moved to functional programming approaches.
+
+The sum of small improvements finally empowers us to write more legible source code.
+
 === Virtual Threads and Structured Concurrency
 
+Death to complex asynchronous programming and nightly debugging sessions.
+The structure of the code visualize the concurrency flow in your application.
+
+The Loom project is the kid on the block.
+The structured concurrency approach has the promise to tremendeously simplify concurrent programming.
+
+I hope that Loom will deliver another promise and give us optimized tail recursion.
+
 === Interfaces to external libraries and memory structures
+
+Java is *not* a island.
+We want to interface to external digital systems and powerful libraries.
 
 === Thoughts
 

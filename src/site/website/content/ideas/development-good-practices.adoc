@@ -54,4 +54,4 @@ description: good practices
 
 [qanda]
 Todo::
-Write FAQ in Asciidoc
+Write FAQ in {ref-asciidoc}

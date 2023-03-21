@@ -35,7 +35,7 @@ Set up your development environment::
 I developed all Java solutions with top-notch tools.
 My IDE is the IntelliJ IDEA and supports modern Java, Groovy and Clojure.
 Plugins support agile software engineering practices such documentation as code, architecture design records, and diagrams as text.
-Git integration is optimal.
+{ref-git} integration is optimal.
 Development platforms such as GitHub, BitBucket, or GitLab are well-supported.
 Set up your continuous integration and delivery pipeline::
 Development platforms provide good pipeline solutions.

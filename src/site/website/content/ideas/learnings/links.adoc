@@ -30,15 +30,15 @@ These sites and blogs are a source of knowledge and experience.
 * https://www.romanpichler.com/blog/[Roman Pichler Blog] especially for product owners
 * https://ronjeffries.com/[Ron Jeffries Blog]
 * https://guntherverheyen.com/[Gunther Verheyen Blog] A Scrum caretaker
-* Crisp
+* https://www.crisp.se/en[Crisp] Company
 ** https://blog.crisp.se/[Crisp Blog] Henrik Kniberg works at Crisp, and they are often the coaches at Spotify and initiators of the Spotify Model -
-** Kniberg books https://drive.google.com/open?id=11aGDqP5zc4UlTyg87HzpEPaj2hHJ0xVl[Scrum and XP from the trenches] and
- https://drive.google.com/open?id=11aGDqP5zc4UlTyg87HzpEPaj2hHJ0xVl[Kanban and Scrum]
-** Kniberg has also very professional and interesting YouTube presentations
-* https://martinfowler.com[Martin Fowler Blog] Martin Fowler is working at Thoughtworks and has written seminal books
+** Kniberg books link:../lectures/agile-books/ScrumAndXpFromTheTrenches-2nd.pdf[Scrum and XP from the trenches] and
+ link:../lectures/agile-books/KanbanAndScrum.pdf[Kanban and Scrum]
+** Kniberg has also very professional and interesting YouTube presentations.
+* https://martinfowler.com[Martin Fowler Blog] Martin Fowler is working at Thoughtworks and has written seminal books.
 * https://leanarch.eu/[Viktor Grgic Blog]
 * Stefan Wolpers https://age-of-product.com/[Age of Product Blog] tons of materials, and a weekly newsletter with links to interesting articles
-** link:../../../blog/[tangly Blog] our learnings over the years with the support of our customers -
+** link:../../../blog/[tangly Blog] our learnings over the years with the support of our customers -.
 
 === Seminal references are found under
 

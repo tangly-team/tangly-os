@@ -66,7 +66,12 @@ Homebrew is more than enough for my needs.
 
 === Daily Work
 
-The tools I used to perform administrative work are * https://www.libreoffice.org/[LibreOffice] - going strong and better every year -, * Google Business for teamwork in the cloud using collaborative tools, * Apple Mail Client with GPG plugin for PGP and S/MIME secure email, * A local Swiss article https://www.banana.ch/[Banana] for accounting and VAT reports for the federal government.
+The tools I used to perform administrative work are
+
+* https://www.libreoffice.org/[LibreOffice] - going strong and better every year -,
+* Google Business for teamwork in the cloud using collaborative tools,
+* Apple Mail Client with GPG plugin for PGP and S/MIME secure email,
+* A local Swiss article https://www.banana.ch/[Banana] for accounting and VAT reports for the federal government.
 I bought it as soon as the company stopped requesting higher prices for macOS than for the other platforms.
 
 I still have no need to use any Microsoft applications.

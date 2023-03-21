@@ -1,0 +1,26 @@
+---
+title: "Vaadin 24"
+linkTitle: "Vaadin 24"
+date: 2024-10-01
+tags: ["java"]
+---
+
+== Vaadin 24 User Interfaces
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2024-09-01-head.png[width=420,height=360,role=left]
+
+=== In-Memory Application
+
+All application data is loaded in-memory using the MicroStream
+
+=== Grid Sorting and Filtering
+
+=== Vaadin Component Factory
+
+=== Authentication and Authorization
+
+=== Internationalization and Localization

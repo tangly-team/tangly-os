@@ -1,0 +1,57 @@
+---
+title: "Architecture Questions"
+linkTitle: "Architecture Questions"
+date: 2024-09-01
+tags: ["java"]
+---
+
+== Questions an Agile Architect Should Discuss
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2024-08-01-head.jpg[width=420,height=360,role=left]
+
+An agile architect should handle a regular set of questions for each application he is working on.
+
+Each digital product encounters similar requirements and shall provide good solutions for the most acute restrictions.
+
+The goal is to define an evolvable minimal architecture.
+New functional and non-functional requirements shall be realized with minimal changes in the design.
+
+Do not try to solve all the problems I can think about.
+Solve stated requested features with the simplest approach you can think about.
+Remember, simple solutions can be very elegant and extensible.
+
+=== Internationalization, localization and accessibility Themes
+
+- How do we implement accessibility laws and requirements?
+- How should we translate user interface data?
+- i18n, l16n, a10y regulations and good practices
+
+=== Scalability Themes
+
+- How do the system components communicate with each other?
+- How can we scale the solution?
+- Should we prepare for sharding, geolocation, vertical scaling?
+
+=== Security Themes
+
+- How do we insure the requested response times?
+- How is security implemented?
+- How do we authenticate and authorize?
+
+=== Persistent Data Themes
+
+- How should we persist data?
+- How do we journal operations performed in the program?
+- How is reporting provided?
+- How do we import data into the system?
+- How do we migrate data to a new release?
+
+=== Release Themes
+
+- How do we release a version of the product?
+- Do we support backward compatibility?
+How do we implement backward compatibility?

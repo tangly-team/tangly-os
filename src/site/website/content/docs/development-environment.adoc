@@ -52,7 +52,7 @@ All development activities are performed with IntelliJ IDEA IDE.
 The following plugins shall be installed
 
 - Antlr
-- AsciiDoc
+- {ref-asciidoc}
 - Grazie Professional
 - SonarLint
 - Statistics

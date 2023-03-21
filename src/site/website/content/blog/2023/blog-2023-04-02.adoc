@@ -1,0 +1,132 @@
+---
+title: "My New MacBookPro"
+linkTitle: "My New MacBookPro"
+date: 2023-04-10
+tags: ["organization"]
+---
+
+== My New MacBooPro 16'' M2 Max
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2023-04-02-head.jpg[width=420,height=360,role=left]
+
+I just received my new MacBookPro M2 Ultra with 32 GB of RAM and 1 TB SSD.
+
+I know.
+I am a geek who loves his technical gadgets.
+I convinced my wife these gadgets are way cheaper than a sports car.
+
+The new notebook replaces my older MacBookPro 2018 I bought five years ago.
+
+The new machine is so fast.
+It is a pleasure to work with it.
+The only visible difference with the older notebook is the new version has a bulkier build.
+
+I decided to set up the machine from the ground up.
+I want to find out which programs I am really using in my work.
+The setup activities took around one and a half hours
+footnote:[The synchronization of the various Cloud storages was performed overnight.
+We store all company or personal data either on Cloud drives or in Git repositories.].
+
+The older notebook is now my backup computer.
+It can be quite useful.
+A battery replacement in a MacBook takes easily one week in Switzerland.
+
+=== Standard Programs
+
+I installed manually the following applications:
+
+Browsers::
+- Google Chrome
+- Firefox
+Office::
+- AsciiDocFX _I write all technical documents using {ref-asciidoc} markup language._
+- LibreOffice _is my primary office suite for all documents._
+- Microsoft Office _is optional in case we receive a related file.
+I do not use it for productive work._
+- Apple Office Suite _is optional in case we receive a related file.
+I do not use it for productive work._
+- Conference Tools: Slack, Zoom, Discord, Microsoft Teams, ClickShare
+footnote:[I need the ClickShare application because the drivers on the ClickShare device are old and do not work with current macOS versions.]
+- Kindle _I have all my technical and science-fiction books on Amazon Kindle.
+footnote:[Amazon still has not released an ARM native application.
+Shame on them.
+The worst missing feature is bulk download of purchased books.
+I like to explore my library during commute train travel.
+You do not have wireless access in trains in Switzerland.
+The books shall be stored on the notebook otherwise you cannot read them.]._
+- Google Drive for the company drives
+- Switch Drive for the technical university drives
+- Spotify
+- https:://gpgtools.org/[GPG Tools]
+- https://excalidraw.com/[Escalidraw]
+- Watcom tablet drivers
+- Banana 9 for accounting as local installation.
+Developer Tools::
+- JetBrains IntelliJ IDEA with AsciiDoc, Cursive, SonarLint, Statistics, Grazie Professional, and Snyk plugins.
+- Java JDK 17 LTS and JDK 20 including the documentation for the latest JDK.
+- VisualVM
+- Docker Desktop
+
+[INFO]
+====
+The JDK documentation shall be copied in the folder _/Library/WebServer/Documents_.
+You need _sudo_ rights to move the files into the web server documents folder.
+
+You can access the JavaDoc documentation with URI _localhost/docs-jdk20/api/index.html_.
+====
+
+=== Brew Packages
+
+https://brew.sh/[Homebrew] is an awesome tool to install libraries, tools and applications on macOS.
+
+image::2023-04-02-homebrew.png[width=600,height=360,role=text-center]
+
+[source,bash]
+----
+brew install maven gradle git git-lfs node pmd                     <1>
+brew install hugo asciidoctor graphviz mermaid-cli                 <2>
+brew install clojure leiningen                                     <3>
+brew install wget rsync ghostscript                                <4>
+brew install --cask asciidocfx                                     <5>
+
+gem install asciidoctor-bibtex asciidoctor-diagram asciidoctor-chart asciidoctor-rouge asciidoctor-kroki    <6>
+----
+
+<1> Development tools for Java projects. Ant is more part of the set.
+<2> Documentation tools used to produce all technical documents.
+The applications are used to generate static websites.
+<3> Clojure tools for technical university lectures, which I gave.
+<4> Utilities for developers.
+<5> Applications managed through brew.
+<6> Install the ruby packages used with asciidoctor on the static websites.
+
+=== Git and GitHub Configuration
+
+I copied the ssh configuration files stored in _.ssh/_ folder on the new machine.
+These configuration files handle the access to the multiple remote repositories I am using.
+
+I also set up the shell configuration files _.zshrc_ and _.gitconfig_ to have the same environment.
+
+=== Thoughts
+
+The macOS operating system is a cool environment to install all the applications you need to work.
+The Unix terminal console is a game changer for any software engineer.
+The Homebrew package manager streamlines installation of needed software.
+
+The new MacBookPro is awesome.
+It is fast, slick, and the display is gorgeous.
+The build-in loudspeakers are always an audible improvement against the sound of the previous machine.
+
+I was surprised how much faster write operations on the build-in solid state disk are.
+
+It is worth the price I paid.
+
+[bibliography]
+=== Links
+
+- [[[o-still-use-macbookpro, 1]]] link:../../2019/why-i-still-love-to-use-a-macbookpro-and-macos-in-2019/[Why I Still Use a MacBookPro and macOS]
+- [[[i-use-macbookpro, 2]]] link:../../2016/why-i-use-a-macbookpro-and-os-x/[Why I Use a MacBookPro and macOS]

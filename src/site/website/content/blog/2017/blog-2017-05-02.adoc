@@ -20,7 +20,7 @@ The actual industrial standard is https://git-scm.com/[git], a distributed versi
 https://en.wikipedia.org/wiki/Distributed_version_control[DVCS] -.
 
 Install git on your development machine.
-In case you are using the IntelliJ IDEA configure git in the IDE through the preference pane.
+In case you are using the IntelliJ IDEA configure {ref-git} in the IDE through the preference pane.
 
 To put your product under git version management, go to the root of the product and perform the command
 
@@ -37,12 +37,12 @@ git add [filename]
 git add *
 ----
 
-You shall perform these operations to add a product to a local Git repository directly in IntelliJ IDEA:
+You shall perform these operations to add a product to a local {ref-git} repository directly in IntelliJ IDEA:
 
 . Open the product you want to store in a repository.
 . On the main menu, choose VCS | Import into Version Control | Create Git Repository.
 . In the dialog that opens, specify the directory where you want to create a new Git repository.
-. Put the required files under Git version control.
+. Put the required files under {ref-git} version control.
 The files appear in the Local Changes tab of the Version Control tool window, under the Default change list.
 
 [TIP]

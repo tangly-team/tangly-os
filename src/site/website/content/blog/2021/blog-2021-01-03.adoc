@@ -98,7 +98,7 @@ You should develop software applications using agile and DevOps techniques.
 You shall put your source code under a version management system.
 The actual industrial standard is https://git-scm.com/[git], a distributed version control system - https://en.wikipedia.org/wiki/Distributed_version_control[DVCS] -.
 
-More sophisticated source code management systems based on git with additional agile and DevOps functionalities are:
+More sophisticated source code management systems based on {ref-git} with additional agile and DevOps functionalities are:
 
 * https://github.com/[GitHub] is a closed source solution and most well-known solution.
 Microsoft acquired them in 2020.
@@ -143,12 +143,12 @@ https://en.wikipedia.org/wiki/Concurrent_Versions_System[CVS], ClearCase, Visual
 https://en.wikipedia.org/wiki/Apache_Subversion[Subversion].
 The current most popular and used tool is https://en.wikipedia.org/wiki/Git[Git].
 
-Any software developer or web designer can create a git hosted project with a few commands in the shell.
+Any software developer or web designer can create a {ref-git} hosted project with a few commands in the shell.
 
 [NOTE]
 ====
 Linux distributions often include the git application.
-If not use the package manager to download and install the git tools.
+If not use the package manager to download and install the {ref-git} tools.
 
 MacOS users should use https://brew.sh/[homebrew] as a package manager.
 Homebrew can download and install a huge set of Unix packages.To install git, you just have to execute _brew install git_.

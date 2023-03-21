@@ -20,7 +20,7 @@ In most static site generators including Hugo, https://en.wikipedia.org/wiki/Mar
 
 However, in recent Hugo versions, external helpers are an official feature.
 It calls appropriate external programs to certain type of files.
-Fortunately, Asciidoc based files are automatically compiled with https://asciidoctor.org/[Asciidoctor], so we do not need to do anything.
+Fortunately, {ref-asciidoc} based files are automatically compiled with https://asciidoctor.org/[Asciidoctor], so we do not need to do anything.
 Just have it installed and you are ready to go.
 
 The Hugo theme {ref-docsy} is ideal to create a good-looking software documentation site.
@@ -28,7 +28,7 @@ This theme is currently the best match I found to combine product documentation 
 
 I love to write my documentation and blogs using {ref-asciidoc} notation
 footnote:[If you are new to asciidoc, you can experiment https://asciidoclive.com/[online].].
-The official site is https://asciidoc.org/[AsciiDoc].
+The official site is {ref-asciidoc}.
 A major tool chain can be found under https://docs.asciidoctor.org/home/[AsciiDoctor].].
 
 [NOTE]

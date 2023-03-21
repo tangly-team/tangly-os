@@ -1,0 +1,197 @@
+---
+title: "Document Agile Architecture"
+linkTitle: "Document Agile Architecture"
+date: 2024-06-01
+tags: ["agile"]
+---
+
+== How Should You Document Your Agile Architecture?
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2024-07-01-head.jpg[width=420,height=360,role=left]
+
+The overwhelming success of agile approaches to create digital products has implications on our work techniques.
+
+Design emerges.
+The team learns incrementally and refines the solution cite:[building-evolutionary-architectures-2nd].
+Architecture is a collaboration.
+
+Agile methods do not require comprehensive documentation at the beginning.
+Managers do not need to plan much in advance because things can change as the project evolves.
+
+The idea is to produce documentation with information that is essential to move forward when it makes the most sense.
+
+Every software developer is also a designer.
+Every software developer is also an architect.
+Every developer is also a technical writer.
+
+Some facts about agile software architecture are:
+
+- The sum of all source code artifacts is the true design blueprint or software architecture.
+- The real software architecture evolves (better or worse) every day of the product, as people do programming.
+- The real living architecture needs to be grown every day through acts of programming by master programmers.
+- A software architect who is not in touch with the evolving source code of the product is out of touch with reality.
+- Every programmer is some kind of architect, whether wanted or not.
+Every act of programming is some kind of architectural act – good or bad, small or large, intended or not –.
+
+=== Tools
+
+{ref-asciidoc}::
+The standard to write technical documentation.
+All modern DevOps platforms such {ref-github}, {ref-gitlab}, {ref-bitbucket} support this approach.
+Static websites written with {ref-asciidoc} or {ref-markdown} are the current good approach for a digital product technical documentation.
+https://plantuml.com/[PlantUML]::
+You can draw all UML artifiacts.
+Extensions are available for drawing C4 diagrams.
+https://c4model.com/[C4] and https://structurizr.com/[Structurizr]::
+You will hit a wall if you draw a lot of views from the same model using plantUML.
+The father of C4 notation developed the semantic model <<structurizr-dsl>> of _Structurizr_ to diminish effort and avoid errors.
+https://www.oracle.com/java/technologies/javase/javadoc.html[JavaDoc]::
+Legible and maintainable source code should be well-documented.
+JavaDoc is the perfect tool for Java project.
+DoxyGen is a similar approach for a wide-range of programming languages.
+We recommend to use the documentation tool provided with your technological stack.
+https://en.wikipedia.org/wiki/Test-driven_development[TDD] and https://en.wikipedia.org/wiki/Behavior-driven_development[BDD]::
+Automatic unit and integration tests provide traceablity between requirements and source code artifacts.
+Well-documented approaches such as fitness functions <<fitness-functions>> extend the approach to non-functional specifications.
+Diagramming with https://kroki.io/[Kroki]::
+A huge variety of diagram types are available through _Kroki_.
+The tooling is well-integrated with the {ref-asciidoc} toolchain.
+
+=== Static Website
+
+A software architecture documentation <<software-architecture-description>> solution shall fulfill the following constraints:
+
+- The documentation and the source code are synchronized.
+They are stored in a git repository and tagged accordingly.
+- The documentation is generated and published without manual activities.
+A simple script generates the whole documentation and makes it available to all interested parties.
+- Diagrams and sketches are integrated in the documentation.
+You do not need to generate or copy manually diagrams into the documentation.
+A proven approach is text-based diagramming tools.
+- The documentation is searchable.
+- API and source code documentation are linked to the documentation.
+Artifacts created with openAPI, JavaDoc, or Doxygen shall be part of the integrated documentation portfolio.
+
+The actual good solution is to use a static website generator <<creating-technical-website>> <<improving-static-website>> <<support-comment-docsy>>.
+
+Wiki approaches are usable if their content are stored in a repository.
+They must support searching, diagramming, and cross-referencing.
+
+[NOTE]
+====
+We are using https://gohugo.io/[Hugo] as a static web generator.
+The documentation theme is https://www.docsy.dev/[Docsy].
+The authors of the theme are collaborators of Google.
+
+We are using {ref-asciidoc} as documentation language.
+The features are equivalent to https://en.wikipedia.org/wiki/DocBook[DocBook] markup language.
+Extensive https://docs.asciidoctor.org/diagram-extension/latest/[diagramming options] are provided.
+An alternative integrated approach is the generation of diagrams with https://kroki.io/[Kroki].
+
+The site is stored in a https://git-scm.com/[Git] repository.
+The generation and publishing uses a simple script.
+====
+
+=== arc42 Template
+
+I regularly use the https://arc42.org/[arc42 template] to mitigate lengthy discussions about how extensive software architecture shall be documented.
+The founders of https://www.isaqb.org/[iSAQB] certification institute created and maintain the *arc42* template.
+
+It answers the following two questions in a pragmatic way, but can be tailored to your specific needs:
+
+- What should we document and communicate about our architecture?
+- How should we document and communicate it?
+
+Arc42 is a pretty minimalistic documentation template compared to other templates.
+
+image::2024-07-01-arc42.png[width=640,height=400,role=text-center]
+
+Introduction and Goals::
+A short description of the requirements, a few quality goals and a listing of important stakeholders.
+Constraints::
+Anything that constrains teams in design and implementation decisions or decisions about related processes.
+Are valid for whole organizations and companies.
+Context and Scope::
+Seperates your system from its external systems and users.
+Specifies the external interfaces shown either in a business or technical perspective.
+Solution Strategy::
+Summary of the fundamental decisions and solution strategies that shape the architecture.
+Can include technology, top-level decomposition, approaches to achieve top quality goals and relevant organizational decisions.
+Building Block View::
+A static decomposition of the system, shown as hierarchy of white boxes up to the right level of abstraction.
+Runtime View::
+Behavior of building blocks as scenarios, covering UseCases, operation, administration, error handeling and features.
+An example for this might be an UML sequence diagram.
+Deployment View::
+The technical infrastructure with environments, servers and topologies.
+Mapping of building Blocks to the right infrastructure.
+Crosscutting Concepts::
+Principal regulations and solution approaches relevant in multiple parts of the system.
+The interaction between different software components.
+Architectural Decisions::
+Important, expensive, critical, large scale or risky architecture decisions including rationales.
+Quality Requirements::
+Quality requirements as scenarios. The requirements shall define a quality tree and associated measurements.
+The quality goals can be taken from *_Introduction and goals_*. +
+_Use a fitness function-based approach_.
+Risks and Technical Debt::
+The known technical risks or already present technical debt. +
+What potential problems exist in the application itself or its surroundings? +
+What does the development team fear for the future?
+Glossary::
+Important domain and technical terms that stakeholders use when discussing the system. +
+_Try to write all documents in English._
+
+No matter how big your Project is, arc42 approach keeps the documentation relatively slim and maintainable.
+
+Use this fact to challenge your organization.
+You have found a valid and well-documented architecture documentation approach and template.
+Either your team can use it, or your organization shall provide a better alternative with similar recognition and support level.
+
+Technical writers are satisfied with {ref-asciidoc} and the provided template.
+
+=== Lessons Learnt
+
+You must provide documentation to empower new team members cite:[documenting-software-architectures].
+The documentation shall be written in English.
+Not all team members are fluent with the local language.
+As a soon as your product is successful, you will work with international teams and nearshore development centers.
+The sole common spoken and written language will be English.
+
+You shall document architectural design decisions https://adr.github.io/[ADR].
+These records document the evolution of your digital solution over the years.
+
+Most organizations are documentation crazy.
+Old school managers cannot handle the agile manifesto rule The simplest approach to tame them is to use an agile friendly approach such as arc42.
+
+Too many companies believes that wikis and sharepoint sites are a good approach.
+Forget about it.
+Sharepoint is still not supporting searching in documents.
+You must hire a team to configure and extend Confluence to have a usable documentation platform.
+
+Please, never use Microsoft Word and Excel for a technical documentation.
+This will never work.
+
+[bibliography]
+=== Links
+
+- [[[improving-static-website,1]]] link:../../2021/improving-a-static-web-site-build-with-hugo-and-docsy/[Improving a Static Website with Hugo and Docsy].
+Marcel Baumann. 2021.
+- [[[creating-technical-website, 2]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and AsciiDoc].
+Marcel Baumann. 2020.
+- [[[support-comment-docsy,3]]] link:../../2020/support-comments-for-static-hugo-website/[Support Comments For Static Hugo WebSite].
+Marcel Baumann. 2020.
+- [[[software-architecture-description,4]]] https://en.wikipedia.org/wiki/Software_architecture_description[Software Architecture Description].
+Wikipedia. 2024.
+- [[[fitness-functions, 5]]] https://www.thoughtworks.com/radar/techniques/architectural-fitness-function[Architectural Fitness Functions].
+https://www.thoughtworks.com/[Thoughtworks]. 2023.
+- [[[structurizr-dsl, 6]]] https://github.com/structurizr/dsl[Structurizr DSL].
+GitHub. 2023.
+
+=== References
+
+bibliography::[]

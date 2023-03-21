@@ -51,7 +51,7 @@ Static website generators have strong advantages for technical savvy people:
 
 * Hosting is cheap.
 GitHub, GitLab or Bitbucket pages even host static websites for free.
-* The source files go into Git for backup and history.
+* The source files go into {ref-git} for backup and history.
 * The source files are in plain text:
 ** Changes come in as a _Pull Request_ for proper review and CI pipeline validation.
 ** The sources are open in our IDEs, which encourages refactoring them alongside the code.

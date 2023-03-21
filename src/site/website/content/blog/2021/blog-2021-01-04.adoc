@@ -29,7 +29,7 @@ It is supported by all major development IDE and continuous integration environm
 
 First-year undergraduates shall master the basic git commands to write their semester projects.
 
-Second-year sophomores shall master the git commands used to work in teams.
+Second-year sophomores shall master the {ref-git} commands used to work in teams.
 Pull requests are a standard approach to review team colleague works and to consolidate new functions into the application.
 
 === Modern Java Software Development
@@ -69,7 +69,7 @@ The IDE environment is free for students.
 
 === Documentation
 
-You should only check text artifacts into a git repository.
+You should only check text artifacts into a {ref-git} repository.
 Modern approaches with https://en.wikipedia.org/wiki/Markdown[Markdown] and {ref-asciidoc} syntax promote this axiom.
 
 https://plantuml.com/[PlantUML] is a text-based diagramming approach.

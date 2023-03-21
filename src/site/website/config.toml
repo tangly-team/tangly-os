@@ -19,7 +19,7 @@ enableMissingTranslationPlaceholders = true
 enableInlineShortcodes = false
 [security.exec]
 allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^asciidoctor$', '^lunr$']
-osEnv = ['(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$']
+osEnv = ['(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM|GEM_PATH)$']
 [security.funcs]
 getenv = ['^HUGO_']
 [security.http]
@@ -87,7 +87,7 @@ safeMode = "unsafe"
 workingFolderCurrent = true
 backend = "html5"
 failureLevel = "fatal"
-extensions = ["asciidoctor-diagram", "asciidoctor-bibtex"]
+extensions = ["asciidoctor-diagram", "asciidoctor-bibtex", "asciidoctor-kroki"]
 [markup.asciidocExt.attributes]
 experimental = true
 icons = "font"
@@ -105,9 +105,10 @@ ref-bbrt = "http://bbrt.org/[Beyond Budgeting Round Table]"
 ref-bitbucket = "https://bitbucket.org/[Bitbucket]"
 ref-c4 = "https://c4model.com/[C4 Model]"
 ref-craftsmanship = "https://manifesto.softwarecraftsmanship.org/[Software Craftsmanship]"
-ref-devops ="https://en.wikipedia.org/wiki/DevOps[DevOps]"
+ref-devops = "https://en.wikipedia.org/wiki/DevOps[DevOps]"
 ref-docsy = "https://www.docsy.dev/[Docsy]"
 ref-flow = "https://en.wikipedia.org/wiki/Flow_(psychology)/[Flow]"
+ref-git = "https://git-scm.com/[Git]"
 ref-github = "https://github.com/[GitHub]"
 ref-gitlab = "https://gitlab.com/[GitLab]"
 ref-gradle = "https://gradle.org/[Gradle Build Tool]"
@@ -121,6 +122,8 @@ ref-less = "https://less.works/[LeSS]"
 ref-manifesto = "https://agilemanifesto.org/[Agile Manifesto]"
 ref-manifesto-principles = "https://agilemanifesto.org/principles.html[12 Agile Manifesto Principles]"
 ref-maven = "https://maven.apache.org/[Maven]"
+ref-markdown = "https://www.markdownguide.org/[Markdown]"
+ref-microstream = "https://microstream.one/[MicroStream]"
 ref-pdca = "https://en.wikipedia.org/wiki/PDCA/[Plan-Do-Check-Adapt]"
 ref-repository = "https:https://bitbucket.org/tangly-team/tangly-os/[Source Code]"
 ref-safe = "https://www.scaledagileframework.com/[SAFe]"

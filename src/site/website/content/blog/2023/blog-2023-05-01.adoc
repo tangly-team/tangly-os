@@ -28,7 +28,6 @@ That is, functions can be created at runtime, passed around, returned, and in ge
 
 For many tasks, functional programs are easier to understand, less error prone, and much easier to reuse.
 
-
 === Clojure
 
 [quote]
@@ -38,6 +37,47 @@ Instead of altering existing values, altered copies are created and the original
 Since the unchanged parts of the structure cannot be modified, they can often be shared between the old and new copies, which saves memory.
 ____
 
+Clojure cite:[programming-clojure] is a very good approach to learn functional programming idioms.
+The language is well-documented.
+The integration in the Java ecosystem and virtual machine is well-done.
+
+The IntelliJ plugin Cursive hugely simplify writing code and testing it.
+IntelliJ is probably the most popular IDE for Java developers.
+People are familiar with its functions and do not need to learn a new tool.
+
 (require package) (doc name) (find-doc regular-expression) (closure.repl/source symbol)
 
 symbols list '(), vector [], set #{}, map {}
+
+=== Functional Thinking
+
+=== Synchronization Concepts
+
+=== Embrace Modern Java
+
+Modern Java adds functional approaches cite:[functional-programming-java] to the Java language.
+The major constructs are:
+
+- Lambda Functions and Java Functional Idioms
+- Streams and Monoids
+- Algebraic Data Types and Pattern Matching
+- Structured Concurrency and Virtual Threads
+
+Functional Java means no more _for_, _while_, and _do_ loops.
+
+Functional Java means no more checks if a value has the value _null_.
+
+Virtual Threads means no more asynchronous programming.
+
+=== Lessons Learnt
+
+Clojure is an ideal language to learn and better understand functional programming approaches cite:[functional-thinking].
+
+You will probably not use it in a commercial product development.
+The principles you learnt shall be applicable to your technology stack.
+Your code will certainly be more simplier, more legible and maintainable.
+
+
+=== References
+
+bibliography::[]
