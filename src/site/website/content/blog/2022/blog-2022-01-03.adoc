@@ -37,7 +37,7 @@ The student receives a recognized certificate.
 _The regular bachelor study duration is three years.
 The master's study duration is an additional one and a half years_,
 ** The name of the school where the formation was attended.
-I regularly look at the curriculum and the ranking of the institute to bette understand your training.
+I regularly look at the curriculum and the ranking of the institute to better understand your training.
 A link to the school is always welcome.
 * Checks are:
 ** Did the candidate study computer science? +
@@ -60,21 +60,22 @@ A user interface developer should know about usability, accessibility, design an
 Spoken Languages:::
 The workplace is international.
 Relevant computer science documentation are in English.
-* The candidate shall be fluent in English in written and spoken forms +
+* The candidate shall be fluent in English in written and spoken forms. +
 _A software specialist not being fluent in English is an imposter because he cannot read actual technical information_.
 * The organization can request specific languages.
 German and Spanish companies are keen to have candidates speaking the national language.
 Programming Capabilities::
 A software developer shall be a proficient and trained programmer.
 Here are some examples of capabilities I look for if the candidate is a Java developer:
-* Java versions he has experience with. +
-_If his current projects use older versions of the language, I expect a professional to study the current version on his own_,\.
+* Java versions he has experience with
+footnote:[I sadely sometimes encounter candidates who have no clue which version of their programming language they are daily using.]. +
+_If his current projects use older versions of the language, I expect a professional to study the current version on his own_.
 * Build tool he has experience with - https://maven.apache.org/[maven], https://gradle.org/[gradle] -.
 * If he is a junior developer, I check if he has an official Java developer certificate.
-* Which libraries did he use?
+* Which libraries did she use?
 I expect https://junit.org/junit5/[JUnit], https://site.mockito.org/[Mockito], https://assertj.github.io/doc/[AssertJ],
 http://www.slf4j.org/[slf4j], https://flywaydb.org/[flyway], https://github.com/FasterXML/jackson[Jackson].
-More capable developers often cite https://projectlombok.org/[lombok], https://github.com/google/jimfs[jimfs], http://hsqldb.org/[hsqldb],
+More capable developers often cite https://projectlombok.org/[lombok], https://github.com/google/jimfs[jimfs], http://hsqldb.org/[hsqldb].
 * Does he have experience with JSON, HTML, CSS, SQL, or script languages?
 Design Capabilities::
 A professional developer shall be able to design software components.
