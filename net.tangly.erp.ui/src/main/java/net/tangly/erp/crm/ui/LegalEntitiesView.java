@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -32,7 +32,7 @@ import org.jetbrains.annotations.NotNull;
  * Regular CRUD view on legal entities abstraction. The grid and edition dialog wre optimized for usability.
  */
 @PageTitle("crm-legal entities")
-class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
+class LegalEntitiesView extends lEntitiesView<LegalEntity> {
     private final transient CrmBoundedDomain domain;
 
     public LegalEntitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
@@ -62,7 +62,7 @@ class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
         grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::organizationLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
         grid.addColumn(VaadinUtils.urlComponentRenderer(CrmTags.CRM_SITE_WORK)).setKey("webSite").setHeader("Web Site").setAutoWidth(true);
         grid.addColumn(o -> o.value(CrmTags.CRM_RESPONSIBLE).orElse(null)).setKey("responsible").setHeader("Responsible").setAutoWidth(true).setSortable(true);
-        addAndExpand(filterCriteria(false, false, InternalEntitiesView::addQualifiedEntityFilters), grid(), gridButtons());
+        addAndExpand(filterCriteria(false, false, lEntitiesView::addQualifiedEntityFilters), grid(), gridButtons());
     }
 
     @Override
@@ -97,6 +97,6 @@ class LegalEntitiesView extends InternalEntitiesView<LegalEntity> {
 
     @Override
     protected LegalEntity updateOrCreate(LegalEntity entity) {
-        return EntitiesView.updateOrCreate(entity, binder, LegalEntity::new);
+        return CrmEntityView.updateOrCreate(entity, binder, LegalEntity::new);
     }
 }

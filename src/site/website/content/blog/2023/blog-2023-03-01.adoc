@@ -125,7 +125,7 @@ Lean thinking reduces waste and focuses on the essentials.
 
 The Scrum pillars are transparency, inspection and adaptation.
 
-Please postulate hypotheses, create experiments, and find out what is working for your product development and your organization.
+Please postulate hypotheses, create experiments, and find out what is working for your product development teams and your organization.
 
 I wish you happy and successful learning.
 ====

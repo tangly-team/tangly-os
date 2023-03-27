@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -21,7 +21,7 @@ import net.tangly.core.crm.NaturalEntity;
 import net.tangly.erp.crm.domain.Employee;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.EntityField;
-import net.tangly.ui.components.InternalEntitiesView;
+import net.tangly.ui.components.lEntitiesView;
 import net.tangly.ui.components.One2OneField;
 import net.tangly.ui.components.VaadinUtils;
 import net.tangly.ui.grids.GridDecorators;
@@ -31,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
  * Regular CRUD view on employees abstraction. The grid and edition dialog wre optimized for usability.
  */
 @PageTitle("crm-employees")
-class EmployeesView extends InternalEntitiesView<Employee> {
+class EmployeesView extends EntitiesView<Employee> {
     private final transient CrmBoundedDomain domain;
 
     public EmployeesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -38,7 +38,7 @@ import java.math.BigDecimal;
  * Regular CRUD view on interactions abstraction. The grid and edition dialog wre optimized for usability.
  */
 @PageTitle("crm-interactions")
-class InteractionsView extends InternalEntitiesView<Interaction> {
+class InteractionsView extends EntitiesView<Interaction> {
     public static final BigDecimal HUNDRED = new BigDecimal("100");
     private final transient CrmBoundedDomain domain;
 
@@ -51,7 +51,7 @@ class InteractionsView extends InternalEntitiesView<Interaction> {
     @Override
     protected void initialize() {
         var grid = grid();
-        InternalEntitiesView.addQualifiedEntityColumns(grid);
+        lEntitiesView.addQualifiedEntityColumns(grid);
         grid.addColumn(Interaction::code).setKey("state").setHeader("State").setAutoWidth(true).setResizable(true).setSortable(true).setFrozen(true);
         grid.addColumn(e -> VaadinUtils.format(e.potential())).setKey("potential").setHeader("Potential").setAutoWidth(true).setResizable(true)
             .setSortable(true).setFrozen(true);
@@ -59,7 +59,7 @@ class InteractionsView extends InternalEntitiesView<Interaction> {
             .setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
         grid.addColumn(new NumberRenderer<>(e -> e.potential().multiply(e.probability()), VaadinUtils.FORMAT)).setKey("forecast").setHeader("Forecast")
             .setAutoWidth(true).setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
-        addAndExpand(filterCriteria(false, false, InternalEntitiesView::addQualifiedEntityFilters), grid(), gridButtons());
+        addAndExpand(filterCriteria(false, false, lEntitiesView::addQualifiedEntityFilters), grid(), gridButtons());
     }
 
     @Override
@@ -110,6 +110,6 @@ class InteractionsView extends InternalEntitiesView<Interaction> {
 
     @Override
     protected Interaction updateOrCreate(Interaction entity) {
-        return EntitiesView.updateOrCreate(entity, binder, Interaction::new);
+        return CrmEntityView.updateOrCreate(entity, binder, Interaction::new);
     }
 }

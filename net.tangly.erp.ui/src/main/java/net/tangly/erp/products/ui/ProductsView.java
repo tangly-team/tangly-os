@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -15,11 +15,11 @@ package net.tangly.erp.products.ui;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.products.domain.Product;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
-import net.tangly.ui.components.InternalEntitiesView;
+import net.tangly.ui.components.lEntitiesView;
 import org.jetbrains.annotations.NotNull;
 
 @PageTitle("products-products")
-class ProductsView extends InternalEntitiesView<Product> {
+class ProductsView extends lEntitiesView<Product> {
     private final ProductsBoundedDomain domain;
 
     public ProductsView(@NotNull ProductsBoundedDomain domain, @NotNull Mode mode) {
@@ -30,8 +30,8 @@ class ProductsView extends InternalEntitiesView<Product> {
 
     @Override
     protected void initialize() {
-        InternalEntitiesView.addQualifiedEntityColumns(grid());
-        addAndExpand(filterCriteria(false, false, InternalEntitiesView::addQualifiedEntityFilters), grid(), gridButtons());
+        lEntitiesView.addQualifiedEntityColumns(grid());
+        addAndExpand(filterCriteria(false, false, lEntitiesView::addQualifiedEntityFilters), grid(), gridButtons());
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 Marcel Baumann
+ * Copyright 2023-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -64,9 +64,18 @@ import java.util.function.Consumer;
  *     <dt>Delete Entity</dt><dd>Delete the entity from the backend.</dd>
  * </dl>
  * <p>The entity view contains a grid and a form which both access the same underlying data model and entity provider.</p>
+ * <h2>Form Declaration</h2>
+ * <p>The form shall contains all visible or editable properties of an entity. The displayed entity is optional.
+ * The create and duplicate mode open a form without a corresponding entity.</p>
+ * <p>Beware that an entity could displays other items such as comments, tags, and relations to other entities.
+ * These objects are often displayed as entity views in panels.</p>
  * <h2>Menu Extensions</h2>
  * <p>Views can add menu options to perform an action on the selected item or on the whole list. A set of related actions are
- * added to the popup menu with a separation. Multiple blocks can be added</p>
+ * added to the popup menu with a separation. Multiple blocks can be added.</p>
+ * <code>
+ *     var items = List.of(new AbstractMap.SimpleImmutableEntry(Mode.EDIT_TEXT,
+ *                 (ComponentEventListener<GridContextMenu.GridContextMenuItemClickEvent<T>>) ((e) -> form.edit(e.getItem().orElse(null)))));
+ * </code>
  *
  * @param <T> Type of the displayed entities
  */
@@ -125,12 +134,118 @@ public abstract class EntityView<T> extends VerticalLayout {
         }
     }
 
+    private Provider<T> provider;
+
+    private final Class<T> entityClass;
+    private GridListDataView<T> dataView;
+    public EntityView(@NotNull Class<T> entityClass, @NotNull Provider<T> provider, boolean hasForm) {
+        this.entityClass = entityClass;
+        this.hasForm = hasForm;
+        grid = new Grid<>();
+        provider(provider);
+        grid.setSelectionMode(Grid.SelectionMode.SINGLE);
+        grid.addThemeVariants(GridVariant.LUMO_COMPACT);
+        grid.setHeight("24em");
+        add(grid);
+    }
+    private final boolean hasForm;
+    GridContextMenu<T> menu;
+    private final Grid<T> grid;
+    private transient T selectedItem;
+    protected EntityForm<T> form;
+
+    public EntityView(@NotNull Class<T> entityClass, @NotNull Provider<T> provider) {
+        this(entityClass, provider, true);
+    }
+
+    protected static Component createFilterHeader(@NotNull String labelText, @NotNull Consumer<String> filterChangeConsumer) {
+        TextField field = new TextField();
+        field.setValueChangeMode(ValueChangeMode.EAGER);
+        field.setClearButtonVisible(true);
+        field.addThemeVariants(TextFieldVariant.LUMO_SMALL);
+        field.setWidthFull();
+        field.getStyle().set("max-width", "100%");
+        field.addValueChangeListener(e -> filterChangeConsumer.accept(e.getValue()));
+        return field;
+    }
+
+    public Class<T> entityClass() {
+        return entityClass;
+    }
+
+    protected abstract void init();
+
+    protected Provider<T> provider() {
+        return provider;
+    }
+
+    protected void provider(Provider<T> provider) {
+        this.provider = provider;
+        dataView = grid.setItems(DataProvider.ofCollection(provider.items()));
+    }
+
+    protected Grid<T> grid() {
+        return grid;
+    }
+
+    protected GridListDataView<T> dataView() {
+        return dataView;
+    }
+
+    protected void initMenu() {
+        if (hasForm) {
+            menu = grid().addContextMenu();
+            menu.addItem(Mode.VIEW_TEXT, event -> form.display(event.getItem().orElse(null)));
+            menu.add(new Hr());
+            menu.addItem(Mode.EDIT_TEXT, event -> form.edit(event.getItem().orElse(null)));
+            menu.addItem(Mode.CREATE_TEXT, event -> form.create());
+            menu.addItem(Mode.DUPLICATE_TEXT, event -> form.duplicate(event.getItem().orElse(null)));
+            menu.addItem(Mode.DELETE_TEXT, event -> form.delete(event.getItem().orElse(null)));
+
+            SingleSelect<Grid<T>, T> selection = grid.asSingleSelect();
+            selection.addValueChangeListener(e -> form.fill(e.getValue()));
+        }
+    }
+
+    /**
+     * Add a menu section with entries for custom menu actions. Please use a naming convention to distinguish actions performed on a select item and
+     * actions performed on the whole list.
+     *
+     * @param entries menu entries for a section
+     */
+    protected void addMenuSection(@NotNull List<AbstractMap.SimpleImmutableEntry<String, ComponentEventListener<GridContextMenu.GridContextMenuItemClickEvent<T>>>> entries) {
+        menu.add(new Hr());
+        entries.forEach(e -> menu.addItem(e.getKey(), e.getValue()));
+    }
+
+    protected void addFilter(@NotNull HeaderRow headerRow, @NotNull String key, @NotNull String label, @NotNull Consumer<String> attribute) {
+        headerRow.getCell(grid().getColumnByKey(key)).setComponent(createFilterHeader(label, attribute));
+    }
+
+//    protected void addDateTimeFilter(@NotNull HeaderRow headerRow, @NotNull String key, @NotNull String label, @NotNull Consumer<LocalDateTime> attribute) {
+//        headerRow.getCell(grid().getColumnByKey(key)).setComponent(createDateTimeFilterHeader(label, attribute));
+//    }
+//
+//    protected static Component createDateTimeFilterHeader(@NotNull String labelText, @NotNull BiConsumer<LocalDate, LocalDate> filterChangeConsumer) {
+//        EnhancedDateRangePicker field = new EnhancedDateRangePicker();
+//        field.setClearButtonVisible(true);
+//        field.addValueChangeListener(e ->
+//            filterChangeConsumer.accept(field.getMin(), field.getMin()));
+//        return field;
+//    }
+
     /**
      * Defines the CRUD contract for a form used to display or modify an entity.
+     * The abstract methods are:
+     * <dl>
+     *    <dt>{@link #mode(Mode mode)}</dt><dd>Set the mode of the fields in the form based on selected CRUD operation and additional busineess Logic.</dd>
+     *    <dt>{@link #fill(Object)}</dt><dd>Fill the form with properties of the entity and business logic.</dd>
+     *    <dt>{@link #clear()}</dt><dd>Clear all fields in the form</dd>
+     *    <dt>{@link #createOrUpdateInstance(Object)}</dt><dd>Create a new entity based on the fields and business logic.</dd>
+     * </dl>
      *
      * @param <T> Type of the entitty manipulaed in the form
      */
-
     public static abstract class EntityForm<T> {
         protected final EntityView<T> parent;
         private T selectedItem;
@@ -227,26 +342,38 @@ public abstract class EntityView<T> extends VerticalLayout {
             nameActionButton(mode);
             this.selectedItem = entity;
             clear();
-            fillForm(entity);
+            fill(entity);
             parent.add(formLayout);
         }
+
+        abstract protected void mode(@NotNull Mode mode);
 
         /**
          * Fill the form with the properties of the entity.
          *
          * @param entity entity to display in the form
          */
-        protected abstract void fillForm(@NotNull T entity);
+        protected abstract void fill(@NotNull T entity);
 
         /**
          * Clear the content of the form. All property fields are reset to empty or a default value.
          */
         protected abstract void clear();
 
+        /**
+         * Create the form containing all the fields to display an entity. The form is added into the CRUD form with the associated operations.
+         *
+         * @return the vertical layout containing all fields to display the entity
+         */
         protected VerticalLayout form() {
             return formLayout;
         }
 
+        /**
+         * Create the CRUD button bar. The button bar has always a cancel operation and an additional CRUD operation.
+         *
+         * @return component cantaining the CRUD form command button
+         */
         protected Component createButtonsBar() {
             return new HorizontalLayout(cancel, action);
         }
@@ -255,13 +382,25 @@ public abstract class EntityView<T> extends VerticalLayout {
 
         // region Entity related functions
 
+        protected abstract T createOrUpdateInstance(T entity);
+
         /**
          * Update the entity upon modification. THe properties are validated before storing the data.
          * Update means either changing properties of an existing entity or creating a new entity. The creation is used to create a new immutable object.
          *
          * @return the updated entity.
          */
-        protected abstract T updateEntity();
+        public T updateEntity() {
+            T entity = createOrUpdateInstance(selectedItem());
+            if (Objects.equals(entity, selectedItem())) {
+                parent.provider().delete(selectedItem());
+            }
+            parent.provider().update(entity);
+            parent.dataView().refreshAll();
+            cancel();
+            return entity;
+        }
+
 
         /**
          * Delete the entity from the backend and refreshes the grid.
@@ -281,6 +420,7 @@ public abstract class EntityView<T> extends VerticalLayout {
         // endregion
 
         protected void nameActionButton(@NotNull Mode mode) {
+            mode(mode);
             switch (mode) {
                 case VIEW -> {
                     action.setText("Close");
@@ -297,85 +437,5 @@ public abstract class EntityView<T> extends VerticalLayout {
         protected T selectedItem() {
             return selectedItem;
         }
-    }
-
-    private final Class<T> entityClass;
-    private final Provider<T> provider;
-    private final boolean hasForm;
-    GridContextMenu<T> menu;
-    private final Grid<T> grid;
-    private final GridListDataView<T> dataView;
-    private transient T selectedItem;
-    protected EntityForm<T> form;
-
-    public EntityView(@NotNull Class<T> entityClass, @NotNull Provider<T> provider) {
-        this(entityClass, provider, true);
-    }
-
-    public EntityView(@NotNull Class<T> entityClass, @NotNull Provider<T> provider, boolean hasForm) {
-        this.entityClass = entityClass;
-        this.provider = provider;
-        this.hasForm = hasForm;
-        grid = new Grid<>();
-        dataView = grid.setItems(DataProvider.ofCollection(provider.items()));
-
-        grid.setSelectionMode(Grid.SelectionMode.SINGLE);
-        grid.addThemeVariants(GridVariant.LUMO_COMPACT);
-        grid.setHeight("24em");
-        add(grid);
-    }
-
-    protected Provider<T> provider() {
-        return provider;
-    }
-
-    protected Grid<T> grid() {
-        return grid;
-    }
-
-    protected GridListDataView<T> dataView() {
-        return dataView;
-    }
-
-    protected abstract void init();
-
-    protected void initMenu() {
-        if (hasForm) {
-            menu = grid().addContextMenu();
-            menu.addItem(Mode.VIEW_TEXT, event -> form.display(event.getItem().orElse(null)));
-            menu.add(new Hr());
-            menu.addItem(Mode.EDIT_TEXT, event -> form.edit(event.getItem().orElse(null)));
-            menu.addItem(Mode.CREATE_TEXT, event -> form.create());
-            menu.addItem(Mode.DUPLICATE_TEXT, event -> form.duplicate(event.getItem().orElse(null)));
-            menu.addItem(Mode.DELETE_TEXT, event -> form.delete(event.getItem().orElse(null)));
-
-            SingleSelect<Grid<T>, T> selection = grid.asSingleSelect();
-            selection.addValueChangeListener(e -> form.fillForm(e.getValue()));
-        }
-    }
-
-    /**
-     * Add a menu section with entries for custom menu actions. Please use a naming convention to distinguish actions performed on a seclect item and
-     * actions performed on the whole list.
-     * @param entries menu entries for a section
-     */
-    protected void addMenuSection(@NotNull List<AbstractMap.SimpleImmutableEntry<String, ComponentEventListener<GridContextMenu.GridContextMenuItemClickEvent<T>>>> entries) {
-        menu.add(new Hr());
-        entries.forEach(e -> menu.addItem(e.getKey(), e.getValue()));
-    }
-
-    protected void addFilter(@NotNull HeaderRow headerRow, @NotNull String key, @NotNull String label, @NotNull Consumer<String> attribute) {
-        headerRow.getCell(grid().getColumnByKey(key)).setComponent(createFilterHeader(label, attribute));
-    }
-
-    protected static Component createFilterHeader(@NotNull String labelText, @NotNull Consumer<String> filterChangeConsumer) {
-        TextField textField = new TextField();
-        textField.setValueChangeMode(ValueChangeMode.EAGER);
-        textField.setClearButtonVisible(true);
-        textField.addThemeVariants(TextFieldVariant.LUMO_SMALL);
-        textField.setWidthFull();
-        textField.getStyle().set("max-width", "100%");
-        textField.addValueChangeListener(e -> filterChangeConsumer.accept(e.getValue()));
-        return textField;
     }
 }

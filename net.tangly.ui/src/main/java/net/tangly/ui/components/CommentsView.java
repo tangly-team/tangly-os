@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,102 +12,156 @@
 
 package net.tangly.ui.components;
 
-import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.datetimepicker.DateTimePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.grid.HeaderRow;
+import com.vaadin.flow.component.grid.dataview.GridListDataView;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.server.VaadinSession;
 import net.tangly.core.Comment;
 import net.tangly.core.HasComments;
+import net.tangly.core.HasTimeInterval;
 import net.tangly.core.providers.ProviderInMemory;
-import net.tangly.ui.markdown.MarkdownField;
 import org.jetbrains.annotations.NotNull;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.Collections;
+import java.util.Objects;
 
 /**
  * The comments view is a Crud view with all the comments defined for an object implementing the {@link HasComments}. Edition functions are provided to add,
  * delete, and view individual comments. Update function is not supported because comments are immutable objects. Immutable objects must be explicitly be
- * deleted before an new version can be added. This approach supports auditing approaches.
+ * deleted before a new version is added. This approach supports auditing approaches.
  */
-public class CommentsView extends EntitiesView<Comment> {
-    private final transient HasComments hasComments;
-    private final DateTimePicker created;
-    private final TextField author;
-    private final MarkdownField text;
+public class CommentsView extends EntityView<Comment> {
+    private static final String CREATED = "created";
+    private static final String AUTHOR = "author";
+    private static final String TEXT = "text";
+    private static final String CREATED_LABEL = "Created";
+    private static final String AUTHOR_LABEL = "Author";
+    private static final String TEXT_LABEL = "Text";
+    private transient HasComments hasComments;
+    private CommentFilter entityFilter;
 
-    public CommentsView(@NotNull EntityView.Mode mode, @NotNull HasComments entity) {
-        super(Comment.class, mode, ProviderInMemory.of(entity.comments()));
+    public CommentsView(HasComments entity) {
+        super(Comment.class, ProviderInMemory.of(Objects.nonNull(entity) ? entity.comments() : Collections.emptyList()), true);
+        form = new CommentForm(this);
         this.hasComments = entity;
-        created = new DateTimePicker("Created");
-        created.setRequiredIndicatorVisible(true);
-        created.setReadOnly(true);
-        author = VaadinUtils.createTextField("Author", "author");
-        author.setRequired(true);
-        author.setReadOnly(true);
-        text = new MarkdownField("Text");
-        initialize();
+        init();
+    }
+
+    public void fill(HasComments entity) {
+        this.hasComments = entity;
+        provider(ProviderInMemory.of(Objects.nonNull(entity) ? entity.comments() : Collections.emptySet()));
     }
 
     @Override
-    protected void initialize() {
+    protected void init() {
         Grid<Comment> grid = grid();
         grid.setPageSize(5);
         grid.addColumn(Comment::created).setKey("created").setHeader("Created").setSortable(true).setFlexGrow(0).setWidth("200px").setResizable(false)
             .setFrozen(true);
         grid.addColumn(Comment::author).setKey("author").setHeader("Author").setSortable(true).setFlexGrow(0).setWidth("200px").setResizable(false);
         grid.addColumn(Comment::text).setKey("text").setHeader("Text").setSortable(true).setFlexGrow(0).setWidth("200px").setResizable(false);
-        addAndExpand(grid(), gridButtons());
+
+        entityFilter = new CommentFilter(dataView());
+        grid().getHeaderRows().clear();
+        HeaderRow headerRow = grid().appendHeaderRow();
+//        addFilter(headerRow, CREATED, CREATED_LABEL, entityFilter::created);
+        addFilter(headerRow, AUTHOR, AUTHOR_LABEL, entityFilter::author);
+        addFilter(headerRow, TEXT, TEXT_LABEL, entityFilter::text);
+        initMenu();
     }
 
-    @Override
-    protected FormLayout fillForm(@NotNull Operation operation, Comment entity, FormLayout form) {
-        boolean readonly = operation.isReadOnly();
-        text.setHeight("8em");
-        text.setReadOnly(readonly);
-        form.add(created, author, new HtmlComponent("br"), text);
-        form.setColspan(text, 2);
-        if (readonly) {
-            Binder<Comment> binder = new Binder<>(Comment.class);
-            binder.bind(created, Comment::created, null);
-            binder.bind(author, Comment::author, null);
-            binder.bind(text, Comment::text, null);
-            binder.readBean(entity);
-        } else {
-            created.setValue(LocalDateTime.now());
-            author.setValue(username());
-            text.setValue(entity.text());
+    static class CommentFilter extends EntityView.EntityFilter<Comment> {
+        private LocalDate from;
+        private LocalDate to;
+        private String author;
+        private String text;
+
+        public CommentFilter(@NotNull GridListDataView<Comment> dataView) {
+            super(dataView);
         }
-        return form;
+
+        public void createdRange(LocalDate from, LocalDate to) {
+            this.from = from;
+            this.to = to;
+            refresh();
+        }
+
+        public void author(String author) {
+            this.author = author;
+            refresh();
+        }
+
+        public void text(String text) {
+            this.text = text;
+            refresh();
+        }
+
+        @Override
+        public boolean test(@NotNull Comment entity) {
+            return matches(entity.author(), author) && matches(entity.text(), text) && HasTimeInterval.isActive(entity.created().toLocalDate(), from, to);
+        }
     }
 
-    @Override
-    protected Comment updateOrCreate(Comment entity) {
-        return Comment.of(created.getValue(), author.getValue(), text.getValue());
-    }
+    static class CommentForm extends EntityView.EntityForm<Comment> {
+        protected Binder<Comment> binder;
+        protected DateTimePicker created;
+        protected TextField author;
+        protected TextField text;
 
-    @Override
-    public Comment formCompleted(@NotNull Operation operation, Comment entity) {
-        return switch (operation) {
-            case CREATE -> {
-                Comment comment = updateOrCreate(entity);
-                hasComments.add(comment);
-                yield comment;
+        public CommentForm(@NotNull CommentsView parent) {
+            super(parent);
+            init();
+        }
+
+        protected void init() {
+            FormLayout fieldsLayout = new FormLayout();
+            created = new DateTimePicker(CREATED);
+            created.setReadOnly(true);
+            author = new TextField(AUTHOR);
+            author.setRequired(true);
+            text = new TextField(TEXT);
+            fieldsLayout.add(created, author, text);
+            fieldsLayout.setColspan(text, 3);
+            fieldsLayout.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1), new FormLayout.ResponsiveStep("320px", 2), new FormLayout.ResponsiveStep("500px", 3));
+
+            form().add(fieldsLayout, createButtonsBar());
+            binder = new Binder<>(Comment.class);
+            binder.forField(created).bind(Comment::created, null);
+            binder.forField(author).bind(Comment::author, null);
+            binder.forField(text).bind(Comment::text, null);
+        }
+
+        @Override
+        protected void mode(@NotNull Mode mode) {
+            created.setReadOnly(mode.readonly());
+            author.setReadOnly(mode.readonly());
+            text.setReadOnly(mode.readonly());
+        }
+
+        @Override
+        public void fill(Comment entity) {
+            if (entity != null) {
+                binder.readBean(entity);
             }
-            case UPDATE -> {
-                Comment comment = updateOrCreate(entity);
-                hasComments.remove(entity);
-                hasComments.add(comment);
-                yield comment;
-            }
-            case DELETE -> {
-                hasComments.remove(entity);
-                yield entity;
-            }
-            default -> entity;
-        };
+        }
+
+        @Override
+        protected void clear() {
+            created.clear();
+            author.clear();
+            text.clear();
+        }
+
+        @Override
+        protected Comment createOrUpdateInstance(Comment entity) {
+            return new Comment(author.getValue(), text.getValue());
+
+        }
     }
 
     private String username() {

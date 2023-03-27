@@ -61,7 +61,7 @@ Scanners like SpotBugs or SonarLint regularly find errors and smells.
 * Functional programming is another tool, not a panacea.
 The real world has objects and often classes.
 
-=== Positive Experience
+=== Positive Experiences
 
 I learnt to appreciate these approaches:
 
@@ -84,8 +84,8 @@ They can rest in peace.
 The same could be said about SAFe.].
 * DevOps advantages are worth the effort.
 Deliver frequently and automate.
-Each project should have a continuous integration, a continuous delivery, and a continuous deployment pipeline.
-The deployement can also be triggered manually.
+Each project should have a continuous integration, continuous delivery, and continuous deployment pipeline.
+The deployment can also be triggered manually.
 The deployment steps shall still be fully automated.
 * Static websites with {ref-asciidoc} are the solution how to document your architecture and technical product.
 

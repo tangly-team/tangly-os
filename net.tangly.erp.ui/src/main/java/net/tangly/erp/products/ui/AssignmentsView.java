@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -15,7 +15,7 @@ package net.tangly.erp.products.ui;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.products.domain.Assignment;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
-import net.tangly.ui.components.InternalEntitiesView;
+import net.tangly.ui.components.lEntitiesView;
 import net.tangly.ui.grids.GridDecorators;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,7 +25,7 @@ import org.jetbrains.annotations.NotNull;
  * Regular CRUD view on assignments abstraction. The grid and edition dialog wre optimized for usability.
  */
 @PageTitle("products-assignements")
-class AssignmentsView extends InternalEntitiesView<Assignment> {
+class AssignmentsView extends lEntitiesView<Assignment> {
     private static final Logger logger = LogManager.getLogger();
     private final transient ProductsBoundedDomain domain;
 
@@ -38,11 +38,11 @@ class AssignmentsView extends InternalEntitiesView<Assignment> {
     @Override
     protected void initialize() {
         var grid = grid();
-        InternalEntitiesView.addQualifiedEntityColumns(grid);
+        lEntitiesView.addQualifiedEntityColumns(grid);
         grid.addColumn(Assignment::collaboratorId).setKey("collaboratorId").setHeader("Collaborator").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> (e.product() != null) ? e.product().name() : null).setKey("project").setHeader("Project").setSortable(true).setAutoWidth(true)
             .setResizable(true);
-        GridDecorators<Assignment> decorators = filterCriteria(true, false, InternalEntitiesView::addQualifiedEntityFilters);
+        GridDecorators<Assignment> decorators = filterCriteria(true, false, lEntitiesView::addQualifiedEntityFilters);
         decorators.addItemAction("Add Effort", e -> new CmdCreateEffort(selectedItem(), domain).execute());
         decorators.addItemAction("Print", e -> new CmdCreateAssignmentDocument(selectedItem(), domain).execute());
         addAndExpand(decorators, grid(), gridButtons());

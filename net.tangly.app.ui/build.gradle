@@ -17,7 +17,7 @@ plugins {
 
 project.ext.groupId = 'net.tangly'
 project.ext.artifactId = 'ui-app'
-project.version = "0.2.7"
+project.version = '0.2.7'
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
 project.description = "Vaadin user interface (tangly llc)"
@@ -34,6 +34,7 @@ application {
 
 dependencies {
     implementation project(':net.tangly.core')
+    implementation project(':net.tangly.ui')
 
     implementation(libs.slf4j.simple)
 

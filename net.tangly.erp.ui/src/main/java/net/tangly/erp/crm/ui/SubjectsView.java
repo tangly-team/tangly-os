@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -22,14 +22,14 @@ import net.tangly.core.crm.NaturalEntity;
 import net.tangly.erp.crm.domain.Subject;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.EntityField;
-import net.tangly.ui.components.InternalEntitiesView;
+import net.tangly.ui.components.lEntitiesView;
 import net.tangly.ui.components.One2OneField;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.ByteArrayInputStream;
 
-class SubjectsView extends InternalEntitiesView<Subject> {
+class SubjectsView extends lEntitiesView<Subject> {
     private final transient CrmBoundedDomain domain;
 
     public SubjectsView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
@@ -40,8 +40,8 @@ class SubjectsView extends InternalEntitiesView<Subject> {
 
     @Override
     protected void initialize() {
-        InternalEntitiesView.addQualifiedEntityColumns(grid());
-        addAndExpand(filterCriteria(false, false, InternalEntitiesView::addEntityFilters), grid(), gridButtons());
+        lEntitiesView.addQualifiedEntityColumns(grid());
+        addAndExpand(filterCriteria(false, false, lEntitiesView::addEntityFilters), grid(), gridButtons());
     }
 
     @Override

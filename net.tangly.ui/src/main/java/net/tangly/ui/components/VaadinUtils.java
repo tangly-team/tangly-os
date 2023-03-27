@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -109,7 +109,6 @@ public final class VaadinUtils {
 
     public static <E> void initialize(@NotNull Grid<E> grid) {
         grid.addThemeVariants(GridVariant.MATERIAL_COLUMN_DIVIDERS);
-        grid.setVerticalScrollingEnabled(true);
         grid.setMinHeight("5em");
         grid.setHeightFull();
         grid.setWidthFull();
@@ -145,11 +144,6 @@ public final class VaadinUtils {
                 default -> new Span("");
             };
         });
-    }
-
-    @SafeVarargs
-    public static <E extends HasValue> void readOnly(CrudForm.Operation operation, E... components) {
-        readOnly(Crud.of(operation).readOnly(), components);
     }
 
     @SafeVarargs

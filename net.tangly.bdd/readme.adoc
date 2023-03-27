@@ -46,16 +46,18 @@ The library can be included in Gradle as
     testImplementation "net.tangly:bdd:0.2.7"
 ----
 
-The documentation can be found under [BDD documentation](https://blog.tangly.net/docs/bdd/)
+The documentation can be found under https://blog.tangly.net/docs/bdd/[BDD documentation]
 
-For any further question and discussion, you can use the forum [tangly-OS-Components](https://groups.google.com/g/tangly-os-components)
+For any further question and discussion, you can use the forum https://groups.google.com/g/tangly-os-components[tangly-OS-Components]
+
+An overall article is available under https://blog.tangly.net/blog/2022/behavior-driven-design/[Behaviour Driven Design].
 
 == Contribution
 
 You are welcome to contribute to the product with pull requests on Bitbucket. You can download the source files from the
 [bitbucket git repository](https://bitbucket.org/tangly-team/tangly-os.git) and build the library with the provided gradle configuration file.
 
-If you find a bug or want to request a feature, please use the [issue tracker](https://bitbucket.org/tangly-team/tangly-os/issues).
+If you find a bug or want to request a feature, please use the https://bitbucket.org/tangly-team/tangly-os/issues[issue tracker].
 
 == License
 

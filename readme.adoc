@@ -64,23 +64,41 @@ Ensure you have enough bandwidth to provide a smooth experience.
 
 All development activities are performed with probably the best Java IDE IntelliJ IDEA.
 
-== Hosted cntinuous integration, continuous deployment, and continuous delivery _CI/CD/CD_.
+== DevOps Activities
 
 These instructions are for project committers.
-The continuous deployment is a manual step to limit the usage of pipeline minutes and diminish associated costs.
 
-=== BitBucket
+The project is hosted on:
 
+[source, bash]
+----
+git add remote origin-github      git@github.com:tangly-team/tangly-os.git                <1>
+git add remote origin-gitlab      git@gitlab.com:marcelbaumann/tangly-os.git              <2>
+git add remote origin-bitbucket   git@bitbucket.org:tangly-team/tangly-os.git             <3>
+git add remote origin-hslu        https://gitlab.enterpriselab.ch/tangly/tangly-os.git    <4>
+----
+<1> primary git repository due to the excellent support for static websites.
+<2> secondary git repository.
+<3> historical git repository missing support for {ref-asciidoc} and static websites.
+<4> teaching repository used for technical university of Lucerne lectures.
+
+=== CI/CD/CD
+
+GitHub::
+. Automated as build script
+GitLab::
+. Automated as build script
+BitBucket::
 . Go to the https://bitbucket.org/tangly-team/tangly-os/commits/[Commits]
 . Select the commit you want to deploy
 . On the displayed screen select the _Run pipeline_ operation.
 You are presented with a selection of deployment options.
-
 The variable _BB_AUTH_STRING_ is defined through _REPOSITORY-OWNER-NAME_:_APP-PASSWORD_.
+The continuous deployment is a manual step to limit the usage of pipeline minutes and diminish associated costs.
 
 == Awesome Sponsors and Developers
 
-Corporate sponsors are
+Corporate sponsors are:
 
 * https://www.tangly.net[tangly llc]
 

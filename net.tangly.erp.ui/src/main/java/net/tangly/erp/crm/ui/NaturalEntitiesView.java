@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -46,7 +46,7 @@ import java.time.format.DateTimeFormatter;
  * Regular CRUD view on natural entities abstraction. The grid and edition dialog wre optimized for usability.
  */
 @PageTitle("crm-natural entities")
-class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
+class NaturalEntitiesView extends lEntitiesView<NaturalEntity> {
     private final transient CrmBoundedDomain domain;
 
     public NaturalEntitiesView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
@@ -79,7 +79,7 @@ class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
         grid.addColumn(new ComponentRenderer<>(o -> (o.gender() == GenderCode.male) ? new Icon(VaadinIcon.MALE) : new Icon(VaadinIcon.FEMALE)))
             .setKey("gender").setHeader("Gender").setResizable(true).setResizable(true);
         grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::individualLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
-        addAndExpand(filterCriteria(false, false, InternalEntitiesView::addEntityFilters), grid(), gridButtons());
+        addAndExpand(filterCriteria(false, false, lEntitiesView::addEntityFilters), grid(), gridButtons());
     }
 
     @Override
@@ -136,6 +136,6 @@ class NaturalEntitiesView extends InternalEntitiesView<NaturalEntity> {
 
     @Override
     protected NaturalEntity updateOrCreate(NaturalEntity entity) {
-        return EntitiesView.updateOrCreate(entity, binder, NaturalEntity::new);
+        return CrmEntityView.updateOrCreate(entity, binder, NaturalEntity::new);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 Marcel Baumann
+ * Copyright 2023-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -26,6 +26,7 @@ import net.tangly.core.HasId;
 import net.tangly.core.HasName;
 import net.tangly.core.HasText;
 import net.tangly.core.providers.Provider;
+import net.tangly.ui.components.EntityView;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -74,32 +75,20 @@ public class AppBoundedDomainAUi implements BoundedDomainUi {
             }
 
             @Override
-            public void fillForm(T entity) {
+            public void fill(T entity) {
                 if (entity != null) {
                     binder.readBean(entity);
                 }
             }
 
             @Override
-            public T updateEntity() {
-                if (Objects.nonNull(selectedItem())) {
-                    parent.provider().delete(selectedItem());
-                }
-                T entity = createInstance();
-                parent.provider().update(entity);
-                parent.dataView().refreshAll();
-                cancel();
-                return entity;
-            }
-
-            @Override
-            protected void nameActionButton(@NotNull Mode mode) {
-                super.nameActionButton(mode);
+            protected void mode(@NotNull Mode mode) {
                 id.setReadOnly(mode.readonly());
                 name.setReadOnly(mode.readonly());
                 text.setReadOnly(mode.readonly());
             }
 
+            @Override
             protected void clear() {
                 id.clear();
                 name.clear();
@@ -119,7 +108,6 @@ public class AppBoundedDomainAUi implements BoundedDomainUi {
 
             protected abstract void init();
 
-            protected abstract T createInstance();
         }
 
         private AppEntityFilter<T> entityFilter;
@@ -165,9 +153,8 @@ public class AppBoundedDomainAUi implements BoundedDomainUi {
             }
 
             @Override
-            protected AppBoundedDomainA.EntityOne createInstance() {
+            protected AppBoundedDomainA.EntityOne createOrUpdateInstance(AppBoundedDomainA.EntityOne entity) {
                 return new AppBoundedDomainA.EntityOne(id.getValue(), name.getValue(), text.getValue());
-
             }
         }
 
@@ -206,7 +193,7 @@ public class AppBoundedDomainAUi implements BoundedDomainUi {
             }
 
             @Override
-            protected AppBoundedDomainA.EntityTwo createInstance() {
+            protected AppBoundedDomainA.EntityTwo createOrUpdateInstance(AppBoundedDomainA.EntityTwo entity) {
                 return new AppBoundedDomainA.EntityTwo(id.getValue(), name.getValue(), text.getValue());
             }
         }

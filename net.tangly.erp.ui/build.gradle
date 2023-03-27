@@ -14,15 +14,15 @@ plugins {
     id 'java-app-conventions'
     alias(libs.plugins.vaadin)
     id 'jacoco-report-aggregation'
-    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 project.ext.groupId = 'net.tangly.erp'
 project.ext.artifactId = 'ui'
-project.version = "0.2.7"
+project.version = '0.2.7'
 project.ext.moduleName = "${project.ext.groupId}.${project.ext.artifactId}"
 project.ext.inceptionYear = '1996'
-project.description = "User Interface ERP - using Java 17 or higher (tangly llc)"
+project.description = "User Interface ERP - using Java 20 or higher (tangly llc)"
 
 application {
     applicationDefaultJvmArgs = ['--enable-preview',

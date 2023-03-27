@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -31,7 +31,7 @@ import java.util.Locale;
  * Regular CRUD view on contracts abstraction. The grid and edition dialog wre optimized for usability.
  */
 
-class ContractsView extends InternalEntitiesView<Contract> {
+class ContractsView extends lEntitiesView<Contract> {
     private final transient CrmBoundedDomain domain;
 
     public ContractsView(@NotNull CrmBoundedDomain domain, @NotNull Mode mode) {
@@ -43,12 +43,12 @@ class ContractsView extends InternalEntitiesView<Contract> {
     @Override
     protected void initialize() {
         var grid = grid();
-        InternalEntitiesView.addQualifiedEntityColumns(grid);
+        lEntitiesView.addQualifiedEntityColumns(grid);
         grid.addColumn(e -> e.sellee().name()).setKey("customer").setHeader("Customer").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(new NumberRenderer<>(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true)
             .setResizable(true).setSortable(true).setTextAlign(ColumnTextAlign.END);
-        addAndExpand(filterCriteria(false, false, InternalEntitiesView::addQualifiedEntityFilters), grid(), gridButtons());
+        addAndExpand(filterCriteria(false, false, lEntitiesView::addQualifiedEntityFilters), grid(), gridButtons());
     }
 
     @Override
@@ -94,6 +94,6 @@ class ContractsView extends InternalEntitiesView<Contract> {
 
     @Override
     protected Contract updateOrCreate(Contract entity) {
-        return EntitiesView.updateOrCreate(entity, binder, Contract::new);
+        return CrmEntityView.updateOrCreate(entity, binder, Contract::new);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,6 +12,8 @@
 
 package net.tangly.ui.app.domain;
 
+import com.vaadin.flow.component.grid.HeaderRow;
+import com.vaadin.flow.component.grid.dataview.GridListDataView;
 import net.tangly.core.TagType;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.providers.ProviderInMemory;
@@ -20,16 +22,22 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Displays all tags and their usage, often use for administrative information for a bounded domain.
  */
-public class TagTypesView extends EntityView<TagType<?>> {
+public class TagTypesView extends EntityView<TagType> {
+    final String NAMESPACE = "namespace";
+    final String NAMESPACE_LABEL = "Namespace";
+    final String NAME = "name";
+    final String NAME_LABEL = " Name";
     private final transient BoundedDomain<?, ?, ?, ?> domain;
     private final transient HashMap<TagType<?>, Integer> counts;
+    private TagTypeFilter entityFilter;
 
     public TagTypesView(@NotNull BoundedDomain<?, ?, ?, ?> domain) {
-        super(TagType.class, ProviderInMemory.of(domain.registry().tagTypes()));
+        super(TagType.class, ProviderInMemory.of(domain.registry().tagTypes()), false);
         this.domain = domain;
         this.counts = new HashMap<>();
         init();
@@ -39,18 +47,46 @@ public class TagTypesView extends EntityView<TagType<?>> {
     protected void init() {
         var grid = grid();
 
-        grid.addColumn(TagType::namespace).setKey("namespace").setHeader("Namespace").setSortable(true).setAutoWidth(true).setResizable(true);
-        grid.addColumn(TagType::name).setKey("name").setHeader("Name").setSortable(true).setAutoWidth(true).setResizable(true);
+        grid.addColumn(TagType::namespace).setKey(NAMESPACE).setHeader(NAMESPACE_LABEL).setSortable(true).setAutoWidth(true).setResizable(true);
+        grid.addColumn(TagType::name).setKey(NAME).setHeader("Name").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(TagType::canHaveValue).setKey("canHaveValue").setHeader("Can Have Value").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(TagType::kind).setKey("Kind").setHeader("Kind").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(e -> e.clazz().getSimpleName()).setKey("valueType").setHeader("Value Type").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(this::count).setKey("count").setHeader("Count").setSortable(true).setAutoWidth(true).setResizable(true);
 
-        GridDecorators<TagType<?>> decorator = new GridDecorators<>(grid, TagType.class.getSimpleName(), false, true);
-        decorator.addGlobalAction("Count Tags", e -> update(domain.countTags(new HashMap<>())));
+        entityFilter = new TagTypeFilter(dataView());
+        grid().getHeaderRows().clear();
+        HeaderRow headerRow = grid().appendHeaderRow();
+        addFilter(headerRow, NAMESPACE, NAMESPACE_LABEL, entityFilter::namespace);
+        addFilter(headerRow, NAME, NAME_LABEL, entityFilter::name);
 
-        setSizeFull();
-        addAndExpand(decorator, grid);
+        // TODO addMenuSection(List.of(Map.entry("Count Tags", e -> update(domain.countTags(new HashMap<>())))));
+    }
+
+    static class TagTypeFilter extends EntityView.EntityFilter<TagType> {
+        private String namespace;
+        private String name;
+        private Optional<Boolean> canHaveValue;
+        private TagType.ValueKinds kind;
+
+        public TagTypeFilter(@NotNull GridListDataView<TagType> dataView) {
+            super(dataView);
+        }
+
+        public void namespace(String namespace) {
+            this.namespace = namespace;
+            refresh();
+        }
+
+        public void name(String name) {
+            this.name = name;
+            refresh();
+        }
+
+        @Override
+        public boolean test(@NotNull TagType entity) {
+            return matches(entity.namespace(), namespace) && matches(entity.name(), name);
+        }
     }
 
     public void update(@NotNull Map<TagType<?>, Integer> counts) {

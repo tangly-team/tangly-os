@@ -16,7 +16,7 @@ For a detailed view of what has changed, refer to the https://bitbucket.org/tang
 
 === 0.2.7 (2023-03-31)
 
-* Update of library dependencies, update to JDK-19, and modern Gradle approach to build solutions
+* Update of library dependencies, update to JDK-20, and modern Gradle approach to build solutions
 
 === 0.2.6 (2021-04-30)
 

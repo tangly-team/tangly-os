@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -12,10 +12,8 @@
 
 package net.tangly.ui.components;
 
-import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
-import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -80,9 +78,9 @@ public class One2ManyView<T> extends VerticalLayout {
         insert = new Button("Add", VaadinIcon.PLUS.create(), event -> displayDialog(CrudForm.Operation.CREATE));
         remove = new Button("Delete", VaadinIcon.TRASH.create(), event -> displayDialog(CrudForm.Operation.DELETE));
 
-        update.setEnabled(mode.canUpdate());
-        insert.setEnabled(mode.canAdd());
-        remove.setEnabled(mode.canDelete());
+//        update.setEnabled(mode.canUpdate());
+//        insert.setEnabled(mode.canAdd());
+//        remove.setEnabled(mode.canDelete());
 
         HorizontalLayout actions = new HorizontalLayout();
         actions.add(insert, remove, update, details);
@@ -95,10 +93,10 @@ public class One2ManyView<T> extends VerticalLayout {
         dialog.setCloseOnOutsideClick(false);
         dialog.setModal(false);
         dialog.setResizable(true);
-        FormLayout form = view.createForm(operation, operation != CrudForm.Operation.CREATE ? selectedItem : null);
-        CrudActionsListener<T> actionsListener = new GridActionsListener<>(provider, grid.getDataProvider(), this::selectItem);
-        dialog.add(new VerticalLayout(form, new HtmlComponent("br")));
-        view.addFormButtons(dialog, operation, mode.isCancellable(), selectedItem, actionsListener);
+//        FormLayout form = view.createForm(operation, operation != CrudForm.Operation.CREATE ? selectedItem : null);
+//        CrudActionsListener<T> actionsListener = new GridActionsListener<>(provider, grid.getDataProvider(), this::selectItem);
+//        dialog.add(new VerticalLayout(form, new HtmlComponent("br")));
+//        view.addFormButtons(dialog, operation, mode.isCancellable(), selectedItem, actionsListener);
         dialog.open();
     }
 
@@ -106,13 +104,13 @@ public class One2ManyView<T> extends VerticalLayout {
         selectedItem = item;
         if (Objects.nonNull(item)) {
             details.setEnabled(true);
-            update.setEnabled(mode.canUpdate());
-            remove.setEnabled(mode.canDelete());
+//            update.setEnabled(mode.canUpdate());
+//            remove.setEnabled(mode.canDelete());
         } else {
             details.setEnabled(false);
             update.setEnabled(false);
             remove.setEnabled(false);
         }
-        insert.setEnabled(mode.canAdd());
+//        insert.setEnabled(mode.canAdd());
     }
 }

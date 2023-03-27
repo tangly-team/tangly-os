@@ -37,20 +37,24 @@ Team discipline and early warning systems are the keys to avoid such blunders an
 The clean code https://en.wikipedia.org/wiki/Test-driven_development[test-driven development] _TDD_ approach to write code was defined last millennium.
 Professional developers adopted this approach to deliver high quality, legible and maintainable code artifacts.
 
-image::2019-06-01-red-green-refactor.png[float="left]
-. *Red* - Write a test and run it, validating the test harness.
-. *Green* - Write the minimum amount of code to implement the functionality validated in the previously developed test.
+image::2019-06-01-red-green-refactor.png[role="text-center"]
+
+*Red*:: Write a test and run it, validating the test harness.
+*Green*:: Write the minimum amount of code to implement the functionality validated in the previously developed test.
 Update the code and run the tests until the test suite shows successful execution.
-. *Refactor* the code to reach a clean code level.
+*Refactor*:: The code to reach a clean code level.
 Continuously run the tests for guaranteed compliant changes.
 
-If you are a Java developer, you will * Use JUnit 5 and Mockito 2 to implement the first step, * Use a powerful IDE such an IntelliJ IDEA to write and enhance the functional
-code, * Use tools such as SonarLint, Jacoco, Spotbugs, ArchUnit to refactor your functional code and test cases.
+If you are a Java developer, you will
+
+* Use JUnit 5 and Mockito 2 to implement the first step.
+* Use a powerful IDE such an IntelliJ IDEA to write and enhance the functional code.
+* Use tools such as SonarLint, Jacoco, Spotbugs, ArchUnit to refactor your functional code and test cases.
 Clean code applies to productive and test code.
 
-The described approach has good practice since the beginning of this millennium.
+The described approach is a good practice since the beginning of this millennium.
 All above-mentioned tools are open source and free to use.
-Your organization has no excuse to write crap code.
+Your organization has *no excuse* to write crap code.
 
 Just write well engineered, legible and maintainable source code.
 It is a matter of _discipline_.
@@ -64,16 +68,18 @@ The better way is https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_d
 
 For each feature, you need acceptance criteria; this approach is also called _specification by example_.
 For each acceptance criteria write an acceptance test which is executed each time the application is updated in the continuous delivery pipeline.
-The acceptance tests are the living documentation of the behavior of your product.
+The acceptance tests are the living documentation describing the behavior of your product.
 
 To implement this approach you need
 
-* Acceptance criteria which imply specifications by example - you need to train your business analysts and product owners,
+* Acceptance criteria which imply using _specifications by example_ techniques.
+You need to train your business analysts and product owners.
 * Cucumber for Java (or equivalent tools) - to write acceptance tests, Mock all external systems including the database.
 You want to have a fast build and test time and avoid external dependencies.
 * A continuous build and delivery pipeline to automatically run your acceptance validation tests upon each application change,
-* Avoid user interface tests - because they are slow and brittle.
-* Use an in-memory database only if you have to - they are a fast solution to write acceptance tests but are intrinsically slower than mocks.
+* Avoid user interface tests; they are slow and brittle.
+* Use an in-memory database only if you have to.
+They are a fast solution to write acceptance tests but are intrinsically slower than mocks.
 
 === Code Sociology
 
@@ -103,7 +109,7 @@ A rule of thumb we agreed upon is that every line of code has to be approved by 
 
 ==== Pull Requests in Trunk-Based Development
 
-In trunk-based development it is different.
+The approach is different when using trunk-based development.
 Since we want to merge our commits into the master branch as quickly as possible, we cannot wait until the complete feature is finished.
 Unlike in the original trunk-based development approach we still use feature branches, but we have much less divergence from the master branch than in Git Flow.
 We create a pull request as soon as the first commit is pushed into the feature branch.
@@ -111,12 +117,12 @@ Of course, that requires that no commit breaks anything or causes tests to fail.
 Remember that unfinished features can always be disabled with feature toggles.
 
 Now, with part of the new feature committed and the pull request created, another developer from the team can review it.
-In most cases, that does not happen immediately because the developers don’t want to interrupt their work every time a team member pushes a commit.
+In most cases, that does not happen immediately because the developers do not want to interrupt their work every time a team member pushes a commit.
 Instead, the code reviews are done when another developer is open for it.
 Meanwhile, the pull request might grow by a few commits.
 
 The code is not always reviewed immediately after the commit.
-In most cases it reaches the master branch much quicker than in Git Flow.
+In most cases, it reaches the master branch much quicker than in Git Flow.
 
 === Agile Architecture Series
 
