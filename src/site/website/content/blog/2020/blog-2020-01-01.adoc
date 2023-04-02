@@ -60,7 +60,7 @@ Dysfunctions are easy to detect
 
 . Customers are not involved in the development initiative on a daily basis.
 . The development team does not pursue craftsmanship and quality.
-. Customers cannot cancel initiative at any time, The development team cannot update their estimates.
+. Customers cannot cancel an initiative at any time, The development team cannot update their estimates.
 . Management force responsibilities upon collaborators.
 
 Observe your organization and start to improve.

@@ -48,7 +48,7 @@ Agile architecture comes from the behavior of agile _architecting_.
 * A culture of _excellence_ in code and professionalism for the developers.
 * An emphasis on _pair-programming_ coaching for high-quality code and design.
 * Agile modeling design workshops using collaborative peer approaches.
-* _Test-driven development_ and _refactoring_ cite:[refactoring] to continuously and aggressively remove technical debt.
+* _Test-driven development_ and _refactoring_ cite:[refactoring-2nd] to continuously and aggressively remove technical debt.
 * And other _hands-on-the-code_ and _good practice_ behaviors.
 
 These statements reflect the agile and modern approach to software design and architecture.
@@ -785,7 +785,7 @@ For example, you should consider a Java Programmer certification for the current
 * Learn the new features in Java e.g. Streams, Lambdas, Reactive Programming, LocalDate, Modules, packaging with _jlink_.
 * Read and understand _Effective Java_ cite:[effective-java-3rd] from Joshua Bloch.
 * Read and understand _Clean Code_ cite:[clean-code], _Clean Coder_ cite:[clean-coder], _Clean Architecture_ cite:[clean-architecture], _Clean Agile_ cite:[clean-agile],
-* Read and understand _Refactoring_ cite:[refactoring] from Martin Fowler, And read Refactoring not on the backlog post from Ron Jeffries.
+* Read and understand _Refactoring_ cite:[refactoring-2nd] from Martin Fowler, And read Refactoring not on the backlog post from Ron Jeffries.
 * Learn modern practices such as logging with slf4j, TDD with JUnit5, Mockito and AssertJ, ATDD with Cucumber, Lean DevOps. continuous integration, continuous delivery, continuous deployment, monitoring.
 * Be aware of famous Java libraries such as Guava, Apache Commons, Use SonarQube - and the SonarLint plugin for your preferred IDE – to catch well-known weaknesses in your source code and improve your coding skills.
 
@@ -805,7 +805,7 @@ The feeling you reached mastery level is truly awesome.
 
 * Read a technical book each quarter,
 * Learn a new language or framework every two years.
-* Read books such as _The Software Craftsman_ cite:[software-craftsman], _Refactoring_ cite:[refactoring], _Agile Code_ cite:[clean-code], _Agile Coder_ cite:[clean-coder]
+* Read books such as _The Software Craftsman_ cite:[software-craftsman], _Refactoring_ cite:[refactoring-2nd], _Agile Code_ cite:[clean-code], _Agile Coder_ cite:[clean-coder]
   _Clean Architecture_ cite:[clean-architecture], _Clean Agile_ cite:[clean-agile]
 * Know approaches such eXtreme Programming.
 * Work with Scrum, Kanban, LeSS - Agile approaches are definitively state of the industry techniques -.

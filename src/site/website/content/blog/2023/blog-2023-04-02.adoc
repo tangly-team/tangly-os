@@ -13,7 +13,12 @@ tags: ["organization"]
 
 image::2023-04-02-head.jpg[width=420,height=360,role=left]
 
-I just received my new MacBookPro M2 Ultra with 32 GB of RAM and 1 TB SSD.
+I just received my new MacBookPro M2 Ultra with 32 GB of RAM and 1 TB SSD
+footnote:[I am using Apple products for the last thirty-five years.
+I am certainly not fully objective when discussing the advantages and drawbacks of Apple computers.
+I also used Linux based workstations and regularly compiled kernels and configured drivers.
+Some companies forced me to use Windows computers.
+I learnt to hate virus scanners and firewalls impeding my daily developer taks.].
 
 I know.
 I am a geek who loves his technical gadgets.
@@ -29,7 +34,7 @@ I decided to set up the machine from the ground up.
 I want to find out which programs I am really using in my work.
 The setup activities took around one and a half hours
 footnote:[The synchronization of the various Cloud storages was performed overnight.
-We store all company or personal data either on Cloud drives or in Git repositories.].
+We store company related or personal data either on Cloud drives or in Git repositories.].
 
 The older notebook is now my backup computer.
 It can be quite useful.
@@ -65,6 +70,7 @@ The books shall be stored on the notebook otherwise you cannot read them.]._
 - https://excalidraw.com/[Escalidraw]
 - Watcom tablet drivers
 - Banana 9 for accounting as local installation.
+- https://www.videolan.org/vlc/[vlc] as multimedia player
 Developer Tools::
 - JetBrains IntelliJ IDEA with AsciiDoc, Cursive, SonarLint, Statistics, Grazie Professional, and Snyk plugins.
 - Java JDK 17 LTS and JDK 20 including the documentation for the latest JDK.
@@ -77,6 +83,13 @@ The JDK documentation shall be copied in the folder _/Library/WebServer/Document
 You need _sudo_ rights to move the files into the web server documents folder.
 
 You can access the JavaDoc documentation with URI _localhost/docs-jdk20/api/index.html_.
+
+If you never started the Apache server, you need to execute once:
+
+[source,bash]
+----
+sudo apachectl start
+----
 ====
 
 === Brew Packages
@@ -96,7 +109,8 @@ brew install --cask asciidocfx                                     <5>
 gem install asciidoctor-bibtex asciidoctor-diagram asciidoctor-chart asciidoctor-rouge asciidoctor-kroki    <6>
 ----
 
-<1> Development tools for Java projects. Ant is more part of the set.
+<1> Development tools for Java projects.
+Ant is more part of the set.
 <2> Documentation tools used to produce all technical documents.
 The applications are used to generate static websites.
 <3> Clojure tools for technical university lectures, which I gave.
@@ -111,14 +125,36 @@ These configuration files handle the access to the multiple remote repositories 
 
 I also set up the shell configuration files _.zshrc_ and _.gitconfig_ to have the same environment.
 
+[NOTE]
+====
+If you copy your _.ssh_ folder to the new workstation, you could have access right troubles.
+_ssh_ is quite restrictive about the access rights of the various files in the configuration folders due to security considerations.
+Try the following changes.
+
+[source,bash]
+----
+sudo chown -R <user> ~/.ssh
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/*
+----
+====
+
 === Thoughts
 
-The macOS operating system is a cool environment to install all the applications you need to work.
-The Unix terminal console is a game changer for any software engineer.
+All developers in our company are using Apple notebooks since the company's inception.
+Our primary development stack is Java.
+We are regularly working on embedded industrial products and sometimes use C++.
+
+The Apple ecosystem and the full access to a Unix system validated the assumption that this platform is best for the kind of product development we are involved in.
+
+The macOS operating system is a cool environment to easily install all the applications you need to work.
+The Unix terminal console is a game changer for any software engineer
+footnote:[Professional programmers shall have access to a terminal and have local administrator rights.].
 The Homebrew package manager streamlines installation of needed software.
 
 The new MacBookPro is awesome.
 It is fast, slick, and the display is gorgeous.
+The trade-off is the weight of 2.2 kilograms you have to carry around.
 The build-in loudspeakers are always an audible improvement against the sound of the previous machine.
 
 I was surprised how much faster write operations on the build-in solid state disk are.

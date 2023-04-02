@@ -33,7 +33,7 @@ Translation and user manual
 
 cite:[building-evolutionary-architectures-2nd,building-evolutionary-architectures]
 
-cite:[refactoring]
+cite:[refactoring-2nd]
 
 cite:[modern-software-engineering]
 

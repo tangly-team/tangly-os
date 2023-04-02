@@ -19,6 +19,7 @@ The Scrum master role is well-documented in the {ref-scrumguide}.
 There is probably more than a million of certified Scrum masters in the world.
 
 To differentiate themselves from the numerous Scrum masters, consultants call themselves agile coaches.
+
 Quite a fancy title.
 
 Does a difference exist between a Scrum master and an agile coach?

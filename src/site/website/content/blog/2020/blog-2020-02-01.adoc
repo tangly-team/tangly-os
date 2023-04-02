@@ -37,7 +37,7 @@ Promote https://en.wikipedia.org/wiki/Community_of_practice[Communities of Pract
 
 [quote,W. Edwards Deming]
 ____
-It is not enough management commit themselves to quality and productivity.
+It is not enough management to commit themselves to quality and productivity.
 They must know what it is they must do.
 
 Such a responsibility cannot be delegated.
@@ -74,11 +74,11 @@ It was an occasion to experiment with new technologies, assess their match for t
 === Formal Training
 
 Professional software developers should have formal training in software development.
-You should expect from a person working forty hours a week for the next forty years to pursue a bachelor or a master in computer science.
+You should expect from a person working forty hours a week for the next forty years to pursue a bachelor or a master degree in computer science.
 
 You should expect regular certifications in the used technology stack or development approaches.
 A Scrum master two days training does not make somebody an expert.
-A specialist refusing to invest in a two-day training is probably not a member you want in a high performing team.
+A specialist refusing to invest in a two-day training is probably not a member you want in a high-performing team.
 
 A professional engineer should read multiple technical books each year.
 
@@ -121,4 +121,4 @@ We also published our <<agile-architecture>> credited with 3 ECTS used for teach
 [bibliography]
 === Links
 
-- [[[agile-architecture-course, 1]] https:/blog.tangly.net/ideas/learnings/lectures/[Agile Architecture Course]
+- [[[agile-architecture-course, 1]]] https:/blog.tangly.net/ideas/learnings/lectures/[Agile Architecture Course]

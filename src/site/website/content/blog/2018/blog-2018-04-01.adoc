@@ -36,7 +36,7 @@ For example, you should consider a Java Programmer certification for the current
 * Learn the new features in Java e.g. Streams, Lambdas, Reactive Programming, LocalDate, Modules, packaging with jlink.
 * Read and understand _Effective Java_ cite:[effective-java-2nd] from Joshua Bloch.
 * Read and understand the clean series cite:[clean-code, clean-coder, clean-architecture,clean-agile, clean-craftsmanship].
-* Read and understand _Refactoring_ from Martin Fowler cite:[refactoring].
+* Read and understand _Refactoring_ from Martin Fowler cite:[refactoring-2nd].
 * And read https://ronjeffries.com/xprog/articles/refactoring-not-on-the-backlog/[Refactoring not in the backlog] article from Ron Jeffries.
 * Learn modern practices such as logging with https://www.slf4j.org/[slf4j], TDD with https://junit.org/junit5/[JUnit5], http://site.mockito.org/[Mockito] and http://joel-costigliola.github.io/assertj/[AssertJ], ATDD with https://cucumber.io/[Cucumber].
 * Lean DevOps, continuous integration, continuous delivery, continuous deployment, monitoring.

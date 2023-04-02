@@ -135,7 +135,7 @@ You have a legal responsibility to secure your code and protect your users.
 * Only refactor code you have to change.
 * Apply the boy scout rule cite:[clean-coder,clean-craftsmanship].
 Leave the code in a better state as it was when you started.
-* Train your developer in refactoring and clean code practices cite:[refactoring,refactoring-to-patterns,refactoring-databases].
+* Train your developer in refactoring and clean code practices cite:[refactoring-2nd,refactoring-to-patterns,refactoring-databases].
 Beware technical debt is also created through:
 ** Lack of knowledge, when the developer doesn't know how to write elegant code,
 ** Lack of ownership, when outsourced software efforts result of in-house engineering being required to refactor or rewrite outsourced code.

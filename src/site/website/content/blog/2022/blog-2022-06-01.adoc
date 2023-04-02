@@ -240,7 +240,7 @@ Domain-driven design (DDD) is a useful approach that provides excellent guidelin
 While the concepts are valid, you lose a lot if you limit yourself to using them only: There actually is a life beyond DDD.
 ____
 
-The DDD approach emphasizes systematic refactoring and code improvements cite:[refactoring,clean-code,clean-coder,clean-architecture].
+The DDD approach emphasizes systematic refactoring and code improvements cite:[refactoring-2nd,clean-code,clean-coder,clean-architecture].
 It recommends test driven approach for bounded domain development cite:[agile-testing,more-agile-testing,bridging-communication-gap].
 
 === References
