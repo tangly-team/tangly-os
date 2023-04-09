@@ -11,7 +11,8 @@ tags: ["agile"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2018-03-03-head.jpg[width=420, height=360, role=left]
+image::2018-03-03-head.jpg[width=420,height=360,role=left]
+
 Why do we define metrics and KPI?
 
 First, we want to find out how good the build-in quality of our software artifacts is.
@@ -29,13 +30,14 @@ A metric is a measure or a combination of measures for quantitatively assessing 
 
 A _key performance indicator_ is a metric that
 
-* is tied to a strategic objective.
-* have at least one defined time-bound target value - a number, a trend, a variation, etc. -
+* Is tied to a strategic objective.
+* Have at least one defined time-bound target value such as a number, a trend, a variation, etc.
 
 Therefore, you must define your strategic objectives before you can use KPIs.
 
 Lean approaches have an imperative to reduce cycle-time, eliminate waste and tend to zero-defect products.
-The last one is a corollary because defects are waste. Please use this imperative to define your agile and lean KPIs.
+The last one is a corollary because defects are waste.
+Please use this imperative to define your agile and lean KPIs.
 
 If your tooling landscape does not support automatic gathering of a specific metric, you shall make it optional until you have solved your tooling weaknesses.
 Accurate and real-time automated measurements are of tremendous importance for acceptance and lasting success.
@@ -45,13 +47,13 @@ Accurate and real-time automated measurements are of tremendous importance for a
 The optimal lean software development process has a batch size of one, almost no waiting time, no superfluous stock and no quality issues.
 
 Cycle Time of defects::
- It shows the effectivity to resolve non-quality in product development,
+It shows the effectivity to resolve non-quality in product development,
 Cumulative Flow Diagram for defects and for stories/Backlog Items::
- It shows how effectively resources are allocated,
+It shows how effectively resources are allocated,
 Sprint and PI burndown planned stories and effort::
- versus completed stories and effective effort trends show the stability and adaptability of the development process,
+versus completed stories and effective effort trends show the stability and adaptability of the development process,
 Planned velocity and effective velocity trends::
- It is an indicator for the maturity of the agile product organization.
+It is an indicator for the maturity of the agile product organization.
 
 This metrics shall be automatically provided through the issue and product backlog system.
 For example, the “best of breed” JIRA tool has build-in reports for all the above metrics, so the tools you use should also have them.
@@ -67,12 +69,13 @@ A high-quality software artifact has no code smell issues, no compiler warnings,
 ** Code Smells,
 * Product quality
 ** Continuous integration successful build trends,
-** Test coverage trends for unit tests, integration tests and -ility tests. This metric implies the development team uses unit testing, TDD, ATDD, and automatic -ility testing.
+** Test coverage trends for unit tests, integration tests and -ility tests.
+This metric implies the development team uses unit testing, TDD, ATDD, and automatic -ility testing.
 * Architecture
-** Separation of API and implementation - can only be inferred on modern technology stacks -,
+** Separation of API and implementation can only be inferred on modern technology stacks.
 * Work techniques
-** Refactoring trends – sometimes need to be evaluated manually in some projects —,
-** Emergent Architecture documentation trends - probably needs to be evaluated manually in most projects.
+** Refactoring trends sometimes need to be evaluated manually in some projects.
+** Emergent Architecture documentation trends probably need to be evaluated manually in most projects.
 
 These metrics shall be automatically provided through your quality tracking and continuous integration systems.
 For example, the "best of breed" tools SonarQube and Jenkins have build-in reports for these metrics, so the tools you use should also have them.
@@ -82,4 +85,5 @@ For example, the "best of breed" tools SonarQube and Jenkins have build-in repor
 The above metrics are tools to discover discrepancies and weaknesses in your product development process and generated artifacts.
 The inferred results shall be used to identify and implement corrective measures.
 
-Agile emphasize transparency. The above metrics and KPIs shall be visible anytime to all involved participants through dashboards.
+Agile emphasizes transparency.
+The above metrics and KPIs shall be visible anytime to all involved participants through dashboards.

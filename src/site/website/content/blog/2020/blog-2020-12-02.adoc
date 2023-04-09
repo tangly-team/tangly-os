@@ -33,7 +33,7 @@ Facts are:
 
 * The Utterances library uses a GitHub repository to store comments associated with your website articles and pages.
 * Your website can be hosted *anywhere*.
-You do *not* need to host your static website repository on GitHub; but you can.
+You do *not* need to host your static website repository on GitHub, but you can.
 * Readers wanting to comment *must* login once with their GitHub account to authorize the {ref-utterances} application.
 Anonymous commenting is not supported.
 _This restriction is reasonable for a technical website whose readers are technically affine and already have a GitHub account._

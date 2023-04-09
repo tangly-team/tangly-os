@@ -27,7 +27,7 @@ I think the reason is a prioritization on performance and findBugs relying on ja
 
 === What is SonarLint?
 
-SonarLint lives only in your IDE (IntelliJ, Eclipse or Visual Studio).
+SonarLint lives only in your IDE (IntelliJ, Eclipse, or Visual Studio).
 Its purpose is to give instantaneous feedback as you type your code.
 For this, it concentrates on what code you are adding or updating.
 

@@ -12,7 +12,12 @@ tags: ["agile", "design", "java", "series-agile-design"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2020-04-01-head.jpg[width=420,height=360,role=left]
-You are responsible for creating or modifying a component in your current application.
+You are an experienced programmer.
+You master your primary technology stack and systematically write clean code.
+
+Your team recognized your merits and asked you to take ownership of whole packages in the application.
+
+You are now responsible for creating or modifying a software component in your current application.
 
 This is a *design* activity.
 
@@ -40,7 +45,7 @@ Explore your programming language and discover how idioms and patterns have evol
 For example, lambda expressions and streams introduced in Java 8 - released Spring 2014 - completely transform the solution for regular business logic.
 
 Records introduced in Java 14 - released Spring 2020 - have a huge impact on how your architecture deals with data transfer objects – DTO – and immutability
-footnote:[Java 17 LTS added full support for https://en.wikipedia.org/wiki/Algebraic_data_type[algebraic data types] with the record and sealed concepts.].
+footnote:[Java 17 LTS added full support for https://en.wikipedia.org/wiki/Algebraic_data_type[algebraic data types.] with the record and sealed concepts.].
 
 ==== Read Open Source Code
 
@@ -95,7 +100,7 @@ You still document all major https://en.wikipedia.org/wiki/Architectural_decisio
 ==== Know Your Programming Language
 
 If you are developing in Java, you should use the current features of the programming language.
-For example, with Java 14 you have access to:
+For example, with Java 14, you have access to:
 
 * Try with resources and _closeable_ resources,
 * Immutable collections,
@@ -103,7 +108,7 @@ For example, with Java 14 you have access to:
 * Predicates and functions to define lambda expressions,
 * Records and immutability for objects,
 * Pattern matching syntactic sugar as for _instanceof_ operator,
-* Switch expressions,
+* Switch expressions and not only switch statements,
 * Text blocks to write legible multi-line text expression.
 
 ==== Aggressive Refactoring

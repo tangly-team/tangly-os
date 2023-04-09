@@ -12,7 +12,7 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2018-04-02-head.jpg[width=420, height=360, role=left]
-An agile organization is able to deliver or change direction at any time without additional cost.
+An agile organization is able to deliver or change her direction at any time without additional cost.
 
 More companies want to become truly agile and book an expensive journey to the holy land of agility.
 Often travelers never reach their true destination.
@@ -34,7 +34,7 @@ Use these criteria as a checklist to evaluate your current agile transformation.
 *Define your “product”
 ** You need an elevator pitch describing your product family and why the customers are buying.
 ** Identify your vision, your roadmap for the next three years, your releases for the next 12 months, and product backlog and boundaries of your product.
-* Define “done” - *Definition of Done*
+* Define “done” with a written and published *Definition of Done*
 ** Definition of done tells when your work is completed.
 ** A strong definition of done supports organizational changes, see the {ref-less} metaphor of the _Undone Department_.
 ** Check the team can implement the current definition of done or expand cross-functionality and training.

@@ -19,12 +19,12 @@ Their bug list may contain more than a thousand items.
 All are neatly documented with screenshots, ways to reproduce the problem and a severity and impact classification.
 In the worst case, a specialist has worked hard and estimated the effort to correct each of these bugs.
 
-A change management board meets every few weeks and decides, which bugs have a higher priority and should urgently be fixed.
+A change management board meets every few weeks to decide which bugs have a higher priority and should urgently be fixed.
 It means an angry customer called someone at C level.
 Now his request must be handled.
 Some of these bugs were discovered years ago.
 The discussion can take hours and involve up to ten people.
-Clearly, many expensive hours have been invested to properly administering these bugs.
+Clearly, many expensive hours have been invested in properly administering these bugs.
 
 Creating a list of errors provides an organized inventory of technical debt.
 Spending time on evaluating and administering bugs with the goal of tracking them is just wasteful.

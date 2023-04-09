@@ -77,7 +77,6 @@ You will probably not use it in a commercial product development.
 The principles you learnt shall be applicable to your technology stack.
 Your code will certainly be more simplier, more legible and maintainable.
 
-
 === References
 
 bibliography::[]

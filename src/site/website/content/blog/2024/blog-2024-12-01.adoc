@@ -1,0 +1,133 @@
+---
+title: "Self-Hosted Development Servers"
+linkTitle: "Self-Hosted Git"
+date: 2024-10-01
+tags: ["agile", "organization"]
+---
+
+== Self-Hosted Agile Software Development Servers
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:ref-forgejo: https://forgejo.org/[Forgejo]
+
+image::2024-12-01-head.jpg[width=420,height=360,role=left]
+I work with European and Swiss companies.
+Regularly, some of them are slightly paranoid and deny access to cloud services.
+
+You cannot use well-established software development platforms such as {ref-github}, {ref-gitlab}, or {ref-bitbucket}.
+The price per developer and year is around 250 Euro.
+You get the whole set of functions and goodies such as single sign-or and auditing of all activities.
+
+The same companies are not able to provide financial and technical resources to build a similar onsite offer.
+
+The development teams have no access to modern source code management or build pipelines.
+
+How can you efficiently work in such a retrograde environment?
+
+We present pragmatic recipes to alleviate the damage and help your team to work productively in such environments.
+
+You need a virtual machine or a physical workstation with reasonable memory, processor, and persistent storage resources.
+You must have local administration rights in this environment.
+Ideally, you should have a reasonable domain name to access the machine or at least a fix internal IP address.
+footnote:[It is still possible to work with an IP address.
+You can try to add a record on the localhost file on each developer workstation.
+If it is not possible, your team will have to memorize the IP address.].
+
+The key functions we shall provide are:
+
+- source code management
+- continuous integration, delivery, and deployment pipelines
+- artifact management
+- website with searchable and versioned documentation
+- basic project management and communication tools for team tasks and issues
+
+=== Source Code Management
+
+{ref-git}
+{ref-forgejo} is a self-hosted lightweight software forge
+footnote:[You could also use https://gitea.com/[Gitea].].
+Easy to install and low maintenance, it just does the job.
+
+If you like any of the following features, Forgejo is literally meant for you:
+
+Lightweight::
+Forgejo can easily be hosted on nearly every machine.
+Project management::
+Besides Git hosting, Forgejo offers issues, pull requests, wikis, kanban boards and much more to coordinate with your team.
+Publishing::
+Have something to share?
+Use releases to host your software for download, or use the package registry to publish it for docker, npm and many other package managers.
+Customizable::
+Want to change your look?
+Change some settings?
+There are many config switches to make Forgejo work exactly like you want.
+Powerful::
+Organizations and team permissions, CI integration, Code Search, LDAP, OAuth and much more.
+If you have advanced needs, Forgejo has you covered.
+Privacy::
+From an update checker to default settings. Forgejo is built to be privacy first for you and your crew.
+
+=== Continuous Integration, Delivery, and Deployment
+
+Modern software development approaches require access to a continuous build pipeline.
+Either you write your own approach using build script and docker images, or you use a service.
+
+{ref-forgejo} provides access to an experimental build server.
+You can also use other open source solutions such as https://woodpecker-ci.org/[Woodpecker].
+Commercial products such as https://www.jenkins.io/[Jenkins], https://www.jetbrains.com/teamcity/[TeamCity], or
+https://www.atlassian.com/software/bamboo/[Bamboo] are naturally available for decades.
+
+=== Artifact management
+
+Artifact server is used to store the artifacts created during the delivery activities in the pipeline.
+
+The {ref-forgejo} application provides support for a set of artifact managers.
+There is no need to install an additional server to service package requests.
+
+=== Documentation
+
+Hugo and Docsy C4, plantuml arc42
+
+[INFO]
+====
+Beware of the drawbacks of wiki approaches.
+Wiki based solutions are very easy to deploy.
+
+Wiki often the following problems:
+
+- It is cumbersome or difficult to version the content of a wiki site.
+You want to deploy the documentation associated with a specific release of your application.
+You often need multiple wiki versions at the same time to support the delivered version, the version under testing and the version under active development.
+- Support for diagramming in the wiki pages is often limited or only available through commercial plugins.
+{ref-asciidoctor} support more than thirty https://docs.asciidoctor.org/diagram-extension/latest/[diagram types] out of the box.
+Source code highlighting for huge range of programming languages is also available in {ref-asciidoc}
+- You must use a wiki supporting storing all contents in a git repository.
+You need the tracking and versioning features of a source code management solution.
+====
+
+=== Project Management Services
+
+You need basic functions to work using agile approaches.
+If a team is working in the same location, use an analog board as a sprint board.
+
+The issues can be tracked with a tool like {ref-forgejo} if you really need the additional functionality.
+The solution provides a minimal kanban board for geographically distributed teams.
+
+=== Tips and Tricks
+
+The bare minimum of services you need is a git repository, a possibility to build your software in a clean environment, and a site to publish your documentation.
+
+For each service you deploy, you must implement a backup strategy.
+The easiest approach is to regularly archive the project data and save on a company network drive.
+Often the amount of data for an initiative is less than one GB.
+Bigger projects are below 10 GB.
+Remember your artifacts are text files, not huge office documents or binary files.
+
+[bibliography]
+=== Links
+
+=== References
+
+bibliography::[]

@@ -1,7 +1,7 @@
 ---
 title: "My New MacBookPro"
 linkTitle: "My New MacBookPro"
-date: 2023-04-10
+date: 2023-04-09
 tags: ["organization"]
 ---
 
@@ -13,12 +13,12 @@ tags: ["organization"]
 
 image::2023-04-02-head.jpg[width=420,height=360,role=left]
 
-I just received my new MacBookPro M2 Ultra with 32 GB of RAM and 1 TB SSD
+I just received my new MacBookPro M2 Max with 32 GB of RAM and 1 TB SSD
 footnote:[I am using Apple products for the last thirty-five years.
-I am certainly not fully objective when discussing the advantages and drawbacks of Apple computers.
+I am certainly not objective when discussing the advantages and drawbacks of Apple computers.
 I also used Linux based workstations and regularly compiled kernels and configured drivers.
 Some companies forced me to use Windows computers.
-I learnt to hate virus scanners and firewalls impeding my daily developer taks.].
+I learnt to hate virus scanners and firewalls impeding my daily developer tasks.].
 
 I know.
 I am a geek who loves his technical gadgets.
@@ -26,7 +26,10 @@ I convinced my wife these gadgets are way cheaper than a sports car.
 
 The new notebook replaces my older MacBookPro 2018 I bought five years ago.
 
-The new machine is so fast.
+The new machine is so fast
+footnote:[To be fair, I am not involved in machine learning or vision application development.
+Apple support for standard ML libraries is abysmal.
+The company decided to create their own standard with https://developer.apple.com/metal/[Metal] and do not assume the consequences.].
 It is a pleasure to work with it.
 The only visible difference with the older notebook is the new version has a bulkier build.
 
@@ -38,7 +41,7 @@ We store company related or personal data either on Cloud drives or in Git repos
 
 The older notebook is now my backup computer.
 It can be quite useful.
-A battery replacement in a MacBook takes easily one week in Switzerland.
+A battery replacement on a MacBook notebook takes easily one week in Switzerland.
 
 === Standard Programs
 
@@ -47,42 +50,48 @@ I installed manually the following applications:
 Browsers::
 - Google Chrome
 - Firefox
-Office::
-- AsciiDocFX _I write all technical documents using {ref-asciidoc} markup language._
-- LibreOffice _is my primary office suite for all documents._
-- Microsoft Office _is optional in case we receive a related file.
+- _Safari is installed with macOS._
+Office Applications::
+- https://asciidocfx.com/[AsciiDocFX] _as I write all technical documents using {ref-asciidoc} markup language._
+- https://www.libreoffice.org/[LibreOffice] _is my primary office suite for all documents._
+- Microsoft Office _is optional in case I receive a related file.
 I do not use it for productive work._
-- Apple Office Suite _is optional in case we receive a related file.
+- Apple Office Suite _is optional in case I receive a related file.
 I do not use it for productive work._
 - Conference Tools: Slack, Zoom, Discord, Microsoft Teams, ClickShare
-footnote:[I need the ClickShare application because the drivers on the ClickShare device are old and do not work with current macOS versions.]
-- Kindle _I have all my technical and science-fiction books on Amazon Kindle.
+footnote:[I need the ClickShare application because the drivers preinstalled on the ClickShare devices are old and do not work with current macOS versions.].
+- Amazon Kindle _because I have all my technical and science-fiction books on Amazon Kindle.
 footnote:[Amazon still has not released an ARM native application.
 Shame on them.
 The worst missing feature is bulk download of purchased books.
 I like to explore my library during commute train travel.
-You do not have wireless access in trains in Switzerland.
-The books shall be stored on the notebook otherwise you cannot read them.]._
-- Google Drive for the company drives
-- Switch Drive for the technical university drives
-- Spotify
-- https:://gpgtools.org/[GPG Tools]
+You do not have wireless access to trains in Switzerland.
+The books shall be stored in the notebook otherwise you cannot read them.]._
+- Google Drive to access all our company drives.
+- Switch Drive for the Swiss technical university drives.
+- Spotify to listen to music.
+- https://gpgtools.org/[GPG Tools] to sign all company related emails and encrypt sensitive documents.
+I am using PGP for the last thirty years.
 - https://excalidraw.com/[Escalidraw]
-- Watcom tablet drivers
-- Banana 9 for accounting as local installation.
+- Wacom tablet drivers.
+- https://www.banana.ch/en/[Banana] for accounting as a local installation.
+The complete accounting activities including VAT declarations are performed with this application.
 - https://www.videolan.org/vlc/[vlc] as multimedia player
 Developer Tools::
-- JetBrains IntelliJ IDEA with AsciiDoc, Cursive, SonarLint, Statistics, Grazie Professional, and Snyk plugins.
+- https://www.jetbrains.com/idea/[JetBrains IntelliJ IDEA] with AsciiDoc, Cursive, SonarLint, Statistics, Grazie Professional, and Snyk plugins.
 - Java JDK 17 LTS and JDK 20 including the documentation for the latest JDK.
-- VisualVM
+- https://visualvm.github.io/[VisualVM]
 - Docker Desktop
 
-[INFO]
+[TIP]
 ====
 The JDK documentation shall be copied in the folder _/Library/WebServer/Documents_.
 You need _sudo_ rights to move the files into the web server documents folder.
 
 You can access the JavaDoc documentation with URI _localhost/docs-jdk20/api/index.html_.
+
+I need local access to the documentation when travelling in Switzerland.
+The official Swiss railway company does not provide Internet access in the trains.
 
 If you never started the Apache server, you need to execute once:
 
@@ -110,13 +119,13 @@ gem install asciidoctor-bibtex asciidoctor-diagram asciidoctor-chart asciidoctor
 ----
 
 <1> Development tools for Java projects.
-Ant is more part of the set.
+Ant is an obsolete tool and no more part of the set.
 <2> Documentation tools used to produce all technical documents.
 The applications are used to generate static websites.
-<3> Clojure tools for technical university lectures, which I gave.
+<3> https://clojure.org/[Clojure] tools for the technical university lectures I gave.
 <4> Utilities for developers.
-<5> Applications managed through brew.
-<6> Install the ruby packages used with asciidoctor on the static websites.
+<5> Applications managed through homebrew.
+<6> Install the ruby packages used with asciidoctor to create the static websites.
 
 === Git and GitHub Configuration
 
@@ -145,12 +154,12 @@ All developers in our company are using Apple notebooks since the company's ince
 Our primary development stack is Java.
 We are regularly working on embedded industrial products and sometimes use C++.
 
-The Apple ecosystem and the full access to a Unix system validated the assumption that this platform is best for the kind of product development we are involved in.
+The Apple ecosystem and the full access to a Unix system validated the assumption that this platform is best for the kinds of product development we are involved in.
 
 The macOS operating system is a cool environment to easily install all the applications you need to work.
 The Unix terminal console is a game changer for any software engineer
 footnote:[Professional programmers shall have access to a terminal and have local administrator rights.].
-The Homebrew package manager streamlines installation of needed software.
+The Homebrew package manager streamlines installation and update of needed software packages.
 
 The new MacBookPro is awesome.
 It is fast, slick, and the display is gorgeous.
@@ -165,4 +174,4 @@ It is worth the price I paid.
 === Links
 
 - [[[o-still-use-macbookpro, 1]]] link:../../2019/why-i-still-love-to-use-a-macbookpro-and-macos-in-2019/[Why I Still Use a MacBookPro and macOS]
-- [[[i-use-macbookpro, 2]]] link:../../2016/why-i-use-a-macbookpro-and-os-x/[Why I Use a MacBookPro and macOS]
+- [[[i-use-macbookpro, 2]]] link:../../2016/why-i-use-a-macbookpro-and-os-x/[Why I Use a MacBookPro Notebook and macOS]

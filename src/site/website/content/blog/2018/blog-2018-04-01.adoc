@@ -25,7 +25,7 @@ We are not talking about complex design activities or complex patterns; we are d
 
 Most of the programmers have no formal training in the technology stack they are using daily.
 Their best friend is the Internet.
-And as a consequence, many agile projects are now, steadily and iteratively producing mediocre software.
+And as a consequence, many agile projects steadily and iteratively produce mediocre software.
 
 You shall be a proud software craftsman cite:[software-craftsman].
 You shall work as a professional and deliver professional results.
@@ -41,7 +41,7 @@ For example, you should consider a Java Programmer certification for the current
 * Learn modern practices such as logging with https://www.slf4j.org/[slf4j], TDD with https://junit.org/junit5/[JUnit5], http://site.mockito.org/[Mockito] and http://joel-costigliola.github.io/assertj/[AssertJ], ATDD with https://cucumber.io/[Cucumber].
 * Lean DevOps, continuous integration, continuous delivery, continuous deployment, monitoring.
 * Be aware of famous Java libraries such as https://github.com/google/guava[Guava], https://commons.apache.org/[Apache Commons].
-* Use https://www.sonarqube.org/[SonarQube] - and the https://www.sonarlint.org/[SonarLint] plugin for your preferred IDE - to catch well-known weaknesses in your source code and improve your coding skills.
+* Use https://www.sonarqube.org/[SonarQube] and the https://www.sonarlint.org/[SonarLint] plugin for your preferred IDE to catch well-known weaknesses in your source code and improve your coding skills.
 
 A software developer not knowing the above items is almost certainly not a professional person, just a more or less talented amateur cite:[clean-code,clean-coder].
 For a similar point of view, see the blog of Mike Cohn
@@ -59,8 +59,8 @@ The feeling having reached a certain mastery level is truly awesome.
 Agile approaches are definitively state of the industry techniques -.
 * Master container approaches with https://www.docker.com/[Docker] - containers are here to stay and will replace virtual machines -.
 
-You shall write good enough software without errors and using best practices of the industry.
-If not consider changing your profession.
+You shall write good enough software without errors and using the best practices of the industry.
+If not, consider changing your profession.
 See my blog post about technical debt discussing the consequences of missing mastery.
 
 === Software Craftsmanship
@@ -93,7 +93,7 @@ Software craftsmanship is
 
 * Not a church, trying to convert all developers.
 * About leading by example and showing how we can be better.
-* About well-written and designed code - and the customer stays in the center -.
+* About well-written and designed code and the customer stays in the center.
 * About continuously delivering value not writing crap code.
 
 Your goal shall to become a professional developer and reach mastery.

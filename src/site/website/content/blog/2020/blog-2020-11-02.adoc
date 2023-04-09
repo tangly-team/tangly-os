@@ -63,7 +63,7 @@ image::2020-11-02-waisfisz-levels-of-culture.png[role=text-center]
 
 To Waisfisz, an organization’s culture is defined by how its parts relate to each other.
 Moreover, it refutes _the way we do things here_ model by reinforcing that your internal culture is defined by its differences from other organizations.
-This model lends from group dynamics where groups are not only defined by their internal identity but also by their differences to other groups.
+This model lends to group dynamics where groups are not only defined by their internal identity but also by their differences to other groups.
 
 Recognize clearly that not changing the structure and just renaming roles and processes will not trigger any change.
 See the Larman laws:
@@ -87,7 +87,8 @@ In the language of social psychology <<culturalPerspective>> we can state:
 ____
 It turns out that if we engage in a behavior, and particularly one we had not expected that we would have, our thoughts and feelings toward that behavior are likely to change.
 
-This might not seem intuitive, but it represents another example of how the principles of social psychology, in this case the principle of attitude consistency lead us to make predictions that would not otherwise be that obvious.
+This might not seem intuitive, but it represents another example of how the principles of social psychology, in this case the principle of attitude consistently lead us to make predictions that
+would not otherwise be that obvious.
 ____
 
 === Agile Anti-Patterns
@@ -147,7 +148,7 @@ This war is won.
 We are moping the last islands of resistance.
 
 _For me, it is similar to the introduction of object-oriented approaches in analysis, design, and realisation of software projects.
-In the late nineties of last century, the object-oriented movement won.
+In the late nineties of the last century, the object-oriented movement won.
 It took more than ten years to take care of the last luddites._
 
 _Our company https://wwww.tangly.net/[tangly llc] works steadily and continuously to advance agile and lean values.

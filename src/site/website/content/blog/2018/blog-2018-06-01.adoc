@@ -37,14 +37,15 @@ The second part is called intrinsic quality and is why customers buy your produc
 Criteria such as test code coverage, static analyzers, coding guidelines are just tools to detect missing quality.
 They help your team produce higher quality and nothing else.
 
-I encounter organizations stating that zero defects as measured with SonarQube is the ultimate goal – and they find normal to have thousands of smells -.
+I encounter organizations stating that zero defects as measured with SonarQube is the ultimate goal.
+And they find normal to have thousands of smells.
 Time for a reality check.
 
 Tools such as SonarQube, unit test coverage are just instruments to support your teams to detect _known non-quality_.
 
 === How to find the Quality Graal?
 
-Below I provide a set of established, old techniques to eliminate non-quality.
+Below, I provide a set of established, old techniques to eliminate non-quality.
 Most of them are around for at least twenty years.
 I encourage you to extend your practices with additional procedures based on your measurements and findings.
 
@@ -52,8 +53,8 @@ I encourage you to extend your practices with additional procedures based on you
 
 _Is why you buy a specific car_
 
-* Acceptance criteria and behavior test driven development ATDD – You insure through automatic tests that the feature behaves how your customer requested.
-* Defect driven development – You insure through automatic tests your customer will never encounter this exact error again.
+* Acceptance criteria and behavior test-driven development ATDD – You ensure through automatic tests that the feature behaves how your customer requested.
+* Defect driven development – You ensure through automatic tests your customer will never encounter this exact error again.
 * Fast release and deployment cycle.
 - You give your customer a way to detect bad behavior early and have an opportunity to ask for improvement.
 By fast, we mean daily or perhaps weekly.
@@ -90,10 +91,10 @@ ____
 Developers please read the seminal book _Clean Coder_ from Robert Martin cite:[clean-coder].
 As a professional, you are responsible and accountable for the quality of the software you produce.
 
-I find intolerable to hear software professionals stating they are not in charge of the intrinsic quality of the product they write.
+I find it intolerable to hear software professionals stating they are not in charge of the intrinsic quality of the product they write.
 They cowardly try to push the responsibility to the internal quality assurance department or to the whole organization.
 
-The above ideas are keys for https://tangly-blog.blogspot.com/2018/04/pragmatic-craftsmanship-professional.html[Software Craftsmanship].
+The above ideas are keys to https://tangly-blog.blogspot.com/2018/04/pragmatic-craftsmanship-professional.html[Software Craftsmanship].
 
 === Kaizen - Small Steps bring First Successes
 
@@ -102,8 +103,9 @@ The first steps to improve your product are quite simple are around for at least
 * Eliminate all compiler errors and warnings.
 * Use static checkers.
 * Activate the checkers of the IDE you are working with.
-For example, I am using IntelliJ IDEA and they have extensive checkers.
-* If using https://www.sonarqube.org/[SonarQube], download link:../..//2018/blog-2018-05-01]SonarLint plugin and simply use it -.
+For example, I am using IntelliJ IDEA.
+They have extensive checkers.
+* If using https://www.sonarqube.org/[SonarQube], download link:../../2018/blog-2018-05-01]SonarLint plugin and simply use it.
 This tool is best of breed, do not argument and just use it -.
 * Write tests with JUnit5, Mockito, AssertJ, Cucumber.
 
@@ -120,7 +122,8 @@ Just do it – and stop arguing about the merits and costs -!
 And if you do not agree with one of the warnings, just disable the rule and document the reason for an architecture design record ADR.
 
 Agile and Scrum are all about learning and continuous improvement.
-Please stop talking about quality and just start improving it!
+Please stop talking about quality.
+Just start improving it!
 I do not want to hear any lame excuses why a software developer is not continuously doing the above activities.
 
 _I acknowledge I am emotionally involved and not fully objective.

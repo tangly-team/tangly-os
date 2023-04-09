@@ -75,7 +75,7 @@ If the deletion of comments is disabled, the comment history is an audit trail d
 ====
 Beware that the authors define an external identifier space.
 If your application requires a user account, you can connect the author with the user account.
-The consequence is that you should only disable these accounts, and never delete them.
+The consequence is that you should only disable these accounts and never delete them.
 
 Policy should be defined to handle the fact that collaborators quit the company overtime and are no more active users; but they are still referenced as authors.
 ====
@@ -97,7 +97,7 @@ public class Comment implements HasOid, HasTags {
 
 === Design
 
-Our architecture follows the principles of domain driven design.
+Our architecture follows the principles of domain-driven design.
 Comments are always associated with a specific bounded domain of the overall application.
 For example, we often model the persistence view of a domain through a database schema.
 Each bounded domain has an own independent scheme and could have a persistence store for comments.
@@ -106,7 +106,7 @@ Tags are classification information associated with an instance and should be st
 The set of tags is often transformed to a textual representation and stored in a column.
 The search features of the underlying database can be applied for selecting instances of interest.
 
-Tag types are a medium to define an ontology and defines valid tag instances.
+Tag types are a medium to define an ontology and create valid tag instances.
 A set of tag types shall always be associated with a specific domain of the application.
 
 We provide a Java library link:../../../docs/domains/crm/[CRM] implementing these constructs.
