@@ -1,6 +1,6 @@
 ---
 title: "My New MacBookPro"
-linkTitle: "My New MacBookPro"
+linkTitle: "My New MacBook"
 date: 2023-04-09
 tags: ["organization"]
 ---

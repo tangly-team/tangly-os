@@ -1,8 +1,8 @@
 ---
 title: "Distributed Applications"
 linkTitle: "Distributed Applications"
-date: 2024-09-01
-tags: ["java"]
+date: 2024-09-10
+tags: ["java", "architecture"]
 ---
 
 == Distributed Applications
@@ -11,7 +11,7 @@ tags: ["java"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2024-09-01-head.png[width=420,height=360,role=left]
+image::2024-09-01-head.jpg[width=420,height=360,role=left]
 
 
 === CAP Theorem

@@ -1,6 +1,6 @@
 ---
 title: "Gradle Good Practices"
-linkTitle: ""
+linkTitle: "Gradle Practices"
 date: 2023-12-01
 tags: ["agile", "java", "series-students"]
 ---

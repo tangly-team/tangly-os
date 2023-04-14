@@ -1,7 +1,7 @@
 ---
 title: "Domain Entities"
 linkTitle: "Domain Entities"
-date: 2024-10-01
+date: 2024-11-01
 tags: ["java"]
 ---
 
@@ -15,13 +15,14 @@ image::2024-11-01-head.jpg[width=420,height=360,role=left]
 
 Entity concept for domain driven design
 
+=== Domain Abstractions
+
 ==== Naming Domain Entities
 HasOid HasId HasName
 
 ==== Temporal Information
 
 HasTimeInterval
-
 
 ==== Ontology and Human Readable Information
 

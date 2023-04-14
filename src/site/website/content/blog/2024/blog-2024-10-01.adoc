@@ -2,7 +2,7 @@
 title: "Vaadin 24"
 linkTitle: "Vaadin 24"
 date: 2024-10-01
-tags: ["java"]
+tags: ["java", "vaadin"]
 ---
 
 == Vaadin 24 User Interfaces

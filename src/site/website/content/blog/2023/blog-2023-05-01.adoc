@@ -26,7 +26,7 @@ That is, functions can be created at runtime, passed around, returned, and in ge
 * Data is immutable.
 * Functions are pure; that is, they have no side effects.
 
-For many tasks, functional programs are easier to understand, less error prone, and much easier to reuse.
+For many tasks, functional programs are easier to understand, less error-prone, and much easier to reuse.
 
 === Clojure
 
@@ -37,11 +37,11 @@ Instead of altering existing values, altered copies are created and the original
 Since the unchanged parts of the structure cannot be modified, they can often be shared between the old and new copies, which saves memory.
 ____
 
-Clojure cite:[programming-clojure] is a very good approach to learn functional programming idioms.
+Clojure cite:[programming-clojure] is a splendid approach to learn functional programming idioms.
 The language is well-documented.
 The integration in the Java ecosystem and virtual machine is well-done.
 
-The IntelliJ plugin Cursive hugely simplify writing code and testing it.
+The IntelliJ plugin _Cursive_ hugely simplifies writing code and testing it.
 IntelliJ is probably the most popular IDE for Java developers.
 People are familiar with its functions and do not need to learn a new tool.
 
@@ -51,7 +51,16 @@ symbols list '(), vector [], set #{}, map {}
 
 === Functional Thinking
 
+Functions as First Class Citizen Immutable Data Structures Higher-Level Functions Multi-Methods and Dynamic Polymorphism Tail-Recursion Optimisation
+
 === Synchronization Concepts
+
+Refs and Transactions::
+Atoms::
+https://clojure.org/reference/atoms[Atoms] provide a way to manage shared, synchronous, independent state.
+They are a reference type like refs and vars.
+Atoms are an efficient way to represent some state that will never need to be coordinated with any other, and for which you wish to make synchronous changes
+Agents::
 
 === Embrace Modern Java
 
@@ -75,7 +84,7 @@ Clojure is an ideal language to learn and better understand functional programmi
 
 You will probably not use it in a commercial product development.
 The principles you learnt shall be applicable to your technology stack.
-Your code will certainly be more simplier, more legible and maintainable.
+Your code will certainly be simpler, more legible and maintainable.
 
 === References
 

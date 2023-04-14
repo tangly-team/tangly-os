@@ -1,8 +1,8 @@
 ---
 title: "Self-Hosted Development Servers"
 linkTitle: "Self-Hosted Git"
-date: 2024-10-01
-tags: ["agile", "organization"]
+date: 2024-12-01
+tags: ["agile", "git",  "organization"]
 ---
 
 == Self-Hosted Agile Software Development Servers
@@ -11,51 +11,88 @@ tags: ["agile", "organization"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :ref-forgejo: https://forgejo.org/[Forgejo]
+:ref-arc42: https://arc42.org/[arc42]
+:ref-plantuml: https://plantuml.com/[PlantUML]
+:ref-c4: https://c4model.com/[C4 Model]
+:ref-adr: https://adr.github.io/[Architecture Design Records ADR]
 
 image::2024-12-01-head.jpg[width=420,height=360,role=left]
-I work with European and Swiss companies.
-Regularly, some of them are slightly paranoid and deny access to cloud services.
 
-You cannot use well-established software development platforms such as {ref-github}, {ref-gitlab}, or {ref-bitbucket}.
+I work most of the time with European and Swiss companies.
+Regularly, some of them are slightly paranoid and deny access to cloud services for their collaborators.
+
+You are forbidden to use well-established software development platforms such as {ref-github}, {ref-gitlab}, or {ref-bitbucket}.
+
+These solutions are best of breed in our industry.
 The price per developer and year is around 250 Euro.
-You get the whole set of functions and goodies such as single sign-or and auditing of all activities.
+You get the whole set of functions and goodies such as single sign-on and auditing of all activities.
 
-The same companies are not able to provide financial and technical resources to build a similar onsite offer.
+The same companies not willing to use cloud solutions are often not able to provide financial and technical resources to build a similar onsite offer.
 
 The development teams have no access to modern source code management or build pipelines.
 
 How can you efficiently work in such a retrograde environment?
 
 We present pragmatic recipes to alleviate the damage and help your team to work productively in such environments.
+You still have to acknowledge the necessity of a dedicated and knowledge administrator.
+He will administer and update the deployed solutions and support the teams.
 
 You need a virtual machine or a physical workstation with reasonable memory, processor, and persistent storage resources.
 You must have local administration rights in this environment.
 Ideally, you should have a reasonable domain name to access the machine or at least a fix internal IP address.
-footnote:[It is still possible to work with an IP address.
+footnote:[It is still possible to work with a plain IP address.
 You can try to add a record on the localhost file on each developer workstation.
 If it is not possible, your team will have to memorize the IP address.].
 
 The key functions we shall provide are:
 
-- source code management
-- continuous integration, delivery, and deployment pipelines
-- artifact management
-- website with searchable and versioned documentation
-- basic project management and communication tools for team tasks and issues
+Source Code Management::
+The source code management shall be based on {ref-git}.
+The solution shall provide support for pull requests to support distributed teams and home office.
+Continuous Integration, Delivery, and Deployment Pipelines::
+The application shall be built in a clean environment cite:[accelerate,continuous-delivery-pipelines].
+Artifact Management::
+Generated artifacts shall be published in a https://en.wikipedia.org/wiki/Software_repository[repository].
+https://semver.org/[Semantic versioning] shall be used for traceability.
+Solutions depending on the artifacts shall fetch them from the repository.
+The reproducibility of the deployed applications shall be guaranteed.
+Software Documentation::
+Agile development approaches promote incremental and iterative working cite:[building-evolutionary-architectures-2nd,documenting-software-architectures].
+The documentation solution shall support these concepts.
+The project documentation shall be updated after each completed story.
+You should be able to have access to multiple older released documentation sets with just one command.
+The documents shall be searchable.
+Project Management Services::
+Collocated teams can work with analog boards cite:[agile-project-management-with-kanban,agile-project-management].
+Geographically distributed teams need an electronic board as an information radiator for all project members.
+
+[TIP]
+====
+If your organization has partial support for the above function, try to configure a hybrid solution.
+
+You have, for example, an organization wide Git server but no continuous integration pipelines.
+Use multiple remotes in your project to easily push to your local and to the organization servers.
+
+Better would be to set up a mirror configuration.
+This is sadly seldom supported or allowed in corporate setups.
+====
 
 === Source Code Management
 
-{ref-git}
-{ref-forgejo} is a self-hosted lightweight software forge
+image::2024-12-01-forgejo.png[width=420,height=360,role=left]
+
+{ref-forgejo} is a self-hosted lightweight software forge build on top of {ref-git}.
+It provides essential functions to work efficiently as a team with a reasonable footprint.
 footnote:[You could also use https://gitea.com/[Gitea].].
+
 Easy to install and low maintenance, it just does the job.
 
 If you like any of the following features, Forgejo is literally meant for you:
 
 Lightweight::
-Forgejo can easily be hosted on nearly every machine.
+Forgejo can easily be hosted on nearly every modern machine.
 Project management::
-Besides Git hosting, Forgejo offers issues, pull requests, wikis, kanban boards and much more to coordinate with your team.
+Besides Git hosting, Forgejo offers issue tracking, pull requests, wikis, kanban boards and much more to coordinate with your team.
 Publishing::
 Have something to share?
 Use releases to host your software for download, or use the package registry to publish it for docker, npm and many other package managers.
@@ -65,9 +102,10 @@ Change some settings?
 There are many config switches to make Forgejo work exactly like you want.
 Powerful::
 Organizations and team permissions, CI integration, Code Search, LDAP, OAuth and much more.
-If you have advanced needs, Forgejo has you covered.
+If you have advanced needs, Forgejo has you probably covered.
 Privacy::
-From an update checker to default settings. Forgejo is built to be privacy first for you and your crew.
+From an update checker to default settings.
+Forgejo is built to be privacy first for you and your crew.
 
 === Continuous Integration, Delivery, and Deployment
 
@@ -76,36 +114,87 @@ Either you write your own approach using build script and docker images, or you 
 
 {ref-forgejo} provides access to an experimental build server.
 You can also use other open source solutions such as https://woodpecker-ci.org/[Woodpecker].
-Commercial products such as https://www.jenkins.io/[Jenkins], https://www.jetbrains.com/teamcity/[TeamCity], or
+
+Open source or commercial products such as https://www.jenkins.io/[Jenkins], https://www.jetbrains.com/teamcity/[TeamCity], or
 https://www.atlassian.com/software/bamboo/[Bamboo] are naturally available for decades.
 
-=== Artifact management
+Do not underestimate the effort to have the build environment always working.
+You need a dedicated expert who is responsible for the smooth operation of the build environment.
+
+=== Artifact Management
 
 Artifact server is used to store the artifacts created during the delivery activities in the pipeline.
 
 The {ref-forgejo} application provides support for a set of artifact managers.
 There is no need to install an additional server to service package requests.
 
-=== Documentation
+Alternative open source and commercial repository managers are available.
+We have experience with https://archiva.apache.org/[Apache Archiva] and https://www.sonatype.com/products/repository-oss-download[Sonatype Nexus Repository].
+These products are too powerful and complex for smaller organizations.
 
-Hugo and Docsy C4, plantuml arc42
+The Java community uses https://maven.apache.org/[Maven] and https://gradle.org/[Gradle] to handle artifact dependencies.
 
-[INFO]
+The Python community has https://pip.pypa.io/en/stable/[pip3] tool.
+The C and C++ community often use https://conan.io/[Conan] and https://vcpkg.io/en/[vcpckg].
+
+=== Software Documentation
+
+The current approach to write technical documentation is to use static website generators.
+{ref-github}, {ref-gitlab}, and {ref-bitbucket} all offer such as solution through their pages concept.
+
+image::2024-12-01-hugo.jpg[width=420,height=360,role=left]
+
+We made a positive experience <<creating-website>> <<improving-website>> <<support-comments>> with:
+
+- The toolchain {ref-hugo} as an efficient static website generator.
+Fell free to use another tool.
+- The technical documentation theme {ref-docsy} as site theme is working well for us.
+The theme is used in multiple well-known open source projects.
+Some examples can be found under https://www.docsy.dev/docs/examples/[Docsy Site Examples].
+- All documents are written with {ref-asciidoc}.
+AsciiDoc is a plain text markup language for writing technical content.
+It is packed with semantic elements and equipped with features to modularize and reuse content.
+AsciiDoc content can be composed using a text editor, managed in a version control system, and published to multiple output formats.
+- Software architecture is documented using {ref-arc42} template.
+The authors provide {ref-asciidoc} version of the template.
+This approach promotes the use of {ref-c4} model and {ref-adr}.
+Most of the diagrams are created with {ref-plantuml}.
+
+[CAUTION]
 ====
 Beware of the drawbacks of wiki approaches.
 Wiki based solutions are very easy to deploy.
 
-Wiki often the following problems:
+Wikis often have the following problems:
 
 - It is cumbersome or difficult to version the content of a wiki site.
 You want to deploy the documentation associated with a specific release of your application.
 You often need multiple wiki versions at the same time to support the delivered version, the version under testing and the version under active development.
 - Support for diagramming in the wiki pages is often limited or only available through commercial plugins.
+You should never to generate or copy manually diagrams.
 {ref-asciidoctor} support more than thirty https://docs.asciidoctor.org/diagram-extension/latest/[diagram types] out of the box.
-Source code highlighting for huge range of programming languages is also available in {ref-asciidoc}
+Source code highlighting for huge range of programming languages is also available in {ref-asciidoc}.
 - You must use a wiki supporting storing all contents in a git repository.
 You need the tracking and versioning features of a source code management solution.
 ====
+
+The source code documentation approach shall be tailored to the used technology stack.
+Try to follow the good practices of your technology stack and the conventions of the organization you are working for.
+
+[quote,Guido van Rossum]
+____
+Code is more often read than written.
+____
+
+Java code is always documented using JavaDoc toolchain
+footonte:[Take time to study the standard Java library documentation. The Java API is recognized as one example with very high-quality.].
+Code snippets introduced with https://openjdk.org/jeps/413[JEP 413] greatly improve the quality of source code examples.
+
+The Python community uses DocStrings.
+See https://peps.python.org/pep-0257/[PEP 257] for detailed information.
+Modern python developers also make use of type hitting for improved legibility.
+
+The C and C++ developers mainly write API documentation with https://www.doxygen.nl/[Doxygen].
 
 === Project Management Services
 
@@ -113,21 +202,51 @@ You need basic functions to work using agile approaches.
 If a team is working in the same location, use an analog board as a sprint board.
 
 The issues can be tracked with a tool like {ref-forgejo} if you really need the additional functionality.
-The solution provides a minimal kanban board for geographically distributed teams.
+
+The solution also provides a minimal kanban board for geographically distributed teams.
+
+[WARNING]
+====
+Provide adequate tools for synchronous and asynchronous communication between team members.
+Quality video cameras and headsets are a must.
+
+A simple test is to check if all video conference attendees have always their video feed active
+footnote:[Look how often the team members held unplanned video communications.
+It is an indicator of how well the team interacts in a remote synchronous working configuration.
+The intensity of chats is an indicator of how the members interact in an asynchronous team setup.].
+
+Channels and rooms in the chat application
+footnote:[Slack is probably the best chat application I know.
+The second best would be Discord.
+Microsoft Teams is a reasonable solution if all team members work in the same company.
+Otherwise, the solution is quite a pain because you need to manually logout and login each time you want access to a channel of another organization.]
+shall be available to all internal and external team members.
+====
 
 === Tips and Tricks
 
-The bare minimum of services you need is a git repository, a possibility to build your software in a clean environment, and a site to publish your documentation.
+The bare minimum of services you need is a central git repository, a possibility to build your software in a clean environment, and a site to publish your documentation.
 
 For each service you deploy, you must implement a backup strategy.
-The easiest approach is to regularly archive the project data and save on a company network drive.
+The easiest approach is to regularly archive the project data and save it on a company network drive.
 Often the amount of data for an initiative is less than one GB.
 Bigger projects are below 10 GB.
-Remember your artifacts are text files, not huge office documents or binary files.
+Remember your artifacts are plain text files, not huge office documents or binary files.
+
+You shall advertise your approach in your organization.
+Better solutions shall be adopted to improve the efficiency of digital product development and optimize costs.
 
 [bibliography]
 === Links
 
+- [[[creating-website, 1]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and Asciidoc].
+Marcel Baumann. 2020.
+- [[[improving-website, 2]]] link:../../2021/improving-a-static-web-site-build-with-hugo-and-docsy/[Improving a Static Website build with Hugo and Docsy].
+Marcel Baumann. 2021.
+- [[[support-comments, 3]]] link:../../2020/support-comments-for-static-hugo-website/[Support Comments for Static Hugo Website].
+Marcel Baumann. 2020.
+
 === References
 
 bibliography::[]
+

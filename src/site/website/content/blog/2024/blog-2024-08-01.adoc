@@ -1,7 +1,7 @@
 ---
 title: "Architecture Questions"
 linkTitle: "Architecture Questions"
-date: 2024-09-01
+date: 2024-08-01
 tags: ["java"]
 ---
 

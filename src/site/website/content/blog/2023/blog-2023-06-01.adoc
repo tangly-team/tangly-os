@@ -1,7 +1,7 @@
 ---
 title: "Onboarding Software Developers in Your agile Team"
 linkTitle: "Onboarding Developers"
-date: 2023-06-10
+date: 2023-06-01
 tags: ["java", "agile", "series-students"]
 ---
 
