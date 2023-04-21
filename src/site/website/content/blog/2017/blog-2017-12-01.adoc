@@ -69,10 +69,10 @@ As a Java developer, it is time to use state of the industry tools and improve y
 . Test environments with Docker
 .. Never say again, _it is working on my machine_.
 . Modern IDE such as IntelliJ IDEA
-.. Very good Gradle support.
-.. Very good JUnit 5 support.
+.. Splendid Gradle support.
+.. Marvelous JUnit 5 support.
 .. Alt-Enter anywhere brings up context-sensitive options.
- Run a test, create a test, create subclass, convert to closure, generate missing test methods, remove explicit type, split into declaration and assignment, introduce local variable.
+ Run a test, create a test, create subclass, convert to closure, generate missing test methods, remove an explicit type, split into declaration and assignment, introduce local variable.
  The suggestions are limitless.
 .. Great Java 8 support, suggesting lambda notation where appropriate!
 .. Even displaying anonymous inner class usage (collapsed) as if it was written using a lambda expression.
@@ -98,7 +98,7 @@ Here are some suggestions to hone your craftsmanship
 * Learn new shortcuts and plugins for your favorite IDE.
 * Improve the agile, lean, Scrum, LeSS approaches in your department.
 * Refactor daily code and practice clean-code.
-* Become a master of Git.
+* Become an expert of Git.
 * Increase self-awareness and work on your soft skills, teamwork shall improve.
 
 I wish you success, fulfillment, happiness and fun.

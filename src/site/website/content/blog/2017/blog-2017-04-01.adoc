@@ -31,9 +31,9 @@ Keep his questions and just do the following changes:
 Remember _Defect Driven Development_ to guaranty your customer.
 He will never again see the same issue.
 * Check that your specification also has acceptance criteria which can be automated.
-* For Microsoft developers, are you forced to use TFS instead of tools of your choice and why?
+* For Microsoft developers, are you forced to use TFS instead of tools of your choice, and why?
 * Are you testers and quality experts integrated into your Scrum team and sitting in the same room?
-Do you think about tester and quality as roles and not people?
+Do you think about testers and quality experts of roles and not people?
 * Do new candidates code and perform a refactoring to achieve clean code during their interview?
 
 http://www.codypowell.com/taods/2009/12/the-codypo-test-aka-8-questions-to-identify-a-lame-programming-job.html[8 Questions to identify a lame programming job].
@@ -42,7 +42,7 @@ His final remark is worth remembering.
 
 No matter how great the potential projects and teammates might be, I don't think you can do truly meaningful work in an environment where you, the developer, aren't empowered to succeed.
 
-If a company doesn't get that, then they don't get the software.
+If a company does not get that, then they do not get the software.
 
 === My personal list
 
@@ -54,7 +54,7 @@ My personal list is:
 * Has your team as sustainable development rhythm?
 * Are you using good software practice daily, such as TDD, ATDD, refactoring, check-in in Git master, CI/CD, deliver each day?
 * Can you contribute to the open source projects you are using during work time?
-* If you are developing in Java, are you using IntelliJ IDEA as IDE?
+* If you are developing in Java, are you using IntelliJ IDEA as your IDE?
 
 Take ten minutes to decide if your current job is good enough.
 If not, it is time to regain ownership of your life.

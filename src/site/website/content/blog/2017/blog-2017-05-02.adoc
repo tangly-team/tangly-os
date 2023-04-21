@@ -73,7 +73,7 @@ Each time you commit your changes, you gain the ability to reverse back to exact
 Each time you made a modification and tested it, just commit it.
 The cost of a commit is marginal.
 When working with Git, TDD, and ATDD, it is normal to commit every few minutes.
-By few minutes we mean 5 or 10 minutes.
+By a few minutes, we mean 5 or 10 minutes.
 
 Observe yourself.
 If you commit at the end of the day, you are using your DVCS as a backup medium.
@@ -107,7 +107,7 @@ See How to link:../../2016/git-branches-for-the-impatient/[Git Branches for the 
 
 === Discarding Changes
 
-You find you the changes you made locally were not a good decision.
+You find the changes you made locally were not a good decision.
 No problem, with
 
 [source,shell]
@@ -144,4 +144,4 @@ Or on Linux and macOS:
 git config --global core.autocrlf input
 ----
 
-When using an IDE consider the https://editorconfig.org[Editor Configuration] approach for the end of line, indentation and tabs versus spaces.
+When using an IDE consider the https://editorconfig.org[Editor Configuration] approach for the end of line, indentation, and tabs versus spaces.

@@ -88,7 +88,7 @@ The transition is painful, see the seminal articles of Steve Denning:
 The principles are
 
 * Products are value-driven and quality oriented
-* Teams are focused to master their work and tools – Craftsmanship, {ref-xp} -
+* Teams are focused mastering their work and tools – Craftsmanship, {ref-xp} -
 * For huge development departments consider using the {ref-less} approach.
 * Teams work best if you can answer with a deafening yes to these five questions.
 ** Psychological safety: Can we take risks on this team without feeling insecure or embarrassed?

@@ -5,7 +5,7 @@ date: 2016-03-16
 tags: ["organization"]
 ---
 
-== Why I use a MacBookPro and OS X
+== Why I use a MacBookPro Notebook and OS X
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
@@ -41,7 +41,7 @@ These computers were used daily the first five years.
 
 === Daily Development
 
-The tools I really enjoy and use on a daily basis for software development – mainly Java - are
+The tools I really enjoy and use on a daily basis for software development as I mainly developed in Java - are:
 
 * https://www.jetbrains.com/idea/[IntelliJ IDEA] IDE,
 * Atlassian Cloud applications - BitBucket, HipChat, CI pipeline -,

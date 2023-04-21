@@ -71,7 +71,7 @@ The Scrum master is responsible for coaching the team and helps solve overall im
 
 === Track Impediments
 
-The identification step is the easy one, do not forget to track impediments and their resolution.
+The identification step is easy, do not forget to track impediments and their resolution.
 You have a serious problem
 
 * If the impediment backlog lives in the mysterious black book of the Scrum master.
@@ -82,7 +82,7 @@ You have a serious problem
 * If you do not solve at least one impediment each sprint.
 It is a mandatory part in the {ref-scrumguide} 2018 version.
 
-As a Scrum coach, Scrum master or Scrum team member you should reflect upon the above statements at least monthly.
+As a Scrum coach, Scrum master or Scrum team member, you should reflect upon the above statements at least monthly.
 Otherwise, you are just pretending.
 Remember
 

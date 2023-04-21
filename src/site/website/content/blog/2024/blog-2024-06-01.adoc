@@ -23,8 +23,7 @@ _The Daily Scrum is a 15-minute event for the Developers of the Scrum Team._
 _To reduce complexity, it is held at the same time and place every working day of the Sprint._
 _If the Product Owner or Scrum Master are actively working on items in the Sprint Backlog, they participate as Developers._
 
-_The Developers can select *whatever structure and techniques they want*, as long as their Daily Scrum focuses on progress toward the Sprint Goal and produces an actionable plan
-for the next day of work._
+_The Developers can select *whatever structure and techniques they want*, as long as their Daily Scrum focuses on progress toward the Sprint Goal and produces an actionable plan for the next day of work._
 _This creates focus and improves self-management._
 
 _Daily Scrums improve communications, identify impediments, promote quick decision-making, and consequently eliminate the need for other meetings._
@@ -49,7 +48,7 @@ _*They often meet throughout the day for more detailed discussions about adaptin
 === Lessons Learnt
 
 A great Scrum master shall make his teams aware of the true goal of a daily Scrum meeting
-cite:[hings-every-scrum-practitioner-should-know, scrum-pocket-guide-3rd,great-scrum-master, zombie-scrum-survival-guide,mastering-professional-scrum].
+cite:[hings-every-scrum-practitioner-should-know,scrum-pocket-guide-3rd,great-scrum-master,zombie-scrum-survival-guide,mastering-professional-scrum].
 
 Avoid doing Scrum, ask yourself how to be agile and continuously improve.
 
@@ -61,12 +60,18 @@ But at least you have learnt the definition and read historical and important te
 [bibliography]
 === Links
 
-- [[[,]]] link:../../2022/how-to-detect-fake-scrum/[How to Detect Fake Scrum?]
-- [[[,]]] link:../../2022/doing-agile/[Doing Agile]
-- [[[,]]] link:../../2021/scrum-developer-formation/[Scrum Developer Formation]
-- [[[,]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit]
-- [[[,]]] link:../../2018/pragmatic-craftsmanship-professional-software-developer/[Pragmatic Craftsmanship Professional Software Developer]
-- [[[,]]] link:../../2016/what-you-do-not-need-to-do-in-scrum/[What You Do Not Need To Do In Scrum]
+- [[[detect-fake-scrum,1]]] link:../../2022/how-to-detect-fake-scrum/[How to Detect Fake Scrum?].
+Marcel Baumann. 2022.
+- [[[doing-agile,2]]] link:../../2022/doing-agile/[Doing Agile].
+Marcel Baumann. 2022.
+- [[[scrum-developer-formation,3]]] link:../../2021/scrum-developer-formation/[Scrum Developer Formation].
+Marcel Baumann. 2021.
+- [[[detecting-agile-bullshit,4]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
+Marcel Baumann. 2019.
+- [[[pragmatic-craftsmanship,5]]] link:../../2018/pragmatic-craftsmanship-professional-software-developer/[Pragmatic Craftsmanship Professional Software Developer].
+Marcel Baumann. 2019.
+- [[[do-not-need-to-do-in-scrum,6]]] link:../../2016/what-you-do-not-need-to-do-in-scrum/[What You Do Not Need To Do In Scrum].
+Marcel Baumann. 2016.
 
 === References
 

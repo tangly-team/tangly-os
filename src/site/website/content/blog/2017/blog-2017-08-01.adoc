@@ -21,7 +21,7 @@ What an experience it was.
 The text with the regular font is the job description.
 I wrote down my comments in italics.
 
-* Manage team of software engineers: provide the technical direction, schedule and delegate work, evaluate performance.
+* Manage team of software engineers: provide technical direction, schedule and delegate work, evaluate performance.
 Advise on good practices and developing practice, review code.
 ** __A Scrum master empowers a development team.
 The team schedules the work during each Sprint.
@@ -35,7 +35,7 @@ Provide feedback when necessary, translating into the technical documentation wh
 Provide feasibility assessment and estimate level of effort to implement.
 ** __The product owner and the team write and refine stories.
 Avoid requirements and move to stories and epics.
-The technical documentation and feasibility assessments shall be done by the team.
+The team shall write technical documentation and feasibility assessments.
 Only the team has the right to estimate the effort needed to implement a story.__
 ** __The Scrum master is neither a business analyst defining requirements, nor a product manager creating schedules and time estimates.__
 * Help develop, communicate and enforce workflows.

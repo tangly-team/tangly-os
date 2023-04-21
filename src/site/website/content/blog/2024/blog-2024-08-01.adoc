@@ -13,6 +13,7 @@ tags: ["java"]
 
 image::2024-08-01-head.jpg[width=420,height=360,role=left]
 
+Agile architecture means how enterprise architects, system architects and software architects apply architectural practice in agile software development.
 An agile architect should handle a regular set of questions for each application he is working on.
 
 Each digital product encounters similar requirements and shall provide good solutions for the most acute restrictions.
@@ -20,38 +21,122 @@ Each digital product encounters similar requirements and shall provide good solu
 The goal is to define an evolvable minimal architecture.
 New functional and non-functional requirements shall be realized with minimal changes in the design.
 
-Do not try to solve all the problems I can think about.
+Do not try to solve all the problems you can think about.
 Solve stated requested features with the simplest approach you can think about.
 Remember, simple solutions can be very elegant and extensible.
 
+[TIP]
+====
+The system you are building as probably hundreds of siblings in the world.
+Study the available solutions to understand the tradeoffs of these systems.
+
+Open source permeates the software industry.
+You shall be able to read public source code and build the solution locally.
+
+Identify weaknesses and improvement area.
+Now you have the first draft of your architecture.
+====
+
 === Internationalization, localization and accessibility Themes
 
-- How do we implement accessibility laws and requirements?
-- How should we translate user interface data?
-- i18n, l16n, a10y regulations and good practices
+What user interface should we define?::
+How do we implement accessibility laws and requirements?::
+How should we translate user interface data?::
+https://en.wikipedia.org/wiki/Internationalization_and_localization[internationalization] _i18n_, localization _l16n_, https://en.wikipedia.org/wiki/Accessibility[accessibility] _a11y_ regulations and good practices.
 
 === Scalability Themes
 
-- How do the system components communicate with each other?
-- How can we scale the solution?
-- Should we prepare for sharding, geolocation, vertical scaling?
+How do the system components communicate with each other?::
+Asynchronous communication, idempotent commands, topics, event based.
+Avoid multi-threading headaches as long as possible.
+How can we scale the solution?::
+Select a framework providing horizontal scaling.
+The preferred abstraction model is the https://en.wikipedia.org/wiki/Actor_model[Actor] model.
+A web server library such as https://www.eclipse.org/jetty/[Jetty] supports unlimited parallel user sessions without writing one line of code.
+A robotic framework such as https://www.ros.org/[ROS-2] delivers concurrency on node level for free.
+Should we prepare for sharding, geolocation, vertical scaling?::
+Try to design business logic and data persistence along with natural slicing rules.
+It should be easy to deploy an instance of your solution per country.
+For Europe, you would get a scaling factor of thirty for free.
+How do we ensure the requested response times?::
+Fitness functions and monitoring are the current good practices.
+
+[INFO]
+====
+Consider architecting your digital solution using domain driven design approach cite:[domain-driven-design,implementing-domain-driven-design,domain-driven-design-distilled].
+The method heavily emphazises the partioning along bounded domains to create independent components.
+
+The communication between domains shall be asynchronous and event based cite:[reactive-messaging-patterns-with-actor-model,exploring-cqrs].
+
+The solution naturally scales horizontally.
+If necessary, the final application can be deployed as a set of distributed services
+footnote:[The approach is promoted in multiple technical stacks such as Java Spring framework https://docs.spring.io/spring-modulith/docs/0.4.0/reference/html/[Modulith].
+====
 
 === Security Themes
 
-- How do we insure the requested response times?
-- How is security implemented?
-- How do we authenticate and authorize?
+How should we log activities and why?::
+_To be written_
+How should we audit activities and why?::
+_To be written_
+How is security implemented?::
+_To be written_
+How do we authenticate and authorize?::
+_To be written_
+JWT is the regular approach for webservers.
+_To be written_
 
 === Persistent Data Themes
 
-- How should we persist data?
-- How do we journal operations performed in the program?
-- How is reporting provided?
-- How do we import data into the system?
-- How do we migrate data to a new release?
+How should we persist data?::
+_To be written_
+How do we journal operations performed in the program?::
+_To be written_
+How is reporting provided?::
+_To be written_
+How do we import data into the system?::
+_To be written_
 
-=== Release Themes
+=== Release and Migration Themes
 
-- How do we release a version of the product?
-- Do we support backward compatibility?
-How do we implement backward compatibility?
+How do we release a version of the product?::
+_To be written_
+Do we support backward compatibility?::
+_To be written_
+How do we implement backward compatibility?::
+_To be written_
+How do we migrate data to a new release?::
+_To be written_
+How do we archive data?::
+_To be written_
+
+=== Tips
+
+You are a talented software architect.
+You are in charge to define the blueprint of your digital solution.
+The {ref-less} movement has described how agile architecture could be performed <<agile-design-modeling>> <<agile-architecture-principles>>.
+
+You shall create a similar checklist to the above one.
+Document your preferred approaches for each question.
+Do not forget to reference literature, good practices <<developer-assumptions>> and design patterns.
+
+You will be able to solve almost all the design challenges you will be confronted with.
+A good approach is to start with a modular monolith <<modular-monoliths>>.
+
+[bibliography]
+=== Links
+
+- [[[modular-monoliths, 1]]] link:../../2022/modular-monoliths-are-the-new-graal/[Modular Monoliths are the new Graal]
+Marcel Baumann. 2022.
+- [[[developer-assumptions, 2]]] link:../../2023/software-developer-assumptions/[Software Developer Assumptions].
+Marcel Baumann. 2023.
+- [[[behavior-driven-design, 3]]] link:../../2022/behavior-driven-design/[Behavior Driven Design].
+Marcel Baumann. 2022.
+- [[[agile-design-modeling,  q4]]] link:../../2021/agile-design-modeling/[Agile Design Modeling].
+Marcel Baumann. 2021.
+- [[[agile-architecture-principles, 5]]] link:../../2019/agile-architecture-principles/[Agile Architecture Principles]
+Marcel Baumann. 2019.
+
+=== References
+
+bibliography::[]

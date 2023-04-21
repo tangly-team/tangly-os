@@ -11,7 +11,8 @@ tags: ["agile"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2017-10-01-head.gif[width=420, height=360, role=left]
+image::2017-10-01-head.gif[width=420,height=360,role=left]
+
 The difficulty with contracts is that it is about trust.
 Here lays the roots for success or disaster.
 
@@ -28,15 +29,15 @@ By contractual I mean no time and material approach.
 We shall
 
 * Define and rapidly realize the minimum viable product _MVP_.
- This product defines success and builds trust.
- Use this MVP as anchor during contract negotiation.
+This product defines success and builds trust.
+Use this MVP as anchor during contract negotiation.
 * Prioritize _Money, Time, and Scope_.
- The most important item - and it can only be one - is the basis for the agile contract,
+The most important item - and it can only be one - is the basis for the agile contract,
 * Service is the essence of software application development.
- So your agile contract shall be a _service contract_.
- Select a rolling contract approach to deeply involve both sides.
+So your agile contract shall be a _service contract_.
+Select a rolling contract approach to deeply involve both sides.
 * _Fail early and learn_.
- The disputes between contractors and customers shall stay reasonable due to the smaller amounts in play.
+The disputes between contractors and customers shall stay reasonable due to the smaller amounts in play.
 
 === Contract
 
@@ -45,22 +46,24 @@ The MVP is the anchor of trust.
 Use rolling contracts to extend the product.
 
 Priority on Money::
- Frame cost as investment and discuss value with the customer, not just money. +
- _Fix the budget - money dimension - and have some tentative milestones.
- We must invest to prioritize the stories and talk about your MVP.
- Often nice to have functions are never realized._
+Frame cost as investment and discuss value with the customer, not just money. +
+_Fix the budget (money dimension) and have some tentative milestones.
+We must invest to prioritize the stories and talk about your MVP.
+Often nice to have functions are never realized._
 Priority on Time::
- Sometimes, it is not about the cost.
- Instead, there is a deadline, like the end of the fiscal year. +
- _Fix the product milestones - time dimension -.
- We still must define a budget and prioritize the stories.
- The must stories shall be implemented before deadline and budget can be extended to respect the deadline._
+Sometimes, it is not about the cost.
+Instead, there is a deadline, like the end of the fiscal year. +
+_Fix the product milestones (time dimension).
+We still must define a budget and prioritize the stories.
+The mandatory stories shall be implemented before the deadline.
+The budget can be extended to respect the deadline._
 Priority on Scope::
- And in other cases, the scope actually is quite defined, and both money and time are flexible.
- In these cases, it makes sense to fix the scope variable. +
- _Fix the functionality - scope dimension -. Budget overrun and delays are possible.
- Defining the scope in advance is less agile.
- You assume you already know everything about the product to build._
+And in other cases, the scope actually is quite defined, and both money and time are flexible.
+In these cases, it makes sense to fix the scope variable. +
+_Fix the functionality (scope dimension).
+Budget overrun and delays are possible.
+Defining the scope in advance is less agile.
+You assume you already know everything about the product to build._
 
 The contract defines a service.
 The delivered product is the output of the service contract but not the sole item of the contractual binding.
@@ -70,10 +73,12 @@ The delivered product is the output of the service contract but not the sole ite
 Signing a contract is the easy part.
 Now you must track progress, manage changes, and reach the agreed goals in a timely and economical way.
 
-* Commit in trust, training, and decision-making. Train your people and customer's representatives,
-* Deliver incrementally every few weeks to prove progress and cement trust,
-* The more trust you build, the less escalation you will have during the product,
-* Have rolling planning, budgeting, and tracking. You shall gain visibility of progress, transparent costs, and tentative end for fulfilling the contract,
+* Commit to trust, training, and decision-making.
+Train your people and customer's representatives.
+* Deliver incrementally every few weeks to prove progress and cement trust.
+* The more trust you build, the less escalation you will have during the product.
+* Have rolling planning, budgeting, and tracking.
+You shall gain visibility of progress, transparent costs, and a tentative end to fulfilling the contract.
 * How do you track and document changes?
 * How do you inform your stakeholders about contract changes?
 
@@ -84,7 +89,7 @@ Try to avoid a full-fledged change management process and systematic escalations
 
 The {ref-manifesto} states
 
-[quote, Agile Manifesto, 2001]
+[quote,Agile Manifesto,2001]
 ____
 Individuals and interactions over processes and tools
 
@@ -95,30 +100,34 @@ Customer collaboration over contract negotiation
 Responding to change over following a plan
 ____
 
-Here the approach to define and finalize a fixed price https://en.wikipedia.org/wiki/Agile_contracts[agile contract].
+Here is the approach is to define and finalize a fixed price https://en.wikipedia.org/wiki/Agile_contracts[agile contract].
 Please remember the manifesto, it is all about collaboration and responding to change.
 
 * Create the product vision and initial backlog together.
- Write good epics and identify main topics - topics identify the minimum outcomes to maximize solution value -,
+Write good epics and identify main topics - topics identify the minimum outcomes to maximize solution value -,
 ** Commit to the vision and defined MVP,
 ** Define a budget for the product,
 ** Define tentative deadlines,
-** Refine some epics and write the stories. Keep them concise and clear,
-* Estimate the product backlog together with the customer,
-** It is all about cooperation and adaptability,
-** Use relative estimates to classify stories, use story points,
-** Talk about business value and implementation risks,
-* Finalize the contract,
- What happens if costs overruns happen -.
- We suggest sharing the costs and define the percentage each party shall pay, if the supplier pays 0% it is a time and material contract.
- If the supplier pays 100% it is a fix price contract. Aim for 50% -,
-** Define a checkpoint to validate the estimates and hypotheses,
-** Define exit criteria and exit points for both parties,
+** Refine some epics and write the stories.
+Keep them concise and clear.
+* Estimate the product backlog together with the customer.
+** It is all about cooperation and adaptability.
+** Use relative estimates to classify stories, use story points.
+** Talk about business value and implementation risks.
+* Finalize the contract.
+What happens if cost overruns happen?
+We suggest sharing the costs and defining the percentage each party shall pay.
+If the supplier pays 0%, it is a time and material contract.
+If the supplier pays 100%, it is a fix price contract.
+Aim for 50% -,
+** Define a checkpoint to validate the estimates and hypotheses.
+** Define exit criteria and exit points for both parties.
 ** State governance how to simplify scope and stories to respect budget.
- State and agree upon escalation process if no agreement is found,
-* Invite the customer to the Scrum sessions. Sell the entire Scrum team and not individuals,
-* Sell releases containing a small set of sprints,
-** Deliver and deploy the build solution,
+State and agree upon an escalation process if no agreement is found.
+* Invite the customer to the Scrum sessions.
+Sell the entire Scrum team and not individuals.
+* Sell releases containing a small set of sprints.
+** Deliver and deploy the build solution.
 ** Have the end users use the deployed product.
 
 The Scrum master, the product owner and the team shall perform these activities.
@@ -131,14 +140,15 @@ Hide the fact you are working the agile way.
 Don't tell the customer you are working any differently to normal.
 Clearly state internally why you do it and why your corporate values allow this solution.
 
-Estimate and plan the work as you would normally, sign a perfectly normal contract.
+Estimate and plan the work as you would normally.
+Sign a perfectly normal contract.
 UseAgile techniques and especially {ref-xp} to improve delivery.
 You need to have a _don't ask, don't tell_ type policy because basically you are lying.
 
 === Conclusion
 
 The most successful projects I worked for had selected the money dimension seen as investment budgets.
-Goals correction were communicated early and the contract amended accordingly.
+Goals correction was communicated early and the contract amended accordingly.
 We avoided complicated and expensive change request processes.
 
 The build products were very successful.

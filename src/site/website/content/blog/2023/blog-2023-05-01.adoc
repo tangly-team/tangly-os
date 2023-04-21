@@ -1,90 +1,106 @@
 ---
-title: "Teaching Clojure"
-linkTitle: "Teaching Clojure"
-date: 2023-05-10
+title: "Java 20"
+linkTitle: "Java 20"
+date: 2023-05-01
 tags: ["java", "series-students"]
 ---
 
-== Teaching Closure
+== Java 20
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2023-05-01-head.jpg[width=420,height=360,role=left]
+image::2023-05-01-head.png[width=420,height=360,role=left]
 
-[quote,Michael Feathers]
-____
-OO makes code understandable by encapsulating moving parts.
-FP makes code understandable by minimizing moving parts.
-____
+Java 20 was released on time to the public.
+The release is available for download on 21^st^ March 2023.
 
-Functional languages have the following properties:
+Interestingly, the new Java release contains only incubating or preview https://openjdk.org/jeps/0[JEP] proposals.
 
-* Functions are first-class objects.
-That is, functions can be created at runtime, passed around, returned, and in general, used like any other datatype.
-* Data is immutable.
-* Functions are pure; that is, they have no side effects.
+You are a Java developer, you should always install the latest JDK and try it out.
+Most of the time, all your products will compile and run on the new release without any changes.
 
-For many tasks, functional programs are easier to understand, less error-prone, and much easier to reuse.
+You get new features, performance improvements, and better security for free.
 
-=== Clojure
+As soon as you have to write code, you will enjoy higher productivity thanks to the new features.
+Your source code will be quite different from functional equivalent source code written with an older Java version.
 
-[quote]
-____
-Purely functional programs typically operate on immutable data.
-Instead of altering existing values, altered copies are created and the original is preserved.
-Since the unchanged parts of the structure cannot be modified, they can often be shared between the old and new copies, which saves memory.
-____
+The projects Amber, Loom and Panama provide the improvements provided in JDK 20.
 
-Clojure cite:[programming-clojure] is a splendid approach to learn functional programming idioms.
-The language is well-documented.
-The integration in the Java ecosystem and virtual machine is well-done.
+The project https://openjdk.org/projects/amber/[Amber] provided improvements in pattern matching features.
 
-The IntelliJ plugin _Cursive_ hugely simplifies writing code and testing it.
-IntelliJ is probably the most popular IDE for Java developers.
-People are familiar with its functions and do not need to learn a new tool.
+- https://openjdk.org/jeps/432[Record Patterns] _Second Preview_
+- https://openjdk.org/jeps/433[Pattern Matching for Switch] _Fourth Preview_
 
-(require package) (doc name) (find-doc regular-expression) (closure.repl/source symbol)
+The project https://openjdk.org/projects/loom/[Loom] provided refinements in virtual threads and structured concurrency.
 
-symbols list '(), vector [], set #{}, map {}
+- https://openjdk.org/jeps/429[Scoped Values] _Incubator_
+- https://openjdk.org/jeps/436[Virtual Threads] _Second Preview_
+- https://openjdk.org/jeps/437[Structured Concurrency] _Second Incubator_
 
-=== Functional Thinking
+The project https://openjdk.org/projects/panama/[Panama] refined the access to functions and data provided by external libraries written in non-JVM languages.
 
-Functions as First Class Citizen Immutable Data Structures Higher-Level Functions Multi-Methods and Dynamic Polymorphism Tail-Recursion Optimisation
+- https://openjdk.org/jeps/434[Foreign Functions and Memory API] _Second Preview_
+- https://openjdk.org/jeps/438[Vector API] _Fifth Incubator_
 
-=== Synchronization Concepts
+=== Algebraic Types and Pattern Matching
 
-Refs and Transactions::
-Atoms::
-https://clojure.org/reference/atoms[Atoms] provide a way to manage shared, synchronous, independent state.
-They are a reference type like refs and vars.
-Atoms are an efficient way to represent some state that will never need to be coordinated with any other, and for which you wish to make synchronous changes
-Agents::
+Brian Goetz and his team are adding syntactic sugar constructs to the language.
+Step by step the https://en.wikipedia.org/wiki/Algebraic_data_type[algebraic data types] with records and sealed types and the pattern matching tools move Java to more complete functional programming approaches.
 
-=== Embrace Modern Java
+The sum of small improvements finally empowers us to write more legible source code.
+The switch expression is an elegant and compact solution for conditional selection.
 
-Modern Java adds functional approaches cite:[functional-programming-java] to the Java language.
-The major constructs are:
+The next JDK will hopefully again improve the legibility of the code.
+The proposed improvements are anonymous variables in deconstruction expressions and support of primitive types in switch expressions.
 
-- Lambda Functions and Java Functional Idioms
-- Streams and Monoids
-- Algebraic Data Types and Pattern Matching
-- Structured Concurrency and Virtual Threads
+=== Virtual Threads and Structured Concurrency
 
-Functional Java means no more _for_, _while_, and _do_ loops.
+Death to complex asynchronous programming and nightly debugging sessions.
+The structure of the code visualizes the concurrency flow in your application.
 
-Functional Java means no more checks if a value has the value _null_.
+The Loom project is the kid on the block.
+The https://en.wikipedia.org/wiki/Structured_concurrency[structured concurrency] approach has the promise to tremendously simplify concurrent programming.
 
-Virtual Threads means no more asynchronous programming.
+Work is under way to provide https://openjdk.org/jeps/8304357[scoped values] and deprecate thread local storage.
 
-=== Lessons Learnt
+I hope that Loom will deliver another promise and give us optimized tail recursion in the near future.
 
-Clojure is an ideal language to learn and better understand functional programming approaches cite:[functional-thinking].
+=== Interfaces to external libraries and memory structures
 
-You will probably not use it in a commercial product development.
-The principles you learnt shall be applicable to your technology stack.
-Your code will certainly be simpler, more legible and maintainable.
+Java is *not* an island.
+We want to interface to external digital systems and powerful libraries.
+
+https://en.wikipedia.org/wiki/Java_Native_Interface[JNI] solution is obsolete.
+Panama project provides way better approaches to interface with external libraries.
+
+
+=== Thoughts
+
+Java is steadily improving if sometimes slowly
+footnote:[I am waiting since 2018 that Brian Goetz proposal of concise method bodies is implemented in a JDK.].
+
+Seminal works cite:[effective-java-3rd, functional-programming-java] provides examples how to write modern and expressive Java code.
+Cool products <<vaadin>> allow the creation of digital products and user interfaces using only the Java stack.
+
+An introductory book cite:[java-by-comparison] helps newcomers to the Java language.
+
+The diagram shows the hot topics in the Java ecosystem.
+The adoption takes time before a majority of development organizations jump on the train.
+
+The adoption of the Java 17 LTS edition is still in the early adoption phase after two years.
+We should rather state that the majority of Java teams are laggards.
+
+image::2023-05-01-java-trends.png[role=text-center]
+
+[bibliography]
+=== Links
+
+- [[[vaadin, 1]]]  link:../../2022/vaadin/[Vaadin]. Marcel Baumann. 2022.
+- [[[java-19,2]]] link:../../2021/jdk-17/[Java 17]. Marcel Baumann. 2021.
+- [[[java-16, 3]]] link:../../2021/jdk-16/[Java 16]. Marcel Baumann. 2021.
+- [[[java-10, 4]]] link:../../2018/java-10-aka-18.3-changes/[Java 10 aka 18.3 Changes]. Marcel Baumann. 2018.
 
 === References
 

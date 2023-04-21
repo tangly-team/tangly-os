@@ -1,0 +1,29 @@
+---
+title: "Logging"
+linkTitle: "Logging"
+date: 2025-01-01
+tags: ["java", "architecture"]
+---
+
+== Logging Concepts
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2025-04-01-head.png[width=420,height=360,role=left]
+
+=== Logging in Distributed Systems
+
+=== Java log4j2 Library
+
+=== C++ Library
+
+=== Lessons Learnt
+
+[bibliography]
+=== Links
+
+=== References
+
+bibliography::[]

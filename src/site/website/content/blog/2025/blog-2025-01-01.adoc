@@ -1,0 +1,58 @@
+---
+title: "Distributed Systems"
+linkTitle: "Distributed Systems"
+date: 2025-01-01
+tags: ["java", "architecture"]
+---
+
+== Distributed Asynchronous Systems
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2025-01-01-head.png[width=420,height=360,role=left]
+
+The embedded software industry is in the midst of a major revolution.
+Tremendous amount of new development lays ahead.
+This new embedded software needs an actual architecture that is inherently safer, easier to understand, and provides a higher level of abstraction than the usual "free-threading" approach based on a traditional Real-Time Operating System (RTOS).
+
+For years, experts in concurrent software have been pointing out that unrestricted use of threads and various blocking mechanisms of an RTOS often leads to programs that are unsafe and difficult to reason about.
+Instead, experts from different industries independently came up with the following best practices, which are collectively know as the active object (or actor) design pattern:
+
+1. Keep data isolated and bound to threads.
+Threads should hide (encapsulate) their private data and other resources, and not share them with the rest of the system.
+
+2. Communicate among threads asynchronously via event objects.
+Using asynchronous events keeps the threads running truly independently, without blocking on each other.
+
+3. Threads should spend their lifetime responding to incoming events, so their mainline should consist of an event-loop that handles events one at a time (to completion), thus avoiding any concur­rency hazards within a thread itself.
+
+While these best practices can be applied manually on top of a traditional RTOS, a better way is to use an active object framework.
+The main difference is that when you use an RTOS, you write the main body of the application (such as the thread routines for all your tasks) and you call the RTOS services (e.g., a semaphore, or a time delay).
+When you use a framework, you reuse the overall architecture and write the code that it calls.
+This leads to inversion of control, which allows the framework to automatically enforce the best practices of concurrent programming.
+In contrast, a raw RTOS lets you do anything and offers no help or automation for the best practices.
+The other important difference is that the event-driven active object framework really represents a paradigm shift from a traditional RTOS, as illustrated in the Venn diagram to the right.
+
+In the resource constrained embedded systems, the biggest concern has always been about the size and efficiency of such active object frameworks, especially that the frameworks accompanying various modeling tools have traditionally been built on top of a conventional RTOS, which adds memory footprint and CPU overhead to the final solution.
+However, our experience at Quantum Leaps shows that frameworks of this type can be actually smaller than a traditional RTOS, because active objects don't need to block internally, so most blocking mechanisms of a traditional RTOS aren’t needed (or desired) for programming event-driven active objects.
+
+But perhaps the most important benefit of active object frameworks is that they offer a much higher level of abstraction, and the right abstractions for applying formal design techniques such as hierarchical state machines (UML statecharts), modeling and automatic code generation.
+
+All of this means the event-driven architecture is not only possible in deeply embedded, high-reliability systems, but it is actually ideal for such applications.
+
+=== Distributed Asynchronous Embedded Systems
+
+=== CAP Theorem
+
+ROS-2 Robotic Operating System Topics Based and Message Passing Architecture Quality of Services Asynchronous Messages vs Services Single Threaded Node communication with UML diagram and State machine in C++
+
+=== Lessons Learnt
+
+[bibliography]
+=== Links
+
+=== References
+
+bibliography::[]

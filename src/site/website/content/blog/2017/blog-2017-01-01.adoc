@@ -49,15 +49,16 @@ Scrum was defined because the founders were convinced you could develop more eff
 
 === The essence of Scrum is ROI
 
-image:2017-01-01-Essence.jpg[width=420,height=360,role=left]
+
 All decisions in Scrum should be based on Return of Investment ROI.
+image:2017-01-01-Essence.jpg[width=360,height=360,role=left]
 
 Each time you doubt how you should do an activity, ask your team what is the ROI of your proposition?
 
 Stakeholders want ROI.
-Each time you request budget from your stakeholders, you should always remember.
+Each time you request a budget from your stakeholders, you should always remember.
 
-_you want stakeholder's money, convince them_.
+_You want stakeholder's money, convince them_.
 Show your different solutions to the problem.
 
 [TIP]
@@ -74,7 +75,6 @@ In other words, we want to _Bang for the Buck_
 
 === You shall fill all time-boxed meetings
 
-image:2017-01-01-Meeting.jpg[width=420,height=360,role=left]
 The agile manifesto states
 
 [quote,Agile Manifesto]
@@ -83,6 +83,8 @@ ____
 
 *Customer collaboration* over contract negotiation.
 ____
+
+image:2017-01-01-Meeting.jpg[width=420,height=360,role=left]
 
 Perhaps too often we interpret these sentences as
 
@@ -99,7 +101,7 @@ In Scrum terminology,
 
 " It is also 20% less important.
 " Meeting costs versus solved issues. Meetings cost money.
-Meeting with eight people and of a duration of 30 minutes cost in Switzerland around 600 Swiss Francs or 500 Euro.
+Meeting with eight people and of a duration of 30 minutes cost in Switzerland around 600 Swiss Francs or 500 Euros.
 
 [TIP]
 ====
@@ -146,7 +148,7 @@ A T person is a master in one technical area
 In fact, Square-shaped team members would be better but are very hard to find.
 To increase your ROI, the specialist of the team should perform the tasks it is best suited for.
 
-But a good team also do risk management to ensure that another person can do the job if the main specialist is not available.
+But a good team also does risk management to ensure that another person can do the job if the main specialist is not available.
 See risk management theory how the cost of a risk is evaluated to calculate the ROI of training additional team members.
 
 The simplest way to distribute knowledge is the four-eyes principles exemplified through pair programming and peer checkin.
@@ -179,7 +181,7 @@ _ROI: New value versus cost of development and associated errors_
 First, let me state some concepts deeply entrenched in Scrum Sprint backlog cannot be changed during a sprint.
 This is Scrum.
 
-Bend it with Kanban - for maintenance activities -, agile approach is about a minimum viable product release as soon as possible.
+Bend it with Kanban, for example, for maintenance activities, agile approach is about a minimum viable product release as soon as possible.
 This definition is part of the vision and the initial release planning, Release planning is a must in real Scrum projects.
 
 So you have the right to change everything at the end of each sprint, but the costs are enormous.
@@ -194,7 +196,12 @@ In other words, are you ready to change the user interface two hours before the 
 === You shall not perform up-front design Architecture emerge during the coding of the solution.
 
 image:2017-01-01-Indian-Village.jpg[width=420,height=360,role=left]
-So teams state that - No architecture is needed before starting coding, - No enterprise architecture should be defined or look at, - No non-functional considerations are needed.
+So teams state that
+
+- No architecture is needed before starting coding.
+- No enterprise architecture should be defined or looked at.
+- No non-functional considerations are needed.
+
 Look at the picture.
 Could you design a village without knowing about the ground, the kind of population, do you need school, do they have a flood in the area?
 They believe that refactoring will solve all the problems.
@@ -212,15 +219,19 @@ _ROI: Architecture work versus write it twice_
 These features cannot be added later, you have to write the application twice.
 ====
 
-As a rule of thumb Be honest: our systems are complex, but there is no groundbreaking work.
+As a rule of thumb, please be honest: our systems are complex, but there is no groundbreaking work.
 Similar solutions already exist.
 I expect a talented team to provide architecture with some prototyping in less than a sprint.
 
 === You shall write user stories during coffee breaks
 
 image:2017-01-01-Meeting.jpg[width=420,height=360,role=left]
-Writing user stories is easy, and anyway nobody has time for - The product owner has better to do.
-He writes the stories during a coffee break or just before the start of the planning meeting, – Anyway just read the requirements, it is all written down, - The developers want to code, they have no time to write some user stories or improve them.
+Writing user stories is easy, and anyway nobody has time for
+
+- The product owner has better to do.
+He writes the stories during a coffee break or just before the start of the planning meeting,
+– Anyway, just read the requirements, it is all written down.
+- The developers want to code, they have no time to write some user stories or improve them.
 
 Scrum states the product backlog is the most important document in a Scrum product.
 
@@ -267,7 +278,7 @@ He must train every week to achieve and maintain a given level of skills.
 _ROI: Engineering versus bureaucracy_
 
 * To build quality solutions, you have to have craftsmen and craftswomen as team members.
-* A craftsman master his work techniques, is experienced, knows his limits and master his tools.
+* A craftsman masters his work techniques, is experienced, knows his limits and is an expert with his tools.
 * You must be a craftsman: You are an expert in XP, clean code, TDD, ATDD, Mocking, CI, CD, refactoring, etc.
 And you must train, train, train.
 

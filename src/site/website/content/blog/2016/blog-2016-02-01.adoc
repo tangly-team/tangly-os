@@ -52,7 +52,7 @@ They sometimes hate the pressure of agile and Scrum.
 
 [CAUTION]
 ====
-Some organizations struggle with high delivery rhythm.
+Some organizations struggle with high-delivery rhythm.
 Explain to your stakeholders a new release is available every two weeks.
 The stakeholders decide how often the solution is deployed into production.
 ====
@@ -66,7 +66,7 @@ But, once you have it, you start to experience the "flow" and enjoy the atmosphe
 
 Later, you realize that Scrum says the team is responsible.
 You must acknowledge that product success is also your success.
-Each design decision is now also driven by ROI considerations.
+ROI considerations now also drive each design decision.
 If you master these responsibilities, you suddenly discover the world of engineering.
 It is creating great products with an optimal balance of external quality and costs without ever jeopardizing the quality of the core.
 You can never again deny that you as a developer are in charge.
@@ -74,7 +74,8 @@ You can never again deny that you as a developer are in charge.
 === Scrum Master
 
 The Scrum master cite:[mastering-professional-scrum] is cool with a team enjoying Scrum and the flow of success.
-You just have to realize you are not a master but the enabler of a team of talented engineers.
+You just have to realize you are not a master.
+You are the enabler of a team of talented engineers.
 
 So you need to discover your _the lonely cowboy riding in the sun_ song why this job is so rewarding.
 
@@ -83,7 +84,7 @@ So you need to discover your _the lonely cowboy riding in the sun_ song why this
 As a product owner cite:[professional-product-owner], you control the budget of the product, the priorities.
 At the end of each iteration you can change all priorities and goals.
 Cool isn't it.
-But wait as a product owner, I am responsible for the budget and product success and each time a member of the team asks me something I must have an answer ready.
+But wait as a product owner, I am responsible for the budget and product success, and each time a member of the team asks me something I must have an answer ready.
 
 Scrum is cool and we enjoy it.
 And Scrum makes everything transparent and fast.
@@ -98,7 +99,7 @@ Middle management often struggles with the agile approach at the beginning.
 See for example the discussion about https://less.works/less/management/index.html[manager role in an agile environment] in the {ref-less} approach.
 Be assured the results are worth the effort.
 
-Reading experience report or digging in the findings of Kotter, you realize success or failure goes through how you handle middle management.
+Reading an experience report or digging in the findings of Kotter, you realize success or failure goes through how you handle middle management.
 
 === References
 

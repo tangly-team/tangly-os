@@ -135,7 +135,8 @@ The interaction between different software components.
 Architectural Decisions::
 Important, expensive, critical, large scale or risky architecture decisions including rationales.
 Quality Requirements::
-Quality requirements as scenarios. The requirements shall define a quality tree and associated measurements.
+Quality requirements as scenarios.
+The requirements shall define a quality tree and associated measurements.
 The quality goals can be taken from *_Introduction and goals_*. +
 _Use a fitness function-based approach_.
 Risks and Technical Debt::
@@ -179,17 +180,19 @@ This will never work.
 [bibliography]
 === Links
 
-- [[[improving-static-website,1]]] link:../../2021/improving-a-static-web-site-build-with-hugo-and-docsy/[Improving a Static Website with Hugo and Docsy].
+- [[[how-to-document-software-architecture, 1]]] link:../../2024/how-to-document-software-architecture/[How to Document Software Architecture].
+Marcel Baumann. 2024.
+- [[[improving-static-website,2]]] link:../../2021/improving-a-static-web-site-build-with-hugo-and-docsy/[Improving a Static Website with Hugo and Docsy].
 Marcel Baumann. 2021.
-- [[[creating-technical-website, 2]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and AsciiDoc].
+- [[[creating-technical-website, 3]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and AsciiDoc].
 Marcel Baumann. 2020.
-- [[[support-comment-docsy,3]]] link:../../2020/support-comments-for-static-hugo-website/[Support Comments For Static Hugo WebSite].
+- [[[support-comment-docsy,4]]] link:../../2020/support-comments-for-static-hugo-website/[Support Comments For Static Hugo WebSite].
 Marcel Baumann. 2020.
-- [[[software-architecture-description,4]]] https://en.wikipedia.org/wiki/Software_architecture_description[Software Architecture Description].
+- [[[software-architecture-description,5]]] https://en.wikipedia.org/wiki/Software_architecture_description[Software Architecture Description].
 Wikipedia. 2024.
-- [[[fitness-functions, 5]]] https://www.thoughtworks.com/radar/techniques/architectural-fitness-function[Architectural Fitness Functions].
+- [[[fitness-functions, 6]]] https://www.thoughtworks.com/radar/techniques/architectural-fitness-function[Architectural Fitness Functions].
 https://www.thoughtworks.com/[Thoughtworks]. 2023.
-- [[[structurizr-dsl, 6]]] https://github.com/structurizr/dsl[Structurizr DSL].
+- [[[structurizr-dsl, 7]]] https://github.com/structurizr/dsl[Structurizr DSL].
 GitHub. 2023.
 
 === References

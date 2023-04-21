@@ -42,7 +42,7 @@ You cannot implement a measure and be certain it will improve the whole system.
 If you want to implement lasting improvements, you must:
 
 Provide transparency::
-The more you and your collaborators know the better your decisions are.
+The more you and your collaborators know, the better your decisions are.
 All information shall be available to all participants, including financial and marketing data.
 Experiment with improvement::
 Inspection and adaptation are keys; processes and value streams shall constantly be improved.
@@ -57,7 +57,7 @@ They are smart, motivated and better qualified than you are.
 
 [quote,Steve Jobs]
 ____
-It doesn't make sense to hire smart people and then tell them what to do.
+It does not make sense to hire smart people and then tell them what to do.
 We hire smart people, so they can tell us what to do.
 ____
 
@@ -81,7 +81,7 @@ The agile and lean principle {ref-pdca} applies to agile managers as well.
 * Are you catalyzing organization change to embrace agile values, starting with a culture of value delivery?
 * Do you provide significant organizational roadblock removal for agile teams?
 * Do they perceive you as a coach and leader more than as a manager?
-* Do you use metrics to support teams improve their performance and to help senior leaders understand how to improve value delivery?
+* Do you use metrics to support teams to improve their performance and to help senior leaders understand how to improve value delivery?
 * Are you helping your partners create lean processes to synchronize with agile teams?
 * How are suppliers encouraged to work in an agile way?
 

@@ -1,124 +1,232 @@
 ---
-title: "Onboarding Software Developers in Your agile Team"
-linkTitle: "Onboarding Developers"
-date: 2023-06-01
-tags: ["java", "agile", "series-students"]
+title: "Teaching Clojure I"
+linkTitle: "Clojure I"
+date: 2023-05-10
+tags: ["jvm-languages", "series-students"]
 ---
 
-== Onboarding Software Developers in Your agile Team
+== Teaching Closure I
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2023-06-01-head.png[width=420,height=360,role=left]
+image::2023-06-01-head.jpg[width=420,height=360,role=left]
 
-Now that you have gone through the long and tedious process of hiring a talented developer–the vetting and interview, it iss easy to think that the hard part is done.
-There is no doubt that hiring good people is challenging and competitive, but it’s a mistake to think that the challenge ends with hiring someone.
+Functional programming is hype for the last ten years.
+You find a lot of blogs and videos stating object-oriented languages are doomed.
 
-Onboarding software developers is just as important for getting the most out of the hiring process, and too many companies neglect it to their own detriment.
+Most of the most popular languages have added support to functional concepts in the last years.
 
-=== Why onboarding matters
+Java introduced lambda expressions and single abstract method interfaces _SAM_ with Java 8 in March 2018.
 
-Onboarding, the process of bringing new employees to a point where they are fully integrated into the company and working at full capacity, is a make it or break it process for companies wanting to compete in the tech world.
-Whether you’re a startup with only a few employees, or an established company with hundreds of employees, the onboarding process is the first opportunity you have to set up new employees for long term success.
+Other languages such as Python, C++ or C# added their own functional extensions in newer revisions.
 
-It can cost employers anywhere from 30-50% of an employee’s salary to replace a developer that leaves, so when an organization loses employees to a bad onboarding process, the company feels it.
-And if there is an insufficient onboarding process, new hires will leave.
+https://en.wikipedia.org/wiki/Lisp_(programming_language)[Lisp] dialects fully supported functional paradigms since the sixties of the last century.
 
-One of the most important aspects of onboarding is the timeline.
-On the one hand, the majority of the practical aspects of onboarding should happen pretty quickly, as outlined below.
-On the other hand, it’s important to understand that onboarding an employee – that is, getting them to a place where they feel fully immersed and capable at your company – takes months.
+The theory behind functional model is asciimath:[lambda] _calculus_.
+https://en.wikipedia.org/wiki/Alonzo_Church[Alonso Church] formulated the https://en.wikipedia.org/wiki/Lambda_calculus[lambda calculus] theory in the thirties of the last century and millennium.
 
-So what is a realistic expectation for how long it takes to onboard a software engineer?
+Why are functional programming paradigms suddenly so popular?
 
-=== How long should it take?
+Functional languages have the following properties:
 
-Before diving into how long the onboarding process should take, it’s important to note that there are different types of onboarding and each requires a different approach and timeline.
-There is practical, cultural, and skill onboarding and all are necessary to successfully onboard a software developer into your company.
+* Functions are first-class objects.
+That is, functions can be created at runtime, passed around, returned, and in general, used like any other datatype.
+* Data is immutable.
+* Functions are pure; that is, they have no side effects.
 
-==== Practical onboarding – (1 week)
+[quote,Michael Feathers]
+____
+OO _Object Orientation_ makes code understandable by encapsulating moving parts.
 
-Practical onboarding involves things like benefits signups, company-wide training videos, HR requirements, equipment setup and account access.
-Anything essential for the new employee to get paid, access benefits, and function as an employee in the company.
+FP _Functional Programming_ makes code understandable by minimizing moving parts.
+____
 
-This onboarding should happen anywhere from a day to a week of being hired, depending on the size of the company and the complexity of the practical requirements.
-This part may seem obvious as a part of onboarding, but this is often the first impression a new employee has of your company, so the way it happens matters.
+For many tasks, functional programs are easier to understand, less error-prone, and much easier to reuse.
 
-Do everything you can to make the practical aspect of onboarding seamless, efficient, and even fun.
-If there is a way to gather information from the employee before their start date, even better.
+=== Clojure Development Environment
 
-==== Skill onboarding – (3 – 6 months)
+Clojure cite:[programming-clojure] is a splendid approach to learn functional programming idioms.
+The language is well-documented.
 
-Just like the practical side of onboarding, skill onboarding should start on the first day for a new employee.
-You want the software developer to be well versed in your code base, processes, and systems, so the earlier they can get access to it, the better.
+The integration in the Java ecosystem and virtual machine is well-done.
 
-One of the best ways to do this is to require new employees to push out an actual piece of code within the first week of being hired.
-Make sure there are safeguards in place, so they cannot do any damage to the code itself, but make sure it is significant enough to give them a complete look at the codebase and the process in place for pushing out code.
+[quote]
+____
+Purely functional programs typically operate on immutable data.
 
-This is also a great opportunity to employ pair programming.
-Pair programming sets a new developer up with an experienced developer within the company to work together to complete tickets.
-Although the entire team should be available to answer questions, this will give the new employee a single point of contact as they are getting up to speed on how your company works.
+Instead of altering existing values, altered copies are created and the original is preserved.
 
-For larger companies, this process should involve multiple points of contact, from a senior managerial level to a peer.
-Even smaller companies should try and pair new employees with a few different colleagues.
+Since the unchanged parts of the structure cannot be modified, they can often be shared between the old and new copies, which saves memory.
+____
 
-If there are any step-by-step processes expected for developers for coding, communication, and workflow, be sure to have them in writing and readily available so new employees don’t need to go searching for the same information over and over again.
+The IntelliJ plugin https://cursive-ide.com/[Cursive] hugely simplifies writing code and testing it
+footnote:[The plugin is free upon registration for students, open source developers and personal use.
+Please buy a license for commercial development.
+The company shall have a stream of income to continue developing this awesome environment.].
+https://www.jetbrains.com/idea/[IntelliJ IDEA] is probably the most popular IDE for Java developers footnote[IDEA has a free community edition.
+The Ultimate edition is free for students, teachers, and open source developers.
+Please buy a license for commercial development.
+The price is very reasonable.
+The company shall have a stream of income to continue developing this awesome integrated development environment.].
+People are familiar with its functions and do not need to learn a new tool.
 
-Skill onboarding should take anywhere from 3 to 6 months, with monthly reviews every month to gauge progress.
+=== Declarations
 
-==== Cultural onboarding –  (6 months – 1 year)
+You can define values and functions:
 
-Cultural onboarding is often the most overlooked aspect of onboarding, but arguably the most important piece.
-Developers that stick around do so because they enjoy their work environment, believe in what they are doing, and feel like they belong and matter to the overall company.
+[source,clojure]
+----
+(defn square [param] (* param param))       <1>
+(def data list(1 2 3 4 5))                  <2>
+(def computed (apply square data))          <3>
+----
 
-Of course, some aspects of cultural onboarding will happen in tandem with skill onboarding, as the new employee is working directly with teams and individuals within the company to accomplish a common goal.
-However, that in and of itself is not enough to truly translate company culture to a new employee.
+<1> Define a square function with one parameter and return the square value of the parameter.
+<2> Define a list with five elements and store it the reference named _data_.
+<3> Apply the square method on all items of the _data_ list.
+The computed list is stored in the reference named _computed_.
 
-Within the first week there should be some form of communication from the executive management on the larger values of the organization.
-The big picture of what the company is trying to accomplish, and a way to interact with the team members should be discussed.
+Clojure provides extensions to validate type information.
 
-If you are a small company, this can be as simple as a lunch or coffee with the founder.
-For mid-size or large companies, it may need to be more formal.
-However, if at all possible, this should happen in person–even for remote workers.
+[source,clojure]
+----
+(defn square [^Number param]                <1>
+  {:pre (Number? param)}                    <2>
+  (* param param))
+----
 
-We always suggest that new employees do their first two to four weeks of employment on site, if possible.
+<1> Define an optional type hint for the parameter with _^Number_ to state _param_ must be a number.
+<2> Declare an optional precondition validating parameter values when the function is called.
 
-If you are working with a near source team and flying them up to headquarters is not realistic, then make a plan to spend a week or two with the new employees.
-Cultural onboarding is about relationship building, and doing so in-person makes a difference.
+The equivalent constructs for local value and function declarations inside a function are:
 
-=== Best practices for onboarding
+[source,clojure]
+----
+(defn function-1 []
+  (let [local-variable-1 local-variable-value-1]              <1>
+    body-of-let-block))
 
-As a rule, companies of any size should see the first six months as an employees onboarding period.
-Helping employees get acclimated is a necessary step to seeing the return on the sizable investment made in hiring a software developer in the first place.
+(defn function-2 [n]
+  (letfn [(do-local [a] (println a))]                         <2>
+    (do-local n)))
+----
 
-Here are a few simple practices for successful onboarding:
+<1> The _let_ expression declares local values in the scope of the function.
+Use it to minimize global name pollution.
+<2> The _letfn_ expression declares local functions in the scope of the function.
+Use it to minimize global name poluution.
 
-* Give them an early coding assignment that matters.
-* Give them access to process, practices, systems, and people right away.
-* Get them connected to peers through pair programming.
-* Give them a feedback loop through regular reviews.
-* Give them time to reach their potential.
+=== Conditional Statements
 
-=== Lessons Learnt
+You still need to write selection code.
+The usual constructs are:
 
-Advanced approaches can reduce training and improve cultural match.
+[source,clojure]
+----
+(defn is-small? [number] (if (< number 100) "yes" "no"))                   <1>
 
-[[TIP]
+(when (= 1 1) (+ 10 1))                                                    <2>
 
-====
-InnerSource <<[inner-source>> <<inner-source-patterns>> is a software development strategy that applies open source best practices to proprietary code.
-InnerSource can help establish an open source culture within an organization while retaining software for internal use.
-Teams use InnerSource to increase visibility, strengthen collaboration, and break down silos.
-====
+(defn pos-neg-or-zero
+  "Determines whether or not n is positive, negative, or zero"
+  [n]
+  (cond                                                                    <3>
+    (< n 0) "negative"
+    (> n 0) "positive"
+    :else "zero"))
+----
 
-[bibliography]
-=== Links
+<1> The _if_ expression evaluates a boolean expression.
+If true returns the first expression, if false returns the optional second expression or nil if not defined.
+<2> The _when_ expression is an _if_ expression with only the true path.
+<3> The _cond_ expression evaluates boolean conditions until the first one returning true is found.
+The associated expression is evaluted and the result returned.
+If no expression evaluates to true, the else expresssion is evaluated and returned or nil if not defined.
 
-[[[inner-source, 1]]] https://about.gitlab.com/topics/version-control/what-is-innersource/[What is Inner Source?]
-Gitlab. 2022
-[[[inner-source-patterns, 2]]] https://patterns.innersourcecommons.org/[Inner Source Patterns]
-Gitlab. 2022
+=== Some Definitions
+
+Symbols are identifiers that are normally used to refer to something else.
+They can be used in program forms to refer to function parameters, let bindings, class names and global vars.
+
+Keywords are symbolic identifiers that evaluate to themselves.
+They provide very fast equality tests.
+
+[source,clojure]
+----
+(char )
+(char? (char a))
+
+(string? "This is a string")
+
+(symbol? 'aSymbol)
+(symbol? (symbol "aSymbol"))
+
+(keyword? :aKeyword)
+(keyword? (keyword "aKeyword"))
+----
+
+=== Arithmetic
+
+Clojure supports all the number types of the Java language.
+Here some example
+
+[source,clojure]
+----
+(def aLong 42)
+(def aDouble 42.42)
+(def aBigInteger 42N)
+(def aBigDecimal 42.42M)
+
+(def aRatio 22/7)
+;; => 22/7
+----
+
+[cols="1,2,2a"]
+|===
+|Operator |Description |Example
+
+|even?      |Returns true if n is even                  |_(even? 2)_ returns true
+|+          |Addition of two operands                   |_(+ 1 2)_ returns 3
+|−          |Subtracts second operand from the first    |_(- 2 1)_ returns 1
+|*          |Multiplication of both operands            |_(* 2 2)_ returns 4
+|/          |Division of numerator by denominator       |_(float (/ 3 2))_ returns 1.5
+|inc        |Increment the value of an operand by 1     |_(inc 5)_ returns 6
+|dec        |Decrement the value of an operand by 1     |_(dec 5)_ returns 4
+|max        |Returns the largest of its arguments       |_(max 1 2 3)_ returns 3
+|min        |Returns the smallest of its arguments      |_(min 1 2 3)_ returns 1
+|quot       |Returns the rounded division               |_(quot 10 3)_ returns 3
+|rem        |Remainder of division                      |_(rem 3 2)_ returns 1
+|===
+
+Study the documentation, more arithmetic and logical operators are available.
+
+=== Collections
+
+[source,clojure]
+----
+(def aList list( 1 2 3 4 5))                                    ;; => (1 2 3 4 5)
+(def aList '(1 2 3 4 5))                                        ;; => (1 2 3 4 5)
+(def aList (cons 1 (cons 2 (cons 3 (cons 4 (cons 5 ()))))))     ;; => (1 2 3 4 5)
+(first aList)                                                   ;; => 1
+(rest aList)                                                    ;; => (2 3 4 5)
+
+(def aMap {"Fred" 1400, "Bob" 1240})                   ;; => {"Fred" 1400, "Bob" 1240}
+(assoc aMap "Sally" 0)                                 ;; => {"Fred" 1400, "Bob" 1240, "Sally" 0}
+(dissoc aMap "Fred")                                   ;; => {"Bob" 1240, "Sally" 0}
+(get aMap "Bob")                                       ;; => 1240
+(aMap "Bob")                                           ;; => 1240
+
+(def aSet (set [:a :b :c :d]))                         ;; #{:a ;b :c :d}
+(def aSet #{:a :b :c :d})                              ;; #{:a ;b :c :d}
+----
+
+All of the Clojure collections are immutable and persistent.
+The Clojure collections support efficient creation of 'modified' versions, by utilizing structural sharing.
+
+The collections are efficient and inherently thread-safe.
+Collections are represented by abstractions, and there may be one or more concrete realizations.
 
 === References
 
