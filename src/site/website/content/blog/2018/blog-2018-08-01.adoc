@@ -20,7 +20,7 @@ Teach and support the team and individuals to be autonomous within the given bou
 Create Ground for Motivation::
 Help teams to maximize their autonomy, individual mastery and make sure the team has a purpose.
 Provide Coaching::
-Support teams and individuals to identify potentials with their roles and within the agile organization and improve.
+Support teams and individuals to identify potential with their roles and within the agile organization and improve.
 
 === How Can You Do It?
 
@@ -36,14 +36,14 @@ A central area is technical excellence and software craftsmanship.
 Long-lasting teaching shall concentrate on values: {ref-scrum} values and principles, {ref-less} principles, Agile manifesto and the associated 12 principles.
 Impediments::
 Actively identify impediments and foster their removal.
-Consult the Scrum guide: You must select one impediment after each retrospective and add it as a high priority item in the next Sprint backlog.
+Consult the Scrum guide: You must select one impediment after each retrospective and add it as a high-priority item in the next Sprint backlog.
 This mechanism insures continuous improvement.
 
 [.text-center]
 _To ensure continuous improvement, it includes at least one high priority way in which the team works, identified in the previous Retrospective meeting._
 
 Culture::
-Establish a culture of inspect and adapting for teams.
+Establish a culture of inspecting and adapting for teams.
 Create structure to establish a continuous improvement process - also meaning establish a tolerance to failure -, advocate transparency, enlighten the organization of the relation between autonomy and accountability.
 
 Ask yourself how your organisation handles meritocracy.
@@ -64,7 +64,7 @@ Your teams should have business expertise.
 .. Tell why an impediment resolution backlog item shall be part of each iteration.
 .. Teach the importance of the definition of done for the internal quality of the product.
 And explain why the definition of ready is often an anti-pattern.
-.. Show why velocity is not a productivity metrics.
+.. Show why velocity is not a productivity metric.
 .. Show the difference between product and output.
 .. Extend the agile toolbox with Design Thinking, Lean Factory, Lean UX, DevOps.
 .. Pair Scrum master and technical master to implement a craftsmanship path and achieve product quality.
@@ -100,7 +100,7 @@ Facilitating::
 facilitating increases the effectiveness of a group of people to align in a collaborative way, to interpret their context, and mutually identify the most valuable outcomes desired.
 A facilitator has the skills to create a neutral environment of openness, safety, and innovation in a group setting.
 Guide to Learning::
-guide learning is about effectively growing an individual, a group, or a team’s skills and enabling them to be competent and resourceful.
+guide learning is about effectively growing an individual, a group, or a team skills and enabling them to be competent and resourceful.
 With this competency, you choose the most effective learning method to help the learners achieve their learning objectives and inspire future learning.
 Advising::
 advising is the ability to bring your experience, insights, and observations to guide the client towards a shared understanding of the value that can help them to achieve sustainable success, even after you have moved on.

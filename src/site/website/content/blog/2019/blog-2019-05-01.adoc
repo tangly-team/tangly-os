@@ -18,7 +18,7 @@ Your teams use Scrum or Kanban to deliver running software every two weeks.
 The product market introduction is a success.
 You will successfully sell the solution for the next ten years.
 
-How shall you define the software architecture of your product and insure a long living and high-quality solution?
+How shall you define the software architecture of your product and ensure a long living and high-quality solution?
 The experts tell you the design is emergent.
 What does it mean?
 
@@ -77,7 +77,7 @@ Your development teams
 
 * are experts in the used programming language and stack.
 * understand object-oriented, functional and rule-based programming.
-* known all major patterns and idioms of the used development stack.
+* know all major patterns and idioms of the used development stack.
 * practice https://en.wikipedia.org/wiki/Test-driven_development[TDD], https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD], clean code, refactoring, embrace CI/CD and DevOps,
 * read source code from open source projects to learn better ways.
 * know https://en.wikipedia.org/wiki/SMART_criteria[SMART], https://en.wikipedia.org/wiki/INVEST_(mnemonic)[INVEST],
@@ -93,7 +93,7 @@ You shall keep it simple, make it valuable, and build it piece by piece.
 ____
 
 The above hints and practices shall empower your teams to practice successfully agile architecture and timely deliver delightful software solutions.
-Your organization shall train your collaborators, see also Shu Ha Ri model.
+Your organization shall train your collaborators, see also the _Shu Ha Ri_ model.
 Smart money goes in training your collaborators.
 
 === Agile Architecture Series

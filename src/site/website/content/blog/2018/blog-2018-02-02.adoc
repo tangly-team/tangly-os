@@ -34,13 +34,13 @@ The pressure to deliver is huge. A design thinking iteration has a duration of a
 
 === Lean Startup and Lean UX
 
-Minimum viable products - MVP - are first developed as minimally functional products.
+Minimum viable products _MVP_ are first developed as minimally functional products.
 Within 60 days, a physical prototype will be created that customers can test during this time.
 The software component shall be delivered after the first or second iteration, which means in less than one month.
 
-New technologies such as 3D printing, cheap hardware and IoT boards, continuous delivery, simulation enable your teams to deliver on time.
+New technologies such as 3D printing, cheap hardware and IoT boards, continuous delivery, and simulation enable your teams to deliver on time.
 These are not pure mockups but executable applications.
-If it appeals to the customer, the MVP will evolve gradually to a minimum marketable product – MMP –.
+If it appeals to the customer, the MVP will evolve gradually to a minimum marketable product _MMP_.
 The focus is always on adding customer value.
 
 === Beyond Budgeting Approaches
@@ -57,14 +57,14 @@ The product financing is following a start-up approach and not based on the year
 === Co-location and Team ownership
 
 Work is done across departments, in cross-functional teams.
-All those who can contribute to the success of the product (e.g. company organization, IT, market management, or sales) sit in one room.
+All those who can contribute to the success of the product, e.g. company organization, IT, market management, or sales, sit in one room.
 They form the agile team.
 Co-location ensures lean coordination processes as well as speed and quality.
 
 Co-location also means: You are moving.
 The teams move into a room and work focused together on their product.
 There are no phones, no other projects, and no outside distractions.
-They use collaboration tools - chats, wikis, Scrum boards -.
+They use collaboration tools such as chats, wikis, and Scrum boards.
 Scrum teams are wholly focused on their product.
 
 People check three times a day their emails; otherwise the email client is closed and inactive.
@@ -76,7 +76,7 @@ Employee training is essential.
 In the value streams, we provide staff with experienced coaches to build knowledge in agile methods and software craftsmanship.
 
 Work is done according to proven agile methods.
-Software development relies on modern and agile techniques such as pair programming, refactoring, test driven development, continuous integration, and Scrum.
+Software development relies on modern and agile techniques such as pair programming, refactoring, test-driven development, continuous integration, and Scrum.
 For bigger product development we use {ref-less} approach.
 
 Read this link:../../2018/one-way-to-improve-your-scrum-approach/[One Way to Improve Your Scrum Approach]

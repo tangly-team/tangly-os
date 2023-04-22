@@ -15,7 +15,7 @@ image::2019-08-01-head.jpg[width=420,height=360,role=left]
 You are applying the agile, lean approach to your software product development.
 Your teams use Scrum or Kanban to deliver running software every two weeks.
 
-Agile architecture is a key element to improve the quality of your solution and reduce overall cycle-time of your product delivery.
+Agile architecture is a key element to improve the quality of your solution and reduce the overall cycle-time of your product delivery.
 
 Your journey toward greater business agility starts by identifying what outcomes are most important to your company’s success.
 Outcomes are codified in functional and non-functional requirements your product shall fulfill.
@@ -35,12 +35,12 @@ These characteristics are essential for successful agile development of great so
 
 === What Is The Scrum Approach?
 
-Scrum and the https://scrumguides.org/scrum-guide.html[Scrum Guide] are silent how architecture activities are performed during sprints.
+Scrum and the https://scrumguides.org/scrum-guide.html[Scrum Guide] are silent on how architecture activities are performed during sprints.
 We can use the Scrum values, the https://www.scrumguides.org/scrum-guide.html[Scrum Guide] and the
 https://agilemanifesto.org/principles.html[Agile Manifesto Principles] to infer approaches.
 
 The architect shall be part of the Scrum development team.
-This is the most embedded way an architect would fit into a Scrum team.
+This is the most embedded way that an architect would fit into a Scrum team.
 It may not even be an individual who has the title of an architect.
 The big idea behind Scrum teams is that team members have different skills.
 Their roles may change to deliver what is required for a particular sprint.
@@ -59,7 +59,7 @@ Scrum is quite silent about technical practices.
 The Scrum fathers and community strongly emphasize adopting https://en.wikipedia.org/wiki/Extreme_programming[eXtreme Programming] practices.
 For bigger systems use the good practices described in {ref-less}.
 
-An actual very good practice is to use https://en.wikipedia.org/wiki/Event_storming[Event Storming] and
+An actual exceptional practice is to use https://en.wikipedia.org/wiki/Event_storming[Event Storming] and
 https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design] _DDD_ to model the application domain and partition the system.
 
 Use https://www.thoughtworks.com/insights/blog/fitness-function-driven-development[fitness functions]
@@ -74,7 +74,7 @@ See our post link:../../2019/agile-code-is-clean-code/[Clean Code],
 
 For a detailed discussion, consult the post link:../../2018/pragmatic-craftsmanship-professional-software-developer/[Pragmatic Craftsmanship].
 
-=== What is the Architect Role?
+=== What is the Architect's Role?
 
 The architect shall
 
@@ -83,13 +83,13 @@ The architect shall
 * Often Communicate and early as a coach and mentor - _meaning pair programming and design sessions_ -.
 * Be fluent in domain-driven development, hexagonal architecture, refactoring, and clean code.
 * Use architecture design record ADR and light documentation to describe architecture decisions - meaning no lengthy Software Architecture Document SAD or overwhelming UML models -.
-* Be a master programmer and writes code in the application technological stack.
+* Be a master programmer and write code in the application technological stack.
 He writes actual source code as current good practices are.
 * Have rich knowledge of architecture and design.
 
 We have mentioned refactoring, which is how we evolve an ever-improving design and architecture while building the product incrementally.
 To do that, we need to know the difference between good architecture and design and not-so-good.
-We need a rich pool of architecture and design options in our bag of tricks, ranging from very simple options to the more complex and rich options that we may need as the system grows.
+We need a rich pool of architecture and design options in our bag of tricks, ranging from elementary options to the more complex and rich options that we may need as the system grows.
 One never knows too much about the quality of architecture, code, and design.
 One does, of course, need to apply that knowledge smoothly, incrementally, little by little.
 

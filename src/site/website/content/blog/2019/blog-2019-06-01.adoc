@@ -67,7 +67,7 @@ Either write a huge amount of outdated documentation or find a better way.
 The better way is https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[acceptance test driven development] _ATDD_.
 
 For each feature, you need acceptance criteria; this approach is also called _specification by example_.
-For each acceptance criteria write an acceptance test which is executed each time the application is updated in the continuous delivery pipeline.
+For each acceptance criteria, write an acceptance test which is executed each time the application is updated in the continuous delivery pipeline.
 The acceptance tests are the living documentation describing the behavior of your product.
 
 To implement this approach you need
@@ -84,7 +84,7 @@ They are a fast solution to write acceptance tests but are intrinsically slower 
 === Code Sociology
 
 The most simple engineering practices are the most powerful.
-Practice consolidates changes in behavior of your development organization.
+Practice consolidates changes in the behavior of your development organization.
 
 * https://en.wikipedia.org/wiki/Pair_programming[Pair Programming] - is a training on the job and crowd wisdom approach to steadily improving knowledge and quality -.
 * https://en.wikipedia.org/wiki/Test-driven_development[TDD] and https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[ATDD] - are safety net to guaranty quality attributes in your source code.
@@ -102,7 +102,7 @@ A code review can be done in different ways.
 Many teams use GitHub, Bitbucket or GitLab.
 A very common approach for our code reviews is using merge requests.
 However, there are situations where pull requests are not necessary.
-For example, if a feature is implemented in pair programming or mob programming then the code is already reviewed while it is written.
+For example, if a feature is implemented in pair programming or mob programming, then the code is already reviewed while it is written.
 
 We decided that it does not have to be reviewed again, but, of course, everybody may look at the commits later on in GitHub and add comments.
 A rule of thumb we agreed upon is that every line of code has to be approved by at least one other developer before it is pushed into our master branch.

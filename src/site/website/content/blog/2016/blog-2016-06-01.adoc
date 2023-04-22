@@ -11,13 +11,21 @@ tags: ["agile"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2016-06-01-head.jpg[width=420,height=360,role=left]
+image::2016-06-01-head.jpg[width=320,height=320,role=left]
 
 The new version of the Scrum Guide written by https://en.wikipedia.org/wiki/Ken_Schwaber[Ken Schwaber] and https://en.wikipedia.org/wiki/Jeff_Sutherland[Jeff Sutherland] has been available since July 2011.
+
+You should regularly read the Scrum guide to reflect how your teams are applying agile prinicples and ideas.
+
+You should also consult the seminal {ref-manifesto} and the {ref-manifesto-principles}.
+
 The older version was published in May 2009.
-I found quite interesting the precisions of the Scrum Master's responsibility.
+
+I found quite interesting the precision of the Scrum Master's responsibility.
 
 I have discussions with the customers and companies I coach about the responsibility of the Scrum Master.
+
+Below key statements I find useful for Scrum masters and agile enthusiasts.
 
 === Who is responsible for the introduction of the Scrum approach in the company?
 
@@ -32,7 +40,7 @@ The Scrum Master serves the organization in several ways, including:
 * _Planning_ Scrum implementations within the organization;
 * Helping employees and stakeholders understand and enact Scrum and empirical product development;
 * Causing change that increases the productivity of the Scrum Team; and,
-* _Working_ with other Scrum Masters to increase the effectiveness of the application of Scrum in the organization.
+* _Working_ with other Scrum Masters to increase the effectiveness of how Scrum is applied in the organization.
 ____
 
 The Scrum Master is a main driver for the introduction of Scrum in all departments and levels in the company.
@@ -54,7 +62,7 @@ ____
 
 The Scrum Master should also coach the product owner and support him in the long term planning, the communication of the vision and backlog management.
 The vision and goals of the product should always contain an overall planning frame.
-During the product empirical evidence will trigger revision of the milestones and product planning.
+During product development, empirical evidence will trigger revision of the milestones and product planning.
 
 === What is the meaning of done and a piece of potentially shippable product?
 
@@ -65,7 +73,7 @@ Although this varies significantly per Scrum Team, members must have a shared un
 This is the _Definition of Done_ for the Scrum Team and is used to assess when work is complete on the product Increment.
 
 Development Teams deliver an Increment of product functionality every Sprint.
-This Increment is working product, so a Product Owner may choose to immediately release it.
+This Increment is a working product, so a Product Owner may choose to immediately release it.
 Each Increment is additive to all prior Increments and thoroughly tested, ensuring that all Increments work together.
 
 As Scrum Teams mature, it is expected that their _Definition of Done_ will expand to include more stringent criteria for higher quality.
@@ -76,7 +84,7 @@ At the end of a Sprint, the new Increment must be ““Done””, which means 
 _It must be in usable condition regardless of whether the Product Owner decides to actually release it._
 ____
 
-So at the end of sprint all stories realized since the start of the product must be correct.
+So at the end of the sprint, all stories realized since the start of the product must be correct.
 Therefore, you need automated acceptance tests to guaranty their correctness.
 The Scrum team must guaranty that at the end of each sprint all functions of the product work as specified and accepted by the product owner in the current and previous sprint reviews.
 
@@ -86,7 +94,7 @@ Higher quality is reached through extreme programming approach: test driven deve
 
 Yes, it is a major activity performed by the Scrum Master and Product Owner.
 See the above point about the Scrum Master coaching the Product Owner.
-See if anyone states that long-term planning is not part of the Scrum theory you should challenge them and give them the Scrum Guide to read.
+See if anyone states that long-term planning is not part of the Scrum theory, you should challenge them and give them the Scrum Guide to read.
 What can be changed during a Sprint?
 Often customers have heated discussions that can be changed during a sprint Here a clear statement.
 
@@ -96,7 +104,7 @@ During the Sprint:
 * No changes are made that would affect the Sprint Goal; * Development Team composition and quality goals remain constant; and, * Scope may be clarified and re-negotiated between the Product Owner and Development Team as more is learned.
 ____
 
-=== What is measured in a burn down chart?
+=== What is measured in a burn-down chart?
 
 [quote]
 ____

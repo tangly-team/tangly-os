@@ -33,7 +33,8 @@ You are a programmer, you know this book
 * The Clean Coder: A Code of Conduct for Professional Programmers, Robert C. Martin Are you a coder doing clean code (or are a looser)?
 * Refactoring: Improving the Design of Existing Code, Martin Fowler You cannot be agile and not do refactor, see also XP practices.
 You shall refactor daily or you are lying to yourself
-* Agile Project Management with Scrum, Ken Schwaber A seminal work from one of the founders of Scrum
+* Agile Project Management with Scrum, Ken Schwaber.
+A seminal work from one of the founders of Scrum
 * Agile Product Management With Scrum: Creating Products That Customers Love, Roman Pichler From the expert for product owner role and activities, Make the shift from project to product
 * Agile Testing: A Practical Guide for Testers and Agile Teams, Lisa Crispin and Janet Gregory What does it mean to test and insure quality in an agile environment?
 

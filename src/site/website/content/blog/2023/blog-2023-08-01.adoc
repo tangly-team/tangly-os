@@ -37,14 +37,15 @@ As a result, enabling programmes and projects the ability to scale up and down t
 
 TOGAF defines architecture governance as the practice and orientation by which software products architectures are managed and controlled at an enterprise-wide level.
 
-Architecture governance does not operate in isolation, but within a hierarchy of governance structures, which, can include following as distinct domains with their own disciplines and processes:
+Architecture governance does not operate in isolation, but within a hierarchy of governance structures.
+The structures can include distinct domains with their own disciplines and processes:
 
 * Corporate Governance
 * Technology Governance
 * IT Governance
 * Architecture Governance
 
-These domains of governance may exist at multiple geographic levels - global, regional, and local - within the overall enterprise.
+These domains of governance may exist at multiple geographic levels: the global, regional, and local levels within the overall enterprise.
 
 Corporate governance is thus a broad topic, beyond the scope of an enterprise architecture framework such as the TOGAF framework.
 
@@ -83,7 +84,7 @@ To do this, you must determine how you will execute your strategy by selecting a
 You must also monitor these initiatives to ensure that they fulfill their promise, and if not then remediate them appropriately.
 Your teams are empowered to carry out their work::
 An important aspect of lean governance is to ensure that people and teams have the authority to fulfill their responsibilities.
-Many agile transformations run into trouble when the roles and responsibilities of people are not agreed upon, or when they are they are not properly supported by senior management.
+Many agile transformations run into trouble when the roles and responsibilities of people are not agreed upon, or when they are not properly supported by senior management.
 Another important strategy is to empower teams to choose their own way of working (WoW), to self-determine how they will work together, enabling them to tailor their approach to meet the needs of the situation that they face.
 People are motivated to work together effectively::
 There are two aspects to this.
@@ -91,7 +92,7 @@ First, teams need to work effectively with their stakeholders.
 Second, teams also need to work effectively with their colleagues.
 To do this, you must adopt processes and organizational structures that encourage people to collaborate together and to learn from one another.
 Risks are monitored and mitigated at appropriate organizational levels::
-Although addressing risk at the team-level is a good start it isn’t sufficient from an organizational point of view.
+Although addressing risk at the team-level is a good start, it is not sufficient from an organizational point of view.
 Many small risks that are acceptable individually can add up to a very large risk for your organization.
 For example, one team using a new technology platform is an experiment.
 Fifty teams adopting that new platform at the same time is a significant risk if the platform proves to be problematic.
@@ -106,14 +107,14 @@ First, work is performed in an agile manner that is inherently open and collabor
 Second, all teams should present accurate and timely information to their stakeholders.
 For example, enterprise architects can make their work available to everyone, as can your portfolio management team, your data management team. +
 Third, everyone should be motivated to learn more about your organization, its strategy, its values, and how you intend to work together to achieve the outcomes you’ve set out for yourselves.
-All of these things will continue to be true now and in the future::
+All of these things will continue to be true in the future::
 Lean governance balances your short-term and long-term needs.
 Too many organizations have allowed technical debt to grow in recent years, for the skills of their staff to stagnate, and to continue to tolerate traditional strategies that are well past their prime.
 
 There are two fundamental reasons why individuals should be interested in lean governance:
 
-You’re being governed, like it or not::
-Regardless of the size or your organization, the length of time it’s been in operation, or the sector(s) in which you work, someone is keeping an eye on and guiding your overall efforts.
+You are being governed, like it or not::
+Regardless of the size or your organization, the length of time it has been in operation, or the sectors in which you work, someone is keeping an eye on and guiding your overall efforts.
 You deserve to be governed effectively::
 Sadly, many governance strategies prove to be ineffective in practice due to application of traditional strategies and ways of thinking.
 
@@ -130,12 +131,12 @@ Have a process to track and mitigate all published common vulnerabilities and ex
 
 === Legal Requirements
 
-Respect the legal framework of your country and the foreign contries in which your solution is deployed:
+Respect the legal framework of your country and the foreign countries in which your solution is deployed:
 
 - Customer Protection
-- Customer Data Confidentiallity
+- Customer Data Confidentiality
 - Accessibility
-- Lawfull Respect (misogyny, xenophoby, racism, religious intelorance)
+- Lawful Respect for human beings (misogyny, xenophobia, racism, religious intolerance)
 
 === Technical Good Practices
 
@@ -156,18 +157,18 @@ Auditability is legally mandatory for some systems.
 An adequate audit solution shall be implemented at corporate level.
 The architecture trend of distributed systems and services makes an overall solution the sole source of information.
 Resilience::
-Resilience shall part of governance to insure customer satisfaction and survival of the organization.
+Resilience shall be part of governance to ensure customer satisfaction and survival of the organization.
 Communication to Users::
 Transparent and open communication to end users and stakeholders is a must in modern organizations.
 The communication approach shall be unified at corporate level.
 Interfaces to external systems::
-Interfaces to external systems shall logged and audited in full.
-This approach is mandatory to verify service level agrements.
-The data is also necessary if exteranl partners initiate legal cases
+Interfaces to external systems shall be logged and audited in full.
+This approach is mandatory to verify service level agreements.
+The data is also necessary if external partners initiate legal cases
 Input validation::
 Input validation of all interfaces is a mandatory security and quality requirements.
 Enterprise data is a high-value asset.
-Care should be taken to guarantee long-term quality and usability of strategic data.
+Care should be taken to guarantee the long-term quality and usability of strategic data.
 This information is often used over decades.
 
 === Lessons Learnt
@@ -175,11 +176,11 @@ This information is often used over decades.
 Corporate governance requirements are non-functional requirements.
 They impact the architecture and design of the solution.
 The selected solutions are often constrained.
-Highly secure systems cannot for example used NodeJS due to known flaws in the security area.
+Highly secure systems cannot, for example, use NodeJS due to known flaws in the security area.
 
 Awareness of corporate governance issues and legal consequences are often overlooked and not well-understood in many organizations.
-Education and sensibilitation campaigns are necessary to increase professionalism
-footnote:[In Switzerland multiple organizations had to shut down operations in 2021 and 2022 due to blatant security and governance issues.
+Education and awareness campaigns are necessary to increase professionalism
+footnote:[In Switzerland, multiple organizations had to shut down operations in 2021 and 2022 due to blatant security and governance issues.
 Beware non-compliance can be extremely costly and endanger the survival of your company.].
 
 [bibliography]

@@ -104,10 +104,11 @@ Here is the approach is to define and finalize a fixed price https://en.wikipedi
 Please remember the manifesto, it is all about collaboration and responding to change.
 
 * Create the product vision and initial backlog together.
-Write good epics and identify main topics - topics identify the minimum outcomes to maximize solution value -,
-** Commit to the vision and defined MVP,
-** Define a budget for the product,
-** Define tentative deadlines,
+Write good epics and identify main topics.
+Topics identify the minimum outcomes to maximize solution value.
+** Commit to the vision and defined MVP.
+** Define a budget for the product.
+** Define tentative deadlines.
 ** Refine some epics and write the stories.
 Keep them concise and clear.
 * Estimate the product backlog together with the customer.
@@ -154,4 +155,4 @@ We avoided complicated and expensive change request processes.
 The build products were very successful.
 We respected the agreed budget and were timely.
 The dynamic was in the scope definition.
-We delivered early and often high quality increments so the end users could adjust their expectations and refine their needs.
+We delivered early and often high quality increments, so the end users could adjust their expectations and refine their needs.

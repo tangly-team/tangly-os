@@ -40,7 +40,7 @@ Before diving into how long the onboarding process should take, it’s important
 There is practical, cultural, and skill onboarding.
 All are necessary to successfully onboard a software developer into your company.
 
-==== Practical onboarding – (1 week)
+==== Practical onboarding (1 week)
 
 Practical onboarding involves things like benefits signups, company-wide training videos, HR requirements, equipment setup and account access.
 Anything essential for the new employee to get paid, access benefits, and function as an employee in the company.
@@ -51,7 +51,7 @@ This part may seem obvious as a part of onboarding, but this is often the first 
 Do everything you can to make the practical aspect of onboarding seamless, efficient, and even fun.
 If there is a way to gather information from the employee before their start date, even better.
 
-==== Skill onboarding – (3 – 6 months)
+==== Skill onboarding (3 – 6 months)
 
 Just like the practical side of onboarding, skill onboarding should start on the first day for a new employee.
 You want the software developer to be well versed in your code base, processes, and systems, so the earlier they can get access to it, the better.
@@ -70,7 +70,7 @@ If there are any step-by-step processes expected for developers for coding, comm
 
 Skill onboarding should take anywhere from 3 to 6 months, with monthly reviews every month to gauge progress.
 
-==== Cultural onboarding –  (6 months – 1 year)
+==== Cultural onboarding (6 months – 1 year)
 
 image::2023-07-01-cultural-onboarding.jpg[width=420,height=360,role=left]
 

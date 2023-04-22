@@ -13,7 +13,7 @@ tags: ["agile"]
 
 image::2018-11-02-head.png[width=420, height=360, role=left]
 It is official.
-The power engine of SAFe 4.6 vehicle is the team and technical agility.
+The power engine of the SAFe 4.6 vehicle is the team and technical agility.
 View the https://v46.scaledagileframework.com/whats-new-in-safe-46/[official presentation] and more important download the
 https://v46.scaledagileframework.com/whats-new-in-safe-46[slides].
 It is one of their five Lean Enterprise competencies and one of their four core values.
@@ -55,7 +55,7 @@ And I welcome the fact that {ref-safe} now explicitly mention https://v46.scaled
 
 One of the strengths of {ref-safe} is their clear statement that an agile organization transformation is only successful with lean-agile leadership.
 All C-level managers are trained in lean and agile, they advocate these approaches and are visible champions.
-Therefore, all managers shall be advocate technical excellence on a daily basis.
+Therefore, all managers shall advocate technical excellence on a daily basis.
 
 If not the seminal work of John Kotter clearly states the transformation will fail.
 You will have a bunch of Scrum teams in your development department, but have none of the expected synergies at the product or company level.

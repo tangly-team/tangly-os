@@ -1,7 +1,7 @@
 ---
 title: "Teaching Clojure I"
 linkTitle: "Clojure I"
-date: 2023-05-10
+date: 2023-06-05
 tags: ["jvm-languages", "series-students"]
 ---
 

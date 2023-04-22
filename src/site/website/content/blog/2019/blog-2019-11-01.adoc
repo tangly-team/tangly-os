@@ -11,17 +11,18 @@ tags: ["agile"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2019-11-01-head.jpg[width=420, height=360, role=left]
+image::2019-11-01-head.jpg[width=420,height=360,role=left]
+
 Your organization has decided to introduce agile at scale in all development departments or better in the whole company.
 
 Your Chief of Agility _COA_, Chief of Digitalization _COD_ or Chief of Change _COC_ was in an expensive training.
-After a few drinks he has selected the appropriate framework for your company.
+After a few drinks, he has selected the appropriate framework for your company.
 
 Welcome to the club of companies introducing agile approaches and having no clues why they do it and how they could be successful.
 
 Here some hardly learnt truths worth knowing when starting such an endeavor.
 
-[quote, Martin Fowler]
+[quote,Martin Fowler]
 ____
 Imposing Agile methods introduces a conflict with the values and principles that underlie Agile methods.
 ____
@@ -31,16 +32,17 @@ ____
 The scaling approaches I encounter at customer sites in Switzerland and Europe are
 
 * Spotify Model was popularized by Henrik Kniberg.
- His YouTube videos are worth watching.
- The banking group ING adopted the approach and made it fashionable.
+His YouTube videos are worth watching.
+The banking group ING adopted the approach and made it fashionable.
 * Scrum@Scale defined by Jeff Sutherland and {ref-scrum-alliance}.
- Henrik Kniberg has written an interesting article stating Spotify Model is a kind of Scrum@Scale.
+Henrik Kniberg has written an interesting article stating Spotify Model is a kind of Scrum@Scale.
 * Nexus defined by https://en.wikipedia.org/wiki/Ken_Schwaber[Ken Schwaber] and {ref-scrum-org} cite:[nexus-framework].
-* {ref-less} defined by Craig Larman and Bas Vodde. It is also supported by {ref-scrum-alliance}
+* {ref-less} defined by Craig Larman and Bas Vodde.
+It is also supported by {ref-scrum-alliance}
 cite:[scaling-lean-and-agile-development,large-scale-scrum,practices-for-scaling-lean-and-agile-development].
 * {ref-safe} 5.0 defined by the RUP aficionados and often trashed by Kniberg, Sutherland, Schwaber, Larmann and Vodde.
- At the same it is the most popular approach in quite a few countries.
- _And I would never state it is the most successful_.
+It is also the most popular approach in quite a few countries.
+_And I would never state it is the most successful_.
 
 Additional approaches exist, but I did not encounter them lately.
 
@@ -50,7 +52,9 @@ The key learning is
 
 [quote]
 ____
-*Delay your Scaling.  First Lean the ropes.  Try to descale your processes.*
+*Delay your Scaling.
+First Lean the ropes.
+Try to descale your processes.*
 ____
 
 *Learn the ropes* with small agile teams applying {ref-scrum}, {ref-kanban}, {ref-xp} or our own approach.
@@ -67,13 +71,15 @@ Focus the first years on technical excellence, software craftsmanship and clean 
 
 All the above-mentioned methods emphasize the importance of technical excellence for durable success.
 
-*Simplify* your processes, roles and structures. Reflect if you really need scaling.
+*Simplify* your processes, roles, and structures.
+Reflect if you really need scaling.
 
 Now you are ready to experiment with scaling.
 
 === Understand the Principles of Scaling
 
-* Create a _learning organization_. It is the building block for agile approaches
+* Create a _learning organization_.
+It is the building block for agile approaches
 ** Train your collaborators.
 ** Experiment with new approaches and measure success.
 * Organize around up to eight teams, _one backlog for one product_.
@@ -81,7 +87,7 @@ Now you are ready to experiment with scaling.
 ** Have one product owner in charge of the whole product.
 * Pull, do not push.
 ** Collaborators and teams select workload.
-** All information are available to all collaborators.
+** All information is available to all collaborators.
 * DevOps is king.
 ** _Automate aggressively_.
 ** Put all artifacts under version control.
@@ -96,27 +102,27 @@ In particular the changes in {ref-safe} are an archaeological treasury what they
 
 * Continuous delivery is the new approach.
 Eliminate hardening iterations, integration phases, milestones when software should be integrated.
-Your teams shall deliver a workable software on demand, multiple times a week or a day.
+Your teams shall deliver workable software on demand, multiple times a week or a day.
 * _Organize around products_.
 Customers buy products.
 Eliminate product based organizations.
-*b _Have one backlog for the whole product_.
+*_Have one backlog for the whole product_.
 Multiple backlogs must be otherwise synchronized and local optimization is de facto applied.
 This approach is against all lean principles.
-* _Customer and users talks directly with the development team_.
+* _Customer and users talk directly with the development team_.
 Product owners, product managers enterprise architects should never be filtering the information flow between customers and engineers.
 * _Eliminate step by step all coordination roles_.
 Emphasize communication between developers in the team and between teams.
 Scrum of Scrums where only Scrum masters attend, Release Train Engineer, System teams, corporate Solution Engineers are just a waste of resources.
-* _Realize technical excellence is the only approach_ to deliver quality products to the customer.
+* _Realize technical excellence is the only approach_ to delivering quality products to the customer.
 Raise the importance of technical excellence, and never forget that when writing software, the technology side is really vital.
 
 === Final Words
 
 Establish agile teams.
 Thin your process.
-Chose your scaling approach.
-Try it and measure impact.
+Choose your scaling approach.
+Try it and measure the impact.
 Iterate and improve continuously.
 Therefore, it could be necessary to change your initial scaling approach and adapt it to your company needs.
 

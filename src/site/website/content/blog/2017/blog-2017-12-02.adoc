@@ -28,9 +28,9 @@ Organizations often forget the liability of using older versions of components w
 footnote:[Data privacy and protection laws were established in Europe in 2018 and in Switzerland in 2020.
 Companies and executives can be sued, sentenced to pay huge fines, and in the worst case, C-level managers get a criminal record entry.
 Such an entry can destroy your career potential.
-For example, you are banned to become a board of directors members of a lot of companies.].
+For example, you are banned from becoming a board of directors members of a lot of companies.].
 
-Below I provide you with arguments why you should always update all components in a timely fashion.
+Below, I provide you with arguments why you should always update all components in a timely fashion.
 
 === Security and Governance
 
@@ -42,17 +42,17 @@ In some countries, you are liable if you do not update your software to avoid kn
 
 You should use actual Java JDK and JVM version because the community is concentrating their effort on the latest version.
 Oracle only provides public support for the latest two Java versions, e.g. in January 2018, Java 9 and Java 8 are officially supported.
-Java 8 support will stop end of September 2018, older versions are no more publicly maintained.
+Java 8 support will stop at the end of September 2018, older versions are no more publicly maintained.
 
 If, for some reasons, you are using an older commercially but no more publicly supported JDK, you must sign a support contract with the Oracle company and pay for it.
-You cannot use deprecated JDK versions because nobody provides security fixes on these versions - e.g. Java 6 commercial support ended in December 2017 –.
+You cannot use deprecated JDK versions because nobody provides security fixes on these versions, e.g. Java 6 commercial support ended in December 2017.
 
 If you include a deprecated JDK / JVM in your product, you willingly endanger your users and shall be liable for their losses.
 
 Governments started to realize how unprofessional organizations are working.
 Recommendations and laws are grafted to force better security
 footnote:[The White House in the USA initiated an _Executive Order on Improving the Nation's Cyber-security_ in 2021.
-The goal seems to the definition of minimal rules for software products to minimize known security risks.].
+The goal seems to be the definition of minimal rules for software products to minimize known security risks.].
 
 === Upgrades and Genuine Improvements
 

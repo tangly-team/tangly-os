@@ -36,7 +36,7 @@ This workshop has around half a day duration.
 
 === Approach
 
-The Scrum Assessment speeds up your Scrum mastery and let you collect low-hanging improvements.
+The Scrum Assessment speeds up your Scrum mastery and lets you collect low-hanging improvements.
 
 * Do you already work with Scrum or Scrum/Kanban and want to know where you stand?
 * Do you get the benefits that are possible with Scrum?

@@ -41,7 +41,7 @@ They are relevant to nearly any situation where people - such as Scrum teams - m
 
 Below the eight principles are presented with a mapping to Scrum aspects.
 
-=== A clear definition of the contents of the common pool resource and effective exclusion of external un-entitled parties
+=== A clear definition of the contents of the common pool resource and effective exclusion of external unentitled parties
 
 The Scrum teams define the artifacts and processes exclusively owned by the team.
 Teams take ownership of items such as source code, Scrum board, pull process.
@@ -102,7 +102,7 @@ Scrum teams can rule that
 * You are excluded from the team.
 
 Most teams need counseling before they can tackle the concept of sanctions.
-As a Scrum master you must gently empower them to sanction.
+As a Scrum master, you must gently empower them to sanction.
 If this rule is not implemented, you will always land in the https://en.wikipedia.org/wiki/Tragedy_of_the_commons[tragedy of the commons] and utterly fail in your agile journey.
 Worse, your product will probably also fail.
 
@@ -151,7 +151,7 @@ Small local CPRs at the base level.
 Scaling agile practices at the organization level requires multiple levels.
 
 * Transparency through Scrum board,
-* Definition of Dome as contract between a team and their organization,
+* Definition of Dome as a contract between a team and their organization,
 * Visibility of source code, continuous integration, delivery and deployment of artifacts,
 * Scale to product level using {ref-less}.
 

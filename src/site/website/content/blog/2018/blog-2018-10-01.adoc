@@ -46,13 +46,13 @@ Often it is best to start your health evaluation with your product source code.
 At the end of the day, it is compiled source code you deliver to all your customers to work with.
 
 One nice aspect of source code checks is that a whole set of tools is available on the market.
-You still need an expert to provide the diagnostic but the gathering of data can be automated and quite inexpensive to gather.
+You still need an expert to provide the diagnostic, but the gathering of data can be automated and quite inexpensive to gather.
 
 Below a list of capabilities we have build-up over time for source code checks.
 Use common sense and strategic goals to identify the objectives you want to measure.
 Expertise is needed to define values to measure if the source code of your product reaches the selected objectives.
 
-. *Java* 11/10/9/8/7/6 code and how to migrate to a current version and use the new Java features,
+. *Java* 11/10/9/8/7/6 code and how to migrate to the current version and use the new Java features,
 . Multithreaded, parallel programming and reactive systems,
 . Functional and object-oriented detailed design approaches,
 . Test driven development TDD and build-in quality - gradle or maven -,
@@ -70,11 +70,11 @@ Expertise is needed to define values to measure if the source code of your produ
 . User Experience and UI design.
 
 My blogs link:../../2018/pragmatic-craftsmanship-professional-software-developer[Pragmatic Craftsmanship] and How to Reach the
-link:../../2018/how-to-reach-the-software-quality-graal[Software Quality Graal] provide insights why source code quality is of tremendous importance for any company.
+link:../../2018/how-to-reach-the-software-quality-graal[Software Quality Graal] provide insights on why source code quality is of tremendous importance for any company.
 
 The blog link:../../2018/sonar-lint-for-the-impatient/[SonarLint] for the Impatient would be a pragmatic first measure to measure and improve your source code health.
 
-Any product should have a battery of measures deployed to continuously monitor the source code and detects trends over time.
+Any product should have a battery of measures deployed to continuously monitor the source code and detect trends over time.
 
 === Posts in the Health Check Series
 

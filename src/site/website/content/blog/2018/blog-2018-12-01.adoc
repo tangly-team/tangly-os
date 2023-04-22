@@ -69,7 +69,7 @@ Non-functional requirements::
 You have identified your non-functional requirements and constraints and have fitness measures in place.
 The measures guarantee the continuous achievement of the constraints - often defined as -ility requirements -.
 
-See the link:../../2018/how-healthy-is-your-product-delivery-pipeline-check/[Delivery Pipeline Check] to enable your organization to provide realtime feedback how well the above constraints are correctly implemented in the product.
+See the link:../../2018/how-healthy-is-your-product-delivery-pipeline-check/[Delivery Pipeline Check] to enable your organization to provide realtime feedback on how well the above constraints are correctly implemented in the product.
 
 === Posts in the Health Check Series
 

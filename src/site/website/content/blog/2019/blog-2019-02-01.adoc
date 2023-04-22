@@ -23,7 +23,7 @@ This post is the fourth and last of a set of articles identifying health checks 
 We will identify strengths, potential weaknesses and hopefully find room for improvement.
 
 What is your company culture?
-How are collaborators focused to delight your customers?
+How are collaborators focused on delighting your customers?
 
 === Rules
 
@@ -83,7 +83,7 @@ A set of questions to detect cultural flaws for a lean and agile focused company
 .. Do they have multiple high-resolution displays to work with - high-resolution means 4K or higher -?
 .. Do they have root access - admin rights - to their development workstation?
 .. Do they have access to technical books and articles?
-.. Do they have a height adjustable desk?
+.. Do they have a height-adjustable desk?
 .. Do they have big whiteboard and flip charts to work on in the team area?
 .. Do they have rooms to meet and work as a team in the vicinity and available?
 .. Do they use the best development tools of trade - and not only the basic and cheap version -?

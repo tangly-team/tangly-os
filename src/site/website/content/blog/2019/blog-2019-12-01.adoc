@@ -11,17 +11,19 @@ tags: ["organization", "tangly"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2019-12-01-head.jpg[width=420, height=360, role=left]
-I long dreamed to work in a digital environment.
+image::2019-12-01-head.jpg[width=420,height=360,role=left]
+
+I long dreamed of working in a digital environment.
 I shall no longer print out a form, sign it by hand and use snake mail to deliver it to the receiving party.
 All company documents are stored electronically.
-I can search any artifacts by content and get a list of its in seconds.
+I can search any artifacts by content and get a list of all interesting items in seconds.
 
 Our software service company is an ideal candidate to validate if this assumption is realistic.
 
-[quote, Frederic Laloux]
+[quote,Frederic Laloux]
 ____
-Profit is like the air we breathe. We need air to live, but we don't live to breathe.
+Profit is like the air we breathe.
+We need air to live, but we do not live to breathe.
 ____
 
 === What is Digital Working?
@@ -29,18 +31,23 @@ ____
 You shall use digital tools and workflows to perform all your work related tasks.
 We want to increase interactions with our coworkers and remove any tedious activities.
 
-* Fax is dead. You do not need faxes in Europe - no more waiting at the fax machine,
-* You send your contracts electronically. You can sign them electronically - no more printing or paper archiving,
-* You send invoices electronically - no more printing,
-* You perform your accounting electronically and avoid any paper archive,
+* Fax is dead.
+You do not need faxes in Europe.
+No more waiting at the fax machine,
+* You send your contracts electronically.
+You can sign them electronically.
+No more printing or paper archiving,
+* You send invoices electronically.
+No more printing,
+* You perform your accounting electronically and avoid any paper archive.
 * You coordinate with your team members with chat tools; not over the phone or with emails.
-N o more answering long emails with huge cc list and less business travel,
+No more answering long emails with a huge cc list and less business travel.
 * Any document can collaboratively be edited online by multiple collaborators working distributively.
- No more calls to find the latest version of a document or to remind somebody to unlock the document.
- Or worse finding out why your changes just disappeared,
+No more calls to find the latest version of a document or to remind somebody to unlock the document.
+Or worse, finding out why your changes just disappeared,
 * Any collaborator has access to all our assets.
- You monitor all software continuous integration and delivery pipelines from anywhere if authorized.
- The information is available with a regular notebook or on any mobile device.
+You monitor all software continuous integration and delivery pipelines from anywhere if authorized.
+The information is available with a regular notebook or on any mobile device.
 
 And you have a positive impact on the environment.
 Less traveling, less paper and less shipping.
@@ -53,15 +60,17 @@ Embrace the digital age and be environment aware.
 At https://www.tangly.net[tangly] we use internally
 
 * Google Business Apps and LibreOffice for office work, email, calendar, video conference and document sharing.
- All documents are stored in our product or company online drives,
-* Google Business Apps administration console to manage our technical infrastructure such as workstations, mobile devices, DNS record,
-* Bitbucket and continuous integration, delivery and deployment pipelines for software development,
+All documents are stored in our product or company online drives.
+* Google Business Apps administration console to manage our technical infrastructure such as workstations, mobile devices, DNS record.
+* Bitbucket and continuous integration, delivery and deployment pipelines for software development.
 * Trello for activities management and our electronic Scrum or Kanban board.
- We use analog boards if the team members are collocated - we are trying to avoid JIRA. It would be just overkill for us -,
+We use analog boards if the team members are collocated.
+We are trying to avoid JIRA.
+It would be just overkill for us.
 * Slack is our preferred chat platform,
 * https://www.banana.ch/[Banana] is our accounting solution.
 
-We never had to bought or rent a printer, a landline or a fax machine since founding the company.
+We never had to buy or rent a printer, a landline or a fax machine since founding the company.
 
 === External Tools
 
@@ -78,38 +87,41 @@ We use an impressive set of tools to collaborate with our customers and partners
 
 An impressive set of processes with governmental organizations can now be performed electronically in Switzerland
 
-* VAT authority support declaration and payment electronically,
-* https://www.zefix.ch/en/search/entity/welcome[Company register] in Switzerland give access to all registered companies,
-* Salary declarations and forms are generated electronically through government https://www.elohnausweis-ssk.ch/de/[online tools],
-* Swiss post office support package tracking and delivery rescheduling online,
-* Swiss social insurances - pension fund, children allowance, military service, unemployment insurance - declaration and mutation are available online,
-* Taxes declaration can be performed with a downloadable government application,
-* Public transportation company tickets can be bought online and delivered electronically on collaborator's mobile device.
+* VAT authority support declaration and payment electronically.
+* https://www.zefix.ch/en/search/entity/welcome[Company register] in Switzerland gives access to all registered companies.
+* Salary declarations and forms are generated electronically through government https://www.elohnausweis-ssk.ch/de/[online tools].
+* Swiss post office supports package tracking and delivery rescheduling online.
+* Swiss social insurances such as pension fund, children's allowance, military service, and unemployment insurance declaration and mutation are available online.
+* Taxes declaration can be performed with a downloadable government application.
+* Public transportation company tickets can be bought online and delivered electronically on a collaborator's mobile device.
 
 === What is Working?
 
-* We perform marketing and sales through online platforms and avoid any physical ads platform,
-* We communicate through our company online platform. We never use physical documents and minimize email usage,
-* We deliver all contractual documents electronically,
-* We deliver all invoices electronically,
+* We perform marketing and sales through online platforms and avoid any physical ads platform.
+* We communicate through our company's online platform.
+We never use physical documents and minimize email usage.
+* We deliver all contractual documents electronically.
+* We deliver all invoices electronically.
 * We have our library and technical documentation as static websites, wikis, and electronic documents.
- We do not possess any paper books,
-* Our archive is online. We do not possess a physical archive of documents or contractual documents and never bought or rented physical space for this purpose,
-* We never did own or rent any printer, land phone line or fax machine. The quality and speed of our Internet connect improve yearly.
- It is already above our keenest expectations.
+We do not possess any paper books.
+* Our archive is online.
+We do not possess a physical archive of documents or contractual documents and never bought or rented physical space for this purpose.
+* We never did own or rent any printer, land phone line or fax machine.
+The quality and speed of our Internet connect improve yearly.
+It is already above our keenest expectations.
 
 === What is NOT Working?
 
-Surprisingly most of the processes with private companies providing mandatory services cannot be done electronically due to obsolete information systems and cumbersome processes.
+Surprisingly, most of the processes with private companies providing mandatory services cannot be done electronically due to obsolete information systems and cumbersome processes.
 
-* Accident insurance (BU and NBU) still request declaration of incidents and communication over paper mail,
-* Pension fund insurance company provides a web portal but still send some forms over paper mail,
+* Accident insurance (BU and NBU) still request declaration of incidents and communication over paper mail.
+* Pension fund insurance company provides a web portal but still sends some forms over paper mail.
 * Tax declaration must still be printed out and sent to the tax office of the state government.
 
 None of the government solutions provide modern API.
 We still must manually input our data in their portals.
 The old interfaces they provide are only partially available through expensive commercial solutions.
-By old interfaces we mean proprietary formats and proprietary file transfer solutions.
+By old interfaces, we mean proprietary formats and proprietary file transfer solutions.
 
 === Findings
 
@@ -119,12 +131,13 @@ We never had to buy a printer.
 The last year we seldom had to scan a paper document.
 
 The partners still requesting paper interactions are some government agencies and some insurances.
-We observe a decrease of such physical interactions. Our partners are steadily - if sometimes slowly - digitizing their workflows.
+We observe a decrease of such physical interactions.
+Our partners are steady, if sometimes slowly, digitizing their workflows.
 
-Slowly digital versions for invoices are emerging.
+Slowly, digital versions for invoices are emerging.
 This approach should allow automated payment workflows.
-Interestingly private customers already have billing and e-payment solutions.
+Interestingly, private customers already have billing and e-payment solutions.
 Similar solutions for corporate customers are either not available or incredibly limited, cumbersome and expensive.
 
 The next big step will be the emergence of API to integrate the steps in a workflow specific to the involved companies.
-For example the technical part of the onboarding process for a new employee could be fully automated.
+For example, the technical part of the onboarding process for a new employee could be fully automated.

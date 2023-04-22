@@ -19,25 +19,25 @@ You need a strong engineering culture to achieve quality and lasting success.
 Often, coaches and Scrum masters tinker with the processes and invest effort and blood to improve the ceremonies and the company structure.
 
 But at the end of the day, the success of your application is defined by its adequacy to customers' needs and its overall quality.
-You need a solid and professional engineering culture to produce high-quality products and release them at high rate.
+You need a solid and professional engineering culture to produce high-quality products and release them at a high rate.
 If not, you just release a new set of defects to your paying customers.
 
 How do you establish and nurture a professional and effective engineering culture?
 
-=== Live and Breath Your Values
+=== Live and breathe Your Values
 
 Values drive your culture and the daily behavior of all your collaborators.
 But even if you have invested time and blood to identify the right values and put all the mechanisms in place, it might still not have the desired results.
 Culture is something that happens daily through personal interactions.
 Putting the right values and mechanisms in place will help move your company in the right direction, but it's not a guaranty for success.
 
-In order to increase your odds for success, you need to live and breath your values.
+In order to increase your odds for success, you need to live and breathe your values.
 You need to truly believe at all levels in the organization and not compromise on them.
 
 * Advocate for build-in quality.
 * Support employees first.
 * Promote technical excellence.
-* Don't be penny wise and pound foolish.
+* Do not be penny wise and pound foolish.
 
 === Communicating
 

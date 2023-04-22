@@ -106,11 +106,11 @@ The first steps to improve your product are quite simple are around for at least
 For example, I am using IntelliJ IDEA.
 They have extensive checkers.
 * If using https://www.sonarqube.org/[SonarQube], download link:../../2018/blog-2018-05-01]SonarLint plugin and simply use it.
-This tool is best of breed, do not argument and just use it -.
+This tool is best of breed, do not argument and just use it.
 * Write tests with JUnit5, Mockito, AssertJ, Cucumber.
 
 I am _ashamed_ to see software developers not implementing the above measures on a daily basis.
-I _despair_ encountering Scrum masters who tolerate the situation.
+I _despair_ of encountering Scrum masters who tolerate the situation.
 These techniques cost nothing, _are installed in a few minutes and support incremental improvement of your source code_.
 See also
 https://www.leadingagile.com/2018/09/software-developers-dont-need-permission-or-forgiveness/[Why software developers do not need to ask for permission or forgiveness].
