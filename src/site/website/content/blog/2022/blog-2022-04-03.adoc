@@ -57,13 +57,13 @@ _Interestingly, product managers often neglect this responsibility.
 They are fully aware of logistics and production issues.
 Seldom do they put similar effort in the development teams in charge of their products._
 
-==== Get the Product Built and Meet Market
+==== Get the Product Built and Meet the Market
 
 Product managers collaborate with agile functional teams to build the required functionality.
 
 Understand customer needs::
 As the representative of the customer, product management leverages market research and continuous exploration to continually understand your customer and market needs.
-Design thinking tools, ranging from personas, empathy maps, journey maps, and story maps are used to communicating these to the development teams.
+Design thinking tools, ranging from personas, empathy maps, journey maps, and story maps are used to communicate these to the development teams.
 Ensure product completeness::
 Product management is responsible for ensuring the product is considered _whole and complete_ from a defined customer’s perspective.
 Products that serve multiple market segments may have different considerations of _whole and complete_ and of
@@ -79,7 +79,7 @@ Because judicious selection and sequencing of features are a key economic driver
 prioritized.
 Participate in release and sprint planning::
 Product Management presents the vision, which highlights the proposed features of the solution, along with any relevant upcoming milestones.
-They also participate as sprint planning and are responsible for approving objectives and establishing business value.
+They also participate in sprint planning and are responsible for approving objectives and establishing business value.
 Define releases and program increments::
 Owning the _what_ means that product management is primarily responsible for release definition as well, including new features, architecture, and allocations for technical debt.
 This is accomplished through a series of releases, whose definition and business objectives are also determined by product management.
@@ -175,7 +175,7 @@ Successful executives shall master culture, market and technology to launch awes
 Leadership and collaborator management are a third specialization::
 Modern and agile approaches are still very young.
 The offerings are still quite old school and not well-tailored for digital companies.
-The still used term _human resources_ is quite the indicator how collaborators hiring and retainment is done wrong in old-fashioned organizations. +
+The still used term _human resources_ is quite the indicator of how collaborators hiring and retainment is done wrong in old-fashioned organizations. +
 Persons can never be considered as resources.
 They are unique individuals to be nurtured and respected.
 

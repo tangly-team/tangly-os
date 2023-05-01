@@ -34,7 +34,7 @@ A professional and planned approach greatly improves the odds of success for the
 image::2023-01-01-evaluation-approach.png[width=480,height=400,role=text-center]
 
 Identify Decision Criteria::
-Decide on your internal team, which help with making and supporting the decision.
+Decide on your internal team, which helps with making and supporting the decision.
 Put together a _must-have_ checklist for the capabilities required from a software solution company. +
 +
 Research different approaches and methodologies to discuss with your potential business partner.
@@ -70,18 +70,18 @@ What are the consequences for you and your partner?
 Consider the Location::
 Where will you want your external development partner to be <<agile-near-shore>>? +
 +
-If it is important that they can integrate with your team and frequently work onsite, you might want to only look at local software companies.
+If it is important that they can integrate with your team and frequently work on site, you might want to only look at local software companies.
 Evaluate travel time and not the distance to your partner offices. +
 +
-If you are open to working remotely with an onshore company, hold early conversations using the potential conferencing, documentation and chat systems.
+If you are open to working remotely with an onshore company, hold early conversations using the potential conferencing, documentation, and chat systems.
 You want to ensure your development team can provide help by video as much is lost in exclusively email team communications. +
 +
 Do not forget to account for travel in your budget if you shall expect it from your software development team.
-If you’re thinking of offshoring the work, be sure you consider how you will handle the difference in time zones and communication styles.
+If you are thinking of offshoring the work, be sure you consider how you will handle the difference in time zones and communication styles.
 Many companies offer low-cost solutions that include working with offshore teams to handle services like the help desk, product support, and simple development.
 Start Searching::
 Do not forget to keep track of your search as you go.
-Create a document that records potential companies, their attributes, who you are talked to, what you’ve learned, and any decisions you’ve made.
+Create a document that records potential companies, their attributes, who you are talked to, what you have learned, and any decisions you have made.
 Ask Tough Questions::
 Learn what challenges they have faced with previous clients and what they did to overcome them.
 If there is something you are particularly worried about, ask about their experience dealing with your prospective challenges to helping their other clients with similar solutions in the past<<detecting-agile-bullshit>>.
@@ -145,7 +145,7 @@ Are they collocated, in the same area, in the same timezone, distributed over mu
 * How is the technical documentation such as installation scripts, design decisions, component documents written and managed?
 * Could you provide your coding guidelines and documentation guidelines?
 * Are modern approaches such as domain-driven design, unit testing, acceptance testing, continuous integration, continuous delivery in place?
-* How can involved people have read-access to all artifacts?
+* How can involved people have read access to all artifacts?
 * How do you trace requirements to deliver versions of the product?
 * How do you upgrade an application to a newer version of the technology stack or newer libraries?
 * Which approaches do you use to continuously improve?

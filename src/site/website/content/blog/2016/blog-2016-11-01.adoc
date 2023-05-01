@@ -29,7 +29,7 @@ They use the data to select the best alternatives to reach the company’s goals
 Inspection::
 You cherish a failure culture because inspections will find weak points.
 You need a culture where people are never blamed.
-One consequence is that you eliminate management by objectives, and bonuses in your company.
+One consequence is that you eliminate management of objectives and bonuses in your company.
 Adaptation::
 You are ready to learn better approaches and truly believe there is a better solution.
 Processes change regularly bottom-up, company’s budget can only be a rolling indicative budget, and planning has to be _continuously_ updated.

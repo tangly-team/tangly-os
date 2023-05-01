@@ -82,7 +82,7 @@ Good practices shall be applied to refactor the application cite:[clean-code,cle
 
 Of course, just as microservices are not one size fits all solutions, neither is modularity.
 
-For developers working on small projects with small development teams, developing their code in a modular way may not be worth the added time, or formality.
+For developers working on small projects with small development teams, developing their code in a modular way may not be worth the added time or formality.
 
 === Final Thoughts
 

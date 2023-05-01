@@ -138,13 +138,13 @@ The ones writing the stories and estimating them shall implement them.
 === Fallback
 
 Hide the fact you are working the agile way.
-Don't tell the customer you are working any differently to normal.
+Do not tell the customer you are working any differently to normal.
 Clearly state internally why you do it and why your corporate values allow this solution.
 
 Estimate and plan the work as you would normally.
 Sign a perfectly normal contract.
 UseAgile techniques and especially {ref-xp} to improve delivery.
-You need to have a _don't ask, don't tell_ type policy because basically you are lying.
+You need to have a _do not ask, do not tell_ type policy because basically you are lying.
 
 === Conclusion
 

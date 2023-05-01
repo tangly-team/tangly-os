@@ -5,7 +5,7 @@ date: 2021-02-20
 tags: ["agile"]
 ---
 
-== Effective Working in Digital Age?
+== Effective Working in the Digital Age?
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
@@ -30,7 +30,7 @@ Coffee is also really better.
 
 My life would be more productive and fun if more people did better understand how to work in a digital world.
 
-Here a few advices to improve our work experience.
+Here are a few advices to improve our work experience.
 
 === Schedule an Appointment
 
@@ -50,7 +50,7 @@ Provide
 You can also provide links to the documents.
 Please do not require a login to access the document.
 * add the link and password for the online conference such as Zoom, Google Hangouts, Webex, Slack, or Microsoft Teams. +
-For a physical meeting, please provide room identification, and some information about how to get to the location.
+For a physical meeting, please provide room identification and some information about how to get to the location.
 I do not know where the meeting room _Dijkstra-R1-8.815_ is.
 
 You are responsible that all mandatory invitees will attend the meeting.
@@ -68,7 +68,7 @@ The newer versions of major tools from Microsoft, Google, Cisco now include work
 
 If you are responsible for the meeting event, please:
 
-. Check at the beginning of the meeting, that all attendees have studied the provided documentation.
+. Check at the beginning of the meeting that all attendees have studied the provided documentation.
 You should politely ask unprepared attendees to leave the meeting
 footnote:[If meeting preparation is difficult in your organization, implement the Amazon meeting rules.
 Amazon adds a silent half an hour block at the beginning of the meeting to allow attendees to read the documentation.
@@ -116,7 +116,7 @@ The rules to share a document are:
 Send me the link to the document in a shared repository I have access to.
 I mean everybody is using Google Drive, DropBox, or Microsoft One Drive
 footnote:[Beware you cannot search for such repositories, especially if you are using proprietary document formats such as Microsoft Office.
-The sole exception being Google Drive from the search engine company.].
+The sole exception is Google Drive from the search engine company.].
 
 The rules to edit a document are:
 
@@ -159,7 +159,7 @@ Adapt your analog processes to the digital world.
 Do not just copy them.
 Improve your processes and remove spurious activities.
 Introduce search capabilities for all produced artifacts.
-There is various tool solutions for Google, Microsoft, or old Lotus Notes to create, track, and archive meeting minutes.
+There are various tool solutions for Google, Microsoft, or old Lotus Notes to create, track, and archive meeting minutes.
 Similar offerings for web-hosted solutions are also available.
 These tools support the whole meeting planning, scheduling, and execution workflows.
 

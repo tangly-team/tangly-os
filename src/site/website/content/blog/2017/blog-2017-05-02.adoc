@@ -108,7 +108,7 @@ See How to link:../../2016/git-branches-for-the-impatient/[Git Branches for the 
 === Discarding Changes
 
 You find the changes you made locally were not a good decision.
-No problem, with
+No problem, you can erase these changes with:
 
 [source,shell]
 ----
@@ -144,4 +144,4 @@ Or on Linux and macOS:
 git config --global core.autocrlf input
 ----
 
-When using an IDE consider the https://editorconfig.org[Editor Configuration] approach for the end of line, indentation, and tabs versus spaces.
+When using an IDE, consider the https://editorconfig.org[Editor Configuration] approach for the end of line, indentation, and tabs versus spaces.

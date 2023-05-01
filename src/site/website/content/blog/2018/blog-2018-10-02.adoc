@@ -13,11 +13,11 @@ tags: ["agile"]
 
 image::2018-10-02-head.jpg[width=420,height=360,role=left]
 
-An agile team is sole-responsible for the internal quality of the product they build and maintain.
+An agile team is the sole responsible for the internal quality of the product they build and maintain.
 
-The developers shall be accountable for producing the expected quality and optimize long terms goals of the organization.
+The developers shall be accountable for producing the expected quality and optimizing long term goals of the organization.
 
-You as a developer have an ethical, professional and legal responsibility to insure adequate quality for your products.
+You as a developer have an ethical, professional and legal responsibility to ensure adequate quality for your products.
 
 Laws protect the confidentiality of their personal and financial data.
 It is a potential crime to leak credit card information, geolocation data or the worst personal documents.
@@ -35,14 +35,14 @@ https://www.scrumguides.org/scrum-guide.html[Scrum] and {ref-less} have a string
 The key question is
 
 [.text-center]
-_Considering our current context and capability, what activities can be completed each sprint?_
+_Considering our current context and capability, what activities can be completed in each sprint?_
 
 [.text-center]
 _This subset is the initial Definition of Done._
 
 A _Definition of Done_ is weak when it is a small subset and strong when it almost equals _Potentially Shippable_.
 
-In huger organizations, the development teams discuss their context and select the subset of the activities that all teams think they realistically can do during the sprint.
+In huge organizations, the development teams discuss their context and select the subset of the activities that all teams think they realistically can do during the sprint.
 This is their initial Definition of Done.
 The teams that can do more will expand this product _Definition of Done_ within their members.
 
@@ -74,11 +74,12 @@ Unfinished, or not done—work::
 that was planned in a sprint but was not completed.
 This is often confused with Undone Work.
 Unfinished::
-is work that the team planned for but did not finish whereas Undone Work was never even planned for.
+is work that the team planned for but did not finish, whereas Undone Work was never even planned for.
 When a team has work that was not finished, then they ought to feel anxious and discuss improvement actions during their retrospective.
 
 Teams should never leave work-in-progress at the end of the sprint and _carry over_ to the next one.
-This causes a lack of transparency and reduces scope flexibility.
+This causes a lack of transparency and reduces flexibility.
+The product owner has more trouble to change the scope of the application.
 If they forecast too much work, they need to remove completed items, which they have not started yet.
 
 === Scrum Guide Definition
@@ -122,7 +123,7 @@ The following criteria are often overlooked and also need to be checked:
 * The legal documents are done.
 * The deployment and migration scripts are available.
 
-The extension of the definition of done to deliver a potentially shippable product has often significant and profound impact on the structure of the organization and its processes.
+The extension of the definition of done _DoD_ to deliver a potentially shippable product has often significant and profound impact on the structure of the organization and its processes.
 Experienced agile coaches use the definition of done as an instrument for organizational changes.
 
 When the undone work is slowly removed from the delivery process, it triggers structural and process changes.

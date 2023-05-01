@@ -13,10 +13,10 @@ tags: ["java", "design", "domain-driven-design", "crm", "series-identifiers"]
 
 image::2020-08-01-head.png[width=420, height=360, role=left]
 A software architect models customer domains and maps them to powerful software abstractions.
-Soon you correlate internal efficient identifiers, meaningful external identifiers and domain entities.
+Soon you correlate internal efficient identifiers, meaningful external identifiers, and domain entities.
 You enjoy our long conversations with the enterprise data architect and find out the system owning a specific external identifier.
 
-How do you relate with external systems and communicate with other companies?
+How do you relate to external systems and communicate with other companies?
 
 How do you define internal identifiers, which grow with application success?
 
@@ -59,11 +59,11 @@ The drawback is that UUID is not a numerical value and cumbersome for a develope
 [NOTE]
 ====
 An interesting approach is to support unique identifiers in the context of a bounded domain.
-All entities of the domain will have a unique object identifiers.
+All entities of the domain will have unique object identifier.
 The implementation can use a sequence from the domain database or schema.
 A programmatic identity generator can also be established in the domain.
 
-Because the _oid_ is never exported, the solution is a powerful and simple to realize.
+Because the _oid_ is never exported, the solution is as powerful and simple to realize.
 ====
 
 History has taught developers not to spare on the size of identifiers.
@@ -88,16 +88,16 @@ This information shall be documented and accessible to all involved parties.
 This process is part of the enterprise architecture activities of your ecosystem.
 
 External identifier ownership is often a murky situation when working with legacy systems.
-You often have multiple sources of external identifiers, sometimes overlapping and sometimes no covering all instances.
+You often have multiple sources of external identifiers, sometimes overlapping and sometimes not covering all instances.
 You have to formulate a long-term strategy to clean up your landscape and handle the problems until these clean-up activities are completed.
-By handling we mean administrative and import rules matching the various external identifiers to the same object.
+By handling, we mean administrative and import rules matching the various external identifiers to the same object.
 
 One possible solution is to use tags.
 Store externally defined identifiers as tags.
 Document these tags as specific for the external system.
 This approach scales to multiple external identifiers, and multiple systems managing the same external identifier.
 So you have a scalable approach and do not pollute your domain model with spurious information defined in external systems.
-Upon completion of refactoring these tags document historical information and could safely be removed.
+Upon completion of refactoring, these tags document historical information and could safely be removed.
 
 Multiple external object identifiers imply the existence of mapping functions to identify the object referenced.
 Because the ownership of external identifiers is outside your system, you are dependent on these systems and have to hope they are good citizens.
@@ -144,7 +144,7 @@ More interesting is that a tourist living in the European zone has none of these
 Please implement the internal identifier feature as an interface marker.
 The external identifier and name features can be grouped into one interface.
 
-Additional information is available under link:../../docs/bus/businessmodels/.
+Additional information is available under link:../../docs/docs/core/models/[models].
 Below the source code in modern Java is:
 
 [source,java]

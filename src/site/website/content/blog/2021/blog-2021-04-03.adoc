@@ -15,7 +15,7 @@ image::2021-04-03-head.png[width=420,height=360,role=left]
 Lately, I was asked which new approaches should be used for agile requirements engineering.
 Did we find a new silver bullet to write software specifications the agile way?
 
-The answer is an easy one.
+The answer is easy.
 We do not need new approaches or complicated processes.
 Start with proven principles and learn.
 
@@ -90,7 +90,7 @@ You can extend your automatic validation to non-functional requirements with the
 
 === Background
 
-You could use following reference books to bootstrap and strengthen your agile specification process:
+You could use the following reference books to bootstrap and strengthen your agile specification process:
 
 Specification by example::
 was published in 2009, twelve years ago cite:[bridging-communication-gap].
@@ -101,7 +101,7 @@ User Story Mapping::
 Mike Cohn did also write about user stories cite:[user-stories-applied].
 Building Evolutionary Architectures::
 Fitness functions are described in this seminal book cite:[building-evolutionary-architectures].
-It is also a recommended reference of my _SWAT Software Architecture and Techniques_ bachelor lecture taught at technical universities.
+It is also a recommended reference to my _SWAT Software Architecture and Techniques_ bachelor lecture taught at technical universities.
 The book was published in 2017, five years ago.
 
 I currently teach the _SWAT_ course at the department of computer science of the technical university of Luzerne.

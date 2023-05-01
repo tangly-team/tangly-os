@@ -13,7 +13,7 @@ tags: ["design", "domain-driven-design", "crm", "series-identifiers"]
 
 image::2021-01-01-head.png[width=420,height=360,role=left]
 
-This post discusses the value object pattern, and the factory pattern, which are tactical patterns in the domain driven design
+This post discusses the value object pattern, and the factory pattern, which are tactical patterns in the domain-driven design
 https://en.wikipedia.org/wiki/Domain-driven_design[DDD] approach.
 
 Value objects represent typed values that have no conceptual identity in your domain.
@@ -102,7 +102,7 @@ The following design challenges exist
 A workable approach is described and implemented with the open source component http://blog.tangly.net/docs/gleam/[Gleam].
 The solution is to define selectors to instantiate the correct Java class.
 * Invoices are complex objects and ideal candidates for a document-oriented persistent approach.
-Invoices should not be stored in a relation based persistence store, meaning an SQL database.
+Invoices should not be stored in a relation-based persistence store, meaning an SQL database.
 To store them in a table, you have to model the various types of lines and add a technical identifier to each invoice line instance.
 
 === Factories

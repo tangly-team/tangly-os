@@ -14,9 +14,10 @@ tags: ["java", "series-students"]
 image::2023-05-01-head.png[width=420,height=360,role=left]
 
 Java 20 was released on time to the public.
-The release is available for download on 21^st^ March 2023.
+The release is available for download since 21^st^ March 2023.
 
 Interestingly, the new Java release contains only incubating or preview https://openjdk.org/jeps/0[JEP] proposals.
+No final improvements are part of this version.
 
 You are a Java developer, you should always install the latest JDK and try it out.
 Most of the time, all your products will compile and run on the new release without any changes.
@@ -47,7 +48,7 @@ The project https://openjdk.org/projects/panama/[Panama] refined the access to f
 === Algebraic Types and Pattern Matching
 
 Brian Goetz and his team are adding syntactic sugar constructs to the language.
-Step by step the https://en.wikipedia.org/wiki/Algebraic_data_type[algebraic data types] with records and sealed types and the pattern matching tools move Java to more complete functional programming approaches.
+Step by step the https://en.wikipedia.org/wiki/Algebraic_data_type[algebraic data types] with records <<java-immutability>> and sealed types and the pattern matching tools move Java to more complete functional programming approaches.
 
 The sum of small improvements finally empowers us to write more legible source code.
 The switch expression is an elegant and compact solution for conditional selection.
@@ -75,13 +76,24 @@ We want to interface to external digital systems and powerful libraries.
 https://en.wikipedia.org/wiki/Java_Native_Interface[JNI] solution is obsolete.
 Panama project provides way better approaches to interface with external libraries.
 
-
 === Thoughts
 
-Java is steadily improving if sometimes slowly
+Java is steadily improving <<modern-java-development>> if sometimes slowly
 footnote:[I am waiting since 2018 that Brian Goetz proposal of concise method bodies is implemented in a JDK.].
 
-Seminal works cite:[effective-java-3rd, functional-programming-java] provides examples how to write modern and expressive Java code.
+The project https://openjdk.org/projects/amber/[amber] is a powerful driver for regular Java improvements.
+The next goodies for JDK LTS 21 should be https://openjdk.org/jeps/431[Sequenced Collections] and https://openjdk.org/jeps/430[String Templates].
+Especially the string templates will simplify quite a few lines of our code.
+
+The tools are also getting better.
+For example, IntelliJ IDEA and Gradle provide timely updates for newer Java versions
+
+Support for newer features in regular libraries is catastrophic.
+The Java community emphasizes backward compatibility and sacrifices elegance
+footnote:[I advocate that libraries should target the latest LTS version of Java.
+This approach ensures that a library is at most two years behind the latest Java release.].
+
+Seminal works cite:[effective-java-3rd,functional-programming-java] provides examples how to write modern and expressive Java code.
 Cool products <<vaadin>> allow the creation of digital products and user interfaces using only the Java stack.
 
 An introductory book cite:[java-by-comparison] helps newcomers to the Java language.
@@ -89,18 +101,27 @@ An introductory book cite:[java-by-comparison] helps newcomers to the Java langu
 The diagram shows the hot topics in the Java ecosystem.
 The adoption takes time before a majority of development organizations jump on the train.
 
-The adoption of the Java 17 LTS edition is still in the early adoption phase after two years.
-We should rather state that the majority of Java teams are laggards.
+The adoption of the Java 17 LTS edition is still in the early adoption phase after two years, as stated in the below diagram.
+
+We should rather state that the majority of Java teams are laggards, also called more politely _late majority_.
 
 image::2023-05-01-java-trends.png[role=text-center]
 
 [bibliography]
 === Links
 
-- [[[vaadin, 1]]]  link:../../2022/vaadin/[Vaadin]. Marcel Baumann. 2022.
-- [[[java-19,2]]] link:../../2021/jdk-17/[Java 17]. Marcel Baumann. 2021.
-- [[[java-16, 3]]] link:../../2021/jdk-16/[Java 16]. Marcel Baumann. 2021.
-- [[[java-10, 4]]] link:../../2018/java-10-aka-18.3-changes/[Java 10 aka 18.3 Changes]. Marcel Baumann. 2018.
+- [[[vaadin, 1]]]  link:../../2022/vaadin/[Vaadin].
+Marcel Baumann. 2022.
+- [[[java-19,2]]] link:../../2021/jdk-17/[Java 17].
+Marcel Baumann. 2021.
+- [[[java-16, 3]]] link:../../2021/jdk-16/[Java 16].
+Marcel Baumann. 2021.
+- [[[java-10, 4]]] link:../../2018/java-10-aka-18.3-changes/[Java 10 aka 18.3 Changes].
+Marcel Baumann. 2018.
+- [[[java-immutability, 5]]] link:../../2022/immutability-in-java/[Immutability in Java].
+Marcel Baumann. 2022.
+- [[[modern-java-development, 6]]] link:../../2021/modern-java-development/[Modern Java Development].
+Marcel Baumann. 2021.
 
 === References
 

@@ -85,14 +85,14 @@ If not, they are pretending to do DevOps and lying to you.
 
 The next step is to configure an automatic continuous delivery.
 This pipeline packages the complete solution and delivers as an installation package.
-This package can be deployed in staging area without manual configuration.
+This package can be deployed in the staging area without manual configuration.
 
 Only professional DevOps teams shall dare to implement continuous delivery.
 
 The areas that a DevOps engineer must be competent are:
 
 Version Control Systems::
-Any DevOps engineer's has expertise in Git, and platforms such as GitHub, GitLab, or BitBucket.
+Any DevOps engineer has expertise in Git, and platforms such as GitHub, GitLab, or BitBucket.
 Infrastructure as Code _IaC_ is used to build and deploy digital products.
 Documentation is always synchronized with the source artifacts.
 Approaches such as static websites are preferred.
@@ -150,7 +150,7 @@ You want to start your journey with DevOps.
 Success requires actions in three areas.
 First, your development teams must adopt automated pipelines to create a new version of your application and deploy it.
 Second, you shall monitor your productive servers to infer service level agreement metrics.
-Indicators are used to improve the application to changing usage patterns.
+Indicators are used to improve the application by changing usage patterns.
 Third, a continuous improvement initiative shall continuously improve quality and effectiveness.
 
 You shall provide at least the following capabilities for all your teams and products:
@@ -158,7 +158,7 @@ You shall provide at least the following capabilities for all your teams and pro
 Development:: Focus on automation and repeatability.
 Measure deployment frequency and deployment duration.
 * Each product can be checked out locally from a git repository and built with less than five commands.
-* Each product is built in a continuous delivery pipeline and packaged for deployment in a staging area or on production.
+* Each product is built in a continuous delivery pipeline and packaged for deployment in a staging area or in production.
 Static code analysis and automated tests are executed in the pipeline.
 They provide an automated, tracked and documented quality gate.
 * Each production version is tagged in the repository including associated documentation and technical instructions.
@@ -174,7 +174,7 @@ The developing team can quickly rectify errors or hiccups in the workflow withou
 A governance goal could be to always update libraries once a security defect is corrected.
 Empiricism and data are the building block to quality and sustainable improvements.
 https://en.wikipedia.org/wiki/Continual_improvement_process[Continuous Improvement]:: Take small steps.
-Measure number of improvements, average lead time, and improvement impact.
+Measure the number of improvements, average lead time, and improvement impact.
 * Each product development team has a continuous improvement initiative.
 The measures for the next releases are documented and progress is tracked.
 * Each measure is regularly evaluated for adequacy and success.
@@ -189,7 +189,7 @@ _I shall install the needed development tools based on written instruction avail
 . You give access to a product repository.
 I can initiate a complete build and delivery action in a continuous integration and delivery pipeline.+
 _I shall use the CI/CD tool chosen for the product._
-. I can check out, build and deploy the two last releases on a staging area with less than ten commands.
+. I can check out, build and deploy the two last releases in a staging area with less than ten commands.
 . You give me access to the list of all issues and changes ongoing in the repository.
 The list is specific to one product.
 I see the information such as priority, cycle-time of these issues and in which release the issue was fixed.
@@ -277,7 +277,7 @@ These are the official values of {ref-scrum}.
 Be honest with yourself.
 
 If you do not have concrete and visible initiatives in the areas of development _Dev_, running _Ops_ and continuous improvement, you are just pretending to be a professional.
-But in reality you are just an amateur.
+But in reality, you are just an amateur.
 
 === Glossary
 
@@ -298,10 +298,10 @@ Biedenharn, personal communication, October 2018 - describes the goal of automat
 It functions with a single command, thus not requiring a multistep procedure.
 Single Source Repository::
 Fowler, 2006 - allows teams to keep the main project codebase in one easy-to-access location.
-This allows for easy version control; and, for any new team members to get up and running easily.
+This allows for easy version control; and for any new team members to get up and running easily.
 Technical Excellence::
 managing constraints on software development via techniques, individual skills, and practices as a team.
-Generally, this includes test-driven development, collective code ownership, continuous integration, _ego-less programming_ (Gerald Weinberg).
+Generally, this includes test-driven development, collective code ownership, continuous integration, and _ego-less programming_ (Gerald Weinberg).
 Personal commitment to self-improvement in pursuit of software development as a craft is the driver for technical excellence.
 Test-Driven Development::
 development driven by automated tests _published by Beck, 2014_:

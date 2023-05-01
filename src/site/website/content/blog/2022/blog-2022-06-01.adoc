@@ -55,9 +55,9 @@ _Try to avoid extending domain entities with implementation specific root classe
 Infrastructure::
 A supporting layer for the other layers.
 This layer contains supporting libraries or external services like a database or UI supporting library. +
-_I use libraries to minimize effort in support functions such as persistence, JSON transformation, archiving and reporting.
+_I use libraries to minimize effort in support functions such as persistence, JSON transformation, archiving, and reporting.
 The microstream library is a good example of this approach.
-The persistence capability is less than fifty lines of codes.
+The persistence capability is less than fifty lines of code.
 No changes in the domain model was necessary.
 We did not have to add a root persistent class or use annotations._
 
@@ -122,13 +122,13 @@ The names with the regular font are package names, the ones in italics are class
 The infrastructure supports classes are not part of this structure.
 These classes shall be defined in a separate Java module and imported with regular dependency declaration.
 
-We use the https://www.archunit.org/[ArchUnit] tool to insure the expected structure is provided for each bounded domain.
+We use the https://www.archunit.org/[ArchUnit] tool to ensure the expected structure is provided for each bounded domain.
 
 The user interface for a bounded domain is stored in a separate package and often in its own Java module.
 The bounded domain implementation shall not constrain the technologies used to provide a user interface.
 Different approaches for user interface realization are available and no clear winner can currently be identified.
 
-I mainly use https://www.vaadin.com[Vaadin] to realize browser or mobile first internal applications.
+I mainly use https://www.vaadin.com[Vaadin] to realize browser- or mobile-first internal applications.
 
 === Java Considerations
 
@@ -212,7 +212,7 @@ a relationship between two contexts that cooperates to align the two teams with 
 Shared Kernel::
 a kind of relationship when common parts of several contexts are extracted to another context/module to reduce code duplication.
 Customer-supplier::
-a connection between two contexts, where one context (upstream) produces data, and the other (downstream) consume it.
+a connection between two contexts, where one context (upstream) produces data, and the other (downstream) consumes it.
 In this relationship, both sides are interested in establishing the best possible communication.
 Conformist::
 this relationship also has upstream and downstream, however, downstream always conforms to the upstream’s APIs.

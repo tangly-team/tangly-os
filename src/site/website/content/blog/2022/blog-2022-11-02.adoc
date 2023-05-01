@@ -71,7 +71,7 @@ We call the following goals to generate the aggregation results:
 ./gradlew testAggregateTestReport <1>
 ./gradlew testCodeCoverageReport  <2>
 ----
-<1> Generates an aggregate report over all unit tests. Run first gradle test.
+<1> Generates an aggregate report over all unit tests. Run before the gradle test.
 <2> Generates a code coverage aggregate report over all unit tests. Run first gradle jacocoTestReport.
 
 === Learnings

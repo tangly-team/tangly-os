@@ -1,7 +1,7 @@
 ---
 title: "Cloud Java Applications"
 linkTitle: "Cloud Applications"
-date: 202-08-01
+date: 2025-08-01
 tags: ["agile", "series-students"]
 ---
 
@@ -62,3 +62,10 @@ I am not really interested in setting up it again on a proprietary cloud provide
 GitHub, GitLab, and BitBucket are well-known platforms for agile software development and application packaging.
 
 The cloud solution shall concentrate on the functions of deploying an application and monitoring it.
+
+[bibliography]
+=== Links
+
+=== References
+
+bibliography::[]

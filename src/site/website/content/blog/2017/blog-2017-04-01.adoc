@@ -40,7 +40,7 @@ http://www.codypowell.com/taods/2009/12/the-codypo-test-aka-8-questions-to-ident
 The questions are up-to-date.
 His final remark is worth remembering.
 
-No matter how great the potential projects and teammates might be, I don't think you can do truly meaningful work in an environment where you, the developer, aren't empowered to succeed.
+No matter how great the potential projects and teammates might be, I do not think you can do truly meaningful work in an environment where you, the developer, are not empowered to succeed.
 
 If a company does not get that, then they do not get the software.
 
@@ -51,7 +51,7 @@ My personal list is:
 * Is respect a key value of your organization and your team?
 * Are you creating a meaningful product and improving the quality of life?
 * Are you working in an agile team, preferably a Scrum team?
-* Has your team as sustainable development rhythm?
+* Has your team a sustainable development rhythm?
 * Are you using good software practice daily, such as TDD, ATDD, refactoring, check-in in Git master, CI/CD, deliver each day?
 * Can you contribute to the open source projects you are using during work time?
 * If you are developing in Java, are you using IntelliJ IDEA as your IDE?

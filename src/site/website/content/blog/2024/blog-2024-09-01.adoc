@@ -1,11 +1,11 @@
 ---
-title: "Java 21"
-linkTitle: "Java 21"
+title: "Vaadin 24"
+linkTitle: "Vaadin 24"
 date: 2024-09-01
-tags: ["java"]
+tags: ["java", "vaadin"]
 ---
 
-== Java 21 LTS
+== Vaadin 24 User Interfaces
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
@@ -13,13 +13,40 @@ tags: ["java"]
 
 image::2024-09-01-head.jpg[width=420,height=360,role=left]
 
+=== In-Memory Application
 
-=== Amber Project
+All application data is loaded in-memory using the MicroStream
 
-=== Loom Project
+=== Grid Sorting and Filtering
 
-=== Panama Project
+=== Vaadin Component Factory
 
-=== Valhalla Project
+[TIP]
+====
+Consultants often condemn server-side solutions.
+They declare these solutions not scalable and useable in a productive context.
 
-==== Lilliput and Leyden Projects
+I concur that it would not be possible to implement Twitter with this approach.
+But how much memory does a Vaadin application need?
+
+Experiments show that around 9'000 parallel users require 1 GB of RAM.
+A small server has easily 4 GB and would handle more than 30'000 parallel users without any problem.
+
+Be honest.
+The solutions we are developing seldom have more than a few hundreds of concurrent users.
+Very few deployed applications have more than 5'000 users.
+====
+
+=== Authentication and Authorization
+
+=== Internationalization and Localization
+
+[bibliography]
+=== Links
+
+- [[[vaadin-performance, 1 ]]] https://vaadin.com/blog/how-many-users-can-you-host-per-node-lets-do-the-math[How Many Users Can You Host per Node, Do the Math].
+Matti Tahvonen. 2023.
+
+=== References
+
+bibliography::[]

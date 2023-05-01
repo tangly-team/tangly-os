@@ -62,7 +62,7 @@ For example, they can be assigned to variables, passed in as arguments, or retur
 ----
 
 <1> Define a new record _Person_ with two string properties _firstname_ and _lastname_.
-<2> Create a new record instance with firstname _John_ and lastname _Doe_ and assiociates it with reference _aPerson_.
+<2> Create a new record instance with firstname _John_ and lastname _Doe_ and associates it with reference _aPerson_.
 <3> Return the firstname of _aPerson_.
 <4> Create a new record instance with the values of _aPerson_ and the new value _Jane_ for the _firstname_.
 
@@ -231,7 +231,7 @@ The result of calling that function with the current value is stored in the atom
 *Refs* allow multiple threads to update multiple values in a co-ordinated way.
 All updates to all refs inside a sync will complete or none will.
 You *must* write your code such that transaction retries are catered for.
-There are a few potential performance tweaks, if you can relax the ordering of operations, which *may* reduce the chance of transaction retry.
+There are a few potential performance tweaks if you can relax the ordering of operations, which *may* reduce the chance of transaction retry.
 ====
 
 === Embrace Modern Java
@@ -273,6 +273,9 @@ None of the functional languages such as Clojure, List, F# has taken over the wo
 
 The principles you learnt shall often be applicable to your technology stack.
 Your code will certainly be simpler, more legible and maintainable.
+
+Some advanced concepts exist to better integrate Clojure with Java and provide object-oriented features to the language.
+I would recommend using Java to teach these concepts and restrict Clojure teaching to functional programming aspects.
 
 I wish you happy coding in the functional world of Clojure.
 

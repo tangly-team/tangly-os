@@ -43,7 +43,7 @@ The bigger your application, the more helpful is compiler support.
 * Stand-ups are actually useful for keeping an eye on the newbies.
 They help to detect a team member stuck in a loop.
 * Sprint retrospectives have their place so long as they are for actual improvements.
-They are the _holy shit, well that went poorly!_, and not some awful scrum master driven waste of everyone's time.
+They are the _holy shit, well, that went poorly!_, and not some awful scrum master driven waste of everyone's time.
 * Developers should not be isolated or left to just code.
 Bypassing traditional product managers and agile product owners, they should talk directly to the customer.
 It always reveals more about the problem, in less time, and with higher accuracy.

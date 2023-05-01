@@ -22,18 +22,19 @@ The legal Swiss institutions, such as taxes, social insurances, and accident ins
 
 I had to found a limited liability company with a capital of CHF 20'000.
 
-Here the steps for the impatient.
+Here are the steps for the impatient.
 
 === Foundation
 
 . https://www.swissregistration.ch/[Swissregistration] wrote the statutes for the company and performed the foundation with certifying notary for CHF 780.
-Six hours after the first phone call they sent me the electronic documents.
+Six hours after the first phone call, they sent me the electronic documents.
 The next day, the documents were delivered in paper form.
 It was really impressive.
-. Before you can find a company you must deposit the capital into a special account.
+. Before you can find a company, you must deposit the capital into a special account.
 I choose https://www.postfinance.ch/[Postfinance].
 It is a well-known Swiss institute and their fee is only CHF 145.
-They insisted I met one of their collaborators to fill their forms – probably never heard about web forms -.
+They insisted I met one of their collaborators to fill their forms.
+They probably never heard about web forms.
 I had bad luck.
 They needed three weeks to create the account and send payment confirmation.
 They were aware of the problem and very helpful, but it still took three weeks.
@@ -54,7 +55,7 @@ They are arrogant morons.
 * BU/NBU – the best offer was from https://www.baloise.ch/[Basler Versicherung]
 When starting a software startup I suggest not concluding any other insurances
 
-The government controlled social insurance contracts can only be initiated once the company is registered in the Swiss company registry.
+The government-controlled social insurance contracts can only be initiated once the company is registered in the Swiss company registry.
 The AHV center needed more than two weeks to confirm my registration.
 
 === Lessons Learnt

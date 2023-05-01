@@ -13,13 +13,13 @@ tags: ["agile", "series-swiss-agile-trends"]
 
 image::2016-10-01-head.jpg[width=420,height=360,role=left]
 
-What are the main hurdles to introduce agile approaches in Swiss companies?
+What are the main hurdles to introducing agile approaches in Swiss companies?
 
 * Introducing agile company-wide is a cultural change process.
 Such a change takes time and sometimes hurts.
-* Without commitment of senior management, the initiative will fail.
+* Without the commitment of senior management, the initiative will fail.
 * Doubt that lean or agile works for big projects, doubt you can convince your collaborators and middle management, doubt your customers agree with lean,
-* At the end, what matters are collaborator purpose, customer satisfaction, business value.
+* In the end, what matters are collaborator purpose, customer satisfaction, business value.
 
 http://www.swissq.it/[SwissQ] has published a "SwissQ Agile Trends & Benchmarks Switzerland 2013".
 The study can be downloaded as PDF from their website.
@@ -34,7 +34,7 @@ The number in parentheses is the value found in the study for year 2012.
 Bold items are new in the 2013 study and have no 2012 values.
 
 * 72% (95%): Capabilities to handle organizational changes and the culture
-* 53% (-%): Difficulty how to handle the loss of control - from management perspective -
+* 53% (-%): Difficulty how to handle the loss of control seen from a management perspective
 * 28% (37%): Availability of skilled collaborators in the area of agile approaches
 * 25% (34%): Projects are too big or too complex
 * 23% (39%): Overall resistance against changes
@@ -50,7 +50,7 @@ Companies seem less reluctant to introduce agile approaches.
 Major opponents such as senior managers or internal and external customers more and more acknowledge the success of agile approaches.
 The two first identified hurdles still reflect the difficulty of changes at company level.
 They are also the main reasons why a Scrum introduction fails in Swiss companies for my experience.
-Too often, companies revert to some Waterfall/Hermes process or worst to a so-called internal ad-hoc method.
+Too often, companies revert to some Waterfall/Hermes process or worst to a so-called internal adhoc method.
 
 We wrote in previous blogs that introducing Scrum in the development department or in the whole company is a
 http://en.wikipedia.org/wiki/Change_management[change process].
@@ -68,7 +68,7 @@ The Scrum Master serves the organization in several ways, including:
 * *Planning* Scrum implementations within the organization;
 * Helping employees and stakeholders understand and enact Scrum and empirical product development;
 * Causing change that increases the productivity of the Scrum Team; and,
-* *Working* with other Scrum Masters to increase the effectiveness of the application of Scrum in the organization.
+* *Working* with other Scrum Masters to increase the effectiveness of how to apply Scrum in the organization.
 ____
 
 The Scrum Master is a main driver for the introduction of Scrum in all departments and levels in the company.
@@ -78,13 +78,13 @@ He indeed needs senior management support, but the Scrum Master daily job is to 
 
 Computerworld Switzerland has published an article about the main reasons why projects are late or cancelled in Switzerland in the April 2013 _CIO Agenda_ edition.
 The study uses data from Computerworld and Experteer.
-As an excerpt I gave you the four major identified failure reasons.
+As an excerpt, I gave you the four major identified failure reasons.
 
 . Changes during the product (62% Computer, 48% Experteer) _Agile and Scrum welcome changes in the product.
 It is one of the four mantras of the Agile Manifesto.
 All agile processes are optimised to support changes._
 . Unclear product definition forms the business stakeholders (50% Computer, 43% Experteer) _Scrum requests a clearly stated vision, roadmap and story map of the product._ _The Scrum board is a radiator to communicate the product vision, goals, and motivations to all interested parties._
-. Insufficient product management and controlling (40 % of Computer, 4847 Experteer) _Scrum team, product owner, and Scrum master have clear responsibilities for product management._ _At the end of each sprint we have an objective and explicit control point._
+. Insufficient product management and controlling (40 % of Computer, 4847 Experteer) _Scrum team, product owner, and Scrum master have clear responsibilities for product management._ _At the end of each sprint, we have an objective and explicit control point._
 . Insufficient communication between involved persons (36% Computer, 45% Experteer) _Scrum framework enforces clear, transparent and regular communication within the team and with all stakeholders._
 
 In one sentence, be agile, use {ref-scrum} and {ref-xp} and the major four above problems are handled in a professional and consistent way.

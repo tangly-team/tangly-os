@@ -1,6 +1,6 @@
 ---
 title: "Scrum Masters and Agile Coaches"
-linkTitle: "Masters vs Coaches"
+linkTitle: "Master vs Coach"
 date: 2023-03-01
 tags: ["agile"]
 ---

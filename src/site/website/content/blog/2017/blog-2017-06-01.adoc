@@ -45,7 +45,7 @@ The quality gap makes it impossible to maintain the pace in the long run.
 Fake Agile::
 occurs when a team declares itself Agile and blames everyone else for their failure to interact correctly with the group.
 Such a group typically stops writing documentation, listening to business analysts, product managers and other customers, and dictates its own delivery schedule.
-Meanwhile, the team does not improve quality, does not adopt test driven development or any other practice they dislike.
+Meanwhile, the team does not improve quality, does not adopt test-driven development or any other practice they dislike.
 Potemkin Agile::
 occurs when a team adopts and applies an Agile method well but does not deliver business value.
 This is a form of goal deferment were the team consider adhering to the process rather than delivering business value as the success criteria.
@@ -87,7 +87,7 @@ We can state that (see the {ref-scrumguide})
 
 * Team process improvement is a major focus for the Scrum Master or the Scrum Coach
 ** Coaching the Development Team in self-organization and cross-functionality.
-** Teaching and leading the Development Team to create high value products.
+** Teaching and leading the Development Team to create high-value products.
 ** Removing impediments to the Development Team’s progress,
 ** Facilitating Scrum events as requested or needed.
 ** Coaching the Development Team in organizational environments in which Scrum is not yet fully adopted and understood.

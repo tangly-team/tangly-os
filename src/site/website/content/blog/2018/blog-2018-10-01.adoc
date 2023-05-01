@@ -17,7 +17,7 @@ You are developing your product using agile and lean approaches.
 How can you check your approach and distill improvements?
 Health check of your product and your development approach are certainly a good solution.
 
-This post is the first of a series of articles identifying health checks with different focus.
+This post is the first of a series identifying health checks with different focus.
 We will identify strengths, potential weaknesses and hopefully find room for improvement.
 
 The initial examination shall always be the source code.

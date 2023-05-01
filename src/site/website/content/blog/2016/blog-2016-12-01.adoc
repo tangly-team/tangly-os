@@ -28,10 +28,10 @@ Below a list of tasks you do *NOT* need anymore to do in {ref-scrum}.
 * Make commitments on behalf of the team about how much they can get done by a certain date or estimate effort for the team.
 * Coerce the team that the commitments made on their behalf are attainable.
 * Coerce the team to change their estimates.
-* Give direction to the team on how to implement the work.
+* Give a direction to the team on how to implement the work.
 * Monitor the team's progress to make sure they stay on schedule.
 * Step in and determine the solution.
-* Conduct weekly status update and face to face meetings with the team to surface issues and provide direction.
+* Conduct weekly status update and face to face meetings with the team to surface issues and provide a direction.
 * Provide motivation and push the team to work harder than they might want to use carrots and sticks.
 * Decide task assignments among the team members and follow up on tasks to verify completion.
 Force them to work during weekends.
@@ -47,16 +47,16 @@ Force them to work during weekends.
 image::2016-12-01-scrum-anti-patterns.jpg[role=center]
 The above Scrum anti-patterns picture shows more common misunderstandings about the Scrum framework.
 
-As a Scrum practitioner, you should regularly read material, attend formal trainings, and seek advanced certifications.
+As a Scrum practitioner, you should regularly read material, attend formal training, and seek advanced certifications.
 
 You as Scrum master or agile product manager have to perform important and useful tasks:
 
 * Help to remove impediments to increase the velocity of a team.
-* Coach team to implement Scrum and reflect on their activities.
+* Coach the team to implement Scrum and reflect on their activities.
 * {ref-pdca} _Plan Do Check Act_ principle is built into Scrum with retrospectives and sprint reviews.
 * Coach product owner to deliver a groomed and refined backlog.
 * Inform and support all product's stakeholders.
-* If you reflect on these two lists it becomes obvious that the first list describes malfunctions and the second one describes mechanisms how to improve continuously - lean principles -.
+* If you reflect on these two lists, it becomes obvious that the first list describes malfunctions and the second one describes mechanisms how to improve continuously - lean principles -.
 
 https://en.wikipedia.org/wiki/Jeff_Sutherland[Jeff Sutherland] gives some interesting insights about the Scrum master
 
@@ -81,5 +81,5 @@ The PMI-ACP is working on integrating agile approaches in the official PMI appro
 
 An official definition of Scrum and the responsibilities of the team, product owner and Scrum master are documented in {ref-scrumguide}.
 
-A https://www.agilealliance.org/agile101/agile-glossary/[glossary of agile terms] is provided by the agile alliance.
+The agile alliance provides a https://www.agilealliance.org/agile101/agile-glossary/[glossary of agile terms].
 

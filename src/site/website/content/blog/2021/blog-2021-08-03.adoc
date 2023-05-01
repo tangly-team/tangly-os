@@ -32,7 +32,7 @@ The *Scrum Master* is accountable for establishing *Scrum* as defined in the Scr
 They do this by helping everyone understand Scrum theory and practice, both within the Scrum Team and the organization.
 
 The https://scrumguides.org/scrum-guide.html#scrum-master[Scrum Master] is accountable for the Scrum Team’s effectiveness.
-They do this by enabling the Scrum Team to improve its practices, within the Scrum framework.
+They do this by enabling the Scrum Team to improve its practices within the Scrum framework.
 
 Scrum Masters are true leaders who serve the Scrum Team and the larger organization.
 
@@ -64,7 +64,7 @@ The certification path has three levels:
 
 Certified Scrum Master::
 Introduction course for those who are closest to the _organization_ of the project. +
-_It is usually a two days training.
+_It is usually two days of training.
 The https://www.scrum.org[Scrum.org] allows taking the certification examination without attending a course._
 Certified Advanced Scrum Master::
 Advanced course for Scrum Masters who already have one year of experience on a Scrum team. +
@@ -73,7 +73,7 @@ You should read the recommended books to have a greater probability to pass the 
 Certified Scrum Professional Scrum Master::
 Pinnacle course for experts wishing to master the Scrum Master track. +
 _The third level requires more training, experience, and reading books.
-You often must participate to workshops before being allowed to graduate.
+You often must participate in workshops before being allowed to graduate.
 Each certification organization has her own rules and conditions._
 
 Beware if you select the https://www.scrumalliance.org/[Scrum Alliance], you must renew your certification every two years.
@@ -98,7 +98,7 @@ https://scrumguides.org/scrum-guide.html#sprint-review[Sprint Review], and https
 .. discuss the focus of the activities of the Product Owner and Development Team during the two topics of Sprint Planning: the _What_ and the _How_.
 .. practice writing a Sprint Goal.
 .. discuss at least three ways the Daily Scrum differs from a status meeting and why the various constraints exist to support the Development Team.
-.. describe at least three activities that occur during the Sprint Review other than; a demonstration of the
+.. describe at least three activities that occur during the Sprint Review other than a demonstration of the
 https://scrumguides.org/scrum-guide.html#increment[increment].
 .. identify at least three potential outcomes for a Sprint Review.
 .. describe at least two approaches to conduct a Sprint Retrospective.
@@ -144,7 +144,7 @@ I published a list of seminal works for interested Scrum masters under link:../.
 
 image::2021-08-03-pmi-talent-triangle.png[width=420,height=360,role=left]
 
-An interesting development is the addition of tailored project management trainings emphasizing agile approaches.
+An interesting development is the addition of tailored project management training emphasizing agile approaches.
 The biggest organization https://www.pmi.org[PMI] has a whole set of agile certifications based on
 https://www.pmi.org/certifications/agile-certifications[Disciplined Agile Design] _DAD_.
 
@@ -154,7 +154,7 @@ I expect the emphasis on agile approaches to markedly increase in the next years
 
 Technical universities in Switzerland provide formal training in project leadership, project management and related fields.
 The formation provides a certificate of advanced study CAS in the field.
-Current available certificates of advanced study offering are for example:
+Current available certificates of advanced study offering are, for example:
 
 * FHNW https://www.fhnw.ch/de/weiterbildung/wirtschaft/cas-agile-leadership[CAS Agile Leadership]
 * FHNW https://www.fhnw.ch/de/weiterbildung/technik/cas-agile-organisation[CAS Agile Organization]
@@ -194,4 +194,4 @@ Jeff Sutherland, Ken Schwaber. 2020
 
 === References
 
-bibliography:[]
+bibliography::[]

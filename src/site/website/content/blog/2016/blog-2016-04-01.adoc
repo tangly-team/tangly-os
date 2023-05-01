@@ -31,27 +31,27 @@ Don't expect pre-cocked solutions but a tool set how to lead successfully such p
 Not always an easy reading but worth the effort
 * Practices for Scaling Lean and Agile Development: Large, Multi-side, and Offshore Product Development with Large-Scale Scrum, Craig Larman and Bas Vodde, Addison-Wesley 2010 See above for a review of the book
 * Agile Testing: A Practical Guide for Testers and Agile Teams, Lisa Crispin and Janet Gregory, Addison-Wesley 2009 The seminal reference book how to blend testing with agile projects.
-Lisa Crispin and Janet Gregory provide insights, and a proven track how to guaranty agile quality assurance and agile testing.
+Lisa Crispin and Janet Gregory provide insights and a proven track how to guaranty agile quality assurance and agile testing.
 A must-read book for everyone seriously developing agile projects.
-* Agile Estimating and Planning, Mike Cohn, Prentice-Hall, 2006 The seminal reference about estimating agile projects.
+* Agile Estimating and Planning, Mike Cohn, Prentice-Hall, 2006 The seminal reference to estimating agile projects.
 The experienced readers will understand why Mike Cohn used the words estimating and planning instead of estimates and plan.
 * The Enterprise and Scrum, Ken Schwaber, Microsoft Press, 2007 The work of one of the Scrum founders how a company can adopt Scrum.
 You should read the standard works of Scrum to understand the concepts.
-* Agile Project Management with Scrum, Ken Schwaber, Microsoft Press 2003 The work of one of the Scrum founders how Scrum influence product organization and management.
+* Agile Project Management with Scrum, Ken Schwaber, Microsoft Press 2003 The work of one of the Scrum founders how Scrum influences product organization and management.
 You should read the standard works of Scrum to understand the concepts.
 
 === Brown-Field Projects
 
 * Refactoring Improving the Design of Existing Code, Martin Fowler, Addison-Wesley 1999, How to implement continuous improvement on the code level.
 If you are not refactoring, you are not agile.
-* Working Effectively with Legacy Code, Michael C. Feathers, Prentice-Hall 2005, Most of us work on existing code bases.
+* Working Effectively with Legacy Code, Michael C. Feathers, Prentice-Hall 2005, the Majority of developers work on existing code bases.
 Based on the above statement, you have to find a way to unit test and refactor legacy code if you want to be agile.
 
 === Extreme Programming
 
 * Test Driven Development by Example, Ken Beck, Addison-Wesley 2003 How can a programmer be sure his code is working before and after refactoring
 * Clean Code: A Handbook of Agile Software Craftsmanship, Robert C. Martin, Prentice Hall 2009 We are professional developers and uncle Bob shows how we should work
-* The Clean Coder: A Code of Conduct for Professional Programmers, Robert C. Martin, Prentice Hall 2011 Uncle Bob define what a professional developer is.
+* The Clean Coder: A Code of Conduct for Professional Programmers, Robert C. Martin, Prentice Hall 2011 Uncle Bob defines what a professional developer is.
 I know quite a few developers shocked by his requirements
 
 === Agile and Lean Concepts
@@ -59,7 +59,7 @@ I know quite a few developers shocked by his requirements
 * Lean Software Development, An Agile Toolkit, Mary & Tom Poppendieck, Addison-Wesley 2003 Classical work what lean development means
 * Implementing Lean Software Development: From Concept to Cash, Mary & Tom Poppendieck, Addison-Wesley 2007 The hand-ons how to implement lean approaches
 * Agile Product Management with Scrum: Creating Products that Customers Love, Roman Pichler, Addison-Wesley 2010 Requirement engineering done the agile way
-* Scrum and XP from the trenches: How we do Scrum, Henrik Knieberg, InfoQ 2007 Short book how to implement Scrum and XP in projects
+* Scrum and XP from the trenches: How we do Scrum, Henrik Knieberg, InfoQ 2007 is a short book how to implement Scrum and XP in projects
 
 === Change Management
 
@@ -70,7 +70,7 @@ Linda Rising shows how changes are introduced with success in existing organizat
 
 === Books everybody should have read
 
-* Peopleware: Productive Projects and Teams, Tom DeMarco & Timothy Lister, Dorset House 1987 How to growth teams and lead successful projects
+* Peopleware: Productive Projects and Teams, Tom DeMarco & Timothy Lister, Dorset House 1987 How to grow teams and lead successful projects
 * The Mythical Man-Month 2nd Edition, Frederick P. Brooks, Addison-Wesley 1995 cite:[mythical-man-month].
 The first version was published in 1975. The rules postulated by Brooks are still actual.
 Sad is that a lot of product leaders have no clue of these rules.

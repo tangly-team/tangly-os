@@ -14,6 +14,7 @@ burndown
 burnup
 Clojure
 coachee
+coachees
 ECTS
 EPFL
 ETHZ
@@ -128,5 +129,6 @@ Ticino
 URI
 URL
 utterances
+vaadin
 vcpckg
 wagile

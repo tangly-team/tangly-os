@@ -15,7 +15,7 @@ image::2016-06-01-head.jpg[width=320,height=320,role=left]
 
 The new version of the Scrum Guide written by https://en.wikipedia.org/wiki/Ken_Schwaber[Ken Schwaber] and https://en.wikipedia.org/wiki/Jeff_Sutherland[Jeff Sutherland] has been available since July 2011.
 
-You should regularly read the Scrum guide to reflect how your teams are applying agile prinicples and ideas.
+You should regularly read the Scrum guide to reflect how your teams are applying agile principles and ideas.
 
 You should also consult the seminal {ref-manifesto} and the {ref-manifesto-principles}.
 

@@ -18,7 +18,7 @@ You are developing your product using agile and lean approaches.
 How can you check your approach and distill improvements?
 A health check of your product and your development approach is certainly a good solution.
 
-This post is the second of a set of products identifying health checks with different focus.
+This post is the second of a series identifying health checks with different focus.
 We will identify strengths, potential weaknesses and hopefully find room for improvement.
 
 How you build and deliver your software product has direct implications on your liquidity and cash flow.
@@ -55,7 +55,7 @@ Expertise is needed to define values to measure if the source code of your produ
 . Continuous delivery pipeline packaging the same binary to all your environments.
 . Continuous deployment if adequate for your solution, certainly it is adequate for the test and integration stages.
 . Automatic source code quality checks and mandatory quality gates.
-. Automatic unit tests, integration tests and end-to-end tests.
+. Automatic unit tests, integration tests, and end-to-end tests.
 . https://trunkbaseddevelopment.com/[Golden Trunk] in Git.
 . No branches or only short-lived branches shall be the policy.
 . https://blog.crisp.se/2018/08/27/yassalsundman/the-story-of-how-to-implement-a-zero-bug-policy[Zero bugs policy]

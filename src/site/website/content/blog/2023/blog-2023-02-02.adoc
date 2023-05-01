@@ -1,6 +1,6 @@
 ---
 title: "The Quest for an Agile Company: Seven Years tangly llc"
-linkTitle: "Seven Years tangly"
+linkTitle: "7 Years tangly"
 date: 2023-02-10
 tags: ["agile", "tangly", "organization"]
 ---
@@ -102,7 +102,7 @@ All our internal processes are digital.
 
 [quote,Warren Buffett]
 ____
-When people tell me they've learned from experience, I tell them the trick is to learn from other people's experience.
+When people tell me they have learned from experience, I tell them the trick is to learn from other people's experience.
 ____
 
 The trend towards digital documents, https://www.six-group.com/en/products-services/banking-services/payment-standardization/standards/qr-bill.html[QR Code]
@@ -112,7 +112,7 @@ We have almost no manual or paper interactions with government platforms and ins
 Swiss government departments provide web portal access to their services.
 At least we do not need to send paper documents.
 
-But none of the governments provided solutions for social insurances, VAT declarations or salary documents have a published API.
+But none of the governments provided solutions for social insurance, VAT declarations or salary documents have a published API.
 Swiss government solutions are still stuck in the last millennium and have missed the API integration approach.
 
 The Swiss federal government deployed a new https://www.estv.admin.ch/estv/en/home.html[Swiss Federal Tax Administration Portal] last year.

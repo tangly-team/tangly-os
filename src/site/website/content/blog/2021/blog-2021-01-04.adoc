@@ -41,9 +41,9 @@ Students should learn the current way of writing code in Java.
 The actual Java approach is to use streams and renounce in most cases to use instructions such as _for_ or _while_ loops or conditional _if_ statements.
 Delegation and lambda constructs often replace inheritance design.
 
-Since JDK 16 Java provides https://en.wikipedia.org/wiki/Algebraic_data_type[Algebraic Data Types] with records and sealed classes.
+Since JDK 16, Java provides https://en.wikipedia.org/wiki/Algebraic_data_type[Algebraic Data Types] with records and sealed classes.
 Records implement https://en.wikipedia.org/wiki/Product_type[Product Types].
-Sealed classes implement https://en.wikipedia.org/wiki/Tagged_union[Tagged Unions] also called sum types.
+Sealed classes implement https://en.wikipedia.org/wiki/Tagged_union[Tagged Unions], also called sum types.
 
 The https://www.jetbrains.com/idea/[IntelliJ IDEA IDE] is now the industrial standard for the Java and often Python world.
 The IDEA environment promotes the use of modern Java constructs.
@@ -55,14 +55,14 @@ The approach is straight forward.
 
 === Technical Excellence
 
-The DevOps and software craftsmanship movement strongly promote technical excellence and intrinsic quality in software development.
+The DevOps and software craftsmanship movement strongly promotes technical excellence and intrinsic quality in software development.
 
 image::2021-01-04-devOps.png[720,480,role=left]
 
 Students shall be fluent with
 
 * Static code analysis.
-The IntelliJ IDEA provides an _analysis_ function for static code analysis.
+IntelliJ IDEA provides an _analysis_ function for static code analysis.
 The IDE environment is free for students.
 * Unit tests and integration tests Use the seminal libraries _JUnit5_, _Mockito_, and _AssertJ_
 * Continuous integration pipeline uses the CI pipeline of your product management tool; either _GitLab_, _GitHub_, _Bitbucket_, or _Azure DevOps_.

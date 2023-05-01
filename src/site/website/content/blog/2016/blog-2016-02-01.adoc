@@ -64,7 +64,7 @@ Suddenly, everyone can see your code, so at the beginning you as a developer mus
 Suddenly, you must master Test Driven Development TDD, mocking, unit test, legible documents.
 But, once you have it, you start to experience the "flow" and enjoy the atmosphere and to deliver at the end of each sprint a new software artifact.
 
-Later, you realize that Scrum says the team is responsible.
+You realize later that Scrum says the team is responsible.
 You must acknowledge that product success is also your success.
 ROI considerations now also drive each design decision.
 If you master these responsibilities, you suddenly discover the world of engineering.
@@ -82,7 +82,7 @@ So you need to discover your _the lonely cowboy riding in the sun_ song why this
 === Product Owner
 
 As a product owner cite:[professional-product-owner], you control the budget of the product, the priorities.
-At the end of each iteration you can change all priorities and goals.
+At the end of each iteration, you can change all priorities and goals.
 Cool isn't it.
 But wait as a product owner, I am responsible for the budget and product success, and each time a member of the team asks me something I must have an answer ready.
 
@@ -96,7 +96,7 @@ Once you are up to this speed, you will enjoy the flow.
 === Lessons Learnt
 
 Middle management often struggles with the agile approach at the beginning.
-See for example the discussion about https://less.works/less/management/index.html[manager role in an agile environment] in the {ref-less} approach.
+See, for example, the discussion about https://less.works/less/management/index.html[manager role in an agile environment] in the {ref-less} approach.
 Be assured the results are worth the effort.
 
 Reading an experience report or digging in the findings of Kotter, you realize success or failure goes through how you handle middle management.

@@ -17,8 +17,7 @@ Your sole goal is to hire a qualified collaborator with potential.
 
 For example, you need a great software engineer with social competence.
 He is a professional developer and has knowledge of the technology stack
-footnote:[The singular form is wanted.
-A small or medium company SMC should minimize the technologies they used to build their digital products.]
+footnote:[The singular form is wanted.A small or medium company SMC should minimize the technologies they used to build their digital products.]
 your company is using.
 The candidate naturally understands agile and DevOps approaches.
 
@@ -35,7 +34,7 @@ Do your best to convince your potential partner.
 Ask yourself why should a candidate decide to work in your company and develop this awesome digital product?
 
 It is worth investing time and effort to succeed
-footnote:[Once you found your partner, invest time and effort to keep your relationship healthy.].
+footnote:[Once you have found your partner, invest time and effort to keep your relationship healthy.].
 
 === Before the Interview
 
@@ -55,7 +54,7 @@ Google provides hints how to work with creative software collaborators cite:[wor
 === Perform the Interview
 
 I want to find out how the candidate performs tasks and interacts with his team.
-I am very curious how she learnt new skills.
+I am inquisitive of how she learnt new skills.
 The area of interests are:
 
 Coding::
@@ -99,13 +98,13 @@ Communication shall be timely and respectful.
 - You want to hire good people that can learn and improve.
 - Your organization should promote that people can learn and evolve.
 - Be clear what you are looking for: make team better, bring new things, what do they value in code and architecture.
-- How do they solve various problems in areas such architecture, design, process, code, bug?
+- How do they solve various problems in areas such as architecture, design, process, code, bug?
 - Open-ended questions, to start a discussion.
 - Make criteria clear, if a criteria is not reached, inform them that you expect to reach the criteria.
 - An interviewee should also interview the interviewers.
 
 A powerful technique is extensive pair programming and pair design in particular during probation time.
-Your new collaborator leans how her team is working and the specifics of the product.
+Your new collaborator leans on how her team is working and the specifics of the product.
 
 The team understands the strengths of the trainee.
 They identify improvement areas to improve her effectiveness when working on the product.
@@ -116,7 +115,7 @@ footnote:[I am regularly depressed that professional developers still do not hav
 
 The employees are using state of the industry platform to create the products and to collaborate as teams
 footnote:[I still encounter teams without tools like Slack.
-Worst some still cannot use development platforms such as GitHub, GitLab, BitBucket or Azure.].
+Worst, some still cannot use development platforms such as GitHub, GitLab, BitBucket or Azure.].
 
 [bibliography]
 === Links

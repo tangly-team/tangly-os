@@ -19,7 +19,7 @@ Here the cookbook to create, edit, merge and delete local and remote branches in
 Git branches have two important qualities.
 
 * A branch is like an idea.
-Once you implemented the idea, feature or fix you just merge back to trunk and delete the branch.
+Once you implemented the idea, feature or fix, you just merge back to trunk and delete the branch.
 * The history of the branch commits is still visible upon deletion of the branch.
 
 [NOTE]
@@ -38,7 +38,7 @@ A lot of servers support keywords such as _fix #42_ to automatically close ticke
 ====
 
 The described approach is optimal for small teams.
-The approach is compatible to pull requests if you introduce such a workflow later.
+The approach is compatible with pull requests if you introduce such a workflow later.
 You do not need to pull requests when you are working collocated.
 I prefer pair programming and pair check-in sessions against the trunk.
 
@@ -70,7 +70,7 @@ Add your changes and commit them regularly.
 git commit -a -m “commit message describing activities for feat_#42“
 ----
 
-Upon running the unit tests locally, push the changes to repository.
+Upon running the unit tests locally, push the changes to the repository.
 
 [source,shell]
 ----

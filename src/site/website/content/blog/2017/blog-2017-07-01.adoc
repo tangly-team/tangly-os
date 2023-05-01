@@ -48,14 +48,19 @@ From time to time, you could also remove a specific impediment.
 * Evangelise agile, lean values and principles.
 * Moderate Scrum meetings – do not forget to regulate delegate moderation to your team -.
 * Gently transform your department and organization to become more agile.
-** Remove yearly evaluation, practice bi-weekly face2face meetings.
+** Remove yearly evaluation, practice biweekly face2face meetings.
 ** Remove any individual bonus, either introduce team bonuses.
 Better remove extrinsic motivators.
 ** Remove test and quality department, move the specialists to the Scrum teams.
 
-You shall by all means avoid administrative waste, such as * Writing information in Word documents or in Wiki that nobody actively uses, * Writing multiple times the same information, * Writing status information instead of publishing it on the team board.
+You shall by all means avoid administrative waste, such as
+
+* Writing information in Word documents or in Wiki that nobody actively uses.
+* Writing multiple times the same information.
+* Writing status information instead of publishing it on the team board.
 The board shall be the information radiator of your product development.
-Do not create head sinks in documents, * Holding meetings with one person projecting their notebook screen content and all other attendees looking at it -.
+Do not create head sinks in documents.
+* Holding meetings with one person projecting their notebook screen content and all other attendees looking at it.
 
 === Tips and Tricks
 
@@ -67,7 +72,7 @@ ____
 
 Face 2 Face::
 Prefer physical meetings to all other communication mediums.
-Use video conference and chatting tools to feel the mood of your team.
+Use the video conference and chatting tools to feel the mood of your team.
 Emergent::
 Good enough to try it, Safe enough to do it.
 Do not look for the perfect solution before trying a new approach.

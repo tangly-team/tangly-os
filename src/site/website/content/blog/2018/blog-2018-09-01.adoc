@@ -27,7 +27,7 @@ Based on our exhaustive experience, we recommend starting with a set of workshop
 These workshops provide the platform to identify the company’s needs and strategic goals, and gather support from all participants.
 Try the https://en.wikipedia.org/wiki/Open_Space_Technology[open space] format to involve all collaborators and identify their needs.
 
-Below we provide an approach which must be later tailored to the specific needs of the Company during the above-mentioned workshops.
+Below, we provide an approach which must be later tailored to the specific needs of the Company during the above-mentioned workshops.
 The organizational needs for feature oriented planning and development of an application portfolio should be considered.
 
 === Approach
@@ -72,7 +72,7 @@ a|* agile and clean developer
 * DVCS – Git –
 * Legacy code refactoring
 * Clean Code
-* Agile architecture and patterns such an inversion of Control
+* Agile architecture and patterns such as an inversion of Control
 
 a|* Agile Requirement Management
 * Lean Startup
@@ -106,7 +106,7 @@ The goal is to reinforce the learning techniques and become proficient in using 
 The motto is
 
 [.text-center]
-_Most difficulties in Scrum don't arise from learning the Scrum framework._
+_Most difficulties in Scrum do not arise from learning the Scrum framework._
 _Rather, they arise in applying the framework on an existing organizational structure and culture._
 
 This requires hands-on experienced guidance, and not just at the team level, but at the leadership and organizational level.

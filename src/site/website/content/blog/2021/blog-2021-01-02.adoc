@@ -82,16 +82,16 @@ Variations are
 * A more readable acronym, our ERP system uses the word invoice to name invoices.
 
 Beware if you export internal managed identifiers, you become a source of truth.
-You are responsible for documenting these identifiers, and the process to create new ones.
+You are responsible for documenting these identifiers and the process to create new ones.
 You shall also guaranty that existing identifiers are never recycled.
-If your identifiers are strings, you shall clearly define the supported languages, and character sets.
+If your identifiers are strings, you shall clearly define the supported languages and character sets.
 
 === https://en.wikipedia.org/wiki/Domain-driven_design[Domain Driven Design]
 
 Domain Driven Design _DDD_ is a powerful and modern approach to define agile software architecture.
 Some key rules are related to identity.
 
-Entity has a wel-defined identity::
+Entity has a well-defined identity::
 An entity is an object that is not defined by its attributes, but rather by a thread of continuity and its identity.
 Any instance of an entity abstraction must have a unique identifier.
 Identify aggregate through identity::
@@ -100,16 +100,16 @@ Objects outside the aggregate are allowed to hold references to the root but not
 The aggregate root is responsible for checking the consistency of changes in the aggregate.
 An aggregate is found and referenced through the identifier of the aggregate root entity.
 Reference over aggregate through identity::
-An aggregate shall reference other aggregate through the identity of their root entity instance.
+An aggregate shall reference another aggregate through the identity of their root entity instance.
 
-The concept of identity is therefore central to the domain driven design approach.
+The concept of identity is therefore central to the domain-driven design approach.
 
 === Lessons Learnt
 
 Always try to find an external, well-defined identifier for your entities.
 Beware of legal aspects when you are using government defined identifiers such as social security numbers, passport numbers or car numbers.
 
-Avoid by all means to use an internal privately defined identifier as a public one.
+Avoid by all means to using an internal privately defined identifier as a public one.
 You will bear the burden of documenting, manage and evolve the scheme as soon as you do this.
 
 Related concepts are discussed in our blog series

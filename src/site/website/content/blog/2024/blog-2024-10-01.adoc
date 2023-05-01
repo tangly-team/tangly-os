@@ -1,11 +1,11 @@
 ---
-title: "Vaadin 24"
-linkTitle: "Vaadin 24"
+title: "Domain Entities"
+linkTitle: "Domain Entities"
 date: 2024-10-01
-tags: ["java", "vaadin"]
+tags: ["java", "architecture"]
 ---
 
-== Vaadin 24 User Interfaces
+== Domain Entities
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
@@ -13,14 +13,243 @@ tags: ["java", "vaadin"]
 
 image::2024-10-01-head.jpg[width=420,height=360,role=left]
 
-=== In-Memory Application
+https://en.wikipedia.org/wiki/Domain-driven_design[Domain-driven design] is a tremendous good practice for modern agile software architecture
+cite:[domain-driven-design,domain-driven-design-distilled,implementing-domain-driven-design].
 
-All application data is loaded in-memory using the MicroStream
+The approach is used to design modular monoliths.
+The digital solution can evolve to a full-fledged microservices architecture if the market requires the associated scalability and resilience.
 
-=== Grid Sorting and Filtering
+The approach enables parallel development with multiple agile teams.
+DDD approach encourages the clear definition of minimal interfaces between bounded domains.
 
-=== Vaadin Component Factory
+Continuous integration, delivery and deployment validate delivered increments.
+The teams have the guaranty the integrated solution is working as expected.
 
-=== Authentication and Authorization
+DevOps culture shortens work in progress _WIP_ <<introducing-devops-ideas>> <<devops-for-small-applications>> <<first-steps-devops>>.
 
-=== Internationalization and Localization
+=== Domain Entities
+
+image::2024-10-01-bounded-domain.png[width=420,height=360,role=left]
+
+A key concept in the approach is the concept of entities.
+An entity is a representation of an object in the domain.
+
+It is defined by its identity, continuity, and persistence over time rather than its attributes.
+
+It encapsulates the state of that object through its attributes, including the aggregation of other entities.
+It defines any operations that might be performed on the entity.
+
+What is the identity of an instance in your system?
+
+We identified three regular concepts of identities in digital solutions <<meaningful-identifiers>> <<identifiers-and-names>>.
+
+Internal Identity::
+An instance is identified through an internal object identifier _OID_.
+The application is owner of this internal identifier.
+An internal identifier should stay internal and not be sent to other systems. +
+_An example is the company internal collaborator identifier._
+External Identity::
+An instance is identified through an external object identifier _ID_.
+The application or another external system is owner of the external identifier for a type of entities. +
+_An example is the social security number of a collaborator_.
+Name::
+An instance can at least partially be identified through a human friendly name.
+The application or another external system is owner of the name for a type of entities. +
+_An example is the full name of a collaborator_.
+
+[source,java]
+----
+package net.tangly.core;
+
+interface HasOid {
+    long oid();
+}
+
+interface HasId {
+    String id();
+    void id(String id);
+}
+
+interface HasName {
+    String name();
+    void name(String name);
+}
+----
+
+[TIP]
+====
+Entities should only have external identifiers in an ideal bounded domain.
+External identifiers are natural ones and part of the domain.
+
+Internal object identifiers are a technical solution for incomplete domain entities.
+Incomplete often means that the digitalization of your bounded domain is hindered.
+
+For example, in Switzerland it was long prohibited to use the social security number as identifier for natural persons.
+The federal government has change the laws in 2022. But you still cannot access the social number of children.
+The identifier is defined but is not accessible.
+
+Therefore, you are forced to create an internal identifier to uniquely identify natural persons in Switzerland.
+Similar difficulties exist in Europe to access the European natural person identifier
+footnote:[Naturally, the Swiss social number is not compatible with the European one to spice-up your modeling problems.
+An example of well-defined external identifier is the plate number of a car.
+This identifier is valid worldwide.].
+====
+
+Entities often have temporal information associated with them.
+This information describes the continuity of an instance.
+
+We identified two major temporal attributes of entities:
+
+Creation Date::
+The date when an entity was created. +
+_An example is the creation date of an invoice._
+Temporal Scope::
+The temporal range when an entity is active.
+The start date or the end date of the scope can be optional. +
+_An example is the start and end of a collaborator work contract An active work contract has a start date but no end date._
+_Another interesting temporal range is the validity range of currencies.
+The introduction of the Euro was the end of quite a few currencies_
+
+[source,java]
+----
+package net.tangly.core;
+
+interface HadDate {
+    LocalDate date();
+    void date(LocalDate date);
+}
+
+interface HasTimeInterval {
+    LocalDate from();
+    void from(LocalDate from);
+    LocalDate to();
+    void to(LocalDate to);
+}
+----
+
+Users often want to access human-readable information to better understand an instance <<power-of-tags>>.
+They also want to classify groups of entities.
+
+Textual Description::
+A textual description of the entity to provide context and user related information.
+Comments::
+Comments are user-specific notes describing various aspects of an entity.
+Comments are unstructured.
+he software does not generally process them.
+Tags::
+Tags define a customer-specific ontology to classify entities in their system.
+Tags without value are equivalent to labels.
+Tags with optional or mandatory values enrich the classification information with instance-specific parameter values.
+
+We support {ref-asciidoc} syntax for all textual elements.
+The feature hugely improves the legibility and attractiveness of textual description for the users.
+
+[source,java]
+----
+package net.tangly.core;
+
+interface HasText {
+    String text();
+    void text(String text);
+}
+
+interface HasComments {
+    List<Comment> comments();
+    void add(@NotNull Comment comment);
+    void addComments(@NotNull Iterable<Comment> comments);
+    void remove(@NotNull Comment comment);
+}
+
+interface HasTags {
+    Set<Tag> tags;
+    boolean add(@NotNull Tag tag);
+    void addTags(@NotNull Iterable<Tag> tags);
+    boolean remove(@NotNull Tag tag);
+    void removeAllTags();
+}
+----
+
+The entity abstraction wraps the above mixins and introduces the concept of validating an instance.
+
+[source,java]
+----
+package net.tangly.core;
+
+interface Entity extends HasOid, HasId, HasName, HasText, HasTimeInterval, HasTags, HasComments {
+    boolean validate();
+}
+----
+
+=== User Interface
+
+Your user wants to see and manipulate domain entities.
+
+The entities of a specific type shall be displayed in a grid.
+The relevant properties are displayed in associated columns.
+
+Your user needs to select the entities he is interested in.
+We provide filtering and ordering for the displayed columns.
+The filter conditions are additive.
+
+A form is provided to display the details of an instance.
+The same form is provided for editing purposes.
+
+View mode as readonly access to the entity information.
+
+Edit mode as modification access to the entity information.
+Modification includes edit, create, duplicate, and delete.
+
+[NOTE]
+====
+In seldom cases, it is necessary to refine the modes of the application.
+We have encountered a small number of systems requiring finer control.
+
+List:: The user can only view the grid and properties displayed in the grid.
+All other modes have access to the grid and the form representation for the selected item in the grid.
+View:: The user can only display the entity data.
+Edit:: The user can modify existing data but cannot add or delete new instances.
+Create:: The user can add new entities but cannot edit existing ones.
+Creation is either the definition of all properties of a new object or the edition of the values of a duplicate one.
+Delete:: The user can delete existing entities but cannot modify them or create new ones.
+
+The defined modes support these special requirements.
+====
+
+The three most used modes are _list_, _view_, and _edit_.
+
+The domain entity user interface <<domain-entities-ui>> discuss the implementation of the CRUD approach in more details.
+
+=== Lessons Learnt
+
+The compactness of the code necessary to create a complete CRUD user interface is very high.
+We found out writing such code is more efficient than using model driven approaches.
+Therefore, we decided to ditch frameworks such as https://www.openxava.org/en/[openXava] or Apache https://causeway.apache.org/[Causeway].
+The gains for using these frameworks are too small to justify the learning curve and implicit limitations of such libraries.
+
+The ideas behind these frameworks and also promoted through domain-driven design are still worth learning how to apply them in your products.
+
+[bibliography]
+=== Links
+
+- [[[meaningful-identifiers, 1]]] link:../..//2021/meaningful-identifiers/[Meaningful Identifiers].
+Marcel Baumann. 2021.
+- [[[power-of-tags, 2]]] link:../../2020/the-power-of-tags-and-comments/[The Power of Tags and Comments].
+Marcel Baumann. 2020.
+- [[[identifiers-and-names, 3]]] link:../../2020/entities-identifiers-external-identifiers-and-names/[Entities, Identifiers, External Identifiers, and Names].
+Marcel Baumann. 2020.
+- [[[vaadin, 4]]] link:../../2022/vaadin/[Vaadin].
+Marcel Baumann. 2022.
+- [[[vaadin-24, 5]]] link:../../2024/vaadin-24/[Vaadin 24].
+Marcel Baumann. 2024.
+- [[[introducing-devops-ideas, 6]]] link:../../2022/introducing-devops-ideas/[Introducing DevOps Ideas].
+Marcel Baumann. 2022.
+- [[[devops-for-small-applications, 7]]] link:../../2021/devops-for-small-applications/[DevOps for Small Applications].
+Marcel Baumann. 2021.
+- [[[first-steps-devops, 8]]] link:../../2022/first-steps-devops/[First steps DevOps].
+Marcel Baumann. 2022.
+- [[[domain-entities-ui, 9]]] link../../2024/domain-entities-ui/[Domain Entities UI].
+Marcel Baumann. 2024
+
+=== References
+
+bibliography::[]

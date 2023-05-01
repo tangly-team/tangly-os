@@ -22,7 +22,7 @@ ____
 
 Oracle has decided to release a new JDK two times a year.
 
-The next release of Java 10 aka 18.3 will be available on March 2018.
+The next release of Java 10 aka 18.3 will be available in March 2018.
 
 JDK 11 aka 18.9 will be released in September 2018.
 Java 11 will also be a long-term support _LTS_ release.
@@ -31,7 +31,7 @@ Java 11 will also be a long-term support _LTS_ release.
 
 The visible change is the dawn of the keyword *var*.
 Now instead of typing the type declaration of a local variable - local to a method, a block or an instruction - you can just use the keyword var.
-The constraint being that the variable is initialized at declaration.
+The constraint is that the variable is initialized at declaration.
 Stay tune for more support in JDK 11.
 
 When the type declaration is a complex generic type definition, the var shortcut is a boon.
@@ -46,7 +46,7 @@ Event <Events> event = new Event<>(Events.AA_AB);
 var event = new Event<>(Events.AA_AB);
 ----
 
-The first impression is that the new construct sometimes simplifies the code of the library and very often improve the test cases.
+The first impression is that the new construct sometimes simplifies the code of the library and very often improves the test cases.
 Perhaps it takes time until I am accustomed to the new way of writing Java code.
 
 === Under the Hood Changes
@@ -76,7 +76,7 @@ And you shall deliver your applications in Docker containers to support the whol
 The tool landscape is still struggling to adapt to the new rhythm.
 I am working with IntelliJ IDE and I had to wait for the EAP 2018.3 before being able to write JDK 10 code in the IDE.
 I use Gradle as a building tool and also to wait until JDK 10 was at least partially supported.
-And I am still waiting for the update of code coverage plugin.
+And I am still waiting for the update of the code coverage plugin.
 Before that, I was back to stone age, writing software with a text editor and compiling it with the command line.
 
 The library landscape is often behind. They are regularly incompatible with the newest version of the JDK.

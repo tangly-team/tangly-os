@@ -62,7 +62,7 @@ Your teams should have business expertise.
 .. Show the organization why commitment in the planning was replaced by forecast in the official Scrum guide cite:[scrum-pocket-guide-3rd].
 .. Require a vision, a roadmap, a release plan with a story map and a refined backlog for each product and team.
 .. Tell why an impediment resolution backlog item shall be part of each iteration.
-.. Teach the importance of the definition of done for the internal quality of the product.
+.. Teach the importance of the definition of done _DoD_ for the internal quality of the product.
 And explain why the definition of ready is often an anti-pattern.
 .. Show why velocity is not a productivity metric.
 .. Show the difference between product and output.
@@ -97,7 +97,7 @@ Coaching::
 coaching is partnering with a person, team, or organization (client) in a creative process to help the client to reach their goals by unlocking their own potential and understanding.
 A coach is able to accept the client as a whole and capable, and serve their agenda ethically.
 Facilitating::
-facilitating increases the effectiveness of a group of people to align in a collaborative way, to interpret their context, and mutually identify the most valuable outcomes desired.
+facilitating increases the effectiveness of groups to align in a collaborative way, to interpret their context, and mutually identify the most valuable outcomes desired.
 A facilitator has the skills to create a neutral environment of openness, safety, and innovation in a group setting.
 Guide to Learning::
 guide learning is about effectively growing an individual, a group, or a team skills and enabling them to be competent and resourceful.

@@ -27,7 +27,7 @@ I mean a real reference opened at least monthly
 
 === Software Engineering
 
-* Scrum and XP From the Trenches: How We Do Scrum, Henrik Kniberg A short and very good introduction to Scrum and XP, worth looking again and again, Kniberg is also the guy behind the Spotify Way
+* Scrum and XP From the Trenches: How We Do Scrum, Henrik Kniberg A short and splendid introduction to Scrum and XP, worth looking again and again, Kniberg is also the guy behind the Spotify Way
 * Clean Code: A Handbook of Agile Software Craftsmanship, Robert C. Martin The reference book about clean code and XP practices.
 You are a programmer, you know this book
 * The Clean Coder: A Code of Conduct for Professional Programmers, Robert C. Martin Are you a coder doing clean code (or are a looser)?
@@ -35,7 +35,8 @@ You are a programmer, you know this book
 You shall refactor daily or you are lying to yourself
 * Agile Project Management with Scrum, Ken Schwaber.
 A seminal work from one of the founders of Scrum
-* Agile Product Management With Scrum: Creating Products That Customers Love, Roman Pichler From the expert for product owner role and activities, Make the shift from project to product
+* Agile Product Management With Scrum: Creating Products That Customers Love, Roman Pichler From the expert for product owner role and activities.
+Make the shift from project to product.
 * Agile Testing: A Practical Guide for Testers and Agile Teams, Lisa Crispin and Janet Gregory What does it mean to test and insure quality in an agile environment?
 
 === Agile Management Aspects
@@ -65,7 +66,7 @@ You have to make a beautiful presentation to make a difference!
 
 You have to know history, or you will repeat the errors of the past generations.
 
-* All books of Tom deMarco e.g., Peopleware, The deadline, Slack, Waltzing with Bears
+* All books of Tom deMarco, e.g., Peopleware, The deadline, Slack, Waltzing with Bears
 * All books of Gerry Weinberg, such as Becoming a Technical Leader, Are your Lights on?, The Psychology of Computer Programming
 * The Mythical Man-Month: Essays on Software Engineering, Anniversary Edition, Frederick P. Brooks Jr cite:[mythical-man-month].
 * Good To Great, Jim Collins

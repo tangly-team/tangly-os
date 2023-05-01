@@ -14,7 +14,7 @@ tags: ["agile"]
 image::2016-08-01-head.jpg[width=420,height=360,role=left]
 
 I learnt quite a few new acronyms and techniques when studying for the PMI-ACP certification program.
-In this post I collected these acronyms, some definition and the bibliography you should know before attending the examination.
+In this post, I collected these acronyms, some definition and the bibliography you should know before attending the examination.
 
 The main advantage of having it is that you no longer need to argue with PMI certified product managers if agile is applicable to software projects.
 
@@ -109,12 +109,12 @@ It is best when you have at least 40 items which allows for groupings to easily 
 * Collaboration versus Coordination: Work Together versus Share Information
 * Cycle Time = Flow Time
 * DEEP Detailed Appropriately, Estimable, Emergent, Prioritised *Disaggregation: split story into smaller stories
-* DRY Don't Repeat Yourself
+* DRY Do not Repeat Yourself
 * EI Emotional Intelligence
 * EISA Emotional Intelligence Skills Assessment _Perceiving, Managing, Decision Making, Achieving, Influencing_
 * EQ Emotional Intelligence Quotient
 * Error-feedback ratio: is the number of new defects injected when fixing existing defects.
-Several years ago, Jerry Weinberg conducted studies on the error-feedback ratio and found that a 20% difference in feedback ratio leads to an 88% difference in completion time (bad enough), but the next 10% increase leads to a 112% increase.
+Several years ago, Jerry Weinberg conducted studies on the error-feedback ratio and found that a 20% difference in the feedback ratio leads to an 88% difference in completion time (bad enough), but the next 10% increase leads to a 112% increase.
 * http://en.wikipedia.org/wiki/Earned_value_management[Earned Value Management] _EVM_ - this is standard PMI theory -
 ** PV (Planned Value) = BAC (Budget At Completion) \* Planned Percentage Completed Budget Cost of Work Scheduled
 ** AC (Actual Cost) - Budget Cost of Work Performed
@@ -124,7 +124,7 @@ Several years ago, Jerry Weinberg conducted studies on the error-feedback ratio 
 ** ETC (Cost Required) = (BAC - EV) / CPI - This metric is the forecast amount to complete the remaining work -
 ** EAC (Forecast Cost for the total planned work) = BAC / CPI = AC + ETC
 * Five Levels of Conflicts
-.. Problem to Solve (Good Teams) -> Collaboration, consensus Collaboration- Seeking a win-win situation.
+.. Problem to Solve (Good Teams) -> Collaboration, consensus Collaboration and Seeking a win-win situation.
 Consensus-Learning where every team member’s head is with regard to the issue and, in time, arriving at a decision everyone can back.
 .. Disagreement -> Negotiate, support
 .. Contest -> Accommodate
@@ -142,8 +142,9 @@ They are often referred to as must-have features.
 ** Performance attributes are linear, the more, the better
 ** Excitement attributes are delights
 * MMF Minimally Marketable Feature
-* http://en.wikipedia.org/wiki/MoSCoW_Method[MoSCoW] Must, Should, Could, Won't
-* http://en.wikipedia.org/wiki/Net_present_value[Net Present Value] _NPV_ -> FV = PV * (1+i)^n, FV is future value, PV is the present value. n is the number of periods/years; you can interpret as the higher, the better
+* http://en.wikipedia.org/wiki/MoSCoW_Method[MoSCoW] Must, Should, Could, Would
+* http://en.wikipedia.org/wiki/Net_present_value[Net Present Value] _NPV_ -> FV = PV * (1+i)^n, FV is future value, PV is the present value.
+It is the number of periods/years; you can interpret as the higher, the better
 * Payback Period, you can interpret as the lower, the better
 * PESTLE Political, Environmental, Societal, Technological, Legal, Economical
 * http://www.pmi.org/Certification/New-PMI-Agile-Certification.aspx[PMI-ACP] Project Management Institute Agile Certified Practitioner
@@ -159,14 +160,14 @@ They are often referred to as must-have features.
 * ROI Return On Investment (Benefits - Costs) / Costs in percent.
 The higher, the better
 * http://java.dzone.com/articles/60-second-agility-roti[ROTI] Return On Time Invested (done in 60 seconds)
-** 0 = "I'd have been better off making a Starbucks run.
+** 0 = "I would have been better off making a Starbucks run.
 Complete waste of time" or Lost Principle: No Benefit Received for Time Invested Break-Even
 ** 1 = "You really should have let me stay at my desk and code"
 ** 2 = "This was an OK meeting.
-About as valuable as if I'd been coding" or Received Benefit Equal to Time Invested High Return on Investment
-** 3 = "Surprisingly, this was more valuable than if I'd been writing code"
+About as valuable as if I haave been coding" or Received Benefit Equal to Time Invested High Return on Investment
+** 3 = "Surprisingly, this was more valuable than if I have been writing code"
 ** 4 = "Wow, this meeting saved me tons of time.
-Thank goodness I didn't skip it to code" or Received Benefit Greater than Time Invested
+Thank goodness I did not skip it to code" or Received Benefit Greater than Time Invested
 * https://en.wikipedia.org/wiki/Rational_Unified_Process[RUP] Rational Unified Process: Inception, Elaboration, Construction, Transition phases
 * Staging: The process of defining and prioritizing the nonfunctional requirements for scaling is called staging.
 Staging occurs prior to the start of the first sprint and takes just one day.
@@ -175,7 +176,8 @@ During this day, the nonfunctional scaling requirements for this particular prod
 The fundamental techniques and knowledge do not change.
 ** "protect", "obey" — traditional wisdom — learning fundamentals, techniques, heuristics, proverbs
 ** "detach", "digress" — breaking with tradition — detachment from the illusions of self
-** "leave", "separate" — transcendence — there are no techniques or proverbs, all moves are natural.
+** "leave", "separate" — transcendence — there are no techniques or proverbs.
+All moves are natural.
 Becoming one with spirit alone without clinging to forms; transcending the physical
 * {ref-scrum}
 ** pillars: Transparency, Inspection, Adaptation
@@ -216,17 +218,17 @@ ____
 * Root-causing a defect or testing the feasibility of an algorithm or a third party solution is an example of a spike
 * Measure: ascertain the size, amount, or degree of (something) by using an instrument or device marked in standard units or by comparing it with an object of known size
 * Dysfunctional teams pyramid: absence of trust, fear of conflict, lack of commitment, avoidance of accountability, inattention to results
-* According to DeMarco, Fragmented knowledge workers may look busy but a lot of their business is just thrashing.
+* According to DeMarco, Fragmented knowledge workers may look busy, but a lot of their business is just thrashing.
 The minimum cost penalty is 15%
 * The declaration milestone is a verbal notice from one person to another, or to multiple people, that a milestone was reached.
 * The three coach styles are Teaching, Coaching, and Advising.
-* The quantity of function is, scope, measured in terms of user stories, use cases, requirements, or features (depending on a particular situation).
+* The quantity of function is scope, measured in terms of user stories, use cases, requirements, or features (depending on a particular situation).
 In software, these may be measured ultimately as objects, modules, classes, or lines of code.
 
 === Questions
 
 * Which of the following correctly defines the team members themselves managing assignment of the day-to-day tasks required to deliver stories at the end of each iteration? _Workload Management_
-* Which of the following technique can be used to apply to bring down the Lost Opportunity Cost within your team? _Team Collocation_
+* Which of the following techniques can be used to apply to bring down the Lost Opportunity Cost within your team? _Team Collocation_
 * When should the Product Owner provide feedback on the work results? _Just in time reviews_
 * Who is the most appropriate person to monitor all the risks in an Agile product? _The product manager_
 * Which of the following is false about Velocity? _Velocity cannot correct Estimation errors_
@@ -237,7 +239,7 @@ _Planning poker combines expert opinion, analogy, and disaggregation into an enj
 _Business case realization -The PMO can help the teams to enable timely decision making by standardizing the metrics.-_
 * Which is the communication technique where you repeat back a summary of what the other person just said to you to confirm understanding?
 _Reflective Listening is a communication technique where you repeat back a summary of what the other person just said to you to confirm understanding._
-_Another benefit in this situation is that having the person hear their own ideas in another person’s voice/words may make it easier for them to be objective._
+_Another benefit in this situation is that having a person hear their own ideas in another person’s voice/words may make it easier for them to be objective._
 * Adaptation depends upon understanding a wide range of information, including an assessment of the product's progress, technical risks, the requirements evolution, and ongoing competitive market analysis.
 Which are the areas where every team needs to constantly evaluate and make appropriate adaptations?
 _Product Value, Product quality, Product status, Team performance -Every team needs to constantly evaluate and make appropriate adaptations in the following four areas - Product Value, Product quality, Product status, Team performance-_
@@ -276,6 +278,6 @@ _Managers who make decisions without input from subordinates and peers make poor
 _Engineers who make decisions without input from managers and peers make poor decisions._
 _Who makes the decision is less important than getting the right people involved in the decision process._
 * Which of the following charts shows the total number of story points completed through the end of each iteration? _Cumulative story point burn-down chart_
-* During a critical problem-solving, you can ask probing questions, use active and reflective listening, Lead to an answer, but one should avoid injecting their own ideas.
+* During critical problem-solving, you can ask probing questions, use active and reflective listening, Lead to an answer, but one should avoid injecting their own ideas.
 
 I wish you success for your certification.

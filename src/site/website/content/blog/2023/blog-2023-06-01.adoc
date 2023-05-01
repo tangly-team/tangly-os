@@ -148,7 +148,7 @@ If no expression evaluates to true, the else expresssion is evaluated and return
 === Some Definitions
 
 Symbols are identifiers that are normally used to refer to something else.
-They can be used in program forms to refer to function parameters, let bindings, class names and global vars.
+They can be used in program forms to refer to function parameters, let bindings, class names, and global vars.
 
 Keywords are symbolic identifiers that evaluate to themselves.
 They provide very fast equality tests.
