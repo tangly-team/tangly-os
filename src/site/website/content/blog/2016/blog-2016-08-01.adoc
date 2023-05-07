@@ -34,7 +34,7 @@ Some online videos of https://www.mountaingoatsoftware.com/blog[Mike Cohn] also 
 
 === Chapter List
 
-. http://www.pmi.org/Certification/New-PMI-Agile-Certification.aspx[PMI ACP] eligibility, examination content
+. https://www.pmi.org/certifications/agile-acp[PMI ACP] eligibility, examination content
 . http://en.wikipedia.org/wiki/Agile_software_development[Agile product management] __APM __Framework, agile product lifecycle
 .. Envision
 .. Speculate (During the speculate phase, the product stories are delivered.
@@ -43,10 +43,10 @@ This phase involves planning and delivering tested stories in a short iteration,
 .. Adapt,
 .. Close.
 .. Scope, Costs, Time
-.. http://jimhighsmith.com/2010/11/14/beyond-scope-schedule-and-cost-the-agile-triangle/[The agile triangle]: Value (releasable product), Quality (reliable, adaptable product), Constraints (cost, schedule, scope)
+.. http://jimhighsmith.com/[Blog]: Value (releasable product), Quality (reliable, adaptable product), Constraints (cost, schedule, scope)
+footnote:[Jim Highsmith removed all blogs. Try to find the blog _beyond scope schedule and cost: the agile triangle_.]
 . People, Products and Processes
-. http://jimhighsmith.com/2010/11/14/beyond-scope-schedule-and-cost-the-agile-triangle/[Value, Quality and Constraints]
-The five identified core risk areas for a product are: Intrinsic schedule flaw, Specification breakdown, Scope creep, Personnel loss and Productivity variation.
+. The five identified core risk areas for a product are: Intrinsic schedule flaw, Specification breakdown, Scope creep, Personnel loss and Productivity variation.
 . Planning, monitoring, adapting
 . Estimation in agile projects
 . Communication on agile projects
@@ -97,18 +97,17 @@ The more terms and acronyms you know, the easier the examination will be.
 image:2016-08-01-active-listening.png[float="right"]
 
 * http://en.wikipedia.org/wiki/Active_listening[Active Listening]
-* ARCS - Attention Relevance Confidence Satisfaction - relevant for motivational theory and process for systematic motivational design
-* Affinity Estimation - e.g. story points or tee-shirt sizes -.
+* ARCSThe _Attention Relevance Confidence Satisfaction_ is relevant for motivational theory and process for systematic motivational design
+* Affinity Estimation - e.g., story points or tee-shirt sizes -.
 The Affinity Estimating exercise is best conducted on Product Backlogs larger than 20 items.
-It is best when you have at least 40 items which allows for groupings to easily become apparent.
+It is best when you have at least 40 items which allow for groupings to easily become apparent.
 * ATDD Acceptance Test Driven Development - Discuss, Distill, Develop, and Demo - see also http://en.wikipedia.org/wiki/Behavior_Driven_Development[Behaviour Driven Development] _BDD_
-* http://agile2009.agilealliance.org/node/2153/[Boundary, Authority, Role and Task] _BART_
-* CD Continuous Deployment (CD as Continuous Delivery is not part of the examination)
+* Continuous Deployment _CD_. The Continuous Delivery _CD_ is not part of the examination.
 * http://en.wikipedia.org/wiki/Cumulative_flow_diagram[Cumulative Flow Diagrams] _CFD_
-* CI Continuous Integration: multistage integration is running additional tests for performance, load or stability
+* Continuous Integration _CI_: multistage integration is running additional tests for performance, load or stability
 * Collaboration versus Coordination: Work Together versus Share Information
 * Cycle Time = Flow Time
-* DEEP Detailed Appropriately, Estimable, Emergent, Prioritised *Disaggregation: split story into smaller stories
+* The acronym _DEEP_ Detailed Appropriately, Estimable, Emergent, Prioritised. Split story into smaller stories.
 * DRY Do not Repeat Yourself
 * EI Emotional Intelligence
 * EISA Emotional Intelligence Skills Assessment _Perceiving, Managing, Decision Making, Achieving, Influencing_
@@ -147,7 +146,7 @@ They are often referred to as must-have features.
 It is the number of periods/years; you can interpret as the higher, the better
 * Payback Period, you can interpret as the lower, the better
 * PESTLE Political, Environmental, Societal, Technological, Legal, Economical
-* http://www.pmi.org/Certification/New-PMI-Agile-Certification.aspx[PMI-ACP] Project Management Institute Agile Certified Practitioner
+* https://www.pmi.org/certifications/agile-acp[PMI-ACP] Project Management Institute Agile Certified Practitioner
 * Product Owner: Committed, Responsible, Authorized, Collaborative, and Knowledgeable
 * http://en.wikipedia.org/wiki/Project_management[Project management methods]
 * Relative Weighting Method
@@ -159,7 +158,7 @@ It is the number of periods/years; you can interpret as the higher, the better
 ** Strategies: Avoid, Mitigate, Transfer, Accept
 * ROI Return On Investment (Benefits - Costs) / Costs in percent.
 The higher, the better
-* http://java.dzone.com/articles/60-second-agility-roti[ROTI] Return On Time Invested (done in 60 seconds)
+* https://dzone.com/articles/60-second-agility-roti[ROTI] Return On Time Invested (done in 60 seconds)
 ** 0 = "I would have been better off making a Starbucks run.
 Complete waste of time" or Lost Principle: No Benefit Received for Time Invested Break-Even
 ** 1 = "You really should have let me stay at my desk and code"

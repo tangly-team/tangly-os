@@ -39,7 +39,7 @@ Frequent and economical deployments require the full automation of the integrati
 Below, we provide a detailed possible approach to deploying DevOps concepts in your organization.
 These recipes are helpful for companies with little knowledge and experience in agile and DevOps approaches for digital product development <<detecting-agile-bullshit>>.
 
-=== https://en.wikipedia.org/wiki/Continuous_integration/[Continuous integration]
+=== https://en.wikipedia.org/wiki/Continuous_integration[Continuous integration]
 
 In software engineering, continuous integration _CI_ is the practice of merging all developers' working copies to a shared mainline *several times* a day
 footnote:[https://en.wikipedia.org/wiki/Grady_Booch[Grady Booch] first proposed the term Continuous Integration _CI_ in 1991.

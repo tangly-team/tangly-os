@@ -218,12 +218,12 @@ module net.tangly.fsm {
 https://openjdk.org/projects/loom//[Loom] Threads::
 Java 19 introduces lightweight threads in the library.
 You can now program massively multithreaded applications with hundreds of thousands of threads without taxing the JVM or the operating system.
-https://openjdk.org/jeps/413/[JavaDoc code snippets]::
+https://openjdk.org/jeps/413[JavaDoc code snippets]::
 Code examples in your java documentation are declared as a code snippet in a regular Java class.
 Your unit tests ensure that all your documented code snippets compile and run without trouble.
 JShell::
 You have access to a Read-Evaluate-Print Loop _REPL_ to test new Java code.
-https://openjdk.org/jeps/426/[Vector Optimizations]::
+https://openjdk.org/jeps/426[Vector Optimizations]::
 You have access to the SIMD modules in your CPU directly from your Java code.
 Speed-ups can be tremendous.
 The code is still portable for all supported Java platforms.

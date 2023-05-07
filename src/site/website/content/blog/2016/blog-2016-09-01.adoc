@@ -19,7 +19,7 @@ What are the main hurdles to introducing agile approaches in Swiss companies?
 * Doubt that lean or agile works, doubt you can find agile experts, doubt that your projects can be realised with agile approaches.
 * In the end, what matters are collaborator purpose, customer satisfaction,  business value.
 
-http://www.swissq.it/[SwissQ] has published a _SwissQ Agile Trends & Benchmarks Switzerland 2012_.
+https://swissq.it/en/[SwissQ] has published a _SwissQ Agile Trends & Benchmarks Switzerland 2012_.
 The study can be downloaded as PDF from their website.
 
 Below some findings of the study.

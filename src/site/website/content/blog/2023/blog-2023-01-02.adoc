@@ -135,16 +135,16 @@ A typical scenario is:
 [bibliography]
 === Links
 
-- [[[first-steps-devops,1]]] link:../../2023/first-stps-devops/[First Steps DevOps]
-Marcel Baumann. 2023
+- [[[first-steps-devops,1]]] link:../../2022/first-stps-devops/[First Steps DevOps]
+Marcel Baumann. 2022.
 - [[[devops-ideas, 2]]] link:../../2022/introducing-devops-ideas/[Introducing DevOps Ideas]
-Marcel Baumann. 2022
+Marcel Baumann. 2022.
 - [[[devops-sme, 3]]] link:../../2021/devops-for-small-applications/[DevOps for Small Applications]
-Marcel Baumann. 2021
+Marcel Baumann. 2021.
 - [[[technical-debt, 4]]] link:../../2022/technical-debt/[Technical Debt]
-Marcel Baumann. 2022
+Marcel Baumann. 2022.
 - [[[zero-defect, 5]]] link:../../2020/advocate-zero-bug-policy-in-your-projects/[Advocate Zero Bug Policy in Your Projects]
-Marcel Baumann. 2020
+Marcel Baumann. 2020.
 
 === References
 

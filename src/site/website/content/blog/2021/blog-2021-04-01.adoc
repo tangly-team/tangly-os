@@ -37,7 +37,7 @@ public record Person(int id, String firstname, String lastname) {}
 
 The first step with modern pattern matching constructs was provided with https://openjdk.java.net/jeps/394[Pattern Matching for Instanceof].
 
-As a small but nice gain of pattern matching you can now implement the _boolean equals(Object o)_ method in Java in one statement and without if clause.
+As a small but nice gain of pattern matching, you can now implement the _boolean equals(Object o)_ method in Java in one statement and without if clause.
 An example would be:
 
 [source,java]
@@ -84,7 +84,7 @@ Support modules, auto-closeable resources, records, sealed classes.
 As a maintainer of a successful component or application, you should represent modern Java approaches.
 Did you realize that since Java 8 a new version is released every six months?
 
-=== Next Changes I am Dreaming Of
+=== The Next Changes I am Dreaming Of
 
 Concise Method Body:: Syntactic sugar to write compact delegation classes.
 It provides the same mechanisms for method overwriting as for lambda declarations
@@ -106,7 +106,7 @@ Until now, the Java developers' community has failed us; support for modules is 
 The next long term supported Java shall be published in September 2021.
 The evolution between LTS 11 and LTS 17 is huge.
 Quite a lot of companies are still stocked with LTS 8.
-Modern Java code written with current the Java version is very different to older coding paradigms.
+Modern Java code written with the current Java version is very different to older coding paradigms.
 
 Companies must now implement modernization approaches if they want to survive in the business world.
 A security flaw with an older Java version moves on thin ice if your customers sue your company.

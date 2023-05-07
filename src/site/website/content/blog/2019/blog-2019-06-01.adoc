@@ -66,7 +66,7 @@ How do you know what are the requirements of a specific feature?
 Either write a huge amount of outdated documentation or find a better way.
 The better way is https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development[acceptance test driven development] _ATDD_.
 
-For each feature, you need acceptance criteria; this approach is also called _specification by example_.
+For each feature, you need acceptance criteria; this approach is also called _specification by example_ cite:[bridging-communication-gap].
 For each acceptance criteria, write an acceptance test which is executed each time the application is updated in the continuous delivery pipeline.
 The acceptance tests are the living documentation describing the behavior of your product.
 
@@ -99,7 +99,7 @@ Teams ready to learn from the like of Google could evaluate https://trunkbasedde
 ==== Code Review
 
 A code review can be done in different ways.
-Many teams use GitHub, Bitbucket or GitLab.
+Many teams use {ref-github}, {ref-bitbucket} or ref{ref-gitlab}.
 A very common approach for our code reviews is using merge requests.
 However, there are situations where pull requests are not necessary.
 For example, if a feature is implemented in pair programming or mob programming, then the code is already reviewed while it is written.
@@ -111,7 +111,7 @@ A rule of thumb we agreed upon is that every line of code has to be approved by 
 
 The approach is different when using trunk-based development.
 Since we want to merge our commits into the master branch as quickly as possible, we cannot wait until the complete feature is finished.
-Unlike in the original trunk-based development approach we still use feature branches, but we have much less divergence from the master branch than in Git Flow.
+Unlike in the original trunk-based development approach, we still use feature branches, but we have much less divergence from the master branch than in Git Flow.
 We create a pull request as soon as the first commit is pushed into the feature branch.
 Of course, that requires that no commit breaks anything or causes tests to fail.
 Remember that unfinished features can always be disabled with feature toggles.
@@ -136,3 +136,7 @@ The agile architecture track contains the following blogs
 . link:../../2020/how-agile-collaborators-learn[How Agile Collaborators Learn]
 
 We also published our https://www.tangly.net/insights/continuous-learning/agile-architecture-course[agile architecture course] (3 ECTS) used for teaching computer science students at bachelor level at Swiss technical universities.
+
+=== References
+
+bibliography::[]

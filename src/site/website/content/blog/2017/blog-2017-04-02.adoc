@@ -14,15 +14,15 @@ tags: ["agile"]
 image::2017-04-02-head.jpg[width=420,height=360,role=left]
 It is time to throw a big party in Switzerland.
 More than 60% of all projects are now realised using an agile approach (to see Agile Trends in Switzerland 2017] by
-http://swissq.it/en/agile/[SwissQ]), Scrum being the most popular one, Kanban as the second one.
+https://swissq.it/en/agile/[SwissQ]), Scrum being the most popular one, Kanban as the second one.
 What a change in just one year.
 In 2016, we had 40% of projects being agile, one year later we have 60%.
 _Time to adapt and become agile_.
 
 It was a long journey.
 At the beginning of this millennium, I was convincing managers that agile is not evil and could be used in Switzerland.
-Yes, agile is compatible with Swiss culture - we finally added {ref-scrum} to the national methodology
-http://www.hermes.admin.ch/onlinepublikation/index.xhtml?element=supportingmaterial_hinweis_agiles_projektmanagement_mit_hermes_und_scrum.html[Hermes] -.
+Yes, agile is compatible with Swiss culture.
+We finally added {ref-scrum} to the national methodology {ref-hermes}.
 The report 2016 patently states that agile projects are more successful for the customer and the company than non-agile ones.
 It is genuinely time to adapt.
 

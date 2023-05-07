@@ -12,7 +12,7 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2021-09-03-head.png[width=420,height=360,role=left]
-You are working as developer in a Scrum team.
+You are working as a developer in a Scrum team.
 
 Congratulations, working as a professional https://scrumguides.org/scrum-guide.html#developers[Scrum developer] is a fulfilling and exciting job.
 
@@ -141,7 +141,7 @@ CI changes habits and behaviors, creates awareness about shared responsibility.
 It is the base for frequent deliveries, reduces defects, reduces risk from late discovery of integration issues.
 ... Example 1: The increment is necessarily integrated.
 Using CI is highly recommendable for getting to at least one increment per sprint or more.
-... Example 2: The daily Scrum can provide better transparency about the progress if there is a better measure for progress.
+... Example 2: The daily Scrum can provide better transparency about progress if there is a better measure for progress.
 CI helps to get this transparency about what is working and what isn’t.
 Without CI, the Scrum team might probably not know the actual status of the system for days.
 ... Example 3: In the sprint review, only done PBIs are inspected.

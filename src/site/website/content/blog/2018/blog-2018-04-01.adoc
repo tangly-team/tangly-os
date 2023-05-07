@@ -38,7 +38,7 @@ For example, you should consider a Java Programmer certification for the current
 * Read and understand the clean series cite:[clean-code, clean-coder, clean-architecture,clean-agile, clean-craftsmanship].
 * Read and understand _Refactoring_ from Martin Fowler cite:[refactoring-2nd].
 * And read https://ronjeffries.com/xprog/articles/refactoring-not-on-the-backlog/[Refactoring not in the backlog] article from Ron Jeffries.
-* Learn modern practices such as logging with https://www.slf4j.org/[slf4j], TDD with https://junit.org/junit5/[JUnit5], http://site.mockito.org/[Mockito] and http://joel-costigliola.github.io/assertj/[AssertJ], ATDD with https://cucumber.io/[Cucumber].
+* Learn modern practices such as logging with https://www.slf4j.org/[slf4j], TDD with https://junit.org/junit5/[JUnit5], https://site.mockito.org/[Mockito] and http://joel-costigliola.github.io/assertj/[AssertJ], ATDD with https://cucumber.io/[Cucumber].
 * Lean DevOps, continuous integration, continuous delivery, continuous deployment, monitoring.
 * Be aware of famous Java libraries such as https://github.com/google/guava[Guava], https://commons.apache.org/[Apache Commons].
 * Use https://www.sonarqube.org/[SonarQube] and the https://www.sonarlint.org/[SonarLint] plugin for your preferred IDE to catch well-known weaknesses in your source code and improve your coding skills.

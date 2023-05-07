@@ -284,7 +284,7 @@ https://groovy-lang.org/closures.html[Closures] are built-in abstractions.
 
 ===== Higher-order Functions and Sequences
 
-https://docs.groovy-lang.org/next/html/documentation/working-with-collections.html[Sequences and higher-order functions] are built-in constructs.
+https://docs.groovy-lang.org/docs/next/html/documentation/#_working_with_collections[Sequences and higher-order functions] are built-in constructs.
 Groovy syntax is certainly groovy and less verbose than Java.
 But Groovy is not functional style friendly.
 

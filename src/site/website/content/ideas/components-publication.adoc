@@ -55,48 +55,48 @@ Below the dependencies between tangly open source components as defined in the m
 
 [plantuml,tangly-componentsDependencies,svg,svg-type="interactive"]
 ....
-package net.tangly.bdd [[http://blog.tangly.net/docs/bdd/]] {
+package net.tangly.bdd [[https://blog.tangly.net/docs/bdd/]] {
 }
 
-package net.tangly.commons [[http://blog.tangly.net/docs/commons/]] {
+package net.tangly.commons [[https://blog.tangly.net/docs/commons/]] {
 }
 
-package net.tangly.core [[http://blog.tangly.net/docs/core/]] {
+package net.tangly.core [[https://blog.tangly.net/docs/core/]] {
 }
 
-package net.tangly.dev [[http://blog.tangly.net/docs/dev/]] {
+package net.tangly.dev [[https://blog.tangly.net/docs/dev/]] {
 }
 net.tangly.dev --> net.tangly.commons
 
-package net.tangly.fsm [[http://blog.tangly.net/docs/fsm/]] {
+package net.tangly.fsm [[https://blog.tangly.net/docs/fsm/]] {
 }
 
-package net.tangly.gleam [[http://blog.tangly.net/docs/gleam/]] {
+package net.tangly.gleam [[https://blog.tangly.net/docs/gleam/]] {
 }
 net.tangly.gleam --> net.tangly.commons
 
-package net.tangly.ports [[http://blog.tangly.net/docs/ports/]] {
+package net.tangly.ports [[https://blog.tangly.net/docs/ports/]] {
 }
 
-package net.tangly.ui [[http://blog.tangly.net/docs/ui/]] {
+package net.tangly.ui [[https://blog.tangly.net/docs/ui/]] {
 }
 
-package net.tangly.erp.crm [[http://blog.tangly.net/docs/erp/crm]] {
+package net.tangly.erp.crm [[https://blog.tangly.netdocs/domains/crm]] {
 }
 
-package net.tangly.erp.invoices [[http://blog.tangly.net/docs/erp/invoices]] {
+package net.tangly.erp.invoices [[https://blog.tangly.netdocs/domains/invoices]] {
 }
 
-package net.tangly.erp.ledger [[http://blog.tangly.net/docs/erp/ledger]] {
+package net.tangly.erp.ledger [[https://blog.tangly.netdocs/domains/ledger]] {
 }
 
-package net.tangly.erp.products [[http://blog.tangly.net/docs/erp/products]] {
+package net.tangly.erp.products [[https://blog.tangly.netdocs/domains/products]] {
 }
 
-package net.tangly.erp.shared [[http://blog.tangly.net/docs/erp/shared]] {
+package net.tangly.erp.shared [[https://blog.tangly.netdocs/domains/shared]] {
 }
 
-package net.tangly.erp.ui [[http://blog.tangly.net/docs/erp/ui]] {
+package net.tangly.erp.ui [[https://blog.tangly.netdocs/domains/ui]] {
 }
 
 ....
@@ -136,7 +136,7 @@ Store it in a safe place.
 
 ==== Findings
 
-. We needed to manually publish the public key on http://keys.gnupg.net[keys.gnupg.net]
+. We needed to manually publish the public key on https://keys.openpgp.org/[keys.openpgp.org]
 . Gradle build file has a condition including disabling the signing plugin on the CI pipeline because keys and associated authentication are not available.
 I decided not to upload private keys to https://bitbucket.org/[bitbucket].
 See the documentation at the beginning of the Gradle build file for details.
@@ -202,7 +202,7 @@ We use the selection algorithm of Hugo to activate our tailoring and extensions.
 
 ==== Create Website
 
-The tangly open source components website is hosted under http://blog.tangly.net/docs[Documentation].
+The tangly open source components website is hosted under https://blog.tangly.net/docs[Documentation].
 
 Read the instructions in the asciidoctor script file under the scripts' folder.
 Four scripts are provided to generate the Hugo static site with associated structure and theme.

@@ -72,7 +72,7 @@ The following three levels of coaching are commonly needed:
 ==== Organizational LeSS Coaching
 
 A coach works with multiple teams and the management to improve the organization and its structure.
-A clear vision of how a LeSS organization could be:
+A clear vision of how LeSS organization could be:
 
 image::2021-02-01-coaching.png[width=420,height=360,role=left]
 
@@ -126,7 +126,7 @@ A coach typically focuses on:
 * Refactoring “smells” into clean code.
 * Writing unit tests.
 * Test-driven development.
-* Test Automation Continuous integration and continuous delivery.
+* Test automation with continuous integration and continuous delivery.
 * Specification by Example (Acceptance Test-Driven Development).
 * Efficient and effective working practices (IDE, automation).
 * Applying design patterns.
@@ -155,7 +155,7 @@ External team coaches who help the teams become better and focus on training the
 External technical coaches who focus on training internal technical coaches
 
 Have some technical coaches work with the teams, but let them focus on training internal coaches.
-After that reduce _not eliminate!_ the external technical coaching or let the external coach move to a new area.
+After that, reduce, _not eliminate!_ the external technical coaching or let the external coach move to a new area.
 
 === Be Patient, The Time Horizon is Years
 
@@ -175,7 +175,7 @@ Cross-functional Technical excellence is the essence of a quality solution.
 One product owner for the whole product provides focus.
 
 The product owner is where the money is.
-Depending on your organization put him where the budget comes from.
+Depending on your organization, put him where the budget comes from.
 
 Move from a component owner to become a component mentor.
 He is responsible for teaching others how to adapt and evolve the component.

@@ -169,28 +169,28 @@ Current available certificates of advanced study offering are, for example:
 - [[[scrum-master-learning-objectives, 1]]]
 https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Learning%20Objectives/E_CSM_LO_5-20-21.pdf[Scrum Alliance
 Certified Scrum Master Learning Objectives].
-Scrum Alliance. 2021
+Scrum Alliance. 2021.
 - [[[scrum-master-advanced-learning-objectives, 2]]]
 https://www.scrumalliance.org/ScrumRedesignDEVSite/media/ScrumAllianceMedia/Files%20and%20PDFs/Certifications/CSM/csm_learningobjectives_Advanced.pdf[Scrum
  Alliance Advanced Certified Scrum Master Learning Objectives].
-Scrum Alliance. 2017
+Scrum Alliance. 2017.
 - [[[agile-software-architecture, 3]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Software Architecture is Mainstream].
-Marcel Baumann. 2021
+Marcel Baumann. 2021.
 - [[[professional-scrum-team, 4]]]
 https://www.amazon.com/dp/B08BW6HP7G[The professional Scrum team: Growing and Empowering Cross-Functionality and Resiliency
  in a Complex World].
 Peter Götz, Uwe Schirmer, Kurt Bittner.
-Addison-Wesley. 2021
+Addison-Wesley. 2021.
 - [[[scrum-master-formation, 5]]] link:../../2021/scrum-master-formation[Scrum Master Formation].
-Marcel Baumann. 2021
+Marcel Baumann. 2021.
 - [[[product-owner-formation, 6]]] link:../../2021/product-owner-formation[Product Owner Formation].
-Marcel Baumann. 2021
+Marcel Baumann. 2021.
 - [[[scrum-developer-formation, 7]]] link:../../2021/scrum-developer-formation[Scrum Developer Formation].
-Marcel Baumann. 2021
+Marcel Baumann. 2021.
 - [[[detecting-agile-bullshit, 8]]] link:../../2019/detecting-agile-bullshit/[Detecting Agile Bullshit].
-Marcel Baumann. 2019
+Marcel Baumann. 2019.
 - [[[scrum-guide, 9]]] https://scrumguides.org/scrum-guide.html[Scrum Guide]
-Jeff Sutherland, Ken Schwaber. 2020
+Jeff Sutherland, Ken Schwaber. 2020.
 
 === References
 

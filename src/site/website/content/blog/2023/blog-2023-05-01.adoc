@@ -120,7 +120,9 @@ Marcel Baumann. 2021.
 Marcel Baumann. 2018.
 - [[[java-immutability, 5]]] link:../../2022/immutability-in-java/[Immutability in Java].
 Marcel Baumann. 2022.
-- [[[modern-java-development, 6]]] link:../../2021/modern-java-development/[Modern Java Development].
+- [[[modern-java-construcdts, 6]]] link:../../2022/modern-java-constructs/[Modern Java Constructs].
+Marcel Baumann. 2022
+- [[[modern-java-development, 7]]] link:../../2021/modern-java-development/[Modern Java Development].
 Marcel Baumann. 2021.
 
 === References

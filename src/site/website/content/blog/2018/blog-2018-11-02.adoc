@@ -15,10 +15,11 @@ image::2018-11-02-head.png[width=420,height=360,role=left]
 
 It is official.
 The power engine of the SAFe 4.6 vehicle is the team and technical agility.
-View the https://v46.scaledagileframework.com/whats-new-in-safe-46/[official presentation] and more important download the
-https://v46.scaledagileframework.com/whats-new-in-safe-46[slides].
+View the https://scaledagileframework.com for more information
+footnote:[scaled agile framework site has discarded the information for older versions of the framework.
+Try to find the news and the slides for version 4.6.].
 It is one of their five Lean Enterprise competencies and one of their four core values.
-SAFe finally recognizes the tremendous importance of https://v46.scaledagileframework.com/team-and-technical-agility/[technical proficiency and craftsmanship].
+SAFe finally recognizes the tremendous importance of https://scaledagileframework.com/team-and-technical-agility/[technical proficiency and craftsmanship].
 
 They advocate two findings.
 First, you need team agility, how you apply Scrum or Kanban.
@@ -35,13 +36,13 @@ But how to produce quality software and apply technical excellence was sadly alw
 And more than once a senior {ref-safe} coach just publicly stated that the {ref-safe} core value x is not so important for a successful introduction.
 Quite a denial approach of his own methodology, I think!
 
-Be honest with yourself and your teams, either you implement the techniques described in https://v46.scaledagileframework
-.com/team-and-technical-agility/[Technical Agility] and https://v46.scaledagileframework.com/built-In-quality/[Build-In Quality] chapters of {ref-safe} or you are not agile and have no {ref-safe} power engine.
+Be honest with yourself and your teams, either you implement the techniques described in https://scaledagileframework
+.com/team-and-technical-agility/[Technical Agility] and https:scaledagileframework.com/built-In-quality/[Build-In Quality] chapters of {ref-safe} or you are not agile and have no {ref-safe} power engine.
 It is called https://en.wikipedia.org/wiki/Cargo_cult_programming[cargo cult].
 
 A good starting point is the five dimensions of build-in quality described in {ref-safe} 4.6.
 And yes now {ref-safe} acknowledged the tremendous importance of a
-https://v46.scaledagileframework.com/continuous-delivery-pipeline/[continuous delivery pipeline].
+https:scaledagileframework.com/continuous-delivery-pipeline/[continuous delivery pipeline].
 Experts agree you can apply DevOps only if you have continuous integration, delivery, and deployment.
 
 Once you realize where your organization stands remember that build-in quality is one of tour core values of {ref-safe}.
@@ -52,7 +53,7 @@ https://en.wikipedia.org/wiki/Extreme_programming[Extreme Programming], TDD, ATT
 Most of these concepts were defined and published in the last millennium.
 It is time your teams finally adopt them and produce high quality, maintainable and cost-effective products.
 This is the whole concept of the lean movement.
-And I welcome the fact that {ref-safe} now explicitly mention https://v46.scaledagileframework.com/built-in-quality/[Cost of Delay].
+And I welcome the fact that {ref-safe} now explicitly mention https:scaledagileframework.com/built-in-quality/[Cost of Delay].
 
 One of the strengths of {ref-safe} is their clear statement that an agile organization transformation is only successful with lean-agile leadership.
 All C-level managers are trained in lean and agile, they advocate these approaches and are visible champions.
@@ -66,8 +67,8 @@ https://www.scrum.org/resources/nexus-guide[Nexus], or https://www.scrumatscale.
 Embrace technical agility and do not let your train of teams produce mediocre software every two weeks.
 
 Employ professional software craftsmen and deliver quality products.
-Follow your {ref-safe} approach, respect one of the https://v46.scaledagileframework.com/safe-core-values/[four core values] and one of the
-https://v46\.scaledagileframework.com/[five core competencies] of your method.
+Follow your {ref-safe} approach, respect one of the https:scaledagileframework.com/safe-core-values/[four core values] and one of the
+https://scaledagileframework.com/[five core competencies] of your method.
 
 See also my blogs link:../../2018/pragmatic-craftsmanship-professional-software-developer/[Pragmatic Craftsmanship],
 link:../../2018/how-to-reach-the-software-quality-graal/[Software Quality Graal], and

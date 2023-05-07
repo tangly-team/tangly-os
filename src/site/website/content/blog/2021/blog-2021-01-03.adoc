@@ -207,7 +207,7 @@ See our blog link:../../2016/git-branches-for-the-impatient[Git Branches for the
 
 image::2021-01-03-cicd_pipeline.png[720,480,role=left]
 
-The minimal gradle build file of a Java project is very simple and compact.
+The minimal gradle build file of a Java project is elementary and compact.
 
 [source,gradle]
 ----
@@ -301,7 +301,7 @@ All the tools identified in the above mindmap are supported in IDE and associate
 Students can work offline and learn the tools in a gentle manner.
 
 The students can use the https://www.jetbrains.com/help/idea/running-inspections.html[IDEA Static Code Analyzer] without any additional configuration.
-The quality is good enough and the feature empowers junior developers to learn modern and correct Java code.
+The quality is good enough, and the feature empowers junior developers to learn modern and correct Java code.
 
 More advanced scenarios use https://spotbugs.github.io/[SpotBugs] and the associated IDEA plugin.
 
@@ -414,7 +414,7 @@ pick 474bf0c2 last commit
 ==== Cherry Picking
 
 Cherry-picking in Git means choosing a commit from one branch and applying it onto another.
-This is in contrast with other ways such as _merge_ and _rebase_ which normally apply many commits onto another branch.
+This is in contrast with other ways, such as _merge_ and _rebase_ which normally apply many commits onto another branch.
 
 You can display the hashes of your commits in the _trunk_ with the command:
 

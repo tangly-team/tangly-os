@@ -38,7 +38,7 @@ External helpers are relatively new and more like an experimental feature.
 There is a proposal on improving it by adding user configurations so at least there is hope for this particular feature to expand.
 ====
 
-The features of https://en.wikipedia.org/wiki/AsciiDoc[AsciiDoc] set is equivalent to https://en.wikipedia.org/wiki/DocBook[DocBook].
+The features of https://en.wikipedia.org/wiki/AsciiDoc[AsciiDoc] are equivalent to https://en.wikipedia.org/wiki/DocBook[DocBook].
 The readers with grey hair probably remember https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language[SGML], the ancestor of DocBook.
 The librarians could remember https://en.wikipedia.org/wiki/LaTeX[LaTeX] created by https://en.wikipedia.org/wiki/Leslie_Lamport[Leslie Lamport].
 He created it to describe https://en.wikipedia.org/wiki/Temporal_logic[temporal logic] aspects of cluster communication for the
@@ -51,7 +51,7 @@ Asciidoctor supports rouge source code highlighting per default
 footnote:[Beware the Hugo documentation stating you have to import an extension for syntax highlighting is plain wrong if you are using
 https://docs.asciidoctor.org/asciidoctor/latest/syntax-highlighting/rouge/[rouge].].
 You do need to add any extension to Hugo.
-Just select the style you prefer such as:
+Just select the style you prefer, such as:
 
 [source,yaml]
 ----
@@ -97,7 +97,7 @@ You have to create a partial in docsy to use Utterances.
 Docsy has finally merged the change request for taxonomies during the first semester of 2021.
 Tags for articles are now natively supported without tinkering with the code of the plugin.
 
-Our http://blog.tangly.net/blog/[blog] displays the tags on the right side of the window.
+Our https://blog.tangly.net/blog/[blog] displays the tags on the right side of the window.
 Give it a try.
 
 === Diagrams in articles

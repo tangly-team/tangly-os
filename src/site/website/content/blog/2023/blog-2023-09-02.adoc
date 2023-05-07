@@ -13,13 +13,62 @@ tags: ["java"]
 
 image::2023-09-02-head.jpg[width=420,height=360,role=left]
 
+Java 21 LTS was released on time to the public.
+The release is available for download since 21^st^ September 2023.
 
 === Amber Project
 
+The https://openjdk.org/projects/amber/[amber] initiative is completing the changes with pattern matching.
+
+- https://openjdk.org/jeps/440[Record Patterns]
+- https://openjdk.org/jeps/441[Patten Matching for Switch]
+
+The syntactic improvements initiated by Amber and core group are;
+
+- https://openjdk.org/jeps/430[String Templates] _Preview_
+- https://openjdk.org/jeps/431[Sequenced Collections]
+
 === Loom Project
+
+The https://openjdk.org/projects/loom/[loom] initiative is completing the major changes associated with virtual threads.
+
+- https://openjdk.org/jeps/444[Virtual Threads]
 
 === Panama Project
 
+The panama initiative is iterating through their interfaces.
+
+- https://openjdk.org/jeps/448[Vector API] _Sixth Incubator_
+- https://openjdk.org/jeps/442[Foreign Function & Memory API] _Third Preview_
+
 === Valhalla Project
 
+As usual the https://openjdk.org/projects/valhalla/[Valhalla] initiative did not release any improvements in the current release.
+
 ==== Lilliput and Leyden Projects
+
+The https://openjdk.org/projects/lilliput/[lilliput] initiative aims to reduce memory usage.
+
+[bibliography]
+=== Links
+
+- [[[java-20, 1]]] link:../../2023/java-20/[Java 20].
+Marcel Baumann. 2022.
+- [[[vaadin, 2]]]  link:../../2022/vaadin/[Vaadin].
+Marcel Baumann. 2022.
+- [[[java-19,3]]] link:../../2021/jdk-17/[Java 17].
+Marcel Baumann. 2021.
+- [[[java-16, 4]]] link:../../2021/jdk-16/[Java 16].
+Marcel Baumann. 2021.
+- [[[java-10, 5]]] link:../../2018/java-10-aka-18.3-changes/[Java 10 aka 18.3 Changes].
+Marcel Baumann. 2018.
+- [[[java-immutability, 6]]] link:../../2022/immutability-in-java/[Immutability in Java].
+Marcel Baumann. 2022.
+- [[[modern-java-construcdts, 7]]] link:../../2022/modern-java-constructs/[Modern Java Constructs].
+Marcel Baumann. 2022
+- [[[modern-java-development, 8]]] link:../../2021/modern-java-development/[Modern Java Development].
+Marcel Baumann. 2021.
+
+=== References
+
+bibliography::[]

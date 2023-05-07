@@ -163,7 +163,7 @@ git checkout #feat_42
 
 === More Information
 
-You can find a lot of information on http://stackoverflow.com/questions/tagged/git[Stack Overflow].
+You can find a lot of information on https://stackoverflow.com/questions/tagged/git[Stack Overflow].
 Beware when reading the answers on Stack Overflow that Git commands have changed over time.
 Select new posts to find the best answers.
 
@@ -171,7 +171,7 @@ The nifty-gritty details can be found in the official https://git-scm.com/book/e
 
 [WARNING]
 ====
-Beware that http://gitolite.com/[gitolite] does not support special characters such as # in branch names.
+Beware that https://gitolite.com/[gitolite] does not support special characters such as # in branch names.
 Use them only in the commit messages.
 ====
 

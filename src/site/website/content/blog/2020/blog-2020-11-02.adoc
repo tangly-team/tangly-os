@@ -151,7 +151,7 @@ _For me, it is similar to the introduction of object-oriented approaches in anal
 In the late nineties of the last century, the object-oriented movement won.
 It took more than ten years to take care of the last luddites._
 
-_Our company https://wwww.tangly.net/[tangly llc] works steadily and continuously to advance agile and lean values.
+_Our company https://www.tangly.net/[tangly llc] works steadily and continuously to advance agile and lean values.
 Our structure and processes actively support agile values.
 We are very happy with the current results._
 

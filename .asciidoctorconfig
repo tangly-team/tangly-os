@@ -7,7 +7,7 @@
 
 :ref-asciidoc: https://asciidoc.org/[Asciidoc]
 :ref-asciidoctor: https://asciidoctor.org/[Asciidoctor]
-:ref-bbrt: http://bbrt.org/[Beyond Budgeting Round Table]
+:ref-bbrt: https://bbrt.org/[Beyond Budgeting Round Table]
 :ref-bitbucket: https://bitbucket.org/[Bitbucket]
 :ref-c4: https://c4model.com/[C4 Model]
 :ref-craftsmanship: https://manifesto.softwarecraftsmanship.org/[Software Craftsmanship]
@@ -22,7 +22,7 @@
 :ref-hugo: https://gohugo.io/[Hugo]
 :ref-kaizen: https://en.wikipedia.org/wiki/Kaizen/[Kaizen]
 :ref-kanban: https://en.wikipedia.org/wiki/Kanban/[Kanban]
-:ref-junit5: https://junit.org/junit5/docs/current/user-guide/[JUnit 5]
+:ref-junit5: https://junit.org/junit5/[JUnit 5]
 :ref-lean: https://en.wikipedia.org/wiki/Lean_software_development/[Lean Software Development]
 :ref-less: https://less.works/[LeSS]
 :ref-manifesto: http://agilemanifesto.org/[Agile Manifesto]

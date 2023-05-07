@@ -55,7 +55,7 @@ a|- Controlling program flow
 Your preparation approach shall be tailored to how you prefer to learn.
 You can attend a course or read a book.
 
-The https://www.amazon.com//dp/B09WJP11JL/[OCP Oracle Certified Professional Java SE 17 Developer Study Guide: Exam 1Z0-829] is a great and cost-effective resource.
+The https://www.amazon.com/dp/B09WJP11JL/[OCP Oracle Certified Professional Java SE 17 Developer Study Guide: Exam 1Z0-829] is a great and cost-effective resource.
 You have access to all materials for less than forty dollars.
 
 The book provides a registration to a wiley account where you will have access to a test bank.
@@ -98,7 +98,7 @@ With some luck, you get a few more points.
 [bibliography]
 === Links
 
-- [[[ocp-study-guide-java-17, 1]]] https://www.amazon.com//dp/B09WJP11JL/[OCP Oracle Certified Professional Java SE 17 Developer Study Guide: Exam 1Z0-829]
+- [[[ocp-study-guide-java-17, 1]]] https://www.amazon.com/dp/B09WJP11JL/[OCP Oracle Certified Professional Java SE 17 Developer Study Guide: Exam 1Z0-829]
 Scott Selikoff, Jeanne Boyarsky.
 Sybex. 2022
 - [[[certification-java-11, 2]]] link:../../2021/certified-java-developer/[Certified Java 11 Developer]

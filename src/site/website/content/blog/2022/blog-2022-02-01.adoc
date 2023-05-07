@@ -120,10 +120,10 @@ The eight tips are:
 . Do team https://en.wikipedia.org/wiki/Code_review[code reviews], better promote https://en.wikipedia.org/wiki/Pair_programming[Pair Programming].
 . Keep your https://en.wikipedia.org/wiki/Continuous_integration[pipelines] in great shape.
 You shall deploy your software product multiple times a day to an integration staging area.
-. https://en.wikipedia.org/wiki/Technical_debt/[Technical Debt] should be zero at all times.
+. https://en.wikipedia.org/wiki/Technical_debt[Technical Debt] should be zero at all times.
 A powerful practice is the zero bug policy <<zero-bug-policy>>.
 . Drop rituals that give you no added value.
-Avoid https://en.wikipedia.org/wiki/Cargo_cult/[Cargo Cult].
+Avoid https://en.wikipedia.org/wiki/Cargo_cult[Cargo Cult].
 . Have a good mix of experience and personality in your team.
 Promote continuous training and when adequate certification in key technologies.
 Establish a strong learning culture in your organization.

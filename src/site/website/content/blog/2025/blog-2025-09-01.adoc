@@ -15,11 +15,19 @@ image::2025-09-01-head.jpg[width=420,height=360,role=left]
 
 === Agile Digital and Software Product Development
 
-Product development and not project
+Scrum is the de-facto standard approach to create digital products.
+Small and medium companies develop new services and products with the help of small size teams.
+They do not have the resources to build a huge development organization with hundreds of developers.
+{ref-scrum} and in bigger setup {ref-less} approaches are ideal matches for these initiatives.
 
-Scrum de-facto standard
+Agile and Scrum frameworks are used to create new products and services.
+They are *not* project methods.
+Customers buy products not projects.
 
-technical agility
+Scrum supports us in the setup, team dynamics and priorization of features and releases.
+No answers are provided how to develop the solution.
+Your organization needs to reach technical fluency.
+The teams have to growth their organizational and technical capabilities simultaneously <<[reflections-on-agile-fluency-model>>.
 
 === Functional Requirements
 
@@ -31,6 +39,35 @@ Translation and user manual
 
 === Architecture Characteristics
 
+=== Lessons Learnt
+
+Here questions we discussed with development teams.
+
+[qanda]
+Does domain-driven design have similarities with model-based engineering?::
+Yes, Scott EVans was influenced by the model-driven design _MDD_ movement.
+A model is an essential part of software design.
+We need it in order to be able to deal with complexity.
+the main point is that we need to communicate the model.
+Does domain-driven design have similarities with SysML?::
+Do we need to describe our system with UML use cases?::
+How do we describe the behaviour of your system?::
+But the class behavior and the constraints are not so easily expressed.
+UML activity diagrams (for instance) vs. class diagrams?
+How de we identify our bounded domains?::
+If the design, or some central part of it, does not map to the domain model, that model is of little value, and the correctness of the software is suspect. – do we really live that?
+Should we create a layered architecture?::
+layers applicable to “Motion Control” and/or lower level control s.a. battery management as well?
+How does it match the ROS2 approach?
+Do we have entities, aggregates, and value objects?::
+What is our ubiquitous language?::
+A core principle of domain-driven design is to use a language based on the model.
+Does our commercial framework have an impact on the architecture?::
+Do we structure our Software as well in Modules?
+I would opt for it.
+How to cluster modules?
+It is actually this sort of architectural thinking that I initially thought of when I mentioned “architecture review”
+
 cite:[building-evolutionary-architectures-2nd,building-evolutionary-architectures]
 
 cite:[refactoring-2nd]
@@ -39,6 +76,9 @@ cite:[modern-software-engineering]
 
 [bibliography]
 === Links
+
+[[[reflections-on-agile-fluency-model, 1]]] link:../../2021/reflections-on-agile-fluency-model/[Reflections on Agile Fluency Model].
+Marcel Baumann. 2021.
 
 === References
 

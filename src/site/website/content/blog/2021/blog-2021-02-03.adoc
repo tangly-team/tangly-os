@@ -44,8 +44,8 @@ I use macOS and Linux, not Microsoft and Office.
 * Send me a meaningful invitation.
 Provide
 ** Purpose and goals of the meeting.
-** an agenda - ideally each item has a tentative duration -.
-** an attendee list - normally visible in the ICS invitation -.
+** an agenda, ideally each item has a tentative duration.
+** an attendee list, normally visible in the ICS invitation.
 ** attach the documents I shall read before the meeting in the invitation.
 You can also provide links to the documents.
 Please do not require a login to access the document.

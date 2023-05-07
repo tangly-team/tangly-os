@@ -108,7 +108,7 @@ A software developer should understand theory such as e.g., https://en.wikipedia
 The learning effect is not always huge, but as a team member, I have security that they know all basic concepts. +
 Modern Java supports such concepts as https://en.wikipedia.org/wiki/Algebraic_data_type[algebraic data types],
 https://en.wikipedia.org/wiki/Functional_programming[functional programming],
-https://en.wikipedia.org/wiki/Monad_(functional_programming)/[monads],
+https://en.wikipedia.org/wiki/Monad_(functional_programming)[monads],
 https://en.wikipedia.org/wiki/Structured_concurrency[structured concurrency].
 A professional developer shall apply them in her daily work.
 * People who stress over code style, linting rules, or another minutia are insane weirdos.

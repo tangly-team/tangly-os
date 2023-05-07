@@ -22,7 +22,7 @@ I am convinced to achieve ingrained success an agile coach shall:
 
 * Coach team members how to reach technical excellence.
 They build your solution, it shall fulfill the user's requirements, be of high quality and affordable.
-* Learn them to attain https://en.wikipedia.org/wiki/Software_craftsmanship/[mastery] and build awesome products.
+* Learn them to attain https://en.wikipedia.org/wiki/Software_craftsmanship[mastery] and build awesome products.
 * Coach the team how to improve, focus and enjoy the work on a daily basis. https://en.wikipedia.org/wiki/Flow_(psychology)[Flow] shall be natural for them,
 * Coach the organisation how to adapt, provide the ground to have the best collaborators and become most successful in the market.
 Use a https://en.wikipedia.org/wiki/Lean_startup[lean approach].

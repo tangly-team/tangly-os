@@ -20,7 +20,8 @@ The Large Scale Scrum framework {ref-less} states a full-time Scrum Master suppo
 
 I worked with quite a few Scrum Masters, Product Owners, and Scrum teams.
 My experience shows it is more productive and effective when the Scrum Master works full-time as (see
-http://www.barryovereem.com/the-8-stances-of-a-scrum-master/[white paper of Barry Overeem])
+https://shop.theliberators.com/products/the-8-stances-of-a-scrum-master[white paper of Barry Overeem])
+footnote:[The liberators have change their website structure. Search under https://shop.theliberators.com/[The Liberators Shop] to find information.]
 
 . A servant leader
 . A coach
@@ -53,7 +54,7 @@ Do you perform each sprint the top things a Scrum Master usually forgets to focu
 . Expand with the team and the organization the definition of done. Beware it can trigger an organizational change.
 
 I hope the discussion what a successful Scrum master does stay active.
-Avoid agile coaches not being Scrum masters, they are not doing https://en.wikipedia.org/wiki/Gemba[Gemba] and loose contact with the knowledge workers.
+Avoid agile coaches not being Scrum masters, they are not doing https://en.wikipedia.org/wiki/Gemba[Gemba] and lose contact with the knowledge workers.
 
 Read our link:../../2016/what-you-do-not-need-to-do-in-scrum[what you do not need to do].
 

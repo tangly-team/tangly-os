@@ -32,7 +32,7 @@ The Confederation will support the use of data through free, uniform and underst
 It will also pursue a continuous dialogue with the public.
 
 You can find more details under
-https://www.egovernment.ch/en/umsetzung/e-government-schweiz-2008-2015/open-government-data-schweiz/[Open Government Data Switzerland].
+https://www.egovernment.ch/en/umsetzung/e-government-schweiz-2008-2015/open-government-data-schweiz[Open Government Data Switzerland].
 
 The solution is a GIS open data portal supporting self-service.
 It provides over a hundred theme maps with GIS data in multiple formats, resolutions and geographical sizes available through a self-service portal.
@@ -64,9 +64,9 @@ The delivered solution was
 * Self-service approach to minimize running costs.
 * Private cloud approach due to regulatory aspects.
 * REST service to provide human-readable and machine-readable maps in various formats.
-* Build on existing approaches to generate GIS data to minimize risks and respect ambitious timeline.
+* Build on existing approaches to generate GIS data to minimize risks and respect ambitious timeline
+footnote:[A description of the technical solution in German is no more available from https://www.inser.ch[inser]].
 
-A description of the technical solution in German can be found https://www.inser.ch/en/node/393[here].
 The REST API is described
 https://are.zh.ch/internet/baudirektion/are/de/geoinformation/geodaten_uebersicht/Open_Data_Kanton_Zuerich/Datenshop-Dienst/_jcr_content/contentPar/downloadlist/downloaditems/schnittstelle_datens.spooler.download.1513149023584.pdf/d-OGD+ZH+-+REST+interface+v1.1.1.pdf[here].
 

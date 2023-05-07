@@ -18,7 +18,7 @@ You need a strong engineering culture to achieve quality and lasting success.
 
 Often, coaches and Scrum masters tinker with the processes and invest effort and blood to improve the ceremonies and the company structure.
 
-But at the end of the day, the success of your application is defined by its adequacy to customers' needs and its overall quality.
+But at the end of the day, the success of your application is defined by its adequacy to customer needs and its overall quality.
 You need a solid and professional engineering culture to produce high-quality products and release them at a high rate.
 If not, you just release a new set of defects to your paying customers.
 

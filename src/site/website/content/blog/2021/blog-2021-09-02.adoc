@@ -82,19 +82,19 @@ Introduction and Goals::
 Short description of the requirements, driving forces, extract (or abstract) of requirements.
 Top three (max five) quality goals for the architecture which have the highest priority for the major stakeholders.
 A table of important stakeholders with their expectation regarding architecture. +
-_Agile defines the product vision, goals and roadmap.
+_Agile defines the product vision, goals, and roadmap.
 Stakeholder management has a strong emphasis and is the responsibility of the product owner._ +
 +
 _See  <<chapter-1>>, <<chapter-2>>, <<chapter-4>>_
 Constraints::
 Anything that constrains teams in design and implementation decisions or decision about related processes.
-Can sometimes go beyond individual systems and are valid for whole organizations and companies. +
-_Define, track and verified through fitness functions._ +
+It can sometimes go beyond individual systems and are valid for whole organizations and companies. +
+_Define, track and verify through fitness functions._ +
 +
 _See  <<chapter-9>>_
 Context and Scope::
-Delimits your system from its (external) communication partners (neighboring systems and users).
-Specifies the external interfaces.
+Delimit your system from its (external) communication partners (neighboring systems and users).
+Specify the external interfaces.
 Shown from a business/domain perspective (always) or a technical perspective (optional) +
 _Define and document using the UML or C4 approach._ +
 +
@@ -222,7 +222,7 @@ Introduction to agile software architecture::
 The agile architecture approach::
 * Being able to iteratively and agilely structure architecture work.
 * Knowledge of role models for architects in agile projects.
-* Knowledge of ways of involving stakeholders in architecture work.
+* Knowledge of ways involving stakeholders in architecture work.
 * _See <<chapter-4>>, <<chapter-14>>_
 Architecture requirements in agile projects::
 * Being able to formulate quality requirements appropriately for specific target groups.
@@ -245,7 +245,7 @@ Reflection and feedback on architecture work in the agile context::
 * Being familiar with feedback capabilities from the implementation and able to attribute results to architecture objectives.
 * _See <<chapter-6>>, <<chapter-7>>_
 Examples of agile architecture work::
-* Being familiar with and understanding examples for decision-making procedures in agile projects.
+* Being familiar with and understanding examples of decision-making procedures in agile projects.
 * Being familiar with and understanding examples for agile architecture requirements.
 * Being familiar with physical characteristics of agile communication concepts.
 * Being able to understand the postponement of architecture decisions.
@@ -289,7 +289,7 @@ Approaches such as clean code, test-driven development, refactoring and infrastr
 Design concepts must be refined.
 The students understand concepts such as patterns, micro-architecture, layered architecture.
 They seldom formulate the technical and financial tradeoffs associated with a specific concept application
-footnote:[Choosing a technical and financial tradeoff is the essence of an engineer work.
+footnote:[Choosing a technical and financial tradeoff is the essence of engineer's work.
 These tradeoffs are often formulated in architecture design records _ADR_.].
 
 Almost no student has experience with open source libraries.

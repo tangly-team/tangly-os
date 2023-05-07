@@ -24,7 +24,7 @@ The documentation was not updated the last ten years.
 The approach is clinically dead and should not be promoted for active software development efforts.
 
 A similar approach exists with the official governmental Swiss project method {ref-hermes}.
-At least the documentation of https://www.hermes.admin.ch/en/starting-page.html[Hermes] is better than SoDa.
+At least the documentation of https://www.hermes.admin.ch/en//starting-page.html[Hermes] is better than SoDa.
 
 Both approaches are quite similar.
 They mix a phase-based Waterfall approach with the four phases of the old https://en.wikipedia.org/wiki/Rational_Unified_Process[RUP] project life-cycle approach.

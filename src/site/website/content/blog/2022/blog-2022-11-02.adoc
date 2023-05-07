@@ -98,4 +98,4 @@ Gradle ecosystem is still work in progress to support multi-module Java projects
 === Links
 
 - [[[gradle-7, 1]]] link:../../2021/gradle-7/[Gradle 7 Goodies]
-- [[[gradle-6, 2]]] link:../..2020/gradle-6.4-finally-supports-java-modules/[Gradle 6.4 Finally Supports Java Modules]
+- [[[gradle-6, 2]]] link:../../2020/gradle-6.4-finally-supports-java-modules/[Gradle 6.4 Finally Supports Java Modules]

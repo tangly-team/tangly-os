@@ -28,7 +28,7 @@ The JOOQL approach has a genuine mapping of SQL statements to type verified Java
 
 The HSQLDB SQL database java solution is the preferred choice when an application needs to store data in a relational store.
 
-Beware the preferred persistence mechanism is link:../adr/os-007-persistence-microstream/[Microstream].
+Beware the preferred persistence mechanism is link:../os-007-persistence-microstream/[Microstream].
 
 === Consequences
 

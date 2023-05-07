@@ -57,7 +57,7 @@ In your team, I will not hear any disrespectful comments about people.
 
 === Modern Agile
 
-The http://modernagile.org/[modern agile movement] defines guiding principles.
+The https://modernagile.org/[modern agile movement] defines guiding principles.
 
 Make people awesome::
 Dedicated collaborators want to give their best.

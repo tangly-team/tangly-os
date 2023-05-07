@@ -209,7 +209,7 @@ Architects are no more needed, we are all talented hackers.
 
 [TIP]
 ====
-_ROI: Architecture work versus to write it twice_
+_ROI: The overhead of architecture activities versus to effort to write it twice_
 
 * You start once you have a vision, an initial plan, and a set of initial decisions.
 * You should not have a complete and detailed plan.

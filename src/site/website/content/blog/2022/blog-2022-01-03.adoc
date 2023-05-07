@@ -74,7 +74,7 @@ _If his current projects use older versions of the language, I expect a professi
 * If he is a junior developer, I check if he has an official Java developer certificate.
 * Which libraries did she use?
 I expect https://junit.org/junit5/[JUnit], https://site.mockito.org/[Mockito], https://assertj.github.io/doc/[AssertJ],
-http://www.slf4j.org/[slf4j], https://flywaydb.org/[flyway], https://github.com/FasterXML/jackson[Jackson].
+https://www.slf4j.org/[slf4j], https://flywaydb.org/[flyway], https://github.com/FasterXML/jackson[Jackson].
 More capable developers often cite https://projectlombok.org/[lombok], https://github.com/google/jimfs[jimfs], http://hsqldb.org/[hsqldb].
 * Does he have experience with JSON, HTML, CSS, SQL, or script languages?
 Design Capabilities::

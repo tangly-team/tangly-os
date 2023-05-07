@@ -20,7 +20,7 @@ It is time to introduce Enterprise wide Agile with Scrum or Kanban or XP.
 Your Company wants to introduce Enterprise Agility in their product development, quality assurance and sales departments.
 The company as a whole shall transition to an agile organization and all teams shall adopt {ref-scrum}.
 
-Try the http://martinfowler.com/bliki/ShuHaRi.html[Shu Ha Ri] approach for such a change process.
+Try the https://martinfowler.com/bliki/ShuHaRi.html[Shu Ha Ri] approach for such a change process.
 
 Based on our exhaustive experience, we recommend starting with a set of workshops with the goal of defining a tailored approach to adapt the structure and processes of the company and introduce enterprise agile.
 

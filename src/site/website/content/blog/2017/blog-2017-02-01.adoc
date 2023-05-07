@@ -23,7 +23,7 @@ Such a change takes time and sometimes hurts.
 You need to believe in them and provide an environment where they can safely learn and experiment.
 * In the end, what matters are collaborator purpose, customer satisfaction, business value.
 
-http://www.swissq.it/[SwissQ]  has published a "SwissQ Software Development Switzerland 2016".
+https://swissq.it/en/[SwissQ]  has published a "SwissQ Software Development Switzerland 2016".
 The study can be downloaded as PDF from their website.
 See a previous blog for the results of link:../../2016/agile-trends-switzerland-2013[Agile Trends Switzerland 2013] and another blog for the results of
 link:../../2016/agile-trends-switzerland-2012[Agile Trends Switzerland 2012].

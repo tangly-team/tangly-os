@@ -81,6 +81,19 @@ Don't write customer-specific things in the software architecture documentation,
 [bibliography]
 === Links
 
+- [[[why-enterprise-architecture, 1]]] link:../../2021/why-enterprise-architecture/[Why Enterprise Architecture?].
+Marcel Baumann. 2021.
+- [[[agile-achitecture-is-main-stream, 2]]] link:../../2021/agile-software-architecture-is-mainstream/[Agile Architecture is Mainstream].
+Marcel Baumann. 2021.
+- [[[agile-architecture-principles, 3]]]  link:../../2019/agile-architecture-principles/[Agile Architecture Principles].
+Marcel Baumann. 2019.
+- [[[agile-architecture-with-scrum, 4]]] link:../../2019/agile-architecture-within-scrum/[Agile Architecture Within Scrum].
+Marcel Baumann. 2019.
+- [[[adr, 5]]] link:../../2018/architectural-decision-records-adr/[Architecture Decision Records ADR].
+Marcel Baumann. 20218.
+- [[[what-i-learnt-teaching-agile-software-engineering, 6]]] link:../../2021/what-i-learnt-teaching-agile-software-architecture/[What I Learnt Teaching Agile Software Architecture].
+Marcel Baumann. 2021.
+
 === References
 
 bibliography::[]

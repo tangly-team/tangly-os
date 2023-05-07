@@ -19,7 +19,8 @@ hugo --destination public
 
 # commit will push all changes to the git repository and trigger an update of the website, GitHub default branch is main
 # upon deployment links can be validated using
-# linkchecker --ignore-url=(_print|.css) https://blog.tangly.net
+# install linkchecker with sudo -H pip3 install linkchecker
+# linkchecker --ignore-url='.*(?:_print|.css)$' https://blog.tangly.net
 cd public
 git add --all
 git commit -m "new release of the tangly-team web site"

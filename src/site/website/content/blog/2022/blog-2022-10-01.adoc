@@ -32,13 +32,13 @@ The Vaadin framework is optimal for internal applications.
 
 It scales up to a few thousands of active users.
 
-=== Progressive Web Applications https://en.wikipedia.org/wiki/Progressive_web_app/[PWA]
+=== Progressive Web Applications https://en.wikipedia.org/wiki/Progressive_web_app[PWA]
 
 User interfaces shall accommodate various screen resolutions.
 Ideally, you should support phone displays, tablets, and high-resolution workstations.
 Progressive Web applications provide the functionalities to realize such solutions.
 
-Vaadin provides first-level support for https://en.wikipedia.org/wiki/Progressive_web_app/[PWA] functions.
+Vaadin provides first-level support for https://en.wikipedia.org/wiki/Progressive_web_app[PWA] functions.
 
 The regular Vaadin distribution provides the expected regular visual components.
 

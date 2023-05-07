@@ -96,7 +96,7 @@ The major responsibility of senior management is hire the best collaborators, re
 * Move collaborators to the learning zone and let them thrive.
 
 Nurture a culture of learning through training on the job, learning from external sources – such as reading
-link:../../../ideas/learnings/links\[ high-quality blogs] – and formal education – such as bachelor or master courses, for example,
+link:../../../ideas/learnings/links[ high-quality blogs] – and formal education – such as bachelor or master courses, for example,
 https://www.tangly.net/insights/continuous-learning/agile-architecture-course[agile architecture] -.
 
 Please reflect how you encourage continuous learning in your organization.

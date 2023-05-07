@@ -144,7 +144,7 @@ More interesting is that a tourist living in the European zone has none of these
 Please implement the internal identifier feature as an interface marker.
 The external identifier and name features can be grouped into one interface.
 
-Additional information is available under link:../../docs/docs/core/models/[models].
+Additional information is available under link:../../../docs/core/models/[models].
 Below the source code in modern Java is:
 
 [source,java]
@@ -162,7 +162,7 @@ public interface HasId extends HasOid {
 ----
 
 We provide a Java library BUS implementing these constructs.
-More information is available under http://blog.tangly.net/[tangly open source components].
+More information is available under https://blog.tangly.net/[tangly open source components].
 
 === Extensions
 

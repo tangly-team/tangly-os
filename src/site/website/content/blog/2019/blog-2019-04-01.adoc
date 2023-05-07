@@ -58,7 +58,7 @@ Find out how many times a specific context was modified
 git log -- contextPath --pretty=format:'%an' | grep 'Author' | sed -e 's/Author: \(.*\) <\(.*\)/\1/' | sort -rg | uniq -c | sort -rg
 ----
 
-Find out how many errors were fixed in a specific context – e.g. identified through close #TicketId -
+Find out how many errors were fixed in a specific context – e.g., identified through close #TicketId -
 
 [source, bash]
 ----

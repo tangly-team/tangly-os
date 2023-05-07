@@ -129,16 +129,16 @@ For example, the IntelliJ IDEA stops to provide support for obsolete JDKs as soo
 It hinders you to use the associated preview features
 footnote:[I have reported the bug in the microstream forum and informed them that their claim they support these JDK is plain wrong. The project sadly does not currently have a
 bug reporting system. I hope the version promised for April 2021 will finally solve these showstoppers.]
-footnote:[Version 5.0 was released July 2021 and finally provides support for records. You need to increase access to internal components with the option
+footnote:[Version 5.0 was released in July 2021 and finally provides support for records. You need to increase access to internal components with the option
 _--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED_ to have a working approach.].
 
 I have to verify if the library can cope with sealed declarations.
 
 === Next Steps
 
-* Wait for the release scheduled for April 2021 and pray they will support record feature.
+* Wait for the release scheduled for April 2021 and pray they will support the record feature.
 Records are an official feature in JDK 16 released in March 2021 and no more a preview feature.
-See our http://localhost:1313/blog/2021/modern-java-development/[Modern Java Development]
+See our link:../../2021/modern-java-development/[Modern Java Development]
 discussion how organizations cope with the Java release cycle or are just laggards.
 * Codify a performant approach to save whole instances using eager store operations.
 * Explore the migration features when the data schema is changing.

@@ -41,8 +41,8 @@ Examples of improvements are
 
 Deeper changes are
 
-* New date API is simplifying the handling of date and time logic.
-The solution is based on the learnings of the https://www.joda.org/joda-time/[Joda] time library.
+* The new date API is simplifying the handling of date and time logic.
+The solution is based on the learning of the https://www.joda.org/joda-time/[Joda] time library.
 * Support of Lambda constructs greatly eliminates the need for verbose anonymous classes.
 
 === Useful Constructs
@@ -52,9 +52,9 @@ Modern Java code is quite different from Java 5 code.
 
 Java Modules::
 Dependencies management supported at language level. +
-The https://en.wikipedia.org/wiki/Ada_(programming_language)/[Ada] programming language has support for module since 1985.
+The https://en.wikipedia.org/wiki/Ada_(programming_language)[Ada] programming language has support for module since 1985.
 Streams and Lambda::
-Support of functional programming approaches.
+Support for functional programming approaches.
 Streams are declarative and support internal iterators. +
 _The Booch Ada component library supported internal iterators since 1985_.
 Record::
@@ -82,7 +82,7 @@ We still have open wounds in the legibility and elegance of the Java programming
 https://en.wikipedia.org/wiki/Null_coalescing_operator[Null Coalescing Operator]).
 * Fluent interface when setting multiple properties in an instance.
 * Missing support for modifiable properties (read-only properties have initial support in the record construct).
-* Missing logging interface similar to http://www.slf4j.org/[slf4j].
+* Missing logging interface similar to https://www.slf4j.org/[slf4j].
 * Reified generics to have access to generic types during runtime.
 
 === Next Improvements?

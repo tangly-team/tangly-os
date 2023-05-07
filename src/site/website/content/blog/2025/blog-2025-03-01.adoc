@@ -1,7 +1,7 @@
 ---
 title: "Bounded Domains and Layered Architecture"
 linkTitle: "Layers in Bounded Domains"
-date: 2025-01-01
+date: 2025-03-01
 tags: ["java", "architecture"]
 ---
 
