@@ -13,7 +13,7 @@ tags: ["agile", "devops"]
 
 image::2022-04-04-head.png[width=420,height=360,role=left]
 
-Your organization heard of https://en.wikipedia.org/wiki/DevOps[DevOps], and your developers clamour you should adopt the approach.
+Your organization heard of https://en.wikipedia.org/wiki/DevOps[DevOps], and your developers clamor you should adopt the approach.
 
 Each organization I talk with has some DevOps initiative.
 Often because they read that DevOps approach puts customers and end-user satisfaction at the center.

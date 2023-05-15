@@ -32,7 +32,7 @@ Loops and conditional statements are almost disappearing in your code.
 . You declared in your own methods functions as formal parameters.
 . You declared in at least one of your methods a return type being a function.
 
-Clojure is a very nice language to learn functional programming idioms.
+Clojure is a very nice language to learn functional programming idioms <<clojure-1>>.
 
 === Functional Thinking
 
@@ -47,24 +47,21 @@ For example, they can be assigned to variables, passed in as arguments, or retur
 
 [source,clojure]
 ----
-(defrecord Person [^String firstname ^String lastname])         <1>
+(defrecord Person [^String firstname ^String lastname])       <1>
 
-(def aPerson (->Person "John" "Doe"))                           <2>
+(def aPerson (->Person "John" "Doe"))                         <2>
 ;; or (def aPerson (Person. "John" "Doe"))
 
-(:firstname aPerson)                                            <3>
-;; => "John"
-(:lastname aPerson)
-;; => "Doe
+(:firstname aPerson)                                          ;; => "John"
+(:lastname aPerson)                                           ;; => "Doe
 
-(def anotherPerson (assoc aPerson :firstname "Jane"))           <4>
+(def anotherPerson (assoc aPerson :firstname "Jane"))         <3>
 ;; => Jane doe
 ----
 
 <1> Define a new record _Person_ with two string properties _firstname_ and _lastname_.
-<2> Create a new record instance with firstname _John_ and lastname _Doe_ and associates it with reference _aPerson_.
-<3> Return the firstname of _aPerson_.
-<4> Create a new record instance with the values of _aPerson_ and the new value _Jane_ for the _firstname_.
+<2> Create a new record instance with firstname _John_ and lastname _Doe_ and associate it with reference _aPerson_.
+<3> Create a new record instance with the values of _aPerson_ and the new value _Jane_ for the _firstname_.
 
 [source,clojure]
 ----
@@ -72,14 +69,14 @@ For example, they can be assigned to variables, passed in as arguments, or retur
   (loop [n x prod 1]
     (if (= 1 n)
       prod
-      (recur (dec n) (* prod n)))))                         <1>
+      (recur (dec n) (* prod n)))))                           <1>
 
 (defn factorial-tail-recursion [^BigDecimal x]
-  (letfn [f [result n]
+  (letfn [(f [result n]
     (if (= n 1)
         result
-        (recur (* result n) (dec n)))]                      <2>
-  (f 0 x)))
+        (recur (* result n) (dec n))))]                       <2>
+  (f 1 x)))
 ----
 
 <1> The _recur_ expression evaluates the new values for all loop variables and restart the loop with these values.
@@ -88,20 +85,17 @@ This mechanism provides tail-recursion call optimization.
 
 [source,clojure]
 ----
-(defn greet                                                 <1>
+(defn greet                                                   <1>
      ([] (greet "you"))
      ([name] (print "Hello" name)))
 
-(greet)
-;; => Hello you
+(greet)                                                       ;; => Hello you
 
-(greet "World")
-;; => Hello World
+(greet "World")                                               ;; => Hello World
 
-(defn greet [name & rest] (print "Hello" name rest))        <2>
+(defn greet [name & rest] (print "Hello" name rest))          <2>
 
-(greet "Yan" "Darryl" "Deepu" "Tom")
-;; => Hello Yan (Darryl Deepu Tom)
+(greet "Yan" "Darryl" "Deepu" "Tom")                          ;; => Hello Yan (Darryl Deepu Tom)
 ----
 
 <1> Define a multi-arity function.
@@ -119,30 +113,31 @@ Beware of the tradeoff between processing improvement versus memory consumption.
 
 [source,clojure]
 ----
-(map inc [1 2 3 4 5])
-;;=> (2 3 4 5 6)
+(map inc [1 2 3 4 5])                                         ;;=> (2 3 4 5 6)
 
-(filter even? (range 10))
-;;=> (0 2 4 6 8)
+(filter even? (range 10))                                     ;;=> (0 2 4 6 8)
 
-(reduce + [1 2 3 4 5])
-;;=> 15
+(reduce + [1 2 3 4 5])                                        ;;=> 15
 
-(apply str ["str1" "str2" "str3"])
-;;=> "str1str2str3"
+(apply str ["str1" "str2" "str3"])                            ;;=> "str1str2str3"
 
 ;; partial application on the add function
 (defn add [x y] (+ x y))
 (def adder (partial add 5))
-(adder 1)
+(adder 1)                                                     ;; => 6
 
-;; memoization of function calls
-(def memoized-fibonacci
+;; memoization of function call)s
+ (def memoized-fibonacci
   (memoize (fn [n]
              (condp = n
                0 1
                1 1
-               (+ (m-fib (dec n)) (m-fib (- n 2)))))))
+               (+ (memoized-fibonacci(dec n)) (memoized-fibonacci (- n 2)))))))
+
+(time (memoized-fibonacci 80))
+;; "Elapsed time: 0.593208 msecs"  => 37889062373143906=>
+(time (memoized-fibonacci 80))
+;; "Elapsed time: 0.022459 msecs"  => 37889062373143906
 ----
 
 === Synchronization Concepts
@@ -179,29 +174,32 @@ Agents are bound to a single storage location for their lifetime, and only allow
 ----
 ;; Atoms
 
-(def state (atom {})                              <1>
-(swap! (state assoc :x 42))                       <2>
+(def state (atom {}))                                         <1>
+(swap! state assoc :x 42)                                     <2>
 
-(println @state)                                  <3>
-;; @state is equivalent to (deref state)
+(println @state)                                              <3>
+;; @state is equivalent to (deref state) => {:x 42}
 
 ;; References
 
-(def account-a (ref 100))                         <4>
+(def account-a (ref 100))                                     <4>
 (def account-b (ref 100))
 
 (defn transfer! [amount from to]
-  (dosync                                         <5>
+  (dosync                                                     <5>
    (if (>= (- @from amount) 0)
      (do
-       (alter from - amount)                      <6>
+       (alter from - amount)                                  <6>
        (alter to + amount)))))
+
+(transfer! 20 account-a account-b)
+(println @account-a @account-b)                               ;; 80 120
 
 ;; Agents
 
-(def x (agent 0))                                 <7>
+(def x (agent 0))                                             <7>
 (defn increment [c n] (+ c n))
-(send x increment 5)                              <8>
+(send x increment 5)                                          <8>
 ;; @x -> 5
 (send x increment 10)
 ;; @x -> 15
@@ -213,7 +211,8 @@ The expression passed as parameter to _swap!_ is applied to the current value of
 <3> Gets the current value of the atom.
 <4> Declare a reference.
 <5> Define the transactional parenthesis grouping multiple modifications of references.
-<6> The behavior of alter is . Reach outside the transaction and read the reference's current state.
+<6> The behavior of alter is:
+. Reach outside the transaction and read the reference's current state.
 . Compare the current state to the state the ref started with within the transaction.
 . If the two differ, make the transaction retry.
 Otherwise, commit the altered ref state.
@@ -280,5 +279,9 @@ I would recommend using Java to teach these concepts and restrict Clojure teachi
 I wish you happy coding in the functional world of Clojure.
 
 === References
+
+- [[[clojure-1, 1]]]  link:../../2023/2023/teaching-clojure-i/[Teaching Clojure I].
+Marcel Baumann. 2023.
+
 
 bibliography::[]

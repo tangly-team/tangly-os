@@ -2,7 +2,7 @@
 title: "DDD for Embedded Systems"
 linkTitle: "Embedded DDD"
 date: 2025-02-01
-tags: ["java", "architecture"]
+tags: ["architecture", "domain-driven-design", "c++"]
 ---
 
 == Domain-Driven Approaches for Embedded Systems
@@ -10,13 +10,418 @@ tags: ["java", "architecture"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
+:ref-cohesion: https://en.wikipedia.org/wiki/Cohesion_(computer_science)[Cohesion]
+:ref-coupling: https://en.wikipedia.org/wiki/Coupling_(computer_programming)[Coupling]
+:ref-kiss: https://en.wikipedia.org/wiki/KISS_principle[KISS principle]
 
-image::2025-02-01-head.png[width=420,height=360,role=left]
+image::2025-02-01-head.jpg[width=420,height=360,role=left]
+
+Domain-driven design is established as the preferred software design approach cite:[domain-driven-design,implementing-domain-driven-design,domain-driven-design-distilled].
+
+The approach promotes modular object-oriented design.
+
+Embedded systems and the associated hardware naturally map to object-oriented abstractions.
+Just look at your device to identify classes.
+
+The method emphasizes clean-code approach and the usage of {ref-scrum} and {ref-devops} techniques.
+
+{ref-cohesion} inside a domain is high.
+The interfaces between domains are well-defined.
+{ref-coupling} between domains is limited to the interface.
+
+What are good bounded domains in an embedded industrial application?
+
+=== Bounded Domains
+
+DDD is about designing software based on models of the underlying domain
+cite:[domain-driven-design,implementing-domain-driven-design,domain-driven-design-distilled].
+A model acts as a UbiquitousLanguage to help communication between software developers and domain experts.
+It also acts as the conceptual foundation for the design of the software itself.
+
+Each physical component should probably be a bounded domain.
+Examples are battery packs, drives, sensor packages, tractor.
+Such as a component has often a set of sensors and actuators.
+Additional logic is defined to transform the raw signals in a representative view of the abstraction.
+This logic can be implemented in software or hardware.
+
+Hardware components shall be realized as active objects to react to the parallelism of the hardware sensors and actuators.
+Often hardware components trigger interrupts and the associated interrupt routine should be seen as a simplified active object.
+
+A similar approach can be used for hardware connected through a network such as
+https://en.wikipedia.org/wiki/Ethernet[Ethernet] or https://en.wikipedia.org/wiki/CANopen[CANopen].
+
+Below, an example of a battery component with sensors and actuators is given.
+The battery component could be an aggregate structure inside the bounded domain defining the device.
+
+[plantuml,battery-aggregate,svg]
+----
+@startuml
+
+interface HasIdentity {
+  String identity();
+}
+
+class Configuration <<Value>>
+
+interface Sensor<T> <<Entity>> {
+  T value()
+}
+Sensor <|-- HasIdentity
+Sensor *--"1" Configuration : configuration
+
+interface Actuator<T> <<Entity>> {
+  value();
+  value(T value);
+}
+Actuator <|-- HasIdentity
+Actuator *--"1" Configuration : configuration
+
+enum AlarmLevel {
+  fatal
+  alarm
+  warning
+  info
+}
+
+enum AlarmType {
+  absolute
+  up
+  down
+}
+
+interface Alarm<T> <<Value>> {
+  Alarm(int id, AlarmType type, AlarmLevel level, T threshold);
+  int id();
+  AlarmType type();
+  AlarmLevel alarmLevel();
+  T alarmThreshold();
+  boolean isActive();
+}
+Alarm *-- AlarmType
+Alarm *-- AlarmLevel
+
+
+class TemperatureSensor  {
+  Temperature temperature()
+}
+
+TemperatureSensor <|-- Sensor
+
+class PowerSensor {
+  Power averageDrawnPower();
+  Power drawnPower();
+}
+
+PowerSensor <|-- Sensor
+
+class SwitchOnOff
+SwitchOnOff <|-- Actuator
+
+class Battery <<Entity>> {
+  int capacityInPercent();
+  void addLoadAlarm(Alarm alarm);
+  void addTemperatureAlarm(Alarm alarm);
+  void cancelAlarm(int id);
+}
+
+Battery <|-- HasIdentity
+Battery *--"*" Alarm
+Battery *--"2" TemperatureSensor
+Battery *--"1" PowerSensor
+Battery *--"1" SwitchOnOff
+
+note right of Battery
+  A battery component with internal sensors and actuators used to power the device.
+  A battery has two temperature sensor, a power usage sensor and an on/off switch actuator.
+  Alarms and warning can be set to inform the client if temperature or power capacity limits are reached.
+end note
+@enduml
+----
+
+The whole device should also be a bounded domain.
+
+Logical abstractions are also bounded domains or part of the device domain.
+Examples are battery manager handling a set of battery packs.
+
+Complex business logic areas should be evaluated as a bounded domain.
+Examples are alarm and error state machine of the machine, job or mission execution engine.
+
+Below, an example of a device component architecture is given.
+
+[plantuml,device-domains,svg]
+----
+@startuml
+
+package "HardwareAbstractionLayer" as HAL {
+  [GPIO]
+  [PWM]
+  [TIMERS]
+  [I2C Interface]
+  [CAN Interface]
+  [Ethernet/CAT Interface]
+}
+
+note right of HAL
+  The hardware abstraction layer provides a thin layer above the physical sensors and actuators.
+  The abstraction is more powerful for intelligent components connected through a communication bus.
+end note
+
+component RTOS [
+  **RTOS Primitives**
+  The real-time operation system //RTOS// provides interrupt, thread, synchronization, and messaging handling primitives.
+  We recommend defining a message-based architecture.
+
+  Either you use an RTOS package or implement the needed primitives as macros and functions.
+]
+
+package Device {
+    package "Sensors and Actuators" as SensorsActuators {
+    [TemperatureSensor]
+    [PressureSensor]
+    [PositionSensor]
+    [PowerSwitch]
+    [MotorController]
+    }
+
+    SensorsActuators --> HAL
+
+    note left of SensorsActuators
+      The sensor and actuator abstractions provide a semantic rich model of the physical components.
+      The abstraction represents how the application perfers to communicate with the components.
+    end note
+
+
+    package "Device Components" as DeviceComponents {
+    [Battery]
+    [Tractor]
+    [Lifting Platform]
+    }
+
+    DeviceComponents --> SensorsActuators
+
+    package "Device Services" as DeviceServices {
+      component ConfigurationManager[
+        **Configuration Manager
+
+        The configuration manager has access to all configuration parameters of the device.
+        It supports the configuration of all components at startup.
+        The configuration manager persists the parameters.
+      ]
+
+      component AlarmHandler[
+        **Alarm Handler**
+
+        The alarm handler implements the alarming escalation by aggregating the alarms of the components.
+      ]
+      component Logger [
+        **Logger**
+
+        The logger provides a total ordering of all records and persists the information.
+      ]
+
+      component PowerManager [
+        **Power Manager**
+
+        The power manager handles the power usage of the whole device.
+      ]
+
+      component MissionInterpreter [
+        **Mission Interpreter**
+
+        The mission interpreter defines the interface to a PLC interpreter
+        executing a continuously running control algorithm.
+
+        The interpreter provides a set of buffered input values,
+        which are stable during an execution cycle.
+
+        The setting of output values is also provided. The output changes
+        are either immediate or delayed to the end of the cycle.
+      ]
+    }
+
+    DeviceServices --> DeviceComponents
+}
+
+package "User Interface" as UserInterface {
+  [Device Visualization]
+  [Alarm Management]
+  [Mission Tracker]
+}
+
+UserInterface --> DeviceServices
+UserInterface --> DeviceComponents
+
+@enduml
+----
+
+The actor model is the simplest approach for embedded systems.
+Bounded domains should only communicate through asynchronous immutable messages.
+Messages are part of the bounded domain interface declaration.
+
+[TIP]
+====
+Ideally, the interface of a bounded domain is fully described through the messages it will process.
+
+Finite state machines can be provided to describe the behavior of a domain when processing a specific message.
+====
+
+A bounded domain should be packaged as a C++ module and declared in a specific namespace.
+A bounded domain should also be packaged following the concepts of the used framework.
+For example, it should be a Gradle module or a ROS package.
+
+=== Layers in Bounded Domain
+
+A sensor or an actuator is part of one bounded domain.
+Sensor processing is often a data processing pipeline:
+
+. Initialize the sensor and configure the processing pipeline
+. Execute the pipeline
+.. Normalize sensor data
+.. Filter, transform and enrich sensor data.
+This stage is also used to handle back pressure by removing excess data.
+.. Store the sensor data or send an application-specific message based on the values
+. Shutdown the sensor pipeline
+
+Ideally the whole sensor pipeline is hosted inside one domain model.
+The sent message should always contain the actual value.
+Avoid sending only the change from the previous value.
+You can naturally send the actual value and the change in the same message.
+
+The hardware abstraction layer and hardware driver should be in the HAL layer.
+
+The sensors and actuators are part of the board support package layer.
+
+Data processing nodes are in higher layers.
+
+[TIP]
+====
+A specific model can be provided if your control algorithm follows the PLC approach.
+
+You must provide a buffered model of all relevant inputs and outputs of your machine.
+Relevant means used in the PLC algorithm.
+
+Buffered means you implement the loop.
+
+. Update the buffered value of all input channels.
+. Execute the PLC algorithm. +
+Execute means the routine is called.
+The routine is responsible to store internal state to resume activity in the next loop.
+The algorithm computes new output values based on the buffered input values.
+. Generate the messages to perform the output changes to the involved actuators. +
+The model should track which output values have changed during the execution of the PLC algorithm.
+
+The approach works as long as the periodicity of the PLC algorithm calls is fast enough to fulfill the algorithm constraints.
+
+During the cyclic execution of the PLC algorithm, it must be guaranteed that no input values are changed during a specific cycle.
+====
+
+=== Functions
+
+==== Configuration
+
+The application shall be configured to reflect the available hardware components.
+Two approaches are available.
+
+The HAL layer provides detection functions to identify existing components.
+This approach is often expensive to implement and seldom needed.
+If you want to add a physical component, a human being with a toolbox must work on the device.
+
+We recommend storing the configuration of the machine in a configuration file.
+The application still needs to check if the component is available.
+The same configuration file contains all non-default hardware initialization parameters.
+
+Default initialization values should be stored in the sensor abstraction or the HAL layer.
+
+The application shall initialize hardware components with configuration values.
+
+[IMPORTANT]
+====
+You should try to configure the hardware and the application during the startup phase.
+
+Configuration changes during regular operations are expensive to implement and seldom needed.
+====
+
+==== Startup and Shutdown
+
+A machine must be started and stopped.
+Each hardware component shall provide the same state machine and state changes.
+Some machines need an immediate shutdown due to regulatory aspects.
+
+[plantuml,startup-shutdown,svg]
+----
+@startuml
+[*] -> Powered
+Powered  -> StartingUp : start / componentStart
+StartingUp -> Ready : allComponentsReady
+
+note top of StartingUp : The initialization of the device and all \ncomponents is performed during the start-up.
+
+state Ready {
+[*] -> Idle
+Idle -> Processing : process
+Processing -> Idle : finished
+}
+
+Ready --> ShuttingDown : shutdown / componentShutdown
+Ready --> ShuttingDown : shutdownImmediate / componentImmediateShutdown
+
+ShuttingDown --> Stopped : allCompoentsStopped
+Stopped --> [*]
+@enduml
+----
+
+Powered::
+The device was powered up.
+Starting Up::
+All components are starting-up.
+After some time, all should be ready.
+The configuration of hardware and application should be realized during the starting-up phase.
+Ready::
+The device is ready to process jobs.
+Shutting Down::
+All components are shutting-down.
+After some time, all should be stopped.
+This phase is the latest slot to persist required information If an immediate shutdown was requested, expensive activities such as persisting configuration or process data should be discarded.
+Stopped::
+The device is ready to be powered down.
+
+[CAUTION]
+====
+The above startup and shutdown behavior is implemented upon initializing the hardware and starting the operating system.
+
+A https://en.wikipedia.org/wiki/Board_support_package[Board Support Package] _BSP_ is responsible for the hardware initialization.
+It contains essential software a hardware device needs to work with the computer operating System or the sole application.
+====
+
+==== User Interface
+
+You have two major design approaches for the visualization of the machine.
+You implement an event store containing all changes relevant to the current state of the machine.
+The user interface replays the events and builds its view model of the machine.
+
+You implement a mechanism to request the current status of each component the user interface has to visualize.
+Beware that during the polling operation to retrieve the current state, new events can be generated and must correctly be processed to reflect the changes.
+
+The same approaches can be used to visualize the state of the jobs planned or under execution.
+
+==== Logging
+
+Logging approaches are discussed in a seperate article <<logging>>.
 
 === Lessons Learnt
 
+The {ref-kiss} is essential to construct a maintainable and stable solution.
+
+Embedded applications should always be implemented with the active object pattern.
+Communication should always be message-based.
+
 [bibliography]
 === Links
+
+- [[[software-structure-with-ddd, 1]]] link:../../2022/software-structure-with-ddd/[Software Structure with DDD].
+Marcel Baumann. 2022.
+- [[[logging, 2]]] link:../../2025/logging/[Logging].
+Marcel Baumann. 2025.
 
 === References
 

@@ -1,6 +1,6 @@
 ---
 title: "Shared - Shared Kernel"
-linkTitle: "UI"
+linkTitle: "Shared"
 weight: 45
 ---
 

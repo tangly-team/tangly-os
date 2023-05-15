@@ -1,6 +1,6 @@
 ---
-title: "BDD - Behavior Driven Development"
-linkTitle: "BDD"
+title: "Applications - Apps Bounded Domain"
+linkTitle: "Apps"
 weight: 15
 ---
 

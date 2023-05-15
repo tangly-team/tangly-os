@@ -2,7 +2,7 @@
 title: "Distributed Systems"
 linkTitle: "Distributed Systems"
 date: 2025-01-01
-tags: ["java", "architecture"]
+tags: ["architecture", "c++"]
 ---
 
 == Distributed Asynchronous Systems
@@ -10,81 +10,140 @@ tags: ["java", "architecture"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
+:ref-boost: https://www.boost.org/[boost]
+:ref-cap: https://en.wikipedia.org/wiki/CAP_theorem[CAP theorem]
+:ref-fsm: https://en.wikipedia.org/wiki/Finite-state_machine[finite state machine]
+:ref-two-generals: https://en.wikipedia.org/wiki/Two_Generals%27_Problem[Two Generals' Problem]
+:ref-ros: https://www.ros.org/[ROS]
+:ref-micro-os-II: https://en.wikipedia.org/wiki/Micro-Controller_Operating_Systems[μC/OS-II]
+:ref-qnx: https://en.wikipedia.org/wiki/QNX[QNX]
+:ref-free-rtos: https://www.freertos.org/[freeRTOS]
+:ref-uml: https://en.wikipedia.org/wiki/Unified_Modeling_Language[UML]
 
 image::2025-01-01-head.png[width=420,height=360,role=left]
 
 The embedded software industry is in the midst of a major revolution.
-A Tremendous amount of new development lays ahead.
-This new embedded software needs an actual architecture that is inherently safer and easier to understand.
-It provides a higher level of abstraction than the usual _free-threading_ approach based on a traditional Real-Time Operating System (RTOS).
+A tremendous amount of new development lays ahead.
 
-For years, experts in concurrent software have been pointing out that unrestricted use of threads and various blocking mechanisms of an RTOS.
-It often leads to programs that are unsafe and difficult to reason about.
-Instead, experts from different industries independently came up with the following best practices, collectively known as the active object or actor design pattern:
+New embedded software needs an actual architecture that is inherently safer and easier to understand.
 
-1. Keep data isolated and bound to threads.
+It provides a higher level of abstraction than the usual _threading_ and _synchronization_ approach based on a traditional Real-Time Operating System _RTOS_
+footnote:[I also state the obvious.
+All the embedded and distributed solutions I developed the last 35 years follow these design principles.
+Task communication is exclusively over message passing or topics.
+Various RTOS such RT68, {ref-micro-os-II}, {ref-qnx}, {ref-free-rtos}, {ref-ros} provide all the necessary abstractions.
+Platforms such as Linux or Java have these constructs since inception.
+Therefore, I never had any deadlocks, lifelocks or starvation in any of the systems I worked on.].
+
+For years, experts in concurrent software have been pointing out that unrestricted use of threads and various blocking mechanisms of an RTOS often leads to programs that are unsafe and difficult to reason about.
+Instead, experts from different industries independently came up with the following best practices, collectively known as the active object or actor design pattern cite:[reactive-messaging-patterns-with-actor-model]:
+
+1. Keep data isolated and bound to threads. +
 Threads should hide and encapsulate their private data and other resources.
 They should *not* share them with the rest of the system.
-2. Communicate among threads asynchronously via event objects.
-Events also called messages.
+2. Communicate among threads asynchronously via event objects
+footnote:[Modern realtime operating systems treat interrupt routines as a special and limited kind of threads.
+Therefore, interrupt routines also communicate with other components by sending messages.]. +
+Events are also called messages.
+They are immutable objects. +
 Using asynchronous events keeps the threads running truly independently, without ever blocking on each other.
-3. Threads should spend their lifetime responding to incoming events.
+3. Threads should spend their lifetime responding to incoming events. +
 Their mainline should consist of an event-loop that handles events one at a time to completion, thus avoiding any concurrency hazards within a thread itself.
+
+[CAUTION]
+====
+Asynchronous callbacks do not fulfill the above constraints.
+
+An object can register multiple asynchronous calls to inform him when an activity is completed.
+Multiple callbacks could be processed in parallel.
+Therefore, the object must protect data potentially manipulated by multiple callbacks.
+
+The protection will use blocking mechanisms of a RTOS and could potentially induce deadlock, livelock or starvation problems.
+
+The programmer is responsible to avoid these tricky constellations.
+====
 
 While these best practices can be applied manually on top of a traditional RTOS, a better way is to use an actor library.
 The main difference is that when you use an RTOS, you write the main body of the application such as the thread routines for all your tasks.
-You call explicitly the RTOS synchronisation services, e.g., a semaphore, a monitor, a lock or a time delay.
+You call explicitly the RTOS synchronization services, e.g., a semaphore, a monitor, a lock or a time delay.
+
+image::2025-01-01-actors.svg[width=420,height=360,role=left]
 
 When you use a framework, you reuse the overall architecture and write mainly the application code that the framework will call.
 This leads to inversion of control and allows the framework to automatically enforce the best practices of concurrent programming.
+
 In contrast, a raw RTOS lets you do anything and offers no help or protection for the best practices.
 The other important difference is that the event-driven actor framework really represents a paradigm shift from a traditional RTOS.
 
-In the resource-constrained embedded systems, the biggest concern has always been about the size and efficiency of such active object frameworks, especially that the frameworks accompanying various modeling tools have traditionally been built on top of a conventional RTOS, which adds memory footprint and CPU overhead to the final solution.
+[TIP]
+====
+Publish and subscribe frameworks with active processing nodes is another implementation of the active object pattern.
+
+A well-known example of this architecture is the robotic operating system https://www.ros.org/[ROS].
+====
+
+In the resource-constrained embedded systems, the biggest concern has always been about the size and efficiency of such active object frameworks.
+Modern kernels provide message-passing mechanisms.
+Often, you do not need to add a lot of functionalities.
+Therefore, the only doubt is how efficient these solutions perform.
+Well, the overhead of sending a message should not be higher than the one needed to synchronize access to a shared variable.
 
 But perhaps the most important benefit of active object frameworks is that they offer a much higher level of abstraction.
-You can apply the right abstractions for formal design techniques such as hierarchical state machines, UML state charts modeling, and automatic code generation.
+
+You can apply the right abstractions for formal design techniques such as hierarchical state machines, UML statecharts modeling, and automatic code generation.
 
 All of this means the event-driven architecture is not only possible in deeply embedded, high-reliability systems, but it is actually ideal for such applications.
 
 === Distributed Asynchronous Embedded Systems
 
-image::2025-01-01-uml-state-machine.gif[width=420,height=360,role=left]
+image::2025-01-01-uml-state-machine.png[width=420,height=360,role=left]
 Communication over Messages::
-Communication between components is solely through message passing.
+Communication between components is solely through message passing. +
 You either send messages directly to another actor, or use a publishing and subscribe metaphor with topics.
-The topic approach has a lesser https://en.wikipedia.org/wiki/Coupling_(computer_programming)[coupling] and is easier to extend.
-No Synchronous Calls:::
+The topic approach has a lesser https://en.wikipedia.org/wiki/Coupling_(computer_programming)[coupling] and is easier to extend. +
+_Threads communicating through messages do not share data._
+_You *never* need synchronization primitives to protect data against concurrent accesses._
+No Synchronous Calls::
 Synchronous calls have always a blocking semantic.
 Under load, liveliness and deadlock problems often occur.
-Asynchronous solutions have only deadlock if the https://en.wikipedia.org/wiki/Abstract_state_machine[state machines of communicating actors have a specification error.
+Asynchronous solutions have only deadlock if the {ref-fsm} of communicating actors have a specification error.
 Powerful techniques from the telecommunication industry, e.g. ITU SDL, can detect such flaws through formal validation.
-Messages are Value Objects:::]
-To be written
-Typed Messages::
-To be written
+Messages are Typed Immutable Objects::
+Messages are sent to other tasks.
+The sender does not own the messages.
+Therefore, the messages should be immutable to prohibit any unwanted changes.
+Immutable objects can be cloned and sent simultaneously to all interested parties. +
+Messages should convey legible information to the receivers.
+Therefore, messages should be typed using good object-oriented modeling techniques.
 Idempotent Messages::
-The system can be resilient if idempotent message design is systematically used.
-Distributed systems cannot always guaranty single delivery of a specific message without additional sometimes prohibitive costs.
-Idempotency can be realized syntactically with a message identifier or semantically by providing invariants for multiple processing of the same message.
+The system is more resilient if an idempotent message design is systematically used.
+Distributed systems cannot always guaranty single delivery of a specific message without additional and sometimes prohibitive costs.
+https://en.wikipedia.org/wiki/Idempotence[Idempotence] can be realized syntactically with a message identifier or semantically by providing invariants for multiple processing of the same message.
 Actors are State Machines::
-Actors define the internal state of a node.
-The processing of a message can trigger an action and a state change.
+Actors define the internal state of a processing node.
+The processing of a message can trigger an action or a state change.
 Therefore, actors should always be implemented as state machines.
-Nodes are single-Threaded:::
+Nodes are single-Threaded::
 Multi-threaded support shall be provided through the library.
 Avoid as much as possible to implement multithreaded solutions inside an actor.
 
+Below the standard approach to implement a flat state machine using two nested switch statements:
+
 [source,cpp]
 ----
-State state = INIT;                         <1>
+State state = INIT;                                 <1>
 
 switch (state) {
     case STATE_1:
-        switch (message.id) {               <2>
+        switch (message.id) {                       <2>
             case (ID_A):
-                action_a(message);          <3>
-                state = STATE_2;
+                if (guard_1(message)) {             <3>
+                    action_a_1(message);            <4>
+                    state = STATE_2;
+                } else if (guard_2(mesage)) {
+                    action_a_2(message)) {
+                    state = STATE_3;
+                }
                 break;
             case (ID_B):
                 action_b(message);
@@ -100,7 +159,8 @@ switch (state) {
 The type of the variable should be an enumeration.
 <2> Identify the message through is identifier.
 A message should be a value object.
-<3> Implement the transition from state _STATE_1_ to _STATE_2_ and execute the associated action _action_a_.
+<3> Evaluate an optional guard condition to decide if the transition will be selected.
+<4> Implement the transition from state _STATE_1_ to _STATE_2_ and execute the associated action _action_a_.
 It is customary to pass the message as parameter to the function.
 
 The same code in Java would be:
@@ -113,8 +173,13 @@ state = switch (state) {
     case STATE_1 ->
         switch (message.id) {
             case (ID_A):
-                action_a(message);
-                yield STATE_2;
+                if (guard_1(message)) {}
+                    action_a_1(message);
+                    yield STATE_2;
+                } else if (guard_2(mesage)) {
+                    action_a_2(message)) {
+                    yiedl STATE_3;
+                }
             case (ID_B):
                 action_b(message);
                 yield STATE_N;
@@ -124,29 +189,53 @@ state = switch (state) {
 }
 ----
 
+The implementation is straight forward mapping of a finite state machine description to the code solution.
+If the size of the finite state machine is high, you should extract the second switch into a local method.
+
 [CAUTION]
 ====
 The above programmatic approach is limited to flat state machines.
 
-Hierarchical state charts as described in UML notation can only be efficiently implemented with a state machine library.
-An example of such a library for the Java stack is link:../../../docs/fsm[net.tangly:fsm_].
+https://en.wikipedia.org/wiki/UML_state_machine[Hierarchical statecharts] as described in the {ref-uml} notation can only be efficiently implemented with a state machine library.
+An example of such a library for the Java stack is link:../../../docs/fsm[net.tangly:fsm].
+The link:../../../docs/fsm/userguidefsm/[user manual] provides examples of hierarchical finite state machine declarations.
+footnote:[The C++ library {ref-boost} provides two implementations of hierarchical finite state machines.
+You can use eiter the _Meta State Machine MSM_ or the _boost Statechart_ library.].
 If you are using this notation, avoid parallel states.
 Parallel states require multithreaded nodes and the semantic is not well-defined.
 ====
 
+[TIP]
+====
+You can describe a {ref-fsm} _FSM_ using the UML statechart notation.
+Complex events, guards and actions should be documented in tabular form.
+====
+
 === Theory
+
+Asynchronous distributed embedded applications communicating through messages have underlying assumptions.
 
 Global Time::
 Distributed systems often have timeouts in their business logic.
 The implementation of these requirements is way easier if all nodes in the system have access to a global time.
 The time is always very handy to generate log records with a system-wide natural sort order.
-https://en.wikipedia.org/wiki/Network_Time_Protocol[Network time protocol] is a concrete implementation to provide global time in a distributed environment.
+https://en.wikipedia.org/wiki/Network_Time_Protocol[Network time protocol] is a concrete implementation to provide global time in a distributed environment. +
+The global time is also used to define reliable timeout events encoded in statecharts.
 CAP Theorem::
-https://www.ros.org/[ROS-2 Robotic Operating System] is constrained through CAP theorem.
-Topics Based and Message-Passing Architecture Quality of Services Asynchronous Messages vs Services Single Threaded Node communication with UML diagram and State machine in C++.
+The theorem heavily constraints the selected architecture. +
+As an example, we take https://www.ros.org/[ROS-2 Robotic Operating System] and see how it is constrained through the {ref-cap}. +
++
+Topics based and message-passing architecture defines the asynchronous approach. +
++
+Quality of service is an approach to improving the consistency of a solution at the cost of availability.
+Synchronous services simplify the programming model and kill the availability and partitioning of the system. +
+Single threaded is the sole solution to avoid reintroducing low-level synchronization mechanisms.+
++
+Similar tradeoffs are required if you are using other RTOS or hand coded solutions.
 Eventual Consistency::
 https://en.wikipedia.org/wiki/Eventual_consistency[Eventual consistency] is a consistency model used in distributed computing to achieve high availability.
-It informally guarantees that, if no new updates are made to a given data item, eventually all accesses to that item will return the last updated value.
+It informally guarantees that if no new updates are made to a given data item, eventually all accesses to that item will return the last updated value. +
++
 A distributed machine will only support eventual consistency.
 If you want to provide ACID, you would need to lock down all sensors and actuators during a distributed transaction.
 This is obviously not possible if your machine is processing a request or moving material.
@@ -154,22 +243,27 @@ This is obviously not possible if your machine is processing a request or moving
 === Lessons Learnt
 
 Never try to transform a distributed asynchronous system into a synchronously centrally controlled application.
-Smells are polling to find out configuration and statuses.
+It will never work as expected.
+
+Please just read the {ref-two-generals}
+footnote:[The problem description and the mathematical proof were published in 1975.
+It is time to acknowledge mathematical proofs about distributed systems and communication protocols.] if you have doubts.
+
+Design smells are polling activities to find out configuration and statuses.
 The worst code starts to add delays, timeouts, and retries to build an image of the distributed solution.
 It will never work.
-You are trying to ignore the CAP theorem.
+You are trying to ignore the {ref-cap}.
+
+_Please never write polling code._
 
 [WARNING]
 ====
+
 Distributed asynchronous systems always imply a distributed message-based asynchronous architecture.
 This design always promotes eventual consistency.
 
 You will never have an atomic global state of the system.
+
+I agree that if you have reliable communication, it would be possible.
+The advocates of this solution just forget about the costs of reliability and the consequences as stated in the {ref-cap}.
 ====
-
-[bibliography]
-=== Links
-
-=== References
-
-bibliography::[]

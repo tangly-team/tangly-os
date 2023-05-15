@@ -176,6 +176,14 @@ Pure functions are functions (or methods) that do not change the value of any ob
 It avoids side effects and guarantees the same output for certain inputs, meaning it needs to be completely deterministic.
 ____
 
+[TIP]
+====
+The Spring project has added support for bounded domain in their framework with the https://github.com/spring-projects/spring-modulith[Modulith] extension.
+
+Gradle modules are a natural mapping for bounded domains.
+Use either Java modules or archUnit to enforce that communication always goes through bounded domain interfaces.
+====
+
 === Architecture Integrity
 
 A Bounded Context is a logical boundary of a domain where particular terms and rules apply consistently.

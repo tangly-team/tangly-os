@@ -90,6 +90,7 @@ jimfs
 kaizen
 karibu
 lastname
+lifelock
 log4j2
 marcel
 microstream
@@ -118,6 +119,8 @@ skype
 slf4j
 soll
 sprint
+statechart
+statecharts
 subgoal
 subgraph
 substate

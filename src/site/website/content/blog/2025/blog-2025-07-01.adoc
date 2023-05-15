@@ -1,0 +1,89 @@
+---
+title: "Modern Embedded Software Development and Architecture"
+linkTitle: "Embedded Development"
+date: 2025-07-01
+tags: ["organization"]
+---
+
+== Modern Embedded Software Development and Architecture
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2025-07-01-head.jpg[width=420,height=360,role=left]
+
+Modern embedded systems have a multicore processor with a 64-bits architecture, huge RAM, and flash resources.
+The cost of a simple core is in the area of one Euro.
+
+The complexity of embedded applications is increasing.
+You must support complex protocols such as CANopen, Ethernet, Bluetooth, and USB.
+
+Industrial standards such as functional safety or FDA recommendations are quite challenging to realize.
+
+You have find out good embedded software engineers are difficult to find and hire.
+
+What are modern software architecture and design approaches suitable for such endeavors?
+
+Which technology stacks and programming languages should we use to build evolvable and maintainable products?
+
+Are talented embedded software engineers attracted to work with these practices?
+
+I try to provide pointers for good practices.
+I am mainly working for small and medium industrial companies in Switzerland and Europe.
+Sold items of a specific product are in the range of hundreds up to the low range of thousands.
+Therefore, the presented approaches and techniques are tailored for this kind of digital products.
+
+Modern embedded software development has multiple dimensions you should consider.
+
+Embedded Concepts::
+Modern embedded solutions should be message-based communication actors.
+Do not use blocking synchronization primitives to implement multithreaded applications if you want to avoid potential deadlock, livelock and starvation problems. +
+I strongly recommend using a realtime operating system and C++ as your programming language.
+- Asynchronous distributed systems <<asynchronous-distributed-systems>>
+- Modern embedded system <<modern-embedded-systems>>
+- Logging <<logging>>
+Architecture::
+Use domain-driven design approach to design an embedded solution cite:[domain-driven-design,implementing-domain-driven-design,domain-driven-design-distilled].
+This approach is current good software architecture practice.
+It maps nicely to the embedded problem space.
+Technical agility is applied to create a maintainable product.
+- Agile software architecture <<agile-software-architecture>> and asynchronous distributed systems <<asynchronous-distributed-systems>>
+- Domain driven design for embedded application <<ddd-embedded-systems>> and software structure with DDD <<software-structure-ddd>>
+- Document agile architecture <<document-agile-achitecture>>
+- Agile code is clean code <<agile-code-clean-code>>
+Development Environment::
+Continuous delivery is a proven environment to frequently deliver product increments.
+The approach fosters stable deliveries and working new functionalities.
+- First steps DevOps <<first-steps-devops>>
+- Self hosted development environment <<self-hosted-development-servers>>
+Development Process::
+Agile development approaches are currently the best solution to deliver digital products.
+{ref-scrum} is the industrial standard.
+We recommend {ref-less} for big development initiatives
+footnote:[Big development initiatives are seldom in the embedded world.
+Few companies have development groups of thirty or more people working on one product.].
+- Scrum <<agile-architecture-within-scrum>>, <<how-to-detect-fake-scrum>>
+- LeSS <<less-lessons-learnt>>
+
+[bibliography]
+=== Links
+
+- [[[agile-software-architecture, 1]]] link:../../2025/agile-software-architecture/[Agile Software Architecture]
+- [[[asynchronous-distributed-systems, 2]]] link:../../2025/distributed-systems/[Asynchronous Distributed Systems]
+- [[[ddd-embedded-systems, 3]]] link:../../2025/ddd-for-embedded-systems/[DDD for Embedded Systems]
+- [[[modern-embedded-systems, 4]]] link:../../2025/modern-embedded-systems/[Modern Embedded Systems]
+- [[[logging, 5]]] link:../../2025/logging/[Logging]
+- [[[document-agile-achitecture, 6]]] link:../../2024/document-agile-architecture/[Document Agile Architecture]
+- [[[agile-code-clean-code, 7]]] link:../../2019/agile-code-is-clean-code/[Agile Code is Clean Code]
+- [[[first-steps-devops, 8]]] link:../../2022/first-steps-devops/[First Steps DevOps]
+- [[[technical-debt, 9]]] link:../../2022/technical-debt/[Technical Debt]
+- [[[self-hosted-development-servers, 10]]] link:../../2024/self-hosted-development-servers/[Self-Hosted Development Servers]
+- [[[agile-architecture-within-scrum, 11]]] link:../../2019/agile-architecture-within-scrum/[Agile Architecture within Scrum]
+- [[[how-to-detect-fake-scrum, 12]]] link:../../022/how-to-detect-fake-scrum/[How To Detect Fake Scrum?]
+- [[[less-lessons-learnt, 13]]] link:../../2021/less-lessons-learnt/[LeSS Lessons Learnt]
+- [[[software-structure-ddd, 14]]] link:../../2022/software-structure-with-ddd/[Software Structure with DDD]
+
+=== References
+
+bibliography::[]

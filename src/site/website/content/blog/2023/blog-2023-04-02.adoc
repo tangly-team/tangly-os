@@ -114,15 +114,17 @@ image::2023-04-02-homebrew.png[width=600,height=360,role=text-center]
 
 [source,bash]
 ----
-brew install maven gradle git git-lfs node pmd                     <1>
-brew install hugo asciidoctor graphviz mermaid-cli python          <2>
-brew install clojure leiningen                                     <3>
-brew install wget rsync ghostscript                                <4>
-brew install --cask asciidocfx                                     <5>
-brew install --cask jabref                                         <6>
+brew install maven gradle git git-lfs node pmd                        <1>
+brew install hugo asciidoctor graphviz plantuml mermaid-cli python    <2>
+brew install clojure leiningen                                        <3>
+brew install wget rsync ghostscript                                   <4>
+brew install --cask asciidocfx                                        <5>
+brew install --cask jabref                                            <6>
 xattr -d com.apple.quarantine /Applications/JabRef.app
 
-gem install asciidoctor-bibtex asciidoctor-diagram asciidoctor-chart asciidoctor-rouge asciidoctor-kroki    <7>
+npm install --global state-machine-cat                                <7>
+
+gem install asciidoctor-bibtex asciidoctor-diagram asciidoctor-chart asciidoctor-rouge asciidoctor-kroki    <8>
 ----
 
 <1> Development tools for Java projects.
@@ -134,7 +136,8 @@ The applications are used to generate static websites.
 <5> Applications managed through homebrew.
 <6> JabRef for bibliography references management.
 Due to macOS Ventura, you need to enable the application with _xattr_ command.
-<7> Install the ruby packages used with asciidoctor to create the static websites.
+<7> https://github.com/sverweij/state-machine-cat[State machine cat] _smcat_ to generate nice statecharts as asciidoc diagram type.
+<8> Install the ruby packages used with asciidoctor to create the static websites.
 
 I use a URL link checker to validate my websites.
 The link checker is a python package.

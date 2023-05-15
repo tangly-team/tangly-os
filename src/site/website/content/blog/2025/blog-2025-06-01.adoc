@@ -13,6 +13,25 @@ tags: ["organization"]
 
 image::2025-06-01-head.jpg[width=420,height=360,role=left]
 
+=== Spellchecker and Grammar
+
+I am not an English native speaker and also not really talented with foreign languages.
+I should find ways to improve the structure of my articles and remove typographical errors.
+
+The IntelliJ environment provides a build-in spellchecker the Grazie plugin to detect grammar errors.
+The plugin uses https://languagetool.org/[language tool] to provide hints.
+The spellchecker supports the extension of supported words.
+When writing technical texts, assume that quite a few words are not part of a standard dictionary.
+
+[CAUTION]
+=====
+The grammar checker cannot be easily tailored and has limitations.
+
+For example, the expression _Scrum Master_ is often flagged as political incorrect.
+You get the hint that the word _master_ should be avoided.
+This hint is quite useless in the context of the {ref-scrum} approach.
+=====
+
 === Eliminate Dead Links
 
 The biggest advantage of a website is the capability to link information to the reference document or the official description.
@@ -45,7 +64,7 @@ The utility provides the following features:
 The Amazon site refuses connection requests as soon as the frequency hints to a program.
 - List all failed connections with the source page, the link and the error message encountered.
 
-==  Bibliography
+===  Bibliography
 
 We write often technical articles.
 
@@ -55,3 +74,42 @@ Most of the references contain a link to the book description on the Amazon webs
 footnote:[I chose Amazon because I bought all my ebooks there.
 I do not own anymore paper editions.
 You could decide to use another universal bookstore if you prefer.].
+
+=== Statistics
+
+I welcome data helping me to better understand the structure of my technical website.
+
+I find it interesting to know:
+
+- How many articles did I write in a specific year?
+- How many article references are defined in an article?
+- How many times is an article referenced from other blogs?
+- How many book references are defined in an article?
+- How many books are referenced in an article or other a specific year?
+
+[cols="1,1,1,1,1,1,1,1,1,1",options="header"]
+|===
+^|Year ^|Published Blogs ^|Blog References ^|Average ^|Referenced Blogs ^|Average ^|Book References ^|Average ^|Referenced Books ^| Average
+
+| 2016   >|  13 | | | | | | | |
+| 2017   >|  15 | | | | | | | |
+| 2018   >|  20 | | | | | | | |
+| 2019   >|  13 | | | | | | | |
+| 2020   >|  14 | | | | | | | |
+| 2021   >|  32 | | | | | | | |
+| 2022   >|  25 | | | | | | | |
+| 2023   >|  18 | | | | | | | |
+| 2024   >|  12 | | | | | | | |
+| 2025   >|  12 | | | | | | | |
+|*Total* >| 174 | | | | | | | |
+|===
+
+[bibliography]
+=== Links
+
+- [[[creating-website, 1]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and Asciidoc].
+Marcel Baumann. 2020.
+- [[[improving-website, 2]]] link:../../2021/improving-a-static-web-site-build-with-hugo-and-docsy/[Improving a Static Website build with Hugo and Docsy].
+Marcel Baumann. 2021.
+- [[[support-comments, 3]]] link:../../2020/support-comments-for-static-hugo-website/[Support Comments for Static Hugo Website].
+Marcel Baumann. 2020.

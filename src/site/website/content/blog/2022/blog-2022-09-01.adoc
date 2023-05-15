@@ -36,7 +36,7 @@ The product is a free, simple and extensible library for checking the architectu
 The license is the open source https://www.apache.org/licenses/LICENSE-2.0[Apache 2.0].
 The support for https://junit.org/junit5/docs/current/user-guide/[JUnit 5] is very good.
 
-ArchUnit can check dependencies between packages and classes, layers and slices, detect cyclic dependencies and more.
+ArchUnit can check dependencies between packages and classes, layers and slices, detect cyclic dependencies, and more.
 It does so by analyzing the given Java bytecode after importing all classes into a Java code structure.
 
 === Use Architectural Constraints

@@ -61,6 +61,7 @@ Similar tools are available in Python .NET, or C++ communities.
 You can easily satisfy your QA and regulatory stakeholders with a lot of reports nobody will ever read.
 A real {ref-scrum} team corrects weaknesses during the development process and always deliver software of the highest quality.
 The reports can only show the inherent quality of the software and are not worth the paper they are printed on.
+
 But you satisfy powerful stakeholder groups and can more freely work on the most important goal.
 Deliver on time and in budget the best software the customer wants to have.
 

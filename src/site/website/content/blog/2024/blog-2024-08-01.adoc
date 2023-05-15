@@ -1,5 +1,5 @@
 ---
-title: "Architecture Questions"
+title: "Agile Architecture Questions"
 linkTitle: "Architecture Questions"
 date: 2024-08-01
 tags: ["java"]
@@ -40,9 +40,20 @@ Now you have the first draft of your architecture.
 === Internationalization, localization and accessibility Themes
 
 What user interface should we define?::
+Acknowledge that a software developer is missing the formal education to create good user interfaces.
+You need a user interface and usability trained professional to create and refine stunning user interfaces.
+Select technological solutions compatible with your technology stack
+footnote:[Beware that browser based JavaScript solutions require major rework of the solution every eighteen months.
+The pace of change in frameworks such as Angular, React, Vue, jQuery is stunning.
+Supported standards in browsers are evolving.].
 How do we implement accessibility laws and requirements?::
-How should we translate user interface data?::
+Your usability expert should have the tools to implement the legal requirements.
+I strongly recommend that each architect attend minimual training in internationalization, localization and accessibility matters.
 https://en.wikipedia.org/wiki/Internationalization_and_localization[internationalization] _i18n_, localization _l16n_, https://en.wikipedia.org/wiki/Accessibility[accessibility] _a11y_ regulations and good practices.
+How should we translate user interface data?::
+Your organization shall implement a translation process for all involved artifacts.
+Translation activities are often outsorced to specialized companies.
+You should integrate their processes in your toolchain.
 
 === Scalability Themes
 
@@ -76,39 +87,37 @@ footnote:[The approach is promoted in multiple technical stacks such as Java Spr
 === Security Themes
 
 How should we log activities and why?::
-_To be written_
+_Review your internal documented solution_
 How should we audit activities and why?::
-_To be written_
+_Review your internal documented solution_
 How is security implemented?::
-_To be written_
+_Review your internal documented solution_
 How do we authenticate and authorize?::
-_To be written_
-JWT is the regular approach for webservers.
-_To be written_
+JWT and OAuth are regular approach for webservers.
 
 === Persistent Data Themes
 
 How should we persist data?::
-_To be written_
+_Review your internal documented solution_
 How do we journal operations performed in the program?::
-_To be written_
+_Review your internal documented solution_
 How is reporting provided?::
-_To be written_
+_Review your internal documented solution_
 How do we import data into the system?::
-_To be written_
+_Review your internal documented solution_
 
 === Release and Migration Themes
 
 How do we release a version of the product?::
-_To be written_
+_Review your internal documented solution_
 Do we support backward compatibility?::
-_To be written_
+_Review your internal documented solution_
 How do we implement backward compatibility?::
-_To be written_
+_Review your internal documented solution_
 How do we migrate data to a new release?::
-_To be written_
+_Review your internal documented solution_
 How do we archive data?::
-_To be written_
+_Review your internal documented solution_
 
 === Tips
 

@@ -78,9 +78,9 @@ You can define values and functions:
 
 [source,clojure]
 ----
-(defn square [param] (* param param))       <1>
-(def data list(1 2 3 4 5))                  <2>
-(def computed (apply square data))          <3>
+(defn square [param] (* param param))                         <1>
+(def data (list 1 2 3 4 5))                                   <2>
+(def computed (map square data))                              <3>
 ----
 
 <1> Define a square function with one parameter and return the square value of the parameter.
@@ -92,8 +92,8 @@ Clojure provides extensions to validate type information.
 
 [source,clojure]
 ----
-(defn square [^Number param]                <1>
-  {:pre (Number? param)}                    <2>
+(defn square [^Number param]                                  <1>
+  {:pre [(number? param)]}                                    <2>
   (* param param))
 ----
 
@@ -116,7 +116,7 @@ The equivalent constructs for local value and function declarations inside a fun
 <1> The _let_ expression declares local values in the scope of the function.
 Use it to minimize global name pollution.
 <2> The _letfn_ expression declares local functions in the scope of the function.
-Use it to minimize global name poluution.
+Use it to minimize global name pollution.
 
 === Conditional Statements
 
@@ -125,14 +125,14 @@ The usual constructs are:
 
 [source,clojure]
 ----
-(defn is-small? [number] (if (< number 100) "yes" "no"))                   <1>
+(defn is-small? [number] (if (< number 100) "yes" "no"))      <1>
 
-(when (= 1 1) (+ 10 1))                                                    <2>
+(when (= 1 1) (+ 10 1))                                       <2>
 
 (defn pos-neg-or-zero
   "Determines whether or not n is positive, negative, or zero"
   [n]
-  (cond                                                                    <3>
+  (cond                                                       <3>
     (< n 0) "negative"
     (> n 0) "positive"
     :else "zero"))
@@ -155,16 +155,16 @@ They provide very fast equality tests.
 
 [source,clojure]
 ----
-(char )
-(char? (char a))
+(char? (char 97))                                             ;; true
+(char? 's)                                                    ;; false
 
-(string? "This is a string")
+(string? "This is a string")                                  ;; true
 
-(symbol? 'aSymbol)
-(symbol? (symbol "aSymbol"))
+(symbol? 'aSymbol)                                            ;; true
+(symbol? (symbol "aSymbol"))                                  ;; false
 
-(keyword? :aKeyword)
-(keyword? (keyword "aKeyword"))
+(keyword? :aKeyword)                                          ;; true
+(keyword? (keyword "aKeyword"))                               ;; true
 ----
 
 === Arithmetic
@@ -179,8 +179,7 @@ Here some example
 (def aBigInteger 42N)
 (def aBigDecimal 42.42M)
 
-(def aRatio 22/7)
-;; => 22/7
+(def aRatio 22/7)                                             ;; => 22/7
 ----
 
 [cols="1,2,2a"]
@@ -206,23 +205,25 @@ Study the documentation, more arithmetic and logical operators are available.
 
 [source,clojure]
 ----
-(def aList list( 1 2 3 4 5))                                    ;; => (1 2 3 4 5)
-(def aList '(1 2 3 4 5))                                        ;; => (1 2 3 4 5)
-(def aList (cons 1 (cons 2 (cons 3 (cons 4 (cons 5 ()))))))     ;; => (1 2 3 4 5)
-(first aList)                                                   ;; => 1
-(rest aList)                                                    ;; => (2 3 4 5)
+(def aList (list 1 2 3 4 5))                                  ;; => (1 2 3 4 5)
+(def aList '(1 2 3 4 5))                                      ;; => (1 2 3 4 5)
+(def aList (cons 1 (cons 2 (cons 3 (cons 4 (cons 5 ()))))))   ;; => (1 2 3 4 5)
+(first aList)                                                 ;; => 1
+(rest aList)                                                  ;; => (2 3 4 5)
 
-(def aMap {"Fred" 1400, "Bob" 1240})                   ;; => {"Fred" 1400, "Bob" 1240}
-(assoc aMap "Sally" 0)                                 ;; => {"Fred" 1400, "Bob" 1240, "Sally" 0}
-(dissoc aMap "Fred")                                   ;; => {"Bob" 1240, "Sally" 0}
-(get aMap "Bob")                                       ;; => 1240
-(aMap "Bob")                                           ;; => 1240
+(def aMap {"Fred" 1400, "Bob" 1240})                          ;; => {"Fred" 1400, "Bob" 1240}
+(assoc aMap "Sally" 0)                                        ;; => {"Fred" 1400, "Bob" 1240, "Sally" 0}
+(dissoc aMap "Fred")                                          ;; => {"Bob" 1240, "Sally" 0}
+(get aMap "Bob")                                              ;; => 1240
+(aMap "Bob")                                                  ;; => 1240
 
-(def aSet (set [:a :b :c :d]))                         ;; #{:a ;b :c :d}
-(def aSet #{:a :b :c :d})                              ;; #{:a ;b :c :d}
+(def aSet (set [:a :b :c :d]))                                ;; #{:a ;b :c :d}
+(def aSet #{:a :b :c :d})                                     ;; #{:a ;b :c :d}
+(count aSet)                                                  ;; 4
+(aSet :b)                                                     ;; :b
 ----
 
-All of the Clojure collections are immutable and persistent.
+All the Clojure collections are immutable and persistent.
 The Clojure collections support efficient creation of 'modified' versions, by utilizing structural sharing.
 
 The collections are efficient and inherently thread-safe.

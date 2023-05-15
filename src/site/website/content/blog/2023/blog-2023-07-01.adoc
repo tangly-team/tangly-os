@@ -122,10 +122,6 @@ Teams use InnerSource to increase visibility, strengthen collaboration, and brea
 === Links
 
 - [[[inner-source, 1]]] https://about.gitlab.com/topics/version-control/what-is-innersource/[What is Inner Source?]
-Gitlab. 2022
+Gitlab. 2022.
 - [[[inner-source-patterns, 2]]] https://patterns.innersourcecommons.org/[Inner Source Patterns]
-Gitlab. 2022
-
-=== References
-
-bibliography::[]
+Gitlab. 2022.

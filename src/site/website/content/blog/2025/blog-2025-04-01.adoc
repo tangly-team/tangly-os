@@ -1,94 +1,143 @@
 ---
-title: "Logging"
-linkTitle: "Logging"
+title: "Modern Embedded Systems"
+linkTitle: "Modern Embedded"
 date: 2025-04-01
-tags: ["java", "architecture"]
+tags: ["c++", "architecture"]
 ---
 
-== Logging Concepts
+== Modern Embedded Systems
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 
-image::2025-04-01-head.png[width=420,height=360,role=left]
+image::2025-04-01-head.jpg[width=420,height=360,role=left]
 
-Embedded systems are hard to debug.
-You do not have the luxury of connecting up most of the time a monitor and keyboard, and stepping through code is not much use when the application needs to continually respond to real-world events for the bug to appear in the first place.
+Embedded software engineers that have a proper understanding of the corresponding hardware are hard to find.
+When application developers were moving to newer languages like Java and C++, embedded programmers were still moving from assembly language to C.
 
-And after a while, toggling your single GPIO LED just does not cut it, and you decide you need to be able to log messages and print values.
-This is typically where printf() and a trusty UART is employed, spitting messages out to a computer (via an FTDI cable, virtual COM port over USB, or similar).
+The reason for slower technology adoption is having a lesser number of embedded programmers, who need to thoroughly understand the hardware platform on which their code runs.
 
-[quote,Brian W. Kernighan and Rob Pike,The Practice of Programming]
-____
-As a personal choice, we tend not to use debuggers beyond getting a stack trace or the value of a variable or two.
-One reason is that it is easy to get lost in details of complicated data structures and control flow.
-We find stepping through a program less productive than thinking harder and adding output statements and self-checking code at critical places.
-Clicking over statements takes longer than scanning the output of judiciously-placed displays.
-It takes less time to decide where to put print statements than to single-step to the critical section of code, even assuming we know where that is.
-More important, debugging statements stay with the program; debugging sessions are transient.
-____
+The key driver of RTOS adoption is application complexity.
 
-This page aims to discuss the finer details about logging on embedded systems, and cover some interesting topics such as deferred logging.
+An RTOS will often be used when there are more interrupt sources, more functions, and more standard communications interfaces that need to be supported.
 
-=== Logging in Distributed Systems
+=== Why RTOS?
 
-Severity Levels::
-Setting Flags::
-Conditional Flags::
-Debug Mode Support::
-CHECK Macros::
-Verbose Logging::
-Performance of Messages::
-Logs Management::
+The key advantages of a realtime operating system are:
 
+- Asynchronous Message-Based System
+- Preemptive multitasking design paradigm
+- Pre-tested and pre-integrated communications stacks and drivers
+- Application portability
+footnote:[A specific RTOS provides support for a wide range of hardware platforms.
+The effort to move the application to another supported platform is low.]
+- More efficient use of CPU resources
 
-==== Java log4j2 Library
+Simple loop-based run-times typically do a lot of polling to check if interrupts have occurred.
+Response-time is often abysmal because the interrupt delivered data is not processed accordingly to expected priority.
+The received data is processed in the next loop iteration of the main scheduler
+footnote:[You can try to slice the main routine in smaller increment.
+The approach is handcoded and must be changed when timing constraints change.].
 
-Apache Foundation log4j2 <<log4j2-logging>> defines a modern logging library based on the learnings of https://logging.apache.org/[log4j1.x] and https://www.slf4j.org/[slf4j].
-
-==== C++ Library gogl
-
-Google Log _glog_ <<google-logging>> defines a series of macros that simplify many common logging tasks.
-
-- log messages by severity level
-- control logging behavior from the command line.
-- log based on conditionals.
-- abort the program when expected conditions are not met.
-- introduce your own verbose logging levels
-- customize the prefix attached to log messages, and more.
+As a result, a great deal of processor time is occupied doing nothing.
+Because multitasking RTOS-based applications are interrupt-driven, it is possible to largely eliminate polling from the application.
+This frees up processor resources for useful work and enables power-saving modes to be invoked during idle periods.
 
 [TIP]
 ====
-As a C++ developer, you should consider the logging framework of the https://www.boost.org/[Boost] library.
+Adversaries of _RTOS_ feud that RTOS are too expensive to deploy in devices.
 
-The boost library is the tremendeous advantage to have an active community and a huge user community.
-The Boost organization and wider Boost community supports research and education into the best possible uses of C++ and libraries developed for it, particularly, but not exclusively those contained in the Boost Library.
+Below some empirical data of the freeRTOS realtime operating system.
+
+The memory usage is:
+
+[cols="1,2",options="header"]
+|===
+|Item|Bytes Used
+|Scheduler Itself          |236 bytes (can easily be reduced by using smaller data types).
+|For each queue you create |add 76 bytes + queue storage area (see FAQ Why do queues use that much RAM?)
+|For each task you create  |add 64 bytes (includes 4 characters for the task name) + the task stack size.
+|===
+
+The RTOS kernel itself required about 5 to 10 KBytes of ROM space.
+The boot cost is the area of a few milliseconds.
+A small set of static variables will be initialized in this phase.
+
+The cost of a context switch depends on the port, compiler, and configuration.
+A context switch time of 84 CPU cycles was obtained under the following test conditions:
+
+- FreeRTOS ARM Cortex-M3 port for the Keil compiler
+- Stack overflow checking turned off
+- Trace features turned off
+- Run-time stats feature turned off
+- Compiler set to optimise for speed
+- configUSE_PORT_OPTIMISED_TASK_SELECTION set to 1 in _FreeRTOSConfig.h_
 ====
 
-==== ROS-2 Logging
+=== Why C++?
 
-The logging subsystem in ROS 2 aims to deliver logging messages to a variety of targets, including:
+With the continued improvements in the language, most C++ features cite:[tour-of-cpp,effective-modern-cpp,cpp-core-guidelines,beautiful-cpp] have no impact on code size or on speed.
+Others have a small impact that is generally worth paying for.
+To use C++ effectively in embedded systems, you need to be aware of what is going on at the machine code level, just as in C.
+Armed with that knowledge, the embedded systems programmer can produce code that is smaller, faster and safer than is possible without C++.
 
-- To the console (if one is attached)
-- To log files on disk (if local storage is available) -To the /rosout topic on the ROS 2 network
+One property of C++ is so obvious that it is often overlooked.
+This property is that C++ is almost exactly a *superset of C*.
+If you write a code fragment in the C subset, the compiler will usually act like a C compiler.
+The machine code generated will be what you would get from a C compiler.
 
-By default, log messages in ROS 2 nodes will go out to the console on stderr, to log files on disk, and to the /rosout topic on the ROS 2 network.
-All targets can be individually enabled or disabled on a per-node basis.
+Because of this simple fact, _anything that can be done in C can also be done in C++_.
+Existing C code can typically be re-compiled as C++ with about the same amount of difficulty that adopting a new C compiler entails.
+This also means that migrating to C++ can be done gradually, starting with C and working in new language features at your own pace.
+Although this is not the best way to reap the benefits of object-oriented design, it minimizes short-term risk and provides a basis for iterative changes.
 
-=== Lessons Learnt
+[TIP]
+====
+Many C++ features are strictly front-end issues.
+They have no effect on the code generation
+footnote:[I agree that templates and exceptions have an impact on the generated code.
+And you have to acknowledge that you can write complex C++ programs without using such constructs.].
+The benefits conferred by these features are therefore free of cost at runtime.
 
-You shall define a logging concept for your product.
-Enforce the log record format in all packages.
-The language shall be English International.
+Default arguments to functions are an example of a cost-free front end feature.
+The compiler inserts default arguments to a function call where none are specified by the source.
+
+A less obvious front end feature is _function name overloading_.
+Namespaces provide additional scopes and the same name can be used in multiple contexts.
+====
+
+Common myths about C++
+
+- C++ is slow.
+- C++ produces bloated machine code.
+_C++ code is at least as efficient as similar C code._
+_C++ compiler inlines per default all concrete class methods._
+- Objects are large.
+- Virtual functions are slow.
+- C++ is not ROMable.
+- Class libraries make large binaries.
+- Abstraction leads to inefficiency.
+
+[CAUTION]
+====
+We are aware of two factual arguments why you should not use C++ in your project.
+
+. No C++ toolchain is available for your target platform.
+_ARM, x86_64 and RISC V platforms have multiple C++ toolchains_.
+. Your developers are not fluent with object-oriented approaches and the C++ language.
+Your organization is also not willing to invest into the training and coaching.
+
+_These are clear reasons why your development group must stay with C.
+Beware that multiple organizations including the Linux kernel developers are, albeit slowly, moving away from C._
+====
 
 [bibliography]
 === Links
 
-- [[[log4j2-logging, 1]]] https://logging.apache.org/log4j/2.x/index.html[log4j2 Java Logging]
-- [[[google-logging, 2]]] https://github.com/google/glog[Google Log]
-- [[[ros2-logging, 3]]] https://docs.ros.org/en/galactic/Concepts/About-Logging.html[About ROS-2 Logging]
+- [[[free-rtos, 1]]] https://www.freertos.org/FAQMem.html[free RTOS FAQ]
 
 === References
 
 bibliography::[]
+

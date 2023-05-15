@@ -1,7 +1,7 @@
 ---
 title: "Agile Software Architecture"
 linkTitle: "Agile Software Architecture"
-date: 2025-09-10
+date: 2025-09-01
 tags: ["agile", "architecture"]
 ---
 
@@ -10,8 +10,23 @@ tags: ["agile", "architecture"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
+:ref-arc42: https://arc42.org/[arc42]
+:ref-ros: https://www.ros.org/[Robot Operating System _ROS_]
 
 image::2025-09-01-head.jpg[width=420,height=360,role=left]
+
+Agile development approaches are the de facto standard for creating digital products.
+
+Often the key selling proposition for a new digital solution is the software features delivered with it.
+
+The software components are developed by agile teams.
+These teams use {ref-scrum} and {ref-devops} approaches.
+
+The architecture and design of the solution shall also heavily use agile principles and techniques.
+
+How do you create an agile software architecture?
+
+What techniques help agile team create lasting products?
 
 === Agile Digital and Software Product Development
 
@@ -24,20 +39,93 @@ Agile and Scrum frameworks are used to create new products and services.
 They are *not* project methods.
 Customers buy products not projects.
 
-Scrum supports us in the setup, team dynamics and priorization of features and releases.
+Scrum supports us in the setup, team dynamics and prioritization of features and releases.
 No answers are provided how to develop the solution.
 Your organization needs to reach technical fluency.
-The teams have to growth their organizational and technical capabilities simultaneously <<[reflections-on-agile-fluency-model>>.
+The teams have to growth their organizational and technical capabilities simultaneously <<reflections-on-agile-fluency-model>>.
 
 === Functional Requirements
 
-traceability through TDD and ATDD
+How do you identify and define the requirements your digital product shall provide?
 
-Continuous integration and delivery
+Talk with the users.
+They are the only persons who truly understand how they want to work on a daily basis.
 
-Translation and user manual
+Realize the users are not interested in the requirements document
+footnote:[The Scrum product backlog is *not* a requirement document. The backlog is work items repository].
+They are mainly interested in a working solution.
+Almost none of them will read the requirements.
+All of them will use the solution.
+
+The development team needs requirements to understand that they should implement.
+The organization needs the set of current requirements to guaranty that a new version of the solution behaves as expected.
+
+Quality responsible needs requirements to fulfill legal constraints.
+
+Traceability through TDD and ATDD::
+Each story shall have acceptance criteria and automated acceptance tests. +
+If desired, you can formulate requirements and explicitly define dependency between the requirement and the integration test.
+This setup is required by more rigorous standards such as the German V-Model, or validation standards in the medicinal industry with FDA or transportation industry with the functional safety constraints
+footnote:[Use annotations in the automated tests to link the test to the requirement being validated.
+This information is used to generate test reports and dependency matrices.].
+Continuous integration and delivery::
+The validation of the solution against acceptance criteria is only economically feasible with a continuous integration and delivery pipeline
+footnote:[The DORA metrics document the correlation between automated delivery pipeline and software product quality.].
+User manual::
+An alternative approach is to specify the behavior of the solution in the user manual.
+This technique was popular end of the last millennium.
+The current trend is rather not to create a user manual due to the involved manual effort.
 
 === Architecture Characteristics
+
+How do you identify and define the architecture and design your digital product shall provide?
+
+The architecture is the blueprint to create the application and add incrementally new features.
+The development team must understand the architecture
+cite:[modern-software-engineering,patterns-of-enterprise-application-architecture,building-evolutionary-architectures-2nd,continuous-architecture-in-practice].
+The users and the organization have no interest in the architecture concepts and documentation.
+
+Domain-driven design is the preferred approach to create a software architecture cite:[domain-driven-design,domain-driven-design-distilled,implementing-domain-driven-design].
+
+Evolutionary architecture is the technique used to define and validate an evolving design cite:building-evolutionary-architectures-2nd,building-evolutionary-architectures].
+
+We recommend the {ref-c4} and {ref-arc42} approaches to document your architecture and design.
+
+Successful digital product development mandates technical agility.
+
+Top-Down Competencies::
+At least one team member shall be a senior designer.
+The senior designer coaches the developers and shows them how to realize the architecture in the source code. +
+She has experience how to design a software solution.
+She has read seminal books discussing approaches to agile software architecture.
+Bottom-Up Competencies::
+The best architecture will rot if the implementation is flawed.
+All team members should be proficient with the technology stack and programming language used to implement the solution.
+At least one team member shall be a senior programmer cite:[pragmatic-programmer-1st,clean-code,clean-coder]. +
+The senior developer shall ensure that coding guidelines and language idioms are correctly applied in the source code. +
+She knows how to apply the paradigms and idioms of the programming language.
+How you implement dependency injection or sensor data normalization is quite different in Python, C++ or Java.
+Middle-Out Competencies::
+The best architecture and well-written application will decay over time.
+You must actively fight entropy to have a maintainable and lasting product. +
+The team shall acquire techniques and tools to detect and track architecture and code decay.
+The team shall actively remove decay cite:[refactoring-2nd,working-effectively-with-legacy-code,refactoring-databases].
+Agile Competencies::
+{ref-scrum} is the product development method.
+{ref-devops} and {ref-xp} approaches provide technical fluency.
+
+[INFORMATION]
+====
+Teams with all four competencies often create lasting products.
+
+- Domain-driven design is a popular solution for top-down expertise.
+- Clean code is a powerful approach to establish bottom-up capabilities.
+- Continuous delivery implementing fitness functions is a promising approach.
+- Document your artifact using the living documentation approach.
+A good starting point is the {ref-arc42} toolset.
+
+{ref-manifesto} and {ref-devops} concepts amplify the success of technical agility.
+====
 
 === Lessons Learnt
 
@@ -45,40 +133,69 @@ Here questions we discussed with development teams.
 
 [qanda]
 Does domain-driven design have similarities with model-based engineering?::
-Yes, Scott EVans was influenced by the model-driven design _MDD_ movement.
+Yes, Scott Evans was influenced by the model-driven design _MDD_ movement
+footnote:[The community recognizes that model-based engineering was only successful in well-defined and limited specialized domains.
+ Universal modelization approaches were not successful.
+ The same can be stated for formal verification methods.].
 A model is an essential part of software design.
 We need it in order to be able to deal with complexity.
 the main point is that we need to communicate the model.
 Does domain-driven design have similarities with SysML?::
+You can use sysML to document your solution.
+DDD has a strong emphasis on delivering working software and iterate the refinement of the solution.
+You should use tools and techniques to continuously produce improved software solutions.
 Do we need to describe our system with UML use cases?::
-How do we describe the behaviour of your system?::
-But the class behavior and the constraints are not so easily expressed.
-UML activity diagrams (for instance) vs. class diagrams?
+Only if you find out it helps the team and the stakeholders to better understand the system.
+The preferred approaches of requirements elicitation are story telling, customer journeys, and event storming.
+You are free to add additional techniques to your toolbox.
+How do we describe the behavior of your system?::
+The system is the reference.
+The acceptance criteria and the associated automated tests should be the description cite:[bridging-communication-gap,continuous-delivery].
+Class behavior and constraints are not easily expressed.
+You should use sparingly UML activity diagrams or object diagrams to document complex business rules.
 How de we identify our bounded domains?::
-If the design, or some central part of it, does not map to the domain model, that model is of little value, and the correctness of the software is suspect. – do we really live that?
+If the design, or some central part of it does not map to the domain model, that model is of little value.
+The correctness of the software is suspect.
+Bounded domains in industrial application are often easily identified.
+The physical components are natural bounded domains.
+Business applications are trickier to model.
+You need a deep understanding of the problem space to select potential bounded domains.
+The event storming and customer journey techniques are currently the methods with the highest success rate.
 Should we create a layered architecture?::
-layers applicable to “Motion Control” and/or lower level control s.a. battery management as well?
-How does it match the ROS2 approach?
+If your bounded domain is growing and has a higher complexity, you have two potential approaches.
+First, you find out you are putting too many abstractions into a domain.
+Perhaps it is time to break it down in multiple domains.
+Second, your bounded domain has an inherent complexity. +
++
+Use layers to increase abstraction and enforce technical separation of concerns.
+Layers could be applicable to “Motion Control” and/or lower level control s.a. battery management as well. +
++
+The {ref-ros} framework maps bounded domains to packages.
+Inherent complexity is handled through the creation of multiple nodes.
+Each node is responsible for a specific feature.
+The node graph structure inside a package defines the layers of bounded domain.
+The node graph structure between packages defines the API and event based communication between bounded domains.
 Do we have entities, aggregates, and value objects?::
+Entities, value objects and aggregates are natural abstraction in any object-oriented system.
+Here is an example.
+A temperature sensor is an entity with identity, data, and behavior.
+The configuration parameters of the sensor are stored in a value object.
+The sensor instance, its configuration, and the buffered measurements define an aggregate.
 What is our ubiquitous language?::
-A core principle of domain-driven design is to use a language based on the model.
+A core principle of domain-driven design is to use the language used by the operators of the device.
+The language is also used to describe the model of our software.
 Does our commercial framework have an impact on the architecture?::
-Do we structure our Software as well in Modules?
-I would opt for it.
-How to cluster modules?
-It is actually this sort of architectural thinking that I initially thought of when I mentioned “architecture review”
-
-cite:[building-evolutionary-architectures-2nd,building-evolutionary-architectures]
-
-cite:[refactoring-2nd]
-
-cite:[modern-software-engineering]
+The used technologies and frameworks have a deep impact on the potential solutions.
+We structure our software following DDD principles and the framework assumptions.
+{ref-ros} provides packages, modules, and graphs of nodes has structuring bricks.
 
 [bibliography]
 === Links
 
-[[[reflections-on-agile-fluency-model, 1]]] link:../../2021/reflections-on-agile-fluency-model/[Reflections on Agile Fluency Model].
+- [[[reflections-on-agile-fluency-model, 1]]] link:../../2021/reflections-on-agile-fluency-model/[Reflections on Agile Fluency Model].
 Marcel Baumann. 2021.
+- [[[software-structure-with-ddd, 2]]] link:../../2022/software-structure-with-ddd/[Software Structure with DDD].
+Marcel Baumann. 2022.
 
 === References
 

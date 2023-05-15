@@ -41,14 +41,14 @@ _*They often meet throughout the day for more detailed discussions about adaptin
 . Do we have any blockers?
 . What should we drop to focus on the highest priority?
 . Shall we reduce WIP?
-. Appreciation time for provided help. why wait until the Retrospective?
+. Appreciation time for provided help. Why wait until the Retrospective?
 . What were the biggest learnings in this Sprint?
 . Start with a quote about software engineering or agile!
 
 === Lessons Learnt
 
 A great Scrum master shall make his teams aware of the true goal of a daily Scrum meeting
-cite:[hings-every-scrum-practitioner-should-know,scrum-pocket-guide-3rd,great-scrum-master,zombie-scrum-survival-guide,mastering-professional-scrum].
+cite:[things-every-scrum-practitioner-should-know,scrum-pocket-guide-3rd,great-scrum-master,zombie-scrum-survival-guide,mastering-professional-scrum].
 
 Avoid doing Scrum, ask yourself how to be agile and continuously improve.
 

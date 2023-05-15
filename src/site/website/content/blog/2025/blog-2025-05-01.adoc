@@ -1,11 +1,11 @@
 ---
-title: "Configuration"
-linkTitle: "Configuration"
+title: "Teaching Clojure III"
+linkTitle: "Clojure III"
 date: 2025-05-01
-tags: ["java", "architecture"]
+tags: ["jvm-languages", "series-students"]
 ---
 
-== Configuration Concept
+== Teaching Closure III
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
@@ -13,11 +13,14 @@ tags: ["java", "architecture"]
 
 image::2025-05-01-head.png[width=420,height=360,role=left]
 
-=== Lessons Learnt
+Destructuring List Comprehension Pipeline Macros :pre and :post % is the output :tests
+->>
 
 [bibliography]
 === Links
 
-=== References
+- [[[clojure-1, 1]]]  link:../../2023/2023/teaching-clojure-i/[Teaching Clojure I].
+Marcel Baumann. 2023.
+- [[[clojure-2, 2]]]  link:../../2023/2023/teaching-clojure-ii/[Teaching Clojure II].
+Marcel Baumann. 2023.
 
-bibliography::[]
