@@ -1,0 +1,47 @@
+---
+title: "Java Concurrency Approaches"
+linkTitle: "Java Concurrency"
+date: 2025-10-01
+tags: ["java", "architecture"]
+---
+
+== Agile Software Architecture
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:ref-ros: https://www.ros.org/[Robot Operating System _ROS_]
+
+image::2025-10-01-head.png[width=420,height=360,role=left]
+
+=== First Iteration
+
+==== Threads and Monitor
+
+==== Synchronized, Volatile
+
+=== Second Iteration
+
+==== Executors
+
+==== Concurrent Primitives and Collections
+
+==== Fork and Join
+
+=== Third Iteration
+
+==== Parallel Streams
+
+==== Completable Future and CompletableStage
+
+==== Reactive API
+
+==== Forth Iteration
+
+==== Virtual Threads
+
+==== Structured Concurrency
+
+==== Scoped Values
+
+=== Good Practices

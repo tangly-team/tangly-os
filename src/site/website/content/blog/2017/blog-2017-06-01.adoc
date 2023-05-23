@@ -59,7 +59,7 @@ Once the consultants leave, some teams return to their old ways of working.
 Advisers and consultants can be a great help when introducing Agile.
 They need to build capacity in the development team to continue learning and evolving when the consultants are gone.
 Failure to go far enough::
-To maximise the benefits of Agile Software Development, the people, processes and organization that interface and work with the Agile team needs to understand Agile.
+To maximize the benefits of Agile Software Development, the people, processes and organization that interface and work with the Agile team needs to understand Agile.
 It should adjust their expectations and working techniques too.
 Agile is not a drop-in technology that can be swapped in to replace another failing method.
 Isolated Agile teams will find it difficult to be completely Agile.
@@ -101,6 +101,6 @@ We can state that (see the {ref-scrumguide})
 The essence of succeeding with Agile, Lean and {ref-scrum} is
 
 * It is a http://en.wikipedia.org/wiki/Change_management[change process] with well-known and discussed aspects.
-* You must have a strong and experienced Scrum Master and Scrum Coach to maximise success.
+* You must have a strong and experienced Scrum Master and Scrum Coach to maximize success.
 * Do not tinker with the Scrum process before you really master it.
 * If you have to scale your process, please consider {ref-less}.

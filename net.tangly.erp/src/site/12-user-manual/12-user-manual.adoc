@@ -1,15 +1,6 @@
----
-title: "Services ERP"
-linkTitle: "Services ERP"
-weight: 1000
-date: 2020-09-10
----
+ifndef::imagesdir[:imagesdir: ./pics]
 
-== Services ERP
-:author: Marcel Baumann
-:email: <marcel.baumann@tangly.net>
-:homepage: https://www.tangly.net/
-:company: https://www.tangly.net/[tangly llc]
+== User Manual
 
 === Idea
 

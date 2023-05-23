@@ -17,10 +17,10 @@ Why is visibility so important for any agile or Scrum team?
 
 When you are running an agile product development initiative, your ultimate goal is customer satisfaction with the delivered solution.
 
-The project coordination responsibilities are however not limited to this single goal.
+The project coordination responsibilities are, however, not limited to this single goal.
 
 The product owner shall nurture the vision, roadmap, the release plan and customer journey.
-You must coordinate the workflow of your team, refine the product backlog, control identified risks, track deadlines.
+You must coordinate the workflow of your team, refine the product backlog, control identified risks, and track deadlines.
 
 The development team shall inform about progress, incremental deliveries, technical debt, impediments and risks.
 
@@ -31,7 +31,7 @@ Various practices exist to forecast product development progress, like burn-down
 While proven useful, these do not replace the importance of *empiricism*.
 
 In complex environments, what will happen is unknown.
-Only what has already happened may be used for forward-looking decision making.
+Only what has already happened may be used for forward-looking decision-making.
 Visual aids optimally support the Scrum pillars of _transparency_, _inspection_ and _adaptation_.
 
 Most of these diagrams naturally provide the time dimension necessary for forecasting.
@@ -61,13 +61,13 @@ Or do lots of things completely _wrong_.
 
 This kind of doubt is one of the fastest ways to find yourself in a quagmire of unfinished work.
 
-Making your work visible raises expectation and luckily it raises opinions of you.
+Making your work visible raises expectation, and luckily it raises opinions of you.
 
 The time wasted extracting progress status out of a teammate or following up on interdependent tasks *will* make you risk failing your sprint.
 
 Working at a sustainable pace can only be achieved if you make proper use of the time available.
 
-Your team and anyone else for that matter cannot trust someone who keeps his progress hidden.
+Your team and anyone else for that matter cannot trust someone who keeps progress hidden.
 They are in the dark, _which leads to uncertainty_.
 They tend to assume something is either being done or not being done and either get stuck into it themselves.
 
@@ -140,7 +140,7 @@ Experienced teams sometimes use additional visual aids to improve effectivity:
 
 === DevOps Visual Aids
 
-DORA diagrams are similar visual aids focused of https://en.wikipedia.org/wiki/DevOps[DevOps] activities
+DORA diagrams are similar visual aids focused on https://en.wikipedia.org/wiki/DevOps[DevOps] activities
 
 image::2023-10-01-dora-metrics.png[width=80%,height=360,role=text-center]
 
@@ -167,7 +167,7 @@ The platform with its 100+ million hosted projects provides repositories equippe
 The updated projects functions better support agile approaches such as Scrum or Kanban.
 
 Various addons are available for more complex diagrams and visualizations.
-Start small, learn, and adapt your development tools.
+Start small, learn and adapt your development tools.
 
 === Lessons Learnt
 

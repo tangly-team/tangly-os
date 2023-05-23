@@ -2,7 +2,7 @@
 title: "DDD for Embedded Systems"
 linkTitle: "Embedded DDD"
 date: 2025-02-01
-tags: ["architecture", "domain-driven-design", "c++"]
+tags: ["architecture", "domain-driven-design", "c++", "embedded"]
 ---
 
 == Domain-Driven Approaches for Embedded Systems
@@ -151,106 +151,82 @@ Below, an example of a device component architecture is given.
 [plantuml,device-domains,svg]
 ----
 @startuml
+!include <C4/C4_Container>
 
-package "HardwareAbstractionLayer" as HAL {
-  [GPIO]
-  [PWM]
-  [TIMERS]
-  [I2C Interface]
-  [CAN Interface]
-  [Ethernet/CAT Interface]
+System_Boundary(c1, "HAL") {
+    Container(HAL, "HAL Layer", "Inputs, Outputs, Timers, PMW, and Buses", "Abstracts Board")
+
+  note right of HAL
+    The hardware abstraction layer provides a thin layer above the physical sensors and actuators.
+    Examples are GPIO, PWM, timers, I2C interface, CAN interface, Ethernet/CAT Interface.
+    The abstraction is more powerful for intelligent components connected through a communication bus.
+  end note
 }
 
-note right of HAL
-  The hardware abstraction layer provides a thin layer above the physical sensors and actuators.
-  The abstraction is more powerful for intelligent components connected through a communication bus.
-end note
-
-component RTOS [
-  **RTOS Primitives**
-  The real-time operation system //RTOS// provides interrupt, thread, synchronization, and messaging handling primitives.
-  We recommend defining a message-based architecture.
-
-  Either you use an RTOS package or implement the needed primitives as macros and functions.
-]
-
-package Device {
-    package "Sensors and Actuators" as SensorsActuators {
-    [TemperatureSensor]
-    [PressureSensor]
-    [PositionSensor]
-    [PowerSwitch]
-    [MotorController]
-    }
-
-    SensorsActuators --> HAL
-
-    note left of SensorsActuators
-      The sensor and actuator abstractions provide a semantic rich model of the physical components.
-      The abstraction represents how the application perfers to communicate with the components.
-    end note
+System_Ext(rtos, "RTOS", "RTOS Primitives", "provides interrupt, thread, synchronization, and messaging handling primitives.")
 
 
-    package "Device Components" as DeviceComponents {
-    [Battery]
-    [Tractor]
-    [Lifting Platform]
-    }
+System_Boundary(c2, "Logical Layers") {
+    Container(Sensors, "Sensors & Actuators", "GPIO, PWM, TIMERS, I2C IF, SPI IF, CAN IF, Ethernet/CAT IF", "Object-Oriented View")
+    Container(Components, "Components", "Motor, Battery Pack, Tractor, Piston, ...")
+    Rel(Components, Sensors, "uses")
+    Rel(Sensors, rtos, "uses")
+    Rel(Components, rtos, "uses")
 
-    DeviceComponents --> SensorsActuators
+  note left of Sensors
+    The sensor and actuator abstractions provide a semantic-rich model of the physical components.
+    The abstraction represents how the application prefers to communicate with the high-level components.
+    An example is a temperature sensor with normalization and correction algorithms or a power switch.
+  end note
 
-    package "Device Services" as DeviceServices {
-      component ConfigurationManager[
-        **Configuration Manager
+  note left of Components
+    Components are domain abstractions using multiple sensors and actuators.
+    An example is a tractor unit with two motors, a replacement sensor, a slip detection sensor and a temperature sensor.
+  end note
+}
 
-        The configuration manager has access to all configuration parameters of the device.
-        It supports the configuration of all components at startup.
-        The configuration manager persists the parameters.
-      ]
+System_Boundary(c3, "Apparatus") {
+  Container(alarmHdl, "Alarm Handler")
+  Container(configurationMgr, "Configuration Manager", "Parameters handling")
+  Container(logHdl, "Logger")
+  Container(missionHdl, "Mission Interpreter")
+  Container(device, "Device")
 
-      component AlarmHandler[
-        **Alarm Handler**
-
-        The alarm handler implements the alarming escalation by aggregating the alarms of the components.
-      ]
-      component Logger [
-        **Logger**
-
-        The logger provides a total ordering of all records and persists the information.
-      ]
-
-      component PowerManager [
-        **Power Manager**
-
-        The power manager handles the power usage of the whole device.
-      ]
-
-      component MissionInterpreter [
-        **Mission Interpreter**
-
-        The mission interpreter defines the interface to a PLC interpreter
+  note right of missionHdl
+  The mission interpreter defines the interface to a PLC interpreter
         executing a continuously running control algorithm.
 
         The interpreter provides a set of buffered input values,
         which are stable during an execution cycle.
-
         The setting of output values is also provided. The output changes
         are either immediate or delayed to the end of the cycle.
-      ]
-    }
-
-    DeviceServices --> DeviceComponents
+  end note
 }
 
-package "User Interface" as UserInterface {
-  [Device Visualization]
-  [Alarm Management]
-  [Mission Tracker]
+
+Rel(device, Components, "uses")
+
+System_Boundary(c4, "User Interface") {
+  Container(terminal, "Remote Terminal")
+  Container(userInterface, "Dedicated User Interface")
 }
 
-UserInterface --> DeviceServices
-UserInterface --> DeviceComponents
+Rel(userInterface, alarmHdl, "view")
+Rel(userInterface, missionHdl, "view")
+Rel(terminal, logHdl, "view")
 
+System_Ext(machine, "Machine", "Machine owning our system")
+Rel(machine, alarmHdl, "uses")
+Rel(machine, missionHdl, "uses")
+
+
+Person(operator, "Operator")
+Rel(operator, userInterface, "operates")
+
+Person(service, "Service Operator")
+Rel(service, terminal, "diagnoses")
+
+Rel(Sensors, HAL, "uses")
 @enduml
 ----
 

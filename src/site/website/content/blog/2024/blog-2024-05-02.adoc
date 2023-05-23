@@ -1,0 +1,73 @@
+---
+title: "Actors"
+linkTitle: "Actors"
+date: 2024-05-02
+tags: ["java", "architecture"]
+---
+
+== Reflections on Actor Models
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2024-05-02-head.svg[width=420,height=360,role=left]
+
+Concurrent programming has always been tricky.
+Accessing a shared state from multiple threads is a central problem, where hard-to-catch errors may easily appear.
+Java has all the instruments for safe and flawless concurrency, but the compiler would deliberately let developers write dangerous code.
+There is a strong need for higher-level frameworks ensuring safe concurrent programming.
+
+The actor model is one of the approaches to safe concurrency.
+
+Understand that, although multiple actors can run at the same time, an actor will process a given message sequentially.
+This means that if you send 3 messages to the same actor, it will just execute one at a time.
+To have these 3 messages being executed concurrently, you need to create 3 actors and send one message each.
+
+Messages are sent asynchronously to an actor, that needs to store them somewhere while it’s processing another message.
+The mailbox is the place where these messages are stored.
+
+Another interesting aspect of the actor model is that it doesn’t matter if the actor that I am sending a message to is running locally or in another node.
+
+An actor is a computational entity that, in response to a message it receives, can concurrently:
+
+- Send a finite number of messages to other actors.
+- Create a finite number of new actors.
+- Designate the behavior to be used for the next message it receives.
+
+=== Minimal Actor Library
+
+To send a message to an actor, you need a reference to the receiving entity.
+
+Introduce naming conventions if your application profits from search capabilities.
+An actor should have a unique external identifier to support querying.
+
+Consider using a sealed class hierarchy to define messages actors receive.
+Modern pattern matching in Java provides elegant solutions.
+
+virtual thread executor
+
+=== Publish and Subscribe with Flow
+
+multiple publishers and multiple consumers for a channel
+
+=== Finite State Machines
+
+The behavior of an actor is specified as a flat or a hierarchical state machine.
+
+=== Sealed Types and Pattern Matching
+
+Message load type can be defined as a closed sealed type hierarchy.
+Pattern matching with _instanceof_ would provide exhaustive and type secure handling of all alternatives.
+
+[bibliography]
+=== Links
+
+- [[[actor-model, 1]]] https://en.wikipedia.org/wiki/Actor_model[Actor Model].
+Wikipedia.
+- [[[message-passing, 2]]] https://en.wikipedia.org/wiki/Message_passing[Message Passing].
+Wikipedia.
+
+=== References
+
+bibliography:[]

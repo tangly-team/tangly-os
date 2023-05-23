@@ -10,7 +10,6 @@ tags: ["agile", "architecture"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-:ref-arc42: https://arc42.org/[arc42]
 :ref-ros: https://www.ros.org/[Robot Operating System _ROS_]
 
 image::2025-09-01-head.jpg[width=420,height=360,role=left]
@@ -52,7 +51,8 @@ Talk with the users.
 They are the only persons who truly understand how they want to work on a daily basis.
 
 Realize the users are not interested in the requirements document
-footnote:[The Scrum product backlog is *not* a requirement document. The backlog is work items repository].
+footnote:[The Scrum product backlog is *not* a requirement document. The backlog is a work items repository.
+You use your product backlog for planning and the sprint backlog for tracking of activities.].
 They are mainly interested in a working solution.
 Almost none of them will read the requirements.
 All of them will use the solution.
@@ -66,11 +66,11 @@ Traceability through TDD and ATDD::
 Each story shall have acceptance criteria and automated acceptance tests. +
 If desired, you can formulate requirements and explicitly define dependency between the requirement and the integration test.
 This setup is required by more rigorous standards such as the German V-Model, or validation standards in the medicinal industry with FDA or transportation industry with the functional safety constraints
-footnote:[Use annotations in the automated tests to link the test to the requirement being validated.
+footnote:[Use annotations in the automated tests to link a specific test to the requirement being validated.
 This information is used to generate test reports and dependency matrices.].
 Continuous integration and delivery::
 The validation of the solution against acceptance criteria is only economically feasible with a continuous integration and delivery pipeline
-footnote:[The DORA metrics document the correlation between automated delivery pipeline and software product quality.].
+footnote:[The DORA metrics document the correlation between the use of an automated delivery pipeline and software product quality.].
 User manual::
 An alternative approach is to specify the behavior of the solution in the user manual.
 This technique was popular end of the last millennium.
@@ -137,6 +137,9 @@ Yes, Scott Evans was influenced by the model-driven design _MDD_ movement
 footnote:[The community recognizes that model-based engineering was only successful in well-defined and limited specialized domains.
  Universal modelization approaches were not successful.
  The same can be stated for formal verification methods.].
+Scott Evans described the model-driven design approach in his seminal work cite:[domain-driven-design] in 2004.
+The community has more than twenty years to refine the techniques how to successfully apply the approach. +
++
 A model is an essential part of software design.
 We need it in order to be able to deal with complexity.
 the main point is that we need to communicate the model.

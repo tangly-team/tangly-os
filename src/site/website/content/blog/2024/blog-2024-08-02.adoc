@@ -1,0 +1,259 @@
+---
+title: "Domain-Driven Design with ROS-2"
+linkTitle: "DDD with ROS-2"
+date: 2024-08-02
+tags: ["C++", "architecture"]
+---
+
+== Domain-Driven Design with ROS-2
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:ref-doxygen: https://www.doxygen.nl/[Doxygen]
+:ref-pubsub: https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern[Publish and Subscribe Pattern]
+:ref-ros: https://www.ros.org/[Robot Operation System]
+
+image::2024-08-02-head.png[width=420,height=360,role=left]
+
+At its core, {ref-ros} provides a message-passing system, often called _middleware_.
+
+Communication is one of the first needs to arise when implementing a new robot application, or really any software system that will interact with hardware.
+ROS’s built-in and well-tested messaging system saves you time by managing the details of communication between distributed nodes via an anonymous {ref-pubsub}.
+
+This approach encourages good practices in your software development, including fault isolation, separation of concerns, and clear interfaces.
+Using ROS results in systems that are easier to maintain, contribute to, and reuse.
+
+The ROS ecosystem is a cornucopia of robot software.
+Whether you need a device driver for your GPS, a walk and balance controller for your quadruped, or a mapping system for your mobile robot, ROS has something for you.
+From drivers to algorithms, to user interfaces, ROS provides the building blocks that allow you to focus on your application.
+
+The goal of the ROS project is to continually raise the bar on what is taken for granted, and thus to lower the barrier to entry to building robot applications.
+Anyone with a good idea for a useful robot should be able to make that idea real, without having to understand everything about the underlying hardware and software.
+
+How do you map your application design to the ROS-2 framework?
+
+The ROS community is focused on robotics and less on sound software engineering practices.
+We recommend using the de-facto standard for modern distributed software architectures.
+
+Domain-driven design heavily emphasizes object-oriented modeling and event-based communication cite:[domain-driven-design,implementing-domain-driven-design,domain-driven-design-distilled].
+
+So your architecture should follow the recommendations of this design method and evolve during realization cite:[building-evolutionary-architectures-2nd].
+
+=== Ubiquitous Language
+
+The user language is used to name the abstractions and operations used in the source code.
+
+The physical battery pack should have a corresponding class in the source code.
+A motor component or a temperature alarm should also map to the corresponding source abstractions
+footnote:[I strongly recommend using English for the ubiquitous language.
+Digital product development is an international activity.
+It is worth the effort to document in a language all engineers understand.].
+
+The UML class diagrams should only contain classes with names associated to the domain vocabulary.
+
+=== Bounded Domain as ROS-2 package
+
+A package is an organizational unit for your ROS-2 code.
+A package is automatically a distribution unit which can be installed on specific hardware.
+
+A package is also used as a UML logical component.
+A logical component should be a bounded domain in your architecture partitioning.
+
+Any bounded domain is modeled as a logical UML package and as a ROS distribution package.
+
+Bounded domain examples are battery pack, tracker, sensor package, vehicle and user interface.
+If you decide to have a modular user interface, you could have additional domains such as engine user interface, or mission definition user interface.
+
+With packages, you can release your ROS 2 work and allow others to build and use it easily.
+
+[CAUTION]
+====
+Beware ROS architecture does not distinguish logical components from deployment units.
+You should use a ROS package to simultaneously define a design abstraction and an operational deployment object
+footnote:[The UML component diagram and deployment diagram contain the same items with the same identifier.].
+
+Your UML component diagrams and deployment diagrams will almost contain the same elements.
+====
+
+=== Bounded Domain API
+
+Three aspects define the interface of each bounded domain in the context of ROS-2.
+
+First, we have the *messages* published on the *topics* owned by the domain.
+These messages define the asynchronous interface of the bounded domain
+footnote:[This should be the primary interface of any domain because ROS-2 is a message passing middleware.].
+The messages for a domain are part of the related ROS-2 package and are defined in a description file included in the package.
+Each message and all its fields are syntactically well-documented using {ref-doxygen}.
+
+Syntactically means at least the following:
+
+- What is the type of the field?
+- Is the field mandatory or optional?
+- Has the field a default value, and is it specified in the message description?
+- What is the range of admissible values if not encoded in as a custom type?
+- If strings are used, try to define the pattern of legal values.
+Evaluate the usage of bounded strings to improve interface quality.
+- Are application relevant values defined as constants?
+An example would the pattern for ISO 8601 date format.
+
+Additional documentation can provide semantic information.
+Examples of messages are always helpful to new developers.
+
+Second, we have the *services* provided by the domain.
+Services are remote procedure calls and should be documented with the same conventions as a method.
+Each service is documented using {ref-doxygen}.
+
+Third the domain sends events and messages to other domains.
+Here we define the dependencies to other bounded domains.
+This aspect can either be documented or inferred with the ROS-2 tools.
+
+A component diagram is provided for each package.
+The diagram contains all topics and services the domain exposes.
+
+A system-wide component view is also provided.
+
+Event based changes::
+DDD requires that relevant state changes are communicating to interesting parties as events cite:[domain-driven-design-distilled,reactive-messaging-patterns-with-actor-model].
+You should never propagate system state changes through services.
+A domain cannot be aware of all parties interested in state changes.
+Node as Parallel Processing Unit::
+ROS-2 uses node as independent process unit.
+A node should be small and offer cohesive services.
+We recommend having as much as possible single threaded nodes to profit from the ROS-2 provided solutions
+footnote:[As stated in ROS-2 documentation, it is complex to avoid synchronization troubles such as deadlocks, lifelocks, priority inversion, or starvation when writing multithreaded nodes.
+Further information can be found in the ROS-2 documentation about calling groups.]. +
++
+Nodes never share state or computed values with another node.
+Each node has a local copy of all data needed to fulfill its responsibilities.
+State changes or updated data shall be sent as messages to interested parties.
+Asynchronous vs Synchronous Communication::
+DDD and ROS-2 heavily emphasize the importance of a distributed asynchronous system.
+Synchronous communication should be avoided as much as possible if you follow the principles of domain-driven design and of the robot framework.
+Layered Architecture::
+Bigger packages could profit from a layered architecture to reduce coupling inside a module.
+Smaller robots and machines seldom have very complex domains and need no or minimal layering.
+Try to have a layer for the hardware access, a layer for the logical sensor or actuator abstraction, and a layer for the application logic.
+Domain Documentation::
+The domain is documented using UML as promoted in DDD.
+Finite state machines should be used to document complex nodes.
+Stateless nodes do not need such finite state machines.
+
+[TIP]
+====
+The engine has semantic layers of functionalities.
+
+The lowest layer defines the hardware access and the physical sensors and actuators.
+
+A device groups a set of related sensors and actuators to provide a clear abstraction with single responsibility.
+An example would be a tractor unit with motors, movement sensors, actuators to avoid slipping on the path.
+
+A tractor manager coordinates multiple tractor units to implement more complex operations such a traveling a path with an expected speed.
+
+A tractor handler implements more complex functions such as executing a planned route and handling obstacles.
+
+An optional user interface displays information about the handler route planning, tractor manager status, and state information of tractors.
+
+An event-based system supports observability on all layers.
+A layered message architecture restricts sending commands only to the next underlying layer.
+====
+
+=== Entities and Identity
+
+Topic names are the identity mechanism of all internal abstractions <<meaningful-identifiers>> <<entities-identifiers>>.
+
+[CAUTION]
+====
+The architect shall define naming conventions reflecting the ubiquitous language.
+Do not use technical designations related to ROS-2 internals.
+====
+
+A similar approach is used to identify application-specific entities.
+Current examples are alarms.
+
+[TIP]
+====
+You could use the same approach if you need session or transaction identifiers.
+
+Asynchronous applications seldom need this kind of identifiers.
+The essence of event-based communication should fire and forget.
+====
+
+=== Factory and Repository
+
+Embedded devices are often statically configured to avoid memory allocation problems.
+Therefore, we do need to implement any repository to retrieve and construct objects.
+
+Factories are implemented in the code using the factory patterns.
+Most often, a regular factory method is sufficient to create an aggregate.
+
+Configuration parameters are currently the only identified configurable values.
+ROS-2 provides the parameter server as a standardized approach to configure, store and retrieve configuration values.
+
+[TIP]
+====
+A parameter server is a shared, multi-variable dictionary that is accessible via network APIs.
+Nodes use this server to store and retrieve parameters at runtime.
+
+As it is not designed for high-performance, it is best used for static, non-binary data such as configuration parameters.
+It is meant to be globally viewable so that tools can easily inspect the configuration state of the system and modify if necessary.
+
+Avoid changing node parameter values during runtime.
+Devices should be configured when starting-up.
+ROS nodes should get their required parameter values when they are launched.
+====
+
+=== Value Objects
+
+All messages sent to nodes are value-immutable objects <<value-objects>>.
+No entities can ever be sent as part of a message.
+You can send the external identifier of an entity as a field in the message.
+
+=== Good Practices
+
+ROS-2 Senior Expert::
+A senior expert aware of the architecture tradeoffs of the framework and good practices must be available to guide architectural decisions.
+Expertise of object-oriented models, domain-driven design, {ref-uml} and {ref-c4} approaches are required.
+This person shall have a good grasp of the programming languages used to implement the application.
+Modern C++ and Python technology stacks are the ones used in ROS-2 framework
+cite:[tour-of-cpp,beautiful-cpp,effective-modern-cpp,cpp-core-guidelines]
+footnote:[Java is partially supported. https://github.com/lambdaprime/jrosclient[Client libraries] to access communication functions are available.].
+Being in an architecture role, he needs an agile software architecture training and a reasonable understanding of domain-driven design method.
+Favor C++::
+C++ provides tremendously better performance for heavy lifting algorithms.
+Static typed code is often easier to maintain.
+Errors are often caught at compile time.
+You are not constrained by performance or maintainability requirements, feel free to use Python.
+Technical Excellence::
+Technical excellence as one of twelve {ref-manifesto-principles} of the {ref-manifesto}.
+Your development team shall pursue technical excellence in all used technology.
+Static and dynamic checkers help to measure progress.
+Living documentation::
+The documentation shall be published as living documentation accessible and searchable to all interested parties.
+The team should integrate documentation generation as part of the continuous delivery pipeline.
+The architecture method is domain-driven design, being the industrial standard approach for software design.
+The structure and artifacts are based on the {ref-arc42} approach and associated templates.
+Finite State Machine::
+Finite state machines are documented as UML statecharts cite:[uml-distilled].
+You should avoid composite states.
+Hierarchical finite state machines are fine but should be implemented with the help of a statechart library.
+Hardcoded solutions are error-prone due to history states and parallel execution of composite states.
+ROS-2 provides two such libraries.
+Flat finite state machines can directly be implemented in code as a double nested switch statements.
+Asynchronous Communication::
+ROS-2 nodes are independent execution units.
+The framework will allocate operating system threads based on the overall configuration and the pending requests.
+If your architecture follows the ROS-2 recommendations and favors message-passing communication, you would avoid most realtime problems. +
++
+Nodes as actors, message-passing communication and finite state machine is a well-documented approach to implement communication and distributed solutions.
+
+[bibliography]
+=== Links
+
+- [[[meaningful-identifiers, 1]]] link:../../2021/meaningful-identifiers/[Meaningful Identifiers]
+- [[[entities-identifiers, 2]]] link:../../2020/entities-identifiers-external-identifiers-and-names/[Entities, Identifiers, External Identifiers]
+- [[[value-objects, 3]]] link:../../2021/value-objects-as-embedded-entities/[Value Objects as Embedded Entities]
+
+=== References
+
+bibliography::[]

@@ -2,7 +2,7 @@
 title: "Distributed Systems"
 linkTitle: "Distributed Systems"
 date: 2025-01-01
-tags: ["architecture", "c++"]
+tags: ["architecture", "c++", "embedded"]
 ---
 
 == Distributed Asynchronous Systems
@@ -18,7 +18,6 @@ tags: ["architecture", "c++"]
 :ref-micro-os-II: https://en.wikipedia.org/wiki/Micro-Controller_Operating_Systems[μC/OS-II]
 :ref-qnx: https://en.wikipedia.org/wiki/QNX[QNX]
 :ref-free-rtos: https://www.freertos.org/[freeRTOS]
-:ref-uml: https://en.wikipedia.org/wiki/Unified_Modeling_Language[UML]
 
 image::2025-01-01-head.png[width=420,height=360,role=left]
 
@@ -40,7 +39,8 @@ Instead, experts from different industries independently came up with the follow
 
 1. Keep data isolated and bound to threads. +
 Threads should hide and encapsulate their private data and other resources.
-They should *not* share them with the rest of the system.
+They should *not* share them with the rest of the system. +
+_No global data or shared state shall exist in the system_.
 2. Communicate among threads asynchronously via event objects
 footnote:[Modern realtime operating systems treat interrupt routines as a special and limited kind of threads.
 Therefore, interrupt routines also communicate with other components by sending messages.]. +
@@ -56,9 +56,11 @@ Asynchronous callbacks do not fulfill the above constraints.
 
 An object can register multiple asynchronous calls to inform him when an activity is completed.
 Multiple callbacks could be processed in parallel.
-Therefore, the object must protect data potentially manipulated by multiple callbacks.
+Therefore, the object must protect its data from potential manipulation by multiple asynchronous callbacks.+
+_Such a mutual exclusion suspends callbacks called when another activity is accessing the data._
+_The sequence of execution becomes entangled and almost impossible to analyze and document._
 
-The protection will use blocking mechanisms of a RTOS and could potentially induce deadlock, livelock or starvation problems.
+The protection of the data will use blocking mechanisms of a RTOS and could potentially induce deadlock, livelock or starvation problems.
 
 The programmer is responsible to avoid these tricky constellations.
 ====
@@ -82,7 +84,7 @@ Publish and subscribe frameworks with active processing nodes is another impleme
 A well-known example of this architecture is the robotic operating system https://www.ros.org/[ROS].
 ====
 
-In the resource-constrained embedded systems, the biggest concern has always been about the size and efficiency of such active object frameworks.
+In resource-constrained embedded systems, the biggest concern has always been about the size and efficiency of such active object frameworks.
 Modern kernels provide message-passing mechanisms.
 Often, you do not need to add a lot of functionalities.
 Therefore, the only doubt is how efficient these solutions perform.
@@ -190,7 +192,8 @@ state = switch (state) {
 ----
 
 The implementation is straight forward mapping of a finite state machine description to the code solution.
-If the size of the finite state machine is high, you should extract the second switch into a local method.
+If the size of the finite state machine is high, you should extract the second level of switches into local methods.
+Each method describes all transitions going out of a specific state.
 
 [CAUTION]
 ====
@@ -200,7 +203,9 @@ https://en.wikipedia.org/wiki/UML_state_machine[Hierarchical statecharts] as des
 An example of such a library for the Java stack is link:../../../docs/fsm[net.tangly:fsm].
 The link:../../../docs/fsm/userguidefsm/[user manual] provides examples of hierarchical finite state machine declarations.
 footnote:[The C++ library {ref-boost} provides two implementations of hierarchical finite state machines.
-You can use eiter the _Meta State Machine MSM_ or the _boost Statechart_ library.].
+You can use eiter the _Meta State Machine boost.MSM or https://boost-ext.github.io/sml/[Boost.SML] library.].
+footnote:[ROS-2 has state machines libraries e.g., http://smacc.ninja/statechart-vs-msm/[SMAC], https://github.com/robosoft-ai/SMACC2[SMACC2] or
+https://github.com/uleroboticsgroup/yasmin[YASMIN].]
 If you are using this notation, avoid parallel states.
 Parallel states require multithreaded nodes and the semantic is not well-defined.
 ====

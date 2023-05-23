@@ -11,7 +11,6 @@ tags: ["agile", "git",  "organization"]
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :ref-forgejo: https://forgejo.org/[Forgejo]
-:ref-arc42: https://arc42.org/[arc42]
 :ref-plantuml: https://plantuml.com/[PlantUML]
 :ref-c4: https://c4model.com/[C4 Model]
 :ref-adr: https://adr.github.io/[Architecture Design Records ADR]

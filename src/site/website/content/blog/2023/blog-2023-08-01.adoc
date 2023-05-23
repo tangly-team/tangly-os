@@ -27,7 +27,7 @@ _You shall maximize the work not done_.
 . Agile delivery teams decide on the empirical performance metrics they will use.
 They shall self-monitor to learn.
 . Collaboration is an essential change in your mindset.
-. Independent reviews of agile delivery should focus on the behaviours and practices and not just the processes and documentation.
+. Independent reviews of agile delivery should focus on the behaviors and practices and not just the processes and documentation.
 
 Agile governance is about defining the fastest route that brings the most value.
 By focusing on the things that matter, we apply an agile focus on governance and how to manage programme and project risks effectively.

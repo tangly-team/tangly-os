@@ -1,0 +1,85 @@
+---
+title: "C4 with PlantUML"
+linkTitle: ""
+date: 2023-11-15
+tags: ["agile", "architecture", "series-students"]
+---
+
+== C4 with PlantUML
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2023-11-02-head.png[width=420,height=360,role=left]
+
+=== Include C4 Templates in plantUML
+
+=== System Context Diagram
+
+A System Context diagram is a good starting point for diagramming and documenting a software system, allowing you to step back and see the big picture.
+Draw a diagram showing your system as a box in the centre, surrounded by its users and the other systems that it interacts with.
+
+Detail isn't important here as this is your zoomed out view showing a big picture of the system landscape.
+The focus should be on people (actors, roles, personas, etc) and software systems rather than technologies, protocols and other low-level details.
+
+=== Container Diagram
+
+Once you understand how your system fits in to the overall IT environment, a really useful next step is to zoom-in to the system boundary with a Container diagram.
+A "container" is something like a server-side web application, single-page application, desktop application, mobile app, database schema, file system, etc.
+Essentially, a container is a separately runnable/deployable unit (e.g. a separate process space) that executes code or stores data.
+
+The Container diagram shows the high-level shape of the software architecture and how responsibilities are distributed across it.
+It also shows the major technology choices and how the containers communicate with one another.
+It's a simple, high-level technology focussed diagram that is useful for software developers and support/operations staff alike.
+
+=== Component Diagram
+
+Next you can zoom in and decompose each container further to identify the major structural building blocks and their interactions.
+
+The Component diagram shows how a container is made up of a number of "components", what each of those components are, their responsibilities and the technology/implementation details.
+
+=== Code
+
+Finally, you can zoom in to each component to show how it is implemented as code; using UML class diagrams, entity relationship diagrams or similar.
+
+This is an optional level of detail and is often available on-demand from tooling such as IDEs.
+Ideally this diagram would be automatically generated using tooling (e.g. an IDE or UML modelling tool), and you should consider showing only those attributes and methods that allow you to tell the story that you want to tell.
+This level of detail is not recommended for anything but the most important or complex components.
+
+=== Additional Diagrams
+
+==== System Landscape diagram
+
+The C4 model provides a static view of a single software system but, in the real-world, software systems never live in isolation.
+For this reason, and particularly if you are responsible for a collection/portfolio of software systems, it's often useful to understand how all of these software systems fit together within a given enterprise, organisation, department, etc.
+Essentially this is a map of the software systems within the chosen scope, with a C4 drill-down for each software system of interest.
+
+From a practical perspective, a system landscape diagram is really just a system context diagram without a specific focus on a particular software system.
+
+==== Dynamic Diagram
+
+A dynamic diagram can be useful when you want to show how elements in the static model collaborate at runtime to implement a user story, use case, feature, etc.
+This dynamic diagram is based upon a UML communication diagram (previously known as a "UML collaboration diagram").
+It is similar to a UML sequence diagram although it allows a free-form arrangement of diagram elements with numbered interactions to indicate ordering.
+
+==== Deployment Diagram
+
+A deployment diagram allows you to illustrate how instances of software systems and/or containers in the static model are deployed on to the infrastructure within a given deployment environment (e.g. production, staging, development, etc).
+It's based upon a UML deployment diagram.
+
+A deployment node represents where an instance of a software system/container is running; perhaps physical infrastructure (e.g. a physical server or device), virtualised infrastructure (e.g. IaaS, PaaS, a virtual machine), containerised infrastructure (e.g. a Docker container), an execution environment (e.g. a database server, Java EE web/application server, Microsoft IIS), etc.
+Deployment nodes can be nested.
+
+You may also want to include infrastructure nodes such as DNS services, load balancers, firewalls, etc.
+
+Feel free to use icons provided by Amazon Web Services, Azure, etc to complement your deployment diagrams ... just make sure any icons you use are included in your diagram key/legend.
+
+[bibliography]
+=== Links
+
+- [[[agile-visual-tools, 1]]] link:../../2023/agile-visual-tools/[Agile Visual Tools].
+Marcel Baumann. 2023.
+- [[[creating-technical-website-with-hugo-asciidoc,2]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and Asciidoc].
+Marcel Baumann. 2020.
+- [[[plantuml-c4,3]]] https://github.com/plantuml-stdlib/C4-PlantUML[PlantUML stdlib C4]

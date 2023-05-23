@@ -2,7 +2,7 @@
 title: "Modern Embedded Systems"
 linkTitle: "Modern Embedded"
 date: 2025-04-01
-tags: ["c++", "architecture"]
+tags: ["c++", "architecture", "embedded"]
 ---
 
 == Modern Embedded Systems
@@ -26,7 +26,8 @@ An RTOS will often be used when there are more interrupt sources, more functions
 
 The key advantages of a realtime operating system are:
 
-- Asynchronous Message-Based System
+- Asynchronous message-based System.
+_Actor pattern is implemented with this mechanism_.
 - Preemptive multitasking design paradigm
 - Pre-tested and pre-integrated communications stacks and drivers
 - Application portability
@@ -77,7 +78,8 @@ A context switch time of 84 CPU cycles was obtained under the following test con
 
 === Why C++?
 
-With the continued improvements in the language, most C++ features cite:[tour-of-cpp,effective-modern-cpp,cpp-core-guidelines,beautiful-cpp] have no impact on code size or on speed.
+With the continued improvements in the language, most C++ features have no impact on code size or on speed
+cite:[tour-of-cpp, effective-modern-cpp,cpp-core-guidelines, beautiful-cpp].
 Others have a small impact that is generally worth paying for.
 To use C++ effectively in embedded systems, you need to be aware of what is going on at the machine code level, just as in C.
 Armed with that knowledge, the embedded systems programmer can produce code that is smaller, faster and safer than is possible without C++.

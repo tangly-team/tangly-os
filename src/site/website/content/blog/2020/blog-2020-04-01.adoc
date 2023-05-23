@@ -102,13 +102,14 @@ You still document all major https://en.wikipedia.org/wiki/Architectural_decisio
 If you are developing in Java, you should use the current features of the programming language.
 For example, with Java 14, you have access to:
 
-* Try with resources and _closeable_ resources,
-* Immutable collections,
-* Streams, optionals, filters, and collectors,
-* Predicates and functions to define lambda expressions,
-* Records and immutability for objects,
-* Pattern matching syntactic sugar as for _instanceof_ operator,
-* Switch expressions and not only switch statements,
+* Try with resources and _closeable_ resources.
+This construct is an implementation of automatic resource management.
+* Immutable collections.
+* Streams, optionals, filters, and collectors.
+* Predicates and functions to define lambda expressions.
+* Records and immutability for objects.
+* Pattern matching syntactic sugar as for _instanceof_ operator.
+* Switch expressions and not only switch statements.
 * Text blocks to write legible multi-line text expression.
 
 ==== Aggressive Refactoring

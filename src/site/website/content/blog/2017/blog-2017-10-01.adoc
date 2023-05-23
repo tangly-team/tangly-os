@@ -32,7 +32,7 @@ We shall
 This product defines success and builds trust.
 Use this MVP as anchor during contract negotiation.
 * Prioritize _Money, Time, and Scope_.
-The most important item - and it can only be one - is the basis for the agile contract,
+The most important item - and it can only be one - is the basis for the agile contract.
 * Service is the essence of software application development.
 So your agile contract shall be a _service contract_.
 Select a rolling contract approach to deeply involve both sides.
@@ -149,7 +149,7 @@ You need to have a _do not ask, do not tell_ type policy because basically you a
 === Conclusion
 
 The most successful projects I worked for had selected the money dimension seen as investment budgets.
-Goals correction was communicated early and the contract amended accordingly.
+Goal correction was communicated early and the contract amended accordingly.
 We avoided complicated and expensive change request processes.
 
 The build products were very successful.

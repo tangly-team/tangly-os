@@ -1,0 +1,92 @@
+---
+title: "C++ Pointers"
+linkTitle: "C++ Pointers"
+date: 2025-10-01
+tags: ["c++"]
+---
+
+== C++ Pointers
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:ref-ros: https://www.ros.org/[Robot Operating System _ROS_]
+
+image::2025-11-01-head.png[width=420,height=360,role=left]
+
+=== Pointers to Objects and Functions
+
+[source,c++]
+----
+class Alarm {
+public:
+    static Alarm of();
+    static Alarm ofUp();
+    static Alarm_ofDown();
+private:
+    bool active();
+    bool active_up();
+    bool active_down();
+    bool (*Alarm::check)();
+    int limit;
+}
+----
+
+[source,c++]
+----
+
+----
+
+default::
+delete::
+
+=== Pointers to Object Methods
+
+=== Class Contract
+
+[source,c++]
+----
+class Alarm {
+public:
+    Alarm();
+    Alarm(const Alarm& alarm);
+    Alarm(Alarm&& rvalue);
+    Alarm& operator=(const Alarm& alarm);
+    Alarm operator=(Alarm&& rvalue);
+    ~Alarm();
+}
+----
+
+If no user-defined copy assignment operators are provided for a class type footnote:[A class type is a class, a record, or an enum.], the compiler will always declare one as an inline public member of the class.
+
+Constructor::
+Default constructor:::
+is a constructor without parameters.
+All properties are initialized with default values.
+Constructor with one parameter::
+can be used as an implicit or explicit type conversation method.
+Use to the keyword _explicit_ to disable implicit conversations generated through the compiler.
+Regular constructor:::
+Is a constructor with two or more parameters.
+Copy Constructor::
+Move Constructor::
+Copy Operator::
+Move Operator::
+Destructor::
+
+[CAUTION]
+====
+_auto_ptr_ is obsolete because it does not implement correctly the above contract.
+If you use _auto_ptr_ with standard library functions, you get either compilation errors or undefined behavior during runtime.
+====
+
+[TIP]
+====
+Use _explicit_ keyword for constructors with one parameter to avoid implicit type conversions.
+====
+
+=== Standard Library Support
+
+=== References
+
+bibliography:[]

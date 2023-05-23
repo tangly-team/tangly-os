@@ -1,0 +1,107 @@
+---
+title: "Nice Statechart Diagrams"
+linkTitle: "Nice Statecharts "
+date: 2024-03-21
+tags: ["architecture", "students-java"]
+---
+
+== Generate Nice Looking Statechart Diagrams
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:ref-plantuml: https://plantuml.com/[plantUML]
+:ref-mermaid: https://mermaid.js.org/[mermaid]
+:ref-graphviz: https://graphviz.org/[Graphviz]
+:ref-state-machine-cat: https://github.com/sverweij/state-machine-cat[state machine cat]
+
+image::2024-03-02-head.gif[width=420,height=360,role=left]
+
+What are statecharts, also called hierarchical state machines?
+
+Put simply, a statechart is a beefed-up state machine.
+The syntax is formally defined in the {ref-uml} standard.
+
+The beefing up solves a lot of the problems that state machines have, especially state explosion that happens as state machines grow.
+One of the goals of this site is to help explain what statecharts are and how they are useful.
+
+Statecharts offer a surprising array of benefits
+
+- It is easier to understand a statechart than many other forms of code.
+- The behaviour is decoupled from the component in question.
+This makes it easier to make changes to the behaviour.
+It also makes it easier to reason about the code.
+And the behaviour can be tested independently of the component.
+- The process of building a statechart causes all the states to be explored.
+Studies have shown that statechart based code has lower bug counts than traditional code.
+- Statecharts lend themselves to dealing with exceptional situations that might otherwise be overlooked.
+As complexity grows, statecharts scale well.
+- A statechart is a great communicator: Non-developers can understand the statecharts, while QA can use a statecharts as an exploratory tool.
+
+It is worth noting that you’re already coding state machines, except that they are hidden in the code.
+
+=== Why Finite State Machines?
+
+Network Protocols
+
+Actor Model
+
+=== Why model with Finite State Machines?
+
+Actor model asynchronous communication
+
+Do not use orthogonal states.
+Orthogonal states have an implicit parallelism.
+The actor model encourages that each actor is a single threaded entity.
+An actor behavior shall be described with a flat or hierarchical state machine.
+The state machine shall not use orthogonal states.
+All other constructs such as composite states, entry and exit actions, shallow and deep history, initial and end states can be used.
+
+If your transition guards are using timeout beware you need a global time reference with the expected resolution.
+
+We prefer to handle timing constraints as external events sent to the finite state machine instances.
+The source of timeout events is also the time keeper of the system.
+
+=== How to Document Finite State Machines?
+
+- {ref-plantuml}
+- {ref-mermaid}
+- {ref-graphviz}
+- {ref-state-machine-cat}
+- {ref-asciidoc} Tables
+
+=== Diagram Generators
+
+Code-first approach is realized with the tangly open source FSM library.
+The code description of a finite state machine is the source of the diagrams.
+
+The generator logic is simple.
+
+. Generate the diagram preamble.
+. Traverse recursively the hierarchical states.
+.. Generate the state preamble.
+.. Generate the optional shallow or deep history configuration.
+.. Generate the optional default state configuration.
+.. Generate entry and exit actions.
+.. Generate the optional final state configuration.
+.. Generate the state postamble.
+. Generate all transitions
+.. Generate the source state name, the target state name, the event, optional guard, and action.
+. Generate the diagram postamble.
+
+The link:../../../docs/fsm[OS FSM] defines generators for the above target languages.
+
+=== History
+
+UML Statecharts SCXML
+
+[bibliography]
+=== Links
+
+- [[[fsm, 1]]] link:../../../https://blog.tangly.net/docs/fsm/[Hierarchical Finite State Machine]
+- [[[uml-fsm, 2]]] https://en.wikipedia.org/wiki/UML_state_machine[UML State Machine]
+- [[[scxml,3]]] https://www.w3.org/TR/scxml/[SCXML]
+
+=== References
+
+bibliography:[]

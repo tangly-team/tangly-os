@@ -75,33 +75,41 @@ footnote:[I chose Amazon because I bought all my ebooks there.
 I do not own anymore paper editions.
 You could decide to use another universal bookstore if you prefer.].
 
+We provide a bibtex file with all the books we bought and referenced in our articles.
+Feel free to use it.
+It is released as all our articles under https://creativecommons.org/licenses/by/4.0/[creative commons attribution 4.0 international] _CC BY 4.0_
+footnote:[The license is displayed in the footer of {ref-uri-blog}.].
+
 === Statistics
 
 I welcome data helping me to better understand the structure of my technical website.
 
 I find it interesting to know:
 
+- Year of publication
 - How many articles did I write in a specific year?
+- How manu times is an article referenced in other blogs?
+Average number of references to a blog are published in a specific year?
 - How many article references are defined in an article?
-- How many times is an article referenced from other blogs?
+Average number of articles references are published per blog in a specific year?
 - How many book references are defined in an article?
-- How many books are referenced in an article or other a specific year?
+Average number of book references are published per blog in a specific year?
 
-[cols="1,1,1,1,1,1,1,1,1,1",options="header"]
+[cols="1,>1,>1,>1,>1,>1,>1,>1",options="header"]
 |===
-^|Year ^|Published Blogs ^|Blog References ^|Average ^|Referenced Blogs ^|Average ^|Book References ^|Average ^|Referenced Books ^| Average
+^|Year ^|Published Blogs ^|Blog References ^|Average ^|Referenced Blogs ^|Average ^|Book References ^|Average
 
-| 2016   >|  13 | | | | | | | |
-| 2017   >|  15 | | | | | | | |
-| 2018   >|  20 | | | | | | | |
-| 2019   >|  13 | | | | | | | |
-| 2020   >|  14 | | | | | | | |
-| 2021   >|  32 | | | | | | | |
-| 2022   >|  25 | | | | | | | |
-| 2023   >|  18 | | | | | | | |
-| 2024   >|  12 | | | | | | | |
-| 2025   >|  12 | | | | | | | |
-|*Total* >| 174 | | | | | | | |
+| 2016   >|  13 | | | | | |
+| 2017   >|  15 | | | | | |
+| 2018   >|  20 | | | | | |
+| 2019   >|  13 | | | | | |
+| 2020   >|  14 | | | | | |
+| 2021   >|  32 | | | | | |
+| 2022   >|  25 | | | | | |
+| 2023   >|  18 | | | | | |
+| 2024   >|  15 | | | | | |
+| 2025   >|  13 | | | | | |
+|*Total* >| 176 | | | | | |
 |===
 
 [bibliography]

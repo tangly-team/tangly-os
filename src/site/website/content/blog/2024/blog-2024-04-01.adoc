@@ -15,16 +15,20 @@ image::2024-04-01-head.png[width=420,height=360,role=left]
 
 cite:[modern-software-engineering,effective-java-3rd]
 
+=== Concurrent Stream Processing
+
+=== Concurrent Data Flow Processing
+
 [bibliography]
 === Links
 
-- [[[modern-java-algebric-data-types, 1]]] link:../../2024/data-classes-sealed-types-and-pattern-matching]
+- [[[modern-java-algebric-data-types, 1]]] link:../../2024/data-classes-sealed-types-and-pattern-matching[Data Classes, Sealed Types and Pattern Matching]
 Marcel Baumann. 2024
-- [[[modern-java-advanced-streams, 2]]] link:../../2024/advanced-streams]
+- [[[modern-java-advanced-streams, 2]]] link:../../2024/advanced-streams[Advanced Streams]
 Marcel Baumann. 2024
-- [[[modern-java-modules, 3]]] link:../../2024/java-modules]
+- [[[modern-java-modules, 3]]] link:../../2024/java-modules[Java Modules]
 Marcel Baumann. 2024
-- [[[modern-java-structured-concurency, 4]]] link:../../2024/structured-concurrency]
+- [[[modern-java-structured-concurency, 4]]] link:../../2024/structured-concurrency[Structured Concurrency]
 Marcel Baumann. 2024
 
 === References

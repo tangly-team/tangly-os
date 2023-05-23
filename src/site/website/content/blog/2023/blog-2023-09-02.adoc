@@ -16,12 +16,22 @@ image::2023-09-02-head.jpg[width=420,height=360,role=left]
 Java 21 LTS was released on time to the public.
 The release is available for download since 21^st^ September 2023.
 
+Pattern matching is maturing nicely.
+The hope is that more solutions will more advanced data stream manipulation and functional programming algorithms.
+Complex inheritance structure are no more considered as good practices in regular application.
+The pattern matching extensions nicely provide idioms to solve similar design problems.
+
+The support for virtual threads is reaching full integration in the official Java distribution.
+Extensions such as scoped values are available as preview feature.
+The tail-call optimization for recursive calls is sadly still missing.
+
 === Amber Project
 
 The https://openjdk.org/projects/amber/[amber] initiative is completing the changes with pattern matching.
 
 - https://openjdk.org/jeps/440[Record Patterns]
-- https://openjdk.org/jeps/441[Patten Matching for Switch]
+- https://openjdk.org/jeps/441[Patten Matching for switch]
+- https://openjdk.org/jeps/443[Unnamed Patterns and Variables (Preview)]
 
 The syntactic improvements initiated by Amber and core group are;
 
@@ -37,17 +47,30 @@ The https://openjdk.org/projects/loom/[loom] initiative is completing the major 
 === Panama Project
 
 The panama initiative is iterating through their interfaces.
+They synchronize as much as possible their interfaces with the Valhalla and Lilliput activities.
 
 - https://openjdk.org/jeps/448[Vector API] _Sixth Incubator_
 - https://openjdk.org/jeps/442[Foreign Function & Memory API] _Third Preview_
 
 === Valhalla Project
 
-As usual the https://openjdk.org/projects/valhalla/[Valhalla] initiative did not release any improvements in the current release.
+As usual, the https://openjdk.org/projects/valhalla/[Valhalla] initiative did not release any improvements in the current release.
 
-==== Lilliput and Leyden Projects
+=== Lilliput and Leyden Projects
 
 The https://openjdk.org/projects/lilliput/[lilliput] initiative aims to reduce memory usage.
+
+=== Miscellaneous Improvements
+
+Obsolete features are removed:
+
+- https://openjdk.org/jeps/449[Deprecate the Windows 32-bit x86 Port for Removal]
+
+Extensions to existing features:
+
+- https://openjdk.org/jeps/404[Generational Shenandoah (Experimental)]
+- https://openjdk.org/jeps/439[Generational ZGC]
+- https://openjdk.org/jeps/445[Unnamed Classes and Instance Main Methods (Preview)]
 
 [bibliography]
 === Links

@@ -2,7 +2,7 @@
 title: "Modern Embedded Software Development and Architecture"
 linkTitle: "Embedded Development"
 date: 2025-07-01
-tags: ["organization"]
+tags: ["organization", "embedded"]
 ---
 
 == Modern Embedded Software Development and Architecture
@@ -10,10 +10,11 @@ tags: ["organization"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
+:ref-doxygen: https://www.doxygen.nl/[Doxygen]
 
 image::2025-07-01-head.jpg[width=420,height=360,role=left]
 
-Modern embedded systems have a multicore processor with a 64-bits architecture, huge RAM, and flash resources.
+Modern embedded systems have a multicore processor with a 64-bit architecture, huge RAM, and flash resources.
 The cost of a simple core is in the area of one Euro.
 
 The complexity of embedded applications is increasing.
@@ -38,7 +39,8 @@ Modern embedded software development has multiple dimensions you should consider
 
 Embedded Concepts::
 Modern embedded solutions should be message-based communication actors.
-Do not use blocking synchronization primitives to implement multithreaded applications if you want to avoid potential deadlock, livelock and starvation problems. +
+Do not use blocking synchronization primitives to implement multithreaded applications if you want to avoid potential deadlock, livelock and starvation problems.+
++
 I strongly recommend using a realtime operating system and C++ as your programming language.
 - Asynchronous distributed systems <<asynchronous-distributed-systems>>
 - Modern embedded system <<modern-embedded-systems>>
@@ -65,6 +67,31 @@ footnote:[Big development initiatives are seldom in the embedded world.
 Few companies have development groups of thirty or more people working on one product.].
 - Scrum <<agile-architecture-within-scrum>>, <<how-to-detect-fake-scrum>>
 - LeSS <<less-lessons-learnt>>
+
+=== Lessons Learnt
+
+You were just promoted to senior designer of a team.
+Which principles should you advocate for?
+
+A powerful recipe to design evolvable digital products is:
+
+How should you design your application?
+
+- Modern C++ is the preferred programming language.
+The source code is object-oriented.
+- A realtime operating system _RTOS_ provides scheduling and concurrent processing.
+- The communication uses asynchronous message passing.
+Messages are immutable value objects.
+- Thread logic is realized as a finite state machine.
+
+How should you document your selected architecture?
+
+- Follow the recommendations of {ref-arc42} approach for document structure and content.
+- Graphical modelization is done with {ref-c4} and {ref-uml}.
+- Documents will be written in {ref-asciidoc}.
+Documentation language is English.
+Documentation is published as a static website.
+- API will be documented with {ref-doxygen}.
 
 [bibliography]
 === Links

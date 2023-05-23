@@ -2,7 +2,7 @@
 title: "Logging"
 linkTitle: "Logging"
 date: 2025-03-01
-tags: ["java", "c++", "architecture"]
+tags: ["java", "c++", "architecture", "embedded"]
 ---
 
 == Logging Concepts

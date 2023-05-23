@@ -17,13 +17,14 @@ Now that you have gone through the long and tedious process of hiring a talented
 
 There is no doubt that hiring good people is challenging and competitive, but it is a mistake to think that the challenge ends when you hire a new collaborator.
 
-Onboarding software developers is just as important for getting the most out of the hiring process, and too many companies neglect it to their own detriment.
+Onboarding software developers is just as important for getting the most out of the hiring process.
 
-=== Why onboarding matters
+Too many companies neglect it to their own detriment.
+
+=== Why onboarding matters?
 
 Onboarding, the process of bringing new employees to a point where they are fully integrated into the company and working at full capacity is a _make it or break it_ process for companies wanting to compete in the tech world.
-Whether you are a startup with only a few employees, or an established company with hundreds of employees, the onboarding process is the first opportunity you have to set up new employees for long
-term success.
+Whether you are a startup with only a few employees, or an established company with hundreds of employees, the onboarding process is the first opportunity you have to set up new employees for long term success.
 
 It can cost employers anywhere from 30-50% of an employee’s salary to replace a developer that leaves, so when an organization loses employees to a bad onboarding process, the company feels it.
 And if there is an insufficient onboarding process, new hires will leave.

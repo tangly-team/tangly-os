@@ -34,6 +34,11 @@ function copy_domain_module() {
   cp -R $prjDir/net.tangly.erp.$1/build/docs/javadoc/* $siteDir/static/docs/domains/$1/api-$1
 }
 
+# clean-up the directories before copying new data
+rm -rf siteDir/static/*
+rm -rf siteDir/content/*
+rm -rf siteDir/public/*
+
 # copy whole website to static site structure and tailoring of docsy template
 cp -R $websiteDir/assets $siteDir/
 cp -R $websiteDir/content $siteDir/
@@ -65,6 +70,7 @@ copy_domain_module ledger
 copy_domain_module products
 copy_domain_module shared
 copy_domain_module ui
+cp -R $prjDir/net.tangly.erp/src/site/ $siteDir/content/docs/domains/_design
 
 cd $siteDir
 rm -v **/.DS_Store

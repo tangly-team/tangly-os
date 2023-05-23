@@ -19,8 +19,8 @@ Destructuring List Comprehension Pipeline Macros :pre and :post % is the output 
 [bibliography]
 === Links
 
-- [[[clojure-1, 1]]]  link:../../2023/2023/teaching-clojure-i/[Teaching Clojure I].
+- [[[clojure-1, 1]]]  link:../../2023/teaching-clojure-i/[Teaching Clojure I].
 Marcel Baumann. 2023.
-- [[[clojure-2, 2]]]  link:../../2023/2023/teaching-clojure-ii/[Teaching Clojure II].
+- [[[clojure-2, 2]]]  link:../../2023/teaching-clojure-ii/[Teaching Clojure II].
 Marcel Baumann. 2023.
 
