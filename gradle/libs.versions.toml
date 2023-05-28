@@ -7,8 +7,8 @@ jolt-version = '0.1.1'
 junit-version = '5.9.3'
 log4j2-version = '2.20.0'
 openapi-version = "5.5.0-1"
-microstream-version = '08.00.00-MS-GA'
-mustang-version = '2.7.0'
+microstream-version = '08.01.00-MS-GA'
+mustang-version = '2.7.1'
 vaadin-version = '24.0.5'
 
 [plugins]
@@ -43,14 +43,14 @@ asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.3.7"
 
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
 eo-yaml = "com.amihaiemil.web:eo-yaml:5.2.1"
-flyway = "org.flywaydb:flyway-core:9.18.0"
+flyway = "org.flywaydb:flyway-core:9.19.1"
 hsqldb = "org.hsqldb:hsqldb:2.7.1"
 iban4j = "org.iban4j:iban4j:3.2.5-RELEASE"
 
 ical4j-core = "org.mnode.ical4j:ical4j:3.2.1"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.7"
 
-google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.12"
+google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.13"
 
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson-version" }
 jackson-parameters = { module = "com.fasterxml.jackson.module:jackson-module-parameter-names", version.ref = "jackson-version" }
@@ -79,8 +79,7 @@ jsoup = "org.jsoup:jsoup:1.16.1"
 junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-version" }
 junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-version" }
 
-lanterna = "com.googlecode.lanterna:lanterna:3.1.1"
-lombok = "org.projectlombok:lombok:1.18.26"
+lombok = "org.projectlombok:lombok:1.18.28"
 mustang-core = { module = "org.mustangproject:library", version.ref = "mustang-version" }
 mustang-validator = { module = "org.mustangproject:validator", version.ref = "mustang-version" }
 
@@ -105,7 +104,7 @@ vaadin-tooltip = "com.vaadin.componentfactory:tooltip:1.3.7"
 vaadin-pdfviewer = "org.vaadin.addons.componentfactory:vcf-pdf-viewer:2.7.2"
 
 vaadin-embedded-jetty = "com.github.mvysny.vaadin-boot:vaadin-boot:11.3"
-vaadin-socharts = "com.storedobject.chart:so-charts:3.2.1"
+vaadin-socharts = "com.storedobject.chart:so-charts:3.2.2"
 vaadin-signature = "de.f0rce.signaturepad:signature-widget:2.0.1"
 vaadin-test = "com.github.mvysny.kaributesting:karibu-testing-v23:2.0.2"
 
