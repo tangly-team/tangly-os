@@ -1,0 +1,43 @@
+title: "Domain-Driven Design with Microcontrollers Applications" linkTitle: "DDD with Microcontrollers" date: 2025-05-02 tags: ["C++", "architecture", "embedded"]
+---
+
+== Domain-Driven Design with Embedded Microcontroller Applications
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2025-05-02-head.png[width=420,height=360,role=left]
+
+=== Bounded Domains in C++
+
+=== Bounded Domain API
+
+=== Entities and Identity
+
+=== Factory and Repository
+
+=== Value Objects
+
+=== Good Practices
+
+[bibliography]
+=== Links
+
+- [[[meaningful-identifiers, 1]]] link:../../2021/meaningful-identifiers/[Meaningful Identifiers].
+Marcel Baumann. 2021.
+- [[[entities-identifiers, 2]]] link:../../2020/entities-identifiers-external-identifiers-and-names/[Entities, Identifiers, External Identifiers].
+Marcel Baumann. 2020.
+- [[[value-objects, 3]]] link:../../2021/value-objects-as-embedded-entities/[Value Objects as Embedded Entities].
+Marcel Baumann. 2021.
+- [[[software-structure-with-ddd, 4]]] link:../../2022/software-structure-with-ddd/[Software Structure with DDD].
+Marcel Baumann. 2022.
+- [[[agile-architecture-principles, 5]]] link:../../2019/agile-architecture-principles/[Agile Architecture Principles].
+Marcel Baumann. 2019.
+- [[[ddd-ros2, 6]]] link:../../2024/domain-driven-design-with-ros-2/[Domain-Driven Design with ROS-2].
+Marcel Baumann. 2024
+
+=== References
+
+bibliography::[]
+

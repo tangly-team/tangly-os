@@ -10,6 +10,7 @@ tags: ["architecture", "domain-driven-design", "c++", "embedded"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
+:ref-fsm: https://en.wikipedia.org/wiki/Finite-state_machine[Finite State Machine]
 :ref-cohesion: https://en.wikipedia.org/wiki/Cohesion_(computer_science)[Cohesion]
 :ref-coupling: https://en.wikipedia.org/wiki/Coupling_(computer_programming)[Coupling]
 :ref-kiss: https://en.wikipedia.org/wiki/KISS_principle[KISS principle]
@@ -35,17 +36,20 @@ What are good bounded domains in an embedded industrial application?
 
 DDD is about designing software based on models of the underlying domain
 cite:[domain-driven-design,implementing-domain-driven-design,domain-driven-design-distilled].
-A model acts as a UbiquitousLanguage to help communication between software developers and domain experts.
+A model acts as a ubiquitous language to help communication between software developers and domain experts.
 It also acts as the conceptual foundation for the design of the software itself.
 
 Each physical component should probably be a bounded domain.
-Examples are battery packs, drives, sensor packages, tractor.
-Such as a component has often a set of sensors and actuators.
+Examples are battery packs, drives, sensor packages, tractors.
+
+Such a component often has a set of sensors and actuators.
 Additional logic is defined to transform the raw signals in a representative view of the abstraction.
 This logic can be implemented in software or hardware.
 
 Hardware components shall be realized as active objects to react to the parallelism of the hardware sensors and actuators.
-Often hardware components trigger interrupts and the associated interrupt routine should be seen as a simplified active object.
+Often hardware components trigger interrupts and the associated interrupt routine should be seen as a simplified active object
+footnote:[If no interrupt is provided, you have to declare a timer interrupt routine and poll the registers of the sensor.
+The drawback is you have to find the adequate timings for the characteristics of the sensor and the requirements of your application.].
 
 A similar approach can be used for hardware connected through a network such as
 https://en.wikipedia.org/wiki/Ethernet[Ethernet] or https://en.wikipedia.org/wiki/CANopen[CANopen].
@@ -238,7 +242,7 @@ Messages are part of the bounded domain interface declaration.
 ====
 Ideally, the interface of a bounded domain is fully described through the messages it will process.
 
-Finite state machines can be provided to describe the behavior of a domain when processing a specific message.
+{ref-fsm} can be provided to describe the behavior of a domain when processing a specific message.
 ====
 
 A bounded domain should be packaged as a C++ module and declared in a specific namespace.
@@ -258,7 +262,7 @@ This stage is also used to handle back pressure by removing excess data.
 .. Store the sensor data or send an application-specific message based on the values
 . Shutdown the sensor pipeline
 
-Ideally the whole sensor pipeline is hosted inside one domain model.
+Ideally, the whole sensor pipeline is hosted inside one domain model.
 The sent message should always contain the actual value.
 Avoid sending only the change from the previous value.
 You can naturally send the actual value and the change in the same message.
@@ -291,7 +295,7 @@ The approach works as long as the periodicity of the PLC algorithm calls is fast
 During the cyclic execution of the PLC algorithm, it must be guaranteed that no input values are changed during a specific cycle.
 ====
 
-=== Functions
+=== Cross-Cutting Concerns
 
 ==== Configuration
 
@@ -382,7 +386,7 @@ The same approaches can be used to visualize the state of the jobs planned or un
 
 ==== Logging
 
-Logging approaches are discussed in a seperate article <<logging>>.
+Logging approaches are discussed in a separate article <<logging>>.
 
 === Lessons Learnt
 
@@ -390,6 +394,7 @@ The {ref-kiss} is essential to construct a maintainable and stable solution.
 
 Embedded applications should always be implemented with the active object pattern.
 Communication should always be message-based.
+Avoid using synchronization primitives such as mutex, semaphores, or monitors.
 
 [bibliography]
 === Links
@@ -398,6 +403,8 @@ Communication should always be message-based.
 Marcel Baumann. 2022.
 - [[[logging, 2]]] link:../../2025/logging/[Logging].
 Marcel Baumann. 2025.
+- [[[technical-debt, 3]]] link:../../2022/technical-debt/[Technical Debt].
+Marcel Baumann. 2022.
 
 === References
 

@@ -2,7 +2,7 @@
 title: "Domain-Driven Design with ROS-2"
 linkTitle: "DDD with ROS-2"
 date: 2024-08-02
-tags: ["C++", "architecture"]
+tags: ["C++", "architecture", "embedded"]
 ---
 
 == Domain-Driven Design with ROS-2
@@ -10,8 +10,9 @@ tags: ["C++", "architecture"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-:ref-doxygen: https://www.doxygen.nl/[Doxygen]
+:ref-fsm: https://en.wikipedia.org/wiki/Finite-state_machine[Finite State Machine]
 :ref-pubsub: https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern[Publish and Subscribe Pattern]
+:ref-seperation-of-concerns: https://en.wikipedia.org/wiki/Separation_of_concerns[Seperation of Concerns]
 :ref-ros: https://www.ros.org/[Robot Operation System]
 
 image::2024-08-02-head.png[width=420,height=360,role=left]
@@ -21,7 +22,7 @@ At its core, {ref-ros} provides a message-passing system, often called _middlewa
 Communication is one of the first needs to arise when implementing a new robot application, or really any software system that will interact with hardware.
 ROS’s built-in and well-tested messaging system saves you time by managing the details of communication between distributed nodes via an anonymous {ref-pubsub}.
 
-This approach encourages good practices in your software development, including fault isolation, separation of concerns, and clear interfaces.
+This approach encourages good practices in your software development, including fault isolation, {ref-seperation-of-concerns}, and clear interfaces.
 Using ROS results in systems that are easier to maintain, contribute to, and reuse.
 
 The ROS ecosystem is a cornucopia of robot software.
@@ -34,7 +35,7 @@ Anyone with a good idea for a useful robot should be able to make that idea real
 How do you map your application design to the ROS-2 framework?
 
 The ROS community is focused on robotics and less on sound software engineering practices.
-We recommend using the de-facto standard for modern distributed software architectures.
+We recommend using the de-facto standard for modern distributed software architectures named _domain-driven design_.
 
 Domain-driven design heavily emphasizes object-oriented modeling and event-based communication cite:[domain-driven-design,implementing-domain-driven-design,domain-driven-design-distilled].
 
@@ -52,6 +53,16 @@ It is worth the effort to document in a language all engineers understand.].
 
 The UML class diagrams should only contain classes with names associated to the domain vocabulary.
 
+[TIP]
+====
+Ubiquitous language is the language used by the users and domain experts.
+The developers have to learn this language through interactions with the users.
+footnote:[{ref-arc42} documents the ubiquitous language term in chapter 13.].
+
+The UML diagrams reflect the language used in the source code.
+In other words, the truth always lays in the source code.
+====
+
 === Bounded Domain as ROS-2 package
 
 A package is an organizational unit for your ROS-2 code.
@@ -65,6 +76,19 @@ Any bounded domain is modeled as a logical UML package and as a ROS distribution
 Bounded domain examples are battery pack, tracker, sensor package, vehicle and user interface.
 If you decide to have a modular user interface, you could have additional domains such as engine user interface, or mission definition user interface.
 
+[TIP]
+====
+Bounded domains are the smallest unit to define a system behavior.
+
+Designers can define cross-cutting solutions to solve recurring problems.
+Examples are configuration, alarm handling, monitoring, observability, logging, or data persistence
+footnote:[{ref-arc42} defines explicit the crosscutting concepts as chapter 8 of their architecture documentation structure.].
+
+The implementation is always confined in domains.
+Pair working and code reviews can help to ensure similar concrete solutions are used in multiple domains
+footnote:[When the cross-cutting aspect is well understood, you could provide a reference implementation as a library.].
+====
+
 With packages, you can release your ROS 2 work and allow others to build and use it easily.
 
 [CAUTION]
@@ -73,7 +97,8 @@ Beware ROS architecture does not distinguish logical components from deployment 
 You should use a ROS package to simultaneously define a design abstraction and an operational deployment object
 footnote:[The UML component diagram and deployment diagram contain the same items with the same identifier.].
 
-Your UML component diagrams and deployment diagrams will almost contain the same elements.
+Your UML component diagrams and deployment diagrams will almost contain the same elements
+footnote:[{ref-arc42} documents the component diagrams of a system in chapter 5 and the deployment diagrams in chapter 7.].
 ====
 
 === Bounded Domain API
@@ -100,6 +125,11 @@ An example would the pattern for ISO 8601 date format.
 Additional documentation can provide semantic information.
 Examples of messages are always helpful to new developers.
 
+Some teams add a semantic meaning to topics.
+For example, they use a specific topic to publish recovery instructions for a set of components.
+The topic is specific to the recovery process and also defines the involved parties.
+Such conventions should be documented.
+
 Second, we have the *services* provided by the domain.
 Services are remote procedure calls and should be documented with the same conventions as a method.
 Each service is documented using {ref-doxygen}.
@@ -110,11 +140,17 @@ This aspect can either be documented or inferred with the ROS-2 tools.
 
 A component diagram is provided for each package.
 The diagram contains all topics and services the domain exposes.
+Additional class or sequence diagrams can be provided to explain specific aspects of the domain.
+We recommend documenting the state machine implemented in each node with statechart diagrams
+footnote:[{ref-plantuml} supports all these UML diagram types.
+Define the diagrams and add them to the {ref-arc42} documentation.
+Link them to the detailed API specification documented with {ref-doxygen}.].
 
-A system-wide component view is also provided.
+A system-wide component view is also provided
+footnote:[{ref-c4} provides the structure and guidance how to create such views.].
 
 Event based changes::
-DDD requires that relevant state changes are communicating to interesting parties as events cite:[domain-driven-design-distilled,reactive-messaging-patterns-with-actor-model].
+DDD requires that relevant state changes are communicated to interesting parties as events cite:[domain-driven-design-distilled,reactive-messaging-patterns-with-actor-model].
 You should never propagate system state changes through services.
 A domain cannot be aware of all parties interested in state changes.
 Node as Parallel Processing Unit::
@@ -136,8 +172,9 @@ Smaller robots and machines seldom have very complex domains and need no or mini
 Try to have a layer for the hardware access, a layer for the logical sensor or actuator abstraction, and a layer for the application logic.
 Domain Documentation::
 The domain is documented using UML as promoted in DDD.
-Finite state machines should be used to document complex nodes.
-Stateless nodes do not need such finite state machines.
+{ref-fsm} should be used to document complex nodes.
+Stateless nodes logically do not need such finite state machines.
+These nodes implement filtering or data processing algorithms.
 
 [TIP]
 ====
@@ -166,6 +203,11 @@ Topic names are the identity mechanism of all internal abstractions <<meaningful
 ====
 The architect shall define naming conventions reflecting the ubiquitous language.
 Do not use technical designations related to ROS-2 internals.
+
+The architecture of the application is implemented in the source code.
+A programmer is also a software designer and architect <<agile-architecture-principles>>.
+Every programming act is also a design act.
+It can be good or bad design, but it is a design act.
 ====
 
 A similar approach is used to identify application-specific entities.
@@ -176,7 +218,7 @@ Current examples are alarms.
 You could use the same approach if you need session or transaction identifiers.
 
 Asynchronous applications seldom need this kind of identifiers.
-The essence of event-based communication should fire and forget.
+The essence of event-based communication is _fire and forget_.
 ====
 
 === Factory and Repository
@@ -184,7 +226,7 @@ The essence of event-based communication should fire and forget.
 Embedded devices are often statically configured to avoid memory allocation problems.
 Therefore, we do need to implement any repository to retrieve and construct objects.
 
-Factories are implemented in the code using the factory patterns.
+Factories are implemented in the code using factory patterns.
 Most often, a regular factory method is sufficient to create an aggregate.
 
 Configuration parameters are currently the only identified configurable values.
@@ -227,19 +269,26 @@ You are not constrained by performance or maintainability requirements, feel fre
 Technical Excellence::
 Technical excellence as one of twelve {ref-manifesto-principles} of the {ref-manifesto}.
 Your development team shall pursue technical excellence in all used technology.
-Static and dynamic checkers help to measure progress.
+Static and dynamic checkers help to measure progress. +
++
+_Developers shall also be trained as designers.
+They should know how to document their domain-driven design solution.
+They should understand how to describe conceptual ideas with {ref-c4}, {ref-uml} and write decisions with {ref-adr}._
 Living documentation::
-The documentation shall be published as living documentation accessible and searchable to all interested parties.
+The documentation shall be published as *living documentation* accessible and searchable to all interested parties.
 The team should integrate documentation generation as part of the continuous delivery pipeline.
 The architecture method is domain-driven design, being the industrial standard approach for software design.
-The structure and artifacts are based on the {ref-arc42} approach and associated templates.
+The structure and artifacts are based on the {ref-arc42} approach and associated templates.+
++
+_If the documentation is not published daily automatically through a continuous delivery pipeline, do not be surprised if nobody cares about it.
+The team will not update or use the documentation artifacts because they have no advantage if they explore it._
 Finite State Machine::
 Finite state machines are documented as UML statecharts cite:[uml-distilled].
 You should avoid composite states.
 Hierarchical finite state machines are fine but should be implemented with the help of a statechart library.
 Hardcoded solutions are error-prone due to history states and parallel execution of composite states.
 ROS-2 provides two such libraries.
-Flat finite state machines can directly be implemented in code as a double nested switch statements.
+{ref-fsm} can directly be implemented in code as a double nested switch statements.
 Asynchronous Communication::
 ROS-2 nodes are independent execution units.
 The framework will allocate operating system threads based on the overall configuration and the pending requests.
@@ -250,9 +299,18 @@ Nodes as actors, message-passing communication and finite state machine is a wel
 [bibliography]
 === Links
 
-- [[[meaningful-identifiers, 1]]] link:../../2021/meaningful-identifiers/[Meaningful Identifiers]
-- [[[entities-identifiers, 2]]] link:../../2020/entities-identifiers-external-identifiers-and-names/[Entities, Identifiers, External Identifiers]
-- [[[value-objects, 3]]] link:../../2021/value-objects-as-embedded-entities/[Value Objects as Embedded Entities]
+- [[[meaningful-identifiers, 1]]] link:../../2021/meaningful-identifiers/[Meaningful Identifiers].
+Marcel Baumann. 2021.
+- [[[entities-identifiers, 2]]] link:../../2020/entities-identifiers-external-identifiers-and-names/[Entities, Identifiers, External Identifiers].
+Marcel Baumann. 2020.
+- [[[value-objects, 3]]] link:../../2021/value-objects-as-embedded-entities/[Value Objects as Embedded Entities].
+Marcel Baumann. 2021.
+- [[[software-structure-with-ddd, 4]]] link:../../2022/software-structure-with-ddd/[Software Structure with DDD].
+Marcel Baumann. 2022.
+- [[[agile-architecture-principles, 5]]] link:../../2019/agile-architecture-principles/[Agile Architecture Principles].
+Marcel Baumann. 2019.
+- [[[technical-debt, 6]]] link:../../2022/technical-debt/[Technical Debt].
+Marcel Baumann. 2022.
 
 === References
 
