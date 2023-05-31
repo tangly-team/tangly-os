@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.fsm.utilities;
@@ -21,8 +22,8 @@ import java.io.PrintWriter;
 import java.util.Comparator;
 
 /**
- * Generates a AsciiDoc description of the finite state machine declaration. A state has a name, a context, description, final flag, initial flag, composite
- * flag, entry action, and exit action. A transition has a start state name, end state name, description, local flag, guard, action,
+ * Generates an AsciiDoc description of the finite state machine declaration. A state has a name, a context, description, final flag, initial flag, composite flag, entry action,
+ * and exit action. A transition has a start state name, end state name, description, local flag, guard, action,
  *
  * @param <O> the class of the instance owning the finite state machine instance
  * @param <S> enumeration type for the identifiers of states
@@ -59,7 +60,7 @@ public class GeneratorAsciiDoc<O, S extends Enum<S>, E extends Enum<E>> extends 
     }
 
     private void writeStateTablePreamble(@NotNull PrintWriter writer) {
-        writer.append("=== ").append(name).append(" States").println();
+        writer.append("=== ").append(name()).append(" States").println();
         writer.println();
         writer.println("[cols=\"2,2,3,1,1,1,3,3\"]");
         writer.println("|===");
@@ -73,7 +74,7 @@ public class GeneratorAsciiDoc<O, S extends Enum<S>, E extends Enum<E>> extends 
     }
 
     private void writeTransitionTablePreamble(@NotNull PrintWriter writer) {
-        writer.append("=== ").append(name).append(" Transitions").println();
+        writer.append("=== ").append(name()).append(" Transitions").println();
         writer.println();
         writer.println("[cols=\"2,2,3,1,3,3\"]");
         writer.println("|===");
@@ -100,12 +101,12 @@ public class GeneratorAsciiDoc<O, S extends Enum<S>, E extends Enum<E>> extends 
     }
 
     private @NotNull PrintWriter appendInlineAnchor(@NotNull PrintWriter writer, @NotNull State<O, S, E> state) {
-        writer.append("[[").append(name).append("-").append(getStateName(state)).append("]]");
+        writer.append("[[").append(name()).append("-").append(getStateName(state)).append("]]");
         return writer;
     }
 
     private @NotNull PrintWriter appendInternalXRef(@NotNull PrintWriter writer, @NotNull State<O, S, E> state) {
-        writer.append("<<").append(name).append("-").append(getStateName(state)).append(",").append(getStateName(state)).append(">>");
+        writer.append("<<").append(name()).append("-").append(getStateName(state)).append(",").append(getStateName(state)).append(">>");
         return writer;
     }
 

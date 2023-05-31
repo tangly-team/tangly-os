@@ -1,23 +1,23 @@
-Root {
+Root:
+{
     Running.initial,
-    Running {
+    Running:
+    {
         Running.history,
         Washing,
         Rinsing,
         Drying;
 
-        Running.initial -> Running;
-        Running -> End: Stop;
-        Running -> PowerOff: CutPower;
-        Washing -> Rinsing: Rinse;
-        Rinsing -> Drying: Dry;
+        Running.initial => Running;
+        Running => End: Stop;
+        Running => PowerOff: CutPower;
+        Washing => Rinsing: Rinse;
+        Rinsing => Drying: Dry;
     },
     End,
     PowerOff;
 
-    Root.initial -> Root;
-    Root -> Root.final;
-    Running -> End: Stop;
-    Running -> PowerOff: CutPower;
-    PowerOff -> Running: RestorePower;
+    Running => End: Stop;
+    Running => PowerOff: CutPower;
+    PowerOff => Running: RestorePower;
 };

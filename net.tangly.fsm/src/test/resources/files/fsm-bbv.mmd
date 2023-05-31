@@ -1,0 +1,31 @@
+stateDiagram-v2
+    state Root {
+        [*] --> Off
+        Off
+        Off --> Maintenance: TogglePower [Maintenance is On] / log transition Off to Maintenance
+        Off --> On: TogglePower [Maintenance Off] / OfftoOn
+
+        Maintenance
+        Maintenance --> Off: TogglePower / MaintainedtoOff
+
+        state On {
+            [*] --> DAB
+            DAB
+            DAB --> FM: ToggleMode / DABtoFM
+
+            state FM {
+                [*] --> Play
+                Play
+                Play --> AutoTune: StationLost / PlaytoAutoTune
+
+                AutoTune
+                AutoTune --> Play: StationFound / AutoTunetoPlay
+
+            }
+            FM --> DAB: ToggleMode / FMtoDAB
+
+        }
+        On --> Off: TogglePower / OntoOff
+
+    }
+

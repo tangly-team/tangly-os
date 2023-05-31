@@ -2,7 +2,6 @@
 title: "User Guide Actors"
 date: 2019-05-01
 weight: 40
-draft: false
 ---
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
@@ -48,6 +47,44 @@ class FsmActor<O extends FsmActor<O, S, E>, S extends Enum<S>, E extends Enum<E>
 
 You can find an example of how to create FSM actor derived classes in the tests in package **net.tangly.fsm.actors**.
 
+=== Actors and Finite State Machine
+
+[plantuml,actors-and-fsm,svg]
+....
+@startuml
+interface Actor<T> {
+    void receive(@NotNull T message)
+    String name()
+    UUID id()
+}
+Actor <|.. Runnable
+
+note left of Actor
+  An actor is an active object with a message queue.
+  An actor receives messages from its queue and processes them.
+  It can also send messages to other actors.
+end note
+
+class ActorImp<T> {
+  - BlockingQueue<T> messages
+}
+note right of ActorImp::messages
+  The blocking FIFO queue of messages to be processed by the Actor.
+end note
+
+ActorImp <|.. Actor
+
+class FiniteStateMachine<O, S, E> {
+}
+
+class ActorFsm<T> {
+}
+ActorFsm <|.. Actor
+ActorFsm <|-- ActorImp
+ActorFsm *-right-"1" FiniteStateMachine : fsm
+@enduml
+....
+
 === Messages
 
 The message sent to a finite state machine instance is a regular event instance with a generic parameter being the enumeration of all event kinds the machine should process.
@@ -68,3 +105,10 @@ If you have reference to the FSM actor instance use the convenience method ```pr
 client.process(new Event<>(Events.Inquiry));
 ----
 
+=== Actors Communication
+
+[plantuml,actors-communication,svg]
+....
+@startuml
+@enduml
+....

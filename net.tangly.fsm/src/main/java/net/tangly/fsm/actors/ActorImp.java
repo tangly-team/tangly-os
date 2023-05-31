@@ -1,5 +1,5 @@
 /*
- * Copyright 2021-2022 Marcel Baumann
+ * Copyright 2021-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.fsm.actors;
@@ -26,12 +27,11 @@ public abstract class ActorImp<T> implements Actor<T>, Runnable {
     private final String name;
     private final BlockingQueue<T> messages;
 
-    protected ActorImp(String name) {
+    protected ActorImp(@NotNull String name) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.messages = new LinkedBlockingQueue<>();
     }
-
 
     @Override
     public UUID id() {
@@ -44,17 +44,12 @@ public abstract class ActorImp<T> implements Actor<T>, Runnable {
     }
 
     @Override
-    public boolean isAlive() {
-        return true;
-    }
-
-    @Override
     public void receive(@NotNull T message) {
         try {
             messages.put(message);
             logger.atInfo().log("Actor {} received event {}", name(), message);
         } catch (InterruptedException e) {
-            logger.atError().log("Actor {} encountered interrupted exception {}", name(), e);
+            logger.atError().withThrowable(e).log("Actor {} encountered interrupted exception", name());
             Thread.currentThread().interrupt();
         }
     }

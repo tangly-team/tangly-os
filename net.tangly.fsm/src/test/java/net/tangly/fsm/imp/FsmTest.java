@@ -1,14 +1,14 @@
 /*
- * Copyright 2006-2020 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
- *  a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
  *          http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
- *  under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.fsm.imp;
@@ -27,14 +27,15 @@ import java.util.function.BiConsumer;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 /**
- * The test class verifies the expected behavior of hierarchical machine declaration, instantiation of finite state machines, and firing of various
- * transitions.
+ * The test class verifies the expected behavior of hierarchical machine declaration, instantiation of finite state machines, and firing of various transitions.
  */
 @SuppressWarnings("unchecked")
-class FsmTest {
+public class FsmTest {
     /**
      * The finite state machine internal states for the test configuration.
      */
@@ -55,7 +56,7 @@ class FsmTest {
      * @return the definition of the finite state machine
      */
     @SuppressWarnings("unchecked")
-    static FsmBuilder<FsmTest, States, Events> build() {
+    public static FsmBuilder<FsmTest, States, Events> build() {
         return build(mock(BiConsumer.class));
     }
 
@@ -123,23 +124,23 @@ class FsmTest {
         var root = build().definition();
         assertThat(root.getStateFor(States.Root)).isNotNull();
         assertThat(root.isInitial()).isTrue();
-        assertThat(root.substates().size()).isEqualTo(3);
+        assertThat(root.substates()).hasSize(3);
         assertThat((root.entryAction())).isNull();
         assertThat(root.exitAction()).isNull();
         assertThat(root.toString()).contains("id=Root");
         assertThat(root.toString()).contains("hasHistory=false");
         assertThat(root.toString()).contains("initial=true");
         assertThat(root.getStateFor(States.A)).isNotNull();
-        assertThat(root.getStateFor(States.A).substates().size()).isEqualTo(2);
+        assertThat(root.getStateFor(States.A).substates()).hasSize(2);
         assertThat(root.getStateFor(States.A).isFinal()).isFalse();
         assertThat(root.getStateFor(States.B)).isNotNull();
-        assertThat(root.getStateFor(States.B).substates().size()).isEqualTo(2);
+        assertThat(root.getStateFor(States.B).substates()).hasSize(2);
         assertThat(root.getStateFor(States.B).hasHistory()).isTrue();
         assertThat(root.getStateFor(States.B).isFinal()).isFalse();
         assertThat(root.getStateFor(States.C)).isNotNull();
         assertThat(root.getStateFor(States.C).substates()).isEmpty();
         assertThat(root.getStateFor(States.C).isFinal()).isTrue();
-        assertThat(root.getStateFor(States.A).transitions().isEmpty()).isFalse();
+        assertThat(root.getStateFor(States.A).transitions()).isNotEmpty();
         assertThat(root.getStateFor(States.A).transitions().stream().findAny().orElseThrow().toString()).contains("A ->");
         assertThat(root.getStateFor(States.A).transitions().stream().findAny().orElseThrow().toString()).contains("-> C");
         assertThat(root.getStateFor(States.A).getStateFor(States.AA)).isNotNull();
@@ -148,11 +149,11 @@ class FsmTest {
         assertThat(root.getStateFor(States.B).getStateFor(States.BA)).isNotNull();
         assertThat(root.getStateFor(States.B).getStateFor(States.BB)).isNotNull();
         assertThat(root.getStateFor(States.B).getStateFor(States.AB)).isNull();
-        assertThat(root.getStateFor(States.AA).substates().isEmpty()).isTrue();
+        assertThat(root.getStateFor(States.AA).substates()).isEmpty();
         assertThat(root.getStateFor(States.AA).isInitial()).isTrue();
-        assertThat(root.getStateFor(States.AB).substates().isEmpty()).isTrue();
-        assertThat(root.getStateFor(States.BA).substates().isEmpty()).isTrue();
-        assertThat(root.getStateFor(States.BB).substates().isEmpty()).isTrue();
+        assertThat(root.getStateFor(States.AB).substates()).isEmpty();
+        assertThat(root.getStateFor(States.BA).substates()).isEmpty();
+        assertThat(root.getStateFor(States.BB).substates()).isEmpty();
     }
 
     /**
@@ -162,7 +163,7 @@ class FsmTest {
     void buildFsmInitialStatesTest() {
         var root = build().definition();
         var initialStates = root.initialStates();
-        assertThat(initialStates.size()).isEqualTo(3);
+        assertThat(initialStates).hasSize(3);
         var state = Objects.requireNonNull(initialStates.pollFirst());
         assertThat(state.isInitial() && (state.id() == States.Root)).isTrue();
         state = Objects.requireNonNull(initialStates.pollFirst());

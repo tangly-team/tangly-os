@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.fsm.imp;
@@ -17,7 +18,7 @@ import net.tangly.fsm.dsl.FsmBuilder;
 /**
  * The class defines the finite state machine of the <em>bbv fsm</em> open source project example.
  */
-class FsmBbv {
+public class FsmBbv {
     /**
      * The finite state machine internal states for the test configuration.
      */
@@ -40,7 +41,7 @@ class FsmBbv {
      *
      * @return builder instance for the finite state machine
      */
-    static FsmBuilder<FsmBbv, States, Events> build() {
+    public static FsmBuilder<FsmBbv, States, Events> build() {
         FsmBuilder<FsmBbv, States, Events> builder = FsmBuilder.of(States.Root);
         builder.addToRoot(States.Off).isInitial().onEntry(FsmBbv::logOffEntry, "Entry action of Off state").onExit(FsmBbv::logOffExit, "ExitOffstate");
         builder.addToRoot(States.Maintenance).onEntry(FsmBbv::logMaintenanceEntry).onExit(FsmBbv::logMaintenanceExit);

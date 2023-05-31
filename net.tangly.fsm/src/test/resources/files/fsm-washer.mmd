@@ -1,0 +1,26 @@
+stateDiagram-v2
+    state Root {
+        End
+        End --> [*]
+
+        PowerOff
+        PowerOff --> Running: RestorePower
+
+        [*] --> Running
+        state Running {
+            [*] --> Washing
+            Washing
+            Washing --> Rinsing: Rinse
+
+            Rinsing
+            Rinsing --> Drying: Dry
+
+            Drying
+            Drying --> [*]
+
+        }
+        Running --> End: Stop
+        Running --> PowerOff: CutPower
+
+    }
+

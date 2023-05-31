@@ -1,9 +1,7 @@
 ---
 title: "Release Notes"
 date: 2019-05-01
-lastmod: 2020-05-31
 weight: 20
-draft: false
 ---
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
@@ -14,9 +12,11 @@ draft: false
 This document provides a high-level view of the changes introduced in the FSM library by release.
 For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] git commits.
 
-=== 0.2.7 (2023-03-31)
+=== 0.2.7 (2023-06-30)
 
-* Update of library dependencies, update to JDK-20, and modern Gradle approach to build solutions
+* Update of library dependencies, update to JDK-20, and modern Gradle approach to build solutions.
+* Added statechart diagram support for _smcat_ and _mermaid_ formats.
+* Actor library now uses the standard API FLow implementation and virtual thread executor.
 
 === 0.2.6 (2021-04-30)
 

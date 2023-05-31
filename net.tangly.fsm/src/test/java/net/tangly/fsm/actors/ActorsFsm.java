@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.fsm.actors;
@@ -113,8 +114,8 @@ class ActorTest {
      */
     @Test
     void activeFsmTest() {
-        ExecutorService service = Executors.newCachedThreadPool();
-        Actors<Event<Events>> actors = new ActorsImp<>(service);
+        ExecutorService service = Executors.newVirtualThreadPerTaskExecutor();
+        Actors<Event<Events>> actors = new Actors<>(service);
         actors.register(new Server(SERVER, actors));
         actors.register(new Client(CLIENT, actors));
         actors.actorNamed(CLIENT).get().receive(new Event<>(Events.Inquiry, List.of(CLIENT, SERVER)));
@@ -130,8 +131,8 @@ class ActorTest {
      */
     @Test
     void activeMultipleFsmTest() {
-        ExecutorService service = Executors.newCachedThreadPool();
-        Actors<Event<Events>> actors = new ActorsImp<>(service);
+        ExecutorService service = Executors.newVirtualThreadPerTaskExecutor();
+        Actors<Event<Events>> actors = new Actors<>(service);
         final int NR_CLIENTS = 10_000;
         final String CLIENT_PREFIX = "client-";
         actors.register(new Server(SERVER, actors));

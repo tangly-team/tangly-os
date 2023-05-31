@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2023 Marcel Baumann
+ * Copyright 2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -21,16 +21,8 @@ import java.io.PrintWriter;
 import java.util.Comparator;
 import java.util.function.Predicate;
 
-/**
- * The generator creates graphical graph representations of a finite state machine in the graphical language of <a href="https://www.graphviz.org/">Graphviz dot</a> language.
- *
- * @param <O> the class of the instance owning the finite state machine instance
- * @param <S> enumeration type for the identifiers of states
- * @param <E> enumeration type for the identifiers of events
- */
-public class GeneratorPlantUml<O, S extends Enum<S>, E extends Enum<E>> extends Generator<O, S, E> {
-    public static final String EXTENSION = "puml";
-    public static final String ARROW = " --> ";
+public class GeneratorMermaid<O, S extends Enum<S>, E extends Enum<E>> extends Generator<O, S, E> {
+    private static final String ARROW = " --> ";
 
     /**
      * Constructor of the class.
@@ -39,35 +31,22 @@ public class GeneratorPlantUml<O, S extends Enum<S>, E extends Enum<E>> extends 
      * @param name    name of the finite state machine description
      * @see Generator#Generator(FsmBuilder, String)
      */
-    public GeneratorPlantUml(@NotNull FsmBuilder<O, S, E> builder, String name) {
+    public GeneratorMermaid(@NotNull FsmBuilder<O, S, E> builder, String name) {
         super(builder, name);
     }
 
     @Override
     public void generate(@NotNull PrintWriter writer) {
         try (writer) {
-            writePreamble(writer);
+            writer.append("stateDiagram-v2").println();
             writeState(builder.definition(), 0, writer);
-            writePostamble(writer);
             writer.flush();
         }
     }
 
     @Override
     public String extension() {
-        return (EXTENSION);
-    }
-
-
-    private static void writePreamble(@NotNull PrintWriter writer) {
-        writer.append("@startuml").println();
-        writer.append("hide empty description").println();
-        writer.println();
-    }
-
-    private static void writePostamble(@NotNull PrintWriter writer) {
-        writer.println();
-        writer.append("@enduml").println();
+        return ("mmd");
     }
 
     private void writeState(@NotNull State<O, S, E> state, int depth, @NotNull PrintWriter writer) {
@@ -78,19 +57,23 @@ public class GeneratorPlantUml<O, S extends Enum<S>, E extends Enum<E>> extends 
             indent(writer, depth).append("state ").append(getStateName(state)).println(" {");
             state.substates().stream().sorted(Comparator.comparing(State::id)).filter(Predicate.not(State::isComposite)).forEach(o -> writeState(o, depth + 1, writer));
             state.substates().stream().sorted(Comparator.comparing(State::id)).filter(State::isComposite).forEach(o -> writeState(o, depth + 1, writer));
-            writeTransitions(state, writer, depth + 1);
-            indent(writer, depth).println("}");
+            if (state.isFinal() && (state != builder.definition())) {
+                indent(writer, depth).append(getStateName(state)).append(ARROW).append("[*]").println();
+            }
         } else {
-            indent(writer, depth).append("state ").append(getStateName(state)).println();
-            writeTransitions(state, writer, depth);
+            indent(writer, depth).append(getStateName(state)).println();
         }
+        if (state.isFinal() && (state != builder.definition())) {
+            indent(writer, depth).append(getStateName(state)).append("  --> [*]").println();
+        }
+        if (state.isComposite()) {
+            indent(writer, depth).println("}");
+        }
+        writeTransitions(state, writer, depth);
         writer.println();
     }
 
     private void writeTransitions(@NotNull State<O, S, E> state, @NotNull PrintWriter writer, int depth) {
-        if (state.isFinal() && (state != builder.definition())) {
-            indent(writer, depth).append(getStateName(state)).append(ARROW).append("[*]").println();
-        }
         state.transitions().stream().sorted(transitionComparator()).forEach(transition -> {
             var source = transition.source();
             var target = transition.target();

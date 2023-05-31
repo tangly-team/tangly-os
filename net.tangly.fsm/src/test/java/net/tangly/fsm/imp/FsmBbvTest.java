@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.fsm.imp;
@@ -105,7 +106,7 @@ class FsmBbvTest {
 
         // Root/On/FM/AutoTune,   []
         assertThat(fsm.historyStates()).isEmpty();
-        assertThat(fsm.activeStates().size()).isEqualTo(4);
+        assertThat(fsm.activeStates()).hasSize(4);
         assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmBbv.States.Root));
         assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmBbv.States.On));
         assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmBbv.States.FM));
@@ -114,10 +115,10 @@ class FsmBbvTest {
         fsm.fire(Event.of(FsmBbv.Events.TogglePower));
 
         // Root/Off,   [On/FM/AutoTune]
-        assertThat(fsm.activeStates().size()).isEqualTo(2);
+        assertThat(fsm.activeStates()).hasSize(2);
         assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmBbv.States.Root));
         assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmBbv.States.Off));
-        assertThat(fsm.historyStates().size()).isEqualTo(3);
+        assertThat(fsm.historyStates()).hasSize(3);
         assertThat(fsm.historyStates()).contains(fsm.root().getStateFor(FsmBbv.States.On));
         assertThat(fsm.historyStates()).contains(fsm.root().getStateFor(FsmBbv.States.FM));
         assertThat(fsm.historyStates()).contains(fsm.root().getStateFor(FsmBbv.States.AutoTune));
@@ -127,7 +128,7 @@ class FsmBbvTest {
 
         // Root/On/FM/Autotune, []
         assertThat(fsm.historyStates()).isEmpty();
-        assertThat(fsm.activeStates().size()).isEqualTo(4);
+        assertThat(fsm.activeStates()).hasSize(4);
         assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmBbv.States.Root));
         assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmBbv.States.On));
         assertThat(fsm.activeStates()).contains(fsm.root().getStateFor(FsmBbv.States.FM));
@@ -150,10 +151,10 @@ class FsmBbvTest {
     void staticCheckerTest() {
         FsmBuilder<FsmBbv, FsmBbv.States, FsmBbv.Events> builder = FsmBbv.build();
         StaticChecker<FsmBbv, FsmBbv.States, FsmBbv.Events> checker = new StaticChecker<>();
-        assertThat(checker.check(builder.definition()).size()).isZero();
-        assertThat(checker.checkStateHasAtMostOneInitialState(builder.definition()).size()).isZero();
-        assertThat(checker.checkStateIdUsedOnce(builder.definition()).size()).isZero();
-        assertThat(checker.checkStateWithAfferentTransitionHasInitialState(builder.definition()).size()).isZero();
+        assertThat(checker.check(builder.definition())).isEmpty();
+        assertThat(checker.checkStateHasAtMostOneInitialState(builder.definition())).isEmpty();
+        assertThat(checker.checkStateIdUsedOnce(builder.definition())).isEmpty();
+        assertThat(checker.checkStateWithAfferentTransitionHasInitialState(builder.definition())).isEmpty();
     }
 
     private StateMachine<FsmBbv, FsmBbv.States, FsmBbv.Events> createFsm() {

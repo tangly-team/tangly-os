@@ -1,9 +1,7 @@
 ---
 title: "Readme"
 date: 2019-05-01
-lastmod: 2020-05-01
 weight: 10
-draft: false
 ---
 
 = Finite State Machine Library

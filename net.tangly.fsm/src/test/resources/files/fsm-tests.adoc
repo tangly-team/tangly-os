@@ -1,75 +1,114 @@
-== Finite State Machine _bbv Test_
-:graphvizdot: /usr/local/bin/dot
+---
+title: "FSM tests"
+date: 2019-05-01
+weight: 10
+---
+
+== Finite State Machines
+
+Below different formats to document automatically a finite state machine description.
+
+The nicest diagrams are often produced through PlantUML.
+Sometimes you must tinker with the declaration order of the state to improve the layout result.
+
+:graphvizdot: /opt/homebrew/bin/dot
+
+=== Finite State Machine _bbv_
 
 include::fsm-bbv.adoc[]
 
-=== Graphical Representation with dot
+==== Graphical Representation with dot
 
-[graphviz, fsm-bbv-dot, svg]
+[graphviz,fsm-bbv-dot,svg]
 ....
 include::fsm-bbv.dot[]
 ....
 
-=== Graphical Representation with PlantUml
+==== Graphical Representation with PlantUml
 
-[plantuml, fsm-bbv-plantuml, svg]
+[plantuml,fsm-bbv-plantuml,svg]
 ....
 include::fsm-bbv.puml[]
 ....
 
-=== Graphical Representation with State Machine Machine Cat
+==== Graphical Representation with mermaid
 
-[smcat, fsm-bbv-smcat, svg]
+[mermaid,fsm-bbv-mermaid,svg]
+....
+include::fsm-bbv.mmd[]
+....
+
+==== Graphical Representation with State Machine Cat
+
+[smcat,fsm-bbv-smcat,svg]
 ....
 include::fsm-bbv.smcat[]
 ....
 
-== Finite State Machine _Test_
+=== Finite State Machine _Test_
+
+Below different formats to document automatically a finite state machine description.
 
 include::fsm-test.adoc[]
 
-=== Graphical Representation with dot
+==== Graphical Representation with dot
 
-[graphviz, fsm-test-dot, svg]
+[graphviz,fsm-test-dot,svg]
 ....
 include::fsm-test.dot[]
 ....
 
-=== Graphical Representation with PlantUml
+==== Graphical Representation with PlantUml
 
-[plantuml, fsm-test-plantuml, svg]
+[plantuml,fsm-test-plantuml,svg]
 ....
 include::fsm-test.puml[]
 ....
 
-=== Graphical Representation with State Machine Machine Cat
+==== Graphical Representation with mermaid
 
-[smcat, fsm-test-smcat, svg]
+[mermaid,fsm-test-mermaid,svg]
+....
+include::fsm-test.mmd[]
+....
+
+==== Graphical Representation with State Machine Cat
+
+[smcat,fsm-test-smcat,svg]
 ....
 include::fsm-test.smcat[]
 ....
 
-== Finite State Machine _Washer_
+=== Finite State Machine _Washer_
+
+Below different formats to document automatically a finite state machine description.
 
 include::fsm-washer.adoc[]
 
-=== Graphical Representation with dot
+==== Graphical Representation with dot
 
-[graphviz, fsm-washer-dot, svg]
+[graphviz,fsm-washer-dot,svg]
 ....
 include::fsm-washer.dot[]
 ....
 
-=== Graphical Representation with PlantUml
+==== Graphical Representation with PlantUml
 
-[plantuml, fsm-washer-plantuml, svg]
+[plantuml,fsm-washer-plantuml,svg]
 ....
 include::fsm-washer.puml[]
 ....
 
-=== Graphical Representation with State Machine Machine Cat
+==== Graphical Representation with mermaid
 
-[smcat, fsm-washer-smcat, svg]
+[mermaid,fsm-washer-plantuml,svg]
+....
+include::fsm-washer.mmd[]
+....
+
+==== Graphical Representation with State Machine Cat
+
+[smcat,fsm-washer-smcat,svg]
 ....
 include::fsm-washer.smcat[]
 ....

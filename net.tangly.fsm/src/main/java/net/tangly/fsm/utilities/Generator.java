@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.fsm.utilities;
@@ -29,7 +30,20 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * Abstract generator to create a human-readable description of a finite state machine description.
+ * Abstract generator to create a human-readable description of a finite state machine description. the key mechanisms needed to create a finite state machine description are:
+ * <ul>
+ *     <li>Generate all substates of a specific state.
+ *     A state has a name, a context, description, final flag, initial flag, composite flag, entry action, and exit action.</li>
+ *     <li>Generate the entry and exit actions for a state.</li>
+ *     <li>Generate the optional history flag for a state. History can be shallow or deep.</li>
+ *     <li>Generate all transitions with event, optional guard, and action for thw finite state machine.
+ *     A transition has a start state name, end state name, description, local flag, guard, and an action.</li>
+ * </ul>
+ * <p>Orthogonal states are not supported in the FSM library and do not need to be created.
+ * Only shallow history states are supported in the FSM library.
+ * You can emulate deep history state trhough the declaration of a shallow history state in all substates.
+ * The root node is a nice approach to pack all states together. Avoid creating the initial and final state for the root node. It does not add any semantic information and
+ * clutter the diagram.</p>
  *
  * @param <O> the class of the instance owning the finite state machine instance
  * @param <S> enumeration type for the identifiers of states
@@ -39,7 +53,7 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
     private static final int INDENTATION = 4;
     private final Comparator<Transition<O, S, E>> comparator;
     protected final FsmBuilder<O, S, E> builder;
-    protected final String name;
+    private final String name;
     protected final Set<State<O, S, E>> states;
 
     /**
@@ -51,18 +65,20 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
     protected Generator(@NotNull FsmBuilder<O, S, E> builder, @NotNull String name) {
         this.builder = builder;
         this.name = name;
-        this.comparator = Comparator.comparing(Transition<O, S, E>::source)
-            .thenComparing(Transition::target)
-            .thenComparing(Transition::eventId)
+        this.comparator = Comparator.comparing(Transition<O, S, E>::source).thenComparing(Transition::target).thenComparing(Transition::eventId)
             .thenComparing(Comparator.nullsLast(Comparator.comparing(Transition::guardDescription)))
             .thenComparing(Comparator.nullsLast(Comparator.comparing(Transition::actionDescription)));
         this.states = new HashSet<>();
         getAllStates(this.states, builder.definition());
     }
 
+    public String name() {
+        return name;
+    }
+
     /**
-     * Generates the content of the file identified through the path if the file does not exist or the new creation of the output is different to the one in the
-     * file. This feature is for example helpful if the file is under version control to avoid spurious changes.
+     * Generate the content of the file identified through the path if the file does not exist or the new creation of the output is different to the one in the file. This feature
+     * is for example helpful if the file is under version control to avoid spurious changes.
      *
      * @param path path to the file to updated.
      * @return flag indicating if the file was updated or not
@@ -90,14 +106,14 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
     }
 
     /**
-     * Implements the creation of the text content for a specific generator.
+     * Implement the creation of the text content for a specific generator.
      *
      * @param writer writer to which the content shall be written
      */
     public abstract void generate(@NotNull PrintWriter writer);
 
     /**
-     * Returns the extension used by the generator when writing its output.
+     * Return the extension used by the generator when writing its output.
      *
      * @return extension used by the generator
      */
@@ -128,7 +144,7 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
         return states.stream().filter(o -> o.substates().contains(state)).findAny();
     }
 
-    private void getAllStates(Set<State<O, S, E>> states, State<O, S, E> state) {
+    private void getAllStates(@NotNull Set<State<O, S, E>> states, @NotNull State<O, S, E> state) {
         states.add(state);
         state.substates().forEach(o -> getAllStates(states, o));
     }

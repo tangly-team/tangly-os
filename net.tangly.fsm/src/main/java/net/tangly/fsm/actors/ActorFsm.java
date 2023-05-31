@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.fsm.actors;
@@ -18,8 +19,8 @@ import net.tangly.fsm.dsl.FsmBuilder;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A local actor implements the actor contract as a local thread running in the virtual machine. An actor completes when its finite state machine reaches a
- * final state and the associated thread is returned to the pool of available threads.
+ * A local actor implements the actor contract as a local thread running in the virtual machine. An actor completes when its finite state machine reaches a final state and the
+ * associated thread is returned to the pool of available threads.
  *
  * @param <O> the class of the instance owning the finite state machine instance
  * @param <S> the state enumeration type uniquely identifying a state in the state machine
@@ -44,13 +45,8 @@ public class ActorFsm<O extends ActorFsm<O, S, E>, S extends Enum<S>, E extends 
     }
 
     @Override
-    public boolean isAlive() {
-        return fsm.isAlive();
-    }
-
-    @Override
     public void run() {
-        while (isAlive()) {
+        for (; ; ) {
             Event<E> event = message();
             fsm.fire(event);
         }

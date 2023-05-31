@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Marcel Baumann
+ * Copyright 2021-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -8,6 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
 package net.tangly.fsm.actors;
@@ -17,10 +18,14 @@ import org.junit.jupiter.api.Test;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class ActorsTest {
+class ActorsTest {
+    static final String ONE = "one";
+    static final String TWO = "two";
+
     static record Message(String command, Integer payload) {
     }
 
@@ -72,8 +77,26 @@ public class ActorsTest {
         }
     }
 
+    static class FlowActor extends ActorImp<ActorsTest.Message> implements Actor<Message> {
+        private int counter;
+
+        public FlowActor(String name) {
+            super(name);
+        }
+
+        @Override
+        public void run() {
+            for (; ; ) {
+                Message msg = message();
+                if (counter < 20) {
+                    counter++;
+                }
+            }
+        }
+    }
+
     @Test
-    void runPeersStandalone() {
+    void runWithStandaloneActors() {
         ExecutorService service = Executors.newCachedThreadPool();
         PeerActor one = new PeerActor("One");
         PeerActor two = new PeerActor("Two");
@@ -81,24 +104,39 @@ public class ActorsTest {
         two.peer(one);
         service.submit(one);
         service.submit(two);
-        one.receive(new Message("do", 0));
 
+        one.receive(new Message("do", 0));
         Actors.awaitTermination(service, 1, TimeUnit.SECONDS);
+
         assertThat(one.counter).isEqualTo(10);
         assertThat(two.counter).isEqualTo(10);
     }
 
     @Test
-    void runPeersWithActors() {
-        ExecutorService service = Executors.newCachedThreadPool();
-        Actors<Message> actors = new ActorsImp<>(service);
-        actors.register(new RegisteredActor("one", actors, "two"));
-        actors.register(new RegisteredActor("two", actors, "one"));
+    void runWithActorRegistry() {
+        Actors<Message> actors = new Actors<>();
+        actors.register(new RegisteredActor(ONE, actors, TWO));
+        actors.register(new RegisteredActor(TWO, actors, ONE));
 
         actors.actorNamed("one").get().receive(new Message("do", 0));
+        actors.awaitTermination(1, TimeUnit.SECONDS);
 
-        Actors.awaitTermination(service, 1, TimeUnit.SECONDS);
-        assertThat(((RegisteredActor) actors.actorNamed("one").get()).counter).isEqualTo(10);
-        assertThat(((RegisteredActor) actors.actorNamed("two").get()).counter).isEqualTo(10);
+        assertThat(((RegisteredActor) actors.actorNamed(ONE).get()).counter).isEqualTo(10);
+        assertThat(((RegisteredActor) actors.actorNamed(TWO).get()).counter).isEqualTo(10);
+    }
+
+    @Test
+    void runWithChannelRegistry() {
+        final String CHANNEL = "channel";
+        Actors<Message> actors = new Actors<>();
+        actors.register("channel");
+        actors.register(new FlowActor(ONE), CHANNEL);
+        actors.register(new FlowActor(TWO), CHANNEL);
+
+        IntStream.range(0, 20).forEach(o -> actors.channelNamed(CHANNEL).ifPresent(channel -> channel.dispatch(new Message("do", o))));
+        actors.awaitTermination(1, TimeUnit.SECONDS);
+
+        assertThat(((FlowActor) actors.actorNamed(ONE).get()).counter).isEqualTo(20);
+        assertThat(((FlowActor) actors.actorNamed(TWO).get()).counter).isEqualTo(20);
     }
 }

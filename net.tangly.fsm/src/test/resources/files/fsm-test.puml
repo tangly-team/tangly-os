@@ -9,28 +9,28 @@ state Root {
     state A {
         [*] --> AA
         state AA
-        AA -> AB : AA_AB
-        AA -> B : AA_B
-        AA -> BB : AA_BB
+        AA --> AB : AA_AB
+        AA --> B : AA_B
+        AA --> BB : AA_BB
 
         state AB
-        AB -> AA : AB_AA
-        AB -> AB : AB_AB
+        AB --> AA : AB_AA
+        AB --> AB : AB_AB
 
-        A -> C : A_C
+        A --> C : A_C
     }
 
     state B {
         state BA
-        BA -> A : BA_A
-        BA -> BB : BA_BB
+        BA --> A : BA_A
+        BA --> BB : BA_BB
 
         [*] --> BB
         state BB
-        BB -> BA : BB_BA / VV -> BA when BB_BA
-        BB -> C : BB_C
+        BB --> BA : BB_BA / VV -> BA when BB_BA
+        BB --> C : BB_C
 
-        B -> C : B_C
+        B --> C : B_C
     }
 
 }
