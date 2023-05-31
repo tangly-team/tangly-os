@@ -5,11 +5,12 @@ date: 2025-02-01
 tags: ["architecture", "domain-driven-design", "c++", "embedded"]
 ---
 
-== Domain-Driven Approaches for Embedded Systems
+== Domain-Driven Design Approaches for Embedded Systems
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
+:ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 :ref-fsm: https://en.wikipedia.org/wiki/Finite-state_machine[Finite State Machine]
 :ref-cohesion: https://en.wikipedia.org/wiki/Cohesion_(computer_science)[Cohesion]
 :ref-coupling: https://en.wikipedia.org/wiki/Coupling_(computer_programming)[Coupling]
@@ -243,6 +244,7 @@ Messages are part of the bounded domain interface declaration.
 Ideally, the interface of a bounded domain is fully described through the messages it will process.
 
 {ref-fsm} can be provided to describe the behavior of a domain when processing a specific message.
+{ref-uml} provides the statechart notation to graphically document finite state machines.
 ====
 
 A bounded domain should be packaged as a C++ module and declared in a specific namespace.
@@ -256,15 +258,15 @@ Sensor processing is often a data processing pipeline:
 
 . Initialize the sensor and configure the processing pipeline
 . Execute the pipeline
-.. Normalize sensor data
+.. Normalize sensor data.
 .. Filter, transform and enrich sensor data.
 This stage is also used to handle back pressure by removing excess data.
-.. Store the sensor data or send an application-specific message based on the values
-. Shutdown the sensor pipeline
+.. Store the sensor data or send an application-specific message based on the values.
+. Shutdown the sensor pipeline.
 
 Ideally, the whole sensor pipeline is hosted inside one domain model.
-The sent message should always contain the actual value.
-Avoid sending only the change from the previous value.
+The message sent should always contain the actual value.
+Avoid sending only the changes from the previous value.
 You can naturally send the actual value and the change in the same message.
 
 The hardware abstraction layer and hardware driver should be in the HAL layer.
@@ -285,17 +287,21 @@ Buffered means you implement the loop.
 . Update the buffered value of all input channels.
 . Execute the PLC algorithm. +
 Execute means the routine is called.
+The algorithm computes new output values based on the buffered input values. +
++
 The routine is responsible to store internal state to resume activity in the next loop.
-The algorithm computes new output values based on the buffered input values.
+Naturally, you can define additional slaved output-input data points to easily store state.
+The implicit advantage is that your control algorithm is now a pure function.
 . Generate the messages to perform the output changes to the involved actuators. +
 The model should track which output values have changed during the execution of the PLC algorithm.
+A simple approach is the double buffering of the output data points or a changed flag.
 
 The approach works as long as the periodicity of the PLC algorithm calls is fast enough to fulfill the algorithm constraints.
 
-During the cyclic execution of the PLC algorithm, it must be guaranteed that no input values are changed during a specific cycle.
+During the execution of the PLC algorithm, no input values are changed during a specific cycle.
 ====
 
-=== Cross-Cutting Concerns
+=== Crosscutting Concerns
 
 ==== Configuration
 
@@ -319,6 +325,7 @@ The application shall initialize hardware components with configuration values.
 You should try to configure the hardware and the application during the startup phase.
 
 Configuration changes during regular operations are expensive to implement and seldom needed.
+Challenge all such requirements and explain the associated costs.
 ====
 
 ==== Startup and Shutdown
@@ -392,7 +399,10 @@ Logging approaches are discussed in a separate article <<logging>>.
 
 The {ref-kiss} is essential to construct a maintainable and stable solution.
 
+Aggressive refactoring and clean code approaches hugely improve the code in the long-term cite:[refactoring,clean-code,clean-coder,clean-architecture].
+
 Embedded applications should always be implemented with the active object pattern.
+The programmable logic control _PLC_ with a fixed timed based loop has well-documented limitations as soon as the application complexity increases.
 Communication should always be message-based.
 Avoid using synchronization primitives such as mutex, semaphores, or monitors.
 
@@ -405,6 +415,8 @@ Marcel Baumann. 2022.
 Marcel Baumann. 2025.
 - [[[technical-debt, 3]]] link:../../2022/technical-debt/[Technical Debt].
 Marcel Baumann. 2022.
+- [[[document-software-architecture, 4]]] link:../../2024/document-agile-architecture/[How Should You Document Your Agile Architecture?].
+Marcel Baumann. 2024.
 
 === References
 

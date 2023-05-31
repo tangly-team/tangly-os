@@ -35,6 +35,43 @@ An actor is a computational entity that, in response to a message it receives, c
 - Create a finite number of new actors.
 - Designate the behavior to be used for the next message it receives.
 
+=== Advantages and Downsides
+
+Here are four benefits of this model that can answer this question:
+
+. It removes the need for lock-based synchronization.
+Actors can change only their private state; other actors’ states are off-limits to them.
+There’s no shared state in the actor model, so there’s no possibility of that disaster when multiple threads try to modify the same data.
+. It was designed for distributed computing.
+Every actor has a mailbox that stores messages until they can be processed.
+It does not matter if the actor runs locally or on another device.
+As long as it can receive messages, it makes no difference.
+That’s a major difference compared to CSP.
+. It allows for better scalability.
+If your actor-based solution sees an increase in traffic load, you can create more actors and assign them the same address.
+Actors can also be programmed to create child actors under certain conditions.
+This makes scaling an application a lot easier.
+. It does not require the sender to block waiting for a return value.
+This is an overall benefit of using messaging instead of method calls.
+The receiver will send a return value in another message when it’s done handling the original one.
+The sender can send out more messages in the meantime.
+
+Actor-based concurrency comes with some drawbacks.
+Here are three of them:
+
+. Actors process messages one at a time.
+So, if several actors send five messages to the same receiving actor, it’ll execute them one after the other.
+If you need these messages executed simultaneously, you’ll need five different actors running simultaneously.
+. Deadlock is still possible.
+Two actors may end up waiting for a message from each other, thus creating a deadlock.
+Overall, the model is considered susceptible to deadlocks.
+(However, it’s worth noting that concurrent programming, in general, is more error-prone and complex than sequential programming.)
+. You need to enforce message immutability.
+Using the actor model in languages that don’t enforce immutability out of the box means it’s up to the developer to ensure messages remain immutable.
+If this verification is overlooked, messages may become mutable – and lead to thread-safety concerns.
+. Unexpected failures can be critical.
+If an actor failure occurs, other actors may get perpetually stuck awaiting a message from it – a message that won’t arrive because of the failure.
+To avoid this situation, developers have to employ defensive programming techniques and handle exceptions within the scope of each actor.
 === Minimal Actor Library
 
 To send a message to an actor, you need a reference to the receiving entity.

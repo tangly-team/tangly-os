@@ -31,6 +31,8 @@ tags = "tags"
 
 [params.taxonomy]
 taxonomyCloud = ["tags"]
+taxonomyCloudTitle = ["Tags"]
+taxonomyPageHeader = ["tags"]
 
 # Highlighting config
 pygmentsCodeFences = true
@@ -123,7 +125,7 @@ ref-microstream = "https://microstream.one/[MicroStream]"
 ref-openapi = "https://www.openapis.org/[OpenAPI]"
 ref-pdca = "https://en.wikipedia.org/wiki/PDCA[Plan-Do-Check-Adapt]"
 ref-plantuml = "https://plantuml.com/[plantUML]"
-ref-repository = "https:https://bitbucket.org/tangly-team/tangly-os/[Source Code]"
+ref-repository = "https://github.com/tangly-team/tangly-os/[Source Code]"
 ref-safe = "https://www.scaledagileframework.com/[SAFe]"
 ref-scrum = "https://scrumguides.org/[Scrum]"
 ref-scrum-alliance = "https://www.scrumalliance.org/[Scrum Alliance]"
@@ -135,8 +137,9 @@ ref-tangly = "https://www.tangly.net/[tangly]"
 ref-uml = "https://en.wikipedia.org/wiki/Unified_Modeling_Language[UML]"
 ref-utterances = "https://utteranc.es/[utteranc.es]"
 ref-xp = "http://www.extremeprogramming.org/[eXtreme Programming]"
+
 var-current-ver = "0.2.7"
-var-current-release-date = "2023-03-31"
+var-current-release-date = "2023-06-30"
 
 languageCode = "en-us"
 defaultContentLanguage = "en"
@@ -199,24 +202,12 @@ version = "2022.06"
 # point people to the main doc site.
 url_latest_version = "https://blog.tangly.net"
 
-# Repository configuration (URLs for in-page links to opening issues and suggesting changes)
-# github_repo = "https://bitbucket.org/tangly-team/tangly-os/issues"
-# An optional link to a related product repo. For example, the sibling repository where your product code lives.
-# github_project_repo = "https://bitbucket.org/tangly-team/tangly-os.git"
-# Specify a value here if your content directory is not in your repo's root directory
-# github_subdir = ""
-
 # gcs_engine_id =
 algolia_docsearch = false
 
 offlineSearch = true
 offlineSearchSummaryLength = 200
 offlineSearchMaxResults = 50
-
-#[[menu.main]]
-#name = "Bitbucket"
-#weight = 70
-#url = "https://bitbucket.org/tangly-team/tangly-os/"
 
 # Trick to have a submenu in the main menu of the site
 version_menu = "Repositories"
@@ -259,13 +250,13 @@ enable = false
 [params.links]
 [[params.links.user]]
 name = "Issue Tracker"
-url = "https://bitbucket.org/tangly-team/tangly-os/issues"
-icon = "bitbucket-square"
+url = "https://github.com/tangly-team/tangly-os/issues"
+icon = "github-square"
 desc = "Discussion and Improvements Suggestions"
 [[params.links.user]]
 name = "Documentation"
 url = "https://blog.tangly.net/"
-icon = "bitbucker-square"
+icon = "github-square"
 desc = "Documentation of the open source components (this site)"
 [[params.links.user]]
 name = "Groups"
@@ -273,7 +264,7 @@ url = "https://groups.google.com/g/tangly-os-components"
 icon = "users-cog"
 desc = "Discussion groups of the open source components"
 [[params.links.developer]]
-name = "Bitbucket"
-url = "https://bitbucket.org/tangly-team/tangly-os"
-icon = "bitbucket"
+name = "Github"
+url = "https://github.com/tangly-team/tangly-os/"
+icon = "github"
 desc = "Development takes place in this repository"

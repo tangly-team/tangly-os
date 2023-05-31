@@ -10,14 +10,13 @@ description: Workflow to publish open source components
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-
--:sectnums:
+:sectnums:
 :toc:
 
 === Regular Git Repository Update
 
-. Push the changes to the Bitbucket repository
-.. Verify the build job in the CI pipeline was successful
+. Push the changes to the {ref-github} repository {ref-repository}.
+.. Verify that the build job in the CI pipeline was successful.
 . Push the changes to the GitHub repository.
 _The statistics for developer activities will be automatically updated._
 
@@ -28,9 +27,9 @@ The following process is used to publish {ref-tangly} open source component on h
 . Publish artifacts of a component with the script `uploadToMavenCentral.sh`.
 Do not use the gradle task `gradle publishAllPublicationsToMavenRepository -Pmode=prod`.
 Sonatype cannot handle a parallel upload of multiple components and simply close the connections during upload (Status 2020-Q2).
-.. Pre activity: test publishing with `gradle publishToMavenLocal`
-.. Pre activity: check on bitbucket the product compiles through the *CI* continuous integration pipeline
-.. Post activity: *tag repository* on git to identify the version of the published packages.
+.. Pre-activity: test publishing with `gradle publishToMavenLocal`
+.. Pre-activity: check on bitbucket the product compiles through the *CI* continuous integration pipeline
+.. Post-activity: *tag repository* on git to identify the version of the published packages.
 The tag version semantic part *must* be the same as the package version on https://mvnrepository.com/repos/central[Maven Central]
 The tag is of the form -{AcronymComponent}-MajorVersion-MinorVersion-PatchVersion-
 .. Verify with `git tag label` and `git push origin --tags`
@@ -38,10 +37,10 @@ The tag is of the form -{AcronymComponent}-MajorVersion-MinorVersion-PatchVersio
 .. Go to https://oss.sonatype.org/#stagingRepositories[Staging Repositories]
 .. Find your temporary repository at the end of the list
 .. Review the content of the repository
-.. Close the repository -button on tool list-
+.. Close the repository-button on tool list-
 .. Close stage is initiated and checks are performed.
 If everything was fine, the content was published.
-.. Release the artifact -button on the tool list-
+.. Release the artifact-button on the tool list-
 . See <<website-publication>> to update the website
 
 [CAUTION]
@@ -107,10 +106,9 @@ package net.tangly.erp.ui [[https://blog.tangly.netdocs/domains/ui]] {
 Each component is declared as a gradle module.
 . We use de facto standard Git.
 . We are hosted at {ref-github}
-footnote:[We moved from {ref-github} to {ref-github} in 2022.
+footnote:[We moved from {ref-bitbucket} to {ref-github} in 2022.
 The reasons were that the new platform supports publishing of static website with a lot more functionalities.
 The new agile project management functionality with Scrum boards, sprint iterations and insights report is very interesting.].
-. The bitbucket repository is regularly synchronized with a GitHub mirror repository https://github.com/marcelbaumann/tangly-os.git[GitHub].
 
 The synchronization is performed with the command
 
@@ -123,9 +121,9 @@ git remote <2>
 git push origin-bitbucket <3>
 ----
 
-<1> Pushes the repository with all remotes, references and tags to GitHub specified repository
+<1> Push the repository with all remotes, references and tags to GitHub specified repository
 <2> List all remotes associated with this git repository
-<3> Pushes the master branch to the _origin-bitbucket_ remote repository.
+<3> Push the master branch to the _origin-bitbucket_ remote repository.
 The push shall trigger the continuous integration pipeline
 
 You must create a token for developer account to be able to push changes and trigger the CI pipeline.
@@ -184,17 +182,17 @@ The Docsy team decided that their priorities are different and rejected the requ
 * Inclusion of the shortcodes extension _shortcodes.html_ layouts and the style file _shortcodes.scss_ to support file attachments in the website
 footnote:[This change is defined as a merge request.
 The pull request is quite old and seems to have a low priority.].
-* Extesnsion of the blog section with _comments-uttereances.html_ to support comments on blog articles
+* Extension of the blog section with _comments-uttereances.html_ to support comments on blog articles
 footnote:[The current setup of the template does not allow selection of a comment solution per configuration.].
 * Changes in the header and footer partials to display mathematical expressions and well-styled copyright
 footnote:[An issue report exists on GitHub about the copyright issue.].
 
-All chagnes are defined in the assets and layouts folders as part of our website content.
-Hugo algorithms select local overwritten files and ignore the corresponding theme files.\
+All changes are defined in the assets and layouts folders as part of our website content.
+Hugo's algorithms select local overwritten files and ignore the corresponding theme files.\
 
 [NOTE]
 ====
-The current structure of our extensions follow the official approach how a Hugo module should be extended.
+The current structure of our extensions follows the official approach how a Hugo module should be extended.
 We do not change any files in the theme.
 All changes are defined locally.
 We use the selection algorithm of Hugo to activate our tailoring and extensions.
@@ -207,11 +205,11 @@ The tangly open source components website is hosted under https://blog.tangly.ne
 Read the instructions in the asciidoctor script file under the scripts' folder.
 Four scripts are provided to generate the Hugo static site with associated structure and theme.
 
-. the script _initiateHugo.sh_ creates the layout of the site and retrieve the theme.
+. the script _initiateHugo.sh_ creates the layout of the site and retrieves the theme.
 . the script _populateHugo.sh_ populates the site with our content.
 
 Upon completion of local development, you must start a local Hugo server and generate the indexing files for https://lunrjs.com/[lunr] search.
-Before uploading the site stop the Hugo local server.
+Before uploading the site, stop the Hugo local server.
 
 . the script _completeHugo.sh_ generates the static pictures and copies them to the static folder and publish the whole site on bitbucket.
 
@@ -222,19 +220,19 @@ Upon completion, the site is published on the web for all.
 Install regular Java JDK such as the Oracle or OpenJDK distribution.
 They will be located under _/Library/Java/JavaVirtualMachines_.
 
-If using bash shell, add following commands to your .bash_profile.
+If using bash shell, add the following commands to your .bash_profile.
 
 [source,shell]
 ----
-alias java11 = "export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
 alias java17 = "export JAVA_HOME=`/usr/libexec/java_home -v 17`; java -version"
-alias java18 = "export JAVA_HOME=`/usr/libexec/java_home -v 18`; java -version"
 alias java19 = "export JAVA_HOME=`/usr/libexec/java_home -v 19`; java -version"
+alias java20 = "export JAVA_HOME=`/usr/libexec/java_home -v 20`; java -version"
+alias java21 = "export JAVA_HOME=`/usr/libexec/java_home -v 21`; java -version"
 ----
 
 You can set the exact version such as _17.0.1_ to precisely select a JDK or set an overall version such as _17_ to select a generic version.
 
-After restarting your terminal the command _java17_ will set JDK 17 to default JDK (if installed on your macOS).
+After restarting your terminal, the command _java17_ will set JDK 17 to default JDK (if installed on your macOS).
 
 The list of JDK can be found with
 
