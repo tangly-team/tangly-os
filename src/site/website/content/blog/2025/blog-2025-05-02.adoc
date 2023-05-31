@@ -1,4 +1,8 @@
-title: "Domain-Driven Design with Microcontrollers Applications" linkTitle: "DDD with Microcontrollers" date: 2025-05-02 tags: ["C++", "architecture", "embedded"]
+---
+title: "Domain-Driven Design with Microcontrollers Applications"
+linkTitle: "DDD with Microcontrollers"
+date: 2025-05-02
+tags: ["C++", "architecture", "embedded"]
 ---
 
 == Domain-Driven Design with Embedded Microcontroller Applications

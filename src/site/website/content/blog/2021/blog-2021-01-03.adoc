@@ -106,7 +106,7 @@ Some Swiss technical universities - ZHAW, University of Bern - use the academic 
 CI and CD pipelines are not part of the GitHub product and must be installed separately.
 The academic program means you receive GitHub licenses.
 Your organization is responsible for running the software on the premises.
-* https://about.gitlab.com/[Gitlab] is an open source solution and strong contender to GitHub.
+* https://about.gitlab.com/[Gitlab] is an open source solution and a strong contender for GitHub.
 CI and CD pipelines are part of the product.
 * https://bitbucket.org/dashboard/overview[Bitbucket] is a closed source solution of Atlassian.
 CI and CD pipelines are part of the product.

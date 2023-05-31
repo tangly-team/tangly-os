@@ -10,7 +10,6 @@ tags: ["architecture", "students-java"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-:ref-plantuml: https://plantuml.com/[plantUML]
 :ref-mermaid: https://mermaid.js.org/[mermaid]
 :ref-graphviz: https://graphviz.org/[Graphviz]
 :ref-state-machine-cat: https://github.com/sverweij/state-machine-cat[state machine cat]
@@ -19,55 +18,78 @@ image::2024-03-02-head.gif[width=420,height=360,role=left]
 
 What are statecharts, also called hierarchical state machines?
 
-Put simply, a statechart is a beefed-up state machine.
+Put simply, a statechart is a beefed-up state machine <<state-diagram>> <<uml-fsm>>.
 The syntax is formally defined in the {ref-uml} standard.
 
 The beefing up solves a lot of the problems that state machines have, especially state explosion that happens as state machines grow.
 One of the goals of this site is to help explain what statecharts are and how they are useful.
 
-Statecharts offer a surprising array of benefits
+Statecharts offer a surprising array of benefits:
 
 - It is easier to understand a statechart than many other forms of code.
-- The behaviour is decoupled from the component in question.
-This makes it easier to make changes to the behaviour.
+- The behavior is decoupled from the component in question.
+This makes it easier to make changes to the behavior.
 It also makes it easier to reason about the code.
-And the behaviour can be tested independently of the component.
+And the behavior can be tested independently of the component.
 - The process of building a statechart causes all the states to be explored.
 Studies have shown that statechart based code has lower bug counts than traditional code.
 - Statecharts lend themselves to dealing with exceptional situations that might otherwise be overlooked.
 As complexity grows, statecharts scale well.
-- A statechart is a great communicator: Non-developers can understand the statecharts, while QA can use a statecharts as an exploratory tool.
+- A statechart is a great communicator: Non-developers can understand the statecharts, while QA can use statecharts as an exploratory tool.
 
-It is worth noting that you’re already coding state machines, except that they are hidden in the code.
+It is worth noting that you are already coding state machines, except that they are hidden in the code.
 
 === Why Finite State Machines?
 
-Network Protocols
+The actor model <<actor-model>> is a powerful approach to create resilient and scalable distributed systems.
+Asynchronous communication between actors avoids global states and painful synchronization primitives such as locks, semaphores or monitors.
+Each actor defines his behavior with a finite state machine.
+Messages sent to an actor are the events triggering the firing of transitions.
 
-Actor Model
+[IMPORTANT]
+====
+Finite state machines and statecharts are part of the {ref-uml} notation <<state-diagram>> <<uml-fsm>>.
 
-=== Why model with Finite State Machines?
+Finite state machines should be deterministic.
+The set of all relevant _events_ must be identified and documented.
 
-Actor model asynchronous communication
+At most, one transition can be fired when a specific event is processed.
+Use guard conditions to restrict which transition could be fired when multiple efferent transitions have the same triggering event.
+A guard is a predicate used to decide if a transition can be fired.
+If your transition guards are using timeouts, you need a global time reference with the expected resolution.
 
-Do not use orthogonal states.
-Orthogonal states have an implicit parallelism.
-The actor model encourages that each actor is a single threaded entity.
-An actor behavior shall be described with a flat or hierarchical state machine.
-The state machine shall not use orthogonal states.
-All other constructs such as composite states, entry and exit actions, shallow and deep history, initial and end states can be used.
+A state in a finite state machine must have a duration.
+The actor implementing the finite state machine is in a state and waits for an input meaning a message, or a timeout event.
 
-If your transition guards are using timeout beware you need a global time reference with the expected resolution.
+A transition has a trigger event, an optional guard and an optional action.
+The guard is a predicate to decide if the transition can be fired or not.
+A transition has semantically no duration.
+The action of a transition must be processed in a brief time.
+Try to limit the parameter list of an action to the owner of the finite state machine and the triggering event.
+
+Entry and exit actions are executed when the state is entered or exited.
+
+State activities are active as long as the state is active.
+Try to avoid activities in control systems.
+An activity needs to be implemented as a separate thread and must be abruptly stopped when leaving the state.
+====
 
 We prefer to handle timing constraints as external events sent to the finite state machine instances.
-The source of timeout events is also the time keeper of the system.
+The source of timeout events is also the timekeeper of the system.
 
 === How to Document Finite State Machines?
 
-- {ref-plantuml}
-- {ref-mermaid}
-- {ref-graphviz}
-- {ref-state-machine-cat}
+- {ref-plantuml} provides support for all UML diagrams including statecharts.
+All features are supported.
+The graphical representation is dependent on the order of state declaration.
+You have to experiment if you want to render nice looking statecharts.
+- {ref-mermaid} provides nice finite state machines.
+Beware that entry and exit states are not supported.
+Transition guards and actions can be emulated but are supported by a specific notation.
+- {ref-graphviz} is the reference implementation for graph visualization.
+It is the Swiss army graph library.
+You can draw all types of graphs, but you are on your own.
+- {ref-state-machine-cat} has the goal to draw beautiful statecharts.
 - {ref-asciidoc} Tables
 
 === Diagram Generators
@@ -93,14 +115,20 @@ The link:../../../docs/fsm[OS FSM] defines generators for the above target langu
 
 === History
 
-UML Statecharts SCXML
+A standard to describe and execute UML Statecharts is SCXML <<scxml>>.
+The whole approach to document logic with XML notation was doomed.
+This approach is dying out.
+Do not use it.
 
 [bibliography]
 === Links
 
-- [[[fsm, 1]]] link:../../../https://blog.tangly.net/docs/fsm/[Hierarchical Finite State Machine]
+- [[[state-diagram, 1]]] https://en.wikipedia.org/wiki/State_diagram[State Diagram]
 - [[[uml-fsm, 2]]] https://en.wikipedia.org/wiki/UML_state_machine[UML State Machine]
 - [[[scxml,3]]] https://www.w3.org/TR/scxml/[SCXML]
+- [[[fsm, 4]]] link:../../../https://blog.tangly.net/docs/fsm/[Hierarchical Finite State Machine].
+Marcel Baumann.
+- [[[actor-model, 5]]] https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 
 === References
 

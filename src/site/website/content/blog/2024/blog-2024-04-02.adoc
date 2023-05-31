@@ -1,0 +1,55 @@
+---
+title: "How Do We Develop Digital Products?"
+linkTitle: "Develop Products"
+date: 2024-04-10
+tags: ["java", "architecture", "agile"]
+---
+
+== How Do We Develop DIgital Products?
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2024-04-01-head.png[width=420,height=360,role=left]
+
+=== Technical Stacks
+
+==== Java
+
+Modern Java Vaadin Javalin Microstream JSON log4j2 Micrometer
+
+==== C++
+
+Modern C++ freeRTOS ROS
+
+=== Design Approaches
+
+Object-oriented principles with PlantUML and C4
+
+Domain-driven design
+
+Asynchronous message passing and actor model
+
+arc42, asciidoc,
+
+=== Product Development
+
+==== Agile with Scrum and LeSS
+
+==== DevOps
+
+Static code analysis
+
+Clean code and systematic refactoring
+
+Continuous Delivery
+
+=== Lessons Learnt
+
+[bibliography]
+=== Links
+
+=== References
+
+bibliography:[]

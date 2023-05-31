@@ -61,13 +61,6 @@ anchor = "smart"
 [services.googleAnalytics]
 id = "G-EYDTXKRW9J"
 
-[languages]
-[languages.en]
-title = "tangly Components"
-description = "tangly llc Open Source Components"
-languageName = "English"
-weight = 1
-
 [markup]
 [markup.goldmark]
 [markup.goldmark.renderer]
@@ -129,6 +122,7 @@ ref-markdown = "https://www.markdownguide.org/[Markdown]"
 ref-microstream = "https://microstream.one/[MicroStream]"
 ref-openapi = "https://www.openapis.org/[OpenAPI]"
 ref-pdca = "https://en.wikipedia.org/wiki/PDCA[Plan-Do-Check-Adapt]"
+ref-plantuml = "https://plantuml.com/[plantUML]"
 ref-repository = "https:https://bitbucket.org/tangly-team/tangly-os/[Source Code]"
 ref-safe = "https://www.scaledagileframework.com/[SAFe]"
 ref-scrum = "https://scrumguides.org/[Scrum]"
@@ -147,6 +141,15 @@ var-current-release-date = "2023-03-31"
 languageCode = "en-us"
 defaultContentLanguage = "en"
 title = "tangly Open Source Components"
+
+[languages]
+[languages.en]
+title = "tangly Components"
+weight = 1
+[languages.en.params]
+description = "tangly llc Open Source Components"
+languageName = "English"
+
 
 [outputs]
 section = ["HTML", "RSS"]

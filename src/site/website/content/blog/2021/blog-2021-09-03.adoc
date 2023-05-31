@@ -1,6 +1,6 @@
 ---
 title: "Scrum Developer Formation"
-linkTitle: "Scrum Developer Formation"
+linkTitle: "Scrum Dev Formation"
 date: 2021-09-03
 tags: ["agile"]
 ---

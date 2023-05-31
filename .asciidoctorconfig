@@ -5,6 +5,7 @@
 :rouge-css: style
 :icons: font
 
+:ref-arc42: https://arc42.org/[arc42]
 :ref-asciidoc: https://asciidoc.org/[Asciidoc]
 :ref-asciidoctor: https://asciidoctor.org/[Asciidoctor]
 :ref-bbrt: https://bbrt.org/[Beyond Budgeting Round Table]
@@ -13,6 +14,7 @@
 :ref-craftsmanship: https://manifesto.softwarecraftsmanship.org/[Software Craftsmanship]
 :ref-devops: https://en.wikipedia.org/wiki/DevOps[DevOps]
 :ref-docsy: https://www.docsy.dev/[Docsy]
+:ref-doxygen: https://www.doxygen.nl/[Doxygen]
 :ref-flow: https://en.wikipedia.org/wiki/Flow_(psychology)/[Flow]
 :ref-git: https://git-scm.com/[Git]
 :ref-github: https://github.com/[GitHub]
@@ -22,6 +24,7 @@
 :ref-hugo: https://gohugo.io/[Hugo]
 :ref-kaizen: https://en.wikipedia.org/wiki/Kaizen/[Kaizen]
 :ref-kanban: https://en.wikipedia.org/wiki/Kanban/[Kanban]
+:ref-javadoc: https://www.oracle.com/java/technologies/javase/javadoc.html[JavaDoc]
 :ref-junit5: https://junit.org/junit5/[JUnit 5]
 :ref-lean: https://en.wikipedia.org/wiki/Lean_software_development/[Lean Software Development]
 :ref-less: https://less.works/[LeSS]
@@ -30,7 +33,9 @@
 :ref-maven: https://maven.apache.org/[Maven]
 :ref-markdown: https://www.markdownguide.org/[Markdown]
 :ref-microstream: https://microstream.one/[MicroStream]
+:ref-openapi: https://www.openapis.org/[OpenAPI]
 :ref-pdca: https://en.wikipedia.org/wiki/PDCA/[Plan-Do-Check-Adapt]
+:ref-plantuml: https://plantuml.com/[plantUML]
 :ref-repository: https://bitbucket.org/tangly-team/tangly-os/[Source Code]
 :ref-safe: https://www.scaledagileframework.com/[SAFe]
 :ref-scrum-alliance: "https://www.scrumalliance.org/[Scrum Alliance]"
@@ -44,5 +49,6 @@
 :ref-uri-prj-doc: https://blog.tangly.net/[tangly OS documentation]
 :ref-uri-prj-issues: https://bitbucket.org/tangly-team/tangly-os/issues[tangly OS issues]
 :ref-uri-prj-repo: https://github.com/marcelbaumann/tangly-os[tangly OS repository]
+:ref-uml: https://en.wikipedia.org/wiki/Unified_Modeling_Language[UML]
 :ref-utterances: https://utteranc.es/[utteranc.es]
 :ref-xp: http://www.extremeprogramming.org/[eXtreme Programming]

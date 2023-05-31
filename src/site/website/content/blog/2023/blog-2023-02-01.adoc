@@ -1,6 +1,6 @@
 ---
 title: "Technical Interviews"
-linkTitle: "Technical Interviews"
+linkTitle: "Tech Interviews"
 date: 2023-02-01
 tags: ["agile", "organization"]
 ---

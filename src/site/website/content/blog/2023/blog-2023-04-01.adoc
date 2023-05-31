@@ -1,6 +1,6 @@
 ---
 title: "Software Developer Assumptions"
-linkTitle: "Developer Assumptions"
+linkTitle: "Dev Assumptions"
 date: 2023-04-01
 tags: ["java", "architecture", "series-students"]
 ---

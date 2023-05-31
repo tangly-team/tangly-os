@@ -1,0 +1,44 @@
+---
+title: "Why Should You Write a Technical Blog?"
+linkTitle: "Write a Blog"
+date: 2025-12-10
+tags: ["java", "architecture"]
+---
+
+== Why Should You Write a Technical Blog?
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly ll c]
+
+=== Learn by Writing a Technical Article
+
+=== Train Your Coaching Capabilities
+
+=== Show Your Knowledge and Expertise
+
+=== Write it First for Yourself
+
+=== You Should Enjoy the Experience
+
+lways stick to simple language, irrespective of how complex the subject is, and convey it straightforwardly.
+Keep in mind that the approach of technical blog writing is anything that can be broken into easy concepts.
+The idea is to make interested in the subject and not get intimidated by it.
+
+Make sure to add at least one image in your blog which gives an overview.
+To further explain the concepts, you can add images to the body of the blog.
+It is always more appealing to add images.
+
+=== Lessons Learnt
+
+[bibliography]
+=== Links
+
+- [[[creating-website, 1]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and Asciidoc].
+Marcel Baumann. 2020.
+- [[[improving-website, 2]]] link:../../2021/improving-a-static-web-site-build-with-hugo-and-docsy/[Improving a Static Website build with Hugo and Docsy].
+Marcel Baumann. 2021.
+- [[[support-comments, 3]]] link:../../2020/support-comments-for-static-hugo-website/[Support Comments for Static Hugo Website].
+Marcel Baumann. 2020.
+
+

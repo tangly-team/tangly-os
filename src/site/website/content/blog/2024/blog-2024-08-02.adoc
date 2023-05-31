@@ -14,6 +14,7 @@ tags: ["C++", "architecture", "embedded"]
 :ref-pubsub: https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern[Publish and Subscribe Pattern]
 :ref-seperation-of-concerns: https://en.wikipedia.org/wiki/Separation_of_concerns[Seperation of Concerns]
 :ref-ros: https://www.ros.org/[Robot Operation System]
+:ref-4-and-1-view: https://en.wikipedia.org/wiki/4%2B1_architectural_view_model[4 +1 Architectural View Model]
 
 image::2024-08-02-head.png[width=420,height=360,role=left]
 
@@ -65,7 +66,7 @@ In other words, the truth always lays in the source code.
 
 === Bounded Domain as ROS-2 package
 
-A package is an organizational unit for your ROS-2 code.
+A package is an organizational unit for your {ref-ros} ROS-2 code.
 A package is automatically a distribution unit which can be installed on specific hardware.
 
 A package is also used as a UML logical component.
@@ -82,7 +83,7 @@ Bounded domains are the smallest unit to define a system behavior.
 
 Designers can define cross-cutting solutions to solve recurring problems.
 Examples are configuration, alarm handling, monitoring, observability, logging, or data persistence
-footnote:[{ref-arc42} defines explicit the crosscutting concepts as chapter 8 of their architecture documentation structure.].
+footnote:[{ref-arc42} defines explicit the cross-cutting concepts as chapter 8 of their architecture documentation structure.].
 
 The implementation is always confined in domains.
 Pair working and code reviews can help to ensure similar concrete solutions are used in multiple domains
@@ -147,7 +148,8 @@ Define the diagrams and add them to the {ref-arc42} documentation.
 Link them to the detailed API specification documented with {ref-doxygen}.].
 
 A system-wide component view is also provided
-footnote:[{ref-c4} provides the structure and guidance how to create such views.].
+footnote:[{ref-c4} provides the structure and guidance how to create such views.
+The approach is similar to the old RUP approach with the {ref-4-and-1-view}.].
 
 Event based changes::
 DDD requires that relevant state changes are communicated to interesting parties as events cite:[domain-driven-design-distilled,reactive-messaging-patterns-with-actor-model].
@@ -264,7 +266,8 @@ Being in an architecture role, he needs an agile software architecture training 
 Favor C++::
 C++ provides tremendously better performance for heavy lifting algorithms.
 Static typed code is often easier to maintain.
-Errors are often caught at compile time.
+Errors are often caught at compile time. +
++
 You are not constrained by performance or maintainability requirements, feel free to use Python.
 Technical Excellence::
 Technical excellence as one of twelve {ref-manifesto-principles} of the {ref-manifesto}.
@@ -287,14 +290,43 @@ Finite state machines are documented as UML statecharts cite:[uml-distilled].
 You should avoid composite states.
 Hierarchical finite state machines are fine but should be implemented with the help of a statechart library.
 Hardcoded solutions are error-prone due to history states and parallel execution of composite states.
-ROS-2 provides two such libraries.
-{ref-fsm} can directly be implemented in code as a double nested switch statements.
+ROS-2 provides two such libraries. +
++
+Flat {ref-fsm} can directly be implemented in code as a double nested switch statements.
 Asynchronous Communication::
 ROS-2 nodes are independent execution units.
 The framework will allocate operating system threads based on the overall configuration and the pending requests.
 If your architecture follows the ROS-2 recommendations and favors message-passing communication, you would avoid most realtime problems. +
 +
 Nodes as actors, message-passing communication and finite state machine is a well-documented approach to implement communication and distributed solutions.
+
+[IMPORTANT]
+====
+Finite state machines and statecharts are part of the {ref-uml} notation <<state-diagram>> <<uml-fsm>>.
+
+Finite state machines should be deterministic.
+The set of all relevant _events_ must be identified and documented.
+
+At most, one transition can be fired when a specific event is processed.
+Use guard conditions to restrict which transition could be fired when multiple efferent transitions have the same triggering event.
+A guard is a predicate used to decide if a transition can be fired.
+If your transition guards are using timeouts, you need a global time reference with the expected resolution.
+
+A state in a finite state machine must have a duration.
+The actor implementing the finite state machine is in a state and waits for an input meaning a message, or a timeout event.
+
+A transition has a trigger event, an optional guard and an optional action.
+The guard is a predicate to decide if the transition can be fired or not.
+A transition has semantically no duration.
+The action of a transition must be processed in a brief time.
+Try to limit the parameter list of an action to the owner of the finite state machine and the triggering event.
+
+Entry and exit actions are executed when the state is entered or exited.
+
+State activities are active as long as the state is active.
+Try to avoid activities in control systems.
+An activity needs to be implemented as a separate thread and must be abruptly stopped when leaving the state.
+====
 
 [bibliography]
 === Links
@@ -311,6 +343,9 @@ Marcel Baumann. 2022.
 Marcel Baumann. 2019.
 - [[[technical-debt, 6]]] link:../../2022/technical-debt/[Technical Debt].
 Marcel Baumann. 2022.
+- [[[actor-model, 7]]] https://en.wikipedia.org/wiki/Actor_model[Actor Model]
+- [[[state-diagram, 8]]] https://en.wikipedia.org/wiki/State_diagram[State Diagram]
+- [[[uml-fsm, 9]]] https://en.wikipedia.org/wiki/UML_state_machine[UML State Machine]
 
 === References
 

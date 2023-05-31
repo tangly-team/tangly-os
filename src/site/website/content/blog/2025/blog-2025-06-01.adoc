@@ -66,10 +66,10 @@ The Amazon site refuses connection requests as soon as the frequency hints to a 
 
 ===  Bibliography
 
-We write often technical articles.
+We often write technical articles.
 
 References are provided and follow a standardized format for all bibliographical references.
-We want to increase the confort for the user.
+We want to increase the comfort for the user.
 Most of the references contain a link to the book description on the Amazon website
 footnote:[I chose Amazon because I bought all my ebooks there.
 I do not own anymore paper editions.
@@ -107,8 +107,8 @@ Average number of book references are published per blog in a specific year?
 | 2021   >|  32 | | | | | |
 | 2022   >|  25 | | | | | |
 | 2023   >|  18 | | | | | |
-| 2024   >|  15 | | | | | |
-| 2025   >|  13 | | | | | |
+| 2024   >|  19 | | | | | |
+| 2025   >|  15 | | | | | |
 |*Total* >| 176 | | | | | |
 |===
 

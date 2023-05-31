@@ -10,6 +10,7 @@ tags: ["java"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
+:ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 
 image::2024-08-01-head.jpg[width=420,height=360,role=left]
 
@@ -58,11 +59,14 @@ You should integrate their processes in your toolchain.
 === Scalability Themes
 
 How do the system components communicate with each other?::
-Asynchronous communication, idempotent commands, topics, event based.
-Avoid multi-threading headaches as long as possible.
+Model with asynchronous communication and idempotent commands.
+The {ref-actor-model} is key to simplicity and performance.
+Use topics when you have multiple receivers or senders. +
++
+Avoid multi-threading synchronization headaches with locks, mutexes, or semaphores as long as possible.
 How can we scale the solution?::
 Select a framework providing horizontal scaling.
-The preferred abstraction model is the https://en.wikipedia.org/wiki/Actor_model[Actor] model.
+The preferred abstraction model is the {ref-actor-model}.
 A web server library such as https://www.eclipse.org/jetty/[Jetty] supports unlimited parallel user sessions without writing one line of code.
 A robotic framework such as https://www.ros.org/[ROS-2] delivers concurrency on node level for free.
 Should we prepare for sharding, geolocation, vertical scaling?::
@@ -75,7 +79,7 @@ Fitness functions and monitoring are the current good practices.
 [INFO]
 ====
 Consider architecting your digital solution using domain driven design approach cite:[domain-driven-design,implementing-domain-driven-design,domain-driven-design-distilled].
-The method heavily emphazises the partioning along bounded domains to create independent components.
+The method heavily emphazises the partitioning along bounded domains to create independent components.
 
 The communication between domains shall be asynchronous and event based cite:[reactive-messaging-patterns-with-actor-model,exploring-cqrs].
 
@@ -141,10 +145,11 @@ Marcel Baumann. 2022.
 Marcel Baumann. 2023.
 - [[[behavior-driven-design, 3]]] link:../../2022/behavior-driven-design/[Behavior Driven Design].
 Marcel Baumann. 2022.
-- [[[agile-design-modeling,  q4]]] link:../../2021/agile-design-modeling/[Agile Design Modeling].
+- [[[agile-design-modeling, 4]]] link:../../2021/agile-design-modeling/[Agile Design Modeling].
 Marcel Baumann. 2021.
 - [[[agile-architecture-principles, 5]]] link:../../2019/agile-architecture-principles/[Agile Architecture Principles]
 Marcel Baumann. 2019.
+- [[[actor-model, 6]]] https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 
 === References
 

@@ -2,7 +2,7 @@
 title: "Document Agile Architecture"
 linkTitle: "Document Agile Architecture"
 date: 2024-07-01
-tags: ["agile"]
+tags: ["agile", "architecture"]
 ---
 
 == How Should You Document Your Agile Architecture?
@@ -12,6 +12,7 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 :ref-docbook: https://en.wikipedia.org/wiki/DocBook[DocBook]
 :ref-kroki: https://kroki.io/[Kroki]
+:ref-mermaid: https://mermaid.js.org/[Mermaid]
 :ref-structurizr: https://structurizr.com/[Structurizr]
 
 image::2024-07-01-head.jpg[width=420,height=360,role=left]
@@ -20,40 +21,44 @@ The overwhelming success of agile approaches to create digital products has impl
 
 Design emerges.
 The team learns incrementally and refines the solution cite:[building-evolutionary-architectures-2nd].
-Architecture is a collaborative and iterative process.
+
+Agile architecture is a collaborative and iterative process.
 
 Agile methods do not require comprehensive documentation at the beginning.
 Managers do not need to plan months in advance because things can change as the project evolves.
 
 The idea is to produce documentation with information that is essential to move forward when it makes the most sense.
+Your organization should acknowledge that:
 
-Every software developer is also a designer.
-Every software developer is also an architect.
-Every developer is also a technical writer.
+- _Every software developer is also a designer._
+- _Every software developer is also an architect._
+- _Every software developer is also a technical writer._
 
-Some facts about agile software architecture are:
+Some {ref-less} facts about agile software architecture are:
 
 - The sum of all source code artifacts is the true design blueprint or software architecture.
-- The real software architecture evolves (better or worse) every day of the product, as people program.
+- The real software architecture evolves for the better or worse every day of the product, as people program.
 - The real living architecture needs to be grown every day through acts of programming by master programmers.
 - A software architect who is not in touch with the evolving source code of the product is out of touch with reality.
 - Every programmer is some kind of architect, whether wanted or not.
-Every act of programming is some kind of architectural act – good or bad, small or large, intended or not –.
+Every act of programming is some kind of architectural act: good or bad, small or large, intended or not.
 
 === Tools
 
-Here is a set of tools to explain and document your architecture and source code.
-The tools should support the developers and simplify their working.
+Here is a set of tools to explain and document your architecture, design, and source code.
+The tools should support the developers in their daily work activities.
+They should simplify their working.
 
 {ref-asciidoc}::
 The standard to write technical documentation
 footnote:[{ref-asciidoc} is semantically equivalent to {ref-docbook}.
-This standard is used to write all technical books published by https://www.oreilly.com/[O'Reilly].].
+This markup standard is used to write all technical books published by https://www.oreilly.com/[O'Reilly].].
 All modern DevOps platforms such {ref-github}, {ref-gitlab}, {ref-bitbucket} support this approach.
 Static websites written with {ref-asciidoc} or {ref-markdown} are the current good approach for digital product technical documentation.
-https://plantuml.com/[PlantUML]::
-You can draw all UML artifacts.
-Extensions are available for drawing C4 diagrams. +
+The documents can be put into a source code management system and be versioned.
+{ref-plantuml}::
+You can draw all {ref-uml} artifacts with {ref-plantuml}.
+Extensions are available for drawing {ref-c4} diagrams. +
 +
 You will hit a wall if you draw a lot of views from the same model using plantUML.
 The father of {ref-c4} developed the semantic model <<structurizr-dsl>> of _Structurizr_ to diminish effort and avoid errors. +
@@ -69,8 +74,13 @@ It is the de-facto standard documentation tool for C++ and C applications. +
 +
 We recommend using the documentation tool provided with your technological stack.
 https://en.wikipedia.org/wiki/Test-driven_development[TDD] And https://en.wikipedia.org/wiki/Behavior-driven_development[BDD]::
-Automatic unit and integration tests provide traceability between requirements and source code artifacts.
-Well-documented approaches such as fitness functions <<fitness-functions>> extend the approach to non-functional specifications.
+Automatic unit and integration tests provide traceability between requirements and source code artifacts
+footnote:[Google developed and maintains unit test libraries for C and C++.].
+Well-documented approaches such as fitness functions <<fitness-functions>> extend the approach to non-functional specifications. +
++
+You can add traceability information as annotations to your tests.
+The dependency between requirements, tests, and test campaigns can be automatically documented.
+The traceability reports fulfill the expectations of certification authorities such as FDA, FAA, and TÜV.
 
 A huge variety of diagram types are available through {ref-kroki} if your product has special documentation constraints.
 The tooling is well-integrated with the {ref-asciidoc} toolchain.
@@ -99,21 +109,28 @@ They must support searching, diagramming, and cross-referencing.
 ====
 We are using https://gohugo.io/[Hugo] as a static web generator.
 The documentation theme is https://www.docsy.dev/[Docsy].
-The authors of the theme are collaborators of Google.
+The authors of the theme are collaborators of Google and invest time and effort in the theme.
 
 We are using {ref-asciidoc} as documentation markup language.
 The features are equivalent to {ref-docbook} markup language.
 Extensive https://docs.asciidoctor.org/diagram-extension/latest/[diagramming options] are provided.
 An alternative integrated approach is the generation of diagrams with https://kroki.io/[Kroki].
 
+Asciidoc supports source code highlighters to publish nice looking and legible code snippets.
+
+We use {ref-plantuml} and {ref-mermaid} for creating diagrams.
+
 The site is stored in a https://git-scm.com/[Git] repository.
-The generation and publishing use a simple script.
+The generation and publishing of the whole site use a simple script.
 ====
 
 === arc42 Template
 
-I regularly use the https://arc42.org/[arc42 template] to mitigate lengthy discussions about how extensive software architecture shall be documented.
+I regularly use the {ref-arc42} template to mitigate lengthy discussions about how extensive software architecture shall be documented.
 The founders of https://www.isaqb.org/[iSAQB] certification institute created and maintained the *arc42* template.
+
+The template emphasizes the use of {ref-uml} and {ref-c4} notations for diagrams.
+{ref-plantuml} supports all the required diagram types.
 
 It answers the following two questions in a pragmatic way, but can be tailored to your specific needs:
 
@@ -125,54 +142,56 @@ footnote:[It is probably main reason why {ref-arc42} is still used and the other
 
 image::2024-07-01-arc42.png[width=640,height=400,role=text-center]
 
-Introduction and Goals::
+{counter:chapter} - Introduction and Goals::
 A short description of the requirements, a few quality goals and a listing of important stakeholders.
-Constraints::
+{counter:chapter} - Constraints::
 Anything that constrains teams in design and implementation decisions or decisions about related processes.
 Are valid for whole organizations and companies.
-Context and Scope::
+{counter:chapter} - Context and Scope::
 Separate your system from its external systems and users.
 Specify the external interfaces shown either in a business or technical perspective.
-Solution Strategy::
+{counter:chapter} - Solution Strategy::
 Summary of the fundamental decisions and solution strategies that shape the architecture.
 It can include technology, top-level decomposition, approaches to achieve top quality goals and relevant organizational decisions.
-Building Block View::
+{counter:chapter} - Building Block View::
 A static decomposition of the system, shown as hierarchy of white boxes up to the right level of abstraction.
-Runtime View::
-Behavior of building blocks as scenarios, covering UseCases, operation, administration, error handling and features.
-An example for this might be an UML sequence diagram.
-Deployment View::
+{counter:chapter} - Runtime View::
+Behavior of building blocks as scenarios, covering use cases, operation, administration, error handling and features.
+An example for this might be a sequence diagram.
+{counter:chapter} - Deployment View::
 The technical infrastructure with environments, servers and topologies.
 Mapping of building Blocks to the right infrastructure.
-Crosscutting Concepts::
+{counter:chapter} - Crosscutting Concepts::
 Principal regulations and solution approaches relevant in multiple parts of the system.
 The interaction between different software components.
-Architectural Decisions::
+{counter:chapter} - Architectural Decisions::
 Important, expensive, critical, large scale or risky architecture decisions including rationales.
-Quality Requirements::
+{counter:chapter} - Quality Requirements::
 Quality requirements as scenarios.
 The requirements shall define a quality tree and associated measurements.
 The quality goals can be taken from *_Introduction and goals_*. +
 _Use a fitness function-based approach_.
-Risks and Technical Debt::
+{counter:chapter} - Risks and Technical Debt::
 The known technical risks or already present technical debt. +
 What potential problems exist in the application itself or its surroundings? +
 What does the development team fear for the future?
-Glossary::
+{counter:chapter} - Glossary::
 Important domain and technical terms that stakeholders use when discussing the system. +
 _Try to write all documents in English._
 
-No matter how big your Project is, arc42 approach keeps the documentation relatively slim and maintainable.
+No matter how big your Project is, {ref-arc42} approach keeps the documentation relatively slim and maintainable.
 
 Use this fact to challenge your organization.
 You have found a valid and well-documented architecture documentation approach and template.
 Either your team can use it, or your organization shall provide a better alternative with similar recognition and support level.
 
-Technical writers are satisfied with {ref-asciidoc} and the provided template.
+Technical writers are very satisfied with {ref-asciidoc} and the provided template.
 
 === Lessons Learnt
 
 You must provide documentation to empower new team members cite:[documenting-software-architectures].
+
+Collaborators should have a working understanding of UML cite:[uml-distilled].
 
 The documentation shall be written in English.
 Not all team members are fluent with the local language.
@@ -184,7 +203,8 @@ You shall document architectural design decisions https://adr.github.io/[ADR].
 These records document the evolution of your digital solution over the years.
 
 Most organizations are documentation crazy.
-Old school managers cannot handle the agile manifesto rule The simplest approach to tame them is to use an agile friendly approach such as arc42.
+Old school managers cannot handle the agile manifesto rule.
+The simplest approach to tame them is to use an agile friendly approach such as arc42.
 
 Too many companies believe that wikis and sharepoint sites are a good approach.
 Forget about it.
@@ -206,7 +226,7 @@ Marcel Baumann. 2020.
 - [[[support-comment-docsy,4]]] link:../../2020/support-comments-for-static-hugo-website/[Support Comments For Static Hugo WebSite].
 Marcel Baumann. 2020.
 - [[[software-architecture-description,5]]] https://en.wikipedia.org/wiki/Software_architecture_description[Software Architecture Description].
-Wikipedia. 2024.
+Wikipedia.
 - [[[fitness-functions, 6]]] https://www.thoughtworks.com/radar/techniques/architectural-fitness-function[Architectural Fitness Functions].
 https://www.thoughtworks.com/[Thoughtworks]. 2023.
 - [[[structurizr-dsl, 7]]] https://github.com/structurizr/dsl[Structurizr DSL].
