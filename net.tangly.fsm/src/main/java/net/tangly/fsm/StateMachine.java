@@ -59,9 +59,9 @@ public interface StateMachine<O, S extends Enum<S>, E extends Enum<E>> {
     O context();
 
     /**
-     * Returns true if the finite state machine is in a non final state and will process further events.
+     * Returns true if the finite state machine is in a non-final state and will process further events.
      *
-     * @return flag indicating if the machine is in a non final state
+     * @return flag indicating if the machine is in a non-final state
      */
     boolean isAlive();
 

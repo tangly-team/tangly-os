@@ -89,8 +89,7 @@ public interface Transition<O, S extends Enum<S>, E extends Enum<E>> {
     boolean evaluate(O context, Event<E> event);
 
     /**
-     * Executes the action associated with the transition if defined. The action is only executed if the event and guard evaluates to true {@link
-     * #evaluate(Object, Event)}.
+     * Executes the action associated with the transition if defined. The action is only executed if the event and guard evaluate to true {@link #evaluate(Object, Event)}.
      *
      * @param context instance owning the finite state machine
      * @param event   the event triggering the execution of the action
@@ -99,23 +98,23 @@ public interface Transition<O, S extends Enum<S>, E extends Enum<E>> {
     boolean execute(O context, Event<E> event);
 
     /**
-     * Returns the human readable description of the transition.
+     * Returns the human-readable description of the transition.
      *
      * @return the description of the transition if defined otherwise null
      */
     String description();
 
     /**
-     * Returns the human readable description of the guard of the transition.
+     * Returns the human-readable description of the guard for the transition.
      *
-     * @return the description of the guard of the transition if defined otherwise null
+     * @return the description of the guard for the transition if defined otherwise null
      */
     String guardDescription();
 
     /**
-     * Returns the human readable description of the action of the transition.
+     * Returns the human-readable description of the action for the transition.
      *
-     * @return the description of the action of the transition if defined otherwise null
+     * @return the description of the action for the transition if defined otherwise null
      */
     String actionDescription();
 }

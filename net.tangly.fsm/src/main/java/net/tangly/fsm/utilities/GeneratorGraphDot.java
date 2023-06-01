@@ -103,7 +103,7 @@ public class GeneratorGraphDot<O, S extends Enum<S>, E extends Enum<E>> extends 
     }
 
     private State<O, S, E> inferTransitionState(@NotNull State<O, S, E> state) {
-        return state.isComposite() ? inferTransitionState(state.substates().stream().sorted(Comparator.comparing(State::id)).findFirst().orElseThrow()) : state;
+        return state.isComposite() ? inferTransitionState(state.substates().stream().min(Comparator.comparing(State::id)).orElseThrow()) : state;
     }
 
     private String getStyle(@NotNull State<O, S, E> state) {

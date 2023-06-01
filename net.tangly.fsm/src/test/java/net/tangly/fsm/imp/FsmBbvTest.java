@@ -23,7 +23,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Tests the example of bbv fsm library described https://code.google.com/p/bbvfsm/wiki/GettingStarted.
+ * Tests the example of bbv fsm library described <a href= "https://code.google.com/p/bbvfsm/wiki/GettingStarted">Getting Started</a>.
  */
 class FsmBbvTest {
     @Test

@@ -53,7 +53,7 @@ public class DefinitionBuilder<O, S extends Enum<S>, E extends Enum<E>>
     /**
      * Constructor of the class. Creates a finite state machine builder with the given root state identifier.
      *
-     * @param rootId identifier of the root state of the state machine definition under construction
+     * @param rootId identifier of the root state for the state machine definition under construction
      */
     public DefinitionBuilder(@NotNull S rootId) {
         root = new StateImp<>(rootId);

@@ -39,7 +39,7 @@ import java.util.StringJoiner;
 class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateMachine<O, S, E> {
 
     /**
-     * Human readable name of the state machine instance.
+     * Human-readable name of the state machine instance.
      */
     private final String name;
 
@@ -71,7 +71,7 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
     /**
      * Constructor of the class.
      *
-     * @param name  human readable name of the finite state machine instance
+     * @param name  human-readable name of the finite state machine instance
      * @param root  root state containing the description of the finite state machine
      * @param owner instance owning the finite state machine
      */
@@ -209,7 +209,7 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
     /**
      * Returns the collection of current history states.
      *
-     * @return the history states unmodifiable collection
+     * @return the history states as an unmodifiable collection
      */
     Collection<State<O, S, E>> historyStates() {
         return Collections.unmodifiableCollection(history);

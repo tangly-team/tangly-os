@@ -59,7 +59,7 @@ public class StaticChecker<O, S extends Enum<S>, E extends Enum<E>> implements C
     }
 
     /**
-     * Checks each enumeration value is used exactly once to identify a state of the machine.
+     * Checks each enumeration value is used exactly once to identify the state of the machine.
      *
      * @param root the final state machine description to check
      * @return the list of detected error messages

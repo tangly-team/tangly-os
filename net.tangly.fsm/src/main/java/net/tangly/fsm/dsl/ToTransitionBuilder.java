@@ -14,7 +14,7 @@
 package net.tangly.fsm.dsl;
 
 /**
- * Domain specific language fluent interface to configure a new transition to another node.
+ * Domain-specific language fluent interface to configure a new transition to another node.
  *
  * @param <O> the class of the instance owning the finite state machine instance
  * @param <S> enumeration type for the identifiers of states

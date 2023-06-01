@@ -42,9 +42,9 @@ public class Actors<T> {
     private final Map<String, Channel<T>> channels;
     private final ExecutorService executor;
 
-    static void awaitTermination(ExecutorService service, long timeout, @NotNull TimeUnit unit) {
+    static boolean awaitTermination(ExecutorService service, long timeout, @NotNull TimeUnit unit) {
         try {
-            service.awaitTermination(timeout, unit);
+            return service.awaitTermination(timeout, unit);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -128,7 +128,7 @@ public class Actors<T> {
      * @param channel channel to subscribe to
      */
     public void register(@NotNull Actor<T> actor, @NotNull String channel) {
-        Objects.nonNull(channels.get(channel));
+        Objects.requireNonNull(channels.get(channel));
         register(actor);
         channels.get(channel).subscribe(actor);
     }
@@ -140,15 +140,15 @@ public class Actors<T> {
      * @param channel name of the channel as registered
      */
     void subscribeTo(@NotNull UUID actorId, @NotNull String channel) {
-        Objects.nonNull(channels.get(channel));
-        Objects.nonNull(actors.get(actorId));
+        Objects.requireNonNull(channels.get(channel));
+        Objects.requireNonNull(actors.get(actorId));
         channels.get(channel).subscribe(actors.get(actorId));
     }
 
     /**
      * Register the channel and activate it.
      *
-     * @param channel
+     * @param channel name under which the channel is registered
      */
     public void register(@NotNull String channel) {
         channels.put(channel, new Channel<>(channel));

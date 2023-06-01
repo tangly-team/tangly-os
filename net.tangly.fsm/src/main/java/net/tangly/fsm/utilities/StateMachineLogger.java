@@ -25,8 +25,8 @@ import java.util.Objects;
 import java.util.function.BiConsumer;
 
 /**
- * The state machine logger documents all activities performed during the firing of events for a specific finite state machine instance. All logs have the
- * following structure: machine_name[machine_oid] operation operation parameters
+ * The state machine logger documents all activities performed during the firing of events for a specific finite state machine instance. All logs have the following structure:
+ * machine_name[machine_oid] operation parameters
  */
 public record StateMachineLogger<O, S extends Enum<S>, E extends Enum<E>>(StateMachine<O, S, E> machine) implements StateMachineEventHandler<O, S, E> {
     private static final Logger logger = LogManager.getLogger();

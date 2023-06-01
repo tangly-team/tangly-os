@@ -52,23 +52,23 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
     /**
      * Returns true if the state is an initial state.
      *
-     * @return flag indicating if the sate is an initial one
+     * @return flag indicating if the state is an initial state
      */
     boolean isInitial();
 
     /**
      * Returns true if the state is a final state. A state is final if no transitions are leaving it.
      *
-     * @return flag indicating if the state is a final one
+     * @return flag indicating if the state is final
      */
     default boolean isFinal() {
         return localTransitions().isEmpty() && transitions().isEmpty();
     }
 
     /**
-     * Returns true if the state contains substates. If true the state cannot be initial or final.
+     * Returns true if the state contains substates. If true, the state cannot be initial or final.
      *
-     * @return flag indicating if the state is a composite one.
+     * @return flag indicating if the state is composite.
      */
     default boolean isComposite() {
         return !substates().isEmpty();
@@ -93,28 +93,28 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
     /**
      * Returns the list of substates.
      *
-     * @return the list of substates or an empty list if none is defined.
+     * @return the set of substates or an empty list if none is defined.
      */
     Set<State<O, S, E>> substates();
 
     /**
      * Returns the list of transitions starting from this state.
      *
-     * @return the list of transitions or an empty list if none is defined
+     * @return the set of transitions or an empty list if none is defined
      */
     Set<Transition<O, S, E>> transitions();
 
     /**
-     * Returns the list of local or self transitions starting from this state. Self transitions do not trigger entry or exit actions.
+     * Returns the list of local or self transitions starting from this state. Self-transitions do not trigger entry or exit actions.
      *
-     * @return the list of self transitions or an empty list if none is defined
+     * @return the set of self-transitions or an empty list if none is defined
      */
     Set<Transition<O, S, E>> localTransitions();
 
     /**
      * Returns true if the state has an entry action.
      *
-     * @return flag indicating if the sate has an entry action
+     * @return flag indicating if the state has an entry action
      */
     default boolean hasEntryAction() {
         return Objects.nonNull(entryAction());
@@ -130,7 +130,7 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
     /**
      * Returns true if the state has an exit action.
      *
-     * @return flag indicating if the sate has an exit action
+     * @return flag indicating if the state has an exit action
      */
     default boolean hasExitAction() {
         return Objects.nonNull(entryAction());
@@ -167,33 +167,32 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
     Deque<State<O, S, E>> initialStates();
 
     /**
-     * Returns the human readable description of the state.
+     * Returns the human-readable description of the state.
      *
      * @return the description of the state if defined otherwise null
      */
     String description();
 
     /**
-     * Returns the human readable description of the entry action of the state.
+     * Returns the human-readable description for the entry action of the state.
      *
-     * @return the description of the entry action of state if defined otherwise null
+     * @return the description of the entry action for the state if defined otherwise null
      */
     String entryActionDescription();
 
     /**
-     * Returns the human readable description of the exit action of the state.
+     * Returns the human-readable description for the exit action of the state.
      *
-     * @return the description of the exit action of state if defined otherwise null
+     * @return the description of the exit action for state if defined otherwise null
      */
     String exitActionDescription();
 
     /**
-     * Returns the list of all substates including this state and the given substate to reach the given substate. The hierarchy includes the boundary states. If
-     * not found the list is empty.
+     * Returns the list of all substates including this state and the given substate to reach the given substate. The hierarchy includes the boundary states. If not found, the list
+     * is empty.
      *
      * @param substate substate to look for
-     * @return the ordered hierarchy of states to reach the substate if found otherwise an empty list. The head contains the root state, the tail contains the
-     * searched substate
+     * @return the ordered hierarchy of states to reach the substate if found otherwise an empty list. The head contains the root state, the tail contains the searched substate
      */
     default Deque<State<O, S, E>> getHierarchyFor(State<O, S, E> substate) {
         return getHierarchyFor(new ArrayDeque<>(), this, substate);

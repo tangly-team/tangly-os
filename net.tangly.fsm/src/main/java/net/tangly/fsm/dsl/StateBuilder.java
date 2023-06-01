@@ -14,7 +14,7 @@
 package net.tangly.fsm.dsl;
 
 /**
- * Domain specific language fluent interface to configure an existing state with new .
+ * Domain-specific language fluent interface to configure an existing state with new substates.
  *
  * @param <O> the class of the instance owning the finite state machine instance
  * @param <S> enumeration type for the identifiers of states

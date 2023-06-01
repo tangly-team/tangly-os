@@ -76,13 +76,6 @@ class GeneratorsTest {
     }
 
     @Test
-    void foo() throws IOException {
-        generateTest(new GeneratorMermaid<>(FsmBbv.build(), BBV));
-        generateTest(new GeneratorMermaid<>(FsmTest.build(), TEST));
-        generateTest(new GeneratorMermaid<>(FsmWasherTest.build(), WASHER));
-    }
-
-    @Test
     void generateGraphLocalTest() {
         generateLocalTest(new GeneratorPlantUml<>(FsmTest.build(), TEST));
         generateLocalTest(new GeneratorMermaid<>(FsmTest.build(), TEST));

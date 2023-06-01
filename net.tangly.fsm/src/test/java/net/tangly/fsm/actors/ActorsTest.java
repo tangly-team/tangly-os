@@ -26,7 +26,7 @@ class ActorsTest {
     static final String ONE = "one";
     static final String TWO = "two";
 
-    static record Message(String command, Integer payload) {
+    record Message(String command, Integer payload) {
     }
 
     static class PeerActor extends ActorImp<ActorsTest.Message> implements Actor<Message> {
@@ -71,7 +71,7 @@ class ActorsTest {
                 Message msg = message();
                 if (msg.payload() < 20) {
                     counter++;
-                    actors.sendMsgTo(new Message(msg.command, msg.payload + 1), actors.actorNamed(peerName).get().id());
+                    actors.sendMsgTo(new Message(msg.command, msg.payload + 1), actors.actorNamed(peerName).map(Actor::id).orElse(null));
                 }
             }
         }
@@ -118,7 +118,7 @@ class ActorsTest {
         actors.register(new RegisteredActor(ONE, actors, TWO));
         actors.register(new RegisteredActor(TWO, actors, ONE));
 
-        actors.actorNamed("one").get().receive(new Message("do", 0));
+        actors.actorNamed("one").ifPresent(o -> o.receive(new Message("do", 0)));
         actors.awaitTermination(1, TimeUnit.SECONDS);
 
         assertThat(((RegisteredActor) actors.actorNamed(ONE).get()).counter).isEqualTo(10);

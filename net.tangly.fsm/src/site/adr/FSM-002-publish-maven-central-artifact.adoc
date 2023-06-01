@@ -26,7 +26,7 @@ More customers will validate the usefulness of the library and identify extensio
 === Decision
 
 The library shall be published on maven central and be accessible to a wide range of developers and organizations.
-A website shall be set up to provide an adequate documentation for users.
+A website shall be set up to provide adequate documentation for users.
 
 The https://blog.tangly.net/docs/fsm/[FSM website] will use a static web approach to minimize costs and provide good legibility.
 

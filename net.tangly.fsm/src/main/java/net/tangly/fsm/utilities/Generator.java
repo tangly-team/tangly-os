@@ -30,7 +30,7 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * Abstract generator to create a human-readable description of a finite state machine description. the key mechanisms needed to create a finite state machine description are:
+ * Abstract generator to create a human-readable description of a finite state machine description. The key mechanisms needed to create a finite state machine description are:
  * <ul>
  *     <li>Generate all substates of a specific state.
  *     A state has a name, a context, description, final flag, initial flag, composite flag, entry action, and exit action.</li>
@@ -41,7 +41,7 @@ import java.util.Set;
  * </ul>
  * <p>Orthogonal states are not supported in the FSM library and do not need to be created.
  * Only shallow history states are supported in the FSM library.
- * You can emulate deep history state trhough the declaration of a shallow history state in all substates.
+ * You can emulate deep history state through the declaration of a shallow history state in all substates.
  * The root node is a nice approach to pack all states together. Avoid creating the initial and final state for the root node. It does not add any semantic information and
  * clutter the diagram.</p>
  *
@@ -78,9 +78,9 @@ public abstract class Generator<O, S extends Enum<S>, E extends Enum<E>> {
 
     /**
      * Generate the content of the file identified through the path if the file does not exist or the new creation of the output is different to the one in the file. This feature
-     * is for example helpful if the file is under version control to avoid spurious changes.
+     * is, for example, helpful if the file is under version control to avoid spurious changes.
      *
-     * @param path path to the file to updated.
+     * @param path path to the file to update.
      * @return flag indicating if the file was updated or not
      * @throws IOException if a file could not be read or written
      */

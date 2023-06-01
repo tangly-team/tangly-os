@@ -22,7 +22,7 @@ import java.util.Comparator;
 import java.util.Objects;
 
 /**
- * THe <a href="https://github.com/sverweij/state-machine-cat">state machine cat</a> is a nice FSM diagram generator with a few pecularities.
+ * THe <a href="https://github.com/sverweij/state-machine-cat">state machine cat</a> is a nice FSM diagram generator with a few peculiarities.
  * <ul>
  *     <li>Node declarations on the same level must be seperated with a colon. The declaration list must be terminated with a semicolon.</li>
  *     <li>Each transition declaration must be terminated with a semicolon. The link symbol of a transition is "=>".</li>

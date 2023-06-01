@@ -27,8 +27,8 @@ import java.util.concurrent.SubmissionPublisher;
  * @param <T>
  */
 public class Channel<T> implements AutoCloseable {
-    private String name;
-    private SubmissionPublisher<T> publisher;
+    private final String name;
+    private final SubmissionPublisher<T> publisher;
 
     static class ActorSubscriber<T> implements Flow.Subscriber<T> {
         private static final Logger logger = LogManager.getLogger();
@@ -89,7 +89,7 @@ public class Channel<T> implements AutoCloseable {
     }
 
     @Override
-    public void close() throws Exception {
+    public void close() {
         publisher.close();
     }
 }

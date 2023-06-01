@@ -21,7 +21,7 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 /**
- * Domain specific language fluent interface to configure a new transition.
+ * Domain-specific language fluent interface to configure a new transition.
  *
  * @param <O> the class of the instance owning the finite state machine instance
  * @param <S> enumeration type for the identifiers of states

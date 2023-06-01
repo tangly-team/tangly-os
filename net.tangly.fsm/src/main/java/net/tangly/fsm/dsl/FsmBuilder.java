@@ -18,8 +18,8 @@ import net.tangly.fsm.StateMachine;
 import net.tangly.fsm.imp.DefinitionBuilder;
 
 /**
- * Domain specific language fluent interface to build a state machine declaration starting with a state. This interface provides the entry point to select a
- * state or add a substate to a selected state.
+ * Domain-specific language fluent interface to build a state machine declaration starting with a state. This interface provides the entry point to select a state or add a substate
+ * to a selected state.
  *
  * @param <O> the class of the instance owning the finite state machine instance
  * @param <S> enumeration type for the identifiers of states
@@ -31,11 +31,11 @@ public interface FsmBuilder<O, S extends Enum<S>, E extends Enum<E>> {
     /**
      * Builder method to create a new finite state machine builder.
      *
-     * @param rootId the identifier of the root state of the finite state machine to build
+     * @param rootId the identifier of the root state for the finite state machine to build
      * @param <O>    the class of the instance owning the finite state machine instance
      * @param <S>    enumeration type for the identifiers of states
      * @param <E>    enumeration type for the identifiers of events
-     * @return the newly build finite state machine builder
+     * @return the new build finite state machine builder
      */
     static <O, S extends Enum<S>, E extends Enum<E>> FsmBuilder<O, S, E> of(S rootId) {
         return new DefinitionBuilder<>(rootId);
@@ -66,7 +66,7 @@ public interface FsmBuilder<O, S extends Enum<S>, E extends Enum<E>> {
     /**
      * Creates an instance of the state machine based on the definition of the state machine available to the builder.
      *
-     * @param name  human readable name of the finite state machine instance
+     * @param name  human-readable name of the finite state machine instance
      * @param owner instance owning the finite state machine
      * @return the state machine instance
      */
@@ -86,7 +86,7 @@ public interface FsmBuilder<O, S extends Enum<S>, E extends Enum<E>> {
      * Adds a new state to the root state.
      *
      * @param stateId     identifier of the new state
-     * @param description human readable description of the state
+     * @param description human-readable description of the state
      * @return the requested state builder
      */
     default SubStateBuilder<O, S, E> addToRoot(S stateId, String description) {

@@ -25,9 +25,9 @@ We will evaluate if the loss of domain names for classes has a negative impact o
 
 === Consequences
 
-We have a cleaner and simpler interface and have increased dependency to regular JDK classes.
+We have a cleaner and simpler interface and have increased dependency on regular JDK classes.
 The generic names of the guard predicate and functional action should not diminish the legibility of the source code.
 The role of the type is defined through the name of the parameter in the method signature.
 
 Care was taken to use explicit parameter names and document them accordingly in JavaDoc.
-Modern IDE such as IntelliJ IDEA display formatted JavaDoc as hints to the developer.
+Modern IDEs such as IntelliJ IDEA display formatted JavaDoc as hints to the developer.

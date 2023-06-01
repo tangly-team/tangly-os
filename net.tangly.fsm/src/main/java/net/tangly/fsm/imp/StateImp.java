@@ -25,7 +25,7 @@ import java.util.Set;
 import java.util.function.BiConsumer;
 
 /**
- * Default implementation of an mutable class providing the state immutable interface.
+ * Default implementation of a mutable class implementing the immutable interface of the state.
  *
  * @param <O> the class of the instance owning the finite state machine instance
  * @param <S> the state enumeration type uniquely identifying a state in the state machine
