@@ -1,20 +1,21 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *
  */
 
-package net.tangly.bdd.engine;
+package net.tangly.spec.bdd.engine;
 
-import net.tangly.bdd.Scenario;
-import net.tangly.bdd.Scene;
-import net.tangly.bdd.Story;
+import net.tangly.spec.bdd.Scenario;
+import net.tangly.spec.bdd.Scene;
+import net.tangly.spec.bdd.Story;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.extension.AfterAllCallback;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
@@ -27,10 +28,11 @@ import org.junit.jupiter.api.extension.ParameterResolver;
 import static org.junit.platform.commons.support.AnnotationSupport.isAnnotated;
 
 /**
- * A custom extension that allow test authors to create and run behaviors and stories i.e. BDD specification tests. Jupiter engine will provide an execution
- * context instance under which an extension is to operate. A store is a holder that can be used by custom extensions to save and retrieve arbitrary
- * data––basically a supercharged in-memory map. In order to avoid accidental key collisions between multiple extensions, the good folk at JUnit introduced the
- * concept of a namespace. A namespace is a way to scope the data saved by extensions.
+ * A custom extension that allows test authors to create and run behaviors and stories i.e. BDD specification tests.
+ * <p>Jupiter engine will provide an execution context instance under which an extension
+ * is to operate. A store is a holder that can be used by custom extensions to save and retrieve arbitrary data––basically a supercharged in-memory map. In order to avoid
+ * accidental key collisions between multiple extensions, the good folk at JUnit introduced the concept of a namespace. A namespace is a way to scope the data saved by
+ * extensions.</p>
  */
 public class StoryExtension implements BeforeAllCallback, AfterAllCallback, BeforeEachCallback, ParameterResolver {
 

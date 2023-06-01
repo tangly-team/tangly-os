@@ -9,7 +9,7 @@ weight: 20
 This document provides a high-level view of the changes introduced in the BDD library by release.
 For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] commits.
 
-=== 0.2.7 (2023-03-31)
+=== 0.2.7 (2023-06-30)
 
 * Update of library dependencies, update to JDK-20, and modern Gradle approach to build solutions.
 
@@ -23,9 +23,9 @@ For a detailed view of what has changed, refer to the https://bitbucket.org/tang
 
 === 0.2.4 (2020-06-30)
 
-* BDD library is now a regular Java 9 module (thanks to the new module support in Gradle 6.4)
-* Added a JSON schema for the bdd report JSON file and validate the format in unit tests
-* The library requires JDK 17 and all dependencies were updated to the current version
+* BDD library is now a regular Java 9 module (thanks to the new module support in Gradle 6.4).
+* A JSON schema for the bdd report JSON file was added and used to validate the format in unit tests.
+* The library requires JDK 17 and all dependencies were updated to the current version.
 
 === 0.2.3 (2020-03-06)
 

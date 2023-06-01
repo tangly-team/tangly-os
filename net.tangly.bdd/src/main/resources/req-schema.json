@@ -1,0 +1,63 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "behavior driven design BDD consolidated report schema",
+    "definitions": {
+        "comment": {
+            "type": "object",
+            "properties": {
+                "author": "string",
+                "creation": "date-time",
+                "text": "string"
+            }
+        },
+        "reference": {
+            "type": "object",
+            "properties": {
+                "kind": {
+                    "type": "string",
+                    "enum": [
+                        "parent",
+                        "supersede"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "required": [
+                    "type",
+                    "id"
+                ]
+            }
+        },
+        "section": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "required": [
+                    "name",
+                    "text"
+                ]
+            }
+        },
+        "requirement": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "required": [
+                    "id",
+                    "text"
+                ]
+            }
+        }
+    }
+}
