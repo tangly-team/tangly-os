@@ -66,7 +66,7 @@ class Server extends ActorFsm<Server, ServerStates, Events> {
     private void processRequest(Event<Events> event) {
         nrRequests++;
         var clientName = (String) (event.parameters().get(0));
-        actors.sendMsgTo(Event.of(Events.Response, name(), clientName), actors.actorNamed(clientName).get().id());
+        actors.sendTo(Event.of(Events.Response, name(), clientName), actors.actorNamed(clientName).get().id());
     }
 }
 
@@ -93,7 +93,7 @@ class Client extends ActorFsm<Client, ClientStates, Events> {
 
     private void sendRequestToServer(Event<Events> event) {
         var serverName = (String) (event.parameters().get(1));
-        actors.sendMsgTo(Event.of(Events.Request, name(), serverName), actors.actorNamed(serverName).get().id());
+        actors.sendTo(Event.of(Events.Request, name(), serverName), actors.actorNamed(serverName).get().id());
         nrRequests++;
     }
 

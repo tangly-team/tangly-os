@@ -13,8 +13,10 @@
 
 package net.tangly.fsm.actors;
 
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
+import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -25,72 +27,99 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class ActorsTest {
     static final String ONE = "one";
     static final String TWO = "two";
+    static final String CHANNEL = "channel";
 
     record Message(String command, Integer payload) {
     }
 
-    static class PeerActor extends ActorImp<ActorsTest.Message> implements Actor<Message> {
+    static class PeerActor extends ActorImp<Message> implements Actor<Message> {
         private PeerActor peer;
         private int counter;
 
-        public PeerActor(String name) {
+        PeerActor(String name) {
             super(name);
         }
 
-        public void peer(PeerActor peer) {
+        void peer(PeerActor peer) {
             this.peer = peer;
         }
 
         @Override
-        public void run() {
-            for (; ; ) {
-                Message msg = message();
-                if (msg.payload() < 20) {
-                    counter++;
-                    peer.receive(new Message(msg.command, msg.payload + 1));
-                }
+        protected boolean process(@NotNull Message msg) {
+            if (msg.payload() < 20) {
+                counter++;
+                peer.receive(new Message(msg.command, msg.payload + 1));
+                return true;
+            } else {
+                return false;
             }
         }
     }
 
-    static class RegisteredActor extends ActorImp<ActorsTest.Message> implements Actor<Message> {
+    static class RegisteredActor extends ActorImp<Message> implements Actor<Message> {
         private final String peerName;
         private final Actors<Message> actors;
         private int counter;
 
-        public RegisteredActor(String name, Actors<Message> actors, String peerName) {
+        RegisteredActor(String name, Actors<Message> actors, String peerName) {
             super(name);
             this.actors = actors;
             this.peerName = peerName;
         }
 
-
         @Override
-        public void run() {
-            for (; ; ) {
-                Message msg = message();
-                if (msg.payload() < 20) {
-                    counter++;
-                    actors.sendMsgTo(new Message(msg.command, msg.payload + 1), actors.actorNamed(peerName).map(Actor::id).orElse(null));
-                }
+        protected boolean process(@NotNull Message msg) {
+            if (msg.payload() < 20) {
+                counter++;
+                actors.sendTo(new Message(msg.command, msg.payload + 1), actors.actorNamed(peerName).map(Actor::id).orElseThrow());
+                return true;
+            } else {
+                return false;
             }
         }
     }
 
-    static class FlowActor extends ActorImp<ActorsTest.Message> implements Actor<Message> {
+    static class FlowActor extends ActorImp<Message> implements Actor<Message> {
         private int counter;
 
-        public FlowActor(String name) {
+        FlowActor(String name) {
             super(name);
         }
 
         @Override
-        public void run() {
-            for (; ; ) {
-                Message msg = message();
-                if (counter < 20) {
-                    counter++;
+        protected boolean process(@NotNull Message msg) {
+            if (counter < 20) {
+                counter++;
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    static class SingleRegisterActor extends ActorImp<Message> implements Actor<Message> {
+        private final Actors actors;
+        private final String channel;
+        private int counter;
+
+        SingleRegisterActor(String name, Actors<Message> actors, String channel) {
+            super(name);
+            this.actors = actors;
+            this.channel = channel;
+        }
+
+        @Override
+        protected boolean process(@NotNull Message msg) {
+            if (counter < 20) {
+                ++counter;
+                if (Objects.isNull(channel)) {
+                    actors.sendTo(msg, id());
+                } else {
+                    actors.publish(msg, channel);
                 }
+                return true;
+            } else {
+                return false;
             }
         }
     }
@@ -113,6 +142,31 @@ class ActorsTest {
     }
 
     @Test
+    void runSingleActorWithActorRegistry() {
+        Actors<Message> actors = new Actors<>();
+        actors.register(new SingleRegisterActor(ONE, actors, null));
+
+        actors.sendTo(new Message("count", 20), actors.actorNamed(ONE).get().id());
+        actors.awaitTermination(1, TimeUnit.SECONDS);
+
+        assertThat(((SingleRegisterActor) actors.actorNamed(ONE).get()).counter).isEqualTo(20);
+    }
+
+    @Test
+    void runSingleActorWithChannelRegistry() {
+        Actors<Message> actors = new Actors<>();
+        actors.register(CHANNEL);
+        var actor = new SingleRegisterActor(ONE, actors, CHANNEL);
+        actors.register(actor);
+        actors.subscribeTo(actor.id(), CHANNEL);
+
+        actors.publish(new Message("count", 20), CHANNEL);
+        actors.awaitTermination(1, TimeUnit.SECONDS);
+
+        assertThat(((SingleRegisterActor) actors.actorNamed(ONE).get()).counter).isEqualTo(20);
+    }
+
+    @Test
     void runWithActorRegistry() {
         Actors<Message> actors = new Actors<>();
         actors.register(new RegisteredActor(ONE, actors, TWO));
@@ -127,9 +181,8 @@ class ActorsTest {
 
     @Test
     void runWithChannelRegistry() {
-        final String CHANNEL = "channel";
         Actors<Message> actors = new Actors<>();
-        actors.register("channel");
+        actors.register(CHANNEL);
         actors.register(new FlowActor(ONE), CHANNEL);
         actors.register(new FlowActor(TWO), CHANNEL);
 

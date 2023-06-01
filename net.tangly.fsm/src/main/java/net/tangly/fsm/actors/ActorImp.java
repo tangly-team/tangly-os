@@ -54,7 +54,14 @@ public abstract class ActorImp<T> implements Actor<T>, Runnable {
         }
     }
 
-    protected T message() {
+    protected abstract boolean process(@NotNull T msg);
+
+    @Override
+    public void run() {
+        while (process(message())) ;
+    }
+
+    private T message() {
         try {
             return messages.take();
         } catch (InterruptedException e) {

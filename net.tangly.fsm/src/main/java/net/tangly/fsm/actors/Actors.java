@@ -74,7 +74,7 @@ public class Actors<T> {
      * @param message message to send
      * @param id      identifier of the actor
      */
-    public void sendMsgTo(@NotNull T message, @NotNull UUID id) {
+    public void sendTo(@NotNull T message, @NotNull UUID id) {
         if (actors.containsKey(id)) {
             actors.get(id).receive(message);
         }
@@ -86,7 +86,7 @@ public class Actors<T> {
      * @param message message sent on the channel
      * @param channel external identifier of the channel to use
      */
-    void send(@NotNull T message, @NotNull String channel) {
+    void publish(@NotNull T message, @NotNull String channel) {
         var handler = channelNamed(channel);
         handler.ifPresent(o -> o.publisher().submit(message));
     }

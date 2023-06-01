@@ -45,10 +45,7 @@ public class ActorFsm<O extends ActorFsm<O, S, E>, S extends Enum<S>, E extends 
     }
 
     @Override
-    public void run() {
-        for (; ; ) {
-            Event<E> event = message();
-            fsm.fire(event);
-        }
+    protected boolean process(Event<E> msg) {
+        return fsm.fire(msg);
     }
 }
