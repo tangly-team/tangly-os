@@ -102,7 +102,7 @@ Here are a few simple practices for successful onboarding:
 
 * Give them an early coding assignment that matters.
 * Give them access to process, practices, systems, and people right away.
-* Get them connected to peers through pair programming.
+* Get them connected to peers through pair programming, mob programming, and coding dojos.
 * Give them a feedback loop through regular reviews.
 * Give them time to reach their potential.
 

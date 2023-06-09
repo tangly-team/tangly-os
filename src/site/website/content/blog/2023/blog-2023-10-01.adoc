@@ -61,7 +61,7 @@ Or do lots of things completely _wrong_.
 
 This kind of doubt is one of the fastest ways to find yourself in a quagmire of unfinished work.
 
-Making your work visible raises expectation, and luckily it raises opinions of you.
+Making your work visible raises expectation, and luckily, it raises opinions of you.
 
 The time wasted extracting progress status out of a teammate or following up on interdependent tasks *will* make you risk failing your sprint.
 
@@ -83,11 +83,11 @@ Burn-down and burn-up diagrams are available for sprints, epics, releases and pr
 This is not a measure of work done but work which is *still to be done*.
 It is a valuable tool to use as a thermometer or symptom checker.
 
-Flatlining is a symptom of a few things:
+Flat-lining is a symptom of a few things:
 
 - You are working on too many stories at a time.
 You are doing lots of nothing, progress gets done very slowly.
-We recommend to introduce https://en.wikipedia.org/wiki/Work_in_process[WIP] limits.
+We recommend introducing https://en.wikipedia.org/wiki/Work_in_process[WIP] limits.
 - Your team hast too many started but unfinished stories at the end of the sprint.
 We recommend institutionalizing https://en.wikipedia.org/wiki/Pair_programming[pair programming] and https://en.wikipedia.org/wiki/Mob_programming[mob programming].
 - Your tasks are not granular enough.
@@ -112,7 +112,7 @@ This burndown chart is responsible for tracking all the progress made by your sc
 The vertical axis of the chart depicts the stories.
 The horizontal axis represents the time your team members spent.
 Cumulative flow diagrams::
-The diagrams are available for sprints, epics, releases and products.
+The diagrams are available for sprints, epics, releases, and products.
 These diagrams show the bottlenecks due to team member specializations or dependencies to external actors. +
 _Lean approaches request to identify and implement corrective measures to remove identified bottlenecks._
 Velocity visualization::
@@ -147,7 +147,7 @@ image::2023-10-01-dora-metrics.png[width=80%,height=360,role=text-center]
 * Deployment frequency (DF).
 * https://en.wikipedia.org/wiki/Lead_time[Lead time] for changes (LT), you can also compute the average age of issues and cumulative flow diagrams for issues.
 * Change failure rate (CFR).
-* https://en.wikipedia.org/wiki/Mean_time_to_recovery[Meantime to recovery] _MTTR_
+* https://en.wikipedia.org/wiki/Mean_time_to_recovery[Meantime to Recovery] _MTTR_
 _Called time to restore service in the above dashboard_.
 
 === GitHub Tools
@@ -182,7 +182,7 @@ A picture is worth a thousand words.
 The visualization of facts often helps to identify improvement potential.
 The same diagrams measure the success of specific improvement measures.
 One well-documented successful approach are the four DORA metrics and associated graphs.
-, Experienced teams can improve effectivity and efficiency with more advanced techniques cite:[site-reliability-engineering,devops-handbook,your-code-as-crime-scene,software-design-x-rays]
+Experienced teams can improve effectivity and efficiency with more advanced technique cite:[site-reliability-engineering,devops-handbook,your-code-as-crime-scene,software-design-x-rays]
 
 [bibliography]
 === Links

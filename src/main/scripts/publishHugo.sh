@@ -16,6 +16,8 @@ siteName=tangly-os-site
 siteDir=$siteRootDir$siteName
 
 cd $siteDir
+# initiate empty public folder with git to enable optional completion step and publishing in our pages repository (GitHub, GitLab, orBitBucket)
+git clone --no-checkout git@github.com:tangly-team/tangly-team.github.io.git public
 hugo --destination public
 
 # commit will push all changes to the git repository and trigger an update of the website, GitHub default branch is main

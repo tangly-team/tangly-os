@@ -59,19 +59,21 @@ I recognize that sadly {ref-safe} is very popular in big companies.
 If you are interested in scaling agile, please consider first a formation and certification in {ref-less}.
 I strongly recommend to first master Scrum and lean approaches before tackling scaling approaches in software product development.
 
+=== Other Certifications
 
-PMI-ACP
+The PMI-ACP <<<pmi-acp-certification>> is the agile certification from the project management institute.
+It has value in North America.
+It is quite unknown in Europe.
 
-Software Architecture Certifications
-
-TOGAF standard is still the seminal reference for all software enterprise architecture activities.
-On the bright side, the steward https://www.opengroup.org/togaf[Open Group] of the TOGAF certification has realized that agile is the way to develop digital products.
+The TOGAF standard is still the seminal reference for all software enterprise architecture activities.
+On the bright side, the steward https://www.opengroup.org/togaf[Open Group] of the TOGAF certification <<togaf-certification>> has realized that agile is the way to develop digital products.
 
 [bibliography]
 === Links
 
 - [[[scrum-master-certification, 1]]] link:../../2021/scrum-master-formation/[Scrum Master Certification]
-- [[[product-owner-certification, 2]]] link: ../../2021/product-owner-formation/[Product Owner Certification]]
+- [[[product-owner-certification, 2]]] link: ../../2021/product-owner-formation/[Product Owner Certification]
 - [[[developer-certification, 3]]] link: ../../2021/scrum-developer-formation/[Scrum Developer Certification]
 - [[[pmi-acp-certification, 4]]] link:../../2016/pmi-acp-certification/[PMI ACP Certification]
 - [[[java-certification, 5]]] link:../../2023/java-certification/[Java Certification]
+- [[[togaf-certification, 6]]] https://www.opengroup.org/certifications/togaf-certification-portfolio[TOGAF Certification]

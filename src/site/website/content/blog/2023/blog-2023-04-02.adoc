@@ -127,6 +127,8 @@ npm install --global state-machine-cat                                <7>
 gem install asciidoctor-bibtex asciidoctor-diagram asciidoctor-chart asciidoctor-rouge asciidoctor-kroki    <8>
 
 brew install --cask netnewswire                                       <9>
+brew install --cask asciidocfx                                        <10>
+npm install @mermaid-js/mermaid-cli
 ----
 
 <1> Development tools for Java projects.
@@ -143,6 +145,7 @@ Due to macOS Ventura, you need to enable the application with _xattr_ command.
 <8> Install the ruby packages used with asciidoctor to create the static websites.
 <9> Install a newsreader for RSS feeds.
 It is also used to check if https://blog.tangly.net[tangly blog] RSS feed is working.
+<10> Install {ref-asciidoc} editor and support for {ref-plantuml} and {ref-mermaid} diagram support.
 
 I use a URL link checker to validate my websites.
 The link checker is a python package.

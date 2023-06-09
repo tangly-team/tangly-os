@@ -1,0 +1,29 @@
+---
+title: "Cursive for Clojure"
+linkTitle: "Cursive"
+date: 2024-01-02
+tags: ["jvm-languages", "series-students"]
+---
+
+== Using Cursive to develop in Clojure
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2024-01-02-head.svg[width=420,height=360,role=left]
+
+=== Install Cursive
+
+=== REPL
+
+=== Unit Testing
+
+=== Tips and Tricks
+
+[bibliography]
+=== Links
+
+- [[[cursive, 1]]] https://cursive-ide.com/[Cursive]
+
+- [[[intellij, 3]]] https://www.jetbrains.com/idea/[IntelliJ IDEA]

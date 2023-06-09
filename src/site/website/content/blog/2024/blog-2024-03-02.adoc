@@ -10,7 +10,6 @@ tags: ["architecture", "students-java"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-:ref-mermaid: https://mermaid.js.org/[mermaid]
 :ref-graphviz: https://graphviz.org/[Graphviz]
 :ref-state-machine-cat: https://github.com/sverweij/state-machine-cat[state machine cat]
 

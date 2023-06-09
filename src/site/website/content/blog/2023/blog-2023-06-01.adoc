@@ -1,7 +1,7 @@
 ---
 title: "Teaching Clojure I"
 linkTitle: "Clojure I"
-date: 2023-06-05
+date: 2023-06-01
 tags: ["jvm-languages", "series-students"]
 ---
 
@@ -16,9 +16,10 @@ image::2023-06-01-head.jpg[width=420,height=360,role=left]
 Functional programming is hype for the last ten years.
 You find a lot of blogs and videos stating object-oriented languages are doomed.
 
-Most of the most popular languages have added support to functional concepts in the last years.
+Almost all the most popular languages have added support to functional concepts in the last years.
 
-Java introduced lambda expressions and single abstract method interfaces _SAM_ with Java 8 in March 2018.
+Java introduced lambda expressions and single abstract method interfaces _SAM_ with Java 8 in March 2014.
+Java developers are empowered to write functional code for almost ten years.
 
 Other languages such as Python, C++ or C# added their own functional extensions in newer revisions.
 
@@ -65,7 +66,8 @@ The IntelliJ plugin https://cursive-ide.com/[Cursive] hugely simplifies writing 
 footnote:[The plugin is free upon registration for students, open source developers and personal use.
 Please buy a license for commercial development.
 The company shall have a stream of income to continue developing this awesome environment.].
-https://www.jetbrains.com/idea/[IntelliJ IDEA] is probably the most popular IDE for Java developers footnote[IDEA has a free community edition.
+https://www.jetbrains.com/idea/[IntelliJ IDEA] is probably the most popular IDE for Java developers
+footnote:[IDEA has a free community edition.
 The Ultimate edition is free for students, teachers, and open source developers.
 Please buy a license for commercial development.
 The price is very reasonable.
@@ -83,8 +85,8 @@ You can define values and functions:
 (def computed (map square data))                              <3>
 ----
 
-<1> Define a square function with one parameter and return the square value of the parameter.
-<2> Define a list with five elements and store it the reference named _data_.
+<1> Define a square function _defn_ with one parameter and return the square value of the parameter.
+<2> Define a list _def_ with five elements and store it the reference named _data_.
 <3> Apply the square method on all items of the _data_ list.
 The computed list is stored in the reference named _computed_.
 
@@ -142,8 +144,8 @@ The usual constructs are:
 If true returns the first expression, if false returns the optional second expression or nil if not defined.
 <2> The _when_ expression is an _if_ expression with only the true path.
 <3> The _cond_ expression evaluates boolean conditions until the first one returning true is found.
-The associated expression is evaluted and the result returned.
-If no expression evaluates to true, the else expresssion is evaluated and returned or nil if not defined.
+The associated expression is evaluated and the result returned.
+If no expression evaluates to true, the else expression is evaluated and returned or nil if not defined.
 
 === Some Definitions
 
@@ -170,7 +172,7 @@ They provide very fast equality tests.
 === Arithmetic
 
 Clojure supports all the number types of the Java language.
-Here some example
+Here are some examples:
 
 [source,clojure]
 ----

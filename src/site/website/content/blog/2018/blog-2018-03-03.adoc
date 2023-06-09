@@ -31,7 +31,7 @@ A metric is a measure or a combination of measures for quantitatively assessing 
 A _key performance indicator_ is a metric that
 
 * Is tied to a strategic objective.
-* Have at least one defined time-bound target value such as a number, a trend, a variation, etc.
+* Has at least one defined time-bound target value such as a number, a trend, a variation, etc.
 
 Therefore, you must define your strategic objectives before you can use KPIs.
 

@@ -10,7 +10,6 @@ description: Workflow to publish open source components
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
-:sectnums:
 :toc:
 
 === Regular Git Repository Update
@@ -253,7 +252,11 @@ unzip ./build/distributions/net.tangly.erp.ui-<version>.zip <2>
 docker build -t erp-docker . <3>
 docker run -ti -p 8080:8080 erp-docker <4>
 ----
+
 <1> Generates a production distribution stored under ./build/distributions
 <2> Unzip the packed distribution because the docker base image does not contain unzip utility
 <3> Build the docker image named _erp-docker_
 <4> Run the docker image _erp-docker_ and map the image port to 8080
+
+
+

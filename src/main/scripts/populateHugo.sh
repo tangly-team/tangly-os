@@ -35,16 +35,17 @@ function copy_domain_module() {
 }
 
 # clean-up the directories before copying new data
-rm -rf siteDir/static/*
-rm -rf siteDir/content/*
-rm -rf siteDir/public/*
+rm -rf $siteDir/static/*
+rm -rf $siteDir/content/*
+rm -rf $siteDir/public
+mkdir $siteDir/public
 
 # copy whole website to static site structure and tailoring of docsy template
 cp -R $websiteDir/assets $siteDir/
 cp -R $websiteDir/content $siteDir/
 cp -R $websiteDir/layouts $siteDir/
 cp -R $websiteDir/static $siteDir/
-cp -R $websiteDir/config.toml $siteDir/
+cp -R $websiteDir/hugo.toml $siteDir/
 
 # you need to run gradle build on the whole project to generate the javadoc for modules. The directories containing javadoc seems to need unique names due to
 # hugo strange behavior.
@@ -70,7 +71,7 @@ copy_domain_module ledger
 copy_domain_module products
 copy_domain_module shared
 copy_domain_module ui
-cp -R $prjDir/net.tangly.erp/src/site/ $siteDir/content/docs/domains/_design
+cp -R $prjDir/net.tangly.erp.shared/src/site/_design $siteDir/content/docs/domains/_design
 
 cd $siteDir
 rm -v **/.DS_Store

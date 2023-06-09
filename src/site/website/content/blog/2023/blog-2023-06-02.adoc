@@ -20,14 +20,14 @@ All popular programming languages have added support to functional concepts for 
 Not all developers are embracing the new approach and using the provided constructs.
 
 I often have to read source code which uses only idioms defined in the last millennium.
-I cringed and ask myself why developers are writing such awkward code?
+I cringed and asked myself why developers are writing such awkward code?
 
 What does it mean to code with functional paradigms?
 
 I have an interesting test to decide if your code is embracing functional programming approaches:
 
-. You are using library methods with formal parameters being functions.
-. You use map, filter, reduce and apply operations instead of conditional control blocks.
+. You are using library methods with formal parameters being functions or lambda expressions.
+. You use the map, filter, reduce and apply operations instead of conditional control blocks.
 Loops and conditional statements are almost disappearing in your code.
 . You declared in your own methods functions as formal parameters.
 . You declared in at least one of your methods a return type being a function.
@@ -36,7 +36,7 @@ Clojure is a very nice language to learn functional programming idioms <<clojure
 
 === Functional Thinking
 
-The key functional concepts of Clojure are:
+The key functional concepts of Clojure cite:[programming-clojure] are:
 
 - All data structures are per default immutable.
 Lists, vectors, maps, sets, records are all immutable.
@@ -60,6 +60,7 @@ For example, they can be assigned to variables, passed in as arguments, or retur
 ----
 
 <1> Define a new record _Person_ with two string properties _firstname_ and _lastname_.
+The string type is only a hint and not enforce.
 <2> Create a new record instance with firstname _John_ and lastname _Doe_ and associate it with reference _aPerson_.
 <3> Create a new record instance with the values of _aPerson_ and the new value _Jane_ for the _firstname_.
 
@@ -79,8 +80,8 @@ For example, they can be assigned to variables, passed in as arguments, or retur
   (f 1 x)))
 ----
 
-<1> The _recur_ expression evaluates the new values for all loop variables and restart the loop with these values.
-<2> The _recur_ expression evaluates the new values for all function parameters and restart the function without addind a new stack frame.
+<1> The _recur_ expression evaluates the new values for all loop variables and restarts the loop with these values.
+<2> The _recur_ expression evaluates the new values for all function parameters and restarts the function without adding a new stack frame.
 This mechanism provides tail-recursion call optimization.
 
 [source,clojure]
@@ -95,12 +96,12 @@ This mechanism provides tail-recursion call optimization.
 
 (defn greet [name & rest] (print "Hello" name rest))          <2>
 
-(greet "Yan" "Darryl" "Deepu" "Tom")                          ;; => Hello Yan (Darryl Deepu Tom)
+(greet "Yan" "Darryl" "John" "Tom")                          ;; => Hello Yan (Darryl John Tom)
 ----
 
 <1> Define a multi-arity function.
-One declaration is without parameter, the second one has one parameter.
-<2> Deine a variadic function with a variable number of parameters as last formal parameter.
+The first declaration is without parameter, the second one has one parameter.
+<2> Define a variadic function with a variable number of parameters as the last formal parameter.
 
 === Advanced Functional Constructs
 
@@ -126,7 +127,7 @@ Beware of the tradeoff between processing improvement versus memory consumption.
 (def adder (partial add 5))
 (adder 1)                                                     ;; => 6
 
-;; memoization of function call)s
+;; memoization of function calls
  (def memoized-fibonacci
   (memoize (fn [n]
              (condp = n
@@ -135,7 +136,7 @@ Beware of the tradeoff between processing improvement versus memory consumption.
                (+ (memoized-fibonacci(dec n)) (memoized-fibonacci (- n 2)))))))
 
 (time (memoized-fibonacci 80))
-;; "Elapsed time: 0.593208 msecs"  => 37889062373143906=>
+;; "Elapsed time: 0.593208 msecs"  => 37889062373143906
 (time (memoized-fibonacci 80))
 ;; "Elapsed time: 0.022459 msecs"  => 37889062373143906
 ----
@@ -278,10 +279,12 @@ I would recommend using Java to teach these concepts and restrict Clojure teachi
 
 I wish you happy coding in the functional world of Clojure.
 
-=== References
+[bibliography]
+=== Links
 
 - [[[clojure-1, 1]]]  link:../../2023/2023/teaching-clojure-i/[Teaching Clojure I].
 Marcel Baumann. 2023.
 
+=== References
 
 bibliography::[]

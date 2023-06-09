@@ -1,7 +1,7 @@
 ---
 title: "The Quest for an Agile Company: Nine Years tangly llc"
-linkTitle: "7 Years tangly"
-date: 2023-02-10
+linkTitle: "9 Years tangly"
+date: 2025-02-10
 tags: ["agile", "tangly", "organization"]
 ---
 

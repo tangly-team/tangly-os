@@ -1,0 +1,111 @@
+---
+title: "Embedded Applications"
+linkTitle: "Embedded Apps"
+date: 2024-09-02
+tags: ["C++", "embedded"]
+---
+
+== Embedded Applications with C++, freeRTOS and STM32
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
+:ref-cmsis-os: https://www.keil.com/pack/doc/CMSIS/RTOS2/html/index.html[CMSIS RTOS-2]
+:ref-fsm: https://en.wikipedia.org/wiki/Finite-state_machine[Finite State Machine]
+:ref-free-rtos: https://www.freertos.org/[freeRTOS]
+:ref-hypervisor: https://en.wikipedia.org/wiki/Hypervisor[Hypervisor]
+:ref-paravirtualization: https://en.wikipedia.org/wiki/Paravirtualization[paravirtualization]
+
+image::2024-09-02-head.jpg[width=420,height=360,role=left]
+
+An embedded application is software that is placed permanently inside some kind of device to perform a very specific set of functions.
+
+The software is typically specialized for a particular hardware with specific purpose that must meet time, size, energy, and memory constraints.
+As an example, some embedded applications are designed to run for months or years in a row without being turned off or receiving a reset command.
+It is also used in areas from agriculture to space probes and more.
+
+There are some fundamental concepts related to embedded application development.
+
+Real-Time::
+Embedded applications receive continuous inputs, process the data, and generate outputs, where such processing must often be performed in a short period of time.
+As an example, some applications demand object detection in live stream videos, where processing involves inference and bounding boxes displayed on each frame.
+Fault-Tolerance::
+Is the capability of an embedded system to survive in the presence of faults.
+Faults can be caused by power cuts, hardware damaged parts, overwarming, and more.
+The embedded software must be capable of detecting faults and make decisions according to how critical a fault is.
+As an example, an embedded system working inside an airplane must be capable of identifying any possible fault and make decisions in order to keep the aircrew safe.
+Decisions can be as simple as sending an alert or as complex as performing changes in the command control.
+Portability::
+Is the measure of how easy it is to use the same embedded software in multiple environments.
+It requires generalized abstractions between the application program logic and the low-level system interfaces.
+As an example, embedded devices used in domotic applications must be adjustable no matter the place where they have to be installed.
+Reliability::
+Is the survival probability of the system when the function is critical during the run time.
+As an example, embedded systems used in self-driven cars must be able to make decisions in runtime, where many tasks are critical to keep passengers and pedestrians safe.
+In this case, reliability must be as high as possible.
+Flexibility::
+An embedded system must be built with built-in debugging opportunities, allowing remote maintenance.
+For example, embedded systems in a satellite which must collect various types of data and send it back to a central station.
+If at some point the satellite loses control, people from the station should be able to make a diagnosis trying to reestablish the system.
+That is why flexibility is vital while designing an embedded system.
+
+=== C++ Application Development
+
+The C++ programming language has clear advantages when developing embedded and regular software products:
+
+- C++ is a standardized, well-known, popular language.
+The community is more dynamic and regularly updates the language and libraries through the ISO certification process.
+_Regular embedded developers do not like abstractions and are often not interested in software engineering practices_.
+- C++ is nearly a superset of C90 used in GCC.
+- The C subset of C++ is just as efficient as C.
+- C++ supports cleaner code in several significant cases.
+It provides better abstractions through support of multiple paradigms.
+- C++ makes it easier to write and enforce cleaner interfaces.
+Fewer bugs are delivered with the application due to more powerful constructs and compiler checks.
+- C++ never requires uglier code.
+- C++ is not a panacea but it is an improvement.
+Projects finished sooner due to higher productivity.
+_The learning curve to C++ craftsmanship is steep_.
+_Embedded developers have to commit to becoming software professionals_.
+
+Use standard tools:
+
+- Compiler chain for the target platform
+- CMake and CMake toolchain file for the above compiler chain including linker script file
+- Static analysis tools integrated in the delivery pipeline
+- Continuous integration and delivery
+- {ref-doxygen} to document the source code
+- Package manager
+
+=== Realtime Operating System
+
+{ref-actor-model} is a powerful and efficient design approach for reactive and embedded applications.
+Actors require the creation of tasks, message queues for inter-task communication, and timer services.
+Support for interrupt routines shall also be available.
+
+The ARM world has defined an abstraction layer for realtime operating systems and published the functions under {ref-cmsis-os}.
+
+=== RTOS and Application Partitioning
+
+Most mainstream operating systems are built on the assumption that a system has a single privileged operating system running several unprivileged applications.
+Running multiple operating systems on the same platform requires a {ref-hypervisor}.
+Embedded systems often use a native hypervisor running on bare metal.
+
+Application partitioning is not available to STM32 microcontrollers.
+Transparent partitioning requires a hypervisor to virtualize access to hardware components.
+The ARM Cortex M cores used in the STM32 products do not provide the needed hardware support to implement a hypervisor
+footnote:[AArch64 64-bit architecture introduced in 2011 provides the needed support.
+The https://www.embedded-office.com/[Embedded Office] company provides an example of such a solution for safety critical applications.].
+
+The privileged and unprivileged modes are not sufficient to define a hypervisor.
+RTOS can not be run in the unprivileged mode because they need access to the processor registers and interrupts.
+
+Theoretically, it could be possible to implement a supervisor in privileged mode and a scheduling engine in unprivileged mode.
+The supervisor needs to provide interrupt handling, timers, task switch and potentially access to privileded instructions or locations.It must transfer data to and receive from the scheduler.
+
+This approach is incompatible with available RTOS products.
+It would be necessary to implement and maintain a proprietary scheduling engine emulating the services of a realtime operating system.
+This approach is called {ref-paravirtualization} and requires a partial rewrite of the realtime kernel.
+For example, you could implement the services and data structures specified in the CMSIS_OS version 2 module
+footnote:[The effort to implement such a layer is huge. Validation and verification activities would be necessary for regulated markets.].

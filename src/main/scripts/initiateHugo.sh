@@ -26,7 +26,7 @@ cd $siteDir
 
 # download docsy theme and the submodules they depend on using npm
 cd themes
-git clone --branch v0.6.0 https://github.com/google/docsy.git
+git clone --branch v0.7.0 https://github.com/google/docsy.git
 cd docsy
 npm install
 
@@ -36,8 +36,5 @@ npm install -D autoprefixer
 npm install -D postcss
 npm install -D postcss-cli
 
-# initiate empty public folder with git to enable optional completion step and publishing in our pages repository (GitHub, GitLab, orBitBucket)
-git clone --no-checkout git@github.com:tangly-team/tangly-team.github.io.git public
-
-# beware that the content uses bibliography, plantuml, and mermaid to generate references and diagrams
+# beware that the content uses rouge, bibliography, plantuml, and mermaid to generate highlighted code, references and diagrams
 echo "start server with hugo server --destination public --disableFastRender -> site is accessible under localhost:1313"

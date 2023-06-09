@@ -23,7 +23,9 @@ Steep learning curve:::
 Moreover, the whole team has to learn Gradle or you will be depending on the single Gradle ninja in your team.
 Groovy or Kotlin DSL:::
 The dynamic Groovy DSL and the heterogeneous plugin APIs will make you google everything.
-Unexpected side-effects, behavior, and interdependencies between plugins. It often feels like magic.
-As Groovy is dynamically typed, it is really hard for IDEs to provide good and fast (!) tooling. Contrarily, parsing and interpreting Maven’s XML is dead simple.
+Unexpected side-effects, behavior, and interdependencies between plugins.
+It often feels like magic.
+As Groovy is dynamically typed, it is really hard for IDEs to provide good and fast (!) tooling.
+Contrarily, parsing and interpreting Maven’s XML is dead simple.
 Breaking Changes:::
-New Gradle versions are often breaking existing plugins and the poor maintainer of these one-man-open-source-projects cannot keep up with this speed.
+New Gradle versions are often breaking existing plugins, and the poor maintainer of these one-man-open-source-projects cannot keep up with this speed.
