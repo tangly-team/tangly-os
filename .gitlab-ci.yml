@@ -1,4 +1,4 @@
-image: gradle:alpine
+image: 20-alpine
 
 variables:
     GRADLE_OPTS: "-Dorg.gradle.daemon=false"
