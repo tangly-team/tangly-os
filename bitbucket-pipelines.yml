@@ -1,4 +1,4 @@
-image: openjdk:20
+image: eclipse-temurin:20
 clone:
   depth: full
 pipelines:
@@ -10,9 +10,8 @@ pipelines:
           - gradlewrapper
           - node
         script:
-            - microdnf install nodejs npm findutils
             - ./gradlew build
-            - ./gradlew net.tangly.erp.ui:installDist -Pvaadin.productionMode
+            - ./gradlew build net.tangly.erp.ui:installDist net.tangly.erp.ui:installShadowDist -Pvaadin.productionMode
         artifacts:
             - net.tangly.erp.ui/build/distributions/**
             - net.tangly.erp.ui/build/install/**

@@ -10,6 +10,7 @@ before_script:
 build:
   stage: build
   script:
+      - ./gradlew build
       - ./gradlew build net.tangly.erp.ui:installDist net.tangly.erp.ui:installShadowDist -Pvaadin.productionMode
   artifacts:
       paths:

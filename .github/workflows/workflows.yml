@@ -10,8 +10,8 @@ jobs:
         - name: 'Set up Java'
           uses: oracle-actions/setup-java@v1
           with:
-            website: oracle.com
-            release: 19
+              website: oracle.com
+            release: 20
         - name: Cache Gradle packages
           uses: actions/cache@v2
           with:
