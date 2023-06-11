@@ -1,4 +1,4 @@
-image: 20-alpine
+image: eclipse-temurin:20
 
 variables:
     GRADLE_OPTS: "-Dorg.gradle.daemon=false"
