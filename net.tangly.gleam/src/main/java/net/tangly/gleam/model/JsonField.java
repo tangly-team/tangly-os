@@ -4,7 +4,7 @@
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain
  *  a copy of the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations
@@ -17,15 +17,15 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
 /**
- * Defines the abstraction of a mapping between a Java property - simple type, another class mapped to a JSON entity, or a collection mapped to a JSON array -
- * and a JSON property, type, or array.
+ * Defines the abstraction of a mapping between a Java property - simple type, another class mapped to a JSON entity, or a collection mapped to a JSON array - and a JSON property,
+ * type, or array.
  *
  * @param <T> type of the entity owning the field
  * @param <U> type of the property
  */
-public interface JsonField<T, U> {
+public sealed interface JsonField<T, U> permits JsonProperty, JsonArray {
     /**
-     * Import the JSON value and set the associated property after an optional conversion. Multiple JSON values can be used if the object is a complex one.
+     * Import the JSON value and set the associated property after an optional conversion. Multiple JSON values can be used if the object is complex.
      *
      * @param entity entity which property will be imported and set
      * @param object JSON object containing the values

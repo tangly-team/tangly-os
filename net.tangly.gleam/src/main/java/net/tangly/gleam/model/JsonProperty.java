@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -95,8 +95,8 @@ public record JsonProperty<T, U>(@NotNull String key, @NotNull Function<T, U> ge
     }
 
     /**
-     * Import the JSON value and transform it to the type of the associated property aftet an optional conversion. The implementation has the knowledge how to
-     * extract the values from the JSON object based of the value type used.
+     * Import the JSON value and transform it to the type of the associated property after an optional conversion. The implementation has the knowledge how to extract the values
+     * from the JSON object based of the value type used.
      *
      * @param object JSON object containing the values to convert
      * @return Java property value associated with the JSON object

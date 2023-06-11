@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -27,25 +27,24 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 
 /**
- * The TSV property defines the mapping between a Java property and one or multiple cells in a TSV file. Two scenarios are supported. The simple case is the
- * mapping of a Java property to exactly one cell in a TSV file. For example the mapping of a local date property to the textual ISO conform representation in
- * one TSV cell. The more complex case is the mapping of a Java property to multiple cells in a TSV file. For example a Java address object has to be mapped so
- * that each element of the address is stored in a specific cell. Both scenarios are supported through the same abstraction.
+ * The TSV property defines the mapping between a Java property and one or multiple cells in a TSV file. Two scenarios are supported. The simple case is the mapping of a Java
+ * property to exactly one cell in a TSV file. For example, the mapping of a local date property to the textual ISO conforms representation in one TSV cell. The more complex case
+ * is the mapping of a Java property to multiple cells in a TSV file. For example, a Java address object has to be mapped so that each element of the address is stored in a
+ * specific cell. Both scenarios are supported through the same abstraction.
  * <p>The decision to use one or multiple cells is delegated to the developer. A TSV cell contains always either a string or a null value.
  *
- * @param columns ordered list of columns in the TSV file used to encode the property. Simple fields have one column, complex fields mapped on multiple columns
- *                have multiple values
+ * @param columns an ordered list of columns in the TSV file used to encode the property. Simple fields have one column, complex fields mapped on multiple columns have multiple
+ *                values
  * @param getter  getter function to retrieve the property from a Java entity instance
- * @param setter  optional setter function to set the property of a Java entity instance
- * @param reader  extracts function to read and transform the set of TSV columns into a property value. Factory methods are provided to simplify the definition
- *                of conversion in the case only one TSV column is used.
- * @param writer  inserts function to transform a property value into a set of TSV columns and write them. Factory methods are provided to simplify the *
- *                definition of conversion in the case only one TSV column is used.
+ * @param setter  optional setter function to set the property of a Java entity instance. It is not needed for read-only properties
+ * @param reader  extracts function to read and transform the set of TSV columns into a property value. Factory methods are provided to simplify the conversion in the case where
+ *                only one TSV column is used.
+ * @param writer  inserts function to transform a property value into a set of TSV columns and write them. Factory methods are provided to simplify the * definition of conversion
+ *                in the case only one TSV column is used.
  * @param <T>     class owning the Java property
  * @param <U>     type of the property
  */
-public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiConsumer<T, U> setter, Function<CSVRecord, U> reader,
-                                BiConsumer<U, CSVPrinter> writer) {
+public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiConsumer<T, U> setter, Function<CSVRecord, U> reader, BiConsumer<U, CSVPrinter> writer) {
 
     public static final Function<String, BigDecimal> CONVERT_BIG_DECIMAL_FROM = e -> (e == null) ? BigDecimal.ZERO : new BigDecimal(e);
     public static final Function<String, LocalDate> CONVERT_DATE_FROM = e -> (e != null) ? LocalDate.parse(e) : null;
@@ -56,15 +55,10 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
         return of(columns, getter, setter, entity::imports, entity::exports);
     }
 
-    /**
-     * Define a property mapped to one column without any transformation steps between property type and string representation.
-     *
-     * @param column column in which the property will be stored in the TSV record
-     * @param getter getter method to read the property from the entity
-     * @param setter setter method to write the property into the entity
-     * @param <T>    entity type
-     * @return new TSV property
-     */
+    public static <T> TsvProperty<T, Object> ofEmpty(@NotNull String column) {
+        return new TsvProperty<>(List.of(column), t -> null, (t, u) -> {}, v -> v, (u, p) -> {});
+    }
+
     public static <T> TsvProperty<T, String> ofString(@NotNull String column, Function<T, String> getter, BiConsumer<T, String> setter) {
         return of(column, getter, setter, v -> v, u -> u);
     }
@@ -85,13 +79,12 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
         return of(column, getter, setter, v -> (v == null) ? BigDecimal.ZERO : new BigDecimal(v), BigDecimal::toPlainString);
     }
 
-    public static <T, U extends Enum<U>> TsvProperty<T, U> ofEnum(@NotNull Class<U> clazz, @NotNull String column, Function<T, U> getter,
-                                                                  BiConsumer<T, U> setter) {
+    public static <T, U extends Enum<U>> TsvProperty<T, U> ofEnum(@NotNull Class<U> clazz, @NotNull String column, Function<T, U> getter, BiConsumer<T, U> setter) {
         return of(column, getter, setter, v -> Enum.valueOf(clazz, v.toLowerCase()), U::name);
     }
 
     /**
-     * Define a property mapped to one column with  a transformation step from the string representation to the property type.
+     * Define a property mapped to one column with a transformation step from the string representation to the property type.
      *
      * @param column      column in which the property will be stored in the TSV record
      * @param getter      getter method to read the property from the entity
@@ -106,7 +99,7 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
     }
 
     /**
-     * Define a property mapped to one column with  transformations between string and property type.
+     * Define a property mapped to one column with the transformations between string and property type.
      *
      * @param column      column in which the property will be stored in the TSV record
      * @param getter      getter method to read the property from the entity
@@ -121,12 +114,11 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
                                               @NotNull Function<U, Object> convertTo) {
         Objects.requireNonNull(convertFrom);
         Objects.requireNonNull(convertTo);
-        return of(List.of(column), getter, setter, record -> convertFrom.apply(Strings.emptyToNull(record.get(column))),
-            (property, out) -> print(out, convertTo.apply(property)));
+        return of(List.of(column), getter, setter, o -> convertFrom.apply(Strings.emptyToNull(o.get(column))), (property, out) -> print(out, convertTo.apply(property)));
     }
 
-    public static <T, U> TsvProperty<T, U> of(@NotNull List<String> columns, Function<T, U> getter, BiConsumer<T, U> setter,
-                                              @NotNull Function<CSVRecord, U> extractor, @NotNull BiConsumer<U, CSVPrinter> writer) {
+    public static <T, U> TsvProperty<T, U> of(@NotNull List<String> columns, Function<T, U> getter, BiConsumer<T, U> setter, @NotNull Function<CSVRecord, U> extractor,
+                                              @NotNull BiConsumer<U, CSVPrinter> writer) {
         return new TsvProperty<>(columns, getter, setter, extractor, writer);
     }
 
@@ -144,11 +136,11 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
      * Import the TSV value and set the associated property after an optional conversion.
      *
      * @param entity entity which property will be imported and set
-     * @param record record containing the TSV values
+     * @param data   record containing the TSV values
      * @see TsvProperty#exports(Object, CSVPrinter)
      */
-    public void imports(@NotNull T entity, @NotNull CSVRecord record) {
-        U property = reader.apply(record);
+    public void imports(@NotNull T entity, @NotNull CSVRecord data) {
+        U property = reader.apply(data);
         setter.accept(entity, property);
     }
 

@@ -2,7 +2,6 @@
 title: "User Guide Gleam"
 date: 2019-05-01
 weight: 40
-draft: false
 ---
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
@@ -16,14 +15,16 @@ draft: false
 The advantages of the Gleam JSON mapping library are:
 
 * Use POJO - _Plain Old Java Objects_ - and do not require Java Bean naming conventions for getters and setters.
-* Support immutable *record* constructs of Java
+* Support immutable *record* constructs of Java.
+The field values are retrieved from CSV record in the first step.
+The record is constructed with values in the second step.
 * Support heteregeneous collections and can instantiate the expected instances through a user provided discriminator function.
 * Use lambda for reading and writing properties
 
 The JSON manipulation uses the https://github.com/stleary/JSON-java[JSON-Java] library.
 We use the library variant _com.guicedee.services:json_ supporting Java 9 module semantic.
 
-[plantuml, json-class-diagram, svg]
+[plantuml,json-class-diagram,svg]
 ....
 interface JsonField<T, U> {
     void imports(T entity, JSONObject object)
@@ -43,12 +44,31 @@ JsonEntity *- JsonField : fields
 
 Complex structures are implemented through fields have a JSON entity as the generic parameter _U_.
 
+=== TSV Mapping
+
+The advantages of the Gleam TSV mapping library are:
+
+==== Strengths
+
+[plantuml,tsv-class-diagram,svg]
+....
+class TsvProperty<T, U> <<record>> {}
+
+class TsvEntity<T> <<record>> {}
+TsvEntity "1" --* "n" TsvProperty
+
+class TsvRelation<T> <<record>> {
+    long ownerId();
+    T ownedEntity();
+}
+....
+
 ==== Recipes
 
 The classes provide factory methods to create JSON entity defining the transformation of a Java object to a JSON instance and vice-versa.
 Below the code to map a bank connection object defined as a Java record with three String properties.
 
-[source, java]
+[source,java]
 ----
 public static JsonEntity<BankConnection> createJsonBankConnection() {
     Function<JSONObject, BankConnection> imports = object -> {  // <1>
@@ -74,28 +94,44 @@ The _InvoiceJson_ class is a good example using most of the factory methods prov
 The advantages of the Gleam TSV mapping library are:
 
 * Use POJO - _Plain Old Java Objects_ - and do not require Java Bean naming conventions for getters and setters.
-* Support immutable *record* constructs of Java
+* Support for immutable *record* constructs of Java
+* Support one to one and one to multiple instances relations.
+The identifier of the owner is stored in the TSV file as a foreign key.
+You do not need to change your classes to support the relation.
 
-[plantuml, tsv-class-diagram, svg]
+[plantuml,tsv-class-diagram,svg]
 ....
-class TsvProperty<T, U> <<record>> {}
-class TsvEntity<T<T, U>> <<record>> {}
+class TsvHdl {}
+class TsvField<T, U> <<record>> {}
+class TsvField<T<T, U>> <<record>> {}
+class TsvReference<T> <<record>> {
+    long ownerId;
+    T ownedEntity;
+}
 
-TsvEntity *- TsvField : fields
+TsvEntity "1" *-- "n" TsvField : fields
 ....
 
 The TSV manipulation uses the https://commons.apache.org/proper/commons-csv/[apache commons csv] library.
 
-==== Recipes
+==== Transform a Java Record
 
-The classes provide factory methods to create JSON entity defining the transformation of a Java object to a JSON instance and vice-versa.
+The classes provide factory methods to create an entity defining the transformation of a Java object to a TSV instance and vice-versa.
 Below the code to map a bank connection object defined as a Java record with three String properties.
 
-[source, java]
+The key features to realize the transformation are:
+
+Definition of the mapping of properties to TSV columns::
+To be written
+Definition of a constructor for the Java object::
+To be written
+Definition of tranformation methods::
+To be written
+
+[source,java]
 ----
-}
 static TsvEntity<BankConnection> createTsvBankConnection() {
-    Function<CSVRecord, BankConnection> imports = (CSVRecord record) -> { // <1>
+    Function<CSVRecord, BankConnection> imports = (CSVRecord record) -> {                // <1>
         BankConnection connection = new BankConnection(get(record, IBAN), get(record, BIC), get(record, INSTITUTE));
         if (!connection.isValid()) {
             logger.atWarn().log("Invalid bank connection {}", connection);
@@ -104,11 +140,33 @@ static TsvEntity<BankConnection> createTsvBankConnection() {
     };
 
     List<TsvProperty<BankConnection, ?>> fields =
-            List.of(TsvProperty.ofString("iban", BankConnection::iban, null), TsvProperty.ofString("bic", BankConnection::bic, null),
-                    TsvProperty.ofString("institute", BankConnection::institute, null));
-
-    return TsvEntity.of(BankConnection.class, fields, imports); // <2>
+            List.of(TsvProperty.ofString(IBAN, BankConnection::iban, null),              // <2>
+                    TsvProperty.ofString(BIC, BankConnection::bic, null),
+                    TsvProperty.ofString(INSTITUDE, BankConnection::institute, null)
+    return TsvEntity.of(BankConnection.class, fields, imports);                          // <3>
 }
 ----
-<1> defines the import method to retrieve the values to create a bank connection, create an immutable Java record object, and validate the properties.
-<2> Returns a TSV entity defining an import method to construct an instance, and regular properties to create the TSV represenation.
+
+<1> Define the import method to retrieve the values to create a bank connection, create an immutable Java record object, and validate the properties.
+The constants _IBAN_, _BIC_, and _INSTITUTE_ define the column headers in the TSV file.
+<2> Declare a property of type string to a colom named IBAN with a getter and no setter to identify a read-only property.
+These declarations are used to transform a Java object into a TSV record.
+<3> Return a TSV entity defining an import method to construct an instance, and regular properties to create the TSV represenation.
+
+=== Transform a 1-1, 1-n, or 0-n Relation
+
+The classes provide factory methods to create owned entities defining the transformation of a relationship to a TSV instance and vice-versa.
+
+The key features to realize the transformation are:
+
+Definition of foreign key owner identifier::
+To be written
+Transform an owned Java object to a TSV record::
+To be written
+Transform a TSV record to an owned Java object::
+To be written
+
+[source,java]
+----
+
+----
