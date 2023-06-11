@@ -8,8 +8,8 @@ junit-version = '5.9.3'
 log4j2-version = '2.20.0'
 openapi-version = "5.5.0-1"
 microstream-version = '08.01.00-MS-GA'
-mustang-version = '2.7.1'
-vaadin-version = '24.0.5'
+mustang-version = '2.7.2'
+vaadin-version = '24.1.0'
 
 [plugins]
 vaadin = { id = "com.vaadin", version.ref = "vaadin-version" }
@@ -38,13 +38,13 @@ slf4j-simple = "org.slf4j:slf4j-simple:2.0.7"
 apache-pdfbox = "org.apache.pdfbox:pdfbox:2.0.25"
 arch-unit = "com.tngtech.archunit:archunit-junit5-api:1.0.1"
 
-asciidoctorj = "org.asciidoctor:asciidoctorj:2.5.8"
+asciidoctorj = "org.asciidoctor:asciidoctorj:2.5.10"
 asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.3.7"
 
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
 eo-yaml = "com.amihaiemil.web:eo-yaml:5.2.1"
-flyway = "org.flywaydb:flyway-core:9.19.1"
-hsqldb = "org.hsqldb:hsqldb:2.7.1"
+flyway = "org.flywaydb:flyway-core:9.19.4"
+hsqldb = "org.hsqldb:hsqldb:2.7.2"
 iban4j = "org.iban4j:iban4j:3.2.5-RELEASE"
 
 ical4j-core = "org.mnode.ical4j:ical4j:3.2.1"
@@ -57,7 +57,9 @@ jackson-parameters = { module = "com.fasterxml.jackson.module:jackson-module-par
 jackson-datatype = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jdk8", version.ref = "jackson-version" }
 jackson-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson-version" }
 
-jakarta-mail = "com.sun.mail:jakarta.mail:2.0.1"
+jakarta-mail = "jakarta.mail:jakarta.mail-api:2.1.2"
+eclipse-angus-mail = "org.eclipse.angus:angus-mail:2.0.2"
+
 jbibtext = "org.jbibtex:jbibtex:1.0.20"
 jimfs = "com.google.jimfs:jimfs:1.2"
 
@@ -69,7 +71,7 @@ javalin-redoc-plugin = { module = "io.javalin.community.openapi:javalin-redoc-pl
 
 #Java 9 module compliant version of https://github.com/stleary/JSON-java
 json-core = "com.guicedee.services:json:1.2.2.1"
-json-validator = "com.networknt:json-schema-validator:1.0.82"
+json-validator = "com.networknt:json-schema-validator:1.0.84"
 json-assert = "org.skyscreamer:jsonassert:1.5.0"
 json-jolt-core = { module = "com.bazaarvoice.jolt:jolt-core", version.ref = "jolt-version" }
 json-jolt-utils = { module = "com.bazaarvoice.jolt:jolt-utils", version.ref = "jolt-version" }
@@ -80,6 +82,10 @@ junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jun
 junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-version" }
 
 lombok = "org.projectlombok:lombok:1.18.28"
+
+micrometer = "io.micrometer:micrometer-registry-prometheus:1.11.0"
+micrometer-jmx = "io.micrometer:micrometer-registry-jmx:1.11.0"
+
 mustang-core = { module = "org.mustangproject:library", version.ref = "mustang-version" }
 mustang-validator = { module = "org.mustangproject:validator", version.ref = "mustang-version" }
 
@@ -104,9 +110,9 @@ vaadin-tooltip = "com.vaadin.componentfactory:tooltip:1.3.7"
 vaadin-pdfviewer = "org.vaadin.addons.componentfactory:vcf-pdf-viewer:2.7.2"
 
 vaadin-embedded-jetty = "com.github.mvysny.vaadin-boot:vaadin-boot:11.3"
-vaadin-socharts = "com.storedobject.chart:so-charts:3.2.2"
+vaadin-socharts = "com.storedobject.chart:so-charts:3.2.3"
 vaadin-signature = "de.f0rce.signaturepad:signature-widget:2.0.1"
-vaadin-test = "com.github.mvysny.kaributesting:karibu-testing-v23:2.0.2"
+vaadin-test = "com.github.mvysny.kaributesting:karibu-testing-v23:2.1.0"
 
 [bundles]
 test-deps = ["junit-api", "assertj", "mockito", "arch-unit"]
