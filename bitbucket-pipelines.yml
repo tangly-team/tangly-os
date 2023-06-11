@@ -1,4 +1,4 @@
-image: openjdk:19
+image: openjdk:20
 clone:
   depth: full
 pipelines:
