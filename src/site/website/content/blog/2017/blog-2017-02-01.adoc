@@ -74,7 +74,7 @@ They used craftsmanship or {ref-xp} approaches.
 
 For huge development departments consider using the {ref-less} approach.
 
-Teams work best if you can answer a sounding yes to these five questions (see https://rework.withgoogle.com/[google:rework]).
+Teams work best if you can answer a sounding yes to these five questions (see https://rework.withgoogle.com/[Google:rework]).
 
 Psychological safety:: Can we take risks on this team without feeling insecure or embarrassed?
 Dependability:: Can we count on each other to do high-quality work on time?

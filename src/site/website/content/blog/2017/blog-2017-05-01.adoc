@@ -24,7 +24,7 @@ I am convinced to achieve ingrained success an agile coach shall:
 They build your solution, it shall fulfill the user's requirements, be of high quality and affordable.
 * Learn them to attain https://en.wikipedia.org/wiki/Software_craftsmanship[mastery] and build awesome products.
 * Coach the team how to improve, focus and enjoy the work on a daily basis. https://en.wikipedia.org/wiki/Flow_(psychology)[Flow] shall be natural for them,
-* Coach the organisation how to adapt, provide the ground to have the best collaborators and become most successful in the market.
+* Coach the organization how to adapt, provide the ground to have the best collaborators and become most successful in the market.
 Use a https://en.wikipedia.org/wiki/Lean_startup[lean approach].
 
 In other words, you need technical coaching, team coaching and organization coaching.
@@ -46,7 +46,7 @@ First, we improve the quality-effectiveness for the customer, then the productiv
 ____
 Coaching means that an experienced coach will work closely together with an organization to improve the organization’s product development.
 
-This usually involved shortening feedback loops and focusing on improved quality.
+This usually involves shortening feedback loops and focusing on improved quality.
 
 This faster feedback cycle leads to benefits such as higher productivity and more flexibility.
 ____

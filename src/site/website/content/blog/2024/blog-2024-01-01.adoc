@@ -24,7 +24,7 @@ Marcel Baumann. 2024
 Marcel Baumann. 2024
 - [[[modern-java-modules, 3]]] link:../../2024/java-modules[Java Modules]
 Marcel Baumann. 2024
-- [[[modern-java-structured-concurency, 4]]] link:../../2024/structured-concurrency[Structured Concurreny]
+- [[[modern-java-structured-concurency, 4]]] link:../../2024/structured-concurrency[Structured Concurrency]
 Marcel Baumann. 2024
 
 === References

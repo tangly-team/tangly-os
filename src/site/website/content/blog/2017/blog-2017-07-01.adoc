@@ -27,10 +27,10 @@ _Wake up!_ You are not a product manager, you shall be a catalyst.
 
 === Facets of a Scrum Master
 
-* Be a https://en.wikipedia.org/wiki/Servant_leadership[servant leader] whose focus is on the needs of the team members and those they serve (the customer), with the goal of achieving results in line with the organization’s values, principles, and business objectives,
-* Teach ensuring agile, lean, Scrum and other approaches are understood and enacted,
-* Mentor to transfer agile knowledge and experience to the team, and concentrate on continuous improvement,
-* Coach the individual with a focus on their mindset and behaviour.
+* Be a https://en.wikipedia.org/wiki/Servant_leadership[servant leader] whose focus is on the needs of the team members and those they serve (the customer), with the goal of achieving results in line with the organization’s values, principles, and business objectives.
+* Teach ensuring agile, lean, Scrum and other approaches are understood and enacted.
+* Mentor to transfer agile knowledge and experience to the team, and concentrate on continuous improvement.
+* Coach the individual with a focus on their mindset and behavior.
 * Help the organization to truly collaborate with the Scrum team.
 * Be an impediment remover solving blocking issues to the team’s progress, taking into account the self-organizing capabilities of the development team.
 * Facilitate by setting the stage and providing clear boundaries in which the team can collaborate.
@@ -46,7 +46,8 @@ Each team is self-managing, cross-functional and customer-focused, co-located, l
 * Help your teams to remove impediments cite:[great-scrum-master,scrum-pocket-guide-3rd,mastering-professional-scrum].
 From time to time, you could also remove a specific impediment.
 * Evangelise agile, lean values and principles.
-* Moderate Scrum meetings – do not forget to regulate delegate moderation to your team -.
+* Moderate Scrum meetings.
+Do not forget to regulate delegate moderation to your team.
 * Gently transform your department and organization to become more agile.
 ** Remove yearly evaluation, practice biweekly face2face meetings.
 ** Remove any individual bonus, either introduce team bonuses.

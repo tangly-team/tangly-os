@@ -41,7 +41,7 @@ Other approaches are deeply unprofessional and unethical.
 In some countries, you are liable if you do not update your software to avoid known security attacks.
 
 You should use actual Java JDK and JVM version because the community is concentrating their effort on the latest version.
-Oracle only provides public support for the latest two Java versions, e.g. in January 2018, Java 9 and Java 8 are officially supported.
+Oracle only provides public support for the latest two Java versions, e.g., in January 2018, Java 9 and Java 8 are officially supported.
 Java 8 support will stop at the end of September 2018, older versions are no more publicly maintained.
 
 If, for some reasons, you are using an older commercially but no more publicly supported JDK, you must sign a support contract with the Oracle company and pay for it.

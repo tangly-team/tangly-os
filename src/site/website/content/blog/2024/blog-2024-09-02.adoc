@@ -5,7 +5,7 @@ date: 2024-09-02
 tags: ["C++", "embedded"]
 ---
 
-== Embedded Applications with C++, freeRTOS and STM32
+== Embedded Applications with C++, freeRTOS, and STM32
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
@@ -21,7 +21,7 @@ image::2024-09-02-head.jpg[width=420,height=360,role=left]
 
 An embedded application is software that is placed permanently inside some kind of device to perform a very specific set of functions.
 
-The software is typically specialized for a particular hardware with specific purpose that must meet time, size, energy, and memory constraints.
+The software is typically specialized for particular hardware with specific purpose that must meet time, size, energy, and memory constraints.
 As an example, some embedded applications are designed to run for months or years in a row without being turned off or receiving a reset command.
 It is also used in areas from agriculture to space probes and more.
 
@@ -33,7 +33,7 @@ As an example, some applications demand object detection in live stream videos, 
 Fault-Tolerance::
 Is the capability of an embedded system to survive in the presence of faults.
 Faults can be caused by power cuts, hardware damaged parts, overwarming, and more.
-The embedded software must be capable of detecting faults and make decisions according to how critical a fault is.
+The embedded software must be capable of detecting faults and making decisions according to how critical a fault is.
 As an example, an embedded system working inside an airplane must be capable of identifying any possible fault and make decisions in order to keep the aircrew safe.
 Decisions can be as simple as sending an alert or as complex as performing changes in the command control.
 Portability::
@@ -64,7 +64,7 @@ It provides better abstractions through support of multiple paradigms.
 - C++ makes it easier to write and enforce cleaner interfaces.
 Fewer bugs are delivered with the application due to more powerful constructs and compiler checks.
 - C++ never requires uglier code.
-- C++ is not a panacea but it is an improvement.
+- C++ is not a panacea, but it is an improvement.
 Projects finished sooner due to higher productivity.
 _The learning curve to C++ craftsmanship is steep_.
 _Embedded developers have to commit to becoming software professionals_.
@@ -99,10 +99,11 @@ footnote:[AArch64 64-bit architecture introduced in 2011 provides the needed sup
 The https://www.embedded-office.com/[Embedded Office] company provides an example of such a solution for safety critical applications.].
 
 The privileged and unprivileged modes are not sufficient to define a hypervisor.
-RTOS can not be run in the unprivileged mode because they need access to the processor registers and interrupts.
+RTOS cannot be run in the unprivileged mode because they need access to the processor registers and interrupts.
 
 Theoretically, it could be possible to implement a supervisor in privileged mode and a scheduling engine in unprivileged mode.
-The supervisor needs to provide interrupt handling, timers, task switch and potentially access to privileded instructions or locations.It must transfer data to and receive from the scheduler.
+The supervisor needs to provide interrupt handling, timers, task switch and potentially access to privileged instructions or locations.
+It must transfer data to and receive from the scheduler.
 
 This approach is incompatible with available RTOS products.
 It would be necessary to implement and maintain a proprietary scheduling engine emulating the services of a realtime operating system.

@@ -47,6 +47,6 @@ We use the Hugo [docsy](https://www.docsy.dev/) theme.
 
 We write all technical documents and blogs using the asciidoc syntax.
 
-The website repository is hosted on [tangly github documentation repository](https:/github.com/tangly-team/tangly-team.github.io/).
+The website repository is hosted on tangly documentation [repository](https:/github.com/tangly-team/tangly-team.github.io/) hosted on GitHub.
 </div>
 {{% /blocks/section %}}

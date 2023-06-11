@@ -1,7 +1,7 @@
 ---
 title: "Teaching Clojure II"
 linkTitle: "Clojure II"
-date: 2023-06-10
+date: 2023-06-09
 tags: ["jvm-languages", "series-students"]
 ---
 
@@ -282,7 +282,7 @@ I wish you happy coding in the functional world of Clojure.
 [bibliography]
 === Links
 
-- [[[clojure-1, 1]]]  link:../../2023/2023/teaching-clojure-i/[Teaching Clojure I].
+- [[[clojure-1, 1]]]  link:../../2023/teaching-clojure-i/[Teaching Clojure I].
 Marcel Baumann. 2023.
 
 === References

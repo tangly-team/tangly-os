@@ -37,7 +37,7 @@ You shall refactor daily or you are lying to yourself
 A seminal work from one of the founders of Scrum
 * Agile Product Management With Scrum: Creating Products That Customers Love, Roman Pichler From the expert for product owner role and activities.
 Make the shift from project to product.
-* Agile Testing: A Practical Guide for Testers and Agile Teams, Lisa Crispin and Janet Gregory What does it mean to test and insure quality in an agile environment?
+* Agile Testing: A Practical Guide for Testers and Agile Teams, Lisa Crispin and Janet Gregory What does it mean to test and ensure quality in an agile environment?
 
 === Agile Management Aspects
 

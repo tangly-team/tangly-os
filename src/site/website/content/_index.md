@@ -3,7 +3,7 @@ title: "tangly OS components"
 linkTitle: "Components"
 ---
 
-{{< blocks/cover title="Welcome to tangly Open Source Components and Blog" image_anchor="top" height="full" color="black">}}
+{{< blocks/cover title="Welcome to tangly Blog and Open Source Components" image_anchor="top" height="full" color="black">}}
 <div class="mx-auto">
 	<a class="btn btn-lg btn-primary mr-3 mb-4" href="{{< relref "/about" >}}">
 		Learn More <i class="fas fa-arrow-alt-circle-right ml-2"></i>

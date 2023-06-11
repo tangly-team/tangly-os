@@ -17,11 +17,11 @@ image::2017-09-01-head.jpg[width=420,height=360,role=left]
 You develop your software products using agile approaches.
 You are doing {ref-scrum}, {ref-kanban}, https://en.wikipedia.org/wiki/Scrumban[Scrumban], {ref-lean}, or {ref-less}.
 
-Your collaborators start asking questions about their organisation, management roles, and critique the internal processes.
+Your collaborators start asking questions about their organization, management roles, and critique the internal processes.
 How employee yearly evaluation, bonus evaluation – work?
 You hear strange statements such _Be agile, do not do agile_.
 
-You as a manager realise you have to describe your role in an agile environment.
+You as a manager realize you have to describe your role in an agile environment.
 What does it mean?
 Please read first this blog post describing What is an link:../../2016/what-is-an-agile-company[Agile Company]?
 
@@ -94,7 +94,7 @@ An agile team must at least be self-organized and ideally self-designed.
 manager lead::
 The team performs the work,
 self-organised / self-managed::
-The team organises and performs its own activities and work.
+The team organizes and performs its own activities and work.
 self-designed / self-selected::
 The team creates, selects and removes new members and maintains itself.
 Logically, they are also in charge of evaluation, rewards, and career development.
