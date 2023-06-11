@@ -1,35 +1,35 @@
 stateDiagram-v2
-    state Root {
-        C
-        C --> [*]
+state Root {
+    C
+    C --> [*]
 
-        [*] --> A
-        state A {
-            [*] --> AA
-            AA
-            AA --> AB: AA_AB
-            AA --> B: AA_B
-            AA --> BB: AA_BB
+    [*] --> A
+    state A {
+        [*] --> AA
+        AA
+        AA --> AB: AA_AB
+        AA --> B: AA_B
+        AA --> BB: AA_BB
 
-            AB
-            AB --> AA: AB_AA
-            AB --> AB: AB_AB
-
-        }
-        A --> C: A_C
-
-        state B {
-            BA
-            BA --> A: BA_A
-            BA --> BB: BA_BB
-
-            [*] --> BB
-            BB
-            BB --> BA: BB_BA / VV -> BA when BB_BA
-            BB --> C: BB_C
-
-        }
-        B --> C: B_C
+        AB
+        AB --> AA: AB_AA
+        AB --> AB: AB_AB
 
     }
+    A --> C: A_C
+
+    state B {
+        BA
+        BA --> A: BA_A
+        BA --> BB: BA_BB
+
+        [*] --> BB
+        BB
+        BB --> BA: BB_BA / VV -> BA when BB_BA
+        BB --> C: BB_C
+
+    }
+    B --> C: B_C
+
+}
 
