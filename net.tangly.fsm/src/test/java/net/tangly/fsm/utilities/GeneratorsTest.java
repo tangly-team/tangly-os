@@ -16,6 +16,7 @@ package net.tangly.fsm.utilities;
 import net.tangly.fsm.imp.FsmBbv;
 import net.tangly.fsm.imp.FsmTest;
 import net.tangly.fsm.imp.FsmWasherTest;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
@@ -48,6 +49,11 @@ class GeneratorsTest {
      * @throws IOException if a file could not be opened or written
      */
     public static void main(String[] args) throws IOException {
+        createFiles();
+    }
+
+    @BeforeAll
+    static void createFiles() throws IOException {
         createStatechart(new GeneratorPlantUml<>(FsmBbv.build(), BBV));
         createStatechart(new GeneratorPlantUml<>(FsmTest.build(), TEST));
         createStatechart(new GeneratorPlantUml<>(FsmWasherTest.build(), WASHER));
