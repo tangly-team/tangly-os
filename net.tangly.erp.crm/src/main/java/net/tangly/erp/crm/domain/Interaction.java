@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -12,7 +12,7 @@
 
 package net.tangly.erp.crm.domain;
 
-import net.tangly.core.QualifiedEntityImp;
+import net.tangly.core.EntityImp;
 import net.tangly.core.crm.LegalEntity;
 import org.jetbrains.annotations.NotNull;
 
@@ -25,11 +25,11 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Defines an interaction between your company and a legal entity and a group of natural entities. The legal entity is the organization you want a contract
- * with. The interaction has a set of activities moving your negotiation through stages. The final result is a contract or a lost opportunity.
+ * Defines an interaction between your company and a legal entity and a group of natural entities. The legal entity is the organization you want a contract with. The interaction
+ * has a set of activities moving your negotiation through stages. The final result is a contract or a lost opportunity.
  * <p>An interaction can have quite a long duration. Activities are the events when you interact with your potential customer.</p>
  */
-public class Interaction extends QualifiedEntityImp {
+public class Interaction extends EntityImp {
     private final List<Activity> activities;
     private LegalEntity entity;
     private InteractionCode code;
@@ -97,7 +97,7 @@ public class Interaction extends QualifiedEntityImp {
     }
 
     @Override
-    public boolean check() {
+    public boolean validate() {
         return Objects.nonNull(entity()) && (Objects.requireNonNull(potential).compareTo(BigDecimal.ZERO) >= 0) &&
             (Objects.requireNonNull(probability).compareTo(BigDecimal.ZERO) >= 0) && (Objects.requireNonNull(probability).compareTo(BigDecimal.ONE) <= 0);
     }

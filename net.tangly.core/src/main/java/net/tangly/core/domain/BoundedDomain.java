@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * A bounded domain as defined in the DDD approach has a domain specific model and a set of adapters.
+ * A bounded domain as defined in the DDD approach has a domain-specific model and a set of adapters.
  *
  * @param <R> realm handles all entities and values objects of the domain model
  * @param <B> business logic provides complex domain business logic functions
@@ -47,7 +47,7 @@ public class BoundedDomain<R extends Realm, B, H extends Handler<?>, P> {
         this.handler = handler;
         this.port = port;
         this.registry = registry;
-        initialize();
+        init();
     }
 
     protected static <I extends HasOid & HasTags> void addTagCounts(@NotNull TypeRegistry registry, @NotNull Provider<I> provider, Map<TagType<?>, Integer> counts) {
@@ -55,8 +55,7 @@ public class BoundedDomain<R extends Realm, B, H extends Handler<?>, P> {
     }
 
     protected static <I extends HasTags> void addTagCounts(@NotNull TypeRegistry registry, @NotNull List<I> entities, Map<TagType<?>, Integer> counts) {
-        entities.stream().flatMap(e -> e.tags().stream()).map(registry::find).flatMap(Optional::stream).forEach(e ->
-            counts.merge(e, 1, (oldValue, _$) -> oldValue++));
+        entities.stream().flatMap(e -> e.tags().stream()).map(registry::find).flatMap(Optional::stream).forEach(e -> counts.merge(e, 1, (oldValue, _$) -> oldValue++));
     }
 
     public Map<TagType<?>, Integer> countTags(@NotNull Map<TagType<?>, Integer> counts) {
@@ -66,6 +65,7 @@ public class BoundedDomain<R extends Realm, B, H extends Handler<?>, P> {
     public String name() {
         return name;
     }
+
     public R realm() {
         return realm;
     }
@@ -90,6 +90,6 @@ public class BoundedDomain<R extends Realm, B, H extends Handler<?>, P> {
         return Collections.emptyList();
     }
 
-    protected void initialize() {
+    protected void init() {
     }
 }

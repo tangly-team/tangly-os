@@ -1,4 +1,4 @@
-== Develpment Approach
+== Development Approach
 
 === Introduction
 
@@ -33,15 +33,15 @@
 
 https://en.wikipedia.org/wiki/Architectural_decision[Architecture Decisions]
 shall be documented to provide causality and an audit trade why the current solution was chosen.
-The evolution of architecture and the history of decisions is of tremendeous importance to understand the trade-offs built into the solution.
+The evolution of architecture and the history of decisions is of tremendous importance to understand the trade-offs built into the solution.
 
-Architecture design records _ADR_ is a promising approach to document the evolution of a solution architecture.
+Architecture design records _ADR_ is a promising approach to documenting the evolution of a solution architecture.
 
 ==== Specifications
 
-As a user I want to have all architecture decisions of a component to understand the tradeoffs of the current solution.
+As a user, I want to have all architecture decisions of a component to understand the tradeoffs of the current solution.
 
-As a user I want to have all architecture decisions constraining the design of a component to understand the constraints of the component design.
+As a user, I want to have all architecture decisions constraining the design of a component to understand the constraints of the component design.
 
-As a user I want to visualize the history of a specific decision to better understand why the current solution was selected.
+As a user, I want to visualize the history of a specific decision to better understand why the current solution was selected.
 

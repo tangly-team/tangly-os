@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -13,27 +13,26 @@
 package net.tangly.ui.app.domain;
 
 import com.vaadin.flow.component.grid.HeaderRow;
-import com.vaadin.flow.component.grid.dataview.GridListDataView;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
 import net.tangly.core.providers.ProviderInMemory;
-import net.tangly.ui.components.EntityView;
+import net.tangly.ui.components.ItemView;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Displays all entities of a bounded domain with administration information. The view is useful during development of a new release or when evaluating the
- * usage of a domain within a specific application configuration.
+ * Displays all entities of a bounded domain with administration information. The view is useful during development of a new release or when evaluating the usage of a domain within
+ * a specific application configuration.
  */
-public class DomainEntitiesView extends EntityView<DomainEntity> {
-    static class DomainEntitiesFilter extends EntityView.EntityFilter<DomainEntity> {
+public class DomainEntitiesView extends ItemView<DomainEntity> {
+    static class DomainEntitiesFilter extends ItemFilter<DomainEntity> {
         private String name;
 
-        protected DomainEntitiesFilter(@NotNull GridListDataView<DomainEntity> dataView) {
-            super(dataView);
+        public DomainEntitiesFilter() {
         }
 
         void name(String name) {
             this.name = name;
+            refresh();
         }
 
         @Override
@@ -42,12 +41,8 @@ public class DomainEntitiesView extends EntityView<DomainEntity> {
         }
     }
 
-    private final BoundedDomain<?, ?, ?, ?> domain;
-    private DomainEntitiesFilter entityFilter;
-
     public DomainEntitiesView(@NotNull BoundedDomain<?, ?, ?, ?> domain) {
-        super(DomainEntity.class, ProviderInMemory.of(domain.entities()));
-        this.domain = domain;
+        super(DomainEntity.class, domain, ProviderInMemory.of(domain.entities()), new DomainEntitiesFilter(), Mode.LIST);
         init();
     }
 
@@ -64,15 +59,10 @@ public class DomainEntitiesView extends EntityView<DomainEntity> {
         grid.addColumn(DomainEntity::entitiesCount).setKey("entitiesCount").setHeader("#Entities").setSortable(true).setAutoWidth(true);
         grid.addColumn(o -> o.hasComments() ? o.commentsCount() : 0).setKey("commentsCount").setHeader("#Comments").setSortable(true).setAutoWidth(true);
         grid.addColumn(o -> o.hasTags() ? o.tagsCount() : 0).setKey("tagsCount").setHeader("#Tags").setSortable(true).setAutoWidth(true);
-        entityFilter = new DomainEntitiesFilter(dataView());
         grid().getHeaderRows().clear();
         HeaderRow headerRow = grid().appendHeaderRow();
-        addFilter(headerRow, "name", "Name", entityFilter::name);
-
-// TODO clean-up
-        //        grid.setHeightFull();
-//        grid.setMinHeight("5em");
-//        grid.setWidthFull();
-//        setSizeFull();
+        if (filter() instanceof DomainEntitiesFilter filter) {
+            addFilterText(headerRow, "name", "Name", filter::name);
+        }
     }
 }

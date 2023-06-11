@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -15,7 +15,8 @@ package net.tangly.erp.crm.domain;
 
 import net.tangly.core.Address;
 import net.tangly.core.BankConnection;
-import net.tangly.core.QualifiedEntityImp;
+import net.tangly.core.Entity;
+import net.tangly.core.EntityImp;
 import net.tangly.core.crm.CrmEntity;
 import net.tangly.core.crm.LegalEntity;
 import net.tangly.core.crm.VcardType;
@@ -39,7 +40,7 @@ import java.util.Optional;
  *   <li>The currency of the contract amount and the one used in the invoices</li>
  * </ul>
  */
-public class Contract extends QualifiedEntityImp implements CrmEntity {
+public class Contract extends EntityImp implements Entity, CrmEntity {
     private BankConnection bankConnection;
     private BigDecimal amountWithoutVat;
     private LegalEntity seller;
@@ -108,7 +109,7 @@ public class Contract extends QualifiedEntityImp implements CrmEntity {
     }
 
     @Override
-    public boolean check() {
+    public boolean validate() {
         return Objects.nonNull(bankConnection()) && Objects.nonNull(seller()) && Objects.nonNull(sellee()) &&
             (Objects.requireNonNull(amountWithoutVat()).compareTo(BigDecimal.ZERO) > 0) && Objects.nonNull(currency()) && Objects.nonNull(locale());
     }

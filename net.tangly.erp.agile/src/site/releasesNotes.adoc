@@ -2,7 +2,6 @@
 title: "Release Notes"
 date: 2019-05-01
 weight: 20
-draft: false
 ---
 
 == Agile Change Logs
@@ -10,6 +9,6 @@ draft: false
 This document provides a high-level view of the changes introduced in the agile ERP library by release.
 For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] commits.
 
-=== 0.2.7 (2023-03-31)
+=== 0.2.7 (2023-06-30)
 
 * Update of library dependencies, update to JDK-20, and modern Gradle approach to build solutions.

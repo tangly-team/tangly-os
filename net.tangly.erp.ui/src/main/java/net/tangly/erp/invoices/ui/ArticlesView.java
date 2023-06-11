@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -12,11 +12,12 @@
 
 package net.tangly.erp.invoices.ui;
 
-import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.textfield.BigDecimalField;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.core.codes.CodeType;
@@ -24,6 +25,8 @@ import net.tangly.erp.invoices.domain.Article;
 import net.tangly.erp.invoices.domain.ArticleCode;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.components.CodeField;
+import net.tangly.ui.components.ItemForm;
+import net.tangly.ui.components.ItemView;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -31,82 +34,70 @@ import org.jetbrains.annotations.NotNull;
  * Regular CRUD view on articles abstraction. The grid and edition dialog wre optimized for usability.
  */
 @PageTitle("invoices-activities")
-class ArticlesView extends EntitiesView<Article> {
-    private final transient InvoicesBoundedDomain domain;
-    private final TextField id;
-    private final TextField name;
-    private final TextField text;
-    private final CodeField<ArticleCode> code;
-    private final TextField unit;
-    private final TextField unitPrice;
-    private final TextField vatRate;
+class ArticlesView extends ItemView<Article> {
 
+    static class ArticleFilter extends ItemView.ItemFilter<Article> {
+        @Override
+        public boolean test(@NotNull Article entity) {
+            return true;
+        }
+    }
+
+    static class ArticleForm extends ItemForm<Article, ArticlesView> {
+        ArticleForm(@NotNull ArticlesView parent) {
+            super(parent);
+            init();
+        }
+
+        @Override
+        protected void init() {
+            TextField id = new TextField("Id", "id");
+            id.setRequired(true);
+            TextField name = new TextField("Name", "name");
+            name.setRequired(true);
+            TextField text = new TextField("Text", "text");
+            CodeField<ArticleCode> code = new CodeField<>(CodeType.of(ArticleCode.class), "code");
+            TextField unit = new TextField("Unit", "unit");
+            unit.setRequired(true);
+            BigDecimalField unitPrice = new BigDecimalField("Unit Price", "unit price");
+            BigDecimalField vatRate = new BigDecimalField("VAT Rate", "VAT rate");
+            FormLayout form = new FormLayout();
+            form.add(id, name, text, code, unit, unitPrice, vatRate);
+            binder().bindReadOnly(id, Article::id);
+            binder().bindReadOnly(name, Article::name);
+            binder().bindReadOnly(text, Article::text);
+            binder().bindReadOnly(code, Article::code);
+            binder().bindReadOnly(unit, Article::unit);
+            binder().bindReadOnly(unitPrice, Article::unitPrice);
+            binder().bindReadOnly(vatRate, Article::vatRate);
+        }
+
+        @Override
+        public void clear() {
+
+        }
+
+        @Override
+        protected Article createOrUpdateInstance(Article entity) throws ValidationException {
+            return new Article(fromBinder("id"), fromBinder("name"), fromBinder("text"), fromBinder("code"), fromBinder("unitPrice"), fromBinder("unit"), fromBinder("vatRate"));
+        }
+    }
 
     public ArticlesView(@NotNull InvoicesBoundedDomain domain, @NotNull Mode mode) {
-        super(Article.class, mode, domain.realm().articles());
-        this.domain = domain;
-        id = new TextField("Id", "id");
-        name = VaadinUtils.createTextField("Name", "name");
-        text = VaadinUtils.createTextField("Text", "text");
-        code = new CodeField<>(CodeType.of(ArticleCode.class), "code");
-        unit = VaadinUtils.createTextField("Unit", "unit");
-        unitPrice = VaadinUtils.createTextField("Unit Price", "unit price");
-        vatRate = VaadinUtils.createTextField("VAT Rate", "VAT rate");
-        initialize();
+        super(Article.class, domain, domain.realm().articles(), new ArticleFilter(), mode);
+        init();
     }
 
     @Override
-    protected void initialize() {
+    protected void init() {
         Grid<Article> grid = grid();
         grid.addColumn(Article::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Article::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Article::code).setKey("code").setHeader("Code").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Article::unit).setKey("unit").setHeader("Unit").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(new NumberRenderer<>(Article::unitPrice, VaadinUtils.FORMAT)).setKey("unitPrice").setHeader("Unit Price").setAutoWidth(true)
-            .setResizable(true).setTextAlign(ColumnTextAlign.END);
+        grid.addColumn(new NumberRenderer<>(Article::unitPrice, VaadinUtils.FORMAT)).setKey("unitPrice").setHeader("Unit Price").setAutoWidth(true).setResizable(true)
+            .setTextAlign(ColumnTextAlign.END);
         grid.addColumn(Article::vatRate).setKey("vatRate").setHeader("VAT Rate").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Article::text).setKey("text").setHeader("Text").setAutoWidth(true).setResizable(true).setSortable(true);
-        addAndExpand(grid(), gridButtons());
-    }
-
-    @Override
-    protected Article updateOrCreate(Article entity) {
-        return new Article(id.getValue(), name.getValue(), text.getValue(), code.getValue(), VaadinUtils.toBigDecimal(unitPrice.getValue()), unit.getValue(),
-            VaadinUtils.toBigDecimal(vatRate.getValue()));
-    }
-
-    @Override
-    protected FormLayout fillForm(@NotNull Operation operation, Article entity, @NotNull FormLayout form) {
-        readOnly(operation.isReadOnly());
-
-        VaadinUtils.configureId(operation, id);
-        VaadinUtils.readOnly(operation, name, unit, unitPrice, vatRate, code, text);
-        id.setRequired(true);
-        name.setRequired(true);
-        unitPrice.setRequired(true);
-        vatRate.setRequired(true);
-
-        if (entity != null) {
-            id.setValue(entity.id());
-            name.setValue(entity.name());
-            text.setValue(entity.text());
-            code.setValue(entity.code());
-            unit.setValue(entity.unit());
-            unitPrice.setValue(entity.unitPrice().toPlainString());
-            vatRate.setValue(entity.vatRate().toPlainString());
-        }
-        form.add(id, name, unit, unitPrice, vatRate, new HtmlComponent("br"));
-        form.add(text, 3);
-        return form;
-    }
-
-    protected void readOnly(boolean readOnly) {
-        id.setReadOnly(readOnly);
-        name.setReadOnly(readOnly);
-        unit.setReadOnly(readOnly);
-        vatRate.setReadOnly(readOnly);
-        text.setReadOnly(readOnly);
-        code.setReadOnly(readOnly);
-        unitPrice.setReadOnly(readOnly);
     }
 }

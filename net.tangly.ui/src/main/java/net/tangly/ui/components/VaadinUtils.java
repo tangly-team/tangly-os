@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -46,10 +46,6 @@ public final class VaadinUtils {
     public static final DecimalFormat FORMAT = new DecimalFormat("###,##0.00", new DecimalFormatSymbols(Locale.US));
 
     private VaadinUtils() {
-    }
-
-    public static void selectTabByName(@NotNull TabSheet tabSheet, @NotNull String name) {
-        tabSheet.getChildren().filter(o -> name.equals(((Tab)o).getLabel())).findAny().ifPresent(o -> tabSheet.setSelectedTab((Tab)o));
     }
 
     public static TextField createTextField(String label, String placeholder) {
@@ -149,24 +145,6 @@ public final class VaadinUtils {
     @SafeVarargs
     public static <T extends HasValue> void readOnly(boolean readOnly, T... components) {
         Arrays.stream(components).forEach(o -> o.setReadOnly(readOnly));
-    }
-
-    public static <T extends HasEnabled & HasValue> void configureId(@NotNull CrudForm.Operation operation, T component) {
-        switch (operation) {
-            case VIEW, UPDATE, DELETE -> {
-                component.setReadOnly(true);
-                component.setEnabled(false);
-            }
-            case CREATE -> {
-                component.setReadOnly(false);
-                component.setEnabled(true);
-            }
-        }
-    }
-
-    public static <T extends HasEnabled & HasValue> void configureOid(@NotNull CrudForm.Operation operation, T component) {
-        component.setReadOnly(false);
-        component.setEnabled(false);
     }
 
     public static <T extends HasTags> ComponentRenderer<Anchor, T> linkedInComponentRenderer(Function<HasTags, String> linkedInUrl) {

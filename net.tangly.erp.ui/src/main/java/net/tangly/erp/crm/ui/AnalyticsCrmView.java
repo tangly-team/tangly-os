@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -12,8 +12,18 @@
 
 package net.tangly.erp.crm.ui;
 
-import com.storedobject.chart.*;
+import com.storedobject.chart.BarChart;
+import com.storedobject.chart.CategoryData;
+import com.storedobject.chart.Data;
+import com.storedobject.chart.DataType;
+import com.storedobject.chart.Position;
+import com.storedobject.chart.RectangularCoordinate;
+import com.storedobject.chart.SOChart;
+import com.storedobject.chart.Size;
+import com.storedobject.chart.XAxis;
+import com.storedobject.chart.YAxis;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.grid.dataview.GridListDataView;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
 import net.tangly.erp.crm.domain.Contract;
@@ -24,7 +34,6 @@ import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesBusinessLogic;
 import net.tangly.ui.app.domain.AnalyticsView;
 import net.tangly.ui.components.VaadinUtils;
-import net.tangly.ui.grids.PaginatedGrid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -45,6 +54,9 @@ public class AnalyticsCrmView extends AnalyticsView {
     private SOChart customersSoChart;
     private SOChart funnelSoChart;
     private Grid<Contract> contractsGrid;
+
+    private GridListDataView<Contract> dataView;
+
 
     public AnalyticsCrmView(@NotNull CrmBoundedDomain crmDomain, @NotNull InvoicesBoundedDomain invoicesDomain) {
         this.crmDomain = crmDomain;
@@ -70,21 +82,20 @@ public class AnalyticsCrmView extends AnalyticsView {
     }
 
     private Grid<Contract> contractsTable() {
-        PaginatedGrid<Contract> grid = new PaginatedGrid<>();
+        Grid<Contract> grid = new Grid<>();
         grid.setPageSize(8);
         grid.setHeightFull();
-        grid.dataProvider(DataProvider.ofCollection(crmDomain.realm().contracts().items()));
+        dataView = grid.setItems(DataProvider.ofCollection(crmDomain.realm().contracts().items()));
         grid.addColumn(Contract::id).setKey("id").setHeader("Id").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::name).setKey("name").setHeader("Name").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::from).setKey("from").setHeader("From").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::to).setKey("to").setHeader("To").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Contract::currency).setKey("currency").setHeader("Currency").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(VaadinUtils.coloredRender(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setHeader("Amount").setAutoWidth(true).setResizable(true)
-            .setSortable(true);
-        grid.addColumn(VaadinUtils.coloredRender(o -> invoicesLogic.invoicedAmountWithoutVatForContract(o.id(), from(), to()), VaadinUtils.FORMAT))
-            .setHeader("Invoiced").setAutoWidth(true).setResizable(true).setSortable(true);
-        grid.addColumn(VaadinUtils.coloredRender(o -> invoicesLogic.expensesForContract(o.id(), from(), to()), VaadinUtils.FORMAT)).setHeader("Expenses")
+        grid.addColumn(VaadinUtils.coloredRender(Contract::amountWithoutVat, VaadinUtils.FORMAT)).setHeader("Amount").setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(VaadinUtils.coloredRender(o -> invoicesLogic.invoicedAmountWithoutVatForContract(o.id(), from(), to()), VaadinUtils.FORMAT)).setHeader("Invoiced")
             .setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(VaadinUtils.coloredRender(o -> invoicesLogic.expensesForContract(o.id(), from(), to()), VaadinUtils.FORMAT)).setHeader("Expenses").setAutoWidth(true)
+            .setResizable(true).setSortable(true);
         return grid;
     }
 
@@ -117,9 +128,9 @@ public class AnalyticsCrmView extends AnalyticsView {
     private void funnelChart(@NotNull SOChart chart) {
         CategoryData labels = new CategoryData("Prospects", "Leads", "Ordered", "Lost", "Completed");
         CrmBusinessLogic logic = crmDomain.logic();
-        Data data = new Data(logic.funnel(InteractionCode.prospect, from(), to()), logic.funnel(InteractionCode.lead, from(), to()),
-            logic.funnel(InteractionCode.ordered, from(), to()), logic.funnel(InteractionCode.lost, from(), to()),
-            logic.funnel(InteractionCode.completed, from(), to()));
+        Data data =
+            new Data(logic.funnel(InteractionCode.prospect, from(), to()), logic.funnel(InteractionCode.lead, from(), to()), logic.funnel(InteractionCode.ordered, from(), to()),
+                logic.funnel(InteractionCode.lost, from(), to()), logic.funnel(InteractionCode.completed, from(), to()));
         BarChart barchart = new BarChart(labels, data);
         RectangularCoordinate rc = new RectangularCoordinate(new XAxis(DataType.CATEGORY), new YAxis(DataType.NUMBER));
         Position chartPosition = new Position();

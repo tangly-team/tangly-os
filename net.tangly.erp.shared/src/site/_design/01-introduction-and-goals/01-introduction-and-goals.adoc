@@ -1,0 +1,83 @@
+ifndef::imagesdir[:imagesdir: ./pics]
+
+[[section-introduction-and-goals]]
+== Introduction and Goals
+
+image::arc42-overview.png["arc42 Overview"]
+
+=== Application Goals
+
+The application is an application of modern software engineering principles.
+
+The essential features are used to implement all acquisition, project management and financial process of an agile software consulting company.
+
+The smoke test is to run the {ref-tangly} processes on the ERP solution.
+
+=== Requirements Overview
+
+[cols="1, 1, 6, 4",options="header"]
+|===
+|ID | Type| Description | Remarks
+
+|req-001
+|import
+|As a user, I want to import all company data as a set of TSV files so that I can migrate strategic data.
+|No dependencies to a database shall exit
+
+|req-002
+|export
+|As a user, I want to export all company data as a set of TSV files so that I can back up strategic data in a human-readable form.
+|Human-readable form is necessary for audit. The export format is also used as import format.
+
+|===
+
+=== Quality Goals
+
+==== Source Code Quality Goals
+
+==== Documentation Quality Goals
+
+The architecture documentation shall empower a developer to master the bounded domains and build extensions.
+
+[cols="1, 1, 4",options="header"]
+|===
+|ID | Type| Explanation
+|doc-001|Correct|Documentation needs to be accurate and free from errors. Wrong documentation is often worse than no documentation.
+|doc-002|Current|Documentation needs to be correct over time, reflecting changes performed upon code, infrastructure or interfaces of the system.
+|doc-003|Understandable|Documentation needs to be understood by the target audience.
+|doc-004|Relevant|With respect to structure, form and content, documentation shall be relevant for the tasks of its audience.
+|doc-005|Referenceable|Use a consistent numbering schema for headings, diagrams and tables.
+|doc-006|Proper language|Use proper language, correct spelling and grammar, active voice, positive statements and short sentences.
+|doc-007|Maintainable|Maintainability is key to keeping documentation current.
+|doc-008|Easy to find|Documentation itself should be easy to find whenever needed. Its content should be easily navigable and searchable.
+|doc-009|Versioned|As the system evolves, so will your documentation, without losing its history
+|doc-010|Tooling support|Focus on content, reduce time needed for tool-setup
+|doc-011|Continuously updated|Make it a habit to maintain and expand the documentation with every relevant change in your system.
+|doc-012|Relevant|Documentation should be written in a public domain format. Multiple public tools should support writing in the selected format.
+|doc-013|Relevant|Documentation should be searchable to easily access topics.
+|===
+
+The current approach is {ref-arc42} structure, {ref-c4} and {ref-uml} diagrams to document the design.
+The content is written in {ref-asciidoc} format.
+The documentation is published as a static website using {ref-hugo} and {ref-docsy}.
+
+The Java source code is documented with Javadoc.
+Source code in other programming languages is documented with {ref-doxygen}.
+
+image::iso-25010-topics.png["Categories of Quality Requirements"]
+
+=== Stakeholders
+
+[cols="1,1,6",options="header"]
+|===
+|Role|Relevance|Expectations
+|Open Source Developer|Important| wants to extend the application with functions required for a specific market or user segment.
+|Company Prospect|Important|looking for a portfolio to show compentencies in areas he is interested to work with us.
+|Closed Source Developer|Relevant|wants to extend the application with functions she could sell to her customers.
+|Blog Reader|Relevant|interested to explore a concept discussed in a blog article and exemplary realized in the application.
+|Application user|Relevant|wants to understand decisions and their impact on the product value or costs.
+|Bachelor Student|Interesting|wants to use components for semester projects and understand a specific aspect of the design.
+|===
+
+The ERP is developed using an open source approach.
+Development capabilities are dependent on the goodwill and availability of active committers.

@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -20,7 +20,7 @@ import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
-import net.tangly.ui.components.Crud;
+import net.tangly.ui.components.ItemView;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -35,9 +35,9 @@ public class ProductsBoundedDomainUi implements BoundedDomainUi {
 
     public ProductsBoundedDomainUi(@NotNull ProductsBoundedDomain domain) {
         this.domain = domain;
-        productsView = new ProductsView(domain, Crud.Mode.EDITABLE);
-        assignmentsView = new AssignmentsView(domain, Crud.Mode.EDITABLE);
-        effortsView = new EffortsView(domain, Crud.Mode.EDIT_DELETE);
+        productsView = new ProductsView(domain, ItemView.Mode.EDIT);
+        assignmentsView = new AssignmentsView(domain, ItemView.Mode.EDIT);
+        effortsView = new EffortsView(domain, ItemView.Mode.DELETE);
         domainView = new DomainView(domain);
         currentView = productsView;
     }

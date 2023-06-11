@@ -38,6 +38,4 @@ hs_err_pid*
 
 # Covers other tools such JabRef, microstream
 /storage/
-/src/main/resources/references.bib.bak
 /src/main/resources/references.bib.sav
-/src/main/resources/references.bib.sav.tmp

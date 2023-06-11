@@ -1,0 +1,17 @@
+ifndef::imagesdir[:imagesdir: ./pics]
+
+[[section-architecture-constraints]]
+== Architecture Constraints
+
+The programming language is Java.
+The version is the current released JDK.
+
+Embedded programming language is C++.
+The version is the current released ISO standard.
+
+Th user interface for all Java applications is build with Vaadin.
+The version is the current released version available on Maven Central.
+
+The documentation language is English US.
+
+Exchange of data is over TSV files.

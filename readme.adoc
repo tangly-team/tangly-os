@@ -11,6 +11,7 @@ link:net.tangly.fsm/readme.md[_FSM_] hierarchical finite state machine library
 Approaches for TSV and JSON representations are available.
 * link:net.tangly.ports/readme.md[_PORTS_] ports library providing examples to connect a business domain model to external systems
 * link:net.tangly.ui/readme.md[_UI_] Vaadin user interface library
+* link:net.tangly.ui/readme.md[_WEB_] Web utilities library
 * ERP Components
 ** link:net.tangly.erp.crm/readme.md[_ERP CRM_] customer relations management business components library
 ** link:net.tangly.erp.invoices/readme.md[_ERP INVOICES_] invoices business components library

@@ -2,7 +2,6 @@
 title: "Reference Codes"
 date: 2019-05-01
 weight: 50
-draft: false
 ---
 
 :author: Marcel Baumann
@@ -23,7 +22,7 @@ This decision reflects the hexagon architecture.
 Object identifiers shall be managed and allocated through the active record library.
 The domain model shall not be a burden to managing internal identity tokens.
 * Extensions shall be provided to support common model concepts.
-Extensions supporting reference codes, tags and comments are provided.
+Extensions supporting reference codes, tags, and comments are provided.
 * We are enthusiasts to follow functional programming paradigm and object immutability.
 Therefore, the active record library should provide support for classes enforcing immutability.
 

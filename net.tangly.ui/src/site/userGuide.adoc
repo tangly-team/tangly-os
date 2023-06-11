@@ -2,22 +2,38 @@
 title: "User Guide UI"
 date: 2019-06-30
 weight: 30
-draft: false
 ---
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
-:revnumber: v0.1
-:revdate: 2020-05-31
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
 :copyright: CC-BY-SA 4.0
 :stem:
 
-== User Guide Commons UI
+== User Guide Commons Vaadin UI
 
-=== CRUD Component
+=== Entity View
 
-==== Reflections
+A domain entity shall be displayed and manipulated using the entity view.
+
+A domain entity has an internal object identifier, an external identifier, a human-readable name, a temporaral period when the entity is active, and a textual description.
+
+The entity can optionally have a set of tags and a list of comments.
+
+[source,java]
+----
+public class MyEntityView extends EntityView<MyEntity> {
+    static class MyEntityForm extends EntityForm<MyEntity, MyEntityView> {
+        MyEntityForm(@NotNull MyEntityView parent) {
+            super(parent);
+        }
+    }
+}
+----
+
+=== Item View
+
+=== Reflections
 
 One key decision is that the user interface library does not require the use of annotations, interfaces, or inheritance in the business model.
 

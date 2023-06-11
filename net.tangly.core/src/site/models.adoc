@@ -2,7 +2,6 @@
 title: "Bounded Domain Models"
 date: 2019-05-01
 weight: 50
-draft: false
 ---
 == Bounded Domains Models
 
@@ -332,7 +331,7 @@ package Bounded_Domain_Ledger <<Rectangle>> {
 
 === Concepts
 
-Invoices define a business bounded domain as defined in domain driven design approach.
+Invoices define a business bounded domain as defined in domain-driven design approach.
 They are not constrained through external entities such as products, contracts or legal entities.
 External entities can provide hints to streamline the creation of regular invoices.
 The invoice article identifier is available as an external identifier to the article bounded domain.
@@ -340,7 +339,7 @@ Similar identifiers are available for legal entities.
 
 VAT rates are defined within an article definition.
 Therefore, different VAT rates require different article definitions.
-For example, in Switzerland a service company has two VAT rates.
+For example, in Switzerland, a service company has two VAT rates.
 One for regular services and one for services exempted from VAT taxes.
 
 The currency is defined at the invoice level, meaning all invoice items and subtotals should use the same currency.

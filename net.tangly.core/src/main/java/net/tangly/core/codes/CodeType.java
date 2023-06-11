@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -51,18 +51,18 @@ public record CodeType<T extends Code>(@NotNull Class<T> clazz, @NotNull List<T>
     }
 
     /**
-     * Returns all active codes defined for the code table.
+     * Return all active codes defined for the code table.
      *
-     * @return list of active codes of the code table
+     * @return list of active codes
      */
     public List<T> activeCodes() {
         return codes().stream().filter(Code::isEnabled).toList();
     }
 
     /**
-     * Returns all inactive codes defined for the code table.
+     * Return all inactive codes defined for the code table.
      *
-     * @return list of inactive codes of the code table
+     * @return list of inactive codes
      */
 
     public List<T> inactiveCodes() {

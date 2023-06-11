@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *       https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for
@@ -15,7 +15,7 @@
 /**
  * Provides classes for a programmer first behavior driven framework build on the features of Junit 5.
  */
-module net.tangly.core {
+module net.tangly.commons {
     exports net.tangly.commons.generator;
     exports net.tangly.commons.imap;
     exports net.tangly.commons.lang;
@@ -24,8 +24,8 @@ module net.tangly.core {
     exports net.tangly.commons.logger;
     exports net.tangly.commons.utilities;
 
-    requires org.junit.jupiter.api;
-    requires org.apache.logging;
+    // requires org.junit.jupiter.api;
+    // requires org.apache.logging;
     // TODO asciidoctor still not supporting modules
     requires static transitive org.jetbrains.annotations;
 }

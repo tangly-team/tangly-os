@@ -2,7 +2,6 @@
 title: "User Guide tangly ERP"
 date: 2019-06-30
 weight: 40
-draft: false
 ---
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>

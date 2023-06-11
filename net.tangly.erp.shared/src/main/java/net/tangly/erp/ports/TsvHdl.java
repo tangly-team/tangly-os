@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -14,22 +14,29 @@ package net.tangly.erp.ports;
 
 import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.commons.logger.EventData;
-import net.tangly.core.*;
+import net.tangly.core.Address;
+import net.tangly.core.Comment;
+import net.tangly.core.EmailAddress;
+import net.tangly.core.Entity;
+import net.tangly.core.HasComments;
+import net.tangly.core.HasId;
+import net.tangly.core.HasName;
+import net.tangly.core.HasOid;
+import net.tangly.core.HasTags;
+import net.tangly.core.PhoneNr;
 import net.tangly.core.crm.CrmEntity;
 import net.tangly.core.crm.VcardType;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.tsv.TsvHdlCore;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
+import net.tangly.gleam.model.TsvRelation;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.Reader;
-import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -37,20 +44,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
+import static net.tangly.core.tsv.TsvHdlCore.FROM_DATE;
 import static net.tangly.core.tsv.TsvHdlCore.ID;
 import static net.tangly.core.tsv.TsvHdlCore.NAME;
 import static net.tangly.core.tsv.TsvHdlCore.TEXT;
-import static net.tangly.core.tsv.TsvHdlCore.FROM_DATE;
 import static net.tangly.core.tsv.TsvHdlCore.TO_DATE;
 
 public final class TsvHdl {
     public static final CSVFormat FORMAT =
-        CSVFormat.Builder.create().setDelimiter('\t').setQuote('"').setRecordSeparator('\n').setIgnoreSurroundingSpaces(true).setHeader().setSkipHeaderRecord(true).setIgnoreHeaderCase(true)
-                         .setIgnoreEmptyLines(true).build();
+        CSVFormat.Builder.create().setDelimiter('\t').setQuote('"').setRecordSeparator('\n').setIgnoreSurroundingSpaces(true).setHeader().setSkipHeaderRecord(true)
+            .setIgnoreHeaderCase(true).setIgnoreEmptyLines(true).build();
 
-    public static final String OWNER_FOID = "ownerFoid";
     public static final String OID = HasOid.OID;
     public static final String CODE = "code";
     public static final String GENDER = "gender";
@@ -68,84 +76,53 @@ public final class TsvHdl {
         return fields;
     }
 
-    public static <T extends QualifiedEntity> List<TsvProperty<T, ?>> createTsvQualifiedEntityFields() {
+    public static <T extends HasId & Entity & HasName> List<TsvProperty<T, ?>> createTsvQualifiedEntityFields() {
         List<TsvProperty<T, ?>> fields = createTsvEntityFields();
-        fields.add(TsvProperty.ofString(ID, QualifiedEntity::id, QualifiedEntity::id));
-        fields.add(TsvProperty.ofString(NAME, QualifiedEntity::name, QualifiedEntity::name));
+        fields.add(TsvProperty.ofString(ID, Entity::id, Entity::id));
+        fields.add(TsvProperty.ofString(NAME, Entity::name, Entity::name));
         return fields;
     }
 
     public static <T> void importEntities(@NotNull Reader in, String source, @NotNull TsvEntity<T> tsvEntity, @NotNull Provider<T> provider) {
-        try (in) {
-            int counter = 0;
-            for (CSVRecord csv : FORMAT.parse(in)) {
-                T object = tsvEntity.imports(csv);
-                if (object instanceof NamedEntity entity) {
-                    if (entity.check()) {
-                        provider.update(object);
-                        ++counter;
-                        EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, tsvEntity.clazz().getSimpleName() + " imported",
-                            Map.of("filename", source, "object", object));
-                    } else {
-                        EventData.log(EventData.IMPORT, MODULE, EventData.Status.WARNING, tsvEntity.clazz().getSimpleName() + " invalid entity",
-                            Map.of("filename", source, "object", object));
-
-                    }
-                } else {
-                    provider.update(object);
-                    ++counter;
-                    EventData.log(EventData.IMPORT, MODULE, EventData.Status.INFO, tsvEntity.clazz().getSimpleName() + " imported",
-                        Map.of("filename", source, "object", object));
-                }
+        BiFunction<TsvEntity<T>, CSVRecord, T> lambda = (tsv, record) -> {
+            T entity = tsvEntity.imports(record);
+            if (!(entity instanceof Entity instance) || (instance.validate())) {
+                provider.update(entity);
             }
-            EventData.log(EventData.IMPORT, MODULE, EventData.Status.INFO, tsvEntity.clazz().getSimpleName() + " imported objects",
-                Map.of("filename", source, "count", counter));
-        } catch (IOException e) {
-            EventData.log(EventData.IMPORT, MODULE, EventData.Status.FAILURE, "Entities not imported from TSV file", Map.of("filename", source), e);
-            throw new UncheckedIOException(e);
-        } catch (Exception e) {
-            EventData.log(EventData.IMPORT, MODULE, EventData.Status.FAILURE, "Entities not imported from TSV file", Map.of("filename", source), e);
-        }
+            return entity;
+        };
+        imports(in, source, tsvEntity, lambda);
     }
 
-    public static <T> void importEntities(@NotNull Path path, @NotNull TsvEntity<T> tsvEntity, @NotNull Provider<T> provider) {
-        try (Reader reader = new BufferedReader(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
-            importEntities(reader, path.toString(), tsvEntity, provider);
-        } catch (IOException e) {
-            EventData.log(EventData.IMPORT, MODULE, EventData.Status.FAILURE, "Entities not imported from TSV file", Map.of("filename", path.toString()), e);
-            throw new UncheckedIOException(e);
-        }
+    public static <T> List<TsvRelation<T>> importRelations(@NotNull Reader in, String source, @NotNull TsvEntity<T> tsvEntity) {
+        List<TsvRelation<T>> relations = new ArrayList<>();
+        BiFunction<TsvEntity<T>, CSVRecord, TsvRelation<T>> lambda = (tsv, record) -> {
+            TsvRelation<T> relation = tsvEntity.importRelation(record);
+            relations.add(relation);
+            return relation;
+        };
+        imports(in, source, tsvEntity, lambda);
+        return relations;
     }
 
     public static <T> void exportEntities(@NotNull Path path, @NotNull TsvEntity<T> tsvEntity, @NotNull Provider<T> provider) {
-        try (CSVPrinter out = new CSVPrinter(Files.newBufferedWriter(path, StandardCharsets.UTF_8), FORMAT)) {
-            int counter = 0;
-            tsvEntity.headers().forEach(e -> TsvProperty.print(out, e));
-            out.println();
-            for (T entity : provider.items()) {
-                tsvEntity.exports(entity, out);
-                out.println();
-                ++counter;
-                EventData.log(EventData.EXPORT, MODULE, EventData.Status.SUCCESS, tsvEntity.clazz().getSimpleName() + " exported to TSV file",
-                    Map.of("filename", path, "entity", entity));
-            }
-            EventData.log(EventData.EXPORT, MODULE, EventData.Status.INFO, "exported to TSV file", Map.of("filename", path, "counter", counter));
-        } catch (IOException e) {
-            EventData.log(EventData.EXPORT, MODULE, EventData.Status.FAILURE, "Entities exported to TSV file", Map.of("filename", path), e);
-            throw new UncheckedIOException(e);
-        } catch (Exception e) {
-            EventData.log(EventData.EXPORT, MODULE, EventData.Status.FAILURE, "Entities exported to TSV file", Map.of("filename", path), e);
-        }
+        BiConsumer<T, CSVPrinter> lambda = (o, printer) -> tsvEntity.exports(o, printer);
+        exports(path, tsvEntity, provider.items(), lambda);
     }
 
-    public static <T extends HasComments & HasOid> void addComments(Provider<T> provider, Provider<Comment> comments) {
+    public static <T> void exportRelations(@NotNull Path path, @NotNull TsvEntity<T> tsvEntity, @NotNull List<TsvRelation<T>> relations) {
+        BiConsumer<TsvRelation<T>, CSVPrinter> lambda = (o, printer) -> tsvEntity.exportRelation(o, printer);
+        exports(path, tsvEntity, relations, lambda);
+    }
+
+    public static <T extends HasComments & HasOid> void addComments(Provider<T> provider, List<TsvRelation<Comment>> comments) {
         provider.items().forEach(e -> TsvHdl.addComments(provider, e, comments));
     }
 
-    public static <T extends HasComments & HasOid> void addComments(Provider<T> provider, T entity, Provider<Comment> comments) {
-        var items = comments.items().stream().filter(o -> (long) ReflectionUtilities.get(o, OWNER_FOID) == entity.oid()).toList();
+    public static <T extends HasComments & HasOid> void addComments(Provider<T> provider, T entity, List<TsvRelation<Comment>> comments) {
+        var items = comments.stream().filter(o -> o.ownerId() == entity.oid()).map(o -> o.ownedEntity()).toList();
         if (!items.isEmpty()) {
-            entity.addAll(items);
+            entity.addCommnents(items);
             provider.update(entity);
         }
     }
@@ -181,5 +158,45 @@ public final class TsvHdl {
             case "fr" -> Locale.FRENCH;
             default -> Locale.ENGLISH;
         };
+    }
+
+    private static <T, U> void imports(@NotNull Reader in, String source, @NotNull TsvEntity<T> tsvEntity, BiFunction<TsvEntity<T>, CSVRecord, U> function) {
+        try (in) {
+            int counter = 0;
+            for (CSVRecord csv : FORMAT.parse(in)) {
+                Object imported = function.apply(tsvEntity, csv);
+                if (!(imported instanceof Entity entity) || (entity.validate())) {
+                    ++counter;
+                    EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, tsvEntity.clazz().getSimpleName() + " imported",
+                        Map.of("filename", source, "object", imported));
+                } else {
+                    EventData.log(EventData.IMPORT, MODULE, EventData.Status.WARNING, tsvEntity.clazz().getSimpleName() + " invalid entity",
+                        Map.of("filename", source, "object", imported));
+                }
+            }
+            EventData.log(EventData.IMPORT, MODULE, EventData.Status.INFO, tsvEntity.clazz().getSimpleName() + " imported objects", Map.of("filename", source, "count", counter));
+        } catch (Exception e) {
+            EventData.log(EventData.IMPORT, MODULE, EventData.Status.FAILURE, "Entities not imported from TSV file", Map.of("filename", source), e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static <T, U> void exports(@NotNull Path path, @NotNull TsvEntity<T> tsvEntity, @NotNull List<U> items, @NotNull BiConsumer<U, CSVPrinter> lambda) {
+        try (CSVPrinter out = new CSVPrinter(Files.newBufferedWriter(path, StandardCharsets.UTF_8), FORMAT)) {
+            int counter = 0;
+            tsvEntity.headers().forEach(e -> TsvProperty.print(out, e));
+            out.println();
+            for (U entity : items) {
+                lambda.accept(entity, out);
+                out.println();
+                ++counter;
+                EventData.log(EventData.EXPORT, MODULE, EventData.Status.SUCCESS, tsvEntity.clazz().getSimpleName() + " exported to TSV file",
+                    Map.of("filename", path, "entity", entity));
+            }
+            EventData.log(EventData.EXPORT, MODULE, EventData.Status.INFO, "exported to TSV file", Map.of("filename", path, "counter", counter));
+        } catch (Exception e) {
+            EventData.log(EventData.EXPORT, MODULE, EventData.Status.FAILURE, "Entities exported to TSV file", Map.of("filename", path), e);
+            throw new RuntimeException(e);
+        }
     }
 }

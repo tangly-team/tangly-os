@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -41,17 +41,23 @@ public record TagType<T>(String namespace, @NotNull String name, @NotNull ValueK
      */
     public enum ValueKinds {NONE, OPTIONAL, MANDATORY}
 
+    public static TagType<String> ofWithNoValue(String namespace, @NotNull String name) {
+        return ofString(namespace, name, ValueKinds.NONE, (tagType, tag) -> true);
+    }
+
     public static TagType<String> ofMandatoryString(String namespace, @NotNull String name) {
         return ofString(namespace, name, ValueKinds.MANDATORY, (tagType, tag) -> true);
     }
 
-    public static TagType<String> ofString(String namespace, @NotNull String name, @NotNull ValueKinds kind,
-                                           @NotNull BiPredicate<TagType<String>, String> validate) {
+    public static TagType<String> ofOptionalString(String namespace, @NotNull String name) {
+        return ofString(namespace, name, ValueKinds.OPTIONAL, (tagType, tag) -> true);
+    }
+
+    public static TagType<String> ofString(String namespace, @NotNull String name, @NotNull ValueKinds kind, @NotNull BiPredicate<TagType<String>, String> validate) {
         return of(namespace, name, kind, String.class, UnaryOperator.identity(), validate);
     }
 
-    public static <T> TagType<T> ofMandatory(String namespace, @NotNull String name, Class<T> clazz, Function<String, T> convert,
-                                             @NotNull BiPredicate<TagType<T>, T> validate) {
+    public static <T> TagType<T> ofMandatory(String namespace, @NotNull String name, Class<T> clazz, Function<String, T> convert, @NotNull BiPredicate<TagType<T>, T> validate) {
         return of(namespace, name, ValueKinds.MANDATORY, clazz, convert, validate);
     }
 

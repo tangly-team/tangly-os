@@ -1,0 +1,31 @@
+---
+title: "Semantic Concepts"
+date: 2023-01-01
+weight: 10
+---
+:company: https://www.tangly.net/[tangly llc]
+:copyright: CC-BY-SA 4.0
+
+== Semantic Information Concepts
+
+- Owned Articles
+- Referenced Articles
+- Referenced Wikipedia Concepts
+- Referenced Books
+- Referenced Links
+- Referenced Marked Facts
+
+- Java Modules
+- Item Property Value ->
+Item has one (Concept) Type, Property has a PropertyType, PropertyType validate PropertyValue
+-> a Property is mandatory or optional, 0..1, 1..1, 0..n, 1..n
+-> Code, Tags, Comments
+
+=== Ideas
+
+Experiment with the cluster Class with properties, relations, codes, tags and comments.
+The cluster can be mapped to a structural ontology.
+Object diagrams can be mapped to RDF ternary terms.
+
+Items are uniquely identified through their external identity.
+Values have no identifiers.

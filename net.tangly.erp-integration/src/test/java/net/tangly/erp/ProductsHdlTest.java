@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -68,29 +68,29 @@ class ProductsHdlTest {
     }
 
     private void verifyProducts(@NotNull ProductsRealm realm) {
-        assertThat(realm.products().items().isEmpty()).isFalse();
+        assertThat(realm.products().items()).isNotEmpty();
         Realm.checkEntities(realm.products());
     }
 
     private void verifyAssignments(@NotNull ProductsRealm realm, int nrOfEntities, Assignment entity) {
-        assertThat(realm.assignments().items().isEmpty()).isFalse();
+        assertThat(realm.assignments().items()).isNotEmpty();
         Realm.checkEntities(realm.assignments());
         if (entity != null) {
             assertThat(realm.assignments().items()).hasSize(nrOfEntities);
             Optional<Assignment> copy = findById(realm.assignments(), entity.id());
             assertThat(copy).isNotEmpty();
-            assertThat(copy.get()).isEqualTo(entity);
+            assertThat(copy).contains(entity);
         }
     }
 
     private void verifyEfforts(@NotNull ProductsRealm realm, int nrOfEntities, Effort entity) {
-        assertThat(realm.efforts().items().isEmpty()).isFalse();
+        assertThat(realm.efforts().items()).isNotEmpty();
         realm.efforts().items().forEach(o -> assertThat(o.check()).isTrue());
         if (entity != null) {
             assertThat(realm.efforts().items()).hasSize(nrOfEntities);
             Optional<Effort> copy = realm.efforts().findBy(Effort::assignment, entity.assignment());
             assertThat(copy).isNotEmpty();
-            assertThat(copy.get()).isEqualTo(entity);
+            assertThat(copy).contains(entity);
         }
     }
 

@@ -38,10 +38,10 @@ The library can be included in Gradle as
 
 [source,groovy]
 ----
-    implementation "net.tangly.erp:crm:0.2.7"
+ implementation "net.tangly.erp:crm:0.2.7"
 ----
 
-The documentation can be found under https://blog.tangly.net/docs/erp/crm/[Business documentation]
+The documentation can be found under https://blog.tangly.net/docs/domains/crm/[Business documentation]
 
 For any further question and discussion you can use the forum https://groups.google.com/g/tangly-os-components[tangly-OS-Components]
 

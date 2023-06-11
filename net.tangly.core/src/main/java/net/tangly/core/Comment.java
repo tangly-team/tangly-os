@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -25,11 +25,6 @@ import java.util.Set;
  * the entity owning it an is only accessible through this entity.
  */
 public class Comment implements HasTags {
-    /**
-     * The foreign identifier of the entity owning the comment.
-     */
-    private long ownerFoid;
-
     /**
      * The creation date and time of the comment.
      */
@@ -96,18 +91,16 @@ public class Comment implements HasTags {
     /**
      * Factory method to update a new comment. The current date and time are set a creation date.
      *
-     * @param created   creation date of the comment
-     * @param ownerFoid oid of the owning entity
-     * @param author    author of the comment
-     * @param text      content of the comment
-     * @param tags      optional tags of the comment
+     * @param created creation date of the comment
+     * @param author  author of the comment
+     * @param text    content of the comment
+     * @param tags    optional tags of the comment
      * @return the newly created comment
      */
     @SafeVarargs
-    public static Comment of(@NotNull LocalDateTime created, long ownerFoid, @NotNull String author, @NotNull String text, Tag... tags) {
+    public static Comment of(@NotNull LocalDateTime created, @NotNull String author, @NotNull String text, Tag... tags) {
         var comment = new Comment(author, text);
         comment.created = created;
-        comment.ownerFoid = ownerFoid;
         comment.addTags(Set.of(tags));
         return comment;
     }
@@ -159,14 +152,16 @@ public class Comment implements HasTags {
     }
 
     @Override
-    public void clearTags() {
+    public void removeAllTags() {
         tags.clear();
     }
+
     // endregion
     @Override
     public int hashCode() {
-        return Objects.hashCode(this);
+        return Objects.hash(created, author, text, tags);
     }
+
     @Override
     public boolean equals(Object obj) {
         return (obj instanceof Comment o) && Objects.equals(created(), o.created()) && Objects.equals(author(), o.author()) &&

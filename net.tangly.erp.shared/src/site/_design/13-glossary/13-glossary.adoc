@@ -1,0 +1,16 @@
+ifndef::imagesdir[:imagesdir: ./pics]
+
+[[section-glossary]]
+== Glossary
+
+[cols="1,2,2" options="header"]
+|===
+|Term |Definition|Remarks
+
+|ADR|Architecture Design Record
+|DDD|Domain-Driven Design
+|DoD|Definition of Done
+|FSM|Finite State Machine
+|SDL|Specification and Description Language
+|UML|Unified Modeling Language
+|===

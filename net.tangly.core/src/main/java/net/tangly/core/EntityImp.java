@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -19,34 +19,68 @@ import java.util.*;
 
 /**
  * Default implementation of the Entity interface.
- *
- * @see QualifiedEntity
  */
 public abstract class EntityImp implements Entity {
     private final long oid;
-    private LocalDate fromDate;
-    private LocalDate toDate;
+    private String id;
     private String name;
+    private LocalDate from;
+    private LocalDate to;
     private String text;
     private final List<Comment> comments;
     private final Set<Tag> tags;
 
+    public static <T extends Entity> T init(T entity, String id, String name, LocalDate from, LocalDate to, String text) {
+        entity.id(id);
+        entity.name(name);
+        entity.from(from);
+        entity.to(to);
+        entity.text(text);
+        return entity;
+    }
+
     protected EntityImp() {
-        this.oid = UNDEFINED_OID;
+        this(UNDEFINED_OID);
+    }
+
+    protected EntityImp(long oid) {
+        this.oid = oid;
         comments = new ArrayList<>();
         tags = new HashSet<>();
     }
 
-    // region HasOid
+    protected EntityImp(long oid, String id, String name, LocalDate from, LocalDate to, String text) {
+        this(oid);
+        this.id = id;
+        this.name = name;
+        this.from = from;
+        this.to = to;
+        this.text = text;
+    }
 
     @Override
     public long oid() {
         return oid;
     }
 
-    // endregion
+    @Override
+    public String id() {
+        return id;
+    }
 
-    // region HasText
+    @Override
+    public void id(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public String name() {
+        return name;
+    }
+
+    public void name(String name) {
+        this.name = name;
+    }
 
     @Override
     public String text() {
@@ -58,33 +92,25 @@ public abstract class EntityImp implements Entity {
         this.text = text;
     }
 
-    // endregion
-
-    // region HasInterval
-
     @Override
     public LocalDate from() {
-        return fromDate;
+        return from;
     }
 
     @Override
     public void from(LocalDate fromDate) {
-        this.fromDate = fromDate;
+        this.from = fromDate;
     }
 
     @Override
     public LocalDate to() {
-        return toDate;
+        return to;
     }
 
     @Override
     public void to(LocalDate toDate) {
-        this.toDate = toDate;
+        this.to = toDate;
     }
-
-    // endregion
-
-    // region Comments
 
     @Override
     public List<Comment> comments() {
@@ -100,9 +126,6 @@ public abstract class EntityImp implements Entity {
     public void remove(@NotNull Comment comment) {
         comments.remove(comment);
     }
-    // endregion
-
-    // region HasTags
 
     @Override
     public Set<Tag> tags() {
@@ -120,10 +143,9 @@ public abstract class EntityImp implements Entity {
     }
 
     @Override
-    public void clearTags() {
+    public void removeAllTags() {
         tags.clear();
     }
-    // endregion
 
     @Override
     public int hashCode() {
@@ -132,8 +154,7 @@ public abstract class EntityImp implements Entity {
 
     @Override
     public boolean equals(Object obj) {
-        return (obj instanceof EntityImp o) && Objects.equals(oid(), o.oid()) && Objects.equals(from(), o.from()) &&
-            Objects.equals(to(), o.to()) && Objects.equals(text(), o.text()) && Objects.equals(comments(), o.comments()) &&
-            Objects.equals(tags(), o.tags());
+        return (obj instanceof EntityImp o) && Objects.equals(oid(), o.oid()) && Objects.equals(from(), o.from()) && Objects.equals(to(), o.to()) &&
+            Objects.equals(text(), o.text()) && Objects.equals(comments(), o.comments()) && Objects.equals(tags(), o.tags());
     }
 }

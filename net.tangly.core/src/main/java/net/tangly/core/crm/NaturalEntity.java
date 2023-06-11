@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -19,11 +19,11 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * A natural entity is a person. A natural entity has an identity defined as the legal number of a person (e.g. the social security number, a name defined as
- * the last name and the first name separated by a comma, a life duration and a text describing it.
+ * A natural entity is a person. A natural entity has an identity defined as the legal number of a person (e.g. the social security number, a name defined as the last name and the
+ * first name separated by a comma, a life duration and a text describing it.
  * <p>A potential approach for a natural person identification is ISO 24366.</p>
  */
-public class NaturalEntity extends NamedEntityImp implements CrmEntity {
+public class NaturalEntity extends EntityImp implements Entity, CrmEntity {
     private String socialNr;
     private String firstname;
     private String lastname;
@@ -31,6 +31,16 @@ public class NaturalEntity extends NamedEntityImp implements CrmEntity {
     private Photo photo;
 
     public NaturalEntity() {
+    }
+
+    @Override
+    public String id() {
+        return socialNr;
+    }
+
+    @Override
+    public void id(String id) {
+        this.socialNr = id;
     }
 
     public String firstname() {
@@ -95,7 +105,7 @@ public class NaturalEntity extends NamedEntityImp implements CrmEntity {
     }
 
     @Override
-    public boolean check() {
+    public boolean validate() {
         return !Strings.isNullOrBlank(lastname()) && (gender() != null);
     }
 

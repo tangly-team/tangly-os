@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -13,20 +13,27 @@
 package net.tangly.core.crm;
 
 
-import net.tangly.core.*;
+import net.tangly.core.Address;
+import net.tangly.core.BankConnection;
+import net.tangly.core.EmailAddress;
+import net.tangly.core.HasTags;
+import net.tangly.core.PhoneNr;
+import net.tangly.core.Tag;
+import net.tangly.core.TagType;
+import net.tangly.core.TypeRegistry;
 import org.jetbrains.annotations.NotNull;
 
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URI;
 import java.net.URL;
 import java.util.Objects;
 
 /**
- * A taxonomy of tags for a customer relationship management system. The namespace is naturally <i>crm</i>. Additional namespaces were added to introduce
- * standard tags such a location tags.
+ * A taxonomy of tags for a customer relationship management system. The namespace is naturally <i>crm</i>. Additional namespaces were added to introduce standard tags such a
+ * location tags.
  */
 public final class CrmTags {
-
-
     public static final String CRM = "crm";
     public static final String GEO = "geo";
 
@@ -38,18 +45,21 @@ public final class CrmTags {
     private static final String BILLING = "billing";
     private static final String DELIVERY = "delivery";
     private static final String SEGMENT = "segment";
+    private static final String EMAIL = ":email-";
+    private static final String PHONE = ":phone-";
+    private static final String ADDRESS = ":address-";
 
-    public static final String CRM_EMAIL_HOME = CRM + ":email-" + VcardType.home.name();
-    public static final String CRM_EMAIL_WORK = CRM + ":email-" + VcardType.work.name();
+    public static final String CRM_EMAIL_HOME = CRM + EMAIL + VcardType.home.name();
+    public static final String CRM_EMAIL_WORK = CRM + EMAIL + VcardType.work.name();
 
-    public static final String CRM_PHONE_MOBILE = CRM + ":phone-" + VcardType.mobile.name();
-    public static final String CRM_PHONE_HOME = CRM + ":phone-" + VcardType.home.name();
-    public static final String CRM_PHONE_WORK = CRM + ":phone-" + VcardType.work.name();
+    public static final String CRM_PHONE_MOBILE = CRM + PHONE + VcardType.mobile.name();
+    public static final String CRM_PHONE_HOME = CRM + PHONE + VcardType.home.name();
+    public static final String CRM_PHONE_WORK = CRM + PHONE + VcardType.work.name();
 
-    public static final String CRM_ADDRESS_HOME = CRM + ":address-" + VcardType.home.name();
-    public static final String CRM_ADDRESS_WORK = CRM + ":address-" + VcardType.work.name();
-    public static final String CRM_ADDRESS_BILLING = CRM + ":address-" + BILLING;
-    public static final String CRM_ADDRESS_DELIVERY = CRM + ":address-" + DELIVERY;
+    public static final String CRM_ADDRESS_HOME = CRM + ADDRESS + VcardType.home.name();
+    public static final String CRM_ADDRESS_WORK = CRM + ADDRESS + VcardType.work.name();
+    public static final String CRM_ADDRESS_BILLING = CRM + ADDRESS + BILLING;
+    public static final String CRM_ADDRESS_DELIVERY = CRM + ADDRESS + DELIVERY;
     public static final String CRM_CUSTOMER_SEGMENT = CRM + SEGMENT;
 
     public static final String CRM_SITE_HOME = CRM + ":site-" + VcardType.home.name();
@@ -80,8 +90,8 @@ public final class CrmTags {
 
     public static URL of(String url) {
         try {
-            return new URL(url);
-        } catch (MalformedURLException e) {
+            return new URI(url).toURL();
+        } catch (URISyntaxException | MalformedURLException e) {
             throw new RuntimeException(e);
         }
     }
@@ -151,7 +161,6 @@ public final class CrmTags {
      */
     public static String organizationLinkedInUrl(@NotNull HasTags entity) {
         var school = entity.findBy(CrmTags.CRM_SCHOOL);
-        return entity.findBy(CrmTags.CRM_IM_LINKEDIN).map(Tag::value).map(o -> "https://www.linkedin.com/" + (school.isPresent() ? "school/" : "company/") + o)
-            .orElse(null);
+        return entity.findBy(CrmTags.CRM_IM_LINKEDIN).map(Tag::value).map(o -> "https://www.linkedin.com/" + (school.isPresent() ? "school/" : "company/") + o).orElse(null);
     }
 }

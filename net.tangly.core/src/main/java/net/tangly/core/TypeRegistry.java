@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -12,6 +12,7 @@
 
 package net.tangly.core;
 
+import net.tangly.core.codes.Code;
 import net.tangly.core.codes.CodeType;
 import org.jetbrains.annotations.NotNull;
 
@@ -30,7 +31,7 @@ public class TypeRegistry {
     }
 
     /**
-     * Registers a tag type.
+     * Register a tag type.
      *
      * @param type tag type to bind
      */
@@ -43,7 +44,7 @@ public class TypeRegistry {
     }
 
     /**
-     * Returns all the namespaces registered.
+     * Return all the namespaces registered.
      *
      * @return List of namespaces
      */
@@ -56,32 +57,49 @@ public class TypeRegistry {
     }
 
     /**
-     * Returns the tag type describing the requested namespace and name.
+     * Return the tag type describing the requested namespace and name.
      *
      * @param namespace optional namespace of the tag type
      * @param name      mandatory name of the tag type
-     * @return requested tag type
+     * @param <T>       type of the code
+     * @return requested tag type as optional
      */
-    public Optional<TagType<?>> find(String namespace, @NotNull String name) {
-        return tagTypes.stream().filter(o -> Objects.equals(o.namespace(), namespace) && Objects.equals(o.name(), name)).findAny();
+    public <T> Optional<TagType<T>> find(String namespace, @NotNull String name) {
+        Optional<TagType<?>> optional = tagTypes.stream().filter(o -> Objects.equals(o.namespace(), namespace) && Objects.equals(o.name(), name)).findAny();
+        return optional.isPresent() ? Optional.of((TagType<T>) optional.get()) : Optional.empty();
     }
 
     /**
-     * Returns the tag type describing the tag.
+     * Return the tag type describing the tag.
      *
      * @param tag tag which type is requested
+     * @param <T> type of the code
      * @return requested tag type
      * @see #find(String, String)
      */
-    public Optional<TagType<?>> find(@NotNull Tag tag) {
-        return find(tag.namespace(), tag.name());
+    public <T> Optional<TagType<T>> find(@NotNull Tag tag) {
+        return find(tag.namespace(), Objects.requireNonNull(tag).name());
     }
 
-    public void register(@NotNull CodeType<?> type) {
+    /**
+     * Register a code type to the registry.
+     *
+     * @param type code type to register
+     * @param <T>  type of the code
+     */
+    public <T extends Code> void register(@NotNull CodeType<T> type) {
         codeTypes.add(type);
     }
 
-    public Optional<CodeType<?>> find(@NotNull Class<?> clazz) {
-        return codeTypes.stream().filter(o -> clazz.equals(o.clazz())).findAny();
+    /**
+     * Return the code type for the provided code class. The implementation takes care to return the expected generic type.
+     *
+     * @param clazz class of the code which code type we are looking for
+     * @param <T>   type of code to look for
+     * @return code type as optional
+     */
+    public <T extends Code> Optional<CodeType<T>> find(@NotNull Class<T> clazz) {
+        Optional<CodeType<?>> optional = codeTypes.stream().filter(o -> clazz.equals(o.clazz())).findAny();
+        return optional.isPresent() ? Optional.of((CodeType<T>) optional.get()) : Optional.empty();
     }
 }

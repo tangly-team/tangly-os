@@ -4,7 +4,7 @@ date: 2019-05-01
 weight: 10
 ---
 
-# Core Libraries
+== Core Libraries
 
 image:https://img.shields.io/badge/license-Apache%202-blue.svg[Apache License 2.0]
 image:https://img.shields.io/maven-central/v/net.tangly/core.svg[Maven Central]
@@ -15,7 +15,7 @@ image:https://img.shields.io/bitbucket/issues-raw/tangly/tangly-os.svg[Bitbucket
 
 == Purpose
 
-The **tangly core** component provides key abstraction for domain driven development approach and entities with tags and comments.
+The **tangly core** component provides a key abstraction for domain-driven development approach and entities with tags and comments.
 It requires **Java 17 or higher**.
 
 
@@ -41,11 +41,11 @@ The library can be included in Gradle as
 
 The documentation can be found under https://blog.tangly.net/docs/core/[Core]
 
-For any further question and discussion you can use the forum https://groups.google.com/g/tangly-os-components[tangly-OS-Components]
+For any further question and discussion, you can use the forum https://groups.google.com/g/tangly-os-components[tangly-OS-Components]
 
 == Contribution
 
-You are welcome to contribute to the product with pull requests on Bitbucket. You can download the source files from the
+You are welcome to contribute to the product with pull requests on Bitbucket.You can download the source files from the
 https://bitbucket.org/tangly-team/tangly-os.git[bitbucket git repository] and build the library with the provided gradle configuration file.
 
 If you find a bug or want to request a feature, please use the https://bitbucket.org/tangly-team/tangly-os/issues[issue tracker].

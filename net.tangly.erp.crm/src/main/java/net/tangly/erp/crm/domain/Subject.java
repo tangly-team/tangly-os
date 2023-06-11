@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -12,7 +12,7 @@
 
 package net.tangly.erp.crm.domain;
 
-import net.tangly.core.QualifiedEntityImp;
+import net.tangly.core.EntityImp;
 import net.tangly.core.crm.NaturalEntity;
 import net.tangly.erp.crm.gravatar.Gravatar;
 import net.tangly.erp.crm.gravatar.GravatarImage;
@@ -29,10 +29,9 @@ import java.util.Base64;
 import java.util.Objects;
 
 /**
- * Defines the abstraction of a registered subject entitled to use the application and associated services. The id of the subject is the human readable unique
- * identifier.
+ * Defines the abstraction of a registered subject entitled to use the application and associated services. The id of the subject is the human readable unique identifier.
  */
-public class Subject extends QualifiedEntityImp {
+public class Subject extends EntityImp {
     private static final String ALGORITHM = "PBKDF2WithHmacSHA512";
     private NaturalEntity user;
     private String gravatarEmail;

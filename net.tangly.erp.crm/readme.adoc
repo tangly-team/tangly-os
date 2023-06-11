@@ -41,13 +41,13 @@ The library can be included in Gradle as
     implementation "net.tangly.erp:crm:0.2.7"
 ----
 
-The documentation can be found under https://blog.tangly.net/docs/erp/crm/[Business documentation]
+The documentation can be found under https://blog.tangly.net/docs/domains/crm/[Business documentation]
 
 For any further question and discussion you can use the forum https://groups.google.com/g/tangly-os-components[tangly-OS-Components]
 
 == Contribution
 
-You are welcome to contribute to the product with pull requests on Bitbucket. You can download the source files from the
+You are welcome to contribute to the product with pull requests on Bitbucket.You can download the source files from the
 https://bitbucket.org/tangly-team/tangly-os.git[bitbucket git repository] and build the library with the provided gradle configuration file.
 
 If you find a bug or want to request a feature, please use the https://bitbucket.org/tangly-team/tangly-os/issues[issue tracker].

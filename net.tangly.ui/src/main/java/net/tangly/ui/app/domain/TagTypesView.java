@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -13,11 +13,10 @@
 package net.tangly.ui.app.domain;
 
 import com.vaadin.flow.component.grid.HeaderRow;
-import com.vaadin.flow.component.grid.dataview.GridListDataView;
 import net.tangly.core.TagType;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.providers.ProviderInMemory;
-import net.tangly.ui.components.EntityView;
+import net.tangly.ui.components.ItemView;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -27,18 +26,15 @@ import java.util.Optional;
 /**
  * Displays all tags and their usage, often use for administrative information for a bounded domain.
  */
-public class TagTypesView extends EntityView<TagType> {
+public class TagTypesView extends ItemView<TagType> {
     final String NAMESPACE = "namespace";
     final String NAMESPACE_LABEL = "Namespace";
     final String NAME = "name";
     final String NAME_LABEL = " Name";
-    private final transient BoundedDomain<?, ?, ?, ?> domain;
     private final transient HashMap<TagType<?>, Integer> counts;
-    private TagTypeFilter entityFilter;
 
     public TagTypesView(@NotNull BoundedDomain<?, ?, ?, ?> domain) {
-        super(TagType.class, ProviderInMemory.of(domain.registry().tagTypes()), false);
-        this.domain = domain;
+        super(TagType.class, domain, ProviderInMemory.of(domain.registry().tagTypes()), new TagTypeFilter(), Mode.LIST);
         this.counts = new HashMap<>();
         init();
     }
@@ -54,23 +50,23 @@ public class TagTypesView extends EntityView<TagType> {
         grid.addColumn(e -> e.clazz().getSimpleName()).setKey("valueType").setHeader("Value Type").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(this::count).setKey("count").setHeader("Count").setSortable(true).setAutoWidth(true).setResizable(true);
 
-        entityFilter = new TagTypeFilter(dataView());
-        grid().getHeaderRows().clear();
-        HeaderRow headerRow = grid().appendHeaderRow();
-        addFilter(headerRow, NAMESPACE, NAMESPACE_LABEL, entityFilter::namespace);
-        addFilter(headerRow, NAME, NAME_LABEL, entityFilter::name);
+        if (filter() instanceof TagTypeFilter filter) {
+            grid().getHeaderRows().clear();
+            HeaderRow headerRow = grid().appendHeaderRow();
+            addFilterText(headerRow, NAMESPACE, NAMESPACE_LABEL, filter::namespace);
+            addFilterText(headerRow, NAME, NAME_LABEL, filter::name);
+        }
 
         // TODO addMenuSection(List.of(Map.entry("Count Tags", e -> update(domain.countTags(new HashMap<>())))));
     }
 
-    static class TagTypeFilter extends EntityView.EntityFilter<TagType> {
+    static class TagTypeFilter extends ItemFilter<TagType> {
         private String namespace;
         private String name;
         private Optional<Boolean> canHaveValue;
         private TagType.ValueKinds kind;
 
-        public TagTypeFilter(@NotNull GridListDataView<TagType> dataView) {
-            super(dataView);
+        public TagTypeFilter() {
         }
 
         public void namespace(String namespace) {

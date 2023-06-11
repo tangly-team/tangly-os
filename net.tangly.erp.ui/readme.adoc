@@ -43,7 +43,7 @@ Include the library in your Gradle configuration as:
 
 ----
 
-The documentation can be found under https://blog.tangly.net/docs/erp/ui/[Business documentation]
+The documentation can be found under https://blog.tangly.net/docs/domains/ui/[Business documentation]
 
 For any further questions and discussion, you can use the forum https://groups.google.com/g/tangly-os-components[tangly-OS-Components]
 
@@ -135,56 +135,13 @@ This approach is mandatory if the image is deployed in https://www.heroku.com/[H
 
 === Run in the Cloud
 
-==== Heroku Cloud
+[CAUTION]
+====
+The deployment on the Heroku cloud was removed due to changes in the usage conditions of the platform.
 
-An application must once be created to host the docker image.
+Therefore, we do not deply anymore our applications on Heroku.
+====
 
-[source,shell]
-----
-   heroku create tangly-erp --region eu
-----
-
-The ERP application can be accessed over https://tangly-erp.herokuapp.com/erp/[tangly-erp].
-The first part of the URL is the link to the hosted docker instance.
-THe trailing _erp/_ path defines the access to the user interface of the ERP application.
-The git repository is https://git.heroku.com/tangly-erp.git[git].
-Update the heroku remote in git to point to this heroku git repository.
-
-These instructions build the docker image locally and publish it into the heroku application using heroku commands.
-
-[source,shell]
-----
-  heroku login
-  heroku container:login // <1>
-  cd net.tangly.erp.ui
-  heroku container:push web // <2>
-  heroku container:release web // <3>
-----
-
-* <1> login in the heroku docker image registry using docker CLI
-* <2> build the locally build docker image to heroku.
-You can also download an image from a repository and push it to Heroku.
-* <3> Release the image to deploy it on Heroku Cloud.
-
-These instructions create and publish the docker image using docker commands.
-
-[source,shell]
-----
-  heroku login
-  heroku container:login // <1>
-  docker build -t tanglyllc/tangly-erp:latest net.tangly.erp.ui/
-  docker tag tanglyllc/tangly-erp:latest registry.heroku.com/tangly-erp/web // <2>
-  docker push registry.heroku.com/tangly-erp/web // <3>
-  heroku container:release web
-----
-
-<1> login in the heroku docker image registry using docker command line interface CLI
-<2> tag the docker image
-<3> push an existing image to the heroku registry
-
-We deliberately decided not to provide the instructions to deploy a fat jar in docker.
-Fat jar applications are inherently bloaded executable files.
-You should always pursue small executable size when working with images, especially if the images are executed in a public cloud.
 
 == Contribution
 

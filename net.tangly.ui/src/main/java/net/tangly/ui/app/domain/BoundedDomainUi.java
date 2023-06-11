@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -58,12 +58,13 @@ public interface BoundedDomainUi {
     void select(@NotNull AppLayout layout, Component view);
 
     /**
-     * Administration menu provides standard administration operation for a bounded domain.
+     * The administration menu provides standard administration operation for a bounded domain.
      * <ul>
      *     <li>Provides statistics about entities of the domain.</li>
-     *     <li>Import domain entities from a set of TSV files stored in a directory.</li>
-     *     <li>Export domain entities to a set of TSV files stored in a directory. Existing files are overwritten.</li>
-     *     <li>Up load domain entities through the browser interface. Files are available on client site.</li>
+     *     <li>Import domain entities from a set of TSV files stored in a directory. The command is responsible for a semantic meaningful ordering of the imports.</li>
+     *     <li>Export domain entities to a set of TSV files stored in a directory. Existing files are overwritten. The exported entities could later be imported into the
+     *     application with the import domain command.</li>
+     *     <li>Up load domain entities through the browser interface. Files are available on client site. The command is optional.</li>
      * </ul>
      */
     default void addAdministration(@NotNull AppLayout layout, @NotNull MenuBar menuBar, @NotNull BoundedDomain<?, ?, ?, ?> domain,

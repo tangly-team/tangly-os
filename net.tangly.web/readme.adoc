@@ -1,0 +1,83 @@
+---
+title: "Readme"
+date: 2019-05-01
+weight: 10
+---
+
+= Business Model Types
+
+image:https://img.shields.io/badge/license-Apache%202-blue.svg[Apache License 2.0]
+image:https://img.shields.io/maven-central/v/net.tangly/web.svg[Maven Central]
+https://javadoc.io/badge2/net.tangly/ports/javadoc.svg[image://javadoc.io/doc/net.tangly/web[javadoc]]
+image:https://img.shields.io/bitbucket/pipelines/tangly-team/tangly-os.svg[Bitbucket Pipelines]
+image:https://img.shields.io/sonar/https/sonarcloud.io/tangly-os-at-tangly.net/coverage.svg[Sonar Coverage]
+image:https://img.shields.io/bitbucket/issues-raw/tangly/tangly-os.svg[Bitbucket open issues]
+
+== Purpose
+
+The *tangly web* component provides a Vaadin based user interfaces for enterprise applications written in Java.
+The component is using records and requires *Java 17 or higher*.
+
+Currently, we are moving at the bleeding edge of our components.
+Therefore to build and execute the ERP application please
+
+[source,shell]
+----
+    mvn jetty:run
+
+----
+
+The initial username and password are 'administrator' and 'aeon'.
+
+The file _application.properties_ in _…/main/resources_ directory tailors the configuration of the application, mainly the location of data.
+The file contains comments for new users.
+
+The Maven POM file is used to build the application and run it because the Gradle Jetty plugin crashes.
+
+== Download and Documentation
+
+The library can be included in Maven as
+
+[source,xml]
+----
+    <dependency>
+      <groupId>net.tangly</groupId>
+      <artifactId>web</artifactId>
+      <version>0.2.7</version>
+    </dependency>
+----
+
+The library can be included in Gradle as
+
+[source,groovy]
+----
+    implementation "net.tangly:web:0.2.7"
+----
+
+The documentation can be found under https://blog.tangly.net/docs/web/[Web documentation]
+
+For any further question and discussion you can use the forum https://groups.google.com/g/tangly-os-components[tangly-OS-Components]
+
+== Contribution
+
+You are welcome to contribute to the product with pull requests on Bitbucket.
+You can download the source files from the
+https://bitbucket.org/tangly-team/tangly-os.git[bitbucket git repository] and build the library with the provided gradle configuration file.
+
+If you find a bug or want to request a feature, please use the https://bitbucket.org/tangly-team/tangly-os/issues[issue tracker].
+
+== License
+
+The source code is licensed under https://www.apache.org/licenses/LICENSE-2.0[Apache license 2.0].
+
+The documentation and examples are licensed under https://creativecommons.org/licenses/by/4.0/[Creative Common (CC Attribution 4.0 International)].
+
+== Awesome Sponsors and Developers
+
+Corporate sponsors are
+
+* https://www.tangly.net[tangly llc]
+
+Individual developers are
+
+* https://linkedin.com/in/marcelbaumann[Marcel Baumann]

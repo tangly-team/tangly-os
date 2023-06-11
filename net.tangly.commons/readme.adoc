@@ -15,7 +15,7 @@ image:https://img.shields.io/bitbucket/issues-raw/tangly/tangly-os.svg[Bitbucket
 
 == Purpose
 
-A behavior driven development library that provides a custom extension based on the JUnit 5 Jupiter Extension Model.
+A behavior-driven development library that provides a custom extension based on the JUnit 5 Jupiter Extension Model.
 This library can be used to create and run stories and behaviors as BDD specification tests.
 
 The library is a developer-first approach.

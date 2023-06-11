@@ -67,7 +67,7 @@ tasks.withType(Javadoc).configureEach {
         addBooleanOption('Xdoclint:none', true)
         addStringOption("Xmaxwarns", "1")
         addBooleanOption('-enable-preview', true)
-        addStringOption('-release', '19')
+        addStringOption('-release', '20')
         addStringOption('-snippet-path', "${projectDir}/src/test/java")
         addBooleanOption('quiet')
     }
@@ -178,7 +178,7 @@ configurations.all {
 }
 
 jacoco {
-    toolVersion = "0.8.8"
+    toolVersion = "0.8.10"
 }
 
 jacocoTestReport {

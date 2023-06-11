@@ -1,0 +1,37 @@
+ifndef::imagesdir[:imagesdir: ./pics]
+
+[[section-solution-strategy]]
+== Solution Strategy
+
+=== Technical Approach
+
+Software Development::
+- Modern Java is the preferred programming language for realization.
+Embedded Software Development::
+- Modern C++ is the preferred programming language for embedded functionalities.
+The source code is object-oriented.
+- A realtime operating system _RTOS_ provides scheduling and concurrent processing.
+- The communication uses asynchronous message passing.
+Messages are immutable value objects.
+- Thread logic is realized as a finite state machine.
+
+=== Documentation Approach
+
+- Follow the recommendations of {ref-arc42} approach for document structure and content.
+- Graphical modelization is done with {ref-c4} and {ref-uml}.
+- Documents will be written in {ref-asciidoc}.
+Documentation language is English.
+Documentation is published as a static website.
+- API will be documented with {ref-doxygen}.
+Doxygen is the de facto standard tool for generating documentation from annotated C++ sources.
+It also supports other popular programming languages such as C.
+
+=== Import and Export Format
+
+An entity aggregate can be imported from and exported to a tab separated file.
+This approach is the preferred one.
+The _Gleam_ module provides a mechanism to describe the mappings between Java classes and TSV columns.
+
+Entities with complicated structure target a JSON format file.
+
+

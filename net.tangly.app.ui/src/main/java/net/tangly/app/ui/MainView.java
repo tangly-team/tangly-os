@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -22,7 +22,10 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
-import net.tangly.app.domain.ui.*;
+import net.tangly.app.domain.model.BoundedDomainEntities;
+import net.tangly.app.domain.model.BoundedDomainSimpleEntities;
+import net.tangly.app.domain.ui.BoundedDomainEntitiesUi;
+import net.tangly.app.domain.ui.BoundedDomainSimpleEntitiesUi;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import org.jetbrains.annotations.NotNull;
 
@@ -43,8 +46,8 @@ public class MainView extends AppLayout {
 
     public MainView() {
         uiDomains = new LinkedHashMap<>();
-        add(new AppBoundedDomainAUi(AppBoundedDomainA.create()));
-        add(new AppBoundedDomainBUi(AppBoundedDomainB.create()));
+        add(new BoundedDomainSimpleEntitiesUi(BoundedDomainSimpleEntities.create()));
+        add(new BoundedDomainEntitiesUi(BoundedDomainEntities.create()));
         setPrimarySection(Section.NAVBAR);
         menuBar = new MenuBar();
         menuBar.setOpenOnHover(true);
@@ -57,7 +60,13 @@ public class MainView extends AppLayout {
             throw new UncheckedIOException(e);
         }
         drawerMenu();
-        uiDomains.get(AppBoundedDomainAUi.DOMAIN_NAME).select(this, menuBar);
+        uiDomains.get(BoundedDomainSimpleEntities.DOMAIN).select(this, menuBar);
+    }
+
+    private static Tabs create(Map<String, BoundedDomainUi> uiDomains) {
+        List<Tab> tabs = new ArrayList<>();
+        uiDomains.forEach((key, value) -> tabs.add(new Tab(key)));
+        return new Tabs(tabs.toArray(new Tab[tabs.size()]));
     }
 
     public void add(@NotNull BoundedDomainUi domainUi) {
@@ -83,11 +92,5 @@ public class MainView extends AppLayout {
             menuBar.removeAll();
             domainUi.select(this, menuBar);
         }
-    }
-
-    private static Tabs create(Map<String, BoundedDomainUi> uiDomains) {
-        List<Tab> tabs = new ArrayList<>();
-        uiDomains.forEach((key, value) -> tabs.add(new Tab(key)));
-        return new Tabs(tabs.toArray(new Tab[tabs.size()]));
     }
 }

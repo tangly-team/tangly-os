@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -22,7 +22,7 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class EntityTest {
-    static class NamedEntity extends QualifiedEntityImp {
+    static class NamedEntity extends EntityImp {
         private Address address;
         private EmailAddress email;
         private PhoneNr phoneNr;
@@ -133,7 +133,7 @@ class EntityTest {
         item.add(Tag.of("gis", "latitude", "0.0"));
         String rawTags = item.rawTags();
         Set<Tag> tags = item.tags();
-        item.clearTags();
+        item.removeAllTags();
         assertThat(item.tags().isEmpty()).isTrue();
         item.rawTags(rawTags);
         assertThat(item.tags().isEmpty()).isFalse();
@@ -167,9 +167,7 @@ class EntityTest {
         comment = Comment.of(LocalDateTime.of(1900, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 2");
         comment.add(new Tag("gis", "longitude", "0.0"));
         item.add(comment);
-        comment = Comment
-            .of(LocalDateTime.of(2000, Month.JANUARY, 1, 0, 0), HasOid.UNDEFINED_OID, "John Doe", "This is comment 3", Tag.of("gis", "longitude", "0.0"),
-                Tag.of("gis", "latitude", "0.0"));
+        comment = Comment.of(LocalDateTime.of(2000, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 3", Tag.of("gis", "longitude", "0.0"), Tag.of("gis", "latitude", "0.0"));
         item.add(comment);
         // When
         assertThat(item.findByAuthor("John Doe").size()).isEqualTo(3);

@@ -4,7 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
  *
- *          http://www.apache.org/licenses/LICENSE-2.0
+ *          https://apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
  * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
@@ -21,7 +21,7 @@ import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
-import net.tangly.ui.components.Crud;
+import net.tangly.ui.components.ItemView;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -42,14 +42,14 @@ public class CrmBoundedDomainUi implements BoundedDomainUi {
 
     public CrmBoundedDomainUi(@NotNull CrmBoundedDomain crmDomain, @NotNull InvoicesBoundedDomain invoicesDomain) {
         this.domain = crmDomain;
-        leadsView = new LeadsView(domain, Crud.Mode.EDITABLE);
-        naturalEntitiesView = new NaturalEntitiesView(domain, Crud.Mode.EDITABLE);
-        legalEntitiesView = new LegalEntitiesView(domain, Crud.Mode.EDITABLE);
-        employeesView = new EmployeesView(domain, Crud.Mode.EDITABLE);
-        contractsView = new ContractsView(domain, Crud.Mode.EDITABLE);
-        interactionsView = new InteractionsView(domain, Crud.Mode.EDITABLE);
-        activitiesView = new ActivitiesView(domain, Crud.Mode.READONLY);
-        subjectsView = new SubjectsView(domain, Crud.Mode.EDITABLE);
+        leadsView = new LeadsView(domain, ItemView.Mode.EDIT);
+        naturalEntitiesView = new NaturalEntitiesView(domain, ItemView.Mode.EDIT);
+        legalEntitiesView = new LegalEntitiesView(domain, ItemView.Mode.EDIT);
+        employeesView = new EmployeesView(domain, ItemView.Mode.EDIT);
+        contractsView = new ContractsView(domain, ItemView.Mode.EDIT);
+        interactionsView = new InteractionsView(domain, ItemView.Mode.EDIT);
+        activitiesView = new ActivitiesView(domain, ItemView.Mode.VIEW);
+        subjectsView = new SubjectsView(domain, ItemView.Mode.EDIT);
         analyticsView = new AnalyticsCrmView(domain, invoicesDomain);
         domainView = new DomainView(domain);
         currentView = naturalEntitiesView;
