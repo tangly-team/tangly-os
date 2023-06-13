@@ -19,7 +19,7 @@ import java.nio.file.Path;
 import java.util.Map;
 
 /**
- * The invoice generator abstraction generates a output document based on the provided invoice and optional configuration fields.
+ * The invoice generator abstraction generates an output document based on the provided invoice and optional configuration fields.
  */
 public interface InvoiceGenerator {
     /**

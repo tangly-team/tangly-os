@@ -83,7 +83,7 @@ public class Invoice implements HasId, HasName, HasDate, HasText {
     private Locale locale;
 
     /**
-     * Human-readable text describing the payment conditions of the infoice.
+     * Human-readable text describing the payment conditions of the invoice.
      */
     private String paymentConditions;
     private final List<InvoiceLine> items;

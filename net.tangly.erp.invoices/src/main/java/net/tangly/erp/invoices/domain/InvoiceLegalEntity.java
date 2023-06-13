@@ -19,14 +19,14 @@ import net.tangly.core.HasName;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Defines a legal entity addressed in an invoice. The entity allows to address an invoice to a recipient per post mail or per electronic mail. Invoicing
- * workflows are more and more digitalized and requires the exchange of information and documents over the electronic way.
+ * Defines a legal entity addressed in an invoice. The entity allows addressing an invoice to a recipient per post-mail or per electronic mail. Invoicing workflow is more and more
+ * digitalized and requires the exchange of information and documents over the electronic way.
  *
- * @param id      identifier of the legal entity as defined the register of legal organization of the related geographical entity
+ * @param id      identifier of the legal entity as defined the register of legal organization for the related geographical entity
  * @param name    name of the entity as human-readable name
- * @param vatNr   VAT number of the legal entitiy if defined
+ * @param vatNr   VAT number of the legal entity if defined
  * @param address legal address of the entity
- * @param email   email defining the target point to send electronically information to the legal entity
+ * @param email   email defining the target point to send electronic information to the legal entity
  */
 public record InvoiceLegalEntity(@NotNull String id, String name, String vatNr, Address address, EmailAddress email) implements HasId, HasName {
 }

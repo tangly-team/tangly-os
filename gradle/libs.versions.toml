@@ -2,7 +2,7 @@
 assertj-version = '3.24.2'
 jackson-version = '2.12.3'
 jersey-version = '2.35'
-javalin-version = '5.5.0'
+javalin-version = '5.6.0'
 jolt-version = '0.1.1'
 junit-version = '5.9.3'
 log4j2-version = '2.20.0'
@@ -50,7 +50,7 @@ iban4j = "org.iban4j:iban4j:3.2.5-RELEASE"
 ical4j-core = "org.mnode.ical4j:ical4j:3.2.1"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.7"
 
-google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.13"
+google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.14"
 
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson-version" }
 jackson-parameters = { module = "com.fasterxml.jackson.module:jackson-module-parameter-names", version.ref = "jackson-version" }

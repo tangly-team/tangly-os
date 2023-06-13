@@ -18,15 +18,13 @@ import org.apache.commons.io.IOUtils;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.net.URI;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 
 /**
- * A gravatar is a dynamic image resource that is requested from the gravatar.com server. The class calculates the gravatar url and fetches gravatar images.
- * See
+ * A gravatar is a dynamic image resource that is requested from the gravatar.com server. The class calculates the gravatar url and fetches gravatar images. See
  * <a href="https://en.gravatar.com/site/implement/images/">Gravatar</a>.
  */
 public final class Gravatar {

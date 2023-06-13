@@ -40,8 +40,8 @@ import static net.tangly.commons.utilities.AsciiDocHelper.italics;
 
 
 /**
- * Provides support to generate a AsciiDoc representation of an invoice for the Swiss market. It provide a human-readable invoice document following the VAT
- * invoice constraint, the Swiss invoice QR barcode, and the European Zugferd invoice machine readable invoice standard.
+ * Provides support to generate an AsciiDoc representation of an invoice for the Swiss market. It provides a human-readable invoice document following the VAT invoice constraint,
+ * the Swiss invoice QR barcode, and the European Zugferd invoice machine-readable invoice standard.
  */
 public class InvoiceAsciiDoc implements InvoiceGenerator {
     private static final Logger logger = LogManager.getLogger();

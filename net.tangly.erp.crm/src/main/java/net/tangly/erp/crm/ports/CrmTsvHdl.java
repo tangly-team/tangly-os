@@ -194,7 +194,7 @@ public class CrmTsvHdl {
     }
 
     private static void addActivities(Provider<Interaction> provider, Interaction entity, List<TsvRelation<Activity>> activities) {
-        var items = activities.stream().filter(o -> o.ownerId() == entity.oid()).map(o -> o.ownedEntity()).toList();
+        var items = activities.stream().filter(o -> o.ownerId() == entity.oid()).map(TsvRelation::ownedEntity).toList();
         if (!items.isEmpty()) {
             entity.addAll(items);
             provider.update(entity);

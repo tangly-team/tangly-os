@@ -22,12 +22,12 @@ import org.jetbrains.annotations.NotNull;
 import java.math.BigDecimal;
 
 /**
- * A product sold by a legal entity and referenced in an invoice or an invoice line. An article is a {@link HasId} mixin because the identifier is external and
- * the Java record structure does not support internal {@link HasOid} manipulation through reflection.
+ * A product sold by a legal entity and referenced in an invoice or an invoice line. An article is a {@link HasId} mixin because the identifier is external and the Java record
+ * structure does not support internal {@link HasOid} manipulation through reflection.
  *
  * @param id        unique external identifier of the product
- * @param name      human readable name of the product
- * @param text      human readable description of the product
+ * @param name      human-readable name of the product
+ * @param text      human-readable description of the product
  * @param code      code of the product
  * @param unitPrice unit price of the product
  * @param unit      unit type of the product such as day, hour,or fix for a workshop

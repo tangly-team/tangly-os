@@ -49,9 +49,8 @@ public class Subject extends EntityImp {
         int iterations = 20_000;
         byte[] saltBytes = Base64.getDecoder().decode(salt);
         KeySpec spec = new PBEKeySpec(password.toCharArray(), saltBytes, iterations, derivedKeyLength);
-        SecretKeyFactory factory = null;
         try {
-            factory = SecretKeyFactory.getInstance(ALGORITHM);
+            SecretKeyFactory factory = SecretKeyFactory.getInstance(ALGORITHM);
             byte[] encBytes = factory.generateSecret(spec).getEncoded();
             return Base64.getEncoder().encodeToString(encBytes);
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {

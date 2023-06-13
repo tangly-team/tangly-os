@@ -24,6 +24,14 @@ I know.
 I am a geek who loves his technical gadgets.
 I convinced my wife these gadgets are way cheaper than a sports car.
 
+More seriously, I easily use my workstation forty hours a week.
+I really appreciate a stable and fast machine.
+My eyes are thankful if the display has a high resolution and the refresh rate fulfills ergonomic criteria
+footnote:[If you are forced to work with a _full HD_ display instead of a 4K display, it is probably time either to bring your own display or move to a company not being stingy.
+I really mean it.
+A good 4K display costs around 600 Euros.
+If your company cannot afford it, they are undoubtedly penny-pinching.].
+
 The new notebook replaces my older MacBookPro 2018 I bought five years ago.
 
 The new machine is so fast
@@ -167,7 +175,7 @@ I also set up the shell configuration files _.zshrc_ and _.gitconfig_ to have th
 [NOTE]
 ====
 If you copy your _.ssh_ folder to the new workstation, you could have access right troubles.
-_ssh_ is quite restrictive about the access rights of the various files in the configuration folders due to security considerations.
+_Ssh_ is quite restrictive about the access rights of the various files in the configuration folders due to security considerations.
 Try the following changes.
 
 [source,bash]
@@ -209,7 +217,9 @@ The build-in loudspeakers are an audible improvement against the sound of the pr
 
 I was surprised how much faster write operations on the build-in solid state disk are.
 
-It is worth the price I paid.
+It is worth the price I paid
+footnote:[The price of the Macbook notebook in 2023 was CHF 3'300.
+I buy a new notebook every five years meaning the yearly costs are ridiculous low.].
 
 [bibliography]
 === Links

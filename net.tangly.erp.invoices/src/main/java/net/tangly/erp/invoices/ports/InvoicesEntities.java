@@ -87,7 +87,7 @@ public class InvoicesEntities implements InvoicesRealm {
     }
 
     @Override
-    public void close() throws Exception {
+    public void close() {
         storageManager.close();
     }
 }

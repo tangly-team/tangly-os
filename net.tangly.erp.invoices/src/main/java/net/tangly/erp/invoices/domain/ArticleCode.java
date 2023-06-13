@@ -15,8 +15,8 @@ package net.tangly.erp.invoices.domain;
 import net.tangly.core.codes.Code;
 
 /**
- * Defines the product categories we offer in our shop. Categories are handled differently in invoices and accounting. For example expenses are added at the end
- * of an invoice and do not carry any VAT tax because VAT was already paid when buying the expense related item like a transportation ticket.
+ * Defines the product categories we offer in our shop. Categories are handled differently in invoices and accounting. For example, expenses are added at the end of an invoice and
+ * do not carry any VAT tax because VAT was already paid when buying the expense related item like a transportation ticket.
  * <ul>
  *     <li>work is a regular product code for services</li>
  *     <li>material is a regular product code for goods</li>

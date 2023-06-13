@@ -21,7 +21,7 @@ import java.time.LocalDate;
 import static net.tangly.commons.utilities.DateUtilities.isWithinRange;
 
 /**
- * The business logic and rules of the bounded domain of invoices entities.
+ * The business logic and rules of the bounded domain for invoices entities.
  */
 public class InvoicesBusinessLogic {
     private final InvoicesRealm realm;

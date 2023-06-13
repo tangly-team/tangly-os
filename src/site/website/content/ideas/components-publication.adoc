@@ -19,6 +19,10 @@ description: Workflow to publish open source components
 . Push the changes to the GitHub repository.
 _The statistics for developer activities will be automatically updated._
 
+=== Continuous Delivery Pipelines
+
+See https://github.com/tangly-team/tangly-os/blob/master/buildSrc/readme.md[Readme].
+
 === Maven Central Publication
 
 The following process is used to publish {ref-tangly} open source component on https://mvnrepository.com/repos/central[Maven Central].
@@ -103,26 +107,37 @@ package net.tangly.erp.ui [[https://blog.tangly.netdocs/domains/ui]] {
 
 . The open source components are stored in a mono repository.
 Each component is declared as a gradle module.
-. We use de facto standard Git.
+. We use de facto standard {ref-git}.
 . We are hosted at {ref-github}
 footnote:[We moved from {ref-bitbucket} to {ref-github} in 2022.
 The reasons were that the new platform supports publishing of static website with a lot more functionalities.
 The new agile project management functionality with Scrum boards, sprint iterations and insights report is very interesting.].
+Mirror repositories are hosted at {ref-gitlab}, {ref-bitbucket}, and the technical university of Lucerne.
+. The continuous delivery pipelines work for the primary and all mirror platforms.
+The build uses the _eclipse-temurin_ Java distribution.
+This docker image is based on Ubuntu.
+The installation of additional packages is therefore simplified
+footnote:[It is a shame that each hosting platform has created their own incompatible pipeline script syntax.].
 
 The synchronization is performed with the command
 
 [source,shell]
 ----
-git push --prune https://github.com/marcelbaumann/tangly-os.git +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/* <1>
+git push --prune
+      https://github.com/marcelbaumann/tangly-os.git
+      +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*        <1>
 
-git remote <2>
+git remote                                                                <2>
 
-git push origin-bitbucket <3>
+git push origin-github                                                    <3>
+git push origin-gitlab
+git push origin-hslu
+git push origin-bitbucket
 ----
 
 <1> Push the repository with all remotes, references and tags to GitHub specified repository
 <2> List all remotes associated with this git repository
-<3> Push the master branch to the _origin-bitbucket_ remote repository.
+<3> Push the master branch to the _origin-github_ remote repository.
 The push shall trigger the continuous integration pipeline
 
 You must create a token for developer account to be able to push changes and trigger the CI pipeline.

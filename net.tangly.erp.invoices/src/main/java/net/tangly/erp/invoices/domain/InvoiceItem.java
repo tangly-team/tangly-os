@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 
 
 /**
- * The invoice item represent a position of sold items defined through a product.
+ * The invoice item represents a position of sold items defined through a product.
  */
 public record InvoiceItem(int position, @NotNull Article article, String text, @NotNull BigDecimal quantity) implements InvoiceLine {
     @Override

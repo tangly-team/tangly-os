@@ -29,7 +29,7 @@ public sealed interface InvoiceLine extends HasText permits InvoiceItem, Subtota
     int position();
 
     /**
-     * Returns the human readable text documenting the line.
+     * Returns the human-readable text documenting the line.
      *
      * @return the text of the line
      */
@@ -59,7 +59,7 @@ public sealed interface InvoiceLine extends HasText permits InvoiceItem, Subtota
     /**
      * Returns the unit price of items associated with an invoice line.
      *
-     * @return the unit price of the items of the line
+     * @return the unit price of the items for the line
      */
     BigDecimal unitPrice();
 

@@ -178,7 +178,7 @@ configurations.all {
 }
 
 jacoco {
-    toolVersion = "0.8.10"
+    toolVersion = "0.8.11"
 }
 
 jacocoTestReport {
@@ -201,7 +201,7 @@ sonarqube {
     }
 }
 
-if (project.hasProperty('mode') && project.property('mode').equals('int')) {
+if (project.hasProperty('mode') && project.property('mode').equals('prod')) {
     apply plugin: 'com.github.spotbugs'
     apply plugin: 'org.sonatype.gradle.plugins.scan'
     apply plugin: 'pmd'

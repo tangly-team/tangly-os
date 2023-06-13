@@ -13,18 +13,21 @@ tags: ["agile", "series-students"]
 
 image::2023-09-01-head.jpg[width=420,height=360,role=left]
 
-There are several benefits to getting an IT certification—but several costs too.
+There are several benefits to getting an IT certification, and several costs too.
+
 Certifications can give you the chance to learn needed skills, and be a quick way to show employers you have those skills.
 On the other hand, certifications can require studying or coursework.
 They cost up to several hundred dollars to take.
+
 So how do you know that the benefits will outweigh the costs for you?
 
 Certification or no certification, in the end, what matters most is your actual ability to do the job.
+
 Here are a few things to consider as you decide whether to get an IT certification.
 
 === Java Certifications
 
-If you are a young and ambitious Java developer, ypu must acquire the Oracle certified Java developer certification.
+If you are a young and ambitious Java developer, ypu must acquire the Oracle certified Java developer certification cite:[ocp-java-17,ocp-java-11].
 I do not think you will be a better programmer after getting a certificate.
 The certification program will push you to learn the details of the programming language and the details of the standard libraries.
 This knowledge is the difference between a professional engineer and an amateur one.
@@ -40,7 +43,7 @@ I also acquired the https://vaadin.com/learn?version=v14[Vaadin certification] b
 === Agile Certifications
 
 Agile approaches and Scrum framework are the regular approach to successfully developer software and digital products.
-I expect a professional software developer to have a formal training how to apply correctly the Scrum approach.
+I expect a professional software developer to have a formal training how to apply correctly the Scrum approach cite:[professional-product-owner,mastering-professional-scrum].
 
 The two biggest Scrum associations {ref-scrum-alliance} and {ref-scrum-org} provide similar certification paths for Scrum.
 For each role, you can progress from beginner, over advanced and finally reach the professional certification level.
@@ -50,8 +53,8 @@ I often suggest pursuing the certifications of {ref-scrum-org} because you do ne
 https://www.scrumalliance.org/[Scrum Alliance] requests you to renew your certification every two years and provide proof of continuous training.
 This approach is similar to PMI.
 
-You can find more information in these articles about Scrum master <<scrum-master-formation>>, product owner <<[product-owner-certification>> and developer <<scrum-developer-formation>>
-certification paths.
+You can find more information in these articles about Scrum master <<scrum-master-certification>>, product owner <<product-owner-certification>> and developer
+<<developer-certification>> certification paths.
 
 I strongly advocate to avoid {ref-safe} trainings because this approach is flawed.
 I recognize that sadly {ref-safe} is very popular in big companies.
@@ -61,7 +64,7 @@ I strongly recommend to first master Scrum and lean approaches before tackling s
 
 === Other Certifications
 
-The PMI-ACP <<<pmi-acp-certification>> is the agile certification from the project management institute.
+The PMI-ACP <<pmi-acp-certification>> is the agile certification from the project management institute.
 It has value in North America.
 It is quite unknown in Europe.
 
@@ -72,8 +75,12 @@ On the bright side, the steward https://www.opengroup.org/togaf[Open Group] of t
 === Links
 
 - [[[scrum-master-certification, 1]]] link:../../2021/scrum-master-formation/[Scrum Master Certification]
-- [[[product-owner-certification, 2]]] link: ../../2021/product-owner-formation/[Product Owner Certification]
-- [[[developer-certification, 3]]] link: ../../2021/scrum-developer-formation/[Scrum Developer Certification]
+- [[[product-owner-certification, 2]]] link:../../2021/product-owner-formation/[Product Owner Certification]
+- [[[developer-certification, 3]]] link:../../2021/scrum-developer-formation/[Scrum Developer Certification]
 - [[[pmi-acp-certification, 4]]] link:../../2016/pmi-acp-certification/[PMI ACP Certification]
 - [[[java-certification, 5]]] link:../../2023/java-certification/[Java Certification]
 - [[[togaf-certification, 6]]] https://www.opengroup.org/certifications/togaf-certification-portfolio[TOGAF Certification]
+
+=== References
+
+bibliography::[]

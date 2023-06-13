@@ -70,7 +70,7 @@ public class InvoiceQrCode implements InvoiceGenerator {
     }
 
     /**
-     * Create the SWICO information for the QR code. As remarks SIX Swico states that VAT number is without the MWST postfix.
+     * Create the SWICO information for the QR code. SIX Swico states that VAT number is without the MWST postfix.
      *
      * @param invoice invoice used to create SWICo information
      * @return new SWICO bill information
