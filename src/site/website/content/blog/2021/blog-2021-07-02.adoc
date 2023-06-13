@@ -51,12 +51,12 @@ A common enterprise architecture enables reuse across delivery teams.
 When agile teams have high-quality assets – such as microservices, legacy data sources, and frameworks – they are able to focus on creating new value.
 They should not waste money on reinventing new versions of existing infrastructure.
 Common technical guidance enables greater consistency::
-When team follow effective, common conventions it results in greater quality.
+When teams follow effective, common conventions, it results in greater quality.
 This makes it easier to learn about assets that are new to them, in particular existing source code, and to evolve those assets as needed.
 Greater consistency also makes it easier for people to move between teams.
 It will be easier for them to come up to speed on what the new team is doing and to share their skills with those team members.
 Agile architectures enable disaggregation::
-When your solutions are built from loosely coupled, highly cohesive components it is easier to spread development work across smaller teams.
+When your solutions are built from loosely coupled, highly cohesive components, it is easier to spread development work across smaller teams.
 This reduces overall risk and organizational complexity, which in turn reduces time-to-delivery.
 Common infrastructure enables continuous delivery::
 A common technical infrastructure empowers delivery teams to deploy into it.
@@ -84,17 +84,17 @@ They may guide the teams in the business and technical roadmaps, help them to id
 They should transfer their skills and knowledge to team members.
 Negotiate technical dependencies::
 Like it or not, there are dependencies between the solutions that we create.
-For example, if your system invokes a web service, or calls an API, provided by another system then you have a dependency on that system.
+For example, if your system invokes a web service, or calls an API, provided by another system, then you have a dependency on that system.
 Enterprise architects will often find that they need to negotiate these dependencies with other teams, either at a high-level in their role of Enterprise Architect or sometimes at a detailed level in their role of Architecture Owner on a delivery team.
 Explore architectural views::
-Organizations are complex and as a result they must be understood from a variety of view points.
-It’s not just a matter of writing “architectural epics” on a collection of index cards.
+Organizations are complex and as a result, they must be understood from a variety of view points.
+It is not just a matter of writing “architectural epics” on a collection of index cards.
 The enterprise architecture team may choose to adopt, and likely tailor, an existing enterprise architecture framework.
 Tailor the chosen architecture framework::
 These frameworks typically suggest a multi-view collection of artifacts to create and techniques for doing so.
 Evolve enterprise architecture::
 Enterprise architects will collaborate with one another, and with their stakeholders, in a variety of ways.
-They may choose to hold architecture envisioning/modeling sessions or regular meetings where they share learnings with one another.
+They may choose to hold architecture envisioning/modeling sessions or regular meetings where they share their learning with one another.
 They will often work together, or with IT delivery teams, to investigate new technologies or identify candidate architecture strategies.
 Evolve roadmap(s)::
 An important output of your enterprise architecture effort will be one or more roadmaps.
@@ -119,37 +119,39 @@ There are four major activities:
 Envision initial architecture::
 The enterprise architects will spend several days developing initial, high-level models of the enterprise architecture.
 This will be a face-to-face, initial architecture envisioning session where the scope is the entire organization, not just a single IT solution.
-Ideally this is done in an agile modelling room to streamline the communication and collaborative modelling efforts.
-Such a room is large with lots of whiteboard space, enabling the team to work on several models in parallel (each of which has its own section of wall space).
-The primary purpose of this session is for the EA team to develop a common understanding, at least a high level, of the current state of the enterprise architecture and a vision for how the team would like to see it evolve.
+Ideally, this is done in an agile modeling room to streamline the communication and collaborative modeling efforts.
+Such a room is large with lots of whiteboard space, enabling the team to work on several models in parallel.
+each of which has its own section of wall space.
+The primary purpose of this session is for the EA team to develop a common understanding, at least a high level, for the current state of the enterprise architecture and a vision for how the team would like to see it evolve.
 Secondary outcomes include creating some initial artifacts.
 The enterprise architects will evolve these artifacts over time, meeting one another for the first time, and building bonds between the team members.
 Potential challenges to this activity include getting an agile modeling room, and the logistics of getting the right people together at the same time.
 Collaborate with business stakeholders::
-On a regular basis enterprise architects work with business stakeholders to understand their needs.
+On a regular basis, enterprise architects work with business stakeholders to understand their needs.
 They work with them to envision the future, and help educate them on the possibilities and constraints of technology.
 This collaboration may be in the form of working sessions, presentations, or one-on-one conversations.
-These sessions occur as needed and at times it can be difficult to gain access to stakeholders as they are often very busy people.
+These sessions occur as needed, and at times it can be difficult to gain access to stakeholders as they are often very busy people.
 Collaborate with IT stakeholders::
 Disciplined agile EAs will spend the majority of their time, 80 to 90% of it typically, working as members of IT delivery teams.
-By doing this they bring their knowledge, vision, and skills to the team in a pragmatic, hands-on manner.
+By doing this, they bring their knowledge, vision, and skills to the team in a pragmatic, hands-on manner.
 The teams will often take on the role of _architecture owners_.
-Enterprise architects will also work with other IT stakeholders, including operations engineers, support staff, the data management team.
+Enterprise architects will also work with other IT stakeholders, including operations engineers, support staff, and the data management team.
 They need to understand their needs.
 Evolve architecture assets::
 The enterprise architecture team, or at least the portion of the team who is currently available, will meet on a regular basis.
-They evolve the enterprise architecture assets based on their learnings.
+They evolve the enterprise architecture assets based on their learning.
 A common pattern we have seen it for the team to meet every Friday afternoon for two hours.
-They discuss what they’ve learned that week from working on delivery teams and working with their various stakeholders.
-The result of the meeting is often that the enterprise architects may take on action items to update existing artifacts.
-These artifacts may include EA models, reference architectures, development guidelines, white papers.
-When a new major topic arises, such as the potential adoption of a new platform or a merger with another organization, they schedule agile modelling sessions.
+They discuss what they have learned that week from working on delivery teams and working with their various stakeholders.
+The result of the meeting often is that the enterprise architects may take on action items to update existing artifacts.
+These artifacts may include EA models, reference architectures, development guidelines, and white papers.
+When a new major topic arises, such as the potential adoption of a new platform or a merger with another organization, they schedule agile modeling sessions.
 They explore the newly discovered topics during these sessions.
 
 === Lessons Learnt
 
 image::2021-07-02-aeaf.png[]
-Various organizations are trying to redefine enteprise architecture in the context of agile approaches.
+
+Various organizations are trying to redefine enterprise architecture in the context of agile approaches.
 Such an example would be the _Agile Enterprise Architecture Framework_.
 
 Often you see the tension between more agility and the drag of traditional complex enterprise architecture frameworks.

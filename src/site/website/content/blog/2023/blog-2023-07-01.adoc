@@ -13,43 +13,49 @@ tags: ["java", "agile", "series-students"]
 
 image::2023-07-01-head.png[width=420,height=360,role=left]
 
-Now that you have gone through the long and tedious process of hiring a talented developer with the vetting and interview activities, it is easy to think that the hard part is done.
+Now that you have gone through the long and tedious process of hiring a talented developer with vetting and interview activities, it is easy to think that the hard part is done.
 
-There is no doubt that hiring good people is challenging and competitive, but it is a mistake to think that the challenge ends when you hire a new collaborator.
+There is no doubt that hiring good people is challenging and competitive, but it is a mistake to think that the challenge ends when you hired a new collaborator.
 
 Onboarding software developers is just as important for getting the most out of the hiring process.
 
-Too many companies neglect it to their own detriment.
+Too many companies neglect this phase to their own detriment.
 
 === Why onboarding matters?
 
 Onboarding, the process of bringing new employees to a point where they are fully integrated into the company and working at full capacity is a _make it or break it_ process for companies wanting to compete in the tech world.
-Whether you are a startup with only a few employees, or an established company with hundreds of employees, the onboarding process is the first opportunity you have to set up new employees for long term success.
+Whether you are a startup with only a few employees, or an established company with hundreds of employees, the onboarding process is the first opportunity you have to set up new employees for long-term success.
 
-It can cost employers anywhere from 30-50% of an employee’s salary to replace a developer that leaves, so when an organization loses employees to a bad onboarding process, the company feels it.
+It can cost employers anywhere from 30-50% of an employee’s salary to replace a developer that leaves.
+So when an organization loses employees to a bad onboarding process, the company feels it.
 And if there is an insufficient onboarding process, new hires will leave.
 
 One of the most important aspects of onboarding is the timeline.
 On the one hand, the practical aspects of onboarding should happen pretty quickly, as outlined below.
-On the other hand, it is important to understand that onboarding an employee – that is, getting them to a place where they feel fully immersed and capable at your company – takes months.
+On the other hand, it is important to understand that onboarding an employee meaning getting them to a place where they feel fully immersed and capable at your company takes months.
 
 So what is a realistic expectation for how long it takes to onboard a software engineer?
 
 === How long should it take?
 
-Before diving into how long the onboarding process should take, it’s important to note that there are different types of onboarding and each requires a different approach and timeline.
+Before diving into how long the onboarding process should take, it is important to note that there are different types of onboarding and each requires a different approach and timeline.
 There is practical, cultural, and skill onboarding.
 All are necessary to successfully onboard a software developer into your company.
 
 ==== Practical onboarding (1 week)
 
-Practical onboarding involves things like benefits signups, company-wide training videos, HR requirements, equipment setup and account access.
+Practical onboarding involves things like benefits signups, company-wide training videos, HR requirements, equipment setup and account access
+footnote:[Invest in a smooth IT setup. I too often encounter organizations needing months until the new collaborator can finally access all needed applications and resources.
+Such a cumbersome process demotivates your employees.
+I am a professional software developer.
+I really love to have a 4K display, a US keyboard, a quality mouse, and a fast SSD.
+I will use these tools 8 hours a day for the next years.].
 Anything essential for the new employee to get paid, access benefits, and function as an employee in the company.
 
 This onboarding should happen anywhere from a day to a week of being hired, depending on the size of the company and the complexity of the practical requirements.
 This part may seem obvious as a part of onboarding, but this is often the first impression a new employee has of your company, so the way it happens matters.
 
-Do everything you can to make the practical aspect of onboarding seamless, efficient, and even fun.
+Do everything you can to make the practical aspect of onboarding seamless, efficient, and even fun <<macbook>>.
 If there is a way to gather information from the employee before their start date, even better.
 
 ==== Skill onboarding (3 – 6 months)
@@ -67,18 +73,23 @@ Although the entire team should be available to answer questions, this will give
 For larger companies, this process should involve multiple points of contact, from a senior managerial level to a peer.
 Even smaller companies should try and pair new employees with a few different colleagues.
 
-If there are any step-by-step processes expected for developers for coding, communication, and workflow, be sure to have them in writing and readily available so new employees don’t need to go searching for the same information over and over again.
+If there are any step-by-step processes expected for developers for coding, communication, and workflow, be sure to have them in writing and readily available.
+New employees should not need to go searching for the same information over and over again.
 
-Skill onboarding should take anywhere from 3 to 6 months, with monthly reviews every month to gauge progress.
+Skill onboarding should take anywhere from 3 to 6 months, with monthly reviews every month to gauge progress
+footnote:[Skill onboarding can require formal training.
+Budget shall be available for books, online and classroom courses.].
 
 ==== Cultural onboarding (6 months – 1 year)
 
 image::2023-07-01-cultural-onboarding.jpg[width=420,height=360,role=left]
 
 Cultural onboarding is often the most overlooked aspect of onboarding, but arguably the most important piece.
+
 Developers that stick around do so because they enjoy their work environment, believe in what they are doing, and feel like they belong and matter to the overall company.
 
 Of course, some aspects of cultural onboarding will happen in tandem with skill onboarding, as the new employee is working directly with teams and individuals within the company to accomplish a common goal.
+
 However, that in and of itself is not enough to truly translate company culture to a new employee.
 
 Within the first week, there should be some form of communication from the executive management on the larger values of the organization.
@@ -86,7 +97,7 @@ The big picture of what the company is trying to accomplish, and a way to intera
 
 If you are a small company, this can be as simple as a lunch or coffee with the founder.
 For mid-size or large companies, it may need to be more formal.
-However, if at all possible, this should happen in person, even for remote workers.
+However, if at all possible, this should happen in person, even for remote workers <<agile-company>>.
 
 We always suggest that new employees do their first two to four weeks of employment on site, if possible.
 
@@ -126,3 +137,7 @@ Teams use InnerSource to increase visibility, strengthen collaboration, and brea
 Gitlab. 2022.
 - [[[inner-source-patterns, 2]]] https://patterns.innersourcecommons.org/[Inner Source Patterns]
 Gitlab. 2022.
+- [[[agile-company, 3]]] link:../../2016/what-is-an-agile-company/[What is an Agile Company?]
+Marcel Baumann. 2016.
+- [[[macbook, 4]]] link:../../2023/my-new-macbookpro/[My New MacBook Pro]
+Marcel Baumann. 2023.

@@ -31,6 +31,7 @@ They shall self-monitor to learn.
 
 Agile governance is about defining the fastest route that brings the most value.
 By focusing on the things that matter, we apply an agile focus on governance and how to manage programme and project risks effectively.
+
 Agile works best when processes are clearly defined and transparent to everyone.
 Good governance for programmes and projects, regardless if agile is applied, requires a defined structure, ways of working, processes and systems to operate succinctly.
 As a result, enabling programmes and projects the ability to scale up and down to adapt quickly to an organization’s changing needs and environment.
@@ -53,8 +54,11 @@ image::2023-08-01-process.png[width=420,height=360,role=left]
 
 === Agile Corporate Governance PMI
 
-Your governance team - which may be called an oversight, audit, or control team/tribe/group/function - will monitor and guide teams throughout your organization.
-The aim is to enable them to succeed by removing or at least reducing any barriers that they may experience, to motivate them to do “the right thing” for your organization and your customers, and to ensure that they remain compliant with appropriate legal regulations and guidance.
+Your governance team, which may be called an oversight, audit, or control function, will monitor and guide teams throughout your organization.
+
+The aim is to enable them to succeed by removing or at least reducing any barriers that they may experience, to motivate them to do _the right thing_ for your organization and your customers.
+
+They to ensure that they remain compliant with appropriate legal regulations and guidance.
 
 Governance typically addresses areas such as:
 
@@ -183,10 +187,14 @@ Education and awareness campaigns are necessary to increase professionalism
 footnote:[In Switzerland, multiple organizations had to shut down operations in 2021 and 2022 due to blatant security and governance issues.
 Beware non-compliance can be extremely costly and endanger the survival of your company.].
 
+Corporate governance departments have often a coercive approach.
+They are focused on the legal aspects and seldom understand the societal, commercial and technical facets.
+Try to reform them.
+
 [bibliography]
 === Links
 
-- https://pubs.opengroup.org/architecture/togaf9-doc/arch/chap44.html[TOGAF 9 Architecture Governance].
+- https://pubs.opengroup.org/architecture/togaf9-doc/arch/chap44.html[TOGAF Architecture Governance].
 https://www.opengroup.org/[THe Open Group]. 2022.
 - https://www.pmi.org/disciplined-agile/process/governance[PMI Disciplined Agile Corporate Governance].
 https://pmi.org[PMI]. 2022

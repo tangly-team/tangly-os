@@ -83,7 +83,7 @@ In some organizations, there may not even be separate development and operations
 
 With DevOps, the two teams work together to optimize both the productivity of developers and the reliability of operations.
 They strive to communicate frequently, increase efficiencies, and improve the quality of services they provide to customers.
-They take full ownership for their services, often beyond where their stated roles or titles have traditionally been scoped.
+They take full ownership of their services, often beyond where their stated roles or titles have traditionally been scoped.
 
 Quality assurance and security teams may also become tightly integrated with these teams.
 Organizations using a DevOps model have teams that view the entire development and infrastructure lifecycle as part of their responsibilities.
@@ -122,7 +122,8 @@ Creating alerts or performing real-time analysis of these data also helps organi
 
 Communication and Collaboration::
 Increased communication and collaboration in an organization is one of the key cultural aspects of DevOps.
-The use of DevOps tooling and automation of the software delivery process establishes collaboration by physically bringing together the workflows and responsibilities of development and operations.
+The use of DevOps tooling and automation for the software delivery process establishes collaboration.
+They physically bring together the workflows and responsibilities of development and operations.
 Building on top of that, these teams set strong cultural norms around information sharing and facilitating communication through the use of chat applications, issue or project tracking systems, and wikis.
 This helps speed up communication across developers, operations, and even other teams like marketing or sales, allowing all parts of the organization to align more closely on goals and projects.
 
@@ -156,7 +157,7 @@ You will always have a production-ready Java application! +
 _Use Gradle to create your application.
 Use Docker, Ansible to deploy._
 https://en.wikipedia.org/wiki/Microservices[Microservices]::
-DevOps make use of microservices.
+DevOps makes use of microservices.
 Instead of having one big monolithic Java application, your application is made up of smaller and independent applications. +
 _Use domain driven design DDD as your architecture method.
 Prefer standalone applications embedding your application server._
@@ -179,7 +180,7 @@ You must continuously monitor your infrastructure, network and application.
 
 [CAUTION]
 ====
-You need a cultural change to implement successfully DevOps workflows.
+You need a cultural change to successfully implement DevOps workflows.
 
 Bigger companies often have trouble with the changes.
 Command and control cultures always fail.

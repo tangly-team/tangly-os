@@ -12,7 +12,7 @@ tags: ["agile"]
 :company: https://www.tangly.net/[tangly llc]
 
 image::2021-07-04-head.jpg[width=420,height=360,role=left]
-You are acting as product owner in your organization.
+You are acting as a product owner in your organization.
 
 Congratulations, working as a professional https://scrumguides.org/scrum-guide.html#product-owner[product owner] is a fulfilling and exciting job.
 
@@ -56,7 +56,7 @@ The certification path has three levels:
 
 Certified Scrum Product Owner::
 Introduction course for those who are closest to the _business side_ of the project. +
-_It is usually a two days training.
+_It is usually two-day training.
 The https://www.scrum.org[Scrum.org] allows taking the certification examination without attending a course.
 They also published a reference book cite:[professional-product-owner]._
 Certified Advanced Scrum Product Owner::
@@ -66,7 +66,7 @@ You should read the recommended books to have a greater probability to pass the 
 Certified Scrum Professional Product Owner::
 Pinnacle course for experts wishing to master the Product Owner track. +
 _The third level requires more training, experience, and reading books.
-You often must participate to workshops before being allowed to graduate.
+You often must participate in workshops before being allowed to graduate.
 Each certification organization has her own rules and conditions._
 
 Beware if you select the https://www.scrumalliance.org/[Scrum Alliance], you must renew your certification every two years.
@@ -125,7 +125,7 @@ The requirements engineering community is well on the path to deeper agility.
 
 image::2021-07-04-irep.png[width=420,height=360,role=left]
 
-The certification is often a prerequisite to be hired for a requirements engineer job.
+The certification is often a prerequisite to be hired for a requirement engineer job.
 
 The organization offers two certifications for _Certified Professional Requirements Engineering_ with emphasis on agile approaches:
 
@@ -136,19 +136,19 @@ The organization offers two certifications for _Certified Professional Requireme
 
 Technical universities in Switzerland provide formal training in requirements engineering and related fields <<agile-requirements>>.
 The formation provides a certificate of advanced study CAS in the field.
-Current available certificates of advanced study offering are for example:
+Current available certificates of advanced study offering are, for example:
 
 * OST https://www.ost.ch/de/weiterbildung/weiterbildungsangebot/informatik/cas-requirements-engineering[CAS Requirements Engineering]
 * HSLU https://www.hslu.ch/de-ch/informatik/weiterbildung/digital-value-creation/cas-requirements-engineering/[CAS Requirement Engineering]
 * BFH https://www.bfh.ch/de/weiterbildung/cas/requirements-engineering/[CAS Requirements Engineering]
 * ZHAW https://www.zhaw.ch/de/sml/weiterbildung/detail/kurs/cas-agile-requirements-engineering/[CAS Agile Requirements Engineering]
 
-An interesting development is the addition of tailored requirement trainings emphasizing agile approaches.
+An interesting development is the addition of tailored requirement training emphasizing agile approaches.
 I expect the emphasis on agile approaches to increase in the next years.
 
 Similar technical university formations are provided for https://en.wikipedia.org/wiki/User_interface_design[User Interface Design] and
 https://en.wikipedia.org/wiki/Usability_engineering[Usability Engineering].
-See for example https://uxschweiz.ch/weiterbildung/mashcid/[Master Human Computer Interaction Design].
+See, for example, https://uxschweiz.ch/weiterbildung/mashcid/[Master Human Computer Interaction Design].
 
 [bibliography]
 === LInks

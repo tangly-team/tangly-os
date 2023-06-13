@@ -21,7 +21,7 @@ What does that mean?
 
 How should I as a manager work the agile way?
 
-Does this agile way exist or is it simply a fad created by the consulting industry?
+Does this agile way exist, or is it simply a fad created by the consulting industry?
 
 This article provides some pointers and hypotheses what agile leadership could be.
 
@@ -51,7 +51,7 @@ Rather than wait for the team, go to the https://en.wikipedia.org/wiki/Gemba[Gem
 * It will become obvious how you can help.
 
 You start helping and playing the part only you as a leader can fill.
-This is true service to the team by being a contributing member of the team.
+This is a true service to the team by being a contributing member of the team.
 
 === Growing your team is critical
 
@@ -121,30 +121,31 @@ ____
 
 You should
 
-* Be knowledgeable about agile values, approaches and practices Understand and apply the Scrum, Kanban and lean, Spotify model frameworks,
-* Develop people and teams with self-organizing teams Leadership styles, coaching and mentoring, facilitation Manage products with agility,
-* Forecast and perform release planing based on product value, and business strategy,
-* Develop and deliver products professionally
-* Evolve the agile organization through organizational design and structure, and evidence based management,
+* Be knowledgeable about agile values, approaches and practices Understand and apply the Scrum, Kanban and lean, Spotify model frameworks.
+* Develop people and teams with self-organizing teams Leadership styles, coaching and mentoring, and facilitation.
+* Manage products with agility.
+* Forecast and perform release planing based on product value and business strategy.
+* Develop and deliver products professionally.
+* Evolve the agile organization through organizational design and structure, and evidence based management.
 * Take a collaborative continuous improvement approach to organizational effectiveness.
 
 You should avoid hindering value stream organizations and cross-functional teams by
 
-* Defining component teams,
-* Give tasks to individual collaborators instead of going through the product owner,
-* Ask progress or control questions during daily Scrum,
-* Ask control questions or systematically participate to ,
-* Promote the mindset that people are exchangeable - see mythical man month cite:[mythical-man-month],
-* State anybody can be a good Scrum master,
+* Defining component teams.
+* Give tasks to individual collaborators instead of going through the product owner.
+* Ask progress or control questions during daily Scrum.
+* Ask control questions or systematically participate to.
+* Promote the mindset that people are exchangeable - see mythical man month cite:[mythical-man-month].
+* State anybody can be a good Scrum master.
 * Criticize craftsmanship approaches such as TDD, DDD, pair programming, continuous integration and delivery.
 
 Exceptional agile leaders
 
-* Are trained in agile values and approaches,
-* They hold certifications,
-* Advocate technical excellence,
-* Trust their teams,
-* Work actively to remove impediments by supporting process and structural changes in direction of value streams.
+* Are trained in agile values and approaches.
+* They hold certifications.
+* Advocate technical excellence.
+* Trust their teams.
+* Work actively to remove impediments by supporting the process and structural changes in value streams.
 
 Remember
 
