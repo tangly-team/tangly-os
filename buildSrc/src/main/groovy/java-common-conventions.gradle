@@ -29,6 +29,7 @@ dependencies {
     testCompileOnly(libs.annotations)
     testImplementation(libs.bundles.test.deps)
     testImplementation(libs.apache.log4j2.core)
+    testImplementation(libs.awaitility);
     testRuntimeOnly(libs.apache.log4j2.slf4j)
     testRuntimeOnly(libs.junit.engine)
 }
