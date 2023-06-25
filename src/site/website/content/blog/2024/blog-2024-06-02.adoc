@@ -1,0 +1,215 @@
+---
+title: "Actors in C++"
+linkTitle: "Cpp Actors"
+date: 2024-06-02
+tags: [cpp", "architecture"]
+---
+
+== Actors in C++
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
+:ref-message-passing: https://en.wikipedia.org/wiki/Message_passing[Message Passing]
+
+image::2024-06-02-head.svg[width=420,height=360,role=left]
+
+There is a strong need for higher-level frameworks ensuring safe concurrent programming.
+
+The {ref-actor-model} is one of the best approaches to safe concurrency and legible code cite:[reactive-messaging-patterns-with-actor-model].
+The model is based on {ref-message-passing}.
+
+Although multiple actors can run at the same time, an actor will process a given message sequentially.
+This means that if you send three messages to the same actor, it will just execute one at a time.
+
+Messages are sent asynchronously to an actor that needs to store them somewhere while it is processing another message.
+The message queue is the place where these messages are stored.
+The ordering is normally a FIFO _First In, First Out_ order.
+
+Another interesting aspect of the actor model is that it does not matter if the actor that I am sending a message to is running locally or in another node.
+
+An actor is a computational entity that, in response to a message it receives, can concurrently:
+
+- Send a finite number of messages to other actors.
+- Create a finite number of new actors.
+- Designate the behavior to be used for the next message it receives.
+
+=== Actor Abstractions
+
+[plantuml,actors,svg]
+....
+@startuml
+class Message<T> {
+  int kind();
+  T data();
+}
+
+abstract class ConcurrentQueue<T>
+abstract class Actor<T>
+
+Actor "1"*-"1" ConcurrentQueue : queue
+ConcurrentQueue "1"*-"n" Message : messages
+@enduml
+....
+
+The message abstraction structure is
+
+[source,cpp]
+----
+    template<typename T>
+    class Message {
+    public:
+        Message(int kind, T data) : _kind{kind}, _data(data) {}
+
+        int kind() const noexcept { return _kind; };                 <1>
+
+        T data() const noexcept { return _data; }                    <2>
+
+    private:
+        int _kind;
+        T _data;
+    };
+----
+
+<1> The field can be used to identify the type of the payload.
+<2> The payload of the message.
+
+Each application will define the payload for the messages sent between actors.
+We recommend defining an overall message type for all messages defined in the application.
+
+[source,cpp]
+----
+struct PayloadOne {};                                                                    <1>
+struct PayloadTwo {};
+struct PayloadThree {};
+
+struct Data;                                                                             <2>
+
+typedef std::variant<PayLoadOne, PayLoaTwo, PayLoadThree, TimerCmd<Data>> Variants;      <3>
+
+struct Data {                                                                            <4>
+    Variants data;
+};
+
+typedef Message<Data> Messages;                                                          <5>
+
+Message<Data> build(const PayLoadOne &data) {                                                   <6>
+    Data dataVariant{data};
+    return {(int) (dataVariant.data.index()), {data}};
+}
+----
+
+<1> Define the various payloads for the different types of messages exchanged in the application.
+<2> Forward declaration for declaration with template referencing the message class.
+<3> Define a type verified union of all payload types.
+<4> Define the structure we declared before as forward declaration.
+<5> Define the message class used to exchange messages between actors.
+<6> Optional build function to simplify the creation of message objects.
+
+[WARNING]
+====
+The above approach works without trouble if all fields are https://en.cppreference.com/w/cpp/named_req/Destructible[destructible].
+
+The more delicate problem is dependent on how the underlying realtime implementation to transfer messages is realized.
+If the layer uses the C++ standard library constructs, you are safe.
+You are also safe if all the fields on your payloads are trivially destructible.
+
+If the layer uses a C approach with raw byte copying of messages, you must care about RAII and destructor calls when the message object leaves its C++ scope.
+In this case, you must use a message allocator with explicit acquire and release operations to circumvent automatic object destruction.
+
+A reference implementation is provided with the _vinci_ library.
+====
+
+The processing logic for an actor has the following form.
+The actions and guards should only have one parameter to pass the message being processed.
+
+[source,cpp]
+----
+bool MyActor::processMessage(const MyMessage &msg) {
+    bool continues = true;
+    Variants variants = msg.data().data;
+    if (const MyActorData *data = std::get_if<MyActorData>(&variants)) {
+        processMsgInFsm(*data);
+    }
+}
+----
+
+=== Finite State Machines
+
+Embedded applications often have relative simple flat state machine describing their behavior.
+Implement flat state machines as a double nested switch statement.
+The first statement selects the actor current state, the second statement selects the type of message to be processed.
+A guard is implemented as a conditional statement.
+
+[source,cpp]
+----
+State state = INIT;                                        <1>
+
+void processMsgInFsm(MyActorData& event) {
+    switch (state) {
+        case STATE_1:
+            switch (event->id) {                           <2>
+                case (ID_A):
+                    if (guard_1(event)) {                  <3>
+                        action_a_1(event);                 <4>
+                        state = STATE_2;
+                    } else if (guard_2(event)) {
+                        action_a_2(event)) {
+                        state = STATE_3;
+                    }
+                    break;
+                case (ID_B):
+                    action_b(event);
+                    state = STATE_N;
+                    break;
+                ...
+            }
+        ...
+    }
+}
+----
+
+<1> Current state of the actor.
+The type of the variable should be an enumeration.
+<2> Identify the message through is identifier.
+A message should be a value object.
+<3> Evaluate an optional guard condition to decide if the transition will be selected.
+<4> Implement the transition from state _STATE_1_ to _STATE_2_ and execute the associated action _action_a_.
+It is customary to pass the message as parameter to the function.
+
+The state machine can be documented with a table describing for each state, the event be processed, an optional guard, the target state and the action.
+
+This design approach improves the maintainability of the application cite:[modern-software-engineering,continuous-delivery,continuous-delivery-pipelines].
+
+=== Message Handling
+
+Message objects should not be allocated on the heap.
+
+If your RTOS is C based, avoid using classes allocating memory from the heap.
+Beware that C++ standard library strings use the heap.
+You have also to be cautious of the scoping of your message declaration to avoid destruction of the objects when leaving the declaration scope.
+
+The library provides a static message pool to avoid heap usage and RAII problems when leaving a declaration scope.
+Additional advantage is the tracking of maximum number of simultaneously used messages in development mode.
+
+[source,cpp]
+----
+----
+
+=== Lessons Learnt
+
+The concepts implemented in the library are available for C and C++ based embedded applications.
+The presented version is the object-oriented C++ based variant.
+
+Overall, we do not see any reason no to use C++ language.
+
+[bibliography]
+=== Links
+
+- [[[actors, 1]]] link:../../2024/actors/[Actors]
+Marcel Baumann. 2024.
+
+=== References
+
+bibliography:[]

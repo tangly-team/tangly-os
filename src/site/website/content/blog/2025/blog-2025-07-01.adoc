@@ -1,11 +1,11 @@
 ---
-title: "Modern Embedded Software Development and Architecture"
+title: "Modern Embedded Software Development"
 linkTitle: "Embedded Development"
 date: 2025-07-01
 tags: ["organization", "embedded"]
 ---
 
-== Modern Embedded Software Development and Architecture
+== Modern Embedded Software Development
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/

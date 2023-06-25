@@ -85,6 +85,11 @@ The development team must understand the architecture
 cite:[modern-software-engineering,patterns-of-enterprise-application-architecture,building-evolutionary-architectures-2nd,continuous-architecture-in-practice].
 The users and the organization have no interest in the architecture concepts and documentation.
 
+[quote,Fred Brooks]
+____
+A scientist builds in order to learn; an engineer learns in order to build.
+____
+
 Domain-driven design is the preferred approach to create a software architecture cite:[domain-driven-design,domain-driven-design-distilled,implementing-domain-driven-design].
 
 Evolutionary architecture is the technique used to define and validate an evolving design cite:building-evolutionary-architectures-2nd,building-evolutionary-architectures].

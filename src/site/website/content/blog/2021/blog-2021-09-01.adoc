@@ -13,6 +13,7 @@ tags: ["design", "hugo", "series-students"]
 :icons: font
 
 image::2021-09-02-head.jpg[width=420,height=360,role=left]
+
 The static website build tool {ref-hugo} is awesome.
 With the extensive built-in feature set of Hugo and the feature-rich text formatting options that https://asciidoc.org/[Asciidoc] offers, it creates a blogging experience composed of easy content management and fun writing experience.
 
@@ -103,17 +104,49 @@ Give it a try.
 === Diagrams in articles
 
 Diagrams in blog articles are currently a more complex issue.
-Hugo seems to be quite restrictive which extensions can be loaded when generating a static site.
+Hugo seems to be quite restrictive which extensions can be loaded when generating a static site
+footnote:[The situation was improved with newer releases of hugo.
+It is now possible to specify the desired options under _markup.asciidocExt.extensions_.].
 No reasonable reasons exit for the above-mentioned restrictions.
 Ongoing pull requests try to improve the situation.
 
 I had success with:
 
 https://plantuml.com/[plantUML] diagrams::
-See for example following blogs link:../../2021/gitlab-for-bachelor-students[GitLab for Students]
+See, for example, following blogs link:../../2021/gitlab-for-bachelor-students[GitLab for Students]
 https://mermaid-js.github.io/[mermaid] diagrams::
 See for example following blogs link:../../2021/agile-trends-switzerland-2021[Agile Trend 2021] or
 link:../../2021/agile-trends-switzerland-2020[Agile Trend 2020].
+
+[TIP]
+====
+{ref-plantuml} supports hyperlinks in diagrams.
+To use relative links in your site declare a PlantUML variable for the root of your and define links relative to this root.
+The declarations for such a diagram could be:
+
+[code]
+----
+[plantuml,dependencies,svg, width="100%",,opts="inline",svg-type="inline"]     <1>
+
+....
+@startuml
+
+!$root = "https:/blog.tangly.net"                                              <2>
+
+package net.tangly.bdd [[$root/docs/bdd/]] {                                   <3>
+}
+
+@enduml
+....
+----
+
+<1> Links work only for SVG digrams with the opion inline or interactive.
+The value is stated once in _opts_ and once in _svg-type_ because plantUML and kroki generators use different options for the same information.
+<2> Define a plantUML variable for the root URL of your site. +
+_I could not use asciidoc variable in plantUML links because the characters {} are interpreted as caption items_.
+<3> Use the variable to define links _[[]]_ relative to your root.
+{ref-plantuml} will expand the link to expected value.
+====
 
 The generated HTML code does not respect all AsciiDoc parameters.
 Text flow configurations are not enforced.

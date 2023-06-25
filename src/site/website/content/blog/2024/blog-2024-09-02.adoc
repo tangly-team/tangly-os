@@ -69,6 +69,15 @@ Projects finished sooner due to higher productivity.
 _The learning curve to C++ craftsmanship is steep_.
 _Embedded developers have to commit to becoming software professionals_.
 
+[TIP]
+====
+C++ has way better support for unit and integration testing.
+The libraries are easier to use and better maintained.
+
+Modern approaches like TDD and BDD can be used.
+The quality of the delivered solution is often markantly improved with these practices.
+====
+
 Use standard tools:
 
 - Compiler chain for the target platform
@@ -83,6 +92,15 @@ Use standard tools:
 {ref-actor-model} is a powerful and efficient design approach for reactive and embedded applications.
 Actors require the creation of tasks, message queues for inter-task communication, and timer services.
 Support for interrupt routines shall also be available.
+
+[CAUTION]
+====
+The C language and C++ language have added support for multi-threaded and synchronization primitives since version 11.
+
+This standard API could become the preferred aproach to develop multi-threaded and realtime application.
+The various RTOS could disappear as standalone solutions.
+They should be relegated as variant implementation of standard library functions.
+====
 
 The ARM world has defined an abstraction layer for realtime operating systems and published the functions under {ref-cmsis-os}.
 

@@ -80,6 +80,7 @@ failureLevel = "fatal"
 extensions = ["asciidoctor-diagram", "asciidoctor-bibtex", "asciidoctor-kroki"]
 [markup.asciidocExt.attributes]
 experimental = true
+allow-uri-read = true
 icons = "font"
 imagesdir = "../pics"
 source-highlighter = "rouge"

@@ -2,7 +2,7 @@
 title: "Actors"
 linkTitle: "Actors"
 date: 2024-05-02
-tags: ["java", "architecture"]
+tags: ["java", "cpp", "architecture"]
 ---
 
 == Reflections on Actor Models
@@ -10,26 +10,40 @@ tags: ["java", "architecture"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
+:ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
+:ref-message-passing: https://en.wikipedia.org/wiki/Message_passing[Message Passing]
 
 image::2024-05-02-head.svg[width=420,height=360,role=left]
 
 Concurrent programming has always been tricky.
 Accessing a shared state from multiple threads is a central problem, where hard-to-catch errors may easily appear.
-Java has all the instruments for safe and flawless concurrency, but the compiler would deliberately let developers write dangerous code.
-There is a strong need for higher-level frameworks ensuring safe concurrent programming.
 
-The actor model is one of the approaches to safe concurrency.
+The need for concurrent programming is increased tremendously with the fact that all modern processors and many microcontrollers have multiple cores.
 
-Understand that, although multiple actors can run at the same time, an actor will process a given message sequentially.
-This means that if you send 3 messages to the same actor, it will just execute one at a time.
-To have these 3 messages being executed concurrently, you need to create 3 actors and send one message each.
+Java or C++ have all the instruments for safe and flawless concurrency, but the compiler would deliberately let developers write dangerous code.
 
-Messages are sent asynchronously to an actor, that needs to store them somewhere while it’s processing another message.
+Java has native threading support since inception.
+Powerful synchronization primitives were added later with the addition of the concurrent package.
+The latest evolution is virtual threads.
+
+C and C++ have threading support and synchronization primitives were added with the 2011 revision.
+Later versions added small refinement to the synchronization mechanisms.
+
+There is a strong need for higher-level frameworks ensuring safe concurrent programming cite:[pattern-oriented-software-architecture-vol-2].
+
+The {ref-actor-model} is one of the approaches to safe concurrency.
+The model is based on {ref-message-passing}.
+
+Although multiple actors can run at the same time, an actor will process a given message sequentially.
+This means that if you send three messages to the same actor, it will just execute one at a time.
+To have these three messages being executed concurrently, you need to create three actors and send one message each.
+
+Messages are sent asynchronously to an actor that needs to store them somewhere while it is processing another message.
 The mailbox is the place where these messages are stored.
 
-Another interesting aspect of the actor model is that it doesn’t matter if the actor that I am sending a message to is running locally or in another node.
+Another interesting aspect of the actor model is that it does not matter if the actor that I am sending a message to is running locally or in another node.
 
-An actor is a computational entity that, in response to a message it receives, can concurrently:
+An actor is a computational entity that, in response to a message it receives, can concurrently cite:[reactive-messaging-patterns-with-actor-model]:
 
 - Send a finite number of messages to other actors.
 - Create a finite number of new actors.
@@ -37,73 +51,99 @@ An actor is a computational entity that, in response to a message it receives, c
 
 === Advantages and Downsides
 
-Here are four benefits of this model that can answer this question:
+Here are four benefits of this model:
 
 . It removes the need for lock-based synchronization.
-Actors can change only their private state; other actors’ states are off-limits to them.
-There’s no shared state in the actor model, so there’s no possibility of that disaster when multiple threads try to modify the same data.
+Actors change only their private state.
+Other actors’ states are off-limits to them. +
+There is no shared state in the actor model, so there is no possibility of that disaster when multiple threads try to modify the same data.
 . It was designed for distributed computing.
 Every actor has a mailbox that stores messages until they can be processed.
-It does not matter if the actor runs locally or on another device.
+It does not matter if the actor runs locally, on another core, or on another device.
 As long as it can receive messages, it makes no difference.
-That’s a major difference compared to CSP.
 . It allows for better scalability.
-If your actor-based solution sees an increase in traffic load, you can create more actors and assign them the same address.
-Actors can also be programmed to create child actors under certain conditions.
+If your actor-based solution sees an increase in traffic load, you can create more actors.
+Actors can also be programmed to create child actors under certain conditions. +
 This makes scaling an application a lot easier.
 . It does not require the sender to block waiting for a return value.
 This is an overall benefit of using messaging instead of method calls.
-The receiver will send a return value in another message when it’s done handling the original one.
+The receiver will send a return value in another message when it is done handling the original one.
 The sender can send out more messages in the meantime.
 
-Actor-based concurrency comes with some drawbacks.
-Here are three of them:
+[TIP]
+====
+Embedded applications using traditional approaches with synchronization primitives such as mutexes and semaphores are very difficult to implement correctly.
 
-. Actors process messages one at a time.
-So, if several actors send five messages to the same receiving actor, it’ll execute them one after the other.
-If you need these messages executed simultaneously, you’ll need five different actors running simultaneously.
+The MISRA committee has recognized the problems and defined a set of restrictions in the MISRA C 2012 Amendment 4—or should we say MISRA C 2023 revision.
+The recommendations are:
+
+- No dynamic creation of threads.
+- No data races between threads are acceptable.
+Thus, threads must be protected by a synchronization mechanism.
+- All synchronization objects shall be created and instantiated during the initialization of the application.
+- No cyclic calling chains with threads shall exist to avoid deadlocks on synchronization primitives.
+
+_The actor model solves all the identified synchronization difficulties and fulfills the above restrictions_.
+====
+
+Actor-based concurrency comes with some drawbacks:
+
+. An actor processes messages one at a time.
+So, if several actors send five messages to the same receiving actor, it will execute them one after the other.
+If you need these messages executed simultaneously, you need five different actors running simultaneously.
 . Deadlock is still possible.
 Two actors may end up waiting for a message from each other, thus creating a deadlock.
-Overall, the model is considered susceptible to deadlocks.
-(However, it’s worth noting that concurrent programming, in general, is more error-prone and complex than sequential programming.)
+Overall, the model is considered susceptible to deadlocks. +
+However, it is worth noting that concurrent programming is more error-prone and complex than sequential programming.
 . You need to enforce message immutability.
-Using the actor model in languages that don’t enforce immutability out of the box means it’s up to the developer to ensure messages remain immutable.
-If this verification is overlooked, messages may become mutable – and lead to thread-safety concerns.
+Using the actor model in languages that do not enforce immutability out of the box means it is up to the developer to ensure messages remain immutable. +
+If this verification is overlooked, messages may become mutable and lead to thread-safety concerns.
 . Unexpected failures can be critical.
-If an actor failure occurs, other actors may get perpetually stuck awaiting a message from it – a message that won’t arrive because of the failure.
+If an actor failure occurs, other actors may get perpetually stuck awaiting a message from it.
 To avoid this situation, developers have to employ defensive programming techniques and handle exceptions within the scope of each actor.
+
 === Minimal Actor Library
 
 To send a message to an actor, you need a reference to the receiving entity.
 
-Introduce naming conventions if your application profits from search capabilities.
-An actor should have a unique external identifier to support querying.
+Introduce naming conventions for actors to profit from search capabilities and improved logging.
+An actor should have a unique external identifier to support identification and querying.
 
 Consider using a sealed class hierarchy to define messages actors receive.
+Pattern matching with _instanceof_ would provide exhaustive and type secure handling of all alternatives.
+
+Java provides the needed mechanisms.
 Modern pattern matching in Java provides elegant solutions.
-
-virtual thread executor
-
-=== Publish and Subscribe with Flow
-
-multiple publishers and multiple consumers for a channel
-
-=== Finite State Machines
 
 The behavior of an actor is specified as a flat or a hierarchical state machine.
 
-=== Sealed Types and Pattern Matching
+The _net.tangly.fsm_ library provides the abstractions to elegantly implement applications with Java:
 
-Message load type can be defined as a closed sealed type hierarchy.
-Pattern matching with _instanceof_ would provide exhaustive and type secure handling of all alternatives.
+- A library providing actors and asynchronous message passing communication.
+- A timer manager to schedule time triggered tasks.
+This approach simplifies slightly the programming of actors.
+An actor only needs to wait on regular messages or timeout messages on its mailbox.
+- Hierarchical state machines as described in the UML standard.
+- A flow library to publish and subscribe data and realize transformation pipelines.
 
-[bibliography]
-=== Links
+A similar _net::tangly::vinci_ library provides similar abstractions to elegantly implement applications with C++:
 
-- [[[actor-model, 1]]] https://en.wikipedia.org/wiki/Actor_model[Actor Model].
-Wikipedia.
-- [[[message-passing, 2]]] https://en.wikipedia.org/wiki/Message_passing[Message Passing].
-Wikipedia.
+- A library providing actors and asynchronous message passing communication.
+- A timer manager to schedule time triggered tasks.
+- _Embedded applications often have more simple flat finite state machines._
+_Such machines should be implemented programmatically with switch statements._ +
+_Additionally, the Boost library provides statechart libraries._
+- A message pool feature to programmatically acquire and release message instances.
+The pool is useful when exchanging messages between actors.
+Otherwise, either the object will be deleted when leaving the scope in one actor or you have to dynamically allocate on the hea.
+Both approaches are suboptimal for realtime embedded applications.
+
+[TIP]
+====
+Data processing pipelines should be implemented with flow approaches and not with actors.
+
+Multiple publishers and multiple consumers for a data channel should be provided.
+====
 
 === References
 

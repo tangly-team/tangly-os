@@ -49,11 +49,11 @@ The pace of change in frameworks such as Angular, React, Vue, jQuery is stunning
 Supported standards in browsers are evolving.].
 How do we implement accessibility laws and requirements?::
 Your usability expert should have the tools to implement the legal requirements.
-I strongly recommend that each architect attend minimual training in internationalization, localization and accessibility matters.
+I strongly recommend that each architect attend minimal training in internationalization, localization and accessibility matters.
 https://en.wikipedia.org/wiki/Internationalization_and_localization[internationalization] _i18n_, localization _l16n_, https://en.wikipedia.org/wiki/Accessibility[accessibility] _a11y_ regulations and good practices.
 How should we translate user interface data?::
 Your organization shall implement a translation process for all involved artifacts.
-Translation activities are often outsorced to specialized companies.
+Translation activities are often outsourced to specialized companies.
 You should integrate their processes in your toolchain.
 
 === Scalability Themes
@@ -79,7 +79,7 @@ Fitness functions and monitoring are the current good practices.
 [INFO]
 ====
 Consider architecting your digital solution using domain driven design approach cite:[domain-driven-design,implementing-domain-driven-design,domain-driven-design-distilled].
-The method heavily emphazises the partitioning along bounded domains to create independent components.
+The method heavily emphasizes the partitioning along bounded domains to create independent components.
 
 The communication between domains shall be asynchronous and event based cite:[reactive-messaging-patterns-with-actor-model,exploring-cqrs].
 
@@ -91,7 +91,12 @@ footnote:[The approach is promoted in multiple technical stacks such as Java Spr
 === Security Themes
 
 How should we log activities and why?::
-_Review your internal documented solution_
+Each bounded domain shall implement their own log record repository.
+The structure of the records should be standardized to ease the effort of understanding the behavior of the whole application.
+The various repsoitories must be aggregated and have a total ordering.
+Either your system has a global time with the required resolution, often in the area of a few microseconds.
+Or you write all your log to an asynchronous aggregator.
+The order of arrival provides the implicit ordering of the log records.
 How should we audit activities and why?::
 _Review your internal documented solution_
 How is security implemented?::
@@ -128,6 +133,11 @@ _Review your internal documented solution_
 You are a talented software architect.
 You are in charge to define the blueprint of your digital solution.
 The {ref-less} movement has described how agile architecture could be performed <<agile-design-modeling>> <<agile-architecture-principles>>.
+
+[quote, Freds Brooks, No Silver Bullet]
+____
+There is no single development, in either technology or management technique, which by itself promises even one order of magnitude [tenfold] improvement within a decade in productivity, in reliability, in simplicity.
+____
 
 You shall create a similar checklist to the above one.
 Document your preferred approaches for each question.

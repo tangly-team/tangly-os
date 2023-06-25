@@ -51,7 +51,7 @@ The collected data clearly show agile approaches are tremendously more successfu
 The agile approach seems to eliminate catastrophic development failures.
 It means an agile team has 25% higher relative probability to be victorious than classical teams (_50.5% versus 39.5%_).
 
-[mermaid,waterfall-methods-success-2020,svg,svg-type=interactive]
+[mermaid,waterfall-methods-success-2020,svg,opts="inline",svg-type=interactive]
 ....
 pie
     title Waterfall Methods Success 2020
@@ -60,7 +60,7 @@ pie
     "Stopped" : 0.9
 ....
 
-[mermaid,agile-methods-success-2020,svg,svg-type=interactive]
+[mermaid,agile-methods-success-2020,svg,opts="inline",svg-type=interactive]
 ....
 pie
     title Agile Methods Success 2020

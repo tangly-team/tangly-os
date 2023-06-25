@@ -159,7 +159,8 @@ Node as Parallel Processing Unit::
 ROS-2 uses node as independent process unit.
 A node should be small and offer cohesive services.
 We recommend having as much as possible single threaded nodes to profit from the ROS-2 provided solutions
-footnote:[As stated in ROS-2 documentation, it is complex to avoid synchronization troubles such as deadlocks, lifelocks, priority inversion, or starvation when writing multithreaded nodes.
+footnote:[As stated in ROS-2 documentation, it is complex and error-prone to avoid synchronization troubles such as deadlocks, lifelocks, priority inversion, or starvation when
+writing multithreaded nodes.
 Further information can be found in the ROS-2 documentation about calling groups.]. +
 +
 Nodes never share state or computed values with another node.
@@ -265,7 +266,7 @@ footnote:[Java is partially supported. https://github.com/lambdaprime/jrosclient
 Being in an architecture role, he needs an agile software architecture training and a reasonable understanding of domain-driven design method.
 Favor C++::
 C++ provides tremendously better performance for heavy lifting algorithms.
-Static typed code is often easier to maintain.
+Static typed code is often easier to maintain. Prefer modern C++ such as C++ 23.
 Errors are often caught at compile time. +
 +
 You are not constrained by performance or maintainability requirements, feel free to use Python.
@@ -343,9 +344,12 @@ Marcel Baumann. 2022.
 Marcel Baumann. 2019.
 - [[[technical-debt, 6]]] link:../../2022/technical-debt/[Technical Debt].
 Marcel Baumann. 2022.
-- [[[actor-model, 7]]] https://en.wikipedia.org/wiki/Actor_model[Actor Model]
-- [[[state-diagram, 8]]] https://en.wikipedia.org/wiki/State_diagram[State Diagram]
-- [[[uml-fsm, 9]]] https://en.wikipedia.org/wiki/UML_state_machine[UML State Machine]
+- [[[actor-model, 7]]] https://en.wikipedia.org/wiki/Actor_model[Actor Model].
+Wikipedia.
+- [[[state-diagram, 8]]] https://en.wikipedia.org/wiki/State_diagram[State Diagram].
+Wikipedia.
+- [[[uml-fsm, 9]]] https://en.wikipedia.org/wiki/UML_state_machine[UML State Machine].
+Wikipedia.
 
 === References
 
