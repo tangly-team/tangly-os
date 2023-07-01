@@ -146,9 +146,23 @@ As a Scrum master you must strongly identify with these values.
 You must understand empiricism and how a model can be impacted with closed-loop approaches.
 Yu should certainly know the official {ref-scrumguide}.
 
+[IMPORTANT]
+====
+You are a professional Scrum master in a digital product development when:
+
+- You understand the _Definition of Done_ of your team.
+- You know the roadmap of your product and the release plan for the next six months.
+- You understand the major risks potentially impeding your development initiative and the associated mitigation measures.
+- You can teach your team how to improve the above artifacts.
+
+You can find all these documents in less than two minutes.
+Better would be to display them on the sprint board.
+====
+
 === Things Scrum Masters Never Do
 
-You are a Scrum master. You are *not* a secretary or an administrator.
+You are a Scrum master.
+You are *not* a secretary or an administrator.
 
 * She does not take notes during meetings and Scrum ceremonies.
 * She is not a secretary and is not responsible for the team member’s agenda.

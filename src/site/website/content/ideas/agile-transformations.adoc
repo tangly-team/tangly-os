@@ -15,6 +15,11 @@ The Agile Manifesto values and principles can be taught and exercised throughout
 The entire organization needs to understand the values and principles of an agile transformation to benefit from the rewards of achieving healthy agility.
 The cultural and organizational mindset shall change to one that embraces a culture of self-organization and collaboration.
 
+Never forget the {ref-manifesto}.
+
+Read the second page.
+The {ref-manifesto-principles} identify your focus and improvement areas.
+
 [NOTE]
 ====
 We are pragmatic engineers.
@@ -22,12 +27,17 @@ We are pragmatic engineers.
 We collect first the low-hanging fruits.
 
 First digital steps are often straightforward to implement.
+The return on investment is often calculated as a few weeks or months at most.
 
-First steps in the agile journey feel natural.
+The First steps in the agile journey feel natural.
+The gains are visible for all involved parties.
 
 Developing digital products with DevOps, Scrum and DecSecOps approaches are industry standard approaches.
 
 The next iterations are often more challenging.
+
+People like change.
+They seldom like to change.
 ====
 
 Our approach to initiating and supporting an agile transformation is
@@ -64,6 +74,14 @@ Focus on product delivery::
 Professional teams are required for awesome products.
 * Built-in integrity.
 * View applications as a whole.
+
+[IMPORTANT]
+====
+I am often surprised how reluctant organizations are to adopt new technologies and digital approaches.
+
+None of them want to be laggards or late adaptors.
+And statistically, half of them are slower than average.
+====
 
 We reinforce learning theory, streamline how to apply agile principles and experiments, help you to develop a routine, promote awareness, boost ownership, facilitate barrier removal, and avoid painful or costly dead ends.
 Our goal is to shorten the learning curve and optimize human and financial investments.

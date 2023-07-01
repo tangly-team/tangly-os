@@ -147,4 +147,4 @@ Multiple publishers and multiple consumers for a data channel should be provided
 
 === References
 
-bibliography:[]
+bibliography::[]

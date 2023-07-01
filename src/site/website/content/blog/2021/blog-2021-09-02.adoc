@@ -217,7 +217,7 @@ Introduction to agile software architecture::
 * Knowing the tasks involved in architecture development and how they are modified in the agile environment.
 * Being able to appropriately align architecture work to the specific problem and project.
 * Knowledge of agile tools for architecture work.
-* Knowledge of the capabilities of anchoring architecture as a cross-cutting aspect in agile organisations.
+* Knowledge of the capabilities for anchoring architecture as a cross-cutting aspect in agile organisations.
 * _See <<chapter-3>>, <<chapter-4>>_
 The agile architecture approach::
 * Being able to iteratively and agilely structure architecture work.
@@ -273,7 +273,7 @@ You can only become a professional software architect if you are proficient in a
 You shall be a craftsman about how to write industrial grade source code.
 
 You know how to test it, deploy it, run it and maintain it.
-You shall have knowledge of the idioms of your programming language and software design patterns at the component level.
+You shall have knowledge of the idioms for your programming language and software design patterns at the component level.
 
 The students are motivated and eager to learn.
 It takes time to establish the capabilities of a professional programmer and component designer.
@@ -293,7 +293,7 @@ footnote:[Choosing a technical and financial tradeoff is the essence of engineer
 These tradeoffs are often formulated in architecture design records _ADR_.].
 
 Almost no student has experience with open source libraries.
-They use them on a daily basis and never looked at the source code, provided an improvement, or read the documentation.
+They used them on a daily basis and never looked at the source code, provided an improvement, or read the documentation.
 
 We are trying to formulate an approach to improve achieved goals.
 We shall either build these concepts into project management lectures or in the semester theses.

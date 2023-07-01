@@ -50,8 +50,18 @@ abstract class Actor<T>
 
 Actor "1"*-"1" ConcurrentQueue : queue
 ConcurrentQueue "1"*-"n" Message : messages
+
+
 @enduml
 ....
+
+[IMPORTANT]
+====
+An actor has exactly one message queue representing its mailbox.
+It is the sole owner of the message queue and will process all messages stored in the queue.
+
+No other actor has access to the private message queue of a specific message queue.
+====
 
 The message abstraction structure is
 
@@ -62,10 +72,13 @@ The message abstraction structure is
     public:
         Message(int kind, T data) : _kind{kind}, _data(data) {}
 
-        int kind() const noexcept { return _kind; };                 <1>
+        inline int kind() const noexcept { return _kind; };                 <1>
 
-        T data() const noexcept { return _data; }                    <2>
+        inline void kind(int kind) { _kind = kind; }
 
+        inline T data() const noexcept { return _data; }                    <2>
+
+        inline void data(T data) { _data = data; }
     private:
         int _kind;
         T _data;
@@ -92,11 +105,17 @@ struct Data {                                                                   
     Variants data;
 };
 
-typedef Message<Data> Messages;                                                          <5>
-
-Message<Data> build(const PayLoadOne &data) {                                                   <6>
+Message<Data> build(PayLoadOne data) {                                                   <5>
     Data dataVariant{data};
     return {(int) (dataVariant.data.index()), {data}};
+}
+
+Message<Data>* build(PayLoadOne data) {                                                  <6>
+    Data dataVariant{data};
+    Message<Data>* msg = msgPool.acquire();
+    msg->_kind = dataVariant.data.index();
+    msg->_data = dataVariant;
+    return msg;
 }
 ----
 
@@ -104,8 +123,8 @@ Message<Data> build(const PayLoadOne &data) {                                   
 <2> Forward declaration for declaration with template referencing the message class.
 <3> Define a type verified union of all payload types.
 <4> Define the structure we declared before as forward declaration.
-<5> Define the message class used to exchange messages between actors.
-<6> Optional build function to simplify the creation of message objects.
+<5> Optional build function to simplify the creation of message objects.
+<6> Optional build function if you are using a message pool.
 
 [WARNING]
 ====
@@ -126,14 +145,19 @@ The actions and guards should only have one parameter to pass the message being 
 
 [source,cpp]
 ----
-bool MyActor::processMessage(const MyMessage &msg) {
+bool MyActor::processMessage(Message<Data>* msg) {
     bool continues = true;
     Variants variants = msg.data().data;
-    if (const MyActorData *data = std::get_if<MyActorData>(&variants)) {
+    if (const MyActorData *data = std::get_if<MyActorData>(variants)) {
         processMsgInFsm(*data);
     }
 }
 ----
+
+[CAUTION]
+====
+If the message was acquired from the message pool, release the message back to the pool before leaving the method.
+====
 
 === Finite State Machines
 
@@ -195,6 +219,27 @@ Additional advantage is the tracking of maximum number of simultaneously used me
 
 [source,cpp]
 ----
+    template<typename T>
+    class MsgPoolLogic {
+    public:
+        /**
+         * Acquire a message from the pool.
+         * @return pointer to the acquired message
+         */
+        Message<T>* acquire();
+
+        /**
+         * Release the message and return it to the pool.
+         * @param msg pointer to the message to release
+         */
+        void release(Message<T>* msg);
+
+        /**
+         * Return the number of free messages in the pool.
+         * @return number of free messages
+         */
+        int nrOfFreeMsgs();
+    };
 ----
 
 === Lessons Learnt
@@ -202,7 +247,25 @@ Additional advantage is the tracking of maximum number of simultaneously used me
 The concepts implemented in the library are available for C and C++ based embedded applications.
 The presented version is the object-oriented C++ based variant.
 
-Overall, we do not see any reason no to use C++ language.
+[TIP]
+====
+The simplest approach to implement an actor based embedded realtime system is:
+
+- Use the above-described abstractions.
+- Define all the actors of your system as static variables.
+Therefore, no actors are dynamically allocated on the heap.
+Give all actors the same priority.
+The behavior of the system should not be dependent on the priority.
+The priority has only an influence on how fast a message will be processed but how it will be processed.
+- Define the message payload as a _std:variant_
+- Use the message pool to acquire and release message instances.
+Therefore, no allocation of messages on the heap is performed.
+- Interrupt routines can process the data and send a message to an actor with _static void send(Actor<T>& actor, Message<T>* msg)_ call-
+
+The implementation of the library uses solely primitive types and avoid heap usage.
+====
+
+Overall, we do not see any reason not to use C++ language.
 
 [bibliography]
 === Links
@@ -212,4 +275,4 @@ Marcel Baumann. 2024.
 
 === References
 
-bibliography:[]
+bibliography::[]

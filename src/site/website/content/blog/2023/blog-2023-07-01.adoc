@@ -27,13 +27,20 @@ Too many companies neglect this phase to their own detriment.
 Onboarding, the process of bringing new employees to a point where they are fully integrated into the company and working at full capacity is a _make it or break it_ process for companies wanting to compete in the tech world.
 Whether you are a startup with only a few employees, or an established company with hundreds of employees, the onboarding process is the first opportunity you have to set up new employees for long-term success.
 
-It can cost employers anywhere from 30-50% of an employee’s salary to replace a developer that leaves.
+It can cost employers anywhere from 30-50% of an employee’s yearly salary to replace a developer that leaves.
 So when an organization loses employees to a bad onboarding process, the company feels it.
 And if there is an insufficient onboarding process, new hires will leave.
 
 One of the most important aspects of onboarding is the timeline.
 On the one hand, the practical aspects of onboarding should happen pretty quickly, as outlined below.
 On the other hand, it is important to understand that onboarding an employee meaning getting them to a place where they feel fully immersed and capable at your company takes months.
+
+[CAUTION]
+====
+Your organization is serious about professional onboarding if you have a formal process description and checklists for the whole onboarding process.
+
+Each phase is described, and each new collaborator has a contact person for onboarding questions.
+====
 
 So what is a realistic expectation for how long it takes to onboard a software engineer?
 
@@ -103,7 +110,8 @@ Within the first week, there should be some form of communication from the execu
 The big picture of what the company is trying to accomplish, and a way to interact with the team members should be discussed.
 
 If you are a small company, this can be as simple as a lunch or coffee with the founder.
-For mid-size or large companies, it may need to be more formal cite:[corporate-culture-and-perfromance].
+For mid-size or large companies, it may need to be more formal
+cite:[corporate-culture-and-perfromance,corporate-culture-survival-guide,organizational-culture-and-leadership].
 However, if at all possible, this should happen in person, even for remote workers <<agile-company>>.
 
 We always suggest that new employees do their first two to four weeks of employment on site, if possible.
@@ -130,8 +138,11 @@ Train your collaborators.
 Our company is an agile software boutique with Java and C++ technical stacks.
 Our collaborators shall be experts in Scrum <<scrum-master-formation>> <<product-owner-formation>> <<scrum-developer-formation>> and Java <<java-certification>>.
 
+It is a benefit for us if the collaborator is also a professional C++ developer.
+
 Walk the talk.
 Be an agile company cite:[agile-management].
+Competent engineers find out early if you are really being agile or just pretending to do agile.
 
 Advanced approaches can reduce training and improve cultural match.
 
@@ -172,4 +183,4 @@ Gitlab. 2022.
 
 === References
 
-bibilography:[]
+bibliography::[]

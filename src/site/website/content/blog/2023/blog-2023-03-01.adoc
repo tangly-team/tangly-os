@@ -16,7 +16,7 @@ image::2023-03-01-head.png[width=420,height=360,role=left]
 Scrum is the most popular agile approach used to develop digital products.
 
 The Scrum master role is well-documented in the {ref-scrumguide}.
-There is probably more than a million of certified Scrum masters in the world.
+There are probably more than a million of certified Scrum masters in the world.
 
 To differentiate themselves from the numerous Scrum masters, consultants call themselves agile coaches.
 

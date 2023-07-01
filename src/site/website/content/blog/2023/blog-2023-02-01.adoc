@@ -17,7 +17,8 @@ Your sole goal is to hire a qualified collaborator with potential.
 
 For example, you need a great software engineer with social competence.
 He is a professional developer and has knowledge of the technology stack
-footnote:[The singular form is wanted.A small or medium company SMC should minimize the technologies they used to build their digital products.]
+footnote:[The singular form is wanted.
+A small or medium company SMC should minimize the technologies they used to build their digital products.]
 your company is using.
 The candidate naturally understands agile and DevOps approaches.
 

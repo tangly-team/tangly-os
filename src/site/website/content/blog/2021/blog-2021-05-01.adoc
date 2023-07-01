@@ -106,6 +106,7 @@ ____
 Agile transformation has stalled during the second wave in many companies.
 Only individual elements of the third wave, such as portfolio management, have been tackled.
 At the same time, transformation has often only occurred on the surface; the company’s DNA and culture have not (yet) adapted to the new era.
+
 Executives must now take on the hard topics, such as new organizational forms, management behaviour, dedicated agile executives.
 They must make difficult and painful decisions regarding new leadership teams.
 ____
