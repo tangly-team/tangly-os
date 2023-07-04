@@ -1,0 +1,198 @@
+---
+title: "Actors with CMSIS OS in Cpp"
+linkTitle: "C++ cmsis Actors"
+date: 2024-06-10
+tags: ["C++", "architecture"]
+---
+
+== Actors with CMSIS OS Platform in {cpp}
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+:ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
+:ref-message-passing: https://en.wikipedia.org/wiki/Message_passing[Message Passing]
+:ref-cmsis-rtos2: https://arm-software.github.io/CMSIS_5/RTOS2/html/index.html[CMSIS-RTOS v2]
+
+image::2024-06-03-head.svg[width=420,height=360,role=left]
+
+The actor library defines the actor abstraction with mailboxes and concrete implementation for various target platforms.
+
+The {ref-cmsis-rtos2} platform provides an actor implementation for all realtime kernels supporting the CMSIS API.
+The API is under the stewardship of ARM company.
+
+STM provides this integration with freeRTOS for all STM32 microcontrollers.
+
+=== Library
+
+The library defines key abstractions as abstract classes <<actors>> <<actors-in-cpp>>.
+
+The implementation for a target platform defines the concrete classes for all abstract entities below.
+
+[plantuml,actors,svg]
+....
+@startuml
+class Message<T> {
+  int kind();
+  T data();
+}
+
+abstract class ConcurrentQueue<T>
+
+abstract class Actor<T> {
+    {abstract} bool processMessage(Message<T>* msg);
+    {abstract} Message<T>* message();
+    {abstract} Message<T>* message(const uint32_t ticks);
+    {abstract} void delay(const uint32_t ticks);
+}
+
+abstract class MessagePool<T> {}
+
+abstract class TimerMgr<T> {
+}
+
+MessagePool *-- Message
+Actor "1"*-"1" ConcurrentQueue : queue
+ConcurrentQueue "1"*--"n" Message : messages
+TimerMgr *-"1" MessagePool : pool
+
+class ConcurrentQueueCmsis<T> {}
+
+class MessagePoolCmsis<T> {}
+
+class ActorCmsis<T> {}
+
+class TimerMgrCmsis<T> {}
+
+ConcurrentQueue <|-- ConcurrentQueueCmsis
+
+Actor <|-- ActorCmsis
+
+MessagePool <|-- MessagePoolCmsis
+
+TimerMgr <|-- TimerMgrCmsis
+ActorCmsis <|-- TimerMgrCmsis
+
+@enduml
+....
+
+=== How To
+
+==== Define Message Structure
+
+We advocate the following message structure:
+
+[source,cpp]
+----
+struct Data;                                                                  <1>
+
+struct ActorData {                                                            <2>
+    int msgId;
+};
+
+typedef std::variant<ActorData, TimerCmd<Data>, Timer<Data>> Variants;        <3>
+
+struct Data {                                                                 <4>
+    Variants variants;
+
+    TimerCmd<Data>* timerCmd() {                                              <5>
+        return std::get_if<TimerCmd<Data>>(&variants);
+    }
+
+    Timer<Data>* timer() {
+        return std::get_if<Timer<Data>>(&variants);
+    };
+
+    ActorData* data() {
+        return std::get_if<ActorData>(&variants);
+    };
+};
+
+typedef Message<Data> MyMessage;                                               <6>
+----
+
+<1> Forward declaration of the structure containing all message variants.
+<2> Define the payload for the actors of your application.
+You can define one or multiple payload structures.
+<3> Create the variant with all payloads to prove a type checked union abstraction.
+<4> Define the forward struct declaration.
+This approach is necessary to satisfy the {cpp} compiler.
+<5> Optionally, you can provide helper methods to access a specific payload type with runtime checks enabled.
+<6> Optionally, you can define a type declaration for your messages with the defined payload.
+
+==== Define Your Actors
+
+[code,cpp]
+----
+MyActorCmsis::MyActorCmsis(const char* name, int queueSize,
+                            MessagePool<Data>& pool)
+    : ActorCmsis<Data>(name, queueSize, threadAttributes), _pool{pool}  {
+private:
+    MessagePool<Data>& _pool;
+}
+
+bool MyActorCmsis::processMsg(Message<Data>* msg) {                            <1>
+    bool continues = true;
+    Variants variants = msg->data().data;
+    if (const ActorData* data = std::get_if<ActorData>(&variants)) {           <2>
+        switch (data->cmd) {                                                   <3>
+            case ActorData::ACTOR_COMMUNICATION:
+                std::cout << "received message " << data->msgId
+                            << " from " << data->sender->name() << " to "
+                            << data->receiver->name()
+                            << "[[" << payload << "]]" << std::endl;
+                continues = (data->msgId < 20);
+                Actor<Data>::send(*data->sender,
+                        build({ActorData::ACTOR_COMMUNICATION,
+                        data->msgId + 1, payload, data->receiver, data->sender}));
+                break;
+            ...
+        }
+    } else if (const Timer<Data>* timer = std::get_if<Timer<Data>>(&variants)) {
+        std::cout << timer->client()->name() << " " << timer->id() << std::endl;
+    }
+    _pool.release(msg);                                                        <4>
+    return continues;
+};
+----
+
+<1> The body of your actor class responsible to process received messages.
+<2> Retrieve the payload variant you are interested in and check if it is available.
+<3> Process the message payload
+<4> Release the message back to the pool.
+
+[TIP]
+====
+The actor can still publish a programmatic interface to its users.
+
+The services are provided as regular public methods.
+The constraint is that they should not have a return value.
+
+Each service method is implemented as the creation of a command message and send to the actor mailbox.
+The command message creation only uses local variables and therefore does not need to be protected with synchronization primitives.
+
+The implementation of the actor is slightly more expensive.
+The users can use the actor as a regular class and do not have to bother with filling messages and sending them.
+====
+
+=== Lessons Learnt
+
+The message pool hugely simplifies the handling of messages between actors without having to juggle with scopes.
+The message pool uses constructs compatible with interrupt routines.
+Therefore, you can acquire and release messages from a regular actor instance or from an interrupt routine.
+
+The variant abstraction from the standard library provides runtime checks that the correct variant is access.
+
+Your actor class only needs to override the _processMsg(Message<Data>* msg)_ method.
+The body of this method should process all expected message types.
+Do not forget to release each message you retrieved from the message queue with the _message()_ function.
+
+If you have a complex logic, consider implementing a flat finite state machine as a double nested switch in the method.
+
+[bibliography]
+=== Links
+
+- [[[actors, 1]]] link:../../2024/actors/[Actors].
+Marcel Baumann. 2024.
+- [[[actors-in-cpp, 2]]] link:../../2024/actors-in-cpp/[Actors in C++].
+Marcel Baumann. 2024.

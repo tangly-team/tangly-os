@@ -190,7 +190,7 @@ chmod 600 ~/.ssh/*
 
 All developers in our company are using Apple notebooks since the company's inception.
 Our primary development stack is Java.
-We are regularly working on embedded industrial products and sometimes use C++.
+We are regularly working on embedded industrial products and sometimes use {cpp}.
 
 The Apple ecosystem and the full access to a Unix system validated the assumption that this platform is best for the kinds of product development we are involved in.
 

@@ -17,7 +17,7 @@ image::2021-11-02-head.jpg[width=420,height=360,role=left]
 
 Google chose Gradle as the official build tool for Android.
 Not only because build scripts are code, but because Gradle is modeled in a way that is extensible in the most fundamental ways.
-Gradle's model also allows it to be used for native development with C/C++ and can be expanded to cover any ecosystem.
+Gradle's model also allows it to be used for native development with C/{cpp} and can be expanded to cover any ecosystem.
 For example, Gradle is designed with embedding in mind using its Tooling API.
 
 What are my preferred goodies with the major version 7?

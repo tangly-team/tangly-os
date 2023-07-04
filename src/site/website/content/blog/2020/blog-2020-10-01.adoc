@@ -14,13 +14,13 @@ tags: ["design", "hugo", "series-students"]
 image::2020-10-01-head.jpg[width=420,height=360,role=left]
 
 I hosted my technical blogs on https://www.blogger.com/[blogger] for years.
-If I correctly remember I started to use blogger ten years ago.
+If I correctly remember, I started to use blogger ten years ago.
 It is a great tool with some drawbacks.
 Over the years, the drawbacks sting more and more:
 
 * Their editor is brittle, with limited functionality and unreliable.
-The generated HTML is not legible and does not support concepts such a micro fragments, meta information or simple functions such as source code highlighting.
-* The last quarters they started to tinker with their editor and output format.
+The generated HTML is not legible and does not support concepts such as micro fragments, meta information or simple functions such as source code highlighting.
+* The last quarter, they started to tinker with their editor and output format.
 My older posts are now a mess and can only be open in the HTML mode.
 If I switch to their WYSIWYG editor, the layout is destroyed and random fonts family and sizes are displayed.
 Worse, the blogs are also displayed mangled to the readers even if I do not edit them.
@@ -31,8 +31,9 @@ Blogger uses a proprietary and not easy to port format.
 It is *time* to find an alternative, and I have to confess I am a huge fan of {ref-asciidoc}.
 
 OK, so why not go with Markdown?
-Don’t get me wrong, there is nothing bad with Markdown - except that no one should probably use it when {ref-asciidoc} and Asciidoctor are available.
-I’m writing all my documents with {ref-asciidoc}.
+Don’t get me wrong, there is nothing bad with Markdown; except that no one should probably use it when {ref-asciidoc} and Asciidoctor are available.
+I’m writing all my documents with {ref-asciidoc}
+footnote:[You find tutorials how to write asciidoc documentation and how to use the toolchain on YouTube and Udemy.].
 
 The following needs are identified:
 
@@ -78,7 +79,7 @@ I use https://brew.sh/[Homebrew] as a package manager.
 
 The instructions to install hugo and asciidoctor are:
 
-[source,shell]
+[source,console]
 ----
 brew install hugo                         # <1>
 
@@ -146,11 +147,11 @@ allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^asciidoctor$']
 
 ===== Add First Level Folders
 
-Each time you add your own first level folder – meaning at the same level as docs, blog, about, or community you need to extend the layout to support it.
+Each time you add your own first level folder – meaning at the same level as docs, blog, about, or community, you need to extend the layout to support it.
 For example, I store technical articles in the folder ideas and use the standard template.
 So I need to add (if not, no items are visible in the sidebar).
 
-[source,shell]
+[source,console]
 ----
 cp -R ./layouts/docs ./layouts/ideas
 ----
@@ -161,7 +162,7 @@ We had to change the partial _footer.html_ to display a better looking copyright
 The original version has hard coded text not really compatible with the creative commons license we are using.
 The layout is updated by overwriting the involved partial file.
 
-[source,shell]
+[source,console]
 ----
 cp $prjDir/src/site/website/docsy/layouts/partials/footer.html $siteDir/themes/docsy/layouts/partials
 ----

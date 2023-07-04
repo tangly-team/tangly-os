@@ -6,6 +6,7 @@ weight: 10
 
 {{< cardpane >}}
 {{< card header="**Agile and Lean Approaches**" >}}
+
 [Agile Transformation Catalyst](../../blog/2016/what-is-an-agile-company)
 
 Agile and Lean Organization Coach
@@ -32,6 +33,7 @@ Agile Product Portfolio Management
 
 {{< cardpane >}}
 {{< card header="**Empowering Scrum Teams**" >}}
+
 [Scrum Assessment](../../blog/2018/one-way-to-improve-your-scrum-approach)
 
 Scaling Agile and Scrum

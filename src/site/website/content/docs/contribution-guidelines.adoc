@@ -24,7 +24,7 @@ The git repository and the issue tracker are public and accessible to all intere
 
 You can create the set of git remotes with the following instructions.
 
-[source,shell]
+[source,console]
 ----
 git remote add origin-github git@github.com:marcelbaumann/tangly-os.git                  // <1>
 git remote add origin-gitlab git@gitlab.com:marcelbaumann/tangly-os.git                  // <2>

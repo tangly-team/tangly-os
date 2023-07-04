@@ -2,7 +2,7 @@
 title: "Java, Groovy, Clojure"
 linkTitle: "Java, Groovy, Clojure"
 date: 2022-04-05
-tags: ["agile", jvm-languages", "series-students"]
+tags: ["agile", "jvm-languages", "series-students"]
 ---
 
 == Three JVM Languages: Java, Groovy, Clojure

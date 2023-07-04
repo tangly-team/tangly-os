@@ -109,7 +109,7 @@ All team members should be proficient with the technology stack and programming 
 At least one team member shall be a senior programmer cite:[pragmatic-programmer-1st,clean-code,clean-coder]. +
 The senior developer shall ensure that coding guidelines and language idioms are correctly applied in the source code. +
 She knows how to apply the paradigms and idioms of the programming language.
-How you implement dependency injection or sensor data normalization is quite different in Python, C++ or Java.
+How you implement dependency injection or sensor data normalization is quite different in Python, {cpp} or Java.
 Middle-Out Competencies::
 The best architecture and well-written application will decay over time.
 You must actively fight entropy to have a maintainable and lasting product. +

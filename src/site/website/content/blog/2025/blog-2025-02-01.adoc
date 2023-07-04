@@ -247,7 +247,7 @@ Ideally, the interface of a bounded domain is fully described through the messag
 {ref-uml} provides the statechart notation to graphically document finite state machines.
 ====
 
-A bounded domain should be packaged as a C++ module and declared in a specific namespace.
+A bounded domain should be packaged as a {cpp} module and declared in a specific namespace.
 A bounded domain should also be packaged following the concepts of the used framework.
 For example, it should be a Gradle module or a ROS package.
 

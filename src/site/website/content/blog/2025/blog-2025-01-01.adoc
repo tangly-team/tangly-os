@@ -202,7 +202,7 @@ The above programmatic approach is limited to flat state machines.
 https://en.wikipedia.org/wiki/UML_state_machine[Hierarchical statecharts] as described in the {ref-uml} notation can only be efficiently implemented with a state machine library.
 An example of such a library for the Java stack is link:../../../docs/fsm[net.tangly:fsm].
 The link:../../../docs/fsm/userguidefsm/[user manual] provides examples of hierarchical finite state machine declarations
-footnote:[The C++ library {ref-boost} provides two implementations of hierarchical finite state machines.
+footnote:[The {cpp} library {ref-boost} provides two implementations of hierarchical finite state machines.
 You can use eiter the _Meta State Machine boost.MSM or https://boost-ext.github.io/sml/[Boost.SML] library.].
 footnote:[ROS-2 has state machines libraries e.g., http://smacc.ninja/statechart-vs-msm/[SMAC], https://github.com/robosoft-ai/SMACC2[SMACC2] or
 https://github.com/uleroboticsgroup/yasmin[YASMIN].].

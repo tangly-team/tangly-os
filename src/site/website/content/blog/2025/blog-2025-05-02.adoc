@@ -13,7 +13,7 @@ tags: ["C++", "architecture", "embedded"]
 
 image::2025-05-02-head.png[width=420,height=360,role=left]
 
-=== Bounded Domains in C++
+=== Bounded Domains in {cpp}
 
 === Bounded Domain API
 

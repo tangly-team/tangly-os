@@ -69,12 +69,12 @@ API Documentation::
 Legible and maintainable source code should be well-documented. +
 {ref-javadoc} is the perfect tool for Java projects. +
 {ref-doxygen} is a similar approach for a wide range of programming languages.
-It is the de-facto standard documentation tool for C++ and C applications. +
+It is the de-facto standard documentation tool for {cpp} and C applications. +
 +
 We recommend using the documentation tool provided with your technological stack.
 https://en.wikipedia.org/wiki/Test-driven_development[TDD] And https://en.wikipedia.org/wiki/Behavior-driven_development[BDD]::
 Automatic unit and integration tests provide traceability between requirements and source code artifacts
-footnote:[Google developed and maintains unit test libraries for C and C++.].
+footnote:[Google developed and maintains unit test libraries for C and C{cpp}.].
 Well-documented approaches such as fitness functions <<fitness-functions>> extend the approach to non-functional specifications. +
 +
 You can add traceability information as annotations to your tests.

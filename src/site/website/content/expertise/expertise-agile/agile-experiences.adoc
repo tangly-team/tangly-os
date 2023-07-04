@@ -23,9 +23,9 @@ Please be pragmatic and professional.
 * Technical Agile and Scrum
 * Product Development
 * Good Practices
-* Anti Patterns: Definition of Ready, Project Leader, Milestones, Quality Group, Undone Work
+* Anti-Patterns: Definition of Ready, Project Leader, Milestones, Quality Group, Undone Work
 
-{ref-scrum} and {ref-less} provide proven approaches and good practices how to efficiently work on one product line with five to hundred product deelopers.
+{ref-scrum} and {ref-less} provide proven approaches and good practices how to efficiently work on one product line with five to hundreds of product developers.
 
 === Product Development
 
@@ -43,7 +43,7 @@ A successful digital product shall fulfill customers' expectations.
 === Technical Agility
 
 Success with Scrum is often determined how fluent your software development teams are with technical agility.
-At the end you shall deliver a working piece of software delighting your customers.
+In the end, you shall deliver a working piece of software delighting your customers.
 
 * Software Craftsmanship cite:[software-craftsman,clean-craftsmanship]
 * Software Engineering cite:[modern-software-engineering,software-engineering-at-google,facts-and-fallacies-software-engineering]

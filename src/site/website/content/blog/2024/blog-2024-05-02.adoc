@@ -2,7 +2,7 @@
 title: "Actors"
 linkTitle: "Actors"
 date: 2024-05-02
-tags: ["java", "cpp", "architecture"]
+tags: ["java", "C++", "architecture"]
 ---
 
 == Reflections on Actor Models
@@ -20,13 +20,13 @@ Accessing a shared state from multiple threads is a central problem, where hard-
 
 The need for concurrent programming is increased tremendously with the fact that all modern processors and many microcontrollers have multiple cores.
 
-Java or C++ have all the instruments for safe and flawless concurrency, but the compiler would deliberately let developers write dangerous code.
+Java or {cpp} have all the instruments for safe and flawless concurrency, but the compiler would deliberately let developers write dangerous code.
 
 Java has native threading support since inception.
 Powerful synchronization primitives were added later with the addition of the concurrent package.
-The latest evolution is virtual threads.
+The latest evolution is virtual threads enabling the creation of thousands of parallel tasks.
 
-C and C++ have threading support and synchronization primitives were added with the 2011 revision.
+C and {cpp} have threading support and synchronization primitives were added with the 2011 revision.
 Later versions added small refinement to the synchronization mechanisms.
 
 There is a strong need for higher-level frameworks ensuring safe concurrent programming cite:[pattern-oriented-software-architecture-vol-2].
@@ -41,7 +41,7 @@ To have these three messages being executed concurrently, you need to create thr
 Messages are sent asynchronously to an actor that needs to store them somewhere while it is processing another message.
 The mailbox is the place where these messages are stored.
 
-Another interesting aspect of the actor model is that it does not matter if the actor that I am sending a message to is running locally or in another node.
+Another interesting aspect of the actor model is that it does not matter if the actor which I am sending a message to is running locally or on another node.
 
 An actor is a computational entity that, in response to a message it receives, can concurrently cite:[reactive-messaging-patterns-with-actor-model]:
 
@@ -62,9 +62,16 @@ Every actor has a mailbox that stores messages until they can be processed.
 It does not matter if the actor runs locally, on another core, or on another device.
 As long as it can receive messages, it makes no difference.
 . It allows for better scalability.
-If your actor-based solution sees an increase in traffic load, you can create more actors.
+If your actor-based solution sees an increase in traffic load
+footnote:[A higher traffic load has a direct impact on the number of unprocessed messages in actor mailboxes.], you can create more actors
+footnote:[The creation of additional actors is prohibited in security relevant applications.
+For example, the MISRA 2022 standard explicitly prohibits dynamic creation of processes.
+The only possible approach is to dimension your systems to fulfill your non-functional requirements.].
 Actors can also be programmed to create child actors under certain conditions. +
-This makes scaling an application a lot easier.
+This makes scaling an application a lot easier. +
+_If your application has constrained resources, you can monitor the number of unprocessed messages in the actor queue_.
+_If the average or maximum size of the queue exceeds expectations, your system is wrongly dimensioned_.
+_You must either reduce processing requirements or increase available processor and memory resources_.
 . It does not require the sender to block waiting for a return value.
 This is an overall benefit of using messaging instead of method calls.
 The receiver will send a return value in another message when it is done handling the original one.
@@ -109,7 +116,8 @@ To send a message to an actor, you need a reference to the receiving entity.
 Introduce naming conventions for actors to profit from search capabilities and improved logging.
 An actor should have a unique external identifier to support identification and querying.
 
-Consider using a sealed class hierarchy to define messages actors receive.
+Consider using a sealed class hierarchy to define messages actors receive
+footnote:[A similar approach can be implemented in {cpp} with _std::variant_ construct.].
 Pattern matching with _instanceof_ would provide exhaustive and type secure handling of all alternatives.
 
 Java provides the needed mechanisms.
@@ -126,7 +134,7 @@ An actor only needs to wait on regular messages or timeout messages on its mailb
 - Hierarchical state machines as described in the UML standard.
 - A flow library to publish and subscribe data and realize transformation pipelines.
 
-A similar _net::tangly::vinci_ library provides similar abstractions to elegantly implement applications with C++:
+A similar _net::tangly::vinci_ library provides similar abstractions to elegantly implement applications with {cpp}:
 
 - A library providing actors and asynchronous message passing communication.
 - A timer manager to schedule time triggered tasks.
@@ -135,7 +143,7 @@ _Such machines should be implemented programmatically with switch statements._ +
 _Additionally, the Boost library provides statechart libraries._
 - A message pool feature to programmatically acquire and release message instances.
 The pool is useful when exchanging messages between actors.
-Otherwise, either the object will be deleted when leaving the scope in one actor or you have to dynamically allocate on the hea.
+Otherwise, either the object will be deleted when leaving the scope in one actor, or you have to dynamically allocate on the heap.
 Both approaches are suboptimal for realtime embedded applications.
 
 [TIP]

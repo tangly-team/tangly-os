@@ -135,10 +135,10 @@ Here are a few simple practices for successful onboarding:
 === Lessons Learnt
 
 Train your collaborators.
-Our company is an agile software boutique with Java and C++ technical stacks.
+Our company is an agile software boutique with Java and {cpp} technical stacks.
 Our collaborators shall be experts in Scrum <<scrum-master-formation>> <<product-owner-formation>> <<scrum-developer-formation>> and Java <<java-certification>>.
 
-It is a benefit for us if the collaborator is also a professional C++ developer.
+It is a benefit for us if the collaborator is also a professional {cpp} developer.
 
 Walk the talk.
 Be an agile company cite:[agile-management].

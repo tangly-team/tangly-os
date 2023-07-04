@@ -19,9 +19,9 @@ image::2024-04-01-head.png[width=420,height=360,role=left]
 
 Modern Java Vaadin Javalin Microstream JSON log4j2 Micrometer
 
-==== C++
+==== {cpp}
 
-Modern C++ freeRTOS ROS
+Modern {cpp} freeRTOS ROS
 
 === Design Approaches
 

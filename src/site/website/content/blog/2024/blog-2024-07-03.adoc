@@ -2,7 +2,7 @@
 title: "Modern Embedded Realtime Architecture"
 linkTitle: "Embedded Architecture"
 date: 2024-07-20
-tags: [cpp", "architecture"]
+tags: ["C++", "architecture"]
 ---
 
 == Modern Embedded Realtime Architecture
@@ -29,7 +29,7 @@ no dynamic thread creation
 
 avoid heap object creation
 
-MISRA 2023 for C and C++
+MISRA 2023 for C and {cpp}
 
 [bibliography]
 === Links

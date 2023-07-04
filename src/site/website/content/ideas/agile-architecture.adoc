@@ -444,7 +444,7 @@ Below a set of tools to improve the quality of your design.
 The pattern movement was started last millennium.
 Very talented and experienced developers have documented how to solve common problems elegantly and effectively.
 Depending on the programming language, you are using different idioms are preferred.
-The way to solve the same problem is different in Java, Scala, C++, Python or C#.
+The way to solve the same problem is different in Java, Scala, {cpp}, Python or C#.
 
 You should know all regular structural, behavioral and creational patterns.
 Explore your programming language and discover how idioms and patterns have evolved between major releases.

@@ -310,7 +310,7 @@ development driven by automated tests _published by Beck, 2014_:
 . Refactor: Clear up all duplications made in the process to make the test work.
 Unit Testing::
 testing the smallest units possible to prove what was written is true.
-Unit testing frameworks are Xunit or NUnit for C# and .Net, Junit for Java, PyUnit for Python, Cppunit for C++.
+Unit testing frameworks are Xunit or NUnit for C# and .Net, Junit for Java, PyUnit for Python, Cppunit for {cpp}.
 
 [bibliography]
 === Links

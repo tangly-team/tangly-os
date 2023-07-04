@@ -1,6 +1,6 @@
 ---
 title: "How to Document Software Architecture"
-linkTitle: "Document Software Architecture"
+linkTitle: "Document Architecture"
 date: 2024-05-01
 tags: ["java", "architecture", "agile"]
 ---

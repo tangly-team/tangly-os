@@ -14,7 +14,7 @@ tags: ["c++", "architecture", "embedded"]
 image::2025-04-01-head.jpg[width=420,height=360,role=left]
 
 Embedded software engineers that have a proper understanding of the corresponding hardware are hard to find.
-When application developers were moving to newer languages like Java and C++, embedded programmers were still moving from assembly language to C.
+When application developers were moving to newer languages like Java and {cpp}, embedded programmers were still moving from assembly language to C.
 
 The reason for slower technology adoption is having a lesser number of embedded programmers, who need to thoroughly understand the hardware platform on which their code runs.
 
@@ -76,30 +76,30 @@ A context switch time of 84 CPU cycles was obtained under the following test con
 - configUSE_PORT_OPTIMISED_TASK_SELECTION set to 1 in _FreeRTOSConfig.h_
 ====
 
-=== Why C++?
+=== Why {cpp}?
 
-With the continued improvements in the language, most C++ features have no impact on code size or on speed
-cite:[tour-of-cpp, effective-modern-cpp,cpp-core-guidelines, beautiful-cpp].
+With the continued improvements in the language, most {cpp} features have no impact on code size or on speed
+cite:[tour-of-cpp,effective-modern-cpp,cpp-core-guidelines,beautiful-cpp].
 Others have a small impact that is generally worth paying for.
-To use C++ effectively in embedded systems, you need to be aware of what is going on at the machine code level, just as in C.
-Armed with that knowledge, the embedded systems programmer can produce code that is smaller, faster and safer than is possible without C++.
+To use {cpp} effectively in embedded systems, you need to be aware of what is going on at the machine code level, just as in C.
+Armed with that knowledge, the embedded systems programmer can produce code that is smaller, faster and safer than is possible without {cpp}.
 
-One property of C++ is so obvious that it is often overlooked.
-This property is that C++ is almost exactly a *superset of C*.
+One property of {cpp} is so obvious that it is often overlooked.
+This property is that {cpp} is almost exactly a *superset of C*.
 If you write a code fragment in the C subset, the compiler will usually act like a C compiler.
 The machine code generated will be what you would get from a C compiler.
 
-Because of this simple fact, _anything that can be done in C can also be done in C++_.
-Existing C code can typically be re-compiled as C++ with about the same amount of difficulty that adopting a new C compiler entails.
-This also means that migrating to C++ can be done gradually, starting with C and working in new language features at your own pace.
+Because of this simple fact, _anything that can be done in C can also be done in {cpp}_.
+Existing C code can typically be re-compiled as {cpp} with about the same amount of difficulty that adopting a new C compiler entails.
+This also means that migrating to {cpp} can be done gradually, starting with C and working in new language features at your own pace.
 Although this is not the best way to reap the benefits of object-oriented design, it minimizes short-term risk and provides a basis for iterative changes.
 
 [TIP]
 ====
-Many C++ features are strictly front-end issues.
+Many {cpp} features are strictly front-end issues.
 They have no effect on the code generation
 footnote:[I agree that templates and exceptions have an impact on the generated code.
-And you have to acknowledge that you can write complex C++ programs without using such constructs.].
+And you have to acknowledge that you can write complex {cpp} programs without using such constructs.].
 The benefits conferred by these features are therefore free of cost at runtime.
 
 Default arguments to functions are an example of a cost-free front end feature.
@@ -109,25 +109,25 @@ A less obvious front end feature is _function name overloading_.
 Namespaces provide additional scopes and the same name can be used in multiple contexts.
 ====
 
-Common myths about C++
+Common myths about {cpp}
 
-- C++ is slow.
-- C++ produces bloated machine code.
-_C++ code is at least as efficient as similar C code._
-_C++ compiler inlines per default all concrete class methods._
+- {cpp} is slow.
+- {cpp} produces bloated machine code.
+_{cpp} code is at least as efficient as similar C code._
+_{cpp} compiler inlines per default all concrete class methods._
 - Objects are large.
 - Virtual functions are slow.
-- C++ is not ROMable.
+- {cpp} is not ROMable.
 - Class libraries make large binaries.
 - Abstraction leads to inefficiency.
 
 [CAUTION]
 ====
-We are aware of two factual arguments why you should not use C++ in your project.
+We are aware of two factual arguments why you should not use {cpp} in your project.
 
-. No C++ toolchain is available for your target platform.
-_ARM, x86_64 and RISC V platforms have multiple C++ toolchains_.
-. Your developers are not fluent with object-oriented approaches and the C++ language.
+. No {cpp} toolchain is available for your target platform.
+_ARM, x86_64 and RISC V platforms have multiple {cpp} toolchains_.
+. Your developers are not fluent with object-oriented approaches and the {cpp} language.
 Your organization is also not willing to invest into the training and coaching.
 
 _These are clear reasons why your development group must stay with C.

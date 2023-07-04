@@ -165,7 +165,7 @@ The owner of the receiving organization must confirm the transfer to complete th
 ====
 Developers shall update their git repository remote definition in their local repository.
 
-[source,shell]
+[source,console]
 ----
   git remote -v <1>
   git remote set-url origin-github git@github.com:repository-name.git <2>

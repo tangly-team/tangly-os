@@ -133,7 +133,7 @@ These products are too powerful and complex for smaller organizations.
 The Java community uses https://maven.apache.org/[Maven] and https://gradle.org/[Gradle] to handle artifact dependencies.
 
 The Python community has https://pip.pypa.io/en/stable/[pip3] tool.
-The C and C++ community often use https://conan.io/[Conan] and https://vcpkg.io/en/[vcpckg].
+The C and {cpp} community often use https://conan.io/[Conan] and https://vcpkg.io/en/[vcpckg].
 
 === Software Documentation
 
@@ -192,7 +192,7 @@ The Python community uses DocStrings.
 See https://peps.python.org/pep-0257/[PEP 257] for detailed information.
 Modern python developers also make use of type hitting for improved legibility.
 
-The C and C++ developers mainly write API documentation with https://www.doxygen.nl/[Doxygen].
+The C and {cpp} developers mainly write API documentation with https://www.doxygen.nl/[Doxygen].
 
 === Project Management Services
 

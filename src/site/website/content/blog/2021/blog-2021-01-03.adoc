@@ -167,7 +167,7 @@ The area where you will list the changes that you have made to the working direc
 Repository::
 Where Git permanently stores the changes you have made as different versions of the project.
 
-[source,shell]
+[source,console]
 
 ----
 git init // <1>
@@ -226,7 +226,7 @@ include 'net.tangly.commons'
 The initial build file for each module is the same as for a minimal gradle project.
 You can now compile, test and check your application.
 
-[source,shell]
+[source,console]
 ----
 gradle build // <1>
 gradle test // <2>
@@ -355,7 +355,7 @@ Once you master the basic commands, consider learning advanced commands like:
 
 Merge your branch _my-branch_ back into _trunk_
 
-[source,shell]
+[source,console]
 ----
 git commit –m "Some commit message" // <1>
 git checkout trunk // <2>
@@ -377,7 +377,7 @@ You should prefer to rebase only with local branches.
 Avoid rebasing shared branches.
 If you rebase a branch that was pulled from GitHub or GitLab, and then push it back, the server will reject it.
 
-[source,shell]
+[source,console]
 ----
 git rebase my-branch trunk
 ----
@@ -388,14 +388,14 @@ Git squash is a technique that helps you to take a series of commits and condens
 
 So let’s see how to squash the last three commits to a single commit.
 
-[source,shell]
+[source,console]
 ----
 git rebase -i HEAD~3
 ----
 
 The following content will be shown:
 
-[source,shell]
+[source,console]
 ----
 pick 474bfdc2 3rd last commit
 pick 1bffc15c 2nd last commit
@@ -404,7 +404,7 @@ pick 474bf0c2 last commit
 
 For the commits that you want to squash, replace the pick instruction with fixup, so it becomes:
 
-[source,shell]
+[source,console]
 ----
 fixup 474bfdc2 3rd last commit
 fixup 1bffc15c 2nd last commit
@@ -418,14 +418,14 @@ This is in contrast with other ways, such as _merge_ and _rebase_ which normally
 
 You can display the hashes of your commits in the _trunk_ with the command:
 
-[source,shell]
+[source,console]
 ----
 git log --oneline trunk
 ----
 
 Now you can cherry-pick the commit you are interested in and apply it into your branch.
 
-[source,shell]
+[source,console]
 ----
 git checkout my-branch
 git cherry-pick <commit-hash>

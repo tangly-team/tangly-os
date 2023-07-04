@@ -5,7 +5,7 @@ date: 2024-09-02
 tags: ["C++", "embedded"]
 ---
 
-== Embedded Applications with C++, freeRTOS, and STM32
+== Embedded Applications with {cpp}, freeRTOS, and STM32
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
@@ -50,28 +50,28 @@ For example, embedded systems in a satellite which must collect various types of
 If at some point the satellite loses control, people from the station should be able to make a diagnosis trying to reestablish the system.
 That is why flexibility is vital while designing an embedded system.
 
-=== C++ Application Development
+=== {cpp} Application Development
 
-The C++ programming language has clear advantages when developing embedded and regular software products:
+The {cpp} programming language has clear advantages when developing embedded and regular software products:
 
-- C++ is a standardized, well-known, popular language.
+- {cpp} is a standardized, well-known, popular language.
 The community is more dynamic and regularly updates the language and libraries through the ISO certification process.
 _Regular embedded developers do not like abstractions and are often not interested in software engineering practices_.
-- C++ is nearly a superset of C90 used in GCC.
-- The C subset of C++ is just as efficient as C.
-- C++ supports cleaner code in several significant cases.
+- {cpp} is nearly a superset of C90 used in GCC.
+- The C subset of {cpp} is just as efficient as C.
+- {cpp} supports cleaner code in several significant cases.
 It provides better abstractions through support of multiple paradigms.
-- C++ makes it easier to write and enforce cleaner interfaces.
+- {cpp} makes it easier to write and enforce cleaner interfaces.
 Fewer bugs are delivered with the application due to more powerful constructs and compiler checks.
-- C++ never requires uglier code.
-- C++ is not a panacea, but it is an improvement.
+- {cpp} never requires uglier code.
+- {cpp} is not a panacea, but it is an improvement.
 Projects finished sooner due to higher productivity.
-_The learning curve to C++ craftsmanship is steep_.
+_The learning curve to {cpp} craftsmanship is steep_.
 _Embedded developers have to commit to becoming software professionals_.
 
 [TIP]
 ====
-C++ has way better support for unit and integration testing.
+{cpp} has way better support for unit and integration testing.
 The libraries are easier to use and better maintained.
 
 Modern approaches like TDD and BDD can be used.
@@ -95,7 +95,7 @@ Support for interrupt routines shall also be available.
 
 [CAUTION]
 ====
-The C language and C++ language have added support for multi-threaded and synchronization primitives since version 11.
+The C language and {cpp} language have added support for multi-threaded and synchronization primitives since version 11.
 
 This standard API could become the preferred approach to develop multi-threaded and realtime application.
 The various RTOS could disappear as standalone solutions.

@@ -40,7 +40,7 @@ Embedded Concepts::
 Modern embedded solutions should be message-based communication actors.
 Do not use blocking synchronization primitives to implement multithreaded applications if you want to avoid potential deadlock, livelock and starvation problems.+
 +
-I strongly recommend using a realtime operating system and C++ as your programming language.
+I strongly recommend using a realtime operating system and {cpp} as your programming language.
 - Asynchronous distributed systems <<asynchronous-distributed-systems>>
 - Modern embedded system <<modern-embedded-systems>>
 - Logging <<logging>>
@@ -76,7 +76,7 @@ A powerful recipe to design evolvable digital products is:
 
 How should you design your application?
 
-- Modern C++ is the preferred programming language.
+- Modern {cpp} is the preferred programming language.
 The source code is object-oriented.
 - A realtime operating system _RTOS_ provides scheduling and concurrent processing.
 - The communication uses asynchronous message passing.

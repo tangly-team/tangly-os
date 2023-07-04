@@ -260,13 +260,14 @@ ROS-2 Senior Expert::
 A senior expert aware of the architecture tradeoffs of the framework and good practices must be available to guide architectural decisions.
 Expertise of object-oriented models, domain-driven design, {ref-uml} and {ref-c4} approaches are required.
 This person shall have a good grasp of the programming languages used to implement the application.
-Modern C++ and Python technology stacks are the ones used in ROS-2 framework
+Modern {cpp} and Python technology stacks are the ones used in ROS-2 framework
 cite:[tour-of-cpp,beautiful-cpp,effective-modern-cpp,cpp-core-guidelines]
 footnote:[Java is partially supported. https://github.com/lambdaprime/jrosclient[Client libraries] to access communication functions are available.].
 Being in an architecture role, he needs an agile software architecture training and a reasonable understanding of domain-driven design method.
-Favor C++::
-C++ provides tremendously better performance for heavy lifting algorithms.
-Static typed code is often easier to maintain. Prefer modern C++ such as C++ 23.
+Favor {cpp}::
+{cpp} provides tremendously better performance for heavy lifting algorithms.
+Static typed code is often easier to maintain.
+Prefer modern {cpp} such as {cpp} 23.
 Errors are often caught at compile time. +
 +
 You are not constrained by performance or maintainability requirements, feel free to use Python.

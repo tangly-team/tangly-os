@@ -21,7 +21,7 @@ Almost all the most popular languages have added support to functional concepts 
 Java introduced lambda expressions and single abstract method interfaces _SAM_ with Java 8 in March 2014.
 Java developers are empowered to write functional code for almost ten years.
 
-Other languages such as Python, C++ or C# added their own functional extensions in newer revisions.
+Other languages such as Python, {cpp} or C# added their own functional extensions in newer revisions.
 
 https://en.wikipedia.org/wiki/Lisp_(programming_language)[Lisp] dialects fully supported functional paradigms since the sixties of the last century.
 

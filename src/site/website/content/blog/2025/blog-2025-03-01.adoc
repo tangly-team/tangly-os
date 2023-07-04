@@ -92,7 +92,7 @@ These logs allow us to examine variable values as well as complete error stacks.
 
 Apache Foundation log4j2 <<log4j2-logging>> defines a modern logging library based on the learnings of https://logging.apache.org/[log4j1.x] and https://www.slf4j.org/[slf4j].
 
-==== C++ Library gogl
+==== {cpp} Library gogl
 
 Google Log _glog_ <<google-logging>> defines a series of macros that simplify many common logging tasks.
 
@@ -105,10 +105,10 @@ Google Log _glog_ <<google-logging>> defines a series of macros that simplify ma
 
 [TIP]
 ====
-As a C++ developer, you should consider the logging framework of the https://www.boost.org/[Boost] library.
+As a {cpp} developer, you should consider the logging framework of the https://www.boost.org/[Boost] library.
 
 The boost library is the tremendeous advantage to have an active community and a huge user community.
-The Boost organization and wider Boost community supports research and education into the best possible uses of C++ and libraries developed for it, particularly, but not exclusively those contained in the Boost Library.
+The Boost organization and wider Boost community supports research and education into the best possible uses of {cpp} and libraries developed for it, particularly, but not exclusively those contained in the Boost Library.
 ====
 
 ==== ROS-2 Logging

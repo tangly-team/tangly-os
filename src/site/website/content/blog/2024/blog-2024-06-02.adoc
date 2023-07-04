@@ -1,11 +1,11 @@
 ---
-title: "Actors in C++"
+title: "Actors in Cpp"
 linkTitle: "Cpp Actors"
 date: 2024-06-02
-tags: [cpp", "architecture"]
+tags: ["C++", "architecture"]
 ---
 
-== Actors in C++
+== Actors in {cpp}
 :author: Marcel Baumann
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
@@ -61,6 +61,10 @@ An actor has exactly one message queue representing its mailbox.
 It is the sole owner of the message queue and will process all messages stored in the queue.
 
 No other actor has access to the private message queue of a specific message queue.
+The actor is the sole owner of all messages stored in its mailbox.
+
+_The action of sending a message from one actor to another implies the transfer of ownership of this message_.
+_We strongly suggest implementing messages as immutable value objects_.
 ====
 
 The message abstraction structure is
@@ -72,11 +76,11 @@ The message abstraction structure is
     public:
         Message(int kind, T data) : _kind{kind}, _data(data) {}
 
-        inline int kind() const noexcept { return _kind; };                 <1>
+        inline int kind() const noexcept { return _kind; };                    <1>
 
         inline void kind(int kind) { _kind = kind; }
 
-        inline T data() const noexcept { return _data; }                    <2>
+        inline T data() const noexcept { return _data; }                       <2>
 
         inline void data(T data) { _data = data; }
     private:
@@ -86,6 +90,8 @@ The message abstraction structure is
 ----
 
 <1> The field can be used to identify the type of the payload.
+If you use variants, either put the variant index or define constants for the various payload types.
+The kind field is when more a legacy field because variants provide build-in check mechanisms.
 <2> The payload of the message.
 
 Each application will define the payload for the messages sent between actors.
@@ -93,24 +99,25 @@ We recommend defining an overall message type for all messages defined in the ap
 
 [source,cpp]
 ----
-struct PayloadOne {};                                                                    <1>
+struct PayloadOne {};                                                          <1>
 struct PayloadTwo {};
-struct PayloadThree {};
 
-struct Data;                                                                             <2>
 
-typedef std::variant<PayLoadOne, PayLoaTwo, PayLoadThree, TimerCmd<Data>> Variants;      <3>
+struct Data;                                                                   <2>
 
-struct Data {                                                                            <4>
+typedef std::variant<PayLoadOne, PayLoaTwo, Timer<Data>,
+                        TimerCmd<Data>> Variants;                              <3>
+
+struct Data {                                                                  <4>
     Variants data;
 };
 
-Message<Data> build(PayLoadOne data) {                                                   <5>
+Message<Data> build(PayLoadOne data) {                                         <5>
     Data dataVariant{data};
     return {(int) (dataVariant.data.index()), {data}};
 }
 
-Message<Data>* build(PayLoadOne data) {                                                  <6>
+Message<Data>* build(PayLoadOne& data) {                                       <6>
     Data dataVariant{data};
     Message<Data>* msg = msgPool.acquire();
     msg->_kind = dataVariant.data.index();
@@ -131,10 +138,10 @@ Message<Data>* build(PayLoadOne data) {                                         
 The above approach works without trouble if all fields are https://en.cppreference.com/w/cpp/named_req/Destructible[destructible].
 
 The more delicate problem is dependent on how the underlying realtime implementation to transfer messages is realized.
-If the layer uses the C++ standard library constructs, you are safe.
+If the layer uses the {cpp} standard library constructs, you are safe.
 You are also safe if all the fields on your payloads are trivially destructible.
 
-If the layer uses a C approach with raw byte copying of messages, you must care about RAII and destructor calls when the message object leaves its C++ scope.
+If the layer uses a C approach with raw byte copying of messages, you must care about RAII and destructor calls when the message object leaves its {cpp} scope.
 In this case, you must use a message allocator with explicit acquire and release operations to circumvent automatic object destruction.
 
 A reference implementation is provided with the _vinci_ library.
@@ -211,11 +218,11 @@ This design approach improves the maintainability of the application cite:[moder
 Message objects should not be allocated on the heap.
 
 If your RTOS is C based, avoid using classes allocating memory from the heap.
-Beware that C++ standard library strings use the heap.
+Beware that {cpp} standard library strings use the heap.
 You have also to be cautious of the scoping of your message declaration to avoid destruction of the objects when leaving the declaration scope.
 
 The library provides a static message pool to avoid heap usage and RAII problems when leaving a declaration scope.
-Additional advantage is the tracking of maximum number of simultaneously used messages in development mode.
+The tracking of the maximum number of simultaneously used messages in development mode is an additional advantage.
 
 [source,cpp]
 ----
@@ -244,8 +251,11 @@ Additional advantage is the tracking of maximum number of simultaneously used me
 
 === Lessons Learnt
 
-The concepts implemented in the library are available for C and C++ based embedded applications.
-The presented version is the object-oriented C++ based variant.
+The concepts implemented in the library are available for C and {cpp} based embedded applications.
+The presented version is the object-oriented {cpp} based variant.
+
+We use char arrays and _std::array_ instead of _std::string_ and _vector_ to eliminate dynamic memory allocation in the library.
+This approach has advantages for memory-constrained microcontrollers.
 
 [TIP]
 ====
@@ -265,7 +275,9 @@ Therefore, no allocation of messages on the heap is performed.
 The implementation of the library uses solely primitive types and avoid heap usage.
 ====
 
-Overall, we do not see any reason not to use C++ language.
+Overall, we do not see any reason not to use the {cpp} language for realtime embedded applications.
+We acknowledge the language has an initial steep learning curve.
+The advantage is more static checks from the compiler and better libraries.
 
 [bibliography]
 === Links

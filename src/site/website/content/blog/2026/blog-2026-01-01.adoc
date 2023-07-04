@@ -1,0 +1,14 @@
+---
+title: "The Quest for an Agile Company: Ten Years tangly llc"
+linkTitle: "10 Years tangly"
+date: 2025-01-05
+tags: ["agile", "tangly", "organization"]
+---
+
+== The Quest for an Agile Company: Ten Years tangly llc
+:author: Marcel Baumann
+:email: <marcel.baumann@tangly.net>
+:homepage: https://www.tangly.net/
+:company: https://www.tangly.net/[tangly llc]
+
+image::2026-01-01-head.jpg[width=420,height=360,role=left]

@@ -56,7 +56,7 @@ These documents are also https://en.wikipedia.org/wiki/Technischer_%C3%9Cberwach
 * Link your version control system with your continuous server, issue tracking application and unit tests.
 So you can generate release notes stating the list of closed issues with the associated source code and unit tests verifying the correctness of the change.
 
-Similar tools are available in Python .NET, or C++ communities.
+Similar tools are available in Python .NET, or {cpp} communities.
 
 You can easily satisfy your QA and regulatory stakeholders with a lot of reports nobody will ever read.
 A real {ref-scrum} team corrects weaknesses during the development process and always deliver software of the highest quality.
