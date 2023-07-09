@@ -86,7 +86,7 @@ public class BoundedDomainSimpleEntitiesUi implements BoundedDomainUi {
 
         public static class EntityOneForm extends EntityForm<BoundedDomainSimpleEntities.SimpleEntityOne, EntityOneView> {
             public EntityOneForm(@NotNull EntityOneView parent) {
-                super(parent);
+                super(parent, BoundedDomainSimpleEntities.SimpleEntityOne.class);
                 init();
             }
 
@@ -108,7 +108,7 @@ public class BoundedDomainSimpleEntitiesUi implements BoundedDomainUi {
 
         public static class EntityTwoForm extends EntityForm<BoundedDomainSimpleEntities.simpleEntityTwo, EntityTwoView> {
             public EntityTwoForm(@NotNull EntityTwoView parent) {
-                super(parent);
+                super(parent, BoundedDomainSimpleEntities.simpleEntityTwo.class);
                 init();
             }
 

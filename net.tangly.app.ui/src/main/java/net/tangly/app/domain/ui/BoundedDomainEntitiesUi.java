@@ -79,7 +79,7 @@ public class BoundedDomainEntitiesUi implements BoundedDomainUi {
 
         public static class EntityThreeForm extends EntityForm<BoundedDomainEntities.EntityThree, EntityThreeView> {
             public EntityThreeForm(@NotNull EntityThreeView parent) {
-                super(parent);
+                super(parent, BoundedDomainEntities.EntityThree.class);
                 init();
             }
 
@@ -107,7 +107,7 @@ public class BoundedDomainEntitiesUi implements BoundedDomainUi {
             private One2OneField<BoundedDomainEntities.EntityThree> one2oneField;
 
             public EntityFourForm(@NotNull EntityFourView parent) {
-                super(parent);
+                super(parent, BoundedDomainEntities.EntityFour.class);
                 init();
             }
 
