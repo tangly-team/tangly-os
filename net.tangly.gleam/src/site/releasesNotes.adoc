@@ -10,7 +10,7 @@ weight: 20
 This document provides a high-level view of the changes introduced in the Gleam library by release.
 For a detailed view of what has changed, refer to the https://bitbucket.org/tangly-team/tangly-os[repository] commits.
 
-=== 0.2.7 (2023-06-30)
+=== 0.2.7 (2023-09-30)
 
 * Update of library dependencies, update to JDK-20, and modern Gradle approach to build solutions
 

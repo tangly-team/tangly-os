@@ -80,7 +80,7 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
     }
 
     public static <T, U extends Enum<U>> TsvProperty<T, U> ofEnum(@NotNull Class<U> clazz, @NotNull String column, Function<T, U> getter, BiConsumer<T, U> setter) {
-        return of(column, getter, setter, v -> Enum.valueOf(clazz, v.toLowerCase()), U::name);
+        return of(column, getter, setter, v -> valueOf(clazz, v.toLowerCase()), U::name);
     }
 
     /**
@@ -120,6 +120,19 @@ public record TsvProperty<T, U>(List<String> columns, Function<T, U> getter, BiC
     public static <T, U> TsvProperty<T, U> of(@NotNull List<String> columns, Function<T, U> getter, BiConsumer<T, U> setter, @NotNull Function<CSVRecord, U> extractor,
                                               @NotNull BiConsumer<U, CSVPrinter> writer) {
         return new TsvProperty<>(columns, getter, setter, extractor, writer);
+    }
+
+    /**
+     * Return the enumeration value of the name if not null otherwise null.
+     *
+     * @param enumClass the Class object of the enum class from which to return a constant.
+     * @param name      the name of the constant to return
+     * @param <T>       The enum class whose constant is to be returned
+     * @return the enum constant of the specified enum class with the specified name
+     * @see Enum#valueOf(Class, String)
+     */
+    public static <T extends Enum<T>> T valueOf(@NotNull Class<T> enumClass, String name) {
+        return Strings.isNullOrBlank(name) ? null : Enum.valueOf(enumClass, name);
     }
 
     /**
