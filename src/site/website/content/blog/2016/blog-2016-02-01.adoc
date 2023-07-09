@@ -62,7 +62,7 @@ The stakeholders decide how often the solution is deployed into production.
 Agile methods, such as {ref-scrum}, {ref-xp}, or {ref-less}, are fun for all developers.
 Suddenly, everyone can see your code, so at the beginning you as a developer must cope with different views how good code should be written.
 Suddenly, you must master Test Driven Development TDD, mocking, unit test, legible documents.
-But, once you have it, you start to experience the "flow" and enjoy the atmosphere and to deliver at the end of each sprint a new software artifact.
+But once you have it, you start to experience the "flow" and enjoy the atmosphere and to deliver at the end of each sprint a new software artifact.
 
 You realize later that Scrum says the team is responsible.
 You must acknowledge that product success is also your success.

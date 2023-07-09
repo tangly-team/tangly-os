@@ -86,9 +86,9 @@ It is common for a coach to take on the Scrum Master role.
 ** Empower the team to turn into the best of breed.
 Technical coaching::
 The coach works with (or on) a team on their actual codebase in order to improve technical practices and adopt agile development techniques such as simple design, refactoring, unit testing, test-driven development and acceptance test-driven development.
-** Discovering “code/design smells”.
+** Discovering _code/design smells_.
 Places where code/design could be improved.
-** Explaining modern, “clean” code that is simple and easier to change and maintain.
+** Explaining modern, _clean_ code that is simple and easier to change and maintain.
 ** Refactoring “smells” into clean code.
 ** Test-driven development and test automation.
 ** Continuous integration and continuous delivery.

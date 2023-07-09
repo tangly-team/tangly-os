@@ -65,7 +65,8 @@ The certification path has three levels:
 Certified Scrum Master::
 Introduction course for those who are closest to the _organization_ of the project. +
 _It is usually two days of training.
-The https://www.scrum.org[Scrum.org] allows taking the certification examination without attending a course._
+The https://www.scrum.org[Scrum.org] allows taking the certification examination without attending a course_
+footnote:[The examination is only available in English.].
 Certified Advanced Scrum Master::
 Advanced course for Scrum Masters who already have one year of experience on a Scrum team. +
 _It is at least two days training.
@@ -95,7 +96,7 @@ https://scrumguides.org/scrum-guide.html#sprint-review[Sprint Review], and https
 .. describe why the Sprint Goal does not change during a https://scrumguides.org/scrum-guide.html#the-sprint[Sprint].
 .. define the outcome of every Sprint.
 .. discuss at least three reasons why the increment must be brought to the current definition of _Done_ regardless of whether the Product Owner chooses to release the increment.
-.. discuss the focus of the activities of the Product Owner and Development Team during the two topics of Sprint Planning: the _What_ and the _How_.
+.. discuss the focus of the activities for the Product Owner and Development Team during the two topics of Sprint Planning: the _What_ and the _How_.
 .. practice writing a Sprint Goal.
 .. discuss at least three ways the Daily Scrum differs from a status meeting and why the various constraints exist to support the Development Team.
 .. describe at least three activities that occur during the Sprint Review other than a demonstration of the
@@ -106,7 +107,7 @@ https://scrumguides.org/scrum-guide.html#increment[increment].
 .. list at least four attributes of a https://scrumguides.org/scrum-guide.html#product-backlog[Product Backlog] item.
 .. identify at least three essential characteristics of the https://scrumguides.org/scrum-guide.html#sprint-backlog[Sprint Backlog].
 .. demonstrate how the Sprint Backlog can be changed without endangering the Sprint Goal.
-.. explain the importance of a strong definition of _Done_ and describe at least two risks associated with a weaker definition of _Done_.
+.. explain the importance of a strong definition for _Done_ and describe at least two risks associated with a weaker definition of _Done_.
 .. outline at least one way to create a definition of _Done_.
 .. identify at least two reasons why multiple teams working on the same https://scrumguides.org/scrum-guide.html#product-backlog[Product Backlog] have a shared and consistent definition of _Done_.
 . _Scrum Master Core Competencies_

@@ -12,6 +12,7 @@ tags: ["C++", "architecture"]
 :company: https://www.tangly.net/[tangly llc]
 :ref-actor-model: https://en.wikipedia.org/wiki/Actor_model[Actor Model]
 :ref-message-passing: https://en.wikipedia.org/wiki/Message_passing[Message Passing]
+:ref-raii: https://en.cppreference.com/w/cpp/language/raii[RAII]
 
 image::2024-06-02-head.svg[width=420,height=360,role=left]
 
@@ -63,7 +64,7 @@ It is the sole owner of the message queue and will process all messages stored i
 No other actor has access to the private message queue of a specific message queue.
 The actor is the sole owner of all messages stored in its mailbox.
 
-_The action of sending a message from one actor to another implies the transfer of ownership of this message_.
+_The action of sending a message from one actor to another implies the transfer of ownership for this message_.
 _We strongly suggest implementing messages as immutable value objects_.
 ====
 
@@ -141,7 +142,7 @@ The more delicate problem is dependent on how the underlying realtime implementa
 If the layer uses the {cpp} standard library constructs, you are safe.
 You are also safe if all the fields on your payloads are trivially destructible.
 
-If the layer uses a C approach with raw byte copying of messages, you must care about RAII and destructor calls when the message object leaves its {cpp} scope.
+If the layer uses a C approach with raw byte copying of messages, you must care about {ref-raii} and destructor calls when the message object leaves its {cpp} scope.
 In this case, you must use a message allocator with explicit acquire and release operations to circumvent automatic object destruction.
 
 A reference implementation is provided with the _vinci_ library.
@@ -221,8 +222,8 @@ If your RTOS is C based, avoid using classes allocating memory from the heap.
 Beware that {cpp} standard library strings use the heap.
 You have also to be cautious of the scoping of your message declaration to avoid destruction of the objects when leaving the declaration scope.
 
-The library provides a static message pool to avoid heap usage and RAII problems when leaving a declaration scope.
-The tracking of the maximum number of simultaneously used messages in development mode is an additional advantage.
+The library provides a static message pool to avoid heap usage and {ref-raii} problems when leaving a declaration scope.
+The tracking of the maximum number for simultaneously used messages in development mode is an additional advantage.
 
 [source,cpp]
 ----
@@ -259,7 +260,7 @@ This approach has advantages for memory-constrained microcontrollers.
 
 [TIP]
 ====
-The simplest approach to implement an actor based embedded realtime system is:
+The simplest approach to implement an actor-based embedded realtime system is:
 
 - Use the above-described abstractions.
 - Define all the actors of your system as static variables.
@@ -272,7 +273,7 @@ The priority has only an influence on how fast a message will be processed but h
 Therefore, no allocation of messages on the heap is performed.
 - Interrupt routines can process the data and send a message to an actor with _static void send(Actor<T>& actor, Message<T>* msg)_ call-
 
-The implementation of the library uses solely primitive types and avoid heap usage.
+The implementation of the library uses solely primitive types and avoids heap usage.
 ====
 
 Overall, we do not see any reason not to use the {cpp} language for realtime embedded applications.

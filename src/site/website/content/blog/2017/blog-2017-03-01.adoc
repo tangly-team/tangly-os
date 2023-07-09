@@ -20,10 +20,11 @@ Below, a selection of books I read and found fascinating.
 The selection is certainly not exhaustive.
 The criteria are
 
-* I read the book and learnt something
+* I read the book and learnt something.
 * I have bought this book to have it as a reference.
-I mean a real reference opened at least monthly
-* The book is available as ebook – I only read ebooks and save trees -
+I mean a real reference opened at least monthly.
+* The book is available as an ebook.
+I only read ebooks and save trees.
 
 === Software Engineering
 

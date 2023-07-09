@@ -70,13 +70,13 @@ Actor <|-- ActorCmsis
 
 MessagePool <|-- MessagePoolCmsis
 
-TimerMgr <|-- TimerMgrCmsis
-ActorCmsis <|-- TimerMgrCmsis
+TimerMgr <|-- TimerMgrSal
+ActorCmsis <|-- TimerMgrSal
 
 @enduml
 ....
 
-=== How To
+=== Recipes
 
 ==== Define Message Structure
 
@@ -84,18 +84,18 @@ We advocate the following message structure:
 
 [source,cpp]
 ----
-struct Data;                                                                  <1>
+struct Data;                                                                   <1>
 
-struct ActorData {                                                            <2>
+struct ActorData {                                                             <2>
     int msgId;
 };
 
-typedef std::variant<ActorData, TimerCmd<Data>, Timer<Data>> Variants;        <3>
+typedef std::variant<ActorData, TimerCmd<Data>, Timer<Data>> Variants;         <3>
 
-struct Data {                                                                 <4>
+struct Data {                                                                  <4>
     Variants variants;
 
-    TimerCmd<Data>* timerCmd() {                                              <5>
+    TimerCmd<Data>* timerCmd() {                                               <5>
         return std::get_if<TimerCmd<Data>>(&variants);
     }
 
@@ -122,7 +122,7 @@ This approach is necessary to satisfy the {cpp} compiler.
 
 ==== Define Your Actors
 
-[code,cpp]
+[source,cpp]
 ----
 MyActorCmsis::MyActorCmsis(const char* name, int queueSize,
                             MessagePool<Data>& pool)

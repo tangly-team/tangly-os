@@ -53,7 +53,7 @@ ____
 The Scrum Master serves the Product Owner in several ways, including:
 
 * _Finding_ techniques for effective Product Backlog management.
-* _Clearly, communicating vision_, goals, and Product Backlog items to the Development Team;.
+* _Clearly, communicating vision_, goals, and Product Backlog items to the Development Team.
 * Teaching the Development Team to create clear and concise Product Backlog items.
 * _Understanding long-term product planning_ in an empirical environment.
 * Understanding and practicing agility.
@@ -68,7 +68,7 @@ During product development, empirical evidence will trigger revision of the mile
 
 [quote]
 ____
-When the Product Backlog item or an Increment is described as “Done”, everyone must understand what “Done” means.
+When the Product Backlog item or an Increment is described as _Done_, everyone must understand what “Done” means.
 Although this varies significantly per Scrum Team, members must have a shared understanding of what it means for work to be complete, to ensure transparency.
 This is the _Definition of Done_ for the Scrum Team and is used to assess when work is complete on the product Increment.
 
@@ -79,7 +79,7 @@ Each Increment is additive to all prior Increments and thoroughly tested, ensuri
 As Scrum Teams mature, it is expected that their _Definition of Done_ will expand to include more stringent criteria for higher quality.
 
 The Increment is the sum of all the Product Backlog items completed during a Sprint and all previous Sprints.
-At the end of a Sprint, the new Increment must be ““Done””, which means it must be in usable condition and meet the Scrum Team’s Definition of “Done”.
+At the end of a Sprint, the new Increment must be ““Done””, which means it must be in usable condition and meet the Scrum Team’s _Definition of Done_.
 
 _It must be in usable condition regardless of whether the Product Owner decides to actually release it._
 ____

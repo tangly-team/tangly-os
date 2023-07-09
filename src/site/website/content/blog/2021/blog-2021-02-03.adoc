@@ -20,7 +20,7 @@ We share documents and results through digital platforms.
 
 I truly hope we continue to work online in the future.
 I would like to mix home office, local coworking space, and regular office attendance.
-I am convinced less commute time, and a greener approach to work are certainly great improvements.
+I am convinced less commute time and a greener approach to work are certainly great improvements.
 
 I would also state an obvious fact.
 My infrastructure at home is better.
@@ -98,7 +98,7 @@ The Amazon meeting rules are:
 Start with silence::
 We read those memos, silently, during the meeting.
 It is like a study hall.
-Everybody sits around the table, and we read silently, for usually about half an hour, however long it takes us to read the document.
+Everybody sits around the table, and we read silently, for usually about half an hour, or however long it takes us to read the document.
 And then we discuss it.
 No PowerPoint presentation::
 No PowerPoints are used inside Amazon.

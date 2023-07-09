@@ -25,6 +25,7 @@ The location was ideal for all collaborators.
 The people were friendly.
 
 We found out we were often at customer locations and had few opportunities to discuss company business in the coworking space.
+
 The other attendees were working in different industries.
 We had seldom common interests, and regularly we helped them solve their computer problems.
 
@@ -47,9 +48,11 @@ The decision is based on the project needs and your preferences.
 This flexibility requires high-quality notebooks.
 As a developer, I need a fast machine with a high-quality display.
 I also like to have my own keyboard and mouse when I connect to external displays.
-A programer is more efficient with a US english keyboard and an ergonomic mouse.
+A programmer is more efficient with a US english keyboard and an ergonomic mouse.
 
-As a digital nomad, I have my whole office in one traveling bag.
+As a digital nomad, I have my whole office in one traveling bag
+footnote:[I am a fan of the traveller bags of timbuk2.
+I owned their bags for the last twenty-five years and was always satisified with the quality and look.].
 
 === Nurture a Company Blog
 
@@ -57,13 +60,22 @@ The {ref-uri-blog} exists since the inception of the company.
 We published steadily at least one article every month.
 The main themes are agile approaches, technical fluency, and coaching experience.
 
+image::2024-02-02-blogging.jpg[width=420,height=360,role=left]
+
+We had the privilege to work on more than twenty product developments since the inception of the company.
+
+The experiences and insights gained through the interactions with our customers often provided the material for articles.
+
 The blog is a showcase hinting the capabilities, experiences and interests of our collaborators.
+
 Interested parties read articles and can decide if our ideas match the needs and expectations they have.
 
 We are very satisfied with the technological stack used to create and maintain the company documentation site and blog
 <<creating-website>> <<support-comments>> <<improving-website>>.
+
 The {ref-docsy} template had a major version upgrade last year.
-The migration was painless und performed in less than a hour.
+The migration was painless und performed in less than an hour.
+
 The community is supportive and professional.
 
 [bibliography]
@@ -81,7 +93,7 @@ Marcel Baumann. 2019.
 Marcel Baumann. 2022.
 - [[[founding-tangly, 6]]] link:../../2016/found-a-limited-liability-company-in-switzerland/[Founding tangly llc]
 Marcel Baumann. 2016.
-- [[[creating-website, 7]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technichal Website with Hugo and AsciiDoc]
+- [[[creating-website, 7]]] link:../../2020/creating-a-technical-website-with-hugo-and-asciidoc/[Creating a Technical Website with Hugo and AsciiDoc]
 Marcel Baumann. 2020.
 - [[[support-comments, 8]]] link:../../2020/support-comments-for-static-hugo-website/[Support Comments for Static Hugo Website]
 Marcel Baumann. 2020.

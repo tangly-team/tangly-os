@@ -20,7 +20,8 @@ There are a number of ways in which Agile Scrum projects repeatedly fail which a
 
 Agile approaches and Scrum framework can reduce risks in projects and increase the return on investment.
 https://www.infoq.com/articles/standish-chaos-2015[Standish Group report] is a proof of this statement.
-One picture shows it all – look at the failed column -
+One picture shows it all.
+Look at the failed column.
 
 image::2017-06-01-agile-vs-waterfall.jpg[role=center]
 
