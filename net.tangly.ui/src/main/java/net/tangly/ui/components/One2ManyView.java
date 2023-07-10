@@ -24,24 +24,41 @@ import net.tangly.core.Entity;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+import java.util.function.Function;
+
 /**
- * Defines a view for a list of referenced entities displayed in a grid. The details of the selected referenced entity can be shown. The following actions are
- * supported:
+ * Defines a view for a list of referenced entities displayed in a grid. The details of the selected referenced entity can be shown. The following actions are supported:
  * <ul>
- *     <li>View the list of one2many entities. The columns of the grid can be tailored through the gridConfigurator parameter. The default configuration
- *     displays the object identifier, external identifier and name.</li>
+ *     <li>View the list of one2many entities. The columns of the grid can be tailored through the gridConfigurator parameter.
+ *     The default configuration displays the object identifier, external identifier, name, from date, and to date.</li>
  *     <li>View the details of the selected entity and close the view. </li>
- *     <li>Delete the selected entity. The operation is not reversible.</li>
+ *     <li>Delete the selected reference. The operation is not reversible.</li>
  *     <li>Add a new reference to the list. A selection grid is opened to select the entity to add.</li>
  * </ul>
  * <p> All the above operations are delegated to the view responsible to display the items of the one2many relation.</p>
+ * <h2>Implementation</h2>
+ * <p>The first view displays the existing relations between the owning entities and the owned objects.</p>
+ * <p>The second view displays all the instances of the owned type.
+ * Two scenarios exist. First, objects can be added to the selected ones. Second, objects can be removed from the selected ones.
+ * Upon confirmation, the selected objects are either added or removed.</p>
+ * <p>The logic is:</p>
+ * <dl>
+ *     <dt>Items to remvoe</dt><dd>itemsToRemove.addAll(originalList).removeAll(newList)</dd>
+ *     <dt>Items to add</dt><dd>itemsToAdd.addAll(newList).removeAll(originalList)</dd>
+ * </dl>
  *
- * @param <T> type of the entities referenced in the one to many relations
+ * @param <O> type of the owning entity
+ * @param <T> type of the entities referenced in the one-to-many relations
  */
-public class One2ManyView<T extends Entity> extends VerticalLayout {
+public class One2ManyView<O extends Entity, T extends Entity> extends VerticalLayout {
     private final Provider<T> provider;
     private final One2OneField.RelationView<T> view;
     private final Button update;
+
+    public One2ManyView(@NotNull String relation, @NotNull Provider<T> provider, Function<O, List<T>> items, Function<O, T> add, Function<O, T> remove) {
+        this(relation, provider);
+    }
 
     public One2ManyView(@NotNull String relation, @NotNull Provider<T> provider) {
         this.provider = provider;

@@ -212,9 +212,9 @@ public class TagsView extends ItemView<Tag> implements BindableComponent.HasBind
         if (filter() instanceof TagFilter filter) {
             grid().getHeaderRows().clear();
             HeaderRow headerRow = grid().appendHeaderRow();
-            addFilterText(headerRow, NAMESPACE, NAMESPACE_LABEL, filter::namespace);
-            addFilterText(headerRow, NAME, NAMESPACE_LABEL, filter::name);
-            addFilterText(headerRow, VALUE, Value_LABEL, filter::value);
+            addFilterText(headerRow, NAMESPACE, filter::namespace);
+            addFilterText(headerRow, NAME, filter::name);
+            addFilterText(headerRow, VALUE, filter::value);
         }
         buildMenu();
     }

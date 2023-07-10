@@ -170,8 +170,8 @@ public class CommentsView extends ItemView<Comment> implements BindableComponent
         if (filter() instanceof CommentFilter filter) {
             grid().getHeaderRows().clear();
             HeaderRow headerRow = grid().appendHeaderRow();
-            addFilterText(headerRow, AUTHOR, AUTHOR_LABEL, filter::author);
-            addFilterText(headerRow, TEXT, TEXT_LABEL, filter::text);
+            addFilterText(headerRow, AUTHOR, filter::author);
+            addFilterText(headerRow, TEXT, filter::text);
         }
         buildMenu();
     }

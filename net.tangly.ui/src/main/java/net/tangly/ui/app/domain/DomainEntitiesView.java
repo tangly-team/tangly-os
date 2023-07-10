@@ -62,7 +62,7 @@ public class DomainEntitiesView extends ItemView<DomainEntity> {
         grid().getHeaderRows().clear();
         HeaderRow headerRow = grid().appendHeaderRow();
         if (filter() instanceof DomainEntitiesFilter filter) {
-            addFilterText(headerRow, "name", "Name", filter::name);
+            addFilterText(headerRow, "name", filter::name);
         }
     }
 }

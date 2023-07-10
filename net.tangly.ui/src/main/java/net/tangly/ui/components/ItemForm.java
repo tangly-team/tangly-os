@@ -14,8 +14,10 @@
 package net.tangly.ui.components;
 
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
@@ -23,6 +25,8 @@ import com.vaadin.flow.component.tabs.TabSheet;
 import com.vaadin.flow.component.tabs.TabSheetVariant;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
+import net.tangly.core.codes.Code;
+import net.tangly.core.codes.CodeType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -51,6 +55,12 @@ import java.util.Objects;
  *     <dt>EDIT, CREATE, DUPLICATE</dt><dd>shall be translated to EDIT.</dd>
  * </dl>
  *
+ * <h2>Buttons</h2>
+ * <dl>
+ *     <dt>Cancel</dt><dd>The cancel button cancels the operation without any changes. The button shortcut is <i>ESC</i>.</dd>
+ *     <dt>Action</dt><dd>The action button executes the operation. The label is dependant on the operation. The button shortcut is <>i>ENTER</>.</dd>
+ * </dl>
+ *
  * @param <T> Type of the entity manipulated in the form
  */
 public abstract class ItemForm<T, U extends ItemView<T>> {
@@ -68,6 +78,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
     protected ItemForm(@NotNull U parent) {
         this.parent = parent;
         binder = new Binder<>(parent.entityClass());
+        mode = ItemView.Mode.VIEW;
 
         formLayout = new VerticalLayout();
         tabSheet = new TabSheet();
@@ -76,6 +87,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
 
         cancel = new Button("Cancel");
         cancel.addClickListener(event -> cancel());
+        cancel.addClickShortcut(Key.ESCAPE);
         action = new Button();
         action.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         action.addClickListener(event -> {
@@ -86,6 +98,15 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
             }
         });
         form().add(tabSheet, createButtonBar());
+    }
+
+    public static <T extends Code> ComboBox<T> createCodeField(@NotNull CodeType<T> codeType, @NotNull String label) {
+        ComboBox<T> codeField = new ComboBox<>(label);
+        codeField.setItemLabelGenerator(o -> (Objects.isNull(o) ? "" : o.code()));
+        codeField.setItems(codeType.codes());
+        codeField.setPlaceholder("select item");
+        codeField.setOpened(false);
+        return codeField;
     }
 
     /**

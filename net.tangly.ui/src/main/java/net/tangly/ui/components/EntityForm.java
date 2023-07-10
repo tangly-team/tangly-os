@@ -77,15 +77,14 @@ public abstract class EntityForm<T extends HasOid & HasId & HasName & HasTimeInt
     }
 
     protected EntityField<T> entity;
+    protected final Class<T> entityClass;
     protected final Optional<HasTagsAndComments<?>> hasTagsAndComments;
 
-    public EntityForm(@NotNull V parent) {
-        this(parent, true);
-    }
-
-    public EntityForm(@NotNull V parent, boolean hasTagsAndComments) {
+    public EntityForm(@NotNull V parent, Class<T> entityClass) {
         super(parent);
-        this.hasTagsAndComments = Optional.ofNullable(hasTagsAndComments ? new HasTagsAndComments<>() : null);
+        this.entityClass = entityClass;
+        hasTagsAndComments =
+            Optional.ofNullable((HasComments.class.isAssignableFrom(entityClass) && (HasTags.class.isAssignableFrom(entityClass)) ? new HasTagsAndComments<>() : null));
     }
 
     @Override

@@ -53,8 +53,8 @@ public class TagTypesView extends ItemView<TagType> {
         if (filter() instanceof TagTypeFilter filter) {
             grid().getHeaderRows().clear();
             HeaderRow headerRow = grid().appendHeaderRow();
-            addFilterText(headerRow, NAMESPACE, NAMESPACE_LABEL, filter::namespace);
-            addFilterText(headerRow, NAME, NAME_LABEL, filter::name);
+            addFilterText(headerRow, NAMESPACE, filter::namespace);
+            addFilterText(headerRow, NAME, filter::name);
         }
 
         // TODO addMenuSection(List.of(Map.entry("Count Tags", e -> update(domain.countTags(new HashMap<>())))));

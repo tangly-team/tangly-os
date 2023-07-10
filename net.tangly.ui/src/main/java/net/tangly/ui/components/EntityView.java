@@ -25,12 +25,9 @@ import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
-import java.time.LocalDate;
-import java.util.function.Consumer;
-
 /**
  * The CRUD view for a domain entity. A domain entity has an internal object identifier, external identifier, a name, a temporal validity range and a text. An entity can have
- * optional tags and comments.
+ * optional tags and comments. These tags and comments are displayed in separate views.
  *
  * @param <T> entity to display
  */
@@ -67,7 +64,7 @@ public abstract class EntityView<T extends HasOid & HasId & HasName & HasTimeInt
     @Override
     protected void init() {
         addEntityColumns(grid());
-        addEntityFilters(grid(), new EntityFilter<>());
+        addEntityFilterFields(grid(), filter());
         buildMenu();
     }
 
@@ -82,26 +79,15 @@ public abstract class EntityView<T extends HasOid & HasId & HasName & HasTimeInt
         grid.addColumn(HasText::text).setKey(TEXT).setHeader(TEXT_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("30em");
     }
 
-    protected void addEntityFilters(@NotNull Grid<T> grid, @NotNull EntityFilter<T> filter) {
+    protected void addEntityFilterFields(@NotNull Grid<T> grid, @NotNull EntityFilter<T> filter) {
         grid.getHeaderRows().clear();
         HeaderRow headerRow = grid.appendHeaderRow();
         grid.getHeaderRows().clear();
-        addEntityFilters(grid, headerRow, filter);
-    }
-
-    protected void addEntityFilters(@NotNull Grid<T> grid, @NotNull HeaderRow headerRow, @NotNull EntityFilter<T> filter) {
-        // TODO add long oid
-        addFilterText(grid, headerRow, EntityView.ID, EntityView.ID_LABEL, filter::id);
-        addFilterText(grid, headerRow, EntityView.NAME, EntityView.NAME_LABEL, filter::name);
-        // TODO add time intervall
-        addFilterText(grid, headerRow, EntityView.TEXT, EntityView.TEXT_LABEL, filter::text);
-    }
-
-    protected void addFilterText(@NotNull Grid<T> grid, @NotNull HeaderRow headerRow, @NotNull String key, @NotNull String label, @NotNull Consumer<String> attribute) {
-        headerRow.getCell(grid.getColumnByKey(key)).setComponent(createFilterHeader(label, attribute));
-    }
-
-    protected void addFilterDate(@NotNull Grid<T> grid, @NotNull HeaderRow headerRow, @NotNull String key, @NotNull String label, @NotNull Consumer<LocalDate> attribute) {
-        headerRow.getCell(grid.getColumnByKey(key)).setComponent(createDateFilterHeader(label, attribute));
+        headerRow.getCell(grid.getColumnByKey(EntityView.OID)).setComponent(createIntegerFilterField(o -> filter.oid(o.longValue())));
+        headerRow.getCell(grid.getColumnByKey(EntityView.ID)).setComponent(createTextFilterField(filter::id));
+        headerRow.getCell(grid.getColumnByKey(EntityView.NAME)).setComponent(createTextFilterField(filter::name));
+        headerRow.getCell(grid.getColumnByKey(EntityView.FROM)).setComponent(createDateRangeField(filter::fromInterval));
+        headerRow.getCell(grid.getColumnByKey(EntityView.TO)).setComponent(createDateRangeField(filter::toInterval));
+        headerRow.getCell(grid.getColumnByKey(EntityView.TEXT)).setComponent(createTextFilterField(filter::text));
     }
 }

@@ -22,6 +22,7 @@ import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import com.vaadin.flow.component.grid.dataview.GridListDataView;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.textfield.TextFieldVariant;
 import com.vaadin.flow.data.provider.DataProvider;
@@ -31,16 +32,22 @@ import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
+import software.xdev.vaadin.daterange_picker.business.DateRangeModel;
+import software.xdev.vaadin.daterange_picker.business.SimpleDateRanges;
+import software.xdev.vaadin.daterange_picker.ui.DateRangePicker;
 
 import java.time.LocalDate;
+import java.time.Month;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 /**
+ * The entity view displays a list of entities in a grid.
  * <h2>CRUD Operations</h2>
- * <p>The entity view displays a list of entities in a grid. The view owns an optional form to display and edit details and an optional filter to filter desired entities in the
- * grid.
- * Following operations are available through a pop-up menu:</p>
+ * <p>The view owns an optional form to display and edit details and an optional filter to filter desired entities in the
+ * grid. Following operations are available through a pop-up menu:</p>
  * <dl>
  *     <dt>List</dt><dd>Display the grid with the entity properties. No form can be selected and no modification operations are available.</dd>
  *    <dt>View</dt><dd>Display a read-only form with the entity properties. If the form is displayed and another grid item is selected, the values of the selected entity are
@@ -133,7 +140,7 @@ public abstract class ItemView<T> extends VerticalLayout {
      * @param <T> Type of the entity to filter
      */
     public abstract static class ItemFilter<T> {
-        private GridListDataView<T> dataView;
+        GridListDataView<T> dataView;
 
         protected ItemFilter() {
         }
@@ -144,8 +151,11 @@ public abstract class ItemView<T> extends VerticalLayout {
         }
 
         protected void dataView(@NotNull GridListDataView<T> dataView) {
+            if (this.dataView != null) {
+                this.dataView.removeFilters();
+            }
             this.dataView = dataView;
-            this.dataView.addFilter(this::test);
+            dataView.addFilter(this::test);
         }
 
         protected GridListDataView<T> dataView() {
@@ -155,7 +165,7 @@ public abstract class ItemView<T> extends VerticalLayout {
         public abstract boolean test(@NotNull T entity);
 
         protected void refresh() {
-            dataView().refreshAll();
+            dataView.refreshAll();
         }
     }
 
@@ -172,17 +182,17 @@ public abstract class ItemView<T> extends VerticalLayout {
     private transient T entity;
     protected ItemForm<T, ?> form;
 
-    public ItemView(@NotNull Class<T> entityClass, BoundedDomain<?, ?, ?, ?> domain, @NotNull Provider<T> provider, ItemFilter<T> filter, Mode mode) {
+    protected ItemView(@NotNull Class<T> entityClass, BoundedDomain<?, ?, ?, ?> domain, @NotNull Provider<T> provider, ItemFilter<T> filter, @NotNull Mode mode) {
         this.entityClass = entityClass;
         this.domain = domain;
         this.filter = filter;
-        this.mode = mode;
         grid = new Grid<>();
         provider(provider);
         grid.setSelectionMode(Grid.SelectionMode.SINGLE);
         grid.addThemeVariants(GridVariant.LUMO_COMPACT);
         grid.setHeight("24em");
         add(grid);
+        mode(mode);
     }
 
     protected abstract void init();
@@ -219,8 +229,8 @@ public abstract class ItemView<T> extends VerticalLayout {
         this.entity = entity;
     }
 
-    public static Component createFilterHeader(@NotNull String labelText, @NotNull Consumer<String> filterChangeConsumer) {
-        TextField field = new TextField();
+    public static Component createTextFilterField(@NotNull Consumer<String> filterChangeConsumer) {
+        var field = new TextField();
         field.setValueChangeMode(ValueChangeMode.EAGER);
         field.setClearButtonVisible(true);
         field.addThemeVariants(TextFieldVariant.LUMO_SMALL);
@@ -230,10 +240,24 @@ public abstract class ItemView<T> extends VerticalLayout {
         return field;
     }
 
-    public static Component createDateFilterHeader(@NotNull String labelText, @NotNull Consumer<LocalDate> filterChangeConsumer) {
-        DatePicker field = new DatePicker();
+    public static Component createIntegerFilterField(@NotNull Consumer<Integer> consumer) {
+        var field = new IntegerField();
         field.setClearButtonVisible(true);
-        field.addValueChangeListener(e -> filterChangeConsumer.accept(e.getValue()));
+        field.addValueChangeListener(e -> consumer.accept(e.getValue()));
+        return field;
+    }
+
+    public static Component createDateFilterField(@NotNull Consumer<LocalDate> consumer) {
+        var field = new DatePicker();
+        field.setClearButtonVisible(true);
+        field.addValueChangeListener(e -> consumer.accept(e.getValue()));
+        return field;
+    }
+
+    public static Component createDateRangeField(@NotNull BiConsumer<LocalDate, LocalDate> consumer) {
+        var field = new DateRangePicker<>(() -> new DateRangeModel<>(LocalDate.of(2000, Month.JANUARY, 1), LocalDate.of(2030, Month.DECEMBER, 31), SimpleDateRanges.FREE),
+            Arrays.asList(SimpleDateRanges.allValues()));
+        field.addValueChangeListener(ev -> consumer.accept(ev.getValue().getStart(), ev.getValue().getEnd()));
         return field;
     }
 
@@ -241,10 +265,15 @@ public abstract class ItemView<T> extends VerticalLayout {
         return provider;
     }
 
+    /**
+     * Set the provider. Vaadin generates a new data view when the items of the provider are added to the grid. The existing filter, if defined, is added to the new data view.
+     *
+     * @param provider new provider of the items displayed in the view
+     */
     protected void provider(@NotNull Provider<T> provider) {
         this.provider = provider;
         dataView = grid.setItems(DataProvider.ofCollection(provider.items()));
-        if (Objects.nonNull(filter())) {
+        if (filter() != null) {
             filter().dataView(dataView);
         }
         dataView.refreshAll();
@@ -268,13 +297,13 @@ public abstract class ItemView<T> extends VerticalLayout {
                 menu = grid().addContextMenu();
             }
             menu.removeAll();
-            menu.addItem(Mode.VIEW_TEXT, event -> form.display(event.getItem().orElse(null)));
+            menu.addItem(Mode.VIEW_TEXT, event -> event.getItem().ifPresent(form::display));
             if (!mode().readonly()) {
                 menu.add(new Hr());
-                menu.addItem(Mode.EDIT_TEXT, event -> form.edit(event.getItem().orElse(null)));
+                menu.addItem(Mode.EDIT_TEXT, event -> event.getItem().ifPresent(form::edit));
                 menu.addItem(Mode.CREATE_TEXT, event -> form.create());
-                menu.addItem(Mode.DUPLICATE_TEXT, event -> form.duplicate(event.getItem().orElse(null)));
-                menu.addItem(Mode.DELETE_TEXT, event -> form.delete(event.getItem().orElse(null)));
+                menu.addItem(Mode.DUPLICATE_TEXT, event -> event.getItem().ifPresent(form::duplicate));
+                menu.addItem(Mode.DELETE_TEXT, event -> event.getItem().ifPresent(form::delete));
             }
             SingleSelect<Grid<T>, T> selection = grid.asSingleSelect();
             selection.addValueChangeListener(e -> form.value(e.getValue()));
@@ -294,11 +323,15 @@ public abstract class ItemView<T> extends VerticalLayout {
         menu.add(new Hr());
     }
 
-    protected void addFilterText(@NotNull HeaderRow headerRow, @NotNull String key, @NotNull String label, @NotNull Consumer<String> attribute) {
-        headerRow.getCell(grid().getColumnByKey(key)).setComponent(createFilterHeader(label, attribute));
+    protected void addFilterText(@NotNull HeaderRow headerRow, @NotNull String key, @NotNull Consumer<String> attribute) {
+        headerRow.getCell(grid().getColumnByKey(key)).setComponent(createTextFilterField(attribute));
     }
 
-    protected void addFilterDate(@NotNull HeaderRow headerRow, @NotNull String key, @NotNull String label, @NotNull Consumer<LocalDate> attribute) {
-        headerRow.getCell(grid().getColumnByKey(key)).setComponent(createDateFilterHeader(label, attribute));
+    protected void addFilterInteger(@NotNull HeaderRow headerRow, @NotNull String key, @NotNull Consumer<Integer> attribute) {
+        headerRow.getCell(grid().getColumnByKey(key)).setComponent(createIntegerFilterField(attribute));
+    }
+
+    protected void addFilterDate(@NotNull HeaderRow headerRow, @NotNull String key, @NotNull Consumer<LocalDate> attribute) {
+        headerRow.getCell(grid().getColumnByKey(key)).setComponent(createDateFilterField(attribute));
     }
 }

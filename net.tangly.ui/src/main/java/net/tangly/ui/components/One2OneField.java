@@ -34,7 +34,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 import java.util.Set;
 
-import static net.tangly.ui.components.ItemView.createFilterHeader;
+import static net.tangly.ui.components.ItemView.createTextFilterField;
 
 /**
  * A composite field to display a one two one relationship instance. The unique name of the referenced instance is shown. The button allows the change of the relationship
@@ -82,11 +82,13 @@ public class One2OneField<T extends Entity> extends CustomField<T> {
             grid.addColumn(Entity::oid).setKey(EntityView.OID).setHeader(EntityView.OID_LABEL).setSortable(true).setFlexGrow(0).setWidth("10em");
             grid.addColumn(Entity::id).setKey(EntityView.ID).setHeader(EntityView.ID_LABEL).setSortable(true).setFlexGrow(0).setWidth("10em");
             grid.addColumn(Entity::name).setKey(EntityView.NAME).setHeader(EntityView.NAME_LABEL).setSortable(false).setFlexGrow(0).setWidth("20em");
+            grid.addColumn(Entity::from).setKey(EntityView.FROM).setHeader(EntityView.FROM_LABEL).setSortable(false).setFlexGrow(0).setWidth("20em");
+            grid.addColumn(Entity::to).setKey(EntityView.FROM_LABEL).setHeader(EntityView.TO_LABEL).setSortable(false).setFlexGrow(0).setWidth("20em");
 
             grid.getHeaderRows().clear();
             HeaderRow headerRow = grid.appendHeaderRow();
-            headerRow.getCell(grid.getColumnByKey(EntityView.ID)).setComponent(createFilterHeader(EntityView.ID, filter::id));
-            headerRow.getCell(grid.getColumnByKey(EntityView.NAME)).setComponent(createFilterHeader(EntityView.NAME, filter::name));
+            headerRow.getCell(grid.getColumnByKey(EntityView.ID)).setComponent(createTextFilterField(filter::id));
+            headerRow.getCell(grid.getColumnByKey(EntityView.NAME)).setComponent(createTextFilterField(filter::name));
 
             grid.setDataProvider((DataProvider<Entity, ?>) DataProvider.ofCollection(provider.items()));
 
