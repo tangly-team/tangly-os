@@ -74,6 +74,9 @@ public class BoundedDomainEntities
         return List.of(new DomainEntity<>(DOMAIN, EntityThree.class, realm().threeEntities()), new DomainEntity<>(DOMAIN, EntityFour.class, realm().fourEntities()));
     }
 
+    /**
+     * Define a code to test and demonstrate the application code support features.
+     */
     public enum ActivityCode implements Code {
         talk, meeting, email, letter, audiocall, videocall, chat, campaign;
 
@@ -93,13 +96,20 @@ public class BoundedDomainEntities
         }
     }
 
+    /**
+     * Entity Three demonstrates oid, id, name, time interval, text, comment and tag features.
+     */
     public static class EntityThree extends EntityImp implements HasOid, HasId, HasName, HasTimeInterval, HasText, HasComments, HasTags, Entity {
         public EntityThree(long oid) {
             super(oid);
         }
     }
 
-    public static class EntityFour extends EntityImp implements HasOid, HasId, HasName, HasTimeInterval, HasText, HasComments, HasTags, Entity {
+    /**
+     * Entity Four demonstrates entity abstraction and code features. An entity has an oid, id, name, time interval, text, comments and tags. The one-to-one and one-to-many
+     * relations are also demonstrated.
+     */
+    public static class EntityFour extends EntityImp implements Entity {
         private final List<EntityThree> one2many;
         private EntityThree one2one;
         private ActivityCode activity;
@@ -182,7 +192,9 @@ public class BoundedDomainEntities
         }
 
         private EntityFour createEntityFour(long oid, String id, String name, LocalDate from, LocalDate to, String text) {
-            return EntityImp.init(new EntityFour(oid), id, name, from, to, text);
+            EntityFour entity = EntityImp.init(new EntityFour(oid), id, name, from, to, text);
+            entity.activity(ActivityCode.audiocall);
+            return entity;
         }
     }
 

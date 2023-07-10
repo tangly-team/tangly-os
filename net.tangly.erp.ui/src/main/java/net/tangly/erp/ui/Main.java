@@ -24,8 +24,7 @@ import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Entry point to the start of the regular Java SE application with an embedded Jetty server.
- * The application parameters are:
+ * Entry point to the start of the regular Java SE application with an embedded Jetty server. The application parameters are:
  * <dl>
  *     <dt>port</dt>
  *     <dd>The parameter defines the listening port of the Jetty embedded server.</dd>
@@ -34,7 +33,7 @@ import org.jetbrains.annotations.NotNull;
  *     The application is either using an in-memory data or has a persistent storage where import data can be provided and updated stored in the database.</dd>
  * </dl>
  */
-public class EmbeddedJetty {
+public class Main {
     private static final Logger logger = LogManager.getLogger();
     private static int port = 8080;
     private static boolean isInMemory = true;
@@ -47,18 +46,15 @@ public class EmbeddedJetty {
         } else {
             Erp.propertiesConfiguredErp();
         }
-
         new VaadinBoot().setPort(port).withContextRoot(contextRoot).run();
     }
 
     private static Options options() {
         var options = new Options();
-        options.addOption(Option.builder("h").longOpt("help").hasArg(false)
-                                .desc("print this help message").build());
-        options.addOption(Option.builder("p").longOpt("port").type(Integer.TYPE).argName("port").hasArg()
-                                .desc("listening port of the embedded server").build());
-        options.addOption(Option.builder("c").longOpt("configuration").type(String.class).argName("configuration-file").hasArg()
-                                .desc("path to the applicaiton configuration file").build());
+        options.addOption(Option.builder("h").longOpt("help").hasArg(false).desc("print this help message").build());
+        options.addOption(Option.builder("p").longOpt("port").type(Integer.TYPE).argName("port").hasArg().desc("listening port of the embedded server").build());
+        options.addOption(
+            Option.builder("c").longOpt("configuration").type(String.class).argName("configuration-file").hasArg().desc("path to the applicaiton configuration file").build());
         options.addOption(Option.builder("m").longOpt("mode").argName("mode").hasArg().desc("mode of the application").build());
         return options;
     }

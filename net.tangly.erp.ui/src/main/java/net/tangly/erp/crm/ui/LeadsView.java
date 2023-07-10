@@ -12,6 +12,7 @@
 
 package net.tangly.erp.crm.ui;
 
+import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.Icon;
@@ -26,7 +27,6 @@ import net.tangly.core.crm.GenderCode;
 import net.tangly.erp.crm.domain.Lead;
 import net.tangly.erp.crm.domain.LeadCode;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
-import net.tangly.ui.components.CodeField;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
 import org.jetbrains.annotations.NotNull;
@@ -57,12 +57,12 @@ public class LeadsView extends ItemView<Lead> {
             TextField firstname = new TextField("Firstname", "firstname");
             TextField lastname = new TextField("Lastname", "lastname");
             lastname.setRequired(true);
-            CodeField<GenderCode> gender = new CodeField<>(CodeType.of(GenderCode.class), "Gender");
+            ComboBox<GenderCode> gender = ItemForm.createCodeField(CodeType.of(GenderCode.class), "Gender");
             TextField company = new TextField("Company", "company");
             TextField phoneNr = new TextField("Phone", "phone number");
             TextField email = new TextField("Email", "email");
             TextField linkedIn = new TextField("Linked", "linkedIn");
-            CodeField<LeadCode> code = new CodeField<>(CodeType.of(LeadCode.class), "Code");
+            ComboBox<LeadCode> code = ItemForm.createCodeField(CodeType.of(LeadCode.class), "Code");
             TextArea text = new TextArea("Text", "text");
 
             FormLayout form = new FormLayout();

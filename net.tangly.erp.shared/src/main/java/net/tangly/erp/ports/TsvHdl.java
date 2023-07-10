@@ -122,7 +122,7 @@ public final class TsvHdl {
     public static <T extends HasComments & HasOid> void addComments(Provider<T> provider, T entity, List<TsvRelation<Comment>> comments) {
         var items = comments.stream().filter(o -> o.ownerId() == entity.oid()).map(o -> o.ownedEntity()).toList();
         if (!items.isEmpty()) {
-            entity.addCommnents(items);
+            entity.addComments(items);
             provider.update(entity);
         }
     }

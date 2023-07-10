@@ -35,7 +35,7 @@ class AssignmentsView extends EntityView<Assignment> {
     @Override
     protected void init() {
         addEntityColumns(grid());
-        addEntityFilters(grid(), filter());
+        addEntityFilterFields(grid(), filter());
         //        decorators.addItemAction("Add Effort", e -> new CmdCreateEffort(value(), domain).execute());
         //        decorators.addItemAction("Print", e -> new CmdCreateAssignmentDocument(value(), domain).execute());
         buildMenu();

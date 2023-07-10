@@ -24,7 +24,7 @@ import java.util.Optional;
 
 /**
  * A legal entity is a legally recognized organization able to underwrite contracts and hire employees. A legal entity has a name, an identity defined as the legal number of an
- * organization (e.g. zefix UID number in Switzerland, EUID in Europe), and a text describing it.
+ * organization (e.g., zefix UID number in Switzerland, EUID in Europe), and a text describing it.
  */
 public class LegalEntity extends EntityImp implements Entity, CrmEntity {
     public LegalEntity() {
@@ -46,7 +46,7 @@ public class LegalEntity extends EntityImp implements Entity, CrmEntity {
     }
 
     /**
-     * Returns the VAT identifying number of the legal entity.
+     * Returns the VAT identifying number for the legal entity.
      *
      * @return the VAT identifying number
      */
@@ -55,7 +55,7 @@ public class LegalEntity extends EntityImp implements Entity, CrmEntity {
     }
 
     /**
-     * Sets the VAT identifying number of the legal entity.
+     * Sets the VAT identifying number for the legal entity.
      *
      * @param vatNr new VAT identifying number
      */

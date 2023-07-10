@@ -14,10 +14,8 @@ package net.tangly.erp.crm.ui;
 
 import com.vaadin.flow.component.HtmlComponent;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.data.binder.ValidationException;
-import com.vaadin.flow.server.StreamResource;
 import net.tangly.erp.crm.domain.Subject;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.EntityField;
@@ -26,12 +24,10 @@ import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.ByteArrayInputStream;
-
 class SubjectsView extends EntityView<Subject> {
     static class SubjectForm extends EntityForm<Subject, SubjectsView> {
         public SubjectForm(@NotNull SubjectsView parent) {
-            super(parent);
+            super(parent, Subject.class);
         }
 
         public void init() {

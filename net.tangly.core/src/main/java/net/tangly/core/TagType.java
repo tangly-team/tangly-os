@@ -20,17 +20,17 @@ import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 /**
- * Implements the conceptual type of set of related tags, all the same class. The tag type also provides support to convert the text format of a tag into a
- * Java object and to validate acceptable tag values.
+ * Implements the conceptual type for a set of related tags, all the same class. The tag type also provides support to convert the text format of a tag into a Java object and to
+ * validate acceptable tag values.
  * <p>A tag should be associated at most once with an entity. If multiple values are needed, the tag value should be a comma separated list of all values.
  * The conversion method shall transform the comma separated string into a list of objects if needed.</p>
  *
  * @param namespace namespace of the tags defined through the tag type
  * @param name      name of the tags defined through the tag type
- * @param clazz     class of the type of values stored in the tag
+ * @param clazz     class for the type of values stored in the tag
  * @param kind      kind of the tag specifying if a value exists and if it is mandatory
- * @param convert   mapping function between a string to a Java object representation of the string value. if multiple values are supported, the mapping
- *                  function shall return a list of Java objects.
+ * @param convert   mapping function between a string to a Java object representation of the string value. if multiple values are supported, the mapping function shall return a
+ *                  list of Java objects.
  * @param validate  validation function for the Java representation of the string tag value
  * @param <T>       type of the tags
  */
@@ -65,8 +65,7 @@ public record TagType<T>(String namespace, @NotNull String name, @NotNull ValueK
         return of(namespace, name, ValueKinds.MANDATORY, clazz, convert);
     }
 
-    public static <T> TagType<T> of(String namespace, @NotNull String name, @NotNull ValueKinds kind, @NotNull Class<T> clazz,
-                                    @NotNull Function<String, T> convert) {
+    public static <T> TagType<T> of(String namespace, @NotNull String name, @NotNull ValueKinds kind, @NotNull Class<T> clazz, @NotNull Function<String, T> convert) {
         return new TagType<>(namespace, name, kind, clazz, convert, (tagType, tag) -> true);
     }
 

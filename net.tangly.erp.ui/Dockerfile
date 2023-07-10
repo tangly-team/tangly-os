@@ -1,13 +1,12 @@
 # Allows you to run this app easily in a docker image.
 # See https://github.com/mvysny/vaadin14-embedded-jetty-gradle/README.md for more details.
 # To build the image use:
-# build applicaton docker gradle build installDist -Pvaadin.productionMode
+# build applicaton ./gradlew net.tangly.erp.ui:build installDist -Pvaadin.productionMode
 # docker tanglyllc/tangly-erp:latest .
 # To run the image use:
 # docker run --rm -ti -p 8080:8080 -e PORT=8080  -v /var/tangly-erp:/var/tangly-erp tanglyllc/tangly-erp:latest
 # chmod o+rwx
-FROM openjdk:18
-RUN microdnf install findutils
+FROM temurin:20
 
 RUN mkdir -p /var/tangly-erp
 RUN mkdir -p /var/tangly-erp/import

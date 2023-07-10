@@ -164,18 +164,18 @@ class TransactionsView extends ItemView<Transaction> {
         grid.addColumn(new NumberRenderer<>(Transaction::amount, VaadinUtils.FORMAT)).setKey("amount").setHeader("Amount").setAutoWidth(true).setResizable(true)
             .setTextAlign(ColumnTextAlign.END);
 
-        addEntityFilters(grid(), new TransactionFilter());
+        addEntityFilterFields(grid(), new TransactionFilter());
         buildMenu();
     }
 
-    protected void addEntityFilters(@NotNull Grid<Transaction> grid, @NotNull TransactionFilter filter) {
+    protected void addEntityFilterFields(@NotNull Grid<Transaction> grid, @NotNull TransactionFilter filter) {
         grid.getHeaderRows().clear();
         HeaderRow headerRow = grid.appendHeaderRow();
         grid.getHeaderRows().clear();
         //addFilterText(headerRow, "date", "Date", filter::date);
-        addFilterText(headerRow, EntityView.TEXT, EntityView.TEXT_LABEL, filter::text);
-        addFilterText(headerRow, "debit", "Debit", filter::debit);
-        addFilterText(headerRow, "credit", "Credit", filter::credit);
+        addFilterText(headerRow, EntityView.TEXT, filter::text);
+        addFilterText(headerRow, "debit", filter::debit);
+        addFilterText(headerRow, "credit", filter::credit);
         // TODO amount
     }
 }

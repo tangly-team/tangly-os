@@ -29,7 +29,7 @@ class ProductsView extends EntityView<Product> {
     @Override
     protected void init() {
         addEntityColumns(grid());
-        addEntityFilters(grid(), filter());
+        addEntityFilterFields(grid(), filter());
         buildMenu();
     }
 }

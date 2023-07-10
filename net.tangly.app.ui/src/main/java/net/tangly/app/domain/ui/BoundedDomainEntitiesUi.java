@@ -15,6 +15,7 @@ package net.tangly.app.domain.ui;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
+import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -24,10 +25,11 @@ import net.tangly.app.domain.model.BoundedDomainEntities;
 import net.tangly.core.providers.Provider;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
-import net.tangly.ui.components.CodeField;
 import net.tangly.ui.components.EntityForm;
 import net.tangly.ui.components.EntityView;
+import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
+import net.tangly.ui.components.One2ManyView;
 import net.tangly.ui.components.One2OneField;
 import org.jetbrains.annotations.NotNull;
 
@@ -105,6 +107,7 @@ public class BoundedDomainEntitiesUi implements BoundedDomainUi {
 
         public static class EntityFourForm extends EntityForm<BoundedDomainEntities.EntityFour, EntityFourView> {
             private One2OneField<BoundedDomainEntities.EntityThree> one2oneField;
+            private One2ManyView<BoundedDomainEntities.EntityFour, BoundedDomainEntities.EntityThree> one2ManyView;
 
             public EntityFourForm(@NotNull EntityFourView parent) {
                 super(parent, BoundedDomainEntities.EntityFour.class);
@@ -116,17 +119,19 @@ public class BoundedDomainEntitiesUi implements BoundedDomainUi {
                 super.init();
                 one2oneField = new One2OneField<>("one2one", parent().domain().realm().threeEntities());
                 binder().bind(one2oneField, BoundedDomainEntities.EntityFour::one2one, BoundedDomainEntities.EntityFour::one2one);
-                CodeField<BoundedDomainEntities.ActivityCode> codeField =
-                    new CodeField<>(parent().registry().find(BoundedDomainEntities.ActivityCode.class).orElseThrow(), "Activity Code");
+                ComboBox<BoundedDomainEntities.ActivityCode> codeField =
+                    ItemForm.createCodeField(parent().registry().find(BoundedDomainEntities.ActivityCode.class).orElseThrow(), "Activity Code");
                 binder().bind(codeField, BoundedDomainEntities.EntityFour::activity, BoundedDomainEntities.EntityFour::activity);
-
                 FormLayout details = new FormLayout();
                 details.add(codeField, one2oneField);
                 addTabAt("details", details, 1);
 
-                FormLayout one2many = new FormLayout();
                 // TODO one2many ui
+                one2ManyView = new One2ManyView<>("one2many", parent().domain().realm().threeEntities());
+                FormLayout one2many = new FormLayout();
+                one2many.add(one2ManyView);
                 addTabAt("one2many", one2many, 2);
+
             }
 
             @Override

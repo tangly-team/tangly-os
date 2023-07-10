@@ -31,7 +31,7 @@ application {
                                  '-XX:+ShowCodeDetailsInExceptionMessages',
                                  '-Xmx256m',
                                  '-ea']
-    mainClassName = "net.tangly.erp.ui.EmbeddedJetty"
+    mainClassName = "net.tangly.erp.ui.Main"
 }
 
 jar {

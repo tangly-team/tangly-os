@@ -13,13 +13,18 @@
 package net.tangly.core.crm;
 
 
-import net.tangly.core.*;
+import net.tangly.core.Address;
+import net.tangly.core.Entity;
+import net.tangly.core.EntityImp;
+import net.tangly.core.PhoneNr;
+import net.tangly.core.Strings;
+import net.tangly.core.Tag;
 
 import java.util.Objects;
 import java.util.Optional;
 
 /**
- * A natural entity is a person. A natural entity has an identity defined as the legal number of a person (e.g. the social security number, a name defined as the last name and the
+ * A natural entity is a person. A natural entity has an identity defined as the legal number of a person (e.g., the social security number, a name defined as the last name and the
  * first name separated by a comma, a life duration and a text describing it.
  * <p>A potential approach for a natural person identification is ISO 24366.</p>
  */

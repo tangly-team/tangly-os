@@ -35,9 +35,9 @@ public interface HasTimeInterval {
 
 
     /**
-     * Sets the from date when the entity is existing and active.
+     * Sets the starting date when the entity is existing and active.
      *
-     * @param fromDate the new start of the existing period of the entity
+     * @param fromDate the new start of the existing period for the entity
      * @see #from()
      */
     default void from(LocalDate fromDate) {
@@ -47,7 +47,7 @@ public interface HasTimeInterval {
     /**
      * Sets the end date when the entity is existing and active.
      *
-     * @param toDate the new end of the existing period of the entity
+     * @param toDate the new end of the existing period for the entity
      * @see #to() ()
      */
     default void to(LocalDate toDate) {
@@ -57,7 +57,7 @@ public interface HasTimeInterval {
     /**
      * Returns the date from when the entity is existing and active.
      *
-     * @return the start of the existing period of the entity
+     * @return the start of the existing period for the entity
      * @see #from(LocalDate)
      */
     LocalDate from();
@@ -65,7 +65,7 @@ public interface HasTimeInterval {
     /**
      * Returns the date until when the entity is existing and active.
      *
-     * @return the end of the existing period of the entity
+     * @return the end of the existing period for the entity
      * @see #to(LocalDate)
      */
     LocalDate to();

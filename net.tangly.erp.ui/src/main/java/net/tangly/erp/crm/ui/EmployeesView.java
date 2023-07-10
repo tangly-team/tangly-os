@@ -38,7 +38,7 @@ class EmployeesView extends EntityView<Employee> {
 
     static class EmployeeForm extends EntityForm<Employee, EmployeesView> {
         public EmployeeForm(@NotNull EmployeesView parent, @NotNull TypeRegistry registry) {
-            super(parent);
+            super(parent, Employee.class);
             init();
         }
 

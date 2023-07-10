@@ -14,7 +14,8 @@
 /**
  * The package defines various entities belonging to two domains.
  * <p>The first domain _BoundedDomainSimpleEntities_ defines simple entities with various properties to be displayed.</p>
- * <p>The second domain _BoundedDomainEntities defines full entitites with comments, tags, and codes.</p>
+ * <p>The second domain _BoundedDomainEntities defines full entitites with comments, tags, and codes.
+ * Advanced concepts for relations are also demonstrated.</p>
  */
 
 package net.tangly.app.domain.model;

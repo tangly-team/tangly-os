@@ -14,7 +14,13 @@ package net.tangly.core;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.iban4j.*;
+import org.iban4j.BicFormatException;
+import org.iban4j.BicUtil;
+import org.iban4j.IbanFormat;
+import org.iban4j.IbanFormatException;
+import org.iban4j.IbanUtil;
+import org.iban4j.InvalidCheckDigitException;
+import org.iban4j.UnsupportedCountryException;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -110,9 +116,9 @@ public record BankConnection(@NotNull String iban, String bic, String institute)
     }
 
     /**
-     * Returns a comma separated representation of a bank connection. Null values are shown as empty strings. The {@link Object#toString()} method is not used
-     * because the implementation is defined in the API implementation of record construct. The generated string can be feed to the {@link
-     * BankConnection#of(String)} to create a bank connection object.
+     * Returns a comma-separated representation of a bank connection. Null values are shown as empty strings. The {@link Object#toString()} method is not used because the
+     * implementation is defined in the API implementation of record construct. The generated string can be feed to the {@link BankConnection#of(String)} to create a bank
+     * connection object.
      *
      * @return comma separated representation
      * @see BankConnection#of(String)

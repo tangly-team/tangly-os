@@ -45,12 +45,12 @@ import java.util.Objects;
 
 @PageTitle("tangly ERP")
 @Route("")
-public class MainLayout extends AppLayout {
+public class MainView extends AppLayout {
     private final Map<String, BoundedDomainUi> uiDomains;
     private final MenuBar menuBar;
 
 
-    public MainLayout() {
+    public MainView() {
         uiDomains = new HashMap<>();
         if (Erp.instance().invoicesBoundedDomain() != null) {
             put(new CrmBoundedDomainUi(Erp.instance().crmBoundedDomain(), Erp.instance().invoicesBoundedDomain()));

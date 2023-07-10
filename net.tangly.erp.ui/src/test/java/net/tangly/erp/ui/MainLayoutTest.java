@@ -46,7 +46,7 @@ class MainLayoutTest {
     @Test
     @Disabled
     void mainViewTest() {
-        final MainLayout main = (MainLayout) UI.getCurrent().getChildren().findFirst().get();
+        final MainView main = (MainView) UI.getCurrent().getChildren().findFirst().get();
         assertThat(main.getChildren().count()).isEqualTo(6);
     }
 }

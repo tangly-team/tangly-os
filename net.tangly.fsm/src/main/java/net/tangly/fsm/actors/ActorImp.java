@@ -20,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.UUID;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
 
 public abstract class ActorImp<T> implements Actor<T>, Runnable {
     private static final Logger logger = LogManager.getLogger();
@@ -58,12 +59,12 @@ public abstract class ActorImp<T> implements Actor<T>, Runnable {
 
     @Override
     public void run() {
-        while (process(message())) ;
+        while (process(message(0, null))) ;
     }
 
-    private T message() {
+    protected T message(long timeout, TimeUnit unit) {
         try {
-            return messages.take();
+            return (timeout == 0) ? messages.take() : messages.poll(timeout, unit);
         } catch (InterruptedException e) {
             logger.atError().log("Actor {} encountered interrupted exception {}", name(), e);
             Thread.currentThread().interrupt();

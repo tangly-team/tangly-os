@@ -24,8 +24,8 @@ import net.tangly.core.TypeRegistry;
 import org.jetbrains.annotations.NotNull;
 
 import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Objects;
 
@@ -157,7 +157,7 @@ public final class CrmTags {
      * Create the LinkedIn company profile lik for a legal entity. LinkedIn handles regular organizations and schools in different ways.
      *
      * @param entity organization which LinkedIn profile should be displayed
-     * @return link to the linkedIn profile
+     * @return link to the LinkedIn profile
      */
     public static String organizationLinkedInUrl(@NotNull HasTags entity) {
         var school = entity.findBy(CrmTags.CRM_SCHOOL);

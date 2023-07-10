@@ -66,7 +66,12 @@ Office Applications::
 I do not use it for productive work._
 - Apple Office Suite _is optional in case I receive a related file.
 I do not use it for productive work._
-- Conference Tools: Slack, Zoom, Discord, Microsoft Teams, ClickShare
+- Conference Tools: Slack, Zoom, Discord, Microsoft Teams
+footnote:[I love the Jabra Evolve2-65 headset for audio and video sessions.
+This bluetooth headset always connects without problems.
+The audio quality is excellent.
+The price is reasonable for a professional headset.]
+, ClickShare
 footnote:[I need the ClickShare application because the drivers preinstalled on the ClickShare devices are old and do not work with current macOS versions.].
 - Amazon Kindle _because I have all my technical and science-fiction books on Amazon Kindle.
 footnote:[Amazon still has not released an ARM native application.

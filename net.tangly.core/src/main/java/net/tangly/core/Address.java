@@ -17,13 +17,13 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 /**
- * Address immutability is enforced through a record construct. The street represents the international concept of house identifier often means street name and street number.
- * It can also be the street name and house name such as in Ireland or Great Britain.
+ * Address immutability is enforced through a record construct. The street represents the international concept of house identifier often means street name and street number. It
+ * can also be the street name and house name such as in Ireland or Great Britain.
  *
  * @param street   street and street number of the address
  * @param extended extended address line of the address
  * @param poBox    optional postal box code of the address
- * @param postcode postcode of the address as custom in the country
+ * @param postcode zip code of the address as custom in the country
  * @param locality mandatory locality of the address
  * @param region   region of the address as custom in the country
  * @param country  mandatory country of the address as ISO 2 characters code
@@ -48,9 +48,8 @@ public record Address(String street, String extended, String poBox, String postc
     }
 
     /**
-     * Returns a comma separated representation of an address. Null values are shown as empty strings. The {@link Object#toString()} method is not used because
-     * the implementation is defined in the API implementation of record construct. The generated string can be feed to the {@link Address#of(String)} to create
-     * an address object.
+     * Returns a comma-separated representation of an address. Null values are shown as empty strings. The {@link Object#toString()} method is not used because the implementation
+     * is defined in the API implementation of record construct. The generated string can be feed to the {@link Address#of(String)} to create an address object.
      *
      * @return comma separated representation
      * @see Address#of(String)

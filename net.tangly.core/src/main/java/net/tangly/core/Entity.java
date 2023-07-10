@@ -29,7 +29,7 @@ package net.tangly.core;
  */
 public interface Entity extends HasOid, HasId, HasName, HasText, HasTimeInterval, HasTags, HasComments {
     /**
-     * Check if the entity is consistent based on the fields values and business rules.
+     * Check if the entity is consistent based on the field values and business rules.
      *
      * @return true if the entity is consistent otherwise false
      */

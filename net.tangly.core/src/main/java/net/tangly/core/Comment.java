@@ -31,7 +31,7 @@ public class Comment implements HasTags {
     private LocalDateTime created;
 
     /**
-     * The author of the comment, the system should insure that the author is a unique external identifier.
+     * The author of the comment, the system should ensure that the author is a unique external identifier.
      */
     private final String author;
 
@@ -108,7 +108,7 @@ public class Comment implements HasTags {
     /**
      * Returns the timestamp when the comment was created.
      *
-     * @return timestamp of the creation of the comment
+     * @return timestamp for the creation of the comment
      */
     public @NotNull LocalDateTime created() {
         return created;

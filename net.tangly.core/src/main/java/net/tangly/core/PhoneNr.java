@@ -20,8 +20,8 @@ import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Represents an immutable phone number as a canonical string. Validation and formatting of phone numbers are performed through the phone library of Google which
- * supports worldwide numbers.
+ * Represents an immutable phone number as a canonical string. Validation and formatting of phone numbers are performed through the phone library of Google, which supports
+ * worldwide numbers.
  */
 public record PhoneNr(@NotNull String number) {
     private static final Logger logger = LogManager.getLogger();

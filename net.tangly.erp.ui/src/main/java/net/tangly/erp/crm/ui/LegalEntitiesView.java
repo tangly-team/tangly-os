@@ -37,7 +37,7 @@ class LegalEntitiesView extends EntityView<LegalEntity> {
 
     static class LegalEntityForm extends EntityForm<LegalEntity, LegalEntitiesView> {
         public LegalEntityForm(@NotNull LegalEntitiesView parent, @NotNull TypeRegistry registry) {
-            super(parent);
+            super(parent, LegalEntity.class);
             init();
             addTabAt("details", details(), 1);
         }
@@ -94,7 +94,7 @@ class LegalEntitiesView extends EntityView<LegalEntity> {
         grid.addColumn(VaadinUtils.urlComponentRenderer(CrmTags.CRM_SITE_WORK)).setKey("webSite").setHeader("Web Site").setAutoWidth(true);
         grid.addColumn(o -> o.value(CrmTags.CRM_RESPONSIBLE).orElse(null)).setKey("responsible").setHeader("Responsible").setAutoWidth(true).setSortable(true);
 
-        addEntityFilters(grid(), filter());
+        addEntityFilterFields(grid(), filter());
         buildMenu();
     }
 }

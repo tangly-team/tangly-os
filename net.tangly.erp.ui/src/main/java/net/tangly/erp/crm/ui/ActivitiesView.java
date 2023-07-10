@@ -12,6 +12,7 @@
 
 package net.tangly.erp.crm.ui;
 
+import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.HeaderRow;
@@ -22,7 +23,6 @@ import net.tangly.core.codes.CodeType;
 import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.ActivityCode;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
-import net.tangly.ui.components.CodeField;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
@@ -72,7 +72,7 @@ class ActivitiesView extends ItemView<Activity> {
 
     static class ActivityForm extends ItemForm<Activity, ActivitiesView> {
         protected DatePicker date;
-        protected CodeField<ActivityCode> code;
+        protected ComboBox<ActivityCode> code;
         protected IntegerField durationInMinutes;
         protected TextField author;
         protected TextField text;
@@ -96,7 +96,7 @@ class ActivitiesView extends ItemView<Activity> {
         protected void init() {
             FormLayout form = new FormLayout();
             date = new DatePicker(DATE);
-            code = new CodeField<>(CodeType.of(ActivityCode.class), "code");
+            code = ItemForm.createCodeField(CodeType.of(ActivityCode.class), "code");
             durationInMinutes = new IntegerField(DURATION_IN_MINUTES);
             author = new TextField(AUTHOR);
             text = new TextField(EntityView.TEXT);
@@ -132,12 +132,13 @@ class ActivitiesView extends ItemView<Activity> {
         grid.addColumn(Activity::code).setKey(CODE).setHeader("Code").setResizable(true).setSortable(true).setFlexGrow(0).setWidth("10em");
         grid.addColumn(Activity::duration).setKey(DURATION_IN_MINUTES).setHeader("Duration").setResizable(true).setSortable(true).setFlexGrow(0).setWidth("5em");
         grid.addColumn(Activity::text).setKey(EntityView.TEXT).setHeader(EntityView.TEXT_LABEL).setAutoWidth(true).setResizable(true).setSortable(true);
+        grid.addColumn(Activity::details).setKey(AUTHOR).setHeader("Author").setAutoWidth(true).setResizable(true).setSortable(true);
         grid.addColumn(Activity::details).setKey(DETAILS).setHeader("Details").setAutoWidth(true).setResizable(true).setSortable(true);
 
         grid.getHeaderRows().clear();
         HeaderRow headerRow = grid().appendHeaderRow();
         if (filter() instanceof ActivityFilter filter) {
-            addFilterText(headerRow, AUTHOR, AUTHOR_LABEL, filter::author);
+            addFilterText(headerRow, AUTHOR, filter::author);
         }
         buildMenu();
     }

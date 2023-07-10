@@ -10,19 +10,21 @@ tags: ["agile", "devops"]
 :email: <marcel.baumann@tangly.net>
 :homepage: https://www.tangly.net/
 :company: https://www.tangly.net/[tangly llc]
+:ref-togaf: https://www.opengroup.org/togaf[TOGAF]
 
 image::2023-08-01-head.jpg[width=420,height=360,role=left]
 
 Since good governance is about the processes for making and implementing decisions, then effective governance and accountability structures are vital.
 
-Organizations shall successfully use an agile approach to deliver business change through the investment of programs and projects.
+Organizations shall successfully use an agile approach to deliver business change through the investment in programs and projects.
 
 Agile approaches are the most used frameworks to develop successfully digital products.
+
 Our corporate governance processes shall support agile values and development methods.
 
 The four guiding principles to enable successful governance of agile delivery are:
 
-. Governance should mirror the Agile manifesto principles, particularly the art of simplicity.
+. Governance should mirror the Agile manifesto principles, particularly the art of simplicity. +
 _You shall maximize the work not done_.
 . Agile delivery teams decide on the empirical performance metrics they will use.
 They shall self-monitor to learn.
@@ -36,7 +38,9 @@ Agile works best when processes are clearly defined and transparent to everyone.
 Good governance for programs and projects, regardless if agile is applied, requires a defined structure, ways of working, processes and systems to operate succinctly.
 As a result, enabling programmes and projects the ability to scale up and down to adapt quickly to an organization’s changing needs and environment.
 
-TOGAF defines architecture governance as the practice and orientation by which software products architectures are managed and controlled at an enterprise-wide level.
+image::2023-08-01-process.png[width=420,height=360,role=left]
+
+{ref-togaf} defines architecture governance as the practice and orientation by which software products architectures are managed and controlled at an enterprise-wide level.
 
 Architecture governance does not operate in isolation, but within a hierarchy of governance structures.
 The structures can include distinct domains with their own disciplines and processes:
@@ -49,8 +53,6 @@ The structures can include distinct domains with their own disciplines and proce
 These domains of governance may exist at multiple geographic levels: the global, regional, and local levels within the overall enterprise.
 
 Corporate governance is thus a broad topic, beyond the scope of an enterprise architecture framework such as the TOGAF framework.
-
-image::2023-08-01-process.png[width=420,height=360,role=left]
 
 === Agile Corporate Governance PMI
 

@@ -253,7 +253,7 @@ public class CrmTsvHdl {
         Function<CSVRecord, Lead> imports =
             (CSVRecord csv) -> new Lead(LocalDate.parse(get(csv, DATE)), Enum.valueOf(LeadCode.class, get(csv, TsvHdl.CODE)), get(csv, FIRSTNAME), get(csv, LASTNAME),
                 Enum.valueOf(GenderCode.class, get(csv, TsvHdl.GENDER)), get(csv, "company"), PhoneNr.of(get(csv, "phoneNr")), EmailAddress.of(get(csv, EMAIL)),
-                get(csv, "linkedIn"), Enum.valueOf(ActivityCode.class, get(csv, "activity")), get(csv, TEXT));
+                get(csv, "linkedIn"), TsvProperty.valueOf(ActivityCode.class, get(csv, "activity")), get(csv, TEXT));
 
         List<TsvProperty<Lead, ?>> fields = List.of(TsvProperty.ofDate(DATE, Lead::date, null), TsvProperty.ofEnum(LeadCode.class, "code", Lead::code, null),
             TsvProperty.ofString(FIRSTNAME, Lead::firstname, null), TsvProperty.ofString(LASTNAME, Lead::firstname, null),

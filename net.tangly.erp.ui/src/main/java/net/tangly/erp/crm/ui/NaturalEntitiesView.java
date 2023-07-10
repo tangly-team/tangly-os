@@ -13,6 +13,7 @@
 package net.tangly.erp.crm.ui;
 
 import com.vaadin.flow.component.HtmlComponent;
+import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.icon.Icon;
@@ -33,10 +34,10 @@ import net.tangly.core.crm.NaturalEntity;
 import net.tangly.core.crm.VcardType;
 import net.tangly.erp.crm.domain.Employee;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
-import net.tangly.ui.components.CodeField;
 import net.tangly.ui.components.EntityField;
 import net.tangly.ui.components.EntityForm;
 import net.tangly.ui.components.EntityView;
+import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -47,7 +48,7 @@ import org.jetbrains.annotations.NotNull;
 class NaturalEntitiesView extends EntityView<NaturalEntity> {
     static class NaturalEntityForm extends EntityForm<NaturalEntity, NaturalEntitiesView> {
         public NaturalEntityForm(@NotNull NaturalEntitiesView parent, @NotNull TypeRegistry registry) {
-            super(parent);
+            super(parent, NaturalEntity.class);
             init();
         }
 
@@ -59,7 +60,7 @@ class NaturalEntitiesView extends EntityView<NaturalEntity> {
             entityField.bind(binder(), true);
             TextField firstname = new TextField("Firstname", "firstname");
             TextField lastname = new TextField("Lastname", "lastname");
-            CodeField<GenderCode> gender = new CodeField<>(CodeType.of(GenderCode.class), "Gender");
+            ComboBox<GenderCode> gender = ItemForm.createCodeField(CodeType.of(GenderCode.class), "Gender");
             TextField mobilePhone = VaadinUtils.createTextField("Mobile Phone", "mobile phone number", true);
             EmailField homeEmail = new EmailField("Home Email");
             homeEmail.setClearButtonVisible(true);
@@ -125,7 +126,7 @@ class NaturalEntitiesView extends EntityView<NaturalEntity> {
             .setResizable(true).setResizable(true);
         grid.addColumn(VaadinUtils.linkedInComponentRenderer(CrmTags::individualLinkedInUrl)).setKey("linkedIn").setHeader("LinkedIn").setAutoWidth(true);
 
-        addEntityFilters(grid(), filter());
+        addEntityFilterFields(grid(), filter());
         buildMenu();
     }
 

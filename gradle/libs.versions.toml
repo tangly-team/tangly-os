@@ -6,10 +6,10 @@ javalin-version = '5.6.1'
 jolt-version = '0.1.1'
 junit-version = '5.9.3'
 log4j2-version = '2.20.0'
-openapi-version = "5.6.0"
-microstream-version = '08.01.00-MS-GA'
+openapi-version = "5.6.1"
+microstream-version = '08.01.01-MS-GA'
 mustang-version = '2.7.3'
-vaadin-version = '24.1.1'
+vaadin-version = '24.1.2'
 
 [plugins]
 vaadin = { id = "com.vaadin", version.ref = "vaadin-version" }
@@ -41,7 +41,7 @@ apache-pdfbox = "org.apache.pdfbox:pdfbox:2.0.25"
 arch-unit = "com.tngtech.archunit:archunit-junit5-api:1.0.1"
 
 asciidoctorj = "org.asciidoctor:asciidoctorj:2.5.10"
-asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.3.7"
+asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.3.9"
 
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
 eo-yaml = "com.amihaiemil.web:eo-yaml:5.2.1"
@@ -52,7 +52,7 @@ iban4j = "org.iban4j:iban4j:3.2.5-RELEASE"
 ical4j-core = "org.mnode.ical4j:ical4j:3.2.1"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.7"
 
-google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.15"
+google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.16"
 
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson-version" }
 jackson-parameters = { module = "com.fasterxml.jackson.module:jackson-module-parameter-names", version.ref = "jackson-version" }
@@ -63,7 +63,7 @@ jakarta-mail = "jakarta.mail:jakarta.mail-api:2.1.2"
 eclipse-angus-mail = "org.eclipse.angus:angus-mail:2.0.2"
 
 jbibtext = "org.jbibtex:jbibtex:1.0.20"
-jimfs = "com.google.jimfs:jimfs:1.2"
+jimfs = "com.google.jimfs:jimfs:1.3.0"
 
 #redoc is at /redoc and swagger is at /swagger, only supported in version 5.x
 javalin = { module = "io.javalin:javalin", version.ref = "javalin-version" }
@@ -73,7 +73,7 @@ javalin-redoc-plugin = { module = "io.javalin.community.openapi:javalin-redoc-pl
 
 #Java 9 module compliant version of https://github.com/stleary/JSON-java
 json-core = "com.guicedee.services:json:1.2.2.1"
-json-validator = "com.networknt:json-schema-validator:1.0.85"
+json-validator = "com.networknt:json-schema-validator:1.0.86"
 json-assert = "org.skyscreamer:jsonassert:1.5.0"
 json-jolt-core = { module = "com.bazaarvoice.jolt:jolt-core", version.ref = "jolt-version" }
 json-jolt-utils = { module = "com.bazaarvoice.jolt:jolt-utils", version.ref = "jolt-version" }

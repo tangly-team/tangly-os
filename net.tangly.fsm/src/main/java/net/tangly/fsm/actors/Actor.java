@@ -23,6 +23,9 @@ import java.util.UUID;
  * @param <T> message type handle in the actor
  */
 public interface Actor<T> extends Runnable {
+    static <T> void send(Actor<T> receiver, @NotNull T message) {
+        receiver.receive(message);
+    }
 
     /**
      * Return the possibly unique human-readable name of the actor.

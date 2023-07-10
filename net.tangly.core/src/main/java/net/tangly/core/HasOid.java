@@ -22,7 +22,7 @@ public interface HasOid {
     String OID = "oid";
 
     /**
-     * placeholder to identify an illegal or undefined internal identifier. It is also the default value if a developer forgets to set the value.
+     * Placeholder to identify an illegal or undefined internal identifier. It is also the default value if a developer forgets to set the value.
      */
     long UNDEFINED_OID = 0;
 

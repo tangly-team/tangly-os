@@ -12,6 +12,7 @@
 
 package net.tangly.erp.invoices.ui;
 
+import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
@@ -24,7 +25,6 @@ import net.tangly.core.codes.CodeType;
 import net.tangly.erp.invoices.domain.Article;
 import net.tangly.erp.invoices.domain.ArticleCode;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
-import net.tangly.ui.components.CodeField;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
 import net.tangly.ui.components.VaadinUtils;
@@ -56,7 +56,7 @@ class ArticlesView extends ItemView<Article> {
             TextField name = new TextField("Name", "name");
             name.setRequired(true);
             TextField text = new TextField("Text", "text");
-            CodeField<ArticleCode> code = new CodeField<>(CodeType.of(ArticleCode.class), "code");
+            ComboBox<ArticleCode> code = ItemForm.createCodeField(CodeType.of(ArticleCode.class), "code");
             TextField unit = new TextField("Unit", "unit");
             unit.setRequired(true);
             BigDecimalField unitPrice = new BigDecimalField("Unit Price", "unit price");

@@ -55,9 +55,16 @@ public class BoundedDomainSimpleEntities extends
         return List.of(new DomainEntity<>(DOMAIN, SimpleEntityOne.class, realm().oneEntities()), new DomainEntity<>(DOMAIN, simpleEntityTwo.class, realm().twoEntities()));
     }
 
+    /**
+     * Simple entity one demonstrates oid, id, name, time interval, text.
+     */
+
     public record SimpleEntityOne(long oid, String id, String name, LocalDate from, LocalDate to, String text) implements HasOid, HasId, HasName, HasText, HasTimeInterval {
     }
 
+    /**
+     * Simple entity two demonstrates oid, id, name, time interval, text.
+     */
     public record simpleEntityTwo(long oid, String id, String name, LocalDate from, LocalDate to, String text) implements HasOid, HasId, HasName, HasText, HasTimeInterval {
     }
 

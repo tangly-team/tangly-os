@@ -15,25 +15,29 @@ image:https://img.shields.io/bitbucket/issues-raw/tangly/tangly-os.svg[Bitbucket
 
 == Purpose
 
-The *tangly fsm* is a finite state machine library. You can use it in productive projects and academic assignments.
+The *tangly fsm* is a finite state machine library.
+You can use it in productive projects and academic assignments.
 The component is using records and requires *Java 17 or higher*.
 
 The library provides
 
-* Definition of hierarchical state machine descriptions. The machine states and transitions are generic classes. You provide an enumeration for the
-  set of states, and an enumeration for the set of events triggering the machine. The builder pattern is used to create complex state machine
-  definition declaratively,
-* Builder approach to construct finite state machine declaration - either classical state machines or hierarchical state machines -
+* Definition of hierarchical state machine descriptions.
+The machine states and transitions are generic classes.
+You provide an enumeration for the set of states, and an enumeration for the set of events triggering the machine.
+The builder pattern is used to create complex state machine definition declaratively,
+* Builder approach to construct finite state machine declaration being either classical state machines or hierarchical state machines
 * Lambda expressions based on standard API functional interfaces are used for guards and actions
-  * Guard are bi-predicate lambda expressions with the context and event as parameters
-  * Actions are bi-function lambda expressions with the context and event as parameters
-* A runtime engine processing events on a finite state machine description. Multiple instances of the same description can be instantiated. The class
-  owning the state machine is passed as context to all guards and actions,
+* Guard are bi-predicate lambda expressions with the context and event as parameters
+* Actions are bi-function lambda expressions with the context and event as parameters
+* A runtime engine processing events on a finite state machine description.
+Multiple instances of the same description can be instantiated.
+The class owning the state machine is passed as context to all guards and actions,
 * Support classes to implement listeners and logging are provided.
-* Documentation helper can generate a graphical representation of a state machine using the graph dot language. Various output formats are supported
-  * Table representation
-  * Dot graph representation
-  * PlantUML UML finite hierarchical state machine representation
+* Documentation helper can generate a graphical representation of a state machine using the graph dot language.
+Various output formats are supported
+* Table representation
+* Dot graph representation
+* PlantUML UML finite hierarchical state machine representation
 
 == Download and Documentation
 
@@ -61,15 +65,16 @@ For any further question and discussion you can use the forum [tangly-OS-Compone
 
 == Contribution
 
-The library can be build with Gradle
+The library can be built with Gradle
 
 [source,shell]
 ----
     gradle build
 ----
 
-You are welcome to contribute to the product with pull requests on Bitbucket. You can download the source files from the
-[bitbucket git repository](https://bitbucket.org/tangly-team/tangly-os.git) and build  the library with the provided gradle configuration file.
+You are welcome to contribute to the product with pull requests on Bitbucket.
+You can download the source files from the
+[bitbucket git repository](https://bitbucket.org/tangly-team/tangly-os.git) and build the library with the provided gradle configuration file.
 
 If you find a bug or want to request a feature, please use the [issue tracker](https://bitbucket.org/tangly-team/tangly-os/issues).
 

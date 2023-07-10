@@ -43,7 +43,7 @@ A state containing a set of substates is called a hierarchical state.
 When you enter a hierarchical state, it is possible to define an initial state which is activated when a transition terminates on the border of the hierarchical state and no history is active.
 
 A hierarchical state can have a history.
-When a transition terminates on the border of the hierarchical state and it has a history, the latest active state is automatically activated.
+When a transition terminates on the border of the hierarchical state with history, the latest active state is automatically activated.
 If no history is available, the default state is activated.
 If none is defined, an illegal state error occurs.
 
@@ -89,7 +89,7 @@ The second is the event being processed.__
 The event class triggering transitions in the finite state machine must be an enumeration type.
 
 The state class defining the set of possible states in the finite state machine must be an enumeration type.
-Convention calls the root state enclosing the whole machine _Root_.
+the root state enclosing the whole machine is called per convention _Root_.
 
 [plantuml,fsm-design-machine_model,svg]
 ....

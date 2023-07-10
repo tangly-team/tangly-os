@@ -13,23 +13,27 @@
 package net.tangly.erp.crm.ui;
 
 import com.vaadin.flow.component.HtmlComponent;
+import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.tabs.TabSheet;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import com.vaadin.flow.router.PageTitle;
 import net.tangly.core.codes.CodeType;
-import net.tangly.core.providers.ProviderInMemory;
-import net.tangly.core.providers.ProviderView;
 import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.Interaction;
 import net.tangly.erp.crm.domain.InteractionCode;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
-import net.tangly.ui.components.*;
+import net.tangly.ui.components.CommentsView;
+import net.tangly.ui.components.EntityField;
+import net.tangly.ui.components.EntityForm;
+import net.tangly.ui.components.EntityView;
+import net.tangly.ui.components.ItemForm;
+import net.tangly.ui.components.TagsView;
+import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
@@ -42,7 +46,7 @@ class InteractionsView extends EntityView<Interaction> {
 
     static class InteractionForm extends EntityForm<Interaction, InteractionsView> {
         protected InteractionForm(@NotNull InteractionsView parent) {
-            super(parent);
+            super(parent, Interaction.class);
         }
 
         @Override
@@ -51,7 +55,7 @@ class InteractionsView extends EntityView<Interaction> {
 
             TextField potential = VaadinUtils.createTextField("Potential", "potential");
             TextField probability = VaadinUtils.createTextField("Probability", "probability");
-            CodeField<InteractionCode> code = new CodeField(CodeType.of(InteractionCode.class), "code");
+            ComboBox<InteractionCode> code = ItemForm.createCodeField(CodeType.of(InteractionCode.class), "code");
 
             FormLayout form = new FormLayout();
             VaadinUtils.set3ResponsiveSteps(form);

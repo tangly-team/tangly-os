@@ -49,7 +49,7 @@ public interface HasComments {
      * @param comments comments to be added, cannot be null
      * @see HasComments#add(Comment)
      */
-    default void addCommnents(@NotNull Iterable<Comment> comments) {
+    default void addComments(@NotNull Iterable<Comment> comments) {
         comments.forEach(this::add);
     }
 

@@ -48,8 +48,8 @@ public class ProviderHasOid<T extends HasOid> implements Provider<T> {
     }
 
     /**
-     * Checks if the entity can be added through the provider. The entity can be added either if no entity with the same oid is already stored in the provider or
-     * the stored entity and the entity we shall add is the same Java object.
+     * Checks if the entity can be added through the provider. The entity can be added either if no entity with the same oid is already stored in the provider or the stored entity,
+     * and the entity we shall add is the same Java object.
      *
      * @param entity entity to be added
      * @return flag indicating if it is allowed to add the object
