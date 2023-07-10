@@ -6,7 +6,7 @@
 # To run the image use:
 # docker run --rm -ti -p 8080:8080 -e PORT=8080  -v /var/tangly-erp:/var/tangly-erp tanglyllc/tangly-erp:latest
 # chmod o+rwx
-FROM temurin:20
+FROM eclipse-temurin:20
 
 RUN mkdir -p /var/tangly-erp
 RUN mkdir -p /var/tangly-erp/import
