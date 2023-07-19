@@ -9,7 +9,7 @@ log4j2-version = '2.20.0'
 openapi-version = "5.6.1"
 microstream-version = '08.01.01-MS-GA'
 mustang-version = '2.7.3'
-vaadin-version = '24.1.2'
+vaadin-version = '24.1.3'
 
 [plugins]
 vaadin = { id = "com.vaadin", version.ref = "vaadin-version" }
@@ -45,14 +45,14 @@ asciidoctorj-pdf = "org.asciidoctor:asciidoctorj-pdf:2.3.9"
 
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj-version" }
 eo-yaml = "com.amihaiemil.web:eo-yaml:5.2.1"
-flyway = "org.flywaydb:flyway-core:9.20.0"
+flyway = "org.flywaydb:flyway-core:9.20.1"
 hsqldb = "org.hsqldb:hsqldb:2.7.2"
 iban4j = "org.iban4j:iban4j:3.2.5-RELEASE"
 
 ical4j-core = "org.mnode.ical4j:ical4j:3.2.1"
 ical4j-vcard = "org.mnode.ical4j:ical4j-vcard:1.0.7"
 
-google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.16"
+google-libphonenumber = "com.googlecode.libphonenumber:libphonenumber:8.13.17"
 
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson-version" }
 jackson-parameters = { module = "com.fasterxml.jackson.module:jackson-module-parameter-names", version.ref = "jackson-version" }
@@ -93,7 +93,7 @@ mustang-validator = { module = "org.mustangproject:validator", version.ref = "mu
 
 neo4j = "org.neo4j:neo4j:4.3.7"
 
-qrbill = "net.codecrete.qrbill:qrbill-generator:3.0.7"
+qrbill = "net.codecrete.qrbill:qrbill-generator:3.1.0"
 
 microstream-storage = { module = "one.microstream:microstream-storage-embedded", version.ref = "microstream-version" }
 microstream-jdk8 = { module = "one.microstream:microstream-persistence-binary-jdk8", version.ref = "microstream-version" }
