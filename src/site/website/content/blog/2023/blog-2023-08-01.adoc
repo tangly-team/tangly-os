@@ -1,6 +1,6 @@
 ---
 title: "Corporate Governance for Software Products"
-linkTitle: "Corporate Governance"
+linkTitle: "Governance"
 date: 2023-08-01
 tags: ["agile", "devops"]
 ---

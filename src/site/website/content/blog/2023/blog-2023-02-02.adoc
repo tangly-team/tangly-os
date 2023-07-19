@@ -168,7 +168,7 @@ The community requests such improvements for years.
 _Use GitHub or GitLab._
 
 We decided to phase out the usage of BitBucket and use more modern platforms.
-We use currently GitHub as our primary platform and GitLab as a fallback solution.
+We currently use GitHub as our primary platform and GitLab as a fallback solution.
 
 GitHub supports {ref-asciidoc}, has a reasonable CI offering, and their _CNAME_ support is awesome <<cname-github-pages>>.
 

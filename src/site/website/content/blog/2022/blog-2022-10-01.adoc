@@ -19,7 +19,9 @@ Vaadin is a framework to create graphical user interfaces using plain Java, or a
 You develop in Java, and the framework takes care of all the rest.
 It generates the client-side code, and the communication between the client-side code in the browser and the backend code on the server.
 
-Your team only needs to program in the Java stack.
+Your team only needs to program in the Java stack
+footnote:[It is a modern user interface framework and uses Modern Java as a programming language.
+It easily superseeds old 4GL approaches such as dBase, Clipper, FileMaker, Visual Fox Pro, PowerBuilder, Borland Paradox, 4th Dimension, or Oracle Forms.].
 Your developers focus on their key competencies.
 This is a huge advantage.
 
