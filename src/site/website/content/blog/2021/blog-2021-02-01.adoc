@@ -40,7 +40,7 @@ My own interpretation of agile as doctrine is:
 * Take small steps, collect data, validate every step, update your approach.
 Apply the _Plan-Do-Check-Act_ https://en.wikipedia.org/wiki/PDCA[PDCA loop].
 Clean up as you go.
-* Lead and cycle-time are measures of the organizational agility.
+* Lead and cycle-time are measures of organizational agility.
 Track them.
 
 Do not ask for permission when you want to continuously improve.
@@ -49,7 +49,7 @@ This is a core responsibility of your teams and team members.
 
 You have the retrospectives to identify and plan your improvements.
 You must allocate time for implementing the improvement in every sprint.
-{ref-scrum} is clear, at least one improvement measure is a high priority backlog item in the next sprint
+{ref-scrum} is clear, at least one improvement measure is a high-priority backlog item in the next sprint
 footnote:[Sadly, the Scrum Guide revision of 2020 removed this rule. They deleted this PDCA mechanism.].
 
 If you can choose, do *not* use SAFe.
@@ -166,7 +166,7 @@ After that, reduce, _not eliminate!_ the external technical coaching or let the 
 * Let the team use internal social pressure.
 * Eliminate specialization, push mastery.
 * At the beginning, follow the {ref-less} rules.
-* Extended responsibility, rounded products provide a room and freedom for better decisions.
+* Extended responsibility, rounded products provide room and freedom for better decisions.
 
 === Remember
 

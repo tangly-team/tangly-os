@@ -151,7 +151,8 @@ Linux distributions often include the git application.
 If not use the package manager to download and install the {ref-git} tools.
 
 MacOS users should use https://brew.sh/[homebrew] as a package manager.
-Homebrew can download and install a huge set of Unix packages.To install git, you just have to execute _brew install git_.
+Homebrew can download and install a huge set of Unix packages.
+To install git, you just have to execute _brew install git_.
 
 The huge advantage of package managers is the update function to install new versions of your applications without any configuration activities.
 
@@ -168,7 +169,6 @@ Repository::
 Where Git permanently stores the changes you have made as different versions of the project.
 
 [source,console]
-
 ----
 git init // <1>
 git clone https://gitlab.enterpriselab.ch/tangly/tangly-os.git // <2>
@@ -326,7 +326,7 @@ Both are stored in the same repository and can be marked with a version label Yo
 
 IntelliJ has native support for markdown and an excellent plugin for Asciidoc.
 
-Gitlab provides the https://docs.gitlab.com/ee/user/project/pages/[Pages] concept to create and publish a complete documentation of a product.
+Gitlab provides the https://docs.gitlab.com/ee/user/project/pages/[Pages] concept to create and publish complete documentation of a product.
 
 === Diagrams
 
@@ -414,7 +414,7 @@ pick 474bf0c2 last commit
 ==== Cherry Picking
 
 Cherry-picking in Git means choosing a commit from one branch and applying it onto another.
-This is in contrast with other ways, such as _merge_ and _rebase_ which normally apply many commits onto another branch.
+This is in contrast with other ways, such as _merge_ and _rebase_, which normally apply many commits onto another branch.
 
 You can display the hashes of your commits in the _trunk_ with the command:
 

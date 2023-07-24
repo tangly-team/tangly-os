@@ -60,7 +60,7 @@ The maintainer of the library is often not aware you need _Path_ to unit test wi
 === Paths
 
 Alternative file system operations require all methods to use path objects instead of file objects.
-File objects contain the name of the accessed file but loose all references to the underlying file system.
+File objects contain the name of the accessed file but lose all references to the underlying file system.
 All operations using file objects implicitly use the default file system.
 
 Path objects encapsulate the file and the file system.

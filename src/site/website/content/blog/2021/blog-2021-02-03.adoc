@@ -44,12 +44,12 @@ I use macOS and Linux, not Microsoft and Office.
 * Send me a meaningful invitation.
 Provide
 ** Purpose and goals of the meeting.
-** an agenda, ideally each item has a tentative duration.
-** an attendee list, normally visible in the ICS invitation.
-** attach the documents I shall read before the meeting in the invitation.
+** An agenda, ideally each item has a tentative duration.
+** An attendee list, normally visible in the ICS invitation.
+** Attach the documents I shall read before the meeting in the invitation.
 You can also provide links to the documents.
 Please do not require a login to access the document.
-* add the link and password for the online conference such as Zoom, Google Hangouts, Webex, Slack, or Microsoft Teams. +
+* Add the link and password for the online conference such as Zoom, Google Hangouts, Webex, Slack, or Microsoft Teams. +
 For a physical meeting, please provide room identification and some information about how to get to the location.
 I do not know where the meeting room _Dijkstra-R1-8.815_ is.
 
@@ -103,7 +103,8 @@ And then we discuss it.
 No PowerPoint presentation::
 No PowerPoints are used inside Amazon.
 Somebody for the meeting has prepared a six-page narrative structured memo.
-It has real sentences, and topic sentences, and verbs, and nouns. it is not just bullet points.
+It has real sentences, and topic sentences, and verbs, and nouns.
+It is not just bullet points.
 Two pizza sized teams::
 We try to create teams that are no larger than can be fed by two pizzas.
 ====

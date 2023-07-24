@@ -64,19 +64,19 @@ They to ensure that they remain compliant with appropriate legal regulations and
 
 Governance typically addresses areas such as:
 
-* The evolution and support of roles and responsibilities to streamline how people work together
-* Definition of decision rights and decision-making processes to streamline interactions between people
-* The evolution and support of common procedures and guidelines to ensure appropriate commonality of activities and artifacts
-* The evolution and support of common guidance to motivate the efforts of teams across your organization
-* Promotion of ethics and social responsibility
-* Effective and timely investment to sustain and extend the organization over the long term
-* The monitoring of activities to provide insight into their effectiveness
-* Formation of a governing body that is responsible for guiding governance activities
-* Definition of exceptions and escalation processes to streamline critical interactions
-* Creation of a knowledge sharing strategy to grow individuals, teams, and the organization as a whole
-* The support and monitoring of risk mitigation strategies across your organization
-* Adoption of a reward and compensation structure to support the attraction and retention of excellent staff
-* Strategies to share information throughout the organization
+* The evolution and support of roles and responsibilities to streamline how people work together.
+* Definition of decision rights and decision-making processes to streamline interactions between people.
+* The evolution and support of common procedures and guidelines to ensure appropriate commonality of activities and artifacts.
+* The evolution and support of common guidance to motivate the efforts of teams across your organization.
+* Promotion of ethics and social responsibility.
+* Effective and timely investment to sustain and extend the organization over the long term.
+* The monitoring of activities to provide insight into their effectiveness.
+* Formation of a governing body that is responsible for guiding governance activities.
+* Definition of exceptions and escalation processes to streamline critical interactions.
+* Creation of a knowledge sharing strategy to grow individuals, teams, and the organization as a whole.
+* The support and monitoring of risk mitigation strategies across your organization.
+* Adoption of a reward and compensation structure to support the attraction and retention of excellent staff.
+* Strategies to share information throughout the organization.
 
 https://www.pmi.org/disciplined-agile[Disciplined Agile] promotes a lean approach to governance.
 Lean governance is the leadership, organizational structures and streamlined processes to enable everyone to work together effectively in sustaining and extending the organization’s ability to produce meaningful value for its customers.
