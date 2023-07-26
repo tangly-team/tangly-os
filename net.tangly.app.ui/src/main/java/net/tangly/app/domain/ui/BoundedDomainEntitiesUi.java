@@ -20,7 +20,6 @@ import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.menubar.MenuBar;
-import com.vaadin.flow.data.binder.ValidationException;
 import net.tangly.app.domain.model.BoundedDomainEntities;
 import net.tangly.core.providers.Provider;
 import net.tangly.ui.app.domain.BoundedDomainUi;
@@ -28,7 +27,7 @@ import net.tangly.ui.app.domain.DomainView;
 import net.tangly.ui.components.EntityForm;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.ItemForm;
-import net.tangly.ui.components.ItemView;
+import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.One2ManyView;
 import net.tangly.ui.components.One2OneField;
 import org.jetbrains.annotations.NotNull;
@@ -44,8 +43,8 @@ public class BoundedDomainEntitiesUi implements BoundedDomainUi {
 
     public BoundedDomainEntitiesUi(BoundedDomainEntities domain) {
         this.domain = domain;
-        entityThreeView = new EntityThreeView(BoundedDomainEntities.EntityThree.class, domain, domain.realm().threeEntities(), ItemView.Mode.VIEW);
-        entityFourView = new EntityFourView(BoundedDomainEntities.EntityFour.class, domain, domain.realm().fourEntities(), ItemView.Mode.EDIT);
+        entityThreeView = new EntityThreeView(BoundedDomainEntities.EntityThree.class, domain, domain.realm().threeEntities(), Mode.VIEW);
+        entityFourView = new EntityFourView(BoundedDomainEntities.EntityFour.class, domain, domain.realm().fourEntities(), Mode.EDIT);
         domainView = new DomainView(domain);
         currentView = entityThreeView;
     }
@@ -81,13 +80,8 @@ public class BoundedDomainEntitiesUi implements BoundedDomainUi {
 
         public static class EntityThreeForm extends EntityForm<BoundedDomainEntities.EntityThree, EntityThreeView> {
             public EntityThreeForm(@NotNull EntityThreeView parent) {
-                super(parent, BoundedDomainEntities.EntityThree.class);
+                super(parent, BoundedDomainEntities.EntityThree::new);
                 init();
-            }
-
-            @Override
-            protected BoundedDomainEntities.EntityThree createOrUpdateInstance(BoundedDomainEntities.EntityThree entity) throws ValidationException {
-                return createOrUpdateInstance(entity, BoundedDomainEntities.EntityThree::new);
             }
         }
     }
@@ -108,26 +102,28 @@ public class BoundedDomainEntitiesUi implements BoundedDomainUi {
         public static class EntityFourForm extends EntityForm<BoundedDomainEntities.EntityFour, EntityFourView> {
             private One2OneField<BoundedDomainEntities.EntityThree> one2oneField;
             private One2ManyView<BoundedDomainEntities.EntityFour, BoundedDomainEntities.EntityThree> one2ManyView;
+            private ComboBox<BoundedDomainEntities.ActivityCode> codeField;
 
             public EntityFourForm(@NotNull EntityFourView parent) {
-                super(parent, BoundedDomainEntities.EntityFour.class);
+                super(parent, BoundedDomainEntities.EntityFour::new);
                 init();
             }
 
             @Override
             protected void init() {
                 super.init();
-                one2oneField = new One2OneField<>("one2one", parent().domain().realm().threeEntities());
+                one2oneField = new One2OneField<>("one2one", BoundedDomainEntities.EntityThree.class, parent().domain().realm().threeEntities());
                 binder().bind(one2oneField, BoundedDomainEntities.EntityFour::one2one, BoundedDomainEntities.EntityFour::one2one);
-                ComboBox<BoundedDomainEntities.ActivityCode> codeField =
-                    ItemForm.createCodeField(parent().registry().find(BoundedDomainEntities.ActivityCode.class).orElseThrow(), "Activity Code");
+                codeField = ItemForm.createCodeField(parent().registry().find(BoundedDomainEntities.ActivityCode.class).orElseThrow(), "Activity Code");
                 binder().bind(codeField, BoundedDomainEntities.EntityFour::activity, BoundedDomainEntities.EntityFour::activity);
                 FormLayout details = new FormLayout();
                 details.add(codeField, one2oneField);
                 addTabAt("details", details, 1);
 
                 // TODO one2many ui
-                one2ManyView = new One2ManyView<>("one2many", parent().domain().realm().threeEntities());
+                one2ManyView =
+                    new One2ManyView<>("one2many", BoundedDomainEntities.EntityThree.class, parent().domain().realm().threeEntities(), BoundedDomainEntities.EntityFour::one2many,
+                        BoundedDomainEntities.EntityFour::addOne2Many, BoundedDomainEntities.EntityFour::removeOne2Many);
                 FormLayout one2many = new FormLayout();
                 one2many.add(one2ManyView);
                 addTabAt("one2many", one2many, 2);
@@ -135,14 +131,10 @@ public class BoundedDomainEntitiesUi implements BoundedDomainUi {
             }
 
             @Override
-            public void mode(@NotNull ItemView.Mode mode) {
+            public void mode(@NotNull Mode mode) {
                 super.mode(mode);
+                codeField.setReadOnly(mode.readonly());
                 one2oneField.setReadOnly(mode.readonly());
-            }
-
-            @Override
-            protected BoundedDomainEntities.EntityFour createOrUpdateInstance(BoundedDomainEntities.EntityFour entity) throws ValidationException {
-                return createOrUpdateInstance(entity, BoundedDomainEntities.EntityFour::new);
             }
         }
     }

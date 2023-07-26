@@ -14,15 +14,8 @@
 package net.tangly.app.domain.model;
 
 import net.tangly.core.Comment;
-import net.tangly.core.Entity;
-import net.tangly.core.EntityImp;
-import net.tangly.core.HasComments;
-import net.tangly.core.HasId;
-import net.tangly.core.HasName;
-import net.tangly.core.HasOid;
-import net.tangly.core.HasTags;
-import net.tangly.core.HasText;
-import net.tangly.core.HasTimeInterval;
+import net.tangly.core.EntityExtended;
+import net.tangly.core.EntityExtendedImp;
 import net.tangly.core.Tag;
 import net.tangly.core.TagType;
 import net.tangly.core.TypeRegistry;
@@ -99,7 +92,7 @@ public class BoundedDomainEntities
     /**
      * Entity Three demonstrates oid, id, name, time interval, text, comment and tag features.
      */
-    public static class EntityThree extends EntityImp implements HasOid, HasId, HasName, HasTimeInterval, HasText, HasComments, HasTags, Entity {
+    public static class EntityThree extends EntityExtendedImp implements EntityExtended {
         public EntityThree(long oid) {
             super(oid);
         }
@@ -109,10 +102,10 @@ public class BoundedDomainEntities
      * Entity Four demonstrates entity abstraction and code features. An entity has an oid, id, name, time interval, text, comments and tags. The one-to-one and one-to-many
      * relations are also demonstrated.
      */
-    public static class EntityFour extends EntityImp implements Entity {
-        private final List<EntityThree> one2many;
-        private EntityThree one2one;
+    public static class EntityFour extends EntityExtendedImp implements EntityExtended {
         private ActivityCode activity;
+        private EntityThree one2one;
+        private final List<EntityThree> one2many;
 
         public EntityFour(long oid) {
             super(oid);
@@ -143,6 +136,14 @@ public class BoundedDomainEntities
             this.one2many.clear();
             this.one2many.addAll(one2many);
         }
+
+        public void addOne2Many(EntityThree entity) {
+            one2many.add(entity);
+        }
+
+        public void removeOne2Many(EntityThree entity) {
+            one2many.remove(entity);
+        }
     }
 
     public static class AppRealm implements Realm {
@@ -167,8 +168,8 @@ public class BoundedDomainEntities
             IntStream.rangeClosed(1, 100).forEach(o -> {
                 var entity = createEntityThree(o, Integer.toString(o), "Entity three-" + o, LocalDate.of(2000, Month.JANUARY, 1), LocalDate.of(2000, Month.DECEMBER, 31),
                     "Entity _three_ text-" + o);
-                entity.add(Comment.of(LocalDateTime.of(2000, Month.JANUARY, 1, 12, 12), "John Doee", "First comment for _entity_ three " + o));
-                entity.add(Comment.of(LocalDateTime.of(2000, Month.JANUARY, 1, 12, 15), "John Doee", "Second comment for _entity_ three " + o));
+                entity.add(Comment.of(LocalDateTime.of(2000, Month.JANUARY, 1, 12, 12), "John Doe", "First comment for _entity_ three " + o));
+                entity.add(Comment.of(LocalDateTime.of(2000, Month.JANUARY, 1, 12, 15), "John Doe", "Second comment for _entity_ three " + o));
                 entity.add(Tag.of(DOMAIN, TAG_MANDATORY_STRING_VALUE, "value" + o));
                 entity.add(Tag.of(DOMAIN, TAG_OPTIONAL_STRING_VALUE, ((o % 2) == 0) ? "value-optional-" + o : null));
                 entity.add(Tag.ofEmpty(DOMAIN, TAG_WITH_NO_VALUE));
@@ -182,17 +183,17 @@ public class BoundedDomainEntities
                 entity.add(Tag.of(DOMAIN, TAG_MANDATORY_STRING_VALUE, "value" + o));
                 entity.add(Tag.of(DOMAIN, TAG_OPTIONAL_STRING_VALUE, ((o % 2) == 0) ? "value-optional-" + o : null));
                 entity.add(Tag.ofEmpty(DOMAIN, TAG_WITH_NO_VALUE));
-                entity.one2one(Provider.findByOid(threeEntities(), o).get());
+                entity.one2one(Provider.findByOid(threeEntities(), o).orElseThrow());
                 fourEntities().update(entity);
             });
         }
 
         private EntityThree createEntityThree(long oid, String id, String name, LocalDate from, LocalDate to, String text) {
-            return EntityImp.init(new EntityThree(oid), id, name, from, to, text);
+            return EntityExtendedImp.init(new EntityThree(oid), id, name, from, to, text);
         }
 
         private EntityFour createEntityFour(long oid, String id, String name, LocalDate from, LocalDate to, String text) {
-            EntityFour entity = EntityImp.init(new EntityFour(oid), id, name, from, to, text);
+            EntityFour entity = EntityExtendedImp.init(new EntityFour(oid), id, name, from, to, text);
             entity.activity(ActivityCode.audiocall);
             return entity;
         }

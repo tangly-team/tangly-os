@@ -19,22 +19,23 @@ import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.app.domain.model.BoundedDomainSimpleEntities;
+import net.tangly.core.DateRange;
+import net.tangly.core.HasDateRange;
 import net.tangly.core.HasId;
 import net.tangly.core.HasName;
 import net.tangly.core.HasOid;
 import net.tangly.core.HasText;
-import net.tangly.core.HasTimeInterval;
 import net.tangly.core.providers.Provider;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.components.EntityForm;
 import net.tangly.ui.components.EntityView;
-import net.tangly.ui.components.ItemView;
+import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
 /**
- * Test user interface when the domain entities are modelled with Java record. The first entities are editable, the second entities are displayed as readonly items.
+ * Test user interface when the domain entities are modeled with Java record. The first entities are editable, the second entities are displayed as readonly items.
  * <p>The simple entities are displayed using the {@link EntityView}, {@link net.tangly.ui.components.EntityFilter}, and {@link EntityForm}.
  * These visual classes have logic to display all properties of a simple entity.</p>
  */
@@ -51,8 +52,8 @@ public class BoundedDomainSimpleEntitiesUi implements BoundedDomainUi {
      */
     public BoundedDomainSimpleEntitiesUi(BoundedDomainSimpleEntities domain) {
         this.domain = domain;
-        entityOneView = new EntityOneView(BoundedDomainSimpleEntities.SimpleEntityOne.class, domain, domain.realm().oneEntities(), ItemView.Mode.VIEW);
-        entityTwoView = new EntityTwoView(BoundedDomainSimpleEntities.simpleEntityTwo.class, domain, domain.realm().twoEntities(), ItemView.Mode.EDIT);
+        entityOneView = new EntityOneView(BoundedDomainSimpleEntities.SimpleEntityOne.class, domain, domain.realm().oneEntities(), Mode.VIEW);
+        entityTwoView = new EntityTwoView(BoundedDomainSimpleEntities.simpleEntityTwo.class, domain, domain.realm().twoEntities(), Mode.EDIT);
         currentView = entityOneView;
     }
 
@@ -86,14 +87,14 @@ public class BoundedDomainSimpleEntitiesUi implements BoundedDomainUi {
 
         public static class EntityOneForm extends EntityForm<BoundedDomainSimpleEntities.SimpleEntityOne, EntityOneView> {
             public EntityOneForm(@NotNull EntityOneView parent) {
-                super(parent, BoundedDomainSimpleEntities.SimpleEntityOne.class);
+                super(parent, null);
                 init();
             }
 
             @Override
             protected BoundedDomainSimpleEntities.SimpleEntityOne createOrUpdateInstance(BoundedDomainSimpleEntities.SimpleEntityOne entity) {
-                return new BoundedDomainSimpleEntities.SimpleEntityOne(fromBinder(HasOid.OID), fromBinder(HasId.ID), fromBinder(HasName.NAME), fromBinder(HasTimeInterval.FROM),
-                    fromBinder(HasTimeInterval.TO), fromBinder(HasText.TEXT));
+                return new BoundedDomainSimpleEntities.SimpleEntityOne(fromBinder(HasOid.OID), fromBinder(HasId.ID), fromBinder(HasName.NAME),
+                    DateRange.of(fromBinder(HasDateRange.FROM), fromBinder(HasDateRange.TO)), fromBinder(HasText.TEXT));
             }
         }
     }
@@ -108,14 +109,14 @@ public class BoundedDomainSimpleEntitiesUi implements BoundedDomainUi {
 
         public static class EntityTwoForm extends EntityForm<BoundedDomainSimpleEntities.simpleEntityTwo, EntityTwoView> {
             public EntityTwoForm(@NotNull EntityTwoView parent) {
-                super(parent, BoundedDomainSimpleEntities.simpleEntityTwo.class);
+                super(parent, null);
                 init();
             }
 
             @Override
             protected BoundedDomainSimpleEntities.simpleEntityTwo createOrUpdateInstance(BoundedDomainSimpleEntities.simpleEntityTwo entity) {
-                return new BoundedDomainSimpleEntities.simpleEntityTwo(fromBinder(HasOid.OID), fromBinder(HasId.ID), fromBinder(HasName.NAME), fromBinder(HasTimeInterval.FROM),
-                    fromBinder(HasTimeInterval.TO), fromBinder(HasText.TEXT));
+                return new BoundedDomainSimpleEntities.simpleEntityTwo(fromBinder(HasOid.OID), fromBinder(HasId.ID), fromBinder(HasName.NAME),
+                    DateRange.of(fromBinder(HasDateRange.FROM), fromBinder(HasDateRange.TO)), fromBinder(HasText.TEXT));
             }
 
         }

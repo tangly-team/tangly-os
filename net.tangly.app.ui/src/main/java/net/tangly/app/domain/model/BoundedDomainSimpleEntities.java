@@ -13,11 +13,8 @@
 
 package net.tangly.app.domain.model;
 
-import net.tangly.core.HasId;
-import net.tangly.core.HasName;
-import net.tangly.core.HasOid;
-import net.tangly.core.HasText;
-import net.tangly.core.HasTimeInterval;
+import net.tangly.core.DateRange;
+import net.tangly.core.Entity;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
@@ -59,13 +56,13 @@ public class BoundedDomainSimpleEntities extends
      * Simple entity one demonstrates oid, id, name, time interval, text.
      */
 
-    public record SimpleEntityOne(long oid, String id, String name, LocalDate from, LocalDate to, String text) implements HasOid, HasId, HasName, HasText, HasTimeInterval {
+    public record SimpleEntityOne(long oid, String id, String name, DateRange range, String text) implements Entity {
     }
 
     /**
      * Simple entity two demonstrates oid, id, name, time interval, text.
      */
-    public record simpleEntityTwo(long oid, String id, String name, LocalDate from, LocalDate to, String text) implements HasOid, HasId, HasName, HasText, HasTimeInterval {
+    public record simpleEntityTwo(long oid, String id, String name, DateRange range, String text) implements Entity {
     }
 
     public static class AppRealm implements Realm {
@@ -90,9 +87,9 @@ public class BoundedDomainSimpleEntities extends
             LocalDate from = LocalDate.of(2000, Month.JANUARY, 1);
             LocalDate to = LocalDate.of(2000, Month.DECEMBER, 31);
             LongStream.rangeClosed(1, 100)
-                .forEach(o -> oneEntities().update(new SimpleEntityOne(o, Long.toString(o), "Simple entity one-" + o, from, to, "Simple entity _one_ text-" + o)));
+                .forEach(o -> oneEntities().update(new SimpleEntityOne(o, Long.toString(o), "Simple entity one-" + o, DateRange.of(from, to), "Simple entity _one_ text-" + o)));
             LongStream.rangeClosed(1, 100)
-                .forEach(o -> twoEntities().update(new simpleEntityTwo(o, Long.toString(o), "simple entity two-" + o, from, to, "Simple entity _two_ text-" + o)));
+                .forEach(o -> twoEntities().update(new simpleEntityTwo(o, Long.toString(o), "simple entity two-" + o, DateRange.of(from, to), "Simple entity _two_ text-" + o)));
         }
     }
 
