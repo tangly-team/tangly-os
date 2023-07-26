@@ -21,6 +21,8 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.server.VaadinSession;
 import net.tangly.core.Comment;
 import net.tangly.core.HasComments;
+import net.tangly.core.domain.BoundedDomain;
+import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
 
@@ -35,7 +37,7 @@ import java.util.Objects;
  * <p>the filter conditions are defined as follow. You can filter by author, by a string contained in the text, or a time interval during which the comment was created.
  * Therefore to select the range of interest you need to input two dates.</p>
  */
-public class CommentsView extends ItemView<Comment> implements BindableComponent.HasBindValue<HasComments> {
+public class CommentsView extends ItemView<Comment> implements HasBindValue<HasComments> {
     private static final String CREATED = "created";
     private static final String AUTHOR = "author";
     private static final String TEXT = "text";
@@ -75,10 +77,10 @@ public class CommentsView extends ItemView<Comment> implements BindableComponent
     }
 
     static class CommentForm extends ItemForm<Comment, CommentsView> {
-        protected Binder<Comment> itemBinder;
-        protected DateTimePicker created;
-        protected TextField author;
-        protected TextField text;
+        private Binder<Comment> itemBinder;
+        private DateTimePicker created;
+        private TextField author;
+        private TextField text;
 
         public CommentForm(@NotNull CommentsView parent) {
             super(parent);
@@ -95,7 +97,6 @@ public class CommentsView extends ItemView<Comment> implements BindableComponent
             fieldsLayout.add(created, author, text);
             fieldsLayout.setColspan(text, 3);
             fieldsLayout.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1), new FormLayout.ResponsiveStep("320px", 2), new FormLayout.ResponsiveStep("500px", 3));
-
             form().add(fieldsLayout, createButtonBar());
             itemBinder = new Binder<>(Comment.class);
             itemBinder.forField(created).bind(Comment::created, null);
@@ -125,16 +126,37 @@ public class CommentsView extends ItemView<Comment> implements BindableComponent
             text.clear();
         }
 
+        /**
+         * Handle the edition or addition of an immutable comment. If the parameter is not null, it is removed from the list before the changed version is added. The updated
+         * property values are retrieved from the form. The logic of the item form we inherited from takes care of the provider update to synchronize the user interface grid.
+         *
+         * @param entity the entity to update or null if it is a created or duplicated instance
+         * @return new comment of the entity
+         */
         @Override
         protected Comment createOrUpdateInstance(Comment entity) {
-            return new Comment(author.getValue(), text.getValue());
+            Comment comment = new Comment(author.getValue(), text.getValue());
+            HasComments hasComments = parent().hasComments;
+            if (entity != null) {
+                hasComments.remove(entity);
+            }
+            hasComments.add(comment);
+            return comment;
         }
     }
 
     private transient HasComments hasComments;
 
-    public CommentsView(HasComments entity, Mode mode) {
-        super(Comment.class, null, ProviderInMemory.of(Objects.nonNull(entity) ? entity.comments() : Collections.emptyList()), new CommentFilter(), mode);
+    /**
+     * The view is created with an optional entity providing the comments to display. The set of comments can be later updated by calling {@link ItemView#provider(Provider)}.
+     *
+     * @param entity optional entity with the comment set
+     * @param domain optional domain to which the generic entity belongs to
+     * @param mode   mode of the component
+     */
+
+    public CommentsView(HasComments entity, @NotNull BoundedDomain<?, ?, ?, ?> domain, @NotNull Mode mode) {
+        super(Comment.class, domain, ProviderInMemory.of(Objects.nonNull(entity) ? entity.comments() : Collections.emptyList()), new CommentFilter(), mode);
         form = new CommentForm(this);
         this.hasComments = entity;
         init();
@@ -152,11 +174,6 @@ public class CommentsView extends ItemView<Comment> implements BindableComponent
             provider(ProviderInMemory.of(Objects.nonNull(value) ? value.comments() : Collections.emptyList()));
             dataView().refreshAll();
         }
-    }
-
-    @Override
-    public void bind(@NotNull Binder<HasComments> binder, boolean readonly) {
-
     }
 
     @Override

@@ -28,19 +28,15 @@ import com.vaadin.flow.component.textfield.TextFieldVariant;
 import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.data.selection.SingleSelect;
 import com.vaadin.flow.data.value.ValueChangeMode;
+import net.tangly.core.DateRange;
 import net.tangly.core.TypeRegistry;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
-import software.xdev.vaadin.daterange_picker.business.DateRangeModel;
-import software.xdev.vaadin.daterange_picker.business.SimpleDateRanges;
-import software.xdev.vaadin.daterange_picker.ui.DateRangePicker;
 
 import java.time.LocalDate;
-import java.time.Month;
-import java.util.Arrays;
 import java.util.Objects;
-import java.util.function.BiConsumer;
+import java.util.Set;
 import java.util.function.Consumer;
 
 /**
@@ -82,57 +78,14 @@ import java.util.function.Consumer;
  * <h2>Menu Extensions</h2>
  * <p>Views can add menu options to perform an action on the selected item or on the whole list. A set of related actions are
  * added to the popup menu with a separation. Multiple blocks can be added.</p>
- * <code>
- *     var items = List.of(new AbstractMap.SimpleImmutableEntry(Mode.EDIT_TEXT,
- *                 (ComponentEventListener<GridContextMenu.GridContextMenuItemClickEvent<T>>) ((e) -> form.edit(e.getItem().orElse(null)))));
- * </code>
+ * {@snippet :
+ * var items = List.of(new AbstractMap.SimpleImmutableEntry(Mode.EDIT_TEXT,
+ * (ComponentEventListener<GridContextMenu.GridContextMenuItemClickEvent<T>>)((e)->form.edit(e.getItem().orElse(null)))));
+ *}
  *
  * @param <T> Type of the displayed entities
  */
 public abstract class ItemView<T> extends VerticalLayout {
-
-    public enum Mode {
-        LIST(Mode.LIST_TEXT), VIEW(Mode.VIEW_TEXT), EDIT(Mode.EDIT_TEXT), CREATE(Mode.CREATE_TEXT), DUPLICATE(Mode.DUPLICATE_TEXT), DELETE(Mode.DELETE_TEXT);
-
-        public static final String LIST_TEXT = "List";
-        public static final String VIEW_TEXT = "View";
-        public static final String EDIT_TEXT = "Edit";
-        public static final String CREATE_TEXT = "Create";
-        public static final String DUPLICATE_TEXT = "Duplicate";
-        public static final String DELETE_TEXT = "Delete";
-
-        private final String text;
-
-        Mode(@NotNull String text) {
-            this.text = text;
-        }
-
-        public String text() {
-            return text;
-        }
-
-        public boolean readonly() {
-            return (this == VIEW) || (this == DELETE);
-        }
-
-        public boolean hasForm() {
-            return (this != LIST);
-        }
-
-        /**
-         * Propagated mode for subcomponents of a view or a form.
-         *
-         * @param mode mode of the parent component
-         * @return mode of the owned components for consistency in the user experience
-         */
-        public static Mode propagated(@NotNull Mode mode) {
-            return switch (mode) {
-                case LIST -> LIST;
-                case VIEW, DELETE -> DELETE;
-                case EDIT, CREATE, DUPLICATE -> EDIT;
-            };
-        }
-    }
 
     /**
      * Filter to select a subset of entities based on one or more property values of the desired items.
@@ -182,6 +135,15 @@ public abstract class ItemView<T> extends VerticalLayout {
     private transient T entity;
     protected ItemForm<T, ?> form;
 
+    /**
+     * Constructor of the class.
+     *
+     * @param entityClass class of the generic type
+     * @param domain      optional domain to which the generic entity belongs to
+     * @param provider    provider for instances of the entity to display in the grid
+     * @param filter      optional filter for the grid
+     * @param mode        mode of the view
+     */
     protected ItemView(@NotNull Class<T> entityClass, BoundedDomain<?, ?, ?, ?> domain, @NotNull Provider<T> provider, ItemFilter<T> filter, @NotNull Mode mode) {
         this.entityClass = entityClass;
         this.domain = domain;
@@ -206,7 +168,7 @@ public abstract class ItemView<T> extends VerticalLayout {
     }
 
     public TypeRegistry registry() {
-        return domain().registry();
+        return (domain != null) ? domain().registry() : null;
     }
 
     public Mode mode() {
@@ -229,14 +191,26 @@ public abstract class ItemView<T> extends VerticalLayout {
         this.entity = entity;
     }
 
-    public static Component createTextFilterField(@NotNull Consumer<String> filterChangeConsumer) {
+    T selectedItem() {
+        return grid().getSelectedItems().stream().findAny().get();
+    }
+
+    void selectedItem(T item) {
+        grid().select(item);
+    }
+
+    Set<T> selectedItems() {
+        return grid().getSelectedItems();
+    }
+
+    public static Component createTextFilterField(@NotNull Consumer<String> consumer) {
         var field = new TextField();
         field.setValueChangeMode(ValueChangeMode.EAGER);
         field.setClearButtonVisible(true);
         field.addThemeVariants(TextFieldVariant.LUMO_SMALL);
         field.setWidthFull();
         field.getStyle().set("max-width", "100%");
-        field.addValueChangeListener(e -> filterChangeConsumer.accept(e.getValue()));
+        field.addValueChangeListener(e -> consumer.accept(e.getValue()));
         return field;
     }
 
@@ -254,10 +228,9 @@ public abstract class ItemView<T> extends VerticalLayout {
         return field;
     }
 
-    public static Component createDateRangeField(@NotNull BiConsumer<LocalDate, LocalDate> consumer) {
-        var field = new DateRangePicker<>(() -> new DateRangeModel<>(LocalDate.of(2000, Month.JANUARY, 1), LocalDate.of(2030, Month.DECEMBER, 31), SimpleDateRanges.FREE),
-            Arrays.asList(SimpleDateRanges.allValues()));
-        field.addValueChangeListener(ev -> consumer.accept(ev.getValue().getStart(), ev.getValue().getEnd()));
+    public static Component createDateRangeField(@NotNull Consumer<DateRange> consumer) {
+        var field = new DateRangePicker("interval", null, null);
+        field.addValueChangeListener(e -> consumer.accept(e.getValue()));
         return field;
     }
 

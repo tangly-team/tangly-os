@@ -15,6 +15,7 @@ package net.tangly.ui.components;
 import com.github.mvysny.kaributesting.v10.MockVaadin;
 import com.github.mvysny.kaributesting.v10.Routes;
 import net.tangly.core.Entity;
+import net.tangly.core.EntityExtended;
 import net.tangly.core.crm.LegalEntity;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -39,13 +40,12 @@ class EntityFieldTest {
     }
 
     @Test
-    void testAddressField() {
-        Entity entity = null;
-        final EntityField<Entity> entityField = new EntityField<>();
-        entityField.setValue(entity);
+    void testEntityField() {
+        final EntityField<EntityExtended> entityField = new EntityField<>();
+        entityField.setValue(null);
         assertThat(entityField.getValue()).isNull();
 
-        entity = new LegalEntity();
+        var entity = new LegalEntity(Entity.UNDEFINED_OID);
         entityField.setValue(entity);
         assertThat(entityField.getValue()).isNotNull();
     }

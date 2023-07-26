@@ -16,11 +16,12 @@ package net.tangly.ui.components;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.data.renderer.LocalDateRenderer;
+import net.tangly.core.Entity;
+import net.tangly.core.HasDateRange;
 import net.tangly.core.HasId;
 import net.tangly.core.HasName;
 import net.tangly.core.HasOid;
 import net.tangly.core.HasText;
-import net.tangly.core.HasTimeInterval;
 import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
@@ -31,7 +32,7 @@ import org.jetbrains.annotations.NotNull;
  *
  * @param <T> entity to display
  */
-public abstract class EntityView<T extends HasOid & HasId & HasName & HasTimeInterval & HasText> extends ItemView<T> {
+public class EntityView<T extends Entity> extends ItemView<T> {
     public static final String OID = "oid";
     public static final String OID_LABEL = "OID";
 
@@ -50,9 +51,15 @@ public abstract class EntityView<T extends HasOid & HasId & HasName & HasTimeInt
     public static final String TO = "to";
     public static final String TO_LABEL = "To";
 
-    public static final String ISO_DATE_FORMAT = "YYYY-MM-DD";
+    public static final String ISO_DATE_FORMAT = "yyyy-MM-dd";
 
-    protected EntityView(@NotNull Class<T> entityClass, @NotNull BoundedDomain<?, ?, ?, ?> domain, @NotNull Provider<T> provider, @NotNull Mode mode) {
+    public static <T extends Entity> EntityView<T> of(@NotNull Class<T> entityClass, @NotNull BoundedDomain<?, ?, ?, ?> domain, @NotNull Provider<T> provider, @NotNull Mode mode) {
+        EntityView<T> view = new EntityView<>(entityClass, domain, provider, mode);
+        view.init();
+        return view;
+    }
+
+    public EntityView(@NotNull Class<T> entityClass, @NotNull BoundedDomain<?, ?, ?, ?> domain, @NotNull Provider<T> provider, @NotNull Mode mode) {
         super(entityClass, domain, provider, new EntityFilter<>(), mode);
     }
 
@@ -69,13 +76,13 @@ public abstract class EntityView<T extends HasOid & HasId & HasName & HasTimeInt
     }
 
     protected void addEntityColumns(Grid<T> grid) {
-        grid.addColumn(HasOid::oid).setKey(OID).setHeader(OID_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("5em");
-        grid.addColumn(HasId::id).setKey(ID).setHeader(ID_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("12em");
-        grid.addColumn(HasName::name).setKey(NAME).setHeader(NAME_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("20em");
-        grid.addColumn(new LocalDateRenderer<>(HasTimeInterval::from, ISO_DATE_FORMAT)).setKey(FROM).setHeader(FROM_LABEL).setResizable(true).setSortable(true).setFlexGrow(0)
-            .setWidth("10em");
-        grid.addColumn(new LocalDateRenderer<>(HasTimeInterval::to, ISO_DATE_FORMAT)).setKey(TO).setHeader(TO_LABEL).setResizable(true).setSortable(true).setFlexGrow(0)
-            .setWidth("10em");
+        grid.addColumn(HasOid::oid).setKey(OID).setHeader(OID_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("4em");
+        grid.addColumn(HasId::id).setKey(ID).setHeader(ID_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("4em");
+        grid.addColumn(HasName::name).setKey(NAME).setHeader(NAME_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("16em");
+        grid.addColumn(new LocalDateRenderer<>(HasDateRange::from, ISO_DATE_FORMAT)).setKey(FROM).setHeader(FROM_LABEL).setResizable(true).setSortable(true).setFlexGrow(0)
+            .setWidth("8em");
+        grid.addColumn(new LocalDateRenderer<>(HasDateRange::to, ISO_DATE_FORMAT)).setKey(TO).setHeader(TO_LABEL).setResizable(true).setSortable(true).setFlexGrow(0)
+            .setWidth("8em");
         grid.addColumn(HasText::text).setKey(TEXT).setHeader(TEXT_LABEL).setResizable(true).setSortable(true).setFlexGrow(0).setWidth("30em");
     }
 
@@ -86,8 +93,8 @@ public abstract class EntityView<T extends HasOid & HasId & HasName & HasTimeInt
         headerRow.getCell(grid.getColumnByKey(EntityView.OID)).setComponent(createIntegerFilterField(o -> filter.oid(o.longValue())));
         headerRow.getCell(grid.getColumnByKey(EntityView.ID)).setComponent(createTextFilterField(filter::id));
         headerRow.getCell(grid.getColumnByKey(EntityView.NAME)).setComponent(createTextFilterField(filter::name));
-        headerRow.getCell(grid.getColumnByKey(EntityView.FROM)).setComponent(createDateRangeField(filter::fromInterval));
-        headerRow.getCell(grid.getColumnByKey(EntityView.TO)).setComponent(createDateRangeField(filter::toInterval));
+        headerRow.getCell(grid.getColumnByKey(EntityView.FROM)).setComponent(createDateRangeField(filter::fromRange));
+        headerRow.getCell(grid.getColumnByKey(EntityView.TO)).setComponent(createDateRangeField(filter::toRange));
         headerRow.getCell(grid.getColumnByKey(EntityView.TEXT)).setComponent(createTextFilterField(filter::text));
     }
 }

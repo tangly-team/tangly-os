@@ -21,7 +21,7 @@ import com.vaadin.flow.data.binder.Binder;
 import net.tangly.core.HasTags;
 import net.tangly.core.Tag;
 import net.tangly.core.TagType;
-import net.tangly.core.TypeRegistry;
+import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.providers.Provider;
 import net.tangly.core.providers.ProviderInMemory;
 import org.jetbrains.annotations.NotNull;
@@ -37,18 +37,18 @@ import java.util.Objects;
  * <dl>
  *     <dt>view</dt><dd>The tag properties are displayed in read-only fields. The operation can be acknowledged.</dd>
  *     <dt>create</dt><dd>The tag properties view is displayed with empty values. Only the tag names for the selected namespace will be displayed. The
- *     value field is only editable if the tag type supports values for the tag. The operation can be accepeted or canceled.</dd>
- *     <dt>update</dt><dd>Only the value of the tag can be edited. The namespace and name of the tag are read-only.The operation can be accepeted or canceled.</dd>
- *     <dt>delete</dt><dd>The selected tag is removed.The operation can be accepeted or canceled.</dd>
+ *     value field is only editable if the tag type supports values for the tag. The operation can be accepted or canceled.</dd>
+ *     <dt>update</dt><dd>Only the value of the tag can be edited. The namespace and name of the tag are read-only.The operation can be accepted or canceled.</dd>
+ *     <dt>delete</dt><dd>The selected tag is removed.The operation can be accepted or canceled.</dd>
  * </dl>
  */
-public class TagsView extends ItemView<Tag> implements BindableComponent.HasBindValue<HasTags> {
+public class TagsView extends ItemView<Tag> implements HasBindValue<HasTags> {
     private static final String NAMESPACE = "namespace";
     private static final String NAME = "name";
     private static final String VALUE = "value";
     private static final String NAMESPACE_LABEL = "Namespace";
     private static final String NAME_LABEL = "Name";
-    private static final String Value_LABEL = "Value";
+    private static final String VALUE_LABEL = "Value";
 
     static class TagFilter extends ItemFilter<Tag> {
         private String namespace;
@@ -80,27 +80,40 @@ public class TagsView extends ItemView<Tag> implements BindableComponent.HasBind
     }
 
     static class TagForm extends ItemForm<Tag, TagsView> {
-        private final transient TypeRegistry registry;
         private Binder<Tag> itemBinder;
         private ComboBox<String> namespace;
         private ComboBox<String> name;
         private TextField value;
 
-        public TagForm(@NotNull TagsView parent, @NotNull TypeRegistry registry) {
+        public TagForm(@NotNull TagsView parent) {
             super(parent);
-            this.registry = registry;
             init();
         }
 
         protected void init() {
-            FormLayout fieldsLayout = new FormLayout();
+            FormLayout layout = new FormLayout();
             namespace = new ComboBox<>(NAMESPACE);
+            namespace.setItems(parent().registry().namespaces());
+            namespace.setAllowCustomValue(false);
+            namespace.addValueChangeListener(event -> {
+                this.name.clear();
+                deactivateValue();
+                if (Objects.nonNull(event.getValue())) {
+                    name.setItems(parent().registry().tagNamesForNamespace(event.getValue()));
+                }
+            });
             name = new ComboBox<>(NAME);
             name.setRequired(true);
+            name.setAllowCustomValue(false);
+            name.addValueChangeListener(event -> {
+                if (Objects.nonNull(event.getValue())) {
+                    activateValue(parent().registry().find(namespace.getValue(), name.getValue()).orElseThrow());
+                }
+            });
             value = new TextField(VALUE);
-            fieldsLayout.add(namespace, name, value);
-            fieldsLayout.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1));
-            form().add(fieldsLayout, createButtonBar());
+            layout.add(namespace, name, value);
+            layout.setResponsiveSteps(new FormLayout.ResponsiveStep("0", 1));
+            form().add(layout, createButtonBar());
             itemBinder = new Binder<>(Tag.class);
             itemBinder.forField(namespace).bind(Tag::namespace, null);
             itemBinder.forField(name).bind(Tag::name, null);
@@ -109,31 +122,25 @@ public class TagsView extends ItemView<Tag> implements BindableComponent.HasBind
 
         @Override
         public void mode(@NotNull Mode mode) {
+            super.mode(mode);
             namespace.setReadOnly(mode.readonly());
             name.setReadOnly(mode.readonly());
             value.setReadOnly(mode.readonly());
         }
 
+        /**
+         * Set of namespaces is already defined and available for display. If the namespace is changed, the tag name and value are cleared. If a new tag name is selected, configure
+         * the value field either as mandatory, optional, or disabled.
+         *
+         * @param value value to display in the form
+         */
         @Override
         public void value(Tag value) {
-            namespace.addValueChangeListener(event -> {
-                name.clear();
-                if (Objects.nonNull(event.getValue())) {
-                    name.setItems(registry.tagNamesForNamespace(event.getValue()));
-                    name.setReadOnly(Objects.nonNull(value));
-                    deactivateValue();
-                }
-            });
-            name.addValueChangeListener(event -> {
-                if (Objects.nonNull(event.getValue())) {
-                    activateValue(registry.find(namespace.getValue(), name.getValue()).orElseThrow());
-                }
-            });
+            super.value(value);
             if (Objects.nonNull(value)) {
-                name.setItems(registry.tagNamesForNamespace(value.namespace()));
+                namespace.setValue(value.namespace());
+                name.setItems(parent().registry().tagNamesForNamespace(value.namespace()));
                 itemBinder.readBean(value);
-            } else {
-                clear();
             }
         }
 
@@ -142,18 +149,30 @@ public class TagsView extends ItemView<Tag> implements BindableComponent.HasBind
             namespace.clear();
             name.clear();
             value.clear();
+            value.setRequired(false);
         }
 
+        /**
+         * Handle the edition or addition of an immutable tag. If the parameter is not null, it is removed from the list before the changed version is added. The updated property
+         * values are retrieved from the form. The logic of the item form we inherited from takes care of the provider update to synchronize the user interface grid.
+         *
+         * @param entity the entity to update or null if it is a created or duplicated instance
+         * @return new tag of the entity
+         */
         @Override
         protected Tag createOrUpdateInstance(Tag entity) {
-            return new Tag(namespace.getValue(), name.getValue(), value.getValue());
-
+            Tag tag = new Tag(namespace.getValue(), name.getValue(), value.getValue());
+            HasTags hasTags = parent().hasTags;
+            if (entity != null) {
+                hasTags.remove(entity);
+            }
+            hasTags.add(tag);
+            return tag;
         }
 
         private void deactivateValue() {
             value.clear();
             value.setEnabled(false);
-            value.setReadOnly(true);
             value.setRequired(false);
         }
 
@@ -167,19 +186,19 @@ public class TagsView extends ItemView<Tag> implements BindableComponent.HasBind
         }
     }
 
-    private final transient TypeRegistry registry;
     private transient HasTags hasTags;
 
     /**
-     * The view is created with an optional entity providing the tags to display. The tags set can be later updated by calling {@link ItemView#provider(Provider)}.
+     * The view is created with an optional entity providing the tags to display. The set of tags can be later updated by calling {@link ItemView#provider(Provider)}.
      *
-     * @param entity   optional entity with the tags set
-     * @param registry tag registry providing the tag type definitions
+     * @param entity optional entity with the tags set
+     * @param domain optional domain to which the generic entity belongs to
+     * @param mode   mode of the component
      */
-    public TagsView(HasTags entity, @NotNull TypeRegistry registry, Mode mode) {
-        super(Tag.class, null, ProviderInMemory.of(Objects.nonNull(entity) ? entity.tags() : Collections.emptySet()), new TagsView.TagFilter(), mode);
+    public TagsView(HasTags entity, @NotNull BoundedDomain<?, ?, ?, ?> domain, @NotNull Mode mode) {
+        super(Tag.class, domain, ProviderInMemory.of(Objects.nonNull(entity) ? entity.tags() : Collections.emptySet()), new TagsView.TagFilter(), mode);
+        form = new TagForm(this);
         this.hasTags = entity;
-        this.registry = registry;
         init();
     }
 
@@ -198,16 +217,12 @@ public class TagsView extends ItemView<Tag> implements BindableComponent.HasBind
     }
 
     @Override
-    public void bind(@NotNull Binder<HasTags> binder, boolean readonly) {
-    }
-
-    @Override
     protected void init() {
         setHeight("15em");
         Grid<Tag> grid = grid();
         grid.addColumn(Tag::namespace).setKey(NAMESPACE).setHeader(NAMESPACE_LABEL).setSortable(true).setResizable(true).setFlexGrow(0).setWidth("10em");
         grid.addColumn(Tag::name).setKey(NAME).setHeader(NAME_LABEL).setSortable(true).setResizable(true).setFlexGrow(0).setWidth("20em");
-        grid.addColumn(Tag::value).setKey(VALUE).setHeader(Value_LABEL).setSortable(false).setResizable(true).setFlexGrow(0).setWidth("25em");
+        grid.addColumn(Tag::value).setKey(VALUE).setHeader(VALUE_LABEL).setSortable(false).setResizable(true).setFlexGrow(0).setWidth("25em");
 
         if (filter() instanceof TagFilter filter) {
             grid().getHeaderRows().clear();

@@ -18,11 +18,11 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import net.tangly.core.Entity;
+import net.tangly.core.HasDateRange;
 import net.tangly.core.HasId;
 import net.tangly.core.HasName;
-import net.tangly.core.HasOid;
 import net.tangly.core.HasText;
-import net.tangly.core.HasTimeInterval;
 import net.tangly.ui.asciidoc.AsciiDocField;
 import org.jetbrains.annotations.NotNull;
 
@@ -31,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
  *
  * @param <T> Type of instances to be displayed
  */
-public class EntityField<T extends HasOid & HasId & HasName & HasText & HasTimeInterval> extends CustomField<T> {
+public class EntityField<T extends Entity> extends CustomField<T> {
     private final IntegerField oid;
     private final TextField id;
     private final TextField name;
@@ -92,9 +92,9 @@ public class EntityField<T extends HasOid & HasId & HasName & HasText & HasTimeI
         binder.bind(id, HasId::id, isMutable ? HasId::id : null);
         binder.bind(name, HasName::name, isMutable ? HasName::name : null);
         binder.forField(from).withValidator(from -> (from == null) || (to.getValue() == null) || (from.isBefore(to.getValue())), "From date must be before to date")
-            .bind(HasTimeInterval::from, isMutable ? HasTimeInterval::from : null);
+            .bind(HasDateRange::from, isMutable ? HasDateRange::from : null);
         binder.forField(to).withValidator(to -> (to == null) || (from.getValue() == null) || (to.isAfter(from.getValue())), "To date must be after from date")
-            .bind(HasTimeInterval::to, isMutable ? HasTimeInterval::to : null);
+            .bind(HasDateRange::to, isMutable ? HasDateRange::to : null);
         binder.bind(text, HasText::text, isMutable ? HasText::text : null);
     }
 }

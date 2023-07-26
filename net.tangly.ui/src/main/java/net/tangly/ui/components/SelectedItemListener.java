@@ -22,7 +22,7 @@ public interface SelectedItemListener<T> {
     T selectedItem();
 
     /**
-     * Select programmatically the item in the component and update it.
+     * Programmatically select the item in the component and update it.
      *
      * @param item new selected item in the component
      * @see #selectedItem()

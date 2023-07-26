@@ -17,6 +17,7 @@ import net.tangly.core.domain.BoundedDomain;
 import net.tangly.core.domain.DomainEntity;
 import net.tangly.core.providers.ProviderInMemory;
 import net.tangly.ui.components.ItemView;
+import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 /**

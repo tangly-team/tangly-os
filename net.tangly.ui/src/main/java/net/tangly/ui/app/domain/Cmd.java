@@ -26,7 +26,7 @@ import java.util.Set;
 @FunctionalInterface
 public interface Cmd {
     /**
-     * Executes the command.
+     * Execute the command.
      */
     void execute();
 
@@ -39,7 +39,7 @@ public interface Cmd {
     }
 
     /**
-     * Indicates if the command is enabled or not. A command availability is dependent on the application and roles the user has.
+     * Indicate if the command is enabled or not. A command availability is dependent on the application and roles the user has.
      *
      * @return true if enabled otherwise false
      */
@@ -48,7 +48,7 @@ public interface Cmd {
     }
 
     /**
-     * Returns the roles requested to execute the command.
+     * Return the roles requested to execute the command.
      *
      * @return roles allowed to execute the command
      */
@@ -57,7 +57,7 @@ public interface Cmd {
     }
 
     /**
-     * Returns the dialog associated with the command if existing.
+     * Return the dialog associated with the command if existing.
      *
      * @return associated dialog if defined othwrwise null
      */

@@ -16,13 +16,10 @@ package net.tangly.ui.components;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
+import net.tangly.core.Entity;
 import net.tangly.core.HasComments;
-import net.tangly.core.HasId;
-import net.tangly.core.HasName;
 import net.tangly.core.HasOid;
 import net.tangly.core.HasTags;
-import net.tangly.core.HasText;
-import net.tangly.core.HasTimeInterval;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -36,16 +33,14 @@ import java.util.function.Function;
  * @param <T> type of the entity displayed in the form
  * @param <V> the view owning the form
  */
-public abstract class EntityForm<T extends HasOid & HasId & HasName & HasTimeInterval & HasText, V extends EntityView<T>> extends ItemForm<T, V> {
+public abstract class EntityForm<T extends Entity, V extends EntityView<T>> extends ItemForm<T, V> {
     static class HasTagsAndComments<T extends HasTags & HasComments> {
         private BindableComponent<CommentsView, HasComments> commentsView;
         private BindableComponent<TagsView, HasTags> tagsView;
 
-        void init(@NotNull EntityForm<?, ?> form, @NotNull Binder<T> binder) {
-            tagsView = new BindableComponent<>(new TagsView(null, form.parent().registry(), form.parent().mode()), form.parent().mode());
-            tagsView.bind(binderCast(binder), tagsView.component().mode().readonly());
-            commentsView = new BindableComponent<>(new CommentsView(null, form.parent().mode()), form.parent().mode());
-            commentsView.bind(binderCast(binder), commentsView.component().mode().readonly());
+        void init(@NotNull EntityForm<?, ?> form) {
+            tagsView = new BindableComponent<>(new TagsView(null, form.parent().domain(), form.parent().mode()));
+            commentsView = new BindableComponent<>(new CommentsView(null, form.parent().domain(), form.parent().mode()));
             form.addTabAt("tags", tagsView, 1);
             form.addTabAt("comments", commentsView, 2);
         }
@@ -59,44 +54,39 @@ public abstract class EntityForm<T extends HasOid & HasId & HasName & HasTimeInt
             }
         }
 
-        void mode(@NotNull ItemView.Mode mode) {
+        void mode(@NotNull Mode mode) {
             tagsView.component().mode(mode);
             commentsView.component().mode(mode);
-            tagsView.setReadOnly(mode.readonly());
-            commentsView.setReadOnly(mode.readonly());
         }
 
         void clear() {
             commentsView.clear();
             tagsView.clear();
         }
-
-        private <T> Binder<T> binderCast(@NotNull Binder<?> binder) {
-            return (Binder<T>) binder;
-        }
     }
 
-    protected EntityField<T> entity;
-    protected final Class<T> entityClass;
-    protected final Optional<HasTagsAndComments<?>> hasTagsAndComments;
+    private final Function<Long, T> supplier;
+    private EntityField<T> entity;
+    private final Optional<HasTagsAndComments<?>> hasTagsAndComments;
 
-    public EntityForm(@NotNull V parent, Class<T> entityClass) {
+    public EntityForm(@NotNull V parent, Function<Long, T> supplier) {
         super(parent);
-        this.entityClass = entityClass;
+        this.supplier = supplier;
         hasTagsAndComments =
-            Optional.ofNullable((HasComments.class.isAssignableFrom(entityClass) && (HasTags.class.isAssignableFrom(entityClass)) ? new HasTagsAndComments<>() : null));
+            Optional.ofNullable((HasComments.class.isAssignableFrom(entityClass()) && (HasTags.class.isAssignableFrom(entityClass())) ? new HasTagsAndComments<>() : null));
     }
 
     @Override
-    public void mode(@NotNull ItemView.Mode mode) {
+    public void mode(@NotNull Mode mode) {
+        super.mode(mode);
         entity.setReadOnly(mode.readonly());
-        hasTagsAndComments.ifPresent(o -> o.mode(ItemView.Mode.propagated(mode)));
+        hasTagsAndComments.ifPresent(o -> o.mode(Mode.propagated(mode)));
     }
 
     @Override
     public void value(T value) {
+        super.value(value);
         if (value != null) {
-            binder().readBean(value);
             hasTagsAndComments.ifPresent(o -> o.value(toHasTagsAndComments(value)));
         }
     }
@@ -107,6 +97,7 @@ public abstract class EntityForm<T extends HasOid & HasId & HasName & HasTimeInt
         hasTagsAndComments.ifPresent(HasTagsAndComments::clear);
     }
 
+    @Override
     protected void init() {
         entity = new EntityField<>();
         entity.bind(binder(), true);
@@ -114,20 +105,26 @@ public abstract class EntityForm<T extends HasOid & HasId & HasName & HasTimeInt
         FormLayout form = new FormLayout();
         form.add(entity);
         addTabAt("entity", form, 0);
-        hasTagsAndComments.ifPresent(o -> o.init(this, binderCast()));
+        hasTagsAndComments.ifPresent(o -> o.init(this));
     }
 
-    protected <T> Binder<T> binderCast() {
-        return (Binder<T>) binder();
+    @Override
+    protected T createOrUpdateInstance(T entity) throws ValidationException {
+        T updatedEntity = Objects.nonNull(entity) ? entity : supplier().apply(fromBinder(HasOid.OID));
+        binder().writeBean(updatedEntity);
+        return updatedEntity;
+    }
+
+    protected Function<Long, T> supplier() {
+        return supplier;
+    }
+
+    @SuppressWarnings("unchecked")
+    protected <U> Binder<U> binderCast() {
+        return (Binder<U>) binder();
     }
 
     <U extends HasTags & HasComments> U toHasTagsAndComments(T value) {
         return (U) value;
-    }
-
-    protected T createOrUpdateInstance(T entity, Function<Long, T> supplier) throws ValidationException {
-        T updatedEntity = Objects.nonNull(entity) ? entity : supplier.apply(fromBinder(HasOid.OID));
-        binder().writeBean(updatedEntity);
-        return updatedEntity;
     }
 }

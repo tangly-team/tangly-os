@@ -20,11 +20,14 @@ import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.data.binder.Binder;
 import net.tangly.core.Entity;
 import net.tangly.core.providers.Provider;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
 
 /**
@@ -51,25 +54,58 @@ import java.util.function.Function;
  * @param <O> type of the owning entity
  * @param <T> type of the entities referenced in the one-to-many relations
  */
-public class One2ManyView<O extends Entity, T extends Entity> extends VerticalLayout {
+public class One2ManyView<O extends Entity, T extends Entity> extends VerticalLayout implements HasBindValue<O> {
+    private final Class<T> entityClass;
     private final Provider<T> provider;
-    private final One2OneField.RelationView<T> view;
+    private final EntityView<T> view;
     private final Button update;
+    private final Function<O, List<T>> items;
+    private final BiConsumer<O, T> add;
+    private final BiConsumer<O, T> remove;
+    private O value;
+    private Mode mode;
 
-    public One2ManyView(@NotNull String relation, @NotNull Provider<T> provider, Function<O, List<T>> items, Function<O, T> add, Function<O, T> remove) {
-        this(relation, provider);
-    }
-
-    public One2ManyView(@NotNull String relation, @NotNull Provider<T> provider) {
+    public One2ManyView(@NotNull String relation, @NotNull Class<T> entityClass, @NotNull Provider<T> provider, Function<O, List<T>> items, BiConsumer<O, T> add,
+                        BiConsumer<O, T> remove) {
+        this.entityClass = entityClass;
         this.provider = provider;
-        this.view = new One2OneField.RelationView<>(provider, Grid.SelectionMode.NONE);
+        this.items = items;
+        this.add = add;
+        this.remove = remove;
+        setHeight("15em");
+        this.view = EntityView.of(entityClass, null, provider, Mode.LIST);
         update = new Button(new Icon(VaadinIcon.ELLIPSIS_DOTS_V));
         update.addClickListener(e -> displayRelationships());
         add(view, new HorizontalLayout(update));
     }
 
-    public void setReadOnly(boolean readOnly) {
-        update.setEnabled(!readOnly);
+    @Override
+    public O value() {
+        return value;
+    }
+
+    @Override
+    public void value(O value) {
+        this.value = value;
+        if (!Objects.equals(this.value, value)) {
+            this.value = value;
+            //            this.provider(ProviderInMemory.of(Objects.nonNull(value) ? Collections.emptyList() : Collections.emptyList()));
+        }
+    }
+
+    @Override
+    public Mode mode() {
+        return this.mode;
+    }
+
+    @Override
+    public void mode(Mode mode) {
+        this.mode = mode;
+        update.setEnabled(!mode.readonly());
+    }
+
+    @Override
+    public void bind(@NotNull Binder<O> binder, boolean readonly) {
     }
 
     private void displayRelationships() {
@@ -78,12 +114,14 @@ public class One2ManyView<O extends Entity, T extends Entity> extends VerticalLa
         dialog.setCloseOnOutsideClick(false);
         dialog.setModal(false);
         dialog.setResizable(true);
-        One2OneField.RelationView<T> view = new One2OneField.RelationView<>(provider, Grid.SelectionMode.MULTI);
+        EntityView<T> view = EntityView.of(entityClass, null, provider, Mode.LIST);
+        view.grid().setSelectionMode(Grid.SelectionMode.MULTI);
+        // TODO select all items of the one2many
         dialog.add(new VerticalLayout(view, new HtmlComponent("br"), createFormButtons(dialog, view)));
         dialog.open();
     }
 
-    private HorizontalLayout createFormButtons(@NotNull Dialog dialog, @NotNull One2OneField.RelationView<T> view) {
+    private HorizontalLayout createFormButtons(@NotNull Dialog dialog, @NotNull EntityView<T> view) {
         HorizontalLayout actions = new HorizontalLayout();
         actions.setSpacing(true);
         Button cancel = new Button("Cancel", event -> dialog.close());

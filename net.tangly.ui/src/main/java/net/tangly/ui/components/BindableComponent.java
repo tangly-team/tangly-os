@@ -16,29 +16,9 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.theme.lumo.LumoUtility;
-import net.tangly.core.HasComments;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * The comments view is a Crud view with all the comments defined for an object implementing the {@link HasComments}. Edition functions are provided to add, delete, and view
- * individual comments. Update function is not supported because comments are immutable objects. Immutable objects must explicitly be deleted before a new version is added. This
- * approach supports auditing approaches.
- * <p>the filter conditions are defined as follow. You can filter by author, by a string contained in the text, or a time interval during which the comment was created.
- * Therefore to select the range of interest you need to input two dates.</p>
- */
-public class BindableComponent<C extends Component & BindableComponent.HasBindValue<V>, V> extends CustomField<V> {
-    public interface HasBindValue<V> {
-        V value();
-
-        void value(V item);
-
-        ItemView.Mode mode();
-
-        void mode(@NotNull ItemView.Mode mode);
-
-        void bind(@NotNull Binder<V> binder, boolean readonly);
-    }
-
+public class BindableComponent<C extends Component & HasBindValue<V>, V> extends CustomField<V> {
     private final C component;
 
     public BindableComponent(@NotNull C component) {
@@ -50,7 +30,7 @@ public class BindableComponent<C extends Component & BindableComponent.HasBindVa
         add(component);
     }
 
-    public BindableComponent(@NotNull C component, @NotNull ItemView.Mode mode) {
+    public BindableComponent(@NotNull C component, @NotNull Mode mode) {
         this(component);
         component.mode(mode);
     }
@@ -80,6 +60,6 @@ public class BindableComponent<C extends Component & BindableComponent.HasBindVa
 
     @Override
     public void setReadOnly(boolean readOnly) {
-        component.mode(ItemView.Mode.VIEW);
+        component.mode(Mode.VIEW);
     }
 }

@@ -13,7 +13,6 @@
 package net.tangly.ui.components;
 
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.HasEnabled;
 import com.vaadin.flow.component.HasValue;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -22,8 +21,6 @@ import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.select.Select;
-import com.vaadin.flow.component.tabs.Tab;
-import com.vaadin.flow.component.tabs.TabSheet;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import net.tangly.core.HasTags;
@@ -37,7 +34,6 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.Function;
@@ -95,10 +91,6 @@ public final class VaadinUtils {
         layout.setResponsiveSteps(new FormLayout.ResponsiveStep("25em", 1), new FormLayout.ResponsiveStep("32em", 2), new FormLayout.ResponsiveStep("40em", 3));
     }
 
-    public static void set2ResponsiveSteps(@NotNull FormLayout layout) {
-        layout.setResponsiveSteps(new FormLayout.ResponsiveStep("25em", 1), new FormLayout.ResponsiveStep("32em", 2));
-    }
-
     public static void set1ResponsiveSteps(@NotNull FormLayout layout) {
         layout.setResponsiveSteps(new FormLayout.ResponsiveStep("25em", 1));
     }
@@ -140,11 +132,6 @@ public final class VaadinUtils {
                 default -> new Span("");
             };
         });
-    }
-
-    @SafeVarargs
-    public static <T extends HasValue> void readOnly(boolean readOnly, T... components) {
-        Arrays.stream(components).forEach(o -> o.setReadOnly(readOnly));
     }
 
     public static <T extends HasTags> ComponentRenderer<Anchor, T> linkedInComponentRenderer(Function<HasTags, String> linkedInUrl) {

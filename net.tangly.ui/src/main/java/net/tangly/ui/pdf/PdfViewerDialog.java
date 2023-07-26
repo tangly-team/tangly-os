@@ -12,10 +12,9 @@
 
 package net.tangly.ui.pdf;
 
+import com.vaadin.componentfactory.pdfviewer.PdfViewer;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.server.StreamResource;
-
-import com.vaadin.componentfactory.pdfviewer.*;
 
 import java.io.InputStream;
 

@@ -36,7 +36,7 @@ import java.util.Objects;
 /**
  * Defines the CRUD contract for a form used to display or modify an entity. The abstract methods are:
  * <dl>
- *    <dt>{@link #mode(ItemView.Mode mode)}</dt><dd>Set the mode of the fields in the form based on selected CRUD operation and additional business Logic.</dd>
+ *    <dt>{@link #mode(Mode mode)}</dt><dd>Set the mode of the fields in the form based on selected CRUD operation and additional business Logic.</dd>
  *    <dt>{@link #value(Object)}</dt><dd>Fill the form with properties of the entity and business logic.</dd>
  *    <dt>{@link #clear()}</dt><dd>Clear all fields in the form</dd>
  *    <dt>{@link #createOrUpdateInstance(Object)}</dt><dd>Create a new entity based on the fields and business logic.</dd>
@@ -58,7 +58,7 @@ import java.util.Objects;
  * <h2>Buttons</h2>
  * <dl>
  *     <dt>Cancel</dt><dd>The cancel button cancels the operation without any changes. The button shortcut is <i>ESC</i>.</dd>
- *     <dt>Action</dt><dd>The action button executes the operation. The label is dependant on the operation. The button shortcut is <>i>ENTER</>.</dd>
+ *     <dt>Action</dt><dd>The action button executes the operation. The label is dependant on the operation. The button shortcut is <i>ENTER</i>.</dd>
  * </dl>
  *
  * @param <T> Type of the entity manipulated in the form
@@ -73,12 +73,12 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
     private final Button cancel;
     private final Button action;
     private T value;
-    private ItemView.Mode mode;
+    private Mode mode;
 
     protected ItemForm(@NotNull U parent) {
         this.parent = parent;
         binder = new Binder<>(parent.entityClass());
-        mode = ItemView.Mode.VIEW;
+        mode = Mode.VIEW;
 
         formLayout = new VerticalLayout();
         tabSheet = new TabSheet();
@@ -113,9 +113,9 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
      * Return the mode of the form. All contained items should have the same mode for consistency.
      *
      * @return the mode of the form
-     * @see #mode(ItemView.Mode)
+     * @see #mode(Mode)
      */
-    public ItemView.Mode mode() {
+    public Mode mode() {
         return mode;
     }
 
@@ -125,7 +125,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
      * @param mode mode of the form
      * @see #mode()
      */
-    public void mode(@NotNull ItemView.Mode mode) {
+    public void mode(@NotNull Mode mode) {
         this.mode = mode;
     }
 
@@ -160,6 +160,11 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
         return parent;
     }
 
+    protected Class<T> entityClass() {
+        return parent().entityClass();
+    }
+
+
     // region CRUD operations available through the popup menu
 
     /**
@@ -168,7 +173,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
      * @param entity entity to view
      */
     public void display(@NotNull T entity) {
-        display(entity, ItemView.Mode.VIEW);
+        display(entity, Mode.VIEW);
     }
 
     /**
@@ -177,14 +182,14 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
      * @param entity entity to modify
      */
     public void edit(@NotNull T entity) {
-        display(entity, ItemView.Mode.EDIT);
+        display(entity, Mode.EDIT);
     }
 
     /**
      * Create a new entity form.
      */
     public void create() {
-        display(null, ItemView.Mode.CREATE);
+        display(null, Mode.CREATE);
     }
 
     /**
@@ -193,7 +198,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
      * @param entity entity to duplicate
      */
     public void duplicate(@NotNull T entity) {
-        display(entity, ItemView.Mode.DUPLICATE);
+        display(entity, Mode.DUPLICATE);
     }
 
     /**
@@ -202,7 +207,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
      * @param entity entity to delete.
      */
     public void delete(@NotNull T entity) {
-        display(entity, ItemView.Mode.DELETE);
+        display(entity, Mode.DELETE);
     }
 
     // endregion
@@ -225,7 +230,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
      * @param value value to display
      * @param mode  display mode of the value
      */
-    public void display(T value, @NotNull ItemView.Mode mode) {
+    private void display(T value, @NotNull Mode mode) {
         mode(mode);
         nameActionButton(mode);
         value(value);
@@ -272,7 +277,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
 
     /**
      * Update the entity upon modification. The properties are validated before storing the data. Update means either changing properties of an existing entity or creating a new
-     * entity. The creation is used to create a new immutable object.
+     * entity. The creation is used to create a new immutable object. If a new instance was created, the old one is deleted.
      * <p>The {@link ItemForm#createOrUpdateInstance(Object)} is responsible to extract the updated data from the user interface.</p>
      *
      * @return the updated entity.
@@ -280,7 +285,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
     public T updateEntity() throws RuntimeException {
         try {
             T entity = createOrUpdateInstance(value());
-            if (Objects.equals(entity, value())) {
+            if (Objects.nonNull(value()) && !Objects.equals(entity, value())) {
                 parent.provider().delete(value());
             }
             parent.provider().update(entity);
@@ -311,7 +316,7 @@ public abstract class ItemForm<T, U extends ItemView<T>> {
 
     // endregion
 
-    protected void nameActionButton(@NotNull ItemView.Mode mode) {
+    protected void nameActionButton(@NotNull Mode mode) {
         mode(mode);
         switch (mode) {
             case LIST, VIEW -> action.setText("Close");
