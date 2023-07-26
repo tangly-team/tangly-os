@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2022 Marcel Baumann
+ * Copyright 2006-2023 Marcel Baumann
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of
  * the License at
@@ -22,13 +22,17 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class EntityTest {
-    static class NamedEntity extends EntityImp {
+    static class NamedEntity extends EntityExtendedImp {
         private Address address;
         private EmailAddress email;
         private PhoneNr phoneNr;
 
-        static NamedEntity of() {
-            return new NamedEntity();
+        static NamedEntity of(long oid) {
+            return new NamedEntity(oid);
+        }
+
+        NamedEntity(long oid) {
+            super(oid);
         }
 
         public Address address() {
@@ -50,10 +54,8 @@ class EntityTest {
 
     @Test
     void testHasInterval() {
-        var entity = NamedEntity.of();
-        entity.from(LocalDate.of(2000, Month.JANUARY, 1));
-        entity.to(LocalDate.of(2000, Month.DECEMBER, 31));
-
+        var entity = NamedEntity.of(Entity.UNDEFINED_OID);
+        entity.interval(DateRange.of(LocalDate.of(2000, Month.JANUARY, 1), LocalDate.of(2000, Month.DECEMBER, 31)));
         assertThat(entity.isActive(LocalDate.of(1999, Month.DECEMBER, 31))).isFalse();
         assertThat(entity.isActive(LocalDate.of(2000, Month.JANUARY, 1))).isTrue();
         assertThat(entity.isActive(LocalDate.of(2000, Month.JUNE, 1))).isTrue();
@@ -68,7 +70,7 @@ class EntityTest {
         final String LOCALITY = "Zug";
         final String POBOX = "Postfach 101";
         final String STREET = "Rigistrasse 1";
-        var entity = NamedEntity.of();
+        var entity = NamedEntity.of(Entity.UNDEFINED_OID);
         entity.address(Address.builder().country(COUNTRY).region("ZG").locality(LOCALITY).postcode("6300").street(STREET).poBox(POBOX).build());
         assertThat(entity.address().country()).isEqualTo(COUNTRY);
         assertThat(entity.address().poBox()).isEqualTo(POBOX);
@@ -79,7 +81,7 @@ class EntityTest {
 
     @Test
     void testPhoneNr() {
-        var entity = NamedEntity.of();
+        var entity = NamedEntity.of(Entity.UNDEFINED_OID);
         entity.phoneNr(PhoneNr.of("+41 79 123 45 78"));
         assertThat(PhoneNr.of(entity.phoneNr().toString())).isEqualTo(entity.phoneNr());
     }
@@ -87,7 +89,7 @@ class EntityTest {
     @Test
     void testModifyTags() {
         // Given
-        var item = NamedEntity.of();
+        var item = NamedEntity.of(Entity.UNDEFINED_OID);
         var tag = new Tag("namespace", "tag", "format");
         // When
         item.add(tag);
@@ -113,7 +115,7 @@ class EntityTest {
     @Test
     void testUpdateTags() {
         // Given
-        var item = NamedEntity.of();
+        var item = NamedEntity.of(Entity.UNDEFINED_OID);
         var tag = new Tag("namespace", "tag", "format");
 
         // When - Then
@@ -127,7 +129,7 @@ class EntityTest {
 
     @Test
     void testSerializeTags() {
-        var item = NamedEntity.of();
+        var item = NamedEntity.of(Entity.UNDEFINED_OID);
         item.add(Tag.of("namespace", "tag", "format"));
         item.add(Tag.of("gis", "longitude", "0.0"));
         item.add(Tag.of("gis", "latitude", "0.0"));
@@ -144,7 +146,7 @@ class EntityTest {
     @Test
     void testModifyComments() {
         // Given
-        var item = NamedEntity.of();
+        var item = NamedEntity.of(Entity.UNDEFINED_OID);
         var comment = new Comment("John Doe", "This is a comment");
         // When
         item.add(comment);
@@ -159,7 +161,7 @@ class EntityTest {
     @Test
     void testFilterComments() {
         // Given
-        var item = NamedEntity.of();
+        var item = NamedEntity.of(Entity.UNDEFINED_OID);
         var comment = Comment.of(LocalDateTime.of(1800, Month.JANUARY, 1, 0, 0), "John Doe", "This is comment 1");
         comment.add(new Tag("gis", "longitude", "0.0"));
         comment.add(new Tag("gis", "latitude", "0.0"));

@@ -23,7 +23,7 @@ import java.util.Objects;
  */
 public interface HasComments {
     /**
-     * Returns the list of comments owned by the entity.
+     * Return the list of comments owned by the entity.
      *
      * @return list of comments
      */
@@ -37,14 +37,14 @@ public interface HasComments {
     void add(@NotNull Comment comment);
 
     /**
-     * Removes the given comment from the list of comments.
+     * Remove the given comment from the list of comments.
      *
      * @param comment comment to be removed, cannot be null
      */
     void remove(@NotNull Comment comment);
 
     /**
-     * Adds a list of comments.
+     * Add a list of comments.
      *
      * @param comments comments to be added, cannot be null
      * @see HasComments#add(Comment)
@@ -54,7 +54,7 @@ public interface HasComments {
     }
 
     /**
-     * Returns the comments authored by the given author.
+     * Return the comments authored by the given author.
      *
      * @param author author of the searched comment
      * @return list of requested comments
@@ -65,7 +65,7 @@ public interface HasComments {
     }
 
     /**
-     * Returns the comments having the given tag.
+     * Return the comments having the given tag.
      *
      * @param namespace namespace of the tag
      * @param name      name of the tag
@@ -77,7 +77,7 @@ public interface HasComments {
     }
 
     /**
-     * Returns all the comments which creation date is in the closed interval.
+     * Return all the comments which creation date is in the closed interval.
      *
      * @param from beginning of the time interval or LocalDateTime.MIN
      * @param to   end of the time interval or LocalDateTime.MAX

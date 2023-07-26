@@ -27,7 +27,7 @@ public interface HasOid {
     long UNDEFINED_OID = 0;
 
     /**
-     * Returns the unique internal identifier of the instance.
+     * Return the unique internal identifier of the instance.
      *
      * @return unique internal identifier
      */

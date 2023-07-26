@@ -15,46 +15,45 @@ package net.tangly.core;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 /**
- * Default implementation of the Entity interface.
+ * Default implementation of the {@link EntityExtended} interface. The unique object identifier shall be set at construction.
  */
-public abstract class EntityImp implements Entity {
+public abstract class EntityExtendedImp implements EntityExtended {
     private final long oid;
     private String id;
     private String name;
-    private LocalDate from;
-    private LocalDate to;
+    private DateRange interval;
     private String text;
     private final List<Comment> comments;
     private final Set<Tag> tags;
 
-    public static <T extends Entity> T init(T entity, String id, String name, LocalDate from, LocalDate to, String text) {
+    public static <T extends EntityExtended> T init(T entity, String id, String name, LocalDate from, LocalDate to, String text) {
         entity.id(id);
         entity.name(name);
-        entity.from(from);
-        entity.to(to);
+        entity.interval(DateRange.of(from, to));
         entity.text(text);
         return entity;
     }
 
-    protected EntityImp() {
-        this(UNDEFINED_OID);
-    }
-
-    protected EntityImp(long oid) {
+    protected EntityExtendedImp(long oid) {
         this.oid = oid;
+        interval = new DateRange();
         comments = new ArrayList<>();
         tags = new HashSet<>();
     }
 
-    protected EntityImp(long oid, String id, String name, LocalDate from, LocalDate to, String text) {
+    protected EntityExtendedImp(long oid, String id, String name, DateRange interval, String text) {
         this(oid);
         this.id = id;
         this.name = name;
-        this.from = from;
-        this.to = to;
+        this.interval = interval;
         this.text = text;
     }
 
@@ -83,6 +82,16 @@ public abstract class EntityImp implements Entity {
     }
 
     @Override
+    public DateRange interval() {
+        return interval;
+    }
+
+    @Override
+    public void interval(DateRange interval) {
+        this.interval = interval;
+    }
+
+    @Override
     public String text() {
         return text;
     }
@@ -90,26 +99,6 @@ public abstract class EntityImp implements Entity {
     @Override
     public void text(String text) {
         this.text = text;
-    }
-
-    @Override
-    public LocalDate from() {
-        return from;
-    }
-
-    @Override
-    public void from(LocalDate fromDate) {
-        this.from = fromDate;
-    }
-
-    @Override
-    public LocalDate to() {
-        return to;
-    }
-
-    @Override
-    public void to(LocalDate toDate) {
-        this.to = toDate;
     }
 
     @Override
@@ -154,7 +143,7 @@ public abstract class EntityImp implements Entity {
 
     @Override
     public boolean equals(Object obj) {
-        return (obj instanceof EntityImp o) && Objects.equals(oid(), o.oid()) && Objects.equals(from(), o.from()) && Objects.equals(to(), o.to()) &&
+        return (obj instanceof EntityExtendedImp o) && Objects.equals(oid(), o.oid()) && Objects.equals(from(), o.from()) && Objects.equals(to(), o.to()) &&
             Objects.equals(text(), o.text()) && Objects.equals(comments(), o.comments()) && Objects.equals(tags(), o.tags());
     }
 }

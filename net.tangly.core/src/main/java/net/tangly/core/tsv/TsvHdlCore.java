@@ -14,11 +14,12 @@ package net.tangly.core.tsv;
 
 import net.tangly.core.Address;
 import net.tangly.core.BankConnection;
-import net.tangly.core.HasId;
+import net.tangly.core.DateRange;
 import net.tangly.gleam.model.TsvEntity;
 import net.tangly.gleam.model.TsvProperty;
 import org.apache.commons.csv.CSVRecord;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
@@ -41,21 +42,31 @@ public class TsvHdlCore {
 
     public static TsvEntity<BankConnection> createTsvBankConnection() {
         Function<CSVRecord, BankConnection> imports = (CSVRecord csv) -> BankConnection.of(TsvEntity.get(csv, IBAN), TsvEntity.get(csv, BIC), TsvEntity.get(csv, INSTITUTE));
-        List<TsvProperty<BankConnection, ?>> fields =
-            List.of(TsvProperty.ofString("iban", BankConnection::iban, null), TsvProperty.ofString("bic", BankConnection::bic, null),
-                TsvProperty.ofString(INSTITUTE, BankConnection::institute, null));
+        List<TsvProperty<BankConnection, ?>> fields = List.of(TsvProperty.ofString("iban", BankConnection::iban, null), TsvProperty.ofString("bic", BankConnection::bic, null),
+            TsvProperty.ofString(INSTITUTE, BankConnection::institute, null));
         return TsvEntity.of(BankConnection.class, fields, imports);
     }
 
     public static TsvEntity<Address> createTsvAddress() {
         Function<CSVRecord, Address> imports = (CSVRecord csv) -> (Objects.isNull(TsvEntity.get(csv, LOCALITY)) || Objects.isNull(TsvEntity.get(csv, COUNTRY))) ? null :
             Address.builder().street(TsvEntity.get(csv, STREET)).postcode(TsvEntity.get(csv, POSTCODE)).locality(TsvEntity.get(csv, LOCALITY)).region(TsvEntity.get(csv, REGION))
-                   .country(TsvEntity.get(csv, COUNTRY)).build();
-        List<TsvProperty<Address, ?>> fields =
-            List.of(TsvProperty.ofString(STREET, Address::street, null), TsvProperty.ofString("extended", Address::extended, null),
-                TsvProperty.ofString(POSTCODE, Address::postcode, null), TsvProperty.ofString(LOCALITY, Address::locality, null),
+                .country(TsvEntity.get(csv, COUNTRY)).build();
+        List<TsvProperty<Address, ?>> fields = List.of(TsvProperty.ofString(STREET, Address::street, null), TsvProperty.ofString("extended", Address::extended, null),
+            TsvProperty.ofString(POSTCODE, Address::postcode, null), TsvProperty.ofString(LOCALITY, Address::locality, null),
 
-                TsvProperty.ofString(REGION, Address::region, null), TsvProperty.ofString(COUNTRY, Address::country, null));
+            TsvProperty.ofString(REGION, Address::region, null), TsvProperty.ofString(COUNTRY, Address::country, null));
         return TsvEntity.of(Address.class, fields, imports);
+    }
+
+    public static TsvEntity<DateRange> createTsvDateRange() {
+        Function<CSVRecord, DateRange> imports = (CSVRecord csv) -> (Objects.isNull(TsvEntity.get(csv, FROM_DATE)) || Objects.isNull(TsvEntity.get(csv, TO_DATE))) ? null :
+            DateRange.of(ofDate(csv, FROM_DATE), ofDate(csv, TO_DATE));
+        List<TsvProperty<DateRange, ?>> fields = List.of(TsvProperty.ofDate(STREET, DateRange::from, null), TsvProperty.ofDate(POSTCODE, DateRange::to, null));
+        return TsvEntity.of(DateRange.class, fields, imports);
+    }
+
+    private static LocalDate ofDate(CSVRecord csv, String field) {
+        String value = TsvEntity.get(csv, field);
+        return (value == null) ? null : LocalDate.parse(value);
     }
 }

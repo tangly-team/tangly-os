@@ -25,14 +25,14 @@ import java.util.stream.Collectors;
  */
 public interface HasTags {
     /**
-     * Returns the set of tags for the entity.
+     * Return the set of tags for the entity.
      *
      * @return set of tags
      */
     Set<Tag> tags();
 
     /**
-     * Adds the tag to the set of tags.
+     * Add the tag to the set of tags.
      *
      * @param tag tag to be added
      * @return {@code true} if this set did not already contain the specified element
@@ -46,7 +46,7 @@ public interface HasTags {
     void removeAllTags();
 
     /**
-     * Replaces or inserts the given tag. Tag equivalence is detected with optional namespace and tag name.
+     * Replace or insert the given tag. Tag equivalence is detected with optional namespace and tag name.
      *
      * @param tag tag to replace or insert
      */
@@ -57,7 +57,7 @@ public interface HasTags {
     }
 
     /**
-     * Replaces or inserts the given tag. Tag equivalence is detected with optional namespace and tag name.
+     * Replace or inserts the given tag. Tag equivalence is detected with optional namespace and tag name.
      *
      * @param tag   tag to replace or insert
      * @param value optional value of the tag
@@ -68,7 +68,7 @@ public interface HasTags {
     }
 
     /**
-     * Removes the tag from the set of tags.
+     * Remove the tag from the set of tags.
      *
      * @param tag tag to remove
      * @return {@code true} if this set contained the specified element
@@ -76,7 +76,7 @@ public interface HasTags {
     boolean remove(Tag tag);
 
     /**
-     * Removes the tag with the given tag identification containing optional namespace and tag name.
+     * Remove the tag with the given tag identification containing optional namespace and tag name.
      *
      * @param tag tag identification of the tag to be removed
      */
@@ -85,7 +85,7 @@ public interface HasTags {
     }
 
     /**
-     * Finds the tag with the given tag identification containing optional namespace and tag name.
+     * Find the tag with the given tag identification containing optional namespace and tag name.
      *
      * @param tag tag identification of the tag to be removed
      * @return requested tag as optional
@@ -95,7 +95,7 @@ public interface HasTags {
     }
 
     /**
-     * Searches for a tag with the given namespace and name.
+     * Search for a tag with the given namespace and name.
      *
      * @param namespace optional namespace of the tag to be found
      * @param name      name of the tag to be found
@@ -122,7 +122,7 @@ public interface HasTags {
     }
 
     /**
-     * Returns the value of the tag with the given qualified tag name.
+     * Return the value of the tag with the given qualified tag name.
      *
      * @param tag qualified tag name
      * @return the tag value if found
@@ -137,7 +137,7 @@ public interface HasTags {
     }
 
     /**
-     * Returns the set of tags as a canonical string representation.
+     * Return the set of tags as a canonical string representation.
      *
      * @return text representation of the tag set
      * @see HasTags#rawTags(String)
@@ -147,7 +147,7 @@ public interface HasTags {
     }
 
     /**
-     * Sets the tags using the canonical string representation.
+     * Set the tags using the canonical string representation.
      *
      * @param rawTags canonical representation of the tag set
      * @see HasTags#rawTags()

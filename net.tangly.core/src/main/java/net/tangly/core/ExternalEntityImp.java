@@ -15,7 +15,12 @@ package net.tangly.core;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 public class ExternalEntityImp implements ExternalEntity {
     private String id;
@@ -26,11 +31,7 @@ public class ExternalEntityImp implements ExternalEntity {
     private final Set<Tag> tags;
 
     protected ExternalEntityImp(@NotNull String id) {
-        this();
         this.id = id;
-    }
-
-    protected ExternalEntityImp() {
         comments = new ArrayList<>();
         tags = new HashSet<>();
     }

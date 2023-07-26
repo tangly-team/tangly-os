@@ -12,7 +12,12 @@
 
 package net.tangly.core.crm;
 
-import net.tangly.core.*;
+import net.tangly.core.Address;
+import net.tangly.core.EmailAddress;
+import net.tangly.core.HasLocation;
+import net.tangly.core.HasTags;
+import net.tangly.core.PhoneNr;
+import net.tangly.core.Tag;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;

@@ -15,7 +15,11 @@ package net.tangly.core;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -88,7 +92,7 @@ public record Tag(String namespace, @NotNull String name, String value) {
     }
 
     /**
-     * Returns true if the tag has a format otherwise false.
+     * Return true if the tag has a format otherwise false.
      *
      * @return flag indicating if the tag has a format field
      */

@@ -22,7 +22,7 @@ public interface HasId {
     String ID = "id";
 
     /**
-     * Returns the unique external identifier of the instance.
+     * Return the unique external identifier of the instance.
      *
      * @return unique external identifier
      * @see #id(String)
@@ -30,7 +30,7 @@ public interface HasId {
     String id();
 
     /**
-     * Sets the identifier of the instance.
+     * Set the identifier of the instance.
      *
      * @param id new ID of the instance.
      */

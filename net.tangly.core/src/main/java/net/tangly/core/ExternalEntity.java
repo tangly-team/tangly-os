@@ -21,6 +21,7 @@ package net.tangly.core;
  * <li>tags: human readable and machine processable tags defining an ontology to classify instance in the domain model.
  * Orthogonal information can therefore be attached to instances.</li>
  * </ul>
+ * <p> The external identifier shall be set at construction time.</p>
  */
 public interface ExternalEntity extends HasId, HasName, HasText, HasDate, HasTags, HasComments {
 }

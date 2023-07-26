@@ -19,7 +19,7 @@ public interface HasText {
     String TEXT = "text";
 
     /**
-     * Returns the human-readable text description of the instance.
+     * Return the human-readable text description of the instance.
      *
      * @return human-readable text description of the instance
      * @see #text(String)
@@ -27,7 +27,7 @@ public interface HasText {
     String text();
 
     /**
-     * Sets the text description of the entity.
+     * Set the text description of the entity.
      *
      * @param text human readable text description
      * @see #text()

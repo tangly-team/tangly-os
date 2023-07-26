@@ -106,7 +106,7 @@ public class Comment implements HasTags {
     }
 
     /**
-     * Returns the timestamp when the comment was created.
+     * Return the timestamp when the comment was created.
      *
      * @return timestamp for the creation of the comment
      */
@@ -115,7 +115,7 @@ public class Comment implements HasTags {
     }
 
     /**
-     * Returns the author of the comment as human-readable information.
+     * Return the author of the comment as human-readable information.
      *
      * @return author of the comment
      */
@@ -124,7 +124,7 @@ public class Comment implements HasTags {
     }
 
     /**
-     * Returns the text of the comment. Asciidoc is a preferred format
+     * Return the text of the comment. Asciidoc is a preferred format
      *
      * @return text of the comment
      */

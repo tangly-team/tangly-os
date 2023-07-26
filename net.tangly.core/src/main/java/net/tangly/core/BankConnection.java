@@ -65,7 +65,7 @@ public record BankConnection(@NotNull String iban, String bic, String institute)
     }
 
     /**
-     * Builds a bank connection object from a comma separated string representation.
+     * Build a bank connection object from a comma separated string representation.
      *
      * @param text comma separated representation of the address instance
      * @return new address object
@@ -84,7 +84,7 @@ public record BankConnection(@NotNull String iban, String bic, String institute)
     }
 
     /**
-     * Validates a string representing a formatted iban number.
+     * Validate a string representing a formatted iban number.
      *
      * @param iban iban number to validate
      * @return true, if iban is valid otherwise false
@@ -100,7 +100,7 @@ public record BankConnection(@NotNull String iban, String bic, String institute)
     }
 
     /**
-     * Validates a string representing a formatted bic number.
+     * Validate a string representing a formatted bic number.
      *
      * @param bic bic number to validate
      * @return true, if the bic is valid otherwise false
@@ -116,7 +116,7 @@ public record BankConnection(@NotNull String iban, String bic, String institute)
     }
 
     /**
-     * Returns a comma-separated representation of a bank connection. Null values are shown as empty strings. The {@link Object#toString()} method is not used because the
+     * Return a comma-separated representation of a bank connection. Null values are shown as empty strings. The {@link Object#toString()} method is not used because the
      * implementation is defined in the API implementation of record construct. The generated string can be feed to the {@link BankConnection#of(String)} to create a bank
      * connection object.
      *

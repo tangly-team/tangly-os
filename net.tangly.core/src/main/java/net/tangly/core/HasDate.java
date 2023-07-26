@@ -28,7 +28,7 @@ public interface HasDate {
     }
 
     /**
-     * Returns the date of entity.
+     * Return the date of entity.
      *
      * @return the date of the entity
      * @see #date(LocalDate)

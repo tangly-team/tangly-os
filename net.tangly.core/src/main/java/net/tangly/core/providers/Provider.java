@@ -44,29 +44,29 @@ public interface Provider<T> {
     }
 
     /**
-     * Returns a list containing all known instances of the entity type.
+     * Return a list containing all known instances of the entity type.
      *
      * @return list of all instances
      */
     List<T> items();
 
     /**
-     * Updates the data associated with the entity. If the entity is new, the update is handled as a create operation. The update is transitive and all
-     * referenced entities are also updated. The entity given as parameter becomes the instance managed through the provider.
+     * Update the data associated with the entity. If the entity is new, the update is handled as a create operation. The update is transitive and all referenced entities are also
+     * updated. The entity given as parameter becomes the instance managed through the provider.
      *
      * @param entity entity to update
      */
     void update(@NotNull T entity);
 
     /**
-     * Deletes the data associated with the entity. The object identifier is invalidated.
+     * Delete the data associated with the entity. The object identifier is invalidated.
      *
      * @param entity entity to delete
      */
     void delete(@NotNull T entity);
 
     /**
-     * Updates the data associated with all entities.
+     * Update the data associated with all entities.
      *
      * @param items entities to update
      */
@@ -75,7 +75,7 @@ public interface Provider<T> {
     }
 
     /**
-     * Returns the first entity which property matches the value.
+     * Return the first entity which property matches the value.
      *
      * @param getter getter to retrieve the property
      * @param value  value to compare with

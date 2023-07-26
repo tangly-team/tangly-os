@@ -14,8 +14,8 @@ package net.tangly.core.crm;
 
 
 import net.tangly.core.Address;
-import net.tangly.core.Entity;
-import net.tangly.core.EntityImp;
+import net.tangly.core.EntityExtended;
+import net.tangly.core.EntityExtendedImp;
 import net.tangly.core.PhoneNr;
 import net.tangly.core.Strings;
 import net.tangly.core.Tag;
@@ -28,14 +28,15 @@ import java.util.Optional;
  * first name separated by a comma, a life duration and a text describing it.
  * <p>A potential approach for a natural person identification is ISO 24366.</p>
  */
-public class NaturalEntity extends EntityImp implements Entity, CrmEntity {
+public class NaturalEntity extends EntityExtendedImp implements EntityExtended, CrmEntity {
     private String socialNr;
     private String firstname;
     private String lastname;
     private GenderCode gender;
     private Photo photo;
 
-    public NaturalEntity() {
+    public NaturalEntity(long oid) {
+        super(oid);
     }
 
     @Override

@@ -14,8 +14,8 @@ package net.tangly.core.crm;
 
 
 import net.tangly.core.Address;
-import net.tangly.core.Entity;
-import net.tangly.core.EntityImp;
+import net.tangly.core.EntityExtended;
+import net.tangly.core.EntityExtendedImp;
 import net.tangly.core.Strings;
 import net.tangly.core.Tag;
 import org.jetbrains.annotations.NotNull;
@@ -26,8 +26,9 @@ import java.util.Optional;
  * A legal entity is a legally recognized organization able to underwrite contracts and hire employees. A legal entity has a name, an identity defined as the legal number of an
  * organization (e.g., zefix UID number in Switzerland, EUID in Europe), and a text describing it.
  */
-public class LegalEntity extends EntityImp implements Entity, CrmEntity {
-    public LegalEntity() {
+public class LegalEntity extends EntityExtendedImp implements EntityExtended, CrmEntity {
+    public LegalEntity(long oid) {
+        super(oid);
     }
 
     /**
@@ -46,7 +47,7 @@ public class LegalEntity extends EntityImp implements Entity, CrmEntity {
     }
 
     /**
-     * Returns the VAT identifying number for the legal entity.
+     * Return the VAT identifying number for the legal entity.
      *
      * @return the VAT identifying number
      */
@@ -55,7 +56,7 @@ public class LegalEntity extends EntityImp implements Entity, CrmEntity {
     }
 
     /**
-     * Sets the VAT identifying number for the legal entity.
+     * Set the VAT identifying number for the legal entity.
      *
      * @param vatNr new VAT identifying number
      */
