@@ -28,7 +28,6 @@ dependencies {
     implementation(libs.vaadin.core)
     implementation(libs.vaadin.embedded.jetty)
     implementation(libs.vaadin.socharts)
-    implementation(libs.vaadin.daterange)
     implementation(libs.vaadin.pdfviewer)
     implementation(libs.microstream.storage)
     implementation(libs.asciidoctorj)

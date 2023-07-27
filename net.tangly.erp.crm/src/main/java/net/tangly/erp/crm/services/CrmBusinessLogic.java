@@ -12,7 +12,7 @@
 
 package net.tangly.erp.crm.services;
 
-import net.tangly.core.HasTimeInterval;
+import net.tangly.core.HasDateRange;
 import net.tangly.erp.crm.domain.Activity;
 import net.tangly.erp.crm.domain.Contract;
 import net.tangly.erp.crm.domain.Interaction;
@@ -50,7 +50,7 @@ public class CrmBusinessLogic {
     }
 
     /**
-     * Sets the end date property of interaction to the end date of the last contract associated with the interaction in the case of customer and completed
+     * Set the end date property of interaction to the end date of the last contract associated with the interaction in the case of customer and completed
      * state. Set the end date property of interaction to the end date of the last activity associated with the interaction in the case of lost state.
      */
     public void updateInteractions() {
@@ -62,7 +62,7 @@ public class CrmBusinessLogic {
     }
 
     /**
-     * Returns the potential amount of all interactions in the selected time slot and tate.
+     * Return the potential amount of all interactions in the selected time slot and tate.
      *
      * @param code defines the state of the expected interactions
      * @param from interactions should have been started after this date
@@ -71,11 +71,11 @@ public class CrmBusinessLogic {
      */
     public BigDecimal funnel(@NotNull InteractionCode code, LocalDate from, LocalDate to) {
         return switch (code) {
-            case lead, prospect, lost -> realm.interactions().items().stream().filter(o -> o.code() == code).filter(new HasTimeInterval.IntervalFilter<>(from, to))
+            case lead, prospect, lost -> realm.interactions().items().stream().filter(o -> o.code() == code).filter(new HasDateRange.RangeFilter<>(from, to))
                 .map(Interaction::weightedPotential).reduce(BigDecimal.ZERO, BigDecimal::add);
             case ordered, completed -> realm.interactions().items().stream().filter(o -> o.code() == code)
                 .flatMap(interaction -> realm.contracts().items().stream().filter(contract -> contract.sellee().oid() == interaction.entity().oid()))
-                .filter(new HasTimeInterval.IntervalFilter<>(from, to)).map(Contract::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
+                .filter(new HasDateRange.RangeFilter<>(from, to)).map(Contract::amountWithoutVat).reduce(BigDecimal.ZERO, BigDecimal::add);
         };
     }
 }

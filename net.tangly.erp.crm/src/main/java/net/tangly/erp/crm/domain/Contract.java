@@ -15,21 +15,26 @@ package net.tangly.erp.crm.domain;
 
 import net.tangly.core.Address;
 import net.tangly.core.BankConnection;
+import net.tangly.core.DateRange;
 import net.tangly.core.Entity;
-import net.tangly.core.EntityImp;
+import net.tangly.core.EntityExtended;
+import net.tangly.core.EntityExtendedImp;
 import net.tangly.core.crm.CrmEntity;
 import net.tangly.core.crm.LegalEntity;
 import net.tangly.core.crm.VcardType;
+import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Currency;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
 
 /**
- * A legal contract between two parties, one being the seller and one being the sellee. The properties of the entity defines the identifiers of the contract and
- * the time interval.
+ * A legal contract between two parties, one being the seller, and one being the sellee. The properties of the entity define the identifiers of the contract and the time interval.
  * <ul>
  *   <li>correspondence address used in mail exchange and invoicing</li>
  *   <li>bank account used for invoicing</li>
@@ -40,15 +45,28 @@ import java.util.Optional;
  *   <li>The currency of the contract amount and the one used in the invoices</li>
  * </ul>
  */
-public class Contract extends EntityImp implements Entity, CrmEntity {
+public class Contract extends EntityExtendedImp implements EntityExtended, CrmEntity {
     private BankConnection bankConnection;
     private BigDecimal amountWithoutVat;
     private LegalEntity seller;
     private LegalEntity sellee;
     private Locale locale;
     private Currency currency;
+    private final List<ContractExtension> contractExtensions;
 
-    public Contract() {
+    /**
+     * A contract extension extends the budget for an existing contract. The conditions of the contract stay the same.
+     *
+     * @param amountWithoutVat additional amount for the contract
+     * @param range            date range of the contract extension
+     */
+    record ContractExtension(long oid, @NotNull String id, @NotNull String name, @NotNull DateRange range, String text, @NotNull String contractId,
+                             @NotNull BigDecimal amountWithoutVat) implements Entity {
+    }
+
+    public Contract(long oid) {
+        super(oid);
+        contractExtensions = new ArrayList<>();
     }
 
     @Override
@@ -70,6 +88,10 @@ public class Contract extends EntityImp implements Entity, CrmEntity {
 
     public BigDecimal amountWithoutVat() {
         return amountWithoutVat;
+    }
+
+    public BigDecimal totalAmountWithoutVat() {
+        return contractExtensions.stream().map(ContractExtension::amountWithoutVat).reduce(amountWithoutVat(), BigDecimal::add);
     }
 
     public void amountWithoutVat(BigDecimal amountWithoutVat) {
@@ -108,6 +130,18 @@ public class Contract extends EntityImp implements Entity, CrmEntity {
         this.currency = currency;
     }
 
+    public void add(ContractExtension extension) {
+        contractExtensions.add(extension);
+    }
+
+    public void remove(ContractExtension extension) {
+        contractExtensions.remove(extension);
+    }
+
+    public List<ContractExtension> contractExtensions() {
+        return Collections.unmodifiableList(contractExtensions);
+    }
+
     @Override
     public boolean validate() {
         return Objects.nonNull(bankConnection()) && Objects.nonNull(seller()) && Objects.nonNull(sellee()) &&
@@ -116,10 +150,9 @@ public class Contract extends EntityImp implements Entity, CrmEntity {
 
     @Override
     public boolean equals(Object obj) {
-        return (obj instanceof Contract o) && super.equals(o) && Objects.equals(address(), o.address()) &&
-            Objects.equals(bankConnection(), o.bankConnection()) && Objects.equals(amountWithoutVat(), o.amountWithoutVat()) &&
-            Objects.equals(seller(), o.seller()) && Objects.equals(sellee(), o.sellee()) && Objects.equals(locale(), o.locale()) &&
-            Objects.equals(currency(), o.currency());
+        return (obj instanceof Contract o) && super.equals(o) && Objects.equals(address(), o.address()) && Objects.equals(bankConnection(), o.bankConnection()) &&
+            Objects.equals(amountWithoutVat(), o.amountWithoutVat()) && Objects.equals(seller(), o.seller()) && Objects.equals(sellee(), o.sellee()) &&
+            Objects.equals(locale(), o.locale()) && Objects.equals(currency(), o.currency());
     }
 
     @Override
@@ -127,7 +160,6 @@ public class Contract extends EntityImp implements Entity, CrmEntity {
         return """
             Contract[oid=%s, id=%s, name=%s, fromDate=%s, toDate=%s, text=%s, locale=%s, currency=%s, address=%s, bankConnection=%s, amountWithoutVat=%s, \
             seller=%s, sellee=%s, tags=%s]
-            """.formatted(oid(), id(), name(), from(), to(), text(), locale(), currency(), address(), bankConnection(), amountWithoutVat(), seller(),
-            sellee(), tags());
+            """.formatted(oid(), id(), name(), from(), to(), text(), locale(), currency(), address(), bankConnection(), amountWithoutVat(), seller(), sellee(), tags());
     }
 }

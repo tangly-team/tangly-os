@@ -198,7 +198,7 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
     }
 
     /**
-     * Returns the collection of currently active states.
+     * Return the collection of currently active states.
      *
      * @return the active states unmodifiable collection
      */
@@ -207,7 +207,7 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
     }
 
     /**
-     * Returns the collection of current history states.
+     * Return the collection of current history states.
      *
      * @return the history states as an unmodifiable collection
      */
@@ -226,7 +226,7 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
     }
 
     /**
-     * Walks up the hierarchy to the common ancestor. The exit action of the left state is executed. If the left state has history when the previously active
+     * Walk up the hierarchy to the common ancestor. The exit action of the left state is executed. If the left state has history when the previously active
      * child must be added to the history.
      *
      * @param event    event triggering the state machine change
@@ -254,7 +254,7 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
     }
 
     /**
-     * Walks down the node hierarchy from the common ancestor down to the target state of the fired transition.
+     * Walk down the node hierarchy from the common ancestor down to the target state of the fired transition.
      *
      * @param event     event triggering the state machine change
      * @param hierarchy list of states defining the containing hierarchy from the ancestor to the leaf node
@@ -297,7 +297,7 @@ class StateMachineImp<O, S extends Enum<S>, E extends Enum<E>> implements StateM
     }
 
     /**
-     * Returns the common ancestor between the current active objects and given state.
+     * Return the common ancestor between the current active objects and given state.
      *
      * @param state state which ancestor is searched in the list of active states
      * @return the common ancestor

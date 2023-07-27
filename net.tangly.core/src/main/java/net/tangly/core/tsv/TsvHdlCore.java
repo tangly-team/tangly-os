@@ -59,9 +59,8 @@ public class TsvHdlCore {
     }
 
     public static TsvEntity<DateRange> createTsvDateRange() {
-        Function<CSVRecord, DateRange> imports = (CSVRecord csv) -> (Objects.isNull(TsvEntity.get(csv, FROM_DATE)) || Objects.isNull(TsvEntity.get(csv, TO_DATE))) ? null :
-            DateRange.of(ofDate(csv, FROM_DATE), ofDate(csv, TO_DATE));
-        List<TsvProperty<DateRange, ?>> fields = List.of(TsvProperty.ofDate(STREET, DateRange::from, null), TsvProperty.ofDate(POSTCODE, DateRange::to, null));
+        Function<CSVRecord, DateRange> imports = (CSVRecord csv) -> DateRange.of(ofDate(csv, FROM_DATE), ofDate(csv, TO_DATE));
+        List<TsvProperty<DateRange, ?>> fields = List.of(TsvProperty.ofDate(FROM_DATE, DateRange::from, null), TsvProperty.ofDate(TO_DATE, DateRange::to, null));
         return TsvEntity.of(DateRange.class, fields, imports);
     }
 

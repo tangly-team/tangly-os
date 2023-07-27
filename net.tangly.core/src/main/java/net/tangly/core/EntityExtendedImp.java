@@ -37,7 +37,7 @@ public abstract class EntityExtendedImp implements EntityExtended {
     public static <T extends EntityExtended> T init(T entity, String id, String name, LocalDate from, LocalDate to, String text) {
         entity.id(id);
         entity.name(name);
-        entity.interval(DateRange.of(from, to));
+        entity.range(DateRange.of(from, to));
         entity.text(text);
         return entity;
     }
@@ -47,14 +47,6 @@ public abstract class EntityExtendedImp implements EntityExtended {
         interval = new DateRange();
         comments = new ArrayList<>();
         tags = new HashSet<>();
-    }
-
-    protected EntityExtendedImp(long oid, String id, String name, DateRange interval, String text) {
-        this(oid);
-        this.id = id;
-        this.name = name;
-        this.interval = interval;
-        this.text = text;
     }
 
     @Override
@@ -82,13 +74,13 @@ public abstract class EntityExtendedImp implements EntityExtended {
     }
 
     @Override
-    public DateRange interval() {
+    public DateRange range() {
         return interval;
     }
 
     @Override
-    public void interval(DateRange interval) {
-        this.interval = interval;
+    public void range(DateRange range) {
+        this.interval = range;
     }
 
     @Override
@@ -143,7 +135,7 @@ public abstract class EntityExtendedImp implements EntityExtended {
 
     @Override
     public boolean equals(Object obj) {
-        return (obj instanceof EntityExtendedImp o) && Objects.equals(oid(), o.oid()) && Objects.equals(from(), o.from()) && Objects.equals(to(), o.to()) &&
-            Objects.equals(text(), o.text()) && Objects.equals(comments(), o.comments()) && Objects.equals(tags(), o.tags());
+        return (obj instanceof EntityExtendedImp o) && Objects.equals(oid(), o.oid()) && Objects.equals(range(), o.range()) && Objects.equals(text(), o.text()) &&
+            Objects.equals(comments(), o.comments()) && Objects.equals(tags(), o.tags());
     }
 }

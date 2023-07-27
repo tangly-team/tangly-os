@@ -42,7 +42,7 @@ public interface FsmBuilder<O, S extends Enum<S>, E extends Enum<E>> {
     }
 
     /**
-     * Selects the state with the given identifier and returns a state builder.
+     * Select the state with the given identifier and returns a state builder.
      *
      * @param stateId identifier of the requested existing state
      * @return the requested state builder
@@ -50,21 +50,21 @@ public interface FsmBuilder<O, S extends Enum<S>, E extends Enum<E>> {
     StateBuilder<O, S, E> in(S stateId);
 
     /**
-     * Selects the root state of the machine and returns a state builder.
+     * Select the root state of the machine and returns a state builder.
      *
      * @return the requested root state builder
      */
     StateBuilder<O, S, E> root();
 
     /**
-     * Returns the root state of the finite state machine definition and terminate the building process.
+     * Return the root state of the finite state machine definition and terminate the building process.
      *
      * @return the root state of the definition
      */
     State<O, S, E> definition();
 
     /**
-     * Creates an instance of the state machine based on the definition of the state machine available to the builder.
+     * Create an instance of the state machine based on the definition of the state machine available to the builder.
      *
      * @param name  human-readable name of the finite state machine instance
      * @param owner instance owning the finite state machine
@@ -73,7 +73,7 @@ public interface FsmBuilder<O, S extends Enum<S>, E extends Enum<E>> {
     StateMachine<O, S, E> machine(String name, O owner);
 
     /**
-     * Adds a new state to the root state.
+     * Add a new state to the root state.
      *
      * @param stateId identifier of the new state
      * @return the requested state builder
@@ -83,7 +83,7 @@ public interface FsmBuilder<O, S extends Enum<S>, E extends Enum<E>> {
     }
 
     /**
-     * Adds a new state to the root state.
+     * Add a new state to the root state.
      *
      * @param stateId     identifier of the new state
      * @param description human-readable description of the state

@@ -37,7 +37,7 @@ public class FsmBbv {
     private boolean maintenance;
 
     /**
-     * Returns the builder for the finite state machine with all states, transitions, guards and actions.
+     * Return the builder for the finite state machine with all states, transitions, guards and actions.
      *
      * @return builder instance for the finite state machine
      */

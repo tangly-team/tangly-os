@@ -37,7 +37,7 @@ public class Reference<T> {
     }
 
     /**
-     * Returns a new reference to the given object.
+     * Return a new reference to the given object.
      *
      * @param reference referenced object
      * @param <T>       type of the reference
@@ -48,7 +48,7 @@ public class Reference<T> {
     }
 
     /**
-     * Returns a new empty reference to the given object.
+     * Return a new empty reference to the given object.
      *
      * @param <T> type of the reference
      * @return new empty reference
@@ -58,7 +58,7 @@ public class Reference<T> {
     }
 
     /**
-     * Sets the referenced object.
+     * Set the referenced object.
      *
      * @param reference referenced object
      */
@@ -67,7 +67,7 @@ public class Reference<T> {
     }
 
     /**
-     * Returns the reference object.
+     * Return the reference object.
      *
      * @return referenced object
      */

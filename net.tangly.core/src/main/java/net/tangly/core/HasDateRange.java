@@ -20,7 +20,7 @@ import java.util.Objects;
 import java.util.function.Predicate;
 
 /**
- * Define a mixin with an absolute time interval. The time interval can be open on one or both sides.
+ * Define a mixin with an absolute time range. The time range can be open on one or both sides.
  */
 public interface HasDateRange {
     /**
@@ -34,20 +34,20 @@ public interface HasDateRange {
     String TO = "to";
 
     /**
-     * Return the interval of the mixin.
+     * Return the range of the mixin.
      *
-     * @return date interval of the mixin
-     * @see #interval(DateRange)
+     * @return date range of the mixin
+     * @see #range(DateRange)
      */
-    DateRange interval();
+    DateRange range();
 
     /**
      * Set the starting date when the entity is existing and active.
      *
-     * @param interval the new period for the entity
-     * @see #interval()
+     * @param range the new period for the entity
+     * @see #range()
      */
-    default void interval(DateRange interval) {
+    default void range(DateRange range) {
         throw new IllegalCallerException("Trait is in immutable form");
     }
 
@@ -58,7 +58,7 @@ public interface HasDateRange {
      * @see #from(LocalDate)
      */
     default LocalDate from() {
-        return interval().from();
+        return range().from();
     }
 
     /**
@@ -68,7 +68,7 @@ public interface HasDateRange {
      * @see #from()
      */
     default void from(LocalDate from) {
-        interval(interval().from(from));
+        range(range().from(from));
     }
 
     /**
@@ -78,7 +78,7 @@ public interface HasDateRange {
      * @see #to(LocalDate)
      */
     default LocalDate to() {
-        return interval().to();
+        return range().to();
     }
 
     /**
@@ -88,42 +88,42 @@ public interface HasDateRange {
      * @see #to()
      */
     default void to(LocalDate to) {
-        interval(interval().to(to));
+        range(range().to(to));
     }
 
     /**
-     * Test if the date interval is partially inside the date interval specified in the filter.
+     * Test if the date range is partially inside the date range specified in the filter.
      *
-     * @param interval date interval to test against
+     * @param range date range to test against
      * @param <T>      type of instances to test
      */
-    record IntervalFilter<T extends HasDateRange>(@NotNull DateRange interval) implements Predicate<T> {
-        public IntervalFilter(LocalDate from, LocalDate to) {
+    record RangeFilter<T extends HasDateRange>(@NotNull DateRange range) implements Predicate<T> {
+        public RangeFilter(LocalDate from, LocalDate to) {
             this(DateRange.of(from, to));
         }
 
         public boolean test(@NotNull T entity) {
-            return (Objects.isNull(interval.to()) || Objects.isNull(entity.from()) || !entity.from().isBefore(interval.to())) &&
-                (Objects.isNull(interval.from()) || Objects.isNull(entity.to()) || !entity.to().isBefore(interval.from()));
+            return (Objects.isNull(range.to()) || Objects.isNull(entity.from()) || !entity.from().isBefore(range.to())) &&
+                (Objects.isNull(range.from()) || Objects.isNull(entity.to()) || !entity.to().isBefore(range.from()));
         }
     }
 
     /**
-     * Return true if the date is in the time interval of the instance.
+     * Return true if the date is in the time range of the instance.
      *
      * @param date date against which the inclusion test is evaluated
-     * @return true if inside the interval otherwise false
+     * @return true if inside the range otherwise false
      */
     default boolean isActive(@NotNull LocalDate date) {
-        return interval().isActive(date);
+        return range().isActive(date);
     }
 
     /**
-     * Return true if the date now is in the time interval of the instance.
+     * Return true if the date now is in the time range of the instance.
      *
-     * @return true if inside the interval otherwise false
+     * @return true if inside the range otherwise false
      */
     default boolean isActive() {
-        return interval().isActive();
+        return range().isActive();
     }
 }

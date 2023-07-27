@@ -111,21 +111,21 @@ public sealed interface LList<T> permits LList.Nil, LList.ImmutableList {
     }
 
     /**
-     * Returns true if the list is empty otherwise false.
+     * Return true if the list is empty otherwise false.
      *
      * @return true if the list is empty
      */
     boolean isEmpty();
 
     /**
-     * Returns the first of the list. Is equivalent to the <em>car</em> Scheme operation.
+     * Return the first of the list. Is equivalent to the <em>car</em> Scheme operation.
      *
      * @return first item of the list
      */
     T first();
 
     /**
-     * Returns the tail of the list. Is equivalent to the <em>cdr</em> Scheme operation.
+     * Return the tail of the list. Is equivalent to the <em>cdr</em> Scheme operation.
      *
      * @return tail of the list
      */

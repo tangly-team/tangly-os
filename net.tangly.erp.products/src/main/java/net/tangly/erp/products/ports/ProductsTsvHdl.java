@@ -29,10 +29,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static net.tangly.erp.ports.TsvHdl.OID;
 import static net.tangly.core.tsv.TsvHdlCore.TEXT;
+import static net.tangly.erp.ports.TsvHdl.OID;
 import static net.tangly.erp.ports.TsvHdl.convertFoidTo;
-import static net.tangly.erp.ports.TsvHdl.createTsvQualifiedEntityFields;
+import static net.tangly.erp.ports.TsvHdl.createTsvEntityFields;
 
 public class ProductsTsvHdl {
     public static final String PRODUCTS_TSV = "products.tsv";
@@ -46,9 +46,9 @@ public class ProductsTsvHdl {
     }
 
     private static TsvEntity<Product> createTsvProduct() {
-        List<TsvProperty<Product, ?>> fields = createTsvQualifiedEntityFields();
+        List<TsvProperty<Product, ?>> fields = createTsvEntityFields();
         fields.add(TsvProperty.of("contractIds", Product::contractIds, Product::contractIds, e -> Arrays.asList(e.split(",", -1)), e -> String.join(",", e)));
-        return TsvEntity.of(Product.class, fields, Product::new);
+        return TsvHdl.of(Product.class, fields, Product::new);
     }
 
     public void importProducts(@NotNull Reader reader, String source) {
@@ -84,19 +84,18 @@ public class ProductsTsvHdl {
     }
 
     private TsvEntity<Assignment> createTsvAssignment() {
-        List<TsvProperty<Assignment, ?>> fields = createTsvQualifiedEntityFields();
+        List<TsvProperty<Assignment, ?>> fields = createTsvEntityFields();
         fields.add(TsvProperty.ofString("collaboratorId", Assignment::collaboratorId, Assignment::collaboratorId));
         fields.add(TsvProperty.of("productOid", Assignment::product, Assignment::product, e -> findProductByOid(e).orElse(null), convertFoidTo()));
-        return TsvEntity.of(Assignment.class, fields, Assignment::new);
+        return TsvHdl.of(Assignment.class, fields, Assignment::new);
     }
 
     private TsvEntity<Effort> createTsvEffort() {
-        List<TsvProperty<Effort, ?>> fields =
-            List.of(TsvProperty.of(OID, Effort::oid, (entity, value) -> ReflectionUtilities.set(entity, OID, value), Long::parseLong),
-                TsvProperty.of("date", Effort::date, Effort::date, TsvProperty.CONVERT_DATE_FROM),
-                TsvProperty.ofInt("durationInMinutes", Effort::duration, Effort::duration), TsvProperty.ofString(TEXT, Effort::text, Effort::text),
-                TsvProperty.of("assignmentOid", Effort::assignment, Effort::assignment, e -> findAssignmentByOid(e).orElse(null), convertFoidTo()),
-                TsvProperty.ofString("contractId", Effort::contractId, Effort::contractId));
+        List<TsvProperty<Effort, ?>> fields = List.of(TsvProperty.of(OID, Effort::oid, (entity, value) -> ReflectionUtilities.set(entity, OID, value), Long::parseLong),
+            TsvProperty.of("date", Effort::date, Effort::date, TsvProperty.CONVERT_DATE_FROM), TsvProperty.ofInt("durationInMinutes", Effort::duration, Effort::duration),
+            TsvProperty.ofString(TEXT, Effort::text, Effort::text),
+            TsvProperty.of("assignmentOid", Effort::assignment, Effort::assignment, e -> findAssignmentByOid(e).orElse(null), convertFoidTo()),
+            TsvProperty.ofString("contractId", Effort::contractId, Effort::contractId));
         return TsvEntity.of(Effort.class, fields, Effort::new);
     }
 }

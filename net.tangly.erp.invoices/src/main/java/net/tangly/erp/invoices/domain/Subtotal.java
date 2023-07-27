@@ -49,7 +49,7 @@ public record Subtotal(int position, String text, @NotNull List<InvoiceLine> ite
     }
 
     /**
-     * Returns the list of positions part of the subtotal aggregate.
+     * Return the list of positions part of the subtotal aggregate.
      *
      * @return positions associated with the subtotal
      */

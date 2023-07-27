@@ -20,7 +20,7 @@ import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
-import net.tangly.ui.components.ItemView;
+import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -35,8 +35,8 @@ public class LedgerBoundedDomainUi implements BoundedDomainUi {
 
     public LedgerBoundedDomainUi(@NotNull LedgerBoundedDomain domain) {
         this.domain = domain;
-        accountsView = new AccountsView(domain, ItemView.Mode.EDIT);
-        transactionsView = new TransactionsView(domain, ItemView.Mode.EDIT);
+        accountsView = new AccountsView(domain, Mode.EDIT);
+        transactionsView = new TransactionsView(domain, Mode.EDIT);
         analyticsView = new AnalyticsLedgerView(domain);
         domainView = new DomainView(domain);
         currentView = transactionsView;

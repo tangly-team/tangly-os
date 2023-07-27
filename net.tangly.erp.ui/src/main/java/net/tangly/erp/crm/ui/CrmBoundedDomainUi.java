@@ -21,7 +21,7 @@ import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
-import net.tangly.ui.components.ItemView;
+import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -42,14 +42,14 @@ public class CrmBoundedDomainUi implements BoundedDomainUi {
 
     public CrmBoundedDomainUi(@NotNull CrmBoundedDomain crmDomain, @NotNull InvoicesBoundedDomain invoicesDomain) {
         this.domain = crmDomain;
-        leadsView = new LeadsView(domain, ItemView.Mode.EDIT);
-        naturalEntitiesView = new NaturalEntitiesView(domain, ItemView.Mode.EDIT);
-        legalEntitiesView = new LegalEntitiesView(domain, ItemView.Mode.EDIT);
-        employeesView = new EmployeesView(domain, ItemView.Mode.EDIT);
-        contractsView = new ContractsView(domain, ItemView.Mode.EDIT);
-        interactionsView = new InteractionsView(domain, ItemView.Mode.EDIT);
-        activitiesView = new ActivitiesView(domain, ItemView.Mode.VIEW);
-        subjectsView = new SubjectsView(domain, ItemView.Mode.EDIT);
+        leadsView = new LeadsView(domain, Mode.EDIT);
+        naturalEntitiesView = new NaturalEntitiesView(domain, Mode.EDIT);
+        legalEntitiesView = new LegalEntitiesView(domain, Mode.EDIT);
+        employeesView = new EmployeesView(domain, Mode.EDIT);
+        contractsView = new ContractsView(domain, Mode.EDIT);
+        interactionsView = new InteractionsView(domain, Mode.EDIT);
+        activitiesView = new ActivitiesView(domain, Mode.VIEW);
+        subjectsView = new SubjectsView(domain, Mode.EDIT);
         analyticsView = new AnalyticsCrmView(domain, invoicesDomain);
         domainView = new DomainView(domain);
         currentView = naturalEntitiesView;

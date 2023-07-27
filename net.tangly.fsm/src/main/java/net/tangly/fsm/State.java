@@ -43,21 +43,21 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
     S id();
 
     /**
-     * Returns true if the state has history active.
+     * Return true if the state has history active.
      *
      * @return flag indicating if the state has history
      */
     boolean hasHistory();
 
     /**
-     * Returns true if the state is an initial state.
+     * Return true if the state is an initial state.
      *
      * @return flag indicating if the state is an initial state
      */
     boolean isInitial();
 
     /**
-     * Returns true if the state is a final state. A state is final if no transitions are leaving it.
+     * Return true if the state is a final state. A state is final if no transitions are leaving it.
      *
      * @return flag indicating if the state is final
      */
@@ -66,7 +66,7 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
     }
 
     /**
-     * Returns true if the state contains substates. If true, the state cannot be initial or final.
+     * Return true if the state contains substates. If true, the state cannot be initial or final.
      *
      * @return flag indicating if the state is composite.
      */
@@ -75,7 +75,7 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
     }
 
     /**
-     * Executes the entry action associated with the state if defined.
+     * Execute the entry action associated with the state if defined.
      *
      * @param owner instance owning the finite state machine
      * @param event the event triggering the execution of the action if defined
@@ -83,7 +83,7 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
     void executeEntryAction(O owner, Event<E> event);
 
     /**
-     * Executes the exit action associated with the state if defined.
+     * Execute the exit action associated with the state if defined.
      *
      * @param owner instance owning the finite state machine
      * @param event the event triggering the execution of the action if defined
@@ -91,28 +91,28 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
     void executeExitAction(O owner, Event<E> event);
 
     /**
-     * Returns the list of substates.
+     * Return the list of substates.
      *
      * @return the set of substates or an empty list if none is defined.
      */
     Set<State<O, S, E>> substates();
 
     /**
-     * Returns the list of transitions starting from this state.
+     * Return the list of transitions starting from this state.
      *
      * @return the set of transitions or an empty list if none is defined
      */
     Set<Transition<O, S, E>> transitions();
 
     /**
-     * Returns the list of local or self transitions starting from this state. Self-transitions do not trigger entry or exit actions.
+     * Return the list of local or self transitions starting from this state. Self-transitions do not trigger entry or exit actions.
      *
      * @return the set of self-transitions or an empty list if none is defined
      */
     Set<Transition<O, S, E>> localTransitions();
 
     /**
-     * Returns true if the state has an entry action.
+     * Return true if the state has an entry action.
      *
      * @return flag indicating if the state has an entry action
      */
@@ -121,14 +121,14 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
     }
 
     /**
-     * Returns the entry action of the state.
+     * Return the entry action of the state.
      *
      * @return the action if defined otherwise null
      */
     BiConsumer<O, Event<E>> entryAction();
 
     /**
-     * Returns true if the state has an exit action.
+     * Return true if the state has an exit action.
      *
      * @return flag indicating if the state has an exit action
      */
@@ -137,14 +137,14 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
     }
 
     /**
-     * Returns the exit action of the state.
+     * Return the exit action of the state.
      *
      * @return the action if defined otherwise null
      */
     BiConsumer<O, Event<E>> exitAction();
 
     /**
-     * Returns the state with the given state identifier.
+     * Return the state with the given state identifier.
      *
      * @param stateId identifier of the state looked for
      * @return the requested state if found otherwise null
@@ -152,14 +152,14 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
     State<O, S, E> getStateFor(S stateId);
 
     /**
-     * Returns the direct substate being an initial state.
+     * Return the direct substate being an initial state.
      *
      * @return the direct substate flagged with initial otherwise null
      */
     State<O, S, E> initialState();
 
     /**
-     * Returns the state machine's default initial state.
+     * Return the state machine's default initial state.
      *
      * @return the ordered hierarchy of states being an initial state if defined otherwise an empty list. The head contains the root state, the tail contains
      * the deepest substate
@@ -167,28 +167,28 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
     Deque<State<O, S, E>> initialStates();
 
     /**
-     * Returns the human-readable description of the state.
+     * Return the human-readable description of the state.
      *
      * @return the description of the state if defined otherwise null
      */
     String description();
 
     /**
-     * Returns the human-readable description for the entry action of the state.
+     * Return the human-readable description for the entry action of the state.
      *
      * @return the description of the entry action for the state if defined otherwise null
      */
     String entryActionDescription();
 
     /**
-     * Returns the human-readable description for the exit action of the state.
+     * Return the human-readable description for the exit action of the state.
      *
      * @return the description of the exit action for state if defined otherwise null
      */
     String exitActionDescription();
 
     /**
-     * Returns the list of all substates including this state and the given substate to reach the given substate. The hierarchy includes the boundary states. If not found, the list
+     * Return the list of all substates including this state and the given substate to reach the given substate. The hierarchy includes the boundary states. If not found, the list
      * is empty.
      *
      * @param substate substate to look for
@@ -199,7 +199,7 @@ public interface State<O, S extends Enum<S>, E extends Enum<E>> extends Comparab
     }
 
     /**
-     * Returns the state with the given identifier.
+     * Return the state with the given identifier.
      *
      * @param stateId identifier of the state to be found
      * @return the state if found

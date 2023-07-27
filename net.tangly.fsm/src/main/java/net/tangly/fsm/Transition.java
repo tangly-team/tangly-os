@@ -25,35 +25,35 @@ import java.util.function.BiPredicate;
  */
 public interface Transition<O, S extends Enum<S>, E extends Enum<E>> {
     /**
-     * Returns the start state or source state of the transition.
+     * Return the start state or source state of the transition.
      *
      * @return source state of the transition
      */
     State<O, S, E> source();
 
     /**
-     * Returns the end state or target state of the transition.
+     * Return the end state or target state of the transition.
      *
      * @return end state of the transition
      */
     State<O, S, E> target();
 
     /**
-     * Returns the identifier of the event triggering the firing of the transition.
+     * Return the identifier of the event triggering the firing of the transition.
      *
      * @return the identifier of the event
      */
     E eventId();
 
     /**
-     * Returns the optional guard restricting the firing of the transition.
+     * Return the optional guard restricting the firing of the transition.
      *
      * @return guard of the transition if defined otherwise null
      */
     BiPredicate<O, Event<E>> guard();
 
     /**
-     * Indicates if the transition has a guard or not.
+     * Indicate if the transition has a guard or not.
      *
      * @return flag indicating if the transition has a guard
      * @see #guard()
@@ -63,14 +63,14 @@ public interface Transition<O, S extends Enum<S>, E extends Enum<E>> {
     }
 
     /**
-     * Returns the optional action executed upon firing of the transition.
+     * Return the optional action executed upon firing of the transition.
      *
      * @return action of the transition if defined otherwise null
      */
     BiConsumer<O, Event<E>> action();
 
     /**
-     * Indicates if the transition has an action or not.
+     * Indicate if the transition has an action or not.
      *
      * @return flag indicating if the transition has an action
      * @see #action()
@@ -80,7 +80,7 @@ public interface Transition<O, S extends Enum<S>, E extends Enum<E>> {
     }
 
     /**
-     * Evaluates the event and guard of the transition.
+     * Evaluate the event and guard of the transition.
      *
      * @param context instance owning the finite state machine
      * @param event   event triggering the transition
@@ -89,7 +89,7 @@ public interface Transition<O, S extends Enum<S>, E extends Enum<E>> {
     boolean evaluate(O context, Event<E> event);
 
     /**
-     * Executes the action associated with the transition if defined. The action is only executed if the event and guard evaluate to true {@link #evaluate(Object, Event)}.
+     * Execute the action associated with the transition if defined. The action is only executed if the event and guard evaluate to true {@link #evaluate(Object, Event)}.
      *
      * @param context instance owning the finite state machine
      * @param event   the event triggering the execution of the action
@@ -98,21 +98,21 @@ public interface Transition<O, S extends Enum<S>, E extends Enum<E>> {
     boolean execute(O context, Event<E> event);
 
     /**
-     * Returns the human-readable description of the transition.
+     * Return the human-readable description of the transition.
      *
      * @return the description of the transition if defined otherwise null
      */
     String description();
 
     /**
-     * Returns the human-readable description of the guard for the transition.
+     * Return the human-readable description of the guard for the transition.
      *
      * @return the description of the guard for the transition if defined otherwise null
      */
     String guardDescription();
 
     /**
-     * Returns the human-readable description of the action for the transition.
+     * Return the human-readable description of the action for the transition.
      *
      * @return the description of the action for the transition if defined otherwise null
      */

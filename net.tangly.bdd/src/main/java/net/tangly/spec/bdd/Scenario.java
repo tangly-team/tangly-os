@@ -30,7 +30,7 @@ import java.lang.annotation.Target;
 @Test
 public @interface Scenario {
     /**
-     * Returns the description of the scenario as human-readable information for living documentation.
+     * Return the description of the scenario as human-readable information for living documentation.
      *
      * @return representation of the use case in a plain human language.
      */

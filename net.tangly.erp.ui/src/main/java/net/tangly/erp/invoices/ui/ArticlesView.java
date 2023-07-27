@@ -27,6 +27,7 @@ import net.tangly.erp.invoices.domain.ArticleCode;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
+import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 

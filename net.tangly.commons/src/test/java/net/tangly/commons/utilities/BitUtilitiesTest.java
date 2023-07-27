@@ -16,7 +16,13 @@ package net.tangly.commons.utilities;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static net.tangly.commons.utilities.BitUtilities.*;
+import static net.tangly.commons.utilities.BitUtilities.BYTE;
+import static net.tangly.commons.utilities.BitUtilities.DWORD;
+import static net.tangly.commons.utilities.BitUtilities.appendBits;
+import static net.tangly.commons.utilities.BitUtilities.extractBitsToByte;
+import static net.tangly.commons.utilities.BitUtilities.extractBitsToInt;
+import static net.tangly.commons.utilities.BitUtilities.extractBitsToShort;
+import static net.tangly.commons.utilities.BitUtilities.toHex;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**

@@ -13,21 +13,19 @@
 package net.tangly.erp.collabortors.domain;
 
 import lombok.Builder;
+import net.tangly.core.DateRange;
+import net.tangly.core.HasDateRange;
 import net.tangly.core.HasId;
-import net.tangly.core.HasTimeInterval;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.List;
 
 @Builder
 public record Contract(@NotNull String id,
                        @NotNull Organization organization,
-                       @NotNull Collaborator collaborator,
-                       @NotNull LocalDate from,
-                       LocalDate to,
+                       @NotNull Collaborator collaborator, @NotNull DateRange range,
                        @NotNull BigDecimal yearlySalary,
                        @NotNull BigDecimal workPercentage,
-                       int nrOfPayments,
-                       @NotNull List<SwissPensionFund> pensionFunds) implements HasId, HasTimeInterval {}
+                       int nrOfPayments, @NotNull List<SwissPensionFund> pensionFunds) implements HasId, HasDateRange {
+}

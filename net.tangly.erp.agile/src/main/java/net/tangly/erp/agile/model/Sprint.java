@@ -12,40 +12,35 @@
 
 package net.tangly.erp.agile.model;
 
+import net.tangly.core.DateRange;
 import net.tangly.core.ExternalEntity;
 import net.tangly.core.ExternalEntityImp;
-import net.tangly.core.HasTimeInterval;
+import net.tangly.core.HasDateRange;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 
-public class Sprint extends ExternalEntityImp implements ExternalEntity, HasTimeInterval {
-    private LocalDate fromDate;
-    private LocalDate toDate;
+public class Sprint extends ExternalEntityImp implements ExternalEntity, HasDateRange {
+    private DateRange interval;
 
     public Sprint(@NotNull String id) {
         super(id);
+        interval = new DateRange();
     }
 
     // region HasInterval
 
     @Override
-    public LocalDate from() {
-        return fromDate;
+    public DateRange range() {
+        return interval;
     }
 
-    public void from(LocalDate fromDate) {
-        this.fromDate = fromDate;
+    public void from(LocalDate from) {
+        interval = interval.from(from);
     }
 
-    @Override
-    public LocalDate to() {
-        return toDate;
+    public void to(LocalDate to) {
+        interval = interval.to(to);
     }
-
-    public void to(LocalDate toDate) {
-        this.toDate = toDate;
-    }
-
     // endregion
 }

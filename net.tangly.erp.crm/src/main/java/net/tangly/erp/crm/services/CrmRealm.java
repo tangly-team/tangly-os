@@ -60,7 +60,7 @@ public interface CrmRealm extends Realm {
 
 
     /**
-     * Returns all the past and present employees of a legal organization.
+     * Return all the past and present employees of a legal organization.
      *
      * @param entity entity which employees should be retrieved
      * @return the list of employees
@@ -70,7 +70,7 @@ public interface CrmRealm extends Realm {
     }
 
     /**
-     * Returns all the employee positions a person had and has.
+     * Return all the employee positions a person had and has.
      *
      * @param entity entity which employees should be retrieved
      * @return the list of employees

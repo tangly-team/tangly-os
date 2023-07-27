@@ -130,7 +130,7 @@ public class Invoice implements HasId, HasName, HasDate, HasText {
     // region VAT
 
     /**
-     * Returns the amount of the invoice without VAT tax.
+     * Return the amount of the invoice without VAT tax.
      *
      * @return invoice amount without VAT tax
      */
@@ -139,7 +139,7 @@ public class Invoice implements HasId, HasName, HasDate, HasText {
     }
 
     /**
-     * Returns the VAT tax amount for the whole invoice.
+     * Return the VAT tax amount for the whole invoice.
      *
      * @return invoice VAT tax
      */
@@ -286,7 +286,7 @@ public class Invoice implements HasId, HasName, HasDate, HasText {
     }
 
     /**
-     * Returns all positions defined in the invoice either invoice items or subtotals.
+     * Return all positions defined in the invoice either invoice items or subtotals.
      *
      * @return list of invoice lines
      */
@@ -295,7 +295,7 @@ public class Invoice implements HasId, HasName, HasDate, HasText {
     }
 
     /**
-     * Returns all invoice items defined in the invoice.
+     * Return all invoice items defined in the invoice.
      *
      * @return list of invoice items
      */

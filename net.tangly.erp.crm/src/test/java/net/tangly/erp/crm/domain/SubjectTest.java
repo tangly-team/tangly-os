@@ -12,6 +12,7 @@
 
 package net.tangly.erp.crm.domain;
 
+import net.tangly.core.Entity;
 import net.tangly.core.crm.NaturalEntity;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +22,7 @@ class SubjectTest {
     @Test
     void subjectPasswordTest() {
         String password = "aeon";
-        var subject = new Subject();
+        var subject = new Subject(Entity.UNDEFINED_OID);
         subject.newPassword("aeon");
         assertThat(Subject.encryptPassword(password, subject.passwordSalt())).isEqualTo(subject.passwordHash());
         assertThat(subject.authenticate(password)).isTrue();
@@ -29,10 +30,10 @@ class SubjectTest {
 
     @Test
     void subjectAvatarTest() {
-        var naturalEntity = new NaturalEntity();
+        var naturalEntity = new NaturalEntity(Entity.UNDEFINED_OID);
         naturalEntity.firstname("Marcel");
         naturalEntity.firstname("Baumann");
-        var subject = new Subject();
+        var subject = new Subject(Entity.UNDEFINED_OID);
         subject.user(naturalEntity);
         subject.gravatarEmail("marcel.baumann@tangly.net");
         byte[] avatar = subject.avatar();

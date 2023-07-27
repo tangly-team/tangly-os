@@ -21,6 +21,7 @@ import net.tangly.erp.crm.domain.Employee;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.EntityForm;
 import net.tangly.ui.components.EntityView;
+import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -38,7 +39,7 @@ class EmployeesView extends EntityView<Employee> {
 
     static class EmployeeForm extends EntityForm<Employee, EmployeesView> {
         public EmployeeForm(@NotNull EmployeesView parent, @NotNull TypeRegistry registry) {
-            super(parent, Employee.class);
+            super(parent, Employee::new);
             init();
         }
 

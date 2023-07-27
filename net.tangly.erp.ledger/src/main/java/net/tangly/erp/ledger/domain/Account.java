@@ -146,7 +146,7 @@ public class Account implements HasId, HasName {
     }
 
     /**
-     * Returns true if the account is an aggregate account, meaning the balance is the aggregation of a set of accounts.
+     * Return true if the account is an aggregate account, meaning the balance is the aggregation of a set of accounts.
      *
      * @return flag indicating if the account is an aggregate account
      */
@@ -155,7 +155,7 @@ public class Account implements HasId, HasName {
     }
 
     /**
-     * Returns true if the account is a debit account.
+     * Return true if the account is a debit account.
      *
      * @return flag indicating if the account is a debit account
      */
@@ -164,7 +164,7 @@ public class Account implements HasId, HasName {
     }
 
     /**
-     * Returns true if the account is a credit account.
+     * Return true if the account is a credit account.
      *
      * @return flag indicating if the account is a credit account
      */

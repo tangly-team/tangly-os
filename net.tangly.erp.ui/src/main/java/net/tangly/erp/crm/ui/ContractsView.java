@@ -23,6 +23,7 @@ import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.BankConnectionField;
 import net.tangly.ui.components.EntityField;
 import net.tangly.ui.components.EntityView;
+import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 

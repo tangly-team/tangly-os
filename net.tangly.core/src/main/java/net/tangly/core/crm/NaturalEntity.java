@@ -31,7 +31,6 @@ import java.util.Optional;
 public class NaturalEntity extends EntityExtendedImp implements EntityExtended, CrmEntity {
     private String socialNr;
     private String firstname;
-    private String lastname;
     private GenderCode gender;
     private Photo photo;
 
@@ -57,16 +56,8 @@ public class NaturalEntity extends EntityExtendedImp implements EntityExtended, 
         this.firstname = firstname;
     }
 
-    public String lastname() {
-        return lastname;
-    }
-
-    public void lastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String name() {
-        return lastname() + ((firstname() != null) ? ", " + firstname() : "");
+    public String fullname() {
+        return name() + ((firstname() != null) ? ", " + firstname() : "");
     }
 
     public GenderCode gender() {
@@ -112,19 +103,19 @@ public class NaturalEntity extends EntityExtendedImp implements EntityExtended, 
 
     @Override
     public boolean validate() {
-        return !Strings.isNullOrBlank(lastname()) && (gender() != null);
+        return !Strings.isNullOrBlank(name()) && (gender() != null);
     }
 
     @Override
     public boolean equals(Object obj) {
         return (obj instanceof NaturalEntity o) && super.equals(o) && Objects.equals(socialNr(), o.socialNr()) && Objects.equals(firstname(), o.firstname()) &&
-            Objects.equals(lastname(), o.lastname()) && Objects.equals(gender(), o.gender());
+            Objects.equals(name(), o.name()) && Objects.equals(gender(), o.gender());
     }
 
     @Override
     public String toString() {
         return """
-            NaturalEntity[oid=%s, fromDate=%s, toDate=%s, text=%s, socialNr=%s, firstname=%s, lastname=%s, gender=%s, tags=%s, comments=%s]
-            """.formatted(oid(), from(), to(), text(), socialNr(), firstname(), lastname(), gender(), tags(), comments());
+            NaturalEntity[oid=%s, fromDate=%s, toDate=%s, text=%s, socialNr=%s, firstname=%s, name=%s, gender=%s, tags=%s, comments=%s]
+            """.formatted(oid(), from(), to(), text(), socialNr(), firstname(), name(), gender(), tags(), comments());
     }
 }

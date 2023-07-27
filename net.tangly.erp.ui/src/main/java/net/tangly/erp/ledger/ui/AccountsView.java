@@ -22,6 +22,7 @@ import net.tangly.erp.ledger.domain.Account;
 import net.tangly.erp.ledger.services.LedgerBoundedDomain;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
+import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -92,7 +93,7 @@ class AccountsView extends ItemView<Account> {
         }
 
         @Override
-        public void mode(@NotNull ItemView.Mode mode) {
+        public void mode(@NotNull Mode mode) {
         }
 
         @Override

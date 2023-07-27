@@ -21,13 +21,14 @@ import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.EntityField;
 import net.tangly.ui.components.EntityForm;
 import net.tangly.ui.components.EntityView;
+import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
 class SubjectsView extends EntityView<Subject> {
     static class SubjectForm extends EntityForm<Subject, SubjectsView> {
         public SubjectForm(@NotNull SubjectsView parent) {
-            super(parent, Subject.class);
+            super(parent, Subject::new);
         }
 
         public void init() {

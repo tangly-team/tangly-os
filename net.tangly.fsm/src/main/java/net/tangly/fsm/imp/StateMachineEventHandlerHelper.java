@@ -41,7 +41,7 @@ class StateMachineEventHandlerHelper<O, S extends Enum<S>, E extends Enum<E>> im
     }
 
     /**
-     * adds an event handler in the managed set.
+     * Add an event handler in the managed set.
      *
      * @param handler handler to addToRoot to the managed set.
      */
@@ -50,7 +50,7 @@ class StateMachineEventHandlerHelper<O, S extends Enum<S>, E extends Enum<E>> im
     }
 
     /**
-     * removes an event handler from the managed set.
+     * Remove an event handler from the managed set.
      *
      * @param handler handler to remove from the managed set.
      */
@@ -59,7 +59,7 @@ class StateMachineEventHandlerHelper<O, S extends Enum<S>, E extends Enum<E>> im
     }
 
     /**
-     * Returns true if the given handler is registered in the state machine.
+     * Return true if the given handler is registered in the state machine.
      *
      * @param handler handler whose registration shall be verified
      * @return true if the handler is registered otherwise false

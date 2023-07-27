@@ -127,7 +127,7 @@ public class Transaction implements HasDate, HasText {
     }
 
     /**
-     * Returns an optional reference identifier to an external accounting document describing the transaction.
+     * Return an optional reference identifier to an external accounting document describing the transaction.
      *
      * @return the reference identifier, can be null
      */
@@ -136,7 +136,7 @@ public class Transaction implements HasDate, HasText {
     }
 
     /**
-     * Returns the credit (Haben) account of the transaction.
+     * Return the credit (Haben) account of the transaction.
      *
      * @return credit account of the transaction
      */
@@ -145,7 +145,7 @@ public class Transaction implements HasDate, HasText {
     }
 
     /**
-     * Returns the debit (Soll) account of the transaction.
+     * Return the debit (Soll) account of the transaction.
      *
      * @return debit account of the transaction
      */
@@ -154,7 +154,7 @@ public class Transaction implements HasDate, HasText {
     }
 
     /**
-     * Returns the amount of the transaction.
+     * Return the amount of the transaction.
      *
      * @return amount of the transaction
      */
@@ -163,7 +163,7 @@ public class Transaction implements HasDate, HasText {
     }
 
     /**
-     * Returns a human-readable description of the transaction.
+     * Return a human-readable description of the transaction.
      *
      * @return description of the transaction
      */
@@ -172,7 +172,7 @@ public class Transaction implements HasDate, HasText {
     }
 
     /**
-     * Returns the date of the execution of the transaction.
+     * Return the date of the execution of the transaction.
      *
      * @return date of the transaction
      */
@@ -181,7 +181,7 @@ public class Transaction implements HasDate, HasText {
     }
 
     /**
-     * Returns true if the transaction is split between multiple accounts.
+     * Return true if the transaction is split between multiple accounts.
      *
      * @return true if the transaction is split
      */

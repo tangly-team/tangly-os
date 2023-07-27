@@ -13,9 +13,12 @@
 package net.tangly.erp;
 
 import net.tangly.commons.lang.ReflectionUtilities;
+import net.tangly.core.Entity;
 import net.tangly.core.HasOid;
 import net.tangly.core.TypeRegistry;
 import net.tangly.erp.crm.domain.Subject;
+import net.tangly.erp.crm.ports.CrmEntities;
+import net.tangly.erp.crm.ports.CrmHdl;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.erp.crm.services.CrmBusinessLogic;
 import net.tangly.erp.invoices.ports.InvoicesAdapter;
@@ -33,8 +36,6 @@ import net.tangly.erp.products.ports.ProductsEntities;
 import net.tangly.erp.products.ports.ProductsHdl;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.erp.products.services.ProductsBusinessLogic;
-import net.tangly.erp.crm.ports.CrmEntities;
-import net.tangly.erp.crm.ports.CrmHdl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -133,7 +134,7 @@ public class Erp {
     }
 
     private static Subject createAdminSubject() {
-        var subject = new Subject();
+        var subject = new Subject(Entity.UNDEFINED_OID);
         ReflectionUtilities.set(subject, HasOid.OID, 900);
         subject.id("aeon");
         subject.newPassword("aeon");

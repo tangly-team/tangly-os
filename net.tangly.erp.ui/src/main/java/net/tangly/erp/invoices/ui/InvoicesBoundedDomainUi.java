@@ -20,7 +20,7 @@ import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.erp.invoices.services.InvoicesBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
-import net.tangly.ui.components.ItemView;
+import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -34,8 +34,8 @@ public class InvoicesBoundedDomainUi implements BoundedDomainUi {
 
     public InvoicesBoundedDomainUi(@NotNull InvoicesBoundedDomain domain) {
         this.domain = domain;
-        articlesView = new ArticlesView(domain, ItemView.Mode.EDIT);
-        invoicesView = new InvoicesView(domain, ItemView.Mode.EDIT);
+        articlesView = new ArticlesView(domain, Mode.EDIT);
+        invoicesView = new InvoicesView(domain, Mode.EDIT);
         domainView = new DomainView(domain);
         currentView = invoicesView;
     }

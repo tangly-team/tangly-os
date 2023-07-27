@@ -25,7 +25,7 @@ import org.jetbrains.annotations.NotNull;
 public interface StateMachine<O, S extends Enum<S>, E extends Enum<E>> {
 
     /**
-     * Fires the specified event and processes all associated actions.
+     * Fire the specified event and processes all associated actions.
      *
      * @param event the event to process
      * @return flag indicating if a transition was fired or not
@@ -33,54 +33,54 @@ public interface StateMachine<O, S extends Enum<S>, E extends Enum<E>> {
     boolean fire(@NotNull Event<E> event);
 
     /**
-     * Resets the state machine to his start state. All history information is erased.
+     * Reset the state machine to his start state. All history information is erased.
      */
     void reset();
 
     /**
-     * Returns the name of this state machine.
+     * Return the name of this state machine.
      *
      * @return name of the state machine if defined otherwise null
      */
     String name();
 
     /**
-     * Returns the state machine description.
+     * Return the state machine description.
      *
      * @return the state machine description
      */
     State<O, S, E> root();
 
     /**
-     * Returns the context of the finite state machine instance.
+     * Return the context of the finite state machine instance.
      *
      * @return the context of the state machine
      */
     O context();
 
     /**
-     * Returns true if the finite state machine is in a non-final state and will process further events.
+     * Return true if the finite state machine is in a non-final state and will process further events.
      *
      * @return flag indicating if the machine is in a non-final state
      */
     boolean isAlive();
 
     /**
-     * Adds an event handler.
+     * Add an event handler.
      *
      * @param handler the event handler
      */
     void addEventHandler(@NotNull StateMachineEventHandler<O, S, E> handler);
 
     /**
-     * Removes the given event handler.
+     * Remove the given event handler.
      *
      * @param handler the event handler to be removed.
      */
     void removeEventHandler(@NotNull StateMachineEventHandler<O, S, E> handler);
 
     /**
-     * Returns true if the given handler is registered in the state machine.
+     * Return true if the given handler is registered in the state machine.
      *
      * @param handler handler whose registration shall be verified
      * @return true if the handler is registered otherwise false

@@ -29,6 +29,7 @@ import net.tangly.erp.ledger.services.LedgerBusinessLogic;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
+import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -116,7 +117,7 @@ class TransactionsView extends ItemView<Transaction> {
         }
 
         @Override
-        public void mode(@NotNull ItemView.Mode mode) {
+        public void mode(@NotNull Mode mode) {
         }
 
         @Override

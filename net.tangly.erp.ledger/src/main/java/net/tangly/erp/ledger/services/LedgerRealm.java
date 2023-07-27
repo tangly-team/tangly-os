@@ -12,7 +12,7 @@
 
 package net.tangly.erp.ledger.services;
 
-import net.tangly.core.HasTimeInterval;
+import net.tangly.core.DateRange;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.ledger.domain.Account;
@@ -29,8 +29,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * The ledger implements a ledger with a chart of accounts and a set of transactions. It provides the logic for the automatic processing of VAT amounts and
- * related bookings to the VAT related accounts.
+ * The ledger implements a ledger with a chart of accounts and a set of transactions. It provides the logic for the automatic processing of VAT amounts and related bookings to the
+ * VAT related accounts.
  */
 public interface LedgerRealm extends Realm {
     Logger logger = LogManager.getLogger();
@@ -58,7 +58,7 @@ public interface LedgerRealm extends Realm {
     }
 
     default List<Transaction> transactions(LocalDate from, LocalDate to) {
-        return transactions().items().stream().filter(o -> HasTimeInterval.isActive(o.date(), from, to)).toList();
+        return transactions().items().stream().filter(o -> DateRange.of(from, to).isActive(o.date())).toList();
     }
 
     default Optional<Account> accountBy(String id) {
@@ -74,8 +74,8 @@ public interface LedgerRealm extends Realm {
     void add(@NotNull Transaction transaction);
 
     /**
-     * Adds a transaction to the ledger and the referenced accounts. A warning message is written to the log file if one of the involved accounts is not
-     * registered in the ledger. The involved accounts cannot be aggregate accounts.
+     * Adds a transaction to the ledger and the referenced accounts. A warning message is written to the log file if one of the involved accounts is not registered in the ledger.
+     * The involved accounts cannot be aggregate accounts.
      *
      * @param transaction transaction to add to the ledger
      */
@@ -86,11 +86,9 @@ public interface LedgerRealm extends Realm {
         if (!transaction.isSplit() && vatDuePercent.isPresent()) {
             AccountEntry credit = transaction.creditSplits().get(0);
             BigDecimal vatDue = credit.amount().multiply(vatDuePercent.get());
-            List<AccountEntry> splits =
-                List.of(new AccountEntry(credit.accountId(), credit.date(), credit.amount().subtract(vatDue), credit.text(), false, credit.tags()),
-                    new AccountEntry("2201", credit.date(), vatDue, null, false));
-            booked = new Transaction(transaction.date(), transaction.debitAccount(), null, transaction.amount(), splits, transaction.text(),
-                transaction.reference());
+            List<AccountEntry> splits = List.of(new AccountEntry(credit.accountId(), credit.date(), credit.amount().subtract(vatDue), credit.text(), false, credit.tags()),
+                new AccountEntry("2201", credit.date(), vatDue, null, false));
+            booked = new Transaction(transaction.date(), transaction.debitAccount(), null, transaction.amount(), splits, transaction.text(), transaction.reference());
         }
         booked.debitSplits().forEach(this::bookEntry);
         booked.creditSplits().forEach(this::bookEntry);
@@ -125,15 +123,14 @@ public interface LedgerRealm extends Realm {
     default BigDecimal computeVat(LocalDate from, LocalDate to) {
         return transactions(from, to).stream().flatMap(o -> o.creditSplits().stream()).map(o -> {
             Optional<BigDecimal> vat = o.getVat();
-            return vat.map(bigDecimal -> o.amount().subtract(o.amount().divide(BigDecimal.ONE.add(bigDecimal), 2, RoundingMode.HALF_UP)))
-                .orElse(BigDecimal.ZERO);
+            return vat.map(bigDecimal -> o.amount().subtract(o.amount().divide(BigDecimal.ONE.add(bigDecimal), 2, RoundingMode.HALF_UP))).orElse(BigDecimal.ZERO);
         }).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
     }
 
     default BigDecimal computeDueVat(LocalDate from, LocalDate to) {
         Optional<Account> account = accountBy("2201");
-        return account.map(value -> value.getEntriesFor(from, to).stream().filter(AccountEntry::isCredit).map(AccountEntry::amount).reduce(BigDecimal::add)
-            .orElse(BigDecimal.ZERO)).orElse(BigDecimal.ZERO);
+        return account.map(value -> value.getEntriesFor(from, to).stream().filter(AccountEntry::isCredit).map(AccountEntry::amount).reduce(BigDecimal::add).orElse(BigDecimal.ZERO))
+            .orElse(BigDecimal.ZERO);
     }
 
     // endregion

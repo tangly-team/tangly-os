@@ -15,6 +15,7 @@ package net.tangly.erp.crm.ui;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.textfield.PasswordField;
+import net.tangly.core.Entity;
 import net.tangly.core.crm.NaturalEntity;
 import net.tangly.erp.Erp;
 import net.tangly.erp.crm.domain.Subject;
@@ -84,10 +85,10 @@ class CmdChangePasswordTest extends CrmTest {
     }
 
     private Subject createSubject() {
-        var person = new NaturalEntity();
+        var person = new NaturalEntity(Entity.UNDEFINED_OID);
         person.firstname("John");
-        person.lastname("Doe");
-        var subject = new Subject();
+        person.name("Doe");
+        var subject = new Subject(Entity.UNDEFINED_OID);
         subject.user(person);
         subject.id("john-doe");
         subject.newPassword("old-password");

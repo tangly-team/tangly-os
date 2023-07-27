@@ -13,22 +13,15 @@
 package net.tangly.erp.collabortors.domain;
 
 import lombok.Builder;
-import net.tangly.core.HasTimeInterval;
+import net.tangly.core.DateRange;
+import net.tangly.core.HasDateRange;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 @Builder
-public record SwissSocialInsurance(@NotNull LocalDate from,
-                                   LocalDate to,
-                                   @NotNull BigDecimal ahvPercentage,
-                                   @NotNull BigDecimal ahvAdministrationPercentage,
-                                   @NotNull BigDecimal ivPercentage,
-                                   @NotNull BigDecimal eoPercentage,
-                                   @NotNull BigDecimal alvPercentage,
-                                   @NotNull BigDecimal fakPercentage
-) implements HasTimeInterval {
+public record SwissSocialInsurance(@NotNull DateRange range, @NotNull BigDecimal ahvPercentage, @NotNull BigDecimal ahvAdministrationPercentage, @NotNull BigDecimal ivPercentage,
+                                   @NotNull BigDecimal eoPercentage, @NotNull BigDecimal alvPercentage, @NotNull BigDecimal fakPercentage) implements HasDateRange {
     static final BigDecimal HALF = new BigDecimal("0.5");
 
     public BigDecimal computeEmployeeSocialInsurances(BigDecimal amount) {
@@ -44,8 +37,8 @@ public record SwissSocialInsurance(@NotNull LocalDate from,
     }
 
     public BigDecimal employerSocialInsurancesPercentage() {
-        return (ahvPercentage().multiply(HALF)).add(ivPercentage().multiply(HALF)).add(eoPercentage().multiply(HALF)).add(alvPercentage().multiply(HALF))
-            .add(fakPercentage()).add(employerAdministrativeCostsPercentage());
+        return (ahvPercentage().multiply(HALF)).add(ivPercentage().multiply(HALF)).add(eoPercentage().multiply(HALF)).add(alvPercentage().multiply(HALF)).add(fakPercentage())
+            .add(employerAdministrativeCostsPercentage());
     }
 
     public BigDecimal employerAdministrativeCostsPercentage() {

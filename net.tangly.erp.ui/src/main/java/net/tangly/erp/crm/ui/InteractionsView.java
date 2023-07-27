@@ -32,6 +32,7 @@ import net.tangly.ui.components.EntityField;
 import net.tangly.ui.components.EntityForm;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.ItemForm;
+import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.TagsView;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
@@ -46,7 +47,7 @@ class InteractionsView extends EntityView<Interaction> {
 
     static class InteractionForm extends EntityForm<Interaction, InteractionsView> {
         protected InteractionForm(@NotNull InteractionsView parent) {
-            super(parent, Interaction.class);
+            super(parent, Interaction::new);
         }
 
         @Override
@@ -74,8 +75,8 @@ class InteractionsView extends EntityView<Interaction> {
         }
 
         private void registerTabs(@NotNull TabSheet tabSheet, @NotNull Mode mode, @NotNull Interaction entity) {
-            tabSheet.add("Comments", new CommentsView(entity, mode));
-            tabSheet.add("Tags", new TagsView(entity, parent().domain().registry(), mode));
+            tabSheet.add("Comments", new CommentsView(entity, parent().domain(), mode));
+            tabSheet.add("Tags", new TagsView(entity, parent().domain(), mode));
             //            One2ManyView<Activity> activities = new One2ManyView<>(Activity.class, mode, InteractionsView::defineOne2ManyActivities,
             //                ProviderView.of(ProviderInMemory.of(entity.activities())), new ActivitiesView(domain(), mode));
             //            tabSheet.add("Activities", activities);

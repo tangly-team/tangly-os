@@ -82,7 +82,8 @@ public static JsonEntity<BankConnection> createJsonBankConnection() {
     return JsonEntity.of(fields, imports); // <2>
 }
 ----
-<1> defines the import method to retrieve the values to create a bank connection, create an immutable Java record object, and validate the properties.
+
+<1> Defines the import method to retrieve the values to create a bank connection, create an immutable Java record object, and validate the properties.
 <2> Returns a JSON entity defining an import method to construct an instance, and regular properties to create the JSON represenation.
 
 The _InvoiceJson_ class is a good example using most of the factory methods provided in the JSON conversion library.

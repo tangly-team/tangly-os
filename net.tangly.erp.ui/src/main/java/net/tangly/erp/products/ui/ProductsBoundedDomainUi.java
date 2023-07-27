@@ -20,7 +20,7 @@ import com.vaadin.flow.component.menubar.MenuBar;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.app.domain.BoundedDomainUi;
 import net.tangly.ui.app.domain.DomainView;
-import net.tangly.ui.components.ItemView;
+import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -35,9 +35,9 @@ public class ProductsBoundedDomainUi implements BoundedDomainUi {
 
     public ProductsBoundedDomainUi(@NotNull ProductsBoundedDomain domain) {
         this.domain = domain;
-        productsView = new ProductsView(domain, ItemView.Mode.EDIT);
-        assignmentsView = new AssignmentsView(domain, ItemView.Mode.EDIT);
-        effortsView = new EffortsView(domain, ItemView.Mode.DELETE);
+        productsView = new ProductsView(domain, Mode.EDIT);
+        assignmentsView = new AssignmentsView(domain, Mode.EDIT);
+        effortsView = new EffortsView(domain, Mode.DELETE);
         domainView = new DomainView(domain);
         currentView = productsView;
     }

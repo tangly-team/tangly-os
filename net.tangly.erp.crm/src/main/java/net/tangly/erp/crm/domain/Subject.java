@@ -12,7 +12,7 @@
 
 package net.tangly.erp.crm.domain;
 
-import net.tangly.core.EntityImp;
+import net.tangly.core.EntityExtendedImp;
 import net.tangly.core.crm.NaturalEntity;
 import net.tangly.erp.crm.gravatar.Gravatar;
 import net.tangly.erp.crm.gravatar.GravatarImage;
@@ -31,7 +31,7 @@ import java.util.Objects;
 /**
  * Defines the abstraction of a registered subject entitled to use the application and associated services. The id of the subject is the human readable unique identifier.
  */
-public class Subject extends EntityImp {
+public class Subject extends EntityExtendedImp {
     private static final String ALGORITHM = "PBKDF2WithHmacSHA512";
     private NaturalEntity user;
     private String gravatarEmail;
@@ -41,7 +41,8 @@ public class Subject extends EntityImp {
     private String gmailPassword;
     private transient byte[] avatar;
 
-    public Subject() {
+    public Subject(long oid) {
+        super(oid);
     }
 
     public static String encryptPassword(@NotNull String password, @NotNull String salt) {

@@ -17,6 +17,7 @@ import com.google.common.jimfs.Jimfs;
 import net.tangly.core.Address;
 import net.tangly.core.BankConnection;
 import net.tangly.core.Comment;
+import net.tangly.core.Entity;
 import net.tangly.core.PhoneNr;
 import net.tangly.core.Tag;
 import net.tangly.core.crm.CrmTags;
@@ -27,9 +28,9 @@ import net.tangly.core.crm.VcardType;
 import net.tangly.core.domain.Realm;
 import net.tangly.core.providers.Provider;
 import net.tangly.erp.crm.domain.Contract;
-import net.tangly.erp.crm.services.CrmRealm;
 import net.tangly.erp.crm.ports.CrmEntities;
 import net.tangly.erp.crm.ports.CrmHdl;
+import net.tangly.erp.crm.services.CrmRealm;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
@@ -110,7 +111,7 @@ class CrmHdlTest {
     private void verifyLegalEntities(@NotNull CrmRealm realm, int nrOfEntities, LegalEntity entity) {
         assertThat(realm.legalEntities().items().isEmpty()).isFalse();
         assertThat(Provider.findByOid(realm.legalEntities(), 100)).isPresent();
-        assertThat(realm.legalEntities().findBy(LegalEntity::id, "UNKNOWN-100")).isPresent();
+        assertThat(realm.legalEntities().findBy(LegalEntity::id, "DE123456789")).isPresent();
         assertThat(realm.legalEntities().findBy(LegalEntity::name, "Vaadin GmbH")).isPresent();
         Realm.checkEntities(realm.legalEntities());
         if (entity != null) {
@@ -161,14 +162,14 @@ class CrmHdlTest {
     }
 
     private NaturalEntity createNaturalEntity() {
-        NaturalEntity entity = new NaturalEntity();
+        NaturalEntity entity = new NaturalEntity(Entity.UNDEFINED_OID);
         entity.from(LocalDate.of(1900, Month.JANUARY, 1));
         entity.to(LocalDate.of(2000, Month.DECEMBER, 31));
         entity.text("*This is a markdown text*");
         entity.add(Comment.of("administrator", "*This is a markdown comment for natural entity*"));
         entity.socialNr("social-security-number");
         entity.firstname("John");
-        entity.lastname("Doe");
+        entity.name("Doe");
         entity.gender(GenderCode.unspecified);
         entity.address(VcardType.home, Address.builder().country("CH").region("ZH").locality("Zürich").build());
         entity.phoneNr(VcardType.home, "+41 79 778 8689");
@@ -177,7 +178,7 @@ class CrmHdlTest {
     }
 
     private LegalEntity createLegalEntity() {
-        LegalEntity entity = new LegalEntity();
+        LegalEntity entity = new LegalEntity(Entity.UNDEFINED_OID);
         entity.id("CHE-487.951.218");
         entity.name("bbv Group AG");
         entity.from(LocalDate.of(1995, Month.NOVEMBER, 1));
@@ -192,7 +193,7 @@ class CrmHdlTest {
     }
 
     private Contract createContract(@NotNull CrmRealm realm) {
-        Contract entity = new Contract();
+        Contract entity = new Contract(Entity.UNDEFINED_OID);
         entity.id("Contract-009");
         entity.name("Contract 009");
         entity.from(LocalDate.of(2010, Month.MARCH, 1));

@@ -12,7 +12,7 @@
 
 package net.tangly.erp.products.domain;
 
-import net.tangly.core.EntityImp;
+import net.tangly.core.EntityExtendedImp;
 
 import java.util.Objects;
 
@@ -23,11 +23,12 @@ import java.util.Objects;
  * a social security number of each collaborator working on a product under our supervision. The collaborator identifier of the assignment is therefore the social security number
  * of a collaborator.</p>
  */
-public class Assignment extends EntityImp {
+public class Assignment extends EntityExtendedImp {
     private Product product;
     private String collaboratorId;
 
-    public Assignment() {
+    public Assignment(long oid) {
+        super(oid);
     }
 
     public Product product() {

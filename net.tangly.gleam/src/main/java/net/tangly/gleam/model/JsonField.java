@@ -43,7 +43,7 @@ public sealed interface JsonField<T, U> permits JsonProperty, JsonArray {
     void exports(@NotNull T entity, @NotNull JSONObject object);
 
     /**
-     * Returns the JSON property key name storing the property in a JSON structure.
+     * Return the JSON property key name storing the property in a JSON structure.
      *
      * @return key of the property
      */

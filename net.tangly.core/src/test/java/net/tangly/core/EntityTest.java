@@ -55,7 +55,7 @@ class EntityTest {
     @Test
     void testHasInterval() {
         var entity = NamedEntity.of(Entity.UNDEFINED_OID);
-        entity.interval(DateRange.of(LocalDate.of(2000, Month.JANUARY, 1), LocalDate.of(2000, Month.DECEMBER, 31)));
+        entity.range(DateRange.of(LocalDate.of(2000, Month.JANUARY, 1), LocalDate.of(2000, Month.DECEMBER, 31)));
         assertThat(entity.isActive(LocalDate.of(1999, Month.DECEMBER, 31))).isFalse();
         assertThat(entity.isActive(LocalDate.of(2000, Month.JANUARY, 1))).isTrue();
         assertThat(entity.isActive(LocalDate.of(2000, Month.JUNE, 1))).isTrue();

@@ -27,19 +27,42 @@ import java.util.function.Supplier;
  * <p>A special case is if the entity is owned through one to multiple relation. The reference to the owner is stored in the TSV file.
  * The extraction process returns a tuple with the the entity and the identifier of the owner.</p>
  *
+ * @param clazz   class of the entity
  * @param fields  fields of the entity with the mapping rules
- * @param factory factory method to create a new entity instance
+ * @param imports import factory function to create a new instance of the class with values of the CSV record
+ * @param exports export factory method to create a CSV record for an instance of the clas
  * @param <T>     class of the entity
  */
-public record TsvEntity<T>(Class<T> clazz, List<TsvProperty<T, ?>> fields, Supplier<T> factory, Function<CSVRecord, T> imports, BiConsumer<T, CSVPrinter> exports) {
+public record TsvEntity<T>(Class<T> clazz, List<TsvProperty<T, ?>> fields, Function<CSVRecord, T> imports, BiConsumer<T, CSVPrinter> exports) {
     public static final String OWNER_FOID = "ownerFoid";
 
+    /**
+     * Defines an entity with a default constructor and no special mapping rules to CSV record. The class is a standard Java POJO.
+     *
+     * @param clazz      class of the entity
+     * @param properties properties of the entity
+     * @param factory    default constructor method of the class
+     * @param <T>        type of the class to import from or export to a TSV file.
+     * @return a new instance of the class
+     */
     public static <T> TsvEntity<T> of(Class<T> clazz, List<TsvProperty<T, ?>> properties, Supplier<T> factory) {
-        return new TsvEntity<>(clazz, properties, factory, null, null);
+        return new TsvEntity<>(clazz, properties, o -> factory.get(), null);
     }
 
+
+    /**
+     * Defines an entity for a class with a set of property and a function creating an instance of the class with values from the CSV record. This approach is often used for
+     * records. Records only provides constructors with all properties as parameters. The second case is when the class constructor takes internal or external identifier as
+     * parameters.
+     *
+     * @param clazz      class of the entity
+     * @param properties properties of the entity
+     * @param imports    factory method to create an instance of the class with some of the CSV record values.
+     * @param <T>        type of the class to import from or export to a TSV file.
+     * @return a new instance of the class
+     */
     public static <T> TsvEntity<T> of(Class<T> clazz, List<TsvProperty<T, ?>> properties, Function<CSVRecord, T> imports) {
-        return new TsvEntity<>(clazz, properties, null, imports, null);
+        return new TsvEntity<>(clazz, properties, imports, null);
     }
 
     public static String get(@NotNull CSVRecord csv, @NotNull String column) {
@@ -49,15 +72,15 @@ public record TsvEntity<T>(Class<T> clazz, List<TsvProperty<T, ?>> fields, Suppl
     /**
      * Return the ordered list of column header names for the TSV record header.
      *
-     * @return ordered list of column header names for the TSV record header
+     * @return an ordered list of column header names for the TSV record header
      */
     public List<String> headers() {
         return fields().stream().flatMap(e -> e.columns().stream()).toList();
     }
 
     /**
-     * Export an entity as a row in a TSV file. Upon completion of the export the caller shall call. If defined the export lambda is executed, otherwise the exports lambdas for all
-     * fields are executed. The exclusive operation modes are due to the constraints of the underlying CSV Apache Commons library.
+     * Export an entity as a row in a TSV file. Upon completion of the export, the caller shall call. If defined, the export lambda is executed, otherwise the exports lambdas for
+     * all fields are executed. The exclusive operation modes are due to the constraints of the underlying CSV Apache Commons library.
      *
      * @param entity  entity to be exported as TSV record
      * @param printer printer to write TSV record
@@ -71,7 +94,7 @@ public record TsvEntity<T>(Class<T> clazz, List<TsvProperty<T, ?>> fields, Suppl
     }
 
     /**
-     * Export the relation to the TSV file. First, the onwer identifier is written in the first column having the header {@link #OWNER_FOID}. Secpmd. the referenced enttity is
+     * Export the relation to the TSV file. First, the owner identifier is written in the first column having the header {@link #OWNER_FOID}. Second. the referenced entity is
      * written to the TSV record.
      *
      * @param relation relation to export
@@ -94,7 +117,7 @@ public record TsvEntity<T>(Class<T> clazz, List<TsvProperty<T, ?>> fields, Suppl
         if (imports() != null) {
             entity = imports().apply(record);
         } else {
-            entity = factory.get();
+            entity = imports.apply(record);
         }
         fields().stream().filter(o -> o.setter() != null).forEach(property -> property.imports(entity, record));
         return entity;

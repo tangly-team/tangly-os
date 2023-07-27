@@ -16,6 +16,7 @@ import com.vaadin.flow.router.PageTitle;
 import net.tangly.erp.products.domain.Product;
 import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.components.EntityView;
+import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 @PageTitle("products-products")

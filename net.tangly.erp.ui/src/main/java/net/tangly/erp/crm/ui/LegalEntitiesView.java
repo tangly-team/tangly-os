@@ -25,6 +25,7 @@ import net.tangly.erp.crm.domain.Employee;
 import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.EntityForm;
 import net.tangly.ui.components.EntityView;
+import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -37,14 +38,9 @@ class LegalEntitiesView extends EntityView<LegalEntity> {
 
     static class LegalEntityForm extends EntityForm<LegalEntity, LegalEntitiesView> {
         public LegalEntityForm(@NotNull LegalEntitiesView parent, @NotNull TypeRegistry registry) {
-            super(parent, LegalEntity.class);
+            super(parent, LegalEntity::new);
             init();
             addTabAt("details", details(), 1);
-        }
-
-        @Override
-        protected LegalEntity createOrUpdateInstance(LegalEntity entity) {
-            return new LegalEntity();
         }
 
         private FormLayout details() {

@@ -313,7 +313,7 @@ public class LedgerTsvHdl {
     }
 
     /**
-     * Returns true if the record is relevant for the ledger plan, meaning it has a description and either an account identifier not starting with an semicolon
+     * Return true if the record is relevant for the ledger plan, meaning it has a description and either an account identifier not starting with an semicolon
      * or a group with an identifier different from 0.
      *
      * @return flag indicating if hte record is relevant for the ledger plan or not

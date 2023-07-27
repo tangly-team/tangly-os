@@ -12,15 +12,13 @@
 
 package net.tangly.erp.ports;
 
-import net.tangly.commons.lang.ReflectionUtilities;
 import net.tangly.commons.logger.EventData;
 import net.tangly.core.Address;
 import net.tangly.core.Comment;
 import net.tangly.core.EmailAddress;
 import net.tangly.core.Entity;
+import net.tangly.core.EntityExtended;
 import net.tangly.core.HasComments;
-import net.tangly.core.HasId;
-import net.tangly.core.HasName;
 import net.tangly.core.HasOid;
 import net.tangly.core.HasTags;
 import net.tangly.core.PhoneNr;
@@ -48,11 +46,9 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import static net.tangly.core.tsv.TsvHdlCore.FROM_DATE;
 import static net.tangly.core.tsv.TsvHdlCore.ID;
 import static net.tangly.core.tsv.TsvHdlCore.NAME;
 import static net.tangly.core.tsv.TsvHdlCore.TEXT;
-import static net.tangly.core.tsv.TsvHdlCore.TO_DATE;
 
 public final class TsvHdl {
     public static final CSVFormat FORMAT =
@@ -67,26 +63,24 @@ public final class TsvHdl {
     private TsvHdl() {
     }
 
-    public static <T extends Entity> List<TsvProperty<T, ?>> createTsvEntityFields() {
-        List<TsvProperty<T, ?>> fields = new ArrayList<>();
-        fields.add(TsvProperty.of(OID, Entity::oid, (entity, value) -> ReflectionUtilities.set(entity, OID, value), Long::parseLong));
-        fields.add(TsvProperty.ofString(TEXT, Entity::text, Entity::text));
-        fields.add(TsvProperty.ofDate(FROM_DATE, Entity::from, Entity::from));
-        fields.add(TsvProperty.ofDate(TO_DATE, Entity::to, Entity::to));
-        return fields;
+    public static <T> TsvEntity<T> of(@NotNull Class<T> clazz, @NotNull List<TsvProperty<T, ?>> properties, @NotNull Function<Long, T> supplier) {
+        return new TsvEntity<>(clazz, properties, o -> supplier.apply(Long.parseLong(o.get(OID))), null);
     }
 
-    public static <T extends HasId & Entity & HasName> List<TsvProperty<T, ?>> createTsvQualifiedEntityFields() {
-        List<TsvProperty<T, ?>> fields = createTsvEntityFields();
+    public static <T extends Entity> List<TsvProperty<T, ?>> createTsvEntityFields() {
+        List<TsvProperty<T, ?>> fields = new ArrayList<>();
+        fields.add(TsvProperty.ofLong(OID, Entity::oid, null));
         fields.add(TsvProperty.ofString(ID, Entity::id, Entity::id));
         fields.add(TsvProperty.ofString(NAME, Entity::name, Entity::name));
+        fields.add(TsvProperty.of(TsvHdlCore.createTsvDateRange(), Entity::range, Entity::range));
+        fields.add(TsvProperty.ofString(TEXT, Entity::text, Entity::text));
         return fields;
     }
 
     public static <T> void importEntities(@NotNull Reader in, String source, @NotNull TsvEntity<T> tsvEntity, @NotNull Provider<T> provider) {
         BiFunction<TsvEntity<T>, CSVRecord, T> lambda = (tsv, record) -> {
             T entity = tsvEntity.imports(record);
-            if (!(entity instanceof Entity instance) || (instance.validate())) {
+            if (!(entity instanceof EntityExtended instance) || (instance.validate())) {
                 provider.update(entity);
             }
             return entity;
@@ -165,7 +159,7 @@ public final class TsvHdl {
             int counter = 0;
             for (CSVRecord csv : FORMAT.parse(in)) {
                 Object imported = function.apply(tsvEntity, csv);
-                if (!(imported instanceof Entity entity) || (entity.validate())) {
+                if (!(imported instanceof EntityExtended entity) || (entity.validate())) {
                     ++counter;
                     EventData.log(EventData.IMPORT, MODULE, EventData.Status.SUCCESS, tsvEntity.clazz().getSimpleName() + " imported",
                         Map.of("filename", source, "object", imported));

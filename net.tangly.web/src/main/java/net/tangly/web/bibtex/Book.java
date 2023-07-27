@@ -18,9 +18,6 @@ import org.jbibtex.BibTeXEntry;
 import org.jbibtex.Key;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
-import java.util.Set;
-
 @Builder
 public record Book(@NotNull BibTeXEntry entry) {
     public static final Key AUTHOR = new Key("author");

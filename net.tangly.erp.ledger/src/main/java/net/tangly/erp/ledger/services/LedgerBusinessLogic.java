@@ -51,7 +51,7 @@ public class LedgerBusinessLogic {
     }
 
     /**
-     * Returns the change of the selected account during the specified time interval.
+     * Return the change of the selected account during the specified time interval.
      *
      * @param accountId identifier of the account which change shall be computed
      * @param from      start of the time interval
@@ -63,7 +63,7 @@ public class LedgerBusinessLogic {
     }
 
     /**
-     * Returns the balance of the selected account at the given date.
+     * Return the balance of the selected account at the given date.
      *
      * @param accountId identifier of the account which change shall be computed
      * @param date      date of the account state

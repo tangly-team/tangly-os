@@ -17,7 +17,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;
 
-import static net.tangly.commons.lang.functional.LList.*;
+import static net.tangly.commons.lang.functional.LList.cons;
+import static net.tangly.commons.lang.functional.LList.list;
+import static net.tangly.commons.lang.functional.LList.nil;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 

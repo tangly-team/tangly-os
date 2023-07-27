@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Contract;
 
 public interface Sequence<T> {
     /**
-     * Returns the first element of the sequence.
+     * Return the first element of the sequence.
      *
      * @return first element of the sequence if defined otherwise Nil
      */
@@ -24,7 +24,7 @@ public interface Sequence<T> {
     T first();
 
     /**
-     * Returns the rest of the sequence witouth the first item of the sequence.
+     * Return the rest of the sequence witouth the first item of the sequence.
      *
      * @return rest of the sequence, can be empty
      */
@@ -32,7 +32,7 @@ public interface Sequence<T> {
     Sequence<T> rest();
 
     /**
-     * Constructs a new immutable list by addind the new front item to the existing sequence.
+     * Construct a new immutable list by addind the new front item to the existing sequence.
      *
      * @param item     item to add to the sequence
      * @param sequence sequence where the item will be added in th front of the sequence

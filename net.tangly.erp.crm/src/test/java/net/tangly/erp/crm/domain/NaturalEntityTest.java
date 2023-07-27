@@ -13,6 +13,7 @@
 package net.tangly.erp.crm.domain;
 
 import net.tangly.core.Address;
+import net.tangly.core.Entity;
 import net.tangly.core.HasLocation;
 import net.tangly.core.Tag;
 import net.tangly.core.crm.CrmTags;
@@ -29,7 +30,7 @@ class NaturalEntityTest {
         final var longitude = 47.18459018924399;
         final var latitude = 8.458151140334703;
         final var address = Address.builder().country("CH").locality("Zug").postcode("6300").street("Bahnhofstrasse 1").build();
-        var entity = new NaturalEntity();
+        var entity = new NaturalEntity(Entity.UNDEFINED_OID);
         entity.address(VcardType.home, address);
         entity.add(Tag.of(CrmTags.GEO_PLUSCODE, pluscode));
         entity.add(Tag.of(CrmTags.GEO_LONGITUDE, Double.toString(longitude)));

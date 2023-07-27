@@ -12,8 +12,8 @@
 
 package net.tangly.erp.crm.domain;
 
-import net.tangly.core.Entity;
-import net.tangly.core.EntityImp;
+import net.tangly.core.EntityExtended;
+import net.tangly.core.EntityExtendedImp;
 import net.tangly.core.crm.CrmEntity;
 import net.tangly.core.crm.LegalEntity;
 import net.tangly.core.crm.NaturalEntity;
@@ -26,16 +26,17 @@ import java.util.Objects;
  * employee is the name property of the natural person of this employee. The from and to date defines the duration of the employment . if the to date is empty the employee is still
  * legally working for the organization.
  */
-public class Employee extends EntityImp implements Entity, CrmEntity {
+public class Employee extends EntityExtendedImp implements EntityExtended, CrmEntity {
     private NaturalEntity person;
     private LegalEntity organization;
 
-    public Employee() {
+    public Employee(long oid) {
+        super(oid);
     }
 
     @Override
     public String name() {
-        String personName = (person != null) ? person.lastname() + ", " + person.firstname() : "UNKNOWN";
+        String personName = (person != null) ? person.name() + ", " + person.firstname() : "UNKNOWN";
         String organizationName = (organization != null) ? organization.name() : "UNKNOWN";
         return personName + " - " + organizationName + " : " + from();
     }

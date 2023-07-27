@@ -103,7 +103,7 @@ Tags and identifiers are supported for regulatory aspects and traceability.
 [source,java]
 ----
 @ExtendWith(StoryExtension.class)
-@Story(value = "Returns go back to the stockpile", description = "As a store owner, in order to keep track of stock, I want to add items back to stock when they're returned.")
+@Story(value = "Return go back to the stockpile", description = "As a store owner, in order to keep track of stock, I want to add items back to stock when they're returned.")
 public class StoreTestStoryOne {
     @Scenario("Refunded items from the customer should be returned to stock")
     public void refundAndRestock(Scene scene) {

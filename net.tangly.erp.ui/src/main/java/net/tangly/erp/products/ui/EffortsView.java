@@ -23,6 +23,7 @@ import net.tangly.erp.products.services.ProductsBoundedDomain;
 import net.tangly.ui.asciidoc.AsciiDocField;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
+import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 

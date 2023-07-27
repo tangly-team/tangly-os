@@ -26,6 +26,7 @@ import net.tangly.erp.crm.services.CrmBoundedDomain;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.ItemForm;
 import net.tangly.ui.components.ItemView;
+import net.tangly.ui.components.Mode;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;

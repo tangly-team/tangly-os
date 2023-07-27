@@ -38,6 +38,7 @@ import net.tangly.ui.components.EntityField;
 import net.tangly.ui.components.EntityForm;
 import net.tangly.ui.components.EntityView;
 import net.tangly.ui.components.ItemForm;
+import net.tangly.ui.components.Mode;
 import net.tangly.ui.components.VaadinUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -48,7 +49,7 @@ import org.jetbrains.annotations.NotNull;
 class NaturalEntitiesView extends EntityView<NaturalEntity> {
     static class NaturalEntityForm extends EntityForm<NaturalEntity, NaturalEntitiesView> {
         public NaturalEntityForm(@NotNull NaturalEntitiesView parent, @NotNull TypeRegistry registry) {
-            super(parent, NaturalEntity.class);
+            super(parent, NaturalEntity::new);
             init();
         }
 
@@ -84,7 +85,7 @@ class NaturalEntitiesView extends EntityView<NaturalEntity> {
 
             //            entityField.bind(binder());
             binder().bind(firstname, NaturalEntity::firstname, NaturalEntity::firstname);
-            binder().bind(lastname, NaturalEntity::lastname, NaturalEntity::lastname);
+            binder().bind(lastname, NaturalEntity::name, NaturalEntity::name);
             binder().bind(gender, NaturalEntity::gender, NaturalEntity::gender);
             binder().bind(mobilePhone, e -> e.phoneNr(VcardType.mobile).map(PhoneNr::number).orElse(null), null);
             binder().bind(homeEmail, e -> e.email(VcardType.home).map(EmailAddress::text).orElse(null), null);
@@ -120,7 +121,7 @@ class NaturalEntitiesView extends EntityView<NaturalEntity> {
         var grid = grid();
         addEntityColumns(grid);
 
-        grid.addColumn(NaturalEntity::lastname).setKey("lastname").setHeader("Last Name").setSortable(true).setAutoWidth(true).setResizable(true);
+        grid.addColumn(NaturalEntity::name).setKey("lastname").setHeader("Last Name").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(NaturalEntity::firstname).setKey("firstname").setHeader("First Name").setSortable(true).setAutoWidth(true).setResizable(true);
         grid.addColumn(new ComponentRenderer<>(o -> (o.gender() == GenderCode.male) ? new Icon(VaadinIcon.MALE) : new Icon(VaadinIcon.FEMALE))).setKey("gender").setHeader("Gender")
             .setResizable(true).setResizable(true);

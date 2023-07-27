@@ -13,15 +13,12 @@
 package net.tangly.erp.collabortors.domain;
 
 import lombok.Builder;
-import net.tangly.core.HasTimeInterval;
+import net.tangly.core.DateRange;
+import net.tangly.core.HasDateRange;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 @Builder
-public record SwissPensionFund(@NotNull LocalDate from,
-                               LocalDate to,
-                               @NotNull BigDecimal bvgPercentage,
-                               @NotNull BigDecimal employerPercentage) implements HasTimeInterval {
+public record SwissPensionFund(@NotNull DateRange range, @NotNull BigDecimal bvgPercentage, @NotNull BigDecimal employerPercentage) implements HasDateRange {
 }

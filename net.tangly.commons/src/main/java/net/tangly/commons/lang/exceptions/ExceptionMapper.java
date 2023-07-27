@@ -56,7 +56,7 @@ public class ExceptionMapper<H> {
     }
 
     /**
-     * Returns true if the exception class is registered.
+     * Return true if the exception class is registered.
      *
      * @param clazz class which registration shall be checked
      * @return true if the class is registered otherwise false
@@ -66,7 +66,7 @@ public class ExceptionMapper<H> {
     }
 
     /**
-     * Processes the exception by executing the associated functor. The functor is associated with the class of the exception. Generalization of the exception
+     * Process the exception by executing the associated functor. The functor is associated with the class of the exception. Generalization of the exception
      * class for handling is similar to the rules of the try catch instruction.
      *
      * @param handler   handler used to process the exception

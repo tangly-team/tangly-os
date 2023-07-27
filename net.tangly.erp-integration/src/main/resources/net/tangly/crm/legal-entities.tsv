@@ -1,6 +1,6 @@
 "oid"	"id"	"name"	"fromDate"	"toDate"	"text"	"crm:vat-number"	"crm:im-linkedIn"	"crm:email-work"	"crm:site-work"	"crm:phone-work"	"street"	"extended"	"postcode"	"locality"	"region"	"country"	"crm:school"	"tags"
-"100"	"UNKNOWN-100"	Vaadin GmbH	"1915-11-01"	""	""	"DE123456789"	"hope-llc"	"info@hope.org"	"www.hope.org"	"+49 30 53 21 24 30"	"Central Road 1"	""	"10247"	"Berlin"	"DE-BE"	"DE"	"N"	""
-"101"	"UNKNOWN-101"	"JetBrains GmbH"	"1990-01-01"	""	""	"DE987654321"	"funn-llc"	"info@jetbrains.com"	"www.jetbrains.com"	"+49 89 255596 500"	"Elsenheimerstrasse 47"	""	"80687"	"München"	"DE-BY"	"DE"	"N"	""
+"100"	DE123456789	Vaadin GmbH	"1915-11-01"	""	""	"DE123456789"	"hope-llc"	"info@hope.org"	"www.hope.org"	"+49 30 53 21 24 30"	"Central Road 1"	""	"10247"	"Berlin"	"DE-BE"	"DE"	"N"	""
+"101"	DE987654321	"JetBrains GmbH"	"1990-01-01"	""	""	"DE987654321"	"funn-llc"	"info@jetbrains.com"	"www.jetbrains.com"	"+49 89 255596 500"	"Elsenheimerstrasse 47"	""	"80687"	"München"	"DE-BY"	"DE"	"N"	""
 "102"	"CHE-357.875.339"	"tangly llc"	"2015-12-01"	""	""	"CHE-357-875.339 MWST"	"tangly-llc"	"info@tangly.net"	"www.tangly.net"	"+41 79 778 8689"	"Lorzenhof 27"	""	"6330"	"Cham"	"ZG"	"CH"	"N"	""
 "104"	"CHE-302.967.535"	"Lucerne School of Information Technology"	""	""	""	""	"hochschule-luzern"	"informatik@hslu.ch"	"www.hslu.ch"	"+41 41 757 68 11"	"Suurstoffi 41b"	""	"6343"	"Rotkreuz"	"ZG"	"CH"	"Y"	""
 "105"	"CHE-106.083.195"	"CSS Versicherung AG"	"1991-10-21"	""	""	"CHE-106.083.195 MWST"	"cssversicherung"	""	"www.css.ch"	""	"Tribschenstrasse 21"	""	"6005"	"Luzern"	"LU"	"CH"	"N"	""

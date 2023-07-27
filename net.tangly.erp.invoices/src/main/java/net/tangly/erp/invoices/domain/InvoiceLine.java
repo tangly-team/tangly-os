@@ -22,56 +22,56 @@ import java.math.BigDecimal;
  */
 public sealed interface InvoiceLine extends HasText permits InvoiceItem, Subtotal {
     /**
-     * Returns the line position in the invoice and is used to order the lines on the invoice output.
+     * Return the line position in the invoice and is used to order the lines on the invoice output.
      *
      * @return the position of the invoice line in the invoice
      */
     int position();
 
     /**
-     * Returns the human-readable text documenting the line.
+     * Return the human-readable text documenting the line.
      *
      * @return the text of the line
      */
     String text();
 
     /**
-     * Returns the amount associated with the line.
+     * Return the amount associated with the line.
      *
      * @return the amount of the line
      */
     BigDecimal amount();
 
     /**
-     * Returns the VAT amount associated with the line.
+     * Return the VAT amount associated with the line.
      *
      * @return the VAT amount of the line
      */
     BigDecimal vat();
 
     /**
-     * Returns the quantity of items associated with an invoice line.
+     * Return the quantity of items associated with an invoice line.
      *
      * @return the quantity of items if defined otherwise zero
      */
     BigDecimal quantity();
 
     /**
-     * Returns the unit price of items associated with an invoice line.
+     * Return the unit price of items associated with an invoice line.
      *
      * @return the unit price of the items for the line
      */
     BigDecimal unitPrice();
 
     /**
-     * Returns true if the line contains items.
+     * Return true if the line contains items.
      *
      * @return flag indicating the line contains items
      */
     boolean isItem();
 
     /**
-     * Returns true if the line is an aggregate of other lines.
+     * Return true if the line is an aggregate of other lines.
      *
      * @return flag indicating the line is an aggregate
      */
